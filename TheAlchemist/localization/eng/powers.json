@@ -1,19 +1,47 @@
 {
-  "THEALCHEMIST-PRECIPITATE_POWER.title": "Precipitate",
-  "THEALCHEMIST-PRECIPITATE_POWER.description": "The next {0} Potion(s) you use will be procured again.",
-  "THEALCHEMIST-PRECIPITATE_POWER.smartDescription": "The next {0} Potion(s) you use will be procured again.",
+  "THEALCHEMIST-ACCLIMATE_POWER.title": "Acclimate",
+  "THEALCHEMIST-ACCLIMATE_POWER.description": "At the start of your turn, if you have more than 3 [gold]Poison[/gold], gain {0} [gold]Plating[/gold].",
+  "THEALCHEMIST-ACCLIMATE_POWER.smartDescription": "At the start of your turn, if you have more than 3 [gold]Poison[/gold], gain {0} [gold]Plating[/gold].",
+
+  "THEALCHEMIST-ACCRETION_POWER.title": "Accretion",
+  "THEALCHEMIST-ACCRETION_POWER.description": "At the start of your turn, gain {0} [gold]Plating[/gold].",
+  "THEALCHEMIST-ACCRETION_POWER.smartDescription": "At the start of your turn, gain {0} [gold]Plating[/gold].",
+
+  "THEALCHEMIST-CHORUS_POWER.title": "Chorus",
+  "THEALCHEMIST-CHORUS_POWER.description": "Deal double damage against [gold]Poisoned[/gold] enemies for {0} turn(s).",
+  "THEALCHEMIST-CHORUS_POWER.smartDescription": "Deal double damage against [gold]Poisoned[/gold] enemies for {0} turn(s).",
 
   "THEALCHEMIST-CHRYSOPOEIA_POWER.title": "Chrysopoeia",
   "THEALCHEMIST-CHRYSOPOEIA_POWER.description": "Whenever you take [gold]Poison[/gold] damage, gain {0} Gold.",
   "THEALCHEMIST-CHRYSOPOEIA_POWER.smartDescription": "Whenever you take [gold]Poison[/gold] damage, gain {0} Gold.",
 
-  "THEALCHEMIST-FESTER_POWER.title": "Fester",
-  "THEALCHEMIST-FESTER_POWER.description": "The next {0} [gold]Poison[/gold] tick(s) deal their damage twice.",
-  "THEALCHEMIST-FESTER_POWER.smartDescription": "The next {0} [gold]Poison[/gold] tick(s) deal their damage twice.",
+  "THEALCHEMIST-CONJUNCTION_POWER.title": "Conjunction",
+  "THEALCHEMIST-CONJUNCTION_POWER.description": "At the start of your turn, if you have both [gold]Poison[/gold] and [gold]Regen[/gold], gain 1 Energy.",
+  "THEALCHEMIST-CONJUNCTION_POWER.smartDescription": "At the start of your turn, if you have both [gold]Poison[/gold] and [gold]Regen[/gold], gain 1 Energy.",
 
   "THEALCHEMIST-DEPLETE_STRENGTH_DOWN_POWER.title": "Deplete",
   "THEALCHEMIST-DEPLETE_STRENGTH_DOWN_POWER.description": "Lose {0} [gold]Strength[/gold] at end of turn.",
   "THEALCHEMIST-DEPLETE_STRENGTH_DOWN_POWER.smartDescription": "Lose {0} [gold]Strength[/gold] at end of turn.",
+
+  "THEALCHEMIST-ELIXIR_POWER.title": "Elixir",
+  "THEALCHEMIST-ELIXIR_POWER.description": "At the start of your turn, procure a random potion.",
+  "THEALCHEMIST-ELIXIR_POWER.smartDescription": "At the start of your turn, procure a random potion.",
+
+  "THEALCHEMIST-DETONATION_POWER.title": "Detonation",
+  "THEALCHEMIST-DETONATION_POWER.description": "Whenever you create a card, deal {0} damage to ALL enemies.",
+  "THEALCHEMIST-DETONATION_POWER.smartDescription": "Whenever you create a card, deal {0} damage to ALL enemies.",
+
+  "THEALCHEMIST-FESTER_POWER.title": "Fester",
+  "THEALCHEMIST-FESTER_POWER.description": "The next {0} [gold]Poison[/gold] tick(s) deal their damage twice.",
+  "THEALCHEMIST-FESTER_POWER.smartDescription": "The next {0} [gold]Poison[/gold] tick(s) deal their damage twice.",
+
+  "THEALCHEMIST-HARVEST_POWER.title": "Harvest",
+  "THEALCHEMIST-HARVEST_POWER.description": "Gain {0} additional Potion reward(s) at end of combat.",
+  "THEALCHEMIST-HARVEST_POWER.smartDescription": "Gain {0} additional Potion reward(s) at end of combat.",
+
+  "THEALCHEMIST-INDUCEMENT_POWER.title": "Inducement",
+  "THEALCHEMIST-INDUCEMENT_POWER.description": "Whenever you apply [gold]Poison[/gold], gain {0} [gold]Block[/gold].",
+  "THEALCHEMIST-INDUCEMENT_POWER.smartDescription": "Whenever you apply [gold]Poison[/gold], gain {0} [gold]Block[/gold].",
 
   "THEALCHEMIST-INVERSION_POWER.title": "Inversion",
   "THEALCHEMIST-INVERSION_POWER.description": "Whenever you are healed, deal that much damage to enemies.",
@@ -22,6 +50,10 @@
   "THEALCHEMIST-MATERIALISE_POWER.title": "Materialise",
   "THEALCHEMIST-MATERIALISE_POWER.description": "Whenever you create a card, gain {0} [gold]Block[/gold].",
   "THEALCHEMIST-MATERIALISE_POWER.smartDescription": "Whenever you create a card, gain {0} [gold]Block[/gold].",
+
+  "THEALCHEMIST-MERCURIAL_FORM_POWER.title": "Mercurial Form",
+  "THEALCHEMIST-MERCURIAL_FORM_POWER.description": "Whenever you create a card, gain 1 [gold]Strength[/gold] and 1 [gold]Dexterity[/gold].",
+  "THEALCHEMIST-MERCURIAL_FORM_POWER.smartDescription": "Whenever you create a card, gain 1 [gold]Strength[/gold] and 1 [gold]Dexterity[/gold].",
 
   "THEALCHEMIST-METABOLISE_STRENGTH_POWER.title": "Metabolise",
   "THEALCHEMIST-METABOLISE_STRENGTH_POWER.description": "Gain {0} [gold]Strength[/gold] at end of turn.",
@@ -35,17 +67,33 @@
   "THEALCHEMIST-PHILTRE_POWER.description": "Whenever you use a Potion, gain {0} [gold]Strength[/gold] and {0} [gold]Dexterity[/gold].",
   "THEALCHEMIST-PHILTRE_POWER.smartDescription": "Whenever you use a Potion, gain {0} [gold]Strength[/gold] and {0} [gold]Dexterity[/gold].",
 
+  "THEALCHEMIST-PRECIPITATE_POWER.title": "Precipitate",
+  "THEALCHEMIST-PRECIPITATE_POWER.description": "The next {0} Potion(s) you use will be procured again.",
+  "THEALCHEMIST-PRECIPITATE_POWER.smartDescription": "The next {0} Potion(s) you use will be procured again.",
+
   "THEALCHEMIST-RESOLVE_POWER.title": "Resolve",
   "THEALCHEMIST-RESOLVE_POWER.description": "At the start of your turn, gain 1 [gold]Strength[/gold] for each {0} HP you are missing.",
   "THEALCHEMIST-RESOLVE_POWER.smartDescription": "At the start of your turn, gain 1 [gold]Strength[/gold] for each {0} HP you are missing.",
+
+  "THEALCHEMIST-SECRETION_POWER.title": "Secretion",
+  "THEALCHEMIST-SECRETION_POWER.description": "When hit by an attack, apply {0} [gold]Poison[/gold] to the attacker.",
+  "THEALCHEMIST-SECRETION_POWER.smartDescription": "When hit by an attack, apply {0} [gold]Poison[/gold] to the attacker.",
 
   "THEALCHEMIST-SEDIMENT_POWER.title": "Sediment",
   "THEALCHEMIST-SEDIMENT_POWER.description": "Whenever you apply [gold]Poison[/gold], gain {0} [gold]Plating[/gold].",
   "THEALCHEMIST-SEDIMENT_POWER.smartDescription": "Whenever you apply [gold]Poison[/gold], gain {0} [gold]Plating[/gold].",
 
+  "THEALCHEMIST-SEPSIS_POWER.title": "Sepsis",
+  "THEALCHEMIST-SEPSIS_POWER.description": "Poisoned enemies take {0}% more damage from your attacks.",
+  "THEALCHEMIST-SEPSIS_POWER.smartDescription": "Poisoned enemies take {0}% more damage from your attacks.",
+
   "THEALCHEMIST-VIRULENCE_POWER.title": "Virulence",
   "THEALCHEMIST-VIRULENCE_POWER.description": "Whenever you apply [gold]Poison[/gold], apply an additional {0} [gold]Poison[/gold].",
   "THEALCHEMIST-VIRULENCE_POWER.smartDescription": "Whenever you apply [gold]Poison[/gold], apply an additional {0} [gold]Poison[/gold].",
+
+  "THEALCHEMIST-VOLATILITY_POWER.title": "Volatility",
+  "THEALCHEMIST-VOLATILITY_POWER.description": "The first time your HP changes each turn, apply {0} [gold]Poison[/gold] to ALL enemies.",
+  "THEALCHEMIST-VOLATILITY_POWER.smartDescription": "The first time your HP changes each turn, apply {0} [gold]Poison[/gold] to ALL enemies.",
 
   "THEALCHEMIST-WINDFALL_POWER.title": "Windfall",
   "THEALCHEMIST-WINDFALL_POWER.description": "Whenever you Procure a Potion during combat, draw {0} card(s) and gain {energyPrefix:energyIcons(1)}.",
