@@ -1,10 +1,10 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
+using TheAlchemist.TheAlchemistCode.Cards.Basic;
 using TheAlchemist.TheAlchemistCode.Extensions;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
 
 namespace TheAlchemist.TheAlchemistCode.Character;
@@ -20,16 +20,16 @@ public class TheAlchemist : PlaceholderCharacterModel
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>()
+        ModelDb.Card<StrikeAlchemist>(),
+        ModelDb.Card<StrikeAlchemist>(),
+        ModelDb.Card<StrikeAlchemist>(),
+        ModelDb.Card<StrikeAlchemist>(),
+        ModelDb.Card<StrikeAlchemist>(),
+        ModelDb.Card<DefendAlchemist>(),
+        ModelDb.Card<DefendAlchemist>(),
+        ModelDb.Card<DefendAlchemist>(),
+        ModelDb.Card<DefendAlchemist>(),
+        ModelDb.Card<DefendAlchemist>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

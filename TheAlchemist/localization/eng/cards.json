@@ -1,3 +1,6 @@
 {
-  
+  "THEALCHEMIST-STRIKE_ALCHEMIST.title": "Strike",
+  "THEALCHEMIST-STRIKE_ALCHEMIST.description": "Deal {Damage:diff()} damage.",
+  "THEALCHEMIST-DEFEND_ALCHEMIST.title": "Defend",
+  "THEALCHEMIST-DEFEND_ALCHEMIST.description": "Gain {Block:diff()} [gold]Block[/gold]."
 }
