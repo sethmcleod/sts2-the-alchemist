@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
+using TheAlchemist.TheAlchemistCode.Commands;
 
 namespace TheAlchemist.TheAlchemistCode.Cards.Token;
 
@@ -31,8 +32,6 @@ public class Citrinitas : TheAlchemistCard
                 await DamageCmd.Attack(regenAmount).FromCard(this).TargetingRandomOpponents(CombatState).Execute(choiceContext);
         }
 
-        CardModel rubedo = CombatState.CreateCard<Rubedo>(Owner);
-        if (IsUpgraded) CardCmd.Upgrade(rubedo);
-        await CardPileCmd.AddGeneratedCardToCombat(rubedo, PileType.Hand, Owner);
+        await AlchemistCardCmd.GiveCard<Rubedo>(this);
     }
 }

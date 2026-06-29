@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
+using TheAlchemist.TheAlchemistCode.Commands;
 
 namespace TheAlchemist.TheAlchemistCode.Cards.Token;
 
@@ -30,8 +31,6 @@ public class Albedo : TheAlchemistCard
             await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, regenAmount, Owner.Creature, this);
         }
 
-        CardModel citrinitas = CombatState.CreateCard<Citrinitas>(Owner);
-        if (IsUpgraded) CardCmd.Upgrade(citrinitas);
-        await CardPileCmd.AddGeneratedCardToCombat(citrinitas, PileType.Hand, Owner);
+        await AlchemistCardCmd.GiveCard<Citrinitas>(this);
     }
 }

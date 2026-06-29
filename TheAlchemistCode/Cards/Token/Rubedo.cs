@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using TheAlchemist.TheAlchemistCode.Cards.Basic;
+using TheAlchemist.TheAlchemistCode.Commands;
 
 namespace TheAlchemist.TheAlchemistCode.Cards.Token;
 
@@ -31,8 +32,6 @@ public class Rubedo : TheAlchemistCard
         if (cardToUpgrade != null)
             CardCmd.Upgrade(cardToUpgrade);
 
-        CardModel nigredo = CombatState.CreateCard<Nigredo>(Owner);
-        if (IsUpgraded) CardCmd.Upgrade(nigredo);
-        await CardPileCmd.AddGeneratedCardToCombat(nigredo, PileType.Hand, Owner);
+        await AlchemistCardCmd.GiveCard<Nigredo>(this);
     }
 }

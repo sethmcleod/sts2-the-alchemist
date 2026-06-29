@@ -1,24 +1,19 @@
-using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
-using TheAlchemist.TheAlchemistCode.Cards.Token;
 using TheAlchemist.TheAlchemistCode.Commands;
 
-namespace TheAlchemist.TheAlchemistCode.Cards.Basic;
+namespace TheAlchemist.TheAlchemistCode.Cards.Common;
 
-public class Nigredo : TheAlchemistCard
+public class Miasma : TheAlchemistCard
 {
-    public Nigredo() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
+    public Miasma() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithPower<PoisonPower>(2, 1);
-        WithKeyword(CardKeyword.Exhaust);
-        WithUpgradingCardTip<Albedo>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await AlchemistCardCmd.PoisonAll(choiceContext, this);
-        await AlchemistCardCmd.GiveCard<Albedo>(this);
     }
 }

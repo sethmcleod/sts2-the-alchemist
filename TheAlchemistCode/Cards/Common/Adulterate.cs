@@ -4,19 +4,17 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using TheAlchemist.TheAlchemistCode.Cards.Token;
 using TheAlchemist.TheAlchemistCode.Commands;
 
-namespace TheAlchemist.TheAlchemistCode.Cards.Basic;
+namespace TheAlchemist.TheAlchemistCode.Cards.Common;
 
-public class Leaden : TheAlchemistCard
+public class Adulterate : TheAlchemistCard
 {
-    public Leaden() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
+    public Adulterate() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithDamage(6, 2);
         WithUpgradingCardTip<Dross>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
-        await AlchemistCardCmd.GiveCard<Dross>(this);
+        await AlchemistCardCmd.TransformFromHand<Dross>(choiceContext, this);
     }
 }
