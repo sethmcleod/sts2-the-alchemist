@@ -2,5 +2,17 @@
   "THEALCHEMIST-STRIKE_ALCHEMIST.title": "Strike",
   "THEALCHEMIST-STRIKE_ALCHEMIST.description": "Deal {Damage:diff()} damage.",
   "THEALCHEMIST-DEFEND_ALCHEMIST.title": "Defend",
-  "THEALCHEMIST-DEFEND_ALCHEMIST.description": "Gain {Block:diff()} [gold]Block[/gold]."
+  "THEALCHEMIST-DEFEND_ALCHEMIST.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "THEALCHEMIST-LEADEN.title": "Leaden",
+  "THEALCHEMIST-LEADEN.description": "Deal {Damage:diff()} damage.\nAdd a [gold]Dross[/gold] into your Hand.",
+  "THEALCHEMIST-DROSS.title": "Dross",
+  "THEALCHEMIST-DROSS.description": "Apply {WeakPower:diff()} [gold]Weak[/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {PoisonPower:diff()} [gold]Poison[/gold].",
+  "THEALCHEMIST-NIGREDO.title": "Nigredo",
+  "THEALCHEMIST-NIGREDO.description": "Apply {PoisonPower:diff()} [gold]Poison[/gold] to ALL enemies and players.\nAdd an {IfUpgraded:show:[green]Albedo+[/green]|[gold]Albedo[/gold]} into your Hand.",
+  "THEALCHEMIST-ALBEDO.title": "Albedo",
+  "THEALCHEMIST-ALBEDO.description": "Lose all [gold]Poison[/gold].\nGain that much [gold]Regen[/gold]{IfUpgraded:show: (+1)|}.\nAdd a {IfUpgraded:show:[green]Citrinitas+[/green]|[gold]Citrinitas[/gold]} into your Hand.",
+  "THEALCHEMIST-CITRINITAS.title": "Citrinitas",
+  "THEALCHEMIST-CITRINITAS.description": "Lose all [gold]Regen[/gold].\nDeal that much damage to {IfUpgraded:show:ALL enemies|a random enemy}.\nAdd a {IfUpgraded:show:[green]Rubedo+[/green]|[gold]Rubedo[/gold]} into your Hand.",
+  "THEALCHEMIST-RUBEDO.title": "Rubedo",
+  "THEALCHEMIST-RUBEDO.description": "Gain {Gold:diff()} Gold.\nGain {StrengthPower:diff()} [gold]Strength[/gold].\nUpgrade a card in your Hand.\nAdd a {IfUpgraded:show:[green]Nigredo+[/green]|[gold]Nigredo[/gold]} into your Hand."
 }

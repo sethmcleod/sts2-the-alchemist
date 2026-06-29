@@ -6,6 +6,7 @@ using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Relics;
+using TheAlchemist.TheAlchemistCode.Cards.Token;
 
 namespace TheAlchemist.TheAlchemistCode.Character;
 public class TheAlchemist : PlaceholderCharacterModel
@@ -24,12 +25,12 @@ public class TheAlchemist : PlaceholderCharacterModel
         ModelDb.Card<StrikeAlchemist>(),
         ModelDb.Card<StrikeAlchemist>(),
         ModelDb.Card<StrikeAlchemist>(),
-        ModelDb.Card<StrikeAlchemist>(),
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<DefendAlchemist>(),
-        ModelDb.Card<DefendAlchemist>()
+        ModelDb.Card<Nigredo>(),
+        ModelDb.Card<Leaden>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
