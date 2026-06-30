@@ -1,5 +1,5 @@
+using System.Reflection;
 using Godot;
-using HarmonyLib;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -9,14 +9,13 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Rewards;
-using System.Reflection;
 
 namespace TheAlchemist.TheAlchemistCode.Relics;
 
 public sealed class BrewRestSiteOption : RestSiteOption
 {
     private static readonly FieldInfo ChoicesScreenField =
-        AccessTools.Field(typeof(NRestSiteRoom), "_choicesScreen");
+        typeof(NRestSiteRoom).GetField("_choicesScreen", BindingFlags.NonPublic | BindingFlags.Instance)!;
 
     public override string OptionId => "BREW";
 

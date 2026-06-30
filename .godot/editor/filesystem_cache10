@@ -1,8 +1,6 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1782783772
-cards.csv::Translation::4114057959000865005::1782765019::1782765095::1::::<><><>0<>0<>65df04bd9e28e2f7133e475cebf595f6<>::
+::res://::1782794680
 export_presets.cfg::TextFile::-1::1782697526::0::1::::<><><>0<>0<><>::
-other.csv::Translation::1671409520040376828::1782705155::1782707013::1::::<><><>0<>0<>d32a75508a6da9dcfff21f441d179aa2<>::
 README.md::TextFile::-1::1782700195::0::1::::<><><>0<>0<><>::
 TheAlchemist.json::JSON::-1::1782700558::0::1::::<><><>0<>0<><>::
 ::res://bin/::1782700560
@@ -132,7 +130,7 @@ relic_outline.png::CompressedTexture2D::4929664962893022376::1782697526::1782701
 ::res://TheAlchemist/images/relics/big/::1782701539
 relic.png::CompressedTexture2D::5447135507122003062::1782697526::1782701539::1::::<><><>0<>0<>b47f25736f86ba9fdae616215c1bd572<>res://.godot/imported/relic.png-718ad51bb63312dabd8ebac091d75139.ctex::
 ::res://TheAlchemist/localization/::1782697526
-::res://TheAlchemist/localization/eng/::1782792937
+::res://TheAlchemist/localization/eng/::1782795156
 ancients.json::JSON::-1::1782699830::0::1::::<><><>0<>0<><>::
 cards.json::JSON::-1::1782772765::0::1::::<><><>0<>0<><>::
 card_keywords.json::JSON::-1::1782697526::0::1::::<><><>0<>0<><>::
@@ -142,7 +140,7 @@ powers.json::JSON::-1::1782770229::0::1::::<><><>0<>0<><>::
 relics.json::JSON::-1::1782788047::0::1::::<><><>0<>0<><>::
 rest_site_ui.json::JSON::-1::1782792937::0::1::::<><><>0<>0<><>::
 static_hover_tips.json::JSON::-1::1782697526::0::1::::<><><>0<>0<><>::
-ui.json::JSON::-1::1782792193::0::1::::<><><>0<>0<><>::
+ui.json::JSON::-1::1782795156::0::1::::<><><>0<>0<><>::
 ::res://TheAlchemistCode/::1782790545
 MainFile.cs::CSharpScript::3923107867518292773::1782790545::0::1::::<><><>0<>0<><>::
 ::res://TheAlchemistCode/Cards/::1782770146
@@ -256,8 +254,8 @@ TheAlchemistRelicPool.cs::CSharpScript::7428906684677261851::1782697526::0::1:::
 AlchemistCardCmd.cs::CSharpScript::2300799349894479968::1782744109::0::1::::<><><>0<>0<><>::
 ::res://TheAlchemistCode/Extensions/::1782701539
 StringExtensions.cs::CSharpScript::6170102567410042808::1782697529::0::1::::<><><>0<>0<><>::
-::res://TheAlchemistCode/Patches/::1782792874
-PotionSellPatches.cs::CSharpScript::101030498620617480::1782792874::0::1::::<><><>0<>0<><>::
+::res://TheAlchemistCode/Patches/::1782795202
+PotionSellPatches.cs::CSharpScript::101030498620617480::1782795202::0::1::::<><><>0<>0<><>::
 ::res://TheAlchemistCode/Potions/::1782782472
 GoldLeaf.cs::CSharpScript::7050180590697796770::1782773630::0::1::::<><><>0<>0<><>::
 MarshTonic.cs::CSharpScript::8769402541018816550::1782773628::0::1::::<><><>0<>0<><>::
@@ -290,11 +288,11 @@ TheAlchemistPower.cs::CSharpScript::6134684310391409638::1782751704::0::1::::<><
 VirulencePower.cs::CSharpScript::3378344034507658171::1782749056::0::1::::<><><>0<>0<><>::
 VolatilityPower.cs::CSharpScript::7056393803757281656::1782763169::0::1::::<><><>0<>0<><>::
 WindfallPower.cs::CSharpScript::5331943917032577578::1782751704::0::1::::<><><>0<>0<><>::
-::res://TheAlchemistCode/Relics/::1782793497
+::res://TheAlchemistCode/Relics/::1782795085
 AquaVitae.cs::CSharpScript::1706625131380744005::1782773471::0::1::::<><><>0<>0<><>::
 AuricSeal.cs::CSharpScript::1111871797230041288::1782773675::0::1::::<><><>0<>0<><>::
-BrewRestSiteOption.cs::CSharpScript::3970222986944124871::1782793497::0::1::::<><><>0<>0<><>::
-CinnabarShard.cs::CSharpScript::1782863140970405676::1782773624::0::1::::<><><>0<>0<><>::
+BrewRestSiteOption.cs::CSharpScript::3970222986944124871::1782795085::0::1::::<><><>0<>0<><>::
+CinnabarShard.cs::CSharpScript::1782863140970405676::1782795061::0::1::::<><><>0<>0<><>::
 FluxStone.cs::CSharpScript::9027761930195811775::1782773626::0::1::::<><><>0<>0<><>::
 GildedFlask.cs::CSharpScript::2744172961346991375::1782792958::0::1::::<><><>0<>0<><>::
 HarvestPouch.cs::CSharpScript::6288901945860120010::1782782481::0::1::::<><><>0<>0<><>::

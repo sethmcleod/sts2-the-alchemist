@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Potions;
 using MegaCrit.Sts2.Core.Nodes.Potions;
-using MegaCrit.Sts2.Core.Entities.Merchant;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
@@ -33,8 +32,6 @@ public static class PotionSellPatches
         AccessTools.Field(typeof(NPotionPopupButton), "_label");
 
     private static MethodInfo? _setTextMethod;
-    private static readonly FieldInfo DialogueField =
-        AccessTools.Field(typeof(NMerchantRoom), "_dialogue");
     private static readonly FieldInfo PlayersField =
         AccessTools.Field(typeof(NMerchantRoom), "_players");
 
@@ -109,13 +106,13 @@ public static class PotionSellPatches
     [HarmonyPatch(typeof(NPotionPopup), "_Ready")]
     public static class PotionPopupReadyPatch
     {
-        public static void Postfix(NPotionPopup instance)
+        public static void Postfix(NPotionPopup __instance)
         {
-            var potion = PotionProp.GetValue(instance) as PotionModel;
+            var potion = PotionProp.GetValue(__instance) as PotionModel;
             if (potion == null) return;
             if (!CanSellPotions(potion)) return;
 
-            var useButton = (NPotionPopupButton)UseButtonField.GetValue(instance)!;
+            var useButton = (NPotionPopupButton)UseButtonField.GetValue(__instance)!;
 
             var gold = GetGoldForRarity(potion.Rarity);
             var locString = new LocString("ui", "POTION_SELL.button");
@@ -128,13 +125,13 @@ public static class PotionSellPatches
     [HarmonyPatch(typeof(NPotionPopup), "RefreshButtons")]
     public static class PotionPopupRefreshButtonsPatch
     {
-        public static void Postfix(NPotionPopup instance)
+        public static void Postfix(NPotionPopup __instance)
         {
-            var potion = PotionProp.GetValue(instance) as PotionModel;
+            var potion = PotionProp.GetValue(__instance) as PotionModel;
             if (potion == null) return;
             if (!CanSellPotions(potion)) return;
 
-            var useButton = (NPotionPopupButton)UseButtonField.GetValue(instance)!;
+            var useButton = (NPotionPopupButton)UseButtonField.GetValue(__instance)!;
             useButton.Enable();
         }
     }
@@ -147,18 +144,18 @@ public static class PotionSellPatches
             return AccessTools.Method(typeof(NPotionPopup), "OnUseButtonPressed");
         }
 
-        public static bool Prefix(NPotionPopup instance)
+        public static bool Prefix(NPotionPopup __instance)
         {
-            var potion = PotionProp.GetValue(instance) as PotionModel;
+            var potion = PotionProp.GetValue(__instance) as PotionModel;
             if (potion == null) return true;
             if (!CanSellPotions(potion)) return true;
 
-            var holder = (NPotionHolder)HolderField.GetValue(instance)!;
+            var holder = (NPotionHolder)HolderField.GetValue(__instance)!;
             holder.DisableUntilPotionRemoved();
 
             TaskHelper.RunSafely(SellPotion(potion));
 
-            instance.Remove();
+            __instance.Remove();
             return false;
         }
     }
@@ -176,22 +173,22 @@ public static class PotionSellPatches
     [HarmonyPatch(typeof(NMerchantRoom), "_Ready")]
     public static class MerchantRoomReadyPatch
     {
-        public static void Postfix(NMerchantRoom instance)
+        public static void Postfix(NMerchantRoom __instance)
         {
             _soldThisVisit = false;
 
-            var players = PlayersField.GetValue(instance) as List<Player>;
+            var players = PlayersField.GetValue(__instance) as List<Player>;
             var player = players != null ? LocalContext.GetMe(players) : null;
             if (player == null) return;
             if (player.GetRelic<TarnishedFlask>() == null && player.GetRelic<GildedFlask>() == null) return;
             if (!player.Potions.Any()) return;
 
             var index = _greetingIndex;
-            var timer = instance.GetTree().CreateTimer(0.75);
+            var timer = __instance.GetTree().CreateTimer(0.75);
             timer.Connect(SceneTreeTimer.SignalName.Timeout, Callable.From(() =>
             {
                 var greeting = new LocString("ui", $"POTION_SELL.merchant_greeting_{index}");
-                instance.MerchantButton?.PlayDialogue(greeting, 3.0);
+                __instance.MerchantButton?.PlayDialogue(greeting, 3.0);
             }));
         }
     }
