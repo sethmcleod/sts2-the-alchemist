@@ -74,9 +74,17 @@ public static class PotionSellPatches
             controlLabel.AddThemeColorOverride("font_color", color.Value);
     }
 
+    private static readonly LocString[] SellLines =
+    [
+        new LocString("ui", "POTION_SELL.merchant_sell_1"),
+        new LocString("ui", "POTION_SELL.merchant_sell_2"),
+        new LocString("ui", "POTION_SELL.merchant_sell_3"),
+    ];
+
     private static async Task SellPotion(PotionModel potion)
     {
         var gold = GetGoldForRarity(potion.Rarity);
+        var owner = potion.Owner;
         potion.RemoveBeforeUse();
 
         if (!_soldThisVisit)
@@ -90,14 +98,12 @@ public static class PotionSellPatches
         var merchantRoom = NMerchantRoom.Instance;
         if (merchantRoom != null)
         {
-            var dialogue = DialogueField.GetValue(merchantRoom) as MerchantDialogueSet;
-            var line = dialogue != null ? Rng.Chaotic.NextItem(dialogue.FoulPotionLines) : null;
-            if (line != null)
-                merchantRoom.MerchantButton.PlayDialogue(line);
+            var line = Rng.Chaotic.NextItem(SellLines)!;
+            merchantRoom.MerchantButton.PlayDialogue(line);
             NGame.Instance?.ScreenRumble(ShakeStrength.Medium, ShakeDuration.Short, RumbleStyle.Rumble);
         }
 
-        await PlayerCmd.GainGold(gold, potion.Owner);
+        await PlayerCmd.GainGold(gold, owner);
     }
 
     [HarmonyPatch(typeof(NPotionPopup), "_Ready")]
