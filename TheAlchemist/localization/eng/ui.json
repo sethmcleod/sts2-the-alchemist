@@ -1,0 +1,8 @@
+{
+  "POTION_SELL.button": "Sell ({Gold}g)",
+  "POTION_SELL.merchant_greeting_1": "Are you selling those potions?",
+  "POTION_SELL.merchant_greeting_2": "Oh, my favorite supplier!",
+  "POTION_SELL.merchant_greeting_3": "You brew 'em, I'll move 'em. Deal?",
+  "POTION_SELL.merchant_greeting_4": "Back so soon? I haven't even sold the last batch!",
+  "POTION_SELL.merchant_greeting_5": "Always good to see you!"
+}

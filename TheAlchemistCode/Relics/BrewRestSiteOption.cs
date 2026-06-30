@@ -1,16 +1,23 @@
+using Godot;
+using HarmonyLib;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.RestSite;
-using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Rewards;
+using System.Reflection;
 
 namespace TheAlchemist.TheAlchemistCode.Relics;
 
 public sealed class BrewRestSiteOption : RestSiteOption
 {
+    private static readonly FieldInfo ChoicesScreenField =
+        AccessTools.Field(typeof(NRestSiteRoom), "_choicesScreen");
+
     public override string OptionId => "BREW";
 
     public override LocString Description
@@ -18,11 +25,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
         get
         {
             if (IsEnabled)
-            {
-                LocString locString = new LocString("rest_site_ui", "OPTION_" + OptionId + ".description");
-                locString.Add("Cards", 1m);
-                return locString;
-            }
+                return new LocString("rest_site_ui", "OPTION_" + OptionId + ".description");
             return new LocString("rest_site_ui", "OPTION_" + OptionId + ".descriptionDisabled");
         }
     }
@@ -45,8 +48,19 @@ public sealed class BrewRestSiteOption : RestSiteOption
         foreach (var card in selected)
             await CardPileCmd.RemoveFromDeck(card);
 
-        var potion = PotionFactory.CreateRandomPotionOutOfCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable();
-        await PotionCmd.TryToProcure(potion, Owner);
+        var restSiteRoom = NRestSiteRoom.Instance;
+        if (restSiteRoom != null)
+        {
+            var choicesScreen = ChoicesScreenField.GetValue(restSiteRoom) as Control;
+            if (choicesScreen != null)
+            {
+                var tween = restSiteRoom.CreateTween();
+                tween.TweenProperty(choicesScreen, "modulate:a", 0f, 0.5);
+            }
+        }
+
+        var potionReward = new PotionReward(Owner);
+        await RewardsCmd.OfferCustom(Owner, [potionReward]);
         return true;
     }
 

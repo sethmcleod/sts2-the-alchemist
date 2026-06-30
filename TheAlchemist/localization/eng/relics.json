@@ -16,7 +16,7 @@
   "THEALCHEMIST-FLUX_STONE.flavor": "Catalyzes reactions both alchemical and arcane.",
 
   "THEALCHEMIST-GILDED_FLASK.title": "Gilded Flask",
-  "THEALCHEMIST-GILDED_FLASK.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a potion, heal [green]6[/green] HP.",
+  "THEALCHEMIST-GILDED_FLASK.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a potion, heal [green]6[/green] HP and gain 1 [gold]Strength[/gold]. Potions can be sold to the Merchant for [gold]Gold[/gold].",
   "THEALCHEMIST-GILDED_FLASK.flavor": "An ornate vessel lined with gold leaf. Its contents rejuvenate body and spirit.",
 
   "THEALCHEMIST-HARVEST_POUCH.title": "Harvest Pouch",
@@ -28,7 +28,7 @@
   "THEALCHEMIST-MIDAS_ROOT.flavor": "Everything it touches turns to gold — and gold, in turn, to vitality.",
 
   "THEALCHEMIST-TARNISHED_FLASK.title": "Tarnished Flask",
-  "THEALCHEMIST-TARNISHED_FLASK.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a Potion, heal [green]4[/green] HP.",
+  "THEALCHEMIST-TARNISHED_FLASK.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a Potion, heal [green]4[/green] HP. Potions can be sold to the Merchant for [gold]Gold[/gold]",
   "THEALCHEMIST-TARNISHED_FLASK.flavor": "A battered flask stained with years of use. It still carries the faintest warmth.",
 
   "THEALCHEMIST-THERIAC_VIAL.title": "Theriac Vial",

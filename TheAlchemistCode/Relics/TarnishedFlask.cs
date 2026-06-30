@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Potions;
+using MegaCrit.Sts2.Core.Rooms;
 
 namespace TheAlchemist.TheAlchemistCode.Relics;
 
@@ -14,6 +16,7 @@ public class TarnishedFlask : TheAlchemistRelic
     public override async Task AfterPotionUsed(PotionModel potion, Creature? target)
     {
         if (potion.Owner != Owner) return;
+        if (potion is FoulPotion && Owner.RunState.CurrentRoom is MerchantRoom) return;
         Flash();
         await CreatureCmd.Heal(Owner.Creature, 4m);
     }
