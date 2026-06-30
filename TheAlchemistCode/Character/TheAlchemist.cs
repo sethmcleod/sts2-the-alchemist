@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Relics;
 using TheAlchemist.TheAlchemistCode.Cards.Token;
+using TheAlchemist.TheAlchemistCode.Relics;
 
 namespace TheAlchemist.TheAlchemistCode.Character;
 public class TheAlchemist : PlaceholderCharacterModel
@@ -35,7 +36,7 @@ public class TheAlchemist : PlaceholderCharacterModel
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>()
+        ModelDb.Relic<TarnishedFlask>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<TheAlchemistCardPool>();
