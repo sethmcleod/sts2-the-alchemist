@@ -5,8 +5,6 @@ using TheAlchemist.TheAlchemistCode.Extensions;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Relics;
-using TheAlchemist.TheAlchemistCode.Cards.Token;
 using TheAlchemist.TheAlchemistCode.Relics;
 
 namespace TheAlchemist.TheAlchemistCode.Character;
@@ -14,7 +12,7 @@ public class TheAlchemist : PlaceholderCharacterModel
 {
     public const string CharacterId = "TheAlchemist";
 
-    public static readonly Color Color = new("ffffff");
+    public static readonly Color Color = new("5D3FD3");
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Neutral;
@@ -42,11 +40,7 @@ public class TheAlchemist : PlaceholderCharacterModel
     public override CardPoolModel CardPool => ModelDb.CardPool<TheAlchemistCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<TheAlchemistRelicPool>();
     public override PotionPoolModel PotionPool => ModelDb.PotionPool<TheAlchemistPotionPool>();
-
-    /*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
-        override all the other methods that define those assets.
-        These are just some of the simplest assets, given some placeholders to differentiate your character with.
-        You don't have to, but you're suggested to rename these images. */
+    
     public override Control CustomIcon
     {
         get
@@ -58,7 +52,8 @@ public class TheAlchemist : PlaceholderCharacterModel
     }
 
     public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();
-    public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
-    public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
+    public override string CustomCharacterSelectIconPath => "char_select_alchemist.png".CharacterUiPath();
+    public override string CustomCharacterSelectLockedIconPath => "char_select_alchemist_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
+    public override string CustomCharacterSelectTransitionPath => $"{MainFile.ResPath}/materials/transitions/alchemist_transition_mat.tres";
 }
