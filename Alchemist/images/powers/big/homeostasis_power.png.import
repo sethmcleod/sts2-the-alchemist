@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6ejdjvbge2yq"
-path="res://.godot/imported/shed_skin.png-a3faaaa5ab6fd7cdf3acc13cdfdf7588.ctex"
+uid="uid://b7w3lfwd2swsj"
+path="res://.godot/imported/homeostasis_power.png-04a7c7499661a8d5c3cff0b2fca95eb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/shed_skin.png"
-dest_files=["res://.godot/imported/shed_skin.png-a3faaaa5ab6fd7cdf3acc13cdfdf7588.ctex"]
+source_file="res://Alchemist/images/powers/big/homeostasis_power.png"
+dest_files=["res://.godot/imported/homeostasis_power.png-04a7c7499661a8d5c3cff0b2fca95eb7.ctex"]
 
 [params]
 

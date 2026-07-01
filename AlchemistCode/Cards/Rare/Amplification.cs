@@ -7,11 +7,10 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Amplification : AlchemistCard
 {
-    public Amplification() : base(3, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public Amplification() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithTip(typeof(PoisonPower));
         WithTip(typeof(RegenPower));
-        WithTip(typeof(PlatingPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -27,9 +26,6 @@ public class Amplification : AlchemistCard
             var regen = creature.GetPowerAmount<RegenPower>();
             if (regen > 0)
                 await PowerCmd.Apply<RegenPower>(choiceContext, creature, regen * multiplier, Owner.Creature, this);
-            var plating = creature.GetPowerAmount<PlatingPower>();
-            if (plating > 0)
-                await PowerCmd.Apply<PlatingPower>(choiceContext, creature, plating * multiplier, Owner.Creature, this);
         }
     }
 }

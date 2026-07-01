@@ -10,13 +10,12 @@ public class Resolve : AlchemistCard
 {
     public Resolve() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("hpThreshold", 15, -5);
+        WithCostUpgradeBy(-1); // 2 -> 1 when upgraded
         WithTip(typeof(StrengthPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<ResolvePower>(choiceContext, Owner.Creature,
-            DynamicVars["hpThreshold"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<ResolvePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 }

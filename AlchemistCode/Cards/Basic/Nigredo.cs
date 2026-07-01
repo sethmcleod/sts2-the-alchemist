@@ -19,6 +19,6 @@ public class Nigredo : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await AlchemistCardCmd.PoisonAll(choiceContext, this);
-        await AlchemistCardCmd.GiveCard<Albedo>(this);
+        await AlchemistCardCmd.ShuffleIntoDeck<Albedo>(this);
     }
 }

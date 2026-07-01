@@ -30,6 +30,6 @@ public class Albedo : AlchemistCard
             await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, regenAmount, Owner.Creature, this);
         }
 
-        await AlchemistCardCmd.GiveCard<Citrinitas>(this);
+        await AlchemistCardCmd.ShuffleIntoDeck<Citrinitas>(this);
     }
 }

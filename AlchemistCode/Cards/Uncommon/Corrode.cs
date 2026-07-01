@@ -9,8 +9,9 @@ public class Corrode : AlchemistCard
 {
     public Corrode() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithPower<PoisonPower>(4, 0);
+        WithPower<PoisonPower>(6, 0);      // applied to all enemies
         WithPower<WeakPower>(1, 1);
+        WithVar("SelfPoison", 3, 0);       // gained by you
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -21,5 +22,7 @@ public class Corrode : AlchemistCard
             await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, DynamicVars.Poison.BaseValue, Owner.Creature, this);
             await PowerCmd.Apply<WeakPower>(choiceContext, enemy, DynamicVars.Weak.BaseValue, Owner.Creature, this);
         }
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
+            DynamicVars["SelfPoison"].BaseValue, Owner.Creature, this);
     }
 }

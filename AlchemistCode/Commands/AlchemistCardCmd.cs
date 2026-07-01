@@ -19,6 +19,14 @@ public static class AlchemistCardCmd
         await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, source.Owner);
     }
 
+    public static async Task ShuffleIntoDeck<T>(AlchemistCard source) where T : CardModel, new()
+    {
+        if (source.CombatState == null) return;
+        var card = source.CombatState.CreateCard<T>(source.Owner);
+        if (source.IsUpgraded) CardCmd.Upgrade(card);
+        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, source.Owner, CardPilePosition.Random);
+    }
+
     public static async Task AddStatus<T>(AlchemistCard source) where T : CardModel, new()
     {
         if (source.CombatState == null) return;
@@ -47,10 +55,11 @@ public static class AlchemistCardCmd
         PlayerChoiceContext choiceContext, AlchemistCard source)
     {
         if (source.CombatState == null) return;
-        var allCreatures = source.CombatState.Enemies
-            .Concat(source.CombatState.PlayerCreatures)
+        // Enemies + the casting player only — allies are intentionally excluded so poison doesn't harm them.
+        var targets = source.CombatState.Enemies
+            .Append(source.Owner.Creature)
             .Where(c => c.IsAlive);
-        foreach (var creature in allCreatures)
+        foreach (var creature in targets)
             await PowerCmd.Apply<PoisonPower>(
                 choiceContext, creature, source.DynamicVars.Poison.BaseValue,
                 source.Owner.Creature, source);

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drmxt5bxy4wk8"
-path="res://.godot/imported/acclimate.png-33613f1b07ceb71ef4ad41253e296b32.ctex"
+uid="uid://coi41hjopg5xl"
+path="res://.godot/imported/homeostasis.png-1f2c11a7418b3dbecf2524048cfd5159.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/acclimate.png"
-dest_files=["res://.godot/imported/acclimate.png-33613f1b07ceb71ef4ad41253e296b32.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/homeostasis.png"
+dest_files=["res://.godot/imported/homeostasis.png-1f2c11a7418b3dbecf2524048cfd5159.ctex"]
 
 [params]
 

@@ -1,0 +1,95 @@
+Card,Rarity,Type,Cost,Description
+Strike,Basic,Attack,1,Deal 6 (9) damage.
+Defend,Basic,Skill,1,Gain 5 (8) Block.
+Leaden,Basic,Attack,1,Deal 6 (8) damage. Add a Dross into your Hand.
+Nigredo,Basic,Skill,1,Apply 2 (3) Poison to ALL enemies and yourself. Shuffle an Albedo (+) into your Deck. Exhaust.
+Tinge,Common,Attack,0,Deal 3 (4) damage. Apply 2 Poison.
+Assay,Common,Attack,0,Deal 3 damage. Draw a card. Exhaust (Doesn't Exhaust).
+Fumigate,Common,Attack,1,Deal 6 (8) damage to all enemies. Deals additional damage equal to your Poison.
+Cornered,Common,Attack,1,"Deal 6 (9) damage. If your HP is below 50%, deal 5 additional damage."
+Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Gain 2 Poison.
+Temper,Common,Attack,1,Deal 6 damage. Choose a card in your Hand to Transform into a Distillate (Distillate (+)).
+Puncture,Common,Attack,1,Deal 8 (10) damage. Apply 1 (2) Vulnerable. Mettle: Apply 1 additional Vulnerable.
+Siphon,Common,Attack,1,Deal 7 (9) damage. Draw 2 cards. Mettle: Draw an additional card.
+Improvise,Common,Attack,1,Deal 5 (7) damage. Gain 4 (6) Block. Mettle: Gain 2 (3) Regen.
+Enervate,Common,Attack,2,Deal 12 (16) damage. Apply 2 (3) Weak. Mettle: Deal 6 (8) additional damage.
+Inoculate,Common,Skill,0,Gain 6 (9) Block. Gain 2 Poison.
+Poultice,Common,Skill,0,Gain 2 (3) Regen. Gain 1 (2) Poison. Add a Dazed to your Discard Pile.
+Miasma,Common,Skill,1,Apply 2 (3) Poison to ALL enemies and yourself.
+Steep,Common,Skill,1,Retain. Gain 2 Poison. Apply 5 (7) Poison.
+Reconstitute,Common,Skill,1,Gain 3 (2) Poison. Put a card from your Discard pile into your hand.
+Adulterate,Common,Skill,1,Choose a card in your Hand to Transform into Dross (+).
+Bide,Common,Skill,1,"Gain 8 (11) Block. Next turn, draw 1 card. Mettle: Also gain 2 (3) Regen."
+Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison. Mettle: Also gain 2 (3) Regen.
+Falter,Common,Skill,1,Gain 7 (9) Block. Mettle: Also gain 3 (4) Regen.
+Carapace,Common,Skill,2,"Retain. Ferment. Gain 8 (10) Block, plus 4 (5) Block for every turn fermented."
+Exploit,Uncommon,Attack,0,Deal 4 damage. Deals 2 (3) additional damage for each debuff on the enemy.
+Exude,Uncommon,Attack,0,Deal 2 damage. Deals additional damage equal to your Poison. (Deals additional damage equal to your Regen.)
+Culture,Uncommon,Attack,1,"Retain. Ferment. Deal 5 (7) damage, plus 4 (5) damage for every turn fermented."
+Mortify,Uncommon,Attack,1,Deal 10 (14) damage. Draw 2 cards. Mettle: Deal 6 (8) additional damage.
+Potentiate,Uncommon,Attack,1,Deal 8 (10) damage. Hits an additional time for each potion you've used this combat.
+Catalyse,Uncommon,Attack,1,Deal 6 (9) damage. Apply 2 Poison. Trigger Poison on the enemy.
+Deplete,Uncommon,Attack,1,Lose 3 HP. Deal 13 (15) damage. The enemy loses 6 Strength this turn.
+Decant,Uncommon,Attack,1,Deal 7 (9) damage. Create a Distillate in your Hand. Mettle: Deal 4 additional damage.
+Invigorate,Uncommon,Attack,1,Deal 8 (10) damage. Deals additional damage equal to your Regen.
+Compound,Uncommon,Attack,2,Deal 5 (6) damage twice. Hits two additional times if you applied Poison this turn.
+Hormesis,Uncommon,Skill,1,Gain 2 (3) Energy. Gain 2 (3) Poison.
+Partition,Uncommon,Attack,3,Deal 32 (48) damage divided among ALL enemies.                     
+Fester,Uncommon,Skill,0,Poison is triggered against the enemy 1 (2) additional time(s) next turn.
+Osmosis,Uncommon,Skill,X,Draw X (+1) cards. Gain X+1 (X+2) Poison.
+Metabolise,Uncommon,Skill,0,Gain Strength this turn equal to your Poison (+2).
+Assimilate,Uncommon,Skill,1,Gain Block equal to Poison on everyone. Exhaust. (Doesn't Exhaust)
+Permeate,Uncommon,Skill,1,"Whenever you gain Block this turn, apply 2 (3) Poison to ALL enemies."
+Salvage,Uncommon,Skill,1,Choose 2 cards in your Discard Pile to Transform into Distillates(+).
+Glean,Uncommon,Skill,1,Gain 7 (10) Block. Choose 1 of 3 cards in your Draw Pile and add it to your Hand.
+Hone,Uncommon,Skill,1,Gain 5 (8) Block. Upgrade ALL cards in your Hand.
+Reinforce,Uncommon,Skill,1,Gain 8 Block. Gain 4 (6) additional Block for each debuff you have.
+Precipitate,Uncommon,Skill,2,"Gain 10 (13) Block. The next time you use a potion, procure a potion of that type."
+Corrode,Uncommon,Skill,2,Apply 6 Poison and 1 (2) Weak to ALL enemies. Gain 3 Poison.
+Deluge,Uncommon,Skill,X,Apply X Weak and Vulnerable to ALL enemies. Double X if it's 4 or more. Exhaust. (Doesn't Exhaust.)
+Chrysopoeia,Uncommon,Power,0,"Whenever you take Poison damage, gain 2 (4) Gold."
+Virulence,Uncommon,Power,1,"Whenever you apply Poison, apply an additional 1 (2) Poison."
+Materialise,Uncommon,Power,1,"Whenever you create a card, gain 2 (3) Block."
+Flush,Uncommon,Skill,1,Lose all Regen. Draw that many cards (+1).
+Sediment,Uncommon,Power,1,"Whenever you apply Poison, gain 1 (2) Block."
+Inversion,Uncommon,Power,1,"Whenever you are healed, deal that much damage to a random enemy. (Whenever you are healed, deal that much damage to ALL enemies.)"
+Haemorrhage,Uncommon,Attack,1,Lose HP equal to your Regen. Deal double (triple) that much damage.
+Philtre,Uncommon,Power,2,"Whenever you use a Potion, gain 1 (2) Strength and 1 (2) Dexterity."
+Resolve,Uncommon,Power,2 (1),"At the start of your turn, gain 1 Strength for each 15 HP you are missing."
+Windfall,Uncommon,Power,2,"Whenever you Procure a Potion during combat, draw 1 (2) card(s) and gain 1 energy."
+Augur,Rare,Attack,0,Innate. Deal 8 (12) damage. Apply 1 (2) Weak. Mettle: Deal 6 additional damage. Exhaust.
+Rectify,Rare,Attack,1,Deal 10 (14) damage. Gain Regen equal to the Poison you have. Exhaust. (Doesn't Exhaust.)
+Harvest,Rare,Attack,1,"Deal 10 (13) damage. If Fatal, gain 1 (2) additional Potion reward(s). Mettle: Deal 5 additional damage."
+Emanate,Rare,Attack,1,Deal 6 (8) damage to ALL enemies. Deals additional damage equal to your Regen.
+Accrue,Rare,Attack,2,Deal 5 (7) damage to a random enemy. Hits an additional time for each time you've taken Poison damage this combat.
+Ichor,Rare,Attack,3,Retain. Deal damage equal to your missing HP. Exhaust. (Doesn't Exhaust)
+Overflow,Rare,Attack,2,Lose all Regen. Deal 6 (8) damage to ALL enemies for each Regen lost.
+Reagent,Rare,Skill,0,"Unplayable. Whenever you use a potion while this card is in hand, gain 4 (6) Block and Draw a card."
+Libation,Rare,Skill,1,"Consume all your Potions. For each consumed, gain 4 (6) Block and apply 2 (3) Poison to ALL enemies."
+Decoction,Rare,Skill,1 (0),Exhaust 1 card. Procure a Foul Potion. Exhaust.
+Transpose,Rare,Skill,1,Lose all Regen. Apply (twice) that much Poison to ALL enemies.
+Epiphany,Rare,Skill,1,Draw 2 (3) cards. Transform a card in your Hand into a Distillate.
+Immolation,Rare,Skill,2,Transform any number of cards in your Hand into Effluviums. Exhaust.
+Emergence,Rare,Skill,0,Gain 2 Energy. Draw 1 (2) cards. Exhaust. Mettle: Draw an additional card.
+Amplification,Rare,Skill,2,Double (Triple) the Poison and Regen on ALL enemies and yourself.
+Detonation,Rare,Power,1,"Whenever you create a card, deal 5 (7) damage to ALL enemies."
+Sepsis,Rare,Power,1,Poisoned enemies take an additional 25% (50%) damage.
+Secretion,Rare,Power,1,"When hit by an attack, apply 2 (3) Poison."
+Accretion,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Mettle: Gain 1 (2) additional Regen."
+Homeostasis,Rare,Power,2 (1),"At the start of your turn, if your HP is between 33-66% of your Max HP, draw 1 card and gain 1 Energy."
+Conjunction,Rare,Power,2,"At the start of your turn, if you have both Poison and Regen, gain 1 Energy (and draw 1 additional card)."
+Catharsis,Rare,Skill,2,"Retain. Ferment. Gain 3 (4) Regen, plus 2 Regen for each turn fermented."
+Inducement,Rare,Power,2,"Whenever you apply Poison, gain 2 (3) Block."
+Volatility,Rare,Power,3,"The first time your HP changes on each of your turns, apply 3 (5) Poison to ALL enemies."
+Mercurial Form,Rare,Power,3,"Innate. Whenever you create a card, gain 1 Strength and 1 Dexterity."
+Tria Prima,Rare,Power,X,Retain. Ferment. Apply X (+1) Poison to ALL enemies. Gain X (+1) Regen. Gain 1 (2) Strength for each turn fermented.
+Aureate,Ancient,Attack,1,"Deal 12 (18) damage to ALL enemies. Add a Dross, Effluvium and Distillate into your Hand."
+Elixir,Ancient,Power,3,"(Procure a random potion.) At the start of your turn, procure a random potion."
+Chorus,"Uncommon, Multiplayer",Skill,1,Allies deal double damage against Poisoned enemies for 1 (2) turn(s).
+Suffuse,"Rare, Multiplayer",Power,2,"Allies gain 3 (4) Regen. Remove Weak, Vulnerable and Frail from Allies."
+Dross,Token,Skill,0,Apply 1 (2) Weak. Apply 1 (2) Vulnerable. Apply 1 (2) Poison. Exhaust.
+Distillate,Token,Skill,0,Gain 3 (5) Block. Gain 2 (3) Regen. Draw 1 card. Exhaust.
+Albedo,Token,Skill,1,Lose all Poison. Gain that much Regen (+ 1). Shuffle a Citrinitas (+) into your Deck. Exhaust.
+Citrinitas,Token,Skill,1,Lose all Regen. Deal that much damage to ALL enemies 3 (4) times. Shuffle a Rubedo (+) into your Deck. Exhaust.
+Rubedo,Token,Skill,1,Gain 15 (20) Gold. Gain 1 Strength. Procure a random potion. Shuffle a Nigredo (+) into your Deck. Exhaust.
+Effluvium,Token,Attack,0,Deal 6 (9) damage. Gain 1 Poison. Exhaust.

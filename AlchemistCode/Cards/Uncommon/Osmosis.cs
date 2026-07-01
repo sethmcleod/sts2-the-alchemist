@@ -19,7 +19,7 @@ public class Osmosis : AlchemistCard
         var x = ResolveEnergyXValue();
         var bonus = IsUpgraded ? 1 : 0;
         var drawCount = x + bonus;
-        var poisonAmount = x + bonus;
+        var poisonAmount = x + bonus + 1;
         if (drawCount > 0)
             await CardPileCmd.Draw(choiceContext, drawCount, Owner);
         if (poisonAmount > 0)

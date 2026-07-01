@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1qdqnbb05imq"
-path="res://.godot/imported/acclimate_power.png-ddc1aae007baec81fec8002f599ae667.ctex"
+uid="uid://2k7s1ulxvbko"
+path="res://.godot/imported/culture.png-1c45b77abf1c773f25d2bc6c79e0d620.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/acclimate_power.png"
-dest_files=["res://.godot/imported/acclimate_power.png-ddc1aae007baec81fec8002f599ae667.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/culture.png"
+dest_files=["res://.godot/imported/culture.png-1c45b77abf1c773f25d2bc6c79e0d620.ctex"]
 
 [params]
 

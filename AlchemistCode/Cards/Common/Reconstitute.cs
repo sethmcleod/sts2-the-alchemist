@@ -9,15 +9,14 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Reconstitute : AlchemistCard
 {
-    public Reconstitute() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+    public Reconstitute() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithPower<PoisonPower>(2, 0);
-        WithKeyword(CardKeyword.Exhaust, UpgradeType.Remove);
+        WithPower<PoisonPower>(3, -1); // gained by you; 3 -> 2 on upgrade
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.Apply<PoisonPower>(choiceContext, this, play);
+        await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);
         var selected = (await CardSelectCmd.FromCombatPile(
             choiceContext,
             PileType.Discard.GetPile(Owner),

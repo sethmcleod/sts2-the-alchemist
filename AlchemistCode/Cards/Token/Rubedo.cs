@@ -1,6 +1,7 @@
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -27,10 +28,10 @@ public class Rubedo : AlchemistCard
         await PlayerCmd.GainGold(DynamicVars["Gold"].BaseValue, Owner);
         await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, DynamicVars.Strength.BaseValue, Owner.Creature, this);
 
-        var cardToUpgrade = await CardSelectCmd.FromHandForUpgrade(choiceContext, Owner, this);
-        if (cardToUpgrade != null)
-            CardCmd.Upgrade(cardToUpgrade);
+        await PotionCmd.TryToProcure(
+            PotionFactory.CreateRandomPotionInCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable(),
+            Owner);
 
-        await AlchemistCardCmd.GiveCard<Nigredo>(this);
+        await AlchemistCardCmd.ShuffleIntoDeck<Nigredo>(this);
     }
 }

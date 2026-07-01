@@ -17,6 +17,10 @@ public class AccretionPower : AlchemistPower
     {
         if (!participants.Contains(Owner)) return;
         Flash();
-        await PowerCmd.Apply<PlatingPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
+        var regen = Amount;
+        // Mettle: gain the same amount again while at or below 50% HP.
+        if (Owner.CurrentHp * 2 <= Owner.MaxHp)
+            regen += Amount;
+        await PowerCmd.Apply<RegenPower>(new ThrowingPlayerChoiceContext(), Owner, regen, Owner, null);
     }
 }

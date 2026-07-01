@@ -1,8 +1,8 @@
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Cards;
-using Alchemist.AlchemistCode.Commands;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
@@ -12,7 +12,7 @@ public class Spatter : AlchemistCard
     {
         WithDamage(3, 1);
         WithVar("hits", 4, 0);
-        WithTip(typeof(Slimed));
+        WithPower<PoisonPower>(2, 0);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -23,6 +23,6 @@ public class Spatter : AlchemistCard
             .FromCard(this)
             .TargetingRandomOpponents(CombatState)
             .Execute(choiceContext);
-        await AlchemistCardCmd.AddStatus<Slimed>(this);
+        await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);
     }
 }

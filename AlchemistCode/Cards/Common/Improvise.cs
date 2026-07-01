@@ -1,28 +1,29 @@
+using Alchemist.AlchemistCode;
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Improvise : AlchemistCard
 {
+    protected override bool IsMettleCard => true;
+
     public Improvise() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(6, 2);
+        WithDamage(5, 2);
+        WithBlock(4, 2);
+        WithPower<RegenPower>(2, 1);
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Mettle) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
-        if (CombatState == null) return;
-        var discardPile = PileType.Discard.GetPile(Owner);
-        var skills = discardPile.Cards.Where(c => c.Type == CardType.Skill).ToList();
-        if (skills.Count > 0)
-        {
-            var randomSkill = skills[Owner.RunState.Rng.CombatCardGeneration.NextInt(skills.Count)];
-            await CardPileCmd.Add(randomSkill, PileType.Hand);
-            await CardCmd.AutoPlay(choiceContext, randomSkill, null);
-        }
+        await CommonActions.CardBlock(this, play);
+        if (IsReduced)
+            await CommonActions.ApplySelf<RegenPower>(choiceContext, this);
     }
 }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvfe6b7gdwhej"
-path="res://.godot/imported/acclimate_power.png-d4b14ac9ae0dc77455bb4640c7ec1d65.ctex"
+uid="uid://c4afbpup7ky0d"
+path="res://.godot/imported/homeostasis_power.png-51c7605961ec99c4f3e1f7144eaf11ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/acclimate_power.png"
-dest_files=["res://.godot/imported/acclimate_power.png-d4b14ac9ae0dc77455bb4640c7ec1d65.ctex"]
+source_file="res://Alchemist/images/powers/homeostasis_power.png"
+dest_files=["res://.godot/imported/homeostasis_power.png-51c7605961ec99c4f3e1f7144eaf11ff.ctex"]
 
 [params]
 

@@ -10,14 +10,13 @@ public class Sediment : AlchemistCard
 {
     public Sediment() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("plating", 1, 1);
+        WithVar("Block", 1, 1);
         WithTip(typeof(PoisonPower));
-        WithTip(typeof(PlatingPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<SedimentPower>(choiceContext, Owner.Creature,
-            DynamicVars["plating"].IntValue, Owner.Creature, this);
+            DynamicVars["Block"].IntValue, Owner.Creature, this);
     }
 }

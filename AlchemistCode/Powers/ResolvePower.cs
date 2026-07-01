@@ -7,9 +7,12 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Amount represents the HP threshold (15 base, 10 upgraded)
+// Amount is the stack count (1 per Resolve played) and acts as the Strength multiplier:
+// each turn, gain (Amount) Strength for every HpThreshold HP you are missing.
 public class ResolvePower : AlchemistPower
 {
+    private const int HpThreshold = 15;
+
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
@@ -18,8 +21,7 @@ public class ResolvePower : AlchemistPower
     {
         if (!participants.Contains(Owner)) return;
         var missingHp = Owner.MaxHp - Owner.CurrentHp;
-        if (missingHp <= 0 || Amount <= 0) return;
-        var strengthGain = (missingHp / Amount);
+        var strengthGain = Amount * (missingHp / HpThreshold);
         if (strengthGain > 0)
         {
             Flash();
