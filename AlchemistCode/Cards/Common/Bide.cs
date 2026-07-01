@@ -10,14 +10,14 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Bide : AlchemistCard
 {
-    protected override bool IsMettleCard => true;
+    protected override bool IsGambitCard => true;
 
     public Bide() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(8, 3);
         WithPower<DrawCardsNextTurnPower>(1, 0);
-        WithPower<RegenPower>(2, 1); // Mettle bonus
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Mettle) });
+        WithPower<RegenPower>(2, 1); // Gambit bonus
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

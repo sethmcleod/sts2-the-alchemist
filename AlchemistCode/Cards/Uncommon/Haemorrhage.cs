@@ -8,6 +8,11 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Haemorrhage : AlchemistCard
 {
+    // Damage is computed at play time (double your Regen), so the DamageVar enchant pipeline
+    // never touches it — HasFormulaDamage makes the base card fold in EnchantDamageBonus below
+    // and render the green " + N" suffix from {EnchantBonus} in the loc.
+    protected override bool HasFormulaDamage => true;
+
     public Haemorrhage() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithTip(typeof(RegenPower));
@@ -20,7 +25,7 @@ public class Haemorrhage : AlchemistCard
             await CreatureCmd.Damage(choiceContext, Owner.Creature,
                 regen, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
         var multiplier = IsUpgraded ? 3 : 2;
-        var damage = regen * multiplier;
+        var damage = regen * multiplier + EnchantDamageBonus;
         if (damage > 0)
             await DamageCmd.Attack(damage).FromCard(this)
                 .Targeting(play.Target!).Execute(choiceContext);

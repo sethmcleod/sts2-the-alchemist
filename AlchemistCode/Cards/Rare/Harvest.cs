@@ -11,13 +11,13 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Harvest : AlchemistCard
 {
-    protected override bool IsMettleCard => true;
+    protected override bool IsGambitCard => true;
 
     public Harvest() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(10, 5, static (card, _) => ((AlchemistCard)card).IsReduced ? 1 : 0, ValueProp.Move, 3, 0);
         WithVar("rewards", 1, 1);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Mettle) });
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

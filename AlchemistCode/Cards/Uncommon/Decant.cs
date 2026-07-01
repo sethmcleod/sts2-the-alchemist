@@ -11,13 +11,13 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Decant : AlchemistCard
 {
-    protected override bool IsMettleCard => true;
+    protected override bool IsGambitCard => true;
 
     public Decant() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(7, 4, static (card, _) => ((AlchemistCard)card).IsReduced ? 1 : 0, ValueProp.Move, 2, 0);
         WithUpgradingCardTip<Distillate>();
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Mettle) });
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

@@ -18,7 +18,7 @@ public class AccretionPower : AlchemistPower
         if (!participants.Contains(Owner)) return;
         Flash();
         var regen = Amount;
-        // Mettle: gain the same amount again while at or below 50% HP.
+        // Gambit: gain the same amount again while at or below 50% HP.
         if (Owner.CurrentHp * 2 <= Owner.MaxHp)
             regen += Amount;
         await PowerCmd.Apply<RegenPower>(new ThrowingPlayerChoiceContext(), Owner, regen, Owner, null);

@@ -9,28 +9,28 @@ Fumigate,Common,Attack,1,Deal 6 (8) damage to all enemies. Deals additional dama
 Cornered,Common,Attack,1,"Deal 6 (9) damage. If your HP is below 50%, deal 5 additional damage."
 Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Gain 2 Poison.
 Temper,Common,Attack,1,Deal 6 damage. Choose a card in your Hand to Transform into a Distillate (Distillate (+)).
-Puncture,Common,Attack,1,Deal 8 (10) damage. Apply 1 (2) Vulnerable. Mettle: Apply 1 additional Vulnerable.
-Siphon,Common,Attack,1,Deal 7 (9) damage. Draw 2 cards. Mettle: Draw an additional card.
-Improvise,Common,Attack,1,Deal 5 (7) damage. Gain 4 (6) Block. Mettle: Gain 2 (3) Regen.
-Enervate,Common,Attack,2,Deal 12 (16) damage. Apply 2 (3) Weak. Mettle: Deal 6 (8) additional damage.
+Puncture,Common,Attack,1,Deal 8 (10) damage. Apply 1 (2) Vulnerable. Gambit: Apply 1 additional Vulnerable.
+Siphon,Common,Attack,1,Deal 7 (9) damage. Draw 2 cards. Gambit: Draw an additional card.
+Improvise,Common,Attack,1,Deal 5 (7) damage. Gain 4 (6) Block. Gambit: Gain 2 (3) Regen.
+Enervate,Common,Attack,2,Deal 12 (16) damage. Apply 2 (3) Weak. Gambit: Deal 6 (8) additional damage.
 Inoculate,Common,Skill,0,Gain 6 (9) Block. Gain 2 Poison.
 Poultice,Common,Skill,0,Gain 2 (3) Regen. Gain 1 (2) Poison. Add a Dazed to your Discard Pile.
 Miasma,Common,Skill,1,Apply 2 (3) Poison to ALL enemies and yourself.
 Steep,Common,Skill,1,Retain. Gain 2 Poison. Apply 5 (7) Poison.
 Reconstitute,Common,Skill,1,Gain 3 (2) Poison. Put a card from your Discard pile into your hand.
 Adulterate,Common,Skill,1,Choose a card in your Hand to Transform into Dross (+).
-Bide,Common,Skill,1,"Gain 8 (11) Block. Next turn, draw 1 card. Mettle: Also gain 2 (3) Regen."
-Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison. Mettle: Also gain 2 (3) Regen.
-Falter,Common,Skill,1,Gain 7 (9) Block. Mettle: Also gain 3 (4) Regen.
+Bide,Common,Skill,1,"Gain 8 (11) Block. Next turn, draw 1 card. Gambit: Also gain 2 (3) Regen."
+Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison. Gambit: Also gain 2 (3) Regen.
+Falter,Common,Skill,1,Gain 7 (9) Block. Gambit: Also gain 3 (4) Regen.
 Carapace,Common,Skill,2,"Retain. Ferment. Gain 8 (10) Block, plus 4 (5) Block for every turn fermented."
 Exploit,Uncommon,Attack,0,Deal 4 damage. Deals 2 (3) additional damage for each debuff on the enemy.
 Exude,Uncommon,Attack,0,Deal 2 damage. Deals additional damage equal to your Poison. (Deals additional damage equal to your Regen.)
 Culture,Uncommon,Attack,1,"Retain. Ferment. Deal 5 (7) damage, plus 4 (5) damage for every turn fermented."
-Mortify,Uncommon,Attack,1,Deal 10 (14) damage. Draw 2 cards. Mettle: Deal 6 (8) additional damage.
+Mortify,Uncommon,Attack,1,Deal 10 (14) damage. Draw 2 cards. Gambit: Deal 6 (8) additional damage.
 Potentiate,Uncommon,Attack,1,Deal 8 (10) damage. Hits an additional time for each potion you've used this combat.
 Catalyse,Uncommon,Attack,1,Deal 6 (9) damage. Apply 2 Poison. Trigger Poison on the enemy.
 Deplete,Uncommon,Attack,1,Lose 3 HP. Deal 13 (15) damage. The enemy loses 6 Strength this turn.
-Decant,Uncommon,Attack,1,Deal 7 (9) damage. Create a Distillate in your Hand. Mettle: Deal 4 additional damage.
+Decant,Uncommon,Attack,1,Deal 7 (9) damage. Create a Distillate in your Hand. Gambit: Deal 4 additional damage.
 Invigorate,Uncommon,Attack,1,Deal 8 (10) damage. Deals additional damage equal to your Regen.
 Compound,Uncommon,Attack,2,Deal 5 (6) damage twice. Hits two additional times if you applied Poison this turn.
 Hormesis,Uncommon,Skill,1,Gain 2 (3) Energy. Gain 2 (3) Poison.
@@ -57,9 +57,9 @@ Haemorrhage,Uncommon,Attack,1,Lose HP equal to your Regen. Deal double (triple) 
 Philtre,Uncommon,Power,2,"Whenever you use a Potion, gain 1 (2) Strength and 1 (2) Dexterity."
 Resolve,Uncommon,Power,2 (1),"At the start of your turn, gain 1 Strength for each 15 HP you are missing."
 Windfall,Uncommon,Power,2,"Whenever you Procure a Potion during combat, draw 1 (2) card(s) and gain 1 energy."
-Augur,Rare,Attack,0,Innate. Deal 8 (12) damage. Apply 1 (2) Weak. Mettle: Deal 6 additional damage. Exhaust.
+Augur,Rare,Attack,0,Innate. Deal 8 (12) damage. Apply 1 (2) Weak. Gambit: Deal 6 additional damage. Exhaust.
 Rectify,Rare,Attack,1,Deal 10 (14) damage. Gain Regen equal to the Poison you have. Exhaust. (Doesn't Exhaust.)
-Harvest,Rare,Attack,1,"Deal 10 (13) damage. If Fatal, gain 1 (2) additional Potion reward(s). Mettle: Deal 5 additional damage."
+Harvest,Rare,Attack,1,"Deal 10 (13) damage. If Fatal, gain 1 (2) additional Potion reward(s). Gambit: Deal 5 additional damage."
 Emanate,Rare,Attack,1,Deal 6 (8) damage to ALL enemies. Deals additional damage equal to your Regen.
 Accrue,Rare,Attack,2,Deal 5 (7) damage to a random enemy. Hits an additional time for each time you've taken Poison damage this combat.
 Ichor,Rare,Attack,3,Retain. Deal damage equal to your missing HP. Exhaust. (Doesn't Exhaust)
@@ -70,12 +70,12 @@ Decoction,Rare,Skill,1 (0),Exhaust 1 card. Procure a Foul Potion. Exhaust.
 Transpose,Rare,Skill,1,Lose all Regen. Apply (twice) that much Poison to ALL enemies.
 Epiphany,Rare,Skill,1,Draw 2 (3) cards. Transform a card in your Hand into a Distillate.
 Immolation,Rare,Skill,2,Transform any number of cards in your Hand into Effluviums. Exhaust.
-Emergence,Rare,Skill,0,Gain 2 Energy. Draw 1 (2) cards. Exhaust. Mettle: Draw an additional card.
+Emergence,Rare,Skill,0,Gain 2 Energy. Draw 1 (2) cards. Exhaust. Gambit: Draw an additional card.
 Amplification,Rare,Skill,2,Double (Triple) the Poison and Regen on ALL enemies and yourself.
 Detonation,Rare,Power,1,"Whenever you create a card, deal 5 (7) damage to ALL enemies."
 Sepsis,Rare,Power,1,Poisoned enemies take an additional 25% (50%) damage.
 Secretion,Rare,Power,1,"When hit by an attack, apply 2 (3) Poison."
-Accretion,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Mettle: Gain 1 (2) additional Regen."
+Accretion,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Gambit: Gain 1 (2) additional Regen."
 Homeostasis,Rare,Power,2 (1),"At the start of your turn, if your HP is between 33-66% of your Max HP, draw 1 card and gain 1 Energy."
 Conjunction,Rare,Power,2,"At the start of your turn, if you have both Poison and Regen, gain 1 Energy (and draw 1 additional card)."
 Catharsis,Rare,Skill,2,"Retain. Ferment. Gain 3 (4) Regen, plus 2 Regen for each turn fermented."

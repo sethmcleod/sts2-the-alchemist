@@ -15,7 +15,7 @@ public class Accretion : AlchemistCard
     {
         WithVar("Regen", 1, 1);
         WithTip(typeof(RegenPower));
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Mettle) });
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

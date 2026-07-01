@@ -9,14 +9,14 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Emergence : AlchemistCard
 {
-    protected override bool IsMettleCard => true;
+    protected override bool IsGambitCard => true;
 
     public Emergence() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithEnergy(2, 0);
         WithCards(1, 1);
         WithKeyword(CardKeyword.Exhaust);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Mettle) });
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

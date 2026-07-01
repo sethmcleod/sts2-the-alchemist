@@ -10,13 +10,13 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Puncture : AlchemistCard
 {
-    protected override bool IsMettleCard => true;
+    protected override bool IsGambitCard => true;
 
     public Puncture() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(8, 2);
         WithPower<VulnerablePower>(1, 1);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Mettle) });
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

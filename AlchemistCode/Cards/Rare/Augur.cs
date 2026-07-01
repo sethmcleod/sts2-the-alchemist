@@ -10,7 +10,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Augur : AlchemistCard
 {
-    protected override bool IsMettleCard => true;
+    protected override bool IsGambitCard => true;
 
     public Augur() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
@@ -18,7 +18,7 @@ public class Augur : AlchemistCard
         WithPower<WeakPower>(1, 1);
         WithKeyword(CardKeyword.Innate);
         WithKeyword(CardKeyword.Exhaust);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Mettle) });
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

@@ -10,14 +10,14 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Enervate : AlchemistCard
 {
-    protected override bool IsMettleCard => true;
+    protected override bool IsGambitCard => true;
 
     public Enervate() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        // Mettle bonus: 6 base, 8 upgraded — shown via {ExtraDamage:diff()} in the loc
+        // Gambit bonus: 6 base, 8 upgraded — shown via {ExtraDamage:diff()} in the loc
         WithCalculatedDamage(12, 6, static (card, _) => ((AlchemistCard)card).IsReduced ? 1 : 0, ValueProp.Move, 4, 2);
         WithPower<WeakPower>(2, 1);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Mettle) });
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

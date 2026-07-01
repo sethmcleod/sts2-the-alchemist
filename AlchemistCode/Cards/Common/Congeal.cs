@@ -10,15 +10,15 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Congeal : AlchemistCard
 {
-    protected override bool IsMettleCard => true;
+    protected override bool IsGambitCard => true;
 
     public Congeal() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithCalculatedBlock(6, 1, (card, _) =>
             card.Owner.Creature.GetPowerAmount<PoisonPower>(), ValueProp.Move, 3, 0);
-        WithPower<RegenPower>(2, 1); // Mettle bonus
+        WithPower<RegenPower>(2, 1); // Gambit bonus
         WithTip(typeof(PoisonPower));
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Mettle) });
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
