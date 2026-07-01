@@ -12,13 +12,15 @@ public class TheAlchemistCardPool : CustomCardPoolModel
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
 
 
-    /* These HSV values will determine the color of your card back.
-    They are applied as a shader onto an already colored image,
-    so it may take some experimentation to find a color you like.
-    Generally they should be values between 0 and 1. */
-    public override float H => 1f; //Hue; changes the color.
-    public override float S => 1f; //Saturation
-    public override float V => 1f; //Brightness
+    /* These HSV values recolor the shared base card frame via res://shaders/hsv.gdshader.
+    BaseLib auto-generates a ShaderMaterial from them (no image copying needed) because
+    CardFrameMaterialPath is left at its default "card_frame_red".
+    H is a hue ROTATION of the red base art, not an absolute color, so expect to experiment.
+    Base game reference points: red H=0.025, orange 0.12, green 0.32, blue 0.55,
+    curse(violet) 0.85, pink 0.965. Purple (#5D3FD3) sits ~0.70-0.80. */
+    public override float H => 0.75f; //Hue; changes the color.
+    public override float S => 0.4f; //Saturation (0-5; 1 = unchanged)
+    public override float V => 0.8f; //Brightness (1 = unchanged); lower = darker frame
 
     //Alternatively, leave these values at 1 and provide a custom frame image.
     /*public override Texture2D CustomFrame(CustomCardModel card)

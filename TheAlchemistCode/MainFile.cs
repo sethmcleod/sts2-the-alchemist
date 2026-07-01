@@ -1,3 +1,4 @@
+using System.Reflection;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
@@ -15,8 +16,9 @@ public partial class MainFile : Node
 
     public static void Initialize()
     {
-        //If you want to use scripts defined in your mod for Godot scenes, uncomment the following line.
-        //Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(Assembly.GetExecutingAssembly());
+        // Registers this mod's [ScriptPath] Godot node scripts (e.g. AlchemistParticles)
+        // so scenes can reference them by res:// path. Required for the custom energy counter VFX.
+        Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(Assembly.GetExecutingAssembly());
 
         Harmony harmony = new(ModId);
 

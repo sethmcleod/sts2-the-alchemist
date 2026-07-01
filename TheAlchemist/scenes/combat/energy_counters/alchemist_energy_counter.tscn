@@ -1,0 +1,349 @@
+[gd_scene load_steps=41 format=3]
+
+[ext_resource type="Texture2D" path="res://TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_1.png" id="orb1"]
+[ext_resource type="Material" path="res://materials/ui/energy_orb_dark.tres" id="mat_orb"]
+[ext_resource type="Texture2D" path="res://TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_2.png" id="orb2"]
+[ext_resource type="FontFile" path="res://TheAlchemist/fonts/kreon_bold.ttf" id="font"]
+[ext_resource type="Texture2D" path="res://TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_3.png" id="orb3"]
+[ext_resource type="Texture2D" path="res://TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_4.png" id="orb4"]
+[ext_resource type="Texture2D" path="res://TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_5.png" id="orb5"]
+[ext_resource type="Script" path="res://TheAlchemistCode/Character/AlchemistParticles.cs" id="alch_particles"]
+
+[sub_resource type="Curve" id="Curve_glow_alpha"]
+_data = [Vector2(0, 0.353316), 0.0, -0.753348, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_glow_alpha"]
+curve = SubResource("Curve_glow_alpha")
+
+[sub_resource type="Curve" id="Curve_glow_scale"]
+_data = [Vector2(0, 0), 0.0, 11.5422, 0, 0, Vector2(0.203175, 0.842474), 0.0, 0.210613, 0, 0, Vector2(1, 1), 0.197691, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_glow_scale"]
+curve = SubResource("Curve_glow_scale")
+
+[sub_resource type="ParticleProcessMaterial" id="PPM_glow"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 3.5
+scale_max = 3.5
+scale_curve = SubResource("CurveTexture_glow_scale")
+alpha_curve = SubResource("CurveTexture_glow_alpha")
+
+[sub_resource type="Curve" id="Curve_ring_emis"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 3), 0.0, -8.75114, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ring_emis"]
+curve = SubResource("Curve_ring_emis")
+
+[sub_resource type="Curve" id="Curve_ring_scale"]
+_data = [Vector2(0, 0.245202), 0.0, 9.35466, 0, 0, Vector2(0.149871, 0.850288), 0.184002, 0.184002, 0, 0, Vector2(1, 1), 0.16094, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ring_scale"]
+curve = SubResource("Curve_ring_scale")
+
+[sub_resource type="ParticleProcessMaterial" id="PPM_ring"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_ring_scale")
+emission_curve = SubResource("CurveTexture_ring_emis")
+
+[sub_resource type="Curve" id="Curve_rib_alpha"]
+_data = [Vector2(0, 0.50145626), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.9412307, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rib_alpha"]
+curve = SubResource("Curve_rib_alpha")
+
+[sub_resource type="Curve" id="Curve_rib_scale"]
+_data = [Vector2(0.4986945, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.7819195, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rib_scale"]
+curve = SubResource("Curve_rib_scale")
+
+[sub_resource type="ParticleProcessMaterial" id="PPM_ribbon"]
+lifetime_randomness = 0.45
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+gravity = Vector3(0, 0, 0)
+scale_min = 0.59999996
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_rib_scale")
+alpha_curve = SubResource("CurveTexture_rib_alpha")
+
+[sub_resource type="Curve" id="Curve_spk_radial"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8868, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_spk_radial"]
+curve = SubResource("Curve_spk_radial")
+
+[sub_resource type="Curve" id="Curve_spk_damp"]
+_data = [Vector2(0, 0), 0.0, 4.30388, 0, 0, Vector2(0.501292, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.93081, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_spk_damp"]
+curve = SubResource("Curve_spk_damp")
+
+[sub_resource type="Curve" id="Curve_spk_scale"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_spk_scale"]
+curve = SubResource("Curve_spk_scale")
+
+[sub_resource type="Curve" id="Curve_spk_sov_x"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0.8796115), 0.0, 0.0, 0, 0, Vector2(1, 0.23592234), -2.4169886, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_spk_sov_y"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0.997601), 0.0, 0.0, 0, 0, Vector2(1, 3.8640778), 7.33729, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_spk_sov_z"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_spk_sov"]
+curve_x = SubResource("Curve_spk_sov_x")
+curve_y = SubResource("Curve_spk_sov_y")
+curve_z = SubResource("Curve_spk_sov_z")
+
+[sub_resource type="Gradient" id="Gradient_spk"]
+colors = PackedColorArray(0.66, 0.45, 0.12, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_spk"]
+gradient = SubResource("Gradient_spk")
+
+[sub_resource type="Curve" id="Curve_spk_alpha"]
+_data = [Vector2(0, 0.34999996), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.1367823, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_spk_alpha"]
+curve = SubResource("Curve_spk_alpha")
+
+[sub_resource type="Curve" id="Curve_spk_turb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.70121944), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_spk_turb"]
+curve = SubResource("Curve_spk_turb")
+
+[sub_resource type="ParticleProcessMaterial" id="PPM_specks"]
+lifetime_randomness = 0.8
+particle_flag_align_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 1200.0
+initial_velocity_max = 2500.0
+radial_velocity_min = 150.0
+radial_velocity_max = 250.0
+radial_velocity_curve = SubResource("CurveTexture_spk_radial")
+gravity = Vector3(0, 0, 0)
+damping_min = 1.0
+damping_max = 2.0
+damping_curve = SubResource("CurveTexture_spk_damp")
+scale_min = 0.29999998
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_spk_scale")
+scale_over_velocity_max = 500.0
+scale_over_velocity_curve = SubResource("CurveXYZTexture_spk_sov")
+color_initial_ramp = SubResource("GradientTexture1D_spk")
+alpha_curve = SubResource("CurveTexture_spk_alpha")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+turbulence_noise_scale = 10.1
+turbulence_noise_speed = Vector3(0.1, 0.1, 0.1)
+turbulence_noise_speed_random = 1.0
+turbulence_influence_min = 0.65
+turbulence_influence_max = 0.85
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+turbulence_influence_over_life = SubResource("CurveTexture_spk_turb")
+
+[node name="AlchemistEnergyCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+pivot_offset = Vector2(64, 64)
+
+[node name="EnergyVfxBack" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("alch_particles")
+
+[node name="Glow" type="GPUParticles2D" parent="EnergyVfxBack"]
+self_modulate = Color(0.913725, 0.670588, 0.184314, 1)
+position = Vector2(64, 64)
+emitting = false
+amount = 1
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("PPM_glow")
+
+[node name="Layers" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Layer1" type="TextureRect" parent="Layers"]
+material = ExtResource("mat_orb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("orb1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RotationLayers" type="Control" parent="Layers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Layer2" type="TextureRect" parent="Layers/RotationLayers"]
+material = ExtResource("mat_orb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+mouse_filter = 2
+texture = ExtResource("orb2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Layer3" type="TextureRect" parent="Layers/RotationLayers"]
+material = ExtResource("mat_orb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+mouse_filter = 2
+texture = ExtResource("orb3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Layer4" type="TextureRect" parent="Layers"]
+material = ExtResource("mat_orb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("orb4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Layer5" type="TextureRect" parent="Layers"]
+material = ExtResource("mat_orb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("orb5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyVfxFront" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("alch_particles")
+
+[node name="Ring" type="GPUParticles2D" parent="EnergyVfxFront"]
+self_modulate = Color(0.913725, 0.670588, 0.184314, 1)
+position = Vector2(64, 64)
+emitting = false
+amount = 1
+lifetime = 0.4
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("PPM_ring")
+
+[node name="Ribbon" type="GPUParticles2D" parent="EnergyVfxFront"]
+position = Vector2(64, 64)
+emitting = false
+amount = 2
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.5
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("PPM_ribbon")
+
+[node name="Specks" type="GPUParticles2D" parent="EnergyVfxFront"]
+self_modulate = Color(0.913725, 0.670588, 0.184314, 1)
+position = Vector2(64, 64)
+rotation = 1.57079
+emitting = false
+amount = 6
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+fixed_fps = 60
+trail_sections = 2
+trail_section_subdivisions = 2
+process_material = SubResource("PPM_specks")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -29.0
+offset_right = -16.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_colors/font_outline_color = Color(0.149, 0.082, 0.012, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("font")
+theme_override_font_sizes/font_size = 36
+text = "3/3"
+horizontal_alignment = 1
+vertical_alignment = 1
