@@ -8,9 +8,8 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Haemorrhage : AlchemistCard
 {
-    public Haemorrhage() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Haemorrhage() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithCostUpgradeBy(-1);
         WithTip(typeof(RegenPower));
     }
 

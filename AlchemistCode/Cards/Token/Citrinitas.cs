@@ -13,6 +13,7 @@ public class Citrinitas : AlchemistCard
 {
     public Citrinitas() : base(1, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
+        WithVar("Hits", 2, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithUpgradingCardTip<Rubedo>();
     }
@@ -25,10 +26,11 @@ public class Citrinitas : AlchemistCard
         if (regenAmount > 0)
         {
             await PowerCmd.Remove<RegenPower>(Owner.Creature);
-            if (IsUpgraded)
-                await DamageCmd.Attack(regenAmount).FromCard(this).TargetingAllOpponents(CombatState).Execute(choiceContext);
-            else
-                await DamageCmd.Attack(regenAmount).FromCard(this).TargetingRandomOpponents(CombatState).Execute(choiceContext);
+            await DamageCmd.Attack(regenAmount)
+                .WithHitCount(DynamicVars["Hits"].IntValue)
+                .FromCard(this)
+                .TargetingAllOpponents(CombatState)
+                .Execute(choiceContext);
         }
 
         await AlchemistCardCmd.GiveCard<Rubedo>(this);

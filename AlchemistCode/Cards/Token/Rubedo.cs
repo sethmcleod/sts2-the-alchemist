@@ -14,7 +14,7 @@ public class Rubedo : AlchemistCard
 {
     public Rubedo() : base(1, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
-        WithVar("Gold", 20, 5);
+        WithVar("Gold", 15, 5);
         WithPower<StrengthPower>(1, 0);
         WithKeyword(CardKeyword.Exhaust);
         WithUpgradingCardTip<Nigredo>();
