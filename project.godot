@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="TheAlchemist"
+config/name="Alchemist"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
-config/icon="res://TheAlchemist/mod_image.png"
+config/icon="res://Alchemist/mod_image.png"
 
 [display]
 
@@ -24,7 +24,7 @@ window/stretch/aspect="expand"
 
 [dotnet]
 
-project/assembly_name="TheAlchemist"
+project/assembly_name="Alchemist"
 
 [rendering]
 

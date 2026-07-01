@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]Control the variables. Record the results. Adjust the dosage[/green][/sine].",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "We still have more Spire to explore!",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(Hurry up, I'm slipping away from my body...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "Alchemist cards will now appear in rewards and shops.",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "Alchemist Cards",
+  "ALCHEMIST-ALCHEMIST.description": "An amphibian practicer of esoteric arts.\nTransmutes self-inflicted poison into power.",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "Co-op survival line",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]Oh. Yes, I suppose that's quite a lot. Anyway—[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "their",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "them",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "theirs",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "they",
+  "ALCHEMIST-ALCHEMIST.title": "The Alchemist",
+  "ALCHEMIST-ALCHEMIST.titleObject": "The Alchemist"
+}

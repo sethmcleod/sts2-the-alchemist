@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="53a7a49b-2721-4789-89bc-79504224dd22" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.godot/editor/filesystem_cache10" beforeDir="false" afterPath="$PROJECT_DIR$/.godot/editor/filesystem_cache10" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.godot/exported/133200997/file_cache" beforeDir="false" afterPath="$PROJECT_DIR$/.godot/exported/133200997/file_cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.godot/uid_cache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.godot/uid_cache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheAlchemist/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheAlchemist/.idea/dictionaries/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheAlchemist/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheAlchemist/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheAlchemist/.idea/libraries/GdSdk.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheAlchemist/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist.sln.DotSettings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist.sln.DotSettings.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/fonts/kreon_bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/fonts/kreon_bold.ttf.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/acclimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/acclimate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/accretion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/accretion.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/accrue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/accrue.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/adulterate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/adulterate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/albedo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/albedo.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/amplification.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/amplification.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/assay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/assay.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/assimilate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/assimilate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/augur.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/augur.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/aureate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/aureate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/bide.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/bide.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/carapace.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/carapace.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/card.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/card.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/catalyse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/catalyse.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/catharsis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/catharsis.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/chorus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/chorus.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/chrysopoeia.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/chrysopoeia.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/chyrsopoeia.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/citrinitas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/citrinitas.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/compound.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/compound.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/congeal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/congeal.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/conjunction.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/conjunction.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/cornered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/cornered.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/corrode.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/corrode.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/decant.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/decant.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/decoction.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/decoction.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/defend_alchemist.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/defend_alchemist.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/deluge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/deluge.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/deplete.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/deplete.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/detonation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/detonation.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/distillate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/distillate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/dross.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/dross.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/effluvium.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/effluvium.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/elixir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/elixir.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/emanate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/emanate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/emergence.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/emergence.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/enervate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/enervate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/epiphany.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/epiphany.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/exploit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/exploit.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/exude.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/exude.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/falter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/falter.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/fester.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/fester.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/flush.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/flush.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/fumigate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/fumigate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/glean.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/glean.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/haemorrhage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/haemorrhage.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/harvest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/harvest.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/hone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/hone.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/hormesis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/hormesis.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/ichor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/ichor.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/immolation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/immolation.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/improvise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/improvise.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/inducement.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/inducement.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/inoculate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/inoculate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/inversion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/inversion.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/invigorate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/invigorate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/leaden.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/leaden.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/libation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/libation.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/materialise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/materialise.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/mercurial_form.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/mercurial_form.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/metabolise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/metabolise.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/miasma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/miasma.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/mortify.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/mortify.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/nigredo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/nigredo.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/osmosis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/osmosis.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/overflow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/overflow.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/partition.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/partition.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/permeate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/permeate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/philtre.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/philtre.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/potentiate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/potentiate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/poultice.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/poultice.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/precipitate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/precipitate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/puncture.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/puncture.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/reagent.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/reagent.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/reconstitute.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/reconstitute.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/rectify.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/rectify.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/reinforce.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/reinforce.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/resolve.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/resolve.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/rubedo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/rubedo.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/salvage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/salvage.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/secretion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/secretion.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/sediment.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/sediment.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/sepsis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/sepsis.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/shed_skin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/shed_skin.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/siphon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/siphon.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/spatter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/spatter.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/steep.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/steep.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/strike_alchemist.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/strike_alchemist.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/suffuse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/suffuse.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/temper.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/temper.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/tinge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/tinge.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/transpose.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/transpose.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/tria_prima.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/tria_prima.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/virulence.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/virulence.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/volatility.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/volatility.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/windfall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/big/windfall.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/card.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/card_portraits/card.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/big_energy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/big_energy.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/char_select_alchemist.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/char_select_alchemist.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/char_select_alchemist_locked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/char_select_alchemist_locked.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/char_select_char_name.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/char_select_char_name_locked.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/character_icon_char_name.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/character_icon_char_name.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/map_marker_char_name.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/map_marker_char_name.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/text_energy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/charui/text_energy.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/powers/big/power.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/powers/big/power.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/powers/power.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/powers/power.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/relics/big/relic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/relics/big/relic.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/relics/relic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/relics/relic.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/relics/relic_outline.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/relics/relic_outline.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/transition.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/transition.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_1.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_2.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_3.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_4.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/combat/energy_counters/alchemist/alchemist_orb_layer_5.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/transitions/alchemist_transition.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/images/ui/transitions/alchemist_transition.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/localization/eng/ancients.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/localization/eng/card_keywords.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/localization/eng/cards.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/localization/eng/characters.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/localization/eng/potions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/localization/eng/powers.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/localization/eng/relics.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/localization/eng/rest_site_ui.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/localization/eng/static_hover_tips.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/localization/eng/ui.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/materials/transitions/alchemist_transition_mat.tres" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/mod_image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/mod_image.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemist/scenes/combat/energy_counters/alchemist_energy_counter.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/AlchemistCardCmd.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Ancient/Aureate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Ancient/Aureate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Ancient/Elixir.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Ancient/Elixir.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Basic/DefendAlchemist.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Basic/DefendAlchemist.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Basic/Leaden.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Basic/Leaden.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Basic/Nigredo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Basic/Nigredo.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Basic/StrikeAlchemist.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Basic/StrikeAlchemist.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Adulterate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Adulterate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Assay.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Assay.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Bide.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Bide.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Carapace.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Carapace.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Congeal.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Congeal.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Cornered.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Cornered.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Enervate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Enervate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Falter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Falter.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Fumigate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Fumigate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Improvise.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Improvise.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Inoculate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Inoculate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Miasma.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Miasma.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Poultice.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Poultice.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Puncture.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Puncture.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Reconstitute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Reconstitute.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Siphon.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Siphon.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Spatter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Spatter.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Steep.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Steep.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Temper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Temper.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Tinge.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Common/Tinge.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Acclimate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Acclimate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Accretion.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Accretion.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Accrue.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Accrue.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Amplification.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Amplification.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Augur.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Augur.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Catharsis.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Catharsis.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Conjunction.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Conjunction.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Decoction.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Decoction.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Detonation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Detonation.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Emanate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Emanate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Emergence.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Emergence.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Epiphany.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Epiphany.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Fusillade.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Harvest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Harvest.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Ichor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Ichor.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Immolation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Immolation.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Inducement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Inducement.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Libation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Libation.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/MercurialForm.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/MercurialForm.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Overflow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Overflow.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Reagent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Reagent.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Rectify.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Rectify.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Secretion.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Secretion.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Sepsis.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Sepsis.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Suffuse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Suffuse.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Transpose.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Transpose.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/TriaPrima.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/TriaPrima.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Volatility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Rare/Volatility.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/TheAlchemistCard.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/TheAlchemistCard.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Albedo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Albedo.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Citrinitas.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Citrinitas.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Distillate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Distillate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Dross.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Dross.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Effluvium.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Effluvium.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Rubedo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Token/Rubedo.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Assimilate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Assimilate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Catalyse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Catalyse.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Chorus.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Chorus.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Chrysopoeia.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Chrysopoeia.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Compound.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Compound.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Concentrate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Corrode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Corrode.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Decant.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Decant.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Deluge.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Deluge.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Deplete.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Deplete.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Exploit.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Exploit.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Exude.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Exude.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Fester.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Fester.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Flush.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Flush.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Glean.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Glean.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Haemorrhage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Haemorrhage.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Hone.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Hone.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Hormesis.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Hormesis.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Inversion.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Inversion.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Invigorate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Invigorate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Materialise.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Materialise.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Metabolise.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Metabolise.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Mortify.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Mortify.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Osmosis.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Osmosis.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Partition.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Partition.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Permeate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Permeate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Philtre.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Philtre.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Potentiate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Potentiate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Precipitate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Precipitate.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Reinforce.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Reinforce.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Resolve.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Resolve.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Salvage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Salvage.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Sediment.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Sediment.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/ShedSkin.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/ShedSkin.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Virulence.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Virulence.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Windfall.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Windfall.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Cards/Uncommon/Winnow.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Character/AlchemistParticles.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Character/AlchemistParticles.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Character/TheAlchemist.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Character/TheAlchemist.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Character/TheAlchemistCardPool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Character/TheAlchemistCardPool.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Character/TheAlchemistPotionPool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Character/TheAlchemistPotionPool.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Character/TheAlchemistRelicPool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Character/TheAlchemistRelicPool.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Commands/AlchemistCardCmd.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Commands/AlchemistCardCmd.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Extensions/StringExtensions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Extensions/StringExtensions.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/MainFile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/MainFile.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Patches/PotionSellPatches.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Patches/PotionSellPatches.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Potions/GoldLeaf.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Potions/GoldLeaf.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Potions/MarshTonic.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Potions/MarshTonic.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Potions/RefinedExtract.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Potions/RefinedExtract.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Potions/TheAlchemistPotion.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Potions/TheAlchemistPotion.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/AcclimatePower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/AcclimatePower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/AccretionPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/AccretionPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ChorusPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ChorusPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ChrysopoeaiPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ChrysopoeiaPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ChrysopoeiaPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ConcentratePower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ConjunctionPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ConjunctionPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/DepleteStrengthDownPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/DepleteStrengthDownPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/DetonationPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/DetonationPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ElixirPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ElixirPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/FesterPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/FesterPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/HarvestPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/HarvestPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/InducementPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/InducementPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/InversionPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/InversionPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/MaterialisePower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/MaterialisePower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/MercurialFormPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/MercurialFormPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/MetaboliseStrengthPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/MetaboliseStrengthPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/PermeatePower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/PermeatePower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/PhiltrePower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/PhiltrePower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/PrecipitatePower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/PrecipitatePower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ResolvePower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/ResolvePower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/SecretionPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/SecretionPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/SedimentPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/SedimentPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/SepsisPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/SepsisPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/TheAlchemistPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/TheAlchemistPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/VirulencePower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/VirulencePower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/VolatilityPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/VolatilityPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/WindfallPower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Powers/WindfallPower.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/AquaVitae.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/AquaVitae.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/AuricSeal.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/AuricSeal.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/BrewRestSiteOption.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/BrewRestSiteOption.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/CinnabarShard.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/CinnabarShard.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/FluxStone.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/FluxStone.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/GildedFlask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/GildedFlask.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/HarvestPouch.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/HarvestPouch.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/MidasRoot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/MidasRoot.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/TarnishedFlask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/TarnishedFlask.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/TheAlchemistRelic.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/TheAlchemistRelic.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/TheriacVial.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheAlchemistCode/Relics/TheriacVial.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8ff85c772630459a957454d346e7afd78ee000/50/672c0746/DrainPower.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8ff85c772630459a957454d346e7afd78ee000/53/d84125e5/TokenCardPool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8ff85c772630459a957454d346e7afd78ee000/64/fdbcb402/DefendIronclad.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3Fn4WCixJGXSeqvYzIYltsJmUHn" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Publish to folder.Publish TheAlchemist to folder (1).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (10).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (11).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (12).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (13).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (14).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (15).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (16).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (17).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (18).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (19).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (2).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (20).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (21).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (3).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (4).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (5).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (6).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (7).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (8).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder (9).executor": "Run",
+    "Publish to folder.Publish TheAlchemist to folder.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Publish to folder.Publish TheAlchemist to folder">
+    <configuration name="Publish TheAlchemist to folder (10)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (11)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (12)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (13)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (14)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (15)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (16)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (17)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (18)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (19)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (1)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (20)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (21)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (2)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (3)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (4)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (5)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (6)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (7)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (8)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder (9)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" delete_existing_files="true" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish TheAlchemist to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$PROJECT_DIR$/bin/ExportRelease/net9.0/publish" target_framework="net9.0" uuid_high="5218229673450292140" uuid_low="-8342702248508274778">
+        <runtimes>
+          <item value="Portable" />
+        </runtimes>
+      </riderPublish>
+      <method v="2" />
+    </configuration>
+    <configuration name="Debug GDScript (Running session)" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory">
+      <option name="json" value="{&#10;  // Launch: &quot;Launch a new instance of the game&quot;,&#10;  // Attach: &quot;Attach to an already running game, which was started from the Godot Editor&quot;&#10;  &quot;request&quot; : &quot;Attach&quot;,&#10;  &quot;debugServer&quot; : 6006, // port should match the Debug Adapter port in the Godot Editor project settings.&#10;  &quot;scene&quot; : &quot;main&quot;, // main, current, res://path/to/file.tscn&#10;  &#10;  // &quot;playArgs&quot; : [ &quot;--editor&quot; ], // debugging a tool script&#10;  // &quot;playArgs&quot;: [&quot;--debug-collisions&quot;,&quot;--debug-navigation&quot;], // different options&#10;  &#10;  // one click deploy and debug via Godot Editor:&#10;  // &quot;platform&quot;: &quot;Android&quot;, // including Android, iOS, Web and W4 consoles&#10;  // &quot;device&quot;: &quot;0&quot;, // index of the device of a &quot;platform&quot; type&#10;}" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Player GDScript" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory">
+      <option name="json" value="{&#10;  // Launch: &quot;Launch a new instance of the game&quot;,&#10;  // Attach: &quot;Attach to an already running game, which was started from the Godot Editor&quot;&#10;  &quot;request&quot; : &quot;Launch&quot;,&#10;  &quot;debugServer&quot; : 6006, // port should match the Debug Adapter port in the Godot Editor project settings.&#10;  &quot;scene&quot; : &quot;main&quot;, // main, current, res://path/to/file.tscn&#10;  &#10;  // &quot;playArgs&quot; : [ &quot;--editor&quot; ], // debugging a tool script&#10;  // &quot;playArgs&quot;: [&quot;--debug-collisions&quot;,&quot;--debug-navigation&quot;], // different options&#10;  &#10;  // one click deploy and debug via Godot Editor:&#10;  // &quot;platform&quot;: &quot;Android&quot;, // including Android, iOS, Web and W4 consoles&#10;  // &quot;device&quot;: &quot;0&quot;, // index of the device of a &quot;platform&quot; type&#10;}" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
+      <option name="EXE_PATH" value="/Applications/MegaDot.app/Contents/MacOS/Godot" />
+      <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot; --editor" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="RUNTIME_TYPE" value="coreclr" />
+      <method v="2">
+        <option name="Build Solution" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Player" type="RunExe" factoryName=".NET Executable">
+      <option name="EXE_PATH" value="/Applications/MegaDot.app/Contents/MacOS/Godot" />
+      <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="RUNTIME_TYPE" value="coreclr" />
+      <method v="2">
+        <option name="Build Solution" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="53a7a49b-2721-4789-89bc-79504224dd22" name="Changes" comment="" />
+      <created>1782697528682</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1782697528682</updated>
+      <workItem from="1782697529745" duration="15778000" />
+      <workItem from="1782741853661" duration="16788000" />
+      <workItem from="1782771486273" duration="5866000" />
+      <workItem from="1782784112632" duration="1089000" />
+      <workItem from="1782794121187" duration="1582000" />
+      <workItem from="1782795726888" duration="109000" />
+      <workItem from="1782848946223" duration="7917000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
