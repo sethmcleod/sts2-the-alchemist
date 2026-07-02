@@ -13,10 +13,10 @@ public class Compound : AlchemistCard
 
     public Compound() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        // Per-hit damage = base 6 (9), increased 50% per fermented turn; hits twice.
+        // Per-hit damage = base 6 (9), increased 75% per fermented turn; hits twice.
         // {CalculatedDamage} shows the live per-hit value and greens while fermented.
         WithCalculatedDamage(6, static (card, _) =>
-                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * 50m / 100m
+                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * 75m / 100m
                                   * ((AlchemistCard)card).FermentTurns),
             ValueProp.Move, 3, 0);
         WithKeyword(CardKeyword.Retain);

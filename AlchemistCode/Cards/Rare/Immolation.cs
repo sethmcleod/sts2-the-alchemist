@@ -16,9 +16,10 @@ public class Immolation : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        // min 0 / max unbounded = "any number", matching the base game's GUARDS!!! selector.
         var selected = await CardSelectCmd.FromHand(
             choiceContext, Owner,
-            new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, Owner.PlayerCombatState!.Hand.Cards.Count()),
+            new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 0, 999999999),
             null, this);
         foreach (var card in selected)
         {

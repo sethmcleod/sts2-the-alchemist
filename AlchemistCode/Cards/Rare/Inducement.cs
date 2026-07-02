@@ -10,13 +10,12 @@ public class Inducement : AlchemistCard
 {
     public Inducement() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("block", 2, 1);
+        WithCostUpgradeBy(-1); // "that much" has no number to upgrade, so upgrading cuts the cost
         WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<InducementPower>(choiceContext, Owner.Creature,
-            DynamicVars["block"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<InducementPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 }

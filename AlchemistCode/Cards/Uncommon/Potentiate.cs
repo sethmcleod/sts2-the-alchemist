@@ -10,7 +10,7 @@ public class Potentiate : AlchemistCard
 {
     public Potentiate() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(8, 2);
+        WithDamage(10, 2);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

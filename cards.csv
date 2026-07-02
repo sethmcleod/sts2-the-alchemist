@@ -22,21 +22,21 @@ Adulterate,Common,Skill,1,Choose a card in your Hand to Transform into Dross (+)
 Bide,Common,Skill,1,"Gain 7 (10) Block. Next turn, draw 1 card. Gambit: Gain 2 (3) Regen."
 Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison. Gambit: Gain 2 (3) Regen.
 Falter,Common,Skill,1,Gain 7 (9) Block. Gambit: Gain 3 (4) Regen.
-Carapace,Common,Skill,2,Retain. Ferment. Gain 8 (10) Block. Increase this by 50% for every turn fermented.
+Carapace,Common,Skill,2,Retain. Ferment. Gain 8 (10) Block. Increase this by 100% for every turn fermented.
 Exploit,Uncommon,Attack,0,Deal 4 damage. Deals 2 (3) additional damage for each debuff on the enemy.
 Exude,Uncommon,Attack,0,Deal 2 damage. Deals additional damage equal to your Poison. (Deals additional damage equal to your Regen.)
-Culture,Uncommon,Attack,1,Retain. Ferment. Deal 6 (9) damage. Increase this by 75% for every turn fermented.
+Culture,Uncommon,Attack,1,Retain. Ferment. Deal 6 (9) damage. Increase this by 125% for every turn fermented.
 Mortify,Uncommon,Attack,1,Deal 8 (12) damage. Draw 2 cards. Gambit: Deal 6 (8) additional damage.
-Potentiate,Uncommon,Attack,1,Deal 8 (10) damage. Hits an additional time for each potion you've used this combat.
+Potentiate,Uncommon,Attack,1,Deal 10 (12) damage. Hits an additional time for each potion you've used this combat.
 Catalyse,Uncommon,Attack,1,Deal 6 (9) damage. Apply 2 Poison. Trigger Poison on the enemy.
 Deplete,Uncommon,Attack,1,Lose 3 HP. Deal 13 (15) damage. The enemy loses 6 Strength this turn.
 Decant,Uncommon,Attack,1,Deal 7 (9) damage. Create a Distillate in your Hand. Gambit: Deal 4 additional damage.
 Invigorate,Uncommon,Attack,1,Deal 8 (10) damage. Gain 2 Regen. Deals additional damage equal to your Regen.
-Compound,Uncommon,Attack,2,Retain. Ferment. Deal 6 (9) damage twice. Increase this by 50% for every turn fermented.
+Compound,Uncommon,Attack,2,Retain. Ferment. Deal 6 (9) damage twice. Increase this by 75% for every turn fermented.
 Hormesis,Uncommon,Skill,1,Gain 2 (3) Energy. Gain 2 (3) Poison.
 Partition,Uncommon,Attack,3,Deal 32 (48) damage divided among ALL enemies. Gambit: Apply 3 (4) Poison to ALL enemies.
 Fester,Uncommon,Skill,0,Apply 3 Poison. Poison is triggered against the enemy 1 (2) additional time(s) next turn.
-Osmosis,Uncommon,Skill,X,Draw X (+1) cards. Gain X+1 (X+2) Poison.
+Osmosis,Uncommon,Skill,X,Draw X (+1) cards. Gain X+1 Poison. (Gain X+1 Regen.)
 Metabolize,Uncommon,Skill,0,Gain Strength this turn equal to your Poison. Gambit: Procure a random Common (Uncommon) potion. Exhaust.
 Assimilate,Uncommon,Skill,0,Gain Block equal to Poison on everyone. Exhaust. (Doesn't Exhaust)
 Permeate,Uncommon,Skill,1,"Whenever you gain health this turn, apply 3 (4) Poison to ALL enemies."
@@ -61,7 +61,7 @@ Augur,Rare,Attack,0,Innate. Deal 7 (10) damage. Apply 1 (2) Weak. Gambit: Deal 6
 Rectify,Rare,Attack,1,Deal 10 (14) damage. Gain Regen equal to the Poison you have. Exhaust. (Doesn't Exhaust.)
 Harvest,Rare,Attack,1,"Deal 10 (13) damage. If Fatal, gain 1 (2) additional Potion reward(s). Gambit: Deal 5 additional damage."
 Emanate,Rare,Attack,1,Deal 6 (8) damage to ALL enemies. Deals additional damage equal to your Regen.
-Accrue,Rare,Attack,2,Deal 5 (7) damage to a random enemy. Hits an additional time for each time you've taken Poison damage this combat.
+Accrue,Rare,Attack,2,Deal 5 (7) damage. Hits an additional time for each time you've taken Poison damage this combat. (Hits X times.)
 Ichor,Rare,Attack,3,Retain. Deal damage equal to your missing HP. Exhaust. (Doesn't Exhaust)
 Overflow,Rare,Attack,2,Lose all Regen. Deal 6 (8) damage to ALL enemies for each Regen lost.
 Reagent,Rare,Skill,0,"Unplayable. Whenever you use a potion while this card is in hand, gain 4 (6) Block and Draw a card."
@@ -79,7 +79,7 @@ Accretion,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Gambit: Gai
 Homeostasis,Rare,Power,2 (1),"At the start of your turn, if your HP is between 33-66% of your Max HP, draw 1 card and gain 1 Energy."
 Conjunction,Rare,Power,2,"At the start of your turn, if you have both Poison and Regen, gain 1 (2) Energy."
 Catharsis,Rare,Skill,2,"Retain. Ferment. Gain 3 (4) Regen, plus 2 Regen for each turn fermented."
-Inducement,Rare,Power,2,"Whenever you gain or apply Poison, gain 2 (3) Block."
+Inducement,Rare,Power,2 (1),"Whenever you take Poison damage, apply that much Poison to ALL enemies."
 Volatility,Rare,Power,3,"The first time your HP changes on each of your turns, apply 3 (5) Poison to ALL enemies."
 Mercurial Form,Rare,Power,3,"Innate. Whenever you create a card, gain 1 Strength and 1 Dexterity."
 Tria Prima,Rare,Power,X,Retain. Ferment. Apply X (+1) Poison to ALL enemies. Gain X (+1) Regen. Gain 1 (2) Strength for each turn fermented.

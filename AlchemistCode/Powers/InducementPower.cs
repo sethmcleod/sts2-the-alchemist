@@ -8,18 +8,24 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
+// Whenever the owner takes Poison damage, apply that much Poison (x Amount, so copies stack)
+// to ALL enemies. Poison-tick detection matches ChrysopoeiaPower: unblockable+unpowered
+// damage with no dealer or card source.
 public class InducementPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
-        decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
+        DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (power is PoisonPower && applier == Owner && amount > 0)
-        {
-            Flash();
-            await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Move, null);
-        }
+        if (target != Owner || result.UnblockedDamage <= 0) return;
+        if (dealer != null || cardSource != null) return;
+        if (!props.HasFlag(ValueProp.Unblockable) || !props.HasFlag(ValueProp.Unpowered)) return;
+
+        Flash();
+        var poison = result.UnblockedDamage * Amount;
+        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), enemy, poison, Owner, null);
     }
 }

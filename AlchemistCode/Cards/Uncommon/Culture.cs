@@ -13,10 +13,10 @@ public class Culture : AlchemistCard
 
     public Culture() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        // Live damage = base 6 (9), increased 75% per fermented turn. {CalculatedDamage} shows the
+        // Live damage = base 6 (9), increased 125% per fermented turn. {CalculatedDamage} shows the
         // true current value and turns green while fermented (like Cornered's HP-scaled damage).
         WithCalculatedDamage(6, static (card, _) =>
-                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * 75m / 100m
+                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * 125m / 100m
                                   * ((AlchemistCard)card).FermentTurns),
             ValueProp.Move, 3, 0);
         WithKeyword(CardKeyword.Retain);
