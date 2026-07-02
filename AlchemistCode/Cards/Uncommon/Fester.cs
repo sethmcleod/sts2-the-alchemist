@@ -10,14 +10,17 @@ public class Fester : AlchemistCard
 {
     public Fester() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
+        WithPower<PoisonPower>(3, 0);
         WithVar("triggers", 1, 1);
         WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (play.Target != null)
-            await PowerCmd.Apply<FesterPower>(choiceContext, play.Target,
-                DynamicVars["triggers"].IntValue, Owner.Creature, this);
+        if (play.Target == null) return;
+        await PowerCmd.Apply<PoisonPower>(choiceContext, play.Target,
+            DynamicVars.Poison.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<FesterPower>(choiceContext, play.Target,
+            DynamicVars["triggers"].IntValue, Owner.Creature, this);
     }
 }

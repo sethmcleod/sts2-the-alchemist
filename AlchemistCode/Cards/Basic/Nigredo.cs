@@ -11,7 +11,7 @@ public class Nigredo : AlchemistCard
 {
     public Nigredo() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
-        WithPower<PoisonPower>(2, 1);
+        WithPower<PoisonPower>(3, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithUpgradingCardTip<Albedo>();
     }

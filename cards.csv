@@ -35,7 +35,7 @@ Invigorate,Uncommon,Attack,1,Deal 8 (10) damage. Gain 2 Regen. Deals additional 
 Compound,Uncommon,Attack,2,Deal 5 (6) damage twice. Hits two additional times if you applied Poison this turn.
 Hormesis,Uncommon,Skill,1,Gain 2 (3) Energy. Gain 2 (3) Poison.
 Partition,Uncommon,Attack,3,Deal 32 (48) damage divided among ALL enemies. Gambit: Apply 3 (4) Poison to ALL enemies.
-Fester,Uncommon,Skill,0,Poison is triggered against the enemy 1 (2) additional time(s) next turn.
+Fester,Uncommon,Skill,0,Apply 3 Poison. Poison is triggered against the enemy 1 (2) additional time(s) next turn.
 Osmosis,Uncommon,Skill,X,Draw X (+1) cards. Gain X+1 (X+2) Poison.
 Metabolize,Uncommon,Skill,0,Gain Strength this turn equal to your Poison. Gambit: Procure a random Common (Uncommon) potion. Exhaust.
 Assimilate,Uncommon,Skill,0,Gain Block equal to Poison on everyone. Exhaust. (Doesn't Exhaust)
