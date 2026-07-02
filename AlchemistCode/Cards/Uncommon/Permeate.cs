@@ -10,13 +10,13 @@ public class Permeate : AlchemistCard
 {
     public Permeate() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("poisonPerBlock", 2, 1);
+        WithVar("poison", 3, 1);
         WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<PermeatePower>(choiceContext, Owner.Creature,
-            DynamicVars["poisonPerBlock"].IntValue, Owner.Creature, this);
+            DynamicVars["poison"].IntValue, Owner.Creature, this);
     }
 }

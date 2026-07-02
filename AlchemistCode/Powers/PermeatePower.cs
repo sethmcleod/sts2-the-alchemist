@@ -14,10 +14,9 @@ public class PermeatePower : AlchemistPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterBlockGained(Creature creature, decimal amount, ValueProp props,
-        CardModel? cardSource)
+    public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
-        if (creature != Owner || amount <= 0) return;
+        if (creature != Owner || delta <= 0) return; // positive delta = healed / gained health
         Flash();
         foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
             await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), enemy, Amount, Owner, null);

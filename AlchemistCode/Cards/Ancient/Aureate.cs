@@ -1,7 +1,9 @@
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Alchemist.AlchemistCode.Cards.Token;
+using Alchemist.AlchemistCode.Commands;
 
 namespace Alchemist.AlchemistCode.Cards.Ancient;
 
@@ -10,20 +12,19 @@ public class Aureate : AlchemistCard
     public Aureate() : base(1, CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies)
     {
         WithDamage(12, 6);
-        WithTip(typeof(Dross));
-        WithTip(typeof(Effluvium));
-        WithTip(typeof(Distillate));
+        // Upgrading Aureate upgrades the tokens it generates; the tips follow the upgrade state.
+        WithUpgradingCardTip<Dross>();
+        WithUpgradingCardTip<Effluvium>();
+        WithUpgradingCardTip<Distillate>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this)
             .TargetingAllOpponents(CombatState!).Execute(choiceContext);
-        var dross = CombatState!.CreateCard<Dross>(Owner);
-        var effluvium = CombatState!.CreateCard<Effluvium>(Owner);
-        var distillate = CombatState!.CreateCard<Distillate>(Owner);
-        await CardPileCmd.AddGeneratedCardToCombat(dross, PileType.Hand, Owner);
-        await CardPileCmd.AddGeneratedCardToCombat(effluvium, PileType.Hand, Owner);
-        await CardPileCmd.AddGeneratedCardToCombat(distillate, PileType.Hand, Owner);
+        // GiveCard upgrades the token automatically when this card is upgraded.
+        await AlchemistCardCmd.GiveCard<Dross>(this);
+        await AlchemistCardCmd.GiveCard<Effluvium>(this);
+        await AlchemistCardCmd.GiveCard<Distillate>(this);
     }
 }

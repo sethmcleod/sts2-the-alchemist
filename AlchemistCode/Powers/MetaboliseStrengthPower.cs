@@ -7,6 +7,6 @@ namespace Alchemist.AlchemistCode.Powers;
 
 public class MetaboliseStrengthPower : TemporaryStrengthPower, ICustomModel
 {
-    public override AbstractModel OriginModel => ModelDb.Card<Metabolise>();
+    public override AbstractModel OriginModel => ModelDb.Card<Metabolize>();
     protected override bool IsPositive => true;
 }

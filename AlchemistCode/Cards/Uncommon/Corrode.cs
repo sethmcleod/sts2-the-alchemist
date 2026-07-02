@@ -1,17 +1,25 @@
+using Alchemist.AlchemistCode;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Corrode : AlchemistCard
 {
+    protected override bool IsGambitCard => true;
+
     public Corrode() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithPower<PoisonPower>(6, 0);      // applied to all enemies
         WithPower<WeakPower>(1, 1);
         WithVar("SelfPoison", 3, 0);       // gained by you
+        WithVar("Regen", 2, 1);            // Gambit bonus: 2 -> 3 upgraded
+        WithTip(typeof(RegenPower));
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -24,5 +32,8 @@ public class Corrode : AlchemistCard
         }
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
             DynamicVars["SelfPoison"].BaseValue, Owner.Creature, this);
+        if (IsReduced)
+            await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature,
+                DynamicVars["Regen"].BaseValue, Owner.Creature, this);
     }
 }

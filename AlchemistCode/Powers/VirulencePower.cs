@@ -14,7 +14,8 @@ public class VirulencePower : AlchemistPower
     public override decimal ModifyPowerAmountGivenAdditive(PowerModel power, Creature giver, decimal amount,
         Creature? target, CardModel? cardSource)
     {
-        if (power is PoisonPower && giver == Owner && target != null && target != Owner && amount > 0)
+        // Fires for both poison you apply to enemies and poison you gain yourself (target may be Owner).
+        if (power is PoisonPower && giver == Owner && target != null && amount > 0)
             return Amount;
         return 0m;
     }

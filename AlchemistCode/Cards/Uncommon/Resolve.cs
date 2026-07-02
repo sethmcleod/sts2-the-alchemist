@@ -10,12 +10,13 @@ public class Resolve : AlchemistCard
 {
     public Resolve() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCostUpgradeBy(-1); // 2 -> 1 when upgraded
         WithTip(typeof(StrengthPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<ResolvePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+        var power = await PowerCmd.Apply<ResolvePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+        // Upgrade lowers the HP-per-Strength threshold (20 -> 15), yielding more Strength.
+        power?.SetThreshold(IsUpgraded ? 15 : 20);
     }
 }

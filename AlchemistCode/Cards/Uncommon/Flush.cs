@@ -10,6 +10,7 @@ public class Flush : AlchemistCard
     public Flush() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithTip(typeof(RegenPower));
+        WithTip(typeof(StrengthPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -17,8 +18,9 @@ public class Flush : AlchemistCard
         var regen = Owner.Creature.GetPowerAmount<RegenPower>();
         if (Owner.Creature.HasPower<RegenPower>())
             await PowerCmd.Remove<RegenPower>(Owner.Creature);
-        var drawCount = regen + (IsUpgraded ? 1 : 0);
-        if (drawCount > 0)
-            await CardPileCmd.Draw(choiceContext, drawCount, Owner);
+        if (regen > 0)
+            await CardPileCmd.Draw(choiceContext, regen, Owner);
+        if (IsUpgraded && regen >= 5)
+            await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 }

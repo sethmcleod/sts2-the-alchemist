@@ -1,16 +1,24 @@
+using Alchemist.AlchemistCode;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Amplification : AlchemistCard
 {
+    protected override bool IsGambitCard => true;
+
     public Amplification() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
+        WithVar("Strength", 1, 1); // Gambit bonus: 1 -> 2 upgraded
         WithTip(typeof(PoisonPower));
         WithTip(typeof(RegenPower));
+        WithTip(typeof(StrengthPower));
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -27,5 +35,8 @@ public class Amplification : AlchemistCard
             if (regen > 0)
                 await PowerCmd.Apply<RegenPower>(choiceContext, creature, regen * multiplier, Owner.Creature, this);
         }
+        if (IsReduced)
+            await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature,
+                DynamicVars["Strength"].BaseValue, Owner.Creature, this);
     }
 }

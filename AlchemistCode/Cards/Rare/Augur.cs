@@ -14,10 +14,9 @@ public class Augur : AlchemistCard
 
     public Augur() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(8, 6, static (card, _) => ((AlchemistCard)card).IsReduced ? 1 : 0, ValueProp.Move, 4, 0);
+        WithCalculatedDamage(7, 6, static (card, _) => ((AlchemistCard)card).IsReduced ? 1 : 0, ValueProp.Move, 3, 0);
         WithPower<WeakPower>(1, 1);
         WithKeyword(CardKeyword.Innate);
-        WithKeyword(CardKeyword.Exhaust);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
