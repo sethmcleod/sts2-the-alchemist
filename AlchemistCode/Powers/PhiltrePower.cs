@@ -18,9 +18,11 @@ public class PhiltrePower : AlchemistPower
         if (potion.Owner == Owner.Player)
         {
             Flash();
-            // Temporary ("this turn") Strength/Dexterity — removed at end of turn.
-            await PowerCmd.Apply<PhiltreStrengthPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
-            await PowerCmd.Apply<PhiltreDexterityPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
+            // Temporary ("this turn") Strength/Dexterity, tracked by one shared PhiltreBuffPower
+            // icon that takes both back at end of turn.
+            await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
+            await PowerCmd.Apply<DexterityPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
+            await PowerCmd.Apply<PhiltreBuffPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
         }
     }
 }

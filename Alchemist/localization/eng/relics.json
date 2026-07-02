@@ -2,35 +2,27 @@
   "ALCHEMIST-AQUA_VITAE.title": "Aqua Vitae",
   "ALCHEMIST-AQUA_VITAE.description": "Whenever you use a Potion, gain [blue]1[/blue] Max HP.",
   "ALCHEMIST-AQUA_VITAE.flavor": "The water of life distilled to its purest form.",
-
   "ALCHEMIST-AURIC_SEAL.title": "Auric Seal",
   "ALCHEMIST-AURIC_SEAL.description": "Cards you create are always [gold]Upgraded[/gold].",
   "ALCHEMIST-AURIC_SEAL.flavor": "Stamped with the mark of perfection.",
-
   "ALCHEMIST-CINNABAR_SHARD.title": "Cinnabar Shard",
   "ALCHEMIST-CINNABAR_SHARD.description": "[gold]Poison[/gold] is triggered against enemies [blue]1[/blue] additional time.",
   "ALCHEMIST-CINNABAR_SHARD.flavor": "A fragment of crimson ore, still pulsing with toxicity.",
-
   "ALCHEMIST-FLUX_STONE.title": "Flux Stone",
   "ALCHEMIST-FLUX_STONE.description": "Whenever a card is created in combat, draw [blue]1[/blue] card.",
   "ALCHEMIST-FLUX_STONE.flavor": "Catalyzes reactions both alchemical and arcane.",
-
-  "ALCHEMIST-GILDED_FLASK.title": "Gilded Flask",
-  "ALCHEMIST-GILDED_FLASK.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a potion, heal [green]6[/green] HP and gain 1 [gold]Strength[/gold]. Potions can be sold to the Merchant for [gold]Gold[/gold].",
-  "ALCHEMIST-GILDED_FLASK.flavor": "An ornate vessel lined with gold leaf. Its contents rejuvenate body and spirit.",
-
-  "ALCHEMIST-HARVEST_POUCH.title": "Harvest Pouch",
-  "ALCHEMIST-HARVEST_POUCH.description": "At the start of each combat, procure a random potion. If your potion slots are full, gain {Energy:energyIcons()} instead.",
-  "ALCHEMIST-HARVEST_POUCH.flavor": "Always seems to have one more thing rattling around inside.",
-
-  "ALCHEMIST-MIDAS_ROOT.title": "Midas Root",
-  "ALCHEMIST-MIDAS_ROOT.description": "Whenever you gain [gold]Gold[/gold], heal [green]1[/green] HP for every [blue]15[/blue] [gold]Gold[/gold] gained.",
-  "ALCHEMIST-MIDAS_ROOT.flavor": "Everything it touches turns to gold — and gold, in turn, to vitality.",
-
-  "ALCHEMIST-TARNISHED_FLASK.title": "Tarnished Flask",
-  "ALCHEMIST-TARNISHED_FLASK.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a Potion, heal [green]4[/green] HP. Potions can be sold to the Merchant for [gold]Gold[/gold]",
-  "ALCHEMIST-TARNISHED_FLASK.flavor": "A battered flask stained with years of use. It still carries the faintest warmth.",
-
+  "ALCHEMIST-GILDED_KIT.title": "Gilded Kit",
+  "ALCHEMIST-GILDED_KIT.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a potion, heal [green]6[/green] HP and gain 1 [gold]Strength[/gold]. Potions can be sold to the Merchant for [gold]Gold[/gold].",
+  "ALCHEMIST-GILDED_KIT.flavor": "An ornate case lined with gold leaf. Its contents rejuvenate body and spirit.",
+  "ALCHEMIST-EVERFLOWING_CHALICE.title": "Everflowing Chalice",
+  "ALCHEMIST-EVERFLOWING_CHALICE.description": "At the start of each combat, procure a random potion. If your potion slots are full, gain {Energy:energyIcons()} instead.",
+  "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "However much you pour, it never quite runs dry.",
+  "ALCHEMIST-MIDAS_FRUIT.title": "Midas Fruit",
+  "ALCHEMIST-MIDAS_FRUIT.description": "Whenever you gain [gold]Gold[/gold], heal [green]1[/green] HP for every [blue]15[/blue] [gold]Gold[/gold] gained.",
+  "ALCHEMIST-MIDAS_FRUIT.flavor": "Everything it touches turns to gold — and gold, in turn, to vitality.",
+  "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit",
+  "ALCHEMIST-WEATHERED_KIT.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a Potion, heal [green]4[/green] HP. Potions can be sold to the Merchant for [gold]Gold[/gold]",
+  "ALCHEMIST-WEATHERED_KIT.flavor": "A battered case stained with years of use. It still carries the faintest warmth.",
   "ALCHEMIST-THERIAC_VIAL.title": "Theriac Vial",
   "ALCHEMIST-THERIAC_VIAL.description": "If you have [gold]Poison[/gold] at the end of combat, heal equal to your [gold]Poison[/gold].",
   "ALCHEMIST-THERIAC_VIAL.flavor": "An ancient remedy — the poison becomes the cure."

@@ -9,7 +9,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Assimilate : AlchemistCard
 {
-    public Assimilate() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Assimilate() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithKeyword(CardKeyword.Exhaust, UpgradeType.Remove);
         WithTip(typeof(PoisonPower));

@@ -1,38 +1,36 @@
-
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Amount=1: damage random enemy on heal. Amount>=2: damage ALL enemies on heal.
+// Whenever you are healed, deal that much damage to ALL enemies — base copies add one hit,
+// upgraded copies add two. Amount is the total stack count (display); Hits is the summed
+// trigger count, so mixed base+upgraded stacks behave as the sum of the copies.
 public class InversionPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        new[] { new DynamicVar("Hits", 0m) };
+
+    /// <summary>Called by the card after each apply — upgraded copies hit twice per heal.</summary>
+    public void RegisterCopy(bool upgraded) =>
+        DynamicVars["Hits"].BaseValue += upgraded ? 2 : 1;
+
     public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
-        if (creature != Owner || delta <= 0) return;
+        if (creature != Owner || delta <= 0) return; // positive delta = healed
+        var hits = DynamicVars["Hits"].IntValue;
+        if (hits <= 0) return;
         Flash();
-        if (Amount >= 2)
-        {
-            var enemies = CombatState.Enemies.Where(e => e.IsAlive).ToList();
-            foreach (var enemy in enemies)
-                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), enemy, delta,
-                    ValueProp.Move, Owner, null);
-        }
-        else
-        {
-            var enemies = CombatState.Enemies.Where(e => e.IsAlive).ToList();
-            if (enemies.Count > 0)
-            {
-                var target = enemies[CombatState.RunState.Rng.CombatCardGeneration.NextInt(enemies.Count)];
-                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target, delta,
-                    ValueProp.Move, Owner, null);
-            }
-        }
+        // Re-snapshot alive enemies per hit so kills mid-sequence are respected.
+        for (var i = 0; i < hits; i++)
+            foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
+                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), enemy, delta, ValueProp.Move, Owner, null);
     }
 }

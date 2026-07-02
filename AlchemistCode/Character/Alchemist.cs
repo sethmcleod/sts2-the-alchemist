@@ -34,7 +34,7 @@ public class Alchemist : PlaceholderCharacterModel
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<TarnishedFlask>()
+        ModelDb.Relic<WeatheredKit>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<AlchemistCardPool>();

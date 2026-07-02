@@ -1,4 +1,3 @@
-using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
@@ -19,6 +18,7 @@ public class Elixir : AlchemistCard
             await PotionCmd.TryToProcure(
                 PotionFactory.CreateRandomPotionInCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable(),
                 Owner);
-        await CommonActions.ApplySelf<ElixirPower>(choiceContext, this);
+        // Explicit amount 1 per copy — stacks procure one potion each at turn start.
+        await PowerCmd.Apply<ElixirPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 }

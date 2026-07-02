@@ -7,10 +7,12 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
+// Amount is the summed energy gain (1 per base copy, 2 per upgraded copy) each turn
+// you have both Poison and Regen.
 public class ConjunctionPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants,
         ICombatState combatState)
@@ -18,8 +20,6 @@ public class ConjunctionPower : AlchemistPower
         if (!participants.Contains(Owner)) return;
         if (!Owner.HasPower<PoisonPower>() || !Owner.HasPower<RegenPower>()) return;
         Flash();
-        await PlayerCmd.GainEnergy(1, Owner.Player!);
-        if (Amount >= 2)
-            await CardPileCmd.Draw(new ThrowingPlayerChoiceContext(), 1, Owner.Player!);
+        await PlayerCmd.GainEnergy(Amount, Owner.Player!);
     }
 }

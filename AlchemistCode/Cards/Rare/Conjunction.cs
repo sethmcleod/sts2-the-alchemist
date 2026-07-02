@@ -10,6 +10,7 @@ public class Conjunction : AlchemistCard
 {
     public Conjunction() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
+        WithVar("Energy", 1, 1); // energy per turn: 1 -> 2 upgraded
         WithTip(typeof(PoisonPower));
         WithTip(typeof(RegenPower));
     }
@@ -17,6 +18,6 @@ public class Conjunction : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<ConjunctionPower>(choiceContext, Owner.Creature,
-            IsUpgraded ? 2 : 1, Owner.Creature, this);
+            DynamicVars["Energy"].IntValue, Owner.Creature, this);
     }
 }

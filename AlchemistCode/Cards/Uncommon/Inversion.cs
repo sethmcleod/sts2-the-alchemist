@@ -13,8 +13,8 @@ public class Inversion : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Amount=1: random enemy. Amount=2: ALL enemies.
-        var amount = IsUpgraded ? 2 : 1;
-        await PowerCmd.Apply<InversionPower>(choiceContext, Owner.Creature, amount, Owner.Creature, this);
+        var power = await PowerCmd.Apply<InversionPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+        // Each copy adds one ALL-enemies hit per heal; upgraded copies add two.
+        power?.RegisterCopy(IsUpgraded);
     }
 }

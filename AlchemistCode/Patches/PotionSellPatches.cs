@@ -44,7 +44,7 @@ public static class PotionSellPatches
         if (potion is FoulPotion) return false;
         var owner = potion.Owner;
         if (owner == null) return false;
-        if (owner.GetRelic<TarnishedFlask>() == null && owner.GetRelic<GildedFlask>() == null) return false;
+        if (owner.GetRelic<WeatheredKit>() == null && owner.GetRelic<GildedKit>() == null) return false;
         return owner.RunState.CurrentRoom is MerchantRoom;
     }
 
@@ -180,7 +180,7 @@ public static class PotionSellPatches
             var players = PlayersField.GetValue(__instance) as List<Player>;
             var player = players != null ? LocalContext.GetMe(players) : null;
             if (player == null) return;
-            if (player.GetRelic<TarnishedFlask>() == null && player.GetRelic<GildedFlask>() == null) return;
+            if (player.GetRelic<WeatheredKit>() == null && player.GetRelic<GildedKit>() == null) return;
             if (!player.Potions.Any()) return;
 
             var index = _greetingIndex;

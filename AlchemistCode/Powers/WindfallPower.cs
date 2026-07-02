@@ -1,15 +1,24 @@
-
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Powers;
 
+// Amount is the summed card draw (1 per base copy, 2 per upgraded copy); Copies counts the
+// number of Windfalls played and equals the energy gained per potion procured, so a second
+// copy adds energy instead of being silently capped at 1.
 public class WindfallPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        new[] { new DynamicVar("Copies", 0m) };
+
+    /// <summary>Called by the card after each apply — adds this copy's energy gain.</summary>
+    public void RegisterCopy() => DynamicVars["Copies"].BaseValue += 1;
 
     public override async Task AfterPotionProcured(PotionModel potion)
     {
@@ -17,7 +26,9 @@ public class WindfallPower : AlchemistPower
         {
             Flash();
             await CardPileCmd.Draw(new ThrowingPlayerChoiceContext(), Amount, Owner.Player);
-            await PlayerCmd.GainEnergy(1, Owner.Player);
+            var energy = DynamicVars["Copies"].IntValue;
+            if (energy > 0)
+                await PlayerCmd.GainEnergy(energy, Owner.Player);
         }
     }
 }

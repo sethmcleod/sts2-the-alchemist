@@ -6,7 +6,7 @@ Nigredo,Basic,Skill,1,Apply 2 (3) Poison to ALL enemies and yourself. Shuffle an
 Tinge,Common,Attack,0,Deal 3 (4) damage. Apply 2 Poison.
 Assay,Common,Attack,0,Deal 3 damage. Draw a card. Exhaust (Doesn't Exhaust).
 Fumigate,Common,Attack,1,Deal 6 (8) damage to all enemies. Deals additional damage equal to your Poison.
-Cornered,Common,Attack,1,"Deal 6 (9) damage. If your HP is below 50%, deal 5 additional damage."
+Cornered,Common,Attack,1,Deal 6 (9) damage. Gambit: Deal an additional 5 damage.
 Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Gain 2 Poison.
 Temper,Common,Attack,1,Deal 6 damage. Choose a card in your Hand to Transform into a Distillate (Distillate (+)).
 Puncture,Common,Attack,1,Deal 8 (10) damage. Apply 1 (2) Vulnerable. Gambit: Apply 1 additional Vulnerable.
@@ -37,8 +37,8 @@ Hormesis,Uncommon,Skill,1,Gain 2 (3) Energy. Gain 2 (3) Poison.
 Partition,Uncommon,Attack,3,Deal 32 (48) damage divided among ALL enemies. Gambit: Apply 3 (4) Poison to ALL enemies.
 Fester,Uncommon,Skill,0,Poison is triggered against the enemy 1 (2) additional time(s) next turn.
 Osmosis,Uncommon,Skill,X,Draw X (+1) cards. Gain X+1 (X+2) Poison.
-Metabolize,Uncommon,Skill,0,Gain Strength this turn equal to your Poison. Gambit: Procure a random Common (Uncommon) potion.
-Assimilate,Uncommon,Skill,1,Gain Block equal to Poison on everyone. Exhaust. (Doesn't Exhaust)
+Metabolize,Uncommon,Skill,0,Gain Strength this turn equal to your Poison. Gambit: Procure a random Common (Uncommon) potion. Exhaust.
+Assimilate,Uncommon,Skill,0,Gain Block equal to Poison on everyone. Exhaust. (Doesn't Exhaust)
 Permeate,Uncommon,Skill,1,"Whenever you gain health this turn, apply 3 (4) Poison to ALL enemies."
 Salvage,Uncommon,Skill,1,Choose 2 cards in your Discard Pile to Transform into Distillates(+).
 Glean,Uncommon,Skill,1,Gain 7 (10) Block. Choose 1 of 3 cards in your Draw Pile and add it to your Hand.
@@ -48,14 +48,14 @@ Precipitate,Uncommon,Skill,2,"Gain 10 (13) Block. The next time you use a potion
 Corrode,Uncommon,Skill,2,Apply 6 Poison and 1 (2) Weak to ALL enemies. Gain 3 Poison. Gambit: Gain 2 (3) Regen.
 Deluge,Uncommon,Skill,X,Apply X Weak and Vulnerable to ALL enemies. Double X if it's 4 or more. Exhaust. (Doesn't Exhaust.)
 Chrysopoeia,Uncommon,Power,0,"Whenever you take Poison damage, gain 2 (4) Gold."
-Virulence,Uncommon,Power,1,"Whenever you gain or apply Poison, apply an additional 1 (2) Poison."
+Virulence,Uncommon,Power,1,"Whenever you apply Poison, apply an additional 1 (2) Poison."
 Materialise,Uncommon,Power,1,"Whenever you create a card, gain 2 (3) Block."
 Flush,Uncommon,Skill,1,"Lose all Regen. Draw that many cards. (If you lost 5 or more Regen, gain 1 Strength.)"
 Sediment,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 1 (2) Block."
-Inversion,Uncommon,Power,1,"Whenever you are healed, deal that much damage to a random enemy. (Whenever you are healed, deal that much damage to ALL enemies.)"
+Inversion,Uncommon,Power,1,"Whenever you are healed, deal that much damage to ALL enemies (twice)."
 Haemorrhage,Uncommon,Attack,1,Lose HP equal to your Regen. Deal double (triple) that much damage.
 Philtre,Uncommon,Power,2,"Whenever you use a Potion, gain 2 (3) Strength and 2 (3) Dexterity this turn."
-Resolve,Uncommon,Power,2,"At the start of your turn, gain 1 Strength for each 20 (15) HP you are missing."
+Resolve,Uncommon,Power,2,"At the start of your turn, gain 1 (2) Strength for each 20 HP you are missing."
 Windfall,Uncommon,Power,2,"Whenever you Procure a Potion during combat, draw 1 (2) card(s) and gain 1 energy."
 Augur,Rare,Attack,0,Innate. Deal 7 (10) damage. Apply 1 (2) Weak. Gambit: Deal 6 additional damage.
 Rectify,Rare,Attack,1,Deal 10 (14) damage. Gain Regen equal to the Poison you have. Exhaust. (Doesn't Exhaust.)
@@ -77,7 +77,7 @@ Sepsis,Rare,Power,1,Poisoned enemies take an additional 25% (50%) damage.
 Secretion,Rare,Power,1,"When hit by an attack, apply 2 (3) Poison."
 Accretion,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Gambit: Gain 1 (2) additional Regen."
 Homeostasis,Rare,Power,2 (1),"At the start of your turn, if your HP is between 33-66% of your Max HP, draw 1 card and gain 1 Energy."
-Conjunction,Rare,Power,2,"At the start of your turn, if you have both Poison and Regen, gain 1 Energy (and draw 1 additional card)."
+Conjunction,Rare,Power,2,"At the start of your turn, if you have both Poison and Regen, gain 1 (2) Energy."
 Catharsis,Rare,Skill,2,"Retain. Ferment. Gain 3 (4) Regen, plus 2 Regen for each turn fermented."
 Inducement,Rare,Power,2,"Whenever you gain or apply Poison, gain 2 (3) Block."
 Volatility,Rare,Power,3,"The first time your HP changes on each of your turns, apply 3 (5) Poison to ALL enemies."
