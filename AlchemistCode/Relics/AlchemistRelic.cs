@@ -7,13 +7,9 @@ using Alchemist.AlchemistCode.Extensions;
 namespace Alchemist.AlchemistCode.Relics;
 
 /// <summary>
-/// This is the base class for your mod's relics, which is set up to load the relic's images from your mod's resources.
-/// When creating a relic, right-click the Relics folder and create a new file with the Custom Relic template.
-/// This will generate a class that extends this one.
-/// You can also just create the class manually; just make sure to inherit from this class.
-///
-/// The [Pool] annotation marks this relic as being tied to your specific character. Inheriting from this class means
-/// that your relics don't need to invidually say which pool they should be in.
+/// Base class for all Alchemist relics (the [Pool] attribute ties every subclass to this
+/// character's pool). Icons load by convention from Alchemist/images/relics/&lt;relic_id&gt;.png
+/// (94x94), relics/&lt;relic_id&gt;_outline.png, and relics/big/&lt;relic_id&gt;.png (256x256).
 /// </summary>
 [Pool(typeof(AlchemistRelicPool))]
 public abstract class AlchemistRelic : CustomRelicModel

@@ -27,7 +27,7 @@ public class Metabolize : AlchemistCard
     {
         var poison = Owner.Creature.GetPowerAmount<PoisonPower>();
         if (poison > 0)
-            await PowerCmd.Apply<MetaboliseStrengthPower>(choiceContext, Owner.Creature, poison, Owner.Creature, this);
+            await PowerCmd.Apply<MetabolizeStrengthPower>(choiceContext, Owner.Creature, poison, Owner.Creature, this);
 
         if (IsReduced)
         {

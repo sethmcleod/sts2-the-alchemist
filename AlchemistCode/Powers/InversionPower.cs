@@ -22,15 +22,27 @@ public class InversionPower : AlchemistPower
     public void RegisterCopy(bool upgraded) =>
         DynamicVars["Hits"].BaseValue += upgraded ? 2 : 1;
 
+    // Reentrancy guard: our damage can trigger heals (e.g. lifesteal-style effects), whose
+    // AfterCurrentHpChanged would re-enter this hook and loop unbounded.
+    private bool _resolving;
+
     public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
-        if (creature != Owner || delta <= 0) return; // positive delta = healed
+        if (creature != Owner || delta <= 0 || _resolving) return; // positive delta = healed
         var hits = DynamicVars["Hits"].IntValue;
         if (hits <= 0) return;
         Flash();
-        // Re-snapshot alive enemies per hit so kills mid-sequence are respected.
-        for (var i = 0; i < hits; i++)
-            foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
-                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), enemy, delta, ValueProp.Move, Owner, null);
+        _resolving = true;
+        try
+        {
+            // Re-snapshot alive enemies per hit so kills mid-sequence are respected.
+            for (var i = 0; i < hits; i++)
+                foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
+                    await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), enemy, delta, ValueProp.Move, Owner, null);
+        }
+        finally
+        {
+            _resolving = false;
+        }
     }
 }

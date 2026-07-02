@@ -12,26 +12,27 @@ public class EverflowingChalice : AlchemistRelic
     public override RelicRarity Rarity => RelicRarity.Shop;
 
     // Backs the {Energy:energyIcons()} token in the tooltip (base-game relic pattern).
-    protected override IEnumerable<DynamicVar> CanonicalVars => new[] { new DynamicVar("Energy", 1m) };
-
-    private bool _giveEnergy;
+    // "Pending" tracks the fell-back-to-energy state in a DynamicVar (not a plain field)
+    // so it survives a mid-combat save/reload; "Energy" backs the tooltip's energy icon.
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        new[] { new DynamicVar("Energy", 1m), new DynamicVar("Pending", 0m) };
 
     public override async Task BeforeCombatStart()
     {
-        _giveEnergy = false;
+        DynamicVars["Pending"].BaseValue = 0m;
         Flash();
         var potion = PotionFactory.CreateRandomPotionOutOfCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable();
         var result = await PotionCmd.TryToProcure(potion, Owner);
         if (!result.success)
-            _giveEnergy = true;
+            DynamicVars["Pending"].BaseValue = 1m;
     }
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants,
         ICombatState combatState)
     {
-        if (!_giveEnergy) return;
+        if (DynamicVars["Pending"].IntValue <= 0) return;
         if (!participants.Contains(Owner.Creature)) return;
-        _giveEnergy = false;
+        DynamicVars["Pending"].BaseValue = 0m;
         Flash();
         await PlayerCmd.GainEnergy(DynamicVars["Energy"].IntValue, Owner);
     }
