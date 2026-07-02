@@ -1,6 +1,5 @@
 using Alchemist.AlchemistCode;
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -14,16 +13,19 @@ public class Carapace : AlchemistCard
 
     public Carapace() : base(2, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(8, 2);
-        WithVar("Bonus", 4, 1); // Ferment: Block gained per fermented turn
+        // Live Block = base 8 (10), increased 50% per fermented turn. {CalculatedBlock} shows the
+        // true current value and turns green while fermented (like Congeal's poison-scaled Block).
+        WithCalculatedBlock(8, static (card, _) =>
+                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * 50m / 100m
+                                  * ((AlchemistCard)card).FermentTurns),
+            ValueProp.Move, 2, 0);
         WithKeyword(CardKeyword.Retain);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var total = DynamicVars["Block"].BaseValue
-                    + DynamicVars["Bonus"].BaseValue * ConsumeFermentTurns();
-        await CreatureCmd.GainBlock(Owner.Creature, total, ValueProp.Move, play);
+        await CommonActions.CardBlock(this, play); // uses the CalculatedBlock total
+        ConsumeFermentTurns();
     }
 }

@@ -13,6 +13,16 @@ public class TriaPrima : AlchemistCard
     protected override bool HasEnergyCostX => true;
     protected override bool IsFermentCard => true;
 
+    protected override string FermentTotalText
+    {
+        get
+        {
+            if (FermentTurns <= 0) return "";
+            var total = (int)DynamicVars["Strength"].BaseValue * FermentTurns;
+            return $" (Gains [green]{total}[/green] Strength.)";
+        }
+    }
+
     public TriaPrima() : base(0, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithVar("Strength", 1, 1); // Ferment: Strength per fermented turn

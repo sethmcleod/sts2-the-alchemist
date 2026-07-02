@@ -6,11 +6,11 @@ using Alchemist.AlchemistCode.Commands;
 
 namespace Alchemist.AlchemistCode.Cards.Basic;
 
-public class Leaden : AlchemistCard
+public class Calcine : AlchemistCard
 {
-    public Leaden() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
+    public Calcine() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
     {
-        WithDamage(6, 2);
+        WithDamage(7, 3);
         WithUpgradingCardTip<Dross>();
     }
 

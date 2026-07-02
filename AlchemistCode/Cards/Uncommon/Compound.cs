@@ -1,34 +1,31 @@
-using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Combat.History.Entries;
-using MegaCrit.Sts2.Core.Commands;
+using Alchemist.AlchemistCode;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Compound : AlchemistCard
 {
-    private bool AppliedPoisonThisTurn =>
-        CombatState != null && CombatManager.Instance.History.Entries
-            .OfType<PowerReceivedEntry>()
-            .Any(e => e.Power is PoisonPower && e.HappenedThisTurn(CombatState));
-
-    protected override bool ShouldGlowGoldInternal => AppliedPoisonThisTurn;
+    protected override bool IsFermentCard => true;
 
     public Compound() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(5, 1);
-        WithTip(typeof(PoisonPower));
+        // Per-hit damage = base 6 (9), increased 50% per fermented turn; hits twice.
+        // {CalculatedDamage} shows the live per-hit value and greens while fermented.
+        WithCalculatedDamage(6, static (card, _) =>
+                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * 50m / 100m
+                                  * ((AlchemistCard)card).FermentTurns),
+            ValueProp.Move, 3, 0);
+        WithKeyword(CardKeyword.Retain);
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var hitCount = AppliedPoisonThisTurn ? 4 : 2;
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .WithHitCount(hitCount)
-            .FromCard(this)
-            .Targeting(play.Target!)
-            .Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, 2).Execute(choiceContext); // 2 hits of CalculatedDamage
+        ConsumeFermentTurns();
     }
 }

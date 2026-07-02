@@ -12,6 +12,16 @@ public class Catharsis : AlchemistCard
 {
     protected override bool IsFermentCard => true;
 
+    protected override string FermentTotalText
+    {
+        get
+        {
+            if (FermentTurns <= 0) return "";
+            var total = (int)DynamicVars["RegenPower"].BaseValue + (int)DynamicVars["Bonus"].BaseValue * FermentTurns;
+            return $" (Gains [green]{total}[/green] Regen.)";
+        }
+    }
+
     public Catharsis() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithPower<RegenPower>(3, 1);

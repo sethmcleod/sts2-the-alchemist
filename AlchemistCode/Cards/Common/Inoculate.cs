@@ -10,7 +10,7 @@ public class Inoculate : AlchemistCard
     public Inoculate() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(6, 3);
-        WithPower<PoisonPower>(2, 0);
+        WithPower<PoisonPower>(3, 0); // self-poison tax: real HP cost for 0-cost block
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

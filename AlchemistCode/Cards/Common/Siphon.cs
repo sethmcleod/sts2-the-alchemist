@@ -13,7 +13,7 @@ public class Siphon : AlchemistCard
 
     public Siphon() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(7, 2);
+        WithDamage(5, 2);
         WithCards(2, 0);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }

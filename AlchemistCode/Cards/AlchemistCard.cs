@@ -62,8 +62,18 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
     /// <summary>Override to true on cards with the Ferment keyword.</summary>
     protected virtual bool IsFermentCard => false;
 
-    /// <summary>Fermented turns accrued so far (peek without resetting).</summary>
-    protected int FermentTurns => _fermentTurns;
+    /// <summary>Ferment cards render their Retain keyword inline with "Ferment." — see FermentInlineRetainPatch.</summary>
+    internal bool IsFermentInline => IsFermentCard;
+
+    /// <summary>Fermented turns accrued so far (peek without resetting). Internal so the static
+    /// WithCalculated* lambdas can read it off the card argument for live green scaling.</summary>
+    internal int FermentTurns => _fermentTurns;
+
+    /// <summary>Flat Poison/Regen Ferment cards override this to append a live "(Applies N.)"
+    /// parenthetical (shown via {FermentTotal}) so the true fermented total is always explicit.
+    /// Return "" when not fermented. Damage/Block Ferment cards leave this empty (their number is
+    /// already the live green total via the calculated var).</summary>
+    protected virtual string FermentTotalText => "";
 
     public override Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
@@ -89,7 +99,10 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
         // Ferment cards show the accrued turn count next to the keyword, e.g. "Ferment (2).".
         // Reference {FermentSuffix} inside the [gold]Ferment…[/gold] tag in the card's loc.
         if (IsFermentCard)
+        {
             description.Add("FermentSuffix", _fermentTurns > 0 ? $" ({_fermentTurns})" : "");
+            description.Add("FermentTotal", FermentTotalText);
+        }
         // Formula-damage cards surface their enchantment's flat bonus as a green " + N" suffix,
         // since the DamageVar enchant preview never reaches their computed damage. Place
         // {EnchantBonus} right after the damage clause in the card's loc.

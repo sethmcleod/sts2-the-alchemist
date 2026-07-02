@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsmc54lguftq4"
-path="res://.godot/imported/leaden.png-2364262abd1afbf56312896cdea92763.ctex"
+uid="uid://lltwqvaf2fjc"
+path="res://.godot/imported/calcine.png-0de1400f913a612581404e7553adfaf6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/leaden.png"
-dest_files=["res://.godot/imported/leaden.png-2364262abd1afbf56312896cdea92763.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/calcine.png"
+dest_files=["res://.godot/imported/calcine.png-0de1400f913a612581404e7553adfaf6.ctex"]
 
 [params]
 

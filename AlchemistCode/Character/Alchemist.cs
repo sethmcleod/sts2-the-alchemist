@@ -29,7 +29,7 @@ public class Alchemist : PlaceholderCharacterModel
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<Nigredo>(),
-        ModelDb.Card<Leaden>()
+        ModelDb.Card<Calcine>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
