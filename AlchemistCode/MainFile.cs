@@ -1,6 +1,8 @@
 using System.Reflection;
+using BaseLib.Config;
 using Godot;
 using HarmonyLib;
+using Alchemist.AlchemistCode.Config;
 using MegaCrit.Sts2.Core.Modding;
 
 namespace Alchemist.AlchemistCode;
@@ -35,5 +37,10 @@ public partial class MainFile : Node
                 Logger.Error($"Failed to apply Harmony patch class {type.FullName}: {e}");
             }
         }
+
+        // Mod settings page (BaseLib): testing helpers to unlock/re-lock all Alchemist content.
+        // Registered under the display name (not ModId) so the mods list shows "The Alchemist"
+        // and sorts it after "BaseLib".
+        ModConfigRegistry.Register("The Alchemist", new AlchemistModConfig());
     }
 }
