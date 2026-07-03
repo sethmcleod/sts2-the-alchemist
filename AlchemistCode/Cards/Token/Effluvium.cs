@@ -10,19 +10,19 @@ namespace Alchemist.AlchemistCode.Cards.Token;
 [Pool(typeof(TokenCardPool))]
 public class Effluvium : AlchemistCard
 {
-    public Effluvium() : base(0, CardType.Attack, CardRarity.Token, TargetType.AllEnemies)
+    public Effluvium() : base(0, CardType.Skill, CardRarity.Token, TargetType.AnyEnemy)
     {
-        WithDamage(6, 3);
-        WithPower<PoisonPower>(1, 0);
-        WithKeyword(CardKeyword.Exhaust);
+        WithPower<WeakPower>(1, 1);       // applied to the target: 1 (2)
+        WithPower<VulnerablePower>(1, 1); // applied to the target: 1 (2)
+        WithVar("SelfPoison", 1, 1);      // gained by you: 1 (2)
+        WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (CombatState == null) return;
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this)
-            .TargetingAllOpponents(CombatState).Execute(choiceContext);
+        await CommonActions.Apply<WeakPower>(choiceContext, this, play);
+        await CommonActions.Apply<VulnerablePower>(choiceContext, this, play);
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
-            DynamicVars.Poison.BaseValue, Owner.Creature, this);
+            DynamicVars["SelfPoison"].BaseValue, Owner.Creature, this);
     }
 }

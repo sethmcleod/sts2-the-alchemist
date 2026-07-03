@@ -11,7 +11,7 @@ public class Chorus : AlchemistCard
 
     public Chorus() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllAllies)
     {
-        WithVar("turns", 1, 1);
+        WithVar("percent", 50, 25); // 50% (75%) more damage vs Poisoned enemies, for the rest of combat
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -20,6 +20,6 @@ public class Chorus : AlchemistCard
             where c != null && c.IsAlive && c.IsPlayer
             select c;
         foreach (var ally in allies)
-            await PowerCmd.Apply<ChorusPower>(choiceContext, ally, DynamicVars["turns"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<ChorusPower>(choiceContext, ally, DynamicVars["percent"].BaseValue, Owner.Creature, this);
     }
 }

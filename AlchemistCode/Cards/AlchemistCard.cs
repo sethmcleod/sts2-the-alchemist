@@ -75,14 +75,21 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
     /// already the live green total via the calculated var).</summary>
     protected virtual string FermentTotalText => "";
 
-    public override Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
+    /// <summary>Override to true on cards with the Seep keyword.</summary>
+    protected virtual bool IsSeepCard => false;
+
+    /// <summary>The Seep effect: runs at your turn end while this card is still in your hand (unplayed).</summary>
+    protected virtual Task OnSeep(PlayerChoiceContext choiceContext) => Task.CompletedTask;
+
+    public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
-        if (IsFermentCard && Owner != null
-            && participants.Contains(Owner.Creature)
-            && PileType.Hand.GetPile(Owner).Cards.Contains(this))
-            _fermentTurns++;
-        return Task.CompletedTask;
+        // Both Ferment and Seep fire only while the card is held in hand at the owner's turn end.
+        if (Owner == null || !participants.Contains(Owner.Creature)
+            || !PileType.Hand.GetPile(Owner).Cards.Contains(this))
+            return;
+        if (IsFermentCard) _fermentTurns++;
+        if (IsSeepCard) await OnSeep(choiceContext);
     }
 
     /// <summary>Returns the fermented-turn count and resets it — call when the effect resolves.</summary>

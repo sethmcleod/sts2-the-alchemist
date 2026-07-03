@@ -1,23 +1,32 @@
+using Alchemist.AlchemistCode;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Fumigate : AlchemistCard
 {
+    protected override bool IsSeepCard => true;
+
     public Fumigate() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
-        WithCalculatedDamage(6, 1, (card, _) =>
-            card.Owner.Creature.GetPowerAmount<PoisonPower>(), ValueProp.Move, 2, 0);
-        WithTip(typeof(PoisonPower));
+        WithDamage(8, 3);
+        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Seep) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (CombatState == null) return;
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
+    }
+
+    protected override async Task OnSeep(PlayerChoiceContext choiceContext)
+    {
+        // Self HP loss — unblockable, unpowered.
+        await CreatureCmd.Damage(choiceContext, Owner.Creature, 2,
+            ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
     }
 }

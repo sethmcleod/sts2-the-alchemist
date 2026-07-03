@@ -22,4 +22,14 @@ public static class AlchemistKeywords
     [CustomEnum]
     [KeywordProperties(AutoKeywordPosition.None)]
     public static CardKeyword Ferment;
+
+    /// <summary>At the end of your turn, if this card is still in your hand, an extra effect triggers.</summary>
+    [CustomEnum]
+    [KeywordProperties(AutoKeywordPosition.None)]
+    public static CardKeyword Seep;
+
+    /// <summary>Enchant a card until end of combat (Sharp/Adroit/Swift by type; Ethereal for junk).</summary>
+    [CustomEnum]
+    [KeywordProperties(AutoKeywordPosition.None)]
+    public static CardKeyword Infuse;
 }
