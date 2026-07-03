@@ -18,33 +18,27 @@ public class TriaPrima : AlchemistCard
         get
         {
             if (FermentTurns <= 0) return "";
-            var total = (int)DynamicVars["Strength"].BaseValue * FermentTurns;
-            return $" (Gains [green]{total}[/green] Strength.)";
+            return $" (X is [green]{FermentTurns}[/green] higher.)";
         }
     }
 
     public TriaPrima() : base(0, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("Strength", 1, 1); // Ferment: Strength per fermented turn
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(RegenPower));
-        WithTip(typeof(StrengthPower));
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var x = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0);
+        // Ferment increases X (energy spent) by 1 per fermented turn, boosting both Poison and Regen.
+        var x = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0) + ConsumeFermentTurns();
         if (x > 0)
         {
             foreach (var enemy in CombatState!.Enemies.Where(e => e.IsAlive))
                 await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, x, Owner.Creature, this);
             await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, x, Owner.Creature, this);
         }
-
-        var strength = DynamicVars["Strength"].BaseValue * ConsumeFermentTurns();
-        if (strength > 0)
-            await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, strength, Owner.Creature, this);
     }
 }

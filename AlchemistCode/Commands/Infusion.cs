@@ -39,6 +39,15 @@ public static class Infusion
             Infuse(card);
     }
 
+    /// <summary>Let the player Infuse any number of cards from their Hand (GUARDS-style 0..∞ selector).</summary>
+    public static async Task InfuseAnyFromHand(PlayerChoiceContext ctx, AlchemistCard source)
+    {
+        var prefs = new CardSelectorPrefs(SelectPrompt, 0, 999999999);
+        var picks = await CardSelectCmd.FromHand(ctx, source.Owner, prefs, null, source);
+        foreach (var card in picks)
+            Infuse(card);
+    }
+
     /// <summary>Infuse <paramref name="count"/> random cards from <paramref name="owner"/>'s Hand
     /// (optionally excluding one card, e.g. the source that triggered it).</summary>
     public static void InfuseRandomFromHand(Player owner, int count, CardModel? exclude = null)

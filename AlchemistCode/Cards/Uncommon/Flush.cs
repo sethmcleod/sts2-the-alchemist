@@ -15,6 +15,7 @@ public class Flush : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
         var regen = Owner.Creature.GetPowerAmount<RegenPower>();
         if (Owner.Creature.HasPower<RegenPower>())
             await PowerCmd.Remove<RegenPower>(Owner.Creature);

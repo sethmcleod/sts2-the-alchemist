@@ -7,9 +7,9 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-public class Materialise : AlchemistCard
+public class Imbue : AlchemistCard
 {
-    public Materialise() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Imbue() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Cards", 1, 1);  // random cards Infused each turn: 1 (2)
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) });
@@ -17,7 +17,7 @@ public class Materialise : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<MaterialisePower>(choiceContext, Owner.Creature,
+        await PowerCmd.Apply<ImbuePower>(choiceContext, Owner.Creature,
             DynamicVars["Cards"].IntValue, Owner.Creature, this);
     }
 }

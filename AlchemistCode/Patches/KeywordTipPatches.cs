@@ -19,6 +19,8 @@ public static class KeywordTipIconPatch
         string? iconName = null, locKey = null;
         if (keyword == AlchemistKeywords.Ferment) (iconName, locKey) = ("ferment", "ALCHEMIST-FERMENT");
         else if (keyword == AlchemistKeywords.Gambit) (iconName, locKey) = ("gambit", "ALCHEMIST-GAMBIT");
+        else if (keyword == AlchemistKeywords.Seep) (iconName, locKey) = ("seep", "ALCHEMIST-SEEP");
+        else if (keyword == AlchemistKeywords.Infuse) (iconName, locKey) = ("infuse", "ALCHEMIST-INFUSE");
         if (iconName == null) return;
 
         var tex = ResourceLoader.Load<Texture2D>(

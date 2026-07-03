@@ -10,7 +10,7 @@ public class Chrysopoeia : AlchemistCard
 {
     public Chrysopoeia() : base(0, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("gold", 2, 2);
+        WithVar("gold", 3, 2);
         WithTip(typeof(PoisonPower));
     }
 

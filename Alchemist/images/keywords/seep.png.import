@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw67hndnmj6ep"
-path="res://.godot/imported/materialise_power.png-6f384f2be0b120241362431f4d14caa2.ctex"
+uid="uid://cupomgqgr37n7"
+path="res://.godot/imported/seep.png-7cfd34f8f6fb462ffa28f447175de790.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/materialise_power.png"
-dest_files=["res://.godot/imported/materialise_power.png-6f384f2be0b120241362431f4d14caa2.ctex"]
+source_file="res://Alchemist/images/keywords/seep.png"
+dest_files=["res://.godot/imported/seep.png-7cfd34f8f6fb462ffa28f447175de790.ctex"]
 
 [params]
 

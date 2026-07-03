@@ -14,10 +14,8 @@ public class Amplification : AlchemistCard
 
     public Amplification() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("Strength", 1, 1); // Gambit bonus: 1 -> 2 upgraded
         WithTip(typeof(PoisonPower));
         WithTip(typeof(RegenPower));
-        WithTip(typeof(StrengthPower));
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
@@ -36,7 +34,6 @@ public class Amplification : AlchemistCard
                 await PowerCmd.Apply<RegenPower>(choiceContext, creature, regen * multiplier, Owner.Creature, this);
         }
         if (IsReduced)
-            await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature,
-                DynamicVars["Strength"].BaseValue, Owner.Creature, this);
+            await CardPileCmd.Draw(choiceContext, 1, Owner);
     }
 }

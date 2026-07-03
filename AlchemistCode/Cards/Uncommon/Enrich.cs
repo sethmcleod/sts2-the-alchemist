@@ -11,12 +11,13 @@ public class Enrich : AlchemistCard
 {
     public Enrich() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
+        WithVar("draw", 1, 1); // draw 1 (2)
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await Infusion.InfuseChosen(choiceContext, this, PileType.Draw, 2);
-        await CardPileCmd.Draw(choiceContext, 2, Owner);
+        await CardPileCmd.Draw(choiceContext, DynamicVars["draw"].IntValue, Owner);
     }
 }

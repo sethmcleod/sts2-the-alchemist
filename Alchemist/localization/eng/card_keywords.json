@@ -1,8 +1,8 @@
 {
   "ALCHEMIST-GAMBIT.title": "Gambit",
-  "ALCHEMIST-GAMBIT.description": "While you are at 50% or less HP, this card has an extra effect.",
+  "ALCHEMIST-GAMBIT.description": "While you are at 50% or less HP, this card has an extra effect when played.",
   "ALCHEMIST-FERMENT.title": "Ferment",
-  "ALCHEMIST-FERMENT.description": "This card's effect grows for each turn it stays in your Hand.",
+  "ALCHEMIST-FERMENT.description": "This card increases in potency for each turn Retained.",
   "ALCHEMIST-SEEP.title": "Seep",
   "ALCHEMIST-SEEP.description": "At the end of your turn, if this card is in your [gold]Hand[/gold], an extra effect triggers.",
   "ALCHEMIST-INFUSE.title": "Infuse",

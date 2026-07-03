@@ -11,11 +11,12 @@ public class EverflowingChalice : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Shop;
 
-    // Backs the {Energy:energyIcons()} token in the tooltip (base-game relic pattern).
+    // "Energy" backs the {Energy:energyIcons()} token and MUST be an EnergyVar — the formatter
+    // rejects a plain DynamicVar ("Unknown value type") and the energy icon renders broken.
     // "Pending" tracks the fell-back-to-energy state in a DynamicVar (not a plain field)
-    // so it survives a mid-combat save/reload; "Energy" backs the tooltip's energy icon.
+    // so it survives a mid-combat save/reload.
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        new[] { new DynamicVar("Energy", 1m), new DynamicVar("Pending", 0m) };
+        new DynamicVar[] { new EnergyVar("Energy", 1), new DynamicVar("Pending", 0m) };
 
     public override async Task BeforeCombatStart()
     {
