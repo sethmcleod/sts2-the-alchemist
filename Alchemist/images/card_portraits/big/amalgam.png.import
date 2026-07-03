@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8gaid0s7ishk"
-path="res://.godot/imported/power.png-6440075ef8ded9700419aad63805750e.ctex"
+uid="uid://ba0p735oxd7go"
+path="res://.godot/imported/amalgam.png-c703f4556f9296ffdaeaf932a3047b59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/power.png"
-dest_files=["res://.godot/imported/power.png-6440075ef8ded9700419aad63805750e.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/amalgam.png"
+dest_files=["res://.godot/imported/amalgam.png-c703f4556f9296ffdaeaf932a3047b59.ctex"]
 
 [params]
 

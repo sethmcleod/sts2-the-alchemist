@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwff4e0uhngnu"
-path="res://.godot/imported/volatility_power.png-820c73dd60cc07f6b7207bbbe4bfa95c.ctex"
+uid="uid://sk076v3xyqtj"
+path="res://.godot/imported/catalyse_power.png-caced189a9ef110a67c0ebeaca93a718.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/volatility_power.png"
-dest_files=["res://.godot/imported/volatility_power.png-820c73dd60cc07f6b7207bbbe4bfa95c.ctex"]
+source_file="res://Alchemist/images/powers/catalyse_power.png"
+dest_files=["res://.godot/imported/catalyse_power.png-caced189a9ef110a67c0ebeaca93a718.ctex"]
 
 [params]
 

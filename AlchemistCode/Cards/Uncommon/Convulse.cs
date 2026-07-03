@@ -7,9 +7,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-public class Catalyse : AlchemistCard
+public class Convulse : AlchemistCard
 {
-    public Catalyse() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Convulse() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(6, 3);
         WithPower<PoisonPower>(2, 0);

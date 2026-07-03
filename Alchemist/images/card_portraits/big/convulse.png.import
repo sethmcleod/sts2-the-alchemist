@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqh7tyiren7jk"
-path="res://.godot/imported/panacea.png-658235730aa406349aaaca18002f860a.ctex"
+uid="uid://yame81qjq6su"
+path="res://.godot/imported/convulse.png-a8b1a3eb83b04befa3394045138fc84a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/panacea.png"
-dest_files=["res://.godot/imported/panacea.png-658235730aa406349aaaca18002f860a.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/convulse.png"
+dest_files=["res://.godot/imported/convulse.png-a8b1a3eb83b04befa3394045138fc84a.ctex"]
 
 [params]
 

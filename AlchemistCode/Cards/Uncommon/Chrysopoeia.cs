@@ -10,8 +10,7 @@ public class Chrysopoeia : AlchemistCard
 {
     public Chrysopoeia() : base(0, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("gold", 3, 2);
-        WithTip(typeof(PoisonPower));
+        WithVar("gold", 1, 1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

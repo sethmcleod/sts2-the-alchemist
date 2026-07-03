@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-public class TriaPrima : AlchemistCard
+public class Amalgam : AlchemistCard
 {
     protected override bool HasEnergyCostX => true;
     protected override bool IsFermentCard => true;
@@ -22,7 +22,7 @@ public class TriaPrima : AlchemistCard
         }
     }
 
-    public TriaPrima() : base(0, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public Amalgam() : base(0, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
