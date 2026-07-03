@@ -23,11 +23,11 @@ public class Haemorrhage : AlchemistCard
         var regen = Owner.Creature.GetPowerAmount<RegenPower>();
         if (regen > 0)
             await CreatureCmd.Damage(choiceContext, Owner.Creature,
-                regen, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+                regen, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
         var multiplier = IsUpgraded ? 3 : 2;
         var damage = regen * multiplier + EnchantDamageBonus;
         if (damage > 0)
-            await DamageCmd.Attack(damage).FromCard(this)
+            await DamageCmd.Attack(damage).FromCard(this, play)
                 .Targeting(play.Target!).Execute(choiceContext);
     }
 }

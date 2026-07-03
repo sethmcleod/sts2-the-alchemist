@@ -1,3 +1,4 @@
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
@@ -14,7 +15,7 @@ public class ChorusPower : AlchemistPower
     // Amount is the percentage bonus (50 → +50% damage). Persists for the rest of combat; stacking
     // copies sum their percentages.
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props,
-        Creature? dealer, CardModel? cardSource)
+        Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
         if (dealer != Owner) return 1m;
         if (target == null || target == Owner) return 1m;

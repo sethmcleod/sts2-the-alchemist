@@ -16,7 +16,7 @@ public class Ichor : AlchemistCard
     {
         var missingHp = Owner.Creature.MaxHp - Owner.Creature.CurrentHp;
         if (missingHp > 0)
-            await DamageCmd.Attack(missingHp).FromCard(this)
+            await DamageCmd.Attack(missingHp).FromCard(this, play)
                 .Targeting(play.Target!).Execute(choiceContext);
     }
 }

@@ -28,7 +28,7 @@ public class Citrinitas : AlchemistCard
             await PowerCmd.Remove<RegenPower>(Owner.Creature);
             await DamageCmd.Attack(regenAmount)
                 .WithHitCount(DynamicVars["Hits"].IntValue)
-                .FromCard(this)
+                .FromCard(this, play)
                 .TargetingAllOpponents(CombatState)
                 .Execute(choiceContext);
         }

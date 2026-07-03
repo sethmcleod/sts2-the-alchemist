@@ -25,7 +25,7 @@ public class Accrue : AlchemistCard
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(Hits)
-            .FromCard(this)
+            .FromCard(this, play)
             .Targeting(play.Target!)
             .Execute(choiceContext);
     }

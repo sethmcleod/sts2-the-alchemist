@@ -33,7 +33,7 @@ public class Metabolize : AlchemistCard
         {
             var rarity = IsUpgraded ? PotionRarity.Uncommon : PotionRarity.Common;
             var rng = Owner.RunState.Rng.CombatPotionGeneration;
-            var options = PotionFactory.GetPotionOptions(Owner, System.Array.Empty<PotionModel>())
+            var options = PotionFactory.GetPotionOptions(Owner)
                 .Where(p => p.CanBeGeneratedInCombat && p.Rarity == rarity)
                 .ToList();
             var potion = rng.NextItem(options);

@@ -17,6 +17,6 @@ public class DetonationPower : AlchemistPower
         Flash();
         foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
             await CreatureCmd.Damage(new MegaCrit.Sts2.Core.GameActions.Multiplayer.ThrowingPlayerChoiceContext(),
-                enemy, Amount, ValueProp.Move, Owner, null);
+                enemy, Amount, ValueProp.Move, Owner, null, null);
     }
 }

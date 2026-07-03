@@ -27,6 +27,6 @@ public class Fumigate : AlchemistCard
     {
         // Self HP loss — unblockable, unpowered.
         await CreatureCmd.Damage(choiceContext, Owner.Creature, 2,
-            ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
     }
 }

@@ -33,7 +33,7 @@ public class Partition : AlchemistCard
         {
             var damage = perEnemy + (remainder > 0 ? 1 : 0);
             remainder--;
-            await CreatureCmd.Damage(choiceContext, enemy, damage, ValueProp.Move, Owner.Creature, this);
+            await CreatureCmd.Damage(choiceContext, enemy, damage, ValueProp.Move, Owner.Creature, this, null);
         }
         if (IsReduced)
             foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))

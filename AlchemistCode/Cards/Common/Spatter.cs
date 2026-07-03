@@ -20,7 +20,7 @@ public class Spatter : AlchemistCard
         if (CombatState == null) return;
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(DynamicVars["hits"].IntValue)
-            .FromCard(this)
+            .FromCard(this, play)
             .TargetingRandomOpponents(CombatState)
             .Execute(choiceContext);
         await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);

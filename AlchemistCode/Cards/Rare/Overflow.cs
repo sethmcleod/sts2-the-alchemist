@@ -24,7 +24,7 @@ public class Overflow : AlchemistCard
         if (regen <= 0) return;
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(regen)
-            .FromCard(this)
+            .FromCard(this, play)
             .TargetingAllOpponents(CombatState)
             .Execute(choiceContext);
     }

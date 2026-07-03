@@ -21,7 +21,7 @@ public class Potentiate : AlchemistCard
         var hitCount = 1 + potionsUsed;
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(hitCount)
-            .FromCard(this)
+            .FromCard(this, play)
             .Targeting(play.Target!)
             .Execute(choiceContext);
     }

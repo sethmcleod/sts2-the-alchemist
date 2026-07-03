@@ -32,7 +32,7 @@ public class Decoction : AlchemistCard
 
         // Procure a random combat-eligible potion of any rarity.
         var rng = Owner.RunState.Rng.CombatPotionGeneration;
-        var options = PotionFactory.GetPotionOptions(Owner, System.Array.Empty<PotionModel>())
+        var options = PotionFactory.GetPotionOptions(Owner)
             .Where(p => p.CanBeGeneratedInCombat)
             .ToList();
         var potion = rng.NextItem(options);

@@ -38,7 +38,7 @@ public class InversionPower : AlchemistPower
             // Re-snapshot alive enemies per hit so kills mid-sequence are respected.
             for (var i = 0; i < hits; i++)
                 foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
-                    await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), enemy, delta, ValueProp.Move, Owner, null);
+                    await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), enemy, delta, ValueProp.Move, Owner, null, null);
         }
         finally
         {
