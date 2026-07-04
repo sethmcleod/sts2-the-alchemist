@@ -24,7 +24,10 @@ public static class AlchemistCardCmd
         if (source.CombatState == null) return;
         var card = source.CombatState.CreateCard<T>(source.Owner);
         if (source.IsUpgraded) CardCmd.Upgrade(card);
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, source.Owner, CardPilePosition.Random);
+        // PreviewCardPileAdd pops the shuffled card up center-screen (the base "shuffle X into your
+        // draw pile" feedback) so the addition is visible and the draw-pile count updates on-screen.
+        CardCmd.PreviewCardPileAdd(
+            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, source.Owner, CardPilePosition.Random));
     }
 
     public static async Task AddStatus<T>(AlchemistCard source) where T : CardModel, new()

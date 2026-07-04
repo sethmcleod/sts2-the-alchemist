@@ -73,9 +73,9 @@ public static class PotionSellPatches
 
     private static readonly LocString[] SellLines =
     [
-        new LocString("ui", "POTION_SELL.merchant_sell_1"),
-        new LocString("ui", "POTION_SELL.merchant_sell_2"),
-        new LocString("ui", "POTION_SELL.merchant_sell_3"),
+        new LocString("gameplay_ui", "POTION_SELL.merchant_sell_1"),
+        new LocString("gameplay_ui", "POTION_SELL.merchant_sell_2"),
+        new LocString("gameplay_ui", "POTION_SELL.merchant_sell_3"),
     ];
 
     private static async Task SellPotion(PotionModel potion)
@@ -115,7 +115,7 @@ public static class PotionSellPatches
             var useButton = (NPotionPopupButton)UseButtonField.GetValue(__instance)!;
 
             var gold = GetGoldForRarity(potion.Rarity);
-            var locString = new LocString("ui", "POTION_SELL.button");
+            var locString = new LocString("gameplay_ui", "POTION_SELL.button");
             locString.Add("Gold", gold);
             SetButtonText(useButton, locString.GetFormattedText(), new Color(0.9f, 0.77f, 0.3f));
             useButton.Enable();
@@ -187,7 +187,7 @@ public static class PotionSellPatches
             var timer = __instance.GetTree().CreateTimer(0.75);
             timer.Connect(SceneTreeTimer.SignalName.Timeout, Callable.From(() =>
             {
-                var greeting = new LocString("ui", $"POTION_SELL.merchant_greeting_{index}");
+                var greeting = new LocString("gameplay_ui", $"POTION_SELL.merchant_greeting_{index}");
                 __instance.MerchantButton?.PlayDialogue(greeting, 3.0);
             }));
         }

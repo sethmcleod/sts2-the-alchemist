@@ -32,11 +32,15 @@ public static class Infusion
     public static async Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count)
     {
         var prefs = new CardSelectorPrefs(SelectPrompt, count);
-        var picks = pile == PileType.Hand
+        var picks = (pile == PileType.Hand
             ? await CardSelectCmd.FromHand(ctx, source.Owner, prefs, null, source)
-            : await CardSelectCmd.FromCombatPile(ctx, pile.GetPile(source.Owner), source.Owner, prefs);
+            : await CardSelectCmd.FromCombatPile(ctx, pile.GetPile(source.Owner), source.Owner, prefs)).ToList();
         foreach (var card in picks)
             Infuse(card);
+        // Draw/Discard infusions hit cards the player can't see (and the selector auto-picks a lone
+        // card with no UI), so pop the infused cards up. Hand picks are already visible — no popup.
+        if (pile is PileType.Draw or PileType.Discard && picks.Count > 0)
+            CardCmd.Preview(picks);
     }
 
     /// <summary>Let the player Infuse any number of cards from their Hand (GUARDS-style 0..∞ selector).</summary>
@@ -54,12 +58,18 @@ public static class Infusion
     {
         var rng = owner.RunState.Rng.CombatCardGeneration;
         var hand = PileType.Hand.GetPile(owner).Cards.Where(c => c != exclude).ToList();
+        var infused = new List<CardModel>();
         for (var i = 0; i < count && hand.Count > 0; i++)
         {
             var card = hand[rng.NextInt(hand.Count)];
             hand.Remove(card);
             Infuse(card);
+            infused.Add(card);
         }
+        // Random picks are "hidden" (the player didn't choose them) — pop them up so it's clear which
+        // cards got infused.
+        if (infused.Count > 0)
+            CardCmd.Preview(infused);
     }
 
     public static void Infuse(CardModel card)

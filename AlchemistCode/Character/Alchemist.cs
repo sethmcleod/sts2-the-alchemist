@@ -16,7 +16,8 @@ public class Alchemist : PlaceholderCharacterModel
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Neutral;
-    public override int StartingHp => 70;
+    public override int StartingHp => 69;
+    public override int StartingGold => 55;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
@@ -52,6 +53,10 @@ public class Alchemist : PlaceholderCharacterModel
     }
 
     public override string CustomIconTexturePath => "character_icon_alchemist.png".CharacterUiPath();
+    // The dialogue/top-bar portrait draws a second "Icon/Outline" TextureRect from IconOutlineTexture
+    // (a white silhouette the game tints as the drop shadow). Without this override it falls back to the
+    // non-existent base path ui/top_panel/character_icon_alchemist_outline.png, so the shadow mismatches.
+    public override string CustomIconOutlineTexturePath => "character_icon_alchemist_outline.png".CharacterUiPath();
     public override string CustomCharacterSelectIconPath => "char_select_alchemist.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_alchemist_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();

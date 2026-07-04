@@ -4,6 +4,7 @@ using BaseLib.Utils;
 using Alchemist.AlchemistCode.Character;
 using Alchemist.AlchemistCode.Extensions;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -89,7 +90,12 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
             || !PileType.Hand.GetPile(Owner).Cards.Contains(this))
             return;
         if (IsFermentCard) _fermentTurns++;
-        if (IsSeepCard) await OnSeep(choiceContext);
+        if (IsSeepCard)
+        {
+            // Pop the card up center-screen each turn it seeps so the recurring effect is visible.
+            CardCmd.Preview(new[] { this });
+            await OnSeep(choiceContext);
+        }
     }
 
     /// <summary>Returns the fermented-turn count and resets it — call when the effect resolves.</summary>
