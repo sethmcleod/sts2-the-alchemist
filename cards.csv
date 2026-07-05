@@ -2,8 +2,8 @@ Card,Rarity,Type,Cost,Description
 Strike,Basic,Attack,1,Deal 6 (9) damage.
 Defend,Basic,Skill,1,Gain 5 (8) Block.
 Prime,Basic,Attack,1,Deal 7 (10) damage. Infuse a card in your Discard Pile.
-Nigredo,Basic,Skill,1,Apply 2 (3) Poison to ALL enemies and yourself. Shuffle an Albedo (+) into your Deck. Exhaust.
-Tinge,Common,Attack,0,Deal 3 (4) damage. Apply 2 Poison. Seep: apply 2 Poison to a random enemy.
+Nigredo,Basic,Skill,1,Apply 2 (3) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Innate. Exhaust.
+Tinge,Common,Attack,0,Deal 3 (4) damage. Apply 2 Poison. Seep: apply 3 Poison to a random enemy.
 Assay,Common,Attack,0,Deal 4 (6) damage. Draw a card. Seep: gain 2 Regen.
 Fumigate,Common,Attack,1,Deal 8 (11) damage to ALL enemies. Seep: lose 2 HP.
 Cornered,Common,Attack,1,Deal 6 (9) damage. Gambit: Deal an additional 5 damage.
@@ -14,7 +14,7 @@ Siphon,Common,Attack,1,Deal 5 (7) damage. Draw 2 cards. Gambit: Draw an addition
 Improvise,Common,Attack,1,Deal 5 (7) damage. Gain 4 (6) Block. Gambit: Gain 2 (3) Regen.
 Enervate,Common,Attack,2,Deal 12 (16) damage. Apply 2 (3) Weak. Gambit: Deal 6 (8) additional damage.
 Inoculate,Common,Skill,0,Gain 6 (9) Block. Gain 3 Poison.
-Poultice,Common,Skill,0,Gain 2 (3) Regen. Gain 1 (2) Poison. Add a Dazed to your Discard Pile.
+Poultice,Common,Skill,0,Gain 2 (3) Regen. Gain 1 (2) Poison. Add a Dazed into your Discard Pile.
 Miasma,Common,Skill,1,"Retain. Ferment. Apply 2 (3) Poison to ALL enemies, plus 1 Poison for every turn fermented."
 Steep,Common,Skill,1,"Retain. Ferment. Apply 4 (6) Poison, plus 2 Poison for every turn fermented."
 Reconstitute,Common,Skill,1,Gain 3 (2) Poison. Put a card from your Discard pile into your hand.
@@ -41,7 +41,7 @@ Metabolize,Uncommon,Skill,0,Gain Strength this turn equal to your Poison. Gambit
 Assimilate,Uncommon,Skill,0,Gain Block equal to Poison on everyone. Exhaust. (Doesn't Exhaust)
 Permeate,Uncommon,Skill,1,"Whenever you gain health this turn, apply 3 (4) Poison to ALL enemies."
 Salvage,Uncommon,Skill,1,Choose 2 cards in your Discard Pile to Transform into Distillates(+).
-Glean,Uncommon,Skill,1,Gain 7 (10) Block. Choose 1 of 3 cards in your Draw Pile and add it to your Hand.
+Glean,Uncommon,Skill,1,Gain 7 (10) Block. Choose 1 of 3 cards in your Draw Pile and add it into your Hand.
 Hone,Uncommon,Skill,1,(Gain 1 Strength.) Upgrade ALL cards in your Hand. Exhaust.
 Enrich,Uncommon,Skill,1,Infuse 2 cards in your Draw Pile. Draw 1 (2) cards.
 Precipitate,Uncommon,Skill,2,"Gain 10 (13) Block. The next time you use a potion, procure a potion of that type."
@@ -90,7 +90,7 @@ Suffuse,"Rare, Multiplayer",Power,2 (1),"At the start of your turn, if your HP i
 Effervesce,"Uncommon, Multiplayer",Skill,0,Add 2 (3) Distillates to another player's Hand.
 Reflux,"Uncommon, Multiplayer",Skill,1,"Whenever another player applies a debuff this turn, apply 2 (3) Poison to that enemy."
 Distillate,Token,Skill,0,Gain 3 (5) Block. Gain 2 (3) Regen. Draw 1 card. Exhaust.
-Albedo,Token,Skill,1,Lose all Poison. Gain that much Regen (+ 1). Shuffle a Citrinitas (+) into your Deck. Exhaust.
-Citrinitas,Token,Skill,1,Lose all Regen. Deal that much damage to ALL enemies 3 (4) times. Shuffle a Rubedo (+) into your Deck. Exhaust.
-Rubedo,Token,Skill,1,Gain 15 (20) Gold. Gain 1 Strength. Procure a random potion. Shuffle a Nigredo (+) into your Deck. Exhaust.
+Albedo,Token,Skill,1,Lose all Poison. Gain that much Regen (+ 1). Add a Citrinitas (+) into your Hand. Exhaust.
+Citrinitas,Token,Skill,1,Lose all Regen. Deal that much damage to ALL enemies 2 (3) times. Add a Rubedo (+) into your Hand. Exhaust.
+Rubedo,Token,Skill,1,Gain 15 (20) Gold. Gain 1 Strength. Procure a random potion. Add a Nigredo (+) into your Hand. Exhaust.
 Effluvium,Token,Skill,0,Apply 1 (2) Weak. Apply 1 (2) Vulnerable. Gain 1 (2) Poison.

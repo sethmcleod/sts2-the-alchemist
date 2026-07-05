@@ -90,10 +90,21 @@ public static class Infusion
 
     private static void TryEnchant<T>(CardModel card) where T : EnchantmentModel
     {
-        // Can't stack onto a different (e.g. permanent) enchantment; and honor CanEnchant restrictions.
-        if (card.Enchantment != null && card.Enchantment is not T) return;
-        if (!ModelDb.Enchantment<T>().CanEnchant(card)) return;
-        CardCmd.Enchant<T>(card, Amount); // stacks the amount on repeat Infusions
+        // Re-Infusing the same card should STACK the amount. The base Sharp/Adroit/Swift enchantments are
+        // NOT IsStackable, so CardCmd.Enchant's CanEnchant refuses a second application and the amount would
+        // stay put (the bug). So when we've already Infused this card with the same enchantment, clear it and
+        // re-apply the summed amount. Only stack onto OUR infusions — never a pre-existing/permanent one.
+        if (card.Enchantment is T existing)
+        {
+            if (!Infused.Contains(card)) return; // a permanent/foreign enchantment of the same type — leave it
+            var summed = existing.Amount + Amount;
+            CardCmd.ClearEnchantment(card);
+            CardCmd.Enchant<T>(card, summed);
+            return; // already tracked in Infused
+        }
+        if (card.Enchantment != null) return;                  // a different enchantment type — don't cross-stack
+        if (!ModelDb.Enchantment<T>().CanEnchant(card)) return; // honor CanEnchant (card type, GainsBlock, etc.)
+        CardCmd.Enchant<T>(card, Amount);
         Infused.Add(card);
     }
 

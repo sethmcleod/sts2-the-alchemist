@@ -13,7 +13,7 @@ public class Citrinitas : AlchemistCard
 {
     public Citrinitas() : base(1, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
-        WithVar("Hits", 3, 1);
+        WithVar("Hits", 2, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithUpgradingCardTip<Rubedo>();
     }

@@ -31,6 +31,6 @@ public class Tinge : AlchemistCard
         var enemies = CombatState.Enemies.Where(e => e.IsAlive).ToList();
         if (enemies.Count == 0) return;
         var target = Owner.RunState.Rng.CombatTargets.NextItem(enemies)!;
-        await PowerCmd.Apply<PoisonPower>(choiceContext, target, 2, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, target, 3, Owner.Creature, this);
     }
 }

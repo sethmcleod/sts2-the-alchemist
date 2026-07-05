@@ -18,6 +18,6 @@ public class Prime : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
-        await Infusion.InfuseChosen(choiceContext, this, PileType.Discard, 1);
+        await Infusion.InfuseChosen(choiceContext, this, PileType.Draw, 1);
     }
 }

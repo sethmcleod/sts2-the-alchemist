@@ -11,7 +11,8 @@ public class Nigredo : AlchemistCard
 {
     public Nigredo() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
-        WithPower<PoisonPower>(3, 1);
+        WithPower<PoisonPower>(4, 1);
+        WithKeyword(CardKeyword.Innate); // starts in the opening hand so the token chain isn't delayed
         WithKeyword(CardKeyword.Exhaust);
         WithUpgradingCardTip<Albedo>();
     }
