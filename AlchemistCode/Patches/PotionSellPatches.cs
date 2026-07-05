@@ -1,22 +1,22 @@
 using System.Reflection;
+using Alchemist.AlchemistCode.Relics;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Context;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Potions;
+using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Potions;
-using MegaCrit.Sts2.Core.Nodes.Potions;
-using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes;
+using MegaCrit.Sts2.Core.Nodes.Potions;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 using MegaCrit.Sts2.Core.Random;
-using MegaCrit.Sts2.Core.Context;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
-using Alchemist.AlchemistCode.Relics;
 
 namespace Alchemist.AlchemistCode.Patches;
 
@@ -34,6 +34,10 @@ public static class PotionSellPatches
     private static MethodInfo? _setTextMethod;
     private static readonly FieldInfo PlayersField =
         AccessTools.Field(typeof(NMerchantRoom), "_players");
+
+    // The top-bar potion slot list (NPotionHolder), so we can animate each filled one.
+    private static readonly FieldInfo HoldersListField =
+        AccessTools.Field(typeof(NPotionContainer), "_holders");
 
     private const int MaxGreetingIndex = 5;
     private static int _greetingIndex = 1;
@@ -177,6 +181,59 @@ public static class PotionSellPatches
         }
     }
 
+    /// <summary>When the shop opens, draw attention to the sellable potions: each FILLED slot replays the
+    /// hover "hop + zoom, then settle" animation, staggered so several potions ripple in a small wave, plus
+    /// the top-bar gold coin icon that pops in below each slot and fades out. Self-cleaning — no teardown.</summary>
+    private static void HighlightSellablePotions()
+    {
+        var container = NRun.Instance?.GlobalUi?.TopBar?.PotionContainer;
+        if (container == null) return;
+        if (HoldersListField.GetValue(container) is not System.Collections.IEnumerable slots) return;
+
+        const float stagger = 0.13f; // each potion starts ~halfway through the previous hop → a wave
+        var i = 0;
+        foreach (var obj in slots)
+        {
+            if (obj is not NPotionHolder holder || !holder.HasPotion) continue;
+            var potion = holder.Potion;
+            if (potion == null) continue;
+            var delay = i * stagger;
+            i++;
+
+            // The exact hover feel: hop up (DoBounce) + zoom to 1.15x, then settle back (as OnFocus/OnUnfocus do).
+            var baseScale = potion.Scale;
+            var hop = potion.CreateTween();
+            if (delay > 0f) hop.TweenInterval(delay);
+            hop.TweenCallback(Callable.From(() => potion.DoBounce()));
+            hop.TweenProperty(potion, "scale", baseScale * 1.15f, 0.05);
+            hop.TweenProperty(potion, "scale", baseScale, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
+
+            // The exact gold coin icon the top bar draws next to the gold count, a touch smaller, centered
+            // below the slot. No ZIndex override so it still gets covered/faded with the top bar on pause.
+            const float iconSize = 34f;
+            var badge = new TextureRect
+            {
+                Texture = ResourceLoader.Load<Texture2D>("res://images/atlases/ui_atlas.sprites/top_bar/top_bar_gold.tres"),
+                MouseFilter = Control.MouseFilterEnum.Ignore,
+                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+                StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
+                CustomMinimumSize = new Vector2(iconSize, iconSize),
+                Size = new Vector2(iconSize, iconSize),
+            };
+            holder.AddChild(badge);
+            // Below the potion (near the slot's bottom edge) so it isn't clipped by the top bar's top edge.
+            badge.Position = new Vector2(holder.Size.X * 0.5f - iconSize * 0.5f, holder.Size.Y + 12f);
+            badge.Modulate = new Color(1f, 1f, 1f, 0f);
+
+            var pop = badge.CreateTween();
+            if (delay > 0f) pop.TweenInterval(delay); // pop in together with this potion's hop
+            pop.TweenProperty(badge, "modulate:a", 1f, 0.25);
+            pop.TweenInterval(1.5);
+            pop.TweenProperty(badge, "modulate:a", 0f, 0.6);
+            pop.TweenCallback(Callable.From(() => badge.QueueFree()));
+        }
+    }
+
     [HarmonyPatch(typeof(NMerchantRoom), "_Ready")]
     public static class MerchantRoomReadyPatch
     {
@@ -196,6 +253,7 @@ public static class PotionSellPatches
             {
                 var greeting = new LocString("gameplay_ui", $"POTION_SELL.merchant_greeting_{index}");
                 __instance.MerchantButton?.PlayDialogue(greeting, 3.0);
+                HighlightSellablePotions(); // wiggle the potions + green "$" so the player notices they can sell
             }));
         }
     }
