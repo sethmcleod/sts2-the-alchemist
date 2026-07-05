@@ -76,7 +76,14 @@ public static class PotionSellPatches
         new LocString("gameplay_ui", "POTION_SELL.merchant_sell_1"),
         new LocString("gameplay_ui", "POTION_SELL.merchant_sell_2"),
         new LocString("gameplay_ui", "POTION_SELL.merchant_sell_3"),
+        new LocString("gameplay_ui", "POTION_SELL.merchant_sell_4"),
+        new LocString("gameplay_ui", "POTION_SELL.merchant_sell_5"),
+        new LocString("gameplay_ui", "POTION_SELL.merchant_sell_6"),
     ];
+
+    // Rotate through the sell lines so selling several potions in one visit doesn't repeat the same quip.
+    // Continuous across visits (so a new shop doesn't start on the same line the last one ended on).
+    private static int _sellIndex;
 
     private static async Task SellPotion(PotionModel potion)
     {
@@ -95,7 +102,7 @@ public static class PotionSellPatches
         var merchantRoom = NMerchantRoom.Instance;
         if (merchantRoom != null)
         {
-            var line = Rng.Chaotic.NextItem(SellLines)!;
+            var line = SellLines[_sellIndex++ % SellLines.Length];
             merchantRoom.MerchantButton.PlayDialogue(line);
             NGame.Instance?.ScreenRumble(ShakeStrength.Medium, ShakeDuration.Short, RumbleStyle.Rumble);
         }
