@@ -2,7 +2,7 @@ Card,Rarity,Type,Cost,Description
 Strike,Basic,Attack,1,Deal 6 (9) damage.
 Defend,Basic,Skill,1,Gain 5 (8) Block.
 Prime,Basic,Attack,1,Deal 7 (10) damage. Infuse a card in your Discard Pile.
-Nigredo,Basic,Skill,1,Apply 2 (3) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Innate. Exhaust.
+Nigredo,Basic,Skill,1,Apply 4 (5) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Innate. Exhaust.
 Tinge,Common,Attack,0,Deal 3 (4) damage. Apply 2 Poison. Seep: apply 3 Poison to a random enemy.
 Assay,Common,Attack,0,Deal 4 (6) damage. Draw a card. Seep: gain 2 Regen.
 Fumigate,Common,Attack,1,Deal 8 (11) damage to ALL enemies. Seep: lose 2 HP.

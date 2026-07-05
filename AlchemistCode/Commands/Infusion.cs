@@ -22,7 +22,7 @@ namespace Alchemist.AlchemistCode.Commands;
 /// </summary>
 public static class Infusion
 {
-    private const int Amount = 2;
+    private const int Amount = 3;
     private static readonly LocString SelectPrompt = new("card_keywords", "ALCHEMIST-INFUSE.selectionPrompt");
 
     // Cards enchanted by Infuse this combat, so we can strip the (combat-only) enchantment at end.

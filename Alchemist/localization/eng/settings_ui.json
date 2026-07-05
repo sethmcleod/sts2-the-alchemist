@@ -4,8 +4,8 @@
   "ALCHEMIST-ENABLE_EPOCHS.title": "Enable Timeline Epochs",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "Adds the Alchemist's 7-chapter story to the Timeline. You can disable if it gets too cluttered or you see conflicts with other mods.",
   "ALCHEMIST-UNLOCKS.title": "Unlocks",
-  "ALCHEMIST-UNLOCK_ALL.title": "Unlock all Alchemist cards, relics, potions & epochs",
+  "ALCHEMIST-UNLOCK_ALL.title": "Unlock all Alchemist cards, relics, potions, and Epochs",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Unlock All",
-  "ALCHEMIST-RESET_UNLOCKS.title": "Reset all Alchemist cards, relics, potions & epochs",
+  "ALCHEMIST-RESET_UNLOCKS.title": "Reset all Alchemist cards, relics, potions, and Epochs",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Reset Unlocks"
 }
