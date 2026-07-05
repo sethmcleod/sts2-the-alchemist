@@ -4,19 +4,21 @@ using System.Reflection;
 using BaseLib.Config;
 using Godot;
 using Alchemist.AlchemistCode.Cards;
+using Alchemist.AlchemistCode.Epochs;
 using Alchemist.AlchemistCode.Potions;
 using Alchemist.AlchemistCode.Relics;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.Timeline;
 
 namespace Alchemist.AlchemistCode.Config;
 
 /// <summary>
 /// Mod settings page (registered in <see cref="MainFile"/>). Testing helpers that mark every
 /// Alchemist card/relic/potion as "seen" (so they show in the compendium) or clear that state.
-/// Content is enumerated by base type — no ID-prefix assumptions. Deliberately does NOT touch the
-/// base-game Timeline/epochs, so it can't affect vanilla progression.
+/// Content is enumerated by base type — no ID-prefix assumptions. Also reveals/hides the Alchemist's own
+/// Timeline epochs (so epoch-gated content is testable); it never touches base-game epochs.
 /// </summary>
 public class AlchemistModConfig : SimpleModConfig
 {
@@ -25,6 +27,15 @@ public class AlchemistModConfig : SimpleModConfig
         GenerateOptionsForAllProperties(optionContainer); // also picks up [ConfigButton] methods
         SetupFocusNeighbors(optionContainer);
     }
+
+    /// <summary>Master switch for the Timeline/Epoch feature (OFF by default). While off, the Alchemist's
+    /// epochs never appear on the Timeline and never gate content — so they can't clutter the Timeline or
+    /// collide with other mods. When first turned on, all epochs start Revealed (nothing gets locked); a
+    /// "Reset Unlocks" then drops into the milestone-progression mode. Read at runtime by
+    /// <see cref="Patches.EpochPatches"/>. BaseLib config properties are static + auto-persisted.</summary>
+    [ConfigSection("Timeline")]
+    [ConfigHoverTip] // shows the "...hover.desc" loc as a popup on hover (like BaseLib's own settings)
+    public static bool EnableEpochs { get; set; } = true;
 
     [ConfigSection("Unlocks")]
     [ConfigButton("UnlockAllButtonLabel")]
@@ -41,8 +52,13 @@ public class AlchemistModConfig : SimpleModConfig
         foreach (var relic in relics) save.MarkRelicAsSeen(relic);
         foreach (var potion in potions) save.MarkPotionAsSeen(potion);
 
+        // Also reveal this character's Timeline epochs so epoch-gated content is usable without grinding
+        // the milestones (IsEpochRevealed(Revealed) == true unlocks the gated cards/relics/potions).
+        foreach (var type in EpochRegistration.AlchemistEpochTypes)
+            save.ObtainEpochOverride(EpochModel.GetId(type), EpochState.Revealed);
+
         save.SaveProgressFile();
-        Notify($"Unlocked {cards.Count} cards, {relics.Count} relics, and {potions.Count} potions.");
+        Notify($"Unlocked {cards.Count} cards, {relics.Count} relics, {potions.Count} potions, and all Epochs.");
     }
 
     [ConfigSection("Unlocks")]
@@ -57,8 +73,12 @@ public class AlchemistModConfig : SimpleModConfig
         RemoveFromDiscovered("_discoveredRelics", ModelDb.AllRelics.Where(r => r is AlchemistRelic).Select(r => r.Id));
         RemoveFromDiscovered("_discoveredPotions", ModelDb.AllPotions.Where(p => p is AlchemistPotion).Select(p => p.Id));
 
+        // Re-lock the Timeline epochs too (re-gates the epoch-locked content).
+        foreach (var type in EpochRegistration.AlchemistEpochTypes)
+            save.ObtainEpochOverride(EpochModel.GetId(type), EpochState.NotObtained);
+
         save.SaveProgressFile();
-        Notify("Re-locked all Alchemist cards, relics, and potions.");
+        Notify("Re-locked all Alchemist cards, relics, potions, and Epochs.");
     }
 
     private static void RemoveFromDiscovered(string fieldName, IEnumerable<ModelId> ids)

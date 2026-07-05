@@ -21,7 +21,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "Whenever you gain [gold]Gold[/gold], heal [green]1[/green] HP for every [blue]15[/blue] [gold]Gold[/gold] gained.",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "Everything it touches turns to gold — and gold, in turn, to vitality.",
   "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit",
-  "ALCHEMIST-WEATHERED_KIT.description": "You may [gold]Brew[/gold] at Rest Sites. Potions can be sold to the Merchant for [gold]Gold[/gold]",
+  "ALCHEMIST-WEATHERED_KIT.description": "You may [gold]Brew[/gold] at Rest Sites. Potions can be sold to the Merchant for [gold]Gold[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "A battered case stained with years of use. It still carries the faintest warmth.",
   "ALCHEMIST-THERIAC_VIAL.title": "Theriac Vial",
   "ALCHEMIST-THERIAC_VIAL.description": "If you have [gold]Poison[/gold] at the end of combat, heal equal to your [gold]Poison[/gold].",

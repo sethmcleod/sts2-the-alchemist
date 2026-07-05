@@ -38,6 +38,17 @@ public partial class MainFile : Node
             }
         }
 
+        // Inject the Alchemist's Timeline epochs + story into the base game's registries. Wrapped so a
+        // reflection break on a future game update disables only the epoch feature, not the whole mod.
+        try
+        {
+            Epochs.EpochRegistration.RegisterEpochs();
+        }
+        catch (System.Exception e)
+        {
+            Logger.Error($"Failed to register Alchemist epochs (Timeline feature disabled): {e}");
+        }
+
         // Mod settings page (BaseLib): testing helpers to unlock/re-lock all Alchemist content.
         // Registered under the display name (not ModId) so the mods list shows "The Alchemist"
         // and sorts it after "BaseLib".
