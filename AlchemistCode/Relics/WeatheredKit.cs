@@ -13,6 +13,11 @@ public class WeatheredKit : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
 
+    // Neow's "Touch of Orobas" swaps the starter relic for its upgraded form. BaseLib prefixes the base
+    // game's lookup to honor this override for custom relics; without it, the Alchemist's starter fell back
+    // to the placeholder Circlet. (Downfall's relics use this same GetUpgradeReplacement hook.)
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<GildedKit>();
+
     public override async Task AfterPotionUsed(PotionModel potion, Creature? target)
     {
         if (potion.Owner != Owner) return;
