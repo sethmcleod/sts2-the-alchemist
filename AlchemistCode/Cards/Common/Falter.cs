@@ -14,8 +14,8 @@ public class Falter : AlchemistCard
     public Falter() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(7, 2);
-        WithPower<RegenPower>(3, 1); // Gambit bonus
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
+        WithPower<RegenPower>(2, 1); // Gambit bonus
+        _ = WithTips(_ => [HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit)]);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
