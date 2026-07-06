@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vpj5kx1vyf4k"
-path="res://.godot/imported/chorus.png-3ada1b98b549a5f55c36c644e5c83d61.ctex"
+uid="uid://dj5cyve75foil"
+path="res://.godot/imported/snake_tail_outline.png-629cc6101fab6cc649dd9d3a1892389b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/chorus.png"
-dest_files=["res://.godot/imported/chorus.png-3ada1b98b549a5f55c36c644e5c83d61.ctex"]
+source_file="res://Alchemist/images/relics/snake_tail_outline.png"
+dest_files=["res://.godot/imported/snake_tail_outline.png-629cc6101fab6cc649dd9d3a1892389b.ctex"]
 
 [params]
 

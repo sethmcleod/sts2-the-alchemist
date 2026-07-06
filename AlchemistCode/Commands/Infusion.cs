@@ -14,7 +14,10 @@ namespace Alchemist.AlchemistCode.Commands;
 
 /// <summary>
 /// The Infuse mechanic: enchant a card until the end of combat.
-///   Attack → Sharp (+damage), Skill → Adroit (+block on play), Power → Swift (draw on play).
+///   Attack → Sharp (+damage per hit — scales on multi-hit attacks).
+///   Skill → Nimble (+block per EACH block gain — scales on multi-block skills) if it gains Block,
+///     else Adroit (+block once on play).
+///   Power → Swift (draw on play).
 ///   Curse/Status/Quest → Ethereal keyword (exhausts if unplayed).
 /// Re-Infusing a card stacks the enchantment amount (CardCmd.Enchant sums same-type amounts).
 /// Enchantments are run-permanent by default, so infused cards are tracked and cleared at combat
@@ -22,7 +25,8 @@ namespace Alchemist.AlchemistCode.Commands;
 /// </summary>
 public static class Infusion
 {
-    private const int Amount = 3;
+    private const int Amount = 3;       // Attack → Sharp, Skill → Adroit
+    private const int SwiftAmount = 2;  // Power → Swift (a drawn Power is high value, so a touch weaker)
     private static readonly LocString SelectPrompt = new("card_keywords", "ALCHEMIST-INFUSE.selectionPrompt");
 
     // Cards enchanted by Infuse this combat, so we can strip the (combat-only) enchantment at end.
@@ -82,13 +86,23 @@ public static class Infusion
 
         switch (card.Type)
         {
-            case CardType.Attack: TryEnchant<Sharp>(card); break;
-            case CardType.Skill: TryEnchant<Adroit>(card); break;
-            case CardType.Power: TryEnchant<Swift>(card); break;
+            case CardType.Attack:
+                TryEnchant<Sharp>(card, Amount); // always Sharp — scales per hit on multi-hit attacks
+                break;
+            case CardType.Skill:
+                // A Skill that gains Block → Nimble: unlike Adroit (Block once on play), Nimble's bonus is
+                // added to EACH block gain, so a multi-block skill scales it up — the block analog of Sharp
+                // on a multi-hit attack. Skills with no Block fall back to Adroit.
+                if (card.GainsBlock) TryEnchant<Nimble>(card, Amount);
+                else TryEnchant<Adroit>(card, Amount);
+                break;
+            case CardType.Power:
+                TryEnchant<Swift>(card, SwiftAmount);
+                break;
         }
     }
 
-    private static void TryEnchant<T>(CardModel card) where T : EnchantmentModel
+    private static void TryEnchant<T>(CardModel card, int amount) where T : EnchantmentModel
     {
         // Re-Infusing the same card should STACK the amount. The base Sharp/Adroit/Swift enchantments are
         // NOT IsStackable, so CardCmd.Enchant's CanEnchant refuses a second application and the amount would
@@ -97,14 +111,14 @@ public static class Infusion
         if (card.Enchantment is T existing)
         {
             if (!Infused.Contains(card)) return; // a permanent/foreign enchantment of the same type — leave it
-            var summed = existing.Amount + Amount;
+            var summed = existing.Amount + amount;
             CardCmd.ClearEnchantment(card);
             CardCmd.Enchant<T>(card, summed);
             return; // already tracked in Infused
         }
         if (card.Enchantment != null) return;                  // a different enchantment type — don't cross-stack
         if (!ModelDb.Enchantment<T>().CanEnchant(card)) return; // honor CanEnchant (card type, GainsBlock, etc.)
-        CardCmd.Enchant<T>(card, Amount);
+        CardCmd.Enchant<T>(card, amount);
         Infused.Add(card);
     }
 

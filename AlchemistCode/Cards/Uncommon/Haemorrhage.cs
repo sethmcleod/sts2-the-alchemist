@@ -15,6 +15,7 @@ public class Haemorrhage : AlchemistCard
 
     public Haemorrhage() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
+        WithVar("Bonus", 1, 1); // flat +1 (2) damage, added after the double/triple multiplier
         WithTip(typeof(RegenPower));
     }
 
@@ -25,7 +26,7 @@ public class Haemorrhage : AlchemistCard
             await CreatureCmd.Damage(choiceContext, Owner.Creature,
                 regen, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
         var multiplier = IsUpgraded ? 3 : 2;
-        var damage = regen * multiplier + EnchantDamageBonus;
+        var damage = regen * multiplier + DynamicVars["Bonus"].IntValue + EnchantDamageBonus;
         if (damage > 0)
             await DamageCmd.Attack(damage).FromCard(this, play)
                 .Targeting(play.Target!).Execute(choiceContext);

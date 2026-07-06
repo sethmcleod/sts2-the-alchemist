@@ -8,9 +8,10 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Sepsis : AlchemistCard
 {
-    public Sepsis() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public Sepsis() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("percent", 25, 25);
+        WithVar("percent", 50, 0);   // flat 50% at both tiers (like the base game's reworked Tracking)
+        WithCostUpgradeBy(-1);       // 2 -> 1 on upgrade; the bonus stays 50%
         WithTip(typeof(PoisonPower));
     }
 

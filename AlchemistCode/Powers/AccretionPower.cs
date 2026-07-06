@@ -18,9 +18,9 @@ public class AccretionPower : AlchemistPower
         if (!participants.Contains(Owner)) return;
         Flash();
         var regen = Amount;
-        // Gambit: gain the same amount again while at or below 50% HP.
+        // Gambit: gain a flat 1 extra Regen (does NOT scale with upgrade) while at or below 50% HP.
         if (Owner.CurrentHp * 2 <= Owner.MaxHp)
-            regen += Amount;
+            regen += 1;
         await PowerCmd.Apply<RegenPower>(new ThrowingPlayerChoiceContext(), Owner, regen, Owner, null);
     }
 }

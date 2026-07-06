@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bao8rjd65nvv4"
-path="res://.godot/imported/theriac_vial.png-5089a994fa64cc5995067f79a46e8706.ctex"
+uid="uid://n8a8p25qfswo"
+path="res://.godot/imported/vitrify.png-bf122ddb49bb8f62f1a164624bc54be8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/theriac_vial.png"
-dest_files=["res://.godot/imported/theriac_vial.png-5089a994fa64cc5995067f79a46e8706.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/vitrify.png"
+dest_files=["res://.godot/imported/vitrify.png-bf122ddb49bb8f62f1a164624bc54be8.ctex"]
 
 [params]
 

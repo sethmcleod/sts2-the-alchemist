@@ -52,7 +52,7 @@ public class Alchemist4Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST4_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Relics;
     protected override List<RelicModel> Relics => new()
-        { ModelDb.Relic<TheriacVial>(), ModelDb.Relic<CinnabarShard>(), ModelDb.Relic<FluxStone>() };
+        { ModelDb.Relic<SnakeTail>(), ModelDb.Relic<CinnabarShard>(), ModelDb.Relic<FluxStone>() };
 }
 
 /// <summary>Ch5 "Convalescence" — kill 15 Elites. Unlocks a regen/heal card trio.</summary>

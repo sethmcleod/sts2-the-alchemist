@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eq13vt5e4kis"
-path="res://.godot/imported/theriac_vial_outline.png-4f41184dc3ba6b00223331026709a83a.ctex"
+uid="uid://dqa3g6ib5i3km"
+path="res://.godot/imported/snake_tail.png-087889b92ed3b0b656aae74e581ac286.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/theriac_vial_outline.png"
-dest_files=["res://.godot/imported/theriac_vial_outline.png-4f41184dc3ba6b00223331026709a83a.ctex"]
+source_file="res://Alchemist/images/relics/big/snake_tail.png"
+dest_files=["res://.godot/imported/snake_tail.png-087889b92ed3b0b656aae74e581ac286.ctex"]
 
 [params]
 

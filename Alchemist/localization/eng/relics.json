@@ -23,7 +23,7 @@
   "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit",
   "ALCHEMIST-WEATHERED_KIT.description": "You may [gold]Brew[/gold] at Rest Sites. Potions can be sold to the Merchant for [gold]Gold[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "A battered case stained with years of use. It still carries the faintest warmth.",
-  "ALCHEMIST-THERIAC_VIAL.title": "Theriac Vial",
-  "ALCHEMIST-THERIAC_VIAL.description": "If you have [gold]Poison[/gold] at the end of combat, heal equal to your [gold]Poison[/gold].",
-  "ALCHEMIST-THERIAC_VIAL.flavor": "An ancient remedy — the poison becomes the cure."
+  "ALCHEMIST-SNAKE_TAIL.title": "Snake Tail",
+  "ALCHEMIST-SNAKE_TAIL.description": "The first time [gold]Poison[/gold] would reduce your HP to 0, heal to [green]33%[/green] of your Max HP instead (works once).",
+  "ALCHEMIST-SNAKE_TAIL.flavor": "Shed like a serpent's tail — the bite is survived, the venom sloughed away."
 }

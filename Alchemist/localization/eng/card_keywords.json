@@ -6,6 +6,6 @@
   "ALCHEMIST-SEEP.title": "Seep",
   "ALCHEMIST-SEEP.description": "At the end of your turn, if this card is in your [gold]Hand[/gold], an extra effect triggers.",
   "ALCHEMIST-INFUSE.title": "Infuse",
-  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks gain [blue]3[/blue] [purple]Sharp[/purple], Skills gain [blue]3[/blue] [purple]Adroit[/purple], Powers gain [blue]3[/blue] [purple]Swift[/purple]. Other cards gain [gold]Ethereal[/gold]. You can [gold]Infuse[/gold] a card multiple times.",
+  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks gain [blue]3[/blue] [purple]Sharp[/purple]; Skills gain [blue]3[/blue] [purple]Nimble[/purple] or [blue]3[/blue] [purple]Adroit[/purple]; Powers gain [blue]2[/blue] [purple]Swift[/purple]. Other cards gain [gold]Ethereal[/gold]. You can [gold]Infuse[/gold] a card multiple times.",
   "ALCHEMIST-INFUSE.selectionPrompt": "Choose a card to [gold]Infuse[/gold]."
 }
