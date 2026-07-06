@@ -1,3 +1,5 @@
+using Alchemist.AlchemistCode.Cards.Basic;
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -5,8 +7,6 @@ using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
-using Alchemist.AlchemistCode.Cards.Basic;
-using Alchemist.AlchemistCode.Commands;
 
 namespace Alchemist.AlchemistCode.Cards.Token;
 
@@ -32,6 +32,6 @@ public class Rubedo : AlchemistCard
             PotionFactory.CreateRandomPotionInCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable(),
             Owner);
 
-        await AlchemistCardCmd.ShuffleIntoDeck<Nigredo>(this);
+        await AlchemistCardCmd.GiveCard<Nigredo>(this);
     }
 }

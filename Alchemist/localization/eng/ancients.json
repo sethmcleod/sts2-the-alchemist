@@ -7,7 +7,6 @@
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.0-2r.next": "Continue",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.0-3r.next": "Very well.",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.0-attack": "Both",
-
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Here, take one of these forgotten gems with ya!",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Reply",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/darv/darv_introduction",
@@ -17,17 +16,14 @@
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-2.next": "Continue",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-2.ancient.sfx": "event:/sfx/npcs/darv/darv_endeared",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-3.char": "[sine]'Rotten.' You say that like it isn't the entire point.[/sine]",
-
   "DARV.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient": "Back for more of my rubbish? Go on, dig through the pile — take what speaks to ya!",
   "DARV.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient.sfx": "event:/sfx/npcs/darv/darv_endeared",
-
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-0.ancient": "You never take the shiny ones. Always the cracked, the corroded, the spoiled. Why's that?",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-0.next": "Explain",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-1.char": "Rot is just a transformation you haven't finished naming yet. Your 'junk' is halfway to gold.",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-1.next": "Continue",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2.ancient": "...Huh. Been sitting on a fortune and calling it a mess. Ain't that always the way.",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2.ancient.sfx": "event:/sfx/npcs/darv/darv_endeared",
-
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[sine]...we meet... ..again.....[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Introduce yourself",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
@@ -37,15 +33,12 @@
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-2.next": "Relent",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-2.ancient.sfx": "event:/sfx/npcs/neow/neow_sleepy",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-3.char": "[sine]A pity. I'll record the offer.[/sine]",
-
   "NEOW.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient": "[sine]...receive.... this....\n..and go...... little.. ..chemist......[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient.sfx": "event:/sfx/npcs/neow/neow_welcome",
-
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-0.char": "You die a little with each blessing you give. And you return anyway. I know that arithmetic well.",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-0.next": "Continue",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1.ancient": "[sine]...to spend oneself..... is not..... to be spent.....[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1.ancient.sfx": "event:/sfx/npcs/neow/neow_sleepy",
-
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Madness awaits at the top. Don my power and vanquish.",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Reply",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_welcome",
@@ -55,17 +48,14 @@
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-2.next": "Disagree",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-2.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_giggle",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-3.char": "[sine]...Coincidence. Well within the margin of error.[/sine]",
-
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient": "The dice favor the bold, little chemist. Take a boon, and let chance do the rest.",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_welcome",
-
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-0.ancient": "Still tallying your odds? You measure the world down to the grain, and still it surprises you. Doesn't that delight you?",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-0.next": "Consider",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-1.char": "...It does. I'd never confess it in a lab. But the residue that defies the equation — that is the part worth living for.",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-1.next": "Continue",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2.ancient": "Ha! There's a gambler in you yet.",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_giggle",
-
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Try this!!! Very good finds!! Look, look!!",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Look",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Black, then white, then gold, then red. You wear the whole Great Work on your hide — and you don't even know it.",
@@ -73,15 +63,12 @@
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-2.ancient": "Pretty colors!! You like?? Take, take!!",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-2.next": "Relent",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-3.char": "...I like. Yes. Take, take.",
-
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient": "Color friend!! New shiny for you!! Take take!!",
-
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0.ancient": "You name my colors! Nigredo! Albedo! Funny words!! What they mean??",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0.next": "Explain",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1.char": "The stages a thing passes through as it is perfected. Rot, then purity, then dawn, then completion. You are the whole process, wearing a grin.",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1.next": "Continue",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-2.ancient": "I am PERFECT?? Hehe!! I knew it!! Take extra shiny!!",
-
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[thinky_dots]Welcome back, friend. Let my flesh help you...[/thinky_dots]",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Reply",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-1.char": "We haven't met — but I'll take the offer as sincere. You'd render yourself down for a stranger. So do I; I simply use poison instead of warmth.",
@@ -89,13 +76,10 @@
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-2.ancient": "[thinky_dots]...then we are... the same recipe... friend...[/thinky_dots]",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-2.next": "Agree",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-3.char": "[sine]Distilled from opposite fires. But yes. The same.[/sine]",
-
   "PAEL.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient": "[thinky_dots]Take a piece of me with you... it is warm, still...[/thinky_dots]",
-
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-0.char": "You could stop melting, you know. Bank the heat. Preserve yourself.",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-0.next": "Hear him",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-1.ancient": "[thinky_dots]Why keep what is meant to be given...?\nI am content, little chemist. Are you...?[/thinky_dots]",
-
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "GROW STRONGER SO WE CAN FIGHT!!!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Reply",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/tanx/tanx_roar",
@@ -105,10 +89,8 @@
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-2.next": "Continue",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-2.ancient.sfx": "event:/sfx/npcs/tanx/tanx_curiosity",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-3.char": "Noted. Recording the results.",
-
   "TANX.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient": "WEAPONS!! TAKE A WEAPON!! POISON IT NEXT TIME!!!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient.sfx": "event:/sfx/npcs/tanx/tanx_roar",
-
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-0.ancient": "FIGHT ME, CHEMIST!!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-0.next": "Decline",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-0.ancient.sfx": "event:/sfx/npcs/tanx/tanx_roar",
@@ -116,7 +98,6 @@
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-1.next": "Continue",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2.ancient": "...HAHAHA!! A SLOW DEATH IS STILL A GLORIOUS DEATH!! TAKE THIS, YOU CREEPY LITTLE FROG!!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2.ancient.sfx": "event:/sfx/npcs/tanx/tanx_laugh",
-
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Do come in, dear! What can Tezcatara do for you today?",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Reply",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-1.char": "You burn away what's impure. My trade calls that [i]calcination[/i] — the first step of the Work. I've been hunting a proper flame.",
@@ -124,23 +105,18 @@
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-2.ancient": "Oh, a flatterer! Hand me your flaws, little spark, and let me [jitter][b]burn[/b][/jitter] them clean.",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-2.next": "Hesitate",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-3.char": "[sine]Gently. I've grown fond of a few of them.[/sine]",
-
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient": "Back so soon, dearie? Come, feed the fire — let me take another burden off you.",
-
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-0.ancient": "You alchemists. Always [jitter][b]burning[/b][/jitter], distilling, purifying. You'd have made a darling apprentice.",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-0.next": "Demur",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1.char": "You flatter the method, not me. But I'll take the compliment — and the flame.",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1.next": "Continue",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-2.ancient": "[i][font_size=22]Tezcatara's laugh rumbles like a furnace.[/font_size][/i]",
-
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Look at you, cooking poison in your own veins. Why suffer for scraps? Sign right here and I'll get you some [sine]real[/sine] power.",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Refuse",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Power without the process is just a loan. I'd rather earn the gold than be handed counterfeit.",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-1.next": "Continue",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-2.ancient": "Everyone says that. Right up until the last floor. First taste's [jitter][b]free[/b][/jitter], chemist — for when you get desperate.",
-
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.1-0r.ancient": "Back already? No signature, no soul — but hey, browse the samples. On the house.",
-
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.2-0.ancient": "You poison yourself daily and call [i]me[/i] the demon. That's rich.",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.2-0.next": "Retort",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.2-1.char": "The difference is precision. I know exactly what my poison costs, down to the milligram. Your deals never come itemized.",

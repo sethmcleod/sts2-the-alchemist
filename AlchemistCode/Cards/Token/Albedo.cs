@@ -1,10 +1,10 @@
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
-using Alchemist.AlchemistCode.Commands;
 
 namespace Alchemist.AlchemistCode.Cards.Token;
 
@@ -30,6 +30,6 @@ public class Albedo : AlchemistCard
             await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, regenAmount, Owner.Creature, this);
         }
 
-        await AlchemistCardCmd.ShuffleIntoDeck<Citrinitas>(this);
+        await AlchemistCardCmd.GiveCard<Citrinitas>(this);
     }
 }

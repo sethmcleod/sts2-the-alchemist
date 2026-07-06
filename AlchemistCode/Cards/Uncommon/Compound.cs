@@ -16,7 +16,7 @@ public class Compound : AlchemistCard
         // Per-hit damage = flat 6, increased 50% (75% upgraded) per fermented turn; hits twice.
         // {CalculatedDamage} shows the live per-hit value and greens while fermented.
         WithCalculatedDamage(6, static (card, _) =>
-                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * (card.IsUpgraded ? 100m : 75m) / 100m
+                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * (card.IsUpgraded ? 75m : 50m) / 100m
                                   * ((AlchemistCard)card).FermentTurns),
             ValueProp.Move, 0, 0);
         WithKeyword(CardKeyword.Retain);

@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Cards;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -5,7 +6,6 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
-using Alchemist.AlchemistCode.Cards;
 
 namespace Alchemist.AlchemistCode.Commands;
 
@@ -17,17 +17,6 @@ public static class AlchemistCardCmd
         var card = source.CombatState.CreateCard<T>(source.Owner);
         if (source.IsUpgraded) CardCmd.Upgrade(card);
         await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, source.Owner);
-    }
-
-    public static async Task ShuffleIntoDeck<T>(AlchemistCard source) where T : CardModel, new()
-    {
-        if (source.CombatState == null) return;
-        var card = source.CombatState.CreateCard<T>(source.Owner);
-        if (source.IsUpgraded) CardCmd.Upgrade(card);
-        // PreviewCardPileAdd pops the shuffled card up center-screen (the base "shuffle X into your
-        // draw pile" feedback) so the addition is visible and the draw-pile count updates on-screen.
-        CardCmd.PreviewCardPileAdd(
-            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, source.Owner, CardPilePosition.Random));
     }
 
     public static async Task AddStatus<T>(AlchemistCard source) where T : CardModel, new()

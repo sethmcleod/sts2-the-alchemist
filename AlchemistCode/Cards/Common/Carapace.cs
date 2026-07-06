@@ -13,10 +13,10 @@ public class Carapace : AlchemistCard
 
     public Carapace() : base(2, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        // Live Block = flat 6, increased 75% (100% upgraded) per fermented turn. {CalculatedBlock}
+        // Live Block = flat 6, increased 50% (75% upgraded) per fermented turn. {CalculatedBlock}
         // shows the true current value and turns green while fermented (like Congeal's scaled Block).
         WithCalculatedBlock(6, static (card, _) =>
-                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * (card.IsUpgraded ? 100m : 75m) / 100m
+                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * (card.IsUpgraded ? 75m : 50m) / 100m
                                   * ((AlchemistCard)card).FermentTurns),
             ValueProp.Move, 0, 0);
         WithKeyword(CardKeyword.Retain);

@@ -2,7 +2,7 @@ Card,Rarity,Type,Cost,Description
 Strike,Basic,Attack,1,Deal 6 (9) damage.
 Defend,Basic,Skill,1,Gain 5 (8) Block.
 Prime,Basic,Attack,1,Deal 7 (10) damage. Infuse a card in your Draw Pile.
-Nigredo,Basic,Skill,1,Apply 4 (5) Poison to ALL enemies and yourself. Shuffle an Albedo (+) into your Deck. Innate. Exhaust.
+Nigredo,Basic,Skill,1,Apply 4 (5) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
 Tinge,Common,Attack,0,Deal 3 (4) damage. Apply 2 Poison. Seep: Apply 3 Poison to a random enemy.
 Assay,Common,Attack,0,Deal 4 (6) damage. Draw a card. Seep: Gain 2 Regen.
 Fumigate,Common,Attack,1,Deal 8 (11) damage to ALL enemies. Seep: Lose 2 HP.
@@ -22,17 +22,17 @@ Anoint,Common,Skill,1,Gain 2 Poison. Infuse a (2) card(s) in your Hand.
 Bide,Common,Skill,1,"Gain 7 (10) Block. Next turn, draw 1 card. Gambit: Gain 2 (3) Regen."
 Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Regen. Gambit: Gain 2 (3) Regen.
 Falter,Common,Skill,1,Gain 7 (9) Block. Gambit: Gain 2 (3) Regen.
-Carapace,Common,Skill,2,Retain. Ferment. Gain 6 Block. Increase this by 75% (100%) for every turn fermented.
+Carapace,Common,Skill,2,Retain. Ferment. Gain 6 Block. Increase this by 50% (75%) for every turn fermented.
 Exploit,Uncommon,Attack,0,Deal 4 damage. Deals 2 (3) additional damage for each debuff on the enemy.
 Whet,Uncommon,Attack,0,Deal 3 (5) damage. Infuse a card in your Hand.
-Culture,Uncommon,Attack,1,Retain. Ferment. Deal 6 damage. Increase this by 100% (125%) for every turn fermented.
+Culture,Uncommon,Attack,1,Retain. Ferment. Deal 6 damage. Increase this by 75% (100%) for every turn fermented.
 Mortify,Uncommon,Attack,1,Deal 8 (12) damage. Draw 2 cards. Gambit: Deal 6 (8) additional damage.
 Potentiate,Uncommon,Attack,1,Deal 10 (12) damage. Hits an additional time for each potion you've used this combat.
 Convulse,Uncommon,Attack,1,Deal 6 (9) damage. Apply 2 Poison. Trigger Poison on the enemy.
 Deplete,Uncommon,Attack,2,Deal 14 (18) damage. The enemy loses 6 Strength this turn. Seep: Gain 3 Poison.
 Decant,Uncommon,Attack,1,Deal 7 (9) damage. Add a Distillate (+) into your Hand. Gambit: Deal 4 additional damage.
 Invigorate,Uncommon,Attack,1,Deal 8 (10) damage. Gain 2 Regen. Deals additional damage equal to your Regen.
-Compound,Uncommon,Attack,2,Retain. Ferment. Deal 6 damage twice. Increase this by 75% (100%) for every turn fermented.
+Compound,Uncommon,Attack,2,Retain. Ferment. Deal 6 damage twice. Increase this by 50% (75%) for every turn fermented.
 Hormesis,Uncommon,Skill,1,Gain 2 (3) Energy. Gain 2 (3) Poison.
 Partition,Uncommon,Attack,3,Deal 32 (48) damage divided among ALL enemies. Gambit: Apply 3 (4) Poison to ALL enemies.
 Fester,Uncommon,Skill,0,Apply 3 Poison. Poison is triggered against the enemy 1 (2) additional time(s) next turn.
@@ -90,7 +90,7 @@ Suffuse,"Rare, Multiplayer",Power,2 (1),"At the start of your turn, if your HP i
 Effervesce,"Uncommon, Multiplayer",Skill,0,Add 2 (3) Distillates to another player's Hand.
 Reflux,"Uncommon, Multiplayer",Skill,1,"Whenever another player applies a debuff this turn, apply 2 (3) Poison to that enemy."
 Distillate,Token,Skill,0,Gain 3 (5) Block. Gain 2 (3) Regen. Draw 1 card. Exhaust.
-Albedo,Token,Skill,1,Lose all Poison. Gain that much Regen (+ 1). Shuffle a Citrinitas (+) into your Deck. Exhaust.
-Citrinitas,Token,Skill,1,Lose all Regen. Deal that much damage to ALL enemies 2 (3) times. Shuffle a Rubedo (+) into your Deck. Exhaust.
-Rubedo,Token,Skill,1,Gain 15 (20) Gold. Gain 1 Strength. Procure a random potion. Shuffle a Nigredo (+) into your Deck. Exhaust.
+Albedo,Token,Skill,1,Lose all Poison. Gain that much Regen (+ 1). Add a Citrinitas (+) into your Hand. Exhaust.
+Citrinitas,Token,Attack,1,Lose all Regen. Deal that much damage to ALL enemies 2 (3) times. Add a Rubedo (+) into your Hand. Exhaust.
+Rubedo,Token,Skill,1,Gain 15 (20) Gold. Gain 1 Strength. Procure a random potion. Add a Nigredo (+) into your Hand. Exhaust.
 Effluvium,Token,Skill,0,Apply 1 (2) Weak. Apply 1 (2) Vulnerable. Gain 1 (2) Poison.

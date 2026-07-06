@@ -1,17 +1,17 @@
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
-using Alchemist.AlchemistCode.Commands;
 
 namespace Alchemist.AlchemistCode.Cards.Token;
 
 [Pool(typeof(TokenCardPool))]
 public class Citrinitas : AlchemistCard
 {
-    public Citrinitas() : base(1, CardType.Skill, CardRarity.Token, TargetType.Self)
+    public Citrinitas() : base(1, CardType.Attack, CardRarity.Token, TargetType.Self)
     {
         WithVar("Hits", 2, 1);
         WithKeyword(CardKeyword.Exhaust);
@@ -33,6 +33,6 @@ public class Citrinitas : AlchemistCard
                 .Execute(choiceContext);
         }
 
-        await AlchemistCardCmd.ShuffleIntoDeck<Rubedo>(this);
+        await AlchemistCardCmd.GiveCard<Rubedo>(this);
     }
 }
