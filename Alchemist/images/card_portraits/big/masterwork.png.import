@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baqh1xamba1a5"
-path="res://.godot/imported/permeate_power.png-4353991b5e5f34c74914fecfede726c8.ctex"
+uid="uid://didbccqlo1wlj"
+path="res://.godot/imported/masterwork.png-5b42db9e58b4c939abe0ee34b1acf5e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/permeate_power.png"
-dest_files=["res://.godot/imported/permeate_power.png-4353991b5e5f34c74914fecfede726c8.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/masterwork.png"
+dest_files=["res://.godot/imported/masterwork.png-5b42db9e58b4c939abe0ee34b1acf5e1.ctex"]
 
 [params]
 

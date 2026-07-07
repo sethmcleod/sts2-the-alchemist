@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgaq5fyq4wkxi"
-path="res://.godot/imported/permeate.png-06e9e10aaa14dbdb1efa34e4397dd5f9.ctex"
+path="res://.godot/imported/exude.png-06e9e10aaa14dbdb1efa34e4397dd5f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/permeate.png"
-dest_files=["res://.godot/imported/permeate.png-06e9e10aaa14dbdb1efa34e4397dd5f9.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/exude.png"
+dest_files=["res://.godot/imported/exude.png-06e9e10aaa14dbdb1efa34e4397dd5f9.ctex"]
 
 [params]
 

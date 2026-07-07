@@ -201,7 +201,7 @@ public static class PotionSellPatches
             hop.TweenProperty(potion, "scale", baseScale * 1.15f, 0.05);
             hop.TweenProperty(potion, "scale", baseScale, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
 
-            const float iconSize = 34f;
+            const float iconSize = 40f;
             var badge = new TextureRect
             {
                 Texture = ResourceLoader.Load<Texture2D>("res://images/atlases/ui_atlas.sprites/top_bar/top_bar_gold.tres"),
@@ -212,7 +212,7 @@ public static class PotionSellPatches
                 Size = new Vector2(iconSize, iconSize),
             };
             holder.AddChild(badge);
-            badge.Position = new Vector2(holder.Size.X * 0.5f - iconSize * 0.5f, holder.Size.Y + 12f);
+            badge.Position = new Vector2(holder.Size.X * 0.5f - iconSize * 0.5f, holder.Size.Y + 14f);
             badge.Modulate = new Color(1f, 1f, 1f, 0f);
 
             var pop = badge.CreateTween();
