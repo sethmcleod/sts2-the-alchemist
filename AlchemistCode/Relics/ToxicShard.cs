@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-public class CinnabarShard : AlchemistRelic
+public class ToxicShard : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Uncommon;
 

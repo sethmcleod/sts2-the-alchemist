@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Timeline;
 using Alchemist.AlchemistCode.Cards.Common;
-using Alchemist.AlchemistCode.Cards.Uncommon;
 using Alchemist.AlchemistCode.Cards.Rare;
+using Alchemist.AlchemistCode.Cards.Uncommon;
 using Alchemist.AlchemistCode.Potions;
 using Alchemist.AlchemistCode.Relics;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Timeline;
 
 namespace Alchemist.AlchemistCode.Epochs;
 
@@ -52,7 +52,7 @@ public class Alchemist4Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST4_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Relics;
     protected override List<RelicModel> Relics => new()
-        { ModelDb.Relic<SnakeTail>(), ModelDb.Relic<CinnabarShard>(), ModelDb.Relic<FluxStone>() };
+        { ModelDb.Relic<SnakeTail>(), ModelDb.Relic<ToxicShard>(), ModelDb.Relic<FluxStone>() };
 }
 
 /// <summary>Ch5 "Convalescence" — kill 15 Elites. Unlocks a regen/heal card trio.</summary>

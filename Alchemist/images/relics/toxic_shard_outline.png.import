@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwq3m8mshr00v"
-path="res://.godot/imported/cinnabar_shard.png-1648d63ea60979899c141b8aa311896f.ctex"
+uid="uid://dkyns4x7dkckv"
+path="res://.godot/imported/toxic_shard_outline.png-754d2f32530c208dcc121e1592c79ff9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/big/cinnabar_shard.png"
-dest_files=["res://.godot/imported/cinnabar_shard.png-1648d63ea60979899c141b8aa311896f.ctex"]
+source_file="res://Alchemist/images/relics/toxic_shard_outline.png"
+dest_files=["res://.godot/imported/toxic_shard_outline.png-754d2f32530c208dcc121e1592c79ff9.ctex"]
 
 [params]
 
