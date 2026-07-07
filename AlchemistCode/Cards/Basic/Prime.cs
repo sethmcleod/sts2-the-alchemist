@@ -14,7 +14,7 @@ public class Prime : AlchemistCard
     public Prime() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
     {
         WithDamage(6, 2);
-        WithBlock(4, 2); // Gambit: 4 (6) Block
+        WithBlock(4, 2);
         WithTips(_ => new[]
         {
             HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse),
@@ -26,7 +26,7 @@ public class Prime : AlchemistCard
     {
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
         await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 1);
-        if (IsReduced) // Gambit
+        if (IsReduced)
             await CommonActions.CardBlock(this, play);
     }
 }

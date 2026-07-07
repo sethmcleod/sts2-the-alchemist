@@ -16,16 +16,14 @@ public class Decoction : AlchemistCard
 
     public Decoction() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1); // 1 (0)
+        WithCostUpgradeBy(-1);
         WithTip(typeof(PoisonPower));
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Seep) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Use the built-in "To Exhaust" prompt (like base Burning Pact). The card's own
-        // SelectionScreenPrompt getter THROWS when there's no per-card .selectionScreenPrompt loc key,
-        // which faulted OnPlay before the selector could even appear.
+        // Use the built-in exhaust prompt — the card's own SelectionScreenPrompt getter throws without a per-card loc key
         var selected = await CardSelectCmd.FromHand(
             choiceContext, Owner,
             new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1),
@@ -33,9 +31,6 @@ public class Decoction : AlchemistCard
         foreach (var card in selected)
             await CardCmd.Exhaust(choiceContext, card);
 
-        // Procure a random combat-eligible potion via the base game's canonical helper. (The prior
-        // hand-rolled GetPotionOptions().Where().NextItem() chain faulted mid-play on the beta build,
-        // which stalled the card — CreateRandomPotionInCombat does the same selection correctly.)
         await PotionCmd.TryToProcure(
             PotionFactory.CreateRandomPotionInCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable(),
             Owner);

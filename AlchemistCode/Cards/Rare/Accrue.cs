@@ -28,7 +28,7 @@ public class Accrue : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var hits = Hits + (IsReduced ? 1 : 0); // Gambit: hits an additional time
+        var hits = Hits + (IsReduced ? 1 : 0);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(hits)
             .FromCard(this, play)

@@ -6,16 +6,8 @@ using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 
 namespace Alchemist.AlchemistCode.Character;
 
-/// <summary>
-/// A self-wiring <see cref="NParticlesContainer"/> for the custom energy counter.
-///
-/// Two problems are solved here at runtime:
-/// 1. BaseLib's scene converter keeps this node (it already is-a NParticlesContainer) but does not
-///    populate the private <c>_particles</c> export, so we collect the GPUParticles2D children ourselves.
-/// 2. References to base-game resources (textures/materials/shaders) bake as null inside a mod scene,
-///    because they don't exist in the mod project at export time. So instead of referencing them in the
-///    .tscn, we load them here via ResourceLoader (which resolves against the mounted base-game PCK).
-/// </summary>
+// Self-wiring energy-counter particles: base-game resource refs bake to null in a mod scene, so we
+// collect the GpuParticles2D children and load their textures/materials at runtime instead
 [GlobalClass]
 public partial class AlchemistParticles : NParticlesContainer
 {
@@ -24,8 +16,7 @@ public partial class AlchemistParticles : NParticlesContainer
 
     private static readonly Color Gold = new("E9AB2F");
 
-    // Maps each particle node (by name) to its base-game texture/material. recolorLut = rebuild the
-    // flipbook shader's colour LUT to gold (the ribbon bakes its colour into the material, not self_modulate).
+    // recolorLut rebuilds the flipbook shader's colour LUT to gold instead of using self_modulate
     private static readonly System.Collections.Generic.Dictionary<string, (string tex, string mat, bool recolorLut)> Setup = new()
     {
         ["Glow"] = ("res://images/vfx/common/common_glow.png", "res://materials/vfx/common/vfx_glow.tres", false),
@@ -58,9 +49,6 @@ public partial class AlchemistParticles : NParticlesContainer
         }
     }
 
-    /// <summary>
-    /// Duplicates a flipbook ShaderMaterial and swaps its colour LUT for a gold gradient.
-    /// </summary>
     private static Material RecolorToGold(Material source)
     {
         if (source is not ShaderMaterial shader)

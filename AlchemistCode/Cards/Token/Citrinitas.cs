@@ -11,7 +11,7 @@ namespace Alchemist.AlchemistCode.Cards.Token;
 [Pool(typeof(TokenCardPool))]
 public class Citrinitas : AlchemistCard
 {
-    protected override bool HasFormulaDamage => true; // damage = lost Regen; fold in Sharp via {EnchantBonus}
+    protected override bool HasFormulaDamage => true;
 
     public Citrinitas() : base(1, CardType.Attack, CardRarity.Token, TargetType.Self)
     {
@@ -28,7 +28,7 @@ public class Citrinitas : AlchemistCard
         if (regenAmount > 0)
             await PowerCmd.Remove<RegenPower>(Owner.Creature);
 
-        var perHit = regenAmount + EnchantDamageBonus; // Sharp adds to each hit, like a normal multi-hit
+        var perHit = regenAmount + EnchantDamageBonus;
         if (perHit > 0)
             await DamageCmd.Attack(perHit)
                 .WithHitCount(DynamicVars["Hits"].IntValue)

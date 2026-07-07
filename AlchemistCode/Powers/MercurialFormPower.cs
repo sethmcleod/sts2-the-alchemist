@@ -20,7 +20,6 @@ public class MercurialFormPower : AlchemistPower
         set { AssertMutable(); _grantsStrength = value; }
     }
 
-    // Upgraded only: gain 1 Strength at the start of your turn.
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Player || !_grantsStrength) return;
@@ -28,7 +27,6 @@ public class MercurialFormPower : AlchemistPower
         await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, 1, Owner, null);
     }
 
-    // At the end of your turn, heal HP equal to your Poison.
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {

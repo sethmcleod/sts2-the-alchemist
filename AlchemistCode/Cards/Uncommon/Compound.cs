@@ -13,8 +13,6 @@ public class Compound : AlchemistCard
 
     public Compound() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        // Per-hit damage = flat 6, increased 50% (75% upgraded) per fermented turn; hits twice.
-        // {CalculatedDamage} shows the live per-hit value and greens while fermented.
         WithCalculatedDamage(6, static (card, _) =>
                 System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * (card.IsUpgraded ? 75m : 50m) / 100m
                                   * ((AlchemistCard)card).FermentTurns),
@@ -25,7 +23,7 @@ public class Compound : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, 2).Execute(choiceContext); // 2 hits of CalculatedDamage
+        await CommonActions.CardAttack(this, play, 2).Execute(choiceContext);
         ConsumeFermentTurns();
     }
 }

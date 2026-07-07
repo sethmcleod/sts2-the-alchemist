@@ -16,7 +16,7 @@ public class Bide : AlchemistCard
     {
         WithBlock(7, 3);
         WithPower<DrawCardsNextTurnPower>(1, 0);
-        WithPower<RegenPower>(2, 1); // Gambit bonus
+        WithPower<RegenPower>(2, 1);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 

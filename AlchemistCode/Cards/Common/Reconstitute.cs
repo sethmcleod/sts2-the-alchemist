@@ -12,7 +12,7 @@ public class Reconstitute : AlchemistCard
 {
     public Reconstitute() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithPower<PoisonPower>(3, -1); // gained by you; 3 -> 2 on upgrade
+        WithPower<PoisonPower>(3, -1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

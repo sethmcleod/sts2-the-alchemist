@@ -16,7 +16,7 @@ public class Congeal : AlchemistCard
     {
         WithCalculatedBlock(6, 1, (card, _) =>
             card.Owner.Creature.GetPowerAmount<RegenPower>(), ValueProp.Move, 3, 0);
-        WithPower<RegenPower>(2, 1); // Gambit bonus
+        WithPower<RegenPower>(2, 1);
         WithTip(typeof(RegenPower));
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }

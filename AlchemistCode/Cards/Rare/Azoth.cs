@@ -12,7 +12,7 @@ public class Azoth : AlchemistCard
     public Azoth() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
         WithDamage(10, 4);
-        WithEnergy(1, 1); // conditional energy gained: 1 (2)
+        WithEnergy(1, 1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

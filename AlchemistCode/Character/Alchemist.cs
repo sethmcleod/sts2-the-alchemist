@@ -53,9 +53,7 @@ public class Alchemist : PlaceholderCharacterModel
     }
 
     public override string CustomIconTexturePath => "character_icon_alchemist.png".CharacterUiPath();
-    // The dialogue/top-bar portrait draws a second "Icon/Outline" TextureRect from IconOutlineTexture
-    // (a white silhouette the game tints as the drop shadow). Without this override it falls back to the
-    // non-existent base path ui/top_panel/character_icon_alchemist_outline.png, so the shadow mismatches.
+    // Without this override the outline silhouette falls back to a non-existent base path
     public override string CustomIconOutlineTexturePath => "character_icon_alchemist_outline.png".CharacterUiPath();
     public override string CustomCharacterSelectIconPath => "char_select_alchemist.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_alchemist_locked.png".CharacterUiPath();

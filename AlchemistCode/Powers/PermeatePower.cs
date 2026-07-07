@@ -14,7 +14,7 @@ public class PermeatePower : AlchemistPower
 
     public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
-        if (creature != Owner || delta <= 0) return; // positive delta = gained HP
+        if (creature != Owner || delta <= 0) return;
         Flash();
         await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Move, null);
     }

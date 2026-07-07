@@ -12,9 +12,9 @@ public class Effluvium : AlchemistCard
 {
     public Effluvium() : base(0, CardType.Skill, CardRarity.Token, TargetType.AnyEnemy)
     {
-        WithPower<WeakPower>(1, 1);       // applied to the target: 1 (2)
-        WithPower<VulnerablePower>(1, 1); // applied to the target: 1 (2)
-        WithVar("SelfPoison", 1, 1);      // gained by you: 1 (2)
+        WithPower<WeakPower>(1, 1);
+        WithPower<VulnerablePower>(1, 1);
+        WithVar("SelfPoison", 1, 1);
         WithTip(typeof(PoisonPower));
     }
 

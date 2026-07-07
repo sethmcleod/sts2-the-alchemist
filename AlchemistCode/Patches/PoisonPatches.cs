@@ -5,14 +5,8 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-/// <summary>
-/// The base game drives poison's extra triggers AND its lethal-HP prediction off
-/// PoisonPower.TriggerCount, which natively only counts the player's Accelerant. Our Fester is a
-/// per-enemy, one-turn marker, so fold it into the trigger count on the poisoned creature. This
-/// makes the game handle the extra ticks itself (deal current Poison, decrement) and — the point of
-/// this patch — makes CalculateTotalDamageNextTurn include Fester, so an enemy that Fester will kill
-/// shows green "will die" HP during your turn. Capped at Amount (can't trigger more than the Poison).
-/// </summary>
+// Fold Fester into TriggerCount (capped at Amount). The base game drives both the extra ticks and the
+// lethal-HP preview off this, so an enemy that Fester will kill shows green "will die" HP
 [HarmonyPatch(typeof(PoisonPower), "TriggerCount", MethodType.Getter)]
 public static class FesterPoisonTriggerPatch
 {

@@ -6,11 +6,7 @@ using MegaCrit.Sts2.Core.Timeline;
 
 namespace Alchemist.AlchemistCode.Epochs;
 
-/// <summary>
-/// Injects the Alchemist's epochs + story into the base game's private static registries at mod load
-/// (they were populated once by a static ctor before we loaded). Improves on TheSorceress by caching the
-/// FieldInfo and throwing loudly if the base game renames a field, instead of silently disabling epochs.
-/// </summary>
+// Injects our epochs + story into the base game's private static registries at mod load
 public static class EpochRegistration
 {
     public static readonly Type[] AlchemistEpochTypes =
@@ -28,6 +24,7 @@ public static class EpochRegistration
     private static readonly FieldInfo AllEpochIdsCache = Require(typeof(EpochModel), "_allEpochIds");
     private static readonly FieldInfo StoryById = Require(typeof(StoryModel), "_storyTypeDictionary");
 
+    // Cached FieldInfo; throws loudly if a game update renames a field, rather than silently no-op'ing
     private static FieldInfo Require(Type type, string name) =>
         type.GetField(name, StaticNonPublic)
         ?? throw new InvalidOperationException(
@@ -47,12 +44,12 @@ public static class EpochRegistration
         foreach (var type in AlchemistEpochTypes)
         {
             var epoch = (EpochModel)Activator.CreateInstance(type)!;
-            if (epochById.ContainsKey(epoch.Id)) continue; // idempotent across reloads
+            if (epochById.ContainsKey(epoch.Id)) continue;
             epochById[epoch.Id] = type;
             idByType[type] = epoch.Id;
             allEpochs.Add(type);
         }
-        AllEpochIdsCache.SetValue(null, null); // bust the lazy cache; AllEpochIds rebuilds from _allEpochs
+        AllEpochIdsCache.SetValue(null, null); // Bust the lazy cache so AllEpochIds rebuilds from _allEpochs
 
         var storyById = (Dictionary<string, Type>)StoryById.GetValue(null)!;
         storyById[AlchemistStory.StoryKey] = typeof(AlchemistStory);
@@ -60,29 +57,22 @@ public static class EpochRegistration
         MainFile.Logger.Info($"[Epochs] Registered {AlchemistEpochTypes.Length} epochs + story '{AlchemistStory.StoryKey}'.");
     }
 
-    /// <summary>Ids of our epochs that gate the given content kind — the GetXUnlockEpochIds patches call
-    /// this, so there is no separate hardcoded id list to keep in sync.</summary>
     public static IEnumerable<string> GatingEpochIds(EpochUnlockKind kind) =>
         AlchemistEpochTypes
             .Select(t => (AlchemistEpoch)Activator.CreateInstance(t)!)
             .Where(e => e.UnlockKind == kind)
             .Select(e => e.Id);
 
-    // ── Dynamic timeline placement (collision-free) ───────────────────────────────────────────────
-    // Hardcoding Era/EraPosition collided with other mods (TheSorceress pins Invitation0/5 at pos 4 — the
-    // cells we used to take). Instead we scan the cells already occupied by every OTHER registered epoch
-    // (base game + mods) and hand each of our epochs a free one. Computed lazily on first Era access — by
-    // then all mods have registered their epochs into _allEpochs — and cached for the session.
-
+    // Collision-free placement: scan the cells occupied by every other registered epoch and take free ones.
+    // Done lazily so all mods have registered into _allEpochs first; cached for the session
     private static readonly EpochEra[] PreferredEras =
     {
         EpochEra.Invitation2, EpochEra.Invitation3, EpochEra.Invitation4,
         EpochEra.Invitation5, EpochEra.Invitation6, EpochEra.Invitation7,
     };
-    private const int TopRow = 4; // rows 0 (bottom) .. 4 (top)
+    private const int TopRow = 4; // Rows 0 (bottom) .. 4 (top)
     private static Dictionary<Type, (EpochEra era, int pos)> _slots;
 
-    /// <summary>The (era, position) assigned to one of our epoch types. Assigns all of them on first call.</summary>
     public static (EpochEra era, int pos) SlotFor(Type epochType)
     {
         _slots ??= AssignSlots();
@@ -94,17 +84,17 @@ public static class EpochRegistration
         var occupied = new HashSet<(EpochEra, int)>();
         foreach (var type in (List<Type>)AllEpochs.GetValue(null)!)
         {
-            if (typeof(AlchemistEpoch).IsAssignableFrom(type)) continue; // skip ours (would recurse into SlotFor)
+            if (typeof(AlchemistEpoch).IsAssignableFrom(type)) continue; // Skip ours (would recurse into SlotFor)
             try
             {
                 var e = (EpochModel)Activator.CreateInstance(type)!;
                 occupied.Add((e.Era, e.EraPosition));
             }
-            catch { /* an epoch we can't instantiate — just don't reserve its cell */ }
+            catch { }
         }
 
         var slots = new Dictionary<Type, (EpochEra, int)>();
-        foreach (var type in AlchemistEpochTypes) // chapter order; fills top row first, left-to-right
+        foreach (var type in AlchemistEpochTypes)
         {
             var cell = FindFreeCell(occupied);
             slots[type] = cell;
@@ -119,6 +109,6 @@ public static class EpochRegistration
             foreach (var era in PreferredEras)
                 if (!occupied.Contains((era, pos)))
                     return (era, pos);
-        return (EpochEra.Invitation7, 0); // ultra-fallback (30 cells for 7 epochs — never expected)
+        return (EpochEra.Invitation7, 0);
     }
 }

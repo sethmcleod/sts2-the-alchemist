@@ -25,7 +25,6 @@ public class ImbuePower : AlchemistPower
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
-        // The first Poison you gain or apply each turn Infuses random cards in your Hand.
         if (!_triggeredThisTurn && power is PoisonPower && applier == Owner && amount > 0
             && Owner.Player is { } player)
         {

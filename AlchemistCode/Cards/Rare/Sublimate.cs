@@ -16,7 +16,7 @@ public class Sublimate : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // min 0 / max unbounded = "any number", matching the base game's GUARDS!!! selector.
+        // Min 0, max unbounded — i.e. "any number"
         var selected = await CardSelectCmd.FromHand(
             choiceContext, Owner,
             new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 0, 999999999),

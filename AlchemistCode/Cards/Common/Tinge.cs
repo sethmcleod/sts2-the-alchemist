@@ -33,7 +33,6 @@ public class Tinge : AlchemistCard
 
     protected override async Task OnSeep(PlayerChoiceContext choiceContext)
     {
-        // AddStatus creates the token, drops it into the Discard Pile, and pops it up (PreviewCardPileAdd).
         await AlchemistCardCmd.AddStatus<Effluvium>(this);
     }
 }

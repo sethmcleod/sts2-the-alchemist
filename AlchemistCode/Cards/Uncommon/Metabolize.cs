@@ -17,7 +17,7 @@ public class Metabolize : AlchemistCard
 
     public Metabolize() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithKeyword(CardKeyword.Exhaust); // balance: too strong at 0 energy without Exhaust
+        WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(StrengthPower));
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });

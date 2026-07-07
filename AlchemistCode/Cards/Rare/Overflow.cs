@@ -16,7 +16,7 @@ public class Overflow : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;
-        // Gain 1 Regen first, so the card always lands at least one hit.
+        // Gain 1 Regen first so the card always lands at least one hit
         await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
         var regen = Owner.Creature.GetPowerAmount<RegenPower>();
         if (Owner.Creature.HasPower<RegenPower>())

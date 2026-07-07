@@ -9,7 +9,7 @@ public class Homeostasis : AlchemistCard
 {
     public Homeostasis() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1); // 2 -> 1 when upgraded
+        WithCostUpgradeBy(-1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

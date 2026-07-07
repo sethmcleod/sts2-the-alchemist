@@ -11,10 +11,8 @@ public class EverflowingChalice : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Shop;
 
-    // "Energy" backs the {Energy:energyIcons()} token and MUST be an EnergyVar — the formatter
-    // rejects a plain DynamicVar ("Unknown value type") and the energy icon renders broken.
-    // "Pending" tracks the fell-back-to-energy state in a DynamicVar (not a plain field)
-    // so it survives a mid-combat save/reload.
+    // "Energy" must be an EnergyVar or the {Energy:energyIcons()} formatter breaks.
+    // "Pending" is a DynamicVar (not a field) so it survives a mid-combat save/reload
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         new DynamicVar[] { new EnergyVar("Energy", 1), new DynamicVar("Pending", 0m) };
 

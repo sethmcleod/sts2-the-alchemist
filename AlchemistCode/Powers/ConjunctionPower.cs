@@ -7,8 +7,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Amount is the summed energy gain (1 per base copy, 2 per upgraded copy) each turn
-// you have both Poison and Regen.
 public class ConjunctionPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;

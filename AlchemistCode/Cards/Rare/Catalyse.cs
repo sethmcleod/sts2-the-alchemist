@@ -11,8 +11,8 @@ public class Catalyse : AlchemistCard
 {
     public Catalyse() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("Cards", 2, 0); // fixed 2 random cards Infused on the first HP change each turn
-        WithCostUpgradeBy(-1);  // 2 -> 1 on upgrade
+        WithVar("Cards", 2, 0);
+        WithCostUpgradeBy(-1);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) });
     }
 

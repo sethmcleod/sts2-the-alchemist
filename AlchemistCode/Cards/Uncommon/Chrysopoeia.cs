@@ -13,7 +13,7 @@ public class Chrysopoeia : AlchemistCard
 
     public Chrysopoeia() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("gold", 2, 1); // 2 (3) Gold per HP lost
+        WithVar("gold", 2, 1);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
@@ -21,7 +21,7 @@ public class Chrysopoeia : AlchemistCard
     {
         await PowerCmd.Apply<ChrysopoeiaPower>(choiceContext, Owner.Creature,
             DynamicVars["gold"].IntValue, Owner.Creature, this);
-        if (IsReduced) // Gambit
+        if (IsReduced)
             await CreatureCmd.Heal(Owner.Creature, 3);
     }
 }

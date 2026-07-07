@@ -16,6 +16,6 @@ public class Windfall : AlchemistCard
     {
         var power = await PowerCmd.Apply<WindfallPower>(choiceContext, Owner.Creature,
             DynamicVars["draw"].IntValue, Owner.Creature, this);
-        power?.RegisterCopy(); // 1 energy per copy played
+        power?.RegisterCopy();
     }
 }

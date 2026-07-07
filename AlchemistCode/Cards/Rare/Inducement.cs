@@ -10,7 +10,7 @@ public class Inducement : AlchemistCard
 {
     public Inducement() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1); // "that much" has no number to upgrade, so upgrading cuts the cost
+        WithCostUpgradeBy(-1);
         WithTip(typeof(PoisonPower));
     }
 

@@ -6,11 +6,7 @@ using MegaCrit.Sts2.Core.Localization;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-/// <summary>
-/// BaseLib builds custom-keyword hover tips with a null icon. This postfix rebuilds the tip
-/// for our keywords with the same title/description plus an icon texture, so Ferment and
-/// Gambit tooltips render an icon like power tips do.
-/// </summary>
+// BaseLib builds custom-keyword hover tips with a null icon; rebuild ours with an icon texture
 [HarmonyPatch(typeof(HoverTipFactory), nameof(HoverTipFactory.FromKeyword))]
 public static class KeywordTipIconPatch
 {

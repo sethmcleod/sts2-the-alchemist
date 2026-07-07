@@ -10,8 +10,8 @@ public class Sepsis : AlchemistCard
 {
     public Sepsis() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("percent", 50, 0);   // flat 50% at both tiers (like the base game's reworked Tracking)
-        WithCostUpgradeBy(-1);       // 2 -> 1 on upgrade; the bonus stays 50%
+        WithVar("percent", 50, 0);
+        WithCostUpgradeBy(-1);
         WithTip(typeof(PoisonPower));
     }
 

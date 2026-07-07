@@ -11,7 +11,6 @@ public class ChrysopoeiaPower : AlchemistPower
 
     public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
-        // Whenever you lose HP (any source — poison, attacks, self-damage), gain Gold.
         if (creature != Owner || delta >= 0) return;
         Flash();
         await PlayerCmd.GainGold(Amount, Owner.Player!);

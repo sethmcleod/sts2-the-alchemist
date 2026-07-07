@@ -13,7 +13,6 @@ public class Refine : AlchemistCard
 {
     public Refine() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        // Live damage = base 8 (11) + your current Regen.
         WithCalculatedDamage(8, static (card, _) => card.Owner.Creature.GetPowerAmount<RegenPower>(),
             ValueProp.Move, 3, 0);
         WithTip(typeof(RegenPower));

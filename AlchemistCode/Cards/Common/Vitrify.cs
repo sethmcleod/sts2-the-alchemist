@@ -14,7 +14,7 @@ public class Vitrify : AlchemistCard
 
     public Vitrify() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(3, 1); // 3 (4) Block, gained twice — an infused Nimble bonus lands on each gain
+        WithBlock(3, 1);
         _ = WithTips(_ => [
             HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit),
             HoverTipFactory.FromCard<Effluvium>(),
@@ -24,8 +24,8 @@ public class Vitrify : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await CommonActions.CardBlock(this, play); // twice: two separate Block gains
-        if (IsReduced) // Gambit
+        await CommonActions.CardBlock(this, play);
+        if (IsReduced)
             await AlchemistCardCmd.GiveCard<Effluvium>(this);
     }
 }

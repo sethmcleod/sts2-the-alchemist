@@ -7,16 +7,8 @@ using Alchemist.AlchemistCode.Cards;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-/// <summary>
-/// The base game renders a card's before-description keywords (Retain, Innate, …) as their own
-/// lines above the body, joined by '\n'. Our Ferment cards all carry Retain, so it stacks a
-/// standalone "Retain." line above "Ferment." — wasting a line. For Ferment cards only, splice the
-/// Retain line onto the following (Ferment) line so they read "Retain. Ferment." together.
-/// Patches the private 3-arg assembly method both public description getters funnel through.
-/// Resolved by name + parameter count so we don't need the internal DescriptionPreviewType at all
-/// (referencing it by name/typeof fails: as a typeof it's inaccessible, and AccessTools.TypeByName
-/// returned null, which crashed PatchAll and took the whole mod init down with it).
-/// </summary>
+// Splice a Ferment card's standalone "Retain." line onto the following Ferment line. Resolved by name +
+// param count so we never reference the internal DescriptionPreviewType (inaccessible as a typeof)
 [HarmonyPatch]
 public static class FermentInlineRetainPatch
 {
@@ -28,10 +20,9 @@ public static class FermentInlineRetainPatch
     private static string RetainTitle => new LocString("card_keywords", "RETAIN.title").GetFormattedText();
     private static string Period => new LocString("card_keywords", "PERIOD").GetRawText();
 
-    // How the game renders Retain: "[gold]Retain[/gold]." — period OUTSIDE the gold tag (white).
+    // The game renders Retain with the period outside the gold tag; our inline form pulls it inside
     private static string RetainRendered => $"[gold]{RetainTitle}[/gold]{Period}";
 
-    // Our inline form: merged onto the Ferment line, with the period pulled INSIDE the gold.
     private static string RetainInline => $"[gold]{RetainTitle}{Period}[/gold] ";
 
     public static void Postfix(CardModel __instance, ref string __result)

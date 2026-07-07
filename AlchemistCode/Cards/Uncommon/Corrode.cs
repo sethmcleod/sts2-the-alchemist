@@ -15,10 +15,10 @@ public class Corrode : AlchemistCard
 
     public Corrode() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithPower<PoisonPower>(6, 0);      // applied to all enemies
-        WithPower<WeakPower>(1, 1);        // applied to all enemies: 1 (2)
-        WithVar("Regen", 2, 0);            // Gambit bonus
-        WithVar("SelfPoison", 3, 0);       // Seep: gained by you
+        WithPower<PoisonPower>(6, 0);
+        WithPower<WeakPower>(1, 1);
+        WithVar("Regen", 2, 0);
+        WithVar("SelfPoison", 3, 0);
         WithTip(typeof(RegenPower));
         WithTips(_ => new[]
         {

@@ -24,8 +24,8 @@ public class Steep : AlchemistCard
 
     public Steep() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithPower<PoisonPower>(4, 2);   // base Poison: 4 (6)
-        WithVar("Bonus", 2, 0);          // Ferment: flat +2 Poison per fermented turn
+        WithPower<PoisonPower>(4, 2);
+        WithVar("Bonus", 2, 0);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) });

@@ -12,8 +12,7 @@ public class CatalysePower : AlchemistPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    // "The first time your HP changes each turn" — gate to the owner's own turn, since
-    // AfterCurrentHpChanged also fires on enemy turns (taking attack damage).
+    // Gate to the owner's turn — AfterCurrentHpChanged also fires on enemy turns
     private bool _ownerTurn;
     private bool _triggeredThisTurn;
 

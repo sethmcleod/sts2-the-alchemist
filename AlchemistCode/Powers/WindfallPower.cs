@@ -6,9 +6,6 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Amount is the summed card draw (1 per base copy, 2 per upgraded copy); Copies counts the
-// number of Windfalls played and equals the energy gained per potion procured, so a second
-// copy adds energy instead of being silently capped at 1.
 public class WindfallPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
@@ -17,7 +14,6 @@ public class WindfallPower : AlchemistPower
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         new[] { new DynamicVar("Copies", 0m) };
 
-    /// <summary>Called by the card after each apply — adds this copy's energy gain.</summary>
     public void RegisterCopy() => DynamicVars["Copies"].BaseValue += 1;
 
     public override async Task AfterPotionProcured(PotionModel potion)

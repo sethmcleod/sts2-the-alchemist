@@ -11,7 +11,7 @@ public class Imbue : AlchemistCard
 {
     public Imbue() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Cards", 1, 1);  // random cards Infused each turn: 1 (2)
+        WithVar("Cards", 1, 1);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) });
     }
 

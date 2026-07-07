@@ -7,9 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Single "this turn" tracker for Philtre's temporary Strength AND Dexterity — the two grants
-// are always equal, so one icon shows both counts. At end of turn it takes back what was
-// granted and expires.
+// One shared tracker for the equal temporary Strength + Dexterity; takes both back at end of turn
 public class PhiltreBuffPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;

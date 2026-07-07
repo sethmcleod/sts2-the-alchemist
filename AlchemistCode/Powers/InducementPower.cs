@@ -8,9 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Whenever the owner takes Poison damage, apply that much Poison (x Amount, so copies stack)
-// to ALL enemies. Poison-tick detection matches ChrysopoeiaPower: unblockable+unpowered
-// damage with no dealer or card source.
+// Detect the poison tick: unblockable + unpowered damage with no dealer or card source
 public class InducementPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;

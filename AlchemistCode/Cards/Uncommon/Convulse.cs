@@ -21,7 +21,6 @@ public class Convulse : AlchemistCard
         if (play.Target != null)
         {
             await PowerCmd.Apply<PoisonPower>(choiceContext, play.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
-            // Trigger Poison: deal damage equal to target's Poison, then reduce by 1
             var poison = play.Target.GetPowerAmount<PoisonPower>();
             if (poison > 0)
             {

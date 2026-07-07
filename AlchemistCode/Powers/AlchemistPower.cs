@@ -5,10 +5,6 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-/// <summary>
-/// Base class for all Alchemist powers. Icons load by convention from
-/// Alchemist/images/powers/&lt;power_id&gt;.png (64x64) and powers/big/&lt;power_id&gt;.png (256x256).
-/// </summary>
 public abstract class AlchemistPower : CustomPowerModel
 {
     public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();

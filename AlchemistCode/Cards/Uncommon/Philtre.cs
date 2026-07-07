@@ -10,7 +10,7 @@ public class Philtre : AlchemistCard
 {
     public Philtre() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("amount", 2, 1); // 2 -> 3 upgraded
+        WithVar("amount", 2, 1);
         WithTip(typeof(StrengthPower));
         WithTip(typeof(DexterityPower));
     }

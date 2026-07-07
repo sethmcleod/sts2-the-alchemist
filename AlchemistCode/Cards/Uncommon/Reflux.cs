@@ -12,7 +12,7 @@ public class Reflux : AlchemistCard
 
     public Reflux() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("poison", 2, 1); // 2 (3) Poison
+        WithVar("poison", 2, 1);
         WithTip(typeof(PoisonPower));
     }
 

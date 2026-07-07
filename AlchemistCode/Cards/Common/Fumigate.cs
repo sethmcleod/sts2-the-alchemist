@@ -13,10 +13,9 @@ public class Fumigate : AlchemistCard
 {
     public Fumigate() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
-        // 1 damage + 1 per card in your Exhaust Pile, to all enemies (neither scales on upgrade).
         WithCalculatedDamage(1, 1, static (card, _) =>
             PileType.Exhaust.GetPile(((AlchemistCard)card).Owner).Cards.Count, ValueProp.Move, 0, 0);
-        WithPower<PoisonPower>(2, 0); // Gain 2 Poison (base only — upgrade removes it entirely)
+        WithPower<PoisonPower>(2, 0);
         WithTip(typeof(PoisonPower));
     }
 

@@ -7,9 +7,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Amount is the stack count (1 per Homeostasis played). Each turn, while HP is in the balanced band,
-// draw (Amount) cards and gain (Amount) energy. The band is fixed so stacks don't need to track
-// per-copy thresholds.
 public class HomeostasisPower : AlchemistPower
 {
     private const double LowerBound = 0.33;

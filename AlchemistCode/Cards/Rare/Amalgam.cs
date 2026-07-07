@@ -32,7 +32,6 @@ public class Amalgam : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Ferment increases X (energy spent) by 1 per fermented turn, boosting both Poison and Regen.
         var x = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0) + ConsumeFermentTurns();
         if (x > 0)
         {

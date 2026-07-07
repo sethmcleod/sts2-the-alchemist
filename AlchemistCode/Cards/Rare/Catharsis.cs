@@ -25,7 +25,7 @@ public class Catharsis : AlchemistCard
     public Catharsis() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithPower<RegenPower>(3, 1);
-        WithVar("Bonus", 2, 0); // Ferment: Regen per fermented turn
+        WithVar("Bonus", 2, 0);
         WithKeyword(CardKeyword.Retain);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) });
     }

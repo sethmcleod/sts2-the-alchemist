@@ -17,6 +17,6 @@ public class Vent : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
-        await AlchemistCardCmd.GiveCard<Effluvium>(this); // Effluvium+ when Vent is upgraded
+        await AlchemistCardCmd.GiveCard<Effluvium>(this);
     }
 }

@@ -14,27 +14,17 @@ using MegaCrit.Sts2.Core.Timeline;
 
 namespace Alchemist.AlchemistCode.Config;
 
-/// <summary>
-/// Mod settings page (registered in <see cref="MainFile"/>). Testing helpers that mark every
-/// Alchemist card/relic/potion as "seen" (so they show in the compendium) or clear that state.
-/// Content is enumerated by base type — no ID-prefix assumptions. Also reveals/hides the Alchemist's own
-/// Timeline epochs (so epoch-gated content is testable); it never touches base-game epochs.
-/// </summary>
 public class AlchemistModConfig : SimpleModConfig
 {
     public override void SetupConfigUI(Control optionContainer)
     {
-        GenerateOptionsForAllProperties(optionContainer); // also picks up [ConfigButton] methods
+        // Auto-generates the UI from the properties and [ConfigButton] methods below
+        GenerateOptionsForAllProperties(optionContainer);
         SetupFocusNeighbors(optionContainer);
     }
 
-    /// <summary>Master switch for the Timeline/Epoch feature (OFF by default). While off, the Alchemist's
-    /// epochs never appear on the Timeline and never gate content — so they can't clutter the Timeline or
-    /// collide with other mods. When first turned on, all epochs start Revealed (nothing gets locked); a
-    /// "Reset Unlocks" then drops into the milestone-progression mode. Read at runtime by
-    /// <see cref="Patches.EpochPatches"/>. BaseLib config properties are static + auto-persisted.</summary>
     [ConfigSection("Timeline")]
-    [ConfigHoverTip] // shows the "...hover.desc" loc as a popup on hover (like BaseLib's own settings)
+    [ConfigHoverTip]
     public static bool EnableEpochs { get; set; } = true;
 
     [ConfigSection("Unlocks")]
@@ -52,8 +42,6 @@ public class AlchemistModConfig : SimpleModConfig
         foreach (var relic in relics) save.MarkRelicAsSeen(relic);
         foreach (var potion in potions) save.MarkPotionAsSeen(potion);
 
-        // Also reveal this character's Timeline epochs so epoch-gated content is usable without grinding
-        // the milestones (IsEpochRevealed(Revealed) == true unlocks the gated cards/relics/potions).
         foreach (var type in EpochRegistration.AlchemistEpochTypes)
             save.ObtainEpochOverride(EpochModel.GetId(type), EpochState.Revealed);
 
@@ -68,12 +56,11 @@ public class AlchemistModConfig : SimpleModConfig
         var save = SaveManager.Instance;
         if (save?.Progress == null) return;
 
-        // DiscoveredCards/Relics/Potions are read-only; strip just this mod's ids from the private sets.
+        // The discovered sets are read-only, so strip this mod's ids from the private backing fields
         RemoveFromDiscovered("_discoveredCards", ModelDb.AllCards.Where(c => c is AlchemistCard).Select(c => c.Id));
         RemoveFromDiscovered("_discoveredRelics", ModelDb.AllRelics.Where(r => r is AlchemistRelic).Select(r => r.Id));
         RemoveFromDiscovered("_discoveredPotions", ModelDb.AllPotions.Where(p => p is AlchemistPotion).Select(p => p.Id));
 
-        // Re-lock the Timeline epochs too (re-gates the epoch-locked content).
         foreach (var type in EpochRegistration.AlchemistEpochTypes)
             save.ObtainEpochOverride(EpochModel.GetId(type), EpochState.NotObtained);
 
@@ -90,8 +77,7 @@ public class AlchemistModConfig : SimpleModConfig
         set.RemoveWhere(toRemove.Contains);
     }
 
-    /// <summary>Raise a "Success" popup. (BaseLib's auto PendingUserMessages popup is hard-titled
-    /// "Mod configuration error", so we create our own instead.)</summary>
+    // Custom popup — BaseLib's auto message popup is hard-titled "Mod configuration error"
     private static void Notify(string message)
     {
         MainFile.Logger.Info("[Config] " + message);

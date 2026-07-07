@@ -13,7 +13,6 @@ public class Cornered : AlchemistCard
 
     public Cornered() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        // 6 (9) base; Gambit adds a flat 5 (shown via {ExtraDamage:diff()}).
         WithCalculatedDamage(6, 5, static (card, _) => ((AlchemistCard)card).IsReduced ? 1 : 0, ValueProp.Move, 3, 0);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }

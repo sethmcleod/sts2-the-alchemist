@@ -9,7 +9,7 @@ public class Permeate : AlchemistCard
 {
     public Permeate() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("block", 3, 2); // gain 3 (5) Block whenever you gain HP this turn
+        WithVar("block", 3, 2);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

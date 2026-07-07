@@ -17,7 +17,7 @@ public class Osmosis : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var x = ResolveEnergyXValue();
-        var drawCount = x + 1;          // X+1 cards at both tiers
+        var drawCount = x + 1;
         var poisonAmount = x + 1;
         if (drawCount > 0)
             await CardPileCmd.Draw(choiceContext, drawCount, Owner);

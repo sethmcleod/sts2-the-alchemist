@@ -12,7 +12,7 @@ public class Effervesce : AlchemistCard
 
     public Effervesce() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
-        WithVar("cards", 2, 1); // 2 (3) Distillates
+        WithVar("cards", 2, 1);
         WithTips(_ => new[] { HoverTipFactory.FromCard<Distillate>() });
     }
 

@@ -29,10 +29,7 @@ public class Harvest : AlchemistCard
         var attack = CommonActions.CardAttack(this, play);
         await attack.Execute(choiceContext);
 
-        // Reward on a fatal kill exactly like the base "Fatal" cards (e.g. The Hunt): gate on the real
-        // Fatal check (some summoned enemies opt out via ShouldOwnerDeathTriggerFatal) and push the reward
-        // straight to the combat room. AddExtraReward accumulates, so each Harvest kill across a multi-enemy
-        // fight grants its own potion(s) — no card-level reward-hook bookkeeping needed.
+        // Gate on the real Fatal check — some summoned enemies opt out via ShouldOwnerDeathTriggerFatal
         var killed = attack.Results.SelectMany(r => r).Any(r => r.WasTargetKilled);
         var fatal = play.Target != null && play.Target.Powers.All(p => p.ShouldOwnerDeathTriggerFatal());
         if (killed && fatal && Owner.RunState.CurrentRoom is CombatRoom room)

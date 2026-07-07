@@ -10,13 +10,13 @@ public class Precipitate : AlchemistCard
 {
     public Precipitate() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithBlock(5, 1); // 5 (6) Block, gained twice — an infused Nimble bonus lands on each gain
+        WithBlock(5, 1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await CommonActions.CardBlock(this, play); // twice: two separate Block gains
+        await CommonActions.CardBlock(this, play);
         await PowerCmd.Apply<PrecipitatePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 }

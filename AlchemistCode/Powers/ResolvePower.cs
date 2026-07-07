@@ -7,8 +7,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Amount is the summed Strength per step (1 per base copy, 2 per upgraded copy):
-// each turn, gain Amount Strength for every 20 HP you are missing.
 public class ResolvePower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
@@ -19,7 +17,7 @@ public class ResolvePower : AlchemistPower
     {
         if (!participants.Contains(Owner)) return;
         var missingHp = Owner.MaxHp - Owner.CurrentHp;
-        var steps = missingHp / 20; // full 20-HP increments missing
+        var steps = missingHp / 20;
         var strengthGain = Amount * steps;
         if (strengthGain > 0)
         {

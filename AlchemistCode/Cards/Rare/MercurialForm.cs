@@ -17,7 +17,7 @@ public class MercurialForm : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var power = (MercurialFormPower)ModelDb.Power<MercurialFormPower>().ToMutable();
-        power.GrantsStrength = IsUpgraded; // upgraded: also gain 1 Strength at the start of your turn
+        power.GrantsStrength = IsUpgraded;
         await PowerCmd.Apply(choiceContext, power, Owner.Creature, 1, Owner.Creature, this);
     }
 }

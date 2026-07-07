@@ -11,13 +11,13 @@ public class Bestow : AlchemistCard
 
     public Bestow() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
-        WithCostUpgradeBy(-1); // 1 -> 0 on upgrade
+        WithCostUpgradeBy(-1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null || play.Target?.Player is not { } targetPlayer) return;
-        Infusion.InfuseRandomFromHand(targetPlayer, 1); // Infuse a random card in the chosen ally's Hand
-        await CardPileCmd.Draw(choiceContext, 1, Owner); // then draw 1 for yourself
+        Infusion.InfuseRandomFromHand(targetPlayer, 1);
+        await CardPileCmd.Draw(choiceContext, 1, Owner);
     }
 }

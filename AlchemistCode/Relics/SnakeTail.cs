@@ -7,13 +7,8 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-/// <summary>
-/// Snake Tail — a Poison-flavored Lizard Tail. Once per run, when a lethal Poison tick would reduce the
-/// player to 0 HP, the death is prevented and they heal to 33% of Max HP. Because the heal runs inside the
-/// damage command (via <see cref="AfterPreventingDeath"/>), the owner is alive again when Poison's own
-/// "if alive, decrement" check fires right after — so the Poison stack still ticks down by 1 (e.g. 5 Poison
-/// at 3 HP → survive, Poison becomes 4, HP restored to 33%).
-/// </summary>
+// The heal runs inside the damage command, so the owner is alive again when poison's own
+// "if alive, decrement" check fires right after — the poison stack still ticks down by 1
 public class SnakeTail : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Common;
@@ -33,9 +28,7 @@ public class SnakeTail : AlchemistRelic
         }
     }
 
-    // Prevent the killing blow only when it's us, the relic is unspent, and we're currently Poisoned — i.e.
-    // the lethal turn-start Poison tick (Poison hasn't decremented yet at this point). Any other death, or a
-    // second poison death after we've been used, resolves normally.
+    // Only the lethal turn-start poison tick (poison hasn't decremented yet); other deaths resolve normally
     public override bool ShouldDieLate(Creature creature)
     {
         if (creature != Owner.Creature || _used) return true;

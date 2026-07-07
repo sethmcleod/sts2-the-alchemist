@@ -14,7 +14,6 @@ public class Enervate : AlchemistCard
 
     public Enervate() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        // Gambit bonus: 6 base, 8 upgraded — shown via {ExtraDamage:diff()} in the loc
         WithCalculatedDamage(12, 6, static (card, _) => ((AlchemistCard)card).IsReduced ? 1 : 0, ValueProp.Move, 4, 2);
         WithPower<WeakPower>(2, 1);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });

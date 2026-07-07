@@ -11,7 +11,7 @@ public class Enrich : AlchemistCard
 {
     public Enrich() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("draw", 1, 1); // draw 1 (2)
+        WithVar("draw", 1, 1);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) });
     }
 

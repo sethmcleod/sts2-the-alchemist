@@ -18,7 +18,6 @@ public class Elixir : AlchemistCard
             await PotionCmd.TryToProcure(
                 PotionFactory.CreateRandomPotionInCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable(),
                 Owner);
-        // Explicit amount 1 per copy — stacks procure one potion each at turn start.
         await PowerCmd.Apply<ElixirPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 }

@@ -11,7 +11,7 @@ public class Suffuse : AlchemistCard
 
     public Suffuse() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1); // 2 (1)
+        WithCostUpgradeBy(-1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

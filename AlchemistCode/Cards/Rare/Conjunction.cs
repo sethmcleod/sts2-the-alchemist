@@ -10,9 +10,8 @@ public class Conjunction : AlchemistCard
 {
     public Conjunction() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        // WithEnergy creates an EnergyVar (required by the {Energy:energyIcons()} formatter — a plain
-        // WithVar produces a generic DynamicVar that the formatter rejects, breaking the icon).
-        WithEnergy(1, 1); // energy per turn: 1 -> 2 upgraded
+        // Must be WithEnergy, not WithVar — the {Energy:energyIcons()} formatter rejects a plain DynamicVar
+        WithEnergy(1, 1);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(RegenPower));
     }

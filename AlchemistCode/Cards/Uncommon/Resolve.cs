@@ -10,7 +10,7 @@ public class Resolve : AlchemistCard
 {
     public Resolve() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Strength", 1, 1); // Strength per 20% missing: 1 -> 2 upgraded
+        WithVar("Strength", 1, 1);
         WithTip(typeof(StrengthPower));
     }
 

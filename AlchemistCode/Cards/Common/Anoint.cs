@@ -13,7 +13,7 @@ public class Anoint : AlchemistCard
 {
     public Anoint() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(4, 3); // 4 (7) Block
+        WithBlock(4, 3);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) });
     }
 

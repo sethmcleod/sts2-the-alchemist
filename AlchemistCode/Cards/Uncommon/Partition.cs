@@ -34,7 +34,7 @@ public class Partition : AlchemistCard
             remainder--;
             await CreatureCmd.Damage(choiceContext, enemy, damage, ValueProp.Move, Owner.Creature, this, null);
         }
-        if (IsReduced) // Gambit: 1 Weak to all
+        if (IsReduced)
             foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
                 await PowerCmd.Apply<WeakPower>(choiceContext, enemy, 1, Owner.Creature, this);
     }

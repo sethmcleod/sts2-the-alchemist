@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.Factories;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Amount is the stack count (1 per Elixir played): procure that many random potions each turn.
 public class ElixirPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;

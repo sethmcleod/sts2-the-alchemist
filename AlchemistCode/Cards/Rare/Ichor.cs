@@ -6,7 +6,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Ichor : AlchemistCard
 {
-    protected override bool HasFormulaDamage => true; // damage = missing HP; fold in Sharp via {EnchantBonus}
+    protected override bool HasFormulaDamage => true;
 
     public Ichor() : base(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {

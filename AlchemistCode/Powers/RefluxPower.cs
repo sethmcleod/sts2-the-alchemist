@@ -17,9 +17,7 @@ public class RefluxPower : AlchemistPower
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
-        // React only to a debuff a *teammate* applies to an enemy via a card play. Requiring a card
-        // source excludes our own reactive Poison (applied with a null source), so two players'
-        // Reflux powers can't ping-pong debuffs off each other forever.
+        // Require a card source — this excludes our own null-source poison, so two players' Reflux can't ping-pong forever
         if (amount <= 0 || cardSource == null || power.Type != PowerType.Debuff) return;
         if (applier == null || applier == Owner || !applier.IsPlayer) return;
         if (power.Owner is not { IsPlayer: false, IsAlive: true } enemy) return;
@@ -30,7 +28,6 @@ public class RefluxPower : AlchemistPower
     public override Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
-        // "this turn" — the buff lasts only until the end of the owner's turn.
         if (participants.Contains(Owner)) return PowerCmd.Remove<RefluxPower>(Owner);
         return Task.CompletedTask;
     }

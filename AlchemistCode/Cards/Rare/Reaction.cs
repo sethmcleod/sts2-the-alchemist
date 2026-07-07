@@ -12,7 +12,6 @@ public class Reaction : AlchemistCard
 {
     public Reaction() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        // 9 (12) base + 4 (5) per potion you have.
         WithCalculatedDamage(9, 4, static (card, _) =>
             ((AlchemistCard)card).Owner.Potions.Count(), ValueProp.Move, 3, 1);
     }

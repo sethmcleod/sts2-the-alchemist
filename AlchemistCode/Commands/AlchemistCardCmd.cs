@@ -47,7 +47,7 @@ public static class AlchemistCardCmd
         PlayerChoiceContext choiceContext, AlchemistCard source)
     {
         if (source.CombatState == null) return;
-        // Enemies + the casting player only — allies are intentionally excluded so poison doesn't harm them.
+        // Enemies + the casting player only; allies are intentionally excluded
         var targets = source.CombatState.Enemies
             .Append(source.Owner.Creature)
             .Where(c => c.IsAlive);

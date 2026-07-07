@@ -12,14 +12,13 @@ public class Invigorate : AlchemistCard
     {
         WithCalculatedDamage(8, 1, (card, _) =>
             card.Owner.Creature.GetPowerAmount<RegenPower>(), ValueProp.Move, 2, 0);
-        WithPower<RegenPower>(2, 0); // flat 2 Regen, gained after the attack
+        WithPower<RegenPower>(2, 0);
         WithTip(typeof(RegenPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Attack first so the bonus damage uses your current Regen (matches the card preview),
-        // then gain the 2 Regen as a rider for future turns.
+        // Attack before gaining Regen so the bonus damage uses your current Regen
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
         await CommonActions.ApplySelf<RegenPower>(choiceContext, this);
     }
