@@ -6,9 +6,9 @@ using Alchemist.AlchemistCode.Cards.Token;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-public class Salvage : AlchemistCard
+public class Dissolve : AlchemistCard
 {
-    public Salvage() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Dissolve() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithUpgradingCardTip<Distillate>();
     }

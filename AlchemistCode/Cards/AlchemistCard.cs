@@ -26,7 +26,19 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
 
     protected virtual bool IsGambitCard => false;
 
-    protected override bool ShouldGlowGoldInternal => IsGambitCard && IsReduced;
+    // Cards with a play-time conditional bonus override this to glow gold while that condition currently
+    // holds, the same way Gambit cards glow while you're at low HP
+    protected virtual bool ConditionalGlow => false;
+
+    protected override bool ShouldGlowGoldInternal => (IsGambitCard && IsReduced) || ConditionalGlow;
+
+    // True when the owner's current HP sits within [lower, upper] as a fraction of Max HP
+    internal bool HpFractionInRange(double lower, double upper)
+    {
+        if (Owner?.Creature is not { } c || c.MaxHp <= 0) return false;
+        var pct = (double)c.CurrentHp / c.MaxHp;
+        return pct >= lower && pct <= upper;
+    }
 
     // Formula-damage cards deal raw DamageCmd.Attack(decimal) with no DamageVar, so the base game's enchant
     // preview never applies or shows the bonus. They fold EnchantDamageBonus in and render {EnchantBonus}

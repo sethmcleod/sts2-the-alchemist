@@ -16,6 +16,9 @@ public class Conjunction : AlchemistCard
         WithTip(typeof(RegenPower));
     }
 
+    protected override bool ConditionalGlow =>
+        Owner?.Creature is { } c && c.HasPower<PoisonPower>() && c.HasPower<RegenPower>();
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<ConjunctionPower>(choiceContext, Owner.Creature,

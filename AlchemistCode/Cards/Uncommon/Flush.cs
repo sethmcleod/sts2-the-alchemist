@@ -13,6 +13,10 @@ public class Flush : AlchemistCard
         WithTip(typeof(StrengthPower));
     }
 
+    // Upgraded only: the Strength bonus needs 5+ Regen (all of which this loses)
+    protected override bool ConditionalGlow =>
+        IsUpgraded && Owner?.Creature is { } c && c.GetPowerAmount<RegenPower>() >= 5;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);

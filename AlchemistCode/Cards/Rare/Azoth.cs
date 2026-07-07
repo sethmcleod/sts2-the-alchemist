@@ -15,6 +15,9 @@ public class Azoth : AlchemistCard
         WithEnergy(1, 1);
     }
 
+    protected override bool ConditionalGlow =>
+        Owner != null && PileType.Exhaust.GetPile(Owner).Cards.Count >= ExhaustThreshold;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play).Execute(choiceContext);

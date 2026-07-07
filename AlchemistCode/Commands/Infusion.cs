@@ -21,6 +21,14 @@ public static class Infusion
 
     private static readonly HashSet<CardModel> Infused = new();
 
+    // Distinct cards enchanted (by any source) during the current combat. Recorded from the shared
+    // CardCmd.Enchant hook so Masterwork's threshold counts other mods' enchantments too, not just Infuse
+    private static readonly HashSet<CardModel> EnchantedThisCombat = new();
+
+    public static void RecordCombatEnchant(CardModel card) => EnchantedThisCombat.Add(card);
+
+    public static int EnchantedThisCombatCount(Player owner) => EnchantedThisCombat.Count(c => c.Owner == owner);
+
     public static async Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count)
     {
         var prefs = new CardSelectorPrefs(SelectPrompt, count);
@@ -129,5 +137,6 @@ public static class Infusion
             if (card.Enchantment != null)
                 CardCmd.ClearEnchantment(card);
         Infused.Clear();
+        EnchantedThisCombat.Clear();
     }
 }

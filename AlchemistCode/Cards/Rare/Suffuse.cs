@@ -14,6 +14,9 @@ public class Suffuse : AlchemistCard
         WithCostUpgradeBy(-1);
     }
 
+    // Mirrors SuffusePower's start-of-turn HP window
+    protected override bool ConditionalGlow => HpFractionInRange(0.33, 0.66);
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<SuffusePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);

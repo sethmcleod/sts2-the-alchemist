@@ -8,9 +8,9 @@ using MegaCrit.Sts2.Core.Localization;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-public class Glean : AlchemistCard
+public class Winnow : AlchemistCard
 {
-    public Glean() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Winnow() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithBlock(7, 3);
     }

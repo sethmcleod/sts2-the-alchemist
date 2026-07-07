@@ -12,6 +12,9 @@ public class Homeostasis : AlchemistCard
         WithCostUpgradeBy(-1);
     }
 
+    // Mirrors HomeostasisPower's start-of-turn HP window
+    protected override bool ConditionalGlow => HpFractionInRange(0.33, 0.66);
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<HomeostasisPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
