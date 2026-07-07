@@ -25,8 +25,7 @@ namespace Alchemist.AlchemistCode.Commands;
 /// </summary>
 public static class Infusion
 {
-    private const int Amount = 3;       // Attack → Sharp, Skill → Adroit
-    private const int SwiftAmount = 2;  // Power → Swift (a drawn Power is high value, so a touch weaker)
+    private const int Amount = 2; // every Infuse enchantment: Sharp / Adroit / Nimble / Swift
     private static readonly LocString SelectPrompt = new("card_keywords", "ALCHEMIST-INFUSE.selectionPrompt");
 
     // Cards enchanted by Infuse this combat, so we can strip the (combat-only) enchantment at end.
@@ -54,6 +53,31 @@ public static class Infusion
         var picks = await CardSelectCmd.FromHand(ctx, source.Owner, prefs, null, source);
         foreach (var card in picks)
             Infuse(card);
+    }
+
+    /// <summary>Infuse every card in the owner's Hand (no selection), excluding the source card itself.</summary>
+    public static void InfuseAllInHand(AlchemistCard source)
+    {
+        foreach (var card in PileType.Hand.GetPile(source.Owner).Cards.Where(c => c != source).ToList())
+            Infuse(card);
+    }
+
+    /// <summary>Infuse <paramref name="count"/> random cards from <paramref name="owner"/>'s given pile
+    /// (e.g. the Draw Pile). Pops the picks up since the player didn't choose (and can't see the pile).</summary>
+    public static void InfuseRandomFromPile(Player owner, PileType pile, int count)
+    {
+        var rng = owner.RunState.Rng.CombatCardGeneration;
+        var cards = pile.GetPile(owner).Cards.ToList();
+        var infused = new List<CardModel>();
+        for (var i = 0; i < count && cards.Count > 0; i++)
+        {
+            var card = cards[rng.NextInt(cards.Count)];
+            cards.Remove(card);
+            Infuse(card);
+            infused.Add(card);
+        }
+        if (infused.Count > 0)
+            CardCmd.Preview(infused);
     }
 
     /// <summary>Infuse <paramref name="count"/> random cards from <paramref name="owner"/>'s Hand
@@ -97,7 +121,7 @@ public static class Infusion
                 else TryEnchant<Adroit>(card, Amount);
                 break;
             case CardType.Power:
-                TryEnchant<Swift>(card, SwiftAmount);
+                TryEnchant<Swift>(card, Amount);
                 break;
         }
     }

@@ -61,7 +61,7 @@ public class Alchemist5Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST5_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Cards;
     protected override List<CardModel> Cards => new()
-        { ModelDb.Card<Poultice>(), ModelDb.Card<Hormesis>(), ModelDb.Card<Rectify>() };
+        { ModelDb.Card<Poultice>(), ModelDb.Card<Hormesis>(), ModelDb.Card<Azoth>() };
 }
 
 /// <summary>Ch6 "The Deeper Work" — kill 15 Bosses. Unlocks the 3 rare relics.</summary>

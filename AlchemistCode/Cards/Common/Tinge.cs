@@ -1,4 +1,6 @@
 using Alchemist.AlchemistCode;
+using Alchemist.AlchemistCode.Cards.Token;
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -16,7 +18,11 @@ public class Tinge : AlchemistCard
     {
         WithDamage(3, 1);
         WithPower<PoisonPower>(2, 0);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Seep) });
+        WithTips(_ => new[]
+        {
+            HoverTipFactory.FromKeyword(AlchemistKeywords.Seep),
+            HoverTipFactory.FromCard<Effluvium>(),
+        });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -27,10 +33,7 @@ public class Tinge : AlchemistCard
 
     protected override async Task OnSeep(PlayerChoiceContext choiceContext)
     {
-        if (CombatState == null) return;
-        var enemies = CombatState.Enemies.Where(e => e.IsAlive).ToList();
-        if (enemies.Count == 0) return;
-        var target = Owner.RunState.Rng.CombatTargets.NextItem(enemies)!;
-        await PowerCmd.Apply<PoisonPower>(choiceContext, target, 3, Owner.Creature, this);
+        // AddStatus creates the token, drops it into the Discard Pile, and pops it up (PreviewCardPileAdd).
+        await AlchemistCardCmd.AddStatus<Effluvium>(this);
     }
 }

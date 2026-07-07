@@ -1,5 +1,5 @@
+using System.Linq;
 using Alchemist.AlchemistCode;
-using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -16,8 +16,7 @@ public class Partition : AlchemistCard
     public Partition() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
     {
         WithVar("totalDamage", 32, 16);
-        WithPower<PoisonPower>(3, 1); // Gambit: applied to ALL enemies
-        WithTip(typeof(PoisonPower));
+        WithTip(typeof(WeakPower));
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
@@ -35,9 +34,8 @@ public class Partition : AlchemistCard
             remainder--;
             await CreatureCmd.Damage(choiceContext, enemy, damage, ValueProp.Move, Owner.Creature, this, null);
         }
-        if (IsReduced)
+        if (IsReduced) // Gambit: 1 Weak to all
             foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
-                await PowerCmd.Apply<PoisonPower>(choiceContext, enemy,
-                    DynamicVars.Poison.BaseValue, Owner.Creature, this);
+                await PowerCmd.Apply<WeakPower>(choiceContext, enemy, 1, Owner.Creature, this);
     }
 }

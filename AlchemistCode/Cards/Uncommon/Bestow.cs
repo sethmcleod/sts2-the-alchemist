@@ -11,6 +11,7 @@ public class Bestow : AlchemistCard
 
     public Bestow() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
+        WithCostUpgradeBy(-1); // 1 -> 0 on upgrade
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

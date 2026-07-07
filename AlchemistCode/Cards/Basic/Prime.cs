@@ -9,15 +9,24 @@ namespace Alchemist.AlchemistCode.Cards.Basic;
 
 public class Prime : AlchemistCard
 {
+    protected override bool IsGambitCard => true;
+
     public Prime() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
     {
-        WithDamage(7, 3);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) });
+        WithDamage(6, 2);
+        WithBlock(4, 2); // Gambit: 4 (6) Block
+        WithTips(_ => new[]
+        {
+            HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse),
+            HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit),
+        });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
-        await Infusion.InfuseChosen(choiceContext, this, PileType.Draw, 1);
+        await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 1);
+        if (IsReduced) // Gambit
+            await CommonActions.CardBlock(this, play);
     }
 }

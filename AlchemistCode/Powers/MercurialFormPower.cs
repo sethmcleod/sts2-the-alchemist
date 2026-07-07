@@ -1,24 +1,41 @@
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Amount is the stack count (1 per Mercurial Form played): gain that much Strength and
-// Dexterity whenever you create a card, so extra copies scale instead of being wasted.
 public class MercurialFormPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerStackType StackType => PowerStackType.Single;
 
-    public override async Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
+    private bool _grantsStrength;
+    public bool GrantsStrength
     {
-        if (creator != Owner.Player) return;
+        get => _grantsStrength;
+        set { AssertMutable(); _grantsStrength = value; }
+    }
+
+    // Upgraded only: gain 1 Strength at the start of your turn.
+    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    {
+        if (player != Owner.Player || !_grantsStrength) return;
         Flash();
-        await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
-        await PowerCmd.Apply<DexterityPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, 1, Owner, null);
+    }
+
+    // At the end of your turn, heal HP equal to your Poison.
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
+        IEnumerable<Creature> participants)
+    {
+        if (!participants.Contains(Owner)) return;
+        var poison = Owner.GetPowerAmount<PoisonPower>();
+        if (poison <= 0) return;
+        Flash();
+        await CreatureCmd.Heal(Owner, poison);
     }
 }

@@ -12,19 +12,25 @@ public class Accrue : AlchemistCard
 {
     private const int Hits = 3;
 
+    protected override bool IsGambitCard => true;
     protected override bool IsSeepCard => true;
 
     public Accrue() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
         WithDamage(6, 2);
         WithTip(typeof(PoisonPower));
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Seep) });
+        WithTips(_ => new[]
+        {
+            HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit),
+            HoverTipFactory.FromKeyword(AlchemistKeywords.Seep),
+        });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        var hits = Hits + (IsReduced ? 1 : 0); // Gambit: hits an additional time
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .WithHitCount(Hits)
+            .WithHitCount(hits)
             .FromCard(this, play)
             .Targeting(play.Target!)
             .Execute(choiceContext);

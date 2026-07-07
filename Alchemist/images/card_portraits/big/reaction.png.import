@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bklkqcbrq1y7j"
-path="res://.godot/imported/rectify.png-84d1515bdb99671bb10419e639d81a3e.ctex"
+uid="uid://78kt7nydtvk"
+path="res://.godot/imported/reaction.png-4109426b1320bd3025db3554615ccf2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/rectify.png"
-dest_files=["res://.godot/imported/rectify.png-84d1515bdb99671bb10419e639d81a3e.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/reaction.png"
+dest_files=["res://.godot/imported/reaction.png-4109426b1320bd3025db3554615ccf2f.ctex"]
 
 [params]
 

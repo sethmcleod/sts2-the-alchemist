@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dppcfa42haqkq"
-path="res://.godot/imported/reagent.png-6a302445848b0304d01ad2e60aee9304.ctex"
+uid="uid://1crqrk5dsr1r"
+path="res://.godot/imported/azoth.png-e068cd98b271a6f5c8a66e0d2d23b18e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/reagent.png"
-dest_files=["res://.godot/imported/reagent.png-6a302445848b0304d01ad2e60aee9304.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/azoth.png"
+dest_files=["res://.godot/imported/azoth.png-e068cd98b271a6f5c8a66e0d2d23b18e.ctex"]
 
 [params]
 

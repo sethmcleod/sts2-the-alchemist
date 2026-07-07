@@ -10,7 +10,7 @@ public class Effervesce : AlchemistCard
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
-    public Effervesce() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
+    public Effervesce() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
         WithVar("cards", 2, 1); // 2 (3) Distillates
         WithTips(_ => new[] { HoverTipFactory.FromCard<Distillate>() });
