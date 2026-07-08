@@ -8,11 +8,11 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-public class Assay : AlchemistCard
+public class Titrate : AlchemistCard
 {
     protected override bool IsSeepCard => true;
 
-    public Assay() : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+    public Titrate() : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(4, 2);
         WithCards(1, 0);

@@ -12,7 +12,7 @@ public class Sinter : AlchemistCard
 
     public Sinter() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(8, 3);
+        WithBlock(7, 3);
     }
 
     private bool ExhaustReady => Owner != null && PileType.Exhaust.GetPile(Owner).Cards.Count >= ExhaustThreshold;

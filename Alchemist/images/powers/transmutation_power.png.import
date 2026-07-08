@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y5jul60l0k8t"
-path="res://.godot/imported/anoint.png-28b8cd146cf12e61b8941aa1cff7b36c.ctex"
+uid="uid://b4c2g6a4g3nj0"
+path="res://.godot/imported/transmutation_power.png-8d0349e6c7c90ed5a0cd302289b5cb23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/anoint.png"
-dest_files=["res://.godot/imported/anoint.png-28b8cd146cf12e61b8941aa1cff7b36c.ctex"]
+source_file="res://Alchemist/images/powers/transmutation_power.png"
+dest_files=["res://.godot/imported/transmutation_power.png-8d0349e6c7c90ed5a0cd302289b5cb23.ctex"]
 
 [params]
 

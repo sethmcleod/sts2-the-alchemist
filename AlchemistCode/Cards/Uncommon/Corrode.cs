@@ -18,7 +18,7 @@ public class Corrode : AlchemistCard
         WithPower<PoisonPower>(6, 0);
         WithPower<WeakPower>(1, 1);
         WithVar("Regen", 2, 0);
-        WithVar("SelfPoison", 3, 0);
+        WithVar("SelfPoison", 2, 0);
         WithTip(typeof(RegenPower));
         WithTips(_ => new[]
         {

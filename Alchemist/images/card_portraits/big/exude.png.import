@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgaq5fyq4wkxi"
-path="res://.godot/imported/exude.png-06e9e10aaa14dbdb1efa34e4397dd5f9.ctex"
+uid="uid://qacjl8jv8vre"
+path="res://.godot/imported/exude.png-2b82dfffcb153eba2d4ee80298d2a343.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Alchemist/images/card_portraits/big/exude.png"
-dest_files=["res://.godot/imported/exude.png-06e9e10aaa14dbdb1efa34e4397dd5f9.ctex"]
+dest_files=["res://.godot/imported/exude.png-2b82dfffcb153eba2d4ee80298d2a343.ctex"]
 
 [params]
 

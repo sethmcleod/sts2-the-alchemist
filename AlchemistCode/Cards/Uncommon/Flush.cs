@@ -13,19 +13,20 @@ public class Flush : AlchemistCard
         WithTip(typeof(StrengthPower));
     }
 
-    // Upgraded only: the Strength bonus needs 5+ Regen (all of which this loses)
+    // Upgraded only: the Strength bonus needs to lose 3+ Regen, i.e. hold 5+ (it keeps 2)
     protected override bool ConditionalGlow =>
         IsUpgraded && Owner?.Creature is { } c && c.GetPowerAmount<RegenPower>() >= 5;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
-        var regen = Owner.Creature.GetPowerAmount<RegenPower>();
-        if (Owner.Creature.HasPower<RegenPower>())
-            await PowerCmd.Remove<RegenPower>(Owner.Creature);
-        if (regen > 0)
-            await CardPileCmd.Draw(choiceContext, regen, Owner);
-        if (IsUpgraded && regen >= 5)
+        var lost = Math.Max(0, Owner.Creature.GetPowerAmount<RegenPower>() - 2);
+        if (lost > 0)
+        {
+            if (Owner.Creature.GetPower<RegenPower>() is { } regenPower)
+                await PowerCmd.ModifyAmount(choiceContext, regenPower, -lost, Owner.Creature, this);
+            await CardPileCmd.Draw(choiceContext, lost, Owner);
+        }
+        if (IsUpgraded && lost >= 3)
             await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 }

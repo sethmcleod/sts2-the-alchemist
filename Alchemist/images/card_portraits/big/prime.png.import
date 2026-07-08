@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bprvdm7ciapop"
-path="res://.godot/imported/chrysopoeia.png-0bfefd2f6a35eb6f8263e4b5408ae526.ctex"
+uid="uid://cgmouiareo3b4"
+path="res://.godot/imported/prime.png-d2949c4fd25130d0d0369d585447fa16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/chrysopoeia.png"
-dest_files=["res://.godot/imported/chrysopoeia.png-0bfefd2f6a35eb6f8263e4b5408ae526.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/prime.png"
+dest_files=["res://.godot/imported/prime.png-d2949c4fd25130d0d0369d585447fa16.ctex"]
 
 [params]
 

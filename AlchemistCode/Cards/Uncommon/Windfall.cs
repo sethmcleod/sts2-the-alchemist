@@ -7,7 +7,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Windfall : AlchemistCard
 {
-    public Windfall() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Windfall() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("draw", 1, 1);
     }

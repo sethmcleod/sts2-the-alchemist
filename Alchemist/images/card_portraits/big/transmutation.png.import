@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cebbtxyrixbef"
-path="res://.godot/imported/detonation.png-bf1930d9397590c5c8a1f708031c67a9.ctex"
+path="res://.godot/imported/transmutation.png-49a467970434cc7df43d01e7ce7c3286.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/detonation.png"
-dest_files=["res://.godot/imported/detonation.png-bf1930d9397590c5c8a1f708031c67a9.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/transmutation.png"
+dest_files=["res://.godot/imported/transmutation.png-49a467970434cc7df43d01e7ce7c3286.ctex"]
 
 [params]
 

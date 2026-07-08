@@ -17,7 +17,7 @@ public class Conjunction : AlchemistCard
     }
 
     protected override bool ConditionalGlow =>
-        Owner?.Creature is { } c && c.HasPower<PoisonPower>() && c.HasPower<RegenPower>();
+        Owner?.Creature is { } c && (c.HasPower<PoisonPower>() || c.HasPower<RegenPower>());
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

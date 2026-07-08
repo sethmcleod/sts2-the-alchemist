@@ -16,7 +16,7 @@ public class ConjunctionPower : AlchemistPower
         ICombatState combatState)
     {
         if (!participants.Contains(Owner)) return;
-        if (!Owner.HasPower<PoisonPower>() || !Owner.HasPower<RegenPower>()) return;
+        if (!Owner.HasPower<PoisonPower>() && !Owner.HasPower<RegenPower>()) return;
         Flash();
         await PlayerCmd.GainEnergy(Amount, Owner.Player!);
     }

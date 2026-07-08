@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg8xtbydr62cs"
-path="res://.godot/imported/assay.png-a1eb60188d6f8f5459ab1a1ccd4839b7.ctex"
+uid="uid://diwasj60yek4h"
+path="res://.godot/imported/tithe_power.png-b323f856690a846ba4d2b58498115669.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/assay.png"
-dest_files=["res://.godot/imported/assay.png-a1eb60188d6f8f5459ab1a1ccd4839b7.ctex"]
+source_file="res://Alchemist/images/powers/tithe_power.png"
+dest_files=["res://.godot/imported/tithe_power.png-b323f856690a846ba4d2b58498115669.ctex"]
 
 [params]
 

@@ -30,6 +30,6 @@ public class Deplete : AlchemistCard
 
     protected override async Task OnSeep(PlayerChoiceContext choiceContext)
     {
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, 3, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this);
     }
 }

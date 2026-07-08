@@ -1,6 +1,7 @@
 # The Alchemist
 
-> An amphibian practicer of esoteric arts. Transmutes poison, patience, and peril into power.
+> An amphibian practicer of esoteric arts. Transmutes poison, patience, and
+> peril into power.
 
 ## Origin
 
@@ -50,8 +51,8 @@ directly into damage, Block, and tempo.
 ## Mechanics and Keywords
 
 * **Poison & Regen**: The Alchemist deliberately self-poisons, then converts
-  Poison into Regen (and Regen into damage, Block or Strength) — two resources meant to
-  be actively cycled, not passively endured.
+  Poison into Regen (and Regen into damage, Block or Strength) — two resources
+  meant to be actively cycled, not passively endured.
 * **Gambit**: "Gambit: [effect]" triggers only while your HP is at or below 50%
   of your Max HP. The card works normally above half health — Gambit is a bonus
   for playing dangerously, never a requirement.
@@ -70,4 +71,10 @@ directly into damage, Block, and tempo.
 
 ## A Note on Quality
 
-The Alchemist has been lovingly crafted to feel like a natural addition to the game. Every card, relic, and potion has been balanced against the existing pools across repeated low and high-ascension playtesting. The same care extends to flavor: this character's story is woven directly into the game's existing timeline and characters, and observant players will find more than a few threads connecting them to the world. All artwork is in the process of being hand-drawn and animated in the style of the base game.
+The Alchemist has been lovingly crafted to feel like a natural addition to the
+game. Every card, relic, and potion has been balanced against the existing pools
+across repeated low and high-ascension playtesting. The same care extends to
+flavor: this character's story is woven directly into the game's existing
+timeline and characters, and observant players will find more than a few threads
+connecting them to the world. All artwork is in the process of being hand-drawn
+and animated in the style of the base game.

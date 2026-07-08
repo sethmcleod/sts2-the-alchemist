@@ -7,13 +7,16 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Homeostasis : AlchemistCard
 {
+    private const double Threshold = 0.50;
+
     public Homeostasis() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
     }
 
-    // Mirrors HomeostasisPower's start-of-turn HP window
-    protected override bool ConditionalGlow => HpFractionInRange(0.33, 0.66);
+    // Glows while your HP is below the trigger threshold
+    protected override bool ConditionalGlow =>
+        Owner?.Creature is { } c && c.MaxHp > 0 && (double)c.CurrentHp / c.MaxHp < Threshold;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

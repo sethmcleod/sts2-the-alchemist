@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgaq5fyq4wkxi"
-path="res://.godot/imported/transpose.png-f7d625a158627fcfe60088f5b35716b6.ctex"
+uid="uid://ieofp7jxrhub"
+path="res://.godot/imported/temper.png-21f9689e37d33cd281556b0a4f30233e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/transpose.png"
-dest_files=["res://.godot/imported/transpose.png-f7d625a158627fcfe60088f5b35716b6.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/temper.png"
+dest_files=["res://.godot/imported/temper.png-21f9689e37d33cd281556b0a4f30233e.ctex"]
 
 [params]
 

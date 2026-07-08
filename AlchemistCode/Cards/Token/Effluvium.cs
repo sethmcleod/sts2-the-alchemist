@@ -15,6 +15,7 @@ public class Effluvium : AlchemistCard
         WithPower<WeakPower>(1, 1);
         WithPower<VulnerablePower>(1, 1);
         WithVar("SelfPoison", 1, 1);
+        WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
     }
 

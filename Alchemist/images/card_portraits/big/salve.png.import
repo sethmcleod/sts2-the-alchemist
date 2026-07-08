@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4c2g6a4g3nj0"
-path="res://.godot/imported/detonation_power.png-e18d7bf9a3c5998f25027a01c78b4cfe.ctex"
+uid="uid://y5jul60l0k8t"
+path="res://.godot/imported/salve.png-257e160309353488265e2f259b126b99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/detonation_power.png"
-dest_files=["res://.godot/imported/detonation_power.png-e18d7bf9a3c5998f25027a01c78b4cfe.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/salve.png"
+dest_files=["res://.godot/imported/salve.png-257e160309353488265e2f259b126b99.ctex"]
 
 [params]
 

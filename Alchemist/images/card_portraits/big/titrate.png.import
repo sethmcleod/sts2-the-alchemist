@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diwasj60yek4h"
-path="res://.godot/imported/chrysopoeia_power.png-516a22e8122972f767e4494782523244.ctex"
+uid="uid://bg8xtbydr62cs"
+path="res://.godot/imported/titrate.png-3456d5aea6098bff6b417f525d276322.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/chrysopoeia_power.png"
-dest_files=["res://.godot/imported/chrysopoeia_power.png-516a22e8122972f767e4494782523244.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/titrate.png"
+dest_files=["res://.godot/imported/titrate.png-3456d5aea6098bff6b417f525d276322.ctex"]
 
 [params]
 
