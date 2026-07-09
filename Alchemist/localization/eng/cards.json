@@ -97,7 +97,7 @@
   "ALCHEMIST-INDUCEMENT.title": "Inducement",
   "ALCHEMIST-INOCULATE.description": "Gain {Block:diff()} [gold]Block[/gold].\nGain {PoisonPower:diff()} [gold]Poison[/gold].",
   "ALCHEMIST-INOCULATE.title": "Inoculate",
-  "ALCHEMIST-INVERSION.description": "Whenever you are healed, deal that much damage to ALL enemies{IfUpgraded:show: [green]twice[/green]|}.",
+  "ALCHEMIST-INVERSION.description": "Whenever you are healed, deal that much damage to ALL enemies {Hits:diff()} {Hits:plural:time|times}.",
   "ALCHEMIST-INVERSION.title": "Inversion",
   "ALCHEMIST-INVIGORATE.description": "Deal {CalculatedDamage:diff()} damage.\nGain {RegenPower:diff()} [gold]Regen[/gold].\nDeals additional damage equal to your [gold]Regen[/gold].",
   "ALCHEMIST-INVIGORATE.title": "Invigorate",

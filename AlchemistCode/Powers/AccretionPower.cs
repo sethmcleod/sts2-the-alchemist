@@ -17,9 +17,6 @@ public class AccretionPower : AlchemistPower
     {
         if (!participants.Contains(Owner)) return;
         Flash();
-        var regen = Amount;
-        if (Owner.CurrentHp * 2 <= Owner.MaxHp)
-            regen += 1;
-        await PowerCmd.Apply<RegenPower>(new ThrowingPlayerChoiceContext(), Owner, regen, Owner, null);
+        await PowerCmd.Apply<RegenPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
     }
 }

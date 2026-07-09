@@ -14,8 +14,7 @@ public class Windfall : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var power = await PowerCmd.Apply<WindfallPower>(choiceContext, Owner.Creature,
+        await PowerCmd.Apply<WindfallPower>(choiceContext, Owner.Creature,
             DynamicVars["draw"].IntValue, Owner.Creature, this);
-        power?.RegisterCopy();
     }
 }

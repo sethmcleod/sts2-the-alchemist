@@ -1,6 +1,6 @@
 {
-  "ALCHEMIST-ACCRETION_POWER.description": "At the start of your turn, gain {Amount} [gold]Regen[/gold]. [gold]Gambit[/gold]: Gain 1 additional [gold]Regen[/gold].",
-  "ALCHEMIST-ACCRETION_POWER.smartDescription": "At the start of your turn, gain {Amount} [gold]Regen[/gold]. [gold]Gambit[/gold]: Gain 1 additional [gold]Regen[/gold].",
+  "ALCHEMIST-ACCRETION_POWER.description": "At the start of your turn, gain {Amount} [gold]Regen[/gold].",
+  "ALCHEMIST-ACCRETION_POWER.smartDescription": "At the start of your turn, gain {Amount} [gold]Regen[/gold].",
   "ALCHEMIST-ACCRETION_POWER.title": "Accretion",
   "ALCHEMIST-CATALYSE_POWER.description": "The first time your HP changes each turn, [gold]Infuse[/gold] {Amount} random {Amount:plural:card|cards} in your Hand.",
   "ALCHEMIST-CATALYSE_POWER.smartDescription": "The first time your HP changes each turn, [gold]Infuse[/gold] {Amount} random {Amount:plural:card|cards} in your Hand.",
@@ -26,8 +26,8 @@
   "ALCHEMIST-INDUCEMENT_POWER.description": "Whenever you take [gold]Poison[/gold] damage, apply that much [gold]Poison[/gold] to ALL enemies.",
   "ALCHEMIST-INDUCEMENT_POWER.smartDescription": "Whenever you take [gold]Poison[/gold] damage, apply that much [gold]Poison[/gold] to ALL enemies.",
   "ALCHEMIST-INDUCEMENT_POWER.title": "Inducement",
-  "ALCHEMIST-INVERSION_POWER.description": "Whenever you are healed, deal that much damage to ALL enemies.",
-  "ALCHEMIST-INVERSION_POWER.smartDescription": "Whenever you are healed, deal that much damage to ALL enemies {Hits} {Hits:plural:time|times}.",
+  "ALCHEMIST-INVERSION_POWER.description": "Whenever you are healed, deal that much damage to ALL enemies {Amount} {Amount:plural:time|times}.",
+  "ALCHEMIST-INVERSION_POWER.smartDescription": "Whenever you are healed, deal that much damage to ALL enemies {Amount} {Amount:plural:time|times}.",
   "ALCHEMIST-INVERSION_POWER.title": "Inversion",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "At the start of your turn, gain {Amount} [gold]Strength[/gold].\nAt the end of your turn, heal HP equal to half your [gold]Poison[/gold].",
   "ALCHEMIST-MERCURIAL_FORM_POWER.smartDescription": "At the start of your turn, gain {Amount} [gold]Strength[/gold].\nAt the end of your turn, heal HP equal to half your [gold]Poison[/gold].",
@@ -71,7 +71,7 @@
   "ALCHEMIST-VIRULENCE_POWER.description": "Whenever you apply [gold]Poison[/gold], apply an additional {Amount} [gold]Poison[/gold].",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "Whenever you apply [gold]Poison[/gold], apply an additional {Amount} [gold]Poison[/gold].",
   "ALCHEMIST-VIRULENCE_POWER.title": "Virulence",
-  "ALCHEMIST-WINDFALL_POWER.description": "Whenever you Procure a Potion during combat, draw {Amount} card(s) and gain 1 Energy per Windfall played.",
-  "ALCHEMIST-WINDFALL_POWER.smartDescription": "Whenever you Procure a Potion during combat, draw {Amount} {Amount:plural:card|cards} and gain {Copies} Energy.",
+  "ALCHEMIST-WINDFALL_POWER.description": "Whenever you Procure a Potion during combat, draw {Amount} card(s) and gain 1 Energy.",
+  "ALCHEMIST-WINDFALL_POWER.smartDescription": "Whenever you Procure a Potion during combat, draw {Amount} {Amount:plural:card|cards} and gain 1 Energy.",
   "ALCHEMIST-WINDFALL_POWER.title": "Windfall"
 }

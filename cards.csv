@@ -52,7 +52,7 @@ Virulence,Uncommon,Power,1,"Whenever you apply Poison, apply an additional 1 (2)
 Imbue,Uncommon,Power,1,"The first time you gain or apply Poison each turn, Infuse a (2) random card(s) in your Hand."
 Flush,Uncommon,Skill,1,"Lose all but 2 Regen. Draw that many cards. (If you lost 3 or more Regen, gain 1 Strength.)"
 Sediment,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block."
-Inversion,Uncommon,Power,1,"Whenever you are healed, deal that much damage to ALL enemies (twice)."
+Inversion,Uncommon,Power,1,"Whenever you are healed, deal that much damage to ALL enemies 1 (2) time(s)."
 Haemorrhage,Uncommon,Attack,1,Lose HP equal to your Regen + 1 (2). Deal double (triple) that much damage.
 Philtre,Uncommon,Power,2,"Whenever you use a Potion, gain 2 (3) Strength and 2 (3) Dexterity this turn."
 Resolve,Uncommon,Power,2,"At the start of your turn, gain 1 (2) Strength for each 20 HP you are missing."
