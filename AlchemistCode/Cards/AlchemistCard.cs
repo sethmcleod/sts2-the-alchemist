@@ -40,6 +40,11 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
         return pct >= lower && pct <= upper;
     }
 
+    // "Lose N HP" — unblockable, unpowered self-damage
+    protected Task LoseHp(PlayerChoiceContext choiceContext, int amount) =>
+        CreatureCmd.Damage(choiceContext, Owner.Creature, amount,
+            ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
+
     // Formula-damage cards deal raw DamageCmd.Attack(decimal) with no DamageVar, so the base game's enchant
     // preview never applies or shows the bonus. They fold EnchantDamageBonus in and render {EnchantBonus}
     protected virtual bool HasFormulaDamage => false;

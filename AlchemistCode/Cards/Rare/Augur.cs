@@ -24,5 +24,7 @@ public class Augur : AlchemistCard
     {
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
         await CommonActions.Apply<WeakPower>(choiceContext, this, play);
+        if (!IsReduced)
+            await LoseHp(choiceContext, 3);
     }
 }
