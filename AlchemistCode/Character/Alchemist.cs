@@ -1,13 +1,14 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils.NodeFactories;
-using Alchemist.AlchemistCode.Cards.Basic;
+﻿using Alchemist.AlchemistCode.Cards.Basic;
 using Alchemist.AlchemistCode.Extensions;
+using Alchemist.AlchemistCode.Relics;
+using BaseLib.Abstracts;
+using BaseLib.Utils.NodeFactories;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
-using Alchemist.AlchemistCode.Relics;
 
 namespace Alchemist.AlchemistCode.Character;
+
 public class Alchemist : PlaceholderCharacterModel
 {
     public const string CharacterId = "Alchemist";
@@ -17,7 +18,7 @@ public class Alchemist : PlaceholderCharacterModel
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Neutral;
     public override int StartingHp => 69;
-    public override int StartingGold => 55;
+    public override int StartingGold => 75;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
@@ -41,7 +42,7 @@ public class Alchemist : PlaceholderCharacterModel
     public override CardPoolModel CardPool => ModelDb.CardPool<AlchemistCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<AlchemistRelicPool>();
     public override PotionPoolModel PotionPool => ModelDb.PotionPool<AlchemistPotionPool>();
-    
+
     public override Control CustomIcon
     {
         get
