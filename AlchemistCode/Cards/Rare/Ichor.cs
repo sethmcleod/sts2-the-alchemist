@@ -6,8 +6,6 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Ichor : AlchemistCard
 {
-    protected override bool HasFormulaDamage => true;
-
     public Ichor() : base(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
         WithKeyword(CardKeyword.Retain);
@@ -18,7 +16,7 @@ public class Ichor : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var missingHp = Owner.Creature.MaxHp - Owner.Creature.CurrentHp;
-        var damage = missingHp + EnchantDamageBonus;
+        var damage = ApplyEnchantDamage(missingHp);
         if (damage > 0)
             await DamageCmd.Attack(damage).FromCard(this, play)
                 .Targeting(play.Target!).Execute(choiceContext);

@@ -1,11 +1,11 @@
 {
-  "ALCHEMIST-GAMBIT.title": "Gambit",
-  "ALCHEMIST-GAMBIT.description": "While you are at 50% or less HP, this card has a [gold]Gambit[/gold] effect when played.",
-  "ALCHEMIST-FERMENT.title": "Ferment",
   "ALCHEMIST-FERMENT.description": "This card increases in potency for each turn in your [gold]Hand[/gold].",
-  "ALCHEMIST-SEEP.title": "Seep",
-  "ALCHEMIST-SEEP.description": "At the end of your turn, if this card is in your [gold]Hand[/gold], the [gold]Seep[/gold] effect triggers.",
+  "ALCHEMIST-FERMENT.title": "Ferment",
+  "ALCHEMIST-GAMBIT.description": "While you are at 50% or less HP, this card has a [gold]Gambit[/gold] effect when played.",
+  "ALCHEMIST-GAMBIT.title": "Gambit",
+  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks gain [purple]Corrupted[/purple]; Skills gain [purple]Glam[/purple]; Powers gain [purple]Sown[/purple]. Other cards gain [gold]Ethereal[/gold]. A card can only be [gold]Infused[/gold] once.",
+  "ALCHEMIST-INFUSE.selectionPrompt": "Choose a card to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.title": "Infuse",
-  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks gain [blue]3[/blue] [purple]Sharp[/purple]; Skills gain [blue]3[/blue] [purple]Nimble[/purple] or [blue]3[/blue] [purple]Adroit[/purple]; Powers gain [blue]2[/blue] [purple]Swift[/purple]. Other cards gain [gold]Ethereal[/gold]. You can [gold]Infuse[/gold] a card multiple times.",
-  "ALCHEMIST-INFUSE.selectionPrompt": "Choose a card to [gold]Infuse[/gold]."
+  "ALCHEMIST-SEEP.description": "At the end of your turn, if this card is in your [gold]Hand[/gold], the [gold]Seep[/gold] effect triggers.",
+  "ALCHEMIST-SEEP.title": "Seep"
 }

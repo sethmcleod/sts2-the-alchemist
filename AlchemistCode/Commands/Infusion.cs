@@ -16,11 +16,16 @@ namespace Alchemist.AlchemistCode.Commands;
 // cards are tracked here and cleared at combat end by Patches.InfusionCombatEndPatch
 public static class Infusion
 {
-    private const int Amount = 3;      // Attacks (Sharp) and Skills (Nimble/Adroit)
-    private const int PowerAmount = 2; // Powers (Swift)
+    // Corrupted and Glam ignore Amount; only Sown uses it (energy gained the first time you play the card)
+    private const int SownEnergy = 1;
+
     private static readonly LocString SelectPrompt = new("card_keywords", "ALCHEMIST-INFUSE.selectionPrompt");
 
     private static readonly HashSet<CardModel> Infused = new();
+
+    // Curses get Ethereal as a keyword, and clearing an enchantment never undoes a keyword — so remember only
+    // the cards we added it to, and strip it at combat end
+    private static readonly HashSet<CardModel> AddedEthereal = new();
 
     // Distinct cards enchanted (by any source) during the current combat. Recorded from the shared
     // CardCmd.Enchant hook so Masterwork's threshold counts other mods' enchantments too, not just Infuse
@@ -30,12 +35,16 @@ public static class Infusion
 
     public static int EnchantedThisCombatCount(Player owner) => EnchantedThisCombat.Count(c => c.Owner == owner);
 
+    // Infusions don't stack, so an already-enchanted or already-infused card is never offered or picked
+    public static bool CanInfuse(CardModel card) => card.Enchantment == null && !Infused.Contains(card);
+
     public static async Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count)
     {
         var prefs = new CardSelectorPrefs(SelectPrompt, count);
         var picks = (pile == PileType.Hand
-            ? await CardSelectCmd.FromHand(ctx, source.Owner, prefs, null, source)
-            : await CardSelectCmd.FromCombatPile(ctx, pile.GetPile(source.Owner), source.Owner, prefs)).ToList();
+            ? await CardSelectCmd.FromHand(ctx, source.Owner, prefs, CanInfuse, source)
+            : await CardSelectCmd.FromCombatPile(ctx, pile.GetPile(source.Owner), source.Owner, prefs, CanInfuse))
+            .ToList();
         foreach (var card in picks)
             Infuse(card);
         // Draw/discard picks aren't visible to the player, so pop them up; hand picks already are
@@ -43,24 +52,17 @@ public static class Infusion
             CardCmd.Preview(picks);
     }
 
-    public static async Task InfuseAnyFromHand(PlayerChoiceContext ctx, AlchemistCard source)
-    {
-        var prefs = new CardSelectorPrefs(SelectPrompt, 0, 999999999);
-        var picks = await CardSelectCmd.FromHand(ctx, source.Owner, prefs, null, source);
-        foreach (var card in picks)
-            Infuse(card);
-    }
-
     public static void InfuseAllInHand(AlchemistCard source)
     {
-        foreach (var card in PileType.Hand.GetPile(source.Owner).Cards.Where(c => c != source).ToList())
+        foreach (var card in PileType.Hand.GetPile(source.Owner).Cards
+                     .Where(c => c != source && CanInfuse(c)).ToList())
             Infuse(card);
     }
 
     public static void InfuseRandomFromPile(Player owner, PileType pile, int count)
     {
         var rng = owner.RunState.Rng.CombatCardGeneration;
-        var cards = pile.GetPile(owner).Cards.ToList();
+        var cards = pile.GetPile(owner).Cards.Where(CanInfuse).ToList();
         var infused = new List<CardModel>();
         for (var i = 0; i < count && cards.Count > 0; i++)
         {
@@ -76,7 +78,7 @@ public static class Infusion
     public static void InfuseRandomFromHand(Player owner, int count, CardModel? exclude = null)
     {
         var rng = owner.RunState.Rng.CombatCardGeneration;
-        var hand = PileType.Hand.GetPile(owner).Cards.Where(c => c != exclude).ToList();
+        var hand = PileType.Hand.GetPile(owner).Cards.Where(c => c != exclude && CanInfuse(c)).ToList();
         var infused = new List<CardModel>();
         for (var i = 0; i < count && hand.Count > 0; i++)
         {
@@ -92,41 +94,35 @@ public static class Infusion
 
     public static void Infuse(CardModel card)
     {
+        if (!CanInfuse(card)) return;
+
         if (card.Type is CardType.Curse or CardType.Status or CardType.Quest)
         {
-            card.AddKeyword(CardKeyword.Ethereal);
+            if (!card.Keywords.Contains(CardKeyword.Ethereal))
+            {
+                card.AddKeyword(CardKeyword.Ethereal);
+                AddedEthereal.Add(card);
+            }
+            Infused.Add(card);
             return;
         }
 
         switch (card.Type)
         {
             case CardType.Attack:
-                TryEnchant<Sharp>(card, Amount);
+                TryEnchant<Corrupted>(card, 1);
                 break;
             case CardType.Skill:
-                // Nimble adds its bonus to EACH block gain (scales on multi-block skills); Adroit adds once
-                if (card.GainsBlock) TryEnchant<Nimble>(card, Amount);
-                else TryEnchant<Adroit>(card, Amount);
+                TryEnchant<Glam>(card, 1);
                 break;
             case CardType.Power:
-                TryEnchant<Swift>(card, PowerAmount);
+                TryEnchant<Sown>(card, SownEnergy);
                 break;
         }
     }
 
     private static void TryEnchant<T>(CardModel card, int amount) where T : EnchantmentModel
     {
-        // Base enchantments aren't IsStackable, so to stack a re-Infuse we clear and re-apply the summed
-        // amount. Only stack onto our own infusions — never a pre-existing/permanent one
-        if (card.Enchantment is T existing)
-        {
-            if (!Infused.Contains(card)) return;
-            var summed = existing.Amount + amount;
-            CardCmd.ClearEnchantment(card);
-            CardCmd.Enchant<T>(card, summed);
-            return;
-        }
-        if (card.Enchantment != null) return;                  // Different enchantment type — don't cross-stack
         if (!ModelDb.Enchantment<T>().CanEnchant(card)) return;
         CardCmd.Enchant<T>(card, amount);
         Infused.Add(card);
@@ -137,7 +133,11 @@ public static class Infusion
         foreach (var card in Infused)
             if (card.Enchantment != null)
                 CardCmd.ClearEnchantment(card);
+        foreach (var card in AddedEthereal)
+            card.RemoveKeyword(CardKeyword.Ethereal);
+
         Infused.Clear();
+        AddedEthereal.Clear();
         EnchantedThisCombat.Clear();
     }
 }

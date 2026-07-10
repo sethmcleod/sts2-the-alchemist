@@ -11,8 +11,6 @@ namespace Alchemist.AlchemistCode.Cards.Token;
 [Pool(typeof(TokenCardPool))]
 public class Citrinitas : AlchemistCard
 {
-    protected override bool HasFormulaDamage => true;
-
     public Citrinitas() : base(1, CardType.Attack, CardRarity.Token, TargetType.Self)
     {
         WithVar("Hits", 2, 1);
@@ -28,7 +26,7 @@ public class Citrinitas : AlchemistCard
         if (regenAmount > 0)
             await PowerCmd.Remove<RegenPower>(Owner.Creature);
 
-        var perHit = regenAmount + EnchantDamageBonus;
+        var perHit = ApplyEnchantDamage(regenAmount);
         if (perHit > 0)
             await DamageCmd.Attack(perHit)
                 .WithHitCount(DynamicVars["Hits"].IntValue)

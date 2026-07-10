@@ -45,12 +45,16 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
         CreatureCmd.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
 
-    // Formula-damage cards deal raw DamageCmd.Attack(decimal) with no DamageVar, so the base game's enchant
-    // preview never applies or shows the bonus. They fold EnchantDamageBonus in and render {EnchantBonus}
-    protected virtual bool HasFormulaDamage => false;
-
-    internal int EnchantDamageBonus =>
-        Enchantment == null ? 0 : (int)Enchantment.EnchantDamageAdditive(0m, ValueProp.Move);
+    // Formula-damage cards deal raw DamageCmd.Attack(decimal) with no DamageVar, and only DamageVar runs an
+    // enchantment's damage hooks — so they fold them in by hand, in the same order DamageVar uses
+    internal int ApplyEnchantDamage(int damage)
+    {
+        if (Enchantment is not { } enchantment) return damage;
+        decimal value = damage;
+        value += enchantment.EnchantDamageAdditive(value, ValueProp.Move);
+        value *= enchantment.EnchantDamageMultiplicative(value, ValueProp.Move);
+        return (int)value;
+    }
 
     private int _fermentTurns;
 
@@ -97,11 +101,6 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
         {
             description.Add("FermentSuffix", _fermentTurns > 0 ? $" ({_fermentTurns})" : "");
             description.Add("FermentTotal", FermentTotalText);
-        }
-        if (HasFormulaDamage)
-        {
-            var bonus = EnchantDamageBonus;
-            description.Add("EnchantBonus", bonus > 0 ? $" [green]+ {bonus}[/green]" : "");
         }
     }
 }

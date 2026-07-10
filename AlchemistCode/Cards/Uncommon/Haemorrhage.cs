@@ -8,8 +8,6 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Haemorrhage : AlchemistCard
 {
-    protected override bool HasFormulaDamage => true;
-
     public Haemorrhage() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithVar("Bonus", 1, 1);
@@ -24,7 +22,7 @@ public class Haemorrhage : AlchemistCard
             await CreatureCmd.Damage(choiceContext, Owner.Creature,
                 lost, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
         var multiplier = IsUpgraded ? 3 : 2;
-        var damage = lost * multiplier + EnchantDamageBonus;
+        var damage = ApplyEnchantDamage(lost * multiplier);
         if (damage > 0)
             await DamageCmd.Attack(damage).FromCard(this, play)
                 .Targeting(play.Target!).Execute(choiceContext);
