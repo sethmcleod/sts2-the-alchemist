@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djvga2l3rg7so"
-path="res://.godot/imported/partition.png-b798b74b1ffa620c7d8529372417e8c4.ctex"
+path="res://.godot/imported/yield.png-fd7543e12c489fe8b4d8ea2ef5cad764.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/partition.png"
-dest_files=["res://.godot/imported/partition.png-b798b74b1ffa620c7d8529372417e8c4.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/yield.png"
+dest_files=["res://.godot/imported/yield.png-fd7543e12c489fe8b4d8ea2ef5cad764.ctex"]
 
 [params]
 

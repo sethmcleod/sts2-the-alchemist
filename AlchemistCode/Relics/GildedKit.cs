@@ -20,7 +20,9 @@ public class GildedKit : AlchemistRelic
         if (potion.Owner != Owner) return;
         if (potion is FoulPotion && Owner.RunState.CurrentRoom is MerchantRoom) return;
         Flash();
-        await CreatureCmd.Heal(Owner.Creature, 5m);
+        await CreatureCmd.Heal(Owner.Creature, 6m);
+        if (Owner.Creature.CombatState != null)
+            await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1, Owner.Creature, null);
     }
 
     public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)

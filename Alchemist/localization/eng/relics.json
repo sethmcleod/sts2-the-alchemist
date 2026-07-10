@@ -11,7 +11,7 @@
   "ALCHEMIST-FLUX_STONE.description": "Whenever a card is created in combat, draw [blue]1[/blue] card.",
   "ALCHEMIST-FLUX_STONE.flavor": "Catalyzes reactions both alchemical and arcane.",
   "ALCHEMIST-FLUX_STONE.title": "Flux Stone",
-  "ALCHEMIST-GILDED_KIT.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a potion, heal [green]5[/green] HP. Potions can be sold to the Merchant for [gold]Gold[/gold].",
+  "ALCHEMIST-GILDED_KIT.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a potion, heal [green]6[/green] HP and gain [green]1[/green] [gold]Strength[/gold]. Potions can be sold to the Merchant for [gold]Gold[/gold].",
   "ALCHEMIST-GILDED_KIT.flavor": "An ornate case lined with gold leaf. Its contents rejuvenate body and spirit.",
   "ALCHEMIST-GILDED_KIT.title": "Gilded Kit",
   "ALCHEMIST-MIDAS_FRUIT.description": "Whenever you gain [gold]Gold[/gold], heal [green]1[/green] HP for every [blue]15[/blue] [gold]Gold[/gold] gained.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-TOXIC_SHARD.description": "[gold]Poison[/gold] is triggered against enemies [blue]1[/blue] additional time.",
   "ALCHEMIST-TOXIC_SHARD.flavor": "A fragment of verdant ore, still pulsing with toxicity.",
   "ALCHEMIST-TOXIC_SHARD.title": "Toxic Shard",
-  "ALCHEMIST-WEATHERED_KIT.description": "You may [gold]Brew[/gold] at Rest Sites. Potions can be sold to the Merchant for [gold]Gold[/gold].",
+  "ALCHEMIST-WEATHERED_KIT.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a potion, heal 3 HP. Potions can be sold to the Merchant for [gold]Gold[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "A battered case stained with years of use. It still carries the faintest warmth.",
   "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit"
 }

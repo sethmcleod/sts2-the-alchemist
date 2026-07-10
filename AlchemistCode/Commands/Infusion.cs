@@ -16,7 +16,8 @@ namespace Alchemist.AlchemistCode.Commands;
 // cards are tracked here and cleared at combat end by Patches.InfusionCombatEndPatch
 public static class Infusion
 {
-    private const int Amount = 2;
+    private const int Amount = 3;      // Attacks (Sharp) and Skills (Nimble/Adroit)
+    private const int PowerAmount = 2; // Powers (Swift)
     private static readonly LocString SelectPrompt = new("card_keywords", "ALCHEMIST-INFUSE.selectionPrompt");
 
     private static readonly HashSet<CardModel> Infused = new();
@@ -108,7 +109,7 @@ public static class Infusion
                 else TryEnchant<Adroit>(card, Amount);
                 break;
             case CardType.Power:
-                TryEnchant<Swift>(card, Amount);
+                TryEnchant<Swift>(card, PowerAmount);
                 break;
         }
     }

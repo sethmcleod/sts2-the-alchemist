@@ -1,25 +1,29 @@
-using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.CardSelection;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Poultice : AlchemistCard
 {
-    public Poultice() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Poultice() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithPower<RegenPower>(2, 1);
-        WithPower<PoisonPower>(1, 1);
-        WithTip(typeof(Dazed));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        // Use the built-in exhaust prompt — the card's own SelectionScreenPrompt getter throws without a per-card loc key
+        var selected = await CardSelectCmd.FromHand(
+            choiceContext, Owner,
+            new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1),
+            null, this);
+        foreach (var card in selected)
+            await CardCmd.Exhaust(choiceContext, card);
+
         await CommonActions.ApplySelf<RegenPower>(choiceContext, this);
-        await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);
-        await AlchemistCardCmd.AddStatus<Dazed>(this);
     }
 }

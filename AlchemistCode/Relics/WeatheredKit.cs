@@ -20,6 +20,8 @@ public class WeatheredKit : AlchemistRelic
     {
         if (potion.Owner != Owner) return;
         if (potion is FoulPotion && Owner.RunState.CurrentRoom is MerchantRoom) return;
+        Flash();
+        await CreatureCmd.Heal(Owner.Creature, 3m);
     }
 
     public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)

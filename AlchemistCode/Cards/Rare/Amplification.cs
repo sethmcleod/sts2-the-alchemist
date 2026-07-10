@@ -14,6 +14,7 @@ public class Amplification : AlchemistCard
 
     public Amplification() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
+        WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(RegenPower));
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
@@ -34,6 +35,6 @@ public class Amplification : AlchemistCard
                 await PowerCmd.Apply<RegenPower>(choiceContext, creature, regen * multiplier, Owner.Creature, this);
         }
         if (IsReduced)
-            await CardPileCmd.Draw(choiceContext, 1, Owner);
+            await CreatureCmd.Heal(Owner.Creature, 2);
     }
 }
