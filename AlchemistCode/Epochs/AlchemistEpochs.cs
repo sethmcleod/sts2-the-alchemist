@@ -25,17 +25,17 @@ public class Alchemist1Epoch : AlchemistEpoch
 public class Alchemist2Epoch : AlchemistEpoch
 {
     public override string Id => "ALCHEMIST-ALCHEMIST2_EPOCH";
-    public override EpochUnlockKind UnlockKind => EpochUnlockKind.Potions;
-    protected override List<PotionModel> Potions => new()
-        { ModelDb.Potion<MarshTonic>(), ModelDb.Potion<RefinedExtract>(), ModelDb.Potion<GoldLeaf>() };
+    public override EpochUnlockKind UnlockKind => EpochUnlockKind.Cards;
+    protected override List<CardModel> Cards => new()
+        { ModelDb.Card<Congeal>(), ModelDb.Card<Corrode>(), ModelDb.Card<Exude>() };
 }
 
 public class Alchemist3Epoch : AlchemistEpoch
 {
     public override string Id => "ALCHEMIST-ALCHEMIST3_EPOCH";
-    public override EpochUnlockKind UnlockKind => EpochUnlockKind.Cards;
-    protected override List<CardModel> Cards => new()
-        { ModelDb.Card<Tinge>(), ModelDb.Card<Corrode>(), ModelDb.Card<Sepsis>() };
+    public override EpochUnlockKind UnlockKind => EpochUnlockKind.Potions;
+    protected override List<PotionModel> Potions => new()
+        { ModelDb.Potion<MarshTonic>(), ModelDb.Potion<RefinedExtract>(), ModelDb.Potion<GoldLeaf>() };
 }
 
 public class Alchemist4Epoch : AlchemistEpoch
@@ -51,21 +51,21 @@ public class Alchemist5Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST5_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Cards;
     protected override List<CardModel> Cards => new()
-        { ModelDb.Card<Poultice>(), ModelDb.Card<Hormesis>(), ModelDb.Card<Azoth>() };
+        { ModelDb.Card<Carapace>(), ModelDb.Card<Compound>(), ModelDb.Card<Amalgam>() };
 }
 
 public class Alchemist6Epoch : AlchemistEpoch
 {
     public override string Id => "ALCHEMIST-ALCHEMIST6_EPOCH";
-    public override EpochUnlockKind UnlockKind => EpochUnlockKind.Relics;
-    protected override List<RelicModel> Relics => new()
-        { ModelDb.Relic<AquaVitae>(), ModelDb.Relic<AuricSeal>(), ModelDb.Relic<MidasFruit>() };
+    public override EpochUnlockKind UnlockKind => EpochUnlockKind.Cards;
+    protected override List<CardModel> Cards => new()
+        { ModelDb.Card<Synthesis>(), ModelDb.Card<Masterwork>(), ModelDb.Card<Transmutation>() };
 }
 
 public class Alchemist7Epoch : AlchemistEpoch
 {
     public override string Id => "ALCHEMIST-ALCHEMIST7_EPOCH";
-    public override EpochUnlockKind UnlockKind => EpochUnlockKind.Cards;
-    protected override List<CardModel> Cards => new()
-        { ModelDb.Card<Reconstitute>(), ModelDb.Card<Tithe>(), ModelDb.Card<Libation>() };
+    public override EpochUnlockKind UnlockKind => EpochUnlockKind.Relics;
+    protected override List<RelicModel> Relics => new()
+        { ModelDb.Relic<AquaVitae>(), ModelDb.Relic<AuricSeal>(), ModelDb.Relic<MidasFruit>() };
 }

@@ -1,39 +1,31 @@
 {
   "STORY_ALCHEMIST": "The Alchemist",
-
-  "ALCHEMIST-ALCHEMIST1_EPOCH.title": "The Unreturned",
-  "ALCHEMIST-ALCHEMIST1_EPOCH.description": "Twelve set out. [red]None returned.[/red]\nBut one of the lost left behind an egg, and that egg hatched with questions. Grown now — a healer, a poisoner, a student of the [purple]esoteric arts[/purple] — the [purple]Alchemist[/purple] climbs into the [gold]Spire[/gold] to learn what became of the parent they never knew.",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.title": "Calcination",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.description": "The Capital's finest [green]Apothecary[/green] ventured with the [gold]Twelve[/gold] explorers, now lost to time.\nTheir [purple]child[/purple] keeps the shop now. Mixing. Dosing. Reading their parent's half-finished [gold]journal[/gold] by candlelight, desperate to understand why none of them returned.\nOne morning, they leave a note left on the door: \"[sine]Closed for fieldwork...\"[/sine]\nThe [gold]Spire's[/gold] doors admit one more.",
   "ALCHEMIST-ALCHEMIST1_EPOCH.unlockInfo": "{IsRevealed:Played|Play} a run with the [purple]Alchemist[/purple]{IsRevealed:| to reveal these Epochs}.",
-  "ALCHEMIST-ALCHEMIST1_EPOCH.unlockText": "Revealed the [purple]Alchemist[/purple]'s Epochs.",
-  "ALCHEMIST-ALCHEMIST1_EPOCH.unlock": "The [purple]Alchemist[/purple] descends, seeking the [gold]Unreturned[/gold].",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.unlockText": "Unlocked the [purple]Alchemist[/purple] as a playable character.",
 
-  "ALCHEMIST-ALCHEMIST2_EPOCH.title": "Field Notes",
-  "ALCHEMIST-ALCHEMIST2_EPOCH.description": "In the wreckage of the first camp: a satchel of cracked vials and water-stained recipes, written in a careful hand the [purple]Alchemist[/purple] has only ever seen in memory.\nThe old brews still hold their potency.",
+  "ALCHEMIST-ALCHEMIST2_EPOCH.title": "Dissolution",
+  "ALCHEMIST-ALCHEMIST2_EPOCH.description": "Three floors up, cornered and dying, the [purple]Frog's[/purple] own [green]poison[/green] floods their veins — and is [sine]transmuted[/sine]. Warmth. Vigor. Wounds drawing closed.\nThey survive the night on the floor of a ruin, [red]laughing[/red], writing it all down with [jitter]shaking hands[/jitter].\nThe first page of a new [gold]journal[/gold]. Their own, this time.",
   "ALCHEMIST-ALCHEMIST2_EPOCH.unlockInfo": "{IsRevealed:Beat|Beat} [gold]Act[/gold] [blue]1[/blue] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
-  "ALCHEMIST-ALCHEMIST2_EPOCH.unlock": "A parent's [gold]tonics[/gold], recovered.",
 
-  "ALCHEMIST-ALCHEMIST3_EPOCH.title": "The First Distillation",
-  "ALCHEMIST-ALCHEMIST3_EPOCH.description": "Deeper in, the [purple]Alchemist[/purple] recognizes the parent's methods in the rot and the residue — [green]toxins[/green] refined into weapons, suffering turned to craft.\nThe first true distillation runs green.",
+  "ALCHEMIST-ALCHEMIST3_EPOCH.title": "Separation",
+  "ALCHEMIST-ALCHEMIST3_EPOCH.description": "\"You [sine]brew[/sine] these? In [sine]here[/sine]?\"\nFor the first time in years, the [blue]Merchant[/blue] is the one who wants to buy.\nA [green]tincture[/green] presses into their hand, still warm from the flame.\nAn arrangement is struck on the spot: the [purple]Frog[/purple] brews, the [blue]Merchant[/blue] pays, and neither asks the other a single question.",
   "ALCHEMIST-ALCHEMIST3_EPOCH.unlockInfo": "{IsRevealed:Beat|Beat} [gold]Act[/gold] [blue]2[/blue] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
-  "ALCHEMIST-ALCHEMIST3_EPOCH.unlock": "The [green]work[/green] takes on a familiar shape.",
 
-  "ALCHEMIST-ALCHEMIST4_EPOCH.title": "Relics of the Expedition",
-  "ALCHEMIST-ALCHEMIST4_EPOCH.description": "Tools of the Twelve, scattered where their owners fell. Each one still hums with the labor of hands long gone.\nThe [purple]Alchemist[/purple] gathers them the way one gathers heirlooms — carefully, and with a grief that sharpens into resolve.",
+  "ALCHEMIST-ALCHEMIST4_EPOCH.title": "Conjunction",
+  "ALCHEMIST-ALCHEMIST4_EPOCH.description": "\"Found this a ways up. Figured it belonged to somebody.\" [orange]Darv[/orange] holds out a worn [gold]journal[/gold].\nThe early handwriting is their [pink]parent's[/pink]. The later pages are not. Filled with an unfamiliar ink, the pages hint to clues higher in the [gold]Spire[/gold].\nThe [purple]Frog[/purple] does not ask why the collector would part with this treasure. [orange]Darv[/orange] does not offer.",
   "ALCHEMIST-ALCHEMIST4_EPOCH.unlockInfo": "{IsRevealed:Beat|Beat} [gold]Act[/gold] [blue]3[/blue] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
-  "ALCHEMIST-ALCHEMIST4_EPOCH.unlock": "Heirlooms of the [gold]Expedition[/gold], reclaimed.",
 
-  "ALCHEMIST-ALCHEMIST5_EPOCH.title": "Convalescence",
-  "ALCHEMIST-ALCHEMIST5_EPOCH.description": "The Spire's champions leave wounds that teach.\nWhere the parent sought only to unmake, the child learns to [blue]mend[/blue] — to close what the [purple]Elites[/purple] tear open, and to endure long enough to matter.",
+  "ALCHEMIST-ALCHEMIST5_EPOCH.title": "Fermentation",
+  "ALCHEMIST-ALCHEMIST5_EPOCH.description": "Sealed nine days in a gallery of [sine]luminous[/sine] [green]fungi[/green]. Some would [jitter]panic[/jitter].\nThe [purple]Frog[/purple] brews.\nSome preparations [gold]reward[/gold] the patient hand. Others [red]punish[/red] hesitation.\nThey emerge with a brimming satchel and a rarer thing: the [blue]patience[/blue] to know when not to reach for it.",
   "ALCHEMIST-ALCHEMIST5_EPOCH.unlockInfo": "{IsRevealed:Killed|Kill} [blue]15[/blue] [purple]Elites[/purple] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
-  "ALCHEMIST-ALCHEMIST5_EPOCH.unlock": "To heal is also to [green]persist[/green].",
 
-  "ALCHEMIST-ALCHEMIST6_EPOCH.title": "The Deeper Work",
-  "ALCHEMIST-ALCHEMIST6_EPOCH.description": "[red]Bosses[/red] fall, and the Great Work deepens. Lead to [gold]gold[/gold], poison to power, grief to purpose.\nThe [purple]Alchemist[/purple] begins to understand — with something close to dread — why their parent never turned back.",
+  "ALCHEMIST-ALCHEMIST6_EPOCH.title": "Distillation",
+  "ALCHEMIST-ALCHEMIST6_EPOCH.description": "Higher still: a [jitter]cold[/jitter] campsite. Formulae scratched into stone in a [pink]familiar hand[/pink].\nA final note in the margin. The [gold]Work[/gold] was never about [gold]gold[/gold].\nIt is the uniting of opposites. The transendence of [blue]Self[/blue].\nThe [purple]Frog[/purple] sits with that for a long while. Then [sine]climbs.[/sine]",
   "ALCHEMIST-ALCHEMIST6_EPOCH.unlockInfo": "{IsRevealed:Killed|Kill} [blue]15[/blue] [red]Bosses[/red] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
-  "ALCHEMIST-ALCHEMIST6_EPOCH.unlock": "The [gold]Great Work[/gold] deepens.",
 
-  "ALCHEMIST-ALCHEMIST7_EPOCH.title": "Rubedo",
-  "ALCHEMIST-ALCHEMIST7_EPOCH.description": "The final stage. [b]Nigredo[/b], [b]albedo[/b], [b]citrinitas[/b] — and at last the [red]red[/red].\nIn the heart of the [gold]Spire[/gold] the [purple]Alchemist[/purple] finds what the Twelve found, and learns the shape of the answer they crossed a world to reach.",
-  "ALCHEMIST-ALCHEMIST7_EPOCH.unlockInfo": "{IsRevealed:Beat|Beat} [red]Ascension[/red] [blue]1[/blue] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
-  "ALCHEMIST-ALCHEMIST7_EPOCH.unlock": "[red]Rubedo.[/red] The Work is complete."
+  "ALCHEMIST-ALCHEMIST7_EPOCH.title": "Coagulation",
+  "ALCHEMIST-ALCHEMIST7_EPOCH.description": "The last floor. The last door.\nA [pink]parent[/pink] climbed here to finish the [gold]Work[/gold] and never wrote the ending.\nPerhaps because there was no writing it — because the final change is not one you record, but one you [blue][sine]become[/sine][/blue].\nThe [purple]Frog[/purple] steadies their hands, breathes deeply, and steps through.",
+  "ALCHEMIST-ALCHEMIST7_EPOCH.unlockInfo": "{IsRevealed:Beat|Beat} [red]Ascension[/red] [blue]1[/blue] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}."
 }
