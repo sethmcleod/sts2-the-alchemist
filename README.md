@@ -1,7 +1,7 @@
 # The Alchemist
 
-> An amphibian practicer of esoteric arts. Transmutes poison, patience, and
-> peril into power.
+> An amphibian practicer of esoteric arts.
+> Transmutes self-inflicted poison into power.
 
 ## Origin
 
