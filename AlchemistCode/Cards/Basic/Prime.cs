@@ -10,7 +10,6 @@ namespace Alchemist.AlchemistCode.Cards.Basic;
 public class Prime : AlchemistCard
 {
     protected override bool IsGambitCard => true;
-    internal override bool HideBlockTooltip => true;
 
     public Prime() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
     {

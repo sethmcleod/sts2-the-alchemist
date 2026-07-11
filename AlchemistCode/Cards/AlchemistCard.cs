@@ -26,9 +26,6 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
 
     protected virtual bool IsGambitCard => false;
 
-    // Opt out of the base game's auto Block tooltip (see Patches.HideBlockTipPatch) to declutter busy cards
-    internal virtual bool HideBlockTooltip => false;
-
     // Cards with a play-time conditional bonus override this to glow gold while that condition currently
     // holds, the same way Gambit cards glow while you're at low HP
     protected virtual bool ConditionalGlow => false;
@@ -109,6 +106,9 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
             description.Add("FermentSuffix", _fermentTurns > 0 ? $" ({_fermentTurns})" : "");
             description.Add("FermentTotal", FermentTotalText);
         }
-        description.Add("FormulaDamage", FormulaDamagePreview is { } d ? $" ([green]{d}[/green])" : "");
+        // FormulaDamagePreview reads Owner, which throws on canonical models (e.g. the compendium/card library).
+        // Only mutable combat instances have an Owner, and the live preview is only meaningful there
+        description.Add("FormulaDamage",
+            IsMutable && FormulaDamagePreview is { } d ? $" ([green]{d}[/green])" : "");
     }
 }
