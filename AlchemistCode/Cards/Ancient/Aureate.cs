@@ -12,7 +12,7 @@ public class Aureate : AlchemistCard
     public Aureate() : base(1, CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies)
     {
         WithDamage(12, 6);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) });
+        WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

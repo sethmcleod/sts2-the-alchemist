@@ -10,16 +10,14 @@ namespace Alchemist.AlchemistCode.Cards.Basic;
 public class Prime : AlchemistCard
 {
     protected override bool IsGambitCard => true;
+    internal override bool HideBlockTooltip => true;
 
     public Prime() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
     {
         WithDamage(6, 2);
         WithBlock(4, 2);
-        WithTips(_ => new[]
-        {
-            HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse),
-            HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit),
-        });
+        WithTips(_ => Infusion.InfuseTips()
+            .Append(HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit)));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

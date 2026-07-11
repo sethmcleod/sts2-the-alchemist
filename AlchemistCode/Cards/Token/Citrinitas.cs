@@ -18,6 +18,9 @@ public class Citrinitas : AlchemistCard
         WithUpgradingCardTip<Rubedo>();
     }
 
+    protected override int? FormulaDamagePreview =>
+        Owner?.Creature is { } c ? ApplyEnchantDamage(c.GetPowerAmount<RegenPower>()) : null;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;

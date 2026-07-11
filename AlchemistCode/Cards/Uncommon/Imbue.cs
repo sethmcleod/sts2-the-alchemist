@@ -1,4 +1,5 @@
 using Alchemist.AlchemistCode;
+using Alchemist.AlchemistCode.Commands;
 using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -12,7 +13,7 @@ public class Imbue : AlchemistCard
     public Imbue() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Cards", 1, 1);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) });
+        WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

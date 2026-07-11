@@ -16,7 +16,7 @@ public class Refine : AlchemistCard
         WithCalculatedDamage(8, static (card, _) => card.Owner.Creature.GetPowerAmount<RegenPower>(),
             ValueProp.Move, 3, 0);
         WithTip(typeof(RegenPower));
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) });
+        WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

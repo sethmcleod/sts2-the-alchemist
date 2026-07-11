@@ -12,10 +12,8 @@ public class Transmutation : AlchemistCard
 {
     public Transmutation() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        // Only the upgrade Infuses, so the tip is only shown there
-        WithTips(card => card.IsUpgraded
-            ? new IHoverTip[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
-            : Array.Empty<IHoverTip>());
+        // Only the upgrade Infuses, so the tips are only shown there
+        WithTips(card => card.IsUpgraded ? Infusion.InfuseTips() : Array.Empty<IHoverTip>());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

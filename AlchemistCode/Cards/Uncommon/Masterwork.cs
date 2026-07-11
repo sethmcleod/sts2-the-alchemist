@@ -15,7 +15,7 @@ public class Masterwork : AlchemistCard
     {
         WithEnergy(1, 1);
         WithVar("Cards", 1, 1);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) });
+        WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override bool ConditionalGlow =>

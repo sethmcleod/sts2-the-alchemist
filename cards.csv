@@ -2,22 +2,22 @@ Card,Rarity,Type,Cost,Description
 Strike,Basic,Attack,1,Deal 6 (9) damage.
 Defend,Basic,Skill,1,Gain 5 (8) Block.
 Prime,Basic,Attack,1,Deal 6 (8) damage. Infuse a card in your Hand. Gambit: Gain 4 (6) Block.
-Nigredo,Basic,Skill,1,Apply 4 (5) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
+Nigredo,Basic,Skill,1,Apply 3 (4) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
 Tinge,Common,Attack,0,Deal 3 (4) damage. Apply 2 Poison. Seep: Add an Effluvium into your Discard Pile.
 Titrate,Common,Attack,0,Deal 4 (6) damage. Draw a card. Seep: Gain 2 Regen.
-Fumigate,Common,Attack,1,Deal 1 damage to ALL enemies. Deals 2 additional damage for each card in your Exhaust Pile. Gain 2 Poison (removed on upgrade).
+Fumigate,Common,Attack,1,Deal 1 damage to ALL enemies. Deals 2 additional damage for each card in your Exhaust Pile. Gain 3 (2) Poison.
 Cornered,Common,Attack,1,"Deal 9 (12) damage. Gambit: Deal 5 additional damage. Otherwise, lose 5 HP."
 Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Gain 2 Poison.
 Vent,Common,Attack,1,Deal 6 damage. Add an Effluvium (+) into your Hand.
 Puncture,Common,Attack,1,Deal 8 (10) damage. Apply 1 (2) Vulnerable. Gambit: Apply 1 additional Vulnerable.
 Siphon,Common,Attack,1,Deal 5 (7) damage. Draw 2 cards. Gambit: Draw an additional card.
-Improvise,Common,Attack,1,Deal 5 (7) damage. Gain 2 Regen. Gambit: Gain 1 (2) additional Regen.
+Improvise,Common,Attack,1,Deal 5 (7) damage. Gain 2 Regen. Gambit: Gain 1 additional Regen.
 Enervate,Common,Attack,2,Deal 12 (16) damage. Apply 2 (3) Weak. Gambit: Deal 6 (8) additional damage.
 Inoculate,Common,Skill,0,Lose 3 HP. Gain 6 (9) Block.
 Poultice,Common,Skill,1,Exhaust 1 card. Gain 2 (3) Regen.
 Synthesis,Common,Attack,1,Deal 7 (10) damage. Deals an additional 2 damage for each Enchanted card in your Hand.
 Steep,Common,Skill,1,"Retain. Ferment. Apply 4 (6) Poison, plus 2 Poison for each turn fermented."
-Reconstitute,Common,Skill,1,Gain 2 (1) Poison. Put a card from your Discard Pile into your Hand.
+Reconstitute,Common,Skill,1,Gain 2 Poison. Put a card from your Discard Pile into your Hand. Exhaust. (Doesn't Exhaust)
 Salve,Common,Skill,1,Gain 4 (7) Block. Draw a card.
 Sinter,Common,Skill,1,"Gain 7 (10) Block. If you have 7 or more cards in your Exhaust Pile, this costs 0."
 Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison. Gambit: Gain 2 (3) Regen.
@@ -77,7 +77,7 @@ Sepsis,Rare,Power,2 (1),Poisoned enemies take an additional 50% damage from Atta
 Secretion,Rare,Power,1,"Whenever you take unblocked Attack damage, apply 1 (2) Poison to the attacker."
 Accretion,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Gambit: Gain 1 additional Regen."
 Homeostasis,Rare,Power,2 (1),"At the start of your turn, if your HP is below 50% of your Max HP, draw 1 card and gain 1 Energy."
-Conjunction,Rare,Power,2,"At the start of your turn, if you have Poison or Regen, gain 1 (2) Energy."
+Conjunction,Rare,Power,2,"At the start of your turn, if you have both Poison and Regen, gain 1 (2) Energy."
 Catharsis,Rare,Skill,2,"Retain. Ferment. Gain 3 (4) Regen, plus 2 Regen for each turn fermented."
 Inducement,Rare,Power,2 (1),"Whenever you take Poison damage, apply that much Poison to ALL enemies."
 Catalyse,Rare,Power,2 (1),"The first time your HP changes each turn, Infuse 2 random cards in your Hand."

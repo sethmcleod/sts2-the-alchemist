@@ -14,6 +14,16 @@ public class Haemorrhage : AlchemistCard
         WithTip(typeof(RegenPower));
     }
 
+    protected override int? FormulaDamagePreview
+    {
+        get
+        {
+            if (Owner?.Creature is not { } c) return null;
+            var lost = c.GetPowerAmount<RegenPower>() + DynamicVars["Bonus"].IntValue;
+            return ApplyEnchantDamage(lost * (IsUpgraded ? 3 : 2));
+        }
+    }
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var regen = Owner.Creature.GetPowerAmount<RegenPower>();

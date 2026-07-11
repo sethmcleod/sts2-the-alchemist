@@ -16,7 +16,7 @@ public class Improvise : AlchemistCard
     {
         WithDamage(5, 2);
         WithPower<RegenPower>(2, 0);
-        WithVar("GambitRegen", 1, 1);
+        WithVar("GambitRegen", 1, 0);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 

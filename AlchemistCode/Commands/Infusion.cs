@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Enchantments;
@@ -30,6 +31,14 @@ public static class Infusion
     // Distinct cards enchanted (by any source) during the current combat. Recorded from the shared
     // CardCmd.Enchant hook so Masterwork's threshold counts other mods' enchantments too, not just Infuse
     private static readonly HashSet<CardModel> EnchantedThisCombat = new();
+
+    // The Infuse keyword tip plus a tip for each enchantment it can grant, for cards that Infuse.
+    // Take only each enchantment's own tip (Take(1)) so we don't also pull in its nested tips (e.g. Glam's Replay)
+    public static IEnumerable<IHoverTip> InfuseTips() =>
+        new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
+            .Concat(HoverTipFactory.FromEnchantment<Corrupted>().Take(1))
+            .Concat(HoverTipFactory.FromEnchantment<Glam>().Take(1))
+            .Concat(HoverTipFactory.FromEnchantment<Sown>().Take(1));
 
     public static void RecordCombatEnchant(CardModel card) => EnchantedThisCombat.Add(card);
 

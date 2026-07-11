@@ -1,10 +1,8 @@
 {
+  "ALCHEMIST-GOLD_LEAF.description": "Heal [green]1[/green] HP for every [blue]15[/blue] [gold]Gold[/gold] you have. ([green]{HealTotal}[/green] HP)",
   "ALCHEMIST-GOLD_LEAF.title": "Gold Leaf",
-  "ALCHEMIST-GOLD_LEAF.description": "Heal [green]1[/green] HP for every [blue]15[/blue] [gold]Gold[/gold] you have.",
-
-  "ALCHEMIST-MARSH_TONIC.title": "Marsh Tonic",
   "ALCHEMIST-MARSH_TONIC.description": "Gain [blue]3[/blue] [gold]Regen[/gold] and [blue]3[/blue] [gold]Poison[/gold].",
-
-  "ALCHEMIST-REFINED_EXTRACT.title": "Refined Extract",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Add [blue]2[/blue] [gold]Distillates[/gold] into your [gold]Hand[/gold]."
+  "ALCHEMIST-MARSH_TONIC.title": "Marsh Tonic",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Add [blue]2[/blue] [gold]Distillates[/gold] into your [gold]Hand[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.title": "Refined Extract"
 }

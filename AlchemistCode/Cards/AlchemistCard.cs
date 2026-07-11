@@ -26,6 +26,9 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
 
     protected virtual bool IsGambitCard => false;
 
+    // Opt out of the base game's auto Block tooltip (see Patches.HideBlockTipPatch) to declutter busy cards
+    internal virtual bool HideBlockTooltip => false;
+
     // Cards with a play-time conditional bonus override this to glow gold while that condition currently
     // holds, the same way Gambit cards glow while you're at low HP
     protected virtual bool ConditionalGlow => false;
@@ -55,6 +58,10 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
         value *= enchantment.EnchantDamageMultiplicative(value, ValueProp.Move);
         return (int)value;
     }
+
+    // Cards whose damage is a runtime formula (no DamageVar to preview) return the current computed total so
+    // the card face can show it live via {FormulaDamage}. Null when it can't be computed (e.g. the card library)
+    protected virtual int? FormulaDamagePreview => null;
 
     private int _fermentTurns;
 
@@ -102,5 +109,6 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
             description.Add("FermentSuffix", _fermentTurns > 0 ? $" ({_fermentTurns})" : "");
             description.Add("FermentTotal", FermentTotalText);
         }
+        description.Add("FormulaDamage", FormulaDamagePreview is { } d ? $" ([green]{d}[/green])" : "");
     }
 }
