@@ -10,8 +10,7 @@ namespace Alchemist.AlchemistCode.Powers;
 
 public class SuffusePower : AlchemistPower
 {
-    private const double LowerBound = 0.33;
-    private const double UpperBound = 0.66;
+    private const double Threshold = 0.50;
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -21,7 +20,7 @@ public class SuffusePower : AlchemistPower
     {
         if (!participants.Contains(Owner)) return;
         var pct = (double)Owner.CurrentHp / Owner.MaxHp;
-        if (pct < LowerBound || pct > UpperBound) return;
+        if (pct >= Threshold) return;
 
         Flash();
         var rng = Owner.Player!.RunState.Rng.CombatPotionGeneration;

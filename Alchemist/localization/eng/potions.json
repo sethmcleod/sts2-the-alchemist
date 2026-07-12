@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-GOLD_LEAF.description": "Heal [green]1[/green] HP for every [blue]15[/blue] [gold]Gold[/gold] you have. ([green]{HealTotal}[/green] HP)",
+  "ALCHEMIST-GOLD_LEAF.description": "Heal [green]1[/green] HP for every [blue]15[/blue] [gold]Gold[/gold] you have.{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Gold Leaf",
   "ALCHEMIST-MARSH_TONIC.description": "Gain [blue]3[/blue] [gold]Regen[/gold] and [blue]3[/blue] [gold]Poison[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Marsh Tonic",

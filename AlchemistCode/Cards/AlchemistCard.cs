@@ -75,6 +75,10 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
 
     protected virtual Task OnSeep(PlayerChoiceContext choiceContext) => Task.CompletedTask;
 
+    // Flash the seeping card so the player sees which one triggered. Cards whose Seep already surfaces a card
+    // (e.g. adding a token that previews itself) opt out to avoid a redundant double flash
+    protected virtual bool SeepPreviewsSelf => true;
+
     public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
@@ -85,7 +89,7 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
         if (IsFermentCard) _fermentTurns++;
         if (IsSeepCard)
         {
-            CardCmd.Preview(new[] { this });
+            if (SeepPreviewsSelf) CardCmd.Preview(new[] { this });
             await OnSeep(choiceContext);
         }
     }

@@ -10,19 +10,15 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Corrode : AlchemistCard
 {
-    protected override bool IsGambitCard => true;
     protected override bool IsSeepCard => true;
 
     public Corrode() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithPower<PoisonPower>(6, 0);
+        WithPower<PoisonPower>(6, 1);
         WithPower<WeakPower>(1, 1);
-        WithVar("Regen", 2, 0);
         WithVar("SelfPoison", 2, 0);
-        WithTip(typeof(RegenPower));
         WithTips(_ => new[]
         {
-            HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit),
             HoverTipFactory.FromKeyword(AlchemistKeywords.Seep)
         });
     }
@@ -35,9 +31,6 @@ public class Corrode : AlchemistCard
             await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, DynamicVars.Poison.BaseValue, Owner.Creature, this);
             await PowerCmd.Apply<WeakPower>(choiceContext, enemy, DynamicVars.Weak.BaseValue, Owner.Creature, this);
         }
-        if (IsReduced)
-            await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature,
-                DynamicVars["Regen"].BaseValue, Owner.Creature, this);
     }
 
     protected override async Task OnSeep(PlayerChoiceContext choiceContext)

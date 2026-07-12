@@ -19,7 +19,8 @@ public class Citrinitas : AlchemistCard
     }
 
     protected override int? FormulaDamagePreview =>
-        Owner?.Creature is { } c ? ApplyEnchantDamage(c.GetPowerAmount<RegenPower>()) : null;
+        Owner?.Creature is { } c && c.GetPowerAmount<RegenPower>() is var r and > 0
+            ? ApplyEnchantDamage(r) : null;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

@@ -19,7 +19,9 @@ public class Haemorrhage : AlchemistCard
         get
         {
             if (Owner?.Creature is not { } c) return null;
-            var lost = c.GetPowerAmount<RegenPower>() + DynamicVars["Bonus"].IntValue;
+            var regen = c.GetPowerAmount<RegenPower>();
+            if (regen <= 0) return null; // no Regen contribution — the preview would just be the base
+            var lost = regen + DynamicVars["Bonus"].IntValue;
             return ApplyEnchantDamage(lost * (IsUpgraded ? 3 : 2));
         }
     }

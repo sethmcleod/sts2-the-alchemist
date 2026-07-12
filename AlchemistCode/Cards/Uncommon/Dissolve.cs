@@ -17,8 +17,8 @@ public class Dissolve : AlchemistCard
     {
         if (CombatState == null) return;
         var selected = await CardSelectCmd.FromCombatPile(
-            choiceContext, PileType.Discard.GetPile(Owner), Owner,
-            new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 2));
+            choiceContext, PileType.Draw.GetPile(Owner), Owner,
+            new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1));
         foreach (var card in selected)
         {
             var distillate = CombatState.CreateCard<Distillate>(Owner);

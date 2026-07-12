@@ -14,7 +14,8 @@ public class Ichor : AlchemistCard
     }
 
     protected override int? FormulaDamagePreview =>
-        Owner?.Creature is { } c ? ApplyEnchantDamage(c.MaxHp - c.CurrentHp) : null;
+        Owner?.Creature is { } c && c.MaxHp - c.CurrentHp > 0
+            ? ApplyEnchantDamage(c.MaxHp - c.CurrentHp) : null;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
