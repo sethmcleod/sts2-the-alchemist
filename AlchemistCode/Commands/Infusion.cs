@@ -1,24 +1,32 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Alchemist.AlchemistCode.Cards;
+using Alchemist.AlchemistCode.Enchantments;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Enchantments;
-using Alchemist.AlchemistCode.Cards;
 
 namespace Alchemist.AlchemistCode.Commands;
 
 // Infuse: enchant a card until end of combat. Enchantments are run-permanent by default, so infused
-// cards are tracked here and cleared at combat end by Patches.InfusionCombatEndPatch
+// cards are tracked here and cleared at combat end by Patches.InfusionCombatEndPatch.
+// Each Infuse adds 1 to the enchantment's amount, and re-infusing a card stacks that amount.
 public static class Infusion
 {
-    // Corrupted and Glam ignore Amount; only Sown uses it (energy gained the first time you play the card)
-    private const int SownEnergy = 1;
+    // The enchantment applied for each card type; null for types that get the Ethereal keyword instead
+    private static Type? EnchantTypeFor(CardModel card) => card.Type switch
+    {
+        CardType.Attack => typeof(Toxic),
+        CardType.Skill => typeof(Fuming),
+        CardType.Power => typeof(Exalted),
+        _ => null,
+    };
 
     private static readonly LocString SelectPrompt = new("card_keywords", "ALCHEMIST-INFUSE.selectionPrompt");
 
@@ -32,20 +40,26 @@ public static class Infusion
     // CardCmd.Enchant hook so Masterwork's threshold counts other mods' enchantments too, not just Infuse
     private static readonly HashSet<CardModel> EnchantedThisCombat = new();
 
-    // The Infuse keyword tip plus a tip for each enchantment it can grant, for cards that Infuse.
-    // Take only each enchantment's own tip (Take(1)) so we don't also pull in its nested tips (e.g. Glam's Replay)
+    // The Infuse keyword tip plus a tip for each enchantment it can grant. Default amount 1 = one Infuse
     public static IEnumerable<IHoverTip> InfuseTips() =>
         new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
-            .Concat(HoverTipFactory.FromEnchantment<Corrupted>().Take(1))
-            .Concat(HoverTipFactory.FromEnchantment<Glam>().Take(1))
-            .Concat(HoverTipFactory.FromEnchantment<Sown>().Take(1));
+            .Concat(HoverTipFactory.FromEnchantment<Toxic>().Take(1))
+            .Concat(HoverTipFactory.FromEnchantment<Fuming>().Take(1))
+            .Concat(HoverTipFactory.FromEnchantment<Exalted>().Take(1));
 
     public static void RecordCombatEnchant(CardModel card) => EnchantedThisCombat.Add(card);
 
     public static int EnchantedThisCombatCount(Player owner) => EnchantedThisCombat.Count(c => c.Owner == owner);
 
-    // Infusions don't stack, so an already-enchanted or already-infused card is never offered or picked
-    public static bool CanInfuse(CardModel card) => card.Enchantment == null && !Infused.Contains(card);
+    // Infusable if it takes the Ethereal keyword, or if applying its type's enchantment would stack cleanly
+    // (no enchantment yet, or already the same one) — re-infusing a card grows its amount
+    public static bool CanInfuse(CardModel card)
+    {
+        if (card.Type is CardType.Curse or CardType.Status or CardType.Quest)
+            return !card.Keywords.Contains(CardKeyword.Ethereal);
+        if (EnchantTypeFor(card) is not { } type) return false;
+        return card.Enchantment == null || card.Enchantment.GetType() == type;
+    }
 
     public static Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count) =>
         InfuseChosen(ctx, source, pile, count, count);
@@ -90,11 +104,8 @@ public static class Infusion
 
         if (card.Type is CardType.Curse or CardType.Status or CardType.Quest)
         {
-            if (!card.Keywords.Contains(CardKeyword.Ethereal))
-            {
-                card.AddKeyword(CardKeyword.Ethereal);
-                AddedEthereal.Add(card);
-            }
+            card.AddKeyword(CardKeyword.Ethereal);
+            AddedEthereal.Add(card);
             Infused.Add(card);
             return;
         }
@@ -102,21 +113,22 @@ public static class Infusion
         switch (card.Type)
         {
             case CardType.Attack:
-                TryEnchant<Corrupted>(card, 1);
+                TryEnchant<Toxic>(card);
                 break;
             case CardType.Skill:
-                TryEnchant<Glam>(card, 1);
+                TryEnchant<Fuming>(card);
                 break;
             case CardType.Power:
-                TryEnchant<Sown>(card, SownEnergy);
+                TryEnchant<Exalted>(card);
                 break;
         }
     }
 
-    private static void TryEnchant<T>(CardModel card, int amount) where T : EnchantmentModel
+    // Enchant adds `amount` to the enchantment (stacking if the card already has the same one)
+    private static void TryEnchant<T>(CardModel card) where T : EnchantmentModel
     {
         if (!ModelDb.Enchantment<T>().CanEnchant(card)) return;
-        CardCmd.Enchant<T>(card, amount);
+        CardCmd.Enchant<T>(card, 1);
         Infused.Add(card);
     }
 

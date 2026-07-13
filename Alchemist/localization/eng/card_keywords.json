@@ -1,9 +1,9 @@
 {
   "ALCHEMIST-FERMENT.description": "This card increases in potency for each turn in your [gold]Hand[/gold].",
   "ALCHEMIST-FERMENT.title": "Ferment",
-  "ALCHEMIST-GAMBIT.description": "While you are at 50% or less HP, this card has a [gold]Gambit[/gold] effect when played.",
+  "ALCHEMIST-GAMBIT.description": "While you are at [blue]50%[/blue] or less HP, this card has a [gold]Gambit[/gold] effect when played.",
   "ALCHEMIST-GAMBIT.title": "Gambit",
-  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks gain [purple]Corrupted[/purple]; Skills gain [purple]Glam[/purple]; Powers gain [purple]Sown[/purple]. Other cards gain [gold]Ethereal[/gold].",
+  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks gain [blue]1[/blue] [purple]Toxic[/purple]; Skills gain [blue]1[/blue] [purple]Fuming[/purple]; Powers gain [blue]1[/blue] [purple]Exalted[/purple]. Other cards gain [gold]Ethereal[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Choose a card to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.title": "Infuse",
   "ALCHEMIST-SEEP.description": "At the end of your turn, if this card is in your [gold]Hand[/gold], the [gold]Seep[/gold] effect triggers.",
