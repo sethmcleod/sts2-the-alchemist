@@ -10,5 +10,7 @@
   "POTION_SELL.merchant_sell_3": "These seem high quality!",
   "POTION_SELL.merchant_sell_4": "Ooh, still bubbling — nice!",
   "POTION_SELL.merchant_sell_5": "My regulars will snap this right up.",
-  "POTION_SELL.merchant_sell_6": "Fresh brews always move fast!"
+  "POTION_SELL.merchant_sell_6": "Fresh brews always move fast!",
+  "POTION_SELL.sellable_tip.description": "This potion can be sold to the [blue]Merchant[/blue] for [gold]Gold[/gold].",
+  "POTION_SELL.sellable_tip.title": "Coveted"
 }

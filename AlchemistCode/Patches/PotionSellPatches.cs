@@ -7,10 +7,12 @@ using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Potions;
 using MegaCrit.Sts2.Core.Nodes;
+using MegaCrit.Sts2.Core.Nodes.HoverTips;
 using MegaCrit.Sts2.Core.Nodes.Potions;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
@@ -178,6 +180,33 @@ public static class PotionSellPatches
         }
     }
 
+    // Atlas-safe outline: stack dark copies of the sprite behind it, offset in 8 directions. ShowBehindParent
+    // keeps them under the coin, and the badge's Modulate (its fade) cascades to these children automatically
+    private static void AddOutline(TextureRect badge, float width)
+    {
+        Vector2[] dirs =
+        [
+            new(1, 0), new(-1, 0), new(0, 1), new(0, -1),
+            new(1, 1), new(1, -1), new(-1, 1), new(-1, -1),
+        ];
+        foreach (var dir in dirs)
+        {
+            var outline = new TextureRect
+            {
+                Texture = badge.Texture,
+                MouseFilter = Control.MouseFilterEnum.Ignore,
+                ExpandMode = badge.ExpandMode,
+                StretchMode = badge.StretchMode,
+                CustomMinimumSize = badge.CustomMinimumSize,
+                Size = badge.Size,
+                ShowBehindParent = true,
+                SelfModulate = new Color(0f, 0f, 0f, 1f),
+                Position = dir * width,
+            };
+            badge.AddChild(outline);
+        }
+    }
+
     private static void HighlightSellablePotions()
     {
         var container = NRun.Instance?.GlobalUi?.TopBar?.PotionContainer;
@@ -214,6 +243,7 @@ public static class PotionSellPatches
             holder.AddChild(badge);
             badge.Position = new Vector2(holder.Size.X * 0.5f - iconSize * 0.5f, holder.Size.Y + 14f);
             badge.Modulate = new Color(1f, 1f, 1f, 0f);
+            AddOutline(badge, 3f);
 
             var pop = badge.CreateTween();
             if (delay > 0f) pop.TweenInterval(delay);
@@ -245,6 +275,65 @@ public static class PotionSellPatches
                 __instance.MerchantButton?.PlayDialogue(greeting, 3.0);
                 HighlightSellablePotions();
             }));
+        }
+    }
+
+    // Stable id so the tint patch can find this tooltip's rendered control
+    private const string SellableTipId = "ALCHEMIST_POTION_SELLABLE";
+
+    // Shop-only tooltip so players know potions can be sold here — gated exactly like the sell button
+    [HarmonyPatch(typeof(PotionModel), "get_HoverTips")]
+    public static class PotionSellableTipPatch
+    {
+        public static void Postfix(PotionModel __instance, ref IEnumerable<IHoverTip> __result)
+        {
+            if (!__instance.IsMutable) return; // canonical (compendium) potions have no Owner
+            if (!CanSellPotions(__instance)) return;
+            var tip = new HoverTip(
+                new LocString("gameplay_ui", "POTION_SELL.sellable_tip.title"),
+                new LocString("gameplay_ui", "POTION_SELL.sellable_tip.description"))
+            { Id = SellableTipId };
+            __result = __result.Append(tip);
+        }
+    }
+
+    // Tint that tooltip gold. The base game only tints debuffs (red) by swapping the %Bg material, so we do
+    // the same with a gold hue-shift material for our tip. Text-tip controls map 1:1 in order to the HoverTips
+    [HarmonyPatch(typeof(NHoverTipSet), "Init")]
+    public static class SellableTipGoldTintPatch
+    {
+        private static readonly FieldInfo TextContainerField =
+            AccessTools.Field(typeof(NHoverTipSet), "_textHoverTipContainer");
+        private static ShaderMaterial? _goldMaterial;
+
+        // Reuse the base game's hue-shift shader (mounted at runtime); build the material in code so we don't
+        // ship a .tres/shader. h/s/v tune the gold tint
+        private static ShaderMaterial GoldMaterial()
+        {
+            if (_goldMaterial != null) return _goldMaterial;
+            _goldMaterial = new ShaderMaterial { Shader = ResourceLoader.Load<Shader>("res://shaders/hsv.gdshader") };
+            _goldMaterial.SetShaderParameter("h", 0.54f);
+            _goldMaterial.SetShaderParameter("s", 2.4f);
+            _goldMaterial.SetShaderParameter("v", 1.0f);
+            return _goldMaterial;
+        }
+
+        public static void Postfix(NHoverTipSet __instance, IEnumerable<IHoverTip> hoverTips)
+        {
+            var index = -1;
+            var ourIndex = -1;
+            foreach (var tip in IHoverTip.RemoveDupes(hoverTips))
+            {
+                if (tip is not HoverTip hoverTip) continue;
+                index++;
+                if (hoverTip.Id == SellableTipId) { ourIndex = index; break; }
+            }
+            if (ourIndex < 0) return;
+            if (TextContainerField.GetValue(__instance) is not Node container) return;
+            if (ourIndex >= container.GetChildCount()) return;
+            if (container.GetChild(ourIndex) is not Control control) return;
+            if (control.GetNodeOrNull<CanvasItem>("%Bg") is not { } bg) return;
+            bg.Material = GoldMaterial();
         }
     }
 }
