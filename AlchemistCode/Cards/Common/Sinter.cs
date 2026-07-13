@@ -15,7 +15,9 @@ public class Sinter : AlchemistCard
         WithBlock(7, 3);
     }
 
-    private bool ExhaustReady => Owner != null && PileType.Exhaust.GetPile(Owner).Cards.Count >= ExhaustThreshold;
+    // IsMutable, not Owner != null: Owner throws on canonical models rather than returning null. This helper
+    // feeds the cost hook too (which the base's glow gate doesn't cover), so it guards itself
+    private bool ExhaustReady => IsMutable && PileType.Exhaust.GetPile(Owner).Cards.Count >= ExhaustThreshold;
 
     protected override bool ConditionalGlow => ExhaustReady;
 

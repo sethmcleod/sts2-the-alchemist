@@ -1,4 +1,3 @@
-using Alchemist.AlchemistCode;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -17,11 +16,7 @@ public class Harvest : AlchemistCard
     {
         WithCalculatedDamage(10, 5, static (card, _) => ((AlchemistCard)card).IsReduced ? 1 : 0, ValueProp.Move, 3, 0);
         WithVar("rewards", 1, 1);
-        WithTips(_ => new[]
-        {
-            HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit),
-            HoverTipFactory.Static(StaticHoverTip.Fatal),
-        });
+        WithTips(_ => new[] { HoverTipFactory.Static(StaticHoverTip.Fatal) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

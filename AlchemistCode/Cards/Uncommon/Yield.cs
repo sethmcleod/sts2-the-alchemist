@@ -1,9 +1,7 @@
-using Alchemist.AlchemistCode;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -15,7 +13,6 @@ public class Yield : AlchemistCard
     {
         WithVar("Extra", 1, 1);
         WithKeyword(CardKeyword.Exhaust);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

@@ -1,6 +1,6 @@
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
@@ -19,10 +19,6 @@ public class Potentiate : AlchemistCard
         var potionsUsed = CombatManager.Instance.History.Entries
             .OfType<PotionUsedEntry>().Count();
         var hitCount = 1 + potionsUsed;
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .WithHitCount(hitCount)
-            .FromCard(this, play)
-            .Targeting(play.Target!)
-            .Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, hitCount).Execute(choiceContext);
     }
 }

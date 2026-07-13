@@ -3,10 +3,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
-using Alchemist.AlchemistCode;
 using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
@@ -20,7 +18,6 @@ public class Surge : AlchemistCard
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(StrengthPower));
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

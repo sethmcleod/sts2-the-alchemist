@@ -13,14 +13,17 @@ public class Haemorrhage : AlchemistCard
         WithTip(typeof(RegenPower));
     }
 
+    // Single source of truth for the on-card preview and the real hit — you lose your Regen as HP, then deal
+    // double (triple upgraded) that much, after enchant multipliers
+    private int DamageFor(int regen) => ApplyEnchantDamage(regen * (IsUpgraded ? 3 : 2));
+
     protected override int? FormulaDamagePreview
     {
         get
         {
             if (Owner?.Creature is not { } c) return null;
             var regen = c.GetPowerAmount<RegenPower>();
-            if (regen <= 0) return null; // no Regen — nothing lost, nothing dealt
-            return ApplyEnchantDamage(regen * (IsUpgraded ? 3 : 2));
+            return regen > 0 ? DamageFor(regen) : null;
         }
     }
 
@@ -30,7 +33,7 @@ public class Haemorrhage : AlchemistCard
         if (lost > 0)
             await CreatureCmd.Damage(choiceContext, Owner.Creature,
                 lost, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
-        var damage = ApplyEnchantDamage(lost * (IsUpgraded ? 3 : 2));
+        var damage = DamageFor(lost);
         if (damage > 0)
             await DamageCmd.Attack(damage).FromCard(this, play)
                 .Targeting(play.Target!).Execute(choiceContext);

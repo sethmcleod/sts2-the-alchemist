@@ -1,9 +1,7 @@
-using Alchemist.AlchemistCode;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
@@ -16,7 +14,6 @@ public class Puncture : AlchemistCard
     {
         WithDamage(8, 2);
         WithPower<VulnerablePower>(1, 1);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

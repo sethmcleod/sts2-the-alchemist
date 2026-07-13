@@ -13,14 +13,22 @@ public class Ichor : AlchemistCard
         WithCostUpgradeBy(-1);
     }
 
-    protected override int? FormulaDamagePreview =>
-        Owner?.Creature is { } c && c.MaxHp - c.CurrentHp > 0
-            ? ApplyEnchantDamage(c.MaxHp - c.CurrentHp) : null;
+    // Deals damage equal to your missing HP (after enchant multipliers) — shared by preview and the real hit
+    private int Damage() => ApplyEnchantDamage(Owner.Creature.MaxHp - Owner.Creature.CurrentHp);
+
+    protected override int? FormulaDamagePreview
+    {
+        get
+        {
+            if (Owner?.Creature is null) return null;
+            var damage = Damage();
+            return damage > 0 ? damage : null;
+        }
+    }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var missingHp = Owner.Creature.MaxHp - Owner.Creature.CurrentHp;
-        var damage = ApplyEnchantDamage(missingHp);
+        var damage = Damage();
         if (damage > 0)
             await DamageCmd.Attack(damage).FromCard(this, play)
                 .Targeting(play.Target!).Execute(choiceContext);

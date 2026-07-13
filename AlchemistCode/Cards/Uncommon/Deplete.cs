@@ -1,10 +1,8 @@
-using Alchemist.AlchemistCode;
 using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
@@ -18,7 +16,6 @@ public class Deplete : AlchemistCard
         WithDamage(14, 4);
         WithTip(typeof(StrengthPower));
         WithTip(typeof(PoisonPower));
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Seep) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

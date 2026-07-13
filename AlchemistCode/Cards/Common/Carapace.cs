@@ -1,8 +1,6 @@
-using Alchemist.AlchemistCode;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
@@ -18,7 +16,6 @@ public class Carapace : AlchemistCard
                                   * ((AlchemistCard)card).FermentTurns),
             ValueProp.Move, 0, 0);
         WithKeyword(CardKeyword.Retain);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

@@ -1,9 +1,7 @@
-using Alchemist.AlchemistCode;
 using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Basic;
 
@@ -15,8 +13,7 @@ public class Prime : AlchemistCard
     {
         WithDamage(6, 2);
         WithBlock(4, 2);
-        WithTips(_ => Infusion.InfuseTips()
-            .Append(HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit)));
+        WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

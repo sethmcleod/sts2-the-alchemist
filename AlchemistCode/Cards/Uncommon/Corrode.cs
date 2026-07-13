@@ -1,9 +1,7 @@
-using Alchemist.AlchemistCode;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
@@ -17,10 +15,6 @@ public class Corrode : AlchemistCard
         WithPower<PoisonPower>(6, 1);
         WithPower<WeakPower>(1, 1);
         WithVar("SelfPoison", 2, 0);
-        WithTips(_ => new[]
-        {
-            HoverTipFactory.FromKeyword(AlchemistKeywords.Seep)
-        });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

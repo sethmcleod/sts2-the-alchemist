@@ -1,9 +1,7 @@
-using Alchemist.AlchemistCode;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
@@ -28,7 +26,6 @@ public class Steep : AlchemistCard
         WithVar("Bonus", 2, 0);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

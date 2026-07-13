@@ -8,15 +8,31 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards;
 
 [Pool(typeof(AlchemistCardPool))]
-public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, TargetType target) :
-    ConstructedCardModel(cost, type, rarity, target)
+public abstract class AlchemistCard : ConstructedCardModel
 {
+    protected AlchemistCard(int cost, CardType type, CardRarity rarity, TargetType target)
+        : base(cost, type, rarity, target)
+    {
+        // Keyword hover tips follow the Is*Card flags, so the flag stays the single source of truth. Added via
+        // BaseLib's WithTips: these sit ahead of a card's own dynamic tips in the stack (keyword tip rendered
+        // first), and the order below is the tie-break for a card with several (Gambit, then Ferment, then Seep)
+        WithTips(card => ((AlchemistCard)card).KeywordTips());
+    }
+
+    private IEnumerable<IHoverTip> KeywordTips()
+    {
+        if (IsGambitCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit);
+        if (IsFermentCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
+        if (IsSeepCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Seep);
+    }
+
     public override string CustomPortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigCardImagePath();
     public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
@@ -33,7 +49,10 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
     // holds, the same way Gambit cards glow while you're at low HP
     protected virtual bool ConditionalGlow => false;
 
-    protected override bool ShouldGlowGoldInternal => (IsGambitCard && IsReduced) || ConditionalGlow;
+    // IsMutable gate makes every glow canonical-safe: IsReduced/ConditionalGlow bodies read Owner, which
+    // throws on canonical models (compendium), so individual cards don't need their own guards
+    protected override bool ShouldGlowGoldInternal =>
+        IsMutable && ((IsGambitCard && IsReduced) || ConditionalGlow);
 
     // True when the owner's current HP sits within [lower, upper] as a fraction of Max HP
     internal bool HpFractionInRange(double lower, double upper)

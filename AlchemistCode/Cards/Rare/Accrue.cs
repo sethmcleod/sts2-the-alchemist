@@ -1,9 +1,7 @@
-using Alchemist.AlchemistCode;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
@@ -19,21 +17,12 @@ public class Accrue : AlchemistCard
     {
         WithDamage(6, 2);
         WithTip(typeof(RegenPower));
-        WithTips(_ => new[]
-        {
-            HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit),
-            HoverTipFactory.FromKeyword(AlchemistKeywords.Seep),
-        });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var hits = Hits + (IsReduced ? 1 : 0);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .WithHitCount(hits)
-            .FromCard(this, play)
-            .Targeting(play.Target!)
-            .Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, hits).Execute(choiceContext);
     }
 
     protected override async Task OnSeep(PlayerChoiceContext choiceContext)

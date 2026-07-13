@@ -18,9 +18,12 @@ public class Citrinitas : AlchemistCard
         WithUpgradingCardTip<Rubedo>();
     }
 
+    // Per-hit damage = your Regen (after enchant multipliers) — shared by preview and the real hit
+    private int DamageFor(int regen) => ApplyEnchantDamage(regen);
+
     protected override int? FormulaDamagePreview =>
         Owner?.Creature is { } c && c.GetPowerAmount<RegenPower>() is var r and > 0
-            ? ApplyEnchantDamage(r) : null;
+            ? DamageFor(r) : null;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
@@ -30,7 +33,7 @@ public class Citrinitas : AlchemistCard
         if (regenAmount > 0)
             await PowerCmd.Remove<RegenPower>(Owner.Creature);
 
-        var perHit = ApplyEnchantDamage(regenAmount);
+        var perHit = DamageFor(regenAmount);
         if (perHit > 0)
             await DamageCmd.Attack(perHit)
                 .WithHitCount(DynamicVars["Hits"].IntValue)

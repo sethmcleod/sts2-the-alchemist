@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdslkxd6dx4nd"
-path="res://.godot/imported/map_marker_char_name.png-c87cb624f1a8995431d47ce432f6e2ed.ctex"
+uid="uid://dawspbjmwm2ph"
+path="res://.godot/imported/map_marker_alchemist.png-1a95a79beb837c6d0ce74a563fefd1bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/charui/map_marker_char_name.png"
-dest_files=["res://.godot/imported/map_marker_char_name.png-c87cb624f1a8995431d47ce432f6e2ed.ctex"]
+source_file="res://Alchemist/images/charui/map_marker_alchemist.png"
+dest_files=["res://.godot/imported/map_marker_alchemist.png-1a95a79beb837c6d0ce74a563fefd1bc.ctex"]
 
 [params]
 

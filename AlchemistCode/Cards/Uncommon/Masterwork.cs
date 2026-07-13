@@ -19,7 +19,7 @@ public class Masterwork : AlchemistCard
     }
 
     protected override bool ConditionalGlow =>
-        Owner != null && Infusion.EnchantedThisCombatCount(Owner) >= EnchantThreshold;
+        Infusion.EnchantedThisCombatCount(Owner) >= EnchantThreshold;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
