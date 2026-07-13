@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Commands;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -12,6 +13,7 @@ public class Assimilate : AlchemistCard
     {
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
+        WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -21,9 +23,12 @@ public class Assimilate : AlchemistCard
             .Concat(CombatState.PlayerCreatures)
             .Where(c => c.IsAlive)
             .Sum(c => c.GetPowerAmount<PoisonPower>());
-        if (totalPoison <= 0) return;
-        var times = IsUpgraded ? 2 : 1;
-        for (var i = 0; i < times; i++)
-            await CreatureCmd.GainBlock(Owner.Creature, totalPoison, ValueProp.Move, play);
+        if (totalPoison > 0)
+        {
+            var times = IsUpgraded ? 2 : 1;
+            for (var i = 0; i < times; i++)
+                await CreatureCmd.GainBlock(Owner.Creature, totalPoison, ValueProp.Move, play);
+        }
+        await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 1);
     }
 }

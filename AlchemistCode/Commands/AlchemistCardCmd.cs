@@ -11,12 +11,18 @@ namespace Alchemist.AlchemistCode.Commands;
 
 public static class AlchemistCardCmd
 {
-    public static async Task GiveCard<T>(AlchemistCard source) where T : CardModel, new()
+    // forceUpgrade: null follows the source card's upgrade state; true/false pins the token's upgrade
+    public static async Task GiveCard<T>(AlchemistCard source, int count = 1, bool? forceUpgrade = null)
+        where T : CardModel, new()
     {
         if (source.CombatState == null) return;
-        var card = source.CombatState.CreateCard<T>(source.Owner);
-        if (source.IsUpgraded) CardCmd.Upgrade(card);
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, source.Owner);
+        var upgrade = forceUpgrade ?? source.IsUpgraded;
+        for (var i = 0; i < count; i++)
+        {
+            var card = source.CombatState.CreateCard<T>(source.Owner);
+            if (upgrade) CardCmd.Upgrade(card);
+            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, source.Owner);
+        }
     }
 
     public static async Task AddStatus<T>(AlchemistCard source) where T : CardModel, new()

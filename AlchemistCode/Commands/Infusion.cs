@@ -47,9 +47,14 @@ public static class Infusion
     // Infusions don't stack, so an already-enchanted or already-infused card is never offered or picked
     public static bool CanInfuse(CardModel card) => card.Enchantment == null && !Infused.Contains(card);
 
-    public static async Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count)
+    public static Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count) =>
+        InfuseChosen(ctx, source, pile, count, count);
+
+    // min/max lets the player choose how many to infuse — "up to N" (0..N) or "any number" (0..huge)
+    public static async Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile,
+        int min, int max)
     {
-        var prefs = new CardSelectorPrefs(SelectPrompt, count);
+        var prefs = new CardSelectorPrefs(SelectPrompt, min, max);
         var picks = (pile == PileType.Hand
             ? await CardSelectCmd.FromHand(ctx, source.Owner, prefs, CanInfuse, source)
             : await CardSelectCmd.FromCombatPile(ctx, pile.GetPile(source.Owner), source.Owner, prefs, CanInfuse))
@@ -61,29 +66,7 @@ public static class Infusion
             CardCmd.Preview(picks);
     }
 
-    public static void InfuseAllInHand(AlchemistCard source)
-    {
-        foreach (var card in PileType.Hand.GetPile(source.Owner).Cards
-                     .Where(c => c != source && CanInfuse(c)).ToList())
-            Infuse(card);
-    }
-
-    public static void InfuseRandomFromPile(Player owner, PileType pile, int count)
-    {
-        var rng = owner.RunState.Rng.CombatCardGeneration;
-        var cards = pile.GetPile(owner).Cards.Where(CanInfuse).ToList();
-        var infused = new List<CardModel>();
-        for (var i = 0; i < count && cards.Count > 0; i++)
-        {
-            var card = cards[rng.NextInt(cards.Count)];
-            cards.Remove(card);
-            Infuse(card);
-            infused.Add(card);
-        }
-        if (infused.Count > 0)
-            CardCmd.Preview(infused);
-    }
-
+    // Still used by Bestow to infuse a teammate's hand, which the caster can't see to target
     public static void InfuseRandomFromHand(Player owner, int count, CardModel? exclude = null)
     {
         var rng = owner.RunState.Rng.CombatCardGeneration;

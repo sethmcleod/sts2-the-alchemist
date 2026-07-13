@@ -8,7 +8,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Philtre : AlchemistCard
 {
-    public Philtre() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Philtre() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("amount", 2, 1);
         WithTip(typeof(StrengthPower));

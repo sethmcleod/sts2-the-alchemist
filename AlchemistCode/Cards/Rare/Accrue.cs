@@ -18,7 +18,7 @@ public class Accrue : AlchemistCard
     public Accrue() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
         WithDamage(6, 2);
-        WithTip(typeof(PoisonPower));
+        WithTip(typeof(RegenPower));
         WithTips(_ => new[]
         {
             HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit),
@@ -38,6 +38,6 @@ public class Accrue : AlchemistCard
 
     protected override async Task OnSeep(PlayerChoiceContext choiceContext)
     {
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this);
+        await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this);
     }
 }

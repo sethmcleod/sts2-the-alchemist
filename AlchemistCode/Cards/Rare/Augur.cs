@@ -1,30 +1,30 @@
-using Alchemist.AlchemistCode;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Augur : AlchemistCard
 {
-    protected override bool IsGambitCard => true;
-
     public Augur() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(7, 6, static (card, _) => ((AlchemistCard)card).IsReduced ? 1 : 0, ValueProp.Move, 3, 0);
+        WithDamage(7, 3);
         WithPower<WeakPower>(1, 1);
+        WithVar("Vuln", 1, 1);
         WithKeyword(CardKeyword.Innate);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
+        WithTip(typeof(VulnerablePower));
     }
+
+    protected override bool ConditionalGlow => IsEnchanted;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
         await CommonActions.Apply<WeakPower>(choiceContext, this, play);
-        if (!IsReduced)
-            await LoseHp(choiceContext, 3);
+        if (IsEnchanted)
+            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target!,
+                DynamicVars["Vuln"].IntValue, Owner.Creature, this);
     }
 }

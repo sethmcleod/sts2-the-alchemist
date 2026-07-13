@@ -19,6 +19,6 @@ public class Aureate : AlchemistCard
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, play)
             .TargetingAllOpponents(CombatState!).Execute(choiceContext);
-        Infusion.InfuseAllInHand(this);
+        await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 0, 999999999);
     }
 }

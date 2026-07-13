@@ -13,6 +13,7 @@ public class Yield : AlchemistCard
 
     public Yield() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
+        WithVar("Extra", 1, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
     }
@@ -21,7 +22,8 @@ public class Yield : AlchemistCard
     {
         await Procure();
         if (IsReduced)
-            await Procure();
+            for (var i = 0; i < DynamicVars["Extra"].IntValue; i++)
+                await Procure();
     }
 
     private Task Procure() =>

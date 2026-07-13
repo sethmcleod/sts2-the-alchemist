@@ -3,8 +3,8 @@ using Alchemist.AlchemistCode.Cards.Uncommon;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-public class MetabolizeStrengthPower : CustomTemporaryStrengthPower
+public class SurgeStrengthPower : CustomTemporaryStrengthPower
 {
-    public override AbstractModel OriginModel => ModelDb.Card<Metabolize>();
+    public override AbstractModel OriginModel => ModelDb.Card<Surge>();
     protected override bool IsPositive => true;
 }

@@ -11,17 +11,17 @@ public class Transpose : AlchemistCard
     public Transpose() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("block", 2, 1);
-        WithTip(typeof(RegenPower));
+        WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Gain 1 Regen first so the card always converts at least one
-        await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
-        var regen = Owner.Creature.GetPowerAmount<RegenPower>();
-        if (Owner.Creature.HasPower<RegenPower>())
-            await PowerCmd.Remove<RegenPower>(Owner.Creature);
-        if (regen <= 0) return;
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["block"].BaseValue * regen, ValueProp.Move, play);
+        // Gain 1 Poison first so the card always converts at least one
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+        var poison = Owner.Creature.GetPowerAmount<PoisonPower>();
+        if (Owner.Creature.HasPower<PoisonPower>())
+            await PowerCmd.Remove<PoisonPower>(Owner.Creature);
+        if (poison <= 0) return;
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["block"].BaseValue * poison, ValueProp.Move, play);
     }
 }

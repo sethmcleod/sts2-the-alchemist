@@ -7,11 +7,11 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-public class Tithe : AlchemistCard
+public class Metabolism : AlchemistCard
 {
     protected override bool IsGambitCard => true;
 
-    public Tithe() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Metabolism() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithEnergy(1, 1);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit) });
@@ -19,7 +19,7 @@ public class Tithe : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<TithePower>(choiceContext, Owner.Creature,
+        await PowerCmd.Apply<MetabolismPower>(choiceContext, Owner.Creature,
             DynamicVars.Energy.BaseValue, Owner.Creature, this);
         if (IsReduced)
             await CreatureCmd.Heal(Owner.Creature, 3);

@@ -1,5 +1,5 @@
-using Alchemist.AlchemistCode.Commands;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -22,16 +22,16 @@ public class ImbuePower : AlchemistPower
         return Task.CompletedTask;
     }
 
-    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (!_triggeredThisTurn && power is PoisonPower && applier == Owner && amount > 0
-            && Owner.Player is { } player)
+        // First Poison you apply each turn: stack Amount more onto that same target. The guard is set before
+        // applying, so the recursive AfterPowerAmountChanged from the extra Poison is ignored
+        if (!_triggeredThisTurn && power is PoisonPower && applier == Owner && amount > 0)
         {
             _triggeredThisTurn = true;
             Flash();
-            Infusion.InfuseRandomFromHand(player, Amount);
+            await PowerCmd.Apply<PoisonPower>(choiceContext, power.Owner, Amount, Owner, null);
         }
-        return Task.CompletedTask;
     }
 }

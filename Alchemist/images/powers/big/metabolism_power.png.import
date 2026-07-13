@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diwasj60yek4h"
-path="res://.godot/imported/tithe_power.png-b323f856690a846ba4d2b58498115669.ctex"
+uid="uid://dd5a2pi8tqn84"
+path="res://.godot/imported/metabolism_power.png-ba5eb711b5e7337a5dc1200aa8850b1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/tithe_power.png"
-dest_files=["res://.godot/imported/tithe_power.png-b323f856690a846ba4d2b58498115669.ctex"]
+source_file="res://Alchemist/images/powers/big/metabolism_power.png"
+dest_files=["res://.godot/imported/metabolism_power.png-ba5eb711b5e7337a5dc1200aa8850b1e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t84y8m4jbopu"
-path="res://.godot/imported/metabolize_strength_power.png-d0bbe1bc014568fab0cbd56a405f1d3b.ctex"
+uid="uid://bprvdm7ciapop"
+path="res://.godot/imported/metabolism.png-66dc6567a26f36fdde8252831905ca6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/metabolize_strength_power.png"
-dest_files=["res://.godot/imported/metabolize_strength_power.png-d0bbe1bc014568fab0cbd56a405f1d3b.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/metabolism.png"
+dest_files=["res://.godot/imported/metabolism.png-66dc6567a26f36fdde8252831905ca6b.ctex"]
 
 [params]
 

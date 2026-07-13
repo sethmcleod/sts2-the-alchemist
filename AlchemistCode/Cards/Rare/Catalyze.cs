@@ -4,19 +4,20 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace Alchemist.AlchemistCode.Cards.Uncommon;
+namespace Alchemist.AlchemistCode.Cards.Rare;
 
-public class Imbue : AlchemistCard
+public class Catalyze : AlchemistCard
 {
-    public Imbue() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Catalyze() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithVar("Amount", 2, 1);
-        WithTip(typeof(PoisonPower));
+        WithCostUpgradeBy(-1);
+        WithTip(typeof(RegenPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<ImbuePower>(choiceContext, Owner.Creature,
+        await PowerCmd.Apply<CatalyzePower>(choiceContext, Owner.Creature,
             DynamicVars["Amount"].IntValue, Owner.Creature, this);
     }
 }

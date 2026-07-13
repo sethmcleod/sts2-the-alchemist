@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5vaembqpm1bg"
-path="res://.godot/imported/metabolize_strength_power.png-9be7f20b97ad079d70992db0c7f941c3.ctex"
+uid="uid://2brh13noefaf"
+path="res://.godot/imported/double_dose.png-7c4c4b3e069cc4b9c09af65fef9c088a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/metabolize_strength_power.png"
-dest_files=["res://.godot/imported/metabolize_strength_power.png-9be7f20b97ad079d70992db0c7f941c3.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/double_dose.png"
+dest_files=["res://.godot/imported/double_dose.png-7c4c4b3e069cc4b9c09af65fef9c088a.ctex"]
 
 [params]
 

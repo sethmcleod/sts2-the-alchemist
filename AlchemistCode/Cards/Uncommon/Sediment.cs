@@ -12,11 +12,16 @@ public class Sediment : AlchemistCard
     {
         WithVar("Block", 2, 1);
         WithTip(typeof(PoisonPower));
+        WithTip(typeof(PlatingPower));
     }
+
+    protected override bool ConditionalGlow => IsEnchanted;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<SedimentPower>(choiceContext, Owner.Creature,
             DynamicVars["Block"].IntValue, Owner.Creature, this);
+        if (IsEnchanted)
+            await PowerCmd.Apply<PlatingPower>(choiceContext, Owner.Creature, 3, Owner.Creature, this);
     }
 }

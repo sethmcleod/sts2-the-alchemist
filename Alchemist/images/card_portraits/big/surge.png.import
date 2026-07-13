@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sk076v3xyqtj"
-path="res://.godot/imported/catalyse_power.png-caced189a9ef110a67c0ebeaca93a718.ctex"
+uid="uid://cs65d4j66bo37"
+path="res://.godot/imported/surge.png-21f10d4e454567455c9bbbe842a62935.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/catalyse_power.png"
-dest_files=["res://.godot/imported/catalyse_power.png-caced189a9ef110a67c0ebeaca93a718.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/surge.png"
+dest_files=["res://.godot/imported/surge.png-21f10d4e454567455c9bbbe842a62935.ctex"]
 
 [params]
 

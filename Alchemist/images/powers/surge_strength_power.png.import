@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd5a2pi8tqn84"
-path="res://.godot/imported/tithe_power.png-6d146474d39d5db776c0f298a287b043.ctex"
+uid="uid://b5vaembqpm1bg"
+path="res://.godot/imported/surge_strength_power.png-54a6fadac8737dff5c9f07f16657e404.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/tithe_power.png"
-dest_files=["res://.godot/imported/tithe_power.png-6d146474d39d5db776c0f298a287b043.ctex"]
+source_file="res://Alchemist/images/powers/surge_strength_power.png"
+dest_files=["res://.godot/imported/surge_strength_power.png-54a6fadac8737dff5c9f07f16657e404.ctex"]
 
 [params]
 

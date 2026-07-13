@@ -9,7 +9,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Masterwork : AlchemistCard
 {
-    private const int EnchantThreshold = 5;
+    private const int EnchantThreshold = 7;
 
     public Masterwork() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {

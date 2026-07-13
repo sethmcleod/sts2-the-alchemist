@@ -11,7 +11,7 @@ public class Synthesis : AlchemistCard
 {
     public Synthesis() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(7, 2, static (card, _) =>
+        WithCalculatedDamage(7, 3, static (card, _) =>
             PileType.Hand.GetPile(((AlchemistCard)card).Owner).Cards.Count(c => c.Enchantment != null),
             ValueProp.Move, 3, 0);
     }

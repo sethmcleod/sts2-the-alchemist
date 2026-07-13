@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bprvdm7ciapop"
-path="res://.godot/imported/tithe.png-d44aa2c27634576a73d14722173354c6.ctex"
+uid="uid://t84y8m4jbopu"
+path="res://.godot/imported/surge_strength_power.png-3c1ffc83e0a62c41869b59b2a42699d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/tithe.png"
-dest_files=["res://.godot/imported/tithe.png-d44aa2c27634576a73d14722173354c6.ctex"]
+source_file="res://Alchemist/images/powers/big/surge_strength_power.png"
+dest_files=["res://.godot/imported/surge_strength_power.png-3c1ffc83e0a62c41869b59b2a42699d4.ctex"]
 
 [params]
 

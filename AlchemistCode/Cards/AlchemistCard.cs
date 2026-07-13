@@ -24,6 +24,9 @@ public abstract class AlchemistCard(int cost, CardType type, CardRarity rarity, 
     // Internal so the static calc-damage lambdas can read it off the card arg (they must capture no instance state)
     internal bool IsReduced => Owner?.Creature is { } c && c.CurrentHp * 2 <= c.MaxHp;
 
+    // True when this card currently carries an enchantment (was Infused this combat). Safe on canonical models
+    internal bool IsEnchanted => Enchantment != null;
+
     protected virtual bool IsGambitCard => false;
 
     // Cards with a play-time conditional bonus override this to glow gold while that condition currently

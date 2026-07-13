@@ -12,7 +12,7 @@ public class Fumigate : AlchemistCard
 {
     public Fumigate() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
-        WithCalculatedDamage(1, 2, static (card, _) =>
+        WithCalculatedDamage(1, 1, static (card, _) =>
             PileType.Exhaust.GetPile(((AlchemistCard)card).Owner).Cards.Count, ValueProp.Move, 0, 0);
         WithPower<PoisonPower>(3, -1);
         WithTip(typeof(PoisonPower));

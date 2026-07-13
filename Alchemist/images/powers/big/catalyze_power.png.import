@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs65d4j66bo37"
-path="res://.godot/imported/metabolize.png-d2aed58de33e32502cac43df41b13f65.ctex"
+uid="uid://cqe2lo2eccllo"
+path="res://.godot/imported/catalyze_power.png-6eaf3313a67f947ff1d63c7182bae79d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/metabolize.png"
-dest_files=["res://.godot/imported/metabolize.png-d2aed58de33e32502cac43df41b13f65.ctex"]
+source_file="res://Alchemist/images/powers/big/catalyze_power.png"
+dest_files=["res://.godot/imported/catalyze_power.png-6eaf3313a67f947ff1d63c7182bae79d.ctex"]
 
 [params]
 

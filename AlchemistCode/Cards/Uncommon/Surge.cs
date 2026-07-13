@@ -11,11 +11,11 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-public class Metabolize : AlchemistCard
+public class Surge : AlchemistCard
 {
     protected override bool IsGambitCard => true;
 
-    public Metabolize() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Surge() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
@@ -27,7 +27,7 @@ public class Metabolize : AlchemistCard
     {
         var poison = Owner.Creature.GetPowerAmount<PoisonPower>();
         if (poison > 0)
-            await PowerCmd.Apply<MetabolizeStrengthPower>(choiceContext, Owner.Creature, poison, Owner.Creature, this);
+            await PowerCmd.Apply<SurgeStrengthPower>(choiceContext, Owner.Creature, poison, Owner.Creature, this);
 
         if (IsReduced)
         {

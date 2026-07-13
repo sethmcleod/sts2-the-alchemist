@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2brh13noefaf"
-path="res://.godot/imported/vent.png-2f8614476944560d1fe45510f6c84ace.ctex"
+uid="uid://bmva8qxdipogy"
+path="res://.godot/imported/catalyze.png-8b6cf493a0f198b57fbeb50c87a78497.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/vent.png"
-dest_files=["res://.godot/imported/vent.png-2f8614476944560d1fe45510f6c84ace.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/catalyze.png"
+dest_files=["res://.godot/imported/catalyze.png-8b6cf493a0f198b57fbeb50c87a78497.ctex"]
 
 [params]
 
