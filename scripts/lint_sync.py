@@ -71,16 +71,24 @@ BUILDER = re.compile(
 
 
 def parse_builders(text: str) -> list[tuple[int, int]]:
-    """Literal (base, delta) builder pairs — skips cards that compute values."""
+    """Literal (base, delta) builder pairs — skips cards that compute values.
+
+    A base of 0 is a dynamic placeholder, not a literal amount: the shown value
+    comes from a dynamic var or runtime computation (e.g. Albedo's "that much
+    Regen", where WithPower<RegenPower>(0, 1) only declares the +1 upgrade tip).
+    The csv renders those as "(+ N)", not a literal "0 (N)" pair, so skip them.
+    """
     if "WithCalculated" in text:
         return []  # formula damage/block: csv shows a live number, not base(+delta)
     pairs = []
     for m in re.finditer(r"With(?:Damage|Block|Energy|Cards|Power<\w+>)\((\d+)\s*,\s*(-?\d+)\)", text):
         base, delta = int(m.group(1)), int(m.group(2))
-        pairs.append((base, base + delta))
+        if base != 0:
+            pairs.append((base, base + delta))
     for m in re.finditer(r"WithVar\(\s*\"[^\"]+\"\s*,\s*(\d+)\s*,\s*(-?\d+)\)", text):
         base, delta = int(m.group(1)), int(m.group(2))
-        pairs.append((base, base + delta))
+        if base != 0:
+            pairs.append((base, base + delta))
     return pairs
 
 
