@@ -13,7 +13,7 @@ public class CatalyzePower : AlchemistPower
     public override PowerStackType StackType => PowerStackType.Counter;
 
     // Gate to the owner's turn — AfterCurrentHpChanged also fires on enemy turns
-    private bool _ownerTurn;
+    private bool _ownerTurn = true;
     private bool _triggeredThisTurn;
 
     public override Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants,

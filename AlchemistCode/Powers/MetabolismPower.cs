@@ -12,7 +12,7 @@ public class MetabolismPower : AlchemistPower
     public override PowerStackType StackType => PowerStackType.Single;
 
     // Gate to the owner's turn — energy gained on an enemy turn would be wiped by the turn-start refresh
-    private bool _ownerTurn;
+    private bool _ownerTurn = true;
     private bool _triggeredThisTurn;
 
     public override Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants,
