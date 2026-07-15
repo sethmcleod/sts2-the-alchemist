@@ -35,8 +35,12 @@ re-run that group.
 
 Prerequisites: game installed, `mcptest` + `godotexplorer` bridge mods current
 (`scripts/dev.sh bridge` — the compendium group needs a bridge built from a checkout
-that has the `get_compendium` RPC), Alchemist mod published, Python ≥ 3.10. The game
-boots into the **last-used save profile** — keep that a spare profile; runs are
+that has the `get_compendium` RPC), Alchemist mod published, and Python ≥ 3.10. The
+suite pulls in no third-party packages (it drives the bridge over TCP with the stdlib),
+so any 3.10+ interpreter works. The easiest way to get one — and what the sts2-modding-mcp
+toolkit uses — is [uv](https://astral.sh/uv): install it and `scripts/dev.sh` provisions
+Python for you automatically (it still prefers a system `python3` if one's already on PATH).
+The game boots into the **last-used save profile** — keep that a spare profile; runs are
 started/abandoned constantly and the settings tests exercise unlock/relock state.
 
 ## Groups

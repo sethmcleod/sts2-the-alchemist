@@ -59,17 +59,25 @@ fi
 GODOT="${GODOT:-/Applications/MegaDot.app/Contents/MacOS/Godot}"
 PCK="$GAME_MODS/Alchemist/Alchemist.pck"
 
-# The test engine (sts2mcp) needs Python >= 3.10; pick the newest available.
+# The test engine (sts2mcp) needs Python >= 3.10. Prefer a system python if one's already on PATH;
+# otherwise fall back to uv, which provisions a suitable Python for you (recommended — see BUILD.md).
+# PY_CMD is the interpreter invocation as an array, since the uv form is multi-word.
+PY_CMD=()
 find_python() {
   local p
   for p in python3.13 python3.12 python3.11 python3.10 python3; do
     if command -v "$p" >/dev/null && "$p" -c 'import sys; sys.exit(0 if sys.version_info >= (3,10) else 1)' 2>/dev/null; then
-      echo "$p"; return 0
+      PY_CMD=("$p"); return 0
     fi
   done
+  if command -v uv >/dev/null 2>&1; then
+    PY_CMD=(uv run --no-project --python 3.12 python); return 0
+  fi
   return 1
 }
-PY="$(find_python || true)"
+find_python || true
+have_py() { [ "${#PY_CMD[@]}" -gt 0 ]; }
+no_py_msg="no Python >= 3.10 found — install uv (https://astral.sh/uv) and it'll provision one, or install Python directly"
 
 step() { printf '\n\033[1;36m▶ %s\033[0m\n' "$*"; }
 ok()   { printf '\033[32m✓\033[0m %s\n' "$*"; }
@@ -109,20 +117,20 @@ do_bridge() {
 
 do_test() {
   step "regression suite"
-  [ -n "$PY" ] || { bad "no Python >= 3.10 found — install one (e.g. brew install python@3.12)"; exit 1; }
-  PYTHONPATH="$STS2_MCP_DIR" STS2_MCP_DIR="$STS2_MCP_DIR" "$PY" "$REPO/scripts/tests/run_suite.py" "$@"
+  have_py || { bad "$no_py_msg"; exit 1; }
+  PYTHONPATH="$STS2_MCP_DIR" STS2_MCP_DIR="$STS2_MCP_DIR" "${PY_CMD[@]}" "$REPO/scripts/tests/run_suite.py" "$@"
 }
 
 do_game() {  # start|stop|restart
-  [ -n "$PY" ] || { bad "no Python >= 3.10 found — install one (e.g. brew install python@3.12)"; exit 1; }
-  PYTHONPATH="$STS2_MCP_DIR" STS2_MCP_DIR="$STS2_MCP_DIR" "$PY" "$REPO/scripts/tests/run_suite.py" --game "$1"
+  have_py || { bad "$no_py_msg"; exit 1; }
+  PYTHONPATH="$STS2_MCP_DIR" STS2_MCP_DIR="$STS2_MCP_DIR" "${PY_CMD[@]}" "$REPO/scripts/tests/run_suite.py" --game "$1"
 }
 
 do_doctor() {
   step "doctor"
   local fail=0
   if command -v dotnet >/dev/null;   then ok "dotnet $(dotnet --version 2>/dev/null)"; else bad "dotnet not found — install the .NET 9 SDK (https://dotnet.microsoft.com)"; fail=1; fi
-  if [ -n "$PY" ];                   then ok "python $("$PY" --version 2>&1 | cut -d' ' -f2) ($PY)"; else bad "no Python >= 3.10 — needed for scripts/dev.sh test (e.g. brew install python@3.12)"; fail=1; fi
+  if have_py;                        then ok "python $("${PY_CMD[@]}" --version 2>&1 | cut -d' ' -f2) (${PY_CMD[*]})"; else bad "no Python >= 3.10 — needed for scripts/dev.sh test; install uv (https://astral.sh/uv) to provision one, or install Python directly"; fail=1; fi
   if [ -x "$GODOT" ];                then ok "MegaDot at $GODOT"; else bad "MegaDot not found at $GODOT — install it or set GODOT=/path/to/Godot (see BUILD.md)"; fail=1; fi
   if [ -d "$STS2_GAME_DIR" ];        then ok "game at $STS2_GAME_DIR"; else bad "game not found at $STS2_GAME_DIR — install via Steam or set STS2_GAME_DIR"; fail=1; fi
   if pgrep -x steam_osx >/dev/null 2>&1 || pgrep -x steam >/dev/null 2>&1; then ok "Steam client running"; else bad "Steam client not running — needed to launch the game (game-start/test)"; fi
@@ -146,8 +154,8 @@ case "${1:-help}" in
   game-start)    do_game start ;;
   game-stop)     do_game stop ;;
   game-restart)  do_game restart ;;
-  lint)          [ -n "$PY" ] || { bad "no Python >= 3.10 found"; exit 1; }
-                 "$PY" "$REPO/scripts/lint_sync.py" ;;
+  lint)          have_py || { bad "$no_py_msg"; exit 1; }
+                 "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py" ;;
   doctor)        do_doctor ;;
   env)
     echo "REPO          = $REPO"
