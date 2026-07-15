@@ -11,7 +11,8 @@ public class Metabolism : AlchemistCard
 
     public Metabolism() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithEnergy(1, 1);
+        WithEnergy(1, 0);
+        WithVar("heal", 3, 3);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -19,6 +20,6 @@ public class Metabolism : AlchemistCard
         await PowerCmd.Apply<MetabolismPower>(choiceContext, Owner.Creature,
             DynamicVars.Energy.BaseValue, Owner.Creature, this);
         if (IsReduced)
-            await CreatureCmd.Heal(Owner.Creature, 3);
+            await CreatureCmd.Heal(Owner.Creature, DynamicVars["heal"].IntValue);
     }
 }

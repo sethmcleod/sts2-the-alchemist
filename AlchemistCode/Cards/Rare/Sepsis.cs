@@ -1,3 +1,4 @@
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,12 +12,12 @@ public class Sepsis : AlchemistCard
     public Sepsis() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithVar("percent", 50, 0);
-        WithCostUpgradeBy(-1);
-        WithTip(typeof(PoisonPower));
+        WithPower<PoisonPower>(3, -1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);
         await PowerCmd.Apply<SepsisPower>(choiceContext, Owner.Creature,
             DynamicVars["percent"].IntValue, Owner.Creature, this);
     }

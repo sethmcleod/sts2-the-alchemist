@@ -46,7 +46,7 @@ Enrich,Uncommon,Skill,1,Draw 1 (2) cards. Infuse up to 2 cards in your Draw Pile
 Precipitate,Uncommon,Skill,2,"Gain 5 (6) Block twice. The next time you use a potion this turn, procure another of that type."
 Corrode,Uncommon,Skill,2,Apply 6 (7) Poison and 1 (2) Weak to ALL enemies. Seep: Gain 2 Poison.
 Masterwork,Uncommon,Skill,1,"Infuse a card in your Hand. If you have Enchanted 7 or more cards this combat, gain 1 (2) Energy, draw 1 (2) cards, and Exhaust this card."
-Metabolism,Uncommon,Power,1,"The first time you lose HP each turn, gain 1 (2) Energy. Gambit: Heal 3 HP."
+Metabolism,Uncommon,Power,1,"The first time you lose HP each turn, gain 1 Energy. Gambit: Heal 3 (6) HP."
 Virulence,Uncommon,Power,1,"Whenever you apply Poison, apply an additional 1 (2) Poison."
 Imbue,Uncommon,Power,1,"The first time you apply Poison each turn, apply 2 (3) additional Poison."
 Refresh,Uncommon,Skill,1,"Lose all Regen, then draw that many cards. Gain 2 (3) Regen."
@@ -69,10 +69,10 @@ Decoction,Rare,Skill,1 (0),Exhaust 1 card. Procure a random potion. Seep: Gain 2
 Exude,Rare,Skill,1,Gain 2 (3) Poison. Lose all Poison. Apply that much Poison to ALL enemies.
 Epiphany,Rare,Skill,1,Draw 2 (3) cards. Transform a card in your Hand into a Distillate (+).
 Sublimate,Rare,Skill,2,Transform any number of cards in your Hand into Distillates (+). Exhaust.
-Emergence,Rare,Skill,0,Lose 6 HP. Gain 2 Energy. Draw 2 (3) cards. Exhaust.
+Emergence,Rare,Skill,0,Lose 6 HP. Gain 2 Energy. Draw 1 (2) cards. Exhaust.
 Amplification,Rare,Skill,2,Double (Triple) the Poison and Regen on ALL enemies and yourself. Gambit: Heal 2 HP. Exhaust.
 Transmutation,Rare,Power,1,Enchanted cards cost 1 less. (Infuse a card in your Hand.)
-Sepsis,Rare,Power,2 (1),Poisoned enemies take an additional 50% damage from Attacks.
+Sepsis,Rare,Power,2,Gain 3 (2) Poison. Poisoned enemies take an additional 50% damage from Attacks.
 Secretion,Rare,Power,1,"Whenever you take unblocked Attack damage, apply 1 (2) Poison to the attacker."
 Accretion,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Gambit: Gain 1 additional Regen."
 Homeostasis,Rare,Power,2 (1),"At the start of your turn, if your HP is below 50% of your Max HP, draw 1 card and gain 1 Energy."
