@@ -28,7 +28,10 @@ public static class Infusion
         _ => null,
     };
 
-    private static readonly LocString SelectPrompt = new("card_keywords", "ALCHEMIST-INFUSE.selectionPrompt");
+    // Exact-count prompt ("Choose a card"/"Choose 2 cards"); the range prompt ("Choose up to N cards") is used
+    // when the player may pick fewer than the max. CardSelectorPrefs injects {Amount}/{MinCount}/{MaxCount}.
+    private static LocString SelectPrompt => new("card_keywords", "ALCHEMIST-INFUSE.selectionPrompt");
+    private static LocString SelectPromptRange => new("card_keywords", "ALCHEMIST-INFUSE.selectionPromptRange");
 
     private static readonly HashSet<CardModel> Infused = new();
 
@@ -68,7 +71,8 @@ public static class Infusion
     public static async Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile,
         int min, int max)
     {
-        var prefs = new CardSelectorPrefs(SelectPrompt, min, max);
+        var prompt = min == max ? SelectPrompt : SelectPromptRange;
+        var prefs = new CardSelectorPrefs(prompt, min, max);
         var picks = (pile == PileType.Hand
             ? await CardSelectCmd.FromHand(ctx, source.Owner, prefs, CanInfuse, source)
             : await CardSelectCmd.FromCombatPile(ctx, pile.GetPile(source.Owner), source.Owner, prefs, CanInfuse))

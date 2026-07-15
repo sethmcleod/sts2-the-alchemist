@@ -18,8 +18,6 @@ public class Refine : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.Draw(this, choiceContext);
-        await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 1);
-        if (IsEnchanted)
-            await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 1);
+        await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, IsEnchanted ? 2 : 1);
     }
 }

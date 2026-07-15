@@ -133,7 +133,7 @@
   "ALCHEMIST-REACTION.title": "Reaction",
   "ALCHEMIST-RECONSTITUTE.description": "Gain {PoisonPower:diff()} [gold]Poison[/gold].\nPut a card from your [gold]Discard Pile[/gold] into your [gold]Hand[/gold].",
   "ALCHEMIST-RECONSTITUTE.title": "Reconstitute",
-  "ALCHEMIST-REFINE.description": "Draw {Cards:diff()} {Cards:plural:card|cards}.\n[gold]Infuse[/gold] a card in your [gold]Hand[/gold].\nIf this card is [gold]Enchanted[/gold], [gold]Infuse[/gold] a card in your [gold]Hand[/gold].",
+  "ALCHEMIST-REFINE.description": "Draw {Cards:diff()} {Cards:plural:card|cards}.\n[gold]Infuse[/gold] a card in your [gold]Hand[/gold].\nIf this card is [gold]Enchanted[/gold], [gold]Infuse[/gold] 2 cards instead.",
   "ALCHEMIST-REFINE.title": "Refine",
   "ALCHEMIST-REFLUX.description": "Whenever another player applies a debuff this turn, apply {poison:diff()} [gold]Poison[/gold] to that enemy.",
   "ALCHEMIST-REFLUX.title": "Reflux",
