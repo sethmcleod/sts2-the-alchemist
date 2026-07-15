@@ -40,8 +40,11 @@ suite pulls in no third-party packages (it drives the bridge over TCP with the s
 so any 3.10+ interpreter works. The easiest way to get one — and what the sts2-modding-mcp
 toolkit uses — is [uv](https://astral.sh/uv): install it and `scripts/dev.sh` provisions
 Python for you automatically (it still prefers a system `python3` if one's already on PATH).
-The game boots into the **last-used save profile** — keep that a spare profile; runs are
-started/abandoned constantly and the settings tests exercise unlock/relock state.
+
+> [!CAUTION]
+> The game boots into the **last-used save profile** — keep that a spare profile. The
+> suite starts/abandons runs constantly and the settings tests exercise unlock/relock
+> state, so pointing it at a save you care about will churn its progression.
 
 ## Groups
 

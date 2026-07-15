@@ -1,7 +1,10 @@
 # Troubleshooting
 
-Known gotchas, each paid for the hard way. Run `scripts/dev.sh doctor` first — it
-catches the boring environment problems (missing SDK, missing mods, game not running).
+Known gotchas, each paid for the hard way.
+
+> [!TIP]
+> Run `scripts/dev.sh doctor` first — it catches the boring environment problems (missing
+> SDK, missing mods, game not running) before you go hunting for anything below.
 
 ## Build & publish
 

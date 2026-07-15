@@ -4,9 +4,10 @@ A complete walkthrough of adding one card to the Alchemist — no prior C# exper
 assumed. We'll dissect a real card that already ships ([Tinge](../AlchemistCode/Cards/Common/Tinge.cs)),
 then every step generalizes to your own card.
 
-The one rule that governs everything: **a card lives in three places that must stay in
-sync** — the code, the localization text, and `cards.csv`. Touch one, touch all
-(see [CONTRIBUTING.md](../CONTRIBUTING.md)).
+> [!IMPORTANT]
+> The one rule that governs everything: **a card lives in three places that must stay in
+> sync** — the code, the localization text, and `cards.csv`. Touch one, touch all
+> (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ## 0. Names drive everything
 
@@ -113,7 +114,9 @@ Launch the game, start an Alchemist run, open the dev console and spawn it:
 card ALCHEMIST-TINGE
 ```
 
-(Full model ID, not the display name — bare names silently do nothing.)
+> [!NOTE]
+> Use the full model ID, not the display name — bare names like `card Tinge` silently do
+> nothing (the console reports success either way).
 
 ## 6. Lock it in with a test
 
@@ -126,8 +129,9 @@ and the Seep regen directly — see the README there for what's assertable and t
 scripts/dev.sh test tinge
 ```
 
-A card that changes numbers later without its test changing is how regressions ship —
-this is the cheapest insurance in the repo.
+> [!TIP]
+> A card that changes numbers later without its test changing is how regressions ship —
+> this scenario is the cheapest insurance in the repo.
 
 ## Going deeper
 

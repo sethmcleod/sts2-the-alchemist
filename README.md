@@ -5,28 +5,24 @@
 
 ## Overview
 
-The Alchemist is a custom character built around a high-risk, high-reward
-gameplay loop and three overlapping archetypes: the **Transmuter**, the
-**Distiller**, and the **Apothecary**. The class as a whole is defined by
-deliberately running its own health low to unlock its most powerful effects,
-then converting that danger back into survival — a constant balancing act
-between poisoning yourself and healing yourself.
+The Alchemist is a high-risk, high-reward character defined by one loop:
+deliberately run your own health low to unlock your strongest effects, then
+convert that danger back into survival. A constant balance between poisoning
+yourself and healing yourself.
 
-**The Transmuter** is the heart of the class, turning self-inflicted Poison into
-fuel: apply Poison to yourself as readily as to enemies, convert it into Regen,
-and spend that Regen again on damage, Block, and Strength. When your health is
-at or below half, your Gambit cards get an extra effect — this archetype thrives
-one bad decision from disaster.
+Three overlapping archetypes give the class its shape:
 
-**The Distiller** is the patience archetype, built on the tension between
-holding cards and dumping them: Ferment cards grow stronger every turn they stay
-in your hand, while Seep cards pressure you to commit now or pay a price.
-Your hand itself becomes a resource managed over time.
-
-**The Apothecary** is the engine-builder, emphasizing Infusion, tokens, and the
-potion economy: enhance the cards you already love mid-combat, refine your hand
-into Distillates, and keep a full potion belt that several cards convert
-directly into damage, Block, and tempo.
+* **The Transmuter** — *turn self-inflicted Poison into fuel.* Poison yourself
+  as readily as your enemies, convert it into Regen, then spend that Regen on
+  damage, Block, and Strength. At or below half health, your Gambit cards gain an
+  extra effect — the archetype that thrives one bad decision from disaster.
+* **The Distiller** — *make your hand a resource managed over time.* Ferment
+  cards grow stronger every turn you hold them; Seep cards punish you for waiting.
+  Patience versus commitment, weighed every turn.
+* **The Apothecary** — *build an engine from cards and potions.* Infuse the cards
+  you already love to enchant them mid-combat, refine your hand into Distillates,
+  and keep a full potion belt that several cards cash straight into damage, Block,
+  and tempo.
 
 ## Content
 
@@ -73,9 +69,13 @@ and animated in the style of the base game.
 
 ### Play it
 
-Until packaged releases are available, playing means building from source (below) —
-`scripts/dev.sh publish` installs the mod straight into your game. Requires Slay the
-Spire 2 (Steam) and the prerequisites in [BUILD.md](BUILD.md).
+> [!NOTE]
+> No packaged release yet — playing means building from source (below).
+> `scripts/dev.sh publish` installs the mod straight into your game.
+> I intend to publish this to Steam Workshop once the initial character art is
+> ready.
+
+Requires Slay the Spire 2 (Steam) and the prerequisites in [BUILD.md](BUILD.md).
 
 ### Develop
 
@@ -88,10 +88,12 @@ scripts/dev.sh publish    # build the mod into the game
 scripts/dev.sh test       # regression suite against the live game
 ```
 
-`scripts/dev.sh doctor` diagnoses the environment at any point. Everything works with
-plain shell + Python — **no AI tooling required** — but the repo is also set up for
-agent-assisted development ([CLAUDE.md](CLAUDE.md)): even without C# experience you can
-point Claude Code (or similar) at this repo to modify and test the mod.
+`scripts/dev.sh doctor` diagnoses the environment at any point.
+
+> [!TIP]
+> Everything works with plain shell + Python — **no AI tooling required**. But the repo
+> is also set up for agent-assisted development ([CLAUDE.md](CLAUDE.md)): even without C#
+> experience, you can point Claude Code (or similar) at this repo to modify and test the mod.
 
 ### Where things are
 

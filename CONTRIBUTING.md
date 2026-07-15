@@ -3,7 +3,13 @@
 Thanks for helping brew! Setup and build commands live in [BUILD.md](BUILD.md).
 
 ## The three-way update rule
-A card is defined in three places that must stay in sync — PRs that touch one must touch all:
+
+> [!IMPORTANT]
+> A card is defined in three places that must stay in sync — a PR that touches one must
+> touch all. A number change in code with no matching loc/csv update is how the mod drifts
+> out of sync.
+
+The three places:
 1. **Code** — the card class (`AlchemistCode/Cards/...`), where all numeric values live (builders like `WithDamage(base, upgradeDelta)`).
 2. **Localization** — `Alchemist/localization/eng/*.json`. Use `{Var:diff()}` tokens, never hardcoded numbers, so upgrade previews render. Powers need `.title`, `.description` **and** `.smartDescription`.
 3. **cards.csv** — the human-readable design sheet, format `base (upgraded)`.
