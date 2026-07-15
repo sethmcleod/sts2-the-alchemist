@@ -26,13 +26,14 @@ Three overlapping archetypes give the class its shape:
 
 ## Content
 
-* A new character meticulously designed to fit in with the rest
+* A new character meticulously designed to fit in with the world
 * 95 cards, including 4 multiplayer cards and 2 full-art Ancient rewards
 * 9 unique relics
 * 3 unique potions
 * 3 unique enchantments
 * A 7-epoch timeline inspired by the Great Work
 * Many lines of unique dialog with Ancients and other characters
+* Hand-drawn artwork for all cards, relics, potion, and icons (WIP)
 
 ## Mechanics and Keywords
 
@@ -62,8 +63,7 @@ game. Every card, relic, and potion has been balanced against the existing pools
 across repeated low and high-ascension playtesting. The same care extends to
 flavor: this character's story is woven directly into the game's existing
 timeline and characters, and observant players will find more than a few threads
-connecting them to the world. All artwork is in the process of being hand-drawn
-and animated in the style of the base game.
+connecting them. ✨
 
 ## Getting Started
 
@@ -72,8 +72,8 @@ and animated in the style of the base game.
 > [!NOTE]
 > No packaged release yet — playing means building from source (below).
 > `scripts/dev.sh publish` installs the mod straight into your game.
-> I intend to publish this to Steam Workshop once the initial character art is
-> ready.
+> I intend to publish this to Steam Workshop and open up for playtesting
+> once the character art is ready.
 
 Requires Slay the Spire 2 (Steam) and the prerequisites in [BUILD.md](BUILD.md).
 
