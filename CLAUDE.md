@@ -21,8 +21,13 @@ and local multiplayer) — don't assume sts2-modding-mcp is the only server conn
 scripts/setup.sh            # first-time: clone tooling, install bridge mods
 scripts/dev.sh publish      # build → import → publish → verify pck  (asset/loc changes)
 scripts/dev.sh publish-fast # code-only changes (skips godot import)
-scripts/dev.sh test [name]  # regression suite vs the live game (agents: same JSONs work
-                            #   via sts2-modding-mcp's run_test_scenario tool)
+scripts/dev.sh test [--group G] [name] [--fresh]
+                            # regression suite vs the live game; starts/restarts the
+                            #   game itself. Groups: cards/ancients/shop/settings/compendium.
+                            #   (agents: steps-format JSONs also work via
+                            #   sts2-modding-mcp's run_test_scenario tool)
+scripts/dev.sh game-start | game-stop | game-restart   # game process control (Steam must run)
+scripts/dev.sh lint         # offline static three-way-rule check (no game)
 scripts/dev.sh doctor       # ✓/✗ every prerequisite
 ```
 

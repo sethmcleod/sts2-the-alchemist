@@ -1,0 +1,11 @@
+{
+  "name": "epochs_toggle",
+  "group": "settings",
+  "description": "Mod config panel: the Enable Epochs timeline toggle flips off and back on without exceptions",
+  "checks": [
+    {"do": {"click": "/root/Game/RootSceneContainer/MainMenu/MainMenuTextButtons/ModConfigButton"}, "delay": 1.5, "expect": {"screen_contains": "ModConfig"}, "timeout": 8},
+    {"do": {"find_click": {"pattern": "ModButton_The Alchemist", "contains": "ModListContent"}}, "delay": 1.5},
+    {"do": {"find_click": {"pattern": "EnableEpochs", "contains": "SectionContent_Timeline", "child_class": "Control"}}, "delay": 1},
+    {"do": {"find_click": {"pattern": "EnableEpochs", "contains": "SectionContent_Timeline", "child_class": "Control"}}, "delay": 1, "expect": {"exceptions_clean": true}, "timeout": 5, "note": "toggle off and back on"}
+  ]
+}

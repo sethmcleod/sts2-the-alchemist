@@ -1,11 +1,6 @@
-bin/
-obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/.DS_Store
-.godot/
-.idea/
+__pycache__/
 .DS_Store
+.godot/
 .mcp.json
-*.DotSettings*
 .tooling/
+bin/

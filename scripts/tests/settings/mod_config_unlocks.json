@@ -1,0 +1,13 @@
+{
+  "name": "mod_config_unlocks",
+  "group": "settings",
+  "description": "Mod config panel: Unlock All reveals all 95 cards / 9 relics / 3 potions / epochs, Reset Unlocks re-locks them (asserted via the mod's [Config] log)",
+  "checks": [
+    {"do": {"click": "/root/Game/RootSceneContainer/MainMenu/MainMenuTextButtons/ModConfigButton"}, "delay": 1.5, "expect": {"screen_contains": "ModConfig"}, "timeout": 8},
+    {"do": {"find_click": {"pattern": "ModButton_The Alchemist", "contains": "ModListContent"}}, "delay": 1.5},
+    {"do": {"find_click": {"pattern": "UnlockAll", "contains": "SectionContent_Unlocks", "child_class": "Control"}}, "expect": {"game_log_contains": "Unlocked 95 cards, 9 relics, 3 potions", "exceptions_clean": true}, "timeout": 8, "note": "Unlock All reports the full content counts"},
+    {"do": {"click": "/root/Game/ModalContainer/ErrorPopup/VerticalPopup/YesButton"}, "delay": 1},
+    {"do": {"find_click": {"pattern": "ResetUnlocks", "contains": "SectionContent_Unlocks", "child_class": "Control"}}, "expect": {"game_log_contains": "Re-locked all Alchemist cards, relics, potions, and Epochs", "exceptions_clean": true}, "timeout": 8, "note": "Reset Unlocks re-locks everything"},
+    {"do": {"click": "/root/Game/ModalContainer/ErrorPopup/VerticalPopup/YesButton"}, "delay": 1, "expect": {"exceptions_clean": true}, "timeout": 5}
+  ]
+}

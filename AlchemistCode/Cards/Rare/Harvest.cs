@@ -21,13 +21,18 @@ public class Harvest : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        // Decide Fatal eligibility from the target's powers BEFORE the attack — some
+        // summoned enemies opt out via ShouldOwnerDeathTriggerFatal. Reading Powers
+        // *after* the kill races with death-cleanup tearing the collection down
+        // (InvalidOperationException: collection modified); snapshot it here while stable.
+        var fatalEligible = play.Target != null
+            && play.Target.Powers.ToList().All(p => p.ShouldOwnerDeathTriggerFatal());
+
         var attack = CommonActions.CardAttack(this, play);
         await attack.Execute(choiceContext);
 
-        // Gate on the real Fatal check — some summoned enemies opt out via ShouldOwnerDeathTriggerFatal
         var killed = attack.Results.SelectMany(r => r).Any(r => r.WasTargetKilled);
-        var fatal = play.Target != null && play.Target.Powers.All(p => p.ShouldOwnerDeathTriggerFatal());
-        if (killed && fatal && Owner.RunState.CurrentRoom is CombatRoom room)
+        if (killed && fatalEligible && Owner.RunState.CurrentRoom is CombatRoom room)
             for (var i = 0; i < DynamicVars["rewards"].IntValue; i++)
                 room.AddExtraReward(Owner, new PotionReward(Owner));
     }

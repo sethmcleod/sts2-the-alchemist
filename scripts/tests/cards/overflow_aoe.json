@@ -1,0 +1,12 @@
+{
+  "name": "overflow_aoe",
+  "group": "cards",
+  "description": "Overflow converts Regen to AoE damage: 3 Regen -> deal 12 (4x3) to ALL enemies; a normalized 20-HP enemy is left at 8 (asserted by HP, since AoE kills reindex the roster)",
+  "setup": {"character": "Alchemist", "seed": "OVER1", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"set_enemy_hp": {"enemy": 1, "hp": 20}}, "expect": {"enemy_hp": {"enemy": 1, "hp": 20}}, "timeout": 6},
+    {"do": {"console": "power REGEN_POWER 3 0"}, "delay": 0.5},
+    {"do": {"console": "card ALCHEMIST-OVERFLOW"}, "delay": 0.5},
+    {"do": {"play_card": "Overflow"}, "expect": {"any_enemy_hp": 8}, "timeout": 6, "note": "4 damage per Regen (3) to all = 12; the 20-HP enemy survives at 8"}
+  ]
+}

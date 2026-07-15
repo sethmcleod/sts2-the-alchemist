@@ -1,0 +1,6 @@
+{
+  "name": "potions_sweep",
+  "group": "sweeps",
+  "description": "Add all 3 Alchemist potions to the belt, then actually use each (via the belt popup, since the bridge use_potion no-ops); any potion that fails to consume or throws fails",
+  "sweep": "potions"
+}

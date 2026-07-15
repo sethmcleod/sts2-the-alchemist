@@ -1,0 +1,34 @@
+{
+  "name": "ancient_darv",
+  "group": "ancients",
+  "description": "Darv ancient event renders localized options (no raw LocString keys) without exceptions; and the custom Alchemist dialogue is registered and renders",
+  "setup": {
+    "character": "Alchemist",
+    "seed": "ANCREG2"
+  },
+  "checks": [
+    {
+      "do": {
+        "console": "ancient DARV"
+      },
+      "expect": {
+        "screen": "EVENT",
+        "actions_labels_exclude": "LocString table",
+        "actions_count_gte": 2,
+        "exceptions_clean": true,
+        "dialogue_on_screen": true
+      },
+      "timeout": 10
+    },
+    {
+      "expect": {
+        "ancient_dialogues": {
+          "ancient": "Darv",
+          "min_dialogues": 1
+        }
+      },
+      "timeout": 6,
+      "note": "Darv has Alchemist-specific dialogue, all lines render"
+    }
+  ]
+}

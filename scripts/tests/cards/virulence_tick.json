@@ -1,0 +1,14 @@
+{
+  "name": "virulence_tick",
+  "group": "cards",
+  "description": "Virulence adds +1 to every Poison application: with Virulence out, Tinge applies 3 (not 2) Poison to a single normalized 20-HP enemy (Tinge deals 3 -> 17), confirmed via 3 tick damage after end of turn (-> 14)",
+  "setup": {"character": "Alchemist", "seed": "VIRU1", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"set_enemy_hp": {"enemy": 1, "hp": 20}}, "expect": {"enemy_hp": {"enemy": 1, "hp": 20}}, "timeout": 6},
+    {"do": {"console": "card ALCHEMIST-VIRULENCE"}, "delay": 0.5},
+    {"do": {"play_card": "Virulence"}, "delay": 0.5},
+    {"do": {"console": "card ALCHEMIST-TINGE"}, "delay": 0.5},
+    {"do": {"play_card": "Tinge", "target": 1}, "expect": {"enemy_hp": {"enemy": 1, "hp": 17}}, "timeout": 6, "note": "Tinge deals 3 (20 -> 17)"},
+    {"do": {"end_turn": true}, "expect": {"enemy_hp": {"enemy": 1, "hp": 14}}, "timeout": 8, "note": "Tinge 2 + Virulence 1 = 3 poison; ticks 3 at enemy turn end (17 -> 14)"}
+  ]
+}

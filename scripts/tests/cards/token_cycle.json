@@ -1,0 +1,64 @@
+{
+  "name": "token_cycle",
+  "group": "cards",
+  "description": "The magnum-opus token chain closes the loop: Nigredo -> Albedo -> Citrinitas -> Rubedo -> Nigredo, each token adding the next into hand when played",
+  "setup": {
+    "character": "Alchemist",
+    "seed": "TOKCYC1",
+    "fight": "SLIMES_WEAK"
+  },
+  "checks": [
+    {
+      "do": {
+        "console": "energy 99"
+      },
+      "delay": 0.3
+    },
+    {
+      "do": {
+        "console": "card ALCHEMIST-NIGREDO"
+      },
+      "delay": 0.4
+    },
+    {
+      "do": {
+        "play_card": "Nigredo"
+      },
+      "expect": {
+        "hand_contains": "Albedo"
+      },
+      "timeout": 6,
+      "note": "Nigredo -> Albedo"
+    },
+    {
+      "do": {
+        "play_card": "Albedo"
+      },
+      "expect": {
+        "hand_contains": "Citrinitas"
+      },
+      "timeout": 6,
+      "note": "Albedo -> Citrinitas"
+    },
+    {
+      "do": {
+        "play_card": "Citrinitas"
+      },
+      "expect": {
+        "hand_contains": "Rubedo"
+      },
+      "timeout": 6,
+      "note": "Citrinitas -> Rubedo"
+    },
+    {
+      "do": {
+        "play_card": "Rubedo"
+      },
+      "expect": {
+        "hand_contains": "Nigredo"
+      },
+      "timeout": 6,
+      "note": "Rubedo -> Nigredo (loop closes)"
+    }
+  ]
+}

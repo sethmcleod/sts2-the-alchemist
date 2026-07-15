@@ -1,0 +1,6 @@
+{
+  "name": "relics_sweep",
+  "group": "sweeps",
+  "description": "Add all 9 Alchemist relics, run a combat turn cycle; any exception fails",
+  "sweep": "relics"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "cards_sweep",
+  "group": "sweeps",
+  "description": "Play every AlchemistCardPool card (86 solo-playable); any exception or unplayable card fails with its name",
+  "sweep": "cards"
+}

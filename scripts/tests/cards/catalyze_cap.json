@@ -1,0 +1,12 @@
+{
+  "name": "catalyze_cap",
+  "group": "cards",
+  "description": "Catalyze grants +2 Regen on the first HP loss (incl. play turn), once per turn",
+  "setup": {"character": "Alchemist", "seed": "ALCHREG8", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"console": "card ALCHEMIST-CATALYZE"}, "delay": 0.4},
+    {"do": {"play_card": "Catalyze"}, "expect": {"has_power": "CatalyzePower"}, "timeout": 6},
+    {"do": {"console": "damage 3 0"}, "expect": {"hp": 66, "power": {"name": "RegenPower", "amount": 2}}, "timeout": 6, "note": "first HP loss -> +2 Regen"},
+    {"do": {"console": "damage 3 0"}, "expect": {"hp": 63, "power": {"name": "RegenPower", "amount": 2}}, "timeout": 6, "note": "second HP loss same turn -> no more Regen"}
+  ]
+}

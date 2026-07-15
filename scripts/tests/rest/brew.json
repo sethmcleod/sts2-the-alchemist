@@ -1,0 +1,13 @@
+{
+  "name": "brew_rest_site",
+  "group": "rest",
+  "description": "WeatheredKit's Brew rest-site option: offered with the label 'Brew', removes a card from the deck (10 -> 9), and grants a potion reward you claim",
+  "setup": {"character": "Alchemist", "seed": "BREW1"},
+  "checks": [
+    {"do": {"console": "room 7"}, "expect": {"screen": "REST_SITE"}, "timeout": 12, "note": "jump straight to a rest site (skips Neow, full 10-card deck)"},
+    {"expect": {"rest_option": {"root": "/root/Game/RootSceneContainer/Run/RoomContainer/RestSiteRoom/ChoicesScreen/ChoicesContainer", "label": "Brew"}, "deck_count": 10}, "timeout": 6, "note": "Brew is offered with the right label"},
+    {"do": {"click_label": {"root": "/root/Game/RootSceneContainer/Run/RoomContainer/RestSiteRoom/ChoicesScreen/ChoicesContainer", "label": "Brew"}}, "expect": {"screen_contains": "CARD_SELECTION"}, "timeout": 8},
+    {"do": {"remove_deck_card": 0}, "expect": {"deck_count": 9, "screen_contains": "REWARD"}, "timeout": 10, "note": "removing a card drops the deck to 9 and opens the potion reward"},
+    {"do": {"reward_select": 0}, "expect": {"potion_count": 1}, "timeout": 8, "note": "see and claim the brewed potion"}
+  ]
+}

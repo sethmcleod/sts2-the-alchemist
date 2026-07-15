@@ -1,0 +1,11 @@
+{
+  "name": "sepsis_upgraded",
+  "group": "cards",
+  "description": "Sepsis+ costs 2 and applies only 2 self-Poison (the upgrade eases the base-3 cost)",
+  "setup": {"character": "Alchemist", "seed": "SEPUP1", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"console": "card ALCHEMIST-SEPSIS"}, "delay": 0.4},
+    {"do": {"upgrade_card": "Sepsis"}, "delay": 0.4},
+    {"do": {"play_card": "Sepsis"}, "expect": {"power": {"name": "PoisonPower", "amount": 2}, "has_power": "SepsisPower", "energy": 1}, "timeout": 6, "note": "upgraded self-Poison is 2 (base 3), Sepsis power still applied, cost 2"}
+  ]
+}

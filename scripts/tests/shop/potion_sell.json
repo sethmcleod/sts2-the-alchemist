@@ -1,0 +1,64 @@
+{
+  "name": "potion_sell",
+  "group": "shop",
+  "description": "In a merchant room with the starter kit, a Common potion's popup button reads Sell (50g) and selling grants 50 gold",
+  "setup": {
+    "character": "Alchemist",
+    "seed": "SHOPREG1"
+  },
+  "checks": [
+    {
+      "do": {
+        "console": "room SHOP"
+      },
+      "expect": {
+        "screen": "SHOP"
+      },
+      "timeout": 15
+    },
+    {
+      "do": {
+        "console": "potion BLOCK_POTION"
+      },
+      "expect": {
+        "potion_count": 1
+      },
+      "timeout": 6
+    },
+    {
+      "do": {
+        "snapshot": "gold"
+      }
+    },
+    {
+      "do": {
+        "click_method": "/root/Game/RootSceneContainer/Run/GlobalUi/TopBar/LeftAlignedStuff/PotionMarginifier/PotionContainer/MarginContainer/PotionHolders/PotionHolder|OpenPotionPopup"
+      },
+      "delay": 1.2
+    },
+    {
+      "expect": {
+        "node_text": {
+          "path": "/root/Game/RootSceneContainer/Run/GlobalUi/TopBar/LeftAlignedStuff/PotionMarginifier/PotionContainer/MarginContainer/PotionHolders/PotionHolder/PotionPopup/Container/UseButton/Label",
+          "contains": "Sell (50"
+        }
+      },
+      "timeout": 6,
+      "note": "sell button labeled with common price"
+    },
+    {
+      "do": {
+        "click": "/root/Game/RootSceneContainer/Run/GlobalUi/TopBar/LeftAlignedStuff/PotionMarginifier/PotionContainer/MarginContainer/PotionHolders/PotionHolder/PotionPopup/Container/UseButton"
+      }
+    },
+    {
+      "expect": {
+        "gold_delta": 50,
+        "potion_count": 0,
+        "exceptions_clean": true
+      },
+      "timeout": 8,
+      "note": "sell grants 50 gold and consumes the potion"
+    }
+  ]
+}

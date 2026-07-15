@@ -1,0 +1,8 @@
+{
+  "name": "compendium_alchemist_cards",
+  "group": "compendium",
+  "description": "AlchemistCardPool (drives the Card Library character filter) contains every playable card from cards.csv - 90 cards",
+  "checks": [
+    {"expect": {"pool_count": {"pool": "AlchemistCardPool", "count": 90}, "pool_matches_csv": {"pool": "AlchemistCardPool", "exclude_rarities": ["Token"]}}, "timeout": 10}
+  ]
+}

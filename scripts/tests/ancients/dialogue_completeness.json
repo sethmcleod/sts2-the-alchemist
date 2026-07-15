@@ -1,0 +1,8 @@
+{
+  "name": "dialogue_completeness",
+  "group": "ancients",
+  "description": "Every ancient the mod writes Alchemist dialogue for (all 9, derived from ancients.json) has its full dialogue registered and every ancient + player line renders without raw keys or errors; auto-adapts as dialogue is added/removed",
+  "checks": [
+    {"expect": {"dialogue_loc_complete": true}, "timeout": 8}
+  ]
+}

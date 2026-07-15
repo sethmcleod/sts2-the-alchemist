@@ -1,0 +1,65 @@
+{
+  "name": "foul_potion_parity",
+  "group": "shop",
+  "description": "Foul Potion keeps base-game behavior in the merchant: popup button still says Throw, never Sell (mod excludes it from selling)",
+  "setup": {
+    "character": "Alchemist",
+    "seed": "SHOPREG2"
+  },
+  "checks": [
+    {
+      "do": {
+        "console": "room SHOP"
+      },
+      "expect": {
+        "screen": "SHOP"
+      },
+      "timeout": 15
+    },
+    {
+      "do": {
+        "console": "potion FOUL_POTION"
+      },
+      "expect": {
+        "potion_count": 1
+      },
+      "timeout": 6
+    },
+    {
+      "do": {
+        "click_method": "/root/Game/RootSceneContainer/Run/GlobalUi/TopBar/LeftAlignedStuff/PotionMarginifier/PotionContainer/MarginContainer/PotionHolders/PotionHolder|OpenPotionPopup"
+      },
+      "delay": 1.2
+    },
+    {
+      "expect": {
+        "node_text": {
+          "path": "/root/Game/RootSceneContainer/Run/GlobalUi/TopBar/LeftAlignedStuff/PotionMarginifier/PotionContainer/MarginContainer/PotionHolders/PotionHolder/PotionPopup/Container/UseButton/Label",
+          "contains": "Throw"
+        }
+      },
+      "timeout": 6,
+      "note": "foul potion is NOT retitled to Sell"
+    },
+    {
+      "expect": {
+        "node_text": {
+          "path": "/root/Game/RootSceneContainer/Run/GlobalUi/TopBar/LeftAlignedStuff/PotionMarginifier/PotionContainer/MarginContainer/PotionHolders/PotionHolder/PotionPopup/Container/UseButton/Label",
+          "excludes": "Sell"
+        }
+      },
+      "timeout": 3,
+      "note": "no sell pricing on foul potion"
+    },
+    {
+      "do": {
+        "click_method": "/root/Game/RootSceneContainer/Run/GlobalUi/TopBar/LeftAlignedStuff/PotionMarginifier/PotionContainer/MarginContainer/PotionHolders/PotionHolder|OpenPotionPopup"
+      },
+      "delay": 0.5,
+      "expect": {
+        "exceptions_clean": true
+      },
+      "timeout": 6
+    }
+  ]
+}

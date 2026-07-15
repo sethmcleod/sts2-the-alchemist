@@ -1,0 +1,11 @@
+{
+  "name": "transpose_block",
+  "group": "cards",
+  "description": "Transpose converts all Poison to 2 block each (gain 1 then lose 6 -> 12 block)",
+  "setup": {"character": "Alchemist", "seed": "ALCHREG6", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"console": "power POISON_POWER 5 0"}, "delay": 0.4},
+    {"do": {"console": "card ALCHEMIST-TRANSPOSE"}, "delay": 0.4},
+    {"do": {"play_card": "Transpose"}, "expect": {"block": 12}, "timeout": 6}
+  ]
+}

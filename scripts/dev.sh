@@ -6,6 +6,12 @@
 #   scripts/dev.sh publish-fast   build → publish → verify pck                  (code-only, skips import)
 #   scripts/dev.sh import         godot --headless --import only
 #   scripts/dev.sh bridge         build + install the MCPTest + GodotExplorer bridge mods into the game
+#   scripts/dev.sh test [args]    run the regression suite (starts the game if needed;
+#                                 args: --group NAME, --fresh, name filters — see scripts/tests/README.md)
+#   scripts/dev.sh game-start     launch the game via Steam and wait for the bridge
+#   scripts/dev.sh game-stop      quit the game (graceful, then force)
+#   scripts/dev.sh game-restart   stop + start (loads freshly-installed bridge/mod builds)
+#   scripts/dev.sh lint           static three-way-rule check (offline, no game)
 #   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with fixes
 #   scripts/dev.sh env            print the resolved paths and exit
 #
@@ -101,6 +107,17 @@ do_bridge() {
   echo "Now launch STS2 via Steam. MCPTest listens on TCP 21337, GodotExplorer on 27020."
 }
 
+do_test() {
+  step "regression suite"
+  [ -n "$PY" ] || { bad "no Python >= 3.10 found — install one (e.g. brew install python@3.12)"; exit 1; }
+  PYTHONPATH="$STS2_MCP_DIR" STS2_MCP_DIR="$STS2_MCP_DIR" "$PY" "$REPO/scripts/tests/run_suite.py" "$@"
+}
+
+do_game() {  # start|stop|restart
+  [ -n "$PY" ] || { bad "no Python >= 3.10 found — install one (e.g. brew install python@3.12)"; exit 1; }
+  PYTHONPATH="$STS2_MCP_DIR" STS2_MCP_DIR="$STS2_MCP_DIR" "$PY" "$REPO/scripts/tests/run_suite.py" --game "$1"
+}
+
 do_doctor() {
   step "doctor"
   local fail=0
@@ -108,6 +125,7 @@ do_doctor() {
   if [ -n "$PY" ];                   then ok "python $("$PY" --version 2>&1 | cut -d' ' -f2) ($PY)"; else bad "no Python >= 3.10 — needed for scripts/dev.sh test (e.g. brew install python@3.12)"; fail=1; fi
   if [ -x "$GODOT" ];                then ok "MegaDot at $GODOT"; else bad "MegaDot not found at $GODOT — install it or set GODOT=/path/to/Godot (see BUILD.md)"; fail=1; fi
   if [ -d "$STS2_GAME_DIR" ];        then ok "game at $STS2_GAME_DIR"; else bad "game not found at $STS2_GAME_DIR — install via Steam or set STS2_GAME_DIR"; fail=1; fi
+  if pgrep -x steam_osx >/dev/null 2>&1 || pgrep -x steam >/dev/null 2>&1; then ok "Steam client running"; else bad "Steam client not running — needed to launch the game (game-start/test)"; fi
   if [ -d "$STS2_MCP_DIR" ];         then ok "tooling at $STS2_MCP_DIR"; else bad "sts2-modding-mcp checkout missing — run scripts/dev.sh setup"; fail=1; fi
   if [ -d "$GAME_MODS/Alchemist" ];  then ok "Alchemist mod installed"; else bad "Alchemist mod not installed — run scripts/dev.sh publish"; fail=1; fi
   if [ -d "$GAME_MODS/mcptest" ];    then ok "MCPTest bridge installed"; else bad "MCPTest bridge missing — run scripts/dev.sh bridge"; fail=1; fi
@@ -124,6 +142,12 @@ case "${1:-help}" in
   publish-fast)  do_build; do_publish; do_verify ;;
   import)        do_import ;;
   bridge)        do_bridge ;;
+  test)          shift; do_test "$@" ;;
+  game-start)    do_game start ;;
+  game-stop)     do_game stop ;;
+  game-restart)  do_game restart ;;
+  lint)          [ -n "$PY" ] || { bad "no Python >= 3.10 found"; exit 1; }
+                 "$PY" "$REPO/scripts/lint_sync.py" ;;
   doctor)        do_doctor ;;
   env)
     echo "REPO          = $REPO"

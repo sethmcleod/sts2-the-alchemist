@@ -1,0 +1,14 @@
+{
+  "name": "sepsis_damage_mult",
+  "group": "cards",
+  "description": "Sepsis makes poisoned enemies take +50% Attack damage: normalize enemy to 20 HP, poison it, play Sepsis, then Strike it (6 -> 9) leaving 11",
+  "setup": {"character": "Alchemist", "seed": "MULT1", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"set_enemy_hp": {"enemy": 1, "hp": 20}}, "expect": {"enemy_hp": {"enemy": 1, "hp": 20}}, "timeout": 6},
+    {"do": {"console": "power POISON_POWER 5 2"}, "delay": 0.5},
+    {"do": {"console": "card ALCHEMIST-SEPSIS"}, "delay": 0.5},
+    {"do": {"play_card": "Sepsis"}, "delay": 0.5},
+    {"do": {"console": "card ALCHEMIST-STRIKE_ALCHEMIST"}, "delay": 0.5},
+    {"do": {"play_card": "StrikeAlchemist", "target": 1}, "expect": {"enemy_hp": {"enemy": 1, "hp": 11}}, "timeout": 6, "note": "Strike 6 x1.5 = 9 on a poisoned enemy (20 -> 11)"}
+  ]
+}
