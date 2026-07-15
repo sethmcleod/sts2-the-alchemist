@@ -5,7 +5,7 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// Fold Fester into TriggerCount (capped at Amount). The base game drives both the extra ticks and the
+// Fold Fester into TriggerCount (capped at the Poison stack). The base game drives both the extra ticks and the
 // lethal-HP preview off this, so an enemy that Fester will kill shows green "will die" HP
 [HarmonyPatch(typeof(PoisonPower), "TriggerCount", MethodType.Getter)]
 public static class FesterPoisonTriggerPatch

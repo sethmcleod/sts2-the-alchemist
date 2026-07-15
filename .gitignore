@@ -8,3 +8,4 @@ riderModule.iml
 .DS_Store
 .mcp.json
 *.DotSettings*
+.tooling/

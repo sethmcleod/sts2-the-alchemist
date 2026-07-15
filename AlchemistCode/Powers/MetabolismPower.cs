@@ -11,7 +11,8 @@ public class MetabolismPower : AlchemistPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
 
-    // Gate to the owner's turn — energy gained on an enemy turn would be wiped by the turn-start refresh
+    // Gate to the owner's turn — energy gained on an enemy turn would be wiped by the turn-start refresh.
+    // Starts true: the power lands mid-turn, after this turn's AfterSideTurnStart already fired
     private bool _ownerTurn = true;
     private bool _triggeredThisTurn;
 

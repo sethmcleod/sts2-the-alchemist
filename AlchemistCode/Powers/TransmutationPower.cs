@@ -9,7 +9,7 @@ public class TransmutationPower : AlchemistPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
 
-    // Every enchanted card costs 1 less while this power is out
+    // originalCost <= 0 skips free and X-cost cards
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
         modifiedCost = originalCost;

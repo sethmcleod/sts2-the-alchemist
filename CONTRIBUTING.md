@@ -17,8 +17,13 @@ A card is defined in three places that must stay in sync — PRs that touch one 
 ## Code style
 - Comments only where code is genuinely non-obvious (Harmony patches, engine workarounds, mechanic subtleties) — explain *why*, not *what*.
 - Harmony patches live in `AlchemistCode/Patches/`, one concern per file, with a `///` summary explaining the engine constraint being worked around. Patch failures are isolated per class by `MainFile.Initialize` — never assume another patch ran.
-- Never place mod assets at base-game `res://` paths; keep everything under `res://Alchemist/`.
+- Never place mod assets at base-game `res://` paths; keep everything under `res://Alchemist/` (see [BUILD.md](BUILD.md) conventions for why).
 - Power/card state that must survive save/reload goes in `DynamicVars`, not plain fields.
 
 ## Testing
 `dotnet build` must pass with 0 errors (the loc analyzer runs in-build). For gameplay changes, verify in-game: play the card base + upgraded, and stacked base+upgraded for powers.
+
+### Regression tests
+The repo ships an automated suite (no agentic tooling needed) — see [scripts/tests/README.md](scripts/tests/README.md):
+- Run `scripts/dev.sh test` before PRs that touch card/power behavior; it must pass.
+- If your PR changes a card's numbers or mechanics, **update or add its scenario** in `scripts/tests/` — a number change with no test change is how regressions ship. [docs/adding-a-card.md](docs/adding-a-card.md) shows the full workflow, including its test step.

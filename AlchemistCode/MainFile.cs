@@ -18,7 +18,7 @@ public partial class MainFile : Node
 
     public static void Initialize()
     {
-        // registers mod [ScriptPath] node scripts so scenes resolve them by res:// path
+        // Registers mod [ScriptPath] node scripts so scenes resolve them by res:// path
         Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(Assembly.GetExecutingAssembly());
 
         // Patch classes one at a time so a single failing patch disables only itself, not the whole mod

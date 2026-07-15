@@ -3,20 +3,9 @@
 > An amphibian practicer of esoteric arts.
 > Transmutes self-inflicted poison into power.
 
-## Origin
-
-Every frog of their line is born half-alchemist — skin that brews its own
-toxins and blood that can be taught, with tremendous discipline, to convert into
-vigor instead of death. Their parent mastered that discipline, filled a journal
-with it — pages of speculation about the Spire, margins hinting that transmuting
-the body was only the first stage of some greater Work — and then climbed with
-the Twelve to test it all firsthand. No answers ever came back down. The child
-has read the journal to pieces. It ends where the questions begin, and the
-questions all point up.
-
 ## Overview
 
-The Alchemist is a character class built around a high-risk, high-reward
+The Alchemist is a custom character built around a high-risk, high-reward
 gameplay loop and three overlapping archetypes: the **Apothecary**, the
 **Distiller**, and the **Artificer**. The class as a whole is defined by
 deliberately running its own health low to unlock its most powerful effects,
@@ -26,8 +15,8 @@ between poisoning yourself and healing yourself.
 **The Apothecary** is the heart of the class, turning self-inflicted Poison into
 fuel: apply Poison to yourself as readily as to enemies, convert it into Regen,
 and spend that Regen again on damage, Block, and Strength. When your health is
-below half, your Gambit cards get an extra effect — this archetype thrives one
-bad decision from disaster.
+at or below half, your Gambit cards get an extra effect — this archetype thrives
+one bad decision from disaster.
 
 **The Distiller** is the patience archetype, built on the tension between
 holding cards and dumping them: Ferment cards grow stronger every turn you
@@ -45,8 +34,44 @@ directly into damage, Block, and tempo.
 * 95 cards, including 4 multiplayer cards and 2 full-art Ancient rewards
 * 9 unique relics
 * 3 unique potions
+* 3 unique enchantments
 * A 7-epoch timeline inspired by the Great Work
 * Many lines of unique dialog with Ancients and other characters
+
+## Getting started
+
+### Play it
+
+Until packaged releases are available, playing means building from source (below) —
+`scripts/dev.sh publish` installs the mod straight into your game. Requires Slay the
+Spire 2 (Steam) and the prerequisites in [BUILD.md](BUILD.md).
+
+### Develop
+
+```sh
+git clone https://github.com/sethmcleod/sts2-the-alchemist && cd sts2-the-alchemist
+scripts/setup.sh          # one-time: tooling checkout, dependency check, bridge mods
+                          #   (bridge mods = small game-side mods the test suite talks to)
+scripts/dev.sh publish    # build the mod into the game
+# launch Slay the Spire 2 via Steam (use a spare save profile), then:
+scripts/dev.sh test       # regression suite against the live game
+```
+
+`scripts/dev.sh doctor` diagnoses the environment at any point. Everything works with
+plain shell + Python — **no AI tooling required** — but the repo is also set up for
+agent-assisted development ([CLAUDE.md](CLAUDE.md)): even without C# experience you can
+point Claude Code (or similar) at this repo to modify and test the mod.
+
+### Where things are
+
+| Doc | What's in it |
+|---|---|
+| [BUILD.md](BUILD.md) | prerequisites, build/publish commands, asset conventions |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | the three-way update rule, design + code conventions |
+| [docs/adding-a-card.md](docs/adding-a-card.md) | end-to-end worked example: add one card |
+| [docs/troubleshooting.md](docs/troubleshooting.md) | known gotchas and their fixes |
+| [scripts/tests/README.md](scripts/tests/README.md) | regression suite: running + authoring |
+| [sts2-modding-mcp](https://github.com/sethmcleod/sts2-modding-mcp) | the general STS2 modding toolkit this repo builds on |
 
 ## Mechanics and Keywords
 

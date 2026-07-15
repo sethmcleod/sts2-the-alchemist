@@ -14,6 +14,8 @@ namespace Alchemist.AlchemistCode.Relics;
 
 public sealed class BrewRestSiteOption : RestSiteOption
 {
+    // The potion-reward overlay doesn't hide the rest-site choice buttons the way vanilla
+    // options do, so we fade them out ourselves via the room's private screen
     private static readonly FieldInfo ChoicesScreenField =
         typeof(NRestSiteRoom).GetField("_choicesScreen", BindingFlags.NonPublic | BindingFlags.Instance)!;
 
