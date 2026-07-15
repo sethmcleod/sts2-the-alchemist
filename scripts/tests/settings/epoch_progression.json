@@ -1,0 +1,93 @@
+{
+  "name": "epoch_progression",
+  "group": "settings",
+  "description": "Base-game-style progressive timeline: from a freshly-unlocked state only Alchemist1 is visible (locked) with all epoch-gated cards/relics/potions locked; revealing Alchemist1 makes 2-7 visible (still locked); revealing each of 2-7 unlocks exactly its content (unlocked but not yet discovered), leaving the rest gated",
+  "checks": [
+    {"do": {"click": "/root/Game/RootSceneContainer/MainMenu/MainMenuTextButtons/ModConfigButton"}, "delay": 1.5, "expect": {"screen_contains": "ModConfig"}, "timeout": 8},
+    {"do": {"find_click": {"pattern": "ModButton_The Alchemist", "contains": "ModListContent"}}, "delay": 1.5},
+    {"do": {"find_click": {"pattern": "ResetUnlocks", "contains": "SectionContent_Unlocks", "child_class": "Control"}}, "expect": {"game_log_contains": "Re-locked", "exceptions_clean": true}, "timeout": 8, "note": "reset to a clean slate: strips discovered + removes Alchemist epoch entries"},
+    {"do": {"click": "/root/Game/ModalContainer/ErrorPopup/VerticalPopup/YesButton"}, "delay": 1},
+    {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST1_EPOCH", "state": "NotObtained"}}, "expect": {"epoch_state": {
+      "epochs": {
+        "ALCHEMIST-ALCHEMIST1_EPOCH": {"visible": true, "revealed": false},
+        "ALCHEMIST-ALCHEMIST2_EPOCH": {"visible": false},
+        "ALCHEMIST-ALCHEMIST7_EPOCH": {"visible": false}
+      },
+      "cards": {
+        "CARD.ALCHEMIST-CONGEAL": {"unlocked": false, "discovered": false},
+        "CARD.ALCHEMIST-MASTERWORK": {"unlocked": false},
+        "CARD.ALCHEMIST-CARAPACE": {"unlocked": false}
+      },
+      "relics": {"RELIC.ALCHEMIST-SNAKE_TAIL": {"unlocked": false}, "RELIC.ALCHEMIST-AQUA_VITAE": {"unlocked": false}},
+      "potions": {"POTION.ALCHEMIST-MARSH_TONIC": {"unlocked": false, "discovered": false}}
+    }}, "timeout": 6, "note": "fresh timeline: only Alchemist1 visible+locked, 2-7 hidden, all 18 gated items locked"},
+
+    {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST1_EPOCH", "state": "Revealed"}}, "expect": {"epoch_state": {
+      "epochs": {
+        "ALCHEMIST-ALCHEMIST1_EPOCH": {"revealed": true},
+        "ALCHEMIST-ALCHEMIST2_EPOCH": {"visible": true, "revealed": false},
+        "ALCHEMIST-ALCHEMIST7_EPOCH": {"visible": true, "revealed": false}
+      },
+      "cards": {"CARD.ALCHEMIST-CONGEAL": {"unlocked": false}, "CARD.ALCHEMIST-MASTERWORK": {"unlocked": false}}
+    }}, "timeout": 6, "note": "revealing Alchemist1 makes 2-7 visible (locked); it gates no content, so everything stays locked"},
+
+    {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST2_EPOCH", "state": "Revealed"}}, "expect": {"epoch_state": {
+      "cards": {
+        "CARD.ALCHEMIST-CONGEAL": {"unlocked": true, "discovered": false},
+        "CARD.ALCHEMIST-CORRODE": {"unlocked": true, "discovered": false},
+        "CARD.ALCHEMIST-EXUDE": {"unlocked": true, "discovered": false},
+        "CARD.ALCHEMIST-CARAPACE": {"unlocked": false}
+      }
+    }}, "timeout": 6, "note": "Alchemist2 unlocks its 3 cards (unlocked but unseen); Alchemist5's cards stay locked"},
+
+    {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST3_EPOCH", "state": "Revealed"}}, "expect": {"epoch_state": {
+      "potions": {
+        "POTION.ALCHEMIST-MARSH_TONIC": {"unlocked": true, "discovered": false},
+        "POTION.ALCHEMIST-REFINED_EXTRACT": {"unlocked": true, "discovered": false},
+        "POTION.ALCHEMIST-GOLD_LEAF": {"unlocked": true, "discovered": false}
+      }
+    }}, "timeout": 6, "note": "Alchemist3 unlocks its 3 potions (unlocked but unseen)"},
+
+    {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST4_EPOCH", "state": "Revealed"}}, "expect": {"epoch_state": {
+      "relics": {
+        "RELIC.ALCHEMIST-SNAKE_TAIL": {"unlocked": true, "discovered": false},
+        "RELIC.ALCHEMIST-TOXIC_SHARD": {"unlocked": true, "discovered": false},
+        "RELIC.ALCHEMIST-FLUX_STONE": {"unlocked": true, "discovered": false},
+        "RELIC.ALCHEMIST-AQUA_VITAE": {"unlocked": false}
+      }
+    }}, "timeout": 6, "note": "Alchemist4 unlocks its 3 relics; Alchemist7's relics stay locked"},
+
+    {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST5_EPOCH", "state": "Revealed"}}, "expect": {"epoch_state": {
+      "cards": {
+        "CARD.ALCHEMIST-CARAPACE": {"unlocked": true, "discovered": false},
+        "CARD.ALCHEMIST-COMPOUND": {"unlocked": true, "discovered": false},
+        "CARD.ALCHEMIST-AMALGAM": {"unlocked": true, "discovered": false},
+        "CARD.ALCHEMIST-MASTERWORK": {"unlocked": false}
+      }
+    }}, "timeout": 6, "note": "Alchemist5 unlocks its 3 cards; Alchemist6's cards stay locked"},
+
+    {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST6_EPOCH", "state": "Revealed"}}, "expect": {"epoch_state": {
+      "cards": {
+        "CARD.ALCHEMIST-SYNTHESIS": {"unlocked": true, "discovered": false},
+        "CARD.ALCHEMIST-MASTERWORK": {"unlocked": true, "discovered": false},
+        "CARD.ALCHEMIST-TRANSMUTATION": {"unlocked": true, "discovered": false}
+      }
+    }}, "timeout": 6, "note": "Alchemist6 unlocks its 3 cards"},
+
+    {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST7_EPOCH", "state": "Revealed"}}, "expect": {"epoch_state": {
+      "epochs": {"ALCHEMIST-ALCHEMIST7_EPOCH": {"revealed": true}},
+      "relics": {
+        "RELIC.ALCHEMIST-AQUA_VITAE": {"unlocked": true, "discovered": false},
+        "RELIC.ALCHEMIST-AURIC_SEAL": {"unlocked": true, "discovered": false},
+        "RELIC.ALCHEMIST-MIDAS_FRUIT": {"unlocked": true, "discovered": false}
+      }
+    }}, "timeout": 6, "note": "Alchemist7 unlocks its 3 relics — every epoch's content now available"},
+
+    {"do": {"find_click": {"pattern": "ResetUnlocks", "contains": "SectionContent_Unlocks", "child_class": "Control"}}, "expect": {"game_log_contains": "Re-locked", "exceptions_clean": true}, "timeout": 8, "note": "cleanup: re-lock everything"},
+    {"do": {"click": "/root/Game/ModalContainer/ErrorPopup/VerticalPopup/YesButton"}, "delay": 1},
+    {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST1_EPOCH", "state": "NotObtained"}}, "expect": {"epoch_state": {
+      "epochs": {"ALCHEMIST-ALCHEMIST1_EPOCH": {"visible": true, "revealed": false}, "ALCHEMIST-ALCHEMIST2_EPOCH": {"visible": false}},
+      "cards": {"CARD.ALCHEMIST-CONGEAL": {"unlocked": false}}
+    }}, "timeout": 6, "note": "leave the profile back in the fresh-timeline state"}
+  ]
+}

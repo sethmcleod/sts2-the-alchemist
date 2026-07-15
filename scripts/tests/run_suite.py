@@ -578,6 +578,22 @@ def _eval_expect(expect: dict, ctx: dict) -> list[str]:
             hits = [e for e in log.get("entries") or [] if e.get("id", 0) > since]
             if not hits:
                 fails.append(f"game log contains {want!r} (no new matching entries)")
+        elif key == "epoch_state":
+            # Assert timeline epoch + gated-content state (via the bridge's get_epoch_state).
+            # Shape: {prefix, epochs/cards/relics/potions: {model_id: {field: expected, …}}}.
+            # Epoch fields: state/visible/revealed. Content fields: unlocked/discovered.
+            st = _r(bridge_client.get_epoch_state(want.get("prefix", "")))
+            by_id = {g: {i["id"]: i for i in (st.get(g) or [])}
+                     for g in ("epochs", "cards", "relics", "potions")}
+            for group in ("epochs", "cards", "relics", "potions"):
+                for mid, expected in (want.get(group) or {}).items():
+                    got = by_id[group].get(mid)
+                    if got is None:
+                        fails.append(f"epoch_state: {group} {mid} present")
+                        continue
+                    for field, exp in expected.items():
+                        if got.get(field) != exp:
+                            fails.append(f"epoch_state: {mid}.{field} == {exp} (actual: {got.get(field)})")
         elif key == "pool_contains":
             found = _pool_member_names(want["pool"])
             if found is None:

@@ -51,7 +51,7 @@ Scenarios live in one subdirectory per group; each JSON carries `name`, `group`,
 | `ancients/` | each custom Ancient (Neow/Darv/Architect): options render with no raw `LocString` keys and the on-screen dialogue shows localized text; plus a general `dialogue_completeness` check that derives every ancient's expected dialogue from `ancients.json` and verifies all 9 ancients' lines register + render (auto-adapts as dialogue changes) |
 | `rest/` | WeatheredKit's custom **Brew** rest-site option (right label, removes a deck card, potion reward you claim) and the relic's +3 HP heal on potion use |
 | `shop/` | the potion-selling mechanic: Sell button + price on sellables, gold delta, and Foul Potion keeping its base-game Throw behavior |
-| `settings/` | the mod's config panel: Unlock All / Reset Unlocks (asserted via the `[Config]` log counts) and the Enable Epochs toggle |
+| `settings/` | the mod's config panel + timeline metaprogression: Unlock All / Reset Unlocks (`[Config]` log counts); the Enable Epochs toggle hides our epochs yet the Timeline still opens cleanly; and the full **progressive unlock** — from a fresh timeline only Alchemist1 is visible (locked), revealing it exposes 2-7, and revealing each of 2-7 unlocks exactly its cards/relics/potions (`epoch_progression`, via `set_epoch`/`get_epoch_state`) |
 | `compendium/` | model-level data that drives the Card Library: the Alchemist pool matches `cards.csv` (count + names), tokens in `TokenCardPool`, relic/potion pools complete, and **every entity's rendered title/description has no raw keys, unresolved braces, or canonical-render exceptions** |
 
 A separate offline check, `scripts/dev.sh lint` (`scripts/lint_sync.py`), statically
@@ -96,6 +96,11 @@ what keeps the suite fast as it grows.
   `game_log_contains` · `pool_contains` / `pool_count` / `pool_matches_csv` ·
   `loc_render_clean` · `ancient_dialogues` · `dialogue_on_screen` ·
   `dialogue_loc_complete` (all ancients' loc vs registered dialogue)
+- timeline: `epoch_state` (`{prefix, epochs/cards/relics/potions: {model_id: {field: expected}}}`
+  — epoch fields `state`/`visible`/`revealed`, content fields `unlocked`/`discovered`; reads the
+  bridge's `get_epoch_state`). Drive reveals with `do: {bridge: "set_epoch", params: {id, state}}`
+  (`state` a `EpochState` name, or `"remove"`; on `"Revealed"` it also slots the epoch's expansion
+  children, mirroring the in-game reveal).
 
 **`sweep` scenarios** (`"sweep": "cards" | "relics" | "potions"`) are python-implemented
 crash passes: each entity is exercised from a fresh combat, exceptions are unwrapped to

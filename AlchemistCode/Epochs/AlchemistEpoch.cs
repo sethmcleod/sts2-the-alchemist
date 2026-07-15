@@ -22,6 +22,11 @@ public abstract class AlchemistEpoch : EpochModel
     protected virtual List<RelicModel> Relics => new();
     protected virtual List<PotionModel> Potions => new();
 
+    // The content this epoch unlocks, exposed so EpochGating can gate it behind this epoch's reveal
+    public IReadOnlyList<CardModel> GatedCards => Cards;
+    public IReadOnlyList<RelicModel> GatedRelics => Relics;
+    public IReadOnlyList<PotionModel> GatedPotions => Potions;
+
     public override string UnlockText => UnlockKind switch
     {
         EpochUnlockKind.Cards => CreateCardUnlockText(Cards),

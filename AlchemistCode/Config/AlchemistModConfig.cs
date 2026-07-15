@@ -27,6 +27,10 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigHoverTip]
     public static bool EnableEpochs { get; set; } = true;
 
+    [ConfigSection("Compatibility")]
+    [ConfigHoverTip]
+    public static bool KeepPoolsSeparate { get; set; } = true;
+
     [ConfigSection("Unlocks")]
     [ConfigButton("UnlockAllButtonLabel")]
     public static void UnlockAll()
@@ -61,11 +65,21 @@ public class AlchemistModConfig : SimpleModConfig
         RemoveFromDiscovered("_discoveredRelics", ModelDb.AllRelics.Where(r => r is AlchemistRelic).Select(r => r.Id));
         RemoveFromDiscovered("_discoveredPotions", ModelDb.AllPotions.Where(p => p is AlchemistPotion).Select(p => p.Id));
 
-        foreach (var type in EpochRegistration.AlchemistEpochTypes)
-            save.ObtainEpochOverride(EpochModel.GetId(type), EpochState.NotObtained);
+        // Remove the epoch entries entirely (rather than NotObtained, which would render 2-7 as locked
+        // slots up front) so progression restarts clean: only Alchemist1's slot reappears, via Neow
+        RemoveAlchemistEpochs();
 
         save.SaveProgressFile();
         Notify("Re-locked all Alchemist cards, relics, potions, and Epochs.");
+    }
+
+    private static void RemoveAlchemistEpochs()
+    {
+        var progress = SaveManager.Instance.Progress;
+        var field = typeof(ProgressState).GetField("_epochs", BindingFlags.Instance | BindingFlags.NonPublic);
+        if (field?.GetValue(progress) is not List<SerializableEpoch> epochs) return;
+        var ids = EpochRegistration.AlchemistEpochTypes.Select(EpochModel.GetId).ToHashSet();
+        epochs.RemoveAll(e => ids.Contains(e.Id));
     }
 
     private static void RemoveFromDiscovered(string fieldName, IEnumerable<ModelId> ids)

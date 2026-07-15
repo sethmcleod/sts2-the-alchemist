@@ -8,6 +8,7 @@ using Alchemist.AlchemistCode.Epochs;
 using AlchemistCharacter = Alchemist.AlchemistCode.Character.Alchemist;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Screens.Timeline;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.Saves.Managers;
 using MegaCrit.Sts2.Core.Saves.Runs;
@@ -39,20 +40,6 @@ public static class EpochPatches
         PostRun.Invoke(mgr, new object[] { epoch, sp, sr });
 
     private static bool Enabled => AlchemistModConfig.EnableEpochs;
-
-    // Fresh save: reveal every epoch that has no progress entry so nothing in-use gets locked. After a
-    // reset the entries already exist, so this skips them
-    private static void RevealAllIfFresh()
-    {
-        var progress = SaveManager.Instance?.Progress;
-        if (progress == null) return;
-        foreach (var type in EpochRegistration.AlchemistEpochTypes)
-        {
-            var id = EpochModel.GetId(type);
-            if (!progress.HasEpoch(id))
-                SaveManager.Instance.ObtainEpochOverride(id, EpochState.Revealed);
-        }
-    }
 
     private static bool IsAlchemist(Player p) => p?.Character is AlchemistCharacter;
     private static bool IsAlchemist(SerializablePlayer sp) =>
@@ -136,7 +123,6 @@ public static class EpochPatches
     private static void Append(ref string[] result, EpochUnlockKind kind)
     {
         if (!Enabled) return;
-        RevealAllIfFresh();
         result = result.Concat(EpochRegistration.GatingEpochIds(kind)).ToArray();
     }
 
@@ -158,9 +144,19 @@ public static class EpochPatches
     private static void AddFirstChapterSlot(ref EpochModel[] __result)
     {
         if (!Enabled) return;
-        RevealAllIfFresh();
         var ch1 = EpochModel.Get<Alchemist1Epoch>();
         if (__result.All(e => e.Id != ch1.Id))
             __result = __result.Append(ch1).ToArray();
+    }
+
+    // With the Timeline feature disabled, strip our epochs from every slot batch so they vanish from the
+    // Timeline (both the full rebuild and reveal animations funnel through here). Saved epoch states are
+    // untouched, so re-enabling restores prior progress. Runs before the async body reads the list.
+    [HarmonyPatch(typeof(NTimelineScreen), "AddEpochSlots")]
+    [HarmonyPrefix]
+    private static void HideAlchemistEpochsWhenDisabled(List<EpochSlotData> slotsToAdd)
+    {
+        if (Enabled) return;
+        slotsToAdd.RemoveAll(s => s.Model is AlchemistEpoch);
     }
 }

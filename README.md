@@ -6,13 +6,13 @@
 ## Overview
 
 The Alchemist is a custom character built around a high-risk, high-reward
-gameplay loop and three overlapping archetypes: the **Apothecary**, the
-**Distiller**, and the **Artificer**. The class as a whole is defined by
+gameplay loop and three overlapping archetypes: the **Transmuter**, the
+**Distiller**, and the **Apothecary**. The class as a whole is defined by
 deliberately running its own health low to unlock its most powerful effects,
 then converting that danger back into survival — a constant balancing act
 between poisoning yourself and healing yourself.
 
-**The Apothecary** is the heart of the class, turning self-inflicted Poison into
+**The Transmuter** is the heart of the class, turning self-inflicted Poison into
 fuel: apply Poison to yourself as readily as to enemies, convert it into Regen,
 and spend that Regen again on damage, Block, and Strength. When your health is
 at or below half, your Gambit cards get an extra effect — this archetype thrives
@@ -23,7 +23,7 @@ holding cards and dumping them: Ferment cards grow stronger every turn they stay
 in your hand, while Seep cards pressure you to commit now or pay a price.
 Your hand itself becomes a resource managed over time.
 
-**The Artificer** is the engine-builder, emphasizing Infusion, tokens, and the
+**The Apothecary** is the engine-builder, emphasizing Infusion, tokens, and the
 potion economy: enhance the cards you already love mid-combat, refine your hand
 into Distillates, and keep a full potion belt that several cards convert
 directly into damage, Block, and tempo.
@@ -69,7 +69,7 @@ timeline and characters, and observant players will find more than a few threads
 connecting them to the world. All artwork is in the process of being hand-drawn
 and animated in the style of the base game.
 
-## Getting started
+## Getting Started
 
 ### Play it
 

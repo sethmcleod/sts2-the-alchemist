@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# One-command setup for Alchemist development & testing.
+# One-command setup for mod development & testing.
 #
 #   scripts/setup.sh
 #
@@ -66,8 +66,10 @@ for p in python3.13 python3.12 python3.11 python3.10 python3; do
 done
 if [ -n "$py_found" ]; then
   ok "python $("$py_found" --version 2>&1 | cut -d' ' -f2) ($py_found)"
+elif command -v uv >/dev/null 2>&1; then
+  ok "uv $(uv --version 2>&1 | cut -d' ' -f2) — will provision Python for the regression suite"
 else
-  bad "no Python >= 3.10 found — needed for the regression suite (e.g. brew install python@3.12)"
+  bad "no Python >= 3.10 found — install uv (https://astral.sh/uv) to provision one, or install Python directly"
 fi
 GODOT="${GODOT:-/Applications/MegaDot.app/Contents/MacOS/Godot}"
 if [ -x "$GODOT" ]; then

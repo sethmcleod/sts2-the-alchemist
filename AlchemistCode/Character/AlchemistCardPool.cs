@@ -1,12 +1,21 @@
-﻿using BaseLib.Abstracts;
+﻿using System.Collections.Generic;
+using System.Linq;
+using BaseLib.Abstracts;
+using Alchemist.AlchemistCode.Epochs;
 using Alchemist.AlchemistCode.Extensions;
 using Godot;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Unlocks;
 
 namespace Alchemist.AlchemistCode.Character;
 
 public class AlchemistCardPool : CustomCardPoolModel
 {
     public override string Title => Alchemist.CharacterId; // Not a display name
+
+    // Cards unlocked by later epochs stay out of the pool until that epoch is revealed on the Timeline
+    protected override IEnumerable<CardModel> FilterThroughEpochs(UnlockState unlockState, IEnumerable<CardModel> cards) =>
+        cards.Where(c => EpochGating.CardUnlocked(c.Id, unlockState));
 
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
