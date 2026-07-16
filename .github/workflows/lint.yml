@@ -1,0 +1,42 @@
+name: lint
+
+# Only the offline checks run here. `dotnet build` needs the game's sts2.dll, which comes
+# from a Steam install a public runner can't have, so compilation stays a local/preflight
+# gate (scripts/dev.sh release) rather than a CI one.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Three-way rule (code / localization / cards.csv)
+        run: python3 scripts/lint_sync.py
+
+      - name: Localization files are valid JSON
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, sys
+
+          failures = []
+          files = sorted(pathlib.Path("Alchemist/localization").rglob("*.json"))
+          for path in files:
+              try:
+                  json.loads(path.read_text())
+              except json.JSONDecodeError as e:
+                  failures.append(f"{path}:{e.lineno}:{e.colno}: {e.msg}")
+
+          for f in failures:
+              print(f"error: {f}", file=sys.stderr)
+          print(f"{len(files)} localization file(s): {len(failures)} error(s)")
+          sys.exit(1 if failures else 0)
+          PY

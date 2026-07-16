@@ -19,6 +19,14 @@
   `"<GodotPath>" --headless --import --path .`
 - Or let `scripts/dev.sh publish` chain all of the above in the right order.
 
+## CI
+
+`.github/workflows/lint.yml` runs the three-way-rule check and validates the localization
+JSON on every push and PR. It deliberately stops there: compiling needs `sts2.dll` from a
+Steam install, which a public runner can't have, so the build hard-fails without the game
+(`Sts2PathDiscovery.props`). Compilation and the regression suite are gated locally instead,
+by `scripts/dev.sh release` (see [RELEASING.md](RELEASING.md)).
+
 ## Conventions
 - Cards/powers/relics/potions derive their localization keys and icon filenames from the class name (`MyCard` → `ALCHEMIST-MY_CARD`, `my_card.png`). Icon sizes: powers 64/256(big), relics 94/94(outline)/256(big), card portraits in `card_portraits/big/`.
 - Every power needs `.title`, `.description` **and** `.smartDescription` loc keys (build analyzer enforces this).
