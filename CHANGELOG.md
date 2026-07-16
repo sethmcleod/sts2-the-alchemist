@@ -12,11 +12,18 @@ Security.
 
 ## [Unreleased]
 
+### Changed
+- The Alchemist now has its own attack, cast, and death sounds instead of playing
+  the Ironclad's. Attacks and death draw on the Silent's kit, casts on the
+  Necrobinder's, until the character has bespoke audio of its own.
+
 ### Fixed
 - Combat no longer hangs on the killing blow when your save carries a Timeline
   epoch from a mod you have since uninstalled. The epoch is now omitted from the
   end-of-combat replay instead of aborting combat cleanup. Your unlock progress is
   untouched, so reinstalling the mod restores it.
+- In co-op, choosing an event option that would kill you now shows a real line
+  from the Alchemist instead of the placeholder text "Co-op survival line".
 
 ## [0.1.0] - 2026-07-15
 
