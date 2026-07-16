@@ -12,6 +12,10 @@
 #   scripts/dev.sh game-stop      quit the game (graceful, then force)
 #   scripts/dev.sh game-restart   stop + start (loads freshly-installed bridge/mod builds)
 #   scripts/dev.sh lint           static three-way-rule check (offline, no game)
+#   scripts/dev.sh changelog      draft CHANGELOG entries from commits since the last tag (prints, writes nothing)
+#   scripts/dev.sh release <patch|minor|major|X.Y.Z>
+#                                 bump version, roll CHANGELOG, build, and package dist/Alchemist-vX.Y.Z.zip;
+#                                 prints the git commit/tag/push block for you to run (see RELEASING.md)
 #   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with fixes
 #   scripts/dev.sh env            print the resolved paths and exit
 #
@@ -126,6 +130,124 @@ do_game() {  # start|stop|restart
   PYTHONPATH="$STS2_MCP_DIR" STS2_MCP_DIR="$STS2_MCP_DIR" "${PY_CMD[@]}" "$REPO/scripts/tests/run_suite.py" --game "$1"
 }
 
+# ── release plumbing ────────────────────────────────────────────────────────
+CHANGELOG="$REPO/CHANGELOG.md"
+MANIFEST="$REPO/Alchemist.json"
+DIST="$REPO/dist"
+
+current_version() {  # bare X.Y.Z from the manifest (strips the v prefix)
+  grep '"version"' "$MANIFEST" | sed -E 's/.*"version"[[:space:]]*:[[:space:]]*"v?([0-9]+\.[0-9]+\.[0-9]+)".*/\1/'
+}
+
+# Lines of the ## [Unreleased] section (between that heading and the next ## heading).
+unreleased_body() {
+  awk '/^## \[Unreleased\]/{grab=1; next} grab && /^## /{exit} grab{print}' "$CHANGELOG"
+}
+
+# Draft changelog entries from Conventional Commits since the last tag. Read-only.
+do_changelog() {
+  local last range subject
+  last="$(git -C "$REPO" describe --tags --abbrev=0 2>/dev/null || true)"
+  range="${last:+$last..HEAD}"
+  step "changelog draft ${last:+since $last}${last:-(all history)}"
+  emit() {  # <heading> <grep-extended-prefix>
+    local out
+    out="$(git -C "$REPO" log --no-merges --pretty=format:'%s' $range \
+           | grep -E "^($2)(\(.+\))?!?:" \
+           | sed -E "s/^($2)(\(.+\))?!?:[[:space:]]*//" | sed 's/^/- /')"
+    [ -n "$out" ] && printf '\n### %s\n%s\n' "$1" "$out"
+  }
+  echo "Paste the relevant lines under ## [Unreleased] in CHANGELOG.md, then reword"
+  echo "them into player-facing language (see RELEASING.md). Nothing was written."
+  emit Added   'feat'
+  emit Fixed   'fix'
+  emit Changed 'refactor|perf'
+  emit Other   'style|docs|test|chore|build|ci'
+  echo
+}
+
+do_release() {  # <patch|minor|major|X.Y.Z>
+  local bump="${1:-}"
+  [ -n "$bump" ] || { bad "usage: scripts/dev.sh release <patch|minor|major|X.Y.Z>"; exit 1; }
+  have_py || { bad "$no_py_msg (release runs the lint check)"; exit 1; }
+
+  step "release preflight"
+  [ -z "$(git -C "$REPO" status --porcelain)" ] || { bad "working tree not clean — commit or stash first"; exit 1; }
+  local branch; branch="$(git -C "$REPO" rev-parse --abbrev-ref HEAD)"
+  [ "$branch" = "main" ] || { bad "on branch '$branch' — release from main"; exit 1; }
+
+  # Compute the new version.
+  local cur new; cur="$(current_version)"
+  [ -n "$cur" ] || { bad "could not read version from $MANIFEST"; exit 1; }
+  local IFS=. ; local -a p=($cur); unset IFS
+  case "$bump" in
+    major) new="$((p[0]+1)).0.0" ;;
+    minor) new="${p[0]}.$((p[1]+1)).0" ;;
+    patch) new="${p[0]}.${p[1]}.$((p[2]+1))" ;;
+    v*)    new="${bump#v}" ;;
+    *)     new="$bump" ;;
+  esac
+  [[ "$new" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { bad "invalid version '$new' — expected X.Y.Z"; exit 1; }
+  [ "$new" != "$cur" ] || { bad "new version equals current ($cur)"; exit 1; }
+  [ "$(printf '%s\n%s\n' "$cur" "$new" | sort -V | tail -1)" = "$new" ] || { bad "new version $new is not greater than current $cur"; exit 1; }
+
+  # A release must have curated notes.
+  [ -n "$(unreleased_body | tr -d '[:space:]')" ] || { bad "## [Unreleased] in CHANGELOG.md is empty — add notes (scripts/dev.sh changelog seeds a draft)"; exit 1; }
+
+  do_build
+  step "lint"
+  "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py"
+
+  local date; date="$(date +%Y-%m-%d)"
+  ok "releasing v$cur → v$new ($date)"
+
+  # Bump the manifest version (keep the v prefix).
+  sed -i.bak -E "s/(\"version\"[[:space:]]*:[[:space:]]*\")v?[0-9]+\.[0-9]+\.[0-9]+(\")/\1v$new\2/" "$MANIFEST" && rm -f "$MANIFEST.bak"
+
+  # Roll the changelog: freshen Unreleased and stamp the released section.
+  awk -v ver="$new" -v date="$date" '
+    /^## \[Unreleased\]/ { print; print ""; print "## [" ver "] - " date; next }
+    { print }
+  ' "$CHANGELOG" > "$CHANGELOG.tmp" && mv "$CHANGELOG.tmp" "$CHANGELOG"
+
+  do_publish
+
+  # Package the drop-in zip: a single top-level Alchemist/ folder with the three
+  # runtime files the game loads (no pdb — debug-only; mod_image is inside the pck).
+  step "package dist/Alchemist-v$new.zip"
+  local stage="$DIST/stage" src="$GAME_MODS/Alchemist"
+  rm -rf "$stage"; mkdir -p "$stage/Alchemist"
+  local f; for f in Alchemist.dll Alchemist.json Alchemist.pck; do
+    [ -f "$src/$f" ] || { bad "expected $src/$f after publish — aborting"; exit 1; }
+    cp -f "$src/$f" "$stage/Alchemist/"
+  done
+  local zipfile="$DIST/Alchemist-v$new.zip"
+  rm -f "$zipfile"
+  (cd "$stage" && zip -r -q "$zipfile" Alchemist)
+  rm -rf "$stage"
+  ls -lh "$zipfile"
+
+  # Extract this version's notes for the GitHub Release body / Workshop comment.
+  local notes="$DIST/RELEASE_NOTES-v$new.txt"
+  awk -v ver="$new" '
+    $0 ~ "^## \\[" ver "\\]" {grab=1; print; next}
+    grab && /^## \[/ {exit}
+    grab {print}
+  ' "$CHANGELOG" > "$notes"
+
+  echo
+  ok "prepared v$new — files updated, artifact + notes written to dist/"
+  echo "Review the diff, then run:"
+  echo
+  echo "    git add Alchemist.json CHANGELOG.md"
+  echo "    git commit -m \"release: v$new\""
+  echo "    git tag -a v$new -m \"v$new\""
+  echo "    git push --follow-tags"
+  echo
+  echo "Then create a GitHub Release for tag v$new, attach $zipfile,"
+  echo "and paste $notes as the body. See RELEASING.md."
+}
+
 do_doctor() {
   step "doctor"
   local fail=0
@@ -156,6 +278,8 @@ case "${1:-help}" in
   game-restart)  do_game restart ;;
   lint)          have_py || { bad "$no_py_msg"; exit 1; }
                  "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py" ;;
+  changelog)     do_changelog ;;
+  release)       shift; do_release "$@" ;;
   doctor)        do_doctor ;;
   env)
     echo "REPO          = $REPO"

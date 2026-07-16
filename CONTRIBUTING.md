@@ -33,3 +33,6 @@ The three places:
 The repo ships an automated suite (no agentic tooling needed) — see [scripts/tests/README.md](scripts/tests/README.md):
 - Run `scripts/dev.sh test` before PRs that touch card/power behavior; it must pass.
 - If your PR changes a card's numbers or mechanics, **update or add its scenario** in `scripts/tests/` — a number change with no test change is how regressions ship. [docs/adding-a-card.md](docs/adding-a-card.md) shows the full workflow, including its test step.
+
+## Changelog & releases
+Every player-visible change (new content, balance, bug fix, text/art) gets an entry under `## [Unreleased]` in [CHANGELOG.md](CHANGELOG.md), worded for players. Versioning, the changelog workflow, and how a release is cut and packaged live in [RELEASING.md](RELEASING.md).

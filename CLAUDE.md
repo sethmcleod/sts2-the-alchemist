@@ -28,8 +28,13 @@ scripts/dev.sh test [--group G] [name] [--fresh]
                             #   sts2-modding-mcp's run_test_scenario tool)
 scripts/dev.sh game-start | game-stop | game-restart   # game process control (Steam must run)
 scripts/dev.sh lint         # offline static three-way-rule check (no game)
+scripts/dev.sh changelog    # draft CHANGELOG entries from commits since the last tag
+scripts/dev.sh release <patch|minor|major|X.Y.Z>   # bump + roll changelog + package zip (see RELEASING.md)
 scripts/dev.sh doctor       # ✓/✗ every prerequisite
 ```
+
+Player-visible changes get a `CHANGELOG.md` entry under `## [Unreleased]`;
+releases are cut with `scripts/dev.sh release` — see [RELEASING.md](RELEASING.md).
 
 `dotnet build` must pass with 0 errors — the in-build loc analyzer enforces that every
 power has `.title`/`.description`/`.smartDescription` keys.
@@ -69,6 +74,7 @@ time to discover:
 | [README.md](README.md) | design, mechanics, install, quickstart |
 | [BUILD.md](BUILD.md) | prerequisites, build/publish, asset conventions |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | three-way rule, design + code conventions |
+| [RELEASING.md](RELEASING.md) | versioning policy, changelog, release + packaging |
 | [docs/adding-a-card.md](docs/adding-a-card.md) | end-to-end worked example |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | known gotchas + fixes |
 | [scripts/tests/README.md](scripts/tests/README.md) | regression suite + bridge quirks |

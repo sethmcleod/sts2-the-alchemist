@@ -69,13 +69,23 @@ connecting them. ✨
 
 ### Play it
 
-> [!NOTE]
-> No packaged release yet — playing means building from source (below).
-> `scripts/dev.sh publish` installs the mod straight into your game.
-> I intend to publish this to Steam Workshop and open up for playtesting
-> once the character art is ready.
+**Steam Workshop** is the preferred way to install and play — one click, it
+keeps itself updated, and it pulls in the required BaseLib dependency for you.
 
-Requires Slay the Spire 2 (Steam) and the prerequisites in [BUILD.md](BUILD.md).
+> [!NOTE]
+> The Workshop release is coming soon — it's waiting on the character artwork
+> before the first public release. Until then, install manually:
+
+**Manual install** — grab `Alchemist-vX.Y.Z.zip` from the
+[Releases](https://github.com/sethmcleod/sts2-the-alchemist/releases) page, first
+install [**BaseLib**](https://steamcommunity.com/workshop/filedetails/?id=3737335127)
+(Workshop would do this for you), then extract the
+`Alchemist/` folder into your game's `mods/` folder. Full step-by-step and the
+per-platform `mods/` path are in [RELEASING.md](RELEASING.md#how-players-install-it).
+No repo clone or build tools needed.
+
+Requires Slay the Spire 2 (Steam). Building from source instead? See the
+prerequisites in [BUILD.md](BUILD.md) and the Develop steps below.
 
 ### Develop
 
@@ -101,6 +111,7 @@ scripts/dev.sh test       # regression suite against the live game
 |---|---|
 | [BUILD.md](BUILD.md) | prerequisites, build/publish commands, asset conventions |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | the three-way update rule, design + code conventions |
+| [RELEASING.md](RELEASING.md) | versioning policy, changelog workflow, cutting a release, install |
 | [docs/adding-a-card.md](docs/adding-a-card.md) | end-to-end worked example: add one card |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | known gotchas and their fixes |
 | [scripts/tests/README.md](scripts/tests/README.md) | regression suite: running + authoring |
