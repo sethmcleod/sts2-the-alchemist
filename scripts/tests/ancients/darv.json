@@ -21,10 +21,16 @@
       "timeout": 10
     },
     {
+      "do": {
+        "walk_dialogue": true
+      },
+      "note": "advance through every dialogue line; each renders and the sequence reaches the last line"
+    },
+    {
       "expect": {
         "ancient_dialogues": {
           "ancient": "Darv",
-          "min_dialogues": 1
+          "min_dialogues": 3
         }
       },
       "timeout": 6,

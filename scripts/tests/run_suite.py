@@ -298,6 +298,8 @@ def _do(action: dict, ctx: dict) -> None:
                     and str(a.get("label", "")).startswith("Proceed")), None)
         if idx is not None:
             bridge_client.make_event_choice(idx)
+    elif "walk_dialogue" in action:
+        _walk_ancient_dialogue(ctx)
     elif "click_label" in action:
         # ForceClick a button under `root` whose child Label reads `label` — for
         # option rows the bridge doesn't surface (rest-site Brew, etc.)
@@ -324,6 +326,73 @@ def _do(action: dict, ctx: dict) -> None:
         time.sleep(float(action["sleep"]))
     else:
         raise CheckFailure(f"unknown do: {action}")
+
+
+def _walk_ancient_dialogue(ctx: dict) -> None:
+    """Advance an open ancient event through EVERY line of its dialogue the way a player
+    does — clicking the invisible 'next' hitbox — and verify each line renders on screen
+    (no raw keys/errors) and that clicking actually walks the sequence to the last line.
+
+    Without this a scenario only ever sees the first line before the run is abandoned, so
+    lines 2..N are never exercised on screen. Standard AncientEventLayout events only (the
+    Architect's finale uses a combat layout and is covered by the dialogue registry checks)."""
+    layout = DIALOGUE_LABEL.split("/ContentContainer")[0]
+    container = DIALOGUE_LABEL.split("/AncientDialogueLine")[0]
+
+    def _prop(path: str, name: str) -> str:
+        raw = str(godot_explorer_client.get_property(path, name))
+        return raw.split(" = ", 1)[1].strip() if " = " in raw else raw.strip()
+
+    def _lines() -> list[str]:
+        tree = godot_explorer_client.get_scene_tree(root_path=container, depth=1)
+        return [c["path"] for c in (tree.get("children") or [])] if isinstance(tree, dict) else []
+
+    # Dialogue line nodes are add_child'd deferred (materialize over later frames) and the
+    # 'next' hitbox is only enabled once setup completes — wait for the line count to settle
+    # so we don't walk a half-built conversation.
+    lines, deadline = _lines(), time.monotonic() + 5
+    while time.monotonic() < deadline:
+        time.sleep(0.3)
+        nxt = _lines()
+        if nxt and nxt == lines:
+            break
+        lines = nxt
+    if not lines:
+        raise CheckFailure(f"walk_dialogue: no dialogue lines under {container}")
+
+    hits = godot_explorer_client.find_nodes("DialogueHitbox")
+    hitbox = next((n["path"] for n in (hits.get("results") or [])
+                   if "EventRoom" in n.get("path", "") and "GodotExplorer" not in n.get("path", "")), None)
+
+    fails: list[str] = []
+    n = len(lines)
+    for i, line in enumerate(lines):
+        txt = _prop(f"{line}/DialogueContainer/TextContainer/Text", "text")
+        if not txt or "LocString table" in txt or txt.lower().startswith("error"):
+            fails.append(f"line {i} renders (got {txt[:40]!r})")
+        if _prop(layout, "_currentDialogueLine") != str(i):
+            fails.append(f"line {i}: sequence sits on it (at {_prop(layout, '_currentDialogueLine')!r})")
+        if i < n - 1:
+            if hitbox is None:
+                raise CheckFailure("walk_dialogue: 'next' hitbox not found")
+            # click 'next' and wait for the sequence to advance; only re-click while still on
+            # line i (never past line i+1) so a slow click can't be double-counted.
+            adv = time.monotonic() + 3
+            while time.monotonic() < adv:
+                cur = _prop(layout, "_currentDialogueLine")
+                if cur == str(i + 1):
+                    break
+                if cur == str(i):
+                    godot_explorer_client.call_method(hitbox, "ForceClick")
+                time.sleep(0.2)
+            if _prop(layout, "_currentDialogueLine") != str(i + 1):
+                fails.append(f"clicking 'next' from line {i} advanced the dialogue")
+                break
+    if "true" not in _prop(layout, "IsDialogueOnLastLine").lower():
+        fails.append("dialogue reached its last line (options never enabled)")
+    ctx["dialogue_lines_walked"] = n
+    if fails:
+        raise CheckFailure(f"walk_dialogue ({n} lines): " + "; ".join(fails))
 
 
 _POTION_HOLDERS = ("/root/Game/RootSceneContainer/Run/GlobalUi/TopBar/LeftAlignedStuff"
@@ -498,25 +567,32 @@ def _eval_expect(expect: dict, ctx: dict) -> list[str]:
                 fails.append(f"some alive enemy has hp == {want} (alive hps: {hps})")
         elif key == "dialogue_loc_complete":
             # General, source-derived: for every ancient the mod writes Alchemist dialogue
-            # for (grouped from ancients.json), the live registered dialogue must render
-            # all lines (no raw keys/errors) and have the same spoken-line count as the loc
-            # file. Auto-adapts when dialogue is added/removed — no per-ancient expectations.
+            # for (grouped from ancients.json), the live registered dialogue must render all
+            # lines (no raw keys/errors) and match the loc file on both the number of
+            # conversations (visit-gated dialogues) and the total spoken-line count. Together
+            # these prove every ancient's full set of visit conversations is registered and
+            # renders. Auto-adapts when dialogue is added/removed — no per-ancient expectations.
             import re as _re
             import collections as _co
             loc = json.loads((REPO_DIR / "Alchemist/localization/eng/ancients.json").read_text())
             loc_lines = _co.Counter()
+            loc_convs: dict[str, set] = _co.defaultdict(set)
             for k in loc:
-                m = _re.match(r"([A-Z_]+)\.talk\.ALCHEMIST-ALCHEMIST\..*\.(char|ancient)$", k)
+                m = _re.match(r"([A-Z_]+)\.talk\.ALCHEMIST-ALCHEMIST\.(\d+)-\d+r?\.(char|ancient)$", k)
                 if m:
                     loc_lines[m.group(1)] += 1
+                    loc_convs[m.group(1)].add(int(m.group(2)))
             rpc = {a["ancient"]: a for a in _r(bridge_client.send_request("get_ancient_dialogues")).get("ancients") or []}
             norm = {n.replace("_", "").upper(): a for n, a in rpc.items()}
             for prefix, n_lines in sorted(loc_lines.items()):
                 a = norm.get(prefix.replace("_", ""))
+                n_convs = len(loc_convs[prefix])
                 if a is None:
                     fails.append(f"{prefix}: no registered dialogue for the Alchemist")
                 elif a.get("bad_lines"):
                     fails.append(f"{prefix}: unrendered lines {a['bad_lines'][:2]}")
+                elif a.get("dialogue_count") != n_convs:
+                    fails.append(f"{prefix}: {a.get('dialogue_count')} registered conversations vs {n_convs} in loc")
                 elif a.get("line_count") != n_lines:
                     fails.append(f"{prefix}: {a.get('line_count')} registered lines vs {n_lines} in loc")
         elif key == "ancient_dialogues":

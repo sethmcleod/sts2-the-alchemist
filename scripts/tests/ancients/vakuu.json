@@ -1,15 +1,15 @@
 {
-  "name": "ancient_neow",
+  "name": "ancient_vakuu",
   "group": "ancients",
-  "description": "Neow ancient event renders localized options (no raw LocString keys) without exceptions; and the custom Alchemist dialogue is registered and renders",
+  "description": "Vakuu ancient event renders localized options (no raw LocString keys) without exceptions; and the custom Alchemist dialogue is registered and renders",
   "setup": {
     "character": "Alchemist",
-    "seed": "ANCREG1"
+    "seed": "ANCREG9"
   },
   "checks": [
     {
       "do": {
-        "console": "ancient NEOW"
+        "console": "ancient VAKUU"
       },
       "expect": {
         "screen": "EVENT",
@@ -29,12 +29,12 @@
     {
       "expect": {
         "ancient_dialogues": {
-          "ancient": "Neow",
+          "ancient": "Vakuu",
           "min_dialogues": 3
         }
       },
       "timeout": 6,
-      "note": "Neow has Alchemist-specific dialogue, all lines render"
+      "note": "Vakuu has 3 Alchemist-specific visit conversations, all lines render"
     }
   ]
 }

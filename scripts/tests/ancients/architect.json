@@ -24,11 +24,11 @@
       "expect": {
         "ancient_dialogues": {
           "ancient": "TheArchitect",
-          "min_dialogues": 1
+          "min_dialogues": 3
         }
       },
       "timeout": 6,
-      "note": "TheArchitect has Alchemist-specific dialogue, all lines render"
+      "note": "TheArchitect has 3 Alchemist-specific visit conversations, all lines render"
     }
   ]
 }

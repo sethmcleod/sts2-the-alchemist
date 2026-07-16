@@ -55,7 +55,7 @@ Scenarios live in one subdirectory per group; each JSON carries `name`, `group`,
 |---|---|
 | `cards/` | card/power behavior under seeded combat — costs, effects, once-per-turn caps, token generation, **base + upgraded** numbers, and damage mechanics via a fixed-HP-normalized enemy (Sepsis +50%, Overflow AoE, Virulence poison) |
 | `sweeps/` | whole-set crash smoke: play **every** pool card, add all relics, use all potions — any exception (unwrapped to its real type) or player death fails, naming the entity |
-| `ancients/` | each custom Ancient (Neow/Darv/Architect): options render with no raw `LocString` keys and the on-screen dialogue shows localized text; plus a general `dialogue_completeness` check that derives every ancient's expected dialogue from `ancients.json` and verifies all 9 ancients' lines register + render (auto-adapts as dialogue changes) |
+| `ancients/` | **each of the 9 Ancients** (Darv/Neow/Nonupeipe/Orobas/Pael/Tanx/Tezcatara/Vakuu/Architect) gets its own scenario: options render with no raw `LocString` keys, and all 3 of its visit conversations register + render (`min_dialogues: 3`). The 8 standard ancients additionally `walk_dialogue` — clicking through **every line** of the shown conversation on screen, asserting each renders and the sequence reaches its last line (the Architect's finale uses a combat layout, so it's covered by the registry checks). Plus a general `dialogue_completeness` check that derives every ancient's expected **conversation count and line count** from `ancients.json` and verifies the live registered dialogue matches and renders (auto-adapts as dialogue changes) |
 | `rest/` | WeatheredKit's custom **Brew** rest-site option (right label, removes a deck card, potion reward you claim) and the relic's +3 HP heal on potion use |
 | `shop/` | the potion-selling mechanic: Sell button + price on sellables, gold delta, and Foul Potion keeping its base-game Throw behavior |
 | `settings/` | the mod's config panel + timeline metaprogression: Unlock All / Reset Unlocks (`[Config]` log counts); the Enable Epochs toggle hides our epochs yet the Timeline still opens cleanly; and the full **progressive unlock** — from a fresh timeline only Alchemist1 is visible (locked), revealing it exposes 2-7, and revealing each of 2-7 unlocks exactly its cards/relics/potions (`epoch_progression`, via `set_epoch`/`get_epoch_state`) |
@@ -83,8 +83,11 @@ what keeps the suite fast as it grows.
   roster-independent)
 - potions: `use_potion_ui` (`slot` — drives the belt popup; the bridge's `use_potion`
   reports success but **no-ops**, so always use this) · `discard_potion`
-- rooms/rewards: `advance_ancient` (proceed an open ancient event) · `remove_deck_card`
-  (`slot` — select + preview-confirm a deck-removal screen) · `reward_select` (`index`)
+- rooms/rewards: `advance_ancient` (proceed an open ancient event) · `walk_dialogue`
+  (click the invisible "next" hitbox through **every** line of an open ancient's dialogue,
+  asserting each renders and the sequence reaches its last line — waits out the deferred
+  line-node adds) · `remove_deck_card` (`slot` — select + preview-confirm a deck-removal
+  screen) · `reward_select` (`index`)
 - console/bridge: `console` · `bridge` (raw method) · `menu` (navigate_menu target)
 - UI: `click` (ForceClick a node path) · `click_method` (`"path|Method"`) ·
   `click_label` (`{root, label}` — click a child button by its Label text) ·
