@@ -5,7 +5,7 @@
 
 ## Overview
 
-The Alchemist is a high-risk, high-reward character defined by one loop:
+The Alchemist is a high-risk, high-reward character with a primary loop:
 deliberately run your own health low to unlock your strongest effects, then
 convert that danger back into survival. A constant balance between poisoning
 yourself and healing yourself.

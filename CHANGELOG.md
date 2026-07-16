@@ -12,6 +12,12 @@ Security.
 
 ## [Unreleased]
 
+### Fixed
+- Combat no longer hangs on the killing blow when your save carries a Timeline
+  epoch from a mod you have since uninstalled. The epoch is now omitted from the
+  end-of-combat replay instead of aborting combat cleanup. Your unlock progress is
+  untouched, so reinstalling the mod restores it.
+
 ## [0.1.0] - 2026-07-15
 
 First pre-release: feature-complete and balanced, pending character artwork
