@@ -1,0 +1,14 @@
+{
+  "name": "infuse_fuming",
+  "group": "cards",
+  "description": "Infusing a Skill card enchants it with Fuming; playing that card then adds an Effluvium to hand",
+  "setup": {"character": "Alchemist", "seed": "ALCHINF2", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"console": "energy 10"}, "delay": 0.3},
+    {"do": {"console": "card ALCHEMIST-DEFEND_ALCHEMIST"}, "delay": 0.4, "note": "a Skill that only blocks, so it can't add cards of its own"},
+    {"do": {"console": "card ALCHEMIST-PRIME"}, "delay": 0.4},
+    {"do": {"play_card": "Prime"}, "delay": 0.8},
+    {"do": {"select_hand_cards": ["DefendAlchemist"]}, "delay": 0.8},
+    {"do": {"play_card": "DefendAlchemist"}, "expect": {"hand_contains": "Effluvium"}, "timeout": 8, "note": "Fuming fires on play"}
+  ]
+}

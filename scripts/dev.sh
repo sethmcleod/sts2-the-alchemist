@@ -13,9 +13,10 @@
 #   scripts/dev.sh game-restart   stop + start (loads freshly-installed bridge/mod builds)
 #   scripts/dev.sh lint           static three-way-rule check (offline, no game)
 #   scripts/dev.sh changelog      draft CHANGELOG entries from commits since the last tag (prints, writes nothing)
-#   scripts/dev.sh release <patch|minor|major|X.Y.Z>
+#   scripts/dev.sh release <patch|minor|major|X.Y.Z> [--skip-tests]
 #                                 bump version, roll CHANGELOG, build, and package dist/Alchemist-vX.Y.Z.zip;
-#                                 prints the git commit/tag/push block for you to run (see RELEASING.md)
+#                                 prints the git commit/tag/push block for you to run (see RELEASING.md).
+#                                 Runs the regression suite (so Steam must be up); --skip-tests overrides
 #   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with fixes
 #   scripts/dev.sh env            print the resolved paths and exit
 #
@@ -95,6 +96,13 @@ do_publish() { step "publish"; cd "$REPO"; dotnet publish -c Debug; }
 do_verify()  {
   step "verify pck"
   [ -f "$PCK" ] && ls -lh "$PCK" || { echo "!! pck missing at $PCK"; exit 1; }
+  # Godot holds the pck open, so replacing it under a live game invalidates every later asset
+  # load from it: the first miss (the custom energy counter) throws out of NCombatUi.Activate
+  # and combat sets up with no background. Looks exactly like a mod bug; it isn't.
+  if pgrep -f "SlayTheSpire2" >/dev/null 2>&1; then
+    bad "the game is running; it is still using the OLD pck and will throw AssetLoadException"
+    echo "  run 'scripts/dev.sh game-restart' before testing (see docs/troubleshooting.md)"
+  fi
 }
 
 # Build one bridge mod project from the tooling checkout and copy its runtime files into
@@ -166,9 +174,15 @@ do_changelog() {
   echo
 }
 
-do_release() {  # <patch|minor|major|X.Y.Z>
-  local bump="${1:-}"
-  [ -n "$bump" ] || { bad "usage: scripts/dev.sh release <patch|minor|major|X.Y.Z>"; exit 1; }
+do_release() {  # <patch|minor|major|X.Y.Z> [--skip-tests]
+  local bump="" skip_tests=0
+  for arg in "$@"; do
+    case "$arg" in
+      --skip-tests) skip_tests=1 ;;
+      *) [ -n "$bump" ] && { bad "unexpected argument '$arg'"; exit 1; }; bump="$arg" ;;
+    esac
+  done
+  [ -n "$bump" ] || { bad "usage: scripts/dev.sh release <patch|minor|major|X.Y.Z> [--skip-tests]"; exit 1; }
   have_py || { bad "$no_py_msg (release runs the lint check)"; exit 1; }
 
   step "release preflight"
@@ -197,6 +211,14 @@ do_release() {  # <patch|minor|major|X.Y.Z>
   do_build
   step "lint"
   "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py"
+
+  # The suite is the only preflight gate that exercises the mod against a real game, so a
+  # release skipping it can ship red. It drives the game itself, so Steam has to be running.
+  if [ "$skip_tests" -eq 1 ]; then
+    bad "SKIPPING the regression suite (--skip-tests); this release is unverified against the game"
+  else
+    do_test || { bad "regression suite failed; fix it or re-run with --skip-tests to override"; exit 1; }
+  fi
 
   local date; date="$(date +%Y-%m-%d)"
   ok "releasing v$cur → v$new ($date)"

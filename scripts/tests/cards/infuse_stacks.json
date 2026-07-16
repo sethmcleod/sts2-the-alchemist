@@ -1,0 +1,17 @@
+{
+  "name": "infuse_stacks",
+  "group": "cards",
+  "description": "Infusing the same card twice stacks Exalted to 2 (granting 2 Strength). Also the regression guard for the InfuseChosen double-subscribe: two Infuse prompts in one combat must leave every card visible and playable",
+  "setup": {"character": "Alchemist", "seed": "ALCHINF3", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"console": "energy 20"}, "delay": 0.3},
+    {"do": {"console": "card ALCHEMIST-IMBUE"}, "delay": 0.4},
+    {"do": {"console": "card ALCHEMIST-PRIME"}, "delay": 0.4},
+    {"do": {"console": "card ALCHEMIST-PRIME"}, "delay": 0.4},
+    {"do": {"play_card": "Prime"}, "delay": 0.8},
+    {"do": {"select_hand_cards": ["Imbue"]}, "delay": 0.8},
+    {"do": {"play_card": "Prime"}, "expect": {"hand_contains": "Imbue"}, "delay": 0.8, "note": "second Infuse in the same combat; Imbue must still be in hand, not invisible"},
+    {"do": {"select_hand_cards": ["Imbue"]}, "delay": 0.8},
+    {"do": {"play_card": "Imbue"}, "expect": {"power": {"name": "StrengthPower", "amount": 2}}, "timeout": 8, "note": "two Infuses = Exalted 2 = 2 Strength"}
+  ]
+}

@@ -28,6 +28,7 @@ Exit code 0 iff all selected scenarios pass.
 
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -217,6 +218,25 @@ def _hand_index(card_name: str, timeout: float = 5.0) -> int:
     raise CheckFailure(f"card {card_name!r} not in hand")
 
 
+def _select_hand_card(name: str, timeout: float = 6.0) -> None:
+    """Pick a card by class name in an in-combat hand-selection prompt (Infuse and friends).
+
+    Always select by name. combat_select_card's index addresses NPlayerHand.ActiveHolders,
+    the visual fan, whose order does not track the logical hand from get_combat_state, so an
+    index taken from combat state can silently land on a different card. The prompt also takes
+    a moment to list a card that a previous prompt had selected, hence the retry.
+    """
+    deadline = time.monotonic() + timeout
+    offered: list[str] = []
+    while time.monotonic() < deadline:
+        res = _r(bridge_client.execute_action("combat_select_card", card_name=name))
+        offered = res.get("cards") or offered
+        if res.get("card") == name:
+            return
+        time.sleep(0.2)
+    raise CheckFailure(f"{name!r} never became selectable in the prompt (offered: {offered})")
+
+
 def _play_card_by_name(card_name: str, target: int | None = None) -> None:
     idx = _hand_index(card_name)
     hand = _combat_player().get("hand") or []
@@ -317,6 +337,17 @@ def _do(action: dict, ctx: dict) -> None:
             "/NDeckCardSelectScreen/PreviewContainer/PreviewConfirm", "ForceClick")
     elif "reward_select" in action:
         bridge_client.execute_action("reward_select", reward_index=int(action["reward_select"]))
+    elif "select_hand_cards" in action:
+        # Drive a HAND_SELECT prompt (Infuse and friends): pick cards by class name, confirm.
+        names = action["select_hand_cards"]
+        if isinstance(names, str):
+            names = [names]
+        bridge_client.wait_for_screen("HAND_SELECT", timeout_seconds=10)
+        for name in names:
+            _select_hand_card(name)
+            time.sleep(0.3)
+        bridge_client.execute_action("combat_confirm_selection")
+        time.sleep(0.5)
     elif "snapshot" in action:
         if action["snapshot"] == "gold":
             ctx["gold"] = _player().get("gold")
@@ -750,7 +781,6 @@ def run_checks_scenario(scenario: dict, skip_setup: bool = False) -> dict:
 
 def _model_entry(model_id: str, name: str) -> str:
     """Console id (ALCHEMIST-SNAKE) from a compendium id string."""
-    import re
     m = re.search(r"ALCHEMIST-[A-Z0-9_]+", str(model_id))
     if m:
         return m.group(0)
@@ -900,18 +930,48 @@ def run_sweep(kind: str, scenario: dict) -> dict:
 
     elif kind == "relics":
         pool = next(p for p in comp.get("relic_pools") or [] if p.get("pool") == "AlchemistRelicPool")
-        for relic in pool.get("relics") or []:
-            bridge_client.execute_console_command(
-                f"relic add {_model_entry(relic['id'], relic['name'])}")
+        relics = [(r["name"], _model_entry(r["id"], r["name"])) for r in pool.get("relics") or []]
+
+        def _nigredo_turn() -> list[str]:
+            """One combat beat with whatever relics are held; returns new mod exceptions."""
+            _fresh_fight(ctx)  # combat-start hooks fire with the relics held right now
+            bridge_client.execute_console_command("card ALCHEMIST-NIGREDO")
+            _play_card_by_name("Nigredo")
+            bridge_client.send_request("end_turn", {})
+            bridge_client.wait_for_screen("COMBAT_PLAYER_TURN", timeout_seconds=20)
+            return _new_exceptions(ctx)[0]
+
+        # Isolated pass first: one relic at a time, so a throw names the relic that caused it
+        for name, entry in relics:
+            bridge_client.execute_console_command(f"relic add {entry}")
             time.sleep(0.3)
-        _fresh_fight(ctx)  # combat-start hooks fire with all 9 relics
-        bridge_client.execute_console_command("card ALCHEMIST-NIGREDO")
-        _play_card_by_name("Nigredo")
-        bridge_client.send_request("end_turn", {})
-        bridge_client.wait_for_screen("COMBAT_PLAYER_TURN", timeout_seconds=20)
-        mod, _ = _new_exceptions(ctx)
-        if mod:
-            result["failures"].append(f"relics: {mod[0]}")
+            try:
+                mod = _nigredo_turn()
+                if mod:
+                    result["failures"].append(f"{name}: {mod[0]}")
+            except Exception as e:
+                result["failures"].append(f"{name}: {e}")
+            finally:
+                bridge_client.execute_console_command(f"relic remove {entry}")
+                time.sleep(0.3)
+
+        # Then all together, which is the only pass that can surface relic interactions.
+        # A failure here can't name one relic, so say so rather than blaming an arbitrary id.
+        for _, entry in relics:
+            bridge_client.execute_console_command(f"relic add {entry}")
+            time.sleep(0.3)
+        try:
+            mod = _nigredo_turn()
+            if mod:
+                result["failures"].append(
+                    f"all {len(relics)} relics together (passed individually, so suspect an "
+                    f"interaction): {mod[0]}")
+        except Exception as e:
+            result["failures"].append(f"all {len(relics)} relics together: {e}")
+
+        result.setdefault("stats", {})["relics_swept"] = len(relics)
+        print(f"    swept: {len(relics)} relics individually + 1 combined pass, "
+              f"{len(result['failures'])} failure(s)")
 
     elif kind == "potions":
         pool = next(p for p in comp.get("potion_pools") or [] if p.get("pool") == "AlchemistPotionPool")

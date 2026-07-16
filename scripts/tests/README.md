@@ -80,7 +80,8 @@ what keeps the suite fast as it grows.
 - combat: `play_card` (`"CardClassName"`, optional `"target"` enemy index) ·
   `upgrade_card` (`"CardClassName"`) · `end_turn` · `set_enemy_hp`
   (`{enemy, hp}`, normalizes an enemy *downward* to a fixed HP so damage asserts are
-  roster-independent)
+  roster-independent) · `select_hand_cards` (`"CardClassName"` or a list, answers an
+  in-combat hand-selection prompt such as Infuse, then confirms)
 - potions: `use_potion_ui` (`slot`, drives the belt popup; the bridge's `use_potion`
   reports success but **no-ops**, so always use this) · `discard_potion`
 - rooms/rewards: `advance_ancient` (proceed an open ancient event) · `walk_dialogue`
@@ -128,6 +129,12 @@ and named. This is how the suite found the Harvest death-cleanup crash.
   (index 5 after a 5-card opening hand). Discover IDs via console `dump` + the game log.
 - **console `power`/`damage`/`block` target-index is offset**: `0` = player,
   `1` = first enemy … (enemy array index + 1); `play_card`'s `target_index` is 0-based.
+- **Hand-selection prompts use a different index space than the hand.** The bridge's
+  `combat_select_card` addresses `NPlayerHand.ActiveHolders` (the visual fan), whose order
+  does *not* track the logical hand from `get_combat_state`, and selecting a card pulls its
+  holder out of that list. Feeding it a hand index therefore picks the *wrong card*, silently
+  and repeatably. Always select by name (`select_hand_cards` does, via the bridge's
+  `card_name` param), never by index.
 - **Enemy rosters are not seed-stable** (`fight SLIMES_WEAK` re-rolls HP each run), so
   don't assert absolute enemy HP. Assert player state, block, or pools.
 - **Enemy power amounts aren't assertable**, only `enemy_N_hp`/block + player powers.
