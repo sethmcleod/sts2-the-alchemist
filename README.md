@@ -113,5 +113,6 @@ scripts/dev.sh test       # regression suite against the live game
 | [RELEASING.md](RELEASING.md) | versioning policy, changelog workflow, cutting a release, install |
 | [docs/adding-a-card.md](docs/adding-a-card.md) | end-to-end worked example: add one card |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | known gotchas and their fixes |
+| [docs/backlog.md](docs/backlog.md) | unscheduled improvements, with the evidence for each |
 | [scripts/tests/README.md](scripts/tests/README.md) | regression suite: running + authoring |
 | [sts2-modding-mcp](https://github.com/sethmcleod/sts2-modding-mcp) | the general STS2 modding toolkit this repo builds on |

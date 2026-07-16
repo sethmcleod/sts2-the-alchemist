@@ -1,0 +1,178 @@
+# Backlog
+
+Improvements worth making that aren't scheduled yet. Balance passes and the character
+artwork are tracked separately and deliberately absent here.
+
+Scope is anything this repo could do. Two neighbours have their own lists: fixes that must
+land in BaseLib live in [baselib-improvements.md](baselib-improvements.md), and known
+gotchas that already have workarounds live in [troubleshooting.md](troubleshooting.md).
+Toolkit gaps in [sts2-modding-mcp](https://github.com/sethmcleod/sts2-modding-mcp) are ours
+to fix directly, so they're listed here with that noted.
+
+Each entry records the evidence it came from, so a stale one can be re-checked rather than
+argued about. Nothing here is committed to; ordering within a section is rough priority.
+
+---
+
+## Content and feel
+
+### 1. Per-card SFX and VFX
+
+**Status:** idea, unblocked, incremental
+**Evidence:** 0 of 99 card files call `WithHitFx`/`WithAttackerFx`/`VfxCmd`; the only
+`SfxCmd.Play` is a merchant line in [PotionSellPatches.cs](../AlchemistCode/Patches/PotionSellPatches.cs)
+
+225 of 593 base-game card files (38%) attach explicit sound or visuals when played; the
+Alchemist attaches none. The engine only covers card *movement* swooshes generically
+(`SfxCmd.PlayCardSwooshSfx`), so impact and cast effects are per-card opt-in and default to
+null. Needs no new assets: `MegaCrit.Sts2.Core.Audio/FmodSfx.cs` has 45 event constants
+(`buff`, `debuff`, `heal`, `cardImpactIntoSingle`), `VfxCmd` has ~27 path constants, and
+there are 167 `N*Vfx` classes including `NPoisonImpactVfx`, which base poison cards like
+`BouncingFlask` already use. The poison cards alone are about an hour and get most of the
+felt difference, so this can start anywhere and stop anywhere.
+
+### 2. The rest of the character is still the Ironclad
+
+**Status:** blocked on artwork
+**Evidence:** [Alchemist.cs](../AlchemistCode/Character/Alchemist.cs) does not override
+`PlaceholderID`, which `BaseLib.Abstracts.PlaceholderCharacterModel` defines as `"ironclad"`
+
+The audio is fixed (`CustomAttackSfx`/`CustomCastSfx`/`CustomDeathSfx` now point at the
+Silent and Necrobinder). Everything else `PlaceholderID` drives is still Ironclad and each
+piece needs an asset: `CustomVisualPath` (the creature itself), `CustomTrailPath` (card-play
+trail), `CustomRestSiteAnimPath`, `CustomMerchantAnimPath`, and `CustomArm*TexturePath` (the
+multiplayer rock-paper-scissors hands, which matter because the mod ships 4 co-op cards).
+Two more sfx hooks are also still inherited: `CharacterSelectSfx` and
+`CharacterTransitionSfx`.
+
+Once real art exists, overriding `PlaceholderID` itself may be simpler than overriding each
+path, but that also re-points the sfx, so keep the audio overrides in mind.
+
+### 3. Custom FMOD bank for bespoke audio
+
+**Status:** idea, needs investigation
+**Evidence:** banks load from a hardcoded `bank_paths` array on an `FmodBankLoader` node in
+the game's main `.tscn`; `res://addons/fmod/` is a GDExtension
+
+The real fix behind #1 and #2's audio. A mod could in principle instantiate its own
+`FmodBankLoader` pointing at its own bank, but that needs authoring in FMOD Studio and
+GUID-collision behavior is unverified. Cheaper alternative worth checking first: the base
+game itself ships non-FMOD sounds via `NDebugAudioManager` playing plain Godot
+`AudioStream`s from `res://debug_audio/` (81 card files reference `.mp3`, and that's what
+`WithHitFx`'s third `tmpSfx` parameter is for). A mod pck can add `res://` paths and
+`NDebugAudioManager.Instance.Play` is public.
+
+### 4. A custom map event
+
+**Status:** idea
+**Evidence:** no `EventModel`/`ConstructedEventModel` anywhere in `AlchemistCode/`
+
+The README leans on the character being woven into the world's timeline, and an event is
+where that lands for players who don't read epoch text. The mod currently writes dialogue
+for 8 base-game ancients but has no room of its own.
+
+### 5. Other content types never touched
+
+**Status:** idea
+**Evidence:** no `MonsterModel`/`EncounterModel`/`OrbModel`/`ModifierModel`/`AncientModel`
+
+Custom monsters, encounters, orbs, run modifiers, and custom ancients are all absent. Each
+is a new subsystem with its own registration surface, so these are projects rather than
+tasks. Listed for completeness, not because any is obviously worth doing.
+
+### 6. Non-English localization
+
+**Status:** idea, large but mechanical
+**Evidence:** `Alchemist/localization/` contains only `eng/`
+
+The 13 files are well-structured and the character keys are at full parity with the base
+game, so this is translation work rather than refactoring. Worth noting the mod has no
+hardcoded user-facing English in code.
+
+---
+
+## Testing and tooling
+
+### 7. Multiplayer cards are excluded from every test
+
+**Status:** ready, needs a co-op harness
+**Evidence:** `MULTIPLAYER_CARDS = {"Bestow", "Effervesce", "Reflux", "Suffuse"}` at
+[run_suite.py:72](../scripts/tests/run_suite.py)
+
+The 4 co-op cards are hardcoded out of `cards_sweep` and covered by nothing else, so they're
+the least-tested content in the mod. `Bestow` is the interesting one: it's the only caller of
+`Infusion.InfuseRandomFromHand`, which no test reaches. Needs a second player, so it likely
+means driving the game's multiplayer test scene (console `multiplayer test`).
+
+### 8. `cards_sweep` silently tolerates unplayable cards
+
+**Status:** ready, small
+**Evidence:** [run_suite.py](../scripts/tests/run_suite.py) prints
+`{skipped} unplayable-skipped` but never asserts on it
+
+A card whose `can_play` is false at runtime is counted and printed, never failed. A card
+could drift into being permanently unplayable and the sweep would still pass. Either assert
+the count is 0 or pin an expected list.
+
+### 9. The bridge can't see enchantments
+
+**Status:** ready, ours to fix (toolkit)
+**Evidence:** zero `enchant` hits in `test_mod/Code/BridgeHandler.cs`; hand cards serialize
+`name`/`type`/`energy_cost`/`upgraded` only
+
+The Infuse tests assert enchantments *by effect* (Exalted grants Strength, Fuming adds
+Effluvium) because the bridge exposes no enchantment state. That's arguably better testing,
+but it means Toxic can't be asserted directly at all: it applies Poison to an enemy, and
+assertions can't read enemy power stacks either. Adding `enchantment`/`enchantment_amount`
+to the hand-card payload would close that gap.
+
+### 10. `list_game_audio` and `list_game_vfx` always return empty
+
+**Status:** ready, ours to fix (toolkit)
+**Evidence:** `_load_fmod_data()` at `sts2mcp/server.py` looks for `fmod_dump.json` in two
+paths, finds neither, and silently returns `{"events": []}`
+
+Every query returns 0 results while advertising "563 FMOD events across 12 banks", and
+`get_setup_status` reports ready because it never checks. No `fmoddumper` mod exists in the
+repo. This matters directly for #1. Two workarounds exist today:
+`grep -rhoE '"event:/[^"]*"' decompiled` recovers 369 event paths, and the extracted game at
+`~/Downloads/Slay the Spire 2/banks/desktop/` has the real banks (the string table is
+prefix-compressed, so `strings` fragments the paths rather than yielding them whole).
+
+Related and smaller: `get_baselib_reference` advertises an `fmod_audio` topic and
+`get_modding_guide` an `audio` topic, and the server rejects both as unknown.
+
+### 11. CI can't compile
+
+**Status:** wontfix unless the constraint changes
+**Evidence:** [.github/workflows/lint.yml](../.github/workflows/lint.yml); building with a
+bogus `Sts2Path` hard-fails out of `Sts2PathDiscovery.props`
+
+CI runs the three-way lint and validates the localization JSON. It can't run `dotnet build`,
+because that needs `sts2.dll` from a Steam install a public runner can't have, and it can't
+run the suite, which needs a live game. Compilation and the suite are gated locally by
+`scripts/dev.sh release` instead. Recorded so the gap isn't mistaken for an oversight.
+
+### 12. Lint doesn't cover non-card entities
+
+**Status:** idea, small
+**Evidence:** [lint_sync.py](../scripts/lint_sync.py) reads only `cards.json`, as text
+
+The three-way check is cards-only: relics, potions, powers, and enchantments get no loc-key
+lint (the in-build analyzer covers `.smartDescription`, and only for powers). It also skips
+`WithCalculated*` formula cards wholesale, and its literal-vs-csv numeric cross-check only
+warns. The CI job now parses every localization file as JSON, which `lint_sync.py` still
+doesn't do itself.
+
+---
+
+## Release
+
+### 13. Workshop upload isn't wired into the tooling
+
+**Status:** idea
+**Evidence:** [RELEASING.md](../RELEASING.md) says to fill this in when it exists
+
+`scripts/dev.sh release` automates preflight, bump, changelog, build, and zip. The
+GitHub Release and the Steam Workshop upload are both still manual, as is bumping
+`min_game_version`.
