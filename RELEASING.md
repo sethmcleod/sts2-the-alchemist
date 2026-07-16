@@ -57,7 +57,11 @@ scripts/dev.sh release minor    # or: patch | major | an explicit X.Y.Z
 `release` (see `do_release` in `scripts/dev.sh`) will:
 
 1. **Preflight**: refuse unless the working tree is clean and you're on `main`,
-   run `dotnet build` and the `lint` check, and refuse if `## [Unreleased]` is empty.
+   run `dotnet build`, the `lint` check, and the regression suite, and refuse if
+   `## [Unreleased]` is empty. The suite drives the live game, so Steam must be
+   running. `--skip-tests` overrides it and ships the release unverified against
+   the game; it prints a warning and is meant for the rare case where the game
+   can't run, not for a red suite.
 2. **Compute** the new version from the bump keyword (or take an explicit
    `X.Y.Z`) and confirm it's greater than the current one.
 3. **Update** `Alchemist.json` (`version`) and `CHANGELOG.md` (stamp

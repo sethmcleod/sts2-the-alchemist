@@ -23,6 +23,23 @@ must be imported by Godot first** (`publish` does import → publish in the righ
 The repo pins net9 while newer SDKs may be installed, so `dev.sh` exports
 `DOTNET_ROLL_FORWARD=Major` for this. If you build outside `dev.sh`, export it yourself.
 
+**Combat renders with no background, then dies on `AssetLoadException`**
+You published while the game was running. Godot holds the `.pck` open, so replacing it
+under a live process invalidates every later asset load from it:
+
+```
+AssetLoadException: Asset previously failed to load:
+  res://Alchemist/scenes/combat/energy_counters/alchemist_energy_counter.tscn.
+  The game installation may be corrupted.
+    at NEnergyCounter.Create → NCombatUi.Activate → NCombatRoom.OnCombatSetUp
+```
+
+The custom energy counter is just the first asset combat asks for. It throws out of
+`NCombatUi.Activate`, so combat UI setup aborts half-built: no background, and a later
+`NullReferenceException` in `NCombatUi.AnimOut()` when a game-over tries to animate UI that
+was never created. Nothing is actually corrupted and players never hit this. Fix with
+`scripts/dev.sh game-restart`; `publish` now warns when the game is up.
+
 ## Live testing (the sts2-modding-mcp bridge: MCPTest :21337 + GodotExplorer :27020)
 
 **Combats stop initializing, enemies appear but no hand/energy/background**

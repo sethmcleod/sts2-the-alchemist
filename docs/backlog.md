@@ -142,7 +142,19 @@ prefix-compressed, so `strings` fragments the paths rather than yielding them wh
 Related and smaller: `get_baselib_reference` advertises an `fmod_audio` topic and
 `get_modding_guide` an `audio` topic, and the server rejects both as unknown.
 
-### 11. CI can't compile
+### 11. Publishing under a live game corrupts its asset loads
+
+**Status:** mitigated by a warning; a real fix would auto-restart
+**Evidence:** [troubleshooting.md](troubleshooting.md); observed 2026-07-16 as 22/42 passing
+on code that scored 42/42 before a republish
+
+Replacing the pck while the game holds it open makes every later asset load from it throw,
+which aborts combat UI setup (no background) and blames the custom energy counter. `publish`
+now warns when the game is up, but a warning is easy to scroll past and the failure mode is
+expensive to diagnose. Options: have `publish` offer to restart the game, or have the suite
+refuse to run when the pck is newer than the game process.
+
+### 12. CI can't compile
 
 **Status:** wontfix unless the constraint changes
 **Evidence:** [.github/workflows/lint.yml](../.github/workflows/lint.yml); building with a
