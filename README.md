@@ -51,9 +51,10 @@ Three overlapping archetypes give the class its shape:
   the card, though a few are small benefits. Seep is Ferment's mirror: one
   rewards patience, the other discourages it.
 * **Infuse**: Infusing a card enchants it for the rest of combat based on its
-  type. Attacks gain **Sharp**, Skills gain **Nimble** or **Adroit**, Powers gain
-  **Swift**, and Status/Curse/Quest cards gain **Ethereal**. Same-type infusions
-  can stack multiple times.
+  type. Attacks gain **Toxic** (apply Poison on unblocked damage), Skills gain
+  **Fuming** (add Effluvium to your Hand), Powers gain **Exalted** (gain
+  Strength), and Status/Curse/Quest cards gain **Ethereal**. Same-type infusions
+  stack, each one growing the enchantment's amount by 1.
 
 ## A Note on Quality
 
