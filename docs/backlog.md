@@ -142,7 +142,26 @@ prefix-compressed, so `strings` fragments the paths rather than yielding them wh
 Related and smaller: `get_baselib_reference` advertises an `fmod_audio` topic and
 `get_modding_guide` an `audio` topic, and the server rejects both as unknown.
 
-### 11. Publishing under a live game corrupts its asset loads
+### 11. AutoSlay plays no music at all, and ignores `max_floor`
+
+**Status:** idea, ours to fix (toolkit); both cosmetic
+**Evidence:** measured 2026-07-16 mid-run (floor 29, act 2): `AudioManagerProxy.music_track`,
+`MusicControllerProxy._musicEv`, `._currentTrack` and `._ambienceEv` all null
+
+`AutoSlayer` wires `NonInteractiveMode.AutoSlayerCheck = () => IsActive`, and every method on
+`NRunMusicController` (including `StopMusic`) early-returns when `NonInteractiveMode.IsActive`.
+So an AutoSlay run has no act music and no ambience, while its menu music is correctly stopped
+by `NCharacterSelectScreen.BeginRun`: net silence. That's presumably deliberate for headless
+CI, but the fork's AutoSlay is for *watchable* balance batches, where silence is just wrong. A
+Harmony prefix forcing `AutoSlayerCheck` false for the music controller only would restore it
+without un-suppressing SFX/VFX. Not to be confused with the separate `bridge_start_run` menu-
+music leak, which is fixed.
+
+Also: `bridge_autoslay_configure` reports `applied: {max_floor: 2}` but the next run logs
+`Config maxFloor = 49`, so the override never reaches `AutoSlayConfig`. Makes short test runs
+impossible.
+
+### 12. Publishing under a live game corrupts its asset loads
 
 **Status:** mitigated by a warning; a real fix would auto-restart
 **Evidence:** [troubleshooting.md](troubleshooting.md); observed 2026-07-16 as 22/42 passing
@@ -154,7 +173,19 @@ now warns when the game is up, but a warning is easy to scroll past and the fail
 expensive to diagnose. Options: have `publish` offer to restart the game, or have the suite
 refuse to run when the pck is newer than the game process.
 
-### 12. CI can't compile
+### 13. `potion_sell` flakes in a full-suite run
+
+**Status:** needs investigation
+**Evidence:** observed 2026-07-16: failed once in a full run with
+`check 6 ... no new exceptions (got 1: Object reference not set to an instance of an object.)`,
+passes consistently on `--group shop`
+
+Order- or state-dependent rather than a code fault: it passes in isolation and runs before
+the sweeps, so nothing later in the suite can be reaching it. Worth catching the stack trace
+next time it fires (`bridge_get_exceptions` right after) rather than re-running until green.
+Now that the suite gates releases, a flake here blocks a release.
+
+### 14. CI can't compile
 
 **Status:** wontfix unless the constraint changes
 **Evidence:** [.github/workflows/lint.yml](../.github/workflows/lint.yml); building with a
@@ -165,7 +196,7 @@ because that needs `sts2.dll` from a Steam install a public runner can't have, a
 run the suite, which needs a live game. Compilation and the suite are gated locally by
 `scripts/dev.sh release` instead. Recorded so the gap isn't mistaken for an oversight.
 
-### 12. Lint doesn't cover non-card entities
+### 15. Lint doesn't cover non-card entities
 
 **Status:** idea, small
 **Evidence:** [lint_sync.py](../scripts/lint_sync.py) reads only `cards.json`, as text
@@ -180,7 +211,7 @@ doesn't do itself.
 
 ## Release
 
-### 13. Workshop upload isn't wired into the tooling
+### 16. Workshop upload isn't wired into the tooling
 
 **Status:** idea
 **Evidence:** [RELEASING.md](../RELEASING.md) says to fill this in when it exists
