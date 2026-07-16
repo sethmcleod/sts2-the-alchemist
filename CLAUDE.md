@@ -77,4 +77,5 @@ time to discover:
 | [RELEASING.md](RELEASING.md) | versioning policy, changelog, release + packaging |
 | [docs/adding-a-card.md](docs/adding-a-card.md) | end-to-end worked example |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | known gotchas + fixes |
+| [docs/baselib-improvements.md](docs/baselib-improvements.md) | findings queued to contribute upstream to BaseLib |
 | [scripts/tests/README.md](scripts/tests/README.md) | regression suite + bridge quirks |
