@@ -62,13 +62,13 @@ public abstract class AlchemistCard : ConstructedCardModel
         return pct >= lower && pct <= upper;
     }
 
-    // "Lose N HP" — unblockable, unpowered self-damage
+    // "Lose N HP", meaning unblockable, unpowered self-damage
     protected Task LoseHp(PlayerChoiceContext choiceContext, int amount) =>
         CreatureCmd.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
 
     // Formula-damage cards deal raw DamageCmd.Attack(decimal) with no DamageVar, and only DamageVar runs an
-    // enchantment's damage hooks — so they fold them in by hand, in the same order DamageVar uses
+    // enchantment's damage hooks, so they fold them in by hand, in the same order DamageVar uses
     internal int ApplyEnchantDamage(int damage)
     {
         if (Enchantment is not { } enchantment) return damage;

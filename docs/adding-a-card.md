@@ -1,17 +1,17 @@
 # Adding a card, end to end
 
-A complete walkthrough of adding one card to the Alchemist — no prior C# experience
+A complete walkthrough of adding one card to the Alchemist, with no prior C# experience
 assumed. We'll dissect a real card that already ships ([Tinge](../AlchemistCode/Cards/Common/Tinge.cs)),
 then every step generalizes to your own card.
 
 > [!IMPORTANT]
 > The one rule that governs everything: **a card lives in three places that must stay in
-> sync** — the code, the localization text, and `cards.csv`. Touch one, touch all
+> sync**, the code, the localization text, and `cards.csv`. Touch one, touch all
 > (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ## 0. Names drive everything
 
-Pick the card's display name first — say **Tinge**. The class name (`Tinge`) mechanically
+Pick the card's display name first, say **Tinge**. The class name (`Tinge`) mechanically
 derives everything else:
 
 | Thing | Derived value |
@@ -25,7 +25,7 @@ Multi-word names snake-case: `DoubleDose` → `ALCHEMIST-DOUBLE_DOSE` → `doubl
 ## 1. The card class
 
 Create `AlchemistCode/Cards/<Rarity>/<Name>.cs`. **Start by copying an existing card
-file from the same rarity folder** — the `using` imports and `namespace` line at the top
+file from the same rarity folder.** The `using` imports and `namespace` line at the top
 must match the folder, and copying gets them right for free. Here is Tinge (minus that
 header), annotated:
 
@@ -51,7 +51,7 @@ public class Tinge : AlchemistCard
         await CommonActions.Apply<PoisonPower>(choiceContext, this, play);   // the poison
     }
 
-    // The Seep hook — runs at end of turn if the card is still in your hand.
+    // The Seep hook, which runs at end of turn if the card is still in your hand.
     // Declaring IsSeepCard adds the keyword + tooltip; this is the actual effect.
     protected override async Task OnSeep(PlayerChoiceContext choiceContext)
     {
@@ -62,13 +62,13 @@ public class Tinge : AlchemistCard
 
 The important idea: **all numbers live in the constructor's `With*` builders** as
 `(base, upgradeDelta)` pairs. The engine handles upgrade display, green highlighting,
-and enchantment math from those declarations — `OnPlay` just says *what happens*, in
+and enchantment math from those declarations, so `OnPlay` just says *what happens*, in
 order, using the declared values. Common builders: `WithDamage`, `WithBlock`,
 `WithPower<T>`, `WithEnergy`, `WithCards` (draw), `WithVar("name", base, delta)` for
 anything custom.
 
 Mod-specific keyword flags (`IsGambitCard`, `IsFermentCard`, `IsSeepCard`) and helpers
-live in [AlchemistCard.cs](../AlchemistCode/Cards/AlchemistCard.cs) — read it once, it's
+live in [AlchemistCard.cs](../AlchemistCode/Cards/AlchemistCard.cs). Read it once, it's
 the base class of every card here.
 
 ## 2. Localization
@@ -82,14 +82,14 @@ Add two keys to [Alchemist/localization/eng/cards.json](../Alchemist/localizatio
 ```
 
 - `{Damage:diff()}` / `{PoisonPower:diff()}` render the live number **and** the upgrade
-  preview — never hardcode numbers that exist as builders.
+  preview. Never hardcode numbers that exist as builders.
 - `[gold]…[/gold]` marks keywords; match base-game wording conventions.
 - Powers additionally need `.title`, `.description` **and** `.smartDescription` in
-  `powers.json` — the build fails without them (by design).
+  `powers.json`. The build fails without them, by design.
 
 ## 3. cards.csv
 
-Add one row to [cards.csv](../cards.csv) — the human-readable design sheet, format
+Add one row to [cards.csv](../cards.csv), the human-readable design sheet, format
 `base (upgraded)`:
 
 ```csv
@@ -115,14 +115,14 @@ card ALCHEMIST-TINGE
 ```
 
 > [!NOTE]
-> Use the full model ID, not the display name — bare names like `card Tinge` silently do
+> Use the full model ID, not the display name. Bare names like `card Tinge` silently do
 > nothing (the console reports success either way).
 
 ## 6. Lock it in with a test
 
 Copy the closest scenario in [scripts/tests/](../scripts/tests/) and adjust: spawn your
 card, play it, assert the outcome. For Tinge you'd assert the enemy poison indirectly
-and the Seep regen directly — see the README there for what's assertable and the quirks
+and the Seep regen directly. See the README there for what's assertable and the quirks
 (settle delays, index offsets).
 
 ```sh
@@ -130,8 +130,7 @@ scripts/dev.sh test tinge
 ```
 
 > [!TIP]
-> A card that changes numbers later without its test changing is how regressions ship —
-> this scenario is the cheapest insurance in the repo.
+> A card that changes numbers later without its test changing is how regressions ship.
 
 ## Going deeper
 

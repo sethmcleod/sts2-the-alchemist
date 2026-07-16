@@ -91,7 +91,7 @@ public class AlchemistModConfig : SimpleModConfig
         set.RemoveWhere(toRemove.Contains);
     }
 
-    // Custom popup — BaseLib's auto message popup is hard-titled "Mod configuration error"
+    // Custom popup, because BaseLib's auto message popup is hard-titled "Mod configuration error"
     private static void Notify(string message)
     {
         MainFile.Logger.Info("[Config] " + message);

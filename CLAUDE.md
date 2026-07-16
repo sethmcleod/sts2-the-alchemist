@@ -1,7 +1,7 @@
-# CLAUDE.md — agent orientation
+# CLAUDE.md, agent orientation
 
 Guidance for AI agents (Claude Code or similar) working on this repo. Everything here
-is also doable without agents — humans should start at [README.md](README.md); the
+is also doable without agents. Humans should start at [README.md](README.md); the
 human docs are the source of truth and this file just points at them.
 
 ## What this is
@@ -9,11 +9,11 @@ human docs are the source of truth and this file just points at them.
 A custom Slay the Spire 2 character mod (C# / Godot, via BaseLib + Harmony), built as a
 reference-quality example of STS2 modding. Tooling lives in the
 [sts2-modding-mcp](https://github.com/sethmcleod/sts2-modding-mcp) toolkit (MCP server;
-the MCPTest game bridge on TCP 21337 + GodotExplorer on 27020; the test engine) —
-generic modding guides live there, mod-specific conventions live here. When this doc
-says "the bridge," it means those two. Other toolkits may be integrated later (e.g.
+the MCPTest game bridge on TCP 21337 + GodotExplorer on 27020; the test engine). Generic
+modding guides live there, mod-specific conventions live here. When this doc says "the
+bridge," it means those two. Other toolkits may be integrated later (e.g.
 [STS2MCP](https://github.com/Gennadiyev/STS2MCP), REST on :15526, for AI-piloted play
-and local multiplayer) — don't assume sts2-modding-mcp is the only server connected.
+and local multiplayer), so don't assume sts2-modding-mcp is the only server connected.
 
 ## Commands
 
@@ -33,38 +33,38 @@ scripts/dev.sh release <patch|minor|major|X.Y.Z>   # bump + roll changelog + pac
 scripts/dev.sh doctor       # ✓/✗ every prerequisite
 ```
 
-Player-visible changes get a `CHANGELOG.md` entry under `## [Unreleased]`;
-releases are cut with `scripts/dev.sh release` — see [RELEASING.md](RELEASING.md).
+Player-visible changes get a `CHANGELOG.md` entry under `## [Unreleased]`.
+Releases are cut with `scripts/dev.sh release`, see [RELEASING.md](RELEASING.md).
 
-`dotnet build` must pass with 0 errors — the in-build loc analyzer enforces that every
+`dotnet build` must pass with 0 errors. The in-build loc analyzer enforces that every
 power has `.title`/`.description`/`.smartDescription` keys.
 
 ## Rules that bite if you skip them
 
-- **Three-way update rule** — a card lives in code + localization + `cards.csv`; touch
+- **Three-way update rule**: a card lives in code + localization + `cards.csv`. Touch
   one, touch all. See [CONTRIBUTING.md](CONTRIBUTING.md). A worked end-to-end example is
   in [docs/adding-a-card.md](docs/adding-a-card.md).
-- **Design & code conventions** — [CONTRIBUTING.md](CONTRIBUTING.md) (show real numbers,
+- **Design & code conventions**: [CONTRIBUTING.md](CONTRIBUTING.md) (show real numbers,
   upgrades never raise cost, risk/reward pricing, comment style, asset paths).
-- **Description/tooltip code must not read `Owner`** unguarded — canonical models
+- **Description/tooltip code must not read `Owner`** unguarded, because canonical models
   (compendium) throw. Gate with `IsMutable` (see `AlchemistCard.ShouldGlowGoldInternal`).
 
 ## Live testing against the game (bridge)
 
-Scenario-authoring quirks: [scripts/tests/README.md](scripts/tests/README.md); runtime
+Scenario-authoring quirks: [scripts/tests/README.md](scripts/tests/README.md). Runtime
 gotchas: [docs/troubleshooting.md](docs/troubleshooting.md). The ones that cost the most
 time to discover:
 
-- Use a **fresh game process** on a **spare save profile**; never abandon a run
-  mid-combat (poisons combat init until restart — `die` out of combats instead).
+- Use a **fresh game process** on a **spare save profile**, and never abandon a run
+  mid-combat (it poisons combat init until restart, so `die` out of combats instead).
 - Custom entities need **full model IDs**: `card ALCHEMIST-SEPSIS`, not `Sepsis`.
   Bare names silently no-op. Discover IDs via console `dump` + the game log.
 - Console `power`/`damage` target index: `0` = player, `1` = first enemy (offset by one
   vs `play_card`'s 0-based `target_index`).
 - **Hot reload** (tier 2/3) only works from the main menu **before any combat** that
-  session (`ModelIdSerializationCache` locks); after that, restart the game.
-- Assertions can read player state and `enemy_N_hp` — **not enemy power stacks**.
-- macOS: screen transitions may stall while the game window is unfocused; the runner's
+  session (`ModelIdSerializationCache` locks). After that, restart the game.
+- Assertions can read player state and `enemy_N_hp`, but **not enemy power stacks**.
+- macOS: screen transitions may stall while the game window is unfocused. The runner's
   reset recipe (`die` + ForceClick) is focus-independent.
 
 ## Doc map

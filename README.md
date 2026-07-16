@@ -5,24 +5,24 @@
 
 ## Overview
 
-The Alchemist is a high-risk, high-reward character with a primary loop:
-deliberately run your own health low to unlock your strongest effects, then
-convert that danger back into survival. A constant balance between poisoning
-yourself and healing yourself.
+The Alchemist is a high-risk, high-reward character. The core loop is to
+deliberately run your health low to unlock your strongest effects, then convert
+that danger back into survival. You're always balancing poisoning yourself
+against healing yourself.
 
 Three overlapping archetypes give the class its shape:
 
-* **The Transmuter** — *turn self-inflicted Poison into fuel.* Poison yourself
-  as readily as your enemies, convert it into Regen, then spend that Regen on
-  damage, Block, and Strength. At or below half health, your Gambit cards gain an
-  extra effect — the archetype that thrives one bad decision from disaster.
-* **The Distiller** — *make your hand a resource managed over time.* Ferment
-  cards grow stronger every turn you hold them; Seep cards punish you for waiting.
+* **The Transmuter**: turn self-inflicted Poison into fuel. Poison yourself as
+  readily as your enemies, convert it into Regen, then spend that Regen on
+  damage, Block, and Strength. At or below half health your Gambit cards gain an
+  extra effect, so this archetype thrives one bad decision from disaster.
+* **The Distiller**: make your hand a resource managed over time. Ferment cards
+  grow stronger every turn you hold them, and Seep cards punish you for waiting.
   Patience versus commitment, weighed every turn.
-* **The Apothecary** — *build an engine from cards and potions.* Infuse the cards
+* **The Apothecary**: build an engine from cards and potions. Infuse the cards
   you already love to enchant them mid-combat, refine your hand into Distillates,
-  and keep a full potion belt that several cards cash straight into damage, Block,
-  and tempo.
+  and keep a full potion belt that several cards cash straight into damage,
+  Block, and tempo.
 
 ## Content
 
@@ -38,23 +38,22 @@ Three overlapping archetypes give the class its shape:
 ## Mechanics and Keywords
 
 * **Poison & Regen**: The Alchemist deliberately self-poisons, then converts
-  Poison into Regen (and Regen into damage, Block or Strength) — two resources
-  meant to be actively cycled, not passively endured.
+  Poison into Regen (and Regen into damage, Block or Strength). Both are meant to
+  be actively cycled, not passively endured.
 * **Gambit**: "Gambit: [effect]" triggers only while your HP is at or below 50%
-  of your Max HP. The card works normally above half health — Gambit is a bonus
+  of your Max HP. The card works normally above half health. Gambit is a bonus
   for playing dangerously, never a requirement.
 * **Ferment**: Found on cards that also Retain. A Fermenting card's effect grows
-  in potency for every turn it stays unplayed in your hand — no cap, but every
-  turn held is a turn it occupies your hand. Draft these in moderation.
+  in potency for every turn it stays unplayed in your hand. There's no cap, but
+  every turn held is a turn it occupies your hand. Draft these in moderation.
 * **Seep**: "Seep: [effect]" resolves at the end of your turn only if the card
   is still in your hand. Most Seep effects are costs that pressure you to play
-  the card; a few are small benefits. Seep is Ferment's mirror — one rewards
-  patience, the other discourages it.
+  the card, though a few are small benefits. Seep is Ferment's mirror: one
+  rewards patience, the other discourages it.
 * **Infuse**: Infusing a card enchants it for the rest of combat based on its
-  type — Attacks gain **Sharp**, Skills gain **Nimble** or **Adroit**, Powers
-  gain **Swift**, and Status/Curse/Quest cards gain **Ethereal**. Same-type
-  infusions can stack
-  multiple times.
+  type. Attacks gain **Sharp**, Skills gain **Nimble** or **Adroit**, Powers gain
+  **Swift**, and Status/Curse/Quest cards gain **Ethereal**. Same-type infusions
+  can stack multiple times.
 
 ## A Note on Quality
 
@@ -69,14 +68,14 @@ connecting them. ✨
 
 ### Play it
 
-**Steam Workshop** is the preferred way to install and play — one click, it
+**Steam Workshop** is the preferred way to install and play. It's one click, it
 keeps itself updated, and it pulls in the required BaseLib dependency for you.
 
 > [!NOTE]
-> The Workshop release is coming soon — it's waiting on the character artwork
-> before the first public release. Until then, install manually:
+> The Workshop release is coming soon, once the character artwork lands. Until
+> then, install manually:
 
-**Manual install** — grab `Alchemist-vX.Y.Z.zip` from the
+**Manual install**: grab `Alchemist-vX.Y.Z.zip` from the
 [Releases](https://github.com/sethmcleod/sts2-the-alchemist/releases) page, first
 install [**BaseLib**](https://steamcommunity.com/workshop/filedetails/?id=3737335127)
 (Workshop would do this for you), then extract the
@@ -101,7 +100,7 @@ scripts/dev.sh test       # regression suite against the live game
 `scripts/dev.sh doctor` diagnoses the environment at any point.
 
 > [!TIP]
-> Everything works with plain shell + Python — **no AI tooling required**. But the repo
+> Everything works with plain shell + Python, so **no AI tooling is required**. The repo
 > is also set up for agent-assisted development ([CLAUDE.md](CLAUDE.md)): even without C#
 > experience, you can point Claude Code (or similar) at this repo to modify and test the mod.
 

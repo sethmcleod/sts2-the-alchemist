@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Dev helper for the Alchemist mod — one command for each tedious loop.
+# Dev helper for the Alchemist mod. One command for each tedious loop.
 #
 #   scripts/dev.sh setup          first-time setup: clone tooling, check deps, install bridge mods
 #   scripts/dev.sh publish        build → godot import → publish → verify pck   (safe default)
@@ -7,7 +7,7 @@
 #   scripts/dev.sh import         godot --headless --import only
 #   scripts/dev.sh bridge         build + install the MCPTest + GodotExplorer bridge mods into the game
 #   scripts/dev.sh test [args]    run the regression suite (starts the game if needed;
-#                                 args: --group NAME, --fresh, name filters — see scripts/tests/README.md)
+#                                 args: --group NAME, --fresh, name filters; see scripts/tests/README.md)
 #   scripts/dev.sh game-start     launch the game via Steam and wait for the bridge
 #   scripts/dev.sh game-stop      quit the game (graceful, then force)
 #   scripts/dev.sh game-restart   stop + start (loads freshly-installed bridge/mod builds)
@@ -64,7 +64,7 @@ GODOT="${GODOT:-/Applications/MegaDot.app/Contents/MacOS/Godot}"
 PCK="$GAME_MODS/Alchemist/Alchemist.pck"
 
 # The test engine (sts2mcp) needs Python >= 3.10. Prefer a system python if one's already on PATH;
-# otherwise fall back to uv, which provisions a suitable Python for you (recommended — see BUILD.md).
+# otherwise fall back to uv, which provisions a suitable Python for you (recommended, see BUILD.md).
 # PY_CMD is the interpreter invocation as an array, since the uv form is multi-word.
 PY_CMD=()
 find_python() {
@@ -81,7 +81,7 @@ find_python() {
 }
 find_python || true
 have_py() { [ "${#PY_CMD[@]}" -gt 0 ]; }
-no_py_msg="no Python >= 3.10 found — install uv (https://astral.sh/uv) and it'll provision one, or install Python directly"
+no_py_msg="no Python >= 3.10 found; install uv (https://astral.sh/uv) and it'll provision one, or install Python directly"
 
 step() { printf '\n\033[1;36m▶ %s\033[0m\n' "$*"; }
 ok()   { printf '\033[32m✓\033[0m %s\n' "$*"; }
@@ -98,11 +98,11 @@ do_verify()  {
 }
 
 # Build one bridge mod project from the tooling checkout and copy its runtime files into
-# the game mods dir. NOT 0Harmony.dll — the game ships its own; a duplicate conflicts.
+# the game mods dir. NOT 0Harmony.dll, since the game ships its own and a duplicate conflicts.
 install_bridge_mod() {  # <project-subdir> <csproj> <dll-base> <mods-subdir>
   local src="$STS2_MCP_DIR/$1" csproj="$2" base="$3" dest="$GAME_MODS/$4"
   step "build $base"
-  [ -d "$src" ] || { bad "missing $src — run scripts/dev.sh setup first"; exit 1; }
+  [ -d "$src" ] || { bad "missing $src; run scripts/dev.sh setup first"; exit 1; }
   (cd "$src"; dotnet build "$csproj")
   step "install $base → $dest"
   mkdir -p "$dest"
@@ -172,9 +172,9 @@ do_release() {  # <patch|minor|major|X.Y.Z>
   have_py || { bad "$no_py_msg (release runs the lint check)"; exit 1; }
 
   step "release preflight"
-  [ -z "$(git -C "$REPO" status --porcelain)" ] || { bad "working tree not clean — commit or stash first"; exit 1; }
+  [ -z "$(git -C "$REPO" status --porcelain)" ] || { bad "working tree not clean; commit or stash first"; exit 1; }
   local branch; branch="$(git -C "$REPO" rev-parse --abbrev-ref HEAD)"
-  [ "$branch" = "main" ] || { bad "on branch '$branch' — release from main"; exit 1; }
+  [ "$branch" = "main" ] || { bad "on branch '$branch'; release from main"; exit 1; }
 
   # Compute the new version.
   local cur new; cur="$(current_version)"
@@ -187,12 +187,12 @@ do_release() {  # <patch|minor|major|X.Y.Z>
     v*)    new="${bump#v}" ;;
     *)     new="$bump" ;;
   esac
-  [[ "$new" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { bad "invalid version '$new' — expected X.Y.Z"; exit 1; }
+  [[ "$new" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { bad "invalid version '$new'; expected X.Y.Z"; exit 1; }
   [ "$new" != "$cur" ] || { bad "new version equals current ($cur)"; exit 1; }
   [ "$(printf '%s\n%s\n' "$cur" "$new" | sort -V | tail -1)" = "$new" ] || { bad "new version $new is not greater than current $cur"; exit 1; }
 
   # A release must have curated notes.
-  [ -n "$(unreleased_body | tr -d '[:space:]')" ] || { bad "## [Unreleased] in CHANGELOG.md is empty — add notes (scripts/dev.sh changelog seeds a draft)"; exit 1; }
+  [ -n "$(unreleased_body | tr -d '[:space:]')" ] || { bad "## [Unreleased] in CHANGELOG.md is empty; add notes (scripts/dev.sh changelog seeds a draft)"; exit 1; }
 
   do_build
   step "lint"
@@ -213,12 +213,12 @@ do_release() {  # <patch|minor|major|X.Y.Z>
   do_publish
 
   # Package the drop-in zip: a single top-level Alchemist/ folder with the three
-  # runtime files the game loads (no pdb — debug-only; mod_image is inside the pck).
+  # runtime files the game loads (no pdb, which is debug-only; mod_image is inside the pck).
   step "package dist/Alchemist-v$new.zip"
   local stage="$DIST/stage" src="$GAME_MODS/Alchemist"
   rm -rf "$stage"; mkdir -p "$stage/Alchemist"
   local f; for f in Alchemist.dll Alchemist.json Alchemist.pck; do
-    [ -f "$src/$f" ] || { bad "expected $src/$f after publish — aborting"; exit 1; }
+    [ -f "$src/$f" ] || { bad "expected $src/$f after publish; aborting"; exit 1; }
     cp -f "$src/$f" "$stage/Alchemist/"
   done
   local zipfile="$DIST/Alchemist-v$new.zip"
@@ -236,7 +236,7 @@ do_release() {  # <patch|minor|major|X.Y.Z>
   ' "$CHANGELOG" > "$notes"
 
   echo
-  ok "prepared v$new — files updated, artifact + notes written to dist/"
+  ok "prepared v$new: files updated, artifact + notes written to dist/"
   echo "Review the diff, then run:"
   echo
   echo "    git add Alchemist.json CHANGELOG.md"
@@ -251,17 +251,17 @@ do_release() {  # <patch|minor|major|X.Y.Z>
 do_doctor() {
   step "doctor"
   local fail=0
-  if command -v dotnet >/dev/null;   then ok "dotnet $(dotnet --version 2>/dev/null)"; else bad "dotnet not found — install the .NET 9 SDK (https://dotnet.microsoft.com)"; fail=1; fi
-  if have_py;                        then ok "python $("${PY_CMD[@]}" --version 2>&1 | cut -d' ' -f2) (${PY_CMD[*]})"; else bad "no Python >= 3.10 — needed for scripts/dev.sh test; install uv (https://astral.sh/uv) to provision one, or install Python directly"; fail=1; fi
-  if [ -x "$GODOT" ];                then ok "MegaDot at $GODOT"; else bad "MegaDot not found at $GODOT — install it or set GODOT=/path/to/Godot (see BUILD.md)"; fail=1; fi
-  if [ -d "$STS2_GAME_DIR" ];        then ok "game at $STS2_GAME_DIR"; else bad "game not found at $STS2_GAME_DIR — install via Steam or set STS2_GAME_DIR"; fail=1; fi
-  if pgrep -x steam_osx >/dev/null 2>&1 || pgrep -x steam >/dev/null 2>&1; then ok "Steam client running"; else bad "Steam client not running — needed to launch the game (game-start/test)"; fi
-  if [ -d "$STS2_MCP_DIR" ];         then ok "tooling at $STS2_MCP_DIR"; else bad "sts2-modding-mcp checkout missing — run scripts/dev.sh setup"; fail=1; fi
-  if [ -d "$GAME_MODS/Alchemist" ];  then ok "Alchemist mod installed"; else bad "Alchemist mod not installed — run scripts/dev.sh publish"; fail=1; fi
-  if [ -d "$GAME_MODS/mcptest" ];    then ok "MCPTest bridge installed"; else bad "MCPTest bridge missing — run scripts/dev.sh bridge"; fail=1; fi
-  if [ -d "$GAME_MODS/godotexplorer" ]; then ok "GodotExplorer installed"; else bad "GodotExplorer missing — run scripts/dev.sh bridge"; fail=1; fi
-  if port_open 21337; then ok "MCPTest bridge responding on :21337"; else bad "MCPTest bridge not reachable on :21337 — launch the game via Steam (needed only for 'test')"; fi
-  if port_open 27020; then ok "GodotExplorer responding on :27020"; else bad "GodotExplorer not reachable on :27020 — launch the game via Steam (needed only for 'test')"; fi
+  if command -v dotnet >/dev/null;   then ok "dotnet $(dotnet --version 2>/dev/null)"; else bad "dotnet not found; install the .NET 9 SDK (https://dotnet.microsoft.com)"; fail=1; fi
+  if have_py;                        then ok "python $("${PY_CMD[@]}" --version 2>&1 | cut -d' ' -f2) (${PY_CMD[*]})"; else bad "no Python >= 3.10, needed for scripts/dev.sh test; install uv (https://astral.sh/uv) to provision one, or install Python directly"; fail=1; fi
+  if [ -x "$GODOT" ];                then ok "MegaDot at $GODOT"; else bad "MegaDot not found at $GODOT; install it or set GODOT=/path/to/Godot (see BUILD.md)"; fail=1; fi
+  if [ -d "$STS2_GAME_DIR" ];        then ok "game at $STS2_GAME_DIR"; else bad "game not found at $STS2_GAME_DIR; install via Steam or set STS2_GAME_DIR"; fail=1; fi
+  if pgrep -x steam_osx >/dev/null 2>&1 || pgrep -x steam >/dev/null 2>&1; then ok "Steam client running"; else bad "Steam client not running, needed to launch the game (game-start/test)"; fi
+  if [ -d "$STS2_MCP_DIR" ];         then ok "tooling at $STS2_MCP_DIR"; else bad "sts2-modding-mcp checkout missing; run scripts/dev.sh setup"; fail=1; fi
+  if [ -d "$GAME_MODS/Alchemist" ];  then ok "Alchemist mod installed"; else bad "Alchemist mod not installed; run scripts/dev.sh publish"; fail=1; fi
+  if [ -d "$GAME_MODS/mcptest" ];    then ok "MCPTest bridge installed"; else bad "MCPTest bridge missing; run scripts/dev.sh bridge"; fail=1; fi
+  if [ -d "$GAME_MODS/godotexplorer" ]; then ok "GodotExplorer installed"; else bad "GodotExplorer missing; run scripts/dev.sh bridge"; fail=1; fi
+  if port_open 21337; then ok "MCPTest bridge responding on :21337"; else bad "MCPTest bridge not reachable on :21337; launch the game via Steam (needed only for 'test')"; fi
+  if port_open 27020; then ok "GodotExplorer responding on :27020"; else bad "GodotExplorer not reachable on :27020; launch the game via Steam (needed only for 'test')"; fi
   [ "$fail" -eq 0 ] && { echo; ok "environment looks good"; } || { echo; bad "fix the items above, then re-run scripts/dev.sh doctor"; }
   return "$fail"
 }

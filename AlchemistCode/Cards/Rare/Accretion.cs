@@ -19,7 +19,7 @@ public class Accretion : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Gambit is resolved once, here at play time — folded into the power's per-turn amount
+        // Gambit is resolved once, here at play time, and folded into the power's per-turn amount
         var amount = DynamicVars["Regen"].IntValue + (IsReduced ? 1 : 0);
         await PowerCmd.Apply<AccretionPower>(choiceContext, Owner.Creature,
             amount, Owner.Creature, this);

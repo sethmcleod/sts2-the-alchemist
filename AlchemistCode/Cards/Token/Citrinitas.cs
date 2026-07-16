@@ -18,7 +18,7 @@ public class Citrinitas : AlchemistCard
         WithUpgradingCardTip<Rubedo>();
     }
 
-    // Per-hit damage = your Regen (after enchant multipliers) — shared by preview and the real hit
+    // Per-hit damage = your Regen (after enchant multipliers), shared by preview and the real hit
     private int DamageFor(int regen) => ApplyEnchantDamage(regen);
 
     protected override int? FormulaDamagePreview =>

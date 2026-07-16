@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Unlocks;
 namespace Alchemist.AlchemistCode.Patches;
 
 // Keeps Alchemist cards out of runs that don't include an Alchemist player, so mod content can't leak into
-// other characters' cross-class rewards (Kaleidoscope, Splash, Colorful Philosophers, Prismatic Gem — all
+// other characters' cross-class rewards (Kaleidoscope, Splash, Colorful Philosophers, and Prismatic Gem all
 // draw from UnlockState.CharacterCardPools). Toggleable via mod config; character select / card library use
 // UnlockState.Characters instead, so the Alchemist stays visible there regardless.
 [HarmonyPatch]
@@ -39,7 +39,8 @@ public static class PoolPatches
 
     // Kaleidoscope is offered at Neow only when you've unlocked every character's card pool
     // (CharacterCardPools.Count() == AllCharacters.Count()). Since we removed our always-unlocked pool from
-    // that set, base characters would fall one short and lose Kaleidoscope — recheck against the non-Alchemist count.
+    // that set, base characters would fall one short and lose Kaleidoscope, so recheck against the
+    // non-Alchemist count.
     [HarmonyPatch(typeof(Kaleidoscope), nameof(Kaleidoscope.IsAllowedAtNeow))]
     [HarmonyPostfix]
     private static void FixKaleidoscopeNeow(Player player, ref bool __result)

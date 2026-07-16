@@ -18,7 +18,7 @@ using MegaCrit.Sts2.Core.Timeline.Epochs;
 namespace Alchemist.AlchemistCode.Patches;
 
 // BaseLib's Skip* prefixes short-circuit vanilla epoch bookkeeping for custom characters, but Harmony
-// still runs our postfixes — so we award the epochs from postfixes
+// still runs our postfixes, so that's where we award the epochs from
 [HarmonyPatch]
 public static class EpochPatches
 {
@@ -27,11 +27,11 @@ public static class EpochPatches
     private static readonly MethodInfo PostRun = RequireInstance("TryObtainEpochPostRun");
     private static readonly MethodInfo GetElites =
         typeof(ProgressSaveManager).GetMethod("GetEliteEncounters", BindingFlags.Static | BindingFlags.NonPublic)
-        ?? throw new InvalidOperationException("[Alchemist] ProgressSaveManager.GetEliteEncounters not found — base game changed.");
+        ?? throw new InvalidOperationException("[Alchemist] ProgressSaveManager.GetEliteEncounters not found; base game changed.");
 
     private static MethodInfo RequireInstance(string name) =>
         typeof(ProgressSaveManager).GetMethod(name, InstNonPublic)
-        ?? throw new InvalidOperationException($"[Alchemist] ProgressSaveManager.{name} not found — base game changed.");
+        ?? throw new InvalidOperationException($"[Alchemist] ProgressSaveManager.{name} not found; base game changed.");
 
     private static void AwardMidRun(ProgressSaveManager mgr, EpochModel epoch, Player player) =>
         MidRun.Invoke(mgr, new object[] { epoch, player });

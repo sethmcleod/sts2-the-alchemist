@@ -81,7 +81,7 @@
         "RELIC.ALCHEMIST-AURIC_SEAL": {"unlocked": true, "discovered": false},
         "RELIC.ALCHEMIST-MIDAS_FRUIT": {"unlocked": true, "discovered": false}
       }
-    }}, "timeout": 6, "note": "Alchemist7 unlocks its 3 relics — every epoch's content now available"},
+    }}, "timeout": 6, "note": "Alchemist7 unlocks its 3 relics; every epoch's content now available"},
 
     {"do": {"find_click": {"pattern": "ResetUnlocks", "contains": "SectionContent_Unlocks", "child_class": "Control"}}, "expect": {"game_log_contains": "Re-locked", "exceptions_clean": true}, "timeout": 8, "note": "cleanup: re-lock everything"},
     {"do": {"click": "/root/Game/ModalContainer/ErrorPopup/VerticalPopup/YesButton"}, "delay": 1},

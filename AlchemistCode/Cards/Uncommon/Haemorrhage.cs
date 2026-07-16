@@ -13,7 +13,7 @@ public class Haemorrhage : AlchemistCard
         WithTip(typeof(RegenPower));
     }
 
-    // Single source of truth for the on-card preview and the real hit — you lose your Regen as HP, then deal
+    // Single source of truth for the on-card preview and the real hit. You lose your Regen as HP, then deal
     // double (triple upgraded) that much, after enchant multipliers
     private int DamageFor(int regen) => ApplyEnchantDamage(regen * (IsUpgraded ? 3 : 2));
 

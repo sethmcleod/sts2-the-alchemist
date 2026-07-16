@@ -35,7 +35,7 @@ public static class Infusion
 
     private static readonly HashSet<CardModel> Infused = new();
 
-    // Curses get Ethereal as a keyword, and clearing an enchantment never undoes a keyword — so remember only
+    // Curses get Ethereal as a keyword, and clearing an enchantment never undoes a keyword, so remember only
     // the cards we added it to, and strip it at combat end
     private static readonly HashSet<CardModel> AddedEthereal = new();
 
@@ -55,7 +55,7 @@ public static class Infusion
     public static int EnchantedThisCombatCount(Player owner) => EnchantedThisCombat.Count(c => c.Owner == owner);
 
     // Infusable if it takes the Ethereal keyword, or if applying its type's enchantment would stack cleanly
-    // (no enchantment yet, or already the same one) — re-infusing a card grows its amount
+    // (no enchantment yet, or already the same one). Re-infusing a card grows its amount
     public static bool CanInfuse(CardModel card)
     {
         if (card.Type is CardType.Curse or CardType.Status or CardType.Quest)
@@ -67,7 +67,7 @@ public static class Infusion
     public static Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count) =>
         InfuseChosen(ctx, source, pile, count, count);
 
-    // min/max lets the player choose how many to infuse — "up to N" (0..N) or "any number" (0..huge)
+    // min/max lets the player choose how many to infuse: "up to N" (0..N) or "any number" (0..huge)
     public static async Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile,
         int min, int max)
     {

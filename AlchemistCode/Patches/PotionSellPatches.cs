@@ -281,7 +281,7 @@ public static class PotionSellPatches
     // Stable id so the tint patch can find this tooltip's rendered control
     private const string SellableTipId = "ALCHEMIST_POTION_SELLABLE";
 
-    // Shop-only tooltip so players know potions can be sold here — gated exactly like the sell button
+    // Shop-only tooltip so players know potions can be sold here, gated exactly like the sell button
     [HarmonyPatch(typeof(PotionModel), "get_HoverTips")]
     public static class PotionSellableTipPatch
     {

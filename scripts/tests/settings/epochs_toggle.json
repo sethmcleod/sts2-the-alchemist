@@ -7,7 +7,7 @@
     {"do": {"find_click": {"pattern": "ModButton_The Alchemist", "contains": "ModListContent"}}, "delay": 1.5},
     {"do": {"find_click": {"pattern": "EnableEpochs", "contains": "SectionContent_Timeline", "child_class": "Control"}}, "delay": 1, "note": "toggle epochs OFF"},
     {"do": {"menu": "back"}, "delay": 1},
-    {"do": {"menu": "timeline"}, "delay": 2, "expect": {"exceptions_clean": true}, "timeout": 8, "note": "Timeline opens with epochs disabled — the hide patch strips our slots without error"},
+    {"do": {"menu": "timeline"}, "delay": 2, "expect": {"exceptions_clean": true}, "timeout": 8, "note": "Timeline opens with epochs disabled; the hide patch strips our slots without error"},
     {"do": {"menu": "back"}, "delay": 1},
     {"do": {"click": "/root/Game/RootSceneContainer/MainMenu/MainMenuTextButtons/ModConfigButton"}, "delay": 1.5, "expect": {"screen_contains": "ModConfig"}, "timeout": 8},
     {"do": {"find_click": {"pattern": "ModButton_The Alchemist", "contains": "ModListContent"}}, "delay": 1.5},

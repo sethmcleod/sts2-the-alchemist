@@ -28,7 +28,7 @@ public static class EpochRegistration
     private static FieldInfo Require(Type type, string name) =>
         type.GetField(name, StaticNonPublic)
         ?? throw new InvalidOperationException(
-            $"[Alchemist] Epoch registration: {type.Name}.{name} not found — base game changed; epochs disabled.");
+            $"[Alchemist] Epoch registration: {type.Name}.{name} not found; base game changed, epochs disabled.");
 
     private static bool _registered;
 

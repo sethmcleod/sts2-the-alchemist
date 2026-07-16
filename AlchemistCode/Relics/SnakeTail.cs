@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 namespace Alchemist.AlchemistCode.Relics;
 
 // The heal runs inside the damage command, so the owner is alive again when poison's own
-// "if alive, decrement" check fires right after — the poison stack still ticks down by 1
+// "if alive, decrement" check fires right after, and the poison stack still ticks down by 1
 public class SnakeTail : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Common;

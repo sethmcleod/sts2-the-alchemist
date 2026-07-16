@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Static three-way-rule linter — offline, no game required.
+"""Static three-way-rule linter. Offline, no game required.
 
 Enforces that every card stays in sync across its three homes (CONTRIBUTING.md):
-  1. code   — a card class under AlchemistCode/Cards/
-  2. loc    — ALCHEMIST-<SNAKE>.title / .description in localization/eng/cards.json
-  3. csv    — a row in cards.csv (the design sheet)
+  1. code:  a card class under AlchemistCode/Cards/
+  2. loc:   ALCHEMIST-<SNAKE>.title / .description in localization/eng/cards.json
+  3. csv:   a row in cards.csv (the design sheet)
 
 FAILs (exit 1) on structural drift: a csv row with no class, a class with no row,
 a card missing loc keys, or a cost mismatch. Also does a conservative numeric
 cross-check (WithDamage/WithBlock/WithEnergy/WithCards/WithPower literal builders vs
-the csv's "N (M)" pairs) and prints those as warnings — cards using formula builders
+the csv's "N (M)" pairs) and prints those as warnings. Cards using formula builders
 (WithCalculated*, computed args) are skipped rather than guessed at.
 
 Run via `scripts/dev.sh lint`.
@@ -71,7 +71,7 @@ BUILDER = re.compile(
 
 
 def parse_builders(text: str) -> list[tuple[int, int]]:
-    """Literal (base, delta) builder pairs — skips cards that compute values.
+    """Literal (base, delta) builder pairs. Skips cards that compute values.
 
     A base of 0 is a dynamic placeholder, not a literal amount: the shown value
     comes from a dynamic var or runtime computation (e.g. Albedo's "that much
@@ -146,7 +146,7 @@ def main() -> int:
         print(f"\033[33mwarn\033[0m  {w}")
     for e in errors:
         print(f"\033[31mFAIL\033[0m  {e}")
-    print(f"\n{len(rows)} cards, {len(classes)} classes — "
+    print(f"\n{len(rows)} cards, {len(classes)} classes: "
           f"{len(errors)} error(s), {len(warnings)} warning(s)")
     return 1 if errors else 0
 

@@ -12,7 +12,7 @@ public class CatalyzePower : AlchemistPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    // Gate to the owner's turn — AfterCurrentHpChanged also fires on enemy turns.
+    // Gate to the owner's turn. AfterCurrentHpChanged also fires on enemy turns.
     // Starts true: the power lands mid-turn, after this turn's AfterSideTurnStart already fired
     private bool _ownerTurn = true;
     private bool _triggeredThisTurn;

@@ -21,7 +21,7 @@ public class Harvest : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Decide Fatal eligibility from the target's powers BEFORE the attack — some
+        // Decide Fatal eligibility from the target's powers BEFORE the attack, since some
         // summoned enemies opt out via ShouldOwnerDeathTriggerFatal. Reading Powers
         // *after* the kill races with death-cleanup tearing the collection down
         // (InvalidOperationException: collection modified); snapshot it here while stable.

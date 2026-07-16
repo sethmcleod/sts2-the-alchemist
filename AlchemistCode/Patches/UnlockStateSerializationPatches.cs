@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// Base-game hardening, not Alchemist-specific — worth upstreaming to BaseLib.
+// Base-game hardening, not Alchemist-specific, and worth upstreaming to BaseLib.
 //
 // An epoch belonging to an uninstalled mod stays in progress.save (JSON tolerates unknown IDs and only
 // warns) and is seeded into every run's unlock state. Packet serialization is not tolerant: WriteEpochId
@@ -21,7 +21,7 @@ namespace Alchemist.AlchemistCode.Patches;
 // EpochRegistration adds to _allEpochs and busts the AllEpochIds cache at load).
 //
 // The filtered list is swapped in only for the duration of the write, then restored, so a disabled mod
-// never costs the player saved unlock progress — re-installing it restores the epoch. Only the ephemeral
+// never costs the player saved unlock progress, since re-installing it restores the epoch. Only the ephemeral
 // replay/network packet omits it. Restoring from a Finalizer rather than a Postfix means the real list
 // comes back even if Serialize throws for an unrelated reason.
 [HarmonyPatch(typeof(SerializableUnlockState), nameof(SerializableUnlockState.Serialize))]
