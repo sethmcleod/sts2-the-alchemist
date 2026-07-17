@@ -7,7 +7,8 @@
 #   scripts/dev.sh import         godot --headless --import only
 #   scripts/dev.sh bridge         build + install the MCPTest + GodotExplorer bridge mods into the game
 #   scripts/dev.sh test [args]    run the regression suite (starts the game if needed;
-#                                 args: --group NAME, --fresh, name filters; see scripts/tests/README.md)
+#                                 args: --group NAME, --changed, --changed-since REF, --fresh,
+#                                 name filters; see scripts/tests/README.md)
 #   scripts/dev.sh game-start     launch the game via Steam and wait for the bridge
 #   scripts/dev.sh game-stop      quit the game (graceful, then force)
 #   scripts/dev.sh game-restart   stop + start (loads freshly-installed bridge/mod builds)

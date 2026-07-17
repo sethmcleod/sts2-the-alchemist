@@ -1,6 +1,7 @@
 {
   "name": "ancient_neow",
   "group": "ancients",
+  "batch": "run",
   "description": "Neow ancient event renders localized options (no raw LocString keys) without exceptions; and the custom Alchemist dialogue is registered and renders",
   "setup": {
     "character": "Alchemist",

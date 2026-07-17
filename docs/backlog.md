@@ -114,7 +114,29 @@ A card whose `can_play` is false at runtime is counted and printed, never failed
 could drift into being permanently unplayable and the sweep would still pass. Either assert
 the count is 0 or pin an expected list.
 
-### 9. The bridge can't see enchantments
+### 9. What's left of the suite's runtime
+
+**Status:** idea; diminishing returns, recorded so the dead ends aren't re-tried
+**Evidence:** measured 2026-07-16. Full suite ~197s wall / 151s of scenarios, 0 restarts
+
+Where the remaining time goes, and what does *not* move it:
+
+- `cards_sweep` ~48s, of which 86 × ~270ms is the per-card `fight` transition. That fresh
+  fight is what lets a failure name one card; reusing fights across cards would save ~20s but
+  leak powers between them, so a throw could be blamed on the wrong card. Only worth it with a
+  bisect step on failure.
+- ~46s is inter-scenario: `reset_to_menu` (~3.2s) plus `start_run` (~3.2s) for the 11
+  scenarios that can't batch. `"batch": "run"` is the lever, but only for genuinely
+  self-contained scenarios (see `scripts/tests/README.md`).
+- Every bridge call that touches the main thread costs ~16ms, and the suite makes ~10 per
+  card. Combining reads (`_hand_index` re-reads state its caller just fetched) would save
+  maybe 5-9s.
+
+Measured dead ends: `--speed` above 3 does nothing (the fight transition is scene init, not
+animation; 266ms at 3x vs 272ms at 20x), and raising the frame rate does nothing (uncapped +
+vsync off left the 16ms floor unchanged; focused + uncapped was worse at 21ms).
+
+### 10. The bridge can't see enchantments
 
 **Status:** ready, ours to fix (toolkit)
 **Evidence:** zero `enchant` hits in `test_mod/Code/BridgeHandler.cs`; hand cards serialize
@@ -126,7 +148,7 @@ but it means Toxic can't be asserted directly at all: it applies Poison to an en
 assertions can't read enemy power stacks either. Adding `enchantment`/`enchantment_amount`
 to the hand-card payload would close that gap.
 
-### 10. `list_game_audio` and `list_game_vfx` always return empty
+### 11. `list_game_audio` and `list_game_vfx` always return empty
 
 **Status:** ready, ours to fix (toolkit)
 **Evidence:** `_load_fmod_data()` at `sts2mcp/server.py` looks for `fmod_dump.json` in two
@@ -142,7 +164,7 @@ prefix-compressed, so `strings` fragments the paths rather than yielding them wh
 Related and smaller: `get_baselib_reference` advertises an `fmod_audio` topic and
 `get_modding_guide` an `audio` topic, and the server rejects both as unknown.
 
-### 11. AutoSlay plays no music at all, and ignores `max_floor`
+### 12. AutoSlay plays no music at all, and ignores `max_floor`
 
 **Status:** idea, ours to fix (toolkit); both cosmetic
 **Evidence:** measured 2026-07-16 mid-run (floor 29, act 2): `AudioManagerProxy.music_track`,
@@ -161,7 +183,7 @@ Also: `bridge_autoslay_configure` reports `applied: {max_floor: 2}` but the next
 `Config maxFloor = 49`, so the override never reaches `AutoSlayConfig`. Makes short test runs
 impossible.
 
-### 12. Publishing under a live game corrupts its asset loads
+### 13. Publishing under a live game corrupts its asset loads
 
 **Status:** mitigated by a warning; a real fix would auto-restart
 **Evidence:** [troubleshooting.md](troubleshooting.md); observed 2026-07-16 as 22/42 passing
@@ -173,7 +195,7 @@ now warns when the game is up, but a warning is easy to scroll past and the fail
 expensive to diagnose. Options: have `publish` offer to restart the game, or have the suite
 refuse to run when the pck is newer than the game process.
 
-### 13. `potion_sell` flakes in a full-suite run
+### 14. `potion_sell` flakes in a full-suite run
 
 **Status:** needs investigation
 **Evidence:** observed 2026-07-16: failed once in a full run with
@@ -185,7 +207,7 @@ the sweeps, so nothing later in the suite can be reaching it. Worth catching the
 next time it fires (`bridge_get_exceptions` right after) rather than re-running until green.
 Now that the suite gates releases, a flake here blocks a release.
 
-### 14. CI can't compile
+### 15. CI can't compile
 
 **Status:** wontfix unless the constraint changes
 **Evidence:** [.github/workflows/lint.yml](../.github/workflows/lint.yml); building with a
@@ -196,7 +218,7 @@ because that needs `sts2.dll` from a Steam install a public runner can't have, a
 run the suite, which needs a live game. Compilation and the suite are gated locally by
 `scripts/dev.sh release` instead. Recorded so the gap isn't mistaken for an oversight.
 
-### 15. Lint doesn't cover non-card entities
+### 16. Lint doesn't cover non-card entities
 
 **Status:** idea, small
 **Evidence:** [lint_sync.py](../scripts/lint_sync.py) reads only `cards.json`, as text
@@ -211,7 +233,7 @@ doesn't do itself.
 
 ## Release
 
-### 16. Workshop upload isn't wired into the tooling
+### 17. Workshop upload isn't wired into the tooling
 
 **Status:** idea
 **Evidence:** [RELEASING.md](../RELEASING.md) says to fill this in when it exists

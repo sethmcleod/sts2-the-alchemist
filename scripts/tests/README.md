@@ -10,10 +10,13 @@ runs with plain Python against the live game, and manages the game process itsel
 ```sh
 scripts/setup.sh                    # once: clones tooling, installs the bridge mods
 scripts/dev.sh test                 # run everything
+scripts/dev.sh test --changed       # only the groups your uncommitted work can affect
+scripts/dev.sh test --changed-since main   # ...or everything that differs from a ref
 scripts/dev.sh test --group shop    # one group
 scripts/dev.sh test sepsis          # scenarios whose filename contains "sepsis"
 scripts/dev.sh test --fresh         # force a game restart first (suspect state)
 scripts/dev.sh test --speed 1       # watchable speed (default 3; >3 glitches the hand animation cosmetically)
+scripts/dev.sh test --fast-mode Fast  # watchable animations (default Instant, which skips them)
 scripts/dev.sh test --no-batch      # disable run-batching (see below) for debugging
 ```
 
@@ -21,13 +24,48 @@ Also: `scripts/dev.sh game-start | game-stop | game-restart` manage the game pro
 directly (Steam must be running; the game launches via the `steam://` protocol).
 `scripts/dev.sh doctor` checks every prerequisite.
 
-**Speed / batching.** Combat-only `checks` scenarios (setup is just a `SLIMES_WEAK`
-fight) are *batched*: they share one run and reset via a fresh `fight` between them, with
-no menu round-trip, death animation, or Neow per test. This is the main time saver
-(the cards group runs ~2.4× faster batched). Everything else resets to the menu with
-its own setup. Batching is automatic; opt a scenario out with `"batch": false`. The
-`cards_sweep` (~3 min, plays all 86 cards) dominates the full-suite time, so use
-`--group`/individual filters while iterating, and run the whole suite once per session.
+**Picking what to run.** `--changed` maps your changed files to the groups they can plausibly
+break (see `_CHANGE_MAP` in `run_suite.py`) and runs only those, printing each path and the
+groups it selected. It is a convenience for the inner loop, not a safety net, so it fails
+safe: anything unmapped (the character model, this harness, a new directory) runs the *whole*
+suite, and a docs- or art-only change runs nothing. `scripts/dev.sh release` always runs
+everything regardless. When you add a subsystem, add it to `_CHANGE_MAP`; when unsure, map it
+broadly, since the cost of being wrong is a missed regression and the cost of being broad is
+a few seconds.
+
+**Speed / batching.** Three things keep the suite quick, and all three are worth knowing about
+if a run suddenly crawls:
+
+- **Batching** is the big one, because a menu round-trip costs ~3.2s and starting a run another
+  ~3.2s. Two modes (`_batch_mode`):
+  - `"combat"`, **inferred** for `checks` scenarios whose setup is just a `SLIMES_WEAK` fight.
+    They share a run and get a fresh `fight` between them, so nothing carries over.
+  - `"run"`, **opt in** with `"batch": "run"`, for scenarios that reach their own room by
+    console and neither care what the run looks like nor leave anything behind. The ancients
+    qualify (`console ancient X`) and went from ~7s each to ~1.4s.
+
+  `"run"` is opt-in for a reason: sharing a run shares everything the previous scenario did to
+  it. Inferring it from setup shape looked fine and quietly broke the shop tests, which read
+  each other's potions (`potion_count == 1 (actual: 2)`). Only claim it for genuinely
+  self-contained scenarios. `"batch": false` opts out entirely; anything seed-sensitive must,
+  since batched neighbours share one run and one seed.
+- **`FastMode = Instant`** makes the game's `Cmd.Wait`/`CustomScaledWait` return without
+  waiting at all, and **`Engine.TimeScale`** (`--speed`, default 3) shortens what's left. Both
+  live in the game process, so `apply_perf()` re-applies them after *every* restart; a restart
+  that skips them silently doubles the remaining run.
+- **Poll intervals.** Bridge calls resolve in about one 60fps frame, so the waiters poll at
+  0.1s rather than 0.5s. If you see a run pause in whole half-seconds, something is polling at
+  the old interval.
+
+Measured dead ends, so you don't re-try them: raising `--speed` past 3 does nothing (the
+~270ms `fight` transition is scene init, which `TimeScale` doesn't touch), and neither does
+raising the frame rate (uncapping FPS and disabling vsync left the ~16ms per-call floor
+unchanged, and focused+uncapped was *worse*). That floor is one main-thread dispatch and is
+the practical limit on how fast a scripted run can drive the game.
+
+`cards_sweep` (all 86 cards, ~48s) dominates what's left: 86 × ~270ms of that is combat init
+for the per-card fresh fight, which buys the isolation that lets a failure name one card. Use
+`--changed` or `--group` while iterating and run the whole suite before a release.
 
 This is a **stateful live-game** suite. Each group passes in isolation, and a very long
 full run may occasionally hit a rare UI-timing flake (e.g. the shop potion popup). Just

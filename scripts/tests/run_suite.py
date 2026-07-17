@@ -137,6 +137,20 @@ def stop_game(timeout: float = 20.0) -> bool:
     return not game_running()
 
 
+def apply_perf(speed: float, fast_mode: str) -> None:
+    """Make the game run the suite as fast as it can. Re-apply after every (re)start.
+
+    Both settings live in the game process, so a restart silently reverts them and everything
+    after it crawls: TimeScale returns to 1x and FastMode to whatever the profile has on disk.
+    They are complementary. TimeScale shortens the game's waits; Instant makes Cmd.Wait and
+    CustomScaledWait return without waiting at all, which is the larger win.
+    """
+    bridge_client.set_game_speed(speed)
+    res = _r(bridge_client.send_request("set_fast_mode", {"mode": fast_mode}))
+    if res.get("error"):
+        print(f"  ! could not set fast mode ({res['error']}); the run will be slower")
+
+
 def ensure_game_ready(fresh: bool = False) -> bool:
     """Reuse a healthy running game; start if absent; restart only if unhealthy."""
     if fresh and game_running():
@@ -169,11 +183,17 @@ def reset_to_menu(timeout: float = 15.0) -> bool:
     state = _r(bridge_client.get_run_state())
     if state.get("in_progress"):
         screen = str(_r(bridge_client.get_screen()).get("screen", ""))
-        if "COMBAT" in screen:
-            bridge_client.execute_console_command("die")
-        else:
-            bridge_client.navigate_menu("abandon")
-        time.sleep(1.0)
+        if "COMBAT" not in screen:
+            # Drop into a combat so we can `die` out of it. The pause-menu abandon is the
+            # obvious alternative, but it's driven by real clicks and a leftover modal (a shop's
+            # potion popup, say) silently blocks it, wedging the reset into a ~40s game restart.
+            # `die` is console-driven and works regardless of what's on screen.
+            bridge_client.execute_console_command("fight SLIMES_WEAK")
+            bridge_client.wait_for_screen("COMBAT_PLAYER_TURN", timeout_seconds=10)
+        bridge_client.execute_console_command("die")
+        # Just long enough for the game-over screen to exist; the loop below re-clicks if it
+        # wasn't ready yet, so this doesn't need to cover the whole animation.
+        time.sleep(0.3)
         godot_explorer_client.call_method(MAIN_MENU_BUTTON, "ForceClick")
 
     deadline = time.monotonic() + timeout
@@ -183,9 +203,12 @@ def reset_to_menu(timeout: float = 15.0) -> bool:
             return True
         if "OVERLAY" in screen:  # game-over may still be animating in; retry
             godot_explorer_client.call_method(MAIN_MENU_BUTTON, "ForceClick")
-        elif "MENU" in screen:  # a submenu (settings, compendium) is open, so pop it
+        elif "MENU" in screen or screen == "TIMELINE":
+            # A submenu (settings, compendium) is open, so pop it. TIMELINE lands here because
+            # ending a run with epochs to show routes through it on the way back to the menu,
+            # and any test that reveals epochs (mod config's Unlock All) makes that the norm.
             bridge_client.navigate_menu("back")
-        time.sleep(0.5)
+        time.sleep(0.15)
     return False
 
 
@@ -214,7 +237,9 @@ def _hand_index(card_name: str, timeout: float = 5.0) -> int:
         for c in _combat_player().get("hand") or []:
             if c.get("name") == card_name:
                 return int(c["index"])
-        time.sleep(0.3)
+        # Console injection is fire-and-forget, so the first look almost always misses and every
+        # caller pays this interval. The state read itself costs a frame and paces the loop.
+        time.sleep(0.05)
     raise CheckFailure(f"card {card_name!r} not in hand")
 
 
@@ -437,9 +462,17 @@ def _use_potion_ui(slot: int = 0) -> None:
     holders = [c["path"] for c in tree.get("children", [])] if isinstance(tree, dict) else []
     holder = holders[slot] if slot < len(holders) else holders[0]
     godot_explorer_client.call_method(holder, "OpenPotionPopup")
-    time.sleep(1.2)
-    godot_explorer_client.call_method(f"{holder}/PotionPopup/Container/UseButton", "ForceClick")
-    time.sleep(1.0)
+    # Wait for the popup's button to exist rather than guessing at its animation: ForceClick on
+    # a node that isn't there yet silently does nothing and the potion never gets used.
+    use_button = f"{holder}/PotionPopup/Container/UseButton"
+    deadline = time.monotonic() + 5.0
+    while time.monotonic() < deadline:
+        tree = godot_explorer_client.get_scene_tree(root_path=use_button, depth=0)
+        if isinstance(tree, dict) and not tree.get("error"):
+            break
+        time.sleep(0.1)
+    godot_explorer_client.call_method(use_button, "ForceClick")
+    time.sleep(0.4)
 
 
 def _find_by_label(root: str, label: str) -> str | None:
@@ -742,8 +775,8 @@ def run_checks_scenario(scenario: dict, skip_setup: bool = False) -> dict:
     ctx["exceptions_since"] = max((e.get("id", 0) for e in exc), default=0)
     ctx["log_since"] = _r(bridge_client.get_game_log(max_count=1)).get("latest_id", 0)
 
-    # skip_setup: a batched combat scenario, where the shared run + fresh SLIMES_WEAK combat
-    # was already established by the caller, so don't start a new run.
+    # skip_setup: a batched scenario, whose shared run (and, for combat batches, a fresh
+    # SLIMES_WEAK fight) the caller already established, so don't start a new run.
     setup = scenario.get("setup") or {}
     if setup and not skip_setup:
         bridge_client.start_run(**setup)
@@ -861,7 +894,7 @@ def _resolve_overlays(max_steps: int = 10) -> None:
         try:
             if screen == "HAND_SELECT":
                 bridge_client.execute_action("combat_select_card", card_index=0)
-                time.sleep(0.3)
+                time.sleep(0.1)
                 bridge_client.execute_action("combat_confirm_selection")
             elif screen in ("CARD_SELECTION", "CARD_REWARD"):
                 bridge_client.card_select(0, confirm=True)
@@ -871,7 +904,7 @@ def _resolve_overlays(max_steps: int = 10) -> None:
                 bridge_client.execute_action("proceed")
         except Exception:
             pass
-        time.sleep(0.6)
+        time.sleep(0.2)
 
 
 def run_sweep(kind: str, scenario: dict) -> dict:
@@ -1024,21 +1057,133 @@ def describe_failures(result: dict) -> list[str]:
 
 # ── discovery / main ─────────────────────────────────────────────────────────
 
-def _combat_batchable(scenario: dict) -> bool:
-    """A checks scenario that just needs a fresh SLIMES_WEAK combat (no special screen
-    or cross-run state) can share one run with its neighbours, reset via `fight`
-    between them instead of a full menu round-trip. Opt out with `"batch": false`."""
+def _batch_mode(scenario: dict) -> str | None:
+    """How (if at all) a scenario can share a run with its neighbours.
+
+    A menu round-trip costs ~3.2s (death, then the main-menu scene load) and starting a run
+    another ~3.2s, which dwarfs most scenarios. Sharing a run skips both.
+
+      "combat" - inferred: wants a plain SLIMES_WEAK fight, which a fresh `fight` resets
+                 between scenarios, so nothing carries over
+      "run"    - opt in with `"batch": "run"`: the scenario reaches its own room by console
+                 and neither cares what the run looks like nor leaves anything behind
+      None     - reset to the menu and run the scenario's own setup
+
+    "run" is opt-in on purpose. Sharing a run means sharing everything the last scenario did to
+    it, and a scenario that quietly depends on a clean run then fails (or worse, passes) for
+    reasons that have nothing to do with it: the shop tests batched this way read each other's
+    potions. Only claim it for scenarios that are genuinely self-contained.
+
+    Batching also ignores the declared seed, since neighbours share one run, so anything
+    seed-sensitive must stay unbatched.
+    """
     if "checks" not in scenario or scenario.get("batch") is False:
-        return False
+        return None
     setup = scenario.get("setup") or {}
-    return (setup.get("fight") == "SLIMES_WEAK"
-            and set(setup) <= {"character", "seed", "fight", "ascension"})
+    if not setup or set(setup) - {"character", "seed", "fight", "ascension"}:
+        return None  # no run wanted at all, or a setup we don't understand
+    if scenario.get("batch") == "run" and "fight" not in setup:
+        return "run"
+    if setup.get("fight") == "SLIMES_WEAK":
+        return "combat"
+    return None
 
 
-def discover(group_filter: str | None, name_filters: list[str]) -> list[Path]:
+# Which test groups can a change to a given path plausibly break? Prefixes are matched
+# longest-first, so a specific file can narrow what its directory says.
+#
+# This is a convenience for the inner loop, not a safety net: anything not matched here runs
+# the WHOLE suite, and `scripts/dev.sh release` always runs the whole suite regardless. When
+# in doubt widen the mapping, since the cost of being wrong is a missed regression and the
+# cost of being broad is a few seconds.
+_CHANGE_MAP: list[tuple[str, set[str]]] = [
+    # Content: each kind, plus the pools/rendering the compendium group asserts.
+    ("AlchemistCode/Cards/", {"cards", "sweeps", "compendium"}),
+    ("AlchemistCode/Powers/", {"cards", "sweeps", "compendium"}),
+    ("AlchemistCode/Enchantments/", {"cards", "sweeps", "compendium"}),
+    ("AlchemistCode/Commands/", {"cards", "sweeps"}),
+    ("AlchemistCode/Relics/", {"sweeps", "rest", "shop", "compendium"}),
+    ("AlchemistCode/Potions/", {"sweeps", "rest", "shop", "compendium"}),
+    ("AlchemistCode/Epochs/", {"settings"}),
+    ("AlchemistCode/Config/", {"settings"}),
+    # Patches: narrow, since each hooks one subsystem.
+    ("AlchemistCode/Patches/AncientDialoguePatches.cs", {"ancients"}),
+    ("AlchemistCode/Patches/PotionSellPatches.cs", {"shop"}),
+    ("AlchemistCode/Patches/RestSitePatches.cs", {"rest"}),
+    ("AlchemistCode/Patches/EpochPatches.cs", {"settings"}),
+    ("AlchemistCode/Patches/UnlockStateSerializationPatches.cs", {"settings"}),
+    ("AlchemistCode/Patches/PoolPatches.cs", {"compendium"}),
+    ("AlchemistCode/Patches/CardTextPatches.cs", {"cards", "compendium"}),
+    ("AlchemistCode/Patches/KeywordTipPatches.cs", {"cards", "compendium"}),
+    ("AlchemistCode/Patches/InfusionPatches.cs", {"cards", "sweeps"}),
+    ("AlchemistCode/Patches/PoisonPatches.cs", {"cards", "sweeps"}),
+    # Localization: loc_render (compendium) reads every file; ancients own theirs.
+    ("Alchemist/localization/eng/ancients.json", {"ancients", "compendium"}),
+    ("Alchemist/localization/", {"compendium"}),
+    ("cards.csv", {"cards", "compendium"}),
+    # Nothing here has a behavioural test: art, docs, and the release plumbing.
+    ("Alchemist/images/", set()),
+    ("images/", set()),
+    ("docs/", set()),
+    ("dist/", set()),
+    (".github/", set()),
+    ("README.md", set()),
+    ("CHANGELOG.md", set()),
+    ("CONTRIBUTING.md", set()),
+    ("RELEASING.md", set()),
+    ("BUILD.md", set()),
+    ("CLAUDE.md", set()),
+    ("LICENSE", set()),
+]
+
+
+def changed_files(ref: str | None) -> list[str]:
+    """Repo-relative paths that differ from *ref* (default: uncommitted work vs HEAD)."""
+    cmds = ([["git", "diff", "--name-only", ref]] if ref
+            else [["git", "diff", "--name-only", "HEAD"], ["git", "ls-files", "--others", "--exclude-standard"]])
+    out: list[str] = []
+    for cmd in cmds:
+        r = subprocess.run(cmd, cwd=REPO_DIR, capture_output=True, text=True)
+        if r.returncode != 0:
+            raise CheckFailure(f"{' '.join(cmd)} failed: {r.stderr.strip()}")
+        out += [ln for ln in r.stdout.splitlines() if ln.strip()]
+    return sorted(set(out))
+
+
+def groups_for_changes(paths: list[str]) -> tuple[set[str] | None, list[str]]:
+    """Map changed paths to test groups.
+
+    Returns (groups, reasons); groups is None when something unrecognized changed and the
+    whole suite should run. An empty set means nothing testable changed.
+    """
+    groups: set[str] = set()
+    reasons: list[str] = []
+    for path in paths:
+        # A changed scenario only implicates its own group.
+        if path.startswith("scripts/tests/") and path.endswith(".json"):
+            grp = Path(path).parent.name
+            groups.add(grp)
+            reasons.append(f"{path} -> {grp}")
+            continue
+        # The harness itself, the character, or anything unmapped: run everything.
+        match = next((m for m in sorted(_CHANGE_MAP, key=lambda kv: -len(kv[0]))
+                      if path.startswith(m[0])), None)
+        if match is None:
+            reasons.append(f"{path} -> (unmapped, running everything)")
+            return None, reasons
+        if match[1]:
+            groups |= match[1]
+            reasons.append(f"{path} -> {', '.join(sorted(match[1]))}")
+        else:
+            reasons.append(f"{path} -> no tests")
+    return groups, reasons
+
+
+def discover(groups: set[str] | None, name_filters: list[str]) -> list[Path]:
+    """Scenarios in *groups* (None = every group) matching any of *name_filters*."""
     paths = sorted(TESTS_DIR.rglob("*.json"))
-    if group_filter:
-        paths = [p for p in paths if p.parent.name == group_filter]
+    if groups is not None:
+        paths = [p for p in paths if p.parent.name in groups]
     if name_filters:
         paths = [p for p in paths if any(f in p.stem.lower() for f in name_filters)]
     return paths
@@ -1064,13 +1209,37 @@ def main() -> int:
         return 0 if ok else 1
 
     speed = float(take_opt("--speed") or os.environ.get("ALCH_TEST_SPEED", "3"))
+    fast_mode = take_opt("--fast-mode") or os.environ.get("ALCH_TEST_FAST_MODE", "Instant")
     group = take_opt("--group")
+    changed_ref = take_opt("--changed-since")
+    changed = "--changed" in args
+    if changed:
+        args.remove("--changed")
     fresh = "--fresh" in args
     if fresh:
         args.remove("--fresh")
     name_filters = [a.lower() for a in args]
 
-    paths = discover(group, name_filters)
+    groups: set[str] | None = {group} if group else None
+    if changed or changed_ref:
+        files = changed_files(changed_ref)
+        if not files:
+            print(f"✓ nothing changed vs {changed_ref or 'HEAD'}; no scenarios to run")
+            return 0
+        selected, reasons = groups_for_changes(files)
+        print(f"── changed vs {changed_ref or 'HEAD'} ({len(files)} file(s)) ──")
+        for r in reasons:
+            print(f"  {r}")
+        if selected is None:
+            print("  => running the full suite")
+        elif not selected:
+            print("  => no group is affected; nothing to run")
+            return 0
+        else:
+            print(f"  => groups: {', '.join(sorted(selected))}")
+            groups = selected if group is None else ({group} & selected)
+
+    paths = discover(groups, name_filters)
     if not paths:
         print(f"✗ no scenarios match group={group!r} names={name_filters} in {TESTS_DIR}")
         return 2
@@ -1081,10 +1250,10 @@ def main() -> int:
     print("✓ game ready (bridge + explorer connected)")
 
     no_batch = "--no-batch" in sys.argv
-    bridge_client.set_game_speed(speed)
+    apply_perf(speed, fast_mode)
     passed, failed, restarts = [], [], 0
     current_group = None
-    in_batch = False  # a shared combat run is currently open for batched scenarios
+    in_batch: str | None = None  # batch mode of the shared run currently open, if any
     ctx_batch: dict = {}
     try:
         for path in paths:
@@ -1094,26 +1263,33 @@ def main() -> int:
                 current_group = grp
                 print(f"\n── {grp} ──")
             desc = scenario.get("description", "")
-            batched = _combat_batchable(scenario) and not no_batch
+            mode = None if no_batch else _batch_mode(scenario)
 
-            # Batched combat scenarios share one run: a fresh SLIMES_WEAK fight between
-            # them (no menu round-trip / death animation / Neow), the big time saver.
-            # Everything else resets to the menu and runs with its own setup.
-            if batched:
-                if not in_batch:
-                    reset_to_menu()  # drop any leftover run so the batch starts clean
-                    ctx_batch = {}
-                _fresh_fight(ctx_batch)
-                in_batch = True
+            # Batched scenarios share one run, skipping the menu round-trip and the run start
+            # (~6.4s each). Everything else resets to the menu and runs with its own setup.
+            skip_setup = False
+            if mode is not None and mode == in_batch:
+                if mode == "combat":
+                    _fresh_fight(ctx_batch)  # clean combat for the next scenario
+                # "run": the scenario reaches its own room by console, so nothing to reset
+                skip_setup = True
             else:
-                in_batch = False
+                in_batch = None
                 if not reset_to_menu():
                     restarts += 1
                     if restarts > 2 or not ensure_game_ready(fresh=True):
                         print(f"✗ {path.stem}: game wedged and restart failed; aborting")
                         failed.append(path.stem)
                         break
-                    bridge_client.set_game_speed(speed)
+                    apply_perf(speed, fast_mode)
+                ctx_batch = {}
+                if mode == "combat":
+                    # opens the shared run too, if none is live, so its own setup can be skipped
+                    _fresh_fight(ctx_batch)
+                    skip_setup = True
+                # "run": let the opener start the run itself. It wants a Neow event, not the
+                # combat _sweep_new_run would leave it in, and `ancient X` won't open from combat.
+                in_batch = mode
 
             t0 = time.monotonic()
             try:
@@ -1122,7 +1298,7 @@ def main() -> int:
                     ok = result["passed"]
                     detail = [f"    {f}" for f in result["failures"]]
                 elif "checks" in scenario:
-                    result = run_checks_scenario(scenario, skip_setup=batched)
+                    result = run_checks_scenario(scenario, skip_setup=skip_setup)
                     ok = result["passed"]
                     detail = [f"    {f}" for f in result["failures"]]
                 else:

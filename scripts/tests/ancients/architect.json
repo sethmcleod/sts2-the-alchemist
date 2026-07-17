@@ -1,6 +1,7 @@
 {
   "name": "ancient_architect",
   "group": "ancients",
+  "batch": "run",
   "description": "The Architect ancient event renders localized options (no raw LocString keys) without exceptions; and the custom Alchemist dialogue is registered and renders",
   "setup": {
     "character": "Alchemist",
