@@ -54,7 +54,6 @@ public abstract class AlchemistCard : ConstructedCardModel
     protected override bool ShouldGlowGoldInternal =>
         IsMutable && ((IsGambitCard && IsReduced) || ConditionalGlow);
 
-    // True when the owner's current HP sits within [lower, upper] as a fraction of Max HP
     internal bool HpFractionInRange(double lower, double upper)
     {
         if (Owner?.Creature is not { } c || c.MaxHp <= 0) return false;
@@ -116,7 +115,6 @@ public abstract class AlchemistCard : ConstructedCardModel
         }
     }
 
-    // Returns the fermented-turn count and resets it
     protected int ConsumeFermentTurns()
     {
         var turns = _fermentTurns;

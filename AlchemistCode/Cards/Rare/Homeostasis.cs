@@ -14,7 +14,6 @@ public class Homeostasis : AlchemistCard
         WithCostUpgradeBy(-1);
     }
 
-    // Glows while your HP is below the trigger threshold
     protected override bool ConditionalGlow =>
         Owner?.Creature is { } c && c.MaxHp > 0 && (double)c.CurrentHp / c.MaxHp < Threshold;
 

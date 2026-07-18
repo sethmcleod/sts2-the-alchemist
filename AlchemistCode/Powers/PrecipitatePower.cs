@@ -22,7 +22,7 @@ public class PrecipitatePower : AlchemistPower
         await PowerCmd.Decrement(this);
     }
 
-    // Only holds until the end of the turn it's played
+    // AfterSideTurnEnd fires for both sides; self-remove only at the owner's own turn end
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {

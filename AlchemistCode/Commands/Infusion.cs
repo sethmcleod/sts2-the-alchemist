@@ -84,7 +84,7 @@ public static class Infusion
             CardCmd.Preview(picks);
     }
 
-    // Still used by Bestow to infuse a teammate's hand, which the caster can't see to target
+    // Used by Bestow to infuse a teammate's hand, which the caster can't see to target
     public static void InfuseRandomFromHand(Player owner, int count, CardModel? exclude = null)
     {
         var rng = owner.RunState.Rng.CombatCardGeneration;
