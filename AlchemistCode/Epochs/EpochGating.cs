@@ -11,10 +11,14 @@ namespace Alchemist.AlchemistCode.Epochs;
 // and when the epoch system is disabled in mod config nothing is gated at all.
 public static class EpochGating
 {
-    // Gated content id -> "is this content's epoch revealed?". Ungated content is absent from the map.
-    private static Dictionary<ModelId, Func<UnlockState, bool>> _cardGates;
-    private static Dictionary<ModelId, Func<UnlockState, bool>> _relicGates;
-    private static Dictionary<ModelId, Func<UnlockState, bool>> _potionGates;
+    // Gated content id -> "is this content's epoch revealed?". Ungated content is absent from the maps.
+    // All three build in one pass, so one reference write publishes the finished set
+    private sealed record Gates(
+        Dictionary<ModelId, Func<UnlockState, bool>> Cards,
+        Dictionary<ModelId, Func<UnlockState, bool>> Relics,
+        Dictionary<ModelId, Func<UnlockState, bool>> Potions);
+
+    private static Gates? _gates;
 
     // One reveal predicate per content epoch. Compile-time generics work for our registered custom epochs.
     private static readonly (Type Epoch, Func<UnlockState, bool> Revealed)[] Revealers =
@@ -27,9 +31,9 @@ public static class EpochGating
         (typeof(Alchemist7Epoch), us => us.IsEpochRevealed<Alchemist7Epoch>()),
     };
 
-    public static bool CardUnlocked(ModelId id, UnlockState unlockState) => Unlocked(Cards, id, unlockState);
-    public static bool RelicUnlocked(ModelId id, UnlockState unlockState) => Unlocked(Relics, id, unlockState);
-    public static bool PotionUnlocked(ModelId id, UnlockState unlockState) => Unlocked(Potions, id, unlockState);
+    public static bool CardUnlocked(ModelId id, UnlockState unlockState) => Unlocked(Built.Cards, id, unlockState);
+    public static bool RelicUnlocked(ModelId id, UnlockState unlockState) => Unlocked(Built.Relics, id, unlockState);
+    public static bool PotionUnlocked(ModelId id, UnlockState unlockState) => Unlocked(Built.Potions, id, unlockState);
 
     private static bool Unlocked(Dictionary<ModelId, Func<UnlockState, bool>> gates, ModelId id, UnlockState unlockState)
     {
@@ -38,13 +42,10 @@ public static class EpochGating
         return !gates.TryGetValue(id, out var revealed) || revealed(unlockState);
     }
 
-    private static Dictionary<ModelId, Func<UnlockState, bool>> Cards { get { Build(); return _cardGates; } }
-    private static Dictionary<ModelId, Func<UnlockState, bool>> Relics { get { Build(); return _relicGates; } }
-    private static Dictionary<ModelId, Func<UnlockState, bool>> Potions { get { Build(); return _potionGates; } }
+    private static Gates Built => _gates ??= Build();
 
-    private static void Build()
+    private static Gates Build()
     {
-        if (_cardGates != null) return;
         var cards = new Dictionary<ModelId, Func<UnlockState, bool>>();
         var relics = new Dictionary<ModelId, Func<UnlockState, bool>>();
         var potions = new Dictionary<ModelId, Func<UnlockState, bool>>();
@@ -55,8 +56,6 @@ public static class EpochGating
             foreach (var r in epoch.GatedRelics) relics[r.Id] = revealed;
             foreach (var p in epoch.GatedPotions) potions[p.Id] = revealed;
         }
-        _relicGates = relics;
-        _potionGates = potions;
-        _cardGates = cards; // set last: doubles as the built flag
+        return new Gates(cards, relics, potions);
     }
 }

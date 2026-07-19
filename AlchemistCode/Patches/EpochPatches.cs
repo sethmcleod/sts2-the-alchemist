@@ -42,15 +42,18 @@ public static class EpochPatches
     private static bool Enabled => AlchemistModConfig.EnableEpochs;
 
     private static bool IsAlchemist(Player p) => p?.Character is AlchemistCharacter;
+
+    // OrNull, not GetById: a save whose character mod is uninstalled would otherwise throw
+    // ModelNotFoundException out of the post-run unlock path we're postfixing
     private static bool IsAlchemist(SerializablePlayer sp) =>
-        ModelDb.GetById<CharacterModel>(sp.CharacterId) is AlchemistCharacter;
+        sp.CharacterId != null && ModelDb.GetByIdOrNull<CharacterModel>(sp.CharacterId) is AlchemistCharacter;
 
     [HarmonyPatch(typeof(ProgressSaveManager), "ObtainCharUnlockEpoch")]
     [HarmonyPostfix]
     private static void AwardActEpoch(ProgressSaveManager __instance, Player localPlayer, int act)
     {
         if (!Enabled || !IsAlchemist(localPlayer)) return;
-        EpochModel epoch = act switch
+        EpochModel? epoch = act switch
         {
             0 => EpochModel.Get<Alchemist2Epoch>(),
             1 => EpochModel.Get<Alchemist3Epoch>(),

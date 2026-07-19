@@ -71,12 +71,12 @@ public static class EpochRegistration
         EpochEra.Invitation5, EpochEra.Invitation6, EpochEra.Invitation7,
     };
     private const int TopRow = 4; // Rows 0 (bottom) .. 4 (top)
-    private static Dictionary<Type, (EpochEra era, int pos)> _slots;
+    private static Dictionary<Type, (EpochEra era, int pos)>? _slots;
 
     public static (EpochEra era, int pos) SlotFor(Type epochType)
     {
-        _slots ??= AssignSlots();
-        return _slots.TryGetValue(epochType, out var s) ? s : (EpochEra.Invitation7, 0);
+        var slots = _slots ??= AssignSlots();
+        return slots.TryGetValue(epochType, out var s) ? s : (EpochEra.Invitation7, 0);
     }
 
     private static Dictionary<Type, (EpochEra, int)> AssignSlots()
