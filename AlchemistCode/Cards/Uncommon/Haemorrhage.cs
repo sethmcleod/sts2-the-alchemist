@@ -27,6 +27,16 @@ public class Haemorrhage : AlchemistCard
         }
     }
 
+    protected override int? FormulaHpLossPreview
+    {
+        get
+        {
+            if (Owner?.Creature is not { } c) return null;
+            var regen = c.GetPowerAmount<RegenPower>();
+            return regen > 0 ? regen : null;
+        }
+    }
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var lost = Owner.Creature.GetPowerAmount<RegenPower>();

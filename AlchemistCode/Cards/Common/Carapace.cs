@@ -12,7 +12,7 @@ public class Carapace : AlchemistCard
     public Carapace() : base(2, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithCalculatedBlock(6, static (card, _) =>
-                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * (card.IsUpgraded ? 100m : 75m) / 100m
+                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * (card.IsUpgraded ? 75m : 50m) / 100m
                                   * ((AlchemistCard)card).FermentTurns),
             ValueProp.Move, 0, 0);
         WithKeyword(CardKeyword.Retain);
@@ -21,6 +21,5 @@ public class Carapace : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        ConsumeFermentTurns();
     }
 }

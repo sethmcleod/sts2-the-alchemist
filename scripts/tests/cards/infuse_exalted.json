@@ -5,10 +5,10 @@
   "setup": {"character": "Alchemist", "seed": "ALCHINF1", "fight": "SLIMES_WEAK"},
   "checks": [
     {"do": {"console": "energy 10"}, "delay": 0.3},
-    {"do": {"console": "card ALCHEMIST-IMBUE"}, "delay": 0.4, "note": "a Power with no Strength of its own, so the assert is unambiguous"},
+    {"do": {"console": "card ALCHEMIST-BLOOM"}, "delay": 0.4, "note": "a Power with no Strength of its own, so the assert is unambiguous"},
     {"do": {"console": "card ALCHEMIST-PRIME"}, "delay": 0.4},
     {"do": {"play_card": "Prime"}, "delay": 0.8, "note": "Prime attacks, then opens the Infuse prompt"},
-    {"do": {"select_hand_cards": ["Imbue"]}, "delay": 0.8},
-    {"do": {"play_card": "Imbue"}, "expect": {"power": {"name": "StrengthPower", "amount": 1}}, "timeout": 8, "note": "Exalted fires on play"}
+    {"do": {"select_hand_cards": ["Bloom"]}, "delay": 0.8},
+    {"do": {"play_card": "Bloom"}, "expect": {"power": {"name": "StrengthPower", "amount": 1}}, "timeout": 8, "note": "Exalted fires on play"}
   ]
 }

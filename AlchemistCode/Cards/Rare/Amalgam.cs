@@ -29,7 +29,7 @@ public class Amalgam : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var x = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0) + ConsumeFermentTurns();
+        var x = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0) + FermentTurns;
         if (x > 0)
         {
             foreach (var enemy in CombatState!.Enemies.Where(e => e.IsAlive))

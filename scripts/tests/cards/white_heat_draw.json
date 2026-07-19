@@ -1,0 +1,10 @@
+{
+  "name": "white_heat_draw",
+  "group": "cards",
+  "description": "White Heat: lose 6 HP, gain 2 energy, draw 1 -> hand settles at 6",
+  "setup": {"character": "Alchemist", "seed": "ALCHREG3", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"console": "card ALCHEMIST-WHITE_HEAT"}, "delay": 0.4},
+    {"do": {"play_card": "WhiteHeat"}, "expect": {"hp": 63, "energy": 5, "hand_size": 6}, "timeout": 6}
+  ]
+}

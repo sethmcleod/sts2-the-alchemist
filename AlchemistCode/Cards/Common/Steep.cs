@@ -23,7 +23,7 @@ public class Steep : AlchemistCard
     public Steep() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithPower<PoisonPower>(4, 2);
-        WithVar("Bonus", 2, 0);
+        WithVar("Bonus", 1, 1);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }
@@ -31,7 +31,7 @@ public class Steep : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (play.Target == null) return;
-        var total = DynamicVars.Poison.BaseValue + DynamicVars["Bonus"].BaseValue * ConsumeFermentTurns();
+        var total = DynamicVars.Poison.BaseValue + DynamicVars["Bonus"].BaseValue * FermentTurns;
         await PowerCmd.Apply<PoisonPower>(choiceContext, play.Target, total, Owner.Creature, this);
     }
 }

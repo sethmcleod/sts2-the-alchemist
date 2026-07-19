@@ -60,7 +60,7 @@
     {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST5_EPOCH", "state": "Revealed"}}, "expect": {"epoch_state": {
       "cards": {
         "CARD.ALCHEMIST-CARAPACE": {"unlocked": true, "discovered": false},
-        "CARD.ALCHEMIST-COMPOUND": {"unlocked": true, "discovered": false},
+        "CARD.ALCHEMIST-ROLLING_BOIL": {"unlocked": true, "discovered": false},
         "CARD.ALCHEMIST-AMALGAM": {"unlocked": true, "discovered": false},
         "CARD.ALCHEMIST-MASTERWORK": {"unlocked": false}
       }
@@ -68,9 +68,9 @@
 
     {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST6_EPOCH", "state": "Revealed"}}, "expect": {"epoch_state": {
       "cards": {
-        "CARD.ALCHEMIST-SYNTHESIS": {"unlocked": true, "discovered": false},
+        "CARD.ALCHEMIST-FULL_MEASURE": {"unlocked": true, "discovered": false},
         "CARD.ALCHEMIST-MASTERWORK": {"unlocked": true, "discovered": false},
-        "CARD.ALCHEMIST-TRANSMUTATION": {"unlocked": true, "discovered": false}
+        "CARD.ALCHEMIST-GOLDEN_TOUCH": {"unlocked": true, "discovered": false}
       }
     }}, "timeout": 6, "note": "Alchemist6 unlocks its 3 cards"},
 

@@ -5,13 +5,13 @@
   "setup": {"character": "Alchemist", "seed": "ALCHINF3", "fight": "SLIMES_WEAK"},
   "checks": [
     {"do": {"console": "energy 20"}, "delay": 0.3},
-    {"do": {"console": "card ALCHEMIST-IMBUE"}, "delay": 0.4},
+    {"do": {"console": "card ALCHEMIST-BLOOM"}, "delay": 0.4},
     {"do": {"console": "card ALCHEMIST-PRIME"}, "delay": 0.4},
     {"do": {"console": "card ALCHEMIST-PRIME"}, "delay": 0.4},
     {"do": {"play_card": "Prime"}, "delay": 0.8},
-    {"do": {"select_hand_cards": ["Imbue"]}, "delay": 0.8},
-    {"do": {"play_card": "Prime"}, "expect": {"hand_contains": "Imbue"}, "delay": 0.8, "note": "second Infuse in the same combat; Imbue must still be in hand, not invisible"},
-    {"do": {"select_hand_cards": ["Imbue"]}, "delay": 0.8},
-    {"do": {"play_card": "Imbue"}, "expect": {"power": {"name": "StrengthPower", "amount": 2}}, "timeout": 8, "note": "two Infuses = Exalted 2 = 2 Strength"}
+    {"do": {"select_hand_cards": ["Bloom"]}, "delay": 0.8},
+    {"do": {"play_card": "Prime"}, "expect": {"hand_contains": "Bloom"}, "delay": 0.8, "note": "second Infuse in the same combat; Bloom must still be in hand, not invisible"},
+    {"do": {"select_hand_cards": ["Bloom"]}, "delay": 0.8},
+    {"do": {"play_card": "Bloom"}, "expect": {"power": {"name": "StrengthPower", "amount": 2}}, "timeout": 8, "note": "two Infuses = Exalted 2 = 2 Strength"}
   ]
 }

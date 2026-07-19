@@ -1,0 +1,23 @@
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.ValueProps;
+
+namespace Alchemist.AlchemistCode.Cards.Uncommon;
+
+public class Aggravate : AlchemistCard
+{
+    public Aggravate() : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    {
+        WithCalculatedDamage(4, 2, (_, target) =>
+            target?.Powers.Count(p => p.TypeForCurrentAmount == PowerType.Debuff
+                                      && p.IsVisible && p.Amount > 0) ?? 0,
+            ValueProp.Move, 0, 1);
+    }
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
+    {
+        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "seep_regen_timing",
+  "group": "cards",
+  "description": "A Seep that grants Regen resolves before the end-of-turn Regen heal: holding Trickle with 5 Regen heals 6 (5 + Trickle's 1), not 5",
+  "setup": {"character": "Alchemist", "seed": "SEEPT1", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"console": "damage 25 0"}, "delay": 0.5, "note": "Regen can't overheal, so make room for the heal to be visible"},
+    {"do": {"console": "block 40 0"}, "delay": 0.5, "note": "absorb the enemy turn so HP only moves via the heal"},
+    {"do": {"console": "power REGEN_POWER 5 0"}, "expect": {"power": {"name": "RegenPower", "amount": 5}}, "timeout": 6},
+    {"do": {"console": "card ALCHEMIST-TRICKLE"}, "expect": {"hand_contains": "Trickle"}, "timeout": 6},
+    {"do": {"snapshot": "hp"}, "delay": 0.2},
+    {"do": {"end_turn": true}, "expect": {"hp_gain_gte": 6}, "timeout": 8, "note": "Seep's +1 Regen lands before RegenPower heals, so the turn heals 6; healing 5 means Seep ran too late"}
+  ]
+}

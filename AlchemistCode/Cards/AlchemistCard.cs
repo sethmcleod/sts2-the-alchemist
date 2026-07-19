@@ -81,6 +81,10 @@ public abstract class AlchemistCard : ConstructedCardModel
     // the card face can show it live via {FormulaDamage}. Null when it can't be computed (e.g. the card library)
     protected virtual int? FormulaDamagePreview => null;
 
+    // Same idea for self-inflicted HP loss, surfaced via {FormulaHpLoss}. Rendered red rather than green so the
+    // cost reads apart from the payoff on cards that preview both
+    protected virtual int? FormulaHpLossPreview => null;
+
     private int _fermentTurns;
 
     protected virtual bool IsFermentCard => false;
@@ -100,7 +104,10 @@ public abstract class AlchemistCard : ConstructedCardModel
     // (e.g. adding a token that previews itself) opt out to avoid a redundant double flash
     protected virtual bool SeepPreviewsSelf => true;
 
-    public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
+    // VeryEarly, not the plain BeforeSideTurnEnd hook: RegenPower heals and decrements in BeforeSideTurnEndEarly,
+    // which runs between the two. Seeping from the later hook meant a Seep that grants Regen missed this turn's
+    // heal entirely, so a card like Trickle paid off a turn late
+    public override async Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
         // Ferment and Seep only fire while the card is held in hand at the owner's turn end
@@ -115,11 +122,12 @@ public abstract class AlchemistCard : ConstructedCardModel
         }
     }
 
-    protected int ConsumeFermentTurns()
+    // Ferment potency is kept when the card is played, so the only reset is combat start. Deck cards are the same
+    // instances across combats and every one of them listens to this hook, so this catches all piles
+    public override Task BeforeCombatStart()
     {
-        var turns = _fermentTurns;
         _fermentTurns = 0;
-        return turns;
+        return Task.CompletedTask;
     }
 
     protected override void AddExtraArgsToDescription(LocString description)
@@ -134,5 +142,7 @@ public abstract class AlchemistCard : ConstructedCardModel
         // Only mutable combat instances have an Owner, and the live preview is only meaningful there
         description.Add("FormulaDamage",
             IsMutable && FormulaDamagePreview is { } d ? $" ([green]{d}[/green])" : "");
+        description.Add("FormulaHpLoss",
+            IsMutable && FormulaHpLossPreview is { } hp ? $" ([red]{hp}[/red])" : "");
     }
 }

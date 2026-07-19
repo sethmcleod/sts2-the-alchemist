@@ -14,6 +14,7 @@ public class Tinge : AlchemistCard
     {
         WithDamage(3, 1);
         WithPower<PoisonPower>(2, 0);
+        WithVar("SeepRegen", 1, 1);
         WithTip(typeof(RegenPower));
     }
 
@@ -25,6 +26,7 @@ public class Tinge : AlchemistCard
 
     protected override async Task OnSeep(PlayerChoiceContext choiceContext)
     {
-        await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this);
+        await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature,
+            DynamicVars["SeepRegen"].BaseValue, Owner.Creature, this);
     }
 }

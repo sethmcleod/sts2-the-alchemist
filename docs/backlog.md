@@ -143,7 +143,7 @@ vsync off left the 16ms floor unchanged; focused + uncapped was worse at 21ms).
 `name`/`type`/`energy_cost`/`upgraded` only
 
 The Infuse tests assert enchantments *by effect* (Exalted grants Strength, Fuming adds
-Effluvium) because the bridge exposes no enchantment state. That's arguably better testing,
+Foul Vapor) because the bridge exposes no enchantment state. That's arguably better testing,
 but it means Toxic can't be asserted directly at all: it applies Poison to an enemy, and
 assertions can't read enemy power stacks either. Adding `enchantment`/`enchantment_amount`
 to the hand-card payload would close that gap.

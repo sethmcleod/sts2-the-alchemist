@@ -13,17 +13,30 @@ Security.
 ## [Unreleased]
 
 ### Changed
-- The Alchemist now has its own attack, cast, and death sounds instead of playing
-  the Ironclad's. Attacks and death draw on the Silent's kit, casts on the
-  Necrobinder's, until the character has bespoke audio of its own.
+- Renamed 44 cards so names better match their mechanics and card types.
+- Patient Strike (was Culture) now counts as a Strike card.
+- Decant reworked: costs 0, deals 5 (7) damage with no Regen scaling, and adds a
+  Distillate (+) into your Hand.
+- Last Resort's non-Gambit HP loss lowered from 5 to 3.
+- Ferment cards now keep their fermented potency when played instead of spending it
+  on a single payoff.
+- Ferment rates lowered to match: Patient Strike 100% -> 75% (125% -> 100%), Rolling
+  Boil and Carapace 75% -> 50% (100% -> 75%), Steep 2 -> 1 (2) Poison, Vintage 2 -> 1
+  Regen.
+- Trickle and Tinge now Seep 1 Regen instead of 2, and 2 when upgraded.
+- Seep now resolves before the end-of-turn Regen heal, so Regen it grants counts
+  toward that turn.
+- Catalyze and Metabolism now read "the first time you lose HP on each of your turns".
+- The Alchemist now has its own attack, cast, and death sounds instead of the
+  Ironclad's, drawn from the Silent's and Necrobinder's kits.
 
 ### Fixed
-- Combat no longer hangs on the killing blow when your save carries a Timeline
-  epoch from a mod you have since uninstalled. The epoch is now omitted from the
-  end-of-combat replay instead of aborting combat cleanup. Your unlock progress is
-  untouched, so reinstalling the mod restores it.
-- In co-op, choosing an event option that would kill you now shows a real line
-  from the Alchemist instead of the placeholder text "Co-op survival line".
+- Haemorrhage now previews its HP cost in red, alongside the damage preview.
+- Ferment potency no longer carries into the next combat; it resets at combat start.
+- Combat no longer hangs on the killing blow when your save carries a Timeline epoch
+  from a mod you have since uninstalled. Unlock progress is untouched.
+- In co-op, an event option that would kill you now shows a real Alchemist line
+  instead of the placeholder "Co-op survival line".
 
 ## [0.1.0] - 2026-07-15
 

@@ -1,0 +1,11 @@
+{
+  "name": "drip_feed_regen",
+  "group": "cards",
+  "description": "Drip Feed grants +1 Regen at the start of the NEXT turn only (not the play turn)",
+  "setup": {"character": "Alchemist", "seed": "ALCHREG7", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"console": "card ALCHEMIST-DRIP_FEED"}, "delay": 0.4},
+    {"do": {"play_card": "DripFeed"}, "expect": {"has_power": "DripFeedPower"}, "timeout": 6},
+    {"do": {"end_turn": true}, "expect": {"power": {"name": "RegenPower", "amount": 1}}, "timeout": 8, "note": "fires at start of next turn"}
+  ]
+}

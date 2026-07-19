@@ -52,7 +52,7 @@ Three overlapping archetypes give the class its shape:
   rewards patience, the other discourages it.
 * **Infuse**: Infusing a card enchants it for the rest of combat based on its
   type. Attacks gain **Toxic** (apply Poison on unblocked damage), Skills gain
-  **Fuming** (add Effluvium to your Hand), Powers gain **Exalted** (gain
+  **Fuming** (add Foul Vapor to your Hand), Powers gain **Exalted** (gain
   Strength), and Status/Curse/Quest cards gain **Ethereal**. Same-type infusions
   stack, each one growing the enchantment's amount by 1.
 
