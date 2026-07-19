@@ -13,6 +13,11 @@ Security.
 
 ## [Unreleased]
 
+### Changed
+
+- The mod name is now "Alchemist" in the mods list and in mod-source tooltips.
+  Before, the tooltips showed "The Alchemist (Alchemist)".
+
 ## [0.2.0] - 2026-07-19
 
 ### Changed
