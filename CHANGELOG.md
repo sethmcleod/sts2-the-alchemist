@@ -12,6 +12,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-19
+
 ### Changed
 
 - Renamed many cards so names better match their mechanics and card types.
