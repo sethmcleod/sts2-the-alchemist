@@ -1,3 +1,4 @@
+using System;
 using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
@@ -8,6 +9,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -77,10 +79,28 @@ public abstract class AlchemistCard : ConstructedCardModel
         return (int)value;
     }
 
-    // A card with a runtime damage formula has no DamageVar to preview. It returns the current total, and
-    // the card face shows it live with {FormulaDamage}. The value is null if the total cannot be
-    // computed, for example in the card library
-    protected virtual int? FormulaDamagePreview => null;
+    // A card with a runtime damage formula has no DamageVar to preview. It gives its raw total here, before
+    // the enchantment hooks and the global damage hooks. The card face shows the full total live with
+    // {FormulaDamage}. The value is null if the total cannot be computed, for example in the card library
+    protected virtual int? RawFormulaDamagePreview => null;
+
+    // The preview must agree with the hit. The attack command runs the global damage hooks (Strength,
+    // Vigor, Weak) when it executes, and ApplyEnchantDamage runs the enchantment hooks by hand.
+    // Hook.ModifyDamage runs both, so the number on the card matches the damage that lands.
+    // MultiCreatureTargeting is the mode the game uses for a card face. It counts a power on the enemy only
+    // when every target has that power, which is correct for a card that hits all enemies
+    private int? FormulaDamagePreview
+    {
+        get
+        {
+            if (RawFormulaDamagePreview is not { } raw) return null;
+            if (Owner?.Creature is not { } dealer) return null;
+            if ((CombatState ?? dealer.CombatState) is not { } combat) return null;
+            var total = Hook.ModifyDamage(Owner.RunState, combat, null, dealer, raw, ValueProp.Move,
+                this, null, ModifyDamageHookType.All, CardPreviewMode.MultiCreatureTargeting, out _);
+            return (int)Math.Max(total, 0m);
+        }
+    }
 
     // The same applies to self-inflicted HP loss, which {FormulaHpLoss} shows. It shows red, not green,
     // so the player can tell the cost from the payoff on a card that previews both

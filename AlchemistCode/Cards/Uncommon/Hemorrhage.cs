@@ -15,15 +15,18 @@ public class Hemorrhage : AlchemistCard
 
     // Single source of truth for the on-card preview and the real hit. You lose your Regen as HP, then deal
     // double (triple upgraded) that much, after enchant multipliers
-    private int DamageFor(int regen) => ApplyEnchantDamage(regen * (IsUpgraded ? 3 : 2));
+    private int RawDamageFor(int regen) => regen * (IsUpgraded ? 3 : 2);
 
-    protected override int? FormulaDamagePreview
+    private int DamageFor(int regen) => ApplyEnchantDamage(RawDamageFor(regen));
+
+    // The raw total. AlchemistCard runs the enchantment hooks and the global damage hooks on it
+    protected override int? RawFormulaDamagePreview
     {
         get
         {
             if (Owner?.Creature is not { } c) return null;
             var regen = c.GetPowerAmount<RegenPower>();
-            return regen > 0 ? DamageFor(regen) : null;
+            return regen > 0 ? RawDamageFor(regen) : null;
         }
     }
 

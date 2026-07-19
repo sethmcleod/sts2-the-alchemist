@@ -22,6 +22,11 @@ Security.
 - The mod name is now "Alchemist" in the mods list and in mod-source tooltips.
   Before, the tooltips showed "The Alchemist (Alchemist)".
 
+### Fixed
+
+- Citrinitas, Hemorrhage, and Ichor now show the full damage on the card. Before,
+  the number did not include Strength, Vigor, or the other damage effects.
+
 ## [0.2.0] - 2026-07-19
 
 ### Changed
