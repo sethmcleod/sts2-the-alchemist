@@ -43,7 +43,7 @@ public class Alchemist4Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST4_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Relics;
     protected override List<RelicModel> Relics => new()
-        { ModelDb.Relic<SnakeTail>(), ModelDb.Relic<ToxicShard>(), ModelDb.Relic<FluxStone>() };
+        { ModelDb.Relic<SnakeTail>(), ModelDb.Relic<GlowingShard>(), ModelDb.Relic<FluxStone>() };
 }
 
 public class Alchemist5Epoch : AlchemistEpoch

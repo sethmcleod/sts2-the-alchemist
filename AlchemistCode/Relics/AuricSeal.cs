@@ -1,7 +1,9 @@
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Players;
+using Alchemist.AlchemistCode.Commands;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
-using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Relics;
 
@@ -9,12 +11,15 @@ public class AuricSeal : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
 
-    public override Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => Infusion.InfuseTips();
+
+    public override Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants,
+        ICombatState combatState)
     {
-        if (creator != Owner) return Task.CompletedTask;
-        if (card.IsUpgraded) return Task.CompletedTask;
+        if (!participants.Contains(Owner.Creature)) return Task.CompletedTask;
+        if (!PileType.Hand.GetPile(Owner).Cards.Any(Infusion.CanInfuse)) return Task.CompletedTask;
         Flash();
-        CardCmd.Upgrade(card);
+        Infusion.InfuseRandomFromHand(Owner, 1);
         return Task.CompletedTask;
     }
 }

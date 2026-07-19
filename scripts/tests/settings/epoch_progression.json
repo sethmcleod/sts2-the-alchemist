@@ -51,7 +51,7 @@
     {"do": {"bridge": "set_epoch", "params": {"id": "ALCHEMIST-ALCHEMIST4_EPOCH", "state": "Revealed"}}, "expect": {"epoch_state": {
       "relics": {
         "RELIC.ALCHEMIST-SNAKE_TAIL": {"unlocked": true, "discovered": false},
-        "RELIC.ALCHEMIST-TOXIC_SHARD": {"unlocked": true, "discovered": false},
+        "RELIC.ALCHEMIST-GLOWING_SHARD": {"unlocked": true, "discovered": false},
         "RELIC.ALCHEMIST-FLUX_STONE": {"unlocked": true, "discovered": false},
         "RELIC.ALCHEMIST-AQUA_VITAE": {"unlocked": false}
       }

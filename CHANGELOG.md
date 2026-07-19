@@ -15,6 +15,10 @@ Security.
 
 ### Changed
 
+- Auric Seal now Infuses a random card in your Hand at the start of your turn.
+  Before, it Upgraded the cards that you create.
+- Toxic Shard is now Glowing Shard. The effect does not change.
+- Many relics have new flavor text.
 - The mod name is now "Alchemist" in the mods list and in mod-source tooltips.
   Before, the tooltips showed "The Alchemist (Alchemist)".
 

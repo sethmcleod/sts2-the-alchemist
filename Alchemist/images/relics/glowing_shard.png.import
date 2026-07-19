@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0er2piefbu4l"
-path="res://.godot/imported/toxic_shard.png-f31571453ac304e5f5acba230c3ba962.ctex"
+uid="uid://clav45y4uh0ov"
+path="res://.godot/imported/glowing_shard.png-db14f86e8cba8c8cf4c154d94c6e441d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/big/toxic_shard.png"
-dest_files=["res://.godot/imported/toxic_shard.png-f31571453ac304e5f5acba230c3ba962.ctex"]
+source_file="res://Alchemist/images/relics/glowing_shard.png"
+dest_files=["res://.godot/imported/glowing_shard.png-db14f86e8cba8c8cf4c154d94c6e441d.ctex"]
 
 [params]
 
