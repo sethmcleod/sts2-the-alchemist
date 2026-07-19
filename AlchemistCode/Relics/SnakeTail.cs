@@ -28,7 +28,7 @@ public class SnakeTail : AlchemistRelic
         }
     }
 
-    // Only the lethal turn-start poison tick (poison hasn't decremented yet); other deaths resolve normally
+    // Only the lethal poison tick at turn start, before the poison decrements. Other deaths resolve normally
     public override bool ShouldDieLate(Creature creature)
     {
         if (creature != Owner.Creature || _used) return true;

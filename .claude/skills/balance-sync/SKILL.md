@@ -1,59 +1,67 @@
 ---
 name: balance-sync
-description: Apply a design pass from an updated cards.csv, typically one dropped in ~/Downloads/cards.csv as the authoritative design sheet. Use this whenever a new or edited CSV of card designs appears and its changes need to land in the mod, or when asked to "apply the balance changes", "sync the design sheet", or "update the cards from the CSV". Diffs the dropped sheet against the repo, classifies every change, and walks each one through the three-way rule.
+description: Apply a design pass from an updated cards.csv. The user usually puts this file in ~/Downloads/cards.csv as the authoritative design sheet. Use this skill when a new or edited CSV of card designs appears and its changes must go into the mod. Use it also for a request to "apply the balance changes", to "sync the design sheet", or to "update the cards from the CSV". This skill compares the dropped sheet with the repo, classifies every change, and applies each change through the three-way rule.
 ---
 
 # Sync a design pass from a dropped cards.csv
 
-A fresh `cards.csv` sometimes appears (usually in `~/Downloads/`) as the authoritative
-design update: card renames, reworks, new cards, retirements, and occasionally whole new
-mechanics. The dropped sheet is the source of truth for **intent**. Your job is to make the
-repo match it, correctly and in sync.
+A new `cards.csv` sometimes appears, usually in `~/Downloads/`. It is the authoritative
+design update. It can contain card renames, reworks, new cards, retirements, and sometimes
+new mechanics. The dropped sheet is the source of truth for the **intent**. Make the repo
+agree with the sheet. Keep the three files in sync.
 
-The columns are exactly `Card,Rarity,Type,Cost,Description`, plain text with `(upgraded)`
-in parentheses. This is the same format as the repo's own `cards.csv`.
+The columns are exactly `Card,Rarity,Type,Cost,Description`. The sheet uses plain text. It
+gives the upgraded value in parentheses, as `(upgraded)`. This is the same format as the
+`cards.csv` file in the repo.
 
 ## 1. Diff, do not assume
 
-Diff the dropped sheet against the repo's `cards.csv` to find what actually changed. Do not
-assume you already know from earlier in the conversation:
+Diff the dropped sheet against the `cards.csv` file in the repo. The diff shows you what
+changed. Do not assume that you know the changes from earlier in the conversation.
 
 ```sh
 diff <(sort ~/Downloads/cards.csv) <(sort cards.csv)
 ```
 
-Read the diff row by row and **classify each change** before touching code:
+Read the diff row by row. **Classify each change** before you write code:
 
-- **Number/text tweak**: same card, different cost/damage/description.
-- **Rename**: a card's mechanics are unchanged but its name changed. This touches the class
-  name, file name, model id, all loc keys, the portrait filename, references from other
-  cards, and any test scenario. Renames have the widest blast radius; find every reference.
-- **Rework**: same name, changed effect. Often changes the `OnPlay` logic, not just numbers.
-- **New card**: not in the repo yet. Use the **card** skill to add it end to end.
-- **Retired card**: in the repo, gone from the sheet. Remove its class, loc keys, csv row,
-  portrait, and any test scenario.
-- **New mechanic / keyword**: a rework that introduces a concept the mod doesn't have yet
-  (a new keyword, power, or enchantment). This is the largest kind of change.
+- **Number or text change**. The card is the same. The cost, the damage, or the
+  description is different.
+- **Rename**. The mechanics of the card stay the same, but the name changes. A rename
+  touches the class name, the file name, and the model id. It also touches all loc keys,
+  the portrait filename, references from other cards, and any test scenario. A rename
+  affects more files than any other type of change. Find every reference.
+- **Rework**. The name stays the same, but the effect changes. A rework usually changes
+  the `OnPlay` logic, not only the numbers.
+- **New card**. The card is not in the repo. Use the **card** skill to add it from start
+  to end.
+- **Retired card**. The card is in the repo, but it is not in the sheet. Remove its class,
+  its loc keys, its csv row, its portrait, and any test scenario.
+- **New mechanic or keyword**. This is a rework that adds a concept that the mod does not
+  have. Examples are a new keyword, a new power, or a new enchantment. This is the largest
+  type of change.
 
 ## 2. Confirm intent before large changes
 
-This project plans before building, and reworks land better after a quick alignment. For
-anything beyond number tweaks, especially reworks that change logic, retirements, or a new
-mechanic, summarize what you read from the diff and confirm the intended behavior before
-writing code. A clarifying question is cheaper than unwinding a wrong guess.
+This project makes a plan before the work starts. A rework has a better result after a
+short alignment. Do this for every change that is more than a number change. This applies
+to reworks that change logic, to retirements, and to new mechanics. Summarize what you
+read in the diff, then confirm the intended behavior before you write code. A question
+costs less time than a correction of a wrong guess.
 
 ## 3. Apply each change through the three-way rule
 
-Every card change touches **code + `cards.json` + `cards.csv`** together. The **card** skill
-is the procedure for a single card; apply it per changed card. For a rename, grep the repo
-for the old name first so no reference is left dangling:
+Every card change touches the **code**, `cards.json`, and `cards.csv` together. The
+**card** skill gives the procedure for one card. Apply that procedure to each changed
+card. For a rename, first grep the repo for the old name. This makes sure that no
+reference stays behind.
 
 ```sh
 grep -rn "OldName" AlchemistCode Alchemist/localization cards.csv scripts/tests
 ```
 
-The repo's `cards.csv` should end up matching the dropped sheet exactly for the rows that
-changed. Copy the sheet's wording rather than paraphrasing it.
+For each changed row, the `cards.csv` file in the repo must agree exactly with the dropped
+sheet. Copy the text of the sheet. Do not write your own version of it.
 
 ## 4. Verify
 
@@ -63,9 +71,9 @@ scripts/dev.sh publish
 scripts/dev.sh test --changed       # runs only the groups your edits can affect
 ```
 
-Update or add a **regression scenario** for every card whose numbers or behavior changed
-(the **card** skill covers this). Drive the live game with the **playtest** skill so the
-process and save-profile safety rules are handled for you.
+Update or add a **regression scenario** for each card with changed numbers or changed
+behavior. The **card** skill gives this procedure. Use the **playtest** skill to drive the
+live game. That skill applies the process rules and the save profile rules for you.
 
-Report back what changed, grouped by the classification above, so the pass can be reviewed
-against the intended design.
+Report what changed. Group your report by the classifications above. This lets a reviewer
+compare the pass against the intended design.

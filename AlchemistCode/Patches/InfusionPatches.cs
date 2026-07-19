@@ -14,8 +14,8 @@ public static class InfusionCombatEndPatch
     public static void Postfix() => Infusion.ClearCombatInfusions();
 }
 
-// Tally every card enchanted during combat, from any source, so Masterwork's threshold is mod-agnostic.
-// Gated on CombatState so out-of-combat enchants (e.g. a rest-site smith) don't count
+// This counts every card that any source enchants during combat, so the Masterwork threshold works with
+// other mods. The CombatState gate stops a count outside combat, for example at a rest site smith
 [HarmonyPatch(typeof(CardCmd), nameof(CardCmd.Enchant),
     new[] { typeof(EnchantmentModel), typeof(CardModel), typeof(decimal) })]
 public static class EnchantCountPatch

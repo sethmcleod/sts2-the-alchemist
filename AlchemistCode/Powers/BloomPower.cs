@@ -25,8 +25,8 @@ public class BloomPower : AlchemistPower
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
-        // First Poison you apply each turn: stack Amount more onto that same target. The guard is set before
-        // applying, so the recursive AfterPowerAmountChanged from the extra Poison is ignored
+        // On the first Poison that you apply each turn, add Amount more to the same target. The code sets
+        // the guard before it applies the Poison, so it ignores the recursive AfterPowerAmountChanged
         if (!_triggeredThisTurn && power is PoisonPower && applier == Owner && amount > 0)
         {
             _triggeredThisTurn = true;

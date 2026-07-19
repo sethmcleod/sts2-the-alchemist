@@ -12,15 +12,16 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// Keeps Alchemist cards out of runs that don't include an Alchemist player, so mod content can't leak into
-// other characters' cross-class rewards (Kaleidoscope, Splash, Colorful Philosophers, and Prismatic Gem all
-// draw from UnlockState.CharacterCardPools). Toggleable via mod config; character select / card library use
-// UnlockState.Characters instead, so the Alchemist stays visible there regardless.
+// This keeps Alchemist cards out of a run that has no Alchemist player. The mod content then cannot
+// appear in the cross-class rewards of another character. Kaleidoscope, Splash, Colorful Philosophers,
+// and Prismatic Gem all read UnlockState.CharacterCardPools. The mod config can turn this off. The
+// character select screen and the card library read UnlockState.Characters, so the Alchemist stays
+// visible there
 [HarmonyPatch]
 public static class PoolPatches
 {
-    // Only strip inside an active run that has no Alchemist player. Outside a run we leave everything alone
-    // so menus and the compendium are never affected.
+    // Remove the cards only inside an active run that has no Alchemist player. Outside a run, this
+    // changes nothing, so the menus and the compendium stay correct
     private static bool ShouldStrip()
     {
         if (!AlchemistModConfig.KeepPoolsSeparate) return false;

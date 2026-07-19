@@ -1,18 +1,21 @@
 # Upstream improvements to BaseLib worth considering
 
-Findings from Alchemist development worth contributing to
-[BaseLib](https://github.com/Alchyr/BaseLib-StS2).
+These are findings from the development of the Alchemist mod. Each finding is a possible
+contribution to [BaseLib](https://github.com/Alchyr/BaseLib-StS2).
 
-Scope is BaseLib only. It's a hard dependency this mod can't work without and we don't
-control it, so a fix has to land upstream or every player carries the bug. Tooling gaps in
-[sts2-modding-mcp](https://github.com/sethmcleod/sts2-modding-mcp) don't belong here. We own
-that fork and it's optional for playing this mod, so those are ours to fix directly.
+The scope is BaseLib only. BaseLib is a hard dependency, and this mod cannot operate
+without it. We do not control BaseLib. Thus a fix must go upstream, or every player keeps
+the bug.
 
-Nothing here is filed yet. Land one PR at a time and confirm it merges before opening the
-next, since upstream responsiveness is unproven.
+Do not put toolkit problems from
+[sts2-modding-mcp](https://github.com/sethmcleod/sts2-modding-mcp) in this document. We
+own that fork, and players do not need it. We fix those problems directly.
 
-Each entry records the evidence it came from, so a stale one can be re-checked rather than
-argued about.
+No item in this document is filed yet. Submit one PR at a time. Make sure that the PR
+merges before you open the next PR. The response time of the upstream project is not
+known.
+
+Each entry records its evidence. Thus you can check an old entry again.
 
 ---
 
@@ -21,54 +24,68 @@ argued about.
 **Status:** ready. Patch written, verified live, shipped locally as `d465c65`
 **Evidence:** [UnlockStateSerializationPatches.cs](../AlchemistCode/Patches/UnlockStateSerializationPatches.cs)
 
-`SerializableUnlockState.Serialize` → `WriteEpochId` → `ModelIdSerializationCache.GetNetIdForEpochId`
-throws `ArgumentException` for any epoch whose owning mod isn't loaded. That write happens
-inside `CombatManager.EndCombatInternal` (replay write), so the throw aborts combat teardown
-and the run wedges permanently on the killing blow, with no clue pointing at the real cause.
+The call chain `SerializableUnlockState.Serialize` → `WriteEpochId` →
+`ModelIdSerializationCache.GetNetIdForEpochId` throws an `ArgumentException`. This happens
+for any epoch whose owner mod is not loaded. The write happens inside
+`CombatManager.EndCombatInternal`, which is the replay write. The exception stops the
+combat teardown. The run then stops permanently on the killing blow. The game gives no
+message about the true cause.
 
-Worth upstreaming because our patch only protects players who have the Alchemist loaded. The
-trap is armed for *any* mod that registers epochs and is later uninstalled, and it strands a
-save with no in-game way out.
+This fix belongs upstream. Our patch protects only the players who load the Alchemist mod.
+The same failure applies to *any* mod that registers epochs and is then uninstalled. The
+failure leaves a save file with no solution in the game.
 
-Note the asymmetry: the JSON load path already tolerates unknown epochs (non-fatal
-`ValidationError` warnings), only the packet write throws. `ModelIdSerializationCache` has
-`TryGetNetIdForCategory` and `TryGetNetIdForEntry` but **no `TryGetNetIdForEpochId`**, so the
-epoch path is the only one a caller can't probe. Adding that Try* variant is the cleaner fix
-and arguably belongs with MegaCrit rather than BaseLib. The BaseLib patch is the pragmatic
-version we can actually ship.
+The two paths are not the same. The JSON load path accepts unknown epochs, and it gives
+non-fatal `ValidationError` warnings. Only the packet write throws.
+`ModelIdSerializationCache` has `TryGetNetIdForCategory` and `TryGetNetIdForEntry`, but it
+has **no `TryGetNetIdForEpochId`**. Thus the epoch path is the only path that a caller
+cannot test first.
+
+A new `Try*` method is the better fix. That fix possibly belongs with MegaCrit, not with
+BaseLib. The BaseLib patch is the practical version that we can release now.
 
 ### 2. No public epoch/story registration API, so mods must reflect into private statics
 
 **Status:** idea
 **Evidence:** [EpochRegistration.cs](../AlchemistCode/Epochs/EpochRegistration.cs)
 
-Registering a custom epoch means writing to `EpochModel._allEpochs`, `._epochTypeDictionary`,
-`._typeToIdDictionary`, nulling the `._allEpochIds` lazy cache, and `StoryModel._storyTypeDictionary`,
-all of them private. Every epoch mod reimplements the same reflection, and one rename in a game
-update breaks all of them at once. A `RegisterEpoch(Type)` / `RegisterStory(...)` that owns the
-reflection in one place would centralize the blast radius.
+To register a custom epoch, a mod must write to these private members:
+`EpochModel._allEpochs`, `._epochTypeDictionary`, `._typeToIdDictionary`, and
+`StoryModel._storyTypeDictionary`. The mod must also set the `._allEpochIds` lazy cache to
+null. Every epoch mod writes the same reflection code again. One rename in a game update
+breaks all of these mods at the same time.
 
-Pairs naturally with #1: same subsystem, and #1's fix depends on registration having populated
-`_allEpochs` before `ModelIdSerializationCache.Init()` runs.
+A `RegisterEpoch(Type)` method and a `RegisterStory(...)` method could hold the reflection
+in one place. Then a game update affects only that one place.
+
+This item and item 1 go together, because they are in the same subsystem. Also, the fix
+for item 1 needs `_allEpochs`. The registration must fill `_allEpochs` before
+`ModelIdSerializationCache.Init()` runs.
 
 ### 3. `Skip*` prefixes strand vanilla epoch bookkeeping for custom characters
 
 **Status:** needs investigation. Confirm BaseLib's intent before filing
 **Evidence:** header comment in [EpochPatches.cs](../AlchemistCode/Patches/EpochPatches.cs)
 
-BaseLib's `Skip*` prefixes short-circuit vanilla epoch bookkeeping for custom characters, so
-each mod re-awards its own epochs from postfixes on `ProgressSaveManager.ObtainCharUnlockEpoch`,
-`CheckFifteenElitesDefeatedEpoch`, and friends, reaching private methods by reflection to do it.
-Either a supported "award epoch X to this custom character" hook, or making `Skip*` opt-in,
-would remove that. Low confidence this is unintended rather than a deliberate trade-off.
+The `Skip*` prefixes in BaseLib stop the vanilla epoch bookkeeping for custom characters.
+Thus each mod must award its own epochs again. The mod does this from postfixes on
+`ProgressSaveManager.ObtainCharUnlockEpoch`, `CheckFifteenElitesDefeatedEpoch`, and
+related methods. The mod uses reflection to reach the private methods.
+
+Two solutions can remove this work. The first solution is a supported hook that awards a
+given epoch to a custom character. The second solution makes the `Skip*` prefixes opt-in.
+This behavior is possibly a deliberate design decision, not a defect. The confidence in
+this item is low.
 
 ### 4. Sentry teardown hang affects any mod on v0.108.0-beta / macOS
 
 **Status:** idea, and it may belong with MegaCrit instead
 **Evidence:** `project-overview` memory; reproduced with BaseLib alone, no Alchemist
 
-`SentryGodotLogger::_process_frame()` locks a destroyed mutex after the game shuts Sentry down
-mid-load for modded runs, giving a black screen or SIGABRT at load with any mod installed. Today
-the fix is a hand-written `override.cfg` next to the game executable, which every user has to
-discover independently. BaseLib could apply the Sentry disable itself. Genuinely a MegaCrit
-bug, but BaseLib is the only place we can neutralize it without waiting.
+For modded runs, the game shuts down Sentry during the load. After that,
+`SentryGodotLogger::_process_frame()` locks a mutex that no longer exists. The result is a
+black screen or a SIGABRT at load. This happens with any mod installed.
+
+The current fix is a manual `override.cfg` file next to the game executable. Each user
+must find this fix without help. BaseLib could disable Sentry itself. This is a MegaCrit
+defect. However, BaseLib is the only place where we can correct it now.

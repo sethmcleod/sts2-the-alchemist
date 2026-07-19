@@ -53,7 +53,7 @@ public static class AlchemistCardCmd
         PlayerChoiceContext choiceContext, AlchemistCard source)
     {
         if (source.CombatState == null) return;
-        // Enemies + the casting player only; allies are intentionally excluded
+        // This targets enemies and the player that casts the card. It excludes allies on purpose
         var targets = source.CombatState.Enemies
             .Append(source.Owner.Creature)
             .Where(c => c.IsAlive);

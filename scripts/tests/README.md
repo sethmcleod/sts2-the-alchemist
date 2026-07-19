@@ -1,11 +1,11 @@
 # Regression test suite
 
-Seeded test scenarios that catch breakage when changing the mod: cards, mechanics,
-localization, registration, and the mod's own UI. **No AI tooling required.** The suite
-runs with plain Python against the live game, and manages the game process itself
-(starts it if it's not running, restarts it if it crashes or wedges).
+Seeded test scenarios find breakage when you change the mod. They cover cards, mechanics,
+localization, registration, and the mod's own UI. **You do not need AI tools.** The suite
+runs with plain Python against the live game. The suite also controls the game process. It
+starts the game if the game does not run. It restarts the game if the game crashes or fails.
 
-## Running the suite
+## How to run the suite
 
 ```sh
 scripts/setup.sh                    # once: clones tooling, installs the bridge mods
@@ -20,164 +20,222 @@ scripts/dev.sh test --fast-mode Fast  # watchable animations (default Instant, w
 scripts/dev.sh test --no-batch      # disable run-batching (see below) for debugging
 ```
 
-Also: `scripts/dev.sh game-start | game-stop | game-restart` manage the game process
-directly (Steam must be running; the game launches via the `steam://` protocol).
-`scripts/dev.sh doctor` checks every prerequisite.
+The commands `scripts/dev.sh game-start | game-stop | game-restart` control the game process
+directly. Steam must run first, because the game starts through the `steam://` protocol. The
+command `scripts/dev.sh doctor` checks every prerequisite.
 
-**Picking what to run.** `--changed` maps your changed files to the groups they can plausibly
-break (see `_CHANGE_MAP` in `run_suite.py`) and runs only those, printing each path and the
-groups it selected. It is a convenience for the inner loop, not a safety net, so it fails
-safe: anything unmapped (the character model, this harness, a new directory) runs the *whole*
-suite, and a docs- or art-only change runs nothing. `scripts/dev.sh release` always runs
-everything regardless. When you add a subsystem, add it to `_CHANGE_MAP`; when unsure, map it
-broadly, since the cost of being wrong is a missed regression and the cost of being broad is
-a few seconds.
+**How to select what to run.** The `--changed` option maps your changed files to the groups
+that they can break. The map is `_CHANGE_MAP` in `run_suite.py`. The option runs only those
+groups. It prints each path and the groups that it selected.
 
-**Speed / batching.** Three things keep the suite quick, and all three are worth knowing about
-if a run suddenly crawls:
+The `--changed` option is a convenience for the inner loop. It is not a safety net. When it
+is not sure, it runs more tests and not fewer:
 
-- **Batching** is the big one, because a menu round-trip costs ~3.2s and starting a run another
-  ~3.2s. Two modes (`_batch_mode`):
-  - `"combat"`, **inferred** for `checks` scenarios whose setup is just a `SLIMES_WEAK` fight.
-    They share a run and get a fresh `fight` between them, so nothing carries over.
-  - `"run"`, **opt in** with `"batch": "run"`, for scenarios that reach their own room by
-    console and neither care what the run looks like nor leave anything behind. The ancients
-    qualify (`console ancient X`) and went from ~7s each to ~1.4s.
+- An unmapped path runs the *whole* suite. Examples are the character model, this harness,
+  and a new directory.
+- A change to only docs or only art runs no tests.
+- The command `scripts/dev.sh release` always runs every group.
 
-  `"run"` is opt-in for a reason: sharing a run shares everything the previous scenario did to
-  it. Inferring it from setup shape looked fine and quietly broke the shop tests, which read
-  each other's potions (`potion_count == 1 (actual: 2)`). Only claim it for genuinely
-  self-contained scenarios. `"batch": false` opts out entirely; anything seed-sensitive must,
-  since batched neighbours share one run and one seed.
-- **`FastMode = Instant`** makes the game's `Cmd.Wait`/`CustomScaledWait` return without
-  waiting at all, and **`Engine.TimeScale`** (`--speed`, default 3) shortens what's left. Both
-  live in the game process, so `apply_perf()` re-applies them after *every* restart; a restart
-  that skips them silently doubles the remaining run.
-- **Poll intervals.** Bridge calls resolve in about one 60fps frame, so the waiters poll at
-  0.1s rather than 0.5s. If you see a run pause in whole half-seconds, something is polling at
-  the old interval.
+When you add a subsystem, add the subsystem to `_CHANGE_MAP`. If you are not sure, map the
+subsystem broadly. A map that is too narrow can miss a regression. A map that is too broad
+costs only a few seconds.
 
-Measured dead ends, so you don't re-try them: raising `--speed` past 3 does nothing (the
-~270ms `fight` transition is scene init, which `TimeScale` doesn't touch), and neither does
-raising the frame rate (uncapping FPS and disabling vsync left the ~16ms per-call floor
-unchanged, and focused+uncapped was *worse*). That floor is one main-thread dispatch and is
-the practical limit on how fast a scripted run can drive the game.
+**Speed and batching.** Three mechanisms keep the suite quick. Learn all three, because a
+slow run usually points at one of them.
 
-`cards_sweep` (all 86 cards, ~48s) dominates what's left: 86 × ~270ms of that is combat init
-for the per-card fresh fight, which buys the isolation that lets a failure name one card. Use
-`--changed` or `--group` while iterating and run the whole suite before a release.
+- **Batching** saves the most time. A menu round trip costs about 3.2s. A new run costs
+  about 3.2s more. There are two batch modes (`_batch_mode`):
+  - `"combat"`. The suite **infers** this mode for `checks` scenarios with a setup of only
+    a `SLIMES_WEAK` fight. These scenarios share one run. The suite starts a fresh `fight`
+    between them, so no state carries over.
+  - `"run"`. You **opt in** to this mode with `"batch": "run"`. Use it for scenarios that
+    reach their own room by console. Such a scenario must not depend on the state of the
+    run. It must also leave no state behind. The ancients qualify (`console ancient X`).
+    Their time decreased from about 7s each to about 1.4s.
 
-This is a **stateful live-game** suite. Each group passes in isolation, and a very long
-full run may occasionally hit a rare UI-timing flake (e.g. the shop potion popup). Just
-re-run that group.
+  The `"run"` mode is opt-in for a reason. A shared run also shares every change that the
+  previous scenario made to it. The suite once inferred this mode from the shape of the
+  setup. That inference broke the shop tests, because they then read each other's potions
+  (`potion_count == 1 (actual: 2)`). Claim the mode only for fully self-contained scenarios.
+  To opt out completely, set `"batch": false`. A seed-sensitive scenario must opt out,
+  because batched neighbours share one run and one seed.
+- **`FastMode = Instant`** makes the game's `Cmd.Wait` and `CustomScaledWait` return
+  immediately. **`Engine.TimeScale`** (`--speed`, default 3) then shortens what is left.
+  Both settings live in the game process. Therefore `apply_perf()` sets them again after
+  *every* restart. A restart that skips them makes the rest of the run twice as long, and
+  gives no message.
+- **Poll intervals.** A bridge call resolves in about one 60fps frame. Therefore the waiters
+  poll at 0.1s and not at 0.5s. If a run pauses in whole half-seconds, some code still polls
+  at the old interval.
 
-Prerequisites: game installed, `mcptest` + `godotexplorer` bridge mods current
-(`scripts/dev.sh bridge`, and note the compendium group needs a bridge built from a checkout
-that has the `get_compendium` RPC), Alchemist mod published, and Python ≥ 3.10. The
-suite pulls in no third-party packages (it drives the bridge over TCP with the stdlib),
-so any 3.10+ interpreter works. The easiest way to get one, and what the sts2-modding-mcp
-toolkit uses, is [uv](https://astral.sh/uv): install it and `scripts/dev.sh` provisions
-Python for you automatically (it still prefers a system `python3` if one's already on PATH).
+These two changes were measured and give no improvement. Do not try them again:
+
+- An increase of `--speed` above 3 has no effect. The `fight` transition of about 270ms is
+  scene init, and `TimeScale` does not change scene init.
+- An increase of the frame rate has no effect. An uncapped FPS with vsync off kept the same
+  per-call floor of about 16ms. An uncapped FPS with the window focused was *worse*.
+
+That floor is one main-thread dispatch. It is the practical limit on the speed at which a
+scripted run can drive the game.
+
+`cards_sweep` (all 86 cards, about 48s) takes most of the time that is left. About 86 × 270ms
+of that time is combat init for the fresh fight of each card. That fresh fight gives the
+isolation that lets a failure name one card. Use `--changed` or `--group` for your inner
+loop. Run the whole suite before a release.
+
+This suite is **stateful** and it uses the **live game**. Each group passes in isolation. A
+very long full run can sometimes fail on a rare UI-timing problem, for example the shop
+potion popup. Run that group again.
+
+Prerequisites:
+
+- The game is installed.
+- The `mcptest` and `godotexplorer` bridge mods are current (`scripts/dev.sh bridge`). The
+  compendium group needs a bridge from a checkout that has the `get_compendium` RPC.
+- The Alchemist mod is published.
+- Python 3.10 or later is available.
+
+The suite uses no third-party packages. It drives the bridge over TCP with the stdlib.
+Therefore any interpreter of version 3.10 or later works. The simplest way to get one is
+[uv](https://astral.sh/uv), and the sts2-modding-mcp toolkit uses it. Install uv, and then
+`scripts/dev.sh` supplies Python for you automatically. The script still prefers a system
+`python3` that is already on PATH.
 
 > [!CAUTION]
-> The game boots into the **last-used save profile**, so keep that a spare profile. The
-> suite starts/abandons runs constantly and the settings tests exercise unlock/relock
-> state, so pointing it at a save you care about will churn its progression.
+> The game starts in the **last-used save profile**, so keep that profile a spare profile.
+> The suite starts and abandons runs continuously. The settings tests also change the unlock
+> and relock state. A save profile that you care about will lose its progression.
 
 ## Groups
 
-Scenarios live in one subdirectory per group; each JSON carries `name`, `group`,
+Each group has one subdirectory of scenarios. Each JSON file has `name`, `group`,
 `description`, and one of `steps`, `checks`, or `sweep`.
 
 | Group | Covers |
 |---|---|
-| `cards/` | card/power behavior under seeded combat: costs, effects, once-per-turn caps, token generation, **base + upgraded** numbers, and damage mechanics via a fixed-HP-normalized enemy (Sepsis +50%, Overflow AoE, Virulence poison) |
-| `sweeps/` | whole-set crash smoke: play **every** pool card, add all relics, use all potions. Any exception (unwrapped to its real type) or player death fails, naming the entity |
-| `ancients/` | **each of the 9 Ancients** (Darv/Neow/Nonupeipe/Orobas/Pael/Tanx/Tezcatara/Vakuu/Architect) gets its own scenario: options render with no raw `LocString` keys, and all 3 of its visit conversations register + render (`min_dialogues: 3`). The 8 standard ancients additionally `walk_dialogue`, clicking through **every line** of the shown conversation on screen, asserting each renders and the sequence reaches its last line (the Architect's finale uses a combat layout, so it's covered by the registry checks). Plus a general `dialogue_completeness` check that derives every ancient's expected **conversation count and line count** from `ancients.json` and verifies the live registered dialogue matches and renders (auto-adapts as dialogue changes) |
-| `rest/` | WeatheredKit's custom **Brew** rest-site option (right label, removes a deck card, potion reward you claim) and the relic's +3 HP heal on potion use |
-| `shop/` | the potion-selling mechanic: Sell button + price on sellables, gold delta, and Foul Potion keeping its base-game Throw behavior |
-| `settings/` | the mod's config panel + timeline metaprogression: Unlock All / Reset Unlocks (`[Config]` log counts); the Enable Epochs toggle hides our epochs yet the Timeline still opens cleanly; and the full **progressive unlock**, where from a fresh timeline only Alchemist1 is visible (locked), revealing it exposes 2-7, and revealing each of 2-7 unlocks exactly its cards/relics/potions (`epoch_progression`, via `set_epoch`/`get_epoch_state`) |
-| `compendium/` | model-level data that drives the Card Library: the Alchemist pool matches `cards.csv` (count + names), tokens in `TokenCardPool`, relic/potion pools complete, and **every entity's rendered title/description has no raw keys, unresolved braces, or canonical-render exceptions** |
+| `cards/` | Card and power behavior in seeded combat: costs, effects, once-per-turn caps, token generation, and **base and upgraded** numbers. Also damage mechanics against an enemy that is normalized to a fixed HP (Sepsis +50%, Overflow AoE, Virulence poison) |
+| `sweeps/` | Crash smoke test of the whole set. It plays **every** pool card. It adds all relics. It uses all potions. Any exception (unwrapped to its real type) or player death fails the test and names the entity |
+| `ancients/` | **Each of the 9 Ancients** (Darv/Neow/Nonupeipe/Orobas/Pael/Tanx/Tezcatara/Vakuu/Architect) has its own scenario. The options render with no raw `LocString` keys. All 3 of its visit conversations register and render (`min_dialogues: 3`). The 8 standard ancients also use `walk_dialogue`. It clicks through **every** line of the conversation on screen. It asserts that each line renders and that the sequence reaches its last line. The Architect's finale uses a combat layout, so the registry checks cover it. A general `dialogue_completeness` check derives each ancient's expected **conversation count and line count** from `ancients.json`. It then verifies that the live registered dialogue matches and renders. The check adapts automatically when the dialogue changes |
+| `rest/` | WeatheredKit's custom **Brew** rest-site option: the correct label, the removal of a deck card, and a potion reward that you claim. Also the relic's +3 HP heal on potion use |
+| `shop/` | The mechanic to sell potions: the Sell button and the price on sellable items, the gold delta, and the Foul Potion, which keeps its base-game Throw behavior |
+| `settings/` | The mod's config panel and the Timeline metaprogression. Unlock All and Reset Unlocks (`[Config]` log counts). The Enable Epochs toggle hides the mod's epochs, but the Timeline still opens correctly. The full **progressive unlock**: from a fresh timeline only Alchemist1 is visible, and it is locked. A reveal of Alchemist1 exposes epochs 2-7. A reveal of each of epochs 2-7 unlocks exactly its own cards, relics, and potions (`epoch_progression`, via `set_epoch` and `get_epoch_state`) |
+| `compendium/` | Model-level data that drives the Card Library. The Alchemist pool matches `cards.csv` (count and names). The tokens are in `TokenCardPool`. The relic and potion pools are complete. **The rendered title and description of every entity has no raw keys, no unresolved braces, and no canonical-render exceptions** |
 
-A separate offline check, `scripts/dev.sh lint` (`scripts/lint_sync.py`), statically
-enforces the three-way rule (every `cards.csv` row ↔ card class ↔ loc keys, plus a
-conservative numeric cross-check) with no game needed.
+A separate offline check is `scripts/dev.sh lint` (`scripts/lint_sync.py`). It enforces the
+three-way rule statically: every `cards.csv` row ↔ card class ↔ loc keys, plus a
+conservative numeric cross-check. It does not need the game.
 
 ## Scenario formats
 
-**`steps` scenarios** run through `sts2mcp.test_runner` (combat-oriented: `play_card`,
-`end_turn`, `console`, assertions on hp/energy/block/powers). Assert in a trailing
-`noop` step with `delay: 1`, since effects resolve across frames.
+**`steps` scenarios** run through `sts2mcp.test_runner`. The format is combat-oriented:
+`play_card`, `end_turn`, `console`, and assertions on hp, energy, block, and powers. Put
+your assertions in a final `noop` step with `delay: 1`. Effects resolve across more than
+one frame.
 
-**`checks` scenarios** run in `run_suite.py`'s checks engine (the preferred format for
-new tests). Each item is `{"do": …, "expect": …, "timeout": s, "note": …}`; expectations
-**poll until true** (no fixed sleeps), so they pass the moment the game settles. That's
-what keeps the suite fast as it grows.
+**`checks` scenarios** run in the checks engine of `run_suite.py`. Use this format for new
+tests. Each item is `{"do": …, "expect": …, "timeout": s, "note": …}`. Expectations **poll
+until true**, with no fixed sleeps. Therefore they pass as soon as the game settles. This
+behavior keeps the suite fast as it grows.
 
 `do` actions:
-- combat: `play_card` (`"CardClassName"`, optional `"target"` enemy index) ·
+- combat: `play_card` (`"CardClassName"`, with an optional `"target"` enemy index) ·
   `upgrade_card` (`"CardClassName"`) · `end_turn` · `set_enemy_hp`
-  (`{enemy, hp}`, normalizes an enemy *downward* to a fixed HP so damage asserts are
-  roster-independent) · `select_hand_cards` (`"CardClassName"` or a list, answers an
-  in-combat hand-selection prompt such as Infuse, then confirms)
-- potions: `use_potion_ui` (`slot`, drives the belt popup; the bridge's `use_potion`
-  reports success but **no-ops**, so always use this) · `discard_potion`
-- rooms/rewards: `advance_ancient` (proceed an open ancient event) · `walk_dialogue`
-  (click the invisible "next" hitbox through **every** line of an open ancient's dialogue,
-  asserting each renders and the sequence reaches its last line, waiting out the deferred
-  line-node adds) · `remove_deck_card` (`slot`, select + preview-confirm a deck-removal
-  screen) · `reward_select` (`index`)
-- console/bridge: `console` · `bridge` (raw method) · `menu` (navigate_menu target)
-- UI: `click` (ForceClick a node path) · `click_method` (`"path|Method"`) ·
-  `click_label` (`{root, label}`, click a child button by its Label text) ·
-  `find_click` (`{pattern, contains, child_class}`, for Godot `@`-generated paths)
+  (`{enemy, hp}`, sets an enemy *down* to a fixed HP, so damage assertions do not depend on
+  the roster) · `select_hand_cards` (`"CardClassName"` or a list, answers an in-combat
+  hand-selection prompt such as Infuse, then confirms it)
+- potions: `use_potion_ui` (`slot`, drives the belt popup; the bridge's `use_potion` reports
+  success but has **no effect**, so always use `use_potion_ui`) · `discard_potion`
+- rooms and rewards: `advance_ancient` (proceeds an open ancient event) · `walk_dialogue`
+  (clicks the invisible "next" hitbox through **every** line of an open ancient's dialogue.
+  It asserts that each line renders. It asserts that the sequence reaches its last line. It
+  waits for the deferred line-node adds) · `remove_deck_card` (`slot`, selects a card on a
+  deck-removal screen, then confirms it in the preview) · `reward_select` (`index`)
+- console and bridge: `console` · `bridge` (a raw method) · `menu` (a navigate_menu target)
+- timeline: `reveal_timeline` (`{id?, timeout?}`, reveals epochs through the real Timeline UI.
+  The Timeline screen must already be open. It clicks the obtained tile, closes the inspect
+  screen, and confirms each queued unlock screen, and it waits out the animations between the
+  steps. It fails the check if an epoch has no tile to click)
+- UI: `click` (ForceClick on a node path) · `click_method` (`"path|Method"`) ·
+  `click_label` (`{root, label}`, clicks a child button by its Label text) ·
+  `find_click` (`{pattern, contains, child_class}`, for the paths that Godot generates
+  with `@`)
 - misc: `snapshot: "gold" | "hp"` · `sleep`
 
 `expect` keys:
-- player: `hp` · `hp_gain_gte` (vs `snapshot: "hp"`) · `energy` · `block` · `hand_size` ·
-  `hand_contains` (card class in hand) · `power` (`{name, amount}`) · `powers` (list) ·
+- player: `hp` · `hp_gain_gte` (against `snapshot: "hp"`) · `energy` · `block` · `hand_size` ·
+  `hand_contains` (a card class in the hand) · `power` (`{name, amount}`) · `powers` (a list) ·
   `has_power` · `gold` / `gold_delta` · `potion_count` · `deck_count`
-- enemy: `enemy_hp` (`{enemy, hp}`) · `any_enemy_hp` (some alive enemy at this HP,
-  index-independent, for AoE that reindexes the roster)
-- screen/events: `screen` / `screen_contains` · `actions_labels_exclude` /
+- enemy: `enemy_hp` (`{enemy, hp}`) · `any_enemy_hp` (any live enemy at this HP; it does not
+  depend on the index, for AoE that changes the index of the roster)
+- screen and events: `screen` / `screen_contains` · `actions_labels_exclude` /
   `actions_label_contains` / `actions_count_gte` · `rest_option` (`{root, label}`)
 - content: `node_text` (`{path, contains/excludes}`) · `exceptions_clean` ·
   `game_log_contains` · `pool_contains` / `pool_count` / `pool_matches_csv` ·
   `loc_render_clean` · `ancient_dialogues` · `dialogue_on_screen` ·
-  `dialogue_loc_complete` (all ancients' loc vs registered dialogue)
-- timeline: `epoch_state` (`{prefix, epochs/cards/relics/potions: {model_id: {field: expected}}}`,
-  where epoch fields are `state`/`visible`/`revealed` and content fields are `unlocked`/`discovered`; reads the
-  bridge's `get_epoch_state`). Drive reveals with `do: {bridge: "set_epoch", params: {id, state}}`
-  (`state` a `EpochState` name, or `"remove"`; on `"Revealed"` it also slots the epoch's expansion
-  children, mirroring the in-game reveal).
+  `dialogue_loc_complete` (the loc of all ancients against the registered dialogue)
+- timeline: `epoch_state` (`{prefix, epochs/cards/relics/potions: {model_id: {field: expected}}}`).
+  The epoch fields are `state`/`visible`/`revealed`/`slot_count`/`slot_state`. The content
+  fields are `unlocked`/`discovered`. This key reads the bridge's `get_epoch_state`.
 
-**`sweep` scenarios** (`"sweep": "cards" | "relics" | "potions"`) are python-implemented
-crash passes: each entity is exercised from a fresh combat, exceptions are unwrapped to
-their real type and attributed to a card only when the stack references the `Alchemist`
-namespace (base-game/harness noise is reported separately), and a player death is caught
-and named. This is how the suite found the Harvest death-cleanup crash.
+  There are two ways to make a reveal, and they test different things.
+  `do: {bridge: "set_epoch", params: {id, state}}` writes the save state directly. The `state`
+  value is an `EpochState` name, or `"remove"`. For `"Revealed"`, the bridge also slots the
+  expansion children of the epoch. This is fast and deterministic, so use it for setup.
+  But it never opens the Timeline, so it does not run the epoch's `QueueUnlocks` and it does
+  not reach `AddEpochSlots`. `do: {reveal_timeline: {id}}` drives the real UI instead and does
+  run both. See `epoch_progression.json` for the first form and `epoch_reveal_ui.json` for
+  the second.
+
+  `slot_count` is the number of live tiles that carry an epoch id. It is `0` while the
+  Timeline screen is closed, so assert it only after `do: {menu: "timeline"}`. A count above
+  `1` means the epoch was drawn twice, because `AddEpochSlots` has no dedup.
+
+**`sweep` scenarios** (`"sweep": "cards" | "relics" | "potions"`) are crash passes written
+in Python:
+
+- The sweep exercises each entity from a fresh combat.
+- The sweep unwraps each exception to its real type.
+- The sweep attributes an exception to a card only when the stack references the `Alchemist`
+  namespace. It reports base-game and harness exceptions separately.
+- The sweep catches a player death and names the entity.
+
+The suite found the Harvest death-cleanup crash with this format.
 
 ## Bridge quirks these scenarios encode
 
-- **Fresh-process rule**: abandoning a run mid-combat poisons combat init for the rest
-  of the process. The runner never does this (`die` in combat instead) and auto-restarts
-  the game when a reset fails, so you usually don't have to care.
-- **Custom entities need full model IDs** (`card ALCHEMIST-SEPSIS`), not class/display
-  names, since bare names silently no-op. Injected cards append to the **end** of hand
-  (index 5 after a 5-card opening hand). Discover IDs via console `dump` + the game log.
-- **console `power`/`damage`/`block` target-index is offset**: `0` = player,
-  `1` = first enemy … (enemy array index + 1); `play_card`'s `target_index` is 0-based.
-- **Hand-selection prompts use a different index space than the hand.** The bridge's
-  `combat_select_card` addresses `NPlayerHand.ActiveHolders` (the visual fan), whose order
-  does *not* track the logical hand from `get_combat_state`, and selecting a card pulls its
-  holder out of that list. Feeding it a hand index therefore picks the *wrong card*, silently
-  and repeatably. Always select by name (`select_hand_cards` does, via the bridge's
-  `card_name` param), never by index.
-- **Enemy rosters are not seed-stable** (`fight SLIMES_WEAK` re-rolls HP each run), so
-  don't assert absolute enemy HP. Assert player state, block, or pools.
-- **Enemy power amounts aren't assertable**, only `enemy_N_hp`/block + player powers.
-- **Potion belt UI slots don't re-shuffle** after a potion is consumed. Slot-0's holder
-  node is `…/PotionHolders/PotionHolder` and popups open via the holder's
-  `OpenPotionPopup` method (the belt isn't ForceClick-able).
-- The bridge's screen-context can wedge on some base-game popups (disposed object), and
-  the runner's health check handles it with a restart.
+- **Fresh-process rule**: if you abandon a run during combat, combat init stays broken for
+  the rest of the process. The runner never does this. It uses `die` in combat instead. It
+  also restarts the game automatically when a reset fails. Therefore you usually do not need
+  to think about this rule.
+- **Custom entities need full model IDs** (`card ALCHEMIST-SEPSIS`), not class names or
+  display names. A bare name does nothing and gives no message. An injected card goes to the
+  **end** of the hand (index 5 after a first hand of 5 cards). To find the IDs, use the
+  console `dump` command and the game log.
+- **The target index of the console `power`/`damage`/`block` commands has an offset**:
+  `0` = the player, `1` = the first enemy, and so on (the enemy array index plus 1). The
+  `target_index` of `play_card` starts at 0.
+- **A hand-selection prompt uses a different index space than the hand.** The bridge's
+  `combat_select_card` addresses `NPlayerHand.ActiveHolders`, the visual fan. The order of
+  that list does *not* follow the logical hand from `get_combat_state`. When you select a
+  card, the bridge removes its holder from that list. Therefore a hand index selects the
+  *wrong card*, with no message and in the same way each time. Always select a card by its
+  name. The `select_hand_cards` action does this with the bridge's `card_name` parameter.
+  Never select a card by its index.
+- **Enemy rosters are not seed-stable.** The `fight SLIMES_WEAK` command rolls new HP for
+  each run. Do not assert an absolute enemy HP. Assert the player state, the block, or the
+  pools.
+- **You cannot assert enemy power amounts.** You can assert only `enemy_N_hp`, block, and
+  player powers.
+- **The potion belt UI slots do not move** after the player consumes a potion. The holder
+  node of slot 0 is `…/PotionHolders/PotionHolder`. To open a popup, call the holder's
+  `OpenPotionPopup` method. ForceClick does not work on the belt.
+- The bridge's screen context can fail on some base-game popups (a disposed object). The
+  runner's health check corrects this with a restart.
+- **An `ObtainedNoSlot` epoch cannot be revealed through the UI.** That state is the only one
+  that `NTimelineScreen.InitScreen` draws no tile for. Therefore there is nothing to click,
+  and `reveal_timeline` fails the check instead of a wait that never ends. Promote the epoch
+  first with `do: {bridge: "set_epoch", params: {id, state: "Obtained"}}`, or reload the save,
+  because that runs `FixMissingSlots`.
+- **Set the epoch state before you open the Timeline.** `InitScreen` reads the save state once,
+  when the screen opens. A `set_epoch` call while the screen is open does not change the tiles.
+  Go back to the main menu and open the Timeline again.

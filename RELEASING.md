@@ -1,77 +1,93 @@
-# Releasing The Alchemist
+# How to release The Alchemist
 
-How versions are cut and shipped. The whole flow is one command,
-`scripts/dev.sh release`, plus a manual git push you run yourself. If you only
-read one thing: **every player-visible change earns a `CHANGELOG.md` entry**, and
-each released changelog section becomes that version's Steam Workshop update note.
+This document tells you how to make a version and how to release it. The flow is
+one command, `scripts/dev.sh release`. You then run a git push by hand. Two rules
+are the most important:
 
-## Versioning policy
+- Every player-visible change gets a `CHANGELOG.md` entry.
+- Each version section in the changelog is the Steam Workshop update note for
+  that version.
 
-The version lives in one place, `Alchemist.json` (`"version": "vX.Y.Z"`), and is
-bumped only by `scripts/dev.sh release`. Git tags match it (`vX.Y.Z`). We follow
-[Semantic Versioning](https://semver.org), read for a game mod:
+## Version policy
 
-| Bump | When | Examples |
+The version is in one location only: `Alchemist.json` (`"version": "vX.Y.Z"`).
+Only `scripts/dev.sh release` changes it. The git tags use the same value
+(`vX.Y.Z`). This project follows [Semantic Versioning](https://semver.org). For a
+game mod, read the rules as follows:
+
+| Increase | When to use it | Examples |
 |---|---|---|
-| **PATCH** (`0.1.0 → 0.1.1`) | Balance tweaks, bug fixes, text/tooltip/art fixes. Nothing new, nothing removed. | Re-cost a card, fix a Ferment interaction, reword a keyword. |
-| **MINOR** (`0.1.0 → 0.2.0`) | New content or additive mechanics that don't break existing saves. | Add cards/relics/potions, a new epoch, a new keyword. |
-| **MAJOR** (`0.x → 1.0`, then `1.x → 2.0`) | Save-breaking changes or identity-level reworks. **`1.0.0` is reserved for the first public Steam Workshop release.** | Remove/rename large card sets, overhaul a core mechanic. |
+| **PATCH** (`0.1.0 → 0.1.1`) | Balance changes, bug fixes, and fixes to text, tooltips, or art. This increase adds no content and removes no content. | Change the cost of a card. Fix a Ferment interaction. Change the text of a keyword. |
+| **MINOR** (`0.1.0 → 0.2.0`) | New content, or more mechanics that do not break the current saves. | Add cards, relics, or potions. Add an epoch. Add a keyword. |
+| **MAJOR** (`0.x → 1.0`, then `1.x → 2.0`) | Changes that break the saves, or changes to the identity of the mod. **`1.0.0` is kept for the first public Steam Workshop release.** | Remove or rename large card sets. Change a core mechanic completely. |
 
-While pre-1.0 the mod is "feature-complete but not yet publicly released", so
-prefer MINOR/PATCH and hold MAJOR for the 1.0 Workshop launch.
+Before version 1.0, the mod is feature-complete, but it has no public release.
+Thus, use MINOR or PATCH. Keep MAJOR for the 1.0 Workshop release.
 
-Two related manifest fields:
+Two related fields in the manifest:
 
-- **`min_game_version`**: bump by hand when a release requires a newer Slay the
-  Spire 2 build.
-- **BaseLib `min_version`**: do **not** edit by hand. It's auto-synced to the
-  built-against BaseLib at build time (`Alchemist.csproj`, `UpdateDependencyVersions`).
+- **`min_game_version`**: change this field by hand when a release needs a newer
+  Slay the Spire 2 build.
+- **BaseLib `min_version`**: do **not** change this field by hand. The build sets
+  it automatically from the BaseLib version that you build against
+  (`Alchemist.csproj`, `UpdateDependencyVersions`).
 
 ## The changelog (hybrid workflow)
 
-`CHANGELOG.md` is hand-curated in [Keep a Changelog](https://keepachangelog.com)
-format, but [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
-do the first draft:
+You write `CHANGELOG.md` by hand in the
+[Keep a Changelog](https://keepachangelog.com) format. The
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) give you
+the first draft:
 
-1. Write commits with Conventional Commit prefixes (`feat:`, `fix:`,
-   `refactor:`, …). The changelog draft is only as good as the commit messages.
-2. When preparing a release, run `scripts/dev.sh changelog`. It reads commits
-   since the last tag and prints a grouped draft (Added / Fixed / Changed /
-   Other). It writes nothing.
-3. Paste the relevant lines under `## [Unreleased]` and **reword them into
-   player-facing language**, so "feat: rework infuse enchantments" becomes
-   "Infuse now grants type-matched enchantments that stack." Drop dev-only noise
-   (build, ci, test, most chores). Group under the Keep a Changelog sections:
-   Added, Changed, Deprecated, Removed, Fixed, Security.
+1. Write the commit messages with Conventional Commit prefixes (`feat:`, `fix:`,
+   `refactor:`, …). A bad commit message gives a bad changelog draft.
+2. Before a release, run `scripts/dev.sh changelog`. The command reads the
+   commits after the last tag. It prints a draft in groups (Added / Fixed /
+   Changed / Other). The command writes no files.
+3. Paste the applicable lines below `## [Unreleased]`. Then **write these lines
+   again in language for players**. For example, "feat: rework infuse
+   enchantments" becomes "Infuse now grants type-matched enchantments that
+   stack." Remove the lines that apply only to development (build, ci, test, and
+   most chores). Put each line in one of these Keep a Changelog sections: Added,
+   Changed, Deprecated, Removed, Fixed, Security.
 
-The curated `## [Unreleased]` section is the release note. `release` cannot run
-against an empty Unreleased section. No notes, no release.
+The `## [Unreleased]` section that you write is the release note. The `release`
+command does not run when the `## [Unreleased]` section is empty.
 
-## Cutting a release
+## How to cut a release
 
 ```sh
 scripts/dev.sh changelog        # draft; curate ## [Unreleased] in CHANGELOG.md by hand
 scripts/dev.sh release minor    # or: patch | major | an explicit X.Y.Z
 ```
 
-`release` (see `do_release` in `scripts/dev.sh`) will:
+The `release` command (see `do_release` in `scripts/dev.sh`) does these steps:
 
-1. **Preflight**: refuse unless the working tree is clean and you're on `main`,
-   run `dotnet build`, the `lint` check, and the regression suite, and refuse if
-   `## [Unreleased]` is empty. The suite drives the live game, so Steam must be
-   running. `--skip-tests` overrides it and ships the release unverified against
-   the game; it prints a warning and is meant for the rare case where the game
-   can't run, not for a red suite.
-2. **Compute** the new version from the bump keyword (or take an explicit
-   `X.Y.Z`) and confirm it's greater than the current one.
-3. **Update** `Alchemist.json` (`version`) and `CHANGELOG.md` (stamp
-   `## [Unreleased]` → `## [X.Y.Z] - <date>`, open a fresh Unreleased).
-4. **Build & package** via `dotnet publish`, then write:
-   - `dist/Alchemist-vX.Y.Z.zip`, the drop-in artifact (below).
-   - `dist/RELEASE_NOTES-vX.Y.Z.txt`, this version's changelog section, for the
-     GitHub Release body and the Workshop update note.
-5. **Stop and print** the git block to run yourself (nothing is committed,
-   tagged, or pushed for you):
+1. **Preflight**: the command makes these checks first:
+   - The working tree must be clean.
+   - The current branch must be `main`.
+   - The `## [Unreleased]` section must not be empty.
+
+   The command then runs `dotnet build`, the `lint` check, and the regression
+   suite. The suite drives the live game, thus Steam must run. The `--skip-tests`
+   option disables the suite and prints a warning. The release is then not
+   verified against the game. Use `--skip-tests` only when the game cannot run.
+   Do not use it when the regression suite fails.
+2. **Compute**: the command calculates the new version from the keyword
+   (`patch`, `minor`, or `major`). You can also give an explicit `X.Y.Z` value.
+   The command makes sure that the new version is greater than the current
+   version.
+3. **Update**: the command changes the `version` field in `Alchemist.json`. In
+   `CHANGELOG.md`, it replaces `## [Unreleased]` with `## [X.Y.Z] - <date>`. It
+   then adds a new, empty Unreleased section.
+4. **Build and package**: the command runs `dotnet publish`. It then writes two
+   files:
+   - `dist/Alchemist-vX.Y.Z.zip`, the file that players install (see below).
+   - `dist/RELEASE_NOTES-vX.Y.Z.txt`, the changelog section for this version. Use
+     it for the GitHub Release body and for the Workshop update note.
+5. **Stop and print**: the command stops. It prints the git commands below. You
+   must run these commands yourself. The command does not commit, tag, or push
+   anything for you.
 
    ```sh
    git add Alchemist.json CHANGELOG.md
@@ -80,43 +96,50 @@ scripts/dev.sh release minor    # or: patch | major | an explicit X.Y.Z
    git push --follow-tags
    ```
 
-Then create a GitHub Release for the tag, attach the zip, and paste the notes.
+Then create a GitHub Release for the tag. Attach the zip to the release. Paste
+the notes into the release body.
 
-`dist/` is git-ignored. Artifacts are rebuilt, not committed.
+Git ignores the `dist/` folder. You build these files again for each release. Do
+not commit them.
 
 ## How players install it
 
-**Steam Workshop is the preferred way to install and play.** It's one click, it
-auto-updates, and it resolves the **BaseLib** dependency automatically.
+**The Steam Workshop is the best method to install the mod and to play it.** The
+installation is one click. The Workshop updates the mod automatically. It also
+installs the **BaseLib** dependency automatically.
 
 > [!NOTE]
-> Workshop release is coming soon; it's gated on the character artwork landing.
+> The Workshop release is not available yet. It waits for the character artwork.
 > Until then, use the manual zip below.
 
-**Manual install (interim, from a GitHub Release zip):**
+**Manual installation (temporary, from a GitHub Release zip):**
 
-1. Install [**BaseLib**](https://github.com/Alchyr/BaseLib-StS2) first, since the
-   Alchemist mod depends on it.
-2. Download `Alchemist-vX.Y.Z.zip` and extract the `Alchemist/` folder into your
-   game's `mods/` folder:
+1. Install [**BaseLib**](https://github.com/Alchyr/BaseLib-StS2) first. The
+   Alchemist mod needs BaseLib.
+2. Download `Alchemist-vX.Y.Z.zip`. Extract the `Alchemist/` folder into the
+   `mods/` folder of your game:
    - **macOS**: `…/Slay the Spire 2/SlayTheSpire2.app/Contents/MacOS/mods/`
-   - **Windows/Linux**: the `mods/` folder next to the game executable.
-3. Make sure your game is at least the manifest's `min_game_version`, then launch.
+   - **Windows/Linux**: the `mods/` folder in the same location as the game
+     executable.
+3. Make sure that your game version is `min_game_version` from the manifest or
+   higher. Then start the game.
 
-The zip contains exactly what the game loads (`Alchemist.dll`, `Alchemist.json`,
-`Alchemist.pck`) under a single top-level `Alchemist/` folder. No repo clone, no
-.NET or Godot needed. Developers building from source use `scripts/dev.sh
-publish` instead, see [BUILD.md](BUILD.md).
+The zip contains only the files that the game loads: `Alchemist.dll`,
+`Alchemist.json`, and `Alchemist.pck`. These files are in one top-level
+`Alchemist/` folder. You do not need a clone of the repo. You do not need .NET or
+Godot. Developers who build from source use `scripts/dev.sh publish` instead.
+See [BUILD.md](BUILD.md).
 
-## Steam Workshop mapping (for the 1.0 launch)
+## Steam Workshop fields (for the 1.0 launch)
 
-When we publish, each field has a home:
+When you publish the mod, each Workshop field has a source:
 
 | Workshop item | Source |
 |---|---|
-| Update note (per version) | that version's `CHANGELOG.md` section / `dist/RELEASE_NOTES-*.txt` |
-| Preview image | `Alchemist/mod_image.png` (already inside the `.pck`) |
-| Description | `Alchemist.json` `description` + README highlights |
-| Dependency | **BaseLib**, listed so Workshop auto-installs it |
+| Update note (per version) | the `CHANGELOG.md` section for that version, or `dist/RELEASE_NOTES-*.txt` |
+| Preview image | `Alchemist/mod_image.png` (already in the `.pck`) |
+| Description | the `description` field in `Alchemist.json`, plus the main points from README |
+| Dependency | **BaseLib**. List it, and the Workshop then installs it automatically. |
 
-The upload step itself isn't wired into tooling yet; fill this in when it is.
+The tools do not do the upload step yet. Add the steps to this document when the
+tools do the upload.

@@ -6,9 +6,9 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace Alchemist.AlchemistCode.Epochs;
 
-// Gates each epoch's declared cards/relics/potions behind that epoch being revealed on the Timeline,
-// mirroring how base-game characters unlock content. Content not tied to an epoch is always available,
-// and when the epoch system is disabled in mod config nothing is gated at all.
+// This gates the cards, relics, and potions of each epoch. The player must first reveal that epoch on
+// the Timeline. This mirrors how a base-game character unlocks content. Content with no epoch is always
+// available. If the mod config disables the epoch system, this gates nothing
 public static class EpochGating
 {
     // Gated content id -> "is this content's epoch revealed?". Ungated content is absent from the maps.
@@ -37,7 +37,7 @@ public static class EpochGating
 
     private static bool Unlocked(Dictionary<ModelId, Func<UnlockState, bool>> gates, ModelId id, UnlockState unlockState)
     {
-        // Disabling the epoch system unlocks everything the Timeline would normally gate
+        // If the epoch system is off, this unlocks everything that the Timeline gates
         if (!AlchemistModConfig.EnableEpochs) return true;
         return !gates.TryGetValue(id, out var revealed) || revealed(unlockState);
     }

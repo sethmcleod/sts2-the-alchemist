@@ -1,40 +1,42 @@
 ---
 name: playtest
-description: Run the mod against the live Slay the Spire 2 game safely, whether to run the regression suite, spawn a card to check it by hand, or verify a change in a real run. Use this whenever work needs the running game, since driving it has sharp edges that cost real time when missed: publishing over a live process corrupts its asset loads, testing on the wrong save profile churns real progress, and abandoning a run mid-combat poisons combat init until restart. Encodes the safe loop and the recovery steps.
+description: Run the mod against the live Slay the Spire 2 game safely. Use this skill to run the regression suite, to spawn a card and check it by hand, or to verify a change in a real run. Use it for any task that needs the live game. The game has three hazards that cost real time. A publish over a live process corrupts the asset loads of that process. A test on the wrong save profile changes real progress. If you abandon a run during a combat, every later combat fails to initialize until you restart the game. This skill gives the safe loop and the recovery steps.
 ---
 
 # Playtest against the live game
 
-The suite and manual checks drive a **real running game** over the bridge (MCPTest on
-:21337, GodotExplorer on :27020). The mechanics are documented in
-[scripts/tests/README.md](../../../scripts/tests/README.md) and the failure modes in
-[docs/troubleshooting.md](../../../docs/troubleshooting.md). This skill is the safe
-operating procedure; follow it rather than driving the game ad hoc.
+The suite and the manual checks drive a **real live game** through the bridge (MCPTest on
+:21337, GodotExplorer on :27020).
+[scripts/tests/README.md](../../../scripts/tests/README.md) documents the mechanics.
+[docs/troubleshooting.md](../../../docs/troubleshooting.md) documents the failure modes.
+This skill is the safe procedure. Follow it. Do not drive the game without it.
 
 ## Before you touch the game
 
-- **Check the environment.** `scripts/dev.sh doctor` prints a ✓/✗ for every prerequisite
-  (SDK, mods installed, bridge responding, Steam running). Start here if anything looks off.
-- **Confirm the save profile is a spare.** The suite starts and abandons runs constantly
-  and the settings tests exercise unlock/relock, so it must run on **Profile 3, never
-  Profile 1**. Pointing it at a real save churns that save's progression.
+- **Check the environment.** The command `scripts/dev.sh doctor` prints a ✓ or a ✗ for
+  each prerequisite. It checks the SDK, the installed mods, the bridge response, and the
+  Steam process. Start here if something is not correct.
+- **Confirm that the save profile is a spare profile.** The suite starts runs and abandons
+  runs many times. The settings tests also lock and unlock content. Thus the suite must
+  run on **Profile 3, never Profile 1**. If you point the suite at a real save, it changes
+  the progression of that save.
 
-## The one rule that bites hardest: never publish over a running game
+## The most important rule, never publish over a live game
 
-Godot holds the mod's `.pck` open while the game runs. Replacing it under the live process
-invalidates every later asset load from it, and combat then renders with **no background**
-and later throws `AssetLoadException` / `NullReferenceException`. Nothing is actually
-corrupted, but the session is poisoned.
+Godot keeps the `.pck` file of the mod open while the game runs. If you replace that file
+under the live process, every later asset load from it fails. Combat then shows **no
+background**. The game later throws `AssetLoadException` or `NullReferenceException`. No
+file is corrupted, but the session is no longer usable.
 
-So: **publish, then start or restart the game**, not the other way around. If you have
-already published over a running game (or a run is behaving strangely), the fix is a
-restart:
+Follow this order. **Publish first.** **Then start or restart the game.** Do not use the
+opposite order. If you already published over a live game, restart the game. Also restart
+the game if a run behaves in an unusual way.
 
 ```sh
 scripts/dev.sh game-restart
 ```
 
-## Running the suite
+## How to run the suite
 
 ```sh
 scripts/dev.sh test                 # everything
@@ -44,25 +46,32 @@ scripts/dev.sh test --changed       # only the groups your uncommitted edits can
 scripts/dev.sh test --fresh         # force a game restart first, when state is suspect
 ```
 
-The runner starts the game if it is not up and restarts it if it wedges, so you usually do
-not manage the process yourself. Reach for `--fresh` when a green change starts failing for
-no code reason; that is almost always stale process state, and this session has hit it.
+The runner starts the game if the game is not up. The runner restarts the game if the game
+becomes stuck. Thus you usually do not control the process yourself. Use `--fresh` when a
+change that passed before starts to fail with no change in the code. The cause is almost
+always old process state. This problem happens in practice.
 
-## Driving the game by hand
+## How to drive the game by hand
 
-- Spawn custom entities with **full model ids**: `card ALCHEMIST-SEPSIS`, not `Sepsis`.
-  Bare names silently no-op while the console still reports success.
-- To end a combat, use `die`, **never abandon a run mid-combat**. Abandoning mid-combat
-  poisons combat init for the rest of the process, so every later fight half-loads until a
-  restart. The suite follows this rule; so should you.
-- Console `power`/`damage` target index is offset by one from `play_card`: `0` = player,
-  `1` = first enemy.
+- Spawn custom entities with a **full model id**. Use `card ALCHEMIST-SEPSIS`, not
+  `Sepsis`. A bare name does nothing, but the console still reports success.
+- To end a combat, use `die`. **Never abandon a run during a combat.** If you abandon a
+  run during a combat, every later combat in that process fails to initialize. Each later
+  fight loads only in part until you restart the game. The suite obeys this rule. You must
+  also obey it.
+- The target index for the console `power` and `damage` commands has an offset of one from
+  `play_card`. The value `0` is the player. The value `1` is the first enemy.
 
 ## When you are done
 
-Leave the game the way it's kept between sessions: **at the main menu, at 100% game speed.** The suite
-runs at a faster speed, so if you ran it or set the speed up, reset it. Exit any live run
-cleanly (Save and Quit, then abandon from the menu); never abandon a live run directly,
-which stalls on the macOS death screen.
+Leave the game in the usual condition between sessions. That condition is **the main menu
+at 100% game speed**. The suite runs at a higher speed. If you ran the suite, set the speed
+back to 100%. If you raised the speed by hand, set it back to 100%.
 
-A good end state is: menu, 100% speed, no run in progress.
+Exit any live run correctly:
+- Use Save and Quit.
+- Then abandon the run from the main menu.
+- Never abandon a live run directly, because the macOS death screen stalls.
+
+The correct end state has three conditions. The game is at the main menu. The speed is
+100%. No run is in progress.

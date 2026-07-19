@@ -19,7 +19,7 @@ public static class BrewRestSiteIconPatch
         if (!_tried)
         {
             _tried = true;
-            // CacheMode.Ignore forces a fresh load, sidestepping any failure the game cached earlier
+            // CacheMode.Ignore forces a fresh load and ignores any failure that the game cached earlier
             _icon = ResourceLoader.Load<Texture2D>(BrewIconPath, null, ResourceLoader.CacheMode.Ignore);
         }
         if (_icon == null) return true;

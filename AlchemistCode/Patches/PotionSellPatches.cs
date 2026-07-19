@@ -297,8 +297,9 @@ public static class PotionSellPatches
         }
     }
 
-    // Tint that tooltip gold. The base game only tints debuffs (red) by swapping the %Bg material, so we do
-    // the same with a gold hue-shift material for our tip. Text-tip controls map 1:1 in order to the HoverTips
+    // Tint that tooltip gold. The base game tints only debuffs red, and it swaps the %Bg material to do
+    // this. Use the same method with a gold hue-shift material. The text-tip controls map 1:1, in order,
+    // to the HoverTips
     [HarmonyPatch(typeof(NHoverTipSet), "Init")]
     public static class SellableTipGoldTintPatch
     {
@@ -306,8 +307,8 @@ public static class PotionSellPatches
             AccessTools.Field(typeof(NHoverTipSet), "_textHoverTipContainer");
         private static ShaderMaterial? _goldMaterial;
 
-        // Reuse the base game's hue-shift shader (mounted at runtime); build the material in code so we don't
-        // ship a .tres/shader. h/s/v tune the gold tint
+        // Reuse the hue-shift shader of the base game, which mounts at runtime. Build the material in
+        // code, so the mod does not ship a .tres file or a shader. The h, s, and v values set the gold tint
         private static ShaderMaterial GoldMaterial()
         {
             if (_goldMaterial != null) return _goldMaterial;

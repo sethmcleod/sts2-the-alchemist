@@ -1,36 +1,42 @@
-# Building The Alchemist
+# How to build The Alchemist
 
 ## Prerequisites
 - **.NET 9 SDK**
-- **Slay the Spire 2** installed via Steam (the build auto-discovers the install path, see `Sts2PathDiscovery.props`)
-- **Godot 4.5.1 (.NET/mono build)**, required only for `dotnet publish` (asset/.pck export). MegaDot (MegaCrit's Godot fork) works too. Standard builds: [godotengine.org/download/archive](https://godotengine.org/download/archive/) (pick “.NET”).
+- **Slay the Spire 2**, installed with Steam. The build finds the install path automatically (see `Sts2PathDiscovery.props`).
+- **Godot 4.5.1 (.NET/mono build)**. You need Godot only for `dotnet publish`, which exports the assets and the pck. MegaDot, the Godot fork from MegaCrit, also works. Get a standard build from [godotengine.org/download/archive](https://godotengine.org/download/archive/). Select the “.NET” build.
 
   > [!IMPORTANT]
-  > What matters is the **4.5.1 version match**. The game won't load a `.pck` exported by a newer Godot, and the failure is silent: the mod's assets simply don't appear.
+  > The **4.5.1 version match** is necessary. The game does not load a `.pck` file that a newer Godot exported. There is no error message. The assets of the mod do not appear.
 
-  Its path lives in **two places** (set both if yours differs from the default):
-  - `Directory.Build.props` `<GodotPath>`, used by `dotnet publish` for the pck export
-  - the `GODOT` env var, used by `scripts/dev.sh import` for the image-import step
+  The path to Godot is in **two places**. If your path is not the default path, change both:
+  - `Directory.Build.props` `<GodotPath>`: `dotnet publish` uses it for the pck export.
+  - the `GODOT` env var: `scripts/dev.sh import` uses it for the image import step.
 
 ## Commands
-- `dotnet build` compiles `Alchemist.dll` and copies it (plus `Alchemist.json`) into the game's `mods/Alchemist/` folder. Enough for **code-only** changes.
-- `dotnet publish -c Debug` additionally exports `Alchemist.pck` (images, scenes, **localization JSON**). Required whenever anything under `Alchemist/` changes.
-- New/changed images must be imported by Godot before publishing:
+- `dotnet build` compiles `Alchemist.dll`. It copies `Alchemist.dll` and `Alchemist.json` into the `mods/Alchemist/` folder of the game. This is enough for a change to the **code only**.
+- `dotnet publish -c Debug` also exports `Alchemist.pck`, which contains the images, the scenes, and the **localization JSON**. Use this command when you change any file in `Alchemist/`.
+- Godot must import each new image and each changed image before you publish:
   `"<GodotPath>" --headless --import --path .`
-- Or let `scripts/dev.sh publish` chain all of the above in the right order.
+- Or use `scripts/dev.sh publish`, which does all of the steps above in the correct sequence.
 
 ## CI
 
-`.github/workflows/lint.yml` runs the three-way-rule check and validates the localization
-JSON on every push and PR. It deliberately stops there: compiling needs `sts2.dll` from a
-Steam install, which a public runner can't have, so the build hard-fails without the game
-(`Sts2PathDiscovery.props`). Compilation and the regression suite are gated locally instead,
-by `scripts/dev.sh release` (see [RELEASING.md](RELEASING.md)).
+`.github/workflows/lint.yml` runs on each push and each PR. It does the three-way rule
+check. It also checks the localization JSON. It does no more than this.
+
+A compile needs `sts2.dll` from a Steam install. A public runner cannot have this file.
+Thus the build fails without the game (`Sts2PathDiscovery.props`). The compile and the
+regression suite run on the local machine instead. `scripts/dev.sh release` starts them
+(see [RELEASING.md](RELEASING.md)).
 
 ## Conventions
-- Cards/powers/relics/potions derive their localization keys and icon filenames from the class name (`MyCard` → `ALCHEMIST-MY_CARD`, `my_card.png`). Icon sizes: powers 64/256(big), relics 94/94(outline)/256(big), card portraits in `card_portraits/big/`.
-- Every power needs `.title`, `.description` **and** `.smartDescription` loc keys (build analyzer enforces this).
-- `cards.csv` is the design source of truth. Update it whenever a card's stats/text change.
+- The class name gives the localization keys and the icon file names for each card, power, relic, and potion. For example, `MyCard` gives `ALCHEMIST-MY_CARD` and `my_card.png`.
+- The icon sizes are:
+  - power: 64 and 256 (big)
+  - relic: 94, 94 (outline), and 256 (big)
+- Put the card portraits in `card_portraits/big/`.
+- Each power needs the localization keys `.title`, `.description`, **and** `.smartDescription`. The localization analyzer in the build checks this.
+- The file `cards.csv` is the primary record of the design. Update it when you change the stats or the text of a card.
 
 > [!CAUTION]
-> Never place mod assets at base-game paths (`res://images/...`); keep everything under `res://Alchemist/` (see `Patches/RestSitePatches.cs` for why).
+> Never put the mod assets at base game paths (`res://images/...`). Keep all of them in `res://Alchemist/` (see `Patches/RestSitePatches.cs` for the reason).

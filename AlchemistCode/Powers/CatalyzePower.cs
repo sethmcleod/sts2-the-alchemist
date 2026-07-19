@@ -38,7 +38,7 @@ public class CatalyzePower : AlchemistPower
 
     public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
-        // Only the first HP loss on your own turn (delta < 0 excludes healing)
+        // Only the first HP loss on your own turn. A delta below 0 excludes a heal
         if (creature != Owner || !_ownerTurn || _triggeredThisTurn || delta >= 0) return;
         _triggeredThisTurn = true;
         Flash();

@@ -1,23 +1,24 @@
 #!/usr/bin/env python3
-"""Static three-way-rule linter. Offline, no game required.
+"""Static linter for the three-way rule. It works offline and it needs no game.
 
-Enforces that every card stays in sync across its three homes (CONTRIBUTING.md):
+Each card must stay in sync in its three locations (CONTRIBUTING.md):
   1. code:  a card class under AlchemistCode/Cards/
   2. loc:   ALCHEMIST-<SNAKE>.title / .description in localization/eng/cards.json
   3. csv:   a row in cards.csv (the design sheet)
 
-FAILs (exit 1) on structural drift: a csv row with no class, a class with no row,
-a card missing loc keys, or a cost mismatch. Also does a conservative numeric
-cross-check (WithDamage/WithBlock/WithEnergy/WithCards/WithPower literal builders vs
-the csv's "N (M)" pairs) and prints those as warnings. Cards using formula builders
-(WithCalculated*, computed args) are skipped rather than guessed at.
+The linter FAILs (exit 1) on a structural difference: a csv row with no class, a class
+with no row, a card with no loc keys, or a cost that does not agree. It also makes a
+careful numeric comparison: the literal WithDamage/WithBlock/WithEnergy/WithCards/WithPower
+builders against the "N (M)" pairs in the csv. It prints each difference as a warning. It
+does not examine a card with a formula builder (WithCalculated*, calculated arguments),
+because it cannot know the correct value.
 
-Separately checks the fourth home a rename has to reach: art on disk. Cards, powers,
-relics and potions all resolve their icons from the class name, so renaming a class
-without renaming its png leaves the entity with no art and the png orphaned. Missing
-art FAILs, orphaned art warns.
+It also checks the fourth location that a rename must reach: the art on disk. Cards,
+powers, relics and potions all get their icons from the class name. If you rename a class
+but you do not rename its png, the entity has no art and no class uses the png. Art that
+is missing is a FAIL. Art that no class uses is a warning.
 
-Run via `scripts/dev.sh lint`.
+Run it with `scripts/dev.sh lint`.
 """
 
 import csv
@@ -31,15 +32,15 @@ IMG = REPO / "Alchemist" / "images"
 CSV = REPO / "cards.csv"
 LOC = REPO / "Alchemist" / "localization" / "eng" / "cards.json"
 
-# csv display name -> class name, for the two basics that carry an "Alchemist" suffix
+# csv display name -> class name, for the two basic cards with an "Alchemist" suffix
 SPECIAL_CLASS = {"Strike": "StrikeAlchemist", "Defend": "DefendAlchemist"}
 
-# Every entity resolves its art from its own class name (see AlchemistCode/Extensions/
-# StringExtensions.cs), so a rename that misses the images silently orphans them.
+# Every entity gets its art from its own class name (see AlchemistCode/Extensions/
+# StringExtensions.cs). If a rename does not include the images, no class uses them.
 # entity label -> (code subdir, base marker, [(variant label, image dir, filename template)])
 ASSET_SPECS = [
-    # cards ship big portraits only: PortraitPath and BetaPortraitPath fall back to
-    # card.png by design, so requiring them here would flag all 95 every run
+    # cards have big portraits only: PortraitPath and BetaPortraitPath use card.png as
+    # the default, so a check for them here would report all 95 cards on each run
     ("card", "Cards", "Card", [("portrait", "card_portraits/big", "{s}.png")]),
     ("power", "Powers", "Power", [("packed", "powers", "{s}.png"),
                                   ("big", "powers/big", "{s}.png")]),
@@ -50,12 +51,12 @@ ASSET_SPECS = [
                                      ("outline", "potions/outlines", "{s}.png")]),
 ]
 
-# generic art the *ImagePath helpers fall back to, claimed by no class
+# the default art for the *ImagePath helpers; no class uses it
 FALLBACK_ART = {"card.png", "power.png", "relic.png", "relic_outline.png", "potion.png"}
 
 
 def norm(name: str) -> str:
-    """Collapse a display or class name to a comparison key."""
+    """Make a comparison key from a display name or a class name."""
     return re.sub(r"[^a-z0-9]", "", name.lower())
 
 
@@ -77,9 +78,9 @@ def load_cards_csv() -> list[dict]:
 def entity_classes(subdir: str, base_marker: str) -> dict[str, Path]:
     """class name -> file, for every concrete class under AlchemistCode/<subdir>.
 
-    base_marker is matched against the base list, so "Card" catches AlchemistCard and
-    "Power" catches both AlchemistPower and CustomTemporaryStrengthPower subclasses.
-    Abstract classes are skipped: they carry no model id, so they own no assets
+    The function compares base_marker with the base list. Thus "Card" matches AlchemistCard,
+    and "Power" matches both the AlchemistPower and CustomTemporaryStrengthPower subclasses.
+    The function ignores an abstract class: it has no model id, so it has no assets
     """
     out = {}
     for path in (CODE / subdir).rglob("*.cs"):
@@ -101,12 +102,12 @@ def asset_name(class_name: str) -> str:
 
 
 def check_assets() -> tuple[list[str], list[str], int]:
-    """Every concrete entity has its art on disk, and no art is left unclaimed.
+    """Each concrete entity has its art on disk, and every art file belongs to a class.
 
-    Returns (errors, warnings, files checked). A missing file is an error: the
-    *ImagePath helpers log and fall back to generic art, so the entity still renders
-    and the drift is easy to miss. An unclaimed file is only a warning, since it costs
-    pck size but nothing else
+    It returns (errors, warnings, files checked). A file that is missing is an error. The
+    *ImagePath helpers write a log line and use the default art, so the entity still renders
+    and you can easily miss the difference. A file that no class uses is only a warning: it
+    adds to the pck size, but it has no other effect
     """
     errors, warnings = [], []
     claimed: set[Path] = set()
@@ -117,22 +118,22 @@ def check_assets() -> tuple[list[str], list[str], int]:
                 path = IMG / img_dir / template.format(s=asset_name(cls))
                 claimed.add(path)
                 if not path.exists():
-                    errors.append(f"{label} {cls}: missing {variant} art {img_dir}/{path.name}")
+                    errors.append(f"{label} {cls}: the {variant} art {img_dir}/{path.name} is missing")
 
-    # dedupe: relics keep packed and outline art in one directory
+    # remove the duplicates: relics keep the packed art and the outline art in one directory
     art_dirs = {img_dir for _, _, _, variants in ASSET_SPECS for _, img_dir, _ in variants}
     for img_dir in sorted(art_dirs):
         for path in sorted((IMG / img_dir).glob("*.png")):
             if path not in claimed and path.name not in FALLBACK_ART:
-                warnings.append(f"{img_dir}/{path.name}: no class claims this art")
+                warnings.append(f"{img_dir}/{path.name}: no class uses this art")
 
     return errors, warnings, len(claimed)
 
 
 def parse_number_pairs(desc: str) -> list[tuple[int, int]]:
-    """Extract 'N (M)' upgrade pairs from a csv description/cost cell.
+    """Get the 'N (M)' upgrade pairs from a csv description cell or cost cell.
 
-    The trailing % is optional so percentage cards ('25% (50%)') pair up like the rest."""
+    The % at the end is optional, so a percentage card ('25% (50%)') makes a pair like the others."""
     return [(int(a), int(b)) for a, b in re.findall(r"(\d+)%?\s*\((\d+)%?\)", desc)]
 
 
@@ -142,15 +143,15 @@ BUILDER = re.compile(
 
 
 def parse_builders(text: str) -> list[tuple[int, int]]:
-    """Literal (base, delta) builder pairs. Skips cards that compute values.
+    """The literal (base, delta) builder pairs. It ignores a card that calculates its values.
 
-    A base of 0 is a dynamic placeholder, not a literal amount: the shown value
-    comes from a dynamic var or runtime computation (e.g. Albedo's "that much
-    Regen", where WithPower<RegenPower>(0, 1) only declares the +1 upgrade tip).
-    The csv renders those as "(+ N)", not a literal "0 (N)" pair, so skip them.
+    A base of 0 is a dynamic placeholder, not a literal amount. The value on screen comes
+    from a dynamic var or from a calculation at run time. For example, Albedo has "that much
+    Regen", and its WithPower<RegenPower>(0, 1) declares only the +1 upgrade tip.
+    The csv shows these as "(+ N)", not as a literal "0 (N)" pair, so ignore them.
     """
     if "WithCalculated" in text:
-        return []  # formula damage/block: csv shows a live number, not base(+delta)
+        return []  # formula damage or block: the csv shows a calculated number, not base(+delta)
     pairs = []
     for m in re.finditer(r"With(?:Damage|Block|Energy|Cards|Power<\w+>)\((\d+)\s*,\s*(-?\d+)\)", text):
         base, delta = int(m.group(1)), int(m.group(2))
@@ -179,19 +180,19 @@ def main() -> int:
         display = r["Card"]
         expected = SPECIAL_CLASS.get(display, display.replace(" ", "").replace("'", ""))
         if norm(expected) not in class_by_norm:
-            errors.append(f"csv row '{display}': no matching card class (expected {expected}.cs)")
+            errors.append(f"csv row '{display}': no card class matches it ({expected}.cs must exist)")
     for cls in classes:
         if norm(cls) not in csv_by_norm:
-            errors.append(f"class {cls}: no matching row in cards.csv")
+            errors.append(f"class {cls}: no row in cards.csv matches it")
 
     # 2. loc keys per class
     for cls in classes:
         key = f"ALCHEMIST-{snake(cls)}"
         for suffix in (".title", ".description"):
             if f'"{key}{suffix}"' not in loc:
-                errors.append(f"class {cls}: missing loc key {key}{suffix} in cards.json")
+                errors.append(f"class {cls}: the loc key {key}{suffix} is missing from cards.json")
 
-    # 3. cost + numeric cross-check
+    # 3. cost and numeric comparison
     for r in rows:
         display = r["Card"]
         cls = SPECIAL_CLASS.get(display, display.replace(" ", "").replace("'", ""))
@@ -200,18 +201,18 @@ def main() -> int:
             continue
         text = path.read_text()
 
-        # cost: csv "N" or "N (M)" vs ctor base(cost,...) [+ WithCostUpgradeBy]
+        # cost: csv "N" or "N (M)" against ctor base(cost,...) [+ WithCostUpgradeBy]
         cost = r["Cost"].strip()
         cm = re.search(r":\s*base\(\s*(\d+)\s*,", text)
         if cm and cost.isdigit() and int(cost) != int(cm.group(1)):
-            errors.append(f"{display}: csv cost {cost} != ctor base cost {cm.group(1)}")
+            errors.append(f"{display}: the csv cost {cost} is not the ctor base cost {cm.group(1)}")
 
-        # numeric pairs: every literal builder pair should show up in the csv text
+        # numeric pairs: the csv text must contain every literal builder pair
         csv_pairs = set(parse_number_pairs(r["Description"]) + parse_number_pairs(cost))
         for base, up in parse_builders(text):
             if base != up and (base, up) not in csv_pairs:
                 warnings.append(
-                    f"{display}: builder produces {base} ({up}) but that pair isn't in the csv row")
+                    f"{display}: the builder makes {base} ({up}), but that pair is not in the csv row")
 
     # 4. every entity's art is on disk
     asset_errors, asset_warnings, art_count = check_assets()

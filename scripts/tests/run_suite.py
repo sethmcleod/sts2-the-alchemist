@@ -1,29 +1,29 @@
 #!/usr/bin/env python3
-"""Run the Alchemist regression suite against the live game. No agents required.
+"""Run the Alchemist regression suite against the live game. It needs no agents.
 
-Usage (normally via `scripts/dev.sh test [args]`):
+Usage (usually with `scripts/dev.sh test [args]`):
     PYTHONPATH=<sts2-modding-mcp> python3 scripts/tests/run_suite.py [options] [name...]
 
 Options:
     --group NAME    run only this group (a subdirectory of scripts/tests/)
-    --fresh         restart the game before running (when state is suspect)
-    --speed N       game speed while running (default 3, the fastest visually stable)
-    --game start|stop|restart   just manage the game process and exit
-    name...         substring filters on scenario filenames
+    --fresh         restart the game first (use this when the game state is not certain)
+    --speed N       the game speed for the run (default 3, the fastest stable speed)
+    --game start|stop|restart   control the game process only, then exit
+    name...         substring filters for the scenario filenames
 
-Scenarios are JSON files in group subdirectories (cards/, ancients/, shop/,
-settings/, compendium/). Two kinds:
-  - "steps" scenarios run through sts2mcp.test_runner (combat-oriented).
-  - "checks" scenarios run in this file's checks engine (see README.md for the
-    vocabulary) and assert by polling until true, so they pass the moment the
-    game settles instead of sleeping fixed delays.
+The scenarios are JSON files in the group subdirectories (cards/, ancients/, shop/,
+settings/, compendium/). There are two types:
+  - a "steps" scenario runs through sts2mcp.test_runner (it is for combat).
+  - a "checks" scenario runs in the checks engine of this file (see README.md for the
+    vocabulary). It reads the state again and again until each expectation is true.
+    Thus it passes as soon as the game is stable, and it does not wait for a fixed time.
 
-The runner reuses a healthy running game (restarting per run is too slow at
-scale); it starts the game if it's not running, and restarts it if it looks
-crashed or wedged. The game boots into the last-used save profile, so keep that
-pointed at a spare profile.
+The runner uses a game that is already active and healthy, because a restart for each
+run is too slow. It starts the game if no game is active. It restarts the game if the
+game has a crash or does not answer. The game starts in the save profile of the last
+session, so keep that profile set to a spare profile.
 
-Exit code 0 iff all selected scenarios pass.
+The exit code is 0 only if every selected scenario passes.
 """
 
 import json
@@ -39,7 +39,7 @@ REPO_DIR = TESTS_DIR.parent.parent
 STEAM_URL = "steam://rungameid/2868840"
 GAME_PROCESS = "Slay the Spire 2"
 
-# ── locate the sts2-modding-mcp checkout ────────────────────────────────────
+# ── find the sts2-modding-mcp checkout ──────────────────────────────────────
 def _find_mcp_dir() -> Path | None:
     candidates = [
         os.environ.get("STS2_MCP_DIR"),
@@ -69,12 +69,12 @@ DIALOGUE_LABEL = (
     "/AncientEventLayout/ContentContainer/Content/DialogueContainer"
     "/AncientDialogueLine/DialogueContainer/TextContainer/Text"
 )
-# can't be played in a solo run
+# a player cannot play these in a solo run
 MULTIPLAYER_CARDS = {"Bestow", "Effervesce", "Reflux", "Suffuse"}
 
 
 def _r(response: dict) -> dict:
-    """Unwrap a bridge JSON-RPC envelope to its result payload."""
+    """Get the result payload from a bridge JSON-RPC envelope."""
     return response.get("result", response) if isinstance(response, dict) else {}
 
 
@@ -98,14 +98,14 @@ def bridge_ready() -> bool:
 
 
 def start_game(timeout: float = 120.0) -> bool:
-    """Launch via the Steam protocol and wait until the bridge answers at the menu."""
+    """Start the game with the Steam protocol. Then wait until the bridge answers at the menu."""
     if not steam_running():
-        print("✗ Steam is not running; start Steam first (game launches through it)")
+        print("✗ Steam is not active; start Steam first (the game starts through it)")
         return False
     if not game_running():
         opener = "open" if sys.platform == "darwin" else "xdg-open"
         subprocess.Popen([opener, STEAM_URL])
-        print("  launching game via Steam ...")
+        print("  start the game through Steam ...")
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
         if bridge_ready():
@@ -118,11 +118,11 @@ def start_game(timeout: float = 120.0) -> bool:
 
 
 def stop_game(timeout: float = 20.0) -> bool:
-    """Quit gracefully (Apple Event), escalate to SIGTERM if it lingers."""
+    """Send a quit request (Apple Event). Send SIGTERM if the game does not stop."""
     if not game_running():
         return True
     if sys.platform == "darwin":
-        # the game exits but osascript often reports "User canceled", so ignore rc
+        # the game exits, but osascript often reports "User canceled", so ignore rc
         subprocess.run(
             ["osascript", "-e", f'tell application "{GAME_PROCESS}" to quit'],
             capture_output=True,
@@ -138,12 +138,13 @@ def stop_game(timeout: float = 20.0) -> bool:
 
 
 def apply_perf(speed: float, fast_mode: str) -> None:
-    """Make the game run the suite as fast as it can. Re-apply after every (re)start.
+    """Make the game run the suite at the maximum speed. Apply this again after each start.
 
-    Both settings live in the game process, so a restart silently reverts them and everything
-    after it crawls: TimeScale returns to 1x and FastMode to whatever the profile has on disk.
-    They are complementary. TimeScale shortens the game's waits; Instant makes Cmd.Wait and
-    CustomScaledWait return without waiting at all, which is the larger win.
+    The game process holds the two settings, so a restart returns them to their earlier values
+    and all the tests after it become slow. TimeScale returns to 1x, and FastMode returns to
+    the value in the profile on disk. The two settings work together. TimeScale makes the waits
+    of the game shorter. Instant makes Cmd.Wait and CustomScaledWait return with no wait at
+    all, which saves more time.
     """
     bridge_client.set_game_speed(speed)
     res = _r(bridge_client.send_request("set_fast_mode", {"mode": fast_mode}))
@@ -152,20 +153,20 @@ def apply_perf(speed: float, fast_mode: str) -> None:
 
 
 def ensure_game_ready(fresh: bool = False) -> bool:
-    """Reuse a healthy running game; start if absent; restart only if unhealthy."""
+    """Use an active healthy game; start one if none is active; restart one that is not healthy."""
     if fresh and game_running():
-        print("  --fresh: restarting the game")
+        print("  --fresh: restart the game")
         stop_game()
     if not game_running():
         if not start_game():
             return False
     if not bridge_ready():
-        print("  bridge unresponsive; restarting the game")
+        print("  the bridge does not answer; restart the game")
         stop_game()
         if not start_game():
             return False
     if not reset_to_menu():
-        print("  cannot reach the main menu; restarting the game")
+        print("  cannot reach the main menu; restart the game")
         stop_game()
         return start_game()
     return True
@@ -174,25 +175,26 @@ def ensure_game_ready(fresh: bool = False) -> bool:
 # ── in-game reset ────────────────────────────────────────────────────────────
 
 def reset_to_menu(timeout: float = 15.0) -> bool:
-    """Return the game to the main menu, ending any in-progress run.
+    """Return the game to the main menu and end a run that is in progress.
 
-    `die` ends a combat run (an out-of-combat run is abandoned via the pause menu),
-    then the game-over screen is dismissed by force-clicking its MainMenuButton,
-    the only dismiss path that works without window focus.
+    `die` ends a run that is in combat. To end a run that is out of combat, the pause menu
+    abandons it. Then a force click on the MainMenuButton closes the game-over screen. This
+    is the only method that works when the window does not have the focus.
     """
     state = _r(bridge_client.get_run_state())
     if state.get("in_progress"):
         screen = str(_r(bridge_client.get_screen()).get("screen", ""))
         if "COMBAT" not in screen:
-            # Drop into a combat so we can `die` out of it. The pause-menu abandon is the
-            # obvious alternative, but it's driven by real clicks and a leftover modal (a shop's
-            # potion popup, say) silently blocks it, wedging the reset into a ~40s game restart.
-            # `die` is console-driven and works regardless of what's on screen.
+            # Start a combat, so that `die` can end the run. The other method is the abandon
+            # option in the pause menu, but real clicks drive that option. A modal that is
+            # still open (for example, the potion popup of a shop) blocks those clicks and
+            # gives no message. The reset then needs a game restart of about 40 seconds.
+            # `die` comes from the console and works with any screen.
             bridge_client.execute_console_command("fight SLIMES_WEAK")
             bridge_client.wait_for_screen("COMBAT_PLAYER_TURN", timeout_seconds=10)
         bridge_client.execute_console_command("die")
-        # Just long enough for the game-over screen to exist; the loop below re-clicks if it
-        # wasn't ready yet, so this doesn't need to cover the whole animation.
+        # This is long enough for the game-over screen to exist. The loop below clicks again
+        # if the screen was not ready, so this wait does not need to cover the full animation.
         time.sleep(0.3)
         godot_explorer_client.call_method(MAIN_MENU_BUTTON, "ForceClick")
 
@@ -201,12 +203,13 @@ def reset_to_menu(timeout: float = 15.0) -> bool:
         screen = str(_r(bridge_client.get_screen()).get("screen", ""))
         if screen == "MAIN_MENU":
             return True
-        if "OVERLAY" in screen:  # game-over may still be animating in; retry
+        if "OVERLAY" in screen:  # the game-over screen can be still in its animation; try again
             godot_explorer_client.call_method(MAIN_MENU_BUTTON, "ForceClick")
         elif "MENU" in screen or screen == "TIMELINE":
-            # A submenu (settings, compendium) is open, so pop it. TIMELINE lands here because
-            # ending a run with epochs to show routes through it on the way back to the menu,
-            # and any test that reveals epochs (mod config's Unlock All) makes that the norm.
+            # A submenu (settings, compendium) is open, so close it. TIMELINE comes here
+            # because a run that ends with epochs to show goes through the Timeline before
+            # the menu. Any test that reveals epochs (Unlock All in the mod config) makes
+            # this the usual result.
             bridge_client.navigate_menu("back")
         time.sleep(0.15)
     return False
@@ -214,7 +217,7 @@ def reset_to_menu(timeout: float = 15.0) -> bool:
 
 # ── checks engine ────────────────────────────────────────────────────────────
 # Scenario form: {"setup": {start_run kwargs}?, "checks": [{do, expect, timeout}...]}
-# Each expect polls until every expectation holds or the timeout hits.
+# Each expect reads the state again and again until every expectation is true or the timeout ends.
 
 class CheckFailure(Exception):
     pass
@@ -230,26 +233,31 @@ def _combat_player() -> dict:
 
 
 def _hand_index(card_name: str, timeout: float = 5.0) -> int:
-    """Find a card in hand by class name (injected cards land at the end, but
-    indexes shift as cards are played, so name lookup is the only reliable handle)."""
+    """Find a card in the hand by its class name.
+
+    The console adds a card at the end of the hand, but the indexes change as the player
+    plays cards. Thus a search by name is the only reliable method.
+    """
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
         for c in _combat_player().get("hand") or []:
             if c.get("name") == card_name:
                 return int(c["index"])
-        # Console injection is fire-and-forget, so the first look almost always misses and every
-        # caller pays this interval. The state read itself costs a frame and paces the loop.
+        # The console adds the card asynchronously, so the first search almost always fails,
+        # and every caller waits this interval. The state read itself takes one frame and
+        # sets the speed of the loop.
         time.sleep(0.05)
-    raise CheckFailure(f"card {card_name!r} not in hand")
+    raise CheckFailure(f"card {card_name!r} is not in the hand")
 
 
 def _select_hand_card(name: str, timeout: float = 6.0) -> None:
-    """Pick a card by class name in an in-combat hand-selection prompt (Infuse and friends).
+    """Select a card by class name in a hand-selection prompt during combat (Infuse and others).
 
-    Always select by name. combat_select_card's index addresses NPlayerHand.ActiveHolders,
-    the visual fan, whose order does not track the logical hand from get_combat_state, so an
-    index taken from combat state can silently land on a different card. The prompt also takes
-    a moment to list a card that a previous prompt had selected, hence the retry.
+    Always select by name. The index of combat_select_card points into NPlayerHand.ActiveHolders,
+    the visual card fan. The order of that fan is not the order of the logical hand from
+    get_combat_state. Thus an index from the combat state can select a different card. The
+    prompt also needs a short time to list a card that an earlier prompt selected. This is
+    the reason for the retry.
     """
     deadline = time.monotonic() + timeout
     offered: list[str] = []
@@ -259,7 +267,7 @@ def _select_hand_card(name: str, timeout: float = 6.0) -> None:
         if res.get("card") == name:
             return
         time.sleep(0.2)
-    raise CheckFailure(f"{name!r} never became selectable in the prompt (offered: {offered})")
+    raise CheckFailure(f"{name!r} did not become selectable in the prompt (offered: {offered})")
 
 
 def _play_card_by_name(card_name: str, target: int | None = None) -> None:
@@ -287,13 +295,13 @@ def _do(action: dict, ctx: dict) -> None:
     elif "end_turn" in action:
         bridge_client.send_request("end_turn", {})
     elif "set_enemy_hp" in action:
-        # normalize an enemy to a fixed HP so damage asserts are roster-independent;
-        # console damage/heal use 1-based creature indexes (0 = player)
+        # set an enemy to a fixed HP, so the damage assertions do not depend on the enemy list;
+        # the console damage and heal commands use 1-based creature indexes (0 = the player)
         spec = action["set_enemy_hp"]
         enemies = _combat().get("enemies") or []
         enemy = next((e for e in enemies if e.get("index") == spec["enemy"]), None)
         if enemy is None:
-            return  # fewer enemies than the scenario normalizes, so tolerate it
+            return  # there are fewer enemies than the scenario expects, so accept this
         delta = int(enemy["hp"]) - int(spec["hp"])
         if delta > 0:
             bridge_client.execute_console_command(f"damage {delta} {spec['enemy'] + 1}")
@@ -301,16 +309,36 @@ def _do(action: dict, ctx: dict) -> None:
             bridge_client.execute_console_command(f"heal {-delta} {spec['enemy'] + 1}")
     elif "bridge" in action:
         bridge_client.send_request(action["bridge"], action.get("params") or {})
+    elif "reveal_timeline" in action:
+        # Reveal epochs through the real Timeline UI, not by a direct save write. This is the only
+        # path that runs an epoch's QueueUnlocks and reaches AddEpochSlots, so it is the only way a
+        # test can see a duplicate tile. The Timeline screen must already be open.
+        # Shape: {"reveal_timeline": {}} for every pending epoch, or {"id": ..., "timeout": s}.
+        spec = action["reveal_timeline"] or {}
+        try:
+            outcome = bridge_client.run_timeline_reveal(
+                spec.get("id"), timeout=float(spec.get("timeout", 30))
+            )
+        except (RuntimeError, TimeoutError) as e:
+            raise CheckFailure(f"reveal_timeline: {e}") from e
+        last = outcome.get("last") or {}
+        if last.get("manual_action_required"):
+            raise CheckFailure(
+                "reveal_timeline: epochs have no timeline tile and cannot be revealed through the "
+                f"UI: {last.get('pending_epoch_ids')}"
+            )
+        ctx["revealed_epochs"] = outcome.get("revealed") or []
     elif "click" in action:
         godot_explorer_client.call_method(action["click"], "ForceClick")
-    elif "click_method" in action:  # "node/path|MethodName", call an arbitrary node method
+    elif "click_method" in action:  # "node/path|MethodName", call any method of a node
         path, method = action["click_method"].rsplit("|", 1)
         godot_explorer_client.call_method(path, method)
     elif "find_click" in action:
-        # Locate a node whose runtime path can't be hardcoded (Godot @-generated names
-        # differ per session): find by name pattern, filter by a path substring, then
-        # optionally descend to the first child of a given class (generated config
-        # buttons wrap the clickable in an anonymous child Control).
+        # Find a node when you cannot write its run-time path in the code, because the
+        # Godot @-generated names are different in each session. Search by name pattern,
+        # then filter by a path substring. Then, if necessary, go down to the first child
+        # of a given class. A config button that the code generates holds the clickable
+        # node in an anonymous child Control.
         spec = action["find_click"]
         nodes = godot_explorer_client.find_nodes(spec["pattern"])
         path = next(
@@ -336,7 +364,7 @@ def _do(action: dict, ctx: dict) -> None:
     elif "discard_potion" in action:
         bridge_client.discard_potion(int(action["discard_potion"]))
     elif "advance_ancient" in action:
-        # complete an open ancient event onto the map: click its "Proceed" option
+        # finish an open ancient event and return to the map: click its "Proceed" option
         acts = _r(bridge_client.get_available_actions()).get("actions", [])
         idx = next((a["choice_index"] for a in acts
                     if a.get("action") == "event_option"
@@ -346,15 +374,15 @@ def _do(action: dict, ctx: dict) -> None:
     elif "walk_dialogue" in action:
         _walk_ancient_dialogue(ctx)
     elif "click_label" in action:
-        # ForceClick a button under `root` whose child Label reads `label`, for
-        # option rows the bridge doesn't surface (rest-site Brew, etc.)
+        # ForceClick a button under `root` when its child Label shows `label`. Use this
+        # for the option rows that the bridge does not report (Brew at a rest site, and others)
         spec = action["click_label"]
         path = _find_by_label(spec["root"], spec["label"])
         if path is None:
             raise CheckFailure(f"click_label: no '{spec['label']}' under {spec['root']}")
         godot_explorer_client.call_method(path, "ForceClick")
     elif "remove_deck_card" in action:
-        # deck card-removal screen (Brew): select a card, then click its preview-confirm
+        # the screen that removes a card from the deck (Brew): select a card, then click its preview-confirm
         bridge_client.execute_action("card_select", card_index=int(action["remove_deck_card"]))
         time.sleep(1.0)
         godot_explorer_client.call_method(
@@ -363,7 +391,7 @@ def _do(action: dict, ctx: dict) -> None:
     elif "reward_select" in action:
         bridge_client.execute_action("reward_select", reward_index=int(action["reward_select"]))
     elif "select_hand_cards" in action:
-        # Drive a HAND_SELECT prompt (Infuse and friends): pick cards by class name, confirm.
+        # Control a HAND_SELECT prompt (Infuse and others): select the cards by class name, then confirm.
         names = action["select_hand_cards"]
         if isinstance(names, str):
             names = [names]
@@ -385,13 +413,14 @@ def _do(action: dict, ctx: dict) -> None:
 
 
 def _walk_ancient_dialogue(ctx: dict) -> None:
-    """Advance an open ancient event through EVERY line of its dialogue the way a player
-    does (clicking the invisible 'next' hitbox) and verify each line renders on screen
-    (no raw keys/errors) and that clicking actually walks the sequence to the last line.
+    """Move an open ancient event through EVERY line of its dialogue in the same way as a
+    player: click the invisible 'next' hitbox. Check that each line renders on screen with
+    no raw keys and no errors. Check also that the clicks move the sequence to the last line.
 
-    Without this a scenario only ever sees the first line before the run is abandoned, so
-    lines 2..N are never exercised on screen. Standard AncientEventLayout events only (the
-    Architect's finale uses a combat layout and is covered by the dialogue registry checks)."""
+    Without this function, a scenario sees only the first line before it abandons the run,
+    and lines 2 to N never appear on screen. This function supports standard
+    AncientEventLayout events only. The final event of the Architect uses a combat layout,
+    and the dialogue registry checks cover it."""
     layout = DIALOGUE_LABEL.split("/ContentContainer")[0]
     container = DIALOGUE_LABEL.split("/AncientDialogueLine")[0]
 
@@ -403,9 +432,10 @@ def _walk_ancient_dialogue(ctx: dict) -> None:
         tree = godot_explorer_client.get_scene_tree(root_path=container, depth=1)
         return [c["path"] for c in (tree.get("children") or [])] if isinstance(tree, dict) else []
 
-    # Dialogue line nodes are add_child'd deferred (materialize over later frames) and the
-    # 'next' hitbox is only enabled once setup completes, so wait for the line count to settle
-    # so we don't walk a half-built conversation.
+    # The code adds the dialogue line nodes with a deferred add_child, so they appear over
+    # later frames. The 'next' hitbox becomes enabled only after the setup completes. Wait
+    # until the line count is stable, so that the conversation is complete before you move
+    # through it.
     lines, deadline = _lines(), time.monotonic() + 5
     while time.monotonic() < deadline:
         time.sleep(0.3)
@@ -427,12 +457,13 @@ def _walk_ancient_dialogue(ctx: dict) -> None:
         if not txt or "LocString table" in txt or txt.lower().startswith("error"):
             fails.append(f"line {i} renders (got {txt[:40]!r})")
         if _prop(layout, "_currentDialogueLine") != str(i):
-            fails.append(f"line {i}: sequence sits on it (at {_prop(layout, '_currentDialogueLine')!r})")
+            fails.append(f"line {i}: the sequence is on this line (at {_prop(layout, '_currentDialogueLine')!r})")
         if i < n - 1:
             if hitbox is None:
                 raise CheckFailure("walk_dialogue: 'next' hitbox not found")
-            # click 'next' and wait for the sequence to advance; only re-click while still on
-            # line i (never past line i+1) so a slow click can't be double-counted.
+            # click 'next' and wait for the sequence to move forward. Click again only while
+            # the sequence is on line i, and never after line i+1. Thus a slow click cannot
+            # count two times.
             adv = time.monotonic() + 3
             while time.monotonic() < adv:
                 cur = _prop(layout, "_currentDialogueLine")
@@ -442,10 +473,10 @@ def _walk_ancient_dialogue(ctx: dict) -> None:
                     godot_explorer_client.call_method(hitbox, "ForceClick")
                 time.sleep(0.2)
             if _prop(layout, "_currentDialogueLine") != str(i + 1):
-                fails.append(f"clicking 'next' from line {i} advanced the dialogue")
+                fails.append(f"a click on 'next' from line {i} moved the dialogue forward")
                 break
     if "true" not in _prop(layout, "IsDialogueOnLastLine").lower():
-        fails.append("dialogue reached its last line (options never enabled)")
+        fails.append("the dialogue reached its last line (the options did not become enabled)")
     ctx["dialogue_lines_walked"] = n
     if fails:
         raise CheckFailure(f"walk_dialogue ({n} lines): " + "; ".join(fails))
@@ -456,14 +487,18 @@ _POTION_HOLDERS = ("/root/Game/RootSceneContainer/Run/GlobalUi/TopBar/LeftAligne
 
 
 def _use_potion_ui(slot: int = 0) -> None:
-    """Drink/throw the potion in belt `slot` via its popup. The bridge's use_potion
-    reports success but no-ops (doesn't consume or apply the potion)."""
+    """Drink or throw the potion in belt `slot` with its popup.
+
+    The use_potion function of the bridge reports success, but it does nothing: it does not
+    remove the potion and it does not apply the potion.
+    """
     tree = godot_explorer_client.get_scene_tree(root_path=_POTION_HOLDERS, depth=1)
     holders = [c["path"] for c in tree.get("children", [])] if isinstance(tree, dict) else []
     holder = holders[slot] if slot < len(holders) else holders[0]
     godot_explorer_client.call_method(holder, "OpenPotionPopup")
-    # Wait for the popup's button to exist rather than guessing at its animation: ForceClick on
-    # a node that isn't there yet silently does nothing and the potion never gets used.
+    # Wait until the button of the popup exists. Do not estimate the time of its animation.
+    # A ForceClick on a node that does not exist yet does nothing, gives no message, and the
+    # game never uses the potion.
     use_button = f"{holder}/PotionPopup/Container/UseButton"
     deadline = time.monotonic() + 5.0
     while time.monotonic() < deadline:
@@ -476,7 +511,7 @@ def _use_potion_ui(slot: int = 0) -> None:
 
 
 def _find_by_label(root: str, label: str) -> str | None:
-    """Path of the direct child of `root` whose own child Label reads `label`."""
+    """The path of the direct child of `root` when its own child Label shows `label`."""
     tree = godot_explorer_client.get_scene_tree(root_path=root, depth=1)
     for child in tree.get("children", []) if isinstance(tree, dict) else []:
         txt = godot_explorer_client.get_property(child["path"] + "/Label", "text")
@@ -514,7 +549,7 @@ def _pool_member_names(pool_name: str) -> tuple[list[str], str] | None:
 
 
 def _csv_expected_names(exclude_rarities: list[str], exclude_names: list[str]) -> list[str]:
-    """Expected card class names derived from cards.csv (the design sheet)."""
+    """The card class names that come from cards.csv (the design sheet)."""
     import csv as _csv
     special = {"Strike": "StrikeAlchemist", "Defend": "DefendAlchemist"}
     names = []
@@ -532,7 +567,7 @@ def _csv_expected_names(exclude_rarities: list[str], exclude_names: list[str]) -
 
 
 def _eval_expect(expect: dict, ctx: dict) -> list[str]:
-    """Return a list of failure strings (empty = all expectations hold)."""
+    """Return a list of failure strings (an empty list means every expectation is true)."""
     fails = []
     for key, want in expect.items():
         if key == "screen":
@@ -573,7 +608,7 @@ def _eval_expect(expect: dict, ctx: dict) -> list[str]:
             got = _player().get("deck_count")
             if got != want:
                 fails.append(f"deck_count == {want} (actual: {got})")
-        elif key == "hp_gain_gte":  # hp risen by >= want since a `snapshot: "hp"`
+        elif key == "hp_gain_gte":  # the hp increased by >= want since a `snapshot: "hp"`
             base = ctx.get("hp")
             got = _player().get("hp")
             if base is None or got is None or got - base < want:
@@ -612,7 +647,7 @@ def _eval_expect(expect: dict, ctx: dict) -> list[str]:
             names = [c.get("name") for c in _combat_player().get("hand") or []]
             if want not in names:
                 fails.append(f"hand contains {want!r} (hand: {names})")
-        elif key == "powers":  # list of {name, amount}, for asserting several at once
+        elif key == "powers":  # a list of {name, amount}, to assert more than one power at once
             have = {p.get("name"): p.get("amount") for p in _combat_player().get("powers") or []}
             for spec in want:
                 if have.get(spec["name"]) != spec["amount"]:
@@ -624,18 +659,21 @@ def _eval_expect(expect: dict, ctx: dict) -> list[str]:
             if got != want["hp"]:
                 fails.append(f"enemy {want['enemy']} hp == {want['hp']} (actual: {got})")
         elif key == "any_enemy_hp":
-            # index-independent: AoE that kills small enemies compacts the array, so the
-            # surviving normalized enemy moves index. Assert on the HP value instead.
+            # no index: an AoE card that kills the small enemies makes the array shorter,
+            # so the enemy that survives gets a different index. Assert on the HP value.
             hps = [e.get("hp") for e in _combat().get("enemies") or [] if e.get("is_alive")]
             if want not in hps:
                 fails.append(f"some alive enemy has hp == {want} (alive hps: {hps})")
         elif key == "dialogue_loc_complete":
-            # General, source-derived: for every ancient the mod writes Alchemist dialogue
-            # for (grouped from ancients.json), the live registered dialogue must render all
-            # lines (no raw keys/errors) and match the loc file on both the number of
-            # conversations (visit-gated dialogues) and the total spoken-line count. Together
-            # these prove every ancient's full set of visit conversations is registered and
-            # renders. Auto-adapts when dialogue is added/removed, with no per-ancient expectations.
+            # This check is general and it comes from the source. The mod writes Alchemist
+            # dialogue for a set of ancients (the groups come from ancients.json). For each of
+            # those ancients, the registered dialogue in the game must render every line with
+            # no raw keys and no errors. It must also agree with the loc file on two numbers:
+            # the count of conversations (each one needs a number of visits) and the total
+            # count of spoken lines. Together these two numbers prove that the game registers
+            # and renders the full set of visit conversations of each ancient. The check
+            # adapts when you add dialogue or remove dialogue, and it needs no expectation
+            # for each ancient.
             import re as _re
             import collections as _co
             loc = json.loads((REPO_DIR / "Alchemist/localization/eng/ancients.json").read_text())
@@ -654,7 +692,7 @@ def _eval_expect(expect: dict, ctx: dict) -> list[str]:
                 if a is None:
                     fails.append(f"{prefix}: no registered dialogue for the Alchemist")
                 elif a.get("bad_lines"):
-                    fails.append(f"{prefix}: unrendered lines {a['bad_lines'][:2]}")
+                    fails.append(f"{prefix}: lines that do not render {a['bad_lines'][:2]}")
                 elif a.get("dialogue_count") != n_convs:
                     fails.append(f"{prefix}: {a.get('dialogue_count')} registered conversations vs {n_convs} in loc")
                 elif a.get("line_count") != n_lines:
@@ -702,7 +740,7 @@ def _eval_expect(expect: dict, ctx: dict) -> list[str]:
                         v = pw.get(f, "")
                         if "LocString table" in v or "!!ERROR" in v or not v.strip():
                             problems.append(f"power {pw['name']}.{f}: {v[:50]!r}")
-            # de-dupe (cards appear in multiple pools)
+            # remove the duplicates (a card can be in more than one pool)
             problems = sorted(set(problems))
             if problems:
                 fails.append(f"{len(problems)} loc render problem(s): " + "; ".join(problems[:5]))
@@ -717,9 +755,10 @@ def _eval_expect(expect: dict, ctx: dict) -> list[str]:
             log = _r(bridge_client.get_game_log(contains=want, max_count=50))
             hits = [e for e in log.get("entries") or [] if e.get("id", 0) > since]
             if not hits:
-                fails.append(f"game log contains {want!r} (no new matching entries)")
+                fails.append(f"game log contains {want!r} (no new entries that match)")
         elif key == "epoch_state":
-            # Assert timeline epoch + gated-content state (via the bridge's get_epoch_state).
+            # Assert the state of a Timeline epoch and of the content that it gates (with
+            # the get_epoch_state function of the bridge).
             # Shape: {prefix, epochs/cards/relics/potions: {model_id: {field: expected, …}}}.
             # Epoch fields: state/visible/revealed. Content fields: unlocked/discovered.
             st = _r(bridge_client.get_epoch_state(want.get("prefix", "")))
@@ -761,7 +800,7 @@ def _eval_expect(expect: dict, ctx: dict) -> list[str]:
                     want.get("exclude_rarities") or [], want.get("exclude_names") or [])
                 missing = sorted(set(expected) - set(found[0]))
                 if missing:
-                    fails.append(f"pool {want['pool']} missing csv cards: {missing}")
+                    fails.append(f"pool {want['pool']} does not have these csv cards: {missing}")
         else:
             fails.append(f"unknown expect key: {key}")
     return fails
@@ -775,8 +814,8 @@ def run_checks_scenario(scenario: dict, skip_setup: bool = False) -> dict:
     ctx["exceptions_since"] = max((e.get("id", 0) for e in exc), default=0)
     ctx["log_since"] = _r(bridge_client.get_game_log(max_count=1)).get("latest_id", 0)
 
-    # skip_setup: a batched scenario, whose shared run (and, for combat batches, a fresh
-    # SLIMES_WEAK fight) the caller already established, so don't start a new run.
+    # skip_setup: this scenario is part of a batch. The caller already made the shared run
+    # and, for a combat batch, a new SLIMES_WEAK fight. Thus do not start a new run.
     setup = scenario.get("setup") or {}
     if setup and not skip_setup:
         bridge_client.start_run(**setup)
@@ -801,7 +840,7 @@ def run_checks_scenario(scenario: dict, skip_setup: bool = False) -> dict:
                     note = f" ({check['note']})" if check.get("note") else ""
                     result["failures"] += [f"check {i}{note}: {f}" for f in fails]
                     break
-        except Exception as e:  # bridge/explorer error mid-check
+        except Exception as e:  # an error from the bridge or the explorer during a check
             result["passed"] = False
             result["failures"].append(f"check {i}: error {e}")
             break
@@ -809,8 +848,8 @@ def run_checks_scenario(scenario: dict, skip_setup: bool = False) -> dict:
 
 
 # ── sweeps ───────────────────────────────────────────────────────────────────
-# Whole-mod smoke passes: exercise every entity, report every failure (not just
-# the first), and check for new exceptions after each step.
+# Quick passes over the full mod: use every entity, report every failure (not only the
+# first failure), and look for new exceptions after each step.
 
 def _model_entry(model_id: str, name: str) -> str:
     """Console id (ALCHEMIST-SNAKE) from a compendium id string."""
@@ -822,11 +861,12 @@ def _model_entry(model_id: str, name: str) -> str:
 
 
 def _new_exceptions(ctx: dict) -> tuple[list[str], list[str]]:
-    """Return (mod_failures, other) exception messages since the last call.
+    """Return the (mod_failures, other) exception messages since the last call.
 
-    mod_failures = exceptions whose (bridge-unwrapped) type/stack references the
-    Alchemist namespace, i.e. a real card/mod bug. other = base-game/bridge/harness noise
-    (e.g. reset-nav artifacts), reported but not blamed on a card.
+    mod_failures holds the exceptions with a type or a stack that names the Alchemist
+    namespace. That is, each one is a real fault in a card or in the mod. other holds the
+    messages from the base game, the bridge, or the test harness (for example, the results
+    of the reset navigation). The function reports these, but a card is not their cause.
     """
     exc = _r(bridge_client.get_exceptions(since_id=ctx.get("exceptions_since", 0))).get("exceptions") or []
     if exc:
@@ -850,7 +890,7 @@ def _potion_count() -> int:
 
 
 def _sweep_new_run(ctx: dict) -> None:
-    """Fresh run from the menu, used at sweep start and to recover after a death."""
+    """A new run from the menu. The sweep uses this at its start and after a death."""
     reset_to_menu()
     bridge_client.start_run(character="Alchemist", seed="SWEEP1", fight="SLIMES_WEAK")
     bridge_client.wait_for_screen("COMBAT_PLAYER_TURN", timeout_seconds=30)
@@ -858,39 +898,44 @@ def _sweep_new_run(ctx: dict) -> None:
 
 
 def _fresh_fight(ctx: dict) -> None:
-    """A clean combat for the next card: new fight (empties hand/exhaust, revives
-    enemies), then top HP back up only if a prior card actually spent it. NOT godmode,
-    godmode pumps Regen to ~1e9, which makes Hemorrhage ('lose HP equal to your Regen')
-    drain a billion HP and every Regen-scaling card deal absurd damage. With normal
-    Regen those cards are harmless no-ops, which is what the sweep wants (it tests that
-    they don't *throw*, not that they do damage)."""
+    """A clean combat for the next card.
+
+    A new fight empties the hand and the exhaust pile, and it returns the enemies to life.
+    The function then heals the player, but only if an earlier card used HP. It does not use
+    godmode. godmode raises Regen to about 1e9. Hemorrhage ('lose HP equal to your Regen')
+    would then remove a billion HP, and every card that scales with Regen would do a very
+    large amount of damage. With a normal Regen value those cards have no effect, and that
+    is the correct result for the sweep. The sweep tests that a card does not *throw*, not
+    that a card does damage."""
     if not _r(bridge_client.get_run_state()).get("in_progress"):
         _sweep_new_run(ctx)
         return
     bridge_client.execute_console_command("fight SLIMES_WEAK")
     bridge_client.wait_for_screen("COMBAT_PLAYER_TURN", timeout_seconds=20)
     hp, mx = _player_hp()
-    if hp is not None and mx and hp < mx:  # heal only when below max, so it's a no-op normally
+    if hp is not None and mx and hp < mx:  # heal only below the maximum, so this usually does nothing
         bridge_client.execute_console_command("heal 9999")
-    _new_exceptions(ctx)  # a fight transition can emit noise; don't blame the next card
+    _new_exceptions(ctx)  # a change of fight can make extra exceptions; the next card is not their cause
 
 
 def _resolve_overlays(max_steps: int = 10) -> None:
-    """Clear whatever selection/reward overlay a played card opened.
+    """Close the selection overlay or the reward overlay that a card opened.
 
-    Cards open several kinds of blocking UI: a mandatory in-hand pick (Exhaust/Infuse
-    → HAND_SELECT, must select+confirm, no skip), a draw-pile pick (Winnow/Dissolve
-    → CARD_SELECTION, select+confirm or skip), or a reward/proceed screen. Handle each
-    by its screen; fall back to skip/proceed.
+    A card can open several types of UI that block the game. The first type is a necessary
+    selection in the hand (Exhaust and Infuse → HAND_SELECT; you must select and confirm,
+    and you cannot skip). The second type is a selection in the draw pile (Winnow and
+    Dissolve → CARD_SELECTION; you select and confirm, or you skip). The third type is a
+    reward screen or a proceed screen. Handle each type by its screen. For a different
+    screen, use skip or proceed.
     """
     for _ in range(max_steps):
         screen = str(_r(bridge_client.get_screen()).get("screen", ""))
         if screen == "COMBAT_PLAYER_TURN":
             return
-        # Fire exactly the action the current screen wants, since firing speculative
-        # select/skip actions into a not-ready screen throws IndexOutOfRange inside the
-        # game's async handlers (surfaces later as an unobserved-task exception that
-        # would falsely fail a card).
+        # Send only the action that the current screen needs. If you send a select action
+        # or a skip action to a screen that is not ready, the async handlers of the game
+        # throw IndexOutOfRange. That exception appears later as an unobserved task, and it
+        # makes a correct card fail.
         try:
             if screen == "HAND_SELECT":
                 bridge_client.execute_action("combat_select_card", card_index=0)
@@ -923,32 +968,33 @@ def run_sweep(kind: str, scenario: dict) -> dict:
         for card in cards:
             entry = _model_entry(card["id"], card["name"])
             try:
-                # Start each card from a clean fight: a fresh combat clears any lingering
-                # overlay, empties the hand/exhaust pile (Retain + token-generators would
-                # otherwise fill it), and revives enemies AoE cards may have killed.
+                # Start each card with a clean fight. A new combat closes an overlay that
+                # is still open, empties the hand and the exhaust pile (Retain and the cards
+                # that make tokens fill them), and returns to life the enemies that an AoE
+                # card killed.
                 _resolve_overlays()
                 _fresh_fight(ctx)
                 bridge_client.execute_console_command(f"card {entry}")
                 try:
                     idx = _hand_index(card["name"], timeout=3)
-                except CheckFailure:  # transient injection miss, so retry once
+                except CheckFailure:  # the console did not add the card, so try one more time
                     bridge_client.execute_console_command(f"card {entry}")
                     idx = _hand_index(card["name"], timeout=4)
                 cardstate = next(c for c in _combat_player().get("hand") or [] if c.get("index") == idx)
                 if not cardstate.get("can_play", True):
                     skipped += 1
-                    continue  # needs a condition we didn't set up, not a crash
+                    continue  # the card needs a condition that we did not prepare, not a crash
                 hp_before, _ = _player_hp()
                 _play_card_by_name(card["name"])
                 _resolve_overlays()
                 played += 1
                 hp_after, _ = _player_hp()
                 if hp_after is not None and hp_after <= 0:
-                    # a card killing you from full HP is a real bug, not accumulation;
-                    # _fresh_fight tops HP up before every card
+                    # a card that kills the player from full HP is a real fault, not the
+                    # result of many cards; _fresh_fight heals the player before each card
                     result["failures"].append(
                         f"{card['name']}: killed the player (HP {hp_before} -> {hp_after})")
-                    _sweep_new_run(ctx)  # recover the dead run for the next card
+                    _sweep_new_run(ctx)  # make a new run for the next card, because the player died
                     continue
                 mod, other = _new_exceptions(ctx)
                 other_exc += other
@@ -958,23 +1004,23 @@ def run_sweep(kind: str, scenario: dict) -> dict:
                 result["failures"].append(f"{card['name']}: {e}")
         result.setdefault("stats", {})["cards_played"] = played
         result["stats"]["cards_skipped"] = skipped
-        print(f"    swept: {played} played, {skipped} unplayable-skipped, "
-              f"{len(result['failures'])} card-failures, {len(other_exc)} non-mod exceptions")
+        print(f"    swept: {played} played, {skipped} skipped as unplayable, "
+              f"{len(result['failures'])} card failures, {len(other_exc)} non-mod exceptions")
 
     elif kind == "relics":
         pool = next(p for p in comp.get("relic_pools") or [] if p.get("pool") == "AlchemistRelicPool")
         relics = [(r["name"], _model_entry(r["id"], r["name"])) for r in pool.get("relics") or []]
 
         def _nigredo_turn() -> list[str]:
-            """One combat beat with whatever relics are held; returns new mod exceptions."""
-            _fresh_fight(ctx)  # combat-start hooks fire with the relics held right now
+            """One combat turn with the relics that the player holds now. It returns the new mod exceptions."""
+            _fresh_fight(ctx)  # the combat-start hooks run with the relics that the player holds now
             bridge_client.execute_console_command("card ALCHEMIST-NIGREDO")
             _play_card_by_name("Nigredo")
             bridge_client.send_request("end_turn", {})
             bridge_client.wait_for_screen("COMBAT_PLAYER_TURN", timeout_seconds=20)
             return _new_exceptions(ctx)[0]
 
-        # Isolated pass first: one relic at a time, so a throw names the relic that caused it
+        # The first pass is separate: one relic at a time, so a throw names the relic that caused it
         for name, entry in relics:
             bridge_client.execute_console_command(f"relic add {entry}")
             time.sleep(0.3)
@@ -988,8 +1034,8 @@ def run_sweep(kind: str, scenario: dict) -> dict:
                 bridge_client.execute_console_command(f"relic remove {entry}")
                 time.sleep(0.3)
 
-        # Then all together, which is the only pass that can surface relic interactions.
-        # A failure here can't name one relic, so say so rather than blaming an arbitrary id.
+        # Then use all of them together. This is the only pass that can show an interaction
+        # between relics. A failure here cannot name one relic, so the message says this.
         for _, entry in relics:
             bridge_client.execute_console_command(f"relic add {entry}")
             time.sleep(0.3)
@@ -997,13 +1043,13 @@ def run_sweep(kind: str, scenario: dict) -> dict:
             mod = _nigredo_turn()
             if mod:
                 result["failures"].append(
-                    f"all {len(relics)} relics together (passed individually, so suspect an "
-                    f"interaction): {mod[0]}")
+                    f"all {len(relics)} relics together (each one passed alone, so an "
+                    f"interaction is the probable cause): {mod[0]}")
         except Exception as e:
             result["failures"].append(f"all {len(relics)} relics together: {e}")
 
         result.setdefault("stats", {})["relics_swept"] = len(relics)
-        print(f"    swept: {len(relics)} relics individually + 1 combined pass, "
+        print(f"    swept: {len(relics)} relics one at a time and 1 combined pass, "
               f"{len(result['failures'])} failure(s)")
 
     elif kind == "potions":
@@ -1011,20 +1057,21 @@ def run_sweep(kind: str, scenario: dict) -> dict:
         potions = pool.get("potions") or []
         try:
             _fresh_fight(ctx)
-            # add them ALL to the belt first, then use each (the bridge's use_potion is a
-            # no-op, so drive the belt popup's Use button, which actually applies them)
+            # first add ALL of them to the belt, then use each one. The use_potion function
+            # of the bridge does nothing, so use the Use button of the belt popup. That
+            # button applies the potion.
             for potion in potions:
                 bridge_client.execute_console_command(f"potion {_model_entry(potion['id'], potion['name'])}")
                 time.sleep(0.4)
             added = _potion_count()
             if added != len(potions):
-                result["failures"].append(f"potions: added {added}/{len(potions)} to belt")
+                result["failures"].append(f"potions: added {added}/{len(potions)} to the belt")
             for slot, potion in enumerate(potions):
                 before = _potion_count()
-                _use_potion_ui(slot)  # belt slots don't compact, each potion keeps its slot
+                _use_potion_ui(slot)  # the belt slots do not move; each potion keeps its slot
                 _resolve_overlays()
                 if _potion_count() >= before:
-                    result["failures"].append(f"{potion['name']}: not consumed on use")
+                    result["failures"].append(f"{potion['name']}: the game did not remove it on use")
                 mod, _ = _new_exceptions(ctx)
                 if mod:
                     result["failures"].append(f"{potion['name']}: {mod[0]}")
@@ -1058,30 +1105,33 @@ def describe_failures(result: dict) -> list[str]:
 # ── discovery / main ─────────────────────────────────────────────────────────
 
 def _batch_mode(scenario: dict) -> str | None:
-    """How (if at all) a scenario can share a run with its neighbours.
+    """Show if a scenario can share a run with the scenarios near it, and how.
 
-    A menu round-trip costs ~3.2s (death, then the main-menu scene load) and starting a run
-    another ~3.2s, which dwarfs most scenarios. Sharing a run skips both.
+    A return to the menu costs about 3.2 seconds (the death, then the load of the main-menu
+    scene). The start of a run costs about 3.2 seconds more. That is longer than most
+    scenarios. A shared run removes both costs.
 
-      "combat" - inferred: wants a plain SLIMES_WEAK fight, which a fresh `fight` resets
-                 between scenarios, so nothing carries over
-      "run"    - opt in with `"batch": "run"`: the scenario reaches its own room by console
-                 and neither cares what the run looks like nor leaves anything behind
-      None     - reset to the menu and run the scenario's own setup
+      "combat" - the runner infers this: the scenario wants a plain SLIMES_WEAK fight. A new
+                 `fight` resets that fight between scenarios, so nothing remains
+      "run"    - you must ask for this with `"batch": "run"`: the scenario reaches its own
+                 room with the console. It does not depend on the state of the run, and it
+                 leaves nothing behind
+      None     - return to the menu and run the setup of the scenario
 
-    "run" is opt-in on purpose. Sharing a run means sharing everything the last scenario did to
-    it, and a scenario that quietly depends on a clean run then fails (or worse, passes) for
-    reasons that have nothing to do with it: the shop tests batched this way read each other's
-    potions. Only claim it for scenarios that are genuinely self-contained.
+    "run" is not automatic, and that is deliberate. A shared run also shares every change that
+    the last scenario made to it. A scenario that depends on a clean run then fails for a
+    reason that has nothing to do with the scenario. It can even pass for such a reason, which
+    is worse. For example, the shop tests in one batch read the potions of each other. Use
+    "run" only for a scenario that is fully independent.
 
-    Batching also ignores the declared seed, since neighbours share one run, so anything
-    seed-sensitive must stay unbatched.
+    A batch also ignores the seed in the scenario, because the scenarios near it share one
+    run. Thus a scenario that depends on a seed must not use a batch.
     """
     if "checks" not in scenario or scenario.get("batch") is False:
         return None
     setup = scenario.get("setup") or {}
     if not setup or set(setup) - {"character", "seed", "fight", "ascension"}:
-        return None  # no run wanted at all, or a setup we don't understand
+        return None  # the scenario wants no run, or the setup is one that we do not know
     if scenario.get("batch") == "run" and "fight" not in setup:
         return "run"
     if setup.get("fight") == "SLIMES_WEAK":
@@ -1089,15 +1139,15 @@ def _batch_mode(scenario: dict) -> str | None:
     return None
 
 
-# Which test groups can a change to a given path plausibly break? Prefixes are matched
-# longest-first, so a specific file can narrow what its directory says.
+# Which test groups can a change to a given path break? The code matches the longest prefix
+# first, so an entry for one file can make the entry for its directory more exact.
 #
-# This is a convenience for the inner loop, not a safety net: anything not matched here runs
-# the WHOLE suite, and `scripts/dev.sh release` always runs the whole suite regardless. When
-# in doubt widen the mapping, since the cost of being wrong is a missed regression and the
-# cost of being broad is a few seconds.
+# This map makes the inner loop faster; it is not a full protection. A path with no match here
+# runs the WHOLE suite, and `scripts/dev.sh release` always runs the whole suite. If you are
+# not sure, make the map wider. A map that is too narrow lets a regression through. A map that
+# is too wide costs only a few seconds.
 _CHANGE_MAP: list[tuple[str, set[str]]] = [
-    # Content: each kind, plus the pools/rendering the compendium group asserts.
+    # Content: each type, and the pools and rendering that the compendium group asserts.
     ("AlchemistCode/Cards/", {"cards", "sweeps", "compendium"}),
     ("AlchemistCode/Powers/", {"cards", "sweeps", "compendium"}),
     ("AlchemistCode/Enchantments/", {"cards", "sweeps", "compendium"}),
@@ -1106,7 +1156,7 @@ _CHANGE_MAP: list[tuple[str, set[str]]] = [
     ("AlchemistCode/Potions/", {"sweeps", "rest", "shop", "compendium"}),
     ("AlchemistCode/Epochs/", {"settings"}),
     ("AlchemistCode/Config/", {"settings"}),
-    # Patches: narrow, since each hooks one subsystem.
+    # Patches: these are narrow, because each patch hooks one subsystem.
     ("AlchemistCode/Patches/AncientDialoguePatches.cs", {"ancients"}),
     ("AlchemistCode/Patches/PotionSellPatches.cs", {"shop"}),
     ("AlchemistCode/Patches/RestSitePatches.cs", {"rest"}),
@@ -1117,11 +1167,11 @@ _CHANGE_MAP: list[tuple[str, set[str]]] = [
     ("AlchemistCode/Patches/KeywordTipPatches.cs", {"cards", "compendium"}),
     ("AlchemistCode/Patches/InfusionPatches.cs", {"cards", "sweeps"}),
     ("AlchemistCode/Patches/PoisonPatches.cs", {"cards", "sweeps"}),
-    # Localization: loc_render (compendium) reads every file; ancients own theirs.
+    # Localization: loc_render (compendium) reads every file; the ancients group has its own file.
     ("Alchemist/localization/eng/ancients.json", {"ancients", "compendium"}),
     ("Alchemist/localization/", {"compendium"}),
     ("cards.csv", {"cards", "compendium"}),
-    # Nothing here has a behavioural test: art, docs, and the release plumbing.
+    # These paths have no behaviour test: art, docs, and the release support files.
     ("Alchemist/images/", set()),
     ("images/", set()),
     ("docs/", set()),
@@ -1138,7 +1188,7 @@ _CHANGE_MAP: list[tuple[str, set[str]]] = [
 
 
 def changed_files(ref: str | None) -> list[str]:
-    """Repo-relative paths that differ from *ref* (default: uncommitted work vs HEAD)."""
+    """The repo-relative paths that differ from *ref* (default: uncommitted work against HEAD)."""
     cmds = ([["git", "diff", "--name-only", ref]] if ref
             else [["git", "diff", "--name-only", "HEAD"], ["git", "ls-files", "--others", "--exclude-standard"]])
     out: list[str] = []
@@ -1151,25 +1201,26 @@ def changed_files(ref: str | None) -> list[str]:
 
 
 def groups_for_changes(paths: list[str]) -> tuple[set[str] | None, list[str]]:
-    """Map changed paths to test groups.
+    """Map the paths that changed to the test groups.
 
-    Returns (groups, reasons); groups is None when something unrecognized changed and the
-    whole suite should run. An empty set means nothing testable changed.
+    It returns (groups, reasons). groups is None when a path that the map does not know
+    changed, and thus the whole suite must run. An empty set means that no path with a
+    test changed.
     """
     groups: set[str] = set()
     reasons: list[str] = []
     for path in paths:
-        # A changed scenario only implicates its own group.
+        # A scenario that changed affects only its own group.
         if path.startswith("scripts/tests/") and path.endswith(".json"):
             grp = Path(path).parent.name
             groups.add(grp)
             reasons.append(f"{path} -> {grp}")
             continue
-        # The harness itself, the character, or anything unmapped: run everything.
+        # The test harness, the character, or a path with no entry in the map: run everything.
         match = next((m for m in sorted(_CHANGE_MAP, key=lambda kv: -len(kv[0]))
                       if path.startswith(m[0])), None)
         if match is None:
-            reasons.append(f"{path} -> (unmapped, running everything)")
+            reasons.append(f"{path} -> (no entry in the map, run everything)")
             return None, reasons
         if match[1]:
             groups |= match[1]
@@ -1180,7 +1231,7 @@ def groups_for_changes(paths: list[str]) -> tuple[set[str] | None, list[str]]:
 
 
 def discover(groups: set[str] | None, name_filters: list[str]) -> list[Path]:
-    """Scenarios in *groups* (None = every group) matching any of *name_filters*."""
+    """The scenarios in *groups* (None means every group) that match one of *name_filters*."""
     paths = sorted(TESTS_DIR.rglob("*.json"))
     if groups is not None:
         paths = [p for p in paths if p.parent.name in groups]
@@ -1200,7 +1251,7 @@ def main() -> int:
             return val
         return None
 
-    if "--game" in args:  # lifecycle-only mode for dev.sh game-* commands
+    if "--game" in args:  # a mode for the dev.sh game-* commands that controls the process only
         action = take_opt("--game")
         ok = {"start": lambda: ensure_game_ready(),
               "stop": stop_game,
@@ -1224,14 +1275,14 @@ def main() -> int:
     if changed or changed_ref:
         files = changed_files(changed_ref)
         if not files:
-            print(f"✓ nothing changed vs {changed_ref or 'HEAD'}; no scenarios to run")
+            print(f"✓ nothing changed against {changed_ref or 'HEAD'}; no scenario to run")
             return 0
         selected, reasons = groups_for_changes(files)
-        print(f"── changed vs {changed_ref or 'HEAD'} ({len(files)} file(s)) ──")
+        print(f"── changed against {changed_ref or 'HEAD'} ({len(files)} file(s)) ──")
         for r in reasons:
             print(f"  {r}")
         if selected is None:
-            print("  => running the full suite")
+            print("  => run the full suite")
         elif not selected:
             print("  => no group is affected; nothing to run")
             return 0
@@ -1245,15 +1296,15 @@ def main() -> int:
         return 2
 
     if not ensure_game_ready(fresh=fresh):
-        print("✗ could not get the game ready; is Steam running? (scripts/dev.sh doctor)")
+        print("✗ could not make the game ready; is Steam active? (scripts/dev.sh doctor)")
         return 2
-    print("✓ game ready (bridge + explorer connected)")
+    print("✓ the game is ready (the bridge and the explorer are connected)")
 
     no_batch = "--no-batch" in sys.argv
     apply_perf(speed, fast_mode)
     passed, failed, restarts = [], [], 0
     current_group = None
-    in_batch: str | None = None  # batch mode of the shared run currently open, if any
+    in_batch: str | None = None  # the batch mode of the shared run that is open now, if one is open
     ctx_batch: dict = {}
     try:
         for path in paths:
@@ -1265,30 +1316,32 @@ def main() -> int:
             desc = scenario.get("description", "")
             mode = None if no_batch else _batch_mode(scenario)
 
-            # Batched scenarios share one run, skipping the menu round-trip and the run start
-            # (~6.4s each). Everything else resets to the menu and runs with its own setup.
+            # The scenarios in a batch share one run. This removes the return to the menu
+            # and the start of the run (about 6.4 seconds for each scenario). Every other
+            # scenario returns to the menu and runs with its own setup.
             skip_setup = False
             if mode is not None and mode == in_batch:
                 if mode == "combat":
-                    _fresh_fight(ctx_batch)  # clean combat for the next scenario
-                # "run": the scenario reaches its own room by console, so nothing to reset
+                    _fresh_fight(ctx_batch)  # a clean combat for the next scenario
+                # "run": the scenario reaches its own room with the console, so there is nothing to reset
                 skip_setup = True
             else:
                 in_batch = None
                 if not reset_to_menu():
                     restarts += 1
                     if restarts > 2 or not ensure_game_ready(fresh=True):
-                        print(f"✗ {path.stem}: game wedged and restart failed; aborting")
+                        print(f"✗ {path.stem}: the game does not answer and the restart failed; stop here")
                         failed.append(path.stem)
                         break
                     apply_perf(speed, fast_mode)
                 ctx_batch = {}
                 if mode == "combat":
-                    # opens the shared run too, if none is live, so its own setup can be skipped
+                    # this also opens the shared run, if no run is active, so its own setup is not needed
                     _fresh_fight(ctx_batch)
                     skip_setup = True
-                # "run": let the opener start the run itself. It wants a Neow event, not the
-                # combat _sweep_new_run would leave it in, and `ancient X` won't open from combat.
+                # "run": let the first scenario start the run. That scenario needs a Neow
+                # event, not the combat that _sweep_new_run makes. Also, `ancient X` does
+                # not open from a combat.
                 in_batch = mode
 
             t0 = time.monotonic()
@@ -1317,7 +1370,7 @@ def main() -> int:
                 for line in detail:
                     print(line)
     finally:
-        try:  # leave the game the way we found it: menu, normal speed
+        try:  # return the game to its earlier condition: the menu, at normal speed
             reset_to_menu()
             bridge_client.set_game_speed(1.0)
         except Exception:

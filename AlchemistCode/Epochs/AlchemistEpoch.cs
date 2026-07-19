@@ -12,7 +12,8 @@ public abstract class AlchemistEpoch : EpochModel
     // The base game looks up the story via Slugify(StoryId) == AlchemistStory.Id
     public override string StoryId => "Alchemist";
 
-    // Placement is assigned dynamically to avoid colliding with base/other mods' epoch cells
+    // The code assigns the placement dynamically, so it does not collide with the epoch cells of the
+    // base game or another mod
     public override EpochEra Era => EpochRegistration.SlotFor(GetType()).era;
     public override int EraPosition => EpochRegistration.SlotFor(GetType()).pos;
 
@@ -22,7 +23,7 @@ public abstract class AlchemistEpoch : EpochModel
     protected virtual List<RelicModel> Relics => new();
     protected virtual List<PotionModel> Potions => new();
 
-    // The content this epoch unlocks, exposed so EpochGating can gate it behind this epoch's reveal
+    // The content that this epoch unlocks. EpochGating reads it and gates it behind the epoch reveal
     public IReadOnlyList<CardModel> GatedCards => Cards;
     public IReadOnlyList<RelicModel> GatedRelics => Relics;
     public IReadOnlyList<PotionModel> GatedPotions => Potions;

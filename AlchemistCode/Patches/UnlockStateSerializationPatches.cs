@@ -6,24 +6,27 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// Base-game hardening, not Alchemist-specific, and worth upstreaming to BaseLib.
+// This makes the base game safe. It is not Alchemist-specific, so it is a good contribution to BaseLib.
 //
-// An epoch belonging to an uninstalled mod stays in progress.save (JSON tolerates unknown IDs and only
-// warns) and is seeded into every run's unlock state. Packet serialization is not tolerant: WriteEpochId
-// -> ModelIdSerializationCache.GetNetIdForEpochId throws for any epoch whose owning mod is not loaded.
-// That write happens inside CombatManager.EndCombatInternal (replay write), so the throw aborts combat
-// teardown and the run wedges in an unrecoverable post-combat state the moment the last enemy dies.
+// An epoch from an uninstalled mod stays in progress.save. The JSON load accepts an unknown id and gives
+// only a warning. The game then puts that epoch into the unlock state of every run. The packet
+// serialization does not accept it. WriteEpochId calls ModelIdSerializationCache.GetNetIdForEpochId,
+// which throws for any epoch whose mod is not loaded.
 //
-// GetNetIdForEpochId has no Try* variant to probe with, unlike the category and entry maps, so drop
-// unmappable epochs before the writer sees them. EpochModel.IsValid is the right predicate: it reads
-// AllEpochIds, which is derived from the same _allEpochs list ModelIdSerializationCache.Init() builds
-// its net ID map from, so it accepts exactly what the writer can encode (mod epochs included, since
-// EpochRegistration adds to _allEpochs and busts the AllEpochIds cache at load).
+// That write happens inside CombatManager.EndCombatInternal, which is the replay write. The exception
+// stops the combat teardown. The run then stops permanently when the last enemy dies.
 //
-// The filtered list is swapped in only for the duration of the write, then restored, so a disabled mod
-// never costs the player saved unlock progress, since re-installing it restores the epoch. Only the ephemeral
-// replay/network packet omits it. Restoring from a Finalizer rather than a Postfix means the real list
-// comes back even if Serialize throws for an unrelated reason.
+// GetNetIdForEpochId has no Try* method to test an id first, unlike the category and entry maps.
+// Therefore remove the epochs that it cannot map before the writer reads the list. EpochModel.IsValid is
+// the correct test. It reads AllEpochIds, which comes from the same _allEpochs list that
+// ModelIdSerializationCache.Init() uses for its net id map. It accepts exactly what the writer can
+// encode. This includes mod epochs, because EpochRegistration adds to _allEpochs and clears the
+// AllEpochIds cache at load.
+//
+// The filtered list replaces the real list only for the write, then the code restores it. A disabled mod
+// therefore never costs the player any saved unlock progress. If you install the mod again, the epoch
+// returns. Only the temporary replay packet omits it. A Finalizer restores the list, not a Postfix, so
+// the real list returns even if Serialize throws for another reason
 [HarmonyPatch(typeof(SerializableUnlockState), nameof(SerializableUnlockState.Serialize))]
 public static class UnlockStateSerializationPatches
 {

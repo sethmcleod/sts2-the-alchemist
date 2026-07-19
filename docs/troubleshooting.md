@@ -1,31 +1,36 @@
 # Troubleshooting
 
-Known gotchas and their fixes.
+Known problems and their fixes.
 
 > [!TIP]
-> Run `scripts/dev.sh doctor` first. It catches the boring environment problems (missing
-> SDK, missing mods, game not running) before you go hunting for anything below.
+> Run `scripts/dev.sh doctor` first. It finds the simple environment problems before you
+> look at the items below. These problems include a missing SDK, missing mods, or a game
+> that does not run.
 
 ## Build & publish
 
 **`dotnet build` fails with localization analyzer errors**
-Every power needs `.title`, `.description` *and* `.smartDescription` keys in
-`Alchemist/localization/eng/powers.json`. This is intentional, so fix the loc, not the
-analyzer.
+Every power needs the `.title`, `.description` *and* `.smartDescription` keys. Put these
+keys in `Alchemist/localization/eng/powers.json`. This behavior is intentional. Correct
+the localization. Do not change the analyzer.
 
-**My image/localization change doesn't show up in game**
-`dotnet build` only ships code. Anything under `Alchemist/` (images, scenes, loc JSON)
-ships inside the `.pck`, which only `scripts/dev.sh publish` rebuilds. **New images
-must be imported by Godot first** (`publish` does import → publish in the right order;
-`publish-fast` skips the import on purpose).
+**An image change or a localization change does not show in the game**
+The `dotnet build` command builds only the code. All files under `Alchemist/` go into
+the `.pck` file. These files include images, scenes and localization JSON. Only
+`scripts/dev.sh publish` builds the `.pck` file again.
 
-**`dotnet` found but weird runtime errors**
-The repo pins net9 while newer SDKs may be installed, so `dev.sh` exports
-`DOTNET_ROLL_FORWARD=Major` for this. If you build outside `dev.sh`, export it yourself.
+Also, Godot must import **new images** first. The `publish` command does the import, then
+the publish, in the correct sequence. The `publish-fast` command skips the import on
+purpose.
 
-**Combat renders with no background, then dies on `AssetLoadException`**
-You published while the game was running. Godot holds the `.pck` open, so replacing it
-under a live process invalidates every later asset load from it:
+**The `dotnet` command is found, but runtime errors happen**
+The repository pins net9. Newer SDKs can also be installed. For this reason, `dev.sh`
+exports `DOTNET_ROLL_FORWARD=Major`. Export this variable yourself if you build outside
+`dev.sh`.
+
+**Combat shows no background, then stops with an `AssetLoadException`**
+You published the mod while the game ran. Godot keeps the `.pck` file open. If you
+replace the file under a live process, all later asset loads from that file fail:
 
 ```
 AssetLoadException: Asset previously failed to load:
@@ -34,54 +39,63 @@ AssetLoadException: Asset previously failed to load:
     at NEnergyCounter.Create → NCombatUi.Activate → NCombatRoom.OnCombatSetUp
 ```
 
-The custom energy counter is just the first asset combat asks for. It throws out of
-`NCombatUi.Activate`, so combat UI setup aborts half-built: no background, and a later
-`NullReferenceException` in `NCombatUi.AnimOut()` when a game-over tries to animate UI that
-was never created. Nothing is actually corrupted and players never hit this. Fix with
-`scripts/dev.sh game-restart`; `publish` now warns when the game is up.
+The custom energy counter is only the first asset that combat requests. The exception
+comes out of `NCombatUi.Activate`. The combat UI setup then stops when it is half built.
+The result is no background. A game-over screen then tries to animate a UI that does not
+exist. This causes a `NullReferenceException` in `NCombatUi.AnimOut()`.
 
-## Live testing (the sts2-modding-mcp bridge: MCPTest :21337 + GodotExplorer :27020)
+Nothing is corrupted. Players never see this problem. To correct it, run
+`scripts/dev.sh game-restart`. The `publish` command now gives a warning if the game is
+in operation.
 
-**Combats stop initializing, enemies appear but no hand/energy/background**
-The game process is poisoned: something abandoned a run **mid-combat** earlier in this
-session. Every later fight half-loads, no matter how it's started. Restart the game.
-(The test runner avoids this by `die`-ing out of combats instead; do the same in manual
-sessions.)
+## Live tests (the sts2-modding-mcp bridge: MCPTest :21337 + GodotExplorer :27020)
 
-**`card <Name>` / `power <Name>` console commands silently do nothing**
-Custom entities need **full model IDs**: `card ALCHEMIST-SEPSIS`, not `card Sepsis`.
-The console reports success either way. Discover IDs with the `dump` console command
-(writes the model DB to the game log).
+**Combats do not initialize: enemies appear, but the hand, energy and background do not**
+The game process is in a bad state. Someone abandoned a run **during combat** earlier in
+this session. Every later fight loads only half of its content. The start method does not
+change this result.
 
-**Poison/damage landed on the wrong target from console commands**
-Console `power`/`damage`/`block` use `0` = player, `1` = first enemy, `2` = second…
-That's offset by one from `play_card`-style enemy indices (0-based).
+Restart the game. The test runner prevents this problem, because it uses the `die`
+command to leave combats. Do the same in manual sessions.
+
+**The `card <Name>` and `power <Name>` console commands do nothing**
+Custom entities need the **full model id**. Use `card ALCHEMIST-SEPSIS`, not
+`card Sepsis`. The console reports success for both commands. To find the model ids, use
+the `dump` console command. This command writes the model database to the game log.
+
+**A console command applied Poison or damage to the wrong target**
+The console `power`, `damage` and `block` commands use `0` for the player. They use `1`
+for the first enemy, `2` for the second enemy, and so on. These indices have an offset of
+one from the enemy indices of `play_card`, which start at `0`.
 
 **Hot reload fails with `ModelIdSerializationCache ... initonly` error**
-Entity/localization hot reload only works from the main menu **before any combat has
-happened in this game session**. The serialization cache locks at first combat and
-can't be rewritten. Restart the game to load new entity code.
+Hot reload of entities and localization works only from the main menu. It also works only
+**before the first combat in this game session**. The serialization cache locks at the
+first combat. You cannot write to it again. Restart the game to load new entity code.
 
-**Scene transitions hang while testing (macOS)**
-The game may not process screen transitions while its window is unfocused, and the
-Windows-only focus workaround doesn't exist on macOS. Click the game window, or stick to
-the focus-independent paths the test runner uses (console commands + explorer
-ForceClick).
+**Scene transitions stop during a test (macOS)**
+The game can fail to process screen transitions when its window does not have focus. The
+focus workaround for Windows does not exist on macOS. Click the game window. As an
+alternative, use only the paths that do not need focus. The test runner uses these paths:
+console commands and the explorer ForceClick method.
 
-**Test suite fails immediately / `bridge not reachable`**
-The game must be running via Steam with the `mcptest` and `godotexplorer` mods installed
-(`scripts/dev.sh bridge`), on a **fresh process** at the main menu. `scripts/dev.sh
-doctor` shows exactly what's missing. Use a spare save profile, since the suite starts and
-abandons runs constantly, which advances Timeline progression.
+**The test suite fails immediately, or reports `bridge not reachable`**
+Start the game from Steam. Install the `mcptest` and `godotexplorer` mods with
+`scripts/dev.sh bridge`. Use a **new game process** at the main menu. The
+`scripts/dev.sh doctor` command shows which items are missing.
+
+Use a spare save profile. The suite starts and abandons many runs. This advances the
+Timeline progression.
 
 **A damage-based test passes sometimes and fails other times**
-Encounter rosters are **not** seed-stable (`fight SLIMES_WEAK` re-rolls enemy HP each
-run). Assert player state, block, or fixed quantities rather than absolute enemy HP. See
-[scripts/tests/README.md](../scripts/tests/README.md).
+Encounter rosters are **not** seed-stable. The `fight SLIMES_WEAK` command sets new enemy
+HP values on each run. Do not assert the absolute enemy HP. Assert the player state, the
+block, or fixed quantities. See [scripts/tests/README.md](../scripts/tests/README.md).
 
 ## Where else to look
 
-- Environment/build basics: [BUILD.md](../BUILD.md)
-- Suite prerequisites + scenario-authoring quirks: [scripts/tests/README.md](../scripts/tests/README.md)
-- Generic toolkit issues (MCP server, decompilation, bridge internals):
-  [sts2-modding-mcp](https://github.com/sethmcleod/sts2-modding-mcp) docs
+- Environment and build basics: [BUILD.md](../BUILD.md)
+- Suite prerequisites and problems when you write scenarios:
+  [scripts/tests/README.md](../scripts/tests/README.md)
+- General toolkit problems (MCP server, decompilation, bridge internals):
+  [sts2-modding-mcp](https://github.com/sethmcleod/sts2-modding-mcp) documentation

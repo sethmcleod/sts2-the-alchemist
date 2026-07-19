@@ -65,55 +65,61 @@ flavor: this character's story is woven directly into the game's existing
 timeline and characters, and observant players will find more than a few threads
 connecting them. ✨
 
-## Getting Started
+## How to start
 
 ### Play it
 
-**Steam Workshop** is the preferred way to install and play. It's one click, it
-keeps itself updated, and it pulls in the required BaseLib dependency for you.
+**Steam Workshop** is the best way to install the mod and play it. It needs one
+click. It keeps the mod updated. It also installs the necessary BaseLib
+dependency for you.
 
 > [!NOTE]
-> The Workshop release is coming soon, once the character artwork lands. Until
-> then, install manually:
+> The Workshop release comes after the character artwork is complete. Until then,
+> use the manual installation below.
 
-**Manual install**: grab `Alchemist-vX.Y.Z.zip` from the
-[Releases](https://github.com/sethmcleod/sts2-the-alchemist/releases) page, first
-install [**BaseLib**](https://steamcommunity.com/workshop/filedetails/?id=3737335127)
-(Workshop would do this for you), then extract the
-`Alchemist/` folder into your game's `mods/` folder. Full step-by-step and the
-per-platform `mods/` path are in [RELEASING.md](RELEASING.md#how-players-install-it).
-No repo clone or build tools needed.
+**Manual install:**
 
-Requires Slay the Spire 2 (Steam). Building from source instead? See the
-prerequisites in [BUILD.md](BUILD.md) and the Develop steps below.
+1. Install [**BaseLib**](https://steamcommunity.com/workshop/filedetails/?id=3737335127)
+   first. The Workshop does this step for you.
+2. Download `Alchemist-vX.Y.Z.zip` from the
+   [Releases](https://github.com/sethmcleod/sts2-the-alchemist/releases) page.
+3. Extract the `Alchemist/` folder into the `mods/` folder of your game.
+
+[RELEASING.md](RELEASING.md#how-players-install-it) gives the full steps and the
+`mods/` path for each platform. You do not need to clone the repo. You do not
+need build tools.
+
+The mod needs Slay the Spire 2 on Steam. To build from source, read the
+prerequisites in [BUILD.md](BUILD.md), then use the Develop steps below.
 
 ### Develop
 
 ```sh
 git clone https://github.com/sethmcleod/sts2-the-alchemist && cd sts2-the-alchemist
-scripts/setup.sh          # one-time: tooling checkout, dependency check, bridge mods
-                          #   (bridge mods = small game-side mods the test suite talks to)
+scripts/setup.sh          # first time: get the tooling, check dependencies, install bridge mods
+                          #   (a bridge mod is a small game-side mod that the test suite uses)
 scripts/dev.sh publish    # build the mod into the game
-# launch Slay the Spire 2 via Steam (use a spare save profile), then:
-scripts/dev.sh test       # regression suite against the live game
+# Start Slay the Spire 2 from Steam. Use a spare save profile. Then:
+scripts/dev.sh test       # run the regression suite against the live game
 ```
 
-`scripts/dev.sh doctor` diagnoses the environment at any point.
+The command `scripts/dev.sh doctor` checks the environment at any time.
 
 > [!TIP]
-> Everything works with plain shell + Python, so **no AI tooling is required**. The repo
-> is also set up for agent-assisted development ([CLAUDE.md](CLAUDE.md)): even without C#
-> experience, you can point Claude Code (or similar) at this repo to modify and test the mod.
+> Everything works with a plain shell and Python, so **no AI tooling is necessary**. The
+> repo also supports development with an agent (see [CLAUDE.md](CLAUDE.md)). You can point
+> Claude Code, or a similar tool, at this repo to change the mod and to test it. This works
+> even if you have no experience with C#.
 
-### Where things are
+### Document map
 
-| Doc | What's in it |
+| Doc | What is in it |
 |---|---|
-| [BUILD.md](BUILD.md) | prerequisites, build/publish commands, asset conventions |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | the three-way update rule, design + code conventions |
-| [RELEASING.md](RELEASING.md) | versioning policy, changelog workflow, cutting a release, install |
-| [docs/adding-a-card.md](docs/adding-a-card.md) | end-to-end worked example: add one card |
-| [docs/troubleshooting.md](docs/troubleshooting.md) | known gotchas and their fixes |
-| [docs/backlog.md](docs/backlog.md) | unscheduled improvements, with the evidence for each |
-| [scripts/tests/README.md](scripts/tests/README.md) | regression suite: running + authoring |
-| [sts2-modding-mcp](https://github.com/sethmcleod/sts2-modding-mcp) | the general STS2 modding toolkit this repo builds on |
+| [BUILD.md](BUILD.md) | prerequisites, build and publish commands, asset rules |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | the three-way update rule, design and code rules |
+| [RELEASING.md](RELEASING.md) | version policy, changelog workflow, how to cut a release, how to install |
+| [docs/adding-a-card.md](docs/adding-a-card.md) | a complete example that adds one card |
+| [docs/troubleshooting.md](docs/troubleshooting.md) | known problems and their fixes |
+| [docs/backlog.md](docs/backlog.md) | improvements with no schedule, and the evidence for each |
+| [scripts/tests/README.md](scripts/tests/README.md) | the regression suite: how to run it and how to write a scenario |
+| [sts2-modding-mcp](https://github.com/sethmcleod/sts2-modding-mcp) | the general STS2 modding toolkit for this repo |

@@ -21,7 +21,7 @@ public partial class MainFile : Node
         // Registers mod [ScriptPath] node scripts so scenes resolve them by res:// path
         Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(Assembly.GetExecutingAssembly());
 
-        // Patch classes one at a time so a single failing patch disables only itself, not the whole mod
+        // Patch the classes one at a time. A patch that fails then disables only itself, not the whole mod
         Harmony harmony = new(ModId);
         foreach (var type in AccessTools.GetTypesFromAssembly(Assembly.GetExecutingAssembly()))
         {

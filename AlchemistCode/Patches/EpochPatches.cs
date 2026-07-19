@@ -17,8 +17,8 @@ using MegaCrit.Sts2.Core.Timeline.Epochs;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// BaseLib's Skip* prefixes short-circuit vanilla epoch bookkeeping for custom characters, but Harmony
-// still runs our postfixes, so that's where we award the epochs from
+// The Skip* prefixes in BaseLib stop the vanilla epoch bookkeeping for a custom character. Harmony still
+// runs our postfixes, so this class awards the epochs from a postfix
 [HarmonyPatch]
 public static class EpochPatches
 {
@@ -43,8 +43,8 @@ public static class EpochPatches
 
     private static bool IsAlchemist(Player p) => p?.Character is AlchemistCharacter;
 
-    // OrNull, not GetById: a save whose character mod is uninstalled would otherwise throw
-    // ModelNotFoundException out of the post-run unlock path we're postfixing
+    // Use OrNull, not GetById. If the character mod of a save is uninstalled, GetById throws
+    // ModelNotFoundException out of the post-run unlock path that this class postfixes
     private static bool IsAlchemist(SerializablePlayer sp) =>
         sp.CharacterId != null && ModelDb.GetByIdOrNull<CharacterModel>(sp.CharacterId) is AlchemistCharacter;
 
@@ -152,9 +152,10 @@ public static class EpochPatches
             __result = __result.Append(ch1).ToArray();
     }
 
-    // With the Timeline feature disabled, strip our epochs from every slot batch so they vanish from the
-    // Timeline (both the full rebuild and reveal animations funnel through here). Saved epoch states are
-    // untouched, so re-enabling restores prior progress. Runs before the async body reads the list.
+    // If the Timeline feature is off, remove our epochs from every slot batch. They then do not appear
+    // on the Timeline. Both the full rebuild and the reveal animations use this method. This does not
+    // change the saved epoch states, so the previous progress returns when you turn the feature on
+    // again. This prefix runs before the async body reads the list
     [HarmonyPatch(typeof(NTimelineScreen), "AddEpochSlots")]
     [HarmonyPrefix]
     private static void HideAlchemistEpochsWhenDisabled(List<EpochSlotData> slotsToAdd)

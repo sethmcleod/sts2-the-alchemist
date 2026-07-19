@@ -17,7 +17,8 @@ public class RefluxPower : AlchemistPower
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
-        // Require a card source. That excludes our own null-source poison, so two players' Reflux can't ping-pong forever
+        // Require a card source. This excludes our own poison, which has no source, so the Reflux of two
+        // players cannot trigger each other without end
         if (amount <= 0 || cardSource == null || power.Type != PowerType.Debuff) return;
         if (applier == null || applier == Owner || !applier.IsPlayer) return;
         if (power.Owner is not { IsPlayer: false, IsAlive: true } enemy) return;

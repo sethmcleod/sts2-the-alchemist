@@ -14,9 +14,9 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Commands;
 
-// Infuse: enchant a card until end of combat. Enchantments are run-permanent by default, so infused
-// cards are tracked here and cleared at combat end by Patches.InfusionCombatEndPatch.
-// Each Infuse adds 1 to the enchantment's amount, and re-infusing a card stacks that amount.
+// Infuse enchants a card until the end of combat. An enchantment is run-permanent by default. This
+// class tracks the infused cards, and Patches.InfusionCombatEndPatch clears them at combat end.
+// Each Infuse adds 1 to the enchantment amount. A second Infuse on the same card stacks that amount
 public static class Infusion
 {
     // The enchantment applied for each card type; null for types that get the Ethereal keyword instead
@@ -35,15 +35,16 @@ public static class Infusion
 
     private static readonly HashSet<CardModel> Infused = new();
 
-    // Curses get Ethereal as a keyword, and clearing an enchantment never undoes a keyword, so remember only
-    // the cards we added it to, and strip it at combat end
+    // A Curse gets Ethereal as a keyword. A clear of the enchantment does not remove a keyword. Record
+    // only the cards that got Ethereal here, and remove it at combat end
     private static readonly HashSet<CardModel> AddedEthereal = new();
 
-    // Distinct cards enchanted (by any source) during the current combat. Recorded from the shared
-    // CardCmd.Enchant hook so Masterwork's threshold counts other mods' enchantments too, not just Infuse
+    // The distinct cards that any source enchanted in the current combat. The shared CardCmd.Enchant hook
+    // records them, so the Masterwork threshold also counts enchantments from other mods, not only Infuse
     private static readonly HashSet<CardModel> EnchantedThisCombat = new();
 
-    // The Infuse keyword tip plus a tip for each enchantment it can grant. Default amount 1 = one Infuse
+    // The Infuse keyword tip, plus one tip for each enchantment that Infuse can grant. The default
+    // amount of 1 is one Infuse
     public static IEnumerable<IHoverTip> InfuseTips() =>
         new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
             .Concat(HoverTipFactory.FromEnchantment<Toxic>().Take(1))
@@ -54,8 +55,9 @@ public static class Infusion
 
     public static int EnchantedThisCombatCount(Player owner) => EnchantedThisCombat.Count(c => c.Owner == owner);
 
-    // Infusable if it takes the Ethereal keyword, or if applying its type's enchantment would stack cleanly
-    // (no enchantment yet, or already the same one). Re-infusing a card grows its amount
+    // A card is infusable if it takes the Ethereal keyword. It is also infusable if the enchantment for
+    // its type stacks cleanly, that is the card has no enchantment or already has the same one. A second
+    // Infuse on the same card increases the amount
     public static bool CanInfuse(CardModel card)
     {
         if (card.Type is CardType.Curse or CardType.Status or CardType.Quest)
@@ -79,12 +81,12 @@ public static class Infusion
             .ToList();
         foreach (var card in picks)
             Infuse(card);
-        // Draw/discard picks aren't visible to the player, so pop them up; hand picks already are
+        // The player cannot see draw or discard picks, so show them. The player can already see hand picks
         if (pile is PileType.Draw or PileType.Discard && picks.Count > 0)
             CardCmd.Preview(picks);
     }
 
-    // Used by Bestow to infuse a teammate's hand, which the caster can't see to target
+    // Bestow uses this to infuse a teammate hand, which the caster cannot see to target
     public static void InfuseRandomFromHand(Player owner, int count, CardModel? exclude = null)
     {
         var rng = owner.RunState.Rng.CombatCardGeneration;
@@ -97,7 +99,7 @@ public static class Infusion
             Infuse(card);
             infused.Add(card);
         }
-        // Random picks aren't visible to the player, so pop them up
+        // The player cannot see random picks, so show them
         if (infused.Count > 0)
             CardCmd.Preview(infused);
     }
@@ -128,7 +130,7 @@ public static class Infusion
         }
     }
 
-    // Enchant adds `amount` to the enchantment (stacking if the card already has the same one)
+    // Enchant adds `amount` to the enchantment. It stacks if the card already has the same one
     private static void TryEnchant<T>(CardModel card) where T : EnchantmentModel
     {
         if (!ModelDb.Enchantment<T>().CanEnchant(card)) return;

@@ -13,7 +13,7 @@ public class Ichor : AlchemistCard
         WithCostUpgradeBy(-1);
     }
 
-    // Deals damage equal to your missing HP (after enchant multipliers), shared by preview and the real hit
+    // Damage equals your missing HP, after enchant multipliers. The preview and the real hit share this
     private int Damage() => ApplyEnchantDamage(Owner.Creature.MaxHp - Owner.Creature.CurrentHp);
 
     protected override int? FormulaDamagePreview

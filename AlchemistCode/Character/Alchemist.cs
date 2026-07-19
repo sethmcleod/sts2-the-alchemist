@@ -62,10 +62,10 @@ public class Alchemist : PlaceholderCharacterModel
     public override string CustomCharacterSelectTransitionPath => $"{MainFile.ResPath}/materials/transitions/alchemist_transition_mat.tres";
     public override string CustomEnergyCounterPath => $"{MainFile.ResPath}/scenes/combat/energy_counters/alchemist_energy_counter.tscn";
 
-    // Borrowed until the Alchemist has its own FMOD bank. PlaceholderCharacterModel derives these
-    // from PlaceholderID ("ironclad"), so without them every card sounds like a greatsword swing.
-    // Override the sfx individually rather than PlaceholderID, which also drives the creature
-    // visuals, rest site and merchant anims, and multiplayer hands
+    // These sfx are borrowed until the Alchemist has its own FMOD bank. PlaceholderCharacterModel takes
+    // them from PlaceholderID ("ironclad"), so without them every card uses the ironclad sounds.
+    // Override each sfx, not PlaceholderID. PlaceholderID also controls the creature visuals, the rest
+    // site and merchant animations, and the multiplayer hands
     public override string CustomAttackSfx => "event:/sfx/characters/silent/silent_attack";
     public override string CustomCastSfx => "event:/sfx/characters/necrobinder/necrobinder_cast";
     public override string CustomDeathSfx => "event:/sfx/characters/silent/silent_die";

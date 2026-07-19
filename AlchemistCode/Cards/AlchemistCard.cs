@@ -20,9 +20,9 @@ public abstract class AlchemistCard : ConstructedCardModel
     protected AlchemistCard(int cost, CardType type, CardRarity rarity, TargetType target)
         : base(cost, type, rarity, target)
     {
-        // Keyword hover tips follow the Is*Card flags, so the flag stays the single source of truth. Added via
-        // BaseLib's WithTips: these sit ahead of a card's own dynamic tips in the stack (keyword tip rendered
-        // first), and the order below is the tie-break for a card with several (Gambit, then Ferment, then Seep)
+        // Keyword hover tips follow the Is*Card flags, so a flag stays the single source of truth. BaseLib's
+        // WithTips adds them. They sit before the card's own dynamic tips, so the keyword tip renders first.
+        // The order below is the tie-break for a card with more than one flag: Gambit, Ferment, then Seep
         WithTips(card => ((AlchemistCard)card).KeywordTips());
     }
 
@@ -45,12 +45,12 @@ public abstract class AlchemistCard : ConstructedCardModel
 
     protected virtual bool IsGambitCard => false;
 
-    // Cards with a play-time conditional bonus override this to glow gold while that condition currently
-    // holds, the same way Gambit cards glow while you're at low HP
+    // A card with a play-time conditional bonus overrides this. The card then glows gold while the
+    // condition holds, the same as a Gambit card at low HP
     protected virtual bool ConditionalGlow => false;
 
-    // IsMutable gate makes every glow canonical-safe: IsReduced/ConditionalGlow bodies read Owner, which
-    // throws on canonical models (compendium), so individual cards don't need their own guards
+    // The IsMutable gate makes every glow safe on canonical models. IsReduced and ConditionalGlow read
+    // Owner, which throws on a canonical model (the compendium). Each card does not need its own guard
     protected override bool ShouldGlowGoldInternal =>
         IsMutable && ((IsGambitCard && IsReduced) || ConditionalGlow);
 
@@ -61,13 +61,13 @@ public abstract class AlchemistCard : ConstructedCardModel
         return pct >= lower && pct <= upper;
     }
 
-    // "Lose N HP", meaning unblockable, unpowered self-damage
+    // "Lose N HP" is unblockable, unpowered self-damage
     protected Task LoseHp(PlayerChoiceContext choiceContext, int amount) =>
         CreatureCmd.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
 
-    // Formula-damage cards deal raw DamageCmd.Attack(decimal) with no DamageVar, and only DamageVar runs an
-    // enchantment's damage hooks, so they fold them in by hand, in the same order DamageVar uses
+    // A formula-damage card deals raw DamageCmd.Attack(decimal) and has no DamageVar. Only DamageVar runs
+    // the enchantment damage hooks. This method applies them by hand, in the same order DamageVar uses
     internal int ApplyEnchantDamage(int damage)
     {
         if (Enchantment is not { } enchantment) return damage;
@@ -77,12 +77,13 @@ public abstract class AlchemistCard : ConstructedCardModel
         return (int)value;
     }
 
-    // Cards whose damage is a runtime formula (no DamageVar to preview) return the current computed total so
-    // the card face can show it live via {FormulaDamage}. Null when it can't be computed (e.g. the card library)
+    // A card with a runtime damage formula has no DamageVar to preview. It returns the current total, and
+    // the card face shows it live with {FormulaDamage}. The value is null if the total cannot be
+    // computed, for example in the card library
     protected virtual int? FormulaDamagePreview => null;
 
-    // Same idea for self-inflicted HP loss, surfaced via {FormulaHpLoss}. Rendered red rather than green so the
-    // cost reads apart from the payoff on cards that preview both
+    // The same applies to self-inflicted HP loss, which {FormulaHpLoss} shows. It shows red, not green,
+    // so the player can tell the cost from the payoff on a card that previews both
     protected virtual int? FormulaHpLossPreview => null;
 
     private int _fermentTurns;
@@ -100,17 +101,17 @@ public abstract class AlchemistCard : ConstructedCardModel
 
     protected virtual Task OnSeep(PlayerChoiceContext choiceContext) => Task.CompletedTask;
 
-    // Flash the seeping card so the player sees which one triggered. Cards whose Seep already surfaces a card
-    // (e.g. adding a token that previews itself) opt out to avoid a redundant double flash
+    // Flash the Seep card so the player sees which card triggered. Some Seep effects already show a card,
+    // for example a token that previews itself. Those cards opt out to prevent a double flash
     protected virtual bool SeepPreviewsSelf => true;
 
-    // VeryEarly, not the plain BeforeSideTurnEnd hook: RegenPower heals and decrements in BeforeSideTurnEndEarly,
-    // which runs between the two. Seeping from the later hook meant a Seep that grants Regen missed this turn's
-    // heal entirely, so a card like Trickle paid off a turn late
+    // Use VeryEarly, not the plain BeforeSideTurnEnd hook. RegenPower heals and decrements in
+    // BeforeSideTurnEndEarly, which runs between the two. From the later hook, a Seep that grants Regen
+    // misses the heal for this turn
     public override async Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
-        // Ferment and Seep only fire while the card is held in hand at the owner's turn end
+        // Ferment and Seep fire only while the card stays in hand at the owner's turn end
         if (Owner == null || !participants.Contains(Owner.Creature)
             || !PileType.Hand.GetPile(Owner).Cards.Contains(this))
             return;
@@ -122,8 +123,8 @@ public abstract class AlchemistCard : ConstructedCardModel
         }
     }
 
-    // Ferment potency is kept when the card is played, so the only reset is combat start. Deck cards are the same
-    // instances across combats and every one of them listens to this hook, so this catches all piles
+    // The card keeps its Ferment potency when you play it, so combat start is the only reset. Deck cards
+    // are the same instances in each combat. Every one of them uses this hook, so this covers all piles
     public override Task BeforeCombatStart()
     {
         _fermentTurns = 0;
@@ -138,8 +139,8 @@ public abstract class AlchemistCard : ConstructedCardModel
             description.Add("FermentSuffix", _fermentTurns > 0 ? $" ({_fermentTurns})" : "");
             description.Add("FermentTotal", FermentTotalText);
         }
-        // FormulaDamagePreview reads Owner, which throws on canonical models (e.g. the compendium/card library).
-        // Only mutable combat instances have an Owner, and the live preview is only meaningful there
+        // FormulaDamagePreview reads Owner, which throws on a canonical model, for example in the card
+        // library. Only a mutable combat instance has an Owner, and the live preview is useful only there
         description.Add("FormulaDamage",
             IsMutable && FormulaDamagePreview is { } d ? $" ([green]{d}[/green])" : "");
         description.Add("FormulaHpLoss",

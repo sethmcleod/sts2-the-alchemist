@@ -1,42 +1,46 @@
 #!/usr/bin/env bash
-# Dev helper for the Alchemist mod. One command for each tedious loop.
+# Dev helper for the Alchemist mod. One command does each repeated loop.
 #
-#   scripts/dev.sh setup          first-time setup: clone tooling, check deps, install bridge mods
-#   scripts/dev.sh publish        build → godot import → publish → verify pck   (safe default)
-#   scripts/dev.sh publish-fast   build → publish → verify pck                  (code-only, skips import)
+#   scripts/dev.sh setup          first-time setup: clone the tooling, check the dependencies,
+#                                 install the bridge mods
+#   scripts/dev.sh publish        build → godot import → publish → verify pck   (the safe default)
+#   scripts/dev.sh publish-fast   build → publish → verify pck                  (code only, no import)
 #   scripts/dev.sh import         godot --headless --import only
-#   scripts/dev.sh bridge         build + install the MCPTest + GodotExplorer bridge mods into the game
-#   scripts/dev.sh test [args]    run the regression suite (starts the game if needed;
+#   scripts/dev.sh bridge         build the MCPTest and GodotExplorer bridge mods, then install them
+#   scripts/dev.sh test [args]    run the regression suite (it starts the game if necessary;
 #                                 args: --group NAME, --changed, --changed-since REF, --fresh,
 #                                 name filters; see scripts/tests/README.md)
-#   scripts/dev.sh game-start     launch the game via Steam and wait for the bridge
-#   scripts/dev.sh game-stop      quit the game (graceful, then force)
-#   scripts/dev.sh game-restart   stop + start (loads freshly-installed bridge/mod builds)
-#   scripts/dev.sh lint           static three-way-rule check (offline, no game)
-#   scripts/dev.sh changelog      draft CHANGELOG entries from commits since the last tag (prints, writes nothing)
+#   scripts/dev.sh game-start     start the game through Steam and wait for the bridge
+#   scripts/dev.sh game-stop      quit the game (a normal quit first, then a forced quit)
+#   scripts/dev.sh game-restart   stop and start (the game loads the new bridge and mod builds)
+#   scripts/dev.sh lint           static check of the three-way rule (offline, no game)
+#   scripts/dev.sh changelog      draft CHANGELOG entries from the commits since the last tag
+#                                 (it prints only, it writes nothing)
 #   scripts/dev.sh release <patch|minor|major|X.Y.Z> [--skip-tests]
-#                                 bump version, roll CHANGELOG, build, and package dist/Alchemist-vX.Y.Z.zip;
-#                                 prints the git commit/tag/push block for you to run (see RELEASING.md).
-#                                 Runs the regression suite (so Steam must be up); --skip-tests overrides
-#   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with fixes
+#                                 increase the version, roll the CHANGELOG, build, and package
+#                                 dist/Alchemist-vX.Y.Z.zip. It prints the git commit/tag/push block
+#                                 for you to run (see RELEASING.md). It runs the regression suite, so
+#                                 Steam must be up. --skip-tests stops the suite
+#   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with the fixes
 #   scripts/dev.sh env            print the resolved paths and exit
 #
-# Why this exists: every publish needs PATH + DOTNET_ROLL_FORWARD set, the game dir exported for the
-# bridge build, and 3–4 chained commands. This wraps all of that so the inner loop is a single word.
+# The reason for this script: every publish needs PATH and DOTNET_ROLL_FORWARD set. It also needs
+# the game dir exported for the bridge build, and 3 or 4 commands in a chain. This script does all
+# of that, so the inner loop is one word.
 #
-# Every path below is overridable via environment variables (see env output); the defaults
-# auto-detect the platform so a fresh clone works without editing this file.
+# You can override every path below with an environment variable (see the env output). The
+# defaults detect the platform, so a fresh clone works and you do not have to edit this file.
 set -euo pipefail
 
-# ── environment every command depends on ────────────────────────────────────
-# dotnet often lives outside the default login PATH; RollForward=Major lets the net9 analyzers run on
-# newer runtimes; STS2_GAME_DIR is what the bridge csprojs read to find sts2.dll.
+# ── the environment that every command needs ────────────────────────────
+# dotnet is often not on the default login PATH. RollForward=Major lets the net9 analyzers run on
+# newer runtimes. The bridge csproj files read STS2_GAME_DIR to find sts2.dll.
 export PATH="$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools"
 export DOTNET_ROLL_FORWARD=Major
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-# Game install dir: env override, else the platform's default Steam library.
+# Game install dir: the environment override, or the default Steam library of the platform.
 if [ -z "${STS2_GAME_DIR:-}" ]; then
   case "$(uname -s)" in
     Darwin) STS2_GAME_DIR="$HOME/Library/Application Support/Steam/steamapps/common/Slay the Spire 2" ;;
@@ -46,28 +50,29 @@ if [ -z "${STS2_GAME_DIR:-}" ]; then
 fi
 export STS2_GAME_DIR
 
-# Mods dir: inside the .app bundle on macOS, next to the executable elsewhere.
+# Mods dir: in the .app bundle on macOS, next to the executable on the other platforms.
 if [ -d "$STS2_GAME_DIR/SlayTheSpire2.app" ]; then
   GAME_MODS="$STS2_GAME_DIR/SlayTheSpire2.app/Contents/MacOS/mods"
 else
   GAME_MODS="$STS2_GAME_DIR/mods"
 fi
 
-# sts2-modding-mcp checkout (bridge mods + test engine): env override, then the
-# repo-local clone made by `setup`, then a shared ~/code checkout.
+# sts2-modding-mcp checkout (bridge mods and test engine): first the environment override,
+# then the local clone that `setup` makes, then a shared ~/code checkout.
 if [ -z "${STS2_MCP_DIR:-}" ]; then
   if   [ -d "$REPO/.tooling/sts2-modding-mcp" ]; then STS2_MCP_DIR="$REPO/.tooling/sts2-modding-mcp"
   elif [ -d "$HOME/code/sts2-modding-mcp" ];     then STS2_MCP_DIR="$HOME/code/sts2-modding-mcp"
-  else STS2_MCP_DIR="$REPO/.tooling/sts2-modding-mcp"   # where `setup` will put it
+  else STS2_MCP_DIR="$REPO/.tooling/sts2-modding-mcp"   # the location that `setup` uses
   fi
 fi
 
 GODOT="${GODOT:-/Applications/MegaDot.app/Contents/MacOS/Godot}"
 PCK="$GAME_MODS/Alchemist/Alchemist.pck"
 
-# The test engine (sts2mcp) needs Python >= 3.10. Prefer a system python if one's already on PATH;
-# otherwise fall back to uv, which provisions a suitable Python for you (recommended, see BUILD.md).
-# PY_CMD is the interpreter invocation as an array, since the uv form is multi-word.
+# The test engine (sts2mcp) needs Python 3.10 or later. Use a system python if the PATH has one.
+# If the PATH has none, use uv. uv supplies a correct Python for you (this is the best option, see
+# BUILD.md). PY_CMD holds the interpreter command as an array, because the uv form has more than
+# one word.
 PY_CMD=()
 find_python() {
   local p
@@ -83,7 +88,7 @@ find_python() {
 }
 find_python || true
 have_py() { [ "${#PY_CMD[@]}" -gt 0 ]; }
-no_py_msg="no Python >= 3.10 found; install uv (https://astral.sh/uv) and it'll provision one, or install Python directly"
+no_py_msg="no Python 3.10 or later found; install uv (https://astral.sh/uv) and it will supply one, or install Python directly"
 
 step() { printf '\n\033[1;36m▶ %s\033[0m\n' "$*"; }
 ok()   { printf '\033[32m✓\033[0m %s\n' "$*"; }
@@ -96,22 +101,24 @@ do_import()  { step "import (godot)"; cd "$REPO"; "$GODOT" --headless --import -
 do_publish() { step "publish"; cd "$REPO"; dotnet publish -c Debug; }
 do_verify()  {
   step "verify pck"
-  [ -f "$PCK" ] && ls -lh "$PCK" || { echo "!! pck missing at $PCK"; exit 1; }
-  # Godot holds the pck open, so replacing it under a live game invalidates every later asset
-  # load from it: the first miss (the custom energy counter) throws out of NCombatUi.Activate
-  # and combat sets up with no background. Looks exactly like a mod bug; it isn't.
+  [ -f "$PCK" ] && ls -lh "$PCK" || { echo "!! the pck is missing at $PCK"; exit 1; }
+  # Godot keeps the pck open. If you replace the pck while the game is active, every later
+  # asset load from it fails. The first failure (the custom energy counter) throws out of
+  # NCombatUi.Activate, and combat then starts with no background. The result is easy to
+  # confuse with a mod bug, but the mod is not the cause.
   if pgrep -f "SlayTheSpire2" >/dev/null 2>&1; then
-    bad "the game is running; it is still using the OLD pck and will throw AssetLoadException"
-    echo "  run 'scripts/dev.sh game-restart' before testing (see docs/troubleshooting.md)"
+    bad "the game is active; it still uses the OLD pck and will throw AssetLoadException"
+    echo "  run 'scripts/dev.sh game-restart' before you do a test (see docs/troubleshooting.md)"
   fi
 }
 
-# Build one bridge mod project from the tooling checkout and copy its runtime files into
-# the game mods dir. NOT 0Harmony.dll, since the game ships its own and a duplicate conflicts.
+# Build one bridge mod project from the tooling checkout. Then copy its runtime files into
+# the game mods dir. Do not copy 0Harmony.dll: the game supplies its own copy, and a second
+# copy causes a conflict.
 install_bridge_mod() {  # <project-subdir> <csproj> <dll-base> <mods-subdir>
   local src="$STS2_MCP_DIR/$1" csproj="$2" base="$3" dest="$GAME_MODS/$4"
   step "build $base"
-  [ -d "$src" ] || { bad "missing $src; run scripts/dev.sh setup first"; exit 1; }
+  [ -d "$src" ] || { bad "$src is missing; run scripts/dev.sh setup first"; exit 1; }
   (cd "$src"; dotnet build "$csproj")
   step "install $base → $dest"
   mkdir -p "$dest"
@@ -125,7 +132,7 @@ do_bridge() {
   install_bridge_mod test_mod     MCPTest.csproj       MCPTest       mcptest
   install_bridge_mod explorer_mod GodotExplorer.csproj GodotExplorer godotexplorer
   echo
-  echo "Now launch STS2 via Steam. MCPTest listens on TCP 21337, GodotExplorer on 27020."
+  echo "Now start STS2 through Steam. MCPTest listens on TCP 21337, GodotExplorer on 27020."
 }
 
 do_test() {
@@ -144,16 +151,16 @@ CHANGELOG="$REPO/CHANGELOG.md"
 MANIFEST="$REPO/Alchemist.json"
 DIST="$REPO/dist"
 
-current_version() {  # bare X.Y.Z from the manifest (strips the v prefix)
+current_version() {  # the bare X.Y.Z from the manifest (it removes the v prefix)
   grep '"version"' "$MANIFEST" | sed -E 's/.*"version"[[:space:]]*:[[:space:]]*"v?([0-9]+\.[0-9]+\.[0-9]+)".*/\1/'
 }
 
-# Lines of the ## [Unreleased] section (between that heading and the next ## heading).
+# The lines of the ## [Unreleased] section (between that heading and the next ## heading).
 unreleased_body() {
   awk '/^## \[Unreleased\]/{grab=1; next} grab && /^## /{exit} grab{print}' "$CHANGELOG"
 }
 
-# Draft changelog entries from Conventional Commits since the last tag. Read-only.
+# Draft the changelog entries from the Conventional Commits since the last tag. This is read-only.
 do_changelog() {
   local last range subject
   last="$(git -C "$REPO" describe --tags --abbrev=0 2>/dev/null || true)"
@@ -166,8 +173,8 @@ do_changelog() {
            | sed -E "s/^($2)(\(.+\))?!?:[[:space:]]*//" | sed 's/^/- /')"
     [ -n "$out" ] && printf '\n### %s\n%s\n' "$1" "$out"
   }
-  echo "Paste the relevant lines under ## [Unreleased] in CHANGELOG.md, then reword"
-  echo "them into player-facing language (see RELEASING.md). Nothing was written."
+  echo "Paste the correct lines under ## [Unreleased] in CHANGELOG.md. Then write them"
+  echo "again in player language (see RELEASING.md). This command wrote nothing."
   emit Added   'feat'
   emit Fixed   'fix'
   emit Changed 'refactor|perf'
@@ -187,13 +194,13 @@ do_release() {  # <patch|minor|major|X.Y.Z> [--skip-tests]
   have_py || { bad "$no_py_msg (release runs the lint check)"; exit 1; }
 
   step "release preflight"
-  [ -z "$(git -C "$REPO" status --porcelain)" ] || { bad "working tree not clean; commit or stash first"; exit 1; }
+  [ -z "$(git -C "$REPO" status --porcelain)" ] || { bad "the working tree is not clean; commit or stash your changes first"; exit 1; }
   local branch; branch="$(git -C "$REPO" rev-parse --abbrev-ref HEAD)"
-  [ "$branch" = "main" ] || { bad "on branch '$branch'; release from main"; exit 1; }
+  [ "$branch" = "main" ] || { bad "you are on branch '$branch'; do the release from main"; exit 1; }
 
-  # Compute the new version.
+  # Calculate the new version.
   local cur new; cur="$(current_version)"
-  [ -n "$cur" ] || { bad "could not read version from $MANIFEST"; exit 1; }
+  [ -n "$cur" ] || { bad "could not read the version from $MANIFEST"; exit 1; }
   local IFS=. ; local -a p=($cur); unset IFS
   case "$bump" in
     major) new="$((p[0]+1)).0.0" ;;
@@ -202,32 +209,33 @@ do_release() {  # <patch|minor|major|X.Y.Z> [--skip-tests]
     v*)    new="${bump#v}" ;;
     *)     new="$bump" ;;
   esac
-  [[ "$new" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { bad "invalid version '$new'; expected X.Y.Z"; exit 1; }
-  [ "$new" != "$cur" ] || { bad "new version equals current ($cur)"; exit 1; }
-  [ "$(printf '%s\n%s\n' "$cur" "$new" | sort -V | tail -1)" = "$new" ] || { bad "new version $new is not greater than current $cur"; exit 1; }
+  [[ "$new" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { bad "the version '$new' is not valid; the correct form is X.Y.Z"; exit 1; }
+  [ "$new" != "$cur" ] || { bad "the new version is the same as the current version ($cur)"; exit 1; }
+  [ "$(printf '%s\n%s\n' "$cur" "$new" | sort -V | tail -1)" = "$new" ] || { bad "the new version $new is not larger than the current version $cur"; exit 1; }
 
-  # A release must have curated notes.
-  [ -n "$(unreleased_body | tr -d '[:space:]')" ] || { bad "## [Unreleased] in CHANGELOG.md is empty; add notes (scripts/dev.sh changelog seeds a draft)"; exit 1; }
+  # A release must have notes that a person wrote.
+  [ -n "$(unreleased_body | tr -d '[:space:]')" ] || { bad "## [Unreleased] in CHANGELOG.md is empty; add notes (scripts/dev.sh changelog makes a draft)"; exit 1; }
 
   do_build
   step "lint"
   "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py"
 
-  # The suite is the only preflight gate that exercises the mod against a real game, so a
-  # release skipping it can ship red. It drives the game itself, so Steam has to be running.
+  # The suite is the only check before a release that runs the mod against a real game. A
+  # release without the suite can contain a fault. The suite starts the game itself, so
+  # Steam must be active.
   if [ "$skip_tests" -eq 1 ]; then
-    bad "SKIPPING the regression suite (--skip-tests); this release is unverified against the game"
+    bad "this run does NOT include the regression suite (--skip-tests); no test ran against the game"
   else
-    do_test || { bad "regression suite failed; fix it or re-run with --skip-tests to override"; exit 1; }
+    do_test || { bad "the regression suite failed; correct the fault, or run again with --skip-tests"; exit 1; }
   fi
 
   local date; date="$(date +%Y-%m-%d)"
-  ok "releasing v$cur → v$new ($date)"
+  ok "release v$cur → v$new ($date)"
 
-  # Bump the manifest version (keep the v prefix).
+  # Increase the manifest version (keep the v prefix).
   sed -i.bak -E "s/(\"version\"[[:space:]]*:[[:space:]]*\")v?[0-9]+\.[0-9]+\.[0-9]+(\")/\1v$new\2/" "$MANIFEST" && rm -f "$MANIFEST.bak"
 
-  # Roll the changelog: freshen Unreleased and stamp the released section.
+  # Roll the changelog: keep the Unreleased heading empty and add a heading for the new version.
   awk -v ver="$new" -v date="$date" '
     /^## \[Unreleased\]/ { print; print ""; print "## [" ver "] - " date; next }
     { print }
@@ -235,13 +243,14 @@ do_release() {  # <patch|minor|major|X.Y.Z> [--skip-tests]
 
   do_publish
 
-  # Package the drop-in zip: a single top-level Alchemist/ folder with the three
-  # runtime files the game loads (no pdb, which is debug-only; mod_image is inside the pck).
+  # Package the zip that a user installs: one top-level Alchemist/ folder with the three
+  # runtime files that the game loads. It has no pdb, which is for debug only. The
+  # mod_image is in the pck.
   step "package dist/Alchemist-v$new.zip"
   local stage="$DIST/stage" src="$GAME_MODS/Alchemist"
   rm -rf "$stage"; mkdir -p "$stage/Alchemist"
   local f; for f in Alchemist.dll Alchemist.json Alchemist.pck; do
-    [ -f "$src/$f" ] || { bad "expected $src/$f after publish; aborting"; exit 1; }
+    [ -f "$src/$f" ] || { bad "$src/$f must exist after the publish; the release stops here"; exit 1; }
     cp -f "$src/$f" "$stage/Alchemist/"
   done
   local zipfile="$DIST/Alchemist-v$new.zip"
@@ -250,7 +259,7 @@ do_release() {  # <patch|minor|major|X.Y.Z> [--skip-tests]
   rm -rf "$stage"
   ls -lh "$zipfile"
 
-  # Extract this version's notes for the GitHub Release body / Workshop comment.
+  # Get the notes of this version for the GitHub Release body or the Workshop comment.
   local notes="$DIST/RELEASE_NOTES-v$new.txt"
   awk -v ver="$new" '
     $0 ~ "^## \\[" ver "\\]" {grab=1; print; next}
@@ -259,15 +268,15 @@ do_release() {  # <patch|minor|major|X.Y.Z> [--skip-tests]
   ' "$CHANGELOG" > "$notes"
 
   echo
-  ok "prepared v$new: files updated, artifact + notes written to dist/"
-  echo "Review the diff, then run:"
+  ok "v$new is ready: the files are updated, the artifact and the notes are in dist/"
+  echo "Examine the diff, then run these commands:"
   echo
   echo "    git add Alchemist.json CHANGELOG.md"
   echo "    git commit -m \"release: v$new\""
   echo "    git tag -a v$new -m \"v$new\""
   echo "    git push --follow-tags"
   echo
-  echo "Then create a GitHub Release for tag v$new, attach $zipfile,"
+  echo "Then create a GitHub Release for tag v$new. Attach $zipfile"
   echo "and paste $notes as the body. See RELEASING.md."
 }
 
@@ -275,17 +284,17 @@ do_doctor() {
   step "doctor"
   local fail=0
   if command -v dotnet >/dev/null;   then ok "dotnet $(dotnet --version 2>/dev/null)"; else bad "dotnet not found; install the .NET 9 SDK (https://dotnet.microsoft.com)"; fail=1; fi
-  if have_py;                        then ok "python $("${PY_CMD[@]}" --version 2>&1 | cut -d' ' -f2) (${PY_CMD[*]})"; else bad "no Python >= 3.10, needed for scripts/dev.sh test; install uv (https://astral.sh/uv) to provision one, or install Python directly"; fail=1; fi
-  if [ -x "$GODOT" ];                then ok "MegaDot at $GODOT"; else bad "MegaDot not found at $GODOT; install it or set GODOT=/path/to/Godot (see BUILD.md)"; fail=1; fi
-  if [ -d "$STS2_GAME_DIR" ];        then ok "game at $STS2_GAME_DIR"; else bad "game not found at $STS2_GAME_DIR; install via Steam or set STS2_GAME_DIR"; fail=1; fi
-  if pgrep -x steam_osx >/dev/null 2>&1 || pgrep -x steam >/dev/null 2>&1; then ok "Steam client running"; else bad "Steam client not running, needed to launch the game (game-start/test)"; fi
-  if [ -d "$STS2_MCP_DIR" ];         then ok "tooling at $STS2_MCP_DIR"; else bad "sts2-modding-mcp checkout missing; run scripts/dev.sh setup"; fail=1; fi
+  if have_py;                        then ok "python $("${PY_CMD[@]}" --version 2>&1 | cut -d' ' -f2) (${PY_CMD[*]})"; else bad "no Python 3.10 or later; scripts/dev.sh test needs it; install uv (https://astral.sh/uv) to get one, or install Python directly"; fail=1; fi
+  if [ -x "$GODOT" ];                then ok "MegaDot at $GODOT"; else bad "MegaDot not found at $GODOT; install it, or set GODOT=/path/to/Godot (see BUILD.md)"; fail=1; fi
+  if [ -d "$STS2_GAME_DIR" ];        then ok "game at $STS2_GAME_DIR"; else bad "game not found at $STS2_GAME_DIR; install it through Steam, or set STS2_GAME_DIR"; fail=1; fi
+  if pgrep -x steam_osx >/dev/null 2>&1 || pgrep -x steam >/dev/null 2>&1; then ok "Steam client is active"; else bad "Steam client is not active; the game needs it to start (game-start/test)"; fi
+  if [ -d "$STS2_MCP_DIR" ];         then ok "tooling at $STS2_MCP_DIR"; else bad "the sts2-modding-mcp checkout is missing; run scripts/dev.sh setup"; fail=1; fi
   if [ -d "$GAME_MODS/Alchemist" ];  then ok "Alchemist mod installed"; else bad "Alchemist mod not installed; run scripts/dev.sh publish"; fail=1; fi
-  if [ -d "$GAME_MODS/mcptest" ];    then ok "MCPTest bridge installed"; else bad "MCPTest bridge missing; run scripts/dev.sh bridge"; fail=1; fi
-  if [ -d "$GAME_MODS/godotexplorer" ]; then ok "GodotExplorer installed"; else bad "GodotExplorer missing; run scripts/dev.sh bridge"; fail=1; fi
-  if port_open 21337; then ok "MCPTest bridge responding on :21337"; else bad "MCPTest bridge not reachable on :21337; launch the game via Steam (needed only for 'test')"; fi
-  if port_open 27020; then ok "GodotExplorer responding on :27020"; else bad "GodotExplorer not reachable on :27020; launch the game via Steam (needed only for 'test')"; fi
-  [ "$fail" -eq 0 ] && { echo; ok "environment looks good"; } || { echo; bad "fix the items above, then re-run scripts/dev.sh doctor"; }
+  if [ -d "$GAME_MODS/mcptest" ];    then ok "MCPTest bridge installed"; else bad "the MCPTest bridge is missing; run scripts/dev.sh bridge"; fail=1; fi
+  if [ -d "$GAME_MODS/godotexplorer" ]; then ok "GodotExplorer installed"; else bad "GodotExplorer is missing; run scripts/dev.sh bridge"; fail=1; fi
+  if port_open 21337; then ok "the MCPTest bridge answers on :21337"; else bad "the MCPTest bridge does not answer on :21337; start the game through Steam (only 'test' needs it)"; fi
+  if port_open 27020; then ok "GodotExplorer answers on :27020"; else bad "GodotExplorer does not answer on :27020; start the game through Steam (only 'test' needs it)"; fi
+  [ "$fail" -eq 0 ] && { echo; ok "the environment is correct"; } || { echo; bad "correct the items above, then run scripts/dev.sh doctor again"; }
   return "$fail"
 }
 

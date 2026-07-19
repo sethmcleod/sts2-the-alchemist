@@ -1,13 +1,14 @@
 # Changelog
 
-All notable player-facing changes to The Alchemist are documented here.
+This document lists all the important changes that players see in The Alchemist.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
-(see [RELEASING.md](RELEASING.md) for what a bump means for a mod). Each released
-section below is also the update note posted to Steam Workshop for that version.
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This
+project also follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
+(see [RELEASING.md](RELEASING.md) to know what each version increase means for a
+mod). Each version section below is also the Steam Workshop update note for that
+version.
 
-Sections follow Keep a Changelog: Added, Changed, Deprecated, Removed, Fixed,
+The sections follow Keep a Changelog: Added, Changed, Deprecated, Removed, Fixed,
 Security.
 
 ## [Unreleased]
@@ -16,60 +17,73 @@ Security.
 
 ### Changed
 
-- Renamed many cards so names better match their mechanics and card types.
-- Sepsis now makes Poisoned enemies take 25% (50%) more Attack damage, down from a
-  flat 50%.
-- Heavy Hand now boosts Poison you gain as well as Poison you apply.
-- Resolve now costs 3 (2) and grants 1 Strength per 20 HP missing at both ranks.
+- Many cards have new names. The new names match their mechanics and card types
+  more closely.
+- Sepsis now makes Poisoned enemies take 25% (50%) more Attack damage. Before,
+  the increase was always 50%.
+- Heavy Hand now increases the Poison that you gain. It also increases the Poison
+  that you apply.
+- Resolve now costs 3 (2). At both ranks, it grants 1 Strength for each 20 HP
+  below your maximum HP.
 - Golden Touch now costs 2.
 - Bitter Draught now Exhausts.
-- White Heat now draws 2 (3) cards, up from 1 (2).
-- Inoculate now grants 7 (10) Block, up from 6 (9).
+- White Heat now draws 2 (3) cards, an increase from 1 (2).
+- Inoculate now grants 7 (10) Block, an increase from 6 (9).
 - Poultice now costs 0.
-- Patient Strike (was Culture) now counts as a Strike card.
-- Decant reworked: costs 0, deals 5 (7) damage with no Regen scaling, and adds a
-  Distillate (+) into your Hand.
-- Last Resort's non-Gambit HP loss lowered from 5 to 3.
-- Ferment cards now keep their fermented potency when played instead of spending it
-  on a single payoff.
-- Ferment rates lowered to match: Patient Strike 100% -> 75% (125% -> 100%), Rolling
-  Boil and Carapace 75% -> 50% (100% -> 75%), Steep 2 -> 1 (2) Poison, Vintage 2 -> 1
-  Regen.
-- Trickle and Tinge now Seep 1 Regen instead of 2, and 2 when upgraded.
-- Seep now resolves before the end-of-turn Regen heal, so Regen it grants counts
-  toward that turn.
-- Catalyze and Metabolism now read "the first time you lose HP on each of your turns".
-- The Alchemist now has its own attack, cast, and death sounds instead of the
-  Ironclad's, drawn from the Silent's and Necrobinder's kits.
+- Patient Strike (previously Culture) now counts as a Strike card.
+- Decant has a new design. It costs 0. It deals 5 (7) damage, and Regen does not
+  increase this damage. It also adds a Distillate (+) into your Hand.
+- Without Gambit, Last Resort now makes you lose 3 HP, a decrease from 5.
+- Ferment cards now keep their fermented potency after you play them. Before, one
+  play used all of the potency.
+- The Ferment rates are now lower to match this change:
+  - Patient Strike: 100% -> 75% (125% -> 100%)
+  - Rolling Boil and Carapace: 75% -> 50% (100% -> 75%)
+  - Steep: 2 -> 1 (2) Poison
+  - Vintage: 2 -> 1 Regen
+- Trickle and Tinge now Seep 1 Regen instead of 2. When you upgrade them, they
+  Seep 2.
+- Seep now resolves before the Regen heal at the end of the turn. Thus, the Regen
+  from Seep applies to that turn.
+- Catalyze and Metabolism now read "the first time you lose HP on each of your
+  turns".
+- The Alchemist now has attack, cast, and death sounds of its own, instead of the
+  sounds of the Ironclad. The new sounds come from the Silent and the
+  Necrobinder.
 - Golden Touch and Windfall have new power icons.
 
 ### Fixed
 
-- Power icons now load again for Bloom, Bottled Fury, Contagion, Drain Dry, Drip
-  Feed, Fever Pitch, Golden Touch, Heavy Hand, and Twin Serpents.
+- The power icons now load again for Bloom, Bottled Fury, Contagion, Drain Dry,
+  Drip Feed, Fever Pitch, Golden Touch, Heavy Hand, and Twin Serpents.
 - Reflux and Suffuse now have power icons.
-- Hemorrhage now previews its HP cost in red, alongside the damage preview.
-- Ferment potency no longer carries into the next combat; it resets at combat start.
-- Combat no longer hangs on the killing blow when your save carries a Timeline epoch
-  from a mod you have since uninstalled. Unlock progress is untouched.
-- In co-op, an event option that would kill you now shows a real Alchemist line
-  instead of the placeholder "Co-op survival line".
+- Hemorrhage now shows its HP cost in red, next to the damage preview.
+- Ferment potency no longer continues into the next combat. It resets at the
+  start of each combat.
+- Combat no longer stops when you kill the last enemy. This problem happened when
+  your save contained a Timeline epoch from a mod that you removed. Your unlock
+  progress does not change.
+- In co-op, an event option that can kill you now shows a correct Alchemist line.
+  Before, it showed the placeholder text "Co-op survival line".
 
 ## [0.1.0] - 2026-07-15
 
-First pre-release: feature-complete and balanced, pending character artwork
-before the public Steam Workshop launch.
+The first pre-release. The mod is feature-complete and balanced. The public Steam
+Workshop release waits for the character artwork.
 
 ### Added
 - New playable character: the Alchemist
-- 95 cards, including 4 multiplayer cards and 2 full-art Ancient rewards
+- 95 cards, with 4 multiplayer cards and 2 full-art Ancient rewards
 - 9 relics, 3 potions, and 3 enchantments
 - 4 class keywords: Gambit, Ferment, Seep, and Infuse
 - 7-epoch timeline with progressive unlocks
-- Unique Ancient and character dialogue tied into the game timeline
-- Automated regression and quality test suite run against the live game
+- Ancient dialogue and character dialogue for the Alchemist, which connect to the
+  game timeline
+- An automated test suite for regressions and quality. The suite runs against the
+  live game.
 - One-command build and publish workflow (scripts/dev.sh)
-- Offline lint enforcing code / localization / cards.csv sync
-- Build-time localization analyzer for required power keys
+- Offline lint that checks the sync between code, localization, and cards.csv
+- Build-time localization analyzer for the necessary power keys
 - Environment doctor and game-process controls for the test bridge
-- Release process: versioning policy, changelog, and drop-in zip packaging
+- Release process: version policy, changelog, and a zip package for direct
+  installation
