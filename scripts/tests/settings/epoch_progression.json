@@ -35,7 +35,7 @@
       "cards": {
         "CARD.ALCHEMIST-CONGEAL": {"unlocked": true, "discovered": false},
         "CARD.ALCHEMIST-CORRODE": {"unlocked": true, "discovered": false},
-        "CARD.ALCHEMIST-EXUDE": {"unlocked": true, "discovered": false},
+        "CARD.ALCHEMIST-SWEAT_IT_OUT": {"unlocked": true, "discovered": false},
         "CARD.ALCHEMIST-CARAPACE": {"unlocked": false}
       }
     }}, "timeout": 6, "note": "Alchemist2 unlocks its 3 cards (unlocked but unseen); Alchemist5's cards stay locked"},

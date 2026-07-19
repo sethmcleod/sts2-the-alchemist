@@ -8,9 +8,10 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Resolve : AlchemistCard
 {
-    public Resolve() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Resolve() : base(3, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Strength", 1, 1);
+        WithCostUpgradeBy(-1);
+        WithVar("Strength", 1, 0);
         WithTip(typeof(StrengthPower));
     }
 

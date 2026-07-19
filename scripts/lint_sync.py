@@ -12,6 +12,11 @@ cross-check (WithDamage/WithBlock/WithEnergy/WithCards/WithPower literal builder
 the csv's "N (M)" pairs) and prints those as warnings. Cards using formula builders
 (WithCalculated*, computed args) are skipped rather than guessed at.
 
+Separately checks the fourth home a rename has to reach: art on disk. Cards, powers,
+relics and potions all resolve their icons from the class name, so renaming a class
+without renaming its png leaves the entity with no art and the png orphaned. Missing
+art FAILs, orphaned art warns.
+
 Run via `scripts/dev.sh lint`.
 """
 
@@ -21,12 +26,32 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-CARDS_DIR = REPO / "AlchemistCode" / "Cards"
+CODE = REPO / "AlchemistCode"
+IMG = REPO / "Alchemist" / "images"
 CSV = REPO / "cards.csv"
 LOC = REPO / "Alchemist" / "localization" / "eng" / "cards.json"
 
 # csv display name -> class name, for the two basics that carry an "Alchemist" suffix
 SPECIAL_CLASS = {"Strike": "StrikeAlchemist", "Defend": "DefendAlchemist"}
+
+# Every entity resolves its art from its own class name (see AlchemistCode/Extensions/
+# StringExtensions.cs), so a rename that misses the images silently orphans them.
+# entity label -> (code subdir, base marker, [(variant label, image dir, filename template)])
+ASSET_SPECS = [
+    # cards ship big portraits only: PortraitPath and BetaPortraitPath fall back to
+    # card.png by design, so requiring them here would flag all 95 every run
+    ("card", "Cards", "Card", [("portrait", "card_portraits/big", "{s}.png")]),
+    ("power", "Powers", "Power", [("packed", "powers", "{s}.png"),
+                                  ("big", "powers/big", "{s}.png")]),
+    ("relic", "Relics", "Relic", [("packed", "relics", "{s}.png"),
+                                  ("outline", "relics", "{s}_outline.png"),
+                                  ("big", "relics/big", "{s}.png")]),
+    ("potion", "Potions", "Potion", [("packed", "potions", "{s}.png"),
+                                     ("outline", "potions/outlines", "{s}.png")]),
+]
+
+# generic art the *ImagePath helpers fall back to, claimed by no class
+FALLBACK_ART = {"card.png", "power.png", "relic.png", "relic_outline.png", "potion.png"}
 
 
 def norm(name: str) -> str:
@@ -49,20 +74,66 @@ def load_cards_csv() -> list[dict]:
     return rows
 
 
-def card_classes() -> dict[str, Path]:
-    """class name -> file, for every concrete AlchemistCard subclass."""
+def entity_classes(subdir: str, base_marker: str) -> dict[str, Path]:
+    """class name -> file, for every concrete class under AlchemistCode/<subdir>.
+
+    base_marker is matched against the base list, so "Card" catches AlchemistCard and
+    "Power" catches both AlchemistPower and CustomTemporaryStrengthPower subclasses.
+    Abstract classes are skipped: they carry no model id, so they own no assets
+    """
     out = {}
-    for path in CARDS_DIR.rglob("*.cs"):
-        text = path.read_text()
-        m = re.search(r"public\s+class\s+(\w+)\s*:\s*\w*Card", text)
-        if m and "abstract" not in text[:m.start()].split("\n")[-1]:
-            out[m.group(1)] = path
+    for path in (CODE / subdir).rglob("*.cs"):
+        for m in re.finditer(r"public\s+(abstract\s+)?class\s+(\w+)\s*:\s*([\w<>, ]+)", path.read_text()):
+            is_abstract, name, bases = m.groups()
+            if not is_abstract and base_marker in bases:
+                out[name] = path
     return out
 
 
+def card_classes() -> dict[str, Path]:
+    """class name -> file, for every concrete AlchemistCard subclass."""
+    return entity_classes("Cards", "Card")
+
+
+def asset_name(class_name: str) -> str:
+    """Entity class name -> icon filename stem (GoldenTouchPower -> golden_touch_power)."""
+    return snake(class_name).lower()
+
+
+def check_assets() -> tuple[list[str], list[str], int]:
+    """Every concrete entity has its art on disk, and no art is left unclaimed.
+
+    Returns (errors, warnings, files checked). A missing file is an error: the
+    *ImagePath helpers log and fall back to generic art, so the entity still renders
+    and the drift is easy to miss. An unclaimed file is only a warning, since it costs
+    pck size but nothing else
+    """
+    errors, warnings = [], []
+    claimed: set[Path] = set()
+
+    for label, subdir, marker, variants in ASSET_SPECS:
+        for cls in sorted(entity_classes(subdir, marker)):
+            for variant, img_dir, template in variants:
+                path = IMG / img_dir / template.format(s=asset_name(cls))
+                claimed.add(path)
+                if not path.exists():
+                    errors.append(f"{label} {cls}: missing {variant} art {img_dir}/{path.name}")
+
+    # dedupe: relics keep packed and outline art in one directory
+    art_dirs = {img_dir for _, _, _, variants in ASSET_SPECS for _, img_dir, _ in variants}
+    for img_dir in sorted(art_dirs):
+        for path in sorted((IMG / img_dir).glob("*.png")):
+            if path not in claimed and path.name not in FALLBACK_ART:
+                warnings.append(f"{img_dir}/{path.name}: no class claims this art")
+
+    return errors, warnings, len(claimed)
+
+
 def parse_number_pairs(desc: str) -> list[tuple[int, int]]:
-    """Extract 'N (M)' upgrade pairs from a csv description/cost cell."""
-    return [(int(a), int(b)) for a, b in re.findall(r"(\d+)\s*\((\d+)\)", desc)]
+    """Extract 'N (M)' upgrade pairs from a csv description/cost cell.
+
+    The trailing % is optional so percentage cards ('25% (50%)') pair up like the rest."""
+    return [(int(a), int(b)) for a, b in re.findall(r"(\d+)%?\s*\((\d+)%?\)", desc)]
 
 
 BUILDER = re.compile(
@@ -142,11 +213,16 @@ def main() -> int:
                 warnings.append(
                     f"{display}: builder produces {base} ({up}) but that pair isn't in the csv row")
 
+    # 4. every entity's art is on disk
+    asset_errors, asset_warnings, art_count = check_assets()
+    errors += asset_errors
+    warnings += asset_warnings
+
     for w in warnings:
         print(f"\033[33mwarn\033[0m  {w}")
     for e in errors:
         print(f"\033[31mFAIL\033[0m  {e}")
-    print(f"\n{len(rows)} cards, {len(classes)} classes: "
+    print(f"\n{len(rows)} cards, {len(classes)} classes, {art_count} art files: "
           f"{len(errors)} error(s), {len(warnings)} warning(s)")
     return 1 if errors else 0
 

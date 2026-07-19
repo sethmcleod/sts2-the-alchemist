@@ -13,7 +13,17 @@ Security.
 ## [Unreleased]
 
 ### Changed
-- Renamed 44 cards so names better match their mechanics and card types.
+
+- Renamed many cards so names better match their mechanics and card types.
+- Sepsis now makes Poisoned enemies take 25% (50%) more Attack damage, down from a
+  flat 50%.
+- Heavy Hand now boosts Poison you gain as well as Poison you apply.
+- Resolve now costs 3 (2) and grants 1 Strength per 20 HP missing at both ranks.
+- Golden Touch now costs 2.
+- Bitter Draught now Exhausts.
+- White Heat now draws 2 (3) cards, up from 1 (2).
+- Inoculate now grants 7 (10) Block, up from 6 (9).
+- Poultice now costs 0.
 - Patient Strike (was Culture) now counts as a Strike card.
 - Decant reworked: costs 0, deals 5 (7) damage with no Regen scaling, and adds a
   Distillate (+) into your Hand.
@@ -29,9 +39,14 @@ Security.
 - Catalyze and Metabolism now read "the first time you lose HP on each of your turns".
 - The Alchemist now has its own attack, cast, and death sounds instead of the
   Ironclad's, drawn from the Silent's and Necrobinder's kits.
+- Golden Touch and Windfall have new power icons.
 
 ### Fixed
-- Haemorrhage now previews its HP cost in red, alongside the damage preview.
+
+- Power icons now load again for Bloom, Bottled Fury, Contagion, Drain Dry, Drip
+  Feed, Fever Pitch, Golden Touch, Heavy Hand, and Twin Serpents.
+- Reflux and Suffuse now have power icons.
+- Hemorrhage now previews its HP cost in red, alongside the damage preview.
 - Ferment potency no longer carries into the next combat; it resets at combat start.
 - Combat no longer hangs on the killing blow when your save carries a Timeline epoch
   from a mod you have since uninstalled. Unlock progress is untouched.

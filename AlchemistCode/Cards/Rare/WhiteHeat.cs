@@ -9,7 +9,7 @@ public class WhiteHeat : AlchemistCard
     public WhiteHeat() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithEnergy(2, 0);
-        WithCards(1, 1);
+        WithCards(2, 1);
         WithKeyword(CardKeyword.Exhaust);
     }
 

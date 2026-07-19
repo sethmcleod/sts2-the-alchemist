@@ -1,0 +1,12 @@
+{
+  "name": "heavy_hand_self_poison",
+  "group": "cards",
+  "description": "Heavy Hand also boosts self-inflicted Poison: with Heavy Hand out, Bitter Draught's 2 self-Poison becomes 3",
+  "setup": {"character": "Alchemist", "seed": "HHSELF1", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"console": "card ALCHEMIST-HEAVY_HAND"}, "delay": 0.5},
+    {"do": {"play_card": "HeavyHand"}, "delay": 0.5},
+    {"do": {"console": "card ALCHEMIST-BITTER_DRAUGHT"}, "delay": 0.5},
+    {"do": {"play_card": "BitterDraught"}, "expect": {"power": {"name": "PoisonPower", "amount": 3}}, "timeout": 6, "note": "Bitter Draught 2 + Heavy Hand 1 = 3 self-Poison"}
+  ]
+}

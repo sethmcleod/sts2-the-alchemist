@@ -1,0 +1,51 @@
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
+
+namespace Alchemist.AlchemistCode.Cards.Uncommon;
+
+public class Hemorrhage : AlchemistCard
+{
+    public Hemorrhage() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    {
+        WithTip(typeof(RegenPower));
+    }
+
+    // Single source of truth for the on-card preview and the real hit. You lose your Regen as HP, then deal
+    // double (triple upgraded) that much, after enchant multipliers
+    private int DamageFor(int regen) => ApplyEnchantDamage(regen * (IsUpgraded ? 3 : 2));
+
+    protected override int? FormulaDamagePreview
+    {
+        get
+        {
+            if (Owner?.Creature is not { } c) return null;
+            var regen = c.GetPowerAmount<RegenPower>();
+            return regen > 0 ? DamageFor(regen) : null;
+        }
+    }
+
+    protected override int? FormulaHpLossPreview
+    {
+        get
+        {
+            if (Owner?.Creature is not { } c) return null;
+            var regen = c.GetPowerAmount<RegenPower>();
+            return regen > 0 ? regen : null;
+        }
+    }
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
+    {
+        var lost = Owner.Creature.GetPowerAmount<RegenPower>();
+        if (lost > 0)
+            await CreatureCmd.Damage(choiceContext, Owner.Creature,
+                lost, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
+        var damage = DamageFor(lost);
+        if (damage > 0)
+            await DamageCmd.Attack(damage).FromCard(this, play)
+                .Targeting(play.Target!).Execute(choiceContext);
+    }
+}

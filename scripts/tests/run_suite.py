@@ -860,7 +860,7 @@ def _sweep_new_run(ctx: dict) -> None:
 def _fresh_fight(ctx: dict) -> None:
     """A clean combat for the next card: new fight (empties hand/exhaust, revives
     enemies), then top HP back up only if a prior card actually spent it. NOT godmode,
-    godmode pumps Regen to ~1e9, which makes Haemorrhage ('lose HP equal to your Regen')
+    godmode pumps Regen to ~1e9, which makes Hemorrhage ('lose HP equal to your Regen')
     drain a billion HP and every Regen-scaling card deal absurd damage. With normal
     Regen those cards are harmless no-ops, which is what the sweep wants (it tests that
     they don't *throw*, not that they do damage)."""

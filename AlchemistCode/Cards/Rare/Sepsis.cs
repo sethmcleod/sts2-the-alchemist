@@ -11,7 +11,7 @@ public class Sepsis : AlchemistCard
 {
     public Sepsis() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("percent", 50, 0);
+        WithVar("percent", 25, 25);
         WithPower<PoisonPower>(3, -1);
     }
 

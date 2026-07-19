@@ -12,6 +12,7 @@ public class BitterDraught : AlchemistCard
     {
         WithEnergy(2, 1);
         WithPower<PoisonPower>(2, 1);
+        WithKeyword(CardKeyword.Exhaust);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
