@@ -83,7 +83,8 @@ The `release` command (see `do_release` in `scripts/dev.sh`) does these steps:
 4. **Build and package**: the command runs `dotnet publish`. It then writes two
    files:
    - `dist/Alchemist-vX.Y.Z.zip`, the file that players install (see below).
-   - `dist/RELEASE_NOTES-vX.Y.Z.txt`, the changelog section for this version. Use
+   - `dist/RELEASE_NOTES-vX.Y.Z.txt`, the changelog section for this version, with
+     each bullet on one line because both paste targets wrap text themselves. Use
      it for the GitHub Release body and for the Workshop update note.
 5. **Stop and print**: the command stops. It prints the git commands below. You
    must run these commands yourself. The command does not commit, tag, or push

@@ -260,12 +260,23 @@ do_release() {  # <patch|minor|major|X.Y.Z> [--skip-tests]
   ls -lh "$zipfile"
 
   # Get the notes of this version for the GitHub Release body or the Workshop comment.
+  # The changelog wraps its bullets to keep the markdown source readable. Both paste
+  # targets wrap text themselves, so the second stage puts each bullet back on one line.
+  # A bullet at any depth starts a new line; an indented line that is not a bullet is a
+  # wrap of the bullet above it and joins back onto it.
   local notes="$DIST/RELEASE_NOTES-v$new.txt"
   awk -v ver="$new" '
     $0 ~ "^## \\[" ver "\\]" {grab=1; print; next}
     grab && /^## \[/ {exit}
     grab {print}
-  ' "$CHANGELOG" > "$notes"
+  ' "$CHANGELOG" | awk '
+    function flush() { if (line != "") { print line; line = "" } }
+    /^[[:space:]]*-[[:space:]]/  { flush(); line = $0; next }
+    /^[[:space:]]*$/             { flush(); print; next }
+    /^[[:space:]]/ && line != "" { sub(/^[[:space:]]+/, ""); line = line " " $0; next }
+    { flush(); print }
+    END { flush() }
+  ' > "$notes"
 
   echo
   ok "v$new is ready: the files are updated, the artifact and the notes are in dist/"
