@@ -25,9 +25,11 @@ public class InversionPower : AlchemistPower
         _resolving = true;
         try
         {
-            // Snapshot the alive enemies so a mid-sequence kill is respected
+            // Snapshot the alive enemies so a mid-sequence kill is respected. Unpowered keeps this out of
+            // the attack pipeline: the damage is a percent of the heal, so Strength, Vigor, and Vulnerable
+            // must not change it. The base game reactive powers, Flame Barrier and Reflect, pass the same
             foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
-                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), enemy, damage, ValueProp.Move, Owner, null, null);
+                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), enemy, damage, ValueProp.Unpowered, Owner, null, null);
         }
         finally
         {

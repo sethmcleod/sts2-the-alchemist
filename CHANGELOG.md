@@ -49,6 +49,8 @@ Security.
   Archaic Tooth
 - Fixed Winnow and Waste Not cards showing the raw text
   "card_selection.CHOOSE_CARD_HEADER" on their selection screen
+- Fixed Inversion card damage being increased by Strength, Vigor, and Vulnerable;
+  it is now always the stated percent of the heal
 
 ## [0.2.0] - 2026-07-19
 
