@@ -22,6 +22,13 @@ Security.
   - Basilisk Bile (thrown): "Trigger Poison on ALL enemies 2 times."
   - Alkahest: "If used in combat, Infuse up to 3 cards in your Hand. Otherwise,
     upgrade a card in your Deck."
+- Added Venom Trance card (Uncommon Skill, 1 Energy): "If an enemy has 8 (6) or
+  more Poison, take an extra turn after this one. Exhaust." Replaces Transpose
+
+### Removed
+
+- Removed Transpose card, replaced by Venom Trance
+
 ### Changed
 
 - Increased Double Dose card Enchanted bonus 1 Weak -> 2 Weak

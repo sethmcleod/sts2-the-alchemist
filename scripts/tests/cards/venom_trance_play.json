@@ -1,0 +1,11 @@
+{
+  "name": "venom_trance_play",
+  "group": "cards",
+  "description": "Venom Trance plays at 1 Energy with the Poison threshold met (extra turn itself is verified by hand)",
+  "setup": {"character": "Alchemist", "seed": "ALCHREG6", "fight": "SLIMES_WEAK"},
+  "checks": [
+    {"do": {"console": "power POISON_POWER 8 1"}, "delay": 0.4},
+    {"do": {"console": "card ALCHEMIST-VENOM_TRANCE"}, "delay": 0.4},
+    {"do": {"play_card": "Venom Trance"}, "expect": {"energy": 2}, "timeout": 6}
+  ]
+}
