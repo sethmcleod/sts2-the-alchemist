@@ -3,7 +3,7 @@
   "ALCHEMIST-FERMENT.title": "Ferment",
   "ALCHEMIST-GAMBIT.description": "While you are at [blue]50%[/blue] or less HP, this card has a [gold]Gambit[/gold] effect when played.",
   "ALCHEMIST-GAMBIT.title": "Gambit",
-  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks gain [blue]1[/blue] [purple]Toxic[/purple]; Skills gain [blue]1[/blue] [purple]Fuming[/purple]; Powers gain [blue]1[/blue] [purple]Exalted[/purple]. Other cards gain [gold]Ethereal[/gold].",
+  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks gain [blue]2[/blue] [purple]Toxic[/purple]; Skills gain [blue]1[/blue] [purple]Fuming[/purple]; Powers gain [blue]1[/blue] [purple]Exalted[/purple]. Other cards gain [gold]Ethereal[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Choose any number of cards to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Choose up to [blue]{MaxCount}[/blue] {MaxCount:plural:card|cards} to [gold]Infuse[/gold].",

@@ -23,6 +23,8 @@ Security.
 - Removed the Gambit effect from Zenith card
 - Masterwork card now glows gold when the card it Infuses will reach the
   7-Enchanted threshold
+- Buffed Infuse: Attacks now gain 2 Toxic, increased from 1. Fuming and Exalted
+  are unchanged at 1
 - Renamed Drain Dry to Draining Strike
 - Renamed Toxic Shard to Glowing Shard
 - Reworked Auric Seal relic: "Cards you create are always Upgraded." -> "At the

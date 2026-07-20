@@ -45,13 +45,20 @@ public static class Infusion
     // records them, so the Masterwork threshold also counts enchantments from other mods, not only Infuse
     private static readonly HashSet<CardModel> EnchantedThisCombat = new();
 
-    // The Infuse keyword tip, plus one tip for each enchantment that Infuse can grant. The default
-    // amount of 1 is one Infuse
+    // The amount of each enchantment that one Infuse grants. Toxic is 2, because 1 Poison per hit is too
+    // small next to a Foul Vapor or a Strength. The tips and the enchant use these same constants, and
+    // FromEnchantment defaults to 1, so a tip that does not pass one of these goes stale in silence
+    private const int ToxicAmount = 2;
+    private const int FumingAmount = 1;
+    private const int ExaltedAmount = 1;
+
+    // The Infuse keyword tip, plus one tip for each enchantment that Infuse can grant, each at the
+    // amount that one Infuse gives
     public static IEnumerable<IHoverTip> InfuseTips() =>
         new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
-            .Concat(HoverTipFactory.FromEnchantment<Toxic>().Take(1))
-            .Concat(HoverTipFactory.FromEnchantment<Fuming>().Take(1))
-            .Concat(HoverTipFactory.FromEnchantment<Exalted>().Take(1));
+            .Concat(HoverTipFactory.FromEnchantment<Toxic>(ToxicAmount).Take(1))
+            .Concat(HoverTipFactory.FromEnchantment<Fuming>(FumingAmount).Take(1))
+            .Concat(HoverTipFactory.FromEnchantment<Exalted>(ExaltedAmount).Take(1));
 
     public static void RecordCombatEnchant(CardModel card) => EnchantedThisCombat.Add(card);
 
@@ -124,22 +131,22 @@ public static class Infusion
         switch (card.Type)
         {
             case CardType.Attack:
-                TryEnchant<Toxic>(card);
+                TryEnchant<Toxic>(card, ToxicAmount);
                 break;
             case CardType.Skill:
-                TryEnchant<Fuming>(card);
+                TryEnchant<Fuming>(card, FumingAmount);
                 break;
             case CardType.Power:
-                TryEnchant<Exalted>(card);
+                TryEnchant<Exalted>(card, ExaltedAmount);
                 break;
         }
     }
 
     // Enchant adds `amount` to the enchantment. It stacks if the card already has the same one
-    private static void TryEnchant<T>(CardModel card) where T : EnchantmentModel
+    private static void TryEnchant<T>(CardModel card, int amount) where T : EnchantmentModel
     {
         if (!ModelDb.Enchantment<T>().CanEnchant(card)) return;
-        CardCmd.Enchant<T>(card, 1);
+        CardCmd.Enchant<T>(card, amount);
         Infused.Add(card);
     }
 
