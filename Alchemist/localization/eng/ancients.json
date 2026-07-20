@@ -32,7 +32,7 @@
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-2.ancient": "Ha! That's just junk gone rotten. Take the whole pile, it's stinking up the place!",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-2.next": "Continue",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-2.ancient.sfx": "event:/sfx/npcs/darv/darv_endeared",
-  "DARV.talk.ALCHEMIST-ALCHEMIST.0-3.char": "[sine]'Rotten.' You say that like it's the end. It's barely the middle.[/sine]",
+  "DARV.talk.ALCHEMIST-ALCHEMIST.0-3.char": "[sine]'Rotten.'[/sine] You say that like it's the end. It's barely the middle.",
   "DARV.talk.ALCHEMIST-ALCHEMIST.1-0.ancient": "Back already? Go on then — what're ya digging for?",
   "DARV.talk.ALCHEMIST-ALCHEMIST.1-0.next": "Answer",
   "DARV.talk.ALCHEMIST-ALCHEMIST.1-0.ancient.sfx": "event:/sfx/npcs/darv/darv_excited",

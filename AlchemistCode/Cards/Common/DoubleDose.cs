@@ -11,6 +11,7 @@ public class DoubleDose : AlchemistCard
     public DoubleDose() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(4, 1);
+        WithVar("Weak", 2, 0);
         WithTip(typeof(WeakPower));
     }
 
@@ -21,6 +22,6 @@ public class DoubleDose : AlchemistCard
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
         if (IsEnchanted)
-            await PowerCmd.Apply<WeakPower>(choiceContext, play.Target!, 1, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(choiceContext, play.Target!, DynamicVars["Weak"].IntValue, Owner.Creature, this);
     }
 }

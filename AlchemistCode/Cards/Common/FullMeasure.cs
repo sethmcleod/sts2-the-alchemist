@@ -13,7 +13,7 @@ public class FullMeasure : AlchemistCard
     {
         WithCalculatedDamage(7, 3, static (card, _) =>
             PileType.Hand.GetPile(((AlchemistCard)card).Owner).Cards.Count(c => c.Enchantment != null),
-            ValueProp.Move, 3, 0);
+            ValueProp.Move, 4, 0);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

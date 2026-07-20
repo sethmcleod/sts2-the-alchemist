@@ -16,10 +16,11 @@ public class Sublimate : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Min 0, max unbounded, i.e. "any number"
+        // Min 0, max unbounded, i.e. "any number". The shared TransformSelectionPrompt prints the max
+        // count, so this uses a per-card prompt with no count, as the base game Guards does
         var selected = await CardSelectCmd.FromHand(
             choiceContext, Owner,
-            new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 0, 999999999),
+            new CardSelectorPrefs(SelectionScreenPrompt, 0, AnyNumber),
             null, this);
         foreach (var card in selected)
         {

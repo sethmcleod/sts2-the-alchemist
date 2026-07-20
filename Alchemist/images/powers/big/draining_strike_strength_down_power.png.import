@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3ffbx7daho8n"
-path="res://.godot/imported/drain_dry.png-a7e1ae68e30939a315f962961662ebea.ctex"
+uid="uid://jke64aku6bve"
+path="res://.godot/imported/draining_strike_strength_down_power.png-919432b6c8f88a3dfc85c6402f09f85a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/drain_dry.png"
-dest_files=["res://.godot/imported/drain_dry.png-a7e1ae68e30939a315f962961662ebea.ctex"]
+source_file="res://Alchemist/images/powers/big/draining_strike_strength_down_power.png"
+dest_files=["res://.godot/imported/draining_strike_strength_down_power.png-919432b6c8f88a3dfc85c6402f09f85a.ctex"]
 
 [params]
 

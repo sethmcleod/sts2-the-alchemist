@@ -19,6 +19,10 @@ namespace Alchemist.AlchemistCode.Cards;
 [Pool(typeof(AlchemistCardPool))]
 public abstract class AlchemistCard : ConstructedCardModel
 {
+    // The max count for a card selection with no upper bound. The base game uses the same literal. A prompt
+    // that goes with this count must not print {Amount} or {MaxCount}, because the count shows as-is
+    public const int AnyNumber = 999999999;
+
     protected AlchemistCard(int cost, CardType type, CardRarity rarity, TargetType target)
         : base(cost, type, rarity, target)
     {
@@ -55,6 +59,11 @@ public abstract class AlchemistCard : ConstructedCardModel
     // Owner, which throws on a canonical model (the compendium). Each card does not need its own guard
     protected override bool ShouldGlowGoldInternal =>
         IsMutable && ((IsGambitCard && IsReduced) || ConditionalGlow);
+
+    // A Seep card glows green while it stays in hand, because it pays off if you do not play it. The hand
+    // glow patch reads this. Gold wins when a card is both, for example a reduced Lash Out: gold is the
+    // transient "play this now" signal, and the green is constant. The IsMutable gate is the same as above
+    internal bool ShouldGlowSeep => IsMutable && IsSeepCard && !ShouldGlowGold && !ShouldGlowRed;
 
     internal bool HpFractionInRange(double lower, double upper)
     {

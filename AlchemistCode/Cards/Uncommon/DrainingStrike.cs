@@ -7,13 +7,15 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-public class DrainDry : AlchemistCard
+public class DrainingStrike : AlchemistCard
 {
     protected override bool IsSeepCard => true;
 
-    public DrainDry() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public DrainingStrike() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(14, 4);
+        // A "Strike" card, so base-game strike synergies (e.g. Perfected Strike) count it
+        WithTags(CardTag.Strike);
         WithTip(typeof(StrengthPower));
         WithTip(typeof(PoisonPower));
     }
@@ -22,7 +24,7 @@ public class DrainDry : AlchemistCard
     {
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
         if (play.Target != null)
-            await PowerCmd.Apply<DrainDryStrengthDownPower>(choiceContext, play.Target, 6, Owner.Creature, this);
+            await PowerCmd.Apply<DrainingStrikeStrengthDownPower>(choiceContext, play.Target, 6, Owner.Creature, this);
     }
 
     protected override async Task OnSeep(PlayerChoiceContext choiceContext)

@@ -1,3 +1,4 @@
+using System;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -17,14 +18,16 @@ public class InversionPower : AlchemistPower
     public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
         if (creature != Owner || delta <= 0 || _resolving || Amount <= 0) return;
+        // The amount is a percent of the heal. Round down, and skip a heal too small to convert
+        var damage = Math.Floor(delta * Amount / 100m);
+        if (damage <= 0) return;
         Flash();
         _resolving = true;
         try
         {
-            // Re-snapshot the alive enemies each hit so mid-sequence kills are respected
-            for (var i = 0; i < Amount; i++)
-                foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
-                    await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), enemy, delta, ValueProp.Move, Owner, null, null);
+            // Snapshot the alive enemies so a mid-sequence kill is respected
+            foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
+                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), enemy, damage, ValueProp.Move, Owner, null, null);
         }
         finally
         {

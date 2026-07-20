@@ -30,8 +30,10 @@ public static class Infusion
 
     // Exact-count prompt ("Choose a card"/"Choose 2 cards"); the range prompt ("Choose up to N cards") is used
     // when the player may pick fewer than the max. CardSelectorPrefs injects {Amount}/{MinCount}/{MaxCount}.
+    // The unbounded prompt ("Choose cards") prints no count, because an unbounded max is a sentinel number
     private static LocString SelectPrompt => new("card_keywords", "ALCHEMIST-INFUSE.selectionPrompt");
     private static LocString SelectPromptRange => new("card_keywords", "ALCHEMIST-INFUSE.selectionPromptRange");
+    private static LocString SelectPromptAny => new("card_keywords", "ALCHEMIST-INFUSE.selectionPromptAny");
 
     private static readonly HashSet<CardModel> Infused = new();
 
@@ -69,11 +71,14 @@ public static class Infusion
     public static Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count) =>
         InfuseChosen(ctx, source, pile, count, count);
 
-    // min/max lets the player choose how many to infuse: "up to N" (0..N) or "any number" (0..huge)
+    // min/max lets the player choose how many to infuse: "up to N" (0..N) or "any number"
+    // (0..AlchemistCard.AnyNumber)
     public static async Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile,
         int min, int max)
     {
-        var prompt = min == max ? SelectPrompt : SelectPromptRange;
+        var prompt = max >= AlchemistCard.AnyNumber ? SelectPromptAny
+            : min == max ? SelectPrompt
+            : SelectPromptRange;
         var prefs = new CardSelectorPrefs(prompt, min, max);
         var picks = (pile == PileType.Hand
             ? await CardSelectCmd.FromHand(ctx, source.Owner, prefs, CanInfuse, source)

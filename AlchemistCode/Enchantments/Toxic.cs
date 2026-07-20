@@ -18,7 +18,10 @@ public sealed class Toxic : AlchemistEnchantment
     public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer,
         DamageResult result, ValueProp props, Creature target, CardModel? cardSource)
     {
-        if (cardSource == Card && result.UnblockedDamage > 0)
+        // IsPoweredAttack keeps this to the card's attack. A card can also deal incidental damage that
+        // carries itself as the source, such as a Poison trigger or a loss of HP. That damage is Unpowered,
+        // and it must not apply Poison. The base game EnvenomPower has the same guard
+        if (cardSource == Card && props.IsPoweredAttack() && result.UnblockedDamage > 0)
             await PowerCmd.Apply<PoisonPower>(choiceContext, target, Amount, Card.Owner.Creature, null);
     }
 }

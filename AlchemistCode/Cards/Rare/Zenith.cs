@@ -8,8 +8,6 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Zenith : AlchemistCard
 {
-    protected override bool IsGambitCard => true;
-
     public Zenith() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithKeyword(CardKeyword.Exhaust);
@@ -31,7 +29,5 @@ public class Zenith : AlchemistCard
             if (regen > 0)
                 await PowerCmd.Apply<RegenPower>(choiceContext, creature, regen * multiplier, Owner.Creature, this);
         }
-        if (IsReduced)
-            await CreatureCmd.Heal(Owner.Creature, 2);
     }
 }

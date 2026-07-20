@@ -9,12 +9,12 @@ public class Inversion : AlchemistCard
 {
     public Inversion() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Hits", 1, 1);
+        WithVar("Percent", 50, 50);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<InversionPower>(choiceContext, Owner.Creature,
-            DynamicVars["Hits"].IntValue, Owner.Creature, this);
+            DynamicVars["Percent"].IntValue, Owner.Creature, this);
     }
 }

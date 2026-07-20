@@ -18,8 +18,11 @@ public class Masterwork : AlchemistCard
         WithTips(_ => Infusion.InfuseTips());
     }
 
+    // The play itself infuses one card, so the glow turns on one below the threshold: the play that
+    // starts now can reach 7. OnPlay still checks the real count after the infusion, because an infuse
+    // of an already Enchanted card adds no new card
     protected override bool ConditionalGlow =>
-        Infusion.EnchantedThisCombatCount(Owner) >= EnchantThreshold;
+        Infusion.EnchantedThisCombatCount(Owner) >= EnchantThreshold - 1;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
