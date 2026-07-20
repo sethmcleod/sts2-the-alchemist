@@ -99,6 +99,8 @@ Security.
   999999999
 - Toxic enchantment now only applies Poison from the enchanted card's attack, not
   from its Poison triggers or HP loss
+- Gold Leaf potion now shows its heal and Block total live in parentheses. Before,
+  the value was missing or stale, because it was fixed when you got the potion
 - Fixed the Orobas event never offering Archaic Tooth relic to the Alchemist; it
   now transcends Prime -> Aureate
 - Fixed Dusty Tome relic being able to give Aureate, which now comes only from
