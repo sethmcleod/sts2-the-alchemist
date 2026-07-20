@@ -53,6 +53,12 @@ public static class PotionSellPatches
         return owner.RunState.CurrentRoom is MerchantRoom;
     }
 
+    // The sell price comes from the rarity. Ambergris is the one exception: a heal for half of your
+    // maximum HP plus an extra turn is worth much more than its rarity shows. Keep such an override rare,
+    // because the rarity must stay the rule that a player can predict
+    private static int GetGoldFor(PotionModel potion) =>
+        potion is Ambergris ? 150 : GetGoldForRarity(potion.Rarity);
+
     private static int GetGoldForRarity(PotionRarity rarity)
     {
         return rarity switch
@@ -90,7 +96,7 @@ public static class PotionSellPatches
 
     private static async Task SellPotion(PotionModel potion)
     {
-        var gold = GetGoldForRarity(potion.Rarity);
+        var gold = GetGoldFor(potion);
         var owner = potion.Owner;
         potion.RemoveBeforeUse();
 
@@ -124,7 +130,7 @@ public static class PotionSellPatches
 
             var useButton = (NPotionPopupButton)UseButtonField.GetValue(__instance)!;
 
-            var gold = GetGoldForRarity(potion.Rarity);
+            var gold = GetGoldFor(potion);
             var locString = new LocString("gameplay_ui", "POTION_SELL.button");
             locString.Add("Gold", gold);
             SetButtonText(useButton, locString.GetFormattedText(), new Color(0.9f, 0.77f, 0.3f));

@@ -31,6 +31,8 @@ Security.
   start of your turn, Infuse a random card in your Hand."
 - Seep cards now glow green in Hand to signify something will happen if not
   played
+- Ambergris potion now sells to the Merchant for 150g, up from 50g, to match how
+  strong it is. It is the only potion whose price does not follow its rarity
 - Updated flavor text for many relics
 - Mod name in the mods list and mod-source tooltips changed from "The Alchemist
   (Alchemist)" -> "Alchemist"
