@@ -3,7 +3,9 @@ using BaseLib.Config;
 using Godot;
 using HarmonyLib;
 using Alchemist.AlchemistCode.Config;
+using Alchemist.AlchemistCode.Potions;
 using MegaCrit.Sts2.Core.Modding;
+using MegaCrit.Sts2.Core.Models.PotionPools;
 
 namespace Alchemist.AlchemistCode;
 
@@ -37,6 +39,15 @@ public partial class MainFile : Node
 
         try
         {
+            RegisterBrewOnlyPotions();
+        }
+        catch (System.Exception e)
+        {
+            Logger.Error($"Failed to register Brew-only potions (they will show as Locked): {e}");
+        }
+
+        try
+        {
             Epochs.EpochRegistration.RegisterEpochs();
         }
         catch (System.Exception e)
@@ -45,5 +56,18 @@ public partial class MainFile : Node
         }
 
         ModConfigRegistry.Register("The Alchemist", new AlchemistModConfig());
+    }
+
+    // A Brew-only potion is kept out of the Alchemist potion pool so that nothing can generate it.
+    // That also makes UnlockState.Potions miss it, and the compendium then shows it as Locked.
+    // EventPotionPool is the pool the base game uses for a potion that is obtainable but never
+    // generated, such as Ambergris. No generation path reads it. See IBrewOnly
+    private static void RegisterBrewOnlyPotions()
+    {
+        foreach (var type in AccessTools.GetTypesFromAssembly(Assembly.GetExecutingAssembly()))
+        {
+            if (type.IsAbstract || !typeof(IBrewOnly).IsAssignableFrom(type)) continue;
+            ModHelper.AddModelToPool(typeof(EventPotionPool), type);
+        }
     }
 }

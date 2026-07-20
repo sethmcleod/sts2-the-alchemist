@@ -1,4 +1,5 @@
 using System.Reflection;
+using Alchemist.AlchemistCode.Potions;
 using Alchemist.AlchemistCode.Relics;
 using Godot;
 using HarmonyLib;
@@ -53,11 +54,16 @@ public static class PotionSellPatches
         return owner.RunState.CurrentRoom is MerchantRoom;
     }
 
-    // The sell price comes from the rarity. Ambergris is the one exception: a heal for half of your
-    // maximum HP plus an extra turn is worth much more than its rarity shows. Keep such an override rare,
-    // because the rarity must stay the rule that a player can predict
-    private static int GetGoldFor(PotionModel potion) =>
-        potion is Ambergris ? 150 : GetGoldForRarity(potion.Rarity);
+    // The sell price comes from the rarity. Two exceptions, and both must stay exceptions, because the
+    // rarity must stay the rule that a player can predict. Ambergris: a heal for half of your maximum HP
+    // plus an extra turn is worth much more than its rarity shows. A Brew-only potion: it carries Event
+    // rarity to keep it out of the generation rolls, but it is built to a Rare budget and sells as one
+    private static int GetGoldFor(PotionModel potion) => potion switch
+    {
+        Ambergris => 150,
+        IBrewOnly => GetGoldForRarity(PotionRarity.Rare),
+        _ => GetGoldForRarity(potion.Rarity)
+    };
 
     private static int GetGoldForRarity(PotionRarity rarity)
     {

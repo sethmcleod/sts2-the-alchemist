@@ -14,7 +14,9 @@ namespace Alchemist.AlchemistCode.Potions;
 
 public class BasiliskBile : AlchemistPotion, IBrewOnly
 {
-    public override PotionRarity Rarity => PotionRarity.Rare;
+    // Event rarity keeps this out of every rarity-filtered roll and files it under "Special" in the
+    // potion lab, which is where a potion that is "created by other means" belongs
+    public override PotionRarity Rarity => PotionRarity.Event;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
     public override TargetType TargetType => TargetType.AllEnemies;
 
