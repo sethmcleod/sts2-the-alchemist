@@ -54,6 +54,37 @@ the first draft:
 The `## [Unreleased]` section that you write is the release note. The `release`
 command does not run when the `## [Unreleased]` section is empty.
 
+### Entry style (match the official STS2 patch notes)
+
+Each entry must read like a line from a Mega Crit patch note. Study the real
+notes for the current voice: they ship in the game at
+`res://localization/eng/patch_notes/<date>.md` (extract with
+`extract_game_assets`). The rules below hold as of game v0.109.0.
+
+- **Lead with a past-tense verb**, then the entity and its kind, then the change:
+  - **Buffed** X card/relic/potion: `<stat>` increased from `A -> B`
+  - **Nerfed** X card/relic/potion: `<stat>` decreased from `A -> B`
+  - **Reworked** X card: `"old text" -> "new text"`
+  - **Changed** X card: use for rarity swaps, upgrade-path changes, or a mix of
+    a buff and a nerf that is neither on the whole
+  - **Added** / **Removed** / **Renamed** / **Moved** for those operations
+- **Buffed/Nerfed name the direction; the arrow shows the numbers.** Write
+  "Buffed X: damage increased from 6 -> 9", not "Increased X damage 6 -> 9". The
+  direction word must match the player's benefit, not the number: a lower
+  requirement is a **buff** ("free-cost condition decreased from 7 -> 5").
+- **Use the `A -> B` arrow** for every value change. For upgraded cards, the base
+  and upgraded values ride together: `50% (75%) -> 75% (100%)`.
+- **Quote new or reworked card text verbatim**, in the same wording the card
+  shows in game (see [CONTRIBUTING.md](CONTRIBUTING.md) for the text rules).
+- **One line per change.** Split a compound change into nested bullets rather
+  than a long sentence. Keep development detail and UI micro-copy out.
+- **Do not bold entity names.** The in-game notes wrap them in `[b]...[/b]`; this
+  file is plain Keep a Changelog markdown, and the released sections do not bold.
+
+A released version section is the published Steam Workshop note for that version.
+Do not rewrite a tagged section's meaning after release; a stylistic touch-up is
+fine, but update the Workshop note too if you have already posted it.
+
 ## How to cut a release
 
 ```sh

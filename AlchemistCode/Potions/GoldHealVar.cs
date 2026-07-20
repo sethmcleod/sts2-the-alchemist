@@ -19,7 +19,9 @@ public sealed class GoldHealVar : DynamicVar
     public override void SetOwner(AbstractModel owner)
     {
         base.SetOwner(owner);
-        if (owner is PotionModel { Owner: { } player })
+        // The IsMutable check must come first: the Owner getter throws on a canonical model, and the
+        // canonical model reaches here through its lazy DynamicVars build (see the project Owner rule)
+        if (owner is PotionModel { IsMutable: true, Owner: { } player })
             BaseValue = (int)(player.Gold / 15m);
     }
 

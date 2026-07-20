@@ -8,7 +8,7 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Sinter : AlchemistCard
 {
-    private const int ExhaustThreshold = 7;
+    private const int ExhaustThreshold = 5;
 
     public Sinter() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {

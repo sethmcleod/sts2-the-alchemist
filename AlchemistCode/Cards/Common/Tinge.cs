@@ -12,9 +12,9 @@ public class Tinge : AlchemistCard
 
     public Tinge() : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(3, 1);
+        WithDamage(3, 2);
         WithPower<PoisonPower>(2, 0);
-        WithVar("SeepRegen", 1, 1);
+        WithVar("SeepRegen", 1, 0);
         WithTip(typeof(RegenPower));
     }
 

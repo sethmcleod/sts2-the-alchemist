@@ -12,9 +12,9 @@ public class Trickle : AlchemistCard
 
     public Trickle() : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(4, 2);
-        WithCards(1, 0);
-        WithVar("SeepRegen", 1, 1);
+        WithDamage(4, 0);
+        WithCards(1, 1);
+        WithVar("SeepRegen", 1, 0);
         WithTip(typeof(RegenPower));
     }
 

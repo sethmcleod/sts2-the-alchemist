@@ -11,7 +11,7 @@ public class Poultice : AlchemistCard
 {
     public Poultice() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithPower<RegenPower>(2, 1);
+        WithPower<RegenPower>(1, 1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

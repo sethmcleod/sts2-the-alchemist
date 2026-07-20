@@ -16,6 +16,10 @@ This skill is the safe procedure. Follow it. Do not drive the game without it.
 - **Check the environment.** The command `scripts/dev.sh doctor` prints a ✓ or a ✗ for
   each prerequisite. It checks the SDK, the installed mods, the bridge response, and the
   Steam process. Start here if something is not correct.
+- **Every bridge-driven run needs Profile 3, also a manual run.** The suite selects the
+  profile itself, but `bridge_start_run` and console fixtures use the profile that is
+  active in the game. Confirm the active profile before you start a run by hand. A test
+  run on Profile 1 or 2 pollutes the Run History that the balance reviews read.
 - **Confirm that the save profile is a spare profile.** The suite starts runs and abandons
   runs many times. The settings tests also lock and unlock content. Thus the suite must
   run on **Profile 3, never Profile 1**. If you point the suite at a real save, it changes

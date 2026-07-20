@@ -1,12 +1,43 @@
 {
   "name": "catalyze_upgraded",
   "group": "cards",
-  "description": "Catalyze+ grants 3 Regen (base 2) on the first HP loss each turn",
-  "setup": {"character": "Alchemist", "seed": "CATUP1", "fight": "SLIMES_WEAK"},
+  "description": "Catalyze+ grants 2 Regen on the first HP loss each turn (the upgrade reduces the cost, not the Regen)",
+  "setup": {
+    "character": "Alchemist",
+    "seed": "CATUP1",
+    "fight": "SLIMES_WEAK"
+  },
   "checks": [
-    {"do": {"console": "card ALCHEMIST-CATALYZE"}, "delay": 0.4},
-    {"do": {"upgrade_card": "Catalyze"}, "delay": 0.4},
-    {"do": {"play_card": "Catalyze"}, "delay": 0.4},
-    {"do": {"console": "damage 3 0"}, "expect": {"power": {"name": "RegenPower", "amount": 3}}, "timeout": 6, "note": "upgraded Regen is 3 (base 2)"}
+    {
+      "do": {
+        "console": "card ALCHEMIST-CATALYZE"
+      },
+      "delay": 0.4
+    },
+    {
+      "do": {
+        "upgrade_card": "Catalyze"
+      },
+      "delay": 0.4
+    },
+    {
+      "do": {
+        "play_card": "Catalyze"
+      },
+      "delay": 0.4
+    },
+    {
+      "do": {
+        "console": "damage 3 0"
+      },
+      "expect": {
+        "power": {
+          "name": "RegenPower",
+          "amount": 2
+        }
+      },
+      "timeout": 6,
+      "note": "Regen stays 2 when upgraded"
+    }
   ]
 }

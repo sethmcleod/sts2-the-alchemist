@@ -13,19 +13,48 @@ Security.
 
 ## [Unreleased]
 
+### Changed
+
+- Reworked Anneal card and renamed it Quench: "Draw a card. Infuse a card in
+  your Hand. If this card is Enchanted, gain 2 (3) Regen." -> "Draw 1 (2) cards.
+  Infuse a card in your Hand. If this card is Enchanted, Infuse an additional
+  card."
+- Nerfed Poultice card: Regen decreased from 2 (3) -> 1 (2)
+- Nerfed Zenith card: cost increased from 2 -> 3 (2), and it now always Doubles
+  instead of Tripling when Upgraded
+- Changed Tinge card upgrade: damage now increases 3 -> 5 instead of 3 -> 4, and
+  Seep Regen stays at 1 instead of increasing to 2
+- Changed Trickle card upgrade: now draws 2 cards instead of dealing more damage,
+  and Seep Regen stays at 1 instead of increasing to 2
+- Changed Catalyze card upgrade: Regen stays at 2, and the upgrade still reduces
+  cost 2 -> 1
+- Buffed Carapace card: Block per turn fermented increased from 50% (75%) ->
+  75% (100%)
+- Buffed Rolling Boil card: damage per turn fermented increased from 50% (75%) ->
+  75% (100%)
+- Buffed Patient Strike card: damage per turn fermented increased from
+  75% (100%) -> 100% (125%)
+- Buffed Sinter card: free-cost condition decreased from 7 -> 5 cards in your
+  Exhaust Pile
+
+### Fixed
+
+- Fixed a potential crash when the game renders the Gold Leaf potion outside a
+  run, such as in the Potion Lab
+
 ## [0.3.0] - 2026-07-20
 
 ### Added
 
-- Added 3 Brew-only Rare potions. They never appear in shops, rewards, or random
-  potion generation; about 1 in 3 Brews offers one instead of a normal potion:
+- Added 3 Brew-only potions, offered only when you Brew (never from shops,
+  rewards, or random generation) at roughly 1 in 3 Brews:
   - Quicksilver Draught: "Take an extra turn after this one. Draw no cards at
     the start of it."
   - Basilisk Bile (thrown): "Trigger Poison on ALL enemies 2 times."
   - Alkahest: "If used in combat, Infuse up to 3 cards in your Hand. Otherwise,
     upgrade a card in your Deck."
-- Added Venom Trance card (Uncommon Skill, 1 Energy): "If an enemy has 8 (6) or
-  more Poison, take an extra turn after this one. Exhaust." Replaces Transpose
+- Added Venom Trance card (Uncommon Skill, cost 1): "If an enemy has 8 (6) or
+  more Poison, take an extra turn after this one. Exhaust."
 
 ### Removed
 
@@ -34,15 +63,14 @@ Security.
 ### Changed
 
 - Buffed Aqua Vitae relic: now also grants 1 Regen whenever you use a potion
-- Buffed Gold Leaf potion: now also grants 1 Block for every 15 Gold you have.
-  The card face shows the current total in green during a run
+- Buffed Gold Leaf potion: now also grants 1 Block for every 15 Gold you have
 - Reworked Midas Fruit relic: "Whenever you gain Gold, heal 1 HP for every 15
   Gold gained." -> "Upon pickup, add 1 Unripe Fruit to your Deck." The Unripe
   Fruit ripens into a Golden Fruit after 4 combats: "Heal 8 HP. Gain 25 Gold.
   Take an extra turn after this one. Exhaust."
-
-- Increased Double Dose card Enchanted bonus 1 Weak -> 2 Weak
-- Increased Full Measure card bonus damage per Enchanted card in Hand 3 -> 4
+- Buffed Double Dose card: Enchanted bonus increased from 1 -> 2 Weak
+- Buffed Full Measure card: bonus damage per Enchanted card in Hand increased
+  from 3 -> 4
 - Reworked Inversion card: "Whenever you are healed, deal that much damage to ALL
   enemies 1 (2) time(s)." -> "Whenever you are healed, deal 50% (100%) of that
   much damage to ALL enemies."

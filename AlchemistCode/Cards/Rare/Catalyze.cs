@@ -10,7 +10,7 @@ public class Catalyze : AlchemistCard
 {
     public Catalyze() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("Amount", 2, 1);
+        WithVar("Amount", 2, 0);
         WithCostUpgradeBy(-1);
         WithTip(typeof(RegenPower));
     }
