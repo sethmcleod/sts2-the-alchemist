@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-20
+
 ### Added
 
 - Added 3 Brew-only Rare potions. They never appear in shops, rewards, or random
