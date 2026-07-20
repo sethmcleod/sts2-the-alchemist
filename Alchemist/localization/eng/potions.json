@@ -1,8 +1,14 @@
 {
+  "ALCHEMIST-ALKAHEST.description": "If used in combat, [gold]Infuse[/gold] up to [blue]3[/blue] cards in your [gold]Hand[/gold]. Otherwise, upgrade a card in your [gold]Deck[/gold].",
+  "ALCHEMIST-ALKAHEST.title": "Alkahest",
+  "ALCHEMIST-BASILISK_BILE.description": "Trigger [gold]Poison[/gold] on ALL enemies [blue]2[/blue] times.",
+  "ALCHEMIST-BASILISK_BILE.title": "Basilisk Bile",
   "ALCHEMIST-GOLD_LEAF.description": "Heal [green]1[/green] HP for every [blue]15[/blue] [gold]Gold[/gold] you have.{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Gold Leaf",
   "ALCHEMIST-MARSH_TONIC.description": "Gain [blue]3[/blue] [gold]Regen[/gold] and [blue]3[/blue] [gold]Poison[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Marsh Tonic",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Take an extra turn after this one. Draw no cards at the start of it.",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Quicksilver Draught",
   "ALCHEMIST-REFINED_EXTRACT.description": "Add [blue]2[/blue] [gold]Distillates[/gold] into your [gold]Hand[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Refined Extract"
 }

@@ -78,6 +78,19 @@ public static class Infusion
     public static Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count) =>
         InfuseChosen(ctx, source, pile, count, count);
 
+    // For a non-card source, for example a potion. Hand only, because a potion has no pile of its own
+    public static async Task InfuseChosenFromHand(PlayerChoiceContext ctx, AbstractModel source, Player owner,
+        int min, int max)
+    {
+        var prompt = max >= AlchemistCard.AnyNumber ? SelectPromptAny
+            : min == max ? SelectPrompt
+            : SelectPromptRange;
+        var prefs = new CardSelectorPrefs(prompt, min, max);
+        var picks = (await CardSelectCmd.FromHand(ctx, owner, prefs, CanInfuse, source)).ToList();
+        foreach (var card in picks)
+            Infuse(card);
+    }
+
     // min/max lets the player choose how many to infuse: "up to N" (0..N) or "any number"
     // (0..AlchemistCard.AnyNumber)
     public static async Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile,

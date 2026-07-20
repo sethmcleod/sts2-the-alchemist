@@ -13,6 +13,15 @@ Security.
 
 ## [Unreleased]
 
+### Added
+
+- Added 3 Brew-only Rare potions. They never appear in shops, rewards, or random
+  potion generation; about 1 in 3 Brews offers one instead of a normal potion:
+  - Quicksilver Draught: "Take an extra turn after this one. Draw no cards at
+    the start of it."
+  - Basilisk Bile (thrown): "Trigger Poison on ALL enemies 2 times."
+  - Alkahest: "If used in combat, Infuse up to 3 cards in your Hand. Otherwise,
+    upgrade a card in your Deck."
 ### Changed
 
 - Increased Double Dose card Enchanted bonus 1 Weak -> 2 Weak

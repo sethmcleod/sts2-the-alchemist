@@ -1,4 +1,5 @@
 using System.Reflection;
+using Alchemist.AlchemistCode.Potions;
 using Godot;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,6 +9,7 @@ using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Rewards;
 
 namespace Alchemist.AlchemistCode.Relics;
@@ -60,9 +62,27 @@ public sealed class BrewRestSiteOption : RestSiteOption
             }
         }
 
-        var potionReward = new PotionReward(Owner);
-        await RewardsCmd.OfferCustom(Owner, [potionReward]);
+        await RewardsCmd.OfferCustom(Owner, [CreateBrewReward()]);
         return true;
+    }
+
+    // Brew-only potions are not in the potion pool, so the default reward can never roll them.
+    // A 30% roll offers one of them instead, minus any the player already holds. Across the
+    // 3 to 7 Brews of a typical run, this shows at least one Brew-only potion in most runs
+    private const float BrewOnlyChance = 0.3f;
+
+    private PotionReward CreateBrewReward()
+    {
+        var rng = Owner.PlayerRng.Rewards;
+        var exclusives = new PotionModel[]
+        {
+            ModelDb.Potion<QuicksilverDraught>(),
+            ModelDb.Potion<BasiliskBile>(),
+            ModelDb.Potion<Alkahest>(),
+        }.Where(p => Owner.Potions.All(held => held.Id != p.Id)).ToList();
+        if (exclusives.Count > 0 && rng.NextFloat() < BrewOnlyChance)
+            return new PotionReward(rng.NextItem(exclusives)!.ToMutable(), Owner);
+        return new PotionReward(Owner);
     }
 
     private static int GetRemovableCardCount(Player player)
