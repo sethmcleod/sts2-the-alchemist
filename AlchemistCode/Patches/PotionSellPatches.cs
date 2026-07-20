@@ -243,7 +243,6 @@ public static class PotionSellPatches
             holder.AddChild(badge);
             badge.Position = new Vector2(holder.Size.X * 0.5f - iconSize * 0.5f, holder.Size.Y + 14f);
             badge.Modulate = new Color(1f, 1f, 1f, 0f);
-            AddOutline(badge, 3f);
 
             var pop = badge.CreateTween();
             if (delay > 0f) pop.TweenInterval(delay);
