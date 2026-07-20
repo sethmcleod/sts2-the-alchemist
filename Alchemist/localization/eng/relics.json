@@ -17,7 +17,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]Poison[/gold] is triggered against enemies [blue]1[/blue] additional time.",
   "ALCHEMIST-GLOWING_SHARD.flavor": "The glow outlasts everyone who admires it.",
   "ALCHEMIST-GLOWING_SHARD.title": "Glowing Shard",
-  "ALCHEMIST-MIDAS_FRUIT.description": "Whenever you gain [gold]Gold[/gold], heal [green]1[/green] HP for every [blue]15[/blue] [gold]Gold[/gold] gained.",
+  "ALCHEMIST-MIDAS_FRUIT.description": "Upon pickup, add [blue]1[/blue] [gold]Unripe Fruit[/gold] to your [gold]Deck[/gold].",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "Midas grasped poorly, but he planted well.",
   "ALCHEMIST-MIDAS_FRUIT.title": "Midas Fruit",
   "ALCHEMIST-SNAKE_TAIL.description": "The first time [gold]Poison[/gold] would reduce your HP to 0, heal to [green]33%[/green] of your Max HP instead (works once).",

@@ -31,6 +31,11 @@ Security.
 
 ### Changed
 
+- Reworked Midas Fruit relic: "Whenever you gain Gold, heal 1 HP for every 15
+  Gold gained." -> "Upon pickup, add 1 Unripe Fruit to your Deck." The Unripe
+  Fruit ripens into a Golden Fruit after 4 combats: "Heal 8 HP. Gain 25 Gold.
+  Take an extra turn after this one. Exhaust."
+
 - Increased Double Dose card Enchanted bonus 1 Weak -> 2 Weak
 - Increased Full Measure card bonus damage per Enchanted card in Hand 3 -> 4
 - Reworked Inversion card: "Whenever you are healed, deal that much damage to ALL
