@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Potions;
 
@@ -18,8 +19,11 @@ public class GoldLeaf : AlchemistPotion
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        var heals = (int)(Owner.Gold / 15m);
-        if (heals > 0)
-            await CreatureCmd.Heal(Owner.Creature, heals);
+        var total = (int)(Owner.Gold / 15m);
+        if (total <= 0) return;
+        await CreatureCmd.Heal(Owner.Creature, total);
+        // The potion is usable at any time, and Block outside a combat has nothing to sit on
+        if (Owner.Creature.CombatState != null)
+            await CreatureCmd.GainBlock(Owner.Creature, total, ValueProp.Unpowered, null);
     }
 }

@@ -32,6 +32,8 @@ Security.
 ### Changed
 
 - Buffed Aqua Vitae relic: now also grants 1 Regen whenever you use a potion
+- Buffed Gold Leaf potion: now also grants 1 Block for every 15 Gold you have.
+  The card face shows the current total in green during a run
 - Reworked Midas Fruit relic: "Whenever you gain Gold, heal 1 HP for every 15
   Gold gained." -> "Upon pickup, add 1 Unripe Fruit to your Deck." The Unripe
   Fruit ripens into a Golden Fruit after 4 combats: "Heal 8 HP. Gain 25 Gold.
