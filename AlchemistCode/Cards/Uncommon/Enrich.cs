@@ -17,7 +17,8 @@ public class Enrich : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CardPileCmd.Draw(choiceContext, DynamicVars["draw"].IntValue, Owner);
+        // Infuse first, so the draw can find the infused cards
         await Infusion.InfuseChosen(choiceContext, this, PileType.Draw, 0, 2);
+        await CardPileCmd.Draw(choiceContext, DynamicVars["draw"].IntValue, Owner);
     }
 }

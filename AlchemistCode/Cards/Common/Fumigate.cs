@@ -1,10 +1,7 @@
-using Alchemist.AlchemistCode;
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Localization;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
@@ -12,15 +9,27 @@ public class Fumigate : AlchemistCard
 {
     public Fumigate() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
-        WithCalculatedDamage(1, 1, static (card, _) =>
-            PileType.Exhaust.GetPile(((AlchemistCard)card).Owner).Cards.Count, ValueProp.Move, 0, 0);
-        WithPower<PoisonPower>(3, -1);
-        WithTip(typeof(PoisonPower));
+        WithDamage(1, 0);
+        WithKeyword(CardKeyword.Exhaust, UpgradeType.Remove);
+    }
+
+    // A null CombatState means the deck view or the compendium, where the count is 0
+    private int ExhaustCount =>
+        IsMutable && CombatState != null ? PileType.Exhaust.GetPile(Owner).Cards.Count : 0;
+
+    protected override bool ConditionalGlow => ExhaustCount > 0;
+
+    // Show the exhausted-card count in green, the same live parentheses Fighting Spirits uses
+    protected override void AddExtraArgsToDescription(LocString description)
+    {
+        base.AddExtraArgsToDescription(description);
+        description.Add("ExhaustCards",
+            ExhaustCount is var n and > 0 ? $" ([green]{n}[/green])" : "");
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
-        await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);
+        var hitCount = 1 + ExhaustCount;
+        await CommonActions.CardAttack(this, play, hitCount).Execute(choiceContext);
     }
 }

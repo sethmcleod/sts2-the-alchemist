@@ -10,8 +10,9 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class GoldenTouch : AlchemistCard
 {
-    public GoldenTouch() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public GoldenTouch() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
+        WithCostUpgradeBy(-1);
         // Only the upgrade Infuses, so the tips are only shown there
         WithTips(card => card.IsUpgraded ? Infusion.InfuseTips() : Array.Empty<IHoverTip>());
     }

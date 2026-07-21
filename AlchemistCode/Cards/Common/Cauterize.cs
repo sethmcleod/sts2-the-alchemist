@@ -12,8 +12,8 @@ public class Cauterize : AlchemistCard
 
     public Cauterize() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(5, 2);
-        WithPower<RegenPower>(2, 0);
+        WithDamage(5, 3);
+        WithPower<RegenPower>(1, 0);
         WithVar("GambitRegen", 1, 0);
     }
 

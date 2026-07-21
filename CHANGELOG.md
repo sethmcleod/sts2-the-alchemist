@@ -49,8 +49,6 @@ Security.
   combat in green, like other scaling cards
 - Cards that gain an effect from being Enchanted now glow gold in the Infuse
   selection, so you can see the best cards to Infuse
-- Fumigate card upgrade now shows its base damage increase 1 -> 2 on the card
-  sheet (the upgrade already did this)
 - Buffed Carapace card: Block per turn fermented is now a flat 6 (9), up from
   50% (75%) of base Block
 - Buffed Rolling Boil card: damage per turn fermented is now a flat 4 (6) per
@@ -59,6 +57,20 @@ Security.
   from 75% (100%) of base damage
 - Buffed Sinter card: free-cost condition decreased from 7 -> 5 cards in your
   Exhaust Pile
+- Reworked Fumigate card: "Deal 1 (2) damage to ALL enemies. Deals 1 additional
+  damage for each card in your Exhaust Pile. Gain 3 (2) Poison." -> "Deal 1
+  damage to ALL enemies. Hits an additional time for each card in your Exhaust
+  Pile. Exhaust. (Doesn't Exhaust)". It shows the live hit bonus in green
+- Buffed Masterwork card: Enchanted threshold decreased from 7 -> 5 cards
+- Changed Enrich card: it now Infuses the Draw Pile before it draws, so the
+  draw can find the infused cards
+- Changed Cauterize card: Regen decreased from 2 -> 1, upgraded damage
+  increased from 7 -> 8
+- Buffed Volatile Mix card: damage increased from 9 (13) -> 10 (15), damage per
+  potion increased from 3 (4) -> 4 (5), and it now reads "If you have no
+  potions, gain 1 Poison."
+- Changed Golden Touch card: cost increased from 2 -> 3 (2), and its power now
+  stacks, so a second copy makes Enchanted cards cost 2 less
 
 ### Removed
 
