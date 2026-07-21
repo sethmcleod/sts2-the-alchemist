@@ -59,6 +59,8 @@ Security.
   from 75% (100%) of base damage
 - Buffed Sinter card: free-cost condition decreased from 7 -> 5 cards in your
   Exhaust Pile
+- Buffed Quicksilver Draught potion: it no longer skips the card draw on the
+  extra turn; it now simply grants an extra turn
 - Reworked Fumigate card: "Deal 1 (2) damage to ALL enemies. Deals 1 additional
   damage for each card in your Exhaust Pile. Gain 3 (2) Poison." -> "Deal 1
   damage to ALL enemies. Hits an additional time for each card in your Exhaust
