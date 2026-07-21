@@ -1,17 +1,10 @@
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
+// Passive: while you hold this, an enemy's Poison triggers one additional time. The extra trigger is added
+// in PoisonPatches, which reads this relic on the poisoned enemy's opponents.
 public class GlowingShard : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Uncommon;
-
-    public override async Task BeforeCombatStart()
-    {
-        Flash();
-        await PowerCmd.Apply<AccelerantPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, null);
-    }
 }

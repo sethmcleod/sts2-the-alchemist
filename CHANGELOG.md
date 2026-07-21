@@ -56,6 +56,9 @@ Security.
 
 - Fixed a potential crash when the game renders the Gold Leaf potion outside a
   run, such as in the Potion Lab
+- Fixed Glowing Shard relic showing the Accelerant power icon on you and allies.
+  It no longer grants the Accelerant power; it adds the extra enemy Poison
+  trigger directly
 
 ## [0.3.0] - 2026-07-20
 
