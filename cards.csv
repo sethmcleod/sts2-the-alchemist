@@ -1,98 +1,98 @@
 Card,Rarity,Type,Cost,Description
-Strike,Basic,Attack,1,Deal 6 (9) damage.
-Defend,Basic,Skill,1,Gain 5 (8) Block.
-Prime,Basic,Attack,1,Deal 6 (8) damage. Infuse a card in your Hand. Gambit: Gain 4 (6) Block.
-Nigredo,Basic,Skill,1,Apply 4 (5) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
-Trickle,Common,Attack,0,Deal 4 damage. Draw 1 (2) cards. Seep: Gain 1 Regen.
-Fumigate,Common,Attack,1,Deal 1 damage to ALL enemies. Hits an additional time for each card in your Exhaust Pile. Exhaust. (Doesn't Exhaust)
-Last Resort,Common,Attack,1,"Deal 9 (12) damage. Gambit: Deal 5 additional damage. Otherwise, lose 3 HP."
-Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Each hit applies 1 Poison. Gain 2 Poison.
-Double Dose,Common,Attack,1,Deal 4 (5) damage twice. Each hit applies 1 (2) Poison.
-Puncture,Common,Attack,1,Deal 8 (10) damage. Apply 1 (2) Vulnerable. Gambit: Apply 1 additional Vulnerable.
-Siphon,Common,Attack,1,"Deal 5 (7) damage. Draw 2 cards. If this card is Enchanted, draw an additional card."
-Cauterize,Common,Attack,1,Deal 5 (8) damage. Gain 1 Regen. Gambit: Gain 1 additional Regen.
-Grind Down,Common,Attack,2,Deal 12 (16) damage. Apply 2 (3) Weak. Gambit: Deal 6 (8) additional damage.
-Inoculate,Common,Skill,0,Lose 3 HP. Gain 7 (10) Block.
-Poultice,Common,Skill,0,Exhaust 1 card. Gain 1 (2) Regen.
-Full Measure,Common,Attack,1,Deal 7 (10) damage. Deals an additional 4 damage for each Enchanted card in your Hand.
-Steep,Common,Skill,1,"Retain. Ferment. Apply 4 (6) Poison, plus 1 (2) Poison for each turn fermented."
-Waste Not,Common,Skill,1,Gain 2 Poison. Put a card from your Discard Pile into your Hand. Exhaust. (Doesn't Exhaust)
-Salve,Common,Skill,1,Gain 4 (6) Block. Draw a card. Infuse a card in your Hand.
-Sinter,Common,Skill,1,"Gain 7 (10) Block. If you have 5 or more cards in your Exhaust Pile, this costs 0."
-Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison. Gambit: Gain 2 (3) Regen.
-Vitrify,Common,Skill,1,"Gain 3 (4) Block twice. If this card is Enchanted, gain 2 Plating."
-Carapace,Common,Skill,2,Retain. Ferment. Gain 6 Block. Gain 6 (9) additional Block for each turn fermented.
 Aggravate,Uncommon,Attack,0,Deal 4 damage. Deals 2 (3) additional damage for each unique debuff on the enemy.
-Quench,Uncommon,Skill,0,"Draw 1 (2) cards. Infuse a card in your Hand. If this card is Enchanted, Infuse an additional card."
-Patient Strike,Uncommon,Attack,1,Retain. Ferment. Deal 6 damage. Deals 6 (9) additional damage for each turn fermented.
+Albedo,Token,Skill,1,Lose all Poison. Gain that much Regen (+ 1). Add a Citrinitas (+) into your Hand. Exhaust.
+Amalgam,Rare,Power,X,Retain. Ferment. Apply X (+1) Poison to ALL enemies. Gain X (+1) Regen. Increase X by 1 for each turn fermented.
+Aureate,Ancient,Attack,1,Deal 12 (18) damage to ALL enemies. Infuse any number of cards in your Hand.
+Azoth,Rare,Attack,1,"Deal 10 (14) damage. If you have 7 or more cards in your Exhaust Pile, gain 1 (2) energy."
+Bestow,"Uncommon, Multiplayer",Skill,1 (0),Infuse a random card in another player's Hand. Draw 1 card.
+Bitter Draught,Uncommon,Skill,1,Gain 2 (3) Energy. Gain 2 (3) Poison. Exhaust.
+Bloom,Uncommon,Power,1,"The first time you apply Poison each turn, apply 2 (3) additional Poison."
+Bottled Fury,Uncommon,Power,1,"Whenever you use a Potion, gain 2 (3) Strength and 2 (3) Dexterity this turn."
+Carapace,Common,Skill,2,Retain. Ferment. Gain 6 Block. Gain 6 (9) additional Block for each turn fermented.
+Catalyze,Rare,Power,2 (1),"The first time you lose HP on each of your turns, gain 2 Regen."
+Cauterize,Common,Attack,1,Deal 5 (8) damage. Gain 1 Regen. Gambit: Gain 1 additional Regen.
+Circulation,Uncommon,Skill,1,"Lose all Regen, then draw that many cards. Gain 2 (3) Regen."
+Citrinitas,Token,Attack,1,Lose all Regen. Deal that much damage to ALL enemies 2 (3) times. Add a Rubedo (+) into your Hand. Exhaust.
+Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison. Gambit: Gain 2 (3) Regen.
+Contagion,Rare,Power,2 (1),"Whenever you take Poison damage, apply that much Poison to ALL enemies."
+Corrode,Uncommon,Skill,2,Apply 6 (7) Poison and 1 (2) Weak to ALL enemies. Seep: Gain 2 Poison.
+Decant,Uncommon,Attack,0,Deal 5 (7) damage. Add a Distillate (+) into your Hand.
+Decoction,Rare,Skill,1 (0),Exhaust 1 card. Procure a random potion. Seep: Gain 2 Poison.
+Defend,Basic,Skill,1,Gain 5 (8) Block.
 Dissect,Uncommon,Attack,1,"Deal 8 (12) damage. Draw 2 cards. If this card is Enchanted, apply 2 Vulnerable."
+Distillate,Token,Skill,0,Gain 3 (5) Block. Gain 2 (3) Regen. Draw 1 card. Exhaust.
+Double Dose,Common,Attack,1,Deal 4 (5) damage twice. Each hit applies 1 (2) Poison.
+Draining Strike,Uncommon,Attack,2,Deal 14 (18) damage. The enemy loses 6 Strength this turn. Seep: Gain 2 Poison.
+Drip Feed,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Gambit: Gain 1 additional Regen."
+Effervesce,"Uncommon, Multiplayer",Skill,1,Add 2 (3) Distillates to another player's Hand.
+Elixir,Ancient,Power,3,"(Procure a random potion.) At the start of your turn, procure a random potion."
+Enrich,Uncommon,Skill,1,Infuse up to 2 cards in your Draw Pile. Draw 1 (2) cards.
+Eureka,Rare,Skill,1,Draw 2 (3) cards. Transform a card in your Hand into a Distillate (+).
+Fester,Uncommon,Skill,1,Apply 3 Poison. Poison is triggered against the enemy 1 (2) additional time(s) next turn.
+Fever Pitch,Rare,Power,2 (1),"At the start of your turn, if your HP is below 50% of your Max HP, draw 1 card and gain 1 Energy."
 Fighting Spirits,Uncommon,Attack,1,Deal 10 (14) damage. Hits an additional time for each potion you've used this combat.
 Flare Up,Uncommon,Attack,1,Deal 6 (9) damage. Apply 2 Poison. Trigger Poison on the enemy.
-Draining Strike,Uncommon,Attack,2,Deal 14 (18) damage. The enemy loses 6 Strength this turn. Seep: Gain 2 Poison.
-Decant,Uncommon,Attack,0,Deal 5 (7) damage. Add a Distillate (+) into your Hand.
-Lifeblood,Uncommon,Attack,1,Gain 2 Regen. Deal 8 (10) damage. Deals additional damage equal to your Regen.
-Rolling Boil,Uncommon,Attack,2,Retain. Ferment. Deal 6 damage twice. Each hit deals 4 (6) additional damage for each turn fermented.
-Bitter Draught,Uncommon,Skill,1,Gain 2 (3) Energy. Gain 2 (3) Poison. Exhaust.
-Fresh Batch,Uncommon,Skill,2,Procure a random potion. Gambit: Procure 1 (2) additional random potions. Exhaust.
-Fester,Uncommon,Skill,1,Apply 3 Poison. Poison is triggered against the enemy 1 (2) additional time(s) next turn.
-Osmosis,Uncommon,Skill,X,Draw X+1 cards. Gain X+1 Poison. (Gain X+1 Regen.)
-Transmute,Uncommon,Skill,0,Gain Strength this turn equal to your Poison. Gambit: Procure a random Common (Uncommon) potion. Exhaust.
-Inhale,Uncommon,Skill,0,Gain Block equal to Poison on everyone (2 times). Infuse a card in your Hand. Exhaust.
-Venom Trance,Uncommon,Skill,1,"If an enemy has 8 (6) or more Poison, take an extra turn after this one. Exhaust."
-Melt Down,Uncommon,Skill,1,Choose a card in your Draw Pile to Transform into a Distillate(+).
-Winnow,Uncommon,Skill,1,Gain 7 (10) Block. Choose 1 of 3 cards in your Draw Pile and add it into your Hand.
-Hone,Uncommon,Skill,1,(Gain 1 Strength.) Upgrade ALL cards in your Hand. Exhaust.
-Enrich,Uncommon,Skill,1,Infuse up to 2 cards in your Draw Pile. Draw 1 (2) cards.
-Precipitate,Uncommon,Skill,2,"Gain 5 (6) Block twice. The next time you use a potion this turn, procure another of that type."
-Corrode,Uncommon,Skill,2,Apply 6 (7) Poison and 1 (2) Weak to ALL enemies. Seep: Gain 2 Poison.
-Masterwork,Uncommon,Skill,1,"Infuse a card in your Hand. If you have Enchanted 5 or more cards this combat, gain 1 (2) Energy, draw 1 (2) cards, and Exhaust this card."
-Metabolism,Uncommon,Power,1,"The first time you lose HP on each of your turns, gain 1 Energy. Gambit: Heal 3 (6) HP."
-Heavy Hand,Uncommon,Power,1,"Whenever you gain or apply Poison, add an additional 1 (2) Poison."
-Bloom,Uncommon,Power,1,"The first time you apply Poison each turn, apply 2 (3) additional Poison."
-Circulation,Uncommon,Skill,1,"Lose all Regen, then draw that many cards. Gain 2 (3) Regen."
-Sediment,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block. If this card is Enchanted, gain 3 Plating."
-Inversion,Uncommon,Power,1,"Whenever you are healed, deal 50% (100%) of that much damage to ALL enemies."
-Hemorrhage,Uncommon,Attack,1,Lose HP equal to your Regen. Deal double (triple) that much damage.
-Bottled Fury,Uncommon,Power,1,"Whenever you use a Potion, gain 2 (3) Strength and 2 (3) Dexterity this turn."
-Resolve,Uncommon,Power,3 (2),"At the start of your turn, gain 1 Strength for each 20 HP you are missing."
-Windfall,Uncommon,Power,1,"Whenever you Procure a Potion during combat, draw 1 (2) card(s) and gain 1 energy."
-Needle Point,Rare,Attack,0,"Innate. Deal 7 (10) damage. Apply 1 (2) Weak. If this card is Enchanted, apply 1 (2) Vulnerable."
-Azoth,Rare,Attack,1,"Deal 10 (14) damage. If you have 7 or more cards in your Exhaust Pile, gain 1 (2) energy."
-Neurotoxin,Rare,Attack,2,Deal 18 (24) damage. Gambit: Stun the enemy. Exhaust.
-Refine,Rare,Skill,0,"Draw 1 (2) cards. Infuse a card in your Hand. If this card is Enchanted, Infuse 2 cards instead."
-Lash Out,Rare,Attack,1,Deal 6 (8) damage 3 times. Gambit: Hits an additional time. Seep: Gain 2 Regen.
-Ichor,Rare,Attack,3 (2),Retain. Deal damage equal to your missing HP. Exhaust.
-Overflow,Rare,Attack,2,Lose all Regen. Deal 4 (5) damage to ALL enemies for each Regen lost. Exhaust.
-Volatile Mix,Rare,Attack,1,"Deal 10 (15) damage. Deals 4 (5) additional damage for each potion you have. If you have no potions, gain 1 Poison."
-Libation,Rare,Skill,1,Procure a random potion. Gain 4 (6) Block for each potion you have.
-Decoction,Rare,Skill,1 (0),Exhaust 1 card. Procure a random potion. Seep: Gain 2 Poison.
-Sweat It Out,Rare,Skill,1,Gain 2 (3) Poison. Lose all Poison. Apply that much Poison to ALL enemies.
-Eureka,Rare,Skill,1,Draw 2 (3) cards. Transform a card in your Hand into a Distillate (+).
-Sublimate,Rare,Skill,2,Transform any number of cards in your Hand into Distillates (+). Exhaust.
-White Heat,Rare,Skill,0,Lose 6 HP. Gain 2 Energy. Draw 2 (3) cards. Exhaust.
-Zenith,Rare,Skill,3 (2),Double the Poison and Regen on ALL enemies and yourself. Exhaust.
-Golden Touch,Rare,Power,3 (2),Enchanted cards cost 1 less. This stacks. (Infuse a card in your Hand.)
-Sepsis,Rare,Power,2,Gain 3 (2) Poison. Poisoned enemies take an additional 25% (50%) damage from Attacks.
-Secretion,Rare,Power,1,"Whenever you take unblocked Attack damage, apply 1 (2) Poison to the attacker."
-Drip Feed,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Gambit: Gain 1 additional Regen."
-Fever Pitch,Rare,Power,2 (1),"At the start of your turn, if your HP is below 50% of your Max HP, draw 1 card and gain 1 Energy."
-Twin Serpents,Rare,Power,2,"At the start of your turn, if you have both Poison and Regen, gain 1 (2) Energy."
-Vintage,Rare,Skill,2,"Retain. Ferment. Gain 3 (4) Regen, plus 1 Regen for each turn fermented."
-Contagion,Rare,Power,2 (1),"Whenever you take Poison damage, apply that much Poison to ALL enemies."
-Catalyze,Rare,Power,2 (1),"The first time you lose HP on each of your turns, gain 2 Regen."
-Mercurial Form,Rare,Power,3,"At the start of your turn, gain 1 (2) Strength. At the end of your turn, heal HP equal to half your Poison."
-Amalgam,Rare,Power,X,Retain. Ferment. Apply X (+1) Poison to ALL enemies. Gain X (+1) Regen. Increase X by 1 for each turn fermented.
-Elixir,Ancient,Power,3,"(Procure a random potion.) At the start of your turn, procure a random potion."
-Bestow,"Uncommon, Multiplayer",Skill,1 (0),Infuse a random card in another player's Hand. Draw 1 card.
-Suffuse,"Rare, Multiplayer",Power,2 (1),"At the start of your turn, if your HP is below 50% of your Max HP, ALL allies procure a random potion."
-Effervesce,"Uncommon, Multiplayer",Skill,1,Add 2 (3) Distillates to another player's Hand.
-Reflux,"Uncommon, Multiplayer",Skill,1,"Whenever another player applies a debuff this turn, apply 2 (3) Poison to that enemy."
-Distillate,Token,Skill,0,Gain 3 (5) Block. Gain 2 (3) Regen. Draw 1 card. Exhaust.
-Unripe Fruit,Quest,Quest,-,"After 4 more combats, ripens into a Golden Fruit. Unplayable."
-Golden Fruit,Quest,Skill,1,Heal 8 HP. Gain 25 Gold. Take an extra turn after this one. Exhaust.
-Albedo,Token,Skill,1,Lose all Poison. Gain that much Regen (+ 1). Add a Citrinitas (+) into your Hand. Exhaust.
-Citrinitas,Token,Attack,1,Lose all Regen. Deal that much damage to ALL enemies 2 (3) times. Add a Rubedo (+) into your Hand. Exhaust.
-Rubedo,Token,Skill,1,Gain 15 (20) Gold. Gain 1 Strength. Procure a random potion. Add a Nigredo (+) into your Hand. Exhaust.
 Foul Vapor,Token,Skill,0,Apply 1 (2) Weak. Apply 1 (2) Vulnerable. Gain 1 (2) Poison. Exhaust.
+Fresh Batch,Uncommon,Skill,2,Procure a random potion. Gambit: Procure 1 (2) additional random potions. Exhaust.
+Full Measure,Common,Attack,1,Deal 7 (10) damage. Deals an additional 4 damage for each Enchanted card in your Hand.
+Fumigate,Common,Attack,1,Deal 1 damage to ALL enemies. Hits an additional time for each card in your Exhaust Pile. Exhaust. (Doesn't Exhaust)
+Golden Fruit,Quest,Skill,1,Heal 8 HP. Gain 25 Gold. Take an extra turn after this one. Exhaust.
+Golden Touch,Rare,Power,3 (2),Enchanted cards cost 1 less. This stacks. (Infuse a card in your Hand.)
+Grind Down,Common,Attack,2,Deal 12 (16) damage. Apply 2 (3) Weak. Gambit: Deal 6 (8) additional damage.
+Heavy Hand,Uncommon,Power,1,"Whenever you gain or apply Poison, add an additional 1 (2) Poison."
+Hemorrhage,Uncommon,Attack,1,Lose HP equal to your Regen. Deal double (triple) that much damage.
+Hone,Uncommon,Skill,1,(Gain 1 Strength.) Upgrade ALL cards in your Hand. Exhaust.
+Ichor,Rare,Attack,3 (2),Retain. Deal damage equal to your missing HP. Exhaust.
+Inhale,Uncommon,Skill,0,Gain Block equal to Poison on everyone (2 times). Infuse a card in your Hand. Exhaust.
+Inoculate,Common,Skill,0,Lose 3 HP. Gain 7 (10) Block.
+Inversion,Uncommon,Power,1,"Whenever you are healed, deal 50% (100%) of that much damage to ALL enemies."
+Lash Out,Rare,Attack,1,Deal 6 (8) damage 3 times. Gambit: Hits an additional time. Seep: Gain 2 Regen.
+Last Resort,Common,Attack,1,"Deal 9 (12) damage. Gambit: Deal 5 additional damage. Otherwise, lose 3 HP."
+Libation,Rare,Skill,1,Procure a random potion. Gain 4 (6) Block for each potion you have.
+Lifeblood,Uncommon,Attack,1,Gain 2 Regen. Deal 8 (10) damage. Deals additional damage equal to your Regen.
+Masterwork,Uncommon,Skill,1,"Infuse a card in your Hand. If you have Enchanted 5 or more cards this combat, gain 1 (2) Energy, draw 1 (2) cards, and Exhaust this card."
+Melt Down,Uncommon,Skill,1,Choose a card in your Draw Pile to Transform into a Distillate(+).
+Mercurial Form,Rare,Power,3,"At the start of your turn, gain 1 (2) Strength. At the end of your turn, heal HP equal to half your Poison."
+Metabolism,Uncommon,Power,1,"The first time you lose HP on each of your turns, gain 1 Energy. Gambit: Heal 3 (6) HP."
+Needle Point,Rare,Attack,0,"Innate. Deal 7 (10) damage. Apply 1 (2) Weak. If this card is Enchanted, apply 1 (2) Vulnerable."
+Neurotoxin,Rare,Attack,2,Deal 18 (24) damage. Gambit: Stun the enemy. Exhaust.
+Nigredo,Basic,Skill,1,Apply 4 (5) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
+Osmosis,Uncommon,Skill,X,Draw X+1 cards. Gain X+1 Poison. (Gain X+1 Regen.)
+Overflow,Rare,Attack,2,Lose all Regen. Deal 4 (5) damage to ALL enemies for each Regen lost. Exhaust.
+Patient Strike,Uncommon,Attack,1,Retain. Ferment. Deal 6 damage. Deals 6 (9) additional damage for each turn fermented.
+Poultice,Common,Skill,0,Exhaust 1 card. Gain 1 (2) Regen.
+Precipitate,Uncommon,Skill,2,"Gain 5 (6) Block twice. The next time you use a potion this turn, procure another of that type."
+Prime,Basic,Attack,1,Deal 6 (8) damage. Infuse a card in your Hand. Gambit: Gain 4 (6) Block.
+Puncture,Common,Attack,1,Deal 8 (10) damage. Apply 1 (2) Vulnerable. Gambit: Apply 1 additional Vulnerable.
+Quench,Uncommon,Skill,0,"Draw 1 (2) cards. Infuse a card in your Hand. If this card is Enchanted, Infuse an additional card."
+Refine,Rare,Skill,0,"Draw 1 (2) cards. Infuse a card in your Hand. If this card is Enchanted, Infuse 2 cards instead."
+Reflux,"Uncommon, Multiplayer",Skill,1,"Whenever another player applies a debuff this turn, apply 2 (3) Poison to that enemy."
+Resolve,Uncommon,Power,3 (2),"At the start of your turn, gain 1 Strength for each 20 HP you are missing."
+Rolling Boil,Uncommon,Attack,2,Retain. Ferment. Deal 6 damage twice. Each hit deals 4 (6) additional damage for each turn fermented.
+Rubedo,Token,Skill,1,Gain 15 (20) Gold. Gain 1 Strength. Procure a random potion. Add a Nigredo (+) into your Hand. Exhaust.
+Salve,Common,Skill,1,Gain 4 (6) Block. Draw a card. Infuse a card in your Hand.
+Secretion,Rare,Power,1,"Whenever you take unblocked Attack damage, apply 1 (2) Poison to the attacker."
+Sediment,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block. If this card is Enchanted, gain 3 Plating."
+Sepsis,Rare,Power,2,Gain 3 (2) Poison. Poisoned enemies take an additional 25% (50%) damage from Attacks.
+Sinter,Common,Skill,1,"Gain 7 (10) Block. If you have 5 or more cards in your Exhaust Pile, this costs 0."
+Siphon,Common,Attack,1,"Deal 5 (7) damage. Draw 2 cards. If this card is Enchanted, draw an additional card."
+Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Each hit applies 1 Poison. Gain 2 Poison.
+Steep,Common,Skill,1,"Retain. Ferment. Apply 4 (6) Poison, plus 1 (2) Poison for each turn fermented."
+Strike,Basic,Attack,1,Deal 6 (9) damage.
+Sublimate,Rare,Skill,2,Transform any number of cards in your Hand into Distillates (+). Exhaust.
+Suffuse,"Rare, Multiplayer",Power,2 (1),"At the start of your turn, if your HP is below 50% of your Max HP, ALL allies procure a random potion."
+Sweat It Out,Rare,Skill,1,Gain 2 (3) Poison. Lose all Poison. Apply that much Poison to ALL enemies.
 Tinge,Common,Attack,0,Deal 3 (5) damage. Apply 2 Poison. Seep: Gain 1 Regen.
-Aureate,Ancient,Attack,1,Deal 12 (18) damage to ALL enemies. Infuse any number of cards in your Hand.
+Transmute,Uncommon,Skill,0,Gain Strength this turn equal to your Poison. Gambit: Procure a random Common (Uncommon) potion. Exhaust.
+Trickle,Common,Attack,0,Deal 4 damage. Draw 1 (2) cards. Seep: Gain 1 Regen.
+Twin Serpents,Rare,Power,2,"At the start of your turn, if you have both Poison and Regen, gain 1 (2) Energy."
+Unripe Fruit,Quest,Quest,-,"After 4 more combats, ripens into a Golden Fruit. Unplayable."
+Venom Trance,Uncommon,Skill,1,"If an enemy has 8 (6) or more Poison, take an extra turn after this one. Exhaust."
+Vintage,Rare,Skill,2,"Retain. Ferment. Gain 3 (4) Regen, plus 1 Regen for each turn fermented."
+Vitrify,Common,Skill,1,"Gain 3 (4) Block twice. If this card is Enchanted, gain 2 Plating."
+Volatile Mix,Rare,Attack,1,"Deal 10 (15) damage. Deals 4 (5) additional damage for each potion you have. If you have no potions, gain 1 Poison."
+Waste Not,Common,Skill,1,Gain 2 Poison. Put a card from your Discard Pile into your Hand. Exhaust. (Doesn't Exhaust)
+White Heat,Rare,Skill,0,Lose 6 HP. Gain 2 Energy. Draw 2 (3) cards. Exhaust.
+Windfall,Uncommon,Power,1,"Whenever you Procure a Potion during combat, draw 1 (2) card(s) and gain 1 energy."
+Winnow,Uncommon,Skill,1,Gain 7 (10) Block. Choose 1 of 3 cards in your Draw Pile and add it into your Hand.
+Zenith,Rare,Skill,3 (2),Double the Poison and Regen on ALL enemies and yourself. Exhaust.
