@@ -78,6 +78,21 @@ Security.
 - Reworked Refine card: "Draw 1 (2) cards. Infuse a card in your Hand. If this
   card is Enchanted, Infuse 2 cards instead." -> "Upgrade a card in your Hand.
   Infuse it 2 (3) times."
+- Reworked Dissect card and renamed it Vivisect: "Deal 8 (12) damage. Draw 2
+  cards. If this card is Enchanted, apply 2 Vulnerable." -> "Deal 7 (10)
+  damage. Draw 1 card, plus 1 more for each unique debuff on the enemy. If this
+  card is Enchanted, apply 1 Weak and 1 Vulnerable."
+- Buffed Libation card: it now reads "If this card is Enchanted, gain 2
+  Plating."
+- Buffed Golden Touch card: it now reads "If this card is Enchanted, this costs
+  1 less."
+- Reworked Last Resort card into a pure Gambit bonus: "Deal 9 (12) damage.
+  Gambit: Deal 5 additional damage. Otherwise, lose 3 HP." -> "Deal 9 (12)
+  damage. Gambit: Deal 5 (7) additional damage."
+- Changed Puncture card Gambit: it now applies 1 Weak instead of 1 additional
+  Vulnerable, so the best case applies both debuffs
+- Buffed Siphon card: damage increased from 5 (7) -> 8 (12), in line with other
+  draw attacks like Pommel Strike and Photon Cut
 - Buffed Azoth card: energy condition decreased from 7 -> 5 cards in your
   Exhaust Pile
 

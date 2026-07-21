@@ -3,6 +3,7 @@ using Alchemist.AlchemistCode.Commands;
 using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 
@@ -15,6 +16,18 @@ public class GoldenTouch : AlchemistCard
         WithCostUpgradeBy(-1);
         // Only the upgrade Infuses, so the tips are only shown there
         WithTips(card => card.IsUpgraded ? Infusion.InfuseTips() : Array.Empty<IHoverTip>());
+    }
+
+    internal override bool GainsEffectWhenEnchanted => true;
+
+    // The card discounts itself while Enchanted (the Sinter self-hook pattern). Its own power
+    // cannot help here, because the power exists only after the card is played
+    public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
+    {
+        modifiedCost = originalCost;
+        if (card != this || !IsMutable || !IsEnchanted || originalCost <= 0) return false;
+        modifiedCost = originalCost - 1;
+        return true;
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

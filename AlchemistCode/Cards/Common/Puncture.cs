@@ -14,6 +14,8 @@ public class Puncture : AlchemistCard
     {
         WithDamage(8, 2);
         WithPower<VulnerablePower>(1, 1);
+        WithVar("GambitWeak", 1, 0);
+        WithTip(typeof(WeakPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -21,6 +23,7 @@ public class Puncture : AlchemistCard
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
         await CommonActions.Apply<VulnerablePower>(choiceContext, this, play);
         if (IsReduced)
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target!, 1, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(choiceContext, play.Target!,
+                DynamicVars["GambitWeak"].IntValue, Owner.Creature, this);
     }
 }

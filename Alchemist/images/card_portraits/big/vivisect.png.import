@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8heuofvpl03w"
-path="res://.godot/imported/dissect.png-dc3334fde2caf48d9cb37a4991d96c0c.ctex"
+path="res://.godot/imported/vivisect.png-cfe6317964895ec48fbbe52a93090e9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/dissect.png"
-dest_files=["res://.godot/imported/dissect.png-dc3334fde2caf48d9cb37a4991d96c0c.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/vivisect.png"
+dest_files=["res://.godot/imported/vivisect.png-cfe6317964895ec48fbbe52a93090e9b.ctex"]
 
 [params]
 
