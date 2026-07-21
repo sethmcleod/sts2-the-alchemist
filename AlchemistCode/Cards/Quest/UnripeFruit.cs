@@ -1,7 +1,6 @@
 using Alchemist.AlchemistCode.Cards;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Saves.Runs;
 
@@ -23,7 +22,7 @@ public class UnripeFruit : AlchemistCard
         WithVar("combats", MaxCombats);
         WithKeyword(CardKeyword.Unplayable);
         // Show what this ripens into, so the wait reads as a payoff and not as a dead card
-        WithTips(_ => new[] { HoverTipFactory.FromCard<GoldenFruit>() });
+        WithTip(typeof(GoldenFruit));
     }
 
     [SavedProperty]

@@ -18,7 +18,7 @@ public class Neurotoxin : AlchemistCard
     {
         WithDamage(18, 6);
         WithKeyword(CardKeyword.Exhaust);
-        WithTips(_ => new[] { HoverTipFactory.Static(StaticHoverTip.Stun) });
+        WithTip(StaticHoverTip.Stun);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

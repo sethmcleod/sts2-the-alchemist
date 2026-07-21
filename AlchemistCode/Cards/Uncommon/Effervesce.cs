@@ -2,7 +2,6 @@ using Alchemist.AlchemistCode.Cards.Token;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -13,7 +12,7 @@ public class Effervesce : AlchemistCard
     public Effervesce() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
         WithVar("cards", 2, 1);
-        WithTips(_ => new[] { HoverTipFactory.FromCard<Distillate>() });
+        WithTip(typeof(Distillate));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
