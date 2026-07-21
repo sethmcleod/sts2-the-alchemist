@@ -15,7 +15,7 @@ public class Sediment : AlchemistCard
         WithTip(typeof(PlatingPower));
     }
 
-    protected override bool ConditionalGlow => IsEnchanted;
+    internal override bool GainsEffectWhenEnchanted => true;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

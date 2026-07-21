@@ -13,7 +13,7 @@ public class Siphon : AlchemistCard
         WithCards(2, 0);
     }
 
-    protected override bool ConditionalGlow => IsEnchanted;
+    internal override bool GainsEffectWhenEnchanted => true;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

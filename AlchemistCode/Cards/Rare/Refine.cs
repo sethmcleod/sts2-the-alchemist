@@ -13,7 +13,7 @@ public class Refine : AlchemistCard
         WithTips(_ => Infusion.InfuseTips());
     }
 
-    protected override bool ConditionalGlow => IsEnchanted;
+    internal override bool GainsEffectWhenEnchanted => true;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

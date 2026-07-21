@@ -17,7 +17,7 @@ public class NeedlePoint : AlchemistCard
         WithTip(typeof(VulnerablePower));
     }
 
-    protected override bool ConditionalGlow => IsEnchanted;
+    internal override bool GainsEffectWhenEnchanted => true;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

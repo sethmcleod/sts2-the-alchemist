@@ -43,6 +43,8 @@ Security.
 - Buffed Fighting Spirits card: upgraded damage increased from 12 -> 14
 - Changed Fighting Spirits card: it now glows and shows the potions used this
   combat in green, like other scaling cards
+- Cards that gain an effect from being Enchanted now glow gold in the Infuse
+  selection, so you can see the best cards to Infuse
 - Fumigate card upgrade now shows its base damage increase 1 -> 2 on the card
   sheet (the upgrade already did this)
 - Buffed Carapace card: Block per turn fermented is now a flat 6 (9), up from

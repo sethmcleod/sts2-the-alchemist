@@ -49,6 +49,11 @@ public abstract class AlchemistCard : ConstructedCardModel
     // True when this card currently carries an enchantment (was Infused this combat). Safe on canonical models
     internal bool IsEnchanted => Enchantment != null;
 
+    // A card with an "If this card is Enchanted" bonus sets this. It drives two glows: the card glows gold in
+    // hand once it is Enchanted (the bonus is live), and the Infuse selection glows it gold so the player can
+    // see which cards reward being infused. Internal, because Infusion reads it to build the glow predicate
+    internal virtual bool GainsEffectWhenEnchanted => false;
+
     protected virtual bool IsGambitCard => false;
 
     // A card with a play-time conditional bonus overrides this. The card then glows gold while the
@@ -58,7 +63,7 @@ public abstract class AlchemistCard : ConstructedCardModel
     // The IsMutable gate makes every glow safe on canonical models. IsReduced and ConditionalGlow read
     // Owner, which throws on a canonical model (the compendium). Each card does not need its own guard
     protected override bool ShouldGlowGoldInternal =>
-        IsMutable && ((IsGambitCard && IsReduced) || ConditionalGlow);
+        IsMutable && ((IsGambitCard && IsReduced) || (GainsEffectWhenEnchanted && IsEnchanted) || ConditionalGlow);
 
     // A Seep card glows green while it stays in hand, because it pays off if you do not play it. The hand
     // glow patch reads this. Gold wins when a card is both, for example a reduced Lash Out: gold is the
