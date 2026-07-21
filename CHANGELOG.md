@@ -24,6 +24,8 @@ Security.
   your Hand. If this card is Enchanted, gain 2 (3) Regen." -> "Draw 1 (2) cards.
   Infuse a card in your Hand. If this card is Enchanted, Infuse an additional
   card."
+- Changed Amalgam card: the X in its description now shows as X+N, where N counts
+  up with each turn fermented, and adds 1 more when upgraded
 - Nerfed Poultice card: Regen decreased from 2 (3) -> 1 (2)
 - Nerfed Zenith card: cost increased from 2 -> 3 (2), and it now always Doubles
   instead of Tripling when Upgraded
