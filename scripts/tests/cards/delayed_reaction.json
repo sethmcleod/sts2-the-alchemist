@@ -1,0 +1,91 @@
+{
+  "name": "delayed_reaction",
+  "group": "cards",
+  "description": "Delayed Reaction detonates at the end of the NEXT player turn: play it, end turn (armed, no damage), end turn again -> enemy takes 16 (20 -> 4)",
+  "setup": {
+    "character": "Alchemist",
+    "seed": "DELAY1",
+    "fight": "SLIMES_WEAK"
+  },
+  "checks": [
+    {
+      "do": {
+        "console": "card ALCHEMIST-DELAYED_REACTION"
+      },
+      "expect": {
+        "hand_contains": "DelayedReaction"
+      },
+      "timeout": 6
+    },
+    {
+      "do": {
+        "set_enemy_hp": {
+          "enemy": 1,
+          "hp": 20
+        }
+      },
+      "expect": {
+        "enemy_hp": {
+          "enemy": 1,
+          "hp": 20
+        }
+      },
+      "timeout": 6
+    },
+    {
+      "do": {
+        "console": "block 40 0"
+      },
+      "expect": {
+        "block": 40
+      },
+      "timeout": 6,
+      "note": "absorb the enemy turns so HP stays clean"
+    },
+    {
+      "do": {
+        "play_card": "DelayedReaction",
+        "target": 1
+      },
+      "expect": {
+        "energy": 2
+      },
+      "timeout": 6
+    },
+    {
+      "do": {
+        "end_turn": true
+      },
+      "expect": {
+        "enemy_hp": {
+          "enemy": 1,
+          "hp": 20
+        }
+      },
+      "timeout": 8,
+      "note": "end of the play turn only arms the charge"
+    },
+    {
+      "do": {
+        "console": "block 40 0"
+      },
+      "expect": {
+        "block": 40
+      },
+      "timeout": 6
+    },
+    {
+      "do": {
+        "end_turn": true
+      },
+      "expect": {
+        "enemy_hp": {
+          "enemy": 1,
+          "hp": 4
+        }
+      },
+      "timeout": 8,
+      "note": "end of the next turn detonates for 16"
+    }
+  ]
+}

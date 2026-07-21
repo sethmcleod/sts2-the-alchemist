@@ -1,16 +1,70 @@
 {
   "name": "ferment_scaling",
   "group": "cards",
-  "description": "Ferment accrues 1 Poison per turn held on Steep, and is kept when played: fermented 2 turns it applies 4 + 2 = 6 Poison, measured as tick damage on a normalized 20-HP enemy (20 -> 14)",
-  "setup": {"character": "Alchemist", "seed": "FERM1", "fight": "SLIMES_WEAK"},
+  "description": "Ferment accrues on Carapace and is kept when played: held 2 turns it grants 6 + 6*2 = 18 Block",
+  "setup": {
+    "character": "Alchemist",
+    "seed": "FERM1",
+    "fight": "SLIMES_WEAK"
+  },
   "checks": [
-    {"do": {"console": "card ALCHEMIST-STEEP"}, "expect": {"hand_contains": "Steep"}, "timeout": 6},
-    {"do": {"console": "block 40 0"}, "expect": {"block": 40}, "timeout": 6, "note": "absorbs the enemy turn, and doubles as the turn barrier below"},
-    {"do": {"end_turn": true}, "expect": {"block": 0}, "timeout": 8, "note": "block only clears at the start of your next turn, so this waits out a real turn; ferment 1"},
-    {"do": {"console": "block 40 0"}, "expect": {"block": 40}, "timeout": 6},
-    {"do": {"end_turn": true}, "expect": {"block": 0}, "timeout": 8, "note": "ferment 2"},
-    {"do": {"set_enemy_hp": {"enemy": 1, "hp": 20}}, "expect": {"enemy_hp": {"enemy": 1, "hp": 20}}, "timeout": 6, "note": "normalize immediately before measuring: this roster is not seed-stable"},
-    {"do": {"play_card": "Steep", "target": 1}, "expect": {"energy": 2}, "timeout": 6, "note": "Steep cost 1 of the turn's 3 energy, so the play resolved before the turn ends"},
-    {"do": {"end_turn": true}, "expect": {"enemy_hp": {"enemy": 1, "hp": 14}}, "timeout": 8, "note": "4 base + 2 fermented = 6 Poison ticks at the enemy's turn (20 -> 14)"}
+    {
+      "do": {
+        "console": "card ALCHEMIST-CARAPACE"
+      },
+      "expect": {
+        "hand_contains": "Carapace"
+      },
+      "timeout": 6
+    },
+    {
+      "do": {
+        "console": "block 40 0"
+      },
+      "expect": {
+        "block": 40
+      },
+      "timeout": 6,
+      "note": "absorbs the enemy turn, and doubles as the turn barrier below"
+    },
+    {
+      "do": {
+        "end_turn": true
+      },
+      "expect": {
+        "block": 0
+      },
+      "timeout": 8,
+      "note": "block only clears at the start of your next turn, so this waits out a real turn; ferment 1"
+    },
+    {
+      "do": {
+        "console": "block 40 0"
+      },
+      "expect": {
+        "block": 40
+      },
+      "timeout": 6
+    },
+    {
+      "do": {
+        "end_turn": true
+      },
+      "expect": {
+        "block": 0
+      },
+      "timeout": 8,
+      "note": "ferment 2"
+    },
+    {
+      "do": {
+        "play_card": "Carapace"
+      },
+      "expect": {
+        "block": 18
+      },
+      "timeout": 6,
+      "note": "6 base + 6 per turn fermented * 2 = 18 Block"
+    }
   ]
 }

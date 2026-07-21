@@ -21,6 +21,8 @@ Security.
   Stun the enemy. Exhaust." Replaces Harvest
 - Added Soporific potion (Brew-only, thrown): "Stun an enemy." Replaces Basilisk
   Bile
+- Added Delayed Reaction card (Common Skill, cost 1): "At the end of your next
+  turn, deal 16 (22) damage to the enemy. Exhaust." Replaces Steep
 
 ### Changed
 
@@ -71,10 +73,16 @@ Security.
   potions, gain 1 Poison."
 - Changed Golden Touch card: cost increased from 2 -> 3 (2), and its power now
   stacks, so a second copy makes Enchanted cards cost 2 less
+- Reworked Refine card: "Draw 1 (2) cards. Infuse a card in your Hand. If this
+  card is Enchanted, Infuse 2 cards instead." -> "Upgrade a card in your Hand.
+  Infuse it 2 (3) times."
+- Buffed Azoth card: energy condition decreased from 7 -> 5 cards in your
+  Exhaust Pile
 
 ### Removed
 
 - Removed Harvest card, replaced by Neurotoxin
+- Removed Steep card, replaced by Delayed Reaction
 - Removed Basilisk Bile potion, replaced by Soporific
 
 ### Fixed

@@ -7,7 +7,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Azoth : AlchemistCard
 {
-    private const int ExhaustThreshold = 7;
+    private const int ExhaustThreshold = 5;
 
     public Azoth() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
