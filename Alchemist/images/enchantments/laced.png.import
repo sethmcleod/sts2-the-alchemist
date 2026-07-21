@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnls5cxsx700j"
-path="res://.godot/imported/osmosis.png-240a43118d1b21b73981920d150b79cc.ctex"
+uid="uid://cqxj8py5eaxoi"
+path="res://.godot/imported/laced.png-ada264e5a80659203feb1cfc8a9ce865.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/osmosis.png"
-dest_files=["res://.godot/imported/osmosis.png-240a43118d1b21b73981920d150b79cc.ctex"]
+source_file="res://Alchemist/images/enchantments/laced.png"
+dest_files=["res://.godot/imported/laced.png-ada264e5a80659203feb1cfc8a9ce865.ctex"]
 
 [params]
 

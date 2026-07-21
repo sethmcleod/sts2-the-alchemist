@@ -23,6 +23,8 @@ Security.
   Bile
 - Added Delayed Reaction card (Common Skill, cost 1): "At the end of your next
   turn, deal 16 (22) damage to the enemy. Exhaust." Replaces Steep
+- Added Unstable Compound card (Uncommon Attack, cost 1): "Deal 16 (22)
+  damage. Seep: Add a Toxic into your Hand." Replaces Osmosis
 
 ### Changed
 
@@ -95,10 +97,15 @@ Security.
   draw attacks like Pommel Strike and Photon Cut
 - Buffed Azoth card: energy condition decreased from 7 -> 5 cards in your
   Exhaust Pile
+- Renamed the Toxic enchantment to Laced, because the base game already has a
+  Toxic status card
+- Nerfed Distillate token: Regen decreased from 2 (3) -> 1 (2)
+- Nerfed Delayed Reaction card: damage decreased from 16 (22) -> 14 (20)
 
 ### Removed
 
 - Removed Harvest card, replaced by Neurotoxin
+- Removed Osmosis card, replaced by Unstable Compound
 - Removed Steep card, replaced by Delayed Reaction
 - Removed Basilisk Bile potion, replaced by Soporific
 

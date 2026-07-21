@@ -9,9 +9,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Alchemist.AlchemistCode.Enchantments;
 
 // Attack enchantment: whenever the enchanted card deals unblocked damage, apply X Poison to that target
-public sealed class Toxic : AlchemistEnchantment
+public sealed class Laced : AlchemistEnchantment
 {
-    protected override string IconName => "toxic";
+    protected override string IconName => "laced";
 
     public override bool CanEnchantCardType(CardType cardType) => cardType == CardType.Attack;
 

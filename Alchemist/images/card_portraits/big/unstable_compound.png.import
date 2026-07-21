@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqxj8py5eaxoi"
-path="res://.godot/imported/toxic.png-4eed723da951b966430aa99932f02f75.ctex"
+uid="uid://dnls5cxsx700j"
+path="res://.godot/imported/unstable_compound.png-fc9f3162304310883a1e5fb1798722c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/enchantments/toxic.png"
-dest_files=["res://.godot/imported/toxic.png-4eed723da951b966430aa99932f02f75.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/unstable_compound.png"
+dest_files=["res://.godot/imported/unstable_compound.png-fc9f3162304310883a1e5fb1798722c4.ctex"]
 
 [params]
 

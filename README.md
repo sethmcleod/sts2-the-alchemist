@@ -54,7 +54,7 @@ Block or deal extra damage.
   the card, though a few are small benefits. Seep is Ferment's mirror: one
   rewards patience, the other discourages it.
 - **Infuse**: Infusing a card enchants it for the rest of combat based on its
-  type. Attacks gain 2 **Toxic** (apply Poison on unblocked damage), Skills gain
+  type. Attacks gain 2 **Laced** (apply Poison on unblocked damage), Skills gain
   1 **Fuming** (add Foul Vapor to your Hand), Powers gain 1 **Exalted** (gain
   Strength), and Status/Curse/Quest cards gain **Ethereal**. Same-type infusions
   stack, each one adding that much again.

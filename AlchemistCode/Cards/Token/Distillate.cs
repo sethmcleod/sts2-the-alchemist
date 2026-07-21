@@ -12,7 +12,7 @@ public class Distillate : AlchemistCard
     public Distillate() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
         WithBlock(3, 2);
-        WithPower<RegenPower>(2, 1);
+        WithPower<RegenPower>(1, 1);
         WithCards(1, 0);
         WithKeyword(CardKeyword.Exhaust);
     }

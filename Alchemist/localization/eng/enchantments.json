@@ -3,6 +3,6 @@
   "ALCHEMIST-EXALTED.title": "Exalted",
   "ALCHEMIST-FUMING.description": "When this card is played, add [blue]{Amount}[/blue] {Amount:plural:[gold]Foul Vapor[/gold]|[gold]Foul Vapors[/gold]} into your [gold]Hand[/gold].",
   "ALCHEMIST-FUMING.title": "Fuming",
-  "ALCHEMIST-TOXIC.description": "Whenever this card deals unblocked damage, apply [blue]{Amount}[/blue] [gold]Poison[/gold].",
-  "ALCHEMIST-TOXIC.title": "Toxic"
+  "ALCHEMIST-LACED.description": "Whenever this card deals unblocked damage, apply [blue]{Amount}[/blue] [gold]Poison[/gold].",
+  "ALCHEMIST-LACED.title": "Laced"
 }

@@ -20,7 +20,7 @@ Decant,Uncommon,Attack,0,Deal 5 (7) damage. Add a Distillate (+) into your Hand.
 Decoction,Rare,Skill,1 (0),Exhaust 1 card. Procure a random potion. Seep: Gain 2 Poison.
 Defend,Basic,Skill,1,Gain 5 (8) Block.
 Vivisect,Uncommon,Attack,1,"Deal 7 (10) damage. Draw 1 card, plus 1 more for each unique debuff on the enemy. If this card is Enchanted, apply 1 Weak and 1 Vulnerable."
-Distillate,Token,Skill,0,Gain 3 (5) Block. Gain 2 (3) Regen. Draw 1 card. Exhaust.
+Distillate,Token,Skill,0,Gain 3 (5) Block. Gain 1 (2) Regen. Draw 1 card. Exhaust.
 Double Dose,Common,Attack,1,Deal 4 (5) damage twice. Each hit applies 1 (2) Poison.
 Draining Strike,Uncommon,Attack,2,Deal 14 (18) damage. The enemy loses 6 Strength this turn. Seep: Gain 2 Poison.
 Drip Feed,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Gambit: Gain 1 additional Regen."
@@ -57,7 +57,7 @@ Metabolism,Uncommon,Power,1,"The first time you lose HP on each of your turns, g
 Needle Point,Rare,Attack,0,"Innate. Deal 7 (10) damage. Apply 1 (2) Weak. If this card is Enchanted, apply 1 (2) Vulnerable."
 Neurotoxin,Rare,Attack,2,Deal 18 (24) damage. Gambit: Stun the enemy. Exhaust.
 Nigredo,Basic,Skill,1,Apply 4 (5) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
-Osmosis,Uncommon,Skill,X,Draw X+1 cards. Gain X+1 Poison. (Gain X+1 Regen.)
+Unstable Compound,Uncommon,Attack,1,Deal 16 (22) damage. Seep: Add a Toxic into your Hand.
 Overflow,Rare,Attack,2,Lose all Regen. Deal 4 (5) damage to ALL enemies for each Regen lost. Exhaust.
 Patient Strike,Uncommon,Attack,1,Retain. Ferment. Deal 6 damage. Deals 6 (9) additional damage for each turn fermented.
 Poultice,Common,Skill,0,Exhaust 1 card. Gain 1 (2) Regen.
@@ -77,7 +77,7 @@ Sepsis,Rare,Power,2,Gain 3 (2) Poison. Poisoned enemies take an additional 25% (
 Sinter,Common,Skill,1,"Gain 7 (10) Block. If you have 5 or more cards in your Exhaust Pile, this costs 0."
 Siphon,Common,Attack,1,"Deal 8 (12) damage. Draw 2 cards. If this card is Enchanted, draw an additional card."
 Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Each hit applies 1 Poison. Gain 2 Poison.
-Delayed Reaction,Common,Skill,1,"At the end of your next turn, deal 16 (22) damage to the enemy. Exhaust."
+Delayed Reaction,Common,Skill,1,"At the end of your next turn, deal 14 (20) damage to the enemy. Exhaust."
 Strike,Basic,Attack,1,Deal 6 (9) damage.
 Sublimate,Rare,Skill,2,Transform any number of cards in your Hand into Distillates (+). Exhaust.
 Suffuse,"Rare, Multiplayer",Power,2 (1),"At the start of your turn, if your HP is below 50% of your Max HP, ALL allies procure a random potion."

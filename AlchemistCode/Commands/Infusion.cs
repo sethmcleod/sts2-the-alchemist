@@ -22,7 +22,7 @@ public static class Infusion
     // The enchantment applied for each card type; null for types that get the Ethereal keyword instead
     private static Type? EnchantTypeFor(CardModel card) => card.Type switch
     {
-        CardType.Attack => typeof(Toxic),
+        CardType.Attack => typeof(Laced),
         CardType.Skill => typeof(Fuming),
         CardType.Power => typeof(Exalted),
         _ => null,
@@ -45,10 +45,9 @@ public static class Infusion
     // records them, so the Masterwork threshold also counts enchantments from other mods, not only Infuse
     private static readonly HashSet<CardModel> EnchantedThisCombat = new();
 
-    // The amount of each enchantment that one Infuse grants. Toxic is 2, because 1 Poison per hit is too
-    // small next to a Foul Vapor or a Strength. The tips and the enchant use these same constants, and
-    // FromEnchantment defaults to 1, so a tip that does not pass one of these goes stale in silence
-    private const int ToxicAmount = 2;
+    // The amount of each enchantment that one Infuse grants. The tips and the enchant use these same constants,
+    // and FromEnchantment defaults to 1, so a tip that does not pass one of these goes stale in silence
+    private const int LacedAmount = 2;
     private const int FumingAmount = 1;
     private const int ExaltedAmount = 1;
 
@@ -56,7 +55,7 @@ public static class Infusion
     // amount that one Infuse gives
     public static IEnumerable<IHoverTip> InfuseTips() =>
         new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
-            .Concat(HoverTipFactory.FromEnchantment<Toxic>(ToxicAmount).Take(1))
+            .Concat(HoverTipFactory.FromEnchantment<Laced>(LacedAmount).Take(1))
             .Concat(HoverTipFactory.FromEnchantment<Fuming>(FumingAmount).Take(1))
             .Concat(HoverTipFactory.FromEnchantment<Exalted>(ExaltedAmount).Take(1));
 
@@ -150,7 +149,7 @@ public static class Infusion
         switch (card.Type)
         {
             case CardType.Attack:
-                TryEnchant<Toxic>(card, ToxicAmount);
+                TryEnchant<Laced>(card, LacedAmount);
                 break;
             case CardType.Skill:
                 TryEnchant<Fuming>(card, FumingAmount);

@@ -9,7 +9,7 @@ public class DelayedReaction : AlchemistCard
 {
     public DelayedReaction() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithVar("Dmg", 16, 6);
+        WithVar("Dmg", 14, 6);
         WithKeyword(CardKeyword.Exhaust);
     }
 
