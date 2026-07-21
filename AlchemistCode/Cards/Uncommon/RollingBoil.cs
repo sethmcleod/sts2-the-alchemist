@@ -12,8 +12,7 @@ public class RollingBoil : AlchemistCard
     public RollingBoil() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(6, static (card, _) =>
-                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * (card.IsUpgraded ? 100m : 75m) / 100m
-                                  * ((AlchemistCard)card).FermentTurns),
+                (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,
             ValueProp.Move, 0, 0);
         WithKeyword(CardKeyword.Retain);
     }

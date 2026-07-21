@@ -8,7 +8,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Fester : AlchemistCard
 {
-    public Fester() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Fester() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithPower<PoisonPower>(3, 0);
         WithVar("triggers", 1, 1);

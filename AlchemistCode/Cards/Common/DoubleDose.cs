@@ -11,17 +11,17 @@ public class DoubleDose : AlchemistCard
     public DoubleDose() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(4, 1);
-        WithVar("Weak", 2, 0);
-        WithTip(typeof(WeakPower));
+        WithPower<PoisonPower>(1, 1);
+        WithTip(typeof(PoisonPower));
     }
-
-    protected override bool ConditionalGlow => IsEnchanted;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
-        if (IsEnchanted)
-            await PowerCmd.Apply<WeakPower>(choiceContext, play.Target!, DynamicVars["Weak"].IntValue, Owner.Creature, this);
+        for (var i = 0; i < 2; i++)
+        {
+            await CommonActions.CardAttack(this, play).Execute(choiceContext);
+            if (play.Target is { IsAlive: true })
+                await CommonActions.Apply<PoisonPower>(choiceContext, this, play);
+        }
     }
 }

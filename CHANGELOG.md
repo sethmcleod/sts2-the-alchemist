@@ -33,12 +33,20 @@ Security.
   and Seep Regen stays at 1 instead of increasing to 2
 - Changed Catalyze card upgrade: Regen stays at 2, and the upgrade still reduces
   cost 2 -> 1
-- Buffed Carapace card: Block per turn fermented increased from 50% (75%) ->
-  75% (100%)
-- Buffed Rolling Boil card: damage per turn fermented increased from 50% (75%) ->
-  75% (100%)
-- Buffed Patient Strike card: damage per turn fermented increased from
-  75% (100%) -> 100% (125%)
+- Nerfed Fester card: cost increased from 0 -> 1
+- Reworked Double Dose card: "Deal 4 (5) damage twice. If this card is
+  Enchanted, apply 2 Weak." -> "Deal 4 (5) damage twice. Each hit applies
+  1 (2) Poison."
+- Buffed Spatter card: each hit now also applies 1 Poison to the enemy it hits
+- Buffed Fighting Spirits card: upgraded damage increased from 12 -> 14
+- Fumigate card upgrade now shows its base damage increase 1 -> 2 on the card
+  sheet (the upgrade already did this)
+- Buffed Carapace card: Block per turn fermented is now a flat 6 (9), up from
+  50% (75%) of base Block
+- Buffed Rolling Boil card: damage per turn fermented is now a flat 4 (6) per
+  hit, up from 50% (75%) of base damage
+- Buffed Patient Strike card: damage per turn fermented is now a flat 6 (9), up
+  from 75% (100%) of base damage
 - Buffed Sinter card: free-cost condition decreased from 7 -> 5 cards in your
   Exhaust Pile
 

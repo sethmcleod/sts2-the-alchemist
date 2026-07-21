@@ -10,7 +10,7 @@ public class FightingSpirits : AlchemistCard
 {
     public FightingSpirits() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(10, 2);
+        WithDamage(10, 4);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

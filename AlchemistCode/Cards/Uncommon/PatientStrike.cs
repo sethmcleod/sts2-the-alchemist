@@ -12,8 +12,7 @@ public class PatientStrike : AlchemistCard
     public PatientStrike() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(6, static (card, _) =>
-                System.Math.Floor(card.DynamicVars.CalculationBase.BaseValue * (card.IsUpgraded ? 125m : 100m) / 100m
-                                  * ((AlchemistCard)card).FermentTurns),
+                (card.IsUpgraded ? 9m : 6m) * ((AlchemistCard)card).FermentTurns,
             ValueProp.Move, 0, 0);
         WithKeyword(CardKeyword.Retain);
         // A "Strike" card, so base-game strike synergies (e.g. Perfected Strike) count it
