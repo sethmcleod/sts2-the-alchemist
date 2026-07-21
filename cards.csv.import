@@ -1,17 +1,3 @@
 [remap]
 
-importer="csv_translation"
-type="Translation"
-uid="uid://1hsrj3iyde35"
-
-[deps]
-
-files=["res://cards.Rarity.translation", "res://cards.Type.translation", "res://cards.Cost.translation", "res://cards.Description.translation"]
-
-source_file="res://cards.csv"
-dest_files=["res://cards.Rarity.translation", "res://cards.Type.translation", "res://cards.Cost.translation", "res://cards.Description.translation"]
-
-[params]
-
-compress=true
-delimiter=0
+importer="keep"
