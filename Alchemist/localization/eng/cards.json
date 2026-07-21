@@ -61,7 +61,7 @@
   "ALCHEMIST-FESTER.title": "Fester",
   "ALCHEMIST-FEVER_PITCH.description": "At the start of your turn, if your HP is below 50% of your Max HP, draw 1 card and gain {energyPrefix:energyIcons(1)}.",
   "ALCHEMIST-FEVER_PITCH.title": "Fever Pitch",
-  "ALCHEMIST-FIGHTING_SPIRITS.description": "Deal {Damage:diff()} damage.\nHits an additional time for each potion you've used this combat.",
+  "ALCHEMIST-FIGHTING_SPIRITS.description": "Deal {Damage:diff()} damage.\nHits an additional time for each potion you've used this combat.{PotionsUsed}",
   "ALCHEMIST-FIGHTING_SPIRITS.title": "Fighting Spirits",
   "ALCHEMIST-FLARE_UP.description": "Deal {Damage:diff()} damage.\nApply {PoisonPower:diff()} [gold]Poison[/gold].\nTrigger [gold]Poison[/gold] on the enemy.",
   "ALCHEMIST-FLARE_UP.title": "Flare Up",

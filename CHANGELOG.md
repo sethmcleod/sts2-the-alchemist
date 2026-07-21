@@ -41,6 +41,8 @@ Security.
   1 (2) Poison."
 - Buffed Spatter card: each hit now also applies 1 Poison to the enemy it hits
 - Buffed Fighting Spirits card: upgraded damage increased from 12 -> 14
+- Changed Fighting Spirits card: it now glows and shows the potions used this
+  combat in green, like other scaling cards
 - Fumigate card upgrade now shows its base damage increase 1 -> 2 on the card
   sheet (the upgrade already did this)
 - Buffed Carapace card: Block per turn fermented is now a flat 6 (9), up from
