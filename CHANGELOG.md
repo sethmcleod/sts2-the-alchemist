@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-07-21
+
 ### Added
 
 - Added a placeholder Alchemist character-select splash, replacing the borrowed
