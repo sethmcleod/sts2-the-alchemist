@@ -17,6 +17,8 @@ Security.
 
 - Added a placeholder Alchemist character-select splash, replacing the borrowed
   Ironclad backdrop until the final art is ready
+- Added Neurotoxin card (Rare Attack, cost 2): "Deal 18 (24) damage. Gambit:
+  Stun the enemy. Exhaust." Replaces Harvest
 - Added Soporific potion (Brew-only, thrown): "Stun an enemy." Replaces Basilisk
   Bile
 
@@ -60,6 +62,7 @@ Security.
 
 ### Removed
 
+- Removed Harvest card, replaced by Neurotoxin
 - Removed Basilisk Bile potion, replaced by Soporific
 
 ### Fixed

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvs4l0f8v54n8"
-path="res://.godot/imported/harvest.png-1a951a9e0a9ffb8c6e2b3d1888de3564.ctex"
+uid="uid://clit0emi0sf51"
+path="res://.godot/imported/neurotoxin.png-c691cde4f3fda8a3c949add39661095e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/big/harvest.png"
-dest_files=["res://.godot/imported/harvest.png-1a951a9e0a9ffb8c6e2b3d1888de3564.ctex"]
+source_file="res://Alchemist/images/card_portraits/big/neurotoxin.png"
+dest_files=["res://.godot/imported/neurotoxin.png-c691cde4f3fda8a3c949add39661095e.ctex"]
 
 [params]
 

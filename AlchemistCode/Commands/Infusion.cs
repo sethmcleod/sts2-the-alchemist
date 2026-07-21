@@ -75,6 +75,12 @@ public static class Infusion
         return card.Enchantment == null || card.Enchantment.GetType() == type;
     }
 
+    // Glow the Infuse selection gold for cards that gain an effect from being Enchanted, so the player sees
+    // the best targets. CanInfuse keeps it to cards that can actually be picked. Hand selection only, because
+    // CardSelectorPrefs.ShouldGlowGold applies to the hand
+    private static bool ShouldGlowInfuse(CardModel card) =>
+        card is AlchemistCard { GainsEffectWhenEnchanted: true } && CanInfuse(card);
+
     public static Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count) =>
         InfuseChosen(ctx, source, pile, count, count);
 
@@ -85,7 +91,7 @@ public static class Infusion
         var prompt = max >= AlchemistCard.AnyNumber ? SelectPromptAny
             : min == max ? SelectPrompt
             : SelectPromptRange;
-        var prefs = new CardSelectorPrefs(prompt, min, max);
+        var prefs = new CardSelectorPrefs(prompt, min, max) { ShouldGlowGold = ShouldGlowInfuse };
         var picks = (await CardSelectCmd.FromHand(ctx, owner, prefs, CanInfuse, source)).ToList();
         foreach (var card in picks)
             Infuse(card);
@@ -99,7 +105,7 @@ public static class Infusion
         var prompt = max >= AlchemistCard.AnyNumber ? SelectPromptAny
             : min == max ? SelectPrompt
             : SelectPromptRange;
-        var prefs = new CardSelectorPrefs(prompt, min, max);
+        var prefs = new CardSelectorPrefs(prompt, min, max) { ShouldGlowGold = ShouldGlowInfuse };
         var picks = (pile == PileType.Hand
             ? await CardSelectCmd.FromHand(ctx, source.Owner, prefs, CanInfuse, source)
             : await CardSelectCmd.FromCombatPile(ctx, pile.GetPile(source.Owner), source.Owner, prefs, CanInfuse))

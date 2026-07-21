@@ -58,7 +58,7 @@ Resolve,Uncommon,Power,3 (2),"At the start of your turn, gain 1 Strength for eac
 Windfall,Uncommon,Power,1,"Whenever you Procure a Potion during combat, draw 1 (2) card(s) and gain 1 energy."
 Needle Point,Rare,Attack,0,"Innate. Deal 7 (10) damage. Apply 1 (2) Weak. If this card is Enchanted, apply 1 (2) Vulnerable."
 Azoth,Rare,Attack,1,"Deal 10 (14) damage. If you have 7 or more cards in your Exhaust Pile, gain 1 (2) energy."
-Harvest,Rare,Attack,1,"Deal 10 (13) damage. If Fatal, gain 1 (2) additional Potion reward(s). Gambit: Deal 5 additional damage."
+Neurotoxin,Rare,Attack,2,"Deal 18 (24) damage. Gambit: Stun the enemy. Exhaust."
 Refine,Rare,Skill,0,"Draw 1 (2) cards. Infuse a card in your Hand. If this card is Enchanted, Infuse 2 cards instead."
 Lash Out,Rare,Attack,1,Deal 6 (8) damage 3 times. Gambit: Hits an additional time. Seep: Gain 2 Regen.
 Ichor,Rare,Attack,3 (2),Retain. Deal damage equal to your missing HP. Exhaust.
