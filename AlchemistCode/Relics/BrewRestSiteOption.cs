@@ -77,7 +77,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
         var exclusives = new PotionModel[]
         {
             ModelDb.Potion<QuicksilverDraught>(),
-            ModelDb.Potion<BasiliskBile>(),
+            ModelDb.Potion<Soporific>(),
             ModelDb.Potion<Alkahest>(),
         }.Where(p => Owner.Potions.All(held => held.Id != p.Id)).ToList();
         if (exclusives.Count > 0 && rng.NextFloat() < BrewOnlyChance)

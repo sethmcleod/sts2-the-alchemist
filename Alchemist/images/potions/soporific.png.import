@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr83ft42vscp8"
-path="res://.godot/imported/basilisk_bile.png-4187062788eb95c4b7a0aaca161e9fd3.ctex"
+uid="uid://c6jmtlrhbgc4c"
+path="res://.godot/imported/soporific.png-ead2570bf741f9ede87dd31b59866cc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/potions/outlines/basilisk_bile.png"
-dest_files=["res://.godot/imported/basilisk_bile.png-4187062788eb95c4b7a0aaca161e9fd3.ctex"]
+source_file="res://Alchemist/images/potions/soporific.png"
+dest_files=["res://.godot/imported/soporific.png-ead2570bf741f9ede87dd31b59866cc7.ctex"]
 
 [params]
 

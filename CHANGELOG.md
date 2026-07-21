@@ -17,6 +17,8 @@ Security.
 
 - Added a placeholder Alchemist character-select splash, replacing the borrowed
   Ironclad backdrop until the final art is ready
+- Added Soporific potion (Brew-only, thrown): "Stun an enemy." Replaces Basilisk
+  Bile
 
 ### Changed
 
@@ -55,6 +57,10 @@ Security.
   from 75% (100%) of base damage
 - Buffed Sinter card: free-cost condition decreased from 7 -> 5 cards in your
   Exhaust Pile
+
+### Removed
+
+- Removed Basilisk Bile potion, replaced by Soporific
 
 ### Fixed
 
