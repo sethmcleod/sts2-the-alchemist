@@ -13,6 +13,11 @@ Security.
 
 ## [Unreleased]
 
+### Added
+
+- Added a placeholder Alchemist character-select splash, replacing the borrowed
+  Ironclad backdrop until the final art is ready
+
 ### Changed
 
 - Reworked Anneal card and renamed it Quench: "Draw a card. Infuse a card in

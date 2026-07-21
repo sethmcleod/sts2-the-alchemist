@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3]
+
+; Placeholder Alchemist character-select splash. A single full-screen image.
+;
+; The screen adds this scene under its "AnimatedBg" container, which is
+; deliberately larger than the viewport (it is grown by -388/-80 on the top-left
+; and +252/+40 on the bottom-right so the base games' oversized parallax art
+; bleeds off every edge). The root below cancels exactly those offsets, so it
+; lands on the visible viewport rect and the image covers the screen instead of
+; being stretched across the oversized container. Replace the texture (or this
+; whole scene) with the final splash art. See Alchemist.CustomCharacterSelectBg.
+
+[ext_resource type="Texture2D" path="res://Alchemist/images/charui/char_select_bg_alchemist.png" id="splash"]
+
+[node name="AlchemistBg" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 388.0
+offset_top = 80.0
+offset_right = -252.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Splash" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("splash")
+expand_mode = 1
+stretch_mode = 6
