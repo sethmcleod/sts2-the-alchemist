@@ -118,6 +118,10 @@ Security.
 - Fixed Glowing Shard relic showing the Accelerant power icon on you and allies.
   It no longer grants the Accelerant power; it adds the extra enemy Poison
   trigger directly
+- Fixed Golden Fruit and Unripe Fruit quest cards showing in the Alchemist card
+  list. They now appear only under the Quest category, like the tokens. Golden
+  Fruit keeps the Alchemist frame and gold energy icon, since only the Alchemist
+  can obtain it
 
 ## [0.3.0] - 2026-07-20
 
