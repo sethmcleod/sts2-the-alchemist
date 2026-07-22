@@ -56,6 +56,9 @@ Security.
 - Changed the Seep card glow to a deeper green
 - Cards that gain an effect from being Enchanted now glow gold in the Infuse
   selection, so you can see the best cards to Infuse
+- An automatic Infuse, where only one card can be chosen, now previews the
+  infused card on screen instead of quietly changing its enchantment icon. This
+  also covers Refine, which Infuses the card it chooses
 - Buffed Carapace card: Block per turn fermented is now a flat 6 (9), up from
   50% (75%) of base Block
 - Buffed Rolling Boil card: damage per turn fermented is now a flat 4 (6) per

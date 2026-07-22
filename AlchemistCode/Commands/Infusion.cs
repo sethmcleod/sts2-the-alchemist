@@ -80,6 +80,17 @@ public static class Infusion
     private static bool ShouldGlowInfuse(CardModel card) =>
         card is AlchemistCard { GainsEffectWhenEnchanted: true } && CanInfuse(card);
 
+    // True when a fixed-count hand selection (min == max, so no manual confirmation) resolves with no screen,
+    // because no more cards match the filter than the count. The player then sees no screen, so the caller
+    // previews the result to make the automatic pick visible. This is the base game behavior for an upgraded
+    // card from Armaments, where CardCmd.Upgrade previews the chosen card even when the pick auto-resolves
+    internal static bool HandSelectIsAutomatic(Player owner, Func<CardModel, bool> filter, int min, int max)
+    {
+        if (min != max) return false;
+        var matches = PileType.Hand.GetPile(owner).Cards.Count(filter);
+        return matches > 0 && matches <= min;
+    }
+
     public static Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count) =>
         InfuseChosen(ctx, source, pile, count, count);
 
@@ -90,10 +101,14 @@ public static class Infusion
         var prompt = max >= AlchemistCard.AnyNumber ? SelectPromptAny
             : min == max ? SelectPrompt
             : SelectPromptRange;
+        var autoResolved = HandSelectIsAutomatic(owner, CanInfuse, min, max);
         var prefs = new CardSelectorPrefs(prompt, min, max) { ShouldGlowGold = ShouldGlowInfuse };
         var picks = (await CardSelectCmd.FromHand(ctx, owner, prefs, CanInfuse, source)).ToList();
         foreach (var card in picks)
             Infuse(card);
+        // No screen was shown, so preview the infused cards to make the automatic infuse visible
+        if (autoResolved && picks.Count > 0)
+            CardCmd.Preview(picks);
     }
 
     // min/max lets the player choose how many to infuse: "up to N" (0..N) or "any number"
@@ -104,6 +119,8 @@ public static class Infusion
         var prompt = max >= AlchemistCard.AnyNumber ? SelectPromptAny
             : min == max ? SelectPrompt
             : SelectPromptRange;
+        // An automatic hand infuse shows no screen, so it needs a preview too, the same as a hidden pile
+        var autoResolved = pile == PileType.Hand && HandSelectIsAutomatic(source.Owner, CanInfuse, min, max);
         var prefs = new CardSelectorPrefs(prompt, min, max) { ShouldGlowGold = ShouldGlowInfuse };
         var picks = (pile == PileType.Hand
             ? await CardSelectCmd.FromHand(ctx, source.Owner, prefs, CanInfuse, source)
@@ -111,8 +128,9 @@ public static class Infusion
             .ToList();
         foreach (var card in picks)
             Infuse(card);
-        // The player cannot see draw or discard picks, so show them. The player can already see hand picks
-        if (pile is PileType.Draw or PileType.Discard && picks.Count > 0)
+        // Draw and discard picks are off screen. A hand pick is on screen, but an automatic one showed no
+        // selection screen, so preview it too. A manual hand pick already showed the player the card
+        if (picks.Count > 0 && (pile is PileType.Draw or PileType.Discard || autoResolved))
             CardCmd.Preview(picks);
     }
 
