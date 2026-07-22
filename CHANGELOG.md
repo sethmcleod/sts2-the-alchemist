@@ -13,6 +13,20 @@ Security.
 
 ## [Unreleased]
 
+### Changed
+
+- Changed the Seep card glow to a deeper green
+- An automatic Infuse, where only one card can be chosen, now previews the
+  infused card on screen instead of quietly changing its enchantment icon. This
+  also covers Refine, which Infuses the card it chooses
+
+### Fixed
+
+- Fixed Golden Fruit and Unripe Fruit quest cards showing in the Alchemist card
+  list. They now appear only under the Quest category, like the tokens. Golden
+  Fruit keeps the Alchemist frame and gold energy icon, since only the Alchemist
+  can obtain it
+
 ## [0.4.0] - 2026-07-21
 
 ### Added
@@ -53,12 +67,8 @@ Security.
 - Buffed Fighting Spirits card: upgraded damage increased from 12 -> 14
 - Changed Fighting Spirits card: it now glows and shows the potions used this
   combat in green, like other scaling cards
-- Changed the Seep card glow to a deeper green
 - Cards that gain an effect from being Enchanted now glow gold in the Infuse
   selection, so you can see the best cards to Infuse
-- An automatic Infuse, where only one card can be chosen, now previews the
-  infused card on screen instead of quietly changing its enchantment icon. This
-  also covers Refine, which Infuses the card it chooses
 - Buffed Carapace card: Block per turn fermented is now a flat 6 (9), up from
   50% (75%) of base Block
 - Buffed Rolling Boil card: damage per turn fermented is now a flat 4 (6) per
@@ -122,10 +132,6 @@ Security.
 - Fixed Glowing Shard relic showing the Accelerant power icon on you and allies.
   It no longer grants the Accelerant power; it adds the extra enemy Poison
   trigger directly
-- Fixed Golden Fruit and Unripe Fruit quest cards showing in the Alchemist card
-  list. They now appear only under the Quest category, like the tokens. Golden
-  Fruit keeps the Alchemist frame and gold energy icon, since only the Alchemist
-  can obtain it
 
 ## [0.3.0] - 2026-07-20
 
