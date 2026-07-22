@@ -15,6 +15,10 @@ Security.
 
 ### Changed
 
+- Changed Hemorrhage card upgrade: cost now decreases 1 -> 0 instead of the
+  damage increasing from double to triple
+- Nerfed Spatter card: it no longer applies 1 Poison on each hit. Its many hits
+  make it a strong Laced target instead
 - Changed the Seep card glow to a deeper green
 - An automatic Infuse, where only one card can be chosen, now previews the
   infused card on screen instead of quietly changing its enchantment icon. This
@@ -26,6 +30,8 @@ Security.
   list. They now appear only under the Quest category, like the tokens. Golden
   Fruit keeps the Alchemist frame and gold energy icon, since only the Alchemist
   can obtain it
+- Fixed an Infused Spatter triggering Poison-on-apply effects, such as Sediment,
+  twice on each hit
 
 ## [0.4.0] - 2026-07-21
 

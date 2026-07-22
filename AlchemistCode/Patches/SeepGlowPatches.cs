@@ -11,7 +11,7 @@ namespace Alchemist.AlchemistCode.Patches;
 // gold, "leave this in hand", so it gets a fourth color, a deep green
 public static class SeepGlow
 {
-    public static readonly Color Color = new(0.157f, 0.5f, 0.071f, 0.98f);
+    public static readonly Color Color = new(0.157f, 0.55f, 0.071f, 0.98f);
 
     // UpdateCard returns early in three cases, and a postfix still runs after each one. Repeat those
     // conditions here, or the glow paints on a card that the base game left alone

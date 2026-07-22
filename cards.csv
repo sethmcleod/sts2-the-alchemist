@@ -40,7 +40,7 @@ Golden Fruit,Quest,Skill,1,Heal 8 HP. Gain 25 Gold. Take an extra turn after thi
 Golden Touch,Rare,Power,3 (2),"Enchanted cards cost 1 less. This stacks. If this card is Enchanted, it costs 1 less. (Infuse a card in your Hand.)"
 Grind Down,Common,Attack,2,Deal 12 (16) damage. Apply 2 (3) Weak. Gambit: Deal 6 (8) additional damage.
 Heavy Hand,Uncommon,Power,1,"Whenever you gain or apply Poison, add an additional 1 (2) Poison."
-Hemorrhage,Uncommon,Attack,1,Lose HP equal to your Regen. Deal double (triple) that much damage.
+Hemorrhage,Uncommon,Attack,1 (0),Lose HP equal to your Regen. Deal double that much damage.
 Hone,Uncommon,Skill,1,(Gain 1 Strength.) Upgrade ALL cards in your Hand. Exhaust.
 Ichor,Rare,Attack,3 (2),Retain. Deal damage equal to your missing HP. Exhaust.
 Inhale,Uncommon,Skill,0,Gain Block equal to Poison on everyone (2 times). Infuse a card in your Hand. Exhaust.
@@ -76,7 +76,7 @@ Sediment,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block. 
 Sepsis,Rare,Power,2,Gain 3 (2) Poison. Poisoned enemies take an additional 25% (50%) damage from Attacks.
 Sinter,Common,Skill,1,"Gain 7 (10) Block. If you have 5 or more cards in your Exhaust Pile, this costs 0."
 Siphon,Common,Attack,1,"Deal 8 (12) damage. Draw 2 cards. If this card is Enchanted, draw an additional card."
-Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Each hit applies 1 Poison. Gain 2 Poison.
+Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Gain 2 Poison.
 Delayed Reaction,Common,Skill,1,"At the end of your next turn, deal 14 (20) damage to the enemy. Exhaust."
 Strike,Basic,Attack,1,Deal 6 (9) damage.
 Sublimate,Rare,Skill,2,Transform any number of cards in your Hand into Distillates (+). Exhaust.

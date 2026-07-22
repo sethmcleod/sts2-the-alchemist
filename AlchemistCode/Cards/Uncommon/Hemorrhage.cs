@@ -10,12 +10,13 @@ public class Hemorrhage : AlchemistCard
 {
     public Hemorrhage() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
+        WithCostUpgradeBy(-1);
         WithTip(typeof(RegenPower));
     }
 
     // Single source of truth for the on-card preview and the real hit. You lose your Regen as HP, then deal
-    // double (triple upgraded) that much, after enchant multipliers
-    private int RawDamageFor(int regen) => regen * (IsUpgraded ? 3 : 2);
+    // double that much, after enchant multipliers
+    private int RawDamageFor(int regen) => regen * 2;
 
     private int DamageFor(int regen) => ApplyEnchantDamage(RawDamageFor(regen));
 

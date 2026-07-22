@@ -12,10 +12,12 @@ public class Spatter : AlchemistCard
     {
         WithDamage(3, 1);
         WithVar("hits", 4, 0);
-        WithVar("hitPoison", 1, 0);
         WithPower<PoisonPower>(2, 0);
     }
 
+    // The many small hits make this a strong Laced target: each unblocked hit then applies the Poison. The
+    // card does not apply its own per-hit Poison, which would also make each hit trigger a Poison-on-apply
+    // effect, such as Sediment, a second time
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;
@@ -27,9 +29,6 @@ public class Spatter : AlchemistCard
                 .FromCard(this, play)
                 .Targeting(enemy)
                 .Execute(choiceContext);
-            if (enemy.IsAlive)
-                await PowerCmd.Apply<PoisonPower>(choiceContext, enemy,
-                    DynamicVars["hitPoison"].IntValue, Owner.Creature, this);
         }
         await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);
     }
