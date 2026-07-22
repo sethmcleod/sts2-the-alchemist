@@ -53,6 +53,7 @@ Security.
 - Buffed Fighting Spirits card: upgraded damage increased from 12 -> 14
 - Changed Fighting Spirits card: it now glows and shows the potions used this
   combat in green, like other scaling cards
+- Changed the Seep card glow to a deeper green
 - Cards that gain an effect from being Enchanted now glow gold in the Infuse
   selection, so you can see the best cards to Infuse
 - Buffed Carapace card: Block per turn fermented is now a flat 6 (9), up from

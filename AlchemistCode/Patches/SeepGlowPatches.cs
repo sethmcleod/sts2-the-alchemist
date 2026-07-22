@@ -8,11 +8,10 @@ namespace Alchemist.AlchemistCode.Patches;
 
 // The base game hand glow has three colors, all fixed in NHandCardHolder.UpdateCard: cyan for a playable
 // card, gold for a card with a bonus now, and red for a warning. A Seep card needs the opposite message of
-// gold, "leave this in hand", so it gets a fourth color. The green matches the Seep keyword icon
+// gold, "leave this in hand", so it gets a fourth color, a deep green
 public static class SeepGlow
 {
-    // #94db6b, the green of images/keywords/seep.png. The alpha matches the base game glow colors
-    public static readonly Color Color = new(0.580f, 0.859f, 0.420f, 0.98f);
+    public static readonly Color Color = new(0.157f, 0.5f, 0.071f, 0.98f);
 
     // UpdateCard returns early in three cases, and a postfix still runs after each one. Repeat those
     // conditions here, or the glow paints on a card that the base game left alone
