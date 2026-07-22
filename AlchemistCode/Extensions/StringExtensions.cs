@@ -18,13 +18,14 @@ public static class StringExtensions
         return Path.Join(MainFile.ResPath, "images", "card_portraits", "card.png");
     }
 
-    public static string BigCardImagePath(this string path)
+    // The final art lives in card_portraits/<file>. Until a card has it, the current placeholder is the beta
+    // art in card_portraits/beta/<file>, the same layout the base game decompiles to (<pool>/<file> and
+    // <pool>/beta/<file>). Real art is added one card at a time: drop a file into card_portraits/ and it wins
+    // over the beta placeholder. If neither exists, CardImagePath falls back to the generic card.png
+    public static string CardImageOrBetaPath(this string file)
     {
-        path = Path.Join(MainFile.ResPath, "images", "card_portraits", "big", path);
-        if (ResourceLoader.Exists(path)) return path;
-
-        MainFile.Logger.Info("Could not find big card image path: " + path);
-        return Path.Join(MainFile.ResPath, "images", "card_portraits", "big", "card.png");
+        var real = Path.Join(MainFile.ResPath, "images", "card_portraits", file);
+        return ResourceLoader.Exists(real) ? real : Path.Join("beta", file).CardImagePath();
     }
 
     public static string PowerImagePath(this string path)

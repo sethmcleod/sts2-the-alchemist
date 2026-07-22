@@ -39,9 +39,10 @@ SPECIAL_CLASS = {"Strike": "StrikeAlchemist", "Defend": "DefendAlchemist"}
 # StringExtensions.cs). If a rename does not include the images, no class uses them.
 # entity label -> (code subdir, base marker, [(variant label, image dir, filename template)])
 ASSET_SPECS = [
-    # cards have big portraits only: PortraitPath and BetaPortraitPath use card.png as
-    # the default, so a check for them here would report all 95 cards on each run
-    ("card", "Cards", "Card", [("portrait", "card_portraits/big", "{s}.png")]),
+    # cards use the base game layout: the real portrait is card_portraits/<s>.png and the beta placeholder
+    # is card_portraits/beta/<s>.png (see CardImageOrBetaPath). check_assets accepts either. card.png is the
+    # generic fallback, so it is exempt below
+    ("card", "Cards", "Card", [("portrait", "card_portraits", "{s}.png")]),
     ("power", "Powers", "Power", [("packed", "powers", "{s}.png"),
                                   ("big", "powers/big", "{s}.png")]),
     ("relic", "Relics", "Relic", [("packed", "relics", "{s}.png"),
@@ -117,11 +118,18 @@ def check_assets() -> tuple[list[str], list[str], int]:
             for variant, img_dir, template in variants:
                 path = IMG / img_dir / template.format(s=asset_name(cls))
                 claimed.add(path)
-                if not path.exists():
+                # A card portrait is present as the real art in big/ or the beta placeholder in beta/
+                beta = None
+                if label == "card":
+                    beta = IMG / "card_portraits" / "beta" / template.format(s=asset_name(cls))
+                    claimed.add(beta)
+                if not path.exists() and not (beta and beta.exists()):
                     errors.append(f"{label} {cls}: the {variant} art {img_dir}/{path.name} is missing")
 
-    # remove the duplicates: relics keep the packed art and the outline art in one directory
+    # remove the duplicates: relics keep the packed art and the outline art in one directory. Also scan the
+    # card beta placeholder folder, so an orphaned beta png (no matching card) is reported
     art_dirs = {img_dir for _, _, _, variants in ASSET_SPECS for _, img_dir, _ in variants}
+    art_dirs.add("card_portraits/beta")
     for img_dir in sorted(art_dirs):
         for path in sorted((IMG / img_dir).glob("*.png")):
             if path not in claimed and path.name not in FALLBACK_ART:
