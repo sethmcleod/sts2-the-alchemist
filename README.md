@@ -5,97 +5,91 @@
 
 ## Overview
 
-The Alchemist is a new character with a high-risk, high-reward playstyle. The
-core loop is to deliberately run your health low to unlock your strongest
-effects, then convert that danger back into survival. You're often balancing
-damaging yourself through Poison with healing yourself through Regen.
+The Alchemist is a new character with a high-risk, high-reward playstyle. You'll
+benefit from staying below 50% HP, but also be equipped with tools to gain that
+health back through Regen and potions. You can Enchant cards in combat to give
+them powerful effects, multiple times. You can also brew potions at rest sites
+and, more importantly, _sell them to the Merchant!_ 💰
 
-Three overlapping archetypes give the class its shape:
-
-- **The Transmuter**: turn self-inflicted Poison into fuel. Poison yourself as
-readily as your enemies, convert it into Regen, then spend that Regen on
-damage, Block, and Strength. At 50% or less HP, your **Gambit** cards gain an
-extra effect, so this archetype thrives one bad decision from disaster.
-- **The Distiller**: make your hand a resource managed over time. **Ferment**
-cards grow stronger every turn you hold them, and **Seep** cards often punish
-(but sometimes reward) you for waiting. Patience versus commitment, weighed
-every turn.
-- **The Apothecary**: build an engine from cards and potions. **Infuse** the cards
-you already love to enchant them until the end of combat, refine your hand into
-tokens that buff or debuff, and synergize with the potions you have to generate
-Block or deal extra damage.
+_(Disclaimer: This description was paid for by the Merchant.)_
 
 ## Content
 
-- A new character meticulously designed to fit in with the world
-- 97 new cards, including 4 multiplayer cards and 2 full-art Ancient rewards
-- 9 new relics
-- 6 new potions
-- 3 new enchantments
-- A 7-epoch timeline inspired by the Great Work
-- Many lines of dialog with Ancients and other characters
-- Hand-drawn artwork for all cards, relics, potion, and icons (WIP)
+- 🐸 A new character meticulously designed to fit in with the rest of the game
+- ✨ 97 new cards, including 4 multiplayer cards and 2 full-art Ancient rewards
+- 💎 9 new relics
+- 🧪 6 new potions
+- 🪄 3 new enchantments
+- 📚 7 timeline epochs inspired by the hermetic Great Work
+- 💬 Loads of dialog with Ancients and other characters
+- 🎨 Hand-drawn artwork for all cards, relics, potions, and icons _(WIP)_
 
 ## Mechanics and Keywords
 
-- **Brew** at rest sites to remove a card from your deck and procure a random
-  potion. There are 3 new potions that can only be obtained this way.
 - **Poison & Regen**: The Alchemist deliberately self-poisons, then converts
-  Poison into Regen (and Regen into damage, Block or Strength). Both are meant
-  to be actively cycled, not passively endured.
-- **Gambit**: "Gambit: [effect]" triggers only while your HP is at or below 50%
-  of your Max HP. The card works normally above half health. Gambit is a bonus
-  for playing dangerously, never a requirement.
-- **Ferment**: Found on cards that also Retain. A Fermenting card's effect grows
-  in potency for every turn it stays unplayed in your hand. There's no cap, but
-  every turn held is turn it occupies your hand. Draft these in moderation.
-- **Seep**: "Seep: [effect]" resolves at the end of your turn only if the card
-  is still in your hand. Most Seep effects are costs that pressure you to play
-  the card, though a few are small benefits. Seep is Ferment's mirror: one
-  rewards patience, the other discourages it.
-- **Infuse**: Infusing a card enchants it for the rest of combat based on its
-  type. Attacks gain 2 **Laced** (apply Poison on unblocked damage), Skills gain
-  1 **Fuming** (add Foul Vapor to your Hand), Powers gain 1 **Exalted** (gain
-  Strength), and Status/Curse/Quest cards gain **Ethereal**. Same-type infusions
-  stack, each one adding that much again.
+  Poison into Regen, and Regen into damage, Block or other useful effects. Both
+  are meant to be actively cycled, not passively endured.
+- **Gambit**: Cards with this keyword have buffs that are only active while your
+  HP is 50% or less. Whether increasing damage or adding additional effects,
+  you'll benefit from playing strategically.
+- **Ferment**: This keyword is only found on cards that also Retain. These
+  effects grow in potency for every turn the card stays in your hand, and
+  persist after the card is played.
+- **Seep**: Cards with this keyword have a green glow and will trigger an effect
+  if still in your hand at the end of turn. Most are costs that pressure you to
+  play the card, though some are beneficial.
+- **Infuse**: Infusing a card Enchants it for the rest of combat based on the
+  type. Attacks apply Poison, Skills create tokens that apply Weak and
+  Vulnerable, but Poison you, Powers give Strength, and other cards gain
+  Ethereal.
+- **Brew**: This new Rest Site option allows you to remove a card from your deck
+  and procure a random potion. There are 3 new potions that can only be obtained
+  this way.
+- **_Sell Potions!_**: Due to the quality and potency of these brews, the
+  Merchant is willing to buy potions from you, offering Gold based on the
+  rarity.
 
 ## A Note on Quality
 
 The Alchemist has been lovingly crafted to feel like a natural addition to the
-game. Every card, relic, and potion has been balanced against the existing pools
-across repeated low and high-Ascension playtesting. The same care extends to
-flavor: this character's story is woven directly into the game's existing
-timeline, and observant players will find more than a few threads connecting
-them to the world.
+game. Every card, relic, and potion has been (and will continue to be) balanced
+against the existing pools through many rounds of low and high-Ascension
+playtesting. The same care extends to flavor and lore: this character's story is
+woven directly into the game's existing timeline, and observant players will
+find more than a few threads connecting them to the world.
 
-## How to start
+Enjoy! 🧙‍♂️
 
-### Play it
+---
 
-**Steam Workshop** is the best way to install the mod and play it. It needs one
-click. It keeps the mod updated. It also installs the necessary BaseLib
-dependency for you.
+## Play it
+
+**Steam Workshop** is the best way to install and play... soon!
 
 > [!NOTE]
-> The Workshop release comes after the character artwork is complete. Until then,
-> use the manual installation below.
+> There will be a Workshop launch as soon as the first round of character
+> artwork is complete. Until then, you can use the manual installation below.
 
 **Manual install:**
 
-1. Install **[BaseLib](https://steamcommunity.com/workshop/filedetails/?id=3737335127)**
-  first. The Workshop does this step for you.
+1. Install
+   **[BaseLib](https://steamcommunity.com/workshop/filedetails/?id=3737335127)**
+   which is a framework most mods depend on (you may already have it installed)
 2. Download `Alchemist-vX.Y.Z.zip` from the
-  [Releases](https://github.com/sethmcleod/sts2-the-alchemist/releases) page.
-3. Extract the `Alchemist/` folder into the `mods/` folder of your game.
+   [Releases](https://github.com/sethmcleod/sts2-the-alchemist/releases) page.
+3. Extract the `Alchemist/` folder into the `mods/` folder of your game:
 
-[RELEASING.md](RELEASING.md#how-players-install-it) gives the full steps and the
-`mods/` path for each platform. You do not need to clone the repo. You do not
-need build tools.
+- **macOS**: `…/Slay the Spire 2/SlayTheSpire2.app/Contents/MacOS/mods/`
+- **Windows/Linux**: the `mods/` folder in the same location as the game
+  executable.
 
-The mod needs Slay the Spire 2 on Steam. To build from source, read the
-prerequisites in [BUILD.md](BUILD.md), then use the Develop steps below.
+## Develop
 
-### Develop
+First off, check out the [CONTRIBUTING.md](CONTRIBUTING.md) guide.
+
+This repo assumes you have Slay the Spire 2 connected through Steam. To build
+from source, read the prerequisites in [BUILD.md](BUILD.md), then use the
+Develop steps below.
 
 ```sh
 git clone https://github.com/sethmcleod/sts2-the-alchemist
