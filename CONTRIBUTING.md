@@ -8,9 +8,10 @@ start to the end, follow the worked example in
 > The directory `.claude/skills/` contains skills for AI agents such as Claude Code.
 > These skills do the workflows below:
 >
-> - `card`: add a card, or change a card.
-> - `balance-sync`: apply a design pass from an updated cards.csv.
+> - `getting-started`: a tour of the repo for a new contributor.
+> - `card`: add a card, change a card, rename a card, or retire a card.
 > - `playtest`: run the mod against the live game safely.
+> - `balance-review`: read finished run data and suggest balance changes.
 >
 > You can also do all of the steps below by hand.
 

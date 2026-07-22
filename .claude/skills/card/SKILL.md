@@ -59,6 +59,26 @@ If the change alters the behavior or the numbers, you must also change the **reg
 scenario** (see below). If you change a number but you do not change the test, a
 regression can go into a release.
 
+## How to rename a card
+
+A rename touches more files than any other change. The class name gives the model id, the
+loc keys, and the portrait filename, so all of them change together. Before you edit,
+find every reference to the old name:
+
+```sh
+grep -rn "OldName" AlchemistCode Alchemist/localization cards.csv scripts/tests
+```
+
+Then change the class name and file name, the loc keys, the csv row, the portrait
+filename, references from other cards, and any test scenario. Run the grep again after
+the edit. Zero hits on the old name means the rename is complete.
+
+## How to retire a card
+
+Remove all of its pieces together: the class file, the loc keys, the csv row, the
+portrait, and any test scenario. A leftover loc key or csv row fails the lint. A leftover
+reference from another card fails the build.
+
 ## Verify
 
 Run these commands in this order. Do not stop after a successful build. A build does not

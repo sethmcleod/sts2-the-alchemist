@@ -18,7 +18,7 @@
   "ALCHEMIST-ALCHEMIST4_EPOCH.unlockInfo": "{IsRevealed:Beat|Beat} [gold]Act[/gold] [blue]3[/blue] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
 
   "ALCHEMIST-ALCHEMIST5_EPOCH.title": "Fermentation",
-  "ALCHEMIST-ALCHEMIST5_EPOCH.description": "Sealed nine days in a gallery of luminous [green]fungi[/green].\nSome would [jitter]panic[/jitter]. The [purple]Frog[/purple] [sine]brews[/sine].\nSome preparations [gold]reward[/gold] the patient hand. Others [red]punish[/red] hesitation.\nThey emerge with a brimming satchel and a rarer thing: the [blue]patience[/blue] to know when not to reach for it.",
+  "ALCHEMIST-ALCHEMIST5_EPOCH.description": "Sealed nine days in a gallery of luminous [green]fungi[/green].\nSome would [jitter]panic[/jitter]. The [purple]Frog[/purple] [sine]brews[/sine].\nSome preparations [gold]reward[/gold] the patient hand. Others [red]punish[/red] hesitation.\nThey emerge with a brimming satchel and the [blue]patience[/blue] to know when not to reach for it.",
   "ALCHEMIST-ALCHEMIST5_EPOCH.unlockInfo": "{IsRevealed:Killed|Kill} [blue]15[/blue] [purple]Elites[/purple] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
 
   "ALCHEMIST-ALCHEMIST6_EPOCH.title": "Distillation",

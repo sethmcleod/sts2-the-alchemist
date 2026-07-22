@@ -194,7 +194,8 @@ contains no `fmoddumper` mod. This problem has a direct effect on item #1.
 Two workarounds are available now:
 
 - `grep -rhoE '"event:/[^"]*"' decompiled` recovers 369 event paths.
-- The extracted game at `~/Downloads/Slay the Spire 2/banks/desktop/` has the actual banks.
+- An extracted copy of the game (see `extract_game_assets`) has the actual banks under
+  `banks/desktop/`.
   The string table uses prefix compression. Thus `strings` gives fragments of the paths, not
   the full paths.
 

@@ -1,13 +1,13 @@
 ---
 name: balance-review
-description: Review Alchemist run data from the Run History save files and suggest balance changes. Use this skill after the user finishes a playtest run and asks for a review, a "take" on the run, or balance suggestions. Also use it for requests to compare the Alchemist against the base characters, to compute pick rates, or to refresh the baseline. The skill reads the .run files directly, filters to relevant runs, and compares against the profile 1 base-character baseline.
+description: Review Alchemist run data from the Run History save files and suggest balance changes. Use this skill after a playtest run when someone asks for a review, a "take" on the run, or balance suggestions. Also use it for requests to compare the Alchemist against the base characters, to compute pick rates, or to refresh the baseline. The skill reads the .run files directly, filters to relevant runs, and compares against a base-character baseline.
 ---
 
 # Review run data and suggest balance changes
 
-The game writes one JSON file per finished run. Read these files directly. Do not ask the
-user for screenshots, and do not scrape the in-game Run History screen. The files hold
-more than the screen shows.
+The game writes one JSON file per finished run. Read these files directly. Do not ask for
+screenshots, and do not scrape the in-game Run History screen. The files hold more than
+the screen shows.
 
 ## Where the data is
 
@@ -16,16 +16,14 @@ more than the screen shows.
 ```
 
 The `read_run_history` MCP tool (sts2-modding-mcp) reads these with filters. If the tool
-is unavailable or too coarse, parse the JSON with a script. Session scratchpads from
-earlier reviews hold reference analyzers (`analyze.py`, `baseline2.py`); rewrite them if
-gone — the schema is stable.
+is unavailable or too coarse, parse the JSON with a small script. The schema is stable.
 
 ## Which runs count
 
-- **Profile 1** = the user's real base-character history. This is the baseline. Never
-  treat it as Alchemist data.
-- **Profile 2** = Alchemist playtests. Expect many early-death test runs.
-- **Profile 3** = regression/automation. Always exclude it.
+- Ask which profile holds base-character runs and which holds Alchemist playtests, if the
+  split is not already clear from the data. The base-character runs are the **baseline**.
+  Never mix the two sets.
+- **Profile 3** is the automation profile for the regression suite. Always exclude it.
 - A run is **relevant** when it reached Act 2 or beyond (the run has entries in
   `map_point_history[1]`), was not abandoned (`was_abandoned` false), and is a standard
   run (`game_mode` == `standard` — exclude daily/custom/multiplayer modes).
@@ -46,9 +44,9 @@ the final `deck` (with `current_upgrade_level` and `enchantment`) and `relics`.
 Compute these for the run under review and for the baseline:
 
 - **Damage economy**: total `damage_taken`, total `hp_healed`, net, and damage per
-  floor. This is the Alchemist's signature metric. Early Alchemist wins ran 10–27 per
-  floor; the design target is to trend toward the baseline while the sustain identity
-  stays visible.
+  floor. This is the Alchemist's signature metric. The design target is a damage-taken
+  rate that trends toward the base-character baseline while the sustain identity stays
+  visible in the healed totals.
 - **Combat pace**: `turns_taken` per fight, split monster/elite/boss. Turns matter;
   wall-clock does not (seconds per turn is playstyle).
 - **Pick rates**: aggregate `card_choices` across all relevant Alchemist runs, count
@@ -62,23 +60,18 @@ Compute these for the run under review and for the baseline:
 
 ## Recompute the baseline every review
 
-The samples are small and both sides grow: profile 1 gains base-character runs, and
-profile 2 gains Alchemist runs. Recompute the baseline from all relevant profile 1 runs
-at the start of every review — the pass over the files is cheap. Report medians per
-character and pooled, with the run counts, so the reader sees the sample size. Recompute
-the cumulative Alchemist pick rates the same way. Never quote a stat from an earlier
-session without recomputing it.
-
-The last computed snapshot (Jul 2026, 81 act-3+ profile 1 runs) is only a sanity check
-for the recomputation: pooled medians ~292 taken / ~318 healed / 6.2 damage per floor /
-~3.5 monster, ~4.7 elite, 7–8 boss turns per fight; Ironclad is the tankiest at ~8.8
-damage per floor. If a fresh computation lands far from these without new runs to
-explain it, suspect the script, not the data.
+The samples are small and both sides grow with every play session. Recompute the baseline
+from all relevant base-character runs at the start of every review — the pass over the
+files is cheap. Report medians per character and pooled, with the run counts, so the
+reader sees the sample size. Recompute the cumulative Alchemist pick rates the same way.
+Never quote a stat from an earlier session without recomputing it. If a fresh computation
+lands far from the previous review without new runs to explain it, suspect the script,
+not the data.
 
 ## How to judge
 
 1. **Compare to the baseline, not to zero.** A stat is a finding only when it separates
-   from the profile 1 medians by a clear margin. One run is one seed: call a pattern
+   from the baseline medians by a clear margin. One run is one seed: call a pattern
    confirmed only when 2+ runs agree, and say so when the sample is thin.
 2. **Read pick rates as archetype gravity, not card strength.** A 0% card next to a
    dominant archetype is usually crowded out, not weak. Check whether its archetype
@@ -87,10 +80,10 @@ explain it, suspect the script, not the data.
 3. **Anchor every suggestion to a floor or a pick.** "Zenith+ at floor 21 is where net
    damage flattened" beats "Zenith seems strong". The per-floor table gives this for
    free.
-4. **Prefer structural suggestions over number tweaks.** The user iterates with sweeping
-   changes. Group findings by mechanic (Regen supply, Gambit uptime, poison gravity)
-   and propose one coherent batch per mechanic, with concrete numbers for every card
-   touched.
+4. **Group findings by mechanic.** Related cards move together (Regen supply, Gambit
+   uptime, poison gravity). Propose one coherent batch per mechanic, with concrete
+   numbers for every card touched, so the reader can accept or reject a mechanic at a
+   time.
 5. **Separate verdicts**: what the data confirms, what it suggests, and what needs
    another run. Keep a watchlist for the next run at the end of the review.
 
@@ -107,6 +100,6 @@ explain it, suspect the script, not the data.
 
 Lead with the verdict on the run (one sentence). Then damage economy vs baseline, pace,
 the floor-anchored findings, pick-rate table (only rows with a finding), suggestions
-grouped by mechanic with exact numbers, and the next-run watchlist. When the user only
-asks for a review, do not edit anything: suggestions wait for approval, and approved
-changes go through the three-way rule (see CONTRIBUTING.md and the card skill).
+grouped by mechanic with exact numbers, and the next-run watchlist. A review by itself
+edits nothing: suggestions wait for approval, and approved changes go through the
+three-way rule (see the **card** skill and CONTRIBUTING.md).
