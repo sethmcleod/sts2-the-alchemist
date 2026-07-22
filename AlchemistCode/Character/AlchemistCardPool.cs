@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BaseLib.Abstracts;
 using Alchemist.AlchemistCode.Epochs;
 using Alchemist.AlchemistCode.Extensions;
+using BaseLib.Abstracts;
 using Godot;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Unlocks;
@@ -27,7 +27,7 @@ public class AlchemistCardPool : CustomCardPoolModel
     public override float S => 0.4f;
     public override float V => 0.8f;
 
-    public override Color DeckEntryCardColor => new("ffffff");
+    public override Color DeckEntryCardColor => new("8D5DEF");
 
     public override bool IsColorless => false;
 }

@@ -26,6 +26,8 @@ Security.
 
 ### Fixed
 
+- Fixed the Alchemist card icons in the run history showing gray. They now use a
+  placeholder purple to match the character
 - Fixed Golden Fruit and Unripe Fruit quest cards showing in the Alchemist card
   list. They now appear only under the Quest category, like the tokens. Golden
   Fruit keeps the Alchemist frame and gold energy icon, since only the Alchemist
