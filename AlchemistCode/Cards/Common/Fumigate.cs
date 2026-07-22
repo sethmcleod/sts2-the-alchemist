@@ -24,7 +24,7 @@ public class Fumigate : AlchemistCard
     {
         base.AddExtraArgsToDescription(description);
         description.Add("ExhaustCards",
-            ExhaustCount is var n and > 0 ? $" ([green]{n}[/green])" : "");
+            ExhaustCount is var n and > 0 ? $" (Hits [green]{1 + n}[/green] times)" : "");
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
