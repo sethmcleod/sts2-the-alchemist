@@ -63,6 +63,10 @@ public static class Infusion
 
     public static int EnchantedThisCombatCount(Player owner) => EnchantedThisCombat.Count(c => c.Owner == owner);
 
+    // True when infusing this card would add a NEW card to the combat enchant tally. Masterwork counts the
+    // distinct cards Enchanted this combat, so a re-infuse of a card already counted adds nothing to it
+    public static bool WouldNewlyEnchant(CardModel card) => CanInfuse(card) && !EnchantedThisCombat.Contains(card);
+
     // A card is infusable if it takes the Ethereal keyword. It is also infusable if the enchantment for
     // its type stacks cleanly, that is the card has no enchantment or already has the same one. A second
     // Infuse on the same card increases the amount

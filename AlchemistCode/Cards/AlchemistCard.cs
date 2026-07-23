@@ -39,6 +39,21 @@ public abstract class AlchemistCard : ConstructedCardModel
         if (IsSeepCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Seep);
     }
 
+    // Attach an explanatory tip to a calculated number, so the player can see how and why the number is
+    // derived. BaseLib surfaces the tip among the card's hover tips whenever this var is present. The text
+    // lives in static_hover_tips.json under {key}.title and {key}.description
+    protected static void ExplainNumber(MegaCrit.Sts2.Core.Localization.DynamicVars.DynamicVar variable, string key)
+        => variable.WithTooltip(key);
+
+    // Same explanation, for a card whose calculated number has no var to hang a tip on (the total is
+    // computed at play time and never rendered). Adds it as a plain card tip from the same loc table
+    protected void ExplainNumber(string key) =>
+        WithTips(_ => new IHoverTip[]
+        {
+            new HoverTip(new LocString("static_hover_tips", key + ".title"),
+                new LocString("static_hover_tips", key + ".description")),
+        });
+
     public override string CustomPortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImageOrBetaPath();
     public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();

@@ -12,6 +12,7 @@ public class Overflow : AlchemistCard
         WithDamage(4, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(RegenPower));
+        ExplainNumber(DynamicVars.Damage, "ALCHEMIST-OVERFLOW");
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

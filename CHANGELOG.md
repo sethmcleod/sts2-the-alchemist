@@ -19,6 +19,8 @@ Security.
 - Added a custom character select sound: an ingredient drops into the brew, flares, and settles into bubbling. The Alchemist no longer borrows the Ironclad's select sound.
 - Added a damage forecast for Delayed Reaction. The enemy health bar now
   previews the pending hit, the way Poison previews its next tick
+- Added hover tooltips that explain the calculated numbers on cards whose damage
+  or effect is not obvious from the text.
 
 ### Changed
 

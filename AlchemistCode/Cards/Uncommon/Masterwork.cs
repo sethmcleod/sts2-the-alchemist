@@ -1,3 +1,4 @@
+using System.Linq;
 using Alchemist.AlchemistCode;
 using Alchemist.AlchemistCode.Commands;
 using MegaCrit.Sts2.Core.Commands;
@@ -16,13 +17,25 @@ public class Masterwork : AlchemistCard
         WithEnergy(1, 1);
         WithVar("Cards", 1, 1);
         WithTips(_ => Infusion.InfuseTips());
+        ExplainNumber("ALCHEMIST-MASTERWORK");
     }
 
-    // The play itself infuses one card, so the glow turns on one below the threshold: the play that
-    // starts now can reach 7. OnPlay still checks the real count after the infusion, because an infuse
-    // of an already Enchanted card adds no new card
-    protected override bool ConditionalGlow =>
-        Infusion.EnchantedThisCombatCount(Owner) >= EnchantThreshold - 1;
+    // The play itself infuses one card, so the glow turns on one below the threshold. But that reach only
+    // holds if a card in hand can take a NEW enchant. With no such card, for example only Masterwork in
+    // hand, the play cannot raise the count, so it must not glow. At or above the threshold it already holds.
+    // OnPlay still checks the real count after the infusion, because an infuse of an already Enchanted card
+    // adds no new card
+    protected override bool ConditionalGlow
+    {
+        get
+        {
+            if (Owner == null) return false;
+            var count = Infusion.EnchantedThisCombatCount(Owner);
+            if (count >= EnchantThreshold) return true;
+            return count == EnchantThreshold - 1
+                && PileType.Hand.GetPile(Owner).Cards.Any(c => c != this && Infusion.WouldNewlyEnchant(c));
+        }
+    }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

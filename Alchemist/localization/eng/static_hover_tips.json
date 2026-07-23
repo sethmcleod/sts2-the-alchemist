@@ -1,3 +1,10 @@
 {
-  
+  "ALCHEMIST-INHALE.title": "Inhale",
+  "ALCHEMIST-INHALE.description": "[gold]Block[/gold] gained is equal to the sum of all [gold]Poison[/gold] across enemies, you, and your allies.",
+  "ALCHEMIST-LIFEBLOOD.title": "Lifeblood",
+  "ALCHEMIST-LIFEBLOOD.description": "Damage includes [gold]Regen[/gold] you would gain from this card.",
+  "ALCHEMIST-MASTERWORK.title": "Masterwork",
+  "ALCHEMIST-MASTERWORK.description": "This card glows [gold]gold[/gold] if you have [gold]Enchanted[/gold] five or more cards this combat, including the one you would [gold]Infuse[/gold].",
+  "ALCHEMIST-OVERFLOW.title": "Overflow",
+  "ALCHEMIST-OVERFLOW.description": "Hits ALL enemies a number of times equal to your [gold]Regen[/gold]."
 }

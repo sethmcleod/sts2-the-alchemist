@@ -14,6 +14,7 @@ public class Inhale : AlchemistCard
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTips(_ => Infusion.InfuseTips());
+        ExplainNumber("ALCHEMIST-INHALE");
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
