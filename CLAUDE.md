@@ -94,6 +94,7 @@ These problems take the most time to find:
 | [CONTRIBUTING.md](CONTRIBUTING.md) | the three-way rule, design and code conventions |
 | [RELEASING.md](RELEASING.md) | version policy, changelog, release and package steps |
 | [docs/adding-a-card.md](docs/adding-a-card.md) | a full worked example |
+| [docs/beta-card-art.md](docs/beta-card-art.md) | the placeholder gradient system, and how to regenerate it |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | known problems and their fixes |
 | [docs/backlog.md](docs/backlog.md) | improvements that are not scheduled, with the evidence for each |
 | [docs/baselib-improvements.md](docs/baselib-improvements.md) | findings to send upstream to BaseLib |

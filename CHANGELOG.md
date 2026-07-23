@@ -15,6 +15,9 @@ Security.
 
 ### Changed
 
+- Updated all 97 placeholder card arts so every card has a unique gradient.
+  Cards in the same mechanic family (Seep, Ferment, Gambit, potions, and more)
+  share a start color, so a family still reads at a glance
 - Changed Hemorrhage card upgrade: cost now decreases 1 -> 0 instead of the
   damage increasing from double to triple
 - Nerfed Spatter card: it no longer applies 1 Poison on each hit. Its many hits
