@@ -92,7 +92,7 @@ def crackle(n, rng, pop_rate=70.0):
 def render(name, seed=99, dur=2.2, bubble_rate=18, bubble_gain=0.45,
            simmer_gain=0.16, f_lo=220, f_hi=560, bubble_start=0.48,
            bubble_sz=(0.07, 0.16), bubble_decay=3.5, crackle_gain=0.40,
-           bell_center=0.30, bell_sigma=0.17, drive=2.0):
+           bell_center=0.30, bell_sigma=0.17, drive=1.8):
     rng = random.Random(seed)
     n = int(dur * SR)
     buf = zeros(n)
