@@ -67,6 +67,9 @@ public class Alchemist : PlaceholderCharacterModel
     // them from PlaceholderID ("ironclad"), so without them every card uses the ironclad sounds.
     // Override each sfx, not PlaceholderID. PlaceholderID also controls the creature visuals, the rest
     // site and merchant animations, and the multiplayer hands
+    // A res:// sfx path plays through Godot audio, not FMOD. BaseLib PlayResourcePatch routes it.
+    // scripts/gen_select_sfx.py generates the wav
+    public override string CharacterSelectSfx => $"{MainFile.ResPath}/audio/alchemist_select.wav";
     public override string CustomAttackSfx => "event:/sfx/characters/silent/silent_attack";
     public override string CustomCastSfx => "event:/sfx/characters/necrobinder/necrobinder_cast";
     public override string CustomDeathSfx => "event:/sfx/characters/silent/silent_die";

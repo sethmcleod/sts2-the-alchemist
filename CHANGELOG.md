@@ -16,6 +16,8 @@ Security.
 ### Added
 
 - Added the Alchemist to the character stats page in the compendium. The section appears after the first run, like the base characters.
+- Added a custom character select sound: an ingredient drops into the brew, flares, and settles into bubbling. The Alchemist no longer borrows the Ironclad's select sound.
+
 ### Changed
 
 - Updated the Alchemist character select background: the static placeholder image

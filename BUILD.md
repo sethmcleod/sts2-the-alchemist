@@ -40,3 +40,11 @@ regression suite run on the local machine instead. `scripts/dev.sh release` star
 
 > [!CAUTION]
 > Never put the mod assets at base game paths (`res://images/...`). Keep all of them in `res://Alchemist/` (see `Patches/RestSitePatches.cs` for the reason).
+
+### Audio
+
+- Put sound files in `Alchemist/audio/`. The pck carries them like any other asset.
+- To play a custom sound, use a `res://` path where the game expects an FMOD event path. For example, `CharacterSelectSfx` returns `res://Alchemist/audio/alchemist_select.wav`. BaseLib `PlayResourcePatch` detects the `res://` prefix and plays the file through Godot audio players. The volume sliders apply.
+- Do not use `BaseLib.Utils.FmodAudio`. It is obsolete, and its replacement hook does not intercept all play calls. `BaseLib.Audio.ModAudio` is the maintained API for direct playback.
+- To reuse a base game sound, pass its `event:/` path to `SfxCmd.Play`. The `list_game_audio` tool in the toolkit lists all 575 events (the game must run once to build the index).
+- `scripts/gen_select_sfx.py` generates the character select sound. It documents the synthesis parameters. Match the loudness of new sounds to the base game: the select clips sit near -16 dB RMS. The script uses soft saturation (`drive`) to reach that level, because peak normalization alone is not enough for sparse material.
