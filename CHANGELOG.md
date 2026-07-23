@@ -49,6 +49,12 @@ Security.
   can obtain it
 - Fixed an Infused Spatter triggering Poison-on-apply effects, such as Sediment,
   twice on each hit
+- Fixed the run history and continue-run menus freezing when a saved run named a
+  card that a later Alchemist version renamed or removed. The screen now shows
+  its out-of-date state and stays usable
+- Fixed the macOS black-screen hang on load for modded games. The mod now needs
+  BaseLib 3.3.8, which skips the crashing Sentry teardown, so the manual
+  override.cfg workaround is no longer needed
 
 ## [0.4.0] - 2026-07-21
 

@@ -79,13 +79,17 @@ this item is low.
 
 ### 4. Sentry teardown hang affects any mod on v0.108.0-beta / macOS
 
-**Status:** idea, and it may belong with MegaCrit instead
-**Evidence:** `project-overview` memory; reproduced with BaseLib alone, no Alchemist
+**Status:** resolved upstream in BaseLib 3.3.8 (`SkipSentryShutdownPatch`). No action needed
+**Evidence:** verified 2026-07-23 on STS2 0.108 public-beta. The game reached the main menu
+with BaseLib 3.3.8 and no `override.cfg`
 
 For modded runs, the game shuts down Sentry during the load. After that,
 `SentryGodotLogger::_process_frame()` locks a mutex that no longer exists. The result is a
 black screen or a SIGABRT at load. This happens with any mod installed.
 
-The current fix is a manual `override.cfg` file next to the game executable. Each user
-must find this fix without help. BaseLib could disable Sentry itself. This is a MegaCrit
-defect. However, BaseLib is the only place where we can correct it now.
+BaseLib 3.3.8 fixes this. Its `SkipSentryShutdownPatch` transpiles `SentryService.Shutdown`
+and skips the native GDExtension shutdown call, so the mutex is never destroyed and
+`_process_frame` cannot lock a dead one. The patch is gated to game versions at or above
+0.107.0. The old manual `override.cfg` next to the game executable is no longer needed.
+Watch this only if a future game build moves the shutdown call and the transpiler stops
+matching. Then the hang can return until BaseLib updates the match.
