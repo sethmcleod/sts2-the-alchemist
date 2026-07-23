@@ -99,6 +99,38 @@ public static class EpochPatches
             AwardPostRun(__instance, EpochModel.Get<Alchemist1Epoch>(), serializablePlayer, serializableRun);
     }
 
+    // On a player's first Alchemist run, an Act boss kill awards Alchemist2..4 mid-run through
+    // AwardActEpoch, but the root Alchemist1 epoch is only awarded post-run. So at award time the child is
+    // Obtained while its parent is not, and vanilla GetRevealableEpochs, a BFS from NeowEpoch that needs
+    // each parent obtained, does not reach it. TryObtainEpochInternal then logs a warning and fires a
+    // Sentry capture on that guaranteed first-run path. Union our own obtained epochs into the result so
+    // the check passes. This self-heals after the first run, once Alchemist1 is obtained. It is scoped to
+    // our obtained epochs, so the other callers of GetRevealableEpochs see no unearned epoch. This mirrors
+    // RitsuLib's ProgressSaveManagerGetRevealableEpochsModTemplatePatch
+    [HarmonyPatch(typeof(ProgressSaveManager), nameof(ProgressSaveManager.GetRevealableEpochs))]
+    [HarmonyPostfix]
+    private static void RevealObtainedAlchemistEpochs(ProgressSaveManager __instance, ref IEnumerable<SerializableEpoch> __result)
+    {
+        if (!Enabled) return;
+        var list = __result.ToList();
+        var seen = new HashSet<string>(list.Select(e => e.Id));
+        var added = false;
+        foreach (var epoch in __instance.Progress.Epochs)
+        {
+            if (epoch.State != EpochState.Obtained && epoch.State != EpochState.ObtainedNoSlot) continue;
+            if (!seen.Add(epoch.Id)) continue;
+            EpochModel model;
+            try { model = EpochModel.Get(epoch.Id); }
+            catch { continue; } // an id from an uninstalled mod does not resolve; leave it out
+            if (model is AlchemistEpoch)
+            {
+                list.Add(epoch);
+                added = true;
+            }
+        }
+        if (added) __result = list;
+    }
+
     private static int CountWins(Player player, HashSet<ModelId> encounterIds)
     {
         var character = player.Character.Id;
