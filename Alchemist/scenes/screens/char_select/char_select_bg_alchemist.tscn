@@ -1,16 +1,45 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=8 format=3]
 
-; Placeholder Alchemist character-select splash. A single full-screen image.
+; Placeholder Alchemist character-select splash. An animated gradient in the style of
+; the base game's Random splash (char_select_bg_random_character.tscn): a multi-stop
+; gradient with slow two-tone swirls, pulsing lights, and rising bubble specks.
 ;
-; The screen adds this scene under its "AnimatedBg" container, which is
-; deliberately larger than the viewport (it is grown by -388/-80 on the top-left
-; and +252/+40 on the bottom-right so the base games' oversized parallax art
-; bleeds off every edge). The root below cancels exactly those offsets, so it
-; lands on the visible viewport rect and the image covers the screen instead of
-; being stretched across the oversized container. Replace the texture (or this
-; whole scene) with the final splash art. See Alchemist.CustomCharacterSelectBg.
+; The screen adds this scene under its "AnimatedBg" container, which is deliberately
+; larger than the viewport (it is grown by -388/-80 on the top-left and +252/+40 on the
+; bottom-right so the base game's oversized parallax art bleeds off every edge). The
+; root below cancels exactly those offsets, so it lands on the visible 1920x1080 rect.
+;
+; The particle textures are base-game resources. A base-game reference bakes to null
+; in a mod scene, so CharSelectBgPatches loads them at runtime after the screen
+; instantiates this scene. The swirl shader is a mod resource, so the scene references
+; it directly. Replace this whole scene with the final animated splash art.
 
-[ext_resource type="Texture2D" path="res://Alchemist/images/charui/char_select_bg_alchemist.png" id="splash"]
+[ext_resource type="Shader" path="res://Alchemist/shaders/char_select_swirl.gdshader" id="swirl_shader"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_swirl"]
+shader = ExtResource("swirl_shader")
+
+[sub_resource type="Gradient" id="Gradient_alch"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.2, 0.42, 0.62, 0.84, 1)
+colors = PackedColorArray(0.059, 0.041, 0.114, 1, 0.122, 0.078, 0.251, 1, 0.29, 0.18, 0.388, 1, 0.09, 0.212, 0.184, 1, 0.227, 0.439, 0.192, 1, 0.361, 0.533, 0.188, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_alch"]
+gradient = SubResource("Gradient_alch")
+fill_from = Vector2(0, 0.9)
+fill_to = Vector2(1, 0.22)
+
+[sub_resource type="Curve" id="Curve_pulse"]
+_data = [Vector2(0, 0.417635), 0.0, 0.0, 0, 0, Vector2(0.502521, 0.507939), 0.0, 0.0, 0, 0, Vector2(1, 0.423164), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_light_ramp"]
+offsets = PackedFloat32Array(0, 0.607407, 0.994413)
+colors = PackedColorArray(0.427493, 0.427493, 0.427493, 1, 1, 1, 1, 1, 0.427451, 0.427451, 0.427451, 1)
+
+[sub_resource type="Gradient" id="Gradient_fade_in"]
+offsets = PackedFloat32Array(0, 0.178337, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.75, 1, 1, 1, 0.75, 1, 1, 1, 0)
 
 [node name="AlchemistBg" type="Control"]
 layout_mode = 3
@@ -24,7 +53,8 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Splash" type="TextureRect" parent="."]
+[node name="Gradient" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_swirl")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,6 +62,71 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("splash")
+texture = SubResource("GradientTexture2D_alch")
 expand_mode = 1
-stretch_mode = 6
+
+[node name="LightGold" type="CPUParticles2D" parent="."]
+position = Vector2(1500, 220)
+amount = 1
+lifetime = 3.0
+local_coords = true
+gravity = Vector2(0, 0)
+scale_amount_min = 14.0
+scale_amount_max = 14.0
+scale_amount_curve = SubResource("Curve_pulse")
+color = Color(0.831, 0.659, 0.196, 0.3)
+color_ramp = SubResource("Gradient_light_ramp")
+
+[node name="LightGreen" type="CPUParticles2D" parent="."]
+position = Vector2(430, 810)
+amount = 1
+lifetime = 4.0
+local_coords = true
+gravity = Vector2(0, 0)
+scale_amount_min = 16.0
+scale_amount_max = 16.0
+scale_amount_curve = SubResource("Curve_pulse")
+color = Color(0.29, 0.549, 0.247, 0.22)
+color_ramp = SubResource("Gradient_light_ramp")
+
+[node name="SpecksGreen" type="CPUParticles2D" parent="."]
+position = Vector2(960, 1140)
+amount = 10
+lifetime = 15.0
+preprocess = 15.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1050, 60)
+direction = Vector2(0, -1)
+spread = 10.0
+initial_velocity_min = 15.0
+initial_velocity_max = 45.0
+gravity = Vector2(0, -10)
+orbit_velocity_min = -0.02
+orbit_velocity_max = 0.02
+angle_max = 353.6
+scale_amount_min = 0.35
+scale_amount_max = 0.65
+color = Color(0.63, 0.76, 0.55, 0.1)
+color_ramp = SubResource("Gradient_fade_in")
+
+[node name="SpecksGold" type="CPUParticles2D" parent="."]
+position = Vector2(960, 1140)
+amount = 10
+lifetime = 15.0
+preprocess = 15.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1050, 60)
+direction = Vector2(0, -1)
+spread = 10.0
+initial_velocity_min = 15.0
+initial_velocity_max = 45.0
+gravity = Vector2(0, -10)
+orbit_velocity_min = -0.02
+orbit_velocity_max = 0.03
+angle_max = 353.6
+scale_amount_min = 0.1
+scale_amount_max = 0.25
+color = Color(0.74, 0.85, 0.62, 0.3)
+color_ramp = SubResource("Gradient_fade_in")

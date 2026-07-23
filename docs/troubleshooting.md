@@ -48,6 +48,23 @@ Nothing is corrupted. Players never see this problem. To correct it, run
 `scripts/dev.sh game-restart`. The `publish` command now gives a warning if the game is
 in operation.
 
+**A C# script on a scene root does not run when the game instantiates the scene**
+A mod `.tscn` can reference a mod C# script as a `Script` ext_resource. This works when
+BaseLib converts the scene (the energy counter). It fails when game code instantiates
+the scene directly with `PackedScene.Instantiate`. An example is the character-select
+background. The engine log then repeats this error, and `_Ready` never runs:
+
+```
+ERROR: System.ArgumentException: Undefined resource string ID:0x80070057
+   at <YourClass>.InvokeGodotClassMethod(...)
+   at Godot.Bridge.CSharpInstanceBridge.Call(...)
+```
+
+A `try/catch` inside `_Ready` does not catch this. The failure is in the method
+dispatch, before the method body. The fix: remove the script from the scene. Apply the
+runtime setup from a Harmony postfix on the game method that instantiates the scene.
+See `CharSelectBgPatches` for the pattern.
+
 ## Live tests (the sts2-modding-mcp bridge: MCPTest :21337 + GodotExplorer :27020)
 
 **Combats do not initialize: enemies appear, but the hand, energy and background do not**

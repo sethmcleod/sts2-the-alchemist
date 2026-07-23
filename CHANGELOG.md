@@ -15,6 +15,10 @@ Security.
 
 ### Changed
 
+- Updated the Alchemist character select background: the static placeholder image
+  is now an animated purple-to-green gradient with slow two-tone swirls, pulsing
+  lights, and motes that rise like bubbles above a cauldron, in the style of the
+  Random and Regent character splashes
 - Updated the 7 Epoch placeholder images: each chapter now has its own gradient
   that matches its story, and all seven ascend toward the top right like the
   climb they tell
