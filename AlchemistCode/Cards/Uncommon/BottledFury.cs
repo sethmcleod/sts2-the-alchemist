@@ -10,7 +10,7 @@ public class BottledFury : AlchemistCard
 {
     public BottledFury() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("amount", 2, 1);
+        WithVar("amount", 1, 1);
         WithTip(typeof(StrengthPower));
         WithTip(typeof(DexterityPower));
     }

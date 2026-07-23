@@ -15,7 +15,7 @@
   "ALCHEMIST-BITTER_DRAUGHT.title": "Bitter Draught",
   "ALCHEMIST-BLOOM.description": "The first time you apply [gold]Poison[/gold] each turn, apply {Amount:diff()} additional [gold]Poison[/gold].",
   "ALCHEMIST-BLOOM.title": "Bloom",
-  "ALCHEMIST-BOTTLED_FURY.description": "Whenever you use a Potion, gain {amount:diff()} [gold]Strength[/gold] and {amount:diff()} [gold]Dexterity[/gold] this turn.",
+  "ALCHEMIST-BOTTLED_FURY.description": "Whenever you use a Potion, gain {amount:diff()} [gold]Strength[/gold] and {amount:diff()} [gold]Dexterity[/gold].",
   "ALCHEMIST-BOTTLED_FURY.title": "Bottled Fury",
   "ALCHEMIST-CARAPACE.description": "[gold]Ferment{FermentSuffix}.[/gold]\nGain {CalculatedBlock:diff()} [gold]Block[/gold].\nGain {IfUpgraded:show:[green]9[/green]|6} additional [gold]Block[/gold] for each turn fermented.",
   "ALCHEMIST-CARAPACE.title": "Carapace",

@@ -42,6 +42,9 @@ Security.
 - An automatic Infuse, where only one card can be chosen, now previews the
   infused card on screen instead of quietly changing its enchantment icon. This
   also covers Refine, which Infuses the card it chooses
+- Reworked Bottled Fury card: the Strength and Dexterity a Potion grants are now
+  permanent flat gains, and the amount changed from 2 (3) -> 1 (2). Before, both
+  expired at the end of your turn
 
 ### Fixed
 

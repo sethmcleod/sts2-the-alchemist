@@ -20,7 +20,6 @@ public class BottledFuryPower : AlchemistPower
             Flash();
             await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
             await PowerCmd.Apply<DexterityPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
-            await PowerCmd.Apply<BottledFuryBuffPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
         }
     }
 }
