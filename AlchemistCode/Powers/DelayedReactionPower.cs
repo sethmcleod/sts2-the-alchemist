@@ -16,6 +16,10 @@ public class DelayedReactionPower : AlchemistPower
     // flag is transient: a mid-combat reload restarts the delay, which is acceptable
     private bool _armed;
 
+    // The forecast reads this so the health bar preview shows only on the turn the hit will land, not
+    // the turn it is applied
+    internal bool IsArmed => _armed;
+
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {

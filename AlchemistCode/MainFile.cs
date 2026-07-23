@@ -1,5 +1,6 @@
 using System.Reflection;
 using BaseLib.Config;
+using BaseLib.Hooks;
 using Godot;
 using HarmonyLib;
 using Alchemist.AlchemistCode.Config;
@@ -53,6 +54,16 @@ public partial class MainFile : Node
         catch (System.Exception e)
         {
             Logger.Error($"Failed to register Alchemist epochs (Timeline feature disabled): {e}");
+        }
+
+        try
+        {
+            // Preview Delayed Reaction's pending damage on the enemy health bar
+            HealthBarForecastRegistry.Register<Powers.DelayedReactionForecast>(ModId, "delayed_reaction");
+        }
+        catch (System.Exception e)
+        {
+            Logger.Error($"Failed to register health bar forecasts: {e}");
         }
 
         ModConfigRegistry.Register("The Alchemist", new AlchemistModConfig());
