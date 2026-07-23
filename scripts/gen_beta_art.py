@@ -88,7 +88,7 @@ COLORS = {
     # Gambit: skills
     "Congeal": ("#5f011f", "#0e7c7b", "BR", "Gambit: skills"),
     "Fresh Batch": ("#5f011f", "#0b6150", "TR", "Gambit: skills"),
-    "Transmute": ("#5f011f", "#12809c", "BL", "Gambit: skills"),
+    "Transmute": ("#5f011f", "#d9a521", "BL", "Gambit: skills"),
     # Gambit: powers
     "Drip Feed": ("#5f011f", "#6f5bd6", "BR", "Gambit: powers"),
     "Metabolism": ("#5f011f", "#4345d0", "TR", "Gambit: powers"),
@@ -123,7 +123,7 @@ COLORS = {
     "Quench": ("#792595", "#15807d", "TR", "Unique"),
     # Infuse: heavy
     "Inhale": ("#4a1a66", "#17627a", "BR", "Infuse: heavy"),
-    "Masterwork": ("#4a1a66", "#125b60", "TR", "Infuse: heavy"),
+    "Masterwork": ("#4a1a66", "#c9a227", "TR", "Infuse: heavy"),
     "Refine": ("#4a1a66", "#1d6098", "BL", "Infuse: heavy"),
     # Full Measure (one-off)
     "Full Measure": ("#241a5e", "#4a90c9", "BR", "Unique"),
