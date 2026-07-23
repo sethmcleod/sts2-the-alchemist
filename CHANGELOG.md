@@ -15,6 +15,9 @@ Security.
 
 ### Changed
 
+- Updated the 7 Epoch placeholder images: each chapter now has its own gradient
+  that matches its story, and all seven ascend toward the top right like the
+  climb they tell
 - Updated all 97 placeholder card arts so every card has a unique gradient.
   Cards in the same mechanic family (Seep, Ferment, Gambit, potions, and more)
   share a start color, so a family still reads at a glance

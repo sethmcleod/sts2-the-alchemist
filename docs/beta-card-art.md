@@ -22,6 +22,9 @@ holds the colors and directions; cards.csv holds everything else.
   Distillate, and the four magnum opus stage tokens are vertical.
   Distillate shares no color with the Card crafting family, because the
   game renders the token next to those tooltips.
+- **The 7 Epoch images are generated too.** The `EPOCHS` table maps each
+  chapter to a pair that matches its story. All seven ascend toward the
+  top right, because the timeline is a climb.
 
 ## Technical notes
 

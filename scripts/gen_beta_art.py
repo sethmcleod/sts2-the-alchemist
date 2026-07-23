@@ -228,6 +228,20 @@ COLORS = {
     "Unripe Fruit": ("#26a82b", "#ffef2d", "TR", "Unique"),
 }
 
+# Epoch placeholder gradients: one pair per chapter of the timeline,
+# matched to the chapter's story. All seven ascend bottom-left to
+# top-right, because the timeline is a climb. 812x500 canvas.
+EPOCH_DIR = os.path.join(REPO, "Alchemist/images/epochs")
+EPOCHS = {
+    "alchemist-alchemist1_epoch": ("#2a0701", "#b8862a"),  # Calcination
+    "alchemist-alchemist2_epoch": ("#1d3a02", "#0e7a55"),  # Dissolution
+    "alchemist-alchemist3_epoch": ("#163d85", "#4fc98f"),  # Separation
+    "alchemist-alchemist4_epoch": ("#5b3fc4", "#e8720c"),  # Conjunction
+    "alchemist-alchemist5_epoch": ("#4a0e2e", "#7ac74a"),  # Fermentation
+    "alchemist-alchemist6_epoch": ("#1b2a44", "#a8dade"),  # Distillation
+    "alchemist-alchemist7_epoch": ("#240147", "#ffc832"),  # Coagulation
+}
+
 SPECIAL_FILE = {"Strike": "strike_alchemist", "Defend": "defend_alchemist"}
 
 
@@ -326,6 +340,10 @@ def generate():
                      c0, c1, orient, w, h)
         print(f"[{done}/{total}] {card_file(name)}.png {c0} {c1} {orient}",
               flush=True)
+    for name, (c0, c1) in EPOCHS.items():
+        gen_gradient(os.path.join(EPOCH_DIR, name + ".png"),
+                     c0, c1, "TR", 812, 500)
+        print(f"[epoch] {name}.png {c0} {c1} TR", flush=True)
 
 
 def css_angle(orient, w=W, h=H):
