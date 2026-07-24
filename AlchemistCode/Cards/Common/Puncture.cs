@@ -20,7 +20,7 @@ public class Puncture : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
         await CommonActions.Apply<VulnerablePower>(choiceContext, this, play);
         if (IsReduced)
             await PowerCmd.Apply<WeakPower>(choiceContext, play.Target!,

@@ -19,9 +19,12 @@ public class DoubleDose : AlchemistCard
     {
         for (var i = 0; i < 2; i++)
         {
-            await CommonActions.CardAttack(this, play).Execute(choiceContext);
+            await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
             if (play.Target is { IsAlive: true })
+            {
+                PoisonSplash(play.Target);
                 await CommonActions.Apply<PoisonPower>(choiceContext, this, play);
+            }
         }
     }
 }

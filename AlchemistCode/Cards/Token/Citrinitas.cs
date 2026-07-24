@@ -37,6 +37,7 @@ public class Citrinitas : AlchemistCard
         if (perHit > 0)
             await DamageCmd.Attack(perHit)
                 .WithHitCount(DynamicVars["Hits"].IntValue)
+                .WithHitFx(HitVfx("vfx/vfx_starry_impact"))
                 .FromCard(this, play)
                 .TargetingAllOpponents(CombatState)
                 .Execute(choiceContext);

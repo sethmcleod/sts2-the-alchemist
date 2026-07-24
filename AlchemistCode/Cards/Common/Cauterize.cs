@@ -19,7 +19,7 @@ public class Cauterize : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_slash"), sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
         await CommonActions.ApplySelf<RegenPower>(choiceContext, this);
         if (IsReduced)
             await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature,

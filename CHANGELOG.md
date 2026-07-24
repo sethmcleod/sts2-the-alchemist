@@ -17,6 +17,10 @@ Security.
 
 - Added the Alchemist to the character stats page in the compendium. The section appears after the first run, like the base characters.
 - Added a custom character select sound: an ingredient drops into the brew, flares, and settles into bubbling. The Alchemist no longer borrows the Ironclad's select sound.
+- Added hit effects to all 33 attack cards. Each attack now shows an impact that matches the card: stabs for needles, blood splashes for Ichor and Hemorrhage, golden bursts for Azoth and Aureate, shattering for the volatile compounds, and more. Attacks previously showed no hit effect at all
+- Added a green poison splash when Double Dose, Tinge, and Flare Up apply Poison on hit, like the Silent's poison cards
+- Added fire crackle to Cauterize and Flare Up hits
+- A Laced attack now lands with a green splat instead of its normal hit effect, so the added Poison reads at a glance
 - Added a damage forecast for Delayed Reaction. The enemy health bar now
   previews the pending hit, the way Poison previews its next tick
 - Added hover tooltips that explain the calculated numbers on cards whose damage

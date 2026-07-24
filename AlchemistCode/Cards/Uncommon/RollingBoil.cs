@@ -19,6 +19,6 @@ public class RollingBoil : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, 2).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, 2, vfx: HitVfx("vfx/vfx_attack_blunt"), tmpSfx: "blunt_attack.mp3").Execute(choiceContext);
     }
 }

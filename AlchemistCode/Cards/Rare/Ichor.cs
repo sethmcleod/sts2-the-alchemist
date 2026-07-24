@@ -34,6 +34,7 @@ public class Ichor : AlchemistCard
         var damage = Damage();
         if (damage > 0)
             await DamageCmd.Attack(damage).FromCard(this, play)
+                .WithHitFx(HitVfx("vfx/vfx_bloody_impact"), null, "heavy_attack.mp3")
                 .Targeting(play.Target!).Execute(choiceContext);
     }
 }

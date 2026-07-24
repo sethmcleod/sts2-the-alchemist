@@ -31,7 +31,7 @@ public class Lifeblood : AlchemistCard
     {
         // Deal the damage first, then apply the Regen. If you apply the Regen before the hit, the total
         // is counted twice, because the calculated damage already includes the RegenGain
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_bloody_impact")).Execute(choiceContext);
         await CommonActions.ApplySelf<RegenPower>(choiceContext, this);
     }
 }

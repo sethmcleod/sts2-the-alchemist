@@ -19,7 +19,7 @@ public class VolatileMix : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_rock_shatter"), tmpSfx: "heavy_attack.mp3").Execute(choiceContext);
         if (!Owner.Potions.Any())
             await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }

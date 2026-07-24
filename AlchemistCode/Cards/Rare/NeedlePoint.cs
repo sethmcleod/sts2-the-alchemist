@@ -21,7 +21,7 @@ public class NeedlePoint : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
         await CommonActions.Apply<WeakPower>(choiceContext, this, play);
         if (IsEnchanted)
             await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target!,

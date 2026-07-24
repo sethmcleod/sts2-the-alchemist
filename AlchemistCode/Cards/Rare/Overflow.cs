@@ -23,6 +23,7 @@ public class Overflow : AlchemistCard
         await PowerCmd.Remove<RegenPower>(Owner.Creature);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(regen)
+            .WithHitFx(HitVfx("vfx/vfx_heavy_blunt"), null, "heavy_attack.mp3")
             .FromCard(this, play)
             .TargetingAllOpponents(CombatState)
             .Execute(choiceContext);

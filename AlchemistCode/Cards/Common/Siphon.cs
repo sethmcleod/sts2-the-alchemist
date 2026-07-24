@@ -17,7 +17,7 @@ public class Siphon : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_bitevfx_dramatic_stab")).Execute(choiceContext);
         var draw = DynamicVars["Cards"].IntValue + (IsEnchanted ? 1 : 0);
         await CardPileCmd.Draw(choiceContext, draw, Owner);
     }

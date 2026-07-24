@@ -50,6 +50,7 @@ public class Hemorrhage : AlchemistCard
         var damage = DamageFor(lost);
         if (damage > 0)
             await DamageCmd.Attack(damage).FromCard(this, play)
+                .WithHitFx(HitVfx("vfx/vfx_bloody_impact"))
                 .Targeting(play.Target!).Execute(choiceContext);
     }
 }

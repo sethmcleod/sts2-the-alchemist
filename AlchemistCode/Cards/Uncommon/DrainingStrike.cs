@@ -22,7 +22,7 @@ public class DrainingStrike : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"), tmpSfx: "blunt_attack.mp3").Execute(choiceContext);
         if (play.Target != null)
             await PowerCmd.Apply<DrainingStrikeStrengthDownPower>(choiceContext, play.Target, 6, Owner.Creature, this);
     }

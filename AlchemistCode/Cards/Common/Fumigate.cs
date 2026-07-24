@@ -30,6 +30,6 @@ public class Fumigate : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var hitCount = 1 + ExhaustCount;
-        await CommonActions.CardAttack(this, play, hitCount).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, hitCount, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
     }
 }

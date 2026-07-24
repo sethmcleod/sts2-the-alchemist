@@ -22,7 +22,7 @@ public class LashOut : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var hits = Hits + (IsReduced ? 1 : 0);
-        await CommonActions.CardAttack(this, play, hits).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, hits, vfx: HitVfx("vfx/vfx_attack_slash")).Execute(choiceContext);
     }
 
     protected override async Task OnSeep(PlayerChoiceContext choiceContext)

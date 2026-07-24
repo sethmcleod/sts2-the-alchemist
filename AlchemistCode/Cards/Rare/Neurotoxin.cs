@@ -23,7 +23,7 @@ public class Neurotoxin : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab"), tmpSfx: "heavy_attack.mp3").Execute(choiceContext);
         if (IsReduced && play.Target != null)
             await CreatureCmd.Stun(play.Target);
     }

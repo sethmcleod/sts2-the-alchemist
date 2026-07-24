@@ -35,6 +35,6 @@ public class FightingSpirits : AlchemistCard
     {
         if (CombatState == null) return;
         var hitCount = 1 + PotionsUsedThisCombat;
-        await CommonActions.CardAttack(this, play, hitCount).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, hitCount, vfx: HitVfx("vfx/vfx_attack_blunt"), tmpSfx: "blunt_attack.mp3").Execute(choiceContext);
     }
 }

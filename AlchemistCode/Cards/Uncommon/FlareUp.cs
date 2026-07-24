@@ -17,9 +17,11 @@ public class FlareUp : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_slash"),
+            sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
         if (play.Target != null)
         {
+            PoisonSplash(play.Target);
             await PowerCmd.Apply<PoisonPower>(choiceContext, play.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
             var poison = play.Target.GetPowerAmount<PoisonPower>();
             if (poison > 0)

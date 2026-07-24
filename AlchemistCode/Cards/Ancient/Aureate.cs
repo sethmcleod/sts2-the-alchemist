@@ -18,6 +18,7 @@ public class Aureate : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, play)
+            .WithHitFx(HitVfx("vfx/vfx_starry_impact"))
             .TargetingAllOpponents(CombatState!).Execute(choiceContext);
         await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 0, AnyNumber);
     }

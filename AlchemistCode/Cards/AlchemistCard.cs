@@ -4,6 +4,7 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using Alchemist.AlchemistCode.Character;
 using Alchemist.AlchemistCode.Config;
+using Alchemist.AlchemistCode.Enchantments;
 using Alchemist.AlchemistCode.Extensions;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -13,6 +14,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards;
@@ -99,6 +103,20 @@ public abstract class AlchemistCard : ConstructedCardModel
     protected Task LoseHp(PlayerChoiceContext choiceContext, int amount) =>
         CreatureCmd.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
+
+    // A Laced card applies Poison on every unblocked hit, so its hits land as a green splat instead of
+    // the card's normal impact. Call at play time only: Enchantment is live on the mutable combat instance
+    protected string HitVfx(string vfx) => Enchantment is Laced ? "vfx/vfx_slime_impact" : vfx;
+
+    // The green splash the base game pairs with an on-hit Poison apply (see DeadlyPoison). A card calls
+    // this next to its Apply<PoisonPower> on the target. Create returns null for a dead creature and in
+    // test mode, so the call is safe everywhere
+    protected static void PoisonSplash(Creature? target)
+    {
+        if (target == null) return;
+        var vfx = NPoisonImpactVfx.Create(target);
+        if (vfx != null) NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(vfx);
+    }
 
     // A formula-damage card deals raw DamageCmd.Attack(decimal) and has no DamageVar. Only DamageVar runs
     // the enchantment damage hooks. This method applies them by hand, in the same order DamageVar uses

@@ -27,7 +27,7 @@ public class Vivisect : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
         // Draw before the Enchanted debuffs land, so this play's applications pay off on the NEXT play
         await CardPileCmd.Draw(choiceContext,
             DynamicVars["Cards"].IntValue + UniqueDebuffs(play.Target), Owner);

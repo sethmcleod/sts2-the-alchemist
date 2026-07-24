@@ -20,7 +20,7 @@ public class Azoth : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_starry_impact")).Execute(choiceContext);
         if (PileType.Exhaust.GetPile(Owner).Cards.Count >= ExhaustThreshold)
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
     }
