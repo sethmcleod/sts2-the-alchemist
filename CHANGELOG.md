@@ -68,6 +68,8 @@ Security.
 - Fixed the macOS black-screen hang on load for modded games. The mod now needs
   BaseLib 3.3.8, which skips the crashing Sentry teardown, so the manual
   override.cfg workaround is no longer needed
+- Fixed the Alchemist section on the Character Stats page appearing only every
+  other time the page opened
 
 ## [0.4.0] - 2026-07-21
 

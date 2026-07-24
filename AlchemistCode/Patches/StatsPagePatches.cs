@@ -42,7 +42,11 @@ class StatsPagePatches
     {
         foreach (var child in container.GetChildren())
         {
-            if (child is NCharacterStats section && StatsRef(section)?.Id == id)
+            // LoadStats clears the container with QueueFree, so on a reopen the
+            // sections from the previous open are still children until the end
+            // of the frame. Those do not count as a duplicate
+            if (child is NCharacterStats section && !section.IsQueuedForDeletion()
+                && StatsRef(section)?.Id == id)
                 return true;
         }
         return false;
