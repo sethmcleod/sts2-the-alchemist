@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using Alchemist.AlchemistCode.Config;
 using BaseLib.Hooks;
-using Godot;
 
 namespace Alchemist.AlchemistCode.Powers;
 
@@ -10,11 +10,12 @@ namespace Alchemist.AlchemistCode.Powers;
 // renders the returned segment. Registered in MainFile.Initialize
 public sealed class DelayedReactionForecast : IHealthBarForecastSource
 {
-    // A pink-purple that matches the bomb icon and reads apart from Doom's deeper magenta. Tune freely
-    private static readonly Color SegmentColor = new("B15CD1");
-
     public IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegments(HealthBarForecastContext context)
     {
+        // The accessibility toggle can hide the preview entirely; the color is a config color picker
+        if (!AlchemistModConfig.ShowDamageForecasts)
+            yield break;
+
         // Show only on the turn the hit will land. The power arms at the applier's first turn end and
         // detonates at the next, so before it is armed the hit is still a turn away and nothing shows yet
         if (context.Creature.GetPower<DelayedReactionPower>() is not { IsArmed: true })
@@ -22,6 +23,7 @@ public sealed class DelayedReactionForecast : IHealthBarForecastSource
 
         var amount = context.Creature.GetPowerAmount<DelayedReactionPower>();
         if (amount > 0)
-            yield return new HealthBarForecastSegment(amount, SegmentColor, HealthBarForecastDirection.FromRight);
+            yield return new HealthBarForecastSegment(amount, AlchemistModConfig.ForecastColor,
+                HealthBarForecastDirection.FromRight);
     }
 }

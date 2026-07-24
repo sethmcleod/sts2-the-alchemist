@@ -18,6 +18,6 @@ public sealed class GoldHealVar : DynamicVar
     // Owner read, because Owner throws on a canonical model, and the pattern checks it first
     public override string ToString() =>
         _owner is PotionModel { IsMutable: true, Owner: { } player }
-            ? $" ([green]{(int)(player.Gold / 15m)}[/green])"
+            ? $" (Heals [green]{(int)(player.Gold / 15m)}[/green] HP)"
             : "";
 }

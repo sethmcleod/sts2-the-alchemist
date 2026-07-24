@@ -3,6 +3,7 @@ using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using Alchemist.AlchemistCode.Character;
+using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Extensions;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -78,12 +79,14 @@ public abstract class AlchemistCard : ConstructedCardModel
     // The IsMutable gate makes every glow safe on canonical models. IsReduced and ConditionalGlow read
     // Owner, which throws on a canonical model (the compendium). Each card does not need its own guard
     protected override bool ShouldGlowGoldInternal =>
-        IsMutable && ((IsGambitCard && IsReduced) || (GainsEffectWhenEnchanted && IsEnchanted) || ConditionalGlow);
+        IsMutable && AlchemistModConfig.ShowHandGlows
+        && ((IsGambitCard && IsReduced) || (GainsEffectWhenEnchanted && IsEnchanted) || ConditionalGlow);
 
     // A Seep card glows green while it stays in hand, because it pays off if you do not play it. The hand
     // glow patch reads this. Gold wins when a card is both, for example a reduced Lash Out: gold is the
     // transient "play this now" signal, and the green is constant. The IsMutable gate is the same as above
-    internal bool ShouldGlowSeep => IsMutable && IsSeepCard && !ShouldGlowGold && !ShouldGlowRed;
+    internal bool ShouldGlowSeep =>
+        IsMutable && AlchemistModConfig.ShowHandGlows && IsSeepCard && !ShouldGlowGold && !ShouldGlowRed;
 
     internal bool HpFractionInRange(double lower, double upper)
     {

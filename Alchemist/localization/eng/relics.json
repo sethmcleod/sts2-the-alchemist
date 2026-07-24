@@ -12,6 +12,7 @@
   "ALCHEMIST-FLUX_STONE.flavor": "A stone that makes stubborn things flow.",
   "ALCHEMIST-FLUX_STONE.title": "Flux Stone",
   "ALCHEMIST-GILDED_KIT.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a potion, heal [green]6[/green] HP and gain [green]1[/green] [gold]Strength[/gold]. Potions can be sold to the [blue]Merchant[/blue] for [gold]Gold[/gold].",
+  "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a potion, heal [green]6[/green] HP and gain [green]1[/green] [gold]Strength[/gold].",
   "ALCHEMIST-GILDED_KIT.flavor": "An ornate case. The gold is not for show.",
   "ALCHEMIST-GILDED_KIT.title": "Gilded Kit",
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]Poison[/gold] is triggered against enemies [blue]1[/blue] additional time.",
@@ -24,6 +25,7 @@
   "ALCHEMIST-SNAKE_TAIL.flavor": "No serpent has ever died of its own bite.",
   "ALCHEMIST-SNAKE_TAIL.title": "Snake Tail",
   "ALCHEMIST-WEATHERED_KIT.description": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a potion, heal [green]3[/green] HP. Potions can be sold to the [blue]Merchant[/blue] for [gold]Gold[/gold].",
+  "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "You may [gold]Brew[/gold] at Rest Sites. Whenever you use a potion, heal [green]3[/green] HP.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Battered, stained, and still faintly warm.",
   "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit"
 }

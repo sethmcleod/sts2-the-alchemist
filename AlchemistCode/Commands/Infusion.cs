@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Alchemist.AlchemistCode.Cards;
+using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Enchantments;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
@@ -82,7 +83,7 @@ public static class Infusion
     // the best targets. CanInfuse keeps it to cards that can actually be picked. Hand selection only, because
     // CardSelectorPrefs.ShouldGlowGold applies to the hand
     private static bool ShouldGlowInfuse(CardModel card) =>
-        card is AlchemistCard { GainsEffectWhenEnchanted: true } && CanInfuse(card);
+        AlchemistModConfig.ShowHandGlows && card is AlchemistCard { GainsEffectWhenEnchanted: true } && CanInfuse(card);
 
     // True when a fixed-count hand selection (min == max, so no manual confirmation) resolves with no screen,
     // because no more cards match the filter than the count. The player then sees no screen, so the caller

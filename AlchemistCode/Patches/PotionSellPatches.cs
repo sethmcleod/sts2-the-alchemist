@@ -1,4 +1,5 @@
 using System.Reflection;
+using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Potions;
 using Alchemist.AlchemistCode.Relics;
 using Godot;
@@ -50,7 +51,8 @@ public static class PotionSellPatches
         if (potion is FoulPotion) return false;
         var owner = potion.Owner;
         if (owner == null) return false;
-        if (owner.GetRelic<WeatheredKit>() == null && owner.GetRelic<GildedKit>() == null) return false;
+        if (!AlchemistModConfig.UniversalPotionSelling
+            && owner.GetRelic<WeatheredKit>() == null && owner.GetRelic<GildedKit>() == null) return false;
         return owner.RunState.CurrentRoom is MerchantRoom;
     }
 
@@ -58,12 +60,17 @@ public static class PotionSellPatches
     // rarity must stay the rule that a player can predict. Ambergris: a heal for half of your maximum HP
     // plus an extra turn is worth much more than its rarity shows. A Brew-only potion: it carries Event
     // rarity to keep it out of the generation rolls, but it is built to a Rare budget and sells as one
-    private static int GetGoldFor(PotionModel potion) => potion switch
+    private static int GetGoldFor(PotionModel potion)
     {
-        Ambergris => 150,
-        IBrewOnly => GetGoldForRarity(PotionRarity.Rare),
-        _ => GetGoldForRarity(potion.Rarity)
-    };
+        var basePrice = potion switch
+        {
+            Ambergris => 150,
+            IBrewOnly => GetGoldForRarity(PotionRarity.Rare),
+            _ => GetGoldForRarity(potion.Rarity)
+        };
+        // The config slider scales the rarity-based price; 100 leaves it unchanged
+        return basePrice * AlchemistModConfig.PotionSellPercent / 100;
+    }
 
     private static int GetGoldForRarity(PotionRarity rarity)
     {

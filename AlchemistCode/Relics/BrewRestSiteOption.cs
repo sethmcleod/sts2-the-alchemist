@@ -66,11 +66,9 @@ public sealed class BrewRestSiteOption : RestSiteOption
         return true;
     }
 
-    // Brew-only potions are not in the potion pool, so the default reward can never roll them.
-    // A 30% roll offers one of them instead, minus any the player already holds. Across the
-    // 3 to 7 Brews of a typical run, this shows at least one Brew-only potion in most runs
-    private const float BrewOnlyChance = 0.3f;
-
+    // Brew-only potions are not in the potion pool, so the default reward can never roll them. A roll
+    // (30% by default, set by the Brew potion chance config) offers one of them instead, minus any the
+    // player already holds. Across the 3 to 7 Brews of a typical run, this shows at least one in most runs
     private PotionReward CreateBrewReward()
     {
         var rng = Owner.PlayerRng.Rewards;
@@ -80,7 +78,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
             ModelDb.Potion<Soporific>(),
             ModelDb.Potion<Alkahest>(),
         }.Where(p => Owner.Potions.All(held => held.Id != p.Id)).ToList();
-        if (exclusives.Count > 0 && rng.NextFloat() < BrewOnlyChance)
+        if (exclusives.Count > 0 && rng.NextFloat() < Config.AlchemistModConfig.BrewPotionChance / 100f)
             return new PotionReward(rng.NextItem(exclusives)!.ToMutable(), Owner);
         return new PotionReward(Owner);
     }

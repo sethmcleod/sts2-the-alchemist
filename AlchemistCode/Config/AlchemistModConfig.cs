@@ -20,6 +20,7 @@ public class AlchemistModConfig : SimpleModConfig
     {
         // Auto-generates the UI from the properties and [ConfigButton] methods below
         GenerateOptionsForAllProperties(optionContainer);
+        AddRestoreDefaultsButton(optionContainer);
         SetupFocusNeighbors(optionContainer);
     }
 
@@ -30,6 +31,48 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigSection("Compatibility")]
     [ConfigHoverTip]
     public static bool KeepPoolsSeparate { get; set; } = true;
+
+    [ConfigSection("Economy")]
+    [ConfigHoverTip]
+    [ConfigSlider(25.0, 100.0, 25.0, Format = "{0}%")]
+    public static int PotionSellPercent { get; set; } = 100;
+
+    [ConfigSection("Economy")]
+    [ConfigHoverTip]
+    [ConfigSlider(10.0, 50.0, 10.0, Format = "{0}%")]
+    public static int BrewPotionChance { get; set; } = 30;
+
+    [ConfigSection("Economy")]
+    [ConfigHoverTip]
+    public static bool UniversalPotionSelling { get; set; }
+
+    [ConfigSection("Accessibility")]
+    [ConfigHoverTip]
+    public static bool ShowDamageForecasts { get; set; } = true;
+
+    [ConfigSection("Accessibility")]
+    [ConfigHoverTip]
+    [ConfigColorPicker(EditAlpha = false)]
+    public static Color ForecastColor { get; set; } = new("B15CD1");
+
+    [ConfigSection("Accessibility")]
+    [ConfigHoverTip]
+    public static bool ShowHandGlows { get; set; } = true;
+
+    // Shown above Unlock All: opens the Timeline without granting the card, relic, and potion unlocks
+    [ConfigSection("Unlocks")]
+    [ConfigButton("RevealTimelineButtonLabel")]
+    public static void RevealTimeline()
+    {
+        var save = SaveManager.Instance;
+        if (save == null) return;
+
+        foreach (var type in EpochRegistration.AlchemistEpochTypes)
+            save.ObtainEpochOverride(EpochModel.GetId(type), EpochState.Revealed);
+
+        save.SaveProgressFile();
+        Notify("Unlocked all 7 Alchemist Epochs on the Timeline.");
+    }
 
     [ConfigSection("Unlocks")]
     [ConfigButton("UnlockAllButtonLabel")]

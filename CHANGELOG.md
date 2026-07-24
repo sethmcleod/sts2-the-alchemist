@@ -21,6 +21,10 @@ Security.
   previews the pending hit, the way Poison previews its next tick
 - Added hover tooltips that explain the calculated numbers on cards whose damage
   or effect is not obvious from the text.
+- Added mod configuration options: an Economy section (potion sell price, Brew
+  potion chance, and letting any character sell potions to the Merchant), an
+  Accessibility section (show or recolor the damage forecast, toggle card hand
+  glows), and a button to reveal the Timeline separately from Unlock All
 
 ### Changed
 
