@@ -29,6 +29,8 @@ Security.
   potion chance, and letting any character sell potions to the Merchant), an
   Accessibility section (show or recolor the damage forecast, toggle card hand
   glows), and a button to reveal the Timeline separately from Unlock All
+- Added a placeholder preview image for the mod, which the in-game mod list
+  shows until the final art is ready
 
 ### Changed
 
