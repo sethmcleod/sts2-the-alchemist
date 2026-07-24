@@ -90,20 +90,20 @@ def crackle(n, rng, pop_rate=70.0):
     return [s / peak for s in out]
 
 
-def render(name, seed=99, dur=2.2, bubble_rate=18, bubble_gain=0.45,
-           simmer_gain=0.16, f_lo=220, f_hi=560, bubble_start=0.48,
-           bubble_sz=(0.07, 0.16), bubble_decay=3.5, crackle_gain=0.40,
-           bell_center=0.30, bell_sigma=0.17, drive=1.8):
+def render(name, seed=42, dur=1.8, bubble_rate=14, bubble_gain=0.3,
+           simmer_gain=0.12, f_lo=220, f_hi=560, bubble_start=0.42,
+           bubble_sz=(0.07, 0.14), bubble_decay=3.8, crackle_gain=0.28,
+           bell_center=0.25, bell_sigma=0.17, drive=1.5):
     rng = random.Random(seed)
     n = int(dur * SR)
     buf = zeros(n)
 
     # the opening plop: one big low bubble, the ingredient drop
-    add(buf, int(0.04 * SR), bubble(85, 1.6, 0.13), 1.4 * bubble_gain)
+    add(buf, int(0.04 * SR), bubble(85, 1.6, 0.13, decay=bubble_decay), 1.4 * bubble_gain)
 
     # bubbles: Poisson scatter with pitch and size variation
     t = bubble_start
-    while t < dur - 0.15:
+    while t < dur - 0.25:
         t += rng.expovariate(bubble_rate)
         f0 = rng.uniform(f_lo, f_hi)
         size = rng.uniform(*bubble_sz)
