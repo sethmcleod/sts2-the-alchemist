@@ -189,16 +189,19 @@ do_release() {  # <patch|minor|major|X.Y.Z>
   rm -rf "$stage"
   ls -lh "$zipfile"
 
-  # Get the notes of this version for the GitHub Release body or the Workshop comment.
+  # Get the notes of this version for the GitHub Release body or the Workshop
+  # comment. The version heading is dropped: GitHub shows the tag as the title
+  # and the Workshop comment has its own.
   # The changelog wraps its bullets to keep the markdown source readable. Both paste
   # targets wrap text themselves, so the second stage puts each bullet back on one line.
   # A bullet at any depth starts a new line; an indented line that is not a bullet is a
   # wrap of the bullet above it and joins back onto it.
   local notes="$DIST/RELEASE_NOTES-v$new.txt"
   awk -v ver="$new" '
-    $0 ~ "^## \\[" ver "\\]" {grab=1; print; next}
+    $0 ~ "^## \\[" ver "\\]" {grab=1; next}
     grab && /^## \[/ {exit}
-    grab {print}
+    grab && !started && /^[[:space:]]*$/ {next}
+    grab {started=1; print}
   ' "$CHANGELOG" | awk '
     function flush() { if (line != "") { print line; line = "" } }
     /^[[:space:]]*-[[:space:]]/  { flush(); line = $0; next }
