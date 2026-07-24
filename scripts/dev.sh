@@ -1,32 +1,21 @@
 #!/usr/bin/env bash
 # Dev helper for the Alchemist mod. One command does each repeated loop.
 #
-#   scripts/dev.sh setup          first-time setup: clone the tooling, check the dependencies,
-#                                 install the bridge mods
 #   scripts/dev.sh publish        build → godot import → publish → verify pck   (the safe default)
 #   scripts/dev.sh publish-fast   build → publish → verify pck                  (code only, no import)
 #   scripts/dev.sh import         godot --headless --import only
-#   scripts/dev.sh bridge         build the MCPTest and GodotExplorer bridge mods, then install them
-#   scripts/dev.sh test [args]    run the regression suite (it starts the game if necessary;
-#                                 args: --group NAME, --changed, --changed-since REF, --fresh,
-#                                 name filters; see scripts/tests/README.md)
-#   scripts/dev.sh game-start     start the game through Steam and wait for the bridge
-#   scripts/dev.sh game-stop      quit the game (a normal quit first, then a forced quit)
-#   scripts/dev.sh game-restart   stop and start (the game loads the new bridge and mod builds)
 #   scripts/dev.sh lint           static check of the three-way rule (offline, no game)
 #   scripts/dev.sh changelog      draft CHANGELOG entries from the commits since the last tag
 #                                 (it prints only, it writes nothing)
-#   scripts/dev.sh release <patch|minor|major|X.Y.Z> [--skip-tests]
+#   scripts/dev.sh release <patch|minor|major|X.Y.Z>
 #                                 increase the version, roll the CHANGELOG, build, and package
 #                                 dist/Alchemist-vX.Y.Z.zip. It prints the git commit/tag/push block
-#                                 for you to run (see RELEASING.md). It runs the regression suite, so
-#                                 Steam must be up. --skip-tests stops the suite
+#                                 for you to run (see RELEASING.md)
 #   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with the fixes
 #   scripts/dev.sh env            print the resolved paths and exit
 #
-# The reason for this script: every publish needs PATH and DOTNET_ROLL_FORWARD set. It also needs
-# the game dir exported for the bridge build, and 3 or 4 commands in a chain. This script does all
-# of that, so the inner loop is one word.
+# The reason for this script: every publish needs PATH and DOTNET_ROLL_FORWARD set, plus 3 or 4
+# commands in a chain. This script does all of that, so the inner loop is one word.
 #
 # You can override every path below with an environment variable (see the env output). The
 # defaults detect the platform, so a fresh clone works and you do not have to edit this file.
@@ -34,7 +23,7 @@ set -euo pipefail
 
 # ── the environment that every command needs ────────────────────────────
 # dotnet is often not on the default login PATH. RollForward=Major lets the net9 analyzers run on
-# newer runtimes. The bridge csproj files read STS2_GAME_DIR to find sts2.dll.
+# newer runtimes.
 export PATH="$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools"
 export DOTNET_ROLL_FORWARD=Major
 
@@ -57,22 +46,12 @@ else
   GAME_MODS="$STS2_GAME_DIR/mods"
 fi
 
-# sts2-modding-mcp checkout (bridge mods and test engine): first the environment override,
-# then the local clone that `setup` makes, then a shared ~/code checkout.
-if [ -z "${STS2_MCP_DIR:-}" ]; then
-  if   [ -d "$REPO/.tooling/sts2-modding-mcp" ]; then STS2_MCP_DIR="$REPO/.tooling/sts2-modding-mcp"
-  elif [ -d "$HOME/code/sts2-modding-mcp" ];     then STS2_MCP_DIR="$HOME/code/sts2-modding-mcp"
-  else STS2_MCP_DIR="$REPO/.tooling/sts2-modding-mcp"   # the location that `setup` uses
-  fi
-fi
-
 GODOT="${GODOT:-/Applications/MegaDot.app/Contents/MacOS/Godot}"
 PCK="$GAME_MODS/Alchemist/Alchemist.pck"
 
-# The test engine (sts2mcp) needs Python 3.10 or later. Use a system python if the PATH has one.
-# If the PATH has none, use uv. uv supplies a correct Python for you (this is the best option, see
-# BUILD.md). PY_CMD holds the interpreter command as an array, because the uv form has more than
-# one word.
+# The lint needs Python 3.10 or later. Use a system python if the PATH has one. If the PATH
+# has none, use uv. uv supplies a correct Python for you (see BUILD.md). PY_CMD holds the
+# interpreter command as an array, because the uv form has more than one word.
 PY_CMD=()
 find_python() {
   local p
@@ -94,8 +73,6 @@ step() { printf '\n\033[1;36m▶ %s\033[0m\n' "$*"; }
 ok()   { printf '\033[32m✓\033[0m %s\n' "$*"; }
 bad()  { printf '\033[31m✗\033[0m %s\n' "$*"; }
 
-port_open() { (exec 3<>"/dev/tcp/127.0.0.1/$1") 2>/dev/null && exec 3>&- && return 0 || return 1; }
-
 do_build()   { step "build";   cd "$REPO"; dotnet build; }
 do_import()  { step "import (godot)"; cd "$REPO"; "$GODOT" --headless --import --path . 2>&1 | grep -iE "error|reimport" | grep -viE "EditorSettings|TypeNameResolver" || true; }
 do_publish() { step "publish"; cd "$REPO"; dotnet publish -c Debug; }
@@ -108,42 +85,7 @@ do_verify()  {
   # confuse with a mod bug, but the mod is not the cause.
   if pgrep -f "SlayTheSpire2" >/dev/null 2>&1; then
     bad "the game is active; it still uses the OLD pck and will throw AssetLoadException"
-    echo "  run 'scripts/dev.sh game-restart' before you do a test (see docs/troubleshooting.md)"
   fi
-}
-
-# Build one bridge mod project from the tooling checkout. Then copy its runtime files into
-# the game mods dir. Do not copy 0Harmony.dll: the game supplies its own copy, and a second
-# copy causes a conflict.
-install_bridge_mod() {  # <project-subdir> <csproj> <dll-base> <mods-subdir>
-  local src="$STS2_MCP_DIR/$1" csproj="$2" base="$3" dest="$GAME_MODS/$4"
-  step "build $base"
-  [ -d "$src" ] || { bad "$src is missing; run scripts/dev.sh setup first"; exit 1; }
-  (cd "$src"; dotnet build "$csproj")
-  step "install $base → $dest"
-  mkdir -p "$dest"
-  for f in "$base.dll" "$base.deps.json" "$base.runtimeconfig.json" "$base.pdb" mod_manifest.json; do
-    cp -f "$src/bin/Debug/net9.0/$f" "$dest/" 2>/dev/null || cp -f "$src/$f" "$dest/"
-  done
-  ls "$dest"
-}
-
-do_bridge() {
-  install_bridge_mod test_mod     MCPTest.csproj       MCPTest       mcptest
-  install_bridge_mod explorer_mod GodotExplorer.csproj GodotExplorer godotexplorer
-  echo
-  echo "Now start STS2 through Steam. MCPTest listens on TCP 21337, GodotExplorer on 27020."
-}
-
-do_test() {
-  step "regression suite"
-  have_py || { bad "$no_py_msg"; exit 1; }
-  PYTHONPATH="$STS2_MCP_DIR" STS2_MCP_DIR="$STS2_MCP_DIR" "${PY_CMD[@]}" "$REPO/scripts/tests/run_suite.py" "$@"
-}
-
-do_game() {  # start|stop|restart
-  have_py || { bad "$no_py_msg"; exit 1; }
-  PYTHONPATH="$STS2_MCP_DIR" STS2_MCP_DIR="$STS2_MCP_DIR" "${PY_CMD[@]}" "$REPO/scripts/tests/run_suite.py" --game "$1"
 }
 
 # ── release plumbing ────────────────────────────────────────────────────────
@@ -182,15 +124,9 @@ do_changelog() {
   echo
 }
 
-do_release() {  # <patch|minor|major|X.Y.Z> [--skip-tests]
-  local bump="" skip_tests=0
-  for arg in "$@"; do
-    case "$arg" in
-      --skip-tests) skip_tests=1 ;;
-      *) [ -n "$bump" ] && { bad "unexpected argument '$arg'"; exit 1; }; bump="$arg" ;;
-    esac
-  done
-  [ -n "$bump" ] || { bad "usage: scripts/dev.sh release <patch|minor|major|X.Y.Z> [--skip-tests]"; exit 1; }
+do_release() {  # <patch|minor|major|X.Y.Z>
+  local bump="${1:-}"
+  [ -n "$bump" ] || { bad "usage: scripts/dev.sh release <patch|minor|major|X.Y.Z>"; exit 1; }
   have_py || { bad "$no_py_msg (release runs the lint check)"; exit 1; }
 
   step "release preflight"
@@ -219,15 +155,6 @@ do_release() {  # <patch|minor|major|X.Y.Z> [--skip-tests]
   do_build
   step "lint"
   "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py"
-
-  # The suite is the only check before a release that runs the mod against a real game. A
-  # release without the suite can contain a fault. The suite starts the game itself, so
-  # Steam must be active.
-  if [ "$skip_tests" -eq 1 ]; then
-    bad "this run does NOT include the regression suite (--skip-tests); no test ran against the game"
-  else
-    do_test || { bad "the regression suite failed; correct the fault, or run again with --skip-tests"; exit 1; }
-  fi
 
   local date; date="$(date +%Y-%m-%d)"
   ok "release v$cur → v$new ($date)"
@@ -295,30 +222,18 @@ do_doctor() {
   step "doctor"
   local fail=0
   if command -v dotnet >/dev/null;   then ok "dotnet $(dotnet --version 2>/dev/null)"; else bad "dotnet not found; install the .NET 9 SDK (https://dotnet.microsoft.com)"; fail=1; fi
-  if have_py;                        then ok "python $("${PY_CMD[@]}" --version 2>&1 | cut -d' ' -f2) (${PY_CMD[*]})"; else bad "no Python 3.10 or later; scripts/dev.sh test needs it; install uv (https://astral.sh/uv) to get one, or install Python directly"; fail=1; fi
-  if [ -x "$GODOT" ];                then ok "MegaDot at $GODOT"; else bad "MegaDot not found at $GODOT; install it, or set GODOT=/path/to/Godot (see BUILD.md)"; fail=1; fi
+  if have_py;                        then ok "python $("${PY_CMD[@]}" --version 2>&1 | cut -d' ' -f2) (${PY_CMD[*]})"; else bad "no Python 3.10 or later; scripts/dev.sh lint needs it; install uv (https://astral.sh/uv) to get one, or install Python directly"; fail=1; fi
+  if [ -x "$GODOT" ];                then ok "Godot at $GODOT"; else bad "Godot not found at $GODOT; install Godot 4.5.1 (.NET), or set GODOT=/path/to/Godot (see BUILD.md)"; fail=1; fi
   if [ -d "$STS2_GAME_DIR" ];        then ok "game at $STS2_GAME_DIR"; else bad "game not found at $STS2_GAME_DIR; install it through Steam, or set STS2_GAME_DIR"; fail=1; fi
-  if pgrep -x steam_osx >/dev/null 2>&1 || pgrep -x steam >/dev/null 2>&1; then ok "Steam client is active"; else bad "Steam client is not active; the game needs it to start (game-start/test)"; fi
-  if [ -d "$STS2_MCP_DIR" ];         then ok "tooling at $STS2_MCP_DIR"; else bad "the sts2-modding-mcp checkout is missing; run scripts/dev.sh setup"; fail=1; fi
   if [ -d "$GAME_MODS/Alchemist" ];  then ok "Alchemist mod installed"; else bad "Alchemist mod not installed; run scripts/dev.sh publish"; fail=1; fi
-  if [ -d "$GAME_MODS/mcptest" ];    then ok "MCPTest bridge installed"; else bad "the MCPTest bridge is missing; run scripts/dev.sh bridge"; fail=1; fi
-  if [ -d "$GAME_MODS/godotexplorer" ]; then ok "GodotExplorer installed"; else bad "GodotExplorer is missing; run scripts/dev.sh bridge"; fail=1; fi
-  if port_open 21337; then ok "the MCPTest bridge answers on :21337"; else bad "the MCPTest bridge does not answer on :21337; start the game through Steam (only 'test' needs it)"; fi
-  if port_open 27020; then ok "GodotExplorer answers on :27020"; else bad "GodotExplorer does not answer on :27020; start the game through Steam (only 'test' needs it)"; fi
   [ "$fail" -eq 0 ] && { echo; ok "the environment is correct"; } || { echo; bad "correct the items above, then run scripts/dev.sh doctor again"; }
   return "$fail"
 }
 
 case "${1:-help}" in
-  setup)         "$REPO/scripts/setup.sh" ;;
   publish)       do_build; do_import; do_publish; do_verify ;;
   publish-fast)  do_build; do_publish; do_verify ;;
   import)        do_import ;;
-  bridge)        do_bridge ;;
-  test)          shift; do_test "$@" ;;
-  game-start)    do_game start ;;
-  game-stop)     do_game stop ;;
-  game-restart)  do_game restart ;;
   lint)          have_py || { bad "$no_py_msg"; exit 1; }
                  "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py" ;;
   changelog)     do_changelog ;;
@@ -328,7 +243,6 @@ case "${1:-help}" in
     echo "REPO          = $REPO"
     echo "STS2_GAME_DIR = $STS2_GAME_DIR"
     echo "GAME_MODS     = $GAME_MODS"
-    echo "STS2_MCP_DIR  = $STS2_MCP_DIR"
     echo "GODOT         = $GODOT"
     echo "PCK           = $PCK"
     ;;

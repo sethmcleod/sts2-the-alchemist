@@ -94,28 +94,14 @@ Develop steps below.
 ```sh
 git clone https://github.com/sethmcleod/sts2-the-alchemist
 cd sts2-the-alchemist
-scripts/setup.sh          # first time: get the tooling, check dependencies, install bridge mods
-scripts/dev.sh test       # run the regression suite against the live game
+scripts/dev.sh doctor     # check the environment
 scripts/dev.sh publish    # build the mod into the game
 ```
 
-The command `scripts/dev.sh doctor` checks the environment at any time.
-
-> [!TIP]
-> Everything works with a plain shell and Python, so **no AI tooling is necessary**. The
-> repo also supports development with an agent (see [CLAUDE.md](CLAUDE.md)). You can point
-> Claude Code, or a similar tool, at this repo to change the mod and to test it. This works
-> even if you have no experience with C#.
-
 ### Document map
 
-| Doc                                                                | What is in it                                                            |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| [BUILD.md](BUILD.md)                                               | prerequisites, build and publish commands, asset rules                   |
-| [CONTRIBUTING.md](CONTRIBUTING.md)                                 | the three-way update rule, design and code rules                         |
-| [RELEASING.md](RELEASING.md)                                       | version policy, changelog workflow, how to cut a release, how to install |
-| [docs/adding-a-card.md](docs/adding-a-card.md)                     | a complete example that adds one card                                    |
-| [docs/troubleshooting.md](docs/troubleshooting.md)                 | known problems and their fixes                                           |
-| [docs/backlog.md](docs/backlog.md)                                 | improvements with no schedule, and the evidence for each                 |
-| [scripts/tests/README.md](scripts/tests/README.md)                 | the regression suite: how to run it and how to write a scenario          |
-| [sts2-modding-mcp](https://github.com/sethmcleod/sts2-modding-mcp) | the general STS2 modding toolkit for this repo                           |
+| Doc                                                | What is in it                                                            |
+| -------------------------------------------------- | ------------------------------------------------------------------------ |
+| [BUILD.md](BUILD.md)                               | prerequisites, build and publish commands, asset rules                   |
+| [CONTRIBUTING.md](CONTRIBUTING.md)                 | the three-way update rule, design and code rules                         |
+| [RELEASING.md](RELEASING.md)                       | version policy, changelog workflow, how to cut a release, how to install |

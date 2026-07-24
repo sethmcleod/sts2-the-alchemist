@@ -1,8 +1,0 @@
-{
-  "name": "loc_render",
-  "group": "compendium",
-  "description": "Every Alchemist card/relic/potion/power renders its title + description (+ smartDescription for powers) with no raw LocString keys, unresolved braces, or canonical-render exceptions",
-  "checks": [
-    {"expect": {"loc_render_clean": {"prefix": "ALCHEMIST"}}, "timeout": 10}
-  ]
-}

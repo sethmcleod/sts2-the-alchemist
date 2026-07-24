@@ -2,8 +2,8 @@ __pycache__/
 **/.DS_Store
 .DS_Store
 .godot/
-.mcp.json
 .tooling/
 bin/
 dist/
+scripts/tests
 beta-art-sheet.html

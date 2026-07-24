@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Generate the Alchemist character select sound.
 
 The clip is a potion brew: a plop (the ingredient drop), a flame-like

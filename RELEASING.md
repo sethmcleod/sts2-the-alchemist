@@ -15,11 +15,11 @@ Only `scripts/dev.sh release` changes it. The git tags use the same value
 (`vX.Y.Z`). This project follows [Semantic Versioning](https://semver.org). For a
 game mod, read the rules as follows:
 
-| Increase | When to use it | Examples |
-|---|---|---|
-| **PATCH** (`0.1.0 → 0.1.1`) | Balance changes, bug fixes, and fixes to text, tooltips, or art. This increase adds no content and removes no content. | Change the cost of a card. Fix a Ferment interaction. Change the text of a keyword. |
-| **MINOR** (`0.1.0 → 0.2.0`) | New content, or more mechanics that do not break the current saves. | Add cards, relics, or potions. Add an epoch. Add a keyword. |
-| **MAJOR** (`0.x → 1.0`, then `1.x → 2.0`) | Changes that break the saves, or changes to the identity of the mod. **`1.0.0` is kept for the first public Steam Workshop release.** | Remove or rename large card sets. Change a core mechanic completely. |
+| Increase                                  | When to use it                                                                                                                        | Examples                                                                            |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **PATCH** (`0.1.0 → 0.1.1`)               | Balance changes, bug fixes, and fixes to text, tooltips, or art. This increase adds no content and removes no content.                | Change the cost of a card. Fix a Ferment interaction. Change the text of a keyword. |
+| **MINOR** (`0.1.0 → 0.2.0`)               | New content, or more mechanics that do not break the current saves.                                                                   | Add cards, relics, or potions. Add an epoch. Add a keyword.                         |
+| **MAJOR** (`0.x → 1.0`, then `1.x → 2.0`) | Changes that break the saves, or changes to the identity of the mod. **`1.0.0` is kept for the first public Steam Workshop release.** | Remove or rename large card sets. Change a core mechanic completely.                |
 
 Before version 1.0, the mod is feature-complete, but it has no public release.
 Thus, use MINOR or PATCH. Keep MAJOR for the 1.0 Workshop release.
@@ -99,11 +99,10 @@ The `release` command (see `do_release` in `scripts/dev.sh`) does these steps:
    - The current branch must be `main`.
    - The `## [Unreleased]` section must not be empty.
 
-   The command then runs `dotnet build`, the `lint` check, and the regression
-   suite. The suite drives the live game, thus Steam must run. The `--skip-tests`
-   option disables the suite and prints a warning. The release is then not
-   verified against the game. Use `--skip-tests` only when the game cannot run.
-   Do not use it when the regression suite fails.
+   The command then runs `dotnet build` and the `lint` check. Play the current
+   build before a release; the command does not verify the mod against the live
+   game for you.
+
 2. **Compute**: the command calculates the new version from the keyword
    (`patch`, `minor`, or `major`). You can also give an explicit `X.Y.Z` value.
    The command makes sure that the new version is greater than the current
@@ -166,12 +165,12 @@ See [BUILD.md](BUILD.md).
 
 When you publish the mod, each Workshop field has a source:
 
-| Workshop item | Source |
-|---|---|
-| Update note (per version) | the `CHANGELOG.md` section for that version, or `dist/RELEASE_NOTES-*.txt` |
-| Preview image | `Alchemist/mod_image.png` (already in the `.pck`) |
-| Description | the `description` field in `Alchemist.json`, plus the main points from README |
-| Dependency | **BaseLib**. List it, and the Workshop then installs it automatically. |
+| Workshop item             | Source                                                                        |
+| ------------------------- | ----------------------------------------------------------------------------- |
+| Update note (per version) | the `CHANGELOG.md` section for that version, or `dist/RELEASE_NOTES-*.txt`    |
+| Preview image             | `Alchemist/mod_image.png` (already in the `.pck`)                             |
+| Description               | the `description` field in `Alchemist.json`, plus the main points from README |
+| Dependency                | **BaseLib**. List it, and the Workshop then installs it automatically.        |
 
 The tools do not do the upload step yet. Add the steps to this document when the
 tools do the upload.

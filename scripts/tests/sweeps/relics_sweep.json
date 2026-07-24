@@ -1,6 +1,0 @@
-{
-  "name": "relics_sweep",
-  "group": "sweeps",
-  "description": "Run a combat turn cycle with each Alchemist relic alone (so failures name the relic), then once with all 9 together to catch interactions; any exception fails",
-  "sweep": "relics"
-}
