@@ -15,9 +15,9 @@ dest_files=["res://.godot/imported/ichor.png-4a33f5f6e8c73e7ca6f5142478f337e8.ct
 
 [params]
 
-compress/mode=1
-compress/high_quality=false
-compress/lossy_quality=0.9
+compress/mode=0
+compress/high_quality=true
+compress/lossy_quality=1.0
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

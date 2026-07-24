@@ -15,9 +15,9 @@ dest_files=["res://.godot/imported/heavy_hand.png-0a4bf0566e62f99fd8080e61e99472
 
 [params]
 
-compress/mode=1
-compress/high_quality=false
-compress/lossy_quality=0.9
+compress/mode=0
+compress/high_quality=true
+compress/lossy_quality=1.0
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

@@ -15,9 +15,9 @@ dest_files=["res://.godot/imported/foul_vapor.png-1bf045443735db24fe1a3ee659e8bf
 
 [params]
 
-compress/mode=1
-compress/high_quality=false
-compress/lossy_quality=0.9
+compress/mode=0
+compress/high_quality=true
+compress/lossy_quality=1.0
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

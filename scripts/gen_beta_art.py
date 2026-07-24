@@ -39,7 +39,11 @@ import zlib
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BETA = os.path.join(REPO, "Alchemist/images/card_portraits/beta")
-W, H = 1000, 760
+# Half the display size on purpose: these are linear gradients, which
+# upscale exactly, and the smaller canvas lets the art import
+# LOSSLESS. Lossy WebP bands badly on smooth gradients (see
+# docs/beta-card-art.md).
+W, H = 500, 380
 
 # Direction -> (sx, sy) unit vector in pixel space (y points down),
 # arrow, label. The generator scales diagonals by the art size, so a
@@ -56,7 +60,7 @@ ORIENTS = {
 }
 
 # Full-art cards use a portrait canvas; every other card uses W x H
-SIZES = {"Aureate": (606, 852), "Elixir": (606, 852)}
+SIZES = {"Aureate": (303, 426), "Elixir": (303, 426)}
 
 # 8x8 Bayer matrix for ordered dithering. A repeating pattern compresses
 # far better in PNG than random noise and prevents banding just as well.
@@ -76,148 +80,148 @@ BAYER = [
 # the validate command enforces this. Verticals mark Basics and tokens.
 COLORS = {
     # Gambit: all-in attacks
-    "Grind Down": ("#5f011f", "#b5a58c", "BR", "Gambit: all-in attacks"),
+    "Grind Down": ("#5f011f", "#b5a58c", "TR", "Gambit: all-in attacks"),
     "Last Resort": ("#5f011f", "#c18c0f", "TR", "Gambit: all-in attacks"),
-    "Neurotoxin": ("#5f011f", "#b3bd2a", "BL", "Gambit: all-in attacks"),
+    "Neurotoxin": ("#5f011f", "#b3bd2a", "TR", "Gambit: all-in attacks"),
     # Cauterize (one-off)
-    "Cauterize": ("#3d0a02", "#e0d6c2", "BR", "Unique"),
+    "Cauterize": ("#3d0a02", "#e0d6c2", "TR", "Unique"),
     # Puncture (one-off)
-    "Puncture": ("#5f011f", "#3fb8d8", "BL", "Unique"),
+    "Puncture": ("#0d1f3d", "#3d9ae8", "TR", "Unique"),
     # Lash Out (one-off)
     "Lash Out": ("#5f011f", "#77828c", "TR", "Unique"),
     # Gambit: skills
-    "Congeal": ("#5f011f", "#0e7c7b", "BR", "Gambit: skills"),
-    "Fresh Batch": ("#5f011f", "#0b6150", "TR", "Gambit: skills"),
-    "Transmute": ("#5f011f", "#d9a521", "BL", "Gambit: skills"),
+    "Congeal": ("#1d3f0e", "#0e7c7b", "BR", "Gambit: skills"),
+    "Fresh Batch": ("#045062", "#8fe3c0", "BR", "Gambit: skills"),
+    "Transmute": ("#5f011f", "#e3b84a", "BR", "Gambit: skills"),
     # Gambit: powers
-    "Drip Feed": ("#5f011f", "#6f5bd6", "BR", "Gambit: powers"),
-    "Metabolism": ("#5f011f", "#4345d0", "TR", "Gambit: powers"),
+    "Drip Feed": ("#5f011f", "#6f5bd6", "L", "Gambit: powers"),
+    "Metabolism": ("#5f011f", "#d4776b", "L", "Gambit: powers"),
     # Poison attacks
-    "Double Dose": ("#650101", "#6b9201", "BR", "Poison attacks"),
-    "Flare Up": ("#650101", "#697401", "TR", "Poison attacks"),
-    "Spatter": ("#650101", "#5fb501", "BL", "Poison attacks"),
+    "Double Dose": ("#650101", "#6b9201", "TR", "Poison attacks"),
+    "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
+    "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
     # Calculated attacks
-    "Aggravate": ("#650101", "#2f5fa3", "BR", "Calculated attacks"),
-    "Delayed Reaction": ("#650101", "#28638b", "TR", "Calculated attacks"),
+    "Aggravate": ("#650101", "#a83a52", "TR", "Calculated attacks"),
+    "Delayed Reaction": ("#4a0a33", "#b15cd1", "BR", "Calculated attacks"),
     # Seep: skills
     "Corrode": ("#2f0170", "#287912", "BR", "Seep: skills"),
-    "Decoction": ("#2f0170", "#2e5e0e", "TR", "Seep: skills"),
+    "Decoction": ("#2f0170", "#2aa88a", "BR", "Seep: skills"),
     # Seep: heavy attacks
-    "Draining Strike": ("#2f0170", "#b3341f", "BR", "Seep: heavy attacks"),
-    "Unstable Compound": ("#2f0170", "#991a1f", "TR", "Seep: heavy attacks"),
+    "Draining Strike": ("#2f0170", "#b3341f", "TR", "Seep: heavy attacks"),
+    "Unstable Compound": ("#2f0170", "#63c11c", "TR", "Seep: heavy attacks"),
     # Seep: light attacks
-    "Tinge": ("#1c0f45", "#4fc98f", "BR", "Seep: light attacks"),
-    "Trickle": ("#1c0f45", "#3bbf68", "TR", "Seep: light attacks"),
+    "Tinge": ("#1c0f45", "#4fc98f", "TR", "Seep: light attacks"),
+    "Trickle": ("#1c0f45", "#2f9853", "TR", "Seep: light attacks"),
     # Ferment: attacks
-    "Patient Strike": ("#4a0e2e", "#c78a3b", "BR", "Ferment: attacks"),
-    "Rolling Boil": ("#4a0e2e", "#b16333", "TR", "Ferment: attacks"),
+    "Patient Strike": ("#4a0e2e", "#c78a3b", "TR", "Ferment: attacks"),
+    "Rolling Boil": ("#4a0e2e", "#e85a1f", "TR", "Ferment: attacks"),
     # Ferment: skills and powers
-    "Amalgam": ("#6b2444", "#c2601c", "BR", "Ferment: skills and powers"),
-    "Carapace": ("#6b2444", "#a73918", "TR", "Ferment: skills and powers"),
-    "Vintage": ("#6b2444", "#df9723", "BL", "Ferment: skills and powers"),
+    "Amalgam": ("#6b2444", "#c2601c", "R", "Ferment: skills and powers"),
+    "Carapace": ("#6b2444", "#d9a86a", "BR", "Ferment: skills and powers"),
+    "Vintage": ("#6b2444", "#df9723", "BR", "Ferment: skills and powers"),
     # Infuse: cantrips
-    "Enrich": ("#792595", "#2cbeba", "BR", "Infuse: cantrips"),
-    "Salve": ("#792595", "#26a58b", "BL", "Infuse: cantrips"),
-    "Prime": ("#792595", "#2fbcca", "D", "Infuse: cantrips"),
+    "Enrich": ("#792595", "#b8d94f", "BR", "Infuse: cantrips"),
+    "Salve": ("#792595", "#6fd8e0", "BR", "Infuse: cantrips"),
+    "Prime": ("#792595", "#2cbeba", "D", "Infuse: cantrips"),
     # Quench (one-off)
-    "Quench": ("#792595", "#15807d", "TR", "Unique"),
+    "Quench": ("#792595", "#0e5452", "BR", "Unique"),
     # Infuse: heavy
-    "Inhale": ("#4a1a66", "#17627a", "BR", "Infuse: heavy"),
-    "Masterwork": ("#4a1a66", "#c9a227", "TR", "Infuse: heavy"),
-    "Refine": ("#4a1a66", "#1d6098", "BL", "Infuse: heavy"),
+    "Inhale": ("#4a1a66", "#3fb0d4", "BR", "Infuse: heavy"),
+    "Masterwork": ("#4a1a66", "#c9a227", "BR", "Infuse: heavy"),
+    "Refine": ("#4a1a66", "#257bc3", "BR", "Infuse: heavy"),
     # Full Measure (one-off)
-    "Full Measure": ("#241a5e", "#4a90c9", "BR", "Unique"),
+    "Full Measure": ("#241a5e", "#4a90c9", "TR", "Unique"),
     # Siphon (one-off)
     "Siphon": ("#241a5e", "#2aa89b", "TR", "Unique"),
     # Enchanted payoffs: debuff attacks
-    "Needle Point": ("#5b3fc4", "#aeb4bc", "BR", "Enchanted payoffs: debuff attacks"),
-    "Vivisect": ("#5b3fc4", "#9da8ae", "TR", "Enchanted payoffs: debuff attacks"),
+    "Needle Point": ("#5b3fc4", "#aeb4bc", "TR", "Enchanted payoffs: debuff attacks"),
+    "Vivisect": ("#5b3fc4", "#d94f6a", "TR", "Enchanted payoffs: debuff attacks"),
     # Enchanted payoffs: Plating
     "Libation": ("#5b3fc4", "#23262e", "BR", "Enchanted payoffs: Plating"),
-    "Sediment": ("#5b3fc4", "#16191d", "TR", "Enchanted payoffs: Plating"),
-    "Vitrify": ("#5b3fc4", "#323342", "BL", "Enchanted payoffs: Plating"),
+    "Sediment": ("#5b3fc4", "#d9c89a", "R", "Enchanted payoffs: Plating"),
+    "Vitrify": ("#5b3fc4", "#48495f", "BR", "Enchanted payoffs: Plating"),
     # Golden Touch (one-off)
-    "Golden Touch": ("#5b3fc4", "#ffc832", "BR", "Unique"),
+    "Golden Touch": ("#5b3fc4", "#ffc832", "L", "Unique"),
     # Potion: attacks
-    "Fighting Spirits": ("#045062", "#bf8823", "BR", "Potion: attacks"),
+    "Fighting Spirits": ("#045062", "#bf8823", "TR", "Potion: attacks"),
     "Volatile Mix": ("#045062", "#a55d1e", "TR", "Potion: attacks"),
     # Potion: engines
-    "Bottled Fury": ("#045062", "#d96a1f", "BR", "Potion: engines"),
-    "Precipitate": ("#045062", "#be401b", "TR", "Potion: engines"),
-    "Windfall": ("#045062", "#e3a139", "BL", "Potion: engines"),
+    "Bottled Fury": ("#045062", "#e58646", "R", "Potion: engines"),
+    "Precipitate": ("#045062", "#e1542b", "BR", "Potion: engines"),
+    "Windfall": ("#045062", "#c9dd52", "R", "Potion: engines"),
     # Azoth (one-off)
-    "Azoth": ("#1f1723", "#8a5f9e", "BR", "Unique"),
+    "Azoth": ("#1f1723", "#8a5f9e", "TR", "Unique"),
     # Fumigate (one-off)
     "Fumigate": ("#1f1723", "#a3a83a", "TR", "Unique"),
     # Exhaust pile: skills
     "Poultice": ("#1f1723", "#4f9e4a", "BR", "Exhaust pile: skills"),
-    "Sinter": ("#1f1723", "#be401b", "TR", "Exhaust pile: skills"),
+    "Sinter": ("#1f1723", "#be401b", "BR", "Exhaust pile: skills"),
     # Regen: attacks
-    "Hemorrhage": ("#00212a", "#0d8a6b", "BR", "Regen: attacks"),
+    "Hemorrhage": ("#00212a", "#0d8a6b", "TR", "Regen: attacks"),
     "Lifeblood": ("#00212a", "#0a6e43", "TR", "Regen: attacks"),
-    "Overflow": ("#00212a", "#10aba5", "BL", "Regen: attacks"),
+    "Overflow": ("#00212a", "#10aba5", "TR", "Regen: attacks"),
     # Regen: skills and powers
-    "Catalyze": ("#14424e", "#3d9a70", "BR", "Regen: skills and powers"),
-    "Circulation": ("#14424e", "#348452", "TR", "Regen: skills and powers"),
-    "Inversion": ("#14424e", "#47b499", "BL", "Regen: skills and powers"),
+    "Catalyze": ("#14424e", "#3d9a70", "L", "Regen: skills and powers"),
+    "Circulation": ("#14424e", "#b8e86a", "BR", "Regen: skills and powers"),
+    "Inversion": ("#14424e", "#47b499", "L", "Regen: skills and powers"),
     # Poison skills
     "Fester": ("#4e8701", "#0139b2", "BR", "Poison skills"),
-    "Sweat It Out": ("#4e8701", "#014a94", "TR", "Poison skills"),
-    "Waste Not": ("#4e8701", "#2f4f8f", "BL", "Poison skills"),
+    "Sweat It Out": ("#4e8701", "#013161", "BR", "Poison skills"),
+    "Waste Not": ("#4e8701", "#2f4f8f", "BR", "Poison skills"),
     # Poison powers: amplifiers
-    "Bloom": ("#071a02", "#59a610", "BR", "Poison powers: amplifiers"),
-    "Heavy Hand": ("#071a02", "#608a0d", "TR", "Poison powers: amplifiers"),
-    "Sepsis": ("#071a02", "#45c713", "BL", "Poison powers: amplifiers"),
+    "Bloom": ("#071a02", "#59a610", "L", "Poison powers: amplifiers"),
+    "Heavy Hand": ("#071a02", "#8fc72a", "R", "Poison powers: amplifiers"),
+    "Sepsis": ("#071a02", "#5aea23", "L", "Poison powers: amplifiers"),
     # Poison powers: retaliation
-    "Contagion": ("#071a02", "#c9b428", "BR", "Poison powers: retaliation"),
-    "Secretion": ("#071a02", "#af8423", "TR", "Poison powers: retaliation"),
+    "Contagion": ("#071a02", "#c9b428", "R", "Poison powers: retaliation"),
+    "Secretion": ("#071a02", "#af8423", "L", "Poison powers: retaliation"),
     # Poison plus Regen
-    "Mercurial Form": ("#0e6b54", "#8aa312", "BR", "Poison plus Regen"),
-    "Twin Serpents": ("#0e6b54", "#87870f", "TR", "Poison plus Regen"),
-    "Zenith": ("#0e6b54", "#81c316", "BL", "Poison plus Regen"),
+    "Mercurial Form": ("#0e6b54", "#8aa312", "R", "Poison plus Regen"),
+    "Twin Serpents": ("#14805f", "#a6c214", "L", "Poison plus Regen"),
+    "Zenith": ("#0e6b54", "#9de626", "BR", "Poison plus Regen"),
     # Burst tempo
     "White Heat": ("#7a1c02", "#ffdf8a", "BR", "Burst tempo"),
-    "Bitter Draught": ("#7a1c02", "#ffbc6b", "TR", "Burst tempo"),
-    "Venom Trance": ("#7a1c02", "#fffaae", "BL", "Burst tempo"),
+    "Bitter Draught": ("#7a1c02", "#d98cc8", "BR", "Burst tempo"),
+    "Venom Trance": ("#7a1c02", "#8fd97a", "BR", "Burst tempo"),
     # Crafting: transform
     "Melt Down": ("#1b2a44", "#0f9b82", "BR", "Crafting: transform"),
-    "Sublimate": ("#1b2a44", "#0c7f56", "TR", "Crafting: transform"),
+    "Sublimate": ("#1b2a44", "#0c7f56", "BR", "Crafting: transform"),
     # Crafting: discovery
-    "Decant": ("#1b2a44", "#8a63f5", "BR", "Crafting: discovery"),
-    "Eureka": ("#1b2a44", "#f2c94e", "TR", "Crafting: discovery"),
+    "Decant": ("#1b2a44", "#8a63f5", "TR", "Crafting: discovery"),
+    "Eureka": ("#1b2a44", "#f2c94e", "BR", "Crafting: discovery"),
     # Crafting: refinement
     "Hone": ("#1b2a44", "#d0342c", "BR", "Crafting: refinement"),
-    "Winnow": ("#1b2a44", "#b7273a", "TR", "Crafting: refinement"),
+    "Winnow": ("#1b2a44", "#8d1e2d", "BR", "Crafting: refinement"),
     # Distillate (one-off token)
     "Distillate": ("#232838", "#6fc0e8", "D", "Unique"),
     # Multiplayer: gifts
-    "Bestow": ("#2563c4", "#e3b341", "BR", "Multiplayer: gifts"),
-    "Effervesce": ("#2563c4", "#df8726", "TR", "Multiplayer: gifts"),
+    "Bestow": ("#2563c4", "#b48ff0", "BR", "Multiplayer: gifts"),
+    "Effervesce": ("#2563c4", "#d8e8f5", "BR", "Multiplayer: gifts"),
     # Reflux (one-off)
     "Reflux": ("#2563c4", "#178f5f", "BR", "Unique"),
     # Suffuse (one-off)
-    "Suffuse": ("#2563c4", "#7fd8b8", "TR", "Unique"),
+    "Suffuse": ("#2563c4", "#7fd8b8", "R", "Unique"),
     # Desperation: powers
-    "Fever Pitch": ("#240147", "#94101b", "BR", "Desperation: powers"),
-    "Resolve": ("#240147", "#780d29", "TR", "Desperation: powers"),
+    "Fever Pitch": ("#240147", "#94101b", "R", "Desperation: powers"),
+    "Resolve": ("#240147", "#e04a3c", "R", "Desperation: powers"),
     # Ichor (one-off)
-    "Ichor": ("#240147", "#c9a86a", "BR", "Unique"),
+    "Ichor": ("#240147", "#c9a86a", "TR", "Unique"),
     # Inoculate (one-off)
-    "Inoculate": ("#12384f", "#dfc05c", "TR", "Unique"),
+    "Inoculate": ("#12384f", "#8fd0e8", "BR", "Unique"),
     # Strike (Basic)
     "Strike": ("#180209", "#942d2d", "BR", "Unique"),
     # Defend (Basic)
     "Defend": ("#0f2a43", "#2b6ea8", "TR", "Unique"),
     # Nigredo (token)
-    "Nigredo": ("#06070d", "#25511a", "D", "Unique"),
+    "Nigredo": ("#07130a", "#25511a", "D", "Unique"),
     # Albedo (token)
-    "Albedo": ("#78efff", "#fefeff", "U", "Unique"),
+    "Albedo": ("#3fd3b0", "#fefeff", "U", "Unique"),
     # Citrinitas (token)
     "Citrinitas": ("#e87500", "#feee2b", "D", "Unique"),
     # Rubedo (token)
     "Rubedo": ("#390800", "#9a330b", "D", "Unique"),
     # Foul Vapor (token)
-    "Foul Vapor": ("#4125be", "#01c2d6", "BL", "Unique"),
+    "Foul Vapor": ("#1d0d6e", "#01c2d6", "D", "Unique"),
     # Elixir (Ancient)
     "Elixir": ("#7638ff", "#22ff88", "BL", "Unique"),
     # Aureate (Ancient)
@@ -302,6 +306,23 @@ def write_png(path, w, h, rgb_rows):
         f.write(png)
 
 
+def force_lossless(png_path):
+    """Keep the .import for a gradient on lossless compression.
+
+    Lossy WebP bands badly on a smooth gradient: it flattens the ramp
+    into wide plateaus with visible steps. The project default is lossy,
+    so each gradient opts out. Godot writes the .import on first import,
+    so this is a no-op until then and self-heals on the next run.
+    """
+    imp = png_path + ".import"
+    if not os.path.exists(imp):
+        return
+    text = open(imp).read()
+    fixed = text.replace("compress/mode=1", "compress/mode=0")
+    if fixed != text:
+        open(imp, "w").write(fixed)
+
+
 def gen_gradient(path, c0, c1, orient, w=W, h=H):
     sx, sy = ORIENTS[orient][:2]
     dx, dy = sx * w, sy * h
@@ -328,6 +349,7 @@ def gen_gradient(path, c0, c1, orient, w=W, h=H):
             i += 3
         rows.append(row)
     write_png(path, w, h, rows)
+    force_lossless(path)
 
 
 def generate():
@@ -342,7 +364,7 @@ def generate():
               flush=True)
     for name, (c0, c1) in EPOCHS.items():
         gen_gradient(os.path.join(EPOCH_DIR, name + ".png"),
-                     c0, c1, "TR", 812, 500)
+                     c0, c1, "TR", 406, 250)
         print(f"[epoch] {name}.png {c0} {c1} TR", flush=True)
 
 

@@ -13,6 +13,19 @@ Security.
 
 ## [Unreleased]
 
+### Changed
+
+- Changed the placeholder card art to show the card type at a glance: Attack
+  gradients rise to the right, Skill gradients fall to the right, and Power
+  gradients run straight across
+- Tuned the placeholder art colors so every card reads apart from its
+  neighbors, with less pink and more contrast on the darkest cards
+
+### Fixed
+
+- Fixed banding in the placeholder card and Epoch art. The gradients are now
+  smooth instead of stepped, which was most visible on dark cards like Nigredo
+
 ## [0.5.0] - 2026-07-24
 
 ### Added

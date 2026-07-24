@@ -15,9 +15,9 @@ dest_files=["res://.godot/imported/sinter.png-2739da5d3c7a6265c415992545c86430.c
 
 [params]
 
-compress/mode=1
-compress/high_quality=false
-compress/lossy_quality=0.9
+compress/mode=0
+compress/high_quality=true
+compress/lossy_quality=1.0
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
