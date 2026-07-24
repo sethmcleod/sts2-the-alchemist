@@ -9,8 +9,11 @@
 #                                 (it prints only, it writes nothing)
 #   scripts/dev.sh release <patch|minor|major|X.Y.Z>
 #                                 increase the version, roll the CHANGELOG, build, and package
-#                                 dist/Alchemist-vX.Y.Z.zip. It prints the git commit/tag/push block
-#                                 for you to run (see RELEASING.md)
+#                                 dist/Alchemist-vX.Y.Z.zip (see RELEASING.md)
+#   scripts/dev.sh publish-release [--force] [--draft] [vX.Y.Z]
+#                                 commit the release edit, tag it, push it, and create or update
+#                                 the GitHub Release with the zip and the notes. --force moves a
+#                                 tag that is already public (a history rewrite)
 #   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with the fixes
 #   scripts/dev.sh env            print the resolved paths and exit
 #
@@ -207,15 +210,105 @@ do_release() {  # <patch|minor|major|X.Y.Z>
 
   echo
   ok "v$new is ready: the files are updated, the artifact and the notes are in dist/"
-  echo "Examine the diff, then run these commands:"
+  echo "Examine the diff, then publish it:"
   echo
-  echo "    git add Alchemist.json CHANGELOG.md"
-  echo "    git commit -m \"release: v$new\""
-  echo "    git tag -a v$new -m \"v$new\""
-  echo "    git push --follow-tags"
+  echo "    scripts/dev.sh publish-release"
   echo
-  echo "Then create a GitHub Release for tag v$new. Attach $zipfile"
-  echo "and paste $notes as the body. See RELEASING.md."
+  echo "That command commits, tags, pushes, and puts the release on GitHub with"
+  echo "$zipfile attached and $notes as the body."
+}
+
+# ── GitHub release automation ───────────────────────────────────────────────
+# gh makes every network call. It reads the repository from the origin remote, so this script
+# holds no URL and no token.
+require_gh() {
+  command -v gh >/dev/null 2>&1 || { bad "gh (the GitHub CLI) is not installed; run: brew install gh"; exit 1; }
+  gh auth status >/dev/null 2>&1 || { bad "gh has no login; run: gh auth login"; exit 1; }
+}
+
+# Commit the release edit, tag it, push it, and create or update the GitHub Release.
+# The tag and the push need --force only when the history moved under a tag that is already
+# public. That case is a rewrite, so the command refuses to guess and asks for the flag.
+do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
+  local force=0 draft=0 ver=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --force) force=1 ;;
+      --draft) draft=1 ;;
+      v[0-9]*|[0-9]*) ver="${1#v}" ;;
+      *) bad "unknown option '$1'; usage: scripts/dev.sh publish-release [--force] [--draft] [vX.Y.Z]"; exit 1 ;;
+    esac
+    shift
+  done
+  require_gh
+
+  local branch; branch="$(git -C "$REPO" rev-parse --abbrev-ref HEAD)"
+  [ "$branch" = "main" ] || { bad "you are on branch '$branch'; publish the release from main"; exit 1; }
+  [ -n "$ver" ] || ver="$(current_version)"
+  local tag="v$ver"
+
+  # The release edit that `release` leaves behind is exactly these two files. Commit it here so
+  # that the whole flow is two commands. Any other pending change means the tree is not ready.
+  if [ -n "$(git -C "$REPO" status --porcelain)" ]; then
+    local dirty; dirty="$(git -C "$REPO" status --porcelain | awk '{print $2}' | sort | tr '\n' ' ')"
+    [ "$dirty" = "Alchemist.json CHANGELOG.md " ] || {
+      bad "the working tree has changes other than the release edit: $dirty"; exit 1; }
+    step "commit release: $tag"
+    git -C "$REPO" add Alchemist.json CHANGELOG.md
+    git -C "$REPO" commit -q -m "release: $tag"
+    ok "committed"
+  fi
+
+  local head_subject; head_subject="$(git -C "$REPO" log -1 --format=%s)"
+  [ "$head_subject" = "release: $tag" ] || bad "note: the tip commit is '$head_subject', not 'release: $tag'"
+
+  local zip="$DIST/Alchemist-$tag.zip" notes="$DIST/RELEASE_NOTES-$tag.txt"
+  [ -f "$zip" ]   || { bad "$zip is missing; run: scripts/dev.sh release $ver"; exit 1; }
+  [ -f "$notes" ] || { bad "$notes is missing; run: scripts/dev.sh release $ver"; exit 1; }
+
+  # Put the tag on the tip commit. A tag that already points somewhere else only moves with --force.
+  step "tag $tag"
+  local head; head="$(git -C "$REPO" rev-parse HEAD)"
+  local tagged=""; tagged="$(git -C "$REPO" rev-parse -q --verify "refs/tags/$tag^{commit}" 2>/dev/null || true)"
+  if [ -z "$tagged" ]; then
+    git -C "$REPO" tag -a "$tag" -m "$tag"; ok "created $tag"
+  elif [ "$tagged" = "$head" ]; then
+    ok "$tag already points at the tip commit"
+  else
+    [ "$force" -eq 1 ] || { bad "$tag points at $tagged, not the tip commit $head; pass --force to move it"; exit 1; }
+    git -C "$REPO" tag -f -a "$tag" -m "$tag" >/dev/null; ok "moved $tag to $head"
+  fi
+
+  # --force-with-lease is the safe force: it stops if the remote holds a commit that this clone
+  # has never seen. A plain --force would drop that work without a word.
+  step "push main and $tag"
+  if [ "$force" -eq 1 ]; then
+    git -C "$REPO" push --force-with-lease origin main
+    git -C "$REPO" push --force origin "refs/tags/$tag"
+  else
+    git -C "$REPO" push origin main
+    git -C "$REPO" push origin "refs/tags/$tag"
+  fi
+  ok "pushed"
+
+  # Before 1.0 every release is a pre-release: 1.0.0 is the first Steam Workshop version.
+  local -a flags=(--title "$tag" --notes-file "$notes")
+  [ "${ver%%.*}" = "0" ] && flags+=(--prerelease)
+  [ "$draft" -eq 1 ] && flags+=(--draft)
+
+  if gh release view "$tag" --repo "$(gh repo view --json nameWithOwner -q .nameWithOwner)" >/dev/null 2>&1; then
+    step "update the GitHub Release $tag"
+    gh release edit "$tag" "${flags[@]}" >/dev/null
+    gh release upload "$tag" "$zip" --clobber
+    ok "updated"
+  else
+    step "create the GitHub Release $tag"
+    gh release create "$tag" "$zip" "${flags[@]}" >/dev/null
+    ok "created"
+  fi
+
+  echo
+  ok "$tag is live: $(gh release view "$tag" --json url -q .url)"
 }
 
 do_doctor() {
@@ -226,6 +319,10 @@ do_doctor() {
   if [ -x "$GODOT" ];                then ok "Godot at $GODOT"; else bad "Godot not found at $GODOT; install Godot 4.5.1 (.NET), or set GODOT=/path/to/Godot (see BUILD.md)"; fail=1; fi
   if [ -d "$STS2_GAME_DIR" ];        then ok "game at $STS2_GAME_DIR"; else bad "game not found at $STS2_GAME_DIR; install it through Steam, or set STS2_GAME_DIR"; fail=1; fi
   if [ -d "$GAME_MODS/Alchemist" ];  then ok "Alchemist mod installed"; else bad "Alchemist mod not installed; run scripts/dev.sh publish"; fail=1; fi
+  # gh is necessary only for publish-release, so a missing gh is a note, not a failure.
+  if ! command -v gh >/dev/null 2>&1; then bad "note: gh is not installed; scripts/dev.sh publish-release needs it (brew install gh)"
+  elif gh auth status >/dev/null 2>&1; then ok "gh is logged in ($(gh api user -q .login 2>/dev/null))"
+  else bad "note: gh has no login; scripts/dev.sh publish-release needs one (gh auth login)"; fi
   [ "$fail" -eq 0 ] && { echo; ok "the environment is correct"; } || { echo; bad "correct the items above, then run scripts/dev.sh doctor again"; }
   return "$fail"
 }
@@ -238,6 +335,7 @@ case "${1:-help}" in
                  "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py" ;;
   changelog)     do_changelog ;;
   release)       shift; do_release "$@" ;;
+  publish-release) shift; do_publish_release "$@" ;;
   doctor)        do_doctor ;;
   env)
     echo "REPO          = $REPO"

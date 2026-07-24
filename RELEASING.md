@@ -90,6 +90,8 @@ fine, but update the Workshop note too if you have already posted it.
 ```sh
 scripts/dev.sh changelog        # draft; curate ## [Unreleased] in CHANGELOG.md by hand
 scripts/dev.sh release minor    # or: patch | major | an explicit X.Y.Z
+                                # examine the diff, then:
+scripts/dev.sh publish-release  # commit, tag, push, and put it on GitHub
 ```
 
 The `release` command (see `do_release` in `scripts/dev.sh`) does these steps:
@@ -116,19 +118,40 @@ The `release` command (see `do_release` in `scripts/dev.sh`) does these steps:
    - `dist/RELEASE_NOTES-vX.Y.Z.txt`, the changelog section for this version, with
      each bullet on one line because both paste targets wrap text themselves. Use
      it for the GitHub Release body and for the Workshop update note.
-5. **Stop and print**: the command stops. It prints the git commands below. You
-   must run these commands yourself. The command does not commit, tag, or push
-   anything for you.
+5. **Stop and print**: the command stops so that you can examine the diff. It
+   commits nothing. When the diff is correct, run `publish-release`.
 
-   ```sh
-   git add Alchemist.json CHANGELOG.md
-   git commit -m "release: vX.Y.Z"
-   git tag -a vX.Y.Z -m "vX.Y.Z"
-   git push --follow-tags
-   ```
+### `scripts/dev.sh publish-release`
 
-Then create a GitHub Release for the tag. Attach the zip to the release. Paste
-the notes into the release body.
+This command does the last mile. It needs the [GitHub CLI](https://cli.github.com)
+(`brew install gh`, then `gh auth login` one time). `gh` reads the repository from
+the `origin` remote and holds the token, so this repository stores no secret.
+
+The command does these steps:
+
+1. **Commit**: if the only pending changes are `Alchemist.json` and
+   `CHANGELOG.md` (what `release` writes), it commits them as
+   `release: vX.Y.Z`. Any other pending change stops the command.
+2. **Tag**: it puts the annotated tag `vX.Y.Z` on the tip commit. A tag that
+   already points at another commit moves only with `--force`.
+3. **Push**: it pushes `main` and the tag. With `--force` it uses
+   `--force-with-lease`, which stops if the remote holds a commit that your
+   clone has never seen.
+4. **Publish**: it creates the GitHub Release, or updates it when the release
+   is already there. The title is the tag, the body is
+   `dist/RELEASE_NOTES-vX.Y.Z.txt`, and the zip goes up as the asset
+   (`--clobber` replaces an asset of the same name). Every `0.x` version is
+   marked pre-release, because `1.0.0` is the first Workshop version.
+
+Options: `--force` (move a public tag after a history rewrite), `--draft`
+(publish the release as a draft), and an explicit `vX.Y.Z` to override the
+version from the manifest.
+
+> [!CAUTION]
+> `--force` rewrites public history. Use it only for a release that is yours
+> alone and that nobody has built on. `git push --force-with-lease` protects
+> you from overwriting a commit that you have not seen, but it does not protect
+> a person who already pulled the old history.
 
 Git ignores the `dist/` folder. You build these files again for each release. Do
 not commit them.
