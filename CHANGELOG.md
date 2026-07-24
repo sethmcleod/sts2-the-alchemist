@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-07-24
+
 ### Changed
 
 - Changed the placeholder card art to show the card type at a glance: Attack
