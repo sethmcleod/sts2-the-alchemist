@@ -49,6 +49,8 @@ Security.
 - Reworked Bottled Fury card: the Strength and Dexterity a Potion grants are now
   permanent flat gains, and the amount changed from 2 (3) -> 1 (2). Before, both
   expired at the end of your turn
+- Changed the Alchemist's name color to a lighter violet for readability on
+  dark backgrounds
 
 ### Fixed
 

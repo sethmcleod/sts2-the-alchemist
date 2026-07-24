@@ -13,7 +13,9 @@ public class Alchemist : PlaceholderCharacterModel
 {
     public const string CharacterId = "Alchemist";
 
-    public static readonly Color Color = new("5D3FD3");
+    // Medium violet, matches DeckEntryCardColor; lighter than iris for
+    // readability on dark backgrounds, bluer than the Necrobinder's EE82EE
+    public static readonly Color Color = new("8D5DEF");
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Neutral;
