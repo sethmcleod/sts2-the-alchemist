@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using BaseLib.Config;
-using Godot;
 using Alchemist.AlchemistCode.Cards;
 using Alchemist.AlchemistCode.Epochs;
 using Alchemist.AlchemistCode.Potions;
 using Alchemist.AlchemistCode.Relics;
+using BaseLib.Config;
+using Godot;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Saves;
@@ -34,6 +34,10 @@ public class AlchemistModConfig : SimpleModConfig
 
     [ConfigSection("Economy")]
     [ConfigHoverTip]
+    public static bool UniversalPotionSelling { get; set; }
+
+    [ConfigSection("Economy")]
+    [ConfigHoverTip]
     [ConfigSlider(25.0, 100.0, 25.0, Format = "{0}%")]
     public static int PotionSellPercent { get; set; } = 100;
 
@@ -41,10 +45,6 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigHoverTip]
     [ConfigSlider(10.0, 50.0, 10.0, Format = "{0}%")]
     public static int BrewPotionChance { get; set; } = 30;
-
-    [ConfigSection("Economy")]
-    [ConfigHoverTip]
-    public static bool UniversalPotionSelling { get; set; }
 
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]
