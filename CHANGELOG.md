@@ -16,6 +16,11 @@ Security.
 ### Changed
 
 - Dropped the Brew-only potion chance from 30% -> 20%
+### Fixed
+
+- Fixed the Ancients repeating an out-of-date conversation, Past the last visit
+  written for the Alchemist, each Ancient now keeps its evergreen conversation
+
 ## [0.5.1] - 2026-07-24
 
 ### Changed
