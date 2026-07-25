@@ -13,6 +13,9 @@ Security.
 
 ## [Unreleased]
 
+### Changed
+
+- Dropped the Brew-only potion chance from 30% -> 20%
 ## [0.5.1] - 2026-07-24
 
 ### Changed
