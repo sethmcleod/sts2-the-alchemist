@@ -216,4 +216,11 @@ public abstract class AlchemistCard : ConstructedCardModel
         description.Add("FormulaHpLoss",
             IsMutable && FormulaHpLossPreview is { } hp ? $" ([red]{hp}[/red])" : "");
     }
+
+    // A live "(Hits N times.)" line for a card whose hit count comes from the combat state. Shown only on
+    // a mutable combat instance, and only when the count is known, so the compendium text stays clean
+    protected string HitsLine(int hits) =>
+        IsMutable && hits > 0
+            ? $"\n(Hits [green]{hits}[/green] {(hits == 1 ? "time" : "times")}.)"
+            : "";
 }

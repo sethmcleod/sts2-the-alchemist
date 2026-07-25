@@ -27,7 +27,7 @@ public class Spatter : AlchemistCard
             if (enemy == null) break;
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this, play)
-                .WithHitFx(HitVfx("vfx/vfx_slime_impact"), null, "dagger_throw.mp3")
+                .WithHitFx(HitVfx("vfx/vfx_attack_slash"), null, "dagger_throw.mp3")
                 .Targeting(enemy)
                 .Execute(choiceContext);
         }

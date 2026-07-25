@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cth6hqrhnllpj"
-path="res://.godot/imported/bloom.png-407cabea46de2cfcdc37a4515e5aeeac.ctex"
+uid="uid://2brh13noefaf"
+path="res://.godot/imported/percolate.png-bffc493e321606487c5bfbb242279078.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/bloom.png"
-dest_files=["res://.godot/imported/bloom.png-407cabea46de2cfcdc37a4515e5aeeac.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/percolate.png"
+dest_files=["res://.godot/imported/percolate.png-bffc493e321606487c5bfbb242279078.ctex"]
 
 [params]
 

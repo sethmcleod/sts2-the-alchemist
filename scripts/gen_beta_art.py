@@ -81,9 +81,9 @@ BAYER = [
 COLORS = {
     # Gambit: all-in attacks
     "Grind Down": ("#5f011f", "#b5a58c", "TR", "Gambit: all-in attacks"),
-    "Last Resort": ("#5f011f", "#c18c0f", "TR", "Gambit: all-in attacks"),
     "Neurotoxin": ("#5f011f", "#b3bd2a", "TR", "Gambit: all-in attacks"),
     # Cauterize (one-off)
+    "Overdose": ("#5f011f", "#c18c0f", "TR", "Unique"),
     "Cauterize": ("#3d0a02", "#e0d6c2", "TR", "Unique"),
     # Puncture (one-off)
     "Puncture": ("#0d1f3d", "#3d9ae8", "TR", "Unique"),
@@ -97,7 +97,6 @@ COLORS = {
     "Drip Feed": ("#5f011f", "#6f5bd6", "L", "Gambit: powers"),
     "Metabolism": ("#5f011f", "#d4776b", "L", "Gambit: powers"),
     # Poison attacks
-    "Double Dose": ("#650101", "#6b9201", "TR", "Poison attacks"),
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
     # Calculated attacks
@@ -169,7 +168,7 @@ COLORS = {
     "Sweat It Out": ("#4e8701", "#013161", "BR", "Poison skills"),
     "Waste Not": ("#4e8701", "#2f4f8f", "BR", "Poison skills"),
     # Poison powers: amplifiers
-    "Bloom": ("#071a02", "#59a610", "L", "Poison powers: amplifiers"),
+    "Bramble": ("#2b1a06", "#d9b45c", "R", "Unique"),
     "Heavy Hand": ("#071a02", "#8fc72a", "R", "Poison powers: amplifiers"),
     "Sepsis": ("#071a02", "#5aea23", "L", "Poison powers: amplifiers"),
     # Poison powers: retaliation
@@ -207,6 +206,7 @@ COLORS = {
     # Ichor (one-off)
     "Ichor": ("#240147", "#c9a86a", "TR", "Unique"),
     # Inoculate (one-off)
+    "Percolate": ("#0e2a45", "#7fd4c1", "BR", "Unique"),
     "Inoculate": ("#12384f", "#8fd0e8", "BR", "Unique"),
     # Strike (Basic)
     "Strike": ("#180209", "#942d2d", "BR", "Unique"),

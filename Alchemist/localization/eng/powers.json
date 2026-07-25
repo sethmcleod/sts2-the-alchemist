@@ -1,7 +1,4 @@
 {
-  "ALCHEMIST-BLOOM_POWER.description": "The first time you apply [gold]Poison[/gold] each turn, apply {Amount} additional [gold]Poison[/gold].",
-  "ALCHEMIST-BLOOM_POWER.smartDescription": "The first time you apply [gold]Poison[/gold] each turn, apply {Amount} additional [gold]Poison[/gold].",
-  "ALCHEMIST-BLOOM_POWER.title": "Bloom",
   "ALCHEMIST-BOTTLED_FURY_POWER.description": "Whenever you use a Potion, gain {Amount} [gold]Strength[/gold] and {Amount} [gold]Dexterity[/gold].",
   "ALCHEMIST-BOTTLED_FURY_POWER.smartDescription": "Whenever you use a Potion, gain {Amount} [gold]Strength[/gold] and {Amount} [gold]Dexterity[/gold].",
   "ALCHEMIST-BOTTLED_FURY_POWER.title": "Bottled Fury",
@@ -50,8 +47,8 @@
   "ALCHEMIST-REFLUX_POWER.description": "Whenever another player applies a debuff, apply {Amount} [gold]Poison[/gold] to that enemy.",
   "ALCHEMIST-REFLUX_POWER.smartDescription": "Whenever another player applies a debuff, apply {Amount} [gold]Poison[/gold] to that enemy.",
   "ALCHEMIST-REFLUX_POWER.title": "Reflux",
-  "ALCHEMIST-RESOLVE_POWER.description": "At the start of your turn, gain {Amount} [gold]Strength[/gold] for each 20 HP you are missing.",
-  "ALCHEMIST-RESOLVE_POWER.smartDescription": "At the start of your turn, gain {Amount} [gold]Strength[/gold] for each 20 HP you are missing.",
+  "ALCHEMIST-RESOLVE_POWER.description": "While at [blue]50%[/blue] or less HP, you have {Amount} additional [gold]Strength[/gold] and [gold]Dexterity[/gold].",
+  "ALCHEMIST-RESOLVE_POWER.smartDescription": "While at [blue]50%[/blue] or less HP, you have {Amount} additional [gold]Strength[/gold] and [gold]Dexterity[/gold].",
   "ALCHEMIST-RESOLVE_POWER.title": "Resolve",
   "ALCHEMIST-SECRETION_POWER.description": "Whenever you take unblocked Attack damage, apply {Amount} [gold]Poison[/gold] to the attacker.",
   "ALCHEMIST-SECRETION_POWER.smartDescription": "Whenever you take unblocked Attack damage, apply {Amount} [gold]Poison[/gold] to the attacker.",

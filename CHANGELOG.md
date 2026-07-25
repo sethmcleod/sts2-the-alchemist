@@ -13,13 +13,40 @@ Security.
 
 ## [Unreleased]
 
+### Added
+
+- Added Overdose card (Common Attack, cost 1): "Lose 4 HP. Deal 15 (20) damage."
+  Replaces Last Resort
+- Added Percolate card (Common Skill, cost 1): "At the start of your next turn,
+  draw 3 (4) additional cards." Replaces Double Dose
+
 ### Changed
 
-- Dropped the Brew-only potion chance from 30% -> 20%
+- Reworked Carapace card: base Block increased from 6 -> 10, and Block per turn
+  fermented changed from 6 (9) -> 4 (6)
+- Dropped the default Brew-only potion chance from 30% -> 20%
+- Nerfed Decant card: damage decreased from 5 (7) -> 3 (5)
+- Reworked Resolve card: "At the start of your turn, gain 1 Strength for each 20
+  HP you are missing." (cost 3 (2)) -> "While Gambit is active, you have 2 (3) additional
+  Strength and Dexterity." (cost 1). Like the Red Skull relic, the buff switches
+  on and off with your health bar, so fighting below half HP pays off
+- Reworked Bloom card and renamed it Bramble, because it read too close to Heavy
+  Hand: "The first time you apply Poison each turn, apply 2 (3) additional
+  Poison." -> "Gain 3 (4) Thorns. Gambit: Gain 2 additional Thorns." The first
+  Thorns card in the pool
+- Nerfed Overflow card: damage decreased from 4 (5) -> 3 (4)
+- Overflow, Fumigate and Fighting Spirits cards now show "(Hits N times.)" at the bottom
+  during combat, so the live hit count is clear before you play them
+
 ### Fixed
 
 - Fixed the Ancients repeating an out-of-date conversation, Past the last visit
   written for the Alchemist, each Ancient now keeps its evergreen conversation
+
+### Removed
+
+- Removed Last Resort card, replaced by Overdose
+- Removed Double Dose card, replaced by Percolate
 
 ## [0.5.1] - 2026-07-24
 

@@ -27,8 +27,8 @@ public class FightingSpirits : AlchemistCard
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
-        description.Add("PotionsUsed",
-            IsMutable && PotionsUsedThisCombat is var n and > 0 ? $" ([green]{n}[/green])" : "");
+        description.Add("HitsLine",
+            HitsLine(PotionsUsedThisCombat is var n and > 0 ? 1 + n : 0));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

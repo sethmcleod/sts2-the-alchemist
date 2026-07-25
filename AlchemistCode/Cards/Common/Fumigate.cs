@@ -19,12 +19,12 @@ public class Fumigate : AlchemistCard
 
     protected override bool ConditionalGlow => ExhaustCount > 0;
 
-    // Show the exhausted-card count in green, the same live parentheses Fighting Spirits uses
+    // The shared live hit-count line, at the bottom of the card like Overflow and Fighting Spirits
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
-        description.Add("ExhaustCards",
-            ExhaustCount is var n and > 0 ? $" (Hits [green]{1 + n}[/green] times)" : "");
+        description.Add("HitsLine",
+            HitsLine(ExhaustCount is var n and > 0 ? 1 + n : 0));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

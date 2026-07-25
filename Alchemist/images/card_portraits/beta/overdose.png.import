@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2brh13noefaf"
-path="res://.godot/imported/double_dose.png-1dcb7df21140c063dd9fd421ef25b80e.ctex"
+uid="uid://l8fopymgotoi"
+path="res://.godot/imported/overdose.png-47c6fb68e8628090cc69f865d34deeba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/double_dose.png"
-dest_files=["res://.godot/imported/double_dose.png-1dcb7df21140c063dd9fd421ef25b80e.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/overdose.png"
+dest_files=["res://.godot/imported/overdose.png-47c6fb68e8628090cc69f865d34deeba.ctex"]
 
 [params]
 

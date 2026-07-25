@@ -11,8 +11,8 @@ public class Carapace : AlchemistCard
 
     public Carapace() : base(2, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithCalculatedBlock(6, static (card, _) =>
-                (card.IsUpgraded ? 9m : 6m) * ((AlchemistCard)card).FermentTurns,
+        WithCalculatedBlock(10, static (card, _) =>
+                (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,
             ValueProp.Move, 0, 0);
         WithKeyword(CardKeyword.Retain);
     }

@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c58577ipsp60w"
-path="res://.godot/imported/bloom_power.png-a266c978d84635ca5a23b03c20d4a7b4.ctex"
+uid="uid://cth6hqrhnllpj"
+path="res://.godot/imported/bramble.png-f9f0a158fa2e9de3b2baaccb20a1f8bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/bloom_power.png"
-dest_files=["res://.godot/imported/bloom_power.png-a266c978d84635ca5a23b03c20d4a7b4.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/bramble.png"
+dest_files=["res://.godot/imported/bramble.png-f9f0a158fa2e9de3b2baaccb20a1f8bd.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=false
-compress/lossy_quality=0.7
+compress/high_quality=true
+compress/lossy_quality=1.0
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

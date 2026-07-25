@@ -10,7 +10,7 @@ public class Decant : AlchemistCard
 {
     public Decant() : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(5, 2);
+        WithDamage(3, 2);
         WithUpgradingCardTip<Distillate>();
     }
 
