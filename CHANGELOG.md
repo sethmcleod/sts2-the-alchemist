@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.5.2] - 2026-07-25
+
 ### Added
 
 - Added Overdose card: "Lose 4 HP. Deal 15 (20) damage. Gambit: Gain 2 Regen." Replaces Last Resort
