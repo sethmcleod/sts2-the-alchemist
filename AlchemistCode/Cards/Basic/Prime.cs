@@ -19,9 +19,8 @@ public class Prime : AlchemistCard, ITranscendenceCard
         WithTips(_ => Infusion.InfuseTips());
     }
 
-    // Prime is the Alchemist's transcendence starter. BaseLib reads this to build Archaic Tooth's upgrade
-    // map, which upgrades Prime into Aureate. Dusty Tome reads the same map to keep Aureate out of its
-    // Ancient pool, so Aureate can come only from Prime. This replaces a hand-rolled ArchaicTooth patch
+    // BaseLib reads this to build Archaic Tooth's upgrade map. Dusty Tome reads the same map to keep
+    // Aureate out of its Ancient pool, so Aureate can come only from Prime
     public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<Aureate>();
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

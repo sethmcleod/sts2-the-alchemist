@@ -4,11 +4,9 @@ using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// The placeholder character-select background needs the base game's particle textures.
-// A base-game reference bakes to null in a mod scene, and a C# script on the scene
-// root does not bind when the screen instantiates it. So these patches find the
-// instantiated background and load the resources at runtime. The scene is
-// Alchemist/scenes/screens/char_select/char_select_bg_alchemist.tscn
+// A base-game resource reference bakes to null in a mod scene, and a C# script on the scene root does not
+// bind when the screen instantiates it. So these patches find the instantiated background and load its
+// particle assets at runtime. The scene is Alchemist/scenes/screens/char_select/char_select_bg_alchemist.tscn
 [HarmonyPatch(typeof(NCharacterSelectScreen))]
 class CharSelectBgPatches
 {
@@ -51,8 +49,8 @@ class CharSelectBgPatches
             {
                 particles.Texture = glow;
                 particles.Material = additive;
-                // Pin the pulse phase to global engine time. The swirl shader computes the
-                // same phase from TIME, so its light masks breathe with the visible lights
+                // Pin the pulse phase to engine time. The swirl shader computes the same phase from
+                // TIME, so its light masks breathe with the visible lights
                 double now = Time.GetTicksMsec() / 1000.0;
                 particles.Preprocess = now % particles.Lifetime;
             }

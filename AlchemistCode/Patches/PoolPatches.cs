@@ -12,16 +12,14 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// This keeps Alchemist cards out of a run that has no Alchemist player. The mod content then cannot
-// appear in the cross-class rewards of another character. Kaleidoscope, Splash, Colorful Philosophers,
-// and Prismatic Gem all read UnlockState.CharacterCardPools. The mod config can turn this off. The
-// character select screen and the card library read UnlockState.Characters, so the Alchemist stays
-// visible there
+// Keeps Alchemist cards out of a run with no Alchemist player, so mod content cannot reach another
+// character's cross-class rewards. Kaleidoscope, Splash, Colorful Philosophers, and Prismatic Gem all read
+// UnlockState.CharacterCardPools. Character select and the card library read UnlockState.Characters
+// instead, so the Alchemist stays visible there
 [HarmonyPatch]
 public static class PoolPatches
 {
-    // Remove the cards only inside an active run that has no Alchemist player. Outside a run, this
-    // changes nothing, so the menus and the compendium stay correct
+    // Only inside an active run, so the menus and the compendium stay correct
     private static bool ShouldStrip()
     {
         if (!AlchemistModConfig.KeepPoolsSeparate) return false;
@@ -38,10 +36,9 @@ public static class PoolPatches
         __result = __result.Where(p => p is not AlchemistCards).ToList();
     }
 
-    // Kaleidoscope is offered at Neow only when you've unlocked every character's card pool
-    // (CharacterCardPools.Count() == AllCharacters.Count()). Since we removed our always-unlocked pool from
-    // that set, base characters would fall one short and lose Kaleidoscope, so recheck against the
-    // non-Alchemist count.
+    // Kaleidoscope is offered at Neow only when CharacterCardPools.Count() == AllCharacters.Count().
+    // Stripping our always-unlocked pool leaves base characters one short, so recheck against the
+    // non-Alchemist count
     [HarmonyPatch(typeof(Kaleidoscope), nameof(Kaleidoscope.IsAllowedAtNeow))]
     [HarmonyPostfix]
     private static void FixKaleidoscopeNeow(Player player, ref bool __result)

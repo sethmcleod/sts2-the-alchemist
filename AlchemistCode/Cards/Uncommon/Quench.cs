@@ -18,8 +18,7 @@ public class Quench : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.Draw(this, choiceContext);
-        // One InfuseChosen call with the full count. A second call would double-subscribe the
-        // selection events (see Infusion)
+        // One call with the full count. A second call double-subscribes the selection events
         await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, IsEnchanted ? 2 : 1);
     }
 }

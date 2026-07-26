@@ -1,8 +1,8 @@
 name: lint
 
-# Only the offline checks run here. `dotnet build` needs the game's sts2.dll, which comes
-# from a Steam install a public runner can't have, so compilation stays a local/preflight
-# gate (scripts/dev.sh release) rather than a CI one.
+# Only the offline checks run here. `dotnet build` needs the game's sts2.dll, which comes from a
+# Steam install that a public runner cannot have, so compilation stays a local gate in
+# scripts/dev.sh release rather than a CI one.
 
 on:
   push:

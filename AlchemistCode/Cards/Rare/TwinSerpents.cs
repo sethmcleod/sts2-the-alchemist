@@ -10,7 +10,7 @@ public class TwinSerpents : AlchemistCard
 {
     public TwinSerpents() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        // Must be WithEnergy, not WithVar, because the {Energy:energyIcons()} formatter rejects a plain DynamicVar
+        // WithEnergy, not WithVar: the {Energy:energyIcons()} formatter rejects a plain DynamicVar
         WithEnergy(1, 1);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(RegenPower));

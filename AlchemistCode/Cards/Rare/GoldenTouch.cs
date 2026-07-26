@@ -20,8 +20,8 @@ public class GoldenTouch : AlchemistCard
 
     internal override bool GainsEffectWhenEnchanted => true;
 
-    // The card discounts itself while Enchanted (the Sinter self-hook pattern). Its own power
-    // cannot help here, because the power exists only after the card is played
+    // The card discounts itself while Enchanted, the Sinter self-hook pattern. Its own power cannot do
+    // this, because the power exists only after the card is played
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
         modifiedCost = originalCost;

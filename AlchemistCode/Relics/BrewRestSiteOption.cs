@@ -16,8 +16,8 @@ namespace Alchemist.AlchemistCode.Relics;
 
 public sealed class BrewRestSiteOption : RestSiteOption
 {
-    // The potion-reward overlay does not hide the rest-site choice buttons. A vanilla option hides them.
-    // Therefore this code fades them out with the private screen of the room
+    // The potion-reward overlay leaves the rest-site choice buttons up, where a vanilla option hides
+    // them, so fade them out through the room's private screen
     private static readonly FieldInfo ChoicesScreenField =
         typeof(NRestSiteRoom).GetField("_choicesScreen", BindingFlags.NonPublic | BindingFlags.Instance)!;
 
@@ -66,9 +66,8 @@ public sealed class BrewRestSiteOption : RestSiteOption
         return true;
     }
 
-    // Brew-only potions are not in the potion pool, so the default reward can never roll them. A roll
-    // (30% by default, set by the Brew potion chance config) offers one of them instead, minus any the
-    // player already holds. Across the 3 to 7 Brews of a typical run, this shows at least one in most runs
+    // Brew-only potions are outside the potion pool, so the default reward can never roll them. This
+    // roll offers one instead, minus any the player already holds
     private PotionReward CreateBrewReward()
     {
         var rng = Owner.PlayerRng.Rewards;

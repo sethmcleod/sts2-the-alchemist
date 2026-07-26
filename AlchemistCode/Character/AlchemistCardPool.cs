@@ -13,7 +13,6 @@ public class AlchemistCardPool : CustomCardPoolModel
 {
     public override string Title => Alchemist.CharacterId; // Not a display name
 
-    // Cards unlocked by later epochs stay out of the pool until that epoch is revealed on the Timeline
     protected override IEnumerable<CardModel> FilterThroughEpochs(UnlockState unlockState, IEnumerable<CardModel> cards) =>
         cards.Where(c => EpochGating.CardUnlocked(c.Id, unlockState));
 
@@ -21,8 +20,8 @@ public class AlchemistCardPool : CustomCardPoolModel
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
 
 
-    // HSV recolors the red base frame; H is a hue rotation, not an absolute color.
-    // (Base refs: red 0.025, orange 0.12, green 0.32, blue 0.55, violet 0.85, pink 0.965.)
+    // H is a hue rotation of the red base frame, not an absolute color. Base refs: red 0.025,
+    // orange 0.12, green 0.32, blue 0.55, violet 0.85, pink 0.965
     public override float H => 0.75f;
     public override float S => 0.4f;
     public override float V => 0.8f;

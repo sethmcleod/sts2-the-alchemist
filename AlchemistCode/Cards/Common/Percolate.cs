@@ -15,7 +15,6 @@ public class Percolate : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // The base game's own next-turn draw counter, so it stacks and shows its own icon
         await PowerCmd.Apply<DrawCardsNextTurnPower>(choiceContext, Owner.Creature,
             DynamicVars["draw"].IntValue, Owner.Creature, this);
     }

@@ -6,27 +6,14 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// This makes the base game safe. It is not Alchemist-specific, so it is a good contribution to BaseLib.
+// An epoch from an uninstalled mod stays in progress.save, and the JSON load accepts it with only a
+// warning. The packet writer does not: WriteEpochId throws for any epoch whose mod is not loaded, and that
+// write sits inside CombatManager.EndCombatInternal, so the run locks up for good when the last enemy dies.
 //
-// An epoch from an uninstalled mod stays in progress.save. The JSON load accepts an unknown id and gives
-// only a warning. The game then puts that epoch into the unlock state of every run. The packet
-// serialization does not accept it. WriteEpochId calls ModelIdSerializationCache.GetNetIdForEpochId,
-// which throws for any epoch whose mod is not loaded.
-//
-// That write happens inside CombatManager.EndCombatInternal, which is the replay write. The exception
-// stops the combat teardown. The run then stops permanently when the last enemy dies.
-//
-// GetNetIdForEpochId has no Try* method to test an id first, unlike the category and entry maps.
-// Therefore remove the epochs that it cannot map before the writer reads the list. EpochModel.IsValid is
-// the correct test. It reads AllEpochIds, which comes from the same _allEpochs list that
-// ModelIdSerializationCache.Init() uses for its net id map. It accepts exactly what the writer can
-// encode. This includes mod epochs, because EpochRegistration adds to _allEpochs and clears the
-// AllEpochIds cache at load.
-//
-// The filtered list replaces the real list only for the write, then the code restores it. A disabled mod
-// therefore never costs the player any saved unlock progress. If you install the mod again, the epoch
-// returns. Only the temporary replay packet omits it. A Finalizer restores the list, not a Postfix, so
-// the real list returns even if Serialize throws for another reason
+// GetNetIdForEpochId has no Try* form to test an id first, so drop what it cannot map before the writer
+// reads the list. EpochModel.IsValid is the matching test: it reads the same _allEpochs list that builds
+// the net id map, mod epochs included. The swap is temporary, so a disabled mod costs no saved progress,
+// and a Finalizer restores the real list even if Serialize throws for another reason
 [HarmonyPatch(typeof(SerializableUnlockState), nameof(SerializableUnlockState.Serialize))]
 public static class UnlockStateSerializationPatches
 {

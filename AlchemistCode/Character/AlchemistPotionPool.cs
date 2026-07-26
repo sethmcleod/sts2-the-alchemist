@@ -18,9 +18,7 @@ public class AlchemistPotionPool : CustomPotionPoolModel
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
 
-    // Potions unlocked by later epochs stay out of the pool until that epoch is revealed on the Timeline.
-    // Brew-only potions stay out of the pool entirely, so no random generation, reward, or shop can
-    // produce them. BrewRestSiteOption offers them with its own weighted roll
+    // The IBrewOnly filter is what keeps a Brew-only potion away from every generation path
     public override IEnumerable<PotionModel> GetUnlockedPotions(UnlockState unlockState) =>
         AllPotions.Where(p => p is not IBrewOnly && EpochGating.PotionUnlocked(p.Id, unlockState));
 }

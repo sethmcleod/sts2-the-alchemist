@@ -6,13 +6,10 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// The stats screen builds one character section per base character with a
-// hardcoded list in LoadStats, so a mod character never renders without a
-// patch. This appends the Alchemist section. The section only appears once the
-// save has stats for the character, which matches the base-game behavior.
-// The duplicate guard follows RitsuLib's StatsScreenCharacterStatsPatch: a
-// generic library can add mod characters on its own, so skip the append when a
-// section for the Alchemist already exists
+// The stats screen builds its character sections from a hardcoded list in LoadStats, so a mod character
+// never renders without a patch. The section appears only once the save has stats for the character, which
+// matches the base game. The duplicate guard follows RitsuLib's StatsScreenCharacterStatsPatch, since a
+// generic library can add mod characters on its own
 [HarmonyPatch(typeof(NGeneralStatsGrid), nameof(NGeneralStatsGrid.LoadStats))]
 class StatsPagePatches
 {
@@ -42,9 +39,8 @@ class StatsPagePatches
     {
         foreach (var child in container.GetChildren())
         {
-            // LoadStats clears the container with QueueFree, so on a reopen the
-            // sections from the previous open are still children until the end
-            // of the frame. Those do not count as a duplicate
+            // LoadStats clears the container with QueueFree, so on a reopen the previous sections are
+            // still children until the end of the frame. Those do not count as a duplicate
             if (child is NCharacterStats section && !section.IsQueuedForDeletion()
                 && StatsRef(section)?.Id == id)
                 return true;

@@ -6,13 +6,12 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace Alchemist.AlchemistCode.Epochs;
 
-// This gates the cards, relics, and potions of each epoch. The player must first reveal that epoch on
-// the Timeline. This mirrors how a base-game character unlocks content. Content with no epoch is always
-// available. If the mod config disables the epoch system, this gates nothing
+// Holds the cards, relics, and potions of each epoch back until the player reveals that epoch on the
+// Timeline, the way a base-game character unlocks content. Content with no epoch is always available
 public static class EpochGating
 {
-    // Gated content id -> "is this content's epoch revealed?". Ungated content is absent from the maps.
-    // All three build in one pass, so one reference write publishes the finished set
+    // Gated content id -> "is this content's epoch revealed?". Ungated content is absent from the maps,
+    // and all three build in one pass, so a single reference write publishes the finished set
     private sealed record Gates(
         Dictionary<ModelId, Func<UnlockState, bool>> Cards,
         Dictionary<ModelId, Func<UnlockState, bool>> Relics,
@@ -20,7 +19,7 @@ public static class EpochGating
 
     private static Gates? _gates;
 
-    // One reveal predicate per content epoch. Compile-time generics work for our registered custom epochs.
+    // IsEpochRevealed is generic, so each epoch needs its own compile-time predicate
     private static readonly (Type Epoch, Func<UnlockState, bool> Revealed)[] Revealers =
     {
         (typeof(Alchemist2Epoch), us => us.IsEpochRevealed<Alchemist2Epoch>()),

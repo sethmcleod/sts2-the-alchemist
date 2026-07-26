@@ -20,8 +20,8 @@ public class Overdose : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Read Gambit before the HP loss. Otherwise this card's own cost could push you under the
-        // line and pay you for it, which would make the Regen unconditional in practice
+        // Read Gambit before the HP loss, or the card's own cost could push you under the line and pay
+        // you for it, making the Regen unconditional in practice
         var gambit = IsReduced;
         await LoseHp(choiceContext, DynamicVars["hpLoss"].IntValue);
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_blunt")).Execute(choiceContext);

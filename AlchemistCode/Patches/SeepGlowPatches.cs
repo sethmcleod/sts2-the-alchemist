@@ -6,9 +6,8 @@ using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// The base game hand glow has three colors, all fixed in NHandCardHolder.UpdateCard: cyan for a playable
-// card, gold for a card with a bonus now, and red for a warning. A Seep card needs the opposite message of
-// gold, "leave this in hand", so it gets a fourth color, a deep green
+// The base game hand glow has three colors, all fixed in NHandCardHolder.UpdateCard: cyan playable, gold
+// bonus now, red warning. Seep needs the opposite message to gold, "leave this in hand", so it gets a fourth
 public static class SeepGlow
 {
     public static readonly Color Color = new(0.157f, 0.55f, 0.071f, 0.98f);
@@ -27,9 +26,8 @@ public static class SeepGlow
     }
 }
 
-// Paint after the base method, so the green replaces the color it chose. AnimShow also covers the card
-// that the player cannot pay for: Seep does not care about energy, and that card is the one most likely
-// to stay in hand, so it glows where the base game shows nothing
+// A postfix, so the green replaces whatever color the base method chose. AnimShow also covers the card the
+// player cannot pay for, which Seep does not care about and which is the likeliest to stay in hand
 [HarmonyPatch(typeof(NHandCardHolder), nameof(NHandCardHolder.UpdateCard))]
 public static class SeepGlowUpdateCardPatch
 {

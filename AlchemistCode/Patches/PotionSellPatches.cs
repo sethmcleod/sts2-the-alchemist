@@ -56,12 +56,10 @@ public static class PotionSellPatches
         return owner.RunState.CurrentRoom is MerchantRoom;
     }
 
-    // The sell price comes from the rarity, with no exceptions. A Brew-only potion carries Event rarity,
-    // so it sells for the Event price like Ambergris and Glowwater
+    // Price comes from rarity with no exceptions, so a Brew-only potion sells at the Event price
     private static int GetGoldFor(PotionModel potion)
     {
         var basePrice = GetGoldForRarity(potion.Rarity);
-        // The config slider scales the rarity-based price; 100 leaves it unchanged
         return basePrice * AlchemistModConfig.PotionSellPercent / 100;
     }
 
@@ -72,8 +70,7 @@ public static class PotionSellPatches
             PotionRarity.Common => 50,
             PotionRarity.Uncommon => 75,
             PotionRarity.Rare => 100,
-            // Event potions come only from events, so they are the hardest to replace: Ambergris and
-            // Glowwater. The Brew-only potions above never reach this line
+            // Event potions come only from events, so they are the hardest to replace
             PotionRarity.Event => 150,
             _ => 50
         };
@@ -195,8 +192,8 @@ public static class PotionSellPatches
         }
     }
 
-    // Atlas-safe outline: stack dark copies of the sprite behind it, offset in 8 directions. ShowBehindParent
-    // keeps them under the coin, and the badge's Modulate (its fade) cascades to these children automatically
+    // Atlas-safe outline: stacked dark copies rather than a shader. ShowBehindParent keeps them under the
+    // coin, and the badge's own fade cascades to them
     private static void AddOutline(TextureRect badge, float width)
     {
         Vector2[] dirs =
@@ -311,9 +308,8 @@ public static class PotionSellPatches
         }
     }
 
-    // Tint that tooltip gold. The base game tints only debuffs red, and it swaps the %Bg material to do
-    // this. Use the same method with a gold hue-shift material. The text-tip controls map 1:1, in order,
-    // to the HoverTips
+    // The base game tints only debuffs, red, by swapping the %Bg material. Same method, gold material.
+    // The text-tip controls map 1:1 and in order to the HoverTips
     [HarmonyPatch(typeof(NHoverTipSet), "Init")]
     public static class SellableTipGoldTintPatch
     {
@@ -321,8 +317,7 @@ public static class PotionSellPatches
             AccessTools.Field(typeof(NHoverTipSet), "_textHoverTipContainer");
         private static ShaderMaterial? _goldMaterial;
 
-        // Reuse the hue-shift shader of the base game, which mounts at runtime. Build the material in
-        // code, so the mod does not ship a .tres file or a shader. The h, s, and v values set the gold tint
+        // Built in code against the base game's own hue-shift shader, so the mod ships no .tres or shader
         private static ShaderMaterial GoldMaterial()
         {
             if (_goldMaterial != null) return _goldMaterial;

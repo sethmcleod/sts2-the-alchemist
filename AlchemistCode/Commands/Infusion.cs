@@ -15,12 +15,11 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Commands;
 
-// Infuse enchants a card until the end of combat. An enchantment is run-permanent by default. This
-// class tracks the infused cards, and Patches.InfusionCombatEndPatch clears them at combat end.
-// Each Infuse adds 1 to the enchantment amount. A second Infuse on the same card stacks that amount
+// Infuse enchants a card until the end of combat, but an enchantment is run-permanent by default. So this
+// class tracks the infused cards and Patches.InfusionCombatEndPatch clears them at combat end
 public static class Infusion
 {
-    // The enchantment applied for each card type; null for types that get the Ethereal keyword instead
+    // Null for the types that take the Ethereal keyword instead
     private static Type? EnchantTypeFor(CardModel card) => card.Type switch
     {
         CardType.Attack => typeof(Laced),
@@ -29,31 +28,27 @@ public static class Infusion
         _ => null,
     };
 
-    // Exact-count prompt ("Choose a card"/"Choose 2 cards"); the range prompt ("Choose up to N cards") is used
-    // when the player may pick fewer than the max. CardSelectorPrefs injects {Amount}/{MinCount}/{MaxCount}.
-    // The unbounded prompt ("Choose cards") prints no count, because an unbounded max is a sentinel number
+    // CardSelectorPrefs injects {Amount}, {MinCount}, and {MaxCount}. The unbounded prompt prints no
+    // count, because AnyNumber would render as-is
     private static LocString SelectPrompt => new("card_keywords", "ALCHEMIST-INFUSE.selectionPrompt");
     private static LocString SelectPromptRange => new("card_keywords", "ALCHEMIST-INFUSE.selectionPromptRange");
     private static LocString SelectPromptAny => new("card_keywords", "ALCHEMIST-INFUSE.selectionPromptAny");
 
     private static readonly HashSet<CardModel> Infused = new();
 
-    // A Curse gets Ethereal as a keyword. A clear of the enchantment does not remove a keyword. Record
-    // only the cards that got Ethereal here, and remove it at combat end
+    // Clearing an enchantment does not remove a keyword, so track the cards that took Ethereal separately
     private static readonly HashSet<CardModel> AddedEthereal = new();
 
-    // The distinct cards that any source enchanted in the current combat. The shared CardCmd.Enchant hook
-    // records them, so the Masterwork threshold also counts enchantments from other mods, not only Infuse
+    // Fed by the shared CardCmd.Enchant hook, so the Masterwork threshold counts enchantments from other
+    // mods too, not Infuse alone
     private static readonly HashSet<CardModel> EnchantedThisCombat = new();
 
-    // The amount of each enchantment that one Infuse grants. The tips and the enchant use these same constants,
-    // and FromEnchantment defaults to 1, so a tip that does not pass one of these goes stale in silence
+    // The tips and the enchant share these, and FromEnchantment defaults to 1, so a tip that does not
+    // pass one goes stale in silence
     private const int LacedAmount = 2;
     private const int FumingAmount = 1;
     private const int ExaltedAmount = 1;
 
-    // The Infuse keyword tip, plus one tip for each enchantment that Infuse can grant, each at the
-    // amount that one Infuse gives
     public static IEnumerable<IHoverTip> InfuseTips() =>
         new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
             .Concat(HoverTipFactory.FromEnchantment<Laced>(LacedAmount).Take(1))
@@ -64,13 +59,9 @@ public static class Infusion
 
     public static int EnchantedThisCombatCount(Player owner) => EnchantedThisCombat.Count(c => c.Owner == owner);
 
-    // True when infusing this card would add a NEW card to the combat enchant tally. Masterwork counts the
-    // distinct cards Enchanted this combat, so a re-infuse of a card already counted adds nothing to it
+    // Masterwork counts distinct cards, so a re-infuse of one already counted adds nothing to its tally
     public static bool WouldNewlyEnchant(CardModel card) => CanInfuse(card) && !EnchantedThisCombat.Contains(card);
 
-    // A card is infusable if it takes the Ethereal keyword. It is also infusable if the enchantment for
-    // its type stacks cleanly, that is the card has no enchantment or already has the same one. A second
-    // Infuse on the same card increases the amount
     public static bool CanInfuse(CardModel card)
     {
         if (card.Type is CardType.Curse or CardType.Status or CardType.Quest)
@@ -79,16 +70,12 @@ public static class Infusion
         return card.Enchantment == null || card.Enchantment.GetType() == type;
     }
 
-    // Glow the Infuse selection gold for cards that gain an effect from being Enchanted, so the player sees
-    // the best targets. CanInfuse keeps it to cards that can actually be picked. Hand selection only, because
-    // CardSelectorPrefs.ShouldGlowGold applies to the hand
+    // Marks the best Infuse targets. Hand only, because CardSelectorPrefs.ShouldGlowGold applies to the hand
     private static bool ShouldGlowInfuse(CardModel card) =>
         AlchemistModConfig.ShowHandGlows && card is AlchemistCard { GainsEffectWhenEnchanted: true } && CanInfuse(card);
 
-    // True when a fixed-count hand selection (min == max, so no manual confirmation) resolves with no screen,
-    // because no more cards match the filter than the count. The player then sees no screen, so the caller
-    // previews the result to make the automatic pick visible. This is the base game behavior for an upgraded
-    // card from Armaments, where CardCmd.Upgrade previews the chosen card even when the pick auto-resolves
+    // A fixed-count selection resolves with no screen when no more cards match than the count. The caller
+    // then previews the result, as the base game does for an Armaments upgrade that auto-resolves
     internal static bool HandSelectIsAutomatic(Player owner, Func<CardModel, bool> filter, int min, int max)
     {
         if (min != max) return false;
@@ -99,7 +86,7 @@ public static class Infusion
     public static Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile, int count) =>
         InfuseChosen(ctx, source, pile, count, count);
 
-    // For a non-card source, for example a potion. Hand only, because a potion has no pile of its own
+    // For a non-card source such as a potion, which has no pile of its own
     public static async Task InfuseChosenFromHand(PlayerChoiceContext ctx, AbstractModel source, Player owner,
         int min, int max)
     {
@@ -111,20 +98,17 @@ public static class Infusion
         var picks = (await CardSelectCmd.FromHand(ctx, owner, prefs, CanInfuse, source)).ToList();
         foreach (var card in picks)
             Infuse(card);
-        // No screen was shown, so preview the infused cards to make the automatic infuse visible
+        // No screen was shown, so preview the picks to make the automatic infuse visible
         if (autoResolved && picks.Count > 0)
             CardCmd.Preview(picks);
     }
 
-    // min/max lets the player choose how many to infuse: "up to N" (0..N) or "any number"
-    // (0..AlchemistCard.AnyNumber)
     public static async Task InfuseChosen(PlayerChoiceContext ctx, AlchemistCard source, PileType pile,
         int min, int max)
     {
         var prompt = max >= AlchemistCard.AnyNumber ? SelectPromptAny
             : min == max ? SelectPrompt
             : SelectPromptRange;
-        // An automatic hand infuse shows no screen, so it needs a preview too, the same as a hidden pile
         var autoResolved = pile == PileType.Hand && HandSelectIsAutomatic(source.Owner, CanInfuse, min, max);
         var prefs = new CardSelectorPrefs(prompt, min, max) { ShouldGlowGold = ShouldGlowInfuse };
         var picks = (pile == PileType.Hand
@@ -133,8 +117,8 @@ public static class Infusion
             .ToList();
         foreach (var card in picks)
             Infuse(card);
-        // Draw and discard picks are off screen. A hand pick is on screen, but an automatic one showed no
-        // selection screen, so preview it too. A manual hand pick already showed the player the card
+        // Draw and discard picks happen off screen, and an automatic hand pick shows no screen. Only a
+        // manual hand pick has already shown the player the card
         if (picks.Count > 0 && (pile is PileType.Draw or PileType.Discard || autoResolved))
             CardCmd.Preview(picks);
     }
@@ -183,7 +167,6 @@ public static class Infusion
         }
     }
 
-    // Enchant adds `amount` to the enchantment. It stacks if the card already has the same one
     private static void TryEnchant<T>(CardModel card, int amount) where T : EnchantmentModel
     {
         if (!ModelDb.Enchantment<T>().CanEnchant(card)) return;

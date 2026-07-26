@@ -6,8 +6,8 @@ using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 
 namespace Alchemist.AlchemistCode.Character;
 
-// These energy-counter particles wire themselves. A base-game resource reference becomes null in a mod
-// scene. This class collects the GpuParticles2D children and loads their textures and materials at runtime
+// A base-game resource reference bakes to null in a mod scene, so these energy-counter particles wire
+// themselves: collect the GpuParticles2D children and load their textures and materials at runtime
 [GlobalClass]
 public partial class AlchemistParticles : NParticlesContainer
 {

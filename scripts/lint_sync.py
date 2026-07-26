@@ -39,9 +39,8 @@ SPECIAL_CLASS = {"Strike": "StrikeAlchemist", "Defend": "DefendAlchemist"}
 # StringExtensions.cs). If a rename does not include the images, no class uses them.
 # entity label -> (code subdir, base marker, [(variant label, image dir, filename template)])
 ASSET_SPECS = [
-    # cards use the base game layout: the real portrait is card_portraits/<s>.png and the beta placeholder
-    # is card_portraits/beta/<s>.png (see CardImageOrBetaPath). check_assets accepts either. card.png is the
-    # generic fallback, so it is exempt below
+    # cards use the base game layout: the real portrait is card_portraits/<s>.png and the beta
+    # placeholder is card_portraits/beta/<s>.png, and check_assets accepts either
     ("card", "Cards", "Card", [("portrait", "card_portraits", "{s}.png")]),
     ("power", "Powers", "Power", [("packed", "powers", "{s}.png"),
                                   ("big", "powers/big", "{s}.png")]),

@@ -8,9 +8,9 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Grants real Strength and Dexterity while you sit at or below half HP, and takes them back when you heal
-// past it. This follows the base game's RedSkull relic: apply a negative amount to remove, and keep a
-// record of what is granted. The record is an amount, not a flag, so a second Resolve stacks cleanly
+// Follows the base game's RedSkull relic: grant real Strength and Dexterity, apply a negative amount to
+// take them back, and keep a record of what was granted. That record is an amount, not a flag, so a
+// second Resolve stacks cleanly
 public class ResolvePower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
@@ -28,7 +28,7 @@ public class ResolvePower : AlchemistPower
         if (creature == Owner) await Sync();
     }
 
-    // Our own stack can grow, for example a second copy of the card. Re-sync on that change only
+    // Our own stack can grow, for example from a second copy of the card, so re-sync on that change
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {

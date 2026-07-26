@@ -6,8 +6,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Marker power: FesterPoisonTriggerPatch folds Amount into PoisonPower.TriggerCount, so the game's
-// own poison logic drives the extra ticks (and the lethal-HP prediction). Removed at end of turn
+// A marker only: FesterPoisonTriggerPatch folds Amount into PoisonPower.TriggerCount, so the game's own
+// poison logic drives both the extra ticks and the lethal-HP prediction
 public class FesterPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Debuff;

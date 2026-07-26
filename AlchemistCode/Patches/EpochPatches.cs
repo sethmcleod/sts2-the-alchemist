@@ -99,14 +99,13 @@ public static class EpochPatches
             AwardPostRun(__instance, EpochModel.Get<Alchemist1Epoch>(), serializablePlayer, serializableRun);
     }
 
-    // On a player's first Alchemist run, an Act boss kill awards Alchemist2..4 mid-run through
-    // AwardActEpoch, but the root Alchemist1 epoch is only awarded post-run. So at award time the child is
-    // Obtained while its parent is not, and vanilla GetRevealableEpochs, a BFS from NeowEpoch that needs
-    // each parent obtained, does not reach it. TryObtainEpochInternal then logs a warning and fires a
-    // Sentry capture on that guaranteed first-run path. Union our own obtained epochs into the result so
-    // the check passes. This self-heals after the first run, once Alchemist1 is obtained. It is scoped to
-    // our obtained epochs, so the other callers of GetRevealableEpochs see no unearned epoch. This mirrors
-    // RitsuLib's ProgressSaveManagerGetRevealableEpochsModTemplatePatch
+    // On a first Alchemist run an Act boss awards Alchemist2..4 mid-run, but the root Alchemist1 only lands
+    // post-run, so the child is Obtained while its parent is not. Vanilla GetRevealableEpochs is a BFS from
+    // NeowEpoch that needs each parent obtained, so it never reaches the child, and TryObtainEpochInternal
+    // then logs a warning and fires a Sentry capture on that guaranteed path. Union in our own obtained
+    // epochs so the check passes. Scoped to ours, so no other caller sees an unearned epoch, and it
+    // self-heals once Alchemist1 is obtained. Mirrors RitsuLib's
+    // ProgressSaveManagerGetRevealableEpochsModTemplatePatch
     [HarmonyPatch(typeof(ProgressSaveManager), nameof(ProgressSaveManager.GetRevealableEpochs))]
     [HarmonyPostfix]
     private static void RevealObtainedAlchemistEpochs(ProgressSaveManager __instance, ref IEnumerable<SerializableEpoch> __result)
@@ -184,10 +183,9 @@ public static class EpochPatches
             __result = __result.Append(ch1).ToArray();
     }
 
-    // If the Timeline feature is off, remove our epochs from every slot batch. They then do not appear
-    // on the Timeline. Both the full rebuild and the reveal animations use this method. This does not
-    // change the saved epoch states, so the previous progress returns when you turn the feature on
-    // again. This prefix runs before the async body reads the list
+    // With the Timeline feature off, strip our epochs from every slot batch so they do not render. The
+    // saved epoch states are untouched, so progress returns when the feature is turned back on. A prefix,
+    // because the async body reads the list
     [HarmonyPatch(typeof(NTimelineScreen), "AddEpochSlots")]
     [HarmonyPrefix]
     private static void HideAlchemistEpochsWhenDisabled(List<EpochSlotData> slotsToAdd)

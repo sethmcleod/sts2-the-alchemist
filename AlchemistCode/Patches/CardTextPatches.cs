@@ -7,9 +7,8 @@ using Alchemist.AlchemistCode.Cards;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// Join the standalone "Retain." line of a Ferment card to the next Ferment line. The patch resolves the
-// method by name and parameter count, so it never references the internal DescriptionPreviewType, which
-// a typeof cannot reach
+// Join the standalone "Retain." line of a Ferment card to the next line. TargetMethod resolves by name and
+// parameter count to avoid naming the internal DescriptionPreviewType, which a typeof cannot reach
 [HarmonyPatch]
 public static class FermentInlineRetainPatch
 {

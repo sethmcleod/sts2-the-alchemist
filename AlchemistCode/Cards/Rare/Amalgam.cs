@@ -12,10 +12,9 @@ public class Amalgam : AlchemistCard
     protected override bool HasEnergyCostX => true;
     protected override bool IsFermentCard => true;
 
-    // The description shows the effective X as "X+N" next to each X. N is the turns fermented, plus 1 when
-    // upgraded, so it climbs each turn in tandem with the effect. The loc feeds these two strings into the
-    // IfUpgraded branches: the upgraded branch always has at least +1, the base branch hides at +0. The
-    // upgrade preview renders the upgraded branch in green, where FermentTurns is 0, so it shows "+1"
+    // The loc feeds these two strings into its IfUpgraded branches, so the upgraded branch always carries
+    // at least +1 and the base branch hides at +0. The upgrade preview renders the upgraded branch with
+    // FermentTurns still 0, which is what shows the player "+1"
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);

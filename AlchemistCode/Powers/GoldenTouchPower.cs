@@ -15,7 +15,6 @@ public class GoldenTouchPower : AlchemistPower
     {
         modifiedCost = originalCost;
         if (card.Enchantment == null || originalCost <= 0) return false;
-        // Each stack reduces the cost by 1, never below 0
         modifiedCost = Math.Max(0, originalCost - Amount);
         return true;
     }

@@ -58,7 +58,6 @@ public partial class MainFile : Node
 
         try
         {
-            // Preview Delayed Reaction's pending damage on the enemy health bar
             HealthBarForecastRegistry.Register<Powers.DelayedReactionForecast>(ModId, "delayed_reaction");
         }
         catch (System.Exception e)
@@ -69,10 +68,9 @@ public partial class MainFile : Node
         ModConfigRegistry.Register("The Alchemist", new AlchemistModConfig());
     }
 
-    // A Brew-only potion is kept out of the Alchemist potion pool so that nothing can generate it.
-    // That also makes UnlockState.Potions miss it, and the compendium then shows it as Locked.
-    // EventPotionPool is the pool the base game uses for a potion that is obtainable but never
-    // generated, such as Ambergris. No generation path reads it. See IBrewOnly
+    // A Brew-only potion is out of the Alchemist pool so nothing can generate it, which also makes
+    // UnlockState.Potions miss it and the compendium show it as Locked. EventPotionPool is what the base
+    // game uses for a potion that is obtainable but never generated, such as Ambergris. See IBrewOnly
     private static void RegisterBrewOnlyPotions()
     {
         foreach (var type in AccessTools.GetTypesFromAssembly(Assembly.GetExecutingAssembly()))

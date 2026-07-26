@@ -63,8 +63,8 @@ public static class EpochRegistration
             .Where(e => e.UnlockKind == kind)
             .Select(e => e.Id);
 
-    // Collision-free placement: scan the cells occupied by every other registered epoch and take free ones.
-    // Done lazily so all mods have registered into _allEpochs first; cached for the session
+    // Placement scans the cells every other registered epoch occupies and takes free ones. Done lazily so
+    // that all mods have registered into _allEpochs first, then cached for the session
     private static readonly EpochEra[] PreferredEras =
     {
         EpochEra.Invitation2, EpochEra.Invitation3, EpochEra.Invitation4,

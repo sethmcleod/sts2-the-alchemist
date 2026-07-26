@@ -8,13 +8,11 @@ namespace Alchemist.AlchemistCode.Patches;
 
 // Two fixes to the dialogue the base game picks for the Alchemist:
 //
-// 1. Base GetValidDialogues returns the shared "firstVisitEver" scene when totalVisits == 0, which
-//    preempts our character-specific dialogue. Prefer our own dialogue for this visit.
-// 2. Past the last visit we wrote, the base method finds no VisitIndex match, and its repeating pool
-//    is empty for us: BaseLib builds our dialogues from loc keys and cannot mark one IsRepeating. The
-//    Architect also forbids the character-agnostic pool. That left a veteran Alchemist with an empty
-//    set, and Rng.NextItem returns null on empty. Reuse our last written visit instead, so the
-//    evergreen conversation carries every later win
+// 1. GetValidDialogues returns the shared "firstVisitEver" scene at totalVisits == 0, preempting our
+//    character-specific dialogue.
+// 2. Past the last visit we wrote there is no VisitIndex match, and our repeating pool is empty: BaseLib
+//    builds our dialogues from loc keys and cannot mark one IsRepeating, and the Architect forbids the
+//    character-agnostic pool. Rng.NextItem returns null on empty, so reuse the last written visit
 [HarmonyPatch(typeof(AncientDialogueSet), nameof(AncientDialogueSet.GetValidDialogues))]
 public static class AncientFirstMeetingPatch
 {

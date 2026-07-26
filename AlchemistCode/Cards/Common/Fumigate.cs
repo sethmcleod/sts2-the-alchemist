@@ -19,7 +19,6 @@ public class Fumigate : AlchemistCard
 
     protected override bool ConditionalGlow => ExhaustCount > 0;
 
-    // The shared live hit-count line, at the bottom of the card like Overflow and Fighting Spirits
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);

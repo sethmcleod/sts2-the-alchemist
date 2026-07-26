@@ -18,11 +18,11 @@ public class Refine : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // One card takes both effects. The filter accepts a card that either half can improve, so
-        // the pick is never dead: an already upgraded card can still take the Infuses
+        // Either half is enough, so the pick is never dead: an already upgraded card can still take
+        // the Infuses
         bool Selectable(CardModel c) => c.IsUpgradable || Infusion.CanInfuse(c);
-        // One infusable card in hand resolves with no selection screen. The infuse alone is a quiet icon, so
-        // preview the card in that case, unless the upgrade branch already previews it (see below)
+        // A lone match resolves with no selection screen, and an infuse alone is a quiet icon, so that
+        // case needs a preview unless the upgrade below already gives one
         var autoResolved = Infusion.HandSelectIsAutomatic(Owner, Selectable, 1, 1);
         var picked = (await CardSelectCmd.FromHand(choiceContext, Owner,
             new CardSelectorPrefs(SelectionScreenPrompt, 1), Selectable, this)).FirstOrDefault();
@@ -32,7 +32,7 @@ public class Refine : AlchemistCard
             CardCmd.Upgrade(picked); // this previews the card on screen
         for (var i = 0; i < DynamicVars["times"].IntValue; i++)
             Infusion.Infuse(picked);
-        // Preview only when the upgrade did not already, so the automatic pick shows without a double popup
+        // Only when the upgrade did not already, so the pick shows without a double popup
         if (autoResolved && !upgraded)
             CardCmd.Preview(picked);
     }

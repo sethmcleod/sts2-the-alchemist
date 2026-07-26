@@ -8,7 +8,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Resolve : AlchemistCard
 {
-    // The gold glow marks the turns the aura is live, the same signal the Gambit attacks use
+    // Not for a bonus, but so the gold glow marks the turns the aura is live
     protected override bool IsGambitCard => true;
 
     public Resolve() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)

@@ -16,7 +16,6 @@ public class Overflow : AlchemistCard
         ExplainNumber(DynamicVars.Damage, "ALCHEMIST-OVERFLOW");
     }
 
-    // The hit count is your Regen, which the card spends. Show it live at the bottom of the card
     private int RegenNow => IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<RegenPower>() : 0;
 
     protected override void AddExtraArgsToDescription(LocString description)

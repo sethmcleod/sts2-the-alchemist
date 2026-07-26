@@ -7,15 +7,14 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Enchantments;
 
-// Skill enchantment: when the enchanted card is played, add X Foul Vapors into your Hand
 public sealed class Fuming : AlchemistEnchantment
 {
     protected override string IconName => "fuming";
 
     public override bool CanEnchantCardType(CardType cardType) => cardType == CardType.Skill;
 
-    // A nested FoulVapor tip lets a card with Fuming explain what it adds. Take(1) in InfuseTips removes
-    // this tip, which keeps the tooltip of the source card short
+    // Lets a card with Fuming explain what it adds. Take(1) in InfuseTips drops this nested tip again,
+    // which keeps the source card's own tooltip short
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromCard<FoulVapor>() };
 

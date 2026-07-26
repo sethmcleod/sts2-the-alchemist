@@ -15,9 +15,8 @@ public class Spatter : AlchemistCard
         WithPower<PoisonPower>(2, 0);
     }
 
-    // The many small hits make this a strong Laced target: each unblocked hit then applies the Poison. The
-    // card does not apply its own per-hit Poison, which would also make each hit trigger a Poison-on-apply
-    // effect, such as Sediment, a second time
+    // Deliberately no per-hit Poison of its own: that would trigger a Poison-on-apply effect such as
+    // Sediment once per hit. The many small hits already make this a strong Laced target
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;

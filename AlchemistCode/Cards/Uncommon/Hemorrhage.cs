@@ -14,13 +14,12 @@ public class Hemorrhage : AlchemistCard
         WithTip(typeof(RegenPower));
     }
 
-    // Single source of truth for the on-card preview and the real hit. You lose your Regen as HP, then deal
-    // double that much, after enchant multipliers
+    // Shared by the on-card preview and the real hit, so the two cannot drift apart
     private int RawDamageFor(int regen) => regen * 2;
 
     private int DamageFor(int regen) => ApplyEnchantDamage(RawDamageFor(regen));
 
-    // The raw total. AlchemistCard runs the enchantment hooks and the global damage hooks on it
+    // Raw, because AlchemistCard runs the enchantment and global damage hooks on it
     protected override int? RawFormulaDamagePreview
     {
         get

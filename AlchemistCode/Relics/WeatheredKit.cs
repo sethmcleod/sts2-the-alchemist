@@ -13,7 +13,7 @@ public class WeatheredKit : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
 
-    // Required for the custom starter upgrade (Touch of Orobas); without it BaseLib falls back to Circlet
+    // Without this, BaseLib falls back to Circlet for the Touch of Orobas starter upgrade
     public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<GildedKit>();
 
     public override async Task AfterPotionUsed(PotionModel potion, Creature? target)

@@ -22,7 +22,6 @@ public class UnstableCompound : AlchemistCard
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_rock_shatter"), tmpSfx: "heavy_attack.mp3").Execute(choiceContext);
     }
 
-    // The mixture degrades in your hand: each held turn adds a base-game Toxic status
     protected override async Task OnSeep(PlayerChoiceContext choiceContext)
     {
         if (CombatState is not { } combat) return;

@@ -8,17 +8,12 @@ using MegaCrit.Sts2.Core.Saves;
 namespace Alchemist.AlchemistCode.Patches;
 
 // These guards keep the run-save menu screens usable when a save names a model id that ModelDb cannot
-// resolve. The Alchemist card list changes between versions, so an old run in the history can name a card
-// that a later version renamed or removed. The base game reads that id through ModelDb.GetById, which throws
-// ModelNotFoundException. Without a guard the throw propagates and the screen locks. Both guards run only
-// while this mod is loaded, so they protect the player against any absent content, not the Alchemist alone.
-// Neither guard is Alchemist-specific, so both are good contributions to BaseLib. See
-// UnlockStateSerializationPatches for the same idea on the combat replay writer. The pattern follows
-// RitsuLib's missing-content menu guards
+// resolve, such as a card a later version renamed or removed. GetById throws ModelNotFoundException, and
+// without a guard the throw propagates and the screen locks. Neither guard is Alchemist-specific: while
+// the mod is loaded they cover any absent content. Follows RitsuLib's missing-content menu guards
 
-// NRunHistory.RefreshAndSelectRun is synchronous. Its own catch already logs the failure and shows the
-// out-of-date visual, then it rethrows. The rethrow travels through TaskHelper.RunSafely and can freeze
-// input. Swallow it once the vanilla error visual is up
+// RefreshAndSelectRun already logs the failure and shows the out-of-date visual, then rethrows. The
+// rethrow travels through TaskHelper.RunSafely and can freeze input, so swallow it once that visual is up
 [HarmonyPatch(typeof(NRunHistory), "RefreshAndSelectRun", typeof(int))]
 public static class RunHistoryLoadSafetyPatch
 {
@@ -34,10 +29,9 @@ public static class RunHistoryLoadSafetyPatch
     }
 }
 
-// NContinueRunInfo.ShowInfo reads the act and the character through ModelDb.GetById with no guard, so a
-// missing model throws on the main menu before the player presses Continue. Fall back to the same error
-// panel that the screen shows for a failed save read. The run save stays on disk and is not changed. A
-// non-content exception still propagates
+// ShowInfo reads the act and the character through GetById with no guard, so a missing model throws on the
+// main menu before the player presses Continue. Fall back to the screen's own error panel. The run save is
+// left unchanged, and a non-content exception still propagates
 [HarmonyPatch(typeof(NContinueRunInfo), "ShowInfo", typeof(SerializableRun))]
 public static class ContinueRunPreviewSafetyPatch
 {

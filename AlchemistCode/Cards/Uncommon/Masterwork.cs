@@ -20,11 +20,9 @@ public class Masterwork : AlchemistCard
         ExplainNumber("ALCHEMIST-MASTERWORK");
     }
 
-    // The play itself infuses one card, so the glow turns on one below the threshold. But that reach only
-    // holds if a card in hand can take a NEW enchant. With no such card, for example only Masterwork in
-    // hand, the play cannot raise the count, so it must not glow. At or above the threshold it already holds.
-    // OnPlay still checks the real count after the infusion, because an infuse of an already Enchanted card
-    // adds no new card
+    // The play itself infuses one card, so the glow turns on one below the threshold, but only when a card
+    // in hand can take a NEW enchant. With none, for example Masterwork alone in hand, the play cannot
+    // raise the count. OnPlay rechecks the real count anyway, since infusing an Enchanted card adds nothing
     protected override bool ConditionalGlow
     {
         get

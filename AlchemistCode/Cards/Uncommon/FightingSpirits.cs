@@ -14,16 +14,12 @@ public class FightingSpirits : AlchemistCard
         WithDamage(10, 4);
     }
 
-    // The extra hits equal the potions used this combat. A null CombatState means the card is not in a live
-    // combat, for example the deck view or the compendium, where the count is 0 and the card does not glow
+    // A null CombatState is the deck view or the compendium, where the count is 0
     private int PotionsUsedThisCombat =>
         CombatState == null ? 0 : CombatManager.Instance.History.Entries.OfType<PotionUsedEntry>().Count();
 
-    // Glow gold once a potion has been used, because the card then hits more than once. IsMutable already
-    // gates ConditionalGlow, so this is safe on the canonical model
     protected override bool ConditionalGlow => PotionsUsedThisCombat > 0;
 
-    // Show the potions used so far in green, the same live parentheses the damage previews use
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);

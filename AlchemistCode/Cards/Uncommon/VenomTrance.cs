@@ -16,7 +16,6 @@ public class VenomTrance : AlchemistCard
         WithTip(typeof(PoisonPower));
     }
 
-    // Glow gold while an enemy is over the Poison threshold, so the player sees the turn is live
     protected override bool ConditionalGlow => ThresholdMet;
 
     private bool ThresholdMet =>
@@ -27,7 +26,7 @@ public class VenomTrance : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (!ThresholdMet) return;
-        // The base game's invisible extra-turn counter, the same one Ambergris applies
+        // The base game's invisible extra-turn counter
         await PowerCmd.Apply<AmbergrisPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
     }
 }

@@ -7,8 +7,8 @@ using Alchemist.AlchemistCode.Relics;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// Fold Fester into TriggerCount (capped at the Poison stack). The base game drives both the extra ticks and the
-// lethal-HP preview off this, so an enemy that Fester will kill shows green "will die" HP
+// Fold Fester into TriggerCount. The base game drives both the extra ticks and the lethal-HP preview off
+// this, so an enemy that Fester will kill shows green "will die" HP
 [HarmonyPatch(typeof(PoisonPower), "TriggerCount", MethodType.Getter)]
 public static class FesterPoisonTriggerPatch
 {
@@ -20,10 +20,8 @@ public static class FesterPoisonTriggerPatch
     }
 }
 
-// Fold Glowing Shard into TriggerCount, the same way the base game folds Accelerant, but without a power on
-// the player. An enemy's Poison triggers one more time for each opposing player that holds the relic. Reading
-// the relic here, instead of giving the player an Accelerant power, keeps the Accelerant icon off the player
-// and an ally, and it drives both the extra ticks and the lethal-HP preview like Fester above. The cap
+// Fold Glowing Shard in the same way the base game folds Accelerant, but read the relic here rather than
+// give the player an Accelerant power, which would show that icon on the player and any ally. The cap
 // composes with the Fester postfix in either order, because a nested Min never exceeds the Poison stack
 [HarmonyPatch(typeof(PoisonPower), "TriggerCount", MethodType.Getter)]
 public static class GlowingShardPoisonTriggerPatch

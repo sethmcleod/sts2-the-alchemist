@@ -15,7 +15,7 @@ public class PatientStrike : AlchemistCard
                 (card.IsUpgraded ? 9m : 6m) * ((AlchemistCard)card).FermentTurns,
             ValueProp.Move, 0, 0);
         WithKeyword(CardKeyword.Retain);
-        // A "Strike" card, so base-game strike synergies (e.g. Perfected Strike) count it
+        // A "Strike" card, so base-game strike synergies such as Perfected Strike count it
         WithTags(CardTag.Strike);
     }
 

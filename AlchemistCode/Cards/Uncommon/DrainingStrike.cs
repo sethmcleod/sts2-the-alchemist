@@ -14,7 +14,7 @@ public class DrainingStrike : AlchemistCard
     public DrainingStrike() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(14, 4);
-        // A "Strike" card, so base-game strike synergies (e.g. Perfected Strike) count it
+        // A "Strike" card, so base-game strike synergies such as Perfected Strike count it
         WithTags(CardTag.Strike);
         WithTip(typeof(StrengthPower));
         WithTip(typeof(PoisonPower));

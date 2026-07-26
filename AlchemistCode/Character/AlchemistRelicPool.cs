@@ -16,7 +16,6 @@ public class AlchemistRelicPool : CustomRelicPoolModel
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
 
-    // Relics unlocked by later epochs stay out of the pool until that epoch is revealed on the Timeline
     public override IEnumerable<RelicModel> GetUnlockedRelics(UnlockState unlockState) =>
         AllRelics.Where(r => EpochGating.RelicUnlocked(r.Id, unlockState));
 }

@@ -16,7 +16,8 @@ public class Poultice : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Use the built-in exhaust prompt, since the card's own SelectionScreenPrompt getter throws without a per-card loc key
+        // The built-in exhaust prompt, because the card's own SelectionScreenPrompt getter throws
+        // without a per-card loc key
         var selected = await CardSelectCmd.FromHand(
             choiceContext, Owner,
             new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1),

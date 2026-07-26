@@ -12,12 +12,10 @@ public class DelayedReactionPower : AlchemistPower
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    // The play turn's own end arms the charge; the end of the next player turn detonates it. The
-    // flag is transient: a mid-combat reload restarts the delay, which is acceptable
+    // The play turn's own end arms the charge, and the end of the next one detonates it. Transient, so a
+    // mid-combat reload restarts the delay, which is acceptable
     private bool _armed;
 
-    // The forecast reads this so the health bar preview shows only on the turn the hit will land, not
-    // the turn it is applied
     internal bool IsArmed => _armed;
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,

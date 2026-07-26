@@ -13,12 +13,12 @@ public class Ichor : AlchemistCard
         WithCostUpgradeBy(-1);
     }
 
-    // Damage equals your missing HP, after enchant multipliers. The preview and the real hit share this
+    // Shared by the preview and the real hit, so the two cannot drift apart
     private int Damage() => ApplyEnchantDamage(RawDamage());
 
     private int RawDamage() => Owner.Creature.MaxHp - Owner.Creature.CurrentHp;
 
-    // The raw total. AlchemistCard runs the enchantment hooks and the global damage hooks on it
+    // Raw, because AlchemistCard runs the enchantment and global damage hooks on it
     protected override int? RawFormulaDamagePreview
     {
         get

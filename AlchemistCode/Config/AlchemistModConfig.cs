@@ -108,8 +108,8 @@ public class AlchemistModConfig : SimpleModConfig
         RemoveFromDiscovered("_discoveredRelics", ModelDb.AllRelics.Where(r => r is AlchemistRelic).Select(r => r.Id));
         RemoveFromDiscovered("_discoveredPotions", ModelDb.AllPotions.Where(p => p is AlchemistPotion).Select(p => p.Id));
 
-        // Remove the epoch entries entirely (rather than NotObtained, which would render 2-7 as locked
-        // slots up front) so progression restarts clean: only Alchemist1's slot reappears, via Neow
+        // Remove the entries outright rather than set NotObtained, which would render 2-7 as locked slots
+        // up front. Progression then restarts clean, with only Alchemist1's slot back via Neow
         RemoveAlchemistEpochs();
 
         save.SaveProgressFile();

@@ -5,7 +5,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Enchantments;
 
-// Power enchantment: when the enchanted card is played, gain X Strength
 public sealed class Exalted : AlchemistEnchantment
 {
     protected override string IconName => "exalted";

@@ -82,10 +82,9 @@ do_publish() { step "publish"; cd "$REPO"; dotnet publish -c Debug; }
 do_verify()  {
   step "verify pck"
   [ -f "$PCK" ] && ls -lh "$PCK" || { echo "!! the pck is missing at $PCK"; exit 1; }
-  # Godot keeps the pck open. If you replace the pck while the game is active, every later
-  # asset load from it fails. The first failure (the custom energy counter) throws out of
-  # NCombatUi.Activate, and combat then starts with no background. The result is easy to
-  # confuse with a mod bug, but the mod is not the cause.
+  # Godot keeps the pck open, so replacing it under a running game makes every later asset load
+  # from it fail. The first failure throws out of NCombatUi.Activate and combat starts with no
+  # background, which is easy to mistake for a mod bug.
   if pgrep -f "SlayTheSpire2" >/dev/null 2>&1; then
     bad "the game is active; it still uses the OLD pck and will throw AssetLoadException"
   fi
@@ -137,7 +136,6 @@ do_release() {  # <patch|minor|major|X.Y.Z>
   local branch; branch="$(git -C "$REPO" rev-parse --abbrev-ref HEAD)"
   [ "$branch" = "main" ] || { bad "you are on branch '$branch'; do the release from main"; exit 1; }
 
-  # Calculate the new version.
   local cur new; cur="$(current_version)"
   [ -n "$cur" ] || { bad "could not read the version from $MANIFEST"; exit 1; }
   local IFS=. ; local -a p=($cur); unset IFS
@@ -162,7 +160,6 @@ do_release() {  # <patch|minor|major|X.Y.Z>
   local date; date="$(date +%Y-%m-%d)"
   ok "release v$cur → v$new ($date)"
 
-  # Increase the manifest version (keep the v prefix).
   sed -i.bak -E "s/(\"version\"[[:space:]]*:[[:space:]]*\")v?[0-9]+\.[0-9]+\.[0-9]+(\")/\1v$new\2/" "$MANIFEST" && rm -f "$MANIFEST.bak"
 
   # Roll the changelog: keep the Unreleased heading empty and add a heading for the new version.
@@ -173,9 +170,8 @@ do_release() {  # <patch|minor|major|X.Y.Z>
 
   do_publish
 
-  # Package the zip that a user installs: one top-level Alchemist/ folder with the three
-  # runtime files that the game loads. It has no pdb, which is for debug only. The
-  # mod_image is in the pck.
+  # One top-level Alchemist/ folder with the three runtime files the game loads. No pdb, which is
+  # for debug only, and the mod_image is already in the pck.
   step "package dist/Alchemist-v$new.zip"
   local stage="$DIST/stage" src="$GAME_MODS/Alchemist"
   rm -rf "$stage"; mkdir -p "$stage/Alchemist"
@@ -189,13 +185,10 @@ do_release() {  # <patch|minor|major|X.Y.Z>
   rm -rf "$stage"
   ls -lh "$zipfile"
 
-  # Get the notes of this version for the GitHub Release body or the Workshop
-  # comment. The version heading is dropped: GitHub shows the tag as the title
-  # and the Workshop comment has its own.
-  # The changelog wraps its bullets to keep the markdown source readable. Both paste
-  # targets wrap text themselves, so the second stage puts each bullet back on one line.
-  # A bullet at any depth starts a new line; an indented line that is not a bullet is a
-  # wrap of the bullet above it and joins back onto it.
+  # Notes for the GitHub Release body or the Workshop comment. The version heading is dropped,
+  # because both paste targets supply their own title. The changelog wraps its bullets to keep
+  # the markdown source readable, and both targets wrap text themselves, so the second stage
+  # unwraps: a bullet at any depth starts a line, and an indented non-bullet joins the one above.
   local notes="$DIST/RELEASE_NOTES-v$new.txt"
   awk -v ver="$new" '
     $0 ~ "^## \\[" ver "\\]" {grab=1; next}

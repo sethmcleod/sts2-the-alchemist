@@ -14,8 +14,8 @@ public class Circulation : AlchemistCard
         WithTip(typeof(RegenPower));
     }
 
-    // Half of the Regen you will hold after this card grants its own, rounded down. The game truncates
-    // fractional HP the same way, so a round number of cards is what the player expects
+    // Counts the Regen this card is about to grant, and rounds down the way the game truncates
+    // fractional HP
     private int DrawCount
     {
         get

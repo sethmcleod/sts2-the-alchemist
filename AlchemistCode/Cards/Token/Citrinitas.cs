@@ -18,8 +18,7 @@ public class Citrinitas : AlchemistCard
         WithUpgradingCardTip<Rubedo>();
     }
 
-    // Per-hit damage = your Regen (after enchant multipliers). The preview gives the raw Regen, because
-    // AlchemistCard runs the enchantment hooks and the global damage hooks on it
+    // The preview stays raw, because AlchemistCard runs the enchantment and global damage hooks on it
     private int DamageFor(int regen) => ApplyEnchantDamage(regen);
 
     protected override int? RawFormulaDamagePreview =>

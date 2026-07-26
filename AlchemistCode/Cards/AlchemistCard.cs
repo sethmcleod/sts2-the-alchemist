@@ -24,16 +24,13 @@ namespace Alchemist.AlchemistCode.Cards;
 [Pool(typeof(AlchemistCardPool))]
 public abstract class AlchemistCard : ConstructedCardModel
 {
-    // The max count for a card selection with no upper bound. The base game uses the same literal. A prompt
-    // that goes with this count must not print {Amount} or {MaxCount}, because the count shows as-is
+    // Sentinel max for an unbounded card selection, the same literal the base game uses. A prompt paired
+    // with it must not print {Amount} or {MaxCount}, which would show the raw sentinel
     public const int AnyNumber = 999999999;
 
     protected AlchemistCard(int cost, CardType type, CardRarity rarity, TargetType target)
         : base(cost, type, rarity, target)
     {
-        // Keyword hover tips follow the Is*Card flags, so a flag stays the single source of truth. BaseLib's
-        // WithTips adds them. They sit before the card's own dynamic tips, so the keyword tip renders first.
-        // The order below is the tie-break for a card with more than one flag: Gambit, Ferment, then Seep
         WithTips(card => ((AlchemistCard)card).KeywordTips());
     }
 
@@ -44,14 +41,11 @@ public abstract class AlchemistCard : ConstructedCardModel
         if (IsSeepCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Seep);
     }
 
-    // Attach an explanatory tip to a calculated number, so the player can see how and why the number is
-    // derived. BaseLib surfaces the tip among the card's hover tips whenever this var is present. The text
-    // lives in static_hover_tips.json under {key}.title and {key}.description
+    // Tip text lives in static_hover_tips.json under {key}.title and {key}.description
     protected static void ExplainNumber(MegaCrit.Sts2.Core.Localization.DynamicVars.DynamicVar variable, string key)
         => variable.WithTooltip(key);
 
-    // Same explanation, for a card whose calculated number has no var to hang a tip on (the total is
-    // computed at play time and never rendered). Adds it as a plain card tip from the same loc table
+    // For a calculated number with no var to hang a tip on, because it is never rendered
     protected void ExplainNumber(string key) =>
         WithTips(_ => new IHoverTip[]
         {
@@ -63,32 +57,26 @@ public abstract class AlchemistCard : ConstructedCardModel
     public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
-    // Internal so the static calc-damage lambdas can read it off the card arg (they must capture no instance state)
+    // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state
     internal bool IsReduced => Owner?.Creature is { } c && c.CurrentHp * 2 <= c.MaxHp;
 
-    // True when this card currently carries an enchantment (was Infused this combat). Safe on canonical models
     internal bool IsEnchanted => Enchantment != null;
 
-    // A card with an "If this card is Enchanted" bonus sets this. It drives two glows: the card glows gold in
-    // hand once it is Enchanted (the bonus is live), and the Infuse selection glows it gold so the player can
-    // see which cards reward being infused. Internal, because Infusion reads it to build the glow predicate
+    // Drives two gold glows: the card in hand once it is Enchanted, and the card in an Infuse selection
     internal virtual bool GainsEffectWhenEnchanted => false;
 
     protected virtual bool IsGambitCard => false;
 
-    // A card with a play-time conditional bonus overrides this. The card then glows gold while the
-    // condition holds, the same as a Gambit card at low HP
     protected virtual bool ConditionalGlow => false;
 
-    // The IsMutable gate makes every glow safe on canonical models. IsReduced and ConditionalGlow read
-    // Owner, which throws on a canonical model (the compendium). Each card does not need its own guard
+    // The IsMutable gate makes every glow safe on canonical models, where reading Owner throws. No card
+    // needs its own guard
     protected override bool ShouldGlowGoldInternal =>
         IsMutable && AlchemistModConfig.ShowHandGlows
         && ((IsGambitCard && IsReduced) || (GainsEffectWhenEnchanted && IsEnchanted) || ConditionalGlow);
 
-    // A Seep card glows green while it stays in hand, because it pays off if you do not play it. The hand
-    // glow patch reads this. Gold wins when a card is both, for example a reduced Lash Out: gold is the
-    // transient "play this now" signal, and the green is constant. The IsMutable gate is the same as above
+    // Green means "leave this in hand", the opposite signal to gold, so gold wins when a card is both.
+    // SeepGlowPatches reads this
     internal bool ShouldGlowSeep =>
         IsMutable && AlchemistModConfig.ShowHandGlows && IsSeepCard && !ShouldGlowGold && !ShouldGlowRed;
 
@@ -99,18 +87,15 @@ public abstract class AlchemistCard : ConstructedCardModel
         return pct >= lower && pct <= upper;
     }
 
-    // "Lose N HP" is unblockable, unpowered self-damage
     protected Task LoseHp(PlayerChoiceContext choiceContext, int amount) =>
         CreatureCmd.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
 
-    // A Laced card applies Poison on every unblocked hit, so its hits land as a green splat instead of
-    // the card's normal impact. Call at play time only: Enchantment is live on the mutable combat instance
+    // Laced hits land as a green splat instead of the card's own impact. Play time only, because
+    // Enchantment is live on the mutable combat instance
     protected string HitVfx(string vfx) => Enchantment is Laced ? "vfx/vfx_slime_impact" : vfx;
 
-    // The green splash the base game pairs with an on-hit Poison apply (see DeadlyPoison). A card calls
-    // this next to its Apply<PoisonPower> on the target. Create returns null for a dead creature and in
-    // test mode, so the call is safe everywhere
+    // The green splash the base game pairs with an on-hit Poison apply, see DeadlyPoison
     protected static void PoisonSplash(Creature? target)
     {
         if (target == null) return;
@@ -118,8 +103,8 @@ public abstract class AlchemistCard : ConstructedCardModel
         if (vfx != null) NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(vfx);
     }
 
-    // A formula-damage card deals raw DamageCmd.Attack(decimal) and has no DamageVar. Only DamageVar runs
-    // the enchantment damage hooks. This method applies them by hand, in the same order DamageVar uses
+    // A formula-damage card has no DamageVar, and only DamageVar runs the enchantment damage hooks. Apply
+    // them by hand, in the order DamageVar uses
     internal int ApplyEnchantDamage(int damage)
     {
         if (Enchantment is not { } enchantment) return damage;
@@ -129,16 +114,12 @@ public abstract class AlchemistCard : ConstructedCardModel
         return (int)value;
     }
 
-    // A card with a runtime damage formula has no DamageVar to preview. It gives its raw total here, before
-    // the enchantment hooks and the global damage hooks. The card face shows the full total live with
-    // {FormulaDamage}. The value is null if the total cannot be computed, for example in the card library
+    // The raw total, before any hook. The card face shows the hooked total with {FormulaDamage}
     protected virtual int? RawFormulaDamagePreview => null;
 
-    // The preview must agree with the hit. The attack command runs the global damage hooks (Strength,
-    // Vigor, Weak) when it executes, and ApplyEnchantDamage runs the enchantment hooks by hand.
-    // Hook.ModifyDamage runs both, so the number on the card matches the damage that lands.
-    // MultiCreatureTargeting is the mode the game uses for a card face. It counts a power on the enemy only
-    // when every target has that power, which is correct for a card that hits all enemies
+    // Hook.ModifyDamage runs the global hooks the attack command will run and the enchantment hooks
+    // ApplyEnchantDamage runs, so the previewed number matches the damage that lands.
+    // MultiCreatureTargeting counts an enemy power only when every target has it, correct for an AoE card
     private int? FormulaDamagePreview
     {
         get
@@ -152,8 +133,8 @@ public abstract class AlchemistCard : ConstructedCardModel
         }
     }
 
-    // The same applies to self-inflicted HP loss, which {FormulaHpLoss} shows. It shows red, not green,
-    // so the player can tell the cost from the payoff on a card that previews both
+    // The same for self-inflicted HP loss, which {FormulaHpLoss} shows in red so a card that previews
+    // both reads its cost apart from its payoff
     protected virtual int? FormulaHpLossPreview => null;
 
     private int _fermentTurns;
@@ -162,7 +143,6 @@ public abstract class AlchemistCard : ConstructedCardModel
 
     internal bool IsFermentInline => IsFermentCard;
 
-    // Internal so the static calc lambdas can read it off the card arg (no instance capture)
     internal int FermentTurns => _fermentTurns;
 
     protected virtual string FermentTotalText => "";
@@ -171,17 +151,15 @@ public abstract class AlchemistCard : ConstructedCardModel
 
     protected virtual Task OnSeep(PlayerChoiceContext choiceContext) => Task.CompletedTask;
 
-    // Flash the Seep card so the player sees which card triggered. Some Seep effects already show a card,
-    // for example a token that previews itself. Those cards opt out to prevent a double flash
+    // A Seep effect that already shows a card, such as a token that previews itself, opts out of the
+    // flash to prevent a double preview
     protected virtual bool SeepPreviewsSelf => true;
 
-    // Use VeryEarly, not the plain BeforeSideTurnEnd hook. RegenPower heals and decrements in
-    // BeforeSideTurnEndEarly, which runs between the two. From the later hook, a Seep that grants Regen
-    // misses the heal for this turn
+    // VeryEarly, not the plain hook: RegenPower heals and decrements in BeforeSideTurnEndEarly, between
+    // the two, so from the later hook a Seep that grants Regen misses this turn's heal
     public override async Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
-        // Ferment and Seep fire only while the card stays in hand at the owner's turn end
         if (Owner == null || !participants.Contains(Owner.Creature)
             || !PileType.Hand.GetPile(Owner).Cards.Contains(this))
             return;
@@ -193,8 +171,8 @@ public abstract class AlchemistCard : ConstructedCardModel
         }
     }
 
-    // The card keeps its Ferment potency when you play it, so combat start is the only reset. Deck cards
-    // are the same instances in each combat. Every one of them uses this hook, so this covers all piles
+    // The card keeps its potency when you play it, so combat start is the only reset. Deck cards are the
+    // same instances each combat and all of them get this hook, so this covers every pile
     public override Task BeforeCombatStart()
     {
         _fermentTurns = 0;
@@ -209,16 +187,13 @@ public abstract class AlchemistCard : ConstructedCardModel
             description.Add("FermentSuffix", _fermentTurns > 0 ? $" ({_fermentTurns})" : "");
             description.Add("FermentTotal", FermentTotalText);
         }
-        // FormulaDamagePreview reads Owner, which throws on a canonical model, for example in the card
-        // library. Only a mutable combat instance has an Owner, and the live preview is useful only there
+        // These previews read Owner, which throws on a canonical model such as the card library
         description.Add("FormulaDamage",
             IsMutable && FormulaDamagePreview is { } d ? $" ([green]{d}[/green])" : "");
         description.Add("FormulaHpLoss",
             IsMutable && FormulaHpLossPreview is { } hp ? $" ([red]{hp}[/red])" : "");
     }
 
-    // A live "(Hits N times.)" line for a card whose hit count comes from the combat state. Shown only on
-    // a mutable combat instance, and only when the count is known, so the compendium text stays clean
     protected string HitsLine(int hits) =>
         IsMutable && hits > 0
             ? $"\n(Hits [green]{hits}[/green] {(hits == 1 ? "time" : "times")}.)"
