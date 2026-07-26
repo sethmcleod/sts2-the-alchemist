@@ -18,7 +18,8 @@ public sealed class DelayedReactionForecast : IHealthBarForecastSource
         if (context.Creature.GetPower<DelayedReactionPower>() is not { IsArmed: true })
             yield break;
 
-        var amount = context.Creature.GetPowerAmount<DelayedReactionPower>();
+        // The capped number, so the bar matches the icon when Hard to Kill or Intangible applies
+        var amount = context.Creature.GetPower<DelayedReactionPower>()!.EffectiveDamage;
         if (amount > 0)
             yield return new HealthBarForecastSegment(amount, AlchemistModConfig.ForecastColor,
                 HealthBarForecastDirection.FromRight);

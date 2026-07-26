@@ -17,8 +17,6 @@ public class Fumigate : AlchemistCard
     private int ExhaustCount =>
         IsMutable && CombatState != null ? PileType.Exhaust.GetPile(Owner).Cards.Count : 0;
 
-    protected override bool ConditionalGlow => ExhaustCount > 0;
-
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);

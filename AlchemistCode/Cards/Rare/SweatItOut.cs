@@ -2,6 +2,7 @@ using System.Linq;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
@@ -15,6 +16,20 @@ public class SweatItOut : AlchemistCard
         WithVar("SelfPoison", 2, 1);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
+    }
+
+    // What this play would apply right now: your Poison, plus the Poison this card is about to give you
+    private int PoisonToApply =>
+        IsMutable && CombatState != null
+            ? Owner.Creature.GetPowerAmount<PoisonPower>()
+              + (int)DynamicVars["SelfPoison"].BaseValue + FermentTurns
+            : 0;
+
+    protected override void AddExtraArgsToDescription(LocString description)
+    {
+        base.AddExtraArgsToDescription(description);
+        description.Add("ApplyLine",
+            PoisonToApply is var n and > 0 ? $"\n(Apply [green]{n}[/green] Poison.)" : "");
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
