@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+using System.Linq;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -10,33 +10,43 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 public class Amalgam : AlchemistCard
 {
     protected override bool HasEnergyCostX => true;
-    protected override bool IsFermentCard => true;
 
-    // The loc feeds these two strings into its IfUpgraded branches, so the upgraded branch always carries
-    // at least +1 and the base branch hides at +0. The upgrade preview renders the upgraded branch with
-    // FermentTurns still 0, which is what shows the player "+1"
-    protected override void AddExtraArgsToDescription(LocString description)
+    public Amalgam() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
     {
-        base.AddExtraArgsToDescription(description);
-        description.Add("XBonusUpgraded", $"+{FermentTurns + 1}");
-        description.Add("XBonusBase", FermentTurns > 0 ? $"+{FermentTurns}" : "");
-    }
-
-    public Amalgam() : base(0, CardType.Power, CardRarity.Rare, TargetType.Self)
-    {
-        WithKeyword(CardKeyword.Retain);
+        WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(RegenPower));
     }
 
+    // The two pools this fuses. Both are spent, so the preview is the damage per hit
+    private int Fuel =>
+        IsMutable && CombatState != null
+            ? Owner.Creature.GetPowerAmount<PoisonPower>() + Owner.Creature.GetPowerAmount<RegenPower>()
+            : 0;
+
+    protected override bool ConditionalGlow => Fuel > 0;
+
+    protected override void AddExtraArgsToDescription(LocString description)
+    {
+        base.AddExtraArgsToDescription(description);
+        description.Add("Fuel", Fuel is var f and > 0 ? $" ([green]{f}[/green])" : "");
+    }
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var x = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0) + FermentTurns;
-        if (x > 0)
-        {
-            foreach (var enemy in CombatState!.Enemies.Where(e => e.IsAlive))
-                await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, x, Owner.Creature, this);
-            await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, x, Owner.Creature, this);
-        }
+        if (CombatState == null) return;
+        var damage = Fuel;
+        if (damage <= 0) return;
+        await PowerCmd.Remove<PoisonPower>(Owner.Creature);
+        await PowerCmd.Remove<RegenPower>(Owner.Creature);
+        var hits = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0);
+        if (hits <= 0) return;
+        await DamageCmd.Attack(damage)
+            .WithHitCount(hits)
+            .Unpowered()
+            .WithHitFx(HitVfx("vfx/vfx_heavy_blunt"), null, "heavy_attack.mp3")
+            .FromCard(this, play)
+            .TargetingAllOpponents(CombatState)
+            .Execute(choiceContext);
     }
 }

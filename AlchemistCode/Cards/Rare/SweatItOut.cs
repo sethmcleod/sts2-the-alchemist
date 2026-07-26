@@ -8,16 +8,19 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class SweatItOut : AlchemistCard
 {
+    protected override bool IsFermentCard => true;
+
     public SweatItOut() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithVar("SelfPoison", 2, 1);
+        WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
-            DynamicVars["SelfPoison"].BaseValue, Owner.Creature, this);
+            DynamicVars["SelfPoison"].BaseValue + FermentTurns, Owner.Creature, this);
         var poison = Owner.Creature.GetPowerAmount<PoisonPower>();
         if (Owner.Creature.HasPower<PoisonPower>())
             await PowerCmd.Remove<PoisonPower>(Owner.Creature);

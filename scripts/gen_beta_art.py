@@ -115,7 +115,7 @@ COLORS = {
     "Patient Strike": ("#4a0e2e", "#c78a3b", "TR", "Ferment: attacks"),
     "Rolling Boil": ("#4a0e2e", "#e85a1f", "TR", "Ferment: attacks"),
     # Ferment: skills and powers
-    "Amalgam": ("#6b2444", "#c2601c", "R", "Ferment: skills and powers"),
+    "Amalgam": ("#6b2444", "#c2601c", "TR", "Unique"),
     "Carapace": ("#6b2444", "#d9a86a", "BR", "Ferment: skills and powers"),
     "Vintage": ("#6b2444", "#df9723", "BR", "Ferment: skills and powers"),
     # Infuse: cantrips
@@ -128,8 +128,8 @@ COLORS = {
     "Deep Breath": ("#4a1a66", "#3fb0d4", "BR", "Infuse: heavy"),
     "Masterwork": ("#4a1a66", "#c9a227", "BR", "Infuse: heavy"),
     "Refine": ("#4a1a66", "#257bc3", "BR", "Infuse: heavy"),
-    # Full Measure (one-off)
-    "Full Measure": ("#241a5e", "#4a90c9", "TR", "Unique"),
+    # Froth (one-off: sea-foam over deep blue)
+    "Froth": ("#0e3550", "#8fe0c8", "TR", "Unique"),
     # Siphon (one-off)
     "Siphon": ("#241a5e", "#2aa89b", "TR", "Unique"),
     # Enchanted payoffs: debuff attacks
@@ -189,8 +189,8 @@ COLORS = {
     "Decant": ("#1b2a44", "#8a63f5", "TR", "Crafting: discovery"),
     "Eureka": ("#1b2a44", "#f2c94e", "BR", "Crafting: discovery"),
     # Crafting: refinement
-    "Hone": ("#1b2a44", "#d0342c", "BR", "Crafting: refinement"),
-    "Winnow": ("#1b2a44", "#8d1e2d", "BR", "Crafting: refinement"),
+    "Hone": ("#3a1220", "#ff5f3d", "BR", "Crafting: refinement"),
+    "Winnow": ("#3a1220", "#f0435e", "BR", "Crafting: refinement"),
     # Distillate (one-off token)
     "Distillate": ("#232838", "#6fc0e8", "D", "Unique"),
     # Multiplayer: gifts

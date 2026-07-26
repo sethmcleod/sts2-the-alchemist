@@ -9,7 +9,7 @@ public class Fumigate : AlchemistCard
 {
     public Fumigate() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
-        WithDamage(2, 0);
+        WithDamage(1, 1);
         WithKeyword(CardKeyword.Exhaust);
     }
 

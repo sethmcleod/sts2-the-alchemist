@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3hfgh8eqydk1"
-path="res://.godot/imported/full_measure.png-9fd5e0c213a9d5ef8c3f9e93ccd855e8.ctex"
+path="res://.godot/imported/froth.png-c069f6f30ea0b5d6e0bea9256a9816ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/full_measure.png"
-dest_files=["res://.godot/imported/full_measure.png-9fd5e0c213a9d5ef8c3f9e93ccd855e8.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/froth.png"
+dest_files=["res://.godot/imported/froth.png-c069f6f30ea0b5d6e0bea9256a9816ca.ctex"]
 
 [params]
 
