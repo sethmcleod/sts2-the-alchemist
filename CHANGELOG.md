@@ -15,10 +15,13 @@ Security.
 
 ### Added
 
-- Added Overdose card (Common Attack, cost 1): "Lose 4 HP. Deal 15 (20) damage."
-  Replaces Last Resort
+- Added Overdose card (Common Attack, cost 1): "Lose 4 HP. Deal 15 (20) damage.
+  Gambit: Gain 2 Regen." Replaces Last Resort
 - Added Percolate card (Common Skill, cost 1): "At the start of your next turn,
   draw 3 (4) additional cards." Replaces Double Dose
+- Added Quicklime card (Common Attack, cost 1): "Deal 7 (9) damage. Gain 5 (7)
+  Block. Seep: Gain 3 Block." The first Attack in the pool that also gives
+  Block. Replaces Tinge
 
 ### Changed
 
@@ -35,6 +38,24 @@ Security.
   Poison." -> "Gain 3 (4) Thorns. Gambit: Gain 2 additional Thorns." The first
   Thorns card in the pool
 - Nerfed Overflow card: damage decreased from 4 (5) -> 3 (4)
+- Buffed Cauterize card: damage increased from 5 (8) -> 6 (9)
+- Nerfed Venom Trance card: Poison threshold increased from 8 (6) -> 9 (6)
+- Renamed Inhale to Deep Breath
+- Reworked Fester card: cost decreased from 1 -> 0, Poison applied decreased from
+  3 -> 2 (3), and it now also gives you 2 Poison
+- Reworked Vivisect card: "Deal 7 (10) damage. Draw 1 card, plus 1 more for each
+  unique debuff on the enemy. If this card is Enchanted, apply 1 Weak and 1
+  Vulnerable." -> "Deal 7 (10) damage. Draw 2 cards. If this card is Enchanted,
+  apply 1 (2) Weak and 1 (2) Vulnerable."
+- Reworked Circulation card: "Lose all Regen, then draw that many cards. Gain
+  2 (3) Regen." -> "Gain 2 (4) Regen. Lose half your Regen, then draw that many
+  cards." The card shows the cards it will draw during combat
+- Changed Fumigate card: base damage increased from 1 -> 2, so a Weak debuff
+  cannot cancel it out, and it now keeps Exhaust when Upgraded
+- Event potions, such as Glowwater and Ambergris, now sell to the Merchant for
+  150 Gold. Before, only Ambergris did, and Glowwater sold for 50
+- Brew-only potions now sell to the Merchant for 150 Gold, up from 100, the same
+  as the other Event potions
 - Overflow, Fumigate and Fighting Spirits cards now show "(Hits N times.)" at the bottom
   during combat, so the live hit count is clear before you play them
 
@@ -47,6 +68,7 @@ Security.
 
 - Removed Last Resort card, replaced by Overdose
 - Removed Double Dose card, replaced by Percolate
+- Removed Tinge card, replaced by Quicklime
 
 ## [0.5.1] - 2026-07-24
 

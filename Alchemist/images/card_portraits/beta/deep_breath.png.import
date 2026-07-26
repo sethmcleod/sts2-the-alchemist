@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kmxeq617o52n"
-path="res://.godot/imported/inhale.png-a8f3446aecb533b5703f89ced2f94ea1.ctex"
+path="res://.godot/imported/deep_breath.png-0f8c44488f265f411e4196d65b37b3ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/inhale.png"
-dest_files=["res://.godot/imported/inhale.png-a8f3446aecb533b5703f89ced2f94ea1.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/deep_breath.png"
+dest_files=["res://.godot/imported/deep_breath.png-0f8c44488f265f411e4196d65b37b3ff.ctex"]
 
 [params]
 

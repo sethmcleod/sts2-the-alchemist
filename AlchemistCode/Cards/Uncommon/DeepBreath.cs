@@ -7,14 +7,14 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-public class Inhale : AlchemistCard
+public class DeepBreath : AlchemistCard
 {
-    public Inhale() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public DeepBreath() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTips(_ => Infusion.InfuseTips());
-        ExplainNumber("ALCHEMIST-INHALE");
+        ExplainNumber("ALCHEMIST-DEEP_BREATH");
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

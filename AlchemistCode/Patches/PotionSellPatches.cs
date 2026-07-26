@@ -56,18 +56,11 @@ public static class PotionSellPatches
         return owner.RunState.CurrentRoom is MerchantRoom;
     }
 
-    // The sell price comes from the rarity. Two exceptions, and both must stay exceptions, because the
-    // rarity must stay the rule that a player can predict. Ambergris: a heal for half of your maximum HP
-    // plus an extra turn is worth much more than its rarity shows. A Brew-only potion: it carries Event
-    // rarity to keep it out of the generation rolls, but it is built to a Rare budget and sells as one
+    // The sell price comes from the rarity, with no exceptions. A Brew-only potion carries Event rarity,
+    // so it sells for the Event price like Ambergris and Glowwater
     private static int GetGoldFor(PotionModel potion)
     {
-        var basePrice = potion switch
-        {
-            Ambergris => 150,
-            IBrewOnly => GetGoldForRarity(PotionRarity.Rare),
-            _ => GetGoldForRarity(potion.Rarity)
-        };
+        var basePrice = GetGoldForRarity(potion.Rarity);
         // The config slider scales the rarity-based price; 100 leaves it unchanged
         return basePrice * AlchemistModConfig.PotionSellPercent / 100;
     }
@@ -79,6 +72,9 @@ public static class PotionSellPatches
             PotionRarity.Common => 50,
             PotionRarity.Uncommon => 75,
             PotionRarity.Rare => 100,
+            // Event potions come only from events, so they are the hardest to replace: Ambergris and
+            // Glowwater. The Brew-only potions above never reach this line
+            PotionRarity.Event => 150,
             _ => 50
         };
     }

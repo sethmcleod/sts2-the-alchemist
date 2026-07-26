@@ -109,7 +109,7 @@ COLORS = {
     "Draining Strike": ("#2f0170", "#b3341f", "TR", "Seep: heavy attacks"),
     "Unstable Compound": ("#2f0170", "#63c11c", "TR", "Seep: heavy attacks"),
     # Seep: light attacks
-    "Tinge": ("#1c0f45", "#4fc98f", "TR", "Seep: light attacks"),
+    "Quicklime": ("#1c0f45", "#e8e4d2", "TR", "Seep: light attacks"),
     "Trickle": ("#1c0f45", "#2f9853", "TR", "Seep: light attacks"),
     # Ferment: attacks
     "Patient Strike": ("#4a0e2e", "#c78a3b", "TR", "Ferment: attacks"),
@@ -125,7 +125,7 @@ COLORS = {
     # Quench (one-off)
     "Quench": ("#792595", "#0e5452", "BR", "Unique"),
     # Infuse: heavy
-    "Inhale": ("#4a1a66", "#3fb0d4", "BR", "Infuse: heavy"),
+    "Deep Breath": ("#4a1a66", "#3fb0d4", "BR", "Infuse: heavy"),
     "Masterwork": ("#4a1a66", "#c9a227", "BR", "Infuse: heavy"),
     "Refine": ("#4a1a66", "#257bc3", "BR", "Infuse: heavy"),
     # Full Measure (one-off)

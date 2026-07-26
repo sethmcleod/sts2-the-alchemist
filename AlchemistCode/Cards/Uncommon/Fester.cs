@@ -8,9 +8,10 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Fester : AlchemistCard
 {
-    public Fester() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Fester() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithPower<PoisonPower>(3, 0);
+        WithPower<PoisonPower>(2, 1);
+        WithVar("selfPoison", 2, 0);
         WithVar("triggers", 1, 1);
         WithTip(typeof(PoisonPower));
     }
@@ -22,5 +23,7 @@ public class Fester : AlchemistCard
             DynamicVars.Poison.BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<FesterPower>(choiceContext, play.Target,
             DynamicVars["triggers"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
+            DynamicVars["selfPoison"].IntValue, Owner.Creature, this);
     }
 }

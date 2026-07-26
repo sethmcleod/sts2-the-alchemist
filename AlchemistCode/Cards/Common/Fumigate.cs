@@ -9,8 +9,8 @@ public class Fumigate : AlchemistCard
 {
     public Fumigate() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
-        WithDamage(1, 0);
-        WithKeyword(CardKeyword.Exhaust, UpgradeType.Remove);
+        WithDamage(2, 0);
+        WithKeyword(CardKeyword.Exhaust);
     }
 
     // A null CombatState means the deck view or the compendium, where the count is 0

@@ -11,7 +11,7 @@ public class VenomTrance : AlchemistCard
 {
     public VenomTrance() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("poison", 8, -2);
+        WithVar("poison", 9, -3);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
     }
