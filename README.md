@@ -35,13 +35,12 @@ _(Disclaimer: This description was paid for by the Merchant.)_
 - **Ferment**: This keyword is only found on cards that also Retain. These
   effects grow in potency for every turn the card stays in your hand, and
   persist after the card is played.
-- **Seep**: Cards with this keyword have a green glow and will trigger an effect
-  if still in your hand at the end of turn. Most are costs that pressure you to
+- **Seep**: Cards with this keyword will trigger an effect if still in your hand
+  at the end of turn and have a green glow. Most are costs that pressure you to
   play the card, though some are beneficial.
 - **Infuse**: Infusing a card Enchants it for the rest of combat based on the
   type. Attacks apply Poison, Skills create tokens that apply Weak and
-  Vulnerable, but Poison you, Powers give Strength, and other cards gain
-  Ethereal.
+  Vulnerable, Powers give Strength, and other cards gain Ethereal.
 - **Brew**: This new Rest Site option allows you to remove a card from your deck
   and procure a random potion. There are 3 new potions that can only be obtained
   this way.
@@ -57,8 +56,6 @@ against the existing pools through many rounds of low and high-Ascension
 playtesting. The same care extends to flavor and lore: this character's story is
 woven directly into the game's existing timeline, and observant players will
 find more than a few threads connecting them to the world.
-
-Enjoy! 🧙‍♂️
 
 ---
 
@@ -100,8 +97,8 @@ scripts/dev.sh publish    # build the mod into the game
 
 ### Document map
 
-| Doc                                                | What is in it                                                            |
-| -------------------------------------------------- | ------------------------------------------------------------------------ |
-| [BUILD.md](BUILD.md)                               | prerequisites, build and publish commands, asset rules                   |
-| [CONTRIBUTING.md](CONTRIBUTING.md)                 | the three-way update rule, design and code rules                         |
-| [RELEASING.md](RELEASING.md)                       | version policy, changelog workflow, how to cut a release, how to install |
+| Doc                                | What is in it                                                            |
+| ---------------------------------- | ------------------------------------------------------------------------ |
+| [BUILD.md](BUILD.md)               | prerequisites, build and publish commands, asset rules                   |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | the three-way update rule, design and code rules                         |
+| [RELEASING.md](RELEASING.md)       | version policy, changelog workflow, how to cut a release, how to install |
