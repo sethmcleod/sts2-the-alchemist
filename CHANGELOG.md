@@ -15,60 +15,39 @@ Security.
 
 ### Added
 
-- Added Overdose card (Common Attack, cost 1): "Lose 4 HP. Deal 15 (20) damage.
-  Gambit: Gain 2 Regen." Replaces Last Resort
-- Added Percolate card (Common Skill, cost 1): "At the start of your next turn,
-  draw 3 (4) additional cards." Replaces Double Dose
-- Added Quicklime card (Common Attack, cost 1): "Deal 7 (9) damage. Gain 5 (7)
-  Block. Seep: Gain 3 Block." The first Attack in the pool that also gives
-  Block. Replaces Tinge
+- Added Overdose card: "Lose 4 HP. Deal 15 (20) damage. Gambit: Gain 2 Regen." Replaces Last Resort
+- Added Percolate card: "At the start of your next turn, draw 3 (4) additional cards." Replaces Double Dose
+- Added Quicklime card: "Deal 7 (9) damage. Gain 5 (7) Block. Seep: Gain 3 Block." Replaces Tinge
+- Added Froth card: "Retain. Ferment. Deal 4 (6) damage. Hits an additional time for each turn fermented." Replaces Full Measure
 
 ### Changed
 
-- Reworked Carapace card: base Block increased from 6 -> 10, and Block per turn
-  fermented changed from 6 (9) -> 4 (6)
-- Dropped the default Brew-only potion chance from 30% -> 20%
-- Nerfed Decant card: damage decreased from 5 (7) -> 3 (5)
-- Reworked Resolve card: "At the start of your turn, gain 1 Strength for each 20
-  HP you are missing." (cost 3 (2)) -> "While Gambit is active, you have 2 (3) additional
-  Strength and Dexterity." (cost 1). Like the Red Skull relic, the buff switches
-  on and off with your health bar, so fighting below half HP pays off
-- Reworked Bloom card and renamed it Bramble, because it read too close to Heavy
-  Hand: "The first time you apply Poison each turn, apply 2 (3) additional
-  Poison." -> "Gain 3 (4) Thorns. Gambit: Gain 2 additional Thorns." The first
-  Thorns card in the pool
-- Nerfed Overflow card: damage decreased from 4 (5) -> 3 (4)
-- Buffed Cauterize card: damage increased from 5 (8) -> 6 (9)
-- Nerfed Venom Trance card: Poison threshold increased from 8 (6) -> 9 (6)
+- Reworked Amalgam card into an Attack: "Lose all Poison and Regen. Deal that much damage to ALL enemies X (+1) times. Exhaust."
+- Reworked Corrode card: "Apply 6 Poison and 1 (2) Weak to ALL enemies. Gambit: Apply 2 additional Poison."
+- Reworked Resolve card: "While Gambit is active, you have 2 (3) additional Strength and Dexterity." Cost decreased from 3(2) -> 1
+- Reworked Bloom card into Bramble: "Gain 3 (4) Thorns. Gambit: Gain 2 additional Thorns."
+- Reworked Fester card: "Apply 2 (3) Poison. Gain 2 Poison. Poison is triggered against the enemy 1 (2) additional time(s) next turn." Cost decreased from 1 -> 0
+- Reworked Vivisect card: "Deal 7 (10) damage. Draw 2 cards. If this card is Enchanted, apply 1 (2) Weak and 1 (2) Vulnerable."
+- Reworked Circulation card: "Gain 2 (4) Regen. Lose half your Regen, then draw that many cards."
+- Changed Carapace card: Block increased from 6 -> 10, Block per turn fermented changed from 6(9) -> 4(6)
+- Buffed Sweat It Out card: it now Ferments, gaining 1 additional Poison for each turn fermented
+- Changed Fumigate card: damage is now 1(2), and it keeps Exhaust when Upgraded
+- Buffed Cauterize card: damage increased from 5(8) -> 6(9)
+- Nerfed Overflow card: damage decreased from 4(5) -> 3(4)
+- Nerfed Decant card: damage decreased from 5(7) -> 3(5)
+- Nerfed Venom Trance card: Poison threshold increased from 8(6) -> 9(6)
 - Renamed Inhale to Deep Breath
-- Reworked Fester card: cost decreased from 1 -> 0, Poison applied decreased from
-  3 -> 2 (3), and it now also gives you 2 Poison
-- Reworked Vivisect card: "Deal 7 (10) damage. Draw 1 card, plus 1 more for each
-  unique debuff on the enemy. If this card is Enchanted, apply 1 Weak and 1
-  Vulnerable." -> "Deal 7 (10) damage. Draw 2 cards. If this card is Enchanted,
-  apply 1 (2) Weak and 1 (2) Vulnerable."
-- Reworked Circulation card: "Lose all Regen, then draw that many cards. Gain
-  2 (3) Regen." -> "Gain 2 (4) Regen. Lose half your Regen, then draw that many
-  cards." The card shows the cards it will draw during combat
-- Changed Fumigate card: base damage increased from 1 -> 2, so a Weak debuff
-  cannot cancel it out, and it now keeps Exhaust when Upgraded
-- Event potions, such as Glowwater and Ambergris, now sell to the Merchant for
-  150 Gold. Before, only Ambergris did, and Glowwater sold for 50
-- Brew-only potions now sell to the Merchant for 150 Gold, up from 100, the same
-  as the other Event potions
-- Overflow, Fumigate and Fighting Spirits cards now show "(Hits N times.)" at the bottom
-  during combat, so the live hit count is clear before you play them
-
-### Fixed
-
-- Fixed the Ancients repeating an out-of-date conversation, Past the last visit
-  written for the Alchemist, each Ancient now keeps its evergreen conversation
+- Changed Overflow, Fumigate, and Fighting Spirits cards: they now show "(Hits N times.)" during combat
+- Changed Event and Brew-only potions: they now sell to the Merchant for 150 Gold
+- Changed the default Brew-only potion chance from 30% -> 20%
 
 ### Removed
 
-- Removed Last Resort card, replaced by Overdose
-- Removed Double Dose card, replaced by Percolate
-- Removed Tinge card, replaced by Quicklime
+- Removed Last Resort, Double Dose, Tinge, and Full Measure cards
+
+### Fixed
+
+- Fixed the Ancients repeating an out-of-date conversation after many wins
 
 ## [0.5.1] - 2026-07-24
 
