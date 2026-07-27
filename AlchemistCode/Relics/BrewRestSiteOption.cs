@@ -35,6 +35,8 @@ public sealed class BrewRestSiteOption : RestSiteOption
 
     public override bool IsEnabled => GetRemovableCardCount(Owner) >= 1;
 
+    public override IEnumerable<string> AssetPaths => Array.Empty<string>();
+
     public BrewRestSiteOption(Player owner) : base(owner) { }
 
     public override async Task<bool> OnSelect()
