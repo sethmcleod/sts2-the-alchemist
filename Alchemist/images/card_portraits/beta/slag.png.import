@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diwasj60yek4h"
-path="res://.godot/imported/metabolism_power.png-21236af27860376b5df75fb76066a8bb.ctex"
+uid="uid://bprvdm7ciapop"
+path="res://.godot/imported/slag.png-f0b2b7c901c6fdd43e5797010ae15b90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/metabolism_power.png"
-dest_files=["res://.godot/imported/metabolism_power.png-21236af27860376b5df75fb76066a8bb.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/slag.png"
+dest_files=["res://.godot/imported/slag.png-f0b2b7c901c6fdd43e5797010ae15b90.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=false
-compress/lossy_quality=0.7
+compress/high_quality=true
+compress/lossy_quality=1.0
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

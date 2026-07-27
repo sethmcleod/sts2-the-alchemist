@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bprvdm7ciapop"
-path="res://.godot/imported/metabolism.png-bd75f9533bbeb0b4ab6face543643ee8.ctex"
+uid="uid://bcst24lsc2jjj"
+path="res://.godot/imported/etch.png-e88cb471b080e1300feaa6d67392b725.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/metabolism.png"
-dest_files=["res://.godot/imported/metabolism.png-bd75f9533bbeb0b4ab6face543643ee8.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/etch.png"
+dest_files=["res://.godot/imported/etch.png-e88cb471b080e1300feaa6d67392b725.ctex"]
 
 [params]
 

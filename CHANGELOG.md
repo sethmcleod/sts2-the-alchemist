@@ -13,11 +13,21 @@ Security.
 
 ## [Unreleased]
 
+### Added
+
+- Added Etch card: "Deal 14 (18) damage. Ignore Block." Replaces Grind Down
+- Added Slag card: "Whenever you Exhaust a card, gain 1 (2) Block." Replaces Metabolism
+
 ### Changed
 
 - Changed Delayed Reaction card: its power now reads "At the end of this turn, takes N damage." on the turn it detonates, and its damage number and forecast respect Hard to Kill and Intangible
 - Changed Sweat It Out card: it now shows "(Apply N Poison.)" during combat
 - Changed Fumigate card: it no longer glows gold
+- Nerfed Siphon card: card draw decreased from 2 -> 1
+
+### Removed
+
+- Removed Grind Down and Metabolism cards
 
 ## [0.5.2] - 2026-07-25
 

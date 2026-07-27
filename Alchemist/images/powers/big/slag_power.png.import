@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcst24lsc2jjj"
-path="res://.godot/imported/grind_down.png-ccd8c631dce3132de488e1c88b3a884a.ctex"
+uid="uid://bxopgus3iy3yt"
+path="res://.godot/imported/slag_power.png-6efbbbae76935daf2848d7a8b5a4f7dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/grind_down.png"
-dest_files=["res://.godot/imported/grind_down.png-ccd8c631dce3132de488e1c88b3a884a.ctex"]
+source_file="res://Alchemist/images/powers/big/slag_power.png"
+dest_files=["res://.godot/imported/slag_power.png-6efbbbae76935daf2848d7a8b5a4f7dc.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

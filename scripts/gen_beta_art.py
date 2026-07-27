@@ -80,7 +80,7 @@ BAYER = [
 # the validate command enforces this. Verticals mark Basics and tokens.
 COLORS = {
     # Gambit: all-in attacks
-    "Grind Down": ("#5f011f", "#b5a58c", "TR", "Gambit: all-in attacks"),
+    "Etch": ("#0b2a4a", "#5fd0e8", "TR", "Unique"),
     "Neurotoxin": ("#5f011f", "#b3bd2a", "TR", "Gambit: all-in attacks"),
     # Cauterize (one-off)
     "Overdose": ("#5f011f", "#c18c0f", "TR", "Unique"),
@@ -95,7 +95,7 @@ COLORS = {
     "Transmute": ("#5f011f", "#e3b84a", "BR", "Gambit: skills"),
     # Gambit: powers
     "Drip Feed": ("#5f011f", "#6f5bd6", "L", "Gambit: powers"),
-    "Metabolism": ("#5f011f", "#d4776b", "L", "Gambit: powers"),
+    "Slag": ("#45293f", "#c98fd6", "R", "Unique"),
     # Poison attacks
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),

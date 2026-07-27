@@ -38,7 +38,7 @@ Froth,Common,Attack,1,Retain. Ferment. Deal 4 (6) damage. Hits an additional tim
 Fumigate,Common,Attack,1,Deal 1 (2) damage to ALL enemies. Hits an additional time for each card in your Exhaust Pile. Exhaust.
 Golden Fruit,Quest,Skill,1,Heal 8 HP. Gain 25 Gold. Take an extra turn after this one. Exhaust.
 Golden Touch,Rare,Power,3 (2),"Enchanted cards cost 1 less. This stacks. If this card is Enchanted, it costs 1 less. (Infuse a card in your Hand.)"
-Grind Down,Common,Attack,2,Deal 12 (16) damage. Apply 2 (3) Weak. Gambit: Deal 6 (8) additional damage.
+Etch,Common,Attack,2,Deal 14 (18) damage. Ignore Block.
 Heavy Hand,Uncommon,Power,1,"Whenever you gain or apply Poison, add an additional 1 (2) Poison."
 Hemorrhage,Uncommon,Attack,1 (0),Lose HP equal to your Regen. Deal double that much damage.
 Hone,Uncommon,Skill,1,(Gain 1 Strength.) Upgrade ALL cards in your Hand. Exhaust.
@@ -53,7 +53,7 @@ Lifeblood,Uncommon,Attack,1,Gain 2 Regen. Deal 8 (10) damage. Deals additional d
 Masterwork,Uncommon,Skill,1,"Infuse a card in your Hand. If you have Enchanted 5 or more cards this combat, gain 1 (2) Energy, draw 1 (2) cards, and Exhaust this card."
 Melt Down,Uncommon,Skill,1,Choose a card in your Draw Pile to Transform into a Distillate(+).
 Mercurial Form,Rare,Power,3,"At the start of your turn, gain 1 (2) Strength. At the end of your turn, heal HP equal to half your Poison."
-Metabolism,Uncommon,Power,1,"The first time you lose HP on each of your turns, gain 1 Energy. Gambit: Heal 3 (6) HP."
+Slag,Uncommon,Power,1,"Whenever you Exhaust a card, gain 1 (2) Block."
 Needle Point,Rare,Attack,0,"Innate. Deal 7 (10) damage. Apply 1 (2) Weak. If this card is Enchanted, apply 1 (2) Vulnerable."
 Neurotoxin,Rare,Attack,2,Deal 18 (24) damage. Gambit: Stun the enemy. Exhaust.
 Nigredo,Basic,Skill,1,Apply 4 (5) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
@@ -74,7 +74,7 @@ Secretion,Rare,Power,1,"Whenever you take unblocked Attack damage, apply 1 (2) P
 Sediment,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block. If this card is Enchanted, gain 3 Plating."
 Sepsis,Rare,Power,2,Gain 3 (2) Poison. Poisoned enemies take an additional 25% (50%) damage from Attacks.
 Sinter,Common,Skill,1,"Gain 7 (10) Block. If you have 5 or more cards in your Exhaust Pile, this costs 0."
-Siphon,Common,Attack,1,"Deal 8 (12) damage. Draw 2 cards. If this card is Enchanted, draw an additional card."
+Siphon,Common,Attack,1,"Deal 8 (12) damage. Draw 1 card. If this card is Enchanted, draw an additional card."
 Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Gain 2 Poison.
 Strike,Basic,Attack,1,Deal 6 (9) damage.
 Sublimate,Rare,Skill,2,Transform any number of cards in your Hand into Distillates (+). Exhaust.

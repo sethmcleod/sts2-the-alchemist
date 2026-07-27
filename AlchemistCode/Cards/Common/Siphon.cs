@@ -10,7 +10,7 @@ public class Siphon : AlchemistCard
     public Siphon() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(8, 4);
-        WithCards(2, 0);
+        WithCards(1, 0);
     }
 
     internal override bool GainsEffectWhenEnchanted => true;
