@@ -12,7 +12,7 @@ holds the colors and directions; cards.csv holds everything else.
   maps each card to one color pair and one direction. No two cards share
   a pair.
 - **Families share an anchor color.** Cards in the same mechanic family
-  (Seep, Ferment, Gambit, and so on) share the start color and vary the
+  (Reaction, Ferment, Gambit, and so on) share the start color and vary the
   end color. A family reads at a glance; a card stays unique. A tail hue
   can repeat across families because the anchors keep the pairs apart.
 - **The csv is the source for everything else.** Card names, rarity,

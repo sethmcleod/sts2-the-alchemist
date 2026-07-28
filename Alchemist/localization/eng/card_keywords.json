@@ -8,6 +8,12 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "Choose any number of cards to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Choose up to [blue]{MaxCount}[/blue] {MaxCount:plural:card|cards} to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.title": "Infuse",
-  "ALCHEMIST-SEEP.description": "At the end of your turn, if this card is in your [gold]Hand[/gold], the [gold]Seep[/gold] effect triggers.",
-  "ALCHEMIST-SEEP.title": "Seep"
+  "ALCHEMIST-REACTION.description": "A card with [gold]Reaction[/gold] gains an extra effect when the card played directly before it matches.",
+  "ALCHEMIST-REACTION.description.attack": "When you play this card directly after playing an Attack, it has a [gold]Reaction[/gold] effect.",
+  "ALCHEMIST-REACTION.description.block": "When you play this card directly after a card that gained [gold]Block[/gold], it has a [gold]Reaction[/gold] effect.",
+  "ALCHEMIST-REACTION.description.enchanted": "When you play this card directly after playing an [gold]Enchanted[/gold] card, it has a [gold]Reaction[/gold] effect.",
+  "ALCHEMIST-REACTION.description.exhaust": "When you play this card directly after a card that [gold]Exhausted[/gold], it has a [gold]Reaction[/gold] effect.",
+  "ALCHEMIST-REACTION.description.power": "When you play this card directly after playing a Power, it has a [gold]Reaction[/gold] effect.",
+  "ALCHEMIST-REACTION.description.skill": "When you play this card directly after playing a Skill, it has a [gold]Reaction[/gold] effect.",
+  "ALCHEMIST-REACTION.title": "Reaction"
 }

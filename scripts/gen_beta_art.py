@@ -101,16 +101,17 @@ COLORS = {
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
     # Calculated attacks
     "Aggravate": ("#650101", "#a83a52", "TR", "Calculated attacks"),
-    "Delayed Reaction": ("#4a0a33", "#b15cd1", "BR", "Calculated attacks"),
-    # Seep: skills
-    "Corrode": ("#2f0170", "#287912", "BR", "Seep: skills"),
-    "Decoction": ("#2f0170", "#2aa88a", "BR", "Seep: skills"),
-    # Seep: heavy attacks
-    "Draining Strike": ("#2f0170", "#b3341f", "TR", "Seep: heavy attacks"),
-    "Unstable Compound": ("#2f0170", "#63c11c", "TR", "Seep: heavy attacks"),
-    # Seep: light attacks
-    "Quicklime": ("#1c0f45", "#e8e4d2", "TR", "Seep: light attacks"),
-    "Trickle": ("#1c0f45", "#2f9853", "TR", "Seep: light attacks"),
+    # Unstable Compound (one-off): the name kept its own violet-into-toxic-green
+    "Unstable Compound": ("#2f0170", "#63c11c", "TR", "Unique"),
+    # Reaction: skills
+    "Corrode": ("#2f0170", "#287912", "BR", "Reaction: skills"),
+    "Decoction": ("#2f0170", "#2aa88a", "BR", "Reaction: skills"),
+    # Reaction: heavy attacks
+    "Draining Strike": ("#2f0170", "#b3341f", "TR", "Reaction: heavy attacks"),
+    "Backdraft": ("#1a0400", "#ff5a12", "TR", "Reaction: heavy attacks"),
+    # Reaction: light attacks
+    "Quicklime": ("#1c0f45", "#e8e4d2", "TR", "Reaction: light attacks"),
+    "Reagent": ("#1c0f45", "#d8e04a", "TR", "Reaction: light attacks"),
     # Ferment: attacks
     "Patient Strike": ("#4a0e2e", "#c78a3b", "TR", "Ferment: attacks"),
     "Rolling Boil": ("#4a0e2e", "#e85a1f", "TR", "Ferment: attacks"),
@@ -385,10 +386,10 @@ BANNERS = {
 KEYWORDS = [
     "Exhaust Pile", "Draw Pile", "Discard Pile", "Golden Fruit",
     "Distillates", "Distillate", "Enchanted", "Vulnerable", "Fermented",
-    "Multiplayer", "Dexterity", "Strength", "Infused",
+    "Multiplayer", "Dexterity", "Reaction", "Strength", "Infused",
     "Nigredo", "Procure", "Exhaust", "Ferment", "Albedo", "Plating",
     "Poison", "Potion", "Regen", "Retain", "Rubedo", "Gambit", "Innate",
-    "Infuse", "Energy", "Block", "Toxic", "Weak", "Seep", "Stun", "Hand",
+    "Infuse", "Energy", "Block", "Toxic", "Weak", "Stun", "Hand",
 ]
 KEYWORD_RE = re.compile(
     r"\b(" + "|".join(re.escape(k) for k in KEYWORDS) + r")\b")

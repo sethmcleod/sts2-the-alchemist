@@ -11,7 +11,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Transmute : AlchemistCard
 {
-    protected override bool IsGambitCard => true;
+    protected override ReactionCondition Reaction => ReactionCondition.Exhaust;
 
     public Transmute() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
@@ -22,11 +22,14 @@ public class Transmute : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        // Read the Reaction before this card's own Exhaust lands, so it cannot satisfy its own condition
+        var reacted = ReactionActive;
+
         var poison = Owner.Creature.GetPowerAmount<PoisonPower>();
         if (poison > 0)
             await PowerCmd.Apply<TransmuteStrengthPower>(choiceContext, Owner.Creature, poison, Owner.Creature, this);
 
-        if (IsReduced)
+        if (reacted)
         {
             var rarity = IsUpgraded ? PotionRarity.Uncommon : PotionRarity.Common;
             var rng = Owner.RunState.Rng.CombatPotionGeneration;

@@ -35,9 +35,9 @@ _(Disclaimer: This description was paid for by the Merchant.)_
 - **Ferment**: This keyword is only found on cards that also Retain. These
   effects grow in potency for every turn the card stays in your hand, and
   persist after the card is played.
-- **Seep**: Cards with this keyword will trigger an effect if still in your hand
-  at the end of turn and have a green glow. Most are costs that pressure you to
-  play the card, though some are beneficial.
+- **Reaction**: Cards with this keyword gain an extra effect when the card you
+  played directly before them, on the same turn, matches the condition shown.
+  The first card of a turn has nothing before it, so what you lead with matters.
 - **Infuse**: Infusing a card Enchants it for the rest of combat based on the
   type. Attacks apply Poison, Skills create tokens that apply Weak and
   Vulnerable, Powers give Strength, and other cards gain Ethereal.

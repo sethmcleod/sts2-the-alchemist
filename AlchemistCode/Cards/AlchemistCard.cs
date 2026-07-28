@@ -6,7 +6,9 @@ using Alchemist.AlchemistCode.Character;
 using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Enchantments;
 using Alchemist.AlchemistCode.Extensions;
+using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -15,6 +17,7 @@ using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -38,7 +41,7 @@ public abstract class AlchemistCard : ConstructedCardModel
     {
         if (IsGambitCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit);
         if (IsFermentCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
-        if (IsSeepCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Seep);
+        if (ShowsReactionTip) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Reaction);
     }
 
     // Tip text lives in static_hover_tips.json under {key}.title and {key}.description
@@ -73,12 +76,8 @@ public abstract class AlchemistCard : ConstructedCardModel
     // needs its own guard
     protected override bool ShouldGlowGoldInternal =>
         IsMutable && AlchemistModConfig.ShowHandGlows
-        && ((IsGambitCard && IsReduced) || (GainsEffectWhenEnchanted && IsEnchanted) || ConditionalGlow);
-
-    // Green means "leave this in hand", the opposite signal to gold, so gold wins when a card is both.
-    // SeepGlowPatches reads this
-    internal bool ShouldGlowSeep =>
-        IsMutable && AlchemistModConfig.ShowHandGlows && IsSeepCard && !ShouldGlowGold && !ShouldGlowRed;
+        && ((IsGambitCard && IsReduced) || (GainsEffectWhenEnchanted && IsEnchanted)
+            || ReactionActive || ConditionalGlow);
 
     internal bool HpFractionInRange(double lower, double upper)
     {
@@ -147,28 +146,62 @@ public abstract class AlchemistCard : ConstructedCardModel
 
     protected virtual string FermentTotalText => "";
 
-    protected virtual bool IsSeepCard => false;
+    protected virtual ReactionCondition Reaction => ReactionCondition.None;
 
-    protected virtual Task OnSeep(PlayerChoiceContext choiceContext) => Task.CompletedTask;
+    internal bool IsReactionCard => Reaction != ReactionCondition.None;
 
-    // A Seep effect that already shows a card, such as a token that previews itself, opts out of the
-    // flash to prevent a double preview
-    protected virtual bool SeepPreviewsSelf => true;
+    // Reagent names the keyword without carrying a condition, so it needs the tip too
+    protected virtual bool ShowsReactionTip => IsReactionCard;
 
-    // VeryEarly, not the plain hook: RegenPower heals and decrements in BeforeSideTurnEndEarly, between
-    // the two, so from the later hook a Seep that grants Regen misses this turn's heal
-    public override async Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
+    // The last card play this player FINISHED this turn. The card being played now has not finished yet,
+    // so this is the one before it, and null means this is the turn's first card
+    private CardModel? PreviousCardThisTurn =>
+        Owner == null || CombatState == null
+            ? null
+            : CombatManager.Instance.History.CardPlaysFinished
+                .LastOrDefault(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Player == Owner)
+                ?.CardPlay.Card;
+
+    // Reagent hands the next Reaction card a free trigger, so that wins before the condition is read.
+    // The IsMutable gate keeps every caller safe on canonical models, where Owner throws
+    internal bool ReactionActive =>
+        ReactionConditionMet
+        || (IsMutable && IsReactionCard && Owner != null
+            && Owner.Creature.GetPowerAmount<ReactivePower>() > 0);
+
+    // The condition on its own, with no Reagent grant folded in
+    private bool ReactionConditionMet
+    {
+        get
+        {
+            if (!IsMutable || !IsReactionCard || Owner == null) return false;
+            if (PreviousCardThisTurn is not { } prev) return false;
+            return Reaction switch
+            {
+                ReactionCondition.Attack => prev.Type == CardType.Attack,
+                ReactionCondition.Skill => prev.Type == CardType.Skill,
+                ReactionCondition.Power => prev.Type == CardType.Power,
+                ReactionCondition.Enchanted => prev.Enchantment != null,
+                ReactionCondition.Exhaust => CombatManager.Instance.History.Entries
+                    .OfType<CardExhaustedEntry>()
+                    .Any(e => e.HappenedThisTurn(CombatState) && e.Card == prev),
+                ReactionCondition.Block => CombatManager.Instance.History.Entries
+                    .OfType<BlockGainedEntry>()
+                    .Any(e => e.HappenedThisTurn(CombatState) && e.CardPlay?.Card == prev),
+                _ => false,
+            };
+        }
+    }
+
+    // VeryEarly, not the plain hook: RegenPower heals and decrements in BeforeSideTurnEndEarly, so a
+    // Ferment tick has to land ahead of both
+    public override Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
-        if (Owner == null || !participants.Contains(Owner.Creature)
-            || !PileType.Hand.GetPile(Owner).Cards.Contains(this))
-            return;
-        if (IsFermentCard) _fermentTurns++;
-        if (IsSeepCard)
-        {
-            if (SeepPreviewsSelf) CardCmd.Preview(new[] { this });
-            await OnSeep(choiceContext);
-        }
+        if (IsFermentCard && Owner != null && participants.Contains(Owner.Creature)
+            && PileType.Hand.GetPile(Owner).Cards.Contains(this))
+            _fermentTurns++;
+        return Task.CompletedTask;
     }
 
     // The card keeps its potency when you play it, so combat start is the only reset. Deck cards are the

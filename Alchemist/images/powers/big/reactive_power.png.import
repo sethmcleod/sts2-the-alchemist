@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddvo28kh8kcda"
-path="res://.godot/imported/delayed_reaction.png-4210252e8a9441be137f52dc5f349dde.ctex"
+uid="uid://dsgsdjagsxc8p"
+path="res://.godot/imported/reactive_power.png-766d821ee2a43449ae1b3a76d57c5de7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/delayed_reaction.png"
-dest_files=["res://.godot/imported/delayed_reaction.png-4210252e8a9441be137f52dc5f349dde.ctex"]
+source_file="res://Alchemist/images/powers/big/reactive_power.png"
+dest_files=["res://.godot/imported/reactive_power.png-766d821ee2a43449ae1b3a76d57c5de7.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

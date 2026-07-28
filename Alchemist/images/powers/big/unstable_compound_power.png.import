@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm5wqyk50s1ug"
-path="res://.godot/imported/delayed_reaction_power.png-8be48417636aa16f0361752d5f92507e.ctex"
+uid="uid://ca3co0toim8cw"
+path="res://.godot/imported/unstable_compound_power.png-0bd29f160cdf44027589d9cd8752a1e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/delayed_reaction_power.png"
-dest_files=["res://.godot/imported/delayed_reaction_power.png-8be48417636aa16f0361752d5f92507e.ctex"]
+source_file="res://Alchemist/images/powers/big/unstable_compound_power.png"
+dest_files=["res://.godot/imported/unstable_compound_power.png-0bd29f160cdf44027589d9cd8752a1e2.ctex"]
 
 [params]
 

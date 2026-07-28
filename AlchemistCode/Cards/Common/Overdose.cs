@@ -8,25 +8,23 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Overdose : AlchemistCard
 {
-    protected override bool IsGambitCard => true;
+    protected override ReactionCondition Reaction => ReactionCondition.Exhaust;
 
     public Overdose() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(15, 5);
         WithVar("hpLoss", 4, 0);
-        WithVar("GambitRegen", 2, 0);
+        WithVar("ReactionRegen", 2, 1);
         WithTip(typeof(RegenPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Read Gambit before the HP loss, or the card's own cost could push you under the line and pay
-        // you for it, making the Regen unconditional in practice
-        var gambit = IsReduced;
+        var reacted = ReactionActive;
         await LoseHp(choiceContext, DynamicVars["hpLoss"].IntValue);
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_blunt")).Execute(choiceContext);
-        if (gambit)
+        if (reacted)
             await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature,
-                DynamicVars["GambitRegen"].IntValue, Owner.Creature, this);
+                DynamicVars["ReactionRegen"].IntValue, Owner.Creature, this);
     }
 }

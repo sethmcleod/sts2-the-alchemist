@@ -58,7 +58,7 @@ public partial class MainFile : Node
 
         try
         {
-            HealthBarForecastRegistry.Register<Powers.DelayedReactionForecast>(ModId, "delayed_reaction");
+            HealthBarForecastRegistry.Register<Powers.UnstableCompoundForecast>(ModId, "unstable_compound");
         }
         catch (System.Exception e)
         {

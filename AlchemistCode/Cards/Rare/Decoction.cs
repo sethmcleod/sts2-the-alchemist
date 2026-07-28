@@ -1,25 +1,27 @@
+using Alchemist.AlchemistCode.Commands;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Decoction : AlchemistCard
 {
-    protected override bool IsSeepCard => true;
+    protected override ReactionCondition Reaction => ReactionCondition.Enchanted;
 
     public Decoction() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
-        WithTip(typeof(PoisonPower));
+        WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        var reacted = ReactionActive;
+
         // The built-in exhaust prompt, because the card's own SelectionScreenPrompt getter throws
         // without a per-card loc key
         var selected = await CardSelectCmd.FromHand(
@@ -32,10 +34,8 @@ public class Decoction : AlchemistCard
         await PotionCmd.TryToProcure(
             PotionFactory.CreateRandomPotionInCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable(),
             Owner);
-    }
 
-    protected override async Task OnSeep(PlayerChoiceContext choiceContext)
-    {
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this);
+        if (reacted)
+            await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 1);
     }
 }

@@ -9,7 +9,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class DripFeed : AlchemistCard
 {
-    protected override bool IsGambitCard => true;
+    protected override ReactionCondition Reaction => ReactionCondition.Skill;
 
     public DripFeed() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
@@ -19,8 +19,8 @@ public class DripFeed : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Gambit is resolved once, here at play time, and folded into the power's per-turn amount
-        var amount = DynamicVars["Regen"].IntValue + (IsReduced ? 1 : 0);
+        // The Reaction is resolved once, here at play time, and folded into the power's per-turn amount
+        var amount = DynamicVars["Regen"].IntValue + (ReactionActive ? 1 : 0);
         await PowerCmd.Apply<DripFeedPower>(choiceContext, Owner.Creature,
             amount, Owner.Creature, this);
     }

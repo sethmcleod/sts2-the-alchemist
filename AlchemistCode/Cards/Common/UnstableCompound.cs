@@ -5,9 +5,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-public class DelayedReaction : AlchemistCard
+public class UnstableCompound : AlchemistCard
 {
-    public DelayedReaction() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+    public UnstableCompound() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithVar("Dmg", 14, 6);
         WithKeyword(CardKeyword.Exhaust);
@@ -17,7 +17,7 @@ public class DelayedReaction : AlchemistCard
     {
         if (play.Target == null) return;
         // A second play on the same enemy adds to the pending amount; the timer does not reset
-        await PowerCmd.Apply<DelayedReactionPower>(choiceContext, play.Target,
+        await PowerCmd.Apply<UnstableCompoundPower>(choiceContext, play.Target,
             DynamicVars["Dmg"].IntValue, Owner.Creature, this);
     }
 }

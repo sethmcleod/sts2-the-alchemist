@@ -15,12 +15,27 @@ Security.
 
 ### Added
 
+- Added Reaction keyword: "When you play this card directly after a card that matches, it has a Reaction effect."
+- Added Reagent card: "Deal 4 (6) damage. The next card you play this turn triggers its Reaction." Replaces Trickle
+- Added Backdraft card: "Deal 8 (11) damage. Reaction (Attack): Deal 8 (11) damage again." Replaces Unstable Compound
+- Added Reactive power: "The next card you play with a Reaction will trigger it."
 - Added Etch card: "Deal 14 (18) damage. Ignore Block." Replaces Grind Down
 - Added Slag card: "Whenever you Exhaust a card, gain 1 (2) Block." Replaces Metabolism
 
 ### Changed
 
-- Changed Delayed Reaction card: its power now reads "At the end of this turn, takes N damage." on the turn it detonates, and its damage number and forecast respect Hard to Kill and Intangible
+- Reworked Quicklime card: "Deal 7 (9) damage. Gain 5 (7) Block. Reaction (Skill): Gain 3 Block."
+- Reworked Cauterize card: "Deal 6 (9) damage. Gain 1 Regen. Reaction (Attack): Gain 1 additional Regen."
+- Reworked Overdose card: "Lose 4 HP. Deal 15 (20) damage. Reaction (Exhaust): Gain 2 (3) Regen."
+- Reworked Draining Strike card: "Deal 14 (18) damage. The enemy loses 6 Strength this turn. Reaction (Attack): Deal 5 (7) additional damage."
+- Reworked Transmute card: "Gain Strength this turn equal to your Poison. Reaction (Exhaust): Procure a random Common (Uncommon) potion."
+- Reworked Corrode card: "Apply 6 Poison and 1 (2) Weak to ALL enemies. Reaction (Skill): Apply 2 additional Poison."
+- Reworked Bramble card: "Gain 3 (4) Thorns. Reaction (Block): Gain 2 additional Thorns."
+- Reworked Decoction card: "Exhaust 1 card. Procure a random potion. Reaction (Enchanted): Infuse a card in your Hand."
+- Reworked Lash Out card: "Deal 6 (8) damage 3 times. Gambit: Hits an additional time. Reaction (Power): Hits an additional time."
+- Reworked Drip Feed card: "At the start of your turn, gain 1 (2) Regen. Reaction (Skill): Gain 1 additional Regen."
+- Renamed Delayed Reaction to Unstable Compound, reusing the name from the removed Attack
+- Changed Unstable Compound card: its power now reads "At the end of this turn, takes N damage." on the turn it detonates, and its damage number and forecast respect Hard to Kill and Intangible
 - Changed Sweat It Out card: it now shows "(Apply N Poison.)" during combat
 - Changed Fumigate card: it no longer glows gold
 - Changed Albedo card: it now adds a Rubedo into your Hand
@@ -28,6 +43,8 @@ Security.
 
 ### Removed
 
+- Removed Seep keyword
+- Removed Trickle and Unstable Compound cards
 - Removed Grind Down and Metabolism cards
 - Removed Citrinitas card
 

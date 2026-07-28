@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buuxyu6ohotp3"
-path="res://.godot/imported/trickle.png-ddb5faf96bd38b6bc9c74ad5c85dafd7.ctex"
+uid="uid://d0rptvy7eu8ba"
+path="res://.godot/imported/unstable_compound_power.png-463a1f868c29a0b8836c235a1a683054.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/trickle.png"
-dest_files=["res://.godot/imported/trickle.png-ddb5faf96bd38b6bc9c74ad5c85dafd7.ctex"]
+source_file="res://Alchemist/images/powers/unstable_compound_power.png"
+dest_files=["res://.godot/imported/unstable_compound_power.png-463a1f868c29a0b8836c235a1a683054.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

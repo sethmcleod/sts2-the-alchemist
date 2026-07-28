@@ -8,23 +8,22 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Quicklime : AlchemistCard
 {
-    protected override bool IsSeepCard => true;
+    protected override ReactionCondition Reaction => ReactionCondition.Skill;
 
     public Quicklime() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(7, 2);
         WithBlock(5, 2);
-        WithVar("SeepBlock", 3, 0);
+        WithVar("ReactionBlock", 3, 0);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        var reacted = ReactionActive;
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
         await CommonActions.CardBlock(this, play);
-    }
-
-    protected override async Task OnSeep(PlayerChoiceContext choiceContext)
-    {
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["SeepBlock"].BaseValue, ValueProp.Move, null);
+        if (reacted)
+            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["ReactionBlock"].BaseValue,
+                ValueProp.Move, null);
     }
 }
