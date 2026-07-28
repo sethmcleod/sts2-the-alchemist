@@ -216,8 +216,6 @@ COLORS = {
     "Nigredo": ("#07130a", "#25511a", "D", "Unique"),
     # Albedo (token)
     "Albedo": ("#3fd3b0", "#fefeff", "U", "Unique"),
-    # Citrinitas (token)
-    "Citrinitas": ("#e87500", "#feee2b", "D", "Unique"),
     # Rubedo (token)
     "Rubedo": ("#390800", "#9a330b", "D", "Unique"),
     # Foul Vapor (token)
@@ -387,7 +385,7 @@ BANNERS = {
 KEYWORDS = [
     "Exhaust Pile", "Draw Pile", "Discard Pile", "Golden Fruit",
     "Distillates", "Distillate", "Enchanted", "Vulnerable", "Fermented",
-    "Multiplayer", "Citrinitas", "Dexterity", "Strength", "Infused",
+    "Multiplayer", "Dexterity", "Strength", "Infused",
     "Nigredo", "Procure", "Exhaust", "Ferment", "Albedo", "Plating",
     "Poison", "Potion", "Regen", "Retain", "Rubedo", "Gambit", "Innate",
     "Infuse", "Energy", "Block", "Toxic", "Weak", "Seep", "Stun", "Hand",

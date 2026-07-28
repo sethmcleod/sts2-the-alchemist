@@ -15,7 +15,7 @@ public class Albedo : AlchemistCard
     {
         WithPower<RegenPower>(0, 1);
         WithKeyword(CardKeyword.Exhaust);
-        WithUpgradingCardTip<Citrinitas>();
+        WithUpgradingCardTip<Rubedo>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -30,6 +30,6 @@ public class Albedo : AlchemistCard
             await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, regenAmount, Owner.Creature, this);
         }
 
-        await AlchemistCardCmd.GiveCard<Citrinitas>(this);
+        await AlchemistCardCmd.GiveCard<Rubedo>(this);
     }
 }

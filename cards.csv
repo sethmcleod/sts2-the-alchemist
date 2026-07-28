@@ -1,6 +1,6 @@
 Card,Rarity,Type,Cost,Description
 Aggravate,Uncommon,Attack,0,Deal 4 damage. Deals 2 (3) additional damage for each unique debuff on the enemy.
-Albedo,Token,Skill,1,Lose all Poison. Gain that much Regen (+ 1). Add a Citrinitas (+) into your Hand. Exhaust.
+Albedo,Token,Skill,1,Lose all Poison. Gain that much Regen (+ 1). Add a Rubedo (+) into your Hand. Exhaust.
 Amalgam,Rare,Attack,X,Lose all Poison and Regen. Deal that much damage to ALL enemies X (+1) times. Exhaust.
 Aureate,Ancient,Attack,1,Deal 12 (18) damage to ALL enemies. Infuse any number of cards in your Hand.
 Azoth,Rare,Attack,1,"Deal 10 (14) damage. If you have 5 or more cards in your Exhaust Pile, gain 1 (2) energy."
@@ -12,7 +12,6 @@ Carapace,Common,Skill,2,Retain. Ferment. Gain 10 Block. Gain 4 (6) additional Bl
 Catalyze,Rare,Power,2 (1),"The first time you lose HP on each of your turns, gain 2 Regen."
 Cauterize,Common,Attack,1,Deal 6 (9) damage. Gain 1 Regen. Gambit: Gain 1 additional Regen.
 Circulation,Uncommon,Skill,1,"Gain 2 (4) Regen. Lose half your Regen, then draw that many cards."
-Citrinitas,Token,Attack,1,Lose all Regen. Deal that much damage to ALL enemies 2 (3) times. Add a Rubedo (+) into your Hand. Exhaust.
 Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison. Gambit: Gain 2 (3) Regen.
 Contagion,Rare,Power,2 (1),"Whenever you take Poison damage, apply that much Poison to ALL enemies."
 Corrode,Uncommon,Skill,2,Apply 6 Poison and 1 (2) Weak to ALL enemies. Gambit: Apply 2 additional Poison.

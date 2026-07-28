@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-AGGRAVATE.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each unique debuff on the enemy.",
   "ALCHEMIST-AGGRAVATE.title": "Aggravate",
-  "ALCHEMIST-ALBEDO.description": "Lose all [gold]Poison[/gold].\nGain that much [gold]Regen[/gold]{IfUpgraded:show:+1|}.\nAdd a {IfUpgraded:show:[green]Citrinitas+[/green]|[gold]Citrinitas[/gold]} into your [gold]Hand[/gold].",
+  "ALCHEMIST-ALBEDO.description": "Lose all [gold]Poison[/gold].\nGain that much [gold]Regen[/gold]{IfUpgraded:show:+1|}.\nAdd a {IfUpgraded:show:[green]Rubedo+[/green]|[gold]Rubedo[/gold]} into your [gold]Hand[/gold].",
   "ALCHEMIST-ALBEDO.title": "Albedo",
   "ALCHEMIST-AMALGAM.description": "Lose all [gold]Poison[/gold] and [gold]Regen[/gold].{Fuel}\nDeal that much damage to ALL enemies X{IfUpgraded:show:[green]+1[/green]|} times.",
   "ALCHEMIST-AMALGAM.title": "Amalgam",
@@ -25,8 +25,6 @@
   "ALCHEMIST-CAUTERIZE.title": "Cauterize",
   "ALCHEMIST-CIRCULATION.description": "Gain {Regen:diff()} [gold]Regen[/gold].\nLose half your [gold]Regen[/gold], then draw that many cards.{DrawLine}",
   "ALCHEMIST-CIRCULATION.title": "Circulation",
-  "ALCHEMIST-CITRINITAS.description": "Lose all [gold]Regen[/gold].\nDeal that much damage{FormulaDamage} to ALL enemies {IfUpgraded:show:[green]3[/green]|2} times.\nAdd a {IfUpgraded:show:[green]Rubedo+[/green]|[gold]Rubedo[/gold]} into your [gold]Hand[/gold].",
-  "ALCHEMIST-CITRINITAS.title": "Citrinitas",
   "ALCHEMIST-CONGEAL.description": "Gain {CalculatedBlock:diff()} [gold]Block[/gold].\nGain additional [gold]Block[/gold] equal to your [gold]Poison[/gold].\n[gold]Gambit[/gold]: Gain {RegenPower:diff()} [gold]Regen[/gold].",
   "ALCHEMIST-CONGEAL.title": "Congeal",
   "ALCHEMIST-CONTAGION.description": "Whenever you take [gold]Poison[/gold] damage, apply that much [gold]Poison[/gold] to ALL enemies.",
