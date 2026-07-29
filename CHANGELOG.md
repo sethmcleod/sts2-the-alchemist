@@ -25,6 +25,10 @@ Security.
 ### Changed
 
 - Nerfed Gambit keyword: it now activates at 33% or less HP, decreased from 50%
+- Reworked Ferment keyword: a card now spoils into a Toxic once it passes its peak, and its face reads "Ferment (0/3)" for turns fermented over that peak
+  - Patient Strike and Rolling Boil peak at 3 turns, Froth and Vintage at 4, Carapace and Sweat It Out at 5
+  - Playing a Ferment card now resets its turns fermented, so each draw starts a fresh ramp
+- Buffed Sweat It Out card: Poison per turn fermented increased from 1 -> 2
 - Nerfed Fumigate card: extra hits changed from 1 per card in your Exhaust Pile -> 1 per 2 cards
 - Buffed Prime card: Gambit Block increased from 4(6) -> 7(10)
 - Buffed Puncture card: Gambit Weak increased from 1 -> 2

@@ -7,7 +7,7 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Froth : AlchemistCard
 {
-    protected override bool IsFermentCard => true;
+    protected override int FermentPeak => 4;
 
     public Froth() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {

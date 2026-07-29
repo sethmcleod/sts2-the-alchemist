@@ -8,7 +8,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Vintage : AlchemistCard
 {
-    protected override bool IsFermentCard => true;
+    protected override int FermentPeak => 4;
 
     protected override string FermentTotalText
     {

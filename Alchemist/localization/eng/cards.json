@@ -163,7 +163,7 @@
   "ALCHEMIST-SUBLIMATE.title": "Sublimate",
   "ALCHEMIST-SUFFUSE.description": "While [gold]Gambit[/gold] is active, at the start of your turn, ALL allies procure a random potion.",
   "ALCHEMIST-SUFFUSE.title": "Suffuse",
-  "ALCHEMIST-SWEAT_IT_OUT.description": "[gold]Ferment{FermentSuffix}.[/gold]\nGain {SelfPoison:diff()} [gold]Poison[/gold], plus 1 for each turn fermented.\nLose all [gold]Poison[/gold]. Apply that much [gold]Poison[/gold] to ALL enemies.{ApplyLine}",
+  "ALCHEMIST-SWEAT_IT_OUT.description": "[gold]Ferment{FermentSuffix}.[/gold]\nGain {SelfPoison:diff()} [gold]Poison[/gold], plus {FermentPoison} for each turn fermented.\nLose all [gold]Poison[/gold]. Apply that much [gold]Poison[/gold] to ALL enemies.{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "Sweat It Out",
   "ALCHEMIST-TRANSMUTE.description": "Gain [gold]Strength[/gold] this turn equal to your [gold]Poison[/gold].\n[gold]Reaction[/gold] ([gold]Exhaust[/gold]): Procure a random {IfUpgraded:show:Uncommon|Common} potion.",
   "ALCHEMIST-TRANSMUTE.title": "Transmute",

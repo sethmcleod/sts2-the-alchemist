@@ -7,7 +7,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class PatientStrike : AlchemistCard
 {
-    protected override bool IsFermentCard => true;
+    protected override int FermentPeak => 3;
 
     public PatientStrike() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {

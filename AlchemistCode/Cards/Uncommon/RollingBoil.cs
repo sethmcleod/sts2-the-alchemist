@@ -7,7 +7,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class RollingBoil : AlchemistCard
 {
-    protected override bool IsFermentCard => true;
+    protected override int FermentPeak => 3;
 
     public RollingBoil() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {

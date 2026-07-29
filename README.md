@@ -33,8 +33,8 @@ _(Disclaimer: This description was paid for by the Merchant.)_
   HP is 50% or less. Whether increasing damage or adding additional effects,
   you'll benefit from playing strategically.
 - **Ferment**: This keyword is only found on cards that also Retain. These
-  effects grow in potency for every turn the card stays in your hand, and
-  persist after the card is played.
+  effects grow in potency for every turn the card stays in your hand. However if
+  you Retain them past their peak, they spoil into Toxic cards.
 - **Reaction**: Cards with this keyword gain an extra effect when the card you
   played directly before them, on the same turn, matches the condition shown.
   The first card of a turn has nothing before it, so what you lead with matters.

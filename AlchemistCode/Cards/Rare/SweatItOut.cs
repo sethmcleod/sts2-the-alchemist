@@ -9,20 +9,24 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class SweatItOut : AlchemistCard
 {
-    protected override bool IsFermentCard => true;
+    protected override int FermentPeak => 5;
 
     public SweatItOut() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithVar("SelfPoison", 2, 1);
+        WithVar("FermentPoison", 2, 0);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }
 
+    private int FermentPoison =>
+        (int)DynamicVars["SelfPoison"].BaseValue
+        + DynamicVars["FermentPoison"].IntValue * FermentTurns;
+
     // What this play would apply right now: your Poison, plus the Poison this card is about to give you
     private int PoisonToApply =>
         IsMutable && CombatState != null
-            ? Owner.Creature.GetPowerAmount<PoisonPower>()
-              + (int)DynamicVars["SelfPoison"].BaseValue + FermentTurns
+            ? Owner.Creature.GetPowerAmount<PoisonPower>() + FermentPoison
             : 0;
 
     protected override void AddExtraArgsToDescription(LocString description)
@@ -35,7 +39,7 @@ public class SweatItOut : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
-            DynamicVars["SelfPoison"].BaseValue + FermentTurns, Owner.Creature, this);
+            FermentPoison, Owner.Creature, this);
         var poison = Owner.Creature.GetPowerAmount<PoisonPower>();
         if (Owner.Creature.HasPower<PoisonPower>())
             await PowerCmd.Remove<PoisonPower>(Owner.Creature);

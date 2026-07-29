@@ -40,7 +40,12 @@ public abstract class AlchemistCard : ConstructedCardModel
     private IEnumerable<IHoverTip> KeywordTips()
     {
         if (IsGambitCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit);
-        if (IsFermentCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
+        if (IsFermentCard)
+        {
+            yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
+            // The keyword names Toxic as the spoil result, so show what one actually does
+            yield return HoverTipFactory.FromCard<MegaCrit.Sts2.Core.Models.Cards.Toxic>();
+        }
         if (ShowsReactionTip) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Reaction);
     }
 
@@ -138,7 +143,11 @@ public abstract class AlchemistCard : ConstructedCardModel
 
     private int _fermentTurns;
 
-    protected virtual bool IsFermentCard => false;
+    // Turns in hand before the card spoils, tuned per card because the six grow at very different rates.
+    // 0 means the card does not Ferment, so a Ferment card cannot exist without declaring its peak
+    protected virtual int FermentPeak => 0;
+
+    protected bool IsFermentCard => FermentPeak > 0;
 
     internal bool IsFermentInline => IsFermentCard;
 
@@ -204,8 +213,31 @@ public abstract class AlchemistCard : ConstructedCardModel
         return Task.CompletedTask;
     }
 
-    // The card keeps its potency when you play it, so combat start is the only reset. Deck cards are the
-    // same instances each combat and all of them get this hook, so this covers every pile
+    // AFTER the turn end, deliberately. CombatManager.DoTurnEnd snapshots which cards have a turn-end
+    // effect before firing any of them, so a Toxic created here misses that snapshot and does not bite
+    // until the END of the next turn. That leaves one turn to either exhaust it for 1 energy or eat the 5
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
+        IEnumerable<Creature> participants)
+    {
+        if (!IsFermentCard || _fermentTurns <= FermentPeak) return;
+        if (Owner == null || !participants.Contains(Owner.Creature)) return;
+        if (CombatState is not { } combat) return;
+        if (!PileType.Hand.GetPile(Owner).Cards.Contains(this)) return;
+
+        await CardCmd.Transform(this, combat.CreateCard<MegaCrit.Sts2.Core.Models.Cards.Toxic>(Owner));
+    }
+
+    // Playing the card spends its fermentation. This fires after OnPlay has already read the count, so
+    // the play still gets full value. Without it a card played at peak would return from the discard pile
+    // still ripe, making every later draw a one-turn fuse instead of a fresh ramp
+    public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card == this) _fermentTurns = 0;
+        return Task.CompletedTask;
+    }
+
+    // Covers the cards that were never played. Deck cards are the same instances each combat and all of
+    // them get this hook, so this covers every pile
     public override Task BeforeCombatStart()
     {
         _fermentTurns = 0;
@@ -217,7 +249,9 @@ public abstract class AlchemistCard : ConstructedCardModel
         base.AddExtraArgsToDescription(description);
         if (IsFermentCard)
         {
-            description.Add("FermentSuffix", _fermentTurns > 0 ? $" ({_fermentTurns})" : "");
+            // Always shown, even at 0 and in the compendium: the peak is now a stat of the card, and it
+            // is what makes the spoil deadline legible without spending a line of card text on it
+            description.Add("FermentSuffix", $" ({_fermentTurns}/{FermentPeak})");
             description.Add("FermentTotal", FermentTotalText);
         }
         // These previews read Owner, which throws on a canonical model such as the card library
