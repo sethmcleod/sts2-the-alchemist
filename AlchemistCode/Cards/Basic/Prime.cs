@@ -15,7 +15,7 @@ public class Prime : AlchemistCard, ITranscendenceCard
     public Prime() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
     {
         WithDamage(6, 2);
-        WithBlock(4, 2);
+        WithBlock(7, 3);
         WithTips(_ => Infusion.InfuseTips());
     }
 

@@ -18,8 +18,7 @@ public class ResolvePower : AlchemistPower
 
     private decimal _granted;
 
-    // The same threshold the Gambit keyword uses
-    private bool IsReduced => Owner is { } c && c.CurrentHp * 2 <= c.MaxHp;
+    private bool IsReduced => Gambit.IsActive(Owner);
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource) => Sync();
 

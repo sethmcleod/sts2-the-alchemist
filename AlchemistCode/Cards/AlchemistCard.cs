@@ -61,7 +61,7 @@ public abstract class AlchemistCard : ConstructedCardModel
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
     // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state
-    internal bool IsReduced => Owner?.Creature is { } c && c.CurrentHp * 2 <= c.MaxHp;
+    internal bool IsReduced => Gambit.IsActive(Owner?.Creature);
 
     internal bool IsEnchanted => Enchantment != null;
 

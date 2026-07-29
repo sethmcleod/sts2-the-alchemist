@@ -24,6 +24,14 @@ Security.
 
 ### Changed
 
+- Nerfed Gambit keyword: it now activates at 33% or less HP, decreased from 50%
+- Nerfed Fumigate card: extra hits changed from 1 per card in your Exhaust Pile -> 1 per 2 cards
+- Buffed Prime card: Gambit Block increased from 4(6) -> 7(10)
+- Buffed Puncture card: Gambit Weak increased from 1 -> 2
+- Buffed Congeal card: Gambit Regen increased from 2(3) -> 3(4)
+- Reworked Fresh Batch card: "Procure a random potion. Gambit: Gain 10 (14) Block. Exhaust."
+- Reworked Lash Out card: "Deal 6 (8) damage 3 times. Gambit: Gain 1 Regen for each hit. Reaction (Power): Hits an additional time."
+- Changed Fever Pitch and Suffuse cards: they now read "While Gambit is active" instead of naming an HP percentage
 - Reworked Quicklime card: "Deal 7 (9) damage. Gain 5 (7) Block. Reaction (Skill): Gain 3 Block."
 - Reworked Cauterize card: "Deal 6 (9) damage. Gain 1 Regen. Reaction (Attack): Gain 1 additional Regen."
 - Reworked Overdose card: "Lose 4 HP. Deal 15 (20) damage. Reaction (Exhaust): Gain 2 (3) Regen."

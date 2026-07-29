@@ -2,6 +2,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -11,16 +12,19 @@ public class FreshBatch : AlchemistCard
 
     public FreshBatch() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Extra", 1, 1);
+        WithVar("GambitBlock", 10, 4);
         WithKeyword(CardKeyword.Exhaust);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        var gambit = IsReduced;
         await Procure();
-        if (IsReduced)
-            for (var i = 0; i < DynamicVars["Extra"].IntValue; i++)
-                await Procure();
+        // Block rather than more potions: at a third HP the card has to keep you alive, and the extra
+        // potions were feeding an already over-tuned economy
+        if (gambit)
+            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["GambitBlock"].IntValue,
+                ValueProp.Move, null);
     }
 
     private Task Procure() =>

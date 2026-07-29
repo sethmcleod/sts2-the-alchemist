@@ -9,8 +9,6 @@ namespace Alchemist.AlchemistCode.Powers;
 
 public class FeverPitchPower : AlchemistPower
 {
-    private const double Threshold = 0.50;
-
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
@@ -18,8 +16,7 @@ public class FeverPitchPower : AlchemistPower
         ICombatState combatState)
     {
         if (!participants.Contains(Owner)) return;
-        var pct = (double)Owner.CurrentHp / Owner.MaxHp;
-        if (pct >= Threshold) return;
+        if (!Gambit.IsActive(Owner)) return;
 
         Flash();
         await CardPileCmd.Draw(new ThrowingPlayerChoiceContext(), Amount, Owner.Player!);

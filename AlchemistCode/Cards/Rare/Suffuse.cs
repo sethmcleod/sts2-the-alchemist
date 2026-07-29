@@ -9,14 +9,13 @@ public class Suffuse : AlchemistCard
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
+    // IsGambitCard covers both the keyword tooltip and the gold glow, so no bespoke ConditionalGlow
+    protected override bool IsGambitCard => true;
+
     public Suffuse() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
     }
-
-    // 0.50 mirrors SuffusePower.Threshold; keep them in step so the glow matches the actual trigger
-    protected override bool ConditionalGlow =>
-        Owner?.Creature is { } c && c.MaxHp > 0 && (double)c.CurrentHp / c.MaxHp < 0.50;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

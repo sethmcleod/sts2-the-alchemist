@@ -17,16 +17,19 @@ public class Fumigate : AlchemistCard
     private int ExhaustCount =>
         IsMutable && CombatState != null ? PileType.Exhaust.GetPile(Owner).Cards.Count : 0;
 
+    // The card exhausts itself, but that lands after the attack, so it never counts toward its own hits
+    private int HitCount => 1 + ExhaustCount / 2;
+
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
-        description.Add("HitsLine",
-            HitsLine(ExhaustCount is var n and > 0 ? 1 + n : 0));
+        // Only once the pile actually buys a hit. Below 2 cards the line would just restate the single
+        // hit the card already describes
+        description.Add("HitsLine", HitsLine(ExhaustCount >= 2 ? HitCount : 0));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var hitCount = 1 + ExhaustCount;
-        await CommonActions.CardAttack(this, play, hitCount, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, HitCount, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
     }
 }
