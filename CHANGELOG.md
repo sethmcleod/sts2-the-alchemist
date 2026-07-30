@@ -53,6 +53,7 @@ Security.
 - Changed Albedo card: it now adds a Rubedo into your Hand
 - Nerfed Siphon card: card draw decreased from 2 -> 1
 - Nerfed Nigredo card: Poison decreased from 4(5) -> 3(4)
+- Nerfed Rubedo card: Gold decreased from 15(20) -> 5(10)
 - Nerfed Froth card: Ferment peak decreased from 4 -> 3
 - Buffed Slag card: Block increased from 1(2) -> 2(3)
 - Changed the default Brew-only potion chance from 20% -> 10%
