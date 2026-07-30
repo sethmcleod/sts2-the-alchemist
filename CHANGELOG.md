@@ -56,6 +56,7 @@ Security.
 - Nerfed Froth card: Ferment peak decreased from 4 -> 3
 - Buffed Slag card: Block increased from 1(2) -> 2(3)
 - Changed the default Brew-only potion chance from 20% -> 10%
+- Changed Soporific potion: it now lands with an impact effect and sound
 
 ### Removed
 
