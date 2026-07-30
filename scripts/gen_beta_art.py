@@ -102,7 +102,7 @@ COLORS = {
     # Calculated attacks
     "Aggravate": ("#650101", "#a83a52", "TR", "Calculated attacks"),
     # Unstable Compound (one-off): the name kept its own violet-into-toxic-green
-    "Unstable Compound": ("#2f0170", "#63c11c", "TR", "Unique"),
+    "Unstable Compound": ("#2f0170", "#63c11c", "BR", "Unique"),
     # Reaction: skills
     "Corrode": ("#2f0170", "#287912", "BR", "Reaction: skills"),
     "Decoction": ("#2f0170", "#2aa88a", "BR", "Reaction: skills"),
@@ -122,7 +122,7 @@ COLORS = {
     # Infuse: cantrips
     "Enrich": ("#792595", "#b8d94f", "BR", "Infuse: cantrips"),
     "Salve": ("#792595", "#6fd8e0", "BR", "Infuse: cantrips"),
-    "Prime": ("#792595", "#2cbeba", "D", "Infuse: cantrips"),
+    "Prime": ("#792595", "#2cbeba", "TR", "Infuse: cantrips"),
     # Quench (one-off)
     "Quench": ("#792595", "#0e5452", "BR", "Unique"),
     # Infuse: heavy
@@ -193,7 +193,7 @@ COLORS = {
     "Hone": ("#3a1220", "#ff5f3d", "BR", "Crafting: refinement"),
     "Winnow": ("#3a1220", "#f0435e", "BR", "Crafting: refinement"),
     # Distillate (one-off token)
-    "Distillate": ("#232838", "#6fc0e8", "D", "Unique"),
+    "Distillate": ("#1b2f2c", "#6fe0b4", "D", "Unique"),
     # Multiplayer: gifts
     "Bestow": ("#2563c4", "#b48ff0", "BR", "Multiplayer: gifts"),
     "Effervesce": ("#2563c4", "#d8e8f5", "BR", "Multiplayer: gifts"),
@@ -214,7 +214,7 @@ COLORS = {
     # Defend (Basic)
     "Defend": ("#0f2a43", "#2b6ea8", "TR", "Unique"),
     # Nigredo (token)
-    "Nigredo": ("#07130a", "#25511a", "D", "Unique"),
+    "Nigredo": ("#07130a", "#25511a", "U", "Unique"),
     # Albedo (token)
     "Albedo": ("#3fd3b0", "#fefeff", "U", "Unique"),
     # Rubedo (token)
