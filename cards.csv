@@ -52,7 +52,7 @@ Melt Down,Uncommon,Skill,1,Choose a card in your Draw Pile to Transform into a D
 Mercurial Form,Rare,Power,3,"At the start of your turn, gain 1 (2) Strength. At the end of your turn, heal HP equal to half your Poison."
 Needle Point,Rare,Attack,0,"Innate. Deal 7 (10) damage. Apply 1 (2) Weak. If this card is Enchanted, apply 1 (2) Vulnerable."
 Neurotoxin,Rare,Attack,2,Deal 18 (24) damage. Gambit: Stun the enemy. Exhaust.
-Nigredo,Basic,Skill,1,Apply 4 (5) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
+Nigredo,Basic,Skill,1,Apply 3 (4) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
 Overdose,Common,Attack,1,Lose 4 HP. Deal 15 (20) damage. Reaction (Exhaust): Gain 2 (3) Regen.
 Overflow,Rare,Attack,2,Lose all Regen. Deal 3 (4) damage to ALL enemies for each Regen lost. Exhaust.
 Patient Strike,Uncommon,Attack,1,Retain. Ferment (0/3). Deal 6 damage. Deals 6 (9) additional damage for each turn fermented.
@@ -75,7 +75,7 @@ Sediment,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block. 
 Sepsis,Rare,Power,2,Gain 3 (2) Poison. Poisoned enemies take an additional 25% (50%) damage from Attacks.
 Sinter,Common,Skill,1,"Gain 7 (10) Block. If you have 5 or more cards in your Exhaust Pile, this costs 0."
 Siphon,Common,Attack,1,"Deal 8 (12) damage. Draw 1 card. If this card is Enchanted, draw an additional card."
-Slag,Uncommon,Power,1,"Whenever you Exhaust a card, gain 1 (2) Block."
+Slag,Uncommon,Power,1,"Whenever you Exhaust a card, gain 2 (3) Block."
 Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Gain 2 Poison.
 Strike,Basic,Attack,1,Deal 6 (9) damage.
 Sublimate,Rare,Skill,2,Transform any number of cards in your Hand into Distillates (+). Exhaust.

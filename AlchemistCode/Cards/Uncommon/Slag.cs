@@ -9,7 +9,7 @@ public class Slag : AlchemistCard
 {
     public Slag() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Block", 1, 1);
+        WithVar("Block", 2, 1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

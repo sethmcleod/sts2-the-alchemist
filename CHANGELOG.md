@@ -52,6 +52,9 @@ Security.
 - Changed Fumigate card: it no longer glows gold
 - Changed Albedo card: it now adds a Rubedo into your Hand
 - Nerfed Siphon card: card draw decreased from 2 -> 1
+- Nerfed Nigredo card: Poison decreased from 4(5) -> 3(4)
+- Nerfed Froth card: Ferment peak decreased from 4 -> 3
+- Buffed Slag card: Block increased from 1(2) -> 2(3)
 
 ### Removed
 
