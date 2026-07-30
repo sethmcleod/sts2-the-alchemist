@@ -21,8 +21,12 @@ public static class KeywordTipFactory
 }
 
 // BaseLib builds custom-keyword hover tips with a null icon; rebuild ours with an icon texture.
-// Reaction is absent on purpose: its wording depends on the card's condition, so AlchemistCard builds
-// that tip itself rather than going through the shared factory
+//
+// Reaction is handled here only as a fallback for a caller that has nothing but the keyword. Cards must
+// NOT use this path: AlchemistCard builds its own Reaction tip so the text can name that card's own
+// condition. The trap is that this fallback returns a well-formed, correctly-iconed tip with the GENERIC
+// wording, so a card calling FromKeyword(Reaction) looks right and reads wrong. That is exactly how the
+// condition-specific wording regressed once already
 [HarmonyPatch(typeof(HoverTipFactory), nameof(HoverTipFactory.FromKeyword))]
 public static class KeywordTipIconPatch
 {

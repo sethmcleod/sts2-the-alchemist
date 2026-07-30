@@ -6,6 +6,7 @@ using Alchemist.AlchemistCode.Character;
 using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Enchantments;
 using Alchemist.AlchemistCode.Extensions;
+using Alchemist.AlchemistCode.Patches;
 using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
@@ -46,8 +47,20 @@ public abstract class AlchemistCard : ConstructedCardModel
             // The keyword names Toxic as the spoil result, so show what one actually does
             yield return HoverTipFactory.FromCard<MegaCrit.Sts2.Core.Models.Cards.Toxic>();
         }
-        if (ShowsReactionTip) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Reaction);
+        if (ShowsReactionTip)
+            yield return KeywordTipFactory.Build("reaction", "ALCHEMIST-REACTION.title", ReactionTipKey);
     }
+
+    private string ReactionTipKey => Reaction switch
+    {
+        ReactionCondition.Attack => "ALCHEMIST-REACTION.description.attack",
+        ReactionCondition.Skill => "ALCHEMIST-REACTION.description.skill",
+        ReactionCondition.Power => "ALCHEMIST-REACTION.description.power",
+        ReactionCondition.Exhaust => "ALCHEMIST-REACTION.description.exhaust",
+        ReactionCondition.Block => "ALCHEMIST-REACTION.description.block",
+        ReactionCondition.Enchanted => "ALCHEMIST-REACTION.description.enchanted",
+        _ => "ALCHEMIST-REACTION.description",
+    };
 
     // Tip text lives in static_hover_tips.json under {key}.title and {key}.description
     protected static void ExplainNumber(MegaCrit.Sts2.Core.Localization.DynamicVars.DynamicVar variable, string key)
