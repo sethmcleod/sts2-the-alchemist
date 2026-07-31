@@ -78,6 +78,7 @@ BAYER = [
 # Card -> (start color, end color, direction, family tag)
 # Cards in a family share the start color. Every pair must be unique;
 # the validate command enforces this. Verticals mark Basics and tokens.
+# Token cards all use a vertical gradient (U or D), which sets them apart from the deck at a glance
 COLORS = {
     # Gambit: all-in attacks
     "Etch": ("#0b2a4a", "#5fd0e8", "TR", "Unique"),
@@ -218,6 +219,7 @@ COLORS = {
     # Albedo (token)
     "Albedo": ("#3fd3b0", "#fefeff", "U", "Unique"),
     # Rubedo (token)
+    "Citrinitas": ("#e87500", "#feee2b", "D", "Unique"),
     "Rubedo": ("#390800", "#9a330b", "D", "Unique"),
     # Foul Vapor (token)
     "Foul Vapor": ("#1d0d6e", "#01c2d6", "D", "Unique"),
@@ -387,7 +389,7 @@ KEYWORDS = [
     "Exhaust Pile", "Draw Pile", "Discard Pile", "Golden Fruit",
     "Distillates", "Distillate", "Enchanted", "Vulnerable", "Fermented",
     "Multiplayer", "Dexterity", "Reaction", "Strength", "Infused",
-    "Nigredo", "Procure", "Exhaust", "Ferment", "Albedo", "Plating",
+    "Citrinitas", "Nigredo", "Procure", "Exhaust", "Ferment", "Albedo", "Plating",
     "Poison", "Potion", "Regen", "Retain", "Rubedo", "Gambit", "Innate",
     "Infuse", "Energy", "Block", "Toxic", "Weak", "Stun", "Hand",
 ]

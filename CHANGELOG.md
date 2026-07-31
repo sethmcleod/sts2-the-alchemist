@@ -50,7 +50,7 @@ Security.
 - Changed Unstable Compound card: its power now reads "At the end of this turn, takes N damage." on the turn it detonates, and its damage number and forecast respect Hard to Kill and Intangible
 - Changed Sweat It Out card: it now shows "(Apply N Poison.)" during combat
 - Changed Fumigate card: it no longer glows gold
-- Changed Albedo card: it now adds a Rubedo into your Hand
+- Reworked Citrinitas card: "Deal damage to ALL enemies equal to your Regen (+ 2). Reaction (Exhaust): Deal it again. Add a Rubedo (+) into your Hand. Exhaust."
 - Nerfed Siphon card: card draw decreased from 2 -> 1
 - Nerfed Nigredo card: Poison decreased from 4(5) -> 3(4)
 - Nerfed Rubedo card: Gold decreased from 15(20) -> 5(10)
@@ -64,7 +64,6 @@ Security.
 - Removed Seep keyword
 - Removed Trickle and Unstable Compound cards
 - Removed Grind Down and Metabolism cards
-- Removed Citrinitas card
 
 ## [0.5.2] - 2026-07-25
 
