@@ -58,6 +58,7 @@ Security.
 - Buffed Slag card: Block increased from 1(2) -> 2(3)
 - Changed the default Brew-only potion chance from 20% -> 10%
 - Changed Soporific potion: it now lands with an impact effect and sound
+- Changed how card, relic, and power text writes "Potion": it is now gold and capitalized wherever it names a potion you can obtain, matching the base game
 
 ### Removed
 
