@@ -11,6 +11,7 @@ public class DeepBreath : AlchemistCard
 {
     public DeepBreath() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
+        // Hold the breath: the card waits in hand for the turn the table's Poison is worth cashing
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
         WithTip(StaticHoverTip.Block);
