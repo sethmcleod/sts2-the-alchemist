@@ -2,6 +2,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 
@@ -12,7 +13,9 @@ public class Hone : AlchemistCard
     public Hone() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithKeyword(CardKeyword.Exhaust);
-        WithTip(typeof(StrengthPower));
+        WithTips(card => card.IsUpgraded
+            ? new[] { HoverTipFactory.FromPower<StrengthPower>() }
+            : []);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

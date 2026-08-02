@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Powers;
 
@@ -12,6 +13,13 @@ public class BottledFuryPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        new[]
+        {
+            HoverTipFactory.FromPower<StrengthPower>(),
+            HoverTipFactory.FromPower<DexterityPower>(),
+        };
 
     public override async Task AfterPotionUsed(PotionModel potion, Creature? target)
     {

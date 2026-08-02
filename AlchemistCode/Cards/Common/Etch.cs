@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
@@ -13,6 +14,7 @@ public class Etch : AlchemistCard
     {
         // Move keeps Strength and Vulnerable; only enemy Block is ignored
         WithVar(new DamageVar(14, ValueProp.Move | ValueProp.Unblockable).WithUpgrade(4));
+        WithTip(StaticHoverTip.Block);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

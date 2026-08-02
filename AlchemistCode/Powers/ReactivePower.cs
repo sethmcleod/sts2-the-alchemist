@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Powers;
 
@@ -14,6 +15,8 @@ public class ReactivePower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new[] { AlchemistTips.Reaction };
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

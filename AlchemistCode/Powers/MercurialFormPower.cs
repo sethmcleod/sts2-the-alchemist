@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Powers;
 
@@ -12,6 +13,13 @@ public class MercurialFormPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        new[]
+        {
+            HoverTipFactory.FromPower<StrengthPower>(),
+            HoverTipFactory.FromPower<PoisonPower>(),
+        };
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {

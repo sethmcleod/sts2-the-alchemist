@@ -49,6 +49,16 @@ public abstract class AlchemistCard : ConstructedCardModel
         }
         if (ShowsReactionTip)
             yield return KeywordTipFactory.Build("reaction", "ALCHEMIST-REACTION.title", ReactionTipKey);
+        // The Reaction condition names a mechanic of its own, so the tip for that mechanic comes with it.
+        switch (Reaction)
+        {
+            case ReactionCondition.Block:
+                yield return HoverTipFactory.Static(StaticHoverTip.Block);
+                break;
+            case ReactionCondition.Exhaust:
+                yield return HoverTipFactory.FromKeyword(CardKeyword.Exhaust);
+                break;
+        }
     }
 
     private string ReactionTipKey => Reaction switch
@@ -67,12 +77,7 @@ public abstract class AlchemistCard : ConstructedCardModel
         => variable.WithTooltip(key);
 
     // For a calculated number with no var to hang a tip on, because it is never rendered
-    protected void ExplainNumber(string key) =>
-        WithTips(_ => new IHoverTip[]
-        {
-            new HoverTip(new LocString("static_hover_tips", key + ".title"),
-                new LocString("static_hover_tips", key + ".description")),
-        });
+    protected void ExplainNumber(string key) => WithTips(_ => new[] { AlchemistTips.Static(key) });
 
     public override string CustomPortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImageOrBetaPath();
     public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();

@@ -8,12 +8,16 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Potions;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Relics;
 
 public class GildedKit : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        new[] { HoverTipFactory.FromPower<StrengthPower>() };
 
     public override async Task AfterPotionUsed(PotionModel potion, Creature? target)
     {

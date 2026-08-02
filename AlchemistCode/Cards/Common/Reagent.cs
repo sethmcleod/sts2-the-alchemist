@@ -3,6 +3,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
@@ -14,7 +15,10 @@ public class Reagent : AlchemistCard
     public Reagent() : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(4, 2);
-        WithTip(typeof(ReactivePower));
+        // Reactive counts down a live stack, so outside combat it always reads "the next 0 cards".
+        WithTips(card => card.CombatState != null
+            ? new[] { HoverTipFactory.FromPower<ReactivePower>() }
+            : []);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

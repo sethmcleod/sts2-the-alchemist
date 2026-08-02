@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -13,6 +14,7 @@ public class FreshBatch : AlchemistCard
     public FreshBatch() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("GambitBlock", 10, 4);
+        WithTip(StaticHoverTip.Block);
         WithKeyword(CardKeyword.Exhaust);
     }
 

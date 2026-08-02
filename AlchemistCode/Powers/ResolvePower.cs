@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Powers;
 
@@ -15,6 +16,14 @@ public class ResolvePower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        new[]
+        {
+            AlchemistTips.Gambit,
+            HoverTipFactory.FromPower<StrengthPower>(),
+            HoverTipFactory.FromPower<DexterityPower>(),
+        };
 
     private decimal _granted;
 

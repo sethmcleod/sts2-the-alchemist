@@ -19,13 +19,13 @@
   "ALCHEMIST-GLOWING_SHARD.flavor": "The glow outlasts everyone who admires it.",
   "ALCHEMIST-GLOWING_SHARD.title": "Glowing Shard",
   "ALCHEMIST-MIDAS_FRUIT.description": "Upon pickup, add [blue]1[/blue] [gold]Unripe Fruit[/gold] to your [gold]Deck[/gold].",
-  "ALCHEMIST-MIDAS_FRUIT.flavor": "Midas grasped poorly, but he planted well.",
+  "ALCHEMIST-MIDAS_FRUIT.flavor": "Midas chose poorly, but he planted well.",
   "ALCHEMIST-MIDAS_FRUIT.title": "Midas Fruit",
   "ALCHEMIST-SNAKE_TAIL.description": "The first time [gold]Poison[/gold] would reduce your HP to 0, heal to [green]33%[/green] of your Max HP instead (works once).",
   "ALCHEMIST-SNAKE_TAIL.flavor": "No serpent has ever died of its own bite.",
   "ALCHEMIST-SNAKE_TAIL.title": "Snake Tail",
   "ALCHEMIST-WEATHERED_KIT.description": "Whenever you use a [gold]Potion[/gold], heal [green]3[/green] HP. You can [gold]Brew[/gold] at Rest Sites and sell [gold]Potions[/gold] to the [blue]Merchant[/blue].",
   "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "Whenever you use a [gold]Potion[/gold], heal [green]3[/green] HP. You can [gold]Brew[/gold] at Rest Sites.",
-  "ALCHEMIST-WEATHERED_KIT.flavor": "Battered, stained, and still faintly warm.",
+  "ALCHEMIST-WEATHERED_KIT.flavor": "A well worn and pleasantly smelling case.",
   "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit"
 }

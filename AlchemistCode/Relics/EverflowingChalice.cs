@@ -4,12 +4,15 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Relics;
 
 public class EverflowingChalice : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Shop;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new[] { HoverTipFactory.ForEnergy(this) };
 
     // "Energy" must be an EnergyVar or the {Energy:energyIcons()} formatter breaks.
     // "Pending" is a DynamicVar (not a field) so it survives a mid-combat save/reload

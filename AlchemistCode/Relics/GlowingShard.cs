@@ -1,4 +1,6 @@
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
@@ -6,4 +8,7 @@ namespace Alchemist.AlchemistCode.Relics;
 public class GlowingShard : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Uncommon;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        new[] { HoverTipFactory.FromPower<PoisonPower>() };
 }

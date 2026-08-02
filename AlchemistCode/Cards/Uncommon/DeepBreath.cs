@@ -1,9 +1,9 @@
-using Alchemist.AlchemistCode.Commands;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -11,9 +11,9 @@ public class DeepBreath : AlchemistCard
 {
     public DeepBreath() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithKeyword(CardKeyword.Exhaust);
+        WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
-        WithTips(_ => Infusion.InfuseTips());
+        WithTip(StaticHoverTip.Block);
         ExplainNumber("ALCHEMIST-DEEP_BREATH");
     }
 
@@ -30,6 +30,5 @@ public class DeepBreath : AlchemistCard
             for (var i = 0; i < times; i++)
                 await CreatureCmd.GainBlock(Owner.Creature, totalPoison, ValueProp.Move, play);
         }
-        await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 1);
     }
 }

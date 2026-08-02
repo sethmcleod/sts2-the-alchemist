@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -11,6 +12,7 @@ public class Sediment : AlchemistCard
     public Sediment() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Block", 2, 1);
+        WithTip(StaticHoverTip.Block);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(PlatingPower));
     }

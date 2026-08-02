@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Saves.Runs;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Relics;
 
@@ -12,6 +13,9 @@ namespace Alchemist.AlchemistCode.Relics;
 public class SnakeTail : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Common;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
     private bool _used;
     public override bool IsUsedUp => _used;

@@ -16,6 +16,7 @@ public class Albedo : AlchemistCard
         WithPower<RegenPower>(0, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithUpgradingCardTip<Citrinitas>();
+        WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

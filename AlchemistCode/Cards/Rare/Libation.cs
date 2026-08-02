@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
@@ -12,6 +13,7 @@ public class Libation : AlchemistCard
     public Libation() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithVar("block", 4, 2);
+        WithTip(StaticHoverTip.Block);
         WithTip(typeof(PlatingPower));
     }
 
