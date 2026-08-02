@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-08-02
+
 ### Added
 
 - Added Reaction keyword: "When you play this card directly after a card that matches, it has a Reaction effect."
