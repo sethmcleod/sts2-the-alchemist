@@ -1,8 +1,8 @@
 {
   "ALCHEMIST.mod_title": "The Alchemist",
   "ALCHEMIST-ACCESSIBILITY.title": "Accessibility",
-  "ALCHEMIST-BREW_POTION_CHANCE.hover.desc": "The chance that Brewing at a Rest Site offers one of the Alchemist's three Brew-only [gold]Potions[/gold] instead of a normal [gold]Potion[/gold]. Default: 10%",
   "ALCHEMIST-BREW_POTION_CHANCE.title": "Brew potion chance",
+  "ALCHEMIST-BREW_POTION_CHANCE.hover.desc": "The chance that Brewing at a Rest Site offers one of the Alchemist's three Brew-only [gold]Potions[/gold] instead of a normal [gold]Potion[/gold]. Default: 15%",
   "ALCHEMIST-COMPATIBILITY.title": "Compatibility",
   "ALCHEMIST-ECONOMY.title": "Economy",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "Adds the Alchemist's 7-chapter story to the Timeline, unlocking cards, relics, and potions as you progress. Disable to hide it from the Timeline and make all Alchemist content available immediately; re-enabling restores progress.",

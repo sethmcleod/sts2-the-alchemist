@@ -43,8 +43,8 @@ public class AlchemistModConfig : SimpleModConfig
 
     [ConfigSection("Economy")]
     [ConfigHoverTip]
-    [ConfigSlider(10.0, 50.0, 10.0, Format = "{0}%")]
-    public static int BrewPotionChance { get; set; } = 10;
+    [ConfigSlider(5.0, 25.0, 5.0, Format = "{0}%")]
+    public static int BrewPotionChance { get; set; } = 15;
 
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]
