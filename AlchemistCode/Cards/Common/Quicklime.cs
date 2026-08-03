@@ -24,6 +24,6 @@ public class Quicklime : AlchemistCard
         await CommonActions.CardBlock(this, play);
         if (reacted)
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["ReactionBlock"].BaseValue,
-                ValueProp.Move, null);
+                ValueProp.Move, play);
     }
 }

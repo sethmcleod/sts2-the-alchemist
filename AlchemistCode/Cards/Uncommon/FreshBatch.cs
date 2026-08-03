@@ -26,7 +26,7 @@ public class FreshBatch : AlchemistCard
         // potions were feeding an already over-tuned economy
         if (gambit)
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["GambitBlock"].IntValue,
-                ValueProp.Move, null);
+                ValueProp.Move, play);
     }
 
     private Task Procure() =>

@@ -29,15 +29,14 @@ _(Disclaimer: This description was paid for by the Merchant.)_
 - **Poison & Regen**: The Alchemist deliberately self-poisons, then converts
   Poison into Regen, and Regen into damage, Block or other useful effects. Both
   are meant to be actively cycled, not passively endured.
+- **Reaction**: Cards with this keyword gain an extra effect when the card you
+  played directly before them, on the same turn, matches the condition shown.
 - **Gambit**: Cards with this keyword have buffs that are only active while your
-  HP is 50% or less. Whether increasing damage or adding additional effects,
+  HP is 33% or less. Whether increasing damage or adding additional effects,
   you'll benefit from playing strategically.
 - **Ferment**: This keyword is only found on cards that also Retain. These
   effects grow in potency for every turn the card stays in your hand. However if
   you Retain them past their peak, they spoil into Toxic cards.
-- **Reaction**: Cards with this keyword gain an extra effect when the card you
-  played directly before them, on the same turn, matches the condition shown.
-  The first card of a turn has nothing before it, so what you lead with matters.
 - **Infuse**: Infusing a card Enchants it for the rest of combat based on the
   type. Attacks apply Poison, Skills create tokens that apply Weak and
   Vulnerable, Powers give Strength, and other cards gain Ethereal.
