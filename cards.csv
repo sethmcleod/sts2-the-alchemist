@@ -13,7 +13,7 @@ Carapace,Common,Skill,2,Retain. Ferment (0/5). Gain 10 Block. Gain 4 (6) additio
 Catalyze,Rare,Power,2 (1),"The first time you lose HP on each of your turns, gain 2 Regen."
 Cauterize,Common,Attack,1,Deal 6 (9) damage. Gain 1 Regen. Reaction (Attack): Gain 1 additional Regen.
 Circulation,Uncommon,Skill,1,"Gain 2 (4) Regen. Lose half your Regen, then draw that many cards."
-Citrinitas,Token,Attack,1,Deal damage to ALL enemies equal to your Regen (+2). Reaction (Exhaust): Hits again. Add a Rubedo (+) into your Hand. Exhaust.
+Citrinitas,Token,Attack,0,Deal damage to ALL enemies equal to your Regen (+2). Reaction (Exhaust): Hits again. Add a Rubedo (+) into your Hand. Exhaust.
 Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison. Gambit: Gain 3 (4) Regen.
 Contagion,Rare,Power,2 (1),"Whenever you take Poison damage, apply that much Poison to ALL enemies."
 Corrode,Uncommon,Skill,2,Apply 6 Poison and 1 (2) Weak to ALL enemies. Reaction (Skill): Apply 2 additional Poison.

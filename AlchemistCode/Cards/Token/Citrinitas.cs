@@ -13,7 +13,7 @@ public class Citrinitas : AlchemistCard
 {
     protected override ReactionCondition Reaction => ReactionCondition.Exhaust;
 
-    public Citrinitas() : base(1, CardType.Attack, CardRarity.Token, TargetType.AllEnemies)
+    public Citrinitas() : base(0, CardType.Attack, CardRarity.Token, TargetType.AllEnemies)
     {
         WithVar("Bonus", 0, 2);
         WithKeyword(CardKeyword.Exhaust);
