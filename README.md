@@ -6,10 +6,10 @@
 ## Overview
 
 The Alchemist is a new character with a high-risk, high-reward playstyle. You'll
-benefit from staying below 50% HP, but also be equipped with tools to gain that
-health back through Regen and potions. You can Enchant cards in combat to give
-them powerful effects, multiple times. You can also brew potions at rest sites
-and, more importantly, _sell them to the Merchant!_ 💰
+benefit from having low HP, but also be equipped with tools to gain that health
+back through Regen and potions. You can Enchant cards in combat to give them
+powerful effects, multiple times. You can also brew potions at rest sites and,
+more importantly, _sell them to the Merchant!_ 💰
 
 _(Disclaimer: This description was paid for by the Merchant.)_
 

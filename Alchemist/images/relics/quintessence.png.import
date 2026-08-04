@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqsm3dxgdhjvy"
-path="res://.godot/imported/aqua_vitae.png-3d3dc71cdd01f2a0ec4327b08d3a9408.ctex"
+uid="uid://d1vky0778j30u"
+path="res://.godot/imported/quintessence.png-b4179855dde4145b0c06280e9445cf90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/big/aqua_vitae.png"
-dest_files=["res://.godot/imported/aqua_vitae.png-3d3dc71cdd01f2a0ec4327b08d3a9408.ctex"]
+source_file="res://Alchemist/images/relics/quintessence.png"
+dest_files=["res://.godot/imported/quintessence.png-b4179855dde4145b0c06280e9445cf90.ctex"]
 
 [params]
 

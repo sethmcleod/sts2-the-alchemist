@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beva0unju86ny"
-path="res://.godot/imported/flux_stone_outline.png-9b92cf68c1c1543df5e155ed2c627524.ctex"
+uid="uid://bt7ywcbycebje"
+path="res://.godot/imported/viriditas.png-be198f0121ddd173f7bc7c22e46e66dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/flux_stone_outline.png"
-dest_files=["res://.godot/imported/flux_stone_outline.png-9b92cf68c1c1543df5e155ed2c627524.ctex"]
+source_file="res://Alchemist/images/relics/big/viriditas.png"
+dest_files=["res://.godot/imported/viriditas.png-be198f0121ddd173f7bc7c22e46e66dc.ctex"]
 
 [params]
 

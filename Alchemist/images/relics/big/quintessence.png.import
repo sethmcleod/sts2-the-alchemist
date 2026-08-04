@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7uehj66nk27q"
-path="res://.godot/imported/flux_stone.png-9e6e09a4081f470a592d8016931b670f.ctex"
+uid="uid://b0ih0m6r0o7h0"
+path="res://.godot/imported/quintessence.png-f43664084408a73b5f590f9e00569ec4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/flux_stone.png"
-dest_files=["res://.godot/imported/flux_stone.png-9e6e09a4081f470a592d8016931b670f.ctex"]
+source_file="res://Alchemist/images/relics/big/quintessence.png"
+dest_files=["res://.godot/imported/quintessence.png-f43664084408a73b5f590f9e00569ec4.ctex"]
 
 [params]
 

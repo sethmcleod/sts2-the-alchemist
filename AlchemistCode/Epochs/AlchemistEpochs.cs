@@ -43,7 +43,7 @@ public class Alchemist4Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST4_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Relics;
     protected override List<RelicModel> Relics => new()
-        { ModelDb.Relic<SnakeTail>(), ModelDb.Relic<GlowingShard>(), ModelDb.Relic<FluxStone>() };
+        { ModelDb.Relic<SnakeTail>(), ModelDb.Relic<GlowingShard>(), ModelDb.Relic<Viriditas>() };
 }
 
 public class Alchemist5Epoch : AlchemistEpoch
@@ -67,5 +67,5 @@ public class Alchemist7Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST7_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Relics;
     protected override List<RelicModel> Relics => new()
-        { ModelDb.Relic<AquaVitae>(), ModelDb.Relic<AuricSeal>(), ModelDb.Relic<MidasFruit>() };
+        { ModelDb.Relic<Quintessence>(), ModelDb.Relic<AuricSeal>(), ModelDb.Relic<MidasFruit>() };
 }

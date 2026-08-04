@@ -13,6 +13,12 @@ Security.
 
 ## [Unreleased]
 
+### Changed
+
+- Renamed Aqua Vitae relic to Quintessence and reworked it: "Whenever you use a Potion, gain 1 Max HP." -> "The first card you play each turn triggers its Reaction."
+- Renamed Flux Stone relic to Viriditas and reworked it: "Whenever a card is created in combat, draw 1 card." -> "At the start of each combat, gain 3 Regen."
+- Reworked Gilded Kit relic: using a Potion now grants 1 Max HP instead of 1 Strength, and its heal decreased from 6 -> 5
+
 ### Fixed
 
 - Fixed the Block from Fresh Batch and from Quicklime's Reaction not counting for a Reaction (Block)

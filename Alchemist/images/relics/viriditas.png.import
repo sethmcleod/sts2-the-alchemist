@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgo5x1y40m251"
-path="res://.godot/imported/aqua_vitae_outline.png-731c1096873c6f61f50bb5114d6e0a1b.ctex"
+uid="uid://bvuslvpxrerc2"
+path="res://.godot/imported/viriditas.png-f6d48aeb73ad2221124bd7995d050c4f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/aqua_vitae_outline.png"
-dest_files=["res://.godot/imported/aqua_vitae_outline.png-731c1096873c6f61f50bb5114d6e0a1b.ctex"]
+source_file="res://Alchemist/images/relics/viriditas.png"
+dest_files=["res://.godot/imported/viriditas.png-f6d48aeb73ad2221124bd7995d050c4f.ctex"]
 
 [params]
 
