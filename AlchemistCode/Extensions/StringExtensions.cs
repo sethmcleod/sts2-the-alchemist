@@ -81,6 +81,15 @@ public static class StringExtensions
         return path;
     }
 
+    public static string BadgeImagePath(this string path)
+    {
+        path = Path.Join(MainFile.ResPath, "images", "badges", path);
+        if (ResourceLoader.Exists(path)) return path;
+
+        MainFile.Logger.Info("Could not find badge image path: " + path);
+        return path;
+    }
+
     public static string CharacterUiPath(this string path)
     {
         return Path.Join(MainFile.ResPath, "images", "charui", path);

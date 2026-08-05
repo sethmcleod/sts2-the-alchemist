@@ -13,6 +13,10 @@ Security.
 
 ## [Unreleased]
 
+### Added
+
+- Added run summary badges earned by Brewing at 3, 6 or 9 Rest Sites in a run
+
 ### Changed
 
 - Renamed Aqua Vitae relic to Quintessence and reworked it: "Whenever you use a Potion, gain 1 Max HP." -> "The first card you play each turn triggers its Reaction."

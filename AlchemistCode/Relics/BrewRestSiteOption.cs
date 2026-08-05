@@ -21,7 +21,9 @@ public sealed class BrewRestSiteOption : RestSiteOption
     private static readonly FieldInfo ChoicesScreenField =
         typeof(NRestSiteRoom).GetField("_choicesScreen", BindingFlags.NonPublic | BindingFlags.Instance)!;
 
-    public override string OptionId => "BREW";
+    public const string BrewOptionId = "BREW";
+
+    public override string OptionId => BrewOptionId;
 
     public override LocString Description
     {
