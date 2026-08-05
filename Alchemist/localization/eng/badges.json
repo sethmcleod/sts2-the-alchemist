@@ -4,5 +4,11 @@
   "ALCHEMIST-BREW.goldDescription": "Brewed at [blue]9[/blue] or more Rest Sites.",
   "ALCHEMIST-BREW.goldTitle": "Master Distiller",
   "ALCHEMIST-BREW.silverDescription": "Brewed at [blue]6[/blue] or more Rest Sites.",
-  "ALCHEMIST-BREW.silverTitle": "Cask Strength",
+  "ALCHEMIST-BREW.silverTitle": "Private Reserve",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "Sold [blue]3[/blue] or more Potions to the Merchant.",
+  "ALCHEMIST-POTION_SALE.bronzeTitle": "Supplier",
+  "ALCHEMIST-POTION_SALE.goldDescription": "Sold [blue]9[/blue] or more Potions to the Merchant.",
+  "ALCHEMIST-POTION_SALE.goldTitle": "Merchant's Favorite",
+  "ALCHEMIST-POTION_SALE.silverDescription": "Sold [blue]6[/blue] or more Potions to the Merchant.",
+  "ALCHEMIST-POTION_SALE.silverTitle": "Good For Business"
 }

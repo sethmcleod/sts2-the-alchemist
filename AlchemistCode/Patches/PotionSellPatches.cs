@@ -1,4 +1,5 @@
 using System.Reflection;
+using Alchemist.AlchemistCode.Badges;
 using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Potions;
 using Alchemist.AlchemistCode.Relics;
@@ -104,6 +105,7 @@ public static class PotionSellPatches
     {
         var gold = GetGoldFor(potion);
         var owner = potion.Owner;
+        PotionSaleCounter.RecordSale(owner);
         potion.RemoveBeforeUse();
 
         if (!_soldThisVisit)

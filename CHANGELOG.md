@@ -16,6 +16,7 @@ Security.
 ### Added
 
 - Added run summary badges earned by Brewing at 3, 6 or 9 Rest Sites in a run
+- Added run summary badges earned by selling 3, 6 or 9 Potions to the Merchant in a run
 
 ### Changed
 

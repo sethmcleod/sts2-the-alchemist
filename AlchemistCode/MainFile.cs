@@ -65,6 +65,15 @@ public partial class MainFile : Node
             Logger.Error($"Failed to register health bar forecasts: {e}");
         }
 
+        try
+        {
+            Badges.PotionSaleCounter.Register();
+        }
+        catch (System.Exception e)
+        {
+            Logger.Error($"Failed to register the potion sale counter (its badge will never unlock): {e}");
+        }
+
         ModConfigRegistry.Register("The Alchemist", new AlchemistModConfig());
     }
 
