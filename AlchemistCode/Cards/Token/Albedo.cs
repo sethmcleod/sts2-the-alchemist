@@ -1,4 +1,5 @@
 using Alchemist.AlchemistCode.Commands;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,10 +14,11 @@ public class Albedo : AlchemistCard
 {
     public Albedo() : base(1, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
-        WithPower<RegenPower>(0, 1);
+        WithCostUpgradeBy(-1);
         WithKeyword(CardKeyword.Exhaust);
         WithUpgradingCardTip<Citrinitas>();
         WithTip(typeof(PoisonPower));
+        WithTip(typeof(RegenPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -25,11 +27,10 @@ public class Albedo : AlchemistCard
 
         var poisonAmount = Owner.Creature.GetPowerAmount<PoisonPower>();
         if (poisonAmount > 0)
-        {
             await PowerCmd.Remove<PoisonPower>(Owner.Creature);
-            var regenAmount = poisonAmount + (IsUpgraded ? 1 : 0);
-            await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, regenAmount, Owner.Creature, this);
-        }
+
+        if (poisonAmount > 0)
+            await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, poisonAmount, Owner.Creature, this);
 
         await AlchemistCardCmd.GiveCard<Citrinitas>(this);
     }

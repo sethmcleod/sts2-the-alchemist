@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-AGGRAVATE.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each unique debuff on the enemy.",
   "ALCHEMIST-AGGRAVATE.title": "Aggravate",
-  "ALCHEMIST-ALBEDO.description": "Lose all [gold]Poison[/gold].\nGain that much [gold]Regen[/gold]{IfUpgraded:show:[green]+1[/green]|}.\nAdd a {IfUpgraded:show:[green]Citrinitas+[/green]|[gold]Citrinitas[/gold]} into your [gold]Hand[/gold].",
+  "ALCHEMIST-ALBEDO.description": "Lose all [gold]Poison[/gold].\nGain that much [gold]Regen[/gold].\nAdd a {IfUpgraded:show:[green]Citrinitas+[/green]|[gold]Citrinitas[/gold]} into your [gold]Hand[/gold].",
   "ALCHEMIST-ALBEDO.title": "Albedo",
   "ALCHEMIST-CITRINITAS.description": "Deal damage to ALL enemies equal to your [gold]Regen[/gold]{IfUpgraded:show:[green]+2[/green]|}.{FormulaDamage}\n[gold]Reaction[/gold] (Exhaust): Hits again.\nAdd a {IfUpgraded:show:[green]Rubedo+[/green]|[gold]Rubedo[/gold]} into your [gold]Hand[/gold].",
   "ALCHEMIST-CITRINITAS.title": "Citrinitas",
