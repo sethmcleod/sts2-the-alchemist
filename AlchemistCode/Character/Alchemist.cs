@@ -4,8 +4,12 @@ using Alchemist.AlchemistCode.Relics;
 using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using Godot;
+using MegaCrit.Sts2.Core.Animation;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 
 namespace Alchemist.AlchemistCode.Character;
 
@@ -44,6 +48,23 @@ public class Alchemist : PlaceholderCharacterModel
     public override CardPoolModel CardPool => ModelDb.CardPool<AlchemistCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<AlchemistRelicPool>();
     public override PotionPoolModel PotionPool => ModelDb.PotionPool<AlchemistPotionPool>();
+
+    // The combat model is the true art. The other placeholder assets stay on the ironclad
+    public override NCreatureVisuals? CreateCustomVisuals() => AlchemistVisuals.Create();
+    // AssetPaths preloads the visuals path with the other character assets, but CreateCustomVisuals
+    // always wins over it, thus the ironclad combat scene here would load 4 atlas pages that nothing
+    // shows. The base game fallback scene is one small sprite, and it is a complete NCreatureVisuals,
+    // thus it still catches a failed model load. Null is not an option here: it makes the base getter
+    // ask for a creature_visuals scene named after the character, which does not exist, and the
+    // preload then fails twice with an error each time
+    public override string CustomVisualPath => SceneHelper.GetScenePath("creature_visuals/fallback");
+
+    // The atlas page of the model loads with the other character assets, not on the first combat
+    protected override IEnumerable<string> ExtraAssetPaths => [AlchemistVisuals.TexturePath];
+
+    // The skeleton holds one animation, thus each state plays the idle
+    public override CreatureAnimator SetupCustomAnimationStates(MegaSprite controller) =>
+        SetupAnimationState(controller, AlchemistVisuals.IdleAnimation);
 
     public override Control CustomIcon
     {
