@@ -1,5 +1,7 @@
 using BaseLib.Extensions;
 using Godot;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 
 namespace Alchemist.AlchemistCode.Character;
@@ -38,16 +40,45 @@ internal static class AlchemistVisuals
     /// </summary>
     public const string TexturePath = $"{ModelDir}/alchemist_model.png";
 
-    /// <summary>The only animation in the skeleton.</summary>
-    public const string IdleAnimation = "idle_loop";
+    private const string IdleAnimationLeaf = "idle_loop";
+    private const string BlinkAnimationLeaf = "blink";
 
-    // The art is painted at 1:1 with the skeleton units, thus the model stays unscaled and sharp.
-    // The skeleton measures 228 x 307 units, which is near the height of the ironclad on screen
-    // (1185 units at 0.28 scale)
-    private const float ModelScale = 1f;
+    // The idle holds track 0. A second track plays the blink over it, thus the eyes keep their own
+    // clock and never lock to the loop of the idle. Vantom and LagavulinMatriarch layer this way
+    private const int BlinkTrack = 1;
+
+    // Spine plays a queue, and the eyes stop when it empties. The queue must thus outlast any
+    // fight: 400 blinks at a mean gap of 6 seconds cover about 40 minutes. The game makes the
+    // visuals again for each combat, thus the queue starts over every time
+    private const int QueuedBlinks = 400;
+    private const float MinBlinkGap = 3f;
+    private const float MaxBlinkGap = 9f;
+
+    // A private generator, thus the blink times never draw from the seeded run of the game
+    private static readonly Random BlinkRng = new();
+
+    /// <summary>
+    /// The idle animation, read from the skeleton. Spine puts the name of the folder that holds an
+    /// animation in front of its name, thus a new folder in the project renames it (idle_loop became
+    /// main/idle_loop between two exports). Matching on the last part survives that.
+    /// </summary>
+    public static string IdleAnimation { get; private set; } = IdleAnimationLeaf;
+
+    /// <summary>The blink animation, or null if the skeleton holds none.</summary>
+    public static string? BlinkAnimation { get; private set; }
+
+    // How high the model stands on screen, from the feet to the top of the art. This is near the
+    // height of the ironclad (1185 units at 0.28 scale). The scale comes from the skeleton at run
+    // time, thus a rig that changes size between exports still draws at this height. The Spine
+    // atlas scale does not enter into it: it changes only how many texels cover the same art
+    private const float ModelHeight = 296f;
+
+    // The height of the ironclad rig, used only if the skeleton does not report its own size
+    private const float FallbackSkeletonHeight = 833f;
 
     // The feet of the model sit at y = 0 and Godot y increases downward, thus the art occupies
-    // y -296 to 0. The skeleton is 8 units wider on the left, where the staff is
+    // y -296 to 0. The skeleton is 8 units wider on the left, where the staff is.
+    // These are in screen pixels, thus ModelScale already applies and they do not follow the rig
     private static readonly Vector2 BoundsPosition = new(-118, -296);
     private static readonly Vector2 BoundsSize = new(228, 296);
     private static readonly Vector2 CenterPosition = new(0, -170);
@@ -98,8 +129,30 @@ internal static class AlchemistVisuals
         }
 
         sprite.Set("skeleton_data_res", data);
-        sprite.Scale = new Vector2(ModelScale, ModelScale);
+        var scale = ScaleFor(data);
+        sprite.Scale = new Vector2(scale, scale);
         return sprite;
+    }
+
+    /// <summary>
+    /// Returns the scale that draws the skeleton ModelHeight high.
+    /// </summary>
+    /// <remarks>
+    /// The skeleton reports the box around its setup pose. Its y is the bottom edge, which sits
+    /// below the feet because the shadow reaches past them, thus y plus the height is the part
+    /// above the ground and is what must match ModelHeight.
+    /// </remarks>
+    private static float ScaleFor(Resource data)
+    {
+        var above = FallbackSkeletonHeight;
+        if (data.HasMethod("get_height") && data.HasMethod("get_y"))
+        {
+            var reported = data.Call("get_y").AsSingle() + data.Call("get_height").AsSingle();
+            if (reported > 1f) above = reported;
+            else MainFile.Logger.Info($"The Alchemist skeleton reported a height of {reported}. Using the fallback.");
+        }
+
+        return ModelHeight / above;
     }
 
     private static Resource? SkeletonData()
@@ -136,8 +189,75 @@ internal static class AlchemistVisuals
             return null;
         }
 
+        IdleAnimation = ResolveAnimation(data, IdleAnimationLeaf) ?? IdleAnimationLeaf;
+        BlinkAnimation = ResolveAnimation(data, BlinkAnimationLeaf);
+
+        if (BlinkAnimation == null)
+            MainFile.Logger.Info("The Alchemist skeleton holds no blink animation. The eyes stay open.");
+
         _skeletonData = data;
         return data;
+    }
+
+    /// <summary>
+    /// Returns the full name of the animation whose last part is <paramref name="leaf"/>, or null.
+    /// </summary>
+    /// <remarks>
+    /// The artist names these, thus the match ignores a folder in front and a leading underscore.
+    /// Both have appeared already: main/idle_loop, then _blink because Spine refuses a name that
+    /// holds a slash.
+    /// </remarks>
+    private static string? ResolveAnimation(Resource data, string leaf)
+    {
+        if (!data.HasMethod("get_animations")) return null;
+
+        foreach (var entry in data.Call("get_animations").AsGodotArray())
+        {
+            if (entry.AsGodotObject() is not { } animation) continue;
+
+            var name = animation.Call("get_name").AsString();
+            var tail = name[(name.LastIndexOf('/') + 1)..].TrimStart('_');
+            if (string.Equals(tail, leaf, StringComparison.OrdinalIgnoreCase)) return name;
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Queues the blinks on their own track, each one after a random wait.
+    /// </summary>
+    /// <remarks>
+    /// The skeleton of a SpineSprite loads over several frames, thus the animation state can be
+    /// absent when the game builds the animator. RunWhenSpineReady waits for it.
+    /// </remarks>
+    public static void StartBlinking(MegaSprite sprite)
+    {
+        if (BlinkAnimation == null) return;
+        if (sprite.BoundObject is not Node host) return;
+
+        host.RunWhenSpineReady(sprite, QueueBlinks);
+    }
+
+    private static void QueueBlinks(MegaAnimationState state)
+    {
+        if (BlinkAnimation is not { } blink) return;
+
+        var blinkLength = 0f;
+        for (var i = 0; i < QueuedBlinks; i++)
+        {
+            var gap = MinBlinkGap + (float)BlinkRng.NextDouble() * (MaxBlinkGap - MinBlinkGap);
+
+            // Spine counts the delay from the start of the entry before, thus each wait must also
+            // carry the length of the blink. The first entry counts from now
+            var delay = i == 0 ? gap : blinkLength + gap;
+
+            using var entry = state.AddAnimationTracked(blink, delay, loop: false, BlinkTrack);
+
+            // The blink swaps the eye attachment, and an attachment must snap rather than fade
+            entry.SetMixDuration(0f);
+
+            if (i == 0) blinkLength = entry.GetAnimationDuration();
+        }
     }
 
     private static bool ReadFailed(Resource resource, string method, string path)

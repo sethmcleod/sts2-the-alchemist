@@ -51,6 +51,7 @@ public class Alchemist : PlaceholderCharacterModel
 
     // The combat model is the true art. The other placeholder assets stay on the ironclad
     public override NCreatureVisuals? CreateCustomVisuals() => AlchemistVisuals.Create();
+
     // AssetPaths preloads the visuals path with the other character assets, but CreateCustomVisuals
     // always wins over it, thus the ironclad combat scene here would load 4 atlas pages that nothing
     // shows. The base game fallback scene is one small sprite, and it is a complete NCreatureVisuals,
@@ -62,9 +63,13 @@ public class Alchemist : PlaceholderCharacterModel
     // The atlas page of the model loads with the other character assets, not on the first combat
     protected override IEnumerable<string> ExtraAssetPaths => [AlchemistVisuals.TexturePath];
 
-    // The skeleton holds one animation, thus each state plays the idle
-    public override CreatureAnimator SetupCustomAnimationStates(MegaSprite controller) =>
-        SetupAnimationState(controller, AlchemistVisuals.IdleAnimation);
+    // The skeleton holds one animation for the body, thus each state plays the idle. The blink
+    // rides a second track with its own clock, thus it never locks to the loop of the idle
+    public override CreatureAnimator SetupCustomAnimationStates(MegaSprite controller)
+    {
+        AlchemistVisuals.StartBlinking(controller);
+        return SetupAnimationState(controller, AlchemistVisuals.IdleAnimation);
+    }
 
     public override Control CustomIcon
     {
