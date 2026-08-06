@@ -14,7 +14,10 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Potions;
+using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Nodes;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
+using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.HoverTips;
 using MegaCrit.Sts2.Core.Nodes.Potions;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
@@ -33,10 +36,32 @@ public static class PotionSellPatches
         AccessTools.Field(typeof(NPotionPopup), "_holder");
     private static readonly FieldInfo UseButtonField =
         AccessTools.Field(typeof(NPotionPopup), "_useButton");
-    private static readonly FieldInfo LabelField =
-        AccessTools.Field(typeof(NPotionPopupButton), "_label");
+    private static readonly FieldInfo DiscardButtonField =
+        AccessTools.Field(typeof(NPotionPopup), "_discardButton");
 
-    private static MethodInfo? _setTextMethod;
+    // Measured from potion_popup_expanded.png (670x780): three 203px button faces with 16px gaps, mapped to
+    // the popup's control space. ExpandedHeight keeps the base 239/560 vertical scale
+    private const float ButtonHeight = 87f;
+    private const float ExpandedHeight = 333f;
+    private static readonly float[] ButtonTops = { 48f, 142f, 235f };
+
+    private static Texture2D? _expandedTexture;
+    private static bool _expandedTextureMissingLogged;
+    private static Texture2D? ExpandedTexture()
+    {
+        if (_expandedTexture != null) return _expandedTexture;
+        _expandedTexture = ResourceLoader.Load<Texture2D>(
+            "res://Alchemist/images/potions/potion_pop_up/potion_popup_expanded.png");
+        if (_expandedTexture == null && !_expandedTextureMissingLogged)
+        {
+            _expandedTextureMissingLogged = true;
+            MainFile.Logger.Info(
+                "potion_popup_expanded.png is not in the pck; the sell popup keeps the base frame. "
+                + "Run a full publish (not publish-fast) to import and pack it.");
+        }
+        return _expandedTexture;
+    }
+
     private static readonly FieldInfo PlayersField =
         AccessTools.Field(typeof(NMerchantRoom), "_players");
 
@@ -47,19 +72,29 @@ public static class PotionSellPatches
     private static int _greetingIndex = 1;
     private static bool _soldThisVisit;
 
-    private static bool CanSellPotions(PotionModel potion)
+    // True when this run's owner can sell potions at all: the config override, or one of the merchant kits.
+    // Does not check the room, so it also gates the "Coveted" tip, which shows anywhere in a run
+    private static bool SellingEnabledFor(Player? owner)
     {
-        if (potion is FoulPotion) return false;
-        var owner = potion.Owner;
         if (owner == null) return false;
-        if (!AlchemistModConfig.UniversalPotionSelling
-            && owner.GetRelic<WeatheredKit>() == null && owner.GetRelic<GildedKit>() == null) return false;
-        return owner.RunState.CurrentRoom is MerchantRoom;
+        return AlchemistModConfig.UniversalPotionSelling
+            || owner.GetRelic<WeatheredKit>() != null || owner.GetRelic<GildedKit>() != null;
     }
 
-    // Price comes from rarity with no exceptions, so a Brew-only potion sells at the Event price
+    // A Foul potion is sellable too: throwing it at the merchant already grants Gold, so a Sell button is the
+    // same payout without the throw animation. Its Use button already reads "Throw". The Sell button only
+    // appears at the merchant, the one place a sale can actually happen
+    private static bool CanSellPotions(PotionModel potion)
+    {
+        var owner = potion.Owner;
+        if (!SellingEnabledFor(owner)) return false;
+        return owner!.RunState.CurrentRoom is MerchantRoom;
+    }
+
     private static int GetGoldFor(PotionModel potion)
     {
+        // A Foul potion sells for exactly its throw payout, so Throw and Sell give the same Gold
+        if (potion is FoulPotion) return (int)potion.DynamicVars["Gold"].BaseValue;
         var basePrice = GetGoldForRarity(potion.Rarity);
         return basePrice * AlchemistModConfig.PotionSellPercent / 100;
     }
@@ -71,22 +106,9 @@ public static class PotionSellPatches
             PotionRarity.Common => 50,
             PotionRarity.Uncommon => 75,
             PotionRarity.Rare => 100,
-            // Event potions come only from events, so they are the hardest to replace
             PotionRarity.Event => 150,
             _ => 50
         };
-    }
-
-    private static void SetButtonText(NPotionPopupButton button, string text, Color? color = null)
-    {
-        var label = LabelField.GetValue(button);
-        if (label == null) return;
-        _setTextMethod ??= label.GetType().GetMethod("SetTextAutoSize",
-            BindingFlags.Public | BindingFlags.Instance, null, [typeof(string)], null);
-        _setTextMethod?.Invoke(label, [text]);
-
-        if (color.HasValue && label is Control controlLabel)
-            controlLabel.AddThemeColorOverride("font_color", color.Value);
     }
 
     private static readonly LocString[] SellLines =
@@ -133,55 +155,97 @@ public static class PotionSellPatches
         public static void Postfix(NPotionPopup __instance)
         {
             var potion = PotionProp.GetValue(__instance) as PotionModel;
-            if (potion == null) return;
-            if (!CanSellPotions(potion)) return;
+            if (potion == null || !CanSellPotions(potion)) return;
 
             var useButton = (NPotionPopupButton)UseButtonField.GetValue(__instance)!;
-
-            var gold = GetGoldFor(potion);
-            var locString = new LocString("gameplay_ui", "POTION_SELL.button");
-            locString.Add("Gold", gold);
-            SetButtonText(useButton, locString.GetFormattedText(), new Color(0.9f, 0.77f, 0.3f));
-            useButton.Enable();
+            try
+            {
+                InjectSellButton(__instance, potion, useButton);
+            }
+            catch (System.Exception e)
+            {
+                MainFile.Logger.Error(
+                    "Failed to add the potion Sell button; the popup keeps Use and Discard only: " + e);
+            }
         }
     }
 
-    [HarmonyPatch(typeof(NPotionPopup), "RefreshButtons")]
-    public static class PotionPopupRefreshButtonsPatch
+    private static void InjectSellButton(NPotionPopup popup, PotionModel potion, NPotionPopupButton useButton)
     {
-        public static void Postfix(NPotionPopup __instance)
-        {
-            var potion = PotionProp.GetValue(__instance) as PotionModel;
-            if (potion == null) return;
-            if (!CanSellPotions(potion)) return;
+        var discardButton = (NPotionPopupButton)DiscardButtonField.GetValue(popup)!;
+        if (popup.GetNodeOrNull<TextureRect>("%Container") is not { } container) return;
 
-            var useButton = (NPotionPopupButton)UseButtonField.GetValue(__instance)!;
-            useButton.Enable();
-        }
+        // Taller 3-slot frame, and grow the popup so the third button has room. Keep the base texture if the
+        // expanded image is not imported yet, so the buttons still work before the art is packed. Grow from
+        // OffsetTop: _Ready already moved the popup, so OffsetTop is non-zero and a bare OffsetBottom would
+        // set the wrong height. The full-rect Container follows the popup, so the frame texture fills it
+        if (ExpandedTexture() is { } frame) container.Texture = frame;
+        popup.OffsetBottom = popup.OffsetTop + ExpandedHeight;
+
+        // The Sell button is a copy of Discard, not Use, so its hover Background matches the third slot rather
+        // than the tent-topped first slot. Exclude Signals so it does not inherit Discard's press handler.
+        // AddChild runs its _Ready, which rebinds the Label and Background child nodes
+        var sellButton = (NPotionPopupButton)discardButton.Duplicate(
+            (int)(Node.DuplicateFlags.Groups | Node.DuplicateFlags.Scripts));
+        sellButton.Name = "SellButton";
+        container.AddChild(sellButton);
+
+        PositionButton(useButton, ButtonTops[0]);
+        PositionButton(sellButton, ButtonTops[1]);
+        PositionButton(discardButton, ButtonTops[2]);
+
+        var gold = GetGoldFor(potion);
+        var loc = new LocString("gameplay_ui", "POTION_SELL.button");
+        loc.Add("Gold", gold);
+        SetButtonLabel(sellButton, loc.GetFormattedText(), new Color(0.9f, 0.77f, 0.3f));
+        sellButton.Enable();
+        sellButton.Connect(NClickableControl.SignalName.Released,
+            Callable.From<NButton>(_ => OnSellPressed(popup, potion)));
+
+        // Controller and keyboard: Up and Down move Use <-> Sell <-> Discard
+        WireFocus(useButton, sellButton, discardButton);
     }
 
-    [HarmonyPatch]
-    public static class PotionPopupOnUseButtonPressedPatch
+    // Pin a button to the top of the container at an absolute Y, dropping the scene's anchor fraction so the
+    // taller frame does not shift it. The horizontal anchors and offsets stay as the scene set them
+    private static void PositionButton(Control button, float top)
     {
-        static MethodBase TargetMethod()
+        button.AnchorTop = 0f;
+        button.AnchorBottom = 0f;
+        button.OffsetTop = top;
+        button.OffsetBottom = top + ButtonHeight;
+    }
+
+    private static void WireFocus(Control use, Control sell, Control discard)
+    {
+        foreach (var b in new[] { use, sell, discard })
         {
-            return AccessTools.Method(typeof(NPotionPopup), "OnUseButtonPressed");
+            b.FocusNeighborLeft = b.GetPath();
+            b.FocusNeighborRight = b.GetPath();
         }
+        use.FocusNeighborTop = use.GetPath();
+        use.FocusNeighborBottom = sell.GetPath();
+        sell.FocusNeighborTop = use.GetPath();
+        sell.FocusNeighborBottom = discard.GetPath();
+        discard.FocusNeighborTop = sell.GetPath();
+        discard.FocusNeighborBottom = discard.GetPath();
+    }
 
-        public static bool Prefix(NPotionPopup __instance)
-        {
-            var potion = PotionProp.GetValue(__instance) as PotionModel;
-            if (potion == null) return true;
-            if (!CanSellPotions(potion)) return true;
+    // Set the label on the button's child directly, so it does not depend on the button's _Ready having
+    // rebound its private _label field yet
+    private static void SetButtonLabel(Node button, string text, Color color)
+    {
+        if (button.GetNodeOrNull<MegaLabel>("Label") is not { } label) return;
+        label.SetTextAutoSize(text);
+        label.AddThemeColorOverride("font_color", color);
+    }
 
-            var holder = (NPotionHolder)HolderField.GetValue(__instance)!;
-            holder.DisableUntilPotionRemoved();
-
-            TaskHelper.RunSafely(SellPotion(potion));
-
-            __instance.Remove();
-            return false;
-        }
+    private static void OnSellPressed(NPotionPopup popup, PotionModel potion)
+    {
+        var holder = (NPotionHolder)HolderField.GetValue(popup)!;
+        holder.DisableUntilPotionRemoved();
+        TaskHelper.RunSafely(SellPotion(potion));
+        popup.Remove();
     }
 
     [HarmonyPatch(typeof(RunManager), nameof(RunManager.Launch))]
@@ -294,14 +358,15 @@ public static class PotionSellPatches
     // Stable id so the tint patch can find this tooltip's rendered control
     private const string SellableTipId = "ALCHEMIST_POTION_SELLABLE";
 
-    // Shop-only tooltip so players know potions can be sold here, gated exactly like the sell button
+    // Tells players a potion can be sold. Shows anywhere in a run where selling is enabled, not only at the
+    // merchant, but never in the compendium, whose canonical potions have no Owner and no character context
     [HarmonyPatch(typeof(PotionModel), "get_HoverTips")]
     public static class PotionSellableTipPatch
     {
         public static void Postfix(PotionModel __instance, ref IEnumerable<IHoverTip> __result)
         {
-            if (!__instance.IsMutable) return; // canonical (compendium) potions have no Owner
-            if (!CanSellPotions(__instance)) return;
+            if (!__instance.IsMutable) return; // canonical (compendium) potions throw on Owner
+            if (!SellingEnabledFor(__instance.Owner)) return;
             var tip = new HoverTip(
                 new LocString("gameplay_ui", "POTION_SELL.sellable_tip.title"),
                 new LocString("gameplay_ui", "POTION_SELL.sellable_tip.description"))

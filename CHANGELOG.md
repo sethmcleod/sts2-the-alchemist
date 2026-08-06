@@ -28,6 +28,8 @@ Security.
 
 ### Fixed
 
+- Fixed an issue where the Drink/Throw button was not being rendered for Potions
+  in the Shop
 - Fixed the Block from Fresh Batch and from Quicklime's Reaction not counting for a Reaction (Block)
 
 ## [0.6.0] - 2026-08-02
