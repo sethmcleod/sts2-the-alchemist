@@ -8,8 +8,7 @@ namespace Alchemist.AlchemistCode;
 // with the keyword printed on its own face
 public static class Gambit
 {
-    // A third of max HP or less. Deep enough to be one strong hit from death, so entering it is a real
-    // decision rather than a state you drift into and never leave
+    // Half of max HP or less
     public static bool IsActive(Creature? creature) =>
-        creature is { MaxHp: > 0 } c && c.CurrentHp * 3 <= c.MaxHp;
+        creature is { MaxHp: > 0 } c && c.CurrentHp * 2 <= c.MaxHp;
 }
