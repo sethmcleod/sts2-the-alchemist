@@ -10,7 +10,7 @@ public class FeverPitch : AlchemistCard
     // IsGambitCard covers both the keyword tooltip and the gold glow, so no bespoke ConditionalGlow
     protected override bool IsGambitCard => true;
 
-    public FeverPitch() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public FeverPitch() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
     }

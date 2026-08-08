@@ -23,9 +23,11 @@ Security.
 - Renamed Aqua Vitae relic to Quintessence and reworked it: "Whenever you use a Potion, gain 1 Max HP." -> "The first card you play each turn triggers its Reaction."
 - Renamed Flux Stone relic to Viriditas and reworked it: "Whenever a card is created in combat, draw 1 card." -> "At the start of each combat, gain 3 Regen."
 - Reworked Gilded Kit relic: using a Potion now grants 1 Max HP instead of 1 Strength, and its heal decreased from 6 -> 5
-- Buffed Nigredo card: Poison increased from 3(4) -> 4(5)
 - Buffed Gambit keyword: it now activates at 50% or less HP, increased from 33%
+- Buffed Fever Pitch card: cost decreased from 2(1) -> 1(0)
+- Nerfed Unstable Compound card: upgraded damage decreased from 20 -> 18
 - Changed Albedo card: its upgrade now decreases the cost 1 -> 0 instead of granting 1 additional Regen
+- Changed Citrinitas card: cost is now 1(0), and its upgrade no longer grants 2 additional damage
 
 ### Fixed
 

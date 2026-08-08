@@ -9,7 +9,7 @@ public class UnstableCompound : AlchemistCard
 {
     public UnstableCompound() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithVar("Dmg", 14, 6);
+        WithVar("Dmg", 14, 4);
         WithKeyword(CardKeyword.Exhaust);
     }
 
