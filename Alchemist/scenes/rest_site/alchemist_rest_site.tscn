@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3]
+
+; Placeholder Alchemist rest site character. A still image until the animator delivers the rig.
+;
+; BaseLib converts this scene to an NRestSiteCharacter (see RegisterSceneConversions). The factory
+; wants the visuals under ControlRoot, because it flips ControlRoot on the x axis to seat the
+; character on the other side of the fire. It builds the SelectionReticle from the Hitbox, thus
+; this scene leaves the reticle out.
+;
+; The sizes copy the ironclad rest site scene, which draws its skeleton inside a hitbox of
+; 421 x 683 at a root scale of 0.76, thus about 320 x 519 on screen. This scene holds the root at
+; scale 1 and puts the whole size in the sprite, which keeps one number to change.
+;
+; The real rest site model needs its own skeleton and atlas, apart from the combat model, and
+; three looping animations named for the acts: overgrowth_loop, hive_loop and glory_loop.
+
+[ext_resource type="Texture2D" path="res://Alchemist/images/rest_site/alchemist_rest_site.png" id="art"]
+
+[node name="AlchemistRestSite" type="Node2D"]
+
+[node name="ControlRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+; The drawn part of the 650 x 902 image is only the box from 94,278 to 534,862, thus 440 x 584 low
+; and slightly left of the middle. A Sprite2D centres the whole image, thus the position below
+; cancels that offset. 584 px of art at 0.8887 draws 519 px high, the height of the ironclad, and
+; the art then reaches 267 px above the seat and 252 px below it, the same as the ironclad
+[node name="Visuals" type="Sprite2D" parent="ControlRoot"]
+texture = ExtResource("art")
+position = Vector2(9.8, -113.3)
+scale = Vector2(0.8887, 0.8887)
+
+[node name="Hitbox" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -196.0
+offset_top = -267.0
+offset_right = 196.0
+offset_bottom = 252.0
+mouse_filter = 2
+
+[node name="ThoughtBubbleRight" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 206.0
+offset_top = -250.0
+offset_right = 206.0
+offset_bottom = -250.0
+
+[node name="ThoughtBubbleLeft" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -206.0
+offset_top = -250.0
+offset_right = -206.0
+offset_bottom = -250.0

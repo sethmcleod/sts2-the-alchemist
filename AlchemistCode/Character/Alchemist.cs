@@ -91,6 +91,10 @@ public class Alchemist : PlaceholderCharacterModel
     public override string CustomCharacterSelectTransitionPath => $"{MainFile.ResPath}/materials/transitions/alchemist_transition_mat.tres";
     public override string CustomEnergyCounterPath => $"{MainFile.ResPath}/scenes/combat/energy_counters/alchemist_energy_counter.tscn";
 
+    // A still image until the rest site rig arrives. BaseLib turns the scene into an
+    // NRestSiteCharacter, thus the merchant and the multiplayer hands stay on the ironclad
+    public override string CustomRestSiteAnimPath => $"{MainFile.ResPath}/scenes/rest_site/alchemist_rest_site.tscn";
+
     // Borrowed base-game sfx. Override each one rather than PlaceholderID, which also controls the creature
     // visuals, the rest site and merchant animations, and the multiplayer hands. A res:// path plays through
     // Godot audio instead of FMOD, routed by BaseLib's PlayResourcePatch. scripts/gen_select_sfx.py makes the wav
