@@ -1,3 +1,5 @@
+<img width="450" height="90" alt="header" src="https://github.com/user-attachments/assets/22b69eef-ea3f-474d-b9b5-2b57d6266cdb" />
+
 # The Alchemist
 
 > An amphibian practicer of esoteric arts.
