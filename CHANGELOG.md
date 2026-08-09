@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-08-09
+
 ### Added
 
 - Added run summary badges earned by Brewing at 3, 6 or 9 Rest Sites in a run
