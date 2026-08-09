@@ -27,6 +27,13 @@ internal static class AlchemistRestSite
 
     public const string ScenePath = $"{MainFile.ResPath}/scenes/rest_site/alchemist_rest_site.tscn";
 
+    // The game picks the loop from the act index alone, thus both halves of act 1 get the green
+    // overgrowth light. The Underdocks is lit blue, and the act 3 loop already carries that light
+    private const string UnderdocksAnimationLeaf = "glory_loop";
+
+    /// <summary>The loop to play in the Underdocks, or null if the skeleton holds none.</summary>
+    public static string? UnderdocksAnimation { get; private set; }
+
     // The box the still image filled, which sat correctly at the fire. The scale and the offset
     // below both come from the skeleton at run time, thus a rig whose size or origin moves between
     // exports still lands here
@@ -47,6 +54,8 @@ internal static class AlchemistRestSite
 
         var data = SpineModel.Load(AtlasPath, SkeletonPath);
         if (data == null) return;
+
+        UnderdocksAnimation = SpineModel.ResolveAnimation(data, UnderdocksAnimationLeaf);
 
         // The two rigs hang their art very differently around the origin: the ironclad reaches from
         // -137 to 265 across and the Alchemist from -234 to 208, thus the sprite needs its own
