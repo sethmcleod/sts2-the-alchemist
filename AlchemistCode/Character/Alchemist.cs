@@ -90,6 +90,11 @@ public class Alchemist : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "char_select_alchemist.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_alchemist_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_alchemist.png".CharacterUiPath();
+
+    public override string CustomArmPointingTexturePath => "multiplayer_hand_alchemist_point.png".CharacterUiPath();
+    public override string CustomArmRockTexturePath => "multiplayer_hand_alchemist_rock.png".CharacterUiPath();
+    public override string CustomArmPaperTexturePath => "multiplayer_hand_alchemist_paper.png".CharacterUiPath();
+    public override string CustomArmScissorsTexturePath => "multiplayer_hand_alchemist_scissors.png".CharacterUiPath();
     public override string CustomCharacterSelectBg => $"{MainFile.ResPath}/scenes/screens/char_select/char_select_bg_alchemist.tscn";
     public override string CustomCharacterSelectTransitionPath => $"{MainFile.ResPath}/materials/transitions/alchemist_transition_mat.tres";
     public override string CustomEnergyCounterPath => $"{MainFile.ResPath}/scenes/combat/energy_counters/alchemist_energy_counter.tscn";

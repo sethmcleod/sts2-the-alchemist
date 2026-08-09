@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+- Added the Alchemist hands used in multiplayer, replacing the Ironclad placeholders
+
 ## [0.6.2] - 2026-08-09
 
 ### Added
