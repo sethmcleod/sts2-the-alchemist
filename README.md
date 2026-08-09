@@ -34,7 +34,7 @@ _(Disclaimer: This description was paid for by the Merchant.)_
 - **Reaction**: Cards with this keyword gain an extra effect when the card you
   played directly before them, on the same turn, matches the condition shown.
 - **Gambit**: Cards with this keyword have buffs that are only active while your
-  HP is 33% or less. Whether increasing damage or adding additional effects,
+  HP is 50% or less. Whether increasing damage or adding additional effects,
   you'll benefit from playing strategically.
 - **Ferment**: This keyword is only found on cards that also Retain. These
   effects grow in potency for every turn the card stays in your hand. However if

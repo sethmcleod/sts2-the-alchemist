@@ -204,6 +204,26 @@ do_release() {  # <patch|minor|major|X.Y.Z>
     END { flush() }
   ' > "$notes"
 
+  # Refresh the Steam Workshop workspace: the same three runtime files go into content/, and
+  # workshop.json gets the new version and the release notes as its changeNote, so a
+  # `ModUploader upload -w workshop` after the release pushes exactly what was packaged.
+  if [ -d "$REPO/workshop" ]; then
+    step "workshop workspace"
+    for f in Alchemist.dll Alchemist.json Alchemist.pck; do
+      cp -f "$src/$f" "$REPO/workshop/content/"
+    done
+    "${PY_CMD[@]}" - "$REPO/workshop/workshop.json" "v$new" "$notes" <<'PYEOF'
+import json, sys
+path, ver, notes_file = sys.argv[1:4]
+with open(path, encoding="utf-8") as f: cfg = json.load(f)
+with open(notes_file, encoding="utf-8") as f: notes = f.read().strip()
+cfg["changeNote"] = f"{ver}\n\n{notes}" if notes else ver
+with open(path, "w", encoding="utf-8") as f:
+    json.dump(cfg, f, indent=2, ensure_ascii=False); f.write("\n")
+PYEOF
+    ok "workshop/content and workshop.json changeNote are at v$new"
+  fi
+
   echo
   ok "v$new is ready: the files are updated, the artifact and the notes are in dist/"
   echo "Examine the diff, then publish it:"
@@ -243,14 +263,17 @@ do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
   [ -n "$ver" ] || ver="$(current_version)"
   local tag="v$ver"
 
-  # The release edit that `release` leaves behind is exactly these two files. Commit it here so
-  # that the whole flow is two commands. Any other pending change means the tree is not ready.
+  # The release edit that `release` leaves behind is exactly these files (workshop.json only
+  # changes when the workshop workspace exists). Commit it here so that the whole flow is two
+  # commands. Any other pending change means the tree is not ready.
   if [ -n "$(git -C "$REPO" status --porcelain)" ]; then
-    local dirty; dirty="$(git -C "$REPO" status --porcelain | awk '{print $2}' | sort | tr '\n' ' ')"
-    [ "$dirty" = "Alchemist.json CHANGELOG.md " ] || {
-      bad "the working tree has changes other than the release edit: $dirty"; exit 1; }
+    local extra; extra="$(git -C "$REPO" status --porcelain | awk '{print $2}' \
+      | grep -v -E '^(Alchemist\.json|CHANGELOG\.md|workshop/workshop\.json)$' || true)"
+    [ -z "$extra" ] || {
+      bad "the working tree has changes other than the release edit: $(echo "$extra" | tr '\n' ' ')"; exit 1; }
     step "commit release: $tag"
     git -C "$REPO" add Alchemist.json CHANGELOG.md
+    [ -f "$REPO/workshop/workshop.json" ] && git -C "$REPO" add workshop/workshop.json
     git -C "$REPO" commit -q -m "release: $tag"
     ok "committed"
   fi

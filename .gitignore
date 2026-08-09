@@ -7,3 +7,5 @@ bin/
 dist/
 scripts/tests
 beta-art-sheet.html
+workshop/content/
+workshop/mod-uploader.log
