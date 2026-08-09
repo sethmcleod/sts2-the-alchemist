@@ -15,9 +15,20 @@ Security.
 
 ## [0.6.2] - 2026-08-09
 
+### Added
+
+- Added the Sell option to Foul Potion, paying the same Gold as throwing it at the Merchant
+
+### Changed
+
+- Changed the Coveted potion tip: it now shows anywhere in a run instead of only at the Merchant
+
 ### Fixed
 
 - Fixed the Brew Rest Site option showing a blank icon
+- Fixed the Unstable Compound power tooltip showing placeholder text instead of the turn and the damage number
+
+## [0.6.2] - 2026-08-09
 
 ### Added
 
