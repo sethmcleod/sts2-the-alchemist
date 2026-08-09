@@ -1,4 +1,4 @@
-<img width="450" height="90" alt="header" src="https://github.com/user-attachments/assets/1b8a76f0-129d-4c34-b79a-01c08a9fd64a" />
+<img width="450" height="90" alt="header" src="https://github.com/user-attachments/assets/ca040185-202a-4fcd-b4fe-39a16cc813ba" />
 
 # The Alchemist
 
