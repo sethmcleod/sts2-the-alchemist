@@ -37,7 +37,7 @@ the local machine instead. `scripts/dev.sh release` starts it (see
 - The icon sizes are:
   - power: 64 and 256 (big)
   - relic: 94, 94 (outline), and 256 (big)
-- Put the card portraits in `card_portraits/big/`.
+- Put the card portraits in `card_portraits/`, and the beta placeholders in `card_portraits/beta/`. `CardImageOrBetaPath` prefers the real art, so a portrait can land one card at a time (see [docs/beta-card-art.md](docs/beta-card-art.md)).
 - Each power needs the localization keys `.title`, `.description`, **and** `.smartDescription`. The localization analyzer in the build checks this.
 - The file `cards.csv` is the primary record of the design. Update it when you change the stats or the text of a card.
 
