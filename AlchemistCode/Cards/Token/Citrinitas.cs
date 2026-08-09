@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Cards.Basic;
 using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -19,6 +20,8 @@ public class Citrinitas : AlchemistCard
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(RegenPower));
         WithUpgradingCardTip<Rubedo>();
+        WithUpgradingCardTip<Nigredo>();
+        WithUpgradingCardTip<Albedo>();
     }
 
     private int DamagePer => Owner?.Creature is { } c ? c.GetPowerAmount<RegenPower>() : 0;

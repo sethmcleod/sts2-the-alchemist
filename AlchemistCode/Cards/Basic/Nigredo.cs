@@ -13,7 +13,10 @@ public class Nigredo : AlchemistCard
     {
         WithPower<PoisonPower>(3, 1);
         WithKeyword(CardKeyword.Exhaust);
+        // The rest of the chain, in the order it comes back around
         WithUpgradingCardTip<Albedo>();
+        WithUpgradingCardTip<Citrinitas>();
+        WithUpgradingCardTip<Rubedo>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

@@ -19,6 +19,8 @@ public class Rubedo : AlchemistCard
         WithPower<StrengthPower>(1, 0);
         WithKeyword(CardKeyword.Exhaust);
         WithUpgradingCardTip<Nigredo>();
+        WithUpgradingCardTip<Albedo>();
+        WithUpgradingCardTip<Citrinitas>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

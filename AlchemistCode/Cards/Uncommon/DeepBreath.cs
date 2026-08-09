@@ -13,6 +13,7 @@ public class DeepBreath : AlchemistCard
     {
         // Hold the breath: the card waits in hand for the turn the table's Poison is worth cashing
         WithKeyword(CardKeyword.Retain);
+        WithKeyword(CardKeyword.Exhaust, UpgradeType.Remove);
         WithTip(typeof(PoisonPower));
         WithTip(StaticHoverTip.Block);
         ExplainNumber("ALCHEMIST-DEEP_BREATH");
@@ -27,8 +28,7 @@ public class DeepBreath : AlchemistCard
             .Sum(c => c.GetPowerAmount<PoisonPower>());
         if (totalPoison > 0)
         {
-            var times = IsUpgraded ? 2 : 1;
-            for (var i = 0; i < times; i++)
+            for (var i = 0; i < 1; i++)
                 await CreatureCmd.GainBlock(Owner.Creature, totalPoison, ValueProp.Move, play);
         }
     }

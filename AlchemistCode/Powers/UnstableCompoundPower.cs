@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -31,7 +32,9 @@ public class UnstableCompoundPower : AlchemistPower
     {
         get
         {
-            if (Owner?.CombatState is not { } combat) return (int)Amount;
+            // Owner asserts mutable, so it throws on the canonical model behind a dumb concept tooltip.
+            // The raw amount is the only meaningful answer there anyway, with no combat to modify it
+            if (!IsMutable || Owner?.CombatState is not { } combat) return (int)Amount;
             var damage = Hook.ModifyDamage(combat.RunState, combat, Owner, Applier, Amount,
                 ValueProp.Unpowered, null, null, ModifyDamageHookType.All, CardPreviewMode.None, out _);
             damage = Hook.ModifyHpLost(combat.RunState, combat, Owner, damage, ValueProp.Unpowered,
@@ -40,16 +43,24 @@ public class UnstableCompoundPower : AlchemistPower
         }
     }
 
-    // The tooltip reads the capped number and names the turn the hit lands, so it agrees with the
-    // health bar. Description is the only hook: PowerModel adds its own args privately, and the smart
-    // description falls back to this one when no smartDescription key exists
+    // Names the turn the hit lands, so the tooltip agrees with the health bar forecast
+    internal string WhenText =>
+        new LocString("powers", IsMutable && _armed
+            ? "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn"
+            : "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_next_turn").GetFormattedText();
+
+    // Fills the smart (instance) tooltip. The plain Description path below never sees these
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        new DynamicVar[] { new UnstableCompoundDamageVar(), new UnstableCompoundWhenVar() };
+
+    // Fills the dumb (concept) tooltip, which is built from the canonical model and so skips DynamicVars
     public override LocString Description
     {
         get
         {
             var description = base.Description;
             description.Add("Damage", EffectiveDamage);
-            description.Add("When", _armed ? "this turn" : "your next turn");
+            description.Add("When", WhenText);
             return description;
         }
     }

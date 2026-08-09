@@ -71,6 +71,8 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.description": "At the end of {When}, takes {Damage} damage.",
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.smartDescription": "At the end of {When}, takes {Damage} damage.",
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.title": "Unstable Compound",
+  "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_next_turn": "your next turn",
+  "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "this turn",
   "ALCHEMIST-WINDFALL_POWER.description": "Whenever you procure a [gold]Potion[/gold] during combat, draw {Amount} card(s) and gain 1 Energy.",
   "ALCHEMIST-WINDFALL_POWER.smartDescription": "Whenever you procure a [gold]Potion[/gold] during combat, draw {Amount} {Amount:plural:card|cards} and gain 1 Energy.",
   "ALCHEMIST-WINDFALL_POWER.title": "Windfall"

@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Cards.Basic;
 using Alchemist.AlchemistCode.Commands;
 using BaseLib.Extensions;
 using BaseLib.Utils;
@@ -14,9 +15,11 @@ public class Albedo : AlchemistCard
 {
     public Albedo() : base(1, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
+        WithPower<RegenPower>(0, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithUpgradingCardTip<Citrinitas>();
+        WithUpgradingCardTip<Rubedo>();
+        WithUpgradingCardTip<Nigredo>();
         WithTip(typeof(PoisonPower));
         WithTip(typeof(RegenPower));
     }

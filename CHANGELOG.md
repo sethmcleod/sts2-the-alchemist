@@ -26,11 +26,14 @@ Security.
 - Buffed Gambit keyword: it now activates at 50% or less HP, increased from 33%
 - Buffed Fever Pitch card: cost decreased from 2(1) -> 1(0)
 - Nerfed Unstable Compound card: upgraded damage decreased from 20 -> 18
-- Changed Albedo card: its upgrade now decreases the cost 1 -> 0 instead of granting 1 additional Regen
+- Nerfed Hone card: cost increased from 1 -> 2(1), and its upgrade no longer grants 1 Strength
 - Changed Citrinitas card: cost is now 1(0), and its upgrade no longer grants 2 additional damage
+- Nerfed Deep Breath card: it now gains Block 1 and Exhausts; its upgrade removes the Exhaust
+- Changed the Nigredo chain hover tips: each one now previews the other three in order
 
 ### Fixed
 
+- Fixed the Regen from upgraded Albedo not being applied if you had no Poison
 - Fixed an issue where the Drink/Throw button was not being rendered for Potions
   in the Shop
 - Fixed the Block from Fresh Batch and from Quicklime's Reaction not counting for a Reaction (Block)
