@@ -17,6 +17,8 @@ Security.
 
 ### Added
 
+- Added the Alchemist character model to combat, replacing the Ironclad placeholder. It idles, blinks and reacts when hit
+- Added the Alchemist character model to the Rest Site and the Merchant, replacing the Ironclad placeholders
 - Added the Sell option to Foul Potion, paying the same Gold as throwing it at the Merchant
 
 ### Changed
@@ -27,13 +29,6 @@ Security.
 
 - Fixed the Brew Rest Site option showing a blank icon
 - Fixed the Unstable Compound power tooltip showing placeholder text instead of the turn and the damage number
-
-## [0.6.2] - 2026-08-09
-
-### Added
-
-- Added the Alchemist character model to combat, replacing the Ironclad placeholder. It idles, blinks and reacts when hit
-- Added the Alchemist character model to the Rest Site and the Merchant, replacing the Ironclad placeholders
 
 ## [0.6.1] - 2026-08-09
 
