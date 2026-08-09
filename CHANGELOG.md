@@ -13,6 +13,12 @@ Security.
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-08-09
+
+### Fixed
+
+- Fixed the Brew Rest Site option showing a blank icon
+
 ### Added
 
 - Added the Alchemist character model to combat, replacing the Ironclad placeholder. It idles, blinks and reacts when hit
