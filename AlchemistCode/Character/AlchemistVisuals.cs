@@ -10,26 +10,10 @@ namespace Alchemist.AlchemistCode.Character;
 /// Builds the Alchemist combat model from the raw Spine files at run time.
 /// </summary>
 /// <remarks>
-/// MegaDot does not contain the Spine GDExtension, thus the Godot editor cannot import an .atlas or
-/// a .skel file and cannot open a scene that holds a SpineSprite node. The game does load that
-/// extension. The mod carries the three raw Spine files in the pck (see the include_filter in
-/// export_presets.cfg) and makes the resource chain through ClassDB at run time. spine-godot gives
-/// load_from_atlas_file and load_from_file for this use.
-///
-/// A scene is the other option: a hand-written text .tscn can declare a SpineSprite root and let
-/// the game resolve the types when it loads the scene. That needs
-/// export/convert_text_resources_to_binary = false in project.godot, because the editor cannot
-/// convert a scene whose classes it does not know. Downfall uses that method. This mod keeps the
-/// export default, because that flag applies to every scene in the project.
+/// SpineModel carries the reason the model is built here and not in a scene.
 /// </remarks>
 internal static class AlchemistVisuals
 {
-    // The GDExtension classes have no C# binding, thus each one is used through ClassDB and Call
-    private const string SpriteClass = "SpineSprite";
-    private const string AtlasClass = "SpineAtlasResource";
-    private const string SkeletonFileClass = "SpineSkeletonFileResource";
-    private const string SkeletonDataClass = "SpineSkeletonDataResource";
-
     private const string ModelDir = $"{MainFile.ResPath}/animations/characters/alchemist";
     private const string AtlasPath = $"{ModelDir}/alchemist_model.atlas";
     private const string SkeletonPath = $"{ModelDir}/alchemist_model.skel";
@@ -42,6 +26,7 @@ internal static class AlchemistVisuals
 
     private const string IdleAnimationLeaf = "idle_loop";
     private const string BlinkAnimationLeaf = "blink";
+    private const string HurtAnimationLeaf = "hurt";
 
     // The idle holds track 0. A second track plays the blink over it, thus the eyes keep their own
     // clock and never lock to the loop of the idle. Vantom and LagavulinMatriarch layer this way
@@ -66,6 +51,9 @@ internal static class AlchemistVisuals
 
     /// <summary>The blink animation, or null if the skeleton holds none.</summary>
     public static string? BlinkAnimation { get; private set; }
+
+    /// <summary>The on hit animation, or null. Null makes the game play the idle instead.</summary>
+    public static string? HurtAnimation { get; private set; }
 
     // How high the model stands on screen, from the feet to the top of the art. This is near the
     // height of the ironclad (1185 units at 0.28 scale). The scale comes from the skeleton at run
@@ -122,105 +110,31 @@ internal static class AlchemistVisuals
         var data = SkeletonData();
         if (data == null) return null;
 
-        if (ClassDB.Instantiate(SpriteClass).As<Node2D>() is not { } sprite)
-        {
-            MainFile.Logger.Error($"Could not make a {SpriteClass}. The Alchemist uses the fallback model.");
-            return null;
-        }
-
-        sprite.Set("skeleton_data_res", data);
-        var scale = ScaleFor(data);
-        sprite.Scale = new Vector2(scale, scale);
-        return sprite;
+        // A rig that changes size between exports still draws ModelHeight high
+        var scale = ModelHeight / SpineModel.AboveOrigin(data, FallbackSkeletonHeight);
+        return SpineModel.CreateSprite(data, scale);
     }
 
-    /// <summary>
-    /// Returns the scale that draws the skeleton ModelHeight high.
-    /// </summary>
-    /// <remarks>
-    /// The skeleton reports the box around its setup pose. Its y is the bottom edge, which sits
-    /// below the feet because the shadow reaches past them, thus y plus the height is the part
-    /// above the ground and is what must match ModelHeight.
-    /// </remarks>
-    private static float ScaleFor(Resource data)
-    {
-        var above = FallbackSkeletonHeight;
-        if (data.HasMethod("get_height") && data.HasMethod("get_y"))
-        {
-            var reported = data.Call("get_y").AsSingle() + data.Call("get_height").AsSingle();
-            if (reported > 1f) above = reported;
-            else MainFile.Logger.Info($"The Alchemist skeleton reported a height of {reported}. Using the fallback.");
-        }
-
-        return ModelHeight / above;
-    }
-
-    private static Resource? SkeletonData()
+    public static Resource? SkeletonData()
     {
         if (_skeletonData != null) return _skeletonData;
 
-        if (!ClassDB.ClassExists(SpriteClass))
+        var data = SpineModel.Load(AtlasPath, SkeletonPath);
+        if (data == null)
         {
-            MainFile.Logger.Error(
-                "The Spine GDExtension is not loaded. The Alchemist uses the fallback model.");
+            MainFile.Logger.Error("The Alchemist combat model did not load. It uses the fallback model.");
             return null;
         }
 
-        var atlas = ClassDB.Instantiate(AtlasClass).As<Resource>();
-        var skeletonFile = ClassDB.Instantiate(SkeletonFileClass).As<Resource>();
-        var data = ClassDB.Instantiate(SkeletonDataClass).As<Resource>();
-        if (atlas == null || skeletonFile == null || data == null)
-        {
-            MainFile.Logger.Error("Could not make the Spine resources. The Alchemist uses the fallback model.");
-            return null;
-        }
-
-        if (ReadFailed(atlas, "load_from_atlas_file", AtlasPath)) return null;
-        if (ReadFailed(skeletonFile, "load_from_file", SkeletonPath)) return null;
-
-        // The data resource reads the skeleton when it holds both halves, thus the atlas goes first
-        data.Set("atlas_res", atlas);
-        data.Set("skeleton_file_res", skeletonFile);
-
-        if (!data.Call("is_skeleton_data_loaded").AsBool())
-        {
-            MainFile.Logger.Error(
-                "The Alchemist skeleton did not load from its atlas and skel. It uses the fallback model.");
-            return null;
-        }
-
-        IdleAnimation = ResolveAnimation(data, IdleAnimationLeaf) ?? IdleAnimationLeaf;
-        BlinkAnimation = ResolveAnimation(data, BlinkAnimationLeaf);
+        IdleAnimation = SpineModel.ResolveAnimation(data, IdleAnimationLeaf) ?? IdleAnimationLeaf;
+        BlinkAnimation = SpineModel.ResolveAnimation(data, BlinkAnimationLeaf);
+        HurtAnimation = SpineModel.ResolveAnimation(data, HurtAnimationLeaf);
 
         if (BlinkAnimation == null)
             MainFile.Logger.Info("The Alchemist skeleton holds no blink animation. The eyes stay open.");
 
         _skeletonData = data;
         return data;
-    }
-
-    /// <summary>
-    /// Returns the full name of the animation whose last part is <paramref name="leaf"/>, or null.
-    /// </summary>
-    /// <remarks>
-    /// The artist names these, thus the match ignores a folder in front and a leading underscore.
-    /// Both have appeared already: main/idle_loop, then _blink because Spine refuses a name that
-    /// holds a slash.
-    /// </remarks>
-    private static string? ResolveAnimation(Resource data, string leaf)
-    {
-        if (!data.HasMethod("get_animations")) return null;
-
-        foreach (var entry in data.Call("get_animations").AsGodotArray())
-        {
-            if (entry.AsGodotObject() is not { } animation) continue;
-
-            var name = animation.Call("get_name").AsString();
-            var tail = name[(name.LastIndexOf('/') + 1)..].TrimStart('_');
-            if (string.Equals(tail, leaf, StringComparison.OrdinalIgnoreCase)) return name;
-        }
-
-        return null;
     }
 
     /// <summary>
@@ -258,14 +172,5 @@ internal static class AlchemistVisuals
 
             if (i == 0) blinkLength = entry.GetAnimationDuration();
         }
-    }
-
-    private static bool ReadFailed(Resource resource, string method, string path)
-    {
-        var error = (Error)resource.Call(method, path).AsInt64();
-        if (error == Error.Ok) return false;
-
-        MainFile.Logger.Error($"Could not read {path} ({error}). The Alchemist uses the fallback model.");
-        return true;
     }
 }

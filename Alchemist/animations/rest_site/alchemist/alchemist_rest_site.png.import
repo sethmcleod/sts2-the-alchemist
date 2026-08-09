@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7onb4rdka48t"
-path="res://.godot/imported/alchemist_rest_site.png-ccc403eaf0a71298dda33b016e694947.ctex"
+uid="uid://d3p4p0k2if2pg"
+path="res://.godot/imported/alchemist_rest_site.png-b4f091cbae833618039dc54a06d0925f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/rest_site/alchemist_rest_site.png"
-dest_files=["res://.godot/imported/alchemist_rest_site.png-ccc403eaf0a71298dda33b016e694947.ctex"]
+source_file="res://Alchemist/animations/rest_site/alchemist/alchemist_rest_site.png"
+dest_files=["res://.godot/imported/alchemist_rest_site.png-b4f091cbae833618039dc54a06d0925f.ctex"]
 
 [params]
 

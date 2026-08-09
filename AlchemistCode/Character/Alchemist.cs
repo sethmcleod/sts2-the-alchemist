@@ -61,14 +61,17 @@ public class Alchemist : PlaceholderCharacterModel
     public override string CustomVisualPath => SceneHelper.GetScenePath("creature_visuals/fallback");
 
     // The atlas page of the model loads with the other character assets, not on the first combat
-    protected override IEnumerable<string> ExtraAssetPaths => [AlchemistVisuals.TexturePath];
+    protected override IEnumerable<string> ExtraAssetPaths =>
+        [AlchemistVisuals.TexturePath, AlchemistRestSite.TexturePath];
 
-    // The skeleton holds one animation for the body, thus each state plays the idle. The blink
-    // rides a second track with its own clock, thus it never locks to the loop of the idle
+    // Attack, cast and death are still missing from the skeleton, and an omitted name falls back
+    // to the idle. The blink rides a second track with its own clock, thus it never locks to the
+    // loop of the idle
     public override CreatureAnimator SetupCustomAnimationStates(MegaSprite controller)
     {
         AlchemistVisuals.StartBlinking(controller);
-        return SetupAnimationState(controller, AlchemistVisuals.IdleAnimation);
+        return SetupAnimationState(controller, AlchemistVisuals.IdleAnimation,
+            hitName: AlchemistVisuals.HurtAnimation);
     }
 
     public override Control CustomIcon
@@ -91,9 +94,11 @@ public class Alchemist : PlaceholderCharacterModel
     public override string CustomCharacterSelectTransitionPath => $"{MainFile.ResPath}/materials/transitions/alchemist_transition_mat.tres";
     public override string CustomEnergyCounterPath => $"{MainFile.ResPath}/scenes/combat/energy_counters/alchemist_energy_counter.tscn";
 
-    // A still image until the rest site rig arrives. BaseLib turns the scene into an
-    // NRestSiteCharacter, thus the merchant and the multiplayer hands stay on the ironclad
-    public override string CustomRestSiteAnimPath => $"{MainFile.ResPath}/scenes/rest_site/alchemist_rest_site.tscn";
+    // Both scenes hold no Spine node of their own. SpineScenePatch puts the model in after BaseLib
+    // turns each one into its game type. The shop reuses the combat skeleton, the same way every
+    // base game character does, and plays its relaxed_loop
+    public override string CustomRestSiteAnimPath => AlchemistRestSite.ScenePath;
+    public override string CustomMerchantAnimPath => AlchemistMerchant.ScenePath;
 
     // Borrowed base-game sfx. Override each one rather than PlaceholderID, which also controls the creature
     // visuals, the rest site and merchant animations, and the multiplayer hands. A res:// path plays through

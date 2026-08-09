@@ -1,0 +1,10 @@
+[gd_scene load_steps=1 format=3]
+
+; Placeholder shop pose for the Alchemist. The scene is empty on purpose: a mod scene cannot hold a
+; SpineSprite (see AlchemistCode/Character/SpineModel.cs), thus AlchemistMerchant adds the model
+; after BaseLib turns this root into an NMerchantCharacter. See SpineScenePatch for the wiring.
+;
+; The shop reuses the combat skeleton and plays its relaxed_loop, the same way every base game
+; character does. It needs a rig of its own only if the shop art should differ from combat.
+
+[node name="AlchemistMerchant" type="Node2D"]
