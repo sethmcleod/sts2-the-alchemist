@@ -41,9 +41,8 @@ _(Disclaimer: This description was paid for by the Merchant.)_
 - **Infuse**: Infusing a card Enchants it for the rest of combat based on the
   type. Attacks apply Poison, Skills create tokens that apply Weak and
   Vulnerable, Powers give Strength, and other cards gain Ethereal.
-- **Brew**: This new Rest Site option allows you to remove a card from your deck
-  and procure a random potion. There are 3 new potions that can only be obtained
-  this way.
+- **Brew**: This new Rest Site option lets you procure a random potion.
+  There are 3 new potions that can only be obtained this way.
 - **_Sell Potions!_**: Due to the quality and potency of these brews, the
   Merchant is willing to buy potions from you, offering Gold based on the
   rarity!

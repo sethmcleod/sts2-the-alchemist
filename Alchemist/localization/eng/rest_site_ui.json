@@ -1,5 +1,4 @@
 {
   "OPTION_BREW.name": "Brew",
-  "OPTION_BREW.description": "[gold]Remove[/gold] a card from your [gold]Deck[/gold] and procure a random [gold]Potion[/gold].",
-  "OPTION_BREW.descriptionDisabled": "[red]You need at least 1 removable card in your Deck.[/red]"
+  "OPTION_BREW.description": "Procure a random [gold]Potion[/gold]."
 }

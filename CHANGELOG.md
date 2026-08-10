@@ -15,6 +15,7 @@ Security.
 
 ### Changed
 
+- Nerfed Brew Rest Site option so that it no longer removes a card from your Deck
 - Updated Potion sale run summary badge placeholder art
 
 ## [0.6.4] - 2026-08-09

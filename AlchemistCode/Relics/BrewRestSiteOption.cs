@@ -1,9 +1,7 @@
 using System.Reflection;
 using Alchemist.AlchemistCode.Potions;
 using Godot;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.Localization;
@@ -25,17 +23,10 @@ public sealed class BrewRestSiteOption : RestSiteOption
 
     public override string OptionId => BrewOptionId;
 
-    public override LocString Description
-    {
-        get
-        {
-            if (IsEnabled)
-                return new LocString("rest_site_ui", "OPTION_" + OptionId + ".description");
-            return new LocString("rest_site_ui", "OPTION_" + OptionId + ".descriptionDisabled");
-        }
-    }
+    public override LocString Description =>
+        new LocString("rest_site_ui", "OPTION_" + OptionId + ".description");
 
-    public override bool IsEnabled => GetRemovableCardCount(Owner) >= 1;
+    public override bool IsEnabled => true;
 
     public override IEnumerable<string> AssetPaths => Array.Empty<string>();
 
@@ -43,18 +34,6 @@ public sealed class BrewRestSiteOption : RestSiteOption
 
     public override async Task<bool> OnSelect()
     {
-        CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.RemoveSelectionPrompt, 1)
-        {
-            Cancelable = true,
-            RequireManualConfirmation = true
-        };
-        IEnumerable<CardModel> selected = await CardSelectCmd.FromDeckForRemoval(Owner, prefs);
-        if (!selected.Any())
-            return false;
-
-        foreach (var card in selected)
-            await CardPileCmd.RemoveFromDeck(card);
-
         var restSiteRoom = NRestSiteRoom.Instance;
         if (restSiteRoom != null)
         {
@@ -84,10 +63,5 @@ public sealed class BrewRestSiteOption : RestSiteOption
         if (exclusives.Count > 0 && rng.NextFloat() < Config.AlchemistModConfig.BrewPotionChance / 100f)
             return new PotionReward(rng.NextItem(exclusives)!.ToMutable(), Owner);
         return new PotionReward(Owner);
-    }
-
-    private static int GetRemovableCardCount(Player player)
-    {
-        return PileType.Deck.GetPile(player).Cards.Count(c => c.IsRemovable);
     }
 }
