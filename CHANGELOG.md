@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.6.4] - 2026-08-09
+
 ### Added
 
 - Added the Alchemist character art to the character select screen, with a subtle
