@@ -8,8 +8,8 @@
 ## Overview
 
 The Alchemist is a new character with a high-risk, high-reward playstyle. You'll
-benefit from having low HP, but also be equipped with tools to gain that health
-back through Regen and potions. You can Enchant cards in combat to give them
+benefit from having low HP, but also be equipped with tools to gain it
+back through Regen and potions. Cards can be Enchanted in combat to give them
 powerful effects, multiple times. You can also brew potions at rest sites and,
 more importantly, _sell them to the Merchant!_ 💰
 
@@ -30,15 +30,14 @@ _(Disclaimer: This description was paid for by the Merchant.)_
 
 - **Poison & Regen**: The Alchemist deliberately self-poisons, then converts
   Poison into Regen, and Regen into damage, Block or other useful effects. Both
-  are meant to be actively cycled, not passively endured.
+  are meant to be actively cycled.
 - **Reaction**: Cards with this keyword gain an extra effect when the card you
   played directly before them, on the same turn, matches the condition shown.
 - **Gambit**: Cards with this keyword have buffs that are only active while your
-  HP is 50% or less. Whether increasing damage or adding additional effects,
-  you'll benefit from playing strategically.
-- **Ferment**: This keyword is only found on cards that also Retain. These
-  effects grow in potency for every turn the card stays in your hand. However if
-  you Retain them past their peak, they spoil into Toxic cards.
+  HP is 50% or less.
+- **Ferment**: These effects grow in potency for every turn the card stays in
+  your hand. However if you Retain them past their peak, they spoil into Toxic
+  cards.
 - **Infuse**: Infusing a card Enchants it for the rest of combat based on the
   type. Attacks apply Poison, Skills create tokens that apply Weak and
   Vulnerable, Powers give Strength, and other cards gain Ethereal.
@@ -47,26 +46,24 @@ _(Disclaimer: This description was paid for by the Merchant.)_
   this way.
 - **_Sell Potions!_**: Due to the quality and potency of these brews, the
   Merchant is willing to buy potions from you, offering Gold based on the
-  rarity.
+  rarity!
 
 ## A Note on Quality
 
 The Alchemist has been lovingly crafted to feel like a natural addition to the
 game. Every card, relic, and potion has been (and will continue to be) balanced
-against the existing pools through many rounds of low and high-Ascension
-playtesting. The same care extends to flavor and lore: this character's story is
-woven directly into the game's existing timeline, and observant players will
-find more than a few threads connecting them to the world.
+against the existing game. The same care extends to flavor and lore: this
+character's story is woven directly into the game's existing timeline, and
+observant players will find more than a few threads connecting them to the world.
 
 ---
 
 ## Play it
 
-**Steam Workshop** is the best way to install and play... soon!
-
 > [!NOTE]
-> There will be a Workshop launch as soon as the first round of character
-> artwork is complete. Until then, you can use the manual installation below.
+> Steam Workshop is the best way to install and play, since it will
+> automatically prompt you to install BaseLib:
+> https://steamcommunity.com/sharedfiles/filedetails/?id=3780726901
 
 **Manual install:**
 
