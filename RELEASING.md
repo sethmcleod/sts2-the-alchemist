@@ -140,8 +140,8 @@ The command does these steps:
 4. **Publish**: it creates the GitHub Release, or updates it when the release
    is already there. The title is the tag, the body is
    `dist/RELEASE_NOTES-vX.Y.Z.txt`, and the zip goes up as the asset
-   (`--clobber` replaces an asset of the same name). Every `0.x` version is
-   marked pre-release, because `1.0.0` is the first Workshop version.
+   (`--clobber` replaces an asset of the same name). The release is a full
+   release, not a pre-release.
 
 Options: `--force` (move a public tag after a history rewrite), `--draft`
 (publish the release as a draft), and an explicit `vX.Y.Z` to override the

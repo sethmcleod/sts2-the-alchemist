@@ -310,14 +310,13 @@ do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
   fi
   ok "pushed"
 
-  # Before 1.0 every release is a pre-release: 1.0.0 is the first Steam Workshop version.
   local -a flags=(--title "$tag" --notes-file "$notes")
-  [ "${ver%%.*}" = "0" ] && flags+=(--prerelease)
   [ "$draft" -eq 1 ] && flags+=(--draft)
 
   if gh release view "$tag" --repo "$(gh repo view --json nameWithOwner -q .nameWithOwner)" >/dev/null 2>&1; then
     step "update the GitHub Release $tag"
-    gh release edit "$tag" "${flags[@]}" >/dev/null
+    # --prerelease=false clears the flag on a release that an earlier run marked pre-release.
+    gh release edit "$tag" "${flags[@]}" --prerelease=false >/dev/null
     gh release upload "$tag" "$zip" --clobber
     ok "updated"
   else
