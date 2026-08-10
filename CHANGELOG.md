@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.6.5] - 2026-08-10
+
 ### Added
 
 - Added a Brew hover tip to the Weathered Kit and Gilded Kit relics
