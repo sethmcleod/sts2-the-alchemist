@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Entities.RestSite;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Potions;
 using MegaCrit.Sts2.Core.Rooms;
@@ -12,6 +13,8 @@ namespace Alchemist.AlchemistCode.Relics;
 public class GildedKit : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new[] { AlchemistTips.Brew };
 
     public override async Task AfterPotionUsed(PotionModel potion, Creature? target)
     {

@@ -13,9 +13,14 @@ Security.
 
 ## [Unreleased]
 
+### Added
+
+- Added a Brew hover tip to the Weathered Kit and Gilded Kit relics
+
 ### Changed
 
 - Nerfed Brew Rest Site option so that it no longer removes a card from your Deck
+- Changed the Infuse hover tips to also preview the Foul Vapor token that Fuming creates
 - Updated Potion sale run summary badge placeholder art
 
 ## [0.6.4] - 2026-08-09

@@ -13,8 +13,8 @@ public sealed class Fuming : AlchemistEnchantment
 
     public override bool CanEnchantCardType(CardType cardType) => cardType == CardType.Skill;
 
-    // Lets a card with Fuming explain what it adds. Take(1) in InfuseTips drops this nested tip again,
-    // which keeps the source card's own tooltip short
+    // Lets a card with Fuming explain what it adds. Take(1) in InfuseTips drops this nested tip, so
+    // InfuseTips adds the same card tip back itself
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromCard<FoulVapor>() };
 
