@@ -13,6 +13,10 @@ Security.
 
 ## [Unreleased]
 
+### Changed
+
+- Updated Potion sale run summary badge placeholder art
+
 ## [0.6.4] - 2026-08-09
 
 ### Added
