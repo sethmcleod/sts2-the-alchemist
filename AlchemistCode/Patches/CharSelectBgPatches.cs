@@ -30,8 +30,25 @@ class CharSelectBgPatches
             // The Alchemist background is the one with these marker nodes
             if (child is Control bg && bg.GetNodeOrNull<TextureRect>("Gradient") != null
                 && bg.GetNodeOrNull<CpuParticles2D>("SpecksGold") != null)
+            {
                 ApplyParticleAssets(bg);
+                AnimateCharacter(bg);
+            }
         }
+    }
+
+    // A slow breathing idle for the flat character art: a gentle sine scale pivoted at
+    // the feet (the pivot is set in the scene), so the chest rises and the feet stay
+    static void AnimateCharacter(Control bg)
+    {
+        if (bg.GetNodeOrNull<TextureRect>("Character") is not { } character)
+            return;
+
+        var tween = character.CreateTween().SetLoops();
+        tween.TweenProperty(character, "scale", new Vector2(1.004f, 1.012f), 2.6)
+            .SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.InOut);
+        tween.TweenProperty(character, "scale", Vector2.One, 2.6)
+            .SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.InOut);
     }
 
     static void ApplyParticleAssets(Control bg)

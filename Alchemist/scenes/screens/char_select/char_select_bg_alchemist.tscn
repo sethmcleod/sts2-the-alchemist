@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3]
 
-; Placeholder Alchemist character-select splash. An animated gradient in the style of
-; the base game's Random splash (char_select_bg_random_character.tscn): a multi-stop
-; gradient with slow two-tone swirls, pulsing lights, and rising bubble specks.
+; Alchemist character-select splash. An animated gradient in the style of the base
+; game's Random splash (char_select_bg_random_character.tscn): a multi-stop gradient
+; with slow two-tone swirls, the character art, pulsing lights, and bubble specks.
+; Layer order: gradient+swirl, character, lights, specks.
 ;
 ; The screen adds this scene under its "AnimatedBg" container, which is deliberately
 ; larger than the viewport (it is grown by -388/-80 on the top-left and +252/+40 on the
@@ -15,6 +16,7 @@
 ; it directly. Replace this whole scene with the final animated splash art.
 
 [ext_resource type="Shader" path="res://Alchemist/shaders/char_select_swirl.gdshader" id="swirl_shader"]
+[ext_resource type="Texture2D" path="res://Alchemist/images/charui/char_select_alchemist_splash.png" id="char_splash"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_swirl"]
 shader = ExtResource("swirl_shader")
@@ -22,7 +24,7 @@ shader = ExtResource("swirl_shader")
 [sub_resource type="Gradient" id="Gradient_alch"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.2, 0.42, 0.62, 0.84, 1)
-colors = PackedColorArray(0.059, 0.041, 0.114, 1, 0.122, 0.078, 0.251, 1, 0.29, 0.18, 0.388, 1, 0.09, 0.212, 0.184, 1, 0.227, 0.439, 0.192, 1, 0.361, 0.533, 0.188, 1)
+colors = PackedColorArray(0.053, 0.037, 0.103, 1, 0.1, 0.063, 0.205, 1, 0.225, 0.14, 0.31, 1, 0.075, 0.175, 0.153, 1, 0.145, 0.285, 0.125, 1, 0.21, 0.315, 0.112, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_alch"]
 gradient = SubResource("Gradient_alch")
@@ -65,6 +67,29 @@ mouse_filter = 2
 texture = SubResource("GradientTexture2D_alch")
 expand_mode = 1
 
+; The screen scales AnimatedBg by 1.1 around its centre pivot. These offsets are the
+; mockup rect (823,0)-(2055,1080) divided back through that transform, so the default
+; view matches the mockup. The pivot sits at the feet so the breathing tween in
+; CharSelectBgPatches raises the chest while the feet stay planted
+[node name="Character" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1127.0
+offset_top = 150.0
+offset_right = -7.0
+offset_bottom = 52.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(560, 982)
+mouse_filter = 2
+texture = ExtResource("char_splash")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="LightGold" type="CPUParticles2D" parent="."]
 position = Vector2(1500, 220)
 amount = 1
@@ -75,18 +100,6 @@ scale_amount_min = 14.0
 scale_amount_max = 14.0
 scale_amount_curve = SubResource("Curve_pulse")
 color = Color(0.831, 0.659, 0.196, 0.3)
-color_ramp = SubResource("Gradient_light_ramp")
-
-[node name="LightGreen" type="CPUParticles2D" parent="."]
-position = Vector2(430, 810)
-amount = 1
-lifetime = 4.0
-local_coords = true
-gravity = Vector2(0, 0)
-scale_amount_min = 16.0
-scale_amount_max = 16.0
-scale_amount_curve = SubResource("Curve_pulse")
-color = Color(0.29, 0.549, 0.247, 0.22)
 color_ramp = SubResource("Gradient_light_ramp")
 
 [node name="SpecksGreen" type="CPUParticles2D" parent="."]

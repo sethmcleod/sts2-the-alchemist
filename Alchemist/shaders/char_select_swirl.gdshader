@@ -25,9 +25,7 @@ uniform float centre_mask = 0.3;
 // light node positions in UV (divide by 1920x1080). light_clear is the maximum
 // transparency at a pulse peak; light_floor is how much of it remains at the trough
 uniform vec2 light_gold = vec2(0.781, 0.204);
-uniform vec2 light_green = vec2(0.224, 0.75);
 uniform float gold_period = 3.0;
-uniform float green_period = 4.0;
 uniform float light_radius = 0.45;
 uniform float light_clear : hint_range(0.0, 1.0) = 0.8;
 uniform float light_floor : hint_range(0.0, 1.0) = 0.2;
@@ -67,14 +65,11 @@ void fragment() {
 	float band = smoothstep(0.35, 0.45, f) * (1.0 - smoothstep(0.85, 0.95, f));
 	band *= mix(centre_mask, 1.0, smoothstep(0.15, 0.55, r));
 
-	// Radial masks on the two lights, breathing with each light's pulse
+	// Radial mask on the gold light, breathing with its pulse
 	vec2 p = vec2(UV.x * 1.78, UV.y);
 	float pulse_gold = sin(3.14159 * fract(TIME / gold_period));
-	float pulse_green = sin(3.14159 * fract(TIME / green_period));
 	float near_gold = 1.0 - smoothstep(0.0, light_radius, distance(p, vec2(light_gold.x * 1.78, light_gold.y)));
-	float near_green = 1.0 - smoothstep(0.0, light_radius, distance(p, vec2(light_green.x * 1.78, light_green.y)));
-	float clearing = max(near_gold * mix(light_floor, 1.0, pulse_gold),
-			near_green * mix(light_floor, 1.0, pulse_green));
+	float clearing = near_gold * mix(light_floor, 1.0, pulse_gold);
 	band *= 1.0 - light_clear * clearing;
 
 	// Multiply with a gray made from the band, so bands deepen the color underneath

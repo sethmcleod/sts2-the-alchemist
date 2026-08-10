@@ -13,6 +13,16 @@ Security.
 
 ## [Unreleased]
 
+### Added
+
+- Added the Alchemist character art to the character select screen, with a subtle
+  breathing idle. The background swirls sit behind the character, and the pulsing
+  lights and rising motes stay in front
+
+### Changed
+
+- Darkened the character select background gradient so the character art stands out
+
 ## [0.6.3] - 2026-08-09
 
 - Added the Alchemist hands used in multiplayer, replacing the Ironclad placeholders
