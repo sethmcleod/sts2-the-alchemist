@@ -20,7 +20,7 @@ namespace Alchemist.AlchemistCode.Compat;
 
 /// <summary>
 /// ONE OF THE TWO FILES THAT DIFFER BETWEEN THE beta AND main BRANCHES (the other is
-/// SepsisPowerCompat.cs). THIS COPY IS THE beta IMPLEMENTATION.
+/// SepsisPowerCompat.cs). THIS COPY IS THE main (DEFAULT BRANCH) IMPLEMENTATION.
 /// </summary>
 /// <remarks>
 /// The game's default branch and its public-beta branch spell a handful of damage and animation
@@ -31,7 +31,8 @@ namespace Alchemist.AlchemistCode.Compat;
 /// beta: the damage APIs take a trailing CardPlay, and Spine track entries are IDisposable and
 /// come from AddAnimationTracked. main: no CardPlay, and AddAnimation returns a plain entry.
 ///
-/// When the branches converge, delete both files and inline the calls again.
+/// ON A MERGE FROM beta, KEEP THIS SIDE. The method surface must stay identical to beta's copy;
+/// only the bodies differ. When the branches converge, delete both files and inline the calls.
 ///
 /// Differences that needed no shim, because one spelling compiles on both branches, live in the
 /// ordinary source: <c>cardPlay.Card.Owner</c> rather than <c>cardPlay.Player</c>.
@@ -41,23 +42,27 @@ public static class GameCompat
     /// <summary>main stops at cardSource; beta takes the play as well.</summary>
     public static Task<IEnumerable<DamageResult>> Damage(PlayerChoiceContext choiceContext, Creature target,
         decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? play = null) =>
-        CreatureCmd.Damage(choiceContext, target, amount, props, dealer, cardSource, play);
+        CreatureCmd.Damage(choiceContext, target, amount, props, dealer, cardSource);
 
     /// <summary>main has no play parameter between cardSource and the hook type.</summary>
     public static decimal ModifyDamage(IRunState runState, ICombatState? combatState, Creature? target,
         Creature? dealer, decimal damage, ValueProp props, CardModel? cardSource, CardPlay? play,
         ModifyDamageHookType hookType, CardPreviewMode previewMode,
         out IEnumerable<AbstractModel> modifiers) =>
-        Hook.ModifyDamage(runState, combatState, target, dealer, damage, props, cardSource, play, hookType,
+        Hook.ModifyDamage(runState, combatState, target, dealer, damage, props, cardSource, hookType,
             previewMode, out modifiers);
 
     /// <summary>main requires the blacklist argument; beta defaults it.</summary>
     public static IEnumerable<PotionModel> GetPotionOptions(Player player) =>
-        PotionFactory.GetPotionOptions(player);
+        PotionFactory.GetPotionOptions(player, Array.Empty<PotionModel>());
 
-    // The attack builder's FromCard takes the play on beta and not on main. No shim is needed for
-    // it: main declares an extension method with this two-argument shape, and on beta the real
-    // instance method wins over any extension, so the call sites read the same on both branches.
+    /// <summary>
+    /// beta's attack builder takes the play alongside the card. This extension gives main the same
+    /// two-argument shape, so the call sites read identically. On beta the real instance method
+    /// wins over any extension, which is why beta's copy declares no such method.
+    /// </summary>
+    public static AttackCommand FromCard(this AttackCommand command, CardModel card, CardPlay? play) =>
+        command.FromCard(card);
 
     /// <summary>
     /// Queues one blink and returns how long it lasts. Wrapped because the track entry is
@@ -65,7 +70,7 @@ public static class GameCompat
     /// </summary>
     public static float QueueBlink(MegaAnimationState state, string blink, float delay, int track)
     {
-        using var entry = state.AddAnimationTracked(blink, delay, loop: false, track);
+        var entry = state.AddAnimation(blink, delay, loop: false, track);
         // The blink swaps the eye attachment, and an attachment must snap rather than fade
         entry.SetMixDuration(0f);
         return entry.GetAnimationDuration();
@@ -77,7 +82,7 @@ public static class GameCompat
     /// </summary>
     public static void RandomiseTrackStart(MegaAnimationState state, Random rng)
     {
-        using var entry = state.GetCurrent(0);
+        var entry = state.GetCurrent(0);
         entry?.SetTrackTime(entry.GetAnimationEnd() * (float)rng.NextDouble());
     }
 }
