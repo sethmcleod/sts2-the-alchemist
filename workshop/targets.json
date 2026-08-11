@@ -1,0 +1,28 @@
+{
+  "_comment": [
+    "Maps each git branch to the Steam Workshop item it publishes to. This file is identical on",
+    "the beta and main branches on purpose: it is the one place that knows about both, so a merge",
+    "between the branches never conflicts here. scripts/dev.sh reads it and writes workshop.json",
+    "and workshop/mod_id.txt from it at release time.",
+    "",
+    "tagSuffix makes the tag vX.Y.Z + suffix. '-beta' is also a semver pre-release, so v0.7.0-beta",
+    "sorts before v0.7.0, which is the order the two branches actually ship in.",
+    "",
+    "gameBranch is the Steam branch the build targets. 'public-beta' is the BetaKey that Steam",
+    "writes into appmanifest_2868840.acf; the default branch writes no BetaKey at all."
+  ],
+  "beta": {
+    "itemId": "3780726901",
+    "title": "The Alchemist (Beta Branch)",
+    "tagSuffix": "-beta",
+    "gameBranch": "public-beta",
+    "prerelease": true
+  },
+  "main": {
+    "itemId": "",
+    "title": "The Alchemist",
+    "tagSuffix": "",
+    "gameBranch": "",
+    "prerelease": false
+  }
+}

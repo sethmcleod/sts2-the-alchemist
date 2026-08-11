@@ -8,12 +8,50 @@ are the most important:
 - Each version section in the changelog is the Steam Workshop update note for
   that version.
 
+## Two branches, two Workshop items
+
+Slay the Spire 2 has a default branch and a `public-beta` branch, and their game
+DLLs differ enough that one build cannot serve both. A mod compiled against the
+wrong one fails to load with a `ReflectionTypeLoadException`. Thus the mod ships
+twice:
+
+| Branch | Game branch    | Workshop item                | Tags          | GitHub Release | Cadence                     |
+| ------ | -------------- | ---------------------------- | ------------- | -------------- | --------------------------- |
+| `beta` | `public-beta`  | The Alchemist (Beta Branch)  | `vX.Y.Z-beta` | pre-release    | fast, this is where you work |
+| `main` | default        | The Alchemist                | `vX.Y.Z`      | Latest         | slow, promoted from beta     |
+
+`workshop/targets.json` holds this map. It is **identical on both branches** on
+purpose: it is the single file that knows about both, so a merge between the
+branches never has to resolve it. Every `scripts/dev.sh` command reads the branch
+you are on and picks the item, the tag, and the pre-release flag from it. There is
+nothing to pass and nothing to remember.
+
+Day to day you work on `beta`. `main` moves only when you promote.
+
 ## Version policy
 
 The version is in one location only: `Alchemist.json` (`"version": "vX.Y.Z"`).
-Only `scripts/dev.sh release` changes it. The git tags use the same value
-(`vX.Y.Z`). This project follows [Semantic Versioning](https://semver.org). For a
-game mod, read the rules as follows:
+Only `scripts/dev.sh release` changes it. This project follows
+[Semantic Versioning](https://semver.org).
+
+**Both branches share one version line.** `beta` moves it forward; `main` inherits
+whatever version the merge brought over and ships it unchanged. So `v0.7.0-beta`
+and `v0.7.0` are the same content, and the `-beta` suffix is a real semver
+pre-release, which means `v0.7.0-beta` sorts *before* `v0.7.0` — the order the two
+actually ship in. The alternative, an independent version line per branch, makes
+every merge fight over `Alchemist.json` and forces you to explain why beta 0.9 is
+older than main 1.0.
+
+Three rules keep the numbers unambiguous:
+
+- **beta bumps** with `patch`, `minor`, or `major`, by the table below.
+- **main promotes** with `scripts/dev.sh release promote`, which keeps the merged
+  version rather than inventing a new one.
+- **A main-only fix** (something that makes the default branch work and does not
+  belong on beta) bumps `patch` on `main`. Keep beta ahead so the numbers never
+  describe two different things; promoting by `minor` gives you the room.
+
+For a game mod, read the semver rules as follows:
 
 | Increase                                  | When to use it                                                                                                                        | Examples                                                                            |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
@@ -85,20 +123,49 @@ A released version section is the published Steam Workshop note for that version
 Do not rewrite a tagged section's meaning after release; a stylistic touch-up is
 fine, but update the Workshop note too if you have already posted it.
 
-## How to cut a release
+## How to cut a beta release
+
+This is the usual one. Be on the `beta` branch with the game on `public-beta`.
 
 ```sh
 scripts/dev.sh changelog        # draft; curate ## [Unreleased] in CHANGELOG.md by hand
 scripts/dev.sh release minor    # or: patch | major | an explicit X.Y.Z
                                 # examine the diff, then:
-scripts/dev.sh publish-release  # commit, tag, push, and put it on GitHub
+scripts/dev.sh publish-release  # commit, tag vX.Y.Z-beta, push, and put it on GitHub
 ```
+
+## How to promote beta into main
+
+Do this when a batch of beta releases has settled and you want the default-branch
+players to get it. It is infrequent by design.
+
+```sh
+git switch main
+scripts/dev.sh sync-main        # merge beta into main (never a rebase; see below)
+                                # switch Steam to the default branch, then:
+scripts/dev.sh publish          # rebuild against the default-branch DLL
+                                # play it; confirm it loads at all (see BUILD.md)
+scripts/dev.sh release promote  # keep the merged version, package it
+scripts/dev.sh publish-release  # commit, tag vX.Y.Z, push, Latest on GitHub
+```
+
+`sync-main` merges with `--no-ff` and refuses to rebase. This is not a style
+preference: public tags point at commits on both branches, and the release zip
+attached to each GitHub Release describes that exact history. A rebase moves those
+commits, and every tag then names a commit that no longer exists.
+
+If the merge conflicts, take beta's side for content and keep main's side for
+anything main fixed on its own. `workshop/targets.json` never conflicts, which is
+the whole reason it exists.
 
 The `release` command (see `do_release` in `scripts/dev.sh`) does these steps:
 
 1. **Preflight**: the command makes these checks first:
    - The working tree must be clean.
-   - The current branch must be `main`.
+   - The current branch must have a target in `workshop/targets.json`, and that
+     target must name a Workshop item.
+   - The installed game must be on the Steam branch that this git branch targets.
+     This check is the one that stops you from shipping a build that cannot load.
    - The `## [Unreleased]` section must not be empty.
 
    The command then runs `dotnet build` and the `lint` check. Play the current
@@ -108,16 +175,23 @@ The `release` command (see `do_release` in `scripts/dev.sh`) does these steps:
 2. **Compute**: the command calculates the new version from the keyword
    (`patch`, `minor`, or `major`). You can also give an explicit `X.Y.Z` value.
    The command makes sure that the new version is greater than the current
-   version.
+   version. `promote` is the exception: it keeps the version, and instead checks
+   that the tag does not exist yet.
 3. **Update**: the command changes the `version` field in `Alchemist.json`. In
    `CHANGELOG.md`, it replaces `## [Unreleased]` with `## [X.Y.Z] - <date>`. It
-   then adds a new, empty Unreleased section.
+   then adds a new, empty Unreleased section. A `promote` skips this step, because
+   the merge already brought beta's rolled changelog across.
 4. **Build and package**: the command runs `dotnet publish`. It then writes two
-   files:
-   - `dist/Alchemist-vX.Y.Z.zip`, the file that players install (see below).
-   - `dist/RELEASE_NOTES-vX.Y.Z.txt`, the changelog section for this version, with
+   files, both named for the tag, so the two branches never overwrite each other
+   in `dist/`:
+   - `dist/Alchemist-<tag>.zip`, the file that players install (see below).
+   - `dist/RELEASE_NOTES-<tag>.txt`, the changelog section for this version, with
      each bullet on one line because both paste targets wrap text themselves. Use
      it for the GitHub Release body and for the Workshop update note.
+   It also points `workshop/` at the right item: `workshop/mod_id.txt` and the
+   `title` in `workshop/workshop.json` are both written from
+   `workshop/targets.json`, so a `ModUploader upload -w workshop` afterwards
+   cannot go to the wrong place.
 5. **Stop and print**: the command stops so that you can examine the diff. It
    commits nothing. When the diff is correct, run `publish-release`.
 
@@ -184,6 +258,55 @@ The zip contains only the files that the game loads: `Alchemist.dll`,
 Godot. Developers who build from source use `scripts/dev.sh publish` instead.
 See [BUILD.md](BUILD.md).
 
+## Uploading to Steam
+
+The upload is a separate manual step. `release` and `publish-release` never touch
+Steam; `release` prints the exact command to run, with the item id already filled
+in from `workshop/targets.json`:
+
+```sh
+cd ~/code/sts2-mod-uploader && DOTNET_ROLL_FORWARD=LatestMajor \
+  dotnet run -c Release --no-build -- upload --id <itemId> -w ~/code/sts2-the-alchemist/workshop
+```
+
+**Always pass `--id`.** The uploader picks its target in this order: `--id`, then
+`workshop/mod_id.txt`, and **if neither is present it creates a brand new Workshop
+item**. With two items in play, an upload that resolves the wrong way either
+overwrites the other branch's item (including its title) or spawns a duplicate.
+Naming the id makes that impossible.
+
+`workshop/mod_id.txt` is no longer tracked by git, because it now differs per
+branch and would conflict on every merge. `scripts/dev.sh release` writes it for
+the branch you are on, so it is correct locally; `--id` is the belt to its braces.
+
+### Creating the main-branch Workshop item
+
+There is no way to create an item from the Steam UI. The uploader makes one, but
+only as a side effect of an upload with no target — which is also the footgun
+above, so do this deliberately and once:
+
+1. Be on `main`, with the game on its default branch, and `scripts/dev.sh publish`
+   already run so `workshop/content/` holds a build that actually loads there.
+2. Set `"visibility": "private"` in `workshop/workshop.json`. A new item starts
+   empty; make it public only after you have checked the page.
+3. Set `"title"` to `The Alchemist`. (`release` writes this from `targets.json`,
+   but you have not run `release` yet at this point.)
+4. **Delete `workshop/mod_id.txt`** and pass no `--id`. This is the one time you
+   want the uploader to create rather than update. Confirm the file is gone:
+   `ls workshop/mod_id.txt` must fail.
+5. Run the uploader with `-w` only. It logs `Creating new workshop item...`, then
+   writes the new id into `workshop/mod_id.txt`.
+6. Copy that id into `workshop/targets.json` under `main.itemId`, and commit. From
+   here on, every upload names the item with `--id` and this never repeats.
+
+The `new` subcommand does **not** do any of this — it copies a local template
+folder and never contacts Steam. Do not reach for it.
+
+Then rename the existing item 3780726901 to *The Alchemist (Beta Branch)*, which
+happens by itself on the next beta `release` + upload, since the title now comes
+from `targets.json`. Cross-link the two descriptions so a player on the wrong
+branch can find the right item.
+
 ## Steam Workshop fields (for the 1.0 launch)
 
 When you publish the mod, each Workshop field has a source:
@@ -195,5 +318,6 @@ When you publish the mod, each Workshop field has a source:
 | Description               | the `description` field in `Alchemist.json`, plus the main points from README |
 | Dependency                | **BaseLib**. List it, and the Workshop then installs it automatically.        |
 
-The tools do not do the upload step yet. Add the steps to this document when the
-tools do the upload.
+The update note drops its markdown headings on the way into `workshop.json`:
+Steam renders BBCode, so a `### Fixed` would show the hashes. `CHANGELOG.md` and
+the GitHub release body keep theirs.

@@ -3,6 +3,12 @@
 [BUILD.md](BUILD.md) has the setup steps and the build commands. To make a card, copy the
 closest existing card in `AlchemistCode/Cards/` and follow the three-way rule below.
 
+> [!IMPORTANT]
+> Work on the **`beta`** branch. It tracks the game's `public-beta` Steam branch, which is
+> where the mod is developed and released. `main` tracks the game's default branch, moves
+> only when beta is promoted into it, and must never be rebased.
+> [RELEASING.md](RELEASING.md) has the full flow.
+
 ## The three-way update rule
 
 > [!IMPORTANT]

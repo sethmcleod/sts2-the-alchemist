@@ -21,6 +21,48 @@
   `"<GodotPath>" --headless --import --path .`
 - Or use `scripts/dev.sh publish`, which does all of the steps above in the correct sequence.
 
+## Testing against the game's default branch
+
+The mod ships from two git branches, because the game has two Steam branches whose
+DLLs are not compatible (see [RELEASING.md](RELEASING.md)). `beta` is where you work.
+You only need this procedure when you promote to `main`, which is rare.
+
+**The whole hazard in one sentence:** `Alchemist.dll` is compiled against one
+`sts2.dll`, and loading it on the other Steam branch throws
+`ReflectionTypeLoadException` at startup with nothing to say about why. Three things
+must agree — the git branch, the Steam branch, and the build the installed mod was
+compiled against — and only the third is invisible.
+
+`scripts/dev.sh doctor` checks all three and names the fix. `scripts/dev.sh env`
+prints them. Both read Steam's own `appmanifest_2868840.acf`, where `BetaKey` is
+`public-beta` on the beta branch and absent on the default branch.
+
+To test on the default branch:
+
+1. In Steam, right-click Slay the Spire 2 → Properties → Betas, and select **None**.
+   Let it download. This replaces the install in place; there is no second copy.
+2. `git switch main`
+3. `scripts/dev.sh publish` — **this step is not optional.** The installed
+   `Alchemist.dll` is still the beta-branch build until you rebuild, and it will not
+   load. The build pins `Sts2Path` to `STS2_GAME_DIR`, so it compiles against
+   whichever branch is installed right now.
+4. `scripts/dev.sh doctor` to confirm all three agree, then run the game. Loading to
+   the character select screen at all is the real test; a DLL mismatch fails before
+   anything else can.
+
+To go back: reverse steps 1 and 2, then `scripts/dev.sh publish` again.
+
+If you would rather keep both branches installed at once, put the second copy
+anywhere and point the tooling at it:
+
+```sh
+STS2_GAME_DIR="/path/to/the/other/Slay the Spire 2" scripts/dev.sh publish
+```
+
+Everything downstream follows that variable, including the compile reference. The
+branch and build detection reads the `appmanifest` next to that install, so `doctor`
+stays honest about which copy you are on.
+
 ## CI
 
 `.github/workflows/lint.yml` runs on each push and each PR. It does the three-way rule
