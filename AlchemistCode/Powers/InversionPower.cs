@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using System;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -28,7 +29,7 @@ public class InversionPower : AlchemistPower
             // of the attack pipeline, since a percent of a heal must not scale with Strength, Vigor, or
             // Vulnerable. Flame Barrier and Reflect pass the same flag
             foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
-                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), enemy, damage, ValueProp.Unpowered, Owner, null, null);
+                await GameCompat.Damage(new ThrowingPlayerChoiceContext(), enemy, damage, ValueProp.Unpowered, Owner, null, null);
         }
         finally
         {

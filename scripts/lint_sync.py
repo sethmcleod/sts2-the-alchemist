@@ -84,9 +84,13 @@ def entity_classes(subdir: str, base_marker: str) -> dict[str, Path]:
     """
     out = {}
     for path in (CODE / subdir).rglob("*.cs"):
-        for m in re.finditer(r"public\s+(abstract\s+)?class\s+(\w+)\s*:\s*([\w<>, ]+)", path.read_text()):
-            is_abstract, name, bases = m.groups()
-            if not is_abstract and base_marker in bases:
+        # "partial" appears when a class is split across the branch-specific Compat files, and it
+        # can sit on either side of "abstract". Only the half that names the base is matched, so a
+        # partial still resolves to exactly one file
+        pattern = r"public\s+(?:(abstract)\s+|partial\s+|(abstract)\s+partial\s+)?class\s+(\w+)\s*:\s*([\w<>, ]+)"
+        for m in re.finditer(pattern, path.read_text()):
+            abstract_a, abstract_b, name, bases = m.groups()
+            if not (abstract_a or abstract_b) and base_marker in bases:
                 out[name] = path
     return out
 

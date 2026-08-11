@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using System;
 using BaseLib.Abstracts;
 using BaseLib.Extensions;
@@ -110,7 +111,7 @@ public abstract class AlchemistCard : ConstructedCardModel
     }
 
     protected Task LoseHp(PlayerChoiceContext choiceContext, int amount) =>
-        CreatureCmd.Damage(choiceContext, Owner.Creature, amount,
+        GameCompat.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
 
     // Laced hits land as a green splat instead of the card's own impact. Play time only, because
@@ -149,7 +150,7 @@ public abstract class AlchemistCard : ConstructedCardModel
             if (RawFormulaDamagePreview is not { } raw) return null;
             if (Owner?.Creature is not { } dealer) return null;
             if ((CombatState ?? dealer.CombatState) is not { } combat) return null;
-            var total = Hook.ModifyDamage(Owner.RunState, combat, null, dealer, raw, ValueProp.Move,
+            var total = GameCompat.ModifyDamage(Owner.RunState, combat, null, dealer, raw, ValueProp.Move,
                 this, null, ModifyDamageHookType.All, CardPreviewMode.MultiCreatureTargeting, out _);
             return (int)Math.Max(total, 0m);
         }
@@ -186,7 +187,7 @@ public abstract class AlchemistCard : ConstructedCardModel
         Owner == null || CombatState == null
             ? null
             : CombatManager.Instance.History.CardPlaysFinished
-                .LastOrDefault(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Player == Owner)
+                .LastOrDefault(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Card.Owner == Owner)
                 ?.CardPlay.Card;
 
     // Reagent hands the next Reaction card a free trigger, so that wins before the condition is read.

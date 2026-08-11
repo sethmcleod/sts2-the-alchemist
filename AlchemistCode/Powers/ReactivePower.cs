@@ -20,7 +20,7 @@ public class ReactivePower : AlchemistPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Player != Owner.Player) return;
+        if (cardPlay.Card.Owner != Owner.Player) return;
         if (cardPlay.Card is not AlchemistCard { IsReactionCard: true }) return;
         Flash();
         await PowerCmd.Decrement(this);

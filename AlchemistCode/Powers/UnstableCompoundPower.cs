@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -35,7 +36,7 @@ public class UnstableCompoundPower : AlchemistPower
             // Owner asserts mutable, so it throws on the canonical model behind a dumb concept tooltip.
             // The raw amount is the only meaningful answer there anyway, with no combat to modify it
             if (!IsMutable || Owner?.CombatState is not { } combat) return (int)Amount;
-            var damage = Hook.ModifyDamage(combat.RunState, combat, Owner, Applier, Amount,
+            var damage = GameCompat.ModifyDamage(combat.RunState, combat, Owner, Applier, Amount,
                 ValueProp.Unpowered, null, null, ModifyDamageHookType.All, CardPreviewMode.None, out _);
             damage = Hook.ModifyHpLost(combat.RunState, combat, Owner, damage, ValueProp.Unpowered,
                 Applier, null, HpLossHookPhase.All, out _);
@@ -77,7 +78,7 @@ public class UnstableCompoundPower : AlchemistPower
         }
         Flash();
         // Unpowered: the number on the card is the number dealt (the Inversion precedent). Block applies
-        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), Owner, Amount, ValueProp.Unpowered, Applier, null, null);
+        await GameCompat.Damage(new ThrowingPlayerChoiceContext(), Owner, Amount, ValueProp.Unpowered, Applier, null, null);
         await PowerCmd.Remove(this);
     }
 }

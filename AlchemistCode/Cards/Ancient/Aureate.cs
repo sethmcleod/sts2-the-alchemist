@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode;
 using Alchemist.AlchemistCode.Commands;
 using MegaCrit.Sts2.Core.Commands;

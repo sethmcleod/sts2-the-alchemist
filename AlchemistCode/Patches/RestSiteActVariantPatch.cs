@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode.Character;
 using Godot;
 using HarmonyLib;
@@ -37,8 +38,7 @@ public static class RestSiteActVariantPatch
 
                 // The base game starts each character at a random point so that two of them on
                 // screen never sway together
-                using var entry = state.GetCurrent(0);
-                entry?.SetTrackTime(entry.GetAnimationEnd() * (float)Rng.NextDouble());
+                GameCompat.RandomiseTrackStart(state, Rng);
             });
         }
 

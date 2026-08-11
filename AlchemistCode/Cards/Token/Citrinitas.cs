@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode.Cards.Rare;
 using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;

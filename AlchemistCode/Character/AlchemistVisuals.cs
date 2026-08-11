@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using BaseLib.Extensions;
 using Godot;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
@@ -165,12 +166,9 @@ internal static class AlchemistVisuals
             // carry the length of the blink. The first entry counts from now
             var delay = i == 0 ? gap : blinkLength + gap;
 
-            using var entry = state.AddAnimationTracked(blink, delay, loop: false, BlinkTrack);
+            var length = GameCompat.QueueBlink(state, blink, delay, BlinkTrack);
 
-            // The blink swaps the eye attachment, and an attachment must snap rather than fade
-            entry.SetMixDuration(0f);
-
-            if (i == 0) blinkLength = entry.GetAnimationDuration();
+            if (i == 0) blinkLength = length;
         }
     }
 }

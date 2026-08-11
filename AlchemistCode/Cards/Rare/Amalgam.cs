@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using System.Linq;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
