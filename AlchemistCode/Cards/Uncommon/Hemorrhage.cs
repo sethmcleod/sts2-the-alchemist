@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -44,7 +45,7 @@ public class Hemorrhage : AlchemistCard
     {
         var lost = Owner.Creature.GetPowerAmount<RegenPower>();
         if (lost > 0)
-            await CreatureCmd.Damage(choiceContext, Owner.Creature,
+            await GameCompat.Damage(choiceContext, Owner.Creature,
                 lost, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
         var damage = DamageFor(lost);
         if (damage > 0)

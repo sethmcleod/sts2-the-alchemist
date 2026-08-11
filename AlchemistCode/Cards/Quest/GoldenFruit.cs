@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode.Character;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -33,6 +34,6 @@ public class GoldenFruit : AlchemistCard
         await CreatureCmd.Heal(Owner.Creature, DynamicVars["heal"].BaseValue);
         await PlayerCmd.GainGold(DynamicVars["gold"].BaseValue, Owner);
         // The base game's invisible extra-turn counter
-        await PowerCmd.Apply<AmbergrisPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
+        await ExtraTurn.Grant(choiceContext, Owner.Creature, this);
     }
 }

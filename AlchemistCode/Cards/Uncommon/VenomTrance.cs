@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using System.Linq;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -26,7 +27,6 @@ public class VenomTrance : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (!ThresholdMet) return;
-        // The base game's invisible extra-turn counter
-        await PowerCmd.Apply<AmbergrisPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
+        await ExtraTurn.Grant(choiceContext, Owner.Creature, this);
     }
 }

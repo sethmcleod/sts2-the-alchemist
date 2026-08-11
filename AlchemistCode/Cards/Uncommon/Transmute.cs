@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Potions;
@@ -33,7 +34,7 @@ public class Transmute : AlchemistCard
         {
             var rarity = IsUpgraded ? PotionRarity.Uncommon : PotionRarity.Common;
             var rng = Owner.RunState.Rng.CombatPotionGeneration;
-            var options = PotionFactory.GetPotionOptions(Owner)
+            var options = GameCompat.GetPotionOptions(Owner)
                 .Where(p => p.CanBeGeneratedInCombat && p.Rarity == rarity)
                 .ToList();
             var potion = rng.NextItem(options);
