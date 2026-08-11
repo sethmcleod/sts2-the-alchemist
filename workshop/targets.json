@@ -9,20 +9,27 @@
     "sorts before v0.7.0, which is the order the two branches actually ship in.",
     "",
     "gameBranch is the Steam branch the build targets. 'public-beta' is the BetaKey that Steam",
-    "writes into appmanifest_2868840.acf; the default branch writes no BetaKey at all."
+    "writes into appmanifest_2868840.acf; the default branch writes no BetaKey at all.",
+    "",
+    "descriptionBanner is the [quote] block at the top of the Workshop description that says which",
+    "game branch this item is for and links to the other one. The body below it is shared, so this",
+    "is the only part of the description that differs. release rebuilds it from here every time,",
+    "stripping any existing banner first, which heals the wrong banner arriving through a merge."
   ],
   "beta": {
     "itemId": "3780726901",
     "title": "The Alchemist (Beta Branch)",
     "tagSuffix": "-beta",
     "gameBranch": "public-beta",
-    "prerelease": true
+    "prerelease": true,
+    "descriptionBanner": "[quote]This mod is for the beta version of the game. Here is the public version: https://steamcommunity.com/sharedfiles/filedetails/?id=3781688551[/quote]"
   },
   "main": {
     "itemId": "3781688551",
     "title": "The Alchemist",
     "tagSuffix": "",
     "gameBranch": "public",
-    "prerelease": false
+    "prerelease": false,
+    "descriptionBanner": "[quote]This mod is for the public version of the game. Here is beta version: https://steamcommunity.com/sharedfiles/filedetails/?id=3780726901[/quote]"
   }
 }
