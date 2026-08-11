@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-08-11
+
 ### Added
 
 - Translated all mod text into the other 14 languages the game supports: Chinese (Simplified), Chinese (Traditional), Russian, German, French, Spanish (Spain), Spanish (Latin America), Italian, Japanese, Korean, Polish, Portuguese (Brazil), Thai and Turkish. Keywords follow the base game's own wording
