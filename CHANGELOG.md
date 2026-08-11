@@ -13,6 +13,17 @@ Security.
 
 ## [Unreleased]
 
+### Changed
+
+- Improved description for Echo Strike card
+
+### Fixed
+
+- Fixed an issue where Brewing in multiplayer could make rest options invisible
+  for allies
+- Fixed an issue where Mend rest site option could not be targetted if Alchemist
+  was in the party
+
 ## [0.6.6] - 2026-08-10
 
 ### Added
