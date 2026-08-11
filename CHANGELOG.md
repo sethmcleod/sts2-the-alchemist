@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.6.7] - 2026-08-11
+
 ### Changed
 
 - Improved description for Echo Strike card
