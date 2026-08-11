@@ -178,16 +178,42 @@ public static class Infusion
         Infused.Add(card);
     }
 
+    // Every card here is guarded on its own. These sets hold references that can go stale: a card that was
+    // transformed or removed from state during combat, or one left over from an earlier run. Clearing a
+    // stale card throws, and this runs inside Hook.AfterCombatEnd, which the game calls in the middle of
+    // its combat teardown. A throw there aborts the rest of that teardown, and the run then behaves as if
+    // combat never finished, which silently disables every later CardCmd.Upgrade and CardCmd.Transform
     public static void ClearCombatInfusions()
     {
         foreach (var card in Infused)
-            if (card.Enchantment != null)
-                CardCmd.ClearEnchantment(card);
+            Guarded(card, c =>
+            {
+                if (c.Enchantment != null) CardCmd.ClearEnchantment(c);
+            });
         foreach (var card in AddedEthereal)
-            card.RemoveKeyword(CardKeyword.Ethereal);
+            Guarded(card, c => c.RemoveKeyword(CardKeyword.Ethereal));
 
+        ResetTracking();
+    }
+
+    /// <summary>Drops references from the run that just ended, so a new or loaded run starts clean.</summary>
+    public static void ResetTracking()
+    {
         Infused.Clear();
         AddedEthereal.Clear();
         EnchantedThisCombat.Clear();
+    }
+
+    private static void Guarded(CardModel card, Action<CardModel> action)
+    {
+        try
+        {
+            // Reading Enchantment or writing a keyword on a canonical model throws
+            if (card is { IsMutable: true }) action(card);
+        }
+        catch (Exception e)
+        {
+            MainFile.Logger.Warn($"[Infuse] Skipped a stale card at combat end: {e.Message}");
+        }
     }
 }

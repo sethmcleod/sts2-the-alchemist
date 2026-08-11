@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Enchantments;
+using MegaCrit.Sts2.Core.Runs;
 using Alchemist.AlchemistCode.Commands;
 
 namespace Alchemist.AlchemistCode.Patches;
@@ -12,6 +13,14 @@ namespace Alchemist.AlchemistCode.Patches;
 public static class InfusionCombatEndPatch
 {
     public static void Postfix() => Infusion.ClearCombatInfusions();
+}
+
+// Infusion tracks cards in static sets, which outlive a run. Starting or loading a run must drop the
+// references from the last one, or combat end works on cards that no longer belong to this run
+[HarmonyPatch(typeof(RunManager), nameof(RunManager.Launch))]
+public static class InfusionRunLaunchPatch
+{
+    public static void Prefix() => Infusion.ResetTracking();
 }
 
 // This counts every card that any source enchants during combat, so the Masterwork threshold works with

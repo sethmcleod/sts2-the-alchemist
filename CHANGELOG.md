@@ -13,6 +13,10 @@ Security.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed a stale Infuse reference at the end of combat that could stop Smith and other upgrades from working for the rest of a run
+
 ## [0.6.7] - 2026-08-11
 
 ### Changed
@@ -23,7 +27,7 @@ Security.
 
 - Fixed an issue where Brewing in multiplayer could make rest options invisible
   for allies
-- Fixed an issue where Mend rest site option could not be targetted if Alchemist
+- Fixed an issue where Mend rest site option could not be targeted if Alchemist
   was in the party
 
 ## [0.6.6] - 2026-08-10
