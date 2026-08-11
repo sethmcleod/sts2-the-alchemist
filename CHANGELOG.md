@@ -1,17 +1,15 @@
 # Changelog
 
-This document lists all the important changes that players see in The Alchemist.
-
-The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This
-project also follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
+This document uses the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
+format. This project also follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 (see [RELEASING.md](RELEASING.md) to know what each version increase means for a
-mod). Each version section below is also the Steam Workshop update note for that
-version.
-
-The sections follow Keep a Changelog: Added, Changed, Deprecated, Removed, Fixed,
-Security.
+mod).
 
 ## [Unreleased]
+
+### Added
+
+- Translated all mod text into the other 14 languages the game supports: Chinese (Simplified), Chinese (Traditional), Russian, German, French, Spanish (Spain), Spanish (Latin America), Italian, Japanese, Korean, Polish, Portuguese (Brazil), Thai and Turkish. Keywords follow the base game's own wording
 
 ### Changed
 

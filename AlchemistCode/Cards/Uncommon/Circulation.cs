@@ -30,7 +30,7 @@ public class Circulation : AlchemistCard
     {
         base.AddExtraArgsToDescription(description);
         description.Add("DrawLine",
-            DrawCount is var n and > 0 ? $"\n(Draw [green]{n}[/green] {(n == 1 ? "card" : "cards")}.)" : "");
+            DrawCount is var n and > 0 ? PreviewLine("ALCHEMIST-DRAW_LINE", "Cards", n) : "");
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

@@ -33,7 +33,7 @@ public class SweatItOut : AlchemistCard
     {
         base.AddExtraArgsToDescription(description);
         description.Add("ApplyLine",
-            PoisonToApply is var n and > 0 ? $"\n(Apply [green]{n}[/green] Poison.)" : "");
+            PoisonToApply is var n and > 0 ? PreviewLine("ALCHEMIST-APPLY_LINE", "Amount", n) : "");
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

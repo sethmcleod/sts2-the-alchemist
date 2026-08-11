@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-BREW.bronzeDescription": "Brassage effectué à [blue]3[/blue] Sites de repos ou plus.",
+  "ALCHEMIST-BREW.bronzeTitle": "Petite cuvée",
+  "ALCHEMIST-BREW.goldDescription": "Brassage effectué à [blue]9[/blue] Sites de repos ou plus.",
+  "ALCHEMIST-BREW.goldTitle": "Maître distillateur",
+  "ALCHEMIST-BREW.silverDescription": "Brassage effectué à [blue]6[/blue] Sites de repos ou plus.",
+  "ALCHEMIST-BREW.silverTitle": "Bien approvisionné",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "[blue]3[/blue] Potions ou plus vendues au Marchand.",
+  "ALCHEMIST-POTION_SALE.bronzeTitle": "Colporteur",
+  "ALCHEMIST-POTION_SALE.goldDescription": "[blue]9[/blue] Potions ou plus vendues au Marchand.",
+  "ALCHEMIST-POTION_SALE.goldTitle": "Chouchou du Marchand",
+  "ALCHEMIST-POTION_SALE.silverDescription": "[blue]6[/blue] Potions ou plus vendues au Marchand.",
+  "ALCHEMIST-POTION_SALE.silverTitle": "Partenaire commercial"
+}

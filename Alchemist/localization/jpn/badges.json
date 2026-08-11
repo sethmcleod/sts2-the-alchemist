@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-BREW.bronzeDescription": "[blue]3[/blue]箇所以上の休憩所で調合した。",
+  "ALCHEMIST-BREW.bronzeTitle": "少量生産",
+  "ALCHEMIST-BREW.goldDescription": "[blue]9[/blue]箇所以上の休憩所で調合した。",
+  "ALCHEMIST-BREW.goldTitle": "蒸留の達人",
+  "ALCHEMIST-BREW.silverDescription": "[blue]6[/blue]箇所以上の休憩所で調合した。",
+  "ALCHEMIST-BREW.silverTitle": "在庫充実",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "商人にポーションを[blue]3[/blue]個以上売却した。",
+  "ALCHEMIST-POTION_SALE.bronzeTitle": "行商人",
+  "ALCHEMIST-POTION_SALE.goldDescription": "商人にポーションを[blue]9[/blue]個以上売却した。",
+  "ALCHEMIST-POTION_SALE.goldTitle": "商人のお気に入り",
+  "ALCHEMIST-POTION_SALE.silverDescription": "商人にポーションを[blue]6[/blue]個以上売却した。",
+  "ALCHEMIST-POTION_SALE.silverTitle": "商売相手"
+}

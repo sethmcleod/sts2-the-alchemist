@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-BREW.bronzeDescription": "휴식 장소에서 [blue]3[/blue]번 이상 양조했습니다.",
+  "ALCHEMIST-BREW.bronzeTitle": "소량 양조",
+  "ALCHEMIST-BREW.goldDescription": "휴식 장소에서 [blue]9[/blue]번 이상 양조했습니다.",
+  "ALCHEMIST-BREW.goldTitle": "증류의 달인",
+  "ALCHEMIST-BREW.silverDescription": "휴식 장소에서 [blue]6[/blue]번 이상 양조했습니다.",
+  "ALCHEMIST-BREW.silverTitle": "넉넉한 재고",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "상인에게 포션을 [blue]3[/blue]개 이상 판매했습니다.",
+  "ALCHEMIST-POTION_SALE.bronzeTitle": "행상인",
+  "ALCHEMIST-POTION_SALE.goldDescription": "상인에게 포션을 [blue]9[/blue]개 이상 판매했습니다.",
+  "ALCHEMIST-POTION_SALE.goldTitle": "상인의 총애",
+  "ALCHEMIST-POTION_SALE.silverDescription": "상인에게 포션을 [blue]6[/blue]개 이상 판매했습니다.",
+  "ALCHEMIST-POTION_SALE.silverTitle": "거래 상대"
+}

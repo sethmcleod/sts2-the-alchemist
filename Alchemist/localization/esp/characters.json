@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]Controla las variables. Registra los resultados. Ajusta la dosis[/green][/sine].",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "¡Aún nos queda Torre por explorar!",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(Date prisa, me estoy soltando del cuerpo...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "Las cartas de El Alquimista ahora aparecerán en recompensas y tiendas.",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "Cartas de El Alquimista",
+  "ALCHEMIST-ALCHEMIST.description": "Un anfibio que practica artes esotéricas.\nTransmuta en poder el veneno que se inflige.",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "Todavía no. Los demás me necesitan.",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]Ah. Sí, supongo que es bastante. En fin...[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "su",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "le",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "su",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "le",
+  "ALCHEMIST-ALCHEMIST.title": "El Alquimista",
+  "ALCHEMIST-ALCHEMIST.titleObject": "El Alquimista"
+}

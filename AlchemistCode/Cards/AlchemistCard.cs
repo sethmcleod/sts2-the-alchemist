@@ -280,8 +280,13 @@ public abstract class AlchemistCard : ConstructedCardModel
             IsMutable && FormulaHpLossPreview is { } hp ? $" ([red]{hp}[/red])" : "");
     }
 
+    protected static string PreviewLine(string key, string variable, int count)
+    {
+        var loc = new LocString("cards", key);
+        loc.Add(variable, count);
+        return loc.GetFormattedText();
+    }
+
     protected string HitsLine(int hits) =>
-        IsMutable && hits > 0
-            ? $"\n(Hits [green]{hits}[/green] {(hits == 1 ? "time" : "times")}.)"
-            : "";
+        IsMutable && hits > 0 ? PreviewLine("ALCHEMIST-HITS_LINE", "Hits", hits) : "";
 }

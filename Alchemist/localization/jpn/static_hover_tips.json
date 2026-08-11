@@ -1,0 +1,12 @@
+{
+  "ALCHEMIST-BREW.title": "調合",
+  "ALCHEMIST-BREW.description": "この休憩所の選択肢では、ランダムな[gold]ポーション[/gold]を1つ入手できる。この方法でしか入手できない[gold]ポーション[/gold]が3種類ある。",
+  "ALCHEMIST-DEEP_BREATH.title": "深呼吸",
+  "ALCHEMIST-DEEP_BREATH.description": "得られる[gold]ブロック[/gold]は、敵、自身、味方に付与されている[gold]毒[/gold]の合計に等しい。",
+  "ALCHEMIST-LIFEBLOOD.title": "血潮",
+  "ALCHEMIST-LIFEBLOOD.description": "ダメージには、このカードで得る[gold]再生[/gold]も含まれる。",
+  "ALCHEMIST-MASTERWORK.title": "傑作",
+  "ALCHEMIST-MASTERWORK.description": "この戦闘中に、[gold]注入[/gold]する1枚を含めて5枚以上のカードを[gold]エンチャント[/gold]していた場合、このカードは[gold]ゴールド[/gold]色に輝く。",
+  "ALCHEMIST-OVERFLOW.title": "氾濫",
+  "ALCHEMIST-OVERFLOW.description": "自身の[gold]再生[/gold]に等しい回数、すべての敵を攻撃する。"
+}

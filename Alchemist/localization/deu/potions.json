@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-ALKAHEST.description": "Bei Nutzung im Kampf [gold]Infundiere[/gold] bis zu [blue]3[/blue] deiner [gold]Handkarten[/gold]. Ansonsten verbessere eine Karte in deinem [gold]Deck[/gold].",
+  "ALCHEMIST-ALKAHEST.title": "Alkahest",
+  "ALCHEMIST-GOLD_LEAF.description": "Heile [green]1[/green] TP und erhalte [blue]1[/blue] [gold]Block[/gold] für je [blue]15[/blue] [gold]Gold[/gold], das du hast.{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.title": "Blattgold",
+  "ALCHEMIST-MARSH_TONIC.description": "Erhalte [blue]3[/blue] [gold]Erholen[/gold] und [blue]3[/blue] [gold]Gift[/gold].",
+  "ALCHEMIST-MARSH_TONIC.title": "Sumpftonikum",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Mache einen Extrazug nach diesem.",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Quecksilbertrunk",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Erhalte [blue]2[/blue] [gold]Destillate[/gold] auf deine [gold]Hand[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.title": "Raffinierter Extrakt",
+  "ALCHEMIST-SOPORIFIC.description": "[gold]Betäube[/gold] einen Gegner.",
+  "ALCHEMIST-SOPORIFIC.title": "Schlafmittel"
+}

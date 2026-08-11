@@ -1,0 +1,8 @@
+{
+  "ALCHEMIST-EXALTED.description": "เมื่อการ์ดนี้ถูกเล่น ได้รับ [blue]{Amount}[/blue] [gold]ความแข็งแรง[/gold]",
+  "ALCHEMIST-EXALTED.title": "สูงส่ง",
+  "ALCHEMIST-FUMING.description": "เมื่อการ์ดนี้ถูกเล่น เพิ่ม{Amount:plural:[gold]ไอเหม็น[/gold]|[gold]ไอเหม็น[/gold]} [blue]{Amount}[/blue] ใบใส่[gold]มือ[/gold]",
+  "ALCHEMIST-FUMING.title": "คุกรุ่น",
+  "ALCHEMIST-LACED.description": "ทุกครั้งที่การ์ดนี้สร้างความเสียหายที่บล็อกไม่ได้ สร้าง [blue]{Amount}[/blue] [gold]พิษ[/gold]",
+  "ALCHEMIST-LACED.title": "เจือพิษ"
+}

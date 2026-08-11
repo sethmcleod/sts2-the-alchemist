@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-ALKAHEST.description": "ถ้าใช้ในการต่อสู้ [gold]อัดฉีด[/gold]การ์ดใน[gold]มือ[/gold]ได้ถึง [blue]3[/blue] ใบ ถ้าไม่ใช่ จะพัฒนาการ์ด 1 ใบใน[gold]กองการ์ด[/gold]",
+  "ALCHEMIST-ALKAHEST.title": "อัลคาเฮสต์",
+  "ALCHEMIST-GOLD_LEAF.description": "ฟื้นฟู [green]1[/green] HP และได้รับ [blue]1[/blue] [gold]บล็อก[/gold] ต่อทุก [blue]15[/blue] [gold]ทอง[/gold] ที่คุณมี{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.title": "ทองคำเปลว",
+  "ALCHEMIST-MARSH_TONIC.description": "ได้รับ [blue]3[/blue] [gold]การฟื้นพลัง[/gold] และ [blue]3[/blue] [gold]พิษ[/gold]",
+  "ALCHEMIST-MARSH_TONIC.title": "ยาบำรุงบึงเลน",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "เล่นต่ออีก 1 เทิร์นต่อจากเทิร์นนี้",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "ยาปรอทว่องไว",
+  "ALCHEMIST-REFINED_EXTRACT.description": "เพิ่ม[gold]สารกลั่น[/gold] [blue]2[/blue] ใบใส่[gold]มือ[/gold]",
+  "ALCHEMIST-REFINED_EXTRACT.title": "สารสกัดบริสุทธิ์",
+  "ALCHEMIST-SOPORIFIC.description": "[gold]ทำให้สตัน[/gold]ศัตรู 1 ตัว",
+  "ALCHEMIST-SOPORIFIC.title": "ยานอนหลับ"
+}

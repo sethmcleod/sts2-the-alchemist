@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "ขาย ({Gold} ทอง)",
+  "POTION_SELL.merchant_greeting_1": "สนใจจะขายขวดยาพวกนั้นไหม?",
+  "POTION_SELL.merchant_greeting_2": "โอ้โฮ ผู้ส่งของคนโปรดมาแล้ว!",
+  "POTION_SELL.merchant_greeting_3": "คุณปรุงมา ที่เหลือผมขายเอง",
+  "POTION_SELL.merchant_greeting_4": "กลับมาเร็วจัง! ชุดที่แล้วยังขายไม่หมดเลยนะ!",
+  "POTION_SELL.merchant_greeting_5": "ดีใจที่ได้เจอเสมอเลย!",
+  "POTION_SELL.merchant_sell_1": "ใช่เลย! ของดีต้องแบบนี้!",
+  "POTION_SELL.merchant_sell_2": "ยินดีที่ได้ทำการค้าด้วย!",
+  "POTION_SELL.merchant_sell_3": "คุณภาพดีทีเดียวนะเนี่ย!",
+  "POTION_SELL.merchant_sell_4": "โอ้ ยังเดือดปุดๆ อยู่เลย เยี่ยม!",
+  "POTION_SELL.merchant_sell_5": "ขาประจำของผมต้องแย่งกันซื้อแน่",
+  "POTION_SELL.merchant_sell_6": "ยาปรุงใหม่ขายดีเสมอ!",
+  "POTION_SELL.sellable_tip.description": "[gold]ขวดยา[/gold]นี้ขายให้[blue]พ่อค้า[/blue]เพื่อแลก[gold]ทอง[/gold]ได้",
+  "POTION_SELL.sellable_tip.title": "เป็นที่ต้องการ"
+}

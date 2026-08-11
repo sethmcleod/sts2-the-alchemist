@@ -1,0 +1,8 @@
+{
+  "ALCHEMIST-EXALTED.description": "打出此牌時，獲得 [blue]{Amount}[/blue] 層[gold]力量[/gold]。",
+  "ALCHEMIST-EXALTED.title": "昂揚",
+  "ALCHEMIST-FUMING.description": "打出此牌時，將 [blue]{Amount}[/blue] 張{Amount:plural:[gold]穢氣[/gold]|[gold]穢氣[/gold]}加入你的[gold]手牌[/gold]。",
+  "ALCHEMIST-FUMING.title": "蒸騰",
+  "ALCHEMIST-LACED.description": "每當此牌造成未被格擋的傷害時，施加 [blue]{Amount}[/blue] 層[gold]中毒[/gold]。",
+  "ALCHEMIST-LACED.title": "淬毒"
+}

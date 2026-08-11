@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "Verkaufen ({Gold} G)",
+  "POTION_SELL.merchant_greeting_1": "Interesse, diese Tränke zu verkaufen?",
+  "POTION_SELL.merchant_greeting_2": "Oh ho, mein Lieblingslieferant!",
+  "POTION_SELL.merchant_greeting_3": "Du braust sie, ich bringe sie unter die Leute.",
+  "POTION_SELL.merchant_greeting_4": "Schon zurück? Ich habe die letzte Charge noch nicht mal verkauft!",
+  "POTION_SELL.merchant_greeting_5": "Immer schön, dich zu sehen!",
+  "POTION_SELL.merchant_sell_1": "Jaaa, das ist gutes Zeug!",
+  "POTION_SELL.merchant_sell_2": "Ein Vergnügen, mit dir Geschäfte zu machen!",
+  "POTION_SELL.merchant_sell_3": "Die sehen nach hoher Qualität aus!",
+  "POTION_SELL.merchant_sell_4": "Ooh, blubbert noch — sehr schön!",
+  "POTION_SELL.merchant_sell_5": "Meine Stammkunden reißen mir das aus den Händen.",
+  "POTION_SELL.merchant_sell_6": "Frische Gebräue gehen immer schnell weg!",
+  "POTION_SELL.sellable_tip.description": "Dieser [gold]Trank[/gold] kann für [gold]Gold[/gold] an den [blue]Händler[/blue] verkauft werden.",
+  "POTION_SELL.sellable_tip.title": "Begehrt"
+}

@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "Продать ({Gold} зол.)",
+  "POTION_SELL.merchant_greeting_1": "Не желаешь продать эти зелья?",
+  "POTION_SELL.merchant_greeting_2": "О-хо, мой любимый поставщик!",
+  "POTION_SELL.merchant_greeting_3": "Ты вари, а я продам.",
+  "POTION_SELL.merchant_greeting_4": "Уже вернулся? Я и прошлую партию не распродал!",
+  "POTION_SELL.merchant_greeting_5": "Всегда рад тебя видеть!",
+  "POTION_SELL.merchant_sell_1": "Да-а, то что надо!",
+  "POTION_SELL.merchant_sell_2": "Приятно иметь дело!",
+  "POTION_SELL.merchant_sell_3": "А качество-то отменное!",
+  "POTION_SELL.merchant_sell_4": "О-о, еще бурлит! Красота!",
+  "POTION_SELL.merchant_sell_5": "Мои постоянные клиенты это мигом разберут.",
+  "POTION_SELL.merchant_sell_6": "Свежие зелья всегда уходят быстро!",
+  "POTION_SELL.sellable_tip.description": "Это [gold]зелье[/gold] можно продать [blue]Торговцу[/blue] за [gold]золото[/gold].",
+  "POTION_SELL.sellable_tip.title": "Ходовое"
+}

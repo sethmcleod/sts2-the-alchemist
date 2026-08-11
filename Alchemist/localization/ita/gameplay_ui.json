@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "Vendi ({Gold}g)",
+  "POTION_SELL.merchant_greeting_1": "Ti interessa vendere quelle pozioni?",
+  "POTION_SELL.merchant_greeting_2": "Oh, il mio fornitore preferito!",
+  "POTION_SELL.merchant_greeting_3": "Tu le prepari, io le piazzo.",
+  "POTION_SELL.merchant_greeting_4": "Già di ritorno? Non ho ancora venduto l'ultima partita!",
+  "POTION_SELL.merchant_greeting_5": "Sempre un piacere vederti!",
+  "POTION_SELL.merchant_sell_1": "Sìì, questa è roba buona!",
+  "POTION_SELL.merchant_sell_2": "È un piacere fare affari!",
+  "POTION_SELL.merchant_sell_3": "Sembrano di ottima qualità!",
+  "POTION_SELL.merchant_sell_4": "Ooh, ribolle ancora... ottimo!",
+  "POTION_SELL.merchant_sell_5": "I miei clienti abituali se le contenderanno.",
+  "POTION_SELL.merchant_sell_6": "Le pozioni fresche vanno sempre a ruba!",
+  "POTION_SELL.sellable_tip.description": "Questa [gold]pozione[/gold] può essere venduta al [blue]mercante[/blue] in cambio di [gold]oro[/gold].",
+  "POTION_SELL.sellable_tip.title": "Ricercata"
+}

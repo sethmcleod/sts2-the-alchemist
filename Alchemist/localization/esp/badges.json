@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-BREW.bronzeDescription": "Preparaste pociones en [blue]3[/blue] puntos de descanso o más.",
+  "ALCHEMIST-BREW.bronzeTitle": "Tanda pequeña",
+  "ALCHEMIST-BREW.goldDescription": "Preparaste pociones en [blue]9[/blue] puntos de descanso o más.",
+  "ALCHEMIST-BREW.goldTitle": "Maestro destilador",
+  "ALCHEMIST-BREW.silverDescription": "Preparaste pociones en [blue]6[/blue] puntos de descanso o más.",
+  "ALCHEMIST-BREW.silverTitle": "Bien surtido",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "Vendiste [blue]3[/blue] pociones o más al Comerciante.",
+  "ALCHEMIST-POTION_SALE.bronzeTitle": "Buhonero",
+  "ALCHEMIST-POTION_SALE.goldDescription": "Vendiste [blue]9[/blue] pociones o más al Comerciante.",
+  "ALCHEMIST-POTION_SALE.goldTitle": "Favorito del Comerciante",
+  "ALCHEMIST-POTION_SALE.silverDescription": "Vendiste [blue]6[/blue] pociones o más al Comerciante.",
+  "ALCHEMIST-POTION_SALE.silverTitle": "Socio comercial"
+}

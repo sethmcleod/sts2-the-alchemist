@@ -1,0 +1,8 @@
+{
+  "ALCHEMIST-EXALTED.description": "Wenn du diese Karte spielst, erhalte [blue]{Amount}[/blue] [gold]Stärke[/gold].",
+  "ALCHEMIST-EXALTED.title": "Erhaben",
+  "ALCHEMIST-FUMING.description": "Wenn du diese Karte spielst, erhalte [blue]{Amount}[/blue] {Amount:plural:[gold]Fauligen Dampf[/gold]|[gold]Faulige Dämpfe[/gold]} auf deine [gold]Hand[/gold].",
+  "ALCHEMIST-FUMING.title": "Dampfend",
+  "ALCHEMIST-LACED.description": "Immer wenn diese Karte ungeblockten Schaden zufügt, wende [blue]{Amount}[/blue] [gold]Gift[/gold] an.",
+  "ALCHEMIST-LACED.title": "Versetzt"
+}

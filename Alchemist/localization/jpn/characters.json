@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]変数を制御せよ。結果を記録せよ。用量を調整せよ[/green][/sine]。",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "まだ探索すべきスパイアが残っている！",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "（急いでくれ、体から抜け落ちていく……）",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "報酬やショップにアルケミストのカードが出現するようになる。",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "アルケミストのカード",
+  "ALCHEMIST-ALCHEMIST.description": "秘術を修める両生類。\n自らに盛った毒を力へと錬成する。",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "まだだ。仲間には、まだ私が必要だ。",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]おや。ええ、確かにかなりの量だ。それはさておき——[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "その",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "それ",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "その",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "それ",
+  "ALCHEMIST-ALCHEMIST.title": "アルケミスト",
+  "ALCHEMIST-ALCHEMIST.titleObject": "アルケミスト"
+}

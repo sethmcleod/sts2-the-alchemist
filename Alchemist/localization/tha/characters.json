@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]ควบคุมตัวแปร บันทึกผลลัพธ์ ปรับขนาดยา[/green][/sine]",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "ยังมีสไปร์ให้สำรวจอีกเยอะนะ!",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(รีบหน่อย ฉันกำลังหลุดออกจากร่างแล้ว...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "การ์ดนักเล่นแร่แปรธาตุจะปรากฏในรางวัลและร้านค้าแล้ว",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "การ์ดนักเล่นแร่แปรธาตุ",
+  "ALCHEMIST-ALCHEMIST.description": "สัตว์ครึ่งบกครึ่งน้ำผู้ฝึกฝนศาสตร์เร้นลับ\nแปรพิษที่ตนรับเข้าไปให้กลายเป็นพลัง",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "ยังไม่ใช่ตอนนี้ คนอื่นยังต้องการฉัน",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]อ้อ ใช่ คงถือว่าเยอะอยู่นะ เอาล่ะ—[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "ของเขา",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "เขา",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "ของเขา",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "เขา",
+  "ALCHEMIST-ALCHEMIST.title": "นักเล่นแร่แปรธาตุ",
+  "ALCHEMIST-ALCHEMIST.titleObject": "นักเล่นแร่แปรธาตุ"
+}

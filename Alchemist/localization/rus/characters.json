@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]Следи за переменными. Записывай результаты. Меняй дозировку[/green][/sine].",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "Нам еще столько Шпиля исследовать!",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(Поторопитесь, я ускользаю из собственного тела...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "Карты Алхимика теперь могут появляться в наградах и у Торговца.",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "Карты Алхимика",
+  "ALCHEMIST-ALCHEMIST.description": "Земноводный знаток эзотерических искусств.\nТрансмутирует собственный яд в силу.",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "Еще рано. Я нужен остальным.",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]О. Да, пожалуй, это немало. Впрочем...[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "его",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "его",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "его",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "он",
+  "ALCHEMIST-ALCHEMIST.title": "Алхимик",
+  "ALCHEMIST-ALCHEMIST.titleObject": "Алхимика"
+}

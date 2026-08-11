@@ -1,0 +1,31 @@
+{
+  "STORY_ALCHEMIST": "Alchemik",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.title": "Kalcynacja",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.description": "Najlepszy [green]Aptekarz[/green] Stolicy wyruszył z [gold]Dwunastoma[/gold] odkrywcami, dziś zaginionymi w mrokach czasu.\nSklep prowadzi teraz ich [purple]dziecko[/purple]. Miesza. Odmierza dawki. Przy świecach czyta na wpół ukończony [gold]dziennik[/gold] rodzica, rozpaczliwie próbując zrozumieć, czemu nikt z nich nie wrócił.\nPewnego ranka na drzwiach zawisa kartka: \"[sine]Zamknięte. Badania terenowe...\"[/sine]\nBramy [gold]Iglicy[/gold] wpuszczają jeszcze jedną osobę.",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.unlockInfo": "{IsRevealed:Zagrano|Zagraj} [purple]Alchemikiem[/purple]{IsRevealed:|, aby odkryć te Epoki}.",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.unlockText": "Odblokowano [purple]Alchemika[/purple] jako grywalna postać.",
+
+  "ALCHEMIST-ALCHEMIST2_EPOCH.title": "Rozpuszczanie",
+  "ALCHEMIST-ALCHEMIST2_EPOCH.description": "Trzy piętra wyżej, osaczona i umierająca, [purple]Żaba[/purple] czuje, jak jej własna [green]trucizna[/green] zalewa żyły — i ulega [sine]transmutacji[/sine]. Ciepło. Wigor. Rany same się zasklepiają.\nNoc spędza na podłodze ruin, [red]śmiejąc się[/red] i zapisując wszystko [jitter]drżącymi rękami[/jitter].\nPierwsza strona nowego [gold]dziennika[/gold]. Tym razem własnego.",
+  "ALCHEMIST-ALCHEMIST2_EPOCH.unlockInfo": "{IsRevealed:Ukończono|Ukończ} [gold]Akt[/gold] [blue]1[/blue] [purple]Alchemikiem[/purple]{IsRevealed:|, aby odkryć tę Epokę}.",
+
+  "ALCHEMIST-ALCHEMIST3_EPOCH.title": "Separacja",
+  "ALCHEMIST-ALCHEMIST3_EPOCH.description": "\"Ty to [sine]warzysz[/sine]? [sine]Tutaj[/sine]?\"\nPo raz pierwszy od lat to [blue]Handlarz[/blue] chce kupować.\nDo jego dłoni trafia [green]tynktura[/green], jeszcze ciepła od płomienia.\nUkład staje na miejscu: [purple]Żaba[/purple] warzy, [blue]Handlarz[/blue] kupuje.",
+  "ALCHEMIST-ALCHEMIST3_EPOCH.unlockInfo": "{IsRevealed:Ukończono|Ukończ} [gold]Akt[/gold] [blue]2[/blue] [purple]Alchemikiem[/purple]{IsRevealed:|, aby odkryć tę Epokę}.",
+
+  "ALCHEMIST-ALCHEMIST4_EPOCH.title": "Koniunkcja",
+  "ALCHEMIST-ALCHEMIST4_EPOCH.description": "\"Znalazłem to kawałek wyżej. Pomyślałem, że do kogoś należy.\" [orange]Darv[/orange] wyciąga zniszczony [gold]dziennik[/gold].\nWczesne zapiski są ręką ich [pink]rodzica[/pink]. Późniejsze strony już nie. Zapisane obcym atramentem, wskazują tropy wyżej w [gold]Iglicy[/gold].\n[purple]Żaba[/purple] nie pyta, czemu kolekcjoner rozstaje się z takim skarbem. [orange]Darv[/orange] sam nie wyjaśnia.",
+  "ALCHEMIST-ALCHEMIST4_EPOCH.unlockInfo": "{IsRevealed:Ukończono|Ukończ} [gold]Akt[/gold] [blue]3[/blue] [purple]Alchemikiem[/purple]{IsRevealed:|, aby odkryć tę Epokę}.",
+
+  "ALCHEMIST-ALCHEMIST5_EPOCH.title": "Fermentacja",
+  "ALCHEMIST-ALCHEMIST5_EPOCH.description": "Dziewięć dni zamknięcia w galerii świecących [green]grzybów[/green].\nNiektórzy wpadliby w [jitter]panikę[/jitter]. [purple]Żaba[/purple] [sine]warzy[/sine].\nNiektóre preparaty [gold]nagradzają[/gold] cierpliwą rękę. Inne [red]karzą[/red] wahanie.\nWychodzi z pełną sakwą i [blue]cierpliwością[/blue], by wiedzieć, kiedy po nią nie sięgać.",
+  "ALCHEMIST-ALCHEMIST5_EPOCH.unlockInfo": "{IsRevealed:Zabito|Zabij} [blue]15[/blue] [purple]Elitarnych przeciwników[/purple] [purple]Alchemikiem[/purple]{IsRevealed:|, aby odkryć tę Epokę}.",
+
+  "ALCHEMIST-ALCHEMIST6_EPOCH.title": "Destylacja",
+  "ALCHEMIST-ALCHEMIST6_EPOCH.description": "Jeszcze wyżej: [jitter]zimne[/jitter] obozowisko. Formuły wyryte w kamieniu [pink]znajomą ręką[/pink].\nOstatnia notatka na marginesie. W [gold]Dziele[/gold] nigdy nie chodziło o [gold]złoto[/gold].\nChodzi o połączenie przeciwieństw. O przekroczenie własnego [blue]Ja[/blue].\n[purple]Żaba[/purple] długo siedzi z tą myślą. Potem [sine]wspina się dalej.[/sine]",
+  "ALCHEMIST-ALCHEMIST6_EPOCH.unlockInfo": "{IsRevealed:Zabito|Zabij} [blue]15[/blue] [red]Bossów[/red] [purple]Alchemikiem[/purple]{IsRevealed:|, aby odkryć tę Epokę}.",
+
+  "ALCHEMIST-ALCHEMIST7_EPOCH.title": "Koagulacja",
+  "ALCHEMIST-ALCHEMIST7_EPOCH.description": "Ostatnie piętro. Ostatnie drzwi.\n[pink]Rodzic[/pink] wspiął się tu, by dokończyć [gold]Dzieło[/gold], i nigdy nie zapisał zakończenia.\nMoże dlatego, że nie dało się go zapisać — bo ostatniej przemiany się nie notuje, tylko się nią [blue][sine]staje[/sine][/blue].\n[purple]Żaba[/purple] uspokaja dłonie, bierze głęboki oddech i przekracza próg.",
+  "ALCHEMIST-ALCHEMIST7_EPOCH.unlockInfo": "{IsRevealed:Ukończono|Ukończ} [blue]1[/blue]. poziom [red]Wyniesienia[/red] [purple]Alchemikiem[/purple]{IsRevealed:|, aby odkryć tę Epokę}."
+}

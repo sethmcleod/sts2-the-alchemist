@@ -1,0 +1,8 @@
+{
+  "ALCHEMIST-EXALTED.description": "Lorsque cette carte est jouée, gagnez [blue]{Amount}[/blue] de [gold]Force[/gold].",
+  "ALCHEMIST-EXALTED.title": "Exalté",
+  "ALCHEMIST-FUMING.description": "Lorsque cette carte est jouée, ajoutez [blue]{Amount}[/blue] {Amount:plural:[gold]Vapeur fétide[/gold]|[gold]Vapeurs fétides[/gold]} à votre [gold]Main[/gold].",
+  "ALCHEMIST-FUMING.title": "Fumant",
+  "ALCHEMIST-LACED.description": "Lorsque cette carte inflige des dégâts non-bloqués, appliquez [blue]{Amount}[/blue] de [gold]Poison[/gold].",
+  "ALCHEMIST-LACED.title": "Imprégné"
+}

@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "Sprzedaj ({Gold} szt. złota)",
+  "POTION_SELL.merchant_greeting_1": "Może sprzedasz mi te mikstury?",
+  "POTION_SELL.merchant_greeting_2": "O ho, mój ulubiony dostawca!",
+  "POTION_SELL.merchant_greeting_3": "Ty warzysz, ja upłynniam.",
+  "POTION_SELL.merchant_greeting_4": "Już z powrotem? Jeszcze nie sprzedałem poprzedniej partii!",
+  "POTION_SELL.merchant_greeting_5": "Zawsze miło cię widzieć!",
+  "POTION_SELL.merchant_sell_1": "Taaak, o to chodzi!",
+  "POTION_SELL.merchant_sell_2": "Interesy z tobą to czysta przyjemność!",
+  "POTION_SELL.merchant_sell_3": "Wyglądają na najwyższą jakość!",
+  "POTION_SELL.merchant_sell_4": "Ooo, jeszcze bulgocze. Wybornie!",
+  "POTION_SELL.merchant_sell_5": "Stali klienci rozchwytają to w mig.",
+  "POTION_SELL.merchant_sell_6": "Świeże wywary zawsze schodzą na pniu!",
+  "POTION_SELL.sellable_tip.description": "Tę [gold]Miksturę[/gold] można sprzedać [blue]Handlarzowi[/blue] za [gold]Złoto[/gold].",
+  "POTION_SELL.sellable_tip.title": "Rozchwytywana"
+}

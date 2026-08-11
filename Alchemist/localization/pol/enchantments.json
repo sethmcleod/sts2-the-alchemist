@@ -1,0 +1,8 @@
+{
+  "ALCHEMIST-EXALTED.description": "Gdy ta karta zostanie zagrana, zyskaj [blue]{Amount}[/blue] pkt. [gold]Siły[/gold].",
+  "ALCHEMIST-EXALTED.title": "Egzaltacja",
+  "ALCHEMIST-FUMING.description": "Gdy ta karta zostanie zagrana, dodaj do [gold]ręki[/gold] [blue]{Amount}[/blue] {Amount:plural:kartę [gold]Trujący opar[/gold]|karty [gold]Trujący opar[/gold]}.",
+  "ALCHEMIST-FUMING.title": "Wyziew",
+  "ALCHEMIST-LACED.description": "Kiedykolwiek ta karta zadaje niezablokowane obrażenia, nałóż [blue]{Amount}[/blue] pkt. [gold]Trucizny[/gold].",
+  "ALCHEMIST-LACED.title": "Jad"
+}

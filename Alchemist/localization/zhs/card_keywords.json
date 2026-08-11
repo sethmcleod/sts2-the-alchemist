@@ -1,0 +1,19 @@
+{
+  "ALCHEMIST-FERMENT.description": "这张牌在你的[gold]手牌[/gold]中每停留一个回合就增强一次。越过顶峰之后，它会变为[gold]毒素[/gold]。",
+  "ALCHEMIST-FERMENT.title": "发酵",
+  "ALCHEMIST-GAMBIT.description": "当你的生命值处于[blue]50%[/blue]或更低时，这张牌拥有[gold]险招[/gold]效果。",
+  "ALCHEMIST-GAMBIT.title": "险招",
+  "ALCHEMIST-INFUSE.description": "[gold]附魔[/gold]一张牌，直到战斗结束。攻击牌获得[blue]2[/blue]层[purple]掺毒[/purple]；技能牌获得[blue]1[/blue]层[purple]蒸腾[/purple]；能力牌获得[blue]1[/blue]层[purple]尊崇[/purple]。其他牌获得[gold]虚无[/gold]。",
+  "ALCHEMIST-INFUSE.selectionPrompt": "选择{Amount:plural:一张牌|[blue]{}[/blue]张牌}进行[gold]注入[/gold]。",
+  "ALCHEMIST-INFUSE.selectionPromptAny": "选择任意张牌进行[gold]注入[/gold]。",
+  "ALCHEMIST-INFUSE.selectionPromptRange": "选择至多[blue]{MaxCount}[/blue]张{MaxCount:plural:牌|牌}进行[gold]注入[/gold]。",
+  "ALCHEMIST-INFUSE.title": "注入",
+  "ALCHEMIST-REACTION.description": "拥有[gold]反应[/gold]的牌，在紧接其之前打出的牌符合条件时，会获得额外效果。",
+  "ALCHEMIST-REACTION.description.attack": "当你打出一张攻击牌后紧接着打出这张牌时，它拥有[gold]反应[/gold]效果。",
+  "ALCHEMIST-REACTION.description.block": "当你打出一张获得了[gold]格挡[/gold]的牌后紧接着打出这张牌时，它拥有[gold]反应[/gold]效果。",
+  "ALCHEMIST-REACTION.description.enchanted": "当你打出一张[gold]附魔[/gold]牌后紧接着打出这张牌时，它拥有[gold]反应[/gold]效果。",
+  "ALCHEMIST-REACTION.description.exhaust": "当你打出一张被[gold]消耗[/gold]的牌后紧接着打出这张牌时，它拥有[gold]反应[/gold]效果。",
+  "ALCHEMIST-REACTION.description.power": "当你打出一张能力牌后紧接着打出这张牌时，它拥有[gold]反应[/gold]效果。",
+  "ALCHEMIST-REACTION.description.skill": "当你打出一张技能牌后紧接着打出这张牌时，它拥有[gold]反应[/gold]效果。",
+  "ALCHEMIST-REACTION.title": "反应"
+}

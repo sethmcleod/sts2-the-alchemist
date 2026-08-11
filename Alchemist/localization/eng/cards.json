@@ -196,5 +196,9 @@
   "ALCHEMIST-WINDFALL.title": "Windfall",
   "ALCHEMIST-WINNOW.description": "Gain {Block:diff()} [gold]Block[/gold].\nChoose 1 of 3 cards in your [gold]Draw Pile[/gold] and add it into your [gold]Hand[/gold].",
   "ALCHEMIST-WINNOW.selectionScreenPrompt": "Choose a card to add into your [gold]Hand[/gold].",
-  "ALCHEMIST-WINNOW.title": "Winnow"
+  "ALCHEMIST-WINNOW.title": "Winnow",
+  "ALCHEMIST-HITS_LINE": "\n(Hits [green]{Hits}[/green] {Hits:plural:time|times}.)",
+  "ALCHEMIST-DRAW_LINE": "\n(Draw [green]{Cards}[/green] {Cards:plural:card|cards}.)",
+  "ALCHEMIST-APPLY_LINE": "\n(Apply [green]{Amount}[/green] Poison.)",
+  "ALCHEMIST-GAINS_REGEN_LINE": " (Gains [green]{Amount}[/green] Regen.)"
 }

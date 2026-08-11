@@ -1,0 +1,12 @@
+{
+  "ALCHEMIST-BREW.title": "Warzenie",
+  "ALCHEMIST-BREW.description": "Ta opcja Obozowiska pozwala otrzymać losową [gold]Miksturę[/gold]. Istnieją 3 [gold]Mikstury[/gold], które można zdobyć tylko w ten sposób.",
+  "ALCHEMIST-DEEP_BREATH.title": "Głęboki oddech",
+  "ALCHEMIST-DEEP_BREATH.description": "Zyskany [gold]Blok[/gold] jest równy sumie całej [gold]Trucizny[/gold] na przeciwnikach, tobie i twoich sojusznikach.",
+  "ALCHEMIST-LIFEBLOOD.title": "Krew życia",
+  "ALCHEMIST-LIFEBLOOD.description": "Obrażenia uwzględniają [gold]Regenerację[/gold], którą zyskasz z tej karty.",
+  "ALCHEMIST-MASTERWORK.title": "Arcydzieło",
+  "ALCHEMIST-MASTERWORK.description": "Ta karta świeci na [gold]złoto[/gold], jeżeli w tej walce rzucono [gold]Zaklęcie[/gold] na co najmniej pięć kart, licząc tę, którą [gold]Nasycisz[/gold].",
+  "ALCHEMIST-OVERFLOW.title": "Przelanie",
+  "ALCHEMIST-OVERFLOW.description": "Trafia WSZYSTKICH przeciwników tyle razy, ile wynosi twoja [gold]Regeneracja[/gold]."
+}

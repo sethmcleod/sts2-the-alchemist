@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]변수를 통제한다. 결과를 기록한다. 복용량을 조절한다[/green][/sine].",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "아직 탐사할 첨탑이 남아 있어요!",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(서둘러 주세요, 몸에서 빠져나가는 중이라...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "이제 연금술사 카드가 보상과 상점에 등장합니다.",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "연금술사 카드",
+  "ALCHEMIST-ALCHEMIST.description": "비전의 기술을 연마하는 양서류입니다.\n스스로 삼킨 독을 힘으로 연성합니다.",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "아직은 아니야. 다들 내가 필요하니까.",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]오. 그래요, 꽤 많은 양이군요. 아무튼—[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "그의",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "그를",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "그의 것",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "그",
+  "ALCHEMIST-ALCHEMIST.title": "연금술사",
+  "ALCHEMIST-ALCHEMIST.titleObject": "연금술사"
+}
