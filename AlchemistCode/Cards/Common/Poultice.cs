@@ -9,9 +9,10 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Poultice : AlchemistCard
 {
-    public Poultice() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Poultice() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithPower<RegenPower>(1, 1);
+        WithCostUpgradeBy(-1);
+        WithPower<RegenPower>(1, 0);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

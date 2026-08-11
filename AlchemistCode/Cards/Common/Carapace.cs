@@ -7,7 +7,7 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Carapace : AlchemistCard
 {
-    protected override int FermentPeak => 5;
+    protected override int FermentPeak => 3;
 
     public Carapace() : base(2, CardType.Skill, CardRarity.Common, TargetType.Self)
     {

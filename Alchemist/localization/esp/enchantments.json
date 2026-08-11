@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-EXALTED.description": "Al jugar esta carta, obtienes [blue]{Amount}[/blue] de [gold]fuerza[/gold].",
   "ALCHEMIST-EXALTED.title": "Exaltación",
-  "ALCHEMIST-FUMING.description": "Al jugar esta carta, agregas [blue]{Amount}[/blue] {Amount:plural:[gold]Vapor fétido[/gold]|[gold]Vapores fétidos[/gold]} a tu [gold]mano[/gold].",
+  "ALCHEMIST-FUMING.description": "Al jugar esta carta, aplicas [blue]{Amount}[/blue] de [gold]debilitamiento[/gold] y [blue]{Amount}[/blue] de [gold]vulnerabilidad[/gold] a un enemigo al azar. Obtienes [blue]{Amount}[/blue] de [gold]veneno[/gold].",
   "ALCHEMIST-FUMING.title": "Emanación",
   "ALCHEMIST-LACED.description": "Cuando esta carta inflige daño sin bloquear, aplicas [blue]{Amount}[/blue] de [gold]veneno[/gold].",
   "ALCHEMIST-LACED.title": "Adulteración"

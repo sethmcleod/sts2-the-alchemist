@@ -95,7 +95,6 @@ COLORS = {
     "Fresh Batch": ("#045062", "#8fe3c0", "BR", "Gambit: skills"),
     "Transmute": ("#5f011f", "#e3b84a", "BR", "Gambit: skills"),
     # Gambit: powers
-    "Drip Feed": ("#5f011f", "#6f5bd6", "L", "Gambit: powers"),
     "Slag": ("#45293f", "#c98fd6", "R", "Unique"),
     # Poison attacks
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
@@ -113,6 +112,7 @@ COLORS = {
     # Reaction: light attacks
     "Quicklime": ("#1c0f45", "#e8e4d2", "TR", "Reaction: light attacks"),
     "Reagent": ("#1c0f45", "#d8e04a", "TR", "Reaction: light attacks"),
+    "Catalysis": ("#1c0f45", "#6ad8c4", "R", "Reaction: light attacks"),
     # Ferment: attacks
     "Patient Strike": ("#4a0e2e", "#c78a3b", "TR", "Ferment: attacks"),
     "Rolling Boil": ("#4a0e2e", "#e85a1f", "TR", "Ferment: attacks"),
@@ -127,7 +127,6 @@ COLORS = {
     # Quench (one-off)
     "Quench": ("#792595", "#0e5452", "BR", "Unique"),
     # Infuse: heavy
-    "Deep Breath": ("#4a1a66", "#3fb0d4", "BR", "Infuse: heavy"),
     "Masterwork": ("#4a1a66", "#c9a227", "BR", "Infuse: heavy"),
     "Refine": ("#4a1a66", "#257bc3", "BR", "Infuse: heavy"),
     # Froth (one-off: sea-foam over deep blue)
@@ -158,12 +157,12 @@ COLORS = {
     # Exhaust pile: skills
     "Poultice": ("#1f1723", "#4f9e4a", "BR", "Exhaust pile: skills"),
     "Sinter": ("#1f1723", "#be401b", "BR", "Exhaust pile: skills"),
+    "Anneal": ("#1f1723", "#7f9aa8", "BR", "Exhaust pile: skills"),
     # Regen: attacks
     "Hemorrhage": ("#00212a", "#0d8a6b", "TR", "Regen: attacks"),
     "Lifeblood": ("#00212a", "#0a6e43", "TR", "Regen: attacks"),
     "Overflow": ("#00212a", "#10aba5", "TR", "Regen: attacks"),
     # Regen: skills and powers
-    "Catalyze": ("#14424e", "#3d9a70", "L", "Regen: skills and powers"),
     "Circulation": ("#14424e", "#b8e86a", "BR", "Regen: skills and powers"),
     "Inversion": ("#14424e", "#47b499", "L", "Regen: skills and powers"),
     # Poison skills
@@ -171,11 +170,12 @@ COLORS = {
     "Sweat It Out": ("#4e8701", "#013161", "BR", "Poison skills"),
     "Waste Not": ("#4e8701", "#2f4f8f", "BR", "Poison skills"),
     # Poison powers: amplifiers
-    "Bramble": ("#2b1a06", "#d9b45c", "R", "Unique"),
     "Heavy Hand": ("#071a02", "#8fc72a", "R", "Poison powers: amplifiers"),
     "Sepsis": ("#071a02", "#5aea23", "L", "Poison powers: amplifiers"),
     # Poison powers: retaliation
     "Contagion": ("#071a02", "#c9b428", "R", "Poison powers: retaliation"),
+    "Corrosive": ("#071a02", "#5fbf8a", "R", "Poison powers: retaliation"),
+    "Virulence": ("#071a02", "#7ad14a", "L", "Poison powers: retaliation"),
     "Secretion": ("#071a02", "#af8423", "L", "Poison powers: retaliation"),
     # Poison plus Regen
     "Mercurial Form": ("#0e6b54", "#8aa312", "R", "Poison plus Regen"),
@@ -221,8 +221,6 @@ COLORS = {
     # Rubedo (token)
     "Citrinitas": ("#e87500", "#feee2b", "D", "Unique"),
     "Rubedo": ("#390800", "#9a330b", "D", "Unique"),
-    # Foul Vapor (token)
-    "Foul Vapor": ("#1d0d6e", "#01c2d6", "D", "Unique"),
     # Elixir (Ancient)
     "Elixir": ("#7638ff", "#22ff88", "BL", "Unique"),
     # Aureate (Ancient)

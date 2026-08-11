@@ -15,7 +15,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "拾起时，将[blue]1[/blue]张[gold]青涩果实[/gold]加入你的[gold]牌组[/gold]。",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "迈达斯许错了愿，却种对了树。",
   "ALCHEMIST-MIDAS_FRUIT.title": "迈达斯之果",
-  "ALCHEMIST-QUINTESSENCE.description": "你每回合打出的第一张牌会触发它的[gold]反应[/gold]。",
+  "ALCHEMIST-QUINTESSENCE.description": "每回合，你打出的第一张带有[gold]反应[/gold]的牌会触发它。",
   "ALCHEMIST-QUINTESSENCE.flavor": "第五种元素，也是最没有耐心的那一种。",
   "ALCHEMIST-QUINTESSENCE.title": "第五元素",
   "ALCHEMIST-SNAKE_TAIL.description": "当[gold]中毒[/gold]第一次将要把你的生命值降至0时，改为回复到你最大生命值的[green]33%[/green]（仅能起效一次）。",

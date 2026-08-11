@@ -15,7 +15,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "При получении добавляет в [gold]колоду[/gold] [blue]1[/blue] [gold]«Незрелый плод»[/gold].",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "Мидас выбирал неудачно, зато сажал умело.",
   "ALCHEMIST-MIDAS_FRUIT.title": "Плод Мидаса",
-  "ALCHEMIST-QUINTESSENCE.description": "У первой разыгранной в каждом ходу карты срабатывает [gold]реакция[/gold].",
+  "ALCHEMIST-QUINTESSENCE.description": "В каждом ходу у первой разыгранной вами карты с [gold]реакцией[/gold] она срабатывает.",
   "ALCHEMIST-QUINTESSENCE.flavor": "Пятая стихия, и самая нетерпеливая.",
   "ALCHEMIST-QUINTESSENCE.title": "Квинтэссенция",
   "ALCHEMIST-SNAKE_TAIL.description": "Когда [gold]яд[/gold] впервые понизит ваши ОЗ до 0, вместо этого вы восполните ОЗ до [green]33%[/green] от максимума (срабатывает один раз).",

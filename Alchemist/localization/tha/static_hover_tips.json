@@ -1,12 +1,10 @@
 {
-  "ALCHEMIST-BREW.title": "ปรุงยา",
   "ALCHEMIST-BREW.description": "ตัวเลือกที่จุดพักนี้ให้คุณจัดหา[gold]ขวดยา[/gold] 1 ขวดแบบสุ่ม มี[gold]ขวดยา[/gold] 3 ชนิดที่หาได้ด้วยวิธีนี้เท่านั้น",
-  "ALCHEMIST-DEEP_BREATH.title": "สูดหายใจลึก",
-  "ALCHEMIST-DEEP_BREATH.description": "[gold]บล็อก[/gold]ที่ได้รับเท่ากับผลรวมของ[gold]พิษ[/gold]ทั้งหมดบนตัวศัตรู ตัวคุณ และพันธมิตรของคุณ",
+  "ALCHEMIST-BREW.title": "ปรุงยา",
+  "ALCHEMIST-LIFEBLOOD.description": "ความเสียหายนับรวม[gold]การฟื้นพลัง[/gold]ที่คุณมีอยู่แล้ว",
   "ALCHEMIST-LIFEBLOOD.title": "โลหิตหล่อเลี้ยง",
-  "ALCHEMIST-LIFEBLOOD.description": "ความเสียหายนับรวม[gold]การฟื้นพลัง[/gold]ที่คุณจะได้รับจากการ์ดใบนี้ด้วย",
-  "ALCHEMIST-MASTERWORK.title": "ผลงานชิ้นเอก",
   "ALCHEMIST-MASTERWORK.description": "การ์ดนี้จะเรืองแสง[gold]ทอง[/gold]ถ้าคุณ[gold]ร่ายมนตร์[/gold]การ์ดครบห้าใบขึ้นไปในการต่อสู้นี้ โดยนับรวมใบที่คุณกำลังจะ[gold]อัดฉีด[/gold]ด้วย",
-  "ALCHEMIST-OVERFLOW.title": "ล้นทะลัก",
-  "ALCHEMIST-OVERFLOW.description": "โจมตีศัตรูทั้งหมดตามจำนวน[gold]การฟื้นพลัง[/gold]ที่คุณมี"
+  "ALCHEMIST-MASTERWORK.title": "ผลงานชิ้นเอก",
+  "ALCHEMIST-OVERFLOW.description": "โจมตีศัตรูทั้งหมดตามจำนวน[gold]การฟื้นพลัง[/gold]ที่คุณมี รวมถึง 1 หน่วยที่การ์ดนี้ให้ด้วย",
+  "ALCHEMIST-OVERFLOW.title": "ล้นทะลัก"
 }

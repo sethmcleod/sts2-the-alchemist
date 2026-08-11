@@ -1,12 +1,10 @@
 {
-  "ALCHEMIST-BREW.title": "酿造",
   "ALCHEMIST-BREW.description": "这个休息处选项让你获得一瓶随机[gold]药水[/gold]。有3瓶[gold]药水[/gold]只能通过这种方式获得。",
-  "ALCHEMIST-DEEP_BREATH.title": "深呼吸",
-  "ALCHEMIST-DEEP_BREATH.description": "获得的[gold]格挡[/gold]等于敌人、你和你的盟友身上所有[gold]中毒[/gold]的总和。",
-  "ALCHEMIST-LIFEBLOOD.title": "生命之血",
-  "ALCHEMIST-LIFEBLOOD.description": "伤害计入这张牌将要为你带来的[gold]再生[/gold]。",
-  "ALCHEMIST-MASTERWORK.title": "杰作",
+  "ALCHEMIST-BREW.title": "酿造",
+  "ALCHEMIST-LIFEBLOOD.description": "伤害计入你已经拥有的[gold]再生[/gold]。",
+  "ALCHEMIST-LIFEBLOOD.title": "命脉",
   "ALCHEMIST-MASTERWORK.description": "如果你在本场战斗中已[gold]附魔[/gold]五张或更多的牌（包括这张牌将要[gold]注入[/gold]的那张），它就会发出[gold]金币[/gold]般的光芒。",
-  "ALCHEMIST-OVERFLOW.title": "溢流",
-  "ALCHEMIST-OVERFLOW.description": "对所有敌人的命中次数等于你的[gold]再生[/gold]。"
+  "ALCHEMIST-MASTERWORK.title": "杰作",
+  "ALCHEMIST-OVERFLOW.description": "对所有敌人的命中次数等于你的[gold]再生[/gold]层数，其中包括这张牌给予的1层。",
+  "ALCHEMIST-OVERFLOW.title": "满溢"
 }

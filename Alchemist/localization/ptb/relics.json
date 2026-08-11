@@ -15,7 +15,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "Ao ser obtida, adicione [blue]1[/blue] [gold]Fruta Verde[/gold] ao seu [gold]Baralho[/gold].",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "Midas escolheu mal, mas plantou bem.",
   "ALCHEMIST-MIDAS_FRUIT.title": "Fruta de Midas",
-  "ALCHEMIST-QUINTESSENCE.description": "A primeira carta que você jogar a cada turno ativa sua [gold]Reação[/gold].",
+  "ALCHEMIST-QUINTESSENCE.description": "A cada turno, a primeira carta que você jogar com [gold]Reação[/gold] a ativa.",
   "ALCHEMIST-QUINTESSENCE.flavor": "O quinto elemento, e o menos paciente.",
   "ALCHEMIST-QUINTESSENCE.title": "Quintessência",
   "ALCHEMIST-SNAKE_TAIL.description": "Na primeira vez que o [gold]Veneno[/gold] reduziria seus PV a 0, cure [green]33%[/green] dos seus PV Máximos em vez disso (funciona uma vez).",

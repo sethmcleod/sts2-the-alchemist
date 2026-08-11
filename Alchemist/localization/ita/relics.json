@@ -15,7 +15,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "Quando la raccogli, aggiungi [blue]1[/blue] [gold]Frutto Acerbo[/gold] al tuo [gold]mazzo[/gold].",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "Mida scelse male, ma piantò bene.",
   "ALCHEMIST-MIDAS_FRUIT.title": "Frutto di Mida",
-  "ALCHEMIST-QUINTESSENCE.description": "La prima carta che giochi in ogni turno attiva la sua [gold]Reazione[/gold].",
+  "ALCHEMIST-QUINTESSENCE.description": "In ogni turno, la prima carta con [gold]Reazione[/gold] che giochi la attiva.",
   "ALCHEMIST-QUINTESSENCE.flavor": "Il quinto elemento, e il meno paziente.",
   "ALCHEMIST-QUINTESSENCE.title": "Quintessenza",
   "ALCHEMIST-SNAKE_TAIL.description": "La prima volta che il [gold]Veleno[/gold] ridurrebbe i tuoi PV a 0, recuperi invece il [green]33%[/green] dei tuoi PV massimi (ha effetto una sola volta).",

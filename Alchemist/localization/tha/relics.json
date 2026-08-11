@@ -15,7 +15,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "เมื่อรับมา เพิ่ม[gold]ผลไม้ดิบ[/gold] [blue]1[/blue] ใบเข้า[gold]กองการ์ด[/gold]",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "ไมดาสเลือกผิด แต่เขาปลูกไว้ดี",
   "ALCHEMIST-MIDAS_FRUIT.title": "ผลไม้ไมดาส",
-  "ALCHEMIST-QUINTESSENCE.description": "การ์ดใบแรกที่คุณเล่นในแต่ละเทิร์นจะทำให้[gold]ปฏิกิริยา[/gold]ของมันทำงาน",
+  "ALCHEMIST-QUINTESSENCE.description": "ในแต่ละเทิร์น การ์ดที่มี[gold]ปฏิกิริยา[/gold]ใบแรกที่คุณเล่นจะทำให้ปฏิกิริยานั้นทำงาน",
   "ALCHEMIST-QUINTESSENCE.flavor": "ธาตุที่ห้า และเป็นธาตุที่ใจร้อนที่สุด",
   "ALCHEMIST-QUINTESSENCE.title": "ธาตุที่ห้า",
   "ALCHEMIST-SNAKE_TAIL.description": "ครั้งแรกที่[gold]พิษ[/gold]จะทำให้ HP ของคุณเหลือ 0 จะฟื้นฟูเป็น [green]33%[/green] ของ HP สูงสุดแทน (ใช้ได้ครั้งเดียว)",

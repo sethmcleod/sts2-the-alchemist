@@ -15,7 +15,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "Lorsque vous obtenez cette relique, ajoutez [blue]1[/blue] [gold]Fruit vert[/gold] à votre [gold]Deck[/gold].",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "Midas a mal choisi, mais il a bien planté.",
   "ALCHEMIST-MIDAS_FRUIT.title": "Fruit de Midas",
-  "ALCHEMIST-QUINTESSENCE.description": "La première carte que vous jouez à chaque tour déclenche sa [gold]Réaction[/gold].",
+  "ALCHEMIST-QUINTESSENCE.description": "À chaque tour, la première carte que vous jouez avec une [gold]Réaction[/gold] la déclenche.",
   "ALCHEMIST-QUINTESSENCE.flavor": "Le cinquième élément, et le moins patient.",
   "ALCHEMIST-QUINTESSENCE.title": "Quintessence",
   "ALCHEMIST-SNAKE_TAIL.description": "La première fois que le [gold]Poison[/gold] devrait réduire vos PV à 0, récupérez [green]33%[/green] de vos PV Max à la place (fonctionne une fois).",

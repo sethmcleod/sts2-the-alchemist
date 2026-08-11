@@ -15,7 +15,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "Przy podniesieniu dodaj [blue]1[/blue] kartę [gold]Niedojrzały owoc[/gold] do [gold]talii[/gold].",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "Midas wybrał źle, ale zasadził dobrze.",
   "ALCHEMIST-MIDAS_FRUIT.title": "Owoc Midasa",
-  "ALCHEMIST-QUINTESSENCE.description": "Pierwsza karta zagrana w każdej turze aktywuje swoją [gold]Reakcję[/gold].",
+  "ALCHEMIST-QUINTESSENCE.description": "W każdej turze pierwsza zagrana karta z [gold]Reakcją[/gold] aktywuje ją.",
   "ALCHEMIST-QUINTESSENCE.flavor": "Piąty żywioł, i to ten najmniej cierpliwy.",
   "ALCHEMIST-QUINTESSENCE.title": "Kwintesencja",
   "ALCHEMIST-SNAKE_TAIL.description": "Gdy [gold]Trucizna[/gold] po raz pierwszy miałaby zredukować twoje PŻ do 0, zamiast tego przywróć [green]33%[/green] maks. PŻ (działa raz).",

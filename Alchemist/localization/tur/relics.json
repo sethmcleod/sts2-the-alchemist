@@ -15,7 +15,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "Bu kalıntıyı aldığında [gold]Deste[/gold]'ne [blue]1[/blue] [gold]Ham Meyve[/gold] ekle.",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "Midas kötü seçti ama iyi ekti.",
   "ALCHEMIST-MIDAS_FRUIT.title": "Midas Meyvesi",
-  "ALCHEMIST-QUINTESSENCE.description": "Her tur oynadığın ilk kartın [gold]Reaksiyon[/gold]'u tetiklenir.",
+  "ALCHEMIST-QUINTESSENCE.description": "Her tur, [gold]Reaksiyon[/gold] içeren oynadığın ilk kart onu tetikler.",
   "ALCHEMIST-QUINTESSENCE.flavor": "Beşinci element, hem de en sabırsızı.",
   "ALCHEMIST-QUINTESSENCE.title": "Beşinci Öz",
   "ALCHEMIST-SNAKE_TAIL.description": "[gold]Zehir[/gold], CP'ni ilk kez 0'a düşüreceğinde bunun yerine Maksimum CP'nin [green]%33[/green]'üne kadar iyileş. (Bir kez çalışır)",
