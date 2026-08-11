@@ -13,6 +13,14 @@ Security.
 
 ## [Unreleased]
 
+### Changed
+
+- Nerfed Weathered Kit relic: it no longer heals 3 HP whenever you use a Potion
+- Nerfed Gilded Kit relic: it no longer heals 5 HP whenever you use a Potion
+- Nerfed Decant card: cost increased from 0 -> 1, and damage increased from 3 (5) -> 8 (11)
+- Nerfed Quench card: cost increased from 0 -> 1
+- Nerfed Precipitate card: cost is now 3 (2), and its upgrade no longer grants 1 additional Block
+
 ## [0.6.9] - 2026-08-11
 
 ### Fixed

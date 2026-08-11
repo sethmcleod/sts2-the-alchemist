@@ -21,8 +21,6 @@ public class GildedKit : AlchemistRelic
         if (potion.Owner != Owner) return;
         if (potion is FoulPotion && Owner.RunState.CurrentRoom is MerchantRoom) return;
         Flash();
-        await CreatureCmd.Heal(Owner.Creature, 5m);
-        // GainMaxHp heals for the amount it grants, so a potion restores 6 HP here, 1 of it permanent.
         await CreatureCmd.GainMaxHp(Owner.Creature, 1m);
     }
 

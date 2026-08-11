@@ -17,7 +17,7 @@ Citrinitas,Token,Attack,1 (0),Deal damage to ALL enemies equal to your Regen. Re
 Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison. Gambit: Gain 3 (4) Regen.
 Contagion,Rare,Power,2 (1),"Whenever you take Poison damage, apply that much Poison to ALL enemies."
 Corrode,Uncommon,Skill,2,Apply 6 Poison and 1 (2) Weak to ALL enemies. Reaction (Skill): Apply 2 additional Poison.
-Decant,Uncommon,Attack,0,Deal 3 (5) damage. Add a Distillate (+) into your Hand.
+Decant,Uncommon,Attack,1,Deal 8 (11) damage. Add a Distillate (+) into your Hand.
 Decoction,Rare,Skill,1 (0),Exhaust 1 card. Procure a random potion. Reaction (Enchanted): Infuse a card in your Hand.
 Deep Breath,Uncommon,Skill,0,Gain Block equal to Poison on everyone. Retain. Exhaust. (Doesn't Exhaust)
 Defend,Basic,Skill,1,Gain 5 (8) Block.
@@ -60,10 +60,10 @@ Overflow,Rare,Attack,2,Lose all Regen. Deal 3 (4) damage to ALL enemies for each
 Patient Strike,Uncommon,Attack,1,Retain. Ferment (0/3). Deal 6 damage. Deals 6 (9) additional damage for each turn fermented.
 Percolate,Common,Skill,1,"At the start of your next turn, draw 3 (4) additional cards."
 Poultice,Common,Skill,0,Exhaust 1 card. Gain 1 (2) Regen.
-Precipitate,Uncommon,Skill,2,"Gain 5 (6) Block twice. The next time you use a potion this turn, procure another of that type."
+Precipitate,Uncommon,Skill,3 (2),"Gain 5 Block twice. The next time you use a potion this turn, procure another of that type."
 Prime,Basic,Skill,1,Gain 4 (7) Block. Infuse a card in your Hand. Reaction (Attack): Infuse an additional card.
 Puncture,Common,Attack,1,Deal 8 (10) damage. Apply 1 (2) Vulnerable. Gambit: Apply 2 Weak.
-Quench,Uncommon,Skill,0,"Draw 1 (2) cards. Infuse a card in your Hand. If this card is Enchanted, Infuse an additional card."
+Quench,Uncommon,Skill,1,"Draw 1 (2) cards. Infuse a card in your Hand. If this card is Enchanted, Infuse an additional card."
 Quicklime,Common,Attack,1,Deal 7 (9) damage. Gain 5 (7) Block. Reaction (Skill): Gain 3 Block.
 Reagent,Basic,Attack,0,Deal 4 (6) damage. The next card you play this turn triggers its Reaction.
 Refine,Rare,Skill,0,Upgrade a card in your Hand. Infuse it 2 (3) times.
