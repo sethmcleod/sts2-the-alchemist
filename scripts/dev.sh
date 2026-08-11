@@ -317,10 +317,11 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
       cp -f "$src/$f" "$REPO/workshop/content/"
     done
     printf '%s\n' "$item" > "$REPO/workshop/mod_id.txt"
-    local banner; banner="$(target_get descriptionBanner)"
-    "${PY_CMD[@]}" - "$REPO/workshop/workshop.json" "v$new" "$notes" "$title" "$banner" <<'PYEOF'
+    local banner minb maxb
+    banner="$(target_get descriptionBanner)"; minb="$(target_get minBranch)"; maxb="$(target_get maxBranch)"
+    "${PY_CMD[@]}" - "$REPO/workshop/workshop.json" "v$new" "$notes" "$title" "$banner" "$minb" "$maxb" <<'PYEOF'
 import json, re, sys
-path, ver, notes_file, title, banner = sys.argv[1:6]
+path, ver, notes_file, title, banner, minb, maxb = sys.argv[1:8]
 with open(path, encoding="utf-8") as f: cfg = json.load(f)
 with open(notes_file, encoding="utf-8") as f: notes = f.read().strip()
 # Steam renders BBCode, not markdown, so a "### Changed" heading would ship as literal hashes.
@@ -335,6 +336,10 @@ cfg["changeNote"] = f"{ver}\n\n{notes}" if notes else ver
 if banner:
     body = re.sub(r"^\[quote\].*?\[/quote\]\s*", "", cfg.get("description", ""), count=1, flags=re.S)
     cfg["description"] = f"{banner}\n\n{body}"
+# Steam's supported game-version range. The game refuses a mod whose range does not cover the
+# branch being played, which is what stops the other branch's build being loaded at all.
+cfg["minBranch"] = minb
+cfg["maxBranch"] = maxb
 with open(path, "w", encoding="utf-8") as f:
     json.dump(cfg, f, indent=2, ensure_ascii=False); f.write("\n")
 PYEOF
@@ -396,8 +401,16 @@ do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
       bad "the working tree has changes other than the release edit: $(echo "$extra" | tr '\n' ' ')"; exit 1; }
     step "commit release: $tag"
     git -C "$REPO" add Alchemist.json CHANGELOG.md
-    [ -f "$REPO/workshop/workshop.json" ] && git -C "$REPO" add workshop/workshop.json
-    [ -f "$REPO/workshop/mod_id.txt" ] && git -C "$REPO" add workshop/mod_id.txt
+    # Stage a workshop file only if git already tracks it. mod_id.txt is deliberately untracked and
+    # gitignored (it differs per branch), and `git add` on an ignored path FAILS, which under set -e
+    # aborted this command after the release edit but before the tag. An if block also keeps a
+    # false test from taking the whole script down the way `[ -f … ] && …` did.
+    local f
+    for f in workshop/workshop.json workshop/mod_id.txt; do
+      if git -C "$REPO" ls-files --error-unmatch "$f" >/dev/null 2>&1; then
+        git -C "$REPO" add "$f"
+      fi
+    done
     git -C "$REPO" commit -q -m "release: $tag"
     ok "committed"
   fi

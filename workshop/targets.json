@@ -14,7 +14,12 @@
     "descriptionBanner is the [quote] block at the top of the Workshop description that says which",
     "game branch this item is for and links to the other one. The body below it is shared, so this",
     "is the only part of the description that differs. release rebuilds it from here every time,",
-    "stripping any existing banner first, which heals the wrong banner arriving through a merge."
+    "stripping any existing banner first, which heals the wrong banner arriving through a merge.",
+    "",
+    "minBranch/maxBranch are Steam's supported game-version range for the item, written by release.",
+    "The game reads them in ModManager.CheckSteamBranchSupport and refuses a mod whose range does not",
+    "cover the branch being played, showing MOD_ERROR.STEAM_BRANCH_UNSUPPORTED rather than loading it",
+    "and failing later. Valid names: public, public-beta, private-beta, dev-test. Empty means open."
   ],
   "beta": {
     "itemId": "3780726901",
@@ -22,7 +27,9 @@
     "tagSuffix": "-beta",
     "gameBranch": "public-beta",
     "prerelease": true,
-    "descriptionBanner": "[quote]This mod is for the beta version of the game. Here is the public version: https://steamcommunity.com/sharedfiles/filedetails/?id=3781688551[/quote]"
+    "descriptionBanner": "[quote]This mod is for the beta version of the game. Here is the public version: https://steamcommunity.com/sharedfiles/filedetails/?id=3781688551[/quote]",
+    "minBranch": "public-beta",
+    "maxBranch": ""
   },
   "main": {
     "itemId": "3781688551",
@@ -30,6 +37,8 @@
     "tagSuffix": "",
     "gameBranch": "public",
     "prerelease": false,
-    "descriptionBanner": "[quote]This mod is for the public version of the game. Here is the beta version: https://steamcommunity.com/sharedfiles/filedetails/?id=3780726901[/quote]"
+    "descriptionBanner": "[quote]This mod is for the public version of the game. Here is the beta version: https://steamcommunity.com/sharedfiles/filedetails/?id=3780726901[/quote]",
+    "minBranch": "public",
+    "maxBranch": "public"
   }
 }

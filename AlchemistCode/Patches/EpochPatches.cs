@@ -39,7 +39,10 @@ public static class EpochPatches
     private static void AwardPostRun(ProgressSaveManager mgr, EpochModel epoch, SerializablePlayer sp, SerializableRun sr) =>
         PostRun.Invoke(mgr, new object[] { epoch, sp, sr });
 
-    private static bool Enabled => AlchemistModConfig.EnableEpochs;
+    // Supported is the "does this build of the game have an epoch registry" half. Without it our
+    // epochs were never registered, so appending their ids would gate content behind epochs the
+    // Timeline can never show
+    private static bool Enabled => AlchemistModConfig.EnableEpochs && EpochRegistration.Supported;
 
     private static bool IsAlchemist(Player p) => p?.Character is AlchemistCharacter;
 
