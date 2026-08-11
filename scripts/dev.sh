@@ -317,9 +317,10 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
       cp -f "$src/$f" "$REPO/workshop/content/"
     done
     printf '%s\n' "$item" > "$REPO/workshop/mod_id.txt"
-    "${PY_CMD[@]}" - "$REPO/workshop/workshop.json" "v$new" "$notes" "$title" <<'PYEOF'
+    local banner; banner="$(target_get descriptionBanner)"
+    "${PY_CMD[@]}" - "$REPO/workshop/workshop.json" "v$new" "$notes" "$title" "$banner" <<'PYEOF'
 import json, re, sys
-path, ver, notes_file, title = sys.argv[1:5]
+path, ver, notes_file, title, banner = sys.argv[1:6]
 with open(path, encoding="utf-8") as f: cfg = json.load(f)
 with open(notes_file, encoding="utf-8") as f: notes = f.read().strip()
 # Steam renders BBCode, not markdown, so a "### Changed" heading would ship as literal hashes.
@@ -327,6 +328,13 @@ with open(notes_file, encoding="utf-8") as f: notes = f.read().strip()
 notes = re.sub(r"(?m)^#+[ \t]*", "", notes)
 cfg["title"] = title
 cfg["changeNote"] = f"{ver}\n\n{notes}" if notes else ver
+# The description body is shared by both items; only the [quote] banner at the top differs, and it
+# says which game branch this item is for. Rebuild it from targets.json every time rather than
+# trusting the file: a merge from beta carries beta's banner across, and this heals that silently.
+# The strip is what makes it idempotent, so repeated releases never stack banners.
+if banner:
+    body = re.sub(r"^\[quote\].*?\[/quote\]\s*", "", cfg.get("description", ""), count=1, flags=re.S)
+    cfg["description"] = f"{banner}\n\n{body}"
 with open(path, "w", encoding="utf-8") as f:
     json.dump(cfg, f, indent=2, ensure_ascii=False); f.write("\n")
 PYEOF

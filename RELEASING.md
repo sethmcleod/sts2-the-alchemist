@@ -158,6 +158,21 @@ If the merge conflicts, take beta's side for content and keep main's side for
 anything main fixed on its own. `workshop/targets.json` never conflicts, which is
 the whole reason it exists.
 
+Three files have a known resolution:
+
+| File | Resolution |
+| ---- | ---------- |
+| `AlchemistCode/Compat/GameCompat.cs` | **keep main's.** The method surface is identical on both sides; only the bodies differ. If beta added a method, copy that method across and write main's body for it. |
+| `AlchemistCode/Compat/SepsisPowerCompat.cs` | **keep main's**, for the same reason. |
+| `workshop/workshop.json` | take beta's. The `[quote]` banner at the top will be beta's, which is wrong for main, but the next `release promote` rebuilds it from `targets.json`, so it heals itself. |
+
+`workshop/mod_id.txt` is not tracked: it holds a different item id per branch, and
+`release` writes it from `targets.json` anyway. `--id` on the upload command is
+what actually decides the target, so the file is only a convenience. The first
+merge after it was untracked on `beta` reports a delete/modify conflict on `main`;
+resolve it by deleting the file (`git rm workshop/mod_id.txt`), and it never
+recurs.
+
 The `release` command (see `do_release` in `scripts/dev.sh`) does these steps:
 
 1. **Preflight**: the command makes these checks first:
