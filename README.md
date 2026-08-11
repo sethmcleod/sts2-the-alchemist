@@ -27,16 +27,6 @@ _(Disclaimer: This description was paid for by the Merchant.)_
 - 🎨 Hand-drawn artwork for all cards, relics, potions, and icons _(WIP)_
 - 🌍 Translated into all 15 languages the game supports
 
-## Languages
-
-Every card, relic, potion, keyword, and line of dialog is translated into all 15
-languages the game supports: English, Chinese (Simplified), Chinese
-(Traditional), Japanese, Korean, Russian, Polish, Turkish, Thai, German, French,
-Italian, Portuguese (Brazil), Spanish (Spain), and Spanish (Latin America).
-
-Keywords follow the base game's own wording, so Poison, Regen, Block and the rest
-read exactly as they do everywhere else in the game.
-
 ## Mechanics and Keywords
 
 - **Poison & Regen**: The Alchemist deliberately self-poisons, then converts
