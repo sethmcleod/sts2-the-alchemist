@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.6.8] - 2026-08-11
+
 ### Fixed
 
 - Fixed a stale Infuse reference at the end of combat that could stop Smith and other upgrades from working for the rest of a run
