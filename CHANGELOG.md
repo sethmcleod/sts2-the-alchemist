@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-08-11
+
 ### Added
 
 - Added Virulence card: "Whenever you gain Poison, deal that much damage to ALL enemies."
