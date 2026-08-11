@@ -13,6 +13,8 @@ Security.
 
 ## [Unreleased]
 
+## [0.6.6] - 2026-08-10
+
 ### Added
 
 - Added Echo Strike card: "Deal 6 (8) damage. If this card is Enchanted, deal it again."
