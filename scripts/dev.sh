@@ -386,8 +386,16 @@ do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
       bad "the working tree has changes other than the release edit: $(echo "$extra" | tr '\n' ' ')"; exit 1; }
     step "commit release: $tag"
     git -C "$REPO" add Alchemist.json CHANGELOG.md
-    [ -f "$REPO/workshop/workshop.json" ] && git -C "$REPO" add workshop/workshop.json
-    [ -f "$REPO/workshop/mod_id.txt" ] && git -C "$REPO" add workshop/mod_id.txt
+    # Stage a workshop file only if git already tracks it. mod_id.txt is deliberately untracked and
+    # gitignored (it differs per branch), and `git add` on an ignored path FAILS, which under set -e
+    # aborted this command after the release edit but before the tag. An if block also keeps a
+    # false test from taking the whole script down the way `[ -f … ] && …` did.
+    local f
+    for f in workshop/workshop.json workshop/mod_id.txt; do
+      if git -C "$REPO" ls-files --error-unmatch "$f" >/dev/null 2>&1; then
+        git -C "$REPO" add "$f"
+      fi
+    done
     git -C "$REPO" commit -q -m "release: $tag"
     ok "committed"
   fi
