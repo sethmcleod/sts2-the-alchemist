@@ -23,7 +23,6 @@ offset_left = -196.0
 offset_top = -267.0
 offset_right = 196.0
 offset_bottom = 252.0
-mouse_filter = 2
 
 [node name="ThoughtBubbleRight" type="Control" parent="ControlRoot"]
 unique_name_in_owner = true

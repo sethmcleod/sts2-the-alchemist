@@ -2,6 +2,7 @@ using System.Reflection;
 using Alchemist.AlchemistCode.Potions;
 using Godot;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.Localization;
@@ -34,8 +35,10 @@ public sealed class BrewRestSiteOption : RestSiteOption
 
     public override async Task<bool> OnSelect()
     {
-        var restSiteRoom = NRestSiteRoom.Instance;
-        if (restSiteRoom != null)
+        // OnSelect runs on EVERY client when any player brews (RestSiteSynchronizer replays remote
+        // choices), so the fade must only touch the brewing player's own screen. Other clients get
+        // no UI work here; OfferCustom below is a no-op for non-local players by design
+        if (LocalContext.IsMe(Owner) && NRestSiteRoom.Instance is { } restSiteRoom)
         {
             var choicesScreen = ChoicesScreenField.GetValue(restSiteRoom) as Control;
             if (choicesScreen != null)

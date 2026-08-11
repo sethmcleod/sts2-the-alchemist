@@ -28,6 +28,11 @@ Security.
 
 - Removed Zenith card
 
+### Fixed
+
+- Fixed the campfire options turning invisible for other players in Multiplayer after the Alchemist used a campfire action
+- Fixed Mend not being able to target the Alchemist in Multiplayer
+
 ## [0.6.5] - 2026-08-10
 
 ### Added
