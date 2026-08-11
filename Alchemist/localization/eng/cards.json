@@ -49,7 +49,7 @@
   "ALCHEMIST-DRAINING_STRIKE.title": "Draining Strike",
   "ALCHEMIST-DRIP_FEED.description": "At the start of your turn, gain {Regen:diff()} [gold]Regen[/gold].\n[gold]Reaction[/gold] (Skill): Gain 1 additional [gold]Regen[/gold].",
   "ALCHEMIST-DRIP_FEED.title": "Drip Feed",
-  "ALCHEMIST-ECHO_STRIKE.description": "Deal {Damage:diff()} damage.\nIf this card is [gold]Enchanted[/gold], deal it again.",
+  "ALCHEMIST-ECHO_STRIKE.description": "Deal {Damage:diff()} damage.\nIf this card is [gold]Enchanted[/gold], hits and additional time.",
   "ALCHEMIST-ECHO_STRIKE.title": "Echo Strike",
   "ALCHEMIST-EFFERVESCE.description": "Add {cards:diff()} [gold]Distillates[/gold] to another player's [gold]Hand[/gold].",
   "ALCHEMIST-EFFERVESCE.title": "Effervesce",

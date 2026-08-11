@@ -24,7 +24,7 @@ Defend,Basic,Skill,1,Gain 5 (8) Block.
 Distillate,Token,Skill,0,Gain 3 (5) Block. Gain 1 (2) Regen. Draw 1 card. Exhaust.
 Draining Strike,Uncommon,Attack,2,Deal 14 (18) damage. The enemy loses 6 Strength this turn. Reaction (Attack): Deal 5 (7) additional damage.
 Drip Feed,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Reaction (Skill): Gain 1 additional Regen."
-Echo Strike,Common,Attack,1,"Deal 6 (8) damage. If this card is Enchanted, deal it again."
+Echo Strike,Common,Attack,1,"Deal 6 (8) damage. If this card is Enchanted, hits an additional time."
 Effervesce,"Uncommon, Multiplayer",Skill,1,Add 2 (3) Distillates to another player's Hand.
 Elixir,Ancient,Power,3,"(Procure a random potion.) At the start of your turn, procure a random potion."
 Enrich,Uncommon,Skill,1,Infuse up to 2 cards in your Draw Pile. Draw 1 (2) cards.
