@@ -18,17 +18,27 @@ public static class EpochRegistration
 
     private const BindingFlags StaticNonPublic = BindingFlags.Static | BindingFlags.NonPublic;
 
-    private static readonly FieldInfo EpochById = Require(typeof(EpochModel), "_epochTypeDictionary");
-    private static readonly FieldInfo IdByType = Require(typeof(EpochModel), "_typeToIdDictionary");
-    private static readonly FieldInfo AllEpochs = Require(typeof(EpochModel), "_allEpochs");
-    private static readonly FieldInfo AllEpochIdsCache = Require(typeof(EpochModel), "_allEpochIds");
-    private static readonly FieldInfo StoryById = Require(typeof(StoryModel), "_storyTypeDictionary");
+    private static readonly FieldInfo? EpochById = Find(typeof(EpochModel), "_epochTypeDictionary");
+    private static readonly FieldInfo? IdByType = Find(typeof(EpochModel), "_typeToIdDictionary");
+    private static readonly FieldInfo? AllEpochs = Find(typeof(EpochModel), "_allEpochs");
+    private static readonly FieldInfo? AllEpochIdsCache = Find(typeof(EpochModel), "_allEpochIds");
+    private static readonly FieldInfo? StoryById = Find(typeof(StoryModel), "_storyTypeDictionary");
 
-    // Cached FieldInfo; throws loudly if a game update renames a field, rather than silently no-op'ing
-    private static FieldInfo Require(Type type, string name) =>
-        type.GetField(name, StaticNonPublic)
-        ?? throw new InvalidOperationException(
-            $"[Alchemist] Epoch registration: {type.Name}.{name} not found; base game changed, epochs disabled.");
+    // Nullable on purpose. This used to throw when a field was missing, but it ran inside a static
+    // field initializer, so the throw became a TypeInitializationException that POISONED the whole
+    // class: every later touch of AlchemistEpochTypes or SlotFor rethrew it, from the config screen
+    // to every epoch's Era getter. One absent field took the mod down with it. Now the lookup simply
+    // reports that the registry is missing, and the Timeline feature turns itself off.
+    private static FieldInfo? Find(Type type, string name) => type.GetField(name, StaticNonPublic);
+
+    /// <summary>
+    /// Whether this build of the game lets a mod add epochs at all. The game's default branch
+    /// builds its epoch list from a hardcoded array and has no <c>_allEpochs</c> to append to, so
+    /// custom epochs cannot work there; the public-beta branch has the mutable registry.
+    /// </summary>
+    public static bool Supported =>
+        EpochById != null && IdByType != null && AllEpochs != null && AllEpochIdsCache != null
+        && StoryById != null;
 
     private static bool _registered;
 
@@ -37,9 +47,18 @@ public static class EpochRegistration
         if (_registered) return;
         _registered = true;
 
-        var epochById = (Dictionary<string, Type>)EpochById.GetValue(null)!;
-        var idByType = (Dictionary<Type, string>)IdByType.GetValue(null)!;
-        var allEpochs = (List<Type>)AllEpochs.GetValue(null)!;
+        if (!Supported)
+        {
+            MainFile.Logger.Warn(
+                "[Epochs] This build of the game has no mod-writable epoch registry, so the Timeline "
+                + "feature is off. Every card, relic and potion is available instead of Timeline-gated. "
+                + "The rest of the mod is unaffected.");
+            return;
+        }
+
+        var epochById = (Dictionary<string, Type>)EpochById!.GetValue(null)!;
+        var idByType = (Dictionary<Type, string>)IdByType!.GetValue(null)!;
+        var allEpochs = (List<Type>)AllEpochs!.GetValue(null)!;
 
         foreach (var type in AlchemistEpochTypes)
         {
@@ -49,9 +68,9 @@ public static class EpochRegistration
             idByType[type] = epoch.Id;
             allEpochs.Add(type);
         }
-        AllEpochIdsCache.SetValue(null, null); // Bust the lazy cache so AllEpochIds rebuilds from _allEpochs
+        AllEpochIdsCache!.SetValue(null, null); // Bust the lazy cache so AllEpochIds rebuilds from _allEpochs
 
-        var storyById = (Dictionary<string, Type>)StoryById.GetValue(null)!;
+        var storyById = (Dictionary<string, Type>)StoryById!.GetValue(null)!;
         storyById[AlchemistStory.StoryKey] = typeof(AlchemistStory);
 
         MainFile.Logger.Info($"[Epochs] Registered {AlchemistEpochTypes.Length} epochs + story '{AlchemistStory.StoryKey}'.");
@@ -75,6 +94,9 @@ public static class EpochRegistration
 
     public static (EpochEra era, int pos) SlotFor(Type epochType)
     {
+        // Without the registry there is no timeline to place anything on, and this getter is reached
+        // from every epoch's Era property, so it must never throw
+        if (!Supported) return (EpochEra.Invitation7, 0);
         var slots = _slots ??= AssignSlots();
         return slots.TryGetValue(epochType, out var s) ? s : (EpochEra.Invitation7, 0);
     }
@@ -82,7 +104,7 @@ public static class EpochRegistration
     private static Dictionary<Type, (EpochEra, int)> AssignSlots()
     {
         var occupied = new HashSet<(EpochEra, int)>();
-        foreach (var type in (List<Type>)AllEpochs.GetValue(null)!)
+        foreach (var type in (List<Type>)AllEpochs!.GetValue(null)!)
         {
             if (typeof(AlchemistEpoch).IsAssignableFrom(type)) continue; // Skip ours (would recurse into SlotFor)
             try

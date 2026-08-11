@@ -67,6 +67,12 @@ public class AlchemistModConfig : SimpleModConfig
         var save = SaveManager.Instance;
         if (save == null) return;
 
+        if (!EpochRegistration.Supported)
+        {
+            Notify("This build of the game has no Timeline for mods, so there is nothing to reveal.");
+            return;
+        }
+
         foreach (var type in EpochRegistration.AlchemistEpochTypes)
             save.ObtainEpochOverride(EpochModel.GetId(type), EpochState.Revealed);
 
@@ -89,8 +95,9 @@ public class AlchemistModConfig : SimpleModConfig
         foreach (var relic in relics) save.MarkRelicAsSeen(relic);
         foreach (var potion in potions) save.MarkPotionAsSeen(potion);
 
-        foreach (var type in EpochRegistration.AlchemistEpochTypes)
-            save.ObtainEpochOverride(EpochModel.GetId(type), EpochState.Revealed);
+        if (EpochRegistration.Supported)
+            foreach (var type in EpochRegistration.AlchemistEpochTypes)
+                save.ObtainEpochOverride(EpochModel.GetId(type), EpochState.Revealed);
 
         save.SaveProgressFile();
         Notify($"Unlocked {cards.Count} cards, {relics.Count} relics, {potions.Count} potions, and all Epochs.");
@@ -121,6 +128,7 @@ public class AlchemistModConfig : SimpleModConfig
         var progress = SaveManager.Instance.Progress;
         var field = typeof(ProgressState).GetField("_epochs", BindingFlags.Instance | BindingFlags.NonPublic);
         if (field?.GetValue(progress) is not List<SerializableEpoch> epochs) return;
+        if (!EpochRegistration.Supported) return;
         var ids = EpochRegistration.AlchemistEpochTypes.Select(EpochModel.GetId).ToHashSet();
         epochs.RemoveAll(e => ids.Contains(e.Id));
     }

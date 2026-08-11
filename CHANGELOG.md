@@ -13,6 +13,10 @@ Security.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the mod failing to load on the public version of the game. The Timeline feature now turns itself off there instead, and every card, relic and potion is available from the start
+
 ## [0.6.8] - 2026-08-11
 
 ### Changed
