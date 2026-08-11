@@ -13,6 +13,19 @@ Security.
 
 ## [Unreleased]
 
+### Added
+
+- Added Echo Strike card: "Deal 6 (8) damage. If this card is Enchanted, deal it again."
+
+### Changed
+
+- Changed Nigredo into a Rare card and removed it from the starting deck. Reagent is now a starting card in its place
+- Reworked Prime into a Skill: "Gain 4 (7) Block. Infuse a card in your Hand. Reaction (Attack): Infuse an additional card."
+
+### Removed
+
+- Removed Zenith card
+
 ## [0.6.5] - 2026-08-10
 
 ### Added

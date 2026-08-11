@@ -5,11 +5,11 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace Alchemist.AlchemistCode.Cards.Basic;
+namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Nigredo : AlchemistCard
 {
-    public Nigredo() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
+    public Nigredo() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithPower<PoisonPower>(3, 1);
         WithKeyword(CardKeyword.Exhaust);

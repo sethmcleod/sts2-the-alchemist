@@ -135,6 +135,7 @@ COLORS = {
     # Siphon (one-off)
     "Siphon": ("#241a5e", "#2aa89b", "TR", "Unique"),
     # Enchanted payoffs: debuff attacks
+    "Echo Strike": ("#5b3fc4", "#d84a6f", "TR", "Enchanted payoffs: debuff attacks"),
     "Needle Point": ("#5b3fc4", "#aeb4bc", "TR", "Enchanted payoffs: debuff attacks"),
     "Vivisect": ("#5b3fc4", "#d94f6a", "TR", "Enchanted payoffs: debuff attacks"),
     # Enchanted payoffs: Plating
@@ -179,7 +180,6 @@ COLORS = {
     # Poison plus Regen
     "Mercurial Form": ("#0e6b54", "#8aa312", "R", "Poison plus Regen"),
     "Twin Serpents": ("#14805f", "#a6c214", "L", "Poison plus Regen"),
-    "Zenith": ("#0e6b54", "#9de626", "BR", "Poison plus Regen"),
     # Burst tempo
     "White Heat": ("#7a1c02", "#ffdf8a", "BR", "Burst tempo"),
     "Bitter Draught": ("#7a1c02", "#d98cc8", "BR", "Burst tempo"),

@@ -24,6 +24,7 @@ Defend,Basic,Skill,1,Gain 5 (8) Block.
 Distillate,Token,Skill,0,Gain 3 (5) Block. Gain 1 (2) Regen. Draw 1 card. Exhaust.
 Draining Strike,Uncommon,Attack,2,Deal 14 (18) damage. The enemy loses 6 Strength this turn. Reaction (Attack): Deal 5 (7) additional damage.
 Drip Feed,Rare,Power,2,"At the start of your turn, gain 1 (2) Regen. Reaction (Skill): Gain 1 additional Regen."
+Echo Strike,Common,Attack,1,"Deal 6 (8) damage. If this card is Enchanted, deal it again."
 Effervesce,"Uncommon, Multiplayer",Skill,1,Add 2 (3) Distillates to another player's Hand.
 Elixir,Ancient,Power,3,"(Procure a random potion.) At the start of your turn, procure a random potion."
 Enrich,Uncommon,Skill,1,Infuse up to 2 cards in your Draw Pile. Draw 1 (2) cards.
@@ -53,18 +54,18 @@ Melt Down,Uncommon,Skill,1,Choose a card in your Draw Pile to Transform into a D
 Mercurial Form,Rare,Power,3,"At the start of your turn, gain 1 (2) Strength. At the end of your turn, heal HP equal to half your Poison."
 Needle Point,Rare,Attack,0,"Innate. Deal 7 (10) damage. Apply 1 (2) Weak. If this card is Enchanted, apply 1 (2) Vulnerable."
 Neurotoxin,Rare,Attack,2,Deal 18 (24) damage. Gambit: Stun the enemy. Exhaust.
-Nigredo,Basic,Skill,1,Apply 3 (4) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
+Nigredo,Rare,Skill,1,Apply 3 (4) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
 Overdose,Common,Attack,1,Lose 4 HP. Deal 15 (20) damage. Reaction (Exhaust): Gain 2 (3) Regen.
 Overflow,Rare,Attack,2,Lose all Regen. Deal 3 (4) damage to ALL enemies for each Regen lost. Exhaust.
 Patient Strike,Uncommon,Attack,1,Retain. Ferment (0/3). Deal 6 damage. Deals 6 (9) additional damage for each turn fermented.
 Percolate,Common,Skill,1,"At the start of your next turn, draw 3 (4) additional cards."
 Poultice,Common,Skill,0,Exhaust 1 card. Gain 1 (2) Regen.
 Precipitate,Uncommon,Skill,2,"Gain 5 (6) Block twice. The next time you use a potion this turn, procure another of that type."
-Prime,Basic,Attack,1,Deal 6 (8) damage. Infuse a card in your Hand. Gambit: Gain 7 (10) Block.
+Prime,Basic,Skill,1,Gain 4 (7) Block. Infuse a card in your Hand. Reaction (Attack): Infuse an additional card.
 Puncture,Common,Attack,1,Deal 8 (10) damage. Apply 1 (2) Vulnerable. Gambit: Apply 2 Weak.
 Quench,Uncommon,Skill,0,"Draw 1 (2) cards. Infuse a card in your Hand. If this card is Enchanted, Infuse an additional card."
 Quicklime,Common,Attack,1,Deal 7 (9) damage. Gain 5 (7) Block. Reaction (Skill): Gain 3 Block.
-Reagent,Common,Attack,0,Deal 4 (6) damage. The next card you play this turn triggers its Reaction.
+Reagent,Basic,Attack,0,Deal 4 (6) damage. The next card you play this turn triggers its Reaction.
 Refine,Rare,Skill,0,Upgrade a card in your Hand. Infuse it 2 (3) times.
 Reflux,"Uncommon, Multiplayer",Skill,1,"Whenever another player applies a debuff this turn, apply 2 (3) Poison to that enemy."
 Resolve,Uncommon,Power,1,"While Gambit is active, you have 2 (3) additional Strength and Dexterity."
@@ -95,4 +96,3 @@ Waste Not,Common,Skill,1,Gain 2 Poison. Put a card from your Discard Pile into y
 White Heat,Rare,Skill,0,Lose 6 HP. Gain 2 Energy. Draw 2 (3) cards. Exhaust.
 Windfall,Uncommon,Power,1,"Whenever you Procure a Potion during combat, draw 1 (2) card(s) and gain 1 energy."
 Winnow,Uncommon,Skill,1,Gain 7 (10) Block. Choose 1 of 3 cards in your Draw Pile and add it into your Hand.
-Zenith,Rare,Skill,3 (2),Double the Poison and Regen on ALL enemies and yourself. Exhaust.

@@ -53,7 +53,8 @@ The Alchemist has been lovingly crafted to feel like a natural addition to the
 game. Every card, relic, and potion has been (and will continue to be) balanced
 against the existing game. The same care extends to flavor and lore: this
 character's story is woven directly into the game's existing timeline, and
-observant players will find more than a few threads connecting them to the world.
+observant players will find more than a few threads connecting them to the
+world.
 
 ---
 
@@ -63,6 +64,8 @@ observant players will find more than a few threads connecting them to the world
 > Steam Workshop is the best way to install and play, since it will
 > automatically prompt you to install BaseLib:
 > https://steamcommunity.com/sharedfiles/filedetails/?id=3780726901
+> Nexus Mods is also an option:
+> https://www.nexusmods.com/slaythespire2/mods/1439?tab=description
 
 **Manual install:**
 

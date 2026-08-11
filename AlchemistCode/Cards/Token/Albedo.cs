@@ -1,4 +1,4 @@
-using Alchemist.AlchemistCode.Cards.Basic;
+using Alchemist.AlchemistCode.Cards.Rare;
 using Alchemist.AlchemistCode.Commands;
 using BaseLib.Extensions;
 using BaseLib.Utils;

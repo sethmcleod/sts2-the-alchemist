@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://demfl8yhll4fd"
-path="res://.godot/imported/zenith.png-c0ca5aaf0350079fc8ebbfee3ccee86c.ctex"
+uid="uid://0vus7cop3u70"
+path="res://.godot/imported/echo_strike.png-62d6e9b1c39e652a67c43a419c010957.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/zenith.png"
-dest_files=["res://.godot/imported/zenith.png-c0ca5aaf0350079fc8ebbfee3ccee86c.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/echo_strike.png"
+dest_files=["res://.godot/imported/echo_strike.png-62d6e9b1c39e652a67c43a419c010957.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

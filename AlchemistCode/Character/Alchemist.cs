@@ -36,7 +36,7 @@ public class Alchemist : PlaceholderCharacterModel
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<DefendAlchemist>(),
-        ModelDb.Card<Nigredo>(),
+        ModelDb.Card<Reagent>(),
         ModelDb.Card<Prime>()
     ];
 
