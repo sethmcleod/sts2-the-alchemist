@@ -165,6 +165,16 @@ unreleased_body() {
   awk '/^## \[Unreleased\]/{grab=1; next} grab && /^## /{exit} grab{print}' "$CHANGELOG"
 }
 
+# The body of one version's section. A promote reads this instead of Unreleased, because the notes
+# it ships came over in the merge and were rolled under their version heading on beta.
+version_body() {  # <X.Y.Z>
+  awk -v ver="$1" '
+    $0 ~ "^## \\[" ver "\\]" {grab=1; next}
+    grab && /^## \[/ {exit}
+    grab {print}
+  ' "$CHANGELOG"
+}
+
 # Draft the changelog entries from the Conventional Commits since the last tag. This is read-only.
 do_changelog() {
   local last range subject
@@ -233,8 +243,13 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
     [ "$(printf '%s\n%s\n' "$cur" "$new" | sort -V | tail -1)" = "$new" ] || { bad "the new version $new is not larger than the current version $cur"; exit 1; }
   fi
 
-  # A release must have notes that a person wrote.
-  [ -n "$(unreleased_body | tr -d '[:space:]')" ] || { bad "## [Unreleased] in CHANGELOG.md is empty; add notes (scripts/dev.sh changelog makes a draft)"; exit 1; }
+  # A release must have notes that a person wrote. A promote ships the section the merge brought
+  # over, so it reads that version's own heading; an empty Unreleased is the correct state there.
+  if [ "$bump" = "promote" ]; then
+    [ -n "$(version_body "$new" | tr -d '[:space:]')" ] || { bad "## [$new] in CHANGELOG.md is empty or missing; the merge from beta should have brought its notes over"; exit 1; }
+  else
+    [ -n "$(unreleased_body | tr -d '[:space:]')" ] || { bad "## [Unreleased] in CHANGELOG.md is empty; add notes (scripts/dev.sh changelog makes a draft)"; exit 1; }
+  fi
 
   do_build
   step "lint"

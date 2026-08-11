@@ -166,7 +166,9 @@ The `release` command (see `do_release` in `scripts/dev.sh`) does these steps:
      target must name a Workshop item.
    - The installed game must be on the Steam branch that this git branch targets.
      This check is the one that stops you from shipping a build that cannot load.
-   - The `## [Unreleased]` section must not be empty.
+   - The notes must not be empty. A normal release reads `## [Unreleased]`; a `promote` reads
+     `## [X.Y.Z]` instead, because its notes came over in the merge already rolled under that
+     heading, which leaves `## [Unreleased]` correctly empty.
 
    The command then runs `dotnet build` and the `lint` check. Play the current
    build before a release; the command does not verify the mod against the live
