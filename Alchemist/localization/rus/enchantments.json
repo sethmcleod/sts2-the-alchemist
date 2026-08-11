@@ -1,0 +1,8 @@
+{
+  "ALCHEMIST-EXALTED.description": "При разыгрывании дает [blue]{Amount}[/blue] [gold]силы[/gold].",
+  "ALCHEMIST-EXALTED.title": "Экзальтация",
+  "ALCHEMIST-FUMING.description": "При разыгрывании добавляет в руку [blue]{Amount}[/blue] {Amount:plural(ru):[gold]«Едкий пар»[/gold]|[gold]«Едких пара»[/gold]|[gold]«Едких паров»[/gold]}.",
+  "ALCHEMIST-FUMING.title": "Дымка",
+  "ALCHEMIST-LACED.description": "Накладывает [blue]{Amount}[/blue] [gold]яда[/gold], когда эта карта наносит незаблокированный урон.",
+  "ALCHEMIST-LACED.title": "Отрава"
+}

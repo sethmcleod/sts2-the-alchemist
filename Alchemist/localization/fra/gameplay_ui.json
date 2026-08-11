@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "Vendre ({Gold} po)",
+  "POTION_SELL.merchant_greeting_1": "Ces potions vous intéressent... à vendre ?",
+  "POTION_SELL.merchant_greeting_2": "Oh oh, mon fournisseur préféré !",
+  "POTION_SELL.merchant_greeting_3": "Vous les brassez, je les écoule.",
+  "POTION_SELL.merchant_greeting_4": "Déjà de retour ? Je n'ai même pas écoulé la dernière fournée !",
+  "POTION_SELL.merchant_greeting_5": "Toujours un plaisir de vous voir !",
+  "POTION_SELL.merchant_sell_1": "Ouiii, voilà de la bonne came !",
+  "POTION_SELL.merchant_sell_2": "Ravi de faire affaire !",
+  "POTION_SELL.merchant_sell_3": "Ça m'a l'air de première qualité !",
+  "POTION_SELL.merchant_sell_4": "Ooh, ça pétille encore — parfait !",
+  "POTION_SELL.merchant_sell_5": "Mes habitués vont s'arracher ça.",
+  "POTION_SELL.merchant_sell_6": "Les brassins frais partent toujours vite !",
+  "POTION_SELL.sellable_tip.description": "Cette [gold]Potion[/gold] peut être vendue au [blue]Marchand[/blue] contre des [gold]Pièces d'or[/gold].",
+  "POTION_SELL.sellable_tip.title": "Convoitée"
+}

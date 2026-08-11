@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-BREW.bronzeDescription": "Вы варили зелья в [blue]3[/blue] или более лагерях.",
+  "ALCHEMIST-BREW.bronzeTitle": "Малая партия",
+  "ALCHEMIST-BREW.goldDescription": "Вы варили зелья в [blue]9[/blue] или более лагерях.",
+  "ALCHEMIST-BREW.goldTitle": "Мастер перегонки",
+  "ALCHEMIST-BREW.silverDescription": "Вы варили зелья в [blue]6[/blue] или более лагерях.",
+  "ALCHEMIST-BREW.silverTitle": "Полные запасы",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "Вы продали Торговцу [blue]3[/blue] или более зелий.",
+  "ALCHEMIST-POTION_SALE.bronzeTitle": "Разносчик",
+  "ALCHEMIST-POTION_SALE.goldDescription": "Вы продали Торговцу [blue]9[/blue] или более зелий.",
+  "ALCHEMIST-POTION_SALE.goldTitle": "Любимец Торговца",
+  "ALCHEMIST-POTION_SALE.silverDescription": "Вы продали Торговцу [blue]6[/blue] или более зелий.",
+  "ALCHEMIST-POTION_SALE.silverTitle": "Торговый партнер"
+}

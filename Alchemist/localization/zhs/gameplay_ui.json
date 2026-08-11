@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "出售（{Gold}金币）",
+  "POTION_SELL.merchant_greeting_1": "有兴趣卖掉那些药水吗？",
+  "POTION_SELL.merchant_greeting_2": "哦嗬，我最喜欢的供货商！",
+  "POTION_SELL.merchant_greeting_3": "你负责酿，我负责卖。",
+  "POTION_SELL.merchant_greeting_4": "这么快就回来了？上一批我还没卖完呢！",
+  "POTION_SELL.merchant_greeting_5": "见到你总是很高兴！",
+  "POTION_SELL.merchant_sell_1": "好东西，就是这个味儿！",
+  "POTION_SELL.merchant_sell_2": "合作愉快！",
+  "POTION_SELL.merchant_sell_3": "这些看着品质不错！",
+  "POTION_SELL.merchant_sell_4": "哦，还在冒泡呢，妙啊！",
+  "POTION_SELL.merchant_sell_5": "我的老主顾会抢着要的。",
+  "POTION_SELL.merchant_sell_6": "新酿的东西总是卖得快！",
+  "POTION_SELL.sellable_tip.description": "这瓶[gold]药水[/gold]可以卖给[blue]商人[/blue]换取[gold]金币[/gold]。",
+  "POTION_SELL.sellable_tip.title": "抢手"
+}

@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "판매 ({Gold}g)",
+  "POTION_SELL.merchant_greeting_1": "그 포션들, 파실 생각 있으세요?",
+  "POTION_SELL.merchant_greeting_2": "오호, 제 최고의 공급자님!",
+  "POTION_SELL.merchant_greeting_3": "당신이 빚으면, 제가 팔죠.",
+  "POTION_SELL.merchant_greeting_4": "벌써 오셨어요? 지난 물량도 아직 다 못 팔았는데!",
+  "POTION_SELL.merchant_greeting_5": "언제 봐도 반가워요!",
+  "POTION_SELL.merchant_sell_1": "그래애애, 바로 그거에요!",
+  "POTION_SELL.merchant_sell_2": "좋은 거래였어요!",
+  "POTION_SELL.merchant_sell_3": "품질이 아주 좋아 보이네요!",
+  "POTION_SELL.merchant_sell_4": "오, 아직도 보글거리네요 — 좋아요!",
+  "POTION_SELL.merchant_sell_5": "단골들이 금방 채 갈 거예요.",
+  "POTION_SELL.merchant_sell_6": "갓 빚은 물건은 언제나 잘 팔리죠!",
+  "POTION_SELL.sellable_tip.description": "이 [gold]포션[/gold]은 [blue]상인[/blue]에게 판매해 [gold]골드[/gold]를 얻을 수 있습니다.",
+  "POTION_SELL.sellable_tip.title": "인기 상품"
+}

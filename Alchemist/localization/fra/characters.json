@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]Contrôler les variables. Noter les résultats. Ajuster la dose[/green][/sine].",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "Il nous reste encore de la Tour à explorer !",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(Dépêchez-vous, je suis en train de quitter mon corps...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "Les cartes de l'Alchimiste peuvent apparaître dans les récompenses et dans la boutique.",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "Cartes de l'Alchimiste",
+  "ALCHEMIST-ALCHEMIST.description": "Un amphibien adepte des arts ésotériques.\nTransmute le poison qu'il s'inflige en puissance.",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "Pas encore. Les autres ont toujours besoin de moi.",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]Oh. Oui, ça en fait beaucoup, j'imagine. Bref—[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "son/sa/ses",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "iel",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "son/sa/ses",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "iel",
+  "ALCHEMIST-ALCHEMIST.title": "L'Alchimiste",
+  "ALCHEMIST-ALCHEMIST.titleObject": "de l'Alchimiste"
+}

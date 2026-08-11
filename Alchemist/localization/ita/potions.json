@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-ALKAHEST.description": "Se la usi in combattimento, [gold]infondi[/gold] fino a [blue]3[/blue] carte nella tua [gold]mano[/gold]. Altrimenti, potenzi una carta nel tuo [gold]mazzo[/gold].",
+  "ALCHEMIST-ALKAHEST.title": "Alkahest",
+  "ALCHEMIST-GOLD_LEAF.description": "Recuperi [green]1[/green] PV e ottieni [blue]1[/blue] di [gold]Blocco[/gold] per ogni [blue]15[/blue] unità d'[gold]oro[/gold] che possiedi.{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.title": "Foglia d'Oro",
+  "ALCHEMIST-MARSH_TONIC.description": "Ottieni [blue]3[/blue] di [gold]Rigenerazione[/gold] e [blue]3[/blue] di [gold]Veleno[/gold].",
+  "ALCHEMIST-MARSH_TONIC.title": "Tonico di Palude",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Giochi un turno extra dopo di questo.",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Sorso d'Argento Vivo",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Aggiungi [blue]2[/blue] carte [gold]Distillato[/gold] alla tua [gold]mano[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.title": "Estratto Raffinato",
+  "ALCHEMIST-SOPORIFIC.description": "Provochi [gold]Stordimento[/gold] su un nemico.",
+  "ALCHEMIST-SOPORIFIC.title": "Soporifero"
+}

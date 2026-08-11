@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]Kontroluj zmienne. Zapisuj wyniki. Koryguj dawkę[/green][/sine].",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "Przed nami jeszcze kawał Iglicy do zbadania!",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(Pospiesz się, wymykam się z własnego ciała...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "Karty Alchemika będą od teraz dostępne w sklepach oraz w łupach.",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "Karty Alchemika",
+  "ALCHEMIST-ALCHEMIST.description": "Płaz praktykujący sztuki ezoteryczne.\nTransmutuje własną truciznę w potęgę.",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "Jeszcze nie. Inni wciąż mnie potrzebują.",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]Och. Tak, to chyba całkiem sporo. W każdym razie...[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "jego",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "go",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "jego",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "on",
+  "ALCHEMIST-ALCHEMIST.title": "Alchemik",
+  "ALCHEMIST-ALCHEMIST.titleObject": "Alchemika"
+}

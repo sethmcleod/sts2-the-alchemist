@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]Controle as variáveis. Registre os resultados. Ajuste a dose[/green][/sine].",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "Ainda temos mais Pináculo para explorar!",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(Anda logo, estou escapando do meu corpo...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "Cartas do Alquimista aparecerão em recompensas e lojas.",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "Cartas do Alquimista",
+  "ALCHEMIST-ALCHEMIST.description": "Um anfíbio praticante de artes esotéricas.\nTransmuta veneno autoinfligido em poder.",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "Ainda não. Os outros ainda precisam de mim.",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]Ah. Sim, suponho que seja bastante. Enfim...[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "dele",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "ele",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "seu",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "ele",
+  "ALCHEMIST-ALCHEMIST.title": "O Alquimista",
+  "ALCHEMIST-ALCHEMIST.titleObject": "O Alquimista"
+}

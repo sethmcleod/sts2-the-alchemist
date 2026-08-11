@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "Vender ({Gold} oro)",
+  "POTION_SELL.merchant_greeting_1": "¿Te interesa vender esas pociones?",
+  "POTION_SELL.merchant_greeting_2": "¡Vaya, mi proveedor favorito!",
+  "POTION_SELL.merchant_greeting_3": "Tú las preparas, yo las coloco.",
+  "POTION_SELL.merchant_greeting_4": "¿De vuelta tan pronto? ¡Aún no vendí la tanda anterior!",
+  "POTION_SELL.merchant_greeting_5": "¡Siempre es un gusto verte!",
+  "POTION_SELL.merchant_sell_1": "¡Sí! Eso sí que me gusta.",
+  "POTION_SELL.merchant_sell_2": "¡Un placer hacer negocios!",
+  "POTION_SELL.merchant_sell_3": "¡Parecen de gran calidad!",
+  "POTION_SELL.merchant_sell_4": "Uy, todavía burbujea. ¡Qué bien!",
+  "POTION_SELL.merchant_sell_5": "Mi clientela habitual se llevará esto enseguida.",
+  "POTION_SELL.merchant_sell_6": "¡Las preparaciones frescas se venden solas!",
+  "POTION_SELL.sellable_tip.description": "Esta [gold]poción[/gold] se puede vender al [blue]Comerciante[/blue] por [gold]oro[/gold].",
+  "POTION_SELL.sellable_tip.title": "Codiciada"
+}

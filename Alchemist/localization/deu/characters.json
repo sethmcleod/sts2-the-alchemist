@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]Kontrolliere die Variablen. Notiere die Ergebnisse. Passe die Dosis an[/green][/sine].",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "Wir haben noch mehr vom Spire zu erkunden!",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(Beeil dich, ich entgleite meinem Körper...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "Alchemist-Karten tauchen nun in Belohnungen und Läden auf.",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "Alchemist-Karten",
+  "ALCHEMIST-ALCHEMIST.description": "Ein Amphibium, das esoterische Künste betreibt.\nTransmutiert selbst zugefügtes Gift in Macht.",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "Noch nicht. Die anderen brauchen mich noch.",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]Oh. Ja, das ist wohl eine ganze Menge. Wie dem auch sei—[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "sein",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "ihn",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "seins",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "er",
+  "ALCHEMIST-ALCHEMIST.title": "Der Alchemist",
+  "ALCHEMIST-ALCHEMIST.titleObject": "Den Alchemisten"
+}

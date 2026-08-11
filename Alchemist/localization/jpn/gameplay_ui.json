@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "売却（{Gold}ゴールド）",
+  "POTION_SELL.merchant_greeting_1": "そのポーション、売る気はあるかい？",
+  "POTION_SELL.merchant_greeting_2": "おおっと、お気に入りの仕入れ先じゃないか！",
+  "POTION_SELL.merchant_greeting_3": "君が作る、こっちが捌く。",
+  "POTION_SELL.merchant_greeting_4": "もう戻ってきたのかい？前の分もまだ捌けてないよ！",
+  "POTION_SELL.merchant_greeting_5": "君の顔を見られるのはいつだって嬉しいねぇ！",
+  "POTION_SELL.merchant_sell_1": "クゥ〜ッ、これこれ！",
+  "POTION_SELL.merchant_sell_2": "いい取引ができたよ！",
+  "POTION_SELL.merchant_sell_3": "こいつは上物のようだね！",
+  "POTION_SELL.merchant_sell_4": "おお、まだ泡立ってる。いいねぇ！",
+  "POTION_SELL.merchant_sell_5": "常連がすぐに買っていくだろうよ。",
+  "POTION_SELL.merchant_sell_6": "出来立ては、いつだって捌けが早いんだ！",
+  "POTION_SELL.sellable_tip.description": "この[gold]ポーション[/gold]1つを[blue]商人[/blue]に売却し、[gold]ゴールド[/gold]を得られる。",
+  "POTION_SELL.sellable_tip.title": "垂涎の的"
+}

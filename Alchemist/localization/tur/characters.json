@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]Değişkenleri kontrol et. Sonuçları kaydet. Dozu ayarla[/green][/sine].",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "Keşfedecek daha çok Spire var!",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(Acele edin, bedenimden kayıp gidiyorum...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "Simyacı kartları artık ödüllerde ve dükkânlarda görünecek.",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "Simyacı Kartları",
+  "ALCHEMIST-ALCHEMIST.description": "Ezoterik sanatlarla uğraşan bir amfibi.\nKendine verdiği zehri güce dönüştürür.",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "Henüz değil. Diğerlerinin bana hâlâ ihtiyacı var.",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]Ah. Evet, epey fazla sanırım. Her neyse...[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "onun",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "onu",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "onun",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "o",
+  "ALCHEMIST-ALCHEMIST.title": "Simyacı",
+  "ALCHEMIST-ALCHEMIST.titleObject": "Simyacı"
+}

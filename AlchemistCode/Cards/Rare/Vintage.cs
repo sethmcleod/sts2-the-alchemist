@@ -16,7 +16,7 @@ public class Vintage : AlchemistCard
         {
             if (FermentTurns <= 0) return "";
             var total = (int)DynamicVars["RegenPower"].BaseValue + (int)DynamicVars["Bonus"].BaseValue * FermentTurns;
-            return $" (Gains [green]{total}[/green] Regen.)";
+            return PreviewLine("ALCHEMIST-GAINS_REGEN_LINE", "Amount", total);
         }
     }
 

@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-ALKAHEST.description": "戦闘中に使用した場合、[gold]手札[/gold]のカード[blue]3[/blue]枚までに[gold]注入[/gold]する。それ以外の場合、[gold]デッキ[/gold]のカードを1枚アップグレードする。",
+  "ALCHEMIST-ALKAHEST.title": "アルカヘスト",
+  "ALCHEMIST-GOLD_LEAF.description": "所持している[gold]ゴールド[/gold][blue]15[/blue]ごとに、HPを[green]1[/green]回復し、[blue]1[/blue][gold]ブロック[/gold]を得る。{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.title": "金箔",
+  "ALCHEMIST-MARSH_TONIC.description": "[gold]再生[/gold][blue]3[/blue]と[gold]毒[/gold][blue]3[/blue]を得る。",
+  "ALCHEMIST-MARSH_TONIC.title": "沼の強壮薬",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "このターンの後、追加のターンを得る。",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "水銀の一服",
+  "ALCHEMIST-REFINED_EXTRACT.description": "[gold]蒸留液[/gold]を[blue]2[/blue]枚[gold]手札[/gold]に加える。",
+  "ALCHEMIST-REFINED_EXTRACT.title": "精製抽出液",
+  "ALCHEMIST-SOPORIFIC.description": "敵1体を[gold]スタン[/gold]させる。",
+  "ALCHEMIST-SOPORIFIC.title": "催眠薬"
+}

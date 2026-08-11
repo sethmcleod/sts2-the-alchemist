@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-ALKAHEST.description": "Si se usa en combate, [gold]Infunde[/gold] hasta [blue]3[/blue] cartas de tu [gold]Mano[/gold]. Si no, mejora una carta de tu [gold]Mazo[/gold].",
+  "ALCHEMIST-ALKAHEST.title": "Alcahest",
+  "ALCHEMIST-GOLD_LEAF.description": "Cúrate [green]1[/green] PV y gana [blue]1[/blue] de [gold]Bloqueo[/gold] por cada [blue]15[/blue] de [gold]Oro[/gold] que tengas.{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.title": "Pan de oro",
+  "ALCHEMIST-MARSH_TONIC.description": "Gana [blue]3[/blue] de [gold]Regeneración[/gold] y [blue]3[/blue] de [gold]Veneno[/gold].",
+  "ALCHEMIST-MARSH_TONIC.title": "Tónico del pantano",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Juega un turno adicional tras este.",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Trago de azogue",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Añade [blue]2[/blue] [gold]Destilados[/gold] a tu [gold]Mano[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.title": "Extracto refinado",
+  "ALCHEMIST-SOPORIFIC.description": "[gold]Aturde[/gold] a un enemigo.",
+  "ALCHEMIST-SOPORIFIC.title": "Soporífero"
+}

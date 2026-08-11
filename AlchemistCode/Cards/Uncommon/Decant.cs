@@ -8,9 +8,9 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Decant : AlchemistCard
 {
-    public Decant() : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Decant() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(3, 2);
+        WithDamage(8, 3);
         WithUpgradingCardTip<Distillate>();
     }
 

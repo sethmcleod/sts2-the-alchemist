@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-BREW.bronzeDescription": "在 [blue]3[/blue] 個或更多休息處進行過釀造。",
+  "ALCHEMIST-BREW.bronzeTitle": "小批次",
+  "ALCHEMIST-BREW.goldDescription": "在 [blue]9[/blue] 個或更多休息處進行過釀造。",
+  "ALCHEMIST-BREW.goldTitle": "蒸餾大師",
+  "ALCHEMIST-BREW.silverDescription": "在 [blue]6[/blue] 個或更多休息處進行過釀造。",
+  "ALCHEMIST-BREW.silverTitle": "存貨充足",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "向商人售出 [blue]3[/blue] 瓶或更多藥水。",
+  "ALCHEMIST-POTION_SALE.bronzeTitle": "小販",
+  "ALCHEMIST-POTION_SALE.goldDescription": "向商人售出 [blue]9[/blue] 瓶或更多藥水。",
+  "ALCHEMIST-POTION_SALE.goldTitle": "商人的最愛",
+  "ALCHEMIST-POTION_SALE.silverDescription": "向商人售出 [blue]6[/blue] 瓶或更多藥水。",
+  "ALCHEMIST-POTION_SALE.silverTitle": "貿易夥伴"
+}

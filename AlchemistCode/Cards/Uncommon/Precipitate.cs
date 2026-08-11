@@ -8,9 +8,10 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Precipitate : AlchemistCard
 {
-    public Precipitate() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Precipitate() : base(3, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithBlock(5, 1);
+        WithCostUpgradeBy(-1);
+        WithBlock(5, 0);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

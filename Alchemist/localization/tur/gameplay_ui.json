@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "Sat ({Gold} Altın)",
+  "POTION_SELL.merchant_greeting_1": "Şu iksirleri satmak ister misin?",
+  "POTION_SELL.merchant_greeting_2": "Oo, en sevdiğim tedarikçi!",
+  "POTION_SELL.merchant_greeting_3": "Sen demle, ben satarım.",
+  "POTION_SELL.merchant_greeting_4": "Bu kadar çabuk mu döndün? Daha son partiyi satamadım!",
+  "POTION_SELL.merchant_greeting_5": "Seni görmek her zaman güzel!",
+  "POTION_SELL.merchant_sell_1": "İşteee, aradığım da buydu!",
+  "POTION_SELL.merchant_sell_2": "Seninle iş yapmak bir zevk!",
+  "POTION_SELL.merchant_sell_3": "Bunlar kaliteli görünüyor!",
+  "POTION_SELL.merchant_sell_4": "Ooh, hâlâ köpürüyor... güzel!",
+  "POTION_SELL.merchant_sell_5": "Müdavimlerim bunları kapış kapış alır.",
+  "POTION_SELL.merchant_sell_6": "Taze demlemeler her zaman hızlı satılır!",
+  "POTION_SELL.sellable_tip.description": "Bu [gold]İksir[/gold], [gold]Altın[/gold] karşılığında [blue]Tüccar[/blue]'a satılabilir.",
+  "POTION_SELL.sellable_tip.title": "Gözde"
+}

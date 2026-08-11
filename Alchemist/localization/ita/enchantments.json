@@ -1,0 +1,8 @@
+{
+  "ALCHEMIST-EXALTED.description": "Quando questa carta viene giocata, ottieni [blue]{Amount}[/blue] di [gold]Forza[/gold].",
+  "ALCHEMIST-EXALTED.title": "Esaltata",
+  "ALCHEMIST-FUMING.description": "Quando questa carta viene giocata, aggiungi [blue]{Amount}[/blue] {Amount:plural:carta [gold]Vapore Mefitico[/gold]|carte [gold]Vapore Mefitico[/gold]} alla tua [gold]mano[/gold].",
+  "ALCHEMIST-FUMING.title": "Fumante",
+  "ALCHEMIST-LACED.description": "Ogni volta che questa carta infligge danno non bloccato, applichi [blue]{Amount}[/blue] di [gold]Veleno[/gold].",
+  "ALCHEMIST-LACED.title": "Intrisa"
+}

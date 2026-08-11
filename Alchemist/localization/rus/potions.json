@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-ALKAHEST.description": "При использовании в бою [gold]пропитывает[/gold] до [blue]3[/blue] карт в [gold]руке[/gold]. Иначе улучшает карту в [gold]колоде[/gold].",
+  "ALCHEMIST-ALKAHEST.title": "Алкагест",
+  "ALCHEMIST-GOLD_LEAF.description": "Восполняет [green]1[/green] ОЗ и дает [blue]1[/blue] [gold]защиты[/gold] за каждые [blue]15[/blue] [gold]золота[/gold].{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.title": "Сусальное золото",
+  "ALCHEMIST-MARSH_TONIC.description": "Дает [blue]3[/blue] [gold]регенерации[/gold] и [blue]3[/blue] [gold]яда[/gold].",
+  "ALCHEMIST-MARSH_TONIC.title": "Болотный тоник",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Дает дополнительный ход.",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Ртутный настой",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Добавляет в [gold]руку[/gold] [blue]2[/blue] [gold]«Дистиллята»[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.title": "Очищенный экстракт",
+  "ALCHEMIST-SOPORIFIC.description": "[gold]Оглушает[/gold] врага.",
+  "ALCHEMIST-SOPORIFIC.title": "Снотворное"
+}

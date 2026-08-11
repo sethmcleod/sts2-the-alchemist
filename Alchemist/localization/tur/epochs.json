@@ -1,0 +1,31 @@
+{
+  "STORY_ALCHEMIST": "Simyacı",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.title": "Kalsinasyon",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.description": "Merkez'in en iyi [green]Eczacısı[/green], [gold]On İki[/gold] kâşifle birlikte yola çıktı; artık hepsi zamana karıştı.\nDükkânı şimdi [purple]çocukları[/purple] işletiyor. Karıştırarak. Dozlayarak. Ebeveyninin yarım kalmış [gold]güncesini[/gold] mum ışığında okuyarak; neden hiçbirinin dönmediğini anlamak için çırpınarak.\nBir sabah kapıya bir not bırakır: \"[sine]Saha çalışması nedeniyle kapalıyız...\"[/sine]\n[gold]Spire[/gold]'ın kapıları bir kişiyi daha içeri alır.",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.unlockInfo": "{IsRevealed:|Bu Çağları ortaya çıkarmak için }[purple]Simyacı[/purple] ile bir oyun {IsRevealed:oynadın|oyna}.",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.unlockText": "[purple]Simyacı[/purple], oynanabilir bir karakter olarak açıldı.",
+
+  "ALCHEMIST-ALCHEMIST2_EPOCH.title": "Çözünme",
+  "ALCHEMIST-ALCHEMIST2_EPOCH.description": "Üç kat yukarıda, köşeye sıkışmış ve ölmek üzereyken, [purple]Kurbağa[/purple]'nın kendi [green]zehri[/green] damarlarını doldurur... ve [sine]dönüşüme uğrar[/sine]. Sıcaklık. Dinçlik. Kapanan yaralar.\nGeceyi bir harabenin zemininde [red]gülerek[/red] atlatır; [jitter]titreyen ellerle[/jitter] her şeyi yazarak.\nYeni bir [gold]güncenin[/gold] ilk sayfası. Bu sefer kendisinin.",
+  "ALCHEMIST-ALCHEMIST2_EPOCH.unlockInfo": "{IsRevealed:|Bu Çağ'ı ortaya çıkarmak için }[purple]Simyacı[/purple] ile [blue]1.[/blue] [gold]Sahne[/gold]'yi {IsRevealed:tamamladın|tamamla}.",
+
+  "ALCHEMIST-ALCHEMIST3_EPOCH.title": "Ayrıştırma",
+  "ALCHEMIST-ALCHEMIST3_EPOCH.description": "\"Bunları [sine]sen mi demliyorsun[/sine]? [sine]Burada mı[/sine]?\"\nYıllardır ilk kez satın almak isteyen taraf [blue]Tüccar[/blue] olur.\nHâlâ alevden sıcak bir [green]tentür[/green], avucuna tutuşturulur.\nAnlaşma oracıkta yapılır: [purple]Kurbağa[/purple] demler, [blue]Tüccar[/blue] satın alır.",
+  "ALCHEMIST-ALCHEMIST3_EPOCH.unlockInfo": "{IsRevealed:|Bu Çağ'ı ortaya çıkarmak için }[purple]Simyacı[/purple] ile [blue]2.[/blue] [gold]Sahne[/gold]'yi {IsRevealed:tamamladın|tamamla}.",
+
+  "ALCHEMIST-ALCHEMIST4_EPOCH.title": "Birleşim",
+  "ALCHEMIST-ALCHEMIST4_EPOCH.description": "\"Bunu yukarılarda buldum. Birine ait olmalı diye düşündüm.\" [orange]Darv[/orange], yıpranmış bir [gold]günce[/gold] uzatır.\nİlk sayfalardaki el yazısı [pink]ebeveyninin[/pink]. Sonrakiler değil. Tanıdık olmayan bir mürekkeple dolu sayfalar, [gold]Spire[/gold]'ın yukarılarındaki ipuçlarını işaret eder.\n[purple]Kurbağa[/purple], koleksiyoncunun bu hazineden neden vazgeçtiğini sormaz. [orange]Darv[/orange] da açıklamaz.",
+  "ALCHEMIST-ALCHEMIST4_EPOCH.unlockInfo": "{IsRevealed:|Bu Çağ'ı ortaya çıkarmak için }[purple]Simyacı[/purple] ile [blue]3.[/blue] [gold]Sahne[/gold]'yi {IsRevealed:tamamladın|tamamla}.",
+
+  "ALCHEMIST-ALCHEMIST5_EPOCH.title": "Mayalanma",
+  "ALCHEMIST-ALCHEMIST5_EPOCH.description": "Işık saçan [green]mantarlarla[/green] dolu bir galeride dokuz gün mahsur.\nKimileri [jitter]panik yapardı[/jitter]. [purple]Kurbağa[/purple] [sine]demler[/sine].\nBazı karışımlar sabırlı eli [gold]ödüllendirir[/gold]. Bazılarıysa tereddüdü [red]cezalandırır[/red].\nAğzına kadar dolu bir heybe ve ona ne zaman uzanmaması gerektiğini bilecek [blue]sabırla[/blue] dışarı çıkar.",
+  "ALCHEMIST-ALCHEMIST5_EPOCH.unlockInfo": "{IsRevealed:|Bu Çağ'ı ortaya çıkarmak için }[purple]Simyacı[/purple] ile [blue]15[/blue] [purple]Elit[/purple] {IsRevealed:öldürdün|öldür}.",
+
+  "ALCHEMIST-ALCHEMIST6_EPOCH.title": "Damıtma",
+  "ALCHEMIST-ALCHEMIST6_EPOCH.description": "Daha da yukarıda: [jitter]soğuk[/jitter] bir kamp yeri. Taşa [pink]tanıdık bir el yazısıyla[/pink] kazınmış formüller.\nKenar boşluğunda son bir not. [gold]Eser[/gold], hiçbir zaman [gold]altınla[/gold] ilgili değildi.\nZıtların birleşmesidir o. [blue]Benliğin[/blue] aşkınlığı.\n[purple]Kurbağa[/purple] uzun bir süre bununla baş başa oturur. Sonra [sine]tırmanır.[/sine]",
+  "ALCHEMIST-ALCHEMIST6_EPOCH.unlockInfo": "{IsRevealed:|Bu Çağ'ı ortaya çıkarmak için }[purple]Simyacı[/purple] ile [blue]15[/blue] [red]Boss[/red] {IsRevealed:öldürdün|öldür}.",
+
+  "ALCHEMIST-ALCHEMIST7_EPOCH.title": "Pıhtılaşma",
+  "ALCHEMIST-ALCHEMIST7_EPOCH.description": "Son kat. Son kapı.\nBir [pink]ebeveyn[/pink], [gold]Eser[/gold]'i tamamlamak için buraya tırmandı ve sonunu asla yazmadı.\nBelki de yazılamayacağı içindi... çünkü son dönüşüm kaydettiğin değil, [blue][sine]hâline geldiğin[/sine][/blue] bir şeydir.\n[purple]Kurbağa[/purple] ellerini sabitler, derin bir nefes alır ve içeri adım atar.",
+  "ALCHEMIST-ALCHEMIST7_EPOCH.unlockInfo": "{IsRevealed:|Bu Çağ'ı ortaya çıkarmak için }[purple]Simyacı[/purple] ile [red]Yükseliş[/red] [blue]1[/blue]'i {IsRevealed:tamamladın|tamamla}."
+}

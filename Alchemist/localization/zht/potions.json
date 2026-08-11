@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-ALKAHEST.description": "若在戰鬥中使用，[gold]浸潤[/gold]你[gold]手牌[/gold]中最多 [blue]3[/blue] 張牌。否則，升級你[gold]牌組[/gold]中的一張牌。",
+  "ALCHEMIST-ALKAHEST.title": "萬能溶劑",
+  "ALCHEMIST-GOLD_LEAF.description": "你每擁有 [blue]15[/blue] 枚[gold]金幣[/gold]，就恢復 [green]1[/green] 點生命並獲得 [blue]1[/blue] 點[gold]格擋[/gold]。{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.title": "金箔",
+  "ALCHEMIST-MARSH_TONIC.description": "獲得 [blue]3[/blue] 層[gold]再生[/gold]和 [blue]3[/blue] 層[gold]中毒[/gold]。",
+  "ALCHEMIST-MARSH_TONIC.title": "沼澤補藥",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "此回合結束後，再進行一個回合。",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "水銀藥飲",
+  "ALCHEMIST-REFINED_EXTRACT.description": "將 [blue]2[/blue] 張[gold]蒸餾液[/gold]加入你的[gold]手牌[/gold]。",
+  "ALCHEMIST-REFINED_EXTRACT.title": "精煉萃取液",
+  "ALCHEMIST-SOPORIFIC.description": "[gold]擊暈[/gold]一名敵人。",
+  "ALCHEMIST-SOPORIFIC.title": "安眠藥劑"
+}

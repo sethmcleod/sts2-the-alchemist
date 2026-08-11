@@ -1,0 +1,8 @@
+{
+  "ALCHEMIST-EXALTED.description": "Cuando se juega esta carta, ganas [blue]{Amount}[/blue] de [gold]Fuerza[/gold].",
+  "ALCHEMIST-EXALTED.title": "Exaltación",
+  "ALCHEMIST-FUMING.description": "Cuando se juega esta carta, añade [blue]{Amount}[/blue] {Amount:plural:[gold]Vapor nauseabundo[/gold]|[gold]Vapores nauseabundos[/gold]} a tu [gold]Mano[/gold].",
+  "ALCHEMIST-FUMING.title": "Efluvio",
+  "ALCHEMIST-LACED.description": "Cuando esta carta inflige daño no bloqueado, aplica [blue]{Amount}[/blue] de [gold]Veneno[/gold].",
+  "ALCHEMIST-LACED.title": "Ponzoña"
+}

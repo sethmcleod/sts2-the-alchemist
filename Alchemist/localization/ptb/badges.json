@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-BREW.bronzeDescription": "Preparou poções em [blue]3[/blue] ou mais Locais de Descanso.",
+  "ALCHEMIST-BREW.bronzeTitle": "Pequeno Lote",
+  "ALCHEMIST-BREW.goldDescription": "Preparou poções em [blue]9[/blue] ou mais Locais de Descanso.",
+  "ALCHEMIST-BREW.goldTitle": "Mestre Destilador",
+  "ALCHEMIST-BREW.silverDescription": "Preparou poções em [blue]6[/blue] ou mais Locais de Descanso.",
+  "ALCHEMIST-BREW.silverTitle": "Bem Abastecido",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "Vendeu [blue]3[/blue] ou mais Poções ao Mercador.",
+  "ALCHEMIST-POTION_SALE.bronzeTitle": "Mascate",
+  "ALCHEMIST-POTION_SALE.goldDescription": "Vendeu [blue]9[/blue] ou mais Poções ao Mercador.",
+  "ALCHEMIST-POTION_SALE.goldTitle": "Favorito do Mercador",
+  "ALCHEMIST-POTION_SALE.silverDescription": "Vendeu [blue]6[/blue] ou mais Poções ao Mercador.",
+  "ALCHEMIST-POTION_SALE.silverTitle": "Parceiro Comercial"
+}

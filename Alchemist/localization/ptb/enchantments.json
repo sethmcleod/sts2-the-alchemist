@@ -1,0 +1,8 @@
+{
+  "ALCHEMIST-EXALTED.description": "Quando esta carta é jogada, receba [blue]{Amount}[/blue] de [gold]Força[/gold].",
+  "ALCHEMIST-EXALTED.title": "Exaltada",
+  "ALCHEMIST-FUMING.description": "Quando esta carta é jogada, adicione [blue]{Amount}[/blue] {Amount:plural:[gold]Vapor Nefasto[/gold]|[gold]Vapores Nefastos[/gold]} na sua [gold]Mão[/gold].",
+  "ALCHEMIST-FUMING.title": "Fumegante",
+  "ALCHEMIST-LACED.description": "Sempre que esta carta causar dano não bloqueado, aplique [blue]{Amount}[/blue] de [gold]Veneno[/gold].",
+  "ALCHEMIST-LACED.title": "Impregnada"
+}

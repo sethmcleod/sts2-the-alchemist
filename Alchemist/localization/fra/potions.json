@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-ALKAHEST.description": "Si utilisée en combat, [gold]Infusez[/gold] jusqu'à [blue]3[/blue] cartes de votre [gold]Main[/gold]. Sinon, améliorez une carte de votre [gold]Deck[/gold].",
+  "ALCHEMIST-ALKAHEST.title": "Alcahest",
+  "ALCHEMIST-GOLD_LEAF.description": "Récupérez [green]1[/green] PV et gagnez [blue]1[/blue] d'[gold]Armure[/gold] pour chaque tranche de [blue]15[/blue] [gold]Pièces d'or[/gold] en votre possession.{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.title": "Feuille d'or",
+  "ALCHEMIST-MARSH_TONIC.description": "Gagnez [blue]3[/blue] de [gold]Régénération[/gold] et [blue]3[/blue] de [gold]Poison[/gold].",
+  "ALCHEMIST-MARSH_TONIC.title": "Tonique des marais",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Jouez un tour supplémentaire après celui-ci.",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Breuvage de vif-argent",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Ajoutez [blue]2[/blue] [gold]Distillats[/gold] à votre [gold]Main[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.title": "Extrait raffiné",
+  "ALCHEMIST-SOPORIFIC.description": "[gold]Étourdissez[/gold] un ennemi.",
+  "ALCHEMIST-SOPORIFIC.title": "Soporifique"
+}

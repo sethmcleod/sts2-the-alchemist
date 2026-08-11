@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]Controlla le variabili. Registra i risultati. Regola il dosaggio[/green][/sine].",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "C'è ancora tanta Guglia da esplorare!",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(Sbrigatevi, mi sto separando dal mio corpo...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "Le carte dell'Alchimista compariranno ora tra le ricompense e nei negozi.",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "Carte dell'Alchimista",
+  "ALCHEMIST-ALCHEMIST.description": "Un anfibio che pratica arti esoteriche.\nTrasmuta il veleno autoinflitto in potere.",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "Non ancora. Gli altri hanno ancora bisogno di me.",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]Oh. Sì, direi che è parecchio. Comunque...[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "suo/sua/suoi/sue",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "lo",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "il suo/la sua/i suoi/le sue",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "lui",
+  "ALCHEMIST-ALCHEMIST.title": "Alchimista",
+  "ALCHEMIST-ALCHEMIST.titleObject": "Alchimista"
+}

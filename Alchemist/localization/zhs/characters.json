@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]控制变量。记录结果。调整剂量[/green][/sine]。",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "高塔还有更多地方等着我们探索呢！",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "（快一点，我正从自己的身体里溜走……）",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "炼金术士的卡牌现在会出现在奖励和商店中。",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "炼金术士卡牌",
+  "ALCHEMIST-ALCHEMIST.description": "一位钻研神秘技艺的两栖生物。\n将自身承受的毒嬗变为力量。",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "还不行。其他人还需要我。",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]哦。是啊，这确实不算少。总之——[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "他的",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "他",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "他的",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "他",
+  "ALCHEMIST-ALCHEMIST.title": "炼金术士",
+  "ALCHEMIST-ALCHEMIST.titleObject": "炼金术士"
+}

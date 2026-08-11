@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]控制變因。記錄結果。調整劑量[/green][/sine]。",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "尖塔還有得探索呢！",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "（快一點，我正從自己的身體裡流失……）",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "鍊金術士的卡牌現在會出現在獎勵與商店中。",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "鍊金術士卡牌",
+  "ALCHEMIST-ALCHEMIST.description": "一名鑽研祕術的兩棲生物。\n將自身承受的毒素嬗變為力量。",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "還不行。其他人還需要我。",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]喔。是啊，這確實不少。總之——[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "牠的",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "牠",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "牠的",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "牠",
+  "ALCHEMIST-ALCHEMIST.title": "鍊金術士",
+  "ALCHEMIST-ALCHEMIST.titleObject": "鍊金術士"
+}
