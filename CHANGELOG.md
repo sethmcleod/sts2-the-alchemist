@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.7.3] - 2026-08-12
+
 ### Changed
 
 - Reworked the Reaction (Exhaust) keyword: it now triggers if any card Exhausted this turn, instead of only the card you played directly before this one
