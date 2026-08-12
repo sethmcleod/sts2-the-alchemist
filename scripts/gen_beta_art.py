@@ -209,11 +209,11 @@ COLORS = {
     "Percolate": ("#0e2a45", "#7fd4c1", "BR", "Unique"),
     "Inoculate": ("#12384f", "#8fd0e8", "BR", "Unique"),
     # Strike (Basic)
-    "Strike": ("#180209", "#942d2d", "BR", "Unique"),
+    "Strike": ("#180209", "#942d2d", "TR", "Unique"),
     # Defend (Basic)
-    "Defend": ("#0f2a43", "#2b6ea8", "TR", "Unique"),
+    "Defend": ("#0f2a43", "#2b6ea8", "BR", "Unique"),
     # Spike (Basic): the starter dose, anchored on the Poison-attack red
-    "Spike": ("#650101", "#4fbf3a", "TR", "Unique"),
+    "Spike": ("#650101", "#c05fd8", "TR", "Unique"),
     # Flask (Basic): the starter brew, anchored on the potion teal
     "Flask": ("#045062", "#d8b23a", "BR", "Unique"),
     # Nigredo (token)
