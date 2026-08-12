@@ -15,6 +15,9 @@ mod).
 
 ### Changed
 
+- Removed Regen from Cauterize, Congeal, Distillate and Amalgam
+- Reworked Lash Out card: it no longer gains Regen, and its damage decreased from 6 (8) -> 5 (7) for each hit
+
 - Nerfed Laced enchantment: the card now also gains as much Poison as it applies.
 - Nerfed Infuse keyword: Attacks now gain 1 Laced, decreased from 2
 - Changed Reagent into a Common card

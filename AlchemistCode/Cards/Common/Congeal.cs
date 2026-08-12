@@ -8,21 +8,15 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Congeal : AlchemistCard
 {
-    protected override bool IsGambitCard => true;
-
     public Congeal() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithCalculatedBlock(6, 1, static (card, _) =>
             card.Owner.Creature.GetPowerAmount<PoisonPower>(), ValueProp.Move, 3, 0);
-        WithPower<RegenPower>(2, 1);
         WithTip(typeof(PoisonPower));
-        WithTip(typeof(RegenPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        if (IsReduced)
-            await CommonActions.ApplySelf<RegenPower>(choiceContext, this);
     }
 }

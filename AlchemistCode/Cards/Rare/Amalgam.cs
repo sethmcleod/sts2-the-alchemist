@@ -16,14 +16,11 @@ public class Amalgam : AlchemistCard
     {
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
-        WithTip(typeof(RegenPower));
     }
 
-    // The two pools this fuses. Both are spent, so the preview is the damage per hit
+    // The pool this spends, so the preview is the damage per hit
     private int Fuel =>
-        IsMutable && CombatState != null
-            ? Owner.Creature.GetPowerAmount<PoisonPower>() + Owner.Creature.GetPowerAmount<RegenPower>()
-            : 0;
+        IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<PoisonPower>() : 0;
 
     protected override bool ConditionalGlow => Fuel > 0;
 
@@ -39,7 +36,6 @@ public class Amalgam : AlchemistCard
         var damage = Fuel;
         if (damage <= 0) return;
         await PowerCmd.Remove<PoisonPower>(Owner.Creature);
-        await PowerCmd.Remove<RegenPower>(Owner.Creature);
         var hits = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0);
         if (hits <= 0) return;
         await DamageCmd.Attack(damage)
