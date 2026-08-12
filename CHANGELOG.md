@@ -7,6 +7,17 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Reworked the Reaction (Exhaust) keyword: it now triggers if any card Exhausted this turn, instead of only the card you played directly before this one
+- Buffed Infuse keyword: Attacks now gain 2 Laced, increased from 1
+- Changed Unstable Compound card: it now has Ethereal instead of Exhaust
+- Change color of the word Merchant to be gold outside of epoch descriptions
+
+### Fixed
+
+- Fixed the Alchemist not always being targetable by the Mend rest site option in Multiplayer
+
 ## [0.7.2] - 2026-08-11
 
 ### Added
@@ -18,9 +29,6 @@ mod).
 - Changed Sinter into a Common card
 - Changed Patient Strike into an Uncommon card
 - Changed Carapace into an Uncommon card. Retain cards no longer appear in the Common pool
-- Reworked the Reaction (Exhaust) keyword: it now triggers if any card Exhausted this turn, instead of only the card you played directly before this one
-- Buffed Infuse keyword: Attacks now gain 2 Laced, increased from 1
-- Changed Unstable Compound card: it now has Ethereal instead of Exhaust
 
 ### Removed
 
@@ -29,7 +37,6 @@ mod).
 ### Fixed
 
 - Fixed Eureka+ transforming a card into Distillate instead of Distillate+
-- Fixed the Alchemist not always being targetable by the Mend rest site option in Multiplayer
 
 ## [0.7.1] - 2026-08-11
 
