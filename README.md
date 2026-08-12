@@ -18,7 +18,7 @@ _(Disclaimer: This description was paid for by the Merchant.)_
 ## Content
 
 - 🐸 A new character meticulously designed to fit in with the rest of the game
-- ✨ 97 new cards, including 4 multiplayer cards and 2 full-art Ancient rewards
+- ✨ 96 new cards, including 4 multiplayer cards and 2 full-art Ancient rewards
 - 💎 9 new relics
 - 🧪 6 new potions
 - 🪄 3 new enchantments
