@@ -14,9 +14,14 @@ public class FightingSpirits : AlchemistCard
         WithDamage(10, 4);
     }
 
-    // A null CombatState is the deck view or the compendium, where the count is 0
+    // A null CombatState is the deck view or the compendium, where the count is 0. The Actor filter
+    // keeps this to the owner's own potions: combat history is shared, so in multiplayer an ally
+    // drinking would otherwise raise the hit count
     private int PotionsUsedThisCombat =>
-        CombatState == null ? 0 : CombatManager.Instance.History.Entries.OfType<PotionUsedEntry>().Count();
+        CombatState == null
+            ? 0
+            : CombatManager.Instance.History.Entries.OfType<PotionUsedEntry>()
+                .Count(e => e.Actor == Owner.Creature);
 
     protected override bool ConditionalGlow => PotionsUsedThisCombat > 0;
 

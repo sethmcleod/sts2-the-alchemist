@@ -53,6 +53,10 @@ mod).
 - Removed Inversion card
 - Removed Nigredo, and the Albedo, Citrinitas and Rubedo tokens
 
+### Fixed
+
+- Fixed Fighting Spirits counting Potions used by other players in Multiplayer, not only your own
+
 ## [0.7.3] - 2026-08-12
 
 ### Changed
