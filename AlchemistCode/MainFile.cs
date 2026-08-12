@@ -63,10 +63,11 @@ public partial class MainFile : Node
             // subscribes it for run hooks. Without this the sweeper never runs and Unstable potions
             // would quietly become permanent
             ModelDb.Inject(typeof(Potions.UnstablePotionSweeper));
+            ModelDb.Inject(typeof(Powers.AntitoxinCap));
         }
         catch (System.Exception e)
         {
-            Logger.Error($"Failed to register the Unstable potion sweeper (they would never expire): {e}");
+            Logger.Error($"Failed to register the Unstable potion sweeper or the Anti-toxin cap: {e}");
         }
 
         try

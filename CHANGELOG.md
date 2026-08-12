@@ -12,6 +12,8 @@ mod).
 - Added Spike card, a starting card: "Deal 6 (8) damage. Apply 2 (3) Poison. Gain 1 Poison."
 - Added Flask card, a starting card: "Gain 4 (7) Block. The first time you play this each combat, procure a random Unstable Potion."
 - Added the Unstable keyword: an Unstable Potion is discarded at the end of combat
+- Added the Anti-toxin power: it absorbs damage from Poison and does not expire at the end of your turn
+- Added the Anti-toxin Capacity power: it raises how much Anti-toxin you can hold, above the base of 20
 
 ### Changed
 
