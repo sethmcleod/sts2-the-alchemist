@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Al comienzo de cada combate, consigue una [gold]Poción[/gold] aleatoria. Si tus espacios de pociones están llenos, gana {Energy:energyIcons()} en su lugar.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Por mucho que viertas, nunca llega a secarse.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Cáliz inagotable",
-  "ALCHEMIST-GILDED_KIT.description": "Cuando uses una [gold]Poción[/gold], gana [blue]1[/blue] PV máx. Puedes [gold]Elaborar Pociones[/gold] en los Lugares de descanso y vendérselas al [blue]Comerciante[/blue].",
+  "ALCHEMIST-GILDED_KIT.description": "Cuando uses una [gold]Poción[/gold], gana [blue]1[/blue] PV máx. Puedes [gold]Elaborar Pociones[/gold] en los Lugares de descanso y vendérselas al [gold]Comerciante[/gold].",
   "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "Cuando uses una [gold]Poción[/gold], gana [blue]1[/blue] PV máx. Puedes [gold]Elaborar Pociones[/gold] en los Lugares de descanso.",
   "ALCHEMIST-GILDED_KIT.flavor": "Un estuche ornamentado. El oro no es de adorno.",
   "ALCHEMIST-GILDED_KIT.title": "Estuche dorado",
@@ -24,7 +24,7 @@
   "ALCHEMIST-VIRIDITAS.description": "Al comienzo de cada combate, gana [blue]3[/blue] de [gold]Regeneración[/gold].",
   "ALCHEMIST-VIRIDITAS.flavor": "El verde no se apresura, y no se detiene.",
   "ALCHEMIST-VIRIDITAS.title": "Viriditas",
-  "ALCHEMIST-WEATHERED_KIT.description": "Puedes [gold]Elaborar Pociones[/gold] en los Lugares de descanso y vendérselas al [blue]Comerciante[/blue].",
+  "ALCHEMIST-WEATHERED_KIT.description": "Puedes [gold]Elaborar Pociones[/gold] en los Lugares de descanso y vendérselas al [gold]Comerciante[/gold].",
   "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "Puedes [gold]Elaborar Pociones[/gold] en los Lugares de descanso.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Un estuche muy usado y de olor agradable.",
   "ALCHEMIST-WEATHERED_KIT.title": "Estuche gastado"

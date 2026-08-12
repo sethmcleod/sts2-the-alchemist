@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Na początku każdej walki otrzymaj losową [gold]Miksturę[/gold]. Jeżeli twoje miejsca na mikstury są pełne, zamiast tego zyskaj {Energy:energyIcons()}.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Ile by nie nalewać, nigdy do końca nie wysycha.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Niewyczerpany kielich",
-  "ALCHEMIST-GILDED_KIT.description": "Kiedykolwiek używasz [gold]Mikstury[/gold], zyskaj [blue]1[/blue] maks. PŻ. Możesz [gold]Warzyć Mikstury[/gold] w Obozowiskach i sprzedawać je [blue]Handlarzowi[/blue].",
+  "ALCHEMIST-GILDED_KIT.description": "Kiedykolwiek używasz [gold]Mikstury[/gold], zyskaj [blue]1[/blue] maks. PŻ. Możesz [gold]Warzyć Mikstury[/gold] w Obozowiskach i sprzedawać je [gold]Handlarzowi[/gold].",
   "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "Kiedykolwiek używasz [gold]Mikstury[/gold], zyskaj [blue]1[/blue] maks. PŻ. Możesz [gold]Warzyć Mikstury[/gold] w Obozowiskach.",
   "ALCHEMIST-GILDED_KIT.flavor": "Zdobiony kuferek. To złoto nie jest na pokaz.",
   "ALCHEMIST-GILDED_KIT.title": "Pozłacany kuferek",
@@ -24,7 +24,7 @@
   "ALCHEMIST-VIRIDITAS.description": "Na początku każdej walki zyskaj [blue]3[/blue] pkt. [gold]Regeneracji[/gold].",
   "ALCHEMIST-VIRIDITAS.flavor": "Zieleń się nie spieszy i nie ustaje.",
   "ALCHEMIST-VIRIDITAS.title": "Viriditas",
-  "ALCHEMIST-WEATHERED_KIT.description": "Możesz [gold]Warzyć Mikstury[/gold] w Obozowiskach i sprzedawać je [blue]Handlarzowi[/blue].",
+  "ALCHEMIST-WEATHERED_KIT.description": "Możesz [gold]Warzyć Mikstury[/gold] w Obozowiskach i sprzedawać je [gold]Handlarzowi[/gold].",
   "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "Możesz [gold]Warzyć Mikstury[/gold] w Obozowiskach.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Sfatygowany kuferek o przyjemnym zapachu.",
   "ALCHEMIST-WEATHERED_KIT.title": "Sfatygowany kuferek"

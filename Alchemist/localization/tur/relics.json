@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Her savaşın başında rastgele bir [gold]İksir[/gold] elde et. İksir yuvaların doluysa bunun yerine {Energy:energyIcons()} elde et.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Ne kadar dökersen dök, asla tam kurumaz.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Tükenmez Kadeh",
-  "ALCHEMIST-GILDED_KIT.description": "Bir [gold]İksir[/gold] her kullandığında [blue]1[/blue] Maksimum CP elde et. Dinlenme Yerleri'nde [gold]İksir demleyebilir[/gold] ve bunları [blue]Tüccar[/blue]'a satabilirsin.",
+  "ALCHEMIST-GILDED_KIT.description": "Bir [gold]İksir[/gold] her kullandığında [blue]1[/blue] Maksimum CP elde et. Dinlenme Yerleri'nde [gold]İksir demleyebilir[/gold] ve bunları [gold]Tüccar[/gold]'a satabilirsin.",
   "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "Bir [gold]İksir[/gold] her kullandığında [blue]1[/blue] Maksimum CP elde et. Dinlenme Yerleri'nde [gold]İksir demleyebilirsin[/gold].",
   "ALCHEMIST-GILDED_KIT.flavor": "Süslü bir çanta. Altın gösteriş için değil.",
   "ALCHEMIST-GILDED_KIT.title": "Yaldızlı Çanta",
@@ -24,7 +24,7 @@
   "ALCHEMIST-VIRIDITAS.description": "Her savaşın başında [blue]3[/blue] [gold]Yenilenme[/gold] elde et.",
   "ALCHEMIST-VIRIDITAS.flavor": "Yeşil acele etmez ve asla durmaz.",
   "ALCHEMIST-VIRIDITAS.title": "Viriditas",
-  "ALCHEMIST-WEATHERED_KIT.description": "Dinlenme Yerleri'nde [gold]İksir demleyebilir[/gold] ve bunları [blue]Tüccar[/blue]'a satabilirsin.",
+  "ALCHEMIST-WEATHERED_KIT.description": "Dinlenme Yerleri'nde [gold]İksir demleyebilir[/gold] ve bunları [gold]Tüccar[/gold]'a satabilirsin.",
   "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "Dinlenme Yerleri'nde [gold]İksir demleyebilirsin[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Yıpranmış ve mis kokulu bir çanta.",
   "ALCHEMIST-WEATHERED_KIT.title": "Yıpranmış Çanta"

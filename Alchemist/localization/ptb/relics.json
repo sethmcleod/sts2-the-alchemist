@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "No início de cada combate, receba uma [gold]Poção[/gold] aleatória. Se os seus espaços de poção estiverem cheios, receba {Energy:energyIcons()} em vez disso.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Por mais que você sirva, ele nunca seca de verdade.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Cálice Inesgotável",
-  "ALCHEMIST-GILDED_KIT.description": "Sempre que você usar uma [gold]Poção[/gold], receba [blue]1[/blue] PV Máximo. Você pode [gold]Preparar Poções[/gold] em Locais de Descanso e vendê-las ao [blue]Mercador[/blue].",
+  "ALCHEMIST-GILDED_KIT.description": "Sempre que você usar uma [gold]Poção[/gold], receba [blue]1[/blue] PV Máximo. Você pode [gold]Preparar Poções[/gold] em Locais de Descanso e vendê-las ao [gold]Mercador[/gold].",
   "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "Sempre que você usar uma [gold]Poção[/gold], receba [blue]1[/blue] PV Máximo. Você pode [gold]Preparar Poções[/gold] em Locais de Descanso.",
   "ALCHEMIST-GILDED_KIT.flavor": "Um estojo ornamentado. O ouro não é só enfeite.",
   "ALCHEMIST-GILDED_KIT.title": "Estojo Dourado",
@@ -24,7 +24,7 @@
   "ALCHEMIST-VIRIDITAS.description": "No início de cada combate, receba [blue]3[/blue] de [gold]Regeneração[/gold].",
   "ALCHEMIST-VIRIDITAS.flavor": "O verde não tem pressa, e não para.",
   "ALCHEMIST-VIRIDITAS.title": "Viriditas",
-  "ALCHEMIST-WEATHERED_KIT.description": "Você pode [gold]Preparar Poções[/gold] em Locais de Descanso e vendê-las ao [blue]Mercador[/blue].",
+  "ALCHEMIST-WEATHERED_KIT.description": "Você pode [gold]Preparar Poções[/gold] em Locais de Descanso e vendê-las ao [gold]Mercador[/gold].",
   "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "Você pode [gold]Preparar Poções[/gold] em Locais de Descanso.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Um estojo bem gasto e de cheiro agradável.",
   "ALCHEMIST-WEATHERED_KIT.title": "Estojo Gasto"

@@ -11,6 +11,6 @@
   "POTION_SELL.merchant_sell_4": "오, 아직도 보글거리네요 — 좋아요!",
   "POTION_SELL.merchant_sell_5": "단골들이 금방 채 갈 거예요.",
   "POTION_SELL.merchant_sell_6": "갓 빚은 물건은 언제나 잘 팔리죠!",
-  "POTION_SELL.sellable_tip.description": "이 [gold]포션[/gold]은 [blue]상인[/blue]에게 판매해 [gold]골드[/gold]를 얻을 수 있습니다.",
+  "POTION_SELL.sellable_tip.description": "이 [gold]포션[/gold]은 [gold]상인[/gold]에게 판매해 [gold]골드[/gold]를 얻을 수 있습니다.",
   "POTION_SELL.sellable_tip.title": "인기 상품"
 }

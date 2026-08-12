@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "在每场战斗开始时，获得一瓶随机[gold]药水[/gold]。如果你的药水栏位已满，则改为获得{Energy:energyIcons()}。",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "无论倒出多少，它总也不见底。",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "永涌圣杯",
-  "ALCHEMIST-GILDED_KIT.description": "每当你使用一瓶[gold]药水[/gold]，获得[blue]1[/blue]点最大生命。你可以在休息处[gold]酿造药水[/gold]，并将其出售给[blue]商人[/blue]。",
+  "ALCHEMIST-GILDED_KIT.description": "每当你使用一瓶[gold]药水[/gold]，获得[blue]1[/blue]点最大生命。你可以在休息处[gold]酿造药水[/gold]，并将其出售给[gold]商人[/gold]。",
   "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "每当你使用一瓶[gold]药水[/gold]，获得[blue]1[/blue]点最大生命。你可以在休息处[gold]酿造药水[/gold]。",
   "ALCHEMIST-GILDED_KIT.flavor": "一只华美的箱子。上面的金饰不是为了好看。",
   "ALCHEMIST-GILDED_KIT.title": "鎏金药箱",
@@ -24,7 +24,7 @@
   "ALCHEMIST-VIRIDITAS.description": "在每场战斗开始时，获得[blue]3[/blue]层[gold]再生[/gold]。",
   "ALCHEMIST-VIRIDITAS.flavor": "绿意不着急，也不停下。",
   "ALCHEMIST-VIRIDITAS.title": "翠绿生机",
-  "ALCHEMIST-WEATHERED_KIT.description": "你可以在休息处[gold]酿造药水[/gold]，并将其出售给[blue]商人[/blue]。",
+  "ALCHEMIST-WEATHERED_KIT.description": "你可以在休息处[gold]酿造药水[/gold]，并将其出售给[gold]商人[/gold]。",
   "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "你可以在休息处[gold]酿造药水[/gold]。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "一只用旧了的箱子，气味令人愉快。",
   "ALCHEMIST-WEATHERED_KIT.title": "陈旧药箱"

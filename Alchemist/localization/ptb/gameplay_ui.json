@@ -11,6 +11,6 @@
   "POTION_SELL.merchant_sell_4": "Ooh, ainda borbulhando... ótimo!",
   "POTION_SELL.merchant_sell_5": "Meus clientes vão levar tudo num instante.",
   "POTION_SELL.merchant_sell_6": "Poção fresca sempre vende rápido!",
-  "POTION_SELL.sellable_tip.description": "Esta [gold]Poção[/gold] pode ser vendida ao [blue]Mercador[/blue] por [gold]Ouro[/gold].",
+  "POTION_SELL.sellable_tip.description": "Esta [gold]Poção[/gold] pode ser vendida ao [gold]Mercador[/gold] por [gold]Ouro[/gold].",
   "POTION_SELL.sellable_tip.title": "Cobiçada"
 }

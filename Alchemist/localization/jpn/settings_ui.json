@@ -22,7 +22,7 @@
   "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "手札の中で有効なボーナスを持つカードを強調表示します。背水の陣、反応、エンチャントの効果が発動するカードは金色に光ります。オフにすると強調表示を非表示にします。",
   "ALCHEMIST-SHOW_HAND_GLOWS.title": "カードの追加発光エフェクトを表示",
   "ALCHEMIST-TIMELINE.title": "年代記",
-  "ALCHEMIST-UNIVERSAL_POTION_SELLING.hover.desc": "[sine]すべての[/sine]キャラクターが[blue]商人[/blue]にポーションを売却できる！ [gold]ゴールド[/gold]のために！\n\n（注記: この説明文は商人の出資によるものです。）",
+  "ALCHEMIST-UNIVERSAL_POTION_SELLING.hover.desc": "[sine]すべての[/sine]キャラクターが[gold]商人[/gold]にポーションを売却できる！ [gold]ゴールド[/gold]のために！\n\n（注記: この説明文は商人の出資によるものです。）",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.title": "どのキャラクターでもポーションを売却可能！",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "すべてアンロック",
   "ALCHEMIST-UNLOCK_ALL.title": "アルケミストのカード、レリック、ポーション、断章をすべてアンロック",

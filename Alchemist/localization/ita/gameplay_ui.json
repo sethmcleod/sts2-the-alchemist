@@ -11,6 +11,6 @@
   "POTION_SELL.merchant_sell_4": "Ooh, ribolle ancora... ottimo!",
   "POTION_SELL.merchant_sell_5": "I miei clienti abituali se le contenderanno.",
   "POTION_SELL.merchant_sell_6": "Le pozioni fresche vanno sempre a ruba!",
-  "POTION_SELL.sellable_tip.description": "Questa [gold]pozione[/gold] può essere venduta al [blue]mercante[/blue] in cambio di [gold]oro[/gold].",
+  "POTION_SELL.sellable_tip.description": "Questa [gold]pozione[/gold] può essere venduta al [gold]mercante[/gold] in cambio di [gold]oro[/gold].",
   "POTION_SELL.sellable_tip.title": "Ricercata"
 }

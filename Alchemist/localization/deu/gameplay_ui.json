@@ -11,6 +11,6 @@
   "POTION_SELL.merchant_sell_4": "Ooh, blubbert noch — sehr schön!",
   "POTION_SELL.merchant_sell_5": "Meine Stammkunden reißen mir das aus den Händen.",
   "POTION_SELL.merchant_sell_6": "Frische Gebräue gehen immer schnell weg!",
-  "POTION_SELL.sellable_tip.description": "Dieser [gold]Trank[/gold] kann für [gold]Gold[/gold] an den [blue]Händler[/blue] verkauft werden.",
+  "POTION_SELL.sellable_tip.description": "Dieser [gold]Trank[/gold] kann für [gold]Gold[/gold] an den [gold]Händler[/gold] verkauft werden.",
   "POTION_SELL.sellable_tip.title": "Begehrt"
 }

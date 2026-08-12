@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "매 전투 시작 시, 무작위 [gold]포션[/gold]을 생성합니다. 포션 슬롯이 가득 차 있다면, 대신 {Energy:energyIcons()}를 얻습니다.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "아무리 따라도 좀처럼 마르지 않는다.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "마르지 않는 성배",
-  "ALCHEMIST-GILDED_KIT.description": "[gold]포션[/gold]을 사용할 때마다, 최대 체력을 [blue]1[/blue] 얻습니다. 휴식 장소에서 [gold]포션을 양조[/gold]할 수 있고 [blue]상인[/blue]에게 판매할 수 있습니다.",
+  "ALCHEMIST-GILDED_KIT.description": "[gold]포션[/gold]을 사용할 때마다, 최대 체력을 [blue]1[/blue] 얻습니다. 휴식 장소에서 [gold]포션을 양조[/gold]할 수 있고 [gold]상인[/gold]에게 판매할 수 있습니다.",
   "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "[gold]포션[/gold]을 사용할 때마다, 최대 체력을 [blue]1[/blue] 얻습니다. 휴식 장소에서 [gold]포션을 양조[/gold]할 수 있습니다.",
   "ALCHEMIST-GILDED_KIT.flavor": "화려한 도구함. 그 금은 장식이 아니다.",
   "ALCHEMIST-GILDED_KIT.title": "금장 도구함",
@@ -24,7 +24,7 @@
   "ALCHEMIST-VIRIDITAS.description": "매 전투 시작 시, [gold]재생[/gold]을 [blue]3[/blue] 얻습니다.",
   "ALCHEMIST-VIRIDITAS.flavor": "초록은 서두르지 않고, 멈추지도 않는다.",
   "ALCHEMIST-VIRIDITAS.title": "비리디타스",
-  "ALCHEMIST-WEATHERED_KIT.description": "휴식 장소에서 [gold]포션을 양조[/gold]할 수 있고 [blue]상인[/blue]에게 판매할 수 있습니다.",
+  "ALCHEMIST-WEATHERED_KIT.description": "휴식 장소에서 [gold]포션을 양조[/gold]할 수 있고 [gold]상인[/gold]에게 판매할 수 있습니다.",
   "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "휴식 장소에서 [gold]포션을 양조[/gold]할 수 있습니다.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "손때가 묻고 기분 좋은 향이 나는 도구함.",
   "ALCHEMIST-WEATHERED_KIT.title": "낡은 도구함"

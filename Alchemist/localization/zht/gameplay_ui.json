@@ -11,6 +11,6 @@
   "POTION_SELL.merchant_sell_4": "喔，還在冒泡呢，不錯！",
   "POTION_SELL.merchant_sell_5": "我的老主顧一定馬上搶光。",
   "POTION_SELL.merchant_sell_6": "新鮮的釀品總是賣得特別快！",
-  "POTION_SELL.sellable_tip.description": "此[gold]藥水[/gold]可以賣給[blue]商人[/blue]換取[gold]金幣[/gold]。",
+  "POTION_SELL.sellable_tip.description": "此[gold]藥水[/gold]可以賣給[gold]商人[/gold]換取[gold]金幣[/gold]。",
   "POTION_SELL.sellable_tip.title": "搶手"
 }

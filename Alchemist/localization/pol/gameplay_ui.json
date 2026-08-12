@@ -11,6 +11,6 @@
   "POTION_SELL.merchant_sell_4": "Ooo, jeszcze bulgocze. Wybornie!",
   "POTION_SELL.merchant_sell_5": "Stali klienci rozchwytają to w mig.",
   "POTION_SELL.merchant_sell_6": "Świeże wywary zawsze schodzą na pniu!",
-  "POTION_SELL.sellable_tip.description": "Tę [gold]Miksturę[/gold] można sprzedać [blue]Handlarzowi[/blue] za [gold]Złoto[/gold].",
+  "POTION_SELL.sellable_tip.description": "Tę [gold]Miksturę[/gold] można sprzedać [gold]Handlarzowi[/gold] za [gold]Złoto[/gold].",
   "POTION_SELL.sellable_tip.title": "Rozchwytywana"
 }

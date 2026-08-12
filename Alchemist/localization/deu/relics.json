@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Beschaffe zu Beginn jedes Kampfes einen zufälligen [gold]Trank[/gold]. Falls deine Trankslots voll sind, erhalte stattdessen {Energy:energyIcons()}.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Wie viel du auch ausgießt, ganz leer wird er nie.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Immerfließender Kelch",
-  "ALCHEMIST-GILDED_KIT.description": "Immer wenn du einen [gold]Trank[/gold] verwendest, erhalte [blue]1[/blue] max. TP. Du kannst an Lagerfeuern [gold]Tränke brauen[/gold] und sie an den [blue]Händler[/blue] verkaufen.",
+  "ALCHEMIST-GILDED_KIT.description": "Immer wenn du einen [gold]Trank[/gold] verwendest, erhalte [blue]1[/blue] max. TP. Du kannst an Lagerfeuern [gold]Tränke brauen[/gold] und sie an den [gold]Händler[/gold] verkaufen.",
   "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "Immer wenn du einen [gold]Trank[/gold] verwendest, erhalte [blue]1[/blue] max. TP. Du kannst an Lagerfeuern [gold]Tränke brauen[/gold].",
   "ALCHEMIST-GILDED_KIT.flavor": "Ein verzierter Koffer. Das Gold ist nicht zur Zierde.",
   "ALCHEMIST-GILDED_KIT.title": "Vergoldeter Koffer",
@@ -24,7 +24,7 @@
   "ALCHEMIST-VIRIDITAS.description": "Erhalte zu Beginn jedes Kampfes [blue]3[/blue] [gold]Erholen[/gold].",
   "ALCHEMIST-VIRIDITAS.flavor": "Das Grün eilt nicht, und es hält nicht an.",
   "ALCHEMIST-VIRIDITAS.title": "Viriditas",
-  "ALCHEMIST-WEATHERED_KIT.description": "Du kannst an Lagerfeuern [gold]Tränke brauen[/gold] und sie an den [blue]Händler[/blue] verkaufen.",
+  "ALCHEMIST-WEATHERED_KIT.description": "Du kannst an Lagerfeuern [gold]Tränke brauen[/gold] und sie an den [gold]Händler[/gold] verkaufen.",
   "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "Du kannst an Lagerfeuern [gold]Tränke brauen[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Ein gut abgenutzter, angenehm riechender Koffer.",
   "ALCHEMIST-WEATHERED_KIT.title": "Abgenutzter Koffer"

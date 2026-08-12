@@ -22,7 +22,7 @@
   "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "Подсвечивает карты в руке с доступным бонусом: золотым для гамбита, реакции или эффекта зачарования. Отключите, чтобы убрать подсветку.",
   "ALCHEMIST-SHOW_HAND_GLOWS.title": "Показывать дополнительную подсветку карт",
   "ALCHEMIST-TIMELINE.title": "Летопись",
-  "ALCHEMIST-UNIVERSAL_POTION_SELLING.hover.desc": "[sine]Каждый[/sine] персонаж продает зелья [blue]Торговцу[/blue]! За [gold]золото[/gold]!\n\n(Примечание: спонсор этого описания — Торговец.)",
+  "ALCHEMIST-UNIVERSAL_POTION_SELLING.hover.desc": "[sine]Каждый[/sine] персонаж продает зелья [gold]Торговцу[/gold]! За [gold]золото[/gold]!\n\n(Примечание: спонсор этого описания — Торговец.)",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.title": "Продавать зелья может любой персонаж!",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Открыть все",
   "ALCHEMIST-UNLOCK_ALL.title": "Открыть все карты, реликвии, зелья и эпохи Алхимика",

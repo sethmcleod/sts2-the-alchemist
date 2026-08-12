@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "ตอนเริ่มต้นแต่ละการต่อสู้ จัดหา[gold]ขวดยา[/gold] 1 ขวดแบบสุ่ม ถ้าช่องเก็บขวดยาเต็ม จะได้รับ {Energy:energyIcons()} แทน",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "รินออกไปเท่าไร มันก็ไม่เคยแห้งสักที",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "จอกไหลนิรันดร์",
-  "ALCHEMIST-GILDED_KIT.description": "ทุกครั้งที่คุณใช้[gold]ขวดยา[/gold] ได้รับ [blue]1[/blue] HP สูงสุด คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักและขายให้[blue]พ่อค้า[/blue]ได้",
+  "ALCHEMIST-GILDED_KIT.description": "ทุกครั้งที่คุณใช้[gold]ขวดยา[/gold] ได้รับ [blue]1[/blue] HP สูงสุด คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักและขายให้[gold]พ่อค้า[/gold]ได้",
   "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "ทุกครั้งที่คุณใช้[gold]ขวดยา[/gold] ได้รับ [blue]1[/blue] HP สูงสุด คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้",
   "ALCHEMIST-GILDED_KIT.flavor": "กล่องลวดลายวิจิตร ทองบนกล่องไม่ได้มีไว้อวด",
   "ALCHEMIST-GILDED_KIT.title": "ชุดเครื่องมือปิดทอง",
@@ -24,7 +24,7 @@
   "ALCHEMIST-VIRIDITAS.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]3[/blue] [gold]การฟื้นพลัง[/gold]",
   "ALCHEMIST-VIRIDITAS.flavor": "สีเขียวไม่เร่งรีบ และไม่เคยหยุด",
   "ALCHEMIST-VIRIDITAS.title": "วิริดิทัส",
-  "ALCHEMIST-WEATHERED_KIT.description": "คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักและขายให้[blue]พ่อค้า[/blue]ได้",
+  "ALCHEMIST-WEATHERED_KIT.description": "คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักและขายให้[gold]พ่อค้า[/gold]ได้",
   "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้",
   "ALCHEMIST-WEATHERED_KIT.flavor": "กล่องเก่าที่ผ่านการใช้งานมานาน กลิ่นหอมชวนดม",
   "ALCHEMIST-WEATHERED_KIT.title": "ชุดเครื่องมือเก่า"
