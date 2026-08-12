@@ -20,6 +20,7 @@ mod).
 - Changed Carapace into an Uncommon card. Retain cards no longer appear in the Common pool
 - Reworked the Reaction (Exhaust) keyword: it now triggers if any card Exhausted this turn, instead of only the card you played directly before this one
 - Buffed Infuse keyword: Attacks now gain 2 Laced, increased from 1
+- Changed Unstable Compound card: it now has Ethereal instead of Exhaust
 
 ### Removed
 
