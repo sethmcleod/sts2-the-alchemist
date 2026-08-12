@@ -21,6 +21,10 @@ mod).
 
 - Removed Aggravate card
 
+### Fixed
+
+- Fixed Eureka+ transforming a card into Distillate instead of Distillate+
+
 ## [0.7.1] - 2026-08-11
 
 ### Added
