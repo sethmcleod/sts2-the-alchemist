@@ -30,6 +30,9 @@ mod).
 - Reworked Hemorrhage card: it now reads your Poison instead of your Regen, and deals 3 times that much damage
 - Reworked Twin Serpents card: "At the start of your turn, if your Antitoxin absorbed damage, gain 1 Energy." Cost is now 2 (1)
 - Reworked Overflow into a Skill: "Gain Antitoxin equal to your Poison. Exhaust." Cost decreased from 2 -> 1
+- Reworked Weathered Kit relic: "At the start of each combat, gain 5 Antitoxin. You can Brew Potions at Rest Sites."
+- Reworked Gilded Kit relic: "At the start of each combat, gain 10 Antitoxin. You can Brew Potions at Rest Sites." It no longer grants Max HP when you use a Potion
+- Changed the Brew hover tip: it now also says you can sell Potions to the Merchant, which the Kit relics used to say themselves
 
 ### Removed
 

@@ -5,8 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "At the start of each combat, procure a random [gold]Potion[/gold]. If your potion slots are full, gain {Energy:energyIcons()} instead.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "However much you pour, it never quite runs dry.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Everflowing Chalice",
-  "ALCHEMIST-GILDED_KIT.description": "Whenever you use a [gold]Potion[/gold], gain [blue]1[/blue] Max HP. You can [gold]Brew Potions[/gold] at Rest Sites and sell them to the [gold]Merchant[/gold].",
-  "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "Whenever you use a [gold]Potion[/gold], gain [blue]1[/blue] Max HP. You can [gold]Brew Potions[/gold] at Rest Sites.",
+  "ALCHEMIST-GILDED_KIT.description": "At the start of each combat, gain [blue]10[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
   "ALCHEMIST-GILDED_KIT.flavor": "An ornate case. The gold is not for show.",
   "ALCHEMIST-GILDED_KIT.title": "Gilded Kit",
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]Poison[/gold] is triggered against enemies [blue]1[/blue] additional time.",
@@ -24,8 +23,7 @@
   "ALCHEMIST-VIRIDITAS.description": "At the start of each combat, gain [blue]3[/blue] [gold]Regen[/gold].",
   "ALCHEMIST-VIRIDITAS.flavor": "The green does not hurry, and does not stop.",
   "ALCHEMIST-VIRIDITAS.title": "Viriditas",
-  "ALCHEMIST-WEATHERED_KIT.description": "You can [gold]Brew Potions[/gold] at Rest Sites and sell them to the [gold]Merchant[/gold].",
-  "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "You can [gold]Brew Potions[/gold] at Rest Sites.",
+  "ALCHEMIST-WEATHERED_KIT.description": "At the start of each combat, gain [blue]5[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "A well worn and pleasantly smelling case.",
   "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit"
 }

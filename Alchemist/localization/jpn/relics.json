@@ -6,7 +6,6 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "どれだけ注いでも、決して尽きることがない。",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "尽きせぬ聖杯",
   "ALCHEMIST-GILDED_KIT.description": "[gold]ポーション[/gold]を1つ使用するたび、最大HPが[blue]1[/blue]増加する。休憩所で[gold]ポーションを調合[/gold]でき、[gold]商人[/gold]に売却できる。",
-  "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "[gold]ポーション[/gold]を1つ使用するたび、最大HPが[blue]1[/blue]増加する。休憩所で[gold]ポーションを調合[/gold]できる。",
   "ALCHEMIST-GILDED_KIT.flavor": "装飾を凝らした道具箱。その金は飾りではない。",
   "ALCHEMIST-GILDED_KIT.title": "金張りの道具箱",
   "ALCHEMIST-GLOWING_SHARD.description": "敵に対して[gold]毒[/gold]が追加で[blue]1[/blue]回発動する。",
@@ -25,7 +24,6 @@
   "ALCHEMIST-VIRIDITAS.flavor": "緑は急がず、そして止まらない。",
   "ALCHEMIST-VIRIDITAS.title": "ヴィリディタス",
   "ALCHEMIST-WEATHERED_KIT.description": "休憩所で[gold]ポーションを調合[/gold]でき、[gold]商人[/gold]に売却できる。",
-  "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "休憩所で[gold]ポーションを調合[/gold]できる。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "使い込まれ、心地よい香りのする道具箱。",
   "ALCHEMIST-WEATHERED_KIT.title": "使い込まれた道具箱"
 }

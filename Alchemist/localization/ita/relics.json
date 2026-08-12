@@ -6,7 +6,6 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Per quanto ne versi, non si svuota mai del tutto.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Calice Inesauribile",
   "ALCHEMIST-GILDED_KIT.description": "Ogni volta che usi una [gold]pozione[/gold], ottieni [blue]1[/blue] PV massimo. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo e venderle al [gold]mercante[/gold].",
-  "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "Ogni volta che usi una [gold]pozione[/gold], ottieni [blue]1[/blue] PV massimo. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
   "ALCHEMIST-GILDED_KIT.flavor": "Una valigetta decorata. L'oro non è per bellezza.",
   "ALCHEMIST-GILDED_KIT.title": "Kit Dorato",
   "ALCHEMIST-GLOWING_SHARD.description": "Il [gold]Veleno[/gold] si attiva contro i nemici [blue]1[/blue] volta in più.",
@@ -25,7 +24,6 @@
   "ALCHEMIST-VIRIDITAS.flavor": "Il verde non ha fretta, e non si ferma.",
   "ALCHEMIST-VIRIDITAS.title": "Viriditas",
   "ALCHEMIST-WEATHERED_KIT.description": "Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo e venderle al [gold]mercante[/gold].",
-  "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Una valigetta consunta, dal profumo gradevole.",
   "ALCHEMIST-WEATHERED_KIT.title": "Kit Consunto"
 }

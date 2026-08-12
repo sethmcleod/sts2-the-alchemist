@@ -6,7 +6,6 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Ne kadar dökersen dök, asla tam kurumaz.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Tükenmez Kadeh",
   "ALCHEMIST-GILDED_KIT.description": "Bir [gold]İksir[/gold] her kullandığında [blue]1[/blue] Maksimum CP elde et. Dinlenme Yerleri'nde [gold]İksir demleyebilir[/gold] ve bunları [gold]Tüccar[/gold]'a satabilirsin.",
-  "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "Bir [gold]İksir[/gold] her kullandığında [blue]1[/blue] Maksimum CP elde et. Dinlenme Yerleri'nde [gold]İksir demleyebilirsin[/gold].",
   "ALCHEMIST-GILDED_KIT.flavor": "Süslü bir çanta. Altın gösteriş için değil.",
   "ALCHEMIST-GILDED_KIT.title": "Yaldızlı Çanta",
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]Zehir[/gold], düşmanlara karşı fazladan [blue]1[/blue] kez tetiklenir.",
@@ -25,7 +24,6 @@
   "ALCHEMIST-VIRIDITAS.flavor": "Yeşil acele etmez ve asla durmaz.",
   "ALCHEMIST-VIRIDITAS.title": "Viriditas",
   "ALCHEMIST-WEATHERED_KIT.description": "Dinlenme Yerleri'nde [gold]İksir demleyebilir[/gold] ve bunları [gold]Tüccar[/gold]'a satabilirsin.",
-  "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "Dinlenme Yerleri'nde [gold]İksir demleyebilirsin[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Yıpranmış ve mis kokulu bir çanta.",
   "ALCHEMIST-WEATHERED_KIT.title": "Yıpranmış Çanta"
 }

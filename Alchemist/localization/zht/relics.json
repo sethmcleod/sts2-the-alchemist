@@ -6,7 +6,6 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "無論倒出多少，它始終不會見底。",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "永湧聖杯",
   "ALCHEMIST-GILDED_KIT.description": "每當你使用[gold]藥水[/gold]時，獲得 [blue]1[/blue] 點最大生命。你可以在休息處[gold]釀造藥水[/gold]，並將其賣給[gold]商人[/gold]。",
-  "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "每當你使用[gold]藥水[/gold]時，獲得 [blue]1[/blue] 點最大生命。你可以在休息處[gold]釀造藥水[/gold]。",
   "ALCHEMIST-GILDED_KIT.flavor": "一只華麗的箱子。上頭的金子不是拿來炫耀的。",
   "ALCHEMIST-GILDED_KIT.title": "鎏金藥箱",
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]中毒[/gold]對敵人會額外觸發 [blue]1[/blue] 次。",
@@ -25,7 +24,6 @@
   "ALCHEMIST-VIRIDITAS.flavor": "翠綠不急躁，也不停歇。",
   "ALCHEMIST-VIRIDITAS.title": "綠化",
   "ALCHEMIST-WEATHERED_KIT.description": "你可以在休息處[gold]釀造藥水[/gold]，並將其賣給[gold]商人[/gold]。",
-  "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "你可以在休息處[gold]釀造藥水[/gold]。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "一只用得很舊、氣味宜人的箱子。",
   "ALCHEMIST-WEATHERED_KIT.title": "風霜藥箱"
 }

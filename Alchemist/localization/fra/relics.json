@@ -6,7 +6,6 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Versez tant que vous voulez, il ne se vide jamais tout à fait.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Calice intarissable",
   "ALCHEMIST-GILDED_KIT.description": "Lorsque vous utilisez une [gold]Potion[/gold], gagnez [blue]1[/blue] PV Max. Vous pouvez [gold]Brasser des Potions[/gold] aux Sites de repos et les vendre au [gold]Marchand[/gold].",
-  "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "Lorsque vous utilisez une [gold]Potion[/gold], gagnez [blue]1[/blue] PV Max. Vous pouvez [gold]Brasser des Potions[/gold] aux Sites de repos.",
   "ALCHEMIST-GILDED_KIT.flavor": "Une mallette ouvragée. L'or n'est pas là pour décorer.",
   "ALCHEMIST-GILDED_KIT.title": "Trousse dorée",
   "ALCHEMIST-GLOWING_SHARD.description": "Les dégâts du [gold]Poison[/gold] se déclenchent contre les ennemis [blue]1[/blue] fois supplémentaire.",
@@ -25,7 +24,6 @@
   "ALCHEMIST-VIRIDITAS.flavor": "Le vert ne se presse pas, et ne s'arrête pas.",
   "ALCHEMIST-VIRIDITAS.title": "Viriditas",
   "ALCHEMIST-WEATHERED_KIT.description": "Vous pouvez [gold]Brasser des Potions[/gold] aux Sites de repos et les vendre au [gold]Marchand[/gold].",
-  "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "Vous pouvez [gold]Brasser des Potions[/gold] aux Sites de repos.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Une mallette bien usée, qui sent agréablement bon.",
   "ALCHEMIST-WEATHERED_KIT.title": "Trousse usée"
 }

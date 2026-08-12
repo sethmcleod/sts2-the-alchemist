@@ -6,7 +6,6 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Ile by nie nalewać, nigdy do końca nie wysycha.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Niewyczerpany kielich",
   "ALCHEMIST-GILDED_KIT.description": "Kiedykolwiek używasz [gold]Mikstury[/gold], zyskaj [blue]1[/blue] maks. PŻ. Możesz [gold]Warzyć Mikstury[/gold] w Obozowiskach i sprzedawać je [gold]Handlarzowi[/gold].",
-  "ALCHEMIST-GILDED_KIT.descriptionUniversalSell": "Kiedykolwiek używasz [gold]Mikstury[/gold], zyskaj [blue]1[/blue] maks. PŻ. Możesz [gold]Warzyć Mikstury[/gold] w Obozowiskach.",
   "ALCHEMIST-GILDED_KIT.flavor": "Zdobiony kuferek. To złoto nie jest na pokaz.",
   "ALCHEMIST-GILDED_KIT.title": "Pozłacany kuferek",
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]Trucizna[/gold] jest aktywowana na przeciwnikach [blue]1[/blue] dodatkowy raz.",
@@ -25,7 +24,6 @@
   "ALCHEMIST-VIRIDITAS.flavor": "Zieleń się nie spieszy i nie ustaje.",
   "ALCHEMIST-VIRIDITAS.title": "Viriditas",
   "ALCHEMIST-WEATHERED_KIT.description": "Możesz [gold]Warzyć Mikstury[/gold] w Obozowiskach i sprzedawać je [gold]Handlarzowi[/gold].",
-  "ALCHEMIST-WEATHERED_KIT.descriptionUniversalSell": "Możesz [gold]Warzyć Mikstury[/gold] w Obozowiskach.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Sfatygowany kuferek o przyjemnym zapachu.",
   "ALCHEMIST-WEATHERED_KIT.title": "Sfatygowany kuferek"
 }
