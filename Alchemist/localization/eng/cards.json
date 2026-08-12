@@ -117,7 +117,7 @@
   "ALCHEMIST-OVERFLOW.title": "Overflow",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]Ferment{FermentSuffix}.[/gold]\nDeal {CalculatedDamage:diff()} damage.\nDeals {IfUpgraded:show:[green]6[/green]|4} additional damage for each turn fermented.",
   "ALCHEMIST-PATIENT_STRIKE.title": "Patient Strike",
-  "ALCHEMIST-PERCOLATE.description": "At the start of your next turn, draw {draw:diff()} additional {draw:plural:card|cards}.",
+  "ALCHEMIST-PERCOLATE.description": "Next turn, draw {draw:diff()} {draw:plural:card|cards}.",
   "ALCHEMIST-PERCOLATE.title": "Percolate",
   "ALCHEMIST-POULTICE.description": "Exhaust 1 card.\nGain {RegenPower:diff()} [gold]Regen[/gold].",
   "ALCHEMIST-POULTICE.title": "Poultice",
