@@ -1,10 +1,11 @@
+using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.ValueProps;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
@@ -14,7 +15,7 @@ public class Libation : AlchemistCard
     {
         WithVar("block", 4, 2);
         WithTip(StaticHoverTip.Block);
-        WithTip(typeof(PlatingPower));
+        WithTip(typeof(AntitoxinPower));
     }
 
     internal override bool GainsEffectWhenEnchanted => true;
@@ -27,6 +28,6 @@ public class Libation : AlchemistCard
         if (count > 0)
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["block"].BaseValue * count, ValueProp.Move, play);
         if (IsEnchanted)
-            await PowerCmd.Apply<PlatingPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this);
+            await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, 3, Owner.Creature, this);
     }
 }

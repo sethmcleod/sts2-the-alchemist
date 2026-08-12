@@ -10,16 +10,14 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Hemorrhage : AlchemistCard
 {
-    private const int Multiplier = 3;
-
     public Hemorrhage() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithCostUpgradeBy(-1);
+        WithVar("mult", 2, 1);
         WithTip(typeof(PoisonPower));
     }
 
     // Shared by the on-card preview and the real hit, so the two cannot drift apart
-    private int RawDamageFor(int poison) => poison * Multiplier;
+    private int RawDamageFor(int poison) => poison * DynamicVars["mult"].IntValue;
     private int DamageFor(int poison) => ApplyEnchantDamage(RawDamageFor(poison));
 
     // Raw, because AlchemistCard runs the enchantment and global damage hooks on it

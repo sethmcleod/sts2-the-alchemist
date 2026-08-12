@@ -42,6 +42,9 @@ mod).
 - Reworked Suffuse card: "At the start of your turn, ALL allies procure a random Unstable Potion."
 - Changed Golden Fruit card: it no longer heals 8 HP
 - Reworked Mercurial Form card: at the end of your turn it now gains Antitoxin equal to half your Poison, instead of healing that much HP
+- Removed Plating from the deck. Vitrify, Sediment and Libation now grant Antitoxin when Enchanted
+- Reworked Etch card: "Deal 16 (20) damage. Gain 2 Poison." It no longer ignores Block
+- Changed Hemorrhage card: cost is now 1, and it deals 2 (3) times your Poison in damage instead of 3 times
 
 ### Removed
 

@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -11,7 +12,7 @@ public class Vitrify : AlchemistCard
     public Vitrify() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(3, 1);
-        WithTip(typeof(PlatingPower));
+        WithTip(typeof(AntitoxinPower));
     }
 
     internal override bool GainsEffectWhenEnchanted => true;
@@ -21,6 +22,6 @@ public class Vitrify : AlchemistCard
         await CommonActions.CardBlock(this, play);
         await CommonActions.CardBlock(this, play);
         if (IsEnchanted)
-            await PowerCmd.Apply<PlatingPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this);
+            await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, 3, Owner.Creature, this);
     }
 }

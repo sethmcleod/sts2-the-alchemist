@@ -135,10 +135,10 @@ COLORS = {
     "Echo Strike": ("#5b3fc4", "#d84a6f", "TR", "Enchanted payoffs: debuff attacks"),
     "Needle Point": ("#5b3fc4", "#aeb4bc", "TR", "Enchanted payoffs: debuff attacks"),
     "Vivisect": ("#5b3fc4", "#d94f6a", "TR", "Enchanted payoffs: debuff attacks"),
-    # Enchanted payoffs: Plating
-    "Libation": ("#5b3fc4", "#23262e", "BR", "Enchanted payoffs: Plating"),
-    "Sediment": ("#5b3fc4", "#d9c89a", "R", "Enchanted payoffs: Plating"),
-    "Vitrify": ("#5b3fc4", "#48495f", "BR", "Enchanted payoffs: Plating"),
+    # Enchanted payoffs: Antitoxin
+    "Libation": ("#5b3fc4", "#23262e", "BR", "Enchanted payoffs: Antitoxin"),
+    "Sediment": ("#5b3fc4", "#d9c89a", "R", "Enchanted payoffs: Antitoxin"),
+    "Vitrify": ("#5b3fc4", "#48495f", "BR", "Enchanted payoffs: Antitoxin"),
     # Golden Touch (one-off)
     "Golden Touch": ("#5b3fc4", "#ffc832", "L", "Unique"),
     # Potion: attacks
@@ -382,7 +382,7 @@ KEYWORDS = [
     "Exhaust Pile", "Draw Pile", "Discard Pile", "Golden Fruit",
     "Distillates", "Distillate", "Enchanted", "Vulnerable", "Fermented",
     "Multiplayer", "Dexterity", "Reaction", "Strength", "Infused",
-    "Antitoxin", "Procure", "Exhaust", "Ferment", "Plating",
+    "Antitoxin", "Procure", "Exhaust", "Ferment",
     "Poison", "Potion", "Retain", "Innate",
     "Infuse", "Energy", "Block", "Toxic", "Weak", "Stun", "Hand",
 ]

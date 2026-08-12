@@ -2,8 +2,8 @@ using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -14,7 +14,7 @@ public class Sediment : AlchemistCard
         WithVar("Block", 2, 1);
         WithTip(StaticHoverTip.Block);
         WithTip(typeof(PoisonPower));
-        WithTip(typeof(PlatingPower));
+        WithTip(typeof(AntitoxinPower));
     }
 
     internal override bool GainsEffectWhenEnchanted => true;
@@ -24,6 +24,6 @@ public class Sediment : AlchemistCard
         await PowerCmd.Apply<SedimentPower>(choiceContext, Owner.Creature,
             DynamicVars["Block"].IntValue, Owner.Creature, this);
         if (IsEnchanted)
-            await PowerCmd.Apply<PlatingPower>(choiceContext, Owner.Creature, 3, Owner.Creature, this);
+            await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, 4, Owner.Creature, this);
     }
 }
