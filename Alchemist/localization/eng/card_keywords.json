@@ -3,7 +3,7 @@
   "ALCHEMIST-FERMENT.title": "Ferment",
   "ALCHEMIST-GAMBIT.description": "While you are at [blue]50%[/blue] or less HP, this card has a [gold]Gambit[/gold] effect.",
   "ALCHEMIST-GAMBIT.title": "Gambit",
-  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks gain [blue]1[/blue] [purple]Laced[/purple]; Skills gain [blue]1[/blue] [purple]Fuming[/purple]; Powers gain [blue]1[/blue] [purple]Exalted[/purple]. Other cards gain [gold]Ethereal[/gold].",
+  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks gain [blue]2[/blue] [purple]Laced[/purple]; Skills gain [blue]1[/blue] [purple]Fuming[/purple]; Powers gain [blue]1[/blue] [purple]Exalted[/purple]. Other cards gain [gold]Ethereal[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Choose any number of cards to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Choose up to [blue]{MaxCount}[/blue] {MaxCount:plural:card|cards} to [gold]Infuse[/gold].",
@@ -12,7 +12,7 @@
   "ALCHEMIST-REACTION.description.attack": "If you play this card directly after an Attack in the same turn, it has a [gold]Reaction[/gold] effect.",
   "ALCHEMIST-REACTION.description.block": "If you play this card directly after a card that gained [gold]Block[/gold] in the same turn, it has a [gold]Reaction[/gold] effect.",
   "ALCHEMIST-REACTION.description.enchanted": "If you play this card directly after an [gold]Enchanted[/gold] card in the same turn, it has a [gold]Reaction[/gold] effect.",
-  "ALCHEMIST-REACTION.description.exhaust": "If the card you played directly before this one [gold]Exhausted[/gold] in the same turn, this card has a [gold]Reaction[/gold] effect.",
+  "ALCHEMIST-REACTION.description.exhaust": "If any card was [gold]Exhausted[/gold] this turn, this card has a [gold]Reaction[/gold] effect.",
   "ALCHEMIST-REACTION.description.power": "If you play this card directly after a Power in the same turn, it has a [gold]Reaction[/gold] effect.",
   "ALCHEMIST-REACTION.description.skill": "If you play this card directly after a Skill in the same turn, it has a [gold]Reaction[/gold] effect.",
   "ALCHEMIST-REACTION.title": "Reaction"

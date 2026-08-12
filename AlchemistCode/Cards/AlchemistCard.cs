@@ -203,6 +203,16 @@ public abstract class AlchemistCard : ConstructedCardModel
         get
         {
             if (!IsMutable || !IsReactionCard || Owner == null) return false;
+
+            // Exhaust is the one condition that does not read the previous card play. Any card of
+            // yours that Exhausted this turn arms it, including one a relic burned before you had
+            // played anything, so effects like Toasty Mittens combo with it. This card is excluded,
+            // or a card that Exhausts itself would arm its own Reaction
+            if (Reaction == ReactionCondition.Exhaust)
+                return CombatManager.Instance.History.Entries
+                    .OfType<CardExhaustedEntry>()
+                    .Any(e => e.HappenedThisTurn(CombatState) && e.Card != this && e.Card?.Owner == Owner);
+
             if (PreviousCardThisTurn is not { } prev) return false;
             return Reaction switch
             {
@@ -210,9 +220,6 @@ public abstract class AlchemistCard : ConstructedCardModel
                 ReactionCondition.Skill => prev.Type == CardType.Skill,
                 ReactionCondition.Power => prev.Type == CardType.Power,
                 ReactionCondition.Enchanted => prev.Enchantment != null,
-                ReactionCondition.Exhaust => CombatManager.Instance.History.Entries
-                    .OfType<CardExhaustedEntry>()
-                    .Any(e => e.HappenedThisTurn(CombatState) && e.Card == prev),
                 ReactionCondition.Block => CombatManager.Instance.History.Entries
                     .OfType<BlockGainedEntry>()
                     .Any(e => e.HappenedThisTurn(CombatState) && e.CardPlay?.Card == prev),

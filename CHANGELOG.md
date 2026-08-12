@@ -18,7 +18,8 @@ mod).
 - Changed Sinter into a Common card
 - Changed Patient Strike into an Uncommon card
 - Changed Carapace into an Uncommon card. Retain cards no longer appear in the Common pool
-- Changed the Reaction (Exhaust) keyword tip: it now clarifies that the card you played directly before this one must be the one that Exhausted
+- Reworked the Reaction (Exhaust) keyword: it now triggers if any card Exhausted this turn, instead of only the card you played directly before this one
+- Buffed Infuse keyword: Attacks now gain 2 Laced, increased from 1
 
 ### Removed
 
