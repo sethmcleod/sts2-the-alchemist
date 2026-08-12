@@ -2,9 +2,8 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
@@ -17,14 +16,16 @@ public class TwinSerpentsPower : AlchemistPower
         new[]
         {
             HoverTipFactory.FromPower<PoisonPower>(),
-            HoverTipFactory.FromPower<RegenPower>(),
+            HoverTipFactory.FromPower<AntitoxinPower>(),
         };
 
-    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants,
+    // Late, not AfterSideTurnStart: Poison ticks in AfterSideTurnStart, and this has to read the result
+    // of that tick rather than race it
+    public override async Task AfterSideTurnStartLate(CombatSide side, IReadOnlyList<Creature> participants,
         ICombatState combatState)
     {
         if (!participants.Contains(Owner)) return;
-        if (!Owner.HasPower<PoisonPower>() || !Owner.HasPower<RegenPower>()) return;
+        if (!AntitoxinRules.AbsorbedThisTurn(Owner)) return;
         Flash();
         await PlayerCmd.GainEnergy(Amount, Owner.Player!);
     }

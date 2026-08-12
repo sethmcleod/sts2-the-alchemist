@@ -12,8 +12,9 @@ mod).
 - Added Spike card, a starting card: "Deal 6 (8) damage. Apply 2 (3) Poison. Gain 1 Poison."
 - Added Flask card, a starting card: "Gain 4 (7) Block. The first time you play this each combat, procure a random Unstable Potion."
 - Added the Unstable keyword: an Unstable Potion is discarded at the end of combat
-- Added the Anti-toxin power: it absorbs damage from Poison and does not expire at the end of your turn
-- Added the Anti-toxin Capacity power: it raises how much Anti-toxin you can hold, above the base of 20
+- Added the Antitoxin power: it absorbs damage from Poison and does not expire at the end of your turn
+- Added the Antitoxin Capacity power: it raises how much Antitoxin you can hold, above the base of 20
+- Added Slake card: "Deal 8 (11) damage. Gain 3 (4) Antitoxin."
 
 ### Changed
 
@@ -24,10 +25,18 @@ mod).
 - Nerfed Infuse keyword: Attacks now gain 1 Laced, decreased from 2
 - Changed Reagent into a Common card
 - Changed Salve into an Uncommon card. Infuse no longer appears in the Common pool
+- Reworked Poultice card: "Gain 4 (5) Antitoxin. Exhaust a random card from your Hand." The upgrade now lets you choose the card instead of lowering the cost
+- Reworked Circulation card: "Gain 2 Poison. Draw 3 (4) cards."
+- Reworked Hemorrhage card: it now reads your Poison instead of your Regen, and deals 3 times that much damage
+- Reworked Twin Serpents card: "At the start of your turn, if your Antitoxin absorbed damage, gain 1 Energy." Cost is now 2 (1)
+- Reworked Overflow into a Skill: "Gain Antitoxin equal to your Poison. Exhaust." Cost decreased from 2 -> 1
 
 ### Removed
 
 - Removed Prime card
+- Removed Lifeblood card
+- Removed Inversion card
+- Removed Nigredo, and the Albedo, Citrinitas and Rubedo tokens
 
 ## [0.7.3] - 2026-08-12
 

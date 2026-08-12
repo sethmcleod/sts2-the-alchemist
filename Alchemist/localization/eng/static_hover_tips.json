@@ -1,12 +1,8 @@
 {
   "ALCHEMIST-BREW.description": "This Rest Site option lets you procure a random [gold]Potion[/gold]. There are 3 [gold]Potions[/gold] that can only be obtained this way.",
   "ALCHEMIST-BREW.title": "Brew",
-  "ALCHEMIST-LIFEBLOOD.description": "Damage includes the [gold]Regen[/gold] you already have.",
-  "ALCHEMIST-LIFEBLOOD.title": "Lifeblood",
   "ALCHEMIST-MASTERWORK.description": "This card glows [gold]gold[/gold] if you have [gold]Enchanted[/gold] five or more cards this combat, including the one you would [gold]Infuse[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Masterwork",
-  "ALCHEMIST-OVERFLOW.description": "Hits ALL enemies a number of times equal to your [gold]Regen[/gold], including the 1 this card grants.",
-  "ALCHEMIST-OVERFLOW.title": "Overflow",
   "ALCHEMIST-UNSTABLE.description": "This [gold]Potion[/gold] is discarded at the end of combat.",
   "ALCHEMIST-UNSTABLE.title": "Unstable"
 }

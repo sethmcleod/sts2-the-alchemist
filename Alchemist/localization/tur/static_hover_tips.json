@@ -1,10 +1,6 @@
 {
   "ALCHEMIST-BREW.description": "Bu Dinlenme Yeri seçeneği rastgele bir [gold]İksir[/gold] elde etmeni sağlar. Sadece bu yolla elde edilebilen 3 [gold]İksir[/gold] vardır.",
   "ALCHEMIST-BREW.title": "Demle",
-  "ALCHEMIST-LIFEBLOOD.description": "Hasara, hâlihazırda sahip olduğun [gold]Yenilenme[/gold] dahildir.",
-  "ALCHEMIST-LIFEBLOOD.title": "Can Suyu",
   "ALCHEMIST-MASTERWORK.description": "Bu savaşta, [gold]Aşılayacağın[/gold] kart dahil beş veya daha fazla kart [gold]Büyülediysen[/gold] bu kart [gold]altın[/gold] renkte parlar.",
-  "ALCHEMIST-MASTERWORK.title": "Ustalık Eseri",
-  "ALCHEMIST-OVERFLOW.description": "TÜM düşmanlara, bu kartın verdiği 1 dahil, [gold]Yenilenme[/gold] miktarın kadar kez vurur.",
-  "ALCHEMIST-OVERFLOW.title": "Taşma"
+  "ALCHEMIST-MASTERWORK.title": "Ustalık Eseri"
 }

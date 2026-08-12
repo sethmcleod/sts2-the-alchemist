@@ -1,3 +1,4 @@
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,18 +7,21 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+// Venom and antivenom. The gate is both resources at once, the same shape the card always had, which
+// matters because no base-game power grants flat Energy every turn
 public class TwinSerpents : AlchemistCard
 {
     public TwinSerpents() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
+        WithCostUpgradeBy(-1);
         // WithEnergy, not WithVar: the {Energy:energyIcons()} formatter rejects a plain DynamicVar
-        WithEnergy(1, 1);
+        WithEnergy(1, 0);
         WithTip(typeof(PoisonPower));
-        WithTip(typeof(RegenPower));
+        WithTip(typeof(AntitoxinPower));
     }
 
     protected override bool ConditionalGlow =>
-        Owner?.Creature is { } c && c.HasPower<PoisonPower>() && c.HasPower<RegenPower>();
+        Owner?.Creature is { } c && c.HasPower<PoisonPower>() && c.HasPower<AntitoxinPower>();
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

@@ -1,4 +1,5 @@
 using Alchemist.AlchemistCode.Compat;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -7,18 +8,21 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+// The HP loss is direct, so Antitoxin does not stop it. That is the point: the card has to stay
+// dangerous rather than turning free once you are holding a buffer
 public class Hemorrhage : AlchemistCard
 {
+    private const int Multiplier = 3;
+
     public Hemorrhage() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithCostUpgradeBy(-1);
-        WithTip(typeof(RegenPower));
+        WithTip(typeof(PoisonPower));
     }
 
     // Shared by the on-card preview and the real hit, so the two cannot drift apart
-    private int RawDamageFor(int regen) => regen * 2;
-
-    private int DamageFor(int regen) => ApplyEnchantDamage(RawDamageFor(regen));
+    private int RawDamageFor(int poison) => poison * Multiplier;
+    private int DamageFor(int poison) => ApplyEnchantDamage(RawDamageFor(poison));
 
     // Raw, because AlchemistCard runs the enchantment and global damage hooks on it
     protected override int? RawFormulaDamagePreview
@@ -26,8 +30,8 @@ public class Hemorrhage : AlchemistCard
         get
         {
             if (Owner?.Creature is not { } c) return null;
-            var regen = c.GetPowerAmount<RegenPower>();
-            return regen > 0 ? RawDamageFor(regen) : null;
+            var poison = c.GetPowerAmount<PoisonPower>();
+            return poison > 0 ? RawDamageFor(poison) : null;
         }
     }
 
@@ -36,17 +40,18 @@ public class Hemorrhage : AlchemistCard
         get
         {
             if (Owner?.Creature is not { } c) return null;
-            var regen = c.GetPowerAmount<RegenPower>();
-            return regen > 0 ? regen : null;
+            var poison = c.GetPowerAmount<PoisonPower>();
+            return poison > 0 ? poison : null;
         }
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var lost = Owner.Creature.GetPowerAmount<RegenPower>();
+        var lost = Owner.Creature.GetPowerAmount<PoisonPower>();
         if (lost > 0)
             await GameCompat.Damage(choiceContext, Owner.Creature,
                 lost, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
+
         var damage = DamageFor(lost);
         if (damage > 0)
             await DamageCmd.Attack(damage).FromCard(this, play)

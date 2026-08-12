@@ -1,10 +1,6 @@
 {
   "ALCHEMIST-BREW.description": "Esta opción del Lugar de descanso te permite conseguir una [gold]Poción[/gold] aleatoria. Hay 3 [gold]Pociones[/gold] que solo pueden obtenerse de esta forma.",
   "ALCHEMIST-BREW.title": "Elaborar",
-  "ALCHEMIST-LIFEBLOOD.description": "El daño incluye la [gold]Regeneración[/gold] que ya tienes.",
-  "ALCHEMIST-LIFEBLOOD.title": "Sangre vital",
   "ALCHEMIST-MASTERWORK.description": "Esta carta brilla en [gold]dorado[/gold] si has [gold]Encantado[/gold] cinco o más cartas este combate, incluida la que vayas a [gold]Infundir[/gold].",
-  "ALCHEMIST-MASTERWORK.title": "Obra maestra",
-  "ALCHEMIST-OVERFLOW.description": "Golpea a TODOS los enemigos un número de veces igual a tu [gold]Regeneración[/gold], incluida la 1 que otorga esta carta.",
-  "ALCHEMIST-OVERFLOW.title": "Desbordamiento"
+  "ALCHEMIST-MASTERWORK.title": "Obra maestra"
 }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsbq26wd7val7"
-path="res://.godot/imported/inversion_power.png-09b1d76cb712a8dc6c208642124e03cb.ctex"
+uid="uid://b8oaioyi8dkvs"
+path="res://.godot/imported/slake.png-6857ed67ae050bc5c3fb45579a831488.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/inversion_power.png"
-dest_files=["res://.godot/imported/inversion_power.png-09b1d76cb712a8dc6c208642124e03cb.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/slake.png"
+dest_files=["res://.godot/imported/slake.png-6857ed67ae050bc5c3fb45579a831488.ctex"]
 
 [params]
 

@@ -16,7 +16,8 @@ namespace Alchemist.AlchemistCode.Powers;
 // paid for in advance.
 //
 // The ModifyDamageAdditive override is spelled differently on the two game branches, so it lives in
-// Compat/AntitoxinPowerCompat.cs and calls the branch-agnostic Absorb below.
+// Compat/AntitoxinPowerCompat.cs and calls the branch-agnostic Absorb below. The ceiling and the
+// per-turn absorb record live in AntitoxinRules, which exists even when this power does not.
 public partial class AntitoxinPower : AlchemistPower
 {
     // The ceiling the second bar reads against. Anti-toxin never decays on its own, so without a cap a
@@ -70,6 +71,7 @@ public partial class AntitoxinPower : AlchemistPower
         if (spend <= 0) return;
 
         Flash();
+        AntitoxinRules.MarkAbsorbed(Owner);
         if (spend >= Amount)
             await PowerCmd.Remove(this);
         else

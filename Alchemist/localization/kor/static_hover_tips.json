@@ -1,10 +1,6 @@
 {
   "ALCHEMIST-BREW.description": "이 휴식 장소 선택지는 무작위 [gold]포션[/gold]을 생성합니다. 오직 이 방법으로만 얻을 수 있는 [gold]포션[/gold]이 3종 있습니다.",
   "ALCHEMIST-BREW.title": "양조",
-  "ALCHEMIST-LIFEBLOOD.description": "이미 보유한 [gold]재생[/gold]이 피해량에 포함되어 있습니다.",
-  "ALCHEMIST-LIFEBLOOD.title": "생명혈",
   "ALCHEMIST-MASTERWORK.description": "이번 전투에서 [gold]주입[/gold]할 카드를 포함해 5장 이상 [gold]인챈트[/gold]했다면, 이 카드가 [gold]금색[/gold]으로 빛납니다.",
-  "ALCHEMIST-MASTERWORK.title": "걸작",
-  "ALCHEMIST-OVERFLOW.description": "이 카드가 주는 1을 포함한 [gold]재생[/gold] 수치만큼 모든 적을 공격합니다.",
-  "ALCHEMIST-OVERFLOW.title": "범람"
+  "ALCHEMIST-MASTERWORK.title": "걸작"
 }

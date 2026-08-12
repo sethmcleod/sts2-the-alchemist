@@ -96,6 +96,8 @@ COLORS = {
     "Transmute": ("#5f011f", "#e3b84a", "BR", "Gambit: skills"),
     # Gambit: powers
     "Slag": ("#45293f", "#c98fd6", "R", "Unique"),
+    # Antitoxin: the purple counterpart to the poison reds
+    "Slake": ("#2f0170", "#8f6fd8", "TR", "Antitoxin"),
     # Poison attacks
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
@@ -156,13 +158,10 @@ COLORS = {
     "Poultice": ("#1f1723", "#4f9e4a", "BR", "Exhaust pile: skills"),
     "Sinter": ("#1f1723", "#be401b", "BR", "Exhaust pile: skills"),
     "Anneal": ("#1f1723", "#7f9aa8", "BR", "Exhaust pile: skills"),
-    # Regen: attacks
-    "Hemorrhage": ("#00212a", "#0d8a6b", "TR", "Regen: attacks"),
-    "Lifeblood": ("#00212a", "#0a6e43", "TR", "Regen: attacks"),
-    "Overflow": ("#00212a", "#10aba5", "TR", "Regen: attacks"),
-    # Regen: skills and powers
-    "Circulation": ("#14424e", "#b8e86a", "BR", "Regen: skills and powers"),
-    "Inversion": ("#14424e", "#47b499", "L", "Regen: skills and powers"),
+    # Poison as a resource to spend
+    "Hemorrhage": ("#00212a", "#0d8a6b", "TR", "Poison payoffs"),
+    "Overflow": ("#00212a", "#10aba5", "TR", "Poison payoffs"),
+    "Circulation": ("#14424e", "#b8e86a", "BR", "Poison payoffs"),
     # Poison skills
     "Fester": ("#4e8701", "#0139b2", "BR", "Poison skills"),
     "Sweat It Out": ("#4e8701", "#013161", "BR", "Poison skills"),
@@ -217,12 +216,8 @@ COLORS = {
     # Flask (Basic): the starter brew, anchored on the potion teal
     "Flask": ("#045062", "#d8b23a", "D", "Unique"),
     # Nigredo (token)
-    "Nigredo": ("#07130a", "#25511a", "U", "Unique"),
     # Albedo (token)
-    "Albedo": ("#3fd3b0", "#fefeff", "U", "Unique"),
     # Rubedo (token)
-    "Citrinitas": ("#e87500", "#feee2b", "D", "Unique"),
-    "Rubedo": ("#390800", "#9a330b", "D", "Unique"),
     # Elixir (Ancient)
     "Elixir": ("#7638ff", "#22ff88", "BL", "Unique"),
     # Aureate (Ancient)
@@ -389,8 +384,8 @@ KEYWORDS = [
     "Exhaust Pile", "Draw Pile", "Discard Pile", "Golden Fruit",
     "Distillates", "Distillate", "Enchanted", "Vulnerable", "Fermented",
     "Multiplayer", "Dexterity", "Reaction", "Strength", "Infused",
-    "Citrinitas", "Nigredo", "Procure", "Exhaust", "Ferment", "Albedo", "Plating",
-    "Poison", "Potion", "Regen", "Retain", "Rubedo", "Gambit", "Innate",
+    "Antitoxin", "Procure", "Exhaust", "Ferment", "Plating",
+    "Poison", "Potion", "Retain", "Gambit", "Innate",
     "Infuse", "Energy", "Block", "Toxic", "Weak", "Stun", "Hand",
 ]
 KEYWORD_RE = re.compile(

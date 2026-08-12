@@ -1,10 +1,6 @@
 {
   "ALCHEMIST-BREW.description": "Esta opción del punto de descanso te permite obtener una [gold]poción[/gold] al azar. Hay 3 [gold]pociones[/gold] que solo se consiguen así.",
   "ALCHEMIST-BREW.title": "Preparar",
-  "ALCHEMIST-LIFEBLOOD.description": "El daño incluye la [gold]regeneración[/gold] que ya tienes.",
-  "ALCHEMIST-LIFEBLOOD.title": "Sangre vital",
   "ALCHEMIST-MASTERWORK.description": "Esta carta brilla en [gold]oro[/gold] si [gold]encantaste[/gold] cinco cartas o más en este combate, incluida la que vas a [gold]infundir[/gold].",
-  "ALCHEMIST-MASTERWORK.title": "Obra maestra",
-  "ALCHEMIST-OVERFLOW.description": "Golpea a TODOS los enemigos tantas veces como tu [gold]regeneración[/gold], incluido el 1 que otorga esta carta.",
-  "ALCHEMIST-OVERFLOW.title": "Desbordamiento"
+  "ALCHEMIST-MASTERWORK.title": "Obra maestra"
 }

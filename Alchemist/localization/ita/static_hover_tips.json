@@ -1,10 +1,6 @@
 {
   "ALCHEMIST-BREW.description": "Questa opzione dei luoghi di riposo ti permette di ricevere una [gold]pozione[/gold] casuale. Esistono 3 [gold]pozioni[/gold] ottenibili solo in questo modo.",
   "ALCHEMIST-BREW.title": "Prepara",
-  "ALCHEMIST-LIFEBLOOD.description": "Il danno include la [gold]Rigenerazione[/gold] che hai già.",
-  "ALCHEMIST-LIFEBLOOD.title": "Linfa Vitale",
   "ALCHEMIST-MASTERWORK.description": "Questa carta brilla d'[gold]oro[/gold] se hai [gold]incantato[/gold] cinque o più carte in questo combattimento, inclusa quella che stai per [gold]infondere[/gold].",
-  "ALCHEMIST-MASTERWORK.title": "Capolavoro",
-  "ALCHEMIST-OVERFLOW.description": "Colpisce TUTTI i nemici un numero di volte pari alla tua [gold]Rigenerazione[/gold], inclusa la 1 fornita da questa carta.",
-  "ALCHEMIST-OVERFLOW.title": "Traboccamento"
+  "ALCHEMIST-MASTERWORK.title": "Capolavoro"
 }

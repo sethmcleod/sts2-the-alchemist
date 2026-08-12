@@ -1,48 +1,39 @@
-using Alchemist.AlchemistCode.Compat;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
-using BaseLib.Utils;
+using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+// The antidote. Self-limiting by construction: converting 15 Poison buys exactly one 15-damage tick,
+// then the Antitoxin is gone while the Poison keeps ticking down at 14, 13, 12
 public class Overflow : AlchemistCard
 {
-    public Overflow() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
+    public Overflow() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithDamage(3, 1);
-        WithPower<RegenPower>(1, 0);
         WithKeyword(CardKeyword.Exhaust);
-        WithTip(typeof(RegenPower));
-        ExplainNumber(DynamicVars.Damage, "ALCHEMIST-OVERFLOW");
+        WithTip(typeof(PoisonPower));
+        WithTip(typeof(AntitoxinPower));
     }
 
-    // Counts the Regen this card is about to grant, so the face reads the real hit count. A creature
-    // that cannot receive powers never gains it
-    private int RegenNow => IsMutable && CombatState != null
-        ? Owner.Creature.GetPowerAmount<RegenPower>() + (Owner.Creature.CanReceivePowers ? 1 : 0)
-        : 0;
+    private int PoisonNow =>
+        IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<PoisonPower>() : 0;
+
+    protected override bool ConditionalGlow => PoisonNow > 0;
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
-        description.Add("HitsLine", HitsLine(RegenNow));
+        description.Add("Dose", PoisonNow is var p and > 0 ? $" ([green]{p}[/green])" : "");
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (CombatState == null) return;
-        await CommonActions.ApplySelf<RegenPower>(choiceContext, this);
-        var regen = Owner.Creature.GetPowerAmount<RegenPower>();
-        if (regen <= 0) return;
-        await PowerCmd.Remove<RegenPower>(Owner.Creature);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .WithHitCount(regen)
-            .WithHitFx(HitVfx("vfx/vfx_heavy_blunt"), null, "heavy_attack.mp3")
-            .FromCard(this, play)
-            .TargetingAllOpponents(CombatState)
-            .Execute(choiceContext);
+        var dose = PoisonNow;
+        if (dose <= 0) return;
+        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, dose, Owner.Creature, this);
     }
 }
