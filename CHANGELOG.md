@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.7.2] - 2026-08-11
+
 ### Added
 
 - Added Macerate card: "Deal 5 (7) damage. Deals additional damage equal to your Poison."
