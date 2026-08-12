@@ -77,8 +77,8 @@ BAYER = [
 
 # Card -> (start color, end color, direction, family tag)
 # Cards in a family share the start color. Every pair must be unique;
-# the validate command enforces this. Verticals mark Basics and tokens.
-# Token cards all use a vertical gradient (U or D), which sets them apart from the deck at a glance
+# the validate command enforces this.
+# Direction encodes card type: Attack TR, Skill BR, Power R or L, token vertical (U or D)
 COLORS = {
     "Etch": ("#0b2a4a", "#5fd0e8", "TR", "Unique"),
     "Neurotoxin": ("#5f011f", "#b3bd2a", "TR", "Poison attacks"),
@@ -96,6 +96,7 @@ COLORS = {
     "Slag": ("#45293f", "#c98fd6", "R", "Unique"),
     # Antitoxin: the purple counterpart to the poison reds
     "Slake": ("#2f0170", "#8f6fd8", "TR", "Antitoxin"),
+    "Tincture": ("#2f0170", "#b89ae8", "BR", "Antitoxin"),
     # Poison attacks
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
@@ -144,10 +145,12 @@ COLORS = {
     # Potion: attacks
     "Fighting Spirits": ("#045062", "#bf8823", "TR", "Potion: attacks"),
     "Volatile Mix": ("#045062", "#a55d1e", "TR", "Potion: attacks"),
+    "Heavy Dose": ("#045062", "#8f2f2f", "TR", "Potion: attacks"),
     # Potion: engines
     "Bottled Fury": ("#045062", "#e58646", "R", "Potion: engines"),
     "Precipitate": ("#045062", "#e1542b", "BR", "Potion: engines"),
     "Windfall": ("#045062", "#c9dd52", "R", "Potion: engines"),
+    "Afterglow": ("#045062", "#f0c46a", "BR", "Potion: engines"),
     # Azoth (one-off)
     "Azoth": ("#1f1723", "#8a5f9e", "TR", "Unique"),
     # Fumigate (one-off)
@@ -158,7 +161,7 @@ COLORS = {
     "Anneal": ("#1f1723", "#7f9aa8", "BR", "Exhaust pile: skills"),
     # Poison as a resource to spend
     "Hemorrhage": ("#00212a", "#0d8a6b", "TR", "Poison payoffs"),
-    "Overflow": ("#00212a", "#10aba5", "TR", "Poison payoffs"),
+    "Overflow": ("#00212a", "#10aba5", "BR", "Poison payoffs"),
     "Circulation": ("#14424e", "#b8e86a", "BR", "Poison payoffs"),
     # Poison skills
     "Fester": ("#4e8701", "#0139b2", "BR", "Poison skills"),
@@ -210,9 +213,9 @@ COLORS = {
     # Defend (Basic)
     "Defend": ("#0f2a43", "#2b6ea8", "TR", "Unique"),
     # Spike (Basic): the starter dose, anchored on the Poison-attack red
-    "Spike": ("#650101", "#4fbf3a", "D", "Unique"),
+    "Spike": ("#650101", "#4fbf3a", "TR", "Unique"),
     # Flask (Basic): the starter brew, anchored on the potion teal
-    "Flask": ("#045062", "#d8b23a", "D", "Unique"),
+    "Flask": ("#045062", "#d8b23a", "BR", "Unique"),
     # Nigredo (token)
     # Albedo (token)
     # Rubedo (token)

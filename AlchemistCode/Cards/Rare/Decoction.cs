@@ -31,9 +31,6 @@ public class Decoction : AlchemistCard
         foreach (var card in selected)
             await CardCmd.Exhaust(choiceContext, card);
 
-        await PotionCmd.TryToProcure(
-            PotionFactory.CreateRandomPotionInCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable(),
-            Owner);
 
         if (reacted)
             await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 1);

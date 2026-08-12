@@ -1,12 +1,13 @@
 using Alchemist.AlchemistCode.Compat;
+using Alchemist.AlchemistCode.Powers;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
-using Alchemist.AlchemistCode.Powers;
+using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -17,6 +18,7 @@ public class Transmute : AlchemistCard
     public Transmute() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithKeyword(CardKeyword.Exhaust);
+        WithCards(1, 1);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(StrengthPower));
     }
@@ -31,15 +33,6 @@ public class Transmute : AlchemistCard
             await PowerCmd.Apply<TransmuteStrengthPower>(choiceContext, Owner.Creature, poison, Owner.Creature, this);
 
         if (reacted)
-        {
-            var rarity = IsUpgraded ? PotionRarity.Uncommon : PotionRarity.Common;
-            var rng = Owner.RunState.Rng.CombatPotionGeneration;
-            var options = GameCompat.GetPotionOptions(Owner)
-                .Where(p => p.CanBeGeneratedInCombat && p.Rarity == rarity)
-                .ToList();
-            var potion = rng.NextItem(options);
-            if (potion != null)
-                await PotionCmd.TryToProcure(potion.ToMutable(), Owner);
-        }
+            await CommonActions.Draw(this, choiceContext);
     }
 }

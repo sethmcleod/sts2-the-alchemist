@@ -15,6 +15,9 @@ mod).
 - Added the Antitoxin power: it absorbs damage from Poison and does not expire at the end of your turn
 - Added the Antitoxin Capacity power: it raises how much Antitoxin you can hold, above the base of 20
 - Added Slake card: "Deal 8 (11) damage. Gain 3 (4) Antitoxin."
+- Added Tincture card: "Gain 2 Antitoxin. Gain 3 (4) additional Antitoxin for each Potion you have."
+- Added Heavy Dose card: "Deal 6 (9) damage. For each Potion you have, deal 3 additional damage and gain 1 Poison."
+- Added Afterglow card: "Gain 1 Energy and draw 1 card for each Potion you have used this combat. Exhaust."
 
 ### Changed
 
@@ -45,6 +48,8 @@ mod).
 - Removed Plating from the deck. Vitrify, Sediment and Libation now grant Antitoxin when Enchanted
 - Reworked Etch card: "Deal 16 (20) damage. Gain 2 Poison." It no longer ignores Block
 - Changed Hemorrhage card: cost is now 1, and it deals 2 (3) times your Poison in damage instead of 3 times
+- Reworked Transmute card: its Reaction (Exhaust) now draws 1 (2) cards instead of procuring a Potion
+- Reworked Decoction card: it no longer procures a Potion
 
 ### Removed
 
