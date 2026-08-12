@@ -14,6 +14,7 @@ public class MercurialForm : AlchemistCard
         WithVar("Strength", 1, 1);
         WithTip(typeof(StrengthPower));
         WithTip(typeof(PoisonPower));
+        WithTip(typeof(Powers.AntitoxinPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

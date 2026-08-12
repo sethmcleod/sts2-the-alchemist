@@ -34,7 +34,7 @@ Fresh Batch,Uncommon,Skill,1,Procure a random potion. Gain 6 (9) Block. Exhaust.
 Flask,Basic,Skill,1,Gain 4 (7) Block. The first time you play this each combat, procure a random Unstable Potion.
 Froth,Uncommon,Attack,1,Retain. Ferment (0/3). Deal 4 (6) damage. Hits an additional time for each turn fermented.
 Fumigate,Common,Attack,1,Deal 1 (2) damage to ALL enemies. Hits an additional time for every 2 cards in your Exhaust Pile. Exhaust.
-Golden Fruit,Quest,Skill,1,Heal 8 HP. Gain 25 Gold. Take an extra turn after this one. Exhaust.
+Golden Fruit,Quest,Skill,1,Gain 25 Gold. Take an extra turn after this one. Exhaust.
 Golden Touch,Rare,Power,3 (2),"Enchanted cards cost 1 less. This stacks. If this card is Enchanted, it costs 1 less. (Infuse a card in your Hand.)"
 Heavy Hand,Uncommon,Power,1,"Whenever you gain or apply Poison, apply an additional 1 (2)."
 Hemorrhage,Uncommon,Attack,1 (0),Lose HP equal to your Poison. Deal 3 times that much damage.
@@ -46,7 +46,7 @@ Libation,Rare,Skill,1,"Procure a random potion. Gain 4 (6) Block for each potion
 Macerate,Common,Attack,1,Deal 5 (7) damage. Deals additional damage equal to your Poison.
 Masterwork,Uncommon,Skill,1,"Infuse a card in your Hand. If you have Enchanted 5 or more cards this combat, gain 1 (2) Energy, draw 1 (2) cards, and Exhaust this card."
 Melt Down,Uncommon,Skill,1,Choose a card in your Draw Pile to Transform into a Distillate(+).
-Mercurial Form,Rare,Power,3,"At the start of your turn, gain 1 (2) Strength. At the end of your turn, heal HP equal to half your Poison."
+Mercurial Form,Rare,Power,3,"At the start of your turn, gain 1 (2) Strength. At the end of your turn, gain Antitoxin equal to half your Poison."
 Needle Point,Rare,Attack,0,"Innate. Deal 7 (10) damage. Apply 1 (2) Weak. If this card is Enchanted, apply 1 (2) Vulnerable."
 Neurotoxin,Rare,Attack,2,Deal 18 (24) damage. Apply 5 (7) Poison. Exhaust.
 Overdose,Common,Attack,1,Lose 4 HP. Deal 15 (20) damage. Reaction (Exhaust): Draw 1 card.

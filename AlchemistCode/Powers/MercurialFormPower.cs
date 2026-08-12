@@ -19,6 +19,7 @@ public class MercurialFormPower : AlchemistPower
         {
             HoverTipFactory.FromPower<StrengthPower>(),
             HoverTipFactory.FromPower<PoisonPower>(),
+            HoverTipFactory.FromPower<AntitoxinPower>(),
         };
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
@@ -32,9 +33,9 @@ public class MercurialFormPower : AlchemistPower
         IEnumerable<Creature> participants)
     {
         if (!participants.Contains(Owner)) return;
-        var heal = Owner.GetPowerAmount<PoisonPower>() / 2;
-        if (heal <= 0) return;
+        var dose = Owner.GetPowerAmount<PoisonPower>() / 2;
+        if (dose <= 0) return;
         Flash();
-        await CreatureCmd.Heal(Owner, heal);
+        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner, dose, Owner, null);
     }
 }

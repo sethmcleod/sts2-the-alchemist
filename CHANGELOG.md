@@ -40,6 +40,8 @@ mod).
 - Reworked Neurotoxin card: it now applies 5 (7) Poison instead of Stunning the enemy
 - Reworked Fever Pitch card: "At the start of your turn, if you have 10 or more Poison, draw 1 (2) cards."
 - Reworked Suffuse card: "At the start of your turn, ALL allies procure a random Unstable Potion."
+- Changed Golden Fruit card: it no longer heals 8 HP
+- Reworked Mercurial Form card: at the end of your turn it now gains Antitoxin equal to half your Poison, instead of healing that much HP
 
 ### Removed
 

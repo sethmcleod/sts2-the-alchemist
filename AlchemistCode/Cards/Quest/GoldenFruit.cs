@@ -24,14 +24,12 @@ public class GoldenFruit : AlchemistCard
 
     public GoldenFruit() : base(1, CardType.Skill, CardRarity.Quest, TargetType.Self)
     {
-        WithVar("heal", 8);
         WithVar("gold", 25);
         WithKeyword(CardKeyword.Exhaust);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CreatureCmd.Heal(Owner.Creature, DynamicVars["heal"].BaseValue);
         await PlayerCmd.GainGold(DynamicVars["gold"].BaseValue, Owner);
         // The base game's invisible extra-turn counter
         await ExtraTurn.Grant(choiceContext, Owner.Creature, this);
