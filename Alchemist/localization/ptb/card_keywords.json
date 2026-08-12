@@ -12,7 +12,7 @@
   "ALCHEMIST-REACTION.description.attack": "Se você jogar esta carta imediatamente após um Ataque no mesmo turno, ela possui um efeito de [gold]Reação[/gold].",
   "ALCHEMIST-REACTION.description.block": "Se você jogar esta carta imediatamente após uma carta que recebeu [gold]Proteção[/gold] no mesmo turno, ela possui um efeito de [gold]Reação[/gold].",
   "ALCHEMIST-REACTION.description.enchanted": "Se você jogar esta carta imediatamente após uma carta [gold]Encantada[/gold] no mesmo turno, ela possui um efeito de [gold]Reação[/gold].",
-  "ALCHEMIST-REACTION.description.exhaust": "Se você jogar esta carta imediatamente após uma carta que foi [gold]Exaurida[/gold] no mesmo turno, ela possui um efeito de [gold]Reação[/gold].",
+  "ALCHEMIST-REACTION.description.exhaust": "Se a carta que você jogou imediatamente antes desta foi [gold]Exaurida[/gold] no mesmo turno, esta carta possui um efeito de [gold]Reação[/gold].",
   "ALCHEMIST-REACTION.description.power": "Se você jogar esta carta imediatamente após um Poder no mesmo turno, ela possui um efeito de [gold]Reação[/gold].",
   "ALCHEMIST-REACTION.description.skill": "Se você jogar esta carta imediatamente após uma Técnica no mesmo turno, ela possui um efeito de [gold]Reação[/gold].",
   "ALCHEMIST-REACTION.title": "Reação"

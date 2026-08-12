@@ -3,7 +3,7 @@
   "ALCHEMIST-BREW.title": "Варка",
   "ALCHEMIST-LIFEBLOOD.description": "Урон учитывает [gold]регенерацию[/gold], которая у вас уже есть.",
   "ALCHEMIST-LIFEBLOOD.title": "Живая кровь",
-  "ALCHEMIST-MASTERWORK.description": "Эта карта светится [gold]золотым[/gold], если в этом бою вы наложили [gold]чары[/gold] на пять или более карт, включая ту, которую [gold]пропитаете[/gold].",
+  "ALCHEMIST-MASTERWORK.description": "Эта карта светится [gold]золотым[/gold], если в этом бою вы [gold]зачаровали[/gold] пять или более карт, включая ту, которую [gold]пропитаете[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Шедевр",
   "ALCHEMIST-OVERFLOW.description": "Наносит удар ВСЕМ врагам столько раз, сколько у вас [gold]регенерации[/gold], включая 1, которую дает эта карта.",
   "ALCHEMIST-OVERFLOW.title": "Переполнение"

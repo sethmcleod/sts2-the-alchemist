@@ -12,7 +12,7 @@
   "ALCHEMIST-REACTION.description.attack": "Gdy w tej samej turze zagrasz tę kartę bezpośrednio po Ataku, ma ona efekt [gold]Reakcji[/gold].",
   "ALCHEMIST-REACTION.description.block": "Gdy w tej samej turze zagrasz tę kartę bezpośrednio po karcie, która dała [gold]Blok[/gold], ma ona efekt [gold]Reakcji[/gold].",
   "ALCHEMIST-REACTION.description.enchanted": "Gdy w tej samej turze zagrasz tę kartę bezpośrednio po [gold]Zaklętej[/gold] karcie, ma ona efekt [gold]Reakcji[/gold].",
-  "ALCHEMIST-REACTION.description.exhaust": "Gdy w tej samej turze zagrasz tę kartę bezpośrednio po karcie, która została [gold]Wyczerpana[/gold], ma ona efekt [gold]Reakcji[/gold].",
+  "ALCHEMIST-REACTION.description.exhaust": "Jeśli karta zagrana bezpośrednio przed tą w tej samej turze została [gold]Wyczerpana[/gold], ta karta ma efekt [gold]Reakcji[/gold].",
   "ALCHEMIST-REACTION.description.power": "Gdy w tej samej turze zagrasz tę kartę bezpośrednio po Mocy, ma ona efekt [gold]Reakcji[/gold].",
   "ALCHEMIST-REACTION.description.skill": "Gdy w tej samej turze zagrasz tę kartę bezpośrednio po Umiejętności, ma ona efekt [gold]Reakcji[/gold].",
   "ALCHEMIST-REACTION.title": "Reakcja"

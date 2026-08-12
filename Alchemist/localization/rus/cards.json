@@ -38,7 +38,7 @@
   "ALCHEMIST-CORROSIVE.title": "Разъедание",
   "ALCHEMIST-DECANT.description": "Наносит {Damage:diff()} урона.\nДобавляет {IfUpgraded:show:[green]Дистиллят+[/green]|[gold]Дистиллят[/gold]} в вашу [gold]руку[/gold].",
   "ALCHEMIST-DECANT.title": "Декантация",
-  "ALCHEMIST-DECOCTION.description": "Сжигает 1 карту.\nДает случайное [gold]зелье[/gold].\n[gold]Реакция[/gold] ([gold]чары[/gold]): [gold]пропитывает[/gold] карту в вашей [gold]руке[/gold].",
+  "ALCHEMIST-DECOCTION.description": "Сжигает 1 карту.\nДает случайное [gold]зелье[/gold].\n[gold]Реакция[/gold] ([gold]зачарование[/gold]): [gold]пропитывает[/gold] карту в вашей [gold]руке[/gold].",
   "ALCHEMIST-DECOCTION.title": "Отвар",
   "ALCHEMIST-DEFEND_ALCHEMIST.description": "Дает {Block:diff()} [gold]защиты[/gold].",
   "ALCHEMIST-DEFEND_ALCHEMIST.title": "Защита",

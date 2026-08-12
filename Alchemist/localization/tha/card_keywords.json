@@ -12,7 +12,7 @@
   "ALCHEMIST-REACTION.description.attack": "ถ้าคุณเล่นการ์ดนี้ต่อจากการ์ดโจมตีทันทีในเทิร์นเดียวกัน มันจะมีผล[gold]ปฏิกิริยา[/gold]",
   "ALCHEMIST-REACTION.description.block": "ถ้าคุณเล่นการ์ดนี้ต่อจากการ์ดที่ได้รับ[gold]บล็อก[/gold]ทันทีในเทิร์นเดียวกัน มันจะมีผล[gold]ปฏิกิริยา[/gold]",
   "ALCHEMIST-REACTION.description.enchanted": "ถ้าคุณเล่นการ์ดนี้ต่อจากการ์ดที่ถูก[gold]ร่ายมนตร์[/gold]ทันทีในเทิร์นเดียวกัน มันจะมีผล[gold]ปฏิกิริยา[/gold]",
-  "ALCHEMIST-REACTION.description.exhaust": "ถ้าคุณเล่นการ์ดนี้ต่อจากการ์ดที่[gold]สลาย[/gold]ทันทีในเทิร์นเดียวกัน มันจะมีผล[gold]ปฏิกิริยา[/gold]",
+  "ALCHEMIST-REACTION.description.exhaust": "ถ้าการ์ดที่คุณเล่นก่อนหน้าใบนี้ทันที[gold]สลาย[/gold]ในเทิร์นเดียวกัน การ์ดใบนี้จะมีผล[gold]ปฏิกิริยา[/gold]",
   "ALCHEMIST-REACTION.description.power": "ถ้าคุณเล่นการ์ดนี้ต่อจากการ์ดพลังทันทีในเทิร์นเดียวกัน มันจะมีผล[gold]ปฏิกิริยา[/gold]",
   "ALCHEMIST-REACTION.description.skill": "ถ้าคุณเล่นการ์ดนี้ต่อจากการ์ดทักษะทันทีในเทิร์นเดียวกัน มันจะมีผล[gold]ปฏิกิริยา[/gold]",
   "ALCHEMIST-REACTION.title": "ปฏิกิริยา"

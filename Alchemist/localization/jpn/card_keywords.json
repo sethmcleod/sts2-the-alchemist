@@ -12,7 +12,7 @@
   "ALCHEMIST-REACTION.description.attack": "同じターン中にアタックの直後にこのカードをプレイすると、[gold]反応[/gold]の効果を得る。",
   "ALCHEMIST-REACTION.description.block": "同じターン中に[gold]ブロック[/gold]を得たカードの直後にこのカードをプレイすると、[gold]反応[/gold]の効果を得る。",
   "ALCHEMIST-REACTION.description.enchanted": "同じターン中に[gold]エンチャント[/gold]されたカードの直後にこのカードをプレイすると、[gold]反応[/gold]の効果を得る。",
-  "ALCHEMIST-REACTION.description.exhaust": "同じターン中に[gold]廃棄[/gold]されたカードの直後にこのカードをプレイすると、[gold]反応[/gold]の効果を得る。",
+  "ALCHEMIST-REACTION.description.exhaust": "同じターン中に直前にプレイしたカードが[gold]廃棄[/gold]された場合、このカードは[gold]反応[/gold]の効果を得る。",
   "ALCHEMIST-REACTION.description.power": "同じターン中にパワーの直後にこのカードをプレイすると、[gold]反応[/gold]の効果を得る。",
   "ALCHEMIST-REACTION.description.skill": "同じターン中にスキルの直後にこのカードをプレイすると、[gold]反応[/gold]の効果を得る。",
   "ALCHEMIST-REACTION.title": "反応"

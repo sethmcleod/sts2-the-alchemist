@@ -12,7 +12,7 @@
   "ALCHEMIST-REACTION.description.attack": "Bu kartı aynı turda bir Atak oynadıktan hemen sonra oynarsan bir [gold]Reaksiyon[/gold] etkisi olur.",
   "ALCHEMIST-REACTION.description.block": "Bu kartı aynı turda [gold]Blok[/gold] kazandıran bir karttan hemen sonra oynarsan bir [gold]Reaksiyon[/gold] etkisi olur.",
   "ALCHEMIST-REACTION.description.enchanted": "Bu kartı aynı turda [gold]Büyülenmiş[/gold] bir kart oynadıktan hemen sonra oynarsan bir [gold]Reaksiyon[/gold] etkisi olur.",
-  "ALCHEMIST-REACTION.description.exhaust": "Bu kartı aynı turda [gold]Tüketilen[/gold] bir karttan hemen sonra oynarsan bir [gold]Reaksiyon[/gold] etkisi olur.",
+  "ALCHEMIST-REACTION.description.exhaust": "Bu karttan hemen önce aynı turda oynadığın kart [gold]Tüketildiyse[/gold], bu kartın bir [gold]Reaksiyon[/gold] etkisi olur.",
   "ALCHEMIST-REACTION.description.power": "Bu kartı aynı turda bir Güç oynadıktan hemen sonra oynarsan bir [gold]Reaksiyon[/gold] etkisi olur.",
   "ALCHEMIST-REACTION.description.skill": "Bu kartı aynı turda bir Beceri oynadıktan hemen sonra oynarsan bir [gold]Reaksiyon[/gold] etkisi olur.",
   "ALCHEMIST-REACTION.title": "Reaksiyon"

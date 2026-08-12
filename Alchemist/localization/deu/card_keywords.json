@@ -12,7 +12,7 @@
   "ALCHEMIST-REACTION.description.attack": "Wenn du diese Karte im selben Zug direkt nach einem Angriff spielst, hat sie einen [gold]Reaktions[/gold]-Effekt.",
   "ALCHEMIST-REACTION.description.block": "Wenn du diese Karte im selben Zug direkt nach einer Karte spielst, die [gold]Block[/gold] gegeben hat, hat sie einen [gold]Reaktions[/gold]-Effekt.",
   "ALCHEMIST-REACTION.description.enchanted": "Wenn du diese Karte im selben Zug direkt nach einer [gold]Verzauberten[/gold] Karte spielst, hat sie einen [gold]Reaktions[/gold]-Effekt.",
-  "ALCHEMIST-REACTION.description.exhaust": "Wenn du diese Karte im selben Zug direkt nach einer Karte spielst, die [gold]Erschöpft[/gold] wurde, hat sie einen [gold]Reaktions[/gold]-Effekt.",
+  "ALCHEMIST-REACTION.description.exhaust": "Wenn die Karte, die du im selben Zug direkt davor gespielt hast, [gold]Erschöpft[/gold] wurde, hat diese Karte einen [gold]Reaktions[/gold]-Effekt.",
   "ALCHEMIST-REACTION.description.power": "Wenn du diese Karte im selben Zug direkt nach einer Macht spielst, hat sie einen [gold]Reaktions[/gold]-Effekt.",
   "ALCHEMIST-REACTION.description.skill": "Wenn du diese Karte im selben Zug direkt nach einer Fertigkeit spielst, hat sie einen [gold]Reaktions[/gold]-Effekt.",
   "ALCHEMIST-REACTION.title": "Reaktion"

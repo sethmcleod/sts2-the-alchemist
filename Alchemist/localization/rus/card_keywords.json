@@ -12,7 +12,7 @@
   "ALCHEMIST-REACTION.description.attack": "Если в том же ходу вы разыграете эту карту сразу после Атаки, она получит эффект [gold]реакции[/gold].",
   "ALCHEMIST-REACTION.description.block": "Если в том же ходу вы разыграете эту карту сразу после карты, давшей [gold]защиту[/gold], она получит эффект [gold]реакции[/gold].",
   "ALCHEMIST-REACTION.description.enchanted": "Если в том же ходу вы разыграете эту карту сразу после [gold]зачарованной[/gold] карты, она получит эффект [gold]реакции[/gold].",
-  "ALCHEMIST-REACTION.description.exhaust": "Если в том же ходу вы разыграете эту карту сразу после карты, которая [gold]сжигается[/gold], она получит эффект [gold]реакции[/gold].",
+  "ALCHEMIST-REACTION.description.exhaust": "Если карта, разыгранная непосредственно перед этой в том же ходу, [gold]сжигается[/gold], эта карта получает эффект [gold]реакции[/gold].",
   "ALCHEMIST-REACTION.description.power": "Если в том же ходу вы разыграете эту карту сразу после Таланта, она получит эффект [gold]реакции[/gold].",
   "ALCHEMIST-REACTION.description.skill": "Если в том же ходу вы разыграете эту карту сразу после Навыка, она получит эффект [gold]реакции[/gold].",
   "ALCHEMIST-REACTION.title": "Реакция"

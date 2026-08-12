@@ -12,7 +12,7 @@
   "ALCHEMIST-REACTION.description.attack": "如果你在同一回合内打出一张攻击牌后紧接着打出这张牌，它拥有[gold]反应[/gold]效果。",
   "ALCHEMIST-REACTION.description.block": "如果你在同一回合内打出一张获得了[gold]格挡[/gold]的牌后紧接着打出这张牌，它拥有[gold]反应[/gold]效果。",
   "ALCHEMIST-REACTION.description.enchanted": "如果你在同一回合内打出一张[gold]附魔[/gold]牌后紧接着打出这张牌，它拥有[gold]反应[/gold]效果。",
-  "ALCHEMIST-REACTION.description.exhaust": "如果你在同一回合内打出一张被[gold]消耗[/gold]的牌后紧接着打出这张牌，它拥有[gold]反应[/gold]效果。",
+  "ALCHEMIST-REACTION.description.exhaust": "如果你在同一回合中紧接在这张牌之前打出的牌被[gold]消耗[/gold]，这张牌拥有[gold]反应[/gold]效果。",
   "ALCHEMIST-REACTION.description.power": "如果你在同一回合内打出一张能力牌后紧接着打出这张牌，它拥有[gold]反应[/gold]效果。",
   "ALCHEMIST-REACTION.description.skill": "如果你在同一回合内打出一张技能牌后紧接着打出这张牌，它拥有[gold]反应[/gold]效果。",
   "ALCHEMIST-REACTION.title": "反应"
