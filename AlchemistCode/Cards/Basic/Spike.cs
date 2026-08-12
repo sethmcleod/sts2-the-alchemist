@@ -6,8 +6,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Basic;
 
-// The whole gameplan on one starter: the enemy takes the dose and so do you. The self-Poison does not
-// scale on upgrade, so upgrading is strictly better and never widens the hole it digs
 public class Spike : AlchemistCard
 {
     public Spike() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)

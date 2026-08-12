@@ -23,8 +23,6 @@ public sealed class Laced : AlchemistEnchantment
         if (cardSource != Card || !props.IsPoweredAttack() || result.UnblockedDamage <= 0) return;
 
         await PowerCmd.Apply<PoisonPower>(choiceContext, target, Amount, Card.Owner.Creature, null);
-        // The same dose that goes on the blade goes into the Alchemist. This is what prices Laced on a
-        // card that hits many times, where the enemy Poison used to compound at no cost
         await PowerCmd.Apply<PoisonPower>(choiceContext, Card.Owner.Creature, Amount, Card.Owner.Creature, null);
     }
 }

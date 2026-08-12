@@ -5,8 +5,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// Puts the Unstable tip on the potion itself, not only on the card that made it. The mark lives outside
-// the potion model, so the potion cannot carry the tip on its own.
+// The mark lives outside the potion model, so the potion cannot carry this tip on its own.
 public static class UnstablePotionTipPatch
 {
     [HarmonyPatch(typeof(PotionModel), "get_HoverTips")]

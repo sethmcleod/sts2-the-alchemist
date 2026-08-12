@@ -11,18 +11,12 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Soaks Poison damage one for one, and only Poison. It is not healing and it is not Block: it does not
-// expire at the end of your turn and it does not stop an attack. It is the Alchemist's own dosing,
-// paid for in advance.
-//
 // The ModifyDamageAdditive override is spelled differently on the two game branches, so it lives in
 // Compat/AntitoxinPowerCompat.cs and calls the branch-agnostic Absorb below. The ceiling and the
 // per-turn absorb record live in AntitoxinRules, which exists even when this power does not.
 public partial class AntitoxinPower : AlchemistPower
 {
-    // The ceiling the second bar reads against. Anti-toxin never decays on its own, so without a cap a
-    // quiet stretch of combat would bank an arbitrary buffer. Cards and relics raise it by granting
-    // AntitoxinCapacityPower, and AntitoxinCap is what enforces the result
+    // Raised by granting AntitoxinCapacityPower; AntitoxinRules is what enforces the result
     public const int BaseMax = 20;
 
     public static int MaxFor(Creature creature) =>
@@ -40,9 +34,9 @@ public partial class AntitoxinPower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
-    // A Poison tick is the only damage that arrives unblockable and unpowered with no dealer and no card
-    // behind it. The base game's own Poison forecast runs through this same hook, so reducing here keeps
-    // the incoming damage number honest without a separate patch
+    // A Poison tick is the only damage that arrives unblockable and unpowered with no dealer and no
+    // card behind it. PoisonPower.CalculateTotalDamageNextTurn runs its forecast through this same
+    // hook, so reducing here also keeps the incoming damage preview correct
     private bool IsPoisonTick(Creature? target, ValueProp props, Creature? dealer, CardModel? cardSource) =>
         target == Owner
         && dealer == null

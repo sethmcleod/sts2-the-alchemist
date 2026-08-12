@@ -9,7 +9,7 @@ namespace Alchemist.AlchemistCode.Potions;
 // silently never run here. Tweens and CpuParticles2D are engine types, so they always do.
 public static class UnstablePotionVfx
 {
-    // The Witch's own green, matched exactly so the effect reads as one shared mechanic across mods
+    // The Witch's WitchFx.WitchGreen, matched so the effect reads the same across both mods
     private static readonly Color Toxic = new("83eb85");
 
     private const string AmbientName = "UnstableAmbientVfx";
@@ -59,8 +59,8 @@ public static class UnstablePotionVfx
         image.RotationDegrees = 0f;
     }
 
-    // fade rather than hanging in the air after the burst, and killing the looping tween hands the
-    // rotation to the shake alone instead of leaving two tweens fighting over the same property
+    // Also kills the looping tween, which animates rotation_degrees too. Without that, two live tweens
+    // fight over the same property and the shake comes out jittery
     public static void Shake(NPotion potion)
     {
         if (!GodotObject.IsInstanceValid(potion) || potion.Image is not { } image) return;
@@ -76,8 +76,6 @@ public static class UnstablePotionVfx
             tween.TweenProperty(image, "rotation_degrees", angle, step);
     }
 
-    // Stops new fumes at once and fades the ones already in the air, over the shake's own length, so
-    // the potion is clean by the time the burst goes off
     private static void FadeAmbient(NPotion potion)
     {
         if (potion.GetNodeOrNull<Node2D>(AmbientName) is not { } fumes) return;
@@ -94,8 +92,8 @@ public static class UnstablePotionVfx
         }));
     }
 
-    // Glass and fumes. Built in code rather than from a scene file, because a mod scene that references
-    // base-game textures bakes those references to null on export
+    // Built in code rather than from a scene file: a mod scene that references base-game textures bakes
+    // those references to null on export
     public static void PlayBurst(Node host, Vector2 at)
     {
         if (!GodotObject.IsInstanceValid(host)) return;

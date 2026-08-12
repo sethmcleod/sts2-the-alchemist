@@ -5,9 +5,8 @@ using MegaCrit.Sts2.Core.Rooms;
 
 namespace Alchemist.AlchemistCode.Potions;
 
-// Discards every Unstable potion when combat ends. A run-hook singleton rather than a card or power
-// hook, because the potions must go even if the card that made them left play, and in multiplayer
-// every player's belt is swept, not only the Alchemist's.
+// A run-hook singleton rather than a card or power hook: the potions must go even if the card that
+// made them left play, and in multiplayer every player's belt is swept, not only the Alchemist's.
 public sealed class UnstablePotionSweeper() : CustomSingletonModel(HookType.Run)
 {
     public override async Task AfterCombatEnd(CombatRoom room)

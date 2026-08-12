@@ -8,8 +8,6 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-// The antidote. Self-limiting by construction: converting 15 Poison buys exactly one 15-damage tick,
-// then the Antitoxin is gone while the Poison keeps ticking down at 14, 13, 12
 public class Overflow : AlchemistCard
 {
     public Overflow() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)

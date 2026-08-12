@@ -6,8 +6,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// Draw paid for in Poison, which this deck often wants anyway. Priced against Acrobatics: 1 energy,
-// draw 3, discard 1
 public class Circulation : AlchemistCard
 {
     public Circulation() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)

@@ -7,7 +7,6 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-// Built on True Grit: the base card takes what it is given, and the upgrade buys the choice
 public class Poultice : AlchemistCard
 {
     public Poultice() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)

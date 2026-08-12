@@ -8,8 +8,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The HP loss is direct, so Antitoxin does not stop it. That is the point: the card has to stay
-// dangerous rather than turning free once you are holding a buffer
 public class Hemorrhage : AlchemistCard
 {
     private const int Multiplier = 3;

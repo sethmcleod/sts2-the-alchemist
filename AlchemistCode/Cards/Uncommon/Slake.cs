@@ -5,8 +5,6 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The Antitoxin generator that also does something on the turn you play it. Priced off Iron Wave, a
-// Common at 5 damage plus 5 Block
 public class Slake : AlchemistCard
 {
     public Slake() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)

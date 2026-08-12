@@ -18,8 +18,6 @@ public class LashOut : AlchemistCard
         WithDamage(5, 2);
     }
 
-    // Only the Reaction moves the count. The damage per hit pays for that, since the Reaction is the
-    // card's whole payoff now
     private int HitCount => Hits + (ReactionActive ? 1 : 0);
 
     // CombatState, not IsMutable: the compendium's upgraded preview is a mutable copy with no Owner. Only

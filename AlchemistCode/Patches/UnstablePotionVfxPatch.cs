@@ -8,8 +8,6 @@ using MegaCrit.Sts2.Core.Nodes.Potions;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// Keeps the Unstable look on the belt in sync with the mark, and gives the sweeper a way to reach the
-// belt node it needs to shake and burst.
 public static class UnstablePotionVfxPatch
 {
     private static readonly AccessTools.FieldRef<NPotionContainer, List<NPotionHolder>> HoldersRef =
@@ -61,9 +59,8 @@ public static class UnstablePotionVfxPatch
         if (FindBeltNode(potion) is { } node) UnstablePotionVfx.Shake(node);
     }
 
-    // The burst is parented to the holder rather than the potion, so it survives the potion node being
-    // hidden and keeps playing where the potion used to sit. It is placed on the potion's centre in the
-    // holder's space, not the holder's origin, or it fires from the corner of the belt
+    // Parented to the holder rather than the potion so it survives the potion node being hidden, and
+    // placed on the potion's centre in the holder's space, or it fires from the corner of the belt
     public static void Burst(PotionModel potion)
     {
         if (FindBeltNode(potion) is not { } node) return;

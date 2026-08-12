@@ -5,11 +5,9 @@ using MegaCrit.Sts2.Core.Nodes.Vfx;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// A Poison tick that Antitoxin swallowed whole still pops a damage number, and it reads "0".
-//
-// The base game only skips the number when damage was fully blocked, and Poison is Unblockable, so
-// that path never applies here. The Antitoxin power icon already flashes as it is spent, which is the
-// feedback the moment wants; the 0 on top of it just looks like a bug.
+// A Poison tick that Antitoxin swallowed whole still pops a damage number reading "0". CreatureCmd
+// only skips the number on DamageResult.WasFullyBlocked, which is computed as !Unblockable, so a
+// Poison tick can never set it.
 public static class AntitoxinDamageNumPatch
 {
     [HarmonyPatch(typeof(NDamageNumVfx), nameof(NDamageNumVfx.Create),
@@ -18,8 +16,8 @@ public static class AntitoxinDamageNumPatch
     {
         public static bool Prefix(Creature target, DamageResult result, ref NDamageNumVfx? __result)
         {
-            // AbsorbedThisTurn keeps this narrow: a 0 from any other source still shows, and the
-            // record survives the power being spent down to nothing
+            // AbsorbedThisTurn, not "damage was 0": a 0 from any other source still shows, and the
+            // record survives the power being spent down to nothing by this very hit
             if (result.UnblockedDamage > 0 || result.OverkillDamage > 0) return true;
             if (!AntitoxinRules.AbsorbedThisTurn(target)) return true;
 

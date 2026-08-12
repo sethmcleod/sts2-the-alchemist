@@ -7,8 +7,6 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-// Venom and antivenom. The gate is both resources at once, the same shape the card always had, which
-// matters because no base-game power grants flat Energy every turn
 public class TwinSerpents : AlchemistCard
 {
     public TwinSerpents() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)

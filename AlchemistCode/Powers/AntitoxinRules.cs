@@ -6,11 +6,9 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// The rules Antitoxin needs that cannot live on the power itself, because the power is not always
-// there. A combat-hook singleton is always listening, so this holds:
-//
-//   - the ceiling, which has to apply to the first grant of a combat, when no AntitoxinPower exists yet
-//   - who absorbed damage this turn, which has to outlive the power being spent down to nothing
+// Neither of these can live on AntitoxinPower: the ceiling has to apply to the first grant of a
+// combat, when no AntitoxinPower exists yet, and the absorb record has to outlive the power being
+// spent down to nothing. A combat-hook singleton is always listening.
 public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 {
     private static readonly HashSet<Creature> Absorbed = [];
