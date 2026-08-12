@@ -80,9 +80,8 @@ BAYER = [
 # the validate command enforces this. Verticals mark Basics and tokens.
 # Token cards all use a vertical gradient (U or D), which sets them apart from the deck at a glance
 COLORS = {
-    # Gambit: all-in attacks
     "Etch": ("#0b2a4a", "#5fd0e8", "TR", "Unique"),
-    "Neurotoxin": ("#5f011f", "#b3bd2a", "TR", "Gambit: all-in attacks"),
+    "Neurotoxin": ("#5f011f", "#b3bd2a", "TR", "Poison attacks"),
     # Cauterize (one-off)
     "Overdose": ("#5f011f", "#c18c0f", "TR", "Unique"),
     "Cauterize": ("#3d0a02", "#e0d6c2", "TR", "Unique"),
@@ -90,11 +89,10 @@ COLORS = {
     "Puncture": ("#0d1f3d", "#3d9ae8", "TR", "Unique"),
     # Lash Out (one-off)
     "Lash Out": ("#5f011f", "#77828c", "TR", "Unique"),
-    # Gambit: skills
-    "Congeal": ("#1d3f0e", "#0e7c7b", "BR", "Gambit: skills"),
-    "Fresh Batch": ("#045062", "#8fe3c0", "BR", "Gambit: skills"),
-    "Transmute": ("#5f011f", "#e3b84a", "BR", "Gambit: skills"),
-    # Gambit: powers
+    # Potion and buff skills
+    "Congeal": ("#1d3f0e", "#0e7c7b", "BR", "Potion and buff skills"),
+    "Fresh Batch": ("#045062", "#8fe3c0", "BR", "Potion and buff skills"),
+    "Transmute": ("#5f011f", "#e3b84a", "BR", "Potion and buff skills"),
     "Slag": ("#45293f", "#c98fd6", "R", "Unique"),
     # Antitoxin: the purple counterpart to the poison reds
     "Slake": ("#2f0170", "#8f6fd8", "TR", "Antitoxin"),
@@ -385,7 +383,7 @@ KEYWORDS = [
     "Distillates", "Distillate", "Enchanted", "Vulnerable", "Fermented",
     "Multiplayer", "Dexterity", "Reaction", "Strength", "Infused",
     "Antitoxin", "Procure", "Exhaust", "Ferment", "Plating",
-    "Poison", "Potion", "Retain", "Gambit", "Innate",
+    "Poison", "Potion", "Retain", "Innate",
     "Infuse", "Energy", "Block", "Toxic", "Weak", "Stun", "Hand",
 ]
 KEYWORD_RE = re.compile(

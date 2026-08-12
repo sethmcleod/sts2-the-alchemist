@@ -20,5 +20,4 @@ public static class AlchemistTips
     public static IHoverTip Reaction =>
         KeywordTipFactory.Build("reaction", "ALCHEMIST-REACTION.title", "ALCHEMIST-REACTION.description");
 
-    public static IHoverTip Gambit => HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit);
 }

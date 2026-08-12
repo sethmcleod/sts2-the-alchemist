@@ -9,9 +9,6 @@ public class Suffuse : AlchemistCard
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
-    // IsGambitCard covers both the keyword tooltip and the gold glow, so no bespoke ConditionalGlow
-    protected override bool IsGambitCard => true;
-
     public Suffuse() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);

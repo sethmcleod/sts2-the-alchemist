@@ -1,22 +1,26 @@
-using Alchemist.AlchemistCode.Powers;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models.Powers;
+using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class FeverPitch : AlchemistCard
 {
-    // IsGambitCard covers both the keyword tooltip and the gold glow, so no bespoke ConditionalGlow
-    protected override bool IsGambitCard => true;
-
     public FeverPitch() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
+        WithCards(1, 1);
+        WithTip(typeof(PoisonPower));
     }
+
+    protected override bool ConditionalGlow =>
+        Owner?.Creature is { } c && c.GetPowerAmount<PoisonPower>() >= FeverPitchPower.Threshold;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<FeverPitchPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<FeverPitchPower>(choiceContext, Owner.Creature,
+            DynamicVars.Cards.IntValue, Owner.Creature, this);
     }
 }

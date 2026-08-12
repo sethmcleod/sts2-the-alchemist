@@ -1,8 +1,6 @@
 {
   "ALCHEMIST-FERMENT.description": "Diese Karte wird für jeden Zug auf deiner [gold]Hand[/gold] stärker und wird zurückgesetzt, wenn du sie spielst. Nach ihrem Höhepunkt transformiert sie sich zu [gold]Toxisch[/gold].",
   "ALCHEMIST-FERMENT.title": "Gärung",
-  "ALCHEMIST-GAMBIT.description": "Solange du [blue]50%[/blue] oder weniger TP hast, hat diese Karte einen [gold]Gambit[/gold]-Effekt.",
-  "ALCHEMIST-GAMBIT.title": "Gambit",
   "ALCHEMIST-INFUSE.description": "[gold]Verzaubere[/gold] eine Karte bis zum Ende des Kampfes. Angriffe erhalten [blue]1[/blue] [purple]Versetzt[/purple]; Fertigkeiten erhalten [blue]1[/blue] [purple]Dampfend[/purple]; Mächte erhalten [blue]1[/blue] [purple]Erhaben[/purple]. Andere Karten erhalten [gold]Flüchtig[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Wähle {Amount:plural:eine Karte,|[blue]{}[/blue] Karten,} die du [gold]Infundierst[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Wähle beliebig viele Karten, die du [gold]Infundierst[/gold].",

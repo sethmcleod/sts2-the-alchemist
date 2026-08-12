@@ -41,7 +41,6 @@ public abstract class AlchemistCard : ConstructedCardModel
 
     private IEnumerable<IHoverTip> KeywordTips()
     {
-        if (IsGambitCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit);
         if (IsFermentCard)
         {
             yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
@@ -85,14 +84,10 @@ public abstract class AlchemistCard : ConstructedCardModel
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
     // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state
-    internal bool IsReduced => Gambit.IsActive(Owner?.Creature);
-
     internal bool IsEnchanted => Enchantment != null;
 
     // Drives two gold glows: the card in hand once it is Enchanted, and the card in an Infuse selection
     internal virtual bool GainsEffectWhenEnchanted => false;
-
-    protected virtual bool IsGambitCard => false;
 
     protected virtual bool ConditionalGlow => false;
 
@@ -100,7 +95,7 @@ public abstract class AlchemistCard : ConstructedCardModel
     // needs its own guard
     protected override bool ShouldGlowGoldInternal =>
         IsMutable && AlchemistModConfig.ShowHandGlows
-        && ((IsGambitCard && IsReduced) || (GainsEffectWhenEnchanted && IsEnchanted)
+        && ((GainsEffectWhenEnchanted && IsEnchanted)
             || ReactionActive || ConditionalGlow);
 
     internal bool HpFractionInRange(double lower, double upper)

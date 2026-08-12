@@ -33,6 +33,13 @@ mod).
 - Reworked Weathered Kit relic: "At the start of each combat, gain 5 Antitoxin. You can Brew Potions at Rest Sites."
 - Reworked Gilded Kit relic: "At the start of each combat, gain 10 Antitoxin. You can Brew Potions at Rest Sites." It no longer grants Max HP when you use a Potion
 - Changed the Brew hover tip: it now also says you can sell Potions to the Merchant, which the Kit relics used to say themselves
+- Removed the Gambit keyword. Cards no longer care about being at half HP or less
+- Changed Puncture card: it no longer applies Weak
+- Reworked Fresh Batch card: "Procure a random potion. Gain 6 (9) Block. Exhaust." Cost decreased from 2 -> 1
+- Reworked Resolve card: "Gain 2 (3) Strength and 2 (3) Dexterity. Gain 3 Poison."
+- Reworked Neurotoxin card: it now applies 5 (7) Poison instead of Stunning the enemy
+- Reworked Fever Pitch card: "At the start of your turn, if you have 10 or more Poison, draw 1 (2) cards."
+- Reworked Suffuse card: "At the start of your turn, ALL allies procure a random Unstable Potion."
 
 ### Removed
 

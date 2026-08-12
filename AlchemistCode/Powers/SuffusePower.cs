@@ -14,13 +14,12 @@ public class SuffusePower : AlchemistPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new[] { AlchemistTips.Gambit };
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new[] { Potions.UnstablePotions.Tip };
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants,
         ICombatState combatState)
     {
         if (!participants.Contains(Owner)) return;
-        if (!Gambit.IsActive(Owner)) return;
 
         Flash();
         var rng = Owner.Player!.RunState.Rng.CombatPotionGeneration;
@@ -29,7 +28,9 @@ public class SuffusePower : AlchemistPower
         foreach (var ally in allies)
         {
             var potion = PotionFactory.CreateRandomPotionInCombat(ally.Player!, rng).ToMutable();
-            await PotionCmd.TryToProcure(potion, ally.Player!);
+            var result = await PotionCmd.TryToProcure(potion, ally.Player!);
+            if (result.success)
+                Potions.UnstablePotions.Mark(result.potion);
         }
     }
 }

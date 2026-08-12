@@ -1,8 +1,6 @@
 {
   "ALCHEMIST-FERMENT.description": "Ta karta zyskuje na mocy za każdą turę spędzoną w twojej [gold]ręce[/gold], a po zagraniu wraca do stanu wyjściowego. Po przekroczeniu szczytu zmienia się w [gold]Toksyny[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentacja",
-  "ALCHEMIST-GAMBIT.description": "Kiedy masz [blue]50%[/blue] lub mniej PŻ, ta karta ma efekt [gold]Gambitu[/gold].",
-  "ALCHEMIST-GAMBIT.title": "Gambit",
   "ALCHEMIST-INFUSE.description": "Rzuć na kartę [gold]Zaklęcie[/gold] do końca walki. Ataki zyskują [blue]1[/blue] pkt. [purple]Jadu[/purple]; Umiejętności zyskują [blue]1[/blue] pkt. [purple]Wyziewu[/purple]; Moce zyskują [blue]1[/blue] pkt. [purple]Egzaltacji[/purple]. Pozostałe karty stają się [gold]Eteryczne[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty} do [gold]Nasycenia[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Wybierz dowolną liczbę kart do [gold]Nasycenia[/gold].",

@@ -34,7 +34,6 @@ public static class KeywordTipIconPatch
     {
         string? iconName = null, locKey = null;
         if (keyword == AlchemistKeywords.Ferment) (iconName, locKey) = ("ferment", "ALCHEMIST-FERMENT");
-        else if (keyword == AlchemistKeywords.Gambit) (iconName, locKey) = ("gambit", "ALCHEMIST-GAMBIT");
         else if (keyword == AlchemistKeywords.Reaction) (iconName, locKey) = ("reaction", "ALCHEMIST-REACTION");
         else if (keyword == AlchemistKeywords.Infuse) (iconName, locKey) = ("infuse", "ALCHEMIST-INFUSE");
         if (iconName == null) return;

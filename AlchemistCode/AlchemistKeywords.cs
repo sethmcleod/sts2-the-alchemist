@@ -8,10 +8,6 @@ public static class AlchemistKeywords
 {
     [CustomEnum]
     [KeywordProperties(AutoKeywordPosition.None)]
-    public static CardKeyword Gambit;
-
-    [CustomEnum]
-    [KeywordProperties(AutoKeywordPosition.None)]
     public static CardKeyword Ferment;
 
     [CustomEnum]

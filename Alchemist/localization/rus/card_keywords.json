@@ -1,8 +1,6 @@
 {
   "ALCHEMIST-FERMENT.description": "Эта карта усиливается за каждый ход, проведенный в [gold]руке[/gold], и сбрасывается, когда вы ее разыгрываете. После пика она превращается в [gold]«Токсин»[/gold].",
   "ALCHEMIST-FERMENT.title": "Брожение",
-  "ALCHEMIST-GAMBIT.description": "Пока у вас [blue]50%[/blue] или меньше ОЗ, у этой карты есть эффект [gold]гамбита[/gold].",
-  "ALCHEMIST-GAMBIT.title": "Гамбит",
   "ALCHEMIST-INFUSE.description": "[gold]Зачаровывает[/gold] карту до конца боя. Атаки: [purple]«Отрава»[/purple] [blue]1[/blue]. Навыки: [purple]«Дымка»[/purple] [blue]1[/blue]. Таланты: [purple]«Экзальтация»[/purple] [blue]1[/blue]. Остальные карты становятся [gold]эфирными[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Выберите [blue]{Amount:plural(ru):карту|{} карты|{} карт}[/blue] для [gold]пропитки[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Выберите карты, которые хотите [gold]пропитать[/gold].",

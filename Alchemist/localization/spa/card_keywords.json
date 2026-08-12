@@ -1,8 +1,6 @@
 {
   "ALCHEMIST-FERMENT.description": "Esta carta aumenta su poder por cada turno que pase en tu [gold]Mano[/gold], y se reinicia cuando la juegas. Pasado su punto óptimo, se transforma en [gold]Toxina[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentar",
-  "ALCHEMIST-GAMBIT.description": "Mientras tengas el [blue]50%[/blue] o menos de tus PV, esta carta tiene un efecto de [gold]Gambito[/gold].",
-  "ALCHEMIST-GAMBIT.title": "Gambito",
   "ALCHEMIST-INFUSE.description": "[gold]Encanta[/gold] una carta hasta el final del combate. Los Ataques ganan [blue]1[/blue] de [purple]Ponzoña[/purple]; las Habilidades ganan [blue]1[/blue] de [purple]Efluvio[/purple]; los Poderes ganan [blue]1[/blue] de [purple]Exaltación[/purple]. Las demás cartas se vuelven [gold]Etéreas[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Elige {Amount:plural:una carta|[blue]{}[/blue] cartas} que [gold]Infundir[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Elige cualquier número de cartas que [gold]Infundir[/gold].",
