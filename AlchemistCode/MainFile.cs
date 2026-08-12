@@ -6,7 +6,6 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models.PotionPools;
-using MegaCrit.Sts2.Core.Models;
 using System.Reflection;
 
 namespace Alchemist.AlchemistCode;
@@ -57,18 +56,6 @@ public partial class MainFile : Node
             Logger.Error($"Failed to register Alchemist epochs (Timeline feature disabled): {e}");
         }
 
-        try
-        {
-            // Injecting builds the one instance, and the CustomSingletonModel constructor is what
-            // subscribes it for run hooks. Without this the sweeper never runs and Unstable potions
-            // would quietly become permanent
-            ModelDb.Inject(typeof(Potions.UnstablePotionSweeper));
-            ModelDb.Inject(typeof(Powers.AntitoxinCap));
-        }
-        catch (System.Exception e)
-        {
-            Logger.Error($"Failed to register the Unstable potion sweeper or the Anti-toxin cap: {e}");
-        }
 
         try
         {
