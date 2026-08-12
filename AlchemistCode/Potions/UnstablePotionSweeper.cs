@@ -1,4 +1,5 @@
 using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
 
@@ -9,7 +10,7 @@ namespace Alchemist.AlchemistCode.Potions;
 // every player's belt is swept, not only the Alchemist's.
 public sealed class UnstablePotionSweeper() : CustomSingletonModel(HookType.Run)
 {
-    public override Task AfterCombatEnd(CombatRoom room)
+    public override async Task AfterCombatEnd(CombatRoom room)
     {
         foreach (var player in room.CombatState.RunState.Players)
         {
@@ -20,9 +21,14 @@ public sealed class UnstablePotionSweeper() : CustomSingletonModel(HookType.Run)
                 .ToList();
 
             foreach (var potion in unstable)
+            {
+                Patches.UnstablePotionVfxPatch.Shake(potion);
+                await Cmd.Wait(0.2f, ignoreCombatEnd: true);
+                Patches.UnstablePotionVfxPatch.Burst(potion);
                 potion.Discard();
+                // Staggered so a full belt reads as a chain of pops rather than one noise
+                await Cmd.Wait(0.15f, ignoreCombatEnd: true);
+            }
         }
-
-        return Task.CompletedTask;
     }
 }

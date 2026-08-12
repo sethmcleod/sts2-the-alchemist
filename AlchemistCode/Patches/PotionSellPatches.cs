@@ -367,6 +367,9 @@ public static class PotionSellPatches
         {
             if (!__instance.IsMutable) return; // canonical (compendium) potions throw on Owner
             if (!SellingEnabledFor(__instance.Owner)) return;
+            // An Unstable potion is discarded when combat ends, so it can never reach a Merchant. The
+            // Sell button was already unreachable; this stops the tip from promising a sale anyway
+            if (UnstablePotions.IsUnstable(__instance)) return;
             var tip = new HoverTip(
                 new LocString("gameplay_ui", "POTION_SELL.sellable_tip.title"),
                 new LocString("gameplay_ui", "POTION_SELL.sellable_tip.description"))

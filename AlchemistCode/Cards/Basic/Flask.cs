@@ -12,7 +12,11 @@ namespace Alchemist.AlchemistCode.Cards.Basic;
 // the run economy
 public class Flask : AlchemistCard
 {
-    private bool _brewedThisCombat;
+    private bool _playedThisCombat;
+
+    // Glows until it has brewed, so the once-per-combat limit is visible in hand rather than only
+    // readable in the card text. The CombatState gate keeps it plain in the deck view and the shop
+    protected override bool ConditionalGlow => CombatState != null && !_playedThisCombat;
 
     public Flask() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
@@ -22,16 +26,16 @@ public class Flask : AlchemistCard
 
     public override Task BeforeCombatStart()
     {
-        _brewedThisCombat = false;
+        _playedThisCombat = false;
         return base.BeforeCombatStart();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        if (_brewedThisCombat) return;
+        if (_playedThisCombat) return;
 
-        _brewedThisCombat = true;
+        _playedThisCombat = true;
         var potion = PotionFactory
             .CreateRandomPotionInCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration)
             .ToMutable();

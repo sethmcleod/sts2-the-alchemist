@@ -21,6 +21,9 @@ public static class UnstablePotions
     {
         potion.AssertMutable();
         Marks.GetValue(potion, _ => new object());
+        // The belt node may already exist when a card procures into an open slot, and Reload does not
+        // fire again for it, so the ambient look has to be pushed once here
+        Patches.UnstablePotionVfxPatch.Refresh(potion);
     }
 
     public static bool IsUnstable(PotionModel potion) => Marks.TryGetValue(potion, out _);
