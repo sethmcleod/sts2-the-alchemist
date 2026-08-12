@@ -123,8 +123,6 @@
   "ALCHEMIST-POULTICE.title": "湿布",
   "ALCHEMIST-PRECIPITATE.description": "{Block:diff()}[gold]ブロック[/gold]を2回得る。\nこのターン、次に[gold]ポーション[/gold]を1つ使用した時、同じ種類のものをもう1つ入手する。",
   "ALCHEMIST-PRECIPITATE.title": "沈殿",
-  "ALCHEMIST-PRIME.description": "{CalculatedBlock:diff()}[gold]ブロック[/gold]を得る。\n[gold]手札[/gold]のカード1枚に[gold]注入[/gold]する。\n[gold]反応[/gold]（アタック）: 追加で{CalculationExtra:diff()}[gold]ブロック[/gold]を得る。",
-  "ALCHEMIST-PRIME.title": "呼び水",
   "ALCHEMIST-PUNCTURE.description": "{Damage:diff()}ダメージを与える。\n[gold]弱体[/gold]{VulnerablePower:diff()}を付与する。\n[gold]背水の陣[/gold]: [gold]脱力[/gold]{GambitWeak:diff()}を付与する。",
   "ALCHEMIST-PUNCTURE.title": "穿刺",
   "ALCHEMIST-QUENCH.description": "カードを{Cards:diff()}{Cards:plural:枚|枚}引く。\n[gold]手札[/gold]のカード1枚に[gold]注入[/gold]する。\nこのカードが[gold]エンチャント[/gold]されている場合、追加でカード1枚に[gold]注入[/gold]する。",

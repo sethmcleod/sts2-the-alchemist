@@ -123,8 +123,6 @@
   "ALCHEMIST-POULTICE.title": "Припарка",
   "ALCHEMIST-PRECIPITATE.description": "Дает {Block:diff()} [gold]защиты[/gold] 2 раза.\nСледующее [gold]зелье[/gold], которое вы используете в этом ходу, выдается вам повторно.",
   "ALCHEMIST-PRECIPITATE.title": "Преципитат",
-  "ALCHEMIST-PRIME.description": "Дает {CalculatedBlock:diff()} [gold]защиты[/gold].\n[gold]Пропитывает[/gold] карту в вашей [gold]руке[/gold].\n[gold]Реакция[/gold] (Атака): дает еще {CalculationExtra:diff()} [gold]защиты[/gold].",
-  "ALCHEMIST-PRIME.title": "Затравка",
   "ALCHEMIST-PUNCTURE.description": "Наносит {Damage:diff()} урона.\nНакладывает {VulnerablePower:diff()} [gold]уязвимости[/gold].\n[gold]Гамбит[/gold]: накладывает {GambitWeak:diff()} [gold]слабости[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Прокол",
   "ALCHEMIST-QUENCH.description": "Вы добираете {Cards:diff()} {Cards:plural(ru):карту|карты|карт}.\n[gold]Пропитывает[/gold] карту в вашей [gold]руке[/gold].\nЕсли эта карта [gold]зачарована[/gold], [gold]пропитывает[/gold] еще одну карту.",

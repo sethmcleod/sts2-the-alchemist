@@ -123,8 +123,6 @@
   "ALCHEMIST-POULTICE.title": "Lapa",
   "ALCHEMIST-PRECIPITATE.description": "İki kez {Block:diff()} [gold]Blok[/gold] elde et.\nBu tur bir sonraki [gold]İksir[/gold] kullandığında o türden bir tane daha elde et.",
   "ALCHEMIST-PRECIPITATE.title": "Çökelti",
-  "ALCHEMIST-PRIME.description": "{CalculatedBlock:diff()} [gold]Blok[/gold] elde et.\n[gold]El[/gold]'indeki bir kartı [gold]Aşıla[/gold].\n[gold]Reaksiyon[/gold] (Atak): Fazladan {CalculationExtra:diff()} [gold]Blok[/gold] elde et.",
-  "ALCHEMIST-PRIME.title": "Hazırlık",
   "ALCHEMIST-PUNCTURE.description": "{Damage:diff()} hasar ver.\n{VulnerablePower:diff()} [gold]Savunmasız[/gold] uygula.\n[gold]Gambit[/gold]: {GambitWeak:diff()} [gold]Zayıf[/gold] uygula.",
   "ALCHEMIST-PUNCTURE.title": "Del",
   "ALCHEMIST-QUENCH.description": "{Cards:diff()} {Cards:plural:kart|kart} çek.\n[gold]El[/gold]'indeki bir kartı [gold]Aşıla[/gold].\nBu kart [gold]Büyülenmiş[/gold] ise bir kart daha [gold]Aşıla[/gold].",

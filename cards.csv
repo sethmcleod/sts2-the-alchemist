@@ -1,6 +1,6 @@
 Card,Rarity,Type,Cost,Description
 Albedo,Token,Skill,1,Lose all Poison. Gain that much Regen (+ 1). Add a Citrinitas (+) into your Hand. Exhaust.
-Amalgam,Rare,Attack,X,Lose all Poison and Regen. Deal that much damage to ALL enemies X (+1) times. Exhaust.
+Amalgam,Rare,Attack,X,Lose all Poison. Deal that much damage to ALL enemies X (+1) times. Exhaust.
 Anneal,Common,Skill,0,Gain 6 Block. Gain 2 (1) Poison. Exhaust.
 Aureate,Ancient,Attack,1,Deal 12 (18) damage to ALL enemies. Infuse any number of cards in your Hand.
 Azoth,Rare,Attack,1,"Deal 10 (14) damage. If you have 5 or more cards in your Exhaust Pile, gain 1 (2) energy."
@@ -10,17 +10,17 @@ Bitter Draught,Uncommon,Skill,1,Gain 2 (3) Energy. Gain 2 (3) Poison. Exhaust.
 Bottled Fury,Uncommon,Power,1,"Whenever you use a Potion, gain 1 (2) Strength and 1 (2) Dexterity."
 Carapace,Uncommon,Skill,2,Retain. Ferment (0/3). Gain 10 Block. Gain 4 (6) additional Block for each turn fermented.
 Catalysis,Uncommon,Power,1,"The first time you trigger a Reaction each turn, draw 1 (2) cards."
-Cauterize,Common,Attack,1,Deal 6 (9) damage. Gain 1 Regen. Reaction (Attack): Deal 3 additional damage.
+Cauterize,Common,Attack,1,Deal 6 (9) damage. Reaction (Attack): Deal 3 additional damage.
 Circulation,Uncommon,Skill,1,"Gain 2 (4) Regen. Lose half your Regen, then draw that many cards."
 Citrinitas,Token,Attack,1 (0),Deal damage to ALL enemies equal to your Regen. Reaction (Exhaust): Hits again. Add a Rubedo (+) into your Hand. Exhaust.
-Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison. Gambit: Gain 2 (3) Regen.
+Congeal,Common,Skill,1,Gain 6 (9) Block. Gain additional Block equal to your Poison.
 Contagion,Rare,Power,2 (1),"Whenever you take Poison damage, apply that much Poison to ALL enemies."
 Corrode,Uncommon,Skill,2,Apply 6 Poison and 1 (2) Weak to ALL enemies. Reaction (Skill): Apply 2 additional Poison.
 Corrosive,Uncommon,Power,1,"Whenever you apply Weak or Vulnerable to an enemy, apply 1 (2) Poison to it."
 Decant,Uncommon,Attack,1,Deal 8 (11) damage. Add a Distillate (+) into your Hand.
 Decoction,Rare,Skill,1 (0),Exhaust 1 card. Procure a random potion. Reaction (Enchanted): Infuse a card in your Hand.
 Defend,Basic,Skill,1,Gain 5 (8) Block.
-Distillate,Token,Skill,0,Gain 3 (5) Block. Gain 1 (2) Regen. Draw 1 card. Exhaust.
+Distillate,Token,Skill,0,Gain 3 (5) Block. Draw 1 card. Exhaust.
 Draining Strike,Uncommon,Attack,2,Deal 14 (18) damage. The enemy loses 6 Strength this turn. Reaction (Attack): Deal 5 (7) additional damage.
 Echo Strike,Common,Attack,1,"Deal 6 (8) damage. If this card is Enchanted, hits an additional time."
 Effervesce,"Uncommon, Multiplayer",Skill,1,Add 2 (3) Distillates to another player's Hand.
@@ -33,6 +33,7 @@ Fever Pitch,Rare,Power,1 (0),"While Gambit is active, at the start of your turn,
 Fighting Spirits,Uncommon,Attack,1,Deal 10 (14) damage. Hits an additional time for each potion you've used this combat.
 Flare Up,Uncommon,Attack,1,Deal 6 (9) damage. Apply 2 Poison. Trigger Poison on the enemy.
 Fresh Batch,Uncommon,Skill,2,Procure a random potion. Gambit: Gain 10 (14) Block. Exhaust.
+Flask,Basic,Skill,1,Gain 4 (7) Block. The first time you play this each combat, procure a random Unstable Potion.
 Froth,Uncommon,Attack,1,Retain. Ferment (0/3). Deal 4 (6) damage. Hits an additional time for each turn fermented.
 Fumigate,Common,Attack,1,Deal 1 (2) damage to ALL enemies. Hits an additional time for every 2 cards in your Exhaust Pile. Exhaust.
 Golden Fruit,Quest,Skill,1,Heal 8 HP. Gain 25 Gold. Take an extra turn after this one. Exhaust.
@@ -43,7 +44,7 @@ Hone,Uncommon,Skill,2 (1),Upgrade ALL cards in your Hand. Exhaust.
 Ichor,Rare,Attack,3 (2),Retain. Deal damage equal to your missing HP. Exhaust.
 Inoculate,Common,Skill,0,Lose 3 HP. Gain 7 (10) Block.
 Inversion,Uncommon,Power,1,"Whenever you are healed, deal 50% (100%) of that much damage to ALL enemies."
-Lash Out,Rare,Attack,1,Deal 6 (8) damage 3 times. Gambit: Gain 1 Regen for each hit. Reaction (Power): Hits an additional time.
+Lash Out,Rare,Attack,1,Deal 5 (7) damage 3 times. Reaction (Power): Hits an additional time.
 Libation,Rare,Skill,1,"Procure a random potion. Gain 4 (6) Block for each potion you have. If this card is Enchanted, gain 2 Plating."
 Lifeblood,Uncommon,Attack,1,Deal 8 (10) damage. Deals additional damage equal to your Regen.
 Macerate,Common,Attack,1,Deal 5 (7) damage. Deals additional damage equal to your Poison.
@@ -59,23 +60,23 @@ Patient Strike,Uncommon,Attack,1,Retain. Ferment (0/3). Deal 6 damage. Deals 4 (
 Percolate,Common,Skill,1,"At the start of your next turn, draw 2 (3) additional cards."
 Poultice,Common,Skill,1 (0),Exhaust 1 card. Gain 1 Regen.
 Precipitate,Uncommon,Skill,3 (2),"Gain 5 Block twice. The next time you use a potion this turn, procure another of that type."
-Prime,Basic,Skill,1,Gain 4 (7) Block. Infuse a card in your Hand. Reaction (Attack): Gain 2 additional Block.
 Puncture,Common,Attack,1,Deal 8 (10) damage. Apply 1 (2) Vulnerable. Gambit: Apply 1 Weak.
 Quench,Uncommon,Skill,1,"Draw 1 (2) cards. Infuse a card in your Hand. If this card is Enchanted, Infuse an additional card."
 Quicklime,Common,Attack,1,Deal 7 (9) damage. Reaction (Skill): Gain 5 (7) Block.
-Reagent,Basic,Attack,0,"Deal 4 (6) damage. This turn, the next card you play with a Reaction triggers it."
+Reagent,Common,Attack,0,"Deal 4 (6) damage. This turn, the next card you play with a Reaction triggers it."
 Refine,Rare,Skill,1,Upgrade a card in your Hand. Infuse it 2 (3) times.
 Reflux,"Uncommon, Multiplayer",Skill,1,"Whenever another player applies a debuff this turn, apply 2 (3) Poison to that enemy."
 Resolve,Uncommon,Power,2,"While Gambit is active, you have 2 (3) additional Strength and Dexterity."
 Rolling Boil,Uncommon,Attack,2,Retain. Ferment (0/3). Deal 6 damage twice. Each hit deals 4 (6) additional damage for each turn fermented.
 Rubedo,Token,Skill,1,Gain 5 (10) Gold. Gain 1 Strength. Procure a random potion. Add a Nigredo (+) into your Hand. Exhaust.
-Salve,Common,Skill,1,Gain 4 (6) Block. Draw a card. Infuse a card in your Hand.
+Salve,Uncommon,Skill,1,Gain 4 (6) Block. Draw a card. Infuse a card in your Hand.
 Secretion,Rare,Power,1,"Whenever you take unblocked Attack damage, apply 1 (2) Poison to the attacker."
 Sediment,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block. If this card is Enchanted, gain 3 Plating."
 Sepsis,Rare,Power,2,Gain 3 (2) Poison. Poisoned enemies take an additional 25% (50%) damage from Attacks.
 Sinter,Common,Skill,1,"Gain 7 (10) Block. If you have 5 or more cards in your Exhaust Pile, this costs 0."
 Siphon,Common,Attack,1,"Deal 8 (12) damage. Draw 1 card. If this card is Enchanted, draw an additional card."
 Slag,Uncommon,Power,1,"Whenever you Exhaust a card, gain 2 (3) Block."
+Spike,Basic,Attack,1,Deal 6 (8) damage. Apply 2 (3) Poison. Gain 1 Poison.
 Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Gain 2 Poison.
 Strike,Basic,Attack,1,Deal 6 (9) damage.
 Sublimate,Rare,Skill,2,Transform any number of cards in your Hand into Distillates (+). Exhaust.

@@ -20,7 +20,11 @@ public sealed class Laced : AlchemistEnchantment
         // IsPoweredAttack keeps this to the card's attack. A card also carries itself as the source of
         // incidental damage, such as a Poison trigger or a loss of HP, which must not apply Poison. The
         // base game EnvenomPower has the same guard
-        if (cardSource == Card && props.IsPoweredAttack() && result.UnblockedDamage > 0)
-            await PowerCmd.Apply<PoisonPower>(choiceContext, target, Amount, Card.Owner.Creature, null);
+        if (cardSource != Card || !props.IsPoweredAttack() || result.UnblockedDamage <= 0) return;
+
+        await PowerCmd.Apply<PoisonPower>(choiceContext, target, Amount, Card.Owner.Creature, null);
+        // The same dose that goes on the blade goes into the Alchemist. This is what prices Laced on a
+        // card that hits many times, where the enemy Poison used to compound at no cost
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Card.Owner.Creature, Amount, Card.Owner.Creature, null);
     }
 }

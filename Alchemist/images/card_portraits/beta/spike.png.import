@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgmouiareo3b4"
-path="res://.godot/imported/prime.png-d0181110b75611513a2668154f7d069b.ctex"
+uid="uid://xqb6s3qvffix"
+path="res://.godot/imported/spike.png-087757305a11be50304c2949abc690e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/prime.png"
-dest_files=["res://.godot/imported/prime.png-d0181110b75611513a2668154f7d069b.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/spike.png"
+dest_files=["res://.godot/imported/spike.png-087757305a11be50304c2949abc690e0.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

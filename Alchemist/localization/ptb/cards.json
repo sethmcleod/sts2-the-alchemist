@@ -123,8 +123,6 @@
   "ALCHEMIST-POULTICE.title": "Cataplasma",
   "ALCHEMIST-PRECIPITATE.description": "Receba {Block:diff()} de [gold]Proteção[/gold] duas vezes.\nNa próxima vez que você utilizar uma [gold]Poção[/gold] neste turno, obtenha outra do mesmo tipo.",
   "ALCHEMIST-PRECIPITATE.title": "Precipitar",
-  "ALCHEMIST-PRIME.description": "Receba {CalculatedBlock:diff()} de [gold]Proteção[/gold].\n[gold]Infunda[/gold] uma carta na sua [gold]Mão[/gold].\n[gold]Reação[/gold] (Ataque): Receba {CalculationExtra:diff()} de [gold]Proteção[/gold] adicional.",
-  "ALCHEMIST-PRIME.title": "Escorvar",
   "ALCHEMIST-PUNCTURE.description": "Cause {Damage:diff()} de dano.\nAplique {VulnerablePower:diff()} de [gold]Vulnerável[/gold].\n[gold]Gambito[/gold]: Aplique {GambitWeak:diff()} de [gold]Fraqueza[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Perfurar",
   "ALCHEMIST-QUENCH.description": "Compre {Cards:diff()} {Cards:plural:carta|cartas}.\n[gold]Infunda[/gold] uma carta na sua [gold]Mão[/gold].\nSe esta carta estiver [gold]Encantada[/gold], [gold]Infunda[/gold] uma carta adicional.",

@@ -123,8 +123,6 @@
   "ALCHEMIST-POULTICE.title": "ยาพอก",
   "ALCHEMIST-PRECIPITATE.description": "ได้รับ {Block:diff()} [gold]บล็อก[/gold] จำนวน 2 ครั้ง\nครั้งถัดไปที่คุณใช้[gold]ขวดยา[/gold]ในเทิร์นนี้ จัดหาขวดยาชนิดนั้นมาอีก 1 ขวด",
   "ALCHEMIST-PRECIPITATE.title": "ตกตะกอน",
-  "ALCHEMIST-PRIME.description": "ได้รับ {CalculatedBlock:diff()} [gold]บล็อก[/gold]\n[gold]อัดฉีด[/gold]การ์ด 1 ใบใน[gold]มือ[/gold]\n[gold]ปฏิกิริยา[/gold] (โจมตี): ได้รับ[gold]บล็อก[/gold]เพิ่ม {CalculationExtra:diff()}",
-  "ALCHEMIST-PRIME.title": "เตรียมพร้อม",
   "ALCHEMIST-PUNCTURE.description": "สร้างความเสียหาย {Damage:diff()}\nสร้าง {VulnerablePower:diff()} [gold]จุดอ่อน[/gold]\n[gold]เดิมพัน[/gold]: สร้าง {GambitWeak:diff()} [gold]ความอ่อนแอ[/gold]",
   "ALCHEMIST-PUNCTURE.title": "เจาะทะลุ",
   "ALCHEMIST-QUENCH.description": "จั่วการ์ด {Cards:diff()} {Cards:plural:ใบ|ใบ}\n[gold]อัดฉีด[/gold]การ์ด 1 ใบใน[gold]มือ[/gold]\nถ้าการ์ดนี้ถูก[gold]ร่ายมนตร์[/gold] [gold]อัดฉีด[/gold]การ์ดเพิ่มอีก 1 ใบ",

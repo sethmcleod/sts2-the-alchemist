@@ -123,8 +123,6 @@
   "ALCHEMIST-POULTICE.title": "Okład",
   "ALCHEMIST-PRECIPITATE.description": "Zyskaj {Block:diff()} pkt. [gold]Bloku[/gold] dwukrotnie.\nGdy następnym razem w tej turze użyjesz [gold]Mikstury[/gold], otrzymaj kolejną tego samego rodzaju.",
   "ALCHEMIST-PRECIPITATE.title": "Wytrącanie",
-  "ALCHEMIST-PRIME.description": "Zyskaj {CalculatedBlock:diff()} pkt. [gold]Bloku[/gold].\n[gold]Nasyć[/gold] kartę w [gold]ręce[/gold].\n[gold]Reakcja[/gold] (Atak): Zyskaj dodatkowo {CalculationExtra:diff()} pkt. [gold]Bloku[/gold].",
-  "ALCHEMIST-PRIME.title": "Przygotowanie",
   "ALCHEMIST-PUNCTURE.description": "Zadaj {Damage:diff()} pkt. obrażeń.\nNałóż {VulnerablePower:diff()} pkt. [gold]Wrażliwości[/gold].\n[gold]Gambit[/gold]: Nałóż {GambitWeak:diff()} pkt. [gold]Słabości[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Przebicie",
   "ALCHEMIST-QUENCH.description": "Dobierz {Cards:diff()} {Cards:plural:kartę|karty|kart}.\n[gold]Nasyć[/gold] kartę w [gold]ręce[/gold].\nJeżeli ta karta jest [gold]Zaklęta[/gold], [gold]Nasyć[/gold] dodatkową kartę.",

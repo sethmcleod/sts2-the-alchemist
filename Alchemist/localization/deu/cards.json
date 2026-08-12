@@ -123,8 +123,6 @@
   "ALCHEMIST-POULTICE.title": "Breiumschlag",
   "ALCHEMIST-PRECIPITATE.description": "Erhalte zweimal {Block:diff()} [gold]Block[/gold].\nWenn du in diesem Zug das nächste Mal einen [gold]Trank[/gold] verwendest, beschaffe einen weiteren dieser Art.",
   "ALCHEMIST-PRECIPITATE.title": "Ausfällen",
-  "ALCHEMIST-PRIME.description": "Erhalte {CalculatedBlock:diff()} [gold]Block[/gold].\n[gold]Infundiere[/gold] eine deiner [gold]Handkarten[/gold].\n[gold]Reaktion[/gold] (Angriff): Erhalte {CalculationExtra:diff()} [gold]Block[/gold] mehr.",
-  "ALCHEMIST-PRIME.title": "Grundieren",
   "ALCHEMIST-PUNCTURE.description": "Füge {Damage:diff()} Schaden zu.\nWende {VulnerablePower:diff()} [gold]Verwundbar[/gold] an.\n[gold]Gambit[/gold]: Wende {GambitWeak:diff()} [gold]Schwach[/gold] an.",
   "ALCHEMIST-PUNCTURE.title": "Durchstechen",
   "ALCHEMIST-QUENCH.description": "Ziehe {Cards:diff()} {Cards:plural:Karte|Karten}.\n[gold]Infundiere[/gold] eine deiner [gold]Handkarten[/gold].\nFalls diese Karte [gold]Verzaubert[/gold] ist, [gold]Infundiere[/gold] eine weitere Karte.",

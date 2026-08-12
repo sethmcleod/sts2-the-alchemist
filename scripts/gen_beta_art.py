@@ -122,7 +122,6 @@ COLORS = {
     # Infuse: cantrips
     "Enrich": ("#792595", "#b8d94f", "BR", "Infuse: cantrips"),
     "Salve": ("#792595", "#6fd8e0", "BR", "Infuse: cantrips"),
-    "Prime": ("#792595", "#2cbeba", "TR", "Infuse: cantrips"),
     # Quench (one-off)
     "Quench": ("#792595", "#0e5452", "BR", "Unique"),
     # Infuse: heavy
@@ -213,6 +212,10 @@ COLORS = {
     "Strike": ("#180209", "#942d2d", "BR", "Unique"),
     # Defend (Basic)
     "Defend": ("#0f2a43", "#2b6ea8", "TR", "Unique"),
+    # Spike (Basic): the starter dose, anchored on the Poison-attack red
+    "Spike": ("#650101", "#4fbf3a", "D", "Unique"),
+    # Flask (Basic): the starter brew, anchored on the potion teal
+    "Flask": ("#045062", "#d8b23a", "D", "Unique"),
     # Nigredo (token)
     "Nigredo": ("#07130a", "#25511a", "U", "Unique"),
     # Albedo (token)

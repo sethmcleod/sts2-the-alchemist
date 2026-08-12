@@ -123,8 +123,6 @@
   "ALCHEMIST-POULTICE.title": "Impiastro",
   "ALCHEMIST-PRECIPITATE.description": "Ottieni {Block:diff()} di [gold]Blocco[/gold] due volte.\nLa prossima volta che usi una [gold]pozione[/gold] in questo turno, ne ricevi un'altra dello stesso tipo.",
   "ALCHEMIST-PRECIPITATE.title": "Precipitato",
-  "ALCHEMIST-PRIME.description": "Ottieni {CalculatedBlock:diff()} di [gold]Blocco[/gold].\n[gold]Infondi[/gold] una carta nella tua [gold]mano[/gold].\n[gold]Reazione[/gold] (Attacco): ottieni {CalculationExtra:diff()} di [gold]Blocco[/gold] extra.",
-  "ALCHEMIST-PRIME.title": "Innesco",
   "ALCHEMIST-PUNCTURE.description": "Infliggi {Damage:diff()} di danno.\nApplichi {VulnerablePower:diff()} di [gold]Vulnerabilità[/gold].\n[gold]Azzardo[/gold]: applichi {GambitWeak:diff()} di [gold]Debolezza[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Perforazione",
   "ALCHEMIST-QUENCH.description": "Peschi {Cards:diff()} {Cards:plural:carta|carte}.\n[gold]Infondi[/gold] una carta nella tua [gold]mano[/gold].\nSe questa carta è [gold]incantata[/gold], [gold]infondi[/gold] una carta in più.",

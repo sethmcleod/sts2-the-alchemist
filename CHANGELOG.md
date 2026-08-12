@@ -7,6 +7,23 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added Spike card, a starting card: "Deal 6 (8) damage. Apply 2 (3) Poison. Gain 1 Poison."
+- Added Flask card, a starting card: "Gain 4 (7) Block. The first time you play this each combat, procure a random Unstable Potion."
+- Added the Unstable keyword: an Unstable Potion is discarded at the end of combat
+
+### Changed
+
+- Nerfed Laced enchantment: the card now also gains as much Poison as it applies.
+- Nerfed Infuse keyword: Attacks now gain 1 Laced, decreased from 2
+- Changed Reagent into a Common card
+- Changed Salve into an Uncommon card. Infuse no longer appears in the Common pool
+
+### Removed
+
+- Removed Prime card
+
 ## [0.7.3] - 2026-08-12
 
 ### Changed

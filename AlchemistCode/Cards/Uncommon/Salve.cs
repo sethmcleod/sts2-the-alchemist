@@ -3,11 +3,11 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
-namespace Alchemist.AlchemistCode.Cards.Common;
+namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Salve : AlchemistCard
 {
-    public Salve() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Salve() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithBlock(4, 2);
         WithCards(1, 0);

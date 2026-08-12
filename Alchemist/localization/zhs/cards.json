@@ -123,8 +123,6 @@
   "ALCHEMIST-POULTICE.title": "药膏",
   "ALCHEMIST-PRECIPITATE.description": "获得{Block:diff()}点[gold]格挡[/gold]两次。\n你在本回合下一次使用[gold]药水[/gold]时，再获得一瓶同类型的药水。",
   "ALCHEMIST-PRECIPITATE.title": "沉淀",
-  "ALCHEMIST-PRIME.description": "获得{CalculatedBlock:diff()}点[gold]格挡[/gold]。\n[gold]注入[/gold]你[gold]手牌[/gold]中的一张牌。\n[gold]反应[/gold]（攻击牌）：额外获得{CalculationExtra:diff()}点[gold]格挡[/gold]。",
-  "ALCHEMIST-PRIME.title": "引发",
   "ALCHEMIST-PUNCTURE.description": "造成{Damage:diff()}点伤害。\n给予{VulnerablePower:diff()}层[gold]易伤[/gold]。\n[gold]险招[/gold]：给予{GambitWeak:diff()}层[gold]虚弱[/gold]。",
   "ALCHEMIST-PUNCTURE.title": "穿刺",
   "ALCHEMIST-QUENCH.description": "抽{Cards:diff()}{Cards:plural:张牌|张牌}。\n[gold]注入[/gold]你[gold]手牌[/gold]中的一张牌。\n如果这张牌带有[gold]附魔[/gold]，额外[gold]注入[/gold]一张牌。",

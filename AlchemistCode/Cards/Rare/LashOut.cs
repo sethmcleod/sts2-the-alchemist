@@ -11,17 +11,15 @@ public class LashOut : AlchemistCard
 {
     private const int Hits = 3;
 
-    protected override bool IsGambitCard => true;
     protected override ReactionCondition Reaction => ReactionCondition.Power;
 
     public LashOut() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        WithDamage(6, 2);
-        WithTip(typeof(RegenPower));
+        WithDamage(5, 2);
     }
 
-    // Only the Reaction moves the count now. Gambit pays in Regen instead, so fighting on at a third HP
-    // also buys the way back out of it
+    // Only the Reaction moves the count. The damage per hit pays for that, since the Reaction is the
+    // card's whole payoff now
     private int HitCount => Hits + (ReactionActive ? 1 : 0);
 
     // CombatState, not IsMutable: the compendium's upgraded preview is a mutable copy with no Owner. Only
@@ -36,12 +34,8 @@ public class LashOut : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var hits = HitCount;
-        var gambit = IsReduced;
 
         await CommonActions.CardAttack(this, play, hits, vfx: HitVfx("vfx/vfx_attack_slash"))
             .Execute(choiceContext);
-
-        if (gambit)
-            await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, hits, Owner.Creature, this);
     }
 }

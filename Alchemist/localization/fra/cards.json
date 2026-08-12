@@ -123,8 +123,6 @@
   "ALCHEMIST-POULTICE.title": "Cataplasme",
   "ALCHEMIST-PRECIPITATE.description": "Gagnez {Block:diff()} d'[gold]Armure[/gold] deux fois.\nLa prochaine fois que vous utilisez une [gold]Potion[/gold] ce tour-ci, obtenez-en une autre du même type.",
   "ALCHEMIST-PRECIPITATE.title": "Précipité",
-  "ALCHEMIST-PRIME.description": "Gagnez {CalculatedBlock:diff()} d'[gold]Armure[/gold].\n[gold]Infusez[/gold] une carte de votre [gold]Main[/gold].\n[gold]Réaction[/gold] (Attaque) : Gagnez {CalculationExtra:diff()} d'[gold]Armure[/gold] supplémentaire.",
-  "ALCHEMIST-PRIME.title": "Amorçage",
   "ALCHEMIST-PUNCTURE.description": "Infligez {Damage:diff()} dégâts.\nAppliquez {VulnerablePower:diff()} [gold]Vulnérable[/gold].\n[gold]Gambit[/gold] : Appliquez {GambitWeak:diff()} [gold]Affaibli[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Perforation",
   "ALCHEMIST-QUENCH.description": "Piochez {Cards:diff()} {Cards:plural:carte|cartes}.\n[gold]Infusez[/gold] une carte de votre [gold]Main[/gold].\nSi cette carte est [gold]Envoûtée[/gold], [gold]Infusez[/gold] une carte supplémentaire.",
