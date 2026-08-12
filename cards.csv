@@ -55,7 +55,7 @@ Neurotoxin,Rare,Attack,2,Deal 18 (24) damage. Gambit: Stun the enemy. Exhaust.
 Nigredo,Rare,Skill,1,Apply 3 (4) Poison to ALL enemies and yourself. Add an Albedo (+) into your Hand. Exhaust.
 Overdose,Common,Attack,1,Lose 4 HP. Deal 15 (20) damage. Reaction (Exhaust): Draw 1 card.
 Overflow,Rare,Attack,2,Gain 1 Regen. Lose all Regen. Deal 3 (4) damage to ALL enemies for each Regen lost. Exhaust.
-Patient Strike,Common,Attack,1,Retain. Ferment (0/3). Deal 6 damage. Deals 4 (6) additional damage for each turn fermented.
+Patient Strike,Uncommon,Attack,1,Retain. Ferment (0/3). Deal 6 damage. Deals 4 (6) additional damage for each turn fermented.
 Percolate,Common,Skill,1,"At the start of your next turn, draw 2 (3) additional cards."
 Poultice,Common,Skill,1 (0),Exhaust 1 card. Gain 1 Regen.
 Precipitate,Uncommon,Skill,3 (2),"Gain 5 Block twice. The next time you use a potion this turn, procure another of that type."
@@ -73,7 +73,7 @@ Salve,Common,Skill,1,Gain 4 (6) Block. Draw a card. Infuse a card in your Hand.
 Secretion,Rare,Power,1,"Whenever you take unblocked Attack damage, apply 1 (2) Poison to the attacker."
 Sediment,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block. If this card is Enchanted, gain 3 Plating."
 Sepsis,Rare,Power,2,Gain 3 (2) Poison. Poisoned enemies take an additional 25% (50%) damage from Attacks.
-Sinter,Uncommon,Skill,1,"Gain 7 (10) Block. If you have 5 or more cards in your Exhaust Pile, this costs 0."
+Sinter,Common,Skill,1,"Gain 7 (10) Block. If you have 5 or more cards in your Exhaust Pile, this costs 0."
 Siphon,Common,Attack,1,"Deal 8 (12) damage. Draw 1 card. If this card is Enchanted, draw an additional card."
 Slag,Uncommon,Power,1,"Whenever you Exhaust a card, gain 2 (3) Block."
 Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 4 times. Gain 2 Poison.

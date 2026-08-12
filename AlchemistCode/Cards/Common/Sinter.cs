@@ -4,13 +4,13 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 
-namespace Alchemist.AlchemistCode.Cards.Uncommon;
+namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Sinter : AlchemistCard
 {
     private const int ExhaustThreshold = 5;
 
-    public Sinter() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Sinter() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(7, 3);
     }

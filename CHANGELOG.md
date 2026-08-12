@@ -7,6 +7,11 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Changed Sinter into a Common card
+- Changed Patient Strike into an Uncommon card
+
 ## [0.7.1] - 2026-08-11
 
 ### Added

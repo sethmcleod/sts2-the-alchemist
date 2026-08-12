@@ -3,13 +3,13 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Alchemist.AlchemistCode.Cards.Common;
+namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class PatientStrike : AlchemistCard
 {
     protected override int FermentPeak => 3;
 
-    public PatientStrike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+    public PatientStrike() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(6, static (card, _) =>
                 (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,
