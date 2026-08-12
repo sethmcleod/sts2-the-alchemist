@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv5a5t5wnsx81"
-path="res://.godot/imported/aggravate.png-45816acac097a8d2f75465477157dce6.ctex"
+uid="uid://mhdhetji0j2w"
+path="res://.godot/imported/macerate.png-6843470db2fc6541fc131b22633f5822.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/aggravate.png"
-dest_files=["res://.godot/imported/aggravate.png-45816acac097a8d2f75465477157dce6.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/macerate.png"
+dest_files=["res://.godot/imported/macerate.png-6843470db2fc6541fc131b22633f5822.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

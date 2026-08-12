@@ -7,10 +7,19 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added Macerate card: "Deal 5 (7) damage. Deals additional damage equal to your Poison."
+
 ### Changed
 
 - Changed Sinter into a Common card
 - Changed Patient Strike into an Uncommon card
+- Changed Carapace into an Uncommon card. Retain cards no longer appear in the Common pool
+
+### Removed
+
+- Removed Aggravate card
 
 ## [0.7.1] - 2026-08-11
 

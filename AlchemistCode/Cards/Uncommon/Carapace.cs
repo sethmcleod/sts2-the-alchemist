@@ -3,13 +3,13 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Alchemist.AlchemistCode.Cards.Common;
+namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Carapace : AlchemistCard
 {
     protected override int FermentPeak => 3;
 
-    public Carapace() : base(2, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Carapace() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithCalculatedBlock(10, static (card, _) =>
                 (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,

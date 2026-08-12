@@ -1,6 +1,4 @@
 {
-  "ALCHEMIST-AGGRAVATE.description": "{CalculatedDamage:diff()}ダメージを与える。\n敵に付与されているデバフ1種類につき、追加で{ExtraDamage:diff()}ダメージを与える。",
-  "ALCHEMIST-AGGRAVATE.title": "悪化",
   "ALCHEMIST-ALBEDO.description": "[gold]毒[/gold]をすべて失う。\nその値だけ[gold]再生[/gold]{IfUpgraded:show:[green]+1[/green]|}を得る。\n{IfUpgraded:show:[green]キトリニタス+[/green]|[gold]キトリニタス[/gold]}を1枚[gold]手札[/gold]に加える。",
   "ALCHEMIST-ALBEDO.title": "アルベド",
   "ALCHEMIST-AMALGAM.description": "[gold]毒[/gold]と[gold]再生[/gold]をすべて失う。{Fuel}\nその値のダメージをすべての敵にX{IfUpgraded:show:[green]+1[/green]|}回与える。",

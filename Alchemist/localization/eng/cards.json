@@ -1,6 +1,4 @@
 {
-  "ALCHEMIST-AGGRAVATE.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each unique debuff on the enemy.",
-  "ALCHEMIST-AGGRAVATE.title": "Aggravate",
   "ALCHEMIST-ALBEDO.description": "Lose all [gold]Poison[/gold].\nGain that much [gold]Regen[/gold]{IfUpgraded:show:[green]+1[/green]|}.\nAdd a {IfUpgraded:show:[green]Citrinitas+[/green]|[gold]Citrinitas[/gold]} into your [gold]Hand[/gold].",
   "ALCHEMIST-ALBEDO.title": "Albedo",
   "ALCHEMIST-AMALGAM.description": "Lose all [gold]Poison[/gold] and [gold]Regen[/gold].{Fuel}\nDeal that much damage to ALL enemies X{IfUpgraded:show:[green]+1[/green]|} times.",
@@ -99,6 +97,8 @@
   "ALCHEMIST-LIBATION.title": "Libation",
   "ALCHEMIST-LIFEBLOOD.description": "Deal {CalculatedDamage:diff()} damage.\nDeals additional damage equal to your [gold]Regen[/gold].",
   "ALCHEMIST-LIFEBLOOD.title": "Lifeblood",
+  "ALCHEMIST-MACERATE.description": "Deal {CalculatedDamage:diff()} damage.\nDeals additional damage equal to your [gold]Poison[/gold].",
+  "ALCHEMIST-MACERATE.title": "Macerate",
   "ALCHEMIST-MASTERWORK.description": "[gold]Infuse[/gold] a card in your [gold]Hand[/gold].\nIf you have [gold]Enchanted[/gold] 5 or more cards this combat, gain {Energy:energyIcons()}, draw {Cards:diff()} {Cards:plural:card|cards}, and Exhaust this card.",
   "ALCHEMIST-MASTERWORK.title": "Masterwork",
   "ALCHEMIST-MELT_DOWN.description": "Choose a card in your [gold]Draw Pile[/gold] to [gold]Transform[/gold] into {IfUpgraded:show:[green]Distillate+[/green]|[gold]Distillate[/gold]}.",

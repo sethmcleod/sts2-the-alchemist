@@ -1,6 +1,4 @@
 {
-  "ALCHEMIST-AGGRAVATE.description": "Infligez {CalculatedDamage:diff()} dégâts.\nInflige {ExtraDamage:diff()} dégâts supplémentaires pour chaque effet néfaste unique sur l'ennemi.",
-  "ALCHEMIST-AGGRAVATE.title": "Aggravation",
   "ALCHEMIST-ALBEDO.description": "Perdez tout votre [gold]Poison[/gold].\nGagnez autant de [gold]Régénération[/gold]{IfUpgraded:show:[green]+1[/green]|}.\nAjoutez une carte {IfUpgraded:show:[green]Citrinitas+[/green]|[gold]Citrinitas[/gold]} à votre [gold]Main[/gold].",
   "ALCHEMIST-ALBEDO.title": "Albedo",
   "ALCHEMIST-AMALGAM.description": "Perdez tout votre [gold]Poison[/gold] et votre [gold]Régénération[/gold].{Fuel}\nInfligez autant de dégâts à TOUS les ennemis X{IfUpgraded:show:[green]+1[/green]|} fois.",

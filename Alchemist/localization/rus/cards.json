@@ -1,6 +1,4 @@
 {
-  "ALCHEMIST-AGGRAVATE.description": "Наносит {CalculatedDamage:diff()} урона.\nНаносит на {ExtraDamage:diff()} урона больше за каждый уникальный отрицательный эффект на враге.",
-  "ALCHEMIST-AGGRAVATE.title": "Обострение",
   "ALCHEMIST-ALBEDO.description": "Снимает с вас весь [gold]яд[/gold].\nДает столько же [gold]регенерации[/gold]{IfUpgraded:show:[green]+1[/green]|}.\nДобавляет {IfUpgraded:show:[green]Цитринитас+[/green]|[gold]Цитринитас[/gold]} в вашу [gold]руку[/gold].",
   "ALCHEMIST-ALBEDO.title": "Альбедо",
   "ALCHEMIST-AMALGAM.description": "Снимает с вас весь [gold]яд[/gold] и [gold]регенерацию[/gold].{Fuel}\nНаносит столько урона ВСЕМ врагам X{IfUpgraded:show:[green]+1[/green]|} раз.",

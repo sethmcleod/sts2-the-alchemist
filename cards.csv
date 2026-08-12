@@ -1,5 +1,4 @@
 Card,Rarity,Type,Cost,Description
-Aggravate,Uncommon,Attack,0,Deal 4 damage. Deals 2 (3) additional damage for each unique debuff on the enemy.
 Albedo,Token,Skill,1,Lose all Poison. Gain that much Regen (+ 1). Add a Citrinitas (+) into your Hand. Exhaust.
 Amalgam,Rare,Attack,X,Lose all Poison and Regen. Deal that much damage to ALL enemies X (+1) times. Exhaust.
 Anneal,Common,Skill,0,Gain 6 Block. Gain 2 (1) Poison. Exhaust.
@@ -9,7 +8,7 @@ Backdraft,Uncommon,Attack,1,Deal 8 (11) damage. Reaction (Attack): Deal 8 (11) d
 Bestow,"Uncommon, Multiplayer",Skill,1 (0),Infuse a random card in another player's Hand. Draw 1 card.
 Bitter Draught,Uncommon,Skill,1,Gain 2 (3) Energy. Gain 2 (3) Poison. Exhaust.
 Bottled Fury,Uncommon,Power,1,"Whenever you use a Potion, gain 1 (2) Strength and 1 (2) Dexterity."
-Carapace,Common,Skill,2,Retain. Ferment (0/3). Gain 10 Block. Gain 4 (6) additional Block for each turn fermented.
+Carapace,Uncommon,Skill,2,Retain. Ferment (0/3). Gain 10 Block. Gain 4 (6) additional Block for each turn fermented.
 Catalysis,Uncommon,Power,1,"The first time you trigger a Reaction each turn, draw 1 (2) cards."
 Cauterize,Common,Attack,1,Deal 6 (9) damage. Gain 1 Regen. Reaction (Attack): Deal 3 additional damage.
 Circulation,Uncommon,Skill,1,"Gain 2 (4) Regen. Lose half your Regen, then draw that many cards."
@@ -47,6 +46,7 @@ Inversion,Uncommon,Power,1,"Whenever you are healed, deal 50% (100%) of that muc
 Lash Out,Rare,Attack,1,Deal 6 (8) damage 3 times. Gambit: Gain 1 Regen for each hit. Reaction (Power): Hits an additional time.
 Libation,Rare,Skill,1,"Procure a random potion. Gain 4 (6) Block for each potion you have. If this card is Enchanted, gain 2 Plating."
 Lifeblood,Uncommon,Attack,1,Deal 8 (10) damage. Deals additional damage equal to your Regen.
+Macerate,Common,Attack,1,Deal 5 (7) damage. Deals additional damage equal to your Poison.
 Masterwork,Uncommon,Skill,1,"Infuse a card in your Hand. If you have Enchanted 5 or more cards this combat, gain 1 (2) Energy, draw 1 (2) cards, and Exhaust this card."
 Melt Down,Uncommon,Skill,1,Choose a card in your Draw Pile to Transform into a Distillate(+).
 Mercurial Form,Rare,Power,3,"At the start of your turn, gain 1 (2) Strength. At the end of your turn, heal HP equal to half your Poison."

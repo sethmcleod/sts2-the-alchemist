@@ -1,6 +1,4 @@
 {
-  "ALCHEMIST-AGGRAVATE.description": "造成{CalculatedDamage:diff()}点伤害。\n敌人身上每有一种不同的减益，伤害增加{ExtraDamage:diff()}。",
-  "ALCHEMIST-AGGRAVATE.title": "激化",
   "ALCHEMIST-ALBEDO.description": "失去所有[gold]中毒[/gold]。\n获得等量{IfUpgraded:show:[green]+1[/green]|}的[gold]再生[/gold]。\n添加一张{IfUpgraded:show:[green]黄化+[/green]|[gold]黄化[/gold]}到你的[gold]手牌[/gold]。",
   "ALCHEMIST-ALBEDO.title": "白化",
   "ALCHEMIST-AMALGAM.description": "失去所有[gold]中毒[/gold]和[gold]再生[/gold]。{Fuel}\n对所有敌人造成等量伤害X{IfUpgraded:show:[green]+1[/green]|}次。",

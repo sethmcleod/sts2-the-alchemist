@@ -1,6 +1,4 @@
 {
-  "ALCHEMIST-AGGRAVATE.description": "Füge {CalculatedDamage:diff()} Schaden zu.\nFügt {ExtraDamage:diff()} Schaden mehr zu pro unterschiedlichem Debuff auf dem Gegner.",
-  "ALCHEMIST-AGGRAVATE.title": "Reizen",
   "ALCHEMIST-ALBEDO.description": "Verliere all dein [gold]Gift[/gold].\nErhalte genauso viel [gold]Erholen[/gold]{IfUpgraded:show:[green]+1[/green]|}.\nErhalte {IfUpgraded:show:[green]Citrinitas+[/green]|[gold]Citrinitas[/gold]} auf deine [gold]Hand[/gold].",
   "ALCHEMIST-ALBEDO.title": "Albedo",
   "ALCHEMIST-AMALGAM.description": "Verliere all dein [gold]Gift[/gold] und [gold]Erholen[/gold].{Fuel}\nFüge ALLEN Gegnern X{IfUpgraded:show:[green]+1[/green]|} Mal genauso viel Schaden zu.",

@@ -1,6 +1,4 @@
 {
-  "ALCHEMIST-AGGRAVATE.description": "Infliges {CalculatedDamage:diff()} de daño.\nInfliges {ExtraDamage:diff()} de daño adicional por cada perjuicio distinto que sufra el enemigo.",
-  "ALCHEMIST-AGGRAVATE.title": "Agravar",
   "ALCHEMIST-ALBEDO.description": "Pierdes todo el [gold]veneno[/gold].\nObtienes esa misma cantidad{IfUpgraded:show:[green]+1[/green]|} de [gold]regeneración[/gold].\nAgregas {IfUpgraded:show:[green]Citrinitas+[/green]|[gold]Citrinitas[/gold]} a tu [gold]mano[/gold].",
   "ALCHEMIST-ALBEDO.title": "Albedo",
   "ALCHEMIST-AMALGAM.description": "Pierdes todo el [gold]veneno[/gold] y la [gold]regeneración[/gold].{Fuel}\nInfliges esa misma cantidad de daño a TODOS los enemigos X{IfUpgraded:show:[green]+1[/green]|} veces.",

@@ -1,6 +1,4 @@
 {
-  "ALCHEMIST-AGGRAVATE.description": "สร้างความเสียหาย {CalculatedDamage:diff()}\nสร้างความเสียหายเพิ่ม {ExtraDamage:diff()} ต่อผลผิดปกติแต่ละอย่างที่ไม่ซ้ำกันบนตัวศัตรู",
-  "ALCHEMIST-AGGRAVATE.title": "กำเริบ",
   "ALCHEMIST-ALBEDO.description": "เสีย[gold]พิษ[/gold]ทั้งหมด\nได้รับ[gold]การฟื้นพลัง[/gold]เท่ากับจำนวนนั้น{IfUpgraded:show:[green]+1[/green]|}\nเพิ่ม{IfUpgraded:show:[green]ซิทรินิทัส+[/green]|[gold]ซิทรินิทัส[/gold]} 1 ใบใส่[gold]มือ[/gold]",
   "ALCHEMIST-ALBEDO.title": "อัลเบโด",
   "ALCHEMIST-AMALGAM.description": "เสีย[gold]พิษ[/gold]และ[gold]การฟื้นพลัง[/gold]ทั้งหมด{Fuel}\nสร้างความเสียหายเท่ากับจำนวนนั้นใส่ศัตรูทั้งหมด X{IfUpgraded:show:[green]+1[/green]|} ครั้ง",

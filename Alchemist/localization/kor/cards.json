@@ -1,6 +1,4 @@
 {
-  "ALCHEMIST-AGGRAVATE.description": "피해를 {CalculatedDamage:diff()} 줍니다.\n적이 지닌 고유한 해로운 효과 1개당 피해량이 {ExtraDamage:diff()} 증가합니다.",
-  "ALCHEMIST-AGGRAVATE.title": "악화",
   "ALCHEMIST-ALBEDO.description": "[gold]중독[/gold]을 모두 잃습니다.\n그만큼{IfUpgraded:show:[green]+1[/green]|} [gold]재생[/gold]을 얻습니다.\n{IfUpgraded:show:[green]시트리니타스+[/green]|[gold]시트리니타스[/gold]}를 1장 [gold]손[/gold]에 추가합니다.",
   "ALCHEMIST-ALBEDO.title": "알베도",
   "ALCHEMIST-AMALGAM.description": "[gold]중독[/gold]과 [gold]재생[/gold]을 모두 잃습니다.{Fuel}\n모든 적에게 그만큼 피해를 X{IfUpgraded:show:[green]+1[/green]|}번 줍니다.",

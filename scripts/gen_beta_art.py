@@ -99,8 +99,7 @@ COLORS = {
     # Poison attacks
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
-    # Calculated attacks
-    "Aggravate": ("#650101", "#a83a52", "TR", "Calculated attacks"),
+    "Macerate": ("#650101", "#2f9e6a", "TR", "Poison attacks"),
     # Unstable Compound (one-off): the name kept its own violet-into-toxic-green
     "Unstable Compound": ("#2f0170", "#63c11c", "BR", "Unique"),
     # Reaction: skills

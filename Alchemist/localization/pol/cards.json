@@ -1,6 +1,4 @@
 {
-  "ALCHEMIST-AGGRAVATE.description": "Zadaj {CalculatedDamage:diff()} pkt. obrażeń.\nZadaje dodatkowo {ExtraDamage:diff()} pkt. obrażeń za każde unikalne osłabienie na przeciwniku.",
-  "ALCHEMIST-AGGRAVATE.title": "Rozjątrzenie",
   "ALCHEMIST-ALBEDO.description": "Utrać całą [gold]Truciznę[/gold].\nZyskaj tyle samo pkt. [gold]Regeneracji[/gold]{IfUpgraded:show:[green]+1[/green]|}.\nDodaj do [gold]ręki[/gold] kartę {IfUpgraded:show:[green]Citrinitas+[/green]|[gold]Citrinitas[/gold]}.",
   "ALCHEMIST-ALBEDO.title": "Albedo",
   "ALCHEMIST-AMALGAM.description": "Utrać całą [gold]Truciznę[/gold] i [gold]Regenerację[/gold].{Fuel}\nZadaj tyle pkt. obrażeń WSZYSTKIM przeciwnikom X{IfUpgraded:show:[green]+1[/green]|} razy.",

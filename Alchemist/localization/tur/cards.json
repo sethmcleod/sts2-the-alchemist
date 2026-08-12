@@ -1,6 +1,4 @@
 {
-  "ALCHEMIST-AGGRAVATE.description": "{CalculatedDamage:diff()} hasar ver.\nDüşmandaki her eşsiz güçsüzleştirme için fazladan {ExtraDamage:diff()} hasar verir.",
-  "ALCHEMIST-AGGRAVATE.title": "Azdır",
   "ALCHEMIST-ALBEDO.description": "Tüm [gold]Zehir[/gold]'ini kaybet.\nO kadar{IfUpgraded:show:[green]+1[/green]|} [gold]Yenilenme[/gold] elde et.\n[gold]El[/gold]'ine bir {IfUpgraded:show:[green]Citrinitas+[/green]|[gold]Citrinitas[/gold]} ekle.",
   "ALCHEMIST-ALBEDO.title": "Albedo",
   "ALCHEMIST-AMALGAM.description": "Tüm [gold]Zehir[/gold] ve [gold]Yenilenme[/gold]'ni kaybet.{Fuel}\nTÜM düşmanlara o kadar hasarı X{IfUpgraded:show:[green]+1[/green]|} kez ver.",
