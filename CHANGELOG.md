@@ -17,39 +17,40 @@ mod).
 - Added Slake card: "Deal 8 (11) damage. Gain 3 (4) Antitoxin."
 - Added Tincture card: "Gain 2 Antitoxin. Gain 3 (4) additional Antitoxin for each Potion you have."
 - Added Heavy Dose card: "Deal 6 (9) damage. For each Potion you have, deal 3 additional damage and gain 1 Poison."
-- Added Afterglow card: "Gain 1 Energy and draw 1 card for each Potion you have used this combat. Exhaust."
+- Added Afterglow card: "Gain 1 Energy and draw 1 card for each Potion you have
+  used this combat. Exhaust."
 
 ### Changed
 
-- Removed Regen from Cauterize, Congeal, Distillate and Amalgam
-- Reworked Lash Out card: it no longer gains Regen, and its damage decreased from 6 (8) -> 5 (7) for each hit
-
-- Nerfed Laced enchantment: the card now also gains as much Poison as it applies.
-- Nerfed Infuse keyword: Attacks now gain 1 Laced, decreased from 2
+- Changed Golden Fruit card: it no longer heals 8 HP
+- Changed Hemorrhage card: cost is now 1, and it deals 2 (3) times your Poison in damage instead of 3 times
+- Changed Puncture card: it no longer applies Weak
 - Changed Reagent into a Common card
 - Changed Salve into an Uncommon card. Infuse no longer appears in the Common pool
-- Reworked Poultice card: "Gain 4 (5) Antitoxin. Exhaust a random card from your Hand." The upgrade now lets you choose the card instead of lowering the cost
-- Reworked Circulation card: "Gain 2 Poison. Draw 3 (4) cards."
-- Reworked Hemorrhage card: it now reads your Poison instead of your Regen, and deals 3 times that much damage
-- Reworked Twin Serpents card: "At the start of your turn, if your Antitoxin absorbed damage, gain 1 Energy." Cost is now 2 (1)
-- Reworked Overflow into a Skill: "Gain Antitoxin equal to your Poison. Exhaust." Cost decreased from 2 -> 1
-- Reworked Weathered Kit relic: "At the start of each combat, gain 5 Antitoxin. You can Brew Potions at Rest Sites."
-- Reworked Gilded Kit relic: "At the start of each combat, gain 10 Antitoxin. You can Brew Potions at Rest Sites." It no longer grants Max HP when you use a Potion
 - Changed the Brew hover tip: it now also says you can sell Potions to the Merchant, which the Kit relics used to say themselves
-- Removed the Gambit keyword. Cards no longer care about being at half HP or less
-- Changed Puncture card: it no longer applies Weak
-- Reworked Fresh Batch card: "Procure a random potion. Gain 6 (9) Block. Exhaust." Cost decreased from 2 -> 1
-- Reworked Resolve card: "Gain 2 (3) Strength and 2 (3) Dexterity. Gain 3 Poison."
-- Reworked Neurotoxin card: it now applies 5 (7) Poison instead of Stunning the enemy
-- Reworked Fever Pitch card: "At the start of your turn, if you have 10 or more Poison, draw 1 (2) cards."
-- Reworked Suffuse card: "At the start of your turn, ALL allies procure a random Unstable Potion."
-- Changed Golden Fruit card: it no longer heals 8 HP
-- Reworked Mercurial Form card: at the end of your turn it now gains Antitoxin equal to half your Poison, instead of healing that much HP
+- Changed the Potion Sell Price setting: it now runs from 10% to 100% in steps of 10%
+- Nerfed Infuse keyword: Attacks now gain 1 Laced, decreased from 2
+- Nerfed Laced enchantment: the card now also gains as much Poison as it applies.
 - Removed Plating from the deck. Vitrify, Sediment and Libation now grant Antitoxin when Enchanted
-- Reworked Etch card: "Deal 16 (20) damage. Gain 2 Poison." It no longer ignores Block
-- Changed Hemorrhage card: cost is now 1, and it deals 2 (3) times your Poison in damage instead of 3 times
-- Reworked Transmute card: its Reaction (Exhaust) now draws 1 (2) cards instead of procuring a Potion
+- Removed Regen from Cauterize, Congeal, Distillate and Amalgam
+- Removed the Gambit keyword. Cards no longer care about being at half HP or less
+- Reworked Circulation card: "Gain 2 Poison. Draw 3 (4) cards."
 - Reworked Decoction card: it no longer procures a Potion
+- Reworked Etch card: "Deal 16 (20) damage. Gain 2 Poison." It no longer ignores Block
+- Reworked Fever Pitch card: "At the start of your turn, if you have 10 or more Poison, draw 1 (2) cards."
+- Reworked Fresh Batch card: "Procure a random potion. Gain 6 (9) Block. Exhaust." Cost decreased from 2 -> 1
+- Reworked Gilded Kit relic: "At the start of each combat, gain 10 Antitoxin. You can Brew Potions at Rest Sites." It no longer grants Max HP when you use a Potion
+- Reworked Hemorrhage card: it now reads your Poison instead of your Regen, and deals 3 times that much damage
+- Reworked Lash Out card: it no longer gains Regen, and its damage decreased from 6 (8) -> 5 (7) for each hit
+- Reworked Mercurial Form card: at the end of your turn it now gains Antitoxin equal to half your Poison, instead of healing that much HP
+- Reworked Neurotoxin card: it now applies 5 (7) Poison instead of Stunning the enemy
+- Reworked Overflow into a Skill: "Gain Antitoxin equal to your Poison. Exhaust." Cost decreased from 2 -> 1
+- Reworked Poultice card: "Gain 4 (5) Antitoxin. Exhaust a random card from your Hand." The upgrade now lets you choose the card instead of lowering the cost
+- Reworked Resolve card: "Gain 2 (3) Strength and 2 (3) Dexterity. Gain 3 Poison."
+- Reworked Suffuse card: "At the start of your turn, ALL allies procure a random Unstable Potion."
+- Reworked Transmute card: its Reaction (Exhaust) now draws 1 (2) cards instead of procuring a Potion
+- Reworked Twin Serpents card: "At the start of your turn, if your Antitoxin absorbed damage, gain 1 Energy." Cost is now 2 (1)
+- Reworked Weathered Kit relic: "At the start of each combat, gain 5 Antitoxin. You can Brew Potions at Rest Sites."
 
 ### Removed
 
@@ -60,6 +61,7 @@ mod).
 
 ### Fixed
 
+- Fixed unlimited Gold at the Merchant: he no longer buys back a Potion you bought from him at that same shop, and the sale price now follows any shop discount you have, such as The Courier
 - Fixed Fighting Spirits counting Potions used by other players in Multiplayer, not only your own
 
 ## [0.7.3] - 2026-08-12

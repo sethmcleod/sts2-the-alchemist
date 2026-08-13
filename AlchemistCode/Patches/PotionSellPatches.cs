@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
@@ -73,7 +74,7 @@ public static class PotionSellPatches
     private static bool _soldThisVisit;
 
     // True when this run's owner can sell potions at all: the config override, or one of the merchant kits.
-    // Does not check the room, so it also gates the "Coveted" tip, which shows anywhere in a run
+    // Does not check the room, so it also gates the High Quality tip, which shows anywhere in a run
     private static bool SellingEnabledFor(Player? owner)
     {
         if (owner == null) return false;
@@ -81,22 +82,63 @@ public static class PotionSellPatches
             || owner.GetRelic<WeatheredKit>() != null || owner.GetRelic<GildedKit>() != null;
     }
 
+    // An Unstable potion is swept at the end of combat, so it is worth nothing to the Merchant and must
+    // not carry the High Quality tip either
+    private static bool IsSellable(PotionModel potion) =>
+        SellingEnabledFor(potion.Owner) && !UnstablePotions.IsUnstable(potion);
+
     // A Foul potion is sellable too: throwing it at the merchant already grants Gold, so a Sell button is the
     // same payout without the throw animation. Its Use button already reads "Throw". The Sell button only
     // appears at the merchant, the one place a sale can actually happen
     private static bool CanSellPotions(PotionModel potion)
     {
-        var owner = potion.Owner;
-        if (!SellingEnabledFor(owner)) return false;
-        return owner!.RunState.CurrentRoom is MerchantRoom;
+        if (!IsSellable(potion)) return false;
+        var owner = potion.Owner!;
+        if (owner.RunState.CurrentRoom is not MerchantRoom) return false;
+        return !BoughtAtThisMerchant(potion, owner);
+    }
+
+    // The Merchant will not buy back what he just sold you. His own price rolls +-5% around the very
+    // value the sale price is a percentage of, so at a high sell percent a low roll is already profitable
+    // to flip, and The Courier both discounts the price and restocks the slot, which makes it unlimited
+    // Gold. Closing the round trip fixes that without lowering what a Potion is worth to sell
+    private static bool BoughtAtThisMerchant(PotionModel potion, Player owner)
+    {
+        // Recorded per map point by MerchantPotionEntry, and saved with the run, so it survives a reload
+        var history = owner.RunState.CurrentMapPointHistoryEntry;
+        return history != null && history.GetEntry(owner.NetId).BoughtPotions.Contains(potion.Id);
     }
 
     private static int GetGoldFor(PotionModel potion)
     {
-        // A Foul potion sells for exactly its throw payout, so Throw and Sell give the same Gold
+        // A Foul potion sells for exactly its throw payout, so Throw and Sell give the same Gold. It is
+        // never for sale, so no shop discount applies to it
         if (potion is FoulPotion) return (int)potion.DynamicVars["Gold"].BaseValue;
         var basePrice = GetGoldForRarity(potion.Rarity);
-        return basePrice * AlchemistModConfig.PotionSellPercent / 100;
+        return ApplyShopDiscount(potion.Owner, basePrice * AlchemistModConfig.PotionSellPercent / 100);
+    }
+
+    // Probing with a large number keeps the integer rounding below a single Gold
+    private const decimal DiscountProbe = 1000m;
+
+    // The sale price has to move with any shop discount. Without this, a discount relic makes the
+    // Merchant sell potions for less than he buys them back for, which is unlimited Gold once
+    // The Courier also restocks the slot
+    private static int ApplyShopDiscount(Player owner, int price)
+    {
+        if (owner.RunState.CurrentRoom is not MerchantRoom room) return price;
+
+        // The base game's price relics read only the player, so any entry gives the same answer. Using
+        // this player's own potion entry keeps a mod that does read the entry on the same footing as
+        // a real purchase would be
+        var entry = room.Inventories
+            .FirstOrDefault(i => i.Player == owner)?.PotionEntries.FirstOrDefault(e => e.IsStocked);
+        if (entry == null) return price;
+
+        var factor = Hook.ModifyMerchantPrice(owner.RunState, owner, entry, DiscountProbe) / DiscountProbe;
+        // Only a discount pulls the price down. A relic that marks shop prices up must not turn selling
+        // into a bigger payday than the character is balanced around
+        return factor < 1m && factor > 0m ? (int)(price * factor) : price;
     }
 
     private static int GetGoldForRarity(PotionRarity rarity)
@@ -366,10 +408,7 @@ public static class PotionSellPatches
         public static void Postfix(PotionModel __instance, ref IEnumerable<IHoverTip> __result)
         {
             if (!__instance.IsMutable) return; // canonical (compendium) potions throw on Owner
-            if (!SellingEnabledFor(__instance.Owner)) return;
-            // An Unstable potion is discarded when combat ends, so it can never reach a Merchant. The
-            // Sell button was already unreachable; this stops the tip from promising a sale anyway
-            if (UnstablePotions.IsUnstable(__instance)) return;
+            if (!IsSellable(__instance)) return;
             var tip = new HoverTip(
                 new LocString("gameplay_ui", "POTION_SELL.sellable_tip.title"),
                 new LocString("gameplay_ui", "POTION_SELL.sellable_tip.description"))
