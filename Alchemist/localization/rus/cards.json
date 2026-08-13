@@ -4,8 +4,6 @@
   "ALCHEMIST-ANNEAL.description": "Дает {Block} [gold]защиты[/gold].\nДает вам {poison:diff()} [gold]яда[/gold].",
   "ALCHEMIST-ANNEAL.title": "Отжиг",
   "ALCHEMIST-APPLY_LINE": "\n(Накладывает [green]{Amount}[/green] Яда.)",
-  "ALCHEMIST-AUREATE.description": "Наносит {Damage:diff()} урона ВСЕМ врагам.\n[gold]Пропитывает[/gold] любое количество карт в вашей [gold]руке[/gold].",
-  "ALCHEMIST-AUREATE.title": "Позолота",
   "ALCHEMIST-AZOTH.description": "Наносит {Damage:diff()} урона.\nЕсли в [gold]стопке пепла[/gold] не менее 5 карт, дает {Energy:energyIcons()}.",
   "ALCHEMIST-AZOTH.title": "Азот",
   "ALCHEMIST-BACKDRAFT.description": "Наносит {Damage:diff()} урона.\n[gold]Реакция[/gold] (Атака): наносит {Damage:diff()} урона еще раз.",

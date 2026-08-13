@@ -4,8 +4,6 @@
   "ALCHEMIST-ANNEAL.description": "獲得 {Block} 點[gold]格擋[/gold]。\n獲得 {poison:diff()} 層[gold]中毒[/gold]。",
   "ALCHEMIST-ANNEAL.title": "退火",
   "ALCHEMIST-APPLY_LINE": "\n（施加[green]{Amount}[/green]層中毒。）",
-  "ALCHEMIST-AUREATE.description": "對所有敵人造成 {Damage:diff()} 點傷害。\n[gold]浸潤[/gold]你[gold]手牌[/gold]中任意數量的牌。",
-  "ALCHEMIST-AUREATE.title": "鎏金",
   "ALCHEMIST-AZOTH.description": "造成 {Damage:diff()} 點傷害。\n若你的[gold]消耗堆[/gold]中有 5 張或更多牌，獲得 {Energy:energyIcons()}。",
   "ALCHEMIST-AZOTH.title": "阿佐特",
   "ALCHEMIST-BACKDRAFT.description": "造成 {Damage:diff()} 點傷害。\n[gold]反應[/gold]（攻擊）：再造成 {Damage:diff()} 點傷害。",

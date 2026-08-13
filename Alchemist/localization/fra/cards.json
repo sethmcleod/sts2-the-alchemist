@@ -4,8 +4,6 @@
   "ALCHEMIST-ANNEAL.description": "Gagnez {Block} d'[gold]Armure[/gold].\nGagnez {poison:diff()} de [gold]Poison[/gold].",
   "ALCHEMIST-ANNEAL.title": "Recuit",
   "ALCHEMIST-APPLY_LINE": "\n(Applique [green]{Amount}[/green] Poison.)",
-  "ALCHEMIST-AUREATE.description": "Infligez {Damage:diff()} dégâts à TOUS les ennemis.\n[gold]Infusez[/gold] autant de cartes de votre [gold]Main[/gold] que vous le souhaitez.",
-  "ALCHEMIST-AUREATE.title": "Dorure",
   "ALCHEMIST-AZOTH.description": "Infligez {Damage:diff()} dégâts.\nSi vous avez 5 cartes ou plus [gold]Épuisées[/gold], gagnez {Energy:energyIcons()}.",
   "ALCHEMIST-AZOTH.title": "Azoth",
   "ALCHEMIST-BACKDRAFT.description": "Infligez {Damage:diff()} dégâts.\n[gold]Réaction[/gold] (Attaque) : Infligez de nouveau {Damage:diff()} dégâts.",

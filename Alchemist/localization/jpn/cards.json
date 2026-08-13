@@ -4,8 +4,6 @@
   "ALCHEMIST-ANNEAL.description": "{Block}[gold]ブロック[/gold]を得る。\n[gold]毒[/gold]{poison:diff()}を得る。",
   "ALCHEMIST-ANNEAL.title": "焼鈍",
   "ALCHEMIST-APPLY_LINE": "\n（毒を[green]{Amount}[/green]付与する。）",
-  "ALCHEMIST-AUREATE.description": "すべての敵に{Damage:diff()}ダメージを与える。\n[gold]手札[/gold]の好きな数のカードに[gold]注入[/gold]する。",
-  "ALCHEMIST-AUREATE.title": "鍍金",
   "ALCHEMIST-AZOTH.description": "{Damage:diff()}ダメージを与える。\n[gold]廃棄札[/gold]にカードが5枚以上ある場合、{Energy:energyIcons()}を得る。",
   "ALCHEMIST-AZOTH.title": "アゾット",
   "ALCHEMIST-BACKDRAFT.description": "{Damage:diff()}ダメージを与える。\n[gold]反応[/gold]（アタック）: 再び{Damage:diff()}ダメージを与える。",

@@ -29,6 +29,7 @@ mod).
 - Added Alembic card: "Whenever you Enchant a card, gain 2 (3) Antitoxin."
 - Added Tempered card: "Gain 30 (35) Block. Gain 5 Poison. Exhaust."
 - Added Aqua Regia card: "Deal 20 (26) damage. Apply 4 (5) Poison."
+- Reworked Aureate card and renamed it Wormwood, the Ancient form of Spike: "Deal 6 (8) damage to ALL enemies. Apply 2 (3) Poison to ALL enemies. Gain 2 (3) Antitoxin."
 - Added Deflagrate card: "Deal 12 (16) damage to ALL enemies. Trigger Poison on ALL enemies. Exhaust."
 
 ### Changed

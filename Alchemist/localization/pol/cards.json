@@ -4,8 +4,6 @@
   "ALCHEMIST-ANNEAL.description": "Zyskaj {Block} pkt. [gold]Bloku[/gold].\nZyskaj {poison:diff()} pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-ANNEAL.title": "Wyżarzanie",
   "ALCHEMIST-APPLY_LINE": "\n(Nakłada [green]{Amount}[/green] Trucizny.)",
-  "ALCHEMIST-AUREATE.description": "Zadaj {Damage:diff()} pkt. obrażeń WSZYSTKIM przeciwnikom.\n[gold]Nasyć[/gold] dowolną liczbę kart w [gold]ręce[/gold].",
-  "ALCHEMIST-AUREATE.title": "Złocenie",
   "ALCHEMIST-AZOTH.description": "Zadaj {Damage:diff()} pkt. obrażeń.\nJeżeli masz co najmniej 5 kart w [gold]stosie kart wyczerpanych[/gold], zyskaj {Energy:energyIcons()}.",
   "ALCHEMIST-AZOTH.title": "Azoth",
   "ALCHEMIST-BACKDRAFT.description": "Zadaj {Damage:diff()} pkt. obrażeń.\n[gold]Reakcja[/gold] (Atak): Zadaj ponownie {Damage:diff()} pkt. obrażeń.",

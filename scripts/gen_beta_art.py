@@ -60,7 +60,7 @@ ORIENTS = {
 }
 
 # Full-art cards use a portrait canvas; every other card uses W x H
-SIZES = {"Aureate": (303, 426), "Elixir": (303, 426)}
+SIZES = {"Wormwood": (303, 426), "Elixir": (303, 426)}
 
 # 8x8 Bayer matrix for ordered dithering. A repeating pattern compresses
 # far better in PNG than random noise and prevents banding just as well.
@@ -223,7 +223,7 @@ COLORS = {
     # Elixir (Ancient)
     "Elixir": ("#7638ff", "#22ff88", "BL", "Unique"),
     # Aureate (Ancient)
-    "Aureate": ("#a9012b", "#ffcf2e", "TR", "Unique"),
+    "Wormwood": ("#4a0e2e", "#6ba32c", "TR", "Unique"),
     # Golden Fruit (Quest)
     "Golden Fruit": ("#c58037", "#ffef2d", "TR", "Unique"),
     # Unripe Fruit (Quest)

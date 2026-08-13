@@ -4,8 +4,6 @@
   "ALCHEMIST-ANNEAL.description": "Erhalte {Block} [gold]Block[/gold].\nErhalte {poison:diff()} [gold]Gift[/gold].",
   "ALCHEMIST-ANNEAL.title": "Ausglühen",
   "ALCHEMIST-APPLY_LINE": "\n(Fügt [green]{Amount}[/green] Gift zu.)",
-  "ALCHEMIST-AUREATE.description": "Füge ALLEN Gegnern {Damage:diff()} Schaden zu.\n[gold]Infundiere[/gold] beliebig viele deiner [gold]Handkarten[/gold].",
-  "ALCHEMIST-AUREATE.title": "Vergolden",
   "ALCHEMIST-AZOTH.description": "Füge {Damage:diff()} Schaden zu.\nFalls du 5 oder mehr Karten in deinem [gold]Erschöpfungsstapel[/gold] hast, erhalte {Energy:energyIcons()}.",
   "ALCHEMIST-AZOTH.title": "Azoth",
   "ALCHEMIST-BACKDRAFT.description": "Füge {Damage:diff()} Schaden zu.\n[gold]Reaktion[/gold] (Angriff): Füge erneut {Damage:diff()} Schaden zu.",

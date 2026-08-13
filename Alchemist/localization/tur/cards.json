@@ -4,8 +4,6 @@
   "ALCHEMIST-ANNEAL.description": "{Block} [gold]Blok[/gold] elde et.\n{poison:diff()} [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-ANNEAL.title": "Tavlama",
   "ALCHEMIST-APPLY_LINE": "\n([green]{Amount}[/green] Zehir uygular.)",
-  "ALCHEMIST-AUREATE.description": "TÜM düşmanlara {Damage:diff()} hasar ver.\n[gold]El[/gold]'indeki istediğin sayıda kartı [gold]Aşıla[/gold].",
-  "ALCHEMIST-AUREATE.title": "Yaldız",
   "ALCHEMIST-AZOTH.description": "{Damage:diff()} hasar ver.\n[gold]Tüketme Destesi[/gold]'nde 5 veya daha fazla kart varsa {Energy:energyIcons()} elde et.",
   "ALCHEMIST-AZOTH.title": "Azoth",
   "ALCHEMIST-BACKDRAFT.description": "{Damage:diff()} hasar ver.\n[gold]Reaksiyon[/gold] (Atak): Tekrar {Damage:diff()} hasar ver.",

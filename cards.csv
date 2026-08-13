@@ -4,7 +4,6 @@ Amalgam,Rare,Attack,X,Lose all Poison. Deal that much damage to ALL enemies X (+
 Anneal,Common,Skill,0,Gain 6 Block. Gain 2 (1) Poison. Exhaust.
 Antidote,Basic,Skill,0,Gain 4 (6) Block. Gain additional Block equal to your Poison.
 Aqua Regia,Uncommon,Attack,3,Deal 20 (26) damage. Apply 4 (5) Poison.
-Aureate,Ancient,Attack,1,Deal 12 (18) damage to ALL enemies. Infuse any number of cards in your Hand.
 Azoth,Rare,Attack,1,Deal 8 (11) damage. Trigger your Poison twice.
 Backdraft,Uncommon,Attack,1,"Deal 8 (11) damage. If the enemy has Poison, deal 8 (11) damage again."
 Bestow,"Uncommon, Multiplayer",Skill,1 (0),Infuse a random card in another player's Hand. Draw 1 card.
@@ -93,3 +92,4 @@ Warded,Uncommon,Power,1,"Whenever your Antitoxin absorbs damage, gain 3 (4) Bloc
 Waste Not,Common,Skill,1,Gain 2 Poison. Put a card from your Discard Pile into your Hand.
 White Heat,Rare,Attack,0,Lose all Antitoxin. Deal that much damage to ALL enemies. Exhaust.
 Winnow,Uncommon,Skill,1,Gain 7 (10) Block. Choose 1 of 3 cards in your Draw Pile and add it into your Hand.
+Wormwood,Ancient,Attack,1,Deal 6 (8) damage to ALL enemies. Apply 2 (3) Poison to ALL enemies. Gain 2 (3) Antitoxin.

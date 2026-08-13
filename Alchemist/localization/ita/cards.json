@@ -4,8 +4,6 @@
   "ALCHEMIST-ANNEAL.description": "Ottieni {Block} di [gold]Blocco[/gold].\nOttieni {poison:diff()} di [gold]Veleno[/gold].",
   "ALCHEMIST-ANNEAL.title": "Ricottura",
   "ALCHEMIST-APPLY_LINE": "\n(Infligge [green]{Amount}[/green] Veleno.)",
-  "ALCHEMIST-AUREATE.description": "Infliggi {Damage:diff()} di danno a TUTTI i nemici.\n[gold]Infondi[/gold] un numero qualsiasi di carte nella tua [gold]mano[/gold].",
-  "ALCHEMIST-AUREATE.title": "Aurea",
   "ALCHEMIST-AZOTH.description": "Infliggi {Damage:diff()} di danno.\nSe hai 5 o più carte nella tua [gold]pila delle carte esaurite[/gold], ottieni {Energy:energyIcons()}.",
   "ALCHEMIST-AZOTH.title": "Azoth",
   "ALCHEMIST-BACKDRAFT.description": "Infliggi {Damage:diff()} di danno.\n[gold]Reazione[/gold] (Attacco): infliggi di nuovo {Damage:diff()} di danno.",

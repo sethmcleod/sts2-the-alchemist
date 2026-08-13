@@ -10,8 +10,6 @@
   "ALCHEMIST-APPLY_LINE": "\n(Apply [green]{Amount}[/green] Poison.)",
   "ALCHEMIST-AQUA_REGIA.description": "Deal {Damage:diff()} damage.\nApply {PoisonPower:diff()} [gold]Poison[/gold].",
   "ALCHEMIST-AQUA_REGIA.title": "Aqua Regia",
-  "ALCHEMIST-AUREATE.description": "Deal {Damage:diff()} damage to ALL enemies.\n[gold]Infuse[/gold] any number of cards in your [gold]Hand[/gold].",
-  "ALCHEMIST-AUREATE.title": "Aureate",
   "ALCHEMIST-AZOTH.description": "Deal {Damage:diff()} damage.\nTrigger your [gold]Poison[/gold] twice.",
   "ALCHEMIST-AZOTH.title": "Azoth",
   "ALCHEMIST-BACKDRAFT.description": "Deal {Damage:diff()} damage.\nIf the enemy has [gold]Poison[/gold], deal {Damage:diff()} damage again.",
@@ -194,5 +192,7 @@
   "ALCHEMIST-WHITE_HEAT.title": "White Heat",
   "ALCHEMIST-WINNOW.description": "Gain {Block:diff()} [gold]Block[/gold].\nChoose 1 of 3 cards in your [gold]Draw Pile[/gold] and add it into your [gold]Hand[/gold].",
   "ALCHEMIST-WINNOW.selectionScreenPrompt": "Choose a card to add into your [gold]Hand[/gold].",
-  "ALCHEMIST-WINNOW.title": "Winnow"
+  "ALCHEMIST-WINNOW.title": "Winnow",
+  "ALCHEMIST-WORMWOOD.description": "Deal {Damage:diff()} damage to ALL enemies.\nApply {PoisonPower:diff()} [gold]Poison[/gold] to ALL enemies.\nGain {AntitoxinPower:diff()} [gold]Antitoxin[/gold].",
+  "ALCHEMIST-WORMWOOD.title": "Wormwood"
 }

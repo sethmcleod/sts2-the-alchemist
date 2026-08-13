@@ -4,8 +4,6 @@
   "ALCHEMIST-ANNEAL.description": "Gana {Block} de [gold]Bloqueo[/gold].\nGana {poison:diff()} de [gold]Veneno[/gold].",
   "ALCHEMIST-ANNEAL.title": "Recocer",
   "ALCHEMIST-APPLY_LINE": "\n(Aplica [green]{Amount}[/green] de Veneno.)",
-  "ALCHEMIST-AUREATE.description": "Inflige {Damage:diff()} de daño a TODOS los enemigos.\n[gold]Infunde[/gold] cualquier número de cartas de tu [gold]Mano[/gold].",
-  "ALCHEMIST-AUREATE.title": "Áurea",
   "ALCHEMIST-AZOTH.description": "Inflige {Damage:diff()} de daño.\nSi tienes 5 o más cartas en tu [gold]Pila de agotamiento[/gold], gana {Energy:energyIcons()}.",
   "ALCHEMIST-AZOTH.title": "Azoth",
   "ALCHEMIST-BACKDRAFT.description": "Inflige {Damage:diff()} de daño.\n[gold]Reacción[/gold] (Ataque): Inflige {Damage:diff()} de daño de nuevo.",

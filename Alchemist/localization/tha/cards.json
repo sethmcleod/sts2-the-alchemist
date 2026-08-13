@@ -4,8 +4,6 @@
   "ALCHEMIST-ANNEAL.description": "ได้รับ {Block} [gold]บล็อก[/gold]\nได้รับ {poison:diff()} [gold]พิษ[/gold]",
   "ALCHEMIST-ANNEAL.title": "อบอ่อน",
   "ALCHEMIST-APPLY_LINE": "\n(ใส่พิษ [green]{Amount}[/green])",
-  "ALCHEMIST-AUREATE.description": "สร้างความเสียหาย {Damage:diff()} ใส่ศัตรูทั้งหมด\n[gold]อัดฉีด[/gold]การ์ดกี่ใบก็ได้ใน[gold]มือ[/gold]",
-  "ALCHEMIST-AUREATE.title": "ทองอร่าม",
   "ALCHEMIST-AZOTH.description": "สร้างความเสียหาย {Damage:diff()}\nถ้ามีการ์ด 5 ใบขึ้นไปใน[gold]กองสลาย[/gold] ได้รับ {Energy:energyIcons()}",
   "ALCHEMIST-AZOTH.title": "อะโซท",
   "ALCHEMIST-BACKDRAFT.description": "สร้างความเสียหาย {Damage:diff()}\n[gold]ปฏิกิริยา[/gold] (โจมตี): สร้างความเสียหาย {Damage:diff()} อีกครั้ง",

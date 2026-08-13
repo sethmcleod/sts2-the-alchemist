@@ -4,8 +4,6 @@
   "ALCHEMIST-ANNEAL.description": "Receba {Block} de [gold]Proteção[/gold].\nReceba {poison:diff()} de [gold]Veneno[/gold].",
   "ALCHEMIST-ANNEAL.title": "Recozer",
   "ALCHEMIST-APPLY_LINE": "\n(Aplica [green]{Amount}[/green] de Veneno.)",
-  "ALCHEMIST-AUREATE.description": "Cause {Damage:diff()} de dano a TODOS os inimigos.\n[gold]Infunda[/gold] qualquer quantidade de cartas na sua [gold]Mão[/gold].",
-  "ALCHEMIST-AUREATE.title": "Áureo",
   "ALCHEMIST-AZOTH.description": "Cause {Damage:diff()} de dano.\nSe você tiver 5 ou mais cartas na sua pilha de [gold]Cartas Exauridas[/gold], receba {Energy:energyIcons()}.",
   "ALCHEMIST-AZOTH.title": "Azoth",
   "ALCHEMIST-BACKDRAFT.description": "Cause {Damage:diff()} de dano.\n[gold]Reação[/gold] (Ataque): Cause {Damage:diff()} de dano novamente.",
