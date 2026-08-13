@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkhv6cqel4oem"
-path="res://.godot/imported/ichor.png-4a33f5f6e8c73e7ca6f5142478f337e8.ctex"
+uid="uid://pn5icimlgunm"
+path="res://.godot/imported/miasma.png-b0ab5c6a2de15d0ed864e35f2561611a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/ichor.png"
-dest_files=["res://.godot/imported/ichor.png-4a33f5f6e8c73e7ca6f5142478f337e8.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/miasma.png"
+dest_files=["res://.godot/imported/miasma.png-b0ab5c6a2de15d0ed864e35f2561611a.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

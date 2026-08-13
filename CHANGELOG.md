@@ -10,13 +10,24 @@ mod).
 ### Added
 
 - Added Spike card, a starting card: "Deal 6 (8) damage. Apply 2 (3) Poison. Gain 1 Poison."
-- Added Antidote card, a starting card: "Gain 4 (7) Block. Gain 2 Antitoxin."
+- Added Antidote card, a starting card: "Gain 4 (6) Block. Gain additional Block equal to your Poison."
 - Added the Antitoxin power: it absorbs damage from Poison and does not expire at the end of your turn
 - Added the Antitoxin Capacity power: it raises how much Antitoxin you can hold, above the base of 20
 - Added Slake card: "Deal 8 (11) damage. Gain 3 (4) Antitoxin."
 - Added Taint card: "Apply 4 (6) Poison. Gain 1 Poison."
 - Added Bezoar relic: "Whenever you gain Poison, gain 1 Antitoxin."
 - Added Blight card: "Deal 5 (7) damage to ALL enemies. Apply 2 (3) Poison to ALL enemies."
+- Added Callus card: "Whenever you take Poison damage, gain 1 (2) Strength."
+- Added Draft card: "Gain 3 Poison. Draw 1 (2) cards. Exhaust."
+- Added Miasma card: "Apply 3 (4) Poison to ALL enemies. Gain 1 Poison."
+- Added Rot card: "At the end of your turn, apply Poison to ALL enemies equal to half your Poison."
+- Added Osmosis card: "Deal damage equal to your Poison. Exhaust."
+- Added Purge card: "Gain 3 (5) Antitoxin. Exhaust."
+- Added Immunize card: "Whenever you play a Skill, gain 1 (2) Antitoxin."
+- Added Crucible card: "Whenever your Antitoxin absorbs damage, deal that much damage to ALL enemies."
+- Added Deep Breath card: "Infuse a card in your Hand. Draw 1 (2) cards."
+- Added Alembic card: "Whenever you Enchant a card, gain 2 (3) Antitoxin."
+- Added Tempered card: "Gain 30 (35) Block. Gain 5 Poison. Exhaust."
 
 ### Changed
 
@@ -38,6 +49,7 @@ mod).
 - Reworked Circulation card: "Gain 2 Poison. Draw 3 (4) cards."
 - Reworked Decoction card: it no longer procures a Potion
 - Removed the Reaction keyword. Cards no longer care about what you played before them
+- Reworked Fumigate card: "Deal 4 (6) damage to ALL enemies. Apply 1 Weak to ALL enemies." It no longer scales off your Exhaust Pile or Exhausts itself
 - Reworked Cauterize card: "Deal 7 (10) damage. Lose 2 Poison."
 - Reworked Quicklime card: "Deal 6 (8) damage. Gain 4 (6) Block." The Block is no longer conditional
 - Nerfed Overdose card: damage decreased from 15 (20) -> 12 (16), and it no longer draws a card
@@ -67,6 +79,7 @@ mod).
 - Removed the Unstable keyword, and the potion archetype with it. Elixir is now the only card that makes a Potion, matching the base game, where Alchemize is the only one
 - Removed Afterglow, Bottled Fury, Fighting Spirits, Fresh Batch, Heavy Dose, Libation, Precipitate, Suffuse, Tincture, Volatile Mix and Windfall cards
 - Removed Prime card
+- Removed Ichor card
 - Removed Lifeblood card
 - Removed Inversion card
 - Removed Nigredo, and the Albedo, Citrinitas and Rubedo tokens

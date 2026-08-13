@@ -80,6 +80,20 @@ BAYER = [
 # the validate command enforces this.
 # Direction encodes card type: Attack TR, Skill BR, Power R or L, token vertical (U or D)
 COLORS = {
+    "Tempered": ("#1f1723", "#5f7fa8", "BR", "Unique"),
+    # Poison powers: the self-poison payoffs
+    "Callus": ("#071a02", "#c2703a", "R", "Poison powers: amplifiers"),
+    "Rot": ("#071a02", "#6b8f2a", "L", "Poison powers: retaliation"),
+    "Miasma": ("#4e8701", "#1c5f7a", "BR", "Poison skills"),
+    "Draft": ("#4e8701", "#8a3f2f", "BR", "Poison skills"),
+    "Osmosis": ("#00212a", "#3fb0a0", "TR", "Poison payoffs"),
+    # Antitoxin
+    "Purge": ("#2f0170", "#6f9ad8", "BR", "Antitoxin"),
+    "Immunize": ("#2f0170", "#c46fd8", "R", "Antitoxin"),
+    "Crucible": ("#2f0170", "#d84a4a", "L", "Antitoxin"),
+    # Infuse
+    "Deep Breath": ("#792595", "#9ad8b8", "BR", "Infuse: cantrips"),
+    "Alembic": ("#4a1a66", "#8fd84a", "R", "Infuse: heavy"),
     "Etch": ("#0b2a4a", "#5fd0e8", "TR", "Unique"),
     "Neurotoxin": ("#5f011f", "#b3bd2a", "TR", "Poison attacks"),
     # Cauterize (one-off)
@@ -193,7 +207,6 @@ COLORS = {
     "Fever Pitch": ("#240147", "#94101b", "R", "Desperation: powers"),
     "Resolve": ("#240147", "#e04a3c", "R", "Desperation: powers"),
     # Ichor (one-off)
-    "Ichor": ("#240147", "#c9a86a", "TR", "Unique"),
     # Inoculate (one-off)
     "Percolate": ("#0e2a45", "#7fd4c1", "BR", "Unique"),
     "Inoculate": ("#12384f", "#8fd0e8", "BR", "Unique"),

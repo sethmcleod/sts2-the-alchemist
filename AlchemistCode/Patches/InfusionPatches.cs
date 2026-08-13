@@ -31,7 +31,9 @@ public static class EnchantCountPatch
 {
     public static void Postfix(CardModel card)
     {
-        if (card.CombatState != null)
-            Infusion.RecordCombatEnchant(card);
+        if (card.CombatState == null) return;
+        Infusion.RecordCombatEnchant(card);
+        if (card.Owner?.Creature.GetPower<Powers.AlembicPower>() is { } alembic)
+            _ = alembic.OnEnchanted();
     }
 }
