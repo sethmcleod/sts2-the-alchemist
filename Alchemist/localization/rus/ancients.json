@@ -21,7 +21,6 @@
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-2r.next": "Улыбнуться",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-3r.char": "Лучший вид вопроса. Такой, ради которого возвращаешься. Итак, еще раз, с самого начала.",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-attack": "Both",
-
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Ой! Не слыхал, как ты вошел. Держи-ка диковину, а хочешь — две, они все одно пылятся в той куче.",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Ответить",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/darv/darv_introduction",
@@ -46,7 +45,6 @@
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Далее",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "...Хм. Целое состояние из «может быть», а я его все это время хламом звал.",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/darv/darv_endeared",
-
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[sine]…вставай, маленький алхимик…… ты у меня…… в этот раз ты упал так глубоко……[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Сесть",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
@@ -68,7 +66,6 @@
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-0r.next": "Далее",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1r.ancient": "[sine]…так падай — и я поймаю…… взбирайся — и я отпущу…… пока вершина не замрет……[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1r.ancient.sfx": "event:/sfx/npcs/neow/neow_sleepy",
-
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "О, гость! И такой любопытный, такой зелененький. Вот, примерь немного удачи. Она идет тебе куда больше всех этих тревог.",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Ответить",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_welcome",
@@ -92,7 +89,6 @@
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Далее",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "Хи-хи-хи! Ты бы еще поблагодарил кости за свою погибель!",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_giggle",
-
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Примерь!!! Отличные находки!! Смотри, смотри!!",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Посмотреть",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Черный, белый, золотой, красный. Все цвета разом, и все надеты сразу. Невероятно.",
@@ -106,12 +102,6 @@
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.1-1.next": "Далее",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.1-2.ancient": "Хи-хи!! Цветов больше, чем слов!! Я победил!!",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-visit": "2",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0r.ancient": "Ты называешь мои цвета! Нигредо! Альбедо! Смешные слова!! Что значат??",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0r.next": "Объяснить",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "Стадии, через которые проходит вещь, становясь собой. Ты — все они сразу.",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Далее",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "Я СОВЕРШЕНСТВО?? Хи-хи!! Так и знал!! Держи блестящее, самое лучшее!!",
-
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[thinky_dots]Добро пожаловать, друг. Возьми частицу меня… она поможет тебе…[/thinky_dots]",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Ответить",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Все остальное в этом Шпиле мне приходилось брать силой. А ты просто предлагаешь. Это обезоруживает.",
@@ -130,7 +120,6 @@
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "Я все думаю, как у тебя это выходит. Ты отдаешь даром. А я до сих пор взвешиваю каждую цену.",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Далее",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "[thinky_dots]Тогда отложи весы… и просто отдавай…[/thinky_dots]",
-
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "ТЫ! МАЛЕНЬКИЙ ЗЕЛЕНЫЙ! СТАНЬ СИЛЬНЕЕ, ЧТОБЫ МЫ МОГЛИ СРАЗИТЬСЯ!!!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Ответить",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/tanx/tanx_roar",
@@ -155,7 +144,6 @@
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Далее",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "...ХА-ХА-ХА!! МЕДЛЕННАЯ СМЕРТЬ — ВСЕ РАВНО СЛАВНАЯ СМЕРТЬ!! ДЕРЖИ, ЖУТКИЙ МАЛЕНЬКИЙ ЛЯГУХ!!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/tanx/tanx_laugh",
-
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Заходи, дорогуша, заходи, тут сквозит. Присядь у огня. Ну-с, чем старая Тецкатара может тебе помочь?",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Ответить",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Говорят, ты забираешь то, что люди не хотят нести сами. Бремя. Сожаления. Старые изъяны. Правда?",
@@ -174,7 +162,6 @@
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "Ты льстишь ремеслу, не мне. Но я приму и лесть, и огонь, раз предлагаешь. Отсюда подъем холодный.",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Далее",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "[sine][font_size=22]Смех Тецкатары рокочет, точно печь.[/font_size][/sine]",
-
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Только посмотри: варит яд в собственных венах. Зачем страдать за крохи? Подпиши вот здесь, и я достану тебе [sine]настоящую[/sine] силу.",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Отказаться",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Одолженная сила — все равно долг. К тому же самое интересное начинается, когда идешь трудным путем.",

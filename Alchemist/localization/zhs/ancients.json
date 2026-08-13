@@ -21,7 +21,6 @@
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-2r.next": "微笑",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-3r.char": "最好的问题就是这种。让人一次次回来的那种。那么，从头再来一遍。",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-attack": "双方",
-
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "哦！没听见你进来。来，拿块宝石，拿两块也行，反正它们在那堆里也是积灰。",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.next": "回应",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/darv/darv_introduction",
@@ -46,7 +45,6 @@
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "继续",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "……嚯。满满一堆的“说不定”，我居然一直管它叫破烂。",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/darv/darv_endeared",
-
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[sine]……起来吧，小炼金术士……你在我这里……这次你坠得好深……[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.next": "坐起来",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
@@ -68,7 +66,6 @@
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-0r.next": "继续",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1r.ancient": "[sine]……那就坠落吧，我会接住你……攀爬吧，我会送你上路……直到塔顶不再变化……[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1r.ancient.sfx": "event:/sfx/npcs/neow/neow_sleepy",
-
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "哦，有客人！还是个好奇的绿色小家伙。来，戴上点好运。比你那一身担忧合适多了。",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.next": "回应",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_welcome",
@@ -92,7 +89,6 @@
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "继续",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "嘿嘿嘿！骰子毁了你，你还要谢谢骰子！",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_giggle",
-
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "试试这个！！！都是好东西！！看，快看！！",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.next": "看",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-1.char": "黑、白、金、红。所有颜色同时上身，一件不落。了不起。",
@@ -106,12 +102,6 @@
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.1-1.next": "继续",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.1-2.ancient": "嘿嘿！！颜色比词多！！我赢啦！！",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-visit": "2",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0r.ancient": "你给我的颜色起名字！黑化！白化！怪词词！！什么意思？？",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0r.next": "解释",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "那是一件东西在成为自己的过程中，要经历的各个阶段。而你把所有阶段一次穿全了。",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "继续",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "我是完美的？？嘿嘿！！我就知道！！多拿个亮闪闪！！",
-
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[thinky_dots]欢迎，朋友。取走我的一部分吧……它会帮到你……[/thinky_dots]",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.next": "回应",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-1.char": "这座尖塔里的其他一切，我都得靠抢。只有你，是主动给。让人不知所措。",
@@ -130,7 +120,6 @@
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "我一直想不明白你是怎么做到的。你给得毫无保留。我却还在称量每一分代价。",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "继续",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "[thinky_dots]那就放下天平……只管给予……[/thinky_dots]",
-
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "你！绿色小家伙！变强点，好跟我打一场！！！",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.next": "回应",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/tanx/tanx_roar",
@@ -155,7 +144,6 @@
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "继续",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "……哈哈哈！！慢慢死也是光荣的死法！！拿着这个，你这只阴森森的小青蛙！！",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/tanx/tanx_laugh",
-
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "哎呀，快进来，亲爱的，别站在风口上。到火边坐。说吧，老特兹卡塔拉能为你做点什么？",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.next": "回应",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-1.char": "听说人们不愿再背负的东西，你都肯收。重担。悔恨。旧日的缺陷。是真的吗？",
@@ -174,7 +162,6 @@
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "你夸的是这门手艺，不是我。不过我照单全收，还有那团火，如果你肯给的话。接下来的路又高又冷。",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "继续",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "[sine][font_size=22]特兹卡塔拉的笑声如熔炉般隆隆作响。[/font_size][/sine]",
-
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "瞧瞧你，在自己血管里熬毒药。何苦为这点残渣受罪？在这儿签个字，我给你弄点[sine]真正[/sine]的力量。",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.next": "回绝",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-1.char": "借来的力量终归是债。何况，走难路才是有趣的部分。",

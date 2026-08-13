@@ -21,7 +21,6 @@
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-2r.next": "Sourire",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-3r.char": "La meilleure sorte de question. Celle qui vous fait revenir. Encore une fois, depuis le début.",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-attack": "Les deux",
-
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Oh ! J'vous avais pas entendu entrer. Tenez, prenez une gemme, prenez-en deux, elles prennent la poussière dans c'tas.",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Répondre",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/darv/darv_introduction",
@@ -46,7 +45,6 @@
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Continuer",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "...Ben ça. Toute une fortune de peut-être, et moi qui appelais ça un bazar.",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/darv/darv_endeared",
-
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[sine]...debout, petit alchimiste...... je te tiens...... tu es tombé de si haut, cette fois......[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Se redresser",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
@@ -68,7 +66,6 @@
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-0r.next": "Continuer",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1r.ancient": "[sine]...alors tombe, et je te rattraperai...... grimpe, et je t'enverrai...... jusqu'à ce que le sommet se tienne tranquille......[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1r.ancient.sfx": "event:/sfx/npcs/neow/neow_sleepy",
-
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Oh, de la visite ! Et une curieuse petite chose verte. Tenez, portez un peu de chance. Elle vous va bien mieux que toute cette inquiétude.",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Répondre",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_welcome",
@@ -92,7 +89,6 @@
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Continuer",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "Héhéhé ! Vous remercieriez les dés de votre propre ruine !",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_giggle",
-
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Essaie ça !!! Très bonnes trouvailles !! Regarde, regarde !!",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Regarder",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Noir, blanc, or, rouge. Toutes les couleurs à la fois, portées ensemble. Extraordinaire.",
@@ -106,12 +102,6 @@
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.1-1.next": "Continuer",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.1-2.ancient": "Héhé !! Plus de couleurs que de mots !! J'ai gagné !!",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-visit": "2",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0r.ancient": "Tu nommes mes couleurs ! Nigredo ! Albedo ! Drôles de mots !! Ça veut dire quoi ??",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0r.next": "Expliquer",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "Les étapes qu'une chose traverse en devenant elle-même. Toi, tu les es toutes à la fois.",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Continuer",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "Je suis PARFAIT ?? Héhé !! Je le savais !! Prends un brillant en plus !!",
-
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[thinky_dots]Bienvenue, mon ami. Prends un morceau de moi... il t'aidera...[/thinky_dots]",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Répondre",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Tout le reste, dans cette Tour, j'ai dû le prendre de force. Vous, vous offrez. C'est désarmant.",
@@ -130,7 +120,6 @@
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "Je me demande sans cesse comment vous faites. Vous donnez sans compter. Moi, je pèse encore chaque coût.",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Continuer",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "[thinky_dots]Alors pose la balance... et donne, simplement...[/thinky_dots]",
-
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "TOI ! PETITE CHOSE VERTE ! DEVIENS PLUS FORTE POUR QU'ON PUISSE SE BATTRE !!!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Répondre",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/tanx/tanx_roar",
@@ -155,7 +144,6 @@
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Continuer",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "...HAHAHA !! UNE MORT LENTE RESTE UNE MORT GLORIEUSE !! PRENDS ÇA, SINISTRE PETITE GRENOUILLE !!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/tanx/tanx_laugh",
-
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Oh, entrez donc, mon petit, sortez de ce courant d'air. Asseyez-vous près du feu. Alors, que peut faire la vieille Tezcatara pour vous ?",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Répondre",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-1.char": "On dit que vous prenez ce que les gens préféreraient ne plus porter. Fardeaux. Regrets. Vieux défauts. C'est vrai ?",
@@ -174,7 +162,6 @@
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "Vous flattez le métier, pas moi. Mais je prends, et la flamme aussi, si vous l'offrez. La montée est froide, d'ici.",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Continuer",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "[sine][font_size=22]Le rire de Tezcatara gronde comme une fournaise.[/font_size][/sine]",
-
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Regardez-vous, à cuire du poison dans vos propres veines. Pourquoi souffrir pour des miettes ? Signez juste ici et je vous obtiens du [sine]vrai[/sine] pouvoir.",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Refuser",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Un pouvoir emprunté reste un emprunt. Et c'est par la voie difficile que ça devient intéressant.",

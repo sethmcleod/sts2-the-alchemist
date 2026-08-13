@@ -29,6 +29,7 @@ mod).
 - Removed Quintessence relic
 
 ### Fixed
+- Fixed Orobas dialogue that named the removed Nigredo and Albedo cards
 
 - Fixed Fighting Spirits counting Potions used by other players in Multiplayer, not only your own
 

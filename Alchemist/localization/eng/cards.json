@@ -118,7 +118,7 @@
   "ALCHEMIST-PAYS_OFF.description": "At the start of your turn, if your [gold]Antitoxin[/gold] absorbed damage, gain {Energy:energyIcons()}.",
   "ALCHEMIST-PAYS_OFF.title": "Pays Off",
   "ALCHEMIST-POTIONS_USED_LINE": "\n(Used [green]{Potions}[/green] {Potions:plural:Potion|Potions}.)",
-  "ALCHEMIST-POULTICE.description": "Gain {AntitoxinPower:diff()} [gold]Antitoxin[/gold].\\n{IfUpgraded:show:Exhaust 1 card.|Exhaust a random card from your Hand.}",
+  "ALCHEMIST-POULTICE.description": "Gain {AntitoxinPower:diff()} [gold]Antitoxin[/gold].\\n{IfUpgraded:show:Exhaust 1 card.|Exhaust 1 card at random.}",
   "ALCHEMIST-POULTICE.title": "Poultice",
   "ALCHEMIST-PUFF_UP.description": "[gold]Ferment{FermentSuffix}.[/gold]\nGain {CalculatedBlock:diff()} [gold]Block[/gold].\nGain {IfUpgraded:show:[green]6[/green]|4} additional [gold]Block[/gold] for each turn fermented.",
   "ALCHEMIST-PUFF_UP.title": "Puff Up",

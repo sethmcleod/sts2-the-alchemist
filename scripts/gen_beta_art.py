@@ -214,7 +214,7 @@ COLORS = {
     # Defend (Basic)
     "Defend": ("#0f2a43", "#2b6ea8", "BR", "Unique"),
     # Spike (Basic): the starter dose, anchored on the Poison-attack red
-    "Jab": ("#650101", "#c05fd8", "TR", "Unique"),
+    "Jab": ("#2b0410", "#46621f", "TR", "Unique"),
     # Flask (Basic): the starter brew, anchored on the potion teal
     "Antidote": ("#045062", "#d8b23a", "BR", "Unique"),
     # Nigredo (token)

@@ -21,7 +21,6 @@
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-2r.next": "Gülümse",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-3r.char": "En iyi soru türü. İnsanı hep geri getiren tür. Bir kez daha, en baştan.",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-attack": "Both",
-
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Aa! Geldiğini duymadım. Al bakalım, bi' mücevher al, iki al; o yığında öylece toz tutuyorlar zaten.",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Cevap Ver",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/darv/darv_introduction",
@@ -46,7 +45,6 @@
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Devam Et",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "...Hıh. Koca bi' belkiler servetiymiş, ben tutmuş ona keşmekeş diyordum.",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/darv/darv_endeared",
-
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[sine]...kalk bakalım, küçük simyacı...... seni tuttum...... bu sefer çok derine düştün......[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Doğrul",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
@@ -68,7 +66,6 @@
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-0r.next": "Devam Et",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1r.ancient": "[sine]...o hâlde düş, ben seni tutarım...... tırman, ben seni yollarım...... zirve yerinde duruncaya dek......[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1r.ancient.sfx": "event:/sfx/npcs/neow/neow_sleepy",
-
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Aa, bir ziyaretçi! Üstelik meraklı, küçük ve yeşil. Al bakalım, biraz şans kuşan. Sana o endişeden çok daha yakışıyor.",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Cevap Ver",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_welcome",
@@ -92,7 +89,6 @@
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Devam Et",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "Hehehe! Seni mahvettiği için zarlara teşekkür edersin sen!",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_giggle",
-
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Şunu dene!!! Çok güzel keşifler!! Bak, bak!!",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Bak",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Siyah, beyaz, altın, kırmızı. Bütün renkler aynı anda, hepsi bir arada. Olağanüstü.",
@@ -106,12 +102,6 @@
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.1-1.next": "Devam Et",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.1-2.ancient": "Hehe!! Renkler kelimelerden çok!! Ben kazandım!!",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-visit": "2",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0r.ancient": "Renklerime isim veriyorsun! Nigredo! Albedo! Komik kelimeler!! Ne demek onlar??",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0r.next": "Açıkla",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "Bir şeyin kendisi olurken geçtiği aşamalar. Sen hepsisin, hem de aynı anda.",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Devam Et",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "Ben MÜKEMMEL miyim?? Hehe!! Biliyordum!! Fazladan parlak al!!",
-
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[thinky_dots]Hoş geldin dostum. Benden bir parça al... sana yardımı olur...[/thinky_dots]",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Cevap Ver",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Bu Spire'da başka ne varsa zorla almak zorunda kaldım. Sense öylece veriyorsun. İnsanı silahsız bırakıyor.",
@@ -130,7 +120,6 @@
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "Bunu nasıl başardığını merak edip duruyorum. Sen karşılıksız veriyorsun. Bense hâlâ her bedeli tartıyorum.",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Devam Et",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "[thinky_dots]O hâlde teraziyi bırak... ve öylece ver...[/thinky_dots]",
-
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "SEN! KÜÇÜK YEŞİL OLAN! DAHA DA GÜÇLEN Kİ ÇARPIŞABİLELİM!!!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Cevap Ver",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/tanx/tanx_roar",
@@ -155,7 +144,6 @@
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Devam Et",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "...HAHAHA!! YAVAŞ BİR ÖLÜM DE ŞANLI BİR ÖLÜMDÜR!! AL BUNU, SENİ ÜRKÜTÜCÜ KÜÇÜK KURBAĞA!!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/tanx/tanx_laugh",
-
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Aa, içeri buyur canım, çık şu cereyandan. Ateşin başına otur. Eee, ihtiyar Tezcatara senin için ne yapabilir?",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Cevap Ver",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-1.char": "İnsanların taşımak istemediği şeyleri aldığını söylüyorlar. Yükleri. Pişmanlıkları. Eski kusurları. Doğru mu?",
@@ -174,7 +162,6 @@
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "İltifatın bana değil, zanaata. Yine de kabul ederim; sunuyorsan alevi de alırım. Buradan sonrası soğuk bir tırmanış.",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Devam Et",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "[sine][font_size=22]Tezcatara'nın kahkahası bir ocak gibi gürler.[/font_size][/sine]",
-
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Şu hâline bak, kendi damarlarında zehir kaynatıyorsun. Kırıntılar için niye acı çekesin? Şurayı imzala, sana [sine]gerçek[/sine] güçten vereyim.",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Reddet",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Ödünç alınan güç yine de borçtur. Zor yol ise işin ilginçleştiği yerdir.",

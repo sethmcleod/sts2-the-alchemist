@@ -21,7 +21,6 @@
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-2r.next": "Uśmiechnij się",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-3r.char": "Najlepszy rodzaj pytania. Taki, który każe wracać. Jeszcze raz, od początku.",
   "THE_ARCHITECT.talk.ALCHEMIST-ALCHEMIST.2-attack": "Both",
-
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "O! Nie słyszałem, jak wchodzisz. Masz, weź klejnot, weź dwa, i tak tylko kurzą się na tej stercie.",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Odpowiedz",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/darv/darv_introduction",
@@ -46,7 +45,6 @@
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Kontynuuj",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "...Huh. Cała fortuna z samych „może być”, a ja to nazywałem bałaganem.",
   "DARV.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/darv/darv_endeared",
-
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[sine]...wstawaj, mały alchemiku...... mam cię...... tym razem spadłeś tak daleko......[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Usiądź",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
@@ -68,7 +66,6 @@
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-0r.next": "Kontynuuj",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1r.ancient": "[sine]...więc spadaj, a złapię cię...... wspinaj się, a poślę cię w górę...... aż szczyt wreszcie znieruchomieje......[/sine]",
   "NEOW.talk.ALCHEMIST-ALCHEMIST.2-1r.ancient.sfx": "event:/sfx/npcs/neow/neow_sleepy",
-
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "O, gość! I to jaki ciekawski, zielony maluch. Masz, przymierz odrobinę szczęścia. Pasuje ci o niebo lepiej niż te wszystkie zmartwienia.",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Odpowiedz",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_welcome",
@@ -92,7 +89,6 @@
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Kontynuuj",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "Hihihi! Podziękowałbyś kościom za własną zgubę!",
   "NONUPEIPE.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_giggle",
-
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Przymierz!!! Bardzo dobre znaleziska!! Patrz, patrz!!",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Spójrz",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Czerń, biel, złoto, czerwień. Wszystkie barwy naraz, noszone razem. Nadzwyczajne.",
@@ -106,12 +102,6 @@
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.1-1.next": "Kontynuuj",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.1-2.ancient": "Hihi!! Więcej kolorów niż słów!! Wygrywam!!",
   "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-visit": "2",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0r.ancient": "Nazywasz moje kolory! Nigredo! Albedo! Śmieszne słowa!! Co znaczą??",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-0r.next": "Wyjaśnij",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "To etapy, przez które przechodzi rzecz, stając się sobą. Ty jesteś wszystkimi naraz.",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Kontynuuj",
-  "OROBAS.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "Jestem DOSKONAŁY?? Hihi!! Wiedziałem!! Bierz dodatkową błyskotkę!!",
-
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "[thinky_dots]Witaj, przyjacielu. Weź cząstkę mnie... pomoże ci...[/thinky_dots]",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Odpowiedz",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Wszystko inne w tej Iglicy musiałem brać siłą. Ty po prostu ofiarowujesz. To rozbrajające.",
@@ -130,7 +120,6 @@
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "Ciągle się zastanawiam, jak to robisz. Ty dajesz bez wahania. Ja wciąż ważę każdy koszt.",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Kontynuuj",
   "PAEL.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "[thinky_dots]Więc odłóż wagę... i po prostu dawaj...[/thinky_dots]",
-
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "TY! MAŁY ZIELONY! ROŚNIJ W SIŁĘ, ŻEBYŚMY MOGLI WALCZYĆ!!!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Odpowiedz",
   "TANX.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/tanx/tanx_roar",
@@ -155,7 +144,6 @@
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Kontynuuj",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "...HAHAHA!! POWOLNA ŚMIERĆ TO WCIĄŻ CHWALEBNA ŚMIERĆ!! A MASZ, TY UPIORNA MAŁA ŻABO!!",
   "TANX.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient.sfx": "event:/sfx/npcs/tanx/tanx_laugh",
-
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Ależ wejdź, kochanie, nie stój w tym przeciągu. Usiądź przy ogniu. No dobrze, co stara Tezcatara może dla ciebie zrobić?",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Odpowiedz",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Mówią, że przyjmujesz to, czego ludzie woleliby nie dźwigać. Brzemiona. Żale. Stare wady. To prawda?",
@@ -174,7 +162,6 @@
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1r.char": "Schlebiasz rzemiosłu, nie mnie. Ale przyjmę to, i płomień też, jeśli proponujesz. Stąd w górę czeka zimna wspinaczka.",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-1r.next": "Kontynuuj",
   "TEZCATARA.talk.ALCHEMIST-ALCHEMIST.2-2r.ancient": "[sine][font_size=22]Śmiech Tezcatary dudni jak piec hutniczy.[/font_size][/sine]",
-
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "Spójrz na siebie, pichcisz truciznę we własnych żyłach. Po co cierpieć za ochłapy? Podpisz o tutaj, a załatwię ci [sine]prawdziwą[/sine] moc.",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-0.next": "Odmów",
   "VAKUU.talk.ALCHEMIST-ALCHEMIST.0-1.char": "Pożyczona moc to wciąż dług. A trudna droga jest tą ciekawszą.",
