@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the Alchemist having no hitbox at Rest Sites, which stopped allies from targeting them with Mend in Multiplayer
+
 ## [0.7.4] - 2026-08-12
 
 ### Changed

@@ -34,6 +34,19 @@ public static class RestSiteHitboxPatch
             repaired += " size,";
         }
 
+        // THE Mend fix. A base game rest site scene ships its own SelectionReticle, set to ignore the
+        // mouse. A mod scene is told to leave it out, so BaseLib builds one from the Hitbox through
+        // CopyControlProperties, which copies MouseFilter as well, and AddChilds it to the root, after
+        // ControlRoot. Godot picks controls last child first, so that copy sits over the Hitbox and eats
+        // the hover, and Mend can never target this character. The reticle is decoration, so Ignore is
+        // always right for it
+        if (__instance.GetNodeOrNull<Control>("%SelectionReticle") is { } reticle
+            && reticle.MouseFilter != Control.MouseFilterEnum.Ignore)
+        {
+            reticle.MouseFilter = Control.MouseFilterEnum.Ignore;
+            repaired += " reticle mouse filter,";
+        }
+
         // Logged either way: in a multiplayer test this line is the fastest way to tell a targeting
         // problem in the scene from one in the base game's targeting
         MainFile.Logger.Info(
