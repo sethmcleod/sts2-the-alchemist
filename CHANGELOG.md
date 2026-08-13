@@ -29,6 +29,7 @@ mod).
 - Added Alembic card: "Whenever you Enchant a card, gain 2 (3) Antitoxin."
 - Added Tempered card: "Gain 30 (35) Block. Gain 5 Poison. Exhaust."
 - Added Aqua Regia card: "Deal 20 (26) damage. Apply 4 (5) Poison."
+- Added Deflagrate card: "Deal 12 (16) damage to ALL enemies. Trigger Poison on ALL enemies. Exhaust."
 
 ### Changed
 
@@ -65,6 +66,11 @@ mod).
 - Reworked Corrosive card: "Whenever an enemy takes Poison damage, apply 1 (2) Poison to it."
 - Changed Rolling Boil into a Rare card
 - Changed Crucible into an Uncommon card
+- Reworked Azoth card: "Deal 8 (11) damage. Trigger your Poison twice."
+- Reworked White Heat card: "Lose all Antitoxin. Deal that much damage to ALL enemies. Exhaust."
+- Reworked Rot card: "Whenever an enemy dies, apply 5 (8) Poison to ALL enemies." Its cost decreased from 2 (1) -> 0
+- Nerfed Virulence card: cost increased from 2 (1) -> 3 (2)
+- Fixed Flare Up card: its Poison trigger is now seen by Corrosive and the other Poison payoffs
 - Buffed Inoculate card: Block increased from 7 (10) -> 9 (12), and HP lost decreased from 3 -> 2
 - Buffed Bitter Draught card: Energy gained increased from 2 (3) -> 3 (4)
 - Buffed Unstable Compound card: it no longer has Ethereal
@@ -98,6 +104,7 @@ mod).
 - Removed Nigredo, and the Albedo, Citrinitas and Rubedo tokens
 - Removed Reagent card
 - Removed Catalysis card
+- Removed Venom Trance card. Extra turns are now only on the Quicksilver Draught potion
 - Removed Quench card
 - Removed Quintessence relic
 

@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "Fruta verde",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "Al final de tu próximo turno, infliges {Dmg:diff()} de daño al enemigo.",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "Compuesto inestable",
-  "ALCHEMIST-VENOM_TRANCE.description": "Obtienes {poison} de [gold]veneno[/gold].\nJuegas un turno extra después de este.",
-  "ALCHEMIST-VENOM_TRANCE.title": "Trance venenoso",
   "ALCHEMIST-VINTAGE.description": "[gold]Fermentación{FermentSuffix}.[/gold]\nObtienes {energyPrefix:energyIcons(1)} y robas 1 carta por cada turno fermentado.{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "Añada",
   "ALCHEMIST-VIRULENCE.description": "Cada vez que obtienes [gold]veneno[/gold], infliges esa misma cantidad de daño a TODOS los enemigos.",

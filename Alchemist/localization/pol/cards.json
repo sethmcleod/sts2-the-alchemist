@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "Niedojrzały owoc",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "Pod koniec twojej następnej tury zadaj przeciwnikowi {Dmg:diff()} pkt. obrażeń.",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "Niestabilny związek",
-  "ALCHEMIST-VENOM_TRANCE.description": "Zyskaj {poison} pkt. [gold]Trucizny[/gold].\nRozegraj dodatkową turę po tej.",
-  "ALCHEMIST-VENOM_TRANCE.title": "Jadowity trans",
   "ALCHEMIST-VINTAGE.description": "[gold]Fermentacja{FermentSuffix}.[/gold]\nZyskaj {energyPrefix:energyIcons(1)} i dobierz 1 kartę za każdą turę fermentacji.{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "Rocznik",
   "ALCHEMIST-VIRULENCE.description": "Kiedykolwiek zyskujesz [gold]Truciznę[/gold], zadaj tyle samo pkt. obrażeń WSZYSTKIM przeciwnikom.",

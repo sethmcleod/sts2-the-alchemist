@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "ผลไม้ดิบ",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "ตอนจบเทิร์นถัดไป สร้างความเสียหาย {Dmg:diff()} ใส่ศัตรู",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "สารประกอบไม่เสถียร",
-  "ALCHEMIST-VENOM_TRANCE.description": "ได้รับ {poison} [gold]พิษ[/gold]\nเล่นต่ออีก 1 เทิร์นต่อจากเทิร์นนี้",
-  "ALCHEMIST-VENOM_TRANCE.title": "ภวังค์พิษ",
   "ALCHEMIST-VINTAGE.description": "[gold]บ่ม{FermentSuffix}[/gold]\nได้รับ {energyPrefix:energyIcons(1)} และจั่วการ์ด 1 ใบ ต่อทุกเทิร์นที่บ่ม{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "ยาบ่มปี",
   "ALCHEMIST-VIRULENCE.description": "ทุกครั้งที่คุณได้รับ[gold]พิษ[/gold] สร้างความเสียหายเท่ากับจำนวนนั้นใส่ศัตรูทั้งหมด",

@@ -114,6 +114,7 @@ COLORS = {
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
     "Macerate": ("#650101", "#2f9e6a", "TR", "Poison attacks"),
+    "Deflagrate": ("#650101", "#e8451f", "TR", "Poison attacks"),
     "Blight": ("#650101", "#4a7a1c", "TR", "Poison attacks"),
     # Unstable Compound (one-off): the name kept its own violet-into-toxic-green
     "Unstable Compound": ("#2f0170", "#63c11c", "BR", "Unique"),
@@ -184,7 +185,6 @@ COLORS = {
     # Burst tempo
     "White Heat": ("#7a1c02", "#ffdf8a", "BR", "Burst tempo"),
     "Bitter Draught": ("#7a1c02", "#d98cc8", "BR", "Burst tempo"),
-    "Venom Trance": ("#7a1c02", "#8fd97a", "BR", "Burst tempo"),
     # Crafting: transform
     "Melt Down": ("#1b2a44", "#0f9b82", "BR", "Crafting: transform"),
     "Sublimate": ("#1b2a44", "#0c7f56", "BR", "Crafting: transform"),

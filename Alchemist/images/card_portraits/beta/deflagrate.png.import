@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgrx5fayduq88"
-path="res://.godot/imported/venom_trance.png-2085c131706db90567790633fd4e07a8.ctex"
+uid="uid://dr7nnxw6adgmg"
+path="res://.godot/imported/deflagrate.png-31ea60057cebc5101358193411299117.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/venom_trance.png"
-dest_files=["res://.godot/imported/venom_trance.png-2085c131706db90567790633fd4e07a8.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/deflagrate.png"
+dest_files=["res://.godot/imported/deflagrate.png-31ea60057cebc5101358193411299117.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

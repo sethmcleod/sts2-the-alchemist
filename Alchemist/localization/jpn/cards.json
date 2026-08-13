@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "未熟な果実",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "次のターン終了時、この敵に{Dmg:diff()}ダメージを与える。",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "不安定な化合物",
-  "ALCHEMIST-VENOM_TRANCE.description": "[gold]毒[/gold]{poison}を得る。\nこのターンの後、追加のターンを得る。",
-  "ALCHEMIST-VENOM_TRANCE.title": "毒の恍惚",
   "ALCHEMIST-VINTAGE.description": "[gold]発酵{FermentSuffix}。[/gold]\n発酵したターン1回につき、{energyPrefix:energyIcons(1)}を得てカードを1枚引く。{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "年代物",
   "ALCHEMIST-VIRULENCE.description": "[gold]毒[/gold]を得るたび、その値のダメージをすべての敵に与える。",

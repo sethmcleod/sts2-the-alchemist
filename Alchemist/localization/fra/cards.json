@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "Fruit vert",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "À la fin de votre prochain tour, infligez {Dmg:diff()} dégâts à l'ennemi.",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "Composé instable",
-  "ALCHEMIST-VENOM_TRANCE.description": "Gagnez {poison} de [gold]Poison[/gold].\nJouez un tour supplémentaire après celui-ci.",
-  "ALCHEMIST-VENOM_TRANCE.title": "Transe venimeuse",
   "ALCHEMIST-VINTAGE.description": "[gold]Fermentation{FermentSuffix}.[/gold]\nGagnez {energyPrefix:energyIcons(1)} et piochez 1 carte pour chaque tour de fermentation.{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "Millésime",
   "ALCHEMIST-VIRULENCE.description": "Lorsque vous gagnez du [gold]Poison[/gold], infligez autant de dégâts à TOUS les ennemis.",

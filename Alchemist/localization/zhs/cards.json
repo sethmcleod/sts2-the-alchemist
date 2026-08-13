@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "未熟之果",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "在你的下个回合结束时，对敌人造成{Dmg:diff()}点伤害。",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "不稳定化合物",
-  "ALCHEMIST-VENOM_TRANCE.description": "获得{poison}层[gold]中毒[/gold]。\n在本回合后，额外进行一个回合。",
-  "ALCHEMIST-VENOM_TRANCE.title": "毒素入定",
   "ALCHEMIST-VINTAGE.description": "[gold]发酵{FermentSuffix}。[/gold]\n每发酵一回合，获得{energyPrefix:energyIcons(1)}并抽1张牌。{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "陈酿",
   "ALCHEMIST-VIRULENCE.description": "每当你获得[gold]中毒[/gold]时，对所有敌人造成等量的伤害。",

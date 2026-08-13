@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "Unreife Frucht",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "Füge dem Gegner am Ende deines nächsten Zuges {Dmg:diff()} Schaden zu.",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "Instabile Verbindung",
-  "ALCHEMIST-VENOM_TRANCE.description": "Erhalte {poison} [gold]Gift[/gold].\nMache einen Extrazug nach diesem.",
-  "ALCHEMIST-VENOM_TRANCE.title": "Gifttrance",
   "ALCHEMIST-VINTAGE.description": "[gold]Gärung{FermentSuffix}.[/gold]\nErhalte {energyPrefix:energyIcons(1)} und ziehe 1 Karte für jeden Zug in Gärung.{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "Jahrgang",
   "ALCHEMIST-VIRULENCE.description": "Immer wenn du [gold]Gift[/gold] erhältst, füge ALLEN Gegnern genauso viel Schaden zu.",

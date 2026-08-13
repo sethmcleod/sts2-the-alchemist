@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "Ham Meyve",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "Bir sonraki turunun sonunda düşmana {Dmg:diff()} hasar ver.",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "Kararsız Bileşik",
-  "ALCHEMIST-VENOM_TRANCE.description": "{poison} [gold]Zehir[/gold] elde et.\nBu turdan sonra fazladan bir tur elde et.",
-  "ALCHEMIST-VENOM_TRANCE.title": "Zehir Transı",
   "ALCHEMIST-VINTAGE.description": "[gold]Mayalan{FermentSuffix}.[/gold]\nMayalandığı her tur için {energyPrefix:energyIcons(1)} elde et ve 1 kart çek.{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "Bağbozumu",
   "ALCHEMIST-VIRULENCE.description": "Her [gold]Zehir[/gold] elde ettiğinde TÜM düşmanlara o kadar hasar ver.",

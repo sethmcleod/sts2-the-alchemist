@@ -9,7 +9,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Virulence : AlchemistCard
 {
-    public Virulence() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public Virulence() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         // The upgrade buys the cost, the way the Catalyze it replaces did. The damage is the Poison
         // itself, so there is no amount to raise without changing how the card reads

@@ -9,14 +9,14 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Rot : AlchemistCard
 {
-    public Rot() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public Rot() : base(0, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
+        WithVar("Amount", 5, 3);
         WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<RotPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<RotPower>(choiceContext, Owner.Creature, DynamicVars["Amount"].IntValue, Owner.Creature, this);
     }
 }

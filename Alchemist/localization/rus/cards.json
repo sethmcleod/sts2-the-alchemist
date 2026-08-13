@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "Неспелый плод",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "В конце вашего следующего хода наносит {Dmg:diff()} урона врагу.",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "Нестабильное соединение",
-  "ALCHEMIST-VENOM_TRANCE.description": "Дает вам {poison} [gold]яда[/gold].\nДает дополнительный ход.",
-  "ALCHEMIST-VENOM_TRANCE.title": "Ядовитый транс",
   "ALCHEMIST-VINTAGE.description": "[gold]Брожение{FermentSuffix}.[/gold]\nЗа каждый ход брожения дает {energyPrefix:energyIcons(1)}, и вы добираете 1 карту.{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "Выдержка",
   "ALCHEMIST-VIRULENCE.description": "Когда вы получаете [gold]яд[/gold], наносит столько же урона ВСЕМ врагам.",

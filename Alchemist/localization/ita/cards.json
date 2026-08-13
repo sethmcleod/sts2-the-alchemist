@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "Frutto Acerbo",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "Al termine del tuo prossimo turno, infliggi {Dmg:diff()} di danno al nemico.",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "Composto Instabile",
-  "ALCHEMIST-VENOM_TRANCE.description": "Ottieni {poison} di [gold]Veleno[/gold].\nGiochi un turno extra dopo di questo.",
-  "ALCHEMIST-VENOM_TRANCE.title": "Trance Velenosa",
   "ALCHEMIST-VINTAGE.description": "[gold]Fermentazione{FermentSuffix}.[/gold]\nOttieni {energyPrefix:energyIcons(1)} e peschi 1 carta per ogni turno di fermentazione.{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "Annata",
   "ALCHEMIST-VIRULENCE.description": "Ogni volta che ottieni [gold]Veleno[/gold], infliggi altrettanto danno a TUTTI i nemici.",

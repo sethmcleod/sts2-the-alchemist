@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using System.Linq;
-using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -17,14 +17,14 @@ public class RotPower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
-    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
-        IEnumerable<Creature> participants)
+    public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature,
+        bool wasRemovalPrevented, float deathAnimLength)
     {
-        if (!participants.Contains(Owner)) return;
-        var spread = Owner.GetPowerAmount<PoisonPower>() / 2 * Amount;
-        if (spread <= 0 || Owner.CombatState is not { } combat) return;
+        if (creature == Owner || Owner.CombatState is not { } combat) return;
+        var survivors = combat.GetOpponentsOf(Owner).Where(e => e.IsAlive && e != creature).ToList();
+        if (survivors.Count == 0) return;
         Flash();
-        foreach (var enemy in combat.GetOpponentsOf(Owner).Where(e => e.IsAlive).ToList())
-            await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, spread, Owner, null);
+        foreach (var enemy in survivors)
+            await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, Amount, Owner, null);
     }
 }

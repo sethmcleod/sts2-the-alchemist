@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "덜 익은 과일",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "다음 내 턴 종료 시, 적에게 피해를 {Dmg:diff()} 줍니다.",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "불안정한 화합물",
-  "ALCHEMIST-VENOM_TRANCE.description": "[gold]중독[/gold]을 {poison} 얻습니다.\n이번 턴 후에 추가 턴을 진행합니다.",
-  "ALCHEMIST-VENOM_TRANCE.title": "독 무아경",
   "ALCHEMIST-VINTAGE.description": "[gold]발효{FermentSuffix}.[/gold]\n발효한 턴마다 {energyPrefix:energyIcons(1)}를 얻고 카드를 1장 뽑습니다.{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "빈티지",
   "ALCHEMIST-VIRULENCE.description": "[gold]중독[/gold]을 얻을 때마다, 모든 적에게 그만큼 피해를 줍니다.",

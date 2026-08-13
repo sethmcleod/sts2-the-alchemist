@@ -1,4 +1,4 @@
-using Alchemist.AlchemistCode.Compat;
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -24,13 +24,7 @@ public class FlareUp : AlchemistCard
         {
             PoisonSplash(play.Target);
             await PowerCmd.Apply<PoisonPower>(choiceContext, play.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
-            var poison = play.Target.GetPowerAmount<PoisonPower>();
-            if (poison > 0)
-            {
-                await GameCompat.Damage(choiceContext, play.Target, poison,
-                    ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, Owner.Creature, this, null);
-                await PowerCmd.Apply<PoisonPower>(choiceContext, play.Target, -1, Owner.Creature, this);
-            }
+            await PoisonTrigger.Once(choiceContext, play.Target);
         }
     }
 }

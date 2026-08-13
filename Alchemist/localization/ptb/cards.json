@@ -142,8 +142,6 @@
   "ALCHEMIST-UNRIPE_FRUIT.title": "Fruto Verde",
   "ALCHEMIST-UNSTABLE_COMPOUND.description": "No final do seu próximo turno, cause {Dmg:diff()} de dano ao inimigo.",
   "ALCHEMIST-UNSTABLE_COMPOUND.title": "Composto Instável",
-  "ALCHEMIST-VENOM_TRANCE.description": "Receba {poison} de [gold]Veneno[/gold].\nRealize um turno extra após este turno.",
-  "ALCHEMIST-VENOM_TRANCE.title": "Transe Venenoso",
   "ALCHEMIST-VINTAGE.description": "[gold]Fermentar{FermentSuffix}.[/gold]\nReceba {energyPrefix:energyIcons(1)} e compre 1 carta por cada turno fermentado.{FermentTotal}",
   "ALCHEMIST-VINTAGE.title": "Safra",
   "ALCHEMIST-VIRULENCE.description": "Sempre que você receber [gold]Veneno[/gold], cause essa quantidade de dano a TODOS os inimigos.",
