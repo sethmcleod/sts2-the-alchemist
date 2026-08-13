@@ -11,4 +11,6 @@ public class AntitoxinCapacityPower : AlchemistPower
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<AntitoxinPower>() };
+
+    protected override bool IsVisibleInternal => false;
 }

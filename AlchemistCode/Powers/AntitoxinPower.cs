@@ -29,6 +29,11 @@ public partial class AntitoxinPower : AlchemistPower
     private int _pendingSpend;
 
     public override PowerType Type => PowerType.Buff;
+
+    // The bar under the health bar shows the amount, so the icon would be a second copy of the same
+    // number. AntitoxinBarPatches keeps the hover tips on the creature, because PowerModel.HoverTips
+    // returns nothing once a power is invisible
+    protected override bool IsVisibleInternal => false;
     public override PowerStackType StackType => PowerStackType.Counter;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

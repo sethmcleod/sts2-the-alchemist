@@ -9,11 +9,10 @@ mod).
 
 ### Added
 
+- Added Antitoxin bar below HP bar: it absorbs damage you would take from Poison
+- Added Spare Dose relic: "Whenever you gain Poison, gain 1 Antitoxin."
 - Added Bottoms Up card, multiplayer only: "Whenever you gain Poison, ALL other players gain that much Block."
 - Added Free Samples card, multiplayer only: "ALL other players Infuse 2 (3) cards in their Hand. Draw 2 cards."
-- Added Antitoxin Capacity power: it raises how much Antitoxin you can hold, above the base of 20
-- Added Antitoxin power: it absorbs damage from Poison and does not expire at the end of your turn
-- Added Bezoar relic: "Whenever you gain Poison, gain 1 Antitoxin."
 
 ### Changed
 
@@ -22,7 +21,6 @@ mod).
 - Changed Gilded Kit to come from the event pool, like the other characters' upgraded starter relics
 - Changed Potions procured during combat to no longer include those that can heal
 - Changed Snake Tail into a Rare relic
-- Renamed Bezoar relic to Spare Dose, and changed it into a Common relic
 - Reworked Fuming enchantment to Dosed: now gains 1 Antitoxin, instead of applying Weak and Vulnerable to a random enemy and giving you Poison
 - Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy."
 - Reworked Laced echantment: now applies 1 Poison and gains 1 Poison
