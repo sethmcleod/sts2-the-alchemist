@@ -102,8 +102,6 @@
   "ALCHEMIST-POULTICE.title": "Cataplasme",
   "ALCHEMIST-PUNCTURE.description": "Infligez {Damage:diff()} dégâts.\nAppliquez {VulnerablePower:diff()} [gold]Vulnérable[/gold].\n[gold]Gambit[/gold] : Appliquez {GambitWeak:diff()} [gold]Affaibli[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Perforation",
-  "ALCHEMIST-QUENCH.description": "Piochez {Cards:diff()} {Cards:plural:carte|cartes}.\n[gold]Infusez[/gold] une carte de votre [gold]Main[/gold].\nSi cette carte est [gold]Envoûtée[/gold], [gold]Infusez[/gold] une carte supplémentaire.",
-  "ALCHEMIST-QUENCH.title": "Trempe",
   "ALCHEMIST-QUICKLIME.description": "Infligez {Damage:diff()} dégâts.\n[gold]Réaction[/gold] (Compétence) : Gagnez {Block:diff()} d'[gold]Armure[/gold].",
   "ALCHEMIST-QUICKLIME.title": "Chaux vive",
   "ALCHEMIST-RECTIFY.description": "Gagnez {Block:diff()} d'[gold]Armure[/gold].\nSi vous avez 5 cartes ou plus [gold]Épuisées[/gold], cette carte coûte {energyPrefix:energyIcons(0)}.",

@@ -4,11 +4,11 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Alchemist.AlchemistCode.Powers;
 
-namespace Alchemist.AlchemistCode.Cards.Rare;
+namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Crucible : AlchemistCard
 {
-    public Crucible() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public Crucible() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
         WithTip(typeof(AntitoxinPower));

@@ -102,8 +102,6 @@
   "ALCHEMIST-POULTICE.title": "Okład",
   "ALCHEMIST-PUNCTURE.description": "Zadaj {Damage:diff()} pkt. obrażeń.\nNałóż {VulnerablePower:diff()} pkt. [gold]Wrażliwości[/gold].\n[gold]Gambit[/gold]: Nałóż {GambitWeak:diff()} pkt. [gold]Słabości[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Przebicie",
-  "ALCHEMIST-QUENCH.description": "Dobierz {Cards:diff()} {Cards:plural:kartę|karty|kart}.\n[gold]Nasyć[/gold] kartę w [gold]ręce[/gold].\nJeżeli ta karta jest [gold]Zaklęta[/gold], [gold]Nasyć[/gold] dodatkową kartę.",
-  "ALCHEMIST-QUENCH.title": "Hartowanie",
   "ALCHEMIST-QUICKLIME.description": "Zadaj {Damage:diff()} pkt. obrażeń.\n[gold]Reakcja[/gold] (Umiejętność): Zyskaj {Block:diff()} pkt. [gold]Bloku[/gold].",
   "ALCHEMIST-QUICKLIME.title": "Wapno palone",
   "ALCHEMIST-RECTIFY.description": "Zyskaj {Block:diff()} pkt. [gold]Bloku[/gold].\nJeżeli masz co najmniej 5 kart w [gold]stosie kart wyczerpanych[/gold], ta karta kosztuje {energyPrefix:energyIcons(0)}.",

@@ -11,7 +11,6 @@ public class Hone : AlchemistCard
     public Hone() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
-        WithKeyword(CardKeyword.Exhaust);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

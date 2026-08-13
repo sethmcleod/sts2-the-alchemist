@@ -102,8 +102,6 @@
   "ALCHEMIST-POULTICE.title": "Cataplasma",
   "ALCHEMIST-PUNCTURE.description": "Infliges {Damage:diff()} de daño.\nAplicas {VulnerablePower:diff()} de [gold]vulnerabilidad[/gold].\n[gold]Gambito[/gold]: aplicas {GambitWeak:diff()} de [gold]debilitamiento[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Punción",
-  "ALCHEMIST-QUENCH.description": "Robas {Cards:diff()} {Cards:plural:carta|cartas}.\n[gold]Infundes[/gold] una carta de tu [gold]mano[/gold].\nSi esta carta está [gold]encantada[/gold], [gold]infundes[/gold] una carta adicional.",
-  "ALCHEMIST-QUENCH.title": "Templar",
   "ALCHEMIST-QUICKLIME.description": "Infliges {Damage:diff()} de daño.\n[gold]Reacción[/gold] (Habilidad): obtienes {Block:diff()} de [gold]bloqueo[/gold].",
   "ALCHEMIST-QUICKLIME.title": "Cal viva",
   "ALCHEMIST-RECTIFY.description": "Obtienes {Block:diff()} de [gold]bloqueo[/gold].\nSi tienes 5 cartas o más en tu [gold]pila de agotamiento[/gold], cuesta {energyPrefix:energyIcons(0)}.",

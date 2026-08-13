@@ -102,8 +102,6 @@
   "ALCHEMIST-POULTICE.title": "Cataplasma",
   "ALCHEMIST-PUNCTURE.description": "Cause {Damage:diff()} de dano.\nAplique {VulnerablePower:diff()} de [gold]Vulnerável[/gold].\n[gold]Gambito[/gold]: Aplique {GambitWeak:diff()} de [gold]Fraqueza[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Perfurar",
-  "ALCHEMIST-QUENCH.description": "Compre {Cards:diff()} {Cards:plural:carta|cartas}.\n[gold]Infunda[/gold] uma carta na sua [gold]Mão[/gold].\nSe esta carta estiver [gold]Encantada[/gold], [gold]Infunda[/gold] uma carta adicional.",
-  "ALCHEMIST-QUENCH.title": "Têmpera",
   "ALCHEMIST-QUICKLIME.description": "Cause {Damage:diff()} de dano.\n[gold]Reação[/gold] (Técnica): Receba {Block:diff()} de [gold]Proteção[/gold].",
   "ALCHEMIST-QUICKLIME.title": "Cal Viva",
   "ALCHEMIST-RECTIFY.description": "Receba {Block:diff()} de [gold]Proteção[/gold].\nSe você tiver 5 ou mais cartas na sua pilha de [gold]Cartas Exauridas[/gold], esta carta custa {energyPrefix:energyIcons(0)}.",

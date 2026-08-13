@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8mr8n6oq0jw4"
-path="res://.godot/imported/quench.png-e5273f21cf069e1272ceda11e3246463.ctex"
+uid="uid://b2p7n54cp5x82"
+path="res://.godot/imported/aqua_regia.png-64a781edead01296fe5df68382a56716.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/quench.png"
-dest_files=["res://.godot/imported/quench.png-e5273f21cf069e1272ceda11e3246463.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/aqua_regia.png"
+dest_files=["res://.godot/imported/aqua_regia.png-64a781edead01296fe5df68382a56716.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

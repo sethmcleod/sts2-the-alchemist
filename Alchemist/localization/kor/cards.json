@@ -102,8 +102,6 @@
   "ALCHEMIST-POULTICE.title": "습포",
   "ALCHEMIST-PUNCTURE.description": "피해를 {Damage:diff()} 줍니다.\n[gold]취약[/gold]을 {VulnerablePower:diff()} 부여합니다.\n[gold]승부수[/gold]: [gold]약화[/gold]를 {GambitWeak:diff()} 부여합니다.",
   "ALCHEMIST-PUNCTURE.title": "천공",
-  "ALCHEMIST-QUENCH.description": "카드를 {Cards:diff()}{Cards:plural:장|장} 뽑습니다.\n[gold]손[/gold]에 있는 카드를 1장 [gold]주입[/gold]합니다.\n이 카드가 [gold]인챈트[/gold]되어 있다면, 카드를 1장 추가로 [gold]주입[/gold]합니다.",
-  "ALCHEMIST-QUENCH.title": "담금질",
   "ALCHEMIST-QUICKLIME.description": "피해를 {Damage:diff()} 줍니다.\n[gold]반응[/gold] (스킬): [gold]방어도[/gold]를 {Block:diff()} 얻습니다.",
   "ALCHEMIST-QUICKLIME.title": "생석회",
   "ALCHEMIST-RECTIFY.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다.\n[gold]소멸된 카드 더미[/gold]에 카드가 5장 이상 있다면, 비용이 {energyPrefix:energyIcons(0)}이 됩니다.",

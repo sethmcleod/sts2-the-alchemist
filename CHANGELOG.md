@@ -16,7 +16,7 @@ mod).
 - Added Slake card: "Deal 8 (11) damage. Gain 3 (4) Antitoxin."
 - Added Taint card: "Apply 4 (6) Poison. Gain 1 Poison."
 - Added Bezoar relic: "Whenever you gain Poison, gain 1 Antitoxin."
-- Added Blight card: "Deal 5 (7) damage to ALL enemies. Apply 2 (3) Poison to ALL enemies."
+- Added Blight card: "Deal 5 (7) damage to ALL enemies. Apply 3 (4) Poison to ALL enemies."
 - Added Callus card: "Whenever you take Poison damage, gain 1 (2) Strength."
 - Added Draft card: "Gain 3 Poison. Draw 1 (2) cards. Exhaust."
 - Added Miasma card: "Apply 3 (4) Poison to ALL enemies. Gain 1 Poison."
@@ -28,6 +28,7 @@ mod).
 - Added Deep Breath card: "Infuse a card in your Hand. Draw 1 (2) cards."
 - Added Alembic card: "Whenever you Enchant a card, gain 2 (3) Antitoxin."
 - Added Tempered card: "Gain 30 (35) Block. Gain 5 Poison. Exhaust."
+- Added Aqua Regia card: "Deal 20 (26) damage. Apply 4 (5) Poison."
 
 ### Changed
 
@@ -61,8 +62,15 @@ mod).
 - Nerfed Siphon card: damage decreased from 8 (12) -> 6 (9)
 - Nerfed Puncture card: damage decreased from 8 (10) -> 7 (9)
 - Nerfed Etch card: damage decreased from 16 (20) -> 14 (18)
+- Reworked Corrosive card: "Whenever an enemy takes Poison damage, apply 1 (2) Poison to it."
+- Changed Rolling Boil into a Rare card
+- Changed Crucible into an Uncommon card
+- Buffed Inoculate card: Block increased from 7 (10) -> 9 (12), and HP lost decreased from 3 -> 2
+- Buffed Bitter Draught card: Energy gained increased from 2 (3) -> 3 (4)
+- Buffed Unstable Compound card: it no longer has Ethereal
+- Buffed Hone card: it no longer Exhausts
 - Reworked Backdraft card: it now hits twice if the enemy has Poison
-- Changed Corrode card: Poison applied increased from 6 -> 7, and its conditional bonus is gone
+- Changed Corrode card: cost increased from 2 -> 3, Poison applied decreased from 6 -> 5 (6), and its conditional bonus is gone
 - Changed Decoction card: it now always Infuses a card in your Hand
 - Changed Lash Out, Draining Strike and Transmute: their conditional bonuses are gone
 - Reworked Etch card: "Deal 16 (20) damage. Gain 2 Poison." It no longer ignores Block
@@ -90,6 +98,7 @@ mod).
 - Removed Nigredo, and the Albedo, Citrinitas and Rubedo tokens
 - Removed Reagent card
 - Removed Catalysis card
+- Removed Quench card
 - Removed Quintessence relic
 
 ### Fixed

@@ -102,8 +102,6 @@
   "ALCHEMIST-POULTICE.title": "Impiastro",
   "ALCHEMIST-PUNCTURE.description": "Infliggi {Damage:diff()} di danno.\nApplichi {VulnerablePower:diff()} di [gold]Vulnerabilità[/gold].\n[gold]Azzardo[/gold]: applichi {GambitWeak:diff()} di [gold]Debolezza[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Perforazione",
-  "ALCHEMIST-QUENCH.description": "Peschi {Cards:diff()} {Cards:plural:carta|carte}.\n[gold]Infondi[/gold] una carta nella tua [gold]mano[/gold].\nSe questa carta è [gold]incantata[/gold], [gold]infondi[/gold] una carta in più.",
-  "ALCHEMIST-QUENCH.title": "Tempra",
   "ALCHEMIST-QUICKLIME.description": "Infliggi {Damage:diff()} di danno.\n[gold]Reazione[/gold] (Abilità): ottieni {Block:diff()} di [gold]Blocco[/gold].",
   "ALCHEMIST-QUICKLIME.title": "Calce Viva",
   "ALCHEMIST-RECTIFY.description": "Ottieni {Block:diff()} di [gold]Blocco[/gold].\nSe hai 5 o più carte nella tua [gold]pila delle carte esaurite[/gold], questa carta costa {energyPrefix:energyIcons(0)}.",

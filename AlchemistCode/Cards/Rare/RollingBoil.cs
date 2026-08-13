@@ -3,13 +3,13 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Alchemist.AlchemistCode.Cards.Uncommon;
+namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class RollingBoil : AlchemistCard
 {
     protected override int FermentPeak => 3;
 
-    public RollingBoil() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public RollingBoil() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(6, static (card, _) =>
                 (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,

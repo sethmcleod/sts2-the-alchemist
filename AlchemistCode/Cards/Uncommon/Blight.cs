@@ -12,7 +12,7 @@ public class Blight : AlchemistCard
     public Blight() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
     {
         WithDamage(5, 2);
-        WithPower<PoisonPower>(2, 1);
+        WithPower<PoisonPower>(3, 1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

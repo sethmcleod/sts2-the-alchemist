@@ -102,8 +102,6 @@
   "ALCHEMIST-POULTICE.title": "Припарка",
   "ALCHEMIST-PUNCTURE.description": "Наносит {Damage:diff()} урона.\nНакладывает {VulnerablePower:diff()} [gold]уязвимости[/gold].\n[gold]Гамбит[/gold]: накладывает {GambitWeak:diff()} [gold]слабости[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Прокол",
-  "ALCHEMIST-QUENCH.description": "Вы добираете {Cards:diff()} {Cards:plural(ru):карту|карты|карт}.\n[gold]Пропитывает[/gold] карту в вашей [gold]руке[/gold].\nЕсли эта карта [gold]зачарована[/gold], [gold]пропитывает[/gold] еще одну карту.",
-  "ALCHEMIST-QUENCH.title": "Утоление",
   "ALCHEMIST-QUICKLIME.description": "Наносит {Damage:diff()} урона.\n[gold]Реакция[/gold] (Навык): дает {Block:diff()} [gold]защиты[/gold].",
   "ALCHEMIST-QUICKLIME.title": "Негашеная известь",
   "ALCHEMIST-RECTIFY.description": "Дает {Block:diff()} [gold]защиты[/gold].\nЕсли в [gold]стопке пепла[/gold] не менее 5 карт, эта карта стоит {energyPrefix:energyIcons(0)}.",

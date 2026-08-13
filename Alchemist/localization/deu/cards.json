@@ -102,8 +102,6 @@
   "ALCHEMIST-POULTICE.title": "Breiumschlag",
   "ALCHEMIST-PUNCTURE.description": "Füge {Damage:diff()} Schaden zu.\nWende {VulnerablePower:diff()} [gold]Verwundbar[/gold] an.\n[gold]Gambit[/gold]: Wende {GambitWeak:diff()} [gold]Schwach[/gold] an.",
   "ALCHEMIST-PUNCTURE.title": "Durchstechen",
-  "ALCHEMIST-QUENCH.description": "Ziehe {Cards:diff()} {Cards:plural:Karte|Karten}.\n[gold]Infundiere[/gold] eine deiner [gold]Handkarten[/gold].\nFalls diese Karte [gold]Verzaubert[/gold] ist, [gold]Infundiere[/gold] eine weitere Karte.",
-  "ALCHEMIST-QUENCH.title": "Abschrecken",
   "ALCHEMIST-QUICKLIME.description": "Füge {Damage:diff()} Schaden zu.\n[gold]Reaktion[/gold] (Fertigkeit): Erhalte {Block:diff()} [gold]Block[/gold].",
   "ALCHEMIST-QUICKLIME.title": "Branntkalk",
   "ALCHEMIST-RECTIFY.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nFalls du 5 oder mehr Karten in deinem [gold]Erschöpfungsstapel[/gold] hast, kostet diese Karte {energyPrefix:energyIcons(0)}.",

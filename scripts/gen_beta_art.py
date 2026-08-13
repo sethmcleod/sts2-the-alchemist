@@ -110,6 +110,7 @@ COLORS = {
     # Antitoxin: the purple counterpart to the poison reds
     "Slake": ("#2f0170", "#8f6fd8", "TR", "Antitoxin"),
     # Poison attacks
+    "Aqua Regia": ("#650101", "#c46a12", "TR", "Poison attacks"),
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
     "Macerate": ("#650101", "#2f9e6a", "TR", "Poison attacks"),
@@ -134,8 +135,6 @@ COLORS = {
     # Infuse: cantrips
     "Enrich": ("#792595", "#b8d94f", "BR", "Infuse: cantrips"),
     "Salve": ("#792595", "#6fd8e0", "BR", "Infuse: cantrips"),
-    # Quench (one-off)
-    "Quench": ("#792595", "#0e5452", "BR", "Unique"),
     # Infuse: heavy
     "Masterwork": ("#4a1a66", "#c9a227", "BR", "Infuse: heavy"),
     "Refine": ("#4a1a66", "#257bc3", "BR", "Infuse: heavy"),

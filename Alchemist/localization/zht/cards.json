@@ -102,8 +102,6 @@
   "ALCHEMIST-POULTICE.title": "敷劑",
   "ALCHEMIST-PUNCTURE.description": "造成 {Damage:diff()} 點傷害。\n施加 {VulnerablePower:diff()} 層[gold]易傷[/gold]。\n[gold]險招[/gold]：施加 {GambitWeak:diff()} 層[gold]虛弱[/gold]。",
   "ALCHEMIST-PUNCTURE.title": "穿刺",
-  "ALCHEMIST-QUENCH.description": "抽 {Cards:diff()} {Cards:plural:張牌|張牌}。\n[gold]浸潤[/gold]你[gold]手牌[/gold]中的一張牌。\n若此牌已[gold]附魔[/gold]，額外[gold]浸潤[/gold]一張牌。",
-  "ALCHEMIST-QUENCH.title": "淬火",
   "ALCHEMIST-QUICKLIME.description": "造成 {Damage:diff()} 點傷害。\n[gold]反應[/gold]（技能）：獲得 {Block:diff()} 點[gold]格擋[/gold]。",
   "ALCHEMIST-QUICKLIME.title": "生石灰",
   "ALCHEMIST-RECTIFY.description": "獲得 {Block:diff()} 點[gold]格擋[/gold]。\n若你的[gold]消耗堆[/gold]中有 5 張或更多牌，此牌耗能為 {energyPrefix:energyIcons(0)}。",

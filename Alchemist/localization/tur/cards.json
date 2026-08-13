@@ -102,8 +102,6 @@
   "ALCHEMIST-POULTICE.title": "Lapa",
   "ALCHEMIST-PUNCTURE.description": "{Damage:diff()} hasar ver.\n{VulnerablePower:diff()} [gold]Savunmasız[/gold] uygula.\n[gold]Gambit[/gold]: {GambitWeak:diff()} [gold]Zayıf[/gold] uygula.",
   "ALCHEMIST-PUNCTURE.title": "Del",
-  "ALCHEMIST-QUENCH.description": "{Cards:diff()} {Cards:plural:kart|kart} çek.\n[gold]El[/gold]'indeki bir kartı [gold]Aşıla[/gold].\nBu kart [gold]Büyülenmiş[/gold] ise bir kart daha [gold]Aşıla[/gold].",
-  "ALCHEMIST-QUENCH.title": "Su Verme",
   "ALCHEMIST-QUICKLIME.description": "{Damage:diff()} hasar ver.\n[gold]Reaksiyon[/gold] (Beceri): {Block:diff()} [gold]Blok[/gold] elde et.",
   "ALCHEMIST-QUICKLIME.title": "Sönmemiş Kireç",
   "ALCHEMIST-RECTIFY.description": "{Block:diff()} [gold]Blok[/gold] elde et.\n[gold]Tüketme Destesi[/gold]'nde 5 veya daha fazla kart varsa maliyeti {energyPrefix:energyIcons(0)} olur.",
