@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://85r7w58s1r1r"
-path="res://.godot/imported/fuming.png-9a4be7a8f54baa54cb08067e40e13794.ctex"
+uid="uid://cy2crx6ypdinl"
+path="res://.godot/imported/inured.png-6f56a2c7d37b1afe031d40e44b7b91c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/enchantments/fuming.png"
-dest_files=["res://.godot/imported/fuming.png-9a4be7a8f54baa54cb08067e40e13794.ctex"]
+source_file="res://Alchemist/images/enchantments/inured.png"
+dest_files=["res://.godot/imported/inured.png-6f56a2c7d37b1afe031d40e44b7b91c2.ctex"]
 
 [params]
 

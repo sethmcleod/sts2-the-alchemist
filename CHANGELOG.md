@@ -33,6 +33,7 @@ mod).
 - Changed the Brew hover tip: it now also says you can sell Potions to the Merchant, which the Kit relics used to say themselves
 - Changed the Potion Sell Price setting: it now runs from 10% to 100% in steps of 10%
 - Nerfed Infuse keyword: Attacks now gain 1 Laced, decreased from 2
+- Renamed the Fuming enchantment to Inured, and reworked it: playing the Skill now gains 1 Antitoxin, instead of applying Weak and Vulnerable to a random enemy and giving you Poison
 - Nerfed Laced enchantment: the card now also gains as much Poison as it applies.
 - Removed Plating from the deck. Vitrify, Sediment and Libation now grant Antitoxin when Enchanted
 - Removed Regen from Cauterize, Congeal, Distillate and Amalgam

@@ -1,8 +1,8 @@
 {
   "ALCHEMIST-EXALTED.description": "При разыгрывании дает [blue]{Amount}[/blue] [gold]силы[/gold].",
   "ALCHEMIST-EXALTED.title": "Экзальтация",
-  "ALCHEMIST-FUMING.description": "При разыгрывании накладывает [blue]{Amount}[/blue] [gold]слабости[/gold] и [blue]{Amount}[/blue] [gold]уязвимости[/gold] на случайного врага. Дает вам [blue]{Amount}[/blue] [gold]яда[/gold].",
-  "ALCHEMIST-FUMING.title": "Дымка",
+  "ALCHEMIST-INURED.description": "При разыгрывании накладывает [blue]{Amount}[/blue] [gold]слабости[/gold] и [blue]{Amount}[/blue] [gold]уязвимости[/gold] на случайного врага. Дает вам [blue]{Amount}[/blue] [gold]яда[/gold].",
+  "ALCHEMIST-INURED.title": "Дымка",
   "ALCHEMIST-LACED.description": "Накладывает [blue]{Amount}[/blue] [gold]яда[/gold], когда эта карта наносит незаблокированный урон.",
   "ALCHEMIST-LACED.title": "Отрава"
 }

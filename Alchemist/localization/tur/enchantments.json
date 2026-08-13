@@ -1,8 +1,8 @@
 {
   "ALCHEMIST-EXALTED.description": "Bu kart oynandığında [blue]{Amount}[/blue] [gold]Kuvvet[/gold] elde et.",
   "ALCHEMIST-EXALTED.title": "Yüceltilmiş",
-  "ALCHEMIST-FUMING.description": "Bu kart oynandığında rastgele bir düşmana [blue]{Amount}[/blue] [gold]Zayıf[/gold] ve [blue]{Amount}[/blue] [gold]Savunmasız[/gold] uygula. [blue]{Amount}[/blue] [gold]Zehir[/gold] elde et.",
-  "ALCHEMIST-FUMING.title": "Tüten",
+  "ALCHEMIST-INURED.description": "Bu kart oynandığında rastgele bir düşmana [blue]{Amount}[/blue] [gold]Zayıf[/gold] ve [blue]{Amount}[/blue] [gold]Savunmasız[/gold] uygula. [blue]{Amount}[/blue] [gold]Zehir[/gold] elde et.",
+  "ALCHEMIST-INURED.title": "Tüten",
   "ALCHEMIST-LACED.description": "Bu kart her engellenmeyen hasar verdiğinde [blue]{Amount}[/blue] [gold]Zehir[/gold] uygula.",
   "ALCHEMIST-LACED.title": "Katkılı"
 }
