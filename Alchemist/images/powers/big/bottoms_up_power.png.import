@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5j8i2q1d8fiu"
-path="res://.godot/imported/trade_blows.png-76b843107a00ef8b9bea5feb81fe6160.ctex"
+uid="uid://cjafr95laj3l5"
+path="res://.godot/imported/bottoms_up_power.png-931a698a23beffefcb0b0bdc6b1867a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/trade_blows.png"
-dest_files=["res://.godot/imported/trade_blows.png-76b843107a00ef8b9bea5feb81fe6160.ctex"]
+source_file="res://Alchemist/images/powers/big/bottoms_up_power.png"
+dest_files=["res://.godot/imported/bottoms_up_power.png-931a698a23beffefcb0b0bdc6b1867a3.ctex"]
 
 [params]
 

@@ -9,6 +9,8 @@ mod).
 
 ### Added
 
+- Added Bottoms Up card, multiplayer only: "Whenever you gain Poison, ALL other players gain that much Block."
+- Added Free Samples card, multiplayer only: "ALL other players Infuse 2 (3) cards in their Hand. Draw 2 cards."
 - Added Antitoxin Capacity power: it raises how much Antitoxin you can hold, above the base of 20
 - Added Antitoxin power: it absorbs damage from Poison and does not expire at the end of your turn
 - Added Bezoar relic: "Whenever you gain Poison, gain 1 Antitoxin."
