@@ -41,9 +41,6 @@
   "ALCHEMIST-SEPSIS_POWER.description": "[gold]Отравленные[/gold] враги получают на {Amount}% больше урона от Атак.",
   "ALCHEMIST-SEPSIS_POWER.smartDescription": "[gold]Отравленные[/gold] враги получают на {Amount}% больше урона от Атак.",
   "ALCHEMIST-SEPSIS_POWER.title": "Сепсис",
-  "ALCHEMIST-SLAG_POWER.description": "Когда одна из ваших карт [gold]сжигается[/gold], дает {Amount} [gold]защиты[/gold].",
-  "ALCHEMIST-SLAG_POWER.smartDescription": "Когда одна из ваших карт [gold]сжигается[/gold], дает {Amount} [gold]защиты[/gold].",
-  "ALCHEMIST-SLAG_POWER.title": "Шлак",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "Дает {Amount} [gold]силы[/gold] до конца вашего хода.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "Дает {Amount} [gold]силы[/gold] до конца вашего хода.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "Трансмутация",
@@ -57,5 +54,8 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "этого хода",
   "ALCHEMIST-VIRULENCE_POWER.description": "Когда вы получаете [gold]яд[/gold], наносит столько же урона ВСЕМ врагам.",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "Когда вы получаете [gold]яд[/gold], наносит столько же урона ВСЕМ врагам.",
-  "ALCHEMIST-VIRULENCE_POWER.title": "Вирулентность"
+  "ALCHEMIST-VIRULENCE_POWER.title": "Вирулентность",
+  "ALCHEMIST-WARDED_POWER.description": "Когда одна из ваших карт [gold]сжигается[/gold], дает {Amount} [gold]защиты[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Когда одна из ваших карт [gold]сжигается[/gold], дает {Amount} [gold]защиты[/gold].",
+  "ALCHEMIST-WARDED_POWER.title": "Шлак"
 }

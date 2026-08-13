@@ -41,9 +41,6 @@
   "ALCHEMIST-SEPSIS_POWER.description": "[gold]Zatruci[/gold] przeciwnicy otrzymują o {Amount}% więcej obrażeń od Ataków.",
   "ALCHEMIST-SEPSIS_POWER.smartDescription": "[gold]Zatruci[/gold] przeciwnicy otrzymują o {Amount}% więcej obrażeń od Ataków.",
   "ALCHEMIST-SEPSIS_POWER.title": "Sepsa",
-  "ALCHEMIST-SLAG_POWER.description": "Kiedykolwiek [gold]Wyczerpiesz[/gold] kartę, zyskaj {Amount} pkt. [gold]Bloku[/gold].",
-  "ALCHEMIST-SLAG_POWER.smartDescription": "Kiedykolwiek [gold]Wyczerpiesz[/gold] kartę, zyskaj {Amount} pkt. [gold]Bloku[/gold].",
-  "ALCHEMIST-SLAG_POWER.title": "Żużel",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "Zyskaj {Amount} pkt. [gold]Siły[/gold] do końca tury.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "Zyskaj {Amount} pkt. [gold]Siły[/gold] do końca tury.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "Transmutacja",
@@ -57,5 +54,8 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "tej tury",
   "ALCHEMIST-VIRULENCE_POWER.description": "Kiedykolwiek zyskujesz [gold]Truciznę[/gold], zadaj tyle samo pkt. obrażeń WSZYSTKIM przeciwnikom.",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "Kiedykolwiek zyskujesz [gold]Truciznę[/gold], zadaj tyle samo pkt. obrażeń WSZYSTKIM przeciwnikom.",
-  "ALCHEMIST-VIRULENCE_POWER.title": "Zjadliwość"
+  "ALCHEMIST-VIRULENCE_POWER.title": "Zjadliwość",
+  "ALCHEMIST-WARDED_POWER.description": "Kiedykolwiek [gold]Wyczerpiesz[/gold] kartę, zyskaj {Amount} pkt. [gold]Bloku[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Kiedykolwiek [gold]Wyczerpiesz[/gold] kartę, zyskaj {Amount} pkt. [gold]Bloku[/gold].",
+  "ALCHEMIST-WARDED_POWER.title": "Żużel"
 }

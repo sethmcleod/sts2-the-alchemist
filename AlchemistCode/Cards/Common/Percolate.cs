@@ -7,7 +7,7 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Percolate : AlchemistCard
 {
-    public Percolate() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Percolate() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithVar("draw", 2, 1);
         WithTip(typeof(DrawCardsNextTurnPower));

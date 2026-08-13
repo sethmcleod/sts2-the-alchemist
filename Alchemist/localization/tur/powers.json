@@ -41,9 +41,6 @@
   "ALCHEMIST-SEPSIS_POWER.description": "[gold]Zehirlenmiş[/gold] düşmanlar Ataklardan %{Amount} daha fazla hasar alır.",
   "ALCHEMIST-SEPSIS_POWER.smartDescription": "[gold]Zehirlenmiş[/gold] düşmanlar Ataklardan %{Amount} daha fazla hasar alır.",
   "ALCHEMIST-SEPSIS_POWER.title": "Sepsis",
-  "ALCHEMIST-SLAG_POWER.description": "Bir kart her [gold]Tükettiğinde[/gold] {Amount} [gold]Blok[/gold] elde et.",
-  "ALCHEMIST-SLAG_POWER.smartDescription": "Bir kart her [gold]Tükettiğinde[/gold] {Amount} [gold]Blok[/gold] elde et.",
-  "ALCHEMIST-SLAG_POWER.title": "Cüruf",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "Turunun sonuna kadar {Amount} [gold]Kuvvet[/gold] elde et.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "Turunun sonuna kadar {Amount} [gold]Kuvvet[/gold] elde et.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "Transmütasyon",
@@ -57,5 +54,8 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "bu turun",
   "ALCHEMIST-VIRULENCE_POWER.description": "Her [gold]Zehir[/gold] elde ettiğinde TÜM düşmanlara o kadar hasar ver.",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "Her [gold]Zehir[/gold] elde ettiğinde TÜM düşmanlara o kadar hasar ver.",
-  "ALCHEMIST-VIRULENCE_POWER.title": "Virülans"
+  "ALCHEMIST-VIRULENCE_POWER.title": "Virülans",
+  "ALCHEMIST-WARDED_POWER.description": "Bir kart her [gold]Tükettiğinde[/gold] {Amount} [gold]Blok[/gold] elde et.",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Bir kart her [gold]Tükettiğinde[/gold] {Amount} [gold]Blok[/gold] elde et.",
+  "ALCHEMIST-WARDED_POWER.title": "Cüruf"
 }

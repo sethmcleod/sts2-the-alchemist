@@ -41,9 +41,6 @@
   "ALCHEMIST-SEPSIS_POWER.description": "Les ennemis [gold]Empoisonnés[/gold] subissent {Amount}% de dégâts supplémentaires des Attaques.",
   "ALCHEMIST-SEPSIS_POWER.smartDescription": "Les ennemis [gold]Empoisonnés[/gold] subissent {Amount}% de dégâts supplémentaires des Attaques.",
   "ALCHEMIST-SEPSIS_POWER.title": "Septicémie",
-  "ALCHEMIST-SLAG_POWER.description": "Lorsque vous [gold]Épuisez[/gold] une carte, gagnez {Amount} d'[gold]Armure[/gold].",
-  "ALCHEMIST-SLAG_POWER.smartDescription": "Lorsque vous [gold]Épuisez[/gold] une carte, gagnez {Amount} d'[gold]Armure[/gold].",
-  "ALCHEMIST-SLAG_POWER.title": "Scories",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "Gagnez {Amount} de [gold]Force[/gold] jusqu'à la fin de votre tour.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "Gagnez {Amount} de [gold]Force[/gold] jusqu'à la fin de votre tour.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "Transmutation",
@@ -57,5 +54,8 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "ce tour",
   "ALCHEMIST-VIRULENCE_POWER.description": "Lorsque vous gagnez du [gold]Poison[/gold], infligez autant de dégâts à TOUS les ennemis.",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "Lorsque vous gagnez du [gold]Poison[/gold], infligez autant de dégâts à TOUS les ennemis.",
-  "ALCHEMIST-VIRULENCE_POWER.title": "Virulence"
+  "ALCHEMIST-VIRULENCE_POWER.title": "Virulence",
+  "ALCHEMIST-WARDED_POWER.description": "Lorsque vous [gold]Épuisez[/gold] une carte, gagnez {Amount} d'[gold]Armure[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Lorsque vous [gold]Épuisez[/gold] une carte, gagnez {Amount} d'[gold]Armure[/gold].",
+  "ALCHEMIST-WARDED_POWER.title": "Scories"
 }

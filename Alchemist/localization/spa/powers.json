@@ -41,9 +41,6 @@
   "ALCHEMIST-SEPSIS_POWER.description": "Los enemigos [gold]Envenenados[/gold] reciben un {Amount}% más de daño de los Ataques.",
   "ALCHEMIST-SEPSIS_POWER.smartDescription": "Los enemigos [gold]Envenenados[/gold] reciben un {Amount}% más de daño de los Ataques.",
   "ALCHEMIST-SEPSIS_POWER.title": "Sepsis",
-  "ALCHEMIST-SLAG_POWER.description": "Cuando [gold]Agotes[/gold] una carta, gana {Amount} de [gold]Bloqueo[/gold].",
-  "ALCHEMIST-SLAG_POWER.smartDescription": "Cuando [gold]Agotes[/gold] una carta, gana {Amount} de [gold]Bloqueo[/gold].",
-  "ALCHEMIST-SLAG_POWER.title": "Escoria",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "Gana {Amount} de [gold]Fuerza[/gold] hasta el final de tu turno.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "Gana {Amount} de [gold]Fuerza[/gold] hasta el final de tu turno.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "Transmutar",
@@ -57,5 +54,8 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "este turno",
   "ALCHEMIST-VIRULENCE_POWER.description": "Cuando ganes [gold]Veneno[/gold], inflige esa misma cantidad de daño a TODOS los enemigos.",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "Cuando ganes [gold]Veneno[/gold], inflige esa misma cantidad de daño a TODOS los enemigos.",
-  "ALCHEMIST-VIRULENCE_POWER.title": "Virulencia"
+  "ALCHEMIST-VIRULENCE_POWER.title": "Virulencia",
+  "ALCHEMIST-WARDED_POWER.description": "Cuando [gold]Agotes[/gold] una carta, gana {Amount} de [gold]Bloqueo[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Cuando [gold]Agotes[/gold] una carta, gana {Amount} de [gold]Bloqueo[/gold].",
+  "ALCHEMIST-WARDED_POWER.title": "Escoria"
 }

@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnql2eu36fgwh"
-path="res://.godot/imported/sinter.png-2739da5d3c7a6265c415992545c86430.ctex"
+uid="uid://0drmkfi15skl"
+path="res://.godot/imported/warded_power.png-1838a66acd77df46ba62681d579fa4e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/sinter.png"
-dest_files=["res://.godot/imported/sinter.png-2739da5d3c7a6265c415992545c86430.ctex"]
+source_file="res://Alchemist/images/powers/warded_power.png"
+dest_files=["res://.godot/imported/warded_power.png-1838a66acd77df46ba62681d579fa4e7.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

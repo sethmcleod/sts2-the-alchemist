@@ -106,7 +106,7 @@ COLORS = {
     # Potion and buff skills
     "Congeal": ("#1d3f0e", "#0e7c7b", "BR", "Potion and buff skills"),
     "Transmute": ("#5f011f", "#e3b84a", "BR", "Potion and buff skills"),
-    "Slag": ("#45293f", "#c98fd6", "R", "Unique"),
+    "Warded": ("#45293f", "#c98fd6", "R", "Unique"),
     # Antitoxin: the purple counterpart to the poison reds
     "Slake": ("#2f0170", "#8f6fd8", "TR", "Antitoxin"),
     # Poison attacks
@@ -160,7 +160,7 @@ COLORS = {
     "Fumigate": ("#1f1723", "#a3a83a", "TR", "Unique"),
     # Exhaust pile: skills
     "Poultice": ("#1f1723", "#4f9e4a", "BR", "Exhaust pile: skills"),
-    "Sinter": ("#1f1723", "#be401b", "BR", "Exhaust pile: skills"),
+    "Rectify": ("#1f1723", "#be401b", "BR", "Exhaust pile: skills"),
     "Anneal": ("#1f1723", "#7f9aa8", "BR", "Exhaust pile: skills"),
     # Poison as a resource to spend
     "Hemorrhage": ("#00212a", "#0d8a6b", "TR", "Poison payoffs"),

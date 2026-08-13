@@ -41,9 +41,6 @@
   "ALCHEMIST-SEPSIS_POWER.description": "[gold]Vergiftete[/gold] Gegner nehmen {Amount}% mehr Schaden von Angriffen.",
   "ALCHEMIST-SEPSIS_POWER.smartDescription": "[gold]Vergiftete[/gold] Gegner nehmen {Amount}% mehr Schaden von Angriffen.",
   "ALCHEMIST-SEPSIS_POWER.title": "Sepsis",
-  "ALCHEMIST-SLAG_POWER.description": "Immer wenn du eine Karte [gold]Erschöpfst[/gold], erhalte {Amount} [gold]Block[/gold].",
-  "ALCHEMIST-SLAG_POWER.smartDescription": "Immer wenn du eine Karte [gold]Erschöpfst[/gold], erhalte {Amount} [gold]Block[/gold].",
-  "ALCHEMIST-SLAG_POWER.title": "Schlacke",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "Erhalte {Amount} [gold]Stärke[/gold] bis zum Ende deines Zuges.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "Erhalte {Amount} [gold]Stärke[/gold] bis zum Ende deines Zuges.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "Transmutieren",
@@ -57,5 +54,8 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "dieses Zuges",
   "ALCHEMIST-VIRULENCE_POWER.description": "Immer wenn du [gold]Gift[/gold] erhältst, füge ALLEN Gegnern genauso viel Schaden zu.",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "Immer wenn du [gold]Gift[/gold] erhältst, füge ALLEN Gegnern genauso viel Schaden zu.",
-  "ALCHEMIST-VIRULENCE_POWER.title": "Virulenz"
+  "ALCHEMIST-VIRULENCE_POWER.title": "Virulenz",
+  "ALCHEMIST-WARDED_POWER.description": "Immer wenn du eine Karte [gold]Erschöpfst[/gold], erhalte {Amount} [gold]Block[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Immer wenn du eine Karte [gold]Erschöpfst[/gold], erhalte {Amount} [gold]Block[/gold].",
+  "ALCHEMIST-WARDED_POWER.title": "Schlacke"
 }

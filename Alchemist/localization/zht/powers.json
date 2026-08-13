@@ -41,9 +41,6 @@
   "ALCHEMIST-SEPSIS_POWER.description": "[gold]中毒[/gold]的敵人受到的攻擊傷害提高 {Amount}%。",
   "ALCHEMIST-SEPSIS_POWER.smartDescription": "[gold]中毒[/gold]的敵人受到的攻擊傷害提高 {Amount}%。",
   "ALCHEMIST-SEPSIS_POWER.title": "敗血症",
-  "ALCHEMIST-SLAG_POWER.description": "每當你[gold]消耗[/gold]一張牌時，獲得 {Amount} 點[gold]格擋[/gold]。",
-  "ALCHEMIST-SLAG_POWER.smartDescription": "每當你[gold]消耗[/gold]一張牌時，獲得 {Amount} 點[gold]格擋[/gold]。",
-  "ALCHEMIST-SLAG_POWER.title": "爐渣",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "獲得 {Amount} 層[gold]力量[/gold]，直到你的回合結束。",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "獲得 {Amount} 層[gold]力量[/gold]，直到你的回合結束。",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "嬗變",
@@ -57,5 +54,8 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "本回合",
   "ALCHEMIST-VIRULENCE_POWER.description": "每當你獲得[gold]中毒[/gold]時，對所有敵人造成等量的傷害。",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "每當你獲得[gold]中毒[/gold]時，對所有敵人造成等量的傷害。",
-  "ALCHEMIST-VIRULENCE_POWER.title": "毒力"
+  "ALCHEMIST-VIRULENCE_POWER.title": "毒力",
+  "ALCHEMIST-WARDED_POWER.description": "每當你[gold]消耗[/gold]一張牌時，獲得 {Amount} 點[gold]格擋[/gold]。",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "每當你[gold]消耗[/gold]一張牌時，獲得 {Amount} 點[gold]格擋[/gold]。",
+  "ALCHEMIST-WARDED_POWER.title": "爐渣"
 }

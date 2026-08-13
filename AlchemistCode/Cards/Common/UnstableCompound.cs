@@ -10,7 +10,6 @@ public class UnstableCompound : AlchemistCard
     public UnstableCompound() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithVar("Dmg", 14, 4);
-        WithKeyword(CardKeyword.Ethereal);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

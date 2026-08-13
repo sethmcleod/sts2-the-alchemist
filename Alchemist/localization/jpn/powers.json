@@ -41,9 +41,6 @@
   "ALCHEMIST-SEPSIS_POWER.description": "[gold]毒[/gold]状態の敵がアタックから受けるダメージが{Amount}%増加する。",
   "ALCHEMIST-SEPSIS_POWER.smartDescription": "[gold]毒[/gold]状態の敵がアタックから受けるダメージが{Amount}%増加する。",
   "ALCHEMIST-SEPSIS_POWER.title": "敗血症",
-  "ALCHEMIST-SLAG_POWER.description": "カードを[gold]廃棄[/gold]するたび、{Amount}[gold]ブロック[/gold]を得る。",
-  "ALCHEMIST-SLAG_POWER.smartDescription": "カードを[gold]廃棄[/gold]するたび、{Amount}[gold]ブロック[/gold]を得る。",
-  "ALCHEMIST-SLAG_POWER.title": "鉱滓",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "ターン終了時まで[gold]筋力[/gold]{Amount}を得る。",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "ターン終了時まで[gold]筋力[/gold]{Amount}を得る。",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "錬成",
@@ -57,5 +54,8 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "このターン",
   "ALCHEMIST-VIRULENCE_POWER.description": "[gold]毒[/gold]を得るたび、その値のダメージをすべての敵に与える。",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "[gold]毒[/gold]を得るたび、その値のダメージをすべての敵に与える。",
-  "ALCHEMIST-VIRULENCE_POWER.title": "毒力"
+  "ALCHEMIST-VIRULENCE_POWER.title": "毒力",
+  "ALCHEMIST-WARDED_POWER.description": "カードを[gold]廃棄[/gold]するたび、{Amount}[gold]ブロック[/gold]を得る。",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "カードを[gold]廃棄[/gold]するたび、{Amount}[gold]ブロック[/gold]を得る。",
+  "ALCHEMIST-WARDED_POWER.title": "鉱滓"
 }

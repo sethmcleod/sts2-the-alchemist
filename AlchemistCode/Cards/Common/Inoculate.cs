@@ -8,12 +8,12 @@ public class Inoculate : AlchemistCard
 {
     public Inoculate() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(7, 3);
+        WithBlock(9, 3);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await LoseHp(choiceContext, 3);
+        await LoseHp(choiceContext, 2);
         await CommonActions.CardBlock(this, play);
     }
 }

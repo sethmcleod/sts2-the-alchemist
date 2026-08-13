@@ -41,9 +41,6 @@
   "ALCHEMIST-SEPSIS_POWER.description": "[gold]중독[/gold]된 적이 공격으로 받는 피해량이 {Amount}% 증가합니다.",
   "ALCHEMIST-SEPSIS_POWER.smartDescription": "[gold]중독[/gold]된 적이 공격으로 받는 피해량이 {Amount}% 증가합니다.",
   "ALCHEMIST-SEPSIS_POWER.title": "패혈증",
-  "ALCHEMIST-SLAG_POWER.description": "카드를 [gold]소멸[/gold]시킬 때마다, [gold]방어도[/gold]를 {Amount} 얻습니다.",
-  "ALCHEMIST-SLAG_POWER.smartDescription": "카드를 [gold]소멸[/gold]시킬 때마다, [gold]방어도[/gold]를 {Amount} 얻습니다.",
-  "ALCHEMIST-SLAG_POWER.title": "슬래그",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "내 턴 종료 시까지 [gold]힘[/gold]을 {Amount} 얻습니다.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "내 턴 종료 시까지 [gold]힘[/gold]을 {Amount} 얻습니다.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "연성",
@@ -57,5 +54,8 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "이번 턴",
   "ALCHEMIST-VIRULENCE_POWER.description": "[gold]중독[/gold]을 얻을 때마다, 모든 적에게 그만큼 피해를 줍니다.",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "[gold]중독[/gold]을 얻을 때마다, 모든 적에게 그만큼 피해를 줍니다.",
-  "ALCHEMIST-VIRULENCE_POWER.title": "독력"
+  "ALCHEMIST-VIRULENCE_POWER.title": "독력",
+  "ALCHEMIST-WARDED_POWER.description": "카드를 [gold]소멸[/gold]시킬 때마다, [gold]방어도[/gold]를 {Amount} 얻습니다.",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "카드를 [gold]소멸[/gold]시킬 때마다, [gold]방어도[/gold]를 {Amount} 얻습니다.",
+  "ALCHEMIST-WARDED_POWER.title": "슬래그"
 }

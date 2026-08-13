@@ -68,6 +68,8 @@ public partial class AntitoxinPower : AlchemistPower
         AntitoxinRules.MarkAbsorbed(Owner);
         if (Owner.GetPower<CruciblePower>() is { } crucible)
             await crucible.OnAbsorbed(spend);
+        if (Owner.GetPower<WardedPower>() is { } slag)
+            await slag.OnAbsorbed();
         if (spend >= Amount)
             await PowerCmd.Remove(this);
         else

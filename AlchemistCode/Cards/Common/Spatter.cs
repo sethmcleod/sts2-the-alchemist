@@ -12,7 +12,7 @@ public class Spatter : AlchemistCard
     public Spatter() : base(1, CardType.Attack, CardRarity.Common, TargetType.RandomEnemy)
     {
         WithDamage(3, 1);
-        WithVar("hits", 4, 0);
+        WithVar("hits", 3, 0);
         WithPower<PoisonPower>(2, 0);
     }
 

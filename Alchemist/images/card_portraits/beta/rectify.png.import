@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csf4pyjqve4f1"
-path="res://.godot/imported/slag_power.png-9a618048091423464541b4021087762e.ctex"
+uid="uid://bc4gahur1uln4"
+path="res://.godot/imported/rectify.png-6fb07d00bfb5c8575fe5a785780b4d74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/slag_power.png"
-dest_files=["res://.godot/imported/slag_power.png-9a618048091423464541b4021087762e.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/rectify.png"
+dest_files=["res://.godot/imported/rectify.png-6fb07d00bfb5c8575fe5a785780b4d74.ctex"]
 
 [params]
 

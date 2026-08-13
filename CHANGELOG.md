@@ -50,6 +50,11 @@ mod).
 - Reworked Decoction card: it no longer procures a Potion
 - Removed the Reaction keyword. Cards no longer care about what you played before them
 - Reworked Fumigate card: "Deal 4 (6) damage to ALL enemies. Apply 1 Weak to ALL enemies." It no longer scales off your Exhaust Pile or Exhausts itself
+- Renamed Slag to Warded, and reworked it: "Whenever your Antitoxin absorbs damage, gain 3 (4) Block." It no longer triggers on Exhaust
+- Renamed Sinter to Rectify, and reworked it: "Draw 2 (3) cards. Discard 1 card." It no longer grants Block or reads your Exhaust Pile
+- Nerfed Spatter card: hits decreased from 4 -> 3
+- Buffed Percolate card: cost decreased from 1 -> 0
+- Changed Taint card: cost decreased from 1 -> 0, and Poison applied decreased from 4 (6) -> 3 (5)
 - Reworked Cauterize card: "Deal 7 (10) damage. Lose 2 Poison."
 - Reworked Quicklime card: "Deal 6 (8) damage. Gain 4 (6) Block." The Block is no longer conditional
 - Nerfed Overdose card: damage decreased from 15 (20) -> 12 (16), and it no longer draws a card
