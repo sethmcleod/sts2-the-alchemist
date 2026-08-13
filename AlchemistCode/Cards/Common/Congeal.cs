@@ -10,13 +10,13 @@ public class Congeal : AlchemistCard
 {
     public Congeal() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithCalculatedBlock(6, 1, static (card, _) =>
-            card.Owner.Creature.GetPowerAmount<PoisonPower>(), ValueProp.Move, 3, 0);
-        WithTip(typeof(PoisonPower));
+        WithBlock(5, 2);
+        WithCards(1, 0);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
+        await CommonActions.Draw(this, choiceContext);
     }
 }

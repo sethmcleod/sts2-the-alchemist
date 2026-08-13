@@ -86,7 +86,7 @@ COLORS = {
     "Rot": ("#071a02", "#6b8f2a", "L", "Poison powers: retaliation"),
     "Miasma": ("#4e8701", "#1c5f7a", "BR", "Poison skills"),
     "Draft": ("#4e8701", "#8a3f2f", "BR", "Poison skills"),
-    "Osmosis": ("#00212a", "#3fb0a0", "TR", "Poison payoffs"),
+    "Recoil": ("#00212a", "#3fb0a0", "TR", "Poison payoffs"),
     # Antitoxin
     "Purge": ("#2f0170", "#6f9ad8", "BR", "Antitoxin"),
     "Immunize": ("#2f0170", "#c46fd8", "R", "Antitoxin"),
@@ -113,8 +113,11 @@ COLORS = {
     "Aqua Regia": ("#650101", "#c46a12", "TR", "Poison attacks"),
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
-    "Macerate": ("#650101", "#2f9e6a", "TR", "Poison attacks"),
+    "Grist": ("#650101", "#2f9e6a", "TR", "Poison attacks"),
     "Deflagrate": ("#650101", "#e8451f", "TR", "Poison attacks"),
+    "Ballast": ("#1b2a44", "#8fa3b8", "TR", "Unique"),
+    "Steep": ("#2f0170", "#c0a24a", "TR", "Unique"),
+    "Anneal": ("#1f1723", "#7f9aa8", "BR", "Exhaust pile: skills"),
     "Blight": ("#650101", "#4a7a1c", "TR", "Poison attacks"),
     # Unstable Compound (one-off): the name kept its own violet-into-toxic-green
     "Unstable Compound": ("#2f0170", "#63c11c", "BR", "Unique"),
@@ -123,7 +126,6 @@ COLORS = {
     "Decoction": ("#2f0170", "#2aa88a", "BR", "Poison and Infuse skills"),
     # Heavy attacks
     "Draining Strike": ("#2f0170", "#b3341f", "TR", "Heavy attacks"),
-    "Backdraft": ("#1a0400", "#ff5a12", "TR", "Heavy attacks"),
     # Light attacks
     "Quicklime": ("#1c0f45", "#e8e4d2", "TR", "Light attacks"),
     # Ferment: attacks
@@ -161,9 +163,7 @@ COLORS = {
     # Exhaust pile: skills
     "Poultice": ("#1f1723", "#4f9e4a", "BR", "Exhaust pile: skills"),
     "Rectify": ("#1f1723", "#be401b", "BR", "Exhaust pile: skills"),
-    "Anneal": ("#1f1723", "#7f9aa8", "BR", "Exhaust pile: skills"),
     # Poison as a resource to spend
-    "Hemorrhage": ("#00212a", "#0d8a6b", "TR", "Poison payoffs"),
     "Overflow": ("#00212a", "#10aba5", "BR", "Poison payoffs"),
     "Circulation": ("#14424e", "#b8e86a", "BR", "Poison payoffs"),
     # Poison skills
@@ -203,7 +203,7 @@ COLORS = {
     "Reflux": ("#2563c4", "#178f5f", "BR", "Unique"),
     # Suffuse (one-off)
     # Desperation: powers
-    "Fever Pitch": ("#240147", "#94101b", "R", "Desperation: powers"),
+    "Saturate": ("#240147", "#5fa8d3", "R", "Unique"),
     "Resolve": ("#240147", "#e04a3c", "R", "Desperation: powers"),
     # Ichor (one-off)
     # Inoculate (one-off)

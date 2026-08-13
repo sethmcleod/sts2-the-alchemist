@@ -31,6 +31,8 @@ mod).
 - Added Aqua Regia card: "Deal 20 (26) damage. Apply 4 (5) Poison."
 - Reworked Aureate card and renamed it Wormwood, the Ancient form of Spike: "Deal 6 (8) damage to ALL enemies. Apply 2 (3) Poison to ALL enemies. Gain 2 (3) Antitoxin."
 - Added Deflagrate card: "Deal 12 (16) damage to ALL enemies. Trigger Poison on ALL enemies. Exhaust."
+- Added Steep card: "Deal 8 (11) damage. Infuse a card in your Hand."
+- Added Ballast card: "Deal 7 (10) damage. Gain 7 (10) Block."
 
 ### Changed
 
@@ -69,6 +71,9 @@ mod).
 - Changed Crucible into an Uncommon card
 - Reworked Azoth card: "Deal 8 (11) damage. Trigger your Poison twice."
 - Reworked White Heat card: "Lose all Antitoxin. Deal that much damage to ALL enemies. Exhaust."
+- Reworked Transmute card: "Infuse 2 cards in your Hand. Exhaust."
+- Reworked Congeal card: "Gain 5 (7) Block. Draw 1 card."
+- Reworked Fever Pitch card and renamed it Saturate: "At the start of your turn, Infuse 1 (2) cards in your Hand."
 - Reworked Rot card: "Whenever an enemy dies, apply 5 (8) Poison to ALL enemies." Its cost decreased from 2 (1) -> 0
 - Nerfed Virulence card: cost increased from 2 (1) -> 3 (2)
 - Fixed Flare Up card: its Poison trigger is now seen by Corrosive and the other Poison payoffs
@@ -106,6 +111,7 @@ mod).
 - Removed Reagent card
 - Removed Catalysis card
 - Removed Venom Trance card. Extra turns are now only on the Quicksilver Draught potion
+- Removed Hemorrhage and Backdraft cards
 - Removed Quench card
 - Removed Quintessence relic
 
