@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.7.4] - 2026-08-12
+
 ### Changed
 
 - Renamed the Coveted Potion tip to High Quality
