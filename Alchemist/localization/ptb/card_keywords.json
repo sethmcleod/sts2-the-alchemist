@@ -5,13 +5,5 @@
   "ALCHEMIST-INFUSE.selectionPrompt": "Escolha {Amount:plural:uma carta|[blue]{}[/blue] cartas} para [gold]Infundir[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Escolha qualquer quantidade de cartas para [gold]Infundir[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Escolha até [blue]{MaxCount}[/blue] {MaxCount:plural:carta|cartas} para [gold]Infundir[/gold].",
-  "ALCHEMIST-INFUSE.title": "Infundir",
-  "ALCHEMIST-REACTION.description": "Uma carta com [gold]Reação[/gold] recebe um efeito extra se você a jogar imediatamente após uma carta correspondente no mesmo turno.",
-  "ALCHEMIST-REACTION.description.attack": "Se você jogar esta carta imediatamente após um Ataque no mesmo turno, ela possui um efeito de [gold]Reação[/gold].",
-  "ALCHEMIST-REACTION.description.block": "Se você jogar esta carta imediatamente após uma carta que recebeu [gold]Proteção[/gold] no mesmo turno, ela possui um efeito de [gold]Reação[/gold].",
-  "ALCHEMIST-REACTION.description.enchanted": "Se você jogar esta carta imediatamente após uma carta [gold]Encantada[/gold] no mesmo turno, ela possui um efeito de [gold]Reação[/gold].",
-  "ALCHEMIST-REACTION.description.exhaust": "Se a carta que você jogou imediatamente antes desta foi [gold]Exaurida[/gold] no mesmo turno, esta carta possui um efeito de [gold]Reação[/gold].",
-  "ALCHEMIST-REACTION.description.power": "Se você jogar esta carta imediatamente após um Poder no mesmo turno, ela possui um efeito de [gold]Reação[/gold].",
-  "ALCHEMIST-REACTION.description.skill": "Se você jogar esta carta imediatamente após uma Técnica no mesmo turno, ela possui um efeito de [gold]Reação[/gold].",
-  "ALCHEMIST-REACTION.title": "Reação"
+  "ALCHEMIST-INFUSE.title": "Infundir"
 }

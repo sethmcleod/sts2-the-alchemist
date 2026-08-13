@@ -17,6 +17,9 @@ mod).
 - Added Slake card: "Deal 8 (11) damage. Gain 3 (4) Antitoxin."
 - Added Tincture card: "Gain 2 Antitoxin. Gain 3 (4) additional Antitoxin for each Potion you have."
 - Added Heavy Dose card: "Deal 6 (9) damage. For each Potion you have, deal 3 additional damage and gain 1 Poison."
+- Added Taint card: "Apply 4 (6) Poison. Gain 1 Poison."
+- Added Bezoar relic: "Whenever you gain Poison, gain 1 Antitoxin."
+- Added Blight card: "Deal 5 (7) damage to ALL enemies. Apply 2 (3) Poison to ALL enemies."
 - Added Afterglow card: "Gain 1 Energy and draw 1 card for each Potion you have
   used this combat. Exhaust."
 
@@ -36,6 +39,17 @@ mod).
 - Removed the Gambit keyword. Cards no longer care about being at half HP or less
 - Reworked Circulation card: "Gain 2 Poison. Draw 3 (4) cards."
 - Reworked Decoction card: it no longer procures a Potion
+- Removed the Reaction keyword. Cards no longer care about what you played before them
+- Reworked Cauterize card: "Deal 7 (10) damage. Lose 2 Poison."
+- Reworked Quicklime card: "Deal 6 (8) damage. Gain 4 (6) Block." The Block is no longer conditional
+- Nerfed Overdose card: damage decreased from 15 (20) -> 12 (16), and it no longer draws a card
+- Nerfed Siphon card: damage decreased from 8 (12) -> 6 (9)
+- Nerfed Puncture card: damage decreased from 8 (10) -> 7 (9)
+- Nerfed Etch card: damage decreased from 16 (20) -> 14 (18)
+- Reworked Backdraft card: it now hits twice if the enemy has Poison
+- Changed Corrode card: Poison applied increased from 6 -> 7, and its conditional bonus is gone
+- Changed Decoction card: it now always Infuses a card in your Hand
+- Changed Lash Out, Draining Strike and Transmute: their conditional bonuses are gone
 - Reworked Etch card: "Deal 16 (20) damage. Gain 2 Poison." It no longer ignores Block
 - Reworked Fever Pitch card: "At the start of your turn, if you have 10 or more Poison, draw 1 (2) cards."
 - Reworked Fresh Batch card: "Procure a random potion. Gain 6 (9) Block. Exhaust." Cost decreased from 2 -> 1
@@ -58,6 +72,9 @@ mod).
 - Removed Lifeblood card
 - Removed Inversion card
 - Removed Nigredo, and the Albedo, Citrinitas and Rubedo tokens
+- Removed Reagent card
+- Removed Catalysis card
+- Removed Quintessence relic
 
 ### Fixed
 

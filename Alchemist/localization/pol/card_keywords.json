@@ -5,13 +5,5 @@
   "ALCHEMIST-INFUSE.selectionPrompt": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty} do [gold]Nasycenia[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Wybierz dowolną liczbę kart do [gold]Nasycenia[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Wybierz do [blue]{MaxCount}[/blue] {MaxCount:plural:karty|kart|kart} do [gold]Nasycenia[/gold].",
-  "ALCHEMIST-INFUSE.title": "Nasycenie",
-  "ALCHEMIST-REACTION.description": "Karta z [gold]Reakcją[/gold] zyskuje dodatkowy efekt, gdy zagrasz ją bezpośrednio po pasującej karcie w tej samej turze.",
-  "ALCHEMIST-REACTION.description.attack": "Gdy w tej samej turze zagrasz tę kartę bezpośrednio po Ataku, ma ona efekt [gold]Reakcji[/gold].",
-  "ALCHEMIST-REACTION.description.block": "Gdy w tej samej turze zagrasz tę kartę bezpośrednio po karcie, która dała [gold]Blok[/gold], ma ona efekt [gold]Reakcji[/gold].",
-  "ALCHEMIST-REACTION.description.enchanted": "Gdy w tej samej turze zagrasz tę kartę bezpośrednio po [gold]Zaklętej[/gold] karcie, ma ona efekt [gold]Reakcji[/gold].",
-  "ALCHEMIST-REACTION.description.exhaust": "Jeśli karta zagrana bezpośrednio przed tą w tej samej turze została [gold]Wyczerpana[/gold], ta karta ma efekt [gold]Reakcji[/gold].",
-  "ALCHEMIST-REACTION.description.power": "Gdy w tej samej turze zagrasz tę kartę bezpośrednio po Mocy, ma ona efekt [gold]Reakcji[/gold].",
-  "ALCHEMIST-REACTION.description.skill": "Gdy w tej samej turze zagrasz tę kartę bezpośrednio po Umiejętności, ma ona efekt [gold]Reakcji[/gold].",
-  "ALCHEMIST-REACTION.title": "Reakcja"
+  "ALCHEMIST-INFUSE.title": "Nasycenie"
 }

@@ -5,13 +5,5 @@
   "ALCHEMIST-INFUSE.selectionPrompt": "選擇{Amount:plural:一張牌|[blue]{}[/blue] 張牌}進行[gold]浸潤[/gold]。",
   "ALCHEMIST-INFUSE.selectionPromptAny": "選擇任意數量的牌進行[gold]浸潤[/gold]。",
   "ALCHEMIST-INFUSE.selectionPromptRange": "最多選擇 [blue]{MaxCount}[/blue] {MaxCount:plural:張牌|張牌}進行[gold]浸潤[/gold]。",
-  "ALCHEMIST-INFUSE.title": "浸潤",
-  "ALCHEMIST-REACTION.description": "具有[gold]反應[/gold]的牌，若在同一回合中緊接著一張符合條件的牌打出，就會獲得額外效果。",
-  "ALCHEMIST-REACTION.description.attack": "若你在同一回合中，於打出一張攻擊牌後緊接著打出此牌，它就具有[gold]反應[/gold]效果。",
-  "ALCHEMIST-REACTION.description.block": "若你在同一回合中，於打出一張獲得[gold]格擋[/gold]的牌後緊接著打出此牌，它就具有[gold]反應[/gold]效果。",
-  "ALCHEMIST-REACTION.description.enchanted": "若你在同一回合中，於打出一張[gold]附魔[/gold]牌後緊接著打出此牌，它就具有[gold]反應[/gold]效果。",
-  "ALCHEMIST-REACTION.description.exhaust": "若你在同一回合中，緊接在此牌之前打出的牌已[gold]消耗[/gold]，此牌就具有[gold]反應[/gold]效果。",
-  "ALCHEMIST-REACTION.description.power": "若你在同一回合中，於打出一張能力牌後緊接著打出此牌，它就具有[gold]反應[/gold]效果。",
-  "ALCHEMIST-REACTION.description.skill": "若你在同一回合中，於打出一張技能牌後緊接著打出此牌，它就具有[gold]反應[/gold]效果。",
-  "ALCHEMIST-REACTION.title": "反應"
+  "ALCHEMIST-INFUSE.title": "浸潤"
 }

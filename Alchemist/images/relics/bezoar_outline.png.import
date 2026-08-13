@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsgsdjagsxc8p"
-path="res://.godot/imported/reactive_power.png-766d821ee2a43449ae1b3a76d57c5de7.ctex"
+uid="uid://cpbou68kuuycu"
+path="res://.godot/imported/bezoar_outline.png-5d8a7b1a2c9c4176e7ea6548b18b2cca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/reactive_power.png"
-dest_files=["res://.godot/imported/reactive_power.png-766d821ee2a43449ae1b3a76d57c5de7.ctex"]
+source_file="res://Alchemist/images/relics/bezoar_outline.png"
+dest_files=["res://.godot/imported/bezoar_outline.png-5d8a7b1a2c9c4176e7ea6548b18b2cca.ctex"]
 
 [params]
 

@@ -10,8 +10,6 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Decoction : AlchemistCard
 {
-    protected override ReactionCondition Reaction => ReactionCondition.Enchanted;
-
     public Decoction() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
@@ -20,7 +18,6 @@ public class Decoction : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var reacted = ReactionActive;
 
         // The built-in exhaust prompt, because the card's own SelectionScreenPrompt getter throws
         // without a per-card loc key
@@ -32,7 +29,6 @@ public class Decoction : AlchemistCard
             await CardCmd.Exhaust(choiceContext, card);
 
 
-        if (reacted)
-            await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 1);
+        await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 1);
     }
 }

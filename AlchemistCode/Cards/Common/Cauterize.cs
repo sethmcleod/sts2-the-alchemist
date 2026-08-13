@@ -9,17 +9,18 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Cauterize : AlchemistCard
 {
-    protected override ReactionCondition Reaction => ReactionCondition.Attack;
-
     public Cauterize() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        // The multiplier is 0 or 1, so the face shows the Reaction bonus only while it would land
-        WithCalculatedDamage(6, 3, static (card, _) =>
-            ((AlchemistCard)card).ReactionActive ? 1 : 0, ValueProp.Move, 3, 0);
+        WithDamage(7, 3);
+        WithVar("cleanse", 2, 0);
+        WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_slash"), sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
+        var lose = Math.Min(DynamicVars["cleanse"].IntValue, Owner.Creature.GetPowerAmount<PoisonPower>());
+        if (lose > 0)
+            await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, -lose, Owner.Creature, this);
     }
 }

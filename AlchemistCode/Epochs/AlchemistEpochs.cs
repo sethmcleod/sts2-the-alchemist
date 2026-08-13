@@ -67,5 +67,5 @@ public class Alchemist7Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST7_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Relics;
     protected override List<RelicModel> Relics => new()
-        { ModelDb.Relic<Quintessence>(), ModelDb.Relic<AuricSeal>(), ModelDb.Relic<MidasFruit>() };
+        { ModelDb.Relic<Bezoar>(), ModelDb.Relic<AuricSeal>(), ModelDb.Relic<MidasFruit>() };
 }

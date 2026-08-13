@@ -5,13 +5,5 @@
   "ALCHEMIST-INFUSE.selectionPrompt": "เลือกการ์ด{Amount:plural: 1 ใบ| [blue]{}[/blue] ใบ}เพื่อ[gold]อัดฉีด[/gold]",
   "ALCHEMIST-INFUSE.selectionPromptAny": "เลือกการ์ดกี่ใบก็ได้เพื่อ[gold]อัดฉีด[/gold]",
   "ALCHEMIST-INFUSE.selectionPromptRange": "เลือกการ์ดได้ถึง [blue]{MaxCount}[/blue] {MaxCount:plural:ใบ|ใบ}เพื่อ[gold]อัดฉีด[/gold]",
-  "ALCHEMIST-INFUSE.title": "อัดฉีด",
-  "ALCHEMIST-REACTION.description": "การ์ดที่มี[gold]ปฏิกิริยา[/gold]จะได้รับผลเพิ่ม ถ้าคุณเล่นมันต่อจากการ์ดที่ตรงตามเงื่อนไขทันทีในเทิร์นเดียวกัน",
-  "ALCHEMIST-REACTION.description.attack": "ถ้าคุณเล่นการ์ดนี้ต่อจากการ์ดโจมตีทันทีในเทิร์นเดียวกัน มันจะมีผล[gold]ปฏิกิริยา[/gold]",
-  "ALCHEMIST-REACTION.description.block": "ถ้าคุณเล่นการ์ดนี้ต่อจากการ์ดที่ได้รับ[gold]บล็อก[/gold]ทันทีในเทิร์นเดียวกัน มันจะมีผล[gold]ปฏิกิริยา[/gold]",
-  "ALCHEMIST-REACTION.description.enchanted": "ถ้าคุณเล่นการ์ดนี้ต่อจากการ์ดที่ถูก[gold]ร่ายมนตร์[/gold]ทันทีในเทิร์นเดียวกัน มันจะมีผล[gold]ปฏิกิริยา[/gold]",
-  "ALCHEMIST-REACTION.description.exhaust": "ถ้าการ์ดที่คุณเล่นก่อนหน้าใบนี้ทันที[gold]สลาย[/gold]ในเทิร์นเดียวกัน การ์ดใบนี้จะมีผล[gold]ปฏิกิริยา[/gold]",
-  "ALCHEMIST-REACTION.description.power": "ถ้าคุณเล่นการ์ดนี้ต่อจากการ์ดพลังทันทีในเทิร์นเดียวกัน มันจะมีผล[gold]ปฏิกิริยา[/gold]",
-  "ALCHEMIST-REACTION.description.skill": "ถ้าคุณเล่นการ์ดนี้ต่อจากการ์ดทักษะทันทีในเทิร์นเดียวกัน มันจะมีผล[gold]ปฏิกิริยา[/gold]",
-  "ALCHEMIST-REACTION.title": "ปฏิกิริยา"
+  "ALCHEMIST-INFUSE.title": "อัดฉีด"
 }

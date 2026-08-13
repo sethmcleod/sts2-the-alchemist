@@ -5,13 +5,5 @@
   "ALCHEMIST-INFUSE.selectionPrompt": "Выберите [blue]{Amount:plural(ru):карту|{} карты|{} карт}[/blue] для [gold]пропитки[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Выберите карты, которые хотите [gold]пропитать[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Выберите до [blue]{MaxCount}[/blue] {MaxCount:plural(ru):карты|карт|карт} для [gold]пропитки[/gold].",
-  "ALCHEMIST-INFUSE.title": "Пропитка",
-  "ALCHEMIST-REACTION.description": "Карта с [gold]реакцией[/gold] получает дополнительный эффект, если вы разыграете ее сразу после подходящей карты в том же ходу.",
-  "ALCHEMIST-REACTION.description.attack": "Если в том же ходу вы разыграете эту карту сразу после Атаки, она получит эффект [gold]реакции[/gold].",
-  "ALCHEMIST-REACTION.description.block": "Если в том же ходу вы разыграете эту карту сразу после карты, давшей [gold]защиту[/gold], она получит эффект [gold]реакции[/gold].",
-  "ALCHEMIST-REACTION.description.enchanted": "Если в том же ходу вы разыграете эту карту сразу после [gold]зачарованной[/gold] карты, она получит эффект [gold]реакции[/gold].",
-  "ALCHEMIST-REACTION.description.exhaust": "Если карта, разыгранная непосредственно перед этой в том же ходу, [gold]сжигается[/gold], эта карта получает эффект [gold]реакции[/gold].",
-  "ALCHEMIST-REACTION.description.power": "Если в том же ходу вы разыграете эту карту сразу после Таланта, она получит эффект [gold]реакции[/gold].",
-  "ALCHEMIST-REACTION.description.skill": "Если в том же ходу вы разыграете эту карту сразу после Навыка, она получит эффект [gold]реакции[/gold].",
-  "ALCHEMIST-REACTION.title": "Реакция"
+  "ALCHEMIST-INFUSE.title": "Пропитка"
 }

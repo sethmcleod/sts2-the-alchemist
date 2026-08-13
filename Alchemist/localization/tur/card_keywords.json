@@ -5,13 +5,5 @@
   "ALCHEMIST-INFUSE.selectionPrompt": "[gold]Aşılamak[/gold] için {Amount:plural:bir kart|[blue]{}[/blue] kart} seç.",
   "ALCHEMIST-INFUSE.selectionPromptAny": "[gold]Aşılamak[/gold] için istediğin sayıda kart seç.",
   "ALCHEMIST-INFUSE.selectionPromptRange": "[gold]Aşılamak[/gold] için en fazla [blue]{MaxCount}[/blue] {MaxCount:plural:kart|kart} seç.",
-  "ALCHEMIST-INFUSE.title": "Aşıla",
-  "ALCHEMIST-REACTION.description": "[gold]Reaksiyon[/gold] içeren bir kart, aynı turda uyan bir karttan hemen sonra oynanırsa fazladan bir etki kazanır.",
-  "ALCHEMIST-REACTION.description.attack": "Bu kartı aynı turda bir Atak oynadıktan hemen sonra oynarsan bir [gold]Reaksiyon[/gold] etkisi olur.",
-  "ALCHEMIST-REACTION.description.block": "Bu kartı aynı turda [gold]Blok[/gold] kazandıran bir karttan hemen sonra oynarsan bir [gold]Reaksiyon[/gold] etkisi olur.",
-  "ALCHEMIST-REACTION.description.enchanted": "Bu kartı aynı turda [gold]Büyülenmiş[/gold] bir kart oynadıktan hemen sonra oynarsan bir [gold]Reaksiyon[/gold] etkisi olur.",
-  "ALCHEMIST-REACTION.description.exhaust": "Bu karttan hemen önce aynı turda oynadığın kart [gold]Tüketildiyse[/gold], bu kartın bir [gold]Reaksiyon[/gold] etkisi olur.",
-  "ALCHEMIST-REACTION.description.power": "Bu kartı aynı turda bir Güç oynadıktan hemen sonra oynarsan bir [gold]Reaksiyon[/gold] etkisi olur.",
-  "ALCHEMIST-REACTION.description.skill": "Bu kartı aynı turda bir Beceri oynadıktan hemen sonra oynarsan bir [gold]Reaksiyon[/gold] etkisi olur.",
-  "ALCHEMIST-REACTION.title": "Reaksiyon"
+  "ALCHEMIST-INFUSE.title": "Aşıla"
 }

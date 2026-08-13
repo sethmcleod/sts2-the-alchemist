@@ -11,29 +11,14 @@ public class LashOut : AlchemistCard
 {
     private const int Hits = 3;
 
-    protected override ReactionCondition Reaction => ReactionCondition.Power;
-
     public LashOut() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
         WithDamage(5, 2);
     }
 
-    private int HitCount => Hits + (ReactionActive ? 1 : 0);
-
-    // CombatState, not IsMutable: the compendium's upgraded preview is a mutable copy with no Owner. Only
-    // show a count that differs from the 3 already printed above it, or the line is noise on every draw
-    protected override void AddExtraArgsToDescription(LocString description)
-    {
-        base.AddExtraArgsToDescription(description);
-        description.Add("HitsLine",
-            HitsLine(CombatState != null && HitCount > Hits ? HitCount : 0));
-    }
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var hits = HitCount;
-
-        await CommonActions.CardAttack(this, play, hits, vfx: HitVfx("vfx/vfx_attack_slash"))
+        await CommonActions.CardAttack(this, play, Hits, vfx: HitVfx("vfx/vfx_attack_slash"))
             .Execute(choiceContext);
     }
 }

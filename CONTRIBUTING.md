@@ -24,17 +24,6 @@ closest existing card in `AlchemistCode/Cards/` and follow the three-way rule be
    power also needs the keys `.title`, `.description`, and `.smartDescription`.
 3. **cards.csv**: the design sheet in plain text. The format is `base (upgraded)`.
 
-## Design conventions
-
-- **Show real numbers.** A conditional value, or a value that scales, must show its
-  current total in green. Use `WithCalculatedDamage` or `WithCalculatedBlock`. You can
-  also use a text in parentheses, as Steep does with "(Applies N Poison.)". The player
-  must never calculate a value.
-- **An upgrade never increases the cost of a card.**
-- **Risk and reward**: a card with a number above the curve must have a cost. The
-  cost is HP, or Poison on the player. Single target damage is usually below the base game
-  curve. Poison damage increases over time and makes up for the difference.
-
 ## Code style
 
 - **A comment must tell why, not what.** The names and the structure must make the _what_

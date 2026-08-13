@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0fs8jcwblqu2"
-path="res://.godot/imported/catalysis.png-eb37d0a73dab76eaf2dcb1094b2fb107.ctex"
+uid="uid://dpvpt3pj4wvwv"
+path="res://.godot/imported/bezoar.png-d47148012dc39651df167bc25e4314a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/catalysis.png"
-dest_files=["res://.godot/imported/catalysis.png-eb37d0a73dab76eaf2dcb1094b2fb107.ctex"]
+source_file="res://Alchemist/images/relics/big/bezoar.png"
+dest_files=["res://.godot/imported/bezoar.png-d47148012dc39651df167bc25e4314a7.ctex"]
 
 [params]
 

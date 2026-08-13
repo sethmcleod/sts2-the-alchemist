@@ -10,7 +10,7 @@ public class Puncture : AlchemistCard
 {
     public Puncture() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(8, 2);
+        WithDamage(7, 2);
         WithPower<VulnerablePower>(1, 1);
     }
 

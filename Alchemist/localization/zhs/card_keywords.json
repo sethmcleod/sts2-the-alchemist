@@ -5,13 +5,5 @@
   "ALCHEMIST-INFUSE.selectionPrompt": "选择{Amount:plural:一张牌|[blue]{}[/blue]张牌}进行[gold]注入[/gold]。",
   "ALCHEMIST-INFUSE.selectionPromptAny": "选择任意张牌进行[gold]注入[/gold]。",
   "ALCHEMIST-INFUSE.selectionPromptRange": "选择至多[blue]{MaxCount}[/blue]张{MaxCount:plural:牌|牌}进行[gold]注入[/gold]。",
-  "ALCHEMIST-INFUSE.title": "注入",
-  "ALCHEMIST-REACTION.description": "拥有[gold]反应[/gold]的牌，如果在同一回合内紧接着一张符合条件的牌打出，会获得额外效果。",
-  "ALCHEMIST-REACTION.description.attack": "如果你在同一回合内打出一张攻击牌后紧接着打出这张牌，它拥有[gold]反应[/gold]效果。",
-  "ALCHEMIST-REACTION.description.block": "如果你在同一回合内打出一张获得了[gold]格挡[/gold]的牌后紧接着打出这张牌，它拥有[gold]反应[/gold]效果。",
-  "ALCHEMIST-REACTION.description.enchanted": "如果你在同一回合内打出一张[gold]附魔[/gold]牌后紧接着打出这张牌，它拥有[gold]反应[/gold]效果。",
-  "ALCHEMIST-REACTION.description.exhaust": "如果你在同一回合中紧接在这张牌之前打出的牌被[gold]消耗[/gold]，这张牌拥有[gold]反应[/gold]效果。",
-  "ALCHEMIST-REACTION.description.power": "如果你在同一回合内打出一张能力牌后紧接着打出这张牌，它拥有[gold]反应[/gold]效果。",
-  "ALCHEMIST-REACTION.description.skill": "如果你在同一回合内打出一张技能牌后紧接着打出这张牌，它拥有[gold]反应[/gold]效果。",
-  "ALCHEMIST-REACTION.title": "反应"
+  "ALCHEMIST-INFUSE.title": "注入"
 }

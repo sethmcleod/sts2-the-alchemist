@@ -101,18 +101,17 @@ COLORS = {
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
     "Macerate": ("#650101", "#2f9e6a", "TR", "Poison attacks"),
+    "Blight": ("#650101", "#4a7a1c", "TR", "Poison attacks"),
     # Unstable Compound (one-off): the name kept its own violet-into-toxic-green
     "Unstable Compound": ("#2f0170", "#63c11c", "BR", "Unique"),
-    # Reaction: skills
-    "Corrode": ("#2f0170", "#287912", "BR", "Reaction: skills"),
-    "Decoction": ("#2f0170", "#2aa88a", "BR", "Reaction: skills"),
-    # Reaction: heavy attacks
-    "Draining Strike": ("#2f0170", "#b3341f", "TR", "Reaction: heavy attacks"),
-    "Backdraft": ("#1a0400", "#ff5a12", "TR", "Reaction: heavy attacks"),
-    # Reaction: light attacks
-    "Quicklime": ("#1c0f45", "#e8e4d2", "TR", "Reaction: light attacks"),
-    "Reagent": ("#1c0f45", "#d8e04a", "TR", "Reaction: light attacks"),
-    "Catalysis": ("#1c0f45", "#6ad8c4", "R", "Reaction: light attacks"),
+    # Poison and Infuse skills
+    "Corrode": ("#2f0170", "#287912", "BR", "Poison and Infuse skills"),
+    "Decoction": ("#2f0170", "#2aa88a", "BR", "Poison and Infuse skills"),
+    # Heavy attacks
+    "Draining Strike": ("#2f0170", "#b3341f", "TR", "Heavy attacks"),
+    "Backdraft": ("#1a0400", "#ff5a12", "TR", "Heavy attacks"),
+    # Light attacks
+    "Quicklime": ("#1c0f45", "#e8e4d2", "TR", "Light attacks"),
     # Ferment: attacks
     "Patient Strike": ("#4a0e2e", "#c78a3b", "TR", "Ferment: attacks"),
     "Rolling Boil": ("#4a0e2e", "#e85a1f", "TR", "Ferment: attacks"),
@@ -167,6 +166,7 @@ COLORS = {
     "Fester": ("#4e8701", "#0139b2", "BR", "Poison skills"),
     "Sweat It Out": ("#4e8701", "#013161", "BR", "Poison skills"),
     "Waste Not": ("#4e8701", "#2f4f8f", "BR", "Poison skills"),
+    "Taint": ("#4e8701", "#7a2f6b", "BR", "Poison skills"),
     # Poison powers: amplifiers
     "Heavy Hand": ("#071a02", "#8fc72a", "R", "Poison powers: amplifiers"),
     "Sepsis": ("#071a02", "#5aea23", "L", "Poison powers: amplifiers"),

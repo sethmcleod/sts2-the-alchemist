@@ -5,13 +5,5 @@
   "ALCHEMIST-INFUSE.selectionPrompt": "[gold]注入[/gold]するカードを[blue]{Amount}[/blue]枚選択。",
   "ALCHEMIST-INFUSE.selectionPromptAny": "[gold]注入[/gold]するカードを好きな数だけ選択。",
   "ALCHEMIST-INFUSE.selectionPromptRange": "[gold]注入[/gold]するカードを最大[blue]{MaxCount}[/blue]{MaxCount:plural:枚|枚}選択。",
-  "ALCHEMIST-INFUSE.title": "注入",
-  "ALCHEMIST-REACTION.description": "[gold]反応[/gold]を持つカードは、同じターン中に条件に合致するカードの直後にプレイすると、追加効果を得る。",
-  "ALCHEMIST-REACTION.description.attack": "同じターン中にアタックの直後にこのカードをプレイすると、[gold]反応[/gold]の効果を得る。",
-  "ALCHEMIST-REACTION.description.block": "同じターン中に[gold]ブロック[/gold]を得たカードの直後にこのカードをプレイすると、[gold]反応[/gold]の効果を得る。",
-  "ALCHEMIST-REACTION.description.enchanted": "同じターン中に[gold]エンチャント[/gold]されたカードの直後にこのカードをプレイすると、[gold]反応[/gold]の効果を得る。",
-  "ALCHEMIST-REACTION.description.exhaust": "同じターン中に直前にプレイしたカードが[gold]廃棄[/gold]された場合、このカードは[gold]反応[/gold]の効果を得る。",
-  "ALCHEMIST-REACTION.description.power": "同じターン中にパワーの直後にこのカードをプレイすると、[gold]反応[/gold]の効果を得る。",
-  "ALCHEMIST-REACTION.description.skill": "同じターン中にスキルの直後にこのカードをプレイすると、[gold]反応[/gold]の効果を得る。",
-  "ALCHEMIST-REACTION.title": "反応"
+  "ALCHEMIST-INFUSE.title": "注入"
 }

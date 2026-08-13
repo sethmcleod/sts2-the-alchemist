@@ -14,7 +14,7 @@ public class Etch : AlchemistCard
 {
     public Etch() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(16, 4);
+        WithDamage(14, 4);
         WithVar("poison", 2, 0);
         WithTip(typeof(PoisonPower));
     }

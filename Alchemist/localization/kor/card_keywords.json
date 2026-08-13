@@ -5,13 +5,5 @@
   "ALCHEMIST-INFUSE.selectionPrompt": "[gold]주입[/gold]할 카드를{Amount:plural: 1장| [blue]{}[/blue]장} 선택하세요.",
   "ALCHEMIST-INFUSE.selectionPromptAny": "[gold]주입[/gold]할 카드를 원하는 만큼 선택하세요.",
   "ALCHEMIST-INFUSE.selectionPromptRange": "[gold]주입[/gold]할 카드를 최대 [blue]{MaxCount}[/blue]{MaxCount:plural:장|장} 선택하세요.",
-  "ALCHEMIST-INFUSE.title": "주입",
-  "ALCHEMIST-REACTION.description": "[gold]반응[/gold] 카드는 같은 턴에 조건과 일치하는 카드를 사용한 직후에 사용하면 추가 효과를 발휘합니다.",
-  "ALCHEMIST-REACTION.description.attack": "같은 턴에 공격 카드를 사용한 직후에 이 카드를 사용하면, [gold]반응[/gold] 효과를 발휘합니다.",
-  "ALCHEMIST-REACTION.description.block": "같은 턴에 [gold]방어도[/gold]를 얻은 카드 직후에 이 카드를 사용하면, [gold]반응[/gold] 효과를 발휘합니다.",
-  "ALCHEMIST-REACTION.description.enchanted": "같은 턴에 [gold]인챈트[/gold]된 카드를 사용한 직후에 이 카드를 사용하면, [gold]반응[/gold] 효과를 발휘합니다.",
-  "ALCHEMIST-REACTION.description.exhaust": "같은 턴에 바로 직전에 사용한 카드가 [gold]소멸[/gold]했다면, 이 카드는 [gold]반응[/gold] 효과를 발휘합니다.",
-  "ALCHEMIST-REACTION.description.power": "같은 턴에 파워 카드를 사용한 직후에 이 카드를 사용하면, [gold]반응[/gold] 효과를 발휘합니다.",
-  "ALCHEMIST-REACTION.description.skill": "같은 턴에 스킬 카드를 사용한 직후에 이 카드를 사용하면, [gold]반응[/gold] 효과를 발휘합니다.",
-  "ALCHEMIST-REACTION.title": "반응"
+  "ALCHEMIST-INFUSE.title": "주입"
 }

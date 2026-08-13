@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5pigk3xjja7"
-path="res://.godot/imported/reaction.png-7f308ad70990c3aad142610bd8d62117.ctex"
+uid="uid://cew6o85cyk7pg"
+path="res://.godot/imported/bezoar.png-cb8f98b9f2b0655062a40561fa94943a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/keywords/reaction.png"
-dest_files=["res://.godot/imported/reaction.png-7f308ad70990c3aad142610bd8d62117.ctex"]
+source_file="res://Alchemist/images/relics/bezoar.png"
+dest_files=["res://.godot/imported/bezoar.png-cb8f98b9f2b0655062a40561fa94943a.ctex"]
 
 [params]
 

@@ -19,7 +19,7 @@
   "ALCHEMIST-REVEAL_TIMELINE.title": "Unlock All Alchemist Timeline Epochs",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.hover.desc": "Shows a preview segment on an enemy's health bar for the Alchemist's delayed damage, so you can see the pending hit before it lands. Turn off for a cleaner bar.",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.title": "Show Damage Forecasts",
-  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "Highlights cards in your Hand that have a live bonus: gold for a Reaction or Enchanted payoff. Turn off to hide these highlights.",
+  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "Highlights cards in your Hand that have a live bonus. Turn off to hide these highlights.",
   "ALCHEMIST-SHOW_HAND_GLOWS.title": "Show Extra Card Glow Effects",
   "ALCHEMIST-TIMELINE.title": "Timeline",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.hover.desc": "[sine]Every[/sine] character sell potions to the [gold]Merchant[/gold]! For [gold]Gold[/gold]!\n\n(Disclaimer: This description was paid for by the Merchant.)",

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dilybp5d0w7k0"
-path="res://.godot/imported/catalysis_power.png-4f5111b4a06e75d8eae69a35413f0884.ctex"
+uid="uid://bosbhjp4paxvn"
+path="res://.godot/imported/blight.png-213e3e8d37ef7ab44b6d60d347f67169.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/catalysis_power.png"
-dest_files=["res://.godot/imported/catalysis_power.png-4f5111b4a06e75d8eae69a35413f0884.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/blight.png"
+dest_files=["res://.godot/imported/blight.png-213e3e8d37ef7ab44b6d60d347f67169.ctex"]
 
 [params]
 
