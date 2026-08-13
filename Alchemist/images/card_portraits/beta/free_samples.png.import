@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpbou68kuuycu"
-path="res://.godot/imported/spare_dose_outline.png-59b5ff456600fe6a2a007bf1041a4b7b.ctex"
+uid="uid://dkuusflslti7p"
+path="res://.godot/imported/free_samples.png-833f270d7ae2eab592fe1000b9192a63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/spare_dose_outline.png"
-dest_files=["res://.godot/imported/spare_dose_outline.png-59b5ff456600fe6a2a007bf1041a4b7b.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/free_samples.png"
+dest_files=["res://.godot/imported/free_samples.png-833f270d7ae2eab592fe1000b9192a63.ctex"]
 
 [params]
 

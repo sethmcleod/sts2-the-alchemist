@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csevteqq16okv"
-path="res://.godot/imported/bezoar.png-cb8f98b9f2b0655062a40561fa94943a.ctex"
+path="res://.godot/imported/second_skin_outline.png-50020e9b172dba1273fe977938ae7adb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/bezoar.png"
-dest_files=["res://.godot/imported/bezoar.png-cb8f98b9f2b0655062a40561fa94943a.ctex"]
+source_file="res://Alchemist/images/relics/second_skin_outline.png"
+dest_files=["res://.godot/imported/second_skin_outline.png-50020e9b172dba1273fe977938ae7adb.ctex"]
 
 [params]
 

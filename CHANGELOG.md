@@ -24,8 +24,9 @@ mod).
 - Changed Snake Tail into a Rare relic
 - Renamed Bezoar relic to Spare Dose, and changed it into a Common relic
 - Reworked Fuming enchantment to Dosed: now gains 1 Antitoxin, instead of applying Weak and Vulnerable to a random enemy and giving you Poison
-- Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy." It no longer adds a Poison trigger
+- Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy."
 - Reworked Laced echantment: now applies 1 Poison and gains 1 Poison
+- Reworked Marsh Tonic potion: "Gain 10 Antitoxin."
 - Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block." It no longer grants Regen, which the deck no longer uses
 
 ### Removed

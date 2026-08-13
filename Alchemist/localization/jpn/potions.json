@@ -3,7 +3,6 @@
   "ALCHEMIST-ALKAHEST.title": "アルカヘスト",
   "ALCHEMIST-GOLD_LEAF.description": "所持している[gold]ゴールド[/gold][blue]15[/blue]ごとに、HPを[green]1[/green]回復し、[blue]1[/blue][gold]ブロック[/gold]を得る。{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "金箔",
-  "ALCHEMIST-MARSH_TONIC.description": "[gold]再生[/gold][blue]3[/blue]と[gold]毒[/gold][blue]3[/blue]を得る。",
   "ALCHEMIST-MARSH_TONIC.title": "沼の強壮薬",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "このターンの後、追加のターンを得る。",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "水銀の一服",

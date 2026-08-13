@@ -3,7 +3,6 @@
   "ALCHEMIST-ALKAHEST.title": "อัลคาเฮสต์",
   "ALCHEMIST-GOLD_LEAF.description": "ฟื้นฟู [green]1[/green] HP และได้รับ [blue]1[/blue] [gold]บล็อก[/gold] ต่อทุก [blue]15[/blue] [gold]ทอง[/gold] ที่คุณมี{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "ทองคำเปลว",
-  "ALCHEMIST-MARSH_TONIC.description": "ได้รับ [blue]3[/blue] [gold]การฟื้นพลัง[/gold] และ [blue]3[/blue] [gold]พิษ[/gold]",
   "ALCHEMIST-MARSH_TONIC.title": "ยาบำรุงบึงเลน",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "เล่นต่ออีก 1 เทิร์นต่อจากเทิร์นนี้",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "ยาปรอทว่องไว",

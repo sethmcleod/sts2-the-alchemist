@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjafr95laj3l5"
-path="res://.godot/imported/bottoms_up_power.png-931a698a23beffefcb0b0bdc6b1867a3.ctex"
+uid="uid://cjafsa5laj3l5"
+path="res://.godot/imported/bottoms_up_power.png-dda5bcd60584421500e59e154365157d.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Alchemist/images/powers/big/bottoms_up_power.png"
-dest_files=["res://.godot/imported/bottoms_up_power.png-931a698a23beffefcb0b0bdc6b1867a3.ctex"]
+dest_files=["res://.godot/imported/bottoms_up_power.png-dda5bcd60584421500e59e154365157d.ctex"]
 
 [params]
 
