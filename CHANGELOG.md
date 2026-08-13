@@ -7,6 +7,15 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Renamed the Coveted Potion tip to High Quality
+- Changed the Potion Sell Price setting: it now runs from 10% to 100% in steps of 10%
+
+### Fixed
+
+- Fixed unlimited Gold at the Merchant: he no longer buys back a Potion you bought from him at that same shop, and the sale price now follows any shop discount you have, such as The Courier
+
 ## [0.7.3] - 2026-08-12
 
 ### Changed
