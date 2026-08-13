@@ -18,10 +18,15 @@ mod).
 ### Changed
 
 - Added, removed, reworked and renamed cards throughout the deck. Each card has been balanced against similar base game cards where possible
-- Changed Potions procured during combat to no longer include those that can heal
 - Changed Brew hover tip: it now also says you can sell Potions to the Merchant, which the Kit relics used to say themselves
-- Reworked Laced echantment: now applies 1 Poison and gains 1 Poison
+- Changed Gilded Kit to come from the event pool, like the other characters' upgraded starter relics
+- Changed Potions procured during combat to no longer include those that can heal
+- Changed Snake Tail into a Rare relic
+- Renamed Bezoar relic to Spare Dose, and changed it into a Common relic
 - Reworked Fuming enchantment to Dosed: now gains 1 Antitoxin, instead of applying Weak and Vulnerable to a random enemy and giving you Poison
+- Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy." It no longer adds a Poison trigger
+- Reworked Laced echantment: now applies 1 Poison and gains 1 Poison
+- Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block." It no longer grants Regen, which the deck no longer uses
 
 ### Removed
 
@@ -31,8 +36,8 @@ mod).
 - Removed Quintessence relic
 
 ### Fixed
-- Fixed Orobas dialogue that named the removed Nigredo and Albedo cards
 
+- Fixed Orobas dialogue that named the removed Nigredo and Albedo cards
 - Fixed Fighting Spirits counting Potions used by other players in Multiplayer, not only your own
 
 ## [0.7.3] - 2026-08-12

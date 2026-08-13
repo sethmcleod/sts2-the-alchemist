@@ -10,11 +10,11 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-public class Bezoar : AlchemistRelic
+public class SpareDose : AlchemistRelic
 {
     private const int Antitoxin = 1;
 
-    public override RelicRarity Rarity => RelicRarity.Rare;
+    public override RelicRarity Rarity => RelicRarity.Common;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[]

@@ -17,9 +17,6 @@
   "ALCHEMIST-SNAKE_TAIL.description": "[gold]中毒[/gold]第一次將使你的生命降至 0 時，改為恢復至最大生命的 [green]33%[/green]（僅生效一次）。",
   "ALCHEMIST-SNAKE_TAIL.flavor": "從沒有蛇死於自己的咬噬。",
   "ALCHEMIST-SNAKE_TAIL.title": "蛇尾",
-  "ALCHEMIST-VIRIDITAS.description": "每場戰鬥開始時，獲得 [blue]3[/blue] 層[gold]再生[/gold]。",
-  "ALCHEMIST-VIRIDITAS.flavor": "翠綠不急躁，也不停歇。",
-  "ALCHEMIST-VIRIDITAS.title": "綠化",
   "ALCHEMIST-WEATHERED_KIT.description": "你可以在休息處[gold]釀造藥水[/gold]，並將其賣給[gold]商人[/gold]。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "一只用得很舊、氣味宜人的箱子。",
   "ALCHEMIST-WEATHERED_KIT.title": "風霜藥箱"

@@ -6,9 +6,14 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Entities.RestSite;
 using Alchemist.AlchemistCode.Powers;
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Models.RelicPools;
 
 namespace Alchemist.AlchemistCode.Relics;
 
+// The upgraded starter, so it belongs in the event pool with the base characters' upgraded starters
+// rather than the character pool, which would make it drop as a ninth relic
+[Pool(typeof(EventRelicPool))]
 public class GildedKit : AlchemistRelic
 {
     private const int Antitoxin = 10;

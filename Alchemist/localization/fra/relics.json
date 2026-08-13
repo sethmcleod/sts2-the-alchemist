@@ -17,9 +17,6 @@
   "ALCHEMIST-SNAKE_TAIL.description": "La première fois que le [gold]Poison[/gold] devrait réduire vos PV à 0, récupérez [green]33%[/green] de vos PV Max à la place (fonctionne une fois).",
   "ALCHEMIST-SNAKE_TAIL.flavor": "Aucun serpent n'est jamais mort de sa propre morsure.",
   "ALCHEMIST-SNAKE_TAIL.title": "Queue de serpent",
-  "ALCHEMIST-VIRIDITAS.description": "Au début de chaque combat, gagnez [blue]3[/blue] de [gold]Régénération[/gold].",
-  "ALCHEMIST-VIRIDITAS.flavor": "Le vert ne se presse pas, et ne s'arrête pas.",
-  "ALCHEMIST-VIRIDITAS.title": "Viriditas",
   "ALCHEMIST-WEATHERED_KIT.description": "Vous pouvez [gold]Brasser des Potions[/gold] aux Sites de repos et les vendre au [gold]Marchand[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Une mallette bien usée, qui sent agréablement bon.",
   "ALCHEMIST-WEATHERED_KIT.title": "Trousse usée"

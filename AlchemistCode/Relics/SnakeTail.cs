@@ -12,7 +12,7 @@ namespace Alchemist.AlchemistCode.Relics;
 // "if alive, decrement" check fires right after, and the poison stack still ticks down by 1
 public class SnakeTail : AlchemistRelic
 {
-    public override RelicRarity Rarity => RelicRarity.Common;
+    public override RelicRarity Rarity => RelicRarity.Rare;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };

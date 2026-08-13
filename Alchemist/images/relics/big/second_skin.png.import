@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt7ywcbycebje"
-path="res://.godot/imported/viriditas.png-be198f0121ddd173f7bc7c22e46e66dc.ctex"
+uid="uid://cwoz3yk3xuhmd"
+path="res://.godot/imported/bezoar.png-d47148012dc39651df167bc25e4314a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/big/viriditas.png"
-dest_files=["res://.godot/imported/viriditas.png-be198f0121ddd173f7bc7c22e46e66dc.ctex"]
+source_file="res://Alchemist/images/relics/big/bezoar.png"
+dest_files=["res://.godot/imported/bezoar.png-d47148012dc39651df167bc25e4314a7.ctex"]
 
 [params]
 

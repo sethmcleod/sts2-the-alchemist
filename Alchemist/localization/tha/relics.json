@@ -17,9 +17,6 @@
   "ALCHEMIST-SNAKE_TAIL.description": "ครั้งแรกที่[gold]พิษ[/gold]จะทำให้ HP ของคุณเหลือ 0 จะฟื้นฟูเป็น [green]33%[/green] ของ HP สูงสุดแทน (ใช้ได้ครั้งเดียว)",
   "ALCHEMIST-SNAKE_TAIL.flavor": "ไม่เคยมีงูตัวไหนตายเพราะพิษของตัวเอง",
   "ALCHEMIST-SNAKE_TAIL.title": "หางอสรพิษ",
-  "ALCHEMIST-VIRIDITAS.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]3[/blue] [gold]การฟื้นพลัง[/gold]",
-  "ALCHEMIST-VIRIDITAS.flavor": "สีเขียวไม่เร่งรีบ และไม่เคยหยุด",
-  "ALCHEMIST-VIRIDITAS.title": "วิริดิทัส",
   "ALCHEMIST-WEATHERED_KIT.description": "คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักและขายให้[gold]พ่อค้า[/gold]ได้",
   "ALCHEMIST-WEATHERED_KIT.flavor": "กล่องเก่าที่ผ่านการใช้งานมานาน กลิ่นหอมชวนดม",
   "ALCHEMIST-WEATHERED_KIT.title": "ชุดเครื่องมือเก่า"

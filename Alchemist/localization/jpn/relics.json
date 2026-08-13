@@ -17,9 +17,6 @@
   "ALCHEMIST-SNAKE_TAIL.description": "[gold]毒[/gold]によってHPが0になる時、初回に限り、代わりに最大HPの[green]33%[/green]まで回復する（1回のみ）。",
   "ALCHEMIST-SNAKE_TAIL.flavor": "自らの牙で死んだ蛇は、一匹もいない。",
   "ALCHEMIST-SNAKE_TAIL.title": "蛇の尾",
-  "ALCHEMIST-VIRIDITAS.description": "戦闘開始時、[gold]再生[/gold][blue]3[/blue]を得る。",
-  "ALCHEMIST-VIRIDITAS.flavor": "緑は急がず、そして止まらない。",
-  "ALCHEMIST-VIRIDITAS.title": "ヴィリディタス",
   "ALCHEMIST-WEATHERED_KIT.description": "休憩所で[gold]ポーションを調合[/gold]でき、[gold]商人[/gold]に売却できる。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "使い込まれ、心地よい香りのする道具箱。",
   "ALCHEMIST-WEATHERED_KIT.title": "使い込まれた道具箱"

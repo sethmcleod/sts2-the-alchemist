@@ -17,9 +17,6 @@
   "ALCHEMIST-SNAKE_TAIL.description": "Когда [gold]яд[/gold] впервые понизит ваши ОЗ до 0, вместо этого вы восполните ОЗ до [green]33%[/green] от максимума (срабатывает один раз).",
   "ALCHEMIST-SNAKE_TAIL.flavor": "Ни одна змея не умерла от собственного укуса.",
   "ALCHEMIST-SNAKE_TAIL.title": "Змеиный хвост",
-  "ALCHEMIST-VIRIDITAS.description": "Дает [blue]3[/blue] [gold]регенерации[/gold] в начале каждого боя.",
-  "ALCHEMIST-VIRIDITAS.flavor": "Зелень не спешит и не останавливается.",
-  "ALCHEMIST-VIRIDITAS.title": "Виридитас",
   "ALCHEMIST-WEATHERED_KIT.description": "Вы можете [gold]варить зелья[/gold] в лагере и продавать их [gold]Торговцу[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Потертый футляр с приятным запахом.",
   "ALCHEMIST-WEATHERED_KIT.title": "Потрепанный набор"

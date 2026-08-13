@@ -17,9 +17,6 @@
   "ALCHEMIST-SNAKE_TAIL.description": "[gold]중독[/gold]으로 체력이 0이 될 때, 처음 한 번은 대신 최대 체력의 [green]33%[/green]까지 회복합니다 (한 번만 발동).",
   "ALCHEMIST-SNAKE_TAIL.flavor": "자신의 독니에 물려 죽은 뱀은 없다.",
   "ALCHEMIST-SNAKE_TAIL.title": "뱀 꼬리",
-  "ALCHEMIST-VIRIDITAS.description": "매 전투 시작 시, [gold]재생[/gold]을 [blue]3[/blue] 얻습니다.",
-  "ALCHEMIST-VIRIDITAS.flavor": "초록은 서두르지 않고, 멈추지도 않는다.",
-  "ALCHEMIST-VIRIDITAS.title": "비리디타스",
   "ALCHEMIST-WEATHERED_KIT.description": "휴식 장소에서 [gold]포션을 양조[/gold]할 수 있고 [gold]상인[/gold]에게 판매할 수 있습니다.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "손때가 묻고 기분 좋은 향이 나는 도구함.",
   "ALCHEMIST-WEATHERED_KIT.title": "낡은 도구함"

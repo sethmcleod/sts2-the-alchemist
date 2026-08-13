@@ -17,9 +17,6 @@
   "ALCHEMIST-SNAKE_TAIL.description": "La primera vez que el [gold]veneno[/gold] reduciría tus PV a 0, recuperas hasta el [green]33 %[/green] de tus PV máx. en su lugar (funciona una vez).",
   "ALCHEMIST-SNAKE_TAIL.flavor": "Ninguna serpiente murió de su propia mordida.",
   "ALCHEMIST-SNAKE_TAIL.title": "Cola de serpiente",
-  "ALCHEMIST-VIRIDITAS.description": "Al inicio de cada combate, obtienes [blue]3[/blue] de [gold]regeneración[/gold].",
-  "ALCHEMIST-VIRIDITAS.flavor": "El verdor no se apura, y no se detiene.",
-  "ALCHEMIST-VIRIDITAS.title": "Viriditas",
   "ALCHEMIST-WEATHERED_KIT.description": "Puedes [gold]preparar pociones[/gold] en los puntos de descanso y vendérselas al [gold]Comerciante[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Un estuche gastado y de aroma agradable.",
   "ALCHEMIST-WEATHERED_KIT.title": "Estuche gastado"
