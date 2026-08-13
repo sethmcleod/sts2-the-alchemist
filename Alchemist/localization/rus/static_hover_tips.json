@@ -1,12 +1,10 @@
 {
-  "ALCHEMIST-BREW.title": "Варка",
   "ALCHEMIST-BREW.description": "Этот вариант в лагере дает случайное [gold]зелье[/gold]. Есть 3 [gold]зелья[/gold], которые можно получить только так.",
-  "ALCHEMIST-DEEP_BREATH.title": "Глубокий вдох",
-  "ALCHEMIST-DEEP_BREATH.description": "Даваемая [gold]защита[/gold] равна сумме всего [gold]яда[/gold] на врагах, на вас и на ваших союзниках.",
+  "ALCHEMIST-BREW.title": "Варка",
+  "ALCHEMIST-LIFEBLOOD.description": "Урон учитывает [gold]регенерацию[/gold], которая у вас уже есть.",
   "ALCHEMIST-LIFEBLOOD.title": "Живая кровь",
-  "ALCHEMIST-LIFEBLOOD.description": "Урон учитывает [gold]регенерацию[/gold], которую дает эта карта.",
+  "ALCHEMIST-MASTERWORK.description": "Эта карта светится [gold]золотым[/gold], если в этом бою вы [gold]зачаровали[/gold] пять или более карт, включая ту, которую [gold]пропитаете[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Шедевр",
-  "ALCHEMIST-MASTERWORK.description": "Эта карта светится [gold]золотым[/gold], если в этом бою вы наложили [gold]чары[/gold] на пять или более карт, включая ту, которую [gold]пропитаете[/gold].",
-  "ALCHEMIST-OVERFLOW.title": "Перелив",
-  "ALCHEMIST-OVERFLOW.description": "Наносит удар ВСЕМ врагам столько раз, сколько у вас [gold]регенерации[/gold]."
+  "ALCHEMIST-OVERFLOW.description": "Наносит удар ВСЕМ врагам столько раз, сколько у вас [gold]регенерации[/gold], включая 1, которую дает эта карта.",
+  "ALCHEMIST-OVERFLOW.title": "Переполнение"
 }

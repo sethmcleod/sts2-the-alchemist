@@ -13,9 +13,8 @@ public class Vivisect : AlchemistCard
     public Vivisect() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(7, 3);
-        WithVar("Cards", 2, 0);
+        WithVar("Cards", 1, 0);
         WithVar("Debuff", 1, 1);
-        WithTip(typeof(WeakPower));
         WithTip(typeof(VulnerablePower));
     }
 
@@ -27,9 +26,8 @@ public class Vivisect : AlchemistCard
         await CardPileCmd.Draw(choiceContext, DynamicVars["Cards"].IntValue, Owner);
         if (IsEnchanted && play.Target is { IsAlive: true })
         {
-            var debuff = DynamicVars["Debuff"].IntValue;
-            await PowerCmd.Apply<WeakPower>(choiceContext, play.Target, debuff, Owner.Creature, this);
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target, debuff, Owner.Creature, this);
+            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target,
+                DynamicVars["Debuff"].IntValue, Owner.Creature, this);
         }
     }
 }

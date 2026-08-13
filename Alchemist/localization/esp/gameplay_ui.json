@@ -11,6 +11,6 @@
   "POTION_SELL.merchant_sell_4": "Uy, todavía burbujea. ¡Qué bien!",
   "POTION_SELL.merchant_sell_5": "Mi clientela habitual se llevará esto enseguida.",
   "POTION_SELL.merchant_sell_6": "¡Las preparaciones frescas se venden solas!",
-  "POTION_SELL.sellable_tip.description": "Esta [gold]poción[/gold] se puede vender al [blue]Comerciante[/blue] por [gold]oro[/gold].",
+  "POTION_SELL.sellable_tip.description": "Esta [gold]poción[/gold] se puede vender al [gold]Comerciante[/gold] por [gold]oro[/gold].",
   "POTION_SELL.sellable_tip.title": "Codiciada"
 }

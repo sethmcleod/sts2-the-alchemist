@@ -18,7 +18,7 @@ _(Disclaimer: This description was paid for by the Merchant.)_
 ## Content
 
 - 🐸 A new character meticulously designed to fit in with the rest of the game
-- ✨ 97 new cards, including 4 multiplayer cards and 2 full-art Ancient rewards
+- ✨ 90+ new cards, including 4 multiplayer cards and 2 full-art Ancient rewards
 - 💎 9 new relics
 - 🧪 6 new potions
 - 🪄 3 new enchantments
@@ -26,16 +26,6 @@ _(Disclaimer: This description was paid for by the Merchant.)_
 - 💬 Loads of dialog with Ancients and other characters
 - 🎨 Hand-drawn artwork for all cards, relics, potions, and icons _(WIP)_
 - 🌍 Translated into all 15 languages the game supports
-
-## Languages
-
-Every card, relic, potion, keyword, and line of dialog is translated into all 15
-languages the game supports: English, Chinese (Simplified), Chinese
-(Traditional), Japanese, Korean, Russian, Polish, Turkish, Thai, German, French,
-Italian, Portuguese (Brazil), Spanish (Spain), and Spanish (Latin America).
-
-Keywords follow the base game's own wording, so Poison, Regen, Block and the rest
-read exactly as they do everywhere else in the game.
 
 ## Mechanics and Keywords
 

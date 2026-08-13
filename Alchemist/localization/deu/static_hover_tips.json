@@ -1,12 +1,10 @@
 {
-  "ALCHEMIST-BREW.title": "Brauen",
   "ALCHEMIST-BREW.description": "Mit dieser Lagerfeuer-Option beschaffst du einen zufälligen [gold]Trank[/gold]. Es gibt 3 [gold]Tränke[/gold], die du nur so erhalten kannst.",
-  "ALCHEMIST-DEEP_BREATH.title": "Tief durchatmen",
-  "ALCHEMIST-DEEP_BREATH.description": "Der erhaltene [gold]Block[/gold] entspricht der Summe allen [gold]Gifts[/gold] auf Gegnern, dir und deinen Verbündeten.",
+  "ALCHEMIST-BREW.title": "Brauen",
+  "ALCHEMIST-LIFEBLOOD.description": "Der Schaden schließt das [gold]Erholen[/gold] ein, das du bereits hast.",
   "ALCHEMIST-LIFEBLOOD.title": "Lebensblut",
-  "ALCHEMIST-LIFEBLOOD.description": "Der Schaden schließt das [gold]Erholen[/gold] ein, das du durch diese Karte erhalten würdest.",
-  "ALCHEMIST-MASTERWORK.title": "Meisterwerk",
   "ALCHEMIST-MASTERWORK.description": "Diese Karte leuchtet [gold]golden[/gold], falls du in diesem Kampf fünf oder mehr Karten [gold]Verzaubert[/gold] hast, einschließlich der Karte, die du [gold]Infundieren[/gold] würdest.",
-  "ALCHEMIST-OVERFLOW.title": "Überlaufen",
-  "ALCHEMIST-OVERFLOW.description": "Trifft ALLE Gegner so oft, wie du [gold]Erholen[/gold] hast."
+  "ALCHEMIST-MASTERWORK.title": "Meisterwerk",
+  "ALCHEMIST-OVERFLOW.description": "Trifft ALLE Gegner so oft, wie du [gold]Erholen[/gold] hast, einschließlich der 1, die diese Karte gibt.",
+  "ALCHEMIST-OVERFLOW.title": "Überlaufen"
 }

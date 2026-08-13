@@ -31,7 +31,7 @@ ANY_TAG_RE = re.compile(r"\[/?[a-z_]+\]")
 # records them for the consistency check only, not as required wording.
 MOD_TERMS = {
     "reaction", "infuse", "gambit", "brew", "brew potions", "distillate", "distillates",
-    "distillate+", "distillates+", "foul vapor", "foul vapors", "toxic",
+    "distillate+", "distillates+", "toxic",
     "laced", "fuming", "exalted", "alchemist", "nigredo", "albedo",
     "citrinitas", "rubedo", "nigredo+", "albedo+", "citrinitas+", "rubedo+",
     "golden fruit", "unripe fruit", "work", "journal", "apothecary", "twelve",

@@ -14,8 +14,7 @@ public class Overdose : AlchemistCard
     {
         WithDamage(15, 5);
         WithVar("hpLoss", 4, 0);
-        WithVar("ReactionRegen", 2, 1);
-        WithTip(typeof(RegenPower));
+        WithVar("ReactionDraw", 1, 0);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -24,7 +23,6 @@ public class Overdose : AlchemistCard
         await LoseHp(choiceContext, DynamicVars["hpLoss"].IntValue);
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_blunt")).Execute(choiceContext);
         if (reacted)
-            await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature,
-                DynamicVars["ReactionRegen"].IntValue, Owner.Creature, this);
+            await CardPileCmd.Draw(choiceContext, DynamicVars["ReactionDraw"].IntValue, Owner);
     }
 }

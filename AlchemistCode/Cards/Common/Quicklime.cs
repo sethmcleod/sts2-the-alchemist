@@ -13,17 +13,16 @@ public class Quicklime : AlchemistCard
     public Quicklime() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(7, 2);
+        // The Block is the Reaction payoff now, so it lives in the card's own Block var rather than
+        // a separate one; that keeps Dexterity and the {Block:diff()} token working on it
         WithBlock(5, 2);
-        WithVar("ReactionBlock", 3, 0);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var reacted = ReactionActive;
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
-        await CommonActions.CardBlock(this, play);
         if (reacted)
-            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["ReactionBlock"].BaseValue,
-                ValueProp.Move, play);
+            await CommonActions.CardBlock(this, play);
     }
 }

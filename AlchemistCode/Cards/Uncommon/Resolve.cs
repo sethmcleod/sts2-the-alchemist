@@ -11,7 +11,7 @@ public class Resolve : AlchemistCard
     // Not for a bonus, but so the gold glow marks the turns the aura is live
     protected override bool IsGambitCard => true;
 
-    public Resolve() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Resolve() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Amount", 2, 1);
         WithTip(typeof(StrengthPower));

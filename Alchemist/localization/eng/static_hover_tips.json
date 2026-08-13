@@ -1,12 +1,10 @@
 {
-  "ALCHEMIST-BREW.title": "Brew",
   "ALCHEMIST-BREW.description": "This Rest Site option lets you procure a random [gold]Potion[/gold]. There are 3 [gold]Potions[/gold] that can only be obtained this way.",
-  "ALCHEMIST-DEEP_BREATH.title": "Deep Breath",
-  "ALCHEMIST-DEEP_BREATH.description": "[gold]Block[/gold] gained is equal to the sum of all [gold]Poison[/gold] across enemies, you, and your allies.",
+  "ALCHEMIST-BREW.title": "Brew",
+  "ALCHEMIST-LIFEBLOOD.description": "Damage includes the [gold]Regen[/gold] you already have.",
   "ALCHEMIST-LIFEBLOOD.title": "Lifeblood",
-  "ALCHEMIST-LIFEBLOOD.description": "Damage includes [gold]Regen[/gold] you would gain from this card.",
-  "ALCHEMIST-MASTERWORK.title": "Masterwork",
   "ALCHEMIST-MASTERWORK.description": "This card glows [gold]gold[/gold] if you have [gold]Enchanted[/gold] five or more cards this combat, including the one you would [gold]Infuse[/gold].",
-  "ALCHEMIST-OVERFLOW.title": "Overflow",
-  "ALCHEMIST-OVERFLOW.description": "Hits ALL enemies a number of times equal to your [gold]Regen[/gold]."
+  "ALCHEMIST-MASTERWORK.title": "Masterwork",
+  "ALCHEMIST-OVERFLOW.description": "Hits ALL enemies a number of times equal to your [gold]Regen[/gold], including the 1 this card grants.",
+  "ALCHEMIST-OVERFLOW.title": "Overflow"
 }

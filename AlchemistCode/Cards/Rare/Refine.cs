@@ -10,7 +10,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Refine : AlchemistCard
 {
-    public Refine() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public Refine() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithVar("times", 2, 1);
         WithTips(_ => Infusion.InfuseTips());

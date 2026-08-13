@@ -11,6 +11,6 @@
   "POTION_SELL.merchant_sell_4": "О-о, еще бурлит! Красота!",
   "POTION_SELL.merchant_sell_5": "Мои постоянные клиенты это мигом разберут.",
   "POTION_SELL.merchant_sell_6": "Свежие зелья всегда уходят быстро!",
-  "POTION_SELL.sellable_tip.description": "Это [gold]зелье[/gold] можно продать [blue]Торговцу[/blue] за [gold]золото[/gold].",
+  "POTION_SELL.sellable_tip.description": "Это [gold]зелье[/gold] можно продать [gold]Торговцу[/gold] за [gold]золото[/gold].",
   "POTION_SELL.sellable_tip.title": "Ходовое"
 }

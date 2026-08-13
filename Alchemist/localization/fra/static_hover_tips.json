@@ -1,12 +1,10 @@
 {
-  "ALCHEMIST-BREW.title": "Brassage",
   "ALCHEMIST-BREW.description": "Cette option de Site de repos vous permet d'obtenir une [gold]Potion[/gold] aléatoire. 3 [gold]Potions[/gold] ne peuvent être obtenues que de cette manière.",
-  "ALCHEMIST-DEEP_BREATH.title": "Grande inspiration",
-  "ALCHEMIST-DEEP_BREATH.description": "L'[gold]Armure[/gold] octroyée est égale à la somme du [gold]Poison[/gold] des ennemis, de vos alliés et du vôtre.",
+  "ALCHEMIST-BREW.title": "Brassage",
+  "ALCHEMIST-LIFEBLOOD.description": "Les dégâts incluent la [gold]Régénération[/gold] que vous avez déjà.",
   "ALCHEMIST-LIFEBLOOD.title": "Sang vital",
-  "ALCHEMIST-LIFEBLOOD.description": "Les dégâts incluent la [gold]Régénération[/gold] que cette carte vous octroie.",
-  "ALCHEMIST-MASTERWORK.title": "Chef-d'œuvre",
   "ALCHEMIST-MASTERWORK.description": "Cette carte brille en [gold]doré[/gold] si vous avez [gold]Envoûté[/gold] cinq cartes ou plus pendant ce combat, en comptant celle que vous alliez [gold]Infuser[/gold].",
-  "ALCHEMIST-OVERFLOW.title": "Débordement",
-  "ALCHEMIST-OVERFLOW.description": "Touche TOUS les ennemis un nombre de fois égal à votre [gold]Régénération[/gold]."
+  "ALCHEMIST-MASTERWORK.title": "Chef-d'œuvre",
+  "ALCHEMIST-OVERFLOW.description": "Touche TOUS les ennemis un nombre de fois égal à votre [gold]Régénération[/gold], en comptant le point que cette carte octroie.",
+  "ALCHEMIST-OVERFLOW.title": "Débordement"
 }

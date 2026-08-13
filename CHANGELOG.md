@@ -7,6 +7,103 @@ mod).
 
 ## [Unreleased]
 
+## [0.7.5] - 2026-08-13
+
+### Fixed
+
+- Fixed the Alchemist having no hitbox at Rest Sites, which stopped allies from targeting them with Mend in Multiplayer
+
+## [0.7.4] - 2026-08-12
+
+### Changed
+
+- Renamed the Coveted Potion tip to High Quality
+- Changed the Potion Sell Price setting: it now runs from 10% to 100% in steps of 10%
+
+### Fixed
+
+- Fixed unlimited Gold at the Merchant: he no longer buys back a Potion you bought from him at that same shop, and the sale price now follows any shop discount you have, such as The Courier
+
+## [0.7.3] - 2026-08-12
+
+### Changed
+
+- Reworked the Reaction (Exhaust) keyword: it now triggers if any card Exhausted this turn, instead of only the card you played directly before this one
+- Buffed Infuse keyword: Attacks now gain 2 Laced, increased from 1
+- Changed Unstable Compound card: it now has Ethereal instead of Exhaust
+- Change color of the word Merchant to be gold outside of epoch descriptions
+
+### Fixed
+
+- Fixed the Alchemist not always being targetable by the Mend rest site option in Multiplayer
+
+## [0.7.2] - 2026-08-11
+
+### Added
+
+- Added Macerate card: "Deal 5 (7) damage. Deals additional damage equal to your Poison."
+
+### Changed
+
+- Changed Sinter into a Common card
+- Changed Patient Strike into an Uncommon card
+- Changed Carapace into an Uncommon card. Retain cards no longer appear in the Common pool
+
+### Removed
+
+- Removed Aggravate card
+
+### Fixed
+
+- Fixed Eureka+ transforming a card into Distillate instead of Distillate+
+
+## [0.7.1] - 2026-08-11
+
+### Added
+
+- Added Virulence card: "Whenever you gain Poison, deal that much damage to ALL enemies."
+
+### Changed
+
+- Changed Reagent card and the Reactive power: both now read "the next card you play with a Reaction"
+- Changed Quintessence relic: it now reads "the first card you play with a Reaction"
+- Changed the Ferment keyword tip: it now says that playing the card resets it's fermentation
+- Changed the Reaction keyword tips to the base game's "If ..." phrasing, and they now say the matching card must be played in the same turn
+- Changed Heavy Hand card and power: both now read "apply an additional N", matching the base game's wording for extra debuff stacks
+- Changed Patient Strike into a Common card, and its damage for each turn fermented decreased from 6 (9) -> 4 (6)
+- Changed Froth into an Uncommon card
+- Nerfed Resolve card: cost increased from 1 -> 2
+- Nerfed Percolate card: cards drawn decreased from 3 (4) -> 2 (3)
+- Nerfed Quicklime card: it no longer gains Block unconditionally, and its Reaction (Skill) Block increased from 3 -> 5 (7)
+- Reworked Venom Trance into a Rare card: "Gain 30 Poison. Take an extra turn after this one. Exhaust."
+- Buffed Overflow card: it now gains 1 Regen first, so it is never a dead draw
+- Nerfed Lifeblood card: it no longer gains 2 Regen, and only scales off the Regen you already have
+- Nerfed Congeal card: Gambit Regen decreased from 3 (4) -> 2 (3)
+- Nerfed Poultice card: cost increased from 0 -> 1 (0), and its Regen no longer increases on upgrade
+- Reworked Overdose card: its Reaction (Exhaust) now draws 1 card instead of gaining 2 (3) Regen
+- Reworked Cauterize card: its Reaction (Attack) now deals 3 additional damage instead of gaining 1 Regen
+- Added Catalysis card: "The first time you trigger a Reaction each turn, draw 1 (2) cards."
+- Added Corrosive card: "Whenever you apply Weak or Vulnerable to an enemy, apply 1 (2) Poison to it."
+- Nerfed Infuse keyword: Attacks now gain 1 Laced, decreased from 2
+- Changed Prime card: its Reaction (Attack) now grants 2 additional Block instead of a second Infuse
+- Nerfed Refine card: cost increased from 0 -> 1
+- Nerfed Puncture card: Gambit Weak decreased from 2 -> 1
+- Nerfed Vivisect card: cards drawn decreased from 2 -> 1, and it no longer applies Weak when Enchanted
+- Changed the Ferment keyword: every Ferment card now peaks at 3 turns. Carapace and Sweat It Out decreased from 5 -> 3
+- Reworked Deep Breath into Anneal, a Common card: "Gain 6 Block. Gain 2 (1) Poison. Exhaust." It no longer Retains
+- Changed Sinter into an Uncommon card
+- Fixed the Lifeblood and Overflow hover tips: they now match what each card does after this release's Regen changes
+- Fixed Catalysis not drawing when its Reaction card resolved another card play inside its own
+- Reworked Fuming enchantment: playing the card now applies 1 Weak and 1 Vulnerable to a random enemy and gives you 1 Poison, instead of adding a Foul Vapor into your Hand
+- Reworked Vintage card: "Retain. Ferment (0/3). Gain 1 Energy and draw 1 card for each turn fermented. Exhaust." Cost decreased from 2 -> 1(0)
+
+### Removed
+
+- Removed Catalyze card
+- Removed Drip Feed card
+- Removed Bramble card
+- Removed Foul Vapor card
+
 ## [0.7.0] - 2026-08-11
 
 ### Added

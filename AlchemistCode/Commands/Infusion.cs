@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Alchemist.AlchemistCode.Cards;
-using Alchemist.AlchemistCode.Cards.Token;
 using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Enchantments;
 using MegaCrit.Sts2.Core.CardSelection;
@@ -50,13 +49,11 @@ public static class Infusion
     private const int FumingAmount = 1;
     private const int ExaltedAmount = 1;
 
-    // Take(1) keeps each enchantment to its own tip and drops the nested ones. Fuming's nested tip is the
-    // exception: the Foul Vapor it makes is a token the player has no other way to read, so it is added back
+    // Take(1) keeps each enchantment to its own tip and drops the nested ones
     public static IEnumerable<IHoverTip> InfuseTips() =>
         new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
             .Concat(HoverTipFactory.FromEnchantment<Laced>(LacedAmount).Take(1))
             .Concat(HoverTipFactory.FromEnchantment<Fuming>(FumingAmount).Take(1))
-            .Concat(new[] { HoverTipFactory.FromCard<FoulVapor>() })
             .Concat(HoverTipFactory.FromEnchantment<Exalted>(ExaltedAmount).Take(1));
 
     public static void RecordCombatEnchant(CardModel card) => EnchantedThisCombat.Add(card);

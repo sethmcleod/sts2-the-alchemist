@@ -11,6 +11,6 @@
   "POTION_SELL.merchant_sell_4": "Ooh, ça pétille encore — parfait !",
   "POTION_SELL.merchant_sell_5": "Mes habitués vont s'arracher ça.",
   "POTION_SELL.merchant_sell_6": "Les brassins frais partent toujours vite !",
-  "POTION_SELL.sellable_tip.description": "Cette [gold]Potion[/gold] peut être vendue au [blue]Marchand[/blue] contre des [gold]Pièces d'or[/gold].",
+  "POTION_SELL.sellable_tip.description": "Cette [gold]Potion[/gold] peut être vendue au [gold]Marchand[/gold] contre des [gold]Pièces d'or[/gold].",
   "POTION_SELL.sellable_tip.title": "Convoitée"
 }

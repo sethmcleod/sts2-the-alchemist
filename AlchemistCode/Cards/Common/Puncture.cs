@@ -14,7 +14,7 @@ public class Puncture : AlchemistCard
     {
         WithDamage(8, 2);
         WithPower<VulnerablePower>(1, 1);
-        WithVar("GambitWeak", 2, 0);
+        WithVar("GambitWeak", 1, 0);
         WithTip(typeof(WeakPower));
     }
 

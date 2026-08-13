@@ -11,6 +11,6 @@
   "POTION_SELL.merchant_sell_4": "おお、まだ泡立ってる。いいねぇ！",
   "POTION_SELL.merchant_sell_5": "常連がすぐに買っていくだろうよ。",
   "POTION_SELL.merchant_sell_6": "出来立ては、いつだって捌けが早いんだ！",
-  "POTION_SELL.sellable_tip.description": "この[gold]ポーション[/gold]1つを[blue]商人[/blue]に売却し、[gold]ゴールド[/gold]を得られる。",
+  "POTION_SELL.sellable_tip.description": "この[gold]ポーション[/gold]1つを[gold]商人[/gold]に売却し、[gold]ゴールド[/gold]を得られる。",
   "POTION_SELL.sellable_tip.title": "垂涎の的"
 }

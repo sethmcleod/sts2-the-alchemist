@@ -11,6 +11,6 @@
   "POTION_SELL.merchant_sell_4": "Ooh, hâlâ köpürüyor... güzel!",
   "POTION_SELL.merchant_sell_5": "Müdavimlerim bunları kapış kapış alır.",
   "POTION_SELL.merchant_sell_6": "Taze demlemeler her zaman hızlı satılır!",
-  "POTION_SELL.sellable_tip.description": "Bu [gold]İksir[/gold], [gold]Altın[/gold] karşılığında [blue]Tüccar[/blue]'a satılabilir.",
+  "POTION_SELL.sellable_tip.description": "Bu [gold]İksir[/gold], [gold]Altın[/gold] karşılığında [gold]Tüccar[/gold]'a satılabilir.",
   "POTION_SELL.sellable_tip.title": "Gözde"
 }
