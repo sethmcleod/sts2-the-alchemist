@@ -1,7 +1,4 @@
 {
-  "ALCHEMIST-BOTTLED_FURY_POWER.description": "Cuando uses una [gold]Poción[/gold], gana {Amount} de [gold]Fuerza[/gold] y {Amount} de [gold]Destreza[/gold].",
-  "ALCHEMIST-BOTTLED_FURY_POWER.smartDescription": "Cuando uses una [gold]Poción[/gold], gana {Amount} de [gold]Fuerza[/gold] y {Amount} de [gold]Destreza[/gold].",
-  "ALCHEMIST-BOTTLED_FURY_POWER.title": "Furia embotellada",
   "ALCHEMIST-CONTAGION_POWER.description": "Cuando recibas daño de [gold]Veneno[/gold], aplica esa misma cantidad de [gold]Veneno[/gold] a TODOS los enemigos.",
   "ALCHEMIST-CONTAGION_POWER.smartDescription": "Cuando recibas daño de [gold]Veneno[/gold], aplica esa misma cantidad de [gold]Veneno[/gold] a TODOS los enemigos.",
   "ALCHEMIST-CONTAGION_POWER.title": "Contagio",
@@ -32,9 +29,6 @@
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "Al comienzo de tu turno, gana {Amount} de [gold]Fuerza[/gold].\nAl final de tu turno, cúrate PV igual a la mitad de tu [gold]Veneno[/gold].",
   "ALCHEMIST-MERCURIAL_FORM_POWER.smartDescription": "Al comienzo de tu turno, gana {Amount} de [gold]Fuerza[/gold].\nAl final de tu turno, cúrate PV igual a la mitad de tu [gold]Veneno[/gold].",
   "ALCHEMIST-MERCURIAL_FORM_POWER.title": "Forma mercurial",
-  "ALCHEMIST-PRECIPITATE_POWER.description": "Conseguirás de nuevo la(s) próxima(s) {Amount} [gold]Poción(es)[/gold] que uses este turno.",
-  "ALCHEMIST-PRECIPITATE_POWER.smartDescription": "Conseguirás de nuevo la(s) próxima(s) {Amount} [gold]Poción(es)[/gold] que uses este turno.",
-  "ALCHEMIST-PRECIPITATE_POWER.title": "Precipitado",
   "ALCHEMIST-REFLUX_POWER.description": "Cuando otro jugador aplique un efecto negativo, aplica {Amount} de [gold]Veneno[/gold] a ese enemigo.",
   "ALCHEMIST-REFLUX_POWER.smartDescription": "Cuando otro jugador aplique un efecto negativo, aplica {Amount} de [gold]Veneno[/gold] a ese enemigo.",
   "ALCHEMIST-REFLUX_POWER.title": "Reflujo",
@@ -50,9 +44,6 @@
   "ALCHEMIST-SLAG_POWER.description": "Cuando [gold]Agotes[/gold] una carta, gana {Amount} de [gold]Bloqueo[/gold].",
   "ALCHEMIST-SLAG_POWER.smartDescription": "Cuando [gold]Agotes[/gold] una carta, gana {Amount} de [gold]Bloqueo[/gold].",
   "ALCHEMIST-SLAG_POWER.title": "Escoria",
-  "ALCHEMIST-SUFFUSE_POWER.description": "Mientras [gold]Gambito[/gold] esté activo, al comienzo de tu turno, TODOS los aliados consiguen una [gold]Poción[/gold] aleatoria.",
-  "ALCHEMIST-SUFFUSE_POWER.smartDescription": "Mientras [gold]Gambito[/gold] esté activo, al comienzo de tu turno, TODOS los aliados consiguen una [gold]Poción[/gold] aleatoria.",
-  "ALCHEMIST-SUFFUSE_POWER.title": "Difusión",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "Gana {Amount} de [gold]Fuerza[/gold] hasta el final de tu turno.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "Gana {Amount} de [gold]Fuerza[/gold] hasta el final de tu turno.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "Transmutar",
@@ -66,8 +57,5 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "este turno",
   "ALCHEMIST-VIRULENCE_POWER.description": "Cuando ganes [gold]Veneno[/gold], inflige esa misma cantidad de daño a TODOS los enemigos.",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "Cuando ganes [gold]Veneno[/gold], inflige esa misma cantidad de daño a TODOS los enemigos.",
-  "ALCHEMIST-VIRULENCE_POWER.title": "Virulencia",
-  "ALCHEMIST-WINDFALL_POWER.description": "Cuando consigas una [gold]Poción[/gold] durante el combate, roba {Amount} carta(s) y gana 1 de Energía.",
-  "ALCHEMIST-WINDFALL_POWER.smartDescription": "Cuando consigas una [gold]Poción[/gold] durante el combate, roba {Amount} {Amount:plural:carta|cartas} y gana 1 de Energía.",
-  "ALCHEMIST-WINDFALL_POWER.title": "Golpe de suerte"
+  "ALCHEMIST-VIRULENCE_POWER.title": "Virulencia"
 }

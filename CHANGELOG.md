@@ -10,18 +10,13 @@ mod).
 ### Added
 
 - Added Spike card, a starting card: "Deal 6 (8) damage. Apply 2 (3) Poison. Gain 1 Poison."
-- Added Flask card, a starting card: "Gain 4 (7) Block. The first time you play this each combat, procure a random Unstable Potion."
-- Added the Unstable keyword: an Unstable Potion is discarded at the end of combat
+- Added Antidote card, a starting card: "Gain 4 (7) Block. Gain 2 Antitoxin."
 - Added the Antitoxin power: it absorbs damage from Poison and does not expire at the end of your turn
 - Added the Antitoxin Capacity power: it raises how much Antitoxin you can hold, above the base of 20
 - Added Slake card: "Deal 8 (11) damage. Gain 3 (4) Antitoxin."
-- Added Tincture card: "Gain 2 Antitoxin. Gain 3 (4) additional Antitoxin for each Potion you have."
-- Added Heavy Dose card: "Deal 6 (9) damage. For each Potion you have, deal 3 additional damage and gain 1 Poison."
 - Added Taint card: "Apply 4 (6) Poison. Gain 1 Poison."
 - Added Bezoar relic: "Whenever you gain Poison, gain 1 Antitoxin."
 - Added Blight card: "Deal 5 (7) damage to ALL enemies. Apply 2 (3) Poison to ALL enemies."
-- Added Afterglow card: "Gain 1 Energy and draw 1 card for each Potion you have
-  used this combat. Exhaust."
 
 ### Changed
 
@@ -34,8 +29,10 @@ mod).
 - Changed the Potion Sell Price setting: it now runs from 10% to 100% in steps of 10%
 - Nerfed Infuse keyword: Attacks now gain 1 Laced, decreased from 2
 - Renamed the Fuming enchantment to Inured, and reworked it: playing the Skill now gains 1 Antitoxin, instead of applying Weak and Vulnerable to a random enemy and giving you Poison
+- Reworked Marsh Tonic potion: "Gain 5 Antitoxin and 3 Poison." It no longer grants Regen
+- Changed Potions procured during combat to no longer include those that can heal
 - Nerfed Laced enchantment: the card now also gains as much Poison as it applies.
-- Removed Plating from the deck. Vitrify, Sediment and Libation now grant Antitoxin when Enchanted
+- Removed Plating from the deck. Vitrify and Sediment now grant Antitoxin when Enchanted
 - Removed Regen from Cauterize, Congeal, Distillate and Amalgam
 - Removed the Gambit keyword. Cards no longer care about being at half HP or less
 - Reworked Circulation card: "Gain 2 Poison. Draw 3 (4) cards."
@@ -53,7 +50,6 @@ mod).
 - Changed Lash Out, Draining Strike and Transmute: their conditional bonuses are gone
 - Reworked Etch card: "Deal 16 (20) damage. Gain 2 Poison." It no longer ignores Block
 - Reworked Fever Pitch card: "At the start of your turn, if you have 10 or more Poison, draw 1 (2) cards."
-- Reworked Fresh Batch card: "Procure a random potion. Gain 6 (9) Block. Exhaust." Cost decreased from 2 -> 1
 - Reworked Gilded Kit relic: "At the start of each combat, gain 10 Antitoxin. You can Brew Potions at Rest Sites." It no longer grants Max HP when you use a Potion
 - Reworked Hemorrhage card: it now reads your Poison instead of your Regen, and deals 3 times that much damage
 - Reworked Lash Out card: it no longer gains Regen, and its damage decreased from 6 (8) -> 5 (7) for each hit
@@ -62,13 +58,14 @@ mod).
 - Reworked Overflow into a Skill: "Gain Antitoxin equal to your Poison. Exhaust." Cost decreased from 2 -> 1
 - Reworked Poultice card: "Gain 4 (5) Antitoxin. Exhaust a random card from your Hand." The upgrade now lets you choose the card instead of lowering the cost
 - Reworked Resolve card: "Gain 2 (3) Strength and 2 (3) Dexterity. Gain 3 Poison."
-- Reworked Suffuse card: "At the start of your turn, ALL allies procure a random Unstable Potion."
 - Reworked Transmute card: its Reaction (Exhaust) now draws 1 (2) cards instead of procuring a Potion
 - Reworked Twin Serpents card: "At the start of your turn, if your Antitoxin absorbed damage, gain 1 Energy." Cost is now 2 (1)
 - Reworked Weathered Kit relic: "At the start of each combat, gain 5 Antitoxin. You can Brew Potions at Rest Sites."
 
 ### Removed
 
+- Removed the Unstable keyword, and the potion archetype with it. Elixir is now the only card that makes a Potion, matching the base game, where Alchemize is the only one
+- Removed Afterglow, Bottled Fury, Fighting Spirits, Fresh Batch, Heavy Dose, Libation, Precipitate, Suffuse, Tincture, Volatile Mix and Windfall cards
 - Removed Prime card
 - Removed Lifeblood card
 - Removed Inversion card

@@ -91,12 +91,10 @@ COLORS = {
     "Lash Out": ("#5f011f", "#77828c", "TR", "Unique"),
     # Potion and buff skills
     "Congeal": ("#1d3f0e", "#0e7c7b", "BR", "Potion and buff skills"),
-    "Fresh Batch": ("#045062", "#8fe3c0", "BR", "Potion and buff skills"),
     "Transmute": ("#5f011f", "#e3b84a", "BR", "Potion and buff skills"),
     "Slag": ("#45293f", "#c98fd6", "R", "Unique"),
     # Antitoxin: the purple counterpart to the poison reds
     "Slake": ("#2f0170", "#8f6fd8", "TR", "Antitoxin"),
-    "Tincture": ("#2f0170", "#b89ae8", "BR", "Antitoxin"),
     # Poison attacks
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
@@ -136,20 +134,12 @@ COLORS = {
     "Needle Point": ("#5b3fc4", "#aeb4bc", "TR", "Enchanted payoffs: debuff attacks"),
     "Vivisect": ("#5b3fc4", "#d94f6a", "TR", "Enchanted payoffs: debuff attacks"),
     # Enchanted payoffs: Antitoxin
-    "Libation": ("#5b3fc4", "#23262e", "BR", "Enchanted payoffs: Antitoxin"),
     "Sediment": ("#5b3fc4", "#d9c89a", "R", "Enchanted payoffs: Antitoxin"),
     "Vitrify": ("#5b3fc4", "#48495f", "BR", "Enchanted payoffs: Antitoxin"),
     # Golden Touch (one-off)
     "Golden Touch": ("#5b3fc4", "#ffc832", "L", "Unique"),
     # Potion: attacks
-    "Fighting Spirits": ("#045062", "#bf8823", "TR", "Potion: attacks"),
-    "Volatile Mix": ("#045062", "#a55d1e", "TR", "Potion: attacks"),
-    "Heavy Dose": ("#045062", "#8f2f2f", "TR", "Potion: attacks"),
     # Potion: engines
-    "Bottled Fury": ("#045062", "#e58646", "R", "Potion: engines"),
-    "Precipitate": ("#045062", "#e1542b", "BR", "Potion: engines"),
-    "Windfall": ("#045062", "#c9dd52", "R", "Potion: engines"),
-    "Afterglow": ("#045062", "#f0c46a", "BR", "Potion: engines"),
     # Azoth (one-off)
     "Azoth": ("#1f1723", "#8a5f9e", "TR", "Unique"),
     # Fumigate (one-off)
@@ -199,7 +189,6 @@ COLORS = {
     # Reflux (one-off)
     "Reflux": ("#2563c4", "#178f5f", "BR", "Unique"),
     # Suffuse (one-off)
-    "Suffuse": ("#2563c4", "#7fd8b8", "R", "Unique"),
     # Desperation: powers
     "Fever Pitch": ("#240147", "#94101b", "R", "Desperation: powers"),
     "Resolve": ("#240147", "#e04a3c", "R", "Desperation: powers"),
@@ -215,7 +204,7 @@ COLORS = {
     # Spike (Basic): the starter dose, anchored on the Poison-attack red
     "Spike": ("#650101", "#c05fd8", "TR", "Unique"),
     # Flask (Basic): the starter brew, anchored on the potion teal
-    "Flask": ("#045062", "#d8b23a", "BR", "Unique"),
+    "Antidote": ("#045062", "#d8b23a", "BR", "Unique"),
     # Nigredo (token)
     # Albedo (token)
     # Rubedo (token)

@@ -1,7 +1,4 @@
 {
-  "ALCHEMIST-BOTTLED_FURY_POWER.description": "ทุกครั้งที่คุณใช้[gold]ขวดยา[/gold] ได้รับ {Amount} [gold]ความแข็งแรง[/gold] และ {Amount} [gold]ความชำนาญ[/gold]",
-  "ALCHEMIST-BOTTLED_FURY_POWER.smartDescription": "ทุกครั้งที่คุณใช้[gold]ขวดยา[/gold] ได้รับ {Amount} [gold]ความแข็งแรง[/gold] และ {Amount} [gold]ความชำนาญ[/gold]",
-  "ALCHEMIST-BOTTLED_FURY_POWER.title": "โทสะบรรจุขวด",
   "ALCHEMIST-CONTAGION_POWER.description": "ทุกครั้งที่คุณได้รับความเสียหายจาก[gold]พิษ[/gold] สร้าง[gold]พิษ[/gold]เท่ากับจำนวนนั้นใส่ศัตรูทั้งหมด",
   "ALCHEMIST-CONTAGION_POWER.smartDescription": "ทุกครั้งที่คุณได้รับความเสียหายจาก[gold]พิษ[/gold] สร้าง[gold]พิษ[/gold]เท่ากับจำนวนนั้นใส่ศัตรูทั้งหมด",
   "ALCHEMIST-CONTAGION_POWER.title": "การแพร่เชื้อ",
@@ -32,9 +29,6 @@
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "ตอนเริ่มต้นเทิร์น ได้รับ {Amount} [gold]ความแข็งแรง[/gold]\nตอนจบเทิร์น ฟื้นฟู HP เท่ากับครึ่งหนึ่งของ[gold]พิษ[/gold]ที่คุณมี",
   "ALCHEMIST-MERCURIAL_FORM_POWER.smartDescription": "ตอนเริ่มต้นเทิร์น ได้รับ {Amount} [gold]ความแข็งแรง[/gold]\nตอนจบเทิร์น ฟื้นฟู HP เท่ากับครึ่งหนึ่งของ[gold]พิษ[/gold]ที่คุณมี",
   "ALCHEMIST-MERCURIAL_FORM_POWER.title": "ร่างปรอท",
-  "ALCHEMIST-PRECIPITATE_POWER.description": "[gold]ขวดยา[/gold] {Amount} ขวดถัดไปที่คุณใช้ในเทิร์นนี้จะถูกจัดหามาอีกครั้ง",
-  "ALCHEMIST-PRECIPITATE_POWER.smartDescription": "[gold]ขวดยา[/gold] {Amount} ขวดถัดไปที่คุณใช้ในเทิร์นนี้จะถูกจัดหามาอีกครั้ง",
-  "ALCHEMIST-PRECIPITATE_POWER.title": "ตกตะกอน",
   "ALCHEMIST-REFLUX_POWER.description": "ทุกครั้งที่ผู้เล่นคนอื่นสร้างผลผิดปกติ สร้าง {Amount} [gold]พิษ[/gold] ใส่ศัตรูตัวนั้น",
   "ALCHEMIST-REFLUX_POWER.smartDescription": "ทุกครั้งที่ผู้เล่นคนอื่นสร้างผลผิดปกติ สร้าง {Amount} [gold]พิษ[/gold] ใส่ศัตรูตัวนั้น",
   "ALCHEMIST-REFLUX_POWER.title": "ไหลย้อนกลับ",
@@ -50,9 +44,6 @@
   "ALCHEMIST-SLAG_POWER.description": "ทุกครั้งที่คุณ[gold]สลาย[/gold]การ์ด ได้รับ {Amount} [gold]บล็อก[/gold]",
   "ALCHEMIST-SLAG_POWER.smartDescription": "ทุกครั้งที่คุณ[gold]สลาย[/gold]การ์ด ได้รับ {Amount} [gold]บล็อก[/gold]",
   "ALCHEMIST-SLAG_POWER.title": "ขี้แร่",
-  "ALCHEMIST-SUFFUSE_POWER.description": "ขณะที่[gold]เดิมพัน[/gold]ทำงาน ตอนเริ่มต้นเทิร์น พันธมิตรทั้งหมดจัดหา[gold]ขวดยา[/gold] 1 ขวดแบบสุ่ม",
-  "ALCHEMIST-SUFFUSE_POWER.smartDescription": "ขณะที่[gold]เดิมพัน[/gold]ทำงาน ตอนเริ่มต้นเทิร์น พันธมิตรทั้งหมดจัดหา[gold]ขวดยา[/gold] 1 ขวดแบบสุ่ม",
-  "ALCHEMIST-SUFFUSE_POWER.title": "แผ่ซ่าน",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "ได้รับ {Amount} [gold]ความแข็งแรง[/gold] จนจบเทิร์นของคุณ",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "ได้รับ {Amount} [gold]ความแข็งแรง[/gold] จนจบเทิร์นของคุณ",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "แปรธาตุ",
@@ -66,8 +57,5 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "เทิร์นนี้",
   "ALCHEMIST-VIRULENCE_POWER.description": "ทุกครั้งที่คุณได้รับ[gold]พิษ[/gold] สร้างความเสียหายเท่ากับจำนวนนั้นใส่ศัตรูทั้งหมด",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "ทุกครั้งที่คุณได้รับ[gold]พิษ[/gold] สร้างความเสียหายเท่ากับจำนวนนั้นใส่ศัตรูทั้งหมด",
-  "ALCHEMIST-VIRULENCE_POWER.title": "ฤทธิ์ร้าย",
-  "ALCHEMIST-WINDFALL_POWER.description": "ทุกครั้งที่คุณจัดหา[gold]ขวดยา[/gold]ระหว่างการต่อสู้ จั่วการ์ด {Amount} ใบ และได้รับพลังงาน 1",
-  "ALCHEMIST-WINDFALL_POWER.smartDescription": "ทุกครั้งที่คุณจัดหา[gold]ขวดยา[/gold]ระหว่างการต่อสู้ จั่วการ์ด {Amount} {Amount:plural:ใบ|ใบ} และได้รับพลังงาน 1",
-  "ALCHEMIST-WINDFALL_POWER.title": "ลาภลอย"
+  "ALCHEMIST-VIRULENCE_POWER.title": "ฤทธิ์ร้าย"
 }

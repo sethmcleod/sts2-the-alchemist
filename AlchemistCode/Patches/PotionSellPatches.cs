@@ -82,10 +82,7 @@ public static class PotionSellPatches
             || owner.GetRelic<WeatheredKit>() != null || owner.GetRelic<GildedKit>() != null;
     }
 
-    // An Unstable potion is swept at the end of combat, so it is worth nothing to the Merchant and must
-    // not carry the High Quality tip either
-    private static bool IsSellable(PotionModel potion) =>
-        SellingEnabledFor(potion.Owner) && !UnstablePotions.IsUnstable(potion);
+    private static bool IsSellable(PotionModel potion) => SellingEnabledFor(potion.Owner);
 
     // A Foul potion is sellable too: throwing it at the merchant already grants Gold, so a Sell button is the
     // same payout without the throw animation. Its Use button already reads "Throw". The Sell button only

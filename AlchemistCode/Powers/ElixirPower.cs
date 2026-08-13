@@ -18,8 +18,6 @@ public class ElixirPower : AlchemistPower
 
         Flash();
         for (var i = 0; i < Amount; i++)
-            await PotionCmd.TryToProcure(
-                PotionFactory.CreateRandomPotionInCombat(Owner.Player!, Owner.Player!.RunState.Rng.CombatPotionGeneration).ToMutable(),
-                Owner.Player!);
+            await Potions.Brewing.Produce(Owner.Player!, Owner.Player!.RunState.Rng.CombatPotionGeneration);
     }
 }

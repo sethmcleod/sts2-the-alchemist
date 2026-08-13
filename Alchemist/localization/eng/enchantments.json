@@ -1,8 +1,8 @@
 {
-  "ALCHEMIST-EXALTED.description": "When this card is played, gain [blue]{Amount}[/blue] [gold]Strength[/gold].",
+  "ALCHEMIST-EXALTED.description": "When this Power is played, gain [blue]{Amount}[/blue] [gold]Strength[/gold].",
   "ALCHEMIST-EXALTED.title": "Exalted",
-  "ALCHEMIST-FUMING.description": "When this card is played, apply [blue]{Amount}[/blue] [gold]Weak[/gold] and [blue]{Amount}[/blue] [gold]Vulnerable[/gold] to a random enemy. Gain [blue]{Amount}[/blue] [gold]Poison[/gold].",
-  "ALCHEMIST-FUMING.title": "Fuming",
-  "ALCHEMIST-LACED.description": "Whenever this card deals unblocked damage, apply [blue]{Amount}[/blue] [gold]Poison[/gold] and gain [blue]{Amount}[/blue] [gold]Poison[/gold].",
+  "ALCHEMIST-INURED.description": "When this Skill is played, gain [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
+  "ALCHEMIST-INURED.title": "Inured",
+  "ALCHEMIST-LACED.description": "Whenever this Attack deals unblocked damage, apply [blue]{Amount}[/blue] [gold]Poison[/gold] and gain [blue]{Amount}[/blue] [gold]Poison[/gold].",
   "ALCHEMIST-LACED.title": "Laced"
 }

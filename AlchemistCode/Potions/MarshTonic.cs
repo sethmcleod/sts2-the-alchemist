@@ -17,13 +17,13 @@ public class MarshTonic : AlchemistPotion
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[]
         {
-            HoverTipFactory.FromPower<RegenPower>(),
+            HoverTipFactory.FromPower<Powers.AntitoxinPower>(),
             HoverTipFactory.FromPower<PoisonPower>(),
         };
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, 3m, Owner.Creature, null);
-        await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, 3m, Owner.Creature, null);
+        await PowerCmd.Apply<Powers.AntitoxinPower>(choiceContext, Owner.Creature, 5m, Owner.Creature, null);
     }
 }

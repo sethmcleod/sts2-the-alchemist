@@ -1,7 +1,4 @@
 {
-  "ALCHEMIST-BOTTLED_FURY_POWER.description": "Ogni volta che usi una [gold]pozione[/gold], ottieni {Amount} di [gold]Forza[/gold] e {Amount} di [gold]Destrezza[/gold].",
-  "ALCHEMIST-BOTTLED_FURY_POWER.smartDescription": "Ogni volta che usi una [gold]pozione[/gold], ottieni {Amount} di [gold]Forza[/gold] e {Amount} di [gold]Destrezza[/gold].",
-  "ALCHEMIST-BOTTLED_FURY_POWER.title": "Furia in Bottiglia",
   "ALCHEMIST-CONTAGION_POWER.description": "Ogni volta che subisci danno da [gold]Veleno[/gold], applichi altrettanto [gold]Veleno[/gold] a TUTTI i nemici.",
   "ALCHEMIST-CONTAGION_POWER.smartDescription": "Ogni volta che subisci danno da [gold]Veleno[/gold], applichi altrettanto [gold]Veleno[/gold] a TUTTI i nemici.",
   "ALCHEMIST-CONTAGION_POWER.title": "Contagio",
@@ -32,9 +29,6 @@
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "All'inizio del tuo turno, ottieni {Amount} di [gold]Forza[/gold].\nAl termine del tuo turno, recuperi PV pari alla metà del tuo [gold]Veleno[/gold].",
   "ALCHEMIST-MERCURIAL_FORM_POWER.smartDescription": "All'inizio del tuo turno, ottieni {Amount} di [gold]Forza[/gold].\nAl termine del tuo turno, recuperi PV pari alla metà del tuo [gold]Veleno[/gold].",
   "ALCHEMIST-MERCURIAL_FORM_POWER.title": "Forma Mercuriale",
-  "ALCHEMIST-PRECIPITATE_POWER.description": "Le prossime {Amount} [gold]pozione/i[/gold] che usi in questo turno verranno ricevute di nuovo.",
-  "ALCHEMIST-PRECIPITATE_POWER.smartDescription": "Le prossime {Amount} [gold]pozione/i[/gold] che usi in questo turno verranno ricevute di nuovo.",
-  "ALCHEMIST-PRECIPITATE_POWER.title": "Precipitato",
   "ALCHEMIST-REFLUX_POWER.description": "Ogni volta che un altro giocatore applica un effetto negativo, applichi {Amount} di [gold]Veleno[/gold] a quel nemico.",
   "ALCHEMIST-REFLUX_POWER.smartDescription": "Ogni volta che un altro giocatore applica un effetto negativo, applichi {Amount} di [gold]Veleno[/gold] a quel nemico.",
   "ALCHEMIST-REFLUX_POWER.title": "Riflusso",
@@ -50,9 +44,6 @@
   "ALCHEMIST-SLAG_POWER.description": "Ogni volta che [gold]esaurisci[/gold] una carta, ottieni {Amount} di [gold]Blocco[/gold].",
   "ALCHEMIST-SLAG_POWER.smartDescription": "Ogni volta che [gold]esaurisci[/gold] una carta, ottieni {Amount} di [gold]Blocco[/gold].",
   "ALCHEMIST-SLAG_POWER.title": "Scoria",
-  "ALCHEMIST-SUFFUSE_POWER.description": "Mentre [gold]Azzardo[/gold] è attivo, all'inizio del tuo turno, TUTTI gli alleati ricevono una [gold]pozione[/gold] casuale.",
-  "ALCHEMIST-SUFFUSE_POWER.smartDescription": "Mentre [gold]Azzardo[/gold] è attivo, all'inizio del tuo turno, TUTTI gli alleati ricevono una [gold]pozione[/gold] casuale.",
-  "ALCHEMIST-SUFFUSE_POWER.title": "Pervasione",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "Ottieni {Amount} di [gold]Forza[/gold] fino al termine del tuo turno.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "Ottieni {Amount} di [gold]Forza[/gold] fino al termine del tuo turno.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "Trasmutazione",
@@ -66,8 +57,5 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "di questo turno",
   "ALCHEMIST-VIRULENCE_POWER.description": "Ogni volta che ottieni [gold]Veleno[/gold], infliggi altrettanto danno a TUTTI i nemici.",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "Ogni volta che ottieni [gold]Veleno[/gold], infliggi altrettanto danno a TUTTI i nemici.",
-  "ALCHEMIST-VIRULENCE_POWER.title": "Virulenza",
-  "ALCHEMIST-WINDFALL_POWER.description": "Ogni volta che ricevi una [gold]pozione[/gold] durante il combattimento, peschi {Amount} carta/e e ottieni 1 di Energia.",
-  "ALCHEMIST-WINDFALL_POWER.smartDescription": "Ogni volta che ricevi una [gold]pozione[/gold] durante il combattimento, peschi {Amount} {Amount:plural:carta|carte} e ottieni 1 di Energia.",
-  "ALCHEMIST-WINDFALL_POWER.title": "Manna"
+  "ALCHEMIST-VIRULENCE_POWER.title": "Virulenza"
 }

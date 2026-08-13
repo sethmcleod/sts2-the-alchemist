@@ -1,7 +1,4 @@
 {
-  "ALCHEMIST-BOTTLED_FURY_POWER.description": "Дает {Amount} [gold]силы[/gold] и {Amount} [gold]ловкости[/gold], когда вы используете [gold]зелье[/gold].",
-  "ALCHEMIST-BOTTLED_FURY_POWER.smartDescription": "Дает {Amount} [gold]силы[/gold] и {Amount} [gold]ловкости[/gold], когда вы используете [gold]зелье[/gold].",
-  "ALCHEMIST-BOTTLED_FURY_POWER.title": "Ярость в склянке",
   "ALCHEMIST-CONTAGION_POWER.description": "Когда вы получаете урон от [gold]яда[/gold], накладывает столько же [gold]яда[/gold] на ВСЕХ врагов.",
   "ALCHEMIST-CONTAGION_POWER.smartDescription": "Когда вы получаете урон от [gold]яда[/gold], накладывает столько же [gold]яда[/gold] на ВСЕХ врагов.",
   "ALCHEMIST-CONTAGION_POWER.title": "Зараза",
@@ -32,9 +29,6 @@
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "Дает {Amount} [gold]силы[/gold] в начале вашего хода.\nВ конце вашего хода восполняет ОЗ, равные половине вашего [gold]яда[/gold].",
   "ALCHEMIST-MERCURIAL_FORM_POWER.smartDescription": "Дает {Amount} [gold]силы[/gold] в начале вашего хода.\nВ конце вашего хода восполняет ОЗ, равные половине вашего [gold]яда[/gold].",
   "ALCHEMIST-MERCURIAL_FORM_POWER.title": "Ртутная форма",
-  "ALCHEMIST-PRECIPITATE_POWER.description": "Следующие {Amount} [gold]зелий[/gold], которые вы используете в этом ходу, будут выданы вам повторно.",
-  "ALCHEMIST-PRECIPITATE_POWER.smartDescription": "Следующие {Amount} [gold]зелий[/gold], которые вы используете в этом ходу, будут выданы вам повторно.",
-  "ALCHEMIST-PRECIPITATE_POWER.title": "Преципитат",
   "ALCHEMIST-REFLUX_POWER.description": "Когда другой игрок накладывает отрицательный эффект, накладывает {Amount} [gold]яда[/gold] на того же врага.",
   "ALCHEMIST-REFLUX_POWER.smartDescription": "Когда другой игрок накладывает отрицательный эффект, накладывает {Amount} [gold]яда[/gold] на того же врага.",
   "ALCHEMIST-REFLUX_POWER.title": "Рефлюкс",
@@ -50,9 +44,6 @@
   "ALCHEMIST-SLAG_POWER.description": "Когда одна из ваших карт [gold]сжигается[/gold], дает {Amount} [gold]защиты[/gold].",
   "ALCHEMIST-SLAG_POWER.smartDescription": "Когда одна из ваших карт [gold]сжигается[/gold], дает {Amount} [gold]защиты[/gold].",
   "ALCHEMIST-SLAG_POWER.title": "Шлак",
-  "ALCHEMIST-SUFFUSE_POWER.description": "Пока действует [gold]Гамбит[/gold], в начале вашего хода ВСЕ союзники получают случайное [gold]зелье[/gold].",
-  "ALCHEMIST-SUFFUSE_POWER.smartDescription": "Пока действует [gold]Гамбит[/gold], в начале вашего хода ВСЕ союзники получают случайное [gold]зелье[/gold].",
-  "ALCHEMIST-SUFFUSE_POWER.title": "Излияние",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "Дает {Amount} [gold]силы[/gold] до конца вашего хода.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "Дает {Amount} [gold]силы[/gold] до конца вашего хода.",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "Трансмутация",
@@ -66,8 +57,5 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "этого хода",
   "ALCHEMIST-VIRULENCE_POWER.description": "Когда вы получаете [gold]яд[/gold], наносит столько же урона ВСЕМ врагам.",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "Когда вы получаете [gold]яд[/gold], наносит столько же урона ВСЕМ врагам.",
-  "ALCHEMIST-VIRULENCE_POWER.title": "Вирулентность",
-  "ALCHEMIST-WINDFALL_POWER.description": "Когда вы получаете [gold]зелье[/gold] во время боя, вы добираете {Amount} карт(ы) и получаете 1 энергию.",
-  "ALCHEMIST-WINDFALL_POWER.smartDescription": "Когда вы получаете [gold]зелье[/gold] во время боя, вы добираете {Amount} {Amount:plural(ru):карту|карты|карт} и получаете 1 энергию.",
-  "ALCHEMIST-WINDFALL_POWER.title": "Барыш"
+  "ALCHEMIST-VIRULENCE_POWER.title": "Вирулентность"
 }

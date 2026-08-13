@@ -1,7 +1,4 @@
 {
-  "ALCHEMIST-BOTTLED_FURY_POWER.description": "[gold]ポーション[/gold]を1つ使用するたび、[gold]筋力[/gold]{Amount}と[gold]敏捷[/gold]{Amount}を得る。",
-  "ALCHEMIST-BOTTLED_FURY_POWER.smartDescription": "[gold]ポーション[/gold]を1つ使用するたび、[gold]筋力[/gold]{Amount}と[gold]敏捷[/gold]{Amount}を得る。",
-  "ALCHEMIST-BOTTLED_FURY_POWER.title": "瓶詰めの憤怒",
   "ALCHEMIST-CONTAGION_POWER.description": "[gold]毒[/gold]によるダメージを受けるたび、その値の[gold]毒[/gold]をすべての敵に付与する。",
   "ALCHEMIST-CONTAGION_POWER.smartDescription": "[gold]毒[/gold]によるダメージを受けるたび、その値の[gold]毒[/gold]をすべての敵に付与する。",
   "ALCHEMIST-CONTAGION_POWER.title": "伝染",
@@ -32,9 +29,6 @@
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "ターン開始時、[gold]筋力[/gold]{Amount}を得る。\nターン終了時、自身の[gold]毒[/gold]の半分に等しいHPを回復する。",
   "ALCHEMIST-MERCURIAL_FORM_POWER.smartDescription": "ターン開始時、[gold]筋力[/gold]{Amount}を得る。\nターン終了時、自身の[gold]毒[/gold]の半分に等しいHPを回復する。",
   "ALCHEMIST-MERCURIAL_FORM_POWER.title": "水銀化",
-  "ALCHEMIST-PRECIPITATE_POWER.description": "このターン、次に使用する[gold]ポーション[/gold]{Amount}個をもう一度入手する。",
-  "ALCHEMIST-PRECIPITATE_POWER.smartDescription": "このターン、次に使用する[gold]ポーション[/gold]{Amount}個をもう一度入手する。",
-  "ALCHEMIST-PRECIPITATE_POWER.title": "沈殿",
   "ALCHEMIST-REFLUX_POWER.description": "他のプレイヤーがデバフを付与するたび、その敵に[gold]毒[/gold]{Amount}を付与する。",
   "ALCHEMIST-REFLUX_POWER.smartDescription": "他のプレイヤーがデバフを付与するたび、その敵に[gold]毒[/gold]{Amount}を付与する。",
   "ALCHEMIST-REFLUX_POWER.title": "還流",
@@ -50,9 +44,6 @@
   "ALCHEMIST-SLAG_POWER.description": "カードを[gold]廃棄[/gold]するたび、{Amount}[gold]ブロック[/gold]を得る。",
   "ALCHEMIST-SLAG_POWER.smartDescription": "カードを[gold]廃棄[/gold]するたび、{Amount}[gold]ブロック[/gold]を得る。",
   "ALCHEMIST-SLAG_POWER.title": "鉱滓",
-  "ALCHEMIST-SUFFUSE_POWER.description": "[gold]背水の陣[/gold]が有効な間、ターン開始時、すべての味方がランダムな[gold]ポーション[/gold]を1つ入手する。",
-  "ALCHEMIST-SUFFUSE_POWER.smartDescription": "[gold]背水の陣[/gold]が有効な間、ターン開始時、すべての味方がランダムな[gold]ポーション[/gold]を1つ入手する。",
-  "ALCHEMIST-SUFFUSE_POWER.title": "充満",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.description": "ターン終了時まで[gold]筋力[/gold]{Amount}を得る。",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.smartDescription": "ターン終了時まで[gold]筋力[/gold]{Amount}を得る。",
   "ALCHEMIST-TRANSMUTE_STRENGTH_POWER.title": "錬成",
@@ -66,8 +57,5 @@
   "ALCHEMIST-UNSTABLE_COMPOUND_POWER.when_this_turn": "このターン",
   "ALCHEMIST-VIRULENCE_POWER.description": "[gold]毒[/gold]を得るたび、その値のダメージをすべての敵に与える。",
   "ALCHEMIST-VIRULENCE_POWER.smartDescription": "[gold]毒[/gold]を得るたび、その値のダメージをすべての敵に与える。",
-  "ALCHEMIST-VIRULENCE_POWER.title": "毒力",
-  "ALCHEMIST-WINDFALL_POWER.description": "戦闘中に[gold]ポーション[/gold]を1つ入手するたび、カードを{Amount}枚引き、エナジーを1得る。",
-  "ALCHEMIST-WINDFALL_POWER.smartDescription": "戦闘中に[gold]ポーション[/gold]を1つ入手するたび、カードを{Amount}{Amount:plural:枚|枚}引き、エナジーを1得る。",
-  "ALCHEMIST-WINDFALL_POWER.title": "棚ぼた"
+  "ALCHEMIST-VIRULENCE_POWER.title": "毒力"
 }

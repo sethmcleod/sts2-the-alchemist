@@ -23,7 +23,7 @@ public static class Infusion
     private static Type? EnchantTypeFor(CardModel card) => card.Type switch
     {
         CardType.Attack => typeof(Laced),
-        CardType.Skill => typeof(Fuming),
+        CardType.Skill => typeof(Inured),
         CardType.Power => typeof(Exalted),
         _ => null,
     };
@@ -46,14 +46,14 @@ public static class Infusion
     // The tips and the enchant share these, and FromEnchantment defaults to 1, so a tip that does not
     // pass one goes stale in silence
     private const int LacedAmount = 1;
-    private const int FumingAmount = 1;
+    private const int InuredAmount = 1;
     private const int ExaltedAmount = 1;
 
     // Take(1) keeps each enchantment to its own tip and drops the nested ones
     public static IEnumerable<IHoverTip> InfuseTips() =>
         new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
             .Concat(HoverTipFactory.FromEnchantment<Laced>(LacedAmount).Take(1))
-            .Concat(HoverTipFactory.FromEnchantment<Fuming>(FumingAmount).Take(1))
+            .Concat(HoverTipFactory.FromEnchantment<Inured>(InuredAmount).Take(1))
             .Concat(HoverTipFactory.FromEnchantment<Exalted>(ExaltedAmount).Take(1));
 
     public static void RecordCombatEnchant(CardModel card) => EnchantedThisCombat.Add(card);
@@ -160,7 +160,7 @@ public static class Infusion
                 TryEnchant<Laced>(card, LacedAmount);
                 break;
             case CardType.Skill:
-                TryEnchant<Fuming>(card, FumingAmount);
+                TryEnchant<Inured>(card, InuredAmount);
                 break;
             case CardType.Power:
                 TryEnchant<Exalted>(card, ExaltedAmount);
