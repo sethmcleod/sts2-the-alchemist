@@ -1,8 +1,4 @@
 {
-  "ALCHEMIST-EXALTED.description": "Al jugar esta carta, obtienes [blue]{Amount}[/blue] de [gold]fuerza[/gold].",
-  "ALCHEMIST-EXALTED.title": "Exaltación",
-  "ALCHEMIST-INURED.description": "Al jugar esta carta, aplicas [blue]{Amount}[/blue] de [gold]debilitamiento[/gold] y [blue]{Amount}[/blue] de [gold]vulnerabilidad[/gold] a un enemigo al azar. Obtienes [blue]{Amount}[/blue] de [gold]veneno[/gold].",
-  "ALCHEMIST-INURED.title": "Emanación",
   "ALCHEMIST-LACED.description": "Cuando esta carta inflige daño sin bloquear, aplicas [blue]{Amount}[/blue] de [gold]veneno[/gold].",
   "ALCHEMIST-LACED.title": "Adulteración"
 }

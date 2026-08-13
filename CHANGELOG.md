@@ -9,115 +9,27 @@ mod).
 
 ### Added
 
-- Added Spike card, a starting card: "Deal 6 (8) damage. Apply 2 (3) Poison. Gain 1 Poison."
-- Added Antidote card, a starting card: "Gain 4 (6) Block. Gain additional Block equal to your Poison."
-- Added the Antitoxin power: it absorbs damage from Poison and does not expire at the end of your turn
-- Added the Antitoxin Capacity power: it raises how much Antitoxin you can hold, above the base of 20
-- Added Slake card: "Deal 8 (11) damage. Gain 3 (4) Antitoxin."
-- Added Taint card: "Apply 4 (6) Poison. Gain 1 Poison."
+- Added Antitoxin Capacity power: it raises how much Antitoxin you can hold, above the base of 20
+- Added Antitoxin power: it absorbs damage from Poison and does not expire at the end of your turn
 - Added Bezoar relic: "Whenever you gain Poison, gain 1 Antitoxin."
-- Added Blight card: "Deal 5 (7) damage to ALL enemies. Apply 3 (4) Poison to ALL enemies."
-- Added Callus card: "Whenever you take Poison damage, gain 1 (2) Strength."
-- Added Draft card: "Gain 3 Poison. Draw 1 (2) cards. Exhaust."
-- Added Miasma card: "Apply 3 (4) Poison to ALL enemies. Gain 1 Poison."
-- Added Rot card: "At the end of your turn, apply Poison to ALL enemies equal to half your Poison."
-- Added Osmosis card: "Deal damage equal to your Poison. Exhaust."
-- Added Purge card: "Gain 3 (5) Antitoxin. Exhaust."
-- Added Immunize card: "Whenever you play a Skill, gain 1 (2) Antitoxin."
-- Added Crucible card: "Whenever your Antitoxin absorbs damage, deal that much damage to ALL enemies."
-- Added Deep Breath card: "Infuse a card in your Hand. Draw 1 (2) cards."
-- Added Alembic card: "Whenever you Enchant a card, gain 2 (3) Antitoxin."
-- Added Tempered card: "Gain 30 (35) Block. Gain 5 Poison. Exhaust."
-- Added Aqua Regia card: "Deal 20 (26) damage. Apply 4 (5) Poison."
-- Reworked Aureate card and renamed it Wormwood, the Ancient form of Spike: "Deal 6 (8) damage to ALL enemies. Apply 2 (3) Poison to ALL enemies. Gain 2 (3) Antitoxin."
-- Added Deflagrate card: "Deal 12 (16) damage to ALL enemies. Trigger Poison on ALL enemies. Exhaust."
-- Added Steep card: "Deal 8 (11) damage. Infuse a card in your Hand."
-- Added Ballast card: "Deal 7 (10) damage. Gain 7 (10) Block."
 
 ### Changed
 
-- Changed Golden Fruit card: it no longer heals 8 HP
-- Changed Hemorrhage card: cost is now 1, and it deals 2 (3) times your Poison in damage instead of 3 times
-- Changed Puncture card: it no longer applies Weak
-- Changed Reagent into a Common card
-- Changed Salve into an Uncommon card. Infuse no longer appears in the Common pool
-- Changed the Brew hover tip: it now also says you can sell Potions to the Merchant, which the Kit relics used to say themselves
-- Changed the Potion Sell Price setting: it now runs from 10% to 100% in steps of 10%
-- Nerfed Infuse keyword: Attacks now gain 1 Laced, decreased from 2
-- Renamed the Fuming enchantment to Inured, and reworked it: playing the Skill now gains 1 Antitoxin, instead of applying Weak and Vulnerable to a random enemy and giving you Poison
-- Reworked Marsh Tonic potion: "Gain 5 Antitoxin and 3 Poison." It no longer grants Regen
+- Added, removed, reworked and renamed cards throughout the deck. Each card has been balanced against similar base game cards where possible
 - Changed Potions procured during combat to no longer include those that can heal
-- Nerfed Laced enchantment: the card now also gains as much Poison as it applies.
-- Removed Plating from the deck. Vitrify and Sediment now grant Antitoxin when Enchanted
-- Removed Regen from Cauterize, Congeal, Distillate and Amalgam
-- Removed the Gambit keyword. Cards no longer care about being at half HP or less
-- Reworked Circulation card: "Gain 2 Poison. Draw 3 (4) cards."
-- Reworked Decoction card: it no longer procures a Potion
-- Removed the Reaction keyword. Cards no longer care about what you played before them
-- Reworked Fumigate card: "Deal 4 (6) damage to ALL enemies. Apply 1 Weak to ALL enemies." It no longer scales off your Exhaust Pile or Exhausts itself
-- Renamed Slag to Warded, and reworked it: "Whenever your Antitoxin absorbs damage, gain 3 (4) Block." It no longer triggers on Exhaust
-- Renamed Sinter to Rectify, and reworked it: "Draw 2 (3) cards. Discard 1 card." It no longer grants Block or reads your Exhaust Pile
-- Nerfed Spatter card: hits decreased from 4 -> 3
-- Buffed Percolate card: cost decreased from 1 -> 0
-- Changed Taint card: cost decreased from 1 -> 0, and Poison applied decreased from 4 (6) -> 3 (5)
-- Reworked Cauterize card: "Deal 7 (10) damage. Lose 2 Poison."
-- Reworked Quicklime card: "Deal 6 (8) damage. Gain 4 (6) Block." The Block is no longer conditional
-- Nerfed Overdose card: damage decreased from 15 (20) -> 12 (16), and it no longer draws a card
-- Nerfed Siphon card: damage decreased from 8 (12) -> 6 (9)
-- Nerfed Puncture card: damage decreased from 8 (10) -> 7 (9)
-- Nerfed Etch card: damage decreased from 16 (20) -> 14 (18)
-- Reworked Corrosive card: "Whenever an enemy takes Poison damage, apply 1 (2) Poison to it."
-- Changed Rolling Boil into a Rare card
-- Changed Crucible into an Uncommon card
-- Reworked Azoth card: "Deal 8 (11) damage. Trigger your Poison twice."
-- Reworked White Heat card: "Lose all Antitoxin. Deal that much damage to ALL enemies. Exhaust."
-- Reworked Transmute card: "Infuse 2 cards in your Hand. Exhaust."
-- Reworked Congeal card: "Gain 5 (7) Block. Draw 1 card."
-- Reworked Fever Pitch card and renamed it Saturate: "At the start of your turn, Infuse 1 (2) cards in your Hand."
-- Reworked Rot card: "Whenever an enemy dies, apply 5 (8) Poison to ALL enemies." Its cost decreased from 2 (1) -> 0
-- Nerfed Virulence card: cost increased from 2 (1) -> 3 (2)
-- Fixed Flare Up card: its Poison trigger is now seen by Corrosive and the other Poison payoffs
-- Buffed Inoculate card: Block increased from 7 (10) -> 9 (12), and HP lost decreased from 3 -> 2
-- Buffed Bitter Draught card: Energy gained increased from 2 (3) -> 3 (4)
-- Buffed Unstable Compound card: it no longer has Ethereal
-- Buffed Hone card: it no longer Exhausts
-- Reworked Backdraft card: it now hits twice if the enemy has Poison
-- Changed Corrode card: cost increased from 2 -> 3, Poison applied decreased from 6 -> 5 (6), and its conditional bonus is gone
-- Changed Decoction card: it now always Infuses a card in your Hand
-- Changed Lash Out, Draining Strike and Transmute: their conditional bonuses are gone
-- Reworked Etch card: "Deal 16 (20) damage. Gain 2 Poison." It no longer ignores Block
-- Reworked Fever Pitch card: "At the start of your turn, if you have 10 or more Poison, draw 1 (2) cards."
-- Reworked Gilded Kit relic: "At the start of each combat, gain 10 Antitoxin. You can Brew Potions at Rest Sites." It no longer grants Max HP when you use a Potion
-- Reworked Hemorrhage card: it now reads your Poison instead of your Regen, and deals 3 times that much damage
-- Reworked Lash Out card: it no longer gains Regen, and its damage decreased from 6 (8) -> 5 (7) for each hit
-- Reworked Mercurial Form card: at the end of your turn it now gains Antitoxin equal to half your Poison, instead of healing that much HP
-- Reworked Neurotoxin card: it now applies 5 (7) Poison instead of Stunning the enemy
-- Reworked Overflow into a Skill: "Gain Antitoxin equal to your Poison. Exhaust." Cost decreased from 2 -> 1
-- Reworked Poultice card: "Gain 4 (5) Antitoxin. Exhaust a random card from your Hand." The upgrade now lets you choose the card instead of lowering the cost
-- Reworked Resolve card: "Gain 2 (3) Strength and 2 (3) Dexterity. Gain 3 Poison."
-- Reworked Transmute card: its Reaction (Exhaust) now draws 1 (2) cards instead of procuring a Potion
-- Reworked Twin Serpents card: "At the start of your turn, if your Antitoxin absorbed damage, gain 1 Energy." Cost is now 2 (1)
-- Reworked Weathered Kit relic: "At the start of each combat, gain 5 Antitoxin. You can Brew Potions at Rest Sites."
+- Changed Brew hover tip: it now also says you can sell Potions to the Merchant, which the Kit relics used to say themselves
+- Reworked Laced echantment: now applies 1 Poison and gains 1 Poison
+- Reworked Fuming enchantment to Dosed: now gains 1 Antitoxin, instead of applying Weak and Vulnerable to a random enemy and giving you Poison
 
 ### Removed
 
-- Removed the Unstable keyword, and the potion archetype with it. Elixir is now the only card that makes a Potion, matching the base game, where Alchemize is the only one
-- Removed Afterglow, Bottled Fury, Fighting Spirits, Fresh Batch, Heavy Dose, Libation, Precipitate, Suffuse, Tincture, Volatile Mix and Windfall cards
-- Removed Prime card
-- Removed Ichor card
-- Removed Lifeblood card
-- Removed Inversion card
-- Removed Nigredo, and the Albedo, Citrinitas and Rubedo tokens
-- Removed Reagent card
-- Removed Catalysis card
-- Removed Venom Trance card. Extra turns are now only on the Quicksilver Draught potion
-- Removed Hemorrhage and Backdraft cards
-- Removed Quench card
+- Removed Gambit keyword. Cards no longer care about being at half HP or less
+- Removed Reaction keyword. Cards no longer care about what you played before them
+- Removed Unstable keyword, and the potion archetype with it. Elixir is now the only card that makes a Potion
 - Removed Quintessence relic
 
 ### Fixed
 
-- Fixed unlimited Gold at the Merchant: he no longer buys back a Potion you bought from him at that same shop, and the sale price now follows any shop discount you have, such as The Courier
 - Fixed Fighting Spirits counting Potions used by other players in Multiplayer, not only your own
 
 ## [0.7.3] - 2026-08-12
@@ -157,7 +69,7 @@ mod).
 
 ### Added
 
-- Added Virulence card: "Whenever you gain Poison, deal that much damage to ALL enemies."
+- Added Share The Pain card: "Whenever you gain Poison, deal that much damage to ALL enemies."
 
 ### Changed
 
@@ -367,7 +279,7 @@ mod).
 - Reworked Transmute card: "Gain Strength this turn equal to your Poison. Reaction (Exhaust): Procure a random Common (Uncommon) potion."
 - Reworked Corrode card: "Apply 6 Poison and 1 (2) Weak to ALL enemies. Reaction (Skill): Apply 2 additional Poison."
 - Reworked Bramble card: "Gain 3 (4) Thorns. Reaction (Block): Gain 2 additional Thorns."
-- Reworked Decoction card: "Exhaust 1 card. Procure a random potion. Reaction (Enchanted): Infuse a card in your Hand."
+- Reworked Trade Up card: "Exhaust 1 card. Procure a random potion. Reaction (Enchanted): Infuse a card in your Hand."
 - Reworked Lash Out card: "Deal 6 (8) damage 3 times. Gambit: Hits an additional time. Reaction (Power): Hits an additional time."
 - Reworked Drip Feed card: "At the start of your turn, gain 1 (2) Regen. Reaction (Skill): Gain 1 additional Regen."
 - Renamed Delayed Reaction to Unstable Compound, reusing the name from the removed Attack
@@ -397,7 +309,7 @@ mod).
 ### Added
 
 - Added Overdose card: "Lose 4 HP. Deal 15 (20) damage. Gambit: Gain 2 Regen." Replaces Last Resort
-- Added Percolate card: "At the start of your next turn, draw 3 (4) additional cards." Replaces Double Dose
+- Added Sleep On It card: "At the start of your next turn, draw 3 (4) additional cards." Replaces Double Dose
 - Added Quicklime card: "Deal 7 (9) damage. Gain 5 (7) Block. Seep: Gain 3 Block." Replaces Tinge
 - Added Froth card: "Retain. Ferment. Deal 4 (6) damage. Hits an additional time for each turn fermented." Replaces Full Measure
 
@@ -408,8 +320,8 @@ mod).
 - Reworked Resolve card: "While Gambit is active, you have 2 (3) additional Strength and Dexterity." Cost decreased from 3(2) -> 1
 - Reworked Bloom card into Bramble: "Gain 3 (4) Thorns. Gambit: Gain 2 additional Thorns."
 - Reworked Fester card: "Apply 2 (3) Poison. Gain 2 Poison. Poison is triggered against the enemy 1 (2) additional time(s) next turn." Cost decreased from 1 -> 0
-- Reworked Vivisect card: "Deal 7 (10) damage. Draw 2 cards. If this card is Enchanted, apply 1 (2) Weak and 1 (2) Vulnerable."
-- Reworked Circulation card: "Gain 2 (4) Regen. Lose half your Regen, then draw that many cards."
+- Reworked Deep Cut card: "Deal 7 (10) damage. Draw 2 cards. If this card is Enchanted, apply 1 (2) Weak and 1 (2) Vulnerable."
+- Reworked Blood Rush card: "Gain 2 (4) Regen. Lose half your Regen, then draw that many cards."
 - Changed Carapace card: Block increased from 6 -> 10, Block per turn fermented changed from 6(9) -> 4(6)
 - Buffed Sweat It Out card: it now Ferments, gaining 1 additional Poison for each turn fermented
 - Changed Fumigate card: damage is now 1(2), and it keeps Exhaust when Upgraded
@@ -563,7 +475,7 @@ mod).
   Exhaust Pile
 - Buffed Quicksilver Draught potion: it no longer skips the card draw on the
   extra turn; it now simply grants an extra turn
-- Reworked Fumigate card: "Deal 1 (2) damage to ALL enemies. Deals 1 additional
+- Reworked Smoke Out card: "Deal 1 (2) damage to ALL enemies. Deals 1 additional
   damage for each card in your Exhaust Pile. Gain 3 (2) Poison." -> "Deal 1
   damage to ALL enemies. Hits an additional time for each card in your Exhaust
   Pile. Exhaust. (Doesn't Exhaust)". It shows the live hit bonus in green

@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Alchemist.AlchemistCode.Commands;
 
 // A trigger has to land with the shape PoisonPower ticks with: unblockable and unpowered, with no
-// dealer and no card. Antitoxin, Callus, Corrosive, Warded, Crucible and Contagion all read that
+// dealer and no card. Antitoxin, Callus, Grudge, Warded, PassItOn and Contagion all read that
 // shape, so a trigger that carries a dealer or a card source is invisible to every one of them
 public static class PoisonTrigger
 {

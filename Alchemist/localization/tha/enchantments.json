@@ -1,8 +1,4 @@
 {
-  "ALCHEMIST-EXALTED.description": "เมื่อการ์ดนี้ถูกเล่น ได้รับ [blue]{Amount}[/blue] [gold]ความแข็งแรง[/gold]",
-  "ALCHEMIST-EXALTED.title": "สูงส่ง",
-  "ALCHEMIST-INURED.description": "เมื่อการ์ดนี้ถูกเล่น สร้าง [blue]{Amount}[/blue] [gold]ความอ่อนแอ[/gold] และ [blue]{Amount}[/blue] [gold]จุดอ่อน[/gold] ใส่ศัตรู 1 ตัวแบบสุ่ม ได้รับ [blue]{Amount}[/blue] [gold]พิษ[/gold]",
-  "ALCHEMIST-INURED.title": "คุกรุ่น",
   "ALCHEMIST-LACED.description": "ทุกครั้งที่การ์ดนี้สร้างความเสียหายที่บล็อกไม่ได้ สร้าง [blue]{Amount}[/blue] [gold]พิษ[/gold]",
   "ALCHEMIST-LACED.title": "เจือพิษ"
 }

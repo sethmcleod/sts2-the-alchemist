@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// BRANCH-SPECIFIC, like Compat/GameCompat.cs and Compat/SepsisPowerCompat.cs. An override cannot be
+// BRANCH-SPECIFIC, like Compat/GameCompat.cs and Compat/WeakSpotPowerCompat.cs. An override cannot be
 // routed through a wrapper, so the one override whose signature differs between the game branches
 // lives here. Its logic stays in Powers/AntitoxinPower.cs, which is identical on both branches.
 //

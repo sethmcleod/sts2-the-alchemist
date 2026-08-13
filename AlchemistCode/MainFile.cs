@@ -59,7 +59,7 @@ public partial class MainFile : Node
 
         try
         {
-            HealthBarForecastRegistry.Register<Powers.UnstableCompoundForecast>(ModId, "unstable_compound");
+            HealthBarForecastRegistry.Register<Powers.SlowBurnForecast>(ModId, "unstable_compound");
         }
         catch (System.Exception e)
         {

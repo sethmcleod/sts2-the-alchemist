@@ -1,8 +1,4 @@
 {
-  "ALCHEMIST-EXALTED.description": "Gdy ta karta zostanie zagrana, zyskaj [blue]{Amount}[/blue] pkt. [gold]Siły[/gold].",
-  "ALCHEMIST-EXALTED.title": "Egzaltacja",
-  "ALCHEMIST-INURED.description": "Gdy ta karta zostanie zagrana, nałóż [blue]{Amount}[/blue] pkt. [gold]Słabości[/gold] i [blue]{Amount}[/blue] pkt. [gold]Wrażliwości[/gold] na losowego przeciwnika. Zyskaj [blue]{Amount}[/blue] pkt. [gold]Trucizny[/gold].",
-  "ALCHEMIST-INURED.title": "Wyziew",
   "ALCHEMIST-LACED.description": "Kiedykolwiek ta karta zadaje niezablokowane obrażenia, nałóż [blue]{Amount}[/blue] pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-LACED.title": "Jad"
 }

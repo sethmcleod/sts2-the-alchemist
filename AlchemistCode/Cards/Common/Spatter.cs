@@ -17,7 +17,7 @@ public class Spatter : AlchemistCard
     }
 
     // Deliberately no per-hit Poison of its own: that would trigger a Poison-on-apply effect such as
-    // Sediment once per hit. The many small hits already make this a strong Laced target
+    // Harden once per hit. The many small hits already make this a strong Laced target
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;

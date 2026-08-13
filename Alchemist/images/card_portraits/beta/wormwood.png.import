@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mhsjo2b0rhph"
-path="res://.godot/imported/aureate.png-2017ea93d4d0789e11b98418766bcc0c.ctex"
+path="res://.godot/imported/wormwood.png-fbde06b1a8199634a4f364c23f602351.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/aureate.png"
-dest_files=["res://.godot/imported/aureate.png-2017ea93d4d0789e11b98418766bcc0c.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/wormwood.png"
+dest_files=["res://.godot/imported/wormwood.png-fbde06b1a8199634a4f364c23f602351.ctex"]
 
 [params]
 
