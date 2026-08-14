@@ -21,7 +21,7 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         modifiedAmount = amount;
         if (canonicalPower is not AntitoxinPower || amount <= 0) return false;
 
-        var room = AntitoxinPower.MaxFor(target) - target.GetPowerAmount<AntitoxinPower>();
+        var room = AntitoxinPower.BaseMax - target.GetPowerAmount<AntitoxinPower>();
         if (amount <= room) return false;
 
         modifiedAmount = Math.Max(0, room);

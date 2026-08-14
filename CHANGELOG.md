@@ -9,7 +9,7 @@ mod).
 
 ### Added
 
-- Added Antitoxin: it absorbs damage you would take from Poison
+- Added Antitoxin: it absorbs damage you would take from Poison, up to a maximum of 15
 - Added Bottoms Up card: "Whenever you gain Poison, ALL other players gain that much Block."
 - Added Free Samples card: "ALL other players Infuse 2 (3) cards in their Hand. Draw 2 cards."
 - Added new animations to the character model: attack, heavy attack and cast
@@ -43,6 +43,8 @@ mod).
 - Fixed Orobas dialogue that named the removed Nigredo and Albedo cards
 - Fixed Masterwork not Exhausting on the play that meets its condition
 - Fixed Golden Touch, Weak Spot, Grudge and Rot affecting other players in Multiplayer
+- Fixed Snake Tail preventing deaths that Poison did not cause
+- Fixed Gold Leaf potion being able to appear from in-combat potion generation, like Alchemize
 
 ## [0.7.3] - 2026-08-12
 

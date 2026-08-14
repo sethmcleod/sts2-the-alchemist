@@ -1,3 +1,6 @@
+using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Hooks;
+using System;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,9 +16,20 @@ public class Recoil : AlchemistCard
         WithKeyword(CardKeyword.Exhaust);
     }
 
-    // The Block this gains lands before the hit, so the preview has to include it
-    private int RawDamage =>
-        (Owner?.Creature.Block ?? 0) + (IsMutable ? DynamicVars.Block.IntValue : 0);
+    // The Block this gains lands before the hit, so the preview has to include it. GainBlock runs
+    // Hook.ModifyBlock on the way in, so the preview has to run it too or Dexterity is missing
+    private int RawDamage
+    {
+        get
+        {
+            var held = Owner?.Creature.Block ?? 0;
+            if (!IsMutable || Owner?.Creature is not { } creature) return held;
+            var gain = (decimal)DynamicVars.Block.IntValue;
+            if ((CombatState ?? creature.CombatState) is { } combat)
+                gain = Hook.ModifyBlock(combat, creature, gain, ValueProp.Move, this, null, out _);
+            return held + (int)Math.Max(gain, 0m);
+        }
+    }
 
     protected override int? RawFormulaDamagePreview => RawDamage > 0 ? RawDamage : null;
 

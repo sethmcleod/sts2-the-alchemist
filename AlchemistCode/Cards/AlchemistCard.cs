@@ -86,9 +86,14 @@ public abstract class AlchemistCard : ConstructedCardModel
         GameCompat.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
 
+    // Laced keys on IsPoweredAttack, so a card that deals its damage Unpowered can carry Laced without
+    // it ever firing. Those cards keep their own impact rather than showing a splat that does nothing
+    protected internal virtual bool DealsUnpoweredDamage => false;
+
     // Laced hits land as a green splat instead of the card's own impact. Play time only, because
     // Enchantment is live on the mutable combat instance
-    protected string HitVfx(string vfx) => Enchantment is Laced ? "vfx/vfx_slime_impact" : vfx;
+    protected string HitVfx(string vfx) =>
+        Enchantment is Laced && !DealsUnpoweredDamage ? "vfx/vfx_slime_impact" : vfx;
 
     // The green splash the base game pairs with an on-hit Poison apply, see DeadlyPoison
     protected static void PoisonSplash(Creature? target)
@@ -122,7 +127,10 @@ public abstract class AlchemistCard : ConstructedCardModel
             if (RawFormulaDamagePreview is not { } raw) return null;
             if (Owner?.Creature is not { } dealer) return null;
             if ((CombatState ?? dealer.CombatState) is not { } combat) return null;
-            var total = GameCompat.ModifyDamage(Owner.RunState, combat, null, dealer, raw, ValueProp.Move,
+            // Must carry the same props the attack does, or Strength and Vulnerable inflate the
+            // previewed number on a card whose real hit ignores them
+            var props = DealsUnpoweredDamage ? ValueProp.Move | ValueProp.Unpowered : ValueProp.Move;
+            var total = GameCompat.ModifyDamage(Owner.RunState, combat, null, dealer, raw, props,
                 this, null, ModifyDamageHookType.All, CardPreviewMode.MultiCreatureTargeting, out _);
             return (int)Math.Max(total, 0m);
         }

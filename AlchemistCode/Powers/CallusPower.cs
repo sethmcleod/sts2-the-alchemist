@@ -17,13 +17,11 @@ public class CallusPower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<StrengthPower>() };
 
-    // A Poison tick is the only damage that arrives unblockable and unpowered with no dealer and no card
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target != Owner || dealer != null || cardSource != null) return;
-        if (!props.HasFlag(ValueProp.Unblockable) || !props.HasFlag(ValueProp.Unpowered)) return;
-        if (result.UnblockedDamage <= 0) return;
+        if (target != Owner || result.UnblockedDamage <= 0) return;
+        if (!AntitoxinRules.IsPoisonTick(Owner, result.UnblockedDamage, props, dealer, cardSource)) return;
         Flash();
         await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, Amount, Owner, null);
     }

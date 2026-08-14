@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Powers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,12 +50,14 @@ public static class Infusion
     private const int DosedAmount = 1;
     private const int PotentAmount = 1;
 
-    // Take(1) keeps each enchantment to its own tip and drops the nested ones
+    // Take(1) keeps each enchantment's own tip and drops its extras, which is where Dosed explains
+    // Antitoxin. The power is invisible so there is no icon to hover either, so it is added back once
     public static IEnumerable<IHoverTip> InfuseTips() =>
         new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
             .Concat(HoverTipFactory.FromEnchantment<Laced>(LacedAmount).Take(1))
             .Concat(HoverTipFactory.FromEnchantment<Dosed>(DosedAmount).Take(1))
-            .Concat(HoverTipFactory.FromEnchantment<Potent>(PotentAmount).Take(1));
+            .Concat(HoverTipFactory.FromEnchantment<Potent>(PotentAmount).Take(1))
+            .Append(HoverTipFactory.FromPower<AntitoxinPower>());
 
     public static void RecordCombatEnchant(CardModel card) => EnchantedThisCombat.Add(card);
 

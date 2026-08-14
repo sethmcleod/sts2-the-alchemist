@@ -35,7 +35,6 @@ public static class AntitoxinBarPatches
         public Control Foreground = null!;
         public NinePatchRect? Incoming;
         public Label Text = null!;
-        public float FullWidth;
         public int LastKnown;
     }
 
@@ -106,11 +105,14 @@ public static class AntitoxinBarPatches
     private static readonly AccessTools.FieldRef<NCreatureStateDisplay, NPowerContainer> PowersRef =
         AccessTools.FieldRefAccess<NCreatureStateDisplay, NPowerContainer>("_powerContainer");
 
+    private static readonly AccessTools.FieldRef<NPowerContainer, Vector2?> PowerOriginRef =
+        AccessTools.FieldRefAccess<NPowerContainer, Vector2?>("_originalPosition");
+
     private static readonly ConditionalWeakTable<NPowerContainer, object> Shifted = new();
 
-    // Done here rather than in _Ready because HpBarContainer has no size until the first layout pass, so
-    // reading it early shifts the icons by the gap alone. Moving them by bar height + gap preserves the
-    // spacing the game normally leaves between the health bar and the icons
+    // Called from Refresh, not _Ready: HpBarContainer has no size until the first layout pass.
+    // UpdatePositions rebuilds Position from the cached _originalPosition on every power Add and Remove,
+    // so the cached origin has to move too or the row snaps back the first time a power lands
     private static void ShiftPowersOnce(NHealthBar bar, float barHeight)
     {
         if (barHeight <= 0f) return;
@@ -120,7 +122,10 @@ public static class AntitoxinBarPatches
         if (PowersRef(display) is not { } powers) return;
         if (Shifted.TryGetValue(powers, out _)) return;
         Shifted.Add(powers, new object());
-        powers.Position += new Vector2(0f, barHeight + Gap);
+
+        var offset = new Vector2(0f, barHeight + Gap);
+        powers.Position += offset;
+        if (PowerOriginRef(powers) is { } origin) PowerOriginRef(powers) = origin + offset;
     }
 
     [HarmonyPatch(typeof(NHealthBar), nameof(NHealthBar.RefreshValues))]
@@ -147,7 +152,7 @@ public static class AntitoxinBarPatches
             // The real bar shrinks its foreground with a negative OffsetRight, so this matches it
             var full = parts.Root.GetNodeOrNull<Control>("HpForegroundContainer")?.Size.X ?? hp.Size.X;
             var current = inCombat ? live : parts.LastKnown;
-            var max = AntitoxinPower.MaxFor(creature);
+            var max = AntitoxinPower.BaseMax;
             var ratio = max > 0 ? Mathf.Clamp((float)current / max, 0f, 1f) : 0f;
             // What the next Poison tick will spend. Amount, not CalculateTotalDamageNextTurn, because
             // that already runs through Antitoxin's own reduction and so reports what gets past it

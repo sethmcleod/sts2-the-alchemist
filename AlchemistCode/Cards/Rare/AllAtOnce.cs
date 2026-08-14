@@ -10,6 +10,8 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class AllAtOnce : AlchemistCard
 {
+    protected internal override bool DealsUnpoweredDamage => true;
+
     protected override bool HasEnergyCostX => true;
 
     public AllAtOnce() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)

@@ -1,5 +1,9 @@
 using System;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -32,11 +36,23 @@ public class SnakeTail : AlchemistRelic
         }
     }
 
-    // Only the lethal poison tick at turn start, before the poison decrements. Other deaths resolve normally
+    // ShouldDieLate is not told what dealt the damage, so the incoming hit is classified here first.
+    // Holding Poison is not enough on its own: the relic only answers for a Poison death
+    private bool _poisonTickInFlight;
+
+    public override Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target,
+        decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    {
+        if (target == Owner.Creature)
+            _poisonTickInFlight =
+                AntitoxinRules.IsPoisonTick(target, amount, props, dealer, cardSource);
+        return Task.CompletedTask;
+    }
+
     public override bool ShouldDieLate(Creature creature)
     {
         if (creature != Owner.Creature || _used) return true;
-        return creature.GetPowerAmount<PoisonPower>() <= 0;
+        return !_poisonTickInFlight;
     }
 
     public override async Task AfterPreventingDeath(Creature creature)

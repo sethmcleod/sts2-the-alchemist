@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Entities.RestSite;
 using Alchemist.AlchemistCode.Powers;
-using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 
 namespace Alchemist.AlchemistCode.Relics;

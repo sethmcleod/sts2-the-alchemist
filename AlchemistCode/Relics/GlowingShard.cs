@@ -26,10 +26,10 @@ public class GlowingShard : AlchemistRelic
     {
         if (amount <= 0m || power is not PoisonPower || power.Owner != Owner.Creature) return;
         if (Owner.Creature.CombatState is not { } combat) return;
-        var enemies = combat.GetOpponentsOf(Owner.Creature).Where(e => e.IsAlive).ToList();
+        var enemies = combat.GetOpponentsOf(Owner.Creature).Where(e => e.IsHittable).ToList();
         if (enemies.Count == 0) return;
         Flash();
-        var target = Owner.RunState.Rng.CombatTargets.NextItem(enemies);
+        if (Owner.RunState.Rng.CombatTargets.NextItem(enemies) is not { } target) return;
         await PowerCmd.Apply<PoisonPower>(choiceContext, target, Poison, Owner.Creature, null);
     }
 }

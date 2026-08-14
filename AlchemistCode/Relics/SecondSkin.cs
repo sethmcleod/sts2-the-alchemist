@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using MegaCrit.Sts2.Core.Commands;
+using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -19,15 +20,14 @@ public class SecondSkin : AlchemistRelic
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
-    // A Poison tick is the only damage that arrives unblockable and unpowered with no dealer and no
-    // card. Antitoxin reduces that damage before this runs, so a fully absorbed tick pays nothing here
-    // and Warded covers it instead
+    // Antitoxin reduces the tick before this runs, so a fully absorbed tick pays nothing here and
+    // Warded covers it instead
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target != Owner.Creature || dealer != null || cardSource != null) return;
-        if (!props.HasFlag(ValueProp.Unblockable) || !props.HasFlag(ValueProp.Unpowered)) return;
-        if (result.UnblockedDamage <= 0) return;
+        if (target != Owner.Creature || result.UnblockedDamage <= 0) return;
+        if (!AntitoxinRules.IsPoisonTick(Owner.Creature, result.UnblockedDamage, props, dealer, cardSource))
+            return;
         Flash();
         await CreatureCmd.GainBlock(Owner.Creature, Block, ValueProp.Unpowered, null);
     }

@@ -9,6 +9,8 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class WhiteHeat : AlchemistCard
 {
+    protected internal override bool DealsUnpoweredDamage => true;
+
     public WhiteHeat() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
     {
         WithKeyword(CardKeyword.Exhaust, UpgradeType.Remove);

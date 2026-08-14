@@ -8,7 +8,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Corrode : AlchemistCard
 {
-    public Corrode() : base(3, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Corrode() : base(3, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
     {
         WithPower<PoisonPower>(5, 1);
         WithPower<WeakPower>(1, 1);

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byvwrwd7hwgay"
-path="res://.godot/imported/strain.png-683f6eb51894ffc649ec265a8bf7430b.ctex"
+path="res://.godot/imported/strain.png-41fae1f398cd0948e1652c11a6cd6d8a.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Alchemist/images/card_portraits/beta/strain.png"
-dest_files=["res://.godot/imported/strain.png-683f6eb51894ffc649ec265a8bf7430b.ctex"]
+dest_files=["res://.godot/imported/strain.png-41fae1f398cd0948e1652c11a6cd6d8a.ctex"]
 
 [params]
 

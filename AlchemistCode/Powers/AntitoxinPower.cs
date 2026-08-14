@@ -20,11 +20,8 @@ namespace Alchemist.AlchemistCode.Powers;
 // per-turn absorb record live in AntitoxinRules, which exists even when this power does not.
 public partial class AntitoxinPower : AlchemistPower
 {
-    // Raised by granting AntitoxinCapacityPower; AntitoxinRules is what enforces the result
-    public const int BaseMax = 20;
-
-    public static int MaxFor(Creature creature) =>
-        BaseMax + creature.GetPowerAmount<AntitoxinCapacityPower>();
+    // AntitoxinRules is what enforces this ceiling
+    public const int BaseMax = 15;
 
     // Written by Absorb, spent by BeforeDamageReceived. This is safe even though Absorb also runs for
     // damage previews: CreatureCmd.Damage calls Hook.ModifyDamage and Hook.BeforeDamageReceived back to
