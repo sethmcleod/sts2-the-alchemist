@@ -13,10 +13,11 @@
 ## Playstyle
 
 - **Antitoxin**: A reserve that absorbs the damage Poison would deal to you. It
-  caps at 9 and persists across turns. Anything past the cap becomes Block, so a
-  full reserve is never wasted.
-- **Payoffs**: Several cards trigger when Antitoxin absorbs Poison damage,
-  fueling Strength, Block, Energy, or damage to enemies.
+  persists across turns, up to a limit. Once the reserve is full, any more you
+  gain becomes Block.
+- **Absorbing pays off**: Taking Poison damage is not just a cost. Several cards
+  reward it, turning the Poison you absorb into Strength, Block, Energy or damage
+  to every enemy.
 - **Ferment**: These effects grow in potency for every turn the card stays in
   your hand. However if you Retain them past their peak, they spoil into Toxic
   cards.
@@ -27,7 +28,7 @@
   There are 3 new potions that can only be obtained this way.
 - **_Sell Potions!_**: Due to the quality and potency of these brews, the
   Merchant is willing to buy potions from you, offering Gold based on the
-  rarity!
+  rarity.
 
 ## Disclaimer
 
