@@ -23,10 +23,8 @@ public partial class AntitoxinPower : AlchemistPower
     // AntitoxinRules is what enforces this ceiling
     public const int BaseMax = 9;
 
-    // Written by Absorb, spent by BeforeDamageReceived. This is safe even though Absorb also runs for
-    // damage previews: CreatureCmd.Damage calls Hook.ModifyDamage and Hook.BeforeDamageReceived back to
-    // back with nothing in between, so a value left behind by a preview is always overwritten by the
-    // real call before it can be spent.
+    // Written by Absorb, spent by BeforeDamageReceived. Absorb clears it on every pass, so it only
+    // ever holds a value for the one hit that just passed the Poison tick test
     private int _pendingSpend;
 
     public override PowerType Type => PowerType.Buff;
@@ -50,6 +48,10 @@ public partial class AntitoxinPower : AlchemistPower
     internal decimal Absorb(Creature? target, decimal amount, ValueProp props, Creature? dealer,
         CardModel? cardSource)
     {
+        // Cleared on EVERY pass, including the rejects. This hook runs for all damage the owner
+        // takes, and the Poison forecast runs it without ever reaching BeforeDamageReceived, so a
+        // value left set by a reject would be spent on whatever landed next, such as an enemy attack
+        _pendingSpend = 0;
         if (!IsPoisonTick(target, amount, props, dealer, cardSource))
             return 0m;
 
@@ -67,7 +69,10 @@ public partial class AntitoxinPower : AlchemistPower
     public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (!IsPoisonTick(target, amount, props, dealer, cardSource)) return;
+        // Deliberately not re-running IsPoisonTick: this hook is handed the amount AFTER
+        // ModifyDamage, so a fully absorbed tick arrives as 0 and would fail the predicate's own
+        // amount test. Absorb already vetted the hit, so a non-zero _pendingSpend is the proof
+        if (target != Owner) return;
 
         var spend = _pendingSpend;
         _pendingSpend = 0;
