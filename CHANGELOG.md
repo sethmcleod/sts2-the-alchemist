@@ -9,35 +9,33 @@ mod).
 
 ### Added
 
-- Added Antitoxin bar below HP bar: it absorbs damage you would take from Poison
-- Added Bottoms Up multiplayer card: "Whenever you gain Poison, ALL other players gain that much Block."
-- Added Free Samples multiplayer card,: "ALL other players Infuse 2 (3) cards in their Hand. Draw 2 cards."
+- Added Antitoxin: it absorbs damage you would take from Poison
+- Added Bottoms Up card: "Whenever you gain Poison, ALL other players gain that much Block."
+- Added Free Samples card: "ALL other players Infuse 2 (3) cards in their Hand. Draw 2 cards."
 - Added new animations to the character model: attack, heavy attack and cast
 - Added Spare Dose relic: "Whenever you gain Poison, gain 1 Antitoxin."
 
 ### Changed
 
-- Added, removed, reworked and renamed cards throughout the deck. Each card has been balanced against similar base game cards where possible
-- Changed Brew hover tip: it now also says you can sell Potions to the Merchant, which the Kit relics used to say themselves
-- Changed Gilded Kit to come from the event pool, like the other characters' upgraded starter relics
-- Changed Potions procured during combat to no longer include those that can heal
-- Changed Snake Tail into a Rare relic
-- Reworked Fuming enchantment to Dosed: now gains 1 Antitoxin, instead of applying Weak and Vulnerable to a random enemy and giving you Poison
-- Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy."
-- Reworked Laced echantment: now applies 1 Poison and gains 1 Poison
+- Added, removed, reworked and renamed many cards to be more aligned with the base game
+- Reworked Fuming enchantment into Dosed: now gains 1 Antitoxin when played
+- Reworked Laced echantment: now applies 1 Poison and gains 1 Poison when played
 - Reworked Marsh Tonic potion: "Gain 10 Antitoxin."
-- Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block." It no longer grants Regen, which the deck no longer uses
-- Updated map drawing ink colour to be purple for the Alchemist
+- Changed Snake Tail into a Rare relic
+- Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy."
+- Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block."
+- Updated map drawing ink colour to be purple
 
 ### Removed
 
-- Removed Gambit keyword. Cards no longer care about being at half HP or less
-- Removed Reaction keyword. Cards no longer care about what you played before them
-- Removed Unstable keyword, and the potion archetype with it. Elixir is now the only card that makes a Potion
+- Removed Gambit keyword
+- Removed Reaction keyword
+- Removed Unstable keyword, and the potion archetype with it. Elixir is now the only card that makes potions
 - Removed Quintessence relic
 
 ### Fixed
 
+- Fixed Gilded Kit not being in the event pool, like the other characters' upgraded starter relics
 - Fixed Fighting Spirits counting Potions used by other players in Multiplayer, not only your own
 - Fixed Orobas dialogue that named the removed Nigredo and Albedo cards
 
