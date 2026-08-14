@@ -70,7 +70,7 @@ public class Alchemist : PlaceholderCharacterModel
     // Built by hand because BaseLib's SetupAnimationState registers no heavyAttack or PowerUp
     public override CreatureAnimator SetupCustomAnimationStates(MegaSprite controller)
     {
-        AlchemistVisuals.StartBlinking(controller);
+        AlchemistVisuals.StartIdleFlourishes(controller);
 
         var idle = new AnimState(AlchemistVisuals.IdleAnimation, isLooping: true);
         AnimState Once(string? name) =>
@@ -98,7 +98,21 @@ public class Alchemist : PlaceholderCharacterModel
         animator.AddAnyState("heavyAttack", heavy);
         animator.AddAnyState("PowerUp", cast);
         animator.AddAnyState("Relaxed", relaxed);
+        AddNearDeath(animator, idle);
         return animator;
+    }
+
+    // 0.111.0 adds a low HP idle. The public branch names no trigger for it, thus the state goes in
+    // only when the game has one and the character otherwise keeps the ordinary idle. Reflection
+    // rather than a version check, because the trigger appearing is the thing that matters
+    private static void AddNearDeath(CreatureAnimator animator, AnimState idle)
+    {
+        if (AlchemistVisuals.NearDeathAnimation is not { } nearDeath) return;
+        if (AlchemistVisuals.NearDeathTrigger is not { } trigger) return;
+
+        var state = new AnimState(nearDeath, isLooping: true);
+        state.AddBranch("Idle", idle);
+        animator.AddAnyState(trigger, state);
     }
 
     public override Control CustomIcon

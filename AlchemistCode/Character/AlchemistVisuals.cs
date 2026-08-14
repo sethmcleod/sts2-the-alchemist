@@ -1,6 +1,8 @@
 using Alchemist.AlchemistCode.Compat;
+using System.Reflection;
 using BaseLib.Extensions;
 using Godot;
+using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
@@ -33,20 +35,28 @@ internal static class AlchemistVisuals
     private const string CastAnimationLeaf = "cast";
     private const string DeathAnimationLeaf = "die";
     private const string RelaxedAnimationLeaf = "relaxed_loop";
+    private const string NearDeathAnimationLeaf = "near_death_loop";
+    private const string ShineAnimationLeaf = "shine";
 
     // The idle holds track 0. A second track plays the blink over it, thus the eyes keep their own
     // clock and never lock to the loop of the idle. Vantom and LagavulinMatriarch layer this way
     private const int BlinkTrack = 1;
 
-    // Spine plays a queue, and the eyes stop when it empties. The queue must thus outlast any
-    // fight: 400 blinks at a mean gap of 6 seconds cover about 40 minutes. The game makes the
-    // visuals again for each combat, thus the queue starts over every time
-    private const int QueuedBlinks = 400;
+    // The gem on the staff shines on a third track, thus the eyes, the staff and the body each
+    // keep a clock of their own
+    private const int ShineTrack = 2;
+
+    // Spine plays a queue, and a track stops when its queue empties. Each queue must thus outlast
+    // any fight: 400 entries at a mean gap of 6 seconds cover about 40 minutes. The game makes the
+    // visuals again for each combat, thus both queues start over every time
+    private const int QueuedLoops = 400;
     private const float MinBlinkGap = 3f;
     private const float MaxBlinkGap = 9f;
+    private const float MinShineGap = 7f;
+    private const float MaxShineGap = 9f;
 
-    // A private generator, thus the blink times never draw from the seeded run of the game
-    private static readonly Random BlinkRng = new();
+    // A private generator, thus these times never draw from the seeded run of the game
+    private static readonly Random FlourishRng = new();
 
     /// <summary>
     /// The idle animation, read from the skeleton. Spine puts the name of the folder that holds an
@@ -78,6 +88,40 @@ internal static class AlchemistVisuals
     /// fires the "Relaxed" trigger, so it stays dormant until MegaCrit starts using it.
     /// </summary>
     public static string? RelaxedAnimation { get; private set; }
+
+    /// <summary>The low HP idle, or null if the skeleton holds none.</summary>
+    public static string? NearDeathAnimation { get; private set; }
+
+    /// <summary>The shine on the staff gem, or null if the skeleton holds none.</summary>
+    public static string? ShineAnimation { get; private set; }
+
+    /// <summary>
+    /// The trigger the game raises at low HP, or null on a build that raises none.
+    /// </summary>
+    /// <remarks>
+    /// The low HP idle arrived in 0.111.0. The public branch at the time of writing is 0.110.1 and
+    /// its CreatureAnimator names only Idle, Attack, PowerUp, Cast, Dead, Hit and Revive, thus
+    /// there is nothing to hang the animation on and the character keeps the ordinary idle. Reading
+    /// the constants rather than the version means the animation starts working on the build that
+    /// adds the trigger, whatever that build calls itself.
+    /// </remarks>
+    public static string? NearDeathTrigger { get; } = FindNearDeathTrigger();
+
+    private static string? FindNearDeathTrigger()
+    {
+        foreach (var field in typeof(CreatureAnimator).GetFields(BindingFlags.Public | BindingFlags.Static))
+        {
+            if (field.FieldType != typeof(string)) continue;
+
+            var name = field.Name;
+            if (!name.Contains("nearDeath", StringComparison.OrdinalIgnoreCase)
+                && !name.Contains("lowHp", StringComparison.OrdinalIgnoreCase)) continue;
+
+            if (field.GetValue(null) is string trigger) return trigger;
+        }
+
+        return null;
+    }
 
     // How high the model stands on screen, from the feet to the top of the art. This is near the
     // height of the ironclad (1185 units at 0.28 scale). The scale comes from the skeleton at run
@@ -158,6 +202,8 @@ internal static class AlchemistVisuals
         CastAnimation = SpineModel.ResolveAnimation(data, CastAnimationLeaf);
         DeathAnimation = SpineModel.ResolveAnimation(data, DeathAnimationLeaf);
         RelaxedAnimation = SpineModel.ResolveAnimation(data, RelaxedAnimationLeaf);
+        NearDeathAnimation = SpineModel.ResolveAnimation(data, NearDeathAnimationLeaf);
+        ShineAnimation = SpineModel.ResolveAnimation(data, ShineAnimationLeaf);
 
         if (BlinkAnimation == null)
             MainFile.Logger.Info("The Alchemist skeleton holds no blink animation. The eyes stay open.");
@@ -167,36 +213,41 @@ internal static class AlchemistVisuals
     }
 
     /// <summary>
-    /// Queues the blinks on their own track, each one after a random wait.
+    /// Queues the blink and the shine on their own tracks, each entry after a random wait.
     /// </summary>
     /// <remarks>
     /// The skeleton of a SpineSprite loads over several frames, thus the animation state can be
     /// absent when the game builds the animator. RunWhenSpineReady waits for it.
     /// </remarks>
-    public static void StartBlinking(MegaSprite sprite)
+    public static void StartIdleFlourishes(MegaSprite sprite)
     {
-        if (BlinkAnimation == null) return;
+        if (BlinkAnimation == null && ShineAnimation == null) return;
         if (sprite.BoundObject is not Node host) return;
 
-        host.RunWhenSpineReady(sprite, QueueBlinks);
+        host.RunWhenSpineReady(sprite, state =>
+        {
+            QueueFlourish(state, BlinkAnimation, BlinkTrack, MinBlinkGap, MaxBlinkGap);
+            QueueFlourish(state, ShineAnimation, ShineTrack, MinShineGap, MaxShineGap);
+        });
     }
 
-    private static void QueueBlinks(MegaAnimationState state)
+    private static void QueueFlourish(MegaAnimationState state, string? animation, int track,
+        float minGap, float maxGap)
     {
-        if (BlinkAnimation is not { } blink) return;
+        if (animation == null) return;
 
-        var blinkLength = 0f;
-        for (var i = 0; i < QueuedBlinks; i++)
+        var length = 0f;
+        for (var i = 0; i < QueuedLoops; i++)
         {
-            var gap = MinBlinkGap + (float)BlinkRng.NextDouble() * (MaxBlinkGap - MinBlinkGap);
+            var gap = minGap + (float)FlourishRng.NextDouble() * (maxGap - minGap);
 
             // Spine counts the delay from the start of the entry before, thus each wait must also
-            // carry the length of the blink. The first entry counts from now
-            var delay = i == 0 ? gap : blinkLength + gap;
+            // carry the length of the animation. The first entry counts from now
+            var delay = i == 0 ? gap : length + gap;
 
-            var length = GameCompat.QueueBlink(state, blink, delay, BlinkTrack);
+            var played = GameCompat.QueueBlink(state, animation, delay, track);
 
-            if (i == 0) blinkLength = length;
+            if (i == 0) length = played;
         }
     }
 }
