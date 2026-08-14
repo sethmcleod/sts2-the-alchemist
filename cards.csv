@@ -1,8 +1,8 @@
 Card,Rarity,Type,Cost,Description
 Air It Out,Common,Attack,1,Deal 7 (10) damage. Lose 2 Poison.
 All At Once,Rare,Attack,X,Lose all Poison. Deal that much damage to ALL enemies X (+1) times. Exhaust.
-Antidote,Basic,Skill,0,Gain 4 (6) Block. Gain additional Block equal to your Poison.
-Backfire,Common,Attack,2,Deal 14 (18) damage. Gain 2 Poison.
+Antidote,Basic,Skill,1,Gain 2 Antitoxin. Draw 1 (2) cards.
+Backfire,Common,Attack,2,Deal 17 (22) damage. Gain 2 Poison.
 Bestow,"Uncommon, Multiplayer",Skill,1 (0),Infuse a random card in another player's Hand. Draw 1 card.
 Bitter Draught,Uncommon,Skill,1,Gain 3 (4) Energy. Gain 2 (3) Poison. Exhaust.
 Blood Rush,Uncommon,Skill,1,Gain 2 Poison. Draw 3 (4) cards.
@@ -10,8 +10,8 @@ Boil Down,Rare,Skill,2,Transform any number of cards in your Hand into Distillat
 Bottoms Up,"Rare, Multiplayer",Power,2 (1),"Whenever you gain Poison, ALL other players gain that much Block."
 Callus,Uncommon,Power,1,"Whenever you take Poison damage, gain 1 (2) Strength."
 Chain Reaction,Rare,Attack,3,Deal 12 (16) damage to ALL enemies. Trigger Poison on ALL enemies. Exhaust.
-Cheap Cover,Common,Skill,0,Gain 6 Block. Gain 2 (1) Poison. Exhaust.
-Congeal,Common,Skill,1,Gain 5 (7) Block. Draw 1 card.
+Cheap Cover,Common,Skill,0,Gain 6 (9) Block. Gain 2 Poison. Exhaust.
+Congeal,Common,Skill,1,Gain 7 (10) Block. Draw 1 card.
 Contagion,Rare,Power,2 (1),"Whenever you take Poison damage, apply that much Poison to ALL enemies."
 Corrode,Uncommon,Skill,3,Apply 5 (6) Poison and 1 (2) Weak to ALL enemies.
 Croak,Rare,Attack,2,Deal 18 (24) damage. Apply 5 (7) Poison. Exhaust.
@@ -21,7 +21,7 @@ Deep Cut,Uncommon,Attack,1,"Deal 7 (10) damage. Draw 1 card. If this card is Enc
 Defend,Basic,Skill,1,Gain 5 (8) Block.
 Distillate,Token,Skill,0,Gain 3 (5) Block. Draw 1 card. Exhaust.
 Draining Strike,Uncommon,Attack,2,Deal 14 (18) damage. The enemy loses 6 Strength this turn.
-Echo Strike,Common,Attack,1,"Deal 6 (8) damage. If this card is Enchanted, hits an additional time."
+Echo Strike,Common,Attack,1,"Deal 7 (9) damage. If this card is Enchanted, hits an additional time."
 Effervesce,"Uncommon, Multiplayer",Skill,1,Add 2 (3) Distillates to another player's Hand.
 Elixir,Ancient,Power,3,"(Procure a random potion.) At the start of your turn, procure a random potion."
 Enrich,Uncommon,Skill,1,Infuse up to 2 cards in your Draw Pile. Draw 1 (2) cards.
@@ -42,8 +42,8 @@ Heavy Dose,Uncommon,Attack,3,Deal 20 (26) damage. Apply 4 (5) Poison.
 Heavy Hand,Uncommon,Power,1,"Whenever you gain or apply Poison, apply an additional 1 (2)."
 Hone,Uncommon,Skill,2 (1),Upgrade ALL cards in your Hand.
 Immunize,Uncommon,Power,1,"Whenever you play a Skill, gain 1 (2) Antitoxin."
-Inoculate,Common,Skill,0,Lose 2 HP. Gain 9 (12) Block.
-Jab,Basic,Attack,1,Deal 6 (8) damage. Apply 2 (3) Poison. Gain 1 Poison.
+Inoculate,Common,Skill,0,Lose 2 HP. Gain 7 (10) Block.
+Jab,Basic,Attack,0,Deal 3 damage. Apply 2 (3) Poison. Gain 1 Poison.
 Kickback,Uncommon,Power,1,"Whenever you Enchant a card, gain 2 (3) Antitoxin."
 Lash Out,Rare,Attack,1,Deal 5 (7) damage 3 times.
 Masterwork,Uncommon,Skill,1,"Infuse a card in your Hand. If you have Enchanted 5 or more cards this combat, gain 1 (2) Energy, draw 1 (2) cards, and Exhaust this card."
@@ -60,7 +60,7 @@ Pays Off,Rare,Power,2 (1),"At the start of your turn, if your Antitoxin absorbed
 Poultice,Common,Skill,1,Gain 4 (5) Antitoxin. Exhaust a random card from your Hand. (Exhaust 1 card.)
 Puff Up,Uncommon,Skill,2,Retain. Ferment (0/3). Gain 10 Block. Gain 4 (6) additional Block for each turn fermented.
 Puncture,Common,Attack,1,Deal 7 (9) damage. Apply 1 (2) Vulnerable.
-Purge,Uncommon,Skill,0,Gain 3 (5) Antitoxin. Exhaust.
+Toughen,Uncommon,Skill,1,Gain 4 (6) Block. Gain additional Block equal to your Poison.
 Quicklime,Common,Attack,1,Deal 6 (8) damage. Gain 4 (6) Block.
 Reckless Swing,Common,Attack,1,Deal 11 (14) damage. Discard a card.
 Recoil,Rare,Attack,0,Gain 5 (8) Block. Deal damage equal to your Block. Exhaust.
@@ -73,10 +73,10 @@ Rummage,Common,Skill,1,Draw 2 (3) cards. Discard 1 card.
 Salve,Uncommon,Skill,1,Gain 4 (6) Block. Draw a card. Infuse a card in your Hand.
 Share The Pain,Rare,Power,3 (2),"Whenever you gain Poison, deal that much damage to ALL enemies."
 Siphon,Common,Attack,1,"Deal 6 (9) damage. Draw 1 card. If this card is Enchanted, draw an additional card."
-Sleep On It,Common,Skill,0,"At the start of your next turn, draw 2 (3) additional cards."
+Sleep On It,Common,Skill,0,"At the start of your next turn, draw 2 (3) additional cards. Exhaust."
 Slow Burn,Common,Skill,1,"At the end of your next turn, deal 14 (18) damage to the enemy."
-Smoke Out,Common,Attack,1,Deal 4 (6) damage to ALL enemies. Apply 1 Weak to ALL enemies.
-Spatter,Common,Attack,1,Deal 3 (4) damage to a random enemy 3 times. Gain 2 Poison.
+Smoke Out,Common,Attack,1,Deal 4 (7) damage to ALL enemies. Apply 1 Weak to ALL enemies.
+Spatter,Common,Attack,1,Deal 2 (3) damage to a random enemy 4 times.
 Strike,Basic,Attack,1,Deal 6 (9) damage.
 Swamp Gas,Uncommon,Skill,1,Apply 3 (4) Poison to ALL enemies. Gain 1 Poison.
 Sweat It Out,Rare,Skill,1,"Retain. Ferment (0/3). Gain 2 (3) Poison, plus 2 for each turn fermented. Lose all Poison. Apply that much Poison to ALL enemies."
@@ -87,10 +87,10 @@ Trade Up,Rare,Skill,1 (0),Exhaust 1 card. Infuse a card in your Hand.
 Transmute,Uncommon,Skill,0,Infuse up to 2 (3) cards in your Hand. Exhaust.
 Unripe Fruit,Quest,Quest,-,"After 4 more combats, ripens into a Golden Fruit. Unplayable."
 Vintage,Rare,Skill,1 (0),Retain. Ferment (0/3). Gain 1 Energy and draw 1 card for each turn fermented. Exhaust.
-Vitrify,Common,Skill,1,"Gain 3 (4) Block twice. If this card is Enchanted, gain 3 Antitoxin."
+Vitrify,Common,Skill,1,"Gain 4 (5) Block twice. If this card is Enchanted, gain 3 (4) Antitoxin."
 Warded,Uncommon,Power,1,"Whenever your Antitoxin absorbs damage, gain 3 (4) Block."
-Waste Not,Common,Skill,1,Gain 2 Poison. Put a card from your Discard Pile into your Hand.
+Waste Not,Common,Skill,1,Put a card from your Discard Pile into your Hand. Infuse it. Exhaust.
 Weak Spot,Rare,Power,2,Gain 3 (2) Poison. Poisoned enemies take an additional 25% (50%) damage from Attacks.
 White Heat,Rare,Attack,0,Lose all Antitoxin. Deal that much damage to ALL enemies. Exhaust.
 Winnow,Uncommon,Skill,1,Gain 7 (10) Block. Choose 1 of 3 cards in your Draw Pile and add it into your Hand.
-Wormwood,Ancient,Attack,1,Deal 6 (8) damage to ALL enemies. Apply 2 (3) Poison to ALL enemies. Gain 2 (3) Antitoxin.
+Wormwood,Ancient,Attack,0,Deal 3 (4) damage to ALL enemies. Apply 2 (3) Poison to ALL enemies. Gain 2 (3) Antitoxin.

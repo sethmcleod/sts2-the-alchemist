@@ -10,9 +10,9 @@ namespace Alchemist.AlchemistCode.Cards.Ancient;
 
 public class Wormwood : AlchemistCard
 {
-    public Wormwood() : base(1, CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies)
+    public Wormwood() : base(0, CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies)
     {
-        WithDamage(6, 2);
+        WithDamage(3, 1);
         WithPower<PoisonPower>(2, 1);
         WithPower<AntitoxinPower>(2, 1);
     }

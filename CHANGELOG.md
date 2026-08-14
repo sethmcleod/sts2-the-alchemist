@@ -25,15 +25,12 @@ mod).
 - Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy."
 - Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block."
 - Updated map drawing ink colour to be purple
-- Renamed Overflow card to Strain, and increased its cost: 1 -> 2 (1)
-- Changed Transmute card: it now Infuses up to 2 (3) cards, instead of exactly 2
-- Reworked Mercurial Form card: it now purges all your Poison each turn, dealing that much damage to you and giving that much Strength for the turn. Cost 3 -> 3 (2)
 
 ### Removed
 
 - Removed Gambit keyword
 - Removed Reaction keyword
-- Removed Unstable keyword, and the potion archetype with it. Elixir is now the only card that makes potions
+- Removed Unstable keyword and the potion archetype. Elixir is now the only card that makes potions
 - Removed Quintessence relic
 
 ### Fixed

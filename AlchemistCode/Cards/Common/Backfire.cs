@@ -14,7 +14,7 @@ public class Backfire : AlchemistCard
 {
     public Backfire() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(14, 4);
+        WithDamage(17, 5);
         WithVar("poison", 2, 0);
         WithTip(typeof(PoisonPower));
     }

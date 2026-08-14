@@ -14,8 +14,8 @@ public class CheapCover : AlchemistCard
 
     public CheapCover() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(6, 0);
-        WithVar("poison", 2, -1);
+        WithBlock(6, 3);
+        WithVar("poison", 2, 0);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
     }

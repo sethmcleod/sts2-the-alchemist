@@ -86,7 +86,7 @@ COLORS = {
     "Swamp Gas": ("#4e8701", "#1c5f7a", "BR", "Poison skills"),
     "Gulp": ("#4e8701", "#8a3f2f", "BR", "Poison skills"),
     "Recoil": ("#00212a", "#3fb0a0", "TR", "Poison payoffs"),
-    "Purge": ("#2f0170", "#6f9ad8", "BR", "Antitoxin"),
+    "Toughen": ("#2f0170", "#6f9ad8", "BR", "Poison payoffs"),
     "Immunize": ("#2f0170", "#c46fd8", "R", "Antitoxin"),
     "Pass It On": ("#2f0170", "#d84a4a", "L", "Antitoxin"),
     "Deep Breath": ("#792595", "#9ad8b8", "BR", "Infuse: cantrips"),

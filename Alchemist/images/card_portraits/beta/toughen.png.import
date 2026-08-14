@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbfxschfv7oi7"
-path="res://.godot/imported/purge.png-332291430a684f4e9b98ebdabc03c08c.ctex"
+path="res://.godot/imported/toughen.png-c75a433a7d3aa83a062c5e38e7e78873.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/purge.png"
-dest_files=["res://.godot/imported/purge.png-332291430a684f4e9b98ebdabc03c08c.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/toughen.png"
+dest_files=["res://.godot/imported/toughen.png-c75a433a7d3aa83a062c5e38e7e78873.ctex"]
 
 [params]
 

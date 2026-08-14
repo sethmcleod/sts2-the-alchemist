@@ -11,7 +11,7 @@ public class SmokeOut : AlchemistCard
 {
     public SmokeOut() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
-        WithDamage(4, 2);
+        WithDamage(4, 3);
         WithPower<WeakPower>(1, 0);
     }
 
