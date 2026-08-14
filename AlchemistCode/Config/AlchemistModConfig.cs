@@ -38,8 +38,8 @@ public class AlchemistModConfig : SimpleModConfig
 
     [ConfigSection("Economy")]
     [ConfigHoverTip]
-    [ConfigSlider(10.0, 100.0, 10.0, Format = "{0}%")]
-    public static int PotionSellPercent { get; set; } = 100;
+    [ConfigSlider(10.0, 90.0, 10.0, Format = "{0}%")]
+    public static int PotionSellPercent { get; set; } = 50;
 
     [ConfigSection("Economy")]
     [ConfigHoverTip]

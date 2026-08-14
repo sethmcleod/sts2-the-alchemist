@@ -25,6 +25,7 @@ mod).
 - Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy."
 - Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block."
 - Updated map drawing ink colour to be purple
+- Changed the default Potion sale price: 100% -> 50% of the shop value, and its range is now 10% to 90%. This setting only applies to new runs
 
 ### Removed
 
