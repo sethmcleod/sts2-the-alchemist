@@ -48,7 +48,7 @@ Kickback,Uncommon,Power,1,"Whenever you Enchant a card, gain 2 (3) Antitoxin."
 Lash Out,Rare,Attack,1,Deal 5 (7) damage 3 times.
 Masterwork,Uncommon,Skill,1,"Infuse a card in your Hand. If you have Enchanted 5 or more cards this combat, gain 1 (2) Energy, draw 1 (2) cards, and Exhaust this card."
 Melt Down,Uncommon,Skill,1,Choose a card in your Draw Pile to Transform into a Distillate(+).
-Mercurial Form,Rare,Power,3,"At the start of your turn, gain 1 (2) Strength. At the end of your turn, gain Antitoxin equal to half your Poison."
+Mercurial Form,Rare,Power,3 (2),"At the start of your turn, lose all Poison. Take that much damage and gain that much Strength. At the end of your turn, lose that Strength."
 Needle Point,Rare,Attack,0,"Innate. Deal 7 (10) damage. Apply 1 (2) Weak. If this card is Enchanted, apply 1 (2) Vulnerable."
 Next Up,Uncommon,Attack,1,Deal 8 (11) damage. Infuse a card in your Hand.
 One For Me,Uncommon,Attack,1,Deal 8 (11) damage. Gain 3 (4) Antitoxin.

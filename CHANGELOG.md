@@ -27,6 +27,7 @@ mod).
 - Updated map drawing ink colour to be purple
 - Renamed Overflow card to Strain, and increased its cost: 1 -> 2 (1)
 - Changed Transmute card: it now Infuses up to 2 (3) cards, instead of exactly 2
+- Reworked Mercurial Form card: it now purges all your Poison each turn, dealing that much damage to you and giving that much Strength for the turn. Cost 3 -> 3 (2)
 
 ### Removed
 

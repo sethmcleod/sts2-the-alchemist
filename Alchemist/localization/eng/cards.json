@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "Masterwork",
   "ALCHEMIST-MELT_DOWN.description": "Choose a card in your [gold]Draw Pile[/gold] to [gold]Transform[/gold] into {IfUpgraded:show:[green]Distillate+[/green]|[gold]Distillate[/gold]}.",
   "ALCHEMIST-MELT_DOWN.title": "Melt Down",
-  "ALCHEMIST-MERCURIAL_FORM.description": "At the start of your turn, gain {Strength:diff()} [gold]Strength[/gold].\nAt the end of your turn, gain [gold]Antitoxin[/gold] equal to half your [gold]Poison[/gold].",
+  "ALCHEMIST-MERCURIAL_FORM.description": "At the start of your turn, lose all [gold]Poison[/gold]. Take that much damage and gain that much [gold]Strength[/gold].\nAt the end of your turn, lose that [gold]Strength[/gold].",
   "ALCHEMIST-MERCURIAL_FORM.title": "Mercurial Form",
   "ALCHEMIST-NEEDLE_POINT.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].\nIf this card is [gold]Enchanted[/gold], apply {Vuln:diff()} [gold]Vulnerable[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Needle Point",

@@ -11,15 +11,13 @@ public class MercurialForm : AlchemistCard
 {
     public MercurialForm() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("Strength", 1, 1);
+        WithCostUpgradeBy(-1);
         WithTip(typeof(StrengthPower));
         WithTip(typeof(PoisonPower));
-        WithTip(typeof(Powers.AntitoxinPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<MercurialFormPower>(choiceContext, Owner.Creature,
-            DynamicVars["Strength"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<MercurialFormPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 }
