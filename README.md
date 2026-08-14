@@ -12,16 +12,17 @@
 
 ## Playstyle
 
-- **Poison**: The Alchemist deliberately self-poisons, which fuels damage, Block
-  and other useful effects.
-- **Antitoxin**: A reserve that absorbs the damage your own Poison would deal. It
-  has a limit but persists across turns.
+- **Antitoxin**: A reserve that absorbs the damage Poison would deal to you. It
+  caps at 9 and persists across turns. Anything past the cap becomes Block, so a
+  full reserve is never wasted.
+- **Payoffs**: Several cards trigger when Antitoxin absorbs Poison damage,
+  fueling Strength, Block, Energy, or damage to enemies.
 - **Ferment**: These effects grow in potency for every turn the card stays in
   your hand. However if you Retain them past their peak, they spoil into Toxic
   cards.
 - **Infuse**: Infusing a card Enchants it for the rest of combat based on the
-  type. Attacks apply Poison, Skills generate Antitoxin, Powers give Strength,
-  and other cards gain Ethereal.
+  type. Attacks apply Poison to the enemy and to you, Skills generate Antitoxin,
+  Powers give Strength, and other cards gain Ethereal.
 - **Brew**: This new Rest Site option lets you procure a random potion.
   There are 3 new potions that can only be obtained this way.
 - **_Sell Potions!_**: Due to the quality and potency of these brews, the
