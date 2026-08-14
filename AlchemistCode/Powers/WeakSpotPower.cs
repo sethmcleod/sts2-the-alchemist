@@ -20,8 +20,9 @@ public partial class WeakSpotPower : AlchemistPower
 
     internal decimal PoisonedAttackMultiplier(Creature? target, ValueProp props)
     {
-        // WeakSpot Poisons its own caster, so never treat the owner as a "Poisoned enemy"
+        // WeakSpot Poisons its own caster, and in multiplayer a Poisoned teammate is not an enemy either
         if (target == null || target == Owner) return 1m;
+        if (Owner.CombatState is not { } combat || !combat.GetOpponentsOf(Owner).Contains(target)) return 1m;
         if (!props.IsPoweredAttack()) return 1m;
         if (!target.HasPower<PoisonPower>()) return 1m;
         return 1m + Amount / 100m;

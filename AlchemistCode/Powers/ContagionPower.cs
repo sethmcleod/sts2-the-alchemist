@@ -22,8 +22,7 @@ public class ContagionPower : AlchemistPower
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (target != Owner || result.UnblockedDamage <= 0) return;
-        if (dealer != null || cardSource != null) return;
-        if (!props.HasFlag(ValueProp.Unblockable) || !props.HasFlag(ValueProp.Unpowered)) return;
+        if (!AntitoxinRules.IsPoisonTick(Owner, result.UnblockedDamage, props, dealer, cardSource)) return;
 
         Flash();
         var poison = result.UnblockedDamage * Amount;

@@ -15,6 +15,7 @@ public class GoldenTouchPower : AlchemistPower
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
         modifiedCost = originalCost;
+        if (card.Owner?.Creature != Owner) return false;
         if (card.Enchantment == null || originalCost <= 0) return false;
         modifiedCost = Math.Max(0, originalCost - Amount);
         return true;

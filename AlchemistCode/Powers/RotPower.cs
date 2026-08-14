@@ -21,7 +21,9 @@ public class RotPower : AlchemistPower
         bool wasRemovalPrevented, float deathAnimLength)
     {
         if (creature == Owner || Owner.CombatState is not { } combat) return;
-        var survivors = combat.GetOpponentsOf(Owner).Where(e => e.IsAlive && e != creature).ToList();
+        var opponents = combat.GetOpponentsOf(Owner);
+        if (!opponents.Contains(creature)) return;
+        var survivors = opponents.Where(e => e.IsAlive && e != creature).ToList();
         if (survivors.Count == 0) return;
         Flash();
         foreach (var enemy in survivors)

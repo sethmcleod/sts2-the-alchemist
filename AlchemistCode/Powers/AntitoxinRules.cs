@@ -3,6 +3,8 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
@@ -25,6 +27,18 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         modifiedAmount = Math.Max(0, room);
         return true;
     }
+
+    // Royal Poison and in-combat max HP loss deal damage with the same null dealer and
+    // Unblockable|Unpowered shape as a Poison tick. PoisonPower.Trigger deals exactly the stack it is
+    // about to decrement, so requiring that much Poison on the target is what separates them
+    internal static bool IsPoisonTick(Creature target, decimal amount, ValueProp props,
+        Creature? dealer, CardModel? cardSource) =>
+        dealer == null
+        && cardSource == null
+        && props.HasFlag(ValueProp.Unblockable)
+        && props.HasFlag(ValueProp.Unpowered)
+        && amount > 0
+        && target.GetPowerAmount<PoisonPower>() >= amount;
 
     internal static void MarkAbsorbed(Creature creature) => Absorbed.Add(creature);
 

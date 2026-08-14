@@ -43,6 +43,8 @@ public class Masterwork : AlchemistCard
 
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
         await CardPileCmd.Draw(choiceContext, DynamicVars["Cards"].IntValue, Owner);
-        ExhaustOnNextPlay = true;
+        // OnPlayWrapper picks the result pile before OnPlay runs, so ExhaustOnNextPlay would land a play
+        // late. Leaving the Play pile here makes it skip the move instead
+        await CardCmd.Exhaust(choiceContext, this);
     }
 }

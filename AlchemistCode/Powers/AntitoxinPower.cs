@@ -43,20 +43,17 @@ public partial class AntitoxinPower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
-    // A Poison tick is the only damage that arrives unblockable and unpowered with no dealer and no
-    // card behind it. PoisonPower.CalculateTotalDamageNextTurn runs its forecast through this same
-    // hook, so reducing here also keeps the incoming damage preview correct
-    private bool IsPoisonTick(Creature? target, ValueProp props, Creature? dealer, CardModel? cardSource) =>
+    // PoisonPower.CalculateTotalDamageNextTurn runs its forecast through this same hook, so reducing
+    // here also keeps the incoming damage preview correct
+    private bool IsPoisonTick(Creature? target, decimal amount, ValueProp props, Creature? dealer,
+        CardModel? cardSource) =>
         target == Owner
-        && dealer == null
-        && cardSource == null
-        && props.HasFlag(ValueProp.Unblockable)
-        && props.HasFlag(ValueProp.Unpowered);
+        && AntitoxinRules.IsPoisonTick(Owner, amount, props, dealer, cardSource);
 
     internal decimal Absorb(Creature? target, decimal amount, ValueProp props, Creature? dealer,
         CardModel? cardSource)
     {
-        if (!IsPoisonTick(target, props, dealer, cardSource) || amount <= 0)
+        if (!IsPoisonTick(target, amount, props, dealer, cardSource))
             return 0m;
 
         var absorbed = Math.Min(Amount, (int)amount);
@@ -73,7 +70,7 @@ public partial class AntitoxinPower : AlchemistPower
     public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (!IsPoisonTick(target, props, dealer, cardSource)) return;
+        if (!IsPoisonTick(target, amount, props, dealer, cardSource)) return;
 
         var spend = _pendingSpend;
         _pendingSpend = 0;

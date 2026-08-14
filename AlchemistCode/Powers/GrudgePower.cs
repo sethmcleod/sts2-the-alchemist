@@ -23,9 +23,9 @@ public class GrudgePower : AlchemistPower
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (dealer != null || cardSource != null) return;
-        if (!props.HasFlag(ValueProp.Unblockable) || !props.HasFlag(ValueProp.Unpowered)) return;
         if (target == Owner || !target.IsAlive) return;
+        if (Owner.CombatState is not { } combat || !combat.GetOpponentsOf(Owner).Contains(target)) return;
+        if (!AntitoxinRules.IsPoisonTick(target, result.UnblockedDamage, props, dealer, cardSource)) return;
         Flash();
         await PowerCmd.Apply<PoisonPower>(choiceContext, target, Amount, Owner, null);
     }
