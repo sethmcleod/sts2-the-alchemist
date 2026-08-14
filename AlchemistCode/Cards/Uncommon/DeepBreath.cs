@@ -10,7 +10,7 @@ public class DeepBreath : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public DeepBreath() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public DeepBreath() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithCards(1, 1);
         WithTips(_ => Infusion.InfuseTips());

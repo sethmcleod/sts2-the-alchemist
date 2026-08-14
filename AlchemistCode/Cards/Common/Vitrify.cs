@@ -11,7 +11,7 @@ public class Vitrify : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public Vitrify() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Vitrify() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(3, 1);
         WithTip(typeof(AntitoxinPower));

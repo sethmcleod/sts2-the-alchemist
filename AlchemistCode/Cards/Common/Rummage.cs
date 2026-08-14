@@ -11,7 +11,7 @@ public class Rummage : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public Rummage() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Rummage() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithCards(2, 1);
     }

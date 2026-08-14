@@ -8,7 +8,7 @@ public class Inoculate : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public Inoculate() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Inoculate() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(9, 3);
     }

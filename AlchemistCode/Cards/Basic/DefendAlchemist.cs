@@ -8,7 +8,7 @@ public class DefendAlchemist : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public DefendAlchemist() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
+    public DefendAlchemist() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
         WithTags(CardTag.Defend);
         WithBlock(5, 3);

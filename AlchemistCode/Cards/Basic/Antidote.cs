@@ -10,7 +10,7 @@ public class Antidote : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public Antidote() : base(0, CardType.Skill, CardRarity.Basic, TargetType.Self)
+    public Antidote() : base(0, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
         WithCalculatedBlock(4, static (card, _) =>
             card.Owner.Creature.GetPowerAmount<PoisonPower>(), ValueProp.Move, 2, 0);

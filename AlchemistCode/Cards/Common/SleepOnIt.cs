@@ -9,7 +9,7 @@ public class SleepOnIt : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public SleepOnIt() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public SleepOnIt() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithVar("draw", 2, 1);
         WithTip(typeof(DrawCardsNextTurnPower));

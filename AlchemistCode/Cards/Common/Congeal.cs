@@ -10,7 +10,7 @@ public class Congeal : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public Congeal() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Congeal() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(5, 2);
         WithCards(1, 0);

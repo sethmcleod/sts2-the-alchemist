@@ -10,7 +10,7 @@ public class Hone : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public Hone() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Hone() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
     }

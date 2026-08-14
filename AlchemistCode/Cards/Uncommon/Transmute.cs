@@ -9,7 +9,7 @@ public class Transmute : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public Transmute() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Transmute() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithKeyword(CardKeyword.Exhaust);
         WithVar("Cards", 2, 0);

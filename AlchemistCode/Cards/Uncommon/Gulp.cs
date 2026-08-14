@@ -10,7 +10,7 @@ public class Gulp : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public Gulp() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Gulp() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("poison", 3, 0);
         WithCards(1, 1);

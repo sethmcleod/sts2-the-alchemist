@@ -12,7 +12,7 @@ public class CheapCover : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public CheapCover() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public CheapCover() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(6, 0);
         WithVar("poison", 2, -1);

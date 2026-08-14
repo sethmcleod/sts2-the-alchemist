@@ -11,7 +11,7 @@ public class Distillate : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-public Distillate() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
+    public Distillate() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
         WithBlock(3, 2);
         WithCards(1, 0);
