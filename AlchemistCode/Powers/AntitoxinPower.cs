@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Alchemist.AlchemistCode.Config;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -60,6 +64,12 @@ public partial class AntitoxinPower : AlchemistPower
         return -absorbed;
     }
 
+    private void AbsorbSplash()
+    {
+        var vfx = NGaseousImpactVfx.Create(Owner, AlchemistModConfig.AntitoxinBarColor);
+        if (vfx != null) NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(vfx);
+    }
+
     public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
@@ -70,6 +80,7 @@ public partial class AntitoxinPower : AlchemistPower
         if (spend <= 0) return;
 
         Flash();
+        AbsorbSplash();
         AntitoxinRules.MarkAbsorbed(Owner);
         if (Owner.GetPower<PassItOnPower>() is { } crucible)
             await crucible.OnAbsorbed(spend);
