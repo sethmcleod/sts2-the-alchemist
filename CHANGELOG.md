@@ -27,6 +27,7 @@ mod).
 - Reworked Laced echantment: now applies 1 Poison and gains 1 Poison
 - Reworked Marsh Tonic potion: "Gain 10 Antitoxin."
 - Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block." It no longer grants Regen, which the deck no longer uses
+- Updated map drawing ink colour to be purple for the Alchemist
 
 ### Removed
 
