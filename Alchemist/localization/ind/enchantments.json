@@ -1,0 +1,8 @@
+{
+  "ALCHEMIST-DOSED.description": "Saat Teknik ini dimainkan, dapatkan [blue]{Amount}[/blue] [gold]Antitoksin[/gold].",
+  "ALCHEMIST-DOSED.title": "Berdosis",
+  "ALCHEMIST-LACED.description": "Setiap kali Serangan ini melakukan kerusakan tidak terblok, terapkan [blue]{Amount}[/blue] [gold]Racun[/gold] dan dapatkan [blue]1[/blue] [gold]Racun[/gold].",
+  "ALCHEMIST-LACED.title": "Beracun",
+  "ALCHEMIST-POTENT.description": "Saat Kuasa ini dimainkan, dapatkan [blue]{Amount}[/blue] [gold]Kekuatan[/gold].",
+  "ALCHEMIST-POTENT.title": "Ampuh"
+}

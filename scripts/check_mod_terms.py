@@ -26,8 +26,9 @@ ANY_TAG_RE = re.compile(r"\[/?[a-z_]+\]")
 
 # The mod's own vocabulary. Base-game terms are covered by the glossary check.
 MOD_TERMS = [
-    "Infuse", "Gambit", "Ferment", "Reaction", "Brew", "Laced", "Fuming",
-    "Exalted", "Toxic", "Distillate", "Distillates", "Enchanted", "Enchant",
+    "Antitoxin", "Infuse", "Ferment", "Brew",
+    "Dosed", "Laced", "Potent",
+    "Distillate", "Distillates", "Enchanted", "Enchant",
 ]
 
 # Renderings that differ only by inflection are not drift. Compared on a stem.
@@ -69,6 +70,42 @@ def sites(eng: dict, term: str) -> list[tuple[str, str, int, int]]:
                 continue
             found.append((fname, key, spans.index(wanted), len(spans)))
     return found
+
+
+# Names a player must be able to tell apart. Antidote is the starting card and
+# it grants Antitoxin, so if a language renders both the same way its very first
+# card reads "Gain N Antidote" while being called Antidote. Toxin Skin and Poison
+# sit in the same semantic space and collide just as easily.
+DISTINCT = [
+    ("cards.json", "ALCHEMIST-ANTIDOTE.title"),
+    ("powers.json", "ALCHEMIST-ANTITOXIN_POWER.title"),
+    ("cards.json", "ALCHEMIST-TOXIN_SKIN.title"),
+]
+
+
+def distinct_names(tables: dict[str, dict[str, str]], poison: str) -> list[str]:
+    """Check that neighbouring poison-and-cure names did not converge."""
+    named = []
+    for fname, key in DISTINCT:
+        value = tables.get(fname, {}).get(key)
+        if isinstance(value, str) and value.strip():
+            named.append((key.split(".")[0].replace("ALCHEMIST-", ""), value.strip()))
+    if poison:
+        named.append(("POISON", poison))
+    # Compared whole, not by stem: Antidote and Antitoxin legitimately share a
+    # prefix in most languages, and only an identical name is a real collision.
+    def norm(s: str) -> str:
+        d = unicodedata.normalize("NFD", s).casefold()
+        return "".join(c for c in d if not unicodedata.combining(c)).strip()
+
+    problems = []
+    for i, (ka, va) in enumerate(named):
+        for kb, vb in named[i + 1:]:
+            if norm(va) == norm(vb):
+                problems.append(
+                    f"  {ka} and {kb} both render as {va!r} - players cannot tell them apart"
+                )
+    return problems
 
 
 def cross_file_titles(tables: dict[str, dict[str, str]]) -> list[str]:
@@ -114,7 +151,8 @@ def main() -> None:
         # term in English can point at its neighbour elsewhere. Anything that is
         # this language's known word for a base-game term is that neighbour, not
         # a rival rendering of the term under test.
-        other_terms = set()
+        other_terms: set[str] = set()
+        gloss: dict[str, str] = {}
         if glossary_dir and (glossary_dir / f"glossary_{lang}.json").exists():
             gloss = json.loads(
                 (glossary_dir / f"glossary_{lang}.json").read_text(encoding="utf-8")
@@ -160,6 +198,7 @@ def main() -> None:
                 )
                 problems.append(f"  {term}: {detail}")
         problems += cross_file_titles(tables)
+        problems += distinct_names(tables, gloss.get("Poison", ""))
         if problems:
             failed = True
             print(f"== {lang}: {len(problems)} inconsistent term(s)")

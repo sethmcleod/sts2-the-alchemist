@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -10,8 +11,9 @@ public class BitterDraught : AlchemistCard
 {
     public BitterDraught() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithEnergy(2, 1);
-        WithPower<PoisonPower>(2, 1);
+        WithCostUpgradeBy(-1);
+        WithEnergy(3, 0);
+        WithPower<PoisonPower>(2, 0);
         WithKeyword(CardKeyword.Exhaust);
     }
 
@@ -19,5 +21,8 @@ public class BitterDraught : AlchemistCard
     {
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
         await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);
+        // After the gain, so the tick is the whole stack. It carries the real Poison tick shape, so
+        // Antitoxin absorbs it and every absorb payoff fires
+        await PoisonTrigger.Once(choiceContext, Owner.Creature);
     }
 }

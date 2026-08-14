@@ -1,6 +1,7 @@
 {
-  "ALCHEMIST.mod_title": "Алхимик",
   "ALCHEMIST-ACCESSIBILITY.title": "Доступность",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "Цвет полосы антитоксина под полосой здоровья. Зеленый участок, который показывает предстоящий урон от яда, остается прежним.",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Цвет полосы антитоксина",
   "ALCHEMIST-BREW_POTION_CHANCE.hover.desc": "Вероятность того, что варка в лагере предложит одно из трех [gold]зелий[/gold] Алхимика, которые можно получить только варкой, вместо обычного [gold]зелья[/gold]. По умолчанию: 15%",
   "ALCHEMIST-BREW_POTION_CHANCE.title": "Шанс особого зелья при варке",
   "ALCHEMIST-COMPATIBILITY.title": "Совместимость",
@@ -13,18 +14,19 @@
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Отдельный набор карт",
   "ALCHEMIST-POTION_SELL_PERCENT.hover.desc": "Доля золота, которую вы получите при продаже Торговцу. По умолчанию: 100%",
   "ALCHEMIST-POTION_SELL_PERCENT.title": "Цена продажи зелий",
-  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Сбросить",
   "ALCHEMIST-RESET_UNLOCKS.title": "Сбросить все карты, реликвии, зелья и эпохи Алхимика",
-  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Открыть эпохи",
+  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Сбросить",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Открыть все эпохи Алхимика в Летописи",
+  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Открыть эпохи",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.hover.desc": "Показывает на полосе здоровья врага сегмент с отложенным уроном Алхимика, чтобы вы видели удар до того, как он произойдет. Отключите, чтобы полоса была чище.",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.title": "Показывать прогноз урона",
-  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "Подсвечивает карты в руке с доступным бонусом: золотым для гамбита, реакции или эффекта зачарования. Отключите, чтобы убрать подсветку.",
+  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "Подсвечивает карты в руке, у которых сейчас доступен бонус. Отключите, чтобы убрать подсветку.",
   "ALCHEMIST-SHOW_HAND_GLOWS.title": "Показывать дополнительную подсветку карт",
   "ALCHEMIST-TIMELINE.title": "Летопись",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.hover.desc": "[sine]Каждый[/sine] персонаж продает зелья [gold]Торговцу[/gold]! За [gold]золото[/gold]!\n\n(Примечание: спонсор этого описания — Торговец.)",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.title": "Продавать зелья может любой персонаж!",
-  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Открыть все",
+  "ALCHEMIST-UNLOCKS.title": "Разблокировки",
   "ALCHEMIST-UNLOCK_ALL.title": "Открыть все карты, реликвии, зелья и эпохи Алхимика",
-  "ALCHEMIST-UNLOCKS.title": "Разблокировки"
+  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Открыть все",
+  "ALCHEMIST.mod_title": "Алхимик"
 }

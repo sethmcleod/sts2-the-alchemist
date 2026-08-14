@@ -15,15 +15,10 @@ public class MarshTonic : AlchemistPotion
     public override TargetType TargetType => TargetType.Self;
 
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[]
-        {
-            HoverTipFactory.FromPower<RegenPower>(),
-            HoverTipFactory.FromPower<PoisonPower>(),
-        };
+        new[] { HoverTipFactory.FromPower<Powers.AntitoxinPower>() };
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, 3m, Owner.Creature, null);
-        await PowerCmd.Apply<RegenPower>(choiceContext, Owner.Creature, 3m, Owner.Creature, null);
+        await PowerCmd.Apply<Powers.AntitoxinPower>(choiceContext, Owner.Creature, 6m, Owner.Creature, null);
     }
 }

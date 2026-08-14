@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -9,16 +10,17 @@ public class Siphon : AlchemistCard
 {
     public Siphon() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(8, 4);
+        WithDamage(6, 2);
         WithCards(1, 0);
+        WithTips(_ => Infusion.InfuseTips());
     }
-
-    internal override bool GainsEffectWhenEnchanted => true;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
-        var draw = DynamicVars["Cards"].IntValue + (IsEnchanted ? 1 : 0);
-        await CardPileCmd.Draw(choiceContext, draw, Owner);
+        // Infusing what it just drew keeps this distinct from Next Up, which infuses a chosen card,
+        // and it needs no selection screen, which suits a Common
+        foreach (var drawn in await CommonActions.Draw(this, choiceContext))
+            Infusion.Infuse(drawn);
     }
 }

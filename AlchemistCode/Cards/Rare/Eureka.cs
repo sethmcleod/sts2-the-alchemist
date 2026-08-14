@@ -11,6 +11,7 @@ public class Eureka : AlchemistCard
     public Eureka() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithCards(2, 1);
+        WithVar("transforms", 2, 0);
         WithUpgradingCardTip<Distillate>();
     }
 
@@ -18,6 +19,7 @@ public class Eureka : AlchemistCard
     {
         await CommonActions.Draw(this, choiceContext);
         // The shared helper carries the upgrade onto the Distillate, which the description promises
-        await AlchemistCardCmd.TransformFromHand<Distillate>(choiceContext, this);
+        for (var i = 0; i < DynamicVars["transforms"].IntValue; i++)
+            await AlchemistCardCmd.TransformFromHand<Distillate>(choiceContext, this);
     }
 }

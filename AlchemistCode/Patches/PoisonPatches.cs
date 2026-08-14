@@ -19,19 +19,3 @@ public static class FesterPoisonTriggerPatch
             __result = Math.Min(__instance.Amount, __result + fester);
     }
 }
-
-// Fold Glowing Shard in the same way the base game folds Accelerant, but read the relic here rather than
-// give the player an Accelerant power, which would show that icon on the player and any ally. The cap
-// composes with the Fester postfix in either order, because a nested Min never exceeds the Poison stack
-[HarmonyPatch(typeof(PoisonPower), "TriggerCount", MethodType.Getter)]
-public static class GlowingShardPoisonTriggerPatch
-{
-    public static void Postfix(PoisonPower __instance, ref int __result)
-    {
-        if (__instance.Owner is not { CombatState: { } combat } poisoned) return;
-        var shards = combat.GetOpponentsOf(poisoned)
-            .Count(c => c.IsAlive && c.Player?.GetRelic<GlowingShard>() != null);
-        if (shards > 0)
-            __result = Math.Min(__instance.Amount, __result + shards);
-    }
-}

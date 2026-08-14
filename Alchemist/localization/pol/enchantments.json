@@ -1,8 +1,8 @@
 {
-  "ALCHEMIST-EXALTED.description": "Gdy ta karta zostanie zagrana, zyskaj [blue]{Amount}[/blue] pkt. [gold]Siły[/gold].",
-  "ALCHEMIST-EXALTED.title": "Egzaltacja",
-  "ALCHEMIST-FUMING.description": "Gdy ta karta zostanie zagrana, nałóż [blue]{Amount}[/blue] pkt. [gold]Słabości[/gold] i [blue]{Amount}[/blue] pkt. [gold]Wrażliwości[/gold] na losowego przeciwnika. Zyskaj [blue]{Amount}[/blue] pkt. [gold]Trucizny[/gold].",
-  "ALCHEMIST-FUMING.title": "Wyziew",
-  "ALCHEMIST-LACED.description": "Kiedykolwiek ta karta zadaje niezablokowane obrażenia, nałóż [blue]{Amount}[/blue] pkt. [gold]Trucizny[/gold].",
-  "ALCHEMIST-LACED.title": "Jad"
+  "ALCHEMIST-DOSED.description": "Gdy zagrasz tę Umiejętność, zyskaj [blue]{Amount}[/blue] pkt. [gold]Antytoksyny[/gold].",
+  "ALCHEMIST-DOSED.title": "Dawka",
+  "ALCHEMIST-LACED.description": "Kiedykolwiek ten Atak zada niezablokowane obrażenia, nałóż [blue]{Amount}[/blue] pkt. [gold]Trucizny[/gold] i zyskaj [blue]1[/blue] pkt. [gold]Trucizny[/gold].",
+  "ALCHEMIST-LACED.title": "Jad",
+  "ALCHEMIST-POTENT.description": "Gdy zagrasz tę Moc, zyskaj [blue]{Amount}[/blue] pkt. [gold]Siły[/gold].",
+  "ALCHEMIST-POTENT.title": "Stężenie"
 }

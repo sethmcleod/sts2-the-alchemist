@@ -1,6 +1,7 @@
 {
-  "ALCHEMIST.mod_title": "Alchemik",
   "ALCHEMIST-ACCESSIBILITY.title": "Ułatwienia dostępu",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "Kolor paska Antytoksyny pod twoim paskiem zdrowia. Nie dotyczy zielonego segmentu pokazującego nadchodzącą Truciznę.",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Kolor paska Antytoksyny",
   "ALCHEMIST-BREW_POTION_CHANCE.hover.desc": "Szansa, że Warzenie w Obozowisku zaoferuje jedną z trzech [gold]Mikstur[/gold] Alchemika dostępnych wyłącznie z Warzenia zamiast zwykłej [gold]Mikstury[/gold]. Domyślnie: 15%",
   "ALCHEMIST-BREW_POTION_CHANCE.title": "Szansa na miksturę z Warzenia",
   "ALCHEMIST-COMPATIBILITY.title": "Kompatybilność",
@@ -13,18 +14,19 @@
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Oddzielna pula kart",
   "ALCHEMIST-POTION_SELL_PERCENT.hover.desc": "Procent wartości w Złocie, który otrzymasz przy sprzedaży Handlarzowi. Domyślnie: 100%",
   "ALCHEMIST-POTION_SELL_PERCENT.title": "Cena sprzedaży mikstur",
-  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Zresetuj odblokowania",
   "ALCHEMIST-RESET_UNLOCKS.title": "Zresetuj wszystkie karty, artefakty, mikstury i Epoki Alchemika",
-  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Odblokuj Epoki",
+  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Zresetuj odblokowania",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Odblokuj wszystkie Epoki Alchemika na Osi Czasu",
+  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Odblokuj Epoki",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.hover.desc": "Pokazuje na pasku zdrowia przeciwnika segment podglądu opóźnionych obrażeń Alchemika, aby nadchodzące trafienie było widoczne, zanim nastąpi. Wyłącz, aby pasek był czystszy.",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.title": "Pokazuj prognozy obrażeń",
-  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "Podświetla karty w ręce z aktywną premią: na złoto przy efekcie Gambitu, Reakcji lub Zaklęcia. Wyłącz, aby ukryć te podświetlenia.",
+  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "Podświetla karty w ręce z aktywną premią. Wyłącz, aby ukryć te podświetlenia.",
   "ALCHEMIST-SHOW_HAND_GLOWS.title": "Pokazuj dodatkowe poświaty kart",
   "ALCHEMIST-TIMELINE.title": "Oś Czasu",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.hover.desc": "[sine]Każda[/sine] postać sprzedaje mikstury [gold]Handlarzowi[/gold]! Za [gold]Złoto[/gold]!\n\n(Uwaga: ten opis został opłacony przez Handlarza.)",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.title": "Każda postać może sprzedawać mikstury!",
-  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Odblokuj wszystko",
+  "ALCHEMIST-UNLOCKS.title": "Odblokowania",
   "ALCHEMIST-UNLOCK_ALL.title": "Odblokuj wszystkie karty, artefakty, mikstury i Epoki Alchemika",
-  "ALCHEMIST-UNLOCKS.title": "Odblokowania"
+  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Odblokuj wszystko",
+  "ALCHEMIST.mod_title": "Alchemik"
 }

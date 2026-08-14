@@ -1,12 +1,12 @@
-using System.Reflection;
+using Alchemist.AlchemistCode.Config;
+using Alchemist.AlchemistCode.Potions;
 using BaseLib.Config;
 using BaseLib.Hooks;
 using Godot;
 using HarmonyLib;
-using Alchemist.AlchemistCode.Config;
-using Alchemist.AlchemistCode.Potions;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models.PotionPools;
+using System.Reflection;
 
 namespace Alchemist.AlchemistCode;
 
@@ -56,9 +56,10 @@ public partial class MainFile : Node
             Logger.Error($"Failed to register Alchemist epochs (Timeline feature disabled): {e}");
         }
 
+
         try
         {
-            HealthBarForecastRegistry.Register<Powers.UnstableCompoundForecast>(ModId, "unstable_compound");
+            HealthBarForecastRegistry.Register<Powers.SlowBurnForecast>(ModId, "unstable_compound");
         }
         catch (System.Exception e)
         {

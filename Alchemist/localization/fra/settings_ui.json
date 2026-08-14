@@ -1,6 +1,7 @@
 {
-  "ALCHEMIST.mod_title": "L'Alchimiste",
   "ALCHEMIST-ACCESSIBILITY.title": "Accessibilité",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "La couleur de la barre d'Antitoxine sous votre barre de vie. Le segment vert qui indique le Poison à venir n'est pas affecté.",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Couleur de la barre d'Antitoxine",
   "ALCHEMIST-BREW_POTION_CHANCE.hover.desc": "La probabilité qu'un Brassage à un Site de repos offre l'une des trois [gold]Potions[/gold] exclusives au Brassage de l'Alchimiste au lieu d'une [gold]Potion[/gold] normale. Par défaut : 15%",
   "ALCHEMIST-BREW_POTION_CHANCE.title": "Chance de Potion exclusive au Brassage",
   "ALCHEMIST-COMPATIBILITY.title": "Compatibilité",
@@ -13,18 +14,19 @@
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Réserve de cartes séparée",
   "ALCHEMIST-POTION_SELL_PERCENT.hover.desc": "Le pourcentage de la valeur en Pièces d'or que vous recevez en vendant au Marchand. Par défaut : 100%",
   "ALCHEMIST-POTION_SELL_PERCENT.title": "Prix de vente des Potions",
-  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Réinitialiser",
   "ALCHEMIST-RESET_UNLOCKS.title": "Réinitialiser toutes les cartes, reliques, potions et Ères de l'Alchimiste",
-  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Débloquer les Ères",
+  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Réinitialiser",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Débloquer toutes les Ères de l'Alchimiste dans la Frise temporelle",
+  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Débloquer les Ères",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.hover.desc": "Affiche un segment de prévisualisation sur la barre de vie d'un ennemi pour les dégâts différés de l'Alchimiste, afin de voir le coup à venir avant qu'il ne tombe. Désactivez pour une barre plus épurée.",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.title": "Afficher les prévisions de dégâts",
-  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "Met en surbrillance les cartes de votre Main dont un bonus est actif : doré pour un effet de Gambit, de Réaction ou d'Envoûtement. Désactivez pour masquer ces surbrillances.",
+  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "Met en surbrillance les cartes de votre Main dont un bonus est actif. Désactivez pour masquer ces surbrillances.",
   "ALCHEMIST-SHOW_HAND_GLOWS.title": "Afficher les lueurs de carte supplémentaires",
   "ALCHEMIST-TIMELINE.title": "Frise temporelle",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.hover.desc": "[sine]Tous[/sine] les personnages peuvent vendre leurs potions au [gold]Marchand[/gold] ! Contre des [gold]Pièces d'or[/gold] !\n\n(Avertissement : cette description a été financée par le Marchand.)",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.title": "Tous les personnages peuvent vendre des potions !",
-  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Tout débloquer",
+  "ALCHEMIST-UNLOCKS.title": "Déblocages",
   "ALCHEMIST-UNLOCK_ALL.title": "Débloquer toutes les cartes, reliques, potions et Ères de l'Alchimiste",
-  "ALCHEMIST-UNLOCKS.title": "Déblocages"
+  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Tout débloquer",
+  "ALCHEMIST.mod_title": "L'Alchimiste"
 }

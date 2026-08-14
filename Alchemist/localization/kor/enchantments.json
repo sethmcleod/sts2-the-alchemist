@@ -1,8 +1,8 @@
 {
-  "ALCHEMIST-EXALTED.description": "이 카드를 사용하면, [gold]힘[/gold]을 [blue]{Amount}[/blue] 얻습니다.",
-  "ALCHEMIST-EXALTED.title": "고양",
-  "ALCHEMIST-FUMING.description": "이 카드를 사용하면, 무작위 적에게 [gold]약화[/gold]를 [blue]{Amount}[/blue], [gold]취약[/gold]을 [blue]{Amount}[/blue] 부여합니다. [gold]중독[/gold]을 [blue]{Amount}[/blue] 얻습니다.",
-  "ALCHEMIST-FUMING.title": "발연",
-  "ALCHEMIST-LACED.description": "이 카드가 막히지 않은 피해를 줄 때마다, [gold]중독[/gold]을 [blue]{Amount}[/blue] 부여합니다.",
-  "ALCHEMIST-LACED.title": "맹독"
+  "ALCHEMIST-DOSED.description": "이 스킬 카드를 사용 시, [gold]항독소[/gold]를 [blue]{Amount}[/blue] 얻습니다.",
+  "ALCHEMIST-DOSED.title": "복용",
+  "ALCHEMIST-LACED.description": "이 공격 카드가 막히지 않은 피해를 줄 때마다, [gold]중독[/gold]을 [blue]{Amount}[/blue] 부여하고 [gold]중독[/gold]을 [blue]1[/blue] 얻습니다.",
+  "ALCHEMIST-LACED.title": "맹독",
+  "ALCHEMIST-POTENT.description": "이 파워 카드를 사용 시, [gold]힘[/gold]을 [blue]{Amount}[/blue] 얻습니다.",
+  "ALCHEMIST-POTENT.title": "약효"
 }

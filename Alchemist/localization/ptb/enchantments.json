@@ -1,8 +1,8 @@
 {
-  "ALCHEMIST-EXALTED.description": "Quando esta carta é jogada, receba [blue]{Amount}[/blue] de [gold]Força[/gold].",
-  "ALCHEMIST-EXALTED.title": "Exaltada",
-  "ALCHEMIST-FUMING.description": "Quando esta carta é jogada, aplique [blue]{Amount}[/blue] de [gold]Fraqueza[/gold] e [blue]{Amount}[/blue] de [gold]Vulnerável[/gold] a um inimigo aleatório. Receba [blue]{Amount}[/blue] de [gold]Veneno[/gold].",
-  "ALCHEMIST-FUMING.title": "Fumegante",
-  "ALCHEMIST-LACED.description": "Sempre que esta carta causar dano não bloqueado, aplique [blue]{Amount}[/blue] de [gold]Veneno[/gold].",
-  "ALCHEMIST-LACED.title": "Impregnada"
+  "ALCHEMIST-DOSED.description": "Quando esta Técnica for jogada, receba [blue]{Amount}[/blue] de [gold]Antitoxina[/gold].",
+  "ALCHEMIST-DOSED.title": "Dosada",
+  "ALCHEMIST-LACED.description": "Sempre que este Ataque causar dano não bloqueado, aplique [blue]{Amount}[/blue] de [gold]Veneno[/gold] e receba [blue]1[/blue] de [gold]Veneno[/gold].",
+  "ALCHEMIST-LACED.title": "Impregnada",
+  "ALCHEMIST-POTENT.description": "Quando este Poder for jogado, receba [blue]{Amount}[/blue] de [gold]Força[/gold].",
+  "ALCHEMIST-POTENT.title": "Potente"
 }

@@ -1,8 +1,8 @@
 {
-  "ALCHEMIST-EXALTED.description": "Lorsque cette carte est jouée, gagnez [blue]{Amount}[/blue] de [gold]Force[/gold].",
-  "ALCHEMIST-EXALTED.title": "Exalté",
-  "ALCHEMIST-FUMING.description": "Lorsque cette carte est jouée, appliquez [blue]{Amount}[/blue] [gold]Affaibli[/gold] et [blue]{Amount}[/blue] [gold]Vulnérable[/gold] à un ennemi aléatoire. Gagnez [blue]{Amount}[/blue] de [gold]Poison[/gold].",
-  "ALCHEMIST-FUMING.title": "Fumant",
-  "ALCHEMIST-LACED.description": "Lorsque cette carte inflige des dégâts non-bloqués, appliquez [blue]{Amount}[/blue] de [gold]Poison[/gold].",
-  "ALCHEMIST-LACED.title": "Imprégné"
+  "ALCHEMIST-DOSED.description": "Lorsque cette Compétence est jouée, gagnez [blue]{Amount}[/blue] d'[gold]Antitoxine[/gold].",
+  "ALCHEMIST-DOSED.title": "Dosé",
+  "ALCHEMIST-LACED.description": "Lorsque cette Attaque inflige des dégâts non bloqués, appliquez [blue]{Amount}[/blue] de [gold]Poison[/gold] et gagnez [blue]1[/blue] de [gold]Poison[/gold].",
+  "ALCHEMIST-LACED.title": "Imprégné",
+  "ALCHEMIST-POTENT.description": "Lorsque ce Pouvoir est joué, gagnez [blue]{Amount}[/blue] de [gold]Force[/gold].",
+  "ALCHEMIST-POTENT.title": "Concentré"
 }

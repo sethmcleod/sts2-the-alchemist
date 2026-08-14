@@ -1,10 +1,6 @@
 {
-  "ALCHEMIST-BREW.description": "Esta opção de Local de Descanso permite receber uma [gold]Poção[/gold] aleatória. Existem 3 [gold]Poções[/gold] que só podem ser obtidas desta forma.",
+  "ALCHEMIST-BREW.description": "Esta opção de Local de Descanso permite receber uma [gold]Poção[/gold] aleatória. Existem 3 [gold]Poções[/gold] que só podem ser obtidas desta forma. Você também pode vender [gold]Poções[/gold] ao [gold]Mercador[/gold].",
   "ALCHEMIST-BREW.title": "Preparar",
-  "ALCHEMIST-LIFEBLOOD.description": "O dano inclui a [gold]Regeneração[/gold] que você já possui.",
-  "ALCHEMIST-LIFEBLOOD.title": "Sangue Vital",
-  "ALCHEMIST-MASTERWORK.description": "Esta carta brilha em [gold]dourado[/gold] se você tiver [gold]Encantado[/gold] cinco ou mais cartas neste combate, incluindo a que você [gold]Infundiria[/gold].",
-  "ALCHEMIST-MASTERWORK.title": "Obra-Prima",
-  "ALCHEMIST-OVERFLOW.description": "Golpeia TODOS os inimigos um número de vezes equivalente à sua [gold]Regeneração[/gold], incluindo a 1 que esta carta concede.",
-  "ALCHEMIST-OVERFLOW.title": "Transbordar"
+  "ALCHEMIST-MASTERWORK.description": "Esta carta brilha em [gold]dourado[/gold] se você tiver [gold]Encantado[/gold] 3 ou mais cartas neste combate, incluindo a que você [gold]Infundiria[/gold].",
+  "ALCHEMIST-MASTERWORK.title": "Obra-Prima"
 }

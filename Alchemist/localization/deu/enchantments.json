@@ -1,8 +1,8 @@
 {
-  "ALCHEMIST-EXALTED.description": "Wenn du diese Karte spielst, erhalte [blue]{Amount}[/blue] [gold]Stärke[/gold].",
-  "ALCHEMIST-EXALTED.title": "Erhaben",
-  "ALCHEMIST-FUMING.description": "Wenn du diese Karte spielst, wende [blue]{Amount}[/blue] [gold]Schwach[/gold] und [blue]{Amount}[/blue] [gold]Verwundbar[/gold] auf einen zufälligen Gegner an. Erhalte [blue]{Amount}[/blue] [gold]Gift[/gold].",
-  "ALCHEMIST-FUMING.title": "Dampfend",
-  "ALCHEMIST-LACED.description": "Immer wenn diese Karte ungeblockten Schaden zufügt, wende [blue]{Amount}[/blue] [gold]Gift[/gold] an.",
-  "ALCHEMIST-LACED.title": "Versetzt"
+  "ALCHEMIST-DOSED.description": "Wenn diese Fertigkeit gespielt wird, erhalte [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
+  "ALCHEMIST-DOSED.title": "Dosiert",
+  "ALCHEMIST-LACED.description": "Immer wenn dieser Angriff ungeblockten Schaden zufügt, wende [blue]{Amount}[/blue] [gold]Gift[/gold] an und erhalte [blue]1[/blue] [gold]Gift[/gold].",
+  "ALCHEMIST-LACED.title": "Versetzt",
+  "ALCHEMIST-POTENT.description": "Wenn diese Macht gespielt wird, erhalte [blue]{Amount}[/blue] [gold]Stärke[/gold].",
+  "ALCHEMIST-POTENT.title": "Konzentriert"
 }

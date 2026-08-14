@@ -7,6 +7,45 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added Antitoxin: it absorbs damage you would take from Poison, up to a maximum of 9
+- Added Bottoms Up card: "Whenever you gain Poison, ALL other players gain that much Block."
+- Added Free Samples card: "ALL other players Infuse 2 (3) cards in their Hand. Draw 2 cards."
+- Added new animations to the character model: attack, heavy attack and cast
+- Added Spare Dose relic: "Whenever you gain Poison, gain 1 Antitoxin."
+
+### Changed
+
+- Added, removed, reworked and renamed many cards to be more aligned with the base game
+- Reworked Fuming enchantment into Dosed: now gains 1 Antitoxin when played
+- Reworked Laced enchantment: now applies 1 Poison and gains 1 Poison when played
+- Reworked Marsh Tonic potion: "Gain 6 Antitoxin."
+- Changed Snake Tail into a Rare relic
+- Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy."
+- Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block."
+- Updated map drawing ink colour to be purple
+- Changed the default Potion sale price: 100% -> 50% of the shop value, and its range is now 10% to 90%. This setting only applies to new runs
+
+### Removed
+
+- Removed Gambit keyword
+- Removed Reaction keyword
+- Removed Unstable keyword and the potion archetype. Elixir is now the only card that makes potions
+- Removed Quintessence relic
+
+### Fixed
+
+- Fixed Gilded Kit not being in the event pool, like the other characters' upgraded starter relics
+- Fixed Fighting Spirits counting Potions used by other players in Multiplayer, not only your own
+- Fixed Orobas dialogue that named the removed Nigredo and Albedo cards
+- Fixed Masterwork not Exhausting on the play that meets its condition
+- Fixed Golden Touch, Weak Spot, Grudge and Rot affecting other players in Multiplayer
+- Fixed Snake Tail preventing deaths that Poison did not cause
+- Fixed Gold Leaf potion being able to appear from in-combat potion generation, like Alchemize
+- Fixed the Merchant buying back Potions from the Cauldron relic bought at that shop
+- Fixed missing VFX for Soporific potion
+
 ## [0.7.6] - 2026-08-13
 
 ### Changed
@@ -71,7 +110,7 @@ mod).
 
 ### Added
 
-- Added Virulence card: "Whenever you gain Poison, deal that much damage to ALL enemies."
+- Added Share The Pain card: "Whenever you gain Poison, deal that much damage to ALL enemies."
 
 ### Changed
 
@@ -281,7 +320,7 @@ mod).
 - Reworked Transmute card: "Gain Strength this turn equal to your Poison. Reaction (Exhaust): Procure a random Common (Uncommon) potion."
 - Reworked Corrode card: "Apply 6 Poison and 1 (2) Weak to ALL enemies. Reaction (Skill): Apply 2 additional Poison."
 - Reworked Bramble card: "Gain 3 (4) Thorns. Reaction (Block): Gain 2 additional Thorns."
-- Reworked Decoction card: "Exhaust 1 card. Procure a random potion. Reaction (Enchanted): Infuse a card in your Hand."
+- Reworked Trade Up card: "Exhaust 1 card. Procure a random potion. Reaction (Enchanted): Infuse a card in your Hand."
 - Reworked Lash Out card: "Deal 6 (8) damage 3 times. Gambit: Hits an additional time. Reaction (Power): Hits an additional time."
 - Reworked Drip Feed card: "At the start of your turn, gain 1 (2) Regen. Reaction (Skill): Gain 1 additional Regen."
 - Renamed Delayed Reaction to Unstable Compound, reusing the name from the removed Attack
@@ -311,7 +350,7 @@ mod).
 ### Added
 
 - Added Overdose card: "Lose 4 HP. Deal 15 (20) damage. Gambit: Gain 2 Regen." Replaces Last Resort
-- Added Percolate card: "At the start of your next turn, draw 3 (4) additional cards." Replaces Double Dose
+- Added Sleep On It card: "At the start of your next turn, draw 3 (4) additional cards." Replaces Double Dose
 - Added Quicklime card: "Deal 7 (9) damage. Gain 5 (7) Block. Seep: Gain 3 Block." Replaces Tinge
 - Added Froth card: "Retain. Ferment. Deal 4 (6) damage. Hits an additional time for each turn fermented." Replaces Full Measure
 
@@ -322,8 +361,8 @@ mod).
 - Reworked Resolve card: "While Gambit is active, you have 2 (3) additional Strength and Dexterity." Cost decreased from 3(2) -> 1
 - Reworked Bloom card into Bramble: "Gain 3 (4) Thorns. Gambit: Gain 2 additional Thorns."
 - Reworked Fester card: "Apply 2 (3) Poison. Gain 2 Poison. Poison is triggered against the enemy 1 (2) additional time(s) next turn." Cost decreased from 1 -> 0
-- Reworked Vivisect card: "Deal 7 (10) damage. Draw 2 cards. If this card is Enchanted, apply 1 (2) Weak and 1 (2) Vulnerable."
-- Reworked Circulation card: "Gain 2 (4) Regen. Lose half your Regen, then draw that many cards."
+- Reworked Deep Cut card: "Deal 7 (10) damage. Draw 2 cards. If this card is Enchanted, apply 1 (2) Weak and 1 (2) Vulnerable."
+- Reworked Blood Rush card: "Gain 2 (4) Regen. Lose half your Regen, then draw that many cards."
 - Changed Carapace card: Block increased from 6 -> 10, Block per turn fermented changed from 6(9) -> 4(6)
 - Buffed Sweat It Out card: it now Ferments, gaining 1 additional Poison for each turn fermented
 - Changed Fumigate card: damage is now 1(2), and it keeps Exhaust when Upgraded
@@ -477,7 +516,7 @@ mod).
   Exhaust Pile
 - Buffed Quicksilver Draught potion: it no longer skips the card draw on the
   extra turn; it now simply grants an extra turn
-- Reworked Fumigate card: "Deal 1 (2) damage to ALL enemies. Deals 1 additional
+- Reworked Smoke Out card: "Deal 1 (2) damage to ALL enemies. Deals 1 additional
   damage for each card in your Exhaust Pile. Gain 3 (2) Poison." -> "Deal 1
   damage to ALL enemies. Hits an additional time for each card in your Exhaust
   Pile. Exhaust. (Doesn't Exhaust)". It shows the live hit bonus in green

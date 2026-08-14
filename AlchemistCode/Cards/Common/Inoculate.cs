@@ -6,6 +6,8 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Inoculate : AlchemistCard
 {
+    protected internal override bool PlaysCastAnimation => false;
+
     public Inoculate() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(7, 3);
@@ -13,7 +15,7 @@ public class Inoculate : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await LoseHp(choiceContext, 3);
+        await LoseHp(choiceContext, 2);
         await CommonActions.CardBlock(this, play);
     }
 }

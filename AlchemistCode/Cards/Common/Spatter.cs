@@ -11,13 +11,12 @@ public class Spatter : AlchemistCard
 {
     public Spatter() : base(1, CardType.Attack, CardRarity.Common, TargetType.RandomEnemy)
     {
-        WithDamage(3, 1);
+        WithDamage(2, 1);
         WithVar("hits", 4, 0);
-        WithPower<PoisonPower>(2, 0);
     }
 
-    // Deliberately no per-hit Poison of its own: that would trigger a Poison-on-apply effect such as
-    // Sediment once per hit. The many small hits already make this a strong Laced target
+    // No Poison of its own: Laced is what puts Poison on this, once per hit, and a per-hit apply here
+    // would also trigger Harden four times. Four small hits rather than Sword Boomerang's three
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;
@@ -31,6 +30,5 @@ public class Spatter : AlchemistCard
                 .Targeting(enemy)
                 .Execute(choiceContext);
         }
-        await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);
     }
 }

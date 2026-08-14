@@ -9,16 +9,17 @@ public class Bestow : AlchemistCard
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
-    public Bestow() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
+    public Bestow() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
-        WithCostUpgradeBy(-1);
+        WithVar("Infuse", 1, 1);
         WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null || play.Target?.Player is not { } targetPlayer) return;
-        Infusion.InfuseRandomFromHand(targetPlayer, 1);
+        Infusion.InfuseRandomFromHand(targetPlayer, DynamicVars["Infuse"].IntValue);
+        await CardPileCmd.Draw(choiceContext, 1, targetPlayer);
         await CardPileCmd.Draw(choiceContext, 1, Owner);
     }
 }

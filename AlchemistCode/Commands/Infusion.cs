@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Powers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,8 @@ public static class Infusion
     private static Type? EnchantTypeFor(CardModel card) => card.Type switch
     {
         CardType.Attack => typeof(Laced),
-        CardType.Skill => typeof(Fuming),
-        CardType.Power => typeof(Exalted),
+        CardType.Skill => typeof(Dosed),
+        CardType.Power => typeof(Potent),
         _ => null,
     };
 
@@ -45,16 +46,18 @@ public static class Infusion
 
     // The tips and the enchant share these, and FromEnchantment defaults to 1, so a tip that does not
     // pass one goes stale in silence
-    private const int LacedAmount = 2;
-    private const int FumingAmount = 1;
-    private const int ExaltedAmount = 1;
+    private const int LacedAmount = 1;
+    private const int DosedAmount = 1;
+    private const int PotentAmount = 1;
 
-    // Take(1) keeps each enchantment to its own tip and drops the nested ones
+    // Take(1) keeps each enchantment's own tip and drops its extras, which is where Dosed explains
+    // Antitoxin. The power is invisible so there is no icon to hover either, so it is added back once
     public static IEnumerable<IHoverTip> InfuseTips() =>
         new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
             .Concat(HoverTipFactory.FromEnchantment<Laced>(LacedAmount).Take(1))
-            .Concat(HoverTipFactory.FromEnchantment<Fuming>(FumingAmount).Take(1))
-            .Concat(HoverTipFactory.FromEnchantment<Exalted>(ExaltedAmount).Take(1));
+            .Concat(HoverTipFactory.FromEnchantment<Dosed>(DosedAmount).Take(1))
+            .Concat(HoverTipFactory.FromEnchantment<Potent>(PotentAmount).Take(1))
+            .Append(HoverTipFactory.FromPower<AntitoxinPower>());
 
     public static void RecordCombatEnchant(CardModel card) => EnchantedThisCombat.Add(card);
 
@@ -67,6 +70,9 @@ public static class Infusion
     {
         if (card.Type is CardType.Curse or CardType.Status or CardType.Quest)
             return !card.Keywords.Contains(CardKeyword.Ethereal);
+        // Laced keys on IsPoweredAttack, so an Unpowered attacker would take a visible Laced icon
+        // and a promise of Poison that never fires
+        if (card is AlchemistCard { DealsUnpoweredDamage: true }) return false;
         if (EnchantTypeFor(card) is not { } type) return false;
         return card.Enchantment == null || card.Enchantment.GetType() == type;
     }
@@ -160,10 +166,10 @@ public static class Infusion
                 TryEnchant<Laced>(card, LacedAmount);
                 break;
             case CardType.Skill:
-                TryEnchant<Fuming>(card, FumingAmount);
+                TryEnchant<Dosed>(card, DosedAmount);
                 break;
             case CardType.Power:
-                TryEnchant<Exalted>(card, ExaltedAmount);
+                TryEnchant<Potent>(card, PotentAmount);
                 break;
         }
     }

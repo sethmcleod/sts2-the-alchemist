@@ -16,9 +16,5 @@ public static class AlchemistTips
     // Brew is a Rest Site option rather than a keyword, so the Kit relics that grant it explain it here
     public static IHoverTip Brew => Static("ALCHEMIST-BREW");
 
-    // The condition-free wording, for an entity that names the keyword without carrying one
-    public static IHoverTip Reaction =>
-        KeywordTipFactory.Build("reaction", "ALCHEMIST-REACTION.title", "ALCHEMIST-REACTION.description");
 
-    public static IHoverTip Gambit => HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit);
 }
