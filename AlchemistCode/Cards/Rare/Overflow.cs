@@ -10,8 +10,9 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Overflow : AlchemistCard
 {
-    public Overflow() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public Overflow() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
+        WithCostUpgradeBy(-1);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));

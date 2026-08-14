@@ -12,10 +12,10 @@ public class Transmute : AlchemistCard
     public Transmute() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithKeyword(CardKeyword.Exhaust);
-        WithVar("Cards", 2, 0);
+        WithVar("Cards", 2, 1);
         WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play) =>
-        Infusion.InfuseChosen(choiceContext, this, PileType.Hand, DynamicVars["Cards"].IntValue);
+        Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 0, DynamicVars["Cards"].IntValue);
 }

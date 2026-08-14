@@ -175,7 +175,7 @@
   "ALCHEMIST-TOXIN_SKIN.title": "Toxin Skin",
   "ALCHEMIST-TRADE_UP.description": "Exhaust 1 card.\n[gold]Infuse[/gold] a card in your Hand.",
   "ALCHEMIST-TRADE_UP.title": "Trade Up",
-  "ALCHEMIST-TRANSMUTE.description": "[gold]Infuse[/gold] {Cards} cards in your [gold]Hand[/gold].",
+  "ALCHEMIST-TRANSMUTE.description": "[gold]Infuse[/gold] up to {Cards} cards in your [gold]Hand[/gold].",
   "ALCHEMIST-TRANSMUTE.title": "Transmute",
   "ALCHEMIST-UNRIPE_FRUIT.description": "After {combats:diff()} more {combats:plural:combat|combats}, ripens into a [gold]Golden Fruit[/gold].",
   "ALCHEMIST-UNRIPE_FRUIT.title": "Unripe Fruit",
