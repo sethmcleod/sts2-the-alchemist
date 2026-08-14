@@ -151,7 +151,7 @@
   "ALCHEMIST-SALVE.title": "Salve",
   "ALCHEMIST-SHARE_THE_PAIN.description": "Whenever you gain [gold]Poison[/gold], deal that much damage to ALL enemies.",
   "ALCHEMIST-SHARE_THE_PAIN.title": "Share The Pain",
-  "ALCHEMIST-SIPHON.description": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nIf this card is [gold]Enchanted[/gold], draw an additional card.",
+  "ALCHEMIST-SIPHON.description": "Deal {Damage:diff()} damage.\nDraw {Cards} card. [gold]Infuse[/gold] it.",
   "ALCHEMIST-SIPHON.title": "Siphon",
   "ALCHEMIST-SLEEP_ON_IT.description": "Next turn, draw {draw:diff()} {draw:plural:card|cards}.",
   "ALCHEMIST-SLEEP_ON_IT.title": "Sleep On It",

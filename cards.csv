@@ -70,9 +70,9 @@ Resolve,Uncommon,Power,2,Gain 2 (3) Strength and 2 (3) Dexterity. Gain 3 Poison.
 Rolling Boil,Rare,Attack,2,Retain. Ferment (0/3). Deal 6 damage twice. Each hit deals 4 (6) additional damage for each turn fermented.
 Rot,Rare,Power,0,"Whenever an enemy dies, apply 5 (8) Poison to ALL enemies."
 Rummage,Common,Skill,1,Draw 2 (3) cards. Discard 1 card.
-Salve,Uncommon,Skill,1,Gain 4 (6) Block. Draw a card. Infuse a card in your Hand.
+Salve,Uncommon,Skill,1,Gain 4 (6) Block. Draw 1 card. Infuse a card in your Hand.
 Share The Pain,Rare,Power,3 (2),"Whenever you gain Poison, deal that much damage to ALL enemies."
-Siphon,Common,Attack,1,"Deal 6 (9) damage. Draw 1 card. If this card is Enchanted, draw an additional card."
+Siphon,Common,Attack,1,Deal 6 (8) damage. Draw 1 card and Infuse it.
 Sleep On It,Common,Skill,0,"At the start of your next turn, draw 2 (3) additional cards. Exhaust."
 Slow Burn,Common,Skill,1,"At the end of your next turn, deal 14 (18) damage to the enemy."
 Smoke Out,Common,Attack,1,Deal 4 (7) damage to ALL enemies. Apply 1 Weak to ALL enemies.
