@@ -184,6 +184,9 @@ def check_fallback_art() -> tuple[list[str], list[str]]:
         if "ResourceLoader.Exists" not in body:
             continue
         tail = body[body.index("ResourceLoader.Exists"):]
+        # A fallback may point at a base game asset, which ships in the game pck and is not ours to check
+        if re.search(r'return "res://', tail):
+            continue
         join = re.search(r'return Path\.Join\(MainFile\.ResPath,\s*(.*?)\);', tail, re.S)
         if not join:
             warnings.append(f"{name}: no fallback art, so a miss returns a path that will throw")

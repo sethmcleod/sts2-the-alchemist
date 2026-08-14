@@ -69,7 +69,7 @@ public static class StringExtensions
         if (ResourceLoader.Exists(path)) return path;
 
         MainFile.Logger.Error("Could not find potion image path: " + path);
-        return path;
+        return Path.Join(MainFile.ResPath, "images", "potions", "potion.png");
     }
 
     public static string PotionOutlinePath(this string path)
@@ -78,7 +78,7 @@ public static class StringExtensions
         if (ResourceLoader.Exists(path)) return path;
 
         MainFile.Logger.Error("Could not find potion outline path: " + path);
-        return path;
+        return Path.Join(MainFile.ResPath, "images", "potions", "outlines", "potion.png");
     }
 
     public static string BadgeImagePath(this string path)
@@ -87,7 +87,7 @@ public static class StringExtensions
         if (ResourceLoader.Exists(path)) return path;
 
         MainFile.Logger.Error("Could not find badge image path: " + path);
-        return path;
+        return Path.Join(MainFile.ResPath, "images", "badges", "badge.png");
     }
 
     public static string CharacterUiPath(this string path)
@@ -101,6 +101,7 @@ public static class StringExtensions
         if (ResourceLoader.Exists(path)) return path;
 
         MainFile.Logger.Error("Could not find enchantment image path: " + path);
-        return path;
+        // The base game ships an "unknown enchantment" icon, so no mod placeholder is needed here
+        return "res://images/enchantments/missing_enchantment.png";
     }
 }
