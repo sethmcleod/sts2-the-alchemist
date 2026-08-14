@@ -1,8 +1,6 @@
 using Alchemist.AlchemistCode.Compat;
-using System.Reflection;
 using BaseLib.Extensions;
 using Godot;
-using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
@@ -35,7 +33,9 @@ internal static class AlchemistVisuals
     private const string CastAnimationLeaf = "cast";
     private const string DeathAnimationLeaf = "die";
     private const string RelaxedAnimationLeaf = "relaxed_loop";
+    // Our rig calls it near_death_loop and the base game calls it low_health_loop, thus both
     private const string NearDeathAnimationLeaf = "near_death_loop";
+    private const string LowHealthAnimationLeaf = "low_health_loop";
     private const string ShineAnimationLeaf = "shine";
 
     // The idle holds track 0. A second track plays the blink over it, thus the eyes keep their own
@@ -95,33 +95,6 @@ internal static class AlchemistVisuals
     /// <summary>The shine on the staff gem, or null if the skeleton holds none.</summary>
     public static string? ShineAnimation { get; private set; }
 
-    /// <summary>
-    /// The trigger the game raises at low HP, or null on a build that raises none.
-    /// </summary>
-    /// <remarks>
-    /// The low HP idle arrived in 0.111.0. The public branch at the time of writing is 0.110.1 and
-    /// its CreatureAnimator names only Idle, Attack, PowerUp, Cast, Dead, Hit and Revive, thus
-    /// there is nothing to hang the animation on and the character keeps the ordinary idle. Reading
-    /// the constants rather than the version means the animation starts working on the build that
-    /// adds the trigger, whatever that build calls itself.
-    /// </remarks>
-    public static string? NearDeathTrigger { get; } = FindNearDeathTrigger();
-
-    private static string? FindNearDeathTrigger()
-    {
-        foreach (var field in typeof(CreatureAnimator).GetFields(BindingFlags.Public | BindingFlags.Static))
-        {
-            if (field.FieldType != typeof(string)) continue;
-
-            var name = field.Name;
-            if (!name.Contains("nearDeath", StringComparison.OrdinalIgnoreCase)
-                && !name.Contains("lowHp", StringComparison.OrdinalIgnoreCase)) continue;
-
-            if (field.GetValue(null) is string trigger) return trigger;
-        }
-
-        return null;
-    }
 
     // How high the model stands on screen, from the feet to the top of the art. This is near the
     // height of the ironclad (1185 units at 0.28 scale). The scale comes from the skeleton at run
@@ -202,7 +175,8 @@ internal static class AlchemistVisuals
         CastAnimation = SpineModel.ResolveAnimation(data, CastAnimationLeaf);
         DeathAnimation = SpineModel.ResolveAnimation(data, DeathAnimationLeaf);
         RelaxedAnimation = SpineModel.ResolveAnimation(data, RelaxedAnimationLeaf);
-        NearDeathAnimation = SpineModel.ResolveAnimation(data, NearDeathAnimationLeaf);
+        NearDeathAnimation = SpineModel.ResolveAnimation(data, NearDeathAnimationLeaf)
+            ?? SpineModel.ResolveAnimation(data, LowHealthAnimationLeaf);
         ShineAnimation = SpineModel.ResolveAnimation(data, ShineAnimationLeaf);
 
         if (BlinkAnimation == null)

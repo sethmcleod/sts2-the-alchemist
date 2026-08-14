@@ -7,6 +7,7 @@ using Godot;
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
@@ -67,14 +68,30 @@ public class Alchemist : PlaceholderCharacterModel
     protected override IEnumerable<string> ExtraAssetPaths =>
         [AlchemistVisuals.TexturePath, AlchemistRestSite.TexturePath];
 
-    // Built by hand because BaseLib's SetupAnimationState registers no heavyAttack or PowerUp
-    public override CreatureAnimator SetupCustomAnimationStates(MegaSprite controller)
+    // Overrides GenerateAnimator rather than BaseLib's SetupCustomAnimationStates, because only
+    // this signature carries the Creature, and the low health idle needs it. The base game does not
+    // raise a trigger for low health: it registers TWO Idle states with opposite conditions and lets
+    // every one shot pick the idle that fits when it ends. IsLowHealth is a quarter HP or less
+    public override CreatureAnimator GenerateAnimator(MegaSprite controller, Creature creature)
     {
         AlchemistVisuals.StartIdleFlourishes(controller);
 
         var idle = new AnimState(AlchemistVisuals.IdleAnimation, isLooping: true);
-        AnimState Once(string? name) =>
-            name == null ? idle : new AnimState(name) { NextState = idle };
+        var lowIdle = AlchemistVisuals.NearDeathAnimation is { } low
+            ? new AnimState(low, isLooping: true)
+            : idle;
+
+        bool Low() => IsLowHealth(creature);
+
+        AnimState Once(string? name)
+        {
+            if (name == null) return idle;
+
+            var state = new AnimState(name);
+            state.AddNextState(idle, () => !Low());
+            state.AddNextState(lowIdle, Low);
+            return state;
+        }
 
         var hurt = Once(AlchemistVisuals.HurtAnimation);
         var attack = Once(AlchemistVisuals.AttackAnimation);
@@ -89,8 +106,9 @@ public class Alchemist : PlaceholderCharacterModel
             relaxed.AddBranch("Idle", idle);
         }
 
-        var animator = new CreatureAnimator(idle, controller);
-        animator.AddAnyState("Idle", idle);
+        var animator = new CreatureAnimator(Low() ? lowIdle : idle, controller);
+        animator.AddAnyState("Idle", idle, () => !Low());
+        animator.AddAnyState("Idle", lowIdle, Low);
         animator.AddAnyState("Dead", dead);
         animator.AddAnyState("Hit", hurt);
         animator.AddAnyState("Attack", attack);
@@ -98,21 +116,7 @@ public class Alchemist : PlaceholderCharacterModel
         animator.AddAnyState("heavyAttack", heavy);
         animator.AddAnyState("PowerUp", cast);
         animator.AddAnyState("Relaxed", relaxed);
-        AddNearDeath(animator, idle);
         return animator;
-    }
-
-    // 0.111.0 adds a low HP idle. The public branch names no trigger for it, thus the state goes in
-    // only when the game has one and the character otherwise keeps the ordinary idle. Reflection
-    // rather than a version check, because the trigger appearing is the thing that matters
-    private static void AddNearDeath(CreatureAnimator animator, AnimState idle)
-    {
-        if (AlchemistVisuals.NearDeathAnimation is not { } nearDeath) return;
-        if (AlchemistVisuals.NearDeathTrigger is not { } trigger) return;
-
-        var state = new AnimState(nearDeath, isLooping: true);
-        state.AddBranch("Idle", idle);
-        animator.AddAnyState(trigger, state);
     }
 
     public override Control CustomIcon
