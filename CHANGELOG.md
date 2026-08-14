@@ -19,12 +19,14 @@ mod).
 
 - Added, removed, reworked and renamed many cards to be more aligned with the base game
 - Reworked Fuming enchantment into Dosed: now gains 1 Antitoxin when played
-- Reworked Laced echantment: now applies 1 Poison and gains 1 Poison when played
+- Reworked Laced enchantment: now applies 1 Poison and gains 1 Poison when played
 - Reworked Marsh Tonic potion: "Gain 10 Antitoxin."
 - Changed Snake Tail into a Rare relic
 - Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy."
 - Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block."
 - Updated map drawing ink colour to be purple
+- Renamed Overflow card to Strain, and increased its cost: 1 -> 2 (1)
+- Changed Transmute card: it now Infuses up to 2 (3) cards, instead of exactly 2
 
 ### Removed
 
@@ -38,6 +40,8 @@ mod).
 - Fixed Gilded Kit not being in the event pool, like the other characters' upgraded starter relics
 - Fixed Fighting Spirits counting Potions used by other players in Multiplayer, not only your own
 - Fixed Orobas dialogue that named the removed Nigredo and Albedo cards
+- Fixed Masterwork not Exhausting on the play that meets its condition
+- Fixed Golden Touch, Weak Spot, Grudge and Rot affecting other players in Multiplayer
 
 ## [0.7.3] - 2026-08-12
 
