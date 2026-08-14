@@ -7,9 +7,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-public class BigSwing : AlchemistCard
+public class RecklessSwing : AlchemistCard
 {
-    public BigSwing() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+    public RecklessSwing() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(11, 3);
     }

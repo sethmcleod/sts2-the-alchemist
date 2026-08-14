@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mhdhetji0j2w"
-path="res://.godot/imported/big_swing.png-f31e369afa6821889fdbe19f3b3c669d.ctex"
+path="res://.godot/imported/reckless_swing.png-4d6b291d7fd0b8664b4016c6d0a72c2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/big_swing.png"
-dest_files=["res://.godot/imported/big_swing.png-f31e369afa6821889fdbe19f3b3c669d.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/reckless_swing.png"
+dest_files=["res://.godot/imported/reckless_swing.png-4d6b291d7fd0b8664b4016c6d0a72c2a.ctex"]
 
 [params]
 

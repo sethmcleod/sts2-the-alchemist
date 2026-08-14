@@ -104,7 +104,7 @@ COLORS = {
     "Heavy Dose": ("#650101", "#c46a12", "TR", "Poison attacks"),
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
-    "Big Swing": ("#650101", "#2f9e6a", "TR", "Poison attacks"),
+    "Reckless Swing": ("#650101", "#2f9e6a", "TR", "Poison attacks"),
     "Chain Reaction": ("#650101", "#e8451f", "TR", "Poison attacks"),
     "Next Up": ("#2f0170", "#c0a24a", "TR", "Unique"),
     "Cheap Cover": ("#1f1723", "#7f9aa8", "BR", "Exhaust pile: skills"),
