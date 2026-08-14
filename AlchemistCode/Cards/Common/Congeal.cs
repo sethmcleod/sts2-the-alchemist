@@ -8,7 +8,9 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Congeal : AlchemistCard
 {
-    public Congeal() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+public Congeal() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(5, 2);
         WithCards(1, 0);

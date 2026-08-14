@@ -1,8 +1,10 @@
 using System.Runtime.CompilerServices;
+using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Powers;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
@@ -17,10 +19,10 @@ namespace Alchemist.AlchemistCode.Patches;
 // recoloured; the empty track is left as the health bar draws it
 public static class AntitoxinBarPatches
 {
-    // Clears the HP number, which is drawn larger than its own 16px bar and overflows it
-    private const float Gap = 14f;
+    // Clears the HP number, which is drawn larger than its own 16px bar and overflows it. Tightened
+    // as far as the two sets of digits allow without touching
+    private const float Gap = 10f;
 
-    private static readonly Color Fill = new("9b5cff");
     private static readonly Color TextColor = new("efe6ff");
     private static readonly Color TextOutline = new("2e0f52");
     // The same pair the health bar uses when Poison is lethal, reused for "this tick empties the bar"
@@ -34,6 +36,7 @@ public static class AntitoxinBarPatches
         public NinePatchRect? Incoming;
         public Label Text = null!;
         public float FullWidth;
+        public int LastKnown;
     }
 
     private static readonly ConditionalWeakTable<NHealthBar, Parts> Bars = new();
@@ -79,7 +82,7 @@ public static class AntitoxinBarPatches
             var label = clone.GetNodeOrNull<Label>("HpLabel");
             if (fg == null || label == null) { clone.QueueFree(); return; }
 
-            if (fg is CanvasItem fgItem) fgItem.SelfModulate = Fill;
+            if (fg is CanvasItem fgItem) fgItem.SelfModulate = AlchemistModConfig.AntitoxinBarColor;
 
             // The duplicate inherited the HP label's red-on-cream styling at full size, which both clashes
             // with the purple and collides with the HP number above it
@@ -130,6 +133,12 @@ public static class AntitoxinBarPatches
             var creature = CreatureRef(__instance);
             if (!Shows(creature)) { parts.Root.Visible = false; return; }
 
+            // Combat teardown removes every power, so the live amount drops to 0 while the end of
+            // combat is still on screen. Hold the last in-combat value instead of blanking the bar
+            var inCombat = CombatManager.Instance?.IsInProgress ?? false;
+            var live = creature.GetPowerAmount<AntitoxinPower>();
+            if (inCombat) parts.LastKnown = live;
+
             var hp = __instance.HpBarContainer;
             parts.Root.Visible = true;
             parts.Root.Position = new Vector2(hp.Position.X, hp.Position.Y + hp.Size.Y + Gap);
@@ -137,7 +146,7 @@ public static class AntitoxinBarPatches
 
             // The real bar shrinks its foreground with a negative OffsetRight, so this matches it
             var full = parts.Root.GetNodeOrNull<Control>("HpForegroundContainer")?.Size.X ?? hp.Size.X;
-            var current = creature.GetPowerAmount<AntitoxinPower>();
+            var current = inCombat ? live : parts.LastKnown;
             var max = AntitoxinPower.MaxFor(creature);
             var ratio = max > 0 ? Mathf.Clamp((float)current / max, 0f, 1f) : 0f;
             // What the next Poison tick will spend. Amount, not CalculateTotalDamageNextTurn, because
@@ -150,6 +159,7 @@ public static class AntitoxinBarPatches
             // to zero still leaves a purple stub. Hide it outright at zero and when the tick takes it all
             var drainedFully = current > 0 && spent >= current;
             parts.Foreground.Visible = current > 0 && !drainedFully;
+            parts.Foreground.SelfModulate = AlchemistModConfig.AntitoxinBarColor;
             parts.Foreground.OffsetRight = full * afterRatio - full;
             parts.Text.Text = $"{current}/{max}";
 

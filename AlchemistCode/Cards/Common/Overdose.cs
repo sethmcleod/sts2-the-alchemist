@@ -17,6 +17,7 @@ public class Overdose : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await LoseHp(choiceContext, DynamicVars["hpLoss"].IntValue);
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_blunt")).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_blunt"))
+            .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay).Execute(choiceContext);
     }
 }

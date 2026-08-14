@@ -6,7 +6,9 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Inoculate : AlchemistCard
 {
-    public Inoculate() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+public Inoculate() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(9, 3);
     }

@@ -17,7 +17,8 @@ public class BigSwing : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_rock_shatter"),
-            tmpSfx: "heavy_attack.mp3").Execute(choiceContext);
+            tmpSfx: "heavy_attack.mp3")
+            .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay).Execute(choiceContext);
         var picked = (await CardSelectCmd.FromHandForDiscard(
             choiceContext, Owner,
             new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1),

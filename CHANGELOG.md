@@ -10,9 +10,10 @@ mod).
 ### Added
 
 - Added Antitoxin bar below HP bar: it absorbs damage you would take from Poison
+- Added Bottoms Up multiplayer card: "Whenever you gain Poison, ALL other players gain that much Block."
+- Added Free Samples multiplayer card,: "ALL other players Infuse 2 (3) cards in their Hand. Draw 2 cards."
+- Added new animations to the character model: attack, heavy attack and cast
 - Added Spare Dose relic: "Whenever you gain Poison, gain 1 Antitoxin."
-- Added Bottoms Up card, multiplayer only: "Whenever you gain Poison, ALL other players gain that much Block."
-- Added Free Samples card, multiplayer only: "ALL other players Infuse 2 (3) cards in their Hand. Draw 2 cards."
 
 ### Changed
 
@@ -36,8 +37,8 @@ mod).
 
 ### Fixed
 
-- Fixed Orobas dialogue that named the removed Nigredo and Albedo cards
 - Fixed Fighting Spirits counting Potions used by other players in Multiplayer, not only your own
+- Fixed Orobas dialogue that named the removed Nigredo and Albedo cards
 
 ## [0.7.3] - 2026-08-12
 

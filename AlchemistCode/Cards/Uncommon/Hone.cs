@@ -8,7 +8,9 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Hone : AlchemistCard
 {
-    public Hone() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+public Hone() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
     }

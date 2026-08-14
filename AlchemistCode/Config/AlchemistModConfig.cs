@@ -57,6 +57,11 @@ public class AlchemistModConfig : SimpleModConfig
 
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]
+    [ConfigColorPicker(EditAlpha = false)]
+    public static Color AntitoxinBarColor { get; set; } = new("9B5CFF");
+
+    [ConfigSection("Accessibility")]
+    [ConfigHoverTip]
     public static bool ShowHandGlows { get; set; } = true;
 
     // Shown above Unlock All: opens the Timeline without granting the card, relic, and potion unlocks

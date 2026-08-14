@@ -9,7 +9,9 @@ namespace Alchemist.AlchemistCode.Cards.Token;
 [Pool(typeof(TokenCardPool))]
 public class Distillate : AlchemistCard
 {
-    public Distillate() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+public Distillate() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
         WithBlock(3, 2);
         WithCards(1, 0);

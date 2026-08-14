@@ -17,11 +17,14 @@ public class Alchemist : PlaceholderCharacterModel
 {
     public const string CharacterId = "Alchemist";
 
-    // Medium violet, matches DeckEntryCardColor; lighter than iris for
-    // readability on dark backgrounds, bluer than the Necrobinder's EE82EE
     public static readonly Color Color = new("8D5DEF");
 
     public override Color NameColor => Color;
+    public override Color MapDrawingColor => new("4B1F9E");
+
+    // Measured contact points; the shared 0.15/0.25 defaults land during our longer wind-up
+    public override float AttackAnimDelay => 0.35f;
+    public override float CastAnimDelay => 0.4f;
     public override CharacterGender Gender => CharacterGender.Neutral;
     public override int StartingHp => 69;
     public override int StartingGold => 75;
@@ -64,14 +67,38 @@ public class Alchemist : PlaceholderCharacterModel
     protected override IEnumerable<string> ExtraAssetPaths =>
         [AlchemistVisuals.TexturePath, AlchemistRestSite.TexturePath];
 
-    // Attack, cast and death are still missing from the skeleton, and an omitted name falls back
-    // to the idle. The blink rides a second track with its own clock, thus it never locks to the
-    // loop of the idle
+    // Built by hand because BaseLib's SetupAnimationState registers no heavyAttack or PowerUp
     public override CreatureAnimator SetupCustomAnimationStates(MegaSprite controller)
     {
         AlchemistVisuals.StartBlinking(controller);
-        return SetupAnimationState(controller, AlchemistVisuals.IdleAnimation,
-            hitName: AlchemistVisuals.HurtAnimation);
+
+        var idle = new AnimState(AlchemistVisuals.IdleAnimation, isLooping: true);
+        AnimState Once(string? name) =>
+            name == null ? idle : new AnimState(name) { NextState = idle };
+
+        var hurt = Once(AlchemistVisuals.HurtAnimation);
+        var attack = Once(AlchemistVisuals.AttackAnimation);
+        var cast = Once(AlchemistVisuals.CastAnimation);
+        var heavy = Once(AlchemistVisuals.HeavyAttackAnimation ?? AlchemistVisuals.AttackAnimation);
+        var dead = AlchemistVisuals.DeathAnimation is { } death ? new AnimState(death) : idle;
+
+        var relaxed = idle;
+        if (AlchemistVisuals.RelaxedAnimation is { } relaxedName)
+        {
+            relaxed = new AnimState(relaxedName, isLooping: true);
+            relaxed.AddBranch("Idle", idle);
+        }
+
+        var animator = new CreatureAnimator(idle, controller);
+        animator.AddAnyState("Idle", idle);
+        animator.AddAnyState("Dead", dead);
+        animator.AddAnyState("Hit", hurt);
+        animator.AddAnyState("Attack", attack);
+        animator.AddAnyState("Cast", cast);
+        animator.AddAnyState("heavyAttack", heavy);
+        animator.AddAnyState("PowerUp", cast);
+        animator.AddAnyState("Relaxed", relaxed);
+        return animator;
     }
 
     public override Control CustomIcon

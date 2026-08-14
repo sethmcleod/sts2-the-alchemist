@@ -7,7 +7,9 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Transmute : AlchemistCard
 {
-    public Transmute() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+public Transmute() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithKeyword(CardKeyword.Exhaust);
         WithVar("Cards", 2, 0);

@@ -7,7 +7,9 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Purge : AlchemistCard
 {
-    public Purge() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+public Purge() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithPower<AntitoxinPower>(3, 2);
         WithKeyword(CardKeyword.Exhaust);

@@ -7,7 +7,9 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class SleepOnIt : AlchemistCard
 {
-    public SleepOnIt() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+public SleepOnIt() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithVar("draw", 2, 1);
         WithTip(typeof(DrawCardsNextTurnPower));

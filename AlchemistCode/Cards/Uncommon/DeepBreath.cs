@@ -8,7 +8,9 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class DeepBreath : AlchemistCard
 {
-    public DeepBreath() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+public DeepBreath() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithCards(1, 1);
         WithTips(_ => Infusion.InfuseTips());

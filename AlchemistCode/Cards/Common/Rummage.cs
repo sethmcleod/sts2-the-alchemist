@@ -9,7 +9,9 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Rummage : AlchemistCard
 {
-    public Rummage() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+public Rummage() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithCards(2, 1);
     }

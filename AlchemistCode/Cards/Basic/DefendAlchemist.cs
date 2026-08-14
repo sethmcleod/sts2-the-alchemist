@@ -6,7 +6,9 @@ namespace Alchemist.AlchemistCode.Cards.Basic;
 
 public class DefendAlchemist : AlchemistCard
 {
-    public DefendAlchemist() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+public DefendAlchemist() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
         WithTags(CardTag.Defend);
         WithBlock(5, 3);

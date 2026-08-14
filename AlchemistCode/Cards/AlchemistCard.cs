@@ -144,6 +144,15 @@ public abstract class AlchemistCard : ConstructedCardModel
 
     internal int FermentTurns => _fermentTurns;
 
+    /// <summary>The base game reserves this for roughly 12 damage and up.</summary>
+    /// <summary>Set false to keep a card snappy, as the base game does for its Defends.</summary>
+    protected internal virtual bool PlaysCastAnimation => true;
+
+    protected const string HeavyAttackAnim = "heavyAttack";
+
+    /// <summary>44% into the 1.333s clip, matching the light swing.</summary>
+    protected const float HeavyAttackDelay = 0.55f;
+
     protected virtual string FermentTotalText => "";
 
     // VeryEarly, not the plain hook: RegenPower heals and decrements in BeforeSideTurnEndEarly, so a

@@ -28,6 +28,11 @@ internal static class AlchemistVisuals
     private const string IdleAnimationLeaf = "idle_loop";
     private const string BlinkAnimationLeaf = "blink";
     private const string HurtAnimationLeaf = "hurt";
+    private const string AttackAnimationLeaf = "attack";
+    private const string HeavyAttackAnimationLeaf = "attack_heavy";
+    private const string CastAnimationLeaf = "cast";
+    private const string DeathAnimationLeaf = "die";
+    private const string RelaxedAnimationLeaf = "relaxed_loop";
 
     // The idle holds track 0. A second track plays the blink over it, thus the eyes keep their own
     // clock and never lock to the loop of the idle. Vantom and LagavulinMatriarch layer this way
@@ -55,6 +60,24 @@ internal static class AlchemistVisuals
 
     /// <summary>The on hit animation, or null. Null makes the game play the idle instead.</summary>
     public static string? HurtAnimation { get; private set; }
+
+    /// <summary>The light attack, or null.</summary>
+    public static string? AttackAnimation { get; private set; }
+
+    /// <summary>The heavy attack, or null. Null makes a heavy hit fall back to the light one.</summary>
+    public static string? HeavyAttackAnimation { get; private set; }
+
+    /// <summary>Played for Skills and, following the base characters, for Powers too.</summary>
+    public static string? CastAnimation { get; private set; }
+
+    /// <summary>The death animation, or null while the skeleton still lacks one.</summary>
+    public static string? DeathAnimation { get; private set; }
+
+    /// <summary>
+    /// The out of combat idle. Every base character has one and registers it, but nothing in the game
+    /// fires the "Relaxed" trigger, so it stays dormant until MegaCrit starts using it.
+    /// </summary>
+    public static string? RelaxedAnimation { get; private set; }
 
     // How high the model stands on screen, from the feet to the top of the art. This is near the
     // height of the ironclad (1185 units at 0.28 scale). The scale comes from the skeleton at run
@@ -130,6 +153,11 @@ internal static class AlchemistVisuals
         IdleAnimation = SpineModel.ResolveAnimation(data, IdleAnimationLeaf) ?? IdleAnimationLeaf;
         BlinkAnimation = SpineModel.ResolveAnimation(data, BlinkAnimationLeaf);
         HurtAnimation = SpineModel.ResolveAnimation(data, HurtAnimationLeaf);
+        AttackAnimation = SpineModel.ResolveAnimation(data, AttackAnimationLeaf);
+        HeavyAttackAnimation = SpineModel.ResolveAnimation(data, HeavyAttackAnimationLeaf);
+        CastAnimation = SpineModel.ResolveAnimation(data, CastAnimationLeaf);
+        DeathAnimation = SpineModel.ResolveAnimation(data, DeathAnimationLeaf);
+        RelaxedAnimation = SpineModel.ResolveAnimation(data, RelaxedAnimationLeaf);
 
         if (BlinkAnimation == null)
             MainFile.Logger.Info("The Alchemist skeleton holds no blink animation. The eyes stay open.");

@@ -17,7 +17,8 @@ public class HeavyDose : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"),
-            sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
+            sfx: "event:/sfx/characters/attack_fire")
+            .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay).Execute(choiceContext);
         if (play.Target == null) return;
         PoisonSplash(play.Target);
         await PowerCmd.Apply<PoisonPower>(choiceContext, play.Target, DynamicVars.Poison.BaseValue,

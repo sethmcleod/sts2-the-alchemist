@@ -10,7 +10,9 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 // so the card reads as the same wall for a smaller price
 public class CheapCover : AlchemistCard
 {
-    public CheapCover() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+public CheapCover() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(6, 0);
         WithVar("poison", 2, -1);
