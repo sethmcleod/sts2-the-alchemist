@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.7.6] - 2026-08-13
+
 ### Fixed
 
 - Fixed Flare Up causing a State Divergence in Multiplayer: its Poison trigger now lands as a real Poison tick, and no longer targets an enemy the attack already killed
