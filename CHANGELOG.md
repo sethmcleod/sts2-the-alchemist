@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-08-14
+
 ### Added
 
 - Added Antitoxin: it absorbs damage you would take from Poison, up to a maximum of 9
