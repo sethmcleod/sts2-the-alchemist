@@ -19,6 +19,6 @@ public class MarshTonic : AlchemistPotion
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        await PowerCmd.Apply<Powers.AntitoxinPower>(choiceContext, Owner.Creature, 10m, Owner.Creature, null);
+        await PowerCmd.Apply<Powers.AntitoxinPower>(choiceContext, Owner.Creature, 6m, Owner.Creature, null);
     }
 }

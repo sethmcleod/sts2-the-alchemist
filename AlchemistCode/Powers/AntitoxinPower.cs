@@ -21,7 +21,7 @@ namespace Alchemist.AlchemistCode.Powers;
 public partial class AntitoxinPower : AlchemistPower
 {
     // AntitoxinRules is what enforces this ceiling
-    public const int BaseMax = 15;
+    public const int BaseMax = 9;
 
     // Written by Absorb, spent by BeforeDamageReceived. This is safe even though Absorb also runs for
     // damage previews: CreatureCmd.Damage calls Hook.ModifyDamage and Hook.BeforeDamageReceived back to

@@ -9,7 +9,7 @@ mod).
 
 ### Added
 
-- Added Antitoxin: it absorbs damage you would take from Poison, up to a maximum of 15
+- Added Antitoxin: it absorbs damage you would take from Poison, up to a maximum of 9
 - Added Bottoms Up card: "Whenever you gain Poison, ALL other players gain that much Block."
 - Added Free Samples card: "ALL other players Infuse 2 (3) cards in their Hand. Draw 2 cards."
 - Added new animations to the character model: attack, heavy attack and cast
@@ -20,7 +20,7 @@ mod).
 - Added, removed, reworked and renamed many cards to be more aligned with the base game
 - Reworked Fuming enchantment into Dosed: now gains 1 Antitoxin when played
 - Reworked Laced enchantment: now applies 1 Poison and gains 1 Poison when played
-- Reworked Marsh Tonic potion: "Gain 10 Antitoxin."
+- Reworked Marsh Tonic potion: "Gain 6 Antitoxin."
 - Changed Snake Tail into a Rare relic
 - Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy."
 - Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block."

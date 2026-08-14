@@ -15,7 +15,7 @@ namespace Alchemist.AlchemistCode.Relics;
 [Pool(typeof(EventRelicPool))]
 public class GildedKit : AlchemistRelic
 {
-    private const int Antitoxin = 10;
+    private const int Antitoxin = 6;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
 

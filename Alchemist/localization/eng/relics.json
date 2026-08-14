@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "At the start of each combat, procure a random [gold]Potion[/gold]. If your potion slots are full, gain {Energy:energyIcons()} instead.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "However much you pour, it never quite runs dry.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Everflowing Chalice",
-  "ALCHEMIST-GILDED_KIT.description": "At the start of each combat, gain [blue]10[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
+  "ALCHEMIST-GILDED_KIT.description": "At the start of each combat, gain [blue]6[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
   "ALCHEMIST-GILDED_KIT.flavor": "An ornate case. The gold is not for show.",
   "ALCHEMIST-GILDED_KIT.title": "Gilded Kit",
   "ALCHEMIST-GLOWING_SHARD.description": "Whenever you gain [gold]Poison[/gold], apply [blue]1[/blue] [gold]Poison[/gold] to a random enemy.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Whenever you gain [gold]Poison[/gold], gain [blue]1[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "A measured dose, always within reach.",
   "ALCHEMIST-SPARE_DOSE.title": "Spare Dose",
-  "ALCHEMIST-WEATHERED_KIT.description": "At the start of each combat, gain [blue]5[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
+  "ALCHEMIST-WEATHERED_KIT.description": "At the start of each combat, gain [blue]3[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "A well worn and pleasantly smelling case.",
   "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit"
 }
