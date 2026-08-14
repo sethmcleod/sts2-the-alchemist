@@ -166,6 +166,16 @@ unreleased_body() {
   awk '/^## \[Unreleased\]/{grab=1; next} grab && /^## /{exit} grab{print}' "$CHANGELOG"
 }
 
+# The body of one version's section. A promote reads this instead of Unreleased, because the notes
+# it ships came over in the merge and were rolled under their version heading on beta.
+version_body() {  # <X.Y.Z>
+  awk -v ver="$1" '
+    $0 ~ "^## \\[" ver "\\]" {grab=1; next}
+    grab && /^## \[/ {exit}
+    grab {print}
+  ' "$CHANGELOG"
+}
+
 # Draft the changelog entries from the Conventional Commits since the last tag. This is read-only.
 do_changelog() {
   local last range subject
@@ -234,8 +244,13 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
     [ "$(printf '%s\n%s\n' "$cur" "$new" | sort -V | tail -1)" = "$new" ] || { bad "the new version $new is not larger than the current version $cur"; exit 1; }
   fi
 
-  # A release must have notes that a person wrote.
-  [ -n "$(unreleased_body | tr -d '[:space:]')" ] || { bad "## [Unreleased] in CHANGELOG.md is empty; add notes (scripts/dev.sh changelog makes a draft)"; exit 1; }
+  # A release must have notes that a person wrote. A promote ships the section the merge brought
+  # over, so it reads that version's own heading; an empty Unreleased is the correct state there.
+  if [ "$bump" = "promote" ]; then
+    [ -n "$(version_body "$new" | tr -d '[:space:]')" ] || { bad "## [$new] in CHANGELOG.md is empty or missing; the merge from beta should have brought its notes over"; exit 1; }
+  else
+    [ -n "$(unreleased_body | tr -d '[:space:]')" ] || { bad "## [Unreleased] in CHANGELOG.md is empty; add notes (scripts/dev.sh changelog makes a draft)"; exit 1; }
+  fi
 
   do_build
   step "lint"
@@ -478,8 +493,19 @@ do_sync_main() {
   git -C "$REPO" merge --no-ff --no-edit beta || {
     bad "the merge stopped with conflicts. Resolve them, 'git add' the files, then 'git commit'."
     bad "Take beta's side for content, and keep main's side for anything main fixed on its own."
+    bad "AlchemistCode/Compat/** is main's every time: those files are written against the game's"
+    bad "default branch, and beta's copies do not compile here. Then run scripts/dev.sh lint."
     exit 1; }
   ok "merged; main is now at v$(current_version)"
+
+  # A compat file that is new on beta arrives with no conflict at all, so the merge driver never
+  # sees it. This is the check that catches that, and it is the one that would have caught the
+  # v0.8.0 merge landing beta's AntitoxinPowerCompat.cs on main.
+  if have_py; then
+    step "compat branch check"
+    "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py" >/dev/null 2>&1 \
+      || { bad "the lint fails after the merge; run scripts/dev.sh lint and read the Compat/ lines"; }
+  fi
   echo
   echo "Next: verify it on the game's default branch (see BUILD.md), then"
   echo
@@ -509,6 +535,14 @@ do_doctor() {
       fail=1
     fi
   fi
+  # .gitattributes marks AlchemistCode/Compat/** merge=ours, and git refuses to run a merge driver
+  # it has no definition for. The definition is per clone, not committed, so set it here.
+  if [ "$(git -C "$REPO" config --get merge.ours.driver)" = "true" ]; then
+    ok "the Compat/ merge driver is set"
+  else
+    git -C "$REPO" config merge.ours.driver true && ok "set the Compat/ merge driver (merge.ours.driver)"
+  fi
+
   if [ -f "$BUILD_STAMP" ]; then
     local built; built="$(sed -n 2p "$BUILD_STAMP")"
     if [ "$built" != "$(game_build_id)" ]; then

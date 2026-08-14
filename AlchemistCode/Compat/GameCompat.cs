@@ -16,6 +16,8 @@ using MegaCrit.Sts2.Core.Nodes.Cards;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
 
+// COMPAT-BRANCH: beta
+
 namespace Alchemist.AlchemistCode.Compat;
 
 /// <summary>

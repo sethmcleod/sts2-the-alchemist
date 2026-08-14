@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using Alchemist.AlchemistCode.Powers;
 
+// COMPAT-BRANCH: any
+
 namespace Alchemist.AlchemistCode.Compat;
 
 /// <summary>

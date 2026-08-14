@@ -3,6 +3,8 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
+// COMPAT-BRANCH: beta
+
 namespace Alchemist.AlchemistCode.Powers;
 
 // BRANCH-SPECIFIC, like Compat/GameCompat.cs. An override cannot be routed through a wrapper, so

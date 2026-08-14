@@ -21,7 +21,7 @@ public class NeedlePoint : AlchemistCard
 
     // Innate with no Retain, so it is played first or not at all. Its own play is already recorded
     private bool IsFirstPlayThisCombat =>
-        CombatManager.Instance?.History.CardPlaysStarted.Count(e => e.CardPlay.Player == Owner) <= 1;
+        CombatManager.Instance?.History.CardPlaysStarted.Count(e => e.CardPlay.Card.Owner == Owner) <= 1;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
