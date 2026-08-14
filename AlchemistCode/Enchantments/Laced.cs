@@ -10,8 +10,6 @@ namespace Alchemist.AlchemistCode.Enchantments;
 
 public sealed class Laced : AlchemistEnchantment
 {
-    protected override string IconName => "laced";
-
     public override bool CanEnchantCardType(CardType cardType) => cardType == CardType.Attack;
 
     public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer,

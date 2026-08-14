@@ -9,8 +9,6 @@ namespace Alchemist.AlchemistCode.Enchantments;
 
 public sealed class Dosed : AlchemistEnchantment
 {
-    protected override string IconName => "inured";
-
     public override bool CanEnchantCardType(CardType cardType) => cardType == CardType.Skill;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

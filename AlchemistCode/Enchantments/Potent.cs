@@ -7,8 +7,6 @@ namespace Alchemist.AlchemistCode.Enchantments;
 
 public sealed class Potent : AlchemistEnchantment
 {
-    protected override string IconName => "exalted";
-
     public override bool CanEnchantCardType(CardType cardType) => cardType == CardType.Power;
 
     public override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay? cardPlay)
