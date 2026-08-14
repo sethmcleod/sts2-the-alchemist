@@ -4,7 +4,7 @@ All At Once,Rare,Attack,X,Lose all Poison. Deal that much damage to ALL enemies 
 Antidote,Basic,Skill,1,Gain 2 Antitoxin. Draw 1 (2) card(s).
 Backfire,Common,Attack,2,Deal 17 (22) damage. Gain 2 Poison.
 Bestow,"Uncommon, Multiplayer",Skill,0,"Infuse 1 (2) random cards in another player's Hand. That player draws 1 card. Draw 1 card."
-Bitter Draught,Uncommon,Skill,1,Gain 3 (4) Energy. Gain 2 Poison. Exhaust.
+Bitter Draught,Uncommon,Skill,1 (0),Gain 3 Energy. Gain 2 Poison. Trigger Poison on yourself. Exhaust.
 Blood Rush,Uncommon,Skill,1,Gain 2 Poison. Draw 3 (4) cards.
 Boil Down,Rare,Skill,2,Transform any number of cards in your Hand into Distillates (+). Exhaust.
 Bottoms Up,"Rare, Multiplayer",Power,2,"Whenever you gain Poison, ALL other players gain 1 (2) Block for each Poison gained."

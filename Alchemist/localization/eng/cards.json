@@ -10,7 +10,7 @@
   "ALCHEMIST-BACKFIRE.title": "Backfire",
   "ALCHEMIST-BESTOW.description": "[gold]Infuse[/gold] {Infuse:diff()} random cards in another player's [gold]Hand[/gold].\nThat player draws 1 card. Draw 1 card.",
   "ALCHEMIST-BESTOW.title": "Bestow",
-  "ALCHEMIST-BITTER_DRAUGHT.description": "Gain {Energy:energyIcons()}.\nGain {PoisonPower:diff()} [gold]Poison[/gold].",
+  "ALCHEMIST-BITTER_DRAUGHT.description": "Gain {Energy:energyIcons()}.\nGain {PoisonPower} [gold]Poison[/gold].\nTrigger [gold]Poison[/gold] on yourself.",
   "ALCHEMIST-BITTER_DRAUGHT.title": "Bitter Draught",
   "ALCHEMIST-BLOOD_RUSH.description": "Gain {poison} [gold]Poison[/gold].\\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
   "ALCHEMIST-BLOOD_RUSH.title": "Blood Rush",
