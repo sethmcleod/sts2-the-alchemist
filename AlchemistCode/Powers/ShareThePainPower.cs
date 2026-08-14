@@ -35,7 +35,7 @@ public class ShareThePainPower : AlchemistPower
             // Snapshot so a kill mid-sequence is respected. Unpowered keeps this out of the attack
             // pipeline: the damage is the Poison amount, not a hit that Strength should scale
             foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
-                await GameCompat.Damage(new ThrowingPlayerChoiceContext(), enemy, amount,
+                await GameCompat.Damage(new ThrowingPlayerChoiceContext(), enemy, amount * Amount,
                     ValueProp.Unpowered, Owner, null, null);
         }
         finally

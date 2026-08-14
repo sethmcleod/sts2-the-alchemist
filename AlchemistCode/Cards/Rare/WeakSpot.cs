@@ -11,7 +11,7 @@ public class WeakSpot : AlchemistCard
 {
     public WeakSpot() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("percent", 25, 25);
+        WithVar("percent", 50, 25);
         WithPower<PoisonPower>(3, -1);
     }
 

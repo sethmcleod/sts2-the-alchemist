@@ -7,12 +7,12 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class PatientStrike : AlchemistCard
 {
-    protected override int FermentPeak => 3;
+    protected override int FermentPeak => 2;
 
     public PatientStrike() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(6, static (card, _) =>
-                (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,
+                (card.IsUpgraded ? 9m : 6m) * ((AlchemistCard)card).FermentTurns,
             ValueProp.Move, 0, 0);
         WithKeyword(CardKeyword.Retain);
         // A "Strike" card, so base-game strike synergies such as Perfected Strike count it

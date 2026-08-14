@@ -30,6 +30,6 @@ public class BottomsUpPower : AlchemistPower
         if (allies.Count == 0) return;
         Flash();
         foreach (var ally in allies)
-            await CreatureCmd.GainBlock(ally.Creature, (int)amount, ValueProp.Unpowered, null);
+            await CreatureCmd.GainBlock(ally.Creature, (int)amount * Amount, ValueProp.Unpowered, null);
     }
 }

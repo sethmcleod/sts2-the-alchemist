@@ -8,10 +8,11 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Corrode : AlchemistCard
 {
-    public Corrode() : base(3, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
+    public Corrode() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
     {
         WithPower<PoisonPower>(5, 1);
         WithPower<WeakPower>(1, 1);
+        WithVar("selfPoison", 1, 0);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -23,5 +24,7 @@ public class Corrode : AlchemistCard
             await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, poison, Owner.Creature, this);
             await PowerCmd.Apply<WeakPower>(choiceContext, enemy, DynamicVars.Weak.BaseValue, Owner.Creature, this);
         }
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
+            DynamicVars["selfPoison"].IntValue, Owner.Creature, this);
     }
 }

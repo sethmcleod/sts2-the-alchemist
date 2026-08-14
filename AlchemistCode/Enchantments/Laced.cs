@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -21,6 +22,10 @@ public sealed class Laced : AlchemistEnchantment
         if (cardSource != Card || !props.IsPoweredAttack() || result.UnblockedDamage <= 0) return;
 
         await PowerCmd.Apply<PoisonPower>(choiceContext, target, Amount, Card.Owner.Creature, null);
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Card.Owner.Creature, Amount, Card.Owner.Creature, null);
+
+        // The self-half stays at 1 however high Refine stacks the enchantment, and only the Alchemist
+        // pays it: an ally handed a Laced card by Bestow has no Antitoxin and no Poison payoff
+        if (Card.Owner.Character is not Character.Alchemist) return;
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Card.Owner.Creature, 1, Card.Owner.Creature, null);
     }
 }

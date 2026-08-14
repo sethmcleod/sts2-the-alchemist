@@ -11,9 +11,8 @@ public class PaysOff : AlchemistCard
 {
     public PaysOff() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
-        // WithEnergy, not WithVar: the {Energy:energyIcons()} formatter rejects a plain DynamicVar
-        WithEnergy(1, 0);
+                // WithEnergy, not WithVar: the {Energy:energyIcons()} formatter rejects a plain DynamicVar
+        WithEnergy(1, 1);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));
     }

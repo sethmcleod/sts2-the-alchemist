@@ -12,7 +12,8 @@ public class DrainingStrike : AlchemistCard
 {
     public DrainingStrike() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(14, 4);
+        WithDamage(14, 0);
+        WithVar("StrengthLoss", 6, 3);
         // A "Strike" card, so base-game strike synergies such as Perfected Strike count it
         WithTags(CardTag.Strike);
         WithTip(typeof(StrengthPower));
@@ -23,6 +24,6 @@ public class DrainingStrike : AlchemistCard
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"), tmpSfx: "blunt_attack.mp3")
             .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay).Execute(choiceContext);
         if (play.Target != null)
-            await PowerCmd.Apply<DrainingStrikeStrengthDownPower>(choiceContext, play.Target, 6, Owner.Creature, this);
+            await PowerCmd.Apply<DrainingStrikeStrengthDownPower>(choiceContext, play.Target, DynamicVars["StrengthLoss"].IntValue, Owner.Creature, this);
     }
 }

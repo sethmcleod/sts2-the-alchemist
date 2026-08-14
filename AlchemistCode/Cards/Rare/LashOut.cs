@@ -18,7 +18,8 @@ public class LashOut : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, Hits, vfx: HitVfx("vfx/vfx_attack_slash"))
+        var hits = Hits + (play.Target?.HasPower<PoisonPower>() == true ? 1 : 0);
+        await CommonActions.CardAttack(this, play, hits, vfx: HitVfx("vfx/vfx_attack_slash"))
             .Execute(choiceContext);
     }
 }

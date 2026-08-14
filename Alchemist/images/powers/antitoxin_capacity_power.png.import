@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byvwrwd7hwgay"
-path="res://.godot/imported/strain.png-41fae1f398cd0948e1652c11a6cd6d8a.ctex"
+uid="uid://dhifnqd5nyo6k"
+path="res://.godot/imported/antitoxin_capacity_power.png-40c8770d03f00110fc0fa3253f29d7cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/strain.png"
-dest_files=["res://.godot/imported/strain.png-41fae1f398cd0948e1652c11a6cd6d8a.ctex"]
+source_file="res://Alchemist/images/powers/antitoxin_capacity_power.png"
+dest_files=["res://.godot/imported/antitoxin_capacity_power.png-40c8770d03f00110fc0fa3253f29d7cf.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

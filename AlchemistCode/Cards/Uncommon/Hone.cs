@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -10,9 +11,10 @@ public class Hone : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Hone() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Hone() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
+        WithVar("Infuse", 1, 1);
+        WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -21,5 +23,6 @@ public class Hone : AlchemistCard
             .Where(c => !c.IsUpgraded).ToList();
         if (hand.Count > 0)
             CardCmd.Upgrade(hand, CardPreviewStyle.HorizontalLayout);
+        await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, DynamicVars["Infuse"].IntValue);
     }
 }

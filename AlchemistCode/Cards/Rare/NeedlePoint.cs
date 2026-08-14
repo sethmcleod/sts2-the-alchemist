@@ -1,3 +1,5 @@
+using MegaCrit.Sts2.Core.Combat;
+using System.Linq;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -12,18 +14,20 @@ public class NeedlePoint : AlchemistCard
     {
         WithDamage(7, 3);
         WithPower<WeakPower>(1, 1);
-        WithVar("Vuln", 1, 1);
+        WithVar("Vuln", 2, 0);
         WithKeyword(CardKeyword.Innate);
         WithTip(typeof(VulnerablePower));
     }
 
-    internal override bool GainsEffectWhenEnchanted => true;
+    // Innate with no Retain, so it is played first or not at all. Its own play is already recorded
+    private bool IsFirstPlayThisCombat =>
+        CombatManager.Instance?.History.CardPlaysStarted.Count(e => e.CardPlay.Player == Owner) <= 1;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
         await CommonActions.Apply<WeakPower>(choiceContext, this, play);
-        if (IsEnchanted)
+        if (IsFirstPlayThisCombat)
             await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target!,
                 DynamicVars["Vuln"].IntValue, Owner.Creature, this);
     }

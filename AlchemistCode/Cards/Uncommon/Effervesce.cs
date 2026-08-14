@@ -11,7 +11,7 @@ public class Effervesce : AlchemistCard
 
     public Effervesce() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
-        WithVar("cards", 2, 1);
+        WithVar("cards", 2, 0);
         WithTip(typeof(Distillate));
     }
 
@@ -22,6 +22,7 @@ public class Effervesce : AlchemistCard
         for (var i = 0; i < count; i++)
         {
             var distillate = CombatState.CreateCard<Distillate>(targetPlayer);
+            if (IsUpgraded) CardCmd.Upgrade(distillate);
             await CardPileCmd.AddGeneratedCardToCombat(distillate, PileType.Hand, targetPlayer);
         }
     }

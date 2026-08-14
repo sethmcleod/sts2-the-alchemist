@@ -9,9 +9,10 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class MeltDown : AlchemistCard
 {
-    public MeltDown() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public MeltDown() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithUpgradingCardTip<Distillate>();
+        WithVar("cards", 1, 1);
         WithTip(StaticHoverTip.Transform);
     }
 
@@ -20,7 +21,7 @@ public class MeltDown : AlchemistCard
         if (CombatState == null) return;
         var selected = await CardSelectCmd.FromCombatPile(
             choiceContext, PileType.Draw.GetPile(Owner), Owner,
-            new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1));
+            new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, DynamicVars["cards"].IntValue));
         foreach (var card in selected)
         {
             var distillate = CombatState.CreateCard<Distillate>(Owner);

@@ -70,6 +70,9 @@ public static class Infusion
     {
         if (card.Type is CardType.Curse or CardType.Status or CardType.Quest)
             return !card.Keywords.Contains(CardKeyword.Ethereal);
+        // Laced keys on IsPoweredAttack, so an Unpowered attacker would take a visible Laced icon
+        // and a promise of Poison that never fires
+        if (card is AlchemistCard { DealsUnpoweredDamage: true }) return false;
         if (EnchantTypeFor(card) is not { } type) return false;
         return card.Enchantment == null || card.Enchantment.GetType() == type;
     }

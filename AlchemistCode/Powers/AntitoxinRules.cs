@@ -1,3 +1,7 @@
+using MegaCrit.Sts2.Core.Commands;
+using System;
+using MegaCrit.Sts2.Core.Helpers;
+using System.Collections.Generic;
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -21,10 +25,17 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         modifiedAmount = amount;
         if (canonicalPower is not AntitoxinPower || amount <= 0) return false;
 
-        var room = AntitoxinPower.BaseMax - target.GetPowerAmount<AntitoxinPower>();
+        var room = Math.Max(0, AntitoxinPower.MaxFor(target) - target.GetPowerAmount<AntitoxinPower>());
         if (amount <= room) return false;
 
-        modifiedAmount = Math.Max(0, room);
+        // The cap is a conversion point, not a wall. Fourteen producers feed a 9-point pool, so without
+        // this the second one drafted is usually a dead card. Block, because it expires each turn and so
+        // cannot become a second hoard, and because it covers what Antitoxin does not
+        var spill = (int)(amount - room);
+        if (spill > 0)
+            TaskHelper.RunSafely(CreatureCmd.GainBlock(target, spill, ValueProp.Unpowered, null));
+
+        modifiedAmount = room;
         return true;
     }
 
@@ -40,7 +51,21 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         && amount > 0
         && target.GetPowerAmount<PoisonPower>() >= amount;
 
-    internal static void MarkAbsorbed(Creature creature) => Absorbed.Add(creature);
+    // The absorbed slice of the tick that is resolving right now. Callus and Contagion run in
+    // AfterDamageReceived, which is handed the post-absorb amount, so without this a fully soaked tick
+    // pays them nothing and the character's own starter relic switches them off
+    private static readonly Dictionary<Creature, int> AbsorbedOnTick = new();
+
+    internal static void ClearTickAbsorb(Creature creature) => AbsorbedOnTick.Remove(creature);
+
+    internal static int TickAbsorb(Creature creature) =>
+        AbsorbedOnTick.TryGetValue(creature, out var amount) ? amount : 0;
+
+    internal static void MarkAbsorbed(Creature creature, int amount)
+    {
+        Absorbed.Add(creature);
+        AbsorbedOnTick[creature] = amount;
+    }
 
     internal static bool AbsorbedThisTurn(Creature creature) => Absorbed.Contains(creature);
 
@@ -49,6 +74,7 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         Absorbed.Clear();
+        AbsorbedOnTick.Clear();
         return Task.CompletedTask;
     }
 }

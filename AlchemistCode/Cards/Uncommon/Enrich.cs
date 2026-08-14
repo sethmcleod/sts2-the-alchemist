@@ -11,7 +11,7 @@ public class Enrich : AlchemistCard
 {
     public Enrich() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("draw", 1, 1);
+        WithVar("draw", 2, 1);
         WithTips(_ => Infusion.InfuseTips());
     }
 

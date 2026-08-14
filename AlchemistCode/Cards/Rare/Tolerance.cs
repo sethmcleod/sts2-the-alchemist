@@ -8,11 +8,11 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-public class Strain : AlchemistCard
+public class Tolerance : AlchemistCard
 {
-    public Strain() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public Tolerance() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
+        WithVar("Capacity", 3, 3);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));
@@ -31,6 +31,8 @@ public class Strain : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        await PowerCmd.Apply<AntitoxinCapacityPower>(choiceContext, Owner.Creature,
+            DynamicVars["Capacity"].IntValue, Owner.Creature, this);
         var dose = PoisonNow;
         if (dose <= 0) return;
         await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, dose, Owner.Creature, this);

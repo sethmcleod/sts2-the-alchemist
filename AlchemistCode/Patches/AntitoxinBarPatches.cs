@@ -152,7 +152,7 @@ public static class AntitoxinBarPatches
             // The real bar shrinks its foreground with a negative OffsetRight, so this matches it
             var full = parts.Root.GetNodeOrNull<Control>("HpForegroundContainer")?.Size.X ?? hp.Size.X;
             var current = inCombat ? live : parts.LastKnown;
-            var max = AntitoxinPower.BaseMax;
+            var max = AntitoxinPower.MaxFor(creature);
             var ratio = max > 0 ? Mathf.Clamp((float)current / max, 0f, 1f) : 0f;
             // What the next Poison tick will spend. Amount, not CalculateTotalDamageNextTurn, because
             // that already runs through Antitoxin's own reduction and so reports what gets past it

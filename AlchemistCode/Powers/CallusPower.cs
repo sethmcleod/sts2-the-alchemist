@@ -20,8 +20,10 @@ public class CallusPower : AlchemistPower
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target != Owner || result.UnblockedDamage <= 0) return;
-        if (!AntitoxinRules.IsPoisonTick(Owner, result.UnblockedDamage, props, dealer, cardSource)) return;
+        if (target != Owner) return;
+        var tick = result.UnblockedDamage + AntitoxinRules.TickAbsorb(Owner);
+        if (tick <= 0) return;
+        if (!AntitoxinRules.IsPoisonTick(Owner, tick, props, dealer, cardSource)) return;
         Flash();
         await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, Amount, Owner, null);
     }

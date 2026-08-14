@@ -7,7 +7,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class PuffUp : AlchemistCard
 {
-    protected override int FermentPeak => 3;
+    protected override int FermentPeak => 2;
 
     public PuffUp() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {

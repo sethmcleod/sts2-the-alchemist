@@ -11,23 +11,11 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class GoldenTouch : AlchemistCard
 {
-    public GoldenTouch() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public GoldenTouch() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
         // Only the upgrade Infuses, so the tips are only shown there
         WithTips(card => card.IsUpgraded ? Infusion.InfuseTips() : Array.Empty<IHoverTip>());
-    }
-
-    internal override bool GainsEffectWhenEnchanted => true;
-
-    // The card discounts itself while Enchanted, the Sinter self-hook pattern. Its own power cannot do
-    // this, because the power exists only after the card is played
-    public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
-    {
-        modifiedCost = originalCost;
-        if (card != this || !IsMutable || !IsEnchanted || originalCost <= 0) return false;
-        modifiedCost = originalCost - 1;
-        return true;
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

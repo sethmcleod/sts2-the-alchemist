@@ -11,7 +11,8 @@ public class Grudge : AlchemistCard
 {
     public Grudge() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Amount", 1, 1);
+        WithVar("Amount", 1, 0);
+        WithCostUpgradeBy(-1);
         WithTip(typeof(PoisonPower));
     }
 

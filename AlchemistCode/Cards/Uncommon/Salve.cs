@@ -9,7 +9,7 @@ public class Salve : AlchemistCard
 {
     public Salve() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithBlock(4, 2);
+        WithBlock(6, 3);
         WithCards(1, 0);
         WithTips(_ => Infusion.InfuseTips());
     }

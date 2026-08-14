@@ -12,13 +12,14 @@ public class DeepBreath : AlchemistCard
 
     public DeepBreath() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCards(1, 1);
+        WithCards(1, 0);
+        WithVar("Infuse", 1, 1);
         WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, 1);
+        await Infusion.InfuseChosen(choiceContext, this, PileType.Hand, DynamicVars["Infuse"].IntValue);
         await CommonActions.Draw(this, choiceContext);
     }
 }

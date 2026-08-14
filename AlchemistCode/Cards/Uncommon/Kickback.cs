@@ -8,9 +8,9 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Kickback : AlchemistCard
 {
-    public Kickback() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Kickback() : base(0, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Amount", 2, 1);
+        WithVar("Amount", 1, 1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

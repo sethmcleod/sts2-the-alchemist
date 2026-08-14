@@ -9,16 +9,14 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class ShareThePain : AlchemistCard
 {
-    public ShareThePain() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public ShareThePain() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        // The upgrade buys the cost, the way the Catalyze it replaces did. The damage is the Poison
-        // itself, so there is no amount to raise without changing how the card reads
-        WithCostUpgradeBy(-1);
+        WithVar("Amount", 1, 1);
         WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<ShareThePainPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<ShareThePainPower>(choiceContext, Owner.Creature, DynamicVars["Amount"].IntValue, Owner.Creature, this);
     }
 }

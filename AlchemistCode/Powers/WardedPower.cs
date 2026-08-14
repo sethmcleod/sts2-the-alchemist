@@ -16,9 +16,9 @@ public class WardedPower : AlchemistPower
 
     // Driven by AntitoxinPower rather than a damage hook, because a fully soaked tick deals no damage
     // for a hook to see
-    internal async Task OnAbsorbed()
+    internal async Task OnAbsorbed(int amount)
     {
         Flash();
-        await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
+        await CreatureCmd.GainBlock(Owner, Amount + amount, ValueProp.Unpowered, null);
     }
 }

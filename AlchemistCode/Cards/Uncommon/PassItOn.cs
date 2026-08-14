@@ -10,12 +10,12 @@ public class PassItOn : AlchemistCard
 {
     public PassItOn() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
+        WithVar("Amount", 1, 1);
         WithTip(typeof(AntitoxinPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<PassItOnPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<PassItOnPower>(choiceContext, Owner.Creature, DynamicVars["Amount"].IntValue, Owner.Creature, this);
     }
 }

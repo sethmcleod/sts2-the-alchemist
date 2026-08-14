@@ -7,12 +7,12 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class RollingBoil : AlchemistCard
 {
-    protected override int FermentPeak => 3;
+    protected override int FermentPeak => 2;
 
     public RollingBoil() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(6, static (card, _) =>
-                (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,
+                (card.IsUpgraded ? 9m : 6m) * ((AlchemistCard)card).FermentTurns,
             ValueProp.Move, 0, 0);
         WithKeyword(CardKeyword.Retain);
     }

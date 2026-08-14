@@ -20,8 +20,11 @@ namespace Alchemist.AlchemistCode.Powers;
 // per-turn absorb record live in AntitoxinRules, which exists even when this power does not.
 public partial class AntitoxinPower : AlchemistPower
 {
-    // AntitoxinRules is what enforces this ceiling
+    // Raised for the combat by granting AntitoxinCapacityPower; AntitoxinRules enforces the result
     public const int BaseMax = 9;
+
+    public static int MaxFor(Creature creature) =>
+        BaseMax + creature.GetPowerAmount<AntitoxinCapacityPower>();
 
     // Written by Absorb, spent by BeforeDamageReceived. Absorb clears it on every pass, so it only
     // ever holds a value for the one hit that just passed the Poison tick test
@@ -52,6 +55,7 @@ public partial class AntitoxinPower : AlchemistPower
         // takes, and the Poison forecast runs it without ever reaching BeforeDamageReceived, so a
         // value left set by a reject would be spent on whatever landed next, such as an enemy attack
         _pendingSpend = 0;
+        AntitoxinRules.ClearTickAbsorb(Owner);
         if (!IsPoisonTick(target, amount, props, dealer, cardSource))
             return 0m;
 
@@ -80,11 +84,11 @@ public partial class AntitoxinPower : AlchemistPower
 
         Flash();
         AbsorbSplash();
-        AntitoxinRules.MarkAbsorbed(Owner);
+        AntitoxinRules.MarkAbsorbed(Owner, spend);
         if (Owner.GetPower<PassItOnPower>() is { } crucible)
             await crucible.OnAbsorbed(spend);
         if (Owner.GetPower<WardedPower>() is { } slag)
-            await slag.OnAbsorbed();
+            await slag.OnAbsorbed(spend);
         if (spend >= Amount)
             await PowerCmd.Remove(this);
         else

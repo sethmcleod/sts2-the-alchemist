@@ -12,6 +12,7 @@ public class Harden : AlchemistCard
     public Harden() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Block", 2, 1);
+        WithVar("Antitoxin", 4, 1);
         WithTip(StaticHoverTip.Block);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));
@@ -24,6 +25,6 @@ public class Harden : AlchemistCard
         await PowerCmd.Apply<HardenPower>(choiceContext, Owner.Creature,
             DynamicVars["Block"].IntValue, Owner.Creature, this);
         if (IsEnchanted)
-            await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, 4, Owner.Creature, this);
+            await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, DynamicVars["Antitoxin"].IntValue, Owner.Creature, this);
     }
 }

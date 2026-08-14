@@ -27,7 +27,7 @@ public class HardenPower : AlchemistPower
         if (power is PoisonPower && applier == Owner && amount > 0)
         {
             Flash();
-            await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Move, null);
+            await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
         }
     }
 }
