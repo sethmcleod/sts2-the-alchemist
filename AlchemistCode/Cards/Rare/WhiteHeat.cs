@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

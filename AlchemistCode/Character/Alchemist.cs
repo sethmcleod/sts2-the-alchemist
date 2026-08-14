@@ -14,7 +14,9 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 
 namespace Alchemist.AlchemistCode.Character;
 
-public class Alchemist : PlaceholderCharacterModel
+// GenerateAnimator is spelled differently on the two game branches, and the near death idle it wires
+// up has no public branch equivalent, so that one override lives in Compat/AlchemistAnimatorCompat.cs
+public partial class Alchemist : PlaceholderCharacterModel
 {
     public const string CharacterId = "Alchemist";
 
@@ -67,57 +69,6 @@ public class Alchemist : PlaceholderCharacterModel
     // The atlas page of the model loads with the other character assets, not on the first combat
     protected override IEnumerable<string> ExtraAssetPaths =>
         [AlchemistVisuals.TexturePath, AlchemistRestSite.TexturePath];
-
-    // Overrides GenerateAnimator rather than BaseLib's SetupCustomAnimationStates, because only
-    // this signature carries the Creature, and the low health idle needs it. The base game does not
-    // raise a trigger for low health: it registers TWO Idle states with opposite conditions and lets
-    // every one shot pick the idle that fits when it ends. IsLowHealth is a quarter HP or less
-    public override CreatureAnimator GenerateAnimator(MegaSprite controller, Creature creature)
-    {
-        AlchemistVisuals.StartIdleFlourishes(controller);
-
-        var idle = new AnimState(AlchemistVisuals.IdleAnimation, isLooping: true);
-        var lowIdle = AlchemistVisuals.NearDeathAnimation is { } low
-            ? new AnimState(low, isLooping: true)
-            : idle;
-
-        bool Low() => IsLowHealth(creature);
-
-        AnimState Once(string? name)
-        {
-            if (name == null) return idle;
-
-            var state = new AnimState(name);
-            state.AddNextState(idle, () => !Low());
-            state.AddNextState(lowIdle, Low);
-            return state;
-        }
-
-        var hurt = Once(AlchemistVisuals.HurtAnimation);
-        var attack = Once(AlchemistVisuals.AttackAnimation);
-        var cast = Once(AlchemistVisuals.CastAnimation);
-        var heavy = Once(AlchemistVisuals.HeavyAttackAnimation ?? AlchemistVisuals.AttackAnimation);
-        var dead = AlchemistVisuals.DeathAnimation is { } death ? new AnimState(death) : idle;
-
-        var relaxed = idle;
-        if (AlchemistVisuals.RelaxedAnimation is { } relaxedName)
-        {
-            relaxed = new AnimState(relaxedName, isLooping: true);
-            relaxed.AddBranch("Idle", idle);
-        }
-
-        var animator = new CreatureAnimator(Low() ? lowIdle : idle, controller);
-        animator.AddAnyState("Idle", idle, () => !Low());
-        animator.AddAnyState("Idle", lowIdle, Low);
-        animator.AddAnyState("Dead", dead);
-        animator.AddAnyState("Hit", hurt);
-        animator.AddAnyState("Attack", attack);
-        animator.AddAnyState("Cast", cast);
-        animator.AddAnyState("heavyAttack", heavy);
-        animator.AddAnyState("PowerUp", cast);
-        animator.AddAnyState("Relaxed", relaxed);
-        return animator;
-    }
 
     public override Control CustomIcon
     {

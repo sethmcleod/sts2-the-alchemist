@@ -1,2 +1,9 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
+
+# Every file in AlchemistCode/Compat/ is written against ONE game branch: beta targets the game's
+# public-beta branch and main targets the default branch. On a merge, keep the copy the branch you
+# are on already has. Needs `git config merge.ours.driver true`, which `scripts/dev.sh doctor` sets.
+# This only covers a file both branches changed; a compat file that is NEW on beta arrives with no
+# conflict to resolve, which is what the COMPAT-BRANCH check in scripts/lint_sync.py is for.
+AlchemistCode/Compat/** merge=ours

@@ -23,11 +23,18 @@ filename passes the class-name check while asking the game for a file that is no
 and a miss that lands on an absent fallback throws the same way. So every asset literal in
 the code must resolve, and every fallback a *ImagePath helper uses must itself exist.
 
+A last check guards the case that broke a publish: every file in AlchemistCode/Compat/ is
+written against one game branch, and a merge from beta silently carries beta's copies onto
+main. The mismatch only shows up as a wall of CS0115 errors that name no branch, so each
+file states its branch in a COMPAT-BRANCH marker and this checks it against the branch you
+are on.
+
 Run it with `scripts/dev.sh lint`.
 """
 
 import csv
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -198,6 +205,41 @@ def check_fallback_art() -> tuple[list[str], list[str]]:
     return errors, warnings
 
 
+COMPAT = CODE / "Compat"
+COMPAT_MARKER = re.compile(r"^//\s*COMPAT-BRANCH:\s*(main|beta|any)\s*$", re.M)
+
+
+def git_branch() -> str | None:
+    """The checked-out branch, or None in a detached HEAD or outside a work tree."""
+    try:
+        out = subprocess.run(["git", "-C", str(REPO), "symbolic-ref", "--short", "-q", "HEAD"],
+                             capture_output=True, text=True).stdout.strip()
+    except OSError:
+        return None
+    return out or None
+
+
+def check_compat_branch() -> list[str]:
+    """Every file in Compat/ is written against one game branch, so it must match the branch.
+
+    beta targets the game's public-beta branch and main targets the default branch, and the two
+    spell a handful of APIs differently. A merge from beta carries beta's copies of these files
+    across, which then fails to build against the other game with CS0115 errors that never say
+    "branch". Marking the file and checking it here names the real problem in one line
+    """
+    errors = []
+    branch = git_branch()
+    for path in sorted(COMPAT.glob("*.cs")):
+        m = COMPAT_MARKER.search(path.read_text(encoding="utf-8"))
+        if m is None:
+            errors.append(f"Compat/{path.name}: no '// COMPAT-BRANCH: main|beta|any' marker; "
+                          "say which game branch it is written against")
+        elif m.group(1) != "any" and branch is not None and m.group(1) != branch:
+            errors.append(f"Compat/{path.name}: holds the {m.group(1)} implementation, but you are "
+                          f"on {branch}. A merge took the wrong side; restore {branch}'s copy")
+    return errors
+
+
 def parse_number_pairs(desc: str) -> list[tuple[int, int]]:
     """Get the 'N (M)' upgrade pairs from a csv description cell or cost cell.
 
@@ -292,6 +334,9 @@ def main() -> int:
     fb_errors, fb_warnings = check_fallback_art()
     errors += fb_errors
     warnings += fb_warnings
+
+    # 6. every Compat/ file is the copy for the branch you are on
+    errors += check_compat_branch()
 
     for w in warnings:
         print(f"\033[33mwarn\033[0m  {w}")

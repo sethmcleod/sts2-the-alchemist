@@ -16,11 +16,17 @@ using MegaCrit.Sts2.Core.Nodes.Cards;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
 
+// COMPAT-BRANCH: main
+
 namespace Alchemist.AlchemistCode.Compat;
 
 /// <summary>
-/// ONE OF THE TWO FILES THAT DIFFER BETWEEN THE beta AND main BRANCHES (the other is
-/// SepsisPowerCompat.cs). THIS COPY IS THE main (DEFAULT BRANCH) IMPLEMENTATION.
+/// ONE OF THE FOUR FILES THAT DIFFER BETWEEN THE beta AND main BRANCHES. The others are
+/// AntitoxinPowerCompat.cs, WeakSpotPowerCompat.cs and AlchemistAnimatorCompat.cs, which hold the
+/// overrides that cannot be routed through a wrapper. Each names its branch in a COMPAT-BRANCH
+/// marker that scripts/lint_sync.py checks against the branch you are on, so a merge that takes the
+/// wrong side fails the lint instead of a wall of CS0115 errors.
+/// THIS COPY IS THE main (DEFAULT BRANCH) IMPLEMENTATION.
 /// </summary>
 /// <remarks>
 /// The game's default branch and its public-beta branch spell a handful of damage and animation
