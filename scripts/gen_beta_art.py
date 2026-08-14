@@ -135,7 +135,7 @@ COLORS = {
     "Smoke Out": ("#1f1723", "#a3a83a", "TR", "Unique"),
     "Poultice": ("#1f1723", "#4f9e4a", "BR", "Exhaust pile: skills"),
     "Rummage": ("#1f1723", "#be401b", "BR", "Exhaust pile: skills"),
-    "Overflow": ("#00212a", "#10aba5", "BR", "Poison payoffs"),
+    "Strain": ("#00212a", "#10aba5", "BR", "Poison payoffs"),
     "Blood Rush": ("#14424e", "#b8e86a", "BR", "Poison payoffs"),
     "Fester": ("#4e8701", "#0139b2", "BR", "Poison skills"),
     "Sweat It Out": ("#4e8701", "#013161", "BR", "Poison skills"),

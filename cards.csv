@@ -53,7 +53,7 @@ Needle Point,Rare,Attack,0,"Innate. Deal 7 (10) damage. Apply 1 (2) Weak. If thi
 Next Up,Uncommon,Attack,1,Deal 8 (11) damage. Infuse a card in your Hand.
 One For Me,Uncommon,Attack,1,Deal 8 (11) damage. Gain 3 (4) Antitoxin.
 Overdose,Common,Attack,1,Lose 4 HP. Deal 12 (16) damage.
-Overflow,Rare,Skill,2 (1),Gain Antitoxin equal to your Poison. Exhaust.
+Strain,Rare,Skill,2 (1),Gain Antitoxin equal to your Poison. Exhaust.
 Pass It On,Uncommon,Power,2 (1),"Whenever your Antitoxin absorbs damage, deal that much damage to ALL enemies."
 Patient Strike,Uncommon,Attack,1,Retain. Ferment (0/3). Deal 6 damage. Deals 4 (6) additional damage for each turn fermented.
 Pays Off,Rare,Power,2 (1),"At the start of your turn, if your Antitoxin absorbed damage, gain 1 Energy."

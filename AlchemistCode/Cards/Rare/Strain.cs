@@ -8,9 +8,9 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-public class Overflow : AlchemistCard
+public class Strain : AlchemistCard
 {
-    public Overflow() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public Strain() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
         WithKeyword(CardKeyword.Exhaust);
