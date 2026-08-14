@@ -43,6 +43,8 @@ mod).
 - Fixed Golden Touch, Weak Spot, Grudge and Rot affecting other players in Multiplayer
 - Fixed Snake Tail preventing deaths that Poison did not cause
 - Fixed Gold Leaf potion being able to appear from in-combat potion generation, like Alchemize
+- Fixed the Merchant buying back Potions from the Cauldron relic bought at that shop
+- Fixed missing VFX for Soporific potion
 
 ## [0.7.3] - 2026-08-12
 

@@ -150,7 +150,7 @@ public class Alchemist : PlaceholderCharacterModel
     // visuals, the rest site and merchant animations, and the multiplayer hands. A res:// path plays through
     // Godot audio instead of FMOD, routed by BaseLib's PlayResourcePatch. scripts/gen_select_sfx.py makes the wav
     public override string CharacterSelectSfx => $"{MainFile.ResPath}/audio/alchemist_select.wav";
-    public override string CustomAttackSfx => "event:/sfx/characters/silent/silent_attack";
-    public override string CustomCastSfx => "event:/sfx/characters/necrobinder/necrobinder_cast";
-    public override string CustomDeathSfx => "event:/sfx/characters/silent/silent_die";
+    public override string CustomAttackSfx => "event:/sfx/characters/osty/osty_attack";
+    public override string CustomCastSfx => "event:/sfx/characters/necrobinder/necrobinder_summon";
+    public override string CustomDeathSfx => "event:/sfx/characters/osty/osty_die";
 }

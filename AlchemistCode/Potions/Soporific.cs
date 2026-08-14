@@ -24,13 +24,12 @@ public class Soporific : AlchemistPotion, IBrewOnly
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         PotionModel.AssertValidForTargetedPotion(target);
-        // A thrown potion lands with an impact, the way PoisonPotion does
-        if (NCombatRoom.Instance?.GetCreatureNode(target) is { } node)
-        {
-            var vfx = NGaseousImpactVfx.Create(node.VfxSpawnPosition, new Color("b39ddb"));
+        // A thrown potion lands with an impact, the way PoisonPotion does. The tint has to be
+        // saturated: it is applied as Modulate over greyscale art, so a pale colour washes out
+        if (NCombatRoom.Instance?.GetCreatureNode(target) is { } node
+            && NGaseousImpactVfx.Create(node.VfxSpawnPosition, new Color("7c4dff")) is { } vfx)
             NCombatRoom.Instance.CombatVfxContainer.AddChildSafely(vfx);
-        }
-        SfxCmd.Play("event:/sfx/enemy/enemy_attacks/workbug_silk/workbug_silk_stun");
+        SfxCmd.Play("event:/sfx/enemy/enemy_attacks/workbug_rock/workbug_rock_stun");
         await CreatureCmd.Stun(target!);
     }
 }

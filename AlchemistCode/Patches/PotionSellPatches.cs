@@ -103,7 +103,45 @@ public static class PotionSellPatches
     {
         // Recorded per map point by MerchantPotionEntry, and saved with the run, so it survives a reload
         var history = owner.RunState.CurrentMapPointHistoryEntry;
-        return history != null && history.GetEntry(owner.NetId).BoughtPotions.Contains(potion.Id);
+        if (history != null && history.GetEntry(owner.NetId).BoughtPotions.Contains(potion.Id)) return true;
+        return CameFromThisMerchant(potion, owner);
+    }
+
+    // The Merchant will not buy back anything he handed you this visit, not only what you paid him for
+    // directly. Cauldron is a Shop relic that offers five Potions the moment it is bought, so without
+    // this you could buy it and sell all five straight back to him.
+    //
+    // Held here rather than appended to the base game's BoughtPotions, because that list feeds the run
+    // metric for Potions bought and these were not bought. A mid-shop reload drops the set, which only
+    // means the Merchant will buy those Potions again, so nothing breaks
+    private static object? _procuredVisit;
+    private static readonly HashSet<ModelId> _procuredThisVisit = new();
+
+    private static bool CameFromThisMerchant(PotionModel potion, Player owner)
+    {
+        var visit = owner.RunState.CurrentMapPointHistoryEntry;
+        return visit != null && ReferenceEquals(visit, _procuredVisit)
+            && _procuredThisVisit.Contains(potion.Id);
+    }
+
+    // Every Potion the player gains passes through TryToProcure, whatever handed it over, so one postfix
+    // covers Cauldron and any other relic or effect that grants Potions inside a shop
+    [HarmonyPatch(typeof(PotionCmd), nameof(PotionCmd.TryToProcure), typeof(PotionModel), typeof(Player), typeof(int))]
+    public static class ProcuredAtMerchantPatch
+    {
+        public static void Postfix(PotionModel potion, Player player)
+        {
+            if (player.RunState.CurrentRoom is not MerchantRoom) return;
+            if (player.RunState.CurrentMapPointHistoryEntry is not { } visit) return;
+
+            // The map point entry object identifies the visit, so arriving at the next room clears it
+            if (!ReferenceEquals(visit, _procuredVisit))
+            {
+                _procuredVisit = visit;
+                _procuredThisVisit.Clear();
+            }
+            _procuredThisVisit.Add(potion.Id);
+        }
     }
 
     private static int GetGoldFor(PotionModel potion)
