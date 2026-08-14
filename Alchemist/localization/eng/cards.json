@@ -3,7 +3,7 @@
   "ALCHEMIST-AIR_IT_OUT.title": "Air It Out",
   "ALCHEMIST-ALL_AT_ONCE.description": "Lose all [gold]Poison[/gold].{Fuel}\nDeal that much damage to ALL enemies X{IfUpgraded:show:[green]+1[/green]|} times.",
   "ALCHEMIST-ALL_AT_ONCE.title": "All At Once",
-  "ALCHEMIST-ANTIDOTE.description": "Gain {antitoxin} [gold]Antitoxin[/gold].\nDraw {Cards:diff()} cards.",
+  "ALCHEMIST-ANTIDOTE.description": "Gain {antitoxin} [gold]Antitoxin[/gold].\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
   "ALCHEMIST-ANTIDOTE.title": "Antidote",
   "ALCHEMIST-APPLY_LINE": "\n(Apply [green]{Amount}[/green] Poison.)",
   "ALCHEMIST-BACKFIRE.description": "Deal {Damage:diff()} damage.\nGain {poison} [gold]Poison[/gold].",
