@@ -12,22 +12,20 @@ mod).
 ### Added
 
 - Added Antitoxin: it absorbs damage you would take from Poison, up to a maximum of 9
-- Added Bottoms Up card: "Whenever you gain Poison, ALL other players gain that much Block."
-- Added Free Samples card: "ALL other players Infuse 2 (3) cards in their Hand. Draw 2 cards."
 - Added new animations to the character model: attack, heavy attack and cast
 - Added Spare Dose relic: "Whenever you gain Poison, gain 1 Antitoxin."
 
 ### Changed
 
 - Added, removed, reworked and renamed many cards to be more aligned with the base game
+- Changed Snake Tail into a Rare relic
+- Changed the default Potion sale price: 100% -> 50% of the shop value, and its range is now 10% to 90%
 - Reworked Fuming enchantment into Dosed: now gains 1 Antitoxin when played
 - Reworked Laced enchantment: now applies 1 Poison and gains 1 Poison when played
 - Reworked Marsh Tonic potion: "Gain 6 Antitoxin."
-- Changed Snake Tail into a Rare relic
 - Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy."
 - Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block."
-- Updated map drawing ink colour to be purple
-- Changed the default Potion sale price: 100% -> 50% of the shop value, and its range is now 10% to 90%. This setting only applies to new runs
+- Updated map drawing ink color to be purple
 
 ### Removed
 
@@ -39,7 +37,6 @@ mod).
 ### Fixed
 
 - Fixed Gilded Kit not being in the event pool, like the other characters' upgraded starter relics
-- Fixed Fighting Spirits counting Potions used by other players in Multiplayer, not only your own
 - Fixed Orobas dialogue that named the removed Nigredo and Albedo cards
 - Fixed Masterwork not Exhausting on the play that meets its condition
 - Fixed Golden Touch, Weak Spot, Grudge and Rot affecting other players in Multiplayer
