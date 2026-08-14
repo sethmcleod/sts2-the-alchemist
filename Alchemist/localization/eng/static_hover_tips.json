@@ -1,6 +1,6 @@
 {
   "ALCHEMIST-BREW.description": "This Rest Site option lets you procure a random [gold]Potion[/gold]. There are 3 [gold]Potions[/gold] that can only be obtained this way. You can also sell [gold]Potions[/gold] to the [gold]Merchant[/gold].",
   "ALCHEMIST-BREW.title": "Brew",
-  "ALCHEMIST-MASTERWORK.description": "This card glows [gold]gold[/gold] if you have [gold]Enchanted[/gold] five or more cards this combat, including the one you would [gold]Infuse[/gold].",
+  "ALCHEMIST-MASTERWORK.description": "This card glows [gold]gold[/gold] if you have [gold]Enchanted[/gold] 3 or more cards this combat, including the one you would [gold]Infuse[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Masterwork"
 }

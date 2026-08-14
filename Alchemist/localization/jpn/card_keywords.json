@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-FERMENT.description": "このカードは[gold]手札[/gold]にあるターン1回につき威力が増加し、プレイするとリセットされる。最盛期を過ぎると[gold]有毒[/gold]に変化する。",
   "ALCHEMIST-FERMENT.title": "発酵",
-  "ALCHEMIST-INFUSE.description": "戦闘終了時までカードに[gold]エンチャント[/gold]する。アタックは[purple]毒仕込み[/purple][blue]1[/blue]、スキルは[purple]発煙[/purple][blue]1[/blue]、パワーは[purple]高揚[/purple][blue]1[/blue]を得る。それ以外のカードは[gold]エセリアル[/gold]を得る。",
+  "ALCHEMIST-INFUSE.description": "戦闘終了時までカードに[gold]エンチャント[/gold]する。アタックは[purple]毒仕込み[/purple][blue]1[/blue]（命中時に[gold]毒[/gold]を付与し、自身も毒を得る）、スキルは[purple]投薬[/purple][blue]1[/blue]、パワーは[purple]強壮[/purple][blue]1[/blue]を得る。それ以外のカードは[gold]エセリアル[/gold]を得る。",
   "ALCHEMIST-INFUSE.selectionPrompt": "[gold]注入[/gold]するカードを[blue]{Amount}[/blue]枚選択。",
   "ALCHEMIST-INFUSE.selectionPromptAny": "[gold]注入[/gold]するカードを好きな数だけ選択。",
   "ALCHEMIST-INFUSE.selectionPromptRange": "[gold]注入[/gold]するカードを最大[blue]{MaxCount}[/blue]{MaxCount:plural:枚|枚}選択。",

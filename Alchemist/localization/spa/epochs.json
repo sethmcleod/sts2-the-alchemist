@@ -4,27 +4,21 @@
   "ALCHEMIST-ALCHEMIST1_EPOCH.description": "El mejor [green]Boticario[/green] de la Capital partió con los [gold]Doce[/gold] exploradores, hoy perdidos en el tiempo.\nAhora su [purple]retoño[/purple] atiende la botica. Mezcla. Dosifica. Lee a la luz de una vela el [gold]diario[/gold] inacabado de su progenitor, desesperado por entender por qué ninguno regresó.\nUna mañana, deja una nota en la puerta: \"[sine]Cerrado por trabajo de campo...\"[/sine]\nLas puertas de la [gold]Torre[/gold] admiten a uno más.",
   "ALCHEMIST-ALCHEMIST1_EPOCH.unlockInfo": "{IsRevealed:Jugaste|Juega} una partida con el [purple]Alquimista[/purple]{IsRevealed:| para revelar estas Épocas}.",
   "ALCHEMIST-ALCHEMIST1_EPOCH.unlockText": "Desbloqueaste al [purple]Alquimista[/purple] como personaje jugable.",
-
   "ALCHEMIST-ALCHEMIST2_EPOCH.title": "Disolución",
   "ALCHEMIST-ALCHEMIST2_EPOCH.description": "Tres pisos arriba, acorralada y moribunda, la [purple]Rana[/purple] siente su propio [green]veneno[/green] inundarle las venas... y [sine]transmutarse[/sine]. Calor. Vigor. Heridas que se cierran.\nSobrevive la noche en el suelo de una ruina, [red]riendo[/red], anotándolo todo con [jitter]manos temblorosas[/jitter].\nLa primera página de un nuevo [gold]diario[/gold]. Esta vez, el suyo.",
   "ALCHEMIST-ALCHEMIST2_EPOCH.unlockInfo": "{IsRevealed:Superaste|Supera} el [gold]Acto[/gold] [blue]1[/blue] con el [purple]Alquimista[/purple]{IsRevealed:| para revelar esta Época}.",
-
   "ALCHEMIST-ALCHEMIST3_EPOCH.title": "Separación",
   "ALCHEMIST-ALCHEMIST3_EPOCH.description": "\"¿Esto lo [sine]elaboras[/sine] tú? ¿[sine]Aquí dentro[/sine]?\"\nPor primera vez en años, es el [blue]Comerciante[/blue] quien quiere comprar.\nUna [green]tintura[/green] se posa en su mano, aún tibia de la llama.\nEl acuerdo se cierra en el acto: la [purple]Rana[/purple] elabora, el [blue]Comerciante[/blue] compra.",
   "ALCHEMIST-ALCHEMIST3_EPOCH.unlockInfo": "{IsRevealed:Superaste|Supera} el [gold]Acto[/gold] [blue]2[/blue] con el [purple]Alquimista[/purple]{IsRevealed:| para revelar esta Época}.",
-
   "ALCHEMIST-ALCHEMIST4_EPOCH.title": "Conjunción",
   "ALCHEMIST-ALCHEMIST4_EPOCH.description": "\"Encontré esto allá arriba. Supuse que era de alguien\". [orange]Darv[/orange] le tiende un [gold]diario[/gold] gastado.\nLa letra de las primeras páginas es la de su [pink]progenitor[/pink]. Las últimas, no. Escritas con una tinta desconocida, insinúan pistas más arriba en la [gold]Torre[/gold].\nLa [purple]Rana[/purple] no pregunta por qué el coleccionista se desprende de este tesoro. [orange]Darv[/orange] no lo explica.",
   "ALCHEMIST-ALCHEMIST4_EPOCH.unlockInfo": "{IsRevealed:Superaste|Supera} el [gold]Acto[/gold] [blue]3[/blue] con el [purple]Alquimista[/purple]{IsRevealed:| para revelar esta Época}.",
-
   "ALCHEMIST-ALCHEMIST5_EPOCH.title": "Fermentación",
   "ALCHEMIST-ALCHEMIST5_EPOCH.description": "Nueve días sellada en una galería de [green]hongos[/green] luminosos.\nOtros entrarían en [jitter]pánico[/jitter]. La [purple]Rana[/purple] [sine]elabora[/sine].\nAlgunas preparaciones [gold]premian[/gold] la mano paciente. Otras [red]castigan[/red] la vacilación.\nEmerge con el zurrón repleto y la [blue]paciencia[/blue] de saber cuándo no recurrir a él.",
   "ALCHEMIST-ALCHEMIST5_EPOCH.unlockInfo": "{IsRevealed:Mataste|Mata} [blue]15[/blue] [purple]Élites[/purple] con el [purple]Alquimista[/purple]{IsRevealed:| para revelar esta Época}.",
-
   "ALCHEMIST-ALCHEMIST6_EPOCH.title": "Destilación",
   "ALCHEMIST-ALCHEMIST6_EPOCH.description": "Más arriba aún: un campamento [jitter]helado[/jitter]. Fórmulas grabadas en la piedra con una [pink]letra familiar[/pink].\nUna nota final en el margen. La [gold]Obra[/gold] nunca fue por el [gold]oro[/gold].\nEs la unión de los opuestos. La trascendencia del [blue]Ser[/blue].\nLa [purple]Rana[/purple] se queda un largo rato con esa idea. Luego [sine]sigue escalando.[/sine]",
   "ALCHEMIST-ALCHEMIST6_EPOCH.unlockInfo": "{IsRevealed:Mataste|Mata} [blue]15[/blue] [red]Jefes[/red] con el [purple]Alquimista[/purple]{IsRevealed:| para revelar esta Época}.",
-
   "ALCHEMIST-ALCHEMIST7_EPOCH.title": "Coagulación",
   "ALCHEMIST-ALCHEMIST7_EPOCH.description": "El último piso. La última puerta.\nUn [pink]progenitor[/pink] escaló hasta aquí para terminar la [gold]Obra[/gold] y nunca escribió el final.\nQuizá porque no había forma de escribirlo: porque el cambio final no es uno que se registra, sino uno en el que te [blue][sine]conviertes[/sine][/blue].\nLa [purple]Rana[/purple] serena sus manos, respira hondo y cruza el umbral.",
   "ALCHEMIST-ALCHEMIST7_EPOCH.unlockInfo": "{IsRevealed:Superaste|Supera} la [red]Ascensión[/red] [blue]1[/blue] con el [purple]Alquimista[/purple]{IsRevealed:| para revelar esta Época}."

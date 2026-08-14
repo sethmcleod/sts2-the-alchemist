@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-FERMENT.description": "Questa carta aumenta di potenza per ogni turno passato nella tua [gold]mano[/gold] e si azzera quando la giochi. Superato il picco, si trasforma in [gold]Tossicità[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentazione",
-  "ALCHEMIST-INFUSE.description": "[gold]Incanti[/gold] una carta fino al termine del combattimento. Le carte Attacco ottengono [blue]1[/blue] di [purple]Intrisa[/purple]; le Abilità ottengono [blue]1[/blue] di [purple]Fumante[/purple]; i Poteri ottengono [blue]1[/blue] di [purple]Esaltata[/purple]. Le altre carte ottengono [gold]Evanescenza[/gold].",
+  "ALCHEMIST-INFUSE.description": "[gold]Incanti[/gold] una carta fino al termine del combattimento. Le carte Attacco ottengono [blue]1[/blue] di [purple]Intrisa[/purple] (applicano [gold]Veleno[/gold] quando colpiscono e avvelenano anche te); le Abilità ottengono [blue]1[/blue] di [purple]Dosata[/purple]; i Poteri ottengono [blue]1[/blue] di [purple]Potente[/purple]. Le altre carte ottengono [gold]Evanescenza[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Scegli {Amount:plural:una carta|[blue]{}[/blue] carte} da [gold]infondere[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Scegli un numero qualsiasi di carte da [gold]infondere[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Scegli fino a [blue]{MaxCount}[/blue] {MaxCount:plural:carta|carte} da [gold]infondere[/gold].",

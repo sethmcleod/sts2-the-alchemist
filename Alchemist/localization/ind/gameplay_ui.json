@@ -1,0 +1,16 @@
+{
+  "POTION_SELL.button": "Jual ({Gold} Emas)",
+  "POTION_SELL.merchant_greeting_1": "Tertarik menjual ramuan itu?",
+  "POTION_SELL.merchant_greeting_2": "Oh ho, pemasok favoritku!",
+  "POTION_SELL.merchant_greeting_3": "Kamu yang meracik, aku yang menjual.",
+  "POTION_SELL.merchant_greeting_4": "Cepat sekali kembali? Racikan yang lalu saja belum habis terjual!",
+  "POTION_SELL.merchant_greeting_5": "Senang selalu bertemu denganmu!",
+  "POTION_SELL.merchant_sell_1": "Iyess, itu yang kusuka!",
+  "POTION_SELL.merchant_sell_2": "Senang berbisnis denganmu!",
+  "POTION_SELL.merchant_sell_3": "Ini sepertinya berkualitas tinggi!",
+  "POTION_SELL.merchant_sell_4": "Ooh, masih bergelembung — mantap!",
+  "POTION_SELL.merchant_sell_5": "Langgananku pasti langsung menyambar ini.",
+  "POTION_SELL.merchant_sell_6": "Racikan segar selalu laku cepat!",
+  "POTION_SELL.sellable_tip.description": "[gold]Ramuan[/gold] ini bisa dijual ke [gold]Pedagang[/gold] untuk mendapat [gold]Emas[/gold].",
+  "POTION_SELL.sellable_tip.title": "Kualitas Tinggi"
+}

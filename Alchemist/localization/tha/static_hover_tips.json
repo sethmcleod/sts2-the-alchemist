@@ -1,6 +1,6 @@
 {
-  "ALCHEMIST-BREW.description": "ตัวเลือกที่จุดพักนี้ให้คุณจัดหา[gold]ขวดยา[/gold] 1 ขวดแบบสุ่ม มี[gold]ขวดยา[/gold] 3 ชนิดที่หาได้ด้วยวิธีนี้เท่านั้น",
+  "ALCHEMIST-BREW.description": "ตัวเลือกที่จุดพักนี้ให้คุณจัดหา[gold]ขวดยา[/gold] 1 ขวดแบบสุ่ม มี[gold]ขวดยา[/gold] 3 ชนิดที่หาได้ด้วยวิธีนี้เท่านั้น คุณยังขาย[gold]ขวดยา[/gold]ให้[gold]พ่อค้า[/gold]ได้ด้วย",
   "ALCHEMIST-BREW.title": "ปรุงยา",
-  "ALCHEMIST-MASTERWORK.description": "การ์ดนี้จะเรืองแสง[gold]ทอง[/gold]ถ้าคุณ[gold]ร่ายมนตร์[/gold]การ์ดครบห้าใบขึ้นไปในการต่อสู้นี้ โดยนับรวมใบที่คุณกำลังจะ[gold]อัดฉีด[/gold]ด้วย",
+  "ALCHEMIST-MASTERWORK.description": "การ์ดนี้จะเรืองแสง[gold]ทอง[/gold]ถ้าคุณ[gold]ร่ายมนตร์[/gold]การ์ดครบสามใบขึ้นไปในการต่อสู้นี้ โดยนับรวมใบที่คุณกำลังจะ[gold]อัดฉีด[/gold]ด้วย",
   "ALCHEMIST-MASTERWORK.title": "ผลงานชิ้นเอก"
 }

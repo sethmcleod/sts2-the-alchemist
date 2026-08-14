@@ -1,4 +1,8 @@
 {
-  "ALCHEMIST-LACED.description": "Ogni volta che questa carta infligge danno non bloccato, applichi [blue]{Amount}[/blue] di [gold]Veleno[/gold].",
-  "ALCHEMIST-LACED.title": "Intrisa"
+  "ALCHEMIST-DOSED.description": "Quando giochi questa carta Abilità, ottieni [blue]{Amount}[/blue] di [gold]Antitossina[/gold].",
+  "ALCHEMIST-DOSED.title": "Dosata",
+  "ALCHEMIST-LACED.description": "Ogni volta che questa carta Attacco infligge danno non bloccato, applichi [blue]{Amount}[/blue] di [gold]Veleno[/gold] e ottieni [blue]1[/blue] di [gold]Veleno[/gold].",
+  "ALCHEMIST-LACED.title": "Intrisa",
+  "ALCHEMIST-POTENT.description": "Quando giochi questa carta Potere, ottieni [blue]{Amount}[/blue] di [gold]Forza[/gold].",
+  "ALCHEMIST-POTENT.title": "Potente"
 }

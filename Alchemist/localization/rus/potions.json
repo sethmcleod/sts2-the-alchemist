@@ -3,6 +3,7 @@
   "ALCHEMIST-ALKAHEST.title": "Алкагест",
   "ALCHEMIST-GOLD_LEAF.description": "Восполняет [green]1[/green] ОЗ и дает [blue]1[/blue] [gold]защиты[/gold] за каждые [blue]15[/blue] [gold]золота[/gold].{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Сусальное золото",
+  "ALCHEMIST-MARSH_TONIC.description": "Дает [blue]6[/blue] [gold]антитоксина[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Болотный тоник",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Дает дополнительный ход.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Ртутный настой",

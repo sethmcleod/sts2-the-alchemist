@@ -1,6 +1,6 @@
 {
-  "ALCHEMIST-BREW.description": "Этот вариант в лагере дает случайное [gold]зелье[/gold]. Есть 3 [gold]зелья[/gold], которые можно получить только так.",
+  "ALCHEMIST-BREW.description": "Этот вариант в лагере дает случайное [gold]зелье[/gold]. Есть 3 [gold]зелья[/gold], которые можно получить только так. Еще вы можете продавать [gold]зелья[/gold] [gold]Торговцу[/gold].",
   "ALCHEMIST-BREW.title": "Варка",
-  "ALCHEMIST-MASTERWORK.description": "Эта карта светится [gold]золотым[/gold], если в этом бою вы [gold]зачаровали[/gold] пять или более карт, включая ту, которую [gold]пропитаете[/gold].",
+  "ALCHEMIST-MASTERWORK.description": "Эта карта светится [gold]золотым[/gold], если в этом бою вы [gold]зачаровали[/gold] 3 или более карт, включая ту, которую [gold]пропитаете[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Шедевр"
 }

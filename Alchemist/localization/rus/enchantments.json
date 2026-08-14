@@ -1,4 +1,8 @@
 {
-  "ALCHEMIST-LACED.description": "Накладывает [blue]{Amount}[/blue] [gold]яда[/gold], когда эта карта наносит незаблокированный урон.",
-  "ALCHEMIST-LACED.title": "Отрава"
+  "ALCHEMIST-DOSED.description": "При разыгрывании этого Навыка дает [blue]{Amount}[/blue] [gold]антитоксина[/gold].",
+  "ALCHEMIST-DOSED.title": "Доза",
+  "ALCHEMIST-LACED.description": "Накладывает [blue]{Amount}[/blue] [gold]яда[/gold], когда эта Атака наносит урон по ОЗ, и дает вам [blue]1[/blue] [gold]яда[/gold].",
+  "ALCHEMIST-LACED.title": "Отрава",
+  "ALCHEMIST-POTENT.description": "При разыгрывании этого Таланта дает [blue]{Amount}[/blue] [gold]силы[/gold].",
+  "ALCHEMIST-POTENT.title": "Крепость"
 }

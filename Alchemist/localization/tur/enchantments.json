@@ -1,4 +1,8 @@
 {
-  "ALCHEMIST-LACED.description": "Bu kart her engellenmeyen hasar verdiğinde [blue]{Amount}[/blue] [gold]Zehir[/gold] uygula.",
-  "ALCHEMIST-LACED.title": "Katkılı"
+  "ALCHEMIST-DOSED.description": "Bu Beceri oynandığında [blue]{Amount}[/blue] [gold]Antitoksin[/gold] elde et.",
+  "ALCHEMIST-DOSED.title": "Dozlu",
+  "ALCHEMIST-LACED.description": "Bu Atak her engellenmeyen hasar verdiğinde [blue]{Amount}[/blue] [gold]Zehir[/gold] uygula ve [blue]1[/blue] [gold]Zehir[/gold] elde et.",
+  "ALCHEMIST-LACED.title": "Katkılı",
+  "ALCHEMIST-POTENT.description": "Bu Güç oynandığında [blue]{Amount}[/blue] [gold]Kuvvet[/gold] elde et.",
+  "ALCHEMIST-POTENT.title": "Etkin"
 }

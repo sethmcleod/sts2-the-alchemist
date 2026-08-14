@@ -1,6 +1,7 @@
 {
-  "ALCHEMIST.mod_title": "นักเล่นแร่แปรธาตุ",
   "ALCHEMIST-ACCESSIBILITY.title": "การช่วยการเข้าถึง",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "สีของแถบสารต้านพิษใต้หลอดเลือดของคุณ ส่วนสีเขียวที่แสดงพิษที่กำลังจะเข้ามาจะไม่เปลี่ยนตาม",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "สีแถบสารต้านพิษ",
   "ALCHEMIST-BREW_POTION_CHANCE.hover.desc": "โอกาสที่การปรุงยาที่จุดพักจะให้[gold]ขวดยา[/gold]เฉพาะการปรุง 1 ใน 3 ชนิดของนักเล่นแร่แปรธาตุ แทน[gold]ขวดยา[/gold]ปกติ ค่าเริ่มต้น: 15%",
   "ALCHEMIST-BREW_POTION_CHANCE.title": "โอกาสได้ขวดยาเฉพาะการปรุง",
   "ALCHEMIST-COMPATIBILITY.title": "ความเข้ากันได้",
@@ -13,18 +14,19 @@
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "แยกกองการ์ดออกจากกัน",
   "ALCHEMIST-POTION_SELL_PERCENT.hover.desc": "เปอร์เซ็นต์ของทองที่คุณจะได้รับเมื่อขายให้พ่อค้า ค่าเริ่มต้น: 100%",
   "ALCHEMIST-POTION_SELL_PERCENT.title": "ราคาขายขวดยา",
-  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "รีเซ็ตการปลดล็อก",
   "ALCHEMIST-RESET_UNLOCKS.title": "รีเซ็ตการ์ด, เครื่องราง, ขวดยา, และศักราชของนักเล่นแร่แปรธาตุทั้งหมด",
-  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "ปลดล็อกศักราช",
+  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "รีเซ็ตการปลดล็อก",
   "ALCHEMIST-REVEAL_TIMELINE.title": "ปลดล็อกศักราชในเส้นเวลาของนักเล่นแร่แปรธาตุทั้งหมด",
+  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "ปลดล็อกศักราช",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.hover.desc": "แสดงแถบตัวอย่างบนหลอดเลือดของศัตรูสำหรับความเสียหายที่หน่วงไว้ของนักเล่นแร่แปรธาตุ เพื่อให้คุณเห็นการโจมตีที่ค้างอยู่ก่อนที่มันจะลง ปิดเพื่อให้หลอดเลือดดูสะอาดตาขึ้น",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.title": "แสดงการพยากรณ์ความเสียหาย",
-  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "เน้นการ์ดในมือที่มีโบนัสพร้อมใช้งาน: สีทองสำหรับผลของเดิมพัน, ปฏิกิริยา, หรือการร่ายมนตร์ ปิดเพื่อซ่อนการเน้นเหล่านี้",
+  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "เน้นการ์ดในมือที่มีโบนัสพร้อมใช้งาน ปิดเพื่อซ่อนการเน้นเหล่านี้",
   "ALCHEMIST-SHOW_HAND_GLOWS.title": "แสดงผลเรืองแสงพิเศษของการ์ด",
   "ALCHEMIST-TIMELINE.title": "เส้นเวลา",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.hover.desc": "ตัวละคร[sine]ทุกตัว[/sine]ขายขวดยาให้[gold]พ่อค้า[/gold]ได้! แลกเป็น[gold]ทอง[/gold]!\n\n(ข้อความปฏิเสธความรับผิด: คำอธิบายนี้พ่อค้าเป็นผู้จ่ายเงินให้เขียน)",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.title": "ตัวละครไหนก็ขายขวดยาได้!",
-  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "ปลดล็อกทั้งหมด",
+  "ALCHEMIST-UNLOCKS.title": "การปลดล็อก",
   "ALCHEMIST-UNLOCK_ALL.title": "ปลดล็อกการ์ด, เครื่องราง, ขวดยา, และศักราชของนักเล่นแร่แปรธาตุทั้งหมด",
-  "ALCHEMIST-UNLOCKS.title": "การปลดล็อก"
+  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "ปลดล็อกทั้งหมด",
+  "ALCHEMIST.mod_title": "นักเล่นแร่แปรธาตุ"
 }

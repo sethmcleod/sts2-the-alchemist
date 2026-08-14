@@ -30,6 +30,7 @@ ANY_TAG_RE = re.compile(r"\[/?[a-z_]+\]")
 # Terms the mod invents. They have no base-game translation, so the glossary
 # records them for the consistency check only, not as required wording.
 MOD_TERMS = {
+    "antitoxin", "dosed", "potent", "ferment",
     "reaction", "infuse", "gambit", "brew", "brew potions", "distillate", "distillates",
     "distillate+", "distillates+", "toxic",
     "laced", "fuming", "exalted", "alchemist", "nigredo", "albedo",
@@ -47,10 +48,17 @@ ALIASES = {
     "potion(s)": "potions", "spire's": "spire", "distillates": "distillate",
 }
 
-# Terms that are a base-game term in one sense and ordinary prose in another.
-# Lowercase, these are the metal and the substance in this mod's flavour text,
-# not the currency and the status effect, so the keyword wording is wrong there.
+# Terms whose base-game wording depends on context, so no single rendering can
+# be enforced. Lowercase gold and poison are the metal and the substance in this
+# mod's flavour text, not the currency and the status. "Discard" resolves to
+# POTION_POPUP.discard, the button for discarding a potion (de: "Weglegen"),
+# while card text uses a different verb for discarding a card (de: "Wirf ... ab").
 AMBIGUOUS = {"gold", "poison"}
+
+# The same, but regardless of case. "Gold" the currency is a real glossary term
+# while lowercase "gold" is the metal, so that pair stays case-sensitive above;
+# "Discard" is context-dependent in every casing.
+AMBIGUOUS_ANY_CASE = {"discard"}
 
 
 def strip_tags(text: str) -> str:
@@ -178,7 +186,7 @@ def main() -> None:
         if lowered in MOD_TERMS:
             mod_only.append(term)
             continue
-        if term in AMBIGUOUS:
+        if term in AMBIGUOUS or term.lower() in AMBIGUOUS_ANY_CASE:
             unresolved.append(term)
             continue
         # Try the term as written before falling back to its base form, so an

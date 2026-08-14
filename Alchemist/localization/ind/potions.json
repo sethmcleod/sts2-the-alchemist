@@ -1,0 +1,14 @@
+{
+  "ALCHEMIST-ALKAHEST.description": "Jika digunakan dalam perlawanan, beri [gold]Infusi[/gold] ke sampai dengan [blue]3[/blue] kartu di [gold]Tanganmu[/gold]. Jika tidak, tingkatkan sebuah kartu dalam [gold]Dek[/gold] kamu.",
+  "ALCHEMIST-ALKAHEST.title": "Alkahest",
+  "ALCHEMIST-GOLD_LEAF.description": "Sembuhkan [green]1[/green] HP dan dapatkan [blue]1[/blue] [gold]Blok[/gold] untuk setiap [blue]15[/blue] [gold]Emas[/gold] yang kamu punya.{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.title": "Lembaran Emas",
+  "ALCHEMIST-MARSH_TONIC.description": "Dapatkan [blue]6[/blue] [gold]Antitoksin[/gold].",
+  "ALCHEMIST-MARSH_TONIC.title": "Obat Rawa",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Dapatkan giliran tambahan setelah ini.",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Jamu Raksa",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Tambahkan [blue]2[/blue] [gold]Sulingan[/gold] ke [gold]Tanganmu[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.title": "Ekstrak Murni",
+  "ALCHEMIST-SOPORIFIC.description": "Buat seorang musuh [gold]Linglung[/gold].",
+  "ALCHEMIST-SOPORIFIC.title": "Obat Tidur"
+}

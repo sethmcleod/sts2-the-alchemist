@@ -1,6 +1,6 @@
 {
-  "ALCHEMIST-BREW.description": "이 휴식 장소 선택지는 무작위 [gold]포션[/gold]을 생성합니다. 오직 이 방법으로만 얻을 수 있는 [gold]포션[/gold]이 3종 있습니다.",
+  "ALCHEMIST-BREW.description": "이 휴식 장소 선택지는 무작위 [gold]포션[/gold]을 생성합니다. 오직 이 방법으로만 얻을 수 있는 [gold]포션[/gold]이 3종 있습니다. [gold]포션[/gold]은 [gold]상인[/gold]에게 판매할 수도 있습니다.",
   "ALCHEMIST-BREW.title": "양조",
-  "ALCHEMIST-MASTERWORK.description": "이번 전투에서 [gold]주입[/gold]할 카드를 포함해 5장 이상 [gold]인챈트[/gold]했다면, 이 카드가 [gold]금색[/gold]으로 빛납니다.",
+  "ALCHEMIST-MASTERWORK.description": "이번 전투에서 [gold]주입[/gold]할 카드를 포함해 3장 이상 [gold]인챈트[/gold]했다면, 이 카드가 [gold]금색[/gold]으로 빛납니다.",
   "ALCHEMIST-MASTERWORK.title": "걸작"
 }

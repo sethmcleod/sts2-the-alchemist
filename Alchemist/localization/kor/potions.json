@@ -3,6 +3,7 @@
   "ALCHEMIST-ALKAHEST.title": "알카헤스트",
   "ALCHEMIST-GOLD_LEAF.description": "보유한 [gold]골드[/gold] [blue]15[/blue]당 체력을 [green]1[/green] 회복하고 [gold]방어도[/gold]를 [blue]1[/blue] 얻습니다.{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "금박",
+  "ALCHEMIST-MARSH_TONIC.description": "[gold]항독소[/gold]를 [blue]6[/blue] 얻습니다.",
   "ALCHEMIST-MARSH_TONIC.title": "늪지 강장제",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "이번 턴 후에 추가 턴을 진행합니다.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "수은 약",

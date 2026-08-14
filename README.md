@@ -15,15 +15,15 @@
 - **Antitoxin**: A reserve that absorbs the damage Poison would deal to you. It
   persists across turns, up to a limit. Once the reserve is full, any more you
   gain becomes Block.
-- **Absorbing pays off**: Taking Poison damage is not just a cost. Several cards
+- **Absorbing Pays Off**: Taking Poison damage is not just a cost. Several cards
   reward it, turning the Poison you absorb into Strength, Block, Energy or damage
   to every enemy.
-- **Ferment**: These effects grow in potency for every turn the card stays in
-  your hand. However if you Retain them past their peak, they spoil into Toxic
-  cards.
 - **Infuse**: Infusing a card Enchants it for the rest of combat based on the
   type. Attacks apply Poison to the enemy and to you, Skills generate Antitoxin,
   Powers give Strength, and other cards gain Ethereal.
+- **Ferment**: These effects grow in potency for every turn the card stays in
+  your hand. However if you Retain them past their peak, they spoil into Toxic
+  cards.
 - **Brew**: This new Rest Site option lets you procure a random potion.
   There are 3 new potions that can only be obtained this way.
 - **_Sell Potions!_**: Due to the quality and potency of these brews, the

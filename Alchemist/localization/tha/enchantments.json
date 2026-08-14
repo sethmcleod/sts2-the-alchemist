@@ -1,4 +1,8 @@
 {
-  "ALCHEMIST-LACED.description": "ทุกครั้งที่การ์ดนี้สร้างความเสียหายที่บล็อกไม่ได้ สร้าง [blue]{Amount}[/blue] [gold]พิษ[/gold]",
-  "ALCHEMIST-LACED.title": "เจือพิษ"
+  "ALCHEMIST-DOSED.description": "เมื่อเล่นการ์ดทักษะใบนี้ ได้รับ [blue]{Amount}[/blue] [gold]สารต้านพิษ[/gold]",
+  "ALCHEMIST-DOSED.title": "อาบยา",
+  "ALCHEMIST-LACED.description": "ทุกครั้งที่การ์ดโจมตีใบนี้สร้างความเสียหายที่บล็อกไม่ได้ สร้าง [blue]{Amount}[/blue] [gold]พิษ[/gold] และคุณได้รับ [blue]1[/blue] [gold]พิษ[/gold]",
+  "ALCHEMIST-LACED.title": "เจือพิษ",
+  "ALCHEMIST-POTENT.description": "เมื่อเล่นการ์ดพลังใบนี้ ได้รับ [blue]{Amount}[/blue] [gold]ความแข็งแรง[/gold]",
+  "ALCHEMIST-POTENT.title": "ฤทธิ์แรง"
 }
