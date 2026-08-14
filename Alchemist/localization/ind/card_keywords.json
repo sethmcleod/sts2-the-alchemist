@@ -1,0 +1,9 @@
+{
+  "ALCHEMIST-FERMENT.description": "Kartu ini bertambah kuat setiap giliran di [gold]Tanganmu[/gold], dan kembali ke awal saat kamu memainkannya. Setelah melewati puncaknya, kartu bertransformasi menjadi [gold]Racun[/gold].",
+  "ALCHEMIST-FERMENT.title": "Fermentasi",
+  "ALCHEMIST-INFUSE.description": "Beri [gold]Efek[/gold] ke sebuah kartu sampai akhir perlawanan. Serangan mendapat [blue]1[/blue] [purple]Beracun[/purple] (menerapkan [gold]Racun[/gold] saat mengenai, dan meracunimu); Teknik mendapat [blue]1[/blue] [purple]Berdosis[/purple]; Kuasa mendapat [blue]1[/blue] [purple]Ampuh[/purple]. Kartu lain mendapat [gold]Rapuh[/gold].",
+  "ALCHEMIST-INFUSE.selectionPrompt": "Pilih {Amount:plural:sebuah kartu|[blue]{}[/blue] kartu} untuk diberi [gold]Infusi[/gold].",
+  "ALCHEMIST-INFUSE.selectionPromptAny": "Pilih seberapapun kartu untuk diberi [gold]Infusi[/gold].",
+  "ALCHEMIST-INFUSE.selectionPromptRange": "Pilih sampai dengan [blue]{MaxCount}[/blue] {MaxCount:plural:kartu|kartu} untuk diberi [gold]Infusi[/gold].",
+  "ALCHEMIST-INFUSE.title": "Infusi"
+}

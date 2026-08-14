@@ -41,37 +41,13 @@ public abstract class AlchemistCard : ConstructedCardModel
 
     private IEnumerable<IHoverTip> KeywordTips()
     {
-        if (IsGambitCard) yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Gambit);
         if (IsFermentCard)
         {
             yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
             // The keyword names Toxic as the spoil result, so show what one actually does
             yield return HoverTipFactory.FromCard<MegaCrit.Sts2.Core.Models.Cards.Toxic>();
         }
-        if (ShowsReactionTip)
-            yield return KeywordTipFactory.Build("reaction", "ALCHEMIST-REACTION.title", ReactionTipKey);
-        // The Reaction condition names a mechanic of its own, so the tip for that mechanic comes with it.
-        switch (Reaction)
-        {
-            case ReactionCondition.Block:
-                yield return HoverTipFactory.Static(StaticHoverTip.Block);
-                break;
-            case ReactionCondition.Exhaust:
-                yield return HoverTipFactory.FromKeyword(CardKeyword.Exhaust);
-                break;
-        }
     }
-
-    private string ReactionTipKey => Reaction switch
-    {
-        ReactionCondition.Attack => "ALCHEMIST-REACTION.description.attack",
-        ReactionCondition.Skill => "ALCHEMIST-REACTION.description.skill",
-        ReactionCondition.Power => "ALCHEMIST-REACTION.description.power",
-        ReactionCondition.Exhaust => "ALCHEMIST-REACTION.description.exhaust",
-        ReactionCondition.Block => "ALCHEMIST-REACTION.description.block",
-        ReactionCondition.Enchanted => "ALCHEMIST-REACTION.description.enchanted",
-        _ => "ALCHEMIST-REACTION.description",
-    };
 
     // Tip text lives in static_hover_tips.json under {key}.title and {key}.description
     protected static void ExplainNumber(MegaCrit.Sts2.Core.Localization.DynamicVars.DynamicVar variable, string key)
@@ -85,14 +61,10 @@ public abstract class AlchemistCard : ConstructedCardModel
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
     // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state
-    internal bool IsReduced => Gambit.IsActive(Owner?.Creature);
-
     internal bool IsEnchanted => Enchantment != null;
 
     // Drives two gold glows: the card in hand once it is Enchanted, and the card in an Infuse selection
     internal virtual bool GainsEffectWhenEnchanted => false;
-
-    protected virtual bool IsGambitCard => false;
 
     protected virtual bool ConditionalGlow => false;
 
@@ -100,8 +72,8 @@ public abstract class AlchemistCard : ConstructedCardModel
     // needs its own guard
     protected override bool ShouldGlowGoldInternal =>
         IsMutable && AlchemistModConfig.ShowHandGlows
-        && ((IsGambitCard && IsReduced) || (GainsEffectWhenEnchanted && IsEnchanted)
-            || ReactionActive || ConditionalGlow);
+        && ((GainsEffectWhenEnchanted && IsEnchanted)
+            || ConditionalGlow);
 
     internal bool HpFractionInRange(double lower, double upper)
     {
@@ -114,9 +86,14 @@ public abstract class AlchemistCard : ConstructedCardModel
         GameCompat.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
 
+    // Laced keys on IsPoweredAttack, so a card that deals its damage Unpowered can carry Laced without
+    // it ever firing. Those cards keep their own impact rather than showing a splat that does nothing
+    protected internal virtual bool DealsUnpoweredDamage => false;
+
     // Laced hits land as a green splat instead of the card's own impact. Play time only, because
     // Enchantment is live on the mutable combat instance
-    protected string HitVfx(string vfx) => Enchantment is Laced ? "vfx/vfx_slime_impact" : vfx;
+    protected string HitVfx(string vfx) =>
+        Enchantment is Laced && !DealsUnpoweredDamage ? "vfx/vfx_slime_impact" : vfx;
 
     // The green splash the base game pairs with an on-hit Poison apply, see DeadlyPoison
     protected static void PoisonSplash(Creature? target)
@@ -150,7 +127,10 @@ public abstract class AlchemistCard : ConstructedCardModel
             if (RawFormulaDamagePreview is not { } raw) return null;
             if (Owner?.Creature is not { } dealer) return null;
             if ((CombatState ?? dealer.CombatState) is not { } combat) return null;
-            var total = GameCompat.ModifyDamage(Owner.RunState, combat, null, dealer, raw, ValueProp.Move,
+            // Must carry the same props the attack does, or Strength and Vulnerable inflate the
+            // previewed number on a card whose real hit ignores them
+            var props = DealsUnpoweredDamage ? ValueProp.Move | ValueProp.Unpowered : ValueProp.Move;
+            var total = GameCompat.ModifyDamage(Owner.RunState, combat, null, dealer, raw, props,
                 this, null, ModifyDamageHookType.All, CardPreviewMode.MultiCreatureTargeting, out _);
             return (int)Math.Max(total, 0m);
         }
@@ -172,61 +152,16 @@ public abstract class AlchemistCard : ConstructedCardModel
 
     internal int FermentTurns => _fermentTurns;
 
+    /// <summary>The base game reserves this for roughly 12 damage and up.</summary>
+    /// <summary>Set false to keep a card snappy, as the base game does for its Defends.</summary>
+    protected internal virtual bool PlaysCastAnimation => true;
+
+    protected const string HeavyAttackAnim = "heavyAttack";
+
+    /// <summary>44% into the 1.333s clip, matching the light swing.</summary>
+    protected const float HeavyAttackDelay = 0.55f;
+
     protected virtual string FermentTotalText => "";
-
-    protected virtual ReactionCondition Reaction => ReactionCondition.None;
-
-    internal bool IsReactionCard => Reaction != ReactionCondition.None;
-
-    // Reagent names the keyword without carrying a condition, so it needs the tip too
-    protected virtual bool ShowsReactionTip => IsReactionCard;
-
-    // The last card play this player FINISHED this turn. The card being played now has not finished yet,
-    // so this is the one before it, and null means this is the turn's first card
-    private CardModel? PreviousCardThisTurn =>
-        Owner == null || CombatState == null
-            ? null
-            : CombatManager.Instance.History.CardPlaysFinished
-                .LastOrDefault(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Card.Owner == Owner)
-                ?.CardPlay.Card;
-
-    // Reagent hands the next Reaction card a free trigger, so that wins before the condition is read.
-    // The IsMutable gate keeps every caller safe on canonical models, where Owner throws
-    internal bool ReactionActive =>
-        ReactionConditionMet
-        || (IsMutable && IsReactionCard && Owner != null
-            && Owner.Creature.GetPowerAmount<ReactivePower>() > 0);
-
-    // The condition on its own, with no Reagent grant folded in
-    private bool ReactionConditionMet
-    {
-        get
-        {
-            if (!IsMutable || !IsReactionCard || Owner == null) return false;
-
-            // Exhaust is the one condition that does not read the previous card play. Any card of
-            // yours that Exhausted this turn arms it, including one a relic burned before you had
-            // played anything, so effects like Toasty Mittens combo with it. This card is excluded,
-            // or a card that Exhausts itself would arm its own Reaction
-            if (Reaction == ReactionCondition.Exhaust)
-                return CombatManager.Instance.History.Entries
-                    .OfType<CardExhaustedEntry>()
-                    .Any(e => e.HappenedThisTurn(CombatState) && e.Card != this && e.Card?.Owner == Owner);
-
-            if (PreviousCardThisTurn is not { } prev) return false;
-            return Reaction switch
-            {
-                ReactionCondition.Attack => prev.Type == CardType.Attack,
-                ReactionCondition.Skill => prev.Type == CardType.Skill,
-                ReactionCondition.Power => prev.Type == CardType.Power,
-                ReactionCondition.Enchanted => prev.Enchantment != null,
-                ReactionCondition.Block => CombatManager.Instance.History.Entries
-                    .OfType<BlockGainedEntry>()
-                    .Any(e => e.HappenedThisTurn(CombatState) && e.CardPlay?.Card == prev),
-                _ => false,
-            };
-        }
-    }
 
     // VeryEarly, not the plain hook: RegenPower heals and decrements in BeforeSideTurnEndEarly, so a
     // Ferment tick has to land ahead of both

@@ -7,6 +7,7 @@ using Godot;
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
@@ -17,11 +18,14 @@ public class Alchemist : PlaceholderCharacterModel
 {
     public const string CharacterId = "Alchemist";
 
-    // Medium violet, matches DeckEntryCardColor; lighter than iris for
-    // readability on dark backgrounds, bluer than the Necrobinder's EE82EE
     public static readonly Color Color = new("8D5DEF");
 
     public override Color NameColor => Color;
+    public override Color MapDrawingColor => new("4B1F9E");
+
+    // Measured contact points; the shared 0.15/0.25 defaults land during our longer wind-up
+    public override float AttackAnimDelay => 0.35f;
+    public override float CastAnimDelay => 0.4f;
     public override CharacterGender Gender => CharacterGender.Neutral;
     public override int StartingHp => 69;
     public override int StartingGold => 75;
@@ -36,8 +40,8 @@ public class Alchemist : PlaceholderCharacterModel
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<DefendAlchemist>(),
-        ModelDb.Card<Reagent>(),
-        ModelDb.Card<Prime>()
+        ModelDb.Card<Jab>(),
+        ModelDb.Card<Antidote>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
@@ -64,14 +68,55 @@ public class Alchemist : PlaceholderCharacterModel
     protected override IEnumerable<string> ExtraAssetPaths =>
         [AlchemistVisuals.TexturePath, AlchemistRestSite.TexturePath];
 
-    // Attack, cast and death are still missing from the skeleton, and an omitted name falls back
-    // to the idle. The blink rides a second track with its own clock, thus it never locks to the
-    // loop of the idle
-    public override CreatureAnimator SetupCustomAnimationStates(MegaSprite controller)
+    // Overrides GenerateAnimator rather than BaseLib's SetupCustomAnimationStates, because only
+    // this signature carries the Creature, and the low health idle needs it. The base game does not
+    // raise a trigger for low health: it registers TWO Idle states with opposite conditions and lets
+    // every one shot pick the idle that fits when it ends. IsLowHealth is a quarter HP or less
+    public override CreatureAnimator GenerateAnimator(MegaSprite controller, Creature creature)
     {
-        AlchemistVisuals.StartBlinking(controller);
-        return SetupAnimationState(controller, AlchemistVisuals.IdleAnimation,
-            hitName: AlchemistVisuals.HurtAnimation);
+        AlchemistVisuals.StartIdleFlourishes(controller);
+
+        var idle = new AnimState(AlchemistVisuals.IdleAnimation, isLooping: true);
+        var lowIdle = AlchemistVisuals.NearDeathAnimation is { } low
+            ? new AnimState(low, isLooping: true)
+            : idle;
+
+        bool Low() => IsLowHealth(creature);
+
+        AnimState Once(string? name)
+        {
+            if (name == null) return idle;
+
+            var state = new AnimState(name);
+            state.AddNextState(idle, () => !Low());
+            state.AddNextState(lowIdle, Low);
+            return state;
+        }
+
+        var hurt = Once(AlchemistVisuals.HurtAnimation);
+        var attack = Once(AlchemistVisuals.AttackAnimation);
+        var cast = Once(AlchemistVisuals.CastAnimation);
+        var heavy = Once(AlchemistVisuals.HeavyAttackAnimation ?? AlchemistVisuals.AttackAnimation);
+        var dead = AlchemistVisuals.DeathAnimation is { } death ? new AnimState(death) : idle;
+
+        var relaxed = idle;
+        if (AlchemistVisuals.RelaxedAnimation is { } relaxedName)
+        {
+            relaxed = new AnimState(relaxedName, isLooping: true);
+            relaxed.AddBranch("Idle", idle);
+        }
+
+        var animator = new CreatureAnimator(Low() ? lowIdle : idle, controller);
+        animator.AddAnyState("Idle", idle, () => !Low());
+        animator.AddAnyState("Idle", lowIdle, Low);
+        animator.AddAnyState("Dead", dead);
+        animator.AddAnyState("Hit", hurt);
+        animator.AddAnyState("Attack", attack);
+        animator.AddAnyState("Cast", cast);
+        animator.AddAnyState("heavyAttack", heavy);
+        animator.AddAnyState("PowerUp", cast);
+        animator.AddAnyState("Relaxed", relaxed);
+        return animator;
     }
 
     public override Control CustomIcon
@@ -109,7 +154,7 @@ public class Alchemist : PlaceholderCharacterModel
     // visuals, the rest site and merchant animations, and the multiplayer hands. A res:// path plays through
     // Godot audio instead of FMOD, routed by BaseLib's PlayResourcePatch. scripts/gen_select_sfx.py makes the wav
     public override string CharacterSelectSfx => $"{MainFile.ResPath}/audio/alchemist_select.wav";
-    public override string CustomAttackSfx => "event:/sfx/characters/silent/silent_attack";
-    public override string CustomCastSfx => "event:/sfx/characters/necrobinder/necrobinder_cast";
-    public override string CustomDeathSfx => "event:/sfx/characters/silent/silent_die";
+    public override string CustomAttackSfx => "event:/sfx/characters/osty/osty_attack";
+    public override string CustomCastSfx => "event:/sfx/characters/necrobinder/necrobinder_summon";
+    public override string CustomDeathSfx => "event:/sfx/characters/osty/osty_die";
 }

@@ -4,7 +4,8 @@
 #   scripts/dev.sh publish        build → godot import → publish → verify pck   (the safe default)
 #   scripts/dev.sh publish-fast   build → publish → verify pck                  (code only, no import)
 #   scripts/dev.sh import         godot --headless --import only
-#   scripts/dev.sh lint           static check of the three-way rule (offline, no game)
+#   scripts/dev.sh lint           static checks: the three-way rule, card text tokens, and
+#                                 Ancient dialogue structure (offline, no game)
 #   scripts/dev.sh changelog      draft CHANGELOG entries from the commits since the last tag
 #                                 (it prints only, it writes nothing)
 #   scripts/dev.sh release <patch|minor|major|X.Y.Z|promote>
@@ -254,6 +255,8 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
   do_build
   step "lint"
   "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py"
+  "${PY_CMD[@]}" "$REPO/scripts/check_card_tokens.py"
+  "${PY_CMD[@]}" "$REPO/scripts/check_ancient_dialogue.py"
 
   local date; date="$(date +%Y-%m-%d)"
   ok "release v$cur → v$new ($date)"
@@ -541,7 +544,9 @@ case "${1:-help}" in
   publish-fast)  do_build; do_publish; do_verify ;;
   import)        do_import ;;
   lint)          have_py || { bad "$no_py_msg"; exit 1; }
-                 "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py" ;;
+                 "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py"
+                 "${PY_CMD[@]}" "$REPO/scripts/check_card_tokens.py"
+                 "${PY_CMD[@]}" "$REPO/scripts/check_ancient_dialogue.py" ;;
   changelog)     do_changelog ;;
   release)       shift; do_release "$@" ;;
   publish-release) shift; do_publish_release "$@" ;;

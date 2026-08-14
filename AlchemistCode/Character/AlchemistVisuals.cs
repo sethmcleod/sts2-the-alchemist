@@ -28,20 +28,35 @@ internal static class AlchemistVisuals
     private const string IdleAnimationLeaf = "idle_loop";
     private const string BlinkAnimationLeaf = "blink";
     private const string HurtAnimationLeaf = "hurt";
+    private const string AttackAnimationLeaf = "attack";
+    private const string HeavyAttackAnimationLeaf = "attack_heavy";
+    private const string CastAnimationLeaf = "cast";
+    private const string DeathAnimationLeaf = "die";
+    private const string RelaxedAnimationLeaf = "relaxed_loop";
+    // Our rig calls it near_death_loop and the base game calls it low_health_loop, thus both
+    private const string NearDeathAnimationLeaf = "near_death_loop";
+    private const string LowHealthAnimationLeaf = "low_health_loop";
+    private const string ShineAnimationLeaf = "shine";
 
     // The idle holds track 0. A second track plays the blink over it, thus the eyes keep their own
     // clock and never lock to the loop of the idle. Vantom and LagavulinMatriarch layer this way
     private const int BlinkTrack = 1;
 
-    // Spine plays a queue, and the eyes stop when it empties. The queue must thus outlast any
-    // fight: 400 blinks at a mean gap of 6 seconds cover about 40 minutes. The game makes the
-    // visuals again for each combat, thus the queue starts over every time
-    private const int QueuedBlinks = 400;
+    // The gem on the staff shines on a third track, thus the eyes, the staff and the body each
+    // keep a clock of their own
+    private const int ShineTrack = 2;
+
+    // Spine plays a queue, and a track stops when its queue empties. Each queue must thus outlast
+    // any fight: 400 entries at a mean gap of 6 seconds cover about 40 minutes. The game makes the
+    // visuals again for each combat, thus both queues start over every time
+    private const int QueuedLoops = 400;
     private const float MinBlinkGap = 3f;
     private const float MaxBlinkGap = 9f;
+    private const float MinShineGap = 7f;
+    private const float MaxShineGap = 9f;
 
-    // A private generator, thus the blink times never draw from the seeded run of the game
-    private static readonly Random BlinkRng = new();
+    // A private generator, thus these times never draw from the seeded run of the game
+    private static readonly Random FlourishRng = new();
 
     /// <summary>
     /// The idle animation, read from the skeleton. Spine puts the name of the folder that holds an
@@ -55,6 +70,31 @@ internal static class AlchemistVisuals
 
     /// <summary>The on hit animation, or null. Null makes the game play the idle instead.</summary>
     public static string? HurtAnimation { get; private set; }
+
+    /// <summary>The light attack, or null.</summary>
+    public static string? AttackAnimation { get; private set; }
+
+    /// <summary>The heavy attack, or null. Null makes a heavy hit fall back to the light one.</summary>
+    public static string? HeavyAttackAnimation { get; private set; }
+
+    /// <summary>Played for Skills and, following the base characters, for Powers too.</summary>
+    public static string? CastAnimation { get; private set; }
+
+    /// <summary>The death animation, or null while the skeleton still lacks one.</summary>
+    public static string? DeathAnimation { get; private set; }
+
+    /// <summary>
+    /// The out of combat idle. Every base character has one and registers it, but nothing in the game
+    /// fires the "Relaxed" trigger, so it stays dormant until MegaCrit starts using it.
+    /// </summary>
+    public static string? RelaxedAnimation { get; private set; }
+
+    /// <summary>The low HP idle, or null if the skeleton holds none.</summary>
+    public static string? NearDeathAnimation { get; private set; }
+
+    /// <summary>The shine on the staff gem, or null if the skeleton holds none.</summary>
+    public static string? ShineAnimation { get; private set; }
+
 
     // How high the model stands on screen, from the feet to the top of the art. This is near the
     // height of the ironclad (1185 units at 0.28 scale). The scale comes from the skeleton at run
@@ -130,6 +170,14 @@ internal static class AlchemistVisuals
         IdleAnimation = SpineModel.ResolveAnimation(data, IdleAnimationLeaf) ?? IdleAnimationLeaf;
         BlinkAnimation = SpineModel.ResolveAnimation(data, BlinkAnimationLeaf);
         HurtAnimation = SpineModel.ResolveAnimation(data, HurtAnimationLeaf);
+        AttackAnimation = SpineModel.ResolveAnimation(data, AttackAnimationLeaf);
+        HeavyAttackAnimation = SpineModel.ResolveAnimation(data, HeavyAttackAnimationLeaf);
+        CastAnimation = SpineModel.ResolveAnimation(data, CastAnimationLeaf);
+        DeathAnimation = SpineModel.ResolveAnimation(data, DeathAnimationLeaf);
+        RelaxedAnimation = SpineModel.ResolveAnimation(data, RelaxedAnimationLeaf);
+        NearDeathAnimation = SpineModel.ResolveAnimation(data, NearDeathAnimationLeaf)
+            ?? SpineModel.ResolveAnimation(data, LowHealthAnimationLeaf);
+        ShineAnimation = SpineModel.ResolveAnimation(data, ShineAnimationLeaf);
 
         if (BlinkAnimation == null)
             MainFile.Logger.Info("The Alchemist skeleton holds no blink animation. The eyes stay open.");
@@ -139,36 +187,41 @@ internal static class AlchemistVisuals
     }
 
     /// <summary>
-    /// Queues the blinks on their own track, each one after a random wait.
+    /// Queues the blink and the shine on their own tracks, each entry after a random wait.
     /// </summary>
     /// <remarks>
     /// The skeleton of a SpineSprite loads over several frames, thus the animation state can be
     /// absent when the game builds the animator. RunWhenSpineReady waits for it.
     /// </remarks>
-    public static void StartBlinking(MegaSprite sprite)
+    public static void StartIdleFlourishes(MegaSprite sprite)
     {
-        if (BlinkAnimation == null) return;
+        if (BlinkAnimation == null && ShineAnimation == null) return;
         if (sprite.BoundObject is not Node host) return;
 
-        host.RunWhenSpineReady(sprite, QueueBlinks);
+        host.RunWhenSpineReady(sprite, state =>
+        {
+            QueueFlourish(state, BlinkAnimation, BlinkTrack, MinBlinkGap, MaxBlinkGap);
+            QueueFlourish(state, ShineAnimation, ShineTrack, MinShineGap, MaxShineGap);
+        });
     }
 
-    private static void QueueBlinks(MegaAnimationState state)
+    private static void QueueFlourish(MegaAnimationState state, string? animation, int track,
+        float minGap, float maxGap)
     {
-        if (BlinkAnimation is not { } blink) return;
+        if (animation == null) return;
 
-        var blinkLength = 0f;
-        for (var i = 0; i < QueuedBlinks; i++)
+        var length = 0f;
+        for (var i = 0; i < QueuedLoops; i++)
         {
-            var gap = MinBlinkGap + (float)BlinkRng.NextDouble() * (MaxBlinkGap - MinBlinkGap);
+            var gap = minGap + (float)FlourishRng.NextDouble() * (maxGap - minGap);
 
             // Spine counts the delay from the start of the entry before, thus each wait must also
-            // carry the length of the blink. The first entry counts from now
-            var delay = i == 0 ? gap : blinkLength + gap;
+            // carry the length of the animation. The first entry counts from now
+            var delay = i == 0 ? gap : length + gap;
 
-            var length = GameCompat.QueueBlink(state, blink, delay, BlinkTrack);
+            var played = GameCompat.QueueBlink(state, animation, delay, track);
 
-            if (i == 0) blinkLength = length;
+            if (i == 0) length = played;
         }
     }
 }

@@ -1,8 +1,8 @@
 {
-  "ALCHEMIST-EXALTED.description": "プレイ時、[gold]筋力[/gold][blue]{Amount}[/blue]を得る。",
-  "ALCHEMIST-EXALTED.title": "高揚",
-  "ALCHEMIST-FUMING.description": "プレイ時、ランダムな敵に[gold]脱力[/gold][blue]{Amount}[/blue]と[gold]弱体[/gold][blue]{Amount}[/blue]を付与する。[gold]毒[/gold][blue]{Amount}[/blue]を得る。",
-  "ALCHEMIST-FUMING.title": "発煙",
-  "ALCHEMIST-LACED.description": "このカードがブロックされずにダメージを与えるたび、[gold]毒[/gold][blue]{Amount}[/blue]を付与する。",
-  "ALCHEMIST-LACED.title": "毒仕込み"
+  "ALCHEMIST-DOSED.description": "このスキルをプレイした時、[gold]抗毒素[/gold][blue]{Amount}[/blue]を得る。",
+  "ALCHEMIST-DOSED.title": "投薬",
+  "ALCHEMIST-LACED.description": "このアタックがブロックされずにダメージを与えるたび、[gold]毒[/gold][blue]{Amount}[/blue]を付与し、[gold]毒[/gold][blue]1[/blue]を得る。",
+  "ALCHEMIST-LACED.title": "毒仕込み",
+  "ALCHEMIST-POTENT.description": "このパワーをプレイした時、[gold]筋力[/gold][blue]{Amount}[/blue]を得る。",
+  "ALCHEMIST-POTENT.title": "強壮"
 }

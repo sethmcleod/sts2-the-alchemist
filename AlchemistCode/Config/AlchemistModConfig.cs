@@ -38,8 +38,8 @@ public class AlchemistModConfig : SimpleModConfig
 
     [ConfigSection("Economy")]
     [ConfigHoverTip]
-    [ConfigSlider(10.0, 100.0, 10.0, Format = "{0}%")]
-    public static int PotionSellPercent { get; set; } = 100;
+    [ConfigSlider(10.0, 90.0, 10.0, Format = "{0}%")]
+    public static int PotionSellPercent { get; set; } = 50;
 
     [ConfigSection("Economy")]
     [ConfigHoverTip]
@@ -54,6 +54,11 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigHoverTip]
     [ConfigColorPicker(EditAlpha = false)]
     public static Color ForecastColor { get; set; } = new("B15CD1");
+
+    [ConfigSection("Accessibility")]
+    [ConfigHoverTip]
+    [ConfigColorPicker(EditAlpha = false)]
+    public static Color AntitoxinBarColor { get; set; } = new("9B5CFF");
 
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]

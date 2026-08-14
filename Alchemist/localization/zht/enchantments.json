@@ -1,8 +1,8 @@
 {
-  "ALCHEMIST-EXALTED.description": "打出此牌時，獲得 [blue]{Amount}[/blue] 層[gold]力量[/gold]。",
-  "ALCHEMIST-EXALTED.title": "昂揚",
-  "ALCHEMIST-FUMING.description": "打出此牌時，對一名隨機敵人施加 [blue]{Amount}[/blue] 層[gold]虛弱[/gold]和 [blue]{Amount}[/blue] 層[gold]易傷[/gold]。獲得 [blue]{Amount}[/blue] 層[gold]中毒[/gold]。",
-  "ALCHEMIST-FUMING.title": "蒸騰",
-  "ALCHEMIST-LACED.description": "每當此牌造成未被格擋的傷害時，施加 [blue]{Amount}[/blue] 層[gold]中毒[/gold]。",
-  "ALCHEMIST-LACED.title": "淬毒"
+  "ALCHEMIST-DOSED.description": "打出此技能牌時，獲得 [blue]{Amount}[/blue] 點[gold]抗毒素[/gold]。",
+  "ALCHEMIST-DOSED.title": "佐劑",
+  "ALCHEMIST-LACED.description": "每當此攻擊牌造成未被格擋的傷害時，施加 [blue]{Amount}[/blue] 層[gold]中毒[/gold]，並獲得 [blue]1[/blue] 層[gold]中毒[/gold]。",
+  "ALCHEMIST-LACED.title": "淬毒",
+  "ALCHEMIST-POTENT.description": "打出此能力牌時，獲得 [blue]{Amount}[/blue] 層[gold]力量[/gold]。",
+  "ALCHEMIST-POTENT.title": "烈性"
 }

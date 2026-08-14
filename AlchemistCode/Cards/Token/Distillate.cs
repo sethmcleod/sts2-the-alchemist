@@ -9,10 +9,11 @@ namespace Alchemist.AlchemistCode.Cards.Token;
 [Pool(typeof(TokenCardPool))]
 public class Distillate : AlchemistCard
 {
+    protected internal override bool PlaysCastAnimation => false;
+
     public Distillate() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
         WithBlock(3, 2);
-        WithPower<RegenPower>(1, 1);
         WithCards(1, 0);
         WithKeyword(CardKeyword.Exhaust);
     }
@@ -20,7 +21,6 @@ public class Distillate : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await CommonActions.ApplySelf<RegenPower>(choiceContext, this);
         await CommonActions.Draw(this, choiceContext);
     }
 }

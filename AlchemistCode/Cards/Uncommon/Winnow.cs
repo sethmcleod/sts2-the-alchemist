@@ -9,9 +9,9 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Winnow : AlchemistCard
 {
-    public Winnow() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Winnow() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithBlock(7, 3);
+        WithBlock(10, 4);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

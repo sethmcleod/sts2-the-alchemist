@@ -3,10 +3,10 @@
   "name": "The Alchemist",
   "author": "Seth",
   "description": "An amphibian practicer of esoteric arts. Transmutes self-inflicted poison into power.",
-  "version": "v0.7.5",
+  "version": "v0.8.0",
   "min_game_version": "0.107.0",
   "has_pck": true,
   "has_dll": true,
-  "dependencies": [{ "id": "BaseLib", "min_version": "3.3.8" }],
+  "dependencies": [{ "id": "BaseLib", "min_version": "3.4.5" }],
   "affects_gameplay": true
 }

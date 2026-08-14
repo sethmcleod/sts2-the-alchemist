@@ -1,10 +1,6 @@
 {
-  "ALCHEMIST-BREW.description": "Cette option de Site de repos vous permet d'obtenir une [gold]Potion[/gold] aléatoire. 3 [gold]Potions[/gold] ne peuvent être obtenues que de cette manière.",
+  "ALCHEMIST-BREW.description": "Cette option de Site de repos vous permet d'obtenir une [gold]Potion[/gold] aléatoire. 3 [gold]Potions[/gold] ne peuvent être obtenues que de cette manière. Vous pouvez aussi vendre des [gold]Potions[/gold] au [gold]Marchand[/gold].",
   "ALCHEMIST-BREW.title": "Brassage",
-  "ALCHEMIST-LIFEBLOOD.description": "Les dégâts incluent la [gold]Régénération[/gold] que vous avez déjà.",
-  "ALCHEMIST-LIFEBLOOD.title": "Sang vital",
-  "ALCHEMIST-MASTERWORK.description": "Cette carte brille en [gold]doré[/gold] si vous avez [gold]Envoûté[/gold] cinq cartes ou plus pendant ce combat, en comptant celle que vous alliez [gold]Infuser[/gold].",
-  "ALCHEMIST-MASTERWORK.title": "Chef-d'œuvre",
-  "ALCHEMIST-OVERFLOW.description": "Touche TOUS les ennemis un nombre de fois égal à votre [gold]Régénération[/gold], en comptant le point que cette carte octroie.",
-  "ALCHEMIST-OVERFLOW.title": "Débordement"
+  "ALCHEMIST-MASTERWORK.description": "Cette carte brille en [gold]doré[/gold] si vous avez [gold]Envoûté[/gold] 3 cartes ou plus pendant ce combat, en comptant celle que vous alliez [gold]Infuser[/gold].",
+  "ALCHEMIST-MASTERWORK.title": "Chef-d'œuvre"
 }

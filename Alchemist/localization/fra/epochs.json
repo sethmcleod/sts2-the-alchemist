@@ -4,27 +4,21 @@
   "ALCHEMIST-ALCHEMIST1_EPOCH.description": "Le plus grand [green]Apothicaire[/green] de la Capitale est parti avec les [gold]Douze[/gold] explorateurs, perdus depuis dans les brumes du temps.\nSon [purple]enfant[/purple] tient la boutique désormais. Mélange. Dose. Lit à la bougie le [gold]journal[/gold] inachevé de son parent, cherchant désespérément à comprendre pourquoi aucun d'eux n'est revenu.\nUn matin, un mot est accroché à la porte : « [sine]Fermé pour travaux de terrain...[/sine] »\nLes portes de la [gold]Tour[/gold] laissent entrer une âme de plus.",
   "ALCHEMIST-ALCHEMIST1_EPOCH.unlockInfo": "{IsRevealed:Partie jouée|Jouez une partie} avec l'[purple]Alchimiste[/purple]{IsRevealed:| pour révéler ces Ères}.",
   "ALCHEMIST-ALCHEMIST1_EPOCH.unlockText": "L'[purple]Alchimiste[/purple] est désormais un personnage jouable.",
-
   "ALCHEMIST-ALCHEMIST2_EPOCH.title": "Dissolution",
   "ALCHEMIST-ALCHEMIST2_EPOCH.description": "Trois étages plus haut, acculée et mourante, la [purple]Grenouille[/purple] sent son propre [green]poison[/green] envahir ses veines — puis se [sine]transmuter[/sine]. Chaleur. Vigueur. Des plaies qui se referment.\nElle survit à la nuit sur le sol d'une ruine, [red]riant[/red], notant tout de ses [jitter]mains tremblantes[/jitter].\nLa première page d'un nouveau [gold]journal[/gold]. Le sien, cette fois.",
   "ALCHEMIST-ALCHEMIST2_EPOCH.unlockInfo": "{IsRevealed:Vous avez terminé|Terminez} l'[gold]Acte[/gold] [blue]1[/blue] avec l'[purple]Alchimiste[/purple]{IsRevealed:| pour révéler cette Ère}.",
-
   "ALCHEMIST-ALCHEMIST3_EPOCH.title": "Séparation",
   "ALCHEMIST-ALCHEMIST3_EPOCH.description": "« Vous [sine]brassez[/sine] ça ? [sine]Ici[/sine] ? »\nPour la première fois depuis des années, c'est le [blue]Marchand[/blue] qui veut acheter.\nUne [green]teinture[/green] se glisse dans sa main, encore chaude de la flamme.\nUn accord est conclu sur-le-champ : la [purple]Grenouille[/purple] brasse, le [blue]Marchand[/blue] achète.",
   "ALCHEMIST-ALCHEMIST3_EPOCH.unlockInfo": "{IsRevealed:Vous avez terminé|Terminez} l'[gold]Acte[/gold] [blue]2[/blue] avec l'[purple]Alchimiste[/purple]{IsRevealed:| pour révéler cette Ère}.",
-
   "ALCHEMIST-ALCHEMIST4_EPOCH.title": "Conjonction",
   "ALCHEMIST-ALCHEMIST4_EPOCH.description": "« Trouvé ça un peu plus haut. Me suis dit que ça appartenait à quelqu'un. » [orange]Darv[/orange] tend un [gold]journal[/gold] usé.\nLes premières pages sont de la main de son [pink]parent[/pink]. Les suivantes, non. Couvertes d'une encre inconnue, elles laissent entrevoir des indices plus haut dans la [gold]Tour[/gold].\nLa [purple]Grenouille[/purple] ne demande pas pourquoi le collectionneur se sépare d'un tel trésor. [orange]Darv[/orange] ne le dit pas.",
   "ALCHEMIST-ALCHEMIST4_EPOCH.unlockInfo": "{IsRevealed:Vous avez terminé|Terminez} l'[gold]Acte[/gold] [blue]3[/blue] avec l'[purple]Alchimiste[/purple]{IsRevealed:| pour révéler cette Ère}.",
-
   "ALCHEMIST-ALCHEMIST5_EPOCH.title": "Fermentation",
   "ALCHEMIST-ALCHEMIST5_EPOCH.description": "Enfermée neuf jours dans une galerie de [green]champignons[/green] luminescents.\nD'autres auraient [jitter]paniqué[/jitter]. La [purple]Grenouille[/purple] [sine]brasse[/sine].\nCertaines préparations [gold]récompensent[/gold] la main patiente. D'autres [red]punissent[/red] l'hésitation.\nElle en ressort avec une sacoche pleine à craquer et la [blue]patience[/blue] de savoir quand ne pas y plonger la main.",
   "ALCHEMIST-ALCHEMIST5_EPOCH.unlockInfo": "{IsRevealed:Vous avez tué|Tuez} [blue]15[/blue] [purple]Élites[/purple] avec l'[purple]Alchimiste[/purple]{IsRevealed:| pour révéler cette Ère}.",
-
   "ALCHEMIST-ALCHEMIST6_EPOCH.title": "Distillation",
   "ALCHEMIST-ALCHEMIST6_EPOCH.description": "Plus haut encore : un campement [jitter]glacé[/jitter]. Des formules gravées dans la pierre, d'une [pink]écriture familière[/pink].\nUne dernière note en marge. Le [gold]Grand Œuvre[/gold] n'a jamais été une affaire d'[gold]or[/gold].\nC'est l'union des contraires. La transcendance du [blue]Soi[/blue].\nLa [purple]Grenouille[/purple] reste longtemps assise avec cette pensée. Puis [sine]grimpe.[/sine]",
   "ALCHEMIST-ALCHEMIST6_EPOCH.unlockInfo": "{IsRevealed:Vous avez tué|Tuez} [blue]15[/blue] [red]Boss[/red] avec l'[purple]Alchimiste[/purple]{IsRevealed:| pour révéler cette Ère}.",
-
   "ALCHEMIST-ALCHEMIST7_EPOCH.title": "Coagulation",
   "ALCHEMIST-ALCHEMIST7_EPOCH.description": "Le dernier étage. La dernière porte.\nUn [pink]parent[/pink] a grimpé jusqu'ici pour achever le [gold]Grand Œuvre[/gold] et n'en a jamais écrit la fin.\nPeut-être parce qu'elle ne pouvait s'écrire — parce que l'ultime transformation n'est pas de celles qu'on consigne, mais de celles qu'on [blue][sine]devient[/sine][/blue].\nLa [purple]Grenouille[/purple] affermit ses mains, respire profondément, et franchit le seuil.",
   "ALCHEMIST-ALCHEMIST7_EPOCH.unlockInfo": "{IsRevealed:Vous avez terminé|Terminez} l'[red]Ascension[/red] [blue]1[/blue] avec l'[purple]Alchimiste[/purple]{IsRevealed:| pour révéler cette Ère}."

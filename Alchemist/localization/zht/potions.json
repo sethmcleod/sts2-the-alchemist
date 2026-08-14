@@ -3,7 +3,7 @@
   "ALCHEMIST-ALKAHEST.title": "萬能溶劑",
   "ALCHEMIST-GOLD_LEAF.description": "你每擁有 [blue]15[/blue] 枚[gold]金幣[/gold]，就恢復 [green]1[/green] 點生命並獲得 [blue]1[/blue] 點[gold]格擋[/gold]。{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "金箔",
-  "ALCHEMIST-MARSH_TONIC.description": "獲得 [blue]3[/blue] 層[gold]再生[/gold]和 [blue]3[/blue] 層[gold]中毒[/gold]。",
+  "ALCHEMIST-MARSH_TONIC.description": "獲得 [blue]6[/blue] 點[gold]抗毒素[/gold]。",
   "ALCHEMIST-MARSH_TONIC.title": "沼澤補藥",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "此回合結束後，再進行一個回合。",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "水銀藥飲",

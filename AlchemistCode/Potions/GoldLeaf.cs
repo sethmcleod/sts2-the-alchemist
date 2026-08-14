@@ -13,6 +13,10 @@ namespace Alchemist.AlchemistCode.Potions;
 public class GoldLeaf : AlchemistPotion
 {
     public override PotionRarity Rarity => PotionRarity.Rare;
+
+    // Every base potion that heals keeps itself out of in-combat generation, and Brewing already
+    // blacklists this one, so Alchemize must not be able to hand it over mid-fight either
+    public override bool CanBeGeneratedInCombat => false;
     public override PotionUsage Usage => PotionUsage.AnyTime;
     public override TargetType TargetType => TargetType.Self;
 

@@ -14,9 +14,14 @@ does not examine a card with a formula builder (WithCalculated*, calculated argu
 because it cannot know the correct value.
 
 It also checks the fourth location that a rename must reach: the art on disk. Cards,
-powers, relics and potions all get their icons from the class name. If you rename a class
-but you do not rename its png, the entity has no art and no class uses the png. Art that
-is missing is a FAIL. Art that no class uses is a warning.
+powers, relics, potions and enchantments all get their icons from the class name. If you
+rename a class but you do not rename its png, the entity has no art and no class uses the
+png. Art that is missing is a FAIL. Art that no class uses is a warning.
+
+Two further checks guard the case that froze a run: a class that hardcodes an asset
+filename passes the class-name check while asking the game for a file that is not there,
+and a miss that lands on an absent fallback throws the same way. So every asset literal in
+the code must resolve, and every fallback a *ImagePath helper uses must itself exist.
 
 Run it with `scripts/dev.sh lint`.
 """
@@ -49,6 +54,7 @@ ASSET_SPECS = [
                                   ("big", "relics/big", "{s}.png")]),
     ("potion", "Potions", "Potion", [("packed", "potions", "{s}.png"),
                                      ("outline", "potions/outlines", "{s}.png")]),
+    ("enchantment", "Enchantments", "Enchantment", [("icon", "enchantments", "{s}.png")]),
 ]
 
 # the default art for the *ImagePath helpers; no class uses it
@@ -87,7 +93,7 @@ def entity_classes(subdir: str, base_marker: str) -> dict[str, Path]:
         # "partial" appears when a class is split across the branch-specific Compat files, and it
         # can sit on either side of "abstract". Only the half that names the base is matched, so a
         # partial still resolves to exactly one file
-        pattern = r"public\s+(?:(abstract)\s+|partial\s+|(abstract)\s+partial\s+)?class\s+(\w+)\s*:\s*([\w<>, ]+)"
+        pattern = r"public\s+(?:sealed\s+)?(?:(abstract)\s+|partial\s+|(abstract)\s+partial\s+)?(?:sealed\s+)?class\s+(\w+)\s*:\s*([\w<>, ]+)"
         for m in re.finditer(pattern, path.read_text()):
             abstract_a, abstract_b, name, bases = m.groups()
             if not (abstract_a or abstract_b) and base_marker in bases:
@@ -139,6 +145,57 @@ def check_assets() -> tuple[list[str], list[str], int]:
                 warnings.append(f"{img_dir}/{path.name}: no class uses this art")
 
     return errors, warnings, len(claimed)
+
+
+def check_asset_literals() -> list[str]:
+    """No model may name an asset file that is not on disk.
+
+    check_assets derives the filename from the class name, so it only proves the *convention* is
+    satisfied. A class that hardcodes a different filename passes that check while asking the game
+    for a file that does not exist, and a missing texture throws inside the effect handler and
+    freezes the run. That is how the Dosed and Potent icons shipped naming the pre-rename art
+    """
+    errors = []
+    for path in sorted(CODE.rglob("*.cs")):
+        for m in re.finditer(r'"([A-Za-z0-9_/\.-]+\.(?:png|tscn|tres|wav|ogg|ttf|gdshader))"', path.read_text()):
+            ref = m.group(1)
+            if ref.startswith("res://"):
+                cand = [REPO / ref[len("res://"):]]
+            else:
+                stem = ref.rsplit("/", 1)[-1]
+                cand = list(IMG.rglob(stem)) + list((REPO / "Alchemist").rglob(stem))
+            if not any(c.exists() for c in cand):
+                rel = path.relative_to(REPO)
+                errors.append(f"{rel}: names the asset '{ref}', which is not on disk")
+    return errors
+
+
+def check_fallback_art() -> tuple[list[str], list[str]]:
+    """Every fallback a *ImagePath helper falls back to must itself exist.
+
+    A miss that lands on an absent fallback throws exactly like the original miss did, and a
+    missing texture inside an effect handler freezes the run. A helper with no fallback at all
+    only gets a warning: it needs art before it can have one
+    """
+    errors, warnings = [], []
+    src = (CODE / "Extensions" / "StringExtensions.cs").read_text()
+    for m in re.finditer(r"public static string (\w+)\(this string path\)\s*\{(.*?)\n    \}", src, re.S):
+        name, body = m.groups()
+        if "ResourceLoader.Exists" not in body:
+            continue
+        tail = body[body.index("ResourceLoader.Exists"):]
+        # A fallback may point at a base game asset, which ships in the game pck and is not ours to check
+        if re.search(r'return "res://', tail):
+            continue
+        join = re.search(r'return Path\.Join\(MainFile\.ResPath,\s*(.*?)\);', tail, re.S)
+        if not join:
+            warnings.append(f"{name}: no fallback art, so a miss returns a path that will throw")
+            continue
+        parts = [q.strip('" ') for q in re.findall(r'"([^"]+)"', join.group(1))]
+        rel = Path(*parts[1:]) if parts and parts[0] == "images" else Path(*parts)
+        if not (IMG / rel).exists():
+            errors.append(f"{name}: its fallback art images/{rel} is missing")
+    return errors, warnings
 
 
 def parse_number_pairs(desc: str) -> list[tuple[int, int]]:
@@ -229,6 +286,12 @@ def main() -> int:
     asset_errors, asset_warnings, art_count = check_assets()
     errors += asset_errors
     warnings += asset_warnings
+
+    # 5. no class names an asset that is not there, and the fallbacks themselves exist
+    errors += check_asset_literals()
+    fb_errors, fb_warnings = check_fallback_art()
+    errors += fb_errors
+    warnings += fb_warnings
 
     for w in warnings:
         print(f"\033[33mwarn\033[0m  {w}")

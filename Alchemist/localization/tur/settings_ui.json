@@ -1,6 +1,7 @@
 {
-  "ALCHEMIST.mod_title": "Simyacı",
   "ALCHEMIST-ACCESSIBILITY.title": "Erişilebilirlik",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "Can barının altındaki Antitoksin barının rengi. Gelen Zehir'i gösteren yeşil bölüm bundan etkilenmez.",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Antitoksin Barı Rengi",
   "ALCHEMIST-BREW_POTION_CHANCE.hover.desc": "Dinlenme Yeri'nde Demleme yapıldığında normal bir [gold]İksir[/gold] yerine Simyacı'nın sadece Demleme'yle elde edilen üç [gold]İksirinden[/gold] birinin sunulma olasılığı. Varsayılan: %15",
   "ALCHEMIST-BREW_POTION_CHANCE.title": "Demleme'ye Özel İksir Olasılığı",
   "ALCHEMIST-COMPATIBILITY.title": "Uyumluluk",
@@ -13,18 +14,19 @@
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Ayrı Kart Havuzu",
   "ALCHEMIST-POTION_SELL_PERCENT.hover.desc": "Tüccar'a satış yaptığında alacağın Altın'ın yüzdesi. Varsayılan: %100",
   "ALCHEMIST-POTION_SELL_PERCENT.title": "İksir Satış Fiyatı",
-  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Kilitleri Sıfırla",
   "ALCHEMIST-RESET_UNLOCKS.title": "Tüm Simyacı Kartlarını, Kalıntılarını, İksirlerini ve Çağlarını Sıfırla",
-  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Çağları Aç",
+  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Kilitleri Sıfırla",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Tüm Simyacı Zaman Çizelgesi Çağlarını Aç",
+  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Çağları Aç",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.hover.desc": "Simyacı'nın gecikmeli hasarı için düşmanın can barında bir önizleme bölümü gösterir; böylece bekleyen vuruşu gerçekleşmeden görebilirsin. Daha sade bir bar için kapat.",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.title": "Hasar Tahminlerini Göster",
-  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "El'indeki aktif bonusu olan kartları vurgular: Gambit, Reaksiyon veya Büyülenmiş getirisi için altın rengi. Bu vurguları gizlemek için kapat.",
+  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "El'indeki aktif bonusu olan kartları vurgular. Bu vurguları gizlemek için kapat.",
   "ALCHEMIST-SHOW_HAND_GLOWS.title": "Ekstra Kart Parlama Efektlerini Göster",
   "ALCHEMIST-TIMELINE.title": "Zaman Çizelgesi",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.hover.desc": "[sine]Her[/sine] karakter [gold]Tüccar[/gold]'a iksir satabilir! Hem de [gold]Altın[/gold] karşılığında!\n\n(Uyarı: Bu açıklamanın ücreti Tüccar tarafından ödenmiştir.)",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.title": "Her Karakter İksir Satabilsin!",
-  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Hepsini Aç",
+  "ALCHEMIST-UNLOCKS.title": "Kilit Açma",
   "ALCHEMIST-UNLOCK_ALL.title": "Tüm Simyacı Kartlarını, Kalıntılarını, İksirlerini ve Çağlarını Aç",
-  "ALCHEMIST-UNLOCKS.title": "Kilit Açma"
+  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Hepsini Aç",
+  "ALCHEMIST.mod_title": "Simyacı"
 }

@@ -1,6 +1,7 @@
 {
-  "ALCHEMIST.mod_title": "El Alquimista",
   "ALCHEMIST-ACCESSIBILITY.title": "Accesibilidad",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "El color de la barra de antitoxina que aparece bajo tu barra de vida. No afecta al segmento verde que muestra el veneno entrante.",
+  "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Color de la barra de antitoxina",
   "ALCHEMIST-BREW_POTION_CHANCE.hover.desc": "La probabilidad de que elaborar en un punto de descanso ofrezca una de las tres [gold]pociones[/gold] exclusivas de El Alquimista en lugar de una [gold]poción[/gold] normal. Valor predeterminado: 15 %",
   "ALCHEMIST-BREW_POTION_CHANCE.title": "Probabilidad de poción exclusiva",
   "ALCHEMIST-COMPATIBILITY.title": "Compatibilidad",
@@ -13,18 +14,19 @@
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Reserva de cartas separada",
   "ALCHEMIST-POTION_SELL_PERCENT.hover.desc": "El porcentaje del valor en oro que recibirás al vender al Comerciante. Valor predeterminado: 100 %",
   "ALCHEMIST-POTION_SELL_PERCENT.title": "Precio de venta de pociones",
-  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Restablecer desbloqueos",
   "ALCHEMIST-RESET_UNLOCKS.title": "Restablecer todas las cartas, reliquias, pociones y eras de El Alquimista",
-  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Desbloquear eras",
+  "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Restablecer desbloqueos",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Desbloquear todas las eras de la Cronología de El Alquimista",
+  "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Desbloquear eras",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.hover.desc": "Muestra un segmento de previsión en la barra de vida del enemigo para el daño diferido de El Alquimista, de modo que veas el golpe pendiente antes de que llegue. Desactívala para una barra más limpia.",
   "ALCHEMIST-SHOW_DAMAGE_FORECASTS.title": "Mostrar previsiones de daño",
-  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "Resalta las cartas de tu mano que tienen una bonificación activa: dorado para un efecto de Gambito, Reacción o de carta encantada. Desactívala para ocultar estos resaltados.",
+  "ALCHEMIST-SHOW_HAND_GLOWS.hover.desc": "Resalta las cartas de tu mano que tienen una bonificación activa. Desactívala para ocultar estos resaltados.",
   "ALCHEMIST-SHOW_HAND_GLOWS.title": "Mostrar brillos adicionales en las cartas",
   "ALCHEMIST-TIMELINE.title": "Cronología",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.hover.desc": "¡[sine]Todos[/sine] los personajes pueden vender pociones al [gold]Comerciante[/gold]! ¡Por [gold]oro[/gold]!\n\n(Aviso: esta descripción ha sido pagada por el Comerciante.)",
   "ALCHEMIST-UNIVERSAL_POTION_SELLING.title": "¡Cualquier personaje puede vender pociones!",
-  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Desbloquear todo",
+  "ALCHEMIST-UNLOCKS.title": "Desbloqueos",
   "ALCHEMIST-UNLOCK_ALL.title": "Desbloquear todas las cartas, reliquias, pociones y eras de El Alquimista",
-  "ALCHEMIST-UNLOCKS.title": "Desbloqueos"
+  "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Desbloquear todo",
+  "ALCHEMIST.mod_title": "El Alquimista"
 }

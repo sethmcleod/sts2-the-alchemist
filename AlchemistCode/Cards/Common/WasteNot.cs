@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,19 +12,19 @@ public class WasteNot : AlchemistCard
 {
     public WasteNot() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithPower<PoisonPower>(2, 0);
         WithKeyword(CardKeyword.Exhaust, UpgradeType.Remove);
+        WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);
         var selected = (await CardSelectCmd.FromCombatPile(
             choiceContext,
             PileType.Discard.GetPile(Owner),
             Owner,
             new CardSelectorPrefs(SelectionScreenPrompt, 1))).FirstOrDefault();
-        if (selected != null)
-            await CardPileCmd.Add(selected, PileType.Hand);
+        if (selected == null) return;
+        await CardPileCmd.Add(selected, PileType.Hand);
+        Infusion.Infuse(selected);
     }
 }

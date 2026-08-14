@@ -60,7 +60,7 @@ ORIENTS = {
 }
 
 # Full-art cards use a portrait canvas; every other card uses W x H
-SIZES = {"Aureate": (303, 426), "Elixir": (303, 426)}
+SIZES = {"Wormwood": (303, 426), "Elixir": (303, 426)}
 
 # 8x8 Bayer matrix for ordered dithering. A repeating pattern compresses
 # far better in PNG than random noise and prevents banding just as well.
@@ -77,157 +77,103 @@ BAYER = [
 
 # Card -> (start color, end color, direction, family tag)
 # Cards in a family share the start color. Every pair must be unique;
-# the validate command enforces this. Verticals mark Basics and tokens.
-# Token cards all use a vertical gradient (U or D), which sets them apart from the deck at a glance
+# the validate command enforces this.
+# Direction encodes card type: Attack TR, Skill BR, Power R or L, token vertical (U or D)
 COLORS = {
-    # Gambit: all-in attacks
-    "Etch": ("#0b2a4a", "#5fd0e8", "TR", "Unique"),
-    "Neurotoxin": ("#5f011f", "#b3bd2a", "TR", "Gambit: all-in attacks"),
-    # Cauterize (one-off)
+    "Tempered": ("#1f1723", "#5f7fa8", "BR", "Unique"),
+    "Callus": ("#071a02", "#c2703a", "R", "Poison powers: amplifiers"),
+    "Rot": ("#071a02", "#6b8f2a", "L", "Poison powers: retaliation"),
+    "Swamp Gas": ("#4e8701", "#1c5f7a", "BR", "Poison skills"),
+    "Gulp": ("#4e8701", "#8a3f2f", "BR", "Poison skills"),
+    "Recoil": ("#00212a", "#3fb0a0", "TR", "Poison payoffs"),
+    "Toughen": ("#2f0170", "#6f9ad8", "BR", "Poison payoffs"),
+    "Immunize": ("#2f0170", "#c46fd8", "R", "Antitoxin"),
+    "Pass It On": ("#2f0170", "#d84a4a", "L", "Antitoxin"),
+    "Deep Breath": ("#792595", "#9ad8b8", "BR", "Infuse: cantrips"),
+    "Kickback": ("#4a1a66", "#8fd84a", "R", "Infuse: heavy"),
+    "Backfire": ("#0b2a4a", "#5fd0e8", "TR", "Unique"),
+    "Croak": ("#5f011f", "#b3bd2a", "TR", "Poison attacks"),
     "Overdose": ("#5f011f", "#c18c0f", "TR", "Unique"),
-    "Cauterize": ("#3d0a02", "#e0d6c2", "TR", "Unique"),
-    # Puncture (one-off)
+    "Air It Out": ("#3d0a02", "#e0d6c2", "TR", "Unique"),
     "Puncture": ("#0d1f3d", "#3d9ae8", "TR", "Unique"),
-    # Lash Out (one-off)
     "Lash Out": ("#5f011f", "#77828c", "TR", "Unique"),
-    # Gambit: skills
-    "Congeal": ("#1d3f0e", "#0e7c7b", "BR", "Gambit: skills"),
-    "Fresh Batch": ("#045062", "#8fe3c0", "BR", "Gambit: skills"),
-    "Transmute": ("#5f011f", "#e3b84a", "BR", "Gambit: skills"),
-    # Gambit: powers
-    "Slag": ("#45293f", "#c98fd6", "R", "Unique"),
-    # Poison attacks
+    "Congeal": ("#1d3f0e", "#0e7c7b", "BR", "Potion and buff skills"),
+    "Transmute": ("#5f011f", "#e3b84a", "BR", "Potion and buff skills"),
+    "Warded": ("#45293f", "#c98fd6", "R", "Unique"),
+    "One For Me": ("#2f0170", "#8f6fd8", "TR", "Antitoxin"),
+    "Heavy Dose": ("#650101", "#c46a12", "TR", "Poison attacks"),
     "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
-    "Macerate": ("#650101", "#2f9e6a", "TR", "Poison attacks"),
-    # Unstable Compound (one-off): the name kept its own violet-into-toxic-green
-    "Unstable Compound": ("#2f0170", "#63c11c", "BR", "Unique"),
-    # Reaction: skills
-    "Corrode": ("#2f0170", "#287912", "BR", "Reaction: skills"),
-    "Decoction": ("#2f0170", "#2aa88a", "BR", "Reaction: skills"),
-    # Reaction: heavy attacks
-    "Draining Strike": ("#2f0170", "#b3341f", "TR", "Reaction: heavy attacks"),
-    "Backdraft": ("#1a0400", "#ff5a12", "TR", "Reaction: heavy attacks"),
-    # Reaction: light attacks
-    "Quicklime": ("#1c0f45", "#e8e4d2", "TR", "Reaction: light attacks"),
-    "Reagent": ("#1c0f45", "#d8e04a", "TR", "Reaction: light attacks"),
-    "Catalysis": ("#1c0f45", "#6ad8c4", "R", "Reaction: light attacks"),
-    # Ferment: attacks
+    "Reckless Swing": ("#650101", "#2f9e6a", "TR", "Poison attacks"),
+    "Chain Reaction": ("#650101", "#e8451f", "TR", "Poison attacks"),
+    "Next Up": ("#2f0170", "#c0a24a", "TR", "Unique"),
+    "Cheap Cover": ("#1f1723", "#7f9aa8", "BR", "Exhaust pile: skills"),
+    "Fallout": ("#650101", "#4a7a1c", "TR", "Poison attacks"),
+    "Slow Burn": ("#2f0170", "#63c11c", "BR", "Unique"),
+    "Corrode": ("#2f0170", "#287912", "BR", "Poison and Infuse skills"),
+    "Draining Strike": ("#2f0170", "#b3341f", "TR", "Heavy attacks"),
+    "Quicklime": ("#1c0f45", "#e8e4d2", "TR", "Light attacks"),
     "Patient Strike": ("#4a0e2e", "#c78a3b", "TR", "Ferment: attacks"),
     "Rolling Boil": ("#4a0e2e", "#e85a1f", "TR", "Ferment: attacks"),
-    # Ferment: skills and powers
-    "Amalgam": ("#6b2444", "#c2601c", "TR", "Unique"),
-    "Carapace": ("#6b2444", "#d9a86a", "BR", "Ferment: skills and powers"),
+    "All At Once": ("#6b2444", "#c2601c", "TR", "Unique"),
+    "Puff Up": ("#6b2444", "#d9a86a", "BR", "Ferment: skills and powers"),
     "Vintage": ("#6b2444", "#df9723", "BR", "Ferment: skills and powers"),
-    # Infuse: cantrips
     "Enrich": ("#792595", "#b8d94f", "BR", "Infuse: cantrips"),
     "Salve": ("#792595", "#6fd8e0", "BR", "Infuse: cantrips"),
-    "Prime": ("#792595", "#2cbeba", "TR", "Infuse: cantrips"),
-    # Quench (one-off)
-    "Quench": ("#792595", "#0e5452", "BR", "Unique"),
-    # Infuse: heavy
     "Masterwork": ("#4a1a66", "#c9a227", "BR", "Infuse: heavy"),
     "Refine": ("#4a1a66", "#257bc3", "BR", "Infuse: heavy"),
-    # Froth (one-off: sea-foam over deep blue)
     "Froth": ("#0e3550", "#8fe0c8", "TR", "Unique"),
-    # Siphon (one-off)
     "Siphon": ("#241a5e", "#2aa89b", "TR", "Unique"),
-    # Enchanted payoffs: debuff attacks
-    "Echo Strike": ("#5b3fc4", "#d84a6f", "TR", "Enchanted payoffs: debuff attacks"),
+    "Echo Strike": ("#5b3fc4", "#4a9fd8", "TR", "Enchanted payoffs: debuff attacks"),
     "Needle Point": ("#5b3fc4", "#aeb4bc", "TR", "Enchanted payoffs: debuff attacks"),
-    "Vivisect": ("#5b3fc4", "#d94f6a", "TR", "Enchanted payoffs: debuff attacks"),
-    # Enchanted payoffs: Plating
-    "Libation": ("#5b3fc4", "#23262e", "BR", "Enchanted payoffs: Plating"),
-    "Sediment": ("#5b3fc4", "#d9c89a", "R", "Enchanted payoffs: Plating"),
-    "Vitrify": ("#5b3fc4", "#48495f", "BR", "Enchanted payoffs: Plating"),
-    # Golden Touch (one-off)
+    "Deep Cut": ("#5b3fc4", "#4ad89b", "TR", "Enchanted payoffs: debuff attacks"),
+    "Harden": ("#5b3fc4", "#d9c89a", "R", "Enchanted payoffs: Antitoxin"),
+    "Vitrify": ("#5b3fc4", "#48495f", "BR", "Enchanted payoffs: Antitoxin"),
     "Golden Touch": ("#5b3fc4", "#ffc832", "L", "Unique"),
-    # Potion: attacks
-    "Fighting Spirits": ("#045062", "#bf8823", "TR", "Potion: attacks"),
-    "Volatile Mix": ("#045062", "#a55d1e", "TR", "Potion: attacks"),
-    # Potion: engines
-    "Bottled Fury": ("#045062", "#e58646", "R", "Potion: engines"),
-    "Precipitate": ("#045062", "#e1542b", "BR", "Potion: engines"),
-    "Windfall": ("#045062", "#c9dd52", "R", "Potion: engines"),
-    # Azoth (one-off)
-    "Azoth": ("#1f1723", "#8a5f9e", "TR", "Unique"),
-    # Fumigate (one-off)
-    "Fumigate": ("#1f1723", "#a3a83a", "TR", "Unique"),
-    # Exhaust pile: skills
+    "Fast Acting": ("#1f1723", "#8a5f9e", "TR", "Unique"),
+    "Smoke Out": ("#1f1723", "#a3a83a", "TR", "Unique"),
     "Poultice": ("#1f1723", "#4f9e4a", "BR", "Exhaust pile: skills"),
-    "Sinter": ("#1f1723", "#be401b", "BR", "Exhaust pile: skills"),
-    "Anneal": ("#1f1723", "#7f9aa8", "BR", "Exhaust pile: skills"),
-    # Regen: attacks
-    "Hemorrhage": ("#00212a", "#0d8a6b", "TR", "Regen: attacks"),
-    "Lifeblood": ("#00212a", "#0a6e43", "TR", "Regen: attacks"),
-    "Overflow": ("#00212a", "#10aba5", "TR", "Regen: attacks"),
-    # Regen: skills and powers
-    "Circulation": ("#14424e", "#b8e86a", "BR", "Regen: skills and powers"),
-    "Inversion": ("#14424e", "#47b499", "L", "Regen: skills and powers"),
-    # Poison skills
+    "Rummage": ("#1f1723", "#be401b", "BR", "Exhaust pile: skills"),
+    "Tolerance": ("#00212a", "#10aba5", "BR", "Poison payoffs"),
+    "Blood Rush": ("#14424e", "#b8e86a", "BR", "Poison payoffs"),
     "Fester": ("#4e8701", "#0139b2", "BR", "Poison skills"),
     "Sweat It Out": ("#4e8701", "#013161", "BR", "Poison skills"),
     "Waste Not": ("#4e8701", "#2f4f8f", "BR", "Poison skills"),
-    # Poison powers: amplifiers
+    "Taint": ("#4e8701", "#7a2f6b", "BR", "Poison skills"),
     "Heavy Hand": ("#071a02", "#8fc72a", "R", "Poison powers: amplifiers"),
-    "Sepsis": ("#071a02", "#5aea23", "L", "Poison powers: amplifiers"),
-    # Poison powers: retaliation
+    "Weak Spot": ("#071a02", "#2ec4c9", "L", "Poison powers: amplifiers"),
     "Contagion": ("#071a02", "#c9b428", "R", "Poison powers: retaliation"),
-    "Corrosive": ("#071a02", "#5fbf8a", "R", "Poison powers: retaliation"),
-    "Virulence": ("#071a02", "#7ad14a", "L", "Poison powers: retaliation"),
-    "Secretion": ("#071a02", "#af8423", "L", "Poison powers: retaliation"),
-    # Poison plus Regen
-    "Mercurial Form": ("#0e6b54", "#8aa312", "R", "Poison plus Regen"),
-    "Twin Serpents": ("#14805f", "#a6c214", "L", "Poison plus Regen"),
-    # Burst tempo
-    "White Heat": ("#7a1c02", "#ffdf8a", "BR", "Burst tempo"),
+    "Grudge": ("#071a02", "#5fbf8a", "R", "Poison powers: retaliation"),
+    "Share The Pain": ("#071a02", "#4a7fd1", "L", "Poison powers: retaliation"),
+    "Toxin Skin": ("#071a02", "#af8423", "L", "Poison powers: retaliation"),
+    "Mercurial Form": ("#22203d", "#cfd6e3", "R", "Unique"),
+    "Pays Off": ("#2f0170", "#f2b32e", "L", "Antitoxin"),
+    "White Heat": ("#7a1c02", "#ffdf8a", "TR", "Burst tempo"),
     "Bitter Draught": ("#7a1c02", "#d98cc8", "BR", "Burst tempo"),
-    "Venom Trance": ("#7a1c02", "#8fd97a", "BR", "Burst tempo"),
-    # Crafting: transform
     "Melt Down": ("#1b2a44", "#0f9b82", "BR", "Crafting: transform"),
-    "Sublimate": ("#1b2a44", "#0c7f56", "BR", "Crafting: transform"),
-    # Crafting: discovery
+    "Boil Down": ("#1b2a44", "#0c7f56", "BR", "Crafting: transform"),
     "Decant": ("#1b2a44", "#8a63f5", "TR", "Crafting: discovery"),
     "Eureka": ("#1b2a44", "#f2c94e", "BR", "Crafting: discovery"),
-    # Crafting: refinement
     "Hone": ("#3a1220", "#ff5f3d", "BR", "Crafting: refinement"),
     "Winnow": ("#3a1220", "#f0435e", "BR", "Crafting: refinement"),
-    # Distillate (one-off token)
     "Distillate": ("#1b2f2c", "#6fe0b4", "D", "Unique"),
-    # Multiplayer: gifts
     "Bestow": ("#2563c4", "#b48ff0", "BR", "Multiplayer: gifts"),
+    "Bottoms Up": ("#2563c4", "#5fc47a", "R", "Multiplayer: gifts"),
+    "Free Samples": ("#2563c4", "#8fd8c4", "BR", "Multiplayer: gifts"),
     "Effervesce": ("#2563c4", "#d8e8f5", "BR", "Multiplayer: gifts"),
-    # Reflux (one-off)
     "Reflux": ("#2563c4", "#178f5f", "BR", "Unique"),
-    # Suffuse (one-off)
-    "Suffuse": ("#2563c4", "#7fd8b8", "R", "Unique"),
-    # Desperation: powers
-    "Fever Pitch": ("#240147", "#94101b", "R", "Desperation: powers"),
+    "Fresh Coat": ("#240147", "#5fa8d3", "R", "Unique"),
     "Resolve": ("#240147", "#e04a3c", "R", "Desperation: powers"),
-    # Ichor (one-off)
-    "Ichor": ("#240147", "#c9a86a", "TR", "Unique"),
-    # Inoculate (one-off)
-    "Percolate": ("#0e2a45", "#7fd4c1", "BR", "Unique"),
+    "Sleep On It": ("#0e2a45", "#7fd4c1", "BR", "Unique"),
     "Inoculate": ("#12384f", "#8fd0e8", "BR", "Unique"),
-    # Strike (Basic)
-    "Strike": ("#180209", "#942d2d", "BR", "Unique"),
-    # Defend (Basic)
-    "Defend": ("#0f2a43", "#2b6ea8", "TR", "Unique"),
-    # Nigredo (token)
-    "Nigredo": ("#07130a", "#25511a", "U", "Unique"),
-    # Albedo (token)
-    "Albedo": ("#3fd3b0", "#fefeff", "U", "Unique"),
-    # Rubedo (token)
-    "Citrinitas": ("#e87500", "#feee2b", "D", "Unique"),
-    "Rubedo": ("#390800", "#9a330b", "D", "Unique"),
-    # Elixir (Ancient)
+    "Strike": ("#180209", "#942d2d", "TR", "Unique"),
+    "Defend": ("#0f2a43", "#2b6ea8", "BR", "Unique"),
+    "Jab": ("#045062", "#d8b23a", "TR", "Unique"),
+    "Antidote": ("#2f0170", "#2aa88a", "BR", "Unique"),
     "Elixir": ("#7638ff", "#22ff88", "BL", "Unique"),
-    # Aureate (Ancient)
-    "Aureate": ("#a9012b", "#ffcf2e", "TR", "Unique"),
-    # Golden Fruit (Quest)
-    "Golden Fruit": ("#c58037", "#ffef2d", "TR", "Unique"),
-    # Unripe Fruit (Quest)
-    "Unripe Fruit": ("#26a82b", "#ffef2d", "TR", "Unique"),
+    "Wormwood": ("#4a0e2e", "#6ba32c", "TR", "Unique"),
+    "Golden Fruit": ("#c58037", "#ffef2d", "U", "Unique"),
+    "Unripe Fruit": ("#26a82b", "#ffef2d", "U", "Unique"),
 }
 
 # Epoch placeholder gradients: one pair per chapter of the timeline,
@@ -386,8 +332,8 @@ KEYWORDS = [
     "Exhaust Pile", "Draw Pile", "Discard Pile", "Golden Fruit",
     "Distillates", "Distillate", "Enchanted", "Vulnerable", "Fermented",
     "Multiplayer", "Dexterity", "Reaction", "Strength", "Infused",
-    "Citrinitas", "Nigredo", "Procure", "Exhaust", "Ferment", "Albedo", "Plating",
-    "Poison", "Potion", "Regen", "Retain", "Rubedo", "Gambit", "Innate",
+    "Antitoxin", "Procure", "Exhaust", "Ferment",
+    "Poison", "Potion", "Retain", "Innate",
     "Infuse", "Energy", "Block", "Toxic", "Weak", "Stun", "Hand",
 ]
 KEYWORD_RE = re.compile(

@@ -1,19 +1,9 @@
 {
   "ALCHEMIST-FERMENT.description": "Esta carta aumenta su poder por cada turno que pasa en tu [gold]mano[/gold] y se reinicia al jugarla. Pasado su punto óptimo, se transforma en [gold]Tóxico[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentación",
-  "ALCHEMIST-GAMBIT.description": "Mientras tengas el [blue]50 %[/blue] de tus PV o menos, esta carta tiene un efecto de [gold]gambito[/gold].",
-  "ALCHEMIST-GAMBIT.title": "Gambito",
-  "ALCHEMIST-INFUSE.description": "[gold]Encantas[/gold] una carta hasta el final del combate. Las cartas de ataque obtienen [blue]1[/blue] de [purple]adulteración[/purple]; las de habilidad, [blue]1[/blue] de [purple]emanación[/purple]; las de poder, [blue]1[/blue] de [purple]exaltación[/purple]. Las demás obtienen [gold]evanescencia[/gold].",
+  "ALCHEMIST-INFUSE.description": "[gold]Encantas[/gold] una carta hasta el final del combate. Las cartas de ataque obtienen [blue]1[/blue] de [purple]adulteración[/purple] (aplican [gold]veneno[/gold] al golpear y te envenenan); las de habilidad, [blue]1[/blue] de [purple]dosificación[/purple]; las de poder, [blue]1[/blue] de [purple]potenciación[/purple]. Las demás obtienen [gold]evanescencia[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Elige {Amount:plural:una carta|[blue]{}[/blue] cartas} para [gold]infundir[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Elige cualquier cantidad de cartas para [gold]infundir[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Elige hasta [blue]{MaxCount}[/blue] {MaxCount:plural:carta|cartas} para [gold]infundir[/gold].",
-  "ALCHEMIST-INFUSE.title": "Infusión",
-  "ALCHEMIST-REACTION.description": "Una carta con [gold]reacción[/gold] obtiene un efecto adicional si la juegas justo después de una carta que coincida en el mismo turno.",
-  "ALCHEMIST-REACTION.description.attack": "Si juegas esta carta justo después de una carta de ataque en el mismo turno, tiene un efecto de [gold]reacción[/gold].",
-  "ALCHEMIST-REACTION.description.block": "Si juegas esta carta justo después de una carta que otorgó [gold]bloqueo[/gold] en el mismo turno, tiene un efecto de [gold]reacción[/gold].",
-  "ALCHEMIST-REACTION.description.enchanted": "Si juegas esta carta justo después de una carta [gold]encantada[/gold] en el mismo turno, tiene un efecto de [gold]reacción[/gold].",
-  "ALCHEMIST-REACTION.description.exhaust": "Si la carta que jugaste justo antes que esta sufrió [gold]agotamiento[/gold] en el mismo turno, esta carta tiene un efecto de [gold]reacción[/gold].",
-  "ALCHEMIST-REACTION.description.power": "Si juegas esta carta justo después de una carta de poder en el mismo turno, tiene un efecto de [gold]reacción[/gold].",
-  "ALCHEMIST-REACTION.description.skill": "Si juegas esta carta justo después de una carta de habilidad en el mismo turno, tiene un efecto de [gold]reacción[/gold].",
-  "ALCHEMIST-REACTION.title": "Reacción"
+  "ALCHEMIST-INFUSE.title": "Infusión"
 }

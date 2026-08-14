@@ -4,27 +4,21 @@
   "ALCHEMIST-ALCHEMIST1_EPOCH.description": "수도 제일의 [green]약제사[/green]는 [gold]열둘[/gold]의 탐험가와 함께 떠났고, 이제는 시간 속에 잊혔습니다.\n지금은 그 [purple]아이[/purple]가 가게를 지킵니다. 조합하고. 조제하고. 촛불 아래에서 부모가 남긴 미완의 [gold]일지[/gold]를 읽으며, 왜 아무도 돌아오지 못했는지 알아내려 애씁니다.\n어느 아침, 아이는 문에 쪽지를 남깁니다. \"[sine]현장 조사로 휴업 중...\"[/sine]\n[gold]첨탑[/gold]의 문이 한 명을 더 들입니다.",
   "ALCHEMIST-ALCHEMIST1_EPOCH.unlockInfo": "{IsRevealed:|}[purple]연금술사[/purple]로 게임을 한 번 {IsRevealed:플레이했습니다|플레이해 이 역사들을 드러내세요}.",
   "ALCHEMIST-ALCHEMIST1_EPOCH.unlockText": "[purple]연금술사[/purple]를 플레이 가능한 캐릭터로 해금했습니다.",
-
   "ALCHEMIST-ALCHEMIST2_EPOCH.title": "용해",
   "ALCHEMIST-ALCHEMIST2_EPOCH.description": "세 층을 오른 곳에서, 궁지에 몰려 죽어가던 [purple]개구리[/purple]의 혈관에 자신의 [green]독[/green]이 넘쳐흐르고 — 그리고 [sine]연성[/sine]됩니다. 온기. 활력. 아물어 가는 상처.\n그는 폐허의 바닥에서 [red]웃으며[/red] 밤을 버텨내고, [jitter]떨리는 손[/jitter]으로 모든 것을 기록합니다.\n새 [gold]일지[/gold]의 첫 페이지. 이번에는, 자신의 것입니다.",
   "ALCHEMIST-ALCHEMIST2_EPOCH.unlockInfo": "{IsRevealed:|}[purple]연금술사[/purple]로 [blue]1[/blue][gold]막[/gold]을 {IsRevealed:클리어했습니다|클리어해 이 역사를 드러내세요}.",
-
   "ALCHEMIST-ALCHEMIST3_EPOCH.title": "분리",
   "ALCHEMIST-ALCHEMIST3_EPOCH.description": "\"이걸 [sine]직접 빚는다고요[/sine]? [sine]여기서[/sine]?\"\n수년 만에 처음으로, [blue]상인[/blue]이 도리어 사고 싶어 합니다.\n아직 불의 온기가 남은 [green]팅크[/green] 한 병이 그의 손에 쥐어집니다.\n그 자리에서 계약이 성립됩니다. [purple]개구리[/purple]는 빚고, [blue]상인[/blue]은 삽니다.",
   "ALCHEMIST-ALCHEMIST3_EPOCH.unlockInfo": "{IsRevealed:|}[purple]연금술사[/purple]로 [blue]2[/blue][gold]막[/gold]을 {IsRevealed:클리어했습니다|클리어해 이 역사를 드러내세요}.",
-
   "ALCHEMIST-ALCHEMIST4_EPOCH.title": "결합",
   "ALCHEMIST-ALCHEMIST4_EPOCH.description": "\"저 위에서 주웠수다. 누군가의 물건 같아서.\" [orange]다르브[/orange]가 낡은 [gold]일지[/gold]를 내밉니다.\n앞부분의 필적은 [pink]부모[/pink]의 것. 뒷부분은 아닙니다. 낯선 잉크로 채워진 페이지들이 [gold]첨탑[/gold] 더 높은 곳의 단서를 암시합니다.\n[purple]개구리[/purple]는 수집가가 왜 이 보물을 내주는지 묻지 않습니다. [orange]다르브[/orange]도 말하지 않습니다.",
   "ALCHEMIST-ALCHEMIST4_EPOCH.unlockInfo": "{IsRevealed:|}[purple]연금술사[/purple]로 [blue]3[/blue][gold]막[/gold]을 {IsRevealed:클리어했습니다|클리어해 이 역사를 드러내세요}.",
-
   "ALCHEMIST-ALCHEMIST5_EPOCH.title": "발효",
   "ALCHEMIST-ALCHEMIST5_EPOCH.description": "빛나는 [green]균류[/green]의 회랑에 아흐레 동안 갇혔습니다.\n누군가는 [jitter]공황에 빠졌을[/jitter] 겁니다. [purple]개구리[/purple]는 [sine]빚습니다[/sine].\n어떤 조제법은 참을성 있는 손에 [gold]보답[/gold]하고, 어떤 것은 망설임을 [red]벌합니다[/red].\n그는 가득 찬 가방과, 언제 그 가방에 손대지 말아야 하는지 아는 [blue]인내심[/blue]을 지니고 나옵니다.",
   "ALCHEMIST-ALCHEMIST5_EPOCH.unlockInfo": "{IsRevealed:|}[purple]연금술사[/purple]로 [purple]엘리트[/purple]를 [blue]15[/blue]번 {IsRevealed:처치했습니다|처치해 이 역사를 드러내세요}.",
-
   "ALCHEMIST-ALCHEMIST6_EPOCH.title": "증류",
   "ALCHEMIST-ALCHEMIST6_EPOCH.description": "더 높은 곳. [jitter]차갑게[/jitter] 식은 야영지. 돌에 새겨진 공식들, 그리고 [pink]눈에 익은 필적[/pink].\n여백에 적힌 마지막 글. [gold]위대한 작업[/gold]은 결코 [gold]금[/gold]을 위한 것이 아니었다.\n그것은 상반된 것들의 합일. [blue]자아[/blue]의 초월.\n[purple]개구리[/purple]는 오래도록 그 말을 곱씹습니다. 그리고 [sine]오릅니다.[/sine]",
   "ALCHEMIST-ALCHEMIST6_EPOCH.unlockInfo": "{IsRevealed:|}[purple]연금술사[/purple]로 [red]보스[/red]를 [blue]15[/blue]번 {IsRevealed:처치했습니다|처치해 이 역사를 드러내세요}.",
-
   "ALCHEMIST-ALCHEMIST7_EPOCH.title": "응고",
   "ALCHEMIST-ALCHEMIST7_EPOCH.description": "마지막 층. 마지막 문.\n한 [pink]부모[/pink]가 [gold]위대한 작업[/gold]을 끝맺으러 이곳까지 올랐고, 그 결말은 끝내 적히지 않았습니다.\n어쩌면 적을 수 없었던 것인지도 모릅니다 — 최후의 변화는 기록하는 것이 아니라, 스스로 [blue][sine]되는[/sine][/blue] 것이기에.\n[purple]개구리[/purple]는 손을 가다듬고, 깊이 숨을 들이쉬고, 문을 지나갑니다.",
   "ALCHEMIST-ALCHEMIST7_EPOCH.unlockInfo": "{IsRevealed:|}[purple]연금술사[/purple]로 [red]승천[/red] [blue]1[/blue]을 {IsRevealed:클리어했습니다|클리어해 이 역사를 드러내세요}."

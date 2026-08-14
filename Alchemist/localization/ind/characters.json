@@ -1,0 +1,16 @@
+{
+  "ALCHEMIST-ALCHEMIST.aromaPrinciple": "[sine][green]Kendalikan variabelnya. Catat hasilnya. Sesuaikan dosisnya[/green][/sine].",
+  "ALCHEMIST-ALCHEMIST.banter.alive.endTurnPing": "Masih ada Spire yang harus kita jelajahi!",
+  "ALCHEMIST-ALCHEMIST.banter.dead.endTurnPing": "(Cepatlah, aku mulai terlepas dari tubuhku...)",
+  "ALCHEMIST-ALCHEMIST.cardsModifierDescription": "Kartu Alkemis sekarang akan muncul di pilihan dan toko.",
+  "ALCHEMIST-ALCHEMIST.cardsModifierTitle": "Kartu Alkemis",
+  "ALCHEMIST-ALCHEMIST.description": "Seorang amfibi pengamal ilmu gaib.\nMentransmutasi racun dari tubuhnya sendiri menjadi kekuatan.",
+  "ALCHEMIST-ALCHEMIST.eventDeathPrevention": "Belum saatnya. Mereka masih membutuhkanku.",
+  "ALCHEMIST-ALCHEMIST.goldMonologue": "[sine]Oh. Ya, kurasa itu cukup banyak. Ngomong-ngomong—[/sine]",
+  "ALCHEMIST-ALCHEMIST.possessiveAdjective": "nya",
+  "ALCHEMIST-ALCHEMIST.pronounObject": "dia",
+  "ALCHEMIST-ALCHEMIST.pronounPossessive": "nya",
+  "ALCHEMIST-ALCHEMIST.pronounSubject": "dia",
+  "ALCHEMIST-ALCHEMIST.title": "Si Alkemis",
+  "ALCHEMIST-ALCHEMIST.titleObject": "Si Alkemis"
+}

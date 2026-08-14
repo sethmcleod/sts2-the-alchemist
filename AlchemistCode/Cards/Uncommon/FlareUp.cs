@@ -1,10 +1,9 @@
-using Alchemist.AlchemistCode.Compat;
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -20,17 +19,13 @@ public class FlareUp : AlchemistCard
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_slash"),
             sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
-        if (play.Target != null)
-        {
-            PoisonSplash(play.Target);
-            await PowerCmd.Apply<PoisonPower>(choiceContext, play.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
-            var poison = play.Target.GetPowerAmount<PoisonPower>();
-            if (poison > 0)
-            {
-                await GameCompat.Damage(choiceContext, play.Target, poison,
-                    ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, Owner.Creature, this, null);
-                await PowerCmd.Apply<PoisonPower>(choiceContext, play.Target, -1, Owner.Creature, this);
-            }
-        }
+
+        // The attack can kill, and applying Poison to a corpse is state the clients clean up on their
+        // own schedules
+        if (play.Target is not { IsAlive: true } target) return;
+
+        PoisonSplash(target);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+        await PoisonTrigger.Once(choiceContext, target);
     }
 }
