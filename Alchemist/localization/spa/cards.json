@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "Obra maestra",
   "ALCHEMIST-MELT_DOWN.description": "Elige {cards:diff()} cartas de tu [gold]Pila de robo[/gold] que [gold]Transformar[/gold] en {IfUpgraded:show:[green]Destilados+[/green]|[gold]Destilados[/gold]}.",
   "ALCHEMIST-MELT_DOWN.title": "Fundir",
-  "ALCHEMIST-MERCURIAL_FORM.description": "Al comienzo de tu turno, pierde todo tu [gold]Veneno[/gold]. Recibe esa misma cantidad de daño y gana esa misma cantidad de [gold]Fuerza[/gold].\nAl final de tu turno, pierde esa [gold]Fuerza[/gold].",
+  "ALCHEMIST-MERCURIAL_FORM.description": "Al comienzo de tu turno, pierde todo tu [gold]Veneno[/gold]. Recibe esa misma cantidad de daño y gana esa misma cantidad de [gold]Fuerza[/gold] este turno.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Forma mercurial",
   "ALCHEMIST-NEEDLE_POINT.description": "Inflige {Damage:diff()} de daño.\nAplica {WeakPower:diff()} de [gold]Debilidad[/gold].\nSi esta es la primera carta que juegas en este combate, aplica {Vuln} de [gold]Vulnerabilidad[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Punta de aguja",

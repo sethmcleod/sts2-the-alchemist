@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "ผลงานชิ้นเอก",
   "ALCHEMIST-MELT_DOWN.description": "เลือกการ์ด {cards:diff()} ใบใน[gold]กองจั่ว[/gold]เพื่อ[gold]แปรสภาพ[/gold]ให้เป็น{IfUpgraded:show:[green]สารกลั่น+[/green]|[gold]สารกลั่น[/gold]}",
   "ALCHEMIST-MELT_DOWN.title": "หลอมละลาย",
-  "ALCHEMIST-MERCURIAL_FORM.description": "ตอนเริ่มต้นเทิร์น เสีย[gold]พิษ[/gold]ทั้งหมด รับความเสียหายเท่ากับจำนวนนั้น และได้รับ[gold]ความแข็งแรง[/gold]เท่ากับจำนวนนั้น\nตอนจบเทิร์น เสีย[gold]ความแข็งแรง[/gold]นั้นไป",
+  "ALCHEMIST-MERCURIAL_FORM.description": "ตอนเริ่มต้นเทิร์น เสีย[gold]พิษ[/gold]ทั้งหมด รับความเสียหายเท่ากับจำนวนนั้น และได้รับ[gold]ความแข็งแรง[/gold]เท่ากับจำนวนนั้นในเทิร์นนี้",
   "ALCHEMIST-MERCURIAL_FORM.title": "ร่างปรอท",
   "ALCHEMIST-NEEDLE_POINT.description": "สร้างความเสียหาย {Damage:diff()}\nสร้าง {WeakPower:diff()} [gold]ความอ่อนแอ[/gold]\nถ้านี่คือการ์ดใบแรกที่คุณเล่นในการต่อสู้นี้ สร้าง {Vuln} [gold]จุดอ่อน[/gold]",
   "ALCHEMIST-NEEDLE_POINT.title": "ปลายเข็ม",

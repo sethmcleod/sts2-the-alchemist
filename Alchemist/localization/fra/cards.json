@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "Chef-d'œuvre",
   "ALCHEMIST-MELT_DOWN.description": "Choisissez {cards:diff()} cartes de votre [gold]Pioche[/gold] à [gold]Transformer[/gold] en {IfUpgraded:show:[green]Distillats+[/green]|[gold]Distillats[/gold]}.",
   "ALCHEMIST-MELT_DOWN.title": "Refonte",
-  "ALCHEMIST-MERCURIAL_FORM.description": "Au début de votre tour, perdez tout votre [gold]Poison[/gold]. Subissez autant de dégâts et gagnez autant de [gold]Force[/gold].\nÀ la fin de votre tour, perdez cette [gold]Force[/gold].",
+  "ALCHEMIST-MERCURIAL_FORM.description": "Au début de votre tour, perdez tout votre [gold]Poison[/gold]. Subissez autant de dégâts et gagnez autant de [gold]Force[/gold] jusqu'à la fin du tour.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Forme mercurielle",
   "ALCHEMIST-NEEDLE_POINT.description": "Infligez {Damage:diff()} dégâts.\nAppliquez {WeakPower:diff()} [gold]Affaibli[/gold].\nSi c'est la première carte que vous jouez pendant ce combat, appliquez {Vuln} [gold]Vulnérable[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Pointe d'aiguille",

@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "Meisterwerk",
   "ALCHEMIST-MELT_DOWN.description": "Wähle {cards:diff()} Karten aus deinem [gold]Nachziehstapel[/gold], die du zu {IfUpgraded:show:[green]Destillate+[/green]|[gold]Destillate[/gold]} [gold]Transformierst[/gold].",
   "ALCHEMIST-MELT_DOWN.title": "Einschmelzen",
-  "ALCHEMIST-MERCURIAL_FORM.description": "Verliere zu Beginn deines Zuges all dein [gold]Gift[/gold]. Nimm genauso viel Schaden und erhalte genauso viel [gold]Stärke[/gold].\nVerliere am Ende deines Zuges diese [gold]Stärke[/gold].",
+  "ALCHEMIST-MERCURIAL_FORM.description": "Verliere zu Beginn deines Zuges all dein [gold]Gift[/gold]. Nimm genauso viel Schaden und erhalte für diesen Zug genauso viel [gold]Stärke[/gold].",
   "ALCHEMIST-MERCURIAL_FORM.title": "Merkurische Form",
   "ALCHEMIST-NEEDLE_POINT.description": "Füge {Damage:diff()} Schaden zu.\nWende {WeakPower:diff()} [gold]Schwach[/gold] an.\nFalls dies die erste Karte ist, die du in diesem Kampf gespielt hast, wende {Vuln} [gold]Verwundbar[/gold] an.",
   "ALCHEMIST-NEEDLE_POINT.title": "Nadelstich",

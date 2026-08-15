@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "Obra-Prima",
   "ALCHEMIST-MELT_DOWN.description": "Escolha {cards:diff()} cartas na sua [gold]Pilha de Compra[/gold] para [gold]Transformar[/gold] em {IfUpgraded:show:[green]Destilados+[/green]|[gold]Destilados[/gold]}.",
   "ALCHEMIST-MELT_DOWN.title": "Fundir",
-  "ALCHEMIST-MERCURIAL_FORM.description": "No início do seu turno, perca todo o [gold]Veneno[/gold]. Sofra essa quantidade de dano e receba essa quantidade de [gold]Força[/gold].\nNo final do seu turno, perca essa [gold]Força[/gold].",
+  "ALCHEMIST-MERCURIAL_FORM.description": "No início do seu turno, perca todo o [gold]Veneno[/gold]. Sofra essa quantidade de dano e receba essa quantidade de [gold]Força[/gold] neste turno.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Forma Mercurial",
   "ALCHEMIST-NEEDLE_POINT.description": "Cause {Damage:diff()} de dano.\nAplique {WeakPower:diff()} de [gold]Fraqueza[/gold].\nSe esta for a primeira carta que você jogou neste combate, aplique {Vuln} de [gold]Vulnerável[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Ponta de Agulha",

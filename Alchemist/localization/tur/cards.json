@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "Ustalık Eseri",
   "ALCHEMIST-MELT_DOWN.description": "[gold]Çekme Destesi[/gold]'ndeki {cards:diff()} kartı {IfUpgraded:show:[green]Damıtık+[/green]|[gold]Damıtık[/gold]} kartına [gold]Dönüştürmek[/gold] için seç.",
   "ALCHEMIST-MELT_DOWN.title": "Erit",
-  "ALCHEMIST-MERCURIAL_FORM.description": "Turunun başında tüm [gold]Zehir[/gold]'ini kaybet. O kadar hasar al ve o kadar [gold]Kuvvet[/gold] elde et.\nTurunun sonunda o [gold]Kuvvet[/gold]'i kaybet.",
+  "ALCHEMIST-MERCURIAL_FORM.description": "Turunun başında tüm [gold]Zehir[/gold]'ini kaybet. O kadar hasar al ve bu tur için o kadar [gold]Kuvvet[/gold] elde et.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Cıva Formu",
   "ALCHEMIST-NEEDLE_POINT.description": "{Damage:diff()} hasar ver.\n{WeakPower:diff()} [gold]Zayıf[/gold] uygula.\nBu savaşta oynadığın ilk kart buysa {Vuln} [gold]Savunmasız[/gold] uygula.",
   "ALCHEMIST-NEEDLE_POINT.title": "İğne Ucu",

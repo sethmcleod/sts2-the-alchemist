@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "Arcydzieło",
   "ALCHEMIST-MELT_DOWN.description": "Wybierz {cards:diff()} karty w [gold]stosie rozgrywającym[/gold] i [gold]Zmień[/gold] je w {IfUpgraded:show:[green]Destylaty+[/green]|[gold]Destylaty[/gold]}.",
   "ALCHEMIST-MELT_DOWN.title": "Przetopienie",
-  "ALCHEMIST-MERCURIAL_FORM.description": "Na początku tury utrać całą [gold]Truciznę[/gold]. Otrzymaj tyle samo pkt. obrażeń i zyskaj tyle samo pkt. [gold]Siły[/gold].\nPod koniec tury utrać tę [gold]Siłę[/gold].",
+  "ALCHEMIST-MERCURIAL_FORM.description": "Na początku tury utrać całą [gold]Truciznę[/gold]. Otrzymaj tyle samo pkt. obrażeń i zyskaj tyle samo pkt. [gold]Siły[/gold] w tej turze.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Rtęciowa forma",
   "ALCHEMIST-NEEDLE_POINT.description": "Zadaj {Damage:diff()} pkt. obrażeń.\nNałóż {WeakPower:diff()} pkt. [gold]Słabości[/gold].\nJeżeli to pierwsza karta zagrana przez ciebie w tej walce, nałóż {Vuln} pkt. [gold]Wrażliwości[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Ukłucie",

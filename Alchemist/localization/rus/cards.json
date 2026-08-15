@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "Шедевр",
   "ALCHEMIST-MELT_DOWN.description": "[gold]Преобразует[/gold] {cards:diff()} карты в вашей [gold]стопке добора[/gold] в {IfUpgraded:show:[green]Дистилляты+[/green]|[gold]Дистилляты[/gold]}.",
   "ALCHEMIST-MELT_DOWN.title": "Переплавка",
-  "ALCHEMIST-MERCURIAL_FORM.description": "В начале вашего хода вы теряете весь [gold]яд[/gold], получаете столько же урона и столько же [gold]силы[/gold].\nВ конце вашего хода эта [gold]сила[/gold] пропадает.",
+  "ALCHEMIST-MERCURIAL_FORM.description": "В начале вашего хода вы теряете весь [gold]яд[/gold], получаете столько же урона и столько же [gold]силы[/gold] на этот ход.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Ртутная форма",
   "ALCHEMIST-NEEDLE_POINT.description": "Наносит {Damage:diff()} урона.\nНакладывает {WeakPower:diff()} [gold]слабости[/gold].\nЕсли это первая карта, разыгранная вами в этом бою, накладывает {Vuln} [gold]уязвимости[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Острие иглы",

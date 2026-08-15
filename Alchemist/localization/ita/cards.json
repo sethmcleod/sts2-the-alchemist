@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "Capolavoro",
   "ALCHEMIST-MELT_DOWN.description": "Scegli {cards:diff()} carte nel tuo [gold]mazzo di pesca[/gold] da [gold]trasformare[/gold] in {IfUpgraded:show:[green]Distillato+[/green]|[gold]Distillato[/gold]}.",
   "ALCHEMIST-MELT_DOWN.title": "Fusione",
-  "ALCHEMIST-MERCURIAL_FORM.description": "All'inizio del tuo turno, perdi tutto il [gold]Veleno[/gold]. Subisci altrettanto danno e ottieni altrettanta [gold]Forza[/gold].\nAl termine del tuo turno, perdi quella [gold]Forza[/gold].",
+  "ALCHEMIST-MERCURIAL_FORM.description": "All'inizio del tuo turno, perdi tutto il [gold]Veleno[/gold]. Subisci altrettanto danno e ottieni altrettanta [gold]Forza[/gold] in questo turno.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Forma Mercuriale",
   "ALCHEMIST-NEEDLE_POINT.description": "Infliggi {Damage:diff()} di danno.\nApplichi {WeakPower:diff()} di [gold]Debolezza[/gold].\nSe è la prima carta che giochi in questo combattimento, applichi {Vuln} di [gold]Vulnerabilità[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Punta d'Ago",

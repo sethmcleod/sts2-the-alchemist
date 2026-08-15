@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "傑作",
   "ALCHEMIST-MELT_DOWN.description": "[gold]山札[/gold]のカードを{cards:diff()}枚選び、{IfUpgraded:show:[green]蒸留液+[/green]|[gold]蒸留液[/gold]}に[gold]変化[/gold]させる。",
   "ALCHEMIST-MELT_DOWN.title": "溶融",
-  "ALCHEMIST-MERCURIAL_FORM.description": "ターン開始時、[gold]毒[/gold]をすべて失う。その値のダメージを受け、その値の[gold]筋力[/gold]を得る。\nターン終了時、その[gold]筋力[/gold]を失う。",
+  "ALCHEMIST-MERCURIAL_FORM.description": "ターン開始時、[gold]毒[/gold]をすべて失う。その値のダメージを受け、ターン終了時までその値の[gold]筋力[/gold]を得る。",
   "ALCHEMIST-MERCURIAL_FORM.title": "水銀化",
   "ALCHEMIST-NEEDLE_POINT.description": "{Damage:diff()}ダメージを与える。\n[gold]脱力[/gold]{WeakPower:diff()}を付与する。\nこの戦闘で最初にプレイしたカードである場合、[gold]弱体[/gold]{Vuln}を付与する。",
   "ALCHEMIST-NEEDLE_POINT.title": "針先",

@@ -101,7 +101,7 @@
   "ALCHEMIST-MASTERWORK.title": "Adikarya",
   "ALCHEMIST-MELT_DOWN.description": "Pilih {cards:diff()} kartu dalam [gold]Tumpukan Ambil[/gold] kamu untuk [gold]Ditransformasi[/gold] menjadi {IfUpgraded:show:[green]Sulingan+[/green]|[gold]Sulingan[/gold]}.",
   "ALCHEMIST-MELT_DOWN.title": "Lebur",
-  "ALCHEMIST-MERCURIAL_FORM.description": "Pada awal giliranmu, semua [gold]Racun[/gold] hilang. Terima kerusakan sebanyak itu dan dapatkan [gold]Kekuatan[/gold] sebanyak itu.\nPada akhir giliranmu, [gold]Kekuatan[/gold] itu hilang.",
+  "ALCHEMIST-MERCURIAL_FORM.description": "Pada awal giliranmu, semua [gold]Racun[/gold] hilang. Terima kerusakan sebanyak itu dan dapatkan [gold]Kekuatan[/gold] sebanyak itu giliran ini.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Wujud Raksa",
   "ALCHEMIST-NEEDLE_POINT.description": "Lakukan {Damage:diff()} kerusakan.\nTerapkan {WeakPower:diff()} [gold]Lemah[/gold].\nJika ini kartu pertama yang kamu mainkan perlawanan ini, terapkan {Vuln} [gold]Rentan[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Ujung Jarum",
