@@ -12,7 +12,7 @@ namespace Alchemist.AlchemistCode.Relics;
 
 public class WeatheredKit : AlchemistRelic
 {
-    private const int Antitoxin = 3;
+    private const int Antitoxin = 4;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
 

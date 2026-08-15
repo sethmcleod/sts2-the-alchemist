@@ -9,6 +9,10 @@ mod).
 
 ### Changed
 
+- Changed Antitoxin: absorbing a whole tick of Poison damage now cures that Poison instead of only preventing the damage
+- Increased the Antitoxin limit: 9 -> 12
+- Buffed Weathered Kit relic: Antitoxin at the start of combat increased from 3 -> 4
+- Buffed Gilded Kit relic: Antitoxin at the start of combat increased from 6 -> 8
 - Changed Potion sale prices: a shop discount such as Membership Card or The Courier no longer lowers what the Merchant pays you
 
 ### Fixed

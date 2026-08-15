@@ -21,14 +21,16 @@ namespace Alchemist.AlchemistCode.Powers;
 public partial class AntitoxinPower : AlchemistPower
 {
     // Raised for the combat by granting AntitoxinCapacityPower; AntitoxinRules enforces the result
-    public const int BaseMax = 9;
+    public const int BaseMax = 12;
 
     public static int MaxFor(Creature creature) =>
         BaseMax + creature.GetPowerAmount<AntitoxinCapacityPower>();
 
-    // Written by Absorb, spent by BeforeDamageReceived. Absorb clears it on every pass, so it only
-    // ever holds a value for the one hit that just passed the Poison tick test
+    // Written by Absorb, spent by BeforeDamageReceived. Absorb clears them on every pass, so they
+    // only ever hold a value for the one hit that just passed the Poison tick test. _pendingTick is
+    // the whole tick before absorption, which is what decides whether the Poison is cured
     private int _pendingSpend;
+    private int _pendingTick;
 
     public override PowerType Type => PowerType.Buff;
 
@@ -55,13 +57,27 @@ public partial class AntitoxinPower : AlchemistPower
         // takes, and the Poison forecast runs it without ever reaching BeforeDamageReceived, so a
         // value left set by a reject would be spent on whatever landed next, such as an enemy attack
         _pendingSpend = 0;
+        _pendingTick = 0;
         AntitoxinRules.ClearTickAbsorb(Owner);
         if (!IsPoisonTick(target, amount, props, dealer, cardSource))
             return 0m;
 
         var absorbed = Math.Min(Amount, (int)amount);
         _pendingSpend = absorbed;
+        _pendingTick = (int)amount;
         return -absorbed;
+    }
+
+    // Soaking a whole tick cures the Poison outright, so the cost of surviving N stacks is N rather
+    // than the N(N+1)/2 that ticking them down one at a time charges. Without this the defence is
+    // linear while the debt is quadratic, and the two only diverge further as the deck scales.
+    //
+    // Leaves the last stack rather than removing the power, because PoisonPower.Trigger decrements
+    // right after this hook returns and that call would then land on a detached power
+    private async Task CurePoison(PlayerChoiceContext choiceContext)
+    {
+        if (Owner.GetPower<PoisonPower>() is not { Amount: > 1 } poison) return;
+        await PowerCmd.ModifyAmount(choiceContext, poison, -(poison.Amount - 1), Owner, null);
     }
 
     private void AbsorbSplash()
@@ -79,7 +95,9 @@ public partial class AntitoxinPower : AlchemistPower
         if (target != Owner) return;
 
         var spend = _pendingSpend;
+        var tick = _pendingTick;
         _pendingSpend = 0;
+        _pendingTick = 0;
         if (spend <= 0) return;
 
         Flash();
@@ -93,5 +111,8 @@ public partial class AntitoxinPower : AlchemistPower
             await PowerCmd.Remove(this);
         else
             await PowerCmd.ModifyAmount(choiceContext, this, -spend, Owner, null, silent: true);
+
+        if (spend >= tick)
+            await CurePoison(choiceContext);
     }
 }
