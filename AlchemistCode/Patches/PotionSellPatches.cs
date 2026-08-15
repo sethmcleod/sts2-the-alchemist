@@ -10,7 +10,6 @@ using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
@@ -146,34 +145,10 @@ public static class PotionSellPatches
 
     private static int GetGoldFor(PotionModel potion)
     {
-        // A Foul potion sells for exactly its throw payout, so Throw and Sell give the same Gold. It is
-        // never for sale, so no shop discount applies to it
+        // A Foul potion sells for exactly its throw payout, so Throw and Sell give the same Gold
         if (potion is FoulPotion) return (int)potion.DynamicVars["Gold"].BaseValue;
         var basePrice = GetGoldForRarity(potion.Rarity);
-        return ApplyShopDiscount(potion.Owner, basePrice * AlchemistModConfig.PotionSellPercent / 100);
-    }
-
-    // Probing with a large number keeps the integer rounding below a single Gold
-    private const decimal DiscountProbe = 1000m;
-
-    // The sale price has to move with any shop discount. Without this, a discount relic makes the
-    // Merchant sell potions for less than he buys them back for, which is unlimited Gold once
-    // The Courier also restocks the slot
-    private static int ApplyShopDiscount(Player owner, int price)
-    {
-        if (owner.RunState.CurrentRoom is not MerchantRoom room) return price;
-
-        // The base game's price relics read only the player, so any entry gives the same answer. Using
-        // this player's own potion entry keeps a mod that does read the entry on the same footing as
-        // a real purchase would be
-        var entry = room.Inventories
-            .FirstOrDefault(i => i.Player == owner)?.PotionEntries.FirstOrDefault(e => e.IsStocked);
-        if (entry == null) return price;
-
-        var factor = Hook.ModifyMerchantPrice(owner.RunState, owner, entry, DiscountProbe) / DiscountProbe;
-        // Only a discount pulls the price down. A relic that marks shop prices up must not turn selling
-        // into a bigger payday than the character is balanced around
-        return factor < 1m && factor > 0m ? (int)(price * factor) : price;
+        return basePrice * AlchemistModConfig.PotionSellPercent / 100;
     }
 
     private static int GetGoldForRarity(PotionRarity rarity)

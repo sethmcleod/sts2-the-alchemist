@@ -7,6 +7,15 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Changed Potion sale prices: a shop discount such as Membership Card or The Courier no longer lowers what the Merchant pays you
+
+### Fixed
+
+- Fixed Eureka asking for its cards one at a time, which let you transform the same card twice instead of two different ones
+- Fixed the Grudge and Rot power descriptions still describing the effects those cards had before they were reworked
+
 ## [0.8.0] - 2026-08-14
 
 ### Added

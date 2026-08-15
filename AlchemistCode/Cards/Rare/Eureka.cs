@@ -19,7 +19,7 @@ public class Eureka : AlchemistCard
     {
         await CommonActions.Draw(this, choiceContext);
         // The shared helper carries the upgrade onto the Distillate, which the description promises
-        for (var i = 0; i < DynamicVars["transforms"].IntValue; i++)
-            await AlchemistCardCmd.TransformFromHand<Distillate>(choiceContext, this);
+        await AlchemistCardCmd.TransformFromHand<Distillate>(
+            choiceContext, this, DynamicVars["transforms"].IntValue);
     }
 }
