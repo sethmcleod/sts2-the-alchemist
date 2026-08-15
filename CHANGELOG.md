@@ -15,6 +15,10 @@ mod).
 - Buffed Gilded Kit relic: Antitoxin at the start of combat increased from 6 -> 8
 - Changed Potion sale prices: a shop discount such as Membership Card or The Courier no longer lowers what the Merchant pays you
 
+### Removed
+
+- Removed the Potion Sell Price and Brew-Only Potion Chance settings
+
 ### Fixed
 
 - Fixed Eureka asking for its cards one at a time, which let you transform the same card twice instead of two different ones

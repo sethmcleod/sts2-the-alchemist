@@ -143,12 +143,14 @@ public static class PotionSellPatches
         }
     }
 
+    private const int SellPercent = 50;
+
     private static int GetGoldFor(PotionModel potion)
     {
         // A Foul potion sells for exactly its throw payout, so Throw and Sell give the same Gold
         if (potion is FoulPotion) return (int)potion.DynamicVars["Gold"].BaseValue;
         var basePrice = GetGoldForRarity(potion.Rarity);
-        return basePrice * AlchemistModConfig.PotionSellPercent / 100;
+        return basePrice * SellPercent / 100;
     }
 
     private static int GetGoldForRarity(PotionRarity rarity)

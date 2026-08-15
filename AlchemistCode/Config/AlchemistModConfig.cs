@@ -36,15 +36,9 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigHoverTip]
     public static bool UniversalPotionSelling { get; set; }
 
-    [ConfigSection("Economy")]
+    [ConfigSection("Accessibility")]
     [ConfigHoverTip]
-    [ConfigSlider(10.0, 90.0, 10.0, Format = "{0}%")]
-    public static int PotionSellPercent { get; set; } = 50;
-
-    [ConfigSection("Economy")]
-    [ConfigHoverTip]
-    [ConfigSlider(5.0, 25.0, 5.0, Format = "{0}%")]
-    public static int BrewPotionChance { get; set; } = 15;
+    public static bool ShowHandGlows { get; set; } = true;
 
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]
@@ -59,10 +53,6 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigHoverTip]
     [ConfigColorPicker(EditAlpha = false)]
     public static Color AntitoxinBarColor { get; set; } = new("9B5CFF");
-
-    [ConfigSection("Accessibility")]
-    [ConfigHoverTip]
-    public static bool ShowHandGlows { get; set; } = true;
 
     // Shown above Unlock All: opens the Timeline without granting the card, relic, and potion unlocks
     [ConfigSection("Unlocks")]

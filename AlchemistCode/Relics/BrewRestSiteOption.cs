@@ -52,6 +52,8 @@ public sealed class BrewRestSiteOption : RestSiteOption
         return true;
     }
 
+    private const int ExclusiveChance = 15;
+
     // Brew-only potions are outside the potion pool, so the default reward can never roll them. This
     // roll offers one instead, minus any the player already holds
     private PotionReward CreateBrewReward()
@@ -63,7 +65,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
             ModelDb.Potion<Soporific>(),
             ModelDb.Potion<Alkahest>(),
         }.Where(p => Owner.Potions.All(held => held.Id != p.Id)).ToList();
-        if (exclusives.Count > 0 && rng.NextFloat() < Config.AlchemistModConfig.BrewPotionChance / 100f)
+        if (exclusives.Count > 0 && rng.NextFloat() < ExclusiveChance / 100f)
             return new PotionReward(rng.NextItem(exclusives)!.ToMutable(), Owner);
         return new PotionReward(Owner);
     }
