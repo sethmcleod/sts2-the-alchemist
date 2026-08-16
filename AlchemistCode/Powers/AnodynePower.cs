@@ -9,10 +9,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// The ModifyHpLostBeforeOsty override is in Compat/AnodynePowerCompat.cs for the same reason
-// AntitoxinPower's is: an override cannot be routed through a wrapper if its signature moves between
-// the game branches. The logic below is branch-agnostic.
-public partial class AnodynePower : AlchemistPower
+public class AnodynePower : AlchemistPower
 {
     /// <summary>HP prevented per point of Poison charged for it.</summary>
     public const int DamagePerDose = 4;
@@ -30,7 +27,13 @@ public partial class AnodynePower : AlchemistPower
         target == Owner && dealer != null && dealer != Owner && !dealer.IsPlayer
         && props.HasFlag(ValueProp.Move);
 
-    internal decimal Prevent(Creature target, decimal amount, ValueProp props, Creature? dealer)
+    // Verified identical on both game branches, unlike AntitoxinPower's ModifyDamageAdditive, so this
+    // stays inline rather than in Compat/
+    public override decimal ModifyHpLostBeforeOsty(Creature target, decimal amount, ValueProp props,
+        Creature? dealer, CardModel? cardSource) =>
+        Prevent(target, amount, props, dealer);
+
+    private decimal Prevent(Creature target, decimal amount, ValueProp props, Creature? dealer)
     {
         _pendingPrevented = 0;
         if (amount <= 0 || !IsEnemyAttack(target, props, dealer)) return amount;

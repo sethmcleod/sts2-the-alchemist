@@ -27,7 +27,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Alchemist.AlchemistCode.Cards;
 
 [Pool(typeof(AlchemistCardPool))]
-public abstract class AlchemistCard : ConstructedCardModel
+public abstract partial class AlchemistCard : ConstructedCardModel
 {
     // Sentinel max for an unbounded card selection, the same literal the base game uses. A prompt paired
     // with it must not print {Amount} or {MaxCount}, which would show the raw sentinel
@@ -160,13 +160,6 @@ public abstract class AlchemistCard : ConstructedCardModel
         return Task.CompletedTask;
     }
 
-    // Leaves combat the way a Power does. Transforming it here instead would strand the replacement:
-    // the engine's move out of the Play pile is guarded on THIS card still being in it
-    protected override CardLocation GetResultLocationForCardPlay() =>
-        IsFermentCard
-            ? new CardLocation(Owner, PileType.None, CardPilePosition.Bottom)
-            : base.GetResultLocationForCardPlay();
-
     // The dregs land in the Discard rather than the Hand, so they cannot bite on the turn you cash in
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -179,6 +172,9 @@ public abstract class AlchemistCard : ConstructedCardModel
         var toxic = combat.CreateCard<MegaCrit.Sts2.Core.Models.Cards.Toxic>(Owner);
         var added = await CardPileCmd.Add(toxic, PileType.Discard, CardPilePosition.Bottom);
         CardCmd.PreviewCardPileAdd([added]);
+
+        // How a Ferment card leaves combat differs per game branch, so it lives in Compat/
+        await RemoveFermentFromCombat(choiceContext);
     }
 
     // Covers the cards that were never played. Deck cards are the same instances each combat and all of
