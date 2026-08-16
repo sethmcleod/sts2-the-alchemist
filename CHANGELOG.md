@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.9.2] - 2026-08-16
+
 ### Added
 
 - Added Percolate card: "Add 2 (3) Distillates into your Hand. Exhaust."
