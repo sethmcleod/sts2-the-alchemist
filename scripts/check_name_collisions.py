@@ -29,7 +29,12 @@ CATEGORIES = ["enchantments.json", "cards.json", "relics.json", "potions.json", 
 ROOT = 6
 
 # Every character has a Strike and a Defend, so those share a name by design.
-EXPECTED = {"ALCHEMIST-STRIKE_ALCHEMIST.title", "ALCHEMIST-DEFEND_ALCHEMIST.title"}
+#
+# Extra Turn hits base MockExtraTurnPower, whose Polish drops the "Mock". That power is
+# IsMock and never reaches a real run, and renaming ours would leave Polish players with a
+# name no other language uses, for a mechanic they do meet. The clash stays.
+EXPECTED = {"ALCHEMIST-STRIKE_ALCHEMIST.title", "ALCHEMIST-DEFEND_ALCHEMIST.title",
+            "ALCHEMIST-EXTRA_TURN_POWER.title"}
 
 
 def norm(text: str) -> str:

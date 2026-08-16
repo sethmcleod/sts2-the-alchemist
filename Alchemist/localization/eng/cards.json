@@ -67,7 +67,7 @@
   "ALCHEMIST-GRUDGE.title": "Grudge",
   "ALCHEMIST-GULP.description": "Gain {poison} [gold]Poison[/gold].\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
   "ALCHEMIST-GULP.title": "Gulp",
-  "ALCHEMIST-HARDEN.description": "Whenever you gain or apply [gold]Poison[/gold], gain {Block:diff()} [gold]Block[/gold].\nGain {Antitoxin:diff()} [gold]Antitoxin[/gold].",
+  "ALCHEMIST-HARDEN.description": "Whenever you gain [gold]Poison[/gold], gain {Block:diff()} [gold]Block[/gold].\nGain {Antitoxin:diff()} [gold]Antitoxin[/gold].",
   "ALCHEMIST-HARDEN.title": "Harden",
   "ALCHEMIST-HEAVY_DOSE.description": "Deal {Damage:diff()} damage.\nGain {poison} [gold]Poison[/gold].",
   "ALCHEMIST-HEAVY_DOSE.title": "Heavy Dose",

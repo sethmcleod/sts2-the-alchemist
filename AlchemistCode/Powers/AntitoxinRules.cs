@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -25,6 +27,12 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 
         var room = Math.Max(0, AntitoxinPower.MaxFor(target) - target.GetPowerAmount<AntitoxinPower>());
         if (amount <= room) return false;
+
+        // The cap is a conversion point, not a wall. This hook is synchronous, so the grant is fired
+        // rather than awaited. Move, not Unpowered, so Dexterity applies the way it does to any Block
+        var spill = (int)(amount - room);
+        if (spill > 0)
+            TaskHelper.RunSafely(CreatureCmd.GainBlock(target, spill, ValueProp.Move, null));
 
         modifiedAmount = room;
         return true;

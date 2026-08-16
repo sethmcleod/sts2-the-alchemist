@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-AURIC_SEAL.description": "[gold]Пропитывает[/gold] случайную карту в [gold]руке[/gold] в начале хода.",
   "ALCHEMIST-AURIC_SEAL.flavor": "У нее есть свое мнение о том, какая страница важнее.",
-  "ALCHEMIST-AURIC_SEAL.title": "Золотая печать",
+  "ALCHEMIST-AURIC_SEAL.title": "Аурическая печать",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Дает случайное [gold]зелье[/gold] в начале каждого боя. Если все места для зелий заняты, вместо этого дает {Energy:energyIcons()}.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Сколько ни лей, она никогда не пустеет.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Неиссякаемая чаша",

@@ -32,7 +32,7 @@ Froth,Uncommon,Attack,1,"Retain. Ferment (0). Deal 4 (6) damage. Hits an additio
 Golden Fruit,Quest,Skill,1,Gain 25 Gold. Take an extra turn after this one. Exhaust.
 Grudge,Uncommon,Power,1 (0),"Whenever an enemy takes Poison damage, apply 1 Poison to it."
 Gulp,Uncommon,Skill,0,Gain 3 Poison. Draw 2 (3) cards.
-Harden,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block. Gain 2 (3) Antitoxin."
+Harden,Uncommon,Power,1,"Whenever you gain Poison, gain 2 (3) Block. Gain 2 (3) Antitoxin."
 Heavy Dose,Uncommon,Attack,3,Deal 35 (45) damage. Gain 3 Poison.
 Heavy Hand,Uncommon,Power,1,"Whenever you apply Poison to an enemy, apply an additional 1 (2)."
 Hone,Uncommon,Skill,1,Upgrade ALL cards in your Hand. Infuse 1 (2) of them.

@@ -20,6 +20,8 @@ mod).
 - Buffed Puff Up: 10 Block -> 10 (13) Block
 - Buffed Spatter: its splash now also applies 1 (2) Poison to ALL other enemies
 - Buffed Tempered: 30 (35) Block -> 30 (40) Block
+- Changed Antitoxin: it Block once you are at your max, and that Block gain is increased by Dexterity
+- Nerfed Harden: it now only gives Block when you gain Poison, not when you apply it to an enemy
 - Reworked Quicklime: "Deal 5 (7) damage. Deal 4 (6) additional damage if the enemy is Poisoned."
 - Reworked Toughen: "Lose all Poison. Gain 4 (6) Block. Gain 2 additional Block for each Poison lost."
 

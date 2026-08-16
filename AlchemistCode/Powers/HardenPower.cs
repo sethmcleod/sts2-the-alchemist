@@ -24,7 +24,9 @@ public class HardenPower : AlchemistPower
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (power is PoisonPower && applier == Owner && amount > 0)
+        // The Poison has to land on the owner. Keying on the applier instead paid twice for a card
+        // that doses you and the enemy in one play, which is most of the pool
+        if (power is PoisonPower && power.Owner == Owner && amount > 0)
         {
             Flash();
             await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
