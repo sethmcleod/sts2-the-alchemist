@@ -13,7 +13,7 @@ public class PuffUp : AlchemistCard
     {
         WithCalculatedBlock(10, static (card, _) =>
                 (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,
-            ValueProp.Move, 0, 0);
+            ValueProp.Move, 3, 0);
         WithKeyword(CardKeyword.Retain);
     }
 

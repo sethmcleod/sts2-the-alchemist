@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csyyl7k86ksep"
-path="res://.godot/imported/contagion_power.png-2cb7b4d450c8371a3c9efde6fb829a2f.ctex"
+uid="uid://boak2hvx8wm1q"
+path="res://.godot/imported/percolate.png-bffc493e321606487c5bfbb242279078.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/contagion_power.png"
-dest_files=["res://.godot/imported/contagion_power.png-2cb7b4d450c8371a3c9efde6fb829a2f.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/percolate.png"
+dest_files=["res://.godot/imported/percolate.png-bffc493e321606487c5bfbb242279078.ctex"]
 
 [params]
 

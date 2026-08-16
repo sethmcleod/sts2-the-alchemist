@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1p8cyv4irnxe"
-path="res://.godot/imported/contagion_power.png-c1422ffb021d3b45771ae0471c63df20.ctex"
+uid="uid://brfp8yhmea6qe"
+path="res://.godot/imported/sublimate_power.png-e5e0a58ae64d26b4b8140498ed375ae6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/contagion_power.png"
-dest_files=["res://.godot/imported/contagion_power.png-c1422ffb021d3b45771ae0471c63df20.ctex"]
+source_file="res://Alchemist/images/powers/sublimate_power.png"
+dest_files=["res://.godot/imported/sublimate_power.png-e5e0a58ae64d26b4b8140498ed375ae6.ctex"]
 
 [params]
 

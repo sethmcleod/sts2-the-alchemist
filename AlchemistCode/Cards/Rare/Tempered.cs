@@ -10,7 +10,7 @@ public class Tempered : AlchemistCard
 {
     public Tempered() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithBlock(30, 5);
+        WithBlock(30, 10);
         WithVar("poison", 5, 0);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));

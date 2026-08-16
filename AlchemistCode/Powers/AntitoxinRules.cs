@@ -42,9 +42,9 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         && amount > 0
         && target.GetPowerAmount<PoisonPower>() >= amount;
 
-    // The absorbed slice of the tick that is resolving right now. Callus and Contagion run in
+    // The absorbed slice of the tick that is resolving right now. Callus runs in
     // AfterDamageReceived, which is handed the post-absorb amount, so without this a fully soaked tick
-    // pays them nothing and the character's own starter relic switches them off
+    // pays it nothing and the character's own starter relic switches them off
     private static readonly Dictionary<Creature, int> AbsorbedOnTick = new();
 
     internal static void ClearTickAbsorb(Creature creature) => AbsorbedOnTick.Remove(creature);

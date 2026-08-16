@@ -20,7 +20,7 @@ public class SecondSkin : AlchemistRelic
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
-    // Reads the pre-absorb tick, the way Callus and Contagion do, so Antitoxin defending you does not
+    // Reads the pre-absorb tick, the way Callus does, so Antitoxin defending you does not
     // also cancel what taking the Poison was supposed to pay
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)

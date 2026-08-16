@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Alchemist.AlchemistCode.Config;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
@@ -46,14 +48,32 @@ public partial class AntitoxinPower : AlchemistPower
     // The limit is a number two places have to agree on, so neither the tooltip nor the bar restates it
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[] { new AntitoxinLimitVar() };
 
-    public override LocString Description
+    // Read live rather than cached, so no Creature from a finished combat is held. Null outside a
+    // combat, which is when the base ceiling is the honest number to print
+    private static Creature? LocalCreature() =>
+        NCombatRoom.Instance is { } room
+            ? LocalContext.GetMe(room.CreatureNodes.Select(node => node.Entity))
+            : null;
+
+    internal static int LimitFor(Creature? creature) =>
+        (creature ?? LocalCreature()) is { } subject ? MaxFor(subject) : BaseMax;
+
+    private LocString DescriptionFor(Creature? creature)
     {
-        get
-        {
-            var description = base.Description;
-            description.Add("Limit", IsMutable && Owner != null ? MaxFor(Owner) : BaseMax);
-            return description;
-        }
+        var description = base.Description;
+        description.Add("Limit", LimitFor(creature));
+        return description;
+    }
+
+    public override LocString Description => DescriptionFor(IsMutable ? Owner : null);
+
+    // For the bar, which is the one place that has to tell creatures apart: in multiplayer you can
+    // hover another player's bar. The Id still comes off the canonical model, so MegaTryAddingTip
+    // de-duplicates this against any other Antitoxin tip as before
+    public static IHoverTip TipFor(Creature creature)
+    {
+        var model = ModelDb.Power<AntitoxinPower>();
+        return new HoverTip(model, model.DescriptionFor(creature).GetFormattedText(), isSmart: false);
     }
 
     // PoisonPower.CalculateTotalDamageNextTurn runs its forecast through this same hook, so reducing
