@@ -7,9 +7,13 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Updated Brew rest option description to clarify that the potions can be sold to the Merchant
+
 ### Fixed
 
-- Fixed Slow Burn sticking in the middle of the screen when played, which also stopped it dealing its damage or leaving your Hand
+- Fixed Slow Burn getting stuck on-screen when played
 
 ## [0.9.0] - 2026-08-16
 
