@@ -17,14 +17,14 @@
 - **Absorbing Pays Off**: Taking Poison damage is not just a cost. Several cards
   reward it, turning the Poison you absorb into Strength, Block, Energy or damage.
 - **Infuse**: Infusing a card Enchants it for the rest of combat based on its
-  type. Attacks deal additional damage equal to your Poison, Skills generate
-  Antitoxin, Powers give Strength, and other cards gain Ethereal.
+  type. Attacks apply Poison, Skills generate Antitoxin, Powers give Strength,
+  and other cards gain Ethereal.
 - **Ferment**: These effects grow in potency for every turn the card stays in
   your hand. Playing the card transforms it into a Toxic.
-- **Brew**: This new Rest Site option allows you to procure one of 6 unique
-  potions that can only be obtained this way.
-- **Sell Potions**: Due to the quality and potency of these brews, the Merchant
-  is willing to buy them from you for Gold.
+- **Brew**: This Rest Site option allows you to procure one of 6 unique potions
+  that can only be obtained this way.
+- **Sell Potions**: Due to the quality of these brews, the Merchant is willing
+  to buy them from you for Gold.
 
 ## Disclaimer
 
