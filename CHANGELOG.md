@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.9.1] - 2026-08-16
+
 ### Changed
 
 - Updated Brew rest option description to clarify that the potions can be sold to the Merchant
