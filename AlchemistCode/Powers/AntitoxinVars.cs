@@ -6,8 +6,8 @@ public sealed class AntitoxinLimitVar : DynamicVar
 {
     public AntitoxinLimitVar() : base("Limit", 0) { }
 
+    // Through LimitFor, so this and the power's own description never disagree about the ceiling
     public override string ToString() =>
-        _owner is AntitoxinPower { Owner: not null } power
-            ? AntitoxinPower.MaxFor(power.Owner).ToString()
-            : AntitoxinPower.BaseMax.ToString();
+        AntitoxinPower.LimitFor(_owner is AntitoxinPower { Owner: not null } power ? power.Owner : null)
+            .ToString();
 }

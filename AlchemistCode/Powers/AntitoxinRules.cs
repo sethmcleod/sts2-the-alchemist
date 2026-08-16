@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -26,6 +28,12 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         var room = Math.Max(0, AntitoxinPower.MaxFor(target) - target.GetPowerAmount<AntitoxinPower>());
         if (amount <= room) return false;
 
+        // The cap is a conversion point, not a wall. This hook is synchronous, so the grant is fired
+        // rather than awaited. Move, not Unpowered, so Dexterity applies the way it does to any Block
+        var spill = (int)(amount - room);
+        if (spill > 0)
+            TaskHelper.RunSafely(CreatureCmd.GainBlock(target, spill, ValueProp.Move, null));
+
         modifiedAmount = room;
         return true;
     }
@@ -42,9 +50,9 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         && amount > 0
         && target.GetPowerAmount<PoisonPower>() >= amount;
 
-    // The absorbed slice of the tick that is resolving right now. Callus and Contagion run in
+    // The absorbed slice of the tick that is resolving right now. Callus runs in
     // AfterDamageReceived, which is handed the post-absorb amount, so without this a fully soaked tick
-    // pays them nothing and the character's own starter relic switches them off
+    // pays it nothing and the character's own starter relic switches them off
     private static readonly Dictionary<Creature, int> AbsorbedOnTick = new();
 
     internal static void ClearTickAbsorb(Creature creature) => AbsorbedOnTick.Remove(creature);

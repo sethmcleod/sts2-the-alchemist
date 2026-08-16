@@ -1,18 +1,19 @@
-using Alchemist.AlchemistCode.Commands;
+using System.Linq;
+using Alchemist.AlchemistCode.Compat;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-// An Attack should deal damage, not grant Block. Quicklime is the caustic accelerant, so it speeds the
-// reaction up instead: the Common rung below Flare Up, which also applies the Poison it then triggers
 public class Quicklime : AlchemistCard
 {
     public Quicklime() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(5, 2);
+        WithVar("Bonus", 4, 2);
         WithTip(typeof(PoisonPower));
     }
 
@@ -22,8 +23,15 @@ public class Quicklime : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
-        if (play.Target is { IsAlive: true } target)
-            await PoisonTrigger.Once(choiceContext, target);
+        if (play.Target == null) return;
+
+        // One attack rather than two, so Strength lands on the total once and the enemy sees a
+        // single number
+        var bonus = play.Target.HasPower<PoisonPower>() ? DynamicVars["Bonus"].IntValue : 0;
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue + bonus)
+            .WithHitFx(HitVfx("vfx/vfx_sandy_impact"), null, null)
+            .FromCard(this, play)
+            .Targeting(play.Target)
+            .Execute(choiceContext);
     }
 }

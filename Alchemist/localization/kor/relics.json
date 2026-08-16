@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-AURIC_SEAL.description": "내 턴 시작 시, [gold]손[/gold]에 있는 무작위 카드를 [gold]주입[/gold]합니다.",
   "ALCHEMIST-AURIC_SEAL.flavor": "어느 페이지가 중요한지에 대해 나름의 견해가 있다.",
-  "ALCHEMIST-AURIC_SEAL.title": "황금 인장",
+  "ALCHEMIST-AURIC_SEAL.title": "금빛 봉인",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "매 전투 시작 시, 무작위 [gold]포션[/gold]을 생성합니다. 포션 슬롯이 가득 차 있다면, 대신 {Energy:energyIcons()}를 얻습니다.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "아무리 따라도 좀처럼 마르지 않는다.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "마르지 않는 성배",

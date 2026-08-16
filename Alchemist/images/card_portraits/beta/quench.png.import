@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ek2m5jb6v4wh"
-path="res://.godot/imported/flush.png-66b9ece6455edb1b548094b89b99f9b1.ctex"
+uid="uid://crfnpodnmcx5e"
+path="res://.godot/imported/quench.png-e5273f21cf069e1272ceda11e3246463.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/flush.png"
-dest_files=["res://.godot/imported/flush.png-66b9ece6455edb1b548094b89b99f9b1.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/quench.png"
+dest_files=["res://.godot/imported/quench.png-e5273f21cf069e1272ceda11e3246463.ctex"]
 
 [params]
 

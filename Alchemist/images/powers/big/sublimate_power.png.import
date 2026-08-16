@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8x0jmp45bpg6"
-path="res://.godot/imported/contagion.png-015654b3f0ac9b2b909846167aac9fc1.ctex"
+uid="uid://fneb6sbfdqtw"
+path="res://.godot/imported/sublimate_power.png-9c5ab6d8006db41180d35dadc86ee03e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/contagion.png"
-dest_files=["res://.godot/imported/contagion.png-015654b3f0ac9b2b909846167aac9fc1.ctex"]
+source_file="res://Alchemist/images/powers/big/sublimate_power.png"
+dest_files=["res://.godot/imported/sublimate_power.png-9c5ab6d8006db41180d35dadc86ee03e.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
