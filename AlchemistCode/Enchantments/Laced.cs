@@ -1,4 +1,8 @@
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -8,11 +12,13 @@ public sealed class Laced : AlchemistEnchantment
 {
     public override bool CanEnchantCardType(CardType cardType) => cardType == CardType.Attack;
 
-    // Sharp is the base-game shape for this hook, including the IsPoweredAttack guard that keeps the
-    // bonus off a card's incidental damage
-    public override decimal EnchantDamageAdditive(decimal originalDamage, ValueProp props)
+    public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer,
+        DamageResult result, ValueProp props, Creature target, CardModel? cardSource)
     {
-        if (!props.IsPoweredAttack() || !HasCard) return 0m;
-        return Card.Owner.Creature.GetPowerAmount<PoisonPower>();
+        // IsPoweredAttack keeps this to the card's attack. A card also carries itself as the source of
+        // incidental damage, such as a Poison trigger, which must not apply Poison. The base game
+        // EnvenomPower has the same guard
+        if (cardSource != Card || !props.IsPoweredAttack() || result.UnblockedDamage <= 0) return;
+        await PowerCmd.Apply<PoisonPower>(choiceContext, target, Amount, Card.Owner.Creature, null);
     }
 }

@@ -45,7 +45,7 @@ public static class Infusion
 
     // The tips and the enchant share these, and FromEnchantment defaults to 1, so a tip that does not
     // pass one goes stale in silence
-    private const int LacedAmount = 1;
+    private const int LacedAmount = 2;
     private const int DosedAmount = 2;
     private const int PotentAmount = 1;
 
