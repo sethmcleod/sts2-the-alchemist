@@ -11,6 +11,7 @@ mod).
 
 ### Changed
 
+- Changed Laced enchantment: "Whenever this Attack deals unblocked damage, apply 2 Poison."
 - Updated Brew rest option description to clarify that the potions can be sold to the Merchant
 
 ### Fixed
