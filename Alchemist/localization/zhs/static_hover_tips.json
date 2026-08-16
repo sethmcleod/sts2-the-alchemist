@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-BREW.description": "这个休息处选项让你获得一瓶随机[gold]药水[/gold]。有3瓶[gold]药水[/gold]只能通过这种方式获得。你还可以把[gold]药水[/gold]卖给[gold]商人[/gold]。",
+  "ALCHEMIST-BREW.description": "这个休息处选项会从只能通过这种方式获得的[blue]6[/blue]瓶[gold]药水[/gold]中酿造出一瓶。只有酿造出的[gold]药水[/gold]才能卖给[gold]商人[/gold]。",
   "ALCHEMIST-BREW.title": "酿造",
   "ALCHEMIST-MASTERWORK.description": "如果你在本场战斗中已[gold]附魔[/gold]3张或更多的牌（包括这张牌将要[gold]注入[/gold]的那张），它就会发出[gold]金币[/gold]般的光芒。",
   "ALCHEMIST-MASTERWORK.title": "杰作"

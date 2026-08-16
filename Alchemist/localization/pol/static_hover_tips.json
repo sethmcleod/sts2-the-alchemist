@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-BREW.description": "Ta opcja Obozowiska pozwala otrzymać losową [gold]Miksturę[/gold]. Istnieją 3 [gold]Mikstury[/gold], które można zdobyć tylko w ten sposób. Możesz też sprzedawać [gold]Mikstury[/gold] [gold]Handlarzowi[/gold].",
+  "ALCHEMIST-BREW.description": "Ta opcja Obozowiska pozwala uwarzyć jedną z [blue]6[/blue] [gold]Mikstur[/gold], które można zdobyć tylko w ten sposób. [gold]Handlarz[/gold] kupuje wyłącznie uwarzone [gold]Mikstury[/gold].",
   "ALCHEMIST-BREW.title": "Warzenie",
   "ALCHEMIST-MASTERWORK.description": "Ta karta świeci na [gold]złoto[/gold], jeżeli w tej walce rzucono [gold]Zaklęcie[/gold] na co najmniej 3 karty, licząc tę, którą [gold]Nasycisz[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Arcydzieło"

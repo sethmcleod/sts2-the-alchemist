@@ -1,4 +1,5 @@
 {
-  "OPTION_BREW.name": "Brauen",
-  "OPTION_BREW.description": "Beschaffe einen zufälligen [gold]Trank[/gold]."
+  "OPTION_BREW.description": "Braue einen besonderen [gold]Trank[/gold] im Wert von [gold]150 G[/gold].",
+  "OPTION_BREW.description_plural": "Braue [blue]2[/blue] besondere [gold]Tränke[/gold] im Wert von je [gold]150 G[/gold].",
+  "OPTION_BREW.name": "Brauen"
 }

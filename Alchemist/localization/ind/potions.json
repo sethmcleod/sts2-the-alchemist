@@ -1,14 +1,20 @@
 {
   "ALCHEMIST-ALKAHEST.description": "Jika digunakan dalam perlawanan, beri [gold]Infusi[/gold] ke sampai dengan [blue]3[/blue] kartu di [gold]Tanganmu[/gold]. Jika tidak, tingkatkan sebuah kartu dalam [gold]Dek[/gold] kamu.",
   "ALCHEMIST-ALKAHEST.title": "Alkahest",
+  "ALCHEMIST-ANODYNE.description": "Cegah kejadian berikutnya kamu akan menerima kerusakan serangan tidak terblok. Dapatkan [blue]1[/blue] [gold]Racun[/gold] untuk setiap [blue]4[/blue] kerusakan yang dicegah.",
+  "ALCHEMIST-ANODYNE.title": "Pereda Nyeri",
+  "ALCHEMIST-DECOCTION.description": "Ambil [blue]3[/blue] kartu. Mereka berharga 0 {energyPrefix:energyIcons(1)} giliran ini.",
+  "ALCHEMIST-DECOCTION.title": "Rebusan Pekat",
   "ALCHEMIST-GOLD_LEAF.description": "Sembuhkan [green]1[/green] HP dan dapatkan [blue]1[/blue] [gold]Blok[/gold] untuk setiap [blue]15[/blue] [gold]Emas[/gold] yang kamu punya.{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Lembaran Emas",
   "ALCHEMIST-MARSH_TONIC.description": "Dapatkan [blue]6[/blue] [gold]Antitoksin[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Obat Rawa",
-  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Dapatkan giliran tambahan setelah ini.",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Picu [gold]Racun[/gold] pada seorang musuh [blue]3[/blue] kali.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Jamu Raksa",
   "ALCHEMIST-REFINED_EXTRACT.description": "Tambahkan [blue]2[/blue] [gold]Sulingan[/gold] ke [gold]Tanganmu[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Ekstrak Murni",
-  "ALCHEMIST-SOPORIFIC.description": "Buat seorang musuh [gold]Linglung[/gold].",
-  "ALCHEMIST-SOPORIFIC.title": "Obat Tidur"
+  "ALCHEMIST-SAMPLER.description": "Dapatkan {energyPrefix:energyIcons(1)} dan ambil [blue]1[/blue] kartu untuk setiap [gold]Ramuan[/gold] yang kamu punya, termasuk yang ini.",
+  "ALCHEMIST-SAMPLER.title": "Cicipan",
+  "ALCHEMIST-SOLVENT.description": "Hapus semua [gold]Blok[/gold] musuh. Terapkan [blue]3[/blue] [gold]Lemah[/gold] kepadanya.",
+  "ALCHEMIST-SOLVENT.title": "Pelarut"
 }

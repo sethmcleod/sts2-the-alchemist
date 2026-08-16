@@ -1,14 +1,20 @@
 {
   "ALCHEMIST-ALKAHEST.description": "Si se usa en combate, [gold]Infunde[/gold] hasta [blue]3[/blue] cartas de tu [gold]Mano[/gold]. Si no, mejora una carta de tu [gold]Mazo[/gold].",
   "ALCHEMIST-ALKAHEST.title": "Alcahest",
+  "ALCHEMIST-ANODYNE.description": "Evita el daño de ataque no bloqueado la siguiente vez que lo recibas. Gana [blue]1[/blue] de [gold]Veneno[/gold] por cada [blue]4[/blue] de daño evitado.",
+  "ALCHEMIST-ANODYNE.title": "Analgésico",
+  "ALCHEMIST-DECOCTION.description": "Roba [blue]3[/blue] cartas. Cuestan 0 {energyPrefix:energyIcons(1)} durante este turno.",
+  "ALCHEMIST-DECOCTION.title": "Decocción",
   "ALCHEMIST-GOLD_LEAF.description": "Cúrate [green]1[/green] PV y gana [blue]1[/blue] de [gold]Bloqueo[/gold] por cada [blue]15[/blue] de [gold]Oro[/gold] que tengas.{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Pan de oro",
   "ALCHEMIST-MARSH_TONIC.description": "Gana [blue]6[/blue] de [gold]Antitoxina[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Tónico del pantano",
-  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Juega un turno adicional tras este.",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Activa el [gold]Veneno[/gold] de un enemigo [blue]3[/blue] veces.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Trago de azogue",
   "ALCHEMIST-REFINED_EXTRACT.description": "Añade [blue]2[/blue] [gold]Destilados[/gold] a tu [gold]Mano[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Extracto refinado",
-  "ALCHEMIST-SOPORIFIC.description": "[gold]Aturde[/gold] a un enemigo.",
-  "ALCHEMIST-SOPORIFIC.title": "Soporífero"
+  "ALCHEMIST-SAMPLER.description": "Gana {energyPrefix:energyIcons(1)} y roba [blue]1[/blue] carta por cada [gold]Poción[/gold] que tengas, incluida esta.",
+  "ALCHEMIST-SAMPLER.title": "Muestrario",
+  "ALCHEMIST-SOLVENT.description": "Elimina todo el [gold]Bloqueo[/gold] del enemigo. Aplícale [blue]3[/blue] de [gold]Debilidad[/gold].",
+  "ALCHEMIST-SOLVENT.title": "Disolvente"
 }

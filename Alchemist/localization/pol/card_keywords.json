@@ -1,9 +1,8 @@
 {
-  "ALCHEMIST-FERMENT.description": "Ta karta zyskuje na mocy za każdą turę spędzoną w twojej [gold]ręce[/gold], a po zagraniu wraca do stanu wyjściowego. Po przekroczeniu szczytu zmienia się w [gold]Toksyny[/gold].",
+  "ALCHEMIST-FERMENT.description": "Ta karta zyskuje na mocy za każdą turę spędzoną w twojej [gold]ręce[/gold]. Zagranie jej zmienia ją w [gold]Toksyny[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentacja",
-  "ALCHEMIST-INFUSE.description": "Rzuć na kartę [gold]Zaklęcie[/gold] do końca walki. Ataki zyskują [blue]1[/blue] pkt. [purple]Jadu[/purple] (nakładają [gold]Truciznę[/gold] przy trafieniu i trują też ciebie); Umiejętności zyskują [blue]1[/blue] pkt. [purple]Dawki[/purple]; Moce zyskują [blue]1[/blue] pkt. [purple]Stężenia[/purple]. Pozostałe karty stają się [gold]Eteryczne[/gold].",
+  "ALCHEMIST-INFUSE.description": "Rzuć na kartę [gold]Zaklęcie[/gold] do końca walki. Ataki zyskują [purple]Jad[/purple]; Umiejętności zyskują [purple]Dawkę[/purple]; Moce zyskują [purple]Stężenie[/purple]. Pozostałe karty stają się [gold]Eteryczne[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty} do [gold]Nasycenia[/gold].",
-  "ALCHEMIST-INFUSE.selectionPromptAny": "Wybierz dowolną liczbę kart do [gold]Nasycenia[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Wybierz do [blue]{MaxCount}[/blue] {MaxCount:plural:karty|kart|kart} do [gold]Nasycenia[/gold].",
   "ALCHEMIST-INFUSE.title": "Nasycenie"
 }
