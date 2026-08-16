@@ -23,6 +23,10 @@ mod).
 - Reworked Quicklime: "Deal 5 (7) damage. Deal 4 (6) additional damage if the enemy is Poisoned."
 - Reworked Toughen: "Lose all Poison. Gain 4 (6) Block. Gain 2 additional Block for each Poison lost."
 
+### Fixed
+
+- Fixed Antitoxin hover tip not updating when your max was increased
+
 ### Removed
 
 - Removed Contagion card, replaced by Sublimate
