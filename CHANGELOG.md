@@ -7,6 +7,11 @@ mod).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the Compendium showing no cards for any character on Windows, and the Alchemist's icon not
+  loading on the character select screen
+
 ## [0.9.2] - 2026-08-16
 
 ### Added

@@ -206,6 +206,25 @@ def check_game_scene_paths() -> tuple[list[str], list[str]]:
     return [f"the game ships no scene for '{r}', which the mod names" for r in missing], []
 
 
+def check_res_path_separator() -> list[str]:
+    """A res:// path must be built with forward slashes on every platform.
+
+    Path.Join and Path.Combine join with the platform separator, which is a backslash on Windows.
+    The pack index is keyed by forward slashes only, so such a path loads on macOS and Linux and
+    fails on Windows. The failure is invisible here: it shipped once as an empty Compendium for
+    every character, because one missing character icon throws out of NCardLibrary._Ready
+    """
+    errors = []
+    for path in sorted(CODE.rglob("*.cs")):
+        for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            if line.lstrip().startswith("//"):
+                continue
+            if re.search(r"\bPath\.(Join|Combine)\(", line):
+                errors.append(f"{path.name}:{n} builds a path with Path.Join/Combine; join "
+                              "res:// paths with '/' so they also load on Windows")
+    return errors
+
+
 def check_fallback_art() -> tuple[list[str], list[str]]:
     """Every fallback a *ImagePath helper falls back to must itself exist.
 
@@ -223,7 +242,7 @@ def check_fallback_art() -> tuple[list[str], list[str]]:
         # A fallback may point at a base game asset, which ships in the game pck and is not ours to check
         if re.search(r'return "res://', tail):
             continue
-        join = re.search(r'return Path\.Join\(MainFile\.ResPath,\s*(.*?)\);', tail, re.S)
+        join = re.search(r'return Res\(MainFile\.ResPath,\s*(.*?)\);', tail, re.S)
         if not join:
             warnings.append(f"{name}: no fallback art, so a miss returns a path that will throw")
             continue
@@ -363,6 +382,7 @@ def main() -> int:
     fb_errors, fb_warnings = check_fallback_art()
     errors += fb_errors
     warnings += fb_warnings
+    errors += check_res_path_separator()
 
     # 6. every Compat/ file is the copy for the branch you are on
     errors += check_compat_branch()
