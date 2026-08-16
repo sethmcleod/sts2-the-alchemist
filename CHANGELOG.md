@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-08-16
+
 ### Added
 
 - Added Anodyne potion: "The next time you would take unblocked attack damage, prevent it. Gain 1 Poison for every 4 damage prevented."
