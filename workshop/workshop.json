@@ -4,7 +4,9 @@
   "visibility": "public",
   "changeNote": "v0.9.2\n\nAdded\n\n- Added Percolate card: \"Add 2 (3) Distillates into your Hand. Exhaust.\"\n- Added Quench card: \"Gain 3 (4) Antitoxin. Gain 4 (6) Block, plus 2 Block for each Antitoxin you have.\"\n- Added Sublimate card: \"At the start of your turn, deal damage equal to your Antitoxin to the enemy with the most HP.\"\n- Added vfx for Marsh Tonic potion\n\nChanged\n\n- Buffed Heavy Dose: 26 (32) damage -> 35 (45) damage, and it now gains 3 Poison\n- Buffed Puff Up: 10 Block -> 10 (13) Block\n- Buffed Spatter: its splash now also applies 1 (2) Poison to ALL other enemies\n- Buffed Tempered: 30 (35) Block -> 30 (40) Block\n- Changed Antitoxin: it Block once you are at your max, and that Block gain is increased by Dexterity\n- Nerfed Harden: it now only gives Block when you gain Poison, not when you apply it to an enemy\n- Reworked Quicklime: \"Deal 5 (7) damage. Deal 4 (6) additional damage if the enemy is Poisoned.\"\n- Reworked Toughen: \"Lose all Poison. Gain 4 (6) Block. Gain 2 additional Block for each Poison lost.\"\n\nFixed\n\n- Fixed Antitoxin hover tip not updating when your max was increased\n\nRemoved\n\n- Removed Contagion card, replaced by Sublimate\n- Removed Flush card, replaced by Percolate",
   "tags": [],
-  "dependencies": [3737335127],
+  "dependencies": [
+    3737335127
+  ],
   "contentDescriptors": [],
   "minBranch": "public",
   "maxBranch": "public"
