@@ -7,11 +7,9 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Vintage : AlchemistCard
 {
-    protected override int FermentPeak => 2;
+    protected override bool Ferments => true;
 
     // The whole payout lands on play, so show it before the card leaves your hand
-    protected override string FermentTotalText =>
-        $" (Gains [green]{1 + FermentTurns}[/green] Energy and draws [green]{1 + FermentTurns}[/green].)";
 
     public Vintage() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {

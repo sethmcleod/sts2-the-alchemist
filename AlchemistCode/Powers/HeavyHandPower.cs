@@ -1,9 +1,8 @@
-
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Powers;
 
@@ -18,7 +17,9 @@ public class HeavyHandPower : AlchemistPower
     public override decimal ModifyPowerAmountGivenAdditive(PowerModel power, Creature giver, decimal amount,
         Creature? target, CardModel? cardSource)
     {
-        if (power is PoisonPower && giver == Owner && target != null && amount > 0)
+        // Enemies only. "Not the owner" would still catch an ally in multiplayer, where amplifying
+        // Poison handed to a teammate is a downside
+        if (power is PoisonPower && giver == Owner && amount > 0 && target is { IsPlayer: false })
             return Amount;
         return 0m;
     }

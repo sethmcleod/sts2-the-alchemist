@@ -20,14 +20,15 @@ public class SecondSkin : AlchemistRelic
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
-    // Antitoxin reduces the tick before this runs, so a fully absorbed tick pays nothing here and
-    // Warded covers it instead
+    // Reads the pre-absorb tick, the way Callus and Contagion do, so Antitoxin defending you does not
+    // also cancel what taking the Poison was supposed to pay
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target != Owner.Creature || result.UnblockedDamage <= 0) return;
-        if (!AntitoxinRules.IsPoisonTick(Owner.Creature, result.UnblockedDamage, props, dealer, cardSource))
-            return;
+        if (target != Owner.Creature) return;
+        var tick = result.UnblockedDamage + AntitoxinRules.TickAbsorb(Owner.Creature);
+        if (tick <= 0) return;
+        if (!AntitoxinRules.IsPoisonTick(Owner.Creature, tick, props, dealer, cardSource)) return;
         Flash();
         await CreatureCmd.GainBlock(Owner.Creature, Block, ValueProp.Unpowered, null);
     }

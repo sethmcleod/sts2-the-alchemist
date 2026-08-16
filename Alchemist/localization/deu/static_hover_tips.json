@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-BREW.description": "Mit dieser Lagerfeuer-Option beschaffst du einen zufälligen [gold]Trank[/gold]. Es gibt 3 [gold]Tränke[/gold], die du nur so erhalten kannst. Du kannst [gold]Tränke[/gold] auch an den [gold]Händler[/gold] verkaufen.",
+  "ALCHEMIST-BREW.description": "Mit dieser Lagerfeuer-Option braust du einen der [blue]6[/blue] [gold]Tränke[/gold], die du nur so erhalten kannst. Nur gebraute [gold]Tränke[/gold] kauft der [gold]Händler[/gold] an.",
   "ALCHEMIST-BREW.title": "Brauen",
   "ALCHEMIST-MASTERWORK.description": "Diese Karte leuchtet [gold]golden[/gold], falls du in diesem Kampf 3 oder mehr Karten [gold]Verzaubert[/gold] hast, einschließlich der Karte, die du [gold]Infundieren[/gold] würdest.",
   "ALCHEMIST-MASTERWORK.title": "Meisterwerk"

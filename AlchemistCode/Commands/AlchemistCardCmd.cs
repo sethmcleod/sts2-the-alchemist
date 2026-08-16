@@ -33,19 +33,22 @@ public static class AlchemistCardCmd
             await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, source.Owner));
     }
 
+    // count asks for ONE selection of that many cards. Calling this in a loop instead opens a fresh
+    // prompt each time, which lets the player pick the same card twice and spend the second transform
+    // turning a Distillate into another Distillate
     public static async Task TransformFromHand<T>(
-        PlayerChoiceContext choiceContext, AlchemistCard source) where T : CardModel, new()
+        PlayerChoiceContext choiceContext, AlchemistCard source, int count = 1) where T : CardModel, new()
     {
-        if (source.CombatState == null) return;
-        var selected = (await CardSelectCmd.FromHand(
+        if (source.CombatState == null || count <= 0) return;
+        var selected = await CardSelectCmd.FromHand(
             choiceContext, source.Owner,
-            new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1),
-            null, source)).FirstOrDefault();
-        if (selected != null)
+            new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, count),
+            null, source);
+        foreach (var card in selected)
         {
             var replacement = source.CombatState.CreateCard<T>(source.Owner);
             if (source.IsUpgraded) CardCmd.Upgrade(replacement);
-            await CardCmd.Transform(selected, replacement);
+            await CardCmd.Transform(card, replacement);
         }
     }
 

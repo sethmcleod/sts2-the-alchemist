@@ -9,6 +9,8 @@ using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -21,7 +23,7 @@ namespace Alchemist.AlchemistCode.Powers;
 public partial class AntitoxinPower : AlchemistPower
 {
     // Raised for the combat by granting AntitoxinCapacityPower; AntitoxinRules enforces the result
-    public const int BaseMax = 9;
+    public const int BaseMax = 12;
 
     public static int MaxFor(Creature creature) =>
         BaseMax + creature.GetPowerAmount<AntitoxinCapacityPower>();
@@ -40,6 +42,19 @@ public partial class AntitoxinPower : AlchemistPower
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
+
+    // The limit is a number two places have to agree on, so neither the tooltip nor the bar restates it
+    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[] { new AntitoxinLimitVar() };
+
+    public override LocString Description
+    {
+        get
+        {
+            var description = base.Description;
+            description.Add("Limit", IsMutable && Owner != null ? MaxFor(Owner) : BaseMax);
+            return description;
+        }
+    }
 
     // PoisonPower.CalculateTotalDamageNextTurn runs its forecast through this same hook, so reducing
     // here also keeps the incoming damage preview correct
@@ -62,6 +77,17 @@ public partial class AntitoxinPower : AlchemistPower
         var absorbed = Math.Min(Amount, (int)amount);
         _pendingSpend = absorbed;
         return -absorbed;
+    }
+
+    // Cures one Poison per point absorbed, not the whole stack. Leaves the last stack behind:
+    // PoisonPower.Trigger decrements right after this hook returns, and that call would otherwise
+    // land on a detached power
+    private async Task CurePoison(PlayerChoiceContext choiceContext, int absorbed)
+    {
+        if (Owner.GetPower<PoisonPower>() is not { Amount: > 1 } poison) return;
+        var cured = Math.Min(absorbed, poison.Amount - 1);
+        if (cured <= 0) return;
+        await PowerCmd.ModifyAmount(choiceContext, poison, -cured, Owner, null);
     }
 
     private void AbsorbSplash()
@@ -93,5 +119,7 @@ public partial class AntitoxinPower : AlchemistPower
             await PowerCmd.Remove(this);
         else
             await PowerCmd.ModifyAmount(choiceContext, this, -spend, Owner, null, silent: true);
+
+        await CurePoison(choiceContext, spend);
     }
 }

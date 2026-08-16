@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-BREW.description": "此休息處選項可讓你取得一瓶隨機[gold]藥水[/gold]。有 3 種[gold]藥水[/gold]只能透過這種方式取得。你也可以把[gold]藥水[/gold]賣給[gold]商人[/gold]。",
+  "ALCHEMIST-BREW.description": "此休息處選項可釀造 [blue]6[/blue] 種只能以此方式取得的[gold]藥水[/gold]之一。只有釀造出的[gold]藥水[/gold]，[gold]商人[/gold]才會收購。",
   "ALCHEMIST-BREW.title": "釀造",
   "ALCHEMIST-MASTERWORK.description": "若你在本場戰鬥中已[gold]附魔[/gold]3張或更多卡牌（含此牌即將[gold]浸潤[/gold]的那張），此牌會泛起[gold]金幣[/gold]般的光澤。",
   "ALCHEMIST-MASTERWORK.title": "傑作"

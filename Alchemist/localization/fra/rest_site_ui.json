@@ -1,4 +1,5 @@
 {
-  "OPTION_BREW.name": "Brassage",
-  "OPTION_BREW.description": "Obtenez une [gold]Potion[/gold] aléatoire."
+  "OPTION_BREW.description": "Brassez une [gold]Potion[/gold] spéciale d'une valeur de [gold]150 po[/gold].",
+  "OPTION_BREW.description_plural": "Brassez [blue]2[/blue] [gold]Potions[/gold] spéciales d'une valeur de [gold]150 po[/gold] chacune.",
+  "OPTION_BREW.name": "Brassage"
 }

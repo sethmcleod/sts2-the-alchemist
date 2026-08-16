@@ -1,9 +1,8 @@
 {
-  "ALCHEMIST-FERMENT.description": "이 카드는 [gold]손[/gold]에 머문 턴마다 강해지며, 사용하면 초기화됩니다. 절정을 지나면 [gold]독성[/gold]으로 변합니다.",
+  "ALCHEMIST-FERMENT.description": "이 카드는 [gold]손[/gold]에 머문 턴마다 강해집니다. 사용하면 [gold]유독성[/gold]으로 변합니다.",
   "ALCHEMIST-FERMENT.title": "발효",
-  "ALCHEMIST-INFUSE.description": "전투가 끝날 때까지 카드에 [gold]인챈트[/gold]합니다. 공격 카드는 [purple]맹독[/purple]을 [blue]1[/blue] 얻고(적중 시 [gold]중독[/gold]을 부여하고, 자신도 중독됩니다), 스킬 카드는 [purple]복용[/purple]을 [blue]1[/blue], 파워 카드는 [purple]약효[/purple]를 [blue]1[/blue] 얻습니다. 그 외 카드는 [gold]휘발성[/gold]을 얻습니다.",
+  "ALCHEMIST-INFUSE.description": "전투가 끝날 때까지 카드를 [gold]인챈트[/gold]합니다. 공격 카드는 [purple]맹독[/purple], 스킬 카드는 [purple]복용[/purple], 파워 카드는 [purple]약효[/purple]가 됩니다. 그 외 카드는 [gold]휘발성[/gold]을 얻습니다.",
   "ALCHEMIST-INFUSE.selectionPrompt": "[gold]주입[/gold]할 카드를{Amount:plural: 1장| [blue]{}[/blue]장} 선택하세요.",
-  "ALCHEMIST-INFUSE.selectionPromptAny": "[gold]주입[/gold]할 카드를 원하는 만큼 선택하세요.",
   "ALCHEMIST-INFUSE.selectionPromptRange": "[gold]주입[/gold]할 카드를 최대 [blue]{MaxCount}[/blue]{MaxCount:plural:장|장} 선택하세요.",
   "ALCHEMIST-INFUSE.title": "주입"
 }

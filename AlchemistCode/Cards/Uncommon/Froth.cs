@@ -1,3 +1,4 @@
+using System;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -7,7 +8,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Froth : AlchemistCard
 {
-    protected override int FermentPeak => 2;
+    protected override bool Ferments => true;
 
     public Froth() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
@@ -15,15 +16,20 @@ public class Froth : AlchemistCard
         WithKeyword(CardKeyword.Retain);
     }
 
+    // Ferment itself is uncapped, but hits multiply with everything that adds damage per hit, Laced
+    // most of all, so this one card takes a ceiling
+    private const int MaxHits = 4;
+
+    private int Hits => Math.Min(1 + FermentTurns, MaxHits);
+
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
-        description.Add("HitsLine", HitsLine(FermentTurns > 0 ? 1 + FermentTurns : 0));
+        description.Add("HitsLine", HitsLine(FermentTurns > 0 ? Hits : 0));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var hitCount = 1 + FermentTurns;
-        await CommonActions.CardAttack(this, play, hitCount, vfx: HitVfx("vfx/vfx_attack_slash")).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, Hits, vfx: HitVfx("vfx/vfx_attack_slash")).Execute(choiceContext);
     }
 }

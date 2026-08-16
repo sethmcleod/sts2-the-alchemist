@@ -1,4 +1,5 @@
 {
-  "OPTION_BREW.name": "Варить",
-  "OPTION_BREW.description": "Получить случайное [gold]зелье[/gold]."
+  "OPTION_BREW.description": "Сварить особое [gold]зелье[/gold] стоимостью [gold]150 зол.[/gold]",
+  "OPTION_BREW.description_plural": "Сварить [blue]2[/blue] особых [gold]зелья[/gold], каждое стоимостью [gold]150 зол.[/gold]",
+  "OPTION_BREW.name": "Варить"
 }

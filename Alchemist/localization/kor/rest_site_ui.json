@@ -1,4 +1,5 @@
 {
-  "OPTION_BREW.name": "양조",
-  "OPTION_BREW.description": "무작위 [gold]포션[/gold]을 생성합니다."
+  "OPTION_BREW.description": "[gold]150골드[/gold] 가치의 특별한 [gold]포션[/gold]을 양조합니다.",
+  "OPTION_BREW.description_plural": "각각 [gold]150골드[/gold] 가치의 특별한 [gold]포션[/gold]을 [blue]2[/blue]개 양조합니다.",
+  "OPTION_BREW.name": "양조"
 }

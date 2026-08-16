@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-BREW.description": "Cette option de Site de repos vous permet d'obtenir une [gold]Potion[/gold] aléatoire. 3 [gold]Potions[/gold] ne peuvent être obtenues que de cette manière. Vous pouvez aussi vendre des [gold]Potions[/gold] au [gold]Marchand[/gold].",
+  "ALCHEMIST-BREW.description": "Cette option de Site de repos brasse l'une des [blue]6[/blue] [gold]Potions[/gold] que l'on ne peut obtenir autrement. Seules les [gold]Potions[/gold] brassées sont achetées par le [gold]Marchand[/gold].",
   "ALCHEMIST-BREW.title": "Brassage",
   "ALCHEMIST-MASTERWORK.description": "Cette carte brille en [gold]doré[/gold] si vous avez [gold]Envoûté[/gold] 3 cartes ou plus pendant ce combat, en comptant celle que vous alliez [gold]Infuser[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Chef-d'œuvre"

@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-BREW.description": "この休憩所の選択肢では、ランダムな[gold]ポーション[/gold]を1つ入手できる。この方法でしか入手できない[gold]ポーション[/gold]が3種類ある。[gold]ポーション[/gold]は[gold]商人[/gold]に売却することもできる。",
+  "ALCHEMIST-BREW.description": "この休憩所の選択肢では、この方法でしか入手できない[blue]6[/blue]種類の[gold]ポーション[/gold]から1つを調合する。[gold]商人[/gold]が買い取るのは、調合した[gold]ポーション[/gold]だけ。",
   "ALCHEMIST-BREW.title": "調合",
   "ALCHEMIST-MASTERWORK.description": "この戦闘中に、[gold]注入[/gold]する1枚を含めて3枚以上のカードを[gold]エンチャント[/gold]していた場合、このカードは[gold]ゴールド[/gold]色に輝く。",
   "ALCHEMIST-MASTERWORK.title": "傑作"

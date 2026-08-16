@@ -1,14 +1,20 @@
 {
   "ALCHEMIST-ALKAHEST.description": "If used in combat, [gold]Infuse[/gold] up to [blue]3[/blue] cards in your [gold]Hand[/gold]. Otherwise, upgrade a card in your [gold]Deck[/gold].",
   "ALCHEMIST-ALKAHEST.title": "Alkahest",
+  "ALCHEMIST-ANODYNE.description": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]4[/blue] damage prevented.",
+  "ALCHEMIST-ANODYNE.title": "Anodyne",
+  "ALCHEMIST-DECOCTION.description": "Draw [blue]3[/blue] cards. They cost 0 {energyPrefix:energyIcons(1)} this turn.",
+  "ALCHEMIST-DECOCTION.title": "Decoction",
   "ALCHEMIST-GOLD_LEAF.description": "Heal [green]1[/green] HP and gain [blue]1[/blue] [gold]Block[/gold] for every [blue]15[/blue] [gold]Gold[/gold] you have.{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Gold Leaf",
   "ALCHEMIST-MARSH_TONIC.description": "Gain [blue]6[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Marsh Tonic",
-  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Take an extra turn after this one.",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Trigger [gold]Poison[/gold] on an enemy [blue]3[/blue] times.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Quicksilver Draught",
   "ALCHEMIST-REFINED_EXTRACT.description": "Add [blue]2[/blue] [gold]Distillates[/gold] into your [gold]Hand[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Refined Extract",
-  "ALCHEMIST-SOPORIFIC.description": "[gold]Stun[/gold] an enemy.",
-  "ALCHEMIST-SOPORIFIC.title": "Soporific"
+  "ALCHEMIST-SAMPLER.description": "Gain {energyPrefix:energyIcons(1)} and draw [blue]1[/blue] card for each [gold]Potion[/gold] you have, including this one.",
+  "ALCHEMIST-SAMPLER.title": "Sampler",
+  "ALCHEMIST-SOLVENT.description": "Remove all [gold]Block[/gold] from the enemy. Apply [blue]3[/blue] [gold]Weak[/gold] to it.",
+  "ALCHEMIST-SOLVENT.title": "Solvent"
 }

@@ -24,8 +24,11 @@ public sealed class BrewRestSiteOption : RestSiteOption
 
     public override string OptionId => BrewOptionId;
 
+    // Gilded Kit brews two, so the option text has to agree with what actually happens
     public override LocString Description =>
-        new LocString("rest_site_ui", "OPTION_" + OptionId + ".description");
+        new LocString("rest_site_ui", Owner.GetRelic<GildedKit>() != null
+            ? "OPTION_" + OptionId + ".description_plural"
+            : "OPTION_" + OptionId + ".description");
 
     public override bool IsEnabled => true;
 
@@ -48,23 +51,45 @@ public sealed class BrewRestSiteOption : RestSiteOption
             }
         }
 
-        await RewardsCmd.OfferCustom(Owner, [CreateBrewReward()]);
+        // Gilded Kit brews a second potion. That is the qualitative half of the starter upgrade, the
+        // way Infused Core makes Lightning hit harder rather than just channelling more of it
+        var brews = Owner.GetRelic<GildedKit>() != null ? 2 : 1;
+        var rewards = new List<Reward>();
+        for (var i = 0; i < brews; i++)
+        {
+            if (CreateBrewReward() is not { } reward) break;
+            rewards.Add(reward);
+        }
+        await RewardsCmd.OfferCustom(Owner, rewards);
         return true;
     }
 
-    // Brew-only potions are outside the potion pool, so the default reward can never roll them. This
-    // roll offers one instead, minus any the player already holds
+    // Every Brew-only potion. Brew is their ONLY source, so this list is the whole set and must be
+    // updated whenever one is added; nothing else enumerates IBrewOnly at runtime
+    private PotionModel[] BrewOnly() =>
+    [
+        ModelDb.Potion<QuicksilverDraught>(),
+        ModelDb.Potion<Anodyne>(),
+        ModelDb.Potion<Alkahest>(),
+        ModelDb.Potion<Sampler>(),
+        ModelDb.Potion<Solvent>(),
+        ModelDb.Potion<Decoction>(),
+    ];
+
+    // Brew offers nothing else. Duplicates are filtered out, and holding the whole set falls back to a
+    // normal potion so the rest site is never a dead option
+    // Tracks what this Brew already offered, so a double Brew cannot roll the same potion twice
+    private readonly List<ModelId> _offered = new();
+
     private PotionReward CreateBrewReward()
     {
         var rng = Owner.PlayerRng.Rewards;
-        var exclusives = new PotionModel[]
-        {
-            ModelDb.Potion<QuicksilverDraught>(),
-            ModelDb.Potion<Soporific>(),
-            ModelDb.Potion<Alkahest>(),
-        }.Where(p => Owner.Potions.All(held => held.Id != p.Id)).ToList();
-        if (exclusives.Count > 0 && rng.NextFloat() < Config.AlchemistModConfig.BrewPotionChance / 100f)
-            return new PotionReward(rng.NextItem(exclusives)!.ToMutable(), Owner);
-        return new PotionReward(Owner);
+        var exclusives = BrewOnly()
+            .Where(p => Owner.Potions.All(held => held.Id != p.Id) && !_offered.Contains(p.Id))
+            .ToList();
+        if (exclusives.Count == 0) return new PotionReward(Owner);
+        var pick = rng.NextItem(exclusives)!;
+        _offered.Add(pick.Id);
+        return new PotionReward(pick.ToMutable(), Owner);
     }
 }

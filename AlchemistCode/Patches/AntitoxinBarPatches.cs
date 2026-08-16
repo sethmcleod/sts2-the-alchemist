@@ -204,4 +204,38 @@ public static class AntitoxinBarPatches
             __result = tips;
         }
     }
+
+    private static readonly AccessTools.FieldRef<NCreatureStateDisplay, Control> HpHitboxRef =
+        AccessTools.FieldRefAccess<NCreatureStateDisplay, Control>("_hpBarHitbox");
+
+    private static readonly AccessTools.FieldRef<NCreatureStateDisplay, Creature> DisplayCreatureRef =
+        AccessTools.FieldRefAccess<NCreatureStateDisplay, Creature>("_creature");
+
+    private static readonly ConditionalWeakTable<Control, object> HitboxBaseHeight = new();
+
+    // The HP bar has its own hitbox and the Antitoxin bar is drawn below it, outside that box, so the
+    // tips only appeared on the health half. Grow the box to cover both. SetCreatureBounds runs more
+    // than once, so the untouched height is cached and the result recomputed rather than accumulated
+    [HarmonyPatch(typeof(NCreatureStateDisplay), nameof(NCreatureStateDisplay.SetCreatureBounds))]
+    public static class ExtendHpHover
+    {
+        public static void Postfix(NCreatureStateDisplay __instance)
+        {
+            if (HpHitboxRef(__instance) is not { } hitbox) return;
+            if (!HitboxBaseHeight.TryGetValue(hitbox, out var cached))
+            {
+                cached = hitbox.Size.Y;
+                HitboxBaseHeight.Add(hitbox, cached);
+            }
+            var baseHeight = (float)cached;
+
+            var extra = 0f;
+            if (Shows(DisplayCreatureRef(__instance))
+                && Bars.TryGetValue(__instance.GetNodeOrNull<NHealthBar>("%HealthBar")!, out var parts)
+                && GodotObject.IsInstanceValid(parts.Root))
+                extra = parts.Root.Size.Y + Gap;
+
+            hitbox.Size = new Vector2(hitbox.Size.X, baseHeight + extra);
+        }
+    }
 }

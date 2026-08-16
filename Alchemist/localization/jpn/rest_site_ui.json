@@ -1,4 +1,5 @@
 {
-  "OPTION_BREW.name": "調合",
-  "OPTION_BREW.description": "ランダムな[gold]ポーション[/gold]を1つ入手する。"
+  "OPTION_BREW.description": "[gold]150ゴールド[/gold]相当の特別な[gold]ポーション[/gold]を1つ調合する。",
+  "OPTION_BREW.description_plural": "それぞれ[gold]150ゴールド[/gold]相当の特別な[gold]ポーション[/gold]を[blue]2[/blue]つ調合する。",
+  "OPTION_BREW.name": "調合"
 }

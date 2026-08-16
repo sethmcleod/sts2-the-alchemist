@@ -4,7 +4,7 @@
 
 - ✨ 90+ new cards
 - 💎 9 new relics
-- 🧪 6 new potions
+- 🧪 9 new potions
 - 📚 7 timeline epochs
 - 🎨 Handmade art and animation _(WIP)_
 - 🌍 Translated into 15 languages
@@ -12,23 +12,19 @@
 
 ## Playstyle
 
-- **Antitoxin**: A reserve that absorbs the damage Poison would deal to you. It
-  persists across turns, up to a limit. Once the reserve is full, any more you
-  gain becomes Block.
+- **Antitoxin**: A reserve that absorbs the damage Poison would deal to you, and
+  cures that much Poison in the process. It persists across turns, up to a limit.
 - **Absorbing Pays Off**: Taking Poison damage is not just a cost. Several cards
-  reward it, turning the Poison you absorb into Strength, Block, Energy or damage
-  to every enemy.
-- **Infuse**: Infusing a card Enchants it for the rest of combat based on the
-  type. Attacks apply Poison to the enemy and to you, Skills generate Antitoxin,
-  Powers give Strength, and other cards gain Ethereal.
+  reward it, turning the Poison you absorb into Strength, Block, Energy or damage.
+- **Infuse**: Infusing a card Enchants it for the rest of combat based on its
+  type. Attacks deal additional damage equal to your Poison, Skills generate
+  Antitoxin, Powers give Strength, and other cards gain Ethereal.
 - **Ferment**: These effects grow in potency for every turn the card stays in
-  your hand. However if you Retain them past their peak, they spoil into Toxic
-  cards.
-- **Brew**: This new Rest Site option lets you procure a random potion.
-  There are 3 new potions that can only be obtained this way.
-- **_Sell Potions!_**: Due to the quality and potency of these brews, the
-  Merchant is willing to buy potions from you, offering Gold based on the
-  rarity.
+  your hand. Playing the card transforms it into a Toxic.
+- **Brew**: This new Rest Site option allows you to procure one of 6 unique
+  potions that can only be obtained this way.
+- **Sell Potions**: Due to the quality and potency of these brews, the Merchant
+  is willing to buy them from you for Gold.
 
 ## Disclaimer
 

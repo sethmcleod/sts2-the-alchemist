@@ -7,27 +7,67 @@ mod).
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-08-16
+
+### Added
+
+- Added Anodyne potion: "The next time you would take unblocked attack damage, prevent it. Gain 1 Poison for every 4 damage prevented."
+- Added Decoction potion: "Draw 3 cards. They cost 0 this turn."
+- Added Sampler potion: "Gain 1 Energy and draw 1 card for each Potion you have, including this one."
+- Added Solvent potion: "Remove all Block from the enemy. Apply 3 Weak to it."
+
+### Changed
+
+- Added, removed, reworked and renamed many cards to be more focused and balanced
+- Buffed Gilded Kit relic: Antitoxin at the start of combat 6 -> 8, and Brew now gives 2 Potions
+- Buffed Weathered Kit relic: Antitoxin at the start of combat 3 -> 4
+- Changed Antitoxin limit: 9 -> 12
+- Changed Antitoxin: it no longer becomes Block once you are at the limit
+- Changed Antitoxin: it now cures 1 Poison for each point of damage it absorbs, instead of only preventing the damage
+- Changed Brew: it now offers only the 6 Potions that can be obtained no other way
+- Changed Dosed enchantment: Antitoxin 1 -> 2
+- Changed Ferment: it no longer has a peak and no longer spoils. A Ferment card now becomes a Toxic in your Discard Pile when you play it
+- Changed Infuse: enchantments no longer stack, matching every other enchantment in the game
+- Changed Laced enchantment: "This Attack deals additional damage equal to your Poison." It no longer applies Poison to you
+- Changed Potion sale prices: a shop discount such as Membership Card or The Courier no longer lowers what the Merchant pays you
+- Changed Potion selling: only brewed Potions can be sold, and they now sell for their full value
+- Changed starting Gold: 75 -> 99
+- Changed starting HP: 69 -> 75
+- Reworked Quicksilver Draught potion: "Trigger Poison on an enemy once for each Poison it has."
+- Reworked Snake Tail relic: "Your Antitoxin limit is increased by 6." It no longer revives you
+
+### Removed
+
+- Removed Damage Forecast setting from mod config
+- Removed Soporific potion, replaced by Anodyne
+- Removed the Potion Sell Price and Brew-Only Chance settings. Both are now fixed values so that future tuning reaches every player
+
+### Fixed
+
+- Fixed being locked out of the main menu after unlocking an Alchemist epoch in a run that did not finish, such as leaving a Multiplayer game part way through
+- Fixed Second Skin relic paying nothing when Antitoxin absorbed the whole tick of Poison damage, which did not match its description or how Callus and Contagion behave
+- Fixed several Power descriptions understating their own values
+- Fixed the Infuse card picker offering cards it could not Enchant
+
 ## [0.8.0] - 2026-08-14
 
 ### Added
 
 - Added Antitoxin: it absorbs damage you would take from Poison, up to a maximum of 9
-- Added Bottoms Up card: "Whenever you gain Poison, ALL other players gain that much Block."
-- Added Free Samples card: "ALL other players Infuse 2 (3) cards in their Hand. Draw 2 cards."
 - Added new animations to the character model: attack, heavy attack and cast
 - Added Spare Dose relic: "Whenever you gain Poison, gain 1 Antitoxin."
 
 ### Changed
 
 - Added, removed, reworked and renamed many cards to be more aligned with the base game
+- Changed Snake Tail into a Rare relic
+- Changed the default Potion sale price: 100% -> 50% of the shop value, and its range is now 10% to 90%
 - Reworked Fuming enchantment into Dosed: now gains 1 Antitoxin when played
 - Reworked Laced enchantment: now applies 1 Poison and gains 1 Poison when played
 - Reworked Marsh Tonic potion: "Gain 6 Antitoxin."
-- Changed Snake Tail into a Rare relic
 - Reworked Glowing Shard relic: "Whenever you gain Poison, apply 1 Poison to a random enemy."
 - Reworked Viriditas relic and renamed it Second Skin: "Whenever you take Poison damage, gain 2 Block."
-- Updated map drawing ink colour to be purple
-- Changed the default Potion sale price: 100% -> 50% of the shop value, and its range is now 10% to 90%. This setting only applies to new runs
+- Updated map drawing ink color to be purple
 
 ### Removed
 
@@ -39,7 +79,6 @@ mod).
 ### Fixed
 
 - Fixed Gilded Kit not being in the event pool, like the other characters' upgraded starter relics
-- Fixed Fighting Spirits counting Potions used by other players in Multiplayer, not only your own
 - Fixed Orobas dialogue that named the removed Nigredo and Albedo cards
 - Fixed Masterwork not Exhausting on the play that meets its condition
 - Fixed Golden Touch, Weak Spot, Grudge and Rot affecting other players in Multiplayer

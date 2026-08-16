@@ -1,9 +1,8 @@
 {
-  "ALCHEMIST-FERMENT.description": "此牌每在你的[gold]手牌[/gold]中停留一回合，威力就提高，打出後則重置。過了顛峰之後，它會轉化為[gold]劇毒[/gold]。",
+  "ALCHEMIST-FERMENT.description": "此牌每在你的[gold]手牌[/gold]中停留一回合，威力就提高。打出後會將其轉化為一張[gold]劇毒[/gold]。",
   "ALCHEMIST-FERMENT.title": "醞釀",
-  "ALCHEMIST-INFUSE.description": "為一張牌[gold]附魔[/gold]，直到戰鬥結束。攻擊牌獲得[purple]淬毒[/purple] [blue]1[/blue]（擊中時會施加[gold]中毒[/gold]，並使你中毒）；技能牌獲得[purple]佐劑[/purple] [blue]1[/blue]；能力牌獲得[purple]烈性[/purple] [blue]1[/blue]。其他牌則獲得[gold]虛無[/gold]。",
+  "ALCHEMIST-INFUSE.description": "為一張牌[gold]附魔[/gold]，直到戰鬥結束。攻擊牌會變為[purple]淬毒[/purple]；技能牌會變為[purple]佐劑[/purple]；能力牌會變為[purple]烈性[/purple]。其他牌則獲得[gold]虛無[/gold]。",
   "ALCHEMIST-INFUSE.selectionPrompt": "選擇{Amount:plural:一張牌|[blue]{}[/blue] 張牌}進行[gold]浸潤[/gold]。",
-  "ALCHEMIST-INFUSE.selectionPromptAny": "選擇任意數量的牌進行[gold]浸潤[/gold]。",
   "ALCHEMIST-INFUSE.selectionPromptRange": "最多選擇 [blue]{MaxCount}[/blue] {MaxCount:plural:張牌|張牌}進行[gold]浸潤[/gold]。",
   "ALCHEMIST-INFUSE.title": "浸潤"
 }

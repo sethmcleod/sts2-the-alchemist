@@ -9,7 +9,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class SweatItOut : AlchemistCard
 {
-    protected override int FermentPeak => 2;
+    protected override bool Ferments => true;
 
     public SweatItOut() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {

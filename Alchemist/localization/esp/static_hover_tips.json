@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-BREW.description": "Esta opción del punto de descanso te permite obtener una [gold]poción[/gold] al azar. Hay 3 [gold]pociones[/gold] que solo se consiguen así. También puedes vender [gold]pociones[/gold] al [gold]Comerciante[/gold].",
+  "ALCHEMIST-BREW.description": "Esta opción del punto de descanso prepara una de las [blue]6[/blue] [gold]pociones[/gold] que solo se consiguen así. Las [gold]pociones[/gold] preparadas son las únicas que compra el [gold]Comerciante[/gold].",
   "ALCHEMIST-BREW.title": "Preparar",
   "ALCHEMIST-MASTERWORK.description": "Esta carta brilla en [gold]oro[/gold] si [gold]encantaste[/gold] 3 cartas o más en este combate, incluida la que vas a [gold]infundir[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Obra maestra"

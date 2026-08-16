@@ -1,6 +1,4 @@
-using MegaCrit.Sts2.Core.Commands;
 using System;
-using MegaCrit.Sts2.Core.Helpers;
 using System.Collections.Generic;
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Combat;
@@ -27,13 +25,6 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 
         var room = Math.Max(0, AntitoxinPower.MaxFor(target) - target.GetPowerAmount<AntitoxinPower>());
         if (amount <= room) return false;
-
-        // The cap is a conversion point, not a wall. Fourteen producers feed a 9-point pool, so without
-        // this the second one drafted is usually a dead card. Block, because it expires each turn and so
-        // cannot become a second hoard, and because it covers what Antitoxin does not
-        var spill = (int)(amount - room);
-        if (spill > 0)
-            TaskHelper.RunSafely(CreatureCmd.GainBlock(target, spill, ValueProp.Unpowered, null));
 
         modifiedAmount = room;
         return true;

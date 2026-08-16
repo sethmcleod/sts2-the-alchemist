@@ -56,16 +56,6 @@ public partial class MainFile : Node
             Logger.Error($"Failed to register Alchemist epochs (Timeline feature disabled): {e}");
         }
 
-
-        try
-        {
-            HealthBarForecastRegistry.Register<Powers.SlowBurnForecast>(ModId, "unstable_compound");
-        }
-        catch (System.Exception e)
-        {
-            Logger.Error($"Failed to register health bar forecasts: {e}");
-        }
-
         try
         {
             Badges.PotionSaleCounter.Register();

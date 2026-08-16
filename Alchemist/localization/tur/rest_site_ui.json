@@ -1,4 +1,5 @@
 {
-  "OPTION_BREW.name": "Demle",
-  "OPTION_BREW.description": "Rastgele bir [gold]İksir[/gold] elde et."
+  "OPTION_BREW.description": "[gold]150 Altın[/gold] değerinde özel bir [gold]İksir[/gold] demle.",
+  "OPTION_BREW.description_plural": "Her biri [gold]150 Altın[/gold] değerinde [blue]2[/blue] özel [gold]İksir[/gold] demle.",
+  "OPTION_BREW.name": "Demle"
 }

@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-BREW.description": "Bu Dinlenme Yeri seçeneği rastgele bir [gold]İksir[/gold] elde etmeni sağlar. Sadece bu yolla elde edilebilen 3 [gold]İksir[/gold] vardır. Ayrıca [gold]İksirleri[/gold] [gold]Tüccar[/gold]'a satabilirsin.",
+  "ALCHEMIST-BREW.description": "Bu Dinlenme Yeri seçeneği, yalnızca bu yolla elde edilebilen [blue]6[/blue] [gold]İksir[/gold]'den birini demler. [gold]Tüccar[/gold] sadece demlenmiş [gold]İksirler[/gold]'i satın alır.",
   "ALCHEMIST-BREW.title": "Demle",
   "ALCHEMIST-MASTERWORK.description": "Bu savaşta, [gold]Aşılayacağın[/gold] kart dahil 3 veya daha fazla kart [gold]Büyülediysen[/gold] bu kart [gold]altın[/gold] renkte parlar.",
   "ALCHEMIST-MASTERWORK.title": "Ustalık Eseri"

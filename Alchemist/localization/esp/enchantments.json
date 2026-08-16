@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-DOSED.description": "Al jugar esta carta de habilidad, obtienes [blue]{Amount}[/blue] de [gold]antitoxina[/gold].",
   "ALCHEMIST-DOSED.title": "Dosificación",
-  "ALCHEMIST-LACED.description": "Cada vez que esta carta de ataque inflige daño sin bloquear, aplicas [blue]{Amount}[/blue] de [gold]veneno[/gold] y obtienes [blue]1[/blue] de [gold]veneno[/gold].",
+  "ALCHEMIST-LACED.description": "Esta carta de ataque inflige daño adicional igual a tu [gold]veneno[/gold].",
   "ALCHEMIST-LACED.title": "Adulteración",
   "ALCHEMIST-POTENT.description": "Al jugar esta carta de poder, obtienes [blue]{Amount}[/blue] de [gold]fuerza[/gold].",
   "ALCHEMIST-POTENT.title": "Potenciación"

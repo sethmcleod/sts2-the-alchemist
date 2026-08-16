@@ -1,22 +1,25 @@
-using Alchemist.AlchemistCode.Powers;
-using MegaCrit.Sts2.Core.Commands;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class SlowBurn : AlchemistCard
 {
-    public SlowBurn() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+    protected override bool Ferments => true;
+
+    public SlowBurn() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithVar("Dmg", 14, 4);
+        WithCalculatedDamage(5, static (card, _) =>
+                (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,
+            ValueProp.Move, 0, 0);
+        WithKeyword(CardKeyword.Retain);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (play.Target == null) return;
-        // A second play on the same enemy adds to the pending amount; the timer does not reset
-        await PowerCmd.Apply<SlowBurnPower>(choiceContext, play.Target,
-            DynamicVars["Dmg"].IntValue, Owner.Creature, this);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_fire"),
+            sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
     }
 }

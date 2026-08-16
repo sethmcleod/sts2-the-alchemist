@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-BREW.description": "Questa opzione dei luoghi di riposo ti permette di ricevere una [gold]pozione[/gold] casuale. Esistono 3 [gold]pozioni[/gold] ottenibili solo in questo modo. Puoi anche vendere le [gold]pozioni[/gold] al [gold]mercante[/gold].",
+  "ALCHEMIST-BREW.description": "Questa opzione dei luoghi di riposo prepara una delle [blue]6[/blue] [gold]pozioni[/gold] ottenibili solo in questo modo. Le [gold]pozioni[/gold] preparate sono le uniche che il [gold]mercante[/gold] acquista.",
   "ALCHEMIST-BREW.title": "Prepara",
   "ALCHEMIST-MASTERWORK.description": "Questa carta brilla d'[gold]oro[/gold] se hai [gold]incantato[/gold] 3 o più carte in questo combattimento, inclusa quella che stai per [gold]infondere[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Capolavoro"

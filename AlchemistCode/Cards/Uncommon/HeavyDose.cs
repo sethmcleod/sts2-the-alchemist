@@ -1,17 +1,16 @@
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+// No rider on purpose. Nine attacks already carry an "apply Poison" clause, and the pool had no card
+// whose whole identity is the biggest single hit. Bludgeon is the vanilla precedent at this slot
 public class HeavyDose : AlchemistCard
 {
     public HeavyDose() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(20, 6);
-        WithPower<PoisonPower>(4, 1);
+        WithDamage(26, 6);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -19,9 +18,5 @@ public class HeavyDose : AlchemistCard
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"),
             sfx: "event:/sfx/characters/attack_fire")
             .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay).Execute(choiceContext);
-        if (play.Target == null) return;
-        PoisonSplash(play.Target);
-        await PowerCmd.Apply<PoisonPower>(choiceContext, play.Target, DynamicVars.Poison.BaseValue,
-            Owner.Creature, this);
     }
 }

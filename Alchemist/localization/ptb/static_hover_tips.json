@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-BREW.description": "Esta opção de Local de Descanso permite receber uma [gold]Poção[/gold] aleatória. Existem 3 [gold]Poções[/gold] que só podem ser obtidas desta forma. Você também pode vender [gold]Poções[/gold] ao [gold]Mercador[/gold].",
+  "ALCHEMIST-BREW.description": "Esta opção de Local de Descanso prepara uma das [blue]6[/blue] [gold]Poções[/gold] que só podem ser obtidas desta forma. [gold]Poções[/gold] preparadas são as únicas que o [gold]Mercador[/gold] compra.",
   "ALCHEMIST-BREW.title": "Preparar",
   "ALCHEMIST-MASTERWORK.description": "Esta carta brilha em [gold]dourado[/gold] se você tiver [gold]Encantado[/gold] 3 ou mais cartas neste combate, incluindo a que você [gold]Infundiria[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Obra-Prima"

@@ -1,14 +1,20 @@
 {
   "ALCHEMIST-ALKAHEST.description": "戦闘中に使用した場合、[gold]手札[/gold]のカード[blue]3[/blue]枚までに[gold]注入[/gold]する。それ以外の場合、[gold]デッキ[/gold]のカードを1枚アップグレードする。",
   "ALCHEMIST-ALKAHEST.title": "アルカヘスト",
+  "ALCHEMIST-ANODYNE.description": "次にブロックされなかった攻撃ダメージを受ける時、それを無効化する。無効化したダメージ[blue]4[/blue]ごとに、[gold]毒[/gold][blue]1[/blue]を得る。",
+  "ALCHEMIST-ANODYNE.title": "鎮痛薬",
+  "ALCHEMIST-DECOCTION.description": "カードを[blue]3[/blue]枚引く。このターン、それらのコストは0{energyPrefix:energyIcons(1)}。",
+  "ALCHEMIST-DECOCTION.title": "煎じ薬",
   "ALCHEMIST-GOLD_LEAF.description": "所持している[gold]ゴールド[/gold][blue]15[/blue]ごとに、HPを[green]1[/green]回復し、[blue]1[/blue][gold]ブロック[/gold]を得る。{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "金箔",
   "ALCHEMIST-MARSH_TONIC.description": "[gold]抗毒素[/gold][blue]6[/blue]を得る。",
   "ALCHEMIST-MARSH_TONIC.title": "沼の強壮薬",
-  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "このターンの後、追加のターンを得る。",
+  "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "敵1体の[gold]毒[/gold]を[blue]3[/blue]回発動させる。",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "水銀の一服",
   "ALCHEMIST-REFINED_EXTRACT.description": "[gold]蒸留液[/gold]を[blue]2[/blue]枚[gold]手札[/gold]に加える。",
   "ALCHEMIST-REFINED_EXTRACT.title": "精製抽出液",
-  "ALCHEMIST-SOPORIFIC.description": "敵1体を[gold]スタン[/gold]させる。",
-  "ALCHEMIST-SOPORIFIC.title": "催眠薬"
+  "ALCHEMIST-SAMPLER.description": "このポーションを含め、所持している[gold]ポーション[/gold]1つにつき、{energyPrefix:energyIcons(1)}を得てカードを[blue]1[/blue]枚引く。",
+  "ALCHEMIST-SAMPLER.title": "試飲セット",
+  "ALCHEMIST-SOLVENT.description": "敵の[gold]ブロック[/gold]をすべて取り除く。その敵に[gold]脱力[/gold][blue]3[/blue]を付与する。",
+  "ALCHEMIST-SOLVENT.title": "溶解液"
 }

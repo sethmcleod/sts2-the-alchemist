@@ -1,4 +1,5 @@
 {
-  "OPTION_BREW.name": "酿造",
-  "OPTION_BREW.description": "获得一瓶随机[gold]药水[/gold]。"
+  "OPTION_BREW.description": "酿造一瓶价值[gold]150金币[/gold]的特殊[gold]药水[/gold]。",
+  "OPTION_BREW.description_plural": "酿造[blue]2[/blue]瓶各价值[gold]150金币[/gold]的特殊[gold]药水[/gold]。",
+  "OPTION_BREW.name": "酿造"
 }

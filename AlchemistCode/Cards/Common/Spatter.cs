@@ -1,34 +1,30 @@
+using System.Linq;
 using Alchemist.AlchemistCode.Compat;
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Spatter : AlchemistCard
 {
-    public Spatter() : base(1, CardType.Attack, CardRarity.Common, TargetType.RandomEnemy)
+    public Spatter() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(2, 1);
-        WithVar("hits", 4, 0);
+        WithDamage(8, 3);
+        WithVar("Splash", 3, 2);
     }
 
-    // No Poison of its own: Laced is what puts Poison on this, once per hit, and a per-hit apply here
-    // would also trigger Harden four times. Four small hits rather than Sword Boomerang's three
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (CombatState == null) return;
-        for (var i = 0; i < DynamicVars["hits"].IntValue; i++)
-        {
-            var enemy = Owner.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
-            if (enemy == null) break;
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this, play)
-                .WithHitFx(HitVfx("vfx/vfx_attack_slash"), null, "dagger_throw.mp3")
-                .Targeting(enemy)
-                .Execute(choiceContext);
-        }
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_slash"),
+            sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
+        if (CombatState == null || play.Target == null) return;
+
+        // Unpowered, the way Pass It On and White Heat deal their secondary damage, so the splash is
+        // exactly the number on the card rather than a second helping of Strength
+        var splash = DynamicVars["Splash"].IntValue;
+        foreach (var enemy in CombatState.HittableEnemies.Where(e => e != play.Target && e.IsAlive).ToList())
+            await GameCompat.Damage(choiceContext, enemy, splash, ValueProp.Unpowered, Owner.Creature, this, null);
     }
 }

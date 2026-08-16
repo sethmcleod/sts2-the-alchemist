@@ -1,9 +1,8 @@
 {
-  "ALCHEMIST-FERMENT.description": "This card increases in power for each turn in your [gold]Hand[/gold], and resets when you play it. Past its peak, it transforms into [gold]Toxic[/gold].",
+  "ALCHEMIST-FERMENT.description": "This card increases in power for each turn in your [gold]Hand[/gold]. Playing it transforms it into a [gold]Toxic[/gold].",
   "ALCHEMIST-FERMENT.title": "Ferment",
-  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks gain [blue]1[/blue] [purple]Laced[/purple] (they apply [gold]Poison[/gold] on hit, and poison you); Skills gain [blue]1[/blue] [purple]Dosed[/purple]; Powers gain [blue]1[/blue] [purple]Potent[/purple]. Other cards gain [gold]Ethereal[/gold].",
+  "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks become [purple]Laced[/purple]; Skills become [purple]Dosed[/purple]; Powers become [purple]Potent[/purple]. Other cards gain [gold]Ethereal[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Infuse[/gold].",
-  "ALCHEMIST-INFUSE.selectionPromptAny": "Choose any number of cards to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Choose up to [blue]{MaxCount}[/blue] {MaxCount:plural:card|cards} to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.title": "Infuse"
 }

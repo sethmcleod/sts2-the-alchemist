@@ -1,9 +1,8 @@
 {
-  "ALCHEMIST-FERMENT.description": "Esta carta aumenta su poder por cada turno que pase en tu [gold]Mano[/gold], y se reinicia cuando la juegas. Pasado su punto óptimo, se transforma en [gold]Toxina[/gold].",
+  "ALCHEMIST-FERMENT.description": "Esta carta aumenta su poder por cada turno que pase en tu [gold]Mano[/gold]. Al jugarla, se transforma en una [gold]Toxina[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentar",
-  "ALCHEMIST-INFUSE.description": "[gold]Encanta[/gold] una carta hasta el final del combate. Los Ataques ganan [blue]1[/blue] de [purple]Ponzoña[/purple] (aplican [gold]Veneno[/gold] al golpear, y te envenenan); las Habilidades ganan [blue]1[/blue] de [purple]Dosis[/purple]; los Poderes ganan [blue]1[/blue] de [purple]Potencia[/purple]. Las demás cartas se vuelven [gold]Etéreas[/gold].",
+  "ALCHEMIST-INFUSE.description": "[gold]Encanta[/gold] una carta hasta el final del combate. Los Ataques ganan [purple]Ponzoña[/purple]; las Habilidades, [purple]Dosis[/purple]; los Poderes, [purple]Potencia[/purple]. Las demás cartas se vuelven [gold]Etéreas[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Elige {Amount:plural:una carta|[blue]{}[/blue] cartas} que [gold]Infundir[/gold].",
-  "ALCHEMIST-INFUSE.selectionPromptAny": "Elige cualquier número de cartas que [gold]Infundir[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Elige hasta [blue]{MaxCount}[/blue] {MaxCount:plural:carta|cartas} que [gold]Infundir[/gold].",
   "ALCHEMIST-INFUSE.title": "Infundir"
 }

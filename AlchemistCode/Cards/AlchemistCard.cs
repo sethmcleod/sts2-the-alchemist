@@ -63,17 +63,11 @@ public abstract class AlchemistCard : ConstructedCardModel
     // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state
     internal bool IsEnchanted => Enchantment != null;
 
-    // Drives two gold glows: the card in hand once it is Enchanted, and the card in an Infuse selection
-    internal virtual bool GainsEffectWhenEnchanted => false;
-
     protected virtual bool ConditionalGlow => false;
 
     // The IsMutable gate makes every glow safe on canonical models, where reading Owner throws. No card
     // needs its own guard
-    protected override bool ShouldGlowGoldInternal =>
-        IsMutable && AlchemistModConfig.ShowHandGlows
-        && ((GainsEffectWhenEnchanted && IsEnchanted)
-            || ConditionalGlow);
+    protected override bool ShouldGlowGoldInternal => IsMutable && ConditionalGlow;
 
     internal bool HpFractionInRange(double lower, double upper)
     {
@@ -101,17 +95,6 @@ public abstract class AlchemistCard : ConstructedCardModel
         if (target == null) return;
         var vfx = NPoisonImpactVfx.Create(target);
         if (vfx != null) NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(vfx);
-    }
-
-    // A formula-damage card has no DamageVar, and only DamageVar runs the enchantment damage hooks. Apply
-    // them by hand, in the order DamageVar uses
-    internal int ApplyEnchantDamage(int damage)
-    {
-        if (Enchantment is not { } enchantment) return damage;
-        decimal value = damage;
-        value += enchantment.EnchantDamageAdditive(value, ValueProp.Move);
-        value *= enchantment.EnchantDamageMultiplicative(value, ValueProp.Move);
-        return (int)value;
     }
 
     // The raw total, before any hook. The card face shows the hooked total with {FormulaDamage}
@@ -142,15 +125,18 @@ public abstract class AlchemistCard : ConstructedCardModel
 
     private int _fermentTurns;
 
-    // Turns in hand before the card spoils, tuned per card because the six grow at very different rates.
-    // 0 means the card does not Ferment, so a Ferment card cannot exist without declaring its peak
-    protected virtual int FermentPeak => 0;
+    protected virtual bool Ferments => false;
 
-    protected bool IsFermentCard => FermentPeak > 0;
+    protected bool IsFermentCard => Ferments;
 
     internal bool IsFermentInline => IsFermentCard;
 
     internal int FermentTurns => _fermentTurns;
+
+    internal void AdvanceFerment(int turns)
+    {
+        if (IsFermentCard) _fermentTurns += turns;
+    }
 
     /// <summary>The base game reserves this for roughly 12 damage and up.</summary>
     /// <summary>Set false to keep a card snappy, as the base game does for its Defends.</summary>
@@ -174,27 +160,25 @@ public abstract class AlchemistCard : ConstructedCardModel
         return Task.CompletedTask;
     }
 
-    // AFTER the turn end, deliberately. CombatManager.DoTurnEnd snapshots which cards have a turn-end
-    // effect before firing any of them, so a Toxic created here misses that snapshot and does not bite
-    // until the END of the next turn. That leaves one turn to either exhaust it for 1 energy or eat the 5
-    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
-        IEnumerable<Creature> participants)
-    {
-        if (!IsFermentCard || _fermentTurns <= FermentPeak) return;
-        if (Owner == null || !participants.Contains(Owner.Creature)) return;
-        if (CombatState is not { } combat) return;
-        if (!PileType.Hand.GetPile(Owner).Cards.Contains(this)) return;
+    // Leaves combat the way a Power does. Transforming it here instead would strand the replacement:
+    // the engine's move out of the Play pile is guarded on THIS card still being in it
+    protected override CardLocation GetResultLocationForCardPlay() =>
+        IsFermentCard
+            ? new CardLocation(Owner, PileType.None, CardPilePosition.Bottom)
+            : base.GetResultLocationForCardPlay();
 
-        await CardCmd.Transform(this, combat.CreateCard<MegaCrit.Sts2.Core.Models.Cards.Toxic>(Owner));
-    }
-
-    // Playing the card spends its fermentation. This fires after OnPlay has already read the count, so
-    // the play still gets full value. Without it a card played at peak would return from the discard pile
-    // still ripe, making every later draw a one-turn fuse instead of a fresh ramp
-    public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    // The dregs land in the Discard rather than the Hand, so they cannot bite on the turn you cash in
+    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card == this) _fermentTurns = 0;
-        return Task.CompletedTask;
+        if (cardPlay.Card != this) return;
+        _fermentTurns = 0;
+        if (!IsFermentCard || Owner == null || CombatState is not { } combat) return;
+
+        // Previewed, because the card leaving play and a Toxic appearing in the Discard are two
+        // separate events the player never sees happen
+        var toxic = combat.CreateCard<MegaCrit.Sts2.Core.Models.Cards.Toxic>(Owner);
+        var added = await CardPileCmd.Add(toxic, PileType.Discard, CardPilePosition.Bottom);
+        CardCmd.PreviewCardPileAdd([added]);
     }
 
     // Covers the cards that were never played. Deck cards are the same instances each combat and all of
@@ -210,9 +194,7 @@ public abstract class AlchemistCard : ConstructedCardModel
         base.AddExtraArgsToDescription(description);
         if (IsFermentCard)
         {
-            // Always shown, even at 0 and in the compendium: the peak is now a stat of the card, and it
-            // is what makes the spoil deadline legible without spending a line of card text on it
-            description.Add("FermentSuffix", $" ({_fermentTurns}/{FermentPeak})");
+            description.Add("FermentSuffix", $" ({_fermentTurns})");
             description.Add("FermentTotal", FermentTotalText);
         }
         // These previews read Owner, which throws on a canonical model such as the card library

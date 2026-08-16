@@ -33,8 +33,21 @@ public static class EpochPatches
         typeof(ProgressSaveManager).GetMethod(name, InstNonPublic)
         ?? throw new InvalidOperationException($"[Alchemist] ProgressSaveManager.{name} not found; base game changed.");
 
-    private static void AwardMidRun(ProgressSaveManager mgr, EpochModel epoch, Player player) =>
+    // Alchemist1 is the parent of every other Alchemist epoch (see Alchemist1Epoch.GetTimelineExpansion),
+    // but it is only awarded post-run while Alchemist2..6 are awarded mid-run. A run that ends without the
+    // post-run pass, such as leaving a multiplayer game part way through, leaves a child obtained under an
+    // unobtained parent. The Timeline lays its slots out by walking down from NeowEpoch, so that child can
+    // never be placed, and therefore never revealed, and GetDiscoveredEpochCount never returns to zero.
+    // NMainMenu disables Singleplayer, Multiplayer and Compendium while that count is above zero and no run
+    // save exists, so the player is locked in the Timeline for good. Obtaining the parent first keeps the
+    // chain whole, so every epoch we award can actually be revealed
+    private static void AwardMidRun(ProgressSaveManager mgr, EpochModel epoch, Player player)
+    {
+        var root = EpochModel.Get<Alchemist1Epoch>();
+        if (epoch.Id != root.Id && !mgr.Progress.IsEpochObtained(root.Id))
+            MidRun.Invoke(mgr, new object[] { root, player });
         MidRun.Invoke(mgr, new object[] { epoch, player });
+    }
 
     private static void AwardPostRun(ProgressSaveManager mgr, EpochModel epoch, SerializablePlayer sp, SerializableRun sr) =>
         PostRun.Invoke(mgr, new object[] { epoch, sp, sr });
@@ -114,6 +127,12 @@ public static class EpochPatches
     private static void RevealObtainedAlchemistEpochs(ProgressSaveManager __instance, ref IEnumerable<SerializableEpoch> __result)
     {
         if (!Enabled) return;
+
+        // Never report an epoch as revealable while its parent is not obtained. The Timeline could not
+        // place it, so counting it here would keep GetDiscoveredEpochCount above zero for good and lock
+        // the main menu. AwardMidRun keeps the parent ahead of the child; this is the backstop
+        if (!__instance.Progress.IsEpochObtained(EpochModel.GetId<Alchemist1Epoch>())) return;
+
         var list = __result.ToList();
         var seen = new HashSet<string>(list.Select(e => e.Id));
         var added = false;

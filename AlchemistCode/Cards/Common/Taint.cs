@@ -10,7 +10,7 @@ public class Taint : AlchemistCard
 {
     public Taint() : base(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithPower<PoisonPower>(3, 2);
+        WithPower<PoisonPower>(4, 2);
         WithVar("SelfPoison", 1, 0);
     }
 

@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-BREW.description": "Esta opción del Lugar de descanso te permite conseguir una [gold]Poción[/gold] aleatoria. Hay 3 [gold]Pociones[/gold] que solo pueden obtenerse de esta forma. También puedes vender [gold]Pociones[/gold] al [gold]Comerciante[/gold].",
+  "ALCHEMIST-BREW.description": "Esta opción del Lugar de descanso elabora una de las [blue]6[/blue] [gold]Pociones[/gold] que solo pueden obtenerse de esta forma. Las [gold]Pociones[/gold] elaboradas son las únicas que el [gold]Comerciante[/gold] compra.",
   "ALCHEMIST-BREW.title": "Elaborar",
   "ALCHEMIST-MASTERWORK.description": "Esta carta brilla en [gold]dorado[/gold] si has [gold]Encantado[/gold] 3 o más cartas este combate, incluida la que vayas a [gold]Infundir[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Obra maestra"
