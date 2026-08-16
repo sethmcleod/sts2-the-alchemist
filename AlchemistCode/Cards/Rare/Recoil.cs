@@ -37,7 +37,7 @@ public class Recoil : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        var damage = ApplyEnchantDamage(Owner.Creature.Block);
+        var damage = Owner.Creature.Block;
         if (damage <= 0) return;
         await DamageCmd.Attack(damage).FromCard(this, play)
             .WithHitFx(HitVfx("vfx/vfx_heavy_blunt"), null, "heavy_attack.mp3")

@@ -10,7 +10,7 @@ public class Siphon : AlchemistCard
 {
     public Siphon() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(6, 2);
+        WithDamage(7, 3);
         WithCards(1, 0);
         WithTips(_ => Infusion.InfuseTips());
     }

@@ -10,8 +10,8 @@ public class Jab : AlchemistCard
 {
     public Jab() : base(0, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
     {
-        WithDamage(3, 0);
-        WithPower<PoisonPower>(2, 1);
+        WithDamage(3, 3);
+        WithPower<PoisonPower>(2, 0);
         WithVar("SelfPoison", 1, 0);
     }
 

@@ -10,10 +10,9 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 public class Tolerance : AlchemistCard
 {
-    public Tolerance() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public Tolerance() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithVar("Capacity", 3, 3);
-        WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));
     }

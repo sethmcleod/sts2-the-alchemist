@@ -13,18 +13,16 @@ public class Vitrify : AlchemistCard
 
     public Vitrify() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(4, 1);
-        WithVar("antitoxin", 3, 1);
+        WithBlock(3, 1);
+        WithVar("antitoxin", 2, 1);
         WithTip(typeof(AntitoxinPower));
     }
-
-    internal override bool GainsEffectWhenEnchanted => true;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
         await CommonActions.CardBlock(this, play);
-        if (IsEnchanted)
-            await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
+            DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
     }
 }

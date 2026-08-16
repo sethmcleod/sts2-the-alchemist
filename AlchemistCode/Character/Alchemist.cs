@@ -29,8 +29,8 @@ public partial class Alchemist : PlaceholderCharacterModel
     public override float AttackAnimDelay => 0.35f;
     public override float CastAnimDelay => 0.4f;
     public override CharacterGender Gender => CharacterGender.Neutral;
-    public override int StartingHp => 69;
-    public override int StartingGold => 75;
+    public override int StartingHp => 75;
+    public override int StartingGold => 99;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [

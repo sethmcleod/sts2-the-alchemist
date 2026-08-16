@@ -1,4 +1,5 @@
 {
-  "OPTION_BREW.name": "Brew",
-  "OPTION_BREW.description": "Procure a random [gold]Potion[/gold]."
+  "OPTION_BREW.description": "Brew a special [gold]Potion[/gold] worth [gold]150g[/gold].",
+  "OPTION_BREW.description_plural": "Brew [blue]2[/blue] special [gold]Potions[/gold] worth [gold]150g[/gold] each.",
+  "OPTION_BREW.name": "Brew"
 }

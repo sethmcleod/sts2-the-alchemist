@@ -32,22 +32,7 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigHoverTip]
     public static bool KeepPoolsSeparate { get; set; } = true;
 
-    [ConfigSection("Economy")]
-    [ConfigHoverTip]
-    public static bool UniversalPotionSelling { get; set; }
 
-    [ConfigSection("Accessibility")]
-    [ConfigHoverTip]
-    public static bool ShowHandGlows { get; set; } = true;
-
-    [ConfigSection("Accessibility")]
-    [ConfigHoverTip]
-    public static bool ShowDamageForecasts { get; set; } = true;
-
-    [ConfigSection("Accessibility")]
-    [ConfigHoverTip]
-    [ConfigColorPicker(EditAlpha = false)]
-    public static Color ForecastColor { get; set; } = new("B15CD1");
 
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]

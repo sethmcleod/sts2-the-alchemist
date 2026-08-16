@@ -77,11 +77,13 @@ public static class PotionSellPatches
     private static bool SellingEnabledFor(Player? owner)
     {
         if (owner == null) return false;
-        return AlchemistModConfig.UniversalPotionSelling
-            || owner.GetRelic<WeatheredKit>() != null || owner.GetRelic<GildedKit>() != null;
+        return owner.GetRelic<WeatheredKit>() != null || owner.GetRelic<GildedKit>() != null;
     }
 
-    private static bool IsSellable(PotionModel potion) => SellingEnabledFor(potion.Owner);
+    // Only what the Alchemist brewed himself has resale value, which is what makes Brew a gold engine
+    // as well as a potion source. Foul stays sellable because throwing it at the merchant already pays
+    private static bool IsSellable(PotionModel potion) =>
+        SellingEnabledFor(potion.Owner) && potion is IBrewOnly or FoulPotion;
 
     // A Foul potion is sellable too: throwing it at the merchant already grants Gold, so a Sell button is the
     // same payout without the throw animation. Its Use button already reads "Throw". The Sell button only
@@ -143,7 +145,7 @@ public static class PotionSellPatches
         }
     }
 
-    private const int SellPercent = 50;
+    private const int SellPercent = 100;
 
     private static int GetGoldFor(PotionModel potion)
     {
@@ -396,13 +398,18 @@ public static class PotionSellPatches
             var player = players != null ? LocalContext.GetMe(players) : null;
             if (player == null) return;
             if (player.GetRelic<WeatheredKit>() == null && player.GetRelic<GildedKit>() == null) return;
-            if (!player.Potions.Any()) return;
+            if (!player.Potions.Any(IsSellable)) return;
 
+            // One potion gets a singular line. The rotation opens with "those potions", which reads
+            // wrong when the belt holds exactly one
+            var single = player.Potions.Count(IsSellable) == 1;
             var index = _greetingIndex;
             var timer = __instance.GetTree().CreateTimer(0.75);
             timer.Connect(SceneTreeTimer.SignalName.Timeout, Callable.From(() =>
             {
-                var greeting = new LocString("gameplay_ui", $"POTION_SELL.merchant_greeting_{index}");
+                var greeting = new LocString("gameplay_ui", single
+                    ? "POTION_SELL.merchant_greeting_single"
+                    : $"POTION_SELL.merchant_greeting_{index}");
                 __instance.MerchantButton?.PlayDialogue(greeting, 3.0);
                 HighlightSellablePotions();
             }));

@@ -18,13 +18,11 @@ public class DeepCut : AlchemistCard
         WithTip(typeof(VulnerablePower));
     }
 
-    internal override bool GainsEffectWhenEnchanted => true;
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
         await CardPileCmd.Draw(choiceContext, DynamicVars["Cards"].IntValue, Owner);
-        if (IsEnchanted && play.Target is { IsAlive: true })
+        if (play.Target is { IsAlive: true })
         {
             await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target,
                 DynamicVars["Debuff"].IntValue, Owner.Creature, this);

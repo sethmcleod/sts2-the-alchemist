@@ -7,22 +7,45 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added Anodyne potion: "The next time you would take unblocked attack damage, prevent it. Gain 1 Poison for every 4 damage prevented."
+- Added Decoction potion: "Draw 3 cards. They cost 0 this turn."
+- Added Sampler potion: "Gain 1 Energy and draw 1 card for each Potion you have, including this one."
+- Added Solvent potion: "Remove all Block from the enemy. Apply 3 Weak to it."
+
 ### Changed
 
-- Changed Antitoxin: absorbing a whole tick of Poison damage now cures that Poison instead of only preventing the damage
-- Increased the Antitoxin limit: 9 -> 12
-- Buffed Weathered Kit relic: Antitoxin at the start of combat increased from 3 -> 4
-- Buffed Gilded Kit relic: Antitoxin at the start of combat increased from 6 -> 8
+- Added, removed, reworked and renamed many cards to be more focused and balanced
+- Buffed Gilded Kit relic: Antitoxin at the start of combat 6 -> 8, and Brew now gives 2 Potions
+- Buffed Weathered Kit relic: Antitoxin at the start of combat 3 -> 4
+- Changed Antitoxin limit: 9 -> 12
+- Changed Antitoxin: it no longer becomes Block once you are at the limit
+- Changed Antitoxin: it now cures 1 Poison for each point of damage it absorbs, instead of only preventing the damage
+- Changed Brew: it now offers only the 6 Potions that can be obtained no other way
+- Changed Dosed enchantment: Antitoxin 1 -> 2
+- Changed Ferment: it no longer has a peak and no longer spoils. A Ferment card now becomes a Toxic in your Discard Pile when you play it
+- Changed Infuse: enchantments no longer stack, matching every other enchantment in the game
+- Changed Laced enchantment: "This Attack deals additional damage equal to your Poison." It no longer applies Poison to you
 - Changed Potion sale prices: a shop discount such as Membership Card or The Courier no longer lowers what the Merchant pays you
+- Changed Potion selling: only brewed Potions can be sold, and they now sell for their full value
+- Changed starting Gold: 75 -> 99
+- Changed starting HP: 69 -> 75
+- Reworked Quicksilver Draught potion: "Trigger Poison on an enemy once for each Poison it has."
+- Reworked Snake Tail relic: "Your Antitoxin limit is increased by 6." It no longer revives you
 
 ### Removed
 
-- Removed the Potion Sell Price and Brew-Only Potion Chance settings
+- Removed Damage Forecast setting from mod config
+- Removed Soporific potion, replaced by Anodyne
+- Removed the Potion Sell Price and Brew-Only Chance settings. Both are now fixed values so that future tuning reaches every player
 
 ### Fixed
 
-- Fixed Eureka asking for its cards one at a time, which let you transform the same card twice instead of two different ones
-- Fixed the Grudge and Rot power descriptions still describing the effects those cards had before they were reworked
+- Fixed being locked out of the main menu after unlocking an Alchemist epoch in a run that did not finish, such as leaving a Multiplayer game part way through
+- Fixed Second Skin relic paying nothing when Antitoxin absorbed the whole tick of Poison damage, which did not match its description or how Callus and Contagion behave
+- Fixed several Power descriptions understating their own values
+- Fixed the Infuse card picker offering cards it could not Enchant
 
 ## [0.8.0] - 2026-08-14
 

@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Alchemist.AlchemistCode.Cards;
-using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Enchantments;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
@@ -47,7 +46,7 @@ public static class Infusion
     // The tips and the enchant share these, and FromEnchantment defaults to 1, so a tip that does not
     // pass one goes stale in silence
     private const int LacedAmount = 1;
-    private const int DosedAmount = 1;
+    private const int DosedAmount = 2;
     private const int PotentAmount = 1;
 
     // Take(1) keeps each enchantment's own tip and drops its extras, which is where Dosed explains
@@ -73,13 +72,10 @@ public static class Infusion
         // Laced keys on IsPoweredAttack, so an Unpowered attacker would take a visible Laced icon
         // and a promise of Poison that never fires
         if (card is AlchemistCard { DealsUnpoweredDamage: true }) return false;
-        if (EnchantTypeFor(card) is not { } type) return false;
-        return card.Enchantment == null || card.Enchantment.GetType() == type;
+        if (EnchantTypeFor(card) is null) return false;
+        // Enchantments do not stack, matching every base-game one, so an enchanted card is not a target
+        return card.Enchantment == null;
     }
-
-    // Marks the best Infuse targets. Hand only, because CardSelectorPrefs.ShouldGlowGold applies to the hand
-    private static bool ShouldGlowInfuse(CardModel card) =>
-        AlchemistModConfig.ShowHandGlows && card is AlchemistCard { GainsEffectWhenEnchanted: true } && CanInfuse(card);
 
     // A fixed-count selection resolves with no screen when no more cards match than the count. The caller
     // then previews the result, as the base game does for an Armaments upgrade that auto-resolves
@@ -101,7 +97,7 @@ public static class Infusion
             : min == max ? SelectPrompt
             : SelectPromptRange;
         var autoResolved = HandSelectIsAutomatic(owner, CanInfuse, min, max);
-        var prefs = new CardSelectorPrefs(prompt, min, max) { ShouldGlowGold = ShouldGlowInfuse };
+        var prefs = new CardSelectorPrefs(prompt, min, max);
         var picks = (await CardSelectCmd.FromHand(ctx, owner, prefs, CanInfuse, source)).ToList();
         foreach (var card in picks)
             Infuse(card);
@@ -117,7 +113,7 @@ public static class Infusion
             : min == max ? SelectPrompt
             : SelectPromptRange;
         var autoResolved = pile == PileType.Hand && HandSelectIsAutomatic(source.Owner, CanInfuse, min, max);
-        var prefs = new CardSelectorPrefs(prompt, min, max) { ShouldGlowGold = ShouldGlowInfuse };
+        var prefs = new CardSelectorPrefs(prompt, min, max);
         var picks = (pile == PileType.Hand
             ? await CardSelectCmd.FromHand(ctx, source.Owner, prefs, CanInfuse, source)
             : await CardSelectCmd.FromCombatPile(ctx, pile.GetPile(source.Owner), source.Owner, prefs, CanInfuse))

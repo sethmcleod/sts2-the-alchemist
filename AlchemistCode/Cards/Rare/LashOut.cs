@@ -13,7 +13,7 @@ public class LashOut : AlchemistCard
 
     public LashOut() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        WithDamage(5, 2);
+        WithDamage(3, 2);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
