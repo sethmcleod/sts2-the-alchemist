@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Slow Burn sticking in the middle of the screen when played, which also stopped it dealing its damage or leaving your Hand
+
 ## [0.9.0] - 2026-08-16
 
 ### Added

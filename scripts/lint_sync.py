@@ -33,6 +33,7 @@ Run it with `scripts/dev.sh lint`.
 """
 
 import csv
+import os
 import re
 import subprocess
 import sys
@@ -175,6 +176,34 @@ def check_asset_literals() -> list[str]:
                 rel = path.relative_to(REPO)
                 errors.append(f"{rel}: names the asset '{ref}', which is not on disk")
     return errors
+
+
+def check_game_scene_paths() -> tuple[list[str], list[str]]:
+    """Every "vfx/..." the mod names must be a scene the game actually ships.
+
+    check_asset_literals only matches strings that carry a file extension, so an extensionless
+    game scene path slips past it. A path the game cannot resolve makes VfxCmd.PlayVfx throw
+    inside the attack command, which kills PlayCardAction: the card sticks in the middle of the
+    screen, deals no damage and never leaves play. That is how Slow Burn shipped naming
+    vfx/vfx_attack_fire, which does not exist. Skipped when the game is not installed, so CI,
+    which has no game, still passes
+    """
+    game_dir = os.environ.get("STS2_GAME_DIR")
+    if not game_dir:
+        return [], ["game scene paths: STS2_GAME_DIR is not set, skipping the vfx check"]
+    pcks = list(Path(game_dir).rglob("Slay the Spire 2.pck"))
+    if not pcks:
+        return [], ["game scene paths: no game pck found, skipping the vfx check"]
+
+    refs = set()
+    for path in sorted(CODE.rglob("*.cs")):
+        refs.update(re.findall(r'"(vfx/[a-z0-9_/]+)"', path.read_text()))
+    if not refs:
+        return [], []
+
+    blob = pcks[0].read_bytes()
+    missing = [r for r in sorted(refs) if (r + ".tscn").encode() not in blob]
+    return [f"the game ships no scene for '{r}', which the mod names" for r in missing], []
 
 
 def check_fallback_art() -> tuple[list[str], list[str]]:
@@ -337,6 +366,10 @@ def main() -> int:
 
     # 6. every Compat/ file is the copy for the branch you are on
     errors += check_compat_branch()
+
+    scene_errors, scene_warnings = check_game_scene_paths()
+    errors += scene_errors
+    warnings += scene_warnings
 
     for w in warnings:
         print(f"\033[33mwarn\033[0m  {w}")
