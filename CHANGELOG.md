@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.9.4] - 2026-08-16
+
 ### Fixed
 
 - Fixed placeholder icons for Fester, Grudge, Heavy Hand, Share The Pain, Toxin Skin and Winnow powers
