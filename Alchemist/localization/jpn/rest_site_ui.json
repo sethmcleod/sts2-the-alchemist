@@ -1,5 +1,5 @@
 {
-  "OPTION_BREW.description": "[gold]150ゴールド[/gold]相当の特別な[gold]ポーション[/gold]を1つ調合する。",
-  "OPTION_BREW.description_plural": "それぞれ[gold]150ゴールド[/gold]相当の特別な[gold]ポーション[/gold]を[blue]2[/blue]つ調合する。",
+  "OPTION_BREW.description": "[gold]商人[/gold]に売却すると[gold]150ゴールド[/gold]になる特別な[gold]ポーション[/gold]を1つ調合する。",
+  "OPTION_BREW.description_plural": "[gold]商人[/gold]に売却するとそれぞれ[gold]150ゴールド[/gold]になる特別な[gold]ポーション[/gold]を[blue]2[/blue]つ調合する。",
   "OPTION_BREW.name": "調合"
 }
