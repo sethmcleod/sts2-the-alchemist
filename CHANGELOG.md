@@ -7,7 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Fixed
+
 - Fixed placeholder icons for Fester, Grudge, Heavy Hand, Share The Pain, Toxin Skin and Winnow powers
+- Fixed Sampler not counting itself, so it gave 1 less Energy and drew 1 less card than it promised
 
 ## [0.9.3] - 2026-08-16
 
