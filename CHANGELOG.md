@@ -12,6 +12,7 @@ mod).
 - Added Percolate card: "Add 2 (3) Distillates into your Hand. Exhaust."
 - Added Quench card: "Gain 3 (4) Antitoxin. Gain 4 (6) Block, plus 2 Block for each Antitoxin you have."
 - Added Sublimate card: "At the start of your turn, deal damage equal to your Antitoxin to the enemy with the most HP."
+- Added vfx for Marsh Tonic potion
 
 ### Changed
 
