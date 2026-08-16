@@ -1,5 +1,5 @@
 {
-  "OPTION_BREW.description": "Prepari una [gold]pozione[/gold] speciale del valore di [gold]150 unità d'oro[/gold].",
-  "OPTION_BREW.description_plural": "Prepari [blue]2[/blue] [gold]pozioni[/gold] speciali del valore di [gold]150 unità d'oro[/gold] ciascuna.",
+  "OPTION_BREW.description": "Prepari una [gold]pozione[/gold] speciale del valore di [gold]150 unità d'oro[/gold] se venduta al [gold]mercante[/gold].",
+  "OPTION_BREW.description_plural": "Prepari [blue]2[/blue] [gold]pozioni[/gold] speciali del valore di [gold]150 unità d'oro[/gold] ciascuna se vendute al [gold]mercante[/gold].",
   "OPTION_BREW.name": "Prepara"
 }

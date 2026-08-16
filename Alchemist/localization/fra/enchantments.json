@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-DOSED.description": "Lorsque cette Compétence est jouée, gagnez [blue]{Amount}[/blue] d'[gold]Antitoxine[/gold].",
   "ALCHEMIST-DOSED.title": "Dosé",
-  "ALCHEMIST-LACED.description": "Cette Attaque inflige un montant de dégâts supplémentaires égal à votre [gold]Poison[/gold].",
+  "ALCHEMIST-LACED.description": "Chaque fois que cette Attaque inflige des dégâts non bloqués, appliquez [blue]{Amount}[/blue] de [gold]Poison[/gold].",
   "ALCHEMIST-LACED.title": "Imprégné",
   "ALCHEMIST-POTENT.description": "Lorsque ce Pouvoir est joué, gagnez [blue]{Amount}[/blue] de [gold]Force[/gold].",
   "ALCHEMIST-POTENT.title": "Concentré"

@@ -19,7 +19,7 @@ public class SlowBurn : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_fire"),
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_fire_burst"),
             sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
     }
 }

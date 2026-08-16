@@ -1,5 +1,5 @@
 {
-  "OPTION_BREW.description": "Uwarz wyjątkową [gold]Miksturę[/gold] wartą [gold]150 szt. złota[/gold].",
-  "OPTION_BREW.description_plural": "Uwarz [blue]2[/blue] wyjątkowe [gold]Mikstury[/gold], każda warta [gold]150 szt. złota[/gold].",
+  "OPTION_BREW.description": "Uwarz wyjątkową [gold]Miksturę[/gold] wartą [gold]150 szt. złota[/gold] przy sprzedaży [gold]Handlarzowi[/gold].",
+  "OPTION_BREW.description_plural": "Uwarz [blue]2[/blue] wyjątkowe [gold]Mikstury[/gold], każda warta [gold]150 szt. złota[/gold] przy sprzedaży [gold]Handlarzowi[/gold].",
   "OPTION_BREW.name": "Warz"
 }

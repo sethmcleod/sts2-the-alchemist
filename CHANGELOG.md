@@ -7,6 +7,17 @@ mod).
 
 ## [Unreleased]
 
+## [0.9.1] - 2026-08-16
+
+### Changed
+
+- Changed Laced enchantment: "Whenever this Attack deals unblocked damage, apply 2 Poison."
+- Updated Brew rest option description to clarify that the potions can be sold to the Merchant
+
+### Fixed
+
+- Fixed Slow Burn getting stuck on-screen when played
+
 ## [0.9.0] - 2026-08-16
 
 ### Added
