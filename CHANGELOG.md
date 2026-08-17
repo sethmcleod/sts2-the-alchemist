@@ -7,6 +7,11 @@ mod).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Fester never wearing off, so its extra Poison triggers kept applying every turn instead of
+  only the enemy's next turn
+
 ## [0.9.4] - 2026-08-16
 
 ### Fixed
