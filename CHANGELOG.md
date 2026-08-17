@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-08-17
+
 ### Added
 
 - Added anonymous run analytics, sent only when the game's own Upload Data setting is on. Includes a Share Run Analytics toggle in the mod config to opt out
