@@ -1,4 +1,5 @@
 using Godot;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 
 namespace Alchemist.AlchemistCode.Character;
 
@@ -25,6 +26,8 @@ internal static class SpineModel
     private const string AtlasClass = "SpineAtlasResource";
     private const string SkeletonFileClass = "SpineSkeletonFileResource";
     private const string SkeletonDataClass = "SpineSkeletonDataResource";
+
+    private const string EmptyAnimationMethod = "set_empty_animation";
 
     // One skeleton serves every sprite made from it. The game makes the combat visuals again for
     // the game over screen and the unlock screen, and a re-read of the files for each one is waste
@@ -84,6 +87,30 @@ internal static class SpineModel
         sprite.Set("skeleton_data_res", data);
         sprite.Scale = new Vector2(scale, scale);
         return sprite;
+    }
+
+    /// <summary>
+    /// Drops everything on a track and mixes the track back out over <paramref name="mix"/> seconds,
+    /// thus the bones it held return to whatever the tracks under it pose.
+    /// </summary>
+    /// <remarks>
+    /// MegaAnimationState binds add_empty_animation, which goes on the end of the queue of a track
+    /// and thus waits for every entry in front of it. Nothing it binds ends a track early.
+    /// set_empty_animation is the Spine call that replaces the entry playing now, throws the rest of
+    /// the queue away, and fades the track out. The binding cannot reach it, thus the call goes
+    /// straight to the Spine object. The Variant it returns holds a fresh wrapper, which the using
+    /// releases on this thread (see the note on MegaSpineBinding).
+    /// </remarks>
+    public static void FadeOutTrack(MegaAnimationState state, int track, float mix)
+    {
+        if (state.BoundObject is not { } native || !native.HasMethod(EmptyAnimationMethod))
+        {
+            MainFile.Logger.Info(
+                $"The Spine animation state has no {EmptyAnimationMethod}. Track {track} keeps playing.");
+            return;
+        }
+
+        using var _ = native.Call(EmptyAnimationMethod, track, mix);
     }
 
     /// <summary>

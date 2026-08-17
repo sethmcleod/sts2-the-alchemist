@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the Alchemist's blinking and staff orb shine animations continuing to play after death
+
 ## [0.10.1] - 2026-08-17
 
 ### Added

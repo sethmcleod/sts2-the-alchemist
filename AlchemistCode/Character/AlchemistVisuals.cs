@@ -55,6 +55,10 @@ internal static class AlchemistVisuals
     private const float MinShineGap = 7f;
     private const float MaxShineGap = 9f;
 
+    // How long the two tracks take to fade out at death. A blink caught half closed thus opens
+    // rather than snapping
+    private const float FlourishFadeOut = 0.15f;
+
     // A private generator, thus these times never draw from the seeded run of the game
     private static readonly Random FlourishRng = new();
 
@@ -202,7 +206,34 @@ internal static class AlchemistVisuals
         {
             QueueFlourish(state, BlinkAnimation, BlinkTrack, MinBlinkGap, MaxBlinkGap);
             QueueFlourish(state, ShineAnimation, ShineTrack, MinShineGap, MaxShineGap);
+            StopFlourishesOnDeath(sprite, state);
         });
+    }
+
+    /// <summary>
+    /// Empties the blink and the shine tracks once the death animation starts.
+    /// </summary>
+    /// <remarks>
+    /// Each track holds minutes of entries and keeps a clock of its own, thus both would go on over
+    /// the corpse. The death animation lays the model down and these two tracks hold the eyes and
+    /// the staff gem where the standing model had them, thus they float clear of the body.
+    ///
+    /// Spine reports the start of every entry on every track. The animation on track 0 at that
+    /// moment is the one to read, thus a blink that starts after the death animation also finds it.
+    /// The handler stays connected for the life of the sprite, the way CreatureAnimator leaves its
+    /// three. An empty track that empties again costs nothing.
+    /// </remarks>
+    private static void StopFlourishesOnDeath(MegaSprite sprite, MegaAnimationState state)
+    {
+        if (DeathAnimation == null) return;
+
+        sprite.ConnectAnimationStarted(Callable.From<GodotObject, GodotObject, GodotObject>((_, _, _) =>
+        {
+            if (state.GetCurrentAnimationName() != DeathAnimation) return;
+
+            SpineModel.FadeOutTrack(state, BlinkTrack, FlourishFadeOut);
+            SpineModel.FadeOutTrack(state, ShineTrack, FlourishFadeOut);
+        }));
     }
 
     private static void QueueFlourish(MegaAnimationState state, string? animation, int track,
