@@ -67,6 +67,15 @@ public partial class MainFile : Node
 
         try
         {
+            Steam.WorkshopSelfUpdate.Initialize();
+        }
+        catch (System.Exception e)
+        {
+            Logger.Error($"Failed to start the Workshop self-update check (Steam will update on its own schedule): {e}");
+        }
+
+        try
+        {
             Analytics.AlchemistMetrics.Initialize();
         }
         catch (System.Exception e)

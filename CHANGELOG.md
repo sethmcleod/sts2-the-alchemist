@@ -7,6 +7,12 @@ mod).
 
 ## [Unreleased]
 
+## [0.10.1] - 2026-08-17
+
+### Added
+
+- Added a Steam Workshop self-update check on startup: when Steam has a stale copy of the mod, it re-downloads the latest and asks you to restart
+
 ## [0.10.0] - 2026-08-17
 
 ### Added
