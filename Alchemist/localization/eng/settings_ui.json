@@ -21,5 +21,9 @@
   "ALCHEMIST-UNLOCKS.title": "Unlocks",
   "ALCHEMIST-UNLOCK_ALL.title": "Unlock All Alchemist Cards, Relics, Potions, and Epochs",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Unlock All",
+  "ALCHEMIST-WORKSHOP_UPDATE.body": "A newer version of The Alchemist was downloaded from the Steam Workshop.\nRestart the game to load the new version.",
+  "ALCHEMIST-WORKSHOP_UPDATE.header": "The Alchemist Updated",
+  "ALCHEMIST-WORKSHOP_UPDATE.later": "Later",
+  "ALCHEMIST-WORKSHOP_UPDATE.quit": "Quit Now",
   "ALCHEMIST.mod_title": "The Alchemist"
 }
