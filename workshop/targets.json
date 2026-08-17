@@ -29,7 +29,7 @@
     "prerelease": true,
     "descriptionBanner": "[quote]This mod is for the beta version of the game. Here is the public version: https://steamcommunity.com/sharedfiles/filedetails/?id=3781688551[/quote]",
     "minBranch": "public-beta",
-    "maxBranch": ""
+    "maxBranch": "public-beta"
   },
   "main": {
     "itemId": "3781688551",

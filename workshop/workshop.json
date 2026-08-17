@@ -4,10 +4,8 @@
   "visibility": "public",
   "changeNote": "v0.9.8\n\nAdded\n\n- Added Quaff card: \"Gain 2 (3) Antitoxin. Draw 1 (2) cards. Draw 1 additional card for every 4 Antitoxin you have.\"\n- Added Ripen card: \"At the start of your turn, Ferment ALL cards in your Hand 1 additional time.\"\n\nChanged\n\n- Improved VFX and animations used for many cards\n- Renamed One For Me card to Nightcap\n- Reworked Fresh Coat card: \"Whenever you Enchant a card, increase your Antitoxin limit by 1 (2) and gain 1 (2) Antitoxin.\"\n- Reworked the Power Infusion: Infused Powers now increase your Antitoxin limit by 2 when played instead of giving 1 Strength\n\nRemoved\n\n- Removed Blood Rush card, replaced by Quaff\n- Removed Share The Pain card, replaced by Ripen",
   "tags": [],
-  "dependencies": [
-    3737335127
-  ],
+  "dependencies": [3737335127],
   "contentDescriptors": [],
   "minBranch": "public-beta",
-  "maxBranch": ""
+  "maxBranch": "public-beta"
 }
