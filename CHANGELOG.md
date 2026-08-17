@@ -7,6 +7,35 @@ mod).
 
 ## [Unreleased]
 
+## [0.9.6] - 2026-08-17
+
+### Added
+
+- Added Caustic Strike card: "Deal 6 (9) damage. Gain 2 (3) Antitoxin." It counts as a Strike
+- Added Dregs card: "At the end of your turn, if this is in your Hand, gain 2 Poison. Exhaust."
+
+### Changed
+
+- Buffed Deep Cut card: 1 Energy, 7 (10) damage, draw 1 -> 2 Energy, 13 (16) damage, draw 1 (2). It no longer applies Vulnerable
+- Buffed Gilded Kit relic: it now also adds a Distillate+ into your Hand at the start of each combat
+- Buffed Harden card: it gives Block when you gain or apply Poison again, not only when you gain it
+- Buffed Jab card: self Poison 1 -> 2, so Antitoxin has something to absorb in the early game
+- Buffed One For Me card: 1 Energy, 8 (11) damage, 3 (4) Antitoxin -> 2 Energy, 14 (18) damage, 5 (6) Antitoxin
+- Buffed Puncture card: Vulnerable 1 (2) -> 2 (3)
+- Buffed Weathered Kit relic: it now also adds a Distillate into your Hand at the start of each combat
+- Changed Brew: it gives 1 Potion for both Kits again, instead of 2 with the Gilded Kit
+- Changed Ferment: playing a Ferment card now adds a Dregs to your Discard Pile instead of a Toxic
+- Reworked Antidote: "Gain 6 (9) Block. Gain 2 (3) Antitoxin." It is no longer a Ferment card
+- Reworked Poultice: "Gain 8 (11) Block. Gain 2 Poison." It is no longer a Ferment card
+
+### Removed
+
+- Removed Rummage card, replaced by Caustic Strike
+
+### Fixed
+
+- Fixed the Callus power sharing an icon with Weak Spot
+
 ## [0.9.5] - 2026-08-16
 
 ### Fixed

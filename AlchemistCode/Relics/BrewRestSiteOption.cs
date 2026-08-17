@@ -24,11 +24,8 @@ public sealed class BrewRestSiteOption : RestSiteOption
 
     public override string OptionId => BrewOptionId;
 
-    // Gilded Kit brews two, so the option text has to agree with what actually happens
     public override LocString Description =>
-        new LocString("rest_site_ui", Owner.GetRelic<GildedKit>() != null
-            ? "OPTION_" + OptionId + ".description_plural"
-            : "OPTION_" + OptionId + ".description");
+        new LocString("rest_site_ui", "OPTION_" + OptionId + ".description");
 
     public override bool IsEnabled => true;
 
@@ -51,15 +48,8 @@ public sealed class BrewRestSiteOption : RestSiteOption
             }
         }
 
-        // Gilded Kit brews a second potion. That is the qualitative half of the starter upgrade, the
-        // way Infused Core makes Lightning hit harder rather than just channelling more of it
-        var brews = Owner.GetRelic<GildedKit>() != null ? 2 : 1;
         var rewards = new List<Reward>();
-        for (var i = 0; i < brews; i++)
-        {
-            if (CreateBrewReward() is not { } reward) break;
-            rewards.Add(reward);
-        }
+        if (CreateBrewReward() is { } reward) rewards.Add(reward);
         await RewardsCmd.OfferCustom(Owner, rewards);
         return true;
     }

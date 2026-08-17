@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Beschaffe zu Beginn jedes Kampfes einen zufälligen [gold]Trank[/gold]. Falls deine Trankslots voll sind, erhalte stattdessen {Energy:energyIcons()}.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Wie viel du auch ausgießt, ganz leer wird er nie.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Immerfließender Kelch",
-  "ALCHEMIST-GILDED_KIT.description": "Erhalte zu Beginn jedes Kampfes [blue]8[/blue] [gold]Antitoxin[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold], und [gold]Brauen[/gold] gibt [blue]2[/blue] [gold]Tränke[/gold].",
+  "ALCHEMIST-GILDED_KIT.description": "Erhalte zu Beginn jedes Kampfes [blue]8[/blue] [gold]Antitoxin[/gold] und ein [gold]Destillat+[/gold] auf deine [gold]Hand[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold].",
   "ALCHEMIST-GILDED_KIT.flavor": "Ein verzierter Koffer. Das Gold ist nicht zur Zierde.",
   "ALCHEMIST-GILDED_KIT.title": "Vergoldeter Koffer",
   "ALCHEMIST-GLOWING_SHARD.description": "Immer wenn du [gold]Gift[/gold] erhältst, wende [blue]1[/blue] [gold]Gift[/gold] auf einen zufälligen Gegner an.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Immer wenn du [gold]Gift[/gold] erhältst, erhalte [blue]1[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Eine abgemessene Dosis, immer griffbereit.",
   "ALCHEMIST-SPARE_DOSE.title": "Ersatzdosis",
-  "ALCHEMIST-WEATHERED_KIT.description": "Erhalte zu Beginn jedes Kampfes [blue]4[/blue] [gold]Antitoxin[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold].",
+  "ALCHEMIST-WEATHERED_KIT.description": "Erhalte zu Beginn jedes Kampfes [blue]4[/blue] [gold]Antitoxin[/gold] und ein [gold]Destillat[/gold] auf deine [gold]Hand[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Ein gut abgenutzter, angenehm riechender Koffer.",
   "ALCHEMIST-WEATHERED_KIT.title": "Abgenutzter Koffer"
 }

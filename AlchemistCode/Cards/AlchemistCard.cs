@@ -44,8 +44,8 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (IsFermentCard)
         {
             yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
-            // The keyword names Toxic as the spoil result, so show what one actually does
-            yield return HoverTipFactory.FromCard<MegaCrit.Sts2.Core.Models.Cards.Toxic>();
+            // The keyword names Dregs as the byproduct, so show what one actually does
+            yield return HoverTipFactory.FromCard<Token.Dregs>();
         }
     }
 
@@ -167,10 +167,10 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         _fermentTurns = 0;
         if (!IsFermentCard || Owner == null || CombatState is not { } combat) return;
 
-        // Previewed, because the card leaving play and a Toxic appearing in the Discard are two
+        // Previewed, because the card leaving play and the Dregs appearing in the Discard are two
         // separate events the player never sees happen
-        var toxic = combat.CreateCard<MegaCrit.Sts2.Core.Models.Cards.Toxic>(Owner);
-        var added = await CardPileCmd.Add(toxic, PileType.Discard, CardPilePosition.Bottom);
+        var dregs = combat.CreateCard<Token.Dregs>(Owner);
+        var added = await CardPileCmd.Add(dregs, PileType.Discard, CardPilePosition.Bottom);
         CardCmd.PreviewCardPileAdd([added]);
 
         // How a Ferment card leaves combat differs per game branch, so it lives in Compat/

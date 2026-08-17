@@ -1,5 +1,4 @@
 {
   "OPTION_BREW.description": "Elabora una [gold]Poción[/gold] especial valorada en [gold]150 de oro[/gold] si se vende al [gold]Comerciante[/gold].",
-  "OPTION_BREW.description_plural": "Elabora [blue]2[/blue] [gold]Pociones[/gold] especiales valoradas en [gold]150 de oro[/gold] cada una si se venden al [gold]Comerciante[/gold].",
   "OPTION_BREW.name": "Elaborar"
 }

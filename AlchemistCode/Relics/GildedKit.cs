@@ -5,6 +5,8 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Entities.RestSite;
+using Alchemist.AlchemistCode.Cards.Token;
+using Alchemist.AlchemistCode.Commands;
 using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 
@@ -27,6 +29,7 @@ public class GildedKit : AlchemistRelic
         Flash();
         await PowerCmd.Apply<AntitoxinPower>(new ThrowingPlayerChoiceContext(), Owner.Creature,
             Antitoxin, Owner.Creature, null);
+        await AlchemistCardCmd.GiveCardTo<Distillate>(Owner, upgraded: true);
     }
 
     public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)

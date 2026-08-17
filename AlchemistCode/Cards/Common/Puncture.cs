@@ -11,7 +11,7 @@ public class Puncture : AlchemistCard
     public Puncture() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(6, 3);
-        WithPower<VulnerablePower>(1, 1);
+        WithPower<VulnerablePower>(2, 1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

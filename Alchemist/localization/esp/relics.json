@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Al inicio de cada combate, obtienes una [gold]poción[/gold] al azar. Si tus espacios de poción están llenos, obtienes {Energy:energyIcons()} en su lugar.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Por mucho que viertas, nunca llega a secarse.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Cáliz inagotable",
-  "ALCHEMIST-GILDED_KIT.description": "Al comienzo de cada combate, obtienes [blue]8[/blue] de [gold]antitoxina[/gold]. Puedes [gold]preparar pociones[/gold] en los puntos de descanso, y al [gold]preparar[/gold] obtienes [blue]2[/blue] [gold]pociones[/gold].",
+  "ALCHEMIST-GILDED_KIT.description": "Al comienzo de cada combate, obtienes [blue]8[/blue] de [gold]antitoxina[/gold] y agregas un [gold]Destilado+[/gold] a tu [gold]mano[/gold]. Puedes [gold]preparar pociones[/gold] en los puntos de descanso.",
   "ALCHEMIST-GILDED_KIT.flavor": "Un estuche ornamentado. El oro no es adorno.",
   "ALCHEMIST-GILDED_KIT.title": "Estuche dorado",
   "ALCHEMIST-GLOWING_SHARD.description": "Cada vez que obtienes [gold]veneno[/gold], aplicas [blue]1[/blue] de [gold]veneno[/gold] a un enemigo al azar.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Cada vez que obtienes [gold]veneno[/gold], obtienes [blue]1[/blue] de [gold]antitoxina[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Una dosis medida, siempre a mano.",
   "ALCHEMIST-SPARE_DOSE.title": "Dosis de reserva",
-  "ALCHEMIST-WEATHERED_KIT.description": "Al comienzo de cada combate, obtienes [blue]4[/blue] de [gold]antitoxina[/gold]. Puedes [gold]preparar pociones[/gold] en los puntos de descanso.",
+  "ALCHEMIST-WEATHERED_KIT.description": "Al comienzo de cada combate, obtienes [blue]4[/blue] de [gold]antitoxina[/gold] y agregas un [gold]Destilado[/gold] a tu [gold]mano[/gold]. Puedes [gold]preparar pociones[/gold] en los puntos de descanso.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Un estuche gastado y de aroma agradable.",
   "ALCHEMIST-WEATHERED_KIT.title": "Estuche gastado"
 }

@@ -1,5 +1,4 @@
 {
   "OPTION_BREW.description": "ปรุง[gold]ขวดยา[/gold]พิเศษ 1 ขวด มูลค่า [gold]150 ทอง[/gold] เมื่อขายให้[gold]พ่อค้า[/gold]",
-  "OPTION_BREW.description_plural": "ปรุง[gold]ขวดยา[/gold]พิเศษ [blue]2[/blue] ขวด มูลค่าขวดละ [gold]150 ทอง[/gold] เมื่อขายให้[gold]พ่อค้า[/gold]",
   "OPTION_BREW.name": "ปรุงยา"
 }

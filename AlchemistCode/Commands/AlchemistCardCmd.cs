@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -22,6 +23,19 @@ public static class AlchemistCardCmd
             var card = source.CombatState.CreateCard<T>(source.Owner);
             if (upgrade) CardCmd.Upgrade(card);
             await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, source.Owner);
+        }
+    }
+
+    // For a non-card source such as a relic, which has no card to read an upgrade state from
+    public static async Task GiveCardTo<T>(Player owner, bool upgraded = false, int count = 1)
+        where T : CardModel, new()
+    {
+        if (owner.Creature.CombatState is not { } combat) return;
+        for (var i = 0; i < count; i++)
+        {
+            var card = combat.CreateCard<T>(owner);
+            if (upgraded) CardCmd.Upgrade(card);
+            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, owner);
         }
     }
 

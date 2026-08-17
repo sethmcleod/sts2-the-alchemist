@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-FERMENT.description": "このカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。プレイすると[gold]毒素[/gold]に変化する。",
+  "ALCHEMIST-FERMENT.description": "このカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。プレイすると[gold]澱[/gold]を1枚[gold]捨て札[/gold]に加える。",
   "ALCHEMIST-FERMENT.title": "発酵",
   "ALCHEMIST-INFUSE.description": "戦闘終了時までカードに[gold]エンチャント[/gold]する。アタックは[purple]毒仕込み[/purple]、スキルは[purple]投薬[/purple]、パワーは[purple]強壮[/purple]になる。それ以外のカードは[gold]エセリアル[/gold]を得る。",
   "ALCHEMIST-INFUSE.selectionPrompt": "[gold]注入[/gold]するカードを[blue]{Amount}[/blue]枚選択。",

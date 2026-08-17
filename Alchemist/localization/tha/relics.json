@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "ตอนเริ่มต้นแต่ละการต่อสู้ จัดหา[gold]ขวดยา[/gold] 1 ขวดแบบสุ่ม ถ้าช่องเก็บขวดยาเต็ม จะได้รับ {Energy:energyIcons()} แทน",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "รินออกไปเท่าไร มันก็ไม่เคยแห้งสักที",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "จอกไหลนิรันดร์",
-  "ALCHEMIST-GILDED_KIT.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]8[/blue] [gold]สารต้านพิษ[/gold] คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้ และ[gold]ปรุงยา[/gold]จะให้[gold]ขวดยา[/gold] [blue]2[/blue] ขวด",
+  "ALCHEMIST-GILDED_KIT.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]8[/blue] [gold]สารต้านพิษ[/gold] และเพิ่ม[gold]สารกลั่น+[/gold] 1 ใบใส่[gold]มือ[/gold]ของคุณ คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้",
   "ALCHEMIST-GILDED_KIT.flavor": "กล่องลวดลายวิจิตร ทองบนกล่องไม่ได้มีไว้อวด",
   "ALCHEMIST-GILDED_KIT.title": "ชุดเครื่องมือปิดทอง",
   "ALCHEMIST-GLOWING_SHARD.description": "ทุกครั้งที่คุณได้รับ[gold]พิษ[/gold] สร้าง [blue]1[/blue] [gold]พิษ[/gold] ใส่ศัตรู 1 ตัวแบบสุ่ม",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "ทุกครั้งที่คุณได้รับ[gold]พิษ[/gold] ได้รับ [blue]1[/blue] [gold]สารต้านพิษ[/gold]",
   "ALCHEMIST-SPARE_DOSE.flavor": "ยาที่ตวงไว้พอดี อยู่ใกล้มือเสมอ",
   "ALCHEMIST-SPARE_DOSE.title": "ยาสำรอง",
-  "ALCHEMIST-WEATHERED_KIT.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]4[/blue] [gold]สารต้านพิษ[/gold] คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้",
+  "ALCHEMIST-WEATHERED_KIT.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]4[/blue] [gold]สารต้านพิษ[/gold] และเพิ่ม[gold]สารกลั่น[/gold] 1 ใบใส่[gold]มือ[/gold]ของคุณ คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้",
   "ALCHEMIST-WEATHERED_KIT.flavor": "กล่องเก่าที่ผ่านการใช้งานมานาน กลิ่นหอมชวนดม",
   "ALCHEMIST-WEATHERED_KIT.title": "ชุดเครื่องมือเก่า"
 }

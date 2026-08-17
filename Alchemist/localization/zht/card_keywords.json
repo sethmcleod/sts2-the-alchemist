@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-FERMENT.description": "此牌每在你的[gold]手牌[/gold]中停留一回合，威力就提高。打出後會將其轉化為一張[gold]劇毒[/gold]。",
+  "ALCHEMIST-FERMENT.description": "此牌每在你的[gold]手牌[/gold]中停留一回合，威力就提高。打出後將一張[gold]殘渣[/gold]加入你的[gold]棄牌堆[/gold]。",
   "ALCHEMIST-FERMENT.title": "醞釀",
   "ALCHEMIST-INFUSE.description": "為一張牌[gold]附魔[/gold]，直到戰鬥結束。攻擊牌會變為[purple]淬毒[/purple]；技能牌會變為[purple]佐劑[/purple]；能力牌會變為[purple]烈性[/purple]。其他牌則獲得[gold]虛無[/gold]。",
   "ALCHEMIST-INFUSE.selectionPrompt": "選擇{Amount:plural:一張牌|[blue]{}[/blue] 張牌}進行[gold]浸潤[/gold]。",
