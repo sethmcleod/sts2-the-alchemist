@@ -6,6 +6,7 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Antitoxin)]
 public class CausticStrike : AlchemistCard
 {
     public CausticStrike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)

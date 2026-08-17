@@ -9,6 +9,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 
 // Reads the bar instead of emptying it. Antitoxin already has a sink in absorbing Poison ticks, so a
 // card that also demands the whole pool just punishes you for holding the resource
+[CardTheme(CardTheme.Antitoxin)]
 public class WhiteHeat : AlchemistCard
 {
     protected internal override bool DealsUnpoweredDamage => true;

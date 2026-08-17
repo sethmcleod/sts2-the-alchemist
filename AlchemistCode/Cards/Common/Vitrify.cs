@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Antitoxin)]
 public class Vitrify : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

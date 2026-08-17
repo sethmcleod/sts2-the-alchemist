@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Transform)]
 public class Percolate : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

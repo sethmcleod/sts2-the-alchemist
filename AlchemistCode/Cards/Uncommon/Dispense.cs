@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 // Rewards holding Antitoxin rather than dumping it, the same way Gold Leaf reads your Gold
+[CardTheme(CardTheme.Antitoxin, CardTheme.Poison)]
 public class Dispense : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

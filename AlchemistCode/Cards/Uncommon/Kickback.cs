@@ -6,6 +6,7 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Infuse, CardTheme.Antitoxin)]
 public class Kickback : AlchemistCard
 {
     public Kickback() : base(0, CardType.Power, CardRarity.Uncommon, TargetType.Self)

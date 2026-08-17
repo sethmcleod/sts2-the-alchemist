@@ -11,6 +11,7 @@ namespace Alchemist.AlchemistCode.Cards.Token;
 // card-sourced. Dosing instead routes the cost through the character's own resource, so holding one
 // is free if the bar can cover it
 [Pool(typeof(TokenCardPool))]
+[CardTheme(CardTheme.Poison, CardTheme.Ferment)]
 public class Dregs : AlchemistCard
 {
     private const int SelfPoison = 2;

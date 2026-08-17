@@ -17,6 +17,11 @@
 #                                 the GitHub Release with the zip and the notes. --force moves a
 #                                 tag that is already public (a history rewrite)
 #   scripts/dev.sh sync-main      merge beta into main so main can promote (see RELEASING.md)
+#   scripts/dev.sh analytics [export|seed|serve]
+#                                 export: pull the run rows from Supabase and write the dashboard
+#                                 data (needs the service_role key, see tools/analytics/common.py);
+#                                 seed: fabricate runs and export them offline; serve: open the
+#                                 dashboard at http://localhost:8765 from docs/analytics/
 #   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with the fixes
 #   scripts/dev.sh env            print the resolved paths and exit
 #
@@ -570,6 +575,14 @@ case "${1:-help}" in
   release)       shift; do_release "$@" ;;
   publish-release) shift; do_publish_release "$@" ;;
   sync-main)     do_sync_main ;;
+  analytics)     have_py || { bad "$no_py_msg"; exit 1; }
+                 case "${2:-export}" in
+                   export) "${PY_CMD[@]}" "$REPO/tools/analytics/export_stats.py" ;;
+                   seed)   "${PY_CMD[@]}" "$REPO/tools/analytics/seed_runs.py" --local
+                           "${PY_CMD[@]}" "$REPO/tools/analytics/export_stats.py" --from-file "$REPO/tools/analytics/seed-runs.local.json" ;;
+                   serve)  echo "http://localhost:8765/"; (cd "$REPO/docs/analytics" && "${PY_CMD[@]}" -m http.server 8765) ;;
+                   *)      bad "unknown analytics mode '$2' (export|seed|serve)"; exit 1 ;;
+                 esac ;;
   doctor)        do_doctor ;;
   env)
     echo "REPO          = $REPO"

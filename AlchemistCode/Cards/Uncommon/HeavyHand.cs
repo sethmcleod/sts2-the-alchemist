@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Poison)]
 public class HeavyHand : AlchemistCard
 {
     public HeavyHand() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)

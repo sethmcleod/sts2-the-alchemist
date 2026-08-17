@@ -11,6 +11,7 @@ namespace Alchemist.AlchemistCode.Cards.Quest;
 // Ripens into a Golden Fruit, the same pattern as the base game's Dowsing and Guilty. QuestCardPool keeps
 // it out of the Alchemist card list and files it under Quest, as it does for those
 [Pool(typeof(QuestCardPool))]
+[CardTheme(CardTheme.None)]
 public class UnripeFruit : AlchemistCard
 {
     public const int MaxCombats = 4;

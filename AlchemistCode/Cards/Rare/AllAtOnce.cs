@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Poison)]
 public class AllAtOnce : AlchemistCard
 {
     protected internal override bool DealsUnpoweredDamage => true;

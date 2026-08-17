@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Poison)]
 public class Gulp : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

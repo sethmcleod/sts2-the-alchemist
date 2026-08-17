@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Basic;
 
+[CardTheme(CardTheme.None)]
 public class StrikeAlchemist : AlchemistCard
 {
     public StrikeAlchemist() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)

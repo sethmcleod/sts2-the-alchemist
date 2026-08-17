@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.None)]
 public class Congeal : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

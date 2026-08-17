@@ -13,6 +13,7 @@ namespace Alchemist.AlchemistCode.Cards.Quest;
 // QuestCardPool keeps this out of the Alchemist card list and files it under Quest, the same as the base
 // game's own quest cards
 [Pool(typeof(QuestCardPool))]
+[CardTheme(CardTheme.None)]
 public class GoldenFruit : AlchemistCard
 {
     public override int MaxUpgradeLevel => 0;

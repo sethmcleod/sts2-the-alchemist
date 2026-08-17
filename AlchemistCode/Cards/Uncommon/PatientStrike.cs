@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Ferment)]
 public class PatientStrike : AlchemistCard
 {
     protected override bool Ferments => true;

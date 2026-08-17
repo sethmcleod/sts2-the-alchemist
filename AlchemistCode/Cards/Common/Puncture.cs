@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.None)]
 public class Puncture : AlchemistCard
 {
     public Puncture() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)

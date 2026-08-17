@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Poison)]
 public class Croak : AlchemistCard
 {
     public Croak() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)

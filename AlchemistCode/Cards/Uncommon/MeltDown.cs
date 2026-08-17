@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Transform)]
 public class MeltDown : AlchemistCard
 {
     public MeltDown() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)

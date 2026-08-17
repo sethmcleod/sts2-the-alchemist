@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Poison)]
 public class Resolve : AlchemistCard
 {
     public Resolve() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)

@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Poison)]
 public class ChainReaction : AlchemistCard
 {
     public ChainReaction() : base(3, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)

@@ -8,6 +8,7 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 // The defensive twin of Backfire: Block paid for with a dose, which Antitoxin then absorbs. Also one
 // of only three self-Poison sources in the Common band
+[CardTheme(CardTheme.Poison)]
 public class Poultice : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

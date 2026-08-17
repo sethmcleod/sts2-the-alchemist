@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Nodes.CommonUi;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Infuse)]
 public class Hone : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

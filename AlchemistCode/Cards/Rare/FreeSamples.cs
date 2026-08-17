@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Infuse)]
 public class FreeSamples : AlchemistCard
 {
     public override CardMultiplayerConstraint MultiplayerConstraint =>

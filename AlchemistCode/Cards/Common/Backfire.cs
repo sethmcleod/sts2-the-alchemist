@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Poison)]
 public class Backfire : AlchemistCard
 {
     public Backfire() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)

@@ -8,6 +8,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 // The Distillate set had five one-shot generators and no engine. This is the engine, and the stack is
 // the only number on it, so it follows the one-amount power rule
+[CardTheme(CardTheme.Transform)]
 public class Winnow : AlchemistCard
 {
     public Winnow() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)

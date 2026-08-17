@@ -7,6 +7,7 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Poison)]
 public class Callus : AlchemistCard
 {
     public Callus() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)

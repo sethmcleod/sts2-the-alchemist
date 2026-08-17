@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Poison)]
 public class Tempered : AlchemistCard
 {
     public Tempered() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)

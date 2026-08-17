@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Basic;
 
+[CardTheme(CardTheme.Poison)]
 public class Jab : AlchemistCard
 {
     public Jab() : base(0, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)

@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Basic;
 
+[CardTheme(CardTheme.None)]
 public class DefendAlchemist : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

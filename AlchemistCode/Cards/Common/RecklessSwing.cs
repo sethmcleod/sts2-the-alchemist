@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.None)]
 public class RecklessSwing : AlchemistCard
 {
     public RecklessSwing() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)

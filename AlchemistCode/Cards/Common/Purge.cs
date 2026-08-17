@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace Alchemist.AlchemistCode.Cards.Common;
 
 // The Common rung of the cash-out ladder, which previously started at Uncommon with Corrode
+[CardTheme(CardTheme.Poison)]
 public class Purge : AlchemistCard
 {
     protected internal override bool DealsUnpoweredDamage => true;

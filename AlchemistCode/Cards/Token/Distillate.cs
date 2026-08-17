@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace Alchemist.AlchemistCode.Cards.Token;
 
 [Pool(typeof(TokenCardPool))]
+[CardTheme(CardTheme.Transform)]
 public class Distillate : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

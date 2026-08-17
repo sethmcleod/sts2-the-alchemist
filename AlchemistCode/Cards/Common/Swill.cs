@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Ferment)]
 public class Swill : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

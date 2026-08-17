@@ -9,6 +9,7 @@ namespace Alchemist.AlchemistCode.Cards.Basic;
 // Block sits between Defend's 5 and Congeal's 7, because the rarity ladder wants a Basic below the
 // Common of the same shape. Survivor is the only other non-Defend Basic block card in the game at
 // 8 (11), and it pays for that with a discard
+[CardTheme(CardTheme.Antitoxin)]
 public class Antidote : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

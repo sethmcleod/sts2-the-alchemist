@@ -7,6 +7,7 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Poison)]
 public class MercurialForm : AlchemistCard
 {
     public MercurialForm() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)

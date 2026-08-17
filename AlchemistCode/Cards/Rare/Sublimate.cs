@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Antitoxin)]
 public class Sublimate : AlchemistCard
 {
     public Sublimate() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)

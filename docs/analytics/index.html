@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Alchemist — Balance Analytics</title>
+<style>
+  /* Alchemist chrome: deep indigo-purple ground, poison green and alchemical gold as accents.
+     Rarity hues are validated for colour-blind separation on this surface; the table rarity
+     column, tooltips, and search dimming carry identity alongside colour. */
+  :root{
+    --ground:#1c1822; --panel:#26202e; --panel-2:#2f2838; --frame:#5c3a7a;
+    --ink:#ece6da; --ink-2:#c9c0b4; --muted:#8f8598;
+    --grid:#3a3143; --baseline:#6a5a7a;
+    --green:#6db35f; --gold:#d4a832; --purple:#9b5cff;
+    --rare:#c98500; --uncommon:#199e70; --common:#9085e9; --other:#7d7585;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+       font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+  main{max-width:1150px;margin:0 auto;padding:28px 24px 80px}
+  h1{font-size:24px;margin:0 0 2px}
+  .sub{color:var(--ink-2);font-size:13px;margin-bottom:6px}
+  .fresh{color:var(--muted);font-size:12px;margin-bottom:18px}
+  a{color:var(--green)}
+
+  .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+           background:var(--panel);border:1px solid var(--grid);border-radius:10px;
+           padding:10px 14px;margin-bottom:14px}
+  .filters label{font-size:12px;color:var(--ink-2);display:flex;gap:6px;align-items:center}
+  select,input[type=search]{
+    background:var(--ground);color:var(--ink);border:1px solid var(--frame);
+    border-radius:6px;padding:4px 8px;font:inherit;font-size:13px}
+  input[type=checkbox]{appearance:none;-webkit-appearance:none;width:15px;height:15px;
+    border:1px solid var(--frame);border-radius:4px;background:var(--ground);
+    cursor:pointer;position:relative;vertical-align:-3px;margin:0 2px 0 0}
+  input[type=checkbox]:hover{border-color:var(--green)}
+  input[type=checkbox]:checked{background:var(--green);border-color:var(--green)}
+  input[type=checkbox]:checked::after{content:"✓";position:absolute;inset:0;
+    text-align:center;font-size:11px;line-height:15px;color:#16240f;font-weight:700}
+  .stepper{display:inline-flex;align-items:center;border:1px solid var(--frame);
+    border-radius:14px;overflow:hidden;background:var(--ground)}
+  .stepper button{background:transparent;border:none;color:var(--ink-2);cursor:pointer;
+    font:inherit;font-size:14px;padding:2px 10px;line-height:1.3}
+  .stepper button:hover{background:var(--panel);color:var(--green)}
+  .stepper .v{min-width:22px;text-align:center;font-size:13px;color:var(--ink);
+    font-variant-numeric:tabular-nums}
+  .chips{display:flex;gap:4px;flex-wrap:wrap}
+  .chip{background:transparent;border:1px solid var(--grid);color:var(--ink-2);
+        border-radius:14px;padding:3px 11px;font:inherit;font-size:12px;cursor:pointer}
+  .chip:hover{border-color:var(--frame)}
+  .chip.on{background:var(--green);border-color:var(--green);color:#16240f;font-weight:600}
+  .toggle{cursor:pointer;user-select:none}
+
+  .tabs{display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap}
+  .tab{background:transparent;border:1px solid var(--grid);border-bottom:none;color:var(--ink-2);
+       border-radius:8px 8px 0 0;padding:7px 18px;font:inherit;font-size:14px;cursor:pointer}
+  .tab.on{background:var(--panel);color:var(--ink);font-weight:600}
+  .view{display:none}
+  .view.on{display:block}
+
+  .cards-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+  .tile{background:var(--panel);border:1px solid var(--grid);border-radius:10px;
+        padding:12px 18px;min-width:130px}
+  .tile .lab{font-size:12px;color:var(--ink-2)}
+  .tile .val{font-size:26px;font-weight:600;margin-top:2px}
+  .tile .ci{font-size:11px;color:var(--muted)}
+
+  .panel{background:var(--panel);border:1px solid var(--grid);border-radius:10px;
+         padding:14px 16px;margin-bottom:14px}
+  .row2{display:flex;gap:14px;flex-wrap:wrap}
+  .row2 .panel{flex:1 1 420px;min-width:0}
+  .panel h2{font-size:14px;margin:0 0 2px;color:var(--ink)}
+  .panel .note{font-size:12px;color:var(--muted);margin-bottom:8px}
+  svg{display:block;width:100%;height:auto}
+  svg text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+  .legend{display:flex;gap:16px;font-size:12px;color:var(--ink-2);margin:6px 2px 0;flex-wrap:wrap}
+  .legend .sw{display:inline-block;width:10px;height:10px;border-radius:50%;
+              margin-right:5px;vertical-align:-1px}
+  .legend .ln{display:inline-block;width:16px;height:0;border-top:2px dashed var(--baseline);
+              margin-right:5px;vertical-align:3px}
+
+  .modal-back{position:fixed;inset:0;background:rgba(14,10,18,.74);z-index:20;
+              display:flex;align-items:center;justify-content:center;padding:24px}
+  .modal-back[hidden]{display:none}
+  .modal{background:var(--panel);border:1px solid var(--frame);border-radius:12px;
+         padding:18px 22px;max-width:940px;width:100%;max-height:90vh;overflow:auto;
+         position:relative}
+  .modal h2{font-size:17px;margin:0 26px 2px 0}
+  .modal .note{font-size:12px;color:var(--muted);margin-bottom:8px}
+  .modal-close{position:absolute;top:10px;right:12px;background:none;border:none;
+               color:var(--ink-2);font-size:22px;cursor:pointer;line-height:1}
+  .modal-close:hover{color:var(--ink)}
+
+  .tooltip{position:fixed;pointer-events:none;background:#171319;border:1px solid var(--frame);
+           border-radius:6px;padding:6px 10px;font-size:12.5px;color:var(--ink-2);
+           display:none;z-index:30;max-width:280px}
+  .tooltip .v{color:var(--ink);font-weight:600}
+
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{text-align:left;padding:5px 10px;border-bottom:1px solid var(--grid)}
+  th{color:var(--ink-2);font-weight:600;cursor:pointer;user-select:none;white-space:nowrap}
+  th.sorted::after{content:" ▾";color:var(--green)}
+  th.sorted.asc::after{content:" ▴"}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  tr.rowlink{cursor:pointer}
+  tr.rowlink:hover td{background:var(--panel-2)}
+  .rar{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px}
+  .themes{color:var(--muted);font-size:12px}
+  .up{color:var(--green)} .down{color:#e0938a}
+  .minibar{display:inline-block;height:8px;border-radius:0 4px 4px 0;background:var(--green);
+           vertical-align:1px}
+  .empty{color:var(--muted);font-size:14px;padding:26px;text-align:center}
+  .scroll{overflow-x:auto}
+</style>
+</head>
+<body>
+<main>
+  <h1>The Alchemist — Balance Analytics</h1>
+  <div class="sub">Aggregate run telemetry from players who opted in · rates recomputed live from daily
+    count tables · <a href="https://github.com/sethmcleod/sts2-the-alchemist">repo</a></div>
+  <div class="fresh" id="fresh">Loading…</div>
+
+  <div class="filters" id="filters" hidden>
+    <div class="chips" id="dateChips"></div>
+    <label>Mod <select id="modSel"></select></label>
+    <label>Game <select id="gameSel"></select></label>
+    <label>Epochs <select id="epSel">
+      <option value="all">any</option>
+      <option value="7">all 7 unlocked</option>
+      <option value="lt7">fewer than 7</option>
+      <option value="0">none</option>
+    </select></label>
+    <label class="toggle"><input type="checkbox" id="showOther" /> Include other characters' content</label>
+    <label class="toggle"><input type="checkbox" id="includeMP" /> Include multiplayer runs</label>
+    <label>Min runs <span class="stepper"><button id="minMinus" aria-label="decrease">−</button><span
+      class="v" id="minRunsVal">3</span><button id="minPlus" aria-label="increase">+</button></span></label>
+  </div>
+
+  <div class="tabs" id="tabs" hidden>
+    <button class="tab on" data-view="overview">Overview</button>
+    <button class="tab" data-view="cards">Cards</button>
+    <button class="tab" data-view="relics">Relics</button>
+    <button class="tab" data-view="encounters">Encounters</button>
+    <button class="tab" data-view="diff">Diff</button>
+  </div>
+
+  <div class="view on" id="view-overview">
+    <div class="cards-row" id="tiles"></div>
+    <div class="row2">
+      <div class="panel">
+        <h2>Win rate by day</h2>
+        <div class="note">Dot size follows run count. Dashed line is the overall win rate.</div>
+        <div id="chartDay"></div>
+      </div>
+      <div class="panel">
+        <h2>Win rate by ascension</h2>
+        <div class="note">Whiskers are 95% Wilson intervals.</div>
+        <div id="chartAsc"></div>
+      </div>
+    </div>
+    <div class="row2">
+      <div class="panel">
+        <h2>Win rate by epochs unlocked</h2>
+        <div class="note">How many of the 7 Alchemist epochs the player had earned. Fewer epochs means a smaller card pool.</div>
+        <div id="chartEp"></div>
+      </div>
+      <div class="panel">
+        <h2>Win rate by dominant theme</h2>
+        <div class="note">The theme with the most Alchemist cards in the final deck. Fewer than 3 such cards is Unfocused.</div>
+        <div id="themeTable"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="view" id="view-cards">
+    <div class="panel">
+      <h2>Card win rate vs pick rate</h2>
+      <div class="note">One dot per card. Size follows how many runs held it. Click a dot or a row for a breakdown by ascension and copies.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+        <input type="search" id="cardSearch" placeholder="Search cards…" style="width:220px" />
+        <span class="chips" id="themeChips"></span>
+        <span class="chips" id="xChips"></span>
+      </div>
+      <div id="chartScatter"></div>
+      <div class="legend" id="scatterLegend"></div>
+    </div>
+    <div class="panel">
+      <h2>All cards</h2>
+      <div class="note">Deck rate is the share of runs that finished with the card. Pick rate is taken ÷ offered on reward screens. Click a header to sort.</div>
+      <div class="scroll" id="cardTable"></div>
+    </div>
+  </div>
+
+  <div class="view" id="view-relics">
+    <div class="panel">
+      <h2>Relics</h2>
+      <div class="note">Share of runs that held the relic at the end, and how those runs went.</div>
+      <div class="scroll" id="relicTable"></div>
+    </div>
+  </div>
+
+  <div class="view" id="view-encounters">
+    <div class="panel">
+      <h2>Deaths by floor</h2>
+      <div class="note">Where lost runs ended.</div>
+      <div id="chartDeathFloors"></div>
+    </div>
+    <div class="panel">
+      <h2>Encounter toll</h2>
+      <div class="note">Damage and turns are per fight, averaged. Deaths are runs that ended in this fight.</div>
+      <div class="scroll" id="encTable"></div>
+    </div>
+  </div>
+
+  <div class="view" id="view-diff">
+    <div class="panel">
+      <h2>Version diff — per-card win rate</h2>
+      <div class="note">Did the change work? Compare two mod versions with the same filters. Only cards past Min runs in both show.</div>
+      <div style="display:flex;gap:14px;align-items:center;margin-bottom:8px;flex-wrap:wrap">
+        <label style="font-size:12px;color:var(--ink-2)">A <select id="diffA"></select></label>
+        <label style="font-size:12px;color:var(--ink-2)">B <select id="diffB"></select></label>
+      </div>
+      <div class="scroll" id="diffTable"></div>
+    </div>
+  </div>
+
+  <div class="empty" id="loadError" hidden></div>
+</main>
+
+<div class="modal-back" id="modalBack" hidden>
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    <h2 id="modalTitle"></h2>
+    <div class="note" id="modalSub"></div>
+    <div id="chartCardAsc"></div>
+    <div id="chartCardCopies"></div>
+  </div>
+</div>
+<div class="tooltip" id="tip"></div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const C = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+const DATA = "data/";
+let META, CMETA, RUNS, CARDS, CHOICES, RELICS, DEATHS, FLOORS, ENC, THEMES, ECON;
+let PREFIX = "ALCHEMIST-";
+const RARITY_COLOR = {Rare: "--rare", Uncommon: "--uncommon", Common: "--common"};
+
+const state = {
+  days: 30, mod: "all", game: "all", ep: "all", other: false, mp: false, minRuns: 3,
+  search: "", themes: new Set(), xMetric: "deck",
+  sort: {cards: ["runs", -1], relics: ["runs", -1], enc: ["fights", -1], diff: ["delta", -1]},
+};
+
+// ---------- filtering & aggregation ----------
+
+function sinceDay() {
+  if (state.days === "all") return "";
+  const d = new Date(META.last_day + "T00:00:00Z");
+  d.setUTCDate(d.getUTCDate() - state.days + 1);
+  return d.toISOString().slice(0, 10);
+}
+let SINCE = "";
+
+function sliceFilter(row, mod = state.mod) {
+  if (row.day < SINCE) return false;
+  if (mod !== "all" && row.mod !== mod) return false;
+  if (state.game !== "all" && row.game !== state.game) return false;
+  if (state.ep === "7" && row.ep !== 7) return false;
+  if (state.ep === "lt7" && row.ep >= 7) return false;
+  if (state.ep === "0" && row.ep !== 0) return false;
+  if (!state.mp && row.mp) return false;
+  return true;
+}
+
+function groupSum(rows, keyFn, fields = ["runs", "wins"]) {
+  const out = new Map();
+  for (const r of rows) {
+    const k = keyFn(r);
+    let g = out.get(k);
+    if (!g) { g = Object.fromEntries(fields.map(f => [f, 0])); out.set(k, g); }
+    for (const f of fields) g[f] += r[f] || 0;
+  }
+  return out;
+}
+
+const isMine = id => id.startsWith(PREFIX);
+function cardVisible(card) {
+  if (!state.other && !isMine(card)) return false;
+  if (state.themes.size) {
+    const meta = CMETA[card];
+    if (!meta || !meta.themes.some(t => state.themes.has(t))) return false;
+  }
+  return true;
+}
+const matchesSearch = name => !state.search || name.toLowerCase().includes(state.search.toLowerCase());
+
+function totalRuns(mod = state.mod) {
+  return RUNS.filter(r => sliceFilter(r, mod)).reduce((n, r) => n + r.runs, 0);
+}
+
+function computeCards(mod = state.mod, {applyMin = true} = {}) {
+  const total = totalRuns(mod);
+  const perCard = groupSum(CARDS.filter(r => sliceFilter(r, mod)), r => r.card);
+  const offers = groupSum(CHOICES.filter(r => sliceFilter(r, mod)), r => r.card, ["offered", "picked"]);
+  const rows = [];
+  for (const [card, g] of perCard) {
+    if ((applyMin && g.runs < state.minRuns) || !cardVisible(card)) continue;
+    const meta = CMETA[card];
+    const off = offers.get(card);
+    rows.push({card, name: prettyName(card), runs: g.runs, wins: g.wins,
+               winrate: g.wins / g.runs, deck: total ? g.runs / total : 0,
+               offered: off ? off.offered : 0,
+               pickrate: off && off.offered ? off.picked / off.offered : null,
+               rarity: meta ? meta.rarity : "Other",
+               themes: meta ? meta.themes : [],
+               color: C(RARITY_COLOR[meta && meta.rarity] || "--other")});
+  }
+  return {rows, total};
+}
+
+// Wilson 95% score interval: honest whiskers for small samples
+function wilson(wins, n) {
+  if (!n) return [0, 1];
+  const z = 1.96, p = wins / n, z2 = z * z;
+  const mid = (p + z2 / (2 * n)) / (1 + z2 / n);
+  const half = z * Math.sqrt(p * (1 - p) / n + z2 / (4 * n * n)) / (1 + z2 / n);
+  return [Math.max(0, mid - half), Math.min(1, mid + half)];
+}
+
+function prettyName(id) {
+  const meta = CMETA[id];
+  if (meta && meta.name) return meta.name;
+  return id.replace(/^[A-Z0-9]+-/, "").toLowerCase()
+           .replace(/_/g, " ").replace(/\b\w/g, ch => ch.toUpperCase());
+}
+const pct = v => v == null ? "–" : (v * 100).toFixed(v * 100 >= 10 ? 0 : 1) + "%";
+const pctCI = (w, n) => { const [lo, hi] = wilson(w, n); return `${pct(lo)}–${pct(hi)}`; };
+
+// ---------- svg helpers ----------
+
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, text) {
+  const n = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+  if (text !== undefined) n.textContent = text;
+  return n;
+}
+
+function makeFrame(width, height, pad) {
+  const svg = el("svg", {viewBox: `0 0 ${width} ${height}`, role: "img"});
+  const px = t => pad.l + t * (width - pad.l - pad.r);
+  const py = v => pad.t + (1 - v) * (height - pad.t - pad.b);
+  for (const t of [0, .25, .5, .75, 1]) {   // recessive horizontal grid + % labels
+    svg.append(el("line", {x1: pad.l, x2: width - pad.r, y1: py(t), y2: py(t),
+                           stroke: C("--grid"), "stroke-width": 1}));
+    svg.append(el("text", {x: pad.l - 8, y: py(t) + 4, "text-anchor": "end",
+                           "font-size": 11, fill: C("--ink-2")}, pct(t)));
+  }
+  return {svg, px, py, width, height, pad};
+}
+
+function baselineDash(f, y, x1, x2) {
+  f.svg.append(el("line", {x1, x2, y1: y, y2: y, stroke: C("--baseline"),
+                           "stroke-width": 1.5, "stroke-dasharray": "5 4"}));
+}
+
+// Push overlapping dots apart a little so a dense cluster stays readable
+function nudgeApart(pts, f) {
+  for (let iter = 0; iter < 30; iter++) {
+    let moved = false;
+    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+      const a = pts[i], b = pts[j], dx = b.x - a.x, dy = b.y - a.y;
+      const d = Math.hypot(dx, dy), min = a.rad + b.rad + 1.5;
+      if (d < min && d > 0) {
+        const push = (min - d) / 2, ux = dx / d, uy = dy / d;
+        a.x -= ux * push; a.y -= uy * push; b.x += ux * push; b.y += uy * push; moved = true;
+      }
+    }
+    if (!moved) break;
+  }
+  for (const p of pts) {
+    p.x = Math.max(f.pad.l + p.rad, Math.min(f.width - f.pad.r - p.rad, p.x));
+    p.y = Math.max(f.pad.t + p.rad, Math.min(f.height - f.pad.b - p.rad, p.y));
+  }
+}
+
+const tip = $("tip");
+function showTip(evt, lines) {
+  tip.innerHTML = lines.map((l, i) => i === 0 ? `<div class="v">${l}</div>` : `<div>${l}</div>`).join("");
+  tip.style.display = "block";
+  moveTip(evt);
+}
+function moveTip(evt) {
+  const x = evt.clientX + 14, y = evt.clientY + 14;
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  tip.style.left = Math.min(x, window.innerWidth - w - 8) + "px";
+  tip.style.top = Math.min(y, window.innerHeight - h - 8) + "px";
+}
+function hideTip() { tip.style.display = "none"; }
+function attachTip(node, lines) {
+  node.addEventListener("mouseenter", e => showTip(e, typeof lines === "function" ? lines() : lines));
+  node.addEventListener("mousemove", moveTip);
+  node.addEventListener("mouseleave", hideTip);
+}
+
+function lineChart(host, points, tipLines, width = 900) {  // points: [{label, v(0..1), runs}]
+  host.replaceChildren();
+  if (!points.length) return host.append(emptyNote());
+  const f = makeFrame(width, 300, {l: 52, t: 14, r: 20, b: 34});
+  const n = points.length;
+  const x = i => f.px(n === 1 ? .5 : i / (n - 1));
+  const overall = overallWinrate();
+  if (overall !== null) baselineDash(f, f.py(overall), f.pad.l, f.width - f.pad.r);
+  const d = points.map((p, i) => `${i ? "L" : "M"}${x(i)},${f.py(p.v)}`).join(" ");
+  f.svg.append(el("path", {d, fill: "none", stroke: C("--green"), "stroke-width": 2}));
+  const step = Math.max(1, Math.ceil(n / 8));
+  points.forEach((p, i) => {
+    const r = Math.max(3, Math.min(8, 2 + Math.sqrt(p.runs)));
+    const dot = el("circle", {cx: x(i), cy: f.py(p.v), r, fill: C("--green"),
+                              stroke: C("--panel"), "stroke-width": 2});
+    attachTip(dot, tipLines(p));
+    f.svg.append(dot);
+    if (i % step === 0 || i === n - 1)
+      f.svg.append(el("text", {x: x(i), y: f.height - 10, "text-anchor": "middle",
+                               "font-size": 11, fill: C("--ink-2")}, p.label));
+  });
+  host.append(f.svg);
+}
+
+function scatterChart(host, rows) {
+  host.replaceChildren();
+  const picking = state.xMetric === "pick";
+  const xv = r => picking ? r.pickrate : r.deck;
+  rows = rows.filter(r => xv(r) !== null);
+  if (!rows.length) return host.append(emptyNote());
+  const f = makeFrame(900, 430, {l: 52, t: 14, r: 20, b: 40});
+  const maxX = Math.max(.1, ...rows.map(xv)) * 1.06;
+  for (const t of [0, .25, .5, .75, 1]) {
+    f.svg.append(el("text", {x: f.px(t), y: f.height - 10, "text-anchor": "middle",
+                             "font-size": 11, fill: C("--ink-2")}, pct(t * maxX)));
+  }
+  f.svg.append(el("text", {x: f.px(.5), y: f.height - 24, "text-anchor": "middle",
+                           "font-size": 11, fill: C("--muted")},
+                  picking ? "pick rate (taken ÷ offered) →" : "deck rate (share of runs holding it) →"));
+  const overall = overallWinrate();
+  if (overall !== null) baselineDash(f, f.py(overall), f.pad.l, f.width - f.pad.r);
+  const pipR = r => Math.max(4, Math.min(9, 2.6 + Math.sqrt(r.runs) * 0.75));
+  const pts = rows.map(r => ({r, x: f.px(xv(r) / maxX), y: f.py(r.winrate),
+                              rad: pipR(r), hit: matchesSearch(r.name)}));
+  nudgeApart(pts, f);
+  const draw = (p, dim) => {
+    const node = el("circle", {cx: p.x, cy: p.y, r: p.rad, fill: p.r.color,
+                               opacity: dim ? .1 : .92, stroke: C("--panel"), "stroke-width": 1.5,
+                               style: "cursor:pointer"});
+    attachTip(node, () => [p.r.name, `${p.r.rarity}${p.r.themes.length ? " · " + p.r.themes.join(", ") : ""}`,
+                           `win ${pct(p.r.winrate)} (${pctCI(p.r.wins, p.r.runs)}) over ${p.r.runs} runs`,
+                           `deck ${pct(p.r.deck)} · pick ${pct(p.r.pickrate)}${p.r.offered ? " of " + p.r.offered + " offers" : ""}`]);
+    node.addEventListener("click", () => openModal(p.r));
+    f.svg.append(node);
+  };
+  for (const p of pts.filter(p => !p.hit)) draw(p, true);   // dimmed first, hits on top
+  for (const p of pts.filter(p => p.hit)) draw(p, false);
+  if (state.search) {   // label the hits so the search result is findable
+    for (const p of pts.filter(p => p.hit).slice(0, 12))
+      f.svg.append(el("text", {x: p.x + p.rad + 4, y: p.y + 4, "font-size": 11, fill: C("--ink")}, p.r.name));
+  }
+  host.append(f.svg);
+  $("scatterLegend").innerHTML =
+    Object.entries(RARITY_COLOR).map(([k, v]) => `<span><span class="sw" style="background:${C(v)}"></span>${k}</span>`).join("")
+    + `<span><span class="sw" style="background:${C("--other")}"></span>Other</span>`
+    + `<span><span class="ln"></span>overall win rate ${pct(overall)}</span>`;
+}
+
+function rateBarChart(host, rows, height = 300) {  // rows: [{label, v, runs, wins}]
+  host.replaceChildren();
+  if (!rows.length) return host.append(emptyNote());
+  const f = makeFrame(900, height, {l: 52, t: 14, r: 20, b: 34});
+  const overall = overallWinrate();
+  if (overall !== null) baselineDash(f, f.py(overall), f.pad.l, f.width - f.pad.r);
+  const n = rows.length, band = (f.width - f.pad.l - f.pad.r) / n, bw = Math.min(46, band * .62);
+  rows.forEach((r, i) => {
+    const cx = f.pad.l + band * (i + .5), y = f.py(r.v), y0 = f.py(0);
+    const bar = el("rect", {x: cx - bw / 2, y: Math.min(y, y0), width: bw, height: Math.max(1, y0 - y),
+                            rx: 4, fill: C("--green"), opacity: .85});
+    const [lo, hi] = wilson(r.wins, r.runs);
+    f.svg.append(bar);
+    f.svg.append(el("line", {x1: cx, x2: cx, y1: f.py(lo), y2: f.py(hi), stroke: C("--ink-2"), "stroke-width": 1.5}));
+    attachTip(bar, [r.tipTitle || r.label, `win ${pct(r.v)} (${pct(lo)}–${pct(hi)})`, `${r.wins} of ${r.runs} runs`]);
+    f.svg.append(el("text", {x: cx, y: f.height - 10, "text-anchor": "middle", "font-size": 11, fill: C("--ink-2")}, r.label));
+  });
+  host.append(f.svg);
+}
+
+function countColumns(host, rows) {  // rows: [{label, v}]
+  host.replaceChildren();
+  if (!rows.length) return host.append(emptyNote());
+  const width = 900, height = 260, pad = {l: 40, t: 14, r: 12, b: 34};
+  const svg = el("svg", {viewBox: `0 0 ${width} ${height}`, role: "img"});
+  const max = Math.max(1, ...rows.map(r => r.v));
+  const n = rows.length, band = (width - pad.l - pad.r) / n;
+  const py = v => pad.t + (1 - v / max) * (height - pad.t - pad.b);
+  for (const t of [0, .5, 1]) {
+    svg.append(el("line", {x1: pad.l, x2: width - pad.r, y1: py(t * max), y2: py(t * max), stroke: C("--grid")}));
+    svg.append(el("text", {x: pad.l - 8, y: py(t * max) + 4, "text-anchor": "end", "font-size": 11, fill: C("--ink-2")}, Math.round(t * max)));
+  }
+  rows.forEach((r, i) => {
+    const x = pad.l + band * i + 1, w = Math.max(1, band - 2);
+    const bar = el("rect", {x, y: py(r.v), width: w, height: Math.max(0, py(0) - py(r.v)), rx: 2, fill: C("--purple"), opacity: .85});
+    attachTip(bar, [r.label, `${r.v} deaths`]);
+    svg.append(bar);
+    if (n <= 20 || i % Math.ceil(n / 20) === 0)
+      svg.append(el("text", {x: x + w / 2, y: height - 10, "text-anchor": "middle", "font-size": 10, fill: C("--ink-2")}, r.label));
+  });
+  host.append(svg);
+}
+
+function emptyNote(msg = "Not enough runs for this slice yet.") {
+  const d = document.createElement("div"); d.className = "empty"; d.textContent = msg; return d;
+}
+
+// ---------- tables ----------
+
+function sortable(host, key, columns, rows, {rowClick} = {}) {
+  host.replaceChildren();
+  if (!rows.length) return host.append(emptyNote());
+  const [sortKey, dir] = state.sort[key];
+  rows = [...rows].sort((a, b) => {
+    const av = a[sortKey], bv = b[sortKey];
+    if (av == null && bv == null) return 0;
+    if (av == null) return 1;
+    if (bv == null) return -1;
+    return (av < bv ? -1 : av > bv ? 1 : 0) * dir;
+  });
+  const table = document.createElement("table");
+  const thead = table.createTHead().insertRow();
+  for (const c of columns) {
+    const th = document.createElement("th");
+    th.textContent = c.label;
+    if (c.num) th.className = "num";
+    if (c.key === sortKey) th.classList.add("sorted", dir > 0 ? "asc" : "x");
+    th.addEventListener("click", () => {
+      state.sort[key] = c.key === sortKey ? [c.key, -dir] : [c.key, c.num ? -1 : 1];
+      renderAll();
+    });
+    thead.append(th);
+  }
+  const tbody = table.createTBody();
+  for (const r of rows) {
+    const tr = tbody.insertRow();
+    if (rowClick) { tr.className = "rowlink"; tr.addEventListener("click", () => rowClick(r)); }
+    for (const c of columns) {
+      const td = tr.insertCell();
+      if (c.num) td.className = "num";
+      const v = c.render ? c.render(r) : r[c.key];
+      if (v instanceof Node) td.append(v); else td.innerHTML = v ?? "–";
+    }
+  }
+  host.append(table);
+}
+
+const rarDot = r => `<span class="rar" style="background:${r.color}"></span>${r.name}`;
+const bar = (v, max = 1) => `<span class="minibar" style="width:${Math.round(60 * (v || 0) / max)}px"></span> ${pct(v)}`;
+
+// ---------- views ----------
+
+function overallWinrate() {
+  const g = groupSum(RUNS.filter(r => sliceFilter(r)), () => "all").get("all");
+  return g && g.runs ? g.wins / g.runs : null;
+}
+
+function renderOverview() {
+  const rows = RUNS.filter(r => sliceFilter(r));
+  const all = groupSum(rows, () => 1).get(1) || {runs: 0, wins: 0};
+  const econ = groupSum(ECON.filter(r => sliceFilter(r)), () => 1, ["brews", "sold", "runs"]).get(1) || {brews: 0, sold: 0, runs: 0};
+  const tiles = [
+    ["Runs", all.runs, ""],
+    ["Win rate", pct(all.runs ? all.wins / all.runs : null), all.runs ? pctCI(all.wins, all.runs) : ""],
+    ["Brews per run", econ.runs ? (econ.brews / econ.runs).toFixed(1) : "–", "rest-site Brew picks"],
+    ["Potions sold per run", econ.runs ? (econ.sold / econ.runs).toFixed(1) : "–", ""],
+  ];
+  $("tiles").innerHTML = tiles.map(([lab, val, ci]) =>
+    `<div class="tile"><div class="lab">${lab}</div><div class="val">${val}</div><div class="ci">${ci}</div></div>`).join("");
+
+  const byDay = [...groupSum(rows, r => r.day)].sort((a, b) => a[0] < b[0] ? -1 : 1)
+    .map(([day, g]) => ({label: day.slice(5), day, v: g.wins / g.runs, runs: g.runs, wins: g.wins}));
+  lineChart($("chartDay"), byDay, p => [p.day, `win ${pct(p.v)} (${pctCI(p.wins, p.runs)})`, `${p.wins} of ${p.runs} runs`]);
+
+  const byAsc = [...groupSum(rows, r => r.asc)].sort((a, b) => a[0] - b[0])
+    .filter(([, g]) => g.runs >= state.minRuns)
+    .map(([asc, g]) => ({label: "A" + asc, v: g.wins / g.runs, runs: g.runs, wins: g.wins}));
+  rateBarChart($("chartAsc"), byAsc);
+
+  const byEp = [...groupSum(rows, r => r.ep)].sort((a, b) => a[0] - b[0])
+    .filter(([, g]) => g.runs >= state.minRuns)
+    .map(([ep, g]) => ({label: ep + "/7", tipTitle: `${ep} epochs unlocked`, v: g.wins / g.runs, runs: g.runs, wins: g.wins}));
+  rateBarChart($("chartEp"), byEp);
+
+  const themes = [...groupSum(THEMES.filter(r => sliceFilter(r)), r => r.theme)]
+    .map(([theme, g]) => ({theme, runs: g.runs, wins: g.wins, winrate: g.wins / g.runs,
+                           share: all.runs ? g.runs / all.runs : 0}))
+    .sort((a, b) => b.runs - a.runs);
+  const host = $("themeTable"); host.replaceChildren();
+  if (!themes.length) return host.append(emptyNote());
+  const t = document.createElement("table");
+  t.innerHTML = `<thead><tr><th>Theme</th><th class="num">Runs</th><th class="num">Share</th><th class="num">Win rate</th><th class="num">95% CI</th></tr></thead>`;
+  const tb = t.createTBody();
+  for (const r of themes) {
+    tb.insertRow().innerHTML = `<td>${r.theme}</td><td class="num">${r.runs}</td><td class="num">${pct(r.share)}</td>`
+      + `<td class="num">${bar(r.winrate)}</td><td class="num">${pctCI(r.wins, r.runs)}</td>`;
+  }
+  host.append(t);
+}
+
+function renderCards() {
+  const {rows} = computeCards();
+  scatterChart($("chartScatter"), rows);
+  const shown = rows.filter(r => matchesSearch(r.name));
+  sortable($("cardTable"), "cards", [
+    {key: "name", label: "Card", render: rarDot},
+    {key: "rarity", label: "Rarity"},
+    {key: "themes", label: "Themes", render: r => `<span class="themes">${r.themes.join(", ")}</span>`},
+    {key: "runs", label: "Runs", num: true},
+    {key: "deck", label: "Deck rate", num: true, render: r => pct(r.deck)},
+    {key: "pickrate", label: "Pick rate", num: true, render: r => pct(r.pickrate)},
+    {key: "offered", label: "Offered", num: true},
+    {key: "winrate", label: "Win rate", num: true, render: r => bar(r.winrate)},
+    {key: "ci", label: "95% CI", num: true, render: r => pctCI(r.wins, r.runs)},
+  ], shown, {rowClick: openModal});
+}
+
+function openModal(row) {
+  $("modalTitle").textContent = row.name;
+  $("modalSub").textContent = `${row.rarity}${row.themes.length ? " · " + row.themes.join(", ") : ""} · ${row.runs} runs · win ${pct(row.winrate)} (${pctCI(row.wins, row.runs)})`;
+  const mine = CARDS.filter(r => sliceFilter(r) && r.card === row.card);
+  const byAsc = [...groupSum(mine, r => r.asc)].sort((a, b) => a[0] - b[0])
+    .map(([asc, g]) => ({label: "A" + asc, v: g.wins / g.runs, runs: g.runs, wins: g.wins}));
+  const byCopies = [...groupSum(mine, r => r.copies)].sort((a, b) => a[0] - b[0])
+    .map(([c, g]) => ({label: c >= 3 ? "3+ copies" : c + (c === 1 ? " copy" : " copies"), v: g.wins / g.runs, runs: g.runs, wins: g.wins}));
+  const h1 = $("chartCardAsc"); h1.replaceChildren();
+  h1.append(Object.assign(document.createElement("h3"), {textContent: "Win rate by ascension", style: "font-size:13px;margin:10px 0 2px"}));
+  const c1 = document.createElement("div"); h1.append(c1); rateBarChart(c1, byAsc, 220);
+  const h2 = $("chartCardCopies"); h2.replaceChildren();
+  h2.append(Object.assign(document.createElement("h3"), {textContent: "Win rate by copies in deck", style: "font-size:13px;margin:10px 0 2px"}));
+  const c2 = document.createElement("div"); h2.append(c2); rateBarChart(c2, byCopies, 220);
+  $("modalBack").hidden = false;
+}
+function closeModal() { $("modalBack").hidden = true; hideTip(); }
+
+function renderRelics() {
+  const total = totalRuns();
+  const rows = [...groupSum(RELICS.filter(r => sliceFilter(r)), r => r.relic)]
+    .filter(([, g]) => g.runs >= state.minRuns)
+    .map(([relic, g]) => ({relic, name: prettyName(relic), runs: g.runs, wins: g.wins,
+                           winrate: g.wins / g.runs, share: total ? g.runs / total : 0,
+                           mine: isMine(relic)}))
+    .filter(r => state.other || r.mine);
+  sortable($("relicTable"), "relics", [
+    {key: "name", label: "Relic", render: r => r.mine ? `<span class="rar" style="background:${C("--gold")}"></span>${r.name}` : r.name},
+    {key: "runs", label: "Runs", num: true},
+    {key: "share", label: "Held in", num: true, render: r => pct(r.share)},
+    {key: "winrate", label: "Win rate", num: true, render: r => bar(r.winrate)},
+    {key: "ci", label: "95% CI", num: true, render: r => pctCI(r.wins, r.runs)},
+  ], rows);
+}
+
+function renderEncounters() {
+  const floors = [...groupSum(FLOORS.filter(r => sliceFilter(r)), r => r.floor, ["deaths"])]
+    .sort((a, b) => a[0] - b[0]);
+  const maxFloor = floors.length ? Math.max(...floors.map(([f]) => f)) : 0;
+  const series = [];
+  for (let f = 1; f <= maxFloor; f++) {
+    const g = floors.find(([k]) => k === f);
+    series.push({label: String(f), v: g ? g[1].deaths : 0});
+  }
+  countColumns($("chartDeathFloors"), series);
+
+  const deaths = groupSum(DEATHS.filter(r => sliceFilter(r)), r => r.enc, ["deaths"]);
+  const rows = [...groupSum(ENC.filter(r => sliceFilter(r)), r => r.enc, ["fights", "dmg", "turns"])]
+    .filter(([, g]) => g.fights >= state.minRuns)
+    .map(([enc, g]) => ({enc, name: prettyName(enc), fights: g.fights,
+                         dmg: g.dmg / g.fights, turns: g.turns / g.fights,
+                         deaths: (deaths.get(enc) || {deaths: 0}).deaths,
+                         lethality: (deaths.get(enc) || {deaths: 0}).deaths / g.fights}));
+  sortable($("encTable"), "enc", [
+    {key: "name", label: "Encounter"},
+    {key: "fights", label: "Fights", num: true},
+    {key: "dmg", label: "Avg damage", num: true, render: r => r.dmg.toFixed(1)},
+    {key: "turns", label: "Avg turns", num: true, render: r => r.turns.toFixed(1)},
+    {key: "deaths", label: "Deaths", num: true},
+    {key: "lethality", label: "Lethality", num: true, render: r => pct(r.lethality)},
+  ], rows);
+}
+
+function renderDiff() {
+  const a = $("diffA").value, b = $("diffB").value;
+  if (!a || !b || a === b) return $("diffTable").replaceChildren(emptyNote("Pick two different mod versions."));
+  const A = new Map(computeCards(a).rows.map(r => [r.card, r]));
+  const B = new Map(computeCards(b).rows.map(r => [r.card, r]));
+  const rows = [];
+  for (const [card, ra] of A) {
+    const rb = B.get(card);
+    if (!rb) continue;
+    rows.push({card, name: ra.name, color: ra.color, rarity: ra.rarity, aRuns: ra.runs, bRuns: rb.runs,
+               aWin: ra.winrate, bWin: rb.winrate, delta: rb.winrate - ra.winrate,
+               aDeck: ra.deck, bDeck: rb.deck});
+  }
+  sortable($("diffTable"), "diff", [
+    {key: "name", label: "Card", render: rarDot},
+    {key: "aRuns", label: `Runs (${a})`, num: true},
+    {key: "aWin", label: `Win (${a})`, num: true, render: r => pct(r.aWin)},
+    {key: "bRuns", label: `Runs (${b})`, num: true},
+    {key: "bWin", label: `Win (${b})`, num: true, render: r => pct(r.bWin)},
+    {key: "delta", label: "Δ win", num: true, render: r =>
+      `<span class="${r.delta >= 0 ? "up" : "down"}">${r.delta >= 0 ? "+" : ""}${(r.delta * 100).toFixed(1)} pts</span>`},
+    {key: "bDeck", label: "Δ deck rate", num: true, render: r => {
+      const d = r.bDeck - r.aDeck; return `<span class="${d >= 0 ? "up" : "down"}">${d >= 0 ? "+" : ""}${(d * 100).toFixed(1)} pts</span>`; }},
+  ], rows);
+}
+
+function renderAll() {
+  SINCE = sinceDay();
+  renderOverview(); renderCards(); renderRelics(); renderEncounters(); renderDiff();
+}
+
+// ---------- controls ----------
+
+function chipRow(host, labels, get, set) {
+  host.replaceChildren();
+  for (const [label, value] of labels) {
+    const b = document.createElement("button");
+    b.className = "chip" + (get(value) ? " on" : ""); b.textContent = label;
+    b.addEventListener("click", () => { set(value); chipRow(host, labels, get, set); renderAll(); });
+    host.append(b);
+  }
+}
+function fillSelect(sel, values, allLabel) {
+  sel.replaceChildren();
+  if (allLabel) sel.append(new Option(allLabel, "all"));
+  for (const v of values) sel.append(new Option(v, v));
+}
+
+async function init() {
+  const load = name => fetch(DATA + name + ".json", {cache: "no-store"}).then(r => {
+    if (!r.ok) throw new Error(`${name}.json: ${r.status}`); return r.json(); });
+  try {
+    [META, CMETA, RUNS, CARDS, CHOICES, RELICS, DEATHS, FLOORS, ENC, THEMES, ECON] = await Promise.all(
+      ["meta", "cards_meta", "runs_daily", "cards_daily", "choices_daily", "relics_daily", "deaths_daily",
+       "death_floors_daily", "encounters_daily", "themes_daily", "economy_daily"].map(load));
+  } catch (e) {
+    $("fresh").textContent = "";
+    $("loadError").hidden = false;
+    $("loadError").textContent = "No analytics data yet (" + e.message + "). The nightly export has not run, or nothing has been uploaded.";
+    return;
+  }
+  PREFIX = META.prefix || PREFIX;
+  $("fresh").textContent = `${META.total_runs} runs from ${META.players} players · ${META.first_day} → ${META.last_day} · refreshed ${META.generated_at.replace("T", " ").replace("Z", " UTC")}`;
+  $("filters").hidden = false; $("tabs").hidden = false;
+
+  chipRow($("dateChips"), [["7d", 7], ["30d", 30], ["90d", 90], ["all", "all"]], v => state.days === v, v => state.days = v);
+  fillSelect($("modSel"), META.mod_versions, "all versions");
+  fillSelect($("gameSel"), META.game_versions, "all builds");
+  fillSelect($("diffA"), META.mod_versions); fillSelect($("diffB"), META.mod_versions);
+  if (META.mod_versions.length > 1) {
+    $("diffA").value = META.mod_versions[META.mod_versions.length - 2];
+    $("diffB").value = META.mod_versions[META.mod_versions.length - 1];
+  }
+  $("modSel").addEventListener("change", e => { state.mod = e.target.value; renderAll(); });
+  $("gameSel").addEventListener("change", e => { state.game = e.target.value; renderAll(); });
+  $("epSel").addEventListener("change", e => { state.ep = e.target.value; renderAll(); });
+  $("showOther").addEventListener("change", e => { state.other = e.target.checked; renderAll(); });
+  $("includeMP").addEventListener("change", e => { state.mp = e.target.checked; renderAll(); });
+  $("minMinus").addEventListener("click", () => { state.minRuns = Math.max(1, state.minRuns - 1); $("minRunsVal").textContent = state.minRuns; renderAll(); });
+  $("minPlus").addEventListener("click", () => { state.minRuns += 1; $("minRunsVal").textContent = state.minRuns; renderAll(); });
+  $("cardSearch").addEventListener("input", e => { state.search = e.target.value.trim(); renderCards(); });
+  chipRow($("themeChips"), META.themes.map(t => [t, t]), v => state.themes.has(v),
+          v => state.themes.has(v) ? state.themes.delete(v) : state.themes.add(v));
+  chipRow($("xChips"), [["x: deck rate", "deck"], ["x: pick rate", "pick"]], v => state.xMetric === v, v => state.xMetric = v);
+  $("diffA").addEventListener("change", renderDiff); $("diffB").addEventListener("change", renderDiff);
+  $("modalClose").addEventListener("click", closeModal);
+  $("modalBack").addEventListener("click", e => { if (e.target === $("modalBack")) closeModal(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+
+  document.querySelectorAll(".tab").forEach(tab => tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t === tab));
+    document.querySelectorAll(".view").forEach(v => v.classList.toggle("on", v.id === "view-" + tab.dataset.view));
+    history.replaceState(null, "", "#" + tab.dataset.view);
+  }));
+  const hash = location.hash.slice(1);
+  if (hash) document.querySelector(`.tab[data-view="${hash}"]`)?.click();
+
+  renderAll();
+}
+init();
+</script>
+</body>
+</html>

@@ -6,6 +6,7 @@ using Alchemist.AlchemistCode.Commands;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Transform)]
 public class Eureka : AlchemistCard
 {
     public Eureka() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)

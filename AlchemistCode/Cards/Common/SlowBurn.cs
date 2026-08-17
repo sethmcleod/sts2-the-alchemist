@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Ferment)]
 public class SlowBurn : AlchemistCard
 {
     protected override bool Ferments => true;

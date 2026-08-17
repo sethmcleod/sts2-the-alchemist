@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
 public class Harden : AlchemistCard
 {
     public Harden() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)

@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Poison)]
 public class Spatter : AlchemistCard
 {
     public Spatter() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)

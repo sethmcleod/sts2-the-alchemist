@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Ferment, CardTheme.Poison)]
 public class SweatItOut : AlchemistCard
 {
     protected override bool Ferments => true;

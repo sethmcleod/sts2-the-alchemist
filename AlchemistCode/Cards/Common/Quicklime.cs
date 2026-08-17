@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Poison)]
 public class Quicklime : AlchemistCard
 {
     public Quicklime() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
