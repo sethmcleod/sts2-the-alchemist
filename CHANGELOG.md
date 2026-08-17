@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.9.8] - 2026-08-17
+
 ### Added
 
 - Added Quaff card: "Gain 2 (3) Antitoxin. Draw 1 (2) cards. Draw 1 additional card for every 4 Antitoxin you have."
