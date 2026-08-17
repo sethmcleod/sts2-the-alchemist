@@ -21,8 +21,7 @@ public class Spatter : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_slash"),
-            sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
         if (CombatState == null || play.Target == null) return;
 
         // Unpowered, the way Pass It On and White Heat deal their secondary damage, so the splash is

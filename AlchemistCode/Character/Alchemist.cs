@@ -95,6 +95,17 @@ public partial class Alchemist : PlaceholderCharacterModel
     public override string CustomCharacterSelectTransitionPath => $"{MainFile.ResPath}/materials/transitions/alchemist_transition_mat.tres";
     public override string CustomEnergyCounterPath => $"{MainFile.ResPath}/scenes/combat/energy_counters/alchemist_energy_counter.tscn";
 
+    // The Architect event replays the character's attacks. These are the impact families the card pool
+    // uses; the placeholder list would show Ironclad's bloody impact
+    public override List<string> GetArchitectAttackVfx() => new()
+    {
+        "vfx/vfx_dramatic_stab",
+        "vfx/vfx_slime_impact",
+        "vfx/vfx_fire_burst",
+        "vfx/vfx_sandy_impact",
+        "vfx/vfx_heavy_blunt",
+    };
+
     // Both scenes hold no Spine node of their own. SpineScenePatch puts the model in after BaseLib
     // turns each one into its game type. The shop reuses the combat skeleton, the same way every
     // base game character does, and plays its relaxed_loop

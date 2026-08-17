@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-FERMENT.description": "Cette carte gagne en puissance à chaque tour passé dans votre [gold]Main[/gold]. La jouer ajoute [gold]Lie[/gold] à votre [gold]Défausse[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentation",
-  "ALCHEMIST-INFUSE.description": "[gold]Envoûtez[/gold] une carte jusqu'à la fin du combat. Les Attaques gagnent [purple]Imprégné[/purple] ; les Compétences gagnent [purple]Dosé[/purple] ; les Pouvoirs gagnent [purple]Concentré[/purple]. Les autres cartes gagnent [gold]Éthéré[/gold].",
+  "ALCHEMIST-INFUSE.description": "[gold]Envoûtez[/gold] une carte jusqu'à la fin du combat. Les Attaques gagnent [purple]Imprégné[/purple] ; les Compétences gagnent [purple]Dosé[/purple] ; les Pouvoirs gagnent [purple]Fortifié[/purple]. Les autres cartes gagnent [gold]Éthéré[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Choisissez {Amount:plural:une carte|[blue]{}[/blue] cartes} à [gold]Infuser[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Choisissez jusqu'à [blue]{MaxCount}[/blue] {MaxCount:plural:carte|cartes} à [gold]Infuser[/gold].",
   "ALCHEMIST-INFUSE.title": "Infusion"

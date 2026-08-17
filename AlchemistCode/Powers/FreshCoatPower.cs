@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using Alchemist.AlchemistCode.Commands;
-using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -12,12 +11,16 @@ public class FreshCoatPower : AlchemistPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => Infusion.InfuseTips();
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        new[] { HoverTipFactory.FromPower<AntitoxinPower>() };
 
-    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    // Called from Patches.InfusionPatches, which already postfixes every CardCmd.Enchant
+    internal async Task OnEnchanted()
     {
-        if (player != Owner.Player) return;
         Flash();
-        await Infusion.InfuseChosenFromHand(choiceContext, this, Owner.Player, Amount, Amount);
+        var context = new ThrowingPlayerChoiceContext();
+        // Capacity first, so the gain lands inside the new limit instead of spilling to Block
+        await PowerCmd.Apply<AntitoxinCapacityPower>(context, Owner, Amount, Owner, null);
+        await PowerCmd.Apply<AntitoxinPower>(context, Owner, Amount, Owner, null);
     }
 }

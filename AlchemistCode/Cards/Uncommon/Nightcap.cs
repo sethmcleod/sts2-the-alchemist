@@ -5,9 +5,9 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-public class OneForMe : AlchemistCard
+public class Nightcap : AlchemistCard
 {
-    public OneForMe() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Nightcap() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(14, 4);
         WithPower<AntitoxinPower>(5, 1);
@@ -15,7 +15,8 @@ public class OneForMe : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_bloody_impact")).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_blunt"),
+            tmpSfx: "blunt_attack.mp3").Execute(choiceContext);
         await CommonActions.ApplySelf<AntitoxinPower>(choiceContext, this);
     }
 }

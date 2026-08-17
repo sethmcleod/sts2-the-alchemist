@@ -1,8 +1,8 @@
 {
   "ALCHEMIST-DOSED.description": "Quando esta Técnica for jogada, receba [blue]{Amount}[/blue] de [gold]Antitoxina[/gold].",
   "ALCHEMIST-DOSED.title": "Dosada",
+  "ALCHEMIST-FORTIFIED.description": "Quando este Poder for jogado, aumente o seu limite de [gold]Antitoxina[/gold] em [blue]{Amount}[/blue].",
+  "ALCHEMIST-FORTIFIED.title": "Fortificado",
   "ALCHEMIST-LACED.description": "Sempre que este Ataque causar dano não bloqueado, aplique [blue]{Amount}[/blue] de [gold]Veneno[/gold].",
-  "ALCHEMIST-LACED.title": "Impregnada",
-  "ALCHEMIST-POTENT.description": "Quando este Poder for jogado, receba [blue]{Amount}[/blue] de [gold]Força[/gold].",
-  "ALCHEMIST-POTENT.title": "Potente"
+  "ALCHEMIST-LACED.title": "Impregnada"
 }

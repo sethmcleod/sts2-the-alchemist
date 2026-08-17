@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s7rpqmwquoch"
-path="res://.godot/imported/blood_rush.png-abbec81af6e71fc426d6c1510b905b4a.ctex"
+uid="uid://4ojuqnjs4v7b"
+path="res://.godot/imported/ripen.png-42fdc3bf3451917cf24160f707c6de9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/blood_rush.png"
-dest_files=["res://.godot/imported/blood_rush.png-abbec81af6e71fc426d6c1510b905b4a.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/ripen.png"
+dest_files=["res://.godot/imported/ripen.png-42fdc3bf3451917cf24160f707c6de9e.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

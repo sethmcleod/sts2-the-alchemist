@@ -16,6 +16,7 @@ public class Taint : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        PoisonSplash(play.Target);
         await CommonActions.Apply<PoisonPower>(choiceContext, this, play);
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
             DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);

@@ -1,8 +1,8 @@
 {
   "ALCHEMIST-DOSED.description": "Cuando juegues esta Habilidad, gana [blue]{Amount}[/blue] de [gold]Antitoxina[/gold].",
   "ALCHEMIST-DOSED.title": "Dosis",
+  "ALCHEMIST-FORTIFIED.description": "Cuando juegues este Poder, aumenta tu límite de [gold]Antitoxina[/gold] en [blue]{Amount}[/blue].",
+  "ALCHEMIST-FORTIFIED.title": "Fortificación",
   "ALCHEMIST-LACED.description": "Cuando este Ataque hace daño sin ser bloqueado, aplica [blue]{Amount}[/blue] de [gold]Veneno[/gold].",
-  "ALCHEMIST-LACED.title": "Ponzoña",
-  "ALCHEMIST-POTENT.description": "Cuando juegues este Poder, gana [blue]{Amount}[/blue] de [gold]Fuerza[/gold].",
-  "ALCHEMIST-POTENT.title": "Potencia"
+  "ALCHEMIST-LACED.title": "Ponzoña"
 }

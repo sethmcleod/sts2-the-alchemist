@@ -7,6 +7,8 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class Salve : AlchemistCard
 {
+    protected internal override bool PlaysCastAnimation => false;
+
     public Salve() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithBlock(6, 3);

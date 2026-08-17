@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8oaioyi8dkvs"
-path="res://.godot/imported/one_for_me.png-bc3dd41858067a10d547b11154cef012.ctex"
+uid="uid://j2r20ur8rvan"
+path="res://.godot/imported/nightcap.png-8151929e9c6ac589a07e575937d7cef0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/one_for_me.png"
-dest_files=["res://.godot/imported/one_for_me.png-bc3dd41858067a10d547b11154cef012.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/nightcap.png"
+dest_files=["res://.godot/imported/nightcap.png-8151929e9c6ac589a07e575937d7cef0.ctex"]
 
 [params]
 

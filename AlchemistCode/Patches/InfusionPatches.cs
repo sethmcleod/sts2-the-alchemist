@@ -35,5 +35,7 @@ public static class EnchantCountPatch
         Infusion.RecordCombatEnchant(card);
         if (card.Owner?.Creature.GetPower<Powers.KickbackPower>() is { } alembic)
             _ = alembic.OnEnchanted();
+        if (card.Owner?.Creature.GetPower<Powers.FreshCoatPower>() is { } coat)
+            _ = coat.OnEnchanted();
     }
 }

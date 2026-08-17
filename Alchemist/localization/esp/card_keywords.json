@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-FERMENT.description": "Esta carta aumenta su poder por cada turno que pasa en tu [gold]mano[/gold]. Al jugarla, agregas [gold]Posos[/gold] a tu [gold]pila de descarte[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentación",
-  "ALCHEMIST-INFUSE.description": "[gold]Encantas[/gold] una carta hasta el final del combate. Las cartas de ataque obtienen [purple]adulteración[/purple]; las de habilidad, [purple]dosificación[/purple]; las de poder, [purple]potenciación[/purple]. Las demás obtienen [gold]evanescencia[/gold].",
+  "ALCHEMIST-INFUSE.description": "[gold]Encantas[/gold] una carta hasta el final del combate. Las cartas de ataque obtienen [purple]adulteración[/purple]; las de habilidad, [purple]dosificación[/purple]; las de poder, [purple]fortificación[/purple]. Las demás obtienen [gold]evanescencia[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Elige {Amount:plural:una carta|[blue]{}[/blue] cartas} para [gold]infundir[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Elige hasta [blue]{MaxCount}[/blue] {MaxCount:plural:carta|cartas} para [gold]infundir[/gold].",
   "ALCHEMIST-INFUSE.title": "Infusión"

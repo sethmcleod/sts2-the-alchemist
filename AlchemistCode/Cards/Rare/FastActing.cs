@@ -21,7 +21,7 @@ public class FastActing : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_starry_impact")).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_slash")).Execute(choiceContext);
         for (var i = 0; i < Triggers && Owner.Creature.IsAlive; i++)
             await PoisonTrigger.Once(choiceContext, Owner.Creature);
     }

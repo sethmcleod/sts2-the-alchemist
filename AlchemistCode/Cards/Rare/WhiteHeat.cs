@@ -34,7 +34,7 @@ public class WhiteHeat : AlchemistCard
         if (CombatState == null || Fuel <= 0) return;
         await DamageCmd.Attack(Fuel * Multiplier)
             .Unpowered()
-            .WithHitFx(HitVfx("vfx/vfx_heavy_blunt"), null, "heavy_attack.mp3")
+            .WithHitFx(HitVfx("vfx/vfx_fire_burst"), "event:/sfx/characters/attack_fire")
             .FromCard(this, play)
             .TargetingAllOpponents(CombatState)
             .Execute(choiceContext);

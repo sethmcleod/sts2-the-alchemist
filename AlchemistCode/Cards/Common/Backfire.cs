@@ -21,7 +21,8 @@ public class Backfire : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_sandy_impact"))
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_fire_burst"),
+            sfx: "event:/sfx/characters/attack_fire")
             .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay).Execute(choiceContext);
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
             DynamicVars["poison"].IntValue, Owner.Creature, this);

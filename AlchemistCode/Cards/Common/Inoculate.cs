@@ -8,6 +8,8 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 
 public class Inoculate : AlchemistCard
 {
+    protected internal override bool PlaysCastAnimation => false;
+
     public Inoculate() : base(2, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(12, 4);
