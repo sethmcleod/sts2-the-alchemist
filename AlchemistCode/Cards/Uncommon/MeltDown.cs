@@ -9,7 +9,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class MeltDown : AlchemistCard
 {
-    public MeltDown() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public MeltDown() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithUpgradingCardTip<Distillate>();
         WithVar("cards", 1, 1);

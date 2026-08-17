@@ -16,6 +16,7 @@ public class Swill : AlchemistCard
     public Swill() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithVar("Turns", 1, 1);
+        WithCards(1, 0);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) });
     }
 
@@ -26,7 +27,7 @@ public class Swill : AlchemistCard
 
     protected override bool ConditionalGlow => Brewing.Any();
 
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var turns = DynamicVars["Turns"].IntValue;
         var brewing = Brewing.ToList();
@@ -34,6 +35,6 @@ public class Swill : AlchemistCard
             card.AdvanceFerment(turns);
         if (brewing.Count > 0)
             CardCmd.Preview(brewing);
-        return Task.CompletedTask;
+        await CommonActions.Draw(this, choiceContext);
     }
 }

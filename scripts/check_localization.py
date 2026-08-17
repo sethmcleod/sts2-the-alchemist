@@ -111,10 +111,18 @@ def check_structure(lang: str, eng: dict[str, dict]) -> list[str]:
             errors.append(f"{lang}/{fname}: extra key {key}")
         for key in eng_table.keys() & table.keys():
             src, dst = eng_table[key], table[key]
-            if placeholders(src) != placeholders(dst):
+            # Same restructuring latitude the tag check grants: with a plural block in
+            # play, a translation may repeat a placeholder across more branches than
+            # English has or collapse identical branches to one use. The base game does
+            # both (CHARGE: Japanese folds {IfUpgraded} to a single use, Russian to
+            # three), so the requirement drops to the same set of names.
+            src_ph, dst_ph = placeholders(src), placeholders(dst)
+            if PLURAL_RE.search(src) or PLURAL_RE.search(dst):
+                src_ph, dst_ph = sorted(set(src_ph)), sorted(set(dst_ph))
+            if src_ph != dst_ph:
                 errors.append(
                     f"{lang}/{fname}: {key}: placeholders differ "
-                    f"({placeholders(src)} vs {placeholders(dst)})"
+                    f"({src_ph} vs {dst_ph})"
                 )
             if (problem := tag_mismatch(src, dst)) is not None:
                 errors.append(f"{lang}/{fname}: {key}: {problem}")

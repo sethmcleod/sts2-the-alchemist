@@ -54,6 +54,7 @@ public static class AlchemistCardCmd
         PlayerChoiceContext choiceContext, AlchemistCard source, int count = 1) where T : CardModel, new()
     {
         if (source.CombatState == null || count <= 0) return;
+        var upgrade = source.IsUpgraded;
         var selected = await CardSelectCmd.FromHand(
             choiceContext, source.Owner,
             new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, count),
@@ -61,7 +62,7 @@ public static class AlchemistCardCmd
         foreach (var card in selected)
         {
             var replacement = source.CombatState.CreateCard<T>(source.Owner);
-            if (source.IsUpgraded) CardCmd.Upgrade(replacement);
+            if (upgrade) CardCmd.Upgrade(replacement);
             await CardCmd.Transform(card, replacement);
         }
     }

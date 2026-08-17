@@ -11,14 +11,13 @@ public class Eureka : AlchemistCard
     public Eureka() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithCards(2, 1);
-        WithVar("transforms", 2, 0);
+        WithVar("transforms", 1, 0);
         WithUpgradingCardTip<Distillate>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.Draw(this, choiceContext);
-        // The shared helper carries the upgrade onto the Distillate, which the description promises
         await AlchemistCardCmd.TransformFromHand<Distillate>(
             choiceContext, this, DynamicVars["transforms"].IntValue);
     }
