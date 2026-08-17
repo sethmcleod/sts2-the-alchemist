@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.9.6] - 2026-08-17
+
 ### Added
 
 - Added Caustic Strike card: "Deal 6 (9) damage. Gain 2 (3) Antitoxin." It counts as a Strike
