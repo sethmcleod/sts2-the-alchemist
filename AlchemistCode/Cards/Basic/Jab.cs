@@ -12,7 +12,7 @@ public class Jab : AlchemistCard
     {
         WithDamage(3, 3);
         WithPower<PoisonPower>(2, 0);
-        WithVar("SelfPoison", 1, 0);
+        WithVar("SelfPoison", 2, 0);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

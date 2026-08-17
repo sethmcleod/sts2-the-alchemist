@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-FERMENT.description": "Ta karta zyskuje na mocy za każdą turę spędzoną w twojej [gold]ręce[/gold]. Zagranie jej zmienia ją w [gold]Toksyny[/gold].",
+  "ALCHEMIST-FERMENT.description": "Ta karta zyskuje na mocy za każdą turę spędzoną w twojej [gold]ręce[/gold]. Zagranie jej dodaje [gold]Osad[/gold] do [gold]stosu kart odrzuconych[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentacja",
   "ALCHEMIST-INFUSE.description": "Rzuć na kartę [gold]Zaklęcie[/gold] do końca walki. Ataki zyskują [purple]Jad[/purple]; Umiejętności zyskują [purple]Dawkę[/purple]; Moce zyskują [purple]Stężenie[/purple]. Pozostałe karty stają się [gold]Eteryczne[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty} do [gold]Nasycenia[/gold].",

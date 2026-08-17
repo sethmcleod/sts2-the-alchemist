@@ -7,10 +7,10 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 public class OneForMe : AlchemistCard
 {
-    public OneForMe() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public OneForMe() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(8, 3);
-        WithPower<AntitoxinPower>(3, 1);
+        WithDamage(14, 4);
+        WithPower<AntitoxinPower>(5, 1);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

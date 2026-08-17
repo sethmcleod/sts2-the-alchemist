@@ -1,28 +1,28 @@
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Alchemist.AlchemistCode.Powers;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+// The defensive twin of Backfire: Block paid for with a dose, which Antitoxin then absorbs. Also one
+// of only three self-Poison sources in the Common band
 public class Poultice : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    protected override bool Ferments => true;
-
     public Poultice() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithVar("antitoxin", 3, 0);
-        WithVar("perTurn", 2, 1);
-        WithKeyword(CardKeyword.Retain);
-        WithTip(typeof(AntitoxinPower));
+        WithBlock(8, 3);
+        WithVar("poison", 2, 0);
+        WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var total = DynamicVars["antitoxin"].IntValue
-            + DynamicVars["perTurn"].IntValue * FermentTurns;
-        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, total, Owner.Creature, this);
+        await CommonActions.CardBlock(this, play);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
+            DynamicVars["poison"].IntValue, Owner.Creature, this);
     }
 }

@@ -60,6 +60,8 @@ AMBIGUOUS = {"gold", "poison"}
 # "Discard" is context-dependent in every casing.
 AMBIGUOUS_ANY_CASE = {"discard"}
 
+OVERRIDES = {("Discard Pile", "esp"): "pila de descarte"}
+
 
 def strip_tags(text: str) -> str:
     return ANY_TAG_RE.sub("", text).strip()
@@ -222,6 +224,9 @@ def main() -> None:
             else:
                 low_confidence[term].add(language)
                 per_language_missing[language].append(term)
+        for (term, lang), wording in OVERRIDES.items():
+            if lang == language:
+                glossary[term] = wording
         out = args.out / f"glossary_{language}.json"
         out.write_text(
             json.dumps(dict(sorted(glossary.items())), ensure_ascii=False, indent=2) + "\n",

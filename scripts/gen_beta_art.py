@@ -131,7 +131,7 @@ COLORS = {
     "Fast Acting": ("#1f1723", "#8a5f9e", "TR", "Unique"),
     "Smoke Out": ("#1f1723", "#a3a83a", "TR", "Unique"),
     "Poultice": ("#1f1723", "#4f9e4a", "BR", "Exhaust pile: skills"),
-    "Rummage": ("#1f1723", "#be401b", "BR", "Exhaust pile: skills"),
+    "Caustic Strike": ("#1f1723", "#be401b", "TR", "Unique"),
     "Tolerance": ("#00212a", "#10aba5", "BR", "Poison payoffs"),
     "Blood Rush": ("#14424e", "#b8e86a", "BR", "Poison payoffs"),
     "Sweat It Out": ("#4e8701", "#013161", "BR", "Poison skills"),
@@ -174,6 +174,7 @@ COLORS = {
     "Wormwood": ("#4a0e2e", "#6ba32c", "TR", "Unique"),
     "Golden Fruit": ("#c58037", "#ffef2d", "U", "Unique"),
     "Unripe Fruit": ("#26a82b", "#ffef2d", "U", "Unique"),
+    "Dregs": ("#3a2a08", "#6b7a2f", "D", "Unique"),
 }
 
 # Epoch placeholder gradients: one pair per chapter of the timeline,

@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Her savaşın başında rastgele bir [gold]İksir[/gold] elde et. İksir yuvaların doluysa bunun yerine {Energy:energyIcons()} elde et.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Ne kadar dökersen dök, asla tam kurumaz.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Tükenmez Kadeh",
-  "ALCHEMIST-GILDED_KIT.description": "Her savaşın başında [blue]8[/blue] [gold]Antitoksin[/gold] elde et. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin ve [gold]Demleme[/gold] [blue]2[/blue] [gold]İksir[/gold] verir.",
+  "ALCHEMIST-GILDED_KIT.description": "Her savaşın başında [blue]8[/blue] [gold]Antitoksin[/gold] elde et ve [gold]El[/gold]'ine bir [gold]Damıtık+[/gold] ekle. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin.",
   "ALCHEMIST-GILDED_KIT.flavor": "Süslü bir çanta. Altın gösteriş için değil.",
   "ALCHEMIST-GILDED_KIT.title": "Yaldızlı Çanta",
   "ALCHEMIST-GLOWING_SHARD.description": "Her [gold]Zehir[/gold] elde ettiğinde rastgele bir düşmana [blue]1[/blue] [gold]Zehir[/gold] uygula.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Her [gold]Zehir[/gold] elde ettiğinde [blue]1[/blue] [gold]Antitoksin[/gold] elde et.",
   "ALCHEMIST-SPARE_DOSE.flavor": "Ölçülü bir doz, her zaman elinin altında.",
   "ALCHEMIST-SPARE_DOSE.title": "Yedek Doz",
-  "ALCHEMIST-WEATHERED_KIT.description": "Her savaşın başında [blue]4[/blue] [gold]Antitoksin[/gold] elde et. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin.",
+  "ALCHEMIST-WEATHERED_KIT.description": "Her savaşın başında [blue]4[/blue] [gold]Antitoksin[/gold] elde et ve [gold]El[/gold]'ine bir [gold]Damıtık[/gold] ekle. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Yıpranmış ve mis kokulu bir çanta.",
   "ALCHEMIST-WEATHERED_KIT.title": "Yıpranmış Çanta"
 }

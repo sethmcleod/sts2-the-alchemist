@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "All'inizio di ogni combattimento, ricevi una [gold]pozione[/gold] casuale. Se i tuoi spazi per pozioni sono pieni, ottieni invece {Energy:energyIcons()}.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Per quanto ne versi, non si svuota mai del tutto.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Calice Inesauribile",
-  "ALCHEMIST-GILDED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]8[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo e ogni [gold]Preparazione[/gold] produce [blue]2[/blue] [gold]Pozioni[/gold].",
+  "ALCHEMIST-GILDED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]8[/blue] di [gold]Antitossina[/gold] e aggiungi la carta [gold]Distillato+[/gold] alla tua [gold]mano[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
   "ALCHEMIST-GILDED_KIT.flavor": "Una valigetta decorata. L'oro non è per bellezza.",
   "ALCHEMIST-GILDED_KIT.title": "Kit Dorato",
   "ALCHEMIST-GLOWING_SHARD.description": "Ogni volta che ottieni [gold]Veleno[/gold], applichi [blue]1[/blue] di [gold]Veleno[/gold] a un nemico casuale.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Ogni volta che ottieni [gold]Veleno[/gold], ottieni [blue]1[/blue] di [gold]Antitossina[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Una dose misurata, sempre a portata di mano.",
   "ALCHEMIST-SPARE_DOSE.title": "Dose di Scorta",
-  "ALCHEMIST-WEATHERED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]4[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
+  "ALCHEMIST-WEATHERED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]4[/blue] di [gold]Antitossina[/gold] e aggiungi la carta [gold]Distillato[/gold] alla tua [gold]mano[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Una valigetta consunta, dal profumo gradevole.",
   "ALCHEMIST-WEATHERED_KIT.title": "Kit Consunto"
 }

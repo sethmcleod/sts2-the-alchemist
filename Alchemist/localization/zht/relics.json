@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "每場戰鬥開始時，取得一瓶隨機[gold]藥水[/gold]。若你的藥水欄位已滿，則改為獲得 {Energy:energyIcons()}。",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "無論倒出多少，它始終不會見底。",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "永湧聖杯",
-  "ALCHEMIST-GILDED_KIT.description": "每場戰鬥開始時，獲得 [blue]8[/blue] 點[gold]抗毒素[/gold]。你可以在休息處[gold]釀造[/gold]，且[gold]釀造[/gold]會給予 [blue]2[/blue] 瓶[gold]藥水[/gold]。",
+  "ALCHEMIST-GILDED_KIT.description": "每場戰鬥開始時，獲得 [blue]8[/blue] 點[gold]抗毒素[/gold]，並將一張[gold]蒸餾液+[/gold]加入你的[gold]手牌[/gold]。你可以在休息處[gold]釀造[/gold]。",
   "ALCHEMIST-GILDED_KIT.flavor": "一只華麗的箱子。上頭的金子不是拿來炫耀的。",
   "ALCHEMIST-GILDED_KIT.title": "鎏金藥箱",
   "ALCHEMIST-GLOWING_SHARD.description": "每當你獲得[gold]中毒[/gold]時，對一名隨機敵人施加 [blue]1[/blue] 層[gold]中毒[/gold]。",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "每當你獲得[gold]中毒[/gold]時，獲得 [blue]1[/blue] 點[gold]抗毒素[/gold]。",
   "ALCHEMIST-SPARE_DOSE.flavor": "一份量好的藥劑，總在伸手可及之處。",
   "ALCHEMIST-SPARE_DOSE.title": "備用藥劑",
-  "ALCHEMIST-WEATHERED_KIT.description": "每場戰鬥開始時，獲得 [blue]4[/blue] 點[gold]抗毒素[/gold]。你可以在休息處[gold]釀造[/gold]。",
+  "ALCHEMIST-WEATHERED_KIT.description": "每場戰鬥開始時，獲得 [blue]4[/blue] 點[gold]抗毒素[/gold]，並將一張[gold]蒸餾液[/gold]加入你的[gold]手牌[/gold]。你可以在休息處[gold]釀造[/gold]。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "一只用得很舊、氣味宜人的箱子。",
   "ALCHEMIST-WEATHERED_KIT.title": "風霜藥箱"
 }

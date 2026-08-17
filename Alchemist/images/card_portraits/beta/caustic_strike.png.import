@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3ngf58muy6di"
-path="res://.godot/imported/callus_power.png-20c9cfef166570ee162d2a0da9f82356.ctex"
+uid="uid://ccx3fe2w0kdyl"
+path="res://.godot/imported/caustic_strike.png-26bf09e4242010500e1f0073eaa72315.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/callus_power.png"
-dest_files=["res://.godot/imported/callus_power.png-20c9cfef166570ee162d2a0da9f82356.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/caustic_strike.png"
+dest_files=["res://.godot/imported/caustic_strike.png-26bf09e4242010500e1f0073eaa72315.ctex"]
 
 [params]
 

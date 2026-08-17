@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Na początku każdej walki otrzymaj losową [gold]Miksturę[/gold]. Jeżeli twoje miejsca na mikstury są pełne, zamiast tego zyskaj {Energy:energyIcons()}.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Ile by nie nalewać, nigdy do końca nie wysycha.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Niewyczerpany kielich",
-  "ALCHEMIST-GILDED_KIT.description": "Na początku każdej walki zyskaj [blue]8[/blue] pkt. [gold]Antytoksyny[/gold]. Możesz [gold]Warzyć[/gold] w Obozowiskach, a [gold]Warzenie[/gold] daje [blue]2[/blue] [gold]Mikstury[/gold].",
+  "ALCHEMIST-GILDED_KIT.description": "Na początku każdej walki zyskaj [blue]8[/blue] pkt. [gold]Antytoksyny[/gold] i dodaj [gold]Destylat+[/gold] do swojej [gold]ręki[/gold]. Możesz [gold]Warzyć[/gold] w Obozowiskach.",
   "ALCHEMIST-GILDED_KIT.flavor": "Zdobiony kuferek. To złoto nie jest na pokaz.",
   "ALCHEMIST-GILDED_KIT.title": "Pozłacany kuferek",
   "ALCHEMIST-GLOWING_SHARD.description": "Kiedykolwiek zyskasz [gold]Truciznę[/gold], nałóż [blue]1[/blue] pkt. [gold]Trucizny[/gold] losowemu przeciwnikowi.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Kiedykolwiek zyskasz [gold]Truciznę[/gold], zyskaj [blue]1[/blue] pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Odmierzona dawka, zawsze w zasięgu ręki.",
   "ALCHEMIST-SPARE_DOSE.title": "Zapasowa dawka",
-  "ALCHEMIST-WEATHERED_KIT.description": "Na początku każdej walki zyskaj [blue]4[/blue] pkt. [gold]Antytoksyny[/gold]. Możesz [gold]Warzyć[/gold] w Obozowiskach.",
+  "ALCHEMIST-WEATHERED_KIT.description": "Na początku każdej walki zyskaj [blue]4[/blue] pkt. [gold]Antytoksyny[/gold] i dodaj [gold]Destylat[/gold] do swojej [gold]ręki[/gold]. Możesz [gold]Warzyć[/gold] w Obozowiskach.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Sfatygowany kuferek o przyjemnym zapachu.",
   "ALCHEMIST-WEATHERED_KIT.title": "Sfatygowany kuferek"
 }

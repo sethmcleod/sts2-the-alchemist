@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc4gahur1uln4"
-path="res://.godot/imported/rummage.png-e7f2f54f7bea5b5a33c777c05b0b9fd7.ctex"
+uid="uid://cam4m7v7ffim5"
+path="res://.godot/imported/dregs.png-c6f97f67c4c6e8698819b747aefcc170.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/rummage.png"
-dest_files=["res://.godot/imported/rummage.png-e7f2f54f7bea5b5a33c777c05b0b9fd7.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/dregs.png"
+dest_files=["res://.godot/imported/dregs.png-c6f97f67c4c6e8698819b747aefcc170.ctex"]
 
 [params]
 

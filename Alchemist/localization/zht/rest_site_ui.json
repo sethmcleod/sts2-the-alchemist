@@ -1,5 +1,4 @@
 {
   "OPTION_BREW.description": "釀造一瓶特殊[gold]藥水[/gold]，賣給[gold]商人[/gold]可得 [gold]150 金幣[/gold]。",
-  "OPTION_BREW.description_plural": "釀造 [blue]2[/blue] 瓶特殊[gold]藥水[/gold]，每瓶賣給[gold]商人[/gold]可得 [gold]150 金幣[/gold]。",
   "OPTION_BREW.name": "釀造"
 }

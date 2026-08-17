@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "매 전투 시작 시, 무작위 [gold]포션[/gold]을 생성합니다. 포션 슬롯이 가득 차 있다면, 대신 {Energy:energyIcons()}를 얻습니다.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "아무리 따라도 좀처럼 마르지 않는다.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "마르지 않는 성배",
-  "ALCHEMIST-GILDED_KIT.description": "매 전투 시작 시, [gold]항독소[/gold]를 [blue]8[/blue] 얻습니다. 휴식 장소에서 [gold]양조[/gold]할 수 있으며, [gold]양조[/gold]로 [gold]포션[/gold]을 [blue]2[/blue]개 얻습니다.",
+  "ALCHEMIST-GILDED_KIT.description": "매 전투 시작 시, [gold]항독소[/gold]를 [blue]8[/blue] 얻고 내 [gold]손[/gold]에 [gold]증류액+[/gold]을 1장 추가합니다. 휴식 장소에서 [gold]양조[/gold]할 수 있습니다.",
   "ALCHEMIST-GILDED_KIT.flavor": "화려한 도구함. 그 금은 장식이 아니다.",
   "ALCHEMIST-GILDED_KIT.title": "금장 도구함",
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]중독[/gold]을 얻을 때마다, 무작위 적에게 [gold]중독[/gold]을 [blue]1[/blue] 부여합니다.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "[gold]중독[/gold]을 얻을 때마다, [gold]항독소[/gold]를 [blue]1[/blue] 얻습니다.",
   "ALCHEMIST-SPARE_DOSE.flavor": "정량으로 덜어 둔 한 번분, 언제나 손 닿는 곳에.",
   "ALCHEMIST-SPARE_DOSE.title": "여분의 약",
-  "ALCHEMIST-WEATHERED_KIT.description": "매 전투 시작 시, [gold]항독소[/gold]를 [blue]4[/blue] 얻습니다. 휴식 장소에서 [gold]양조[/gold]할 수 있습니다.",
+  "ALCHEMIST-WEATHERED_KIT.description": "매 전투 시작 시, [gold]항독소[/gold]를 [blue]4[/blue] 얻고 내 [gold]손[/gold]에 [gold]증류액[/gold]을 1장 추가합니다. 휴식 장소에서 [gold]양조[/gold]할 수 있습니다.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "손때가 묻고 기분 좋은 향이 나는 도구함.",
   "ALCHEMIST-WEATHERED_KIT.title": "낡은 도구함"
 }
