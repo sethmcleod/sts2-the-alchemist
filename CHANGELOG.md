@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.9.7] - 2026-08-17
+
 ### Added
 
 - Added Brace card: "Gain 5 (8) Block. If you have Poison, gain 1 Energy."
