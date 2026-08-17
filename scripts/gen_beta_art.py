@@ -123,7 +123,7 @@ COLORS = {
     "Refine": ("#4a1a66", "#257bc3", "BR", "Infuse: heavy"),
     "Froth": ("#0e3550", "#8fe0c8", "TR", "Unique"),
     "Siphon": ("#241a5e", "#2aa89b", "TR", "Unique"),
-    "Nettle": ("#5b3fc4", "#4a9fd8", "TR", "Enchanted payoffs: debuff attacks"),
+    "Brace": ("#5b3fc4", "#4a9fd8", "BR", "Unique"),
     "Needle Point": ("#5b3fc4", "#aeb4bc", "TR", "Enchanted payoffs: debuff attacks"),
     "Deep Cut": ("#5b3fc4", "#4ad89b", "TR", "Enchanted payoffs: debuff attacks"),
     "Harden": ("#5b3fc4", "#d9c89a", "R", "Enchanted payoffs: Antitoxin"),

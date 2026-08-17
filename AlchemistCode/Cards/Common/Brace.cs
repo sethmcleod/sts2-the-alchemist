@@ -1,4 +1,3 @@
-using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -7,22 +6,25 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-public class Vitrify : AlchemistCard
+public class Brace : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Vitrify() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Brace() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(4, 1);
-        WithVar("antitoxin", 2, 1);
-        WithTip(typeof(AntitoxinPower));
+        WithBlock(5, 3);
+        WithEnergy(1, 0);
+        WithTip(typeof(PoisonPower));
     }
+
+    private bool Dosed =>
+        IsMutable && Owner != null && Owner.Creature.GetPowerAmount<PoisonPower>() > 0;
+
+    protected override bool ConditionalGlow => Dosed;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await CommonActions.CardBlock(this, play);
-        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
-            DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
+        if (Dosed) await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
     }
 }

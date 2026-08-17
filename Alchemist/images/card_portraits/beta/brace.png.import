@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7ujldafejtoh"
-path="res://.godot/imported/nettle.png-a2bb86600e3978c0c14f44e342908c9b.ctex"
+uid="uid://1joi0r5uxpjm"
+path="res://.godot/imported/brace.png-5f1d2f8a9bf074c244a69f73b964b262.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/nettle.png"
-dest_files=["res://.godot/imported/nettle.png-a2bb86600e3978c0c14f44e342908c9b.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/brace.png"
+dest_files=["res://.godot/imported/brace.png-5f1d2f8a9bf074c244a69f73b964b262.ctex"]
 
 [params]
 
