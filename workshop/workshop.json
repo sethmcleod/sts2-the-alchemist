@@ -4,7 +4,9 @@
   "visibility": "public",
   "changeNote": "v0.9.7\n\nAdded\n\n- Added Brace card: \"Gain 5 (8) Block. If you have Poison, gain 1 Energy.\"\n\nChanged\n\n- Buffed Swill card: it now also draws a card, so it is never blank when you have no Ferment cards\n- Buffed Vitrify card: 3 (4) Block twice -> 4 (5) Block twice\n- Reworked Waste Not card: \"Gain 4 (7) Block. Exhaust all Dregs in your Hand. Gain 2 Antitoxin for each.\"\n- Nerfed Eureka card: it now Transforms 1 card instead of 2\n- Nerfed Melt Down card: 0 Energy -> 1 Energy\n\nRemoved\n\n- Removed Nettle card, replaced by Brace",
   "tags": [],
-  "dependencies": [3737335127],
+  "dependencies": [
+    3737335127
+  ],
   "contentDescriptors": [],
   "minBranch": "public",
   "maxBranch": "public"
