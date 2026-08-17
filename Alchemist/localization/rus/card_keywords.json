@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-FERMENT.description": "Эта карта усиливается за каждый ход, проведенный в [gold]руке[/gold]. Когда вы ее разыгрываете, она добавляет [gold]«Осадок»[/gold] в [gold]стопку сброса[/gold].",
   "ALCHEMIST-FERMENT.title": "Брожение",
-  "ALCHEMIST-INFUSE.description": "[gold]Зачаровывает[/gold] карту до конца боя. Атаки получают [purple]«Отраву»[/purple]; Навыки — [purple]«Дозу»[/purple]; Таланты — [purple]«Крепость»[/purple]. Остальные карты становятся [gold]эфирными[/gold].",
+  "ALCHEMIST-INFUSE.description": "[gold]Зачаровывает[/gold] карту до конца боя. Атаки получают [purple]«Отраву»[/purple]; Навыки — [purple]«Дозу»[/purple]; Таланты — [purple]«Укрепление»[/purple]. Остальные карты становятся [gold]эфирными[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Выберите [blue]{Amount:plural(ru):карту|{} карты|{} карт}[/blue] для [gold]пропитки[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Выберите до [blue]{MaxCount}[/blue] {MaxCount:plural(ru):карты|карт|карт} для [gold]пропитки[/gold].",
   "ALCHEMIST-INFUSE.title": "Пропитка"

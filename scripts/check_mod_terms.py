@@ -27,7 +27,7 @@ ANY_TAG_RE = re.compile(r"\[/?[a-z_]+\]")
 # The mod's own vocabulary. Base-game terms are covered by the glossary check.
 MOD_TERMS = [
     "Antitoxin", "Infuse", "Ferment", "Brew",
-    "Dosed", "Laced", "Potent",
+    "Dosed", "Laced", "Fortified",
     "Distillate", "Distillates", "Enchanted", "Enchant",
 ]
 

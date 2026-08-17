@@ -18,8 +18,7 @@ public class Spit : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_slash"),
-            sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
 
         // The attack resolves first, so a Laced bonus is still priced off the full dose
         var dose = Math.Min(DynamicVars["Poison"].IntValue,

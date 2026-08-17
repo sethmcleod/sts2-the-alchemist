@@ -1,8 +1,8 @@
 {
   "ALCHEMIST-DOSED.description": "При разыгрывании этого Навыка дает [blue]{Amount}[/blue] [gold]антитоксина[/gold].",
   "ALCHEMIST-DOSED.title": "Доза",
+  "ALCHEMIST-FORTIFIED.description": "При разыгрывании этого Таланта повышает вашу емкость [gold]антитоксина[/gold] на [blue]{Amount}[/blue].",
+  "ALCHEMIST-FORTIFIED.title": "Укрепление",
   "ALCHEMIST-LACED.description": "Накладывает на врага [blue]{Amount}[/blue] [gold]яда[/gold], когда эта Атака наносит урон по его ОЗ.",
-  "ALCHEMIST-LACED.title": "Отрава",
-  "ALCHEMIST-POTENT.description": "При разыгрывании этого Таланта дает [blue]{Amount}[/blue] [gold]силы[/gold].",
-  "ALCHEMIST-POTENT.title": "Крепость"
+  "ALCHEMIST-LACED.title": "Отрава"
 }

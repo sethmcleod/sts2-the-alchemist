@@ -21,7 +21,7 @@ public class ChainReaction : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"),
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_fire_burst"),
             sfx: "event:/sfx/characters/attack_fire")
             .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay).Execute(choiceContext);
         foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfxymg2l8e12f"
-path="res://.godot/imported/potent.png-a4317c9a5385539547e6b1e083ef8c0e.ctex"
+uid="uid://dc18axl2350qe"
+path="res://.godot/imported/quaff.png-356019101d80dd82768bbd7cc27d9594.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/enchantments/potent.png"
-dest_files=["res://.godot/imported/potent.png-a4317c9a5385539547e6b1e083ef8c0e.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/quaff.png"
+dest_files=["res://.godot/imported/quaff.png-356019101d80dd82768bbd7cc27d9594.ctex"]
 
 [params]
 

@@ -24,7 +24,7 @@ public static class Infusion
     {
         CardType.Attack => typeof(Laced),
         CardType.Skill => typeof(Dosed),
-        CardType.Power => typeof(Potent),
+        CardType.Power => typeof(Fortified),
         _ => null,
     };
 
@@ -47,7 +47,7 @@ public static class Infusion
     // pass one goes stale in silence
     private const int LacedAmount = 2;
     private const int DosedAmount = 2;
-    private const int PotentAmount = 1;
+    private const int FortifiedAmount = 2;
 
     // Take(1) keeps each enchantment's own tip and drops its extras, which is where Dosed explains
     // Antitoxin. The power is invisible so there is no icon to hover either, so it is added back once
@@ -55,7 +55,7 @@ public static class Infusion
         new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Infuse) }
             .Concat(HoverTipFactory.FromEnchantment<Laced>(LacedAmount).Take(1))
             .Concat(HoverTipFactory.FromEnchantment<Dosed>(DosedAmount).Take(1))
-            .Concat(HoverTipFactory.FromEnchantment<Potent>(PotentAmount).Take(1))
+            .Concat(HoverTipFactory.FromEnchantment<Fortified>(FortifiedAmount).Take(1))
             .Append(HoverTipFactory.FromPower<AntitoxinPower>());
 
     public static void RecordCombatEnchant(CardModel card) => EnchantedThisCombat.Add(card);
@@ -165,7 +165,7 @@ public static class Infusion
                 TryEnchant<Dosed>(card, DosedAmount);
                 break;
             case CardType.Power:
-                TryEnchant<Potent>(card, PotentAmount);
+                TryEnchant<Fortified>(card, FortifiedAmount);
                 break;
         }
     }

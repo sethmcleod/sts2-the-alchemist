@@ -16,7 +16,8 @@ public class Croak : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab"), tmpSfx: "heavy_attack.mp3")
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact"),
+            tmpSfx: "heavy_attack.mp3")
             .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay).Execute(choiceContext);
         await CommonActions.Apply<PoisonPower>(choiceContext, this, play);
     }

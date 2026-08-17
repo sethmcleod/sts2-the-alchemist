@@ -1,8 +1,8 @@
 {
   "ALCHEMIST-DOSED.description": "Al jugar esta carta de habilidad, obtienes [blue]{Amount}[/blue] de [gold]antitoxina[/gold].",
   "ALCHEMIST-DOSED.title": "Dosificación",
+  "ALCHEMIST-FORTIFIED.description": "Al jugar esta carta de poder, aumentas tu límite de [gold]antitoxina[/gold] en [blue]{Amount}[/blue].",
+  "ALCHEMIST-FORTIFIED.title": "Fortificación",
   "ALCHEMIST-LACED.description": "Cuando esta carta de ataque inflige daño sin bloquear, aplicas [blue]{Amount}[/blue] de [gold]veneno[/gold].",
-  "ALCHEMIST-LACED.title": "Adulteración",
-  "ALCHEMIST-POTENT.description": "Al jugar esta carta de poder, obtienes [blue]{Amount}[/blue] de [gold]fuerza[/gold].",
-  "ALCHEMIST-POTENT.title": "Potenciación"
+  "ALCHEMIST-LACED.title": "Adulteración"
 }

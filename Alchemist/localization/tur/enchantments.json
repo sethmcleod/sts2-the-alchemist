@@ -1,8 +1,8 @@
 {
   "ALCHEMIST-DOSED.description": "Bu Beceri oynandığında [blue]{Amount}[/blue] [gold]Antitoksin[/gold] elde et.",
   "ALCHEMIST-DOSED.title": "Dozlu",
+  "ALCHEMIST-FORTIFIED.description": "Bu Güç oynandığında [gold]Antitoksin[/gold] sınırını [blue]{Amount}[/blue] artır.",
+  "ALCHEMIST-FORTIFIED.title": "Takviyeli",
   "ALCHEMIST-LACED.description": "Ne zaman bu Atak engellenmeyen bir hasar verirse [blue]{Amount}[/blue] [gold]Zehir[/gold] uygula.",
-  "ALCHEMIST-LACED.title": "Katkılı",
-  "ALCHEMIST-POTENT.description": "Bu Güç oynandığında [blue]{Amount}[/blue] [gold]Kuvvet[/gold] elde et.",
-  "ALCHEMIST-POTENT.title": "Etkin"
+  "ALCHEMIST-LACED.title": "Katkılı"
 }

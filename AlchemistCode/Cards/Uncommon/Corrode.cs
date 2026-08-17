@@ -21,7 +21,10 @@ public class Corrode : AlchemistCard
         foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
         {
             if (dose > 0)
+            {
+                PoisonSplash(enemy);
                 await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, dose, Owner.Creature, this);
+            }
             await PowerCmd.Apply<WeakPower>(choiceContext, enemy, DynamicVars.Weak.BaseValue, Owner.Creature, this);
         }
         if (dose > 0)

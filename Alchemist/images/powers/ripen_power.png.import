@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cujivkoxsw3h7"
-path="res://.godot/imported/share_the_pain.png-f4cf9ccad44070526e8171e3ac11a9f4.ctex"
+uid="uid://uqeqd6os7wc6"
+path="res://.godot/imported/ripen_power.png-38a3690a7fea36f98db507480ae569a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/share_the_pain.png"
-dest_files=["res://.godot/imported/share_the_pain.png-f4cf9ccad44070526e8171e3ac11a9f4.ctex"]
+source_file="res://Alchemist/images/powers/ripen_power.png"
+dest_files=["res://.godot/imported/ripen_power.png-38a3690a7fea36f98db507480ae569a0.ctex"]
 
 [params]
 

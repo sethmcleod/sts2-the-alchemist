@@ -11,13 +11,13 @@ public class FreshCoat : AlchemistCard
 {
     public FreshCoat() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("Cards", 1, 1);
+        WithVar("Amount", 1, 1);
         WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<FreshCoatPower>(choiceContext, Owner.Creature,
-            DynamicVars["Cards"].IntValue, Owner.Creature, this);
+            DynamicVars["Amount"].IntValue, Owner.Creature, this);
     }
 }

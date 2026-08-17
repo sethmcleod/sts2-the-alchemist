@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cufbvg3n1mc4m"
-path="res://.godot/imported/share_the_pain_power.png-280d0d3943602c2fe52c167ca95eee15.ctex"
+uid="uid://bhej877pkbuhk"
+path="res://.godot/imported/fortified.png-c2cdd46726156e16c380a77dd090890c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/share_the_pain_power.png"
-dest_files=["res://.godot/imported/share_the_pain_power.png-280d0d3943602c2fe52c167ca95eee15.ctex"]
+source_file="res://Alchemist/images/enchantments/fortified.png"
+dest_files=["res://.godot/imported/fortified.png-c2cdd46726156e16c380a77dd090890c.ctex"]
 
 [params]
 

@@ -20,7 +20,7 @@ public class CausticStrike : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
         await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
             DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
     }

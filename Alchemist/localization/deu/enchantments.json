@@ -1,8 +1,8 @@
 {
   "ALCHEMIST-DOSED.description": "Wenn diese Fertigkeit gespielt wird, erhalte [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-DOSED.title": "Dosiert",
+  "ALCHEMIST-FORTIFIED.description": "Wenn diese Macht gespielt wird, erhöhe dein [gold]Antitoxin[/gold]-Limit um [blue]{Amount}[/blue].",
+  "ALCHEMIST-FORTIFIED.title": "Gefestigt",
   "ALCHEMIST-LACED.description": "Immer wenn dieser Angriff ungeblockten Schaden zufügt, wende [blue]{Amount}[/blue] [gold]Gift[/gold] an.",
-  "ALCHEMIST-LACED.title": "Versetzt",
-  "ALCHEMIST-POTENT.description": "Wenn diese Macht gespielt wird, erhalte [blue]{Amount}[/blue] [gold]Stärke[/gold].",
-  "ALCHEMIST-POTENT.title": "Konzentriert"
+  "ALCHEMIST-LACED.title": "Versetzt"
 }
