@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Poison)]
 public class BitterDraught : AlchemistCard
 {
     public BitterDraught() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)

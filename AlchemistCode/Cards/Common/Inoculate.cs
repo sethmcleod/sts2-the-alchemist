@@ -6,6 +6,7 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Antitoxin)]
 public class Inoculate : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

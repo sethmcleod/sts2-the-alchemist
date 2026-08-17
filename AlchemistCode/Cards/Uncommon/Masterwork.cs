@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Infuse)]
 public class Masterwork : AlchemistCard
 {
     private const int EnchantThreshold = 3;

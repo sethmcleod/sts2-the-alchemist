@@ -24,6 +24,19 @@ closest existing card in `AlchemistCode/Cards/` and follow the three-way rule be
    power also needs the keys `.title`, `.description`, and `.smartDescription`.
 3. **cards.csv**: the design sheet in plain text. The format is `base (upgraded)`.
 
+Each card class also carries a `[CardTheme(...)]` attribute on the line before the class,
+naming the theme or themes it serves (`Poison`, `Infuse`, `Potions`, `Antitoxin`, `Ferment`,
+`Transform`) or `CardTheme.None` for a neutral card. The analytics dashboard groups runs by
+theme, and the linter fails a card without the attribute.
+
+## Analytics
+
+Players who have the game's "Upload Data" setting on send anonymous Alchemist run results to
+a Supabase table, and a nightly job aggregates them into the public dashboard. The client is
+`AlchemistCode/Analytics/`, the export and the seed scripts are `tools/analytics/`, and the
+dashboard is `docs/analytics/`. See `tools/analytics/README.md` for setup and for running it
+offline with fabricated data.
+
 ## Code style
 
 - **A comment must tell why, not what.** The names and the structure must make the _what_

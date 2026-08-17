@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Infuse)]
 public class NextUp : AlchemistCard
 {
     public NextUp() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)

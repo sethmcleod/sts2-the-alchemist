@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Transform)]
 public class BoilDown : AlchemistCard
 {
     public BoilDown() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)

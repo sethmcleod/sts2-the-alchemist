@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Poison)]
 public class FlareUp : AlchemistCard
 {
     public FlareUp() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)

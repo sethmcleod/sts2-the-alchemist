@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 // The tempo attack. It used to contain Puncture, which kept the Vulnerable and now owns it
+[CardTheme(CardTheme.None)]
 public class DeepCut : AlchemistCard
 {
     public DeepCut() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)

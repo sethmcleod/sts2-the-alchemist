@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Infuse, CardTheme.Antitoxin)]
 public class FreshCoat : AlchemistCard
 {
     public FreshCoat() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)

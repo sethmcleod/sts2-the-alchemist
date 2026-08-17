@@ -39,6 +39,11 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigColorPicker(EditAlpha = false)]
     public static Color AntitoxinBarColor { get; set; } = new("9B5CFF");
 
+    // A second gate on top of the game's own "Upload Data" setting, see Analytics/AlchemistMetrics.cs
+    [ConfigSection("Analytics")]
+    [ConfigHoverTip]
+    public static bool AnalyticsEnabled { get; set; } = true;
+
     // Shown above Unlock All: opens the Timeline without granting the card, relic, and potion unlocks
     [ConfigSection("Unlocks")]
     [ConfigButton("RevealTimelineButtonLabel")]

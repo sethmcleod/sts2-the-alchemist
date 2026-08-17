@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.None)]
 public class Recoil : AlchemistCard
 {
     public Recoil() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)

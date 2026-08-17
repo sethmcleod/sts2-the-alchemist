@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Transform)]
 public class Decant : AlchemistCard
 {
     public Decant() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)

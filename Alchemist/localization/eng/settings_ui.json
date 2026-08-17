@@ -1,5 +1,8 @@
 {
   "ALCHEMIST-ACCESSIBILITY.title": "Accessibility",
+  "ALCHEMIST-ANALYTICS.title": "Analytics",
+  "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "Sends anonymous Alchemist run results (deck, relics, card picks, floor reached) to help balance the character. Only applies when the game's own Upload Data setting is on. Never includes your name or Steam ID.",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "Share Run Analytics",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "The color of the Antitoxin bar under your health bar. The green segment showing incoming Poison is not affected.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Antitoxin Bar Color",
   "ALCHEMIST-COMPATIBILITY.title": "Compatibility",

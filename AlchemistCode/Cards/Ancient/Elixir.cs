@@ -6,6 +6,7 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Ancient;
 
+[CardTheme(CardTheme.Potions)]
 public class Elixir : AlchemistCard
 {
     public Elixir() : base(3, CardType.Power, CardRarity.Ancient, TargetType.Self)

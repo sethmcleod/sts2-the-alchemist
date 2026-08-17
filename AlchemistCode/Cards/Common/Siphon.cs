@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Infuse)]
 public class Siphon : AlchemistCard
 {
     public Siphon() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)

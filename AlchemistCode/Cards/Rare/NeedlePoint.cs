@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.None)]
 public class NeedlePoint : AlchemistCard
 {
     public NeedlePoint() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)

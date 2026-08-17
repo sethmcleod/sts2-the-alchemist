@@ -6,6 +6,7 @@ using System.Linq;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Infuse)]
 public class Refine : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

@@ -8,6 +8,7 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Antitoxin, CardTheme.Poison)]
 public class Tolerance : AlchemistCard
 {
     public Tolerance() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)

@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Localization;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Ferment)]
 public class Froth : AlchemistCard
 {
     protected override bool Ferments => true;

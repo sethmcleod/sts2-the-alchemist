@@ -1,0 +1,62 @@
+name: analytics
+
+# Nightly refresh of the balance dashboard. Pulls the run rows from Supabase, aggregates them into
+# count tables (no raw rows leave the job), and deploys docs/analytics/ plus the fresh data to GitHub
+# Pages. Nothing is committed, so it cannot collide with a release rebase.
+#
+# The job is also what keeps the free Supabase project awake: it pauses after a week without a
+# request, and a paused project silently drops every upload from players.
+#
+# One-time setup: Settings -> Pages -> Source: GitHub Actions, and the SUPABASE_READ_KEY repository
+# secret (the sb_secret_ key, never the publishable one).
+
+on:
+  schedule:
+    - cron: "23 8 * * *" # daily, UTC, best-effort timing
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["docs/analytics/**", "tools/analytics/**", ".github/workflows/analytics.yml"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: analytics
+  cancel-in-progress: false
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Export aggregate stats
+        env:
+          SUPABASE_READ_KEY: ${{ secrets.SUPABASE_READ_KEY }}
+          ANALYTICS_EXCLUDE_PLAYERS: ${{ vars.ANALYTICS_EXCLUDE_PLAYERS }}
+        run: python3 tools/analytics/export_stats.py
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/analytics
+
+  deploy:
+    needs: export
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Poison)]
 public class Spit : AlchemistCard
 {
     public Spit() : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)

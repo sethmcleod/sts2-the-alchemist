@@ -65,6 +65,15 @@ public partial class MainFile : Node
             Logger.Error($"Failed to register the potion sale counter (its badge will never unlock): {e}");
         }
 
+        try
+        {
+            Analytics.AlchemistMetrics.Initialize();
+        }
+        catch (System.Exception e)
+        {
+            Logger.Error($"Failed to register run analytics (no runs will be reported): {e}");
+        }
+
         ModConfigRegistry.Register("The Alchemist", new AlchemistModConfig());
     }
 

@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Ferment, CardTheme.Antitoxin)]
 public class WasteNot : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

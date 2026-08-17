@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Infuse)]
 public class DeepBreath : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

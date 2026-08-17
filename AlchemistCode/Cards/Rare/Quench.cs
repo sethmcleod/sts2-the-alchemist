@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Antitoxin)]
 public class Quench : AlchemistCard
 {
     private const int PerAntitoxin = 2;

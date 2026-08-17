@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Ferment)]
 public class Ripen : AlchemistCard
 {
     public Ripen() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)

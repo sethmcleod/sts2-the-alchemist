@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Antitoxin)]
 public class Warded : AlchemistCard
 {
     public Warded() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)

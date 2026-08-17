@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Poison)]
 public class Toughen : AlchemistCard
 {
     private const int PerPoison = 2;

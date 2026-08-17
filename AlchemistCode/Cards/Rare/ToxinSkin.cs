@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Poison)]
 public class ToxinSkin : AlchemistCard
 {
     public ToxinSkin() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)

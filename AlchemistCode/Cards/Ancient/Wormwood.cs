@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Ancient;
 
+[CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
 public class Wormwood : AlchemistCard
 {
     public Wormwood() : base(0, CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies)

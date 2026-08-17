@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.None)]
 public class SmokeOut : AlchemistCard
 {
     public SmokeOut() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)

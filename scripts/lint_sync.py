@@ -288,6 +288,29 @@ def check_compat_branch() -> list[str]:
     return errors
 
 
+def check_card_themes(classes: dict[str, Path]) -> list[str]:
+    """Every card class must carry [CardTheme(...)] on the line before its declaration. Neutral cards
+    say CardTheme.None explicitly, so a missing attribute is always an oversight."""
+    theme_re = re.compile(r"\[CardTheme\((?P<themes>[^)]*)\)\]\s*public\s+(?:\w+\s+)*class\s+(?P<name>\w+)")
+    enum_src = (CODE / "Cards" / "CardTheme.cs").read_text()
+    valid = set(re.findall(r"^\s+(\w+),\s*$", enum_src, re.M))
+    errors = []
+    for cls, path in classes.items():
+        m = theme_re.search(path.read_text())
+        if not m or m["name"] != cls:
+            errors.append(f"class {cls}: no [CardTheme(...)] attribute before the class declaration")
+            continue
+        themes = [t.strip().removeprefix("CardTheme.") for t in m["themes"].split(",") if t.strip()]
+        if not themes:
+            errors.append(f"class {cls}: [CardTheme()] names no theme (use CardTheme.None for a neutral card)")
+        for t in themes:
+            if t not in valid:
+                errors.append(f"class {cls}: unknown theme CardTheme.{t}")
+        if "None" in themes and len(themes) > 1:
+            errors.append(f"class {cls}: CardTheme.None cannot be combined with another theme")
+    return errors
+
+
 def parse_number_pairs(desc: str) -> list[tuple[int, int]]:
     """Get the 'N (M)' upgrade pairs from a csv description cell or cost cell.
 
@@ -386,6 +409,9 @@ def main() -> int:
 
     # 6. every Compat/ file is the copy for the branch you are on
     errors += check_compat_branch()
+
+    # 7. every card class carries a [CardTheme] attribute (the analytics dashboard groups by it)
+    errors += check_card_themes(classes)
 
     scene_errors, scene_warnings = check_game_scene_paths()
     errors += scene_errors

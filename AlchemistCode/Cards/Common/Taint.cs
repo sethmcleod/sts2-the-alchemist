@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+[CardTheme(CardTheme.Poison)]
 public class Taint : AlchemistCard
 {
     public Taint() : base(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)

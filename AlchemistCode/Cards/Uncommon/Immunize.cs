@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Ferment, CardTheme.Antitoxin)]
 public class Immunize : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;

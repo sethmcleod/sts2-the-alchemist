@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Ferment)]
 public class RollingBoil : AlchemistCard
 {
     protected override bool Ferments => true;

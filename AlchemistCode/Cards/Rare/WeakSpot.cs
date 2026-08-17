@@ -7,6 +7,7 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Poison)]
 public class WeakSpot : AlchemistCard
 {
     public WeakSpot() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)

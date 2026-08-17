@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Infuse)]
 public class Enrich : AlchemistCard
 {
     public Enrich() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)

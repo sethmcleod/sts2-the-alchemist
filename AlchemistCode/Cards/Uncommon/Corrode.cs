@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Poison)]
 public class Corrode : AlchemistCard
 {
     public Corrode() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)

@@ -5,6 +5,7 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Antitoxin)]
 public class Nightcap : AlchemistCard
 {
     public Nightcap() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)

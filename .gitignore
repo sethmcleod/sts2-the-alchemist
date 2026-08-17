@@ -11,3 +11,6 @@ workshop/content/
 workshop/mod-uploader.log
 workshop/mod_id.txt
 reports/
+# analytics: keys, fabricated runs, and the exported aggregates the nightly job regenerates
+tools/analytics/*.local.*
+docs/analytics/data/

@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
+[CardTheme(CardTheme.Poison)]
 public class Fallout : AlchemistCard
 {
     public Fallout() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)

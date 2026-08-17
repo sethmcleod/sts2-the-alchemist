@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Poison)]
 public class FastActing : AlchemistCard
 {
     private const int Triggers = 2;

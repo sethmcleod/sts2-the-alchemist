@@ -7,6 +7,7 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
+[CardTheme(CardTheme.Poison)]
 public class Rot : AlchemistCard
 {
     public Rot() : base(0, CardType.Power, CardRarity.Rare, TargetType.Self)
