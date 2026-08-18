@@ -5,7 +5,7 @@
   "ALCHEMIST-ANODYNE.title": "Anodyne",
   "ALCHEMIST-DECOCTION.description": "Draw [blue]3[/blue] cards. They cost 0 {energyPrefix:energyIcons(1)} this turn.",
   "ALCHEMIST-DECOCTION.title": "Decoction",
-  "ALCHEMIST-GOLD_LEAF.description": "Heal [green]1[/green] HP and gain [blue]1[/blue] [gold]Block[/gold] for every [blue]15[/blue] [gold]Gold[/gold] you have.{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.description": "Gain [blue]1[/blue] [gold]Block[/gold] and [blue]1[/blue] [gold]Antitoxin[/gold] for every [blue]15[/blue] [gold]Gold[/gold] you have.{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Gold Leaf",
   "ALCHEMIST-MARSH_TONIC.description": "Gain [blue]6[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Marsh Tonic",

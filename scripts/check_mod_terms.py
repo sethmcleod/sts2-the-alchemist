@@ -72,12 +72,12 @@ def sites(eng: dict, term: str) -> list[tuple[str, str, int, int]]:
     return found
 
 
-# Names a player must be able to tell apart. Antidote is the starting card and
-# it grants Antitoxin, so if a language renders both the same way its very first
-# card reads "Gain N Antidote" while being called Antidote. Toxin Skin and Poison
+# Names a player must be able to tell apart. Dose is the starting card and it
+# grants Antitoxin next to Poison, so if a language renders two of them the
+# same way the very first card reads as nonsense. Toxin Skin and Poison
 # sit in the same semantic space and collide just as easily.
 DISTINCT = [
-    ("cards.json", "ALCHEMIST-ANTIDOTE.title"),
+    ("cards.json", "ALCHEMIST-DOSE.title"),
     ("powers.json", "ALCHEMIST-ANTITOXIN_POWER.title"),
     ("cards.json", "ALCHEMIST-TOXIN_SKIN.title"),
 ]

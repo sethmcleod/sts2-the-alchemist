@@ -19,6 +19,8 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 {
     private static readonly HashSet<Creature> Absorbed = [];
 
+    // The limit is a wall: a grant past it is clipped. It used to spill into Block, which was an
+    // alternate Block source the rubric names, and it is gone as of 2026-08-18
     public override bool TryModifyPowerAmountReceived(PowerModel canonicalPower, Creature target,
         decimal amount, Creature? applier, out decimal modifiedAmount)
     {
@@ -27,13 +29,6 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 
         var room = Math.Max(0, AntitoxinPower.MaxFor(target) - target.GetPowerAmount<AntitoxinPower>());
         if (amount <= room) return false;
-
-        // The cap is a conversion point, not a wall. This hook is synchronous, so the grant is fired
-        // rather than awaited. Move, not Unpowered, so Dexterity applies the way it does to any Block
-        var spill = (int)(amount - room);
-        if (spill > 0)
-            TaskHelper.RunSafely(CreatureCmd.GainBlock(target, spill, ValueProp.Move, null));
-
         modifiedAmount = room;
         return true;
     }

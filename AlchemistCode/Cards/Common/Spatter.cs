@@ -14,7 +14,7 @@ public class Spatter : AlchemistCard
 {
     public Spatter() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(8, 3);
+        WithDamage(6, 3);
         WithVar("Splash", 3, 2);
         WithVar("SplashPoison", 1, 1);
         WithTip(typeof(PoisonPower));
@@ -29,7 +29,7 @@ public class Spatter : AlchemistCard
         // exactly the number on the card rather than a second helping of Strength
         var splash = DynamicVars["Splash"].IntValue;
         var poison = DynamicVars["SplashPoison"].IntValue;
-        foreach (var enemy in CombatState.HittableEnemies.Where(e => e != play.Target && e.IsAlive).ToList())
+        foreach (var enemy in CombatState.HittableEnemies.Where(e => e.IsAlive).ToList())
         {
             await GameCompat.Damage(choiceContext, enemy, splash, ValueProp.Unpowered, Owner.Creature, this, null);
             if (!enemy.IsAlive) continue;

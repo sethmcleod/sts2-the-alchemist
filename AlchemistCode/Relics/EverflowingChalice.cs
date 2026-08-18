@@ -1,41 +1,30 @@
-using MegaCrit.Sts2.Core.Combat;
+using System.Collections.Generic;
+using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
-using MegaCrit.Sts2.Core.Factories;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
+// You walk into every fight already dosed and already covered, so the readers are lit from turn 1.
+// It used to procure a potion per combat, which is potion income the rubric counts as Meta Scaling
 public class EverflowingChalice : AlchemistRelic
 {
+    private const int Dose = 2;
+    private const int Antitoxin = 6;
+
     public override RelicRarity Rarity => RelicRarity.Shop;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new[] { HoverTipFactory.ForEnergy(this) };
-
-    // "Energy" must be an EnergyVar or the {Energy:energyIcons()} formatter breaks.
-    // "Pending" is a DynamicVar (not a field) so it survives a mid-combat save/reload
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-        new DynamicVar[] { new EnergyVar("Energy", 1), new DynamicVar("Pending", 0m) };
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        new[] { HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<AntitoxinPower>() };
 
     public override async Task BeforeCombatStart()
     {
-        DynamicVars["Pending"].BaseValue = 0m;
         Flash();
-        var potion = PotionFactory.CreateRandomPotionOutOfCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable();
-        var result = await PotionCmd.TryToProcure(potion, Owner);
-        if (!result.success)
-            DynamicVars["Pending"].BaseValue = 1m;
-    }
-
-    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants,
-        ICombatState combatState)
-    {
-        if (DynamicVars["Pending"].IntValue <= 0) return;
-        if (!participants.Contains(Owner.Creature)) return;
-        DynamicVars["Pending"].BaseValue = 0m;
-        Flash();
-        await PlayerCmd.GainEnergy(DynamicVars["Energy"].IntValue, Owner);
+        var ctx = new ThrowingPlayerChoiceContext();
+        await PowerCmd.Apply<PoisonPower>(ctx, Owner.Creature, Dose, Owner.Creature, null);
+        await PowerCmd.Apply<AntitoxinPower>(ctx, Owner.Creature, Antitoxin, Owner.Creature, null);
     }
 }

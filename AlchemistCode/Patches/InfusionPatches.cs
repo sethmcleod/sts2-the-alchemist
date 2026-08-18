@@ -23,8 +23,8 @@ public static class InfusionRunLaunchPatch
     public static void Prefix() => Infusion.ResetTracking();
 }
 
-// This counts every card that any source enchants during combat, so the Masterwork threshold works with
-// other mods. The CombatState gate stops a count outside combat, for example at a rest site smith
+// This counts every card that any source enchants during combat, so Fresh Coat sees enchants from
+// other mods too. The CombatState gate stops a count outside combat, for example at a rest site smith
 [HarmonyPatch(typeof(CardCmd), nameof(CardCmd.Enchant),
     new[] { typeof(EnchantmentModel), typeof(CardModel), typeof(decimal) })]
 public static class EnchantCountPatch
@@ -33,8 +33,6 @@ public static class EnchantCountPatch
     {
         if (card.CombatState == null) return;
         Infusion.RecordCombatEnchant(card);
-        if (card.Owner?.Creature.GetPower<Powers.KickbackPower>() is { } alembic)
-            _ = alembic.OnEnchanted();
         if (card.Owner?.Creature.GetPower<Powers.FreshCoatPower>() is { } coat)
             _ = coat.OnEnchanted();
     }

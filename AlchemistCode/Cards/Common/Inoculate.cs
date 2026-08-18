@@ -14,7 +14,7 @@ public class Inoculate : AlchemistCard
     public Inoculate() : base(2, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(12, 4);
-        WithVar("antitoxin", 2, 1);
+        WithVar("antitoxin", 3, 1);
         WithTip(typeof(AntitoxinPower));
     }
 

@@ -1,30 +1,31 @@
-using System.Linq;
 using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Ancient;
 
+// The Ancient's 0-cost sweep: reads the dose against every enemy and tops the bar up on the way
 [CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
 public class Wormwood : AlchemistCard
 {
     public Wormwood() : base(0, CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies)
     {
-        WithDamage(3, 1);
-        WithPower<PoisonPower>(2, 1);
-        WithPower<AntitoxinPower>(2, 1);
+        WithCalculatedDamage(3, static (card, _) => Dose(card), ValueProp.Move, 1);
+        WithVar("antitoxin", 2, 1);
+        WithTip(typeof(PoisonPower));
+        WithTip(typeof(AntitoxinPower));
     }
+
+    protected override bool ConditionalGlow => Dose(this) > 0;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (CombatState == null) return;
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
-        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
-            await PowerCmd.Apply<PoisonPower>(choiceContext, enemy,
-                DynamicVars.Poison.BaseValue, Owner.Creature, this);
-        await CommonActions.ApplySelf<AntitoxinPower>(choiceContext, this);
+        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
+            DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
     }
 }

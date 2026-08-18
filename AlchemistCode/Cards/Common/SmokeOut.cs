@@ -20,7 +20,7 @@ public class SmokeOut : AlchemistCard
     {
         if (CombatState == null) return;
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
-        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
+        foreach (var enemy in CombatState.HittableEnemies.Where(e => e.IsAlive))
             await PowerCmd.Apply<WeakPower>(choiceContext, enemy,
                 DynamicVars.Weak.IntValue, Owner.Creature, this);
     }

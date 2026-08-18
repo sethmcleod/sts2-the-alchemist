@@ -16,23 +16,15 @@ public class Toughen : AlchemistCard
 
     public Toughen() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCalculatedBlock(4, static (card, _) =>
-            card.Owner.Creature.GetPowerAmount<PoisonPower>() * PerPoison, ValueProp.Move, 2, 0);
+        WithCalculatedBlock(5, static (card, _) => Dose(card) * PerPoison, ValueProp.Move, 2, 0);
         WithTip(typeof(PoisonPower));
     }
 
-    private int Dose =>
-        IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<PoisonPower>() : 0;
+    protected override bool ConditionalGlow => Dose(this) > 0;
 
-    protected override bool ConditionalGlow => Dose > 0;
-
+    // Reads the dose and leaves it: the same Poison pays out again on the next reader
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // CalculatedBlock reads the dose live, so clearing the Poison first pays out the floor alone
         await CommonActions.CardBlock(this, play);
-
-        var spent = Dose;
-        if (spent > 0)
-            await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, -spent, Owner.Creature, this);
     }
 }

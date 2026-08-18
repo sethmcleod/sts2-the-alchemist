@@ -45,7 +45,7 @@ public static class Infusion
 
     // The tips and the enchant share these, and FromEnchantment defaults to 1, so a tip that does not
     // pass one goes stale in silence
-    private const int LacedAmount = 2;
+    private const int LacedAmount = 1;
     private const int DosedAmount = 2;
     private const int FortifiedAmount = 2;
 
@@ -70,7 +70,7 @@ public static class Infusion
         if (card.Type is CardType.Curse or CardType.Status or CardType.Quest)
             return !card.Keywords.Contains(CardKeyword.Ethereal);
         // Laced keys on IsPoweredAttack, so an Unpowered attacker would take a visible Laced icon
-        // and a promise of Poison that never fires
+        // and a promise of bonus damage that never fires
         if (card is AlchemistCard { DealsUnpoweredDamage: true }) return false;
         if (EnchantTypeFor(card) is null) return false;
         // Enchantments do not stack, matching every base-game one, so an enchanted card is not a target

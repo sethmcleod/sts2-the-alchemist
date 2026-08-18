@@ -22,7 +22,7 @@ namespace Alchemist.AlchemistCode.Compat;
 
 /// <summary>
 /// ONE OF THE TWO FILES THAT DIFFER BETWEEN THE beta AND main BRANCHES (the other is
-/// WeakSpotPowerCompat.cs). THIS COPY IS THE beta IMPLEMENTATION.
+/// AntitoxinPowerCompat.cs). THIS COPY IS THE beta IMPLEMENTATION.
 /// </summary>
 /// <remarks>
 /// The game's default branch and its public-beta branch spell a handful of damage and animation

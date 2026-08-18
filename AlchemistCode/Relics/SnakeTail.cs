@@ -8,8 +8,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-// Antitoxin cures one Poison per point absorbed, so the bar is both the damage you avoid this turn
-// and how fast the dose burns down. A bigger ceiling shortens every dose you carry
+// A bigger ceiling is a bigger dose you can carry without paying HP for it, which is the whole
+// character's risk budget in one number
 public class SnakeTail : AlchemistRelic
 {
     private const int Capacity = 6;

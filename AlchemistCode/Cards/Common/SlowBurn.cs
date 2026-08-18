@@ -12,9 +12,9 @@ public class SlowBurn : AlchemistCard
 
     public SlowBurn() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(5, static (card, _) =>
+        WithCalculatedDamage(6, static (card, _) =>
                 (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,
-            ValueProp.Move, 0, 0);
+            ValueProp.Move, 2, 0);
         WithKeyword(CardKeyword.Retain);
     }
 

@@ -14,6 +14,6 @@ public sealed class GoldHealVar : DynamicVar
     // freezes it. The IsMutable gate must come first, because Owner throws on a canonical model
     public override string ToString() =>
         _owner is PotionModel { IsMutable: true, Owner: { } player }
-            ? $" (Heals [green]{(int)(player.Gold / 15m)}[/green] HP)"
+            ? $"\n(Gain [green]{(int)(player.Gold / 15m)}[/green] of each)"
             : "";
 }

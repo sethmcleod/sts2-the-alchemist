@@ -10,6 +10,8 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Poison)]
 public class LashOut : AlchemistCard
 {
+    protected override bool ConditionalGlow => Dose(this) > 0;
+
     private const int Hits = 3;
 
     public LashOut() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
@@ -19,7 +21,7 @@ public class LashOut : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var hits = Hits + (play.Target?.HasPower<PoisonPower>() == true ? 1 : 0);
+        var hits = Hits + (Dose(this) > 0 ? 1 : 0);
         await CommonActions.CardAttack(this, play, hits, vfx: HitVfx("vfx/vfx_attack_slash"))
             .Execute(choiceContext);
     }
