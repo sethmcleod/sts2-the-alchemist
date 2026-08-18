@@ -15,7 +15,7 @@ public class CausticStrike : AlchemistCard
         // Strike was the only draftable one
         WithTags(CardTag.Strike);
         WithDamage(6, 3);
-        WithVar("antitoxin", 2, 1);
+        WithVar("antitoxin", 3, 1);
         WithTip(typeof(AntitoxinPower));
     }
 

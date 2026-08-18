@@ -24,7 +24,7 @@ public class HardenPower : AlchemistPower
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (power is PoisonPower && applier == Owner && amount > 0)
+        if (power is PoisonPower && amount > 0 && (applier == Owner || power.Owner == Owner))
         {
             Flash();
             await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);

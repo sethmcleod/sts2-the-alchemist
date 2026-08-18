@@ -14,7 +14,7 @@ public class Swill : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Swill() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Swill() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithVar("Turns", 1, 1);
         WithCards(1, 0);

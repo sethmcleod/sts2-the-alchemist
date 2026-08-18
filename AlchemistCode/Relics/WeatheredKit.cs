@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Entities.RestSite;
 using Alchemist.AlchemistCode.Cards.Token;
-using Alchemist.AlchemistCode.Commands;
 using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
@@ -29,7 +28,6 @@ public class WeatheredKit : AlchemistRelic
         Flash();
         await PowerCmd.Apply<AntitoxinPower>(new ThrowingPlayerChoiceContext(), Owner.Creature,
             Antitoxin, Owner.Creature, null);
-        await AlchemistCardCmd.GiveCardTo<Distillate>(Owner);
     }
 
     public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)

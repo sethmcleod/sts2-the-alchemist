@@ -1,43 +1,29 @@
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-// The Common rung of the cash-out ladder, which previously started at Uncommon with Corrode
+// The Common reader that pays double: 4 naked, 8 with the starter's dose of 2. Reads the dose and
+// leaves it, like every reader
 [CardTheme(CardTheme.Poison)]
 public class Purge : AlchemistCard
 {
-    protected internal override bool DealsUnpoweredDamage => true;
+    private const int PerPoison = 2;
 
     public Purge() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithVar("Multiplier", 2, 1);
+        WithCalculatedDamage(4, static (card, _) => Dose(card) * PerPoison, ValueProp.Move, 2);
         WithTip(typeof(PoisonPower));
     }
 
-    private int Dose =>
-        IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<PoisonPower>() : 0;
-
-    private int Multiplier => IsMutable ? DynamicVars["Multiplier"].IntValue : 2;
-
-    protected override bool ConditionalGlow => Dose > 0;
-
-    protected override int? RawFormulaDamagePreview => Dose > 0 ? Dose * Multiplier : null;
+    protected override bool ConditionalGlow => Dose(this) > 0;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var spent = Dose;
-        if (spent <= 0 || play.Target == null) return;
-
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, -spent, Owner.Creature, this);
-        await DamageCmd.Attack(spent * Multiplier)
-            .Unpowered()
-            .WithHitFx(HitVfx("vfx/vfx_slime_impact"), null, "heavy_attack.mp3")
-            .FromCard(this, play)
-            .Targeting(play.Target)
-            .Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact"),
+            tmpSfx: "heavy_attack.mp3").Execute(choiceContext);
     }
 }

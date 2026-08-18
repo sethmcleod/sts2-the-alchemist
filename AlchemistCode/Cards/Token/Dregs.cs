@@ -31,6 +31,6 @@ public class Dregs : AlchemistCard
 
     protected override async Task OnTurnEndInHand(PlayerChoiceContext choiceContext)
     {
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, SelfPoison, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, DynamicVars["Poison"].IntValue, Owner.Creature, this);
     }
 }

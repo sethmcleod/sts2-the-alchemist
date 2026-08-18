@@ -1,24 +1,11 @@
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models;
-
-// COMPAT-BRANCH: beta
+// COMPAT-BRANCH: any
 
 namespace Alchemist.AlchemistCode.Cards;
 
-// BRANCH-SPECIFIC, like Compat/GameCompat.cs. Picking the result location is the clean way to take a
-// Ferment card out of combat: it leaves the way a Power does, firing no Exhaust triggers. Transforming
-// it here instead would strand the replacement, because the engine's move out of the Play pile is
-// guarded on THIS card still being in it.
-//
-// THIS COPY IS THE beta IMPLEMENTATION. The main branch has no CardLocation type and no
-// GetResultLocationForCardPlay to override, so it Exhausts the card instead.
+// A played Ferment card goes to the Discard like any other card, and the Dregs it adds is the whole
+// cost of the play. Until 2026-08-18 this file took the card out of combat on play (beta: a
+// PileType.None result location; main: an Exhaust), which made a Ferment deck a one-shot per fight.
+// Kept as a partial so the main branch's copy can be replaced by this file on the next promote.
 public abstract partial class AlchemistCard
 {
-    protected override CardLocation GetResultLocationForCardPlay() =>
-        IsFermentCard
-            ? new CardLocation(Owner, PileType.None, CardPilePosition.Bottom)
-            : base.GetResultLocationForCardPlay();
-
-    private Task RemoveFermentFromCombat(PlayerChoiceContext choiceContext) => Task.CompletedTask;
 }

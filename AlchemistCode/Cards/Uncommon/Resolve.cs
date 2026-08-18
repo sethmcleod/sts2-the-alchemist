@@ -12,7 +12,7 @@ public class Resolve : AlchemistCard
     public Resolve() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Amount", 2, 1);
-        WithVar("poison", 5, 0);
+        WithVar("poison", 4, 0);
         WithTip(typeof(StrengthPower));
         WithTip(typeof(DexterityPower));
         WithTip(typeof(PoisonPower));

@@ -277,6 +277,10 @@ def check_compat_branch() -> list[str]:
     """
     errors = []
     branch = git_branch()
+    # A feature branch is cut from one of the two and carries that one's copies. Only the two
+    # release branches have a game branch of their own to be checked against
+    if branch not in (None, "main", "beta"):
+        return errors
     for path in sorted(COMPAT.glob("*.cs")):
         m = COMPAT_MARKER.search(path.read_text(encoding="utf-8"))
         if m is None:

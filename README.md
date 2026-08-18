@@ -20,7 +20,7 @@
   type. Attacks apply Poison, Skills generate Antitoxin, Powers give Strength,
   and other cards gain Ethereal.
 - **Ferment**: These effects grow in potency for every turn the card stays in
-  your hand. Playing the card transforms it into a Toxic.
+  your hand. Playing the card adds a Dregs to your Discard Pile.
 - **Brew**: This Rest Site option allows you to procure one of 6 unique potions
   that can only be obtained this way.
 - **Sell Potions**: Due to the quality of these brews, the Merchant is willing

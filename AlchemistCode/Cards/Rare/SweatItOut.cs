@@ -15,7 +15,7 @@ public class SweatItOut : AlchemistCard
     public SweatItOut() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithVar("SelfPoison", 2, 0);
-        WithVar("FermentPoison", 3, 1);
+        WithVar("FermentPoison", 2, 1);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }
@@ -42,8 +42,6 @@ public class SweatItOut : AlchemistCard
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
             FermentPoison, Owner.Creature, this);
         var poison = Owner.Creature.GetPowerAmount<PoisonPower>();
-        if (Owner.Creature.HasPower<PoisonPower>())
-            await PowerCmd.Remove<PoisonPower>(Owner.Creature);
         if (poison <= 0) return;
         foreach (var enemy in CombatState!.Enemies.Where(e => e.IsAlive))
             await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, poison, Owner.Creature, this);
