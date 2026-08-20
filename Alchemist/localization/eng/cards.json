@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "Fizz",
   "ALCHEMIST-FLARE_UP.description": "Deal {Damage:diff()} damage.\nIf you have {Threshold} or more [gold]Poison[/gold], gain {Energy:energyIcons()} and draw 1 card.",
   "ALCHEMIST-FLARE_UP.title": "Flare Up",
-  "ALCHEMIST-FORKED_TONGUE.description": "Deal {CalculatedDamage:diff()} damage twice.\nEach hit deals additional damage equal to your [gold]Poison[/gold].",
+  "ALCHEMIST-FORKED_TONGUE.description": "Deal {CalculatedDamage:diff()} damage twice.\nDeals additional damage equal to your [gold]Poison[/gold].",
   "ALCHEMIST-FORKED_TONGUE.title": "Forked Tongue",
   "ALCHEMIST-FREE_SAMPLES.description": "Add a random [gold]Mix[/gold] into ALL other players' [gold]Hands[/gold].\nDraw {Cards:diff()} cards.",
   "ALCHEMIST-FREE_SAMPLES.title": "Free Samples",

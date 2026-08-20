@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "Chiar",
   "ALCHEMIST-FLARE_UP.description": "Cause {Damage:diff()} de dano.\nSe você possuir {Threshold} ou mais de [gold]Veneno[/gold], receba {Energy:energyIcons()} e compre 1 carta.",
   "ALCHEMIST-FLARE_UP.title": "Labareda",
-  "ALCHEMIST-FORKED_TONGUE.description": "Cause {CalculatedDamage:diff()} de dano duas vezes.\nCada golpe causa dano adicional equivalente ao seu [gold]Veneno[/gold].",
+  "ALCHEMIST-FORKED_TONGUE.description": "Cause {CalculatedDamage:diff()} de dano duas vezes.\nCausa dano adicional equivalente ao seu [gold]Veneno[/gold].",
   "ALCHEMIST-FORKED_TONGUE.title": "Língua Bifurcada",
   "ALCHEMIST-FREE_SAMPLES.description": "Adicione uma [gold]Mistura[/gold] aleatória na [gold]Mão[/gold] de TODOS os outros jogadores.\nCompre {Cards:diff()} cartas.",
   "ALCHEMIST-FREE_SAMPLES.title": "Amostras Grátis",

@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "嘶泡",
   "ALCHEMIST-FLARE_UP.description": "造成{Damage:diff()}点伤害。\n如果你有{Threshold}层或更多[gold]中毒[/gold]，获得{Energy:energyIcons()}并抽1张牌。",
   "ALCHEMIST-FLARE_UP.title": "骤燃",
-  "ALCHEMIST-FORKED_TONGUE.description": "造成{CalculatedDamage:diff()}点伤害两次。\n每次命中都额外造成等同于你[gold]中毒[/gold]层数的伤害。",
+  "ALCHEMIST-FORKED_TONGUE.description": "造成{CalculatedDamage:diff()}点伤害两次。\n额外造成等同于你[gold]中毒[/gold]层数的伤害。",
   "ALCHEMIST-FORKED_TONGUE.title": "蛇信",
   "ALCHEMIST-FREE_SAMPLES.description": "将一张随机[gold]合剂[/gold]加入所有其他玩家的[gold]手牌[/gold]。\n抽{Cards:diff()}张牌。",
   "ALCHEMIST-FREE_SAMPLES.title": "免费试用",

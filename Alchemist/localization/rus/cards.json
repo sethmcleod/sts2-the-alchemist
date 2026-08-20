@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "Шипение",
   "ALCHEMIST-FLARE_UP.description": "Наносит {Damage:diff()} урона.\nЕсли у вас {Threshold} или больше [gold]яда[/gold], дает {Energy:energyIcons()}, и вы добираете 1 карту.",
   "ALCHEMIST-FLARE_UP.title": "Вспышка",
-  "ALCHEMIST-FORKED_TONGUE.description": "Наносит {CalculatedDamage:diff()} урона 2 раза.\nКаждый удар наносит дополнительный урон, равный вашему [gold]яду[/gold].",
+  "ALCHEMIST-FORKED_TONGUE.description": "Наносит {CalculatedDamage:diff()} урона 2 раза.\nНаносит дополнительный урон, равный вашему [gold]яду[/gold].",
   "ALCHEMIST-FORKED_TONGUE.title": "Раздвоенный язык",
   "ALCHEMIST-FREE_SAMPLES.description": "Добавляет случайную [gold]смесь[/gold] в [gold]руки[/gold] ВСЕХ других игроков.\nВы добираете {Cards:diff()} карты.",
   "ALCHEMIST-FREE_SAMPLES.title": "Бесплатные пробники",

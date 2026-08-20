@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "Sprudeln",
   "ALCHEMIST-FLARE_UP.description": "Füge {Damage:diff()} Schaden zu.\nFalls du mindestens {Threshold} [gold]Gift[/gold] hast, erhalte {Energy:energyIcons()} und ziehe 1 Karte.",
   "ALCHEMIST-FLARE_UP.title": "Aufflammen",
-  "ALCHEMIST-FORKED_TONGUE.description": "Füge zweimal {CalculatedDamage:diff()} Schaden zu.\nJeder Treffer fügt zusätzlichen Schaden in Höhe deines [gold]Gifts[/gold] zu.",
+  "ALCHEMIST-FORKED_TONGUE.description": "Füge zweimal {CalculatedDamage:diff()} Schaden zu.\nFügt zusätzlichen Schaden in Höhe deines [gold]Gifts[/gold] zu.",
   "ALCHEMIST-FORKED_TONGUE.title": "Gespaltene Zunge",
   "ALCHEMIST-FREE_SAMPLES.description": "Füge eine zufällige [gold]Mixtur[/gold] der [gold]Hand[/gold] ALLER Mitspieler hinzu.\nZiehe {Cards:diff()} Karten.",
   "ALCHEMIST-FREE_SAMPLES.title": "Gratisproben",

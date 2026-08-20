@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "Desis",
   "ALCHEMIST-FLARE_UP.description": "Lakukan {Damage:diff()} kerusakan.\nJika kamu punya {Threshold} [gold]Racun[/gold] atau lebih, dapatkan {Energy:energyIcons()} dan ambil 1 kartu.",
   "ALCHEMIST-FLARE_UP.title": "Kambuh",
-  "ALCHEMIST-FORKED_TONGUE.description": "Lakukan {CalculatedDamage:diff()} kerusakan dua kali.\nSetiap serangan melakukan kerusakan tambahan sebanyak [gold]Racun[/gold] milikmu.",
+  "ALCHEMIST-FORKED_TONGUE.description": "Lakukan {CalculatedDamage:diff()} kerusakan dua kali.\nMelakukan kerusakan tambahan sebanyak [gold]Racun[/gold] milikmu.",
   "ALCHEMIST-FORKED_TONGUE.title": "Lidah Bercabang",
   "ALCHEMIST-FREE_SAMPLES.description": "Tambahkan sebuah [gold]Campuran[/gold] acak ke [gold]Tangan[/gold] SEMUA pemain lain.\nAmbil {Cards:diff()} kartu.",
   "ALCHEMIST-FREE_SAMPLES.title": "Sampel Gratis",

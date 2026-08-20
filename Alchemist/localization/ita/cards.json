@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "Frizzio",
   "ALCHEMIST-FLARE_UP.description": "Infliggi {Damage:diff()} di danno.\nSe hai almeno {Threshold} di [gold]Veleno[/gold], ottieni {Energy:energyIcons()} e peschi 1 carta.",
   "ALCHEMIST-FLARE_UP.title": "Riacutizzazione",
-  "ALCHEMIST-FORKED_TONGUE.description": "Infliggi {CalculatedDamage:diff()} di danno due volte.\nOgni colpo infligge danno extra pari al tuo [gold]Veleno[/gold].",
+  "ALCHEMIST-FORKED_TONGUE.description": "Infliggi {CalculatedDamage:diff()} di danno due volte.\nInfligge danno extra pari al tuo [gold]Veleno[/gold].",
   "ALCHEMIST-FORKED_TONGUE.title": "Lingua Biforcuta",
   "ALCHEMIST-FREE_SAMPLES.description": "Aggiungi una [gold]Miscela[/gold] casuale alla [gold]mano[/gold] di TUTTI gli altri giocatori.\nPeschi {Cards:diff()} carte.",
   "ALCHEMIST-FREE_SAMPLES.title": "Campioni Gratuiti",

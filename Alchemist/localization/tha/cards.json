@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "ฟู่ซ่า",
   "ALCHEMIST-FLARE_UP.description": "สร้างความเสียหาย {Damage:diff()}\nถ้าคุณมี[gold]พิษ[/gold] {Threshold} ขึ้นไป ได้รับ {Energy:energyIcons()} และจั่วการ์ด 1 ใบ",
   "ALCHEMIST-FLARE_UP.title": "ปะทุ",
-  "ALCHEMIST-FORKED_TONGUE.description": "สร้างความเสียหาย {CalculatedDamage:diff()} จำนวน 2 ครั้ง\nการโจมตีแต่ละครั้งสร้างความเสียหายเพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
+  "ALCHEMIST-FORKED_TONGUE.description": "สร้างความเสียหาย {CalculatedDamage:diff()} จำนวน 2 ครั้ง\nสร้างความเสียหายเพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
   "ALCHEMIST-FORKED_TONGUE.title": "ลิ้นสองแฉก",
   "ALCHEMIST-FREE_SAMPLES.description": "เพิ่ม[gold]ยาผสม[/gold] 1 ใบแบบสุ่มใส่[gold]มือ[/gold]ของผู้เล่นคนอื่นทั้งหมด\nจั่วการ์ด {Cards:diff()} ใบ",
   "ALCHEMIST-FREE_SAMPLES.title": "แจกตัวอย่างฟรี",

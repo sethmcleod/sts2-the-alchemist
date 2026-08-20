@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "Bulgotanie",
   "ALCHEMIST-FLARE_UP.description": "Zadaj {Damage:diff()} pkt. obrażeń.\nJeżeli masz co najmniej {Threshold} pkt. [gold]Trucizny[/gold], zyskaj {Energy:energyIcons()} i dobierz 1 kartę.",
   "ALCHEMIST-FLARE_UP.title": "Zaostrzenie",
-  "ALCHEMIST-FORKED_TONGUE.description": "Zadaj {CalculatedDamage:diff()} pkt. obrażeń dwukrotnie.\nKażde trafienie zadaje dodatkowe obrażenia równe twojej [gold]Truciźnie[/gold].",
+  "ALCHEMIST-FORKED_TONGUE.description": "Zadaj {CalculatedDamage:diff()} pkt. obrażeń dwukrotnie.\nZadaje dodatkowe obrażenia równe twojej [gold]Truciźnie[/gold].",
   "ALCHEMIST-FORKED_TONGUE.title": "Rozdwojony język",
   "ALCHEMIST-FREE_SAMPLES.description": "Dodaj losową [gold]Mieszankę[/gold] do [gold]ręki[/gold] WSZYSTKICH innych graczy.\nDobierz {Cards:diff()} karty.",
   "ALCHEMIST-FREE_SAMPLES.title": "Darmowe próbki",

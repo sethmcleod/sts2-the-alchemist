@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "Burbujeo",
   "ALCHEMIST-FLARE_UP.description": "Infliges {Damage:diff()} de daño.\nSi tienes {Threshold} o más de [gold]veneno[/gold], obtienes {Energy:energyIcons()} y robas 1 carta.",
   "ALCHEMIST-FLARE_UP.title": "Brote agudo",
-  "ALCHEMIST-FORKED_TONGUE.description": "Infliges {CalculatedDamage:diff()} de daño dos veces.\nCada golpe inflige daño adicional igual a tu [gold]veneno[/gold].",
+  "ALCHEMIST-FORKED_TONGUE.description": "Infliges {CalculatedDamage:diff()} de daño dos veces.\nInflige daño adicional igual a tu [gold]veneno[/gold].",
   "ALCHEMIST-FORKED_TONGUE.title": "Lengua bífida",
   "ALCHEMIST-FREE_SAMPLES.description": "Agregas una [gold]Mezcla[/gold] al azar a la [gold]mano[/gold] de TODOS los demás jugadores.\nRobas {Cards:diff()} cartas.",
   "ALCHEMIST-FREE_SAMPLES.title": "Muestras gratis",

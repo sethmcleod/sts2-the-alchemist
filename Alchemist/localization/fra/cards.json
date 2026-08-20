@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "Pétillement",
   "ALCHEMIST-FLARE_UP.description": "Infligez {Damage:diff()} dégâts.\nSi vous avez {Threshold} de [gold]Poison[/gold] ou plus, gagnez {Energy:energyIcons()} et piochez 1 carte.",
   "ALCHEMIST-FLARE_UP.title": "Flambée",
-  "ALCHEMIST-FORKED_TONGUE.description": "Infligez {CalculatedDamage:diff()} dégâts 2 fois.\nChaque coup inflige un montant de dégâts supplémentaires égal à votre [gold]Poison[/gold].",
+  "ALCHEMIST-FORKED_TONGUE.description": "Infligez {CalculatedDamage:diff()} dégâts 2 fois.\nInflige un montant de dégâts supplémentaires égal à votre [gold]Poison[/gold].",
   "ALCHEMIST-FORKED_TONGUE.title": "Langue fourchue",
   "ALCHEMIST-FREE_SAMPLES.description": "Ajoutez une [gold]Mixture[/gold] aléatoire à la [gold]Main[/gold] de TOUS les autres joueurs.\nPiochez {Cards:diff()} cartes.",
   "ALCHEMIST-FREE_SAMPLES.title": "Échantillons gratuits",

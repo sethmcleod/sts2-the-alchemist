@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "Fışırtı",
   "ALCHEMIST-FLARE_UP.description": "{Damage:diff()} hasar ver.\n{Threshold} veya daha fazla [gold]Zehir[/gold]'e sahipsen {Energy:energyIcons()} elde et ve 1 kart çek.",
   "ALCHEMIST-FLARE_UP.title": "Alevlen",
-  "ALCHEMIST-FORKED_TONGUE.description": "İki kez {CalculatedDamage:diff()} hasar ver.\nHer vuruş, [gold]Zehir[/gold]'in kadar fazladan hasar verir.",
+  "ALCHEMIST-FORKED_TONGUE.description": "İki kez {CalculatedDamage:diff()} hasar ver.\n[gold]Zehir[/gold]'in kadar fazladan hasar verir.",
   "ALCHEMIST-FORKED_TONGUE.title": "Çatal Dil",
   "ALCHEMIST-FREE_SAMPLES.description": "Diğer TÜM oyuncuların [gold]El[/gold]'ine rastgele bir [gold]Karışım[/gold] ekle.\n{Cards:diff()} kart çek.",
   "ALCHEMIST-FREE_SAMPLES.title": "Bedava Numune",

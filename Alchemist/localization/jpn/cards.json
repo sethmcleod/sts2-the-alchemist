@@ -58,7 +58,7 @@
   "ALCHEMIST-FIZZ.title": "発泡音",
   "ALCHEMIST-FLARE_UP.description": "{Damage:diff()}ダメージを与える。\n[gold]毒[/gold]を{Threshold}以上持っている場合、{Energy:energyIcons()}を得て、カードを1枚引く。",
   "ALCHEMIST-FLARE_UP.title": "再燃",
-  "ALCHEMIST-FORKED_TONGUE.description": "{CalculatedDamage:diff()}ダメージを2回与える。\n各攻撃は、自身の[gold]毒[/gold]に等しいダメージを追加で与える。",
+  "ALCHEMIST-FORKED_TONGUE.description": "{CalculatedDamage:diff()}ダメージを2回与える。\n自身の[gold]毒[/gold]に等しいダメージを追加で与える。",
   "ALCHEMIST-FORKED_TONGUE.title": "二叉の舌",
   "ALCHEMIST-FREE_SAMPLES.description": "他のすべてのプレイヤーの[gold]手札[/gold]に、ランダムな[gold]合剤[/gold]を1枚ずつ加える。\nカードを{Cards:diff()}枚引く。",
   "ALCHEMIST-FREE_SAMPLES.title": "試供品",
