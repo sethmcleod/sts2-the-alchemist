@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.1] - 2026-08-20
+
 ### Changed
 
 - Buffed Mash: damage 4 (6) -> 5 (8), so the attack body stays ahead of Thicken's Block
