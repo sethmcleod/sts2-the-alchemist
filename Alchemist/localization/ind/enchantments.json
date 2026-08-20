@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-DOSED.description": "Saat Teknik ini dimainkan, dapatkan [blue]{Amount}[/blue] [gold]Antitoksin[/gold].",
   "ALCHEMIST-DOSED.title": "Berdosis",
-  "ALCHEMIST-FORTIFIED.description": "Saat Kuasa ini dimainkan, naikkan batas [gold]Antitoksin[/gold] milikmu sebesar [blue]{Amount}[/blue].",
+  "ALCHEMIST-FORTIFIED.description": "Saat Kuasa ini dimainkan: setiap kali kamu mendapat [gold]Racun[/gold], dapatkan [blue]{Amount}[/blue] [gold]Antitoksin[/gold].",
   "ALCHEMIST-FORTIFIED.title": "Kukuh",
   "ALCHEMIST-LACED.description": "Serangan ini melakukan kerusakan tambahan sebanyak [gold]Racun[/gold] milikmu.",
   "ALCHEMIST-LACED.title": "Beracun"

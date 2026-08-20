@@ -7,5 +7,5 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "[gold]주입[/gold]할 카드를 원하는 만큼 선택하세요.",
   "ALCHEMIST-INFUSE.selectionPromptRange": "[gold]주입[/gold]할 카드를 최대 [blue]{MaxCount}[/blue]{MaxCount:plural:장|장} 선택하세요.",
   "ALCHEMIST-INFUSE.title": "주입",
-  "ALCHEMIST-MIX.selectionPrompt": "생성할 [gold]혼합액[/gold]을 선택하세요."
+  "ALCHEMIST-MIX.selectionPrompt": "[gold]손[/gold]에 추가할 [gold]혼합액[/gold]을 선택하세요."
 }

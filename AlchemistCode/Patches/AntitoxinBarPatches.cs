@@ -161,7 +161,9 @@ public static class AntitoxinBarPatches
             // The real bar shrinks its foreground with a negative OffsetRight, so this matches it
             var full = parts.Root.GetNodeOrNull<Control>("HpForegroundContainer")?.Size.X ?? hp.Size.X;
             var current = inCombat ? live : parts.LastKnown;
-            var max = AntitoxinPower.MaxFor(creature);
+            // Uncapped: the bar IS the reserve, full whenever any is held, and the Poison
+            // forecast eats its proportional slice from the end
+            var max = current;
             var ratio = max > 0 ? Mathf.Clamp((float)current / max, 0f, 1f) : 0f;
             // What the next Poison tick will spend. Amount, not CalculateTotalDamageNextTurn, because
             // that already runs through Antitoxin's own reduction and so reports what gets past it
@@ -171,11 +173,11 @@ public static class AntitoxinBarPatches
 
             // A NinePatchRect cannot render narrower than its own patch margins, so a foreground shrunk
             // to zero still leaves a purple stub. Hide it outright at zero and when the tick takes it all
-            var drainedFully = current > 0 && spent >= current;
+            var drainedFully = current == 0 || spent >= current;
             parts.Foreground.Visible = current > 0 && !drainedFully;
             parts.Foreground.SelfModulate = AlchemistModConfig.AntitoxinBarColor;
             parts.Foreground.OffsetRight = full * afterRatio - full;
-            parts.Text.Text = $"{current}/{max}";
+            parts.Text.Text = $"{current}";
 
             parts.Text.AddThemeColorOverride("font_color", drainedFully ? DrainedColor : TextColor);
             parts.Text.AddThemeColorOverride("font_outline_color",

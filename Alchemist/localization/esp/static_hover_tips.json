@@ -1,15 +1,15 @@
 {
   "ALCHEMIST-BREW.description": "Esta opción del punto de descanso prepara una de las [blue]7[/blue] [gold]pociones[/gold] que solo se consiguen así. Las [gold]pociones[/gold] preparadas son las únicas que compra el [gold]Comerciante[/gold].",
   "ALCHEMIST-BREW.title": "Preparar",
-  "ALCHEMIST-BURSTING_MIX.description": "Infliges [blue]8[/blue] de daño.",
+  "ALCHEMIST-BURSTING_MIX.description": "Infliges [blue]6[/blue] de daño.",
   "ALCHEMIST-BURSTING_MIX.title": "Mezcla explosiva",
-  "ALCHEMIST-FUMING_MIX.description": "Aplicas [blue]1[/blue] de [gold]debilitamiento[/gold] y [blue]1[/blue] de [gold]vulnerabilidad[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Aplicas [blue]1[/blue] de [gold]debilitamiento[/gold] y [blue]1[/blue] de [gold]vulnerabilidad[/gold]. Obtienes [blue]1[/blue] de [gold]veneno[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Mezcla humeante",
   "ALCHEMIST-MASTERWORK.description": "Esta carta brilla en [gold]oro[/gold] si [gold]encantaste[/gold] 3 cartas o más en este combate, incluida la que vas a [gold]infundir[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Obra maestra",
   "ALCHEMIST-MIX.description": "Una carta de costo [blue]0[/blue] con [gold]agotamiento[/gold].",
   "ALCHEMIST-MIX.title": "Mezcla",
-  "ALCHEMIST-STURDY_MIX.description": "Obtienes [blue]6[/blue] de [gold]bloqueo[/gold].",
+  "ALCHEMIST-STURDY_MIX.description": "Obtienes [blue]5[/blue] de [gold]bloqueo[/gold].",
   "ALCHEMIST-STURDY_MIX.title": "Mezcla robusta",
   "ALCHEMIST-ZESTY_MIX.description": "Robas [blue]1[/blue] carta. Obtienes [blue]3[/blue] de [gold]antitoxina[/gold].",
   "ALCHEMIST-ZESTY_MIX.title": "Mezcla vigorizante"

@@ -7,5 +7,5 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "เลือกการ์ดกี่ใบก็ได้เพื่อ[gold]อัดฉีด[/gold]",
   "ALCHEMIST-INFUSE.selectionPromptRange": "เลือกการ์ดได้ถึง [blue]{MaxCount}[/blue] {MaxCount:plural:ใบ|ใบ}เพื่อ[gold]อัดฉีด[/gold]",
   "ALCHEMIST-INFUSE.title": "อัดฉีด",
-  "ALCHEMIST-MIX.selectionPrompt": "เลือก[gold]ยาผสม[/gold]ที่จะสร้าง"
+  "ALCHEMIST-MIX.selectionPrompt": "เลือก[gold]ยาผสม[/gold]ที่จะเพิ่มเข้า[gold]มือ[/gold]"
 }

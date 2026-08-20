@@ -1,15 +1,15 @@
 {
   "ALCHEMIST-BREW.description": "This Rest Site option brews one of the [blue]7[/blue] [gold]Potions[/gold] that can only be obtained this way. Brewed [gold]Potions[/gold] are the only ones the [gold]Merchant[/gold] will buy.",
   "ALCHEMIST-BREW.title": "Brew",
-  "ALCHEMIST-BURSTING_MIX.description": "Deal [blue]8[/blue] damage.",
+  "ALCHEMIST-BURSTING_MIX.description": "Deal [blue]6[/blue] damage.",
   "ALCHEMIST-BURSTING_MIX.title": "Bursting Mix",
-  "ALCHEMIST-FUMING_MIX.description": "Apply [blue]1[/blue] [gold]Weak[/gold] and [blue]1[/blue] [gold]Vulnerable[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Apply [blue]1[/blue] [gold]Weak[/gold] and [blue]1[/blue] [gold]Vulnerable[/gold]. Gain [blue]1[/blue] [gold]Poison[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Fuming Mix",
   "ALCHEMIST-MASTERWORK.description": "This card glows [gold]gold[/gold] if you have [gold]Enchanted[/gold] 3 or more cards this combat, including the one you would [gold]Infuse[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Masterwork",
   "ALCHEMIST-MIX.description": "A [blue]0[/blue]-cost card that [gold]Exhausts[/gold].",
   "ALCHEMIST-MIX.title": "Mix",
-  "ALCHEMIST-STURDY_MIX.description": "Gain [blue]6[/blue] [gold]Block[/gold].",
+  "ALCHEMIST-STURDY_MIX.description": "Gain [blue]5[/blue] [gold]Block[/gold].",
   "ALCHEMIST-STURDY_MIX.title": "Sturdy Mix",
   "ALCHEMIST-ZESTY_MIX.description": "Draw [blue]1[/blue] card. Gain [blue]3[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-ZESTY_MIX.title": "Zesty Mix"

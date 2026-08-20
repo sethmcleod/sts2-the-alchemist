@@ -1,15 +1,15 @@
 {
   "ALCHEMIST-BREW.description": "Mit dieser Lagerfeuer-Option braust du einen der [blue]7[/blue] [gold]Tränke[/gold], die du nur so erhalten kannst. Nur gebraute [gold]Tränke[/gold] kauft der [gold]Händler[/gold] an.",
   "ALCHEMIST-BREW.title": "Brauen",
-  "ALCHEMIST-BURSTING_MIX.description": "Füge [blue]8[/blue] Schaden zu.",
+  "ALCHEMIST-BURSTING_MIX.description": "Füge [blue]6[/blue] Schaden zu.",
   "ALCHEMIST-BURSTING_MIX.title": "Berstende Mixtur",
-  "ALCHEMIST-FUMING_MIX.description": "Wende [blue]1[/blue] [gold]Schwach[/gold] und [blue]1[/blue] [gold]Verwundbar[/gold] an.",
+  "ALCHEMIST-FUMING_MIX.description": "Wende [blue]1[/blue] [gold]Schwach[/gold] und [blue]1[/blue] [gold]Verwundbar[/gold] an. Erhalte [blue]1[/blue] [gold]Gift[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Dampfende Mixtur",
   "ALCHEMIST-MASTERWORK.description": "Diese Karte leuchtet [gold]golden[/gold], falls du in diesem Kampf 3 oder mehr Karten [gold]Verzaubert[/gold] hast, einschließlich der Karte, die du [gold]Infundieren[/gold] würdest.",
   "ALCHEMIST-MASTERWORK.title": "Meisterwerk",
   "ALCHEMIST-MIX.description": "Eine Karte, die [blue]0[/blue] Energie kostet und [gold]Erschöpft[/gold].",
   "ALCHEMIST-MIX.title": "Mixtur",
-  "ALCHEMIST-STURDY_MIX.description": "Erhalte [blue]6[/blue] [gold]Block[/gold].",
+  "ALCHEMIST-STURDY_MIX.description": "Erhalte [blue]5[/blue] [gold]Block[/gold].",
   "ALCHEMIST-STURDY_MIX.title": "Robuste Mixtur",
   "ALCHEMIST-ZESTY_MIX.description": "Ziehe [blue]1[/blue] Karte. Erhalte [blue]3[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-ZESTY_MIX.title": "Spritzige Mixtur"

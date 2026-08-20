@@ -16,7 +16,9 @@ public class FumingMix : AlchemistCard
     {
         WithPower<WeakPower>(1, 0);
         WithPower<VulnerablePower>(1, 0);
+        WithVar("SelfPoison", 1, 0);
         WithKeyword(CardKeyword.Exhaust);
+        WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -24,5 +26,7 @@ public class FumingMix : AlchemistCard
         if (play.Target is not { IsAlive: true } target) return;
         await PowerCmd.Apply<WeakPower>(choiceContext, target, DynamicVars.Weak.IntValue, Owner.Creature, this);
         await PowerCmd.Apply<VulnerablePower>(choiceContext, target, DynamicVars.Vulnerable.IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
+            DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
     }
 }

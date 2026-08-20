@@ -1,15 +1,15 @@
 {
   "ALCHEMIST-BREW.description": "Esta opção de Local de Descanso prepara uma das [blue]7[/blue] [gold]Poções[/gold] que só podem ser obtidas desta forma. [gold]Poções[/gold] preparadas são as únicas que o [gold]Mercador[/gold] compra.",
   "ALCHEMIST-BREW.title": "Preparar",
-  "ALCHEMIST-BURSTING_MIX.description": "Cause [blue]8[/blue] de dano.",
+  "ALCHEMIST-BURSTING_MIX.description": "Cause [blue]6[/blue] de dano.",
   "ALCHEMIST-BURSTING_MIX.title": "Mistura Explosiva",
-  "ALCHEMIST-FUMING_MIX.description": "Aplique [blue]1[/blue] de [gold]Fraqueza[/gold] e [blue]1[/blue] de [gold]Vulnerável[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Aplique [blue]1[/blue] de [gold]Fraqueza[/gold] e [blue]1[/blue] de [gold]Vulnerável[/gold]. Receba [blue]1[/blue] de [gold]Veneno[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Mistura Fumegante",
   "ALCHEMIST-MASTERWORK.description": "Esta carta brilha em [gold]dourado[/gold] se você tiver [gold]Encantado[/gold] 3 ou mais cartas neste combate, incluindo a que você [gold]Infundiria[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Obra-Prima",
   "ALCHEMIST-MIX.description": "Uma carta de custo [blue]0[/blue] que [gold]Exaure[/gold].",
   "ALCHEMIST-MIX.title": "Mistura",
-  "ALCHEMIST-STURDY_MIX.description": "Receba [blue]6[/blue] de [gold]Proteção[/gold].",
+  "ALCHEMIST-STURDY_MIX.description": "Receba [blue]5[/blue] de [gold]Proteção[/gold].",
   "ALCHEMIST-STURDY_MIX.title": "Mistura Robusta",
   "ALCHEMIST-ZESTY_MIX.description": "Compre [blue]1[/blue] carta. Receba [blue]3[/blue] de [gold]Antitoxina[/gold].",
   "ALCHEMIST-ZESTY_MIX.title": "Mistura Vibrante"

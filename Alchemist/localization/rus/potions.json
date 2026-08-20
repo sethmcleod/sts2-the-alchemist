@@ -11,7 +11,7 @@
   "ALCHEMIST-MARSH_TONIC.title": "Болотный тоник",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "[gold]Яд[/gold] на враге срабатывает [blue]3[/blue] раза.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Ртутный настой",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Выберите, какие [blue]2[/blue] [gold]смеси[/gold] создать.",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Выберите, какие [blue]2[/blue] [gold]смеси[/gold] добавить в [gold]руку[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Очищенный экстракт",
   "ALCHEMIST-SAMPLER.description": "Дает {energyPrefix:energyIcons(1)}, и вы добираете [blue]1[/blue] карту за каждое ваше [gold]зелье[/gold], включая это.",
   "ALCHEMIST-SAMPLER.title": "Дегустация",

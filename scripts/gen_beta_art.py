@@ -119,7 +119,7 @@ COLORS = {
     "Vintage": ("#6b2444", "#df9723", "BR", "Ferment: skills and powers"),
     "Condense": ("#792595", "#b8d94f", "BR", "Infuse: cantrips"),
     "Salve": ("#792595", "#6fd8e0", "BR", "Infuse: cantrips"),
-    "Double Batch": ("#3a1c52", "#59c1a6", "BR", "Mix"),
+    "Fresh Batch": ("#3a1c52", "#59c1a6", "BR", "Mix"),
     "Refine": ("#4a1a66", "#257bc3", "BR", "Infuse: heavy"),
     "Froth": ("#0e3550", "#8fe0c8", "TR", "Unique"),
     "Siphon": ("#241a5e", "#2aa89b", "TR", "Unique"),

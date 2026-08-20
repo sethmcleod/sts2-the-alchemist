@@ -11,7 +11,7 @@
   "ALCHEMIST-MARSH_TONIC.title": "沼の強壮薬",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "敵1体の[gold]毒[/gold]を[blue]3[/blue]回発動させる。",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "水銀の一服",
-  "ALCHEMIST-REFINED_EXTRACT.description": "[gold]合剤[/gold]を[blue]2[/blue]枚選んで作成する。",
+  "ALCHEMIST-REFINED_EXTRACT.description": "[gold]合剤[/gold]を[blue]2[/blue]枚選んで[gold]手札[/gold]に加える。",
   "ALCHEMIST-REFINED_EXTRACT.title": "精製抽出液",
   "ALCHEMIST-SAMPLER.description": "このポーションを含め、所持している[gold]ポーション[/gold]1つにつき、{energyPrefix:energyIcons(1)}を得てカードを[blue]1[/blue]枚引く。",
   "ALCHEMIST-SAMPLER.title": "試飲セット",

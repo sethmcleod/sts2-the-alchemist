@@ -7,6 +7,22 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.1] - 2026-08-20
+
+### Changed
+
+- Buffed Mash: damage 4 (6) -> 5 (8), so the attack body stays ahead of Thicken's Block
+- Changed Antitoxin to no longer have an upper limit
+- Changed the Mix maker wording to the base game's: "Choose a Mix to add into your Hand."
+- Nerfed Apothecary: cost 2 (1) -> 3 (2)
+- Nerfed Bursting Mix: damage 8 -> 6
+- Nerfed Fuming Mix: it now also grants 1 Poison
+- Nerfed Sturdy Mix: Block 6 -> 5
+- Reworked Double Batch into Fresh Batch: "Choose a Mix to add into your Hand. Draw 1 card."
+- Reworked Fortified (Infused Powers): playing the Power now grants "Whenever you gain Poison, gain 1 Antitoxin" instead of raising the Antitoxin limit
+- Reworked Snake Tail relic: "The first time your Antitoxin reaches 0 each combat, gain 8 Antitoxin."
+- Reworked Tolerance: "At the start of your turn, gain Antitoxin equal to your Poison." Cost 1 -> 3, it gains Ethereal, and Tolerance+ loses Ethereal instead of growing
+
 ## [0.11.0] - 2026-08-20
 
 ### Added

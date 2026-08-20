@@ -13,7 +13,7 @@ public class SturdyMix : AlchemistCard
 
     public SturdyMix() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
-        WithBlock(6, 0);
+        WithBlock(5, 0);
         WithKeyword(CardKeyword.Exhaust);
     }
 

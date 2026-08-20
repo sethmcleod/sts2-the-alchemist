@@ -15,6 +15,6 @@ public sealed class Fortified : AlchemistEnchantment
 
     public override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay? cardPlay)
     {
-        await PowerCmd.Apply<AntitoxinCapacityPower>(choiceContext, Card.Owner.Creature, Amount, Card.Owner.Creature, Card);
+        await PowerCmd.Apply<FortifiedPower>(choiceContext, Card.Owner.Creature, Amount, Card.Owner.Creature, Card);
     }
 }

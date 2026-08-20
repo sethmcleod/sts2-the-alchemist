@@ -12,26 +12,11 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Neither of these can live on AntitoxinPower: the ceiling has to apply to the first grant of a
-// combat, when no AntitoxinPower exists yet, and the absorb record has to outlive the power being
-// spent down to nothing. A combat-hook singleton is always listening.
+// This cannot live on AntitoxinPower: the absorb record has to outlive the power being spent down
+// to nothing. A combat-hook singleton is always listening.
 public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 {
     private static readonly HashSet<Creature> Absorbed = [];
-
-    // The limit is a wall: a grant past it is clipped. It used to spill into Block, which was an
-    // alternate Block source the rubric names, and it is gone as of 2026-08-18
-    public override bool TryModifyPowerAmountReceived(PowerModel canonicalPower, Creature target,
-        decimal amount, Creature? applier, out decimal modifiedAmount)
-    {
-        modifiedAmount = amount;
-        if (canonicalPower is not AntitoxinPower || amount <= 0) return false;
-
-        var room = Math.Max(0, AntitoxinPower.MaxFor(target) - target.GetPowerAmount<AntitoxinPower>());
-        if (amount <= room) return false;
-        modifiedAmount = room;
-        return true;
-    }
 
     // Royal Poison and in-combat max HP loss deal damage with the same null dealer and
     // Unblockable|Unpowered shape as a Poison tick. PoisonPower.Trigger deals exactly the stack it is

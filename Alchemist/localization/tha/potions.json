@@ -11,7 +11,7 @@
   "ALCHEMIST-MARSH_TONIC.title": "ยาบำรุงบึงเลน",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "ทำให้[gold]พิษ[/gold]บนตัวศัตรู 1 ตัวทำงาน [blue]3[/blue] ครั้ง",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "ยาปรอทว่องไว",
-  "ALCHEMIST-REFINED_EXTRACT.description": "เลือก[gold]ยาผสม[/gold] [blue]2[/blue] ชนิดที่จะสร้าง",
+  "ALCHEMIST-REFINED_EXTRACT.description": "เลือก[gold]ยาผสม[/gold] [blue]2[/blue] ชนิดที่จะเพิ่มเข้า[gold]มือ[/gold]",
   "ALCHEMIST-REFINED_EXTRACT.title": "สารสกัดบริสุทธิ์",
   "ALCHEMIST-SAMPLER.description": "ได้รับ {energyPrefix:energyIcons(1)} และจั่วการ์ด [blue]1[/blue] ใบ ต่อ[gold]ขวดยา[/gold]แต่ละขวดที่คุณมี โดยนับรวมขวดนี้ด้วย",
   "ALCHEMIST-SAMPLER.title": "ยาชิมรวมมิตร",

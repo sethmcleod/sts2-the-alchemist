@@ -11,7 +11,7 @@
   "ALCHEMIST-MARSH_TONIC.title": "Marsh Tonic",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Trigger [gold]Poison[/gold] on an enemy [blue]3[/blue] times.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Quicksilver Draught",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Choose [blue]2[/blue] [gold]Mixes[/gold] to create.",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Choose [blue]2[/blue] [gold]Mixes[/gold] to add into your [gold]Hand[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Refined Extract",
   "ALCHEMIST-SAMPLER.description": "Gain {energyPrefix:energyIcons(1)} and draw [blue]1[/blue] card for each [gold]Potion[/gold] you have, including this one.",
   "ALCHEMIST-SAMPLER.title": "Sampler",

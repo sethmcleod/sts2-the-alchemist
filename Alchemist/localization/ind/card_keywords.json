@@ -7,5 +7,5 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "Pilih seberapapun kartu untuk diberi [gold]Infusi[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Pilih sampai dengan [blue]{MaxCount}[/blue] {MaxCount:plural:kartu|kartu} untuk diberi [gold]Infusi[/gold].",
   "ALCHEMIST-INFUSE.title": "Infusi",
-  "ALCHEMIST-MIX.selectionPrompt": "Pilih sebuah [gold]Campuran[/gold] untuk dibuat."
+  "ALCHEMIST-MIX.selectionPrompt": "Pilih sebuah [gold]Campuran[/gold] untuk ditambahkan ke [gold]Tangan[/gold]mu."
 }

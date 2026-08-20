@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-DOSED.description": "Gdy zagrasz tę Umiejętność, zyskaj [blue]{Amount}[/blue] pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-DOSED.title": "Dawka",
-  "ALCHEMIST-FORTIFIED.description": "Gdy zagrasz tę Moc, zwiększ swój limit [gold]Antytoksyny[/gold] o [blue]{Amount}[/blue].",
+  "ALCHEMIST-FORTIFIED.description": "Gdy zagrasz tę Moc: kiedykolwiek zyskasz [gold]Truciznę[/gold], zyskaj [blue]{Amount}[/blue] pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-FORTIFIED.title": "Utwierdzenie",
   "ALCHEMIST-LACED.description": "Ten Atak zadaje dodatkowe obrażenia równe twojej [gold]Truciźnie[/gold].",
   "ALCHEMIST-LACED.title": "Jad"

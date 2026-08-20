@@ -7,5 +7,5 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "Выберите любое количество карт для [gold]пропитки[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Выберите до [blue]{MaxCount}[/blue] {MaxCount:plural(ru):карты|карт|карт} для [gold]пропитки[/gold].",
   "ALCHEMIST-INFUSE.title": "Пропитка",
-  "ALCHEMIST-MIX.selectionPrompt": "Выберите, какую [gold]смесь[/gold] создать."
+  "ALCHEMIST-MIX.selectionPrompt": "Выберите, какую [gold]смесь[/gold] добавить в [gold]руку[/gold]."
 }

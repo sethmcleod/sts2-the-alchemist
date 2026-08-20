@@ -7,5 +7,5 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "選擇任意數量的牌進行[gold]浸潤[/gold]。",
   "ALCHEMIST-INFUSE.selectionPromptRange": "最多選擇 [blue]{MaxCount}[/blue] {MaxCount:plural:張牌|張牌}進行[gold]浸潤[/gold]。",
   "ALCHEMIST-INFUSE.title": "浸潤",
-  "ALCHEMIST-MIX.selectionPrompt": "選擇一種[gold]混劑[/gold]來創造。"
+  "ALCHEMIST-MIX.selectionPrompt": "選擇一種[gold]混劑[/gold]加入你的[gold]手牌[/gold]。"
 }

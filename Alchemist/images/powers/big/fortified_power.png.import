@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://igcapai8lobo"
-path="res://.godot/imported/double_batch.png-43081f8f0b053a2c9e5ce76058404060.ctex"
+uid="uid://p63cbusqb3nd"
+path="res://.godot/imported/fortified_power.png-8e57428ba81d5edfc8e8dfb4dad83f51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/double_batch.png"
-dest_files=["res://.godot/imported/double_batch.png-43081f8f0b053a2c9e5ce76058404060.ctex"]
+source_file="res://Alchemist/images/powers/big/fortified_power.png"
+dest_files=["res://.godot/imported/fortified_power.png-8e57428ba81d5edfc8e8dfb4dad83f51.ctex"]
 
 [params]
 

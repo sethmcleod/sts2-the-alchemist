@@ -7,5 +7,5 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "Elige cualquier número de cartas que [gold]Infundir[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Elige hasta [blue]{MaxCount}[/blue] {MaxCount:plural:carta|cartas} que [gold]Infundir[/gold].",
   "ALCHEMIST-INFUSE.title": "Infundir",
-  "ALCHEMIST-MIX.selectionPrompt": "Elige una [gold]Mezcla[/gold] que crear."
+  "ALCHEMIST-MIX.selectionPrompt": "Elige una [gold]Mezcla[/gold] que añadir a tu [gold]Mano[/gold]."
 }
