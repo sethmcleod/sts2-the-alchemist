@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.0] - 2026-08-20
+
 ### Added
 
 - Added Adapt card: "Gain 7 (10) Block. If your Antitoxin absorbed damage this turn, gain 1 Energy."
