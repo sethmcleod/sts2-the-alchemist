@@ -15,7 +15,7 @@ public class ZestyMix : AlchemistCard
     public ZestyMix() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
         WithCards(1, 0);
-        WithVar("antitoxin", 3, 0);
+        WithVar("antitoxin", 3, 2);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(AntitoxinPower));
     }

@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-BREW.description": "この休憩所の選択肢では、この方法でしか入手できない[blue]7[/blue]種類の[gold]ポーション[/gold]から1つを調合する。[gold]商人[/gold]が買い取るのは、調合した[gold]ポーション[/gold]だけ。",
   "ALCHEMIST-BREW.title": "調合",
-  "ALCHEMIST-BURSTING_MIX.description": "[blue]6[/blue]ダメージを与える。",
+  "ALCHEMIST-BURSTING_MIX.description": "[blue]5[/blue]ダメージを与える。",
   "ALCHEMIST-BURSTING_MIX.title": "破裂の合剤",
   "ALCHEMIST-FUMING_MIX.description": "[gold]脱力[/gold][blue]1[/blue]と[gold]弱体[/gold][blue]1[/blue]を付与する。[gold]毒[/gold][blue]1[/blue]を得る。",
   "ALCHEMIST-FUMING_MIX.title": "発煙の合剤",
@@ -9,7 +9,7 @@
   "ALCHEMIST-MASTERWORK.title": "傑作",
   "ALCHEMIST-MIX.description": "コスト[blue]0[/blue]の、[gold]廃棄[/gold]するカード。",
   "ALCHEMIST-MIX.title": "合剤",
-  "ALCHEMIST-STURDY_MIX.description": "[blue]5[/blue][gold]ブロック[/gold]を得る。",
+  "ALCHEMIST-STURDY_MIX.description": "[blue]4[/blue][gold]ブロック[/gold]を得る。",
   "ALCHEMIST-STURDY_MIX.title": "堅固の合剤",
   "ALCHEMIST-ZESTY_MIX.description": "カードを[blue]1[/blue]枚引く。[gold]抗毒素[/gold][blue]3[/blue]を得る。",
   "ALCHEMIST-ZESTY_MIX.title": "刺激の合剤"

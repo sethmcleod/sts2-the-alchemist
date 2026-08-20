@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-BREW.description": "ตัวเลือกที่จุดพักนี้ให้คุณปรุง[gold]ขวดยา[/gold] 1 ขวดจาก [blue]7[/blue] ชนิดที่หาได้ด้วยวิธีนี้เท่านั้น [gold]ขวดยา[/gold]ที่ปรุงเองเป็นชนิดเดียวที่[gold]พ่อค้า[/gold]รับซื้อ",
   "ALCHEMIST-BREW.title": "ปรุงยา",
-  "ALCHEMIST-BURSTING_MIX.description": "สร้างความเสียหาย [blue]6[/blue]",
+  "ALCHEMIST-BURSTING_MIX.description": "สร้างความเสียหาย [blue]5[/blue]",
   "ALCHEMIST-BURSTING_MIX.title": "ยาผสมระเบิด",
   "ALCHEMIST-FUMING_MIX.description": "สร้าง [blue]1[/blue] [gold]ความอ่อนแอ[/gold] และ [blue]1[/blue] [gold]จุดอ่อน[/gold] ได้รับ [blue]1[/blue] [gold]พิษ[/gold]",
   "ALCHEMIST-FUMING_MIX.title": "ยาผสมควันฉุน",
@@ -9,7 +9,7 @@
   "ALCHEMIST-MASTERWORK.title": "ผลงานชิ้นเอก",
   "ALCHEMIST-MIX.description": "การ์ดค่าร่าย [blue]0[/blue] ที่จะ[gold]สลาย[/gold]เมื่อเล่น",
   "ALCHEMIST-MIX.title": "ยาผสม",
-  "ALCHEMIST-STURDY_MIX.description": "ได้รับ [blue]5[/blue] [gold]บล็อก[/gold]",
+  "ALCHEMIST-STURDY_MIX.description": "ได้รับ [blue]4[/blue] [gold]บล็อก[/gold]",
   "ALCHEMIST-STURDY_MIX.title": "ยาผสมแกร่ง",
   "ALCHEMIST-ZESTY_MIX.description": "จั่วการ์ด [blue]1[/blue] ใบ ได้รับ [blue]3[/blue] [gold]สารต้านพิษ[/gold]",
   "ALCHEMIST-ZESTY_MIX.title": "ยาผสมรสซ่า"
