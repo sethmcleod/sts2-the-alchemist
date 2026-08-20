@@ -1,14 +1,14 @@
 {
-  "ALCHEMIST-BREW.bronzeDescription": "Вы варили зелья в [blue]3[/blue] или более лагерях.",
-  "ALCHEMIST-BREW.bronzeTitle": "Малая партия",
-  "ALCHEMIST-BREW.goldDescription": "Вы варили зелья в [blue]9[/blue] или более лагерях.",
-  "ALCHEMIST-BREW.goldTitle": "Мастер перегонки",
-  "ALCHEMIST-BREW.silverDescription": "Вы варили зелья в [blue]6[/blue] или более лагерях.",
-  "ALCHEMIST-BREW.silverTitle": "Полные запасы",
-  "ALCHEMIST-POTION_SALE.bronzeDescription": "Вы продали Торговцу [blue]3[/blue] или более зелий.",
+  "ALCHEMIST-MIXES.bronzeDescription": "Вы создали [blue]10[/blue] или более [gold]смесей[/gold].",
+  "ALCHEMIST-MIXES.bronzeTitle": "Грубый замес",
+  "ALCHEMIST-MIXES.goldDescription": "Вы создали [blue]30[/blue] или более [gold]смесей[/gold].",
+  "ALCHEMIST-MIXES.goldTitle": "Мастер смешивания",
+  "ALCHEMIST-MIXES.silverDescription": "Вы создали [blue]20[/blue] или более [gold]смесей[/gold].",
+  "ALCHEMIST-MIXES.silverTitle": "Выверенная формула",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "Вы продали Торговцу [blue]2[/blue] или более зелий.",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "Разносчик",
-  "ALCHEMIST-POTION_SALE.goldDescription": "Вы продали Торговцу [blue]9[/blue] или более зелий.",
+  "ALCHEMIST-POTION_SALE.goldDescription": "Вы продали Торговцу [blue]6[/blue] или более зелий.",
   "ALCHEMIST-POTION_SALE.goldTitle": "Любимец Торговца",
-  "ALCHEMIST-POTION_SALE.silverDescription": "Вы продали Торговцу [blue]6[/blue] или более зелий.",
+  "ALCHEMIST-POTION_SALE.silverDescription": "Вы продали Торговцу [blue]4[/blue] или более зелий.",
   "ALCHEMIST-POTION_SALE.silverTitle": "Торговый партнер"
 }

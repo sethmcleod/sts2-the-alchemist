@@ -1,5 +1,8 @@
 {
   "ALCHEMIST-ACCESSIBILITY.title": "Accesibilidad",
+  "ALCHEMIST-ANALYTICS.title": "Estadísticas",
+  "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "Envía resultados anónimos de las partidas con el Alquimista (mazo, reliquias, cartas elegidas, piso alcanzado) para ayudar a equilibrar el personaje. Solo se aplica si la opción Subir datos del juego está activada. Nunca incluye tu nombre ni tu ID de Steam.",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "Compartir estadísticas de partidas",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "El color de la barra de antitoxina que aparece bajo tu barra de vida. No afecta al segmento verde que muestra el veneno entrante.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Color de la barra de antitoxina",
   "ALCHEMIST-COMPATIBILITY.title": "Compatibilidad",
@@ -18,5 +21,9 @@
   "ALCHEMIST-UNLOCKS.title": "Desbloqueos",
   "ALCHEMIST-UNLOCK_ALL.title": "Desbloquear todas las cartas, reliquias, pociones y eras de El Alquimista",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Desbloquear todo",
+  "ALCHEMIST-WORKSHOP_UPDATE.body": "Se ha descargado una versión más reciente de El Alquimista desde el Steam Workshop.\nReinicia el juego para cargar la nueva versión.",
+  "ALCHEMIST-WORKSHOP_UPDATE.header": "El Alquimista se ha actualizado",
+  "ALCHEMIST-WORKSHOP_UPDATE.later": "Más tarde",
+  "ALCHEMIST-WORKSHOP_UPDATE.quit": "Salir ahora",
   "ALCHEMIST.mod_title": "El Alquimista"
 }

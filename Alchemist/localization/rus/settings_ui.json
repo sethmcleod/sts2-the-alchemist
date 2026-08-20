@@ -1,5 +1,8 @@
 {
   "ALCHEMIST-ACCESSIBILITY.title": "Доступность",
+  "ALCHEMIST-ANALYTICS.title": "Аналитика",
+  "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "Отправляет анонимные результаты вылазок за Алхимика (колода, реликвии, выбор карт, достигнутый этаж), чтобы помочь с балансом персонажа. Работает, только если в самой игре включена настройка отправки данных. Никогда не включает ваше имя или Steam ID.",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "Делиться статистикой вылазок",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "Цвет полосы антитоксина под полосой здоровья. Зеленый участок, который показывает предстоящий урон от яда, остается прежним.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Цвет полосы антитоксина",
   "ALCHEMIST-COMPATIBILITY.title": "Совместимость",
@@ -18,5 +21,9 @@
   "ALCHEMIST-UNLOCKS.title": "Разблокировки",
   "ALCHEMIST-UNLOCK_ALL.title": "Открыть все карты, реликвии, зелья и эпохи Алхимика",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Открыть все",
+  "ALCHEMIST-WORKSHOP_UPDATE.body": "Новая версия «Алхимика» загружена из Мастерской Steam.\nПерезапустите игру, чтобы загрузить новую версию.",
+  "ALCHEMIST-WORKSHOP_UPDATE.header": "«Алхимик» обновлен",
+  "ALCHEMIST-WORKSHOP_UPDATE.later": "Позже",
+  "ALCHEMIST-WORKSHOP_UPDATE.quit": "Выйти сейчас",
   "ALCHEMIST.mod_title": "Алхимик"
 }

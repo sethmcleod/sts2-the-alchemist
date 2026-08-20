@@ -1,5 +1,8 @@
 {
   "ALCHEMIST-ACCESSIBILITY.title": "Ułatwienia dostępu",
+  "ALCHEMIST-ANALYTICS.title": "Analityka",
+  "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "Wysyła anonimowe wyniki przejść Alchemika (talia, artefakty, wybory kart, osiągnięte piętro), aby pomóc w balansowaniu postaci. Działa tylko wtedy, gdy w grze włączono opcję przesyłania danych. Nigdy nie zawiera twojego imienia ani identyfikatora Steam.",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "Udostępniaj statystyki przejść",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "Kolor paska Antytoksyny pod twoim paskiem zdrowia. Nie dotyczy zielonego segmentu pokazującego nadchodzącą Truciznę.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Kolor paska Antytoksyny",
   "ALCHEMIST-COMPATIBILITY.title": "Kompatybilność",
@@ -18,5 +21,9 @@
   "ALCHEMIST-UNLOCKS.title": "Odblokowania",
   "ALCHEMIST-UNLOCK_ALL.title": "Odblokuj wszystkie karty, artefakty, mikstury i Epoki Alchemika",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Odblokuj wszystko",
+  "ALCHEMIST-WORKSHOP_UPDATE.body": "Nowsza wersja Alchemika została pobrana z Warsztatu Steam.\nUruchom grę ponownie, aby wczytać nową wersję.",
+  "ALCHEMIST-WORKSHOP_UPDATE.header": "Zaktualizowano Alchemika",
+  "ALCHEMIST-WORKSHOP_UPDATE.later": "Później",
+  "ALCHEMIST-WORKSHOP_UPDATE.quit": "Wyjdź teraz",
   "ALCHEMIST.mod_title": "Alchemik"
 }

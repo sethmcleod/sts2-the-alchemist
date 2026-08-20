@@ -1,5 +1,8 @@
 {
   "ALCHEMIST-ACCESSIBILITY.title": "无障碍",
+  "ALCHEMIST-ANALYTICS.title": "分析",
+  "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "发送匿名的炼金术士游戏数据（牌组、遗物、卡牌选择、到达层数）以帮助平衡该角色。仅在游戏自身的“上传数据”设置开启时生效。绝不包含你的名字或Steam ID。",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "分享游戏数据",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "你血条下方抗毒素条的颜色。用于显示即将到来的中毒的绿色段不受影响。",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "抗毒素条颜色",
   "ALCHEMIST-COMPATIBILITY.title": "兼容性",
@@ -18,5 +21,9 @@
   "ALCHEMIST-UNLOCKS.title": "解锁内容",
   "ALCHEMIST-UNLOCK_ALL.title": "解锁所有炼金术士卡牌、遗物、药水和历史节点",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "全部解锁",
+  "ALCHEMIST-WORKSHOP_UPDATE.body": "已从Steam创意工坊下载了新版本的炼金术士。\n重启游戏以加载新版本。",
+  "ALCHEMIST-WORKSHOP_UPDATE.header": "炼金术士已更新",
+  "ALCHEMIST-WORKSHOP_UPDATE.later": "稍后",
+  "ALCHEMIST-WORKSHOP_UPDATE.quit": "立即退出",
   "ALCHEMIST.mod_title": "炼金术士"
 }

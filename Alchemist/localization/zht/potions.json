@@ -5,16 +5,18 @@
   "ALCHEMIST-ANODYNE.title": "鎮痛劑",
   "ALCHEMIST-DECOCTION.description": "抽 [blue]3[/blue] 張牌。這些牌本回合耗能為 0 {energyPrefix:energyIcons(1)}。",
   "ALCHEMIST-DECOCTION.title": "煎劑",
-  "ALCHEMIST-GOLD_LEAF.description": "你每擁有 [blue]15[/blue] 枚[gold]金幣[/gold]，就恢復 [green]1[/green] 點生命並獲得 [blue]1[/blue] 點[gold]格擋[/gold]。{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.description": "你每擁有 [blue]15[/blue] 枚[gold]金幣[/gold]，就獲得 [blue]1[/blue] 點[gold]格擋[/gold]和 [blue]1[/blue] 點[gold]抗毒素[/gold]。{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "金箔",
   "ALCHEMIST-MARSH_TONIC.description": "獲得 [blue]6[/blue] 點[gold]抗毒素[/gold]。",
   "ALCHEMIST-MARSH_TONIC.title": "沼澤補藥",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "觸發一名敵人身上的[gold]中毒[/gold] [blue]3[/blue] 次。",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "水銀藥飲",
-  "ALCHEMIST-REFINED_EXTRACT.description": "將 [blue]2[/blue] 張[gold]蒸餾液[/gold]加入你的[gold]手牌[/gold]。",
+  "ALCHEMIST-REFINED_EXTRACT.description": "選擇 [blue]2[/blue] 種[gold]混劑[/gold]來創造。",
   "ALCHEMIST-REFINED_EXTRACT.title": "精煉萃取液",
   "ALCHEMIST-SAMPLER.description": "你每擁有一瓶[gold]藥水[/gold]（含此瓶），就獲得 {energyPrefix:energyIcons(1)} 並抽 [blue]1[/blue] 張牌。",
   "ALCHEMIST-SAMPLER.title": "試飲組",
-  "ALCHEMIST-SOLVENT.description": "移除敵人所有[gold]格擋[/gold]。對其施加 [blue]3[/blue] 層[gold]虛弱[/gold]。",
-  "ALCHEMIST-SOLVENT.title": "溶解劑"
+  "ALCHEMIST-SOLVENT.description": "移除敵人所有[gold]人造物[/gold]和[gold]格擋[/gold]。對其施加 [blue]3[/blue] 層[gold]虛弱[/gold]。",
+  "ALCHEMIST-SOLVENT.title": "溶解劑",
+  "ALCHEMIST-STARTER_CULTURE.description": "[gold]觸發[/gold]你[gold]手牌[/gold]中的所有[gold]醞釀[/gold]牌 [blue]3[/blue] 次。",
+  "ALCHEMIST-STARTER_CULTURE.title": "酵種"
 }

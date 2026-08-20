@@ -1,14 +1,14 @@
 {
-  "ALCHEMIST-BREW.bronzeDescription": "An [blue]3[/blue] oder mehr Lagerfeuern gebraut.",
-  "ALCHEMIST-BREW.bronzeTitle": "Kleine Charge",
-  "ALCHEMIST-BREW.goldDescription": "An [blue]9[/blue] oder mehr Lagerfeuern gebraut.",
-  "ALCHEMIST-BREW.goldTitle": "Meisterdestillateur:in",
-  "ALCHEMIST-BREW.silverDescription": "An [blue]6[/blue] oder mehr Lagerfeuern gebraut.",
-  "ALCHEMIST-BREW.silverTitle": "Gut bestückt",
-  "ALCHEMIST-POTION_SALE.bronzeDescription": "[blue]3[/blue] oder mehr Tränke an den Händler verkauft.",
+  "ALCHEMIST-MIXES.bronzeDescription": "[blue]10[/blue] oder mehr [gold]Mixturen[/gold] erschaffen.",
+  "ALCHEMIST-MIXES.bronzeTitle": "Grober Verschnitt",
+  "ALCHEMIST-MIXES.goldDescription": "[blue]30[/blue] oder mehr [gold]Mixturen[/gold] erschaffen.",
+  "ALCHEMIST-MIXES.goldTitle": "Meistermixer",
+  "ALCHEMIST-MIXES.silverDescription": "[blue]20[/blue] oder mehr [gold]Mixturen[/gold] erschaffen.",
+  "ALCHEMIST-MIXES.silverTitle": "Ausgewogene Formel",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "[blue]2[/blue] oder mehr Tränke an den Händler verkauft.",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "Hausierer:in",
-  "ALCHEMIST-POTION_SALE.goldDescription": "[blue]9[/blue] oder mehr Tränke an den Händler verkauft.",
+  "ALCHEMIST-POTION_SALE.goldDescription": "[blue]6[/blue] oder mehr Tränke an den Händler verkauft.",
   "ALCHEMIST-POTION_SALE.goldTitle": "Liebling des Händlers",
-  "ALCHEMIST-POTION_SALE.silverDescription": "[blue]6[/blue] oder mehr Tränke an den Händler verkauft.",
+  "ALCHEMIST-POTION_SALE.silverDescription": "[blue]4[/blue] oder mehr Tränke an den Händler verkauft.",
   "ALCHEMIST-POTION_SALE.silverTitle": "Handelspartner:in"
 }

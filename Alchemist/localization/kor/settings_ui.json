@@ -1,5 +1,8 @@
 {
   "ALCHEMIST-ACCESSIBILITY.title": "접근성",
+  "ALCHEMIST-ANALYTICS.title": "분석",
+  "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "익명의 연금술사 플레이 결과(덱, 유물, 카드 선택, 도달한 층)를 전송해 캐릭터 밸런스 조정에 활용합니다. 게임 자체의 데이터 업로드 설정이 켜져 있을 때만 적용됩니다. 이름이나 Steam ID는 절대 포함되지 않습니다.",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "플레이 분석 공유",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "체력 바 아래에 표시되는 항독소 바의 색상입니다. 들어올 중독을 나타내는 초록색 구간에는 적용되지 않습니다.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "항독소 바 색상",
   "ALCHEMIST-COMPATIBILITY.title": "호환성",
@@ -18,5 +21,9 @@
   "ALCHEMIST-UNLOCKS.title": "해금",
   "ALCHEMIST-UNLOCK_ALL.title": "모든 연금술사 카드, 유물, 포션, 역사 해금",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "모두 해금",
+  "ALCHEMIST-WORKSHOP_UPDATE.body": "Steam 창작마당에서 새 버전의 연금술사를 다운로드했습니다.\n새 버전을 적용하려면 게임을 다시 시작하세요.",
+  "ALCHEMIST-WORKSHOP_UPDATE.header": "연금술사 업데이트됨",
+  "ALCHEMIST-WORKSHOP_UPDATE.later": "나중에",
+  "ALCHEMIST-WORKSHOP_UPDATE.quit": "지금 종료",
   "ALCHEMIST.mod_title": "연금술사"
 }

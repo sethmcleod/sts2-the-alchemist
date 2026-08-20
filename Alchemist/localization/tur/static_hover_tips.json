@@ -1,6 +1,16 @@
 {
-  "ALCHEMIST-BREW.description": "Bu Dinlenme Yeri seçeneği, yalnızca bu yolla elde edilebilen [blue]6[/blue] [gold]İksir[/gold]'den birini demler. [gold]Tüccar[/gold] sadece demlenmiş [gold]İksirler[/gold]'i satın alır.",
+  "ALCHEMIST-BREW.description": "Bu Dinlenme Yeri seçeneği, yalnızca bu yolla elde edilebilen [blue]7[/blue] [gold]İksir[/gold]'den birini demler. [gold]Tüccar[/gold] sadece demlenmiş [gold]İksirler[/gold]'i satın alır.",
   "ALCHEMIST-BREW.title": "Demle",
+  "ALCHEMIST-BURSTING_MIX.description": "[blue]8[/blue] hasar ver.",
+  "ALCHEMIST-BURSTING_MIX.title": "Patlayan Karışım",
+  "ALCHEMIST-FUMING_MIX.description": "[blue]1[/blue] [gold]Zayıf[/gold] ve [blue]1[/blue] [gold]Savunmasız[/gold] uygula.",
+  "ALCHEMIST-FUMING_MIX.title": "Tüten Karışım",
   "ALCHEMIST-MASTERWORK.description": "Bu savaşta, [gold]Aşılayacağın[/gold] kart dahil 3 veya daha fazla kart [gold]Büyülediysen[/gold] bu kart [gold]altın[/gold] renkte parlar.",
-  "ALCHEMIST-MASTERWORK.title": "Ustalık Eseri"
+  "ALCHEMIST-MASTERWORK.title": "Ustalık Eseri",
+  "ALCHEMIST-MIX.description": "[gold]Tüket[/gold]ilen, [blue]0[/blue] maliyetli bir kart.",
+  "ALCHEMIST-MIX.title": "Karışım",
+  "ALCHEMIST-STURDY_MIX.description": "[blue]6[/blue] [gold]Blok[/gold] elde et.",
+  "ALCHEMIST-STURDY_MIX.title": "Sağlam Karışım",
+  "ALCHEMIST-ZESTY_MIX.description": "[blue]1[/blue] kart çek. [blue]3[/blue] [gold]Antitoksin[/gold] elde et.",
+  "ALCHEMIST-ZESTY_MIX.title": "Mayhoş Karışım"
 }

@@ -1,11 +1,11 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "All'inizio del tuo turno, [gold]infondi[/gold] una carta casuale nella tua [gold]mano[/gold].",
+  "ALCHEMIST-AURIC_SEAL.description": "La prima carta che peschi in ogni turno viene [gold]infusa[/gold] oppure, se non è possibile, ti conferisce [blue]2[/blue] di [gold]Antitossina[/gold].",
   "ALCHEMIST-AURIC_SEAL.flavor": "Ha le sue opinioni su quale pagina conti davvero.",
   "ALCHEMIST-AURIC_SEAL.title": "Sigillo Aureo",
-  "ALCHEMIST-EVERFLOWING_CHALICE.description": "All'inizio di ogni combattimento, ricevi una [gold]pozione[/gold] casuale. Se i tuoi spazi per pozioni sono pieni, ottieni invece {Energy:energyIcons()}.",
+  "ALCHEMIST-EVERFLOWING_CHALICE.description": "All'inizio di ogni combattimento, scegli una [gold]Miscela[/gold] da creare.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Per quanto ne versi, non si svuota mai del tutto.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Calice Inesauribile",
-  "ALCHEMIST-GILDED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]8[/blue] di [gold]Antitossina[/gold] e aggiungi la carta [gold]Distillato+[/gold] alla tua [gold]mano[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
+  "ALCHEMIST-GILDED_KIT.description": "Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo e ottieni [blue]1[/blue] alloggiamento pozione extra.",
   "ALCHEMIST-GILDED_KIT.flavor": "Una valigetta decorata. L'oro non è per bellezza.",
   "ALCHEMIST-GILDED_KIT.title": "Kit Dorato",
   "ALCHEMIST-GLOWING_SHARD.description": "Ogni volta che ottieni [gold]Veleno[/gold], applichi [blue]1[/blue] di [gold]Veleno[/gold] a un nemico casuale.",
@@ -14,7 +14,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "Quando la raccogli, aggiungi [blue]1[/blue] [gold]Frutto Acerbo[/gold] al tuo [gold]mazzo[/gold].",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "Mida scelse male, ma piantò bene.",
   "ALCHEMIST-MIDAS_FRUIT.title": "Frutto di Mida",
-  "ALCHEMIST-SECOND_SKIN.description": "Ogni volta che subisci danno da [gold]Veleno[/gold], ottieni [blue]2[/blue] di [gold]Blocco[/gold].",
+  "ALCHEMIST-SECOND_SKIN.description": "Ogni volta che il tuo [gold]Veleno[/gold] si attiva, ottieni [blue]2[/blue] di [gold]Blocco[/gold].",
   "ALCHEMIST-SECOND_SKIN.flavor": "Ciò che supera la prima deve ancora vedersela con questa.",
   "ALCHEMIST-SECOND_SKIN.title": "Seconda Pelle",
   "ALCHEMIST-SNAKE_TAIL.description": "Il limite della tua [gold]Antitossina[/gold] aumenta di [blue]6[/blue].",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Ogni volta che ottieni [gold]Veleno[/gold], ottieni [blue]1[/blue] di [gold]Antitossina[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Una dose misurata, sempre a portata di mano.",
   "ALCHEMIST-SPARE_DOSE.title": "Dose di Scorta",
-  "ALCHEMIST-WEATHERED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]4[/blue] di [gold]Antitossina[/gold] e aggiungi la carta [gold]Distillato[/gold] alla tua [gold]mano[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
+  "ALCHEMIST-WEATHERED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]1[/blue] di [gold]Veleno[/gold] e [blue]8[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Una valigetta consunta, dal profumo gradevole.",
   "ALCHEMIST-WEATHERED_KIT.title": "Kit Consunto"
 }

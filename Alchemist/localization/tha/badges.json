@@ -1,14 +1,14 @@
 {
-  "ALCHEMIST-BREW.bronzeDescription": "ปรุงยาที่จุดพัก [blue]3[/blue] แห่งขึ้นไป",
-  "ALCHEMIST-BREW.bronzeTitle": "ยาชุดเล็ก",
-  "ALCHEMIST-BREW.goldDescription": "ปรุงยาที่จุดพัก [blue]9[/blue] แห่งขึ้นไป",
-  "ALCHEMIST-BREW.goldTitle": "ยอดนักกลั่น",
-  "ALCHEMIST-BREW.silverDescription": "ปรุงยาที่จุดพัก [blue]6[/blue] แห่งขึ้นไป",
-  "ALCHEMIST-BREW.silverTitle": "สต็อกแน่น",
-  "ALCHEMIST-POTION_SALE.bronzeDescription": "ขายขวดยาให้พ่อค้า [blue]3[/blue] ขวดขึ้นไป",
+  "ALCHEMIST-MIXES.bronzeDescription": "สร้าง[gold]ยาผสม[/gold] [blue]10[/blue] ใบขึ้นไป",
+  "ALCHEMIST-MIXES.bronzeTitle": "ผสมหยาบ",
+  "ALCHEMIST-MIXES.goldDescription": "สร้าง[gold]ยาผสม[/gold] [blue]30[/blue] ใบขึ้นไป",
+  "ALCHEMIST-MIXES.goldTitle": "ยอดนักปรุงยาผสม",
+  "ALCHEMIST-MIXES.silverDescription": "สร้าง[gold]ยาผสม[/gold] [blue]20[/blue] ใบขึ้นไป",
+  "ALCHEMIST-MIXES.silverTitle": "สูตรสมดุล",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "ขายขวดยาให้พ่อค้า [blue]2[/blue] ขวดขึ้นไป",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "พ่อค้าเร่",
-  "ALCHEMIST-POTION_SALE.goldDescription": "ขายขวดยาให้พ่อค้า [blue]9[/blue] ขวดขึ้นไป",
+  "ALCHEMIST-POTION_SALE.goldDescription": "ขายขวดยาให้พ่อค้า [blue]6[/blue] ขวดขึ้นไป",
   "ALCHEMIST-POTION_SALE.goldTitle": "ขาประจำของพ่อค้า",
-  "ALCHEMIST-POTION_SALE.silverDescription": "ขายขวดยาให้พ่อค้า [blue]6[/blue] ขวดขึ้นไป",
+  "ALCHEMIST-POTION_SALE.silverDescription": "ขายขวดยาให้พ่อค้า [blue]4[/blue] ขวดขึ้นไป",
   "ALCHEMIST-POTION_SALE.silverTitle": "คู่ค้า"
 }

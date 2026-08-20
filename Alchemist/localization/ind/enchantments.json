@@ -3,6 +3,6 @@
   "ALCHEMIST-DOSED.title": "Berdosis",
   "ALCHEMIST-FORTIFIED.description": "Saat Kuasa ini dimainkan, naikkan batas [gold]Antitoksin[/gold] milikmu sebesar [blue]{Amount}[/blue].",
   "ALCHEMIST-FORTIFIED.title": "Kukuh",
-  "ALCHEMIST-LACED.description": "Setiap kali Serangan ini melakukan kerusakan tidak tertahan, terapkan [blue]{Amount}[/blue] [gold]Racun[/gold].",
+  "ALCHEMIST-LACED.description": "Serangan ini melakukan kerusakan tambahan sebanyak [gold]Racun[/gold] milikmu.",
   "ALCHEMIST-LACED.title": "Beracun"
 }

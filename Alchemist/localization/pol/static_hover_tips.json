@@ -1,6 +1,16 @@
 {
-  "ALCHEMIST-BREW.description": "Ta opcja Obozowiska pozwala uwarzyć jedną z [blue]6[/blue] [gold]Mikstur[/gold], które można zdobyć tylko w ten sposób. [gold]Handlarz[/gold] kupuje wyłącznie uwarzone [gold]Mikstury[/gold].",
+  "ALCHEMIST-BREW.description": "Ta opcja Obozowiska pozwala uwarzyć jedną z [blue]7[/blue] [gold]Mikstur[/gold], które można zdobyć tylko w ten sposób. [gold]Handlarz[/gold] kupuje wyłącznie uwarzone [gold]Mikstury[/gold].",
   "ALCHEMIST-BREW.title": "Warzenie",
+  "ALCHEMIST-BURSTING_MIX.description": "Zadaj [blue]8[/blue] pkt. obrażeń.",
+  "ALCHEMIST-BURSTING_MIX.title": "Wybuchowa mieszanka",
+  "ALCHEMIST-FUMING_MIX.description": "Nałóż [blue]1[/blue] pkt. [gold]Słabości[/gold] i [blue]1[/blue] pkt. [gold]Wrażliwości[/gold].",
+  "ALCHEMIST-FUMING_MIX.title": "Dymiąca mieszanka",
   "ALCHEMIST-MASTERWORK.description": "Ta karta świeci na [gold]złoto[/gold], jeżeli w tej walce rzucono [gold]Zaklęcie[/gold] na co najmniej 3 karty, licząc tę, którą [gold]Nasycisz[/gold].",
-  "ALCHEMIST-MASTERWORK.title": "Arcydzieło"
+  "ALCHEMIST-MASTERWORK.title": "Arcydzieło",
+  "ALCHEMIST-MIX.description": "Karta o koszcie [blue]0[/blue], która się [gold]Wyczerpuje[/gold].",
+  "ALCHEMIST-MIX.title": "Mieszanka",
+  "ALCHEMIST-STURDY_MIX.description": "Zyskaj [blue]6[/blue] pkt. [gold]Bloku[/gold].",
+  "ALCHEMIST-STURDY_MIX.title": "Solidna mieszanka",
+  "ALCHEMIST-ZESTY_MIX.description": "Dobierz [blue]1[/blue] kartę. Zyskaj [blue]3[/blue] pkt. [gold]Antytoksyny[/gold].",
+  "ALCHEMIST-ZESTY_MIX.title": "Rześka mieszanka"
 }

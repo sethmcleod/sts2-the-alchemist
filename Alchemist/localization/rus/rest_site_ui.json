@@ -1,4 +1,4 @@
 {
-  "OPTION_BREW.description": "Сварить особое [gold]зелье[/gold], которое можно продать [gold]Торговцу[/gold] за [gold]150 зол.[/gold]",
+  "OPTION_BREW.description": "Выберите 1 из 3 особых [gold]зелий[/gold]; при продаже [gold]Торговцу[/gold] каждое стоит 150 зол.",
   "OPTION_BREW.name": "Варить"
 }

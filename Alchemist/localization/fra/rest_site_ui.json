@@ -1,4 +1,4 @@
 {
-  "OPTION_BREW.description": "Brassez une [gold]Potion[/gold] spéciale d'une valeur de [gold]150 po[/gold] si elle est vendue au [gold]Marchand[/gold].",
+  "OPTION_BREW.description": "Choisissez 1 [gold]Potion[/gold] spéciale parmi 3, d'une valeur de 150 po si elle est vendue au [gold]Marchand[/gold].",
   "OPTION_BREW.name": "Brassage"
 }

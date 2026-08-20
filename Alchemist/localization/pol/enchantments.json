@@ -3,6 +3,6 @@
   "ALCHEMIST-DOSED.title": "Dawka",
   "ALCHEMIST-FORTIFIED.description": "Gdy zagrasz tę Moc, zwiększ swój limit [gold]Antytoksyny[/gold] o [blue]{Amount}[/blue].",
   "ALCHEMIST-FORTIFIED.title": "Utwierdzenie",
-  "ALCHEMIST-LACED.description": "Kiedykolwiek ten Atak zada niezablokowane obrażenia, nałóż [blue]{Amount}[/blue] pkt. [gold]Trucizny[/gold].",
+  "ALCHEMIST-LACED.description": "Ten Atak zadaje dodatkowe obrażenia równe twojej [gold]Truciźnie[/gold].",
   "ALCHEMIST-LACED.title": "Jad"
 }

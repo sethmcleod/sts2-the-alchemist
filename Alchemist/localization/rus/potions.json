@@ -5,16 +5,18 @@
   "ALCHEMIST-ANODYNE.title": "Болеутоляющее",
   "ALCHEMIST-DECOCTION.description": "Вы добираете [blue]3[/blue] карты. В этом ходу они стоят 0 {energyPrefix:energyIcons(1)}.",
   "ALCHEMIST-DECOCTION.title": "Отвар",
-  "ALCHEMIST-GOLD_LEAF.description": "Восполняет [green]1[/green] ОЗ и дает [blue]1[/blue] [gold]защиты[/gold] за каждые [blue]15[/blue] [gold]золота[/gold].{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.description": "Дает [blue]1[/blue] [gold]защиты[/gold] и [blue]1[/blue] [gold]антитоксина[/gold] за каждые [blue]15[/blue] [gold]золота[/gold].{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Сусальное золото",
   "ALCHEMIST-MARSH_TONIC.description": "Дает [blue]6[/blue] [gold]антитоксина[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Болотный тоник",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "[gold]Яд[/gold] на враге срабатывает [blue]3[/blue] раза.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Ртутный настой",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Добавляет в [gold]руку[/gold] [blue]2[/blue] [gold]«Дистиллята»[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Выберите, какие [blue]2[/blue] [gold]смеси[/gold] создать.",
   "ALCHEMIST-REFINED_EXTRACT.title": "Очищенный экстракт",
   "ALCHEMIST-SAMPLER.description": "Дает {energyPrefix:energyIcons(1)}, и вы добираете [blue]1[/blue] карту за каждое ваше [gold]зелье[/gold], включая это.",
   "ALCHEMIST-SAMPLER.title": "Дегустация",
-  "ALCHEMIST-SOLVENT.description": "Снимает с врага всю [gold]защиту[/gold]. Накладывает на него [blue]3[/blue] [gold]слабости[/gold].",
-  "ALCHEMIST-SOLVENT.title": "Растворитель"
+  "ALCHEMIST-SOLVENT.description": "Снимает с врага весь [gold]артефакт[/gold] и всю [gold]защиту[/gold]. Накладывает на него [blue]3[/blue] [gold]слабости[/gold].",
+  "ALCHEMIST-SOLVENT.title": "Растворитель",
+  "ALCHEMIST-STARTER_CULTURE.description": "[gold]Активирует[/gold] ВСЕ карты с [gold]брожением[/gold] в вашей [gold]руке[/gold] [blue]3[/blue] раза.",
+  "ALCHEMIST-STARTER_CULTURE.title": "Закваска"
 }

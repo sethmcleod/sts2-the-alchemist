@@ -1,14 +1,14 @@
 {
-  "ALCHEMIST-BREW.bronzeDescription": "Warzono w co najmniej [blue]3[/blue] Obozowiskach.",
-  "ALCHEMIST-BREW.bronzeTitle": "Mała partia",
-  "ALCHEMIST-BREW.goldDescription": "Warzono w co najmniej [blue]9[/blue] Obozowiskach.",
-  "ALCHEMIST-BREW.goldTitle": "Mistrz destylacji",
-  "ALCHEMIST-BREW.silverDescription": "Warzono w co najmniej [blue]6[/blue] Obozowiskach.",
-  "ALCHEMIST-BREW.silverTitle": "Pełna spiżarnia",
-  "ALCHEMIST-POTION_SALE.bronzeDescription": "Sprzedano Handlarzowi co najmniej [blue]3[/blue] Mikstury.",
+  "ALCHEMIST-MIXES.bronzeDescription": "Stworzono [blue]10[/blue] lub więcej [gold]Mieszanek[/gold].",
+  "ALCHEMIST-MIXES.bronzeTitle": "Zgrubna mieszanina",
+  "ALCHEMIST-MIXES.goldDescription": "Stworzono [blue]30[/blue] lub więcej [gold]Mieszanek[/gold].",
+  "ALCHEMIST-MIXES.goldTitle": "Mistrz miksologii",
+  "ALCHEMIST-MIXES.silverDescription": "Stworzono [blue]20[/blue] lub więcej [gold]Mieszanek[/gold].",
+  "ALCHEMIST-MIXES.silverTitle": "Zrównoważona formuła",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "Sprzedano Handlarzowi co najmniej [blue]2[/blue] Mikstury.",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "Domokrążca",
-  "ALCHEMIST-POTION_SALE.goldDescription": "Sprzedano Handlarzowi co najmniej [blue]9[/blue] Mikstur.",
+  "ALCHEMIST-POTION_SALE.goldDescription": "Sprzedano Handlarzowi co najmniej [blue]6[/blue] Mikstur.",
   "ALCHEMIST-POTION_SALE.goldTitle": "Ulubieniec Handlarza",
-  "ALCHEMIST-POTION_SALE.silverDescription": "Sprzedano Handlarzowi co najmniej [blue]6[/blue] Mikstur.",
+  "ALCHEMIST-POTION_SALE.silverDescription": "Sprzedano Handlarzowi co najmniej [blue]4[/blue] Mikstur.",
   "ALCHEMIST-POTION_SALE.silverTitle": "Partner handlowy"
 }

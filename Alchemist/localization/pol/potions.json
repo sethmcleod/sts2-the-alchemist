@@ -5,16 +5,18 @@
   "ALCHEMIST-ANODYNE.title": "Anodyna",
   "ALCHEMIST-DECOCTION.description": "Dobierz [blue]3[/blue] karty. Kosztują 0 {energyPrefix:energyIcons(1)} w tej turze.",
   "ALCHEMIST-DECOCTION.title": "Odwar",
-  "ALCHEMIST-GOLD_LEAF.description": "Przywróć [green]1[/green] PŻ i zyskaj [blue]1[/blue] pkt. [gold]Bloku[/gold] za każde posiadane [blue]15[/blue] szt. [gold]Złota[/gold].{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.description": "Zyskaj [blue]1[/blue] pkt. [gold]Bloku[/gold] i [blue]1[/blue] pkt. [gold]Antytoksyny[/gold] za każde [blue]15[/blue] szt. posiadanego [gold]Złota[/gold].{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Płatek złota",
   "ALCHEMIST-MARSH_TONIC.description": "Zyskaj [blue]6[/blue] pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Bagienny tonik",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Aktywuj [gold]Truciznę[/gold] na przeciwniku [blue]3[/blue] razy.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Haust żywego srebra",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Dodaj do [gold]ręki[/gold] [blue]2[/blue] karty [gold]Destylat[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Wybierz [blue]2[/blue] [gold]Mieszanki[/gold] do stworzenia.",
   "ALCHEMIST-REFINED_EXTRACT.title": "Oczyszczony ekstrakt",
   "ALCHEMIST-SAMPLER.description": "Zyskaj {energyPrefix:energyIcons(1)} i dobierz [blue]1[/blue] kartę za każdą posiadaną [gold]Miksturę[/gold], łącznie z tą.",
   "ALCHEMIST-SAMPLER.title": "Próbnik",
-  "ALCHEMIST-SOLVENT.description": "Usuń przeciwnikowi wszystkie pkt. [gold]Bloku[/gold]. Nałóż mu [blue]3[/blue] pkt. [gold]Słabości[/gold].",
-  "ALCHEMIST-SOLVENT.title": "Rozpuszczalnik"
+  "ALCHEMIST-SOLVENT.description": "Usuń przeciwnikowi WSZYSTKIE pkt. [gold]Artefaktu[/gold] i [gold]Bloku[/gold]. Nałóż mu [blue]3[/blue] pkt. [gold]Słabości[/gold].",
+  "ALCHEMIST-SOLVENT.title": "Rozpuszczalnik",
+  "ALCHEMIST-STARTER_CULTURE.description": "[gold]Aktywuj[/gold] WSZYSTKIE karty z [gold]Fermentacją[/gold] w twojej [gold]ręce[/gold] [blue]3[/blue] razy.",
+  "ALCHEMIST-STARTER_CULTURE.title": "Zaczyn"
 }

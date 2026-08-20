@@ -1,6 +1,16 @@
 {
-  "ALCHEMIST-BREW.description": "此休息處選項可釀造 [blue]6[/blue] 種只能以此方式取得的[gold]藥水[/gold]之一。只有釀造出的[gold]藥水[/gold]，[gold]商人[/gold]才會收購。",
+  "ALCHEMIST-BREW.description": "此休息處選項可釀造 [blue]7[/blue] 種只能以此方式取得的[gold]藥水[/gold]之一。只有釀造出的[gold]藥水[/gold]，[gold]商人[/gold]才會收購。",
   "ALCHEMIST-BREW.title": "釀造",
+  "ALCHEMIST-BURSTING_MIX.description": "造成 [blue]8[/blue] 點傷害。",
+  "ALCHEMIST-BURSTING_MIX.title": "爆裂混劑",
+  "ALCHEMIST-FUMING_MIX.description": "施加 [blue]1[/blue] 層[gold]虛弱[/gold]和 [blue]1[/blue] 層[gold]易傷[/gold]。",
+  "ALCHEMIST-FUMING_MIX.title": "燻煙混劑",
   "ALCHEMIST-MASTERWORK.description": "若你在本場戰鬥中已[gold]附魔[/gold]3張或更多卡牌（含此牌即將[gold]浸潤[/gold]的那張），此牌會泛起[gold]金幣[/gold]般的光澤。",
-  "ALCHEMIST-MASTERWORK.title": "傑作"
+  "ALCHEMIST-MASTERWORK.title": "傑作",
+  "ALCHEMIST-MIX.description": "一張 [blue]0[/blue] 費、會[gold]消耗[/gold]的牌。",
+  "ALCHEMIST-MIX.title": "混劑",
+  "ALCHEMIST-STURDY_MIX.description": "獲得 [blue]6[/blue] 點[gold]格擋[/gold]。",
+  "ALCHEMIST-STURDY_MIX.title": "堅實混劑",
+  "ALCHEMIST-ZESTY_MIX.description": "抽 [blue]1[/blue] 張牌。獲得 [blue]3[/blue] 點[gold]抗毒素[/gold]。",
+  "ALCHEMIST-ZESTY_MIX.title": "爽勁混劑"
 }
