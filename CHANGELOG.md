@@ -7,9 +7,11 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.5] - 2026-08-20
+
 ### Changed
 
-- Reframed character select screen art to more of our favorite frog is visible
+- Reframed character select screen art to show more of our favorite frog
 - Improved wording of Forked Tongue card
 - Clarified Toxin Skin's text: it now reads "lose 2 Poison and apply that much to the attacker"
 - Reworked Simmer: "At the start of your turn, gain 1 (2) Poison and 1 (2) Antitoxin."
