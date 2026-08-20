@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-BREW.description": "이 휴식 장소 선택지는 오직 이 방법으로만 얻을 수 있는 [gold]포션[/gold] [blue]7[/blue]종 중 하나를 양조합니다. 양조한 [gold]포션[/gold]만 [gold]상인[/gold]이 사들입니다.",
   "ALCHEMIST-BREW.title": "양조",
-  "ALCHEMIST-BURSTING_MIX.description": "피해를 [blue]6[/blue] 줍니다.",
+  "ALCHEMIST-BURSTING_MIX.description": "피해를 [blue]5[/blue] 줍니다.",
   "ALCHEMIST-BURSTING_MIX.title": "폭발 혼합액",
   "ALCHEMIST-FUMING_MIX.description": "[gold]약화[/gold]를 [blue]1[/blue], [gold]취약[/gold]을 [blue]1[/blue] 부여합니다. [gold]중독[/gold]을 [blue]1[/blue] 얻습니다.",
   "ALCHEMIST-FUMING_MIX.title": "자욱한 혼합액",
@@ -9,7 +9,7 @@
   "ALCHEMIST-MASTERWORK.title": "걸작",
   "ALCHEMIST-MIX.description": "비용이 [blue]0[/blue]이고 [gold]소멸[/gold]하는 카드입니다.",
   "ALCHEMIST-MIX.title": "혼합액",
-  "ALCHEMIST-STURDY_MIX.description": "[gold]방어도[/gold]를 [blue]5[/blue] 얻습니다.",
+  "ALCHEMIST-STURDY_MIX.description": "[gold]방어도[/gold]를 [blue]4[/blue] 얻습니다.",
   "ALCHEMIST-STURDY_MIX.title": "든든한 혼합액",
   "ALCHEMIST-ZESTY_MIX.description": "카드를 [blue]1[/blue]장 뽑습니다. [gold]항독소[/gold]를 [blue]3[/blue] 얻습니다.",
   "ALCHEMIST-ZESTY_MIX.title": "짜릿한 혼합액"

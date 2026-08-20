@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-BREW.description": "Cette option de Site de repos brasse l'une des [blue]7[/blue] [gold]Potions[/gold] que l'on ne peut obtenir autrement. Seules les [gold]Potions[/gold] brassées sont achetées par le [gold]Marchand[/gold].",
   "ALCHEMIST-BREW.title": "Brassage",
-  "ALCHEMIST-BURSTING_MIX.description": "Infligez [blue]6[/blue] dégâts.",
+  "ALCHEMIST-BURSTING_MIX.description": "Infligez [blue]5[/blue] dégâts.",
   "ALCHEMIST-BURSTING_MIX.title": "Mixture explosive",
   "ALCHEMIST-FUMING_MIX.description": "Appliquez [blue]1[/blue] [gold]Affaibli[/gold] et [blue]1[/blue] [gold]Vulnérable[/gold]. Gagnez [blue]1[/blue] de [gold]Poison[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Mixture fumante",
@@ -9,7 +9,7 @@
   "ALCHEMIST-MASTERWORK.title": "Chef-d'œuvre",
   "ALCHEMIST-MIX.description": "Une carte coûtant [blue]0[/blue] qui [gold]s'épuise[/gold].",
   "ALCHEMIST-MIX.title": "Mixture",
-  "ALCHEMIST-STURDY_MIX.description": "Gagnez [blue]5[/blue] d'[gold]Armure[/gold].",
+  "ALCHEMIST-STURDY_MIX.description": "Gagnez [blue]4[/blue] d'[gold]Armure[/gold].",
   "ALCHEMIST-STURDY_MIX.title": "Mixture robuste",
   "ALCHEMIST-ZESTY_MIX.description": "Piochez [blue]1[/blue] carte. Gagnez [blue]3[/blue] d'[gold]Antitoxine[/gold].",
   "ALCHEMIST-ZESTY_MIX.title": "Mixture vivifiante"

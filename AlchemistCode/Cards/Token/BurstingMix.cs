@@ -11,7 +11,7 @@ public class BurstingMix : AlchemistCard
 {
     public BurstingMix() : base(0, CardType.Attack, CardRarity.Token, TargetType.AnyEnemy)
     {
-        WithDamage(6, 0);
+        WithDamage(5, 3);
         WithKeyword(CardKeyword.Exhaust);
     }
 

@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-BREW.description": "Этот вариант в лагере варит одно из [blue]7[/blue] [gold]зелий[/gold], которые можно получить только так. Только сваренные [gold]зелья[/gold] купит [gold]Торговец[/gold].",
   "ALCHEMIST-BREW.title": "Варка",
-  "ALCHEMIST-BURSTING_MIX.description": "Наносит [blue]6[/blue] урона.",
+  "ALCHEMIST-BURSTING_MIX.description": "Наносит [blue]5[/blue] урона.",
   "ALCHEMIST-BURSTING_MIX.title": "Взрывная смесь",
   "ALCHEMIST-FUMING_MIX.description": "Накладывает [blue]1[/blue] [gold]слабости[/gold] и [blue]1[/blue] [gold]уязвимости[/gold]. Дает вам [blue]1[/blue] [gold]яда[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Дымная смесь",
@@ -9,7 +9,7 @@
   "ALCHEMIST-MASTERWORK.title": "Шедевр",
   "ALCHEMIST-MIX.description": "Карта стоимостью [blue]0[/blue] с эффектом [gold]истощения[/gold].",
   "ALCHEMIST-MIX.title": "Смесь",
-  "ALCHEMIST-STURDY_MIX.description": "Дает [blue]5[/blue] [gold]защиты[/gold].",
+  "ALCHEMIST-STURDY_MIX.description": "Дает [blue]4[/blue] [gold]защиты[/gold].",
   "ALCHEMIST-STURDY_MIX.title": "Прочная смесь",
   "ALCHEMIST-ZESTY_MIX.description": "Вы добираете [blue]1[/blue] карту. Дает [blue]3[/blue] [gold]антитоксина[/gold].",
   "ALCHEMIST-ZESTY_MIX.title": "Бодрящая смесь"

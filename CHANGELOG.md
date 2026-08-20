@@ -7,6 +7,17 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.2] - 2026-08-20
+
+### Changed
+
+- Nerfed Bursting Mix: damage 6 -> 5
+- Nerfed Sturdy Mix: Block 5 -> 4
+
+### Fixed
+
+- Added missing upgrades to the Mix tokens: Bursting 5 (8), Sturdy 4 (7), Zesty 3 (5), and Fuming+ no longer gains Poison
+
 ## [0.11.1] - 2026-08-20
 
 ### Changed
@@ -16,7 +27,7 @@ mod).
 - Changed the Mix maker wording to the base game's: "Choose a Mix to add into your Hand."
 - Nerfed Apothecary: cost 2 (1) -> 3 (2)
 - Nerfed Bursting Mix: damage 8 -> 6
-- Nerfed Fuming Mix: it now also grants 1 Poison
+- Nerfed Fuming Mix: it now also gains 1 Poison
 - Nerfed Sturdy Mix: Block 6 -> 5
 - Reworked Double Batch into Fresh Batch: "Choose a Mix to add into your Hand. Draw 1 card."
 - Reworked Fortified (Infused Powers): playing the Power now grants "Whenever you gain Poison, gain 1 Antitoxin" instead of raising the Antitoxin limit
