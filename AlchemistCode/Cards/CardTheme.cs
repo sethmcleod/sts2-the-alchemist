@@ -14,6 +14,7 @@ public enum CardTheme
     Antitoxin,
     Ferment,
     Transform,
+    Mix,
 }
 
 // Read by reflection at runtime for the analytics payload and by regex from tools/analytics/ for the

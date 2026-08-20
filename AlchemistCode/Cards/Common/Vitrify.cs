@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-// The plain sponge. One number, no rider: it is the depth of the dose you can carry this fight
 [CardTheme(CardTheme.Antitoxin)]
 public class Vitrify : AlchemistCard
 {
@@ -14,7 +13,7 @@ public class Vitrify : AlchemistCard
 
     public Vitrify() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithVar("antitoxin", 6, 3);
+        WithVar("antitoxin", 8, 4);
         WithTip(typeof(AntitoxinPower));
     }
 

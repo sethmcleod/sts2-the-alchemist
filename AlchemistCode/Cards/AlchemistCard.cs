@@ -45,8 +45,8 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (IsFermentCard)
         {
             yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
-            // The keyword names Dregs as the byproduct, so show what one actually does
-            yield return HoverTipFactory.FromCard<Token.Dregs>();
+            // The keyword names Residue as the byproduct, so show what one actually does
+            yield return HoverTipFactory.FromCard<Token.Residue>();
         }
     }
 
@@ -170,16 +170,19 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     }
 
     // The dregs land in the Discard rather than the Hand, so they cannot bite on the turn you cash in.
-    // The card itself follows: a Ferment card is reusable, and the Dregs is the whole cost of the play
+    // The card itself follows: a Ferment card is reusable, and the Residue is the whole cost of the play
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Card != this) return;
+        // Replay plays the card again with the same CardPlay series, so the stack holds until the
+        // last play of the series or the replayed hits read a fermentation of zero
+        if (!cardPlay.IsLastInSeries) return;
         _fermentTurns = 0;
         if (!IsFermentCard || Owner == null || CombatState is not { } combat) return;
 
-        // Previewed, because the card leaving play and the Dregs appearing in the Discard are two
+        // Previewed, because the card leaving play and the Residue appearing in the Discard are two
         // separate events the player never sees happen
-        var dregs = combat.CreateCard<Token.Dregs>(Owner);
+        var dregs = combat.CreateCard<Token.Residue>(Owner);
         var added = await CardPileCmd.Add(dregs, PileType.Discard, CardPilePosition.Bottom);
         CardCmd.PreviewCardPileAdd([added]);
     }

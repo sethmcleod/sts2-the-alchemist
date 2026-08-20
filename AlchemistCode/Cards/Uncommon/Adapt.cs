@@ -6,8 +6,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// Pays Off's shape on a card: Poison ticks at the start of your turn, so if the bar took the hit
-// this turn the Block comes with the energy back
 [CardTheme(CardTheme.Antitoxin)]
 public class Adapt : AlchemistCard
 {

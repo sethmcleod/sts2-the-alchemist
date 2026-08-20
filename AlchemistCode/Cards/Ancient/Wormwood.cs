@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Ancient;
 
-// The Ancient's 0-cost sweep: reads the dose against every enemy and tops the bar up on the way
 [CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
 public class Wormwood : AlchemistCard
 {
@@ -24,7 +23,7 @@ public class Wormwood : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
         await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
             DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
     }

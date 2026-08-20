@@ -4,26 +4,26 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
+using MegaCrit.Sts2.Core.Models.Powers;
+
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-// Reads the bar instead of emptying it. Antitoxin already has a sink in absorbing Poison ticks, so a
-// card that also demands the whole pool just punishes you for holding the resource
-[CardTheme(CardTheme.Antitoxin)]
+[CardTheme(CardTheme.Poison)]
 public class WhiteHeat : AlchemistCard
 {
     protected internal override bool DealsUnpoweredDamage => true;
 
     public WhiteHeat() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
     {
-        WithVar("Multiplier", 2, 1);
+        WithVar("Multiplier", 3, 1);
         WithKeyword(CardKeyword.Exhaust);
-        WithTip(typeof(AntitoxinPower));
+        WithTip(typeof(PoisonPower));
     }
 
     private int Fuel =>
-        IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<AntitoxinPower>() : 0;
+        IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<PoisonPower>() : 0;
 
-    private int Multiplier => IsMutable ? DynamicVars["Multiplier"].IntValue : 2;
+    private int Multiplier => IsMutable ? DynamicVars["Multiplier"].IntValue : 3;
 
     protected override bool ConditionalGlow => Fuel > 0;
 

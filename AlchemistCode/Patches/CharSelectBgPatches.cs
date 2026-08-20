@@ -1,5 +1,7 @@
+using Alchemist.AlchemistCode.Character;
 using Godot;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Nodes.Animation;
 using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 
 namespace Alchemist.AlchemistCode.Patches;
@@ -32,9 +34,50 @@ class CharSelectBgPatches
                 && bg.GetNodeOrNull<CpuParticles2D>("SpecksGold") != null)
             {
                 ApplyParticleAssets(bg);
-                AnimateCharacter(bg);
+                if (!AttachSpineScene(bg))
+                    AnimateCharacter(bg);
             }
         }
+    }
+
+    // The animated select screen is a Spine scene with the background, character and
+    // particles baked in. It replaces the flat art when its skeleton loads; the flat
+    // art with the breathing tween stays as the fallback
+    private const string SelectDir = $"{MainFile.ResPath}/animations/character_select/alchemist";
+
+    static bool AttachSpineScene(Control bg)
+    {
+        if (bg.GetNodeOrNull("SelectScreenSpine") != null)
+            return true;
+
+        // The animated screen ships when the animator's export lands; absence is not an error
+        if (!Godot.FileAccess.FileExists($"{SelectDir}/select_screen.skel"))
+            return false;
+
+        if (SpineModel.Load($"{SelectDir}/select_screen.atlas", $"{SelectDir}/select_screen.skel")
+            is not { } data)
+            return false;
+
+        // The skeleton's box maps onto the bg rect the way the base scenes place theirs:
+        // fill the width, centre vertically. Spine y grows upward, so the box centre in
+        // Godot space is the negated y
+        var box = SpineModel.Bounds(data, new Rect2(-1280, -600, 2560, 1200));
+        var scale = bg.Size.X / box.Size.X;
+        if (SpineModel.CreateSprite(data, scale) is not { } sprite)
+            return false;
+
+        sprite.Name = "SelectScreenSpine";
+        sprite.Position = new Vector2(
+            bg.Size.X * 0.5f - (box.Position.X + box.Size.X * 0.5f) * scale,
+            bg.Size.Y * 0.5f + (box.Position.Y + box.Size.Y * 0.5f) * scale);
+        sprite.AddChild(new NSpineAutoPlayer());
+        bg.AddChild(sprite);
+        // Behind the particle nodes, in place of the flat art
+        bg.MoveChild(sprite, 0);
+
+        if (bg.GetNodeOrNull<TextureRect>("Character") is { } character) character.Visible = false;
+        if (bg.GetNodeOrNull<TextureRect>("Gradient") is { } gradient) gradient.Visible = false;
+        return true;
     }
 
     // A slow breathing idle for the flat character art: a gentle sine scale pivoted at

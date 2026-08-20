@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-// The burst-turn enabler, and an ordering card: it has to come before the readers it doubles
 [CardTheme(CardTheme.Poison)]
 public class Reagent : AlchemistCard
 {

@@ -6,8 +6,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// Poison yourself for a big wall now. Tempered's shape at Uncommon: bigger than a 2-cost Block card
-// has any right to be, and the dose is the bill
 [CardTheme(CardTheme.Poison)]
 public class Numb : AlchemistCard
 {

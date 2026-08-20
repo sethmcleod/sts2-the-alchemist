@@ -353,7 +353,7 @@ public static class PotionSellPatches
         {
             if (obj is not NPotionHolder holder || !holder.HasPotion) continue;
             var potion = holder.Potion;
-            if (potion == null) continue;
+            if (potion == null || !IsSellable(potion.Model)) continue;
             var delay = i * stagger;
             i++;
 

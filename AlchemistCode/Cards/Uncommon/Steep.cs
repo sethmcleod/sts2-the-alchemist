@@ -11,7 +11,6 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The control lever for Ferment: pick the card that ripens, rather than waiting for it
 [CardTheme(CardTheme.Ferment)]
 public class Steep : AlchemistCard
 {

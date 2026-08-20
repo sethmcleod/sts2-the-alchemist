@@ -6,8 +6,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-// The one Common draw card, and it only draws when you are dosed: the reward for carrying the
-// dose is the card, not the Block
 [CardTheme(CardTheme.Poison)]
 public class Congeal : AlchemistCard
 {

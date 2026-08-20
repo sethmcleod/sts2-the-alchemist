@@ -1,14 +1,14 @@
 {
-  "ALCHEMIST-BREW.bronzeDescription": "Brewed at [blue]3[/blue] or more Rest Sites.",
-  "ALCHEMIST-BREW.bronzeTitle": "Small Batch",
-  "ALCHEMIST-BREW.goldDescription": "Brewed at [blue]9[/blue] or more Rest Sites.",
-  "ALCHEMIST-BREW.goldTitle": "Master Distiller",
-  "ALCHEMIST-BREW.silverDescription": "Brewed at [blue]6[/blue] or more Rest Sites.",
-  "ALCHEMIST-BREW.silverTitle": "Well Stocked",
-  "ALCHEMIST-POTION_SALE.bronzeDescription": "Sold [blue]3[/blue] or more Potions to the Merchant.",
+  "ALCHEMIST-MIXES.bronzeDescription": "Created [blue]10[/blue] or more [gold]Mixes[/gold].",
+  "ALCHEMIST-MIXES.bronzeTitle": "Rough Blend",
+  "ALCHEMIST-MIXES.goldDescription": "Created [blue]30[/blue] or more [gold]Mixes[/gold].",
+  "ALCHEMIST-MIXES.goldTitle": "Master Mixologist",
+  "ALCHEMIST-MIXES.silverDescription": "Created [blue]20[/blue] or more [gold]Mixes[/gold].",
+  "ALCHEMIST-MIXES.silverTitle": "Balanced Formula",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "Sold [blue]2[/blue] or more Potions to the Merchant.",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "Peddler",
-  "ALCHEMIST-POTION_SALE.goldDescription": "Sold [blue]9[/blue] or more Potions to the Merchant.",
+  "ALCHEMIST-POTION_SALE.goldDescription": "Sold [blue]6[/blue] or more Potions to the Merchant.",
   "ALCHEMIST-POTION_SALE.goldTitle": "Merchant's Favorite",
-  "ALCHEMIST-POTION_SALE.silverDescription": "Sold [blue]6[/blue] or more Potions to the Merchant.",
+  "ALCHEMIST-POTION_SALE.silverDescription": "Sold [blue]4[/blue] or more Potions to the Merchant.",
   "ALCHEMIST-POTION_SALE.silverTitle": "Trade Partner"
 }

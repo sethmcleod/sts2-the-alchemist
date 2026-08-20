@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-// The Rare hub engine: every Attack becomes a reader, and the dose that feeds it drips in on its own
 [CardTheme(CardTheme.Poison)]
 public class Ichor : AlchemistCard
 {

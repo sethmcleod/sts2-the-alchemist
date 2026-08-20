@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-// The Ferment burst: everything in hand ripens at once, once per fight
 [CardTheme(CardTheme.Ferment)]
 public class Bloom : AlchemistCard
 {

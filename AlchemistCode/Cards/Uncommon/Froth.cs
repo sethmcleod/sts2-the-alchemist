@@ -17,8 +17,6 @@ public class Froth : AlchemistCard
         WithKeyword(CardKeyword.Retain);
     }
 
-    // Ferment itself is uncapped, but hits multiply with everything that adds damage per hit, Laced
-    // most of all, so this one card takes a ceiling
     private const int MaxHits = 4;
 
     private int Hits => Math.Min(1 + FermentTurns, MaxHits);

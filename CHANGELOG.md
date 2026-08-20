@@ -10,34 +10,41 @@ mod).
 ### Added
 
 - Added Adapt card: "Gain 7 (10) Block. If your Antitoxin absorbed damage this turn, gain 1 Energy."
+- Added analytics: which Mix players choose, and how much Poison damage Antitoxin absorbed versus how much reached HP. The dashboard shows both, and every dot on the card chart now carries its name
+- Added Apothecary card: "At the start of your turn, choose a Mix to create." Cost 2 (1)
+- Added Blend card: "Gain 5 (8) Block. Transform a card in your Discard Pile into a Mix of your choice."
 - Added Bloom card: "Ferment ALL cards in your Hand 3 (4) additional times. Exhaust."
 - Added Brine card: "Retain. Ferment. Gain 5 (7) Block. Gain 3 additional Block and 1 Poison for each turn fermented."
-- Added Condense card: "Transform 1 (2) cards in your Draw Pile into Distillates. Put them into your Hand."
-- Added Dose card to the starting deck: "Gain 2 Poison. Gain 3 (5) Antitoxin." It replaces Antidote
+- Added Condense card: "Transform 1 (2) cards in your Draw Pile into Mixes of your choice. Put them into your Hand."
+- Added Dose card to the starting deck: "Gain 2 Block and 2 Poison. Gain 3 (6) Antitoxin." It replaces Antidote
+- Added Double Batch card: "Choose 2 (3) Mixes to create."
 - Added Fizz card: "This turn, whenever you gain Poison, deal 3 (4) damage to ALL enemies."
+- Added Forked Tongue card: "Deal 3 (4) damage twice. Each hit deals additional damage equal to your Poison."
+- Added Grand Batch card: "Create one of each Mix. Exhaust." Cost 1 (0)
 - Added Ichor card: "At the start of your turn, gain 2 Poison. Your Attacks deal additional damage equal to your Poison."
 - Added Inure card: "Increase your Antitoxin limit by 3 (4) for the rest of combat. Gain 3 (4) Antitoxin."
 - Added Lick card: "Deal 3 (5) damage. Deals additional damage equal to your Poison."
+- Added Mash card: "Deal 4 (6) damage. Choose a Mix to create."
 - Added Miasma card: "Whenever you gain Poison, apply that much Poison to ALL enemies."
 - Added Numb card: "Gain 14 (18) Block. Gain 3 Poison."
-- Added Osmosis card: "At the start of your turn, gain 2 (3) Antitoxin."
-- Added Overdose card: "Gain 5 Poison. Gain 10 (14) Antitoxin. Exhaust."
+- Added Osmosis card: "At the start of your turn, gain 3 (4) Antitoxin."
+- Added Overdose card: "Gain 5 Poison. Gain 12 (16) Antitoxin. Exhaust."
 - Added Reagent card: "This turn, your Attacks count your Poison twice."
-- Added Reduce card: "Gain 5 (8) Block. Transform a card in your Discard Pile into a Distillate."
 - Added Retch card: "Apply Poison equal to your Poison. Exhaust."
-- Added Sear card: "Deal 10 (13) damage to ALL enemies. Gain 2 Poison."
 - Added Simmer card: "At the start of your turn, gain 1 (2) Poison."
 - Added Spew card: "Deal 7 (10) damage. Apply Poison equal to your Poison."
+- Added Starter Culture potion (Brew only): "Trigger ALL Ferment cards in your Hand 3 times."
 - Added Steep card: "Ferment a card in your Hand 2 (3) additional times. Draw 1 card."
-- Added Sting card: "Deal 3 (4) damage twice. Each hit deals additional damage equal to your Poison."
+- Added Stir card: "Choose a Mix to create." Cost 1 (0)
+- Added the Mix family: choosing a Mix shows all four and you pick one. Bursting Mix "Deal 8 damage.", Fuming Mix "Apply 1 Weak and 1 Vulnerable.", Sturdy Mix "Gain 6 Block.", Zesty Mix "Draw 1 card. Gain 3 Antitoxin." All cost 0 and Exhaust
+- Added Thicken card: "Gain 4 (7) Block. Choose a Mix to create."
 
 ### Changed
 
 - Buffed Brine: base Block 5 (7) -> 6 (8)
-- Buffed Caustic Strike: Antitoxin 2 (3) -> 3 (4)
+- Buffed Caustic Strike: Antitoxin 2 (3) -> 3 (5)
 - Buffed Froth: base damage 4 (6) -> 5 (7)
-- Buffed Inoculate: Antitoxin 2 (3) -> 3 (4)
-- Buffed Nightcap: Antitoxin 5 (6) -> 6 (8)
+- Buffed Nightcap: Antitoxin 5 (6) -> 7 (9)
 - Buffed Patient Strike: base damage 6 -> 7 (9); damage per turn fermented 6 (9) -> 6 (8)
 - Buffed Poultice: Block 8 (11) -> 9 (12)
 - Buffed Quicklime: damage 5 (7) -> 6 (8), and the bonus now triggers if you have Poison instead of if the enemy is Poisoned
@@ -45,33 +52,58 @@ mod).
 - Buffed Slow Burn: base damage 5 -> 6 (8)
 - Changed Antitoxin: it no longer becomes Block once you are at the limit; a grant past the limit is lost
 - Changed Antitoxin: it no longer cures the Poison it absorbs. Your dose stays in place and powers your attacks; Antitoxin pays the ticks
-- Changed Ferment: a played Ferment card now goes to your Discard Pile like any other card, so it can be drawn and fermented again. It still adds a Dregs
+- Changed Brew: it now offers a choice of 3 of the Brew-only Potions instead of one random one
+- Changed Callus: cost 1 -> 2 (1), Strength per trigger 1 (2) -> 1
+- Changed Effervesce: it now adds 2 Zesty Mixes to another player's Hand
+- Changed Ferment: a played Ferment card now goes to your Discard Pile like any other card, so it can be drawn and fermented again. It still adds a Residue
 - Changed Lash Out: the extra hit now triggers if you have Poison instead of if the enemy is Poisoned
 - Changed Resolve: self Poison 5 -> 4
+- Changed Siphon: if the drawn card is already Enchanted, it now grants 3 Antitoxin instead
+- Changed Solvent: it now also removes ALL Artifact from the enemy
 - Changed Swill: cost 0 -> 1
+- Changed the Antitoxin limit: 12 -> 20
+- Changed the Brew run badge into the Mixes badge: it now counts the Mixes you created, at 10, 20 and 30 for Bronze, Silver and Gold
+- Changed the Ferment wording: cards now read "Trigger ALL Ferment cards in your Hand" instead of "Ferment ALL cards in your Hand"
+- Changed the fifth Epoch: it now unlocks All At Once, White Heat and Spatter
+- Changed the Mix hover tip: one tip describes all four Mixes instead of four stacked card previews
+- Changed the Potion Sale badge tiers: 3, 6 and 9 sales -> 2, 4 and 6, since a Brew now yields at most one sellable Potion
+- Changed the sixth Epoch: it now unlocks Ichor, Miasma and Mercurial Form
+- Changed the Starter Culture, Sampler and Decoction potion icons: each now has its own art instead of sharing a placeholder
+- Changed the Alchemist's combat model to the animator's updated rig
 - Changed Weathered Kit and Gilded Kit: they no longer add a Distillate to your Hand at the start of combat
+- Changed Weathered Kit: "At the start of each combat, gain 8 Antitoxin and 1 Poison."
 - Nerfed Gulp: it now Exhausts
 - Nerfed Puncture: Vulnerable 2 (3) -> 1 (2)
+- Renamed Dregs to Residue
+- Renamed Purge to Double Dose, Pays Off to Smelling Salts, Next Up to Anoint, Fresh Coat to Alembic, and Elixir to Panacea
+- Reworked All At Once: "Deal damage equal to your Poison X (+1) times. Exhaust." It now hits one enemy and no longer removes your Poison
+- Reworked Auric Seal relic: "The first card you draw each turn is Infused, or grants 2 Antitoxin if it is already Enchanted."
 - Reworked Congeal: "Gain 6 (9) Block. If you have Poison, draw 1 card."
 - Reworked Corrode: "Apply Poison equal to your Poison and 1 (2) Weak to ALL enemies." It no longer removes your Poison
+- Reworked Croak: "Deal 18 (24) damage. Apply twice your Poison. Exhaust."
 - Reworked Deep Cut: "Deal 10 (13) damage. Deals additional damage equal to twice your Poison."
-- Reworked Elixir: "At the start of your turn, gain 2 Poison and 3 (4) Antitoxin." It no longer procures Potions
-- Reworked Everflowing Chalice relic: "At the start of each combat, gain 2 Poison and 6 Antitoxin." It no longer procures a Potion
+- Reworked Double Dose: "Deal 4 (6) damage. Deals additional damage equal to twice your Poison." It no longer removes your Poison
+- Reworked Eureka: it now transforms a card in your Hand into a Mix of your choice instead of a Distillate
+- Reworked Everflowing Chalice relic: "At the start of each combat, choose a Mix to create." It no longer procures a Potion
 - Reworked Fallout: "Deal 4 (6) damage to ALL enemies. Deals additional damage equal to your Poison."
 - Reworked Flare Up: "Deal 8 (11) damage. If you have 3 or more Poison, gain 1 Energy and draw 1 card."
-- Reworked Gilded Kit: "At the start of each combat, gain 6 Antitoxin. The first time you gain Poison each combat, gain twice as much. You can Brew at Rest Sites."
+- Reworked Gilded Kit: "You can Brew at Rest Sites and gain 1 extra potion slot."
 - Reworked Gold Leaf potion: "Gain 1 Block and 1 Antitoxin for every 15 Gold you have." It no longer heals
-- Reworked Jab: "Deal 5 (8) damage. Deals additional damage equal to your Poison." Cost 0 -> 1, and it no longer applies Poison to the enemy
+- Reworked Jab: "Deal 6 (9) damage. Deals additional damage equal to your Poison." Cost 0 -> 1, and it no longer applies Poison to the enemy
 - Reworked Laced enchantment: "This Attack deals additional damage equal to your Poison."
-- Reworked Purge: "Deal 4 (6) damage. Deals additional damage equal to twice your Poison." It no longer removes your Poison
-- Reworked Quaff: "Gain 2 (3) Antitoxin. Gain Antitoxin equal to your Poison."
+- Reworked Mercurial Form: "At the start of your turn, gain 1 Poison and gain Strength equal to your Poison this turn." It no longer removes your Poison or damages you
+- Reworked Panacea: "At the start of your turn, gain 2 Poison and 3 (4) Antitoxin." It no longer procures Potions
+- Reworked Quaff: "Gain 3 (4) Antitoxin. Gain Antitoxin equal to your Poison."
 - Reworked Quench: "Increase your Antitoxin limit by 3 (4) for the rest of combat. Gain 6 (9) Block and 3 Antitoxin."
-- Reworked Reckless Swing: "Deal 10 (13) damage. Gain 1 Poison." It no longer Exhausts
-- Reworked Spatter: "Deal 6 (9) damage. Deal 3 (5) damage and apply 1 (2) Poison to ALL enemies." The second hit now includes the target
-- Reworked Sublimate: "At the start of your turn, deal damage equal to twice your Poison to the enemy with the most HP."
+- Reworked Refine: "Infuse any number of cards in your Hand." with a card selection
+- Reworked Refined Extract potion: "Choose 2 Mixes to create."
+- Reworked Rolling Boil: "Retain. Ferment (0). Deal 5 (7) damage to ALL enemies. Deals 4 additional damage for each turn fermented."
+- Reworked Spatter: "Deal 6 (9) damage. Lose 3 (4) Poison. Apply that much Poison." It is now Uncommon
 - Reworked Sweat It Out: "Retain. Ferment. Gain 2 Poison, plus 2 (3) for each turn fermented. Apply Poison equal to your Poison to ALL enemies." It no longer removes your Poison
 - Reworked Toughen: "Gain 5 (7) Block. Gain 2 additional Block for each Poison you have." It no longer removes your Poison
-- Reworked Vitrify: "Gain 6 (9) Antitoxin."
+- Reworked Toxin Skin: "Whenever you take unblocked attack damage, transfer 2 (3) Poison to the attacker."
+- Reworked Vitrify: "Gain 8 (12) Antitoxin."
+- Reworked White Heat: "Deal damage equal to 3 (4) times your Poison to ALL enemies. Exhaust."
 - Reworked Wormwood: "Deal 3 (4) damage to ALL enemies. Deals additional damage equal to your Poison. Gain 2 (3) Antitoxin."
 
 ### Removed
@@ -80,21 +112,33 @@ mod).
 - Removed Chain Reaction, Recoil, Rot, Weak Spot and Boil Down cards, replaced by the five Rare cards above
 - Removed Decant, Deep Breath, Enrich, Fester, Grudge, Heavy Hand, Hone, Kickback, Masterwork, Melt Down, Swamp Gas and Winnow cards, replaced by the thirteen Uncommon cards above
 - Removed Dispense card
-- Removed Percolate card, replaced by Reduce
-- Removed Taint card, replaced by Sting
+- Removed Percolate card, replaced by Blend
+- Removed Taint card, replaced by Forked Tongue
+- Removed the Distillate token, replaced by the Mix family
+- Removed Waste Not, Reckless Swing, Inoculate, Fast Acting and Sublimate cards, replaced by the Mix cards above
 
 ### Fixed
 
-- Fixed the character name overlapping the Antitoxin bar when hovering; the name now sits below the bar, and the Antitoxin number fades with the HP number
+- Fixed a replayed Ferment card losing its fermentation on the extra plays. The stack now applies to every play and resets after the last
 - Fixed Callus and Second Skin describing their trigger as taking Poison damage; they trigger whenever your Poison triggers, including ticks Antitoxin absorbs
-- Fixed Gulp, Retch, Bloom and Overdose printing Exhaust twice
 - Fixed Harden not paying Block for Poison an enemy applies to you
-- Fixed Pays Off, Reagent, Immunize and Reflux descriptions understating or overstating their triggers
+- Fixed potions that cannot be sold shaking and showing the gold icon when entering a shop
 - Fixed Quicklime's card face not showing its total damage while you have Poison
-- Fixed Reduce and Condense not saying that their upgrade makes a Distillate+
+- Fixed Smelling Salts, Reagent, Immunize and Reflux descriptions understating or overstating their triggers
 - Fixed Spit keeping your Poison when the hit killed the target
 - Fixed the Alchemist's blinking and staff orb shine animations continuing to play after death
+- Fixed the Alchemist's relic icons missing their character-colored outline in the Relic Collection
+- Fixed the Weathered Kit's Poison being eaten by the turn-1 Poison trigger before the player could act; the dose now lands after that window and first ticks on turn 2
+- Fixed the Mix selection sitting left of center; the four Mixes are now centered on screen
+- Fixed Toxin Skin's card face not rendering its Poison number
+- Fixed Grand Batch and Effervesce not counting their Mixes for the Mixes badge and analytics
+- Fixed Effervesce's upgrade doing nothing; Effervesce+ now adds 3 Zesty Mixes
+- Fixed Auric Seal carrying its once-per-turn state from one combat into the next
+- Fixed Auric Seal and Siphon describing the Antitoxin fallback as only for Enchanted cards; it applies whenever the drawn card cannot be Infused
+- Fixed the Alchemist's relics missing the purple outline that character relics show in the Relic Collection
 - Fixed the capacity cards saying "for the rest of combat"; they now say "this combat" like the base game
+- Fixed the character name overlapping the Antitoxin bar when hovering; the name now sits below the bar, and the Antitoxin number fades with the HP number
+- Fixed the game hanging or crashing when the Alchemist dies, including through the Give Up option. The death animation cleanup re-entered itself
 - Fixed the Infuse keyword tip naming the Power enchantment Potent; it is Fortified
 - Fixed White Heat and Gold Leaf showing their total on the same line as the count they read
 

@@ -6,8 +6,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-// The threshold reader: on rate naked, a full point over it when you carry any dose at all. The face
-// shows the live total like every other reader
 [CardTheme(CardTheme.Poison)]
 public class Quicklime : AlchemistCard
 {

@@ -21,36 +21,17 @@ namespace Alchemist.AlchemistCode.Relics;
 [Pool(typeof(EventRelicPool))]
 public class GildedKit : AlchemistRelic
 {
-    private const int Antitoxin = 6;
-
-    // Reset every combat by BeforeCombatStart, so no state outlives the fight
-    private bool _doubled;
+    private const int PotionSlots = 1;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { AlchemistTips.Brew, HoverTipFactory.FromPower<AntitoxinPower>(), HoverTipFactory.FromPower<PoisonPower>() };
+    public override bool HasUponPickupEffect => true;
 
-    public override async Task BeforeCombatStart()
-    {
-        _doubled = false;
-        Flash();
-        await PowerCmd.Apply<AntitoxinPower>(new ThrowingPlayerChoiceContext(), Owner.Creature,
-            Antitoxin, Owner.Creature, null);
-    }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new[] { AlchemistTips.Brew };
 
-    // The first dose you give yourself each combat is doubled: a bigger opening number for every reader,
-    // and the two extra Antitoxin over Weathered Kit are what the bigger dose costs the bar
-    public override bool TryModifyPowerAmountReceived(PowerModel canonicalPower, Creature target,
-        decimal amount, Creature? applier, out decimal modifiedAmount)
+    public override async Task AfterObtained()
     {
-        modifiedAmount = amount;
-        if (_doubled || canonicalPower is not PoisonPower || amount <= 0) return false;
-        if (target != Owner.Creature || applier != Owner.Creature) return false;
-        _doubled = true;
-        Flash();
-        modifiedAmount = amount * 2;
-        return true;
+        await PlayerCmd.GainMaxPotionCount(PotionSlots, Owner);
     }
 
     public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)

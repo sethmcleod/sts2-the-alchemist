@@ -10,8 +10,6 @@ public class Vintage : AlchemistCard
 {
     protected override bool Ferments => true;
 
-    // The whole payout lands on play, so show it before the card leaves your hand
-
     public Vintage() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);

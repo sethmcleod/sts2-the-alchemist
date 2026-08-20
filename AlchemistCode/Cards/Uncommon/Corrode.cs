@@ -8,8 +8,6 @@ using MegaCrit.Sts2.Core.Localization;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// Transfers a copy of the dose rather than the dose itself, so the reader you play next still
-// has the number to read
 [CardTheme(CardTheme.Poison)]
 public class Corrode : AlchemistCard
 {

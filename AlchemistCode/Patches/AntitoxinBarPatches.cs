@@ -142,6 +142,15 @@ public static class AntitoxinBarPatches
             // combat is still on screen. Hold the last in-combat value instead of blanking the bar
             var inCombat = CombatManager.Instance?.IsInProgress ?? false;
             var live = creature.GetPowerAmount<AntitoxinPower>();
+            // A gain gets a quiet pulse on the bar, softer than the splash an absorb makes
+            if (inCombat && live > parts.LastKnown && GodotObject.IsInstanceValid(parts.Foreground))
+            {
+                var fg = parts.Foreground;
+                var tween = fg.CreateTween();
+                tween.TweenProperty(fg, "modulate", new Color(1.6f, 1.5f, 1.9f), 0.08);
+                tween.TweenProperty(fg, "modulate", Colors.White, 0.45)
+                    .SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Sine);
+            }
             if (inCombat) parts.LastKnown = live;
 
             var hp = __instance.HpBarContainer;

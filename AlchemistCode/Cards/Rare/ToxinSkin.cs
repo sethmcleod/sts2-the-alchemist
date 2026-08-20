@@ -11,7 +11,7 @@ public class ToxinSkin : AlchemistCard
 {
     public ToxinSkin() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("poison", 1, 1);
+        WithVar("poison", 2, 1);
         WithTip(typeof(PoisonPower));
     }
 

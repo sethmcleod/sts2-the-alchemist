@@ -7,8 +7,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The Ferment/Dose bridge: the longer it sits, the more it blocks and the more it doses you when it
-// finally goes off. Holding it IS the dosing decision
 [CardTheme(CardTheme.Ferment, CardTheme.Poison)]
 public class Brine : AlchemistCard
 {

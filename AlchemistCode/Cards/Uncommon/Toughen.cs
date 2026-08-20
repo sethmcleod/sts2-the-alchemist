@@ -22,7 +22,6 @@ public class Toughen : AlchemistCard
 
     protected override bool ConditionalGlow => Dose(this) > 0;
 
-    // Reads the dose and leaves it: the same Poison pays out again on the next reader
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);

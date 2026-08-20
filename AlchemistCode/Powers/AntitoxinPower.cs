@@ -25,7 +25,7 @@ namespace Alchemist.AlchemistCode.Powers;
 public partial class AntitoxinPower : AlchemistPower
 {
     // Raised for the combat by granting AntitoxinCapacityPower; AntitoxinRules enforces the result
-    public const int BaseMax = 12;
+    public const int BaseMax = 20;
 
     public static int MaxFor(Creature creature) =>
         BaseMax + creature.GetPowerAmount<AntitoxinCapacityPower>();

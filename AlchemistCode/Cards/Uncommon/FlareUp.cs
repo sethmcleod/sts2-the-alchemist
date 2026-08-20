@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The threshold reader: carry a real dose and the attack pays for itself and replaces itself
 [CardTheme(CardTheme.Poison)]
 public class FlareUp : AlchemistCard
 {

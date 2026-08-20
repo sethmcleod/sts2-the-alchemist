@@ -6,8 +6,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-// The Rare capacity card that also holds the line the turn you play it. Block scaling per
-// Antitoxin was the alt-block engine the rubric names; the limit is the axis that is allowed to grow
 [CardTheme(CardTheme.Antitoxin)]
 public class Quench : AlchemistCard
 {

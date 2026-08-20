@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The AoE reader: the dose hits every enemy at once
 [CardTheme(CardTheme.Poison)]
 public class Fallout : AlchemistCard
 {

@@ -192,6 +192,19 @@ internal static class AlchemistMetrics
                 ["brews"] = allPoints.Sum(e => e.GetEntry(localPlayer.NetId).RestSiteChoices
                     .Count(id => id == BrewRestSiteOption.BrewOptionId)),
                 ["deck_themes"] = DeckThemes(localPlayer),
+                ["mixes"] = new JsonObject
+                {
+                    ["bursting"] = RunCounters.CountFor(localPlayer, RunCounters.MixBursting),
+                    ["fuming"] = RunCounters.CountFor(localPlayer, RunCounters.MixFuming),
+                    ["sturdy"] = RunCounters.CountFor(localPlayer, RunCounters.MixSturdy),
+                    ["zesty"] = RunCounters.CountFor(localPlayer, RunCounters.MixZesty),
+                },
+                ["poison"] = new JsonObject
+                {
+                    ["gained"] = RunCounters.CountFor(localPlayer, RunCounters.PoisonGained),
+                    ["absorbed"] = RunCounters.CountFor(localPlayer, RunCounters.PoisonAbsorbed),
+                    ["bled"] = RunCounters.CountFor(localPlayer, RunCounters.PoisonBled),
+                },
                 ["config"] = new JsonObject
                 {
                     ["enable_epochs"] = AlchemistModConfig.EnableEpochs,

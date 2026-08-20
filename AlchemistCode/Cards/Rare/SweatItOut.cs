@@ -24,7 +24,6 @@ public class SweatItOut : AlchemistCard
         (int)DynamicVars["SelfPoison"].BaseValue
         + DynamicVars["FermentPoison"].IntValue * FermentTurns;
 
-    // What this play would apply right now: your Poison, plus the Poison this card is about to give you
     private int PoisonToApply =>
         IsMutable && CombatState != null
             ? Owner.Creature.GetPowerAmount<PoisonPower>() + FermentPoison

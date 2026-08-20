@@ -1,4 +1,4 @@
-using Alchemist.AlchemistCode.Cards.Token;
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,18 +8,16 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The Uncommon rung of the Distillate ladder: thinning plus two 0-cost plays this turn, which is why
-// it costs 1 where the old Melt Down cost 0
-[CardTheme(CardTheme.Transform)]
+[CardTheme(CardTheme.Transform, CardTheme.Mix)]
 public class Condense : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
     public Condense() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithUpgradingCardTip<Distillate>();
         WithVar("cards", 1, 1);
         WithTip(StaticHoverTip.Transform);
+        WithTips(_ => Mixing.MixTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -30,10 +28,10 @@ public class Condense : AlchemistCard
             new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, DynamicVars["cards"].IntValue));
         foreach (var card in selected)
         {
-            var distillate = CombatState.CreateCard<Distillate>(Owner);
-            if (IsUpgraded) CardCmd.Upgrade(distillate);
-            await CardCmd.Transform(card, distillate);
-            await CardPileCmd.Add(distillate, PileType.Hand);
+            var mix = await Mixing.Choose(choiceContext, Owner);
+            if (mix == null) return;
+            await CardCmd.Transform(card, mix);
+            await CardPileCmd.Add(mix, PileType.Hand);
         }
     }
 }

@@ -14,14 +14,10 @@ public class RefinedExtract : AlchemistPotion
     public override PotionUsage Usage => PotionUsage.CombatOnly;
     public override TargetType TargetType => TargetType.Self;
 
-    public override IEnumerable<IHoverTip> ExtraHoverTips => new[] { HoverTipFactory.FromCard<Distillate>() };
+    public override IEnumerable<IHoverTip> ExtraHoverTips => Alchemist.AlchemistCode.Commands.Mixing.MixTips();
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        var combatState = Owner.Creature.CombatState!;
-        var d1 = combatState.CreateCard<Distillate>(Owner);
-        var d2 = combatState.CreateCard<Distillate>(Owner);
-        await CardPileCmd.AddGeneratedCardToCombat(d1, PileType.Hand, Owner);
-        await CardPileCmd.AddGeneratedCardToCombat(d2, PileType.Hand, Owner);
+        await Alchemist.AlchemistCode.Commands.Mixing.CreateChosen(choiceContext, Owner, 2);
     }
 }

@@ -6,14 +6,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The sponge engine. Next to Simmer it is the whole loop on two Powers: a drip of dose, a drip of
-// cover, and the readers do the rest
 [CardTheme(CardTheme.Antitoxin)]
 public class Osmosis : AlchemistCard
 {
     public Osmosis() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Amount", 2, 1);
+        WithVar("Amount", 3, 1);
         WithTip(typeof(AntitoxinPower));
     }
 

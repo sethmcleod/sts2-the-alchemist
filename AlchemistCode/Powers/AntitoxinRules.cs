@@ -59,6 +59,27 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
     {
         Absorbed.Add(creature);
         AbsorbedOnTick[creature] = amount;
+        Analytics.RunCounters.Add(creature.Player, Analytics.RunCounters.PoisonAbsorbed, amount);
+    }
+
+    // Analytics only. The gained counter reads any positive Poison landing on a player; the bled
+    // counter reads the tick that resolves AFTER absorption, so it is what Poison actually cost in
+    // HP. IsPoisonTick is the one definition of the tick shape; the stack still holds the full
+    // amount here because PoisonPower decrements after the damage lands
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
+        decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (power is PoisonPower && power.Owner.IsPlayer && amount > 0)
+            Analytics.RunCounters.Add(power.Owner.Player, Analytics.RunCounters.PoisonGained, (int)amount);
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
+        DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
+    {
+        if (target.IsPlayer && IsPoisonTick(target, result.UnblockedDamage, props, dealer, cardSource))
+            Analytics.RunCounters.Add(target.Player, Analytics.RunCounters.PoisonBled, result.UnblockedDamage);
+        return Task.CompletedTask;
     }
 
     internal static bool AbsorbedThisTurn(Creature creature) => Absorbed.Contains(creature);

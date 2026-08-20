@@ -227,12 +227,20 @@ internal static class AlchemistVisuals
     {
         if (DeathAnimation == null) return;
 
+        // Once, and deferred. FadeOutTrack starts an empty animation, which raises this same signal
+        // while the death animation is still current on track 0, so an unguarded handler re-enters
+        // itself inside the Spine update and hangs or crashes the main thread the moment the player
+        // dies (repro: console `die`; the Give Up option hits the same path)
+        var faded = false;
         sprite.ConnectAnimationStarted(Callable.From<GodotObject, GodotObject, GodotObject>((_, _, _) =>
         {
-            if (state.GetCurrentAnimationName() != DeathAnimation) return;
-
-            SpineModel.FadeOutTrack(state, BlinkTrack, FlourishFadeOut);
-            SpineModel.FadeOutTrack(state, ShineTrack, FlourishFadeOut);
+            if (faded || state.GetCurrentAnimationName() != DeathAnimation) return;
+            faded = true;
+            Callable.From(() =>
+            {
+                SpineModel.FadeOutTrack(state, BlinkTrack, FlourishFadeOut);
+                SpineModel.FadeOutTrack(state, ShineTrack, FlourishFadeOut);
+            }).CallDeferred();
         }));
     }
 

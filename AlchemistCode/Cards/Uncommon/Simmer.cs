@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The dose engine: a drip every turn keeps every reader lit, and the bar pays for it
 [CardTheme(CardTheme.Poison)]
 public class Simmer : AlchemistCard
 {

@@ -7,8 +7,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-// The spit engine: whatever you dose yourself with, the room breathes too. Dose in, damage out, and
-// the readers still have the number
 [CardTheme(CardTheme.Poison)]
 public class Miasma : AlchemistCard
 {

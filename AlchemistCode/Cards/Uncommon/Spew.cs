@@ -7,8 +7,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The frog spits a copy of its dose at one enemy. Transfer without spending, so the readers you play
-// afterwards still have the number
 [CardTheme(CardTheme.Poison)]
 public class Spew : AlchemistCard
 {

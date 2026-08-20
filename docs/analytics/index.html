@@ -464,15 +464,53 @@ function scatterChart(host, rows) {
   };
   for (const p of pts.filter(p => !p.hit)) draw(p, true);   // dimmed first, hits on top
   for (const p of pts.filter(p => p.hit)) draw(p, false);
-  if (state.search) {   // label the hits so the search result is findable
-    for (const p of pts.filter(p => p.hit).slice(0, 12))
-      f.svg.append(el("text", {x: p.x + p.rad + 4, y: p.y + 4, "font-size": 11, fill: C("--ink")}, p.r.name));
-  }
+  placeLabels(f, pts);
   host.append(f.svg);
   $("scatterLegend").innerHTML =
     Object.entries(RARITY_COLOR).map(([k, v]) => `<span><span class="sw" style="background:${C(v)}"></span>${k}</span>`).join("")
     + `<span><span class="sw" style="background:${C("--other")}"></span>Other</span>`
     + `<span><span class="ln"></span>overall win rate ${pct(overall)}</span>`;
+}
+
+// Every dot gets a persistent label. Greedy placement: points with the most runs claim space
+// first; each label tries a ring of offsets and takes the first spot that hits neither a dot nor a
+// placed label; a label pushed off its dot gets a faint leader line, the way adjustText renders.
+// In a crowd the leftovers stay unlabeled rather than overlapping, and hover still names them
+function placeLabels(f, pts) {
+  const fontSize = 10.5;
+  const w = t => t.length * fontSize * 0.62;
+  const rects = pts.map(p => ({x: p.x - p.rad, y: p.y - p.rad, w: p.rad * 2, h: p.rad * 2}));
+  const collides = a => rects.some(b =>
+    a.x < b.x + b.w + 2 && a.x + a.w + 2 > b.x && a.y < b.y + b.h + 2 && a.y + a.h + 2 > b.y);
+  const inFrame = a => a.x >= f.pad.l && a.x + a.w <= f.width - f.pad.r
+    && a.y >= f.pad.t && a.y + a.h <= f.height - f.pad.b;
+  const offsets = [];
+  for (const d of [1, 2.2, 3.6]) {
+    offsets.push([10 * d, 0], [-10 * d, 0], [0, -11 * d], [0, 11 * d],
+                 [9 * d, -9 * d], [-9 * d, -9 * d], [9 * d, 9 * d], [-9 * d, 9 * d]);
+  }
+  const ordered = [...pts].sort((a, b) => (b.r.runs || 0) - (a.r.runs || 0));
+  for (const p of ordered) {
+    const tw = w(p.r.name);
+    let placed = null;
+    for (const [dx, dy] of offsets) {
+      const cx = p.x + dx + (dx > 0 ? tw / 2 : dx < 0 ? -tw / 2 : 0);
+      const box = {x: cx - tw / 2, y: p.y + dy - fontSize / 2 - 1, w: tw, h: fontSize + 2};
+      if (inFrame(box) && !collides(box)) { placed = {box, dx, dy}; break; }
+    }
+    if (!placed) continue;
+    rects.push(placed.box);
+    const dim = state.search && !p.hit;
+    const far = Math.hypot(placed.dx, placed.dy) > 16;
+    if (far) {
+      const lx = placed.box.x + (placed.dx < 0 ? placed.box.w : 0);
+      f.svg.append(el("line", {x1: p.x, y1: p.y, x2: lx, y2: placed.box.y + placed.box.h / 2,
+                               stroke: C("--grid"), "stroke-width": 1, opacity: dim ? .15 : .6}));
+    }
+    f.svg.append(el("text", {x: placed.box.x, y: placed.box.y + fontSize, "font-size": fontSize,
+                             fill: C(p.hit && state.search ? "--ink" : "--ink-2"),
+                             opacity: dim ? .25 : 1}, p.r.name));
+  }
 }
 
 function rateBarChart(host, rows, height = 300) {  // rows: [{label, v, runs, wins}]
@@ -576,11 +614,22 @@ function renderOverview() {
   const rows = RUNS.filter(r => sliceFilter(r));
   const all = groupSum(rows, () => 1).get(1) || {runs: 0, wins: 0};
   const econ = groupSum(ECON.filter(r => sliceFilter(r)), () => 1, ["brews", "sold", "runs"]).get(1) || {brews: 0, sold: 0, runs: 0};
+  const econ2 = groupSum(ECON.filter(r => sliceFilter(r)), () => 1,
+    ["mix_bursting", "mix_fuming", "mix_sturdy", "mix_zesty", "poison_gained", "poison_absorbed", "poison_bled", "runs"]).get(1)
+    || {mix_bursting: 0, mix_fuming: 0, mix_sturdy: 0, mix_zesty: 0, poison_gained: 0, poison_absorbed: 0, poison_bled: 0, runs: 0};
+  const mixTotal = econ2.mix_bursting + econ2.mix_fuming + econ2.mix_sturdy + econ2.mix_zesty;
+  const mixTop = [["Bursting", econ2.mix_bursting], ["Fuming", econ2.mix_fuming],
+                  ["Sturdy", econ2.mix_sturdy], ["Zesty", econ2.mix_zesty]].sort((a, b) => b[1] - a[1]);
+  const poisonTicks = econ2.poison_absorbed + econ2.poison_bled;
   const tiles = [
     ["Runs", all.runs, ""],
     ["Win rate", pct(all.runs ? all.wins / all.runs : null), all.runs ? pctCI(all.wins, all.runs) : ""],
     ["Brews per run", econ.runs ? (econ.brews / econ.runs).toFixed(1) : "–", "rest-site Brew picks"],
     ["Potions sold per run", econ.runs ? (econ.sold / econ.runs).toFixed(1) : "–", ""],
+    ["Poison covered", poisonTicks ? pct(econ2.poison_absorbed / poisonTicks) : "–",
+     poisonTicks ? `${econ2.poison_absorbed} absorbed · ${econ2.poison_bled} bled` : "Antitoxin vs HP"],
+    ["Mixes chosen", mixTotal || "–",
+     mixTotal ? mixTop.filter(([, n]) => n).map(([k, n]) => `${k} ${pct(n / mixTotal)}`).join(" · ") : ""],
   ];
   $("tiles").innerHTML = tiles.map(([lab, val, ci]) =>
     `<div class="tile"><div class="lab">${lab}</div><div class="val">${val}</div><div class="ci">${ci}</div></div>`).join("");

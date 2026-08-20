@@ -8,8 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-// You walk into every fight already dosed and already covered, so the readers are lit from turn 1.
-// It used to procure a potion per combat, which is potion income the rubric counts as Meta Scaling
+// The Mix lane's relic: the shelf is stocked before every fight, your pick
 public class EverflowingChalice : AlchemistRelic
 {
     private const int Dose = 2;

@@ -7,8 +7,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-// The whole loop in one play: the biggest dose in the pool, and most of the cover for it. The last
-// ticks are yours to pay, which is the Rare's risk
 [CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
 public class Overdose : AlchemistCard
 {
@@ -17,7 +15,7 @@ public class Overdose : AlchemistCard
     public Overdose() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithVar("SelfPoison", 5, 0);
-        WithVar("antitoxin", 10, 4);
+        WithVar("antitoxin", 12, 4);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));

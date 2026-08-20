@@ -7,8 +7,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// Turn-scoped, so play order matters for one turn: Fizz first, then every dose you take this turn
-// sprays the room
 [CardTheme(CardTheme.Poison)]
 public class Fizz : AlchemistCard
 {

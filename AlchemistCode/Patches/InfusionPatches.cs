@@ -33,7 +33,7 @@ public static class EnchantCountPatch
     {
         if (card.CombatState == null) return;
         Infusion.RecordCombatEnchant(card);
-        if (card.Owner?.Creature.GetPower<Powers.FreshCoatPower>() is { } coat)
+        if (card.Owner?.Creature.GetPower<Powers.AlembicPower>() is { } coat)
             _ = coat.OnEnchanted();
     }
 }

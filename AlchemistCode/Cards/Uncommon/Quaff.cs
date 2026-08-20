@@ -8,8 +8,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The valve: the bigger the dose you are carrying, the more this refills. Tolerance's shape at
-// Uncommon, without the limit increase
 [CardTheme(CardTheme.Antitoxin, CardTheme.Poison)]
 public class Quaff : AlchemistCard
 {
@@ -17,7 +15,7 @@ public class Quaff : AlchemistCard
 
     public Quaff() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("antitoxin", 2, 1);
+        WithVar("antitoxin", 3, 1);
         WithTip(typeof(AntitoxinPower));
         WithTip(typeof(PoisonPower));
     }

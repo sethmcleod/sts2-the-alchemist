@@ -5,15 +5,15 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-[CardTheme(CardTheme.Transform)]
+[CardTheme(CardTheme.Mix)]
 public class Effervesce : AlchemistCard
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
     public Effervesce() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
-        WithVar("cards", 2, 0);
-        WithTip(typeof(Distillate));
+        WithVar("cards", 2, 1);
+        WithTip(typeof(Token.ZestyMix));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -22,9 +22,9 @@ public class Effervesce : AlchemistCard
         var count = DynamicVars["cards"].IntValue;
         for (var i = 0; i < count; i++)
         {
-            var distillate = CombatState.CreateCard<Distillate>(targetPlayer);
-            if (IsUpgraded) CardCmd.Upgrade(distillate);
-            await CardPileCmd.AddGeneratedCardToCombat(distillate, PileType.Hand, targetPlayer);
+            var zesty = CombatState.CreateCard<Token.ZestyMix>(targetPlayer);
+            Commands.Mixing.RecordCreated(Owner, zesty);
+            await CardPileCmd.AddGeneratedCardToCombat(zesty, PileType.Hand, targetPlayer);
         }
     }
 }

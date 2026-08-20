@@ -15,13 +15,13 @@ public class AllAtOnce : AlchemistCard
 
     protected override bool HasEnergyCostX => true;
 
-    public AllAtOnce() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
+    public AllAtOnce() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
     }
 
-    // The pool this spends, so the preview is the damage per hit
+    // The dose it reads, so the preview is the damage per hit
     private int Fuel =>
         IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<PoisonPower>() : 0;
 
@@ -35,18 +35,18 @@ public class AllAtOnce : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (CombatState == null) return;
+        if (play.Target == null) return;
         var damage = Fuel;
         if (damage <= 0) return;
-        await PowerCmd.Remove<PoisonPower>(Owner.Creature);
         var hits = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0);
         if (hits <= 0) return;
         await DamageCmd.Attack(damage)
             .WithHitCount(hits)
             .Unpowered()
             .WithHitFx(HitVfx("vfx/vfx_heavy_blunt"), null, "heavy_attack.mp3")
+            .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
             .FromCard(this, play)
-            .TargetingAllOpponents(CombatState)
+            .Targeting(play.Target)
             .Execute(choiceContext);
     }
 }

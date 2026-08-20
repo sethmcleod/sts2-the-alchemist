@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The 2-cost reader. Base Uncommon 2-cost attacks sit at 13; this is 10 naked and 16 on a dose of 3
 [CardTheme(CardTheme.Poison)]
 public class DeepCut : AlchemistCard
 {

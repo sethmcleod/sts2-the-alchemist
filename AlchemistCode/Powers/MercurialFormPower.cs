@@ -1,13 +1,13 @@
-using Alchemist.AlchemistCode.Compat;
+using System.Collections.Generic;
+using System.Linq;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
@@ -28,17 +28,10 @@ public class MercurialFormPower : AlchemistPower
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Player) return;
-        if (Owner.GetPower<PoisonPower>() is not { Amount: > 0 } poison) return;
-
-        var dose = poison.Amount;
         Flash();
-        // The hit lands before the stack is removed, so it carries the Poison tick shape that Antitoxin
-        // and every absorb payoff read. Removing first would make it an ordinary unblockable hit
-        await GameCompat.Damage(choiceContext, Owner, dose,
-            ValueProp.Unblockable | ValueProp.Unpowered, null, null);
-        if (!Owner.IsAlive) return;
-
-        await PowerCmd.Remove(poison);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner, 1, Owner, null);
+        var dose = Owner.GetPowerAmount<PoisonPower>();
+        if (dose <= 0) return;
         await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, dose, Owner, null);
         _granted += dose;
     }

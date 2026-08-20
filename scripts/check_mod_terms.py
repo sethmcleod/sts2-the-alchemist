@@ -28,7 +28,7 @@ ANY_TAG_RE = re.compile(r"\[/?[a-z_]+\]")
 MOD_TERMS = [
     "Antitoxin", "Infuse", "Ferment", "Brew",
     "Dosed", "Laced", "Fortified",
-    "Distillate", "Distillates", "Enchanted", "Enchant",
+    "Mix", "Mixes", "Residue", "Enchanted", "Enchant",
 ]
 
 # Renderings that differ only by inflection are not drift. Compared on a stem.

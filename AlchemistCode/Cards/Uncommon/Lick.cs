@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// The 0-cost reader. Small naked, and every point of dose is a point of free damage
 [CardTheme(CardTheme.Poison)]
 public class Lick : AlchemistCard
 {

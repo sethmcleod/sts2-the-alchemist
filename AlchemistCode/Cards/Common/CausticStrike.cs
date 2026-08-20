@@ -11,11 +11,9 @@ public class CausticStrike : AlchemistCard
 {
     public CausticStrike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        // A "Strike" card, so base-game strike synergies such as Perfected Strike count it. Patient
-        // Strike was the only draftable one
         WithTags(CardTag.Strike);
         WithDamage(6, 3);
-        WithVar("antitoxin", 3, 1);
+        WithVar("antitoxin", 3, 2);
         WithTip(typeof(AntitoxinPower));
     }
 

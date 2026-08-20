@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-// Tolerance's shape one rung down: the limit is the axis that is allowed to grow
 [CardTheme(CardTheme.Antitoxin)]
 public class Inure : AlchemistCard
 {

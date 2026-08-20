@@ -1,5 +1,6 @@
 using System.Reflection;
 using Alchemist.AlchemistCode.Potions;
+using BaseLib.Common.Rewards.LinkedRewardSet;
 using Godot;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Context;
@@ -64,6 +65,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
         ModelDb.Potion<Sampler>(),
         ModelDb.Potion<Solvent>(),
         ModelDb.Potion<Decoction>(),
+        ModelDb.Potion<StarterCulture>(),
     ];
 
     // Brew offers nothing else. Duplicates are filtered out, and holding the whole set falls back to a
@@ -71,15 +73,26 @@ public sealed class BrewRestSiteOption : RestSiteOption
     // Tracks what this Brew already offered, so a double Brew cannot roll the same potion twice
     private readonly List<ModelId> _offered = new();
 
-    private PotionReward CreateBrewReward()
+    private Reward CreateBrewReward()
     {
         var rng = Owner.PlayerRng.Rewards;
         var exclusives = BrewOnly()
             .Where(p => Owner.Potions.All(held => held.Id != p.Id) && !_offered.Contains(p.Id))
             .ToList();
         if (exclusives.Count == 0) return new PotionReward(Owner);
-        var pick = rng.NextItem(exclusives)!;
-        _offered.Add(pick.Id);
-        return new PotionReward(pick.ToMutable(), Owner);
+
+        // Choose 1 of 3: the options ride in a linked set, so claiming one clears the others.
+        // Everything shown counts as offered, which keeps a second Brew in the same visit fresh
+        List<Reward> options = new();
+        for (var i = 0; i < 3 && exclusives.Count > 0; i++)
+        {
+            var pick = rng.NextItem(exclusives)!;
+            exclusives.Remove(pick);
+            _offered.Add(pick.Id);
+            options.Add(new PotionReward(pick.ToMutable(), Owner));
+        }
+        return options.Count == 1
+            ? options[0]
+            : new CustomLinkedRewardSet(options, Owner, LinkedRewardType.Exclusive);
     }
 }
