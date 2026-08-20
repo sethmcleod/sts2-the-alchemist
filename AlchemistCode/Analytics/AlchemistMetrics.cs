@@ -196,7 +196,7 @@ internal static class AlchemistMetrics
                 {
                     ["bursting"] = RunCounters.CountFor(localPlayer, RunCounters.MixBursting),
                     ["fuming"] = RunCounters.CountFor(localPlayer, RunCounters.MixFuming),
-                    ["sturdy"] = RunCounters.CountFor(localPlayer, RunCounters.MixSturdy),
+                    ["syrupy"] = RunCounters.CountFor(localPlayer, RunCounters.MixSyrupy),
                     ["zesty"] = RunCounters.CountFor(localPlayer, RunCounters.MixZesty),
                 },
                 ["poison"] = new JsonObject

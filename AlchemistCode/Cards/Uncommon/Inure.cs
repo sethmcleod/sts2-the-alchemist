@@ -13,16 +13,17 @@ public class Inure : AlchemistCard
 
     public Inure() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Capacity", 3, 1);
         WithVar("antitoxin", 3, 1);
+        WithPower<InurePower>(1, 0);
         WithTip(typeof(AntitoxinPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<AntitoxinCapacityPower>(choiceContext, Owner.Creature,
-            DynamicVars["Capacity"].IntValue, Owner.Creature, this);
+        // Antitoxin before the amplifier, so the card's own gain is not amplified. The text lists
+        // them in this order and the numbers have to agree with it
         await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
             DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
+        await CommonActions.ApplySelf<InurePower>(choiceContext, this);
     }
 }

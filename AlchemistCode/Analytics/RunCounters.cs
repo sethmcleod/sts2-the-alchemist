@@ -12,14 +12,14 @@ public static class RunCounters
 {
     public const string MixBursting = "mix_bursting";
     public const string MixFuming = "mix_fuming";
-    public const string MixSturdy = "mix_sturdy";
+    public const string MixSyrupy = "mix_syrupy";
     public const string MixZesty = "mix_zesty";
     public const string PoisonGained = "poison_gained";
     public const string PoisonAbsorbed = "poison_absorbed";
     public const string PoisonBled = "poison_bled";
 
     public static readonly string[] Keys =
-        { MixBursting, MixFuming, MixSturdy, MixZesty, PoisonGained, PoisonAbsorbed, PoisonBled };
+        { MixBursting, MixFuming, MixSyrupy, MixZesty, PoisonGained, PoisonAbsorbed, PoisonBled };
 
     private static readonly Dictionary<string, SpireField<Player, int>> Fields = new();
 

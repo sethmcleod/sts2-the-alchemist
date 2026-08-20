@@ -21,7 +21,7 @@ public static class MixSelectCenterPatch
     {
         var holders = __instance.CurrentlyDisplayedCardHolders.ToList();
         if (holders.Count == 0) return;
-        if (!holders.All(h => h.CardModel is BurstingMix or FumingMix or SturdyMix or ZestyMix))
+        if (!holders.All(h => h.CardModel is BurstingMix or FumingMix or SyrupyMix or ZestyMix))
             return;
 
         var columns = (int)ColumnsGetter.Invoke(__instance, null)!;

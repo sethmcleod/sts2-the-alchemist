@@ -9,8 +9,8 @@
   "ALCHEMIST-MASTERWORK.title": "杰作",
   "ALCHEMIST-MIX.description": "一张费用为[blue]0[/blue]且会[gold]消耗[/gold]的牌。",
   "ALCHEMIST-MIX.title": "合剂",
-  "ALCHEMIST-STURDY_MIX.description": "获得[blue]4[/blue]点[gold]格挡[/gold]。",
-  "ALCHEMIST-STURDY_MIX.title": "坚固合剂",
+  "ALCHEMIST-SYRUPY_MIX.description": "获得[blue]4[/blue]点[gold]格挡[/gold]。",
+  "ALCHEMIST-SYRUPY_MIX.title": "黏稠合剂",
   "ALCHEMIST-ZESTY_MIX.description": "抽[blue]1[/blue]张牌。获得[blue]3[/blue]点[gold]抗毒素[/gold]。",
   "ALCHEMIST-ZESTY_MIX.title": "爽劲合剂"
 }

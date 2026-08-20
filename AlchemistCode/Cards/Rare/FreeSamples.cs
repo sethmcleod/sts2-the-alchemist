@@ -18,7 +18,7 @@ public class FreeSamples : AlchemistCard
         WithCards(2, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(Token.BurstingMix));
-        WithTip(typeof(Token.SturdyMix));
+        WithTip(typeof(Token.SyrupyMix));
         WithTip(typeof(Token.FumingMix));
     }
 

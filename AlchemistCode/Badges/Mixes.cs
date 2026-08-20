@@ -35,6 +35,6 @@ public sealed class Mixes() : CustomBadge(requiresWin: false, multiplayerOnly: f
     private static int CountMixes(SerializablePlayer player) =>
         RunCounters.CountFor(player, RunCounters.MixBursting)
         + RunCounters.CountFor(player, RunCounters.MixFuming)
-        + RunCounters.CountFor(player, RunCounters.MixSturdy)
+        + RunCounters.CountFor(player, RunCounters.MixSyrupy)
         + RunCounters.CountFor(player, RunCounters.MixZesty);
 }

@@ -16,7 +16,9 @@ Run: python3 scripts/check_card_tokens.py   (exits 1 on either)
 import json, re, os, glob, sys
 cards = json.load(open('Alchemist/localization/eng/cards.json', encoding='utf-8'))
 GLOBAL = {'IfUpgraded','FermentSuffix','FermentTotal','HitsLine','energyIcons','energyPrefix',
-          'singleStarIcon','MaxCount','MinCount','Amount'}
+          'singleStarIcon','MaxCount','MinCount','Amount',
+          # CardModel.GetDescriptionForPile adds these to every card description
+          'InCombat','OnTable','IsTargeting','TargetType','GainsBlock'}
 BASE = open('AlchemistCode/Cards/AlchemistCard.cs', encoding='utf-8').read()
 # AlchemistCard injects these for every card that overrides the matching preview property
 BASE_ARGS = set(re.findall(r'description\.Add\("(\w+)"', BASE))

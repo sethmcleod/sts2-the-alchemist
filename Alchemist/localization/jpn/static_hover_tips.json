@@ -9,8 +9,8 @@
   "ALCHEMIST-MASTERWORK.title": "傑作",
   "ALCHEMIST-MIX.description": "コスト[blue]0[/blue]の、[gold]廃棄[/gold]するカード。",
   "ALCHEMIST-MIX.title": "合剤",
-  "ALCHEMIST-STURDY_MIX.description": "[blue]4[/blue][gold]ブロック[/gold]を得る。",
-  "ALCHEMIST-STURDY_MIX.title": "堅固の合剤",
+  "ALCHEMIST-SYRUPY_MIX.description": "[blue]4[/blue][gold]ブロック[/gold]を得る。",
+  "ALCHEMIST-SYRUPY_MIX.title": "粘性の合剤",
   "ALCHEMIST-ZESTY_MIX.description": "カードを[blue]1[/blue]枚引く。[gold]抗毒素[/gold][blue]3[/blue]を得る。",
   "ALCHEMIST-ZESTY_MIX.title": "刺激の合剤"
 }

@@ -91,7 +91,7 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
                                  "sold": int(extra.get("potions_sold") or 0),
                                  "mix_bursting": int(mixes.get("bursting") or 0),
                                  "mix_fuming": int(mixes.get("fuming") or 0),
-                                 "mix_sturdy": int(mixes.get("sturdy") or 0),
+                                 "mix_syrupy": int(mixes.get("syrupy") or 0) + int(mixes.get("sturdy") or 0),
                                  "mix_zesty": int(mixes.get("zesty") or 0),
                                  "poison_gained": int(poison.get("gained") or 0),
                                  "poison_absorbed": int(poison.get("absorbed") or 0),
@@ -133,7 +133,7 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
         "death_floors_daily": aggregate(floor_rows, keys + ["floor"], ["deaths"]),
         "encounters_daily": aggregate(enc_rows, keys + ["enc"], ["fights", "dmg", "turns"]),
         "themes_daily": aggregate(theme_rows, keys + ["theme"], ["runs", "wins"]),
-        "economy_daily": aggregate(brew_rows, keys, ["brews", "sold", "mix_bursting", "mix_fuming", "mix_sturdy", "mix_zesty", "poison_gained", "poison_absorbed", "poison_bled", "runs", "wins"]),
+        "economy_daily": aggregate(brew_rows, keys, ["brews", "sold", "mix_bursting", "mix_fuming", "mix_syrupy", "mix_zesty", "poison_gained", "poison_absorbed", "poison_bled", "runs", "wins"]),
     }
 
 

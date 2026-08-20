@@ -617,11 +617,11 @@ function renderOverview() {
   const all = groupSum(rows, () => 1).get(1) || {runs: 0, wins: 0};
   const econ = groupSum(ECON.filter(r => sliceFilter(r)), () => 1, ["brews", "sold", "runs"]).get(1) || {brews: 0, sold: 0, runs: 0};
   const econ2 = groupSum(ECON.filter(r => sliceFilter(r)), () => 1,
-    ["mix_bursting", "mix_fuming", "mix_sturdy", "mix_zesty", "poison_gained", "poison_absorbed", "poison_bled", "runs"]).get(1)
-    || {mix_bursting: 0, mix_fuming: 0, mix_sturdy: 0, mix_zesty: 0, poison_gained: 0, poison_absorbed: 0, poison_bled: 0, runs: 0};
-  const mixTotal = econ2.mix_bursting + econ2.mix_fuming + econ2.mix_sturdy + econ2.mix_zesty;
+    ["mix_bursting", "mix_fuming", "mix_syrupy", "mix_zesty", "poison_gained", "poison_absorbed", "poison_bled", "runs"]).get(1)
+    || {mix_bursting: 0, mix_fuming: 0, mix_syrupy: 0, mix_zesty: 0, poison_gained: 0, poison_absorbed: 0, poison_bled: 0, runs: 0};
+  const mixTotal = econ2.mix_bursting + econ2.mix_fuming + econ2.mix_syrupy + econ2.mix_zesty;
   const mixTop = [["Bursting", econ2.mix_bursting], ["Fuming", econ2.mix_fuming],
-                  ["Sturdy", econ2.mix_sturdy], ["Zesty", econ2.mix_zesty]].sort((a, b) => b[1] - a[1]);
+                  ["Syrupy", econ2.mix_syrupy], ["Zesty", econ2.mix_zesty]].sort((a, b) => b[1] - a[1]);
   const poisonTicks = econ2.poison_absorbed + econ2.poison_bled;
   const tile = ([lab, val, ci]) =>
     `<div class="tile"><div class="lab">${lab}</div><div class="val">${val}</div><div class="ci">${ci}</div></div>`;

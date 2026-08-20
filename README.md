@@ -19,7 +19,7 @@
   to a limit. It persists across turns, so you can bank it before you dose.
   What it cannot cover comes out of your HP.
 - **Mix**: These are tokens you can create in combat, and you can often choose
-  which one: Bursting (damage), Fuming (Weak and Vulnerable), Sturdy (Block)
+  which one: Bursting (damage), Fuming (Weak and Vulnerable), Syrupy (Block)
   and Zesty (Draw and Antitoxin).
 - **Infuse**: Infusing a card Enchants it for the rest of combat based on its
   type. Attacks deal extra damage equal to your Poison, Skills generate

@@ -158,7 +158,7 @@ COLORS = {
     "Steep": ("#3a1220", "#f0435e", "BR", "Crafting: refinement"),
     "Bursting Mix": ("#5a0a0a", "#ff5a3a", "TR", "Mix tokens"),
     "Fuming Mix": ("#2c3a10", "#c8e05a", "TR", "Mix tokens"),
-    "Sturdy Mix": ("#0a2258", "#4a90e8", "TR", "Mix tokens"),
+    "Syrupy Mix": ("#0a2258", "#4a90e8", "TR", "Mix tokens"),
     "Zesty Mix": ("#2a0a4a", "#c07aff", "TR", "Mix tokens"),
     "Bestow": ("#2563c4", "#b48ff0", "BR", "Multiplayer: gifts"),
     "Bottoms Up": ("#2563c4", "#5fc47a", "R", "Multiplayer: gifts"),

@@ -33,7 +33,7 @@ public static class AlchemistTips
         Static("ALCHEMIST-MIX"),
         Static("ALCHEMIST-BURSTING_MIX", "mix_bursting"),
         Static("ALCHEMIST-FUMING_MIX", "mix_fuming"),
-        Static("ALCHEMIST-STURDY_MIX", "mix_sturdy"),
+        Static("ALCHEMIST-SYRUPY_MIX", "mix_syrupy"),
         Static("ALCHEMIST-ZESTY_MIX", "mix_zesty"),
     ];
 }
