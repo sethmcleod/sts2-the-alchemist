@@ -61,7 +61,8 @@
 
   .cards-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
   .tile{background:var(--panel);border:1px solid var(--grid);border-radius:10px;
-        padding:12px 18px;min-width:130px}
+        padding:12px 18px;min-width:130px;flex:1 1 130px}
+  #tilesWide .tile{flex:1 1 300px}
   .tile .lab{font-size:12px;color:var(--ink-2)}
   .tile .val{font-size:26px;font-weight:600;margin-top:2px}
   .tile .ci{font-size:11px;color:var(--muted)}
@@ -147,6 +148,7 @@
 
   <div class="view on" id="view-overview">
     <div class="cards-row" id="tiles"></div>
+    <div class="cards-row" id="tilesWide"></div>
     <div class="row2">
       <div class="panel">
         <h2>Win rate by day</h2>
@@ -621,18 +623,21 @@ function renderOverview() {
   const mixTop = [["Bursting", econ2.mix_bursting], ["Fuming", econ2.mix_fuming],
                   ["Sturdy", econ2.mix_sturdy], ["Zesty", econ2.mix_zesty]].sort((a, b) => b[1] - a[1]);
   const poisonTicks = econ2.poison_absorbed + econ2.poison_bled;
-  const tiles = [
+  const tile = ([lab, val, ci]) =>
+    `<div class="tile"><div class="lab">${lab}</div><div class="val">${val}</div><div class="ci">${ci}</div></div>`;
+  $("tiles").innerHTML = [
     ["Runs", all.runs, ""],
     ["Win rate", pct(all.runs ? all.wins / all.runs : null), all.runs ? pctCI(all.wins, all.runs) : ""],
     ["Brews per run", econ.runs ? (econ.brews / econ.runs).toFixed(1) : "–", "rest-site Brew picks"],
     ["Potions sold per run", econ.runs ? (econ.sold / econ.runs).toFixed(1) : "–", ""],
+  ].map(tile).join("");
+  // The two counter tiles carry long breakdown lines, so they get a half-width row of their own
+  $("tilesWide").innerHTML = [
     ["Poison covered", poisonTicks ? pct(econ2.poison_absorbed / poisonTicks) : "–",
      poisonTicks ? `${econ2.poison_absorbed} absorbed · ${econ2.poison_bled} bled` : "Antitoxin vs HP"],
     ["Mixes chosen", mixTotal || "–",
      mixTotal ? mixTop.filter(([, n]) => n).map(([k, n]) => `${k} ${pct(n / mixTotal)}`).join(" · ") : ""],
-  ];
-  $("tiles").innerHTML = tiles.map(([lab, val, ci]) =>
-    `<div class="tile"><div class="lab">${lab}</div><div class="val">${val}</div><div class="ci">${ci}</div></div>`).join("");
+  ].map(tile).join("");
 
   const byDay = [...groupSum(rows, r => r.day)].sort((a, b) => a[0] < b[0] ? -1 : 1)
     .map(([day, g]) => ({label: day.slice(5), day, v: g.wins / g.runs, runs: g.runs, wins: g.wins}));
