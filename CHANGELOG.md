@@ -7,6 +7,17 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.3] - 2026-08-20
+
+### Changed
+
+- Changed Reflux: cost 1 -> 2 (1), Poison per trigger 2 (3) -> 2, and it no longer caps at 3 triggers
+- Reworked Apothecary: it now adds a random Mix each turn instead of a chosen one, costs 2, and gains Innate on upgrade
+- Reworked Bestow: "Another player procures a random Potion. Exhaust." Cost 0 -> 1 (0)
+- Reworked Deep Cut: "Deal 16 (22) damage."
+- Reworked Effervesce: it now adds a Bursting, a Sturdy and a Fuming Mix to another player's Hand, and costs 1 (0)
+- Reworked Free Samples: "Add a random Mix into ALL other players' Hands. Draw 2 (3) cards. Exhaust."
+
 ## [0.11.2] - 2026-08-20
 
 ### Changed

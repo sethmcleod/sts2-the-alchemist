@@ -1,7 +1,9 @@
 using Alchemist.AlchemistCode.Cards.Token;
+using Alchemist.AlchemistCode.Commands;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -12,19 +14,24 @@ public class Effervesce : AlchemistCard
 
     public Effervesce() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
-        WithVar("cards", 2, 1);
-        WithTip(typeof(Token.ZestyMix));
+        WithCostUpgradeBy(-1);
+        WithTip(typeof(Token.BurstingMix));
+        WithTip(typeof(Token.SturdyMix));
+        WithTip(typeof(Token.FumingMix));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null || play.Target?.Player is not { } targetPlayer) return;
-        var count = DynamicVars["cards"].IntValue;
-        for (var i = 0; i < count; i++)
+        foreach (var mix in new CardModel[]
+                 {
+                     CombatState.CreateCard<BurstingMix>(targetPlayer),
+                     CombatState.CreateCard<SturdyMix>(targetPlayer),
+                     CombatState.CreateCard<FumingMix>(targetPlayer),
+                 })
         {
-            var zesty = CombatState.CreateCard<Token.ZestyMix>(targetPlayer);
-            Commands.Mixing.RecordCreated(Owner, zesty);
-            await CardPileCmd.AddGeneratedCardToCombat(zesty, PileType.Hand, targetPlayer);
+            Mixing.RecordCreated(Owner, mix);
+            await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, targetPlayer);
         }
     }
 }

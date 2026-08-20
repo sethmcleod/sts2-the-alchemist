@@ -81,7 +81,7 @@ BAYER = [
 # Direction encodes card type: Attack TR, Skill BR, Power R or L, token vertical (U or D)
 COLORS = {
     "Tempered": ("#1f1723", "#5f7fa8", "BR", "Unique"),
-    "Callus": ("#071a02", "#c2703a", "R", "Poison powers: amplifiers"),
+    "Callus": ("#471008", "#d4593a", "R", "Poison powers: amplifiers"),
     "Miasma": ("#071a02", "#6b8f2a", "L", "Poison powers: retaliation"),
     "Gulp": ("#4e8701", "#8a3f2f", "BR", "Poison skills"),
     "Ichor": ("#00212a", "#3fb0a0", "TR", "Poison payoffs"),
@@ -108,7 +108,7 @@ COLORS = {
     "Anoint": ("#2f0170", "#c0a24a", "TR", "Unique"),
     "Retch": ("#2f0170", "#b3341f", "BR", "Poison skills"),
     "Blend": ("#1f1723", "#7f9aa8", "BR", "Transform"),
-    "Fallout": ("#650101", "#4a7a1c", "TR", "Poison attacks"),
+    "Fallout": ("#7a1c06", "#8ab520", "TR", "Poison attacks"),
     "Slow Burn": ("#2f0170", "#63c11c", "BR", "Unique"),
     "Corrode": ("#2f0170", "#287912", "BR", "Poison and Infuse skills"),
     "Quicklime": ("#1c0f45", "#e8e4d2", "TR", "Light attacks"),

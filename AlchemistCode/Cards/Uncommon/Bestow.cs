@@ -1,26 +1,23 @@
-using Alchemist.AlchemistCode.Commands;
-using MegaCrit.Sts2.Core.Commands;
+using Alchemist.AlchemistCode.Potions;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-[CardTheme(CardTheme.Infuse)]
+[CardTheme(CardTheme.Transform)]
 public class Bestow : AlchemistCard
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
-    public Bestow() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
+    public Bestow() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
-        WithVar("Infuse", 1, 1);
-        WithTips(_ => Infusion.InfuseTips());
+        WithCostUpgradeBy(-1);
+        WithKeyword(CardKeyword.Exhaust);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (CombatState == null || play.Target?.Player is not { } targetPlayer) return;
-        Infusion.InfuseRandomFromHand(targetPlayer, DynamicVars["Infuse"].IntValue);
-        await CardPileCmd.Draw(choiceContext, 1, targetPlayer);
-        await CardPileCmd.Draw(choiceContext, 1, Owner);
+        if (play.Target?.Player is not { } targetPlayer) return;
+        await Brewing.Produce(targetPlayer, Owner.RunState.Rng.CombatPotionGeneration);
     }
 }

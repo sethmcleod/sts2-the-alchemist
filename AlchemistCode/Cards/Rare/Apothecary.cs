@@ -10,9 +10,9 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Mix)]
 public class Apothecary : AlchemistCard
 {
-    public Apothecary() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public Apothecary() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
+        WithKeyword(CardKeyword.Innate, UpgradeType.Add);
         WithTips(_ => Mixing.MixTips());
     }
 

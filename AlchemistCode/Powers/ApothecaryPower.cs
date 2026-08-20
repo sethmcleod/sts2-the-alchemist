@@ -18,6 +18,7 @@ public class ApothecaryPower : AlchemistPower
     {
         if (player != Owner.Player) return;
         Flash();
-        await Mixing.CreateChosen(choiceContext, Owner.Player!, Amount);
+        for (var i = 0; i < Amount; i++)
+            await Mixing.CreateRandom(choiceContext, Owner.Player!);
     }
 }
