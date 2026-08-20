@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "매 전투 시작 시, [gold]손[/gold]에 추가할 [gold]혼합액[/gold]을 선택합니다.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "아무리 따라도 좀처럼 마르지 않는다.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "마르지 않는 성배",
-  "ALCHEMIST-GILDED_KIT.description": "휴식 장소에서 [gold]조제[/gold]할 수 있고 포션 슬롯을 [blue]1[/blue]개 추가로 얻습니다.",
+  "ALCHEMIST-GILDED_KIT.description": "매 전투 시작 시, [gold]중독[/gold]을 [blue]2[/blue], [gold]항독소[/gold]를 [blue]12[/blue] 얻습니다. 휴식 장소에서 [gold]조제[/gold]할 수 있습니다. 획득 시, 포션 슬롯을 [blue]1[/blue]개 얻습니다.",
   "ALCHEMIST-GILDED_KIT.flavor": "화려한 도구함. 그 금은 장식이 아니다.",
   "ALCHEMIST-GILDED_KIT.title": "금장 도구함",
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]중독[/gold]을 얻을 때마다, 무작위 적에게 [gold]중독[/gold]을 [blue]1[/blue] 부여합니다.",

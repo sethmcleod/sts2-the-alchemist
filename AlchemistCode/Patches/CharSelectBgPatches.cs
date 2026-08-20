@@ -49,27 +49,33 @@ class CharSelectBgPatches
             is not { } data)
             return;
 
-        // The scene is painted on a 2562x1479 canvas centred on the skeleton origin (the bg
-        // attachment's untrimmed size). The character reads right at canvas-to-visible-rect
-        // size, but at that size the background stops just past the staff. So the skeleton
-        // renders twice: an environment layer scaled up so the swirl covers the oversized
-        // AnimatedBg container at any aspect ratio, and the character layer at mockup size.
-        // Each hides the other's slots, so nothing draws twice and the swirl has no seam
-        // The scene is painted on a 2562x1479 canvas centred on the skeleton origin (the bg
-        // attachment's untrimmed size), with the swirl radiating from behind the staff orb.
-        // The canvas maps to the visible rect; the composition (orb on swirl, bleed for wide
-        // aspect ratios) is the rig's to solve, so this stays one sprite at one scale
-        var design = new Vector2(2562, 1479);
-        var scale = bg.Size.X / design.X;
+        // Only the solid part of the painting may touch the viewport: the swirl arms
+        // around it have transparent gaps, backed by the flat rect below in the swirl's own
+        // edge purple. The gap-free envelope was measured in the running game with a magenta
+        // underlay (skeleton-space x -1517..1484, y -519..1033, y-up), and the scale and
+        // offset were then tuned live against it with the modder (2026-08-20): the height
+        // fit binds, the framing favours the character's lower half, and a full-frame leak
+        // check at these exact values found no exposed underlay at 16:9. bg.Size is the
+        // 1920x1080 design rect here; layout inflates the control afterwards, carrying the
+        // menu's own off-screen bleed for wider ratios
+        var scale = bg.Size.Y / 1080f * 0.65f;
         if (SpineModel.CreateSprite(data, scale) is not { } sprite)
             return;
 
         sprite.Name = "SelectScreenSpine";
-        sprite.Position = bg.Size * 0.5f;
+        sprite.Position = new Vector2(bg.Size.X / 1920f * 966f, bg.Size.Y / 1080f * 650f);
         sprite.AddChild(new NSpineAutoPlayer());
+
+        var under = new ColorRect
+        {
+            Name = "SelectScreenBase",
+            Color = new Color(0x2e / 255f, 0x20 / 255f, 0x50 / 255f),
+            Size = bg.Size,
+        };
+        bg.AddChild(under);
         bg.AddChild(sprite);
-        // Behind the particle nodes
-        bg.MoveChild(sprite, 0);
+        bg.MoveChild(under, 0);
+        bg.MoveChild(sprite, 1);
     }
 
 }

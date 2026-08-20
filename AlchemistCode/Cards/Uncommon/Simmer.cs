@@ -14,6 +14,7 @@ public class Simmer : AlchemistCard
     {
         WithVar("Amount", 1, 1);
         WithTip(typeof(PoisonPower));
+        WithTip(typeof(AntitoxinPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

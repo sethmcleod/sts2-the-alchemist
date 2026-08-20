@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "每場戰鬥開始時，選擇一種[gold]混劑[/gold]加入你的[gold]手牌[/gold]。",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "無論倒出多少，它始終不會見底。",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "永湧聖杯",
-  "ALCHEMIST-GILDED_KIT.description": "你可以在休息處[gold]釀造[/gold]，並獲得 [blue]1[/blue] 個額外的藥水欄位。",
+  "ALCHEMIST-GILDED_KIT.description": "每場戰鬥開始時，獲得 [blue]2[/blue] 層[gold]中毒[/gold]和 [blue]12[/blue] 點[gold]抗毒素[/gold]。你可以在休息處[gold]釀造[/gold]。拾取時，獲得 [blue]1[/blue] 個藥水欄位。",
   "ALCHEMIST-GILDED_KIT.flavor": "一只華麗的箱子。上頭的金子不是拿來炫耀的。",
   "ALCHEMIST-GILDED_KIT.title": "鎏金藥箱",
   "ALCHEMIST-GLOWING_SHARD.description": "每當你獲得[gold]中毒[/gold]時，對一名隨機敵人施加 [blue]1[/blue] 層[gold]中毒[/gold]。",

@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "At the start of each combat, choose a [gold]Mix[/gold] to add into your [gold]Hand[/gold].",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "However much you pour, it never quite runs dry.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Everflowing Chalice",
-  "ALCHEMIST-GILDED_KIT.description": "You can [gold]Brew[/gold] at Rest Sites and gain [blue]1[/blue] extra potion slot.",
+  "ALCHEMIST-GILDED_KIT.description": "At the start of each combat, gain [blue]2[/blue] [gold]Poison[/gold] and [blue]12[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites. Upon pickup, gain [blue]1[/blue] potion slot.",
   "ALCHEMIST-GILDED_KIT.flavor": "An ornate case. The gold is not for show.",
   "ALCHEMIST-GILDED_KIT.title": "Gilded Kit",
   "ALCHEMIST-GLOWING_SHARD.description": "Whenever you gain [gold]Poison[/gold], apply [blue]1[/blue] [gold]Poison[/gold] to a random enemy.",
