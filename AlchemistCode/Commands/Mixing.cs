@@ -26,7 +26,7 @@ public static class Mixing
         {
             combat.CreateCard<BurstingMix>(owner),
             combat.CreateCard<FumingMix>(owner),
-            combat.CreateCard<SturdyMix>(owner),
+            combat.CreateCard<SyrupyMix>(owner),
             combat.CreateCard<ZestyMix>(owner),
         };
 
@@ -48,7 +48,7 @@ public static class Mixing
         {
             BurstingMix => Analytics.RunCounters.MixBursting,
             FumingMix => Analytics.RunCounters.MixFuming,
-            SturdyMix => Analytics.RunCounters.MixSturdy,
+            SyrupyMix => Analytics.RunCounters.MixSyrupy,
             _ => Analytics.RunCounters.MixZesty,
         }, 1);
 
@@ -73,7 +73,7 @@ public static class Mixing
         var options = new List<CardModel>
         {
             combat.CreateCard<BurstingMix>(receiver),
-            combat.CreateCard<SturdyMix>(receiver),
+            combat.CreateCard<SyrupyMix>(receiver),
             combat.CreateCard<FumingMix>(receiver),
         };
         var picked = giver.RunState.Rng.CombatCardGeneration.NextItem(options);

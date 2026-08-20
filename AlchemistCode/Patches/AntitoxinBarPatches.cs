@@ -209,8 +209,7 @@ public static class AntitoxinBarPatches
         {
             if (!Shows(__instance)) return;
             var tips = __result.ToList();
-            // MegaTryAddingTip de-duplicates, so a visible power supplying the same tip stays single.
-            // TipFor, not FromPower: the hovered creature is the only thing that knows its own limit
+            // MegaTryAddingTip de-duplicates, so a visible power supplying the same tip stays single
             tips.MegaTryAddingTip(AntitoxinPower.TipFor(__instance));
             tips.MegaTryAddingTip(HoverTipFactory.FromPower<PoisonPower>());
             __result = tips;

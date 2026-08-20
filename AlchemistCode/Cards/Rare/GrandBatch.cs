@@ -27,7 +27,7 @@ public class GrandBatch : AlchemistCard
         foreach (var mix in new CardModel[]
                  {
                      combat.CreateCard<BurstingMix>(Owner), combat.CreateCard<FumingMix>(Owner),
-                     combat.CreateCard<SturdyMix>(Owner), combat.CreateCard<ZestyMix>(Owner),
+                     combat.CreateCard<SyrupyMix>(Owner), combat.CreateCard<ZestyMix>(Owner),
                  })
         {
             Mixing.RecordCreated(Owner, mix);

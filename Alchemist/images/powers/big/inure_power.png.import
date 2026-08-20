@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciaoaqrwfcmw1"
-path="res://.godot/imported/antitoxin_capacity_power.png-fa3dac1065ebc55da1675a73a66b8213.ctex"
+uid="uid://qgfaftq85ljr"
+path="res://.godot/imported/inure_power.png-87579800c8ad2d1242ce21a3984debdb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/antitoxin_capacity_power.png"
-dest_files=["res://.godot/imported/antitoxin_capacity_power.png-fa3dac1065ebc55da1675a73a66b8213.ctex"]
+source_file="res://Alchemist/images/powers/big/inure_power.png"
+dest_files=["res://.godot/imported/inure_power.png-87579800c8ad2d1242ce21a3984debdb.ctex"]
 
 [params]
 

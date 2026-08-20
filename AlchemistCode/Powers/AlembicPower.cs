@@ -19,8 +19,6 @@ public class AlembicPower : AlchemistPower
     {
         Flash();
         var context = new ThrowingPlayerChoiceContext();
-        // Capacity first, so the gain lands inside the new limit instead of spilling to Block
-        await PowerCmd.Apply<AntitoxinCapacityPower>(context, Owner, Amount, Owner, null);
         await PowerCmd.Apply<AntitoxinPower>(context, Owner, Amount, Owner, null);
     }
 }

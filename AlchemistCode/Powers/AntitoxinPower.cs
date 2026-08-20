@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Alchemist.AlchemistCode.Config;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
@@ -11,8 +9,6 @@ using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -20,16 +16,10 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Alchemist.AlchemistCode.Powers;
 
 // The ModifyDamageAdditive override is spelled differently on the two game branches, so it lives in
-// Compat/AntitoxinPowerCompat.cs and calls the branch-agnostic Absorb below. The ceiling and the
-// per-turn absorb record live in AntitoxinRules, which exists even when this power does not.
+// Compat/AntitoxinPowerCompat.cs and calls the branch-agnostic Absorb below. The per-turn absorb
+// record lives in AntitoxinRules, which exists even when this power does not.
 public partial class AntitoxinPower : AlchemistPower
 {
-    // Raised for the combat by granting AntitoxinCapacityPower; AntitoxinRules enforces the result
-    public const int BaseMax = 20;
-
-    public static int MaxFor(Creature creature) =>
-        BaseMax + creature.GetPowerAmount<AntitoxinCapacityPower>();
-
     // Written by Absorb, spent by BeforeDamageReceived. Absorb clears it on every pass, so it only
     // ever holds a value for the one hit that just passed the Poison tick test
     private int _pendingSpend;
@@ -45,35 +35,12 @@ public partial class AntitoxinPower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
-    // The limit is a number two places have to agree on, so neither the tooltip nor the bar restates it
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[] { new AntitoxinLimitVar() };
-
-    // Read live rather than cached, so no Creature from a finished combat is held. Null outside a
-    // combat, which is when the base ceiling is the honest number to print
-    private static Creature? LocalCreature() =>
-        NCombatRoom.Instance is { } room
-            ? LocalContext.GetMe(room.CreatureNodes.Select(node => node.Entity))
-            : null;
-
-    internal static int LimitFor(Creature? creature) =>
-        (creature ?? LocalCreature()) is { } subject ? MaxFor(subject) : BaseMax;
-
-    private LocString DescriptionFor(Creature? creature)
-    {
-        var description = base.Description;
-        description.Add("Limit", LimitFor(creature));
-        return description;
-    }
-
-    public override LocString Description => DescriptionFor(IsMutable ? Owner : null);
-
-    // For the bar, which is the one place that has to tell creatures apart: in multiplayer you can
-    // hover another player's bar. The Id still comes off the canonical model, so MegaTryAddingTip
-    // de-duplicates this against any other Antitoxin tip as before
+    // For the bar. The Id comes off the canonical model, so MegaTryAddingTip de-duplicates this
+    // against any other Antitoxin tip
     public static IHoverTip TipFor(Creature creature)
     {
         var model = ModelDb.Power<AntitoxinPower>();
-        return new HoverTip(model, model.DescriptionFor(creature).GetFormattedText(), isSmart: false);
+        return new HoverTip(model, model.Description.GetFormattedText(), isSmart: false);
     }
 
     // PoisonPower.CalculateTotalDamageNextTurn runs its forecast through this same hook, so reducing

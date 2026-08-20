@@ -7,6 +7,15 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.4] - 2026-08-20
+
+### Changed
+
+- Renamed Sturdy Mix to Syrupy Mix
+- Reworked Alembic: "Whenever you Enchant a card, gain 1 (2) Antitoxin."
+- Reworked Inure: "Gain 3 (4) Antitoxin. Whenever you gain Antitoxin this combat, gain 1 more."
+- Reworked Quench: "Gain 3 (5) Antitoxin, then gain Block equal to half your Antitoxin."
+
 ## [0.11.3] - 2026-08-20
 
 ### Changed

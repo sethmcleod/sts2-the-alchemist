@@ -7,11 +7,11 @@ namespace Alchemist.AlchemistCode.Cards.Token;
 
 [Pool(typeof(TokenCardPool))]
 [CardTheme(CardTheme.Mix)]
-public class SturdyMix : AlchemistCard
+public class SyrupyMix : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public SturdyMix() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
+    public SyrupyMix() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
         WithBlock(4, 3);
         WithKeyword(CardKeyword.Exhaust);

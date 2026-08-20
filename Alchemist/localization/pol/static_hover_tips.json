@@ -9,8 +9,8 @@
   "ALCHEMIST-MASTERWORK.title": "Arcydzieło",
   "ALCHEMIST-MIX.description": "Karta o koszcie [blue]0[/blue], która się [gold]Wyczerpuje[/gold].",
   "ALCHEMIST-MIX.title": "Mieszanka",
-  "ALCHEMIST-STURDY_MIX.description": "Zyskaj [blue]4[/blue] pkt. [gold]Bloku[/gold].",
-  "ALCHEMIST-STURDY_MIX.title": "Solidna mieszanka",
+  "ALCHEMIST-SYRUPY_MIX.description": "Zyskaj [blue]4[/blue] pkt. [gold]Bloku[/gold].",
+  "ALCHEMIST-SYRUPY_MIX.title": "Gęsta mieszanka",
   "ALCHEMIST-ZESTY_MIX.description": "Dobierz [blue]1[/blue] kartę. Zyskaj [blue]3[/blue] pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-ZESTY_MIX.title": "Rześka mieszanka"
 }

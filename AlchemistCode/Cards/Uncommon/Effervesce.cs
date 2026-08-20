@@ -16,7 +16,7 @@ public class Effervesce : AlchemistCard
     {
         WithCostUpgradeBy(-1);
         WithTip(typeof(Token.BurstingMix));
-        WithTip(typeof(Token.SturdyMix));
+        WithTip(typeof(Token.SyrupyMix));
         WithTip(typeof(Token.FumingMix));
     }
 
@@ -26,7 +26,7 @@ public class Effervesce : AlchemistCard
         foreach (var mix in new CardModel[]
                  {
                      CombatState.CreateCard<BurstingMix>(targetPlayer),
-                     CombatState.CreateCard<SturdyMix>(targetPlayer),
+                     CombatState.CreateCard<SyrupyMix>(targetPlayer),
                      CombatState.CreateCard<FumingMix>(targetPlayer),
                  })
         {
