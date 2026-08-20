@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.4] - 2026-08-20
+
 ### Changed
 
 - Renamed Sturdy Mix to Syrupy Mix
