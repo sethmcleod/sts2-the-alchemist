@@ -7,10 +7,11 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.3] - 2026-08-20
+
 ### Changed
 
 - Changed Reflux: cost 1 -> 2 (1), Poison per trigger 2 (3) -> 2, and it no longer caps at 3 triggers
-- Changed the beta art gradients for Fallout (brighter green-yellow) and Callus (brighter, red for Strength)
 - Reworked Apothecary: it now adds a random Mix each turn instead of a chosen one, costs 2, and gains Innate on upgrade
 - Reworked Bestow: "Another player procures a random Potion. Exhaust." Cost 0 -> 1 (0)
 - Reworked Deep Cut: "Deal 16 (22) damage."
