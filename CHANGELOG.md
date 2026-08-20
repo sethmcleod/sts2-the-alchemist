@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.2] - 2026-08-20
+
 ### Changed
 
 - Nerfed Bursting Mix: damage 6 -> 5
