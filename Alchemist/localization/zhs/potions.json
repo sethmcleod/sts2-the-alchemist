@@ -11,7 +11,7 @@
   "ALCHEMIST-MARSH_TONIC.title": "沼泽补药",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "对一名敌人触发[gold]中毒[/gold][blue]3[/blue]次。",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "水银药剂",
-  "ALCHEMIST-REFINED_EXTRACT.description": "选择[blue]2[/blue]种要生成的[gold]合剂[/gold]。",
+  "ALCHEMIST-REFINED_EXTRACT.description": "选择[blue]2[/blue]种要加入你的[gold]手牌[/gold]的[gold]合剂[/gold]。",
   "ALCHEMIST-REFINED_EXTRACT.title": "精炼提取物",
   "ALCHEMIST-SAMPLER.description": "你每拥有1瓶[gold]药水[/gold]（包括这一瓶），就获得{energyPrefix:energyIcons(1)}并抽[blue]1[/blue]张牌。",
   "ALCHEMIST-SAMPLER.title": "试饮装",

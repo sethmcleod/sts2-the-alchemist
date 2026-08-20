@@ -11,7 +11,7 @@
   "ALCHEMIST-MARSH_TONIC.title": "늪지 강장제",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "적에게 [gold]중독[/gold]을 [blue]3[/blue]번 발동시킵니다.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "수은 약",
-  "ALCHEMIST-REFINED_EXTRACT.description": "생성할 [gold]혼합액[/gold]을 [blue]2[/blue]장 선택합니다.",
+  "ALCHEMIST-REFINED_EXTRACT.description": "[gold]손[/gold]에 추가할 [gold]혼합액[/gold]을 [blue]2[/blue]장 선택합니다.",
   "ALCHEMIST-REFINED_EXTRACT.title": "정제 추출물",
   "ALCHEMIST-SAMPLER.description": "이 포션을 포함해 보유한 [gold]포션[/gold] 1개마다 {energyPrefix:energyIcons(1)}를 얻고 카드를 [blue]1[/blue]장 뽑습니다.",
   "ALCHEMIST-SAMPLER.title": "시음액",

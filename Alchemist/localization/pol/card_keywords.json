@@ -7,5 +7,5 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "Wybierz dowolną liczbę kart do [gold]Nasycenia[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Wybierz do [blue]{MaxCount}[/blue] {MaxCount:plural:karty|kart|kart} do [gold]Nasycenia[/gold].",
   "ALCHEMIST-INFUSE.title": "Nasycenie",
-  "ALCHEMIST-MIX.selectionPrompt": "Wybierz [gold]Mieszankę[/gold] do stworzenia."
+  "ALCHEMIST-MIX.selectionPrompt": "Wybierz [gold]Mieszankę[/gold] do dodania do [gold]ręki[/gold]."
 }

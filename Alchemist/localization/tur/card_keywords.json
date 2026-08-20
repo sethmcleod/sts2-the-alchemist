@@ -7,5 +7,5 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "[gold]Aşılamak[/gold] için istediğin kadar kart seç.",
   "ALCHEMIST-INFUSE.selectionPromptRange": "[gold]Aşılamak[/gold] için en fazla [blue]{MaxCount}[/blue] {MaxCount:plural:kart|kart} seç.",
   "ALCHEMIST-INFUSE.title": "Aşıla",
-  "ALCHEMIST-MIX.selectionPrompt": "Yaratmak için bir [gold]Karışım[/gold] seç."
+  "ALCHEMIST-MIX.selectionPrompt": "[gold]El[/gold]'ine eklemek için bir [gold]Karışım[/gold] seç."
 }

@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-DOSED.description": "Quando giochi questa carta Abilità, ottieni [blue]{Amount}[/blue] di [gold]Antitossina[/gold].",
   "ALCHEMIST-DOSED.title": "Dosata",
-  "ALCHEMIST-FORTIFIED.description": "Quando giochi questa carta Potere, aumenti il limite della tua [gold]Antitossina[/gold] di [blue]{Amount}[/blue].",
+  "ALCHEMIST-FORTIFIED.description": "Quando giochi questa carta Potere: ogni volta che ottieni [gold]Veleno[/gold], ottieni [blue]{Amount}[/blue] di [gold]Antitossina[/gold].",
   "ALCHEMIST-FORTIFIED.title": "Fortificata",
   "ALCHEMIST-LACED.description": "Questa carta Attacco infligge danno extra pari al tuo [gold]Veleno[/gold].",
   "ALCHEMIST-LACED.title": "Intrisa"

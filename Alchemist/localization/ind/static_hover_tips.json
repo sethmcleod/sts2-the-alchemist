@@ -1,15 +1,15 @@
 {
   "ALCHEMIST-BREW.description": "Pilihan Peristirahatan ini meracik salah satu dari [blue]7[/blue] [gold]Ramuan[/gold] yang hanya bisa didapat dengan cara ini. Hanya [gold]Ramuan[/gold] hasil racikan yang mau dibeli [gold]Pedagang[/gold].",
   "ALCHEMIST-BREW.title": "Racik",
-  "ALCHEMIST-BURSTING_MIX.description": "Lakukan [blue]8[/blue] kerusakan.",
+  "ALCHEMIST-BURSTING_MIX.description": "Lakukan [blue]6[/blue] kerusakan.",
   "ALCHEMIST-BURSTING_MIX.title": "Campuran Ledak",
-  "ALCHEMIST-FUMING_MIX.description": "Terapkan [blue]1[/blue] [gold]Lemah[/gold] dan [blue]1[/blue] [gold]Rentan[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Terapkan [blue]1[/blue] [gold]Lemah[/gold] dan [blue]1[/blue] [gold]Rentan[/gold]. Dapatkan [blue]1[/blue] [gold]Racun[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Campuran Asap",
   "ALCHEMIST-MASTERWORK.description": "Kartu ini bersinar [gold]emas[/gold] jika kamu sudah memberi [gold]Efek[/gold] ke 3 kartu atau lebih perlawanan ini, termasuk kartu yang akan kamu beri [gold]Infusi[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Adikarya",
   "ALCHEMIST-MIX.description": "Kartu berbiaya [blue]0[/blue] yang [gold]Hangus[/gold].",
   "ALCHEMIST-MIX.title": "Campuran",
-  "ALCHEMIST-STURDY_MIX.description": "Dapatkan [blue]6[/blue] [gold]Blok[/gold].",
+  "ALCHEMIST-STURDY_MIX.description": "Dapatkan [blue]5[/blue] [gold]Blok[/gold].",
   "ALCHEMIST-STURDY_MIX.title": "Campuran Kokoh",
   "ALCHEMIST-ZESTY_MIX.description": "Ambil [blue]1[/blue] kartu. Dapatkan [blue]3[/blue] [gold]Antitoksin[/gold].",
   "ALCHEMIST-ZESTY_MIX.title": "Campuran Segar"

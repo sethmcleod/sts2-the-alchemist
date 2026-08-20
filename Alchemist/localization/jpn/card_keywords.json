@@ -7,5 +7,5 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "[gold]注入[/gold]するカードを好きな数だけ選択。",
   "ALCHEMIST-INFUSE.selectionPromptRange": "[gold]注入[/gold]するカードを最大[blue]{MaxCount}[/blue]{MaxCount:plural:枚|枚}選択。",
   "ALCHEMIST-INFUSE.title": "注入",
-  "ALCHEMIST-MIX.selectionPrompt": "作成する[gold]合剤[/gold]を1枚選択。"
+  "ALCHEMIST-MIX.selectionPrompt": "[gold]手札[/gold]に加える[gold]合剤[/gold]を1枚選択。"
 }

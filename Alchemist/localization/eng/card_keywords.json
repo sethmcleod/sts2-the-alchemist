@@ -3,7 +3,7 @@
   "ALCHEMIST-FERMENT.selectionPrompt": "Choose a card to [gold]Ferment[/gold].",
   "ALCHEMIST-FERMENT.title": "Ferment",
   "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks become [purple]Laced[/purple]; Skills become [purple]Dosed[/purple]; Powers become [purple]Fortified[/purple]. Other cards gain [gold]Ethereal[/gold].",
-  "ALCHEMIST-MIX.selectionPrompt": "Choose a [gold]Mix[/gold] to create.",
+  "ALCHEMIST-MIX.selectionPrompt": "Choose a [gold]Mix[/gold] to add into your [gold]Hand[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Choose any number of cards to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Choose up to [blue]{MaxCount}[/blue] {MaxCount:plural:card|cards} to [gold]Infuse[/gold].",

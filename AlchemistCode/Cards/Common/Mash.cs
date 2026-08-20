@@ -10,7 +10,7 @@ public class Mash : AlchemistCard
 {
     public Mash() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(4, 2);
+        WithDamage(5, 3);
         WithTips(_ => Mixing.MixTips());
     }
 

@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-DOSED.description": "When this Skill is played, gain [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-DOSED.title": "Dosed",
-  "ALCHEMIST-FORTIFIED.description": "When this Power is played, increase your [gold]Antitoxin[/gold] limit by [blue]{Amount}[/blue].",
+  "ALCHEMIST-FORTIFIED.description": "When this Power is played: whenever you gain [gold]Poison[/gold], gain [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-FORTIFIED.title": "Fortified",
   "ALCHEMIST-LACED.description": "This Attack deals additional damage equal to your [gold]Poison[/gold].",
   "ALCHEMIST-LACED.title": "Laced"
