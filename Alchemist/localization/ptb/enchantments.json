@@ -3,6 +3,6 @@
   "ALCHEMIST-DOSED.title": "Dosada",
   "ALCHEMIST-FORTIFIED.description": "Quando este Poder for jogado, aumente o seu limite de [gold]Antitoxina[/gold] em [blue]{Amount}[/blue].",
   "ALCHEMIST-FORTIFIED.title": "Fortificado",
-  "ALCHEMIST-LACED.description": "Sempre que este Ataque causar dano não bloqueado, aplique [blue]{Amount}[/blue] de [gold]Veneno[/gold].",
+  "ALCHEMIST-LACED.description": "Este Ataque causa dano adicional equivalente ao seu [gold]Veneno[/gold].",
   "ALCHEMIST-LACED.title": "Impregnada"
 }

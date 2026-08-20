@@ -3,6 +3,6 @@
   "ALCHEMIST-DOSED.title": "Dosiert",
   "ALCHEMIST-FORTIFIED.description": "Wenn diese Macht gespielt wird, erhöhe dein [gold]Antitoxin[/gold]-Limit um [blue]{Amount}[/blue].",
   "ALCHEMIST-FORTIFIED.title": "Gefestigt",
-  "ALCHEMIST-LACED.description": "Immer wenn dieser Angriff ungeblockten Schaden zufügt, wende [blue]{Amount}[/blue] [gold]Gift[/gold] an.",
+  "ALCHEMIST-LACED.description": "Dieser Angriff fügt zusätzlichen Schaden in Höhe deines [gold]Gifts[/gold] zu.",
   "ALCHEMIST-LACED.title": "Versetzt"
 }

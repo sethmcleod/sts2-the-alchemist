@@ -43,7 +43,7 @@ public partial class Alchemist : PlaceholderCharacterModel
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<Jab>(),
-        ModelDb.Card<Antidote>()
+        ModelDb.Card<Dose>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

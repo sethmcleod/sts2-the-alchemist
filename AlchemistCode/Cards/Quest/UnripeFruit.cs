@@ -8,8 +8,6 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace Alchemist.AlchemistCode.Cards.Quest;
 
-// Ripens into a Golden Fruit, the same pattern as the base game's Dowsing and Guilty. QuestCardPool keeps
-// it out of the Alchemist card list and files it under Quest, as it does for those
 [Pool(typeof(QuestCardPool))]
 [CardTheme(CardTheme.None)]
 public class UnripeFruit : AlchemistCard
@@ -25,7 +23,6 @@ public class UnripeFruit : AlchemistCard
     {
         WithVar("combats", MaxCombats);
         WithKeyword(CardKeyword.Unplayable);
-        // Show what this ripens into, so the wait reads as a payoff and not as a dead card
         WithTip(typeof(GoldenFruit));
     }
 

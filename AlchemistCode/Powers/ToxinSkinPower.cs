@@ -7,6 +7,8 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
+using System;
+
 namespace Alchemist.AlchemistCode.Powers;
 
 public class ToxinSkinPower : AlchemistPower
@@ -25,7 +27,10 @@ public class ToxinSkinPower : AlchemistPower
         if (dealer is not { IsAlive: true, IsPlayer: false } attacker) return;
         if (!props.HasFlag(ValueProp.Move)) return;
 
+        var transfer = Math.Min(Amount, Owner.GetPowerAmount<PoisonPower>());
+        if (transfer <= 0) return;
         Flash();
-        await PowerCmd.Apply<PoisonPower>(choiceContext, attacker, Amount, Owner, null);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner, -transfer, Owner, null);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, attacker, transfer, Owner, null);
     }
 }

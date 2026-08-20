@@ -142,6 +142,15 @@ public static class AntitoxinBarPatches
             // combat is still on screen. Hold the last in-combat value instead of blanking the bar
             var inCombat = CombatManager.Instance?.IsInProgress ?? false;
             var live = creature.GetPowerAmount<AntitoxinPower>();
+            // A gain gets a quiet pulse on the bar, softer than the splash an absorb makes
+            if (inCombat && live > parts.LastKnown && GodotObject.IsInstanceValid(parts.Foreground))
+            {
+                var fg = parts.Foreground;
+                var tween = fg.CreateTween();
+                tween.TweenProperty(fg, "modulate", new Color(1.6f, 1.5f, 1.9f), 0.08);
+                tween.TweenProperty(fg, "modulate", Colors.White, 0.45)
+                    .SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Sine);
+            }
             if (inCombat) parts.LastKnown = live;
 
             var hp = __instance.HpBarContainer;
@@ -237,6 +246,44 @@ public static class AntitoxinBarPatches
                 extra = parts.Root.Size.Y + Gap;
 
             hitbox.Size = new Vector2(hitbox.Size.X, baseHeight + extra);
+
+            // The nameplate sits under the HP bar, exactly where the Antitoxin bar now is, so on hover the
+            // name printed over the purple. Move it below the bar. Same cache-and-recompute as the hitbox
+            if (NameplateRef(__instance) is not { } nameplate) return;
+            if (!NameplateBaseY.TryGetValue(nameplate, out var cachedY))
+            {
+                cachedY = nameplate.Position.Y;
+                NameplateBaseY.Add(nameplate, cachedY);
+            }
+            nameplate.Position = new Vector2(nameplate.Position.X, (float)cachedY + extra);
+        }
+    }
+
+    private static readonly AccessTools.FieldRef<NCreatureStateDisplay, Control> NameplateRef =
+        AccessTools.FieldRefAccess<NCreatureStateDisplay, Control>("_nameplateContainer");
+
+    private static readonly ConditionalWeakTable<Control, object> NameplateBaseY = new();
+
+    // Hovering the bars fades the HP number so the bar underneath can be read. The Antitoxin number
+    // is drawn the same way, so it follows the same fade
+    [HarmonyPatch(typeof(NHealthBar), nameof(NHealthBar.FadeOutHpLabel))]
+    public static class FadeOutAntitoxinLabel
+    {
+        public static void Postfix(NHealthBar __instance, float duration, float finalAlpha)
+        {
+            if (!Bars.TryGetValue(__instance, out var parts) || !GodotObject.IsInstanceValid(parts.Text)) return;
+            parts.Text.CreateTween().TweenProperty(parts.Text, "modulate:a", finalAlpha, duration)
+                .SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
+        }
+    }
+
+    [HarmonyPatch(typeof(NHealthBar), nameof(NHealthBar.FadeInHpLabel))]
+    public static class FadeInAntitoxinLabel
+    {
+        public static void Postfix(NHealthBar __instance, float duration)
+        {
+            if (!Bars.TryGetValue(__instance, out var parts) || !GodotObject.IsInstanceValid(parts.Text)) return;
+            parts.Text.CreateTween().TweenProperty(parts.Text, "modulate:a", 1f, duration);
         }
     }
 }

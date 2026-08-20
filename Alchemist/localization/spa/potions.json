@@ -5,16 +5,18 @@
   "ALCHEMIST-ANODYNE.title": "Analgésico",
   "ALCHEMIST-DECOCTION.description": "Roba [blue]3[/blue] cartas. Cuestan 0 {energyPrefix:energyIcons(1)} durante este turno.",
   "ALCHEMIST-DECOCTION.title": "Decocción",
-  "ALCHEMIST-GOLD_LEAF.description": "Cúrate [green]1[/green] PV y gana [blue]1[/blue] de [gold]Bloqueo[/gold] por cada [blue]15[/blue] de [gold]Oro[/gold] que tengas.{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.description": "Gana [blue]1[/blue] de [gold]Bloqueo[/gold] y [blue]1[/blue] de [gold]Antitoxina[/gold] por cada [blue]15[/blue] de [gold]Oro[/gold] que tengas.{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Pan de oro",
   "ALCHEMIST-MARSH_TONIC.description": "Gana [blue]6[/blue] de [gold]Antitoxina[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Tónico del pantano",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Activa el [gold]Veneno[/gold] de un enemigo [blue]3[/blue] veces.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Trago de azogue",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Añade [blue]2[/blue] [gold]Destilados[/gold] a tu [gold]Mano[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Elige [blue]2[/blue] [gold]Mezclas[/gold] que crear.",
   "ALCHEMIST-REFINED_EXTRACT.title": "Extracto refinado",
   "ALCHEMIST-SAMPLER.description": "Gana {energyPrefix:energyIcons(1)} y roba [blue]1[/blue] carta por cada [gold]Poción[/gold] que tengas, incluida esta.",
   "ALCHEMIST-SAMPLER.title": "Muestrario",
-  "ALCHEMIST-SOLVENT.description": "Elimina todo el [gold]Bloqueo[/gold] del enemigo. Aplícale [blue]3[/blue] de [gold]Debilidad[/gold].",
-  "ALCHEMIST-SOLVENT.title": "Disolvente"
+  "ALCHEMIST-SOLVENT.description": "Elimina todos los [gold]Artefactos[/gold] y el [gold]Bloqueo[/gold] del enemigo. Aplícale [blue]3[/blue] de [gold]Debilidad[/gold].",
+  "ALCHEMIST-SOLVENT.title": "Disolvente",
+  "ALCHEMIST-STARTER_CULTURE.description": "[gold]Activa[/gold] TODAS las cartas con [gold]Fermentar[/gold] de tu [gold]Mano[/gold] [blue]3[/blue] veces.",
+  "ALCHEMIST-STARTER_CULTURE.title": "Cultivo madre"
 }

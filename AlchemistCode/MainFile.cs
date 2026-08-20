@@ -59,6 +59,7 @@ public partial class MainFile : Node
         try
         {
             Badges.PotionSaleCounter.Register();
+            Analytics.RunCounters.Register();
         }
         catch (System.Exception e)
         {

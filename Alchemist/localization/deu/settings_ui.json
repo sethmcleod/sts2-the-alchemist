@@ -1,5 +1,8 @@
 {
   "ALCHEMIST-ACCESSIBILITY.title": "Barrierefreiheit",
+  "ALCHEMIST-ANALYTICS.title": "Analysen",
+  "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "Sendet anonyme Ergebnisse deiner Alchemisten-Runs (Deck, Relikte, Kartenwahl, erreichte Etage), um den Charakter auszubalancieren. Gilt nur, wenn die spieleigene Einstellung „Daten hochladen“ aktiv ist. Enthält nie deinen Namen oder deine Steam-ID.",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "Run-Analysen teilen",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "Die Farbe des Antitoxin-Balkens unter deinem Lebensbalken. Das grüne Segment für eingehendes Gift bleibt davon unberührt.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Farbe des Antitoxin-Balkens",
   "ALCHEMIST-COMPATIBILITY.title": "Kompatibilität",
@@ -18,5 +21,9 @@
   "ALCHEMIST-UNLOCKS.title": "Freischaltungen",
   "ALCHEMIST-UNLOCK_ALL.title": "Alle Karten, Relikte, Tränke und Epochen des Alchemisten freischalten",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Alles freischalten",
+  "ALCHEMIST-WORKSHOP_UPDATE.body": "Eine neuere Version von The Alchemist wurde aus dem Steam Workshop heruntergeladen.\nStarte das Spiel neu, um die neue Version zu laden.",
+  "ALCHEMIST-WORKSHOP_UPDATE.header": "The Alchemist aktualisiert",
+  "ALCHEMIST-WORKSHOP_UPDATE.later": "Später",
+  "ALCHEMIST-WORKSHOP_UPDATE.quit": "Jetzt beenden",
   "ALCHEMIST.mod_title": "Der Alchemist"
 }

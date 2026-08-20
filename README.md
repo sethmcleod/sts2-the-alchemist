@@ -4,7 +4,7 @@
 
 - ✨ 90+ new cards
 - 💎 9 new relics
-- 🧪 9 new potions
+- 🧪 10 new potions
 - 📚 7 timeline epochs
 - 🎨 Handmade art and animation _(WIP)_
 - 🌍 Translated into 15 languages
@@ -12,19 +12,24 @@
 
 ## Playstyle
 
-- **Antitoxin**: A reserve that absorbs the damage Poison would deal to you, and
-  cures that much Poison in the process. It persists across turns, up to a limit.
-- **Absorbing Pays Off**: Taking Poison damage is not just a cost. Several cards
-  reward it, turning the Poison you absorb into Strength, Block, Energy or damage.
+- **Self-Poison**: The Alchemist doses themselves on purpose. Many attacks deal
+  additional damage based on your Poison, so the dose is power for as long as
+  you carry it.
+- **Antitoxin**: A reserve that absorbs the damage your Poison would deal, up
+  to a limit. It persists across turns, so you can bank it before you dose.
+  What it cannot cover comes out of your HP.
+- **Mix**: These are tokens you can create in combat, and you can often choose
+  which one: Bursting (damage), Fuming (Weak and Vulnerable), Sturdy (Block)
+  and Zesty (Draw and Antitoxin).
 - **Infuse**: Infusing a card Enchants it for the rest of combat based on its
-  type. Attacks apply Poison, Skills generate Antitoxin, Powers give Strength,
-  and other cards gain Ethereal.
-- **Ferment**: These effects grow in potency for every turn the card stays in
-  your hand. Playing the card transforms it into a Toxic.
-- **Brew**: This Rest Site option allows you to procure one of 6 unique potions
-  that can only be obtained this way.
-- **Sell Potions**: Due to the quality of these brews, the Merchant is willing
-  to buy them from you for Gold.
+  type. Attacks deal extra damage equal to your Poison, Skills generate
+  Antitoxin, Powers increase your Antitoxin limit, and other cards gain
+  Ethereal.
+- **Ferment**: These cards grow in potency for every turn they stay in your
+  hand. Playing one adds a Residue to your Discard Pile.
+- **Brew**: This Rest Site option allows you to procure one of 7 unique potions
+  that can only be obtained this way. Due to the quality of these brews, the
+  Merchant is willing to buy them from you for Gold.
 
 ## Disclaimer
 
@@ -35,9 +40,9 @@ character's story is woven directly into the game's existing timeline, and
 observant players will find more than a few threads connecting them to the
 world.
 
-This mod is still in it's early stages and content is subject to change, but
-feedback is welcome! The best place to discuss the mod is official Slay the Spire
-Discord server in the #modding-forum.
+This mod is still a work in progress and content is subject to change, but
+feedback is welcome! The best place to discuss the mod is official Slay the
+Spire Discord server in the #modding-forum.
 
 ## Credits
 

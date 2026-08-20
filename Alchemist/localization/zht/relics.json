@@ -1,11 +1,11 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "在你的回合開始時，[gold]浸潤[/gold]你[gold]手牌[/gold]中的一張隨機牌。",
+  "ALCHEMIST-AURIC_SEAL.description": "你每回合抽到的第一張牌會被[gold]浸潤[/gold]；若無法浸潤，則給予 [blue]2[/blue] 點[gold]抗毒素[/gold]。",
   "ALCHEMIST-AURIC_SEAL.flavor": "它對哪一頁重要有自己的看法。",
   "ALCHEMIST-AURIC_SEAL.title": "黃金封印",
-  "ALCHEMIST-EVERFLOWING_CHALICE.description": "每場戰鬥開始時，取得一瓶隨機[gold]藥水[/gold]。若你的藥水欄位已滿，則改為獲得 {Energy:energyIcons()}。",
+  "ALCHEMIST-EVERFLOWING_CHALICE.description": "每場戰鬥開始時，選擇一種[gold]混劑[/gold]來創造。",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "無論倒出多少，它始終不會見底。",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "永湧聖杯",
-  "ALCHEMIST-GILDED_KIT.description": "每場戰鬥開始時，獲得 [blue]8[/blue] 點[gold]抗毒素[/gold]，並將一張[gold]蒸餾液+[/gold]加入你的[gold]手牌[/gold]。你可以在休息處[gold]釀造[/gold]。",
+  "ALCHEMIST-GILDED_KIT.description": "你可以在休息處[gold]釀造[/gold]，並獲得 [blue]1[/blue] 個額外的藥水欄位。",
   "ALCHEMIST-GILDED_KIT.flavor": "一只華麗的箱子。上頭的金子不是拿來炫耀的。",
   "ALCHEMIST-GILDED_KIT.title": "鎏金藥箱",
   "ALCHEMIST-GLOWING_SHARD.description": "每當你獲得[gold]中毒[/gold]時，對一名隨機敵人施加 [blue]1[/blue] 層[gold]中毒[/gold]。",
@@ -14,7 +14,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "拾取時，將 [blue]1[/blue] 張[gold]未熟果實[/gold]加入你的[gold]牌組[/gold]。",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "邁達斯選得不好，但他種得很好。",
   "ALCHEMIST-MIDAS_FRUIT.title": "邁達斯之果",
-  "ALCHEMIST-SECOND_SKIN.description": "每當你受到[gold]中毒[/gold]傷害時，獲得 [blue]2[/blue] 點[gold]格擋[/gold]。",
+  "ALCHEMIST-SECOND_SKIN.description": "每當你的[gold]中毒[/gold]觸發時，獲得 [blue]2[/blue] 點[gold]格擋[/gold]。",
   "ALCHEMIST-SECOND_SKIN.flavor": "穿透第一層的東西，還得跟這一層講道理。",
   "ALCHEMIST-SECOND_SKIN.title": "第二層皮",
   "ALCHEMIST-SNAKE_TAIL.description": "你的[gold]抗毒素[/gold]上限提高 [blue]6[/blue] 點。",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "每當你獲得[gold]中毒[/gold]時，獲得 [blue]1[/blue] 點[gold]抗毒素[/gold]。",
   "ALCHEMIST-SPARE_DOSE.flavor": "一份量好的藥劑，總在伸手可及之處。",
   "ALCHEMIST-SPARE_DOSE.title": "備用藥劑",
-  "ALCHEMIST-WEATHERED_KIT.description": "每場戰鬥開始時，獲得 [blue]4[/blue] 點[gold]抗毒素[/gold]，並將一張[gold]蒸餾液[/gold]加入你的[gold]手牌[/gold]。你可以在休息處[gold]釀造[/gold]。",
+  "ALCHEMIST-WEATHERED_KIT.description": "每場戰鬥開始時，獲得 [blue]1[/blue] 層[gold]中毒[/gold]和 [blue]8[/blue] 點[gold]抗毒素[/gold]。你可以在休息處[gold]釀造[/gold]。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "一只用得很舊、氣味宜人的箱子。",
   "ALCHEMIST-WEATHERED_KIT.title": "風霜藥箱"
 }

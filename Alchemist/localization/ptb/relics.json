@@ -1,11 +1,11 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "No início do seu turno, [gold]Infunda[/gold] uma carta aleatória na sua [gold]Mão[/gold].",
+  "ALCHEMIST-AURIC_SEAL.description": "A primeira carta que você compra a cada turno é [gold]Infundida[/gold] ou concede [blue]2[/blue] de [gold]Antitoxina[/gold] se não for possível.",
   "ALCHEMIST-AURIC_SEAL.flavor": "Ele tem opiniões sobre qual página importa.",
   "ALCHEMIST-AURIC_SEAL.title": "Selo Áurico",
-  "ALCHEMIST-EVERFLOWING_CHALICE.description": "No início de cada combate, receba uma [gold]Poção[/gold] aleatória. Se os seus espaços de poção estiverem cheios, receba {Energy:energyIcons()} em vez disso.",
+  "ALCHEMIST-EVERFLOWING_CHALICE.description": "No início de cada combate, escolha uma [gold]Mistura[/gold] para criar.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Por mais que você sirva, ele nunca seca de verdade.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Cálice Inesgotável",
-  "ALCHEMIST-GILDED_KIT.description": "No início de cada combate, receba [blue]8[/blue] de [gold]Antitoxina[/gold] e adicione um [gold]Destilado+[/gold] na sua [gold]Mão[/gold]. Você pode [gold]Preparar[/gold] em Locais de Descanso.",
+  "ALCHEMIST-GILDED_KIT.description": "Você pode [gold]Preparar[/gold] em Locais de Descanso e recebe [blue]1[/blue] espaço de poção extra.",
   "ALCHEMIST-GILDED_KIT.flavor": "Um estojo ornamentado. O ouro não é só enfeite.",
   "ALCHEMIST-GILDED_KIT.title": "Estojo Dourado",
   "ALCHEMIST-GLOWING_SHARD.description": "Sempre que você receber [gold]Veneno[/gold], aplique [blue]1[/blue] de [gold]Veneno[/gold] a um inimigo aleatório.",
@@ -14,7 +14,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "Ao ser obtida, adicione [blue]1[/blue] [gold]Fruta Verde[/gold] ao seu [gold]Baralho[/gold].",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "Midas escolheu mal, mas plantou bem.",
   "ALCHEMIST-MIDAS_FRUIT.title": "Fruta de Midas",
-  "ALCHEMIST-SECOND_SKIN.description": "Sempre que você sofrer dano de [gold]Veneno[/gold], receba [blue]2[/blue] de [gold]Proteção[/gold].",
+  "ALCHEMIST-SECOND_SKIN.description": "Sempre que o seu [gold]Veneno[/gold] for ativado, receba [blue]2[/blue] de [gold]Proteção[/gold].",
   "ALCHEMIST-SECOND_SKIN.flavor": "O que passa pela primeira ainda discute com esta.",
   "ALCHEMIST-SECOND_SKIN.title": "Segunda Pele",
   "ALCHEMIST-SNAKE_TAIL.description": "Seu limite de [gold]Antitoxina[/gold] é aumentado em [blue]6[/blue].",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Sempre que você receber [gold]Veneno[/gold], receba [blue]1[/blue] de [gold]Antitoxina[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Uma dose medida, sempre ao alcance da mão.",
   "ALCHEMIST-SPARE_DOSE.title": "Dose de Reserva",
-  "ALCHEMIST-WEATHERED_KIT.description": "No início de cada combate, receba [blue]4[/blue] de [gold]Antitoxina[/gold] e adicione um [gold]Destilado[/gold] na sua [gold]Mão[/gold]. Você pode [gold]Preparar[/gold] em Locais de Descanso.",
+  "ALCHEMIST-WEATHERED_KIT.description": "No início de cada combate, receba [blue]1[/blue] de [gold]Veneno[/gold] e [blue]8[/blue] de [gold]Antitoxina[/gold]. Você pode [gold]Preparar[/gold] em Locais de Descanso.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Um estojo bem gasto e de cheiro agradável.",
   "ALCHEMIST-WEATHERED_KIT.title": "Estojo Gasto"
 }

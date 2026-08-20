@@ -10,9 +10,10 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Poison)]
 public class Callus : AlchemistCard
 {
-    public Callus() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Callus() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Amount", 1, 1);
+        WithCostUpgradeBy(-1);
+        WithVar("Amount", 1, 0);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(StrengthPower));
     }

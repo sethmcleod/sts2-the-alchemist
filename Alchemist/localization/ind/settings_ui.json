@@ -1,5 +1,8 @@
 {
   "ALCHEMIST-ACCESSIBILITY.title": "Aksesibilitas",
+  "ALCHEMIST-ANALYTICS.title": "Analitik",
+  "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "Mengirim hasil permainan Alchemist secara anonim (dek, relik, pilihan kartu, lantai tercapai) untuk membantu menyeimbangkan karakter. Hanya berlaku jika pengaturan Unggah Data milik game sendiri aktif. Tidak pernah menyertakan nama atau ID Steam-mu.",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "Bagikan Analitik Permainan",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "Warna bilah Antitoksin di bawah bilah HP kamu. Bagian hijau yang menunjukkan Racun yang akan masuk tidak terpengaruh.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Warna Bilah Antitoksin",
   "ALCHEMIST-COMPATIBILITY.title": "Kompatibilitas",
@@ -18,5 +21,9 @@
   "ALCHEMIST-UNLOCKS.title": "Konten Terbuka",
   "ALCHEMIST-UNLOCK_ALL.title": "Buka Semua Kartu, Pusaka, Ramuan, dan Zaman Alkemis",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "Buka Semua",
+  "ALCHEMIST-WORKSHOP_UPDATE.body": "Versi The Alchemist yang lebih baru telah diunduh dari Steam Workshop.\nMulai ulang game untuk memuat versi baru.",
+  "ALCHEMIST-WORKSHOP_UPDATE.header": "The Alchemist Diperbarui",
+  "ALCHEMIST-WORKSHOP_UPDATE.later": "Nanti",
+  "ALCHEMIST-WORKSHOP_UPDATE.quit": "Keluar Sekarang",
   "ALCHEMIST.mod_title": "Si Alkemis"
 }

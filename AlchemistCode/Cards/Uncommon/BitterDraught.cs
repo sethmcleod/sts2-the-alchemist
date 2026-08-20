@@ -22,8 +22,6 @@ public class BitterDraught : AlchemistCard
     {
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
         await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);
-        // After the gain, so the tick is the whole stack. It carries the real Poison tick shape, so
-        // Antitoxin absorbs it and every absorb payoff fires
         await PoisonTrigger.Once(choiceContext, Owner.Creature);
     }
 }

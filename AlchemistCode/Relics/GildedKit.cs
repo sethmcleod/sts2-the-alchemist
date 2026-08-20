@@ -5,10 +5,14 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Entities.RestSite;
-using Alchemist.AlchemistCode.Cards.Token;
-using Alchemist.AlchemistCode.Commands;
 using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Models.RelicPools;
+
+using MegaCrit.Sts2.Core.Entities.Creatures;
+
+using MegaCrit.Sts2.Core.Models;
+
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
@@ -17,19 +21,17 @@ namespace Alchemist.AlchemistCode.Relics;
 [Pool(typeof(EventRelicPool))]
 public class GildedKit : AlchemistRelic
 {
-    private const int Antitoxin = 8;
+    private const int PotionSlots = 1;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { AlchemistTips.Brew, HoverTipFactory.FromPower<AntitoxinPower>() };
+    public override bool HasUponPickupEffect => true;
 
-    public override async Task BeforeCombatStart()
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new[] { AlchemistTips.Brew };
+
+    public override async Task AfterObtained()
     {
-        Flash();
-        await PowerCmd.Apply<AntitoxinPower>(new ThrowingPlayerChoiceContext(), Owner.Creature,
-            Antitoxin, Owner.Creature, null);
-        await AlchemistCardCmd.GiveCardTo<Distillate>(Owner, upgraded: true);
+        await PlayerCmd.GainMaxPotionCount(PotionSlots, Owner);
     }
 
     public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)

@@ -15,6 +15,7 @@ public class Gulp : AlchemistCard
     {
         WithVar("poison", 3, 0);
         WithCards(2, 1);
+        WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
     }
 

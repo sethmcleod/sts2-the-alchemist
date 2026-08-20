@@ -12,11 +12,10 @@ public class PatientStrike : AlchemistCard
 
     public PatientStrike() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(6, static (card, _) =>
-                (card.IsUpgraded ? 9m : 6m) * ((AlchemistCard)card).FermentTurns,
-            ValueProp.Move, 0, 0);
+        WithCalculatedDamage(7, static (card, _) =>
+                (card.IsUpgraded ? 8m : 6m) * ((AlchemistCard)card).FermentTurns,
+            ValueProp.Move, 2, 0);
         WithKeyword(CardKeyword.Retain);
-        // A "Strike" card, so base-game strike synergies such as Perfected Strike count it
         WithTags(CardTag.Strike);
     }
 

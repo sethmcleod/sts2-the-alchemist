@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
+using Alchemist.AlchemistCode.Powers;
+
 namespace Alchemist.AlchemistCode.Cards.Common;
 
 [CardTheme(CardTheme.Infuse)]
@@ -13,15 +15,20 @@ public class Siphon : AlchemistCard
     {
         WithDamage(7, 3);
         WithCards(1, 0);
+        WithVar("antitoxin", 3, 0);
         WithTips(_ => Infusion.InfuseTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
-        // Infusing what it just drew keeps this distinct from Next Up, which infuses a chosen card,
-        // and it needs no selection screen, which suits a Common
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
         foreach (var drawn in await CommonActions.Draw(this, choiceContext))
-            Infusion.Infuse(drawn);
+        {
+            if (Infusion.CanInfuse(drawn))
+                Infusion.Infuse(drawn);
+            else
+                await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
+                    DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
+        }
     }
 }

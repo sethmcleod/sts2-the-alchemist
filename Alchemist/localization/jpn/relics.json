@@ -1,11 +1,11 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "ターン開始時、[gold]手札[/gold]にあるランダムなカード1枚に[gold]注入[/gold]する。",
+  "ALCHEMIST-AURIC_SEAL.description": "毎ターン最初に引いたカードに[gold]注入[/gold]する。できない場合、[gold]抗毒素[/gold][blue]2[/blue]を得る。",
   "ALCHEMIST-AURIC_SEAL.flavor": "どのページが重要かについて、この印章には持論がある。",
   "ALCHEMIST-AURIC_SEAL.title": "黄金の封印",
-  "ALCHEMIST-EVERFLOWING_CHALICE.description": "戦闘開始時、ランダムな[gold]ポーション[/gold]を1つ入手する。ポーションスロットが満杯の場合、代わりに{Energy:energyIcons()}を得る。",
+  "ALCHEMIST-EVERFLOWING_CHALICE.description": "各戦闘の開始時、[gold]合剤[/gold]を1枚選んで作成する。",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "どれだけ注いでも、決して尽きることがない。",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "尽きせぬ聖杯",
-  "ALCHEMIST-GILDED_KIT.description": "各戦闘の開始時、[gold]抗毒素[/gold][blue]8[/blue]を得て、[gold]蒸留液+[/gold]を1枚[gold]手札[/gold]に加える。休憩所で[gold]調合[/gold]できる。",
+  "ALCHEMIST-GILDED_KIT.description": "休憩所で[gold]調合[/gold]でき、ポーションスロットが[blue]1[/blue]つ増加する。",
   "ALCHEMIST-GILDED_KIT.flavor": "装飾を凝らした道具箱。その金は飾りではない。",
   "ALCHEMIST-GILDED_KIT.title": "金張りの道具箱",
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]毒[/gold]を得るたび、ランダムな敵1体に[gold]毒[/gold][blue]1[/blue]を付与する。",
@@ -14,7 +14,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "取得時、[gold]未熟な果実[/gold]を[blue]1[/blue]枚[gold]デッキ[/gold]に追加する。",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "ミダスの選択は誤りだったが、種の蒔き方は正しかった。",
   "ALCHEMIST-MIDAS_FRUIT.title": "ミダスの果実",
-  "ALCHEMIST-SECOND_SKIN.description": "[gold]毒[/gold]によるダメージを受けるたび、[blue]2[/blue][gold]ブロック[/gold]を得る。",
+  "ALCHEMIST-SECOND_SKIN.description": "自身の[gold]毒[/gold]が発動するたび、[blue]2[/blue][gold]ブロック[/gold]を得る。",
   "ALCHEMIST-SECOND_SKIN.flavor": "一枚目をすり抜けたものにも、まだこいつが待っている。",
   "ALCHEMIST-SECOND_SKIN.title": "第二の皮膚",
   "ALCHEMIST-SNAKE_TAIL.description": "[gold]抗毒素[/gold]の上限が[blue]6[/blue]増加する。",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "[gold]毒[/gold]を得るたび、[gold]抗毒素[/gold][blue]1[/blue]を得る。",
   "ALCHEMIST-SPARE_DOSE.flavor": "きっちり量った一服が、いつでも手の届くところに。",
   "ALCHEMIST-SPARE_DOSE.title": "予備の一服",
-  "ALCHEMIST-WEATHERED_KIT.description": "各戦闘の開始時、[gold]抗毒素[/gold][blue]4[/blue]を得て、[gold]蒸留液[/gold]を1枚[gold]手札[/gold]に加える。休憩所で[gold]調合[/gold]できる。",
+  "ALCHEMIST-WEATHERED_KIT.description": "各戦闘の開始時、[gold]毒[/gold][blue]1[/blue]と[gold]抗毒素[/gold][blue]8[/blue]を得る。休憩所で[gold]調合[/gold]できる。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "使い込まれ、心地よい香りのする道具箱。",
   "ALCHEMIST-WEATHERED_KIT.title": "使い込まれた道具箱"
 }

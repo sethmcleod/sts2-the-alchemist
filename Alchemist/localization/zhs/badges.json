@@ -1,14 +1,14 @@
 {
-  "ALCHEMIST-BREW.bronzeDescription": "在[blue]3[/blue]个或更多休息处酿造过。",
-  "ALCHEMIST-BREW.bronzeTitle": "小批量",
-  "ALCHEMIST-BREW.goldDescription": "在[blue]9[/blue]个或更多休息处酿造过。",
-  "ALCHEMIST-BREW.goldTitle": "蒸馏大师",
-  "ALCHEMIST-BREW.silverDescription": "在[blue]6[/blue]个或更多休息处酿造过。",
-  "ALCHEMIST-BREW.silverTitle": "储备充足",
-  "ALCHEMIST-POTION_SALE.bronzeDescription": "向商人出售过[blue]3[/blue]瓶或更多药水。",
+  "ALCHEMIST-MIXES.bronzeDescription": "生成过[blue]10[/blue]张或更多[gold]合剂[/gold]。",
+  "ALCHEMIST-MIXES.bronzeTitle": "粗糙调剂",
+  "ALCHEMIST-MIXES.goldDescription": "生成过[blue]30[/blue]张或更多[gold]合剂[/gold]。",
+  "ALCHEMIST-MIXES.goldTitle": "调剂大师",
+  "ALCHEMIST-MIXES.silverDescription": "生成过[blue]20[/blue]张或更多[gold]合剂[/gold]。",
+  "ALCHEMIST-MIXES.silverTitle": "均衡配方",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "向商人出售过[blue]2[/blue]瓶或更多药水。",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "小贩",
-  "ALCHEMIST-POTION_SALE.goldDescription": "向商人出售过[blue]9[/blue]瓶或更多药水。",
+  "ALCHEMIST-POTION_SALE.goldDescription": "向商人出售过[blue]6[/blue]瓶或更多药水。",
   "ALCHEMIST-POTION_SALE.goldTitle": "商人最爱",
-  "ALCHEMIST-POTION_SALE.silverDescription": "向商人出售过[blue]6[/blue]瓶或更多药水。",
+  "ALCHEMIST-POTION_SALE.silverDescription": "向商人出售过[blue]4[/blue]瓶或更多药水。",
   "ALCHEMIST-POTION_SALE.silverTitle": "贸易伙伴"
 }

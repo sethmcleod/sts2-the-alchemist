@@ -1,6 +1,16 @@
 {
-  "ALCHEMIST-BREW.description": "Cette option de Site de repos brasse l'une des [blue]6[/blue] [gold]Potions[/gold] que l'on ne peut obtenir autrement. Seules les [gold]Potions[/gold] brassées sont achetées par le [gold]Marchand[/gold].",
+  "ALCHEMIST-BREW.description": "Cette option de Site de repos brasse l'une des [blue]7[/blue] [gold]Potions[/gold] que l'on ne peut obtenir autrement. Seules les [gold]Potions[/gold] brassées sont achetées par le [gold]Marchand[/gold].",
   "ALCHEMIST-BREW.title": "Brassage",
+  "ALCHEMIST-BURSTING_MIX.description": "Infligez [blue]8[/blue] dégâts.",
+  "ALCHEMIST-BURSTING_MIX.title": "Mixture explosive",
+  "ALCHEMIST-FUMING_MIX.description": "Appliquez [blue]1[/blue] [gold]Affaibli[/gold] et [blue]1[/blue] [gold]Vulnérable[/gold].",
+  "ALCHEMIST-FUMING_MIX.title": "Mixture fumante",
   "ALCHEMIST-MASTERWORK.description": "Cette carte brille en [gold]doré[/gold] si vous avez [gold]Envoûté[/gold] 3 cartes ou plus pendant ce combat, en comptant celle que vous alliez [gold]Infuser[/gold].",
-  "ALCHEMIST-MASTERWORK.title": "Chef-d'œuvre"
+  "ALCHEMIST-MASTERWORK.title": "Chef-d'œuvre",
+  "ALCHEMIST-MIX.description": "Une carte coûtant [blue]0[/blue] qui [gold]s'épuise[/gold].",
+  "ALCHEMIST-MIX.title": "Mixture",
+  "ALCHEMIST-STURDY_MIX.description": "Gagnez [blue]6[/blue] d'[gold]Armure[/gold].",
+  "ALCHEMIST-STURDY_MIX.title": "Mixture robuste",
+  "ALCHEMIST-ZESTY_MIX.description": "Piochez [blue]1[/blue] carte. Gagnez [blue]3[/blue] d'[gold]Antitoxine[/gold].",
+  "ALCHEMIST-ZESTY_MIX.title": "Mixture vivifiante"
 }

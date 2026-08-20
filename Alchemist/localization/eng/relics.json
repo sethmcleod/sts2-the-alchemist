@@ -1,11 +1,11 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "At the start of your turn, [gold]Infuse[/gold] a random card in your [gold]Hand[/gold].",
+  "ALCHEMIST-AURIC_SEAL.description": "The first card you draw each turn is [gold]Infused[/gold], or grants [blue]2[/blue] [gold]Antitoxin[/gold] if it cannot be.",
   "ALCHEMIST-AURIC_SEAL.flavor": "It has opinions about which page matters.",
   "ALCHEMIST-AURIC_SEAL.title": "Auric Seal",
-  "ALCHEMIST-EVERFLOWING_CHALICE.description": "At the start of each combat, procure a random [gold]Potion[/gold]. If your potion slots are full, gain {Energy:energyIcons()} instead.",
+  "ALCHEMIST-EVERFLOWING_CHALICE.description": "At the start of each combat, choose a [gold]Mix[/gold] to create.",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "However much you pour, it never quite runs dry.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Everflowing Chalice",
-  "ALCHEMIST-GILDED_KIT.description": "At the start of each combat, gain [blue]8[/blue] [gold]Antitoxin[/gold] and add a [gold]Distillate+[/gold] into your [gold]Hand[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
+  "ALCHEMIST-GILDED_KIT.description": "You can [gold]Brew[/gold] at Rest Sites and gain [blue]1[/blue] extra potion slot.",
   "ALCHEMIST-GILDED_KIT.flavor": "An ornate case. The gold is not for show.",
   "ALCHEMIST-GILDED_KIT.title": "Gilded Kit",
   "ALCHEMIST-GLOWING_SHARD.description": "Whenever you gain [gold]Poison[/gold], apply [blue]1[/blue] [gold]Poison[/gold] to a random enemy.",
@@ -14,7 +14,7 @@
   "ALCHEMIST-MIDAS_FRUIT.description": "Upon pickup, add [blue]1[/blue] [gold]Unripe Fruit[/gold] to your [gold]Deck[/gold].",
   "ALCHEMIST-MIDAS_FRUIT.flavor": "Midas chose poorly, but he planted well.",
   "ALCHEMIST-MIDAS_FRUIT.title": "Midas Fruit",
-  "ALCHEMIST-SECOND_SKIN.description": "Whenever you take [gold]Poison[/gold] damage, gain [blue]2[/blue] [gold]Block[/gold].",
+  "ALCHEMIST-SECOND_SKIN.description": "Whenever your [gold]Poison[/gold] triggers, gain [blue]2[/blue] [gold]Block[/gold].",
   "ALCHEMIST-SECOND_SKIN.flavor": "What gets through the first one still has this to argue with.",
   "ALCHEMIST-SECOND_SKIN.title": "Second Skin",
   "ALCHEMIST-SNAKE_TAIL.description": "Your [gold]Antitoxin[/gold] limit is increased by [blue]6[/blue].",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Whenever you gain [gold]Poison[/gold], gain [blue]1[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "A measured dose, always within reach.",
   "ALCHEMIST-SPARE_DOSE.title": "Spare Dose",
-  "ALCHEMIST-WEATHERED_KIT.description": "At the start of each combat, gain [blue]4[/blue] [gold]Antitoxin[/gold] and add a [gold]Distillate[/gold] into your [gold]Hand[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
+  "ALCHEMIST-WEATHERED_KIT.description": "At the start of each combat, gain [blue]1[/blue] [gold]Poison[/gold] and [blue]8[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "A well worn and pleasantly smelling case.",
   "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit"
 }

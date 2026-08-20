@@ -51,7 +51,7 @@ public class Alchemist5Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST5_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Cards;
     protected override List<CardModel> Cards => new()
-        { ModelDb.Card<PuffUp>(), ModelDb.Card<RollingBoil>(), ModelDb.Card<AllAtOnce>() };
+        { ModelDb.Card<AllAtOnce>(), ModelDb.Card<WhiteHeat>(), ModelDb.Card<Spatter>() };
 }
 
 public class Alchemist6Epoch : AlchemistEpoch
@@ -59,7 +59,7 @@ public class Alchemist6Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST6_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Cards;
     protected override List<CardModel> Cards => new()
-        { ModelDb.Card<Froth>(), ModelDb.Card<Masterwork>(), ModelDb.Card<MercurialForm>() };
+        { ModelDb.Card<Ichor>(), ModelDb.Card<Miasma>(), ModelDb.Card<MercurialForm>() };
 }
 
 public class Alchemist7Epoch : AlchemistEpoch

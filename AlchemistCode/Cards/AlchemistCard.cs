@@ -20,6 +20,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -44,8 +45,8 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (IsFermentCard)
         {
             yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
-            // The keyword names Dregs as the byproduct, so show what one actually does
-            yield return HoverTipFactory.FromCard<Token.Dregs>();
+            // The keyword names Residue as the byproduct, so show what one actually does
+            yield return HoverTipFactory.FromCard<Token.Residue>();
         }
     }
 
@@ -96,6 +97,14 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         var vfx = NPoisonImpactVfx.Create(target);
         if (vfx != null) NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(vfx);
     }
+
+    // The dose a reader adds to its number. Zero on the canonical model, which has no Owner, so the
+    // compendium shows the base value and only the combat instance shows the live total. Every card
+    // that says "equal to your Poison" reads it here so the rule has one home
+    protected static decimal Dose(CardModel card) =>
+        card is AlchemistCard { IsMutable: true, Owner.Creature: { } creature }
+            ? creature.GetPowerAmount<PoisonPower>()
+            : 0m;
 
     // The raw total, before any hook. The card face shows the hooked total with {FormulaDamage}
     protected virtual int? RawFormulaDamagePreview => null;
@@ -160,21 +169,22 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         return Task.CompletedTask;
     }
 
-    // The dregs land in the Discard rather than the Hand, so they cannot bite on the turn you cash in
+    // The dregs land in the Discard rather than the Hand, so they cannot bite on the turn you cash in.
+    // The card itself follows: a Ferment card is reusable, and the Residue is the whole cost of the play
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Card != this) return;
+        // Replay plays the card again with the same CardPlay series, so the stack holds until the
+        // last play of the series or the replayed hits read a fermentation of zero
+        if (!cardPlay.IsLastInSeries) return;
         _fermentTurns = 0;
         if (!IsFermentCard || Owner == null || CombatState is not { } combat) return;
 
-        // Previewed, because the card leaving play and the Dregs appearing in the Discard are two
+        // Previewed, because the card leaving play and the Residue appearing in the Discard are two
         // separate events the player never sees happen
-        var dregs = combat.CreateCard<Token.Dregs>(Owner);
+        var dregs = combat.CreateCard<Token.Residue>(Owner);
         var added = await CardPileCmd.Add(dregs, PileType.Discard, CardPilePosition.Bottom);
         CardCmd.PreviewCardPileAdd([added]);
-
-        // How a Ferment card leaves combat differs per game branch, so it lives in Compat/
-        await RemoveFermentFromCombat(choiceContext);
     }
 
     // Covers the cards that were never played. Deck cards are the same instances each combat and all of
@@ -195,7 +205,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         }
         // These previews read Owner, which throws on a canonical model such as the card library
         description.Add("FormulaDamage",
-            IsMutable && FormulaDamagePreview is { } d ? $" ([green]{d}[/green])" : "");
+            IsMutable && FormulaDamagePreview is { } d ? $"\n(Deals [green]{d}[/green] damage)" : "");
         description.Add("FormulaHpLoss",
             IsMutable && FormulaHpLossPreview is { } hp ? $" ([red]{hp}[/red])" : "");
     }

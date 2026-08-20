@@ -11,7 +11,7 @@ public class Nightcap : AlchemistCard
     public Nightcap() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(14, 4);
-        WithPower<AntitoxinPower>(5, 1);
+        WithPower<AntitoxinPower>(7, 2);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

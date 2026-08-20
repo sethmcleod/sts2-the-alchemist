@@ -20,7 +20,6 @@ public class NeedlePoint : AlchemistCard
         WithTip(typeof(VulnerablePower));
     }
 
-    // Innate with no Retain, so it is played first or not at all. Its own play is already recorded
     private bool IsFirstPlayThisCombat =>
         CombatManager.Instance?.History.CardPlaysStarted.Count(e => e.CardPlay.Card.Owner == Owner) <= 1;
 

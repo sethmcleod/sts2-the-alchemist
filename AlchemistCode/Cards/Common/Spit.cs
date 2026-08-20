@@ -21,12 +21,12 @@ public class Spit : AlchemistCard
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
 
-        // The attack resolves first, so a Laced bonus is still priced off the full dose
         var dose = Math.Min(DynamicVars["Poison"].IntValue,
             Owner.Creature.GetPowerAmount<PoisonPower>());
-        if (dose <= 0 || play.Target is not { IsAlive: true } target) return;
+        if (dose <= 0) return;
 
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, -dose, Owner.Creature, this);
+        if (play.Target is not { IsAlive: true } target) return;
         PoisonSplash(target);
         await PowerCmd.Apply<PoisonPower>(choiceContext, target, dose, Owner.Creature, this);
     }

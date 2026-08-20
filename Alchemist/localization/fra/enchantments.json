@@ -3,6 +3,6 @@
   "ALCHEMIST-DOSED.title": "Dosé",
   "ALCHEMIST-FORTIFIED.description": "Lorsque ce Pouvoir est joué, augmentez votre limite d'[gold]Antitoxine[/gold] de [blue]{Amount}[/blue].",
   "ALCHEMIST-FORTIFIED.title": "Fortifié",
-  "ALCHEMIST-LACED.description": "Chaque fois que cette Attaque inflige des dégâts non bloqués, appliquez [blue]{Amount}[/blue] de [gold]Poison[/gold].",
+  "ALCHEMIST-LACED.description": "Cette Attaque inflige un montant de dégâts supplémentaires égal à votre [gold]Poison[/gold].",
   "ALCHEMIST-LACED.title": "Imprégné"
 }

@@ -17,10 +17,6 @@ public class Refine : AlchemistCard
         WithTips(_ => Infusion.InfuseTips());
     }
 
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
-    {
-        foreach (var card in PileType.Hand.GetPile(Owner).Cards.ToList())
-            Infusion.Infuse(card);
-        return Task.CompletedTask;
-    }
+    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play) =>
+        Infusion.InfuseChosenFromHand(choiceContext, this, Owner, 0, AnyNumber);
 }

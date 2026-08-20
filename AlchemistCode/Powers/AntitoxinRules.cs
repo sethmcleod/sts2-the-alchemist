@@ -19,6 +19,8 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 {
     private static readonly HashSet<Creature> Absorbed = [];
 
+    // The limit is a wall: a grant past it is clipped. It used to spill into Block, which was an
+    // alternate Block source the rubric names, and it is gone as of 2026-08-18
     public override bool TryModifyPowerAmountReceived(PowerModel canonicalPower, Creature target,
         decimal amount, Creature? applier, out decimal modifiedAmount)
     {
@@ -27,13 +29,6 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 
         var room = Math.Max(0, AntitoxinPower.MaxFor(target) - target.GetPowerAmount<AntitoxinPower>());
         if (amount <= room) return false;
-
-        // The cap is a conversion point, not a wall. This hook is synchronous, so the grant is fired
-        // rather than awaited. Move, not Unpowered, so Dexterity applies the way it does to any Block
-        var spill = (int)(amount - room);
-        if (spill > 0)
-            TaskHelper.RunSafely(CreatureCmd.GainBlock(target, spill, ValueProp.Move, null));
-
         modifiedAmount = room;
         return true;
     }
@@ -64,6 +59,27 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
     {
         Absorbed.Add(creature);
         AbsorbedOnTick[creature] = amount;
+        Analytics.RunCounters.Add(creature.Player, Analytics.RunCounters.PoisonAbsorbed, amount);
+    }
+
+    // Analytics only. The gained counter reads any positive Poison landing on a player; the bled
+    // counter reads the tick that resolves AFTER absorption, so it is what Poison actually cost in
+    // HP. IsPoisonTick is the one definition of the tick shape; the stack still holds the full
+    // amount here because PoisonPower decrements after the damage lands
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
+        decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (power is PoisonPower && power.Owner.IsPlayer && amount > 0)
+            Analytics.RunCounters.Add(power.Owner.Player, Analytics.RunCounters.PoisonGained, (int)amount);
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
+        DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
+    {
+        if (target.IsPlayer && IsPoisonTick(target, result.UnblockedDamage, props, dealer, cardSource))
+            Analytics.RunCounters.Add(target.Player, Analytics.RunCounters.PoisonBled, result.UnblockedDamage);
+        return Task.CompletedTask;
     }
 
     internal static bool AbsorbedThisTurn(Creature creature) => Absorbed.Contains(creature);

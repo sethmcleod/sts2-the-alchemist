@@ -25,7 +25,7 @@ namespace Alchemist.AlchemistCode.Powers;
 public partial class AntitoxinPower : AlchemistPower
 {
     // Raised for the combat by granting AntitoxinCapacityPower; AntitoxinRules enforces the result
-    public const int BaseMax = 12;
+    public const int BaseMax = 20;
 
     public static int MaxFor(Creature creature) =>
         BaseMax + creature.GetPowerAmount<AntitoxinCapacityPower>();
@@ -99,17 +99,6 @@ public partial class AntitoxinPower : AlchemistPower
         return -absorbed;
     }
 
-    // Cures one Poison per point absorbed, not the whole stack. Leaves the last stack behind:
-    // PoisonPower.Trigger decrements right after this hook returns, and that call would otherwise
-    // land on a detached power
-    private async Task CurePoison(PlayerChoiceContext choiceContext, int absorbed)
-    {
-        if (Owner.GetPower<PoisonPower>() is not { Amount: > 1 } poison) return;
-        var cured = Math.Min(absorbed, poison.Amount - 1);
-        if (cured <= 0) return;
-        await PowerCmd.ModifyAmount(choiceContext, poison, -cured, Owner, null);
-    }
-
     private void AbsorbSplash()
     {
         var vfx = NGaseousImpactVfx.Create(Owner, AlchemistModConfig.AntitoxinBarColor);
@@ -139,7 +128,8 @@ public partial class AntitoxinPower : AlchemistPower
             await PowerCmd.Remove(this);
         else
             await PowerCmd.ModifyAmount(choiceContext, this, -spend, Owner, null, silent: true);
-
-        await CurePoison(choiceContext, spend);
+        // The Poison stack is left in place on purpose. The dose is what powers the character's
+        // attacks, so Antitoxin pays the tick and PoisonPower's own decrement is the only thing
+        // that lowers it. The 0.9.0 cure made the stack unreadable one turn after any dose
     }
 }

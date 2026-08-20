@@ -1,5 +1,8 @@
 {
   "ALCHEMIST-ACCESSIBILITY.title": "การช่วยการเข้าถึง",
+  "ALCHEMIST-ANALYTICS.title": "การวิเคราะห์ข้อมูล",
+  "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "ส่งผลการเดินทางของนักเล่นแร่แปรธาตุแบบไม่ระบุตัวตน (กองการ์ด, เครื่องราง, การ์ดที่เลือก, ชั้นที่ไปถึง) เพื่อช่วยปรับสมดุลตัวละคร มีผลเฉพาะเมื่อเปิดการตั้งค่าอัปโหลดข้อมูลของตัวเกมเท่านั้น ไม่ส่งชื่อหรือ Steam ID ของคุณเด็ดขาด",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "แชร์ข้อมูลการเดินทาง",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "สีของแถบสารต้านพิษใต้หลอดเลือดของคุณ ส่วนสีเขียวที่แสดงพิษที่กำลังจะเข้ามาจะไม่เปลี่ยนตาม",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "สีแถบสารต้านพิษ",
   "ALCHEMIST-COMPATIBILITY.title": "ความเข้ากันได้",
@@ -18,5 +21,9 @@
   "ALCHEMIST-UNLOCKS.title": "การปลดล็อก",
   "ALCHEMIST-UNLOCK_ALL.title": "ปลดล็อกการ์ด, เครื่องราง, ขวดยา, และศักราชของนักเล่นแร่แปรธาตุทั้งหมด",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "ปลดล็อกทั้งหมด",
+  "ALCHEMIST-WORKSHOP_UPDATE.body": "ดาวน์โหลดนักเล่นแร่แปรธาตุเวอร์ชันใหม่จาก Steam Workshop แล้ว\nรีสตาร์ตเกมเพื่อโหลดเวอร์ชันใหม่",
+  "ALCHEMIST-WORKSHOP_UPDATE.header": "นักเล่นแร่แปรธาตุอัปเดตแล้ว",
+  "ALCHEMIST-WORKSHOP_UPDATE.later": "ไว้ทีหลัง",
+  "ALCHEMIST-WORKSHOP_UPDATE.quit": "ออกจากเกมเลย",
   "ALCHEMIST.mod_title": "นักเล่นแร่แปรธาตุ"
 }

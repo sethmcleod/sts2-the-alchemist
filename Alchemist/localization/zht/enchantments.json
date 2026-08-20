@@ -3,6 +3,6 @@
   "ALCHEMIST-DOSED.title": "佐劑",
   "ALCHEMIST-FORTIFIED.description": "打出此能力牌時，你的[gold]抗毒素[/gold]上限提高 [blue]{Amount}[/blue] 點。",
   "ALCHEMIST-FORTIFIED.title": "固化",
-  "ALCHEMIST-LACED.description": "每當此攻擊牌造成未被格擋的傷害時，施加 [blue]{Amount}[/blue] 層[gold]中毒[/gold]。",
+  "ALCHEMIST-LACED.description": "此攻擊牌額外造成與你[gold]中毒[/gold]等量的傷害。",
   "ALCHEMIST-LACED.title": "淬毒"
 }

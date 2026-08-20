@@ -5,16 +5,18 @@
   "ALCHEMIST-ANODYNE.title": "Anódino",
   "ALCHEMIST-DECOCTION.description": "Compre [blue]3[/blue] cartas. Elas custam 0 {energyPrefix:energyIcons(1)} neste turno.",
   "ALCHEMIST-DECOCTION.title": "Decocção",
-  "ALCHEMIST-GOLD_LEAF.description": "Cure [green]1[/green] PV e receba [blue]1[/blue] de [gold]Proteção[/gold] por cada [blue]15[/blue] de [gold]Ouro[/gold] que você tiver.{HealTotal}",
+  "ALCHEMIST-GOLD_LEAF.description": "Receba [blue]1[/blue] de [gold]Proteção[/gold] e [blue]1[/blue] de [gold]Antitoxina[/gold] por cada [blue]15[/blue] de [gold]Ouro[/gold] que você tiver.{HealTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Folha de Ouro",
   "ALCHEMIST-MARSH_TONIC.description": "Receba [blue]6[/blue] de [gold]Antitoxina[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Tônico do Pântano",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.description": "Ative o [gold]Veneno[/gold] em um inimigo [blue]3[/blue] vezes.",
   "ALCHEMIST-QUICKSILVER_DRAUGHT.title": "Trago de Azougue",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Adicione [blue]2[/blue] [gold]Destilados[/gold] na sua [gold]Mão[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Escolha [blue]2[/blue] [gold]Misturas[/gold] para criar.",
   "ALCHEMIST-REFINED_EXTRACT.title": "Extrato Refinado",
   "ALCHEMIST-SAMPLER.description": "Receba {energyPrefix:energyIcons(1)} e compre [blue]1[/blue] carta por cada [gold]Poção[/gold] que você tiver, incluindo esta.",
   "ALCHEMIST-SAMPLER.title": "Degustação",
-  "ALCHEMIST-SOLVENT.description": "Remova toda a [gold]Proteção[/gold] do inimigo. Aplique [blue]3[/blue] de [gold]Fraqueza[/gold] nele.",
-  "ALCHEMIST-SOLVENT.title": "Solvente"
+  "ALCHEMIST-SOLVENT.description": "Remova todo o [gold]Artefato[/gold] e toda a [gold]Proteção[/gold] do inimigo. Aplique [blue]3[/blue] de [gold]Fraqueza[/gold] nele.",
+  "ALCHEMIST-SOLVENT.title": "Solvente",
+  "ALCHEMIST-STARTER_CULTURE.description": "[gold]Ative[/gold] TODAS as cartas de [gold]Fermentar[/gold] na sua [gold]Mão[/gold] [blue]3[/blue] vezes.",
+  "ALCHEMIST-STARTER_CULTURE.title": "Cultura Inicial"
 }

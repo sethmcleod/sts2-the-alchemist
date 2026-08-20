@@ -3,6 +3,6 @@
   "ALCHEMIST-DOSED.title": "อาบยา",
   "ALCHEMIST-FORTIFIED.description": "เมื่อเล่นการ์ดพลังใบนี้ เพิ่มขีดจำกัด[gold]สารต้านพิษ[/gold]ของคุณ [blue]{Amount}[/blue]",
   "ALCHEMIST-FORTIFIED.title": "เสริมกำลัง",
-  "ALCHEMIST-LACED.description": "ทุกครั้งที่การ์ดโจมตีใบนี้สร้างความเสียหายแบบไม่ถูกบล็อก สร้าง [blue]{Amount}[/blue] [gold]พิษ[/gold]",
+  "ALCHEMIST-LACED.description": "การ์ดโจมตีใบนี้สร้างความเสียหายเพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
   "ALCHEMIST-LACED.title": "เจือพิษ"
 }

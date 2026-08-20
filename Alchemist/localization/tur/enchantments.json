@@ -3,6 +3,6 @@
   "ALCHEMIST-DOSED.title": "Dozlu",
   "ALCHEMIST-FORTIFIED.description": "Bu Güç oynandığında [gold]Antitoksin[/gold] sınırını [blue]{Amount}[/blue] artır.",
   "ALCHEMIST-FORTIFIED.title": "Takviyeli",
-  "ALCHEMIST-LACED.description": "Ne zaman bu Atak engellenmeyen bir hasar verirse [blue]{Amount}[/blue] [gold]Zehir[/gold] uygula.",
+  "ALCHEMIST-LACED.description": "Bu Atak, [gold]Zehir[/gold]'in kadar fazladan hasar verir.",
   "ALCHEMIST-LACED.title": "Katkılı"
 }

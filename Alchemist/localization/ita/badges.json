@@ -1,14 +1,14 @@
 {
-  "ALCHEMIST-BREW.bronzeDescription": "Hai preparato pozioni presso [blue]3[/blue] o più luoghi di riposo.",
-  "ALCHEMIST-BREW.bronzeTitle": "Piccola Produzione",
-  "ALCHEMIST-BREW.goldDescription": "Hai preparato pozioni presso [blue]9[/blue] o più luoghi di riposo.",
-  "ALCHEMIST-BREW.goldTitle": "Mastro Distillatore",
-  "ALCHEMIST-BREW.silverDescription": "Hai preparato pozioni presso [blue]6[/blue] o più luoghi di riposo.",
-  "ALCHEMIST-BREW.silverTitle": "Ben Fornito",
-  "ALCHEMIST-POTION_SALE.bronzeDescription": "Hai venduto [blue]3[/blue] o più pozioni al mercante.",
+  "ALCHEMIST-MIXES.bronzeDescription": "Hai creato [blue]10[/blue] o più [gold]Miscele[/gold].",
+  "ALCHEMIST-MIXES.bronzeTitle": "Miscuglio Grezzo",
+  "ALCHEMIST-MIXES.goldDescription": "Hai creato [blue]30[/blue] o più [gold]Miscele[/gold].",
+  "ALCHEMIST-MIXES.goldTitle": "Maestro Miscelatore",
+  "ALCHEMIST-MIXES.silverDescription": "Hai creato [blue]20[/blue] o più [gold]Miscele[/gold].",
+  "ALCHEMIST-MIXES.silverTitle": "Formula Bilanciata",
+  "ALCHEMIST-POTION_SALE.bronzeDescription": "Hai venduto [blue]2[/blue] o più pozioni al mercante.",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "Venditore Ambulante",
-  "ALCHEMIST-POTION_SALE.goldDescription": "Hai venduto [blue]9[/blue] o più pozioni al mercante.",
+  "ALCHEMIST-POTION_SALE.goldDescription": "Hai venduto [blue]6[/blue] o più pozioni al mercante.",
   "ALCHEMIST-POTION_SALE.goldTitle": "Preferito del Mercante",
-  "ALCHEMIST-POTION_SALE.silverDescription": "Hai venduto [blue]6[/blue] o più pozioni al mercante.",
+  "ALCHEMIST-POTION_SALE.silverDescription": "Hai venduto [blue]4[/blue] o più pozioni al mercante.",
   "ALCHEMIST-POTION_SALE.silverTitle": "Socio in Affari"
 }

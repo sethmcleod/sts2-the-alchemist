@@ -3,6 +3,6 @@
   "ALCHEMIST-DOSED.title": "Доза",
   "ALCHEMIST-FORTIFIED.description": "При разыгрывании этого Таланта повышает вашу емкость [gold]антитоксина[/gold] на [blue]{Amount}[/blue].",
   "ALCHEMIST-FORTIFIED.title": "Укрепление",
-  "ALCHEMIST-LACED.description": "Накладывает на врага [blue]{Amount}[/blue] [gold]яда[/gold], когда эта Атака наносит урон по его ОЗ.",
+  "ALCHEMIST-LACED.description": "Эта Атака наносит дополнительный урон, равный вашему [gold]яду[/gold].",
   "ALCHEMIST-LACED.title": "Отрава"
 }

@@ -1,5 +1,8 @@
 {
   "ALCHEMIST-ACCESSIBILITY.title": "アクセシビリティ",
+  "ALCHEMIST-ANALYTICS.title": "分析",
+  "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "アルケミストの冒険結果（デッキ、レリック、カードの選択、到達階層）を匿名で送信し、キャラクターの調整に役立てます。ゲーム本体の「データをアップロード」設定がオンの場合にのみ適用されます。名前やSteam IDは一切含まれません。",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "冒険の分析データを共有",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "HPバーの下に表示される抗毒素バーの色。受ける毒を示す緑の部分には影響しません。",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "抗毒素バーの色",
   "ALCHEMIST-COMPATIBILITY.title": "互換性",
@@ -18,5 +21,9 @@
   "ALCHEMIST-UNLOCKS.title": "アンロック",
   "ALCHEMIST-UNLOCK_ALL.title": "アルケミストのカード、レリック、ポーション、断章をすべてアンロック",
   "ALCHEMIST-UNLOCK_ALL_BUTTON_LABEL.title": "すべてアンロック",
+  "ALCHEMIST-WORKSHOP_UPDATE.body": "Steamワークショップからアルケミストの新しいバージョンがダウンロードされました。\nゲームを再起動すると新しいバージョンが読み込まれます。",
+  "ALCHEMIST-WORKSHOP_UPDATE.header": "アルケミストが更新されました",
+  "ALCHEMIST-WORKSHOP_UPDATE.later": "後で",
+  "ALCHEMIST-WORKSHOP_UPDATE.quit": "今すぐ終了",
   "ALCHEMIST.mod_title": "アルケミスト"
 }

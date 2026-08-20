@@ -10,17 +10,17 @@ public class RollingBoil : AlchemistCard
 {
     protected override bool Ferments => true;
 
-    public RollingBoil() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+    public RollingBoil() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
     {
-        WithCalculatedDamage(6, static (card, _) =>
-                (card.IsUpgraded ? 9m : 6m) * ((AlchemistCard)card).FermentTurns,
-            ValueProp.Move, 0, 0);
+        WithCalculatedDamage(5, static (card, _) =>
+                4m * ((AlchemistCard)card).FermentTurns,
+            ValueProp.Move, 2, 0);
         WithKeyword(CardKeyword.Retain);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, 2, vfx: HitVfx("vfx/vfx_fire_burst"),
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_fire_burst"),
             sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
     }
 }
