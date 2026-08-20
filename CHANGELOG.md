@@ -7,6 +7,15 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Clarified Toxin Skin's text: it now reads "lose 2 Poison and apply that much to the attacker"
+- Reworked Simmer: "At the start of your turn, gain 1 (2) Poison and 1 (2) Antitoxin."
+
+### Fixed
+
+- Fixed Gilded Kit text and effect: it now keeps the Weathered Kit combat effect and increases it: "At the start of each combat, gain 2 Poison and 12 Antitoxin. You can Brew at Rest Sites. Upon pickup, gain 1 potion slot."
+
 ## [0.11.4] - 2026-08-20
 
 ### Changed

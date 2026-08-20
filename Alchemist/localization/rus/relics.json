@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "В начале каждого боя вы выбираете, какую [gold]смесь[/gold] добавить в [gold]руку[/gold].",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "Сколько ни лей, она никогда не пустеет.",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "Неиссякаемая чаша",
-  "ALCHEMIST-GILDED_KIT.description": "Вы можете [gold]варить зелья[/gold] в лагере и получаете [blue]1[/blue] дополнительную ячейку для зелий.",
+  "ALCHEMIST-GILDED_KIT.description": "В начале каждого боя дает вам [blue]2[/blue] [gold]яда[/gold] и [blue]12[/blue] [gold]антитоксина[/gold]. Вы можете [gold]варить зелья[/gold] в лагере. При получении дает [blue]1[/blue] ячейку для зелий.",
   "ALCHEMIST-GILDED_KIT.flavor": "Богато украшенный футляр. Золото здесь не для красоты.",
   "ALCHEMIST-GILDED_KIT.title": "Золоченый набор",
   "ALCHEMIST-GLOWING_SHARD.description": "Когда вы получаете [gold]яд[/gold], накладывает [blue]1[/blue] [gold]яда[/gold] на случайного врага.",

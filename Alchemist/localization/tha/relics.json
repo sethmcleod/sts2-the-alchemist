@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "ตอนเริ่มต้นแต่ละการต่อสู้ เลือก[gold]ยาผสม[/gold]ที่จะเพิ่มเข้า[gold]มือ[/gold]",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "รินออกไปเท่าไร มันก็ไม่เคยแห้งสักที",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "จอกไหลนิรันดร์",
-  "ALCHEMIST-GILDED_KIT.description": "คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้ และได้รับช่องเก็บขวดยาเพิ่ม [blue]1[/blue] ช่อง",
+  "ALCHEMIST-GILDED_KIT.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]2[/blue] [gold]พิษ[/gold] และ [blue]12[/blue] [gold]สารต้านพิษ[/gold] คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้ เมื่อรับมา ได้รับช่องเก็บขวดยา [blue]1[/blue] ช่อง",
   "ALCHEMIST-GILDED_KIT.flavor": "กล่องลวดลายวิจิตร ทองบนกล่องไม่ได้มีไว้อวด",
   "ALCHEMIST-GILDED_KIT.title": "ชุดเครื่องมือปิดทอง",
   "ALCHEMIST-GLOWING_SHARD.description": "ทุกครั้งที่คุณได้รับ[gold]พิษ[/gold] สร้าง [blue]1[/blue] [gold]พิษ[/gold] ใส่ศัตรู 1 ตัวแบบสุ่ม",

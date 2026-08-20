@@ -5,7 +5,7 @@
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "各戦闘の開始時、[gold]合剤[/gold]を1枚選んで[gold]手札[/gold]に加える。",
   "ALCHEMIST-EVERFLOWING_CHALICE.flavor": "どれだけ注いでも、決して尽きることがない。",
   "ALCHEMIST-EVERFLOWING_CHALICE.title": "尽きせぬ聖杯",
-  "ALCHEMIST-GILDED_KIT.description": "休憩所で[gold]調合[/gold]でき、ポーションスロットが[blue]1[/blue]つ増加する。",
+  "ALCHEMIST-GILDED_KIT.description": "各戦闘の開始時、[gold]毒[/gold][blue]2[/blue]と[gold]抗毒素[/gold][blue]12[/blue]を得る。休憩所で[gold]調合[/gold]できる。取得時、ポーションスロットを[blue]1[/blue]つ得る。",
   "ALCHEMIST-GILDED_KIT.flavor": "装飾を凝らした道具箱。その金は飾りではない。",
   "ALCHEMIST-GILDED_KIT.title": "金張りの道具箱",
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]毒[/gold]を得るたび、ランダムな敵1体に[gold]毒[/gold][blue]1[/blue]を付与する。",

@@ -14,12 +14,13 @@ public class SimmerPower : AlchemistPower
     public override PowerStackType StackType => PowerStackType.Counter;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromPower<PoisonPower>() };
+        new[] { HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<AntitoxinPower>() };
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Player) return;
         Flash();
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner, Amount, Owner, null);
+        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner, Amount, Owner, null);
     }
 }
