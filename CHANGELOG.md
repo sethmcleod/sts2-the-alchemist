@@ -48,8 +48,11 @@ mod).
 - Buffed Patient Strike: base damage 6 -> 7 (9); damage per turn fermented 6 (9) -> 6 (8)
 - Buffed Poultice: Block 8 (11) -> 9 (12)
 - Buffed Quicklime: damage 5 (7) -> 6 (8), and the bonus now triggers if you have Poison instead of if the enemy is Poisoned
+- Buffed Resolve: self Poison 5 -> 4
 - Buffed Rolling Boil: base damage 6 -> 7 per hit
+- Buffed Siphon: if the drawn card is already Enchanted, it now grants 3 Antitoxin instead
 - Buffed Slow Burn: base damage 5 -> 6 (8)
+- Buffed Solvent: it now also removes ALL Artifact from the enemy
 - Changed Antitoxin: it no longer becomes Block once you are at the limit; a grant past the limit is lost
 - Changed Antitoxin: it no longer cures the Poison it absorbs. Your dose stays in place and powers your attacks; Antitoxin pays the ticks
 - Changed Brew: it now offers a choice of 3 of the Brew-only Potions instead of one random one
@@ -57,10 +60,6 @@ mod).
 - Changed Effervesce: it now adds 2 Zesty Mixes to another player's Hand
 - Changed Ferment: a played Ferment card now goes to your Discard Pile like any other card, so it can be drawn and fermented again. It still adds a Residue
 - Changed Lash Out: the extra hit now triggers if you have Poison instead of if the enemy is Poisoned
-- Changed Resolve: self Poison 5 -> 4
-- Changed Siphon: if the drawn card is already Enchanted, it now grants 3 Antitoxin instead
-- Changed Solvent: it now also removes ALL Artifact from the enemy
-- Changed Swill: cost 0 -> 1
 - Changed the Antitoxin limit: 12 -> 20
 - Changed the Brew run badge into the Mixes badge: it now counts the Mixes you created, at 10, 20 and 30 for Bronze, Silver and Gold
 - Changed the Ferment wording: cards now read "Trigger ALL Ferment cards in your Hand" instead of "Ferment ALL cards in your Hand"
@@ -68,12 +67,11 @@ mod).
 - Changed the Mix hover tip: one tip describes all four Mixes instead of four stacked card previews
 - Changed the Potion Sale badge tiers: 3, 6 and 9 sales -> 2, 4 and 6, since a Brew now yields at most one sellable Potion
 - Changed the sixth Epoch: it now unlocks Ichor, Miasma and Mercurial Form
-- Changed the Starter Culture, Sampler and Decoction potion icons: each now has its own art instead of sharing a placeholder
-- Changed the Alchemist's combat model to the animator's updated rig
 - Changed Weathered Kit and Gilded Kit: they no longer add a Distillate to your Hand at the start of combat
 - Changed Weathered Kit: "At the start of each combat, gain 8 Antitoxin and 1 Poison."
 - Nerfed Gulp: it now Exhausts
 - Nerfed Puncture: Vulnerable 2 (3) -> 1 (2)
+- Nerfed Swill: cost 0 -> 1
 - Renamed Dregs to Residue
 - Renamed Purge to Double Dose, Pays Off to Smelling Salts, Next Up to Anoint, Fresh Coat to Alembic, and Elixir to Panacea
 - Reworked All At Once: "Deal damage equal to your Poison X (+1) times. Exhaust." It now hits one enemy and no longer removes your Poison
@@ -114,7 +112,7 @@ mod).
 - Removed Dispense card
 - Removed Percolate card, replaced by Blend
 - Removed Taint card, replaced by Forked Tongue
-- Removed the Distillate token, replaced by the Mix family
+- Removed Distillate token, replaced by Mix tokens
 - Removed Waste Not, Reckless Swing, Inoculate, Fast Acting and Sublimate cards, replaced by the Mix cards above
 
 ### Fixed
@@ -128,8 +126,6 @@ mod).
 - Fixed Spit keeping your Poison when the hit killed the target
 - Fixed the Alchemist's blinking and staff orb shine animations continuing to play after death
 - Fixed the Alchemist's relic icons missing their character-colored outline in the Relic Collection
-- Fixed the Weathered Kit's Poison being eaten by the turn-1 Poison trigger before the player could act; the dose now lands after that window and first ticks on turn 2
-- Fixed the Mix selection sitting left of center; the four Mixes are now centered on screen
 - Fixed Toxin Skin's card face not rendering its Poison number
 - Fixed Grand Batch and Effervesce not counting their Mixes for the Mixes badge and analytics
 - Fixed Effervesce's upgrade doing nothing; Effervesce+ now adds 3 Zesty Mixes
@@ -138,7 +134,6 @@ mod).
 - Fixed the Alchemist's relics missing the purple outline that character relics show in the Relic Collection
 - Fixed the capacity cards saying "for the rest of combat"; they now say "this combat" like the base game
 - Fixed the character name overlapping the Antitoxin bar when hovering; the name now sits below the bar, and the Antitoxin number fades with the HP number
-- Fixed the game hanging or crashing when the Alchemist dies, including through the Give Up option. The death animation cleanup re-entered itself
 - Fixed the Infuse keyword tip naming the Power enchantment Potent; it is Fortified
 - Fixed White Heat and Gold Leaf showing their total on the same line as the count they read
 
