@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tu56sa6bwwk5"
-path="res://.godot/imported/char_select_alchemist_splash.png-86578d2c3b0a18f778712c1cdaf796ca.ctex"
+uid="uid://026abep2i7n2"
+path="res://.godot/imported/select_screen_2.png-ad57887da2e6440c301c7d97b859e7dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/charui/char_select_alchemist_splash.png"
-dest_files=["res://.godot/imported/char_select_alchemist_splash.png-86578d2c3b0a18f778712c1cdaf796ca.ctex"]
+source_file="res://Alchemist/animations/character_select/alchemist/select_screen_2.png"
+dest_files=["res://.godot/imported/select_screen_2.png-ad57887da2e6440c301c7d97b859e7dd.ctex"]
 
 [params]
 
