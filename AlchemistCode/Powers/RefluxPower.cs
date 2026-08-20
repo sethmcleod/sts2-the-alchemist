@@ -20,7 +20,6 @@ public class RefluxPower : AlchemistPower
 
     // A whole team's debuffs in one turn is unbounded, so the payout is capped per turn
     private const int MaxTriggers = 3;
-    private int _triggers;
 
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
@@ -30,8 +29,6 @@ public class RefluxPower : AlchemistPower
         if (amount <= 0 || cardSource == null || power.Type != PowerType.Debuff) return;
         if (applier == null || applier == Owner || !applier.IsPlayer) return;
         if (power.Owner is not { IsPlayer: false, IsAlive: true } enemy) return;
-        if (_triggers >= MaxTriggers) return;
-        _triggers++;
         Flash();
         await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, Amount, Owner, null);
     }
@@ -40,7 +37,6 @@ public class RefluxPower : AlchemistPower
         IEnumerable<Creature> participants)
     {
         if (!participants.Contains(Owner)) return Task.CompletedTask;
-        _triggers = 0;
         return PowerCmd.Remove<RefluxPower>(Owner);
     }
 }

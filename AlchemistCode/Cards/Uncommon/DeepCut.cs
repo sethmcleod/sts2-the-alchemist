@@ -9,12 +9,9 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Poison)]
 public class DeepCut : AlchemistCard
 {
-    private const int PerPoison = 2;
-
     public DeepCut() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(10, static (card, _) => Dose(card) * PerPoison, ValueProp.Move, 3);
-        WithTip(typeof(PoisonPower));
+        WithDamage(16, 6);
     }
 
     protected override bool ConditionalGlow => Dose(this) > 0;

@@ -11,9 +11,10 @@ public class Reflux : AlchemistCard
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
-    public Reflux() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Reflux() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("poison", 2, 1);
+        WithCostUpgradeBy(-1);
+        WithVar("poison", 2, 0);
         WithTip(typeof(PoisonPower));
     }
 

@@ -52,6 +52,36 @@ public static class Mixing
             _ => Analytics.RunCounters.MixZesty,
         }, 1);
 
+    /// <summary>Add a random Mix to the owner's hand. Seeded, so multiplayer stays in sync.</summary>
+    public static async Task CreateRandom(PlayerChoiceContext ctx, Player owner)
+    {
+        if (owner.Creature.CombatState is not { } combat) return;
+        var options = Options(combat, owner);
+        var picked = owner.RunState.Rng.CombatCardGeneration.NextItem(options);
+        if (picked == null) return;
+        RecordCreated(owner, picked);
+        await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
+    }
+
+    /// <summary>
+    /// Add a random Mix to another player's hand, counted for the giver. Zesty is left out:
+    /// its Antitoxin means nothing to a character without Poison ticks to absorb.
+    /// </summary>
+    public static async Task GiveRandom(PlayerChoiceContext ctx, Player giver, Player receiver)
+    {
+        if (receiver.Creature.CombatState is not { } combat) return;
+        var options = new List<CardModel>
+        {
+            combat.CreateCard<BurstingMix>(receiver),
+            combat.CreateCard<SturdyMix>(receiver),
+            combat.CreateCard<FumingMix>(receiver),
+        };
+        var picked = giver.RunState.Rng.CombatCardGeneration.NextItem(options);
+        if (picked == null) return;
+        RecordCreated(giver, picked);
+        await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, receiver);
+    }
+
     /// <summary>Choose a Mix and add it to the owner's hand, count times.</summary>
     public static async Task CreateChosen(PlayerChoiceContext ctx, Player owner, int count = 1)
     {
