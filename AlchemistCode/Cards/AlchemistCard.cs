@@ -58,7 +58,9 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     protected void ExplainNumber(string key) => WithTips(_ => new[] { AlchemistTips.Static(key) });
 
     public override string CustomPortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImageOrBetaPath();
-    public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
+    // With the beta fallback too: the Timeline epoch slots and the generated-card previews read
+    // Portrait directly, and without it every card still on beta art shows the generic back there
+    public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImageOrBetaPath();
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
     // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state

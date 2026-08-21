@@ -44,8 +44,9 @@ public class AllAtOnce : AlchemistCard
             .WithHitCount(hits)
             .Unpowered()
             .WithHitFx(HitVfx("vfx/vfx_heavy_blunt"), null, "heavy_attack.mp3")
-            .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
             .FromCard(this, play)
+            // After FromCard: the builder rejects an attacker animation before an attacker exists
+            .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
             .Targeting(play.Target)
             .Execute(choiceContext);
     }
