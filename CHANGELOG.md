@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed All At Once getting stuck on screen when played
+
 ## [0.11.5] - 2026-08-20
 
 ### Changed
