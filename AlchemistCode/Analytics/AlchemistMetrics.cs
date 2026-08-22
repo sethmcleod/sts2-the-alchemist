@@ -189,6 +189,9 @@ internal static class AlchemistMetrics
             {
                 ["epochs"] = new JsonArray(epochs.Select(id => (JsonNode)id).ToArray()),
                 ["potions_sold"] = PotionSaleCounter.CountFor(localPlayer),
+                ["potions_used"] = new JsonArray(allPoints
+                    .SelectMany(e => e.GetEntry(localPlayer.NetId).PotionUsed)
+                    .Select(id => (JsonNode)id.Entry).ToArray()),
                 ["brews"] = allPoints.Sum(e => e.GetEntry(localPlayer.NetId).RestSiteChoices
                     .Count(id => id == BrewRestSiteOption.BrewOptionId)),
                 ["deck_themes"] = DeckThemes(localPlayer),
