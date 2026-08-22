@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed saved runs losing renamed cards on continue: ids retired by a rename (Sturdy Mix, Lob, Double Batch, and the 0.11.0 renames) now load as the card that replaced them instead of a blank deprecated card
+
 ## [0.11.8] - 2026-08-22
 
 ### Added
