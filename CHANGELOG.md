@@ -7,6 +7,14 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Changed the Antitoxin bar at 0 to show a quiet gray number; the green treatment now only warns that the incoming Poison tick will empty the bar
+
+### Fixed
+
+- Hardened the Antitoxin bar patches so a mod that restructures the health bar (such as Minty Spire 2) degrades them to a no-op instead of breaking the shared bar refresh
+
 ## [0.11.6] - 2026-08-20
 
 ### Fixed

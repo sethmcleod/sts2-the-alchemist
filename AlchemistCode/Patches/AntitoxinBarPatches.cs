@@ -28,6 +28,9 @@ public static class AntitoxinBarPatches
     // The same pair the health bar uses when Poison is lethal, reused for "this tick empties the bar"
     private static readonly Color DrainedColor = new("76FF40");
     private static readonly Color DrainedOutline = new("074700");
+    // A plain empty bar is quiet, not a warning
+    private static readonly Color EmptyColor = new("b9b3c4");
+    private static readonly Color EmptyOutline = new("2a2433");
 
     private sealed class Parts
     {
@@ -153,7 +156,7 @@ public static class AntitoxinBarPatches
             }
             if (inCombat) parts.LastKnown = live;
 
-            var hp = __instance.HpBarContainer;
+            if (__instance.HpBarContainer is not { } hp) return;
             parts.Root.Visible = true;
             parts.Root.Position = new Vector2(hp.Position.X, hp.Position.Y + hp.Size.Y + Gap);
             parts.Root.Size = hp.Size;
@@ -174,14 +177,18 @@ public static class AntitoxinBarPatches
             // A NinePatchRect cannot render narrower than its own patch margins, so a foreground shrunk
             // to zero still leaves a purple stub. Hide it outright at zero and when the tick takes it all
             var drainedFully = current == 0 || spent >= current;
+            // Green only warns about a live tick about to empty the bar; a bar that is simply
+            // at zero goes gray like the base game's empty readouts
+            var warning = current > 0 && spent >= current;
             parts.Foreground.Visible = current > 0 && !drainedFully;
             parts.Foreground.SelfModulate = AlchemistModConfig.AntitoxinBarColor;
             parts.Foreground.OffsetRight = full * afterRatio - full;
             parts.Text.Text = $"{current}";
 
-            parts.Text.AddThemeColorOverride("font_color", drainedFully ? DrainedColor : TextColor);
+            parts.Text.AddThemeColorOverride("font_color",
+                warning ? DrainedColor : current == 0 ? EmptyColor : TextColor);
             parts.Text.AddThemeColorOverride("font_outline_color",
-                drainedFully ? DrainedOutline : TextOutline);
+                warning ? DrainedOutline : current == 0 ? EmptyOutline : TextOutline);
 
             if (parts.Incoming is { } green)
             {
@@ -241,8 +248,11 @@ public static class AntitoxinBarPatches
             var baseHeight = (float)cached;
 
             var extra = 0f;
+            // GetNodeOrNull, and checked: another mod replacing the bar scene must degrade this
+            // patch to a no-op, not throw inside the shared display chain
             if (Shows(DisplayCreatureRef(__instance))
-                && Bars.TryGetValue(__instance.GetNodeOrNull<NHealthBar>("%HealthBar")!, out var parts)
+                && __instance.GetNodeOrNull<NHealthBar>("%HealthBar") is { } healthBar
+                && Bars.TryGetValue(healthBar, out var parts)
                 && GodotObject.IsInstanceValid(parts.Root))
                 extra = parts.Root.Size.Y + Gap;
 
