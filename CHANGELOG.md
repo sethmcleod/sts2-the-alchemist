@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.8] - 2026-08-22
+
 ### Added
 
 - Added potion uses to the run analytics payload
