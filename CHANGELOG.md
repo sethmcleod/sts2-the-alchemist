@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.11.7] - 2026-08-22
+
 ### Changed
 
 - Changed the Antitoxin bar at 0 to show a quiet gray number; the green treatment now only warns that the incoming Poison tick will empty the bar

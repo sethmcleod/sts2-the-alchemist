@@ -36,7 +36,7 @@
     "title": "The Alchemist",
     "tagSuffix": "",
     "gameBranch": "public",
-    "prerelease": true,
+    "prerelease": false,
     "descriptionBanner": "[quote]This mod is for the public version of the game. Here is the beta version: https://steamcommunity.com/sharedfiles/filedetails/?id=3780726901[/quote]",
     "minBranch": "",
     "maxBranch": ""
