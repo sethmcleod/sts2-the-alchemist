@@ -2,16 +2,9 @@
   "title": "The Alchemist",
   "description": "[quote]This mod is for the public version of the game. Here is the beta version: https://steamcommunity.com/sharedfiles/filedetails/?id=3780726901[/quote]\n\n[h2]Overview[/h2]\n[list]\n[*] ✨ 90+ new cards\n[*] 💎 9 new relics\n[*] 🧪 10 new potions\n[*] 📚 7 timeline epochs\n[*] 🎨 Handmade art and animation [i](WIP)[/i]\n[*] 🌍 Translated into 15 languages\n[*] 🐸 You get to be a frog\n[/list]\n\n[h2]Playstyle[/h2]\n[list]\n[*] [b]Self-Poison[/b]: The Alchemist doses themselves on purpose. Many attacks deal additional damage based on your Poison, so the dose is power for as long as you carry it.\n[*] [b]Antitoxin[/b]: A reserve that absorbs the damage your Poison would deal, up to a limit. It persists across turns, so you can bank it before you dose. What it cannot cover comes out of your HP.\n[*] [b]Mix[/b]: These are tokens you can create in combat, and you can often choose which one: Bursting (damage), Fuming (Weak and Vulnerable), Sturdy (Block) and Zesty (Draw and Antitoxin).\n[*] [b]Infuse[/b]: Infusing a card Enchants it for the rest of combat based on its type. Attacks deal extra damage equal to your Poison, Skills generate Antitoxin, Powers increase your Antitoxin limit, and other cards gain Ethereal.\n[*] [b]Ferment[/b]: These cards grow in potency for every turn they stay in your hand. Playing one adds a Residue to your Discard Pile.\n[*] [b]Brew[/b]: This Rest Site option allows you to procure one of 7 unique potions that can only be obtained this way. Due to the quality of these brews, the Merchant is willing to buy them from you for Gold.\n[/list]\n\n\n[h2]Disclaimer[/h2]\nThe Alchemist has been lovingly crafted to feel like a natural addition to the game. Every card, relic, and potion has been (and will continue to be) balanced against the existing game. The same care extends to flavor and lore: this character's story is woven directly into the game's existing timeline, and observant players will find more than a few threads connecting them to the world.\n\nThis mod is still a work in progress and content is subject to change, but feedback is welcome! The best place to discuss the mod is official Slay the Spire Discord server in the #modding-forum.\n\n[h2]Credits[/h2]\nDesign and Code - Seth\nArt and Animation - Fulgur: https://fulgur.carrd.co/\n\nGitHub: https://github.com/sethmcleod/sts2-the-alchemist\nNexus Mods: https://www.nexusmods.com/slaythespire2/mods/1439\nDiscord: https://discord.com/channels/309399445785673728/1536374761699938424",
   "visibility": "public",
-  "changeNote": "v0.11.6\n\nFixed\n\n- Fixed All At Once getting stuck on screen when played",
-  "tags": [
-    "Characters",
-    "Cards",
-    "Relics",
-    "Potions"
-  ],
-  "dependencies": [
-    3737335127
-  ],
+  "changeNote": "v0.11.7\n\nChanged\n\n- Changed the Antitoxin bar at 0 to show a quiet gray number; the green treatment now only warns that the incoming Poison tick will empty the bar\n\nFixed\n\n- Improved the character select background for aspect ratios other than 16:9\n- Improved the Antitoxin bar patches so a mod that restructures the health bar (like Minty Spire 2) degrades them to a no-op instead of breaking the shared bar refresh",
+  "tags": ["Characters", "Cards", "Relics", "Potions"],
+  "dependencies": [3737335127],
   "contentDescriptors": [],
   "minBranch": "",
   "maxBranch": ""
