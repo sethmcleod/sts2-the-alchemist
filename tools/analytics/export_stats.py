@@ -72,7 +72,7 @@ def dominant_theme(deck_themes: dict[str, int]) -> str:
 def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict]]:
     run_rows, card_rows, choice_rows, relic_rows = [], [], [], []
     death_rows, floor_rows, enc_rows, theme_rows = [], [], [], []
-    brew_rows = []
+    brew_rows, first_rows, potion_use_rows = [], [], []
 
     for run in runs:
         day = run["created_at"][:10]  # ISO timestamp, the date is the first ten characters
@@ -85,9 +85,32 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
         run_rows.append(keys | {"runs": 1, "wins": win})
         theme_rows.append(keys | {"theme": dominant_theme(extra.get("deck_themes") or {}),
                                   "runs": 1, "wins": win})
+        # Reward-screen behaviour comes from the vanilla-shaped cardChoices history, so it
+        # covers every run ever uploaded. A screen with no pick is a skip; the first three
+        # screens the player picked from are the "first picks" that shape the early game
+        screens = data.get("cardChoices") or []
+        picked_screens = 0
+        skips = 0
+        for screen in screens:
+            picks = screen.get("picked") or []
+            if not picks:
+                skips += 1
+                continue
+            if picked_screens < 3:
+                picked_screens += 1
+                for card in picks:
+                    first_rows.append(keys | {"card": card, "order": picked_screens,
+                                              "picked": 1, "wins": win})
+
+        for potion in extra.get("potions_used") or []:
+            potion_use_rows.append(keys | {"potion": potion, "uses": 1})
+
         mixes = extra.get("mixes") or {}
         poison = extra.get("poison") or {}
         brew_rows.append(keys | {"brews": int(extra.get("brews") or 0),
+                                 "reward_screens": len(screens),
+                                 "reward_skips": skips,
+                                 "potions_used": len(extra.get("potions_used") or []),
                                  "sold": int(extra.get("potions_sold") or 0),
                                  "mix_bursting": int(mixes.get("bursting") or 0),
                                  "mix_fuming": int(mixes.get("fuming") or 0),
@@ -133,7 +156,9 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
         "death_floors_daily": aggregate(floor_rows, keys + ["floor"], ["deaths"]),
         "encounters_daily": aggregate(enc_rows, keys + ["enc"], ["fights", "dmg", "turns"]),
         "themes_daily": aggregate(theme_rows, keys + ["theme"], ["runs", "wins"]),
-        "economy_daily": aggregate(brew_rows, keys, ["brews", "sold", "mix_bursting", "mix_fuming", "mix_syrupy", "mix_zesty", "poison_gained", "poison_absorbed", "poison_bled", "runs", "wins"]),
+        "economy_daily": aggregate(brew_rows, keys, ["brews", "sold", "reward_screens", "reward_skips", "potions_used", "mix_bursting", "mix_fuming", "mix_syrupy", "mix_zesty", "poison_gained", "poison_absorbed", "poison_bled", "runs", "wins"]),
+        "first_picks_daily": aggregate(first_rows, keys + ["card", "order"], ["picked", "wins"]),
+        "potion_uses_daily": aggregate(potion_use_rows, keys + ["potion"], ["uses"]),
     }
 
 
