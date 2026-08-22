@@ -13,7 +13,8 @@ mod).
 
 ### Fixed
 
-- Hardened the Antitoxin bar patches so a mod that restructures the health bar (such as Minty Spire 2) degrades them to a no-op instead of breaking the shared bar refresh
+- Improved the character select background for aspect ratios other than 16:9
+- Improved the Antitoxin bar patches so a mod that restructures the health bar (like Minty Spire 2) degrades them to a no-op instead of breaking the shared bar refresh
 
 ## [0.11.6] - 2026-08-20
 
