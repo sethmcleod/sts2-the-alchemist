@@ -17,7 +17,7 @@ mod).
 
 ### Changed
 
-- Changed the Antitoxin bar at 0 to show a quiet gray number; the green treatment now only warns that the incoming Poison tick will empty the bar
+- Changed the Antitoxin bar to show a gray number when empty
 
 ### Fixed
 
