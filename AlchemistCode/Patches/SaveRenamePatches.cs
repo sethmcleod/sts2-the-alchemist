@@ -32,6 +32,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-FRESH_COAT"] = ModelDb.Card<Alembic>().Id!,
         ["ALCHEMIST-ELIXIR"] = ModelDb.Card<Panacea>().Id!,
         ["ALCHEMIST-ANTIDOTE"] = ModelDb.Card<Dose>().Id!,
+        ["ALCHEMIST-DEEP_CUT"] = ModelDb.Card<Bonk>().Id!,
     };
 
     public static void Prefix(ref ModelId id)

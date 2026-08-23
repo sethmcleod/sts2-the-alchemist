@@ -9,6 +9,7 @@ mod).
 
 ### Changed
 
+- Renamed Deep Cut to Bonk
 - Updated the character select art with a wider background, so ultrawide windows show more of the swirl at the same character size as 16:9
 
 ### Fixed

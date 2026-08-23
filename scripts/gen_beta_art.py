@@ -125,7 +125,7 @@ COLORS = {
     "Siphon": ("#241a5e", "#2aa89b", "TR", "Unique"),
     "Brace": ("#5b3fc4", "#4a9fd8", "BR", "Unique"),
     "Needle Point": ("#5b3fc4", "#aeb4bc", "TR", "Enchanted payoffs: debuff attacks"),
-    "Deep Cut": ("#5b3fc4", "#4ad89b", "TR", "Enchanted payoffs: debuff attacks"),
+    "Bonk": ("#5b3fc4", "#4ad89b", "TR", "Enchanted payoffs: debuff attacks"),
     "Harden": ("#5b3fc4", "#d9c89a", "R", "Enchanted payoffs: Antitoxin"),
     "Vitrify": ("#5b3fc4", "#48495f", "BR", "Enchanted payoffs: Antitoxin"),
     "Apothecary": ("#241a4f", "#d8a23a", "BL", "Mix"),
