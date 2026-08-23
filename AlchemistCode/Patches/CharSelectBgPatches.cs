@@ -89,6 +89,10 @@ class CharSelectBgPatches
         void Layout()
         {
             if (!GodotObject.IsInstanceValid(sprite) || !GodotObject.IsInstanceValid(bg)) return;
+            // Measurement seam: tinting the underlay (the leak-test signal) holds the layout
+            // still so the sprite can be posed by hand. The menu's parallax moves the canvas
+            // every frame, so without this the pose would be overwritten at once
+            if (under.Modulate != Colors.White) return;
             var toLocal = bg.GetGlobalTransformWithCanvas().AffineInverse();
             var vis = toLocal * bg.GetViewportRect();
             // Per-frame cost stops here unless the view actually moved: the writes below are
@@ -96,15 +100,16 @@ class CharSelectBgPatches
             if (vis.IsEqualApprox(lastVis)) return;
             lastVis = vis;
 
-            // 2844 wide, not the full measured 3001: the painting's top-left corner is arm
-            // gaps, and on ~2.2:1 windows the wider fit walked the view into it. Stopping the
-            // usable left edge at -1360 keeps every corner in paint verified solid; the 16:9
-            // framing binds on height and is unchanged by this
-            var scale = 1.03f * Mathf.Max(vis.Size.X / 2844f, vis.Size.Y / 1552f);
+            // The 2026-08-23 export widened the solid square to skeleton x -2138..2044 and
+            // y -721..1032 (measured in-game, magenta underlay, 0.25x pose). 1552 stays as the
+            // height budget because it is what the approved 16:9 framing was tuned against;
+            // with the square this wide the height term binds up to ~2.7:1, so ultrawide keeps
+            // the 16:9 character size and simply shows more painting
+            var scale = 1.03f * Mathf.Max(vis.Size.X / 4182f, vis.Size.Y / 1552f);
             var posY = vis.End.Y - 583f * scale;
             // Cover clamps: keep the envelope over both side edges, preferring the tuned bias
-            var posLo = vis.End.X - 1484f * scale;
-            var posHi = vis.Position.X + 1360f * scale;
+            var posLo = vis.End.X - 2044f * scale;
+            var posHi = vis.Position.X + 2138f * scale;
             var posX = Mathf.Clamp(vis.GetCenter().X + 11f, Mathf.Min(posLo, posHi), Mathf.Max(posLo, posHi));
             sprite.Scale = new Vector2(scale, scale);
             sprite.Position = new Vector2(posX, posY);

@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Updated the character select art with a wider background, so ultrawide windows show more of the swirl at the same character size as 16:9
+
 ### Fixed
 
 - Fixed saved runs losing renamed cards on continue: ids retired by a rename (Sturdy Mix, Lob, Double Batch, and the 0.11.0 renames) now load as the card that replaced them instead of a blank deprecated card
