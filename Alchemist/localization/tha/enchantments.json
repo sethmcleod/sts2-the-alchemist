@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-DOSED.description": "เมื่อเล่นการ์ดทักษะใบนี้ ได้รับ [blue]{Amount}[/blue] [gold]สารต้านพิษ[/gold]",
   "ALCHEMIST-DOSED.title": "อาบยา",
-  "ALCHEMIST-FORTIFIED.description": "เมื่อเล่นการ์ดพลังใบนี้: ทุกครั้งที่คุณได้รับ[gold]พิษ[/gold] ได้รับ [blue]{Amount}[/blue] [gold]สารต้านพิษ[/gold]",
+  "ALCHEMIST-FORTIFIED.description": "เมื่อเล่นการ์ดพลังใบนี้ ได้รับ [blue]{Amount}[/blue] [gold]ความแข็งแรง[/gold]",
   "ALCHEMIST-FORTIFIED.title": "เสริมกำลัง",
   "ALCHEMIST-LACED.description": "การ์ดโจมตีใบนี้สร้างความเสียหายเพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
   "ALCHEMIST-LACED.title": "เจือพิษ"

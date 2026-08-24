@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-DOSED.description": "打出此技能牌時，獲得 [blue]{Amount}[/blue] 點[gold]抗毒素[/gold]。",
   "ALCHEMIST-DOSED.title": "佐劑",
-  "ALCHEMIST-FORTIFIED.description": "打出此能力牌時：每當你獲得[gold]中毒[/gold]時，獲得 [blue]{Amount}[/blue] 點[gold]抗毒素[/gold]。",
+  "ALCHEMIST-FORTIFIED.description": "打出此能力牌時，獲得 [blue]{Amount}[/blue] 層[gold]力量[/gold]。",
   "ALCHEMIST-FORTIFIED.title": "固化",
   "ALCHEMIST-LACED.description": "此攻擊牌額外造成與你[gold]中毒[/gold]等量的傷害。",
   "ALCHEMIST-LACED.title": "淬毒"

@@ -35,6 +35,7 @@ mod).
 - Reworked Numb: "Gain 10 (14) Block. Your Poison does not trigger next turn."
 - Reworked Slow Burn: "Deal 6 (8) damage. At the end of each turn this is in your Hand, deal damage to a random enemy equal to the turns fermented."
 - Reworked Spew: "Deal 7 (10) damage. Apply 2 (3) Poison, or twice as much if the enemy already has Poison."
+- Reworked Wormwood: "Deal damage equal to your Poison to ALL enemies 2 (3) times."
 - Updated the character select art with a wider background, so ultrawide windows show more of the swirl at the same character size as 16:9
 
 ### Fixed

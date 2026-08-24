@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "[gold]중독[/gold]을 얻을 때마다, [gold]항독소[/gold]를 [blue]1[/blue] 얻습니다.",
   "ALCHEMIST-SPARE_DOSE.flavor": "정량으로 덜어 둔 한 번분, 언제나 손 닿는 곳에.",
   "ALCHEMIST-SPARE_DOSE.title": "여분의 약",
-  "ALCHEMIST-WEATHERED_KIT.description": "매 전투 시작 시, [gold]중독[/gold]을 [blue]1[/blue], [gold]항독소[/gold]를 [blue]8[/blue] 얻습니다. 휴식 장소에서 [gold]조제[/gold]할 수 있습니다.",
+  "ALCHEMIST-WEATHERED_KIT.description": "매 전투 시작 시, [gold]중독[/gold]을 [blue]2[/blue], [gold]항독소[/gold]를 [blue]8[/blue] 얻습니다. 휴식 장소에서 [gold]조제[/gold]할 수 있습니다.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "손때가 묻고 기분 좋은 향이 나는 도구함.",
   "ALCHEMIST-WEATHERED_KIT.title": "낡은 도구함"
 }

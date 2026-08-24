@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "每当你获得[gold]中毒[/gold]时，获得[blue]1[/blue]点[gold]抗毒素[/gold]。",
   "ALCHEMIST-SPARE_DOSE.flavor": "一份量好的剂量，随时都够得着。",
   "ALCHEMIST-SPARE_DOSE.title": "备用剂量",
-  "ALCHEMIST-WEATHERED_KIT.description": "在每场战斗开始时，获得[blue]1[/blue]层[gold]中毒[/gold]和[blue]8[/blue]点[gold]抗毒素[/gold]。你可以在休息处[gold]酿造[/gold]。",
+  "ALCHEMIST-WEATHERED_KIT.description": "在每场战斗开始时，获得[blue]2[/blue]层[gold]中毒[/gold]和[blue]8[/blue]点[gold]抗毒素[/gold]。你可以在休息处[gold]酿造[/gold]。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "一只用旧了的箱子，气味令人愉快。",
   "ALCHEMIST-WEATHERED_KIT.title": "陈旧药箱"
 }

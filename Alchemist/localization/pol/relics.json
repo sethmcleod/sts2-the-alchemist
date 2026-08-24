@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Kiedykolwiek zyskasz [gold]Truciznę[/gold], zyskaj [blue]1[/blue] pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Odmierzona dawka, zawsze w zasięgu ręki.",
   "ALCHEMIST-SPARE_DOSE.title": "Zapasowa dawka",
-  "ALCHEMIST-WEATHERED_KIT.description": "Na początku każdej walki zyskaj [blue]1[/blue] pkt. [gold]Trucizny[/gold] i [blue]8[/blue] pkt. [gold]Antytoksyny[/gold]. Możesz [gold]Warzyć[/gold] w miejscach odpoczynku.",
+  "ALCHEMIST-WEATHERED_KIT.description": "Na początku każdej walki zyskaj [blue]2[/blue] pkt. [gold]Trucizny[/gold] i [blue]8[/blue] pkt. [gold]Antytoksyny[/gold]. Możesz [gold]Warzyć[/gold] w miejscach odpoczynku.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Sfatygowany kuferek o przyjemnym zapachu.",
   "ALCHEMIST-WEATHERED_KIT.title": "Sfatygowany kuferek"
 }

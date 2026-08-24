@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Ogni volta che ottieni [gold]Veleno[/gold], ottieni [blue]1[/blue] di [gold]Antitossina[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Una dose misurata, sempre a portata di mano.",
   "ALCHEMIST-SPARE_DOSE.title": "Dose di Scorta",
-  "ALCHEMIST-WEATHERED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]1[/blue] di [gold]Veleno[/gold] e [blue]8[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
+  "ALCHEMIST-WEATHERED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]2[/blue] di [gold]Veleno[/gold] e [blue]8[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Una valigetta consunta, dal profumo gradevole.",
   "ALCHEMIST-WEATHERED_KIT.title": "Kit Consunto"
 }

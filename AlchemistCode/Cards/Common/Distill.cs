@@ -19,12 +19,14 @@ public class Distill : AlchemistCard
     {
         WithVar("SelfPoison", 2, 0);
         WithVar("Antitoxin", 2, 1);
+        WithVar("perTurn", 1, 0);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));
     }
 
-    private int Distilled => DynamicVars["Antitoxin"].IntValue + FermentTurns;
+    private int Distilled => DynamicVars["Antitoxin"].IntValue
+        + DynamicVars["perTurn"].IntValue * FermentTurns;
 
     protected override void AddExtraArgsToDescription(LocString description)
     {

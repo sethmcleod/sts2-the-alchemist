@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-DOSED.description": "이 스킬 카드를 사용 시, [gold]항독소[/gold]를 [blue]{Amount}[/blue] 얻습니다.",
   "ALCHEMIST-DOSED.title": "복용",
-  "ALCHEMIST-FORTIFIED.description": "이 파워 카드를 사용 시: [gold]중독[/gold]을 얻을 때마다, [gold]항독소[/gold]를 [blue]{Amount}[/blue] 얻습니다.",
+  "ALCHEMIST-FORTIFIED.description": "이 파워 카드를 사용 시, [gold]힘[/gold]을 [blue]{Amount}[/blue] 얻습니다.",
   "ALCHEMIST-FORTIFIED.title": "강화",
   "ALCHEMIST-LACED.description": "이 공격 카드가 [gold]중독[/gold]만큼 추가 피해를 줍니다.",
   "ALCHEMIST-LACED.title": "맹독"

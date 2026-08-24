@@ -1,7 +1,7 @@
 {
   "ALCHEMIST-DOSED.description": "このスキルをプレイした時、[gold]抗毒素[/gold][blue]{Amount}[/blue]を得る。",
   "ALCHEMIST-DOSED.title": "投薬",
-  "ALCHEMIST-FORTIFIED.description": "このパワーをプレイした時から、[gold]毒[/gold]を得るたび、[gold]抗毒素[/gold][blue]{Amount}[/blue]を得る。",
+  "ALCHEMIST-FORTIFIED.description": "このパワーをプレイした時、[gold]筋力[/gold][blue]{Amount}[/blue]を得る。",
   "ALCHEMIST-FORTIFIED.title": "強化",
   "ALCHEMIST-LACED.description": "このアタックは、自身の[gold]毒[/gold]に等しい追加ダメージを与える。",
   "ALCHEMIST-LACED.title": "毒仕込み"

@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "[gold]毒[/gold]を得るたび、[gold]抗毒素[/gold][blue]1[/blue]を得る。",
   "ALCHEMIST-SPARE_DOSE.flavor": "きっちり量った一服が、いつでも手の届くところに。",
   "ALCHEMIST-SPARE_DOSE.title": "予備の一服",
-  "ALCHEMIST-WEATHERED_KIT.description": "各戦闘の開始時、[gold]毒[/gold][blue]1[/blue]と[gold]抗毒素[/gold][blue]8[/blue]を得る。休憩所で[gold]調合[/gold]できる。",
+  "ALCHEMIST-WEATHERED_KIT.description": "各戦闘の開始時、[gold]毒[/gold][blue]2[/blue]と[gold]抗毒素[/gold][blue]8[/blue]を得る。休憩所で[gold]調合[/gold]できる。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "使い込まれ、心地よい香りのする道具箱。",
   "ALCHEMIST-WEATHERED_KIT.title": "使い込まれた道具箱"
 }
