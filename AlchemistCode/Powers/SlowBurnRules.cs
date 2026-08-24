@@ -24,8 +24,9 @@ public sealed class SlowBurnRules() : CustomSingletonModel(HookType.Combat)
             if (player.Creature.CombatState is not { } combat) continue;
             foreach (var card in PileType.Hand.GetPile(player).Cards.OfType<SlowBurn>().ToList())
             {
-                // Not a draw from the shared seeded Rng: this hook runs on every client for
-                // every player, and a mismatched view of a remote hand would desync the channel
+                // TargetingRandomOpponents draws from the shared RunState.Rng.CombatTargets, the
+                // same stream the base game's random-target attacks use. That is only safe while
+                // this hook resolves the same number of times on every client
                 await DamageCmd.Attack(card.Burn)
                     .Unpowered()
                     .FromCard(card, null)

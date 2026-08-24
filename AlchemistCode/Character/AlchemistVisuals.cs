@@ -104,7 +104,11 @@ internal static class AlchemistVisuals
     // height of the ironclad (1185 units at 0.28 scale). The scale comes from the skeleton at run
     // time, thus a rig that changes size between exports still draws at this height. The Spine
     // atlas scale does not enter into it: it changes only how many texels cover the same art
-    private const float ModelHeight = 296f;
+    private const float ModelHeight = 272f;
+
+    // The anchors below were measured against a 296-unit model. They are screen pixels, so they do
+    // not follow the rig: scale them with the height or the hover box and intent bubble drift
+    private const float AnchorScale = ModelHeight / 296f;
 
     // The height of the ironclad rig, used only if the skeleton does not report its own size
     private const float FallbackSkeletonHeight = 833f;
@@ -112,10 +116,10 @@ internal static class AlchemistVisuals
     // The feet of the model sit at y = 0 and Godot y increases downward, thus the art occupies
     // y -296 to 0. The skeleton is 8 units wider on the left, where the staff is.
     // These are in screen pixels, thus ModelScale already applies and they do not follow the rig
-    private static readonly Vector2 BoundsPosition = new(-118, -296);
-    private static readonly Vector2 BoundsSize = new(228, 296);
-    private static readonly Vector2 CenterPosition = new(0, -170);
-    private static readonly Vector2 IntentPosition = new(0, -300);
+    private static readonly Vector2 BoundsPosition = new(-118 * AnchorScale, -296 * AnchorScale);
+    private static readonly Vector2 BoundsSize = new(228 * AnchorScale, 296 * AnchorScale);
+    private static readonly Vector2 CenterPosition = new(0, -170 * AnchorScale);
+    private static readonly Vector2 IntentPosition = new(0, -300 * AnchorScale);
 
     // One skeleton serves all the sprites. The game makes the visuals again for the game over
     // screen and the unlock screen, and a re-read of the files for each one is waste

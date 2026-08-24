@@ -19,9 +19,14 @@ namespace Alchemist.AlchemistCode.Patches;
 // recoloured; the empty track is left as the health bar draws it
 public static class AntitoxinBarPatches
 {
-    // Clears the HP number, which is drawn larger than its own 16px bar and overflows it. Tightened
-    // as far as the two sets of digits allow without touching
-    private const float Gap = 10f;
+    // The pair sits inside the space one bar used to occupy, so the gap is only what keeps the two
+    // sets of digits from touching
+    // The panel frame is tight, so the pair sits closer there than under the combat sprite, where
+    // the two sets of digits need room not to touch
+    private const float PanelGap = 3f;
+    private const float CombatGap = 8f;
+
+    private static float GapFor(Node bar) => InPlayerPanel(bar) ? PanelGap : CombatGap;
 
     private static readonly Color TextColor = new("efe6ff");
     private static readonly Color TextOutline = new("2e0f52");
@@ -90,7 +95,6 @@ public static class AntitoxinBarPatches
             // with the purple and collides with the HP number above it
             label.AddThemeColorOverride("font_color", TextColor);
             label.AddThemeColorOverride("font_outline_color", TextOutline);
-            label.AddThemeFontSizeOverride("font_size", 22);
             label.VerticalAlignment = VerticalAlignment.Center;
 
             // The health bar's own poison overlay is already the right green, so it is reused as-is to
@@ -113,6 +117,25 @@ public static class AntitoxinBarPatches
 
     private static readonly ConditionalWeakTable<NPowerContainer, object> Shifted = new();
 
+    // The player panel's frame is a fixed size, so the two bars share the space one bar had rather
+    // than growing the box: HP rises by half the added block and Antitoxin takes the half below
+    private static readonly ConditionalWeakTable<Control, object> HpBaseY = new();
+
+    private static float Lift(Control hp) => (hp.Size.Y + PanelGap) / 2f;
+
+    // Only the player panel is boxed by a fixed golden frame. The combat bar hangs under the
+    // creature with room below it, so it keeps its own position and the pair grows downward
+    private static bool InPlayerPanel(Node bar)
+    {
+        Node? node = bar;
+        while (node != null)
+        {
+            if (node is NCreatureStateDisplay) return false;
+            node = node.GetParent();
+        }
+        return true;
+    }
+
     // Called from Refresh, not _Ready: HpBarContainer has no size until the first layout pass.
     // UpdatePositions rebuilds Position from the cached _originalPosition on every power Add and Remove,
     // so the cached origin has to move too or the row snaps back the first time a power lands
@@ -126,7 +149,7 @@ public static class AntitoxinBarPatches
         if (Shifted.TryGetValue(powers, out _)) return;
         Shifted.Add(powers, new object());
 
-        var offset = new Vector2(0f, barHeight + Gap);
+        var offset = new Vector2(0f, barHeight + CombatGap);
         powers.Position += offset;
         if (PowerOriginRef(powers) is { } origin) PowerOriginRef(powers) = origin + offset;
     }
@@ -157,8 +180,21 @@ public static class AntitoxinBarPatches
             if (inCombat) parts.LastKnown = live;
 
             if (__instance.HpBarContainer is not { } hp) return;
+            if (InPlayerPanel(__instance))
+            {
+                if (!HpBaseY.TryGetValue(hp, out var baseY)) { baseY = hp.Position.Y; HpBaseY.Add(hp, baseY); }
+                hp.Position = new Vector2(hp.Position.X, (float)baseY - Lift(hp));
+            }
+
+            if (hp.GetNodeOrNull<Label>("HpLabel") is { } hpLabel)
+            {
+                var hpSize = hpLabel.GetThemeFontSize("font_size");
+                if (hpSize > 0 && parts.Text.GetThemeFontSize("font_size") != hpSize)
+                    parts.Text.AddThemeFontSizeOverride("font_size", hpSize);
+            }
+
             parts.Root.Visible = true;
-            parts.Root.Position = new Vector2(hp.Position.X, hp.Position.Y + hp.Size.Y + Gap);
+            parts.Root.Position = new Vector2(hp.Position.X, hp.Position.Y + hp.Size.Y + GapFor(__instance));
             parts.Root.Size = hp.Size;
 
             // The real bar shrinks its foreground with a negative OffsetRight, so this matches it
@@ -254,7 +290,7 @@ public static class AntitoxinBarPatches
                 && __instance.GetNodeOrNull<NHealthBar>("%HealthBar") is { } healthBar
                 && Bars.TryGetValue(healthBar, out var parts)
                 && GodotObject.IsInstanceValid(parts.Root))
-                extra = parts.Root.Size.Y + Gap;
+                extra = parts.Root.Size.Y + CombatGap;
 
             hitbox.Size = new Vector2(hitbox.Size.X, baseHeight + extra);
 
