@@ -7,14 +7,46 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added beta art for Strike and Defend cards
+- Added Distill card: "Retain. Ferment. Gain 2 Poison. Gain 2 (3) Antitoxin, plus 1 for each turn fermented." It replaces Retch
+- Added Drench card: "Deal 13 (17) damage. Apply 2 Poison. Gain 1 Poison." It replaces Lick
+- Added Fumigate card: "Apply 2 (3) Poison to ALL enemies. Gain 2 Poison." It replaces Double Dose
+- Added Spores card: "Deal 3 (4) damage. Apply 1 Poison. Add a copy of this card to your Discard Pile." It replaces Quicklime
+- Added Vent card: "Lose ALL your Poison and apply twice that much Poison." It replaces Adapt
+
 ### Changed
 
+- Buffed Fallout: damage to ALL 4 (6) -> 6 (8)
+- Buffed Forked Tongue: damage per hit 3 (4) -> 4 (5)
+- Buffed Froth: removed the 4-hit maximum
+- Buffed Osmosis: Antitoxin per turn 3 (4) -> 4 (5)
+- Buffed Poultice: Block 9 (12) -> 10 (14)
+- Buffed Smoke Out: damage to ALL 4 (6) -> 6 (8)
+- Changed Puncture: now applies 2 (3) Vulnerable but requires the enemy to have Poison
+- Changed Spatter: it now applies Poison to ALL enemies
+- Changed Weathered Kit: Poison at the start of combat 1 -> 2
 - Renamed Deep Cut to Bonk
+- Reworked Backfire: "Deal 12 (16) damage. Gain 1 Poison."
+- Reworked Caustic Strike: "Retain. Ferment. Deal 6 (8) damage. Apply 1 (2) Poison. Applies 1 additional Poison for each turn fermented."
+- Reworked Fortified enchantment: playing the Power now grants 2 Strength
+- Reworked Numb: "Gain 10 (14) Block. Your Poison does not trigger next turn."
+- Reworked Slow Burn: "Deal 6 (8) damage. At the end of each turn this is in your Hand, deal damage to a random enemy equal to the turns fermented."
+- Reworked Spew: "Deal 7 (10) damage. Apply 2 (3) Poison, or twice as much if the enemy already has Poison."
 - Updated the character select art with a wider background, so ultrawide windows show more of the swirl at the same character size as 16:9
 
 ### Fixed
 
-- Fixed saved runs losing renamed cards on continue: ids retired by a rename (Sturdy Mix, Lob, Double Batch, and the 0.11.0 renames) now load as the card that replaced them instead of a blank deprecated card
+- Fixed saved runs losing renamed cards on continue: ids retired by a rename now load as the card that replaced them instead of a blank deprecated card
+
+### Removed
+
+- Removed Adapt card
+- Removed Double Dose card
+- Removed Lick card
+- Removed Quicklime card
+- Removed Retch card
 
 ## [0.11.8] - 2026-08-22
 

@@ -15,16 +15,15 @@
 - **Self-Poison**: The Alchemist doses themselves on purpose. Many attacks deal
   additional damage based on your Poison, so the dose is power for as long as
   you carry it.
-- **Antitoxin**: A reserve that absorbs the damage your Poison would deal, up
-  to a limit. It persists across turns, so you can bank it before you dose.
-  What it cannot cover comes out of your HP.
+- **Antitoxin**: A reserve that absorbs the damage your Poison would deal. It
+  persists across turns, so you can bank it before you dose. What it cannot
+  cover comes out of your HP.
 - **Mix**: These are tokens you can create in combat, and you can often choose
   which one: Bursting (damage), Fuming (Weak and Vulnerable), Syrupy (Block)
   and Zesty (Draw and Antitoxin).
 - **Infuse**: Infusing a card Enchants it for the rest of combat based on its
   type. Attacks deal extra damage equal to your Poison, Skills generate
-  Antitoxin, Powers increase your Antitoxin limit, and other cards gain
-  Ethereal.
+  Antitoxin, Powers grant Strength when played, and other cards gain Ethereal.
 - **Ferment**: These cards grow in potency for every turn they stay in your
   hand. Playing one adds a Residue to your Discard Pile.
 - **Brew**: This Rest Site option allows you to procure one of 7 unique potions

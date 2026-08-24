@@ -1,7 +1,8 @@
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Localization;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
@@ -12,10 +13,16 @@ public class SlowBurn : AlchemistCard
 
     public SlowBurn() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(6, static (card, _) =>
-                (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,
-            ValueProp.Move, 2, 0);
+        WithDamage(6, 2);
         WithKeyword(CardKeyword.Retain);
+    }
+
+    internal int Burn => FermentTurns;
+
+    protected override void AddExtraArgsToDescription(LocString description)
+    {
+        base.AddExtraArgsToDescription(description);
+        description.Add("BurnNow", FermentTurns > 0 ? $" ([green]{Burn}[/green])" : "");
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

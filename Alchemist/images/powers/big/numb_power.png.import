@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dimwmrqw3fm7h"
-path="res://.godot/imported/double_dose.png-1dcb7df21140c063dd9fd421ef25b80e.ctex"
+uid="uid://bvnqflle2h4hc"
+path="res://.godot/imported/numb_power.png-684b74d3fd2e07f8614e49c30a92e213.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/double_dose.png"
-dest_files=["res://.godot/imported/double_dose.png-1dcb7df21140c063dd9fd421ef25b80e.ctex"]
+source_file="res://Alchemist/images/powers/big/numb_power.png"
+dest_files=["res://.godot/imported/numb_power.png-684b74d3fd2e07f8614e49c30a92e213.ctex"]
 
 [params]
 

@@ -11,13 +11,11 @@ public class ForkedTongue : AlchemistCard
 {
     public ForkedTongue() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(3, static (card, _) => Dose(card), ValueProp.Move, 1);
+        WithCalculatedDamage(4, static (card, _) => Dose(card), ValueProp.Move, 1);
         WithTip(typeof(PoisonPower));
     }
 
     private const int Hits = 2;
-
-    protected override bool ConditionalGlow => Dose(this) > 0;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

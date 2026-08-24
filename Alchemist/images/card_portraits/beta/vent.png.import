@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcs17n6jq5uw0"
-path="res://.godot/imported/fortified_power.png-371ac8c46dda490efb373f7b5a6924af.ctex"
+uid="uid://dct5hc00hcoh3"
+path="res://.godot/imported/vent.png-228948248763776048b05349439d7cc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/fortified_power.png"
-dest_files=["res://.godot/imported/fortified_power.png-371ac8c46dda490efb373f7b5a6924af.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/vent.png"
+dest_files=["res://.godot/imported/vent.png-228948248763776048b05349439d7cc1.ctex"]
 
 [params]
 

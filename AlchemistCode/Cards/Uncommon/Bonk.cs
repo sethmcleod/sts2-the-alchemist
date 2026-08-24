@@ -14,8 +14,6 @@ public class Bonk : AlchemistCard
         WithDamage(16, 6);
     }
 
-    protected override bool ConditionalGlow => Dose(this) > 0;
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab"),

@@ -11,7 +11,7 @@ public class Osmosis : AlchemistCard
 {
     public Osmosis() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Amount", 3, 1);
+        WithVar("Amount", 4, 1);
         WithTip(typeof(AntitoxinPower));
     }
 

@@ -1,4 +1,4 @@
-using Alchemist.AlchemistCode.Commands;
+using System.Linq;
 using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,22 +8,27 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-[CardTheme(CardTheme.Mix, CardTheme.Poison)]
-public class Stir : AlchemistCard
+[CardTheme(CardTheme.Poison)]
+public class Fumigate : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Stir() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Fumigate() : base(1, CardType.Skill, CardRarity.Common, TargetType.AllEnemies)
     {
-        WithCostUpgradeBy(-1);
+        WithVar("Poison", 2, 1);
         WithVar("SelfPoison", 2, 0);
-        WithTips(_ => Mixing.MixTips());
         WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await Mixing.CreateChosen(choiceContext, Owner);
+        if (CombatState == null) return;
+        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
+        {
+            PoisonSplash(enemy);
+            await PowerCmd.Apply<PoisonPower>(choiceContext, enemy,
+                DynamicVars["Poison"].IntValue, Owner.Creature, this);
+        }
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
             DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
     }

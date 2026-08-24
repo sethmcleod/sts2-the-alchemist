@@ -20,8 +20,6 @@ public class Toughen : AlchemistCard
         WithTip(typeof(PoisonPower));
     }
 
-    protected override bool ConditionalGlow => Dose(this) > 0;
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);

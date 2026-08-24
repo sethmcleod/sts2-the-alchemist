@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2pvt1vjmot2r"
-path="res://.godot/imported/lick.png-167a5a64f3ead9a6a3eb120d3a826031.ctex"
+uid="uid://dstl7q2m4knb8"
+path="res://.godot/imported/distill.png-cee88eb2efa2e426cae7b6263ea3f898.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/lick.png"
-dest_files=["res://.godot/imported/lick.png-167a5a64f3ead9a6a3eb120d3a826031.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/distill.png"
+dest_files=["res://.godot/imported/distill.png-cee88eb2efa2e426cae7b6263ea3f898.ctex"]
 
 [params]
 

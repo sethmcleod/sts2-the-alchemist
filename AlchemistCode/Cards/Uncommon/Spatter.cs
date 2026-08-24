@@ -22,10 +22,12 @@ public class Spatter : AlchemistCard
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
         var dose = Math.Min(DynamicVars["Poison"].IntValue, (int)Dose(this));
-        if (dose <= 0) return;
+        if (dose <= 0 || CombatState == null) return;
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, -dose, Owner.Creature, this);
-        if (play.Target is not { IsAlive: true } target) return;
-        PoisonSplash(target);
-        await PowerCmd.Apply<PoisonPower>(choiceContext, target, dose, Owner.Creature, this);
+        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
+        {
+            PoisonSplash(enemy);
+            await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, dose, Owner.Creature, this);
+        }
     }
 }

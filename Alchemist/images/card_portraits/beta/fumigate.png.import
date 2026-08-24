@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8co6pnt450r5"
-path="res://.godot/imported/adapt.png-2bdf0fe6e7913a267d4d97fc31d85c0f.ctex"
+uid="uid://bof24lch3ceab"
+path="res://.godot/imported/fumigate.png-a46704ec916bd435956a7eb982d9dbb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/adapt.png"
-dest_files=["res://.godot/imported/adapt.png-2bdf0fe6e7913a267d4d97fc31d85c0f.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/fumigate.png"
+dest_files=["res://.godot/imported/fumigate.png-a46704ec916bd435956a7eb982d9dbb5.ctex"]
 
 [params]
 

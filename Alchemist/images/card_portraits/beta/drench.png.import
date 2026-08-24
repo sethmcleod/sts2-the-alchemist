@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3fu0j6c0quss"
-path="res://.godot/imported/quicklime.png-c78dd5e88b23610d73e782e70d1dd4d9.ctex"
+uid="uid://drnch4k7q2mb3"
+path="res://.godot/imported/drench.png-668f1f1e1f2c85edcde1e006d06040b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/quicklime.png"
-dest_files=["res://.godot/imported/quicklime.png-c78dd5e88b23610d73e782e70d1dd4d9.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/drench.png"
+dest_files=["res://.godot/imported/drench.png-668f1f1e1f2c85edcde1e006d06040b4.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

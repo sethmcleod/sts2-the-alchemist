@@ -32,6 +32,7 @@ public class WhiteHeat : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null || Fuel <= 0) return;
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await DamageCmd.Attack(Fuel * Multiplier)
             .Unpowered()
             .WithHitFx(HitVfx("vfx/vfx_fire_burst"), "event:/sfx/characters/attack_fire")

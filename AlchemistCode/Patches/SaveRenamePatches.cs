@@ -26,13 +26,19 @@ public static class SaveRenamePatches
         ["ALCHEMIST-LOB"] = ModelDb.Card<Mash>().Id!,
         ["ALCHEMIST-DOUBLE_BATCH"] = ModelDb.Card<FreshBatch>().Id!,
         ["ALCHEMIST-DREGS"] = ModelDb.Card<Residue>().Id!,
-        ["ALCHEMIST-PURGE"] = ModelDb.Card<DoubleDose>().Id!,
         ["ALCHEMIST-PAYS_OFF"] = ModelDb.Card<SmellingSalts>().Id!,
         ["ALCHEMIST-NEXT_UP"] = ModelDb.Card<Anoint>().Id!,
         ["ALCHEMIST-FRESH_COAT"] = ModelDb.Card<Alembic>().Id!,
         ["ALCHEMIST-ELIXIR"] = ModelDb.Card<Panacea>().Id!,
         ["ALCHEMIST-ANTIDOTE"] = ModelDb.Card<Dose>().Id!,
         ["ALCHEMIST-DEEP_CUT"] = ModelDb.Card<Bonk>().Id!,
+        // Cuts, not renames: each retired card maps to the new card in its slot, so a mid-save
+        // update hands the player something new instead of a blank deprecated card
+        ["ALCHEMIST-DOUBLE_DOSE"] = ModelDb.Card<Fumigate>().Id!,
+        ["ALCHEMIST-QUICKLIME"] = ModelDb.Card<Spores>().Id!,
+        ["ALCHEMIST-ADAPT"] = ModelDb.Card<Vent>().Id!,
+        ["ALCHEMIST-LICK"] = ModelDb.Card<Drench>().Id!,
+        ["ALCHEMIST-RETCH"] = ModelDb.Card<Distill>().Id!,
     };
 
     public static void Prefix(ref ModelId id)

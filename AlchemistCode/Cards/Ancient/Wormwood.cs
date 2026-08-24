@@ -8,23 +8,17 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Ancient;
 
-[CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
+[CardTheme(CardTheme.Poison)]
 public class Wormwood : AlchemistCard
 {
     public Wormwood() : base(0, CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies)
     {
-        WithCalculatedDamage(3, static (card, _) => Dose(card), ValueProp.Move, 1);
-        WithVar("antitoxin", 2, 1);
+        WithCalculatedDamage(9, static (card, _) => Dose(card), ValueProp.Move, 3);
         WithTip(typeof(PoisonPower));
-        WithTip(typeof(AntitoxinPower));
     }
-
-    protected override bool ConditionalGlow => Dose(this) > 0;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
-        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
-            DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
     }
 }
