@@ -41,8 +41,8 @@ Harden,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block. Ga
 Heavy Dose,Uncommon,Attack,3,Deal 35 (45) damage. Gain 3 Poison.
 Ichor,Rare,Power,2 (1),"At the start of your turn, gain 2 Poison. Your Attacks deal additional damage equal to your Poison."
 Immunize,Uncommon,Power,1,"Retain. Ferment (0). Whenever you play a Skill, gain 1 (2) Antitoxin, plus 1 for each turn fermented."
-Inure,Uncommon,Skill,1,"Gain 3 (4) Antitoxin. Whenever you gain Antitoxin this combat, gain 1 more."
-Jab,Basic,Attack,1,Deal 5 (7) damage. Apply 2 Poison. Deals additional damage equal to your Poison.
+Inure,Uncommon,Power,1,"Whenever you gain Antitoxin, gain 1 more. Gain 3 (4) Antitoxin."
+Jab,Basic,Attack,1,Deal 5 (7) damage. Apply 2 (3) Poison. Deals additional damage equal to your Poison.
 Lash Out,Rare,Attack,1,Deal 3 (5) damage 3 times. Hits an additional time if you have Poison.
 Mash,Common,Attack,1,Deal 5 (8) damage. Choose a Mix to add into your Hand.
 Mercurial Form,Rare,Power,3 (2),"At the start of your turn, gain 1 Poison and gain Strength equal to your Poison this turn."

@@ -25,6 +25,7 @@ mod).
 - Buffed Osmosis: Antitoxin per turn 3 (4) -> 4 (5)
 - Buffed Poultice: Block 9 (12) -> 10 (14)
 - Buffed Smoke Out: damage to ALL 4 (6) -> 6 (8)
+- Changed Inure from a Skill to a Power, and reordered its text so the ongoing effect reads first
 - Changed Puncture: now applies 2 (3) Vulnerable but requires the enemy to have Poison
 - Changed Spatter: it now applies Poison to ALL enemies
 - Changed the Alchemist combat model to stand slightly shorter, closer to the other characters
@@ -42,6 +43,7 @@ mod).
 ### Fixed
 
 - Fixed Antitoxin draining on attacks that Block absorbed: the Poison forecast could leave a pending absorb that the next hit spent
+- Fixed the Inure power tooltip reading "gain 0 more" on a card you have not played yet
 - Fixed saved runs losing renamed cards on continue: ids retired by a rename now load as the card that replaced them instead of a blank deprecated card
 - Improved the Antitoxin bar in the party panel, so it sits closer to the HP bar
 - Fixed the energy counter number outline in the party panel, so it read better against the light gold
