@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -23,9 +24,8 @@ public class Solvent : AlchemistPotion, IBrewOnly
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         PotionModel.AssertValidForTargetedPotion(target);
-        // COMPAT-BRANCH: main. The beta LoseBlock takes (choiceContext, target, amount, source)
         if (target!.Block > 0)
-            await CreatureCmd.LoseBlock(target, target.Block);
+            await GameCompat.LoseBlock(choiceContext, target, target.Block, Owner.Creature);
         if (target.HasPower<ArtifactPower>())
             await PowerCmd.Remove<ArtifactPower>(target);
         await PowerCmd.Apply<WeakPower>(choiceContext, target, Weak, Owner.Creature, null);
