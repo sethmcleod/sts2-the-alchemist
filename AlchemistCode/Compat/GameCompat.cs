@@ -50,6 +50,11 @@ public static class GameCompat
         decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? play = null) =>
         CreatureCmd.Damage(choiceContext, target, amount, props, dealer, cardSource);
 
+    /// <summary>main takes only the target and the amount; beta also takes the context and remover.</summary>
+    public static Task LoseBlock(PlayerChoiceContext choiceContext, Creature target, decimal amount,
+        Creature? remover) =>
+        CreatureCmd.LoseBlock(target, amount);
+
     /// <summary>main has no play parameter between cardSource and the hook type.</summary>
     public static decimal ModifyDamage(IRunState runState, ICombatState? combatState, Creature? target,
         Creature? dealer, decimal damage, ValueProp props, CardModel? cardSource, CardPlay? play,
