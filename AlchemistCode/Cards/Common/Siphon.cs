@@ -15,7 +15,7 @@ public class Siphon : AlchemistCard
     {
         WithDamage(7, 3);
         WithCards(1, 0);
-        WithVar("antitoxin", 3, 0);
+        WithVar("antitoxin", 1, 0);
         WithTips(_ => Infusion.InfuseTips());
     }
 

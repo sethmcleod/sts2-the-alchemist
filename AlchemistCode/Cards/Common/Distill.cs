@@ -18,7 +18,7 @@ public class Distill : AlchemistCard
     public Distill() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithVar("SelfPoison", 2, 0);
-        WithVar("Antitoxin", 2, 1);
+        WithVar("Antitoxin", 1, 1);
         WithVar("perTurn", 1, 0);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));

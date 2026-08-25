@@ -13,7 +13,7 @@ public class Panacea : AlchemistCard
     public Panacea() : base(3, CardType.Power, CardRarity.Ancient, TargetType.Self)
     {
         WithVar("SelfPoison", 2, 0);
-        WithVar("antitoxin", 3, 1);
+        WithVar("antitoxin", 1, 1);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));
     }

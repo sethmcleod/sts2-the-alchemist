@@ -13,7 +13,7 @@ public class Harden : AlchemistCard
     public Harden() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Block", 2, 1);
-        WithVar("Antitoxin", 2, 1);
+        WithVar("Antitoxin", 1, 1);
         WithTip(StaticHoverTip.Block);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));

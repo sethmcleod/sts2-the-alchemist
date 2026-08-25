@@ -3,6 +3,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
@@ -13,12 +14,15 @@ public class Vitrify : AlchemistCard
 
     public Vitrify() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithVar("antitoxin", 8, 4);
+        WithBlock(5, 3);
+        WithVar("antitoxin", 2, 1);
+        WithTip(StaticHoverTip.Block);
         WithTip(typeof(AntitoxinPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        await CommonActions.CardBlock(this, play);
         await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
             DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
     }

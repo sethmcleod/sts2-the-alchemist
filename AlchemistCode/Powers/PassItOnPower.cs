@@ -16,14 +16,14 @@ public class PassItOnPower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<AntitoxinPower>() };
 
-    // Driven by AntitoxinPower rather than a damage hook, because a fully soaked tick deals no damage
-    // for a hook to see
-    internal async Task OnAbsorbed(int amount)
+    // Driven by AntitoxinPower rather than a damage hook, because a fully held tick deals no damage
+    // for a hook to see. The argument gates the trigger; Amount alone is the payout
+    internal async Task OnAbsorbed(int prevented)
     {
-        if (amount <= 0 || Owner.CombatState is not { } combat) return;
+        if (prevented <= 0 || Owner.CombatState is not { } combat) return;
         Flash();
         foreach (var enemy in combat.GetOpponentsOf(Owner).Where(e => e.IsAlive).ToList())
-            await GameCompat.Damage(new ThrowingPlayerChoiceContext(), enemy, amount * Amount,
+            await GameCompat.Damage(new ThrowingPlayerChoiceContext(), enemy, Amount,
                 ValueProp.Unpowered, Owner, null, null);
     }
 }

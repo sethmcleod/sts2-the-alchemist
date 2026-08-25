@@ -12,7 +12,7 @@ public class Inure : AlchemistCard
     public Inure() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithPower<InurePower>(1, 0);
-        WithVar("antitoxin", 3, 1);
+        WithVar("antitoxin", 1, 1);
         WithTip(typeof(AntitoxinPower));
     }
 

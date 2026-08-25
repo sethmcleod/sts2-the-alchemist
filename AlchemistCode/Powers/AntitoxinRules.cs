@@ -12,11 +12,18 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// This cannot live on AntitoxinPower: the absorb record has to outlive the power being spent down
-// to nothing. A combat-hook singleton is always listening.
+// A combat-hook singleton, because Callus, Second Skin and the analytics counters all read the tick
+// record on creatures that may hold no Antitoxin at all.
 public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 {
     private static readonly HashSet<Creature> Absorbed = [];
+
+    // Poison that got past the capacity this turn. Smelling Salts reads it in AfterSideTurnStartLate:
+    // the tick has resolved by then, and comparing the two stacks instead would read a Poison amount
+    // PoisonPower has already decremented
+    private static readonly HashSet<Creature> Bled = [];
+
+    internal static bool BledThisTurn(Creature creature) => Bled.Contains(creature);
 
     // Royal Poison and in-combat max HP loss deal damage with the same null dealer and
     // Unblockable|Unpowered shape as a Poison tick. PoisonPower.Trigger deals exactly the stack it is
@@ -37,16 +44,9 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         && props.HasFlag(ValueProp.Unblockable)
         && props.HasFlag(ValueProp.Unpowered);
 
-    // True only while PoisonPower.CalculateTotalDamageNextTurn is sizing the incoming-damage preview.
-    // That forecast runs the same ModifyDamage hook a real tick does and never reaches
-    // BeforeDamageReceived, so Absorb must leave the pending spend untouched while it is set: writing
-    // there would hand the next hit a spend that belongs to no damage, and clearing there would rob a
-    // real tick that had already recorded one. PoisonForecastPatches owns the flag
-    internal static bool InPoisonForecast;
-
-    // The absorbed slice of the tick that is resolving right now. Callus runs in
-    // AfterDamageReceived, which is handed the post-absorb amount, so without this a fully soaked tick
-    // pays it nothing and the character's own starter relic switches them off
+    // The held slice of the tick resolving right now, written only by AntitoxinPower for a real tick.
+    // Callus and Second Skin run in AfterDamageReceived, where the amount is already reduced, so a
+    // fully held tick would pay them nothing without it
     private static readonly Dictionary<Creature, int> AbsorbedOnTick = new();
 
     internal static void ClearTickAbsorb(Creature creature) => AbsorbedOnTick.Remove(creature);
@@ -77,7 +77,10 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (target.IsPlayer && IsPoisonTick(target, result.UnblockedDamage, props, dealer, cardSource))
+        {
+            Bled.Add(target);
             Analytics.RunCounters.Add(target.Player, Analytics.RunCounters.PoisonBled, result.UnblockedDamage);
+        }
         return Task.CompletedTask;
     }
 
@@ -88,6 +91,7 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         Absorbed.Clear();
+        Bled.Clear();
         AbsorbedOnTick.Clear();
         return Task.CompletedTask;
     }

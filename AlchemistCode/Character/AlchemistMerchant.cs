@@ -18,10 +18,11 @@ internal static class AlchemistMerchant
 {
     public const string ScenePath = $"{MainFile.ResPath}/scenes/merchant/alchemist_merchant.tscn";
 
-    // The shop stands the character close to the camera, far larger than the 296 px of combat.
+    // The shop stands the character close to the camera, far larger than the 272 px of combat.
     // The defect is the largest of the base characters at 538 px (2339 units at 0.23), and the
-    // Alchemist reads a little smaller than that. The scale comes from the skeleton at run time
-    private const float ModelHeight = 515f;
+    // Alchemist reads a little smaller than that. The scale comes from the skeleton at run time.
+    // Cut by the same 272/296 the combat model was, so the two read at one size next to the others
+    private const float ModelHeight = 473f;
 
     // Every base merchant scene leaves its sprite at the origin and lets the rig place itself, but
     // the rigs disagree about where that origin sits: the ironclad keeps 73 units of art below it

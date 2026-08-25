@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Alchemist.AlchemistCode.Cards.Ancient;
+using Alchemist.AlchemistCode.Relics;
 using Alchemist.AlchemistCode.Cards.Basic;
 using Alchemist.AlchemistCode.Cards.Common;
 using Alchemist.AlchemistCode.Cards.Rare;
@@ -39,6 +40,28 @@ public static class SaveRenamePatches
         ["ALCHEMIST-ADAPT"] = ModelDb.Card<Vent>().Id!,
         ["ALCHEMIST-LICK"] = ModelDb.Card<Drench>().Id!,
         ["ALCHEMIST-RETCH"] = ModelDb.Card<Distill>().Id!,
+        ["ALCHEMIST-CONGEAL"] = ModelDb.Card<Proof>().Id!,
+    };
+
+    public static void Prefix(ref ModelId id)
+    {
+        if (id?.Entry != null && Renamed.TryGetValue(id.Entry, out var replacement))
+            id = replacement;
+    }
+}
+
+// The relic half of the same problem: RelicModel.FromSave resolves through
+// SaveUtil.RelicOrDeprecated, so a retired relic id in a live save loads as a blank DeprecatedRelic
+[HarmonyPatch(typeof(SaveUtil), nameof(SaveUtil.RelicOrDeprecated))]
+public static class RelicSaveRenamePatches
+{
+    private static Dictionary<string, ModelId>? _renamed;
+
+    // Lazy: ModelDb is not populated when Harmony applies the patch
+    private static Dictionary<string, ModelId> Renamed => _renamed ??= new Dictionary<string, ModelId>
+    {
+        // Cuts, not renames: each retired relic maps to the relic that took its slot
+        ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Bitterroot>().Id!,
     };
 
     public static void Prefix(ref ModelId id)
