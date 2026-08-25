@@ -29,7 +29,7 @@ mod).
 - Buffed Poultice: Block 9 (12) -> 10 (14)
 - Buffed Smoke Out: damage to ALL 4 (6) -> 6 (8)
 - Buffed Syrupy Mix: Block 4 (7) -> 5 (8)
-- Changed Fuming Mix: the upgrade now applies 1 Poison instead of removing the 1 Poison you gain
+- Changed Fuming Mix: the upgrade now applies 1 Poison to the enemy instead of gaining 1 Poison
 - Changed Inure from a Skill to a Power
 - Changed Puncture: now applies 2 (3) Vulnerable but requires the enemy to have Poison
 - Changed Spatter: it now applies Poison to ALL enemies

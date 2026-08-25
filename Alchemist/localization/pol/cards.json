@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "Piana",
   "ALCHEMIST-FUMIGATE.description": "Nałóż {Poison:diff()} pkt. [gold]Trucizny[/gold] WSZYSTKIM przeciwnikom.\nZyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-FUMIGATE.title": "Fumigacja",
-  "ALCHEMIST-FUMING_MIX.description": "Nałóż {WeakPower} pkt. [gold]Słabości[/gold] i {VulnerablePower} pkt. [gold]Wrażliwości[/gold].{IfUpgraded:show:\nNałóż {PoisonPower} pkt. [gold]Trucizny[/gold].|}\nZyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Nałóż {WeakPower} pkt. [gold]Słabości[/gold] i {VulnerablePower} pkt. [gold]Wrażliwości[/gold].{IfUpgraded:show:\nNałóż {PoisonPower} pkt. [gold]Trucizny[/gold].|\nZyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].}",
   "ALCHEMIST-FUMING_MIX.title": "Dymiąca mieszanka",
   "ALCHEMIST-GOLDEN_FRUIT.description": "Zyskaj {gold} szt. [gold]Złota[/gold].\nRozegraj dodatkową turę po tej.",
   "ALCHEMIST-GOLDEN_FRUIT.title": "Złoty owoc",

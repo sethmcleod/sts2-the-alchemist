@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "Köpük",
   "ALCHEMIST-FUMIGATE.description": "TÜM düşmanlara {Poison:diff()} [gold]Zehir[/gold] uygula.\n{SelfPoison} [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-FUMIGATE.title": "İlaçla",
-  "ALCHEMIST-FUMING_MIX.description": "{WeakPower} [gold]Zayıf[/gold] ve {VulnerablePower} [gold]Savunmasız[/gold] uygula.{IfUpgraded:show:\n{PoisonPower} [gold]Zehir[/gold] uygula.|}\n{SelfPoison} [gold]Zehir[/gold] elde et.",
+  "ALCHEMIST-FUMING_MIX.description": "{WeakPower} [gold]Zayıf[/gold] ve {VulnerablePower} [gold]Savunmasız[/gold] uygula.{IfUpgraded:show:\n{PoisonPower} [gold]Zehir[/gold] uygula.|\n{SelfPoison} [gold]Zehir[/gold] elde et.}",
   "ALCHEMIST-FUMING_MIX.title": "Tüten Karışım",
   "ALCHEMIST-GOLDEN_FRUIT.description": "{gold} [gold]Altın[/gold] elde et.\nBu turdan sonra fazladan bir tur elde et.",
   "ALCHEMIST-GOLDEN_FRUIT.title": "Altın Meyve",

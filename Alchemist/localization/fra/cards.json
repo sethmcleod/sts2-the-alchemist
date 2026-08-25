@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "Écume",
   "ALCHEMIST-FUMIGATE.description": "Appliquez {Poison:diff()} de [gold]Poison[/gold] à TOUS les ennemis.\nGagnez {SelfPoison} de [gold]Poison[/gold].",
   "ALCHEMIST-FUMIGATE.title": "Fumigation",
-  "ALCHEMIST-FUMING_MIX.description": "Appliquez {WeakPower} [gold]Affaibli[/gold] et {VulnerablePower} [gold]Vulnérable[/gold].{IfUpgraded:show:\nAppliquez {PoisonPower} de [gold]Poison[/gold].|}\nGagnez {SelfPoison} de [gold]Poison[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Appliquez {WeakPower} [gold]Affaibli[/gold] et {VulnerablePower} [gold]Vulnérable[/gold].{IfUpgraded:show:\nAppliquez {PoisonPower} de [gold]Poison[/gold].|\nGagnez {SelfPoison} de [gold]Poison[/gold].}",
   "ALCHEMIST-FUMING_MIX.title": "Mixture fumante",
   "ALCHEMIST-GOLDEN_FRUIT.description": "Gagnez {gold} [gold]Pièces d'or[/gold].\nJouez un tour supplémentaire après celui-ci.",
   "ALCHEMIST-GOLDEN_FRUIT.title": "Fruit doré",

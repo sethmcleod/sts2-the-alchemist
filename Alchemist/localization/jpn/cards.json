@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "泡立ち",
   "ALCHEMIST-FUMIGATE.description": "[gold]毒[/gold]{Poison:diff()}をすべての敵に付与する。\n[gold]毒[/gold]{SelfPoison}を得る。",
   "ALCHEMIST-FUMIGATE.title": "燻蒸",
-  "ALCHEMIST-FUMING_MIX.description": "[gold]脱力[/gold]{WeakPower}と[gold]弱体[/gold]{VulnerablePower}を付与する。{IfUpgraded:show:\n[gold]毒[/gold]{PoisonPower}を付与する。|}\n[gold]毒[/gold]{SelfPoison}を得る。",
+  "ALCHEMIST-FUMING_MIX.description": "[gold]脱力[/gold]{WeakPower}と[gold]弱体[/gold]{VulnerablePower}を付与する。{IfUpgraded:show:\n[gold]毒[/gold]{PoisonPower}を付与する。|\n[gold]毒[/gold]{SelfPoison}を得る。}",
   "ALCHEMIST-FUMING_MIX.title": "発煙の合剤",
   "ALCHEMIST-GOLDEN_FRUIT.description": "[gold]ゴールド[/gold]を{gold}獲得する。\nこのターンの後、追加のターンを得る。",
   "ALCHEMIST-GOLDEN_FRUIT.title": "黄金の果実",

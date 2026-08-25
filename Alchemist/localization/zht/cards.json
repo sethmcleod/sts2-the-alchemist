@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "浮沫",
   "ALCHEMIST-FUMIGATE.description": "對所有敵人施加 {Poison:diff()} 層[gold]中毒[/gold]。\n獲得 {SelfPoison} 層[gold]中毒[/gold]。",
   "ALCHEMIST-FUMIGATE.title": "燻蒸",
-  "ALCHEMIST-FUMING_MIX.description": "施加 {WeakPower} 層[gold]虛弱[/gold]和 {VulnerablePower} 層[gold]易傷[/gold]。{IfUpgraded:show:\n施加 {PoisonPower} 層[gold]中毒[/gold]。|}\n獲得 {SelfPoison} 層[gold]中毒[/gold]。",
+  "ALCHEMIST-FUMING_MIX.description": "施加 {WeakPower} 層[gold]虛弱[/gold]和 {VulnerablePower} 層[gold]易傷[/gold]。{IfUpgraded:show:\n施加 {PoisonPower} 層[gold]中毒[/gold]。|\n獲得 {SelfPoison} 層[gold]中毒[/gold]。}",
   "ALCHEMIST-FUMING_MIX.title": "燻煙混劑",
   "ALCHEMIST-GOLDEN_FRUIT.description": "獲得 {gold} 枚[gold]金幣[/gold]。\n此回合結束後，再進行一個回合。",
   "ALCHEMIST-GOLDEN_FRUIT.title": "黃金果實",

@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "Espuma",
   "ALCHEMIST-FUMIGATE.description": "Aplica {Poison:diff()} de [gold]Veneno[/gold] a TODOS los enemigos.\nGana {SelfPoison} de [gold]Veneno[/gold].",
   "ALCHEMIST-FUMIGATE.title": "Fumigar",
-  "ALCHEMIST-FUMING_MIX.description": "Aplica {WeakPower} de [gold]Debilidad[/gold] y {VulnerablePower} de [gold]Vulnerabilidad[/gold].{IfUpgraded:show:\nAplica {PoisonPower} de [gold]Veneno[/gold].|}\nGana {SelfPoison} de [gold]Veneno[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Aplica {WeakPower} de [gold]Debilidad[/gold] y {VulnerablePower} de [gold]Vulnerabilidad[/gold].{IfUpgraded:show:\nAplica {PoisonPower} de [gold]Veneno[/gold].|\nGana {SelfPoison} de [gold]Veneno[/gold].}",
   "ALCHEMIST-FUMING_MIX.title": "Mezcla humeante",
   "ALCHEMIST-GOLDEN_FRUIT.description": "Gana {gold} de [gold]Oro[/gold].\nJuega un turno adicional tras este.",
   "ALCHEMIST-GOLDEN_FRUIT.title": "Fruta dorada",

@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "Schiuma",
   "ALCHEMIST-FUMIGATE.description": "Applichi {Poison:diff()} di [gold]Veleno[/gold] a TUTTI i nemici.\nOttieni {SelfPoison} di [gold]Veleno[/gold].",
   "ALCHEMIST-FUMIGATE.title": "Suffumigio",
-  "ALCHEMIST-FUMING_MIX.description": "Applichi {WeakPower} di [gold]Debolezza[/gold] e {VulnerablePower} di [gold]Vulnerabilità[/gold].{IfUpgraded:show:\nApplichi {PoisonPower} di [gold]Veleno[/gold].|}\nOttieni {SelfPoison} di [gold]Veleno[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Applichi {WeakPower} di [gold]Debolezza[/gold] e {VulnerablePower} di [gold]Vulnerabilità[/gold].{IfUpgraded:show:\nApplichi {PoisonPower} di [gold]Veleno[/gold].|\nOttieni {SelfPoison} di [gold]Veleno[/gold].}",
   "ALCHEMIST-FUMING_MIX.title": "Miscela Fumogena",
   "ALCHEMIST-GOLDEN_FRUIT.description": "Ottieni {gold} unità d'[gold]oro[/gold].\nGiochi un turno extra dopo di questo.",
   "ALCHEMIST-GOLDEN_FRUIT.title": "Frutto Dorato",

@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "Froth",
   "ALCHEMIST-FUMIGATE.description": "Apply {Poison:diff()} [gold]Poison[/gold] to ALL enemies.\nGain {SelfPoison} [gold]Poison[/gold].",
   "ALCHEMIST-FUMIGATE.title": "Fumigate",
-  "ALCHEMIST-FUMING_MIX.description": "Apply {WeakPower} [gold]Weak[/gold] and {VulnerablePower} [gold]Vulnerable[/gold].{IfUpgraded:show:\nApply {PoisonPower} [gold]Poison[/gold].|}\nGain {SelfPoison} [gold]Poison[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Apply {WeakPower} [gold]Weak[/gold] and {VulnerablePower} [gold]Vulnerable[/gold].{IfUpgraded:show:\nApply {PoisonPower} [gold]Poison[/gold].|\nGain {SelfPoison} [gold]Poison[/gold].}",
   "ALCHEMIST-FUMING_MIX.title": "Fuming Mix",
   "ALCHEMIST-GOLDEN_FRUIT.description": "Gain {gold} [gold]Gold[/gold].\nTake an extra turn after this one.",
   "ALCHEMIST-GOLDEN_FRUIT.title": "Golden Fruit",

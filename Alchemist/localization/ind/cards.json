@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "Buih",
   "ALCHEMIST-FUMIGATE.description": "Terapkan {Poison:diff()} [gold]Racun[/gold] ke SEMUA musuh.\nDapatkan {SelfPoison} [gold]Racun[/gold].",
   "ALCHEMIST-FUMIGATE.title": "Fumigasi",
-  "ALCHEMIST-FUMING_MIX.description": "Terapkan {WeakPower} [gold]Lemah[/gold] dan {VulnerablePower} [gold]Rentan[/gold].{IfUpgraded:show:\nTerapkan {PoisonPower} [gold]Racun[/gold].|}\nDapatkan {SelfPoison} [gold]Racun[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Terapkan {WeakPower} [gold]Lemah[/gold] dan {VulnerablePower} [gold]Rentan[/gold].{IfUpgraded:show:\nTerapkan {PoisonPower} [gold]Racun[/gold].|\nDapatkan {SelfPoison} [gold]Racun[/gold].}",
   "ALCHEMIST-FUMING_MIX.title": "Campuran Asap",
   "ALCHEMIST-GOLDEN_FRUIT.description": "Dapatkan {gold} [gold]Emas[/gold].\nDapatkan giliran tambahan setelah ini.",
   "ALCHEMIST-GOLDEN_FRUIT.title": "Buah Emas",

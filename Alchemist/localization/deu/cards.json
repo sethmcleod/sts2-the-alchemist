@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "Aufschäumen",
   "ALCHEMIST-FUMIGATE.description": "Wende {Poison:diff()} [gold]Gift[/gold] auf ALLE Gegner an.\nErhalte {SelfPoison} [gold]Gift[/gold].",
   "ALCHEMIST-FUMIGATE.title": "Vernebeln",
-  "ALCHEMIST-FUMING_MIX.description": "Wende {WeakPower} [gold]Schwach[/gold] und {VulnerablePower} [gold]Verwundbar[/gold] an.{IfUpgraded:show:\nWende {PoisonPower} [gold]Gift[/gold] an.|}\nErhalte {SelfPoison} [gold]Gift[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Wende {WeakPower} [gold]Schwach[/gold] und {VulnerablePower} [gold]Verwundbar[/gold] an.{IfUpgraded:show:\nWende {PoisonPower} [gold]Gift[/gold] an.|\nErhalte {SelfPoison} [gold]Gift[/gold].}",
   "ALCHEMIST-FUMING_MIX.title": "Dampfende Mixtur",
   "ALCHEMIST-GOLDEN_FRUIT.description": "Erhalte {gold} [gold]Gold[/gold].\nMache einen Extrazug nach diesem.",
   "ALCHEMIST-GOLDEN_FRUIT.title": "Goldene Frucht",

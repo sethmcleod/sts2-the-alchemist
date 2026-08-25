@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "Пена",
   "ALCHEMIST-FUMIGATE.description": "Накладывает {Poison:diff()} [gold]яда[/gold] на ВСЕХ врагов.\nДает вам {SelfPoison} [gold]яда[/gold].",
   "ALCHEMIST-FUMIGATE.title": "Фумигация",
-  "ALCHEMIST-FUMING_MIX.description": "Накладывает {WeakPower} [gold]слабости[/gold] и {VulnerablePower} [gold]уязвимости[/gold].{IfUpgraded:show:\nНакладывает {PoisonPower} [gold]яда[/gold].|}\nДает вам {SelfPoison} [gold]яда[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Накладывает {WeakPower} [gold]слабости[/gold] и {VulnerablePower} [gold]уязвимости[/gold].{IfUpgraded:show:\nНакладывает {PoisonPower} [gold]яда[/gold].|\nДает вам {SelfPoison} [gold]яда[/gold].}",
   "ALCHEMIST-FUMING_MIX.title": "Дымная смесь",
   "ALCHEMIST-GOLDEN_FRUIT.description": "Дает {gold} [gold]золота[/gold].\nДает дополнительный ход.",
   "ALCHEMIST-GOLDEN_FRUIT.title": "Золотой плод",

@@ -17,7 +17,7 @@ public class FumingMix : AlchemistCard
         WithPower<WeakPower>(1, 0);
         WithPower<VulnerablePower>(1, 0);
         WithPower<PoisonPower>(0, 1);
-        WithVar("SelfPoison", 1, 0);
+        WithVar("SelfPoison", 1, -1);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
     }
@@ -34,7 +34,8 @@ public class FumingMix : AlchemistCard
             await PowerCmd.Apply<PoisonPower>(choiceContext, target, DynamicVars.Poison.IntValue,
                 Owner.Creature, this);
         }
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
-            DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
+        if (DynamicVars["SelfPoison"].IntValue > 0)
+            await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
+                DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
     }
 }

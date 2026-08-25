@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "ฟองฟอด",
   "ALCHEMIST-FUMIGATE.description": "สร้าง {Poison:diff()} [gold]พิษ[/gold] ใส่ศัตรูทั้งหมด\nได้รับ {SelfPoison} [gold]พิษ[/gold]",
   "ALCHEMIST-FUMIGATE.title": "รมพิษ",
-  "ALCHEMIST-FUMING_MIX.description": "สร้าง {WeakPower} [gold]ความอ่อนแอ[/gold] และ {VulnerablePower} [gold]จุดอ่อน[/gold]{IfUpgraded:show:\nสร้าง {PoisonPower} [gold]พิษ[/gold]|}\nได้รับ {SelfPoison} [gold]พิษ[/gold]",
+  "ALCHEMIST-FUMING_MIX.description": "สร้าง {WeakPower} [gold]ความอ่อนแอ[/gold] และ {VulnerablePower} [gold]จุดอ่อน[/gold]{IfUpgraded:show:\nสร้าง {PoisonPower} [gold]พิษ[/gold]|\nได้รับ {SelfPoison} [gold]พิษ[/gold]}",
   "ALCHEMIST-FUMING_MIX.title": "ยาผสมควันฉุน",
   "ALCHEMIST-GOLDEN_FRUIT.description": "ได้รับ {gold} [gold]ทอง[/gold]\nเล่นต่ออีก 1 เทิร์นต่อจากเทิร์นนี้",
   "ALCHEMIST-GOLDEN_FRUIT.title": "ผลไม้ทองคำ",

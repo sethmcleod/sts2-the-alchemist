@@ -68,7 +68,7 @@
   "ALCHEMIST-FROTH.title": "거품",
   "ALCHEMIST-FUMIGATE.description": "모든 적에게 [gold]중독[/gold]을 {Poison:diff()} 부여합니다.\n[gold]중독[/gold]을 {SelfPoison} 얻습니다.",
   "ALCHEMIST-FUMIGATE.title": "방역",
-  "ALCHEMIST-FUMING_MIX.description": "[gold]약화[/gold]를 {WeakPower}, [gold]취약[/gold]을 {VulnerablePower} 부여합니다.{IfUpgraded:show:\n[gold]중독[/gold]을 {PoisonPower} 부여합니다.|}\n[gold]중독[/gold]을 {SelfPoison} 얻습니다.",
+  "ALCHEMIST-FUMING_MIX.description": "[gold]약화[/gold]를 {WeakPower}, [gold]취약[/gold]을 {VulnerablePower} 부여합니다.{IfUpgraded:show:\n[gold]중독[/gold]을 {PoisonPower} 부여합니다.|\n[gold]중독[/gold]을 {SelfPoison} 얻습니다.}",
   "ALCHEMIST-FUMING_MIX.title": "자욱한 혼합액",
   "ALCHEMIST-GOLDEN_FRUIT.description": "[gold]골드[/gold]를 {gold} 얻습니다.\n이번 턴 후에 추가 턴을 진행합니다.",
   "ALCHEMIST-GOLDEN_FRUIT.title": "황금 과일",
