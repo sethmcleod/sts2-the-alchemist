@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "Когда вы получаете незаблокированный урон от атак, вы теряете [blue]{Amount}[/blue] [gold]яда[/gold], и столько же накладывается на атакующего.",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "Когда вы получаете незаблокированный урон от атак, вы теряете [blue]{Amount}[/blue] [gold]яда[/gold], и столько же накладывается на атакующего.",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "Ядовитая кожа",
-  "ALCHEMIST-WARDED_POWER.description": "Когда ваш [gold]антитоксин[/gold] поглощает урон, дает [blue]{Amount}[/blue] [gold]защиты[/gold] плюс [gold]защиту[/gold], равную поглощенному урону.",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "Когда ваш [gold]антитоксин[/gold] поглощает урон, дает [blue]{Amount}[/blue] [gold]защиты[/gold] плюс [gold]защиту[/gold], равную поглощенному урону.",
+  "ALCHEMIST-WARDED_POWER.description": "Когда вы получаете [gold]антитоксин[/gold], дает [gold]защиту[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Когда вы получаете [gold]антитоксин[/gold], дает [blue]{Amount}[/blue] [gold]защиты[/gold].",
   "ALCHEMIST-WARDED_POWER.title": "Оберег"
 }

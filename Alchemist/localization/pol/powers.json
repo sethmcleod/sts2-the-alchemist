@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "Kiedykolwiek otrzymasz niezablokowane obrażenia od Ataku, utrać [blue]{Amount}[/blue] pkt. [gold]Trucizny[/gold] i nałóż tyle samo na atakującego.",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "Kiedykolwiek otrzymasz niezablokowane obrażenia od Ataku, utrać [blue]{Amount}[/blue] pkt. [gold]Trucizny[/gold] i nałóż tyle samo na atakującego.",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "Toksyczna skóra",
-  "ALCHEMIST-WARDED_POWER.description": "Kiedykolwiek twoja [gold]Antytoksyna[/gold] pochłonie obrażenia, zyskaj [blue]{Amount}[/blue] pkt. [gold]Bloku[/gold] plus [gold]Blok[/gold] równy pochłoniętej wartości.",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "Kiedykolwiek twoja [gold]Antytoksyna[/gold] pochłonie obrażenia, zyskaj [blue]{Amount}[/blue] pkt. [gold]Bloku[/gold] plus [gold]Blok[/gold] równy pochłoniętej wartości.",
+  "ALCHEMIST-WARDED_POWER.description": "Kiedykolwiek zyskasz [gold]Antytoksynę[/gold], zyskaj [gold]Blok[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Kiedykolwiek zyskasz [gold]Antytoksynę[/gold], zyskaj [blue]{Amount}[/blue] pkt. [gold]Bloku[/gold].",
   "ALCHEMIST-WARDED_POWER.title": "Obwarowanie"
 }

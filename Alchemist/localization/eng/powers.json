@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "Whenever you take unblocked attack damage, lose [blue]{Amount}[/blue] [gold]Poison[/gold] and apply that much to the attacker.",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "Whenever you take unblocked attack damage, lose [blue]{Amount}[/blue] [gold]Poison[/gold] and apply that much to the attacker.",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "Toxin Skin",
-  "ALCHEMIST-WARDED_POWER.description": "Whenever your [gold]Antitoxin[/gold] absorbs damage, gain [blue]{Amount}[/blue] [gold]Block[/gold] plus [gold]Block[/gold] equal to the amount absorbed.",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "Whenever your [gold]Antitoxin[/gold] absorbs damage, gain [blue]{Amount}[/blue] [gold]Block[/gold] plus [gold]Block[/gold] equal to the amount absorbed.",
+  "ALCHEMIST-WARDED_POWER.description": "Whenever you gain [gold]Antitoxin[/gold], gain [gold]Block[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Whenever you gain [gold]Antitoxin[/gold], gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "ALCHEMIST-WARDED_POWER.title": "Warded"
 }

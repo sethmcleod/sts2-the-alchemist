@@ -10,7 +10,7 @@ public class Anoint : AlchemistCard
 {
     public Anoint() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(8, 3);
+        WithDamage(9, 3);
         WithTips(_ => Infusion.InfuseTips());
     }
 

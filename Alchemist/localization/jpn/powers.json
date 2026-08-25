@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "ブロックされずにアタックダメージを受けるたび、[gold]毒[/gold][blue]{Amount}[/blue]を失い、その値を攻撃した敵に付与する。",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "ブロックされずにアタックダメージを受けるたび、[gold]毒[/gold][blue]{Amount}[/blue]を失い、その値を攻撃した敵に付与する。",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "毒の皮膚",
-  "ALCHEMIST-WARDED_POWER.description": "[gold]抗毒素[/gold]がダメージを吸収するたび、[blue]{Amount}[/blue][gold]ブロック[/gold]と、吸収した値に等しい[gold]ブロック[/gold]を得る。",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "[gold]抗毒素[/gold]がダメージを吸収するたび、[blue]{Amount}[/blue][gold]ブロック[/gold]と、吸収した値に等しい[gold]ブロック[/gold]を得る。",
+  "ALCHEMIST-WARDED_POWER.description": "[gold]抗毒素[/gold]を得るたび、[gold]ブロック[/gold]を得る。",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "[gold]抗毒素[/gold]を得るたび、[blue]{Amount}[/blue][gold]ブロック[/gold]を得る。",
   "ALCHEMIST-WARDED_POWER.title": "結界"
 }

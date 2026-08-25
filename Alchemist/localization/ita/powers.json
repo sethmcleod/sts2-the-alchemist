@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "Ogni volta che subisci danno non bloccato da una carta Attacco, perdi [blue]{Amount}[/blue] di [gold]Veleno[/gold] e ne applichi altrettanto all'attaccante.",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "Ogni volta che subisci danno non bloccato da una carta Attacco, perdi [blue]{Amount}[/blue] di [gold]Veleno[/gold] e ne applichi altrettanto all'attaccante.",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "Pelle Tossica",
-  "ALCHEMIST-WARDED_POWER.description": "Ogni volta che la tua [gold]Antitossina[/gold] assorbe danno, ottieni [blue]{Amount}[/blue] di [gold]Blocco[/gold] più [gold]Blocco[/gold] pari alla quantità assorbita.",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "Ogni volta che la tua [gold]Antitossina[/gold] assorbe danno, ottieni [blue]{Amount}[/blue] di [gold]Blocco[/gold] più [gold]Blocco[/gold] pari alla quantità assorbita.",
+  "ALCHEMIST-WARDED_POWER.description": "Ogni volta che ottieni [gold]Antitossina[/gold], ottieni [gold]Blocco[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Ogni volta che ottieni [gold]Antitossina[/gold], ottieni [blue]{Amount}[/blue] di [gold]Blocco[/gold].",
   "ALCHEMIST-WARDED_POWER.title": "Salvaguardia"
 }

@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "Her engellenmeyen Atak hasarı aldığında [blue]{Amount}[/blue] [gold]Zehir[/gold] kaybet ve saldırana o kadar uygula.",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "Her engellenmeyen Atak hasarı aldığında [blue]{Amount}[/blue] [gold]Zehir[/gold] kaybet ve saldırana o kadar uygula.",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "Toksik Deri",
-  "ALCHEMIST-WARDED_POWER.description": "[gold]Antitoksin[/gold]'in her hasar emdiğinde [blue]{Amount}[/blue] [gold]Blok[/gold] ve emilen miktar kadar daha [gold]Blok[/gold] elde et.",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "[gold]Antitoksin[/gold]'in her hasar emdiğinde [blue]{Amount}[/blue] [gold]Blok[/gold] ve emilen miktar kadar daha [gold]Blok[/gold] elde et.",
+  "ALCHEMIST-WARDED_POWER.description": "Her [gold]Antitoksin[/gold] elde ettiğinde [gold]Blok[/gold] elde et.",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Her [gold]Antitoksin[/gold] elde ettiğinde [blue]{Amount}[/blue] [gold]Blok[/gold] elde et.",
   "ALCHEMIST-WARDED_POWER.title": "Korunmuş"
 }

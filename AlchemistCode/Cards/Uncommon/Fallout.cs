@@ -11,7 +11,7 @@ public class Fallout : AlchemistCard
 {
     public Fallout() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
     {
-        WithCalculatedDamage(6, static (card, _) => Dose(card), ValueProp.Move, 2);
+        WithCalculatedDamage(8, static (card, _) => Dose(card), ValueProp.Move, 2);
         WithTip(typeof(PoisonPower));
     }
 

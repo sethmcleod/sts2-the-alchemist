@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "Cada vez que recibes daño de ataque sin bloquear, pierdes [blue]{Amount}[/blue] de [gold]veneno[/gold] y aplicas esa misma cantidad al atacante.",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "Cada vez que recibes daño de ataque sin bloquear, pierdes [blue]{Amount}[/blue] de [gold]veneno[/gold] y aplicas esa misma cantidad al atacante.",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "Piel tóxica",
-  "ALCHEMIST-WARDED_POWER.description": "Cada vez que tu [gold]antitoxina[/gold] absorbe daño, obtienes [blue]{Amount}[/blue] de [gold]bloqueo[/gold] más [gold]bloqueo[/gold] igual a la cantidad absorbida.",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "Cada vez que tu [gold]antitoxina[/gold] absorbe daño, obtienes [blue]{Amount}[/blue] de [gold]bloqueo[/gold] más [gold]bloqueo[/gold] igual a la cantidad absorbida.",
+  "ALCHEMIST-WARDED_POWER.description": "Cada vez que obtienes [gold]antitoxina[/gold], obtienes [gold]bloqueo[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Cada vez que obtienes [gold]antitoxina[/gold], obtienes [blue]{Amount}[/blue] de [gold]bloqueo[/gold].",
   "ALCHEMIST-WARDED_POWER.title": "Resguardo"
 }

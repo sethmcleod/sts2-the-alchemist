@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "Setiap kali kamu terkena kerusakan Serangan tidak terblok, [blue]{Amount}[/blue] [gold]Racun[/gold] milikmu hilang dan terapkan sebanyak itu ke penyerang.",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "Setiap kali kamu terkena kerusakan Serangan tidak terblok, [blue]{Amount}[/blue] [gold]Racun[/gold] milikmu hilang dan terapkan sebanyak itu ke penyerang.",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "Kulit Berbisa",
-  "ALCHEMIST-WARDED_POWER.description": "Setiap kali [gold]Antitoksin[/gold] milikmu menyerap kerusakan, dapatkan [blue]{Amount}[/blue] [gold]Blok[/gold] ditambah [gold]Blok[/gold] sebanyak jumlah yang terserap.",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "Setiap kali [gold]Antitoksin[/gold] milikmu menyerap kerusakan, dapatkan [blue]{Amount}[/blue] [gold]Blok[/gold] ditambah [gold]Blok[/gold] sebanyak jumlah yang terserap.",
+  "ALCHEMIST-WARDED_POWER.description": "Setiap kali kamu mendapat [gold]Antitoksin[/gold], dapatkan [gold]Blok[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Setiap kali kamu mendapat [gold]Antitoksin[/gold], dapatkan [blue]{Amount}[/blue] [gold]Blok[/gold].",
   "ALCHEMIST-WARDED_POWER.title": "Terlindungi"
 }

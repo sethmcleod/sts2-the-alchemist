@@ -18,14 +18,19 @@ mod).
 
 ### Changed
 
-- Buffed Fallout: damage to ALL 4 (6) -> 6 (8)
+- Buffed Anoint: damage 8 (11) -> 9 (12)
+- Buffed Blend: the transformed card now goes into your Hand
+- Buffed Bursting Mix: damage 5 (8) -> 6 (9)
+- Buffed Fallout: damage to ALL 4 (6) -> 8 (10)
 - Buffed Forked Tongue: damage per hit 3 (4) -> 4 (5)
 - Buffed Froth: removed the 4-hit maximum
 - Buffed Jab: damage 6 (9) -> 5 (7), and it now applies 2 Poison
 - Buffed Osmosis: Antitoxin per turn 3 (4) -> 4 (5)
 - Buffed Poultice: Block 9 (12) -> 10 (14)
 - Buffed Smoke Out: damage to ALL 4 (6) -> 6 (8)
-- Changed Inure from a Skill to a Power, and reordered its text so the ongoing effect reads first
+- Buffed Syrupy Mix: Block 4 (7) -> 5 (8)
+- Changed Fuming Mix: the upgrade now applies 1 Poison instead of removing the 1 Poison you gain
+- Changed Inure from a Skill to a Power
 - Changed Puncture: now applies 2 (3) Vulnerable but requires the enemy to have Poison
 - Changed Spatter: it now applies Poison to ALL enemies
 - Changed the Alchemist combat model to stand slightly shorter, closer to the other characters
@@ -37,16 +42,17 @@ mod).
 - Reworked Numb: "Gain 10 (14) Block. Your Poison does not trigger next turn."
 - Reworked Slow Burn: "Deal 6 (8) damage. At the end of each turn this is in your Hand, deal damage to a random enemy equal to the turns fermented."
 - Reworked Spew: "Deal 7 (10) damage. Apply 2 (3) Poison, or twice as much if the enemy already has Poison."
+- Reworked Warded: "Whenever you gain Antitoxin, gain 1 (2) Block."
 - Reworked Wormwood: "Deal damage equal to your Poison to ALL enemies 2 (3) times."
 - Updated the character select art with a wider background, so ultrawide windows show more of the swirl at the same character size as 16:9
 
 ### Fixed
 
 - Fixed Antitoxin draining on attacks that Block absorbed: the Poison forecast could leave a pending absorb that the next hit spent
-- Fixed the Inure power tooltip reading "gain 0 more" on a card you have not played yet
 - Fixed saved runs losing renamed cards on continue: ids retired by a rename now load as the card that replaced them instead of a blank deprecated card
-- Improved the Antitoxin bar in the party panel, so it sits closer to the HP bar
 - Fixed the energy counter number outline in the party panel, so it read better against the light gold
+- Fixed the Inure power tooltip reading "gain 0 more" on a card you have not played yet
+- Improved the Antitoxin bar in the party panel, so it sits closer to the HP bar
 
 ### Removed
 

@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "每当你受到未被格挡的攻击伤害时，失去[blue]{Amount}[/blue]层[gold]中毒[/gold]，并给予攻击者等量的中毒。",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "每当你受到未被格挡的攻击伤害时，失去[blue]{Amount}[/blue]层[gold]中毒[/gold]，并给予攻击者等量的中毒。",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "毒肤",
-  "ALCHEMIST-WARDED_POWER.description": "每当你的[gold]抗毒素[/gold]吸收伤害时，获得[blue]{Amount}[/blue]点[gold]格挡[/gold]，再获得等同于吸收量的[gold]格挡[/gold]。",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "每当你的[gold]抗毒素[/gold]吸收伤害时，获得[blue]{Amount}[/blue]点[gold]格挡[/gold]，再获得等同于吸收量的[gold]格挡[/gold]。",
+  "ALCHEMIST-WARDED_POWER.description": "每当你获得[gold]抗毒素[/gold]时，获得[gold]格挡[/gold]。",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "每当你获得[gold]抗毒素[/gold]时，获得[blue]{Amount}[/blue]点[gold]格挡[/gold]。",
   "ALCHEMIST-WARDED_POWER.title": "护佑"
 }

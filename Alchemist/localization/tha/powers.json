@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "ทุกครั้งที่คุณได้รับความเสียหายจากการโจมตีที่บล็อกไม่ได้ เสีย [blue]{Amount}[/blue] [gold]พิษ[/gold] แล้วสร้างเท่ากับจำนวนนั้นใส่ผู้โจมตี",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "ทุกครั้งที่คุณได้รับความเสียหายจากการโจมตีที่บล็อกไม่ได้ เสีย [blue]{Amount}[/blue] [gold]พิษ[/gold] แล้วสร้างเท่ากับจำนวนนั้นใส่ผู้โจมตี",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "ผิวอาบพิษ",
-  "ALCHEMIST-WARDED_POWER.description": "ทุกครั้งที่[gold]สารต้านพิษ[/gold]ของคุณดูดซับความเสียหาย ได้รับ [blue]{Amount}[/blue] [gold]บล็อก[/gold] บวก[gold]บล็อก[/gold]เท่ากับจำนวนที่ดูดซับไว้",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "ทุกครั้งที่[gold]สารต้านพิษ[/gold]ของคุณดูดซับความเสียหาย ได้รับ [blue]{Amount}[/blue] [gold]บล็อก[/gold] บวก[gold]บล็อก[/gold]เท่ากับจำนวนที่ดูดซับไว้",
+  "ALCHEMIST-WARDED_POWER.description": "ทุกครั้งที่คุณได้รับ[gold]สารต้านพิษ[/gold] ได้รับ[gold]บล็อก[/gold]",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "ทุกครั้งที่คุณได้รับ[gold]สารต้านพิษ[/gold] ได้รับ [blue]{Amount}[/blue] [gold]บล็อก[/gold]",
   "ALCHEMIST-WARDED_POWER.title": "คุ้มภัย"
 }

@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "Lorsque vous subissez des dégâts d'Attaque non bloqués, perdez [blue]{Amount}[/blue] de [gold]Poison[/gold] et appliquez-en autant à l'attaquant.",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "Lorsque vous subissez des dégâts d'Attaque non bloqués, perdez [blue]{Amount}[/blue] de [gold]Poison[/gold] et appliquez-en autant à l'attaquant.",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "Peau venimeuse",
-  "ALCHEMIST-WARDED_POWER.description": "Lorsque votre [gold]Antitoxine[/gold] absorbe des dégâts, gagnez [blue]{Amount}[/blue] d'[gold]Armure[/gold], plus un montant d'[gold]Armure[/gold] égal aux dégâts absorbés.",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "Lorsque votre [gold]Antitoxine[/gold] absorbe des dégâts, gagnez [blue]{Amount}[/blue] d'[gold]Armure[/gold], plus un montant d'[gold]Armure[/gold] égal aux dégâts absorbés.",
+  "ALCHEMIST-WARDED_POWER.description": "Lorsque vous gagnez de l'[gold]Antitoxine[/gold], gagnez de l'[gold]Armure[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Lorsque vous gagnez de l'[gold]Antitoxine[/gold], gagnez [blue]{Amount}[/blue] d'[gold]Armure[/gold].",
   "ALCHEMIST-WARDED_POWER.title": "Prémuni"
 }

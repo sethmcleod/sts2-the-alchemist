@@ -74,7 +74,7 @@
   "ALCHEMIST-TOXIN_SKIN_POWER.description": "Immer wenn du ungeblockten Angriffsschaden nimmst, verliere [blue]{Amount}[/blue] [gold]Gift[/gold] und wende genauso viel auf den Angreifer an.",
   "ALCHEMIST-TOXIN_SKIN_POWER.smartDescription": "Immer wenn du ungeblockten Angriffsschaden nimmst, verliere [blue]{Amount}[/blue] [gold]Gift[/gold] und wende genauso viel auf den Angreifer an.",
   "ALCHEMIST-TOXIN_SKIN_POWER.title": "Gifthaut",
-  "ALCHEMIST-WARDED_POWER.description": "Immer wenn dein [gold]Antitoxin[/gold] Schaden auffängt, erhalte [blue]{Amount}[/blue] [gold]Block[/gold] plus [gold]Block[/gold] in Höhe der aufgefangenen Menge.",
-  "ALCHEMIST-WARDED_POWER.smartDescription": "Immer wenn dein [gold]Antitoxin[/gold] Schaden auffängt, erhalte [blue]{Amount}[/blue] [gold]Block[/gold] plus [gold]Block[/gold] in Höhe der aufgefangenen Menge.",
+  "ALCHEMIST-WARDED_POWER.description": "Immer wenn du [gold]Antitoxin[/gold] erhältst, erhalte [gold]Block[/gold].",
+  "ALCHEMIST-WARDED_POWER.smartDescription": "Immer wenn du [gold]Antitoxin[/gold] erhältst, erhalte [blue]{Amount}[/blue] [gold]Block[/gold].",
   "ALCHEMIST-WARDED_POWER.title": "Abgeschirmt"
 }

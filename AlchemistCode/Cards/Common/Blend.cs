@@ -31,6 +31,8 @@ public class Blend : AlchemistCard
         var chosen = (await CardSelectCmd.FromCombatPile(choiceContext, discard, Owner,
             new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1))).FirstOrDefault();
         if (chosen == null) return;
-        await Mixing.TransformIntoChosen(choiceContext, Owner, chosen);
+        var mix = await Mixing.TransformIntoChosen(choiceContext, Owner, chosen);
+        if (mix == null) return;
+        await CardPileCmd.Add(mix, PileType.Hand);
     }
 }
