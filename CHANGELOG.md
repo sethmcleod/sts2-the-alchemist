@@ -9,7 +9,7 @@ mod).
 
 ### Added
 
-- Added beta art for Strike and Defend cards
+- Added beta art for 15 cards, including the starer deck
 - Added Distill card: "Retain. Ferment. Gain 2 Poison. Gain 2 (3) Antitoxin, plus 1 for each turn fermented." It replaces Retch
 - Added Drench card: "Deal 13 (17) damage. Apply 2 Poison. Gain 1 Poison." It replaces Lick
 - Added Fumigate card: "Apply 2 (3) Poison to ALL enemies. Gain 2 Poison." It replaces Double Dose
