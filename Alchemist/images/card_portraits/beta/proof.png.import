@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bojjveexg8vxj"
-path="res://.godot/imported/congeal.png-5fd811523ac9890d0afba4b73a6142a9.ctex"
+uid="uid://cdaotoav44b6v"
+path="res://.godot/imported/proof.png-659f117515bcfabe962445e87033052c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/congeal.png"
-dest_files=["res://.godot/imported/congeal.png-5fd811523ac9890d0afba4b73a6142a9.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/proof.png"
+dest_files=["res://.godot/imported/proof.png-659f117515bcfabe962445e87033052c.ctex"]
 
 [params]
 

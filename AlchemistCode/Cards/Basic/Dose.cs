@@ -16,7 +16,7 @@ public class Dose : AlchemistCard
     {
         WithBlock(2, 0);
         WithVar("SelfPoison", 2, 0);
-        WithVar("antitoxin", 3, 3);
+        WithVar("antitoxin", 1, 1);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));
     }

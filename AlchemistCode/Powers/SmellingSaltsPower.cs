@@ -25,7 +25,8 @@ public class SmellingSaltsPower : AlchemistPower
         ICombatState combatState)
     {
         if (!participants.Contains(Owner)) return;
-        if (!AntitoxinRules.AbsorbedThisTurn(Owner)) return;
+        // Pays when the dose gets through, so the card rewards running hotter than your capacity
+        if (!AntitoxinRules.BledThisTurn(Owner)) return;
         Flash();
         await PlayerCmd.GainEnergy(Amount, Owner.Player!);
     }

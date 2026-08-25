@@ -7,9 +7,37 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added Bitterroot relic: "At the start of each combat, heal 3 HP and gain 1 Poison." It replaces Snake Tail
+- Added Proof card: "Gain 1 (2) Antitoxin. Deal damage equal to your Antitoxin." It replaces Congeal
+
 ### Changed
 
+- Buffed Warded: Block per Antitoxin gained 1 (2) -> 3 (5)
+- Changed Auric Seal: Antitoxin 2 -> 1
+- Changed Everflowing Chalice: Antitoxin at the start of combat 6 -> 2
+- Changed Gilded Kit: Poison at the start of combat 2 -> 3, Antitoxin 12 -> 3
 - Changed the Alchemist shop model to stand slightly shorter
+- Changed the Antitoxin bar: the green segment now shows how much of your Antitoxin the next Poison tick will need
+- Changed Weathered Kit: Antitoxin at the start of combat 8 -> 2
+- Reworked Antitoxin: each turn it now prevents Poison damage up to its amount and is never spent, so the Poison damage you take is your Poison minus your Antitoxin. Antitoxin values on every card were lowered to match
+- Reworked Pass It On: "Whenever your Antitoxin absorbs damage, deal 1 (2) damage to ALL enemies for each point absorbed." -> "Whenever your Antitoxin prevents Poison damage, deal 3 (5) damage to ALL enemies."
+- Reworked Quaff: "Gain 3 (4) Antitoxin. Gain Antitoxin equal to your Poison." -> "Gain 1 (2) Antitoxin. Gain 1 Antitoxin for every 2 Poison you have."
+- Reworked Quench: "Gain 3 (4) Antitoxin, then gain Block equal to half your Antitoxin." -> "Gain 1 (2) Antitoxin, then gain Block equal to twice your Antitoxin."
+- Reworked Smelling Salts: "At the start of your turn, if your Antitoxin absorbed the Poison damage, gain 1 (2) Energy." -> "At the start of your turn, if your Poison damaged you, gain 1 (2) Energy."
+- Reworked Tolerance: "At the start of your turn, gain Antitoxin equal to your Poison." -> "At the start of your turn, gain 1 Antitoxin for every 3 Poison you have."
+- Reworked Vitrify: "Gain 8 (12) Antitoxin." -> "Gain 5 (8) Block. Gain 2 (3) Antitoxin."
+
+### Fixed
+
+- Fixed the Infuse card selection filling your Hand with copies of the card you were choosing
+
+### Removed
+
+- Removed Congeal card
+- Removed Snake Tail relic
+- Removed the Infuse selection preview that showed the enchanted card beside the original
 
 ## [0.12.0] - 2026-08-25
 

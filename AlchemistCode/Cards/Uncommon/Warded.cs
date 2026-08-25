@@ -11,7 +11,7 @@ public class Warded : AlchemistCard
 {
     public Warded() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Block", 1, 1);
+        WithVar("Block", 3, 2);
         WithTip(StaticHoverTip.Block);
         WithTip(typeof(AntitoxinPower));
     }

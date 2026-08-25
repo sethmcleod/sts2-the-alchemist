@@ -11,26 +11,25 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Antitoxin)]
 public class Quench : AlchemistCard
 {
+    // Block per point of capacity
+    private const int BlockPerPoint = 2;
+
     protected internal override bool PlaysCastAnimation => false;
 
     public Quench() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("antitoxin", 3, 2);
-        WithCalculatedBlock(0, static (card, _) => HalfBank(card), ValueProp.Move);
+        WithVar("antitoxin", 1, 1);
+        WithCalculatedBlock(0, static (card, _) => BlockFrom(card), ValueProp.Move);
         WithTip(typeof(AntitoxinPower));
     }
 
     // The pending gain is part of the total the text promises, so the Block lands first and the
     // Antitoxin second; granting first would make the calc count the gain twice
-    private static decimal HalfBank(CardModel card) =>
+    private static decimal BlockFrom(CardModel card) =>
         card is Quench { IsMutable: true, Owner.Creature: { } creature } quench
             ? (creature.GetPowerAmount<AntitoxinPower>()
-               + quench.DynamicVars["antitoxin"].IntValue) / 2
+               + quench.DynamicVars["antitoxin"].IntValue) * BlockPerPoint
             : 0m;
-
-    protected override bool ConditionalGlow =>
-        this is { IsMutable: true, Owner.Creature: { } creature }
-        && creature.GetPowerAmount<AntitoxinPower>() > 0;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

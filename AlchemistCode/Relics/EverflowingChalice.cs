@@ -12,7 +12,7 @@ namespace Alchemist.AlchemistCode.Relics;
 public class EverflowingChalice : AlchemistRelic
 {
     private const int Dose = 2;
-    private const int Antitoxin = 6;
+    private const int Antitoxin = 2;
 
     public override RelicRarity Rarity => RelicRarity.Shop;
 

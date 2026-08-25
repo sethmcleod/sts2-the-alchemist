@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqa3g6ib5i3km"
-path="res://.godot/imported/snake_tail.png-087889b92ed3b0b656aae74e581ac286.ctex"
+uid="uid://bftvbd1c2sans"
+path="res://.godot/imported/bitterroot_outline.png-e2c66a9a8a7230df644a3c463e807cb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/big/snake_tail.png"
-dest_files=["res://.godot/imported/snake_tail.png-087889b92ed3b0b656aae74e581ac286.ctex"]
+source_file="res://Alchemist/images/relics/bitterroot_outline.png"
+dest_files=["res://.godot/imported/bitterroot_outline.png-e2c66a9a8a7230df644a3c463e807cb1.ctex"]
 
 [params]
 

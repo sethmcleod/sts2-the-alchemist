@@ -16,12 +16,15 @@ public class TolerancePower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<AntitoxinPower>(), HoverTipFactory.FromPower<PoisonPower>() };
 
+    // Poison per point of capacity granted
+    public const int PoisonPerPoint = 3;
+
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Player) return;
-        var dose = Owner.GetPowerAmount<PoisonPower>() * Amount;
-        if (dose <= 0) return;
+        var gain = Owner.GetPowerAmount<PoisonPower>() / PoisonPerPoint * Amount;
+        if (gain <= 0) return;
         Flash();
-        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner, dose, Owner, null);
+        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner, gain, Owner, null);
     }
 }

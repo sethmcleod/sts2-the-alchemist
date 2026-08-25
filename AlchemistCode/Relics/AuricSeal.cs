@@ -13,7 +13,7 @@ namespace Alchemist.AlchemistCode.Relics;
 
 public class AuricSeal : AlchemistRelic
 {
-    private const int Antitoxin = 2;
+    private const int Antitoxin = 1;
 
     // Reset at every side turn start, so the first draw of EVERY turn pays, including turn one's
     // opening hand, whose draws land after the side turn begins

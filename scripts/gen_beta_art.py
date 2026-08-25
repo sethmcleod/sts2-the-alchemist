@@ -7,8 +7,7 @@ Alchemist/images/card_portraits/beta/. The system:
 - Each card still on a placeholder has one color pair and one direction in
   the COLORS table. No two cards share a pair, so every image is unique.
 - Cards with hand-made art live in ART_DONE instead, and are never written.
-  A card graduating to real art must move between the two in one edit, or
-  the next full run paints a gradient back over the artwork.
+  A card graduating to real art must move between the two in one edit.
 - Cards in the same mechanic family share the start color (the anchor)
   and vary the end color. A family reads at a glance; a card stays
   unique.
@@ -86,9 +85,8 @@ BAYER = [
 # Direction encodes card type: Attack TR, Skill BR, Power R or L, token vertical (U or D)
 # Cards whose beta art is hand-made. They are NOT in COLORS and are never generated.
 #
-# This set is the guard rail, not a note. generate() rewrites every file it knows about, so a card
-# that graduates from a gradient to real art has to LEAVE the COLORS table and join this set on the
-# same edit.
+# generate() rewrites every file it knows about, so a card graduating from a gradient to real art
+# must LEAVE the COLORS table and join this set in the same edit.
 ART_DONE = {
     "Alembic",
     "All At Once",
@@ -107,7 +105,6 @@ ART_DONE = {
     "Callus",
     "Caustic Strike",
     "Condense",
-    "Congeal",
     "Corrode",
     "Croak",
     "Defend",
@@ -151,6 +148,7 @@ COLORS = {
     "Pass It On": ("#2f0170", "#d84a4a", "L", "Antitoxin"),
     "Patient Strike": ("#4a0e2e", "#c78a3b", "TR", "Ferment: attacks"),
     "Poultice": ("#1f1723", "#4f9e4a", "BR", "Exhaust pile: skills"),
+    "Proof": ("#2b0f3a", "#e8a33f", "TR", "Antitoxin"),
     "Puff Up": ("#6b2444", "#d9a86a", "BR", "Ferment: skills and powers"),
     "Puncture": ("#0d1f3d", "#3d9ae8", "TR", "Unique"),
     "Quaff": ("#1a3a5c", "#7ee0c2", "BR", "Unique"),

@@ -17,8 +17,11 @@ public class SmellingSalts : AlchemistCard
         WithTip(typeof(AntitoxinPower));
     }
 
+    // Forward-looking on purpose: it lights when the dose already outruns the capacity, so the next
+    // tick is going to get through and this card is going to pay
     protected override bool ConditionalGlow =>
-        Owner?.Creature is { } c && c.HasPower<PoisonPower>() && c.HasPower<AntitoxinPower>();
+        this is { IsMutable: true, Owner.Creature: { } c }
+        && c.GetPowerAmount<PoisonPower>() > c.GetPowerAmount<AntitoxinPower>();
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

@@ -11,7 +11,7 @@ public class PassItOn : AlchemistCard
 {
     public PassItOn() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Amount", 1, 1);
+        WithVar("Amount", 3, 2);
         WithTip(typeof(AntitoxinPower));
     }
 
