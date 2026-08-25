@@ -4,8 +4,11 @@
 Every card gets its own unique placeholder gradient in
 Alchemist/images/card_portraits/beta/. The system:
 
-- Each card has one color pair and one direction in the COLORS table.
-  No two cards share a pair, so every image is unique.
+- Each card still on a placeholder has one color pair and one direction in
+  the COLORS table. No two cards share a pair, so every image is unique.
+- Cards with hand-made art live in ART_DONE instead, and are never written.
+  A card graduating to real art must move between the two in one edit, or
+  the next full run paints a gradient back over the artwork.
 - Cards in the same mechanic family share the start color (the anchor)
   and vary the end color. A family reads at a glance; a card stays
   unique.
@@ -18,7 +21,9 @@ Alchemist/images/card_portraits/beta/. The system:
   files small.
 
 Usage:
-  python3 scripts/gen_beta_art.py            # regenerate all PNGs
+  python3 scripts/gen_beta_art.py            # regenerate ALL placeholder PNGs
+  python3 scripts/gen_beta_art.py card NAME  # regenerate just one, the safe
+                                             #   default when adding a card
   python3 scripts/gen_beta_art.py sheet      # write beta-art-sheet.html,
                                              #   a compendium-style list
                                              #   (ignored by git)
@@ -79,105 +84,113 @@ BAYER = [
 # Cards in a family share the start color. Every pair must be unique;
 # the validate command enforces this.
 # Direction encodes card type: Attack TR, Skill BR, Power R or L, token vertical (U or D)
+# Cards whose beta art is hand-made. They are NOT in COLORS and are never generated.
+#
+# This set is the guard rail, not a note. generate() rewrites every file it knows about, so a card
+# that graduates from a gradient to real art has to LEAVE the COLORS table and join this set on the
+# same edit.
+ART_DONE = {
+    "Alembic",
+    "All At Once",
+    "Anoint",
+    "Apothecary",
+    "Backfire",
+    "Bestow",
+    "Bitter Draught",
+    "Blend",
+    "Bloom",
+    "Bonk",
+    "Bottoms Up",
+    "Brace",
+    "Brine",
+    "Bursting Mix",
+    "Callus",
+    "Caustic Strike",
+    "Condense",
+    "Congeal",
+    "Corrode",
+    "Croak",
+    "Defend",
+    "Distill",
+    "Dose",
+    "Drench",
+    "Effervesce",
+    "Eureka",
+    "Fallout",
+    "Jab",
+    "Strike",
+}
+
 COLORS = {
-    "Tempered": ("#1f1723", "#5f7fa8", "BR", "Unique"),
-    "Callus": ("#471008", "#d4593a", "R", "Poison powers: amplifiers"),
-    "Miasma": ("#071a02", "#6b8f2a", "L", "Poison powers: retaliation"),
-    "Gulp": ("#4e8701", "#8a3f2f", "BR", "Poison skills"),
-    "Ichor": ("#00212a", "#3fb0a0", "TR", "Poison payoffs"),
-    "Toughen": ("#2f0170", "#6f9ad8", "BR", "Poison payoffs"),
-    "Immunize": ("#2f0170", "#c46fd8", "R", "Antitoxin"),
-    "Pass It On": ("#2f0170", "#d84a4a", "L", "Antitoxin"),
-    "Brine": ("#792595", "#9ad8b8", "BR", "Infuse: cantrips"),
-    "Osmosis": ("#4a1a66", "#8fd84a", "R", "Infuse: heavy"),
-    "Backfire": ("#0b2a4a", "#5fd0e8", "TR", "Unique"),
-    "Croak": ("#5f011f", "#b3bd2a", "TR", "Poison attacks"),
-    "Swill": ("#5f011f", "#c18c0f", "TR", "Unique"),
-    "Spit": ("#3d0a02", "#e0d6c2", "TR", "Unique"),
-    "Puncture": ("#0d1f3d", "#3d9ae8", "TR", "Unique"),
-    "Lash Out": ("#5f011f", "#77828c", "TR", "Unique"),
-    "Congeal": ("#1d3f0e", "#0e7c7b", "BR", "Potion and buff skills"),
-    "Transmute": ("#5f011f", "#e3b84a", "BR", "Potion and buff skills"),
-    "Warded": ("#45293f", "#c98fd6", "R", "Unique"),
-    "Nightcap": ("#0d0a2e", "#c9a84a", "TR", "Unique"),
-    "Heavy Dose": ("#650101", "#c46a12", "TR", "Poison attacks"),
-    "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
-    "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
-    "Mash": ("#4a2a10", "#e0b03c", "TR", "Mix"),
-    "Bloom": ("#650101", "#e8451f", "TR", "Poison attacks"),
-    "Anoint": ("#2f0170", "#c0a24a", "TR", "Unique"),
-    "Distill": ("#2f0170", "#b3341f", "BR", "Poison skills"),
-    "Blend": ("#1f1723", "#7f9aa8", "BR", "Transform"),
-    "Fallout": ("#7a1c06", "#8ab520", "TR", "Poison attacks"),
-    "Slow Burn": ("#2f0170", "#63c11c", "BR", "Unique"),
-    "Corrode": ("#2f0170", "#287912", "BR", "Poison and Infuse skills"),
-    "Spores": ("#0f3d33", "#4adfc0", "BR", "Poison out"),
-    "Patient Strike": ("#4a0e2e", "#c78a3b", "TR", "Ferment: attacks"),
-    "Rolling Boil": ("#4a0e2e", "#e85a1f", "TR", "Ferment: attacks"),
-    "All At Once": ("#6b2444", "#c2601c", "TR", "Unique"),
-    "Puff Up": ("#6b2444", "#d9a86a", "BR", "Ferment: skills and powers"),
-    "Vintage": ("#6b2444", "#df9723", "BR", "Ferment: skills and powers"),
-    "Condense": ("#792595", "#b8d94f", "BR", "Infuse: cantrips"),
-    "Salve": ("#792595", "#6fd8e0", "BR", "Infuse: cantrips"),
-    "Fresh Batch": ("#3a1c52", "#59c1a6", "BR", "Mix"),
-    "Refine": ("#4a1a66", "#257bc3", "BR", "Infuse: heavy"),
-    "Froth": ("#0e3550", "#8fe0c8", "TR", "Unique"),
-    "Siphon": ("#241a5e", "#2aa89b", "TR", "Unique"),
-    "Brace": ("#5b3fc4", "#4a9fd8", "BR", "Unique"),
-    "Needle Point": ("#5b3fc4", "#aeb4bc", "TR", "Enchanted payoffs: debuff attacks"),
-    "Bonk": ("#5b3fc4", "#4ad89b", "TR", "Enchanted payoffs: debuff attacks"),
-    "Harden": ("#5b3fc4", "#d9c89a", "R", "Enchanted payoffs: Antitoxin"),
-    "Vitrify": ("#5b3fc4", "#48495f", "BR", "Enchanted payoffs: Antitoxin"),
-    "Apothecary": ("#241a4f", "#d8a23a", "BL", "Mix"),
-    "Smoke Out": ("#1f1723", "#a3a83a", "TR", "Unique"),
-    "Poultice": ("#1f1723", "#4f9e4a", "BR", "Exhaust pile: skills"),
-    "Caustic Strike": ("#1f1723", "#be401b", "TR", "Unique"),
-    "Tolerance": ("#00212a", "#10aba5", "BR", "Poison payoffs"),
-    "Quaff": ("#1a3a5c", "#7ee0c2", "BR", "Unique"),
-    "Sweat It Out": ("#4e8701", "#013161", "BR", "Poison skills"),
-    "Thicken": ("#1f4a2e", "#8fd0e8", "BR", "Mix"),
     "Fizz": ("#3a2a08", "#d9c26a", "TR", "Unique"),
-    "Spew": ("#12331a", "#7fd4a0", "TR", "Unique"),
-    "Drench": ("#123a5c", "#e0904a", "BL", "Poison out"),
-    "Toxin Skin": ("#1a2f14", "#a8d86b", "TR", "Unique"),
+    "Flare Up": ("#650101", "#d9b81e", "TR", "Poison attacks"),
     "Forked Tongue": ("#4e8701", "#7a2f6b", "TR", "Poison attacks"),
-    "Overdose": ("#071a02", "#2ec4c9", "L", "Poison powers: amplifiers"),
-    "Inure": ("#071a02", "#5fbf8a", "R", "Poison powers: retaliation"),
-    "Ripen": ("#5c1a3a", "#d1e84a", "L", "Unique"),
-    "Mercurial Form": ("#101b2e", "#8ef0c2", "TL", "Unique"),
-    "Grand Batch": ("#0e2a45", "#e8c46a", "TL", "Mix"),
-    "Quench": ("#0a2f3a", "#7fe3c4", "BR", "Unique"),
-    "Smelling Salts": ("#2f0170", "#f2b32e", "L", "Antitoxin"),
-    "White Heat": ("#7a1c02", "#ffdf8a", "TR", "Burst tempo"),
-    "Bitter Draught": ("#7a1c02", "#d98cc8", "BR", "Burst tempo"),
-    "Simmer": ("#1b2a44", "#0f9b82", "BR", "Crafting: transform"),
-    "Reagent": ("#1b2a44", "#0c7f56", "BR", "Crafting: transform"),
-    "Vent": ("#3d1030", "#e05ab0", "TR", "Poison out"),
-    "Eureka": ("#1b2a44", "#f2c94e", "BR", "Crafting: discovery"),
-    "Numb": ("#3a1220", "#ff5f3d", "BR", "Crafting: refinement"),
-    "Steep": ("#3a1220", "#f0435e", "BR", "Crafting: refinement"),
-    "Bursting Mix": ("#5a0a0a", "#ff5a3a", "TR", "Mix tokens"),
-    "Fuming Mix": ("#2c3a10", "#c8e05a", "TR", "Mix tokens"),
-    "Syrupy Mix": ("#0a2258", "#4a90e8", "TR", "Mix tokens"),
-    "Zesty Mix": ("#2a0a4a", "#c07aff", "TR", "Mix tokens"),
-    "Bestow": ("#2563c4", "#b48ff0", "BR", "Multiplayer: gifts"),
-    "Bottoms Up": ("#2563c4", "#5fc47a", "R", "Multiplayer: gifts"),
     "Free Samples": ("#2563c4", "#8fd8c4", "BR", "Multiplayer: gifts"),
-    "Effervesce": ("#2563c4", "#d8e8f5", "BR", "Multiplayer: gifts"),
-    "Reflux": ("#2563c4", "#178f5f", "BR", "Unique"),
-    "Alembic": ("#240147", "#5fa8d3", "R", "Unique"),
-    "Resolve": ("#240147", "#e04a3c", "R", "Desperation: powers"),
+    "Fresh Batch": ("#3a1c52", "#59c1a6", "BR", "Mix"),
+    "Froth": ("#0e3550", "#8fe0c8", "TR", "Unique"),
     "Fumigate": ("#2f4a10", "#a8e05a", "TL", "Poison out"),
-    "Stir": ("#12384f", "#8fd0e8", "BR", "Mix"),
-    "Strike": ("#180209", "#942d2d", "TR", "Unique"),
-    "Defend": ("#0f2a43", "#2b6ea8", "BR", "Unique"),
-    "Jab": ("#045062", "#d8b23a", "TR", "Unique"),
-    "Dose": ("#2f0170", "#2aa88a", "BR", "Unique"),
-    "Panacea": ("#7638ff", "#22ff88", "BL", "Unique"),
-    "Wormwood": ("#4a0e2e", "#6ba32c", "TR", "Unique"),
+    "Fuming Mix": ("#2c3a10", "#c8e05a", "TR", "Mix tokens"),
     "Golden Fruit": ("#c58037", "#ffef2d", "U", "Unique"),
-    "Unripe Fruit": ("#26a82b", "#ffef2d", "U", "Unique"),
+    "Grand Batch": ("#0e2a45", "#e8c46a", "TL", "Mix"),
+    "Gulp": ("#4e8701", "#8a3f2f", "BR", "Poison skills"),
+    "Harden": ("#5b3fc4", "#d9c89a", "R", "Enchanted payoffs: Antitoxin"),
+    "Heavy Dose": ("#650101", "#c46a12", "TR", "Poison attacks"),
+    "Ichor": ("#00212a", "#3fb0a0", "TR", "Poison payoffs"),
+    "Immunize": ("#2f0170", "#c46fd8", "R", "Antitoxin"),
+    "Inure": ("#071a02", "#5fbf8a", "R", "Poison powers: retaliation"),
+    "Lash Out": ("#5f011f", "#77828c", "TR", "Unique"),
+    "Mash": ("#4a2a10", "#e0b03c", "TR", "Mix"),
+    "Mercurial Form": ("#101b2e", "#8ef0c2", "TL", "Unique"),
+    "Miasma": ("#071a02", "#6b8f2a", "L", "Poison powers: retaliation"),
+    "Needle Point": ("#5b3fc4", "#aeb4bc", "TR", "Enchanted payoffs: debuff attacks"),
+    "Nightcap": ("#0d0a2e", "#c9a84a", "TR", "Unique"),
+    "Numb": ("#3a1220", "#ff5f3d", "BR", "Crafting: refinement"),
+    "Osmosis": ("#4a1a66", "#8fd84a", "R", "Infuse: heavy"),
+    "Overdose": ("#071a02", "#2ec4c9", "L", "Poison powers: amplifiers"),
+    "Panacea": ("#7638ff", "#22ff88", "BL", "Unique"),
+    "Pass It On": ("#2f0170", "#d84a4a", "L", "Antitoxin"),
+    "Patient Strike": ("#4a0e2e", "#c78a3b", "TR", "Ferment: attacks"),
+    "Poultice": ("#1f1723", "#4f9e4a", "BR", "Exhaust pile: skills"),
+    "Puff Up": ("#6b2444", "#d9a86a", "BR", "Ferment: skills and powers"),
+    "Puncture": ("#0d1f3d", "#3d9ae8", "TR", "Unique"),
+    "Quaff": ("#1a3a5c", "#7ee0c2", "BR", "Unique"),
+    "Quench": ("#0a2f3a", "#7fe3c4", "BR", "Unique"),
+    "Reagent": ("#1b2a44", "#0c7f56", "BR", "Crafting: transform"),
+    "Refine": ("#4a1a66", "#257bc3", "BR", "Infuse: heavy"),
+    "Reflux": ("#2563c4", "#178f5f", "BR", "Unique"),
     "Residue": ("#3a2a08", "#6b7a2f", "D", "Unique"),
+    "Resolve": ("#240147", "#e04a3c", "R", "Desperation: powers"),
+    "Ripen": ("#5c1a3a", "#d1e84a", "L", "Unique"),
+    "Rolling Boil": ("#4a0e2e", "#e85a1f", "TR", "Ferment: attacks"),
+    "Salve": ("#792595", "#6fd8e0", "BR", "Infuse: cantrips"),
+    "Simmer": ("#1b2a44", "#0f9b82", "BR", "Crafting: transform"),
+    "Siphon": ("#241a5e", "#2aa89b", "TR", "Unique"),
+    "Slow Burn": ("#2f0170", "#63c11c", "BR", "Unique"),
+    "Smelling Salts": ("#2f0170", "#f2b32e", "L", "Antitoxin"),
+    "Smoke Out": ("#1f1723", "#a3a83a", "TR", "Unique"),
+    "Spatter": ("#650101", "#7ae801", "TR", "Poison attacks"),
+    "Spew": ("#12331a", "#7fd4a0", "TR", "Unique"),
+    "Spit": ("#3d0a02", "#e0d6c2", "TR", "Unique"),
+    "Spores": ("#0f3d33", "#4adfc0", "BR", "Poison out"),
+    "Steep": ("#3a1220", "#f0435e", "BR", "Crafting: refinement"),
+    "Stir": ("#12384f", "#8fd0e8", "BR", "Mix"),
+    "Sweat It Out": ("#4e8701", "#013161", "BR", "Poison skills"),
+    "Swill": ("#5f011f", "#c18c0f", "TR", "Unique"),
+    "Syrupy Mix": ("#0a2258", "#4a90e8", "TR", "Mix tokens"),
+    "Tempered": ("#1f1723", "#5f7fa8", "BR", "Unique"),
+    "Thicken": ("#1f4a2e", "#8fd0e8", "BR", "Mix"),
+    "Tolerance": ("#00212a", "#10aba5", "BR", "Poison payoffs"),
+    "Toughen": ("#2f0170", "#6f9ad8", "BR", "Poison payoffs"),
+    "Toxin Skin": ("#1a2f14", "#a8d86b", "TR", "Unique"),
+    "Transmute": ("#5f011f", "#e3b84a", "BR", "Potion and buff skills"),
+    "Unripe Fruit": ("#26a82b", "#ffef2d", "U", "Unique"),
+    "Vent": ("#3d1030", "#e05ab0", "TR", "Poison out"),
+    "Vintage": ("#6b2444", "#df9723", "BR", "Ferment: skills and powers"),
+    "Vitrify": ("#5b3fc4", "#48495f", "BR", "Enchanted payoffs: Antitoxin"),
+    "Warded": ("#45293f", "#c98fd6", "R", "Unique"),
+    "White Heat": ("#7a1c02", "#ffdf8a", "TR", "Burst tempo"),
+    "Wormwood": ("#4a0e2e", "#6ba32c", "TR", "Unique"),
+    "Zesty Mix": ("#2a0a4a", "#c07aff", "TR", "Mix tokens"),
 }
 
 # Epoch placeholder gradients: one pair per chapter of the timeline,
@@ -207,15 +220,22 @@ def load_cards():
 
 
 def validate():
-    """Check that COLORS matches cards.csv exactly."""
+    """Check that COLORS plus ART_DONE covers cards.csv exactly."""
     names = {r["Card"] for r in load_cards()}
     problems = []
-    missing = names - set(COLORS)
+    missing = names - set(COLORS) - ART_DONE
     if missing:
         problems.append(f"cards with no colors: {sorted(missing)}")
     unknown = set(COLORS) - names
     if unknown:
         problems.append(f"colored cards not in cards.csv: {sorted(unknown)}")
+    stale = ART_DONE - names
+    if stale:
+        problems.append(f"ART_DONE cards not in cards.csv: {sorted(stale)}")
+    both = set(COLORS) & ART_DONE
+    if both:
+        problems.append(f"in COLORS and ART_DONE at once, generate would "
+                        f"overwrite the real art: {sorted(both)}")
     pairs = {}
     for name, (c0, c1, orient, _fam) in COLORS.items():
         if orient not in ORIENTS:
@@ -300,6 +320,20 @@ def gen_gradient(path, c0, c1, orient, w=W, h=H):
     force_lossless(path)
 
 
+def generate_one(name):
+    """Write one gradient. Use this for a single new card: a full generate() is a rewrite of
+    every file, which is only safe when nothing on disk is hand-made."""
+    validate()
+    if name in ART_DONE:
+        raise SystemExit(f"{name} has hand-made art and is not generated")
+    if name not in COLORS:
+        raise SystemExit(f"{name} has no COLORS entry")
+    c0, c1, orient, _fam = COLORS[name]
+    w, h = SIZES.get(name, (W, H))
+    gen_gradient(os.path.join(BETA, card_file(name) + ".png"), c0, c1, orient, w, h)
+    print(f"{card_file(name)}.png {c0} {c1} {orient}", flush=True)
+
+
 def generate():
     validate()
     total = len(COLORS)
@@ -368,6 +402,8 @@ def sort_key(row):
 
 
 def _meta_html(name):
+    if name in ART_DONE:
+        return '<div class="meta"><span class="mono">hand-made art</span></div>'
     c0, c1, orient, _fam = COLORS[name]
     arrow = ORIENTS[orient][2]
     return (f'<div class="meta">'
@@ -378,7 +414,14 @@ def _meta_html(name):
 
 def _plain_card(row):
     name = row["Card"]
-    c0, c1, orient, _fam = COLORS[name]
+    # The sheet is written to the repo root, so the real art is one relative hop away. Showing it
+    # rather than a swatch is the point of the sheet: it is what the card actually looks like
+    if name in ART_DONE:
+        art = (f'background-image:url(Alchemist/images/card_portraits/beta/'
+               f'{card_file(name)}.png);background-size:cover')
+    else:
+        c0, c1, orient, _fam = COLORS[name]
+        art = f'background:linear-gradient({css_angle(orient)}deg,{c0},{c1})'
     b = rarity_bucket(row["Rarity"])
     banner = BANNERS[b]
     sub = " &middot; Multiplayer" if "Multiplayer" in row["Rarity"] else ""
@@ -387,8 +430,7 @@ def _plain_card(row):
         f'{html.escape(row["Cost"].split("(")[0].strip())}</div>'
         f'<div class="banner" style="background:{banner}">'
         f'{html.escape(name)}</div>'
-        f'<div class="art0" style="background:linear-gradient('
-        f'{css_angle(orient)}deg,{c0},{c1});aspect-ratio:{W}/{H}"></div>'
+        f'<div class="art0" style="{art};aspect-ratio:{W}/{H}"></div>'
         f'<div class="tpill" style="background:{banner}">'
         f'{html.escape(row["Type"])}{sub}</div>'
         f'<div class="desc">{highlight(row["Description"])}</div></div>'
@@ -471,6 +513,10 @@ if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "generate"
     if cmd == "generate":
         generate()
+    elif cmd == "card":
+        if len(sys.argv) < 3:
+            raise SystemExit("usage: gen_beta_art.py card \"Card Name\"")
+        generate_one(" ".join(sys.argv[2:]))
     elif cmd == "sheet":
         sheet(os.path.join(REPO, "beta-art-sheet.html"))
     elif cmd == "validate":
@@ -478,4 +524,4 @@ if __name__ == "__main__":
         print("spec ok")
     else:
         raise SystemExit(f"unknown command: {cmd} "
-                         f"(use generate, sheet, or validate)")
+                         f"(use generate, card <name>, sheet, or validate)")
