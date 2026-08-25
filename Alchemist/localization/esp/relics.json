@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Cada vez que obtienes [gold]veneno[/gold], obtienes [blue]1[/blue] de [gold]antitoxina[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Una dosis medida, siempre a mano.",
   "ALCHEMIST-SPARE_DOSE.title": "Dosis de reserva",
-  "ALCHEMIST-WEATHERED_KIT.description": "Al comienzo de cada combate, obtienes [blue]1[/blue] de [gold]veneno[/gold] y [blue]8[/blue] de [gold]antitoxina[/gold]. Puedes [gold]preparar pociones[/gold] en los puntos de descanso.",
+  "ALCHEMIST-WEATHERED_KIT.description": "Al comienzo de cada combate, obtienes [blue]2[/blue] de [gold]veneno[/gold] y [blue]8[/blue] de [gold]antitoxina[/gold]. Puedes [gold]preparar pociones[/gold] en los puntos de descanso.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Un estuche gastado y de aroma agradable.",
   "ALCHEMIST-WEATHERED_KIT.title": "Estuche gastado"
 }

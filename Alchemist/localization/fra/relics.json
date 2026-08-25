@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Lorsque vous gagnez du [gold]Poison[/gold], gagnez [blue]1[/blue] d'[gold]Antitoxine[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Une dose mesurée, toujours à portée de main.",
   "ALCHEMIST-SPARE_DOSE.title": "Dose de secours",
-  "ALCHEMIST-WEATHERED_KIT.description": "Au début de chaque combat, gagnez [blue]1[/blue] de [gold]Poison[/gold] et [blue]8[/blue] d'[gold]Antitoxine[/gold]. Vous pouvez [gold]Brasser[/gold] aux Sites de repos.",
+  "ALCHEMIST-WEATHERED_KIT.description": "Au début de chaque combat, gagnez [blue]2[/blue] de [gold]Poison[/gold] et [blue]8[/blue] d'[gold]Antitoxine[/gold]. Vous pouvez [gold]Brasser[/gold] aux Sites de repos.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Une mallette bien usée, qui sent agréablement bon.",
   "ALCHEMIST-WEATHERED_KIT.title": "Trousse usée"
 }

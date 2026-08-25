@@ -10,7 +10,6 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Poison)]
 public class Croak : AlchemistCard
 {
-    protected override bool ConditionalGlow => Dose(this) > 0;
 
     public Croak() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {

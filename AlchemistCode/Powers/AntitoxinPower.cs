@@ -53,16 +53,20 @@ public partial class AntitoxinPower : AlchemistPower
     internal decimal Absorb(Creature? target, decimal amount, ValueProp props, Creature? dealer,
         CardModel? cardSource)
     {
-        // Cleared on EVERY pass, including the rejects. This hook runs for all damage the owner
-        // takes, and the Poison forecast runs it without ever reaching BeforeDamageReceived, so a
-        // value left set by a reject would be spent on whatever landed next, such as an enemy attack
-        _pendingSpend = 0;
-        AntitoxinRules.ClearTickAbsorb(Owner);
+        // The forecast still needs the reduction below so the previewed number is right, but it must not
+        // touch the pending record in either direction. Every real pass clears first, including the
+        // rejects, because this hook runs for all damage the owner takes
+        var forecast = AntitoxinRules.InPoisonForecast;
+        if (!forecast)
+        {
+            _pendingSpend = 0;
+            AntitoxinRules.ClearTickAbsorb(Owner);
+        }
         if (!IsPoisonTick(target, amount, props, dealer, cardSource))
             return 0m;
 
         var absorbed = Math.Min(Amount, (int)amount);
-        _pendingSpend = absorbed;
+        if (!forecast) _pendingSpend = absorbed;
         return -absorbed;
     }
 
@@ -75,22 +79,25 @@ public partial class AntitoxinPower : AlchemistPower
     public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        // Deliberately not re-running IsPoisonTick: this hook is handed the amount AFTER
-        // ModifyDamage, so a fully absorbed tick arrives as 0 and would fail the predicate's own
-        // amount test. Absorb already vetted the hit, so a non-zero _pendingSpend is the proof
         if (target != Owner) return;
 
         var spend = _pendingSpend;
         _pendingSpend = 0;
         if (spend <= 0) return;
 
+        // Absorb clears _pendingSpend on every pass, but PoisonPower.CalculateTotalDamageNextTurn
+        // runs Absorb through ModifyDamage and never reaches this hook, so a forecast that lands
+        // between ModifyDamage and here leaves a value set that belongs to no real hit. The next hit
+        // then spends it, which drained Antitoxin on attacks Block had already eaten. Re-checking the
+        // shape rejects those: an attack carries a dealer and is not Unblockable. The amount test
+        // cannot be re-run, because a fully absorbed tick arrives here as 0
+        if (!AntitoxinRules.HasPoisonTickShape(props, dealer, cardSource)) return;
+
         Flash();
         AbsorbSplash();
         AntitoxinRules.MarkAbsorbed(Owner, spend);
         if (Owner.GetPower<PassItOnPower>() is { } crucible)
             await crucible.OnAbsorbed(spend);
-        if (Owner.GetPower<WardedPower>() is { } slag)
-            await slag.OnAbsorbed(spend);
         if (spend >= Amount)
             await PowerCmd.Remove(this);
         else

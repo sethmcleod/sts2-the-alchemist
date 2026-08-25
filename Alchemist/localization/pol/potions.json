@@ -15,7 +15,7 @@
   "ALCHEMIST-REFINED_EXTRACT.title": "Oczyszczony ekstrakt",
   "ALCHEMIST-SAMPLER.description": "Zyskaj {energyPrefix:energyIcons(1)} i dobierz [blue]1[/blue] kartę za każdą posiadaną [gold]Miksturę[/gold], łącznie z tą.",
   "ALCHEMIST-SAMPLER.title": "Próbnik",
-  "ALCHEMIST-SOLVENT.description": "Usuń przeciwnikowi WSZYSTKIE pkt. [gold]Artefaktu[/gold] i [gold]Bloku[/gold]. Nałóż mu [blue]3[/blue] pkt. [gold]Słabości[/gold].",
+  "ALCHEMIST-SOLVENT.description": "Usuń przeciwnikowi WSZYSTKIE pkt. [gold]Ochrony[/gold] i [gold]Bloku[/gold]. Nałóż mu [blue]3[/blue] pkt. [gold]Słabości[/gold].",
   "ALCHEMIST-SOLVENT.title": "Rozpuszczalnik",
   "ALCHEMIST-STARTER_CULTURE.description": "[gold]Aktywuj[/gold] WSZYSTKIE karty z [gold]Fermentacją[/gold] w twojej [gold]ręce[/gold] [blue]3[/blue] razy.",
   "ALCHEMIST-STARTER_CULTURE.title": "Zaczyn"

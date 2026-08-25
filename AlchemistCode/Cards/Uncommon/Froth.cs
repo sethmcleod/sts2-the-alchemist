@@ -1,4 +1,3 @@
-using System;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -17,9 +16,7 @@ public class Froth : AlchemistCard
         WithKeyword(CardKeyword.Retain);
     }
 
-    private const int MaxHits = 4;
-
-    private int Hits => Math.Min(1 + FermentTurns, MaxHits);
+    private int Hits => 1 + FermentTurns;
 
     protected override void AddExtraArgsToDescription(LocString description)
     {

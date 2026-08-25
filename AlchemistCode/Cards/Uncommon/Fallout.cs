@@ -11,14 +11,14 @@ public class Fallout : AlchemistCard
 {
     public Fallout() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
     {
-        WithCalculatedDamage(4, static (card, _) => Dose(card), ValueProp.Move, 2);
+        WithCalculatedDamage(8, static (card, _) => Dose(card), ValueProp.Move, 2);
         WithTip(typeof(PoisonPower));
     }
 
-    protected override bool ConditionalGlow => Dose(this) > 0;
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_sandy_impact"))
+            .WithAttackerAnim("Cast", Owner.Character.CastAnimDelay)
+            .Execute(choiceContext);
     }
 }

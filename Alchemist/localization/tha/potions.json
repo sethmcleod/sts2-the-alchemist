@@ -15,7 +15,7 @@
   "ALCHEMIST-REFINED_EXTRACT.title": "สารสกัดบริสุทธิ์",
   "ALCHEMIST-SAMPLER.description": "ได้รับ {energyPrefix:energyIcons(1)} และจั่วการ์ด [blue]1[/blue] ใบ ต่อ[gold]ขวดยา[/gold]แต่ละขวดที่คุณมี โดยนับรวมขวดนี้ด้วย",
   "ALCHEMIST-SAMPLER.title": "ยาชิมรวมมิตร",
-  "ALCHEMIST-SOLVENT.description": "กำจัด[gold]อาร์ทิแฟกต์[/gold]และ[gold]บล็อก[/gold]ทั้งหมดจากศัตรู สร้าง [blue]3[/blue] [gold]ความอ่อนแอ[/gold]ใส่มัน",
+  "ALCHEMIST-SOLVENT.description": "กำจัด[gold]อาคม[/gold]และ[gold]บล็อก[/gold]ทั้งหมดจากศัตรู สร้าง [blue]3[/blue] [gold]ความอ่อนแอ[/gold]ใส่มัน",
   "ALCHEMIST-SOLVENT.title": "ตัวทำละลาย",
   "ALCHEMIST-STARTER_CULTURE.description": "[gold]กระตุ้น[/gold]การ์ด[gold]บ่ม[/gold]ทั้งหมดใน[gold]มือ[/gold] [blue]3[/blue] ครั้ง",
   "ALCHEMIST-STARTER_CULTURE.title": "หัวเชื้อ"

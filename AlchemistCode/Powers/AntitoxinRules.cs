@@ -23,12 +23,26 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
     // about to decrement, so requiring that much Poison on the target is what separates them
     internal static bool IsPoisonTick(Creature target, decimal amount, ValueProp props,
         Creature? dealer, CardModel? cardSource) =>
+        HasPoisonTickShape(props, dealer, cardSource)
+        && amount > 0
+        && target.GetPowerAmount<PoisonPower>() >= amount;
+
+    // The half of the test that does NOT read the amount. BeforeDamageReceived is handed the
+    // post-ModifyDamage amount, so it cannot re-run the amount test, but it can re-run this, and
+    // this is the half that separates a tick from an enemy attack: an attack carries a dealer and
+    // is not Unblockable
+    internal static bool HasPoisonTickShape(ValueProp props, Creature? dealer, CardModel? cardSource) =>
         dealer == null
         && cardSource == null
         && props.HasFlag(ValueProp.Unblockable)
-        && props.HasFlag(ValueProp.Unpowered)
-        && amount > 0
-        && target.GetPowerAmount<PoisonPower>() >= amount;
+        && props.HasFlag(ValueProp.Unpowered);
+
+    // True only while PoisonPower.CalculateTotalDamageNextTurn is sizing the incoming-damage preview.
+    // That forecast runs the same ModifyDamage hook a real tick does and never reaches
+    // BeforeDamageReceived, so Absorb must leave the pending spend untouched while it is set: writing
+    // there would hand the next hit a spend that belongs to no damage, and clearing there would rob a
+    // real tick that had already recorded one. PoisonForecastPatches owns the flag
+    internal static bool InPoisonForecast;
 
     // The absorbed slice of the tick that is resolving right now. Callus runs in
     // AfterDamageReceived, which is handed the post-absorb amount, so without this a fully soaked tick

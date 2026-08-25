@@ -7,14 +7,12 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 [CardTheme(CardTheme.Poison)]
-public class DeepCut : AlchemistCard
+public class Bonk : AlchemistCard
 {
-    public DeepCut() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Bonk() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(16, 6);
     }
-
-    protected override bool ConditionalGlow => Dose(this) > 0;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

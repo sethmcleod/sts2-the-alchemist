@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Immer wenn du [gold]Gift[/gold] erhältst, erhalte [blue]1[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Eine abgemessene Dosis, immer griffbereit.",
   "ALCHEMIST-SPARE_DOSE.title": "Ersatzdosis",
-  "ALCHEMIST-WEATHERED_KIT.description": "Erhalte zu Beginn jedes Kampfes [blue]1[/blue] [gold]Gift[/gold] und [blue]8[/blue] [gold]Antitoxin[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold].",
+  "ALCHEMIST-WEATHERED_KIT.description": "Erhalte zu Beginn jedes Kampfes [blue]2[/blue] [gold]Gift[/gold] und [blue]8[/blue] [gold]Antitoxin[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Ein gut abgenutzter, angenehm riechender Koffer.",
   "ALCHEMIST-WEATHERED_KIT.title": "Abgenutzter Koffer"
 }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6clyn67qkn0w"
-path="res://.godot/imported/retch.png-f402bb73932568cae1c0adc9aaa2af36.ctex"
+uid="uid://drnch4k7q2mb3"
+path="res://.godot/imported/drench.png-668f1f1e1f2c85edcde1e006d06040b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/retch.png"
-dest_files=["res://.godot/imported/retch.png-f402bb73932568cae1c0adc9aaa2af36.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/drench.png"
+dest_files=["res://.godot/imported/drench.png-668f1f1e1f2c85edcde1e006d06040b4.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2pvt1vjmot2r"
-path="res://.godot/imported/lick.png-167a5a64f3ead9a6a3eb120d3a826031.ctex"
+uid="uid://bvnqflle2h4hc"
+path="res://.godot/imported/numb_power.png-684b74d3fd2e07f8614e49c30a92e213.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/lick.png"
-dest_files=["res://.godot/imported/lick.png-167a5a64f3ead9a6a3eb120d3a826031.ctex"]
+source_file="res://Alchemist/images/powers/big/numb_power.png"
+dest_files=["res://.godot/imported/numb_power.png-684b74d3fd2e07f8614e49c30a92e213.ctex"]
 
 [params]
 

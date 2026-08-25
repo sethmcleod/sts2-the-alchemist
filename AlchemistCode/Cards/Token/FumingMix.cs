@@ -16,6 +16,7 @@ public class FumingMix : AlchemistCard
     {
         WithPower<WeakPower>(1, 0);
         WithPower<VulnerablePower>(1, 0);
+        WithPower<PoisonPower>(0, 1);
         WithVar("SelfPoison", 1, -1);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
@@ -26,6 +27,13 @@ public class FumingMix : AlchemistCard
         if (play.Target is not { IsAlive: true } target) return;
         await PowerCmd.Apply<WeakPower>(choiceContext, target, DynamicVars.Weak.IntValue, Owner.Creature, this);
         await PowerCmd.Apply<VulnerablePower>(choiceContext, target, DynamicVars.Vulnerable.IntValue, Owner.Creature, this);
+        // Only the upgrade carries the outward dose, so the base card stays a pure debuff Mix
+        if (DynamicVars.Poison.IntValue > 0)
+        {
+            PoisonSplash(target);
+            await PowerCmd.Apply<PoisonPower>(choiceContext, target, DynamicVars.Poison.IntValue,
+                Owner.Creature, this);
+        }
         if (DynamicVars["SelfPoison"].IntValue > 0)
             await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
                 DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);

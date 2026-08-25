@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "ทุกครั้งที่คุณได้รับ[gold]พิษ[/gold] ได้รับ [blue]1[/blue] [gold]สารต้านพิษ[/gold]",
   "ALCHEMIST-SPARE_DOSE.flavor": "ยาที่ตวงไว้พอดี อยู่ใกล้มือเสมอ",
   "ALCHEMIST-SPARE_DOSE.title": "ยาสำรอง",
-  "ALCHEMIST-WEATHERED_KIT.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]1[/blue] [gold]พิษ[/gold] และ [blue]8[/blue] [gold]สารต้านพิษ[/gold] คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้",
+  "ALCHEMIST-WEATHERED_KIT.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]2[/blue] [gold]พิษ[/gold] และ [blue]8[/blue] [gold]สารต้านพิษ[/gold] คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้",
   "ALCHEMIST-WEATHERED_KIT.flavor": "กล่องเก่าที่ผ่านการใช้งานมานาน กลิ่นหอมชวนดม",
   "ALCHEMIST-WEATHERED_KIT.title": "ชุดเครื่องมือเก่า"
 }

@@ -93,11 +93,13 @@ public static class Mixing
         }
     }
 
-    /// <summary>Transform an existing card into a chosen Mix.</summary>
-    public static async Task TransformIntoChosen(PlayerChoiceContext ctx, Player owner, CardModel victim)
+    /// <summary>Transform an existing card into a chosen Mix. Returns the Mix, or null if cancelled.</summary>
+    public static async Task<CardModel?> TransformIntoChosen(PlayerChoiceContext ctx, Player owner,
+        CardModel victim)
     {
         var picked = await Choose(ctx, owner);
-        if (picked == null) return;
+        if (picked == null) return null;
         await CardCmd.Transform(victim, picked);
+        return picked;
     }
 }

@@ -4,27 +4,40 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Ancient;
 
-[CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
+[CardTheme(CardTheme.Poison)]
 public class Wormwood : AlchemistCard
 {
+    // Matches White Heat: the dose is already the multiplier, so Strength does not compound it
+    protected internal override bool DealsUnpoweredDamage => true;
+
     public Wormwood() : base(0, CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies)
     {
-        WithCalculatedDamage(3, static (card, _) => Dose(card), ValueProp.Move, 1);
-        WithVar("antitoxin", 2, 1);
+        WithVar("Hits", 2, 1);
         WithTip(typeof(PoisonPower));
-        WithTip(typeof(AntitoxinPower));
     }
 
-    protected override bool ConditionalGlow => Dose(this) > 0;
+    private int Fuel =>
+        IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<PoisonPower>() : 0;
+
+    private int Hits => IsMutable ? DynamicVars["Hits"].IntValue : 2;
+
+    protected override bool ConditionalGlow => Fuel > 0;
+
+    protected override int? RawFormulaDamagePreview => Fuel > 0 ? Fuel * Hits : null;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_sandy_impact")).Execute(choiceContext);
-        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
-            DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
+        if (CombatState == null || Fuel <= 0) return;
+        await DamageCmd.Attack(Fuel)
+            .Unpowered()
+            .WithHitCount(Hits)
+            .WithHitFx(HitVfx("vfx/vfx_sandy_impact"))
+            .FromCard(this, play)
+            .WithAttackerAnim("Cast", Owner.Character.CastAnimDelay)
+            .TargetingAllOpponents(CombatState)
+            .Execute(choiceContext);
     }
 }

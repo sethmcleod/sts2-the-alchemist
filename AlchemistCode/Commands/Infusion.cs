@@ -5,6 +5,7 @@ using System.Linq;
 using Alchemist.AlchemistCode.Cards;
 using Alchemist.AlchemistCode.Enchantments;
 using MegaCrit.Sts2.Core.CardSelection;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -48,6 +49,27 @@ public static class Infusion
     private const int LacedAmount = 1;
     private const int DosedAmount = 2;
     private const int FortifiedAmount = 2;
+
+    // Set only while a single-card Infuse selection is on MY screen. LacedPreviewPatches reads it to swap
+    // the hand's upgrade preview pane over to an enchant preview. Multi-card picks stay on the plain
+    // selection screen, because the pane holds one card at a time. The IsMe gate matters in co-op: a host
+    // resolves remote players' plays too, and without it a client's Infuse would reach into the host's
+    // own hand UI and flip an unrelated selection into the preview pane
+    internal static bool IsPreviewingInfusion;
+
+    // What a given card would receive, for that preview. Null for the Curse/Status/Quest cards, which
+    // take the Ethereal keyword rather than an enchantment and so have nothing to show a before and after of
+    internal static (EnchantmentModel Canonical, int Amount)? PreviewEnchantFor(CardModel card)
+    {
+        if (!CanInfuse(card)) return null;
+        return card.Type switch
+        {
+            CardType.Attack => (ModelDb.Enchantment<Laced>(), LacedAmount),
+            CardType.Skill => (ModelDb.Enchantment<Dosed>(), DosedAmount),
+            CardType.Power => (ModelDb.Enchantment<Fortified>(), FortifiedAmount),
+            _ => null,
+        };
+    }
 
     // Take(1) keeps each enchantment's own tip and drops its extras, which is where Dosed explains
     // Antitoxin. The power is invisible so there is no icon to hover either, so it is added back once
@@ -98,7 +120,16 @@ public static class Infusion
             : SelectPromptRange;
         var autoResolved = HandSelectIsAutomatic(owner, CanInfuse, min, max);
         var prefs = new CardSelectorPrefs(prompt, min, max);
-        var picks = (await CardSelectCmd.FromHand(ctx, owner, prefs, CanInfuse, source)).ToList();
+        IsPreviewingInfusion = max == 1 && !autoResolved && LocalContext.IsMe(owner);
+        List<CardModel> picks;
+        try
+        {
+            picks = (await CardSelectCmd.FromHand(ctx, owner, prefs, CanInfuse, source)).ToList();
+        }
+        finally
+        {
+            IsPreviewingInfusion = false;
+        }
         foreach (var card in picks)
             Infuse(card);
         // No screen was shown, so preview the picks to make the automatic infuse visible
@@ -114,10 +145,20 @@ public static class Infusion
             : SelectPromptRange;
         var autoResolved = pile == PileType.Hand && HandSelectIsAutomatic(source.Owner, CanInfuse, min, max);
         var prefs = new CardSelectorPrefs(prompt, min, max);
-        var picks = (pile == PileType.Hand
-            ? await CardSelectCmd.FromHand(ctx, source.Owner, prefs, CanInfuse, source)
-            : await CardSelectCmd.FromCombatPile(ctx, pile.GetPile(source.Owner), source.Owner, prefs, CanInfuse))
-            .ToList();
+        IsPreviewingInfusion = pile == PileType.Hand && max == 1 && !autoResolved
+            && LocalContext.IsMe(source.Owner);
+        List<CardModel> picks;
+        try
+        {
+            picks = (pile == PileType.Hand
+                ? await CardSelectCmd.FromHand(ctx, source.Owner, prefs, CanInfuse, source)
+                : await CardSelectCmd.FromCombatPile(ctx, pile.GetPile(source.Owner), source.Owner, prefs, CanInfuse))
+                .ToList();
+        }
+        finally
+        {
+            IsPreviewingInfusion = false;
+        }
         foreach (var card in picks)
             Infuse(card);
         // Draw and discard picks happen off screen, and an automatic hand pick shows no screen. Only a

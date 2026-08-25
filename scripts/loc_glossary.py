@@ -46,6 +46,8 @@ MOD_TERMS = {
 # word the translation is right not to use.
 ALIASES = {
     "potion(s)": "potions", "spire's": "spire", "distillates": "distillate",
+    # Plural of Hand. On its own it resolves positionally onto Shiv (ja: ナイフ).
+    "hands": "hand",
 }
 
 # Terms whose base-game wording depends on context, so no single rendering can
@@ -57,8 +59,10 @@ AMBIGUOUS = {"gold", "poison"}
 
 # The same, but regardless of case. "Gold" the currency is a real glossary term
 # while lowercase "gold" is the metal, so that pair stays case-sensitive above;
-# "Discard" is context-dependent in every casing.
-AMBIGUOUS_ANY_CASE = {"discard"}
+# "Discard" is context-dependent in every casing. "Exhausts", the third-person verb
+# the Mix tip uses, has no single base-game anchor either: base text inflects it per
+# grammar (es: Agotas / agotar / agotamiento), so positional lookup lands on nonsense.
+AMBIGUOUS_ANY_CASE = {"discard", "exhausts"}
 
 OVERRIDES = {("Discard Pile", "esp"): "pila de descarte"}
 
@@ -191,9 +195,10 @@ def main() -> None:
         if term in AMBIGUOUS or term.lower() in AMBIGUOUS_ANY_CASE:
             unresolved.append(term)
             continue
-        # Try the term as written before falling back to its base form, so an
-        # alias never hides a term that resolves on its own.
-        candidates = [term] if lowered == term.lower() else [term, lowered]
+        # An alias is an explicit statement that this surface form means another
+        # term, so it wins outright. Resolving "Hands" on its own lands
+        # positionally on Shiv (ja: ナイフ); the alias to "Hand" is the truth.
+        candidates = [lowered] if lowered != term.lower() else [term]
         for lookup in candidates:
             hit = resolve_direct(eng, lookup)
             if hit:

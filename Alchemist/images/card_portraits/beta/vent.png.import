@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dimwmrqw3fm7h"
-path="res://.godot/imported/double_dose.png-1dcb7df21140c063dd9fd421ef25b80e.ctex"
+uid="uid://dct5hc00hcoh3"
+path="res://.godot/imported/vent.png-228948248763776048b05349439d7cc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/double_dose.png"
-dest_files=["res://.godot/imported/double_dose.png-1dcb7df21140c063dd9fd421ef25b80e.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/vent.png"
+dest_files=["res://.godot/imported/vent.png-228948248763776048b05349439d7cc1.ctex"]
 
 [params]
 

@@ -20,8 +20,6 @@ public class Quaff : AlchemistCard
         WithTip(typeof(PoisonPower));
     }
 
-    protected override bool ConditionalGlow => Dose(this) > 0;
-
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);

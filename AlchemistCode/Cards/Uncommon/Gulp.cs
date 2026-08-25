@@ -21,8 +21,8 @@ public class Gulp : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        await CommonActions.Draw(this, choiceContext);
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
             DynamicVars["poison"].IntValue, Owner.Creature, this);
-        await CommonActions.Draw(this, choiceContext);
     }
 }

@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Whenever you gain [gold]Poison[/gold], gain [blue]1[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "A measured dose, always within reach.",
   "ALCHEMIST-SPARE_DOSE.title": "Spare Dose",
-  "ALCHEMIST-WEATHERED_KIT.description": "At the start of each combat, gain [blue]1[/blue] [gold]Poison[/gold] and [blue]8[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
+  "ALCHEMIST-WEATHERED_KIT.description": "At the start of each combat, gain [blue]2[/blue] [gold]Poison[/gold] and [blue]8[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "A well worn and pleasantly smelling case.",
   "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit"
 }

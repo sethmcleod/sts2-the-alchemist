@@ -23,7 +23,7 @@
   "ALCHEMIST-SPARE_DOSE.description": "Когда вы получаете [gold]яд[/gold], дает [blue]1[/blue] [gold]антитоксина[/gold].",
   "ALCHEMIST-SPARE_DOSE.flavor": "Отмеренная доза, всегда под рукой.",
   "ALCHEMIST-SPARE_DOSE.title": "Запасная доза",
-  "ALCHEMIST-WEATHERED_KIT.description": "В начале каждого боя дает вам [blue]1[/blue] [gold]яда[/gold] и [blue]8[/blue] [gold]антитоксина[/gold]. Вы можете [gold]варить зелья[/gold] в лагере.",
+  "ALCHEMIST-WEATHERED_KIT.description": "В начале каждого боя дает вам [blue]2[/blue] [gold]яда[/gold] и [blue]8[/blue] [gold]антитоксина[/gold]. Вы можете [gold]варить зелья[/gold] в лагере.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Потертый футляр с приятным запахом.",
   "ALCHEMIST-WEATHERED_KIT.title": "Потрепанный набор"
 }

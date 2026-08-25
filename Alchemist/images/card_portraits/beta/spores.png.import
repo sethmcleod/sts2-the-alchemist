@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcs17n6jq5uw0"
-path="res://.godot/imported/fortified_power.png-371ac8c46dda490efb373f7b5a6924af.ctex"
+uid="uid://byjqsj7s2mtpc"
+path="res://.godot/imported/spores.png-f38de83e0d7f22e9e5bea47ea22baa15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/fortified_power.png"
-dest_files=["res://.godot/imported/fortified_power.png-371ac8c46dda490efb373f7b5a6924af.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/spores.png"
+dest_files=["res://.godot/imported/spores.png-f38de83e0d7f22e9e5bea47ea22baa15.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3fu0j6c0quss"
-path="res://.godot/imported/quicklime.png-c78dd5e88b23610d73e782e70d1dd4d9.ctex"
+uid="uid://c8heuofvpl03w"
+path="res://.godot/imported/bonk.png-ed19f654c0eed3b1b950c1eb46bce1f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/quicklime.png"
-dest_files=["res://.godot/imported/quicklime.png-c78dd5e88b23610d73e782e70d1dd4d9.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/bonk.png"
+dest_files=["res://.godot/imported/bonk.png-ed19f654c0eed3b1b950c1eb46bce1f7.ctex"]
 
 [params]
 

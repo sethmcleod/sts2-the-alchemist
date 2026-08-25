@@ -13,7 +13,7 @@ public class Poultice : AlchemistCard
 
     public Poultice() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(9, 3);
+        WithBlock(10, 4);
         WithVar("poison", 2, 0);
         WithTip(typeof(PoisonPower));
     }
