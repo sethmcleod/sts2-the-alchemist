@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Changed the Alchemist shop model to stand slightly shorter
+
 ## [0.12.0] - 2026-08-25
 
 ### Added
