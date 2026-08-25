@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.12.0] - 2026-08-25
+
 ### Added
 
 - Added beta art for 15 cards, including the starer deck
