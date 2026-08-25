@@ -75,14 +75,19 @@ public partial class AntitoxinPower : AlchemistPower
     public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        // Deliberately not re-running IsPoisonTick: this hook is handed the amount AFTER
-        // ModifyDamage, so a fully absorbed tick arrives as 0 and would fail the predicate's own
-        // amount test. Absorb already vetted the hit, so a non-zero _pendingSpend is the proof
         if (target != Owner) return;
 
         var spend = _pendingSpend;
         _pendingSpend = 0;
         if (spend <= 0) return;
+
+        // Absorb clears _pendingSpend on every pass, but PoisonPower.CalculateTotalDamageNextTurn
+        // runs Absorb through ModifyDamage and never reaches this hook, so a forecast that lands
+        // between ModifyDamage and here leaves a value set that belongs to no real hit. The next hit
+        // then spends it, which drained Antitoxin on attacks Block had already eaten. Re-checking the
+        // shape rejects those: an attack carries a dealer and is not Unblockable. The amount test
+        // cannot be re-run, because a fully absorbed tick arrives here as 0
+        if (!AntitoxinRules.HasPoisonTickShape(props, dealer, cardSource)) return;
 
         Flash();
         AbsorbSplash();

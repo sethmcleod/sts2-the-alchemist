@@ -41,6 +41,7 @@ mod).
 
 ### Fixed
 
+- Fixed Antitoxin draining on attacks that Block absorbed: the Poison forecast could leave a pending absorb that the next hit spent
 - Fixed saved runs losing renamed cards on continue: ids retired by a rename now load as the card that replaced them instead of a blank deprecated card
 - Improved the Antitoxin bar in the party panel, so it sits closer to the HP bar
 - Fixed the energy counter number outline in the party panel, so it read better against the light gold
