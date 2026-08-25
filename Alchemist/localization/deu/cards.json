@@ -87,7 +87,7 @@
   "ALCHEMIST-IMMUNIZE.title": "Immunisieren",
   "ALCHEMIST-INURE.description": "Erhalte {antitoxin:diff()} [gold]Antitoxin[/gold].\nImmer wenn du in diesem Kampf [gold]Antitoxin[/gold] erhältst, erhalte 1 mehr.",
   "ALCHEMIST-INURE.title": "Abstumpfen",
-  "ALCHEMIST-JAB.description": "Füge {CalculatedDamage:diff()} Schaden zu.\nFügt zusätzlichen Schaden in Höhe deines [gold]Gifts[/gold] zu.",
+  "ALCHEMIST-JAB.description": "Füge {CalculatedDamage:diff()} Schaden zu.\nWende {Poison} [gold]Gift[/gold] an.\nFügt zusätzlichen Schaden in Höhe deines [gold]Gifts[/gold] zu.",
   "ALCHEMIST-JAB.title": "Piks",
   "ALCHEMIST-LASH_OUT.description": "Füge 3 Mal {Damage:diff()} Schaden zu.\nTrifft ein weiteres Mal, falls du [gold]Gift[/gold] hast.",
   "ALCHEMIST-LASH_OUT.title": "Um sich schlagen",

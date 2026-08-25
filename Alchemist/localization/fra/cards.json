@@ -87,7 +87,7 @@
   "ALCHEMIST-IMMUNIZE.title": "Immunisation",
   "ALCHEMIST-INURE.description": "Gagnez {antitoxin:diff()} d'[gold]Antitoxine[/gold].\nLorsque vous gagnez de l'[gold]Antitoxine[/gold] pendant ce combat, gagnez-en 1 de plus.",
   "ALCHEMIST-INURE.title": "Accoutumance",
-  "ALCHEMIST-JAB.description": "Infligez {CalculatedDamage:diff()} dégâts.\nInflige un montant de dégâts supplémentaires égal à votre [gold]Poison[/gold].",
+  "ALCHEMIST-JAB.description": "Infligez {CalculatedDamage:diff()} dégâts.\nAppliquez {Poison} de [gold]Poison[/gold].\nInflige un montant de dégâts supplémentaires égal à votre [gold]Poison[/gold].",
   "ALCHEMIST-JAB.title": "Piqûre",
   "ALCHEMIST-LASH_OUT.description": "Infligez {Damage:diff()} dégâts 3 fois.\nTouche une fois de plus si vous avez du [gold]Poison[/gold].",
   "ALCHEMIST-LASH_OUT.title": "Coup de Fouet",

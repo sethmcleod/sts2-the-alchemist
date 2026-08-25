@@ -87,7 +87,7 @@
   "ALCHEMIST-IMMUNIZE.title": "Bağışıklama",
   "ALCHEMIST-INURE.description": "{antitoxin:diff()} [gold]Antitoksin[/gold] elde et.\nBu savaşta her [gold]Antitoksin[/gold] elde ettiğinde 1 fazla elde et.",
   "ALCHEMIST-INURE.title": "Alıştır",
-  "ALCHEMIST-JAB.description": "{CalculatedDamage:diff()} hasar ver.\n[gold]Zehir[/gold]'in kadar fazladan hasar verir.",
+  "ALCHEMIST-JAB.description": "{CalculatedDamage:diff()} hasar ver.\n{Poison} [gold]Zehir[/gold] uygula.\n[gold]Zehir[/gold]'in kadar fazladan hasar verir.",
   "ALCHEMIST-JAB.title": "Kısa Vuruş",
   "ALCHEMIST-LASH_OUT.description": "3 kez {Damage:diff()} hasar ver.\n[gold]Zehir[/gold]'e sahipsen bir kez daha vurur.",
   "ALCHEMIST-LASH_OUT.title": "Öfke Patlaması",

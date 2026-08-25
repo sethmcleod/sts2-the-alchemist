@@ -87,7 +87,7 @@
   "ALCHEMIST-IMMUNIZE.title": "Immunizzazione",
   "ALCHEMIST-INURE.description": "Ottieni {antitoxin:diff()} di [gold]Antitossina[/gold].\nOgni volta che ottieni [gold]Antitossina[/gold] in questo combattimento, ne ottieni 1 in più.",
   "ALCHEMIST-INURE.title": "Assuefazione",
-  "ALCHEMIST-JAB.description": "Infliggi {CalculatedDamage:diff()} di danno.\nInfligge danno extra pari al tuo [gold]Veleno[/gold].",
+  "ALCHEMIST-JAB.description": "Infliggi {CalculatedDamage:diff()} di danno.\nApplichi {Poison} di [gold]Veleno[/gold].\nInfligge danno extra pari al tuo [gold]Veleno[/gold].",
   "ALCHEMIST-JAB.title": "Colpetto",
   "ALCHEMIST-LASH_OUT.description": "Infliggi {Damage:diff()} di danno 3 volte.\nColpisce una volta in più se hai [gold]Veleno[/gold].",
   "ALCHEMIST-LASH_OUT.title": "Sfogo",

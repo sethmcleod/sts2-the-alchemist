@@ -87,7 +87,7 @@
   "ALCHEMIST-IMMUNIZE.title": "Uodpornienie",
   "ALCHEMIST-INURE.description": "Zyskaj {antitoxin:diff()} pkt. [gold]Antytoksyny[/gold].\nKiedykolwiek zyskasz [gold]Antytoksynę[/gold] w tej walce, zyskaj 1 pkt. więcej.",
   "ALCHEMIST-INURE.title": "Przywyknięcie",
-  "ALCHEMIST-JAB.description": "Zadaj {CalculatedDamage:diff()} pkt. obrażeń.\nZadaje dodatkowe obrażenia równe twojej [gold]Truciźnie[/gold].",
+  "ALCHEMIST-JAB.description": "Zadaj {CalculatedDamage:diff()} pkt. obrażeń.\nNałóż {Poison} pkt. [gold]Trucizny[/gold].\nZadaje dodatkowe obrażenia równe twojej [gold]Truciźnie[/gold].",
   "ALCHEMIST-JAB.title": "Dźgnięcie",
   "ALCHEMIST-LASH_OUT.description": "Zadaj {Damage:diff()} pkt. obrażeń 3 razy.\nTrafia dodatkowy raz, jeżeli masz [gold]Truciznę[/gold].",
   "ALCHEMIST-LASH_OUT.title": "Smagnięcie",

@@ -87,7 +87,7 @@
   "ALCHEMIST-IMMUNIZE.title": "免疫",
   "ALCHEMIST-INURE.description": "获得{antitoxin:diff()}点[gold]抗毒素[/gold]。\n本场战斗中，每当你获得[gold]抗毒素[/gold]时，额外获得1点。",
   "ALCHEMIST-INURE.title": "习惯",
-  "ALCHEMIST-JAB.description": "造成{CalculatedDamage:diff()}点伤害。\n额外造成等同于你[gold]中毒[/gold]层数的伤害。",
+  "ALCHEMIST-JAB.description": "造成{CalculatedDamage:diff()}点伤害。\n给予{Poison}层[gold]中毒[/gold]。\n额外造成等同于你[gold]中毒[/gold]层数的伤害。",
   "ALCHEMIST-JAB.title": "刺拳",
   "ALCHEMIST-LASH_OUT.description": "造成{Damage:diff()}点伤害3次。\n如果你有[gold]中毒[/gold]，则额外命中一次。",
   "ALCHEMIST-LASH_OUT.title": "暴起",

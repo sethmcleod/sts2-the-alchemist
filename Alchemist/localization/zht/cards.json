@@ -87,7 +87,7 @@
   "ALCHEMIST-IMMUNIZE.title": "免疫",
   "ALCHEMIST-INURE.description": "獲得 {antitoxin:diff()} 點[gold]抗毒素[/gold]。\n本場戰鬥中，每當你獲得[gold]抗毒素[/gold]時，額外獲得 1 點。",
   "ALCHEMIST-INURE.title": "習慣",
-  "ALCHEMIST-JAB.description": "造成 {CalculatedDamage:diff()} 點傷害。\n額外造成與你[gold]中毒[/gold]等量的傷害。",
+  "ALCHEMIST-JAB.description": "造成 {CalculatedDamage:diff()} 點傷害。\n施加 {Poison} 層[gold]中毒[/gold]。\n額外造成與你[gold]中毒[/gold]等量的傷害。",
   "ALCHEMIST-JAB.title": "短刺",
   "ALCHEMIST-LASH_OUT.description": "造成 3 次 {Damage:diff()} 點傷害。\n若你有[gold]中毒[/gold]，則額外擊中一次。",
   "ALCHEMIST-LASH_OUT.title": "抽打",

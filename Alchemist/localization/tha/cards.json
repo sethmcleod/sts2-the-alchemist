@@ -87,7 +87,7 @@
   "ALCHEMIST-IMMUNIZE.title": "สร้างภูมิคุ้มกัน",
   "ALCHEMIST-INURE.description": "ได้รับ {antitoxin:diff()} [gold]สารต้านพิษ[/gold]\nทุกครั้งที่คุณได้รับ[gold]สารต้านพิษ[/gold]ในการต่อสู้นี้ ได้รับเพิ่ม 1",
   "ALCHEMIST-INURE.title": "ชินพิษ",
-  "ALCHEMIST-JAB.description": "สร้างความเสียหาย {CalculatedDamage:diff()}\nสร้างความเสียหายเพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
+  "ALCHEMIST-JAB.description": "สร้างความเสียหาย {CalculatedDamage:diff()}\nสร้าง {Poison} [gold]พิษ[/gold]\nสร้างความเสียหายเพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
   "ALCHEMIST-JAB.title": "หมัดแย็บ",
   "ALCHEMIST-LASH_OUT.description": "สร้างความเสียหาย {Damage:diff()} จำนวน 3 ครั้ง\nถ้าคุณมี[gold]พิษ[/gold] จะโจมตีเพิ่มอีกครั้ง",
   "ALCHEMIST-LASH_OUT.title": "ฟาดกลับ",

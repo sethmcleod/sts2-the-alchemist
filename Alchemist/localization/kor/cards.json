@@ -87,7 +87,7 @@
   "ALCHEMIST-IMMUNIZE.title": "면역화",
   "ALCHEMIST-INURE.description": "[gold]항독소[/gold]를 {antitoxin:diff()} 얻습니다.\n이번 전투에서 [gold]항독소[/gold]를 얻을 때마다, 1을 추가로 얻습니다.",
   "ALCHEMIST-INURE.title": "체득",
-  "ALCHEMIST-JAB.description": "피해를 {CalculatedDamage:diff()} 줍니다.\n[gold]중독[/gold]만큼 피해를 추가로 줍니다.",
+  "ALCHEMIST-JAB.description": "피해를 {CalculatedDamage:diff()} 줍니다.\n[gold]중독[/gold]을 {Poison} 부여합니다.\n[gold]중독[/gold]만큼 피해를 추가로 줍니다.",
   "ALCHEMIST-JAB.title": "찌르기",
   "ALCHEMIST-LASH_OUT.description": "피해를 {Damage:diff()}만큼 3번 줍니다.\n[gold]중독[/gold]을 보유하고 있다면, 한 번 더 적중합니다.",
   "ALCHEMIST-LASH_OUT.title": "맹공",

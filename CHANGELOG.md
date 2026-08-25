@@ -21,6 +21,7 @@ mod).
 - Buffed Fallout: damage to ALL 4 (6) -> 6 (8)
 - Buffed Forked Tongue: damage per hit 3 (4) -> 4 (5)
 - Buffed Froth: removed the 4-hit maximum
+- Buffed Jab: damage 6 (9) -> 5 (7), and it now applies 2 Poison
 - Buffed Osmosis: Antitoxin per turn 3 (4) -> 4 (5)
 - Buffed Poultice: Block 9 (12) -> 10 (14)
 - Buffed Smoke Out: damage to ALL 4 (6) -> 6 (8)

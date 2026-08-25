@@ -87,7 +87,7 @@
   "ALCHEMIST-IMMUNIZE.title": "Imunizar",
   "ALCHEMIST-INURE.description": "Receba {antitoxin:diff()} de [gold]Antitoxina[/gold].\nSempre que você receber [gold]Antitoxina[/gold] neste combate, receba 1 a mais.",
   "ALCHEMIST-INURE.title": "Habituar",
-  "ALCHEMIST-JAB.description": "Cause {CalculatedDamage:diff()} de dano.\nCausa dano adicional equivalente ao seu [gold]Veneno[/gold].",
+  "ALCHEMIST-JAB.description": "Cause {CalculatedDamage:diff()} de dano.\nAplique {Poison} de [gold]Veneno[/gold].\nCausa dano adicional equivalente ao seu [gold]Veneno[/gold].",
   "ALCHEMIST-JAB.title": "Picada",
   "ALCHEMIST-LASH_OUT.description": "Cause {Damage:diff()} de dano 3 vezes.\nGolpeia uma vez adicional se você possuir [gold]Veneno[/gold].",
   "ALCHEMIST-LASH_OUT.title": "Arremeter",
