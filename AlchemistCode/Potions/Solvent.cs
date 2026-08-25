@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -24,7 +25,7 @@ public class Solvent : AlchemistPotion, IBrewOnly
     {
         PotionModel.AssertValidForTargetedPotion(target);
         if (target!.Block > 0)
-            await CreatureCmd.LoseBlock(choiceContext, target, target.Block, Owner.Creature);
+            await GameCompat.LoseBlock(choiceContext, target, target.Block, Owner.Creature);
         if (target.HasPower<ArtifactPower>())
             await PowerCmd.Remove<ArtifactPower>(target);
         await PowerCmd.Apply<WeakPower>(choiceContext, target, Weak, Owner.Creature, null);

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode.Cards.Common;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
