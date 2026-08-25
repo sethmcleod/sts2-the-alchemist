@@ -34,5 +34,8 @@ public class Blend : AlchemistCard
         var mix = await Mixing.TransformIntoChosen(choiceContext, Owner, chosen);
         if (mix == null) return;
         await CardPileCmd.Add(mix, PileType.Hand);
+        // A full hand reroutes the add to the Discard Pile, so the Mix is still made but never passes
+        // through the hand where the player would have seen what they chose
+        if (mix.Pile?.Type != PileType.Hand) CardCmd.Preview(mix);
     }
 }

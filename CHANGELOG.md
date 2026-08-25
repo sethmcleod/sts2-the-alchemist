@@ -48,11 +48,14 @@ mod).
 
 ### Fixed
 
+- Fixed a Laced attack showing its boosted damage in plain text; the number is now highlighted green like any other buffed value
 - Fixed Antitoxin draining on attacks that Block absorbed: the Poison forecast could leave a pending absorb that the next hit spent
+- Fixed Blend making a Mix with no feedback when your Hand was full, so the Mix now shows itself before going to the Discard Pile
 - Fixed saved runs losing renamed cards on continue: ids retired by a rename now load as the card that replaced them instead of a blank deprecated card
 - Fixed the energy counter number outline in the party panel, so it read better against the light gold
 - Fixed the Inure power tooltip reading "gain 0 more" on a card you have not played yet
 - Improved the Antitoxin bar in the party panel, so it sits closer to the HP bar
+- Improved the Infuse selection, so choosing a card now previews the enchanted version beside it, the way Armaments previews an upgrade
 
 ### Removed
 

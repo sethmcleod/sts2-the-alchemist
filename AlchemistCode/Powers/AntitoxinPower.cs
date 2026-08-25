@@ -53,16 +53,20 @@ public partial class AntitoxinPower : AlchemistPower
     internal decimal Absorb(Creature? target, decimal amount, ValueProp props, Creature? dealer,
         CardModel? cardSource)
     {
-        // Cleared on EVERY pass, including the rejects. This hook runs for all damage the owner
-        // takes, and the Poison forecast runs it without ever reaching BeforeDamageReceived, so a
-        // value left set by a reject would be spent on whatever landed next, such as an enemy attack
-        _pendingSpend = 0;
-        AntitoxinRules.ClearTickAbsorb(Owner);
+        // The forecast still needs the reduction below so the previewed number is right, but it must not
+        // touch the pending record in either direction. Every real pass clears first, including the
+        // rejects, because this hook runs for all damage the owner takes
+        var forecast = AntitoxinRules.InPoisonForecast;
+        if (!forecast)
+        {
+            _pendingSpend = 0;
+            AntitoxinRules.ClearTickAbsorb(Owner);
+        }
         if (!IsPoisonTick(target, amount, props, dealer, cardSource))
             return 0m;
 
         var absorbed = Math.Min(Amount, (int)amount);
-        _pendingSpend = absorbed;
+        if (!forecast) _pendingSpend = absorbed;
         return -absorbed;
     }
 

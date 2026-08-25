@@ -37,6 +37,13 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         && props.HasFlag(ValueProp.Unblockable)
         && props.HasFlag(ValueProp.Unpowered);
 
+    // True only while PoisonPower.CalculateTotalDamageNextTurn is sizing the incoming-damage preview.
+    // That forecast runs the same ModifyDamage hook a real tick does and never reaches
+    // BeforeDamageReceived, so Absorb must leave the pending spend untouched while it is set: writing
+    // there would hand the next hit a spend that belongs to no damage, and clearing there would rob a
+    // real tick that had already recorded one. PoisonForecastPatches owns the flag
+    internal static bool InPoisonForecast;
+
     // The absorbed slice of the tick that is resolving right now. Callus runs in
     // AfterDamageReceived, which is handed the post-absorb amount, so without this a fully soaked tick
     // pays it nothing and the character's own starter relic switches them off
