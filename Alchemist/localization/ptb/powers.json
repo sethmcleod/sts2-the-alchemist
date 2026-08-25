@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "Sempre que você jogar uma Técnica, receba [blue]{Amount}[/blue] de [gold]Antitoxina[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "Sempre que você jogar uma Técnica, receba [blue]{Amount}[/blue] de [gold]Antitoxina[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.title": "Imunizar",
-  "ALCHEMIST-INURE_POWER.description": "Sempre que você receber [gold]Antitoxina[/gold], receba [blue]{Amount}[/blue] a mais.",
+  "ALCHEMIST-INURE_POWER.description": "Sempre que você receber [gold]Antitoxina[/gold], receba [gold]Antitoxina[/gold] adicional.",
   "ALCHEMIST-INURE_POWER.smartDescription": "Sempre que você receber [gold]Antitoxina[/gold], receba [blue]{Amount}[/blue] a mais.",
   "ALCHEMIST-INURE_POWER.title": "Habituar",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "No início do seu turno, receba [blue]1[/blue] de [gold]Veneno[/gold] e receba [gold]Força[/gold] equivalente ao seu [gold]Veneno[/gold] neste turno.",

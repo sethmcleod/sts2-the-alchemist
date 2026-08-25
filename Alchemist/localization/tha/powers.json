@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "ทุกครั้งที่คุณเล่นการ์ดทักษะ ได้รับ [blue]{Amount}[/blue] [gold]สารต้านพิษ[/gold]",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "ทุกครั้งที่คุณเล่นการ์ดทักษะ ได้รับ [blue]{Amount}[/blue] [gold]สารต้านพิษ[/gold]",
   "ALCHEMIST-IMMUNIZE_POWER.title": "สร้างภูมิคุ้มกัน",
-  "ALCHEMIST-INURE_POWER.description": "ทุกครั้งที่คุณได้รับ[gold]สารต้านพิษ[/gold] ได้รับเพิ่ม [blue]{Amount}[/blue]",
+  "ALCHEMIST-INURE_POWER.description": "ทุกครั้งที่คุณได้รับ[gold]สารต้านพิษ[/gold] ได้รับ[gold]สารต้านพิษ[/gold]เพิ่มเติม",
   "ALCHEMIST-INURE_POWER.smartDescription": "ทุกครั้งที่คุณได้รับ[gold]สารต้านพิษ[/gold] ได้รับเพิ่ม [blue]{Amount}[/blue]",
   "ALCHEMIST-INURE_POWER.title": "ชินพิษ",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "ตอนเริ่มต้นเทิร์น ได้รับ [blue]1[/blue] [gold]พิษ[/gold] และได้รับ[gold]ความแข็งแรง[/gold]เท่ากับ[gold]พิษ[/gold]ที่คุณมีในเทิร์นนี้",

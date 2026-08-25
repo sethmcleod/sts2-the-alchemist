@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "Cada vez que juegas una carta de habilidad, obtienes [blue]{Amount}[/blue] de [gold]antitoxina[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "Cada vez que juegas una carta de habilidad, obtienes [blue]{Amount}[/blue] de [gold]antitoxina[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.title": "Inmunizar",
-  "ALCHEMIST-INURE_POWER.description": "Cada vez que obtienes [gold]antitoxina[/gold], obtienes [blue]{Amount}[/blue] más.",
+  "ALCHEMIST-INURE_POWER.description": "Cada vez que obtienes [gold]antitoxina[/gold], obtienes [gold]antitoxina[/gold] adicional.",
   "ALCHEMIST-INURE_POWER.smartDescription": "Cada vez que obtienes [gold]antitoxina[/gold], obtienes [blue]{Amount}[/blue] más.",
   "ALCHEMIST-INURE_POWER.title": "Habituarse",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "Al comienzo de tu turno, obtienes [blue]1[/blue] de [gold]veneno[/gold] y obtienes [gold]fuerza[/gold] igual a tu [gold]veneno[/gold] en este turno.",

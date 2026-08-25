@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "스킬 카드를 사용할 때마다, [gold]항독소[/gold]를 [blue]{Amount}[/blue] 얻습니다.",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "스킬 카드를 사용할 때마다, [gold]항독소[/gold]를 [blue]{Amount}[/blue] 얻습니다.",
   "ALCHEMIST-IMMUNIZE_POWER.title": "면역화",
-  "ALCHEMIST-INURE_POWER.description": "[gold]항독소[/gold]를 얻을 때마다, [blue]{Amount}[/blue]을 추가로 얻습니다.",
+  "ALCHEMIST-INURE_POWER.description": "[gold]항독소[/gold]를 얻을 때마다, [gold]항독소[/gold]를 추가로 얻습니다.",
   "ALCHEMIST-INURE_POWER.smartDescription": "[gold]항독소[/gold]를 얻을 때마다, [blue]{Amount}[/blue]을 추가로 얻습니다.",
   "ALCHEMIST-INURE_POWER.title": "체득",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "내 턴 시작 시, [gold]중독[/gold]을 [blue]1[/blue] 얻고 이번 턴 동안 [gold]중독[/gold]만큼 [gold]힘[/gold]을 얻습니다.",

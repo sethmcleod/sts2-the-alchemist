@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "スキルをプレイするたび、[gold]抗毒素[/gold][blue]{Amount}[/blue]を得る。",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "スキルをプレイするたび、[gold]抗毒素[/gold][blue]{Amount}[/blue]を得る。",
   "ALCHEMIST-IMMUNIZE_POWER.title": "免疫",
-  "ALCHEMIST-INURE_POWER.description": "[gold]抗毒素[/gold]を得るたび、追加で[blue]{Amount}[/blue]を得る。",
+  "ALCHEMIST-INURE_POWER.description": "[gold]抗毒素[/gold]を得るたび、追加で[gold]抗毒素[/gold]を得る。",
   "ALCHEMIST-INURE_POWER.smartDescription": "[gold]抗毒素[/gold]を得るたび、追加で[blue]{Amount}[/blue]を得る。",
   "ALCHEMIST-INURE_POWER.title": "慣らし",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "ターン開始時、[gold]毒[/gold][blue]1[/blue]を得る。ターン終了時まで、自身の[gold]毒[/gold]に等しい[gold]筋力[/gold]を得る。",

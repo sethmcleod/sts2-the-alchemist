@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "Immer wenn du eine Fertigkeit spielst, erhalte [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "Immer wenn du eine Fertigkeit spielst, erhalte [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.title": "Immunisieren",
-  "ALCHEMIST-INURE_POWER.description": "Immer wenn du [gold]Antitoxin[/gold] erhältst, erhalte [blue]{Amount}[/blue] mehr.",
+  "ALCHEMIST-INURE_POWER.description": "Immer wenn du [gold]Antitoxin[/gold] erhältst, erhalte zusätzliches [gold]Antitoxin[/gold].",
   "ALCHEMIST-INURE_POWER.smartDescription": "Immer wenn du [gold]Antitoxin[/gold] erhältst, erhalte [blue]{Amount}[/blue] mehr.",
   "ALCHEMIST-INURE_POWER.title": "Abstumpfen",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "Erhalte zu Beginn deines Zuges [blue]1[/blue] [gold]Gift[/gold] und für diesen Zug [gold]Stärke[/gold] in Höhe deines [gold]Gifts[/gold].",

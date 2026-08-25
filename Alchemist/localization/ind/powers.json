@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "Setiap kali kamu memainkan sebuah Teknik, dapatkan [blue]{Amount}[/blue] [gold]Antitoksin[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "Setiap kali kamu memainkan sebuah Teknik, dapatkan [blue]{Amount}[/blue] [gold]Antitoksin[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.title": "Imunisasi",
-  "ALCHEMIST-INURE_POWER.description": "Setiap kali kamu mendapat [gold]Antitoksin[/gold], dapatkan [blue]{Amount}[/blue] lagi.",
+  "ALCHEMIST-INURE_POWER.description": "Setiap kali kamu mendapat [gold]Antitoksin[/gold], dapatkan [gold]Antitoksin[/gold] tambahan.",
   "ALCHEMIST-INURE_POWER.smartDescription": "Setiap kali kamu mendapat [gold]Antitoksin[/gold], dapatkan [blue]{Amount}[/blue] lagi.",
   "ALCHEMIST-INURE_POWER.title": "Tahan Banting",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "Pada awal giliranmu, dapatkan [blue]1[/blue] [gold]Racun[/gold] dan dapatkan [gold]Kekuatan[/gold] sebanyak [gold]Racun[/gold] milikmu giliran ini.",

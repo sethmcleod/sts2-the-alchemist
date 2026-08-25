@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "Kiedykolwiek zagrasz Umiejętność, zyskaj [blue]{Amount}[/blue] pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "Kiedykolwiek zagrasz Umiejętność, zyskaj [blue]{Amount}[/blue] pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.title": "Uodpornienie",
-  "ALCHEMIST-INURE_POWER.description": "Kiedykolwiek zyskasz [gold]Antytoksynę[/gold], zyskaj [blue]{Amount}[/blue] pkt. więcej.",
+  "ALCHEMIST-INURE_POWER.description": "Kiedykolwiek zyskasz [gold]Antytoksynę[/gold], zyskaj dodatkową [gold]Antytoksynę[/gold].",
   "ALCHEMIST-INURE_POWER.smartDescription": "Kiedykolwiek zyskasz [gold]Antytoksynę[/gold], zyskaj [blue]{Amount}[/blue] pkt. więcej.",
   "ALCHEMIST-INURE_POWER.title": "Przywyknięcie",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "Na początku tury zyskaj [blue]1[/blue] pkt. [gold]Trucizny[/gold] i zyskaj [gold]Siłę[/gold] równą twojej [gold]Truciźnie[/gold] w tej turze.",

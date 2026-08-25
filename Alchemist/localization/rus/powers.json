@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "Когда вы разыгрываете Навык, дает [blue]{Amount}[/blue] [gold]антитоксина[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "Когда вы разыгрываете Навык, дает [blue]{Amount}[/blue] [gold]антитоксина[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.title": "Иммунизация",
-  "ALCHEMIST-INURE_POWER.description": "Когда вы получаете [gold]антитоксин[/gold], дает еще [blue]{Amount}[/blue].",
+  "ALCHEMIST-INURE_POWER.description": "Когда вы получаете [gold]антитоксин[/gold], дает дополнительный [gold]антитоксин[/gold].",
   "ALCHEMIST-INURE_POWER.smartDescription": "Когда вы получаете [gold]антитоксин[/gold], дает еще [blue]{Amount}[/blue].",
   "ALCHEMIST-INURE_POWER.title": "Стойкость",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "В начале вашего хода дает вам [blue]1[/blue] [gold]яда[/gold] и столько [gold]силы[/gold] на этот ход, сколько у вас [gold]яда[/gold].",

@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "Ogni volta che giochi una carta Abilità, ottieni [blue]{Amount}[/blue] di [gold]Antitossina[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "Ogni volta che giochi una carta Abilità, ottieni [blue]{Amount}[/blue] di [gold]Antitossina[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.title": "Immunizzazione",
-  "ALCHEMIST-INURE_POWER.description": "Ogni volta che ottieni [gold]Antitossina[/gold], ne ottieni [blue]{Amount}[/blue] in più.",
+  "ALCHEMIST-INURE_POWER.description": "Ogni volta che ottieni [gold]Antitossina[/gold], ottieni [gold]Antitossina[/gold] extra.",
   "ALCHEMIST-INURE_POWER.smartDescription": "Ogni volta che ottieni [gold]Antitossina[/gold], ne ottieni [blue]{Amount}[/blue] in più.",
   "ALCHEMIST-INURE_POWER.title": "Assuefazione",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "All'inizio del tuo turno, ottieni [blue]1[/blue] di [gold]Veleno[/gold] e ottieni [gold]Forza[/gold] pari al tuo [gold]Veleno[/gold] in questo turno.",

@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "Lorsque vous jouez une Compétence, gagnez [blue]{Amount}[/blue] d'[gold]Antitoxine[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "Lorsque vous jouez une Compétence, gagnez [blue]{Amount}[/blue] d'[gold]Antitoxine[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.title": "Immunisation",
-  "ALCHEMIST-INURE_POWER.description": "Lorsque vous gagnez de l'[gold]Antitoxine[/gold], gagnez-en [blue]{Amount}[/blue] de plus.",
+  "ALCHEMIST-INURE_POWER.description": "Lorsque vous gagnez de l'[gold]Antitoxine[/gold], gagnez de l'[gold]Antitoxine[/gold] supplémentaire.",
   "ALCHEMIST-INURE_POWER.smartDescription": "Lorsque vous gagnez de l'[gold]Antitoxine[/gold], gagnez-en [blue]{Amount}[/blue] de plus.",
   "ALCHEMIST-INURE_POWER.title": "Accoutumance",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "Au début de votre tour, gagnez [blue]1[/blue] de [gold]Poison[/gold] et gagnez autant de [gold]Force[/gold] que votre [gold]Poison[/gold] jusqu'à la fin du tour.",

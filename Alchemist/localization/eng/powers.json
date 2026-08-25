@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "Whenever you play a Skill, gain [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "Whenever you play a Skill, gain [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-IMMUNIZE_POWER.title": "Immunize",
-  "ALCHEMIST-INURE_POWER.description": "Whenever you gain [gold]Antitoxin[/gold], gain [blue]{Amount}[/blue] more.",
+  "ALCHEMIST-INURE_POWER.description": "Whenever you gain [gold]Antitoxin[/gold], gain additional [gold]Antitoxin[/gold].",
   "ALCHEMIST-INURE_POWER.smartDescription": "Whenever you gain [gold]Antitoxin[/gold], gain [blue]{Amount}[/blue] more.",
   "ALCHEMIST-INURE_POWER.title": "Inure",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "At the start of your turn, gain [blue]1[/blue] [gold]Poison[/gold] and gain [gold]Strength[/gold] equal to your [gold]Poison[/gold] this turn.",

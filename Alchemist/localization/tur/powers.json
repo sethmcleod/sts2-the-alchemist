@@ -32,7 +32,7 @@
   "ALCHEMIST-IMMUNIZE_POWER.description": "Her Beceri oynadığında [blue]{Amount}[/blue] [gold]Antitoksin[/gold] elde et.",
   "ALCHEMIST-IMMUNIZE_POWER.smartDescription": "Her Beceri oynadığında [blue]{Amount}[/blue] [gold]Antitoksin[/gold] elde et.",
   "ALCHEMIST-IMMUNIZE_POWER.title": "Bağışıklama",
-  "ALCHEMIST-INURE_POWER.description": "Her [gold]Antitoksin[/gold] elde ettiğinde [blue]{Amount}[/blue] fazla elde et.",
+  "ALCHEMIST-INURE_POWER.description": "Her [gold]Antitoksin[/gold] elde ettiğinde fazladan [gold]Antitoksin[/gold] elde et.",
   "ALCHEMIST-INURE_POWER.smartDescription": "Her [gold]Antitoksin[/gold] elde ettiğinde [blue]{Amount}[/blue] fazla elde et.",
   "ALCHEMIST-INURE_POWER.title": "Alıştır",
   "ALCHEMIST-MERCURIAL_FORM_POWER.description": "Turunun başında [blue]1[/blue] [gold]Zehir[/gold] elde et ve bu tur [gold]Zehir[/gold]'in kadar [gold]Kuvvet[/gold] elde et.",
