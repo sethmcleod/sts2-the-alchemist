@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.13.0] - 2026-08-25
+
 ### Added
 
 - Added Bitterroot relic: "At the start of each combat, heal 3 HP and gain 1 Poison." It replaces Snake Tail
