@@ -109,7 +109,7 @@
   "ALCHEMIST-OVERBREW.title": "Superpreparo",
   "ALCHEMIST-OVERDOSE.description": "Receba {SelfPoison} de [gold]Veneno[/gold].\nReceba {antitoxin:diff()} de [gold]Antitoxina[/gold].",
   "ALCHEMIST-OVERDOSE.title": "Overdose",
-  "ALCHEMIST-PANACEA.description": "No início do seu turno, receba {SelfPoison} de [gold]Veneno[/gold] e {antitoxin:diff()} de [gold]Antitoxina[/gold].",
+  "ALCHEMIST-PANACEA.description": "Sempre que seu [gold]Veneno[/gold] causar dano a você, receba essa quantidade de [gold]Antitoxina[/gold].",
   "ALCHEMIST-PANACEA.title": "Panaceia",
   "ALCHEMIST-PASS_IT_ON.description": "Sempre que sua [gold]Antitoxina[/gold] evitar dano de [gold]Veneno[/gold], cause {Amount:diff()} de dano a TODOS os inimigos.",
   "ALCHEMIST-PASS_IT_ON.title": "Passe Adiante",

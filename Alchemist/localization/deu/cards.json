@@ -109,7 +109,7 @@
   "ALCHEMIST-OVERBREW.title": "Überbrauen",
   "ALCHEMIST-OVERDOSE.description": "Erhalte {SelfPoison} [gold]Gift[/gold].\nErhalte {antitoxin:diff()} [gold]Antitoxin[/gold].",
   "ALCHEMIST-OVERDOSE.title": "Überdosis",
-  "ALCHEMIST-PANACEA.description": "Erhalte zu Beginn deines Zuges {SelfPoison} [gold]Gift[/gold] und {antitoxin:diff()} [gold]Antitoxin[/gold].",
+  "ALCHEMIST-PANACEA.description": "Immer wenn dein [gold]Gift[/gold] dir Schaden zufügt, erhalte genauso viel [gold]Antitoxin[/gold].",
   "ALCHEMIST-PANACEA.title": "Allheilmittel",
   "ALCHEMIST-PASS_IT_ON.description": "Immer wenn dein [gold]Antitoxin[/gold] [gold]Gift[/gold]-Schaden verhindert, füge ALLEN Gegnern {Amount:diff()} Schaden zu.",
   "ALCHEMIST-PASS_IT_ON.title": "Weitergeben",

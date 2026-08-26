@@ -109,7 +109,7 @@
   "ALCHEMIST-OVERBREW.title": "Racik Berlebih",
   "ALCHEMIST-OVERDOSE.description": "Dapatkan {SelfPoison} [gold]Racun[/gold].\nDapatkan {antitoxin:diff()} [gold]Antitoksin[/gold].",
   "ALCHEMIST-OVERDOSE.title": "Overdosis",
-  "ALCHEMIST-PANACEA.description": "Pada awal giliranmu, dapatkan {SelfPoison} [gold]Racun[/gold] dan {antitoxin:diff()} [gold]Antitoksin[/gold].",
+  "ALCHEMIST-PANACEA.description": "Setiap kali [gold]Racun[/gold] milikmu melukaimu, dapatkan [gold]Antitoksin[/gold] sebanyak itu.",
   "ALCHEMIST-PANACEA.title": "Panasea",
   "ALCHEMIST-PASS_IT_ON.description": "Setiap kali [gold]Antitoksin[/gold] milikmu mencegah kerusakan [gold]Racun[/gold], lakukan {Amount:diff()} kerusakan ke SEMUA musuh.",
   "ALCHEMIST-PASS_IT_ON.title": "Teruskan",

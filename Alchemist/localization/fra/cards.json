@@ -109,7 +109,7 @@
   "ALCHEMIST-OVERBREW.title": "Surbrassage",
   "ALCHEMIST-OVERDOSE.description": "Gagnez {SelfPoison} de [gold]Poison[/gold].\nGagnez {antitoxin:diff()} d'[gold]Antitoxine[/gold].",
   "ALCHEMIST-OVERDOSE.title": "Surdose",
-  "ALCHEMIST-PANACEA.description": "Au début de votre tour, gagnez {SelfPoison} de [gold]Poison[/gold] et {antitoxin:diff()} d'[gold]Antitoxine[/gold].",
+  "ALCHEMIST-PANACEA.description": "Lorsque votre [gold]Poison[/gold] vous inflige des dégâts, gagnez autant d'[gold]Antitoxine[/gold].",
   "ALCHEMIST-PANACEA.title": "Panacée",
   "ALCHEMIST-PASS_IT_ON.description": "Lorsque votre [gold]Antitoxine[/gold] empêche des dégâts de [gold]Poison[/gold], infligez {Amount:diff()} dégâts à TOUS les ennemis.",
   "ALCHEMIST-PASS_IT_ON.title": "Fais passer",

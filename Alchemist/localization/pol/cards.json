@@ -109,7 +109,7 @@
   "ALCHEMIST-OVERBREW.title": "Przewarzenie",
   "ALCHEMIST-OVERDOSE.description": "Zyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].\nZyskaj {antitoxin:diff()} pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-OVERDOSE.title": "Przedawkowanie",
-  "ALCHEMIST-PANACEA.description": "Na początku tury zyskaj {SelfPoison} pkt. [gold]Trucizny[/gold] i {antitoxin:diff()} pkt. [gold]Antytoksyny[/gold].",
+  "ALCHEMIST-PANACEA.description": "Kiedykolwiek twoja [gold]Trucizna[/gold] zada ci obrażenia, zyskaj tyle samo pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-PANACEA.title": "Panaceum",
   "ALCHEMIST-PASS_IT_ON.description": "Kiedykolwiek twoja [gold]Antytoksyna[/gold] powstrzyma obrażenia od [gold]Trucizny[/gold], zadaj {Amount:diff()} pkt. obrażeń WSZYSTKIM przeciwnikom.",
   "ALCHEMIST-PASS_IT_ON.title": "Przekaż dalej",

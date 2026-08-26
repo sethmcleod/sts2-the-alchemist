@@ -109,7 +109,7 @@
   "ALCHEMIST-OVERBREW.title": "Переварка",
   "ALCHEMIST-OVERDOSE.description": "Дает вам {SelfPoison} [gold]яда[/gold].\nДает {antitoxin:diff()} [gold]антитоксина[/gold].",
   "ALCHEMIST-OVERDOSE.title": "Передозировка",
-  "ALCHEMIST-PANACEA.description": "В начале вашего хода дает вам {SelfPoison} [gold]яда[/gold] и {antitoxin:diff()} [gold]антитоксина[/gold].",
+  "ALCHEMIST-PANACEA.description": "Когда ваш [gold]яд[/gold] наносит вам урон, дает столько же [gold]антитоксина[/gold].",
   "ALCHEMIST-PANACEA.title": "Панацея",
   "ALCHEMIST-PASS_IT_ON.description": "Когда ваш [gold]антитоксин[/gold] предотвращает урон от [gold]яда[/gold], наносит {Amount:diff()} урона ВСЕМ врагам.",
   "ALCHEMIST-PASS_IT_ON.title": "Передай дальше",

@@ -109,7 +109,7 @@
   "ALCHEMIST-OVERBREW.title": "과잉 양조",
   "ALCHEMIST-OVERDOSE.description": "[gold]중독[/gold]을 {SelfPoison} 얻습니다.\n[gold]항독소[/gold]를 {antitoxin:diff()} 얻습니다.",
   "ALCHEMIST-OVERDOSE.title": "과다 투약",
-  "ALCHEMIST-PANACEA.description": "내 턴 시작 시, [gold]중독[/gold]을 {SelfPoison}, [gold]항독소[/gold]를 {antitoxin:diff()} 얻습니다.",
+  "ALCHEMIST-PANACEA.description": "[gold]중독[/gold]으로 피해를 받을 때마다, 그만큼 [gold]항독소[/gold]를 얻습니다.",
   "ALCHEMIST-PANACEA.title": "만병통치약",
   "ALCHEMIST-PASS_IT_ON.description": "[gold]항독소[/gold]가 [gold]중독[/gold] 피해를 막을 때마다, 모든 적에게 피해를 {Amount:diff()} 줍니다.",
   "ALCHEMIST-PASS_IT_ON.title": "떠넘기기",

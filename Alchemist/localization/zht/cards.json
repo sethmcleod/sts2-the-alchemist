@@ -109,7 +109,7 @@
   "ALCHEMIST-OVERBREW.title": "過釀",
   "ALCHEMIST-OVERDOSE.description": "獲得 {SelfPoison} 層[gold]中毒[/gold]。\n獲得 {antitoxin:diff()} 點[gold]抗毒素[/gold]。",
   "ALCHEMIST-OVERDOSE.title": "過量",
-  "ALCHEMIST-PANACEA.description": "在你的回合開始時，獲得 {SelfPoison} 層[gold]中毒[/gold]和 {antitoxin:diff()} 點[gold]抗毒素[/gold]。",
+  "ALCHEMIST-PANACEA.description": "每當你的[gold]中毒[/gold]對你造成傷害時，獲得等量的[gold]抗毒素[/gold]。",
   "ALCHEMIST-PANACEA.title": "萬靈藥",
   "ALCHEMIST-PASS_IT_ON.description": "每當你的[gold]抗毒素[/gold]防止[gold]中毒[/gold]傷害時，對所有敵人造成 {Amount:diff()} 點傷害。",
   "ALCHEMIST-PASS_IT_ON.title": "傳下去",

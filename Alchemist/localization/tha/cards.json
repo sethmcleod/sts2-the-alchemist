@@ -109,7 +109,7 @@
   "ALCHEMIST-OVERBREW.title": "ปรุงเกิน",
   "ALCHEMIST-OVERDOSE.description": "ได้รับ {SelfPoison} [gold]พิษ[/gold]\nได้รับ {antitoxin:diff()} [gold]สารต้านพิษ[/gold]",
   "ALCHEMIST-OVERDOSE.title": "ยาเกินขนาด",
-  "ALCHEMIST-PANACEA.description": "ตอนเริ่มต้นเทิร์น ได้รับ {SelfPoison} [gold]พิษ[/gold] และ {antitoxin:diff()} [gold]สารต้านพิษ[/gold]",
+  "ALCHEMIST-PANACEA.description": "ทุกครั้งที่[gold]พิษ[/gold]ของคุณสร้างความเสียหายให้คุณ ได้รับ[gold]สารต้านพิษ[/gold]จำนวนเท่ากัน",
   "ALCHEMIST-PANACEA.title": "ยาครอบจักรวาล",
   "ALCHEMIST-PASS_IT_ON.description": "ทุกครั้งที่[gold]สารต้านพิษ[/gold]ของคุณป้องกันความเสียหายจาก[gold]พิษ[/gold] สร้างความเสียหาย {Amount:diff()} ใส่ศัตรูทั้งหมด",
   "ALCHEMIST-PASS_IT_ON.title": "ส่งต่อ",
