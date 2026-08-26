@@ -7,6 +7,26 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added Mother of Vinegar relic: "Your Ferment cards start with 1 fermentation." It replaces Glowing Shard
+- Added Pour Over card (0 energy): "Choose a Ferment card in your Hand. Move all of its fermentation to another Ferment card." Upgraded, it also triggers Ferment on that card. It replaces Steep
+
+### Changed
+
+- Reworked Resolve: "Retain. Ferment (0). Gain 1 (2) Strength, plus 1 for each turn fermented." (2 -> 1 energy)
+- Renamed Quicksilver Draught to Oleander Milk and tinted its icon green
+
+### Fixed
+
+- Fixed the Alkahest icon so it no longer matches Solvent
+- Fixed the Ferment hover tip claiming "This card increases in power" on cards that only reference Ferment
+
+### Removed
+
+- Removed Glowing Shard relic, replaced with Mother of Vinegar
+- Removed Steep card, replaced with Pour Over
+
 ## [0.13.1] - 2026-08-26
 
 ### Added

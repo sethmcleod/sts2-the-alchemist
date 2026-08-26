@@ -18,6 +18,12 @@ public static class AlchemistTips
                 : ResourceLoader.Load<Texture2D>($"{MainFile.ResPath}/images/keywords/{icon}.png",
                     null, ResourceLoader.CacheMode.Reuse));
 
+    // The Ferment keyword tip speaks about "this card". Cards that only REFERENCE Ferment
+    // (Taste Test, Bloom, Mellow) need the plural reading, or the tip claims the card ferments
+    public static IHoverTip FermentRef =>
+        new HoverTip(new LocString("card_keywords", "ALCHEMIST-FERMENT_REF.title"),
+            new LocString("card_keywords", "ALCHEMIST-FERMENT_REF.description"));
+
     // Brew is a Rest Site option rather than a keyword, so the Kit relics that grant it explain it here
     public static IHoverTip Brew => Static("ALCHEMIST-BREW");
 

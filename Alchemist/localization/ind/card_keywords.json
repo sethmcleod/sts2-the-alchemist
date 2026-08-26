@@ -2,6 +2,8 @@
   "ALCHEMIST-FERMENT.description": "Kartu ini bertambah kuat untuk setiap giliran di [gold]Tanganmu[/gold]. Saat dimainkan, kartu ini menambahkan sebuah [gold]Residu[/gold] ke [gold]Tumpukan Singkirmu[/gold].",
   "ALCHEMIST-FERMENT.selectionPrompt": "Pilih sebuah kartu untuk [gold]Difermentasi[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentasi",
+  "ALCHEMIST-FERMENT_REF.description": "Kartu-kartu ini bertambah kuat untuk setiap giliran di [gold]Tanganmu[/gold]. Saat dimainkan, kartu ini menambahkan sebuah [gold]Residu[/gold] ke [gold]Tumpukan Singkirmu[/gold].",
+  "ALCHEMIST-FERMENT_REF.title": "Fermentasi",
   "ALCHEMIST-INFUSE.description": "Beri [gold]Efek[/gold] ke sebuah kartu sampai akhir perlawanan. Serangan menjadi [purple]Beracun[/purple]; Teknik menjadi [purple]Berdosis[/purple]; Kuasa menjadi [purple]Kukuh[/purple]. Kartu lain mendapat [gold]Rapuh[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Pilih {Amount:plural:sebuah kartu|[blue]{}[/blue] kartu} untuk diberi [gold]Infusi[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Pilih seberapapun kartu untuk diberi [gold]Infusi[/gold].",

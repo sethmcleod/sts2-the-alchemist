@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cegq78y8jsey6"
-path="res://.godot/imported/quicksilver_draught.png-f26e5722c41f9c5ab0ab853b30b1da90.ctex"
+uid="uid://d12ou188nb26c"
+path="res://.godot/imported/mother_of_vinegar.png-30707658cc05c48257726bb99acc0bdd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/potions/outlines/quicksilver_draught.png"
-dest_files=["res://.godot/imported/quicksilver_draught.png-f26e5722c41f9c5ab0ab853b30b1da90.ctex"]
+source_file="res://Alchemist/images/relics/big/mother_of_vinegar.png"
+dest_files=["res://.godot/imported/mother_of_vinegar.png-30707658cc05c48257726bb99acc0bdd.ctex"]
 
 [params]
 

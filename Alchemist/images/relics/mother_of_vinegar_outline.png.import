@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://220xelynryla"
-path="res://.godot/imported/glowing_shard_outline.png-85a09198910579032d32b9643ee5bac8.ctex"
+uid="uid://c1p83dy5nj3oe"
+path="res://.godot/imported/mother_of_vinegar_outline.png-4d3510c535e34b51be653f15563d35ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/glowing_shard_outline.png"
-dest_files=["res://.godot/imported/glowing_shard_outline.png-85a09198910579032d32b9643ee5bac8.ctex"]
+source_file="res://Alchemist/images/relics/mother_of_vinegar_outline.png"
+dest_files=["res://.godot/imported/mother_of_vinegar_outline.png-4d3510c535e34b51be653f15563d35ad.ctex"]
 
 [params]
 

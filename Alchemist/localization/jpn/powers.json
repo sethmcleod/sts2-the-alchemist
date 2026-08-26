@@ -5,7 +5,7 @@
   "ALCHEMIST-ANODYNE_POWER.description": "次にブロックされなかった攻撃ダメージを受ける時、それを無効化する。無効化したダメージ[blue]5[/blue]ごとに、[gold]毒[/gold][blue]1[/blue]を得る。",
   "ALCHEMIST-ANODYNE_POWER.smartDescription": "次にブロックされなかった攻撃ダメージを受ける時、それを無効化する。無効化したダメージ[blue]5[/blue]ごとに、[gold]毒[/gold][blue]1[/blue]を得る。",
   "ALCHEMIST-ANODYNE_POWER.title": "鎮痛薬",
-  "ALCHEMIST-ANTITOXIN_POWER.description": "自身の[gold]毒[/gold]が発動するたび、最大{Amount}ダメージを無効化する。抗毒素は消費されない。",
+  "ALCHEMIST-ANTITOXIN_POWER.description": "自身の[gold]毒[/gold]が発動するたび、ダメージを無効化する。抗毒素は消費されない。",
   "ALCHEMIST-ANTITOXIN_POWER.smartDescription": "自身の[gold]毒[/gold]が発動するたび、最大[blue]{Amount}[/blue]ダメージを無効化する。抗毒素は消費されない。",
   "ALCHEMIST-ANTITOXIN_POWER.title": "抗毒素",
   "ALCHEMIST-APOTHECARY_POWER.description": "ターン開始時、ランダムな[gold]合剤[/gold]を1枚[gold]手札[/gold]に加える。",

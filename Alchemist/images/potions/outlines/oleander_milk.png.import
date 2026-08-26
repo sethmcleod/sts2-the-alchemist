@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clav45y4uh0ov"
-path="res://.godot/imported/glowing_shard.png-db14f86e8cba8c8cf4c154d94c6e441d.ctex"
+uid="uid://cegq78y8jsey6"
+path="res://.godot/imported/oleander_milk.png-d97d7e9767c08054ff78a5f00899cf6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/glowing_shard.png"
-dest_files=["res://.godot/imported/glowing_shard.png-db14f86e8cba8c8cf4c154d94c6e441d.ctex"]
+source_file="res://Alchemist/images/potions/outlines/oleander_milk.png"
+dest_files=["res://.godot/imported/oleander_milk.png-d97d7e9767c08054ff78a5f00899cf6e.ctex"]
 
 [params]
 

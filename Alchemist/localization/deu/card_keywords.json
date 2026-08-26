@@ -2,6 +2,8 @@
   "ALCHEMIST-FERMENT.description": "Diese Karte wird für jeden Zug auf deiner [gold]Hand[/gold] stärker. Wenn du sie spielst, erhältst du einen [gold]Rückstand[/gold] in deinen [gold]Abwurfstapel[/gold].",
   "ALCHEMIST-FERMENT.selectionPrompt": "Wähle eine Karte, die du [gold]Vergärst[/gold].",
   "ALCHEMIST-FERMENT.title": "Gärung",
+  "ALCHEMIST-FERMENT_REF.description": "Diese Karten werden für jeden Zug auf deiner [gold]Hand[/gold] stärker. Wenn du sie spielst, erhältst du einen [gold]Rückstand[/gold] in deinen [gold]Abwurfstapel[/gold].",
+  "ALCHEMIST-FERMENT_REF.title": "Gärung",
   "ALCHEMIST-INFUSE.description": "[gold]Verzaubere[/gold] eine Karte bis zum Ende des Kampfes. Angriffe werden [purple]Versetzt[/purple]; Fertigkeiten werden [purple]Dosiert[/purple]; Mächte werden [purple]Gefestigt[/purple]. Andere Karten erhalten [gold]Flüchtig[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Wähle {Amount:plural:eine Karte,|[blue]{}[/blue] Karten,} die du [gold]Infundierst[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Wähle beliebig viele Karten, die du [gold]Infundierst[/gold].",

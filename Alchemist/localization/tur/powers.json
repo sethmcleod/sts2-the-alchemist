@@ -5,7 +5,7 @@
   "ALCHEMIST-ANODYNE_POWER.description": "Sonraki sefer alacağın engellenmemiş saldırı hasarını önle. Önlenen her [blue]5[/blue] hasar için [blue]1[/blue] [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-ANODYNE_POWER.smartDescription": "Sonraki sefer alacağın engellenmemiş saldırı hasarını önle. Önlenen her [blue]5[/blue] hasar için [blue]1[/blue] [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-ANODYNE_POWER.title": "Ağrı Kesici",
-  "ALCHEMIST-ANTITOXIN_POWER.description": "[gold]Zehir[/gold]'in her tetiklendiğinde en fazla {Amount} hasarı önler. Antitoksin harcanmaz.",
+  "ALCHEMIST-ANTITOXIN_POWER.description": "[gold]Zehir[/gold]'in her tetiklendiğinde hasarı önler. Antitoksin harcanmaz.",
   "ALCHEMIST-ANTITOXIN_POWER.smartDescription": "[gold]Zehir[/gold]'in her tetiklendiğinde en fazla [blue]{Amount}[/blue] hasarı önler. Antitoksin harcanmaz.",
   "ALCHEMIST-ANTITOXIN_POWER.title": "Antitoksin",
   "ALCHEMIST-APOTHECARY_POWER.description": "Turunun başında [gold]El[/gold]'ine rastgele bir [gold]Karışım[/gold] ekle.",

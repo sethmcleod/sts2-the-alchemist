@@ -5,7 +5,7 @@
   "ALCHEMIST-ANODYNE_POWER.description": "Verhindere den nächsten ungeblockten Angriffsschaden, den du nehmen würdest. Erhalte [blue]1[/blue] [gold]Gift[/gold] für je [blue]5[/blue] verhinderten Schaden.",
   "ALCHEMIST-ANODYNE_POWER.smartDescription": "Verhindere den nächsten ungeblockten Angriffsschaden, den du nehmen würdest. Erhalte [blue]1[/blue] [gold]Gift[/gold] für je [blue]5[/blue] verhinderten Schaden.",
   "ALCHEMIST-ANODYNE_POWER.title": "Schmerzstiller",
-  "ALCHEMIST-ANTITOXIN_POWER.description": "Verhindert bis zu {Amount} Schaden, immer wenn dein [gold]Gift[/gold] ausgelöst wird. Antitoxin wird nicht verbraucht.",
+  "ALCHEMIST-ANTITOXIN_POWER.description": "Verhindert Schaden, immer wenn dein [gold]Gift[/gold] ausgelöst wird. Antitoxin wird nicht verbraucht.",
   "ALCHEMIST-ANTITOXIN_POWER.smartDescription": "Verhindert bis zu [blue]{Amount}[/blue] Schaden, immer wenn dein [gold]Gift[/gold] ausgelöst wird. Antitoxin wird nicht verbraucht.",
   "ALCHEMIST-ANTITOXIN_POWER.title": "Antitoxin",
   "ALCHEMIST-APOTHECARY_POWER.description": "Nimm zu Beginn deines Zuges eine zufällige [gold]Mixtur[/gold] auf deine [gold]Hand[/gold].",

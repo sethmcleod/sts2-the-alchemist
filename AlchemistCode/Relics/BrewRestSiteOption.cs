@@ -59,7 +59,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
     // updated whenever one is added; nothing else enumerates IBrewOnly at runtime
     private PotionModel[] BrewOnly() =>
     [
-        ModelDb.Potion<QuicksilverDraught>(),
+        ModelDb.Potion<OleanderMilk>(),
         ModelDb.Potion<Anodyne>(),
         ModelDb.Potion<Alkahest>(),
         ModelDb.Potion<GoldLeaf>(),

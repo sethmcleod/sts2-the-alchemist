@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode;
 using System.Collections.Generic;
 using System.Linq;
 using Alchemist.AlchemistCode.Character;
@@ -18,7 +19,7 @@ public class TasteTest : AlchemistCard
     {
         WithVar("Turns", 1, 1);
         WithCards(1, 0);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) });
+        WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
 
     private IEnumerable<AlchemistCard> Brewing =>
