@@ -24,6 +24,7 @@ mod).
 
 ### Fixed
 
+- Fixed All At Once, Bonk, Overbrew, Patient Strike, and Puff Up printing their upgraded scaling number in green permanently. Green now marks the upgrade preview and live bonuses only, matching every other card
 - Fixed the Alkahest icon so it no longer matches Solvent
 - Fixed the Ferment hover tip claiming "This card increases in power" on cards that only reference Ferment
 
