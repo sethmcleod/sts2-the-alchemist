@@ -1,4 +1,5 @@
 using System.Linq;
+using Alchemist.AlchemistCode.Compat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -22,7 +23,7 @@ public class Corrode : AlchemistCard
         foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
         {
             if (enemy.Block > 0)
-                await CreatureCmd.LoseBlock(choiceContext, enemy, enemy.Block, Owner.Creature);
+                await GameCompat.LoseBlock(choiceContext, enemy, enemy.Block, Owner.Creature);
             await PowerCmd.Apply<WeakPower>(choiceContext, enemy, DynamicVars.Weak.BaseValue, Owner.Creature, this);
         }
     }
