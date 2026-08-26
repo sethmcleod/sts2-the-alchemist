@@ -13,7 +13,7 @@ public class Drench : AlchemistCard
     public Drench() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(13, 4);
-        WithVar("Poison", 2, 0);
+        WithVar("Poison", 2, 1);
         WithVar("SelfPoison", 1, 0);
         WithTip(typeof(PoisonPower));
     }

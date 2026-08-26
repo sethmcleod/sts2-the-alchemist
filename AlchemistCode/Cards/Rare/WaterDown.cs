@@ -13,7 +13,7 @@ public class WaterDown : AlchemistCard
     public WaterDown() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies)
     {
         WithVar("StrengthLoss", 3, 2);
-        WithVar("Poison", 3, 0);
+        WithVar("Poison", 3, 1);
         WithTip(typeof(StrengthPower));
         WithTip(typeof(PoisonPower));
     }

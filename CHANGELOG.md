@@ -14,6 +14,10 @@ mod).
 
 ### Changed
 
+- Buffed Drench: Poison applied 2 -> 2 (3)
+- Buffed Fumigate: Poison applied to ALL 2 (3) -> 2 (4)
+- Buffed Spores: Poison applied 1 -> 1 (2)
+- Buffed Water Down: Poison applied to ALL 3 -> 3 (4)
 - Reworked Resolve: "Retain. Ferment (0). Gain 1 (2) Strength, plus 1 for each turn fermented." (2 -> 1 energy)
 - Renamed Quicksilver Draught to Oleander Milk and tinted its icon green
 
