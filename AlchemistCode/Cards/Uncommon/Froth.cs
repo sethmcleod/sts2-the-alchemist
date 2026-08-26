@@ -12,7 +12,7 @@ public class Froth : AlchemistCard
 
     public Froth() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(5, 2);
+        WithDamage(6, 2);
         WithKeyword(CardKeyword.Retain);
     }
 

@@ -35,7 +35,7 @@ public class Alchemist3Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST3_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Potions;
     protected override List<PotionModel> Potions => new()
-        { ModelDb.Potion<MarshTonic>(), ModelDb.Potion<RefinedExtract>(), ModelDb.Potion<GoldLeaf>() };
+        { ModelDb.Potion<MarshTonic>(), ModelDb.Potion<RefinedExtract>(), ModelDb.Potion<Sampler>() };
 }
 
 public class Alchemist4Epoch : AlchemistEpoch
@@ -51,7 +51,7 @@ public class Alchemist5Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST5_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Cards;
     protected override List<CardModel> Cards => new()
-        { ModelDb.Card<AllAtOnce>(), ModelDb.Card<WhiteHeat>(), ModelDb.Card<Spatter>() };
+        { ModelDb.Card<AllAtOnce>(), ModelDb.Card<WaterDown>(), ModelDb.Card<Spatter>() };
 }
 
 public class Alchemist6Epoch : AlchemistEpoch
@@ -67,5 +67,5 @@ public class Alchemist7Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST7_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Relics;
     protected override List<RelicModel> Relics => new()
-        { ModelDb.Relic<SpareDose>(), ModelDb.Relic<AuricSeal>(), ModelDb.Relic<MidasFruit>() };
+        { ModelDb.Relic<ExtraDose>(), ModelDb.Relic<AuricSeal>(), ModelDb.Relic<MidasFruit>() };
 }

@@ -62,7 +62,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
         ModelDb.Potion<QuicksilverDraught>(),
         ModelDb.Potion<Anodyne>(),
         ModelDb.Potion<Alkahest>(),
-        ModelDb.Potion<Sampler>(),
+        ModelDb.Potion<GoldLeaf>(),
         ModelDb.Potion<Solvent>(),
         ModelDb.Potion<Decoction>(),
         ModelDb.Potion<StarterCulture>(),

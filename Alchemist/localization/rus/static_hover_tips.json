@@ -1,16 +1,24 @@
 {
   "ALCHEMIST-BREW.description": "Этот вариант в лагере варит одно из [blue]7[/blue] [gold]зелий[/gold], которые можно получить только так. Только сваренные [gold]зелья[/gold] купит [gold]Торговец[/gold].",
   "ALCHEMIST-BREW.title": "Варка",
-  "ALCHEMIST-BURSTING_MIX.description": "Наносит [blue]5[/blue] урона.",
+  "ALCHEMIST-BURSTING_MIX.description": "Наносит [blue]6[/blue] урона.",
   "ALCHEMIST-BURSTING_MIX.title": "Взрывная смесь",
+  "ALCHEMIST-BURSTING_MIX_PLUS.description": "Наносит [blue]9[/blue] урона.",
+  "ALCHEMIST-BURSTING_MIX_PLUS.title": "Взрывная смесь+",
   "ALCHEMIST-FUMING_MIX.description": "Накладывает [blue]1[/blue] [gold]слабости[/gold] и [blue]1[/blue] [gold]уязвимости[/gold]. Дает вам [blue]1[/blue] [gold]яда[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Дымная смесь",
+  "ALCHEMIST-FUMING_MIX_PLUS.description": "Накладывает [blue]1[/blue] [gold]слабости[/gold], [blue]1[/blue] [gold]уязвимости[/gold] и [blue]1[/blue] [gold]яда[/gold].",
+  "ALCHEMIST-FUMING_MIX_PLUS.title": "Дымная смесь+",
   "ALCHEMIST-MASTERWORK.description": "Эта карта светится [gold]золотым[/gold], если в этом бою вы [gold]зачаровали[/gold] 3 или более карт, включая ту, которую [gold]пропитаете[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Шедевр",
   "ALCHEMIST-MIX.description": "Карта стоимостью [blue]0[/blue] с эффектом [gold]истощения[/gold].",
   "ALCHEMIST-MIX.title": "Смесь",
-  "ALCHEMIST-SYRUPY_MIX.description": "Дает [blue]4[/blue] [gold]защиты[/gold].",
+  "ALCHEMIST-SYRUPY_MIX.description": "Дает [blue]5[/blue] [gold]защиты[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Тягучая смесь",
-  "ALCHEMIST-ZESTY_MIX.description": "Вы добираете [blue]1[/blue] карту. Дает [blue]3[/blue] [gold]антитоксина[/gold].",
-  "ALCHEMIST-ZESTY_MIX.title": "Бодрящая смесь"
+  "ALCHEMIST-SYRUPY_MIX_PLUS.description": "Дает [blue]8[/blue] [gold]защиты[/gold].",
+  "ALCHEMIST-SYRUPY_MIX_PLUS.title": "Тягучая смесь+",
+  "ALCHEMIST-ZESTY_MIX.description": "Вы добираете [blue]1[/blue] карту. Дает [blue]1[/blue] [gold]антитоксина[/gold].",
+  "ALCHEMIST-ZESTY_MIX.title": "Бодрящая смесь",
+  "ALCHEMIST-ZESTY_MIX_PLUS.description": "Вы добираете [blue]1[/blue] карту. Дает [blue]2[/blue] [gold]антитоксина[/gold].",
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Бодрящая смесь+"
 }

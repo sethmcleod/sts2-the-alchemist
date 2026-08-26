@@ -36,4 +36,18 @@ public static class AlchemistTips
         Static("ALCHEMIST-SYRUPY_MIX", "mix_syrupy"),
         Static("ALCHEMIST-ZESTY_MIX", "mix_zesty"),
     ];
+
+    // The + rows for cards that hand out upgraded Mixes (Mash). The numbers in these strings and
+    // in the base rows above are hand-copies of the token classes in Cards/Token; a change to a
+    // Mix's numbers must touch both, or the tips lie the way they did before v0.13.1
+    private static IHoverTip[]? _mixUpgraded;
+
+    public static IHoverTip[] MixUpgraded => _mixUpgraded ??=
+    [
+        Static("ALCHEMIST-MIX"),
+        Static("ALCHEMIST-BURSTING_MIX_PLUS", "mix_bursting"),
+        Static("ALCHEMIST-FUMING_MIX_PLUS", "mix_fuming"),
+        Static("ALCHEMIST-SYRUPY_MIX_PLUS", "mix_syrupy"),
+        Static("ALCHEMIST-ZESTY_MIX_PLUS", "mix_zesty"),
+    ];
 }

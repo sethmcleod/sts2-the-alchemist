@@ -10,7 +10,7 @@ public class Nightcap : AlchemistCard
 {
     public Nightcap() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(14, 4);
+        WithDamage(15, 5);
         WithPower<AntitoxinPower>(2, 1);
     }
 

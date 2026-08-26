@@ -1,16 +1,24 @@
 {
   "ALCHEMIST-BREW.description": "这个休息处选项会从只能通过这种方式获得的[blue]7[/blue]瓶[gold]药水[/gold]中酿造出一瓶。只有酿造出的[gold]药水[/gold]才能卖给[gold]商人[/gold]。",
   "ALCHEMIST-BREW.title": "酿造",
-  "ALCHEMIST-BURSTING_MIX.description": "造成[blue]5[/blue]点伤害。",
+  "ALCHEMIST-BURSTING_MIX.description": "造成[blue]6[/blue]点伤害。",
   "ALCHEMIST-BURSTING_MIX.title": "爆裂合剂",
+  "ALCHEMIST-BURSTING_MIX_PLUS.description": "造成[blue]9[/blue]点伤害。",
+  "ALCHEMIST-BURSTING_MIX_PLUS.title": "爆裂合剂+",
   "ALCHEMIST-FUMING_MIX.description": "给予[blue]1[/blue]层[gold]虚弱[/gold]和[blue]1[/blue]层[gold]易伤[/gold]。获得[blue]1[/blue]层[gold]中毒[/gold]。",
   "ALCHEMIST-FUMING_MIX.title": "呛烟合剂",
+  "ALCHEMIST-FUMING_MIX_PLUS.description": "给予[blue]1[/blue]层[gold]虚弱[/gold]、[blue]1[/blue]层[gold]易伤[/gold]和[blue]1[/blue]层[gold]中毒[/gold]。",
+  "ALCHEMIST-FUMING_MIX_PLUS.title": "呛烟合剂+",
   "ALCHEMIST-MASTERWORK.description": "如果你在本场战斗中已[gold]附魔[/gold]3张或更多的牌（包括这张牌将要[gold]注入[/gold]的那张），它就会发出[gold]金币[/gold]般的光芒。",
   "ALCHEMIST-MASTERWORK.title": "杰作",
   "ALCHEMIST-MIX.description": "一张费用为[blue]0[/blue]且会[gold]消耗[/gold]的牌。",
   "ALCHEMIST-MIX.title": "合剂",
-  "ALCHEMIST-SYRUPY_MIX.description": "获得[blue]4[/blue]点[gold]格挡[/gold]。",
+  "ALCHEMIST-SYRUPY_MIX.description": "获得[blue]5[/blue]点[gold]格挡[/gold]。",
   "ALCHEMIST-SYRUPY_MIX.title": "黏稠合剂",
-  "ALCHEMIST-ZESTY_MIX.description": "抽[blue]1[/blue]张牌。获得[blue]3[/blue]点[gold]抗毒素[/gold]。",
-  "ALCHEMIST-ZESTY_MIX.title": "爽劲合剂"
+  "ALCHEMIST-SYRUPY_MIX_PLUS.description": "获得[blue]8[/blue]点[gold]格挡[/gold]。",
+  "ALCHEMIST-SYRUPY_MIX_PLUS.title": "黏稠合剂+",
+  "ALCHEMIST-ZESTY_MIX.description": "抽[blue]1[/blue]张牌。获得[blue]1[/blue]点[gold]抗毒素[/gold]。",
+  "ALCHEMIST-ZESTY_MIX.title": "爽劲合剂",
+  "ALCHEMIST-ZESTY_MIX_PLUS.description": "抽[blue]1[/blue]张牌。获得[blue]2[/blue]点[gold]抗毒素[/gold]。",
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "爽劲合剂+"
 }

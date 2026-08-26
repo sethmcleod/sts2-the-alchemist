@@ -22,14 +22,13 @@ public class StarterCulture : AlchemistPotion, IBrewOnly
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) };
 
-    protected override Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
+    protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         var brewing = PileType.Hand.GetPile(Owner).Cards.OfType<AlchemistCard>()
             .Where(c => c.IsFermentInline).ToList();
         foreach (var card in brewing)
-            card.AdvanceFerment(Times);
+            await card.AdvanceFerment(Times);
         if (brewing.Count > 0)
             CardCmd.Preview(brewing.Cast<CardModel>().ToList());
-        return Task.CompletedTask;
     }
 }

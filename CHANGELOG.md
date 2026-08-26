@@ -10,6 +10,58 @@ mod).
 ### Added
 
 - Added beta art for 15 more cards
+- Added Mellow card: "Whenever one of your cards ferments, gain 2 (3) Block." It replaces Immunize
+- Added Meltdown card: "Deal 28 (36) damage. Reduce this card's cost by 1 whenever your Poison triggers." It replaces Quaff
+- Added Mortar card: "Retain. Ferment (0). Deal 9 (12) damage. Gain Block equal to damage dealt. Deals 3 additional damage for each turn fermented." It replaces Slow Burn
+- Added Overbrew card (X cost): "Choose a Mix. Add X (+1) copies of it into your Hand." It replaces Stir
+- Added Reclaim card: "Choose a card in your Exhaust Pile. Add a copy into your Hand. It costs 0 this turn." It replaces Reagent
+- Added Rerun card: "This turn, your next 1 (2) cards are played an extra time. Gain 3 Poison." It replaces Ripen
+- Added Runoff card: "Whenever you create a card, apply 1 (2) Poison to ALL enemies." It replaces Simmer
+- Added Vial in Reserve card: "At the start of your turn, if you have a Potion, draw 1 (2) additional cards." It replaces Toxin Skin
+- Added Water Down card: "ALL enemies lose 3 (5) Strength this turn. Apply 3 Poison to ALL enemies." It replaces White Heat
+
+### Changed
+
+- Buffed Anodyne: Poison charged 1 per 4 damage prevented -> 1 per 5
+- Buffed Backfire: damage 12 (16) -> 14 (18)
+- Buffed Dose: upgraded Block 2 -> 3
+- Buffed Froth: damage 5 (7) -> 6 (8)
+- Buffed Nightcap: damage 14 (18) -> 15 (20)
+- Buffed Refined Extract: the 2 Mixes it adds are now upgraded
+- Buffed Taste Test (renamed from Swill): cost 1 -> 0
+- Changed Extra Dose relic (renamed from Spare Dose): rarity Common -> Uncommon
+- Changed Fresh Batch: rarity Uncommon -> Common
+- Changed Gold Leaf potion: rarity Rare -> Brew-only
+- Changed Sampler potion: rarity Brew-only -> Rare
+- Changed Second Skin relic: rarity Uncommon -> Common
+- Clarified the Antitoxin and Inure power descriptions: Antitoxin now states the amount it prevents and that it is not spent
+- Renamed Poultice to Upwell
+- Reworked Bonk: "Deal 10 (12) damage. Deals 3 (4) additional damage for each Mix you have played this combat."
+- Reworked Corrode: "Remove ALL Block from ALL enemies. Apply 1 (2) Weak to ALL enemies."
+- Reworked Croak: "Deal 20 (26) damage. If Fatal, gain an additional Potion reward. Exhaust."
+- Reworked Everflowing Chalice relic: "At the start of each combat, gain 2 Poison and 2 Antitoxin." -> "At the start of each combat, choose a Mix+ to add into your Hand. It gains Retain."
+- Reworked Gold Leaf potion: "Gain 1 Block and 1 Antitoxin for every 15 Gold you have." -> "Deal 1 damage to ALL enemies for every 10 Gold you have."
+- Reworked Marsh Tonic potion: "Gain 6 Antitoxin." -> "Gain 4 Antitoxin. Gain 2 Poison."
+- Reworked Mash: "Deal 3 (5) damage. Add a Mix+ of your choice into your Hand."
+- Reworked Spatter: "Discard any number of cards. Apply 2 Poison to ALL enemies, plus 2 (3) for each card discarded."
+- Reworked Tempered: "Gain 8 (12) Block. Gain 4 additional Block for each card in your Exhaust Pile."
+- Reworked Thicken: "Gain 4 (7) Block. Choose a Mix to add into your Hand. It gains Retain."
+
+### Fixed
+
+- Fixed the Antitoxin number in the party panel staying hidden after a hover
+- Fixed the Mix hover tips showing incorrect numbers: Bursting 5 -> 6 damage, Syrupy 4 -> 5 Block, Zesty 3 -> 1 Antitoxin
+
+### Removed
+
+- Removed Immunize card, replaced with Mellow
+- Removed Quaff card, replaced with Vitriol
+- Removed Reagent card, replaced with Reclaim
+- Removed Riped card, replaced with Rerun
+- Removed Simmer card, replaced with Runoff
+- Removed Slow Burn, replaced with Mortar
+- Removed Stir card, replaced with Overbrew
+- Removed White Heat card, replaced with Reduction
 
 ## [0.13.0] - 2026-08-25
 
