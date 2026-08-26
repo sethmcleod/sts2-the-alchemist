@@ -1,16 +1,24 @@
 {
   "ALCHEMIST-BREW.description": "Pilihan Peristirahatan ini meracik salah satu dari [blue]7[/blue] [gold]Ramuan[/gold] yang hanya bisa didapat dengan cara ini. Hanya [gold]Ramuan[/gold] hasil racikan yang mau dibeli [gold]Pedagang[/gold].",
   "ALCHEMIST-BREW.title": "Racik",
-  "ALCHEMIST-BURSTING_MIX.description": "Lakukan [blue]5[/blue] kerusakan.",
+  "ALCHEMIST-BURSTING_MIX.description": "Lakukan [blue]6[/blue] kerusakan.",
   "ALCHEMIST-BURSTING_MIX.title": "Campuran Ledak",
+  "ALCHEMIST-BURSTING_MIX_PLUS.description": "Lakukan [blue]9[/blue] kerusakan.",
+  "ALCHEMIST-BURSTING_MIX_PLUS.title": "Campuran Ledak+",
   "ALCHEMIST-FUMING_MIX.description": "Terapkan [blue]1[/blue] [gold]Lemah[/gold] dan [blue]1[/blue] [gold]Rentan[/gold]. Dapatkan [blue]1[/blue] [gold]Racun[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Campuran Asap",
+  "ALCHEMIST-FUMING_MIX_PLUS.description": "Terapkan [blue]1[/blue] [gold]Lemah[/gold], [blue]1[/blue] [gold]Rentan[/gold] dan [blue]1[/blue] [gold]Racun[/gold].",
+  "ALCHEMIST-FUMING_MIX_PLUS.title": "Campuran Asap+",
   "ALCHEMIST-MASTERWORK.description": "Kartu ini bersinar [gold]emas[/gold] jika kamu sudah memberi [gold]Efek[/gold] ke 3 kartu atau lebih perlawanan ini, termasuk kartu yang akan kamu beri [gold]Infusi[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Adikarya",
   "ALCHEMIST-MIX.description": "Kartu berbiaya [blue]0[/blue] yang [gold]Hangus[/gold].",
   "ALCHEMIST-MIX.title": "Campuran",
-  "ALCHEMIST-SYRUPY_MIX.description": "Dapatkan [blue]4[/blue] [gold]Blok[/gold].",
+  "ALCHEMIST-SYRUPY_MIX.description": "Dapatkan [blue]5[/blue] [gold]Blok[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Campuran Kental",
-  "ALCHEMIST-ZESTY_MIX.description": "Ambil [blue]1[/blue] kartu. Dapatkan [blue]3[/blue] [gold]Antitoksin[/gold].",
-  "ALCHEMIST-ZESTY_MIX.title": "Campuran Segar"
+  "ALCHEMIST-SYRUPY_MIX_PLUS.description": "Dapatkan [blue]8[/blue] [gold]Blok[/gold].",
+  "ALCHEMIST-SYRUPY_MIX_PLUS.title": "Campuran Kental+",
+  "ALCHEMIST-ZESTY_MIX.description": "Ambil [blue]1[/blue] kartu. Dapatkan [blue]1[/blue] [gold]Antitoksin[/gold].",
+  "ALCHEMIST-ZESTY_MIX.title": "Campuran Segar",
+  "ALCHEMIST-ZESTY_MIX_PLUS.description": "Ambil [blue]1[/blue] kartu. Dapatkan [blue]2[/blue] [gold]Antitoksin[/gold].",
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Campuran Segar+"
 }

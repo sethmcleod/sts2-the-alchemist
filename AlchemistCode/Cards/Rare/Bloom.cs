@@ -32,7 +32,7 @@ public class Bloom : AlchemistCard
     {
         var brewing = Brewing.ToList();
         foreach (var card in brewing)
-            card.AdvanceFerment(DynamicVars["Turns"].IntValue);
+            await card.AdvanceFerment(DynamicVars["Turns"].IntValue);
         if (brewing.Count > 0)
             CardCmd.Preview(brewing.Cast<CardModel>().ToList());
         await Task.CompletedTask;

@@ -44,6 +44,7 @@ public static class AntitoxinBarPatches
         public NinePatchRect? Incoming;
         public Label Text = null!;
         public int LastKnown;
+        public Tween? FadeTween;
     }
 
     private static readonly ConditionalWeakTable<NHealthBar, Parts> Bars = new();
@@ -191,6 +192,18 @@ public static class AntitoxinBarPatches
                 var hpSize = hpLabel.GetThemeFontSize("font_size");
                 if (hpSize > 0 && parts.Text.GetThemeFontSize("font_size") != hpSize)
                     parts.Text.AddThemeFontSizeOverride("font_size", hpSize);
+
+                // The party panel shows and hides its HP number by paths of its own (it starts the
+                // label hidden and restores it on highlight), so the fade postfixes alone can strand
+                // this label at a stale alpha. Outside our own fade, copy the HP label's alpha:
+                // whatever the panel decided is correct for both numbers
+                var fading = parts.FadeTween is { } t && GodotObject.IsInstanceValid(t) && t.IsRunning();
+                if (!fading && !Mathf.IsEqualApprox(parts.Text.Modulate.A, hpLabel.Modulate.A))
+                {
+                    var m = parts.Text.Modulate;
+                    m.A = hpLabel.Modulate.A;
+                    parts.Text.Modulate = m;
+                }
             }
 
             parts.Root.Visible = true;
@@ -311,14 +324,18 @@ public static class AntitoxinBarPatches
     private static readonly ConditionalWeakTable<Control, object> NameplateBaseY = new();
 
     // Hovering the bars fades the HP number so the bar underneath can be read. The Antitoxin number
-    // is drawn the same way, so it follows the same fade
+    // is drawn the same way, so it follows the same fade. Each new fade kills the previous tween the
+    // way NHealthBar does with _hpLabelFadeTween; two live tweens on one property strand the label
+    // at whichever alpha the stale one froze at
     [HarmonyPatch(typeof(NHealthBar), nameof(NHealthBar.FadeOutHpLabel))]
     public static class FadeOutAntitoxinLabel
     {
         public static void Postfix(NHealthBar __instance, float duration, float finalAlpha)
         {
             if (!Bars.TryGetValue(__instance, out var parts) || !GodotObject.IsInstanceValid(parts.Text)) return;
-            parts.Text.CreateTween().TweenProperty(parts.Text, "modulate:a", finalAlpha, duration)
+            parts.FadeTween?.Kill();
+            parts.FadeTween = parts.Text.CreateTween();
+            parts.FadeTween.TweenProperty(parts.Text, "modulate:a", finalAlpha, duration)
                 .SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
         }
     }
@@ -329,7 +346,9 @@ public static class AntitoxinBarPatches
         public static void Postfix(NHealthBar __instance, float duration)
         {
             if (!Bars.TryGetValue(__instance, out var parts) || !GodotObject.IsInstanceValid(parts.Text)) return;
-            parts.Text.CreateTween().TweenProperty(parts.Text, "modulate:a", 1f, duration);
+            parts.FadeTween?.Kill();
+            parts.FadeTween = parts.Text.CreateTween();
+            parts.FadeTween.TweenProperty(parts.Text, "modulate:a", 1f, duration);
         }
     }
 }

@@ -1,16 +1,24 @@
 {
   "ALCHEMIST-BREW.description": "Cette option de Site de repos brasse l'une des [blue]7[/blue] [gold]Potions[/gold] que l'on ne peut obtenir autrement. Seules les [gold]Potions[/gold] brassées sont achetées par le [gold]Marchand[/gold].",
   "ALCHEMIST-BREW.title": "Brassage",
-  "ALCHEMIST-BURSTING_MIX.description": "Infligez [blue]5[/blue] dégâts.",
+  "ALCHEMIST-BURSTING_MIX.description": "Infligez [blue]6[/blue] dégâts.",
   "ALCHEMIST-BURSTING_MIX.title": "Mixture explosive",
+  "ALCHEMIST-BURSTING_MIX_PLUS.description": "Infligez [blue]9[/blue] dégâts.",
+  "ALCHEMIST-BURSTING_MIX_PLUS.title": "Mixture explosive+",
   "ALCHEMIST-FUMING_MIX.description": "Appliquez [blue]1[/blue] [gold]Affaibli[/gold] et [blue]1[/blue] [gold]Vulnérable[/gold]. Gagnez [blue]1[/blue] de [gold]Poison[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Mixture fumante",
+  "ALCHEMIST-FUMING_MIX_PLUS.description": "Appliquez [blue]1[/blue] [gold]Affaibli[/gold], [blue]1[/blue] [gold]Vulnérable[/gold] et [blue]1[/blue] de [gold]Poison[/gold].",
+  "ALCHEMIST-FUMING_MIX_PLUS.title": "Mixture fumante+",
   "ALCHEMIST-MASTERWORK.description": "Cette carte brille en [gold]doré[/gold] si vous avez [gold]Envoûté[/gold] 3 cartes ou plus pendant ce combat, en comptant celle que vous alliez [gold]Infuser[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Chef-d'œuvre",
   "ALCHEMIST-MIX.description": "Une carte coûtant [blue]0[/blue] qui [gold]s'épuise[/gold].",
   "ALCHEMIST-MIX.title": "Mixture",
-  "ALCHEMIST-SYRUPY_MIX.description": "Gagnez [blue]4[/blue] d'[gold]Armure[/gold].",
+  "ALCHEMIST-SYRUPY_MIX.description": "Gagnez [blue]5[/blue] d'[gold]Armure[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Mixture sirupeuse",
-  "ALCHEMIST-ZESTY_MIX.description": "Piochez [blue]1[/blue] carte. Gagnez [blue]3[/blue] d'[gold]Antitoxine[/gold].",
-  "ALCHEMIST-ZESTY_MIX.title": "Mixture vivifiante"
+  "ALCHEMIST-SYRUPY_MIX_PLUS.description": "Gagnez [blue]8[/blue] d'[gold]Armure[/gold].",
+  "ALCHEMIST-SYRUPY_MIX_PLUS.title": "Mixture sirupeuse+",
+  "ALCHEMIST-ZESTY_MIX.description": "Piochez [blue]1[/blue] carte. Gagnez [blue]1[/blue] d'[gold]Antitoxine[/gold].",
+  "ALCHEMIST-ZESTY_MIX.title": "Mixture vivifiante",
+  "ALCHEMIST-ZESTY_MIX_PLUS.description": "Piochez [blue]1[/blue] carte. Gagnez [blue]2[/blue] d'[gold]Antitoxine[/gold].",
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Mixture vivifiante+"
 }

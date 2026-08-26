@@ -11,7 +11,7 @@ namespace Alchemist.AlchemistCode.Cards.Ancient;
 [CardTheme(CardTheme.Poison)]
 public class Wormwood : AlchemistCard
 {
-    // Matches White Heat: the dose is already the multiplier, so Strength does not compound it
+    // The dose is already the multiplier, so Strength does not compound it
     protected internal override bool DealsUnpoweredDamage => true;
 
     public Wormwood() : base(0, CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies)

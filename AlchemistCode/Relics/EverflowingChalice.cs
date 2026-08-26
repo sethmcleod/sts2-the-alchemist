@@ -1,29 +1,31 @@
 using System.Collections.Generic;
-using Alchemist.AlchemistCode.Powers;
+using Alchemist.AlchemistCode.Commands;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-// The Mix lane's relic: the shelf is stocked before every fight, your pick
+// The Mix lane's relic: the shelf is stocked before every fight, your pick, and it keeps.
+// The picker runs on turn 1 rather than BeforeCombatStart, because only the turn-start hook
+// carries a real choice context (base ChoicesParadox does the same)
 public class EverflowingChalice : AlchemistRelic
 {
-    private const int Dose = 2;
-    private const int Antitoxin = 2;
-
     public override RelicRarity Rarity => RelicRarity.Shop;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<AntitoxinPower>() };
+        [.. Mixing.MixTips(upgraded: true), HoverTipFactory.FromKeyword(CardKeyword.Retain)];
 
-    public override async Task BeforeCombatStart()
+    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
+        if (player != Owner || Owner.PlayerCombatState is not { TurnNumber: 1 }) return;
         Flash();
-        var ctx = new ThrowingPlayerChoiceContext();
-        await PowerCmd.Apply<PoisonPower>(ctx, Owner.Creature, Dose, Owner.Creature, null);
-        await PowerCmd.Apply<AntitoxinPower>(ctx, Owner.Creature, Antitoxin, Owner.Creature, null);
+        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: true);
+        if (mix == null) return;
+        CardCmd.ApplyKeyword(mix, CardKeyword.Retain);
+        await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, Owner);
     }
 }

@@ -19,7 +19,16 @@ public static class Mixing
 {
     private static LocString SelectPrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPrompt");
 
-    public static IEnumerable<IHoverTip> MixTips() => AlchemistTips.Mix;
+    public static IEnumerable<IHoverTip> MixTips(bool upgraded = false) =>
+        upgraded ? AlchemistTips.MixUpgraded : AlchemistTips.Mix;
+
+    public static bool IsMix(CardModel card) =>
+        card is BurstingMix or FumingMix or SyrupyMix or ZestyMix;
+
+    /// <summary>How many Mixes this player has played this combat. 0 outside combat.</summary>
+    public static int PlayedThisCombat(Player owner) =>
+        CombatManager.Instance?.History.CardPlaysFinished
+            .Count(e => IsMix(e.CardPlay.Card) && e.CardPlay.Card.Owner == owner) ?? 0;
 
     private static List<CardModel> Options(ICombatState combat, Player owner) =>
         new()
@@ -30,11 +39,18 @@ public static class Mixing
             combat.CreateCard<ZestyMix>(owner),
         };
 
-    /// <summary>Shows the four Mixes and returns the chosen one, unadded. Null outside combat.</summary>
-    public static async Task<CardModel?> Choose(PlayerChoiceContext ctx, Player owner)
+    /// <summary>
+    /// Shows the four Mixes and returns the chosen one, unadded. Null outside combat.
+    /// With upgraded, the grid shows the + versions, so the previews match what is given.
+    /// </summary>
+    public static async Task<CardModel?> Choose(PlayerChoiceContext ctx, Player owner,
+        bool upgraded = false)
     {
         if (owner.Creature.CombatState is not { } combat) return null;
         var options = Options(combat, owner);
+        if (upgraded)
+            foreach (var option in options)
+                CardCmd.Upgrade(option);
         var picked = (await CardSelectCmd.FromSimpleGrid(ctx, options, owner,
             new CardSelectorPrefs(SelectPrompt, 1))).FirstOrDefault();
         if (picked != null) RecordCreated(owner, picked);
@@ -82,12 +98,28 @@ public static class Mixing
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, receiver);
     }
 
+    /// <summary>One picker, many cards: choose a Mix once, then add that many copies.</summary>
+    public static async Task CreateChosenCopies(PlayerChoiceContext ctx, Player owner, int count)
+    {
+        if (count <= 0) return;
+        var picked = await Choose(ctx, owner);
+        if (picked == null) return;
+        await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
+        for (var i = 1; i < count; i++)
+        {
+            var copy = picked.CreateClone();
+            RecordCreated(owner, copy);
+            await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Hand, owner);
+        }
+    }
+
     /// <summary>Choose a Mix and add it to the owner's hand, count times.</summary>
-    public static async Task CreateChosen(PlayerChoiceContext ctx, Player owner, int count = 1)
+    public static async Task CreateChosen(PlayerChoiceContext ctx, Player owner, int count = 1,
+        bool upgraded = false)
     {
         for (var i = 0; i < count; i++)
         {
-            var picked = await Choose(ctx, owner);
+            var picked = await Choose(ctx, owner, upgraded);
             if (picked == null) return;
             await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
         }

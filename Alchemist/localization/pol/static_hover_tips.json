@@ -1,16 +1,24 @@
 {
   "ALCHEMIST-BREW.description": "Ta opcja Obozowiska pozwala uwarzyć jedną z [blue]7[/blue] [gold]Mikstur[/gold], które można zdobyć tylko w ten sposób. [gold]Handlarz[/gold] kupuje wyłącznie uwarzone [gold]Mikstury[/gold].",
   "ALCHEMIST-BREW.title": "Warzenie",
-  "ALCHEMIST-BURSTING_MIX.description": "Zadaj [blue]5[/blue] pkt. obrażeń.",
+  "ALCHEMIST-BURSTING_MIX.description": "Zadaj [blue]6[/blue] pkt. obrażeń.",
   "ALCHEMIST-BURSTING_MIX.title": "Wybuchowa mieszanka",
+  "ALCHEMIST-BURSTING_MIX_PLUS.description": "Zadaj [blue]9[/blue] pkt. obrażeń.",
+  "ALCHEMIST-BURSTING_MIX_PLUS.title": "Wybuchowa mieszanka+",
   "ALCHEMIST-FUMING_MIX.description": "Nałóż [blue]1[/blue] pkt. [gold]Słabości[/gold] i [blue]1[/blue] pkt. [gold]Wrażliwości[/gold]. Zyskaj [blue]1[/blue] pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Dymiąca mieszanka",
+  "ALCHEMIST-FUMING_MIX_PLUS.description": "Nałóż [blue]1[/blue] pkt. [gold]Słabości[/gold], [blue]1[/blue] pkt. [gold]Wrażliwości[/gold] i [blue]1[/blue] pkt. [gold]Trucizny[/gold].",
+  "ALCHEMIST-FUMING_MIX_PLUS.title": "Dymiąca mieszanka+",
   "ALCHEMIST-MASTERWORK.description": "Ta karta świeci na [gold]złoto[/gold], jeżeli w tej walce rzucono [gold]Zaklęcie[/gold] na co najmniej 3 karty, licząc tę, którą [gold]Nasycisz[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Arcydzieło",
   "ALCHEMIST-MIX.description": "Karta o koszcie [blue]0[/blue], która się [gold]Wyczerpuje[/gold].",
   "ALCHEMIST-MIX.title": "Mieszanka",
-  "ALCHEMIST-SYRUPY_MIX.description": "Zyskaj [blue]4[/blue] pkt. [gold]Bloku[/gold].",
+  "ALCHEMIST-SYRUPY_MIX.description": "Zyskaj [blue]5[/blue] pkt. [gold]Bloku[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Gęsta mieszanka",
-  "ALCHEMIST-ZESTY_MIX.description": "Dobierz [blue]1[/blue] kartę. Zyskaj [blue]3[/blue] pkt. [gold]Antytoksyny[/gold].",
-  "ALCHEMIST-ZESTY_MIX.title": "Rześka mieszanka"
+  "ALCHEMIST-SYRUPY_MIX_PLUS.description": "Zyskaj [blue]8[/blue] pkt. [gold]Bloku[/gold].",
+  "ALCHEMIST-SYRUPY_MIX_PLUS.title": "Gęsta mieszanka+",
+  "ALCHEMIST-ZESTY_MIX.description": "Dobierz [blue]1[/blue] kartę. Zyskaj [blue]1[/blue] pkt. [gold]Antytoksyny[/gold].",
+  "ALCHEMIST-ZESTY_MIX.title": "Rześka mieszanka",
+  "ALCHEMIST-ZESTY_MIX_PLUS.description": "Dobierz [blue]1[/blue] kartę. Zyskaj [blue]2[/blue] pkt. [gold]Antytoksyny[/gold].",
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Rześka mieszanka+"
 }

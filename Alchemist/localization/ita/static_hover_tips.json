@@ -1,16 +1,24 @@
 {
   "ALCHEMIST-BREW.description": "Questa opzione dei luoghi di riposo prepara una delle [blue]7[/blue] [gold]pozioni[/gold] ottenibili solo in questo modo. Le [gold]pozioni[/gold] preparate sono le uniche che il [gold]mercante[/gold] acquista.",
   "ALCHEMIST-BREW.title": "Prepara",
-  "ALCHEMIST-BURSTING_MIX.description": "Infliggi [blue]5[/blue] di danno.",
+  "ALCHEMIST-BURSTING_MIX.description": "Infliggi [blue]6[/blue] di danno.",
   "ALCHEMIST-BURSTING_MIX.title": "Miscela Esplosiva",
+  "ALCHEMIST-BURSTING_MIX_PLUS.description": "Infliggi [blue]9[/blue] di danno.",
+  "ALCHEMIST-BURSTING_MIX_PLUS.title": "Miscela Esplosiva+",
   "ALCHEMIST-FUMING_MIX.description": "Applichi [blue]1[/blue] di [gold]Debolezza[/gold] e [blue]1[/blue] di [gold]Vulnerabilità[/gold]. Ottieni [blue]1[/blue] di [gold]Veleno[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Miscela Fumogena",
+  "ALCHEMIST-FUMING_MIX_PLUS.description": "Applichi [blue]1[/blue] di [gold]Debolezza[/gold], [blue]1[/blue] di [gold]Vulnerabilità[/gold] e [blue]1[/blue] di [gold]Veleno[/gold].",
+  "ALCHEMIST-FUMING_MIX_PLUS.title": "Miscela Fumogena+",
   "ALCHEMIST-MASTERWORK.description": "Questa carta brilla d'[gold]oro[/gold] se hai [gold]incantato[/gold] 3 o più carte in questo combattimento, inclusa quella che stai per [gold]infondere[/gold].",
   "ALCHEMIST-MASTERWORK.title": "Capolavoro",
   "ALCHEMIST-MIX.description": "Una carta dal costo di [blue]0[/blue] con [gold]Esaurimento[/gold].",
   "ALCHEMIST-MIX.title": "Miscela",
-  "ALCHEMIST-SYRUPY_MIX.description": "Ottieni [blue]4[/blue] di [gold]Blocco[/gold].",
+  "ALCHEMIST-SYRUPY_MIX.description": "Ottieni [blue]5[/blue] di [gold]Blocco[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Miscela Sciropposa",
-  "ALCHEMIST-ZESTY_MIX.description": "Peschi [blue]1[/blue] carta. Ottieni [blue]3[/blue] di [gold]Antitossina[/gold].",
-  "ALCHEMIST-ZESTY_MIX.title": "Miscela Frizzante"
+  "ALCHEMIST-SYRUPY_MIX_PLUS.description": "Ottieni [blue]8[/blue] di [gold]Blocco[/gold].",
+  "ALCHEMIST-SYRUPY_MIX_PLUS.title": "Miscela Sciropposa+",
+  "ALCHEMIST-ZESTY_MIX.description": "Peschi [blue]1[/blue] carta. Ottieni [blue]1[/blue] di [gold]Antitossina[/gold].",
+  "ALCHEMIST-ZESTY_MIX.title": "Miscela Frizzante",
+  "ALCHEMIST-ZESTY_MIX_PLUS.description": "Peschi [blue]1[/blue] carta. Ottieni [blue]2[/blue] di [gold]Antitossina[/gold].",
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Miscela Frizzante+"
 }

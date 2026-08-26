@@ -33,6 +33,16 @@ public static class SaveRenamePatches
         ["ALCHEMIST-ELIXIR"] = ModelDb.Card<Panacea>().Id!,
         ["ALCHEMIST-ANTIDOTE"] = ModelDb.Card<Dose>().Id!,
         ["ALCHEMIST-DEEP_CUT"] = ModelDb.Card<Bonk>().Id!,
+        ["ALCHEMIST-REAGENT"] = ModelDb.Card<Reclaim>().Id!,
+        ["ALCHEMIST-WHITE_HEAT"] = ModelDb.Card<WaterDown>().Id!,
+        ["ALCHEMIST-RIPEN"] = ModelDb.Card<Rerun>().Id!,
+        ["ALCHEMIST-SIMMER"] = ModelDb.Card<Runoff>().Id!,
+        ["ALCHEMIST-QUAFF"] = ModelDb.Card<Meltdown>().Id!,
+        ["ALCHEMIST-IMMUNIZE"] = ModelDb.Card<Mellow>().Id!,
+        ["ALCHEMIST-POULTICE"] = ModelDb.Card<Upwell>().Id!,
+        ["ALCHEMIST-SLOW_BURN"] = ModelDb.Card<Mortar>().Id!,
+        ["ALCHEMIST-SWILL"] = ModelDb.Card<TasteTest>().Id!,
+        ["ALCHEMIST-TOXIN_SKIN"] = ModelDb.Card<VialInReserve>().Id!,
         // Cuts, not renames: each retired card maps to the new card in its slot, so a mid-save
         // update hands the player something new instead of a blank deprecated card
         ["ALCHEMIST-DOUBLE_DOSE"] = ModelDb.Card<Fumigate>().Id!,
@@ -41,6 +51,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-LICK"] = ModelDb.Card<Drench>().Id!,
         ["ALCHEMIST-RETCH"] = ModelDb.Card<Distill>().Id!,
         ["ALCHEMIST-CONGEAL"] = ModelDb.Card<Proof>().Id!,
+        ["ALCHEMIST-STIR"] = ModelDb.Card<FreshBatch>().Id!,
     };
 
     public static void Prefix(ref ModelId id)
@@ -62,6 +73,7 @@ public static class RelicSaveRenamePatches
     {
         // Cuts, not renames: each retired relic maps to the relic that took its slot
         ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Bitterroot>().Id!,
+        ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<ExtraDose>().Id!,
     };
 
     public static void Prefix(ref ModelId id)

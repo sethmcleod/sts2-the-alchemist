@@ -144,9 +144,14 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     internal int FermentTurns => _fermentTurns;
 
-    internal void AdvanceFerment(int turns)
+    // Async because every turn of fermentation gained also pays the Mellow engine. Both the natural
+    // end-of-turn tick and the Trigger cards route through here, so the payoff has one home
+    internal async Task AdvanceFerment(int turns)
     {
-        if (IsFermentCard) _fermentTurns += turns;
+        if (!IsFermentCard) return;
+        _fermentTurns += turns;
+        if (Owner?.Creature.GetPower<MellowPower>() is { } mellow)
+            await mellow.OnFermented(turns);
     }
 
     /// <summary>The base game reserves this for roughly 12 damage and up.</summary>
@@ -162,13 +167,12 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     // VeryEarly, not the plain hook: RegenPower heals and decrements in BeforeSideTurnEndEarly, so a
     // Ferment tick has to land ahead of both
-    public override Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
+    public override async Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
         if (IsFermentCard && Owner != null && participants.Contains(Owner.Creature)
             && PileType.Hand.GetPile(Owner).Cards.Contains(this))
-            _fermentTurns++;
-        return Task.CompletedTask;
+            await AdvanceFerment(1);
     }
 
     // The dregs land in the Discard rather than the Hand, so they cannot bite on the turn you cash in.

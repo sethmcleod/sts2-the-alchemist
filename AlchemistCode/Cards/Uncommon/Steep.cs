@@ -42,7 +42,7 @@ public class Steep : AlchemistCard
                 filter: c => options.Contains(c), source: this)).OfType<AlchemistCard>().FirstOrDefault();
             if (chosen != null)
             {
-                chosen.AdvanceFerment(DynamicVars["Turns"].IntValue);
+                await chosen.AdvanceFerment(DynamicVars["Turns"].IntValue);
                 CardCmd.Preview(new List<CardModel> { chosen });
             }
         }

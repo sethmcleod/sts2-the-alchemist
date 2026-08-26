@@ -7,9 +7,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Potions;
 
-public class Sampler : AlchemistPotion, IBrewOnly
+public class Sampler : AlchemistPotion
 {
-    public override PotionRarity Rarity => PotionRarity.Event;
+    public override PotionRarity Rarity => PotionRarity.Rare;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
     public override TargetType TargetType => TargetType.Self;
 
