@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added beta art for 15 more cards
+
 ## [0.13.0] - 2026-08-25
 
 ### Added
