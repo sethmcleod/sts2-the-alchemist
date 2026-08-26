@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -6,6 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
+using System.Linq;
 using Godot;
 
 namespace Alchemist.AlchemistCode.Potions;
@@ -25,10 +27,12 @@ public class GoldLeaf : AlchemistPotion, IBrewOnly
     {
         var total = (int)(Owner.Gold / 10m);
         if (total <= 0 || Owner.Creature.CombatState is not { } combat) return;
-        var targets = combat.HittableEnemies;
-        foreach (var enemy in targets)
+        // Through the shim, one enemy at a time: the multi-target Damage overload is branch-specific
+        foreach (var enemy in combat.HittableEnemies.ToList())
+        {
             NCombatRoom.Instance?.PlaySplashVfx(enemy, GoldTint);
-        await CreatureCmd.Damage(choiceContext, targets, total, ValueProp.Unpowered,
-            Owner.Creature, null, null);
+            await GameCompat.Damage(choiceContext, enemy, total, ValueProp.Unpowered,
+                Owner.Creature, null);
+        }
     }
 }
