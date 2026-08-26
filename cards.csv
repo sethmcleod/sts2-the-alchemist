@@ -38,7 +38,6 @@ Grand Batch,Rare,Skill,1 (0),Add one of each Mix into your Hand. Exhaust.
 Gulp,Uncommon,Skill,0,Draw 2 (3) cards. Gain 3 Poison. Exhaust.
 Harden,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block. Gain 1 (2) Antitoxin."
 Heavy Dose,Uncommon,Attack,3,Deal 35 (45) damage. Gain 3 Poison.
-Ichor,Rare,Power,2 (1),"At the start of your turn, gain 2 Poison. Your Attacks deal additional damage equal to your Poison."
 Inure,Uncommon,Power,1,"Whenever you gain Antitoxin, gain 1 more. Gain 1 (2) Antitoxin."
 Jab,Basic,Attack,1,Deal 5 (7) damage. Apply 2 (3) Poison. Deals additional damage equal to your Poison.
 Lash Out,Rare,Attack,1,Deal 3 (5) damage 3 times. Hits an additional time if you have Poison.
@@ -93,6 +92,7 @@ Vent,Uncommon,Skill,1,Lose ALL your Poison and apply twice that much Poison.
 Vial in Reserve,Rare,Power,1,"At the start of your turn, if you have a Potion, draw 1 (2) additional cards."
 Vintage,Rare,Skill,1 (0),Retain. Ferment (0). Gain 1 Energy and draw 1 card. Gain 1 additional Energy and draw 1 additional card for each turn fermented. Exhaust.
 Vitrify,Common,Skill,1,Gain 5 (8) Block. Gain 2 (3) Antitoxin.
+Wallop,Rare,Attack,2,Deal 6 (8) damage. Deals 3 (4) additional damage for each other card you played this turn.
 Warded,Uncommon,Power,1,"Whenever you gain Antitoxin, gain 3 (5) Block."
 Water Down,Rare,Skill,1,ALL enemies lose 3 (5) Strength this turn. Apply 3 (4) Poison to ALL enemies.
 Wormwood,Ancient,Attack,0,Deal damage equal to your Poison to ALL enemies 2 (3) times.

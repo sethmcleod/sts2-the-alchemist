@@ -53,6 +53,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-RETCH"] = ModelDb.Card<Distill>().Id!,
         ["ALCHEMIST-CONGEAL"] = ModelDb.Card<Proof>().Id!,
         ["ALCHEMIST-STIR"] = ModelDb.Card<FreshBatch>().Id!,
+        ["ALCHEMIST-ICHOR"] = ModelDb.Card<Wallop>().Id!,
     };
 
     public static void Prefix(ref ModelId id)

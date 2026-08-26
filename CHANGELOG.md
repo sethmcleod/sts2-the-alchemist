@@ -11,6 +11,7 @@ mod).
 
 - Added Mother of Vinegar relic: "Your Ferment cards start with 1 fermentation." It replaces Glowing Shard
 - Added Pour Over card (0 energy): "Choose a Ferment card in your Hand. Move all of its fermentation to another Ferment card." Upgraded, it also triggers Ferment on that card. It replaces Steep
+- Added Wallop card (2 energy): "Deal 6 (8) damage. Deals 3 (4) additional damage for each other card you played this turn." It replaces Ichor
 
 ### Changed
 
@@ -30,6 +31,7 @@ mod).
 
 - Removed Glowing Shard relic, replaced with Mother of Vinegar
 - Removed Steep card, replaced with Pour Over
+- Removed Ichor card, replaced with Wallop
 
 ## [0.13.1] - 2026-08-26
 
