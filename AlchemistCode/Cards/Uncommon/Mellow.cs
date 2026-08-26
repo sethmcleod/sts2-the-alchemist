@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode;
 using Alchemist.AlchemistCode.Character;
 using Alchemist.AlchemistCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
@@ -15,7 +16,7 @@ public class Mellow : AlchemistCard
     public Mellow() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithPower<MellowPower>(2, 1);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) });
+        WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

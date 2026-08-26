@@ -2,6 +2,8 @@
   "ALCHEMIST-FERMENT.description": "Esta carta aumenta su poder por cada turno que pase en tu [gold]Mano[/gold]. Al jugarla, añade un [gold]Residuo[/gold] a tu [gold]Pila de descarte[/gold].",
   "ALCHEMIST-FERMENT.selectionPrompt": "Elige una carta que [gold]Fermentar[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentar",
+  "ALCHEMIST-FERMENT_REF.description": "Estas cartas aumentan su poder por cada turno que pasen en tu [gold]Mano[/gold]. Al jugarlas, añaden un [gold]Residuo[/gold] a tu [gold]Pila de descarte[/gold].",
+  "ALCHEMIST-FERMENT_REF.title": "Fermentar",
   "ALCHEMIST-INFUSE.description": "[gold]Encanta[/gold] una carta hasta el final del combate. Los Ataques ganan [purple]Ponzoña[/purple]; las Habilidades, [purple]Dosis[/purple]; los Poderes, [purple]Fortificación[/purple]. Las demás cartas se vuelven [gold]Etéreas[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Elige {Amount:plural:una carta|[blue]{}[/blue] cartas} que [gold]Infundir[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Elige cualquier número de cartas que [gold]Infundir[/gold].",

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cegq78y8jsey6"
-path="res://.godot/imported/quicksilver_draught.png-f26e5722c41f9c5ab0ab853b30b1da90.ctex"
+path="res://.godot/imported/oleander_milk.png-d97d7e9767c08054ff78a5f00899cf6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/potions/outlines/quicksilver_draught.png"
-dest_files=["res://.godot/imported/quicksilver_draught.png-f26e5722c41f9c5ab0ab853b30b1da90.ctex"]
+source_file="res://Alchemist/images/potions/outlines/oleander_milk.png"
+dest_files=["res://.godot/imported/oleander_milk.png-d97d7e9767c08054ff78a5f00899cf6e.ctex"]
 
 [params]
 

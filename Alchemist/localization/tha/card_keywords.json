@@ -2,6 +2,8 @@
   "ALCHEMIST-FERMENT.description": "การ์ดนี้จะมีพลังเพิ่มขึ้นต่อทุกเทิร์นที่อยู่ใน[gold]มือ[/gold] เมื่อคุณเล่นมัน มันจะเพิ่ม[gold]กากยา[/gold] 1 ใบเข้า[gold]กองทิ้ง[/gold]",
   "ALCHEMIST-FERMENT.selectionPrompt": "เลือกการ์ด 1 ใบเพื่อ[gold]บ่ม[/gold]",
   "ALCHEMIST-FERMENT.title": "บ่ม",
+  "ALCHEMIST-FERMENT_REF.description": "การ์ดเหล่านี้จะมีพลังเพิ่มขึ้นต่อทุกเทิร์นที่อยู่ใน[gold]มือ[/gold] เมื่อคุณเล่นมัน มันจะเพิ่ม[gold]กากยา[/gold] 1 ใบเข้า[gold]กองทิ้ง[/gold]",
+  "ALCHEMIST-FERMENT_REF.title": "บ่ม",
   "ALCHEMIST-INFUSE.description": "[gold]ร่ายมนตร์[/gold]ใส่การ์ด 1 ใบจนจบการต่อสู้ การ์ดโจมตีจะกลายเป็น[purple]เจือพิษ[/purple] การ์ดทักษะจะกลายเป็น[purple]อาบยา[/purple] การ์ดพลังจะกลายเป็น[purple]เสริมกำลัง[/purple] การ์ดอื่นได้รับ[gold]กึ่งสลาย[/gold]",
   "ALCHEMIST-INFUSE.selectionPrompt": "เลือกการ์ด{Amount:plural: 1 ใบ| [blue]{}[/blue] ใบ}เพื่อ[gold]อัดฉีด[/gold]",
   "ALCHEMIST-INFUSE.selectionPromptAny": "เลือกการ์ดกี่ใบก็ได้เพื่อ[gold]อัดฉีด[/gold]",

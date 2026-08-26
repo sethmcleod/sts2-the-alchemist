@@ -64,7 +64,14 @@ AMBIGUOUS = {"gold", "poison"}
 # grammar (es: Agotas / agotar / agotamiento), so positional lookup lands on nonsense.
 AMBIGUOUS_ANY_CASE = {"discard", "exhausts"}
 
-OVERRIDES = {("Discard Pile", "esp"): "pila de descarte"}
+# Turkish conjugates Fatal inside the conditional clause it always appears in. The
+# hover-tip title is "Ölümcül", but every base card carrying the keyword writes
+# "Eğer [gold]Öldürürse[/gold]" (Feed, Hand of Greed, The Hunt, Training Strike), so
+# card text anchors on that form and the title alone would fail every one of them.
+OVERRIDES = {
+    ("Discard Pile", "esp"): "pila de descarte",
+    ("Fatal", "tur"): "Öldürürse",
+}
 
 
 def strip_tags(text: str) -> str:

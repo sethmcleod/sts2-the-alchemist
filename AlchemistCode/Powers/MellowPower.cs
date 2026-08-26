@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode;
 using System.Collections.Generic;
 using Alchemist.AlchemistCode.Character;
 using MegaCrit.Sts2.Core.Commands;
@@ -16,7 +17,7 @@ public class MellowPower : AlchemistPower
     public override PowerStackType StackType => PowerStackType.Counter;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment), HoverTipFactory.Static(StaticHoverTip.Block) };
+        new[] { AlchemistTips.FermentRef, HoverTipFactory.Static(StaticHoverTip.Block) };
 
     internal async Task OnFermented(int turns)
     {

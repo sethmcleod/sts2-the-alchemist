@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfycj84y22pj3"
-path="res://.godot/imported/steep.png-ec1f8f6349a6c6407cddece3e32eede5.ctex"
+uid="uid://bpgniaop601ol"
+path="res://.godot/imported/mother_of_vinegar.png-106bbd22d11fb440e51eea763b88dfb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/steep.png"
-dest_files=["res://.godot/imported/steep.png-ec1f8f6349a6c6407cddece3e32eede5.ctex"]
+source_file="res://Alchemist/images/relics/mother_of_vinegar.png"
+dest_files=["res://.godot/imported/mother_of_vinegar.png-106bbd22d11fb440e51eea763b88dfb5.ctex"]
 
 [params]
 

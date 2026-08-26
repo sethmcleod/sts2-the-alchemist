@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Potions;
 
-public class QuicksilverDraught : AlchemistPotion, IBrewOnly
+public class OleanderMilk : AlchemistPotion, IBrewOnly
 {
     private const int Triggers = 3;
 

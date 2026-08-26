@@ -13,7 +13,7 @@ public class Spores : AlchemistCard
     public Spores() : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(3, 1);
-        WithVar("Poison", 1, 0);
+        WithVar("Poison", 1, 1);
         WithTip(typeof(PoisonPower));
     }
 

@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode;
 using System.Collections.Generic;
 using System.Linq;
 using Alchemist.AlchemistCode.Cards;
@@ -20,7 +21,7 @@ public class StarterCulture : AlchemistPotion, IBrewOnly
     public override TargetType TargetType => TargetType.Self;
 
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) };
+        new[] { AlchemistTips.FermentRef };
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {

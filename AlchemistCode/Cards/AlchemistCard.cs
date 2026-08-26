@@ -142,7 +142,21 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     internal bool IsFermentInline => IsFermentCard;
 
-    internal int FermentTurns => _fermentTurns;
+    // Mother of Vinegar is a read-time floor, not an advance: combat start, the reset after a
+    // play, and cards generated mid-combat all begin at 1 through this one line, and the free
+    // turn never pokes Mellow because nothing "ferments"
+    private bool HasMotherOfVinegar =>
+        IsMutable && Owner is { } player
+        && System.Linq.Enumerable.Any(player.Relics,
+            r => r is Relics.MotherOfVinegar && !r.IsMelted);
+
+    internal int FermentTurns => _fermentTurns + (IsFermentCard && HasMotherOfVinegar ? 1 : 0);
+
+    // Pour Over moves fermentation between cards. Raw field access on both ends, because a move is
+    // not fermenting: the turns were already paid to Mellow when they were first gained
+    internal int DrainFerment() { var turns = _fermentTurns; _fermentTurns = 0; return turns; }
+
+    internal void ReceiveFerment(int turns) { if (IsFermentCard) _fermentTurns += turns; }
 
     // Async because every turn of fermentation gained also pays the Mellow engine. Both the natural
     // end-of-turn tick and the Trigger cards route through here, so the payoff has one home

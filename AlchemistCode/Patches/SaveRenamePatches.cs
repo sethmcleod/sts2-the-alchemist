@@ -42,6 +42,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-POULTICE"] = ModelDb.Card<Upwell>().Id!,
         ["ALCHEMIST-SLOW_BURN"] = ModelDb.Card<Mortar>().Id!,
         ["ALCHEMIST-SWILL"] = ModelDb.Card<TasteTest>().Id!,
+        ["ALCHEMIST-STEEP"] = ModelDb.Card<PourOver>().Id!,
         ["ALCHEMIST-TOXIN_SKIN"] = ModelDb.Card<VialInReserve>().Id!,
         // Cuts, not renames: each retired card maps to the new card in its slot, so a mid-save
         // update hands the player something new instead of a blank deprecated card
@@ -52,6 +53,27 @@ public static class SaveRenamePatches
         ["ALCHEMIST-RETCH"] = ModelDb.Card<Distill>().Id!,
         ["ALCHEMIST-CONGEAL"] = ModelDb.Card<Proof>().Id!,
         ["ALCHEMIST-STIR"] = ModelDb.Card<FreshBatch>().Id!,
+        ["ALCHEMIST-ICHOR"] = ModelDb.Card<Wallop>().Id!,
+    };
+
+    public static void Prefix(ref ModelId id)
+    {
+        if (id?.Entry != null && Renamed.TryGetValue(id.Entry, out var replacement))
+            id = replacement;
+    }
+}
+
+// The potion half: a renamed potion id sitting in a saved belt loads as a blank
+// DeprecatedPotion without this map
+[HarmonyPatch(typeof(SaveUtil), nameof(SaveUtil.PotionOrDeprecated))]
+public static class PotionSaveRenamePatches
+{
+    private static Dictionary<string, ModelId>? _renamed;
+
+    // Lazy: ModelDb is not populated when Harmony applies the patch
+    private static Dictionary<string, ModelId> Renamed => _renamed ??= new Dictionary<string, ModelId>
+    {
+        ["ALCHEMIST-QUICKSILVER_DRAUGHT"] = ModelDb.Potion<Potions.OleanderMilk>().Id!,
     };
 
     public static void Prefix(ref ModelId id)
@@ -74,6 +96,7 @@ public static class RelicSaveRenamePatches
         // Cuts, not renames: each retired relic maps to the relic that took its slot
         ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Bitterroot>().Id!,
         ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<ExtraDose>().Id!,
+        ["ALCHEMIST-GLOWING_SHARD"] = ModelDb.Relic<MotherOfVinegar>().Id!,
     };
 
     public static void Prefix(ref ModelId id)

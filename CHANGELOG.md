@@ -7,6 +7,37 @@ mod).
 
 ## [Unreleased]
 
+## [0.13.2] - 2026-08-26
+
+### Added
+
+- Added beta art for 15 more cards
+- Added Mother of Vinegar relic: "Your Ferment cards start with 1 fermentation." It replaces Glowing Shard
+- Added Pour Over card (0 energy): "Choose a Ferment card in your Hand. Move all of its fermentation to another Ferment card." Upgraded, it also triggers Ferment on that card. It replaces Steep
+- Added Wallop card (2 energy): "Deal 6 (8) damage. Deals 3 (4) additional damage for each other card you played this turn." It replaces Ichor
+
+### Changed
+
+- Buffed Drench: Poison applied 2 -> 2 (3)
+- Buffed Fumigate: Poison applied to ALL 2 (3) -> 2 (4)
+- Buffed Spores: Poison applied 1 -> 1 (2)
+- Buffed Water Down: Poison applied to ALL 3 -> 3 (4)
+- Renamed Quicksilver Draught to Oleander Milk and tinted its icon green
+- Reworked Panacea: "Whenever your Poison damages you, gain that much Antitoxin." (3 -> 1 (0) energy)
+- Reworked Resolve: "Retain. Ferment (0). Gain 1 (2) Strength, plus 1 for each turn fermented." (2 -> 1 energy)
+
+### Fixed
+
+- Fixed All At Once, Bonk, Overbrew, Patient Strike, and Puff Up printing their upgraded scaling number in green permanently. Green now marks the upgrade preview and live bonuses only, matching every other card
+- Fixed the Alkahest icon so it no longer matches Solvent
+- Fixed the Ferment hover tip claiming "This card increases in power" on cards that only reference Ferment
+
+### Removed
+
+- Removed Glowing Shard relic, replaced with Mother of Vinegar
+- Removed Steep card, replaced with Pour Over
+- Removed Ichor card, replaced with Wallop
+
 ## [0.13.1] - 2026-08-26
 
 ### Added

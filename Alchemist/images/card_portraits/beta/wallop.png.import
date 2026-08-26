@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf2rsgdvmgoax"
-path="res://.godot/imported/ichor_power.png-9790f962694354d2ad6ea302d1291d87.ctex"
+uid="uid://mf37g7sx2q67"
+path="res://.godot/imported/wallop.png-6c9589d8620d3561e9bbfa34aa449eea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/ichor_power.png"
-dest_files=["res://.godot/imported/ichor_power.png-9790f962694354d2ad6ea302d1291d87.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/wallop.png"
+dest_files=["res://.godot/imported/wallop.png-6c9589d8620d3561e9bbfa34aa449eea.ctex"]
 
 [params]
 

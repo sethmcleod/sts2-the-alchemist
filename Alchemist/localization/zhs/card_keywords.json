@@ -2,6 +2,8 @@
   "ALCHEMIST-FERMENT.description": "这张牌在你的[gold]手牌[/gold]中每停留一个回合就增强一次。打出后，在你的[gold]弃牌堆[/gold]中加入一张[gold]余渣[/gold]。",
   "ALCHEMIST-FERMENT.selectionPrompt": "选择一张牌进行[gold]发酵[/gold]。",
   "ALCHEMIST-FERMENT.title": "发酵",
+  "ALCHEMIST-FERMENT_REF.description": "这些牌在你的[gold]手牌[/gold]中每停留一个回合就增强一次。打出后，在你的[gold]弃牌堆[/gold]中加入一张[gold]余渣[/gold]。",
+  "ALCHEMIST-FERMENT_REF.title": "发酵",
   "ALCHEMIST-INFUSE.description": "[gold]附魔[/gold]一张牌，直到战斗结束。攻击牌变为[purple]掺毒[/purple]；技能牌变为[purple]掺药[/purple]；能力牌变为[purple]固化[/purple]。其他牌获得[gold]虚无[/gold]。",
   "ALCHEMIST-INFUSE.selectionPrompt": "选择{Amount:plural:一张牌|[blue]{}[/blue]张牌}进行[gold]注入[/gold]。",
   "ALCHEMIST-INFUSE.selectionPromptAny": "选择任意数量的牌进行[gold]注入[/gold]。",

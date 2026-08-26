@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode;
 using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Utils;
@@ -18,7 +19,7 @@ public class Bloom : AlchemistCard
     {
         WithVar("Turns", 3, 1);
         WithKeyword(CardKeyword.Exhaust);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment) });
+        WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
 
     private IEnumerable<AlchemistCard> Brewing =>
