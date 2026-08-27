@@ -115,7 +115,7 @@
   "ALCHEMIST-PASS_IT_ON.title": "Pass It On",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]Ferment{FermentSuffix}.[/gold]\nDeal {CalculatedDamage:diff()} damage.\nDeals {IfUpgraded:show:8|6} additional damage for each turn fermented.",
   "ALCHEMIST-PATIENT_STRIKE.title": "Patient Strike",
-  "ALCHEMIST-POUR_OVER.description": "Choose a [gold]Ferment[/gold] card in your [gold]Hand[/gold].\nMove ALL of it's fermentation to another [gold]Ferment[/gold] card{IfUpgraded:show:\n, then [gold]Trigger[/gold] it.|.}",
+  "ALCHEMIST-POUR_OVER.description": "Choose a [gold]Ferment[/gold] card in your [gold]Hand[/gold].\nMove ALL of its fermentation to another [gold]Ferment[/gold] card{IfUpgraded:show:\n, then [gold]Trigger[/gold] it.|.}",
   "ALCHEMIST-POUR_OVER.selectionScreenPrompt": "Choose a card to move fermentation from.",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "Choose a card to move fermentation to.",
   "ALCHEMIST-POUR_OVER.title": "Pour Over",
