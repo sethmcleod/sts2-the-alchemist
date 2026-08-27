@@ -19,5 +19,7 @@ public class Apothecary : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<ApothecaryPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+        if (IsUpgraded && Owner.Creature.GetPower<ApothecaryPower>() is { } pharmacy)
+            pharmacy.Upgraded = true;
     }
 }

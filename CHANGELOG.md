@@ -7,13 +7,26 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added Overspill card (2 energy): "Deal 8 (10) damage to ALL enemies. Add a random Mix into your Hand." Upgraded, the Mix is a Mix+. It replaces Spew
+- Added Warm Up card (0 energy): "Gain 1 Energy. Add a random Mix into your Hand. Exhaust." Upgraded, the Mix is a Mix+. It replaces Tolerance
+
 ### Changed
 
+- Buffed Apothecary: the random Mix is a Mix+ when upgraded
 - Renamed Alembic to Untended and reworked it: "Your Ferment cards also ferment while in your Draw Pile and Discard Pile." Innate when upgraded (1 -> 2 energy)
 - Reworked Backfire: "Deal 14 (20) damage. Deals 4 additional damage if the enemy intends to attack."
+- Reworked Brace: "Gain 5 (8) Block. Remove your Weak and Frail." The old Poison condition was always met, so the Energy was a free rider
 - Reworked Drench: "Deal 4 (6) damage 3 times. Each hit applies 1 Poison." It no longer gains you Poison
 - Reworked Quench: "Gain 4 (5) Antitoxin. Gain Block equal to twice your Antitoxin. Exhaust." (2 -> 1 energy)
 - Reworked Vitrify: "Gain 3 (4) Block twice. Gain 2 (3) Antitoxin."
+
+
+### Removed
+
+- Removed Spew card, replaced with Overspill
+- Removed Tolerance card, replaced with Warm Up
 
 ## [0.13.2] - 2026-08-26
 

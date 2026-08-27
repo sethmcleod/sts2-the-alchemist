@@ -69,12 +69,13 @@ public static class Mixing
         }, 1);
 
     /// <summary>Add a random Mix to the owner's hand. Seeded, so multiplayer stays in sync.</summary>
-    public static async Task CreateRandom(PlayerChoiceContext ctx, Player owner)
+    public static async Task CreateRandom(PlayerChoiceContext ctx, Player owner, bool upgraded = false)
     {
         if (owner.Creature.CombatState is not { } combat) return;
         var options = Options(combat, owner);
         var picked = owner.RunState.Rng.CombatCardGeneration.NextItem(options);
         if (picked == null) return;
+        if (upgraded) CardCmd.Upgrade(picked);
         RecordCreated(owner, picked);
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
     }

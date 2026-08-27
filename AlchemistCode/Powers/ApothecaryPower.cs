@@ -12,13 +12,15 @@ public class ApothecaryPower : AlchemistPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => Mixing.MixTips();
+    internal bool Upgraded;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => Mixing.MixTips(Upgraded);
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Player) return;
         Flash();
         for (var i = 0; i < Amount; i++)
-            await Mixing.CreateRandom(choiceContext, Owner.Player!);
+            await Mixing.CreateRandom(choiceContext, Owner.Player!, Upgraded);
     }
 }
