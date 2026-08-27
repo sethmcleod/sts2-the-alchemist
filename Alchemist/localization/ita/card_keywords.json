@@ -1,8 +1,8 @@
 {
-  "ALCHEMIST-FERMENT.description": "Questa carta aumenta di potenza per ogni turno passato nella tua [gold]mano[/gold]. Quando la giochi, aggiunge una carta [gold]Residuo[/gold] alla tua [gold]pila degli scarti[/gold].",
+  "ALCHEMIST-FERMENT.description": "Questa carta aumenta di potenza per ogni turno passato nella tua [gold]mano[/gold]. Quando la giochi, la sua fermentazione si azzera.",
   "ALCHEMIST-FERMENT.selectionPrompt": "Scegli una carta da [gold]fermentare[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentazione",
-  "ALCHEMIST-FERMENT_REF.description": "Queste carte aumentano di potenza per ogni turno passato nella tua [gold]mano[/gold]. Quando le giochi, aggiungono una carta [gold]Residuo[/gold] alla tua [gold]pila degli scarti[/gold].",
+  "ALCHEMIST-FERMENT_REF.description": "Queste carte aumentano di potenza per ogni turno passato nella tua [gold]mano[/gold]. Quando le giochi, la loro fermentazione si azzera.",
   "ALCHEMIST-FERMENT_REF.title": "Fermentazione",
   "ALCHEMIST-INFUSE.description": "[gold]Incanti[/gold] una carta fino al termine del combattimento. Le carte Attacco diventano [purple]Intrise[/purple]; le Abilità diventano [purple]Dosate[/purple]; i Poteri diventano [purple]Fortificati[/purple]. Le altre carte ottengono [gold]Evanescenza[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Scegli {Amount:plural:una carta|[blue]{}[/blue] carte} da [gold]infondere[/gold].",

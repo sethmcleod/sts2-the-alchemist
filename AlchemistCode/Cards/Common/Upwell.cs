@@ -13,7 +13,7 @@ public class Upwell : AlchemistCard
 
     public Upwell() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(10, 4);
+        WithBlock(8, 3);
         WithVar("poison", 2, 0);
         WithTip(typeof(PoisonPower));
     }

@@ -1,8 +1,8 @@
 {
-  "ALCHEMIST-FERMENT.description": "This card increases in power for each turn in your [gold]Hand[/gold]. Playing it adds a [gold]Residue[/gold] to your [gold]Discard Pile[/gold].",
+  "ALCHEMIST-FERMENT.description": "This card increases in power for each turn in your [gold]Hand[/gold]. Playing it resets its fermentation.",
   "ALCHEMIST-FERMENT.selectionPrompt": "Choose a card to [gold]Ferment[/gold].",
   "ALCHEMIST-FERMENT.title": "Ferment",
-  "ALCHEMIST-FERMENT_REF.description": "These cards increase in power for each turn in your [gold]Hand[/gold]. Playing them adds a [gold]Residue[/gold] to your [gold]Discard Pile[/gold].",
+  "ALCHEMIST-FERMENT_REF.description": "These cards increase in power for each turn in your [gold]Hand[/gold]. Playing them resets their fermentation.",
   "ALCHEMIST-FERMENT_REF.title": "Ferment",
   "ALCHEMIST-INFUSE.description": "[gold]Enchant[/gold] a card until the end of combat. Attacks become [purple]Laced[/purple]; Skills become [purple]Dosed[/purple]; Powers become [purple]Fortified[/purple]. Other cards gain [gold]Ethereal[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Infuse[/gold].",

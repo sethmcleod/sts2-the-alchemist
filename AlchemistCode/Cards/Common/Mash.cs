@@ -10,13 +10,13 @@ public class Mash : AlchemistCard
 {
     public Mash() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(3, 2);
-        WithTips(_ => Mixing.MixTips(upgraded: true));
+        WithDamage(5, 3);
+        WithTips(_ => AlchemistTips.MixSingle("ALCHEMIST-BURSTING_MIX", "mix_bursting"));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
-        await Mixing.CreateChosen(choiceContext, Owner, upgraded: true);
+        await Mixing.CreateOne<Token.BurstingMix>(choiceContext, Owner);
     }
 }

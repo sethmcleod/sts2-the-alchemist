@@ -10,22 +10,34 @@ mod).
 ### Added
 
 - Added Overspill card (2 energy): "Deal 8 (10) damage to ALL enemies. Add a random Mix into your Hand." Upgraded, the Mix is a Mix+. It replaces Spew
-- Added Warm Up card (0 energy): "Gain 1 Energy. Add a random Mix into your Hand. Exhaust." Upgraded, the Mix is a Mix+. It replaces Tolerance
+- Added Twist card (1 (0) energy, Common): "Draw 1 card. Add a Zesty Mix into your Hand." It replaces Condense and fills the Common slot Fresh Batch left
+- Added Warm Up card (0 energy): "Gain 1 (2) Energy. Add a random Mix into your Hand. Exhaust." Upgraded, the Mix is a Mix+. It replaces Tolerance
 
 ### Changed
 
 - Buffed Apothecary: the random Mix is a Mix+ when upgraded
+- Buffed Wormwood: "Deal 4 (6) damage plus your Poison to ALL enemies 2 times."
+- Changed Fresh Batch back to Uncommon: it keeps the Mix choice and the card draw
+- Nerfed Heavy Dose damage: 35 (45) -> 30 (40)
+- Nerfed Upwell Block: 10 (14) -> 8 (11)
 - Renamed Alembic to Untended and reworked it: "Your Ferment cards also ferment while in your Draw Pile and Discard Pile." Innate when upgraded (1 -> 2 energy)
 - Reworked Backfire: "Deal 14 (20) damage. Deals 4 additional damage if the enemy intends to attack."
+- Reworked Bitter Draught: "Gain 2 (3) Energy. Gain 2 Poison. Exhaust." (1 (0) -> 0 energy). It no longer triggers Poison on yourself
+- Reworked Blend: the transformed card becomes a random Mix instead of opening the Mix picker
 - Reworked Brace: "Gain 5 (8) Block. Remove your Weak and Frail." The old Poison condition was always met, so the Energy was a free rider
 - Reworked Drench: "Deal 4 (6) damage 3 times. Each hit applies 1 Poison." It no longer gains you Poison
+- Reworked Mash: "Deal 5 (8) damage. Add a Bursting Mix into your Hand." (3 (5) -> 5 (8) damage). The Mix+ picker is gone
+- Reworked Panacea: "Whenever you gain Poison, gain 1 Antitoxin."
 - Reworked Quench: "Gain 4 (5) Antitoxin. Gain Block equal to twice your Antitoxin. Exhaust." (2 -> 1 energy)
+- Reworked Smelling Salts: "At the start of your turn, if you have 3 or more Poison, gain 1 (2) Energy."
+- Reworked Thicken: it adds a Syrupy Mix with Retain instead of opening the Mix picker
 - Reworked Vitrify: "Gain 3 (4) Block twice. Gain 2 (3) Antitoxin."
+- Updated the Ferment keyword text: playing a Ferment card resets its fermentation and no longer adds a Residue
 - Updated the Antitoxin bar to show how much damage your Poison will actually deal:
-  - Added a Show Poison Damage Forecast toggle to the mod's Accessibility settings
-  - Added a green damage number beside the bar when your Poison exceeds your Antitoxin
-  - The bar now pulses while your next Poison tick will cost HP, and its number only turns green in that case
   - The Antitoxin tooltip now reads out the math, such as "Your 9 Poison will deal 6 damage."
+  - The bar now pulses while your next Poison tick will cost HP, and its number only turns green in that case
+  - Added a green damage number beside the bar when your Poison exceeds your Antitoxin
+  - Added a Show Poison Damage Forecast toggle to the mod's Accessibility settings
 
 ### Fixed
 
@@ -33,7 +45,9 @@ mod).
 
 ### Removed
 
+- Removed Condense card, replaced with Twist
 - Removed Spew card, replaced with Overspill
+- Removed Residue status card: playing a Ferment card no longer adds one to the Discard Pile
 - Removed Tolerance card, replaced with Warm Up
 
 ## [0.13.2] - 2026-08-26

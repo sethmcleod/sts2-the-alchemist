@@ -31,7 +31,7 @@ public class Blend : AlchemistCard
         var chosen = (await CardSelectCmd.FromCombatPile(choiceContext, discard, Owner,
             new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1))).FirstOrDefault();
         if (chosen == null) return;
-        var mix = await Mixing.TransformIntoChosen(choiceContext, Owner, chosen);
+        var mix = await Mixing.TransformIntoRandom(choiceContext, Owner, chosen);
         if (mix == null) return;
         await CardPileCmd.Add(mix, PileType.Hand);
         // A full hand reroutes the add to the Discard Pile, so the Mix is still made but never passes

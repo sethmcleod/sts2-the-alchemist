@@ -10,9 +10,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// The dose that gets through becomes permanent capacity, so the tick teaches the body its own
-// tolerance and converges on zero. Unlike Callus this reads the UNABSORBED damage only, without
-// AntitoxinRules.TickAbsorb: a tick the capacity already held did no damage, so it cures nothing
+// Pays on the dose itself, not on what the dose did: 1 capacity per gain EVENT, whatever its
+// size, so heavy doses do not snowball it. Reads the stack owner, not the applier, so poison
+// an enemy puts on you still counts as a dose taken
 public class PanaceaPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
@@ -21,14 +21,11 @@ public class PanaceaPower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<AntitoxinPower>() };
 
-    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
-        DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
+        decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (target != Owner) return;
-        var bled = result.UnblockedDamage;
-        if (bled <= 0) return;
-        if (!AntitoxinRules.IsPoisonTick(Owner, bled, props, dealer, cardSource)) return;
+        if (power is not PoisonPower || amount <= 0 || power.Owner != Owner) return;
         Flash();
-        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner, bled, Owner, null);
+        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner, 1, Owner, null);
     }
 }

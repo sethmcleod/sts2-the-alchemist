@@ -26,7 +26,6 @@ public static class SaveRenamePatches
         ["ALCHEMIST-STURDY_MIX"] = ModelDb.Card<SyrupyMix>().Id!,
         ["ALCHEMIST-LOB"] = ModelDb.Card<Mash>().Id!,
         ["ALCHEMIST-DOUBLE_BATCH"] = ModelDb.Card<FreshBatch>().Id!,
-        ["ALCHEMIST-DREGS"] = ModelDb.Card<Residue>().Id!,
         ["ALCHEMIST-PAYS_OFF"] = ModelDb.Card<SmellingSalts>().Id!,
         ["ALCHEMIST-NEXT_UP"] = ModelDb.Card<Anoint>().Id!,
         ["ALCHEMIST-FRESH_COAT"] = ModelDb.Card<Untended>().Id!,
@@ -57,6 +56,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-ALEMBIC"] = ModelDb.Card<Untended>().Id!,
         ["ALCHEMIST-SPEW"] = ModelDb.Card<Overspill>().Id!,
         ["ALCHEMIST-TOLERANCE"] = ModelDb.Card<WarmUp>().Id!,
+        ["ALCHEMIST-CONDENSE"] = ModelDb.Card<Twist>().Id!,
     };
 
     public static void Prefix(ref ModelId id)

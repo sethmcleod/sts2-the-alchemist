@@ -43,7 +43,11 @@ public static class AlchemistTips
         Static("ALCHEMIST-ZESTY_MIX", "mix_zesty"),
     ];
 
-    // The + rows for cards that hand out upgraded Mixes (Mash). The numbers in these strings and
+    // A maker that produces one fixed Mix tips the family header plus that Mix's row only
+    public static IHoverTip[] MixSingle(string mixKey, string icon) =>
+        [Static("ALCHEMIST-MIX"), Static(mixKey, icon)];
+
+    // The + rows for cards that hand out upgraded Mixes (Warm Up+, Apothecary+). The numbers in these strings and
     // in the base rows above are hand-copies of the token classes in Cards/Token; a change to a
     // Mix's numbers must touch both, or the tips lie the way they did before v0.13.1
     private static IHoverTip[]? _mixUpgraded;

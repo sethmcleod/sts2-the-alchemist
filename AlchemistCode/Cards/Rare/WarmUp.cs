@@ -13,7 +13,7 @@ public class WarmUp : AlchemistCard
 
     public WarmUp() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithEnergy(1, 0);
+        WithEnergy(1, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithTips(card => Mixing.MixTips(card.IsUpgraded));
     }
