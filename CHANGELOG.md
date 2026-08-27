@@ -7,6 +7,14 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Renamed Alembic to Untended and reworked it: "Your Ferment cards also ferment while in your Draw Pile and Discard Pile." Innate when upgraded (1 -> 2 energy)
+- Reworked Backfire: "Deal 14 (20) damage. Deals 4 additional damage if the enemy intends to attack."
+- Reworked Drench: "Deal 4 (6) damage 3 times. Each hit applies 1 Poison." It no longer gains you Poison
+- Reworked Quench: "Gain 4 (5) Antitoxin. Gain Block equal to twice your Antitoxin. Exhaust." (2 -> 1 energy)
+- Reworked Vitrify: "Gain 3 (4) Block twice. Gain 2 (3) Antitoxin."
+
 ## [0.13.2] - 2026-08-26
 
 ### Added

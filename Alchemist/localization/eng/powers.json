@@ -1,7 +1,4 @@
 {
-  "ALCHEMIST-ALEMBIC_POWER.description": "Whenever you [gold]Enchant[/gold] a card, gain [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
-  "ALCHEMIST-ALEMBIC_POWER.smartDescription": "Whenever you [gold]Enchant[/gold] a card, gain [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
-  "ALCHEMIST-ALEMBIC_POWER.title": "Alembic",
   "ALCHEMIST-ANODYNE_POWER.description": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]5[/blue] damage prevented.",
   "ALCHEMIST-ANODYNE_POWER.smartDescription": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]5[/blue] damage prevented.",
   "ALCHEMIST-ANODYNE_POWER.title": "Anodyne",
@@ -65,6 +62,9 @@
   "ALCHEMIST-TOLERANCE_POWER.description": "At the start of your turn, gain [gold]Antitoxin[/gold] equal to your [gold]Poison[/gold].",
   "ALCHEMIST-TOLERANCE_POWER.smartDescription": "At the start of your turn, gain [gold]Antitoxin[/gold] equal to your [gold]Poison[/gold].",
   "ALCHEMIST-TOLERANCE_POWER.title": "Tolerance",
+  "ALCHEMIST-UNTENDED_POWER.description": "Your [gold]Ferment[/gold] cards also ferment while in your [gold]Draw Pile[/gold] and [gold]Discard Pile[/gold].",
+  "ALCHEMIST-UNTENDED_POWER.smartDescription": "Your [gold]Ferment[/gold] cards also ferment while in your [gold]Draw Pile[/gold] and [gold]Discard Pile[/gold].",
+  "ALCHEMIST-UNTENDED_POWER.title": "Untended",
   "ALCHEMIST-VIAL_IN_RESERVE_POWER.description": "At the start of your turn, if you have a [gold]Potion[/gold], draw [blue]{Amount}[/blue] additional {Amount:plural:card|cards}.",
   "ALCHEMIST-VIAL_IN_RESERVE_POWER.smartDescription": "At the start of your turn, if you have a [gold]Potion[/gold], draw [blue]{Amount}[/blue] additional {Amount:plural:card|cards}.",
   "ALCHEMIST-VIAL_IN_RESERVE_POWER.title": "Vial in Reserve",

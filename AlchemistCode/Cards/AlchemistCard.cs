@@ -179,13 +179,25 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     protected virtual string FermentTotalText => "";
 
+    private bool FermentsThisTurn
+    {
+        get
+        {
+            if (Owner is not { } player) return false;
+            if (PileType.Hand.GetPile(player).Cards.Contains(this)) return true;
+            if (!player.Creature.HasPower<UntendedPower>()) return false;
+            return PileType.Draw.GetPile(player).Cards.Contains(this)
+                   || PileType.Discard.GetPile(player).Cards.Contains(this);
+        }
+    }
+
     // VeryEarly, not the plain hook: RegenPower heals and decrements in BeforeSideTurnEndEarly, so a
     // Ferment tick has to land ahead of both
     public override async Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
         if (IsFermentCard && Owner != null && participants.Contains(Owner.Creature)
-            && PileType.Hand.GetPile(Owner).Cards.Contains(this))
+            && FermentsThisTurn)
             await AdvanceFerment(1);
     }
 

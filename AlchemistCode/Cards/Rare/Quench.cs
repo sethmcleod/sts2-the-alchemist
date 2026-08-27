@@ -16,9 +16,10 @@ public class Quench : AlchemistCard
 
     protected internal override bool PlaysCastAnimation => false;
 
-    public Quench() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public Quench() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("antitoxin", 1, 1);
+        WithVar("antitoxin", 4, 1);
+        WithKeyword(CardKeyword.Exhaust);
         WithCalculatedBlock(0, static (card, _) => BlockFrom(card), ValueProp.Move);
         WithTip(typeof(AntitoxinPower));
     }

@@ -14,7 +14,7 @@ public class Vitrify : AlchemistCard
 
     public Vitrify() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(5, 3);
+        WithBlock(3, 1);
         WithVar("antitoxin", 2, 1);
         WithTip(StaticHoverTip.Block);
         WithTip(typeof(AntitoxinPower));
@@ -22,6 +22,7 @@ public class Vitrify : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        await CommonActions.CardBlock(this, play);
         await CommonActions.CardBlock(this, play);
         await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
             DynamicVars["antitoxin"].IntValue, Owner.Creature, this);

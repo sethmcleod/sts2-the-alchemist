@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnjjaoq6om7lw"
-path="res://.godot/imported/alembic_power.png-0b8cd66d4a4a7ddef525fb97ce3d166b.ctex"
+path="res://.godot/imported/untended_power.png-d9a40b2a03fc00943113b943c6f0bb26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/alembic_power.png"
-dest_files=["res://.godot/imported/alembic_power.png-0b8cd66d4a4a7ddef525fb97ce3d166b.ctex"]
+source_file="res://Alchemist/images/powers/big/untended_power.png"
+dest_files=["res://.godot/imported/untended_power.png-d9a40b2a03fc00943113b943c6f0bb26.ctex"]
 
 [params]
 
