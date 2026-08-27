@@ -26,10 +26,9 @@ public static class SaveRenamePatches
         ["ALCHEMIST-STURDY_MIX"] = ModelDb.Card<SyrupyMix>().Id!,
         ["ALCHEMIST-LOB"] = ModelDb.Card<Mash>().Id!,
         ["ALCHEMIST-DOUBLE_BATCH"] = ModelDb.Card<FreshBatch>().Id!,
-        ["ALCHEMIST-DREGS"] = ModelDb.Card<Residue>().Id!,
         ["ALCHEMIST-PAYS_OFF"] = ModelDb.Card<SmellingSalts>().Id!,
         ["ALCHEMIST-NEXT_UP"] = ModelDb.Card<Anoint>().Id!,
-        ["ALCHEMIST-FRESH_COAT"] = ModelDb.Card<Alembic>().Id!,
+        ["ALCHEMIST-FRESH_COAT"] = ModelDb.Card<Untended>().Id!,
         ["ALCHEMIST-ELIXIR"] = ModelDb.Card<Panacea>().Id!,
         ["ALCHEMIST-ANTIDOTE"] = ModelDb.Card<Dose>().Id!,
         ["ALCHEMIST-DEEP_CUT"] = ModelDb.Card<Bonk>().Id!,
@@ -54,6 +53,10 @@ public static class SaveRenamePatches
         ["ALCHEMIST-CONGEAL"] = ModelDb.Card<Proof>().Id!,
         ["ALCHEMIST-STIR"] = ModelDb.Card<FreshBatch>().Id!,
         ["ALCHEMIST-ICHOR"] = ModelDb.Card<Wallop>().Id!,
+        ["ALCHEMIST-ALEMBIC"] = ModelDb.Card<Untended>().Id!,
+        ["ALCHEMIST-SPEW"] = ModelDb.Card<Overspill>().Id!,
+        ["ALCHEMIST-TOLERANCE"] = ModelDb.Card<WarmUp>().Id!,
+        ["ALCHEMIST-CONDENSE"] = ModelDb.Card<Twist>().Id!,
     };
 
     public static void Prefix(ref ModelId id)

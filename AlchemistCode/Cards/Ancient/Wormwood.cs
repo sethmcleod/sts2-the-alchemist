@@ -16,7 +16,8 @@ public class Wormwood : AlchemistCard
 
     public Wormwood() : base(0, CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies)
     {
-        WithVar("Hits", 2, 1);
+        WithDamage(4, 2);
+        WithVar("Hits", 2, 0);
         WithTip(typeof(PoisonPower));
     }
 
@@ -27,12 +28,13 @@ public class Wormwood : AlchemistCard
 
     protected override bool ConditionalGlow => Fuel > 0;
 
-    protected override int? RawFormulaDamagePreview => Fuel > 0 ? Fuel * Hits : null;
+    protected override int? RawFormulaDamagePreview =>
+        Fuel > 0 ? (DynamicVars.Damage.IntValue + Fuel) * Hits : null;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (CombatState == null || Fuel <= 0) return;
-        await DamageCmd.Attack(Fuel)
+        if (CombatState == null) return;
+        await DamageCmd.Attack(DynamicVars.Damage.IntValue + Fuel)
             .Unpowered()
             .WithHitCount(Hits)
             .WithHitFx(HitVfx("vfx/vfx_sandy_impact"))

@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byvwrwd7hwgay"
-path="res://.godot/imported/tolerance.png-1475a345661b75a071276b33feb4538c.ctex"
+uid="uid://dnjjaoq6om7lw"
+path="res://.godot/imported/untended_power.png-d9a40b2a03fc00943113b943c6f0bb26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/tolerance.png"
-dest_files=["res://.godot/imported/tolerance.png-1475a345661b75a071276b33feb4538c.ctex"]
+source_file="res://Alchemist/images/powers/big/untended_power.png"
+dest_files=["res://.godot/imported/untended_power.png-d9a40b2a03fc00943113b943c6f0bb26.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

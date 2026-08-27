@@ -1,4 +1,3 @@
-using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -10,10 +9,9 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Poison)]
 public class BitterDraught : AlchemistCard
 {
-    public BitterDraught() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public BitterDraught() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
-        WithEnergy(3, 0);
+        WithEnergy(2, 1);
         WithPower<PoisonPower>(2, 0);
         WithKeyword(CardKeyword.Exhaust);
     }
@@ -22,6 +20,5 @@ public class BitterDraught : AlchemistCard
     {
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
         await CommonActions.ApplySelf<PoisonPower>(choiceContext, this);
-        await PoisonTrigger.Once(choiceContext, Owner.Creature);
     }
 }

@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "รีเซ็ตการปลดล็อก",
   "ALCHEMIST-REVEAL_TIMELINE.title": "ปลดล็อกศักราชในเส้นเวลาของนักเล่นแร่แปรธาตุทั้งหมด",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "ปลดล็อกศักราช",
+  "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "แสดงความเสียหายที่พิษของคุณจะสร้างในเทิร์นถัดไปเป็นตัวเลขสีเขียวข้างแถบสารต้านพิษ จะแสดงเมื่อพิษมากกว่าสารต้านพิษของคุณเท่านั้น",
+  "ALCHEMIST-SHOW_POISON_FORECAST.title": "แสดงความเสียหายจากพิษที่จะเกิดขึ้น",
   "ALCHEMIST-TIMELINE.title": "เส้นเวลา",
   "ALCHEMIST-UNLOCKS.title": "การปลดล็อก",
   "ALCHEMIST-UNLOCK_ALL.title": "ปลดล็อกการ์ด, เครื่องราง, ขวดยา, และศักราชของนักเล่นแร่แปรธาตุทั้งหมด",

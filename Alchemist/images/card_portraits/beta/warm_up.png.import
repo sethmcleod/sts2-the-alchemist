@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4fcxfvvd5oo1"
-path="res://.godot/imported/condense.png-389705a58a444ad4985b0ff1b510d011.ctex"
+uid="uid://byvwrwd7hwgay"
+path="res://.godot/imported/warm_up.png-10cffd869681c07b45ba8c9aace00445.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/condense.png"
-dest_files=["res://.godot/imported/condense.png-389705a58a444ad4985b0ff1b510d011.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/warm_up.png"
+dest_files=["res://.godot/imported/warm_up.png-10cffd869681c07b45ba8c9aace00445.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=false
-compress/lossy_quality=0.7
+compress/high_quality=true
+compress/lossy_quality=1.0
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

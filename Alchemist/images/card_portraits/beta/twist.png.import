@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnjjaoq6om7lw"
-path="res://.godot/imported/alembic_power.png-0b8cd66d4a4a7ddef525fb97ce3d166b.ctex"
+uid="uid://b4fcxfvvd5oo1"
+path="res://.godot/imported/twist.png-c096dc2559834998c428f5dcda01a321.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/alembic_power.png"
-dest_files=["res://.godot/imported/alembic_power.png-0b8cd66d4a4a7ddef525fb97ce3d166b.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/twist.png"
+dest_files=["res://.godot/imported/twist.png-c096dc2559834998c428f5dcda01a321.ctex"]
 
 [params]
 

@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Azzera gli sblocchi",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Sblocca tutte le Epoche dell'Alchimista nella Cronologia",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Sblocca le Epoche",
+  "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Mostra il danno che il tuo Veleno infliggerà il prossimo turno come numero verde accanto alla barra dell'Antitossina. Appare solo quando il Veleno supera la tua Antitossina.",
+  "ALCHEMIST-SHOW_POISON_FORECAST.title": "Mostra previsione del danno da Veleno",
   "ALCHEMIST-TIMELINE.title": "Cronologia",
   "ALCHEMIST-UNLOCKS.title": "Sblocchi",
   "ALCHEMIST-UNLOCK_ALL.title": "Sblocca tutte le carte, reliquie, pozioni ed Epoche dell'Alchimista",

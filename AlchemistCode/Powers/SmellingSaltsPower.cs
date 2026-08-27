@@ -19,14 +19,15 @@ public class SmellingSaltsPower : AlchemistPower
             HoverTipFactory.FromPower<AntitoxinPower>(),
         };
 
-    // Late, not AfterSideTurnStart: Poison ticks in AfterSideTurnStart, and this has to read the result
-    // of that tick rather than race it
+    public const int DoseThreshold = 3;
+
+    // Late, not AfterSideTurnStart: Poison ticks in AfterSideTurnStart, and the threshold has to
+    // read the stack after the tick, not race it
     public override async Task AfterSideTurnStartLate(CombatSide side, IReadOnlyList<Creature> participants,
         ICombatState combatState)
     {
         if (!participants.Contains(Owner)) return;
-        // Pays when the dose gets through, so the card rewards running hotter than your capacity
-        if (!AntitoxinRules.BledThisTurn(Owner)) return;
+        if (Owner.GetPowerAmount<PoisonPower>() < DoseThreshold) return;
         Flash();
         await PlayerCmd.GainEnergy(Amount, Owner.Player!);
     }

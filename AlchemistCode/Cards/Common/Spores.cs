@@ -26,9 +26,8 @@ public class Spores : AlchemistCard
             await PowerCmd.Apply<PoisonPower>(choiceContext, target,
                 DynamicVars["Poison"].IntValue, Owner.Creature, this);
         }
-        if (CombatState is not { } combat) return;
-        var copy = combat.CloneCard(this);
-        var added = await CardPileCmd.Add(copy, PileType.Discard, CardPilePosition.Bottom);
-        CardCmd.PreviewCardPileAdd([added]);
+        if (CombatState == null) return;
+        var copy = CreateClone();
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Discard, Owner));
     }
 }

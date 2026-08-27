@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Restablecer desbloqueos",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Desbloquear todas las eras de la Cronología de El Alquimista",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Desbloquear eras",
+  "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Muestra el daño que tu veneno hará el próximo turno como un número verde junto a la barra de antitoxina. Solo aparece cuando el veneno supera tu antitoxina.",
+  "ALCHEMIST-SHOW_POISON_FORECAST.title": "Mostrar previsión de daño de veneno",
   "ALCHEMIST-TIMELINE.title": "Cronología",
   "ALCHEMIST-UNLOCKS.title": "Desbloqueos",
   "ALCHEMIST-UNLOCK_ALL.title": "Desbloquear todas las cartas, reliquias, pociones y eras de El Alquimista",

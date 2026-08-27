@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfy8yrmqpxrm5"
-path="res://.godot/imported/alembic.png-9d2fcf7a2e753ff92a71cb3fbcd9e790.ctex"
+uid="uid://dit62fqw8npm7"
+path="res://.godot/imported/overspill.png-1a2e6e02f0243ebc96f981f8117c45e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/alembic.png"
-dest_files=["res://.godot/imported/alembic.png-9d2fcf7a2e753ff92a71cb3fbcd9e790.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/overspill.png"
+dest_files=["res://.godot/imported/overspill.png-1a2e6e02f0243ebc96f981f8117c45e6.ctex"]
 
 [params]
 

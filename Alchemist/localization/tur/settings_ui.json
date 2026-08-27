@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Kilitleri Sıfırla",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Tüm Simyacı Zaman Çizelgesi Çağlarını Aç",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Çağları Aç",
+  "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Zehir'in gelecek turda vereceği hasarı Antitoksin barının yanında yeşil bir sayı olarak gösterir. Yalnızca Zehir, Antitoksin'i aştığında görünür.",
+  "ALCHEMIST-SHOW_POISON_FORECAST.title": "Zehir Hasarı Tahminini Göster",
   "ALCHEMIST-TIMELINE.title": "Zaman Çizelgesi",
   "ALCHEMIST-UNLOCKS.title": "Kilit Açma",
   "ALCHEMIST-UNLOCK_ALL.title": "Tüm Simyacı Kartlarını, Kalıntılarını, İksirlerini ve Çağlarını Aç",

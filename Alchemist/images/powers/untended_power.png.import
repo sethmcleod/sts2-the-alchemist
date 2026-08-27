@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dit62fqw8npm7"
-path="res://.godot/imported/spew.png-a149afa955768e2038728bfa1d527f4d.ctex"
+uid="uid://b4fwohxy3i54a"
+path="res://.godot/imported/untended_power.png-1a23a7d69e456764c43a12a61ac462fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/spew.png"
-dest_files=["res://.godot/imported/spew.png-a149afa955768e2038728bfa1d527f4d.ctex"]
+source_file="res://Alchemist/images/powers/untended_power.png"
+dest_files=["res://.godot/imported/untended_power.png-1a23a7d69e456764c43a12a61ac462fb.ctex"]
 
 [params]
 

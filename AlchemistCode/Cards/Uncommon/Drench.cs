@@ -10,26 +10,28 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Poison)]
 public class Drench : AlchemistCard
 {
+    private const int Hits = 3;
+
+    protected internal override bool PlaysCastAnimation => false;
+
     public Drench() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(13, 4);
-        WithVar("Poison", 2, 1);
-        WithVar("SelfPoison", 1, 0);
+        WithDamage(4, 2);
+        WithVar("Poison", 1, 0);
         WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"),
-            tmpSfx: "heavy_attack.mp3").WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
-            .Execute(choiceContext);
-        if (play.Target is { IsAlive: true } target)
+        for (var i = 0; i < Hits; i++)
         {
+            if (play.Target is not { IsAlive: true }) return;
+            await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact"))
+                .Execute(choiceContext);
+            if (play.Target is not { IsAlive: true } target) return;
             PoisonSplash(target);
             await PowerCmd.Apply<PoisonPower>(choiceContext, target,
                 DynamicVars["Poison"].IntValue, Owner.Creature, this);
         }
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
-            DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
     }
 }

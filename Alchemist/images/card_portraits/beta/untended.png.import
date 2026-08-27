@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d13p6x3p4ui75"
-path="res://.godot/imported/tolerance_power.png-15e5b5241ae2839c9da1e07fcf21fa96.ctex"
+uid="uid://cfy8yrmqpxrm5"
+path="res://.godot/imported/untended.png-c360800fa2a176d3bd055c055004fcfb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/tolerance_power.png"
-dest_files=["res://.godot/imported/tolerance_power.png-15e5b5241ae2839c9da1e07fcf21fa96.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/untended.png"
+dest_files=["res://.godot/imported/untended.png-c360800fa2a176d3bd055c055004fcfb.ctex"]
 
 [params]
 

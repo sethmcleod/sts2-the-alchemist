@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Freischaltungen zurücksetzen",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Alle Zeitstrahl-Epochen des Alchemisten freischalten",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Epochen freischalten",
+  "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Zeigt den Schaden, den dein Gift im nächsten Zug zufügt, als grüne Zahl neben dem Antitoxin-Balken. Erscheint nur, wenn das Gift dein Antitoxin übersteigt.",
+  "ALCHEMIST-SHOW_POISON_FORECAST.title": "Gift-Schadensvorschau anzeigen",
   "ALCHEMIST-TIMELINE.title": "Zeitstrahl",
   "ALCHEMIST-UNLOCKS.title": "Freischaltungen",
   "ALCHEMIST-UNLOCK_ALL.title": "Alle Karten, Relikte, Tränke und Epochen des Alchemisten freischalten",

@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Réinitialiser",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Débloquer toutes les Ères de l'Alchimiste dans la Frise temporelle",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Débloquer les Ères",
+  "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Affiche les dégâts que votre Poison infligera au prochain tour sous forme de nombre vert à côté de la barre d'Antitoxine. N'apparaît que lorsque le Poison dépasse votre Antitoxine.",
+  "ALCHEMIST-SHOW_POISON_FORECAST.title": "Afficher les dégâts de Poison à venir",
   "ALCHEMIST-TIMELINE.title": "Frise temporelle",
   "ALCHEMIST-UNLOCKS.title": "Déblocages",
   "ALCHEMIST-UNLOCK_ALL.title": "Débloquer toutes les cartes, reliques, potions et Ères de l'Alchimiste",

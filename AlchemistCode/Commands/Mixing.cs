@@ -69,12 +69,13 @@ public static class Mixing
         }, 1);
 
     /// <summary>Add a random Mix to the owner's hand. Seeded, so multiplayer stays in sync.</summary>
-    public static async Task CreateRandom(PlayerChoiceContext ctx, Player owner)
+    public static async Task CreateRandom(PlayerChoiceContext ctx, Player owner, bool upgraded = false)
     {
         if (owner.Creature.CombatState is not { } combat) return;
         var options = Options(combat, owner);
         var picked = owner.RunState.Rng.CombatCardGeneration.NextItem(options);
         if (picked == null) return;
+        if (upgraded) CardCmd.Upgrade(picked);
         RecordCreated(owner, picked);
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
     }
@@ -131,6 +132,29 @@ public static class Mixing
     {
         var picked = await Choose(ctx, owner);
         if (picked == null) return null;
+        await CardCmd.Transform(victim, picked);
+        return picked;
+    }
+
+    /// <summary>Add one specific Mix to the owner's hand. Returns it, or null outside combat.</summary>
+    public static async Task<CardModel?> CreateOne<T>(PlayerChoiceContext ctx, Player owner)
+        where T : CardModel
+    {
+        if (owner.Creature.CombatState is not { } combat) return null;
+        var mix = combat.CreateCard<T>(owner);
+        RecordCreated(owner, mix);
+        await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, owner);
+        return mix;
+    }
+
+    /// <summary>Transform an existing card into a random Mix. Seeded, so multiplayer stays in sync.</summary>
+    public static async Task<CardModel?> TransformIntoRandom(PlayerChoiceContext ctx, Player owner,
+        CardModel victim)
+    {
+        if (owner.Creature.CombatState is not { } combat) return null;
+        var picked = owner.RunState.Rng.CombatCardGeneration.NextItem(Options(combat, owner));
+        if (picked == null) return null;
+        RecordCreated(owner, picked);
         await CardCmd.Transform(victim, picked);
         return picked;
     }

@@ -45,8 +45,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (IsFermentCard)
         {
             yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
-            // The keyword names Residue as the byproduct, so show what one actually does
-            yield return HoverTipFactory.FromCard<Token.Residue>();
         }
     }
 
@@ -179,32 +177,36 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     protected virtual string FermentTotalText => "";
 
+    private bool FermentsThisTurn
+    {
+        get
+        {
+            if (Owner is not { } player) return false;
+            if (PileType.Hand.GetPile(player).Cards.Contains(this)) return true;
+            if (!player.Creature.HasPower<UntendedPower>()) return false;
+            return PileType.Draw.GetPile(player).Cards.Contains(this)
+                   || PileType.Discard.GetPile(player).Cards.Contains(this);
+        }
+    }
+
     // VeryEarly, not the plain hook: RegenPower heals and decrements in BeforeSideTurnEndEarly, so a
     // Ferment tick has to land ahead of both
     public override async Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
         if (IsFermentCard && Owner != null && participants.Contains(Owner.Creature)
-            && PileType.Hand.GetPile(Owner).Cards.Contains(this))
+            && FermentsThisTurn)
             await AdvanceFerment(1);
     }
 
-    // The dregs land in the Discard rather than the Hand, so they cannot bite on the turn you cash in.
-    // The card itself follows: a Ferment card is reusable, and the Residue is the whole cost of the play
-    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card != this) return;
+        if (cardPlay.Card != this) return Task.CompletedTask;
         // Replay plays the card again with the same CardPlay series, so the stack holds until the
         // last play of the series or the replayed hits read a fermentation of zero
-        if (!cardPlay.IsLastInSeries) return;
+        if (!cardPlay.IsLastInSeries) return Task.CompletedTask;
         _fermentTurns = 0;
-        if (!IsFermentCard || Owner == null || CombatState is not { } combat) return;
-
-        // Previewed, because the card leaving play and the Residue appearing in the Discard are two
-        // separate events the player never sees happen
-        var dregs = combat.CreateCard<Token.Residue>(Owner);
-        var added = await CardPileCmd.Add(dregs, PileType.Discard, CardPilePosition.Bottom);
-        CardCmd.PreviewCardPileAdd([added]);
+        return Task.CompletedTask;
     }
 
     // Covers the cards that were never played. Deck cards are the same instances each combat and all of

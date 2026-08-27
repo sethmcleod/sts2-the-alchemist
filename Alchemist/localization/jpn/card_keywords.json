@@ -1,8 +1,8 @@
 {
-  "ALCHEMIST-FERMENT.description": "このカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。プレイすると[gold]残滓[/gold]を1枚[gold]捨て札[/gold]に加える。",
+  "ALCHEMIST-FERMENT.description": "このカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。プレイするとその発酵はリセットされる。",
   "ALCHEMIST-FERMENT.selectionPrompt": "[gold]発酵[/gold]させるカードを1枚選択。",
   "ALCHEMIST-FERMENT.title": "発酵",
-  "ALCHEMIST-FERMENT_REF.description": "これらのカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。プレイすると[gold]残滓[/gold]を1枚[gold]捨て札[/gold]に加える。",
+  "ALCHEMIST-FERMENT_REF.description": "これらのカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。プレイするとその発酵はリセットされる。",
   "ALCHEMIST-FERMENT_REF.title": "発酵",
   "ALCHEMIST-INFUSE.description": "戦闘終了時までカードに[gold]エンチャント[/gold]する。アタックは[purple]毒仕込み[/purple]、スキルは[purple]投薬[/purple]、パワーは[purple]強化[/purple]になる。それ以外のカードは[gold]エセリアル[/gold]を得る。",
   "ALCHEMIST-INFUSE.selectionPrompt": "[gold]注入[/gold]するカードを[blue]{Amount}[/blue]枚選択。",
