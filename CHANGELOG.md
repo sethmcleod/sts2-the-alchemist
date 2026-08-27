@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.13.3] - 2026-08-27
+
 ### Added
 
 - Added Overspill card (2 energy): "Deal 8 (10) damage to ALL enemies. Add a random Mix into your Hand." Upgraded, the Mix is a Mix+. It replaces Spew
