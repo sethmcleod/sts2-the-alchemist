@@ -22,6 +22,9 @@ mod).
 - Reworked Quench: "Gain 4 (5) Antitoxin. Gain Block equal to twice your Antitoxin. Exhaust." (2 -> 1 energy)
 - Reworked Vitrify: "Gain 3 (4) Block twice. Gain 2 (3) Antitoxin."
 
+### Fixed
+
+- Fixed Spores not triggering Runoff and other card creation effects when it copies itself
 
 ### Removed
 
