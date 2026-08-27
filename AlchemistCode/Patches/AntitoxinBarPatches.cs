@@ -30,9 +30,28 @@ public static class AntitoxinBarPatches
 
     private static readonly Color TextColor = new("efe6ff");
     private static readonly Color TextOutline = new("2e0f52");
-    // The same pair the health bar uses when Poison is lethal, reused for "this tick empties the bar"
+    // The same pair the health bar uses when Poison is lethal, reused for "the next tick costs HP"
     private static readonly Color DrainedColor = new("76FF40");
     private static readonly Color DrainedOutline = new("074700");
+    // Matches Minty Spire's incoming-damage label: same font, gap, box, and size slider when installed
+    private const float ForecastPad = 6f;
+    private const float ForecastWidth = 20f;
+    private const int ForecastFallbackSize = 14;
+
+    private static System.Reflection.PropertyInfo? _mintySize;
+    private static bool _mintyLooked;
+
+    private static int ForecastFontSize()
+    {
+        if (!_mintyLooked)
+        {
+            _mintyLooked = true;
+            _mintySize = AccessTools.TypeByName("MintySpire2.MintySpire2Code.Config")
+                ?.GetProperty("IncomingDamageSize");
+        }
+        return _mintySize?.GetValue(null) is int size ? size : ForecastFallbackSize;
+    }
+    private static readonly Color PulseBright = new(1.35f, 1.35f, 1.35f);
     // A plain empty bar is quiet, not a warning
     private static readonly Color EmptyColor = new("b9b3c4");
     private static readonly Color EmptyOutline = new("2a2433");
@@ -43,8 +62,10 @@ public static class AntitoxinBarPatches
         public Control Foreground = null!;
         public NinePatchRect? Incoming;
         public Label Text = null!;
+        public Label? Forecast;
         public int LastKnown;
         public Tween? FadeTween;
+        public Tween? PulseTween;
     }
 
     private static readonly ConditionalWeakTable<NHealthBar, Parts> Bars = new();
@@ -103,9 +124,25 @@ public static class AntitoxinBarPatches
             var incoming = clone.GetNodeOrNull<NinePatchRect>("HpForegroundContainer/Mask/PoisonForeground");
             if (incoming != null) incoming.Visible = false;
 
+            // The HP the next Poison tick will cost, beside the bar the way Minty Spire draws
+            // incoming attack damage beside the HP bar
+            var forecast = new Label
+            {
+                Name = "PoisonForecastLabel",
+                Visible = false,
+                Text = "",
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Center,
+                MouseFilter = Control.MouseFilterEnum.Ignore,
+            };
+            if (ResourceLoader.Load<Font>("res://fonts/kreon_bold.ttf") is { } forecastFont)
+                forecast.AddThemeFontOverride("font", forecastFont);
+            forecast.AddThemeColorOverride("font_color", DrainedColor);
+            clone.AddChild(forecast);
+
             Bars.Add(__instance, new Parts
             {
-                Root = clone, Foreground = fg, Text = label, Incoming = incoming,
+                Root = clone, Foreground = fg, Text = label, Incoming = incoming, Forecast = forecast,
             });
         }
     }
@@ -155,6 +192,14 @@ public static class AntitoxinBarPatches
         if (PowerOriginRef(powers) is { } origin) PowerOriginRef(powers) = origin + offset;
     }
 
+    private static void StopPulse(Parts parts)
+    {
+        parts.PulseTween?.Kill();
+        parts.PulseTween = null;
+        if (parts.Incoming is { } green && GodotObject.IsInstanceValid(green))
+            green.Modulate = Colors.White;
+    }
+
     [HarmonyPatch(typeof(NHealthBar), nameof(NHealthBar.RefreshValues))]
     public static class Refresh
     {
@@ -163,7 +208,7 @@ public static class AntitoxinBarPatches
             if (!Bars.TryGetValue(__instance, out var parts)) return;
             if (!GodotObject.IsInstanceValid(parts.Root)) return;
             var creature = CreatureRef(__instance);
-            if (!Shows(creature)) { parts.Root.Visible = false; return; }
+            if (!Shows(creature)) { parts.Root.Visible = false; StopPulse(parts); return; }
 
             // Combat teardown removes every power, so the live amount drops to 0 while the end of
             // combat is still on screen. Hold the last in-combat value instead of blanking the bar
@@ -204,6 +249,14 @@ public static class AntitoxinBarPatches
                     m.A = hpLabel.Modulate.A;
                     parts.Text.Modulate = m;
                 }
+                // The forecast number follows the same visibility the panel picked for the digits
+                if (!fading && parts.Forecast is { } fcl && GodotObject.IsInstanceValid(fcl)
+                    && !Mathf.IsEqualApprox(fcl.Modulate.A, hpLabel.Modulate.A))
+                {
+                    var m2 = fcl.Modulate;
+                    m2.A = hpLabel.Modulate.A;
+                    fcl.Modulate = m2;
+                }
             }
 
             parts.Root.Visible = true;
@@ -218,15 +271,19 @@ public static class AntitoxinBarPatches
             // green overlay is the forecast: the slice of that capacity the next tick will need.
             // Amount, not CalculateTotalDamageNextTurn, because that already runs through Antitoxin's
             // own reduction and so reports only what gets past it
-            var incoming = creature.GetPower<PoisonPower>()?.Amount ?? 0;
+            var poison = creature.GetPower<PoisonPower>();
+            var incoming = poison?.Amount ?? 0;
             var forecast = Mathf.Min(current, incoming);
             var freeRatio = current > 0 ? Mathf.Clamp((float)(current - forecast) / current, 0f, 1f) : 0f;
+
+            // Unlike the slice above, the forecast number wants the post-Absorb total, Accelerant included
+            var damageNext = inCombat && poison != null ? poison.CalculateTotalDamageNextTurn() : 0;
 
             // A NinePatchRect cannot render narrower than its own patch margins, so a foreground
             // shrunk to zero still leaves a purple stub. Hide it outright when the forecast covers all
             var covered = current == 0 || forecast >= current;
-            // Green warns that the dose has reached the end of the capacity
-            var warning = current > 0 && incoming >= current;
+            // Green warns of actual HP loss; a dose that exactly matches the capacity stays quiet
+            var warning = current > 0 && damageNext > 0;
             parts.Foreground.Visible = current > 0 && !covered;
             parts.Foreground.SelfModulate = AlchemistModConfig.AntitoxinBarColor;
             parts.Foreground.OffsetRight = full * freeRatio - full;
@@ -248,6 +305,42 @@ public static class AntitoxinBarPatches
                     // Flush to the end of the bar: the forecast always fills the far side
                     green.OffsetRight = 0f;
                 }
+            }
+
+            if (parts.Forecast is { } number && GodotObject.IsInstanceValid(number))
+            {
+                var showForecast = damageNext > 0 && AlchemistModConfig.ShowPoisonForecast;
+                number.Visible = showForecast;
+                if (showForecast)
+                {
+                    var fontSize = ForecastFontSize();
+                    if (number.GetThemeFontSize("font_size") != fontSize)
+                        number.AddThemeFontSizeOverride("font_size", fontSize);
+                    var fontHeight = number.GetThemeFont("font")?.GetHeight(fontSize) ?? fontSize;
+                    number.Text = $"←{damageNext}";
+                    number.Size = new Vector2(ForecastWidth, fontHeight);
+                    number.Position = new Vector2(hp.Size.X + ForecastPad, (hp.Size.Y - fontHeight) / 2f);
+                }
+            }
+
+            // Torn down the moment the state clears, so a stale tween never strands the overlay bright
+            var overlayLive = parts.Incoming is { } o && GodotObject.IsInstanceValid(o) && o.Visible;
+            if (warning && overlayLive)
+            {
+                var running = parts.PulseTween is { } p && GodotObject.IsInstanceValid(p) && p.IsRunning();
+                if (!running)
+                {
+                    var target = parts.Incoming!;
+                    parts.PulseTween = target.CreateTween().SetLoops();
+                    parts.PulseTween.TweenProperty(target, "modulate", PulseBright, 0.7)
+                        .SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.InOut);
+                    parts.PulseTween.TweenProperty(target, "modulate", Colors.White, 0.7)
+                        .SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.InOut);
+                }
+            }
+            else
+            {
+                StopPulse(parts);
             }
             ShiftPowersOnce(__instance, hp.Size.Y);
         }
@@ -334,9 +427,12 @@ public static class AntitoxinBarPatches
         {
             if (!Bars.TryGetValue(__instance, out var parts) || !GodotObject.IsInstanceValid(parts.Text)) return;
             parts.FadeTween?.Kill();
-            parts.FadeTween = parts.Text.CreateTween();
+            parts.FadeTween = parts.Text.CreateTween().SetParallel();
             parts.FadeTween.TweenProperty(parts.Text, "modulate:a", finalAlpha, duration)
                 .SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
+            if (parts.Forecast is { } forecast && GodotObject.IsInstanceValid(forecast))
+                parts.FadeTween.TweenProperty(forecast, "modulate:a", finalAlpha, duration)
+                    .SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
         }
     }
 
@@ -347,8 +443,10 @@ public static class AntitoxinBarPatches
         {
             if (!Bars.TryGetValue(__instance, out var parts) || !GodotObject.IsInstanceValid(parts.Text)) return;
             parts.FadeTween?.Kill();
-            parts.FadeTween = parts.Text.CreateTween();
+            parts.FadeTween = parts.Text.CreateTween().SetParallel();
             parts.FadeTween.TweenProperty(parts.Text, "modulate:a", 1f, duration);
+            if (parts.Forecast is { } forecast && GodotObject.IsInstanceValid(forecast))
+                parts.FadeTween.TweenProperty(forecast, "modulate:a", 1f, duration);
         }
     }
 }

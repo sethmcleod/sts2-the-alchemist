@@ -3,6 +3,7 @@
   "ALCHEMIST-ANODYNE_POWER.smartDescription": "Cegah kejadian berikutnya kamu akan menerima kerusakan serangan tidak terblok. Dapatkan [blue]1[/blue] [gold]Racun[/gold] untuk setiap [blue]5[/blue] kerusakan yang dicegah.",
   "ALCHEMIST-ANODYNE_POWER.title": "Pereda Nyeri",
   "ALCHEMIST-ANTITOXIN_POWER.description": "Mencegah kerusakan setiap kali [gold]Racun[/gold] milikmu terpicu. Antitoksin tidak terpakai.",
+  "ALCHEMIST-ANTITOXIN_POWER.forecast": "[gold]Racun[/gold] milikmu sebanyak [blue]{Poison}[/blue] akan melakukan [blue]{Damage}[/blue] kerusakan.",
   "ALCHEMIST-ANTITOXIN_POWER.smartDescription": "Mencegah hingga [blue]{Amount}[/blue] kerusakan setiap kali [gold]Racun[/gold] milikmu terpicu. Antitoksin tidak terpakai.",
   "ALCHEMIST-ANTITOXIN_POWER.title": "Antitoksin",
   "ALCHEMIST-APOTHECARY_POWER.description": "Pada awal giliranmu, tambahkan sebuah [gold]Campuran[/gold] acak ke [gold]Tangan[/gold]mu.",

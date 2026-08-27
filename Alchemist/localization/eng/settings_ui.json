@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Reset Unlocks",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Unlock All Alchemist Timeline Epochs",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Unlock Epochs",
+  "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Shows the damage your Poison will deal next turn as a green number beside the Antitoxin bar. Only appears when Poison exceeds your Antitoxin.",
+  "ALCHEMIST-SHOW_POISON_FORECAST.title": "Show Poison Damage Forecast",
   "ALCHEMIST-TIMELINE.title": "Timeline",
   "ALCHEMIST-UNLOCKS.title": "Unlocks",
   "ALCHEMIST-UNLOCK_ALL.title": "Unlock All Alchemist Cards, Relics, Potions, and Epochs",

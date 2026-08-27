@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "重置解鎖",
   "ALCHEMIST-REVEAL_TIMELINE.title": "解鎖所有鍊金術士時間軸紀元",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "解鎖紀元",
+  "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "在抗毒素條旁以綠色數字顯示你的中毒下回合將造成的傷害。僅在中毒超過你的抗毒素時顯示。",
+  "ALCHEMIST-SHOW_POISON_FORECAST.title": "顯示中毒傷害預測",
   "ALCHEMIST-TIMELINE.title": "時間軸",
   "ALCHEMIST-UNLOCKS.title": "解鎖項目",
   "ALCHEMIST-UNLOCK_ALL.title": "解鎖所有鍊金術士的卡牌、遺物、藥水與紀元",

@@ -3,6 +3,7 @@
   "ALCHEMIST-ANODYNE_POWER.smartDescription": "Powstrzymaj następne niezablokowane obrażenia od ataku. Zyskaj [blue]1[/blue] pkt. [gold]Trucizny[/gold] za każde [blue]5[/blue] powstrzymane pkt. obrażeń.",
   "ALCHEMIST-ANODYNE_POWER.title": "Anodyna",
   "ALCHEMIST-ANTITOXIN_POWER.description": "Powstrzymuje obrażenia, kiedykolwiek twoja [gold]Trucizna[/gold] się aktywuje. Antytoksyna nie jest zużywana.",
+  "ALCHEMIST-ANTITOXIN_POWER.forecast": "Twoja [gold]Trucizna[/gold] [blue]{Poison}[/blue] zada ci [blue]{Damage}[/blue] pkt. obrażeń.",
   "ALCHEMIST-ANTITOXIN_POWER.smartDescription": "Powstrzymuje do [blue]{Amount}[/blue] pkt. obrażeń, kiedykolwiek twoja [gold]Trucizna[/gold] się aktywuje. Antytoksyna nie jest zużywana.",
   "ALCHEMIST-ANTITOXIN_POWER.title": "Antytoksyna",
   "ALCHEMIST-APOTHECARY_POWER.description": "Na początku tury dodaj losową [gold]Mieszankę[/gold] do [gold]ręki[/gold].",

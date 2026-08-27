@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Zresetuj odblokowania",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Odblokuj wszystkie Epoki Alchemika na Osi Czasu",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Odblokuj Epoki",
+  "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Pokazuje obrażenia, które twoja Trucizna zada w następnej turze, jako zieloną liczbę obok paska Antytoksyny. Pojawia się tylko wtedy, gdy Trucizna przekracza twoją Antytoksynę.",
+  "ALCHEMIST-SHOW_POISON_FORECAST.title": "Pokaż prognozę obrażeń od Trucizny",
   "ALCHEMIST-TIMELINE.title": "Oś Czasu",
   "ALCHEMIST-UNLOCKS.title": "Odblokowania",
   "ALCHEMIST-UNLOCK_ALL.title": "Odblokuj wszystkie karty, artefakty, mikstury i Epoki Alchemika",

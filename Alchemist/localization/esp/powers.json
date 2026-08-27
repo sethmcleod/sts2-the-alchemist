@@ -3,6 +3,7 @@
   "ALCHEMIST-ANODYNE_POWER.smartDescription": "Evitas la próxima vez que vayas a recibir daño de ataque sin bloquear. Obtienes [blue]1[/blue] de [gold]veneno[/gold] por cada [blue]5[/blue] de daño evitado.",
   "ALCHEMIST-ANODYNE_POWER.title": "Analgésico",
   "ALCHEMIST-ANTITOXIN_POWER.description": "Evita el daño cada vez que se activa tu [gold]veneno[/gold]. La antitoxina no se consume.",
+  "ALCHEMIST-ANTITOXIN_POWER.forecast": "Tu [gold]veneno[/gold] de [blue]{Poison}[/blue] te hará [blue]{Damage}[/blue] de daño.",
   "ALCHEMIST-ANTITOXIN_POWER.smartDescription": "Evita hasta [blue]{Amount}[/blue] de daño cada vez que se activa tu [gold]veneno[/gold]. La antitoxina no se consume.",
   "ALCHEMIST-ANTITOXIN_POWER.title": "Antitoxina",
   "ALCHEMIST-APOTHECARY_POWER.description": "Al comienzo de tu turno, agregas una [gold]Mezcla[/gold] al azar a tu [gold]mano[/gold].",

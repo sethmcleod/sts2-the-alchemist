@@ -3,6 +3,7 @@
   "ALCHEMIST-ANODYNE_POWER.smartDescription": "다음에 막히지 않은 공격 피해를 받는 것을 막아줍니다. 막은 피해 [blue]5[/blue]마다 [gold]중독[/gold]을 [blue]1[/blue] 얻습니다.",
   "ALCHEMIST-ANODYNE_POWER.title": "진통제",
   "ALCHEMIST-ANTITOXIN_POWER.description": "내 [gold]중독[/gold]이 발동할 때마다 피해를 막습니다. 항독소는 소모되지 않습니다.",
+  "ALCHEMIST-ANTITOXIN_POWER.forecast": "내 [blue]{Poison}[/blue] [gold]중독[/gold]으로 [blue]{Damage}[/blue] 피해를 받습니다.",
   "ALCHEMIST-ANTITOXIN_POWER.smartDescription": "내 [gold]중독[/gold]이 발동할 때마다 피해를 최대 [blue]{Amount}[/blue] 막습니다. 항독소는 소모되지 않습니다.",
   "ALCHEMIST-ANTITOXIN_POWER.title": "항독소",
   "ALCHEMIST-APOTHECARY_POWER.description": "내 턴 시작 시, 무작위 [gold]혼합액[/gold]을 [gold]손[/gold]에 추가합니다.",

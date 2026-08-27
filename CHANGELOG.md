@@ -21,6 +21,11 @@ mod).
 - Reworked Drench: "Deal 4 (6) damage 3 times. Each hit applies 1 Poison." It no longer gains you Poison
 - Reworked Quench: "Gain 4 (5) Antitoxin. Gain Block equal to twice your Antitoxin. Exhaust." (2 -> 1 energy)
 - Reworked Vitrify: "Gain 3 (4) Block twice. Gain 2 (3) Antitoxin."
+- Updated the Antitoxin bar to show how much damage your Poison will actually deal:
+  - Added a Show Poison Damage Forecast toggle to the mod's Accessibility settings
+  - Added a green damage number beside the bar when your Poison exceeds your Antitoxin
+  - The bar now pulses while your next Poison tick will cost HP, and its number only turns green in that case
+  - The Antitoxin tooltip now reads out the math, such as "Your 9 Poison will deal 6 damage."
 
 ### Fixed
 

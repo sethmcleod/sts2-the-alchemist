@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Reset",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Buka Semua Zaman Linimasa Alkemis",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Buka Zaman",
+  "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Menampilkan kerusakan yang akan dilakukan Racun kamu pada giliran berikutnya sebagai angka hijau di samping bilah Antitoksin. Hanya muncul saat Racun melebihi Antitoksin kamu.",
+  "ALCHEMIST-SHOW_POISON_FORECAST.title": "Tampilkan Perkiraan Kerusakan Racun",
   "ALCHEMIST-TIMELINE.title": "Linimasa",
   "ALCHEMIST-UNLOCKS.title": "Konten Terbuka",
   "ALCHEMIST-UNLOCK_ALL.title": "Buka Semua Kartu, Pusaka, Ramuan, dan Zaman Alkemis",

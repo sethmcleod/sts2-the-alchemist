@@ -3,6 +3,7 @@
   "ALCHEMIST-ANODYNE_POWER.smartDescription": "La prossima volta che subiresti danno non bloccato, lo previeni. Ottieni [blue]1[/blue] di [gold]Veleno[/gold] per ogni [blue]5[/blue] di danno prevenuto.",
   "ALCHEMIST-ANODYNE_POWER.title": "Laudano",
   "ALCHEMIST-ANTITOXIN_POWER.description": "Previene il danno ogni volta che il tuo [gold]Veleno[/gold] si attiva. L'Antitossina non si consuma.",
+  "ALCHEMIST-ANTITOXIN_POWER.forecast": "Il tuo [gold]Veleno[/gold] di [blue]{Poison}[/blue] ti infliggerà [blue]{Damage}[/blue] di danno.",
   "ALCHEMIST-ANTITOXIN_POWER.smartDescription": "Previene fino a [blue]{Amount}[/blue] di danno ogni volta che il tuo [gold]Veleno[/gold] si attiva. L'Antitossina non si consuma.",
   "ALCHEMIST-ANTITOXIN_POWER.title": "Antitossina",
   "ALCHEMIST-APOTHECARY_POWER.description": "All'inizio del tuo turno, aggiungi una [gold]Miscela[/gold] casuale alla tua [gold]mano[/gold].",

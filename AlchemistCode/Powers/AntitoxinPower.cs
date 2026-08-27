@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -32,7 +34,19 @@ public partial class AntitoxinPower : AlchemistPower
     public static IHoverTip TipFor(Creature creature)
     {
         var model = ModelDb.Power<AntitoxinPower>();
-        return new HoverTip(model, model.Description.GetFormattedText(), isSmart: false);
+        var text = model.Description.GetFormattedText();
+
+        // The preview runs through Absorb, so the damage shown is what actually lands
+        if ((CombatManager.Instance?.IsInProgress ?? false)
+            && creature.GetPower<PoisonPower>() is { Amount: > 0 } poison)
+        {
+            var line = new LocString("powers", "ALCHEMIST-ANTITOXIN_POWER.forecast");
+            line.Add("Poison", poison.Amount);
+            line.Add("Damage", poison.CalculateTotalDamageNextTurn());
+            text += "\n" + line.GetFormattedText();
+        }
+
+        return new HoverTip(model, text, isSmart: false);
     }
 
     private bool IsPoisonTick(Creature? target, decimal amount, ValueProp props, Creature? dealer,
