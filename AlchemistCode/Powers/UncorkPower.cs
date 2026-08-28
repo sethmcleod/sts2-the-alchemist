@@ -20,7 +20,8 @@ public class UncorkPower : AlchemistPower
         if (_pendingLevels == 0) return;
         var owed = _pendingLevels * (int)Amount;
         _pendingLevels = 0;
+        if (Owner.Player is not { } player) return;
         Flash();
-        await CardPileCmd.Draw(choiceContext, owed, Owner.Player);
+        await CardPileCmd.Draw(choiceContext, owed, player);
     }
 }

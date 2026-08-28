@@ -25,10 +25,12 @@ public class Wallop : AlchemistCard
                 .Execute(choiceContext);
             return;
         }
+        if (CombatState is not { } combat) return;
         var swung = false;
-        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
+        foreach (var enemy in combat.Enemies.Where(e => e.IsAlive).ToList())
         {
-            var attack = CommonActions.CardAttack(this, enemy, vfx: HitVfx("vfx/vfx_heavy_blunt"),
+            var attack = CommonActions.CardAttack(this, play, enemy, DynamicVars.Damage.BaseValue,
+                DynamicVars.Damage.Props, vfx: HitVfx("vfx/vfx_heavy_blunt"),
                 tmpSfx: "heavy_attack.mp3");
             // One swing animation covers the whole splash
             if (!swung) attack.WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay);
