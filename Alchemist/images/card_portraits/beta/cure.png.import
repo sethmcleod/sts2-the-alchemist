@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4gamvnc6a8a3"
-path="res://.godot/imported/smoke_out.png-c4cf816b0f22bc5d403e887cea680b3c.ctex"
+uid="uid://ccb5nf7bd5q7c"
+path="res://.godot/imported/cure.png-821530df6d6fd9bfeca56f64102a31a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/smoke_out.png"
-dest_files=["res://.godot/imported/smoke_out.png-c4cf816b0f22bc5d403e887cea680b3c.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/cure.png"
+dest_files=["res://.godot/imported/cure.png-821530df6d6fd9bfeca56f64102a31a2.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

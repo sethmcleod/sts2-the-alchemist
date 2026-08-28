@@ -1,4 +1,6 @@
 {
+  "ALCHEMIST-DECANT.description": "Bir kart yarattığında, bu kart nerede olursa olsun [gold]Dinlendirme[/gold] seviyesi artar. Tam seviyede oynandığında [gold]Dinlendirme[/gold] etkisi de tetiklenir ve seviye sıfırlanır.",
+  "ALCHEMIST-DECANT.title": "Dinlendirme",
   "ALCHEMIST-FERMENT.description": "Bu kart, [gold]El[/gold]'inde geçirdiği her tur güçlenir. Oynandığında mayalanması sıfırlanır.",
   "ALCHEMIST-FERMENT.selectionPrompt": "[gold]Mayalamak[/gold] için bir kart seç.",
   "ALCHEMIST-FERMENT.title": "Mayalan",

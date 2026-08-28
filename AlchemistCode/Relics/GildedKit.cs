@@ -1,5 +1,8 @@
+using System.Linq;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Potions;
+using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 
 namespace Alchemist.AlchemistCode.Relics;
@@ -11,13 +14,17 @@ public class GildedKit : KitRelic
 {
     private const int PotionSlots = 1;
 
-    protected override int Antitoxin => 3;
-    protected override int Dose => 3;
+    protected override int Antitoxin => 4;
+    protected override int Dose => 4;
 
     public override bool HasUponPickupEffect => true;
 
     public override async Task AfterObtained()
     {
         await PlayerCmd.GainMaxPotionCount(PotionSlots, Owner);
+        var rares = PotionFactory.GetPotionOptions(Owner)
+            .Where(p => p.Rarity == PotionRarity.Rare).ToList();
+        if (Owner.PlayerRng.Rewards.NextItem(rares) is not { } rare) return;
+        await PotionCmd.TryToProcure(rare.ToMutable(), Owner);
     }
 }

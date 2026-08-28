@@ -5,16 +5,19 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace Alchemist.AlchemistCode.Cards.Uncommon;
+namespace Alchemist.AlchemistCode.Cards.Rare;
 
 [CardTheme(CardTheme.Poison)]
 public class Vent : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Vent() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Vent() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        WithCalculatedVar("Poison", 0, 2, static (card, _) => Dose(card));
+        WithVar("Mult", 2, 1);
+        WithCalculatedVar("Poison", 0, 0, static (card, _) =>
+            Dose(card) * ((card as Vent)?.DynamicVars["Mult"].IntValue ?? 0));
+        WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
     }
 
@@ -26,6 +29,6 @@ public class Vent : AlchemistCard
         if (dose <= 0 || play.Target is not { IsAlive: true } target) return;
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, -dose, Owner.Creature, this);
         PoisonSplash(target);
-        await PowerCmd.Apply<PoisonPower>(choiceContext, target, dose * 2, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, target, dose * DynamicVars["Mult"].IntValue, Owner.Creature, this);
     }
 }

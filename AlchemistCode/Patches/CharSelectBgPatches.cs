@@ -100,11 +100,10 @@ class CharSelectBgPatches
             if (vis.IsEqualApprox(lastVis)) return;
             lastVis = vis;
 
-            // The 2026-08-23 export widened the solid square to skeleton x -2138..2044 and
-            // y -721..1032 (measured in-game, magenta underlay, 0.25x pose). 1552 stays as the
-            // height budget because it is what the approved 16:9 framing was tuned against;
-            // with the square this wide the height term binds up to ~2.7:1, so ultrawide keeps
-            // the 16:9 character size and simply shows more painting
+            // The painting's solid square spans skeleton x -2138..2044 and y -721..1032; 1552 is
+            // the height budget the 16:9 framing was tuned against. With the square this wide the
+            // height term binds up to ~2.7:1, so ultrawide keeps the 16:9 character size and
+            // simply shows more painting
             var scale = 1.03f * Mathf.Max(vis.Size.X / 4182f, vis.Size.Y / 1552f);
             var posY = vis.End.Y - 583f * scale;
             // Cover clamps: keep the envelope over both side edges, preferring the tuned bias

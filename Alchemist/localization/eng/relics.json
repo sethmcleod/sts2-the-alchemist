@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "The first card you draw each turn is [gold]Infused[/gold], or gain [blue]1[/blue] [gold]Antitoxin[/gold] if it is already enchanted.",
+  "ALCHEMIST-AURIC_SEAL.description": "Whenever you draw a [gold]Decant[/gold] card, its level increases by [blue]1[/blue].",
   "ALCHEMIST-AURIC_SEAL.flavor": "It has opinions about which page matters.",
   "ALCHEMIST-AURIC_SEAL.title": "Auric Seal",
   "ALCHEMIST-BITTERROOT.description": "At the start of each combat, heal [green]3[/green] HP and gain [blue]1[/blue] [gold]Poison[/gold].",
@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "Whenever you gain [gold]Poison[/gold], gain [blue]1[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-EXTRA_DOSE.flavor": "A measured dose, always within reach.",
   "ALCHEMIST-EXTRA_DOSE.title": "Extra Dose",
-  "ALCHEMIST-GILDED_KIT.description": "At the start of each combat, gain [blue]3[/blue] [gold]Poison[/gold] and [blue]3[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites. Upon pickup, gain [blue]1[/blue] potion slot.",
+  "ALCHEMIST-GILDED_KIT.description": "At the start of each combat, gain [blue]4[/blue] [gold]Poison[/gold] and [blue]4[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites. Upon pickup, gain [blue]1[/blue] potion slot and a random Rare [gold]Potion[/gold].",
   "ALCHEMIST-GILDED_KIT.flavor": "An ornate case. The gold is not for show.",
   "ALCHEMIST-GILDED_KIT.title": "Gilded Kit",
   "ALCHEMIST-MIDAS_FRUIT.description": "Upon pickup, add [blue]1[/blue] [gold]Unripe Fruit[/gold] to your [gold]Deck[/gold].",
@@ -25,5 +25,6 @@
   "ALCHEMIST-SECOND_SKIN.title": "Second Skin",
   "ALCHEMIST-WEATHERED_KIT.description": "At the start of each combat, gain [blue]2[/blue] [gold]Poison[/gold] and [blue]2[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "A well worn and pleasantly smelling case.",
-  "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit"
+  "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit",
+  "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "Swamp Glass"
 }

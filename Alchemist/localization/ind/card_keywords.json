@@ -1,4 +1,6 @@
 {
+  "ALCHEMIST-DECANT.description": "Tingkat [gold]Dekantasi[/gold] kartu ini bertambah setiap kali kamu membuat sebuah kartu, di mana pun kartu ini berada. Jika dimainkan pada tingkat penuh, efek [gold]Dekantasi[/gold]nya juga aktif dan tingkatnya diatur ulang.",
+  "ALCHEMIST-DECANT.title": "Dekantasi",
   "ALCHEMIST-FERMENT.description": "Kartu ini bertambah kuat untuk setiap giliran di [gold]Tanganmu[/gold]. Saat dimainkan, fermentasinya diatur ulang.",
   "ALCHEMIST-FERMENT.selectionPrompt": "Pilih sebuah kartu untuk [gold]Difermentasi[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentasi",

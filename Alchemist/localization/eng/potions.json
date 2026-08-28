@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-ALKAHEST.description": "If used in combat, [gold]Infuse[/gold] up to [blue]3[/blue] cards in your [gold]Hand[/gold]. Otherwise, upgrade a card in your [gold]Deck[/gold].",
+  "ALCHEMIST-ALKAHEST.description": "If used in combat, increase the [gold]Decant[/gold] level of your cards to full. Otherwise, upgrade a card in your [gold]Deck[/gold].",
   "ALCHEMIST-ALKAHEST.title": "Alkahest",
   "ALCHEMIST-ANODYNE.description": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]5[/blue] damage prevented.",
   "ALCHEMIST-ANODYNE.title": "Anodyne",

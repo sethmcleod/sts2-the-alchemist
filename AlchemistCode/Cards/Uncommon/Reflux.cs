@@ -11,7 +11,7 @@ public class Reflux : AlchemistCard
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
-    public Reflux() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Reflux() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
         WithCostUpgradeBy(-1);
         WithVar("poison", 2, 0);
@@ -20,7 +20,10 @@ public class Reflux : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<RefluxPower>(choiceContext, Owner.Creature,
+        // The power rides on the chosen ally, the same architecture as the base game's Concoct,
+        // so its Owner is the player whose debuff plays it watches
+        if (play.Target is not { IsAlive: true } ally || ally == Owner.Creature) return;
+        await PowerCmd.Apply<RefluxPower>(choiceContext, ally,
             DynamicVars["poison"].BaseValue, Owner.Creature, this);
     }
 }

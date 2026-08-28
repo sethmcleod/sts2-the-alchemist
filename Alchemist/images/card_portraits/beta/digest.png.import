@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3sp42iedp2ui"
-path="res://.godot/imported/siphon.png-57881fcec07a0e04b3e81f9eea885076.ctex"
+uid="uid://babm1mo6h60yw"
+path="res://.godot/imported/digest.png-76e25d77e023b7d2ed5d161af6348c1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/siphon.png"
-dest_files=["res://.godot/imported/siphon.png-57881fcec07a0e04b3e81f9eea885076.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/digest.png"
+dest_files=["res://.godot/imported/digest.png-76e25d77e023b7d2ed5d161af6348c1b.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

@@ -15,6 +15,8 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Commands;
 
+// Nothing grants Infuse any more. This class and the Laced/Dosed/Fortified enchantments stay
+// registered so a saved combat that still carries an infused card loads; delete them together.
 // Infuse enchants a card until the end of combat, but an enchantment is run-permanent by default. So this
 // class tracks the infused cards and Patches.InfusionCombatEndPatch clears them at combat end
 public static class Infusion

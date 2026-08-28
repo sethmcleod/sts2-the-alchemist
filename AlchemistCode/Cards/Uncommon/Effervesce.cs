@@ -14,10 +14,7 @@ public class Effervesce : AlchemistCard
 
     public Effervesce() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
-        WithCostUpgradeBy(-1);
-        WithTip(typeof(Token.BurstingMix));
-        WithTip(typeof(Token.SyrupyMix));
-        WithTip(typeof(Token.FumingMix));
+        WithTips(card => AlchemistTips.MixTrio(card.IsUpgraded));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -30,6 +27,7 @@ public class Effervesce : AlchemistCard
                      CombatState.CreateCard<FumingMix>(targetPlayer),
                  })
         {
+            if (IsUpgraded) CardCmd.Upgrade(mix);
             Mixing.RecordCreated(Owner, mix);
             await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, targetPlayer);
         }

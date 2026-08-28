@@ -7,6 +7,65 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added a new mechanic, Decant, which increases the level of certain cards whenever you create a card. Upon reaching max level, Decant cards gain bonus effects and the level gets reset when the card is played. Cards can decant in Draw and Discard piles.
+- Added Aged Batch card (1 energy, Uncommon): "Choose a Mix to add into your Hand. Decant 2 (1): Add a Mix+ instead." It replaces Corrode
+- Added Cure card (1 energy, Uncommon): "Gain 6 (9) Block. Decant 3 (2): Gain 3 Antitoxin and draw 1 card." It replaces Salve
+- Added Digest card (0 energy, Common): "Gain 1 (2) Antitoxin. You may Exhaust a Status or Curse card from your Hand. If you do, add a random Mix into your Hand." It replaces Smoke Out
+- Added Pelt card (1 energy, Common): "Deal 8 (10) damage. Decant 3 (2): Hits an additional time." It replaces Siphon
+- Added Uncork card (1 energy, Rare Power): "Whenever a card's Decant level is reset, draw 1 (2) cards." It replaces Vial in Reserve
+
+### Changed
+
+- Buffed Gilded Kit: start-of-combat Poison and Antitoxin 3 -> 4, and on pickup now fills the potion slot with a random rare Potion
+- Buffed Mercurial Form: the start-of-turn drip now also grants 1 Antitoxin, so an early pick pays its own toll while the Strength payoff still wants a Poison deck
+- Buffed Pass It On cost: 2 -> 1 energy
+- Changed Alkahest: the combat half now increases the Decant level of the target's cards to full instead of Infusing
+- Changed Blend's upgrade: Blend+ now transforms into a random Mix+, Block 8 -> 6
+- Changed Effervesce's upgrade: Effervesce+ now adds upgraded Mixes instead of costing 0
+- Changed Fresh Batch's upgrade: 1 (0) -> 1 energy, and the chosen Mix is a Mix+ instead. The 0-cost cycle was the strongest free cycler in the pool
+- Changed Grand Batch's upgrade: Grand Batch+ now adds one of each Mix+ instead of costing 0
+- Changed Mash's upgrade: Mash+ now adds a Bursting Mix+, damage 8 -> 6
+- Changed Overdose rarity: Rare -> Uncommon
+- Changed Pour Over playability: it can only be played with 2 or more Ferment cards in Hand
+- Changed Smelling Salts' upgrade: it gains Innate instead of more Energy (1 (2) -> a flat 1)
+- Changed Spit's hit effect: the slime impact shows only when Poison actually transfers, a plain slash otherwise
+- Changed Thicken's upgrade: Thicken+ now adds a Syrupy Mix+, Block 7 -> 5
+- Changed Twist's upgrade: Twist+ now adds a Zesty Mix+ instead of costing 0
+- Changed Vent into a finisher: rarity Uncommon -> Rare, gained Exhaust, and the multiplier upgrades (twice -> 2 (3) times your Poison)
+- Changed Vintage's upgrade: Vintage+ now gains 2 Energy and draws 2 cards instead of costing 0
+- Nerfed Bitter Draught: 2 -> 4 Poison gained, so the energy has a real price again
+- Nerfed Flare Up: the Poison payoff no longer draws a card, so it cannot chain into itself
+- Nerfed Syrupy Mix Block: 5 (8) -> 4 (6)
+- Nerfed Taste Test: cost 0 -> 1, it Triggers once at both ranks, Taste Test+ draws 2 cards instead of Triggering twice, and it draws only if a Ferment card actually Triggered
+- Renamed Anoint to Spike and reworked it into a Decant card: "Deal 9 (12) damage. Decant 4 (3): Apply 4 (6) Poison."
+- Reworked Auric Seal into a Decant relic: "Whenever you draw a Decant card, its level increases by 1."
+- Reworked Brace into a Ferment card: "Ferment (0). Gain 3 (5) Block, plus 2 for each turn fermented."
+- Reworked Pour Over into a Ferment card: "Retain. Ferment (0). Draw 1 (2) cards. Move ALL fermentation from this card to a Ferment card in your Hand." (0 -> 1 energy)
+- Reworked Reclaim: "Shuffle all Mixes in your Exhaust Pile into your Draw Pile. Exhaust."
+- Reworked Refine: "Increase the Decant level of your cards to full. Exhaust."
+- Reworked Reflux: "Choose another player. Whenever they play a card that applies a debuff this turn, they apply 2 Poison to that enemy." (1 (0) energy)
+- Reworked Sweat It Out: "Retain. Gain 4 (6) Poison. Apply Poison equal to your Poison to ALL enemies."
+- Reworked Transmute: "Transform a card in your Hand into a copy of another card in your Hand. Exhaust." (1 (0) energy)
+- Reworked Wallop: "Deal 12 (16) damage. Decant 5 (4): Deal this damage to ALL enemies instead."
+
+### Fixed
+
+- Changed the Alchemist's throwable potions not being able to target allies: Anodyne, Decoction, Marsh Tonic, Refined Extract, Sampler, Starter Culture, and Alkahest can now be thrown at allies in multiplayer combat, matching the base game's potions
+- Fixed Sea Glass showing a raw localization key as its title when it offers Alchemist cards
+- Fixed Spatter's discard prompt showing "Choose 999999999 cards" instead of "Choose any number of cards"
+- Fixed the Brew rest-site rewards being unreachable with a controller: the reward row could not take focus, so the only reachable button was Leave
+
+### Removed
+
+- Removed Corrode card, replaced with Aged Batch
+- Removed Salve card, replaced with Cure
+- Removed Siphon card, replaced with Pelt
+- Removed Smoke Out card, replaced with Digest
+- Removed the Infuse system: no card, relic, or potion Infuses any more
+- Removed Vial in Reserve card, replaced with Uncork
+
 ## [0.13.3] - 2026-08-27
 
 ### Added

@@ -46,6 +46,10 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         {
             yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
         }
+        if (IsDecantCard)
+        {
+            yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Decant);
+        }
     }
 
     // Tip text lives in static_hover_tips.json under {key}.title and {key}.description
@@ -64,7 +68,9 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state
     internal bool IsEnchanted => Enchantment != null;
 
-    protected virtual bool ConditionalGlow => false;
+    // Default: a full Decant level is a discrete met condition, so every Decant card glows for free.
+    // False for everything else; cards with their own condition override it
+    protected virtual bool ConditionalGlow => DecantFull;
 
     // The IsMutable gate makes every glow safe on canonical models, where reading Owner throws. No card
     // needs its own guard
@@ -154,6 +160,10 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // not fermenting: the turns were already paid to Mellow when they were first gained
     internal int DrainFerment() { var turns = _fermentTurns; _fermentTurns = 0; return turns; }
 
+    // Raw stored turns, without the Mother of Vinegar read-time floor: the floor follows whichever
+    // card reads it, so a pour that moved it would pay it twice on the receiver
+    internal bool HasStoredFerment => _fermentTurns > 0;
+
     internal void ReceiveFerment(int turns) { if (IsFermentCard) _fermentTurns += turns; }
 
     // Async because every turn of fermentation gained also pays the Mellow engine. Both the natural
@@ -164,6 +174,39 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         _fermentTurns += turns;
         if (Owner?.Creature.GetPower<MellowPower>() is { } mellow)
             await mellow.OnFermented(turns);
+    }
+
+    // Decant: the level rises as you create cards, wherever this card is, and resets each combat, the
+    // same combat-scoped lifecycle as fermentation (a mid-combat save-and-quit loses both). A Decant
+    // card declares Decants => true and a "DecantMax" var whose UPGRADE SHRINKS the threshold
+    private int _decantFill;
+
+    protected virtual bool Decants => false;
+
+    internal bool IsDecantCard => Decants;
+
+    internal int DecantMaxValue => IsDecantCard ? DynamicVars["DecantMax"].IntValue : 0;
+
+    internal bool DecantFull => IsDecantCard && IsMutable && _decantFill >= DecantMaxValue;
+
+    // Clamped at the threshold: an overfull level reads as banked progress the rules never pay
+    internal void AddDecant(int amount)
+    {
+        if (!IsDecantCard || amount <= 0) return;
+        _decantFill = Math.Min(_decantFill + amount, DecantMaxValue);
+    }
+
+    // The play consumes a FULL level only; a partial level is untouched, so the card is never a tax.
+    // A Replay series spends it once: the first play spends the level, the replays read it empty
+    protected bool TrySpendDecant()
+    {
+        if (!DecantFull) return false;
+        _decantFill = 0;
+        // Uncork pays its draw when the play that spent the level finishes
+        if (System.Linq.Enumerable.FirstOrDefault(
+                System.Linq.Enumerable.OfType<Powers.UncorkPower>(Owner.Creature.Powers)) is { } uncork)
+            uncork.NoteLevelSpent();
+        return true;
     }
 
     /// <summary>The base game reserves this for roughly 12 damage and up.</summary>
@@ -214,6 +257,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     public override Task BeforeCombatStart()
     {
         _fermentTurns = 0;
+        _decantFill = 0;
         return Task.CompletedTask;
     }
 
@@ -224,6 +268,12 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         {
             description.Add("FermentSuffix", $" ({_fermentTurns})");
             description.Add("FermentTotal", FermentTotalText);
+        }
+        if (IsDecantCard)
+        {
+            // Live fill only in combat; the compendium and reward previews show the bare threshold
+            description.Add("DecantSuffix",
+                IsMutable && CombatState != null ? $" ({_decantFill}/{DecantMaxValue})" : "");
         }
         // These previews read Owner, which throws on a canonical model such as the card library
         description.Add("FormulaDamage",

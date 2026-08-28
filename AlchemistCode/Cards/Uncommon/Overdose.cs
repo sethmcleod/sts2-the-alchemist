@@ -5,14 +5,14 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace Alchemist.AlchemistCode.Cards.Rare;
+namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 [CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
 public class Overdose : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Overdose() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public Overdose() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("SelfPoison", 5, 0);
         WithVar("antitoxin", 2, 1);

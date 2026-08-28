@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drfei036g1bu8"
-path="res://.godot/imported/anoint.png-7b6e05b28d885ed76da162ac1df1a1cd.ctex"
+uid="uid://bbhk0l8fyr332"
+path="res://.godot/imported/aged_batch.png-df8381cd746d9f8bf196361889563e82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/anoint.png"
-dest_files=["res://.godot/imported/anoint.png-7b6e05b28d885ed76da162ac1df1a1cd.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/aged_batch.png"
+dest_files=["res://.godot/imported/aged_batch.png-df8381cd746d9f8bf196361889563e82.ctex"]
 
 [params]
 

@@ -12,11 +12,12 @@ public class Decoction : AlchemistPotion, IBrewOnly
 
     public override PotionRarity Rarity => PotionRarity.Event;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
-    public override TargetType TargetType => TargetType.Self;
+    public override TargetType TargetType => TargetType.AnyPlayer;
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        foreach (var card in await CardPileCmd.Draw(choiceContext, Cards, Owner))
+        var player = target?.Player ?? Owner;
+        foreach (var card in await CardPileCmd.Draw(choiceContext, Cards, player))
             card.SetToFreeThisTurn();
     }
 }

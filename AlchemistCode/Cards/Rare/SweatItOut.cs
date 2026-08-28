@@ -7,26 +7,19 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-[CardTheme(CardTheme.Ferment, CardTheme.Poison)]
+[CardTheme(CardTheme.Poison)]
 public class SweatItOut : AlchemistCard
 {
-    protected override bool Ferments => true;
-
     public SweatItOut() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("SelfPoison", 2, 0);
-        WithVar("FermentPoison", 2, 1);
+        WithVar("SelfPoison", 4, 2);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }
 
-    private int FermentPoison =>
-        (int)DynamicVars["SelfPoison"].BaseValue
-        + DynamicVars["FermentPoison"].IntValue * FermentTurns;
-
     private int PoisonToApply =>
         IsMutable && CombatState != null
-            ? Owner.Creature.GetPowerAmount<PoisonPower>() + FermentPoison
+            ? Owner.Creature.GetPowerAmount<PoisonPower>() + DynamicVars["SelfPoison"].IntValue
             : 0;
 
     protected override void AddExtraArgsToDescription(LocString description)
@@ -39,7 +32,7 @@ public class SweatItOut : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
-            FermentPoison, Owner.Creature, this);
+            DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
         var poison = Owner.Creature.GetPowerAmount<PoisonPower>();
         if (poison <= 0) return;
         foreach (var enemy in CombatState!.Enemies.Where(e => e.IsAlive))

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgpgkrp0pkq7b"
-path="res://.godot/imported/vial_in_reserve.png-b47a6d3a6cfae7be033dff036023ee3c.ctex"
+uid="uid://c7sgcr70j6wbp"
+path="res://.godot/imported/pelt.png-46e55d1ccd0adcd77c2b8f233a88bc42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/vial_in_reserve.png"
-dest_files=["res://.godot/imported/vial_in_reserve.png-b47a6d3a6cfae7be033dff036023ee3c.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/pelt.png"
+dest_files=["res://.godot/imported/pelt.png-46e55d1ccd0adcd77c2b8f233a88bc42.ctex"]
 
 [params]
 

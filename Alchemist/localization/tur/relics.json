@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "Her tur çektiğin ilk kart [gold]Aşıla[/gold]nır; zaten büyülenmişse [blue]1[/blue] [gold]Antitoksin[/gold] verir.",
+  "ALCHEMIST-AURIC_SEAL.description": "Bir [gold]Dinlendirme[/gold] kartı çektiğinde o kartın seviyesi [blue]1[/blue] artar.",
   "ALCHEMIST-AURIC_SEAL.flavor": "Hangi sayfanın önemli olduğu hakkında fikirleri var.",
   "ALCHEMIST-AURIC_SEAL.title": "Altın Mühür",
   "ALCHEMIST-BITTERROOT.description": "Her savaşın başında [green]3[/green] CP iyileş ve [blue]1[/blue] [gold]Zehir[/gold] elde et.",
@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "Her [gold]Zehir[/gold] elde ettiğinde [blue]1[/blue] [gold]Antitoksin[/gold] elde et.",
   "ALCHEMIST-EXTRA_DOSE.flavor": "Ölçülü bir doz, her zaman elinin altında.",
   "ALCHEMIST-EXTRA_DOSE.title": "Ekstra Doz",
-  "ALCHEMIST-GILDED_KIT.description": "Her savaşın başında [blue]3[/blue] [gold]Zehir[/gold] ve [blue]3[/blue] [gold]Antitoksin[/gold] elde et. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin. Bu kalıntıyı aldığında [blue]1[/blue] iksir yuvası elde et.",
+  "ALCHEMIST-GILDED_KIT.description": "Her savaşın başında [blue]4[/blue] [gold]Zehir[/gold] ve [blue]4[/blue] [gold]Antitoksin[/gold] elde et. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin. Bu kalıntıyı aldığında [blue]1[/blue] iksir yuvası ve rastgele nadir bir [gold]İksir[/gold] elde et.",
   "ALCHEMIST-GILDED_KIT.flavor": "Süslü bir çanta. Altın gösteriş için değil.",
   "ALCHEMIST-GILDED_KIT.title": "Yaldızlı Çanta",
   "ALCHEMIST-MIDAS_FRUIT.description": "Bu kalıntıyı aldığında [gold]Deste[/gold]'ne [blue]1[/blue] [gold]Ham Meyve[/gold] ekle.",
@@ -25,5 +25,6 @@
   "ALCHEMIST-SECOND_SKIN.title": "İkinci Deri",
   "ALCHEMIST-WEATHERED_KIT.description": "Her savaşın başında [blue]2[/blue] [gold]Zehir[/gold] ve [blue]2[/blue] [gold]Antitoksin[/gold] elde et. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Yıpranmış ve mis kokulu bir çanta.",
-  "ALCHEMIST-WEATHERED_KIT.title": "Yıpranmış Çanta"
+  "ALCHEMIST-WEATHERED_KIT.title": "Yıpranmış Çanta",
+  "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "İksir Camı"
 }

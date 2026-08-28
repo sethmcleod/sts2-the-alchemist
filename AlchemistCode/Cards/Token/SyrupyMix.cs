@@ -13,7 +13,7 @@ public class SyrupyMix : AlchemistCard
 
     public SyrupyMix() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
-        WithBlock(5, 3);
+        WithBlock(4, 2);
         WithKeyword(CardKeyword.Exhaust);
     }
 

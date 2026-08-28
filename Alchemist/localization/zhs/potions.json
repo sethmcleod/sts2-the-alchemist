@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-ALKAHEST.description": "在战斗中使用时，[gold]注入[/gold]你[gold]手牌[/gold]中至多[blue]3[/blue]张牌。否则，升级你[gold]牌组[/gold]中的一张牌。",
+  "ALCHEMIST-ALKAHEST.description": "在战斗中使用时，将你的牌的[gold]醒酒[/gold]度提升至满。否则，升级你[gold]牌组[/gold]中的一张牌。",
   "ALCHEMIST-ALKAHEST.title": "万能溶剂",
   "ALCHEMIST-ANODYNE.description": "阻止你下一次将要受到的未被格挡的攻击伤害。每阻止[blue]5[/blue]点伤害，就获得[blue]1[/blue]层[gold]中毒[/gold]。",
   "ALCHEMIST-ANODYNE.title": "镇痛药剂",

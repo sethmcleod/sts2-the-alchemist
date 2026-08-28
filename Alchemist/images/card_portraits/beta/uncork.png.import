@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2covwd0bti7d"
-path="res://.godot/imported/vial_in_reserve_power.png-338cd5c512a5e84a4ae6a4145b31f50f.ctex"
+uid="uid://dphlbvtrkpbqj"
+path="res://.godot/imported/uncork.png-f6698c1f1230eaecb79739503a27be01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/vial_in_reserve_power.png"
-dest_files=["res://.godot/imported/vial_in_reserve_power.png-338cd5c512a5e84a4ae6a4145b31f50f.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/uncork.png"
+dest_files=["res://.godot/imported/uncork.png-f6698c1f1230eaecb79739503a27be01.ctex"]
 
 [params]
 

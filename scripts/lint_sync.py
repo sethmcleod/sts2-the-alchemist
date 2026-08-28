@@ -315,6 +315,38 @@ def check_card_themes(classes: dict[str, Path]) -> list[str]:
     return errors
 
 
+COMMENT_RE = re.compile(r"(?<!:)//(?!/)(.*)$")
+
+COMMENT_BANNED = [
+    ("a version number", re.compile(r"\bv?\d+\.\d+\.\d+\b")),
+    ("a date", re.compile(
+        r"\b20\d\d([-./]\d{1,2}){1,2}\b"
+        r"|\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* 20\d\d\b")),
+    ("process or history", re.compile(
+        r"\b(the user|user'?s?\b|playtest|feedback|communit|approved|decision|proposal"
+        r"|doctrine|rework|redesign|retired|shipped|changelog|wave \d)", re.I)),
+    ("an in-progress marker", re.compile(r"\b(TODO|FIXME|HACK|XXX)\b")),
+]
+
+
+def check_comment_hygiene() -> list[str]:
+    """A comment describes complex code, nothing else. Version numbers, dates, player or process
+    references, and TODO markers all narrate history rather than mechanism, and history belongs in
+    the changelog and the reports, not the source."""
+    errors = []
+    for path in sorted(CODE.rglob("*.cs")):
+        for n, line in enumerate(path.read_text().splitlines(), 1):
+            m = COMMENT_RE.search(line)
+            if not m:
+                continue
+            for label, pat in COMMENT_BANNED:
+                if pat.search(m.group(1)):
+                    rel = path.relative_to(REPO)
+                    errors.append(f"{rel}:{n}: the comment carries {label}; comments describe "
+                                  f"complex code only ({m.group(1).strip()[:60]!r})")
+    return errors
+
+
 def parse_number_pairs(desc: str) -> list[tuple[int, int]]:
     """Get the 'N (M)' upgrade pairs from a csv description cell or cost cell.
 
@@ -416,6 +448,9 @@ def main() -> int:
 
     # 7. every card class carries a [CardTheme] attribute (the analytics dashboard groups by it)
     errors += check_card_themes(classes)
+
+    # 8. comments describe complex code only: no versions, dates, or process references
+    errors += check_comment_hygiene()
 
     scene_errors, scene_warnings = check_game_scene_paths()
     errors += scene_errors

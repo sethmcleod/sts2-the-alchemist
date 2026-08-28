@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
@@ -17,11 +18,15 @@ public class Spatter : AlchemistCard
         WithTip(typeof(PoisonPower));
     }
 
+    private static LocString DiscardPrompt => new("cards", "ALCHEMIST-SPATTER.selectionScreenPrompt");
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;
+        // The base TO_DISCARD prompt prints {Amount}, which renders the AnyNumber sentinel;
+        // an unbounded selection needs a count-free prompt, the Gamblers Brew pattern
         var discarded = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner,
-            new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 0, AnyNumber), null, this)).ToList();
+            new CardSelectorPrefs(DiscardPrompt, 0, AnyNumber), null, this)).ToList();
         foreach (var card in discarded)
             await CardCmd.Discard(choiceContext, card);
         var dose = DynamicVars["Base"].IntValue + DynamicVars["Per"].IntValue * discarded.Count;

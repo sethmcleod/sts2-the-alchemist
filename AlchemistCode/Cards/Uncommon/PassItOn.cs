@@ -9,7 +9,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Antitoxin)]
 public class PassItOn : AlchemistCard
 {
-    public PassItOn() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public PassItOn() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Amount", 3, 2);
         WithTip(typeof(AntitoxinPower));

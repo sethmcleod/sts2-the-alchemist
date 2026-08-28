@@ -27,6 +27,5 @@ public class FlareUp : AlchemistCard
             sfx: "event:/sfx/characters/attack_fire").Execute(choiceContext);
         if (Dose(this) < Threshold) return;
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
-        await CardPileCmd.Draw(choiceContext, 1, Owner);
     }
 }

@@ -1,4 +1,6 @@
 {
+  "ALCHEMIST-DECANT.description": "每当你创造一张牌时，此牌的[gold]醒酒[/gold]度就会提升，无论此牌位于何处。在满度时打出，其[gold]醒酒[/gold]效果也会触发，随后度数重置。",
+  "ALCHEMIST-DECANT.title": "醒酒",
   "ALCHEMIST-FERMENT.description": "这张牌在你的[gold]手牌[/gold]中每停留一个回合就增强一次。打出后，其发酵将被重置。",
   "ALCHEMIST-FERMENT.selectionPrompt": "选择一张牌进行[gold]发酵[/gold]。",
   "ALCHEMIST-FERMENT.title": "发酵",

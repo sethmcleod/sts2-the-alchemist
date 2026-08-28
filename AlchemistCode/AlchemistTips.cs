@@ -47,9 +47,18 @@ public static class AlchemistTips
     public static IHoverTip[] MixSingle(string mixKey, string icon) =>
         [Static("ALCHEMIST-MIX"), Static(mixKey, icon)];
 
+    // Effervesce hands out three of the four, so its tips list exactly those rows
+    public static IHoverTip[] MixTrio(bool upgraded) =>
+    [
+        Static("ALCHEMIST-MIX"),
+        Static(upgraded ? "ALCHEMIST-BURSTING_MIX_PLUS" : "ALCHEMIST-BURSTING_MIX", "mix_bursting"),
+        Static(upgraded ? "ALCHEMIST-SYRUPY_MIX_PLUS" : "ALCHEMIST-SYRUPY_MIX", "mix_syrupy"),
+        Static(upgraded ? "ALCHEMIST-FUMING_MIX_PLUS" : "ALCHEMIST-FUMING_MIX", "mix_fuming"),
+    ];
+
     // The + rows for cards that hand out upgraded Mixes (Warm Up+, Apothecary+). The numbers in these strings and
     // in the base rows above are hand-copies of the token classes in Cards/Token; a change to a
-    // Mix's numbers must touch both, or the tips lie the way they did before v0.13.1
+    // Mix's numbers must touch both, or the tips lie
     private static IHoverTip[]? _mixUpgraded;
 
     public static IHoverTip[] MixUpgraded => _mixUpgraded ??=

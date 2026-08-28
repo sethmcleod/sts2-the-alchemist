@@ -27,7 +27,7 @@ public class Alchemist2Epoch : AlchemistEpoch
     public override string Id => "ALCHEMIST-ALCHEMIST2_EPOCH";
     public override EpochUnlockKind UnlockKind => EpochUnlockKind.Cards;
     protected override List<CardModel> Cards => new()
-        { ModelDb.Card<Proof>(), ModelDb.Card<Corrode>(), ModelDb.Card<SweatItOut>() };
+        { ModelDb.Card<Proof>(), ModelDb.Card<AgedBatch>(), ModelDb.Card<SweatItOut>() };
 }
 
 public class Alchemist3Epoch : AlchemistEpoch

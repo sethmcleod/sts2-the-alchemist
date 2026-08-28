@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "Die erste Karte, die du in jedem Zug ziehst, wird [gold]Infundiert[/gold] oder gewährt [blue]1[/blue] [gold]Antitoxin[/gold], falls sie bereits verzaubert ist.",
+  "ALCHEMIST-AURIC_SEAL.description": "Wann immer du eine Karte mit [gold]Dekantierung[/gold] ziehst, steigt diese um [blue]1[/blue].",
   "ALCHEMIST-AURIC_SEAL.flavor": "Es hat eine Meinung dazu, welche Seite zählt.",
   "ALCHEMIST-AURIC_SEAL.title": "Aurisches Siegel",
   "ALCHEMIST-BITTERROOT.description": "Heile zu Beginn jedes Kampfes [green]3[/green] TP und erhalte [blue]1[/blue] [gold]Gift[/gold].",
@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "Immer wenn du [gold]Gift[/gold] erhältst, erhalte [blue]1[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-EXTRA_DOSE.flavor": "Eine abgemessene Dosis, immer griffbereit.",
   "ALCHEMIST-EXTRA_DOSE.title": "Zusatzdosis",
-  "ALCHEMIST-GILDED_KIT.description": "Erhalte zu Beginn jedes Kampfes [blue]3[/blue] [gold]Gift[/gold] und [blue]3[/blue] [gold]Antitoxin[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold]. Erhalte beim Aufheben [blue]1[/blue] Trankplatz.",
+  "ALCHEMIST-GILDED_KIT.description": "Erhalte zu Beginn jedes Kampfes [blue]4[/blue] [gold]Gift[/gold] und [blue]4[/blue] [gold]Antitoxin[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold]. Erhalte beim Aufheben [blue]1[/blue] Trankplatz und einen zufälligen seltenen [gold]Trank[/gold].",
   "ALCHEMIST-GILDED_KIT.flavor": "Ein verzierter Koffer. Das Gold ist nicht zur Zierde.",
   "ALCHEMIST-GILDED_KIT.title": "Vergoldeter Koffer",
   "ALCHEMIST-MIDAS_FRUIT.description": "Nimm beim Aufheben [blue]1[/blue] [gold]Unreife Frucht[/gold] in dein [gold]Deck[/gold].",
@@ -25,5 +25,6 @@
   "ALCHEMIST-SECOND_SKIN.title": "Zweite Haut",
   "ALCHEMIST-WEATHERED_KIT.description": "Erhalte zu Beginn jedes Kampfes [blue]2[/blue] [gold]Gift[/gold] und [blue]2[/blue] [gold]Antitoxin[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold].",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Ein gut abgenutzter, angenehm riechender Koffer.",
-  "ALCHEMIST-WEATHERED_KIT.title": "Abgenutzter Koffer"
+  "ALCHEMIST-WEATHERED_KIT.title": "Abgenutzter Koffer",
+  "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "Elixierglas"
 }

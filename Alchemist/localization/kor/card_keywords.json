@@ -1,4 +1,6 @@
 {
+  "ALCHEMIST-DECANT.description": "카드를 생성할 때마다, 이 카드가 어디에 있든 이 카드의 [gold]디캔팅[/gold] 수치가 올라갑니다. 최대 수치에서 사용하면 [gold]디캔팅[/gold] 효과도 발동하고 수치가 초기화됩니다.",
+  "ALCHEMIST-DECANT.title": "디캔팅",
   "ALCHEMIST-FERMENT.description": "이 카드는 [gold]손[/gold]에 머문 턴마다 강해집니다. 사용하면 발효가 초기화됩니다.",
   "ALCHEMIST-FERMENT.selectionPrompt": "[gold]발효[/gold]시킬 카드를 선택하세요.",
   "ALCHEMIST-FERMENT.title": "발효",

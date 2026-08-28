@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "La prima carta che peschi in ogni turno viene [gold]infusa[/gold] oppure, se è già incantata, ti conferisce [blue]1[/blue] di [gold]Antitossina[/gold].",
+  "ALCHEMIST-AURIC_SEAL.description": "Ogni volta che peschi una carta con [gold]Decantazione[/gold], il suo livello aumenta di [blue]1[/blue].",
   "ALCHEMIST-AURIC_SEAL.flavor": "Ha le sue opinioni su quale pagina conti davvero.",
   "ALCHEMIST-AURIC_SEAL.title": "Sigillo Aureo",
   "ALCHEMIST-BITTERROOT.description": "All'inizio di ogni combattimento, recuperi [green]3[/green] PV e ottieni [blue]1[/blue] di [gold]Veleno[/gold].",
@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "Ogni volta che ottieni [gold]Veleno[/gold], ottieni [blue]1[/blue] di [gold]Antitossina[/gold].",
   "ALCHEMIST-EXTRA_DOSE.flavor": "Una dose misurata, sempre a portata di mano.",
   "ALCHEMIST-EXTRA_DOSE.title": "Dose Extra",
-  "ALCHEMIST-GILDED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]3[/blue] di [gold]Veleno[/gold] e [blue]3[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo. Dopo aver ottenuto questa reliquia, ottieni [blue]1[/blue] alloggiamento pozione.",
+  "ALCHEMIST-GILDED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]4[/blue] di [gold]Veleno[/gold] e [blue]4[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo. Dopo aver ottenuto questa reliquia, ottieni [blue]1[/blue] alloggiamento pozione e una [gold]pozione[/gold] rara casuale.",
   "ALCHEMIST-GILDED_KIT.flavor": "Una valigetta decorata. L'oro non è per bellezza.",
   "ALCHEMIST-GILDED_KIT.title": "Kit Dorato",
   "ALCHEMIST-MIDAS_FRUIT.description": "Quando la raccogli, aggiungi [blue]1[/blue] [gold]Frutto Acerbo[/gold] al tuo [gold]mazzo[/gold].",
@@ -25,5 +25,6 @@
   "ALCHEMIST-SECOND_SKIN.title": "Seconda Pelle",
   "ALCHEMIST-WEATHERED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]2[/blue] di [gold]Veleno[/gold] e [blue]2[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Una valigetta consunta, dal profumo gradevole.",
-  "ALCHEMIST-WEATHERED_KIT.title": "Kit Consunto"
+  "ALCHEMIST-WEATHERED_KIT.title": "Kit Consunto",
+  "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "Vetro d'Elisir"
 }

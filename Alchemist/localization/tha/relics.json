@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "การ์ดใบแรกที่คุณจั่วในแต่ละเทิร์นจะถูก[gold]อัดฉีด[/gold] ถ้ามันถูกร่ายมนตร์อยู่แล้ว จะได้รับ [blue]1[/blue] [gold]สารต้านพิษ[/gold] แทน",
+  "ALCHEMIST-AURIC_SEAL.description": "ทุกครั้งที่คุณจั่วการ์ด[gold]ดีแคนต์[/gold] ระดับของมันเพิ่มขึ้น [blue]1[/blue]",
   "ALCHEMIST-AURIC_SEAL.flavor": "มันมีความเห็นของตัวเองว่าหน้าไหนสำคัญ",
   "ALCHEMIST-AURIC_SEAL.title": "ตราประทับทองคำ",
   "ALCHEMIST-BITTERROOT.description": "ตอนเริ่มต้นการต่อสู้ ฟื้นฟู [green]3[/green] HP และได้รับ [blue]1[/blue] [gold]พิษ[/gold]",
@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "ทุกครั้งที่คุณได้รับ[gold]พิษ[/gold] ได้รับ [blue]1[/blue] [gold]สารต้านพิษ[/gold]",
   "ALCHEMIST-EXTRA_DOSE.flavor": "ยาที่ตวงไว้พอดี อยู่ใกล้มือเสมอ",
   "ALCHEMIST-EXTRA_DOSE.title": "ยาเพิ่ม",
-  "ALCHEMIST-GILDED_KIT.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]3[/blue] [gold]พิษ[/gold] และ [blue]3[/blue] [gold]สารต้านพิษ[/gold] คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้ เมื่อรับมา ได้รับช่องเก็บขวดยา [blue]1[/blue] ช่อง",
+  "ALCHEMIST-GILDED_KIT.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]4[/blue] [gold]พิษ[/gold] และ [blue]4[/blue] [gold]สารต้านพิษ[/gold] คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้ เมื่อรับมา ได้รับช่องเก็บขวดยา [blue]1[/blue] ช่อง และ[gold]ขวดยา[/gold]หายากแบบสุ่ม 1 ขวด",
   "ALCHEMIST-GILDED_KIT.flavor": "กล่องลวดลายวิจิตร ทองบนกล่องไม่ได้มีไว้อวด",
   "ALCHEMIST-GILDED_KIT.title": "ชุดเครื่องมือปิดทอง",
   "ALCHEMIST-MIDAS_FRUIT.description": "เมื่อรับมา เพิ่ม[gold]ผลไม้ดิบ[/gold] [blue]1[/blue] ใบเข้า[gold]กองการ์ด[/gold]",
@@ -25,5 +25,6 @@
   "ALCHEMIST-SECOND_SKIN.title": "ผิวชั้นที่สอง",
   "ALCHEMIST-WEATHERED_KIT.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]2[/blue] [gold]พิษ[/gold] และ [blue]2[/blue] [gold]สารต้านพิษ[/gold] คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้",
   "ALCHEMIST-WEATHERED_KIT.flavor": "กล่องเก่าที่ผ่านการใช้งานมานาน กลิ่นหอมชวนดม",
-  "ALCHEMIST-WEATHERED_KIT.title": "ชุดเครื่องมือเก่า"
+  "ALCHEMIST-WEATHERED_KIT.title": "ชุดเครื่องมือเก่า",
+  "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "กระจกอีลิกเซอร์"
 }
