@@ -56,6 +56,7 @@ mod).
 - Fixed a black screen when meeting an ancient added by another mod: an ancient with no dialogue for the Alchemist now offers a single silent line instead of failing to load
 - Fixed Sea Glass showing a raw localization key as its title when it offers Alchemist cards
 - Fixed Spatter's discard prompt showing "Choose 999999999 cards" instead of "Choose any number of cards"
+- Fixed the Alchemist's potion icons: removed the thick dark outline baked into the art that clipped at the icon edges
 - Fixed the Brew rest-site rewards being unreachable with a controller: the reward row could not take focus, so the only reachable button was Leave
 
 ### Removed

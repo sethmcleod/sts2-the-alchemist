@@ -193,7 +193,24 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     internal void AddDecant(int amount)
     {
         if (!IsDecantCard || amount <= 0) return;
+        var wasFull = _decantFill >= DecantMaxValue;
         _decantFill = Math.Min(_decantFill + amount, DecantMaxValue);
+        if (!wasFull && _decantFill >= DecantMaxValue) PlayFillCue(this);
+    }
+
+    // The level can fill anywhere, including piles the player cannot see, so the slosh is the
+    // only signal a brew came ready. One cue per frame however many cards fill off one creation,
+    // and only for the local player's cards, or multiplayer clients hear each other's decks
+    private static ulong _lastFillCueFrame;
+
+    private static void PlayFillCue(AlchemistCard card)
+    {
+        if (!MegaCrit.Sts2.Core.Context.LocalContext.IsMine(card)) return;
+        var frame = Godot.Engine.GetProcessFrames();
+        if (frame == _lastFillCueFrame) return;
+        _lastFillCueFrame = frame;
+        MegaCrit.Sts2.Core.Audio.Debug.NDebugAudioManager.Instance?.Play(
+            "potion_slosh_1.mp3", 0.5f, MegaCrit.Sts2.Core.Audio.Debug.PitchVariance.Large);
     }
 
     // The play consumes a FULL level only; a partial level is untouched, so the card is never a tax.
