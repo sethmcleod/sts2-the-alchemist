@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added placeholder icon for the Decant keyword
+
 ## [0.14.0] - 2026-08-29
 
 ### Added
