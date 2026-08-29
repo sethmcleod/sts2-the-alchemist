@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.0] - 2026-08-29
+
 ### Added
 
 - Added a new mechanic, Decant, which increases the level of certain cards whenever you create a card. Upon reaching max level, Decant cards gain bonus effects and the level gets reset when the card is played. Cards can decant in Draw and Discard piles.
