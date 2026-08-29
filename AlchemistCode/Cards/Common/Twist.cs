@@ -13,8 +13,7 @@ public class Twist : AlchemistCard
     public Twist() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithCards(1, 0);
-        WithTips(card => AlchemistTips.MixSingle(
-            card.IsUpgraded ? "ALCHEMIST-ZESTY_MIX_PLUS" : "ALCHEMIST-ZESTY_MIX", "mix_zesty"));
+        WithUpgradingCardTip<Token.ZestyMix>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
