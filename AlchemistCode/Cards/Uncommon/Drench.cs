@@ -12,8 +12,6 @@ public class Drench : AlchemistCard
 {
     private const int Hits = 3;
 
-    protected internal override bool PlaysCastAnimation => false;
-
     public Drench() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(4, 2);

@@ -12,8 +12,6 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Mix)]
 public class GrandBatch : AlchemistCard
 {
-    protected internal override bool PlaysCastAnimation => false;
-
     public GrandBatch() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithKeyword(CardKeyword.Exhaust);

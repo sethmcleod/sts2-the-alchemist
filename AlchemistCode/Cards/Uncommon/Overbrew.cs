@@ -7,8 +7,6 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Mix)]
 public class Overbrew : AlchemistCard
 {
-    protected internal override bool PlaysCastAnimation => false;
-
     protected override bool HasEnergyCostX => true;
 
     public Overbrew() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)

@@ -9,8 +9,6 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Mix)]
 public class WarmUp : AlchemistCard
 {
-    protected internal override bool PlaysCastAnimation => false;
-
     public WarmUp() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithEnergy(1, 1);

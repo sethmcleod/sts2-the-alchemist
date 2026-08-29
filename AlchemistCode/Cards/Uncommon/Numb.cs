@@ -10,8 +10,6 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Poison)]
 public class Numb : AlchemistCard
 {
-    protected internal override bool PlaysCastAnimation => false;
-
     public Numb() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithBlock(10, 4);

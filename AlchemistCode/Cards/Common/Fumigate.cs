@@ -11,8 +11,6 @@ namespace Alchemist.AlchemistCode.Cards.Common;
 [CardTheme(CardTheme.Poison)]
 public class Fumigate : AlchemistCard
 {
-    protected internal override bool PlaysCastAnimation => false;
-
     public Fumigate() : base(1, CardType.Skill, CardRarity.Common, TargetType.AllEnemies)
     {
         WithVar("Poison", 2, 2);

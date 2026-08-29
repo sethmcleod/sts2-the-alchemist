@@ -14,8 +14,6 @@ public class Quench : AlchemistCard
     // Block per point of capacity
     private const int BlockPerPoint = 2;
 
-    protected internal override bool PlaysCastAnimation => false;
-
     public Quench() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithVar("antitoxin", 4, 1);

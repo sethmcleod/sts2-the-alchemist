@@ -11,6 +11,10 @@ mod).
 
 - Added placeholder icon for the Decant keyword
 
+### Changed
+
+- Updated some Uncommon and Rare cards to use the cast animation
+
 ## [0.14.0] - 2026-08-29
 
 ### Added

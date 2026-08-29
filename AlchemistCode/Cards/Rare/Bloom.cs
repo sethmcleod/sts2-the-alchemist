@@ -13,8 +13,6 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Ferment)]
 public class Bloom : AlchemistCard
 {
-    protected internal override bool PlaysCastAnimation => false;
-
     public Bloom() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithVar("Turns", 3, 1);
