@@ -1,4 +1,6 @@
 {
+  "ALCHEMIST-DECANT.description": "カードを生成するたび、このカードがどこにあっても、このカードの[gold]デカント[/gold]値が上昇する。最大値でプレイすると、[gold]デカント[/gold]効果も発動し、値はリセットされる。",
+  "ALCHEMIST-DECANT.title": "デカント",
   "ALCHEMIST-FERMENT.description": "このカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。プレイするとその発酵はリセットされる。",
   "ALCHEMIST-FERMENT.selectionPrompt": "[gold]発酵[/gold]させるカードを1枚選択。",
   "ALCHEMIST-FERMENT.title": "発酵",

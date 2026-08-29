@@ -12,7 +12,8 @@ public class SmellingSalts : AlchemistCard
 {
     public SmellingSalts() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithEnergy(1, 1);
+        WithEnergy(1, 0);
+        WithKeyword(CardKeyword.Innate, UpgradeType.Add);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));
     }

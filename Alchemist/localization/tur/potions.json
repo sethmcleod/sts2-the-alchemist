@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-ALKAHEST.description": "Savaş esnasında kullanılırsa [gold]El[/gold]'indeki en fazla [blue]3[/blue] kartı [gold]Aşıla[/gold]. Aksi hâlde [gold]Deste[/gold]'ndeki bir kartı geliştir.",
+  "ALCHEMIST-ALKAHEST.description": "Savaş esnasında kullanılırsa kartlarının [gold]Dinlendirme[/gold] seviyesini en üst düzeye çıkar. Aksi hâlde [gold]Deste[/gold]'ndeki bir kartı geliştir.",
   "ALCHEMIST-ALKAHEST.title": "Alkahest",
   "ALCHEMIST-ANODYNE.description": "Sonraki sefer alacağın engellenmemiş saldırı hasarını önle. Önlenen her [blue]5[/blue] hasar için [blue]1[/blue] [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-ANODYNE.title": "Ağrı Kesici",

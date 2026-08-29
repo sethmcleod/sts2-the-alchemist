@@ -137,11 +137,13 @@ public static class Mixing
     }
 
     /// <summary>Add one specific Mix to the owner's hand. Returns it, or null outside combat.</summary>
-    public static async Task<CardModel?> CreateOne<T>(PlayerChoiceContext ctx, Player owner)
+    public static async Task<CardModel?> CreateOne<T>(PlayerChoiceContext ctx, Player owner,
+        bool upgraded = false)
         where T : CardModel
     {
         if (owner.Creature.CombatState is not { } combat) return null;
         var mix = combat.CreateCard<T>(owner);
+        if (upgraded) CardCmd.Upgrade(mix);
         RecordCreated(owner, mix);
         await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, owner);
         return mix;
@@ -149,11 +151,12 @@ public static class Mixing
 
     /// <summary>Transform an existing card into a random Mix. Seeded, so multiplayer stays in sync.</summary>
     public static async Task<CardModel?> TransformIntoRandom(PlayerChoiceContext ctx, Player owner,
-        CardModel victim)
+        CardModel victim, bool upgraded = false)
     {
         if (owner.Creature.CombatState is not { } combat) return null;
         var picked = owner.RunState.Rng.CombatCardGeneration.NextItem(Options(combat, owner));
         if (picked == null) return null;
+        if (upgraded) CardCmd.Upgrade(picked);
         RecordCreated(owner, picked);
         await CardCmd.Transform(victim, picked);
         return picked;

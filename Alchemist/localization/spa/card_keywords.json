@@ -1,4 +1,6 @@
 {
+  "ALCHEMIST-DECANT.description": "El nivel de [gold]Decantar[/gold] de esta carta aumenta cada vez que creas una carta, esté donde esté esta carta. Si la juegas al nivel máximo, su efecto de [gold]Decantar[/gold] se activa y el nivel se reinicia.",
+  "ALCHEMIST-DECANT.title": "Decantar",
   "ALCHEMIST-FERMENT.description": "Esta carta aumenta su poder por cada turno que pase en tu [gold]Mano[/gold]. Al jugarla, su fermentación se reinicia.",
   "ALCHEMIST-FERMENT.selectionPrompt": "Elige una carta que [gold]Fermentar[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentar",

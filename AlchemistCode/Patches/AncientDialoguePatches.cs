@@ -18,11 +18,35 @@ public static class AncientFirstMeetingPatch
 {
     private const string AlchemistCharEntry = "ALCHEMIST-ALCHEMIST";
 
+    // An ancient from another mod usually writes dialogue only for the base cast, so the
+    // Alchemist gets an empty pool. NEventRoom picks with Rng.NextItem, which returns null on an
+    // empty list, and dereferences the pick: an empty pool is a black screen, not a silent skip.
+    // One neutral shared line keeps any unknown ancient loadable
+    private static List<AncientDialogue>? _silentMeeting;
+
+    private static List<AncientDialogue> SilentMeeting
+    {
+        get
+        {
+            if (_silentMeeting == null)
+            {
+                var dialogue = new AncientDialogue("");
+                dialogue.PopulateLines("ALCHEMIST-SILENT_MEETING", "ANY", 0);
+                _silentMeeting = new List<AncientDialogue> { dialogue };
+            }
+            return _silentMeeting;
+        }
+    }
+
     public static void Postfix(AncientDialogueSet __instance, ModelId characterId, int charVisits,
         ref IEnumerable<AncientDialogue> __result)
     {
         if (characterId.Entry != AlchemistCharEntry) return;
-        if (!__instance.CharacterDialogues.TryGetValue(AlchemistCharEntry, out var ours)) return;
+        if (!__instance.CharacterDialogues.TryGetValue(AlchemistCharEntry, out var ours))
+        {
+            if (!__result.Any()) __result = SilentMeeting;
+            return;
+        }
 
         // A visit we wrote a conversation for. Ours wins, even on the first visit ever
         var matching = ours.Where(d => d.VisitIndex == charVisits).ToList();
@@ -49,7 +73,11 @@ public static class AncientFirstMeetingPatch
             .Where(d => (d.VisitIndex ?? 0) <= charVisits)
             .OrderByDescending(d => d.VisitIndex ?? 0)
             .FirstOrDefault();
-        if (last == null) return;
+        if (last == null)
+        {
+            if (!__result.Any()) __result = SilentMeeting;
+            return;
+        }
         __result = ours.Where(d => (d.VisitIndex ?? 0) == (last.VisitIndex ?? 0)).ToList();
     }
 }

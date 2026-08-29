@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-ALKAHEST.description": "戦闘中に使用した場合、[gold]手札[/gold]のカード[blue]3[/blue]枚までに[gold]注入[/gold]する。それ以外の場合、[gold]デッキ[/gold]のカードを1枚アップグレードする。",
+  "ALCHEMIST-ALKAHEST.description": "戦闘中に使用した場合、自身のカードの[gold]デカント[/gold]値を最大にする。それ以外の場合、[gold]デッキ[/gold]のカードを1枚アップグレードする。",
   "ALCHEMIST-ALKAHEST.title": "アルカヘスト",
   "ALCHEMIST-ANODYNE.description": "次にブロックされなかった攻撃ダメージを受ける時、それを無効化する。無効化したダメージ[blue]5[/blue]ごとに、[gold]毒[/gold][blue]1[/blue]を得る。",
   "ALCHEMIST-ANODYNE.title": "鎮痛薬",

@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-ALKAHEST.description": "전투 중에 사용했다면, [gold]손[/gold]에 있는 카드를 최대 [blue]3[/blue]장 [gold]주입[/gold]합니다. 그 외의 경우, [gold]덱[/gold]에 있는 카드를 1장 강화합니다.",
+  "ALCHEMIST-ALKAHEST.description": "전투 중에 사용했다면, 내 카드의 [gold]디캔팅[/gold] 수치를 최대로 올립니다. 그 외의 경우, [gold]덱[/gold]에 있는 카드를 1장 강화합니다.",
   "ALCHEMIST-ALKAHEST.title": "알카헤스트",
   "ALCHEMIST-ANODYNE.description": "다음에 막히지 않은 공격 피해를 받는 것을 막아줍니다. 막은 피해 [blue]5[/blue]마다 [gold]중독[/gold]을 [blue]1[/blue] 얻습니다.",
   "ALCHEMIST-ANODYNE.title": "진통제",

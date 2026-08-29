@@ -13,4 +13,8 @@ public static class AlchemistKeywords
     [CustomEnum]
     [KeywordProperties(AutoKeywordPosition.None)]
     public static CardKeyword Infuse;
+
+    [CustomEnum]
+    [KeywordProperties(AutoKeywordPosition.None)]
+    public static CardKeyword Decant;
 }

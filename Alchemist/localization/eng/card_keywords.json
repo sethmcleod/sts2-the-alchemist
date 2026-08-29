@@ -1,4 +1,6 @@
 {
+  "ALCHEMIST-DECANT.description": "This card's [gold]Decant[/gold] level increases whenever you create a card, wherever this card is. Played at full level, its [gold]Decant[/gold] effect activates and the level is reset.",
+  "ALCHEMIST-DECANT.title": "Decant",
   "ALCHEMIST-FERMENT.description": "This card increases in power for each turn in your [gold]Hand[/gold]. Playing it resets its fermentation.",
   "ALCHEMIST-FERMENT.selectionPrompt": "Choose a card to [gold]Ferment[/gold].",
   "ALCHEMIST-FERMENT.title": "Ferment",

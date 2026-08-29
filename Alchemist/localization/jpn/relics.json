@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "毎ターン最初に引いたカードに[gold]注入[/gold]する。すでにエンチャントされている場合は[gold]抗毒素[/gold][blue]1[/blue]を得る。",
+  "ALCHEMIST-AURIC_SEAL.description": "[gold]デカント[/gold]カードを引くたび、その値が[blue]1[/blue]上昇する。",
   "ALCHEMIST-AURIC_SEAL.flavor": "どのページが重要かについて、この印章には持論がある。",
   "ALCHEMIST-AURIC_SEAL.title": "黄金の封印",
   "ALCHEMIST-BITTERROOT.description": "戦闘開始時、HPを[green]3[/green]回復し、[gold]毒[/gold][blue]1[/blue]を得る。",
@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "[gold]毒[/gold]を得るたび、[gold]抗毒素[/gold][blue]1[/blue]を得る。",
   "ALCHEMIST-EXTRA_DOSE.flavor": "きっちり量った一服が、いつでも手の届くところに。",
   "ALCHEMIST-EXTRA_DOSE.title": "追加の一服",
-  "ALCHEMIST-GILDED_KIT.description": "各戦闘の開始時、[gold]毒[/gold][blue]3[/blue]と[gold]抗毒素[/gold][blue]3[/blue]を得る。休憩所で[gold]調合[/gold]できる。取得時、ポーションスロットを[blue]1[/blue]つ得る。",
+  "ALCHEMIST-GILDED_KIT.description": "各戦闘の開始時、[gold]毒[/gold][blue]4[/blue]と[gold]抗毒素[/gold][blue]4[/blue]を得る。休憩所で[gold]調合[/gold]できる。取得時、ポーションスロットを[blue]1[/blue]つと、ランダムなレアの[gold]ポーション[/gold]を1つ得る。",
   "ALCHEMIST-GILDED_KIT.flavor": "装飾を凝らした道具箱。その金は飾りではない。",
   "ALCHEMIST-GILDED_KIT.title": "金張りの道具箱",
   "ALCHEMIST-MIDAS_FRUIT.description": "取得時、[gold]未熟な果実[/gold]を[blue]1[/blue]枚[gold]デッキ[/gold]に追加する。",
@@ -25,5 +25,6 @@
   "ALCHEMIST-SECOND_SKIN.title": "第二の皮膚",
   "ALCHEMIST-WEATHERED_KIT.description": "各戦闘の開始時、[gold]毒[/gold][blue]2[/blue]と[gold]抗毒素[/gold][blue]2[/blue]を得る。休憩所で[gold]調合[/gold]できる。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "使い込まれ、心地よい香りのする道具箱。",
-  "ALCHEMIST-WEATHERED_KIT.title": "使い込まれた道具箱"
+  "ALCHEMIST-WEATHERED_KIT.title": "使い込まれた道具箱",
+  "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "エリクサーグラス"
 }

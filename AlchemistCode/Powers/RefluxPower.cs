@@ -18,16 +18,13 @@ public class RefluxPower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
-    // A whole team's debuffs in one turn is unbounded, so the payout is capped per turn
-    private const int MaxTriggers = 3;
-
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
-        // The card source requirement excludes our own poison, which has none, so two players running
-        // Reflux cannot trigger each other without end
+        // Owner is the chosen ally, not the caster. The cardSource requirement excludes poison
+        // applied by powers, so two mirrored Refluxes cannot feed each other
         if (amount <= 0 || cardSource == null || power.Type != PowerType.Debuff) return;
-        if (applier == null || applier == Owner || !applier.IsPlayer) return;
+        if (applier == null || applier != Owner) return;
         if (power.Owner is not { IsPlayer: false, IsAlive: true } enemy) return;
         Flash();
         await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, Amount, Owner, null);

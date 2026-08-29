@@ -1,4 +1,6 @@
 {
+  "ALCHEMIST-DECANT.description": "Die [gold]Dekantierung[/gold] dieser Karte steigt, wann immer du eine Karte erschaffst, egal wo diese Karte liegt. Spielst du sie bei vollem Wert, wird ihr [gold]Dekantierung[/gold]s-Effekt ausgelöst und der Wert zurückgesetzt.",
+  "ALCHEMIST-DECANT.title": "Dekantierung",
   "ALCHEMIST-FERMENT.description": "Diese Karte wird für jeden Zug auf deiner [gold]Hand[/gold] stärker. Wenn du sie spielst, wird ihre Gärung zurückgesetzt.",
   "ALCHEMIST-FERMENT.selectionPrompt": "Wähle eine Karte, die du [gold]Vergärst[/gold].",
   "ALCHEMIST-FERMENT.title": "Gärung",

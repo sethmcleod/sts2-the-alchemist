@@ -18,14 +18,15 @@ public class StarterCulture : AlchemistPotion, IBrewOnly
 
     public override PotionRarity Rarity => PotionRarity.Event;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
-    public override TargetType TargetType => TargetType.Self;
+    public override TargetType TargetType => TargetType.AnyPlayer;
 
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { AlchemistTips.FermentRef };
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        var brewing = PileType.Hand.GetPile(Owner).Cards.OfType<AlchemistCard>()
+        var player = target?.Player ?? Owner;
+        var brewing = PileType.Hand.GetPile(player).Cards.OfType<AlchemistCard>()
             .Where(c => c.IsFermentInline).ToList();
         foreach (var card in brewing)
             await card.AdvanceFerment(Times);

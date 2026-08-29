@@ -30,6 +30,7 @@ public class MercurialFormPower : AlchemistPower
         if (player != Owner.Player) return;
         Flash();
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner, 1, Owner, null);
+        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner, 1, Owner, null);
         var dose = Owner.GetPowerAmount<PoisonPower>();
         if (dose <= 0) return;
         await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, dose, Owner, null);

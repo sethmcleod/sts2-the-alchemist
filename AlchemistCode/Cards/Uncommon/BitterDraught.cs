@@ -12,7 +12,7 @@ public class BitterDraught : AlchemistCard
     public BitterDraught() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithEnergy(2, 1);
-        WithPower<PoisonPower>(2, 0);
+        WithPower<PoisonPower>(4, 0);
         WithKeyword(CardKeyword.Exhaust);
     }
 

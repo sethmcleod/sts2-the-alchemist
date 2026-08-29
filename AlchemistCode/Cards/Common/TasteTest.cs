@@ -15,10 +15,9 @@ public class TasteTest : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public TasteTest() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public TasteTest() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithVar("Turns", 1, 1);
-        WithCards(1, 0);
+        WithCards(1, 1);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
 
@@ -31,12 +30,11 @@ public class TasteTest : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var turns = DynamicVars["Turns"].IntValue;
         var brewing = Brewing.ToList();
         foreach (var card in brewing)
-            await card.AdvanceFerment(turns);
-        if (brewing.Count > 0)
-            CardCmd.Preview(brewing);
+            await card.AdvanceFerment(1);
+        if (brewing.Count == 0) return;
+        CardCmd.Preview(brewing);
         await CommonActions.Draw(this, choiceContext);
     }
 }

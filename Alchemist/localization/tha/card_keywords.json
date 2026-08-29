@@ -1,4 +1,6 @@
 {
+  "ALCHEMIST-DECANT.description": "ระดับ[gold]ดีแคนต์[/gold]ของการ์ดนี้จะเพิ่มขึ้นทุกครั้งที่คุณสร้างการ์ด ไม่ว่าการ์ดนี้จะอยู่ที่ใด เมื่อเล่นตอนระดับเต็ม เอฟเฟกต์[gold]ดีแคนต์[/gold]ของมันจะทำงานด้วย แล้วระดับจะถูกรีเซ็ต",
+  "ALCHEMIST-DECANT.title": "ดีแคนต์",
   "ALCHEMIST-FERMENT.description": "การ์ดนี้จะมีพลังเพิ่มขึ้นต่อทุกเทิร์นที่อยู่ใน[gold]มือ[/gold] เมื่อคุณเล่นมัน การบ่มของมันจะถูกรีเซ็ต",
   "ALCHEMIST-FERMENT.selectionPrompt": "เลือกการ์ด 1 ใบเพื่อ[gold]บ่ม[/gold]",
   "ALCHEMIST-FERMENT.title": "บ่ม",

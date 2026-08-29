@@ -13,13 +13,14 @@ public class Anodyne : AlchemistPotion, IBrewOnly
 {
     public override PotionRarity Rarity => PotionRarity.Event;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
-    public override TargetType TargetType => TargetType.Self;
+    public override TargetType TargetType => TargetType.AnyPlayer;
 
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        await PowerCmd.Apply<AnodynePower>(choiceContext, Owner.Creature, 1, Owner.Creature, null);
+        var creature = target ?? Owner.Creature;
+        await PowerCmd.Apply<AnodynePower>(choiceContext, creature, 1, Owner.Creature, null);
     }
 }

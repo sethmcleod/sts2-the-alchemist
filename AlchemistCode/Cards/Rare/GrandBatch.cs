@@ -16,9 +16,8 @@ public class GrandBatch : AlchemistCard
 
     public GrandBatch() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
         WithKeyword(CardKeyword.Exhaust);
-        WithTips(_ => Mixing.MixTips());
+        WithTips(card => Mixing.MixTips(card.IsUpgraded));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -30,6 +29,7 @@ public class GrandBatch : AlchemistCard
                      combat.CreateCard<SyrupyMix>(Owner), combat.CreateCard<ZestyMix>(Owner),
                  })
         {
+            if (IsUpgraded) CardCmd.Upgrade(mix);
             Mixing.RecordCreated(Owner, mix);
             await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, Owner);
         }

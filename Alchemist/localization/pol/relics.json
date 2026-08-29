@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "Pierwsza karta dobrana w każdej turze zostaje [gold]Nasycona[/gold] albo daje [blue]1[/blue] pkt. [gold]Antytoksyny[/gold], jeżeli jest już zaklęta.",
+  "ALCHEMIST-AURIC_SEAL.description": "Kiedykolwiek dobierzesz kartę z [gold]Dekantacją[/gold], jej poziom rośnie o [blue]1[/blue].",
   "ALCHEMIST-AURIC_SEAL.flavor": "Ma własne zdanie o tym, która strona się liczy.",
   "ALCHEMIST-AURIC_SEAL.title": "Złocista pieczęć",
   "ALCHEMIST-BITTERROOT.description": "Na początku każdej walki przywróć [green]3[/green] PŻ i zyskaj [blue]1[/blue] pkt. [gold]Trucizny[/gold].",
@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "Kiedykolwiek zyskasz [gold]Truciznę[/gold], zyskaj [blue]1[/blue] pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-EXTRA_DOSE.flavor": "Odmierzona dawka, zawsze w zasięgu ręki.",
   "ALCHEMIST-EXTRA_DOSE.title": "Dodatkowa dawka",
-  "ALCHEMIST-GILDED_KIT.description": "Na początku każdej walki zyskaj [blue]3[/blue] pkt. [gold]Trucizny[/gold] i [blue]3[/blue] pkt. [gold]Antytoksyny[/gold]. Możesz [gold]Warzyć[/gold] w miejscach odpoczynku. Przy podniesieniu zyskaj [blue]1[/blue] miejsce na miksturę.",
+  "ALCHEMIST-GILDED_KIT.description": "Na początku każdej walki zyskaj [blue]4[/blue] pkt. [gold]Trucizny[/gold] i [blue]4[/blue] pkt. [gold]Antytoksyny[/gold]. Możesz [gold]Warzyć[/gold] w miejscach odpoczynku. Przy podniesieniu zyskaj [blue]1[/blue] miejsce na miksturę i losową rzadką [gold]miksturę[/gold].",
   "ALCHEMIST-GILDED_KIT.flavor": "Zdobiony kuferek. To złoto nie jest na pokaz.",
   "ALCHEMIST-GILDED_KIT.title": "Pozłacany kuferek",
   "ALCHEMIST-MIDAS_FRUIT.description": "Przy podniesieniu dodaj [blue]1[/blue] kartę [gold]Niedojrzały owoc[/gold] do [gold]talii[/gold].",
@@ -25,5 +25,6 @@
   "ALCHEMIST-SECOND_SKIN.title": "Druga skóra",
   "ALCHEMIST-WEATHERED_KIT.description": "Na początku każdej walki zyskaj [blue]2[/blue] pkt. [gold]Trucizny[/gold] i [blue]2[/blue] pkt. [gold]Antytoksyny[/gold]. Możesz [gold]Warzyć[/gold] w miejscach odpoczynku.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Sfatygowany kuferek o przyjemnym zapachu.",
-  "ALCHEMIST-WEATHERED_KIT.title": "Sfatygowany kuferek"
+  "ALCHEMIST-WEATHERED_KIT.title": "Sfatygowany kuferek",
+  "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "Eliksirowe szkło"
 }

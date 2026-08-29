@@ -12,14 +12,13 @@ public class FreshBatch : AlchemistCard
 
     public FreshBatch() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
         WithCards(1, 0);
-        WithTips(_ => Mixing.MixTips());
+        WithTips(card => Mixing.MixTips(card.IsUpgraded));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.Draw(this, choiceContext);
-        await Mixing.CreateChosen(choiceContext, Owner);
+        await Mixing.CreateChosen(choiceContext, Owner, upgraded: IsUpgraded);
     }
 }

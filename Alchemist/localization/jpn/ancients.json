@@ -1,4 +1,5 @@
 {
+  "ALCHEMIST-SILENT_MEETING.talk.ANY.0-0.ancient": "...",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient": "おっと！ 入ってきたのに気づかなかったぜ。ほら、宝石を持ってきな、二つでもいい。どうせその山で埃をかぶってるだけだからよ。",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.ancient.sfx": "event:/sfx/npcs/darv/darv_introduction",
   "DARV.talk.ALCHEMIST-ALCHEMIST.0-0.next": "返答する",

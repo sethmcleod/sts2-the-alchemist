@@ -241,7 +241,7 @@ public static class AntitoxinBarPatches
                 // The party panel shows and hides its HP number by paths of its own (it starts the
                 // label hidden and restores it on highlight), so the fade postfixes alone can strand
                 // this label at a stale alpha. Outside our own fade, copy the HP label's alpha:
-                // whatever the panel decided is correct for both numbers
+                // whatever the panel computes is correct for both numbers
                 var fading = parts.FadeTween is { } t && GodotObject.IsInstanceValid(t) && t.IsRunning();
                 if (!fading && !Mathf.IsEqualApprox(parts.Text.Modulate.A, hpLabel.Modulate.A))
                 {

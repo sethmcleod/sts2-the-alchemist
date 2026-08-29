@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "La première carte que vous piochez à chaque tour est [gold]Infusée[/gold], ou octroie [blue]1[/blue] d'[gold]Antitoxine[/gold] si elle est déjà envoûtée.",
+  "ALCHEMIST-AURIC_SEAL.description": "Lorsque vous piochez une carte à [gold]Décantation[/gold], son niveau augmente de [blue]1[/blue].",
   "ALCHEMIST-AURIC_SEAL.flavor": "Il a son avis sur la page qui compte.",
   "ALCHEMIST-AURIC_SEAL.title": "Sceau aurique",
   "ALCHEMIST-BITTERROOT.description": "Au début de chaque combat, récupérez [green]3[/green] PV et gagnez [blue]1[/blue] de [gold]Poison[/gold].",
@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "Lorsque vous gagnez du [gold]Poison[/gold], gagnez [blue]1[/blue] d'[gold]Antitoxine[/gold].",
   "ALCHEMIST-EXTRA_DOSE.flavor": "Une dose mesurée, toujours à portée de main.",
   "ALCHEMIST-EXTRA_DOSE.title": "Dose supplémentaire",
-  "ALCHEMIST-GILDED_KIT.description": "Au début de chaque combat, gagnez [blue]3[/blue] de [gold]Poison[/gold] et [blue]3[/blue] d'[gold]Antitoxine[/gold]. Vous pouvez [gold]Brasser[/gold] aux Sites de repos. Lorsque vous obtenez cette relique, gagnez [blue]1[/blue] emplacement de potion.",
+  "ALCHEMIST-GILDED_KIT.description": "Au début de chaque combat, gagnez [blue]4[/blue] de [gold]Poison[/gold] et [blue]4[/blue] d'[gold]Antitoxine[/gold]. Vous pouvez [gold]Brasser[/gold] aux Sites de repos. Lorsque vous obtenez cette relique, gagnez [blue]1[/blue] emplacement de potion et une [gold]Potion[/gold] rare aléatoire.",
   "ALCHEMIST-GILDED_KIT.flavor": "Une mallette ouvragée. L'or n'est pas là pour décorer.",
   "ALCHEMIST-GILDED_KIT.title": "Trousse dorée",
   "ALCHEMIST-MIDAS_FRUIT.description": "Lorsque vous obtenez cette relique, ajoutez [blue]1[/blue] [gold]Fruit vert[/gold] à votre [gold]Deck[/gold].",
@@ -25,5 +25,6 @@
   "ALCHEMIST-SECOND_SKIN.title": "Seconde peau",
   "ALCHEMIST-WEATHERED_KIT.description": "Au début de chaque combat, gagnez [blue]2[/blue] de [gold]Poison[/gold] et [blue]2[/blue] d'[gold]Antitoxine[/gold]. Vous pouvez [gold]Brasser[/gold] aux Sites de repos.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Une mallette bien usée, qui sent agréablement bon.",
-  "ALCHEMIST-WEATHERED_KIT.title": "Trousse usée"
+  "ALCHEMIST-WEATHERED_KIT.title": "Trousse usée",
+  "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "Verre d'élixir"
 }

@@ -12,25 +12,28 @@
 
 ## Playstyle
 
-- **Self-Poison**: The Alchemist doses themselves on purpose. Many attacks deal
-  additional damage based on your Poison, so the dose is power for as long as
-  you carry it.
+- **Self-Poison**: The Alchemist doses themselves on purpose. Some attacks deal
+  additional damage based on your Poison and other cards listen for how often
+  your Poison is triggered.
 - **Antitoxin**: A reserve that absorbs the damage your Poison would deal. It
-  persists across turns, so you can bank it before you dose. What it cannot
-  cover comes out of your HP.
+  persists across turns and doesn't decay, so you can stack it up.
+- **Ferment**: These cards grow in potency for every turn they stay in your
+  hand. Playing one resets its fermentation.
 - **Mix**: These are tokens you can create in combat, and you can often choose
   which one: Bursting (damage), Fuming (Weak and Vulnerable), Syrupy (Block)
   and Zesty (Draw and Antitoxin).
-- **Infuse**: Infusing a card Enchants it for the rest of combat based on its
-  type. Attacks deal extra damage equal to your Poison, Skills generate
-  Antitoxin, Powers grant Strength when played, and other cards gain Ethereal.
-- **Ferment**: These cards grow in potency for every turn they stay in your
-  hand. Playing one adds a Residue to your Discard Pile.
+- **Decant**: These cards have a Decant level that rises whenever you create a
+  card, wherever they are. Play one at full level and its Decant effect also
+  activates, resetting the level.
 - **Brew**: This Rest Site option allows you to procure one of 7 unique potions
   that can only be obtained this way. Due to the quality of these brews, the
-  Merchant is willing to buy them from you for Gold.
+  Merchant is willing to buy them from you for 150 Gold.
 
 ## Disclaimer
+
+This mod is still a work in progress and content is subject to change, but
+feedback is welcome! The best place to discuss the mod is official Slay the
+Spire Discord server in the #modding-forum.
 
 The Alchemist has been lovingly crafted to feel like a natural addition to the
 game. Every card, relic, and potion has been (and will continue to be) balanced
@@ -38,10 +41,6 @@ against the existing game. The same care extends to flavor and lore: this
 character's story is woven directly into the game's existing timeline, and
 observant players will find more than a few threads connecting them to the
 world.
-
-This mod is still a work in progress and content is subject to change, but
-feedback is welcome! The best place to discuss the mod is official Slay the
-Spire Discord server in the #modding-forum.
 
 ## Credits
 

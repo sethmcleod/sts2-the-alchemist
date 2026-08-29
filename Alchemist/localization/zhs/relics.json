@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AURIC_SEAL.description": "你每回合抽到的第一张牌会被[gold]注入[/gold]；如果它已被附魔，则获得[blue]1[/blue]点[gold]抗毒素[/gold]。",
+  "ALCHEMIST-AURIC_SEAL.description": "每当你抽到一张[gold]醒酒[/gold]牌时，其度数提升[blue]1[/blue]。",
   "ALCHEMIST-AURIC_SEAL.flavor": "它对哪一页更要紧自有主张。",
   "ALCHEMIST-AURIC_SEAL.title": "黄金封印",
   "ALCHEMIST-BITTERROOT.description": "在每场战斗开始时，回复[green]3[/green]点生命并获得[blue]1[/blue]层[gold]中毒[/gold]。",
@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "每当你获得[gold]中毒[/gold]时，获得[blue]1[/blue]点[gold]抗毒素[/gold]。",
   "ALCHEMIST-EXTRA_DOSE.flavor": "一份量好的剂量，随时都够得着。",
   "ALCHEMIST-EXTRA_DOSE.title": "额外剂量",
-  "ALCHEMIST-GILDED_KIT.description": "在每场战斗开始时，获得[blue]3[/blue]层[gold]中毒[/gold]和[blue]3[/blue]点[gold]抗毒素[/gold]。你可以在休息处[gold]酿造[/gold]。拾起时，获得[blue]1[/blue]个药水栏位。",
+  "ALCHEMIST-GILDED_KIT.description": "在每场战斗开始时，获得[blue]4[/blue]层[gold]中毒[/gold]和[blue]4[/blue]点[gold]抗毒素[/gold]。你可以在休息处[gold]酿造[/gold]。拾起时，获得[blue]1[/blue]个药水栏位和一瓶随机稀有[gold]药水[/gold]。",
   "ALCHEMIST-GILDED_KIT.flavor": "一只华美的箱子。上面的金饰不是为了好看。",
   "ALCHEMIST-GILDED_KIT.title": "鎏金药箱",
   "ALCHEMIST-MIDAS_FRUIT.description": "拾起时，将[blue]1[/blue]张[gold]青涩果实[/gold]加入你的[gold]牌组[/gold]。",
@@ -25,5 +25,6 @@
   "ALCHEMIST-SECOND_SKIN.title": "第二层皮",
   "ALCHEMIST-WEATHERED_KIT.description": "在每场战斗开始时，获得[blue]2[/blue]层[gold]中毒[/gold]和[blue]2[/blue]点[gold]抗毒素[/gold]。你可以在休息处[gold]酿造[/gold]。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "一只用旧了的箱子，气味令人愉快。",
-  "ALCHEMIST-WEATHERED_KIT.title": "陈旧药箱"
+  "ALCHEMIST-WEATHERED_KIT.title": "陈旧药箱",
+  "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "灵药玻璃"
 }

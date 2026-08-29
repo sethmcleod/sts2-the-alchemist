@@ -19,10 +19,10 @@ public class Spit : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
-
         var dose = Math.Min(DynamicVars["Poison"].IntValue,
             Owner.Creature.GetPowerAmount<PoisonPower>());
+        var impact = dose > 0 ? "vfx/vfx_slime_impact" : "vfx/vfx_attack_slash";
+        await CommonActions.CardAttack(this, play, vfx: HitVfx(impact)).Execute(choiceContext);
         if (dose <= 0) return;
 
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, -dose, Owner.Creature, this);

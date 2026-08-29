@@ -12,12 +12,12 @@ public class RefinedExtract : AlchemistPotion
 {
     public override PotionRarity Rarity => PotionRarity.Uncommon;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
-    public override TargetType TargetType => TargetType.Self;
+    public override TargetType TargetType => TargetType.AnyPlayer;
 
     public override IEnumerable<IHoverTip> ExtraHoverTips => Alchemist.AlchemistCode.Commands.Mixing.MixTips(upgraded: true);
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        await Alchemist.AlchemistCode.Commands.Mixing.CreateChosen(choiceContext, Owner, 2, upgraded: true);
+        await Alchemist.AlchemistCode.Commands.Mixing.CreateChosen(choiceContext, target?.Player ?? Owner, 2, upgraded: true);
     }
 }

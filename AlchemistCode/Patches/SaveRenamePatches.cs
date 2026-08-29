@@ -14,7 +14,7 @@ namespace Alchemist.AlchemistCode.Patches;
 
 // A saved run outlives a release: a deck card carrying a renamed id would load as the game's
 // blank DeprecatedCard, which is how "continue" after an update lost cards to renames. Every
-// rename ships an entry here, mapping the retired id to the card that replaced it
+// rename ships an entry here, mapping the old id to the card that replaced it
 [HarmonyPatch(typeof(SaveUtil), nameof(SaveUtil.CardOrDeprecated))]
 public static class SaveRenamePatches
 {
@@ -27,7 +27,8 @@ public static class SaveRenamePatches
         ["ALCHEMIST-LOB"] = ModelDb.Card<Mash>().Id!,
         ["ALCHEMIST-DOUBLE_BATCH"] = ModelDb.Card<FreshBatch>().Id!,
         ["ALCHEMIST-PAYS_OFF"] = ModelDb.Card<SmellingSalts>().Id!,
-        ["ALCHEMIST-NEXT_UP"] = ModelDb.Card<Anoint>().Id!,
+        ["ALCHEMIST-NEXT_UP"] = ModelDb.Card<Spike>().Id!,
+        ["ALCHEMIST-ANOINT"] = ModelDb.Card<Spike>().Id!,
         ["ALCHEMIST-FRESH_COAT"] = ModelDb.Card<Untended>().Id!,
         ["ALCHEMIST-ELIXIR"] = ModelDb.Card<Panacea>().Id!,
         ["ALCHEMIST-ANTIDOTE"] = ModelDb.Card<Dose>().Id!,
@@ -42,8 +43,9 @@ public static class SaveRenamePatches
         ["ALCHEMIST-SLOW_BURN"] = ModelDb.Card<Mortar>().Id!,
         ["ALCHEMIST-SWILL"] = ModelDb.Card<TasteTest>().Id!,
         ["ALCHEMIST-STEEP"] = ModelDb.Card<PourOver>().Id!,
-        ["ALCHEMIST-TOXIN_SKIN"] = ModelDb.Card<VialInReserve>().Id!,
-        // Cuts, not renames: each retired card maps to the new card in its slot, so a mid-save
+        ["ALCHEMIST-TOXIN_SKIN"] = ModelDb.Card<Uncork>().Id!,
+        ["ALCHEMIST-VIAL_IN_RESERVE"] = ModelDb.Card<Uncork>().Id!,
+        // Cuts, not renames: each removed card maps to the new card in its slot, so a mid-save
         // update hands the player something new instead of a blank deprecated card
         ["ALCHEMIST-DOUBLE_DOSE"] = ModelDb.Card<Fumigate>().Id!,
         ["ALCHEMIST-QUICKLIME"] = ModelDb.Card<Spores>().Id!,
@@ -57,6 +59,10 @@ public static class SaveRenamePatches
         ["ALCHEMIST-SPEW"] = ModelDb.Card<Overspill>().Id!,
         ["ALCHEMIST-TOLERANCE"] = ModelDb.Card<WarmUp>().Id!,
         ["ALCHEMIST-CONDENSE"] = ModelDb.Card<Twist>().Id!,
+        ["ALCHEMIST-SMOKE_OUT"] = ModelDb.Card<Digest>().Id!,
+        ["ALCHEMIST-CORRODE"] = ModelDb.Card<AgedBatch>().Id!,
+        ["ALCHEMIST-SIPHON"] = ModelDb.Card<Pelt>().Id!,
+        ["ALCHEMIST-SALVE"] = ModelDb.Card<Cure>().Id!,
     };
 
     public static void Prefix(ref ModelId id)
@@ -87,7 +93,7 @@ public static class PotionSaveRenamePatches
 }
 
 // The relic half of the same problem: RelicModel.FromSave resolves through
-// SaveUtil.RelicOrDeprecated, so a retired relic id in a live save loads as a blank DeprecatedRelic
+// SaveUtil.RelicOrDeprecated, so a removed relic id in a live save loads as a blank DeprecatedRelic
 [HarmonyPatch(typeof(SaveUtil), nameof(SaveUtil.RelicOrDeprecated))]
 public static class RelicSaveRenamePatches
 {
@@ -96,7 +102,7 @@ public static class RelicSaveRenamePatches
     // Lazy: ModelDb is not populated when Harmony applies the patch
     private static Dictionary<string, ModelId> Renamed => _renamed ??= new Dictionary<string, ModelId>
     {
-        // Cuts, not renames: each retired relic maps to the relic that took its slot
+        // Cuts, not renames: each removed relic maps to the relic that took its slot
         ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Bitterroot>().Id!,
         ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<ExtraDose>().Id!,
         ["ALCHEMIST-GLOWING_SHARD"] = ModelDb.Relic<MotherOfVinegar>().Id!,
