@@ -53,6 +53,7 @@ mod).
 ### Fixed
 
 - Changed the Alchemist's throwable potions not being able to target allies: Anodyne, Decoction, Marsh Tonic, Refined Extract, Sampler, Starter Culture, and Alkahest can now be thrown at allies in multiplayer combat, matching the base game's potions
+- Fixed a black screen when meeting an ancient added by another mod: an ancient with no dialogue for the Alchemist now offers a single silent line instead of failing to load
 - Fixed Sea Glass showing a raw localization key as its title when it offers Alchemist cards
 - Fixed Spatter's discard prompt showing "Choose 999999999 cards" instead of "Choose any number of cards"
 - Fixed the Brew rest-site rewards being unreachable with a controller: the reward row could not take focus, so the only reachable button was Leave
