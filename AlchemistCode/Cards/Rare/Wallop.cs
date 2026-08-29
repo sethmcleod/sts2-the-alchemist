@@ -1,7 +1,7 @@
-using System.Linq;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
@@ -10,7 +10,10 @@ public class Wallop : AlchemistCard
 {
     public Wallop() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        WithDamage(12, 4);
+        // A full level triples the hit, so the extra term is twice the live base
+        WithCalculatedDamage(12, static (card, _) =>
+                card is Wallop { DecantFull: true } ? 2m * (card.IsUpgraded ? 16m : 12m) : 0m,
+            ValueProp.Move, 4, 0);
         WithVar("DecantMax", 5, -1);
     }
 
@@ -18,24 +21,11 @@ public class Wallop : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (!TrySpendDecant())
-        {
-            await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"),
-                    tmpSfx: "heavy_attack.mp3").WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
-                .Execute(choiceContext);
-            return;
-        }
-        if (CombatState is not { } combat) return;
-        var swung = false;
-        foreach (var enemy in combat.Enemies.Where(e => e.IsAlive).ToList())
-        {
-            var attack = CommonActions.CardAttack(this, play, enemy, DynamicVars.Damage.BaseValue,
-                DynamicVars.Damage.Props, vfx: HitVfx("vfx/vfx_heavy_blunt"),
-                tmpSfx: "heavy_attack.mp3");
-            // One swing animation covers the whole splash
-            if (!swung) attack.WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay);
-            swung = true;
-            await attack.Execute(choiceContext);
-        }
+        // Spend AFTER the attack: the calculated damage reads the live level while the hit resolves
+        var primed = DecantFull;
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"),
+                tmpSfx: "heavy_attack.mp3").WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
+            .Execute(choiceContext);
+        if (primed) TrySpendDecant();
     }
 }

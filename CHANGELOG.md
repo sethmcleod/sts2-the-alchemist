@@ -36,7 +36,7 @@ mod).
 - Changed Vent into a finisher: rarity Uncommon -> Rare, gained Exhaust, and the multiplier upgrades (twice -> 2 (3) times your Poison)
 - Changed Vintage's upgrade: Vintage+ now gains 2 Energy and draws 2 cards instead of costing 0
 - Nerfed Bitter Draught: 2 -> 4 Poison gained, so the energy has a real price again
-- Nerfed Flare Up: the Poison payoff no longer draws a card, so it cannot chain into itself
+- Reworked Flare Up: "Deal 8 (11) damage. You may Exhaust a card from your Hand. If you do, this hits an additional time."
 - Nerfed Syrupy Mix Block: 5 (8) -> 4 (6)
 - Nerfed Taste Test: cost 0 -> 1, it Triggers once at both ranks, Taste Test+ draws 2 cards instead of Triggering twice, and it draws only if a Ferment card actually Triggered
 - Renamed Anoint to Spike and reworked it into a Decant card: "Deal 9 (12) damage. Decant 4 (3): Apply 4 (6) Poison."
@@ -48,7 +48,7 @@ mod).
 - Reworked Reflux: "Choose another player. Whenever they play a card that applies a debuff this turn, they apply 2 Poison to that enemy." (1 (0) energy)
 - Reworked Sweat It Out: "Retain. Gain 4 (6) Poison. Apply Poison equal to your Poison to ALL enemies."
 - Reworked Transmute: "Transform a card in your Hand into a copy of another card in your Hand. Exhaust." (1 (0) energy)
-- Reworked Wallop: "Deal 12 (16) damage. Decant 5 (4): Deal this damage to ALL enemies instead."
+- Reworked Wallop: "Deal 12 (16) damage. Decant 5 (4): Deal triple damage."
 
 ### Fixed
 
