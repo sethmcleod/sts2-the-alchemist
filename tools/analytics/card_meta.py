@@ -16,7 +16,7 @@ REPO = Path(__file__).resolve().parents[2]
 CARDS = REPO / "AlchemistCode" / "Cards"
 PREFIX = "ALCHEMIST-"
 
-THEMES = ["Poison", "Antitoxin", "Ferment", "Mix", "Infuse", "Transform", "Potions"]
+THEMES = ["Poison", "Antitoxin", "Ferment", "Mix", "Decant", "Infuse", "Transform", "Potions"]
 
 CLASS_RE = re.compile(
     r"\[CardTheme\((?P<themes>[^)]*)\)\]\s*"
