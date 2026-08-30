@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "해금 초기화",
   "ALCHEMIST-REVEAL_TIMELINE.title": "모든 연금술사 연대표 역사 해금",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "역사 해금",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.hover.desc": "멀티플레이 파티 목록에서 다른 플레이어의 항독소 바를 표시합니다. 끄면 해당 행이 기본 레이아웃으로 돌아갑니다. 자신의 바에는 영향을 주지 않습니다.",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.title": "아군 항독소 바 표시",
   "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "다음 턴에 중독이 줄 피해를 항독소 바 옆에 초록색 숫자로 표시합니다. 중독이 항독소를 초과할 때만 표시됩니다.",
   "ALCHEMIST-SHOW_POISON_FORECAST.title": "중독 피해 예측 표시",
   "ALCHEMIST-TIMELINE.title": "연대표",

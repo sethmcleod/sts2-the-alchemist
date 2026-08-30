@@ -15,8 +15,7 @@ public class Thicken : AlchemistCard
     public Thicken() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(4, 1);
-        WithTips(card => AlchemistTips.MixSingle(
-            card.IsUpgraded ? "ALCHEMIST-SYRUPY_MIX_PLUS" : "ALCHEMIST-SYRUPY_MIX", "mix_syrupy"));
+        WithUpgradingCardTip<Token.SyrupyMix>(static (tip, _) => tip.AddKeyword(CardKeyword.Retain));
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(CardKeyword.Retain) });
     }
 

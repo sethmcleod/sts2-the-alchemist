@@ -10,8 +10,6 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Poison)]
 public class Vent : AlchemistCard
 {
-    protected internal override bool PlaysCastAnimation => false;
-
     public Vent() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)
     {
         WithVar("Mult", 2, 1);

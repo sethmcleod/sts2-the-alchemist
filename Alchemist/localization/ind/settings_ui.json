@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Reset",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Buka Semua Zaman Linimasa Alkemis",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Buka Zaman",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.hover.desc": "Menampilkan bilah Antitoksin untuk pemain lain di daftar tim multipemain. Nonaktifkan untuk mempertahankan tata letak standar baris mereka. Bilah kamu sendiri tidak terpengaruh.",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.title": "Tampilkan Bilah Antitoksin Teman",
   "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Menampilkan kerusakan yang akan dilakukan Racun kamu pada giliran berikutnya sebagai angka hijau di samping bilah Antitoksin. Hanya muncul saat Racun melebihi Antitoksin kamu.",
   "ALCHEMIST-SHOW_POISON_FORECAST.title": "Tampilkan Perkiraan Kerusakan Racun",
   "ALCHEMIST-TIMELINE.title": "Linimasa",

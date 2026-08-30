@@ -11,8 +11,6 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Ferment)]
 public class Mellow : AlchemistCard
 {
-    protected internal override bool PlaysCastAnimation => false;
-
     public Mellow() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithPower<MellowPower>(2, 1);

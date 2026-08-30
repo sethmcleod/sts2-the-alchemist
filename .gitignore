@@ -6,7 +6,6 @@ __pycache__/
 bin/
 dist/
 scripts/tests
-beta-art-sheet.html
 workshop/content/
 workshop/mod-uploader.log
 workshop/mod_id.txt

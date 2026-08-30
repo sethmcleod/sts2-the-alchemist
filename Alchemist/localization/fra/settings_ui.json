@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Réinitialiser",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Débloquer toutes les Ères de l'Alchimiste dans la Frise temporelle",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Débloquer les Ères",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.hover.desc": "Affiche une barre d'Antitoxine pour les autres joueurs dans la liste d'équipe en multijoueur. Désactivez cette option pour conserver leur disposition standard. Votre propre barre n'est pas affectée.",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.title": "Afficher les barres d'Antitoxine des alliés",
   "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Affiche les dégâts que votre Poison infligera au prochain tour sous forme de nombre vert à côté de la barre d'Antitoxine. N'apparaît que lorsque le Poison dépasse votre Antitoxine.",
   "ALCHEMIST-SHOW_POISON_FORECAST.title": "Afficher les dégâts de Poison à venir",
   "ALCHEMIST-TIMELINE.title": "Frise temporelle",

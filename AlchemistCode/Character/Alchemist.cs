@@ -25,6 +25,8 @@ public partial class Alchemist : PlaceholderCharacterModel
     public override Color NameColor => Color;
     public override Color MapDrawingColor => new("4B1F9E");
 
+    public override Color EnergyLabelOutlineColor => new("170B02");
+
     // Measured contact points; the shared 0.15/0.25 defaults land during our longer wind-up
     public override float AttackAnimDelay => 0.35f;
     public override float CastAnimDelay => 0.4f;

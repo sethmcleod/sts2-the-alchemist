@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Restablecer desbloqueos",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Desbloquear todas las eras de la Cronología de El Alquimista",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Desbloquear eras",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.hover.desc": "Muestra una barra de antitoxina para los demás jugadores en la lista de grupo del multijugador. Desactívalo para mantener sus filas con el diseño estándar. Tu propia barra no se ve afectada.",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.title": "Mostrar barras de antitoxina de aliados",
   "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Muestra el daño que tu veneno hará el próximo turno como un número verde junto a la barra de antitoxina. Solo aparece cuando el veneno supera tu antitoxina.",
   "ALCHEMIST-SHOW_POISON_FORECAST.title": "Mostrar previsión de daño de veneno",
   "ALCHEMIST-TIMELINE.title": "Cronología",

@@ -9,8 +9,6 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Decant)]
 public class Refine : AlchemistCard
 {
-    protected internal override bool PlaysCastAnimation => false;
-
     private static readonly PileType[] Piles = [PileType.Hand, PileType.Draw, PileType.Discard];
 
     public Refine() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)

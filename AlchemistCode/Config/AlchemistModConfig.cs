@@ -40,6 +40,10 @@ public class AlchemistModConfig : SimpleModConfig
 
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]
+    public static bool ShowAllyAntitoxinBars { get; set; } = true;
+
+    [ConfigSection("Accessibility")]
+    [ConfigHoverTip]
     [ConfigColorPicker(EditAlpha = false)]
     public static Color AntitoxinBarColor { get; set; } = new("9B5CFF");
 

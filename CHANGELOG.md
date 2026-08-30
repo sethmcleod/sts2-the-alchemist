@@ -7,6 +7,26 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.1] - 2026-08-30
+
+### Added
+
+- Added an accessibility setting to hide Antitoxin bars for allies in the multiplayer party list
+- Added final batch of beta card art
+- Added placeholder icon for the Decant keyword
+
+### Changed
+
+- Updated Mash, Thicken and Twist to preview the Mix token they would create instead of using the hover tips
+- Updated some Uncommon and Rare cards to use the cast animation
+- Improved display of Antitoxin bars in the multiplayer party list
+
+### Fixed
+
+- Fixed Anodyne making the drinker immortal in multiplayer: the shield never expired or charged its Poison when the damage prevention resolved on another player's turn
+- Fixed the Antitoxin bar covering the Block icon in the player panel
+- Fixed the Poison damage forecast number being invisible in the multiplayer party list
+
 ## [0.14.0] - 2026-08-29
 
 ### Added

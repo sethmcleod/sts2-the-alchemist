@@ -9,8 +9,6 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Mix)]
 public class Reclaim : AlchemistCard
 {
-    protected internal override bool PlaysCastAnimation => false;
-
     public Reclaim() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
