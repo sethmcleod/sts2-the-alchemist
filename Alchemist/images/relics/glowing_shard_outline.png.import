@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjl2lknysmgf5"
-path="res://.godot/imported/extra_turn_power.png-62b25fc4103cab3ac5abaccbf14a83d2.ctex"
+uid="uid://220xelynryla"
+path="res://.godot/imported/glowing_shard_outline.png-85a09198910579032d32b9643ee5bac8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/extra_turn_power.png"
-dest_files=["res://.godot/imported/extra_turn_power.png-62b25fc4103cab3ac5abaccbf14a83d2.ctex"]
+source_file="res://Alchemist/images/relics/glowing_shard_outline.png"
+dest_files=["res://.godot/imported/glowing_shard_outline.png-85a09198910579032d32b9643ee5bac8.ctex"]
 
 [params]
 
