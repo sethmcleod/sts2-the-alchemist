@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Kilitleri Sıfırla",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Tüm Simyacı Zaman Çizelgesi Çağlarını Aç",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Çağları Aç",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.hover.desc": "Çok oyunculu grup listesinde diğer oyuncular için Antitoksin barı gösterir. Satırlarının standart düzende kalması için devre dışı bırak. Kendi barın bundan etkilenmez.",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.title": "Takım Arkadaşlarının Antitoksin Barlarını Göster",
   "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Zehir'in gelecek turda vereceği hasarı Antitoksin barının yanında yeşil bir sayı olarak gösterir. Yalnızca Zehir, Antitoksin'i aştığında görünür.",
   "ALCHEMIST-SHOW_POISON_FORECAST.title": "Zehir Hasarı Tahminini Göster",
   "ALCHEMIST-TIMELINE.title": "Zaman Çizelgesi",

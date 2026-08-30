@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "アンロックをリセット",
   "ALCHEMIST-REVEAL_TIMELINE.title": "アルケミストの年代記の断章をすべてアンロック",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "断章をアンロック",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.hover.desc": "マルチプレイのパーティ一覧で、他のプレイヤーにも抗毒素バーを表示します。オフにすると各行は標準のレイアウトに戻ります。自分のバーには影響しません。",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.title": "味方の抗毒素バーを表示",
   "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "次のターンに毒が与えるダメージを、抗毒素バーの横に緑の数字で表示します。毒が抗毒素を上回るときのみ表示されます。",
   "ALCHEMIST-SHOW_POISON_FORECAST.title": "毒ダメージ予測を表示",
   "ALCHEMIST-TIMELINE.title": "年代記",

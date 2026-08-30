@@ -1,15 +1,15 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Powers;
 using Godot;
 using HarmonyLib;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Alchemist.AlchemistCode.Patches;
 
@@ -25,6 +25,8 @@ public static class AntitoxinBarPatches
     // the two sets of digits need room not to touch
     private const float PanelGap = 3f;
     private const float CombatGap = 8f;
+    private const float PanelBarShrink = 2f;
+    private const float PanelDrop = 3f;
 
     private static float GapFor(Node bar) => InPlayerPanel(bar) ? PanelGap : CombatGap;
 
@@ -100,6 +102,10 @@ public static class AntitoxinBarPatches
             clone.Name = "AlchemistAntitoxinBar";
             clone.Visible = false;
             hp.GetParent()?.AddChild(clone);
+            // Right after HpBarContainer in tree order, not appended last: the block shield is a later
+            // sibling whose art overhangs the bar row, and it must draw over this bar the same way it
+            // draws over the HP bar
+            hp.GetParent()?.MoveChild(clone, hp.GetIndex() + 1);
 
             // The duplicate carries the whole HP apparatus. Everything that is not the bar itself goes
             foreach (var path in new[] { "BlockOutline", "InfinityTex",
@@ -142,7 +148,11 @@ public static class AntitoxinBarPatches
 
             Bars.Add(__instance, new Parts
             {
-                Root = clone, Foreground = fg, Text = label, Incoming = incoming, Forecast = forecast,
+                Root = clone,
+                Foreground = fg,
+                Text = label,
+                Incoming = incoming,
+                Forecast = forecast,
             });
         }
     }
@@ -159,7 +169,7 @@ public static class AntitoxinBarPatches
     // than growing the box: HP rises by half the added block and Antitoxin takes the half below
     private static readonly ConditionalWeakTable<Control, object> HpBaseY = new();
 
-    private static float Lift(Control hp) => (hp.Size.Y + PanelGap) / 2f;
+    private static float Lift(Control hp) => (hp.Size.Y + PanelGap) / 2f - PanelDrop;
 
     // Only the player panel is boxed by a fixed golden frame. The combat bar hangs under the
     // creature with room below it, so it keeps its own position and the pair grows downward
@@ -210,6 +220,24 @@ public static class AntitoxinBarPatches
             var creature = CreatureRef(__instance);
             if (!Shows(creature)) { parts.Root.Visible = false; StopPulse(parts); return; }
 
+            // Accessibility: with ally bars off, a teammate's row in the multiplayer party list goes
+            // back to the stock layout. The local player's own panel is never suppressed
+            if (!AlchemistModConfig.ShowAllyAntitoxinBars && InPlayerPanel(__instance)
+                && !MegaCrit.Sts2.Core.Context.LocalContext.IsMe(creature))
+            {
+                parts.Root.Visible = false;
+                StopPulse(parts);
+                if (__instance.HpBarContainer is { } stock)
+                {
+                    if (HpBaseY.TryGetValue(stock, out var stockY))
+                        stock.Position = new Vector2(stock.Position.X, (float)stockY);
+                    if (__instance.GetNodeOrNull<Control>("%BlockContainer") is { } stockShield
+                        && HpBaseY.TryGetValue(stockShield, out var stockShieldY))
+                        stockShield.Position = new Vector2(stockShield.Position.X, (float)stockShieldY);
+                }
+                return;
+            }
+
             // Combat teardown removes every power, so the live amount drops to 0 while the end of
             // combat is still on screen. Hold the last in-combat value instead of blanking the bar
             var inCombat = CombatManager.Instance?.IsInProgress ?? false;
@@ -230,6 +258,18 @@ public static class AntitoxinBarPatches
             {
                 if (!HpBaseY.TryGetValue(hp, out var baseY)) { baseY = hp.Position.Y; HpBaseY.Add(hp, baseY); }
                 hp.Position = new Vector2(hp.Position.X, (float)baseY - Lift(hp));
+
+                // The block shield is a sibling of HpBarContainer, not a child, so the lift leaves it
+                // behind at the old bar Y, where the Antitoxin bar then paints over it
+                if (__instance.GetNodeOrNull<Control>("%BlockContainer") is { } shield)
+                {
+                    if (!HpBaseY.TryGetValue(shield, out var shieldY))
+                    {
+                        shieldY = shield.Position.Y;
+                        HpBaseY.Add(shield, shieldY);
+                    }
+                    shield.Position = new Vector2(shield.Position.X, (float)shieldY - Lift(hp));
+                }
             }
 
             if (hp.GetNodeOrNull<Label>("HpLabel") is { } hpLabel)
@@ -249,19 +289,24 @@ public static class AntitoxinBarPatches
                     m.A = hpLabel.Modulate.A;
                     parts.Text.Modulate = m;
                 }
-                // The forecast number follows the same visibility the panel picked for the digits
+                // On the combat bar the forecast number follows the digits. The party panel keeps its
+                // digits hidden until hover, so there the number stays opaque the way Minty Spire's
+                // incoming-damage arrow does, or overflow would never be visible at a glance
+                var forecastAlpha = InPlayerPanel(__instance) ? 1f : hpLabel.Modulate.A;
                 if (!fading && parts.Forecast is { } fcl && GodotObject.IsInstanceValid(fcl)
-                    && !Mathf.IsEqualApprox(fcl.Modulate.A, hpLabel.Modulate.A))
+                    && !Mathf.IsEqualApprox(fcl.Modulate.A, forecastAlpha))
                 {
                     var m2 = fcl.Modulate;
-                    m2.A = hpLabel.Modulate.A;
+                    m2.A = forecastAlpha;
                     fcl.Modulate = m2;
                 }
             }
 
             parts.Root.Visible = true;
             parts.Root.Position = new Vector2(hp.Position.X, hp.Position.Y + hp.Size.Y + GapFor(__instance));
-            parts.Root.Size = hp.Size;
+            parts.Root.Size = InPlayerPanel(__instance)
+                ? new Vector2(hp.Size.X, hp.Size.Y - PanelBarShrink)
+                : hp.Size;
 
             // The real bar shrinks its foreground with a negative OffsetRight, so this matches it
             var full = parts.Root.GetNodeOrNull<Control>("HpForegroundContainer")?.Size.X ?? hp.Size.X;
@@ -430,7 +475,9 @@ public static class AntitoxinBarPatches
             parts.FadeTween = parts.Text.CreateTween().SetParallel();
             parts.FadeTween.TweenProperty(parts.Text, "modulate:a", finalAlpha, duration)
                 .SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
-            if (parts.Forecast is { } forecast && GodotObject.IsInstanceValid(forecast))
+            // The panel forecast is pinned opaque (see Refresh), so only combat bars fade it
+            if (!InPlayerPanel(__instance) && parts.Forecast is { } forecast
+                && GodotObject.IsInstanceValid(forecast))
                 parts.FadeTween.TweenProperty(forecast, "modulate:a", finalAlpha, duration)
                     .SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
         }
@@ -445,7 +492,8 @@ public static class AntitoxinBarPatches
             parts.FadeTween?.Kill();
             parts.FadeTween = parts.Text.CreateTween().SetParallel();
             parts.FadeTween.TweenProperty(parts.Text, "modulate:a", 1f, duration);
-            if (parts.Forecast is { } forecast && GodotObject.IsInstanceValid(forecast))
+            if (!InPlayerPanel(__instance) && parts.Forecast is { } forecast
+                && GodotObject.IsInstanceValid(forecast))
                 parts.FadeTween.TweenProperty(forecast, "modulate:a", 1f, duration);
         }
     }

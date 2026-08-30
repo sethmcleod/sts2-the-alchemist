@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Сбросить",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Открыть все эпохи Алхимика в Летописи",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Открыть эпохи",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.hover.desc": "Показывает полосу антитоксина у других игроков в списке группы в сетевой игре. Отключите, чтобы их строки сохранили стандартный вид. Ваша собственная полоса остается прежней.",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.title": "Показывать полосы антитоксина союзников",
   "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "Показывает урон, который ваш яд нанесет в следующем ходу, зеленым числом рядом с полосой антитоксина. Появляется, только когда яд превышает ваш антитоксин.",
   "ALCHEMIST-SHOW_POISON_FORECAST.title": "Показывать прогноз урона от яда",
   "ALCHEMIST-TIMELINE.title": "Летопись",

@@ -17,6 +17,8 @@
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "重置解锁",
   "ALCHEMIST-REVEAL_TIMELINE.title": "解锁所有炼金术士时间线历史节点",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "解锁历史节点",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.hover.desc": "在多人游戏的队伍列表中为其他玩家显示抗毒素条。关闭后，他们的行将保持标准布局。你自己的抗毒素条不受影响。",
+  "ALCHEMIST-SHOW_ALLY_ANTITOXIN_BARS.title": "显示队友抗毒素条",
   "ALCHEMIST-SHOW_POISON_FORECAST.hover.desc": "在抗毒素条旁以绿色数字显示你的中毒下回合将造成的伤害。仅在中毒超过你的抗毒素时显示。",
   "ALCHEMIST-SHOW_POISON_FORECAST.title": "显示中毒伤害预测",
   "ALCHEMIST-TIMELINE.title": "时间线",
