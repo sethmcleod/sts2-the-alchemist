@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.1] - 2026-08-30
+
 ### Added
 
 - Added an accessibility setting to hide Antitoxin bars for allies in the multiplayer party list
