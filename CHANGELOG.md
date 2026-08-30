@@ -9,6 +9,7 @@ mod).
 
 ### Added
 
+- Added final batch of beta card art
 - Added placeholder icon for the Decant keyword
 
 ### Changed
