@@ -17,6 +17,10 @@ mod).
 - Updated Mash, Thicken and Twist to preview the Mix token they would create instead of using the hover tips
 - Updated some Uncommon and Rare cards to use the cast animation
 
+### Fixed
+
+- Fixed Anodyne making the drinker immortal in multiplayer: the shield never expired or charged its Poison when the damage prevention resolved on another player's turn
+
 ## [0.14.0] - 2026-08-29
 
 ### Added
