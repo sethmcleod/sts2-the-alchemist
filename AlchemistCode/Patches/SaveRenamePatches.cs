@@ -105,7 +105,7 @@ public static class RelicSaveRenamePatches
         // Cuts, not renames: each removed relic maps to the relic that took its slot
         ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Bitterroot>().Id!,
         ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<ExtraDose>().Id!,
-        ["ALCHEMIST-GLOWING_SHARD"] = ModelDb.Relic<MotherOfVinegar>().Id!,
+        ["ALCHEMIST-MIDAS_FRUIT"] = ModelDb.Relic<GlowingShard>().Id!,
     };
 
     public static void Prefix(ref ModelId id)

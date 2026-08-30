@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buooqimw0h32c"
-path="res://.godot/imported/unripe_fruit.png-a8f922615b31ce8f9f22ed72d274fb0d.ctex"
+uid="uid://clav45y4uh0ov"
+path="res://.godot/imported/glowing_shard.png-db14f86e8cba8c8cf4c154d94c6e441d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/unripe_fruit.png"
-dest_files=["res://.godot/imported/unripe_fruit.png-a8f922615b31ce8f9f22ed72d274fb0d.ctex"]
+source_file="res://Alchemist/images/relics/glowing_shard.png"
+dest_files=["res://.godot/imported/glowing_shard.png-db14f86e8cba8c8cf4c154d94c6e441d.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
-compress/lossy_quality=1.0
+compress/high_quality=false
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

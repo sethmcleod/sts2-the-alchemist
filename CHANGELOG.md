@@ -7,6 +7,16 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.2] - 2026-08-30
+
+### Added
+
+- Added Glowing Shard relic (Rare): "Poison on enemies is no longer reduced each turn."
+
+### Removed
+
+- Removed Midas Fruit relic and its Unripe Fruit and Golden Fruit quest chain
+
 ## [0.14.1] - 2026-08-30
 
 ### Added

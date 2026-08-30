@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddbjher6m1w5p"
-path="res://.godot/imported/midas_fruit.png-4c16b57fca47dc4a8668a214392d6e86.ctex"
+uid="uid://dendcoosuk1dt"
+path="res://.godot/imported/glowing_shard.png-8f2abe4037cec9b96cdcf685d280e6d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/big/midas_fruit.png"
-dest_files=["res://.godot/imported/midas_fruit.png-4c16b57fca47dc4a8668a214392d6e86.ctex"]
+source_file="res://Alchemist/images/relics/big/glowing_shard.png"
+dest_files=["res://.godot/imported/glowing_shard.png-8f2abe4037cec9b96cdcf685d280e6d2.ctex"]
 
 [params]
 
