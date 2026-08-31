@@ -15,11 +15,12 @@ public class AgedBatch : AlchemistCard
     public AgedBatch() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("DecantMax", 2, -1);
-        // DecantFull is IsMutable-gated, so the canonical tips show the plain Mix rows
-        WithTips(card => Mixing.MixTips(((AgedBatch)card).DecantFull));
+        WithTips(card => Mixing.MixTips(((AgedBatch)card).ShowsMixPlusTips));
     }
 
     protected override bool Decants => true;
+
+    private bool ShowsMixPlusTips => DecantFull || (!IsMutable && IsUpgraded);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

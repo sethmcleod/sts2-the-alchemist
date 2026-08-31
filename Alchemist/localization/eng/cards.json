@@ -16,7 +16,7 @@
   "ALCHEMIST-BLEND.title": "Blend",
   "ALCHEMIST-BLOOM.description": "[gold]Trigger[/gold] ALL [gold]Ferment[/gold] cards in your [gold]Hand[/gold] {Turns:diff()} times.",
   "ALCHEMIST-BLOOM.title": "Bloom",
-  "ALCHEMIST-BONK.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {IfUpgraded:show:4|3} additional damage for each [gold]Mix[/gold] you have played this combat.",
+  "ALCHEMIST-BONK.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {IfUpgraded:show:4|3} additional damage for each [gold]Mix[/gold] you have played this combat.{MixesPlayed}",
   "ALCHEMIST-BONK.title": "Bonk",
   "ALCHEMIST-BOTTOMS_UP.description": "Whenever you gain [gold]Poison[/gold], ALL other players gain {Amount:diff()} [gold]Block[/gold] for each [gold]Poison[/gold] gained.",
   "ALCHEMIST-BOTTOMS_UP.title": "Bottoms Up",

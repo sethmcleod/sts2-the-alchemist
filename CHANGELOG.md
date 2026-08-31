@@ -7,6 +7,15 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Changed Bonk's description to show the number of Mixes it has counted this combat
+
+### Fixed
+
+- Fixed Aged Batch not listing the Mix+ hover rows on upgraded copies outside combat
+- Fixed the multiplayer Load Run screen showing an empty background instead of the Alchemist character art
+
 ## [0.14.2] - 2026-08-30
 
 ### Added
