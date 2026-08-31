@@ -9,6 +9,9 @@ mod).
 
 ### Changed
 
+- Buffed Gilded Kit's start-of-combat Poison and Antitoxin: 4 -> 6
+- Buffed Marsh Tonic: 4 -> 6 Antitoxin, 2 -> 4 Poison
+- Buffed Weathered Kit's start-of-combat Poison and Antitoxin: 2 -> 3
 - Changed Bonk's description to show the number of Mixes it has counted this combat
 
 ### Fixed

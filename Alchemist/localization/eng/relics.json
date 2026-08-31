@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "Whenever you gain [gold]Poison[/gold], gain [blue]1[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-EXTRA_DOSE.flavor": "A measured dose, always within reach.",
   "ALCHEMIST-EXTRA_DOSE.title": "Extra Dose",
-  "ALCHEMIST-GILDED_KIT.description": "At the start of each combat, gain [blue]4[/blue] [gold]Poison[/gold] and [blue]4[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites. Upon pickup, gain [blue]1[/blue] potion slot and a random Rare [gold]Potion[/gold].",
+  "ALCHEMIST-GILDED_KIT.description": "At the start of each combat, gain [blue]6[/blue] [gold]Poison[/gold] and [blue]6[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites. Upon pickup, gain [blue]1[/blue] potion slot and a random Rare [gold]Potion[/gold].",
   "ALCHEMIST-GILDED_KIT.flavor": "An ornate case. The gold is not for show.",
   "ALCHEMIST-GILDED_KIT.title": "Gilded Kit",
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]Poison[/gold] on enemies is no longer reduced each turn.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SECOND_SKIN.description": "Whenever your [gold]Poison[/gold] triggers, gain [blue]2[/blue] [gold]Block[/gold].",
   "ALCHEMIST-SECOND_SKIN.flavor": "What gets through the first one still has this to argue with.",
   "ALCHEMIST-SECOND_SKIN.title": "Second Skin",
-  "ALCHEMIST-WEATHERED_KIT.description": "At the start of each combat, gain [blue]2[/blue] [gold]Poison[/gold] and [blue]2[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
+  "ALCHEMIST-WEATHERED_KIT.description": "At the start of each combat, gain [blue]3[/blue] [gold]Poison[/gold] and [blue]3[/blue] [gold]Antitoxin[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "A well worn and pleasantly smelling case.",
   "ALCHEMIST-WEATHERED_KIT.title": "Weathered Kit",
   "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "Swamp Glass"

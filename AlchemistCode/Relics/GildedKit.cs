@@ -14,8 +14,8 @@ public class GildedKit : KitRelic
 {
     private const int PotionSlots = 1;
 
-    protected override int Antitoxin => 4;
-    protected override int Dose => 4;
+    protected override int Antitoxin => 6;
+    protected override int Dose => 6;
 
     public override bool HasUponPickupEffect => true;
 
