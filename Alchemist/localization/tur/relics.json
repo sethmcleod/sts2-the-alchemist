@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "Her [gold]Zehir[/gold] elde ettiğinde [blue]1[/blue] [gold]Antitoksin[/gold] elde et.",
   "ALCHEMIST-EXTRA_DOSE.flavor": "Ölçülü bir doz, her zaman elinin altında.",
   "ALCHEMIST-EXTRA_DOSE.title": "Ekstra Doz",
-  "ALCHEMIST-GILDED_KIT.description": "Her savaşın başında [blue]4[/blue] [gold]Zehir[/gold] ve [blue]4[/blue] [gold]Antitoksin[/gold] elde et. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin. Bu kalıntıyı aldığında [blue]1[/blue] iksir yuvası ve rastgele nadir bir [gold]İksir[/gold] elde et.",
+  "ALCHEMIST-GILDED_KIT.description": "Her savaşın başında [blue]6[/blue] [gold]Zehir[/gold] ve [blue]6[/blue] [gold]Antitoksin[/gold] elde et. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin. Bu kalıntıyı aldığında [blue]1[/blue] iksir yuvası ve rastgele nadir bir [gold]İksir[/gold] elde et.",
   "ALCHEMIST-GILDED_KIT.flavor": "Süslü bir çanta. Altın gösteriş için değil.",
   "ALCHEMIST-GILDED_KIT.title": "Yaldızlı Çanta",
   "ALCHEMIST-GLOWING_SHARD.description": "Düşmanlardaki [gold]Zehir[/gold] artık her turda azalmaz.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SECOND_SKIN.description": "[gold]Zehir[/gold]'in her tetiklendiğinde [blue]2[/blue] [gold]Blok[/gold] elde et.",
   "ALCHEMIST-SECOND_SKIN.flavor": "İlkini geçen şeyin bir de bununla hesaplaşması gerekir.",
   "ALCHEMIST-SECOND_SKIN.title": "İkinci Deri",
-  "ALCHEMIST-WEATHERED_KIT.description": "Her savaşın başında [blue]2[/blue] [gold]Zehir[/gold] ve [blue]2[/blue] [gold]Antitoksin[/gold] elde et. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin.",
+  "ALCHEMIST-WEATHERED_KIT.description": "Her savaşın başında [blue]3[/blue] [gold]Zehir[/gold] ve [blue]3[/blue] [gold]Antitoksin[/gold] elde et. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Yıpranmış ve mis kokulu bir çanta.",
   "ALCHEMIST-WEATHERED_KIT.title": "Yıpranmış Çanta",
   "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "İksir Camı"

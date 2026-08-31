@@ -7,7 +7,7 @@
   "ALCHEMIST-DECOCTION.title": "煎劑",
   "ALCHEMIST-GOLD_LEAF.description": "你每擁有 [blue]10[/blue] 枚[gold]金幣[/gold]，就對所有敵人造成 [blue]1[/blue] 點傷害。{DamageTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "金箔",
-  "ALCHEMIST-MARSH_TONIC.description": "獲得 [blue]4[/blue] 點[gold]抗毒素[/gold]。獲得 [blue]2[/blue] 層[gold]中毒[/gold]。",
+  "ALCHEMIST-MARSH_TONIC.description": "獲得 [blue]6[/blue] 點[gold]抗毒素[/gold]。獲得 [blue]4[/blue] 層[gold]中毒[/gold]。",
   "ALCHEMIST-MARSH_TONIC.title": "沼澤補藥",
   "ALCHEMIST-OLEANDER_MILK.description": "觸發一名敵人身上的[gold]中毒[/gold] [blue]3[/blue] 次。",
   "ALCHEMIST-OLEANDER_MILK.title": "夾竹桃乳",

@@ -13,7 +13,7 @@ public class PatientStrike : AlchemistCard
     public PatientStrike() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(7, static (card, _) =>
-                (card.IsUpgraded ? 8m : 6m) * ((AlchemistCard)card).FermentTurns,
+                (card.IsUpgraded ? 6m : 4m) * ((AlchemistCard)card).FermentTurns,
             ValueProp.Move, 2, 0);
         WithKeyword(CardKeyword.Retain);
         WithTags(CardTag.Strike);

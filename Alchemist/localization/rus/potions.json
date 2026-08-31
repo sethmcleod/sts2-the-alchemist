@@ -7,7 +7,7 @@
   "ALCHEMIST-DECOCTION.title": "Отвар",
   "ALCHEMIST-GOLD_LEAF.description": "Наносит ВСЕМ врагам [blue]1[/blue] урона за каждые [blue]10[/blue] [gold]золота[/gold].{DamageTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Сусальное золото",
-  "ALCHEMIST-MARSH_TONIC.description": "Дает [blue]4[/blue] [gold]антитоксина[/gold]. Дает вам [blue]2[/blue] [gold]яда[/gold].",
+  "ALCHEMIST-MARSH_TONIC.description": "Дает [blue]6[/blue] [gold]антитоксина[/gold]. Дает вам [blue]4[/blue] [gold]яда[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Болотный тоник",
   "ALCHEMIST-OLEANDER_MILK.description": "[gold]Яд[/gold] на враге срабатывает [blue]3[/blue] раза.",
   "ALCHEMIST-OLEANDER_MILK.title": "Олеандровое молоко",

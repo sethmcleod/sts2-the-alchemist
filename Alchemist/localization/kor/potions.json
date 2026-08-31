@@ -7,7 +7,7 @@
   "ALCHEMIST-DECOCTION.title": "탕약",
   "ALCHEMIST-GOLD_LEAF.description": "보유한 [gold]골드[/gold] [blue]10[/blue]마다 모든 적에게 피해를 [blue]1[/blue] 줍니다.{DamageTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "금박",
-  "ALCHEMIST-MARSH_TONIC.description": "[gold]항독소[/gold]를 [blue]4[/blue] 얻습니다. [gold]중독[/gold]을 [blue]2[/blue] 얻습니다.",
+  "ALCHEMIST-MARSH_TONIC.description": "[gold]항독소[/gold]를 [blue]6[/blue] 얻습니다. [gold]중독[/gold]을 [blue]4[/blue] 얻습니다.",
   "ALCHEMIST-MARSH_TONIC.title": "늪지 강장제",
   "ALCHEMIST-OLEANDER_MILK.description": "적에게 [gold]중독[/gold]을 [blue]3[/blue]번 발동시킵니다.",
   "ALCHEMIST-OLEANDER_MILK.title": "협죽도 유액",

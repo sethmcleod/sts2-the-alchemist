@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "Cuando ganes [gold]Veneno[/gold], gana [blue]1[/blue] de [gold]Antitoxina[/gold].",
   "ALCHEMIST-EXTRA_DOSE.flavor": "Una dosis medida, siempre al alcance.",
   "ALCHEMIST-EXTRA_DOSE.title": "Dosis extra",
-  "ALCHEMIST-GILDED_KIT.description": "Al comienzo de cada combate, gana [blue]4[/blue] de [gold]Veneno[/gold] y [blue]4[/blue] de [gold]Antitoxina[/gold]. Puedes [gold]Elaborar[/gold] en los Lugares de descanso. Al recoger esta reliquia, gana [blue]1[/blue] espacio de poción y una [gold]Poción[/gold] rara aleatoria.",
+  "ALCHEMIST-GILDED_KIT.description": "Al comienzo de cada combate, gana [blue]6[/blue] de [gold]Veneno[/gold] y [blue]6[/blue] de [gold]Antitoxina[/gold]. Puedes [gold]Elaborar[/gold] en los Lugares de descanso. Al recoger esta reliquia, gana [blue]1[/blue] espacio de poción y una [gold]Poción[/gold] rara aleatoria.",
   "ALCHEMIST-GILDED_KIT.flavor": "Un estuche ornamentado. El oro no es de adorno.",
   "ALCHEMIST-GILDED_KIT.title": "Estuche dorado",
   "ALCHEMIST-GLOWING_SHARD.description": "El [gold]Veneno[/gold] de los enemigos ya no se reduce cada turno.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SECOND_SKIN.description": "Cuando se active tu [gold]Veneno[/gold], gana [blue]2[/blue] de [gold]Bloqueo[/gold].",
   "ALCHEMIST-SECOND_SKIN.flavor": "Lo que cruza la primera aún debe vérselas con esta.",
   "ALCHEMIST-SECOND_SKIN.title": "Segunda piel",
-  "ALCHEMIST-WEATHERED_KIT.description": "Al comienzo de cada combate, gana [blue]2[/blue] de [gold]Veneno[/gold] y [blue]2[/blue] de [gold]Antitoxina[/gold]. Puedes [gold]Elaborar[/gold] en los Lugares de descanso.",
+  "ALCHEMIST-WEATHERED_KIT.description": "Al comienzo de cada combate, gana [blue]3[/blue] de [gold]Veneno[/gold] y [blue]3[/blue] de [gold]Antitoxina[/gold]. Puedes [gold]Elaborar[/gold] en los Lugares de descanso.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Un estuche muy usado y de olor agradable.",
   "ALCHEMIST-WEATHERED_KIT.title": "Estuche gastado",
   "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "Cristal de elixir"

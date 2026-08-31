@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "[gold]毒[/gold]を得るたび、[gold]抗毒素[/gold][blue]1[/blue]を得る。",
   "ALCHEMIST-EXTRA_DOSE.flavor": "きっちり量った一服が、いつでも手の届くところに。",
   "ALCHEMIST-EXTRA_DOSE.title": "追加の一服",
-  "ALCHEMIST-GILDED_KIT.description": "各戦闘の開始時、[gold]毒[/gold][blue]4[/blue]と[gold]抗毒素[/gold][blue]4[/blue]を得る。休憩所で[gold]調合[/gold]できる。取得時、ポーションスロットを[blue]1[/blue]つと、ランダムなレアの[gold]ポーション[/gold]を1つ得る。",
+  "ALCHEMIST-GILDED_KIT.description": "各戦闘の開始時、[gold]毒[/gold][blue]6[/blue]と[gold]抗毒素[/gold][blue]6[/blue]を得る。休憩所で[gold]調合[/gold]できる。取得時、ポーションスロットを[blue]1[/blue]つと、ランダムなレアの[gold]ポーション[/gold]を1つ得る。",
   "ALCHEMIST-GILDED_KIT.flavor": "装飾を凝らした道具箱。その金は飾りではない。",
   "ALCHEMIST-GILDED_KIT.title": "金張りの道具箱",
   "ALCHEMIST-GLOWING_SHARD.description": "敵の[gold]毒[/gold]は毎ターン減少しなくなる。",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SECOND_SKIN.description": "自身の[gold]毒[/gold]が発動するたび、[blue]2[/blue][gold]ブロック[/gold]を得る。",
   "ALCHEMIST-SECOND_SKIN.flavor": "一枚目をすり抜けたものにも、まだこいつが待っている。",
   "ALCHEMIST-SECOND_SKIN.title": "第二の皮膚",
-  "ALCHEMIST-WEATHERED_KIT.description": "各戦闘の開始時、[gold]毒[/gold][blue]2[/blue]と[gold]抗毒素[/gold][blue]2[/blue]を得る。休憩所で[gold]調合[/gold]できる。",
+  "ALCHEMIST-WEATHERED_KIT.description": "各戦闘の開始時、[gold]毒[/gold][blue]3[/blue]と[gold]抗毒素[/gold][blue]3[/blue]を得る。休憩所で[gold]調合[/gold]できる。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "使い込まれ、心地よい香りのする道具箱。",
   "ALCHEMIST-WEATHERED_KIT.title": "使い込まれた道具箱",
   "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "エリクサーグラス"

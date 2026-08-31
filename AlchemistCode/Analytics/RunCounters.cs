@@ -17,9 +17,13 @@ public static class RunCounters
     public const string PoisonGained = "poison_gained";
     public const string PoisonAbsorbed = "poison_absorbed";
     public const string PoisonBled = "poison_bled";
+    public const string AntitoxinPeak = "antitoxin_peak";
 
     public static readonly string[] Keys =
-        { MixBursting, MixFuming, MixSyrupy, MixZesty, PoisonGained, PoisonAbsorbed, PoisonBled };
+    {
+        MixBursting, MixFuming, MixSyrupy, MixZesty, PoisonGained, PoisonAbsorbed, PoisonBled,
+        AntitoxinPeak,
+    };
 
     private static readonly Dictionary<string, SpireField<Player, int>> Fields = new();
 
@@ -44,6 +48,13 @@ public static class RunCounters
         // KeyNotFoundException inside a combat hook
         if (player == null || amount <= 0 || !Fields.TryGetValue(key, out var field)) return;
         field[player] = field[player] + amount;
+    }
+
+    // Max semantics for high-water marks such as the Antitoxin peak
+    public static void RaiseTo(Player? player, string key, int value)
+    {
+        if (player == null || value <= 0 || !Fields.TryGetValue(key, out var field)) return;
+        if (value > field[player]) field[player] = value;
     }
 
     public static int CountFor(SerializablePlayer player, string key) =>

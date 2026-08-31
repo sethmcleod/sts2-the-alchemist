@@ -15,7 +15,7 @@ public class Overdose : AlchemistCard
     public Overdose() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("SelfPoison", 5, 0);
-        WithVar("antitoxin", 2, 1);
+        WithVar("antitoxin", 3, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));

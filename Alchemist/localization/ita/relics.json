@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "Ogni volta che ottieni [gold]Veleno[/gold], ottieni [blue]1[/blue] di [gold]Antitossina[/gold].",
   "ALCHEMIST-EXTRA_DOSE.flavor": "Una dose misurata, sempre a portata di mano.",
   "ALCHEMIST-EXTRA_DOSE.title": "Dose Extra",
-  "ALCHEMIST-GILDED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]4[/blue] di [gold]Veleno[/gold] e [blue]4[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo. Dopo aver ottenuto questa reliquia, ottieni [blue]1[/blue] alloggiamento pozione e una [gold]pozione[/gold] rara casuale.",
+  "ALCHEMIST-GILDED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]6[/blue] di [gold]Veleno[/gold] e [blue]6[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo. Dopo aver ottenuto questa reliquia, ottieni [blue]1[/blue] alloggiamento pozione e una [gold]pozione[/gold] rara casuale.",
   "ALCHEMIST-GILDED_KIT.flavor": "Una valigetta decorata. L'oro non è per bellezza.",
   "ALCHEMIST-GILDED_KIT.title": "Kit Dorato",
   "ALCHEMIST-GLOWING_SHARD.description": "Il [gold]Veleno[/gold] sui nemici non si riduce più a ogni turno.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SECOND_SKIN.description": "Ogni volta che il tuo [gold]Veleno[/gold] si attiva, ottieni [blue]2[/blue] di [gold]Blocco[/gold].",
   "ALCHEMIST-SECOND_SKIN.flavor": "Ciò che supera la prima deve ancora vedersela con questa.",
   "ALCHEMIST-SECOND_SKIN.title": "Seconda Pelle",
-  "ALCHEMIST-WEATHERED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]2[/blue] di [gold]Veleno[/gold] e [blue]2[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
+  "ALCHEMIST-WEATHERED_KIT.description": "All'inizio di ogni combattimento, ottieni [blue]3[/blue] di [gold]Veleno[/gold] e [blue]3[/blue] di [gold]Antitossina[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "Una valigetta consunta, dal profumo gradevole.",
   "ALCHEMIST-WEATHERED_KIT.title": "Kit Consunto",
   "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "Vetro d'Elisir"

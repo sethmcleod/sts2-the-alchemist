@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "每當你獲得[gold]中毒[/gold]時，獲得 [blue]1[/blue] 點[gold]抗毒素[/gold]。",
   "ALCHEMIST-EXTRA_DOSE.flavor": "一份量好的藥劑，總在伸手可及之處。",
   "ALCHEMIST-EXTRA_DOSE.title": "額外藥劑",
-  "ALCHEMIST-GILDED_KIT.description": "每場戰鬥開始時，獲得 [blue]4[/blue] 層[gold]中毒[/gold]和 [blue]4[/blue] 點[gold]抗毒素[/gold]。你可以在休息處[gold]釀造[/gold]。拾取時，獲得 [blue]1[/blue] 個藥水欄位和一瓶隨機稀有[gold]藥水[/gold]。",
+  "ALCHEMIST-GILDED_KIT.description": "每場戰鬥開始時，獲得 [blue]6[/blue] 層[gold]中毒[/gold]和 [blue]6[/blue] 點[gold]抗毒素[/gold]。你可以在休息處[gold]釀造[/gold]。拾取時，獲得 [blue]1[/blue] 個藥水欄位和一瓶隨機稀有[gold]藥水[/gold]。",
   "ALCHEMIST-GILDED_KIT.flavor": "一只華麗的箱子。上頭的金子不是拿來炫耀的。",
   "ALCHEMIST-GILDED_KIT.title": "鎏金藥箱",
   "ALCHEMIST-GLOWING_SHARD.description": "敵人的[gold]中毒[/gold]不再每回合減少。",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SECOND_SKIN.description": "每當你的[gold]中毒[/gold]觸發時，獲得 [blue]2[/blue] 點[gold]格擋[/gold]。",
   "ALCHEMIST-SECOND_SKIN.flavor": "穿透第一層的東西，還得跟這一層講道理。",
   "ALCHEMIST-SECOND_SKIN.title": "第二層皮",
-  "ALCHEMIST-WEATHERED_KIT.description": "每場戰鬥開始時，獲得 [blue]2[/blue] 層[gold]中毒[/gold]和 [blue]2[/blue] 點[gold]抗毒素[/gold]。你可以在休息處[gold]釀造[/gold]。",
+  "ALCHEMIST-WEATHERED_KIT.description": "每場戰鬥開始時，獲得 [blue]3[/blue] 層[gold]中毒[/gold]和 [blue]3[/blue] 點[gold]抗毒素[/gold]。你可以在休息處[gold]釀造[/gold]。",
   "ALCHEMIST-WEATHERED_KIT.flavor": "一只用得很舊、氣味宜人的箱子。",
   "ALCHEMIST-WEATHERED_KIT.title": "風霜藥箱",
   "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "靈藥玻璃"

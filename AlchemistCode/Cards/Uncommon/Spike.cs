@@ -12,7 +12,7 @@ public class Spike : AlchemistCard
     public Spike() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(9, 3);
-        WithVar("DecantMax", 4, -1);
+        WithVar("DecantMax", 3, -1);
         WithVar("poison", 4, 2);
         WithTip(typeof(PoisonPower));
     }

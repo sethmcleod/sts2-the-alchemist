@@ -7,7 +7,7 @@
   "ALCHEMIST-DECOCTION.title": "Macération",
   "ALCHEMIST-GOLD_LEAF.description": "Infligez [blue]1[/blue] dégât à TOUS les ennemis pour chaque tranche de [blue]10[/blue] [gold]Pièces d'or[/gold] en votre possession.{DamageTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "Feuille d'or",
-  "ALCHEMIST-MARSH_TONIC.description": "Gagnez [blue]4[/blue] d'[gold]Antitoxine[/gold]. Gagnez [blue]2[/blue] de [gold]Poison[/gold].",
+  "ALCHEMIST-MARSH_TONIC.description": "Gagnez [blue]6[/blue] d'[gold]Antitoxine[/gold]. Gagnez [blue]4[/blue] de [gold]Poison[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Tonique des marais",
   "ALCHEMIST-OLEANDER_MILK.description": "Déclenchez [blue]3[/blue] fois les dégâts du [gold]Poison[/gold] sur un ennemi.",
   "ALCHEMIST-OLEANDER_MILK.title": "Lait de laurier-rose",

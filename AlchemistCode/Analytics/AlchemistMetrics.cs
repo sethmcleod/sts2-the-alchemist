@@ -208,6 +208,10 @@ internal static class AlchemistMetrics
                     ["absorbed"] = RunCounters.CountFor(localPlayer, RunCounters.PoisonAbsorbed),
                     ["bled"] = RunCounters.CountFor(localPlayer, RunCounters.PoisonBled),
                 },
+                ["antitoxin"] = new JsonObject
+                {
+                    ["peak"] = RunCounters.CountFor(localPlayer, RunCounters.AntitoxinPeak),
+                },
                 ["config"] = new JsonObject
                 {
                     ["enable_epochs"] = AlchemistModConfig.EnableEpochs,

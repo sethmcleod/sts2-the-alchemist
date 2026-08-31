@@ -13,7 +13,7 @@ public class Jab : AlchemistCard
     public Jab() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(5, static (card, _) => Dose(card), ValueProp.Move, 2);
-        WithVar("Poison", 2, 1);
+        WithVar("Poison", 3, 1);
         WithTip(typeof(PoisonPower));
     }
 

@@ -7,7 +7,7 @@
   "ALCHEMIST-DECOCTION.title": "ยาต้ม",
   "ALCHEMIST-GOLD_LEAF.description": "สร้างความเสียหาย [blue]1[/blue] ใส่ศัตรูทั้งหมด ต่อทุก [blue]10[/blue] [gold]ทอง[/gold] ที่คุณมี{DamageTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "ทองคำเปลว",
-  "ALCHEMIST-MARSH_TONIC.description": "ได้รับ [blue]4[/blue] [gold]สารต้านพิษ[/gold] ได้รับ [blue]2[/blue] [gold]พิษ[/gold]",
+  "ALCHEMIST-MARSH_TONIC.description": "ได้รับ [blue]6[/blue] [gold]สารต้านพิษ[/gold] ได้รับ [blue]4[/blue] [gold]พิษ[/gold]",
   "ALCHEMIST-MARSH_TONIC.title": "ยาบำรุงบึงเลน",
   "ALCHEMIST-OLEANDER_MILK.description": "ทำให้[gold]พิษ[/gold]บนตัวศัตรู 1 ตัวทำงาน [blue]3[/blue] ครั้ง",
   "ALCHEMIST-OLEANDER_MILK.title": "ยางยี่โถ",

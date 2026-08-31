@@ -11,7 +11,7 @@
   "ALCHEMIST-EXTRA_DOSE.description": "[gold]중독[/gold]을 얻을 때마다, [gold]항독소[/gold]를 [blue]1[/blue] 얻습니다.",
   "ALCHEMIST-EXTRA_DOSE.flavor": "정량으로 덜어 둔 한 번분, 언제나 손 닿는 곳에.",
   "ALCHEMIST-EXTRA_DOSE.title": "추가 약",
-  "ALCHEMIST-GILDED_KIT.description": "매 전투 시작 시, [gold]중독[/gold]을 [blue]4[/blue], [gold]항독소[/gold]를 [blue]4[/blue] 얻습니다. 휴식 장소에서 [gold]조제[/gold]할 수 있습니다. 획득 시, 포션 슬롯을 [blue]1[/blue]개 얻고 무작위 희귀 [gold]포션[/gold]을 1개 얻습니다.",
+  "ALCHEMIST-GILDED_KIT.description": "매 전투 시작 시, [gold]중독[/gold]을 [blue]6[/blue], [gold]항독소[/gold]를 [blue]6[/blue] 얻습니다. 휴식 장소에서 [gold]조제[/gold]할 수 있습니다. 획득 시, 포션 슬롯을 [blue]1[/blue]개 얻고 무작위 희귀 [gold]포션[/gold]을 1개 얻습니다.",
   "ALCHEMIST-GILDED_KIT.flavor": "화려한 도구함. 그 금은 장식이 아니다.",
   "ALCHEMIST-GILDED_KIT.title": "금장 도구함",
   "ALCHEMIST-GLOWING_SHARD.description": "적의 [gold]중독[/gold]은 더 이상 매 턴 감소하지 않습니다.",
@@ -23,7 +23,7 @@
   "ALCHEMIST-SECOND_SKIN.description": "내 [gold]중독[/gold]이 발동할 때마다, [gold]방어도[/gold]를 [blue]2[/blue] 얻습니다.",
   "ALCHEMIST-SECOND_SKIN.flavor": "첫 번째 피부를 뚫고 들어온 것도, 이것과 다시 겨뤄야 한다.",
   "ALCHEMIST-SECOND_SKIN.title": "제2의 피부",
-  "ALCHEMIST-WEATHERED_KIT.description": "매 전투 시작 시, [gold]중독[/gold]을 [blue]2[/blue], [gold]항독소[/gold]를 [blue]2[/blue] 얻습니다. 휴식 장소에서 [gold]조제[/gold]할 수 있습니다.",
+  "ALCHEMIST-WEATHERED_KIT.description": "매 전투 시작 시, [gold]중독[/gold]을 [blue]3[/blue], [gold]항독소[/gold]를 [blue]3[/blue] 얻습니다. 휴식 장소에서 [gold]조제[/gold]할 수 있습니다.",
   "ALCHEMIST-WEATHERED_KIT.flavor": "손때가 묻고 기분 좋은 향이 나는 도구함.",
   "ALCHEMIST-WEATHERED_KIT.title": "낡은 도구함",
   "SEA_GLASS.ALCHEMIST-ALCHEMIST.title": "엘릭서 유리"
