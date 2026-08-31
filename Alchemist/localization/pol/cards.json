@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "Powtórka",
   "ALCHEMIST-RESOLVE.description": "[gold]Fermentacja{FermentSuffix}.[/gold]\nZyskaj {Amount:diff()}{Resolved} pkt. [gold]Siły[/gold], plus {perTurn} za każdą turę fermentacji.",
   "ALCHEMIST-RESOLVE.title": "Determinacja",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Fermentacja{FermentSuffix}.[/gold]\nZadaj {CalculatedDamage:diff()} pkt. obrażeń WSZYSTKIM przeciwnikom.\nZadaje dodatkowo 4 pkt. obrażeń za każdą turę fermentacji.",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Fermentacja{FermentSuffix}.[/gold]\nZadaj {CalculatedDamage:diff()} pkt. obrażeń.\nZadaje dodatkowo {IfUpgraded:show:4|3} pkt. obrażeń za każdą turę fermentacji WSZYSTKICH kart z [gold]Fermentacją[/gold] w [gold]ręce[/gold].",
   "ALCHEMIST-ROLLING_BOIL.title": "Wrzenie",
   "ALCHEMIST-RUNOFF.description": "Kiedykolwiek stworzysz kartę, nałóż {Amount:diff()} pkt. [gold]Trucizny[/gold] na WSZYSTKICH przeciwników.",
   "ALCHEMIST-RUNOFF.title": "Spływ",

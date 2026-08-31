@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "Reprise",
   "ALCHEMIST-RESOLVE.description": "[gold]Fermentar{FermentSuffix}.[/gold]\nReceba {Amount:diff()}{Resolved} de [gold]Força[/gold], mais {perTurn} por cada turno fermentado.",
   "ALCHEMIST-RESOLVE.title": "Determinação",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Fermentar{FermentSuffix}.[/gold]\nCause {CalculatedDamage:diff()} de dano a TODOS os inimigos.\nCausa 4 de dano adicional por cada turno fermentado.",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Fermentar{FermentSuffix}.[/gold]\nCause {CalculatedDamage:diff()} de dano.\nCausa {IfUpgraded:show:4|3} de dano adicional por cada turno fermentado de TODAS as cartas de [gold]Fermentar[/gold] na sua [gold]Mão[/gold].",
   "ALCHEMIST-ROLLING_BOIL.title": "Fervura Intensa",
   "ALCHEMIST-RUNOFF.description": "Sempre que você criar uma carta, aplique {Amount:diff()} de [gold]Veneno[/gold] a TODOS os inimigos.",
   "ALCHEMIST-RUNOFF.title": "Escoamento",

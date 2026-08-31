@@ -27,6 +27,7 @@ mod).
 - Nerfed Mortar's fermented scaling: 3 -> 2 (3) additional damage for each turn fermented
 - Nerfed Patient Strike's fermented scaling: 6 (8) -> 4 (6) additional damage for each turn fermented
 - Reduced Decant thresholds: Pelt 3 (2) -> 2 (1), Spike 4 (3) -> 3 (2), Cure 3 (2) -> 2 (1), Wallop 5 (4) -> 4 (3)
+- Reworked Rolling Boil: "Retain. Ferment (0). Deal 8 (10) damage. Deals 3 (4) additional damage for each turn fermented by ALL Ferment cards in your Hand."
 - Reworked Nightcap into an Antitoxin finisher: "Deal damage equal to 2 (3) times your Antitoxin. Exhaust." (2 -> 1 energy)
 - Reworked Refine: "For the next 1 (2) turns, your Decant cards' effects activate at any level, and levels are not reset. Exhaust." (1 (0) -> 0 energy.)
 

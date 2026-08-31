@@ -66,7 +66,7 @@ Refine,Rare,Skill,0,"For the next 1 (2) turns, your Decant cards' effects activa
 Reflux,"Uncommon, Multiplayer",Skill,1 (0),"Choose another player. Whenever they play a card that applies a debuff this turn, they apply 2 Poison to that enemy."
 Rerun,Rare,Skill,1,"This turn, your next 1 (2) cards are played an extra time. Gain 3 Poison."
 Resolve,Uncommon,Power,1,"Retain. Ferment (0). Gain 1 (2) Strength, plus 1 for each turn fermented."
-Rolling Boil,Rare,Attack,2,Retain. Ferment (0). Deal 5 (7) damage to ALL enemies. Deals 4 additional damage for each turn fermented.
+Rolling Boil,Rare,Attack,2,Retain. Ferment (0). Deal 8 (10) damage. Deals 3 (4) additional damage for each turn fermented by ALL Ferment cards in your Hand.
 Runoff,Uncommon,Power,1,"Whenever you create a card, apply 1 (2) Poison to ALL enemies."
 Smelling Salts,Rare,Power,2,"At the start of your turn, if you have 3 or more Poison, gain 1 Energy. (Smelling Salts+ is Innate.)"
 Spatter,Uncommon,Skill,1,"Discard any number of cards. Apply 3 Poison to ALL enemies, plus 2 (3) for each card discarded."

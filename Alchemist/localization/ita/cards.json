@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "Ritrasmissione",
   "ALCHEMIST-RESOLVE.description": "[gold]Fermentazione{FermentSuffix}.[/gold]\nOttieni {Amount:diff()}{Resolved} di [gold]Forza[/gold], più {perTurn} per ogni turno di fermentazione.",
   "ALCHEMIST-RESOLVE.title": "Risolutezza",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Fermentazione{FermentSuffix}.[/gold]\nInfliggi {CalculatedDamage:diff()} di danno a TUTTI i nemici.\nInfligge 4 di danno extra per ogni turno di fermentazione.",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Fermentazione{FermentSuffix}.[/gold]\nInfliggi {CalculatedDamage:diff()} di danno.\nInfligge {IfUpgraded:show:4|3} di danno extra per ogni turno di fermentazione di TUTTE le carte [gold]Fermentazione[/gold] nella tua [gold]mano[/gold].",
   "ALCHEMIST-ROLLING_BOIL.title": "Bollore",
   "ALCHEMIST-RUNOFF.description": "Ogni volta che crei una carta, applichi {Amount:diff()} di [gold]Veleno[/gold] a TUTTI i nemici.",
   "ALCHEMIST-RUNOFF.title": "Deflusso",

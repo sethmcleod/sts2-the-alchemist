@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "Wiederholung",
   "ALCHEMIST-RESOLVE.description": "[gold]Gärung{FermentSuffix}.[/gold]\nErhalte {Amount:diff()}{Resolved} [gold]Stärke[/gold], plus {perTurn} für jeden Zug in Gärung.",
   "ALCHEMIST-RESOLVE.title": "Entschlossenheit",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Gärung{FermentSuffix}.[/gold]\nFüge ALLEN Gegnern {CalculatedDamage:diff()} Schaden zu.\nFügt für jeden vergorenen Zug 4 zusätzlichen Schaden zu.",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Gärung{FermentSuffix}.[/gold]\nFüge {CalculatedDamage:diff()} Schaden zu.\nFügt {IfUpgraded:show:4|3} Schaden mehr zu pro vergorenem Zug ALLER Karten mit [gold]Gärung[/gold] auf deiner [gold]Hand[/gold].",
   "ALCHEMIST-ROLLING_BOIL.title": "Wallendes Sieden",
   "ALCHEMIST-RUNOFF.description": "Immer wenn du eine Karte erzeugst, wende {Amount:diff()} [gold]Gift[/gold] auf ALLE Gegner an.",
   "ALCHEMIST-RUNOFF.title": "Abfluss",

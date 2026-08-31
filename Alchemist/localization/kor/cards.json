@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "재연",
   "ALCHEMIST-RESOLVE.description": "[gold]발효{FermentSuffix}.[/gold]\n[gold]힘[/gold]을 {Amount:diff()}{Resolved} 얻고, 발효한 턴마다 {perTurn} 추가로 얻습니다.",
   "ALCHEMIST-RESOLVE.title": "결의",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]발효{FermentSuffix}.[/gold]\n모든 적에게 피해를 {CalculatedDamage:diff()} 줍니다.\n발효한 턴마다 피해량이 4 증가합니다.",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]발효{FermentSuffix}.[/gold]\n피해를 {CalculatedDamage:diff()} 줍니다.\n[gold]손[/gold]에 있는 모든 [gold]발효[/gold] 카드가 발효한 턴마다 피해량이 {IfUpgraded:show:4|3} 증가합니다.",
   "ALCHEMIST-ROLLING_BOIL.title": "펄펄 끓음",
   "ALCHEMIST-RUNOFF.description": "카드를 생성할 때마다, 모든 적에게 [gold]중독[/gold]을 {Amount:diff()} 부여합니다.",
   "ALCHEMIST-RUNOFF.title": "유출",

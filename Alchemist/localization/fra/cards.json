@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "Rediffusion",
   "ALCHEMIST-RESOLVE.description": "[gold]Fermentation{FermentSuffix}.[/gold]\nGagnez {Amount:diff()}{Resolved} de [gold]Force[/gold], plus {perTurn} pour chaque tour de fermentation.",
   "ALCHEMIST-RESOLVE.title": "Résolution",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Fermentation{FermentSuffix}.[/gold]\nInfligez {CalculatedDamage:diff()} dégâts à TOUS les ennemis.\nInflige 4 dégâts supplémentaires pour chaque tour de fermentation.",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Fermentation{FermentSuffix}.[/gold]\nInfligez {CalculatedDamage:diff()} dégâts.\nInflige {IfUpgraded:show:4|3} dégâts supplémentaires pour chaque tour de fermentation de TOUTES les cartes [gold]Fermentation[/gold] de votre [gold]Main[/gold].",
   "ALCHEMIST-ROLLING_BOIL.title": "Ébullition",
   "ALCHEMIST-RUNOFF.description": "Lorsque vous créez une carte, appliquez {Amount:diff()} de [gold]Poison[/gold] à TOUS les ennemis.",
   "ALCHEMIST-RUNOFF.title": "Ruissellement",

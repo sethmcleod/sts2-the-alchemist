@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "再演",
   "ALCHEMIST-RESOLVE.description": "[gold]発酵{FermentSuffix}。[/gold]\n[gold]筋力[/gold]{Amount:diff()}{Resolved}を得る。さらに発酵したターン1回につき{perTurn}を得る。",
   "ALCHEMIST-RESOLVE.title": "決意",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]発酵{FermentSuffix}。[/gold]\nすべての敵に{CalculatedDamage:diff()}ダメージを与える。\n発酵したターン1回につき、追加で4ダメージを与える。",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]発酵{FermentSuffix}。[/gold]\n{CalculatedDamage:diff()}ダメージを与える。\n[gold]手札[/gold]のすべての[gold]発酵[/gold]カードが発酵したターン1回につき、追加で{IfUpgraded:show:4|3}ダメージを与える。",
   "ALCHEMIST-ROLLING_BOIL.title": "沸騰",
   "ALCHEMIST-RUNOFF.description": "カードを作成するたび、[gold]毒[/gold]{Amount:diff()}をすべての敵に付与する。",
   "ALCHEMIST-RUNOFF.title": "流出",

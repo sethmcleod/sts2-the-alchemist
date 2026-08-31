@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "Rerun",
   "ALCHEMIST-RESOLVE.description": "[gold]Ferment{FermentSuffix}.[/gold]\nGain {Amount:diff()}{Resolved} [gold]Strength[/gold], plus {perTurn} for each turn fermented.",
   "ALCHEMIST-RESOLVE.title": "Resolve",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Ferment{FermentSuffix}.[/gold]\nDeal {CalculatedDamage:diff()} damage to ALL enemies.\nDeals 4 additional damage for each turn fermented.",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Ferment{FermentSuffix}.[/gold]\nDeal {CalculatedDamage:diff()} damage.\nDeals {IfUpgraded:show:4|3} additional damage for each turn fermented by ALL [gold]Ferment[/gold] cards in your [gold]Hand[/gold].",
   "ALCHEMIST-ROLLING_BOIL.title": "Rolling Boil",
   "ALCHEMIST-RUNOFF.description": "Whenever you create a card, apply {Amount:diff()} [gold]Poison[/gold] to ALL enemies.",
   "ALCHEMIST-RUNOFF.title": "Runoff",

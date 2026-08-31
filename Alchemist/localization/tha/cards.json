@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "ฉายซ้ำ",
   "ALCHEMIST-RESOLVE.description": "[gold]บ่ม{FermentSuffix}[/gold]\nได้รับ {Amount:diff()}{Resolved} [gold]ความแข็งแรง[/gold] บวกอีก {perTurn} ต่อทุกเทิร์นที่บ่ม",
   "ALCHEMIST-RESOLVE.title": "ใจเด็ดเดี่ยว",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]บ่ม{FermentSuffix}[/gold]\nสร้างความเสียหาย {CalculatedDamage:diff()} ใส่ศัตรูทั้งหมด\nสร้างความเสียหายเพิ่ม 4 ต่อทุกเทิร์นที่บ่ม",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]บ่ม{FermentSuffix}[/gold]\nสร้างความเสียหาย {CalculatedDamage:diff()}\nสร้างความเสียหายเพิ่ม {IfUpgraded:show:4|3} ต่อทุกเทิร์นที่บ่มของการ์ด[gold]บ่ม[/gold]ทั้งหมดใน[gold]มือ[/gold]",
   "ALCHEMIST-ROLLING_BOIL.title": "เดือดพล่าน",
   "ALCHEMIST-RUNOFF.description": "ทุกครั้งที่คุณสร้างการ์ด สร้าง {Amount:diff()} [gold]พิษ[/gold]ใส่ศัตรูทั้งหมด",
   "ALCHEMIST-RUNOFF.title": "น้ำทิ้ง",

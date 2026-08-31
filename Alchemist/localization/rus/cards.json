@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "Повтор",
   "ALCHEMIST-RESOLVE.description": "[gold]Брожение{FermentSuffix}.[/gold]\nДает {Amount:diff()}{Resolved} [gold]силы[/gold] плюс {perTurn} за каждый ход брожения.",
   "ALCHEMIST-RESOLVE.title": "Решимость",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Брожение{FermentSuffix}.[/gold]\nНаносит {CalculatedDamage:diff()} урона ВСЕМ врагам.\nНаносит на 4 урона больше за каждый ход брожения.",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Брожение{FermentSuffix}.[/gold]\nНаносит {CalculatedDamage:diff()} урона.\nНаносит на {IfUpgraded:show:4|3} урона больше за каждый ход брожения ВСЕХ карт с [gold]брожением[/gold] в вашей [gold]руке[/gold].",
   "ALCHEMIST-ROLLING_BOIL.title": "Бурное кипение",
   "ALCHEMIST-RUNOFF.description": "Когда вы создаете карту, накладывает {Amount:diff()} [gold]яда[/gold] на ВСЕХ врагов.",
   "ALCHEMIST-RUNOFF.title": "Сток",

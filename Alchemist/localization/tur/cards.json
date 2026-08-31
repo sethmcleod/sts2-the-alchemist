@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "Tekrar",
   "ALCHEMIST-RESOLVE.description": "[gold]Mayalan{FermentSuffix}.[/gold]\n{Amount:diff()}{Resolved} [gold]Kuvvet[/gold], artı mayalandığı her tur için {perTurn} elde et.",
   "ALCHEMIST-RESOLVE.title": "Kararlılık",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Mayalan{FermentSuffix}.[/gold]\nTÜM düşmanlara {CalculatedDamage:diff()} hasar ver.\nMayalandığı her tur için fazladan 4 hasar verir.",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Mayalan{FermentSuffix}.[/gold]\n{CalculatedDamage:diff()} hasar ver.\n[gold]El[/gold]'indeki TÜM [gold]Mayalan[/gold] kartlarının mayalandığı her tur için fazladan {IfUpgraded:show:4|3} hasar verir.",
   "ALCHEMIST-ROLLING_BOIL.title": "Fokurtu",
   "ALCHEMIST-RUNOFF.description": "Her kart oluşturduğunda TÜM düşmanlara {Amount:diff()} [gold]Zehir[/gold] uygula.",
   "ALCHEMIST-RUNOFF.title": "Akıntı",

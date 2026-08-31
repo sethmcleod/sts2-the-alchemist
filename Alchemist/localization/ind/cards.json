@@ -138,7 +138,7 @@
   "ALCHEMIST-RERUN.title": "Tayangan Ulang",
   "ALCHEMIST-RESOLVE.description": "[gold]Fermentasi{FermentSuffix}.[/gold]\nDapatkan {Amount:diff()}{Resolved} [gold]Kekuatan[/gold], ditambah {perTurn} untuk setiap giliran terfermentasi.",
   "ALCHEMIST-RESOLVE.title": "Tekad",
-  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Fermentasi{FermentSuffix}.[/gold]\nLakukan {CalculatedDamage:diff()} kerusakan ke SEMUA musuh.\nMelakukan 4 kerusakan tambahan untuk setiap giliran terfermentasi.",
+  "ALCHEMIST-ROLLING_BOIL.description": "[gold]Fermentasi{FermentSuffix}.[/gold]\nLakukan {CalculatedDamage:diff()} kerusakan.\nMelakukan {IfUpgraded:show:4|3} kerusakan tambahan untuk setiap giliran terfermentasi dari SEMUA kartu [gold]Fermentasi[/gold] di [gold]Tanganmu[/gold].",
   "ALCHEMIST-ROLLING_BOIL.title": "Didih Bergolak",
   "ALCHEMIST-RUNOFF.description": "Setiap kali kamu membuat kartu, terapkan {Amount:diff()} [gold]Racun[/gold] ke SEMUA musuh.",
   "ALCHEMIST-RUNOFF.title": "Limpasan",
