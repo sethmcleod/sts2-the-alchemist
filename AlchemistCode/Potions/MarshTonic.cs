@@ -25,7 +25,7 @@ public class MarshTonic : AlchemistPotion
         // drink reads as the same effect as the bar it fills and the puff an absorb makes
         var creature = target ?? Owner.Creature;
         NCombatRoom.Instance?.PlaySplashVfx(creature, AlchemistModConfig.AntitoxinBarColor);
-        await PowerCmd.Apply<Powers.AntitoxinPower>(choiceContext, creature, 4m, Owner.Creature, null);
-        await PowerCmd.Apply<PoisonPower>(choiceContext, creature, 2m, Owner.Creature, null);
+        await PowerCmd.Apply<Powers.AntitoxinPower>(choiceContext, creature, 6m, Owner.Creature, null);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, creature, 4m, Owner.Creature, null);
     }
 }

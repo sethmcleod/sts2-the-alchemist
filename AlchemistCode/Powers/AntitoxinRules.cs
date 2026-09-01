@@ -70,6 +70,9 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
     {
         if (power is PoisonPower && power.Owner.IsPlayer && amount > 0)
             Analytics.RunCounters.Add(power.Owner.Player, Analytics.RunCounters.PoisonGained, (int)amount);
+        if (power is AntitoxinPower && power.Owner.IsPlayer && amount > 0)
+            Analytics.RunCounters.RaiseTo(power.Owner.Player, Analytics.RunCounters.AntitoxinPeak,
+                (int)power.Amount);
         return Task.CompletedTask;
     }
 

@@ -11,7 +11,7 @@ public class Pelt : AlchemistCard
     public Pelt() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(8, 2);
-        WithVar("DecantMax", 3, -1);
+        WithVar("DecantMax", 2, -1);
     }
 
     protected override bool Decants => true;

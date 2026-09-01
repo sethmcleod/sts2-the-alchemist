@@ -158,13 +158,28 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     // Pour Over moves fermentation between cards. Raw field access on both ends, because a move is
     // not fermenting: the turns were already paid to Mellow when they were first gained
-    internal int DrainFerment() { var turns = _fermentTurns; _fermentTurns = 0; return turns; }
+    // Fires after every _fermentTurns mutation, so a card whose state derives from fermentation
+    // (Corrode's cost) can resync no matter which path moved the turns
+    protected virtual void OnFermentTurnsChanged() { }
+
+    internal int DrainFerment()
+    {
+        var turns = _fermentTurns;
+        _fermentTurns = 0;
+        OnFermentTurnsChanged();
+        return turns;
+    }
 
     // Raw stored turns, without the Mother of Vinegar read-time floor: the floor follows whichever
     // card reads it, so a pour that moved it would pay it twice on the receiver
     internal bool HasStoredFerment => _fermentTurns > 0;
 
-    internal void ReceiveFerment(int turns) { if (IsFermentCard) _fermentTurns += turns; }
+    internal void ReceiveFerment(int turns)
+    {
+        if (!IsFermentCard) return;
+        _fermentTurns += turns;
+        OnFermentTurnsChanged();
+    }
 
     // Async because every turn of fermentation gained also pays the Mellow engine. Both the natural
     // end-of-turn tick and the Trigger cards route through here, so the payoff has one home
@@ -172,6 +187,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     {
         if (!IsFermentCard) return;
         _fermentTurns += turns;
+        OnFermentTurnsChanged();
         if (Owner?.Creature.GetPower<MellowPower>() is { } mellow)
             await mellow.OnFermented(turns);
     }
@@ -187,7 +203,11 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     internal int DecantMaxValue => IsDecantCard ? DynamicVars["DecantMax"].IntValue : 0;
 
-    internal bool DecantFull => IsDecantCard && IsMutable && _decantFill >= DecantMaxValue;
+    internal bool DecantFull => IsDecantCard && IsMutable
+        && (_decantFill >= DecantMaxValue || RefineActive);
+
+    private bool RefineActive =>
+        Owner is { } player && player.Creature.HasPower<Powers.RefinePower>();
 
     // Clamped at the threshold: an overfull level reads as banked progress the rules never pay
     internal void AddDecant(int amount)
@@ -218,6 +238,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     protected bool TrySpendDecant()
     {
         if (!DecantFull) return false;
+        if (RefineActive) return true;
         _decantFill = 0;
         // Uncork pays its draw when the play that spent the level finishes
         if (System.Linq.Enumerable.FirstOrDefault(
@@ -266,6 +287,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         // last play of the series or the replayed hits read a fermentation of zero
         if (!cardPlay.IsLastInSeries) return Task.CompletedTask;
         _fermentTurns = 0;
+        OnFermentTurnsChanged();
         return Task.CompletedTask;
     }
 
@@ -275,6 +297,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     {
         _fermentTurns = 0;
         _decantFill = 0;
+        OnFermentTurnsChanged();
         return Task.CompletedTask;
     }
 

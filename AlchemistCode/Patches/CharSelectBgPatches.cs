@@ -21,7 +21,14 @@ class CharSelectBgPatches
     [HarmonyPatch("OnLocalCharacterChangedForRandom")]
     static void AfterRandom(NCharacterSelectScreen __instance) => Apply(__instance);
 
-    static void Apply(NCharacterSelectScreen screen)
+    // The multiplayer load lobby (host Load Run, and a client rejoin) instantiates the same
+    // bg scene into its own AnimatedBg container, so without this the resumed-run screen
+    // shows an empty background
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(NMultiplayerLoadGameScreen), "AfterMultiplayerStarted")]
+    static void AfterLoadLobby(NMultiplayerLoadGameScreen __instance) => Apply(__instance);
+
+    static void Apply(Control screen)
     {
         var container = screen.GetNodeOrNull<Control>("AnimatedBg");
         if (container == null)

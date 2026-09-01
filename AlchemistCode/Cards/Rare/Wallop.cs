@@ -11,10 +11,10 @@ public class Wallop : AlchemistCard
     public Wallop() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
         // A full level triples the hit, so the extra term is twice the live base
-        WithCalculatedDamage(12, static (card, _) =>
+        WithCalculatedDamage(14, static (card, _) =>
                 card is Wallop { DecantFull: true } ? 2m * (card.IsUpgraded ? 16m : 12m) : 0m,
             ValueProp.Move, 4, 0);
-        WithVar("DecantMax", 5, -1);
+        WithVar("DecantMax", 4, -1);
     }
 
     protected override bool Decants => true;

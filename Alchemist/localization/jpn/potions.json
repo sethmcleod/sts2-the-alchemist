@@ -7,7 +7,7 @@
   "ALCHEMIST-DECOCTION.title": "煎じ薬",
   "ALCHEMIST-GOLD_LEAF.description": "所持している[gold]ゴールド[/gold][blue]10[/blue]ごとに、すべての敵に[blue]1[/blue]ダメージを与える。{DamageTotal}",
   "ALCHEMIST-GOLD_LEAF.title": "金箔",
-  "ALCHEMIST-MARSH_TONIC.description": "[gold]抗毒素[/gold][blue]4[/blue]を得る。[gold]毒[/gold][blue]2[/blue]を得る。",
+  "ALCHEMIST-MARSH_TONIC.description": "[gold]抗毒素[/gold][blue]6[/blue]を得る。[gold]毒[/gold][blue]4[/blue]を得る。",
   "ALCHEMIST-MARSH_TONIC.title": "沼の強壮薬",
   "ALCHEMIST-OLEANDER_MILK.description": "敵1体の[gold]毒[/gold]を[blue]3[/blue]回発動させる。",
   "ALCHEMIST-OLEANDER_MILK.title": "夾竹桃の乳",

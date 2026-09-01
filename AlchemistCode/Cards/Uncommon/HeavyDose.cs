@@ -11,7 +11,7 @@ public class HeavyDose : AlchemistCard
 {
     public HeavyDose() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(30, 10);
+        WithDamage(32, 12);
         WithVar("poison", 3, 0);
         WithTip(typeof(PoisonPower));
     }

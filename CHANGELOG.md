@@ -7,6 +7,46 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.3] - 2026-09-01
+
+### Added
+
+- Added Corrode card (3 energy, Uncommon): "Retain. Ferment (0). Deal 15 (20) damage. Apply 3 (4) Poison. Costs 1 less for each turn fermented." It replaces Fresh Batch
+
+### Changed
+
+- Buffed Caustic Strike's applied Poison: 1 (2) -> 2 (3)
+- Buffed Cure's Decant Antitoxin: 3 -> 4
+- Buffed Fumigate's applied Poison: 2 (4) -> 3 (5)
+- Buffed Gilded Kit's start-of-combat Poison and Antitoxin: 4 -> 6
+- Buffed Heavy Dose damage: 30 (40) -> 32 (44)
+- Buffed Marsh Tonic: 4 -> 6 Antitoxin, 2 -> 4 Poison
+- Buffed Overdose Antitoxin: 2 (3) -> 3 (4)
+- Buffed Spatter's base Poison: 2 -> 3
+- Buffed Spike's Decant Poison: 4 (6) -> 5 (7)
+- Buffed Twist: the Zesty Mix it adds gains Retain
+- Buffed Wallop damage: 12 (16) -> 14 (18)
+- Buffed Water Down's applied Poison: 3 (4) -> 4 (6)
+- Buffed Weathered Kit's start-of-combat Poison and Antitoxin: 2 -> 3
+- Nerfed Mortar's fermented scaling: 3 -> 2 (3) additional damage for each turn fermented
+- Nerfed Patient Strike's fermented scaling: 6 (8) -> 4 (6) additional damage for each turn fermented
+- Reduced Decant thresholds: Pelt 3 (2) -> 2 (1), Spike 4 (3) -> 3 (2), Cure 3 (2) -> 2 (1), Wallop 5 (4) -> 4 (3)
+- Reworked Aged Batch: "Draw 1 card. Choose a Mix (Mix+) to add into your Hand. Decant 2 (1): Draw 2 additional cards."
+- Reworked Brace: "Gain 2 (4) Block. Gain additional Block equal to your Poison."
+- Reworked Nightcap into an Antitoxin finisher: "Deal damage equal to 2 (3) times your Antitoxin. Exhaust." (2 -> 1 energy)
+- Reworked Refine: "For the next 1 (2) turns, your Decant cards' effects activate at any level, and levels are not reset. Exhaust." (1 (0) -> 0 energy.)
+- Reworked Rolling Boil: "Retain. Ferment (0). Deal 8 (10) damage. Deals 3 (4) additional damage for each turn fermented by ALL Ferment cards in your Hand."
+
+### Removed
+
+- Removed Fresh Batch card, replaced with Corrode
+
+### Fixed
+
+- Fixed Aged Batch not listing the Mix+ hover rows on upgraded copies outside combat
+- Fixed Bonk's description to show the number of Mixes it has counted this combat
+- Fixed the multiplayer Load Run screen showing an empty background instead of the Alchemist character art
+
 ## [0.14.2] - 2026-08-30
 
 ### Added

@@ -14,8 +14,8 @@ public class Cure : AlchemistCard
     public Cure() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithBlock(6, 3);
-        WithVar("DecantMax", 3, -1);
-        WithVar("antitoxin", 3, 0);
+        WithVar("DecantMax", 2, -1);
+        WithVar("antitoxin", 4, 0);
         WithCards(1, 0);
         WithTip(typeof(AntitoxinPower));
     }
