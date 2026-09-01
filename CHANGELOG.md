@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.3] - 2026-09-01
+
 ### Added
 
 - Added Corrode card (3 energy, Uncommon): "Retain. Ferment (0). Deal 15 (20) damage. Apply 3 (4) Poison. Costs 1 less for each turn fermented." It replaces Fresh Batch
