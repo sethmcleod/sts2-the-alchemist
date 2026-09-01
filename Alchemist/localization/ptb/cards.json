@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "Escolha uma [gold]Mistura[/gold] para adicionar na sua [gold]Mão[/gold].\n[gold]Decantação[/gold] {DecantMax:diff()}{DecantSuffix}: Em vez disso, adicione uma [gold]Mistura+[/gold].",
+  "ALCHEMIST-AGED_BATCH.description": "Compre {Cards} carta.\nEscolha uma {IfUpgraded:show:[gold]Mistura+[/gold]|[gold]Mistura[/gold]} para adicionar na sua [gold]Mão[/gold].\n[gold]Decantação[/gold] {DecantMax:diff()}{DecantSuffix}: Compre {DecantCards} cartas adicionais.",
   "ALCHEMIST-AGED_BATCH.title": "Fornada Envelhecida",
   "ALCHEMIST-ALL_AT_ONCE.description": "Cause dano equivalente ao seu [gold]Veneno[/gold]{Fuel} X{IfUpgraded:show:+1|} vezes.",
   "ALCHEMIST-ALL_AT_ONCE.title": "Tudo de Uma Vez",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "Cascudo",
   "ALCHEMIST-BOTTOMS_UP.description": "Sempre que você receber [gold]Veneno[/gold], TODOS os outros jogadores recebem {Amount:diff()} de [gold]Proteção[/gold] por cada [gold]Veneno[/gold] recebido.",
   "ALCHEMIST-BOTTOMS_UP.title": "Até o Fundo",
-  "ALCHEMIST-BRACE.description": "[gold]Fermentar{FermentSuffix}.[/gold]\nReceba {CalculatedBlock:diff()} de [gold]Proteção[/gold].\nReceba 2 de [gold]Proteção[/gold] adicional por cada turno fermentado.",
+  "ALCHEMIST-BRACE.description": "Receba {CalculatedBlock:diff()} de [gold]Proteção[/gold].\nReceba [gold]Proteção[/gold] adicional equivalente ao seu [gold]Veneno[/gold].",
   "ALCHEMIST-BRACE.title": "Firmeza",
   "ALCHEMIST-BRINE.description": "[gold]Fermentar{FermentSuffix}.[/gold]\nReceba {CalculatedBlock:diff()} de [gold]Proteção[/gold].\nReceba 3 de [gold]Proteção[/gold] adicional e 1 de [gold]Veneno[/gold] por cada turno fermentado.",
   "ALCHEMIST-BRINE.title": "Salmoura",

@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "Wybierz [gold]Mieszankę[/gold] do dodania do [gold]ręki[/gold].\n[gold]Dekantacja[/gold] {DecantMax:diff()}{DecantSuffix}: Zamiast tego dodaj [gold]Mieszankę+[/gold].",
+  "ALCHEMIST-AGED_BATCH.description": "Dobierz {Cards} kartę.\nWybierz {IfUpgraded:show:[gold]Mieszankę+[/gold]|[gold]Mieszankę[/gold]} do dodania do [gold]ręki[/gold].\n[gold]Dekantacja[/gold] {DecantMax:diff()}{DecantSuffix}: Dobierz dodatkowo {DecantCards} karty.",
   "ALCHEMIST-AGED_BATCH.title": "Dojrzała mieszanka",
   "ALCHEMIST-ALL_AT_ONCE.description": "Zadaj obrażenia równe twojej [gold]Truciźnie[/gold]{Fuel} X{IfUpgraded:show:+1|} razy.",
   "ALCHEMIST-ALL_AT_ONCE.title": "Wszystko naraz",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "Łupnięcie",
   "ALCHEMIST-BOTTOMS_UP.description": "Kiedykolwiek zyskasz [gold]Truciznę[/gold], WSZYSCY inni gracze zyskują {Amount:diff()} pkt. [gold]Bloku[/gold] za każdy zyskany pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-BOTTOMS_UP.title": "Do dna",
-  "ALCHEMIST-BRACE.description": "[gold]Fermentacja{FermentSuffix}.[/gold]\nZyskaj {CalculatedBlock:diff()} pkt. [gold]Bloku[/gold].\nZyskaj dodatkowo 2 pkt. [gold]Bloku[/gold] za każdą turę fermentacji.",
+  "ALCHEMIST-BRACE.description": "Zyskaj {CalculatedBlock:diff()} pkt. [gold]Bloku[/gold].\nZyskaj dodatkowy [gold]Blok[/gold] równy twojej [gold]Truciźnie[/gold].",
   "ALCHEMIST-BRACE.title": "Gotowość",
   "ALCHEMIST-BRINE.description": "[gold]Fermentacja{FermentSuffix}.[/gold]\nZyskaj {CalculatedBlock:diff()} pkt. [gold]Bloku[/gold].\nZyskaj dodatkowo 3 pkt. [gold]Bloku[/gold] i 1 pkt. [gold]Trucizny[/gold] za każdą turę fermentacji.",
   "ALCHEMIST-BRINE.title": "Solanka",

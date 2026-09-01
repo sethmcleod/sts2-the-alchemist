@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "Choose a [gold]Mix[/gold] to add into your [gold]Hand[/gold].\n[gold]Decant[/gold] {DecantMax:diff()}{DecantSuffix}: Add a [gold]Mix+[/gold] instead.",
+  "ALCHEMIST-AGED_BATCH.description": "Draw {Cards} card.\nChoose a {IfUpgraded:show:[gold]Mix+[/gold]|[gold]Mix[/gold]} to add into your [gold]Hand[/gold].\n[gold]Decant[/gold] {DecantMax:diff()}{DecantSuffix}: Draw {DecantCards} additional cards.",
   "ALCHEMIST-AGED_BATCH.title": "Aged Batch",
   "ALCHEMIST-ALL_AT_ONCE.description": "Deal damage equal to your [gold]Poison[/gold]{Fuel} X{IfUpgraded:show:+1|} times.",
   "ALCHEMIST-ALL_AT_ONCE.title": "All At Once",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "Bonk",
   "ALCHEMIST-BOTTOMS_UP.description": "Whenever you gain [gold]Poison[/gold], ALL other players gain {Amount:diff()} [gold]Block[/gold] for each [gold]Poison[/gold] gained.",
   "ALCHEMIST-BOTTOMS_UP.title": "Bottoms Up",
-  "ALCHEMIST-BRACE.description": "[gold]Ferment{FermentSuffix}.[/gold]\nGain {CalculatedBlock:diff()} [gold]Block[/gold].\nGain 2 additional [gold]Block[/gold] for each turn fermented.",
+  "ALCHEMIST-BRACE.description": "Gain {CalculatedBlock:diff()} [gold]Block[/gold].\nGain additional [gold]Block[/gold] equal to your [gold]Poison[/gold].",
   "ALCHEMIST-BRACE.title": "Brace",
   "ALCHEMIST-BRINE.description": "[gold]Ferment{FermentSuffix}.[/gold]\nGain {CalculatedBlock:diff()} [gold]Block[/gold].\nGain 3 additional [gold]Block[/gold] and 1 [gold]Poison[/gold] for each turn fermented.",
   "ALCHEMIST-BRINE.title": "Brine",

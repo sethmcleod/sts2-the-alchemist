@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "[gold]El[/gold]'ine eklemek için bir [gold]Karışım[/gold] seç.\n[gold]Dinlendirme[/gold] {DecantMax:diff()}{DecantSuffix}: Onun yerine bir [gold]Karışım+[/gold] ekle.",
+  "ALCHEMIST-AGED_BATCH.description": "{Cards} kart çek.\n[gold]El[/gold]'ine eklemek için bir {IfUpgraded:show:[gold]Karışım+[/gold]|[gold]Karışım[/gold]} seç.\n[gold]Dinlendirme[/gold] {DecantMax:diff()}{DecantSuffix}: Fazladan {DecantCards} kart çek.",
   "ALCHEMIST-AGED_BATCH.title": "Dinlenmiş Parti",
   "ALCHEMIST-ALL_AT_ONCE.description": "X{IfUpgraded:show:+1|} kez [gold]Zehir[/gold]'in{Fuel} kadar hasar ver.",
   "ALCHEMIST-ALL_AT_ONCE.title": "Hepsi Birden",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "Şaplak",
   "ALCHEMIST-BOTTOMS_UP.description": "Her [gold]Zehir[/gold] elde ettiğinde, elde edilen her [gold]Zehir[/gold] için diğer TÜM oyuncular {Amount:diff()} [gold]Blok[/gold] elde eder.",
   "ALCHEMIST-BOTTOMS_UP.title": "Şerefe",
-  "ALCHEMIST-BRACE.description": "[gold]Mayalan{FermentSuffix}.[/gold]\n{CalculatedBlock:diff()} [gold]Blok[/gold] elde et.\nMayalandığı her tur için fazladan 2 [gold]Blok[/gold] elde et.",
+  "ALCHEMIST-BRACE.description": "{CalculatedBlock:diff()} [gold]Blok[/gold] elde et.\n[gold]Zehir[/gold]'in kadar fazladan [gold]Blok[/gold] elde et.",
   "ALCHEMIST-BRACE.title": "Diren",
   "ALCHEMIST-BRINE.description": "[gold]Mayalan{FermentSuffix}.[/gold]\n{CalculatedBlock:diff()} [gold]Blok[/gold] elde et.\nMayalandığı her tur için fazladan 3 [gold]Blok[/gold] ve 1 [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-BRINE.title": "Salamura",

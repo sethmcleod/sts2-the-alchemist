@@ -15,7 +15,7 @@ public class Cure : AlchemistCard
     {
         WithBlock(6, 3);
         WithVar("DecantMax", 2, -1);
-        WithVar("antitoxin", 3, 0);
+        WithVar("antitoxin", 4, 0);
         WithCards(1, 0);
         WithTip(typeof(AntitoxinPower));
     }

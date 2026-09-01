@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "Scegli una [gold]Miscela[/gold] da aggiungere alla tua [gold]mano[/gold].\n[gold]Decantazione[/gold] {DecantMax:diff()}{DecantSuffix}: Aggiungi invece una [gold]Miscela+[/gold].",
+  "ALCHEMIST-AGED_BATCH.description": "Peschi {Cards} carta.\nScegli una {IfUpgraded:show:[gold]Miscela+[/gold]|[gold]Miscela[/gold]} da aggiungere alla tua [gold]mano[/gold].\n[gold]Decantazione[/gold] {DecantMax:diff()}{DecantSuffix}: Peschi {DecantCards} carte extra.",
   "ALCHEMIST-AGED_BATCH.title": "Miscela Invecchiata",
   "ALCHEMIST-ALL_AT_ONCE.description": "Infliggi danno pari al tuo [gold]Veleno[/gold]{Fuel} X{IfUpgraded:show:+1|} volte.",
   "ALCHEMIST-ALL_AT_ONCE.title": "Tutto in una Volta",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "Tonfo",
   "ALCHEMIST-BOTTOMS_UP.description": "Ogni volta che ottieni [gold]Veleno[/gold], TUTTI gli altri giocatori ottengono {Amount:diff()} di [gold]Blocco[/gold] per ogni [gold]Veleno[/gold] ottenuto.",
   "ALCHEMIST-BOTTOMS_UP.title": "Cin Cin",
-  "ALCHEMIST-BRACE.description": "[gold]Fermentazione{FermentSuffix}.[/gold]\nOttieni {CalculatedBlock:diff()} di [gold]Blocco[/gold].\nOttieni 2 di [gold]Blocco[/gold] extra per ogni turno di fermentazione.",
+  "ALCHEMIST-BRACE.description": "Ottieni {CalculatedBlock:diff()} di [gold]Blocco[/gold].\nOttieni [gold]Blocco[/gold] extra pari al tuo [gold]Veleno[/gold].",
   "ALCHEMIST-BRACE.title": "Saldezza",
   "ALCHEMIST-BRINE.description": "[gold]Fermentazione{FermentSuffix}.[/gold]\nOttieni {CalculatedBlock:diff()} di [gold]Blocco[/gold].\nOttieni 3 di [gold]Blocco[/gold] extra e 1 di [gold]Veleno[/gold] per ogni turno di fermentazione.",
   "ALCHEMIST-BRINE.title": "Salamoia",

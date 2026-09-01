@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "选择一种要加入你的[gold]手牌[/gold]的[gold]合剂[/gold]。\n[gold]醒酒[/gold]{DecantMax:diff()}{DecantSuffix}：改为加入一张[gold]合剂+[/gold]。",
+  "ALCHEMIST-AGED_BATCH.description": "抽{Cards}张牌。\n选择一种要加入你的[gold]手牌[/gold]的{IfUpgraded:show:[gold]合剂+[/gold]|[gold]合剂[/gold]}。\n[gold]醒酒[/gold]{DecantMax:diff()}{DecantSuffix}：额外抽{DecantCards}张牌。",
   "ALCHEMIST-AGED_BATCH.title": "陈年合剂",
   "ALCHEMIST-ALL_AT_ONCE.description": "造成等同于你[gold]中毒[/gold]{Fuel}层数的伤害X{IfUpgraded:show:+1|}次。",
   "ALCHEMIST-ALL_AT_ONCE.title": "一次尽出",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "敲击",
   "ALCHEMIST-BOTTOMS_UP.description": "每当你获得[gold]中毒[/gold]时，你每获得1层[gold]中毒[/gold]，所有其他玩家就获得{Amount:diff()}点[gold]格挡[/gold]。",
   "ALCHEMIST-BOTTOMS_UP.title": "干杯",
-  "ALCHEMIST-BRACE.description": "[gold]发酵{FermentSuffix}。[/gold]\n获得{CalculatedBlock:diff()}点[gold]格挡[/gold]。\n每发酵一回合，额外获得2点[gold]格挡[/gold]。",
+  "ALCHEMIST-BRACE.description": "获得{CalculatedBlock:diff()}点[gold]格挡[/gold]。\n额外获得等同于你[gold]中毒[/gold]层数的[gold]格挡[/gold]。",
   "ALCHEMIST-BRACE.title": "支撑",
   "ALCHEMIST-BRINE.description": "[gold]发酵{FermentSuffix}。[/gold]\n获得{CalculatedBlock:diff()}点[gold]格挡[/gold]。\n每发酵一回合，额外获得3点[gold]格挡[/gold]和1层[gold]中毒[/gold]。",
   "ALCHEMIST-BRINE.title": "盐卤",

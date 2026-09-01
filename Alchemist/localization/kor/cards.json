@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "[gold]손[/gold]에 추가할 [gold]혼합액[/gold]을 선택합니다.\n[gold]디캔팅[/gold] {DecantMax:diff()}{DecantSuffix}: 대신 [gold]혼합액+[/gold]를 추가합니다.",
+  "ALCHEMIST-AGED_BATCH.description": "카드를 {Cards}장 뽑습니다.\n[gold]손[/gold]에 추가할 {IfUpgraded:show:[gold]혼합액+[/gold]|[gold]혼합액[/gold]}을 선택합니다.\n[gold]디캔팅[/gold] {DecantMax:diff()}{DecantSuffix}: 카드를 {DecantCards}장 더 뽑습니다.",
   "ALCHEMIST-AGED_BATCH.title": "숙성된 혼합액",
   "ALCHEMIST-ALL_AT_ONCE.description": "[gold]중독[/gold]만큼 피해를{Fuel} X{IfUpgraded:show:+1|}번 줍니다.",
   "ALCHEMIST-ALL_AT_ONCE.title": "한꺼번에",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "꿀밤",
   "ALCHEMIST-BOTTOMS_UP.description": "[gold]중독[/gold]을 얻을 때마다, 얻은 [gold]중독[/gold] 1마다 다른 모든 플레이어가 [gold]방어도[/gold]를 {Amount:diff()} 얻습니다.",
   "ALCHEMIST-BOTTOMS_UP.title": "건배",
-  "ALCHEMIST-BRACE.description": "[gold]발효{FermentSuffix}.[/gold]\n[gold]방어도[/gold]를 {CalculatedBlock:diff()} 얻습니다.\n발효한 턴마다 [gold]방어도[/gold]를 2 추가로 얻습니다.",
+  "ALCHEMIST-BRACE.description": "[gold]방어도[/gold]를 {CalculatedBlock:diff()} 얻습니다.\n[gold]중독[/gold]만큼 [gold]방어도[/gold]를 추가로 얻습니다.",
   "ALCHEMIST-BRACE.title": "버티기",
   "ALCHEMIST-BRINE.description": "[gold]발효{FermentSuffix}.[/gold]\n[gold]방어도[/gold]를 {CalculatedBlock:diff()} 얻습니다.\n발효한 턴마다 [gold]방어도[/gold]를 3, [gold]중독[/gold]을 1 추가로 얻습니다.",
   "ALCHEMIST-BRINE.title": "소금물",

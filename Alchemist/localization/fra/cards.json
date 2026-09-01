@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "Choisissez une [gold]Mixture[/gold] à ajouter à votre [gold]Main[/gold].\n[gold]Décantation[/gold] {DecantMax:diff()}{DecantSuffix} : Ajoutez une [gold]Mixture+[/gold] à la place.",
+  "ALCHEMIST-AGED_BATCH.description": "Piochez {Cards} carte.\nChoisissez une {IfUpgraded:show:[gold]Mixture+[/gold]|[gold]Mixture[/gold]} à ajouter à votre [gold]Main[/gold].\n[gold]Décantation[/gold] {DecantMax:diff()}{DecantSuffix} : Piochez {DecantCards} cartes supplémentaires.",
   "ALCHEMIST-AGED_BATCH.title": "Fournée vieillie",
   "ALCHEMIST-ALL_AT_ONCE.description": "Infligez des dégâts égaux à votre [gold]Poison[/gold]{Fuel} X{IfUpgraded:show:+1|} fois.",
   "ALCHEMIST-ALL_AT_ONCE.title": "Tout d'un coup",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "Gnon",
   "ALCHEMIST-BOTTOMS_UP.description": "Lorsque vous gagnez du [gold]Poison[/gold], TOUS les autres joueurs gagnent {Amount:diff()} d'[gold]Armure[/gold] pour chaque [gold]Poison[/gold] gagné.",
   "ALCHEMIST-BOTTOMS_UP.title": "À la vôtre !",
-  "ALCHEMIST-BRACE.description": "[gold]Fermentation{FermentSuffix}.[/gold]\nGagnez {CalculatedBlock:diff()} d'[gold]Armure[/gold].\nGagnez 2 d'[gold]Armure[/gold] supplémentaire pour chaque tour de fermentation.",
+  "ALCHEMIST-BRACE.description": "Gagnez {CalculatedBlock:diff()} d'[gold]Armure[/gold].\nGagnez un montant d'[gold]Armure[/gold] supplémentaire égal à votre [gold]Poison[/gold].",
   "ALCHEMIST-BRACE.title": "Aplomb",
   "ALCHEMIST-BRINE.description": "[gold]Fermentation{FermentSuffix}.[/gold]\nGagnez {CalculatedBlock:diff()} d'[gold]Armure[/gold].\nGagnez 3 d'[gold]Armure[/gold] supplémentaire et 1 de [gold]Poison[/gold] pour chaque tour de fermentation.",
   "ALCHEMIST-BRINE.title": "Saumure",

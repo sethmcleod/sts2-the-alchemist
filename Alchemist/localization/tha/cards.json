@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "เลือก[gold]ยาผสม[/gold]ที่จะเพิ่มเข้า[gold]มือ[/gold]\n[gold]ดีแคนต์[/gold] {DecantMax:diff()}{DecantSuffix}: เพิ่ม[gold]ยาผสม+[/gold]แทน",
+  "ALCHEMIST-AGED_BATCH.description": "จั่วการ์ด {Cards} ใบ\nเลือก{IfUpgraded:show:[gold]ยาผสม+[/gold]|[gold]ยาผสม[/gold]}ที่จะเพิ่มเข้า[gold]มือ[/gold]\n[gold]ดีแคนต์[/gold] {DecantMax:diff()}{DecantSuffix}: จั่วการ์ดเพิ่ม {DecantCards} ใบ",
   "ALCHEMIST-AGED_BATCH.title": "ยาผสมเก่าเก็บ",
   "ALCHEMIST-ALL_AT_ONCE.description": "สร้างความเสียหายเท่ากับ[gold]พิษ[/gold]ที่คุณมี{Fuel} จำนวน X{IfUpgraded:show:+1|} ครั้ง",
   "ALCHEMIST-ALL_AT_ONCE.title": "ทีเดียวหมด",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "เขกหัว",
   "ALCHEMIST-BOTTOMS_UP.description": "ทุกครั้งที่คุณได้รับ[gold]พิษ[/gold] ผู้เล่นคนอื่นทั้งหมดได้รับ {Amount:diff()} [gold]บล็อก[/gold] ต่อ[gold]พิษ[/gold]แต่ละหน่วยที่ได้รับ",
   "ALCHEMIST-BOTTOMS_UP.title": "หมดแก้ว",
-  "ALCHEMIST-BRACE.description": "[gold]บ่ม{FermentSuffix}[/gold]\nได้รับ {CalculatedBlock:diff()} [gold]บล็อก[/gold]\nได้รับ[gold]บล็อก[/gold]เพิ่ม 2 ต่อทุกเทิร์นที่บ่ม",
+  "ALCHEMIST-BRACE.description": "ได้รับ {CalculatedBlock:diff()} [gold]บล็อก[/gold]\nได้รับ[gold]บล็อก[/gold]เพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
   "ALCHEMIST-BRACE.title": "ตั้งรับ",
   "ALCHEMIST-BRINE.description": "[gold]บ่ม{FermentSuffix}[/gold]\nได้รับ {CalculatedBlock:diff()} [gold]บล็อก[/gold]\nได้รับ[gold]บล็อก[/gold]เพิ่ม 3 และ[gold]พิษ[/gold] 1 ต่อทุกเทิร์นที่บ่ม",
   "ALCHEMIST-BRINE.title": "น้ำเกลือดอง",

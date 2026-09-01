@@ -1,5 +1,5 @@
 Card,Rarity,Type,Cost,Description
-Aged Batch,Uncommon,Skill,1,Choose a Mix to add into your Hand. Decant 2 (1): Add a Mix+ instead.
+Aged Batch,Uncommon,Skill,1,Draw 1 card. Choose a Mix (Mix+) to add into your Hand. Decant 2 (1): Draw 2 additional cards.
 All At Once,Rare,Attack,X,Deal damage equal to your Poison X (+1) times. Exhaust.
 Apothecary,Rare,Power,2,"At the start of your turn, add a random Mix into your Hand. Innate when upgraded, and the Mix is a Mix+."
 Backfire,Common,Attack,2,Deal 14 (20) damage. Deals 4 additional damage if the enemy intends to attack.
@@ -9,14 +9,14 @@ Blend,Common,Skill,1,Gain 5 (6) Block. Transform a card in your Discard Pile int
 Bloom,Rare,Skill,0,Trigger ALL Ferment cards in your Hand 3 (4) times. Exhaust.
 Bonk,Uncommon,Attack,2,Deal 10 (12) damage. Deals 3 (4) additional damage for each Mix you have played this combat.
 Bottoms Up,"Rare, Multiplayer",Power,2,"Whenever you gain Poison, ALL other players gain 1 (2) Block for each Poison gained."
-Brace,Common,Skill,1,"Ferment (0). Gain 3 (5) Block, plus 2 for each turn fermented."
+Brace,Common,Skill,1,Gain 2 (4) Block. Gain additional Block equal to your Poison.
 Brine,Uncommon,Skill,1,Retain. Ferment (0). Gain 6 (8) Block. Gain 3 additional Block and 1 Poison for each turn fermented.
 Bursting Mix,Token,Attack,0,Deal 6 (9) damage. Exhaust.
 Callus,Uncommon,Power,2 (1),"Whenever your Poison triggers, gain 1 Strength."
 Caustic Strike,Common,Attack,1,Retain. Ferment (0). Deal 6 (8) damage. Apply 2 (3) Poison. Applies 1 additional Poison for each turn fermented.
 Corrode,Uncommon,Attack,3,Retain. Ferment (0). Deal 15 (20) damage. Apply 3 (4) Poison. Costs 1 less for each turn fermented.
 Croak,Rare,Attack,2,"Deal 20 (26) damage. If Fatal, gain an additional Potion reward. Exhaust."
-Cure,Uncommon,Skill,1,Gain 6 (9) Block. Decant 2 (1): Gain 3 Antitoxin and draw 1 card.
+Cure,Uncommon,Skill,1,Gain 6 (9) Block. Decant 2 (1): Gain 4 Antitoxin and draw 1 card.
 Defend,Basic,Skill,1,Gain 5 (8) Block.
 Digest,Common,Skill,0,Gain 1 (2) Antitoxin. You may Exhaust a Status or Curse card from your Hand. If you do, add a random Mix into your Hand.
 Distill,Common,Skill,0,"Retain. Ferment (0). Gain 2 Poison. Gain 1 (2) Antitoxin, plus 1 for each turn fermented."
@@ -37,7 +37,7 @@ Gulp,Uncommon,Skill,0,Draw 2 (3) cards. Gain 3 Poison. Exhaust.
 Harden,Uncommon,Power,1,"Whenever you gain or apply Poison, gain 2 (3) Block. Gain 1 (2) Antitoxin."
 Heavy Dose,Uncommon,Attack,3,Deal 32 (44) damage. Gain 3 Poison.
 Inure,Uncommon,Power,1,"Whenever you gain Antitoxin, gain 1 more. Gain 1 (2) Antitoxin."
-Jab,Basic,Attack,1,Deal 5 (7) damage. Apply 3 (4) Poison. Deals additional damage equal to your Poison.
+Jab,Basic,Attack,1,Deal 5 (7) damage. Apply 2 (3) Poison. Deals additional damage equal to your Poison.
 Lash Out,Rare,Attack,1,Deal 3 (5) damage 3 times. Hits an additional time if you have Poison.
 Mash,Common,Attack,1,Deal 5 (6) damage. Add a Bursting Mix into your Hand. (Mash+ adds a Bursting Mix+)
 Mellow,Uncommon,Power,1,"Whenever one of your cards ferments, gain 2 (3) Block."
@@ -70,7 +70,7 @@ Rolling Boil,Rare,Attack,2,Retain. Ferment (0). Deal 8 (10) damage. Deals 3 (4) 
 Runoff,Uncommon,Power,1,"Whenever you create a card, apply 1 (2) Poison to ALL enemies."
 Smelling Salts,Rare,Power,2,"At the start of your turn, if you have 3 or more Poison, gain 1 Energy. (Smelling Salts+ is Innate.)"
 Spatter,Uncommon,Skill,1,"Discard any number of cards. Apply 3 Poison to ALL enemies, plus 2 (3) for each card discarded."
-Spike,Uncommon,Attack,1,Deal 9 (12) damage. Decant 3 (2): Apply 4 (6) Poison.
+Spike,Uncommon,Attack,1,Deal 9 (12) damage. Decant 3 (2): Apply 5 (7) Poison.
 Spit,Common,Attack,0,Deal 4 (6) damage. Lose 2 (3) Poison. Apply that much Poison.
 Spores,Common,Attack,0,Deal 3 (4) damage. Apply 1 (2) Poison. Add a copy of this card to your Discard Pile.
 Strike,Basic,Attack,1,Deal 6 (9) damage.
@@ -88,7 +88,7 @@ Upwell,Common,Skill,1,Gain 8 (11) Block. Gain 2 Poison.
 Vent,Rare,Skill,1,Lose ALL your Poison and apply 2 (3) times that much Poison. Exhaust.
 Vintage,Rare,Skill,1,Retain. Ferment (0). Gain 1 (2) Energy and draw 1 (2) cards. Gain 1 additional Energy and draw 1 additional card for each turn fermented. Exhaust.
 Vitrify,Common,Skill,1,Gain 3 (4) Block twice. Gain 2 (3) Antitoxin.
-Wallop,Rare,Attack,2,Deal 12 (16) damage. Decant 4 (3): Deal triple damage.
+Wallop,Rare,Attack,2,Deal 14 (18) damage. Decant 4 (3): Deal triple damage.
 Warded,Uncommon,Power,1,"Whenever you gain Antitoxin, gain 3 (5) Block."
 Warm Up,Rare,Skill,0,Gain 1 (2) Energy. Add a random Mix into your Hand. Exhaust. (Warm Up+ adds a Mix+)
 Water Down,Rare,Skill,1,ALL enemies lose 3 (5) Strength this turn. Apply 4 (6) Poison to ALL enemies.

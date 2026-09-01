@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "Wähle eine [gold]Mixtur[/gold], die du auf deine [gold]Hand[/gold] nimmst.\n[gold]Dekantierung[/gold] {DecantMax:diff()}{DecantSuffix}: Nimm stattdessen eine [gold]Mixtur+[/gold].",
+  "ALCHEMIST-AGED_BATCH.description": "Ziehe {Cards} Karte.\nWähle eine {IfUpgraded:show:[gold]Mixtur+[/gold]|[gold]Mixtur[/gold]}, die du auf deine [gold]Hand[/gold] nimmst.\n[gold]Dekantierung[/gold] {DecantMax:diff()}{DecantSuffix}: Ziehe {DecantCards} zusätzliche Karten.",
   "ALCHEMIST-AGED_BATCH.title": "Gereifte Charge",
   "ALCHEMIST-ALL_AT_ONCE.description": "Füge X{IfUpgraded:show:+1|} Mal Schaden in Höhe deines [gold]Gifts[/gold]{Fuel} zu.",
   "ALCHEMIST-ALL_AT_ONCE.title": "Alles auf einmal",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "Klaps",
   "ALCHEMIST-BOTTOMS_UP.description": "Immer wenn du [gold]Gift[/gold] erhältst, erhalten ALLE Mitspieler {Amount:diff()} [gold]Block[/gold] pro erhaltenem [gold]Gift[/gold].",
   "ALCHEMIST-BOTTOMS_UP.title": "Auf ex",
-  "ALCHEMIST-BRACE.description": "[gold]Gärung{FermentSuffix}.[/gold]\nErhalte {CalculatedBlock:diff()} [gold]Block[/gold].\nErhalte 2 [gold]Block[/gold] mehr pro Zug in Gärung.",
+  "ALCHEMIST-BRACE.description": "Erhalte {CalculatedBlock:diff()} [gold]Block[/gold].\nErhalte zusätzlichen [gold]Block[/gold] in Höhe deines [gold]Gifts[/gold].",
   "ALCHEMIST-BRACE.title": "Wappnen",
   "ALCHEMIST-BRINE.description": "[gold]Gärung{FermentSuffix}.[/gold]\nErhalte {CalculatedBlock:diff()} [gold]Block[/gold].\nErhalte 3 [gold]Block[/gold] und 1 [gold]Gift[/gold] mehr pro Zug in Gärung.",
   "ALCHEMIST-BRINE.title": "Sole",

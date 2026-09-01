@@ -14,22 +14,25 @@ public class AgedBatch : AlchemistCard
 
     public AgedBatch() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
+        WithCards(1, 0);
         WithVar("DecantMax", 2, -1);
-        WithTips(card => Mixing.MixTips(((AgedBatch)card).ShowsMixPlusTips));
+        WithVar("DecantCards", 2, 0);
+        WithTips(card => Mixing.MixTips(card.IsUpgraded));
     }
 
     protected override bool Decants => true;
 
-    private bool ShowsMixPlusTips => DecantFull || (!IsMutable && IsUpgraded);
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        // Peek before the grid so the previews show the + versions, spend only after a real pick:
-        // a cancelled picker must not spend the level
+        await CommonActions.Draw(this, choiceContext);
+        // The pick comes before the spend and the bonus draws: a cancelled picker must not
+        // spend the level or overdraw
         var matured = DecantFull;
-        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: matured);
+        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: IsUpgraded);
         if (mix == null) return;
-        if (matured) TrySpendDecant();
+        if (matured && TrySpendDecant())
+            for (var i = 0; i < DynamicVars["DecantCards"].IntValue; i++)
+                await CommonActions.Draw(this, choiceContext);
         await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, Owner);
     }
 }

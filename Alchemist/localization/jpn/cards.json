@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "[gold]合剤[/gold]を1枚選んで[gold]手札[/gold]に加える。\n[gold]デカント[/gold]{DecantMax:diff()}{DecantSuffix}：代わりに[gold]合剤+[/gold]を加える。",
+  "ALCHEMIST-AGED_BATCH.description": "カードを{Cards}枚引く。\n{IfUpgraded:show:[gold]合剤+[/gold]|[gold]合剤[/gold]}を1枚選んで[gold]手札[/gold]に加える。\n[gold]デカント[/gold]{DecantMax:diff()}{DecantSuffix}：追加でカードを{DecantCards}枚引く。",
   "ALCHEMIST-AGED_BATCH.title": "熟成品",
   "ALCHEMIST-ALL_AT_ONCE.description": "自身の[gold]毒[/gold]{Fuel}に等しいダメージをX{IfUpgraded:show:+1|}回与える。",
   "ALCHEMIST-ALL_AT_ONCE.title": "一気に",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "ゴツン",
   "ALCHEMIST-BOTTOMS_UP.description": "[gold]毒[/gold]を得るたび、得た[gold]毒[/gold]1につき、他のすべてのプレイヤーが{Amount:diff()}[gold]ブロック[/gold]を得る。",
   "ALCHEMIST-BOTTOMS_UP.title": "乾杯",
-  "ALCHEMIST-BRACE.description": "[gold]発酵{FermentSuffix}。[/gold]\n{CalculatedBlock:diff()}[gold]ブロック[/gold]を得る。\n発酵したターン1回につき、追加で2[gold]ブロック[/gold]を得る。",
+  "ALCHEMIST-BRACE.description": "{CalculatedBlock:diff()}[gold]ブロック[/gold]を得る。\n自身の[gold]毒[/gold]に等しい[gold]ブロック[/gold]を追加で得る。",
   "ALCHEMIST-BRACE.title": "身構え",
   "ALCHEMIST-BRINE.description": "[gold]発酵{FermentSuffix}。[/gold]\n{CalculatedBlock:diff()}[gold]ブロック[/gold]を得る。\n発酵したターン1回につき、追加で3[gold]ブロック[/gold]と[gold]毒[/gold]1を得る。",
   "ALCHEMIST-BRINE.title": "塩漬け",

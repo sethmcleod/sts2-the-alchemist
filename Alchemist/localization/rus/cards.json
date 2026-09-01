@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "Выберите, какую [gold]смесь[/gold] добавить в [gold]руку[/gold].\n[gold]Декантация[/gold] {DecantMax:diff()}{DecantSuffix}: Вместо этого добавляет [gold]смесь+[/gold].",
+  "ALCHEMIST-AGED_BATCH.description": "Вы добираете {Cards} карту.\nВыберите, какую {IfUpgraded:show:[gold]смесь+[/gold]|[gold]смесь[/gold]} добавить в [gold]руку[/gold].\n[gold]Декантация[/gold] {DecantMax:diff()}{DecantSuffix}: Вы добираете еще {DecantCards} карты.",
   "ALCHEMIST-AGED_BATCH.title": "Выдержанная партия",
   "ALCHEMIST-ALL_AT_ONCE.description": "Наносит урон, равный вашему [gold]яду[/gold]{Fuel}, X{IfUpgraded:show:+1|} раз.",
   "ALCHEMIST-ALL_AT_ONCE.title": "Все разом",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "Тумак",
   "ALCHEMIST-BOTTOMS_UP.description": "Когда вы получаете [gold]яд[/gold], ВСЕ другие игроки получают {Amount:diff()} [gold]защиты[/gold] за каждую единицу полученного [gold]яда[/gold].",
   "ALCHEMIST-BOTTOMS_UP.title": "До дна",
-  "ALCHEMIST-BRACE.description": "[gold]Брожение{FermentSuffix}.[/gold]\nДает {CalculatedBlock:diff()} [gold]защиты[/gold].\nДает еще 2 [gold]защиты[/gold] за каждый ход брожения.",
+  "ALCHEMIST-BRACE.description": "Дает {CalculatedBlock:diff()} [gold]защиты[/gold].\nДает дополнительную [gold]защиту[/gold], равную вашему [gold]яду[/gold].",
   "ALCHEMIST-BRACE.title": "Упор",
   "ALCHEMIST-BRINE.description": "[gold]Брожение{FermentSuffix}.[/gold]\nДает {CalculatedBlock:diff()} [gold]защиты[/gold].\nДает еще 3 [gold]защиты[/gold] и 1 [gold]яда[/gold] за каждый ход брожения.",
   "ALCHEMIST-BRINE.title": "Рассол",

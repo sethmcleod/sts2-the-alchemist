@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-AGED_BATCH.description": "Eliges una [gold]Mezcla[/gold] para añadir a tu [gold]mano[/gold].\n[gold]Decantación[/gold] {DecantMax:diff()}{DecantSuffix}: En su lugar, añades una [gold]Mezcla+[/gold].",
+  "ALCHEMIST-AGED_BATCH.description": "Robas {Cards} carta.\nEliges una {IfUpgraded:show:[gold]Mezcla+[/gold]|[gold]Mezcla[/gold]} para añadir a tu [gold]mano[/gold].\n[gold]Decantación[/gold] {DecantMax:diff()}{DecantSuffix}: Robas {DecantCards} cartas adicionales.",
   "ALCHEMIST-AGED_BATCH.title": "Tanda añeja",
   "ALCHEMIST-ALL_AT_ONCE.description": "Infliges daño igual a tu [gold]veneno[/gold]{Fuel} X{IfUpgraded:show:+1|} veces.",
   "ALCHEMIST-ALL_AT_ONCE.title": "Todo de golpe",
@@ -20,7 +20,7 @@
   "ALCHEMIST-BONK.title": "Coscorrón",
   "ALCHEMIST-BOTTOMS_UP.description": "Cada vez que obtienes [gold]veneno[/gold], TODOS los demás jugadores obtienen {Amount:diff()} de [gold]bloqueo[/gold] por cada punto de [gold]veneno[/gold] obtenido.",
   "ALCHEMIST-BOTTOMS_UP.title": "Hasta el fondo",
-  "ALCHEMIST-BRACE.description": "[gold]Fermentación{FermentSuffix}.[/gold]\nObtienes {CalculatedBlock:diff()} de [gold]bloqueo[/gold].\nObtienes 2 de [gold]bloqueo[/gold] adicional por cada turno fermentado.",
+  "ALCHEMIST-BRACE.description": "Obtienes {CalculatedBlock:diff()} de [gold]bloqueo[/gold].\nObtienes [gold]bloqueo[/gold] adicional igual a tu [gold]veneno[/gold].",
   "ALCHEMIST-BRACE.title": "Aguante",
   "ALCHEMIST-BRINE.description": "[gold]Fermentación{FermentSuffix}.[/gold]\nObtienes {CalculatedBlock:diff()} de [gold]bloqueo[/gold].\nObtienes 3 de [gold]bloqueo[/gold] adicional y 1 de [gold]veneno[/gold] por cada turno fermentado.",
   "ALCHEMIST-BRINE.title": "Salmuera",

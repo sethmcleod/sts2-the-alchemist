@@ -13,7 +13,7 @@ public class Spike : AlchemistCard
     {
         WithDamage(9, 3);
         WithVar("DecantMax", 3, -1);
-        WithVar("poison", 4, 2);
+        WithVar("poison", 5, 2);
         WithTip(typeof(PoisonPower));
     }
 
