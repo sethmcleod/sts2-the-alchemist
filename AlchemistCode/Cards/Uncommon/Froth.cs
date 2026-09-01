@@ -10,9 +10,9 @@ public class Froth : AlchemistCard
 {
     protected override bool Ferments => true;
 
-    public Froth() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Froth() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(6, 2);
+        WithDamage(7, 2);
         WithKeyword(CardKeyword.Retain);
     }
 

@@ -7,6 +7,15 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.4] - 2026-09-01
+
+### Changed
+
+- Buffed Upwell Block: 8 (11) -> 10 (13)
+- Nerfed Froth: 1 -> 2 energy, damage 6 (8) -> 7 (9)
+- Reworked Meltdown into a pressure threshold: "Deal 24 (32) damage. Deals 12 (16) additional damage if you have 6 or more Poison." The cost reduction is gone
+- Nerfed Tempered: 4 -> 3 Block for each card in your Exhaust Pile
+
 ## [0.14.3] - 2026-09-01
 
 ### Added

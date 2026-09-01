@@ -29,7 +29,7 @@ Fizz,Uncommon,Skill,0,"This turn, whenever you gain Poison, deal 3 (4) damage to
 Flare Up,Uncommon,Attack,1,"Deal 8 (11) damage. You may Exhaust a card from your Hand. If you do, this hits an additional time."
 Forked Tongue,Common,Attack,1,Deal 4 (5) damage twice. Deals additional damage equal to your Poison.
 Free Samples,"Rare, Multiplayer",Skill,1,Add a random Mix into ALL other players' Hands. Draw 2 (3) cards. Exhaust.
-Froth,Uncommon,Attack,1,Retain. Ferment (0). Deal 6 (8) damage. Hits an additional time for each turn fermented.
+Froth,Uncommon,Attack,2,Retain. Ferment (0). Deal 7 (9) damage. Hits an additional time for each turn fermented.
 Fumigate,Common,Skill,1,Apply 3 (5) Poison to ALL enemies. Gain 2 Poison.
 Fuming Mix,Token,Skill,0,Apply 1 Weak and 1 Vulnerable. Apply 0 (1) Poison. Gain 1 (0) Poison. Exhaust.
 Grand Batch,Rare,Skill,1,Add one of each Mix into your Hand. Exhaust. (Grand Batch+ adds one of each Mix+)
@@ -41,7 +41,7 @@ Jab,Basic,Attack,1,Deal 5 (7) damage. Apply 2 (3) Poison. Deals additional damag
 Lash Out,Rare,Attack,1,Deal 3 (5) damage 3 times. Hits an additional time if you have Poison.
 Mash,Common,Attack,1,Deal 5 (6) damage. Add a Bursting Mix into your Hand. (Mash+ adds a Bursting Mix+)
 Mellow,Uncommon,Power,1,"Whenever one of your cards ferments, gain 2 (3) Block."
-Meltdown,Uncommon,Attack,3,Deal 28 (36) damage. Reduce this card's cost by 1 whenever your Poison triggers.
+Meltdown,Uncommon,Attack,3,"Deal 24 (32) damage. Deals 12 (16) additional damage if you have 6 or more Poison."
 Mercurial Form,Rare,Power,3 (2),"At the start of your turn, gain 1 Poison and 1 Antitoxin, and gain Strength equal to your Poison this turn."
 Miasma,Rare,Power,2 (1),"Whenever you gain Poison, apply that much Poison to ALL enemies."
 Mortar,Common,Attack,2,Retain. Ferment (0). Deal 9 (12) damage. Gain Block equal to damage dealt. Deals 2 (3) additional damage for each turn fermented.
@@ -77,14 +77,14 @@ Strike,Basic,Attack,1,Deal 6 (9) damage.
 Sweat It Out,Rare,Skill,2,Retain. Gain 4 (6) Poison. Apply Poison equal to your Poison to ALL enemies.
 Syrupy Mix,Token,Skill,0,Gain 4 (6) Block. Exhaust.
 Taste Test,Common,Skill,1,"Trigger ALL Ferment cards in your Hand. If any Triggered, draw 1 (2) cards."
-Tempered,Rare,Skill,2,Gain 8 (12) Block. Gain 4 additional Block for each card in your Exhaust Pile.
+Tempered,Rare,Skill,2,Gain 8 (12) Block. Gain 3 additional Block for each card in your Exhaust Pile.
 Thicken,Common,Skill,1,Gain 4 (5) Block. Add a Syrupy Mix into your Hand. It gains Retain. (Thicken+ adds a Syrupy Mix+)
 Toughen,Uncommon,Skill,1,Gain 5 (7) Block. Gain 2 additional Block for each Poison you have.
 Transmute,Uncommon,Skill,1 (0),Transform a card in your Hand into a copy of another card in your Hand. Exhaust.
 Twist,Common,Skill,1,Draw 1 card. Add a Zesty Mix into your Hand. It gains Retain. (Twist+ adds a Zesty Mix+)
 Uncork,Rare,Power,1,"Whenever a card's Decant level is reset, draw 1 (2) cards."
 Untended,Rare,Power,2,Your Ferment cards also ferment while in your Draw Pile and Discard Pile. Innate when upgraded.
-Upwell,Common,Skill,1,Gain 8 (11) Block. Gain 2 Poison.
+Upwell,Common,Skill,1,Gain 10 (13) Block. Gain 2 Poison.
 Vent,Rare,Skill,1,Lose ALL your Poison and apply 2 (3) times that much Poison. Exhaust.
 Vintage,Rare,Skill,1,Retain. Ferment (0). Gain 1 (2) Energy and draw 1 (2) cards. Gain 1 additional Energy and draw 1 additional card for each turn fermented. Exhaust.
 Vitrify,Common,Skill,1,Gain 3 (4) Block twice. Gain 2 (3) Antitoxin.

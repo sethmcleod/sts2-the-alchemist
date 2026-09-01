@@ -9,7 +9,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.None)]
 public class Tempered : AlchemistCard
 {
-    private const int PerCard = 4;
+    private const int PerCard = 3;
 
     public Tempered() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
