@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.4] - 2026-09-01
+
 ### Changed
 
 - Buffed Upwell Block: 8 (11) -> 10 (13)
