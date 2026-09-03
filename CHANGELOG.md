@@ -7,6 +7,15 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added art for potions and starter relics
+
+### Changed
+
+- Renamed Weathered Kit relic to Murky Flask
+- Renamed Gilded Kit relic to Radiant Flask
+
 ## [0.14.4] - 2026-09-01
 
 ### Changed

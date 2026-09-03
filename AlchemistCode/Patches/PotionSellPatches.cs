@@ -77,7 +77,7 @@ public static class PotionSellPatches
     private static bool SellingEnabledFor(Player? owner)
     {
         if (owner == null) return false;
-        return owner.GetRelic<WeatheredKit>() != null || owner.GetRelic<GildedKit>() != null;
+        return owner.GetRelic<MurkyFlask>() != null || owner.GetRelic<RadiantFlask>() != null;
     }
 
     // Only what the Alchemist brewed himself has resale value, which is what makes Brew a gold engine
@@ -397,7 +397,7 @@ public static class PotionSellPatches
             var players = PlayersField.GetValue(__instance) as List<Player>;
             var player = players != null ? LocalContext.GetMe(players) : null;
             if (player == null) return;
-            if (player.GetRelic<WeatheredKit>() == null && player.GetRelic<GildedKit>() == null) return;
+            if (player.GetRelic<MurkyFlask>() == null && player.GetRelic<RadiantFlask>() == null) return;
             if (!player.Potions.Any(IsSellable)) return;
 
             // One potion gets a singular line. The rotation opens with "those potions", which reads

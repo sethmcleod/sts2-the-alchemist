@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpdktiynal54u"
-path="res://.godot/imported/weathered_kit.png-bb9c0b6be78b4ffbfcd135f8b2ed39df.ctex"
+uid="uid://dctgov7ohe1ja"
+path="res://.godot/imported/radiant_flask.png-c2bbc3993a3957f796d6fde8c6c59751.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/big/weathered_kit.png"
-dest_files=["res://.godot/imported/weathered_kit.png-bb9c0b6be78b4ffbfcd135f8b2ed39df.ctex"]
+source_file="res://Alchemist/images/relics/radiant_flask.png"
+dest_files=["res://.godot/imported/radiant_flask.png-c2bbc3993a3957f796d6fde8c6c59751.ctex"]
 
 [params]
 

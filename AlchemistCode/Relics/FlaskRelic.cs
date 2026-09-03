@@ -12,9 +12,9 @@ using Alchemist.AlchemistCode.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-// Both kits open combat the same way and both offer Brew, so the amounts are the only difference.
-// Shared so the Poison timing below cannot be fixed on one kit and left wrong on the other
-public abstract class KitRelic : AlchemistRelic
+// Both flasks open combat the same way and both offer Brew, so the amounts are the only difference.
+// Shared so the Poison timing below cannot be fixed on one flask and left wrong on the other
+public abstract class FlaskRelic : AlchemistRelic
 {
     protected abstract int Antitoxin { get; }
     protected abstract int Dose { get; }

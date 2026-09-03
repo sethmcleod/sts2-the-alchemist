@@ -102,6 +102,8 @@ public static class RelicSaveRenamePatches
     // Lazy: ModelDb is not populated when Harmony applies the patch
     private static Dictionary<string, ModelId> Renamed => _renamed ??= new Dictionary<string, ModelId>
     {
+        ["ALCHEMIST-WEATHERED_KIT"] = ModelDb.Relic<MurkyFlask>().Id!,
+        ["ALCHEMIST-GILDED_KIT"] = ModelDb.Relic<RadiantFlask>().Id!,
         // Cuts, not renames: each removed relic maps to the relic that took its slot
         ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Bitterroot>().Id!,
         ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<ExtraDose>().Id!,

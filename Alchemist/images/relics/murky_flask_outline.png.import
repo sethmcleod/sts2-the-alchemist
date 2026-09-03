@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b83xwagk8dld5"
-path="res://.godot/imported/weathered_kit_outline.png-705ef1a0e0d0d2f7f382dcb887434bcc.ctex"
+uid="uid://b8yo4x2ae8ga5"
+path="res://.godot/imported/murky_flask_outline.png-d87d993ffb707e2a382677401960ca70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/weathered_kit_outline.png"
-dest_files=["res://.godot/imported/weathered_kit_outline.png-705ef1a0e0d0d2f7f382dcb887434bcc.ctex"]
+source_file="res://Alchemist/images/relics/murky_flask_outline.png"
+dest_files=["res://.godot/imported/murky_flask_outline.png-d87d993ffb707e2a382677401960ca70.ctex"]
 
 [params]
 

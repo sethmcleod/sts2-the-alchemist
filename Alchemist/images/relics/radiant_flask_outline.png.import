@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgnyfar345o0u"
-path="res://.godot/imported/gilded_kit.png-2cae81336216a652467fd57ed43a17ce.ctex"
+uid="uid://u2rwxq135tkg"
+path="res://.godot/imported/radiant_flask_outline.png-6dc7c6ab0327082e4888b6d791c3ca53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/gilded_kit.png"
-dest_files=["res://.godot/imported/gilded_kit.png-2cae81336216a652467fd57ed43a17ce.ctex"]
+source_file="res://Alchemist/images/relics/radiant_flask_outline.png"
+dest_files=["res://.godot/imported/radiant_flask_outline.png-6dc7c6ab0327082e4888b6d791c3ca53.ctex"]
 
 [params]
 

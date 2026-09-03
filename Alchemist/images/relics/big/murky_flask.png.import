@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csxh5nq6a3gvp"
-path="res://.godot/imported/weathered_kit.png-dc2c55e0b5a0b524642542aaaa6508f2.ctex"
+uid="uid://dxl6dtu48h1qt"
+path="res://.godot/imported/murky_flask.png-e9627eb63811b8bc1c0214c948d26343.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/weathered_kit.png"
-dest_files=["res://.godot/imported/weathered_kit.png-dc2c55e0b5a0b524642542aaaa6508f2.ctex"]
+source_file="res://Alchemist/images/relics/big/murky_flask.png"
+dest_files=["res://.godot/imported/murky_flask.png-e9627eb63811b8bc1c0214c948d26343.ctex"]
 
 [params]
 
