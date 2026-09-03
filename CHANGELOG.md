@@ -13,8 +13,8 @@ mod).
 
 ### Changed
 
-- Renamed Weathered Kit relic to Murky Flask
 - Renamed Gilded Kit relic to Radiant Flask
+- Renamed Weathered Kit relic to Murky Flask
 
 ## [0.14.4] - 2026-09-01
 
