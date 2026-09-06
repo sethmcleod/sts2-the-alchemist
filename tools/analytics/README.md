@@ -12,7 +12,9 @@ Anonymous run telemetry from players, aggregated nightly into a public dashboard
    Standard mode past floor 5, rebuilds the vanilla `RunMetrics` payload, and POSTs one row.
 2. **Storage.** One Supabase table, `runs` (`schema.sql`). Promoted columns for filters, the
    vanilla payload in `data`, and an `alchemist` object with what vanilla cannot see: unlocked
-   epochs, potions sold, Brews taken, deck theme counts, and the gameplay config values. The
+   epochs, potions sold, Brews taken, deck theme counts, the gameplay config values, a `tally`
+   of open-keyed counters (Ferment depth, Mixes played, Mix sources, Compound pairings, Poison
+   ticks covered and bled, Brew offers and picks) and per-act fight totals. The
    publishable key in the DLL is insert-only under row level security.
 3. **Export.** `export_stats.py` pulls the rows with the secret key and writes additive
    count tables to `docs/analytics/data/`. No raw rows, decks, or player hashes leave the

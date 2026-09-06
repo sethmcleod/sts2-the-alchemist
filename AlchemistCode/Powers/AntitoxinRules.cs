@@ -64,7 +64,8 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
     // Analytics only. The gained counter reads any positive Poison landing on a player; the bled
     // counter reads the tick that resolves AFTER absorption, so it is what Poison actually cost in
     // HP. IsPoisonTick is the one definition of the tick shape; the stack still holds the full
-    // amount here because PoisonPower decrements after the damage lands
+    // amount here because PoisonPower decrements after the damage lands. A fully covered tick
+    // arrives with zero damage and IsPoisonTick's amount test filters it out
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -79,6 +80,7 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
     public override Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
+        LethalTick.Remove(target);
         if (target.IsPlayer && IsPoisonTick(target, result.UnblockedDamage, props, dealer, cardSource))
         {
             Bled.Add(target);
@@ -89,6 +91,32 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 
     internal static bool AbsorbedThisTurn(Creature creature) => Absorbed.Contains(creature);
 
+    // The game skips AfterDamageReceived for the hit that kills, so the lethal tick is caught on the
+    // way in: BeforeDamageReceived still fires for it with the post-Antitoxin amount. The latch is
+    // read at death and cleared by any hit the creature survived
+    private static readonly Dictionary<Creature, int> LethalTick = new();
+
+    public override Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target,
+        decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    {
+        LethalTick.Remove(target);
+        if (target.IsPlayer && amount > 0 && amount >= target.CurrentHp
+            && HasPoisonTickShape(props, dealer, cardSource)
+            && target.GetPowerAmount<PoisonPower>() > 0)
+            LethalTick[target] = (int)amount;
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature,
+        bool wasRemovalPrevented, float deathAnimLength)
+    {
+        if (!LethalTick.Remove(creature, out var bled)) return Task.CompletedTask;
+        Analytics.RunCounters.Add(creature.Player, Analytics.RunCounters.PoisonBled, bled);
+        if (!wasRemovalPrevented)
+            Analytics.RunCounters.Tally(creature.Player, Analytics.RunCounters.PoisonDeath);
+        return Task.CompletedTask;
+    }
+
     // Cleared wholesale rather than per participant, so no Creature from a finished combat is held
     public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side,
         IReadOnlyList<Creature> participants, ICombatState combatState)
@@ -96,6 +124,7 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         Absorbed.Clear();
         Bled.Clear();
         AbsorbedOnTick.Clear();
+        LethalTick.Clear();
         return Task.CompletedTask;
     }
 }

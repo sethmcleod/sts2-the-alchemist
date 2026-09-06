@@ -27,6 +27,6 @@ public class HeavyDose : AlchemistCard
             .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay).Execute(choiceContext);
         var mixes = Owner.Creature.GetPowerAmount<PoisonPower>() / DynamicVars["Per"].IntValue;
         for (var i = 0; i < mixes; i++)
-            await Mixing.CreateOne<Token.BurstingMix>(choiceContext, Owner);
+            await Mixing.CreateOne<Token.BurstingMix>(choiceContext, Owner, source: this);
     }
 }

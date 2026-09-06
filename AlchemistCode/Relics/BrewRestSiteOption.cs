@@ -105,6 +105,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
             var pick = rng.NextItem(exclusives)!;
             exclusives.Remove(pick);
             _offered.Add(pick.Id);
+            Analytics.RunCounters.Tally(Owner, Analytics.RunCounters.BrewOffered + Analytics.RunCounters.Label(pick));
             options.Add(new PotionReward(pick.ToMutable(), Owner));
         }
         return options.Count == 1

@@ -22,7 +22,7 @@ public class Thicken : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        var mix = await Mixing.CreateOne<Token.SyrupyMix>(choiceContext, Owner, IsUpgraded);
+        var mix = await Mixing.CreateOne<Token.SyrupyMix>(choiceContext, Owner, IsUpgraded, this);
         if (mix == null) return;
         CardCmd.ApplyKeyword(mix, CardKeyword.Retain);
     }

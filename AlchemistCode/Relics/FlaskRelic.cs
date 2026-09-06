@@ -11,6 +11,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 using Alchemist.AlchemistCode.Powers;
+using Alchemist.AlchemistCode.Potions;
+using MegaCrit.Sts2.Core.Rewards;
 
 namespace Alchemist.AlchemistCode.Relics;
 
@@ -48,7 +50,16 @@ public abstract class FlaskRelic : AlchemistRelic
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner || Owner.PlayerCombatState is not { TurnNumber: 1 }) return;
-        await Mixing.CreateRandom(choiceContext, Owner);
+        await Mixing.CreateRandom(choiceContext, Owner, source: this);
+    }
+
+    // The pick half of the Brew analytics, read from the claim itself: a belt diff after the screen
+    // misses a claim the belt refused (Sozu), and Brew is the only source of a Brew-only potion
+    public override Task AfterRewardTaken(Player player, Reward reward)
+    {
+        if (player == Owner && reward is PotionReward { ClaimedPotion: { } potion } && potion is IBrewOnly)
+            Analytics.RunCounters.Tally(Owner, Analytics.RunCounters.BrewPicked + Analytics.RunCounters.Label(potion));
+        return Task.CompletedTask;
     }
 
     public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)

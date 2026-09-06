@@ -27,6 +27,6 @@ public class Eureka : AlchemistCard
             new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt,
                 DynamicVars["transforms"].IntValue), null, this);
         foreach (var card in selected)
-            await Mixing.TransformIntoChosen(choiceContext, Owner, card, Mixing.All);
+            await Mixing.TransformIntoChosen(choiceContext, Owner, card, Mixing.All, this);
     }
 }

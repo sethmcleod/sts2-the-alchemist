@@ -26,7 +26,7 @@ public class FreeSamples : AlchemistCard
     {
         if (CombatState == null) return;
         foreach (var ally in CombatState.Players.Where(p => p != Owner && p.Creature is { IsAlive: true }))
-            await Mixing.GiveRandom(choiceContext, Owner, ally);
+            await Mixing.GiveRandom(choiceContext, Owner, ally, this);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
     }
 }

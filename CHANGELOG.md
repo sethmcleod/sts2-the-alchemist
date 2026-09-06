@@ -7,6 +7,18 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Expanded the anonymous run analytics to track the following:
+  - Ferment turns at the moment a Ferment card is played
+  - Mixes played against Mixes created, per kind
+  - Which card, relic, potion or power made each Mix
+  - Compound Mix pairings
+  - Poison ticks held in full by Antitoxin
+  - Deaths to the player's own Poison
+  - Brew offers against picks
+  - Fight length and damage by act
+
 ## [0.14.5] - 2026-09-06
 
 ### Added

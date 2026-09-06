@@ -26,7 +26,7 @@ public class Effervesce : AlchemistCard
         {
             var mix = Mixing.Create(CombatState, targetPlayer, kind);
             if (IsUpgraded) CardCmd.Upgrade(mix);
-            Mixing.RecordCreated(Owner, mix);
+            Mixing.RecordCreated(Owner, mix, this);
             await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, targetPlayer);
         }
     }

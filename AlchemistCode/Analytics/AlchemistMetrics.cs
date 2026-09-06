@@ -215,6 +215,11 @@ internal static class AlchemistMetrics
                 {
                     ["peak"] = RunCounters.CountFor(localPlayer, RunCounters.AntitoxinPeak),
                 },
+                // The open-keyed counts: Ferment depth, Mixes played, Mix sources, compound pairs,
+                // Poison ticks covered and bled, Brew offers and picks
+                ["tally"] = TallyJson(localPlayer),
+                // Per act, so fight length can be read by act rather than only by encounter
+                ["acts"] = ActsJson(run, localPlayer),
                 ["config"] = new JsonObject
                 {
                     ["enable_epochs"] = AlchemistModConfig.EnableEpochs,
@@ -225,6 +230,33 @@ internal static class AlchemistMetrics
         // The hash is logged so you can find your own runs and keep them out of the exports
         MainFile.Logger.Info($"Uploading Alchemist run analytics (player {metrics.PlayerId})...");
         RunMetricsUploader.Upload(row.ToJsonString(), "Alchemist run");
+    }
+
+    private static JsonObject TallyJson(SerializablePlayer localPlayer)
+    {
+        var tally = new JsonObject();
+        foreach (var (key, count) in RunCounters.TallyFor(localPlayer).OrderBy(kv => kv.Key))
+            tally[key] = count;
+        return tally;
+    }
+
+    // One entry per act: fights, turns (the vanilla convention counts TurnsTaken + 1) and damage
+    private static JsonArray ActsJson(SerializableRun run, SerializablePlayer localPlayer)
+    {
+        var acts = new JsonArray();
+        for (var actIndex = 0; actIndex < run.MapPointHistory.Count; actIndex++)
+        {
+            var fights = run.MapPointHistory[actIndex]
+                .Where(e => e.Rooms.Last().RoomType.IsCombatRoom()).ToList();
+            acts.Add(new JsonObject
+            {
+                ["act"] = actIndex + 1,
+                ["fights"] = fights.Count,
+                ["turns"] = fights.Sum(e => e.Rooms.Last().TurnsTaken + 1),
+                ["damage"] = fights.Sum(e => Math.Min(e.GetEntry(localPlayer.NetId).DamageTaken, localPlayer.MaxHp)),
+            });
+        }
+        return acts;
     }
 
     // The Alchemist epoch ids the player has earned, in timeline order. Two players on the same mod

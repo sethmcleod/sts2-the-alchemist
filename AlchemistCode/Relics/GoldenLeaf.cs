@@ -22,6 +22,6 @@ public class GoldenLeaf : AlchemistRelic
         var rng = Owner.RunState.Rng.CombatCardGeneration;
         var first = Mixing.Create(combat, Owner, rng.NextItem(Mixing.All));
         var second = Mixing.Create(combat, Owner, rng.NextItem(Mixing.All));
-        await Mixing.CreateCompound(choiceContext, Owner, first, second);
+        await Mixing.CreateCompound(choiceContext, Owner, first, second, this);
     }
 }

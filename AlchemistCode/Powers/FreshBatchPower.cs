@@ -20,7 +20,7 @@ public class FreshBatchPower : AlchemistPower
         if (player != Owner.Player) return;
         Flash();
         for (var i = 0; i < Amount; i++)
-            await Mixing.CreateRandom(choiceContext, player, upgraded: true);
+            await Mixing.CreateRandom(choiceContext, player, upgraded: true, source: this);
         await PowerCmd.Remove(this);
     }
 }

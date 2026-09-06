@@ -52,6 +52,10 @@ public static class Mixing
 
     public static bool IsMix(CardModel card) => card is CompoundMix || KindOf(card) != null;
 
+    // The analytics label for a Mix: its kind, or "compound"
+    public static string KindLabel(CardModel card) =>
+        KindOf(card)?.ToString().ToLowerInvariant() ?? "compound";
+
     // A Compound Mix counts as a Mix everywhere, but it cannot be an ingredient again
     public static bool IsIngredient(CardModel card) => KindOf(card) != null;
 
@@ -88,7 +92,7 @@ public static class Mixing
     /// outside combat. With upgraded, the grid shows the + versions, so the previews match what is given.
     /// </summary>
     public static async Task<CardModel?> Choose(PlayerChoiceContext ctx, Player owner,
-        bool upgraded = false, IReadOnlyList<MixKind>? kinds = null)
+        bool upgraded = false, IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null)
     {
         kinds ??= Basic;
         if (owner.Creature.CombatState is not { } combat) return null;
@@ -98,13 +102,21 @@ public static class Mixing
                 CardCmd.Upgrade(option);
         var picked = (await CardSelectCmd.FromSimpleGrid(ctx, options, owner,
             new CardSelectorPrefs(PromptFor(kinds), 1))).FirstOrDefault();
-        if (picked != null) RecordCreated(owner, picked);
+        if (picked != null) RecordCreated(owner, picked, source);
         return picked;
     }
 
     // Every created Mix goes through here so the Mixes badge and the analytics count them all,
-    // including the makers that skip the picker (Grand Batch, Effervesce)
-    public static void RecordCreated(Player? creator, CardModel mix) =>
+    // including the makers that skip the picker (Grand Batch, Effervesce). The source is the card,
+    // relic, potion or power that made it, tallied so the analytics can say which makers feed the
+    // Mix economy
+    public static void RecordCreated(Player? creator, CardModel mix, AbstractModel? source = null)
+    {
+        if (source != null)
+            Analytics.RunCounters.Tally(creator, Analytics.RunCounters.MixSource + Analytics.RunCounters.Label(source));
+        // Created is tallied beside the fixed counter so played-vs-created reads two counts from the
+        // same build: a run resumed across an update keeps old fixed counts but starts a fresh tally
+        Analytics.RunCounters.Tally(creator, Analytics.RunCounters.MixMade + KindLabel(mix));
         Analytics.RunCounters.Add(creator, mix switch
         {
             BurstingMix => Analytics.RunCounters.MixBursting,
@@ -115,52 +127,55 @@ public static class Mixing
             SparklingMix => Analytics.RunCounters.MixSparkling,
             _ => Analytics.RunCounters.MixCompound,
         }, 1);
+    }
 
     /// <summary>Add a random Mix (from all six by default) to the owner's hand. Seeded, so multiplayer stays in sync.</summary>
     public static async Task CreateRandom(PlayerChoiceContext ctx, Player owner, bool upgraded = false,
-        IReadOnlyList<MixKind>? kinds = null)
+        IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null)
     {
         if (owner.Creature.CombatState is not { } combat) return;
         var kind = owner.RunState.Rng.CombatCardGeneration.NextItem(kinds ?? All);
         var picked = Create(combat, owner, kind);
         if (picked == null) return;
         if (upgraded) CardCmd.Upgrade(picked);
-        RecordCreated(owner, picked);
+        RecordCreated(owner, picked, source);
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
     }
 
     /// <summary>Add a random basic Mix to another player's hand, counted for the giver.</summary>
-    public static async Task GiveRandom(PlayerChoiceContext ctx, Player giver, Player receiver)
+    public static async Task GiveRandom(PlayerChoiceContext ctx, Player giver, Player receiver,
+        AbstractModel? source = null)
     {
         if (receiver.Creature.CombatState is not { } combat) return;
         var picked = Create(combat, receiver, giver.RunState.Rng.CombatCardGeneration.NextItem(Basic));
         if (picked == null) return;
-        RecordCreated(giver, picked);
+        RecordCreated(giver, picked, source);
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, receiver);
     }
 
     /// <summary>One picker, many cards: choose a basic Mix once, then add that many copies.</summary>
-    public static async Task CreateChosenCopies(PlayerChoiceContext ctx, Player owner, int count)
+    public static async Task CreateChosenCopies(PlayerChoiceContext ctx, Player owner, int count,
+        AbstractModel? source = null)
     {
         if (count <= 0) return;
-        var picked = await Choose(ctx, owner);
+        var picked = await Choose(ctx, owner, source: source);
         if (picked == null) return;
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
         for (var i = 1; i < count; i++)
         {
             var copy = picked.CreateClone();
-            RecordCreated(owner, copy);
+            RecordCreated(owner, copy, source);
             await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Hand, owner);
         }
     }
 
     /// <summary>Choose a Mix and add it to the owner's hand, count times.</summary>
     public static async Task CreateChosen(PlayerChoiceContext ctx, Player owner, int count = 1,
-        bool upgraded = false, IReadOnlyList<MixKind>? kinds = null)
+        bool upgraded = false, IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null)
     {
         for (var i = 0; i < count; i++)
         {
-            var picked = await Choose(ctx, owner, upgraded, kinds);
+            var picked = await Choose(ctx, owner, upgraded, kinds, source);
             if (picked == null) return;
             await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
         }
@@ -168,9 +183,9 @@ public static class Mixing
 
     /// <summary>Transform an existing card into a chosen Mix. Returns the Mix, or null if cancelled.</summary>
     public static async Task<CardModel?> TransformIntoChosen(PlayerChoiceContext ctx, Player owner,
-        CardModel victim, IReadOnlyList<MixKind>? kinds = null)
+        CardModel victim, IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null)
     {
-        var picked = await Choose(ctx, owner, kinds: kinds);
+        var picked = await Choose(ctx, owner, kinds: kinds, source: source);
         if (picked == null) return null;
         await CardCmd.Transform(victim, picked);
         return picked;
@@ -178,26 +193,26 @@ public static class Mixing
 
     /// <summary>Add one specific Mix to the owner's hand. Returns it, or null outside combat.</summary>
     public static async Task<CardModel?> CreateOne<T>(PlayerChoiceContext ctx, Player owner,
-        bool upgraded = false)
+        bool upgraded = false, AbstractModel? source = null)
         where T : CardModel
     {
         if (owner.Creature.CombatState is not { } combat) return null;
         var mix = combat.CreateCard<T>(owner);
         if (upgraded) CardCmd.Upgrade(mix);
-        RecordCreated(owner, mix);
+        RecordCreated(owner, mix, source);
         await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, owner);
         return mix;
     }
 
     /// <summary>Transform an existing card into a random Mix. Seeded, so multiplayer stays in sync.</summary>
     public static async Task<CardModel?> TransformIntoRandom(PlayerChoiceContext ctx, Player owner,
-        CardModel victim, bool upgraded = false)
+        CardModel victim, bool upgraded = false, AbstractModel? source = null)
     {
         if (owner.Creature.CombatState is not { } combat) return null;
         var picked = Create(combat, owner, owner.RunState.Rng.CombatCardGeneration.NextItem(All));
         if (picked == null) return null;
         if (upgraded) CardCmd.Upgrade(picked);
-        RecordCreated(owner, picked);
+        RecordCreated(owner, picked, source);
         await CardCmd.Transform(victim, picked);
         return picked;
     }
@@ -207,14 +222,17 @@ public static class Mixing
     /// so a Sparkling's energy cannot be banked through the compound.
     /// </summary>
     public static async Task<CardModel?> CreateCompound(PlayerChoiceContext ctx, Player owner,
-        CardModel first, CardModel second)
+        CardModel first, CardModel second, AbstractModel? source = null)
     {
         if (owner.Creature.CombatState is not { } combat) return null;
         var compound = (CompoundMix)combat.CreateCard<CompoundMix>(owner);
         compound.Compose(first, second);
         if (first.Keywords.Contains(CardKeyword.Ethereal) || second.Keywords.Contains(CardKeyword.Ethereal))
             CardCmd.ApplyKeyword(compound, CardKeyword.Ethereal);
-        RecordCreated(owner, compound);
+        // The pairing, order-free, so Bursting+Acrid and Acrid+Bursting are one row
+        var pair = new[] { KindLabel(first), KindLabel(second) }.OrderBy(k => k).ToArray();
+        Analytics.RunCounters.Tally(owner, Analytics.RunCounters.CompoundPair + string.Join("+", pair));
+        RecordCreated(owner, compound, source);
         await CardPileCmd.AddGeneratedCardToCombat(compound, PileType.Hand, owner);
         return compound;
     }
