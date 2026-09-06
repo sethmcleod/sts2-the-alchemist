@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.7] - 2026-09-06
+
 ### Added
 
 - Added Reduction potion: "Exhaust up to 3 cards in your Hand. Gain 1 Energy and draw 1 card for each card Exhausted." It replaces Decoction
