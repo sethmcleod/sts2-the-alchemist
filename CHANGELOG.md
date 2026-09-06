@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.6] - 2026-09-06
+
 ### Changed
 
 - Expanded the anonymous run analytics to track the following:
