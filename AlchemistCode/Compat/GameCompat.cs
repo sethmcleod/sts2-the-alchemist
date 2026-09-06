@@ -21,8 +21,12 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Alchemist.AlchemistCode.Compat;
 
 /// <summary>
-/// ONE OF THE TWO FILES THAT DIFFER BETWEEN THE beta AND main BRANCHES (the other is
-/// AntitoxinPowerCompat.cs). THIS COPY IS THE beta IMPLEMENTATION.
+/// ONE OF THE FOUR FILES THAT DIFFER BETWEEN THE beta AND main BRANCHES. The others are
+/// AntitoxinPowerCompat.cs, SteepPowerCompat.cs and AlchemistAnimatorCompat.cs, which hold the
+/// overrides that cannot be routed through a wrapper. Each names its branch in a COMPAT-BRANCH
+/// marker that scripts/lint_sync.py checks against the branch you are on. AlchemistCardCompat.cs
+/// is marked any and is identical on both.
+/// THIS COPY IS THE beta IMPLEMENTATION.
 /// </summary>
 /// <remarks>
 /// The game's default branch and its public-beta branch spell a handful of damage and animation

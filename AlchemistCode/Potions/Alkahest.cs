@@ -21,7 +21,8 @@ public class Alkahest : AlchemistPotion, IBrewOnly
         {
             var player = target?.Player ?? Owner;
             // The base Apotheosis set: every combat pile, so the whole deck for the rest of combat
-            var cards = player.PlayerCombatState.AllCards.Where(c => c.IsUpgradable).ToList();
+            if (player.PlayerCombatState is not { } combat) return;
+            var cards = combat.AllCards.Where(c => c.IsUpgradable).ToList();
             foreach (var card in cards)
                 CardCmd.Upgrade(card);
             // Preview only what is visible: a row of the whole deck runs off the screen
