@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.5] - 2026-09-06
+
 ### Added
 
 - Added art for potions, starter relics, and Brew rest site option
