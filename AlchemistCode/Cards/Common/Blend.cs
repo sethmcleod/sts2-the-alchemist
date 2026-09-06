@@ -17,8 +17,8 @@ public class Blend : AlchemistCard
 
     public Blend() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(5, 1);
-        WithTip(StaticHoverTip.Transform);
+        WithBlock(6, 2);
+        WithTips(_ => new[] { AlchemistTips.TransformMix });
         WithTips(card => Mixing.MixTips(card.IsUpgraded));
     }
 

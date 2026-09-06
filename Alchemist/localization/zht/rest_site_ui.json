@@ -1,4 +1,4 @@
 {
-  "OPTION_BREW.description": "從 3 瓶特殊[gold]藥水[/gold]中選擇 1 瓶，賣給[gold]商人[/gold]可得 150 金幣。",
+  "OPTION_BREW.description": "[gold]升級[/gold]你[gold]牌組[/gold]中的一張隨機牌。從 3 瓶特殊[gold]藥水[/gold]中選擇 1 瓶，[gold]商人[/gold]會以 150 金幣收購。",
   "OPTION_BREW.name": "釀造"
 }

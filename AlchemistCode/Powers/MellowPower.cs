@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Alchemist.AlchemistCode.Powers;
 
 // The Ferment payoff power. Driven by AlchemistCard.AdvanceFerment rather than a hook, because
-// fermentation is our own mechanic and has no base-game event; same poke pattern as PassItOnPower.
+// fermentation is our own mechanic and has no base-game event; the card pokes the power directly.
 // One payout per turn of fermentation gained, so Taste Test, Pour Over and Bloom pay per trigger
 public class MellowPower : AlchemistPower
 {

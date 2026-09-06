@@ -28,7 +28,6 @@ public static class SaveRenamePatches
         ["ALCHEMIST-DOUBLE_BATCH"] = ModelDb.Card<Corrode>().Id!,
         ["ALCHEMIST-PAYS_OFF"] = ModelDb.Card<SmellingSalts>().Id!,
         ["ALCHEMIST-NEXT_UP"] = ModelDb.Card<Spike>().Id!,
-        ["ALCHEMIST-ANOINT"] = ModelDb.Card<Spike>().Id!,
         ["ALCHEMIST-FRESH_COAT"] = ModelDb.Card<Untended>().Id!,
         ["ALCHEMIST-ELIXIR"] = ModelDb.Card<Panacea>().Id!,
         ["ALCHEMIST-ANTIDOTE"] = ModelDb.Card<Dose>().Id!,
@@ -50,19 +49,34 @@ public static class SaveRenamePatches
         ["ALCHEMIST-DOUBLE_DOSE"] = ModelDb.Card<Fumigate>().Id!,
         ["ALCHEMIST-QUICKLIME"] = ModelDb.Card<Spores>().Id!,
         ["ALCHEMIST-ADAPT"] = ModelDb.Card<Vent>().Id!,
-        ["ALCHEMIST-LICK"] = ModelDb.Card<Drench>().Id!,
+        ["ALCHEMIST-LICK"] = ModelDb.Card<Harvest>().Id!,
         ["ALCHEMIST-RETCH"] = ModelDb.Card<Distill>().Id!,
         ["ALCHEMIST-CONGEAL"] = ModelDb.Card<Proof>().Id!,
         ["ALCHEMIST-STIR"] = ModelDb.Card<Corrode>().Id!,
         ["ALCHEMIST-ICHOR"] = ModelDb.Card<Wallop>().Id!,
         ["ALCHEMIST-ALEMBIC"] = ModelDb.Card<Untended>().Id!,
-        ["ALCHEMIST-SPEW"] = ModelDb.Card<Overspill>().Id!,
+        ["ALCHEMIST-SPEW"] = ModelDb.Card<Seep>().Id!,
         ["ALCHEMIST-TOLERANCE"] = ModelDb.Card<WarmUp>().Id!,
-        ["ALCHEMIST-CONDENSE"] = ModelDb.Card<Twist>().Id!,
+        ["ALCHEMIST-CONDENSE"] = ModelDb.Card<Fizz>().Id!,
+        ["ALCHEMIST-TWIST"] = ModelDb.Card<Fizz>().Id!,
+        ["ALCHEMIST-PORTION"] = ModelDb.Card<Fizz>().Id!,
         ["ALCHEMIST-SMOKE_OUT"] = ModelDb.Card<Digest>().Id!,
-        ["ALCHEMIST-FRESH_BATCH"] = ModelDb.Card<Corrode>().Id!,
-        ["ALCHEMIST-SIPHON"] = ModelDb.Card<Pelt>().Id!,
-        ["ALCHEMIST-SALVE"] = ModelDb.Card<Cure>().Id!,
+        ["ALCHEMIST-SIPHON"] = ModelDb.Card<Dose>().Id!,
+        ["ALCHEMIST-PELT"] = ModelDb.Card<Combine>().Id!,
+        ["ALCHEMIST-SALVE"] = ModelDb.Card<Wring>().Id!,
+        ["ALCHEMIST-FLARE_UP"] = ModelDb.Card<Endure>().Id!,
+        ["ALCHEMIST-KNEAD"] = ModelDb.Card<Endure>().Id!,
+        ["ALCHEMIST-HARDEN"] = ModelDb.Card<FreshBatch>().Id!,
+        ["ALCHEMIST-ANOINT"] = ModelDb.Card<Spike>().Id!,
+        ["ALCHEMIST-LACQUER"] = ModelDb.Card<Brine>().Id!,
+        ["ALCHEMIST-RENNET"] = ModelDb.Card<Seep>().Id!,
+        ["ALCHEMIST-TAP_THE_CASK"] = ModelDb.Card<Harvest>().Id!,
+        ["ALCHEMIST-INURE"] = ModelDb.Card<Clench>().Id!,
+        ["ALCHEMIST-SWIG"] = ModelDb.Card<Clench>().Id!,
+        ["ALCHEMIST-OVERSPILL"] = ModelDb.Card<Seep>().Id!,
+        ["ALCHEMIST-DRENCH"] = ModelDb.Card<Harvest>().Id!,
+        ["ALCHEMIST-CURE"] = ModelDb.Card<Wring>().Id!,
+        ["ALCHEMIST-CELLAR"] = ModelDb.Card<Ripening>().Id!,
     };
 
     public static void Prefix(ref ModelId id)
@@ -83,6 +97,7 @@ public static class PotionSaveRenamePatches
     private static Dictionary<string, ModelId> Renamed => _renamed ??= new Dictionary<string, ModelId>
     {
         ["ALCHEMIST-QUICKSILVER_DRAUGHT"] = ModelDb.Potion<Potions.OleanderMilk>().Id!,
+        ["ALCHEMIST-GOLD_LEAF"] = ModelDb.Potion<Potions.Solvent>().Id!,
     };
 
     public static void Prefix(ref ModelId id)
@@ -102,10 +117,13 @@ public static class RelicSaveRenamePatches
     // Lazy: ModelDb is not populated when Harmony applies the patch
     private static Dictionary<string, ModelId> Renamed => _renamed ??= new Dictionary<string, ModelId>
     {
+        ["ALCHEMIST-WEATHERED_KIT"] = ModelDb.Relic<MurkyFlask>().Id!,
+        ["ALCHEMIST-GILDED_KIT"] = ModelDb.Relic<RadiantFlask>().Id!,
         // Cuts, not renames: each removed relic maps to the relic that took its slot
         ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Bitterroot>().Id!,
         ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<ExtraDose>().Id!,
         ["ALCHEMIST-MIDAS_FRUIT"] = ModelDb.Relic<GlowingShard>().Id!,
+        ["ALCHEMIST-AURIC_SEAL"] = ModelDb.Relic<GoldenLeaf>().Id!,
     };
 
     public static void Prefix(ref ModelId id)

@@ -18,7 +18,7 @@ public class Bitterroot : AlchemistRelic
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
-    // Both land in the Late phase of the first player turn, the way KitRelic doses. PoisonPower
+    // Both land in the Late phase of the first player turn, the way FlaskRelic doses. PoisonPower
     // triggers and decrements on AfterSideTurnStart, so a dose applied before combat is eaten by the
     // turn-1 trigger before the player can act; landing here means the first tick comes on turn 2
     public override async Task AfterSideTurnStartLate(

@@ -11,7 +11,9 @@ public class Overbrew : AlchemistCard
 
     public Overbrew() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithTips(_ => Mixing.MixTips());
+        WithTip(typeof(Token.BurstingMix));
+        WithTip(typeof(Token.SyrupyMix));
+        WithTip(typeof(Token.ZestyMix));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

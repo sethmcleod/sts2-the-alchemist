@@ -1,4 +1,4 @@
 {
-  "OPTION_BREW.description": "เลือก[gold]ขวดยา[/gold]พิเศษ 1 จาก 3 ขวด มูลค่า 150 ทองเมื่อขายให้[gold]พ่อค้า[/gold]",
+  "OPTION_BREW.description": "[gold]พัฒนา[/gold]การ์ด 1 ใบแบบสุ่มใน[gold]กองการ์ด[/gold] เลือก[gold]ขวดยา[/gold]พิเศษ 1 จาก 3 ขวด ซึ่งขายให้[gold]พ่อค้า[/gold]ได้ 150 ทอง",
   "OPTION_BREW.name": "ปรุงยา"
 }

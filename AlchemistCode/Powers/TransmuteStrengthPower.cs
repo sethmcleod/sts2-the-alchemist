@@ -1,5 +1,5 @@
 using MegaCrit.Sts2.Core.Models;
-using Alchemist.AlchemistCode.Cards.Uncommon;
+using Alchemist.AlchemistCode.Cards.Rare;
 
 namespace Alchemist.AlchemistCode.Powers;
 

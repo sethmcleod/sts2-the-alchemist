@@ -1,15 +1,15 @@
 {
-  "ALCHEMIST-DECANT.description": "ระดับ[gold]ดีแคนต์[/gold]ของการ์ดนี้จะเพิ่มขึ้นทุกครั้งที่คุณสร้างการ์ด ไม่ว่าการ์ดนี้จะอยู่ที่ใด เมื่อเล่นตอนระดับเต็ม เอฟเฟกต์[gold]ดีแคนต์[/gold]ของมันจะทำงานด้วย แล้วระดับจะถูกรีเซ็ต",
-  "ALCHEMIST-DECANT.title": "ดีแคนต์",
-  "ALCHEMIST-FERMENT.description": "การ์ดนี้จะมีพลังเพิ่มขึ้นต่อทุกเทิร์นที่อยู่ใน[gold]มือ[/gold] เมื่อคุณเล่นมัน การบ่มของมันจะถูกรีเซ็ต",
+  "ALCHEMIST-FERMENT.description": "การ์ดนี้จะมีพลังเพิ่มขึ้นต่อทุกเทิร์นที่อยู่ใน[gold]มือ[/gold]",
   "ALCHEMIST-FERMENT.selectionPrompt": "เลือกการ์ด 1 ใบเพื่อ[gold]บ่ม[/gold]",
   "ALCHEMIST-FERMENT.title": "บ่ม",
-  "ALCHEMIST-FERMENT_REF.description": "การ์ดเหล่านี้จะมีพลังเพิ่มขึ้นต่อทุกเทิร์นที่อยู่ใน[gold]มือ[/gold] เมื่อคุณเล่นมัน การบ่มของมันจะถูกรีเซ็ต",
+  "ALCHEMIST-FERMENT_REF.description": "การ์ดเหล่านี้จะมีพลังเพิ่มขึ้นต่อทุกเทิร์นที่อยู่ใน[gold]มือ[/gold]",
   "ALCHEMIST-FERMENT_REF.title": "บ่ม",
   "ALCHEMIST-INFUSE.description": "[gold]ร่ายมนตร์[/gold]ใส่การ์ด 1 ใบจนจบการต่อสู้ การ์ดโจมตีจะกลายเป็น[purple]เจือพิษ[/purple] การ์ดทักษะจะกลายเป็น[purple]อาบยา[/purple] การ์ดพลังจะกลายเป็น[purple]เสริมกำลัง[/purple] การ์ดอื่นได้รับ[gold]กึ่งสลาย[/gold]",
   "ALCHEMIST-INFUSE.selectionPrompt": "เลือกการ์ด{Amount:plural: 1 ใบ| [blue]{}[/blue] ใบ}เพื่อ[gold]อัดฉีด[/gold]",
   "ALCHEMIST-INFUSE.selectionPromptAny": "เลือกการ์ดกี่ใบก็ได้เพื่อ[gold]อัดฉีด[/gold]",
   "ALCHEMIST-INFUSE.selectionPromptRange": "เลือกการ์ดได้ถึง [blue]{MaxCount}[/blue] {MaxCount:plural:ใบ|ใบ}เพื่อ[gold]อัดฉีด[/gold]",
   "ALCHEMIST-INFUSE.title": "อัดฉีด",
-  "ALCHEMIST-MIX.selectionPrompt": "เลือก[gold]ยาผสม[/gold]ที่จะเพิ่มเข้า[gold]มือ[/gold]"
+  "ALCHEMIST-MIX.selectionPrompt": "เลือก[gold]ยาผสม[/gold]ที่จะเพิ่มเข้า[gold]มือ[/gold]",
+  "ALCHEMIST-MIX.selectionPromptBasic": "เลือก[gold]ยาผสม[/gold]พื้นฐานที่จะเพิ่มเข้า[gold]มือ[/gold]",
+  "ALCHEMIST-MIX.selectionPromptSpecial": "เลือก[gold]ยาผสม[/gold]พิเศษที่จะเพิ่มเข้า[gold]มือ[/gold]"
 }

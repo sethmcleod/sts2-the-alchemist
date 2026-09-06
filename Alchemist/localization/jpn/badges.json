@@ -1,9 +1,9 @@
 {
-  "ALCHEMIST-MIXES.bronzeDescription": "[gold]合剤[/gold]を[blue]10[/blue]枚以上作成した。",
+  "ALCHEMIST-MIXES.bronzeDescription": "[gold]合剤[/gold]を[blue]30[/blue]枚以上作成した。",
   "ALCHEMIST-MIXES.bronzeTitle": "粗い混合",
-  "ALCHEMIST-MIXES.goldDescription": "[gold]合剤[/gold]を[blue]30[/blue]枚以上作成した。",
+  "ALCHEMIST-MIXES.goldDescription": "[gold]合剤[/gold]を[blue]90[/blue]枚以上作成した。",
   "ALCHEMIST-MIXES.goldTitle": "調剤の達人",
-  "ALCHEMIST-MIXES.silverDescription": "[gold]合剤[/gold]を[blue]20[/blue]枚以上作成した。",
+  "ALCHEMIST-MIXES.silverDescription": "[gold]合剤[/gold]を[blue]60[/blue]枚以上作成した。",
   "ALCHEMIST-MIXES.silverTitle": "均整の処方",
   "ALCHEMIST-POTION_SALE.bronzeDescription": "商人にポーションを[blue]2[/blue]個以上売却した。",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "行商人",

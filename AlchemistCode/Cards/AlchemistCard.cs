@@ -34,8 +34,9 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // with it must not print {Amount} or {MaxCount}, which would show the raw sentinel
     public const int AnyNumber = 999999999;
 
-    protected AlchemistCard(int cost, CardType type, CardRarity rarity, TargetType target)
-        : base(cost, type, rarity, target)
+    protected AlchemistCard(int cost, CardType type, CardRarity rarity, TargetType target,
+        bool showInCardLibrary = true)
+        : base(cost, type, rarity, target, showInCardLibrary)
     {
         WithTips(card => ((AlchemistCard)card).KeywordTips());
     }
@@ -45,10 +46,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (IsFermentCard)
         {
             yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Ferment);
-        }
-        if (IsDecantCard)
-        {
-            yield return HoverTipFactory.FromKeyword(AlchemistKeywords.Decant);
         }
     }
 
@@ -68,9 +65,8 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state
     internal bool IsEnchanted => Enchantment != null;
 
-    // Default: a full Decant level is a discrete met condition, so every Decant card glows for free.
-    // False for everything else; cards with their own condition override it
-    protected virtual bool ConditionalGlow => DecantFull;
+    // False by default; cards with a discrete met condition override it
+    protected virtual bool ConditionalGlow => false;
 
     // The IsMutable gate makes every glow safe on canonical models, where reading Owner throws. No card
     // needs its own guard
@@ -162,6 +158,9 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // (Corrode's cost) can resync no matter which path moved the turns
     protected virtual void OnFermentTurnsChanged() { }
 
+    // The hand-side predicate every Ferment support card shares
+    internal static bool IsBrewing(CardModel card) => card is AlchemistCard { IsFermentInline: true };
+
     internal int DrainFerment()
     {
         var turns = _fermentTurns;
@@ -192,61 +191,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             await mellow.OnFermented(turns);
     }
 
-    // Decant: the level rises as you create cards, wherever this card is, and resets each combat, the
-    // same combat-scoped lifecycle as fermentation (a mid-combat save-and-quit loses both). A Decant
-    // card declares Decants => true and a "DecantMax" var whose UPGRADE SHRINKS the threshold
-    private int _decantFill;
-
-    protected virtual bool Decants => false;
-
-    internal bool IsDecantCard => Decants;
-
-    internal int DecantMaxValue => IsDecantCard ? DynamicVars["DecantMax"].IntValue : 0;
-
-    internal bool DecantFull => IsDecantCard && IsMutable
-        && (_decantFill >= DecantMaxValue || RefineActive);
-
-    private bool RefineActive =>
-        Owner is { } player && player.Creature.HasPower<Powers.RefinePower>();
-
-    // Clamped at the threshold: an overfull level reads as banked progress the rules never pay
-    internal void AddDecant(int amount)
-    {
-        if (!IsDecantCard || amount <= 0) return;
-        var wasFull = _decantFill >= DecantMaxValue;
-        _decantFill = Math.Min(_decantFill + amount, DecantMaxValue);
-        if (!wasFull && _decantFill >= DecantMaxValue) PlayFillCue(this);
-    }
-
-    // The level can fill anywhere, including piles the player cannot see, so the slosh is the
-    // only signal a brew came ready. One cue per frame however many cards fill off one creation,
-    // and only for the local player's cards, or multiplayer clients hear each other's decks
-    private static ulong _lastFillCueFrame;
-
-    private static void PlayFillCue(AlchemistCard card)
-    {
-        if (!MegaCrit.Sts2.Core.Context.LocalContext.IsMine(card)) return;
-        var frame = Godot.Engine.GetProcessFrames();
-        if (frame == _lastFillCueFrame) return;
-        _lastFillCueFrame = frame;
-        MegaCrit.Sts2.Core.Audio.Debug.NDebugAudioManager.Instance?.Play(
-            "potion_slosh_1.mp3", 0.5f, MegaCrit.Sts2.Core.Audio.Debug.PitchVariance.Large);
-    }
-
-    // The play consumes a FULL level only; a partial level is untouched, so the card is never a tax.
-    // A Replay series spends it once: the first play spends the level, the replays read it empty
-    protected bool TrySpendDecant()
-    {
-        if (!DecantFull) return false;
-        if (RefineActive) return true;
-        _decantFill = 0;
-        // Uncork pays its draw when the play that spent the level finishes
-        if (System.Linq.Enumerable.FirstOrDefault(
-                System.Linq.Enumerable.OfType<Powers.UncorkPower>(Owner.Creature.Powers)) is { } uncork)
-            uncork.NoteLevelSpent();
-        return true;
-    }
-
     /// <summary>The base game reserves this for roughly 12 damage and up.</summary>
     /// <summary>Set false to keep a card snappy, as the base game does for its Defends.</summary>
     protected internal virtual bool PlaysCastAnimation => true;
@@ -258,17 +202,9 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     protected virtual string FermentTotalText => "";
 
-    private bool FermentsThisTurn
-    {
-        get
-        {
-            if (Owner is not { } player) return false;
-            if (PileType.Hand.GetPile(player).Cards.Contains(this)) return true;
-            if (!player.Creature.HasPower<UntendedPower>()) return false;
-            return PileType.Draw.GetPile(player).Cards.Contains(this)
-                   || PileType.Discard.GetPile(player).Cards.Contains(this);
-        }
-    }
+    // Fermentation is kept through a play and only advances in hand, so the hand slot stays the price
+    private bool FermentsThisTurn =>
+        Owner is { } player && PileType.Hand.GetPile(player).Cards.Contains(this);
 
     // VeryEarly, not the plain hook: RegenPower heals and decrements in BeforeSideTurnEndEarly, so a
     // Ferment tick has to land ahead of both
@@ -280,23 +216,11 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             await AdvanceFerment(1);
     }
 
-    public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        if (cardPlay.Card != this) return Task.CompletedTask;
-        // Replay plays the card again with the same CardPlay series, so the stack holds until the
-        // last play of the series or the replayed hits read a fermentation of zero
-        if (!cardPlay.IsLastInSeries) return Task.CompletedTask;
-        _fermentTurns = 0;
-        OnFermentTurnsChanged();
-        return Task.CompletedTask;
-    }
-
     // Covers the cards that were never played. Deck cards are the same instances each combat and all of
     // them get this hook, so this covers every pile
     public override Task BeforeCombatStart()
     {
         _fermentTurns = 0;
-        _decantFill = 0;
         OnFermentTurnsChanged();
         return Task.CompletedTask;
     }
@@ -308,12 +232,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         {
             description.Add("FermentSuffix", $" ({_fermentTurns})");
             description.Add("FermentTotal", FermentTotalText);
-        }
-        if (IsDecantCard)
-        {
-            // Live fill only in combat; the compendium and reward previews show the bare threshold
-            description.Add("DecantSuffix",
-                IsMutable && CombatState != null ? $" ({_decantFill}/{DecantMaxValue})" : "");
         }
         // These previews read Owner, which throws on a canonical model such as the card library
         description.Add("FormulaDamage",

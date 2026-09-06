@@ -50,7 +50,7 @@ public partial class Alchemist : PlaceholderCharacterModel
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<WeatheredKit>()
+        ModelDb.Relic<MurkyFlask>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<AlchemistCardPool>();

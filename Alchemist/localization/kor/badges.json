@@ -1,9 +1,9 @@
 {
-  "ALCHEMIST-MIXES.bronzeDescription": "[gold]혼합액[/gold]을 [blue]10[/blue]장 이상 생성했습니다.",
+  "ALCHEMIST-MIXES.bronzeDescription": "[gold]혼합액[/gold]을 [blue]30[/blue]장 이상 생성했습니다.",
   "ALCHEMIST-MIXES.bronzeTitle": "거친 배합",
-  "ALCHEMIST-MIXES.goldDescription": "[gold]혼합액[/gold]을 [blue]30[/blue]장 이상 생성했습니다.",
+  "ALCHEMIST-MIXES.goldDescription": "[gold]혼합액[/gold]을 [blue]90[/blue]장 이상 생성했습니다.",
   "ALCHEMIST-MIXES.goldTitle": "혼합의 달인",
-  "ALCHEMIST-MIXES.silverDescription": "[gold]혼합액[/gold]을 [blue]20[/blue]장 이상 생성했습니다.",
+  "ALCHEMIST-MIXES.silverDescription": "[gold]혼합액[/gold]을 [blue]60[/blue]장 이상 생성했습니다.",
   "ALCHEMIST-MIXES.silverTitle": "균형 잡힌 조합",
   "ALCHEMIST-POTION_SALE.bronzeDescription": "상인에게 포션을 [blue]2[/blue]개 이상 판매했습니다.",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "행상인",

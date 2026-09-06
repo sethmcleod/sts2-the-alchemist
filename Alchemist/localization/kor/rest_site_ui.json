@@ -1,4 +1,4 @@
 {
-  "OPTION_BREW.description": "[gold]상인[/gold]에게 팔면 150골드를 받는 특별한 [gold]포션[/gold] 3개 중 1개를 선택합니다.",
+  "OPTION_BREW.description": "[gold]덱[/gold]의 무작위 카드 1장을 [gold]강화[/gold]합니다. [gold]상인[/gold]에게 팔면 150골드를 받는 특별한 [gold]포션[/gold] 3개 중 1개를 선택합니다.",
   "OPTION_BREW.name": "양조"
 }

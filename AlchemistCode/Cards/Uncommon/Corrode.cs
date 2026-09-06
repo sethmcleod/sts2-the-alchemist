@@ -16,7 +16,7 @@ public class Corrode : AlchemistCard
     public Corrode() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(15, 5);
-        WithVar("Poison", 3, 1);
+        WithVar("Poison", 5, 2);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }

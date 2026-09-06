@@ -1,12 +1,11 @@
-using Alchemist.AlchemistCode;
-using System.Collections.Generic;
 using System.Linq;
-using Alchemist.AlchemistCode.Character;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
@@ -17,24 +16,31 @@ public class TasteTest : AlchemistCard
 
     public TasteTest() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithCards(1, 1);
+        WithVar("Turns", 2, 1);
+        WithCards(1, 0);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
 
-    private IEnumerable<AlchemistCard> Brewing =>
-        !IsMutable || Owner == null
-            ? Enumerable.Empty<AlchemistCard>()
-            : PileType.Hand.GetPile(Owner).Cards.OfType<AlchemistCard>().Where(c => c.IsFermentInline);
+    protected override bool ConditionalGlow =>
+        IsMutable && Owner != null && PileType.Hand.GetPile(Owner).Cards.Any(IsBrewing);
 
-    protected override bool ConditionalGlow => Brewing.Any();
+    private static LocString Prompt => new("cards", "ALCHEMIST-TASTE_TEST.selectionScreenPrompt");
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var brewing = Brewing.ToList();
-        foreach (var card in brewing)
-            await card.AdvanceFerment(1);
-        if (brewing.Count == 0) return;
-        CardCmd.Preview(brewing);
         await CommonActions.Draw(this, choiceContext);
+        var brewing = PileType.Hand.GetPile(Owner).Cards.Where(IsBrewing).ToList();
+        if (brewing.Count > 0)
+        {
+            var chosen = brewing.Count == 1
+                ? brewing[0]
+                : (await CardSelectCmd.FromHand(choiceContext, Owner,
+                    new CardSelectorPrefs(Prompt, 1), IsBrewing, this)).FirstOrDefault();
+            if (chosen is AlchemistCard ferment)
+            {
+                await ferment.AdvanceFerment(DynamicVars["Turns"].IntValue);
+                CardCmd.Preview(ferment);
+            }
+        }
     }
 }

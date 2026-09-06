@@ -12,7 +12,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Mix)]
 public class GrandBatch : AlchemistCard
 {
-    public GrandBatch() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public GrandBatch() : base(3, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithKeyword(CardKeyword.Exhaust);
         WithTips(card => Mixing.MixTips(card.IsUpgraded));
@@ -21,12 +21,9 @@ public class GrandBatch : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState is not { } combat) return;
-        foreach (var mix in new CardModel[]
-                 {
-                     combat.CreateCard<BurstingMix>(Owner), combat.CreateCard<FumingMix>(Owner),
-                     combat.CreateCard<SyrupyMix>(Owner), combat.CreateCard<ZestyMix>(Owner),
-                 })
+        foreach (var kind in Mixing.All)
         {
+            var mix = Mixing.Create(combat, Owner, kind);
             if (IsUpgraded) CardCmd.Upgrade(mix);
             Mixing.RecordCreated(Owner, mix);
             await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, Owner);

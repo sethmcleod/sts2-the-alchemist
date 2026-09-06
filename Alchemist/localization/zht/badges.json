@@ -1,9 +1,9 @@
 {
-  "ALCHEMIST-MIXES.bronzeDescription": "創造 [blue]10[/blue] 張或更多[gold]混劑[/gold]。",
+  "ALCHEMIST-MIXES.bronzeDescription": "創造 [blue]30[/blue] 張或更多[gold]混劑[/gold]。",
   "ALCHEMIST-MIXES.bronzeTitle": "粗略調配",
-  "ALCHEMIST-MIXES.goldDescription": "創造 [blue]30[/blue] 張或更多[gold]混劑[/gold]。",
+  "ALCHEMIST-MIXES.goldDescription": "創造 [blue]90[/blue] 張或更多[gold]混劑[/gold]。",
   "ALCHEMIST-MIXES.goldTitle": "調劑大師",
-  "ALCHEMIST-MIXES.silverDescription": "創造 [blue]20[/blue] 張或更多[gold]混劑[/gold]。",
+  "ALCHEMIST-MIXES.silverDescription": "創造 [blue]60[/blue] 張或更多[gold]混劑[/gold]。",
   "ALCHEMIST-MIXES.silverTitle": "均衡配方",
   "ALCHEMIST-POTION_SALE.bronzeDescription": "向商人售出 [blue]2[/blue] 瓶或更多藥水。",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "小販",

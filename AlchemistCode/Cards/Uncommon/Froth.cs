@@ -10,10 +10,11 @@ public class Froth : AlchemistCard
 {
     protected override bool Ferments => true;
 
-    public Froth() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Froth() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
     {
-        WithDamage(7, 2);
+        WithDamage(5, 2);
         WithKeyword(CardKeyword.Retain);
+        WithKeyword(CardKeyword.Exhaust);
     }
 
     private int Hits => 1 + FermentTurns;
@@ -26,6 +27,7 @@ public class Froth : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, Hits, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, Hits, vfx: HitVfx("vfx/vfx_slime_impact"))
+            .WithAttackerAnim("Cast", Owner.Character.CastAnimDelay).Execute(choiceContext);
     }
 }

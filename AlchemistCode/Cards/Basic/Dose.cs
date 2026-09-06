@@ -15,8 +15,8 @@ public class Dose : AlchemistCard
     public Dose() : base(0, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
         WithBlock(2, 1);
-        WithVar("SelfPoison", 2, 0);
-        WithVar("antitoxin", 1, 1);
+        WithVar("SelfPoison", 2, 1);
+        WithVar("antitoxin", 2, 1);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));
     }
@@ -24,9 +24,9 @@ public class Dose : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
-            DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
         await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
             DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
+            DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
     }
 }

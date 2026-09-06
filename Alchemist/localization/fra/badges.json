@@ -1,9 +1,9 @@
 {
-  "ALCHEMIST-MIXES.bronzeDescription": "[blue]10[/blue] [gold]Mixtures[/gold] ou plus créées.",
+  "ALCHEMIST-MIXES.bronzeDescription": "[blue]30[/blue] [gold]Mixtures[/gold] ou plus créées.",
   "ALCHEMIST-MIXES.bronzeTitle": "Mélange grossier",
-  "ALCHEMIST-MIXES.goldDescription": "[blue]30[/blue] [gold]Mixtures[/gold] ou plus créées.",
+  "ALCHEMIST-MIXES.goldDescription": "[blue]90[/blue] [gold]Mixtures[/gold] ou plus créées.",
   "ALCHEMIST-MIXES.goldTitle": "Maître mixologue",
-  "ALCHEMIST-MIXES.silverDescription": "[blue]20[/blue] [gold]Mixtures[/gold] ou plus créées.",
+  "ALCHEMIST-MIXES.silverDescription": "[blue]60[/blue] [gold]Mixtures[/gold] ou plus créées.",
   "ALCHEMIST-MIXES.silverTitle": "Formule équilibrée",
   "ALCHEMIST-POTION_SALE.bronzeDescription": "[blue]2[/blue] Potions ou plus vendues au Marchand.",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "Colporteur",

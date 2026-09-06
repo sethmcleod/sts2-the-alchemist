@@ -7,6 +7,98 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.5] - 2026-09-06
+
+### Added
+
+- Added art for potions, starter relics, and Brew rest site option
+- Added Acrid Mix (0 energy: "Apply 3 (5) Poison. Exhaust.") and Sparkling Mix (0 energy: "Ethereal. Gain 1 Energy. Exhaust.", the upgrade loses Ethereal)
+- Added Clench card (1 energy, Uncommon): "Gain 3 (4) Strength. Gain 4 Poison." It replaces Inure
+- Added Combine card (0 energy, Common): "Add a random basic Mix into your Hand. Combine 2 Mixes in your Hand into a Compound Mix(+)." It replaces Pelt
+- Added Compound Mix, a Mix that carries the effects of the two Mixes it was made from
+- Added Endure card (1 energy, Uncommon): "Gain 8 (11) Block. Gain 3 (4) Antitoxin. If you have Poison, draw 1 card." It replaces Flare Up
+- Added Fresh Batch card (1 energy, Uncommon): "At the start of your next turn, add 2 (3) random Mixes+ into your Hand." It replaces Harden
+- Added Fresh Cutting potion (Brew only): "At the start of your next 3 turns, add a random special Mix into your Hand." It replaces Gold Leaf
+- Added Golden Leaf relic (Rare): "At the start of each combat, add a Compound Mix of two random Mixes into your Hand." It replaces Auric Seal
+- Added Harvest card (1 energy, Uncommon): "Put a Ferment card from your Draw Pile into your Hand. It ferments 2 (3)." It replaces Drench
+- Added Ripening card (1 energy, Uncommon Power): "At the start of your turn, if you have a Ferment card in your Hand, draw 1 (2) additional card."
+- Added Seep card (1 energy, Uncommon): "Exhaust a Ferment card from your Hand. Another Ferment card in your Hand ferments by its fermentation plus 2 (3)." It replaces Overspill
+- Added two Mix tiers: Bursting, Syrupy and Zesty are basic Mixes; Fuming, Acrid and Sparkling are special Mixes.
+- Added Wring card (0 energy, Uncommon): "Choose a Ferment card in your Hand. Add a random Mix(+) into your Hand for every 2 turns it has fermented. Exhaust." It replaces Cure
+
+### Changed
+
+- Buffed Blend Block: 5 (6) -> 6 (8)
+- Buffed Brew rest site option: it also upgrades a random card
+- Buffed Caustic Strike Poison: 2 (3) -> 3 (4)
+- Buffed Corrode Poison: 3 (4) -> 5 (7)
+- Buffed Distill+: it now gains 2 Antitoxin and 2 additional Antitoxin for each turn fermented
+- Buffed Dose: Poison 2 -> 2 (3), Antitoxin 1 (2) -> 2 (3)
+- Buffed Jab damage: 5 (7) -> 6 (9)
+- Buffed Marsh Tonic: it also grants 8 Block
+- Buffed Spit: it moves 3 (4) Poison, up from 2 (3)
+- Changed Aged Batch, Overbrew and Refined Extract to choose from the basic Mixes
+- Changed Antitoxin: it is now reduced by 1 each turn
+- Changed Effervesce: it adds a Zesty Mix instead of a Fuming Mix
+- Changed Fallout: Uncommon -> Common
+- Changed Ferment keyword: playing a Ferment card no longer resets its fermentation
+- Changed Forked Tongue: Common -> Uncommon, damage 4 (5) -> 5 (7)
+- Changed Fuming Mix: it no longer applies Poison to the enemy. Fuming Mix+ applies 2 Weak and 2 Vulnerable and gains 2 Poison
+- Changed Grand Batch: cost 1 -> 3, it adds one of each of the six Mixes(+)
+- Changed Miasma: it now stacks
+- Changed Mortar: Common -> Uncommon
+- Changed Murky Flask: 3 Poison and 3 Antitoxin -> 5 Antitoxin and a random Mix at the start of combat
+- Changed Quench: Rare -> Uncommon, Antitoxin 4 (5) -> 5 (7)
+- Changed Radiant Flask: 6 Poison and 6 Antitoxin -> 10 Antitoxin and a random Mix at the start of combat
+- Changed Smelling Salts: Rare -> Uncommon, cost 2 -> 1. Smelling Salts+ lowers the Poison threshold to 2 instead of being Innate
+- Changed Spike: Uncommon -> Common
+- Changed the Mixes badge thresholds: 10 / 20 / 30 -> 30 / 60 / 90
+- Changed Transmute: Uncommon -> Rare
+- Changed Warded: Uncommon -> Rare, Block 3 (5) -> 3 (4)
+- Changed Zesty Mix: it no longer grants Antitoxin. Zesty Mix+ draws 2 cards
+- Nerfed Froth: it now Exhausts
+- Nerfed Spatter base Poison: 3 -> 2
+- Nerfed Warm Up+: it adds a Mix instead of a Mix+
+- Renamed Gilded Kit relic to Radiant Flask
+- Renamed Weathered Kit relic to Murky Flask
+- Reworked Aged Batch: "Draw 1 card. Choose a basic Mix to add into your Hand. It does not Exhaust this combat."
+- Reworked Alkahest potion: used in combat, it upgrades ALL cards in your Hand for the rest of combat
+- Reworked Backfire: "Deal 10 (14) damage. Gain 2 Poison."
+- Reworked Brace: "Gain 5 (7) Block. Gain 4 (5) additional Block if an enemy intends to attack."
+- Reworked Brine: "Retain. Ferment. This turn, your Attacks apply 2 (3) Poison. Applies 1 additional Poison for each turn fermented."
+- Reworked Digest: "Exhaust 1 card. If it was a Status or Curse, add a random Mix(+) into your Hand."
+- Reworked Extra Dose relic: "Whenever you use a Potion, gain 4 Antitoxin."
+- Reworked Fallout: "Deal 7 (9) damage to ALL enemies. Poisoned enemies take 7 (9) additional damage."
+- Reworked Fizz: "Draw 2 (3) cards. Add a Sparkling Mix(+) into your Hand."
+- Reworked Froth: it now hits ALL enemies, damage 7 (9) -> 5 (7)
+- Reworked Fumigate: "Deal 4 (6) damage to ALL enemies. Apply 3 (5) Poison to ALL enemies."
+- Reworked Glowing Shard relic: "Poison on enemies is triggered an additional time."
+- Reworked Heavy Dose: "Deal 20 (26) damage. Add a Bursting Mix into your Hand for every 4 Poison you have."
+- Reworked Lash Out: "Deal 3 (5) damage 3 times. Deals additional damage equal to your Poison."
+- Reworked Needle Point: "Innate. Deal 7 (10) damage. Apply 1 (2) Weak and 1 (2) Vulnerable. Exhaust."
+- Reworked Overdose: "Gain 5 Poison. Your Poison is triggered. Exhaust."
+- Reworked Refine: "Whenever you add a Mix into your Hand, it is upgraded and gains Retain."
+- Reworked Spike: "Deal 9 (12) damage. Add a Fuming Mix into your Hand." Spike+ adds a Fuming Mix+
+- Reworked Spores: "Apply 2 (3) Poison to ALL enemies. Gain 2 Poison."
+- Reworked Taste Test: "Draw 1 card. Choose a Ferment card in your Hand. It ferments 2 (3)."
+- Reworked Uncork: "Trigger ALL Ferment cards in your Hand. Gain 1 (2) Energy for each card Triggered. Exhaust."
+- Reworked Untended: "Whenever you draw a Ferment card, it ferments 1 (2)."
+- Reworked Wallop: "Deal 5 (7) damage for each card in your Hand."
+
+### Removed
+
+- Removed Auric Seal relic, replaced with Golden Leaf
+- Removed Cure card, replaced with Wring
+- Removed Decant keyword and replaced those cards
+- Removed Drench card, replaced with Harvest
+- Removed Flare Up card, replaced with Endure
+- Removed Gold Leaf potion
+- Removed Harden, replaced with Fresh Batch
+- Removed Inure card, replaced with Clench
+- Removed Overspill card, replaced with Seep
+- Removed Pelt card, replaced with Combine
+- Removed Twist card
+
 ## [0.14.4] - 2026-09-01
 
 ### Changed

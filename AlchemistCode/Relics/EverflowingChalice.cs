@@ -17,13 +17,13 @@ public class EverflowingChalice : AlchemistRelic
     public override RelicRarity Rarity => RelicRarity.Shop;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [.. Mixing.MixTips(upgraded: true), HoverTipFactory.FromKeyword(CardKeyword.Retain)];
+        [AlchemistTips.MixHeader, HoverTipFactory.FromKeyword(CardKeyword.Retain)];
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner || Owner.PlayerCombatState is not { TurnNumber: 1 }) return;
         Flash();
-        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: true);
+        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: true, Mixing.All);
         if (mix == null) return;
         CardCmd.ApplyKeyword(mix, CardKeyword.Retain);
         await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, Owner);

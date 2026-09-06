@@ -1,9 +1,9 @@
 {
-  "ALCHEMIST-MIXES.bronzeDescription": "สร้าง[gold]ยาผสม[/gold] [blue]10[/blue] ใบขึ้นไป",
+  "ALCHEMIST-MIXES.bronzeDescription": "สร้าง[gold]ยาผสม[/gold] [blue]30[/blue] ใบขึ้นไป",
   "ALCHEMIST-MIXES.bronzeTitle": "ผสมหยาบ",
-  "ALCHEMIST-MIXES.goldDescription": "สร้าง[gold]ยาผสม[/gold] [blue]30[/blue] ใบขึ้นไป",
+  "ALCHEMIST-MIXES.goldDescription": "สร้าง[gold]ยาผสม[/gold] [blue]90[/blue] ใบขึ้นไป",
   "ALCHEMIST-MIXES.goldTitle": "ยอดนักปรุงยาผสม",
-  "ALCHEMIST-MIXES.silverDescription": "สร้าง[gold]ยาผสม[/gold] [blue]20[/blue] ใบขึ้นไป",
+  "ALCHEMIST-MIXES.silverDescription": "สร้าง[gold]ยาผสม[/gold] [blue]60[/blue] ใบขึ้นไป",
   "ALCHEMIST-MIXES.silverTitle": "สูตรสมดุล",
   "ALCHEMIST-POTION_SALE.bronzeDescription": "ขายขวดยาให้พ่อค้า [blue]2[/blue] ขวดขึ้นไป",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "พ่อค้าเร่",

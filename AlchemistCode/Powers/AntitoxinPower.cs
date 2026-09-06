@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -13,8 +15,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// A threshold that holds back Poison damage up to its own amount every turn and is never spent, so
-// the tick the owner takes is max(0, Poison - Antitoxin).
+// A threshold that holds back Poison damage up to its own amount every turn and is never spent by
+// the tick, so the tick the owner takes is max(0, Poison - Antitoxin). It thins by 1 each turn
+// after the tick, Regen's shape, so cover has to be maintained rather than stored.
 //
 // The ModifyDamageAdditive override is spelled differently on the two game branches, so it lives in
 // Compat/AntitoxinPowerCompat.cs and calls the branch-agnostic Absorb below.
@@ -83,7 +86,18 @@ public partial class AntitoxinPower : AlchemistPower
         if (absorbed <= 0 || absorbed > Amount) return;
 
         AntitoxinRules.MarkAbsorbed(Owner, absorbed);
-        if (Owner.GetPower<PassItOnPower>() is { } crucible)
-            await crucible.OnAbsorbed(absorbed);
+        if (Owner.GetPower<PassItOnPower>() is { } passItOn)
+            await passItOn.OnAbsorbed(absorbed);
+    }
+
+    // After the Poison trigger window (PoisonPower triggers and decrements on AfterSideTurnStart), so
+    // the cover works first and thins second. Turn 1 is skipped the way Plating skips it, or the
+    // flask's opening cover would lose a point before the player acts
+    public override async Task AfterSideTurnStartLate(CombatSide side, IReadOnlyList<Creature> participants,
+        ICombatState combatState)
+    {
+        if (!participants.Contains(Owner) || Amount <= 0) return;
+        if (Owner.Player is { PlayerCombatState.TurnNumber: 1 }) return;
+        await PowerCmd.Decrement(this);
     }
 }

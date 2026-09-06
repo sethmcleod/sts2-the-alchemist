@@ -1,9 +1,9 @@
 {
-  "ALCHEMIST-MIXES.bronzeDescription": "生成过[blue]10[/blue]张或更多[gold]合剂[/gold]。",
+  "ALCHEMIST-MIXES.bronzeDescription": "生成过[blue]30[/blue]张或更多[gold]合剂[/gold]。",
   "ALCHEMIST-MIXES.bronzeTitle": "粗糙调剂",
-  "ALCHEMIST-MIXES.goldDescription": "生成过[blue]30[/blue]张或更多[gold]合剂[/gold]。",
+  "ALCHEMIST-MIXES.goldDescription": "生成过[blue]90[/blue]张或更多[gold]合剂[/gold]。",
   "ALCHEMIST-MIXES.goldTitle": "调剂大师",
-  "ALCHEMIST-MIXES.silverDescription": "生成过[blue]20[/blue]张或更多[gold]合剂[/gold]。",
+  "ALCHEMIST-MIXES.silverDescription": "生成过[blue]60[/blue]张或更多[gold]合剂[/gold]。",
   "ALCHEMIST-MIXES.silverTitle": "均衡配方",
   "ALCHEMIST-POTION_SALE.bronzeDescription": "向商人出售过[blue]2[/blue]瓶或更多药水。",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "小贩",

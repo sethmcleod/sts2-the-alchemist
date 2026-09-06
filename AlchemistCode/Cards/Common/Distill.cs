@@ -19,7 +19,7 @@ public class Distill : AlchemistCard
     {
         WithVar("SelfPoison", 2, 0);
         WithVar("Antitoxin", 1, 1);
-        WithVar("perTurn", 1, 0);
+        WithVar("perTurn", 1, 1);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));
@@ -36,8 +36,8 @@ public class Distill : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, Distilled, Owner.Creature, this);
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
             DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
-        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, Distilled, Owner.Creature, this);
     }
 }

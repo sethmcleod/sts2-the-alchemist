@@ -11,15 +11,14 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-[CardTheme(CardTheme.Antitoxin, CardTheme.Mix)]
+[CardTheme(CardTheme.Mix)]
 public class Digest : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
     public Digest() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithPower<AntitoxinPower>(1, 1);
-        WithTips(_ => Mixing.MixTips());
+        WithTips(card => Mixing.MixTips(card.IsUpgraded));
     }
 
     private static bool IsJunk(CardModel card) =>
@@ -32,14 +31,13 @@ public class Digest : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<AntitoxinPower>(choiceContext, this);
-        // No screen at all when there is nothing to eat, and the pick is skippable (min 0)
-        if (!PileType.Hand.GetPile(Owner).Cards.Any(IsJunk)) return;
-        var eaten = (await CardSelectCmd.FromHand(choiceContext, Owner,
-            new CardSelectorPrefs(EatPrompt, 0, 1),
-            filter: IsJunk, source: this)).FirstOrDefault();
-        if (eaten == null) return;
-        await CardCmd.Exhaust(choiceContext, eaten);
-        await Mixing.CreateRandom(choiceContext, Owner);
+        var eaten = PileType.Hand.GetPile(Owner).Cards.Count == 0
+            ? null
+            : (await CardSelectCmd.FromHand(choiceContext, Owner,
+                new CardSelectorPrefs(EatPrompt, 1), filter: null, source: this)).FirstOrDefault();
+        if (eaten != null)
+            await CardCmd.Exhaust(choiceContext, eaten);
+        if (eaten != null && IsJunk(eaten))
+            await Mixing.CreateRandom(choiceContext, Owner, IsUpgraded);
     }
 }

@@ -1,3 +1,6 @@
+using MegaCrit.Sts2.Core.Extensions;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using System.Linq;
 using System.Reflection;
 using Alchemist.AlchemistCode.Potions;
 using BaseLib.Common.Rewards.LinkedRewardSet;
@@ -49,10 +52,23 @@ public sealed class BrewRestSiteOption : RestSiteOption
             }
         }
 
+        // Before the reward screen: OfferCustom blocks only on the brewing client, so an rng draw after
+        // it would run in a different order on each client
+        UpgradeRandomCard();
         var rewards = new List<Reward>();
         if (CreateBrewReward() is { } reward) rewards.Add(reward);
         await RewardsCmd.OfferCustom(Owner, rewards);
         return true;
+    }
+
+    // Seeded off the run rng, so every client upgrades the same card (the Whetstone pattern)
+    private void UpgradeRandomCard()
+    {
+        var card = PileType.Deck.GetPile(Owner).Cards
+            .Where(c => c is { IsUpgradable: true }).ToList()
+            .StableShuffle(Owner.RunState.Rng.Niche).FirstOrDefault();
+        // Upgrade previews the card itself; a second Preview showed it twice
+        if (card != null) CardCmd.Upgrade(card);
     }
 
     // Every Brew-only potion. Brew is their ONLY source, so this list is the whole set and must be
@@ -62,10 +78,10 @@ public sealed class BrewRestSiteOption : RestSiteOption
         ModelDb.Potion<OleanderMilk>(),
         ModelDb.Potion<Anodyne>(),
         ModelDb.Potion<Alkahest>(),
-        ModelDb.Potion<GoldLeaf>(),
         ModelDb.Potion<Solvent>(),
         ModelDb.Potion<Decoction>(),
         ModelDb.Potion<StarterCulture>(),
+        ModelDb.Potion<FreshCutting>(),
     ];
 
     // Brew offers nothing else. Duplicates are filtered out, and holding the whole set falls back to a

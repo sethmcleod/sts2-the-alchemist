@@ -1,15 +1,15 @@
 {
-  "ALCHEMIST-DECANT.description": "每当你创造一张牌时，此牌的[gold]醒酒[/gold]度就会提升，无论此牌位于何处。在满度时打出，其[gold]醒酒[/gold]效果也会触发，随后度数重置。",
-  "ALCHEMIST-DECANT.title": "醒酒",
-  "ALCHEMIST-FERMENT.description": "这张牌在你的[gold]手牌[/gold]中每停留一个回合就增强一次。打出后，其发酵将被重置。",
+  "ALCHEMIST-FERMENT.description": "这张牌在你的[gold]手牌[/gold]中每停留一个回合就增强一次。",
   "ALCHEMIST-FERMENT.selectionPrompt": "选择一张牌进行[gold]发酵[/gold]。",
   "ALCHEMIST-FERMENT.title": "发酵",
-  "ALCHEMIST-FERMENT_REF.description": "这些牌在你的[gold]手牌[/gold]中每停留一个回合就增强一次。打出后，其发酵将被重置。",
+  "ALCHEMIST-FERMENT_REF.description": "这些牌在你的[gold]手牌[/gold]中每停留一个回合就增强一次。",
   "ALCHEMIST-FERMENT_REF.title": "发酵",
   "ALCHEMIST-INFUSE.description": "[gold]附魔[/gold]一张牌，直到战斗结束。攻击牌变为[purple]掺毒[/purple]；技能牌变为[purple]掺药[/purple]；能力牌变为[purple]固化[/purple]。其他牌获得[gold]虚无[/gold]。",
   "ALCHEMIST-INFUSE.selectionPrompt": "选择{Amount:plural:一张牌|[blue]{}[/blue]张牌}进行[gold]注入[/gold]。",
   "ALCHEMIST-INFUSE.selectionPromptAny": "选择任意数量的牌进行[gold]注入[/gold]。",
   "ALCHEMIST-INFUSE.selectionPromptRange": "选择至多[blue]{MaxCount}[/blue]张{MaxCount:plural:牌|牌}进行[gold]注入[/gold]。",
   "ALCHEMIST-INFUSE.title": "注入",
-  "ALCHEMIST-MIX.selectionPrompt": "选择一种要加入你的[gold]手牌[/gold]的[gold]合剂[/gold]。"
+  "ALCHEMIST-MIX.selectionPrompt": "选择一种要加入你的[gold]手牌[/gold]的[gold]合剂[/gold]。",
+  "ALCHEMIST-MIX.selectionPromptBasic": "选择一种要加入你的[gold]手牌[/gold]的基础[gold]合剂[/gold]。",
+  "ALCHEMIST-MIX.selectionPromptSpecial": "选择一种要加入你的[gold]手牌[/gold]的特殊[gold]合剂[/gold]。"
 }

@@ -1,9 +1,9 @@
 {
-  "ALCHEMIST-MIXES.bronzeDescription": "Created [blue]10[/blue] or more [gold]Mixes[/gold].",
+  "ALCHEMIST-MIXES.bronzeDescription": "Created [blue]30[/blue] or more [gold]Mixes[/gold].",
   "ALCHEMIST-MIXES.bronzeTitle": "Rough Blend",
-  "ALCHEMIST-MIXES.goldDescription": "Created [blue]30[/blue] or more [gold]Mixes[/gold].",
+  "ALCHEMIST-MIXES.goldDescription": "Created [blue]90[/blue] or more [gold]Mixes[/gold].",
   "ALCHEMIST-MIXES.goldTitle": "Master Mixologist",
-  "ALCHEMIST-MIXES.silverDescription": "Created [blue]20[/blue] or more [gold]Mixes[/gold].",
+  "ALCHEMIST-MIXES.silverDescription": "Created [blue]60[/blue] or more [gold]Mixes[/gold].",
   "ALCHEMIST-MIXES.silverTitle": "Balanced Formula",
   "ALCHEMIST-POTION_SALE.bronzeDescription": "Sold [blue]2[/blue] or more Potions to the Merchant.",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "Peddler",
