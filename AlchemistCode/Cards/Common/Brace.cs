@@ -14,7 +14,7 @@ public class Brace : AlchemistCard
 
     public Brace() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithCalculatedBlock(5, static (card, _) => Threatened(card) ? Bonus(card) : 0m, ValueProp.Move, 2);
+        WithCalculatedBlock(7, static (card, _) => Threatened(card) ? Bonus(card) : 0m, ValueProp.Move, 2);
         WithVar("Bonus", 4, 1);
     }
 

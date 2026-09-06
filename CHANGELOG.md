@@ -7,6 +7,11 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Buffed Brace Block: 5 (7) -> 7 (9)
+- Buffed Seep cost: 1 -> 0
+
 ## [0.14.6] - 2026-09-06
 
 ### Changed
