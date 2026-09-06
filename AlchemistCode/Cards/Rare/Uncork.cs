@@ -1,23 +1,38 @@
-using Alchemist.AlchemistCode.Powers;
+using MegaCrit.Sts2.Core.Models;
+using System.Linq;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-[CardTheme(CardTheme.Decant)]
+[CardTheme(CardTheme.Ferment)]
 public class Uncork : AlchemistCard
 {
-    public Uncork() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+    protected internal override bool PlaysCastAnimation => false;
+
+    public Uncork() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("Amount", 1, 1);
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Decant) });
+        WithEnergy(1, 1);
+        WithKeyword(CardKeyword.Exhaust);
+        WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
+
+    private IEnumerable<AlchemistCard> Brewing =>
+        !IsMutable || Owner == null
+            ? Enumerable.Empty<AlchemistCard>()
+            : PileType.Hand.GetPile(Owner).Cards.OfType<AlchemistCard>().Where(c => c.IsFermentInline);
+
+    protected override bool ConditionalGlow => Brewing.Any();
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<UncorkPower>(choiceContext, Owner.Creature,
-            DynamicVars["Amount"].IntValue, Owner.Creature, this);
+        var brewing = Brewing.ToList();
+        foreach (var card in brewing)
+            await card.AdvanceFerment(1);
+        if (brewing.Count == 0) return;
+        CardCmd.Preview(brewing.Cast<CardModel>().ToList());
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue * brewing.Count, Owner);
     }
 }

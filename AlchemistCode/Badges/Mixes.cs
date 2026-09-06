@@ -12,9 +12,9 @@ namespace Alchemist.AlchemistCode.Badges;
 // and the name the run history screen looks the icon up by
 public sealed class Mixes() : CustomBadge(requiresWin: false, multiplayerOnly: false)
 {
-    private const int BronzeMixes = 10;
-    private const int SilverMixes = 20;
-    private const int GoldMixes = 30;
+    private const int BronzeMixes = 40;
+    private const int SilverMixes = 80;
+    private const int GoldMixes = 120;
 
     public override string CustomBadgeIconPath => "badge_brew.png".BadgeImagePath();
 
@@ -36,5 +36,8 @@ public sealed class Mixes() : CustomBadge(requiresWin: false, multiplayerOnly: f
         RunCounters.CountFor(player, RunCounters.MixBursting)
         + RunCounters.CountFor(player, RunCounters.MixFuming)
         + RunCounters.CountFor(player, RunCounters.MixSyrupy)
-        + RunCounters.CountFor(player, RunCounters.MixZesty);
+        + RunCounters.CountFor(player, RunCounters.MixZesty)
+        + RunCounters.CountFor(player, RunCounters.MixAcrid)
+        + RunCounters.CountFor(player, RunCounters.MixSparkling)
+        + RunCounters.CountFor(player, RunCounters.MixCompound);
 }

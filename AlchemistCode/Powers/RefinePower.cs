@@ -1,29 +1,27 @@
-using System.Collections.Generic;
-using MegaCrit.Sts2.Core.Combat;
+using Alchemist.AlchemistCode.Commands;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using Alchemist.AlchemistCode.Cards;
+using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Powers;
 
 public class RefinePower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerStackType StackType => PowerStackType.Single;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromKeyword(AlchemistKeywords.Decant) };
+        new[] { HoverTipFactory.FromKeyword(CardKeyword.Retain) };
 
-    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
-        IEnumerable<Creature> participants)
+    public override Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
     {
-        if (!participants.Contains(Owner)) return;
-        if (Amount > 1)
-            await PowerCmd.Decrement(this);
-        else
-            await PowerCmd.Remove(this);
+        if (creator != Owner.Player || !Mixing.IsMix(card)) return Task.CompletedTask;
+        Flash();
+        if (card.IsUpgradable) CardCmd.Upgrade(card);
+        CardCmd.ApplyKeyword(card, CardKeyword.Retain);
+        return Task.CompletedTask;
     }
 }

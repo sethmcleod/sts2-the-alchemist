@@ -1,9 +1,10 @@
+using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -11,18 +12,26 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 public class Brine : AlchemistCard
 {
     protected override bool Ferments => true;
+    protected internal override bool PlaysCastAnimation => false;
 
     public Brine() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCalculatedBlock(6, static (card, _) => 3m * ((AlchemistCard)card).FermentTurns, ValueProp.Move, 2, 0);
+        WithVar("Poison", 2, 1);
+        WithVar("perTurn", 1, 0);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }
 
+    private int Soaked => DynamicVars["Poison"].IntValue + DynamicVars["perTurn"].IntValue * FermentTurns;
+
+    protected override void AddExtraArgsToDescription(LocString description)
+    {
+        base.AddExtraArgsToDescription(description);
+        description.Add("Soaked", FermentTurns > 0 ? $" ([green]{Soaked}[/green])" : "");
+    }
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardBlock(this, play);
-        if (FermentTurns > 0)
-            await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, FermentTurns, Owner.Creature, this);
+        await PowerCmd.Apply<BrinePower>(choiceContext, Owner.Creature, Soaked, Owner.Creature, this);
     }
 }

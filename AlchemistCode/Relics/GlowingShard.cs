@@ -1,37 +1,26 @@
-using System.Collections.Generic;
-using System.Linq;
-using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-// Poison decay is the -1 that PoisonPower.Trigger applies to itself after each tick: always
-// exactly -1 with no applier. Zeroing that offset is the whole relic. Only enemy Poison is
-// guarded; the player's own Poison keeps decaying, which Tolerance depends on
+// The base Poison trigger counts Accelerant on the poisoned creature's opponents, so one stack on
+// the player doubles every enemy tick and never touches the player's own Poison
 public class GlowingShard : AlchemistRelic
 {
+    private const int Stacks = 1;
+
     public override RelicRarity Rarity => RelicRarity.Rare;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromPower<PoisonPower>() };
+        new[] { HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<AccelerantPower>() };
 
-    public override bool TryModifyPowerAmountReceived(PowerModel canonicalPower, Creature target,
-        decimal amount, Creature? applier, out decimal modifiedAmount)
-    {
-        modifiedAmount = amount;
-        if (canonicalPower is not PoisonPower || amount != -1m || applier != null) return false;
-        if (Owner.Creature?.CombatState is not { } combat) return false;
-        if (!combat.GetOpponentsOf(Owner.Creature).Contains(target)) return false;
-        modifiedAmount = 0m;
-        return true;
-    }
-
-    public override Task AfterModifyingPowerAmountReceived(PowerModel power)
+    public override async Task BeforeCombatStart()
     {
         Flash();
-        return Task.CompletedTask;
+        await PowerCmd.Apply<AccelerantPower>(
+            new ThrowingPlayerChoiceContext(), Owner.Creature, Stacks, Owner.Creature, null);
     }
 }

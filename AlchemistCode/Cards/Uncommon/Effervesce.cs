@@ -14,19 +14,17 @@ public class Effervesce : AlchemistCard
 
     public Effervesce() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
-        WithTips(card => AlchemistTips.MixTrio(card.IsUpgraded));
+        WithUpgradingCardTip<BurstingMix>();
+        WithUpgradingCardTip<SyrupyMix>();
+        WithUpgradingCardTip<ZestyMix>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null || play.Target?.Player is not { } targetPlayer) return;
-        foreach (var mix in new CardModel[]
-                 {
-                     CombatState.CreateCard<BurstingMix>(targetPlayer),
-                     CombatState.CreateCard<SyrupyMix>(targetPlayer),
-                     CombatState.CreateCard<FumingMix>(targetPlayer),
-                 })
+        foreach (var kind in Mixing.Basic)
         {
+            var mix = Mixing.Create(CombatState, targetPlayer, kind);
             if (IsUpgraded) CardCmd.Upgrade(mix);
             Mixing.RecordCreated(Owner, mix);
             await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, targetPlayer);

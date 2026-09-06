@@ -13,7 +13,7 @@ namespace Alchemist.AlchemistCode.Powers;
 public class MiasmaPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
@@ -27,6 +27,6 @@ public class MiasmaPower : AlchemistPower
         if (Owner.CombatState is not { } combat) return;
         Flash();
         foreach (var enemy in combat.GetOpponentsOf(Owner).Where(e => e.IsAlive).ToList())
-            await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, (int)amount, Owner, null);
+            await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, (int)amount * (int)Amount, Owner, null);
     }
 }

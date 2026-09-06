@@ -1,7 +1,4 @@
-using MegaCrit.Sts2.Core.Combat;
-using System.Linq;
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -15,20 +12,15 @@ public class NeedlePoint : AlchemistCard
     {
         WithDamage(7, 3);
         WithPower<WeakPower>(1, 1);
-        WithVar("Vuln", 2, 0);
+        WithPower<VulnerablePower>(1, 1);
         WithKeyword(CardKeyword.Innate);
-        WithTip(typeof(VulnerablePower));
+        WithKeyword(CardKeyword.Exhaust);
     }
-
-    private bool IsFirstPlayThisCombat =>
-        CombatManager.Instance?.History.CardPlaysStarted.Count(e => e.CardPlay.Card.Owner == Owner) <= 1;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
         await CommonActions.Apply<WeakPower>(choiceContext, this, play);
-        if (IsFirstPlayThisCombat)
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target!,
-                DynamicVars["Vuln"].IntValue, Owner.Creature, this);
+        await CommonActions.Apply<VulnerablePower>(choiceContext, this, play);
     }
 }

@@ -14,8 +14,7 @@ public class RadiantFlask : FlaskRelic
 {
     private const int PotionSlots = 1;
 
-    protected override int Antitoxin => 6;
-    protected override int Dose => 6;
+    protected override int Antitoxin => 10;
 
     public override bool HasUponPickupEffect => true;
 

@@ -14,6 +14,9 @@ public static class RunCounters
     public const string MixFuming = "mix_fuming";
     public const string MixSyrupy = "mix_syrupy";
     public const string MixZesty = "mix_zesty";
+    public const string MixAcrid = "mix_acrid";
+    public const string MixSparkling = "mix_sparkling";
+    public const string MixCompound = "mix_compound";
     public const string PoisonGained = "poison_gained";
     public const string PoisonAbsorbed = "poison_absorbed";
     public const string PoisonBled = "poison_bled";
@@ -21,7 +24,7 @@ public static class RunCounters
 
     public static readonly string[] Keys =
     {
-        MixBursting, MixFuming, MixSyrupy, MixZesty, PoisonGained, PoisonAbsorbed, PoisonBled,
+        MixBursting, MixFuming, MixSyrupy, MixZesty, MixAcrid, MixSparkling, MixCompound, PoisonGained, PoisonAbsorbed, PoisonBled,
         AntitoxinPeak,
     };
 

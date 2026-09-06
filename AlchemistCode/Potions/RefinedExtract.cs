@@ -14,7 +14,12 @@ public class RefinedExtract : AlchemistPotion
     public override PotionUsage Usage => PotionUsage.CombatOnly;
     public override TargetType TargetType => TargetType.AnyPlayer;
 
-    public override IEnumerable<IHoverTip> ExtraHoverTips => Alchemist.AlchemistCode.Commands.Mixing.MixTips(upgraded: true);
+    public override IEnumerable<IHoverTip> ExtraHoverTips => new[]
+    {
+        HoverTipFactory.FromCard<BurstingMix>(upgrade: true),
+        HoverTipFactory.FromCard<SyrupyMix>(upgrade: true),
+        HoverTipFactory.FromCard<ZestyMix>(upgrade: true),
+    };
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {

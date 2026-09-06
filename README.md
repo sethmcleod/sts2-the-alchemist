@@ -15,17 +15,15 @@
 - **Self-Poison**: The Alchemist doses themselves on purpose. Some attacks deal
   additional damage based on your Poison and other cards listen for how often
   your Poison is triggered.
-- **Antitoxin**: A reserve that absorbs the damage your Poison would deal. It
-  persists across turns and doesn't decay, so you can stack it up.
-- **Ferment**: These cards grow in potency for every turn they stay in your
-  hand. Playing one resets its fermentation.
-- **Mix**: These are tokens you can create in combat, and you can often choose
-  which one: Bursting (damage), Fuming (Weak and Vulnerable), Syrupy (Block)
-  and Zesty (Draw and Antitoxin).
-- **Decant**: These cards have a Decant level that rises whenever you create a
-  card, wherever they are. Play one at full level and its Decant effect also
-  activates, resetting the level.
-- **Brew**: This Rest Site option allows you to procure one of 7 unique potions
+- **Antitoxin**: A reserve that absorbs the damage your Poison would deal to you.
+  It is reduced by 1 at the start of your turn.
+- **Mix**: These are tokens you can create in combat that are similar to potion.
+  The basic Mixes are Bursting (damage), Syrupy (Block) and Zesty (draw);
+  the special Mixes are Fuming (Weak and Vulnerable), Acrid (Poison) and
+  Sparkling (Energy).
+- **Ferment**: These cards have Retain and grow in potency for every turn they
+  stay in your hand.
+- **Brew**: This Rest Site option allows you to procure 1 of 7 unique potions
   that can only be obtained this way. Due to the quality of these brews, the
   Merchant is willing to buy them from you for 150 Gold.
 
