@@ -12,11 +12,11 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Potions;
 
-public class StarterCulture : AlchemistPotion, IBrewOnly
+public class StarterCulture : AlchemistPotion
 {
-    private const int Times = 3;
+    private const int Times = 4;
 
-    public override PotionRarity Rarity => PotionRarity.Event;
+    public override PotionRarity Rarity => PotionRarity.Rare;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
     public override TargetType TargetType => TargetType.AnyPlayer;
 

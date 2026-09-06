@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://050nd0uxvjx5"
-path="res://.godot/imported/pass_it_on.png-05e197aa6d89cb4b1e2c6b4dbdca28b5.ctex"
+uid="uid://b8nxebq716raf"
+path="res://.godot/imported/volatile_reagent.png-63c532c4cc38b2284592f5dd7e895194.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/pass_it_on.png"
-dest_files=["res://.godot/imported/pass_it_on.png-05e197aa6d89cb4b1e2c6b4dbdca28b5.ctex"]
+source_file="res://Alchemist/images/potions/volatile_reagent.png"
+dest_files=["res://.godot/imported/volatile_reagent.png-63c532c4cc38b2284592f5dd7e895194.ctex"]
 
 [params]
 

@@ -11,6 +11,7 @@ public class Overbrew : AlchemistCard
 
     public Overbrew() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
+        WithVar("Extra", 1, 1);
         WithTip(typeof(Token.BurstingMix));
         WithTip(typeof(Token.SyrupyMix));
         WithTip(typeof(Token.ZestyMix));
@@ -18,7 +19,7 @@ public class Overbrew : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var copies = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0);
+        var copies = ResolveEnergyXValue() + DynamicVars["Extra"].IntValue;
         if (copies <= 0) return;
         await Mixing.CreateChosenCopies(choiceContext, Owner, copies, this);
     }

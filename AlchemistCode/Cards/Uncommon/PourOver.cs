@@ -17,7 +17,7 @@ public class PourOver : AlchemistCard
 
     protected internal override bool PlaysCastAnimation => false;
 
-    public PourOver() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public PourOver() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithCards(1, 1);
         WithKeyword(CardKeyword.Retain);

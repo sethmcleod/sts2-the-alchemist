@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckv23xdlhc30c"
-path="res://.godot/imported/wring.png-56775b744a532340e8b145cbf8be968b.ctex"
+uid="uid://wwbfsj3uds00"
+path="res://.godot/imported/steep_power.png-eff3fd9a3ec4c08b11641a5978ddf0eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/wring.png"
-dest_files=["res://.godot/imported/wring.png-56775b744a532340e8b145cbf8be968b.ctex"]
+source_file="res://Alchemist/images/powers/big/steep_power.png"
+dest_files=["res://.godot/imported/steep_power.png-eff3fd9a3ec4c08b11641a5978ddf0eb.ctex"]
 
 [params]
 

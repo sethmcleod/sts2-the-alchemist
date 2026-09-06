@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bttse636brnvj"
-path="res://.godot/imported/decoction.png-dee164be232a756fe8798666bcca5236.ctex"
+path="res://.godot/imported/reduction.png-87310b155a1a304e6b6ec48c70bb8630.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/potions/outlines/decoction.png"
-dest_files=["res://.godot/imported/decoction.png-dee164be232a756fe8798666bcca5236.ctex"]
+source_file="res://Alchemist/images/potions/outlines/reduction.png"
+dest_files=["res://.godot/imported/reduction.png-87310b155a1a304e6b6ec48c70bb8630.ctex"]
 
 [params]
 

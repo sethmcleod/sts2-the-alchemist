@@ -7,6 +7,43 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.7] - 2026-09-06
+
+### Added
+
+- Added Reduction potion: "Exhaust up to 3 cards in your Hand. Gain 1 Energy and draw 1 card for each card Exhausted." It replaces Decoction
+- Added Steep card (1 energy, Uncommon Power): "Whenever you play a Ferment card, shuffle it into your Draw Pile." Steep+ costs 0. It replaces Pass It On
+- Added Volatile Reagent potion: "Whenever you play a card this turn, deal 5 damage to ALL enemies." It replaces Oleander Milk
+
+### Changed
+
+- Added Pass It On: "Whenever you play a Ferment card, shuffle it into your Draw Pile."
+- Buffed Alkahest: in combat it now upgrades ALL cards in your Deck for the rest of combat, not only your Hand
+- Buffed Brace Block: 5 (7) -> 7 (9)
+- Buffed Fresh Cutting potion: it now adds special Mixes+ instead of Mixes
+- Buffed Harvest: it now has Retain
+- Buffed Overbrew copies: X (X+1) -> X+1 (X+2)
+- Buffed Patient Strike damage: 7 (9) -> 9 (12)
+- Buffed Pour Over cost: 1 -> 0
+- Buffed Refined Extract Mixes+: 2 -> 3
+- Buffed Seep cost: 1 -> 0
+- Buffed Starter Culture ferment: 3 -> 4
+- Changed Apothecary+: it is no longer Innate
+- Changed Resolve+: Strength 2 -> 1, additional Strength for each turn fermented 1 -> 2
+- Changed Ripening+: it adds a random Mix into your Hand instead of drawing a second card
+- Changed Sampler: it is now a Brew-only potion instead of a Rare reward potion
+- Changed Starter Culture: it is now a Rare reward potion instead of a Brew-only potion
+- Changed the cards locked behind timeline Epochs: Needle Point, Vintage and Transmute; Water Down, Eureka and Bottoms Up; Bloom, Rolling Boil and Grand Batch. Proof, Aged Batch, Sweat It Out, All At Once, Spatter, Wallop, Miasma and Mercurial Form are available from the start
+- Nerfed Forked Tongue damage: 5 (7) -> 4 (6)
+- Reworked Solvent: "Remove ALL Artifact and Block from ALL enemies." It no longer applies Weak
+- Reworked Wring into Tincture: "Retain. Ferment. Add a random Mix(+) into your Hand. Adds an additional Mix(+) for each turn fermented. Exhaust."
+
+### Removed
+
+- Removed Decoction potion, replaced with Reduction
+- Removed Oleander Milk potion, replaced with Volatile Reagent
+- Removed Pass It On card, replaced with Steep
+
 ## [0.14.6] - 2026-09-06
 
 ### Changed

@@ -11,7 +11,7 @@ public class ForkedTongue : AlchemistCard
 {
     public ForkedTongue() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(5, static (card, _) => Dose(card), ValueProp.Move, 2);
+        WithCalculatedDamage(4, static (card, _) => Dose(card), ValueProp.Move, 2);
         WithTip(typeof(PoisonPower));
     }
 

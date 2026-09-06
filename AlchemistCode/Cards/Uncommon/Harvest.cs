@@ -17,6 +17,7 @@ public class Harvest : AlchemistCard
     public Harvest() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Turns", 2, 1);
+        WithKeyword(CardKeyword.Retain);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
 

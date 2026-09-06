@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bicnl6wxgrs2f"
-path="res://.godot/imported/decoction.png-40493d2e83443f0494b24454c7f0a08d.ctex"
+uid="uid://cegq78y8jsey6"
+path="res://.godot/imported/volatile_reagent.png-875b17fe1bd7d92e7b42309b2bf739f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/potions/decoction.png"
-dest_files=["res://.godot/imported/decoction.png-40493d2e83443f0494b24454c7f0a08d.ctex"]
+source_file="res://Alchemist/images/potions/outlines/volatile_reagent.png"
+dest_files=["res://.godot/imported/volatile_reagent.png-875b17fe1bd7d92e7b42309b2bf739f0.ctex"]
 
 [params]
 

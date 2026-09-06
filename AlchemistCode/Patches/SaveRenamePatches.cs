@@ -41,7 +41,6 @@ public static class SaveRenamePatches
         ["ALCHEMIST-POULTICE"] = ModelDb.Card<Upwell>().Id!,
         ["ALCHEMIST-SLOW_BURN"] = ModelDb.Card<Mortar>().Id!,
         ["ALCHEMIST-SWILL"] = ModelDb.Card<TasteTest>().Id!,
-        ["ALCHEMIST-STEEP"] = ModelDb.Card<PourOver>().Id!,
         ["ALCHEMIST-TOXIN_SKIN"] = ModelDb.Card<Uncork>().Id!,
         ["ALCHEMIST-VIAL_IN_RESERVE"] = ModelDb.Card<Uncork>().Id!,
         // Cuts, not renames: each removed card maps to the new card in its slot, so a mid-save
@@ -63,7 +62,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-SMOKE_OUT"] = ModelDb.Card<Digest>().Id!,
         ["ALCHEMIST-SIPHON"] = ModelDb.Card<Dose>().Id!,
         ["ALCHEMIST-PELT"] = ModelDb.Card<Combine>().Id!,
-        ["ALCHEMIST-SALVE"] = ModelDb.Card<Wring>().Id!,
+        ["ALCHEMIST-SALVE"] = ModelDb.Card<Tincture>().Id!,
         ["ALCHEMIST-FLARE_UP"] = ModelDb.Card<Endure>().Id!,
         ["ALCHEMIST-KNEAD"] = ModelDb.Card<Endure>().Id!,
         ["ALCHEMIST-HARDEN"] = ModelDb.Card<FreshBatch>().Id!,
@@ -75,8 +74,10 @@ public static class SaveRenamePatches
         ["ALCHEMIST-SWIG"] = ModelDb.Card<Clench>().Id!,
         ["ALCHEMIST-OVERSPILL"] = ModelDb.Card<Seep>().Id!,
         ["ALCHEMIST-DRENCH"] = ModelDb.Card<Harvest>().Id!,
-        ["ALCHEMIST-CURE"] = ModelDb.Card<Wring>().Id!,
+        ["ALCHEMIST-CURE"] = ModelDb.Card<Tincture>().Id!,
         ["ALCHEMIST-CELLAR"] = ModelDb.Card<Ripening>().Id!,
+        ["ALCHEMIST-PASS_IT_ON"] = ModelDb.Card<Steep>().Id!,
+        ["ALCHEMIST-WRING"] = ModelDb.Card<Tincture>().Id!,
     };
 
     public static void Prefix(ref ModelId id)
@@ -96,7 +97,9 @@ public static class PotionSaveRenamePatches
     // Lazy: ModelDb is not populated when Harmony applies the patch
     private static Dictionary<string, ModelId> Renamed => _renamed ??= new Dictionary<string, ModelId>
     {
-        ["ALCHEMIST-QUICKSILVER_DRAUGHT"] = ModelDb.Potion<Potions.OleanderMilk>().Id!,
+        ["ALCHEMIST-QUICKSILVER_DRAUGHT"] = ModelDb.Potion<Potions.VolatileReagent>().Id!,
+        ["ALCHEMIST-OLEANDER_MILK"] = ModelDb.Potion<Potions.VolatileReagent>().Id!,
+        ["ALCHEMIST-DECOCTION"] = ModelDb.Potion<Potions.Reduction>().Id!,
         ["ALCHEMIST-GOLD_LEAF"] = ModelDb.Potion<Potions.Solvent>().Id!,
     };
 

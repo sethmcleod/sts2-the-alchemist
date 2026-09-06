@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyb68lag7u1in"
-path="res://.godot/imported/pass_it_on_power.png-c04628fef8420b1eb643db78f0e3d0b7.ctex"
+uid="uid://ckv23xdlhc30c"
+path="res://.godot/imported/tincture.png-87d50803764344a8f891adf1d736dee1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/pass_it_on_power.png"
-dest_files=["res://.godot/imported/pass_it_on_power.png-c04628fef8420b1eb643db78f0e3d0b7.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/tincture.png"
+dest_files=["res://.godot/imported/tincture.png-87d50803764344a8f891adf1d736dee1.ctex"]
 
 [params]
 

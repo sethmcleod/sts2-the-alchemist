@@ -14,7 +14,7 @@ public class Seep : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Seep() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Seep() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Bonus", 2, 1);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
