@@ -12,7 +12,6 @@ public class Apothecary : AlchemistCard
 {
     public Apothecary() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithKeyword(CardKeyword.Innate, UpgradeType.Add);
         WithTips(_ => Mixing.MixTips());
     }
 

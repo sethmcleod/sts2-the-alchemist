@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8nxebq716raf"
-path="res://.godot/imported/oleander_milk.png-b13eec6f28df2801806922d737f14936.ctex"
+uid="uid://050nd0uxvjx5"
+path="res://.godot/imported/steep.png-ec1f8f6349a6c6407cddece3e32eede5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/potions/oleander_milk.png"
-dest_files=["res://.godot/imported/oleander_milk.png-b13eec6f28df2801806922d737f14936.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/steep.png"
+dest_files=["res://.godot/imported/steep.png-ec1f8f6349a6c6407cddece3e32eede5.ctex"]
 
 [params]
 

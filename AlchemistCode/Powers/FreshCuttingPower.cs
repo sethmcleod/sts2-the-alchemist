@@ -16,16 +16,16 @@ public class FreshCuttingPower : AlchemistPower
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new[]
     {
-        HoverTipFactory.FromCard<FumingMix>(),
-        HoverTipFactory.FromCard<AcridMix>(),
-        HoverTipFactory.FromCard<SparklingMix>(),
+        HoverTipFactory.FromCard<FumingMix>(upgrade: true),
+        HoverTipFactory.FromCard<AcridMix>(upgrade: true),
+        HoverTipFactory.FromCard<SparklingMix>(upgrade: true),
     };
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Player) return;
         Flash();
-        await Mixing.CreateRandom(choiceContext, player, kinds: Mixing.Special, source: this);
+        await Mixing.CreateRandom(choiceContext, player, upgraded: true, kinds: Mixing.Special, source: this);
         await PowerCmd.Decrement(this);
     }
 }

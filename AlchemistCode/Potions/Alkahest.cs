@@ -20,10 +20,13 @@ public class Alkahest : AlchemistPotion, IBrewOnly
         if (CombatManager.Instance.IsInProgress)
         {
             var player = target?.Player ?? Owner;
-            var hand = PileType.Hand.GetPile(player).Cards.Where(c => c.IsUpgradable).ToList();
-            foreach (var card in hand)
+            // The base Apotheosis set: every combat pile, so the whole deck for the rest of combat
+            var cards = player.PlayerCombatState.AllCards.Where(c => c.IsUpgradable).ToList();
+            foreach (var card in cards)
                 CardCmd.Upgrade(card);
-            if (hand.Count > 0) CardCmd.Preview(hand);
+            // Preview only what is visible: a row of the whole deck runs off the screen
+            var shown = cards.Where(c => PileType.Hand.GetPile(player).Cards.Contains(c)).ToList();
+            if (shown.Count > 0) CardCmd.Preview(shown);
             return;
         }
 

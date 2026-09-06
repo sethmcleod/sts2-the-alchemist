@@ -13,8 +13,8 @@ public class Resolve : AlchemistCard
 
     public Resolve() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Amount", 1, 1);
-        WithVar("perTurn", 1, 0);
+        WithVar("Amount", 1, 0);
+        WithVar("perTurn", 1, 1);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(StrengthPower));
     }

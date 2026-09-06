@@ -22,9 +22,9 @@ public class FreshCutting : AlchemistPotion, IBrewOnly
 
     public override IEnumerable<IHoverTip> ExtraHoverTips => new[]
     {
-        HoverTipFactory.FromCard<FumingMix>(),
-        HoverTipFactory.FromCard<AcridMix>(),
-        HoverTipFactory.FromCard<SparklingMix>(),
+        HoverTipFactory.FromCard<FumingMix>(upgrade: true),
+        HoverTipFactory.FromCard<AcridMix>(upgrade: true),
+        HoverTipFactory.FromCard<SparklingMix>(upgrade: true),
     };
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)

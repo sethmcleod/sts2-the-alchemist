@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wwbfsj3uds00"
-path="res://.godot/imported/pass_it_on_power.png-9b14ebdc2228082fc3036925de609d0b.ctex"
+uid="uid://dyb68lag7u1in"
+path="res://.godot/imported/steep_power.png-9f97bad4e4257c0a668c157e9a605811.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/pass_it_on_power.png"
-dest_files=["res://.godot/imported/pass_it_on_power.png-9b14ebdc2228082fc3036925de609d0b.ctex"]
+source_file="res://Alchemist/images/powers/steep_power.png"
+dest_files=["res://.godot/imported/steep_power.png-9f97bad4e4257c0a668c157e9a605811.ctex"]
 
 [params]
 

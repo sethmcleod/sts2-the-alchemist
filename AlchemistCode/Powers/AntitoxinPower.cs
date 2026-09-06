@@ -91,8 +91,6 @@ public partial class AntitoxinPower : AlchemistPower
         // that never took Antitoxin, and would miss the lethal tick, which never reaches that hook
         Analytics.RunCounters.Tally(Owner.Player,
             (int)amount == 0 ? Analytics.RunCounters.TickCovered : Analytics.RunCounters.TickBled);
-        if (Owner.GetPower<PassItOnPower>() is { } passItOn)
-            await passItOn.OnAbsorbed(absorbed);
     }
 
     // After the Poison trigger window (PoisonPower triggers and decrements on AfterSideTurnStart), so
