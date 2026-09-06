@@ -31,7 +31,7 @@ public class Combine : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;
-        await Mixing.CreateRandom(choiceContext, Owner, IsUpgraded, Mixing.Basic);
+        await Mixing.CreateRandom(choiceContext, Owner, IsUpgraded, Mixing.Basic, this);
         var mixes = PileType.Hand.GetPile(Owner).Cards.Where(Mixing.IsIngredient).ToList();
         if (mixes.Count < 2) return;
         // Exactly two skips the screen; more asks which two
@@ -42,6 +42,6 @@ public class Combine : AlchemistCard
         if (picked.Count < 2) return;
         foreach (var mix in picked)
             await CardCmd.Exhaust(choiceContext, mix);
-        await Mixing.CreateCompound(choiceContext, Owner, picked[0], picked[1]);
+        await Mixing.CreateCompound(choiceContext, Owner, picked[0], picked[1], this);
     }
 }

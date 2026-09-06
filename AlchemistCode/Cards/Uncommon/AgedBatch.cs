@@ -22,7 +22,7 @@ public class AgedBatch : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.Draw(this, choiceContext);
-        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: IsUpgraded);
+        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: IsUpgraded, source: this);
         if (mix == null) return;
         mix.RemoveKeyword(CardKeyword.Exhaust);
         await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, Owner);

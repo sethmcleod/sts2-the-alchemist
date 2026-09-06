@@ -38,6 +38,6 @@ public class Wring : AlchemistCard
         if (chosen is not AlchemistCard ferment) return;
         var mixes = ferment.FermentTurns / DynamicVars["Per"].IntValue;
         for (var i = 0; i < mixes; i++)
-            await Mixing.CreateRandom(choiceContext, Owner, IsUpgraded);
+            await Mixing.CreateRandom(choiceContext, Owner, IsUpgraded, source: this);
     }
 }

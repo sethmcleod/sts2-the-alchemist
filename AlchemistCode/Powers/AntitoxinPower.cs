@@ -86,6 +86,11 @@ public partial class AntitoxinPower : AlchemistPower
         if (absorbed <= 0 || absorbed > Amount) return;
 
         AntitoxinRules.MarkAbsorbed(Owner, absorbed);
+        // Both tick counters live here, so they share one population: ticks taken while holding
+        // Antitoxin. Counting the bled half in AfterDamageReceived would add every tick from runs
+        // that never took Antitoxin, and would miss the lethal tick, which never reaches that hook
+        Analytics.RunCounters.Tally(Owner.Player,
+            (int)amount == 0 ? Analytics.RunCounters.TickCovered : Analytics.RunCounters.TickBled);
         if (Owner.GetPower<PassItOnPower>() is { } passItOn)
             await passItOn.OnAbsorbed(absorbed);
     }

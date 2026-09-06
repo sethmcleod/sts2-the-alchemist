@@ -19,6 +19,6 @@ public class Fizz : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.Draw(this, choiceContext);
-        await Mixing.CreateOne<Token.SparklingMix>(choiceContext, Owner, IsUpgraded);
+        await Mixing.CreateOne<Token.SparklingMix>(choiceContext, Owner, IsUpgraded, this);
     }
 }

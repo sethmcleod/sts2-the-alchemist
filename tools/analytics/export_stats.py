@@ -73,6 +73,7 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
     run_rows, card_rows, choice_rows, relic_rows = [], [], [], []
     death_rows, floor_rows, enc_rows, theme_rows = [], [], [], []
     brew_rows, first_rows, potion_use_rows = [], [], []
+    source_rows, pair_rows, offer_rows, act_rows, play_rows = [], [], [], [], []
 
     for run in runs:
         day = run["created_at"][:10]  # ISO timestamp, the date is the first ten characters
@@ -107,6 +108,32 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
 
         mixes = extra.get("mixes") or {}
         poison = extra.get("poison") or {}
+        # The open-keyed tally: "prefix:label" keys are split into their own tables, the plain
+        # keys ride on the economy row. Runs from before the tally shipped simply contribute zeros
+        tally = extra.get("tally") or {}
+        labelled = {}
+        for key, count in tally.items():
+            prefix, _, label = key.partition(":")
+            if label:
+                labelled.setdefault(prefix, {})[label] = int(count or 0)
+        for source, count in labelled.get("mixsrc", {}).items():
+            source_rows.append(keys | {"source": source, "mixes": count})
+        for pair, count in labelled.get("pair", {}).items():
+            pair_rows.append(keys | {"pair": pair, "compounds": count})
+        offers = labelled.get("brew_offer", {})
+        picks = labelled.get("brew_pick", {})
+        for potion in set(offers) | set(picks):
+            offer_rows.append(keys | {"potion": potion, "offered": offers.get(potion, 0),
+                                      "picked": picks.get(potion, 0)})
+        # Both counts come from the tally, so a run resumed across the update cannot pair old
+        # created counts with new played counts
+        made = labelled.get("mixmade", {})
+        played = labelled.get("mixplay", {})
+        for kind in set(made) | set(played):
+            play_rows.append(keys | {"kind": kind, "created": made.get(kind, 0), "played": played.get(kind, 0)})
+        for act in extra.get("acts") or []:
+            act_rows.append(keys | {"act": int(act.get("act") or 0), "fights": int(act.get("fights") or 0),
+                                    "turns": int(act.get("turns") or 0), "dmg": int(act.get("damage") or 0)})
         brew_rows.append(keys | {"brews": int(extra.get("brews") or 0),
                                  "reward_screens": len(screens),
                                  "reward_skips": skips,
@@ -116,9 +143,21 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
                                  "mix_fuming": int(mixes.get("fuming") or 0),
                                  "mix_syrupy": int(mixes.get("syrupy") or 0) + int(mixes.get("sturdy") or 0),
                                  "mix_zesty": int(mixes.get("zesty") or 0),
+                                 "mix_acrid": int(mixes.get("acrid") or 0),
+                                 "mix_sparkling": int(mixes.get("sparkling") or 0),
+                                 "mix_compound": int(mixes.get("compound") or 0),
                                  "poison_gained": int(poison.get("gained") or 0),
                                  "poison_absorbed": int(poison.get("absorbed") or 0),
                                  "poison_bled": int(poison.get("bled") or 0),
+                                 "ferment_plays": int(tally.get("ferment_plays") or 0),
+                                 "ferment_turns": int(tally.get("ferment_turns") or 0),
+                                 "ferment_zero": int(tally.get("ferment_zero") or 0),
+                                 "tick_covered": int(tally.get("tick_covered") or 0),
+                                 "tick_bled": int(tally.get("tick_bled") or 0),
+                                 "poison_deaths": 1 if (not win and tally.get("poison_death")) else 0,
+                                 # Runs that carry the tally at all, so rates divide by the right base
+                                 "tallied": 1 if tally else 0,
+                                 "tallied_wins": 1 if (tally and win) else 0,
                                  "runs": 1, "wins": win})
 
         for card, copies in Counter(deck).items():
@@ -156,7 +195,12 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
         "death_floors_daily": aggregate(floor_rows, keys + ["floor"], ["deaths"]),
         "encounters_daily": aggregate(enc_rows, keys + ["enc"], ["fights", "dmg", "turns"]),
         "themes_daily": aggregate(theme_rows, keys + ["theme"], ["runs", "wins"]),
-        "economy_daily": aggregate(brew_rows, keys, ["brews", "sold", "reward_screens", "reward_skips", "potions_used", "mix_bursting", "mix_fuming", "mix_syrupy", "mix_zesty", "poison_gained", "poison_absorbed", "poison_bled", "runs", "wins"]),
+        "economy_daily": aggregate(brew_rows, keys, ["brews", "sold", "reward_screens", "reward_skips", "potions_used", "mix_bursting", "mix_fuming", "mix_syrupy", "mix_zesty", "mix_acrid", "mix_sparkling", "mix_compound", "poison_gained", "poison_absorbed", "poison_bled", "ferment_plays", "ferment_turns", "ferment_zero", "tick_covered", "tick_bled", "poison_deaths", "tallied", "tallied_wins", "runs", "wins"]),
+        "mix_sources_daily": aggregate(source_rows, keys + ["source"], ["mixes"]),
+        "compound_pairs_daily": aggregate(pair_rows, keys + ["pair"], ["compounds"]),
+        "brew_offers_daily": aggregate(offer_rows, keys + ["potion"], ["offered", "picked"]),
+        "mix_plays_daily": aggregate(play_rows, keys + ["kind"], ["created", "played"]),
+        "acts_daily": aggregate(act_rows, keys + ["act"], ["fights", "turns", "dmg"]),
         "first_picks_daily": aggregate(first_rows, keys + ["card", "order"], ["picked", "wins"]),
         "potion_uses_daily": aggregate(potion_use_rows, keys + ["potion"], ["uses"]),
     }

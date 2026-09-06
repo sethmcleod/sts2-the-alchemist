@@ -221,7 +221,8 @@
         min-width: 130px;
         flex: 1 1 130px;
       }
-      #tilesWide .tile {
+      #tilesWide .tile,
+      #tilesTally .tile {
         flex: 1 1 300px;
       }
       .tile .lab {
@@ -487,6 +488,7 @@
       <div class="view on" id="view-overview">
         <div class="cards-row" id="tiles"></div>
         <div class="cards-row" id="tilesWide"></div>
+        <div class="cards-row" id="tilesTally"></div>
         <div class="row2">
           <div class="panel">
             <h2>Win rate by day</h2>
@@ -537,6 +539,23 @@
             <div id="chartMixShare"></div>
             <div class="legend" id="mixLegend"></div>
           </div>
+          <div class="panel">
+            <h2>Mixes played vs created</h2>
+            <div class="note">A Mix created but never played was lost to Ethereal, the end-of-turn discard, or Combine.</div>
+            <div class="scroll" id="playTable"></div>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="panel">
+            <h2>Where Mixes come from</h2>
+            <div class="note">The card, relic, potion or power that made each Mix.</div>
+            <div class="scroll" id="sourceTable"></div>
+          </div>
+          <div class="panel">
+            <h2>Compound pairings</h2>
+            <div class="note">Which two Mixes were folded into each Compound Mix.</div>
+            <div class="scroll" id="pairTable"></div>
+          </div>
         </div>
       </div>
 
@@ -583,6 +602,11 @@
           <div class="note">Every potion used, from runs uploaded after this table shipped.</div>
           <div class="scroll" id="potionTable"></div>
         </div>
+        <div class="panel">
+          <h2>Brew offers</h2>
+          <div class="note">The Brew-only potions shown at a rest site, and how often each was taken.</div>
+          <div class="scroll" id="brewTable"></div>
+        </div>
       </div>
 
       <div class="view" id="view-encounters">
@@ -603,6 +627,11 @@
           <h2>Encounter toll</h2>
           <div class="note">Damage and turns are per fight, averaged. Deaths are runs that ended in this fight.</div>
           <div class="scroll" id="encTable"></div>
+        </div>
+        <div class="panel">
+          <h2>Fights by act</h2>
+          <div class="note">Turns and damage per fight, averaged by act. Long fights were the killer in the 0.11 diagnosis.</div>
+          <div class="scroll" id="actTable"></div>
         </div>
       </div>
 
@@ -647,6 +676,7 @@
 
       const DATA = 'data/';
       let META, CMETA, RUNS, CARDS, CHOICES, RELICS, DEATHS, FLOORS, ENC, THEMES, ECON, FIRSTS, POTIONS;
+      let SOURCES, PAIRS, OFFERS, PLAYS, ACTS;
       let PREFIX = 'ALCHEMIST-';
       const RARITY_COLOR = { Rare: '--rare', Uncommon: '--uncommon', Common: '--common' };
 
@@ -667,6 +697,11 @@
           diff: ['delta', -1],
           firsts: ['picked', -1],
           potions: ['uses', -1],
+          plays: ['created', -1],
+          sources: ['mixes', -1],
+          pairs: ['compounds', -1],
+          offers: ['offered', -1],
+          acts: ['act', 1],
         },
       };
 
@@ -1364,9 +1399,20 @@
             'mix_fuming',
             'mix_syrupy',
             'mix_zesty',
+            'mix_acrid',
+            'mix_sparkling',
+            'mix_compound',
             'poison_gained',
             'poison_absorbed',
             'poison_bled',
+            'ferment_plays',
+            'ferment_turns',
+            'ferment_zero',
+            'tick_covered',
+            'tick_bled',
+            'poison_deaths',
+            'tallied',
+            'tallied_wins',
             'runs',
           ],
         ).get(1) || {
@@ -1374,17 +1420,33 @@
           mix_fuming: 0,
           mix_syrupy: 0,
           mix_zesty: 0,
+          mix_acrid: 0,
+          mix_sparkling: 0,
+          mix_compound: 0,
           poison_gained: 0,
           poison_absorbed: 0,
           poison_bled: 0,
+          ferment_plays: 0,
+          ferment_turns: 0,
+          ferment_zero: 0,
+          tick_covered: 0,
+          tick_bled: 0,
+          poison_deaths: 0,
+          tallied: 0,
+          tallied_wins: 0,
           runs: 0,
         };
-        const mixTotal = econ2.mix_bursting + econ2.mix_fuming + econ2.mix_syrupy + econ2.mix_zesty;
+        const mixTotal =
+          econ2.mix_bursting + econ2.mix_fuming + econ2.mix_syrupy + econ2.mix_zesty +
+          econ2.mix_acrid + econ2.mix_sparkling + econ2.mix_compound;
         const mixTop = [
           ['Bursting', econ2.mix_bursting],
           ['Fuming', econ2.mix_fuming],
           ['Syrupy', econ2.mix_syrupy],
           ['Zesty', econ2.mix_zesty],
+          ['Acrid', econ2.mix_acrid],
+          ['Sparkling', econ2.mix_sparkling],
+          ['Compound', econ2.mix_compound],
         ].sort((a, b) => b[1] - a[1]);
         const poisonTicks = econ2.poison_absorbed + econ2.poison_bled;
         const tile = ([lab, val, ci]) =>
@@ -1420,6 +1482,34 @@
                   .map(([k, n]) => `${k} ${pct(n / mixTotal)}`)
                   .join(' · ')
               : '',
+          ],
+        ]
+          .map(tile)
+          .join('');
+        // The tally shipped with 0.14.6, so these three read only the runs that carry it
+        const ticks = econ2.tick_covered + econ2.tick_bled;
+        const talliedDeaths = econ2.tallied - econ2.tallied_wins;
+        $('tilesTally').innerHTML = [
+          [
+            'Ferment depth',
+            econ2.ferment_plays ? (econ2.ferment_turns / econ2.ferment_plays).toFixed(1) : '–',
+            econ2.ferment_plays
+              ? `turns brewed per play · ${pct(econ2.ferment_zero / econ2.ferment_plays)} played unfermented`
+              : 'turns brewed when a Ferment card is played',
+          ],
+          [
+            'Ticks covered',
+            ticks ? pct(econ2.tick_covered / ticks) : '–',
+            ticks
+              ? `${num(econ2.tick_covered)} held in full · ${num(econ2.tick_bled)} bled, while holding Antitoxin`
+              : 'Poison ticks held in full while holding Antitoxin',
+          ],
+          [
+            'Self-Poison deaths',
+            talliedDeaths > 0 ? pct(econ2.poison_deaths / talliedDeaths) : '–',
+            talliedDeaths > 0
+              ? `${num(econ2.poison_deaths)} of ${num(talliedDeaths)} deaths ended on the player's own tick`
+              : 'deaths where the last HP went to Poison',
           ],
         ]
           .map(tile)
@@ -1473,7 +1563,17 @@
           ...groupSum(
             ECON.filter((r) => sliceFilter(r)),
             (r) => r.day,
-            ['poison_absorbed', 'poison_bled', 'mix_bursting', 'mix_fuming', 'mix_syrupy', 'mix_zesty'],
+            [
+              'poison_absorbed',
+              'poison_bled',
+              'mix_bursting',
+              'mix_fuming',
+              'mix_syrupy',
+              'mix_zesty',
+              'mix_acrid',
+              'mix_sparkling',
+              'mix_compound',
+            ],
           ),
         ].sort((a, b) => (a[0] < b[0] ? -1 : 1));
         coverageChart(
@@ -1482,13 +1582,17 @@
           econDays.map(([day, g]) => ({ day, absorbed: g.poison_absorbed, bled: g.poison_bled })),
         );
 
-        // Roughly the tokens' card-art colours: Bursting red-orange, Fuming green-yellow,
-        // Syrupy blue, Zesty purple
+        // The Mix icon colours: Bursting red, Fuming orange, Sparkling yellow, Acrid green,
+        // Syrupy blue, Zesty purple, Compound white. The three warm ones are spaced far enough
+        // apart in hue to read as three lines, not one
         const mixDefs = [
-          ['Bursting', 'mix_bursting', '#ff5a3a'],
-          ['Fuming', 'mix_fuming', '#c8e05a'],
+          ['Bursting', 'mix_bursting', '#f03c3c'],
+          ['Fuming', 'mix_fuming', '#ff9424'],
+          ['Sparkling', 'mix_sparkling', '#ffe14a'],
+          ['Acrid', 'mix_acrid', '#4fd06a'],
           ['Syrupy', 'mix_syrupy', '#4a90e8'],
           ['Zesty', 'mix_zesty', '#c07aff'],
+          ['Compound', 'mix_compound', '#f4f4f4'],
         ];
         multiLine(
           $('chartMixShare'),
@@ -1584,6 +1688,142 @@
             { key: 'picked', label: 'First-picked', num: true, render: (r) => num(r.picked) },
             { key: 'winrate', label: 'Win rate', num: true, render: (r) => bar(r.winrate) },
             { key: 'ci', label: '95% CI', num: true, render: (r) => pctCI(r.wins, r.picked) },
+          ],
+          rows,
+        );
+      }
+
+      function renderMixes() {
+        const plays = [
+          ...groupSum(
+            PLAYS.filter((r) => sliceFilter(r)),
+            (r) => r.kind,
+            ['created', 'played'],
+          ),
+        ]
+          .map(([kind, g]) => ({
+            kind,
+            name: kind[0].toUpperCase() + kind.slice(1),
+            created: g.created,
+            played: g.played,
+            share: g.created ? g.played / g.created : null,
+          }))
+          .filter((r) => r.created || r.played);
+        sortable(
+          $('playTable'),
+          'plays',
+          [
+            { key: 'name', label: 'Mix' },
+            { key: 'created', label: 'Created', num: true, render: (r) => num(r.created) },
+            { key: 'played', label: 'Played', num: true, render: (r) => num(r.played) },
+            { key: 'share', label: 'Played share', num: true, render: (r) => (r.share == null ? '–' : bar(Math.min(r.share, 1))) },
+          ],
+          plays,
+        );
+
+        const sources = [
+          ...groupSum(
+            SOURCES.filter((r) => sliceFilter(r)),
+            (r) => r.source,
+            ['mixes'],
+          ),
+        ];
+        const sourceTotal = sources.reduce((t, [, g]) => t + g.mixes, 0);
+        sortable(
+          $('sourceTable'),
+          'sources',
+          [
+            { key: 'name', label: 'Maker' },
+            { key: 'mixes', label: 'Mixes', num: true, render: (r) => num(r.mixes) },
+            { key: 'share', label: 'Share', num: true, render: (r) => bar(r.share) },
+          ],
+          sources.map(([source, g]) => ({
+            source,
+            name: prettyName(PREFIX + source.toUpperCase()),
+            mixes: g.mixes,
+            share: sourceTotal ? g.mixes / sourceTotal : 0,
+          })),
+        );
+
+        const pairs = [
+          ...groupSum(
+            PAIRS.filter((r) => sliceFilter(r)),
+            (r) => r.pair,
+            ['compounds'],
+          ),
+        ];
+        const pairTotal = pairs.reduce((t, [, g]) => t + g.compounds, 0);
+        sortable(
+          $('pairTable'),
+          'pairs',
+          [
+            { key: 'name', label: 'Pairing' },
+            { key: 'compounds', label: 'Compounds', num: true, render: (r) => num(r.compounds) },
+            { key: 'share', label: 'Share', num: true, render: (r) => bar(r.share) },
+          ],
+          pairs.map(([pair, g]) => ({
+            pair,
+            name: pair
+              .split('+')
+              .map((k) => k[0].toUpperCase() + k.slice(1))
+              .join(' + '),
+            compounds: g.compounds,
+            share: pairTotal ? g.compounds / pairTotal : 0,
+          })),
+        );
+      }
+
+      function renderBrew() {
+        const rows = [
+          ...groupSum(
+            OFFERS.filter((r) => sliceFilter(r)),
+            (r) => r.potion,
+            ['offered', 'picked'],
+          ),
+        ].map(([potion, g]) => ({
+          potion,
+          name: prettyName(PREFIX + potion.toUpperCase()),
+          offered: g.offered,
+          picked: g.picked,
+          rate: g.offered ? g.picked / g.offered : null,
+        }));
+        sortable(
+          $('brewTable'),
+          'offers',
+          [
+            { key: 'name', label: 'Potion' },
+            { key: 'offered', label: 'Offered', num: true, render: (r) => num(r.offered) },
+            { key: 'picked', label: 'Picked', num: true, render: (r) => num(r.picked) },
+            { key: 'rate', label: 'Pick rate', num: true, render: (r) => (r.rate == null ? '–' : bar(r.rate)) },
+          ],
+          rows,
+        );
+      }
+
+      function renderActs() {
+        const rows = [
+          ...groupSum(
+            ACTS.filter((r) => sliceFilter(r)),
+            (r) => r.act,
+            ['fights', 'turns', 'dmg'],
+          ),
+        ]
+          .filter(([, g]) => g.fights)
+          .map(([act, g]) => ({
+            act,
+            name: 'Act ' + act,
+            fights: g.fights,
+            turns: g.turns / g.fights,
+            dmg: g.dmg / g.fights,
+          }));
+        sortable(
+          $('actTable'),
+          'acts',
+          [
+            { key: 'act', label: 'Act', render: (r) => r.name },
+            { key: 'fights', label: 'Fights', num: true, render: (r) => num(r.fights) },
+            { key: 'turns', label: 'Avg turns', num: true, render: (r) => r.turns.toFixed(1) },
+            { key: 'dmg', label: 'Avg damage', num: true, render: (r) => r.dmg.toFixed(1) },
           ],
           rows,
         );
@@ -1821,6 +2061,9 @@
         renderFirstPicks();
         renderRelics();
         renderPotions();
+        renderMixes();
+        renderBrew();
+        renderActs();
         renderEncounters();
         renderDiff();
       }
@@ -1854,7 +2097,8 @@
             return r.json();
           });
         try {
-          [META, CMETA, RUNS, CARDS, CHOICES, RELICS, DEATHS, FLOORS, ENC, THEMES, ECON, FIRSTS, POTIONS] =
+          [META, CMETA, RUNS, CARDS, CHOICES, RELICS, DEATHS, FLOORS, ENC, THEMES, ECON, FIRSTS, POTIONS,
+            SOURCES, PAIRS, OFFERS, PLAYS, ACTS] =
             await Promise.all(
               [
                 'meta',
@@ -1870,6 +2114,11 @@
                 'economy_daily',
                 'first_picks_daily',
                 'potion_uses_daily',
+                'mix_sources_daily',
+                'compound_pairs_daily',
+                'brew_offers_daily',
+                'mix_plays_daily',
+                'acts_daily',
               ].map(load),
             );
         } catch (e) {

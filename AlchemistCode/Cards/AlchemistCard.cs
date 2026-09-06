@@ -173,6 +173,10 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // card reads it, so a pour that moved it would pay it twice on the receiver
     internal bool HasStoredFerment => _fermentTurns > 0;
 
+    // The same raw count, for the analytics: the relic floor would make "played unfermented"
+    // unreachable, and the card's own live total would report a poured card as empty
+    internal int StoredFermentTurns => _fermentTurns;
+
     internal void ReceiveFerment(int turns)
     {
         if (!IsFermentCard) return;

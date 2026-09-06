@@ -19,6 +19,6 @@ public class WarmUp : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
-        await Mixing.CreateRandom(choiceContext, Owner);
+        await Mixing.CreateRandom(choiceContext, Owner, source: this);
     }
 }

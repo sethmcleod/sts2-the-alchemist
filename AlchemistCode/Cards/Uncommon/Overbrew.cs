@@ -20,6 +20,6 @@ public class Overbrew : AlchemistCard
     {
         var copies = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0);
         if (copies <= 0) return;
-        await Mixing.CreateChosenCopies(choiceContext, Owner, copies);
+        await Mixing.CreateChosenCopies(choiceContext, Owner, copies, this);
     }
 }

@@ -23,6 +23,6 @@ public class RefinedExtract : AlchemistPotion
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        await Alchemist.AlchemistCode.Commands.Mixing.CreateChosen(choiceContext, target?.Player ?? Owner, 2, upgraded: true);
+        await Alchemist.AlchemistCode.Commands.Mixing.CreateChosen(choiceContext, target?.Player ?? Owner, 2, upgraded: true, source: this);
     }
 }

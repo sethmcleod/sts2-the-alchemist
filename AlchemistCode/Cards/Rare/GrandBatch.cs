@@ -25,7 +25,7 @@ public class GrandBatch : AlchemistCard
         {
             var mix = Mixing.Create(combat, Owner, kind);
             if (IsUpgraded) CardCmd.Upgrade(mix);
-            Mixing.RecordCreated(Owner, mix);
+            Mixing.RecordCreated(Owner, mix, this);
             await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, Owner);
         }
     }

@@ -23,7 +23,7 @@ public class EverflowingChalice : AlchemistRelic
     {
         if (player != Owner || Owner.PlayerCombatState is not { TurnNumber: 1 }) return;
         Flash();
-        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: true, Mixing.All);
+        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: true, Mixing.All, this);
         if (mix == null) return;
         CardCmd.ApplyKeyword(mix, CardKeyword.Retain);
         await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, Owner);

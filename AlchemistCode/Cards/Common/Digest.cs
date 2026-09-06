@@ -38,6 +38,6 @@ public class Digest : AlchemistCard
         if (eaten != null)
             await CardCmd.Exhaust(choiceContext, eaten);
         if (eaten != null && IsJunk(eaten))
-            await Mixing.CreateRandom(choiceContext, Owner, IsUpgraded);
+            await Mixing.CreateRandom(choiceContext, Owner, IsUpgraded, source: this);
     }
 }
