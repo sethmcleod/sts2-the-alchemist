@@ -1,15 +1,15 @@
 {
-  "ALCHEMIST-DECANT.description": "Bir kart yarattığında, bu kart nerede olursa olsun [gold]Dinlendirme[/gold] seviyesi artar. Tam seviyede oynandığında [gold]Dinlendirme[/gold] etkisi de tetiklenir ve seviye sıfırlanır.",
-  "ALCHEMIST-DECANT.title": "Dinlendirme",
-  "ALCHEMIST-FERMENT.description": "Bu kart, [gold]El[/gold]'inde geçirdiği her tur güçlenir. Oynandığında mayalanması sıfırlanır.",
+  "ALCHEMIST-FERMENT.description": "Bu kart, [gold]El[/gold]'inde geçirdiği her tur güçlenir.",
   "ALCHEMIST-FERMENT.selectionPrompt": "[gold]Mayalamak[/gold] için bir kart seç.",
   "ALCHEMIST-FERMENT.title": "Mayalan",
-  "ALCHEMIST-FERMENT_REF.description": "Bu kartlar, [gold]El[/gold]'inde geçirdikleri her tur güçlenir. Oynandıklarında mayalanmaları sıfırlanır.",
+  "ALCHEMIST-FERMENT_REF.description": "Bu kartlar, [gold]El[/gold]'inde geçirdikleri her tur güçlenir.",
   "ALCHEMIST-FERMENT_REF.title": "Mayalan",
   "ALCHEMIST-INFUSE.description": "Bir kartı savaşın sonuna kadar [gold]Büyüle[/gold]. Ataklar [purple]Katkılı[/purple], Beceriler [purple]Dozlu[/purple], Güçler [purple]Takviyeli[/purple] olur. Diğer kartlar [gold]Ruhani[/gold] kazanır.",
   "ALCHEMIST-INFUSE.selectionPrompt": "[gold]Aşılamak[/gold] için {Amount:plural:bir kart|[blue]{}[/blue] kart} seç.",
   "ALCHEMIST-INFUSE.selectionPromptAny": "[gold]Aşılamak[/gold] için istediğin kadar kart seç.",
   "ALCHEMIST-INFUSE.selectionPromptRange": "[gold]Aşılamak[/gold] için en fazla [blue]{MaxCount}[/blue] {MaxCount:plural:kart|kart} seç.",
   "ALCHEMIST-INFUSE.title": "Aşıla",
-  "ALCHEMIST-MIX.selectionPrompt": "[gold]El[/gold]'ine eklemek için bir [gold]Karışım[/gold] seç."
+  "ALCHEMIST-MIX.selectionPrompt": "[gold]El[/gold]'ine eklemek için bir [gold]Karışım[/gold] seç.",
+  "ALCHEMIST-MIX.selectionPromptBasic": "[gold]El[/gold]'ine eklemek için temel bir [gold]Karışım[/gold] seç.",
+  "ALCHEMIST-MIX.selectionPromptSpecial": "[gold]El[/gold]'ine eklemek için özel bir [gold]Karışım[/gold] seç."
 }

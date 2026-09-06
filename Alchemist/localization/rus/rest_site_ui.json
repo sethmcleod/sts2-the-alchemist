@@ -1,4 +1,4 @@
 {
-  "OPTION_BREW.description": "Выберите 1 из 3 особых [gold]зелий[/gold]; при продаже [gold]Торговцу[/gold] каждое стоит 150 зол.",
+  "OPTION_BREW.description": "[gold]Улучшает[/gold] случайную карту в вашей [gold]колоде[/gold]. Выберите 1 из 3 особых [gold]зелий[/gold], которые [gold]Торговец[/gold] покупает за 150 золота.",
   "OPTION_BREW.name": "Варить"
 }

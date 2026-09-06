@@ -1,15 +1,15 @@
 {
-  "ALCHEMIST-DECANT.description": "カードを生成するたび、このカードがどこにあっても、このカードの[gold]デカント[/gold]値が上昇する。最大値でプレイすると、[gold]デカント[/gold]効果も発動し、値はリセットされる。",
-  "ALCHEMIST-DECANT.title": "デカント",
-  "ALCHEMIST-FERMENT.description": "このカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。プレイするとその発酵はリセットされる。",
+  "ALCHEMIST-FERMENT.description": "このカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。",
   "ALCHEMIST-FERMENT.selectionPrompt": "[gold]発酵[/gold]させるカードを1枚選択。",
   "ALCHEMIST-FERMENT.title": "発酵",
-  "ALCHEMIST-FERMENT_REF.description": "これらのカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。プレイするとその発酵はリセットされる。",
+  "ALCHEMIST-FERMENT_REF.description": "これらのカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。",
   "ALCHEMIST-FERMENT_REF.title": "発酵",
   "ALCHEMIST-INFUSE.description": "戦闘終了時までカードに[gold]エンチャント[/gold]する。アタックは[purple]毒仕込み[/purple]、スキルは[purple]投薬[/purple]、パワーは[purple]強化[/purple]になる。それ以外のカードは[gold]エセリアル[/gold]を得る。",
   "ALCHEMIST-INFUSE.selectionPrompt": "[gold]注入[/gold]するカードを[blue]{Amount}[/blue]枚選択。",
   "ALCHEMIST-INFUSE.selectionPromptAny": "[gold]注入[/gold]するカードを好きな数だけ選択。",
   "ALCHEMIST-INFUSE.selectionPromptRange": "[gold]注入[/gold]するカードを最大[blue]{MaxCount}[/blue]{MaxCount:plural:枚|枚}選択。",
   "ALCHEMIST-INFUSE.title": "注入",
-  "ALCHEMIST-MIX.selectionPrompt": "[gold]手札[/gold]に加える[gold]合剤[/gold]を1枚選択。"
+  "ALCHEMIST-MIX.selectionPrompt": "[gold]手札[/gold]に加える[gold]合剤[/gold]を1枚選択。",
+  "ALCHEMIST-MIX.selectionPromptBasic": "[gold]手札[/gold]に加える基本の[gold]合剤[/gold]を1枚選択。",
+  "ALCHEMIST-MIX.selectionPromptSpecial": "[gold]手札[/gold]に加える特殊な[gold]合剤[/gold]を1枚選択。"
 }

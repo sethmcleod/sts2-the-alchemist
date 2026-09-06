@@ -1,9 +1,9 @@
 {
-  "ALCHEMIST-MIXES.bronzeDescription": "Stworzono [blue]10[/blue] lub więcej [gold]Mieszanek[/gold].",
+  "ALCHEMIST-MIXES.bronzeDescription": "Stworzono [blue]30[/blue] lub więcej [gold]Mieszanek[/gold].",
   "ALCHEMIST-MIXES.bronzeTitle": "Zgrubna mieszanina",
-  "ALCHEMIST-MIXES.goldDescription": "Stworzono [blue]30[/blue] lub więcej [gold]Mieszanek[/gold].",
+  "ALCHEMIST-MIXES.goldDescription": "Stworzono [blue]90[/blue] lub więcej [gold]Mieszanek[/gold].",
   "ALCHEMIST-MIXES.goldTitle": "Mistrz miksologii",
-  "ALCHEMIST-MIXES.silverDescription": "Stworzono [blue]20[/blue] lub więcej [gold]Mieszanek[/gold].",
+  "ALCHEMIST-MIXES.silverDescription": "Stworzono [blue]60[/blue] lub więcej [gold]Mieszanek[/gold].",
   "ALCHEMIST-MIXES.silverTitle": "Zrównoważona formuła",
   "ALCHEMIST-POTION_SALE.bronzeDescription": "Sprzedano Handlarzowi co najmniej [blue]2[/blue] Mikstury.",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "Domokrążca",

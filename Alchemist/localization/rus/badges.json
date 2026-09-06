@@ -1,9 +1,9 @@
 {
-  "ALCHEMIST-MIXES.bronzeDescription": "Вы создали [blue]10[/blue] или более [gold]смесей[/gold].",
+  "ALCHEMIST-MIXES.bronzeDescription": "Вы создали [blue]30[/blue] или более [gold]смесей[/gold].",
   "ALCHEMIST-MIXES.bronzeTitle": "Грубый замес",
-  "ALCHEMIST-MIXES.goldDescription": "Вы создали [blue]30[/blue] или более [gold]смесей[/gold].",
+  "ALCHEMIST-MIXES.goldDescription": "Вы создали [blue]90[/blue] или более [gold]смесей[/gold].",
   "ALCHEMIST-MIXES.goldTitle": "Мастер смешивания",
-  "ALCHEMIST-MIXES.silverDescription": "Вы создали [blue]20[/blue] или более [gold]смесей[/gold].",
+  "ALCHEMIST-MIXES.silverDescription": "Вы создали [blue]60[/blue] или более [gold]смесей[/gold].",
   "ALCHEMIST-MIXES.silverTitle": "Выверенная формула",
   "ALCHEMIST-POTION_SALE.bronzeDescription": "Вы продали Торговцу [blue]2[/blue] или более зелий.",
   "ALCHEMIST-POTION_SALE.bronzeTitle": "Разносчик",

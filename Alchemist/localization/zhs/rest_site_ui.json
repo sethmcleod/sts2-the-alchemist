@@ -1,4 +1,4 @@
 {
-  "OPTION_BREW.description": "从3瓶特殊[gold]药水[/gold]中选择1瓶，卖给[gold]商人[/gold]可得150金币。",
+  "OPTION_BREW.description": "[gold]升级[/gold]你[gold]牌组[/gold]中的一张随机牌。从3瓶特殊[gold]药水[/gold]中选择1瓶，它们可以以150金币卖给[gold]商人[/gold]。",
   "OPTION_BREW.name": "酿造"
 }

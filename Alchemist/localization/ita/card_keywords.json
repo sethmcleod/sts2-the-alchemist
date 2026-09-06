@@ -1,15 +1,15 @@
 {
-  "ALCHEMIST-DECANT.description": "La [gold]Decantazione[/gold] di questa carta aumenta ogni volta che crei una carta, ovunque essa si trovi. Giocata al livello massimo, il suo effetto di [gold]Decantazione[/gold] si attiva e il livello si azzera.",
-  "ALCHEMIST-DECANT.title": "Decantazione",
-  "ALCHEMIST-FERMENT.description": "Questa carta aumenta di potenza per ogni turno passato nella tua [gold]mano[/gold]. Quando la giochi, la sua fermentazione si azzera.",
+  "ALCHEMIST-FERMENT.description": "Questa carta aumenta di potenza per ogni turno passato nella tua [gold]mano[/gold].",
   "ALCHEMIST-FERMENT.selectionPrompt": "Scegli una carta da [gold]fermentare[/gold].",
   "ALCHEMIST-FERMENT.title": "Fermentazione",
-  "ALCHEMIST-FERMENT_REF.description": "Queste carte aumentano di potenza per ogni turno passato nella tua [gold]mano[/gold]. Quando le giochi, la loro fermentazione si azzera.",
+  "ALCHEMIST-FERMENT_REF.description": "Queste carte aumentano di potenza per ogni turno passato nella tua [gold]mano[/gold].",
   "ALCHEMIST-FERMENT_REF.title": "Fermentazione",
   "ALCHEMIST-INFUSE.description": "[gold]Incanti[/gold] una carta fino al termine del combattimento. Le carte Attacco diventano [purple]Intrise[/purple]; le Abilità diventano [purple]Dosate[/purple]; i Poteri diventano [purple]Fortificati[/purple]. Le altre carte ottengono [gold]Evanescenza[/gold].",
   "ALCHEMIST-INFUSE.selectionPrompt": "Scegli {Amount:plural:una carta|[blue]{}[/blue] carte} da [gold]infondere[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptAny": "Scegli un numero qualsiasi di carte da [gold]infondere[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Scegli fino a [blue]{MaxCount}[/blue] {MaxCount:plural:carta|carte} da [gold]infondere[/gold].",
   "ALCHEMIST-INFUSE.title": "Infusione",
-  "ALCHEMIST-MIX.selectionPrompt": "Scegli una [gold]Miscela[/gold] da aggiungere alla tua [gold]mano[/gold]."
+  "ALCHEMIST-MIX.selectionPrompt": "Scegli una [gold]Miscela[/gold] da aggiungere alla tua [gold]mano[/gold].",
+  "ALCHEMIST-MIX.selectionPromptBasic": "Scegli una [gold]Miscela[/gold] base da aggiungere alla tua [gold]mano[/gold].",
+  "ALCHEMIST-MIX.selectionPromptSpecial": "Scegli una [gold]Miscela[/gold] speciale da aggiungere alla tua [gold]mano[/gold]."
 }

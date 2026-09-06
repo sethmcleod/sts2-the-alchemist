@@ -61,6 +61,7 @@
   "ALCHEMIST-RUNOFF_POWER.smartDescription": "Whenever you create a card, apply [blue]{Amount}[/blue] [gold]Poison[/gold] to ALL enemies.",
   "ALCHEMIST-RUNOFF_POWER.title": "Runoff",
   "ALCHEMIST-SMELLING_SALTS_POWER.description": "At the start of your turn, if you have [blue]{Threshold}[/blue] or more [gold]Poison[/gold], gain {Amount:energyIcons()}.",
+  "ALCHEMIST-SMELLING_SALTS_POWER.smartDescription": "At the start of your turn, if you have [blue]{Threshold}[/blue] or more [gold]Poison[/gold], gain {Amount:energyIcons()}.",
   "ALCHEMIST-SMELLING_SALTS_POWER.title": "Smelling Salts",
   "ALCHEMIST-UNTENDED_POWER.description": "Whenever you draw a [gold]Ferment[/gold] card, it ferments [blue]{Amount}[/blue].",
   "ALCHEMIST-UNTENDED_POWER.smartDescription": "Whenever you draw a [gold]Ferment[/gold] card, it ferments [blue]{Amount}[/blue].",

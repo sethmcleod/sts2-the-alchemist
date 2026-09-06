@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
@@ -21,19 +22,24 @@ public class SmellingSaltsPower : AlchemistPower
         };
 
     // The stack is the Energy; the threshold is a second Salts' upgrade at most, so the lowest
-    // applied one stands. No smartDescription key for this power: the smart path cannot take an
-    // extra argument, and the plain Description can
+    // applied one stands. A DynamicVar rather than a field, so the smart hover path (which only adds
+    // Amount and the DynamicVars) can print it, and the analyzer's required smartDescription key works
     private const int DefaultThreshold = 3;
-    private int _threshold = DefaultThreshold;
 
-    internal void LowerThreshold(int threshold) => _threshold = Math.Min(_threshold, threshold);
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        new[] { new DynamicVar("Threshold", DefaultThreshold) };
+
+    private int Threshold => DynamicVars["Threshold"].IntValue;
+
+    internal void LowerThreshold(int threshold) =>
+        DynamicVars["Threshold"].BaseValue = Math.Min(Threshold, threshold);
 
     public override LocString Description
     {
         get
         {
             var description = base.Description;
-            description.Add("Threshold", _threshold);
+            DynamicVars.AddTo(description);
             return description;
         }
     }
@@ -44,7 +50,7 @@ public class SmellingSaltsPower : AlchemistPower
         ICombatState combatState)
     {
         if (!participants.Contains(Owner)) return;
-        if (Owner.GetPowerAmount<PoisonPower>() < _threshold) return;
+        if (Owner.GetPowerAmount<PoisonPower>() < Threshold) return;
         Flash();
         await PlayerCmd.GainEnergy(Amount, Owner.Player!);
     }

@@ -1,4 +1,4 @@
 {
-  "OPTION_BREW.description": "[gold]商人[/gold]に売却すると150ゴールドになる特別な[gold]ポーション[/gold]を、3つの中から1つ選ぶ。",
+  "OPTION_BREW.description": "[gold]デッキ[/gold]のランダムなカード1枚を[gold]アップグレード[/gold]する。[gold]商人[/gold]に売却すると150ゴールドになる特別な[gold]ポーション[/gold]を、3つの中から1つ選ぶ。",
   "OPTION_BREW.name": "調合"
 }
