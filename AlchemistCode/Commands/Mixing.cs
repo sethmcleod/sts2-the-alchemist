@@ -62,12 +62,16 @@ public static class Mixing
     public static IEnumerable<IHoverTip> MixTips(bool upgraded = false) =>
         upgraded ? AlchemistTips.MixUpgraded : AlchemistTips.Mix;
 
-    /// <summary>How many Mixes this player has played this combat. 0 outside combat.</summary>
+    /// <summary>
+    /// How many Mixes this player has played this combat. 0 outside combat. A Compound Mix is the
+    /// two Mixes it was made from, so it counts as two; otherwise combining would cost Bonk a play.
+    /// </summary>
     // Started, not finished: the hand previews refresh while the Mix is still resolving, and a
     // finished-only count lags one play behind on the card face
     public static int PlayedThisCombat(Player owner) =>
         CombatManager.Instance?.History.CardPlaysStarted
-            .Count(e => IsMix(e.CardPlay.Card) && e.CardPlay.Card.Owner == owner) ?? 0;
+            .Where(e => IsMix(e.CardPlay.Card) && e.CardPlay.Card.Owner == owner)
+            .Sum(e => e.CardPlay.Card is CompoundMix ? 2 : 1) ?? 0;
 
     public static CardModel Create(ICombatState combat, Player owner, MixKind kind) => kind switch
     {
@@ -218,8 +222,9 @@ public static class Mixing
     }
 
     /// <summary>
-    /// Fold two ingredient Mixes into one Compound Mix in the owner's hand. Ethereal carries over,
-    /// so a Sparkling's energy cannot be banked through the compound.
+    /// Fold two ingredient Mixes into one Compound Mix in the owner's hand. The compound has Retain,
+    /// so combining banks two Mixes for the turn they are wanted. Retain wins over an Ethereal
+    /// ingredient: banking a Sparkling's energy is part of what combining is for.
     /// </summary>
     public static async Task<CardModel?> CreateCompound(PlayerChoiceContext ctx, Player owner,
         CardModel first, CardModel second, AbstractModel? source = null)
@@ -227,8 +232,7 @@ public static class Mixing
         if (owner.Creature.CombatState is not { } combat) return null;
         var compound = (CompoundMix)combat.CreateCard<CompoundMix>(owner);
         compound.Compose(first, second);
-        if (first.Keywords.Contains(CardKeyword.Ethereal) || second.Keywords.Contains(CardKeyword.Ethereal))
-            CardCmd.ApplyKeyword(compound, CardKeyword.Ethereal);
+        CardCmd.ApplyKeyword(compound, CardKeyword.Retain);
         // The pairing, order-free, so Bursting+Acrid and Acrid+Bursting are one row
         var pair = new[] { KindLabel(first), KindLabel(second) }.OrderBy(k => k).ToArray();
         Analytics.RunCounters.Tally(owner, Analytics.RunCounters.CompoundPair + string.Join("+", pair));

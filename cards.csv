@@ -50,7 +50,7 @@ Mortar,Uncommon,Attack,2,Retain. Ferment (0). Deal 9 (12) damage. Gain Block equ
 Needle Point,Rare,Attack,0,Innate. Deal 7 (10) damage. Apply 1 (2) Weak and 1 (2) Vulnerable. Exhaust.
 Nightcap,Uncommon,Attack,1,Deal damage equal to double (triple) your Antitoxin. Exhaust.
 Numb,Uncommon,Skill,2,Gain 10 (14) Block. Your Poison does not trigger next turn.
-Osmosis,Uncommon,Power,1,"At the start of your turn, gain 1 (2) Antitoxin."
+Osmosis,Uncommon,Power,1,"At the start of your turn, gain 2 (3) Antitoxin."
 Overbrew,Uncommon,Skill,X,Choose a basic Mix. Add X+1 (2) copies of it into your Hand.
 Overdose,Uncommon,Skill,1 (0),Gain 5 Poison. Your Poison is triggered. Exhaust.
 Panacea,Ancient,Power,1 (0),"Whenever you gain Poison, gain 1 Antitoxin."

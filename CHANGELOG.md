@@ -7,6 +7,17 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Buffed Compound Mixes: they now have Retain
+- Buffed Osmosis Antitoxin per turn: 1 (2) -> 2 (3)
+- Changed the cards locked behind timeline Epochs to better match each Epoch's story. Dissolution unlocks Upwell, Callus and Mercurial Form; Fermentation unlocks Taste Test, Patient Strike and Vintage; Distillation unlocks Digest, Overbrew and Refine
+
+### Fixed
+
+- Fixed Bonk counting a Compound Mix as 1 Mix played. It now counts as the 2 Mixes it was made from
+- Fixed renamed/replaced cards, relics and potions from older runs showing as deprecated in the Run History screen and when continuing an older save. Weathered Kit and Gilded Kit now show as Murky Flask and Radiant Flask
+
 ## [0.14.7] - 2026-09-06
 
 ### Added
