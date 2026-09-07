@@ -9,19 +9,26 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
+// The Poison bonus rides on the damage hook rather than a CalculatedDamageVar: an all-enemies
+// AttackCommand evaluates a calculated var once with a null target when more than one enemy
+// stands, so a per-target formula only ever paid against a lone enemy. The hook runs per target
+// on the real hit and on the hover preview alike. The override's signature differs between the
+// game branches, so it lives in Compat/FalloutCompat.cs
 [CardTheme(CardTheme.Poison)]
-public class Fallout : AlchemistCard
+public partial class Fallout : AlchemistCard
 {
     public Fallout() : base(2, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
-        WithCalculatedDamage(7, static (card, target) => Poisoned(target) ? Bonus(card) : 0m, ValueProp.Move, 2);
+        WithDamage(7, 2);
         WithVar("Bonus", 7, 2);
         WithTip(typeof(PoisonPower));
     }
 
     private static bool Poisoned(Creature? target) => target?.HasPower<PoisonPower>() == true;
 
-    private static decimal Bonus(CardModel card) => card.DynamicVars["Bonus"].IntValue;
+    // Only this card's own hits, and only into a poisoned target
+    private decimal BonusFor(Creature? target, CardModel? cardSource) =>
+        cardSource == this && Poisoned(target) ? DynamicVars["Bonus"].IntValue : 0m;
 
     protected override bool ConditionalGlow =>
         IsMutable && CombatState != null && CombatState.Enemies.Any(e => e.IsAlive && Poisoned(e));

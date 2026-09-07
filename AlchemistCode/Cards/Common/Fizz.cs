@@ -12,7 +12,7 @@ public class Fizz : AlchemistCard
 
     public Fizz() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithCards(2, 1);
+        WithCards(1, 1);
         WithUpgradingCardTip<Token.SparklingMix>();
     }
 
