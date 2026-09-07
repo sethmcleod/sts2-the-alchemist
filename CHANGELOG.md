@@ -7,18 +7,31 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added Overflow card (1 energy, Uncommon Power): "Whenever one of your cards ferments, Upgrade it." Overflow+ costs 0. It replaces Seep
+
 ### Changed
 
 - Buffed Compound Mixes: they now have Retain
+- Buffed Nightcap: it now gains 2 Antitoxin before dealing its damage
 - Buffed Osmosis Antitoxin per turn: 1 (2) -> 2 (3)
+- Buffed Proof Antitoxin: 1 (2) -> 2 (3)
+- Reworked Alkahest potion: "If used in combat, Upgrade ALL cards for the rest of combat. Otherwise, Upgrade a card in your Deck." -> "Upgrade ALL your cards." It can now only be used in combat
 - Changed the cards locked behind timeline Epochs to better match each Epoch's story. Dissolution unlocks Upwell, Callus and Mercurial Form; Fermentation unlocks Taste Test, Patient Strike and Vintage; Distillation unlocks Digest, Overbrew and Refine
+- Nerfed Fizz draw: 2 (3) -> 1 (2)
 
 ### Fixed
 
 - Fixed Bonk counting a Compound Mix as 1 Mix played. It now counts as the 2 Mixes it was made from
-- Fixed renamed/replaced cards, relics and potions from older runs showing as deprecated in the Run History screen and when continuing an older save. Weathered Kit and Gilded Kit now show as Murky Flask and Radiant Flask
+- Fixed Fallout's additional damage to Poisoned enemies not applying when more than one enemy is in the fight
 - Fixed Free Samples only giving basic Mixes. It now gives a random Mix from all six
+- Fixed renamed/replaced cards, relics and potions from older runs showing as deprecated in the Run History screen and when continuing an older save. Weathered Kit and Gilded Kit now show as Murky Flask and Radiant Flask
 - Fixed the Ripening hover tip printing raw placeholder text instead of its description
+
+### Removed
+
+- Removed Seep card, replaced with Overflow
 
 ## [0.14.7] - 2026-09-06
 

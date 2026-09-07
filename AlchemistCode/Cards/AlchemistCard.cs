@@ -134,6 +134,11 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // both reads its cost apart from its payoff
     protected virtual int? FormulaHpLossPreview => null;
 
+    // Zero on the canonical model, so the compendium shows the rule and not a number. Null combat
+    // state outside combat: a card on a reward or selection screen still has an owner
+    protected int AntitoxinCapacity =>
+        IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<Powers.AntitoxinPower>() : 0;
+
     private int _fermentTurns;
 
     protected virtual bool Ferments => false;
@@ -191,8 +196,11 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (!IsFermentCard) return;
         _fermentTurns += turns;
         OnFermentTurnsChanged();
-        if (Owner?.Creature.GetPower<MellowPower>() is { } mellow)
+        if (turns <= 0 || Owner?.Creature is not { } creature) return;
+        if (creature.GetPower<MellowPower>() is { } mellow)
             await mellow.OnFermented(turns);
+        if (creature.GetPower<OverflowPower>() is { } overflow)
+            overflow.OnFermented(this);
     }
 
     /// <summary>The base game reserves this for roughly 12 damage and up.</summary>

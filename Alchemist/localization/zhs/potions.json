@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-ALKAHEST.description": "在战斗中使用时，[gold]升级[/gold]所有牌，持续到本场战斗结束。否则，[gold]升级[/gold]你[gold]牌组[/gold]中的一张牌。",
+  "ALCHEMIST-ALKAHEST.description": "[gold]升级[/gold]你的全部卡牌。",
   "ALCHEMIST-ALKAHEST.title": "万能溶剂",
   "ALCHEMIST-ANODYNE.description": "阻止你下一次将要受到的未被格挡的攻击伤害。每阻止[blue]5[/blue]点伤害，就获得[blue]1[/blue]层[gold]中毒[/gold]。",
   "ALCHEMIST-ANODYNE.title": "镇痛药剂",

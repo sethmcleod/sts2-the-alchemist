@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnd2v0xt041wc"
-path="res://.godot/imported/seep.png-3cba531e287367477e270bcd30dcfb7c.ctex"
+uid="uid://dvew25v6c4520"
+path="res://.godot/imported/overflow_power.png-4b79499e44fcf9124fd87984dfaa70ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/seep.png"
-dest_files=["res://.godot/imported/seep.png-3cba531e287367477e270bcd30dcfb7c.ctex"]
+source_file="res://Alchemist/images/powers/overflow_power.png"
+dest_files=["res://.godot/imported/overflow_power.png-4b79499e44fcf9124fd87984dfaa70ec.ctex"]
 
 [params]
 
