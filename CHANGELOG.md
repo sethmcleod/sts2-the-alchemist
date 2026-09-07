@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.8] - 2026-09-07
+
 ### Added
 
 - Added Overflow card (1 energy, Uncommon Power): "Whenever one of your cards ferments, Upgrade it." Overflow+ costs 0. It replaces Seep
