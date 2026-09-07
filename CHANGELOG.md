@@ -17,6 +17,8 @@ mod).
 
 - Fixed Bonk counting a Compound Mix as 1 Mix played. It now counts as the 2 Mixes it was made from
 - Fixed renamed/replaced cards, relics and potions from older runs showing as deprecated in the Run History screen and when continuing an older save. Weathered Kit and Gilded Kit now show as Murky Flask and Radiant Flask
+- Fixed Free Samples only giving basic Mixes. It now gives a random Mix from all six
+- Fixed the Ripening hover tip printing raw placeholder text instead of its description
 
 ## [0.14.7] - 2026-09-06
 

@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 
@@ -33,16 +32,6 @@ public class SmellingSaltsPower : AlchemistPower
 
     internal void LowerThreshold(int threshold) =>
         DynamicVars["Threshold"].BaseValue = Math.Min(Threshold, threshold);
-
-    public override LocString Description
-    {
-        get
-        {
-            var description = base.Description;
-            DynamicVars.AddTo(description);
-            return description;
-        }
-    }
 
     // Late, not AfterSideTurnStart: Poison ticks in AfterSideTurnStart, and the threshold has to
     // read the stack after the tick, not race it

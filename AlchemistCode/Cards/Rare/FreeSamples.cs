@@ -17,9 +17,7 @@ public class FreeSamples : AlchemistCard
     {
         WithCards(2, 1);
         WithKeyword(CardKeyword.Exhaust);
-        WithTip(typeof(Token.BurstingMix));
-        WithTip(typeof(Token.SyrupyMix));
-        WithTip(typeof(Token.ZestyMix));
+        WithTips(_ => Mixing.MixTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

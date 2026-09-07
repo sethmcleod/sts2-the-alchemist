@@ -146,12 +146,12 @@ public static class Mixing
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
     }
 
-    /// <summary>Add a random basic Mix to another player's hand, counted for the giver.</summary>
+    /// <summary>Add a random Mix (from all six) to another player's hand, counted for the giver.</summary>
     public static async Task GiveRandom(PlayerChoiceContext ctx, Player giver, Player receiver,
         AbstractModel? source = null)
     {
         if (receiver.Creature.CombatState is not { } combat) return;
-        var picked = Create(combat, receiver, giver.RunState.Rng.CombatCardGeneration.NextItem(Basic));
+        var picked = Create(combat, receiver, giver.RunState.Rng.CombatCardGeneration.NextItem(All));
         if (picked == null) return;
         RecordCreated(giver, picked, source);
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, receiver);
