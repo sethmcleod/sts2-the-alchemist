@@ -1,9 +1,9 @@
 using Alchemist.AlchemistCode.Powers;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
@@ -18,7 +18,7 @@ public class Distill : AlchemistCard
     public Distill() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithVar("SelfPoison", 2, 0);
-        WithVar("Antitoxin", 1, 1);
+        WithVar(new FermentVar("Antitoxin", 1, "perTurn").WithUpgrade(1));
         WithVar("perTurn", 1, 1);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
@@ -28,11 +28,6 @@ public class Distill : AlchemistCard
     private int Distilled => DynamicVars["Antitoxin"].IntValue
         + DynamicVars["perTurn"].IntValue * FermentTurns;
 
-    protected override void AddExtraArgsToDescription(LocString description)
-    {
-        base.AddExtraArgsToDescription(description);
-        description.Add("Distilled", FermentTurns > 0 ? $" ([green]{Distilled}[/green])" : "");
-    }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

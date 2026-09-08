@@ -1,9 +1,9 @@
 using Alchemist.AlchemistCode.Powers;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
@@ -16,18 +16,13 @@ public class CausticStrike : AlchemistCard
     public CausticStrike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(6, 2);
-        WithVar("Poison", 3, 1);
+        WithVar(new FermentVar("Poison", 3, perTurn: 1).WithUpgrade(1));
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }
 
     private int Ripened => DynamicVars["Poison"].IntValue + FermentTurns;
 
-    protected override void AddExtraArgsToDescription(LocString description)
-    {
-        base.AddExtraArgsToDescription(description);
-        description.Add("Ripened", FermentTurns > 0 ? $" ([green]{Ripened}[/green])" : "");
-    }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

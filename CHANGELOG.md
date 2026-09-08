@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Changed Brine, Caustic Strike, Distill and Resolve to show their fermented number in green in place of the base number, instead of in parentheses after it
+
 ## [0.14.9] - 2026-09-07
 
 ### Added
