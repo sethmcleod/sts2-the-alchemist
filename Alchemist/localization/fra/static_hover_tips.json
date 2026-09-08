@@ -9,7 +9,7 @@
   "ALCHEMIST-BURSTING_MIX.title": "Mixture explosive",
   "ALCHEMIST-BURSTING_MIX_PLUS.description": "Infligez [blue]9[/blue] dégâts.",
   "ALCHEMIST-BURSTING_MIX_PLUS.title": "Mixture explosive+",
-  "ALCHEMIST-COMPOUND_MIX.description": "Une [gold]Mixture[/gold] qui cumule les effets des deux [gold]Mixtures[/gold] dont elle est issue. Elle gagne [gold]Retenue[/gold].",
+  "ALCHEMIST-COMPOUND_MIX.description": "Piochez 1 carte, en plus des effets des deux [gold]Mixtures[/gold] dont elle est issue. [gold]Épuisement[/gold].",
   "ALCHEMIST-COMPOUND_MIX.title": "Mixture composée",
   "ALCHEMIST-FUMING_MIX.description": "Appliquez [blue]1[/blue] [gold]Affaibli[/gold] et [blue]1[/blue] [gold]Vulnérable[/gold]. Gagnez [blue]1[/blue] de [gold]Poison[/gold].",
   "ALCHEMIST-FUMING_MIX.title": "Mixture fumante",

@@ -32,6 +32,7 @@ public class CompoundMix : AlchemistCard
         WithDamage(6);
         WithBlock(4);
         WithCards(1);
+        WithVar("Bonus", 1);
         // Plain vars rather than PowerVars, so no tip attaches by itself; IngredientTips adds the
         // ones the two ingredients actually call for
         WithVar("Weak", 1);
@@ -159,6 +160,7 @@ public class CompoundMix : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        await CardPileCmd.Draw(choiceContext, DynamicVars["Bonus"].IntValue, Owner);
         await Resolve(_first, choiceContext, play);
         if (!Doubled) await Resolve(_second, choiceContext, play);
     }

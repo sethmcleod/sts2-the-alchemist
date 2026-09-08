@@ -9,7 +9,7 @@
   "ALCHEMIST-BURSTING_MIX.title": "폭발 혼합액",
   "ALCHEMIST-BURSTING_MIX_PLUS.description": "피해를 [blue]9[/blue] 줍니다.",
   "ALCHEMIST-BURSTING_MIX_PLUS.title": "폭발 혼합액+",
-  "ALCHEMIST-COMPOUND_MIX.description": "재료가 된 두 [gold]혼합액[/gold]의 효과를 모두 지닌 [gold]혼합액[/gold]입니다. 그 카드가 [gold]보존[/gold]을 얻습니다.",
+  "ALCHEMIST-COMPOUND_MIX.description": "재료가 된 두 [gold]혼합액[/gold]의 효과에 더해 카드를 1장 뽑습니다. [gold]소멸[/gold].",
   "ALCHEMIST-COMPOUND_MIX.title": "복합 혼합액",
   "ALCHEMIST-FUMING_MIX.description": "[gold]약화[/gold]를 [blue]1[/blue], [gold]취약[/gold]을 [blue]1[/blue] 부여합니다. [gold]중독[/gold]을 [blue]1[/blue] 얻습니다.",
   "ALCHEMIST-FUMING_MIX.title": "자욱한 혼합액",

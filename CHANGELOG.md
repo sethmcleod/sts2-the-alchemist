@@ -11,11 +11,12 @@ mod).
 
 - Changed Blend: it now makes a random basic Mix instead of any Mix, so Blend+ can no longer mint a Sparkling Mix+
 - Changed Brine, Caustic Strike, Distill and Resolve to show their fermented number in green in place of the base number, instead of in parentheses after it
+- Changed Compound Mixes: they now draw 1 card when played, in addition to the effects of the two Mixes they were made from. They no longer have Retain
 - Changed Corrode: cost 3 -> 4, damage 15 (20) -> 18 (24)
 - Nerfed Quench Antitoxin: 5 (7) -> 4 (6)
 - Nerfed Wallop damage per card: 5 (7) -> 4 (6)
 - Reworked Brine: "Retain. Ferment. Deal damage equal to the enemy's Poison (2 times). Hits an additional time for each turn fermented."
-- Reworked Fizz: "Draw 1 card. Add a Zesty Mix into your Hand." Fizz+ adds a Zesty Mix+
+- Reworked Fizz: "Add a Bursting Mix(+) and a Zesty Mix(+) into your Hand."
 
 ## [0.14.9] - 2026-09-07
 

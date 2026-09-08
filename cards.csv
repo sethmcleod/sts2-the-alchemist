@@ -17,7 +17,7 @@ Callus,Uncommon,Power,2 (1),"Whenever your Poison is triggered, gain 1 Strength.
 Caustic Strike,Common,Attack,1,Retain. Ferment (0). Deal 6 (8) damage. Apply 3 (4) Poison. Applies 1 additional Poison for each turn fermented.
 Clench,Uncommon,Skill,1,Gain 3 (4) Strength. Gain 4 Poison.
 Combine,Common,Skill,0,Add a random basic Mix into your Hand. Combine 2 Mixes in your Hand into a Compound Mix. (Combine+ adds a Mix+)
-Compound Mix,Token,Skill,0,The effects of the two Mixes it was made from. Exhaust.
+Compound Mix,Token,Skill,0,"Draw 1 card, in addition to the effects of the two Mixes it was made from. Exhaust."
 Corrode,Uncommon,Attack,4,Retain. Ferment (0). Deal 18 (24) damage. Apply 5 (7) Poison. Costs 1 less for each turn fermented.
 Croak,Rare,Attack,2,"Deal 20 (26) damage. If Fatal, gain an additional Potion reward. Exhaust."
 Defend,Basic,Skill,1,Gain 5 (8) Block.
@@ -28,7 +28,7 @@ Effervesce,"Uncommon, Multiplayer",Skill,1,"Add a Bursting, a Syrupy and a Zesty
 Endure,Uncommon,Skill,1,"Gain 8 (11) Block. Gain 3 (4) Antitoxin. If you have Poison, draw 1 card."
 Eureka,Rare,Skill,1,Draw 2 (3) cards. Choose a Mix. Transform a card in your Hand into it.
 Fallout,Common,Attack,2,Deal 7 (9) damage to ALL enemies. Poisoned enemies take 7 (9) additional damage.
-Fizz,Common,Skill,1,Draw 1 card. Add a Zesty Mix into your Hand. (Fizz+ adds a Zesty Mix+)
+Fizz,Common,Skill,1,Add a Bursting Mix and a Zesty Mix into your Hand. (Fizz+ adds Mixes+)
 Forked Tongue,Uncommon,Attack,1,Deal 4 (6) damage twice. Deals additional damage equal to your Poison.
 Free Samples,"Rare, Multiplayer",Skill,1,Add a random Mix into ALL other players' Hands. Draw 2 (3) cards. Exhaust.
 Fresh Batch,Uncommon,Skill,1,"At the start of your next turn, add 2 (3) random Mixes+ into your Hand."
