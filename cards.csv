@@ -11,7 +11,7 @@ Bloom,Rare,Skill,0,ALL Ferment cards in your Hand ferment 3 (4). Exhaust.
 Bonk,Uncommon,Attack,2,Deal 10 (12) damage. Deals 3 (4) additional damage for each Mix you have played this combat.
 Bottoms Up,"Rare, Multiplayer",Power,2,"Whenever you gain Poison, ALL other players gain 1 (2) Block for each Poison gained."
 Brace,Common,Skill,1,Gain 7 (9) Block. Gain 4 (5) additional Block if an enemy intends to attack.
-Brine,Uncommon,Skill,1,"Retain. Ferment (0). This turn, your Attacks apply 2 (3) Poison. Applies 1 additional Poison for each turn fermented."
+Brine,Uncommon,Attack,1,Retain. Ferment (0). Deal damage equal to the enemy's Poison (2 times). Hits an additional time for each turn fermented.
 Bursting Mix,Token,Attack,0,Deal 6 (9) damage. Exhaust.
 Callus,Uncommon,Power,2 (1),"Whenever your Poison is triggered, gain 1 Strength."
 Caustic Strike,Common,Attack,1,Retain. Ferment (0). Deal 6 (8) damage. Apply 3 (4) Poison. Applies 1 additional Poison for each turn fermented.

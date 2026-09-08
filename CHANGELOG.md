@@ -10,6 +10,7 @@ mod).
 ### Changed
 
 - Changed Brine, Caustic Strike, Distill and Resolve to show their fermented number in green in place of the base number, instead of in parentheses after it
+- Reworked Brine: "Retain. Ferment. Deal damage equal to the enemy's Poison (2 times). Hits an additional time for each turn fermented."
 
 ## [0.14.9] - 2026-09-07
 
