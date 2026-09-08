@@ -68,6 +68,15 @@ public partial class MainFile : Node
 
         try
         {
+            Steam.BranchGuard.Initialize();
+        }
+        catch (Exception e)
+        {
+            Logger.Error($"Failed to run the branch guard (a wrong-branch install will not be reported): {e}");
+        }
+
+        try
+        {
             Steam.WorkshopSelfUpdate.Initialize();
         }
         catch (System.Exception e)
