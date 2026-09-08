@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added a warning at startup when the installed mod was built for the other Steam branch of the game
+
 ## [0.14.8] - 2026-09-07
 
 ### Added
