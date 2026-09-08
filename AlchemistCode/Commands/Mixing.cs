@@ -208,12 +208,12 @@ public static class Mixing
         return mix;
     }
 
-    /// <summary>Transform an existing card into a random Mix. Seeded, so multiplayer stays in sync.</summary>
+    /// <summary>Transform an existing card into a random Mix (from all six by default). Seeded, so multiplayer stays in sync.</summary>
     public static async Task<CardModel?> TransformIntoRandom(PlayerChoiceContext ctx, Player owner,
-        CardModel victim, bool upgraded = false, AbstractModel? source = null)
+        CardModel victim, bool upgraded = false, AbstractModel? source = null, IReadOnlyList<MixKind>? kinds = null)
     {
         if (owner.Creature.CombatState is not { } combat) return null;
-        var picked = Create(combat, owner, owner.RunState.Rng.CombatCardGeneration.NextItem(All));
+        var picked = Create(combat, owner, owner.RunState.Rng.CombatCardGeneration.NextItem(kinds ?? All));
         if (picked == null) return null;
         if (upgraded) CardCmd.Upgrade(picked);
         RecordCreated(owner, picked, source);

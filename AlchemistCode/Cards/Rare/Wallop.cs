@@ -11,7 +11,7 @@ public class Wallop : AlchemistCard
 {
     public Wallop() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        WithVar("Per", 5, 2);
+        WithVar("Per", 4, 2);
     }
 
     private int HandCount =>

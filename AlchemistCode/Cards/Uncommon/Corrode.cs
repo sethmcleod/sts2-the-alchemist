@@ -13,9 +13,9 @@ public class Corrode : AlchemistCard
 {
     protected override bool Ferments => true;
 
-    public Corrode() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Corrode() : base(4, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(15, 5);
+        WithDamage(18, 6);
         WithVar("Poison", 5, 2);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));

@@ -12,13 +12,13 @@ public class Fizz : AlchemistCard
 
     public Fizz() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithCards(1, 1);
-        WithUpgradingCardTip<Token.SparklingMix>();
+        WithCards(1, 0);
+        WithUpgradingCardTip<Token.ZestyMix>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.Draw(this, choiceContext);
-        await Mixing.CreateOne<Token.SparklingMix>(choiceContext, Owner, IsUpgraded, this);
+        await Mixing.CreateOne<Token.ZestyMix>(choiceContext, Owner, IsUpgraded, this);
     }
 }
