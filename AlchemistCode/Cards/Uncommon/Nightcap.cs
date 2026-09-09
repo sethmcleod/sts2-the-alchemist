@@ -22,7 +22,6 @@ public class Nightcap : AlchemistCard
 
     private int Mult => IsUpgraded ? 3 : 2;
 
-    // The grant lands before the hit, so this card's own Antitoxin counts toward its damage
     protected override int? RawFormulaDamagePreview =>
         IsMutable && CombatState != null ? (AntitoxinCapacity + Grant) * Mult : null;
 

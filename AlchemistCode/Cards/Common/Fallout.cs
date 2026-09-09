@@ -26,7 +26,6 @@ public partial class Fallout : AlchemistCard
 
     private static bool Poisoned(Creature? target) => target?.HasPower<PoisonPower>() == true;
 
-    // Only this card's own hits, and only into a poisoned target
     private decimal BonusFor(Creature? target, CardModel? cardSource) =>
         cardSource == this && Poisoned(target) ? DynamicVars["Bonus"].IntValue : 0m;
 

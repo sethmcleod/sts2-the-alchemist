@@ -16,7 +16,7 @@ public class Quench : AlchemistCard
 
     public Quench() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("antitoxin", 5, 2);
+        WithVar("antitoxin", 4, 2);
         WithKeyword(CardKeyword.Exhaust);
         WithCalculatedBlock(0, static (card, _) => BlockFrom(card), ValueProp.Move);
         WithTip(typeof(AntitoxinPower));

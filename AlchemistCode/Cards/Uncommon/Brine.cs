@@ -1,10 +1,10 @@
-using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -12,26 +12,26 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 public class Brine : AlchemistCard
 {
     protected override bool Ferments => true;
-    protected internal override bool PlaysCastAnimation => false;
 
-    public Brine() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Brine() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithVar("Poison", 2, 1);
-        WithVar("perTurn", 1, 0);
+        WithCalculatedDamage(0, static (_, target) => target?.GetPowerAmount<PoisonPower>() ?? 0m, ValueProp.Move);
+        WithVar("Hits", 1, 1);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }
 
-    private int Soaked => DynamicVars["Poison"].IntValue + DynamicVars["perTurn"].IntValue * FermentTurns;
+    private int Hits => DynamicVars["Hits"].IntValue + FermentTurns;
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
-        description.Add("Soaked", FermentTurns > 0 ? $" ([green]{Soaked}[/green])" : "");
+        description.Add("HitsLine", HitsLine(FermentTurns > 0 ? Hits : 0));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<BrinePower>(choiceContext, Owner.Creature, Soaked, Owner.Creature, this);
+        await CommonActions.CardAttack(this, play, Hits, vfx: HitVfx("vfx/vfx_slime_impact"),
+            tmpSfx: "blunt_attack.mp3").Execute(choiceContext);
     }
 }

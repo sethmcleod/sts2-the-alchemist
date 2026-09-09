@@ -39,7 +39,10 @@ def declared(src):
     v |= set(re.findall(r'WithVar\("(\w+)"', src))
     v |= set(re.findall(r'WithCalculatedVar\("(\w+)"', src))
     v |= set(re.findall(r'WithPower<(\w+)>', src))
-    v |= {m[:-3] if m.endswith('Var') else m for m in re.findall(r'WithVar\(new (\w+)\(', src)}
+    # a custom var names itself by its first argument (new FermentVar("Poison", ...)); an
+    # unnamed one is known by its class (new RipenVar( -> Ripen)
+    v |= set(re.findall(r'WithVar\(new \w+\("(\w+)"', src))
+    v |= {m[:-3] if m.endswith('Var') else m for m in re.findall(r'WithVar\(new (\w+)\((?!")', src)}
     v |= set(re.findall(r'description\.Add\("(\w+)"', src))
     return v
 

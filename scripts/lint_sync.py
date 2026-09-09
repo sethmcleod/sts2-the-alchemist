@@ -68,6 +68,11 @@ ASSET_SPECS = [
 # the default art for the *ImagePath helpers; no class uses it
 FALLBACK_ART = {"card.png", "power.png", "relic.png", "relic_outline.png", "potion.png"}
 
+# A subclass of one of these bases takes its icon from the base game, not from the mod path, so
+# it has no art of its own to check. CustomTemporaryStrengthPower borrows the shackles and flex
+# icons that every base temporary-strength power shares
+BORROWED_ART_BASES = {"CustomTemporaryStrengthPower"}
+
 
 def norm(name: str) -> str:
     """Make a comparison key from a display name or a class name."""
@@ -89,12 +94,13 @@ def load_cards_csv() -> list[dict]:
     return rows
 
 
-def entity_classes(subdir: str, base_marker: str) -> dict[str, Path]:
+def entity_classes(subdir: str, base_marker: str, skip_bases: set[str] = frozenset()) -> dict[str, Path]:
     """class name -> file, for every concrete class under AlchemistCode/<subdir>.
 
     The function compares base_marker with the base list. Thus "Card" matches AlchemistCard,
     and "Power" matches both the AlchemistPower and CustomTemporaryStrengthPower subclasses.
-    The function ignores an abstract class: it has no model id, so it has no assets
+    The function ignores an abstract class: it has no model id, so it has no assets. Pass
+    skip_bases to leave out the subclasses of a base that borrows its art from the base game
     """
     out = {}
     for path in (CODE / subdir).rglob("*.cs"):
@@ -104,8 +110,11 @@ def entity_classes(subdir: str, base_marker: str) -> dict[str, Path]:
         pattern = r"public\s+(?:sealed\s+)?(?:(abstract)\s+|partial\s+|(abstract)\s+partial\s+)?(?:sealed\s+)?class\s+(\w+)\s*:\s*([\w<>, ]+)"
         for m in re.finditer(pattern, path.read_text()):
             abstract_a, abstract_b, name, bases = m.groups()
-            if not (abstract_a or abstract_b) and base_marker in bases:
-                out[name] = path
+            if abstract_a or abstract_b or base_marker not in bases:
+                continue
+            if skip_bases & {b.strip() for b in bases.split(",")}:
+                continue
+            out[name] = path
     return out
 
 
@@ -131,7 +140,7 @@ def check_assets() -> tuple[list[str], list[str], int]:
     claimed: set[Path] = set()
 
     for label, subdir, marker, variants in ASSET_SPECS:
-        for cls in sorted(entity_classes(subdir, marker)):
+        for cls in sorted(entity_classes(subdir, marker, BORROWED_ART_BASES)):
             for variant, img_dir, template in variants:
                 path = IMG / img_dir / template.format(s=asset_name(cls))
                 claimed.add(path)

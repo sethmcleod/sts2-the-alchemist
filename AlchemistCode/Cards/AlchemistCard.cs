@@ -242,7 +242,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         base.AddExtraArgsToDescription(description);
         if (IsFermentCard)
         {
-            description.Add("FermentSuffix", $" ({_fermentTurns})");
+            description.Add("FermentSuffix", $" ({FermentTurns})");
             description.Add("FermentTotal", FermentTotalText);
         }
         // These previews read Owner, which throws on a canonical model such as the card library
