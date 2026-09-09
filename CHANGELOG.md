@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.10] - 2026-09-09
+
 ### Added
 
 - Added art for all 22 power icons
