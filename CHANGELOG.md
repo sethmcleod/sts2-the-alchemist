@@ -22,6 +22,10 @@ mod).
 - Reworked Brine: "Retain. Ferment. Deal damage equal to the enemy's Poison (2 times). Hits an additional time for each turn fermented."
 - Reworked Fizz: "Add a Bursting Mix(+) and a Zesty Mix(+) into your Hand."
 
+### Fixed
+
+- Fixed the "Ferment (N)" label on Ferment cards not counting the free turn from Mother of Vinegar
+
 ## [0.14.9] - 2026-09-07
 
 ### Added
