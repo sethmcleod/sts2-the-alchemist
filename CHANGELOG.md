@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added art for all 22 power icons
+
 ### Changed
 
 - Changed Blend: it now makes a random basic Mix instead of any Mix, so Blend+ can no longer mint a Sparkling Mix+
