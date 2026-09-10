@@ -104,8 +104,17 @@ public static class Mixing
         if (upgraded)
             foreach (var option in options)
                 CardCmd.Upgrade(option);
-        var picked = (await CardSelectCmd.FromSimpleGrid(ctx, options, owner,
-            new CardSelectorPrefs(PromptFor(kinds), 1))).FirstOrDefault();
+        Patches.MixPickerGridPatch.Columns = options.Count > 5 ? (options.Count + 1) / 2 : null;
+        CardModel? picked;
+        try
+        {
+            picked = (await CardSelectCmd.FromSimpleGrid(ctx, options, owner,
+                new CardSelectorPrefs(PromptFor(kinds), 1))).FirstOrDefault();
+        }
+        finally
+        {
+            Patches.MixPickerGridPatch.Columns = null;
+        }
         if (picked != null) RecordCreated(owner, picked, source);
         return picked;
     }

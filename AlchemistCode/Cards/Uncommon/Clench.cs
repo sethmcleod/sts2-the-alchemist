@@ -11,7 +11,7 @@ public class Clench : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Clench() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Clench() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithPower<StrengthPower>(3, 1);
         WithVar("SelfPoison", 4, 0);

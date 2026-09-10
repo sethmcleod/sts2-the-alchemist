@@ -108,6 +108,17 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             ? creature.GetPowerAmount<PoisonPower>()
             : 0m;
 
+    // The other cards in the owner's hand, for a card that scales with them. Zero outside a live
+    // combat, where the hand pile is stale or missing
+    protected static int OtherHandCount(CardModel card)
+    {
+        if (card is not AlchemistCard { IsMutable: true, CombatState: not null, Owner: { } owner }) return 0;
+        var count = 0;
+        foreach (var other in PileType.Hand.GetPile(owner).Cards)
+            if (other != card) count++;
+        return count;
+    }
+
     // The raw total, before any hook. The card face shows the hooked total with {FormulaDamage}
     protected virtual int? RawFormulaDamagePreview => null;
 

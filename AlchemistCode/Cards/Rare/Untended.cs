@@ -1,4 +1,5 @@
 using Alchemist.AlchemistCode.Powers;
+using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -10,7 +11,8 @@ public class Untended : AlchemistCard
 {
     public Untended() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithPower<UntendedPower>(1, 1);
+        WithPower<UntendedPower>(2, 0);
+        WithKeyword(CardKeyword.Innate, UpgradeType.Add);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
 

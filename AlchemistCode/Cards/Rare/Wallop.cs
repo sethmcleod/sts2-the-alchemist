@@ -14,8 +14,7 @@ public class Wallop : AlchemistCard
         WithVar("Per", 4, 2);
     }
 
-    private int HandCount =>
-        IsMutable && Owner != null ? PileType.Hand.GetPile(Owner).Cards.Count(c => c != this) : 0;
+    private int HandCount => OtherHandCount(this);
 
     protected override int? RawFormulaDamagePreview =>
         IsMutable && CombatState != null ? DynamicVars["Per"].IntValue * HandCount : null;

@@ -13,9 +13,29 @@ mod).
 
 ### Changed
 
-- Changed Brine and Froth to show their fermented hit count in green in place of the base number, instead of in parentheses after it
+- Buffed Croak: it no longer Exhausts
+- Buffed Heavy Dose damage: 20 (26) -> 24 (30)
+- Buffed Meltdown damage: 24 (32) -> 26 (34)
+- Buffed Puncture damage: 6 (8) -> 7 (9)
+- Changed Brine: "Retain. Ferment. Deal damage equal to the enemy's Poison 2 times. Each hit deals 2 (3) additional damage for each turn fermented."
+- Changed Caustic Strike: Poison 3 (4) -> 2 (3), and it now applies 2 additional Poison for each turn fermented instead of 1
+- Changed Clench: Skill -> Power
+- Changed Froth to show its fermented hit count in green in place of the base number, instead of in parentheses after it
+- Changed Pour Over: it draws 1 card at both ranks, and Pour Over+ now makes the card it pours into ferment 1
+- Changed Smelling Salts: Poison threshold 3 (2) -> 2, and Smelling Salts+ now gains Innate instead of lowering the threshold
+- Changed Spatter: "Discard any number of cards. Apply 3 (4) Poison to ALL enemies. Applies 1 additional Poison for each card discarded."
+- Changed Untended: it ferments drawn Ferment cards 2 instead of 1 (2), and Untended+ now gains Innate
+- Nerfed Endure Block: 8 (11) -> 7 (10)
+- Nerfed Fumigate Poison: 3 (5) -> 3 (4)
+- Nerfed Rerun Poison gained: 3 -> 4
+- Nerfed Spike damage: 9 (12) -> 7 (8)
+- Nerfed Upwell Block: 10 (13) -> 9 (12)
+- Nerfed Vintage: it no longer gains 1 additional Energy for each turn fermented. The additional draw per turn stays
+- Nerfed Water Down Poison: 4 (6) -> 3 (5)
 - Removed a line from the Pael, Tanx and Architect conversations to reduce the amount of clicks
-- Reworked Backfire: "Deal 10 (14) damage. Gain 2 Poison." -> "Deal 4 (6) damage. Hits an additional time for each hit the enemy intends."
+- Reworked Backfire: "Deal 4 (6) damage. Hits an additional time for each hit the enemy intends."
+- Reworked Numb: "Discard your Hand. Gain 4 (5) Block for each card discarded. Exhaust." Cost increased from 2 -> 3
+- Reworked Uncork: "Gain 1 Energy. ALL Ferment cards in your Hand ferment 1. Gain 1 (2) additional Energy for each card that did. Exhaust."
 - Updated the Alchemist's Ancient dialogue to have a lighter tone
 - Updated the Alchemist's character select text, gold line and death line
 

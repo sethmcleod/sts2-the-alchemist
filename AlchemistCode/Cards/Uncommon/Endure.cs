@@ -13,7 +13,7 @@ public class Endure : AlchemistCard
 
     public Endure() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithBlock(8, 3);
+        WithBlock(7, 3);
         WithVar("antitoxin", 3, 1);
         WithCards(1);
         WithTip(typeof(AntitoxinPower));

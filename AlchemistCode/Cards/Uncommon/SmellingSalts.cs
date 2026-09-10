@@ -1,4 +1,5 @@
 using Alchemist.AlchemistCode.Powers;
+using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,7 +14,8 @@ public class SmellingSalts : AlchemistCard
     public SmellingSalts() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithEnergy(1, 0);
-        WithVar("Threshold", 3, -1);
+        WithVar("Threshold", 2, 0);
+        WithKeyword(CardKeyword.Innate, UpgradeType.Add);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(AntitoxinPower));
     }

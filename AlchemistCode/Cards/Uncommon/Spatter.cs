@@ -13,8 +13,8 @@ public class Spatter : AlchemistCard
 {
     public Spatter() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
     {
-        WithVar("Base", 2, 0);
-        WithVar("Per", 2, 1);
+        WithVar("Base", 3, 1);
+        WithVar("Per", 1, 0);
         WithTip(typeof(PoisonPower));
     }
 
@@ -27,8 +27,7 @@ public class Spatter : AlchemistCard
         // an unbounded selection needs a count-free prompt, the Gamblers Brew pattern
         var discarded = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner,
             new CardSelectorPrefs(DiscardPrompt, 0, AnyNumber), null, this)).ToList();
-        foreach (var card in discarded)
-            await CardCmd.Discard(choiceContext, card);
+        await CardCmd.Discard(choiceContext, discarded);
         var dose = DynamicVars["Base"].IntValue + DynamicVars["Per"].IntValue * discarded.Count;
         foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
         {

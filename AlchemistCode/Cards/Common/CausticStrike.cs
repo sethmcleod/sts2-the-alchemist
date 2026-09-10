@@ -16,7 +16,7 @@ public class CausticStrike : AlchemistCard
     public CausticStrike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(6, 2);
-        WithVar(new FermentVar("Poison", 3, perTurn: 1).WithUpgrade(1));
+        WithVar(new FermentVar("Poison", 2, perTurn: 2).WithUpgrade(1));
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }

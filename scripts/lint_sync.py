@@ -10,7 +10,7 @@ The linter FAILs (exit 1) on a structural difference: a csv row with no class, a
 with no row, a card with no loc keys, or a cost that does not agree. It also makes a
 careful numeric comparison: the literal WithDamage/WithBlock/WithEnergy/WithCards/WithPower
 builders against the "N (M)" pairs in the csv. It prints each difference as a warning. It
-does not examine a card with a formula builder (WithCalculated*, calculated arguments),
+does not examine a formula builder itself (WithCalculated*), only the plain vars beside it,
 because it cannot know the correct value.
 
 It also checks the fourth location that a rename must reach: the art on disk. Cards,
@@ -369,15 +369,16 @@ BUILDER = re.compile(
 
 
 def parse_builders(text: str) -> list[tuple[int, int]]:
-    """The literal (base, delta) builder pairs. It ignores a card that calculates its values.
+    """The literal (base, delta) builder pairs.
 
     A base of 0 is a dynamic placeholder, not a literal amount. The value on screen comes
     from a dynamic var or from a calculation at run time. For example, Albedo has "that much
     Regen", and its WithPower<RegenPower>(0, 1) declares only the +1 upgrade tip.
     The csv shows these as "(+ N)", not as a literal "0 (N)" pair, so ignore them.
+
+    A WithCalculatedDamage or WithCalculatedBlock builder is not parsed: the csv shows its
+    calculated number. The plain vars beside it on the same card are still checked.
     """
-    if "WithCalculated" in text:
-        return []  # formula damage or block: the csv shows a calculated number, not base(+delta)
     pairs = []
     for m in re.finditer(r"With(?:Damage|Block|Energy|Cards|Power<\w+>)\((\d+)\s*,\s*(-?\d+)\)", text):
         base, delta = int(m.group(1)), int(m.group(2))
@@ -385,6 +386,13 @@ def parse_builders(text: str) -> list[tuple[int, int]]:
             pairs.append((base, base + delta))
     for m in re.finditer(r"WithVar\(\s*\"[^\"]+\"\s*,\s*(\d+)\s*,\s*(-?\d+)\)", text):
         base, delta = int(m.group(1)), int(m.group(2))
+        if base != 0:
+            pairs.append((base, base + delta))
+    # named var constructors: new FermentVar("Poison", 2, perTurn: 2).WithUpgrade(1)
+    for m in re.finditer(
+            r"new (?:FermentVar|EnergyVar|IntentHitsVar)\(\s*\"[^\"]+\"\s*,\s*(\d+)[^)]*\)"
+            r"(?:\.WithUpgrade\((\d+)\))?", text):
+        base, delta = int(m.group(1)), int(m.group(2) or 0)
         if base != 0:
             pairs.append((base, base + delta))
     return pairs
