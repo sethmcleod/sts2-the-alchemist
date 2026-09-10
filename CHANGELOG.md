@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.11] - 2026-09-10
+
 ### Added
 
 - Added 7 alive and 7 dead end-turn ping lines for the Alchemist in multiplayer, picked at random
