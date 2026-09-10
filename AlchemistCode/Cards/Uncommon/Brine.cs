@@ -1,8 +1,8 @@
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -16,18 +16,12 @@ public class Brine : AlchemistCard
     public Brine() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(0, static (_, target) => target?.GetPowerAmount<PoisonPower>() ?? 0m, ValueProp.Move);
-        WithVar("Hits", 1, 1);
+        WithVar(new FermentVar("Hits", 1, 1).WithUpgrade(1));
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }
 
-    private int Hits => DynamicVars["Hits"].IntValue + FermentTurns;
-
-    protected override void AddExtraArgsToDescription(LocString description)
-    {
-        base.AddExtraArgsToDescription(description);
-        description.Add("HitsLine", HitsLine(FermentTurns > 0 ? Hits : 0));
-    }
+    private int Hits => ((FermentVar)DynamicVars["Hits"]).Total(this, null);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

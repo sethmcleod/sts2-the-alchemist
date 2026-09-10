@@ -7,9 +7,22 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added 7 alive and 7 dead end-turn ping lines for the Alchemist in multiplayer, picked at random
+
 ### Changed
 
+- Changed Brine and Froth to show their fermented hit count in green in place of the base number, instead of in parentheses after it
+- Removed a line from the Pael, Tanx and Architect conversations to reduce the amount of clicks
 - Reworked Backfire: "Deal 10 (14) damage. Gain 2 Poison." -> "Deal 4 (6) damage. Hits an additional time for each hit the enemy intends."
+- Updated the Alchemist's Ancient dialogue to have a lighter tone
+- Updated the Alchemist's character select text, gold line and death line
+
+### Fixed
+
+- Fixed a typo in the Distillation Epoch and the punctuation in the Dissolution and Coagulation Epochs
+- Fixed Tanx referring to the Alchemist as "his"
 
 ## [0.14.10] - 2026-09-09
 

@@ -212,8 +212,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     /// <summary>44% into the 1.333s clip, matching the light swing.</summary>
     protected const float HeavyAttackDelay = 0.55f;
 
-    protected virtual string FermentTotalText => "";
-
     // Fermentation is kept through a play and only advances in hand, so the hand slot stays the price
     private bool FermentsThisTurn =>
         Owner is { } player && PileType.Hand.GetPile(player).Cards.Contains(this);
@@ -243,7 +241,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (IsFermentCard)
         {
             description.Add("FermentSuffix", $" ({FermentTurns})");
-            description.Add("FermentTotal", FermentTotalText);
         }
         // These previews read Owner, which throws on a canonical model such as the card library
         description.Add("FormulaDamage",
@@ -258,7 +255,4 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         loc.Add(variable, count);
         return loc.GetFormattedText();
     }
-
-    protected string HitsLine(int hits) =>
-        IsMutable && hits > 0 ? PreviewLine("ALCHEMIST-HITS_LINE", "Hits", hits) : "";
 }

@@ -21,7 +21,7 @@ public class CausticStrike : AlchemistCard
         WithTip(typeof(PoisonPower));
     }
 
-    private int Ripened => DynamicVars["Poison"].IntValue + FermentTurns;
+    private int Ripened => ((FermentVar)DynamicVars["Poison"]).Total(this, null);
 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

@@ -25,8 +25,7 @@ public class Distill : AlchemistCard
         WithTip(typeof(AntitoxinPower));
     }
 
-    private int Distilled => DynamicVars["Antitoxin"].IntValue
-        + DynamicVars["perTurn"].IntValue * FermentTurns;
+    private int Distilled => ((FermentVar)DynamicVars["Antitoxin"]).Total(this, null);
 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

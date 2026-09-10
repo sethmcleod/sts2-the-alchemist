@@ -18,8 +18,7 @@ public class Resolve : AlchemistCard
         WithTip(typeof(StrengthPower));
     }
 
-    private int Resolved => DynamicVars["Amount"].IntValue
-        + DynamicVars["perTurn"].IntValue * FermentTurns;
+    private int Resolved => ((FermentVar)DynamicVars["Amount"]).Total(this, null);
 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

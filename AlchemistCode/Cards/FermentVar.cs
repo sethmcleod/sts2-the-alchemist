@@ -1,16 +1,10 @@
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards;
 
-// A card number that grows with fermentation. The preview carries the fermented total, so
-// `{Var:diff()}` prints it in green the way the base game prints Strength-modified damage, with no
-// parenthesis. The base value stays the unfermented number, which is what the upgrade preview and
-// the compendium show. The per-turn growth is either a flat number or another var on the same
-// card, so an upgrade to the growth rate is read live
-public sealed class FermentVar : DynamicVar
+// A card number that grows with fermentation. The per-turn growth is either a flat number or
+// another var on the same card, so an upgrade to the growth rate is read live
+public sealed class FermentVar : PreviewVar
 {
     private readonly string? _perTurnVar;
     private readonly int _perTurnFlat;
@@ -25,14 +19,11 @@ public sealed class FermentVar : DynamicVar
         _perTurnVar = perTurnVar;
     }
 
-    public override void UpdateCardPreview(CardModel card, CardPreviewMode previewMode, Creature? target,
-        bool runGlobalHooks)
+    protected override int Bonus(AlchemistCard card, Creature? target)
     {
-        base.UpdateCardPreview(card, previewMode, target, runGlobalHooks);
-        if (card is not AlchemistCard { IsMutable: true } ferment) return;
-        var turns = ferment.FermentTurns;
-        if (turns <= 0) return;
-        var perTurn = _perTurnVar != null ? (int)card.DynamicVars[_perTurnVar].BaseValue : _perTurnFlat;
-        PreviewValue = EnchantedValue + perTurn * turns;
+        var turns = card.FermentTurns;
+        if (turns <= 0) return 0;
+        var perTurn = _perTurnVar != null ? card.DynamicVars[_perTurnVar].IntValue : _perTurnFlat;
+        return perTurn * turns;
     }
 }
