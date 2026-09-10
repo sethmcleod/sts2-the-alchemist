@@ -3,7 +3,7 @@ Acrid Mix,Token,Skill,0,Apply 3 (5) Poison. Exhaust.
 Aged Batch,Uncommon,Skill,1,Draw 1 card. Choose a basic Mix (Mix+) to add into your Hand. It loses Exhaust.
 All At Once,Rare,Attack,X,Deal damage equal to your Poison X (+1) times. Exhaust.
 Apothecary,Rare,Power,2,"At the start of your turn, add a random Mix into your Hand. Apothecary+ adds a Mix+."
-Backfire,Common,Attack,1,Deal 10 (14) damage. Gain 2 Poison.
+Backfire,Common,Attack,1,Deal 4 (6) damage. Hits an additional time for each hit the enemy intends.
 Bestow,"Uncommon, Multiplayer",Skill,1 (0),Another player procures a random Potion. Exhaust.
 Bitter Draught,Uncommon,Skill,0,Gain 2 (3) Energy. Gain 4 Poison. Exhaust.
 Blend,Common,Skill,1,Gain 6 (8) Block. Transform a card in your Discard Pile into a random basic Mix and add it into your Hand. (Blend+ makes a basic Mix+)

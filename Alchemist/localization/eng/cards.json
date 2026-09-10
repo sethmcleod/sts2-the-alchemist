@@ -8,7 +8,7 @@
   "ALCHEMIST-APOTHECARY.description": "At the start of your turn, add a random {IfUpgraded:show:[gold]Mix+[/gold]|[gold]Mix[/gold]} into your [gold]Hand[/gold].",
   "ALCHEMIST-APOTHECARY.title": "Apothecary",
   "ALCHEMIST-APPLY_LINE": "\n(Apply [green]{Amount}[/green] Poison.)",
-  "ALCHEMIST-BACKFIRE.description": "Deal {Damage:diff()} damage.\nGain {SelfPoison} [gold]Poison[/gold].",
+  "ALCHEMIST-BACKFIRE.description": "Deal {Damage:diff()} damage{Hits:plural:| {Hits:diff()} times}.\nHits an additional time for each hit the enemy intends.",
   "ALCHEMIST-BACKFIRE.title": "Backfire",
   "ALCHEMIST-BESTOW.description": "Another player procures a random [gold]Potion[/gold].",
   "ALCHEMIST-BESTOW.title": "Bestow",

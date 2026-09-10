@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Reworked Backfire: "Deal 10 (14) damage. Gain 2 Poison." -> "Deal 4 (6) damage. Hits an additional time for each hit the enemy intends."
+
 ## [0.14.10] - 2026-09-09
 
 ### Added
