@@ -16,12 +16,12 @@ public class CausticStrike : AlchemistCard
     public CausticStrike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(6, 2);
-        WithVar(new FermentVar("Poison", 3, perTurn: 1).WithUpgrade(1));
+        WithVar(new FermentVar("Poison", 2, perTurn: 2).WithUpgrade(1));
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }
 
-    private int Ripened => DynamicVars["Poison"].IntValue + FermentTurns;
+    private int Ripened => ((FermentVar)DynamicVars["Poison"]).Total(this, null);
 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

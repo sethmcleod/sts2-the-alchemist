@@ -1,7 +1,6 @@
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -13,17 +12,12 @@ public class Froth : AlchemistCard
     public Froth() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
     {
         WithDamage(5, 2);
+        WithVar(new FermentVar("Hits", 1, 1));
         WithKeyword(CardKeyword.Retain);
         WithKeyword(CardKeyword.Exhaust);
     }
 
-    private int Hits => 1 + FermentTurns;
-
-    protected override void AddExtraArgsToDescription(LocString description)
-    {
-        base.AddExtraArgsToDescription(description);
-        description.Add("HitsLine", HitsLine(FermentTurns > 0 ? Hits : 0));
-    }
+    private int Hits => ((FermentVar)DynamicVars["Hits"]).Total(this, null);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

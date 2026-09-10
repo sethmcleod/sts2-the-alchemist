@@ -1,9 +1,11 @@
-using MegaCrit.Sts2.Core.Models;
-using System.Linq;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using System.Linq;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
@@ -14,7 +16,8 @@ public class Uncork : AlchemistCard
 
     public Uncork() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithEnergy(1, 1);
+        WithEnergy(1, 0);
+        WithVar(new EnergyVar("Bonus", 1).WithUpgrade(1));
         WithKeyword(CardKeyword.Exhaust);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
@@ -31,8 +34,7 @@ public class Uncork : AlchemistCard
         var brewing = Brewing.ToList();
         foreach (var card in brewing)
             await card.AdvanceFerment(1);
-        if (brewing.Count == 0) return;
-        CardCmd.Preview(brewing.Cast<CardModel>().ToList());
-        await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue * brewing.Count, Owner);
+        if (brewing.Count > 0) CardCmd.Preview(brewing.Cast<CardModel>().ToList());
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue + DynamicVars["Bonus"].IntValue * brewing.Count, Owner);
     }
 }

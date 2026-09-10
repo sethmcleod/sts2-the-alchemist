@@ -1,25 +1,25 @@
-using Alchemist.AlchemistCode.Powers;
-using BaseLib.Utils;
+using System.Linq;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-[CardTheme(CardTheme.Poison)]
+[CardTheme(CardTheme.None)]
 public class Numb : AlchemistCard
 {
-    public Numb() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Numb() : base(3, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithBlock(10, 4);
-        WithPower<NumbPower>(1, 0);
-        WithTip(typeof(PoisonPower));
+        WithVar("Per", 4, 1);
+        WithCalculatedBlock(0, static (card, _) => card.DynamicVars["Per"].IntValue * OtherHandCount(card), ValueProp.Move);
+        WithKeyword(CardKeyword.Exhaust);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardBlock(this, play);
-        await CommonActions.ApplySelf<NumbPower>(choiceContext, this);
+        var hand = PileType.Hand.GetPile(Owner).Cards.Where(c => c != this).ToList();
+        await CardCmd.Discard(choiceContext, hand);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["Per"].IntValue * hand.Count, ValueProp.Move, play);
     }
 }

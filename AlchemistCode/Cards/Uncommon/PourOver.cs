@@ -19,7 +19,8 @@ public class PourOver : AlchemistCard
 
     public PourOver() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCards(1, 1);
+        WithCards(1, 0);
+        WithVar("Bonus", 0, 1);
         WithKeyword(CardKeyword.Retain);
     }
 
@@ -29,20 +30,25 @@ public class PourOver : AlchemistCard
             : PileType.Hand.GetPile(Owner).Cards.OfType<AlchemistCard>()
                 .Where(c => c != this && c.IsFermentInline);
 
-    protected override bool ConditionalGlow => HasStoredFerment && Brewing.Any();
+    private int Bonus => DynamicVars["Bonus"].IntValue;
+
+    private bool CanPour => (HasStoredFerment || Bonus > 0) && Brewing.Any();
+
+    protected override bool ConditionalGlow => CanPour;
 
     private static LocString IntoPrompt => new("cards", "ALCHEMIST-POUR_OVER.selectionScreenPromptInto");
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.Draw(this, choiceContext);
-        if (!HasStoredFerment || !Brewing.Any()) return;
+        if (!CanPour) return;
         var target = (await CardSelectCmd.FromHand(choiceContext, Owner,
             new CardSelectorPrefs(IntoPrompt, 1),
             filter: c => c is AlchemistCard { IsFermentInline: true } && c != this,
             source: null!)).OfType<AlchemistCard>().FirstOrDefault();
         if (target == null) return;
         target.ReceiveFerment(DrainFerment());
+        if (Bonus > 0) await target.AdvanceFerment(Bonus);
         CardCmd.Preview(new List<CardModel> { target });
     }
 }

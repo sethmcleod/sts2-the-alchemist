@@ -14,7 +14,7 @@ public class Meltdown : AlchemistCard
 
     public Meltdown() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(24, static (card, _) =>
+        WithCalculatedDamage(26, static (card, _) =>
                 Dose(card) >= Threshold ? (card.IsUpgraded ? 16m : 12m) : 0m,
             ValueProp.Move, 8, 0);
         WithTip(typeof(PoisonPower));

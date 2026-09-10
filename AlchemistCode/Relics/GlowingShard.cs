@@ -15,7 +15,7 @@ public class GlowingShard : AlchemistRelic
     public override RelicRarity Rarity => RelicRarity.Rare;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<AccelerantPower>() };
+        new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
     public override async Task BeforeCombatStart()
     {

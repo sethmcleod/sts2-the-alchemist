@@ -108,6 +108,17 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             ? creature.GetPowerAmount<PoisonPower>()
             : 0m;
 
+    // The other cards in the owner's hand, for a card that scales with them. Zero outside a live
+    // combat, where the hand pile is stale or missing
+    protected static int OtherHandCount(CardModel card)
+    {
+        if (card is not AlchemistCard { IsMutable: true, CombatState: not null, Owner: { } owner }) return 0;
+        var count = 0;
+        foreach (var other in PileType.Hand.GetPile(owner).Cards)
+            if (other != card) count++;
+        return count;
+    }
+
     // The raw total, before any hook. The card face shows the hooked total with {FormulaDamage}
     protected virtual int? RawFormulaDamagePreview => null;
 
@@ -212,8 +223,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     /// <summary>44% into the 1.333s clip, matching the light swing.</summary>
     protected const float HeavyAttackDelay = 0.55f;
 
-    protected virtual string FermentTotalText => "";
-
     // Fermentation is kept through a play and only advances in hand, so the hand slot stays the price
     private bool FermentsThisTurn =>
         Owner is { } player && PileType.Hand.GetPile(player).Cards.Contains(this);
@@ -243,7 +252,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (IsFermentCard)
         {
             description.Add("FermentSuffix", $" ({FermentTurns})");
-            description.Add("FermentTotal", FermentTotalText);
         }
         // These previews read Owner, which throws on a canonical model such as the card library
         description.Add("FormulaDamage",
@@ -258,7 +266,4 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         loc.Add(variable, count);
         return loc.GetFormattedText();
     }
-
-    protected string HitsLine(int hits) =>
-        IsMutable && hits > 0 ? PreviewLine("ALCHEMIST-HITS_LINE", "Hits", hits) : "";
 }

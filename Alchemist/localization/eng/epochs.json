@@ -1,31 +1,25 @@
 {
-  "STORY_ALCHEMIST": "The Alchemist",
-  "ALCHEMIST-ALCHEMIST1_EPOCH.title": "Calcination",
   "ALCHEMIST-ALCHEMIST1_EPOCH.description": "The Capital's finest [green]Apothecary[/green] ventured with the [gold]Twelve[/gold] explorers, now lost to time.\nTheir [purple]child[/purple] keeps the shop now. Mixing. Dosing. Reading their parent's half-finished [gold]journal[/gold] by candlelight, desperate to understand why none of them returned.\nOne morning, they leave a note on the door: \"[sine]Closed for fieldwork...\"[/sine]\nThe [gold]Spire's[/gold] doors admit one more.",
+  "ALCHEMIST-ALCHEMIST1_EPOCH.title": "Calcination",
   "ALCHEMIST-ALCHEMIST1_EPOCH.unlockInfo": "{IsRevealed:Played|Play} a run with the [purple]Alchemist[/purple]{IsRevealed:| to reveal these Epochs}.",
   "ALCHEMIST-ALCHEMIST1_EPOCH.unlockText": "Unlocked the [purple]Alchemist[/purple] as a playable character.",
-
+  "ALCHEMIST-ALCHEMIST2_EPOCH.description": "Three floors up, cornered and dying, the [purple]Frog's[/purple] own [green]poison[/green] floods their veins, and is [sine]transmuted[/sine]. Warmth. Vigor. Wounds drawing closed.\nThey survive the night on the floor of a ruin, [red]laughing[/red], writing it all down with [jitter]shaking hands[/jitter].\nThe first page of a new [gold]journal[/gold]. Their own, this time.",
   "ALCHEMIST-ALCHEMIST2_EPOCH.title": "Dissolution",
-  "ALCHEMIST-ALCHEMIST2_EPOCH.description": "Three floors up, cornered and dying, the [purple]Frog's[/purple] own [green]poison[/green] floods their veins — and is [sine]transmuted[/sine]. Warmth. Vigor. Wounds drawing closed.\nThey survive the night on the floor of a ruin, [red]laughing[/red], writing it all down with [jitter]shaking hands[/jitter].\nThe first page of a new [gold]journal[/gold]. Their own, this time.",
   "ALCHEMIST-ALCHEMIST2_EPOCH.unlockInfo": "{IsRevealed:Beat|Beat} [gold]Act[/gold] [blue]1[/blue] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
-
-  "ALCHEMIST-ALCHEMIST3_EPOCH.title": "Separation",
   "ALCHEMIST-ALCHEMIST3_EPOCH.description": "\"You [sine]brew[/sine] these? In [sine]here[/sine]?\"\nFor the first time in years, the [blue]Merchant[/blue] is the one who wants to buy.\nA [green]tincture[/green] presses into their hand, still warm from the flame.\nAn arrangement is struck on the spot: the [purple]Frog[/purple] brews, the [blue]Merchant[/blue] buys.",
+  "ALCHEMIST-ALCHEMIST3_EPOCH.title": "Separation",
   "ALCHEMIST-ALCHEMIST3_EPOCH.unlockInfo": "{IsRevealed:Beat|Beat} [gold]Act[/gold] [blue]2[/blue] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
-
-  "ALCHEMIST-ALCHEMIST4_EPOCH.title": "Conjunction",
   "ALCHEMIST-ALCHEMIST4_EPOCH.description": "\"Found this a ways up. Figured it belonged to somebody.\" [orange]Darv[/orange] holds out a worn [gold]journal[/gold].\nThe early handwriting is their [pink]parent's[/pink]. The later pages are not. Filled with an unfamiliar ink, the pages hint to clues higher in the [gold]Spire[/gold].\nThe [purple]Frog[/purple] does not ask why the collector would part with this treasure. [orange]Darv[/orange] does not offer.",
+  "ALCHEMIST-ALCHEMIST4_EPOCH.title": "Conjunction",
   "ALCHEMIST-ALCHEMIST4_EPOCH.unlockInfo": "{IsRevealed:Beat|Beat} [gold]Act[/gold] [blue]3[/blue] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
-
-  "ALCHEMIST-ALCHEMIST5_EPOCH.title": "Fermentation",
   "ALCHEMIST-ALCHEMIST5_EPOCH.description": "Sealed nine days in a gallery of luminous [green]fungi[/green].\nSome would [jitter]panic[/jitter]. The [purple]Frog[/purple] [sine]brews[/sine].\nSome preparations [gold]reward[/gold] the patient hand. Others [red]punish[/red] hesitation.\nThey emerge with a brimming satchel and the [blue]patience[/blue] to know when not to reach for it.",
+  "ALCHEMIST-ALCHEMIST5_EPOCH.title": "Fermentation",
   "ALCHEMIST-ALCHEMIST5_EPOCH.unlockInfo": "{IsRevealed:Killed|Kill} [blue]15[/blue] [purple]Elites[/purple] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
-
+  "ALCHEMIST-ALCHEMIST6_EPOCH.description": "Higher still: a [jitter]cold[/jitter] campsite. Formulae scratched into stone in a [pink]familiar hand[/pink].\nA final note in the margin. The [gold]Work[/gold] was never about [gold]gold[/gold].\nIt is the uniting of opposites. The transcendence of [blue]Self[/blue].\nThe [purple]Frog[/purple] sits with that for a long while. Then [sine]climbs.[/sine]",
   "ALCHEMIST-ALCHEMIST6_EPOCH.title": "Distillation",
-  "ALCHEMIST-ALCHEMIST6_EPOCH.description": "Higher still: a [jitter]cold[/jitter] campsite. Formulae scratched into stone in a [pink]familiar hand[/pink].\nA final note in the margin. The [gold]Work[/gold] was never about [gold]gold[/gold].\nIt is the uniting of opposites. The transendence of [blue]Self[/blue].\nThe [purple]Frog[/purple] sits with that for a long while. Then [sine]climbs.[/sine]",
   "ALCHEMIST-ALCHEMIST6_EPOCH.unlockInfo": "{IsRevealed:Killed|Kill} [blue]15[/blue] [red]Bosses[/red] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
-
+  "ALCHEMIST-ALCHEMIST7_EPOCH.description": "The last floor. The last door.\nA [pink]parent[/pink] climbed here to finish the [gold]Work[/gold] and never wrote the ending.\nPerhaps because there was no writing it. The final change is not one you record, but one you [blue][sine]become[/sine][/blue].\nThe [purple]Frog[/purple] steadies their hands, breathes deeply, and steps through.",
   "ALCHEMIST-ALCHEMIST7_EPOCH.title": "Coagulation",
-  "ALCHEMIST-ALCHEMIST7_EPOCH.description": "The last floor. The last door.\nA [pink]parent[/pink] climbed here to finish the [gold]Work[/gold] and never wrote the ending.\nPerhaps because there was no writing it — because the final change is not one you record, but one you [blue][sine]become[/sine][/blue].\nThe [purple]Frog[/purple] steadies their hands, breathes deeply, and steps through.",
-  "ALCHEMIST-ALCHEMIST7_EPOCH.unlockInfo": "{IsRevealed:Beat|Beat} [red]Ascension[/red] [blue]1[/blue] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}."
+  "ALCHEMIST-ALCHEMIST7_EPOCH.unlockInfo": "{IsRevealed:Beat|Beat} [red]Ascension[/red] [blue]1[/blue] with the [purple]Alchemist[/purple]{IsRevealed:| to reveal this Epoch}.",
+  "STORY_ALCHEMIST": "The Alchemist"
 }

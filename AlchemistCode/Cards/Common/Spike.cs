@@ -10,7 +10,7 @@ public class Spike : AlchemistCard
 {
     public Spike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(9, 3);
+        WithDamage(7, 1);
         WithUpgradingCardTip<Token.FumingMix>();
     }
 

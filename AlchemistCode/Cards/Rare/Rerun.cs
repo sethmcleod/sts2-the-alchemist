@@ -12,7 +12,7 @@ public class Rerun : AlchemistCard
     public Rerun() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithVar("Amount", 1, 1);
-        WithVar("Poison", 3, 0);
+        WithVar("Poison", 4, 0);
         WithTip(typeof(PoisonPower));
     }
 

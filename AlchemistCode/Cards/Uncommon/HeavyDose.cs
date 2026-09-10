@@ -12,7 +12,7 @@ public class HeavyDose : AlchemistCard
 {
     public HeavyDose() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(20, 6);
+        WithDamage(24, 6);
         WithVar("Per", 4, 0);
         WithTips(_ => new[] { HoverTipFactory.FromCard<Token.BurstingMix>() });
         WithTip(typeof(PoisonPower));
