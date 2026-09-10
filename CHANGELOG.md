@@ -33,6 +33,7 @@ mod).
 - Nerfed Vintage: it no longer gains 1 additional Energy for each turn fermented. The additional draw per turn stays
 - Nerfed Water Down Poison: 4 (6) -> 3 (5)
 - Removed a line from the Pael, Tanx and Architect conversations to reduce the amount of clicks
+- Removed the Accelerant hover tip from the Glowing Shard relic
 - Reworked Backfire: "Deal 4 (6) damage. Hits an additional time for each hit the enemy intends."
 - Reworked Numb: "Discard your Hand. Gain 4 (5) Block for each card discarded. Exhaust." Cost increased from 2 -> 3
 - Reworked Uncork: "Gain 1 Energy. ALL Ferment cards in your Hand ferment 1. Gain 1 (2) additional Energy for each card that did. Exhaust."
