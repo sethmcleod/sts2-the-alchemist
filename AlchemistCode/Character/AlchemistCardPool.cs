@@ -28,5 +28,9 @@ public class AlchemistCardPool : CustomCardPoolModel
 
     public override Color DeckEntryCardColor => new("8D5DEF");
 
+    // The painted frame, for a card whose full set exists. BaseLib serves it from CardModel.Frame. The
+    // other three pieces of the set go through Patches/CardFramePatches
+    public override Texture2D? CustomFrame(CustomCardModel card) => AlchemistCardFrames.For(card)?.Frame;
+
     public override bool IsColorless => false;
 }

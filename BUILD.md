@@ -79,6 +79,7 @@ the local machine instead. `scripts/dev.sh release` starts it (see
 - The icon sizes are:
   - power: 64 and 256 (big)
   - relic: 94, 94 (outline), and 256 (big)
+- The card frame set is in `images/ui/cards/`: `frame_<type>_ferment.png` (599x845), `border_<type>_ferment_<rarity>.png` (551x420), `banner_ferment_<rarity>.png` (655x170), and `plaque_ferment_<rarity>.png` (61x37). The type is `attack`, `skill`, or `power`. The rarity is `common`, `uncommon`, or `rare`; basic and token cards use `common`. A card shows the set only when all four of its pieces exist, and it shows the base frame in all other cases. The plaque is a nine-patch that the card scene draws at 61x37, so reduce a plaque that arrives at 2x (123x75) to that size before you add it. See `Character/AlchemistCardFrames.cs`.
 - Put the card portraits in `card_portraits/`, and the beta placeholders in `card_portraits/beta/`. `CardImageOrBetaPath` prefers the real art, so a portrait can land one card at a time (the art direction is in [docs/beta-card-art.md](docs/beta-card-art.md)).
 - Each power needs the localization keys `.title`, `.description`, **and** `.smartDescription`. The localization analyzer in the build checks this.
 - The file `cards.csv` is the primary record of the design. Update it when you change the stats or the text of a card.
