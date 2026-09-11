@@ -4,6 +4,9 @@
 #   scripts/dev.sh publish        build → godot import → publish → verify pck   (the safe default)
 #   scripts/dev.sh publish-fast   build → publish → verify pck                  (code only, no import)
 #   scripts/dev.sh import         godot --headless --import only
+#   scripts/dev.sh beta-art [--all] [--dry-run]
+#                                 shrink the beta card placeholders that final art replaced
+#                                 to 500x380 and 256 colors (--all: every placeholder)
 #   scripts/dev.sh lint           static checks: the three-way rule, card text tokens, and
 #                                 Ancient dialogue structure (offline, no game)
 #   scripts/dev.sh changelog      draft CHANGELOG entries from the commits since the last tag
@@ -567,6 +570,8 @@ case "${1:-help}" in
   publish)       do_build; do_import; do_publish; do_verify ;;
   publish-fast)  do_build; do_publish; do_verify ;;
   import)        do_import ;;
+  beta-art)      have_py || { bad "$no_py_msg"; exit 1; }
+                 shift; "${PY_CMD[@]}" "$REPO/scripts/shrink_beta_art.py" "$@" ;;
   lint)          have_py || { bad "$no_py_msg"; exit 1; }
                  "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py"
                  "${PY_CMD[@]}" "$REPO/scripts/check_card_tokens.py"

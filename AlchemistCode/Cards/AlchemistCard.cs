@@ -56,11 +56,15 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // For a calculated number with no var to hang a tip on, because it is never rendered
     protected void ExplainNumber(string key) => WithTips(_ => new[] { AlchemistTips.Static(key) });
 
-    public override string CustomPortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImageOrBetaPath();
+    private string PortraitFile => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png";
+
+    public override string CustomPortraitPath => PortraitFile.CardImageOrBetaPath();
     // With the beta fallback too: the Timeline epoch slots and the generated-card previews read
     // Portrait directly, and without it every card still on beta art shows the generic back there
-    public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImageOrBetaPath();
-    public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
+    public override string PortraitPath => PortraitFile.CardImageOrBetaPath();
+    public override string BetaPortraitPath => $"beta/{PortraitFile}".CardImagePath();
+    // The inspect screen swaps this in over the portrait, see CardArtPatches
+    internal string? BigPortraitPath => PortraitFile.BigCardImagePathOrNull();
 
     // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state
     internal bool IsEnchanted => Enchantment != null;

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Alchemist.AlchemistCode.Cards;
 using Alchemist.AlchemistCode.Epochs;
+using Alchemist.AlchemistCode.Patches;
 using Alchemist.AlchemistCode.Potions;
 using Alchemist.AlchemistCode.Relics;
 using BaseLib.Config;
@@ -16,6 +17,12 @@ namespace Alchemist.AlchemistCode.Config;
 
 public class AlchemistModConfig : SimpleModConfig
 {
+    public AlchemistModConfig()
+    {
+        // Every tickbox raises ConfigChanged, so the cards already on screen repaint at once
+        ConfigChanged += (_, _) => CardArtPatches.RefreshPortraitsIfArtSourceChanged();
+    }
+
     public override void SetupConfigUI(Control optionContainer)
     {
         // Auto-generates the UI from the properties and [ConfigButton] methods below
@@ -32,7 +39,9 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigHoverTip]
     public static bool KeepPoolsSeparate { get; set; } = true;
 
-
+    [ConfigSection("Appearance")]
+    [ConfigHoverTip]
+    public static bool UseBetaArt { get; set; } = false;
 
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]

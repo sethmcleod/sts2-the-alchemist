@@ -7,6 +7,11 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added final art for Strike
+- Added a Use Beta Art toggle to the mod's Appearance settings, off by default, that shows the beta placeholder art instead of the final art
+
 ### Changed
 
 - Changed Ferment cards to show the fermented turn count only during combat
