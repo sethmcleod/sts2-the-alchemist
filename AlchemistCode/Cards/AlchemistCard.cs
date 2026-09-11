@@ -250,9 +250,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     {
         base.AddExtraArgsToDescription(description);
         if (IsFermentCard)
-        {
-            description.Add("FermentSuffix", $" ({FermentTurns})");
-        }
+            description.Add("FermentSuffix", IsMutable && CombatState != null ? $" ({FermentTurns})" : "");
         // These previews read Owner, which throws on a canonical model such as the card library
         description.Add("FormulaDamage",
             IsMutable && FormulaDamagePreview is { } d ? $"\n(Deals [green]{d}[/green] damage)" : "");

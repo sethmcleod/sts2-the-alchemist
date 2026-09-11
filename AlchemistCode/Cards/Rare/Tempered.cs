@@ -9,13 +9,12 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.None)]
 public class Tempered : AlchemistCard
 {
-    private const int PerCard = 3;
-
     public Tempered() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithCalculatedBlock(8, static (card, _) =>
-                PerCard * PileType.Exhaust.GetPile(card.Owner).Cards.Count,
-            ValueProp.Move, 4, 0);
+        WithVar("PerCard", 1, 1);
+        WithCalculatedBlock(10, static (card, _) =>
+                card.DynamicVars["PerCard"].IntValue * PileType.Exhaust.GetPile(card.Owner).Cards.Count,
+            ValueProp.Move, 3, 0);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(CardKeyword.Exhaust) });
     }
 

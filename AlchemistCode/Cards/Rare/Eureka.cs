@@ -16,6 +16,7 @@ public class Eureka : AlchemistCard
     {
         WithCards(2, 1);
         WithVar("transforms", 1, 0);
+        WithKeyword(CardKeyword.Exhaust);
         WithTips(_ => Mixing.MixTips());
     }
 

@@ -15,7 +15,7 @@ public class Bloom : AlchemistCard
 {
     public Bloom() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("Turns", 3, 1);
+        WithVar("Turns", 2, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
