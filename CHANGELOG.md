@@ -9,7 +9,7 @@ mod).
 
 ### Added
 
-- Added final art for Strike
+- Added final art for Strike and Defend
 - Added a Use Beta Art toggle to the mod's Appearance settings, off by default, that shows the beta placeholder art instead of the final art
 
 ### Changed
