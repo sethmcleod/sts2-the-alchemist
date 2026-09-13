@@ -9,7 +9,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.None)]
 public class Numb : AlchemistCard
 {
-    public Numb() : base(3, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Numb() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Per", 4, 1);
         WithCalculatedBlock(0, static (card, _) => card.DynamicVars["Per"].IntValue * OtherHandCount(card), ValueProp.Move);

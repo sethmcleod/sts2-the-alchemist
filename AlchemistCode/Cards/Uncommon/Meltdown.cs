@@ -10,7 +10,7 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Poison)]
 public class Meltdown : AlchemistCard
 {
-    private const int Threshold = 6;
+    private const int Threshold = 5;
 
     public Meltdown() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {

@@ -35,6 +35,7 @@ Run it with `scripts/dev.sh lint`.
 import csv
 import os
 import re
+import struct
 import subprocess
 import sys
 from pathlib import Path
@@ -52,9 +53,11 @@ SPECIAL_CLASS = {"Strike": "StrikeAlchemist", "Defend": "DefendAlchemist"}
 # StringExtensions.cs). If a rename does not include the images, no class uses them.
 # entity label -> (code subdir, base marker, [(variant label, image dir, filename template)])
 ASSET_SPECS = [
-    # cards use the base game layout: the real portrait is card_portraits/<s>.png and the beta
-    # placeholder is card_portraits/beta/<s>.png, and check_assets accepts either
-    ("card", "Cards", "Card", [("portrait", "card_portraits", "{s}.png")]),
+    # cards use the base game layout: the final art is card_portraits/<s>.png (500x380) with a
+    # 1000x760 copy in card_portraits/big/ for the inspect screen, and the beta placeholder is
+    # card_portraits/beta/<s>.png. check_card_art accepts the final art or the placeholder
+    ("card", "Cards", "Card", [("portrait", "card_portraits", "{s}.png"),
+                               ("big", "card_portraits/big", "{s}.png")]),
     ("power", "Powers", "Power", [("packed", "powers", "{s}.png"),
                                   ("big", "powers/big", "{s}.png")]),
     ("relic", "Relics", "Relic", [("packed", "relics", "{s}.png"),
@@ -128,6 +131,52 @@ def asset_name(class_name: str) -> str:
     return snake(class_name).lower()
 
 
+def png_size(path: Path) -> tuple[int, int] | None:
+    """Width and height from the PNG header, so the check needs no image library."""
+    with open(path, "rb") as f:
+        head = f.read(24)
+    if len(head) < 24 or head[:8] != b"\x89PNG\r\n\x1a\n":
+        return None
+    return struct.unpack(">II", head[16:24])
+
+
+def check_card_art(cls: str, claimed: set[Path]) -> tuple[list[str], list[str]]:
+    """A card has final art in both sizes or the beta placeholder, and a replaced placeholder is shrunk.
+
+    The final art is card_portraits/<s>.png (500x380) plus card_portraits/big/<s>.png (1000x760,
+    for the inspect screen). The placeholder card_portraits/beta/<s>.png stays on disk after the
+    final art lands, because the Use Beta Art setting shows it, but from then on it is only worth
+    the size of the final art: scripts/dev.sh beta-art shrinks it
+    """
+    errors, warnings = [], []
+    name = f"{asset_name(cls)}.png"
+    small = IMG / "card_portraits" / name
+    big = IMG / "card_portraits" / "big" / name
+    beta = IMG / "card_portraits" / "beta" / name
+    claimed.update((small, big, beta))
+    has_final = small.exists() or big.exists()
+    if not has_final and not beta.exists():
+        errors.append(f"card {cls}: no portrait, neither card_portraits/{name} nor card_portraits/beta/{name}")
+        return errors, warnings
+    if small.exists() != big.exists():
+        missing = f"card_portraits/{'big/' if small.exists() else ''}{name}"
+        warnings.append(f"card {cls}: the final art needs both sizes, {missing} is missing")
+    if not has_final:
+        return errors, warnings
+    if not beta.exists():
+        warnings.append(f"card {cls}: no placeholder card_portraits/beta/{name}, so Use Beta Art shows the generic back")
+        return errors, warnings
+    target = png_size(small) if small.exists() else None
+    if target is None:
+        full = png_size(big)
+        target = (full[0] // 2, full[1] // 2) if full else None
+    actual = png_size(beta)
+    if target and actual and (actual[0] > target[0] or actual[1] > target[1]):
+        warnings.append(f"card {cls}: the placeholder is {actual[0]}x{actual[1]}, the final art is "
+                        f"{target[0]}x{target[1]}; run scripts/dev.sh beta-art")
+    return errors, warnings
+
+
 def check_assets() -> tuple[list[str], list[str], int]:
     """Each concrete entity has its art on disk, and every art file belongs to a class.
 
@@ -141,15 +190,15 @@ def check_assets() -> tuple[list[str], list[str], int]:
 
     for label, subdir, marker, variants in ASSET_SPECS:
         for cls in sorted(entity_classes(subdir, marker, BORROWED_ART_BASES)):
+            if label == "card":
+                card_errors, card_warnings = check_card_art(cls, claimed)
+                errors += card_errors
+                warnings += card_warnings
+                continue
             for variant, img_dir, template in variants:
                 path = IMG / img_dir / template.format(s=asset_name(cls))
                 claimed.add(path)
-                # A card portrait is present as the real art in big/ or the beta placeholder in beta/
-                beta = None
-                if label == "card":
-                    beta = IMG / "card_portraits" / "beta" / template.format(s=asset_name(cls))
-                    claimed.add(beta)
-                if not path.exists() and not (beta and beta.exists()):
+                if not path.exists():
                     errors.append(f"{label} {cls}: the {variant} art {img_dir}/{path.name} is missing")
 
     # remove the duplicates: relics keep the packed art and the outline art in one directory. Also scan the

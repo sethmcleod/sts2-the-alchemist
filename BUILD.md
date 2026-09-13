@@ -77,9 +77,10 @@ the local machine instead. `scripts/dev.sh release` starts it (see
 
 - The class name gives the localization keys and the icon file names for each card, power, relic, and potion. For example, `MyCard` gives `ALCHEMIST-MY_CARD` and `my_card.png`.
 - The icon sizes are:
+  - card portrait: 500x380, and 1000x760 (big) for the inspect screen
   - power: 64 and 256 (big)
   - relic: 94, 94 (outline), and 256 (big)
-- Put the card portraits in `card_portraits/`, and the beta placeholders in `card_portraits/beta/`. `CardImageOrBetaPath` prefers the real art, so a portrait can land one card at a time (the art direction is in [docs/beta-card-art.md](docs/beta-card-art.md)).
+- Put the final card art in `card_portraits/` (500x380) and `card_portraits/big/` (1000x760), and the beta placeholders in `card_portraits/beta/`. `CardImageOrBetaPath` prefers the final art, so a portrait can land one card at a time, and the Use Beta Art setting in the mod config shows the placeholders instead. When the final art for a card lands, run `scripts/dev.sh beta-art` to cut its placeholder to 500x380 and 256 colors. `scripts/dev.sh lint` warns about a placeholder that is still full size.
 - Each power needs the localization keys `.title`, `.description`, **and** `.smartDescription`. The localization analyzer in the build checks this.
 - The file `cards.csv` is the primary record of the design. Update it when you change the stats or the text of a card.
 

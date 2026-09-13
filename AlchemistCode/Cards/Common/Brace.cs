@@ -1,33 +1,26 @@
-using System.Linq;
+using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-[CardTheme(CardTheme.None)]
+[CardTheme(CardTheme.Poison)]
 public class Brace : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
     public Brace() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithCalculatedBlock(7, static (card, _) => Threatened(card) ? Bonus(card) : 0m, ValueProp.Move, 2);
-        WithVar("Bonus", 4, 1);
+        WithBlock(7, 2);
+        WithPower<BracePower>(2, 1);
+        WithTip(typeof(PoisonPower));
     }
-
-    private static bool Threatened(CardModel card) =>
-        card is Brace { IsMutable: true, CombatState: { } combat }
-        && combat.Enemies.Any(e => e.IsAlive && e.Monster is { IntendsToAttack: true });
-
-    private static decimal Bonus(CardModel card) => card.DynamicVars["Bonus"].IntValue;
-
-    protected override bool ConditionalGlow => Threatened(this);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
+        await CommonActions.ApplySelf<BracePower>(choiceContext, this);
     }
 }
