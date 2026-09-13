@@ -106,7 +106,7 @@
   "ALCHEMIST-MASH.title": "Затор",
   "ALCHEMIST-MELLOW.description": "Когда одна из ваших карт бродит, дает {MellowPower:diff()} [gold]защиты[/gold].",
   "ALCHEMIST-MELLOW.title": "Смягчение",
-  "ALCHEMIST-MELTDOWN.description": "Наносит {CalculatedDamage:diff()} урона.\nНаносит на {IfUpgraded:show:16|12} урона больше, если у вас 6 или больше [gold]яда[/gold].",
+  "ALCHEMIST-MELTDOWN.description": "Наносит {CalculatedDamage:diff()} урона.\nНаносит на {IfUpgraded:show:16|12} урона больше, если у вас 5 или больше [gold]яда[/gold].",
   "ALCHEMIST-MELTDOWN.title": "Расплав",
   "ALCHEMIST-MERCURIAL_FORM.description": "В начале вашего хода дает вам 1 [gold]яда[/gold] и 1 [gold]антитоксина[/gold], а также столько [gold]силы[/gold] на этот ход, сколько у вас [gold]яда[/gold].",
   "ALCHEMIST-MERCURIAL_FORM.title": "Ртутная форма",

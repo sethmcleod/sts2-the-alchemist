@@ -106,7 +106,7 @@
   "ALCHEMIST-MASH.title": "Zacier",
   "ALCHEMIST-MELLOW.description": "Kiedykolwiek jedna z twoich kart fermentuje, zyskaj {MellowPower:diff()} pkt. [gold]Bloku[/gold].",
   "ALCHEMIST-MELLOW.title": "Złagodnienie",
-  "ALCHEMIST-MELTDOWN.description": "Zadaj {CalculatedDamage:diff()} pkt. obrażeń.\nZadaje dodatkowo {IfUpgraded:show:16|12} pkt. obrażeń, jeżeli masz co najmniej 6 pkt. [gold]Trucizny[/gold].",
+  "ALCHEMIST-MELTDOWN.description": "Zadaj {CalculatedDamage:diff()} pkt. obrażeń.\nZadaje dodatkowo {IfUpgraded:show:16|12} pkt. obrażeń, jeżeli masz co najmniej 5 pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-MELTDOWN.title": "Stopienie",
   "ALCHEMIST-MERCURIAL_FORM.description": "Na początku tury zyskaj 1 pkt. [gold]Trucizny[/gold] i 1 pkt. [gold]Antytoksyny[/gold] oraz zyskaj [gold]Siłę[/gold] równą twojej [gold]Truciźnie[/gold] w tej turze.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Rtęciowa forma",

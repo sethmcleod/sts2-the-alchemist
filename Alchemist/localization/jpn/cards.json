@@ -106,7 +106,7 @@
   "ALCHEMIST-MASH.title": "すり潰し",
   "ALCHEMIST-MELLOW.description": "自分のカードが発酵するたび、{MellowPower:diff()}[gold]ブロック[/gold]を得る。",
   "ALCHEMIST-MELLOW.title": "熟成",
-  "ALCHEMIST-MELTDOWN.description": "{CalculatedDamage:diff()}ダメージを与える。\n[gold]毒[/gold]を6以上持っている場合、追加で{IfUpgraded:show:16|12}ダメージを与える。",
+  "ALCHEMIST-MELTDOWN.description": "{CalculatedDamage:diff()}ダメージを与える。\n[gold]毒[/gold]を5以上持っている場合、追加で{IfUpgraded:show:16|12}ダメージを与える。",
   "ALCHEMIST-MELTDOWN.title": "メルトダウン",
   "ALCHEMIST-MERCURIAL_FORM.description": "ターン開始時、[gold]毒[/gold]1と[gold]抗毒素[/gold]1を得て、ターン終了時まで自身の[gold]毒[/gold]に等しい[gold]筋力[/gold]を得る。",
   "ALCHEMIST-MERCURIAL_FORM.title": "水銀化",

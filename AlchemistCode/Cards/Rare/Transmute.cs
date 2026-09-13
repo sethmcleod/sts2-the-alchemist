@@ -14,7 +14,7 @@ public class Transmute : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Transmute() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public Transmute() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
         WithKeyword(CardKeyword.Exhaust);

@@ -106,7 +106,7 @@
   "ALCHEMIST-MASH.title": "Mash",
   "ALCHEMIST-MELLOW.description": "Whenever one of your cards ferments, gain {MellowPower:diff()} [gold]Block[/gold].",
   "ALCHEMIST-MELLOW.title": "Mellow",
-  "ALCHEMIST-MELTDOWN.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {IfUpgraded:show:16|12} additional damage if you have 6 or more [gold]Poison[/gold].",
+  "ALCHEMIST-MELTDOWN.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {IfUpgraded:show:16|12} additional damage if you have 5 or more [gold]Poison[/gold].",
   "ALCHEMIST-MELTDOWN.title": "Meltdown",
   "ALCHEMIST-MERCURIAL_FORM.description": "At the start of your turn, gain 1 [gold]Poison[/gold], 1 [gold]Antitoxin[/gold], and [gold]Strength[/gold] equal to your [gold]Poison[/gold] this turn.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Mercurial Form",

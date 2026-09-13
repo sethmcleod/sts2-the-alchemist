@@ -106,7 +106,7 @@
   "ALCHEMIST-MASH.title": "Mosto",
   "ALCHEMIST-MELLOW.description": "Sempre que uma de suas cartas fermentar, receba {MellowPower:diff()} de [gold]Proteção[/gold].",
   "ALCHEMIST-MELLOW.title": "Suavizar",
-  "ALCHEMIST-MELTDOWN.description": "Cause {CalculatedDamage:diff()} de dano.\nCausa {IfUpgraded:show:16|12} de dano adicional se você possuir 6 ou mais de [gold]Veneno[/gold].",
+  "ALCHEMIST-MELTDOWN.description": "Cause {CalculatedDamage:diff()} de dano.\nCausa {IfUpgraded:show:16|12} de dano adicional se você possuir 5 ou mais de [gold]Veneno[/gold].",
   "ALCHEMIST-MELTDOWN.title": "Colapso",
   "ALCHEMIST-MERCURIAL_FORM.description": "No início do seu turno, receba 1 de [gold]Veneno[/gold] e 1 de [gold]Antitoxina[/gold], e receba [gold]Força[/gold] equivalente ao seu [gold]Veneno[/gold] neste turno.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Forma Mercurial",

@@ -106,7 +106,7 @@
   "ALCHEMIST-MASH.title": "Ezme",
   "ALCHEMIST-MELLOW.description": "Kartlarından biri her mayalandığında {MellowPower:diff()} [gold]Blok[/gold] elde et.",
   "ALCHEMIST-MELLOW.title": "Yumuşama",
-  "ALCHEMIST-MELTDOWN.description": "{CalculatedDamage:diff()} hasar ver.\n6 veya daha fazla [gold]Zehir[/gold]'e sahipsen fazladan {IfUpgraded:show:16|12} hasar verir.",
+  "ALCHEMIST-MELTDOWN.description": "{CalculatedDamage:diff()} hasar ver.\n5 veya daha fazla [gold]Zehir[/gold]'e sahipsen fazladan {IfUpgraded:show:16|12} hasar verir.",
   "ALCHEMIST-MELTDOWN.title": "Erime",
   "ALCHEMIST-MERCURIAL_FORM.description": "Turunun başında 1 [gold]Zehir[/gold] ve 1 [gold]Antitoksin[/gold] elde et ve bu tur [gold]Zehir[/gold]'in kadar [gold]Kuvvet[/gold] elde et.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Cıva Formu",

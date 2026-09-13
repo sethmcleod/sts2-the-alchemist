@@ -106,7 +106,7 @@
   "ALCHEMIST-MASH.title": "บดหมัก",
   "ALCHEMIST-MELLOW.description": "ทุกครั้งที่การ์ดของคุณบ่ม ได้รับ {MellowPower:diff()} [gold]บล็อก[/gold]",
   "ALCHEMIST-MELLOW.title": "กลมกล่อม",
-  "ALCHEMIST-MELTDOWN.description": "สร้างความเสียหาย {CalculatedDamage:diff()}\nถ้าคุณมี[gold]พิษ[/gold] 6 ขึ้นไป สร้างความเสียหายเพิ่ม {IfUpgraded:show:16|12}",
+  "ALCHEMIST-MELTDOWN.description": "สร้างความเสียหาย {CalculatedDamage:diff()}\nถ้าคุณมี[gold]พิษ[/gold] 5 ขึ้นไป สร้างความเสียหายเพิ่ม {IfUpgraded:show:16|12}",
   "ALCHEMIST-MELTDOWN.title": "หลอมละลาย",
   "ALCHEMIST-MERCURIAL_FORM.description": "ตอนเริ่มต้นเทิร์น ได้รับ 1 [gold]พิษ[/gold] และ 1 [gold]สารต้านพิษ[/gold] และได้รับ[gold]ความแข็งแรง[/gold]เท่ากับ[gold]พิษ[/gold]ที่คุณมีในเทิร์นนี้",
   "ALCHEMIST-MERCURIAL_FORM.title": "ร่างปรอท",

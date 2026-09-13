@@ -106,7 +106,7 @@
   "ALCHEMIST-MASH.title": "Brassin",
   "ALCHEMIST-MELLOW.description": "Lorsque l'une de vos cartes fermente, gagnez {MellowPower:diff()} d'[gold]Armure[/gold].",
   "ALCHEMIST-MELLOW.title": "Velouté",
-  "ALCHEMIST-MELTDOWN.description": "Infligez {CalculatedDamage:diff()} dégâts.\nInflige {IfUpgraded:show:16|12} dégâts supplémentaires si vous avez 6 de [gold]Poison[/gold] ou plus.",
+  "ALCHEMIST-MELTDOWN.description": "Infligez {CalculatedDamage:diff()} dégâts.\nInflige {IfUpgraded:show:16|12} dégâts supplémentaires si vous avez 5 de [gold]Poison[/gold] ou plus.",
   "ALCHEMIST-MELTDOWN.title": "Effondrement",
   "ALCHEMIST-MERCURIAL_FORM.description": "Au début de votre tour, gagnez 1 de [gold]Poison[/gold], 1 d'[gold]Antitoxine[/gold] et autant de [gold]Force[/gold] que votre [gold]Poison[/gold] jusqu'à la fin du tour.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Forme mercurielle",

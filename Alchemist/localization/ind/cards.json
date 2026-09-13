@@ -106,7 +106,7 @@
   "ALCHEMIST-MASH.title": "Tumbuk",
   "ALCHEMIST-MELLOW.description": "Setiap kali salah satu kartumu berfermentasi, dapatkan {MellowPower:diff()} [gold]Blok[/gold].",
   "ALCHEMIST-MELLOW.title": "Melunak",
-  "ALCHEMIST-MELTDOWN.description": "Lakukan {CalculatedDamage:diff()} kerusakan.\nMelakukan {IfUpgraded:show:16|12} kerusakan tambahan jika kamu punya 6 [gold]Racun[/gold] atau lebih.",
+  "ALCHEMIST-MELTDOWN.description": "Lakukan {CalculatedDamage:diff()} kerusakan.\nMelakukan {IfUpgraded:show:16|12} kerusakan tambahan jika kamu punya 5 [gold]Racun[/gold] atau lebih.",
   "ALCHEMIST-MELTDOWN.title": "Lebur",
   "ALCHEMIST-MERCURIAL_FORM.description": "Pada awal giliranmu, dapatkan 1 [gold]Racun[/gold], 1 [gold]Antitoksin[/gold], dan [gold]Kekuatan[/gold] sebanyak [gold]Racun[/gold] milikmu giliran ini.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Wujud Raksa",

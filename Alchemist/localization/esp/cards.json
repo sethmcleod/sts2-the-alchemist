@@ -106,7 +106,7 @@
   "ALCHEMIST-MASH.title": "Macerar",
   "ALCHEMIST-MELLOW.description": "Cada vez que una de tus cartas fermenta, obtienes {MellowPower:diff()} de [gold]bloqueo[/gold].",
   "ALCHEMIST-MELLOW.title": "Suavizado",
-  "ALCHEMIST-MELTDOWN.description": "Infliges {CalculatedDamage:diff()} de daño.\nInfliges {IfUpgraded:show:16|12} de daño adicional si tienes 6 o más de [gold]veneno[/gold].",
+  "ALCHEMIST-MELTDOWN.description": "Infliges {CalculatedDamage:diff()} de daño.\nInfliges {IfUpgraded:show:16|12} de daño adicional si tienes 5 o más de [gold]veneno[/gold].",
   "ALCHEMIST-MELTDOWN.title": "Derretimiento",
   "ALCHEMIST-MERCURIAL_FORM.description": "Al comienzo de tu turno, obtienes 1 de [gold]veneno[/gold], 1 de [gold]antitoxina[/gold] y [gold]fuerza[/gold] igual a tu [gold]veneno[/gold] en este turno.",
   "ALCHEMIST-MERCURIAL_FORM.title": "Forma mercurial",

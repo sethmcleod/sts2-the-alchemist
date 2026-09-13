@@ -14,13 +14,15 @@ mod).
 
 ### Changed
 
+- Buffed Meltdown: Poison threshold 6 -> 5
+- Buffed Numb: cost decreased from 3 -> 2
 - Changed Ferment cards to show the fermented turn count only during combat
 - Changed Tempered: Block 8 (12) -> 10 (13), and additional Block for each card in your Exhaust Pile 3 -> 1 (2)
 - Nerfed Bloom: fermentation 3 (4) -> 2 (3)
-- Nerfed Caustic Strike damage: 6 (8) -> 5 (7)
 - Nerfed Eureka: it now Exhausts
 - Nerfed Puff Up: additional Block for each turn fermented 4 (6) -> 3 (5)
 - Nerfed Ripening: cost increased from 1 -> 2 (1), and Ripening+ no longer adds a random Mix into your Hand each turn
+- Nerfed Transmute: cost increased from 1 (0) -> 2 (1)
 - Nerfed Untended: drawn Ferment cards ferment 1 instead of 2
 - Reworked Brace: "Gain 7 (9) Block. Whenever you are attacked this turn, apply 2 (3) Poison to the attacker."
 
