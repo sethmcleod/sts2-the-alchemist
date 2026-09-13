@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.12] - 2026-09-13
+
 ### Added
 
 - Added final art for Strike and Defend
