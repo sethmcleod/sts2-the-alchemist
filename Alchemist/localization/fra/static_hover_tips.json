@@ -32,5 +32,8 @@
   "ALCHEMIST-ZESTY_MIX.description": "Piochez [blue]1[/blue] carte.",
   "ALCHEMIST-ZESTY_MIX.title": "Mixture vivifiante",
   "ALCHEMIST-ZESTY_MIX_PLUS.description": "Piochez [blue]2[/blue] cartes.",
-  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Mixture vivifiante+"
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Mixture vivifiante+",
+  "BASELIB-SCRY.description": "Regardez les [blue]X[/blue] premières cartes de votre [gold]Pioche[/gold]. Vous pouvez en défausser autant que vous le souhaitez.",
+  "BASELIB-SCRY.smartDescription": "Regardez {Scry:plural:la première carte|les [blue]{Scry:diff()}[/blue] premières cartes} de votre [gold]Pioche[/gold]. Vous pouvez {Scry:plural:la défausser|en défausser autant que vous le souhaitez}.",
+  "BASELIB-SCRY.title": "Scruter"
 }

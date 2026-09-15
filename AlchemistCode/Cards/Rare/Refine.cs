@@ -12,7 +12,7 @@ public class Refine : AlchemistCard
     public Refine() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
-        WithPower<RefinePower>(1, 0);
+        WithQuietPower<RefinePower>(1, 0);
         WithTips(_ => Mixing.MixTips(upgraded: true));
     }
 

@@ -32,5 +32,8 @@
   "ALCHEMIST-ZESTY_MIX.description": "จั่วการ์ด [blue]1[/blue] ใบ",
   "ALCHEMIST-ZESTY_MIX.title": "ยาผสมรสซ่า",
   "ALCHEMIST-ZESTY_MIX_PLUS.description": "จั่วการ์ด [blue]2[/blue] ใบ",
-  "ALCHEMIST-ZESTY_MIX_PLUS.title": "ยาผสมรสซ่า+"
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "ยาผสมรสซ่า+",
+  "BASELIB-SCRY.description": "ดูการ์ด [blue]X[/blue] ใบบนสุดของ[gold]กองจั่ว[/gold] คุณสามารถทิ้งการ์ดเหล่านั้นใบใดก็ได้",
+  "BASELIB-SCRY.smartDescription": "ดูการ์ด [blue]{Scry:diff()}[/blue] ใบบนสุดของ[gold]กองจั่ว[/gold] คุณสามารถทิ้งการ์ดเหล่านั้นใบใดก็ได้",
+  "BASELIB-SCRY.title": "หยั่งรู้"
 }

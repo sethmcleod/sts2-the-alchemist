@@ -32,5 +32,8 @@
   "ALCHEMIST-ZESTY_MIX.description": "Roba [blue]1[/blue] carta.",
   "ALCHEMIST-ZESTY_MIX.title": "Mezcla vivaz",
   "ALCHEMIST-ZESTY_MIX_PLUS.description": "Roba [blue]2[/blue] cartas.",
-  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Mezcla vivaz+"
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Mezcla vivaz+",
+  "BASELIB-SCRY.description": "Mira las [blue]X[/blue] cartas superiores de tu [gold]Pila de robo[/gold]. Puedes descartar cualquiera de ellas.",
+  "BASELIB-SCRY.smartDescription": "Mira {Scry:plural:la carta superior|las [blue]{Scry:diff()}[/blue] cartas superiores} de tu [gold]Pila de robo[/gold]. Puedes descartar {Scry:plural:esa carta|cualquiera de ellas}.",
+  "BASELIB-SCRY.title": "Vislumbrar"
 }

@@ -12,7 +12,7 @@ public class PuffUp : AlchemistCard
 
     public PuffUp() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCalculatedBlock(10, static (card, _) =>
+        WithCalculatedBlock(9, static (card, _) =>
                 (card.IsUpgraded ? 5m : 3m) * ((AlchemistCard)card).FermentTurns,
             ValueProp.Move, 3, 0);
         WithKeyword(CardKeyword.Retain);

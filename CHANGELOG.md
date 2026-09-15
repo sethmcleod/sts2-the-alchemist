@@ -7,6 +7,27 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added the Scry keyword text for the 9 languages BaseLib doesn't have yet
+
+### Changed
+
+- Buffed Bitter Draught: Poison gained 4 -> 3
+- Buffed Fizz: added Scry 1 (2) before the Mixes
+- Buffed Upwell Block: 9 (12) -> 10 (13)
+- Changed Taste Test: added Scry 2 (3) before the draw, and fermentation 2 (3) -> 1 (2)
+- Changed the BaseLib requirement: 3.4.5 -> 3.4.7
+- Nerfed Puff Up Block: 10 (13) -> 9 (12)
+- Nerfed Steep: Uncommon -> Rare, cost 1 (0) -> 2, and Steep+ now gains Innate instead of costing 0
+- Reworked Numb: "Discard all non-Ferment cards in your Hand. Gain 5 (6) Block for each card discarded. Exhaust." Cost decreased from 2 -> 1
+- Reworked Overdose into Premonition: "Scry 4 (5). Draw 1 card. Gain 3 Poison." Premonition+ gains Retain
+- Reworked Vent: "Gain Antitoxin equal to your Poison. Exhaust." Rare -> Uncommon, and cost 1 -> 1 (0)
+
+### Fixed
+
+- Brace, Fresh Batch, Mellow, Overflow, Refine, Ripening and Untended no longer show a tooltip for their own power; the card text already says what it does
+
 ## [0.14.12] - 2026-09-13
 
 ### Added

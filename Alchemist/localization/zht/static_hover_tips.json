@@ -32,5 +32,8 @@
   "ALCHEMIST-ZESTY_MIX.description": "抽 [blue]1[/blue] 張牌。",
   "ALCHEMIST-ZESTY_MIX.title": "爽勁混劑",
   "ALCHEMIST-ZESTY_MIX_PLUS.description": "抽 [blue]2[/blue] 張牌。",
-  "ALCHEMIST-ZESTY_MIX_PLUS.title": "爽勁混劑+"
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "爽勁混劑+",
+  "BASELIB-SCRY.description": "查看你[gold]抽牌堆[/gold]頂端的 [blue]X[/blue] 張牌。你可以丟棄其中任意數量的牌。",
+  "BASELIB-SCRY.smartDescription": "查看你[gold]抽牌堆[/gold]頂端的 [blue]{Scry:diff()}[/blue] 張牌。你可以丟棄其中任意數量的牌。",
+  "BASELIB-SCRY.title": "預見"
 }

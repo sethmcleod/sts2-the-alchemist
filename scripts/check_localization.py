@@ -32,6 +32,25 @@ PLURAL_RE = re.compile(r"\{[A-Za-z_][A-Za-z0-9_]*:plural:((?:[^{}]|\{[^{}]*\})*)
 TAGGED_RE = re.compile(r"\[(gold|purple|blue|green|red)\](.*?)\[/\1\]")
 ANY_TAG_RE = re.compile(r"\[/?[a-z_]+\]")
 
+# Strings another mod ships in only some languages, filled from our locale files: the game merges
+# mod tables key by key in load order and falls back to English per key, so a fill lands where the
+# owner has nothing and would OVERRIDE the owner where it does. Each fill is checked against the
+# owner's English here. Verified against BaseLib BASELIB_FILL_VERSION; re-check which languages
+# BaseLib ships whenever the csproj moves past it
+BASELIB_FILL_VERSION = "3.4.7"
+BASELIB_FILLS = {
+    "static_hover_tips.json": {
+        "BASELIB-SCRY.title": "Scry",
+        "BASELIB-SCRY.description": (
+            "Look at the top [blue]X[/blue] cards of your [gold]Draw Pile[/gold]. "
+            "You may discard any of them."),
+        "BASELIB-SCRY.smartDescription": (
+            "Look at the top {Scry:plural:card|[blue]{Scry:diff()}[/blue] cards} of your "
+            "[gold]Draw Pile[/gold]. You may discard {Scry:plural:it|any of them}."),
+    },
+}
+BASELIB_SHIPS = {"static_hover_tips.json": {"deu", "eng", "ita", "jpn", "kor", "rus", "zhs"}}
+
 
 def placeholders(text: str) -> list[str]:
     return sorted(PLACEHOLDER_RE.findall(text))
@@ -107,25 +126,43 @@ def check_structure(lang: str, eng: dict[str, dict]) -> list[str]:
             continue
         for key in sorted(eng_table.keys() - table.keys()):
             errors.append(f"{lang}/{fname}: missing key {key}")
+        fills = BASELIB_FILLS.get(fname, {})
         for key in sorted(table.keys() - eng_table.keys()):
+            if key.startswith("BASELIB-"):
+                if key not in fills:
+                    errors.append(f"{lang}/{fname}: unknown BaseLib key {key}; only BASELIB_FILLS are allowed")
+                elif lang in BASELIB_SHIPS.get(fname, set()):
+                    errors.append(f"{lang}/{fname}: {key} overrides a string BaseLib ships for {lang}; delete the fill")
+                else:
+                    errors += parity_errors(lang, fname, key, fills[key], table[key])
+                continue
             errors.append(f"{lang}/{fname}: extra key {key}")
+        # Every language BaseLib does not ship must carry the whole fill; a regeneration that
+        # drops the keys (they have no eng source) would otherwise pass in silence
+        if fills and lang not in BASELIB_SHIPS.get(fname, set()):
+            missing = fills.keys() - table.keys()
+            if missing:
+                errors.append(f"{lang}/{fname}: BaseLib fill missing {sorted(missing)}")
         for key in eng_table.keys() & table.keys():
-            src, dst = eng_table[key], table[key]
-            # Same restructuring latitude the tag check grants: with a plural block in
-            # play, a translation may repeat a placeholder across more branches than
-            # English has or collapse identical branches to one use. The base game does
-            # both (CHARGE: Japanese folds {IfUpgraded} to a single use, Russian to
-            # three), so the requirement drops to the same set of names.
-            src_ph, dst_ph = placeholders(src), placeholders(dst)
-            if PLURAL_RE.search(src) or PLURAL_RE.search(dst):
-                src_ph, dst_ph = sorted(set(src_ph)), sorted(set(dst_ph))
-            if src_ph != dst_ph:
-                errors.append(
-                    f"{lang}/{fname}: {key}: placeholders differ "
-                    f"({src_ph} vs {dst_ph})"
-                )
-            if (problem := tag_mismatch(src, dst)) is not None:
-                errors.append(f"{lang}/{fname}: {key}: {problem}")
+            errors += parity_errors(lang, fname, key, eng_table[key], table[key])
+    return errors
+
+
+def parity_errors(lang: str, fname: str, key: str, src: str, dst: str) -> list[str]:
+    """Placeholder and tag parity of one translated string against its source."""
+    errors = []
+    # Same restructuring latitude the tag check grants: with a plural block in
+    # play, a translation may repeat a placeholder across more branches than
+    # English has or collapse identical branches to one use. The base game does
+    # both (CHARGE: Japanese folds {IfUpgraded} to a single use, Russian to
+    # three), so the requirement drops to the same set of names.
+    src_ph, dst_ph = placeholders(src), placeholders(dst)
+    if PLURAL_RE.search(src) or PLURAL_RE.search(dst):
+        src_ph, dst_ph = sorted(set(src_ph)), sorted(set(dst_ph))
+    if src_ph != dst_ph:
+        errors.append(f"{lang}/{fname}: {key}: placeholders differ ({src_ph} vs {dst_ph})")
+    if (problem := tag_mismatch(src, dst)) is not None:
+        errors.append(f"{lang}/{fname}: {key}: {problem}")
     return errors
 
 
@@ -170,6 +207,11 @@ def main() -> None:
     parser.add_argument("langs", nargs="*")
     parser.add_argument("--glossary", type=Path, help="directory of glossary_<lang>.json")
     args = parser.parse_args()
+    csproj = (LOC_DIR.parent.parent / "Alchemist.csproj").read_text(encoding="utf-8")
+    pinned = re.search(r'Include="Alchyr\.Sts2\.BaseLib" Version="([^"]+)"', csproj)
+    if pinned and pinned.group(1) != BASELIB_FILL_VERSION:
+        print(f"warning: BaseLib is {pinned.group(1)}, BASELIB_FILLS were verified against "
+              f"{BASELIB_FILL_VERSION}; re-check which languages BaseLib ships")
 
     eng = {
         p.name: json.loads(p.read_text(encoding="utf-8"))

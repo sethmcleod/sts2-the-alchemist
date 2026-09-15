@@ -1,4 +1,7 @@
 using System.Linq;
+using BaseLib.Cards.Variables;
+using BaseLib.Extensions;
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
@@ -16,7 +19,8 @@ public class TasteTest : AlchemistCard
 
     public TasteTest() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithVar("Turns", 2, 1);
+        WithVar(new ScryVar(2).WithUpgrade(1));
+        WithVar("Turns", 1, 1);
         WithCards(1, 0);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
@@ -28,6 +32,7 @@ public class TasteTest : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        await Scrying.Execute(choiceContext, this);
         await CommonActions.Draw(this, choiceContext);
         var brewing = PileType.Hand.GetPile(Owner).Cards.Where(IsBrewing).ToList();
         if (brewing.Count > 0)

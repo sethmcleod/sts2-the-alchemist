@@ -4,14 +4,14 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
-namespace Alchemist.AlchemistCode.Cards.Uncommon;
+namespace Alchemist.AlchemistCode.Cards.Rare;
 
 [CardTheme(CardTheme.Ferment)]
 public class Steep : AlchemistCard
 {
-    public Steep() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Steep() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
+        WithKeyword(CardKeyword.Innate, UpgradeType.Add);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
 

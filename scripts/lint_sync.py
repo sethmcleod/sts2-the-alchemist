@@ -412,11 +412,6 @@ def parse_number_pairs(desc: str) -> list[tuple[int, int]]:
     return [(int(a), int(b)) for a, b in re.findall(r"(\d+)%?\s*\((\d+)%?\)", desc)]
 
 
-BUILDER = re.compile(
-    r"With(?:Damage|Block|Energy|Cards|Power<\w+>|Var\(\s*\"[^\"]+\")\s*"
-    r"(?:\([^)]*?|,)\s*(\d+)\s*,\s*(-?\d+)\s*\)")
-
-
 def parse_builders(text: str) -> list[tuple[int, int]]:
     """The literal (base, delta) builder pairs.
 
@@ -429,7 +424,7 @@ def parse_builders(text: str) -> list[tuple[int, int]]:
     calculated number. The plain vars beside it on the same card are still checked.
     """
     pairs = []
-    for m in re.finditer(r"With(?:Damage|Block|Energy|Cards|Power<\w+>)\((\d+)\s*,\s*(-?\d+)\)", text):
+    for m in re.finditer(r"With(?:Damage|Block|Energy|Cards|(?:Quiet)?Power<\w+>)\((\d+)\s*,\s*(-?\d+)\)", text):
         base, delta = int(m.group(1)), int(m.group(2))
         if base != 0:
             pairs.append((base, base + delta))
@@ -437,10 +432,11 @@ def parse_builders(text: str) -> list[tuple[int, int]]:
         base, delta = int(m.group(1)), int(m.group(2))
         if base != 0:
             pairs.append((base, base + delta))
-    # named var constructors: new FermentVar("Poison", 2, perTurn: 2).WithUpgrade(1)
+    # var constructors, named or not: new FermentVar("Poison", 2, perTurn: 2).WithUpgrade(1),
+    # new ScryVar(4).WithUpgrade(1). The base is the first number either way
     for m in re.finditer(
-            r"new (?:FermentVar|EnergyVar|IntentHitsVar)\(\s*\"[^\"]+\"\s*,\s*(\d+)[^)]*\)"
-            r"(?:\.WithUpgrade\((\d+)\))?", text):
+            r"new \w+Var\(\s*(?:\"[^\"]+\"\s*,\s*)?(\d+)[^)]*\)"
+            r"\s*(?:\.WithUpgrade\(\s*(-?\d+)m?\s*\))?", text):
         base, delta = int(m.group(1)), int(m.group(2) or 0)
         if base != 0:
             pairs.append((base, base + delta))
