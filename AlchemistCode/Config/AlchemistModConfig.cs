@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.Timeline;
+using MegaCrit.Sts2.Core.Timeline.Epochs;
 
 namespace Alchemist.AlchemistCode.Config;
 
@@ -120,6 +121,7 @@ public class AlchemistModConfig : SimpleModConfig
         // Remove the entries outright rather than set NotObtained, which would render 2-7 as locked slots
         // up front. Progression then restarts clean, with only Alchemist1's slot back via Neow
         RemoveAlchemistEpochs();
+        RestoreFirstChapterSlot();
 
         save.SaveProgressFile();
         Notify("Re-locked all Alchemist cards, relics, potions, and Epochs.");
@@ -133,6 +135,19 @@ public class AlchemistModConfig : SimpleModConfig
         if (!EpochRegistration.Supported) return;
         var ids = EpochRegistration.AlchemistEpochTypes.Select(EpochModel.GetId).ToHashSet();
         epochs.RemoveAll(e => ids.Contains(e.Id));
+    }
+
+    // Neow's reveal is what creates Alchemist1's slot, and it runs once per profile. On a profile where Neow
+    // is already Revealed nothing in the session creates the slot again, so the next run awards Alchemist1
+    // as ObtainedNoSlot: the Timeline draws no tile for it, yet the main menu counts it and disables
+    // Singleplayer until it is revealed, which locks the player out. Re-create the slot as NotObtained,
+    // which is what the save loader's FixMissingSlots does for a Revealed parent
+    private static void RestoreFirstChapterSlot()
+    {
+        if (!EpochRegistration.Supported) return;
+        var progress = SaveManager.Instance.Progress;
+        if (!progress.IsEpochRevealed(EpochModel.GetId<NeowEpoch>())) return;
+        progress.UnlockSlot(EpochModel.GetId<Alchemist1Epoch>());
     }
 
     private static void RemoveFromDiscovered(string fieldName, IEnumerable<ModelId> ids)

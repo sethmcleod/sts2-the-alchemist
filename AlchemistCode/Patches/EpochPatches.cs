@@ -111,8 +111,23 @@ public static class EpochPatches
     [HarmonyPostfix]
     private static void AwardFirstRunEpoch(ProgressSaveManager __instance, SerializablePlayer serializablePlayer, SerializableRun serializableRun)
     {
-        if (Enabled && IsAlchemist(serializablePlayer))
-            AwardPostRun(__instance, EpochModel.Get<Alchemist1Epoch>(), serializablePlayer, serializableRun);
+        if (!Enabled || !IsAlchemist(serializablePlayer)) return;
+        var ch1 = EpochModel.Get<Alchemist1Epoch>();
+        AwardPostRun(__instance, ch1, serializablePlayer, serializableRun);
+        PromoteIfSlotMissing(__instance.Progress, ch1);
+    }
+
+    // The award lands as ObtainedNoSlot when the epoch has no slot entry, which happens after Reset Unlocks
+    // on a profile whose Neow is already Revealed. The Timeline draws no tile for that state, yet the main
+    // menu counts it as discovered and disables Singleplayer until it is revealed, so the player is locked
+    // out. UnlockSlot is what Neow's reveal would have done: it promotes ObtainedNoSlot to Obtained. Any
+    // other state logs an error from UnlockSlot, hence the guard
+    private static void PromoteIfSlotMissing(ProgressState progress, EpochModel epoch)
+    {
+        var entry = progress.Epochs.FirstOrDefault(e => e.Id == epoch.Id);
+        if (entry?.State != EpochState.ObtainedNoSlot) return;
+        if (!progress.IsEpochRevealed(EpochModel.GetId<NeowEpoch>())) return;
+        progress.UnlockSlot(epoch.Id);
     }
 
     // On a first Alchemist run an Act boss awards Alchemist2..4 mid-run, but the root Alchemist1 only lands

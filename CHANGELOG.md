@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Reset Unlocks leaving the first Alchemist Epoch hidden on the Timeline
+
 ## [0.14.13] - 2026-09-14
 
 ### Added
