@@ -32,5 +32,8 @@
   "ALCHEMIST-ZESTY_MIX.description": "[blue]1[/blue] kart çek.",
   "ALCHEMIST-ZESTY_MIX.title": "Mayhoş Karışım",
   "ALCHEMIST-ZESTY_MIX_PLUS.description": "[blue]2[/blue] kart çek.",
-  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Mayhoş Karışım+"
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Mayhoş Karışım+",
+  "BASELIB-SCRY.description": "[gold]Çekme Deste[/gold]'nin en üstündeki [blue]X[/blue] karta bak. İstediklerini atabilirsin.",
+  "BASELIB-SCRY.smartDescription": "[gold]Çekme Deste[/gold]'nin en üstündeki {Scry:plural:karta|[blue]{Scry:diff()}[/blue] karta} bak. {Scry:plural:Onu|İstediklerini} atabilirsin.",
+  "BASELIB-SCRY.title": "Kehanet"
 }

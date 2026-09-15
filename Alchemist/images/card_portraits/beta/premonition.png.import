@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjoto4ed8mygo"
-path="res://.godot/imported/overdose.png-47c6fb68e8628090cc69f865d34deeba.ctex"
+uid="uid://ckki773ltantq"
+path="res://.godot/imported/premonition.png-2dab41548afae78d38d6f4117fbb1157.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/overdose.png"
-dest_files=["res://.godot/imported/overdose.png-47c6fb68e8628090cc69f865d34deeba.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/premonition.png"
+dest_files=["res://.godot/imported/premonition.png-2dab41548afae78d38d6f4117fbb1157.ctex"]
 
 [params]
 

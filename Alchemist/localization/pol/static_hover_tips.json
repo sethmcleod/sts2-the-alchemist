@@ -32,5 +32,8 @@
   "ALCHEMIST-ZESTY_MIX.description": "Dobierz [blue]1[/blue] kartę.",
   "ALCHEMIST-ZESTY_MIX.title": "Rześka mieszanka",
   "ALCHEMIST-ZESTY_MIX_PLUS.description": "Dobierz [blue]2[/blue] karty.",
-  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Rześka mieszanka+"
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Rześka mieszanka+",
+  "BASELIB-SCRY.description": "Spójrz na [blue]X[/blue] górnych kart [gold]stosu rozgrywającego[/gold]. Możesz odrzucić dowolne z nich.",
+  "BASELIB-SCRY.smartDescription": "Spójrz na {Scry:plural:górną kartę|[blue]{Scry:diff()}[/blue] górne karty|[blue]{Scry:diff()}[/blue] górnych kart} [gold]stosu rozgrywającego[/gold]. Możesz odrzucić {Scry:plural:ją|dowolne z nich|dowolne z nich}.",
+  "BASELIB-SCRY.title": "Wróżba"
 }

@@ -32,5 +32,8 @@
   "ALCHEMIST-ZESTY_MIX.description": "Ambil [blue]1[/blue] kartu.",
   "ALCHEMIST-ZESTY_MIX.title": "Campuran Segar",
   "ALCHEMIST-ZESTY_MIX_PLUS.description": "Ambil [blue]2[/blue] kartu.",
-  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Campuran Segar+"
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Campuran Segar+",
+  "BASELIB-SCRY.description": "Lihat [blue]X[/blue] kartu teratas dari [gold]Tumpukan Ambil[/gold] kamu. Kamu boleh menyingkirkan kartu mana pun di antaranya.",
+  "BASELIB-SCRY.smartDescription": "Lihat [blue]{Scry:diff()}[/blue] kartu teratas dari [gold]Tumpukan Ambil[/gold] kamu. Kamu boleh menyingkirkan kartu mana pun di antaranya.",
+  "BASELIB-SCRY.title": "Meramal"
 }

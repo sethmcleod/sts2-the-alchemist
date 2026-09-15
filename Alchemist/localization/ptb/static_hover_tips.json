@@ -32,5 +32,8 @@
   "ALCHEMIST-ZESTY_MIX.description": "Compre [blue]1[/blue] carta.",
   "ALCHEMIST-ZESTY_MIX.title": "Mistura Vibrante",
   "ALCHEMIST-ZESTY_MIX_PLUS.description": "Compre [blue]2[/blue] cartas.",
-  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Mistura Vibrante+"
+  "ALCHEMIST-ZESTY_MIX_PLUS.title": "Mistura Vibrante+",
+  "BASELIB-SCRY.description": "Olhe as [blue]X[/blue] cartas do topo da sua [gold]Pilha de Compra[/gold]. Você pode descartar qualquer uma delas.",
+  "BASELIB-SCRY.smartDescription": "Olhe {Scry:plural:a carta do topo|as [blue]{Scry:diff()}[/blue] cartas do topo} da sua [gold]Pilha de Compra[/gold]. Você pode descartar {Scry:plural:essa carta|qualquer uma delas}.",
+  "BASELIB-SCRY.title": "Vislumbrar"
 }

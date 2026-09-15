@@ -18,6 +18,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -111,6 +112,12 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         card is AlchemistCard { IsMutable: true, Owner.Creature: { } creature }
             ? creature.GetPowerAmount<PoisonPower>()
             : 0m;
+
+    // A power var without the power's own hover tip. The base game shows a tip only for powers a
+    // card names as a keyword (Poison, Strength); a card that spells out its power's effect shows
+    // none (Flame Barrier, Rage, Envenom). BaseLib's WithPower always adds the tip
+    protected ConstructedCardModel WithQuietPower<T>(int baseVal, int upgrade = 0) where T : PowerModel =>
+        WithVar(new PowerVar<T>(baseVal).WithUpgrade(upgrade));
 
     // The other cards in the owner's hand, for a card that scales with them. Zero outside a live
     // combat, where the hand pile is stale or missing
