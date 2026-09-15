@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.13] - 2026-09-14
+
 ### Added
 
 - Added the Scry keyword text for the 9 languages BaseLib doesn't have yet
