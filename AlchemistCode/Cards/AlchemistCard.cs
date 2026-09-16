@@ -105,6 +105,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (vfx != null) NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(vfx);
     }
 
+    // One home for the enemy-side Poison test, as Dose is for the owner's, so the two never drift
     protected static bool Poisoned(Creature? creature) => creature?.HasPower<PoisonPower>() == true;
 
     // The dose a reader adds to its number. Zero on the canonical model, which has no Owner, so the
