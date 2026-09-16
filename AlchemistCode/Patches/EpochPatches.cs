@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Godot;
 using HarmonyLib;
 using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Epochs;
@@ -209,6 +210,13 @@ public static class EpochPatches
     private static void OurPackedPortrait(EpochModel __instance, ref string __result)
     {
         if (__instance is AlchemistEpoch) __result = EpochImageDir + __instance.Id.ToLowerInvariant() + ".png";
+    }
+
+    [HarmonyPatch(typeof(EpochModel), "HasRealPortrait", MethodType.Getter)] [HarmonyPostfix]
+    private static void OurPortraitIsReal(EpochModel __instance, ref bool __result)
+    {
+        if (__instance is AlchemistEpoch)
+            __result = ResourceLoader.Exists(EpochImageDir + __instance.Id.ToLowerInvariant() + ".png");
     }
 
     [HarmonyPatch(typeof(NeowEpoch), "GetTimelineExpansion")] [HarmonyPostfix]

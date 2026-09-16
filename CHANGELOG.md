@@ -9,6 +9,7 @@ mod).
 
 ### Added
 
+- Added beta art for the 7 timeline epochs
 - Added Fling card (1 energy, Uncommon Attack): "Deal 5 damage. Hits an additional time for every 3 (2) Poison you have." It replaces Meltdown
 - Added Preserve card (0 energy, Uncommon multiplayer Skill): "Choose another player. Their Block is not removed at the start of their next turn." Preserve+ lasts 2 turns. It replaces Reflux
 - Added the Aged, Well Aged and Vintage run badges: played Ferment cards with 100, 200 or 300 turns fermented in total
