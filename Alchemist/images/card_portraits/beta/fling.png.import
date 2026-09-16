@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://onmi03btyx41"
-path="res://.godot/imported/reflux_power.png-931a698a23beffefcb0b0bdc6b1867a3.ctex"
+uid="uid://bofvtp1pnrm3h"
+path="res://.godot/imported/fling.png-5c508fc353f335cc4ce4283414c31c05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/reflux_power.png"
-dest_files=["res://.godot/imported/reflux_power.png-931a698a23beffefcb0b0bdc6b1867a3.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/fling.png"
+dest_files=["res://.godot/imported/fling.png-5c508fc353f335cc4ce4283414c31c05.ctex"]
 
 [params]
 

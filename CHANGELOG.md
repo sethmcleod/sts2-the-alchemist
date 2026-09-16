@@ -7,9 +7,26 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added Fling card (1 energy, Uncommon Attack): "Deal 5 damage. Hits an additional time for every 3 (2) Poison you have." It replaces Meltdown
+- Added Preserve card (0 energy, Uncommon multiplayer Skill): "Choose another player. Their Block is not removed at the start of their next turn." Preserve+ lasts 2 turns. It replaces Reflux
+
+### Changed
+
+- Changed Runoff: cost 1 -> 2 (1), Poison applied per card created 1 (2) -> 2
+- Changed Wallop: it now hits once for each card in your Hand
+- Reworked Brine into a Skill: "Gain 2 (3) Antitoxin. Apply 2 (3) Weak to ALL Poisoned enemies."
+- Reworked Heavy Dose: "Deal 26 (32) damage. Gain 4 Poison. Add a Bursting Mix into your Hand for every 4 Poison you have." Heavy Dose+ adds Bursting Mixes+, damage 24 (30) -> 26 (32)
+
 ### Fixed
 
 - Fixed Reset Unlocks leaving the first Alchemist Epoch hidden on the Timeline
+
+### Removed
+
+- Removed Meltdown card, replaced with Fling
+- Removed Reflux card, replaced with Preserve
 
 ## [0.14.13] - 2026-09-14
 

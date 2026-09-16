@@ -20,12 +20,12 @@ public class Puncture : AlchemistCard
 
     protected override bool ConditionalGlow =>
         IsMutable && CombatState?.Enemies.Where(e => e.IsAlive).ToList() is { Count: > 0 } enemies
-        && enemies.TrueForAll(e => e.GetPowerAmount<PoisonPower>() > 0);
+        && enemies.TrueForAll(Poisoned);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
-        if (play.Target is { IsAlive: true } target && target.GetPowerAmount<PoisonPower>() > 0)
+        if (play.Target is { IsAlive: true } target && Poisoned(target))
             await CommonActions.Apply<VulnerablePower>(choiceContext, this, play);
     }
 }

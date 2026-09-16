@@ -24,13 +24,11 @@ public partial class Fallout : AlchemistCard
         WithTip(typeof(PoisonPower));
     }
 
-    private static bool Poisoned(Creature? target) => target?.HasPower<PoisonPower>() == true;
-
     private decimal BonusFor(Creature? target, CardModel? cardSource) =>
         cardSource == this && Poisoned(target) ? DynamicVars["Bonus"].IntValue : 0m;
 
     protected override bool ConditionalGlow =>
-        IsMutable && CombatState != null && CombatState.Enemies.Any(e => e.IsAlive && Poisoned(e));
+        IsMutable && CombatState != null && CombatState.HittableEnemies.Any(Poisoned);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

@@ -44,7 +44,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-WHITE_HEAT"] = ModelDb.Card<WaterDown>().Id!,
         ["ALCHEMIST-RIPEN"] = ModelDb.Card<Rerun>().Id!,
         ["ALCHEMIST-SIMMER"] = ModelDb.Card<Runoff>().Id!,
-        ["ALCHEMIST-QUAFF"] = ModelDb.Card<Meltdown>().Id!,
+        ["ALCHEMIST-QUAFF"] = ModelDb.Card<Fling>().Id!,
         ["ALCHEMIST-IMMUNIZE"] = ModelDb.Card<Mellow>().Id!,
         ["ALCHEMIST-POULTICE"] = ModelDb.Card<Upwell>().Id!,
         ["ALCHEMIST-SLOW_BURN"] = ModelDb.Card<Mortar>().Id!,
@@ -53,6 +53,8 @@ public static class SaveRenamePatches
         ["ALCHEMIST-VIAL_IN_RESERVE"] = ModelDb.Card<Uncork>().Id!,
         // Cuts, not renames: each removed card maps to the new card in its slot, so a mid-save
         // update hands the player something new instead of a blank deprecated card
+        ["ALCHEMIST-MELTDOWN"] = ModelDb.Card<Fling>().Id!,
+        ["ALCHEMIST-REFLUX"] = ModelDb.Card<Preserve>().Id!,
         ["ALCHEMIST-DOUBLE_DOSE"] = ModelDb.Card<Fumigate>().Id!,
         ["ALCHEMIST-QUICKLIME"] = ModelDb.Card<Spores>().Id!,
         ["ALCHEMIST-ADAPT"] = ModelDb.Card<Vent>().Id!,

@@ -1,37 +1,31 @@
-using BaseLib.Extensions;
-using BaseLib.Utils;
+using Alchemist.AlchemistCode.Powers;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-[CardTheme(CardTheme.Ferment, CardTheme.Poison)]
+[CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
 public class Brine : AlchemistCard
 {
-    protected override bool Ferments => true;
-
-    private const int Hits = 2;
-
-    public Brine() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public Brine() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
     {
-        WithCalculatedDamage(0,
-            static (card, target) => (target?.GetPowerAmount<PoisonPower>() ?? 0m) + Ripened(card), ValueProp.Move);
-        WithVar("PerTurn", 2, 1);
-        WithKeyword(CardKeyword.Retain);
+        WithVar("antitoxin", 2, 1);
+        WithPower<WeakPower>(2, 1);
+        WithTip(typeof(AntitoxinPower));
         WithTip(typeof(PoisonPower));
     }
 
-    private static decimal Ripened(CardModel card) =>
-        card is AlchemistCard { IsMutable: true, CombatState: not null } ferment
-            ? ferment.FermentTurns * card.DynamicVars["PerTurn"].IntValue
-            : 0m;
+    protected override bool ConditionalGlow =>
+        IsMutable && CombatState != null && CombatState.HittableEnemies.Any(Poisoned);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, Hits, vfx: HitVfx("vfx/vfx_slime_impact"),
-            tmpSfx: "blunt_attack.mp3").Execute(choiceContext);
+        if (CombatState is not { } combat) return;
+        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, DynamicVars["antitoxin"].IntValue,
+            Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(choiceContext, combat.HittableEnemies.Where(Poisoned),
+            DynamicVars["WeakPower"].IntValue, Owner.Creature, this);
     }
 }

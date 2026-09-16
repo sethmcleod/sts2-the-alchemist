@@ -105,6 +105,8 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (vfx != null) NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(vfx);
     }
 
+    protected static bool Poisoned(Creature? creature) => creature?.HasPower<PoisonPower>() == true;
+
     // The dose a reader adds to its number. Zero on the canonical model, which has no Owner, so the
     // compendium shows the base value and only the combat instance shows the live total. Every card
     // that says "equal to your Poison" reads it here so the rule has one home

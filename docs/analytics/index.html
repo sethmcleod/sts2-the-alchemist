@@ -703,7 +703,106 @@
           offers: ['offered', -1],
           acts: ['act', 1],
         },
+        view: 'overview',
+        diff: [null, null], // the diff picks from the URL, applied once the selects have options
+        diffDefault: ['', ''],
       };
+
+      // Browsers unload an idle tab and reload it from its URL when it is opened again. The
+      // active tab and every non-default filter live in the hash, so that reload (and a pasted
+      // link) lands on the same view. The scroll offset goes through sessionStorage, which
+      // survives the same reload but does not follow the link.
+
+      const VIEWS = [...document.querySelectorAll('.tab')].map((t) => t.dataset.view);
+      const SCROLL_KEY = 'alchemist-analytics-scroll';
+
+      function readUrl() {
+        const [view, query = ''] = location.hash.slice(1).split('?');
+        if (VIEWS.includes(view)) state.view = view;
+        const q = new URLSearchParams(query);
+        const pick = (key, allowed, apply) => {
+          if (!q.has(key)) return;
+          const v = q.get(key);
+          if (allowed(v)) apply(v);
+        };
+        const mods = META.mod_versions;
+        pick(
+          'days',
+          (v) => ['7', '30', '90', 'all'].includes(v),
+          (v) => (state.days = v === 'all' ? 'all' : Number(v)),
+        );
+        pick(
+          'mod',
+          (v) => v === 'all' || mods.includes(v) || (v.startsWith('>=') && mods.includes(v.slice(2))),
+          (v) => (state.mod = v),
+        );
+        pick('game', (v) => v === 'all' || META.game_versions.includes(v), (v) => (state.game = v));
+        pick('ep', (v) => [...$('epSel').options].some((o) => o.value === v), (v) => (state.ep = v));
+        pick('mp', (v) => v === '1', () => (state.mp = true));
+        pick('min', (v) => /^\d+$/.test(v) && Number(v) >= 1, (v) => (state.minRuns = Number(v)));
+        pick('q', () => true, (v) => (state.search = v.trim()));
+        pick(
+          'themes',
+          () => true,
+          (v) => (state.themes = new Set(v.split(',').filter((t) => META.themes.includes(t)))),
+        );
+        pick('x', (v) => ['deck', 'pick'].includes(v), (v) => (state.xMetric = v));
+        pick('a', (v) => mods.includes(v), (v) => (state.diff[0] = v));
+        pick('b', (v) => mods.includes(v), (v) => (state.diff[1] = v));
+      }
+
+      function writeUrl() {
+        const q = new URLSearchParams();
+        if (state.days !== 30) q.set('days', state.days);
+        if (state.mod !== 'all') q.set('mod', state.mod);
+        if (state.game !== 'all') q.set('game', state.game);
+        if (state.ep !== 'all') q.set('ep', state.ep);
+        if (state.mp) q.set('mp', '1');
+        if (state.minRuns !== 3) q.set('min', state.minRuns);
+        if (state.search) q.set('q', state.search);
+        if (state.themes.size) q.set('themes', [...state.themes].join(','));
+        if (state.xMetric !== 'deck') q.set('x', state.xMetric);
+        if ($('diffA').value !== state.diffDefault[0]) q.set('a', $('diffA').value);
+        if ($('diffB').value !== state.diffDefault[1]) q.set('b', $('diffB').value);
+        const query = q.toString();
+        history.replaceState(null, '', '#' + state.view + (query ? '?' + query : ''));
+      }
+
+      function showView(view) {
+        state.view = view;
+        document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('on', t.dataset.view === view));
+        document.querySelectorAll('.view').forEach((v) => v.classList.toggle('on', v.id === 'view-' + view));
+      }
+
+      // The browser restores scroll before the data has rendered, when the page is still short,
+      // so the offset is kept by hand and applied after the first render.
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      function saveScroll() {
+        try {
+          sessionStorage.setItem(SCROLL_KEY, String(Math.round(window.scrollY)));
+        } catch {}
+      }
+      let scrollTimer = 0;
+      window.addEventListener(
+        'scroll',
+        () => {
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(saveScroll, 100);
+        },
+        { passive: true },
+      );
+      // a background tab gets no scroll events, and it is the one the browser unloads
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') saveScroll();
+      });
+      window.addEventListener('pagehide', saveScroll);
+      function restoreScroll() {
+        let y = 0;
+        try {
+          y = Number(sessionStorage.getItem(SCROLL_KEY)) || 0;
+        } catch {}
+        if (y > 0) window.scrollTo(0, y);
+      }
 
       // ---------- filtering & aggregation ----------
 
@@ -2056,6 +2155,7 @@
 
       function renderAll() {
         SINCE = sinceDay();
+        writeUrl();
         renderOverview();
         renderCards();
         renderFirstPicks();
@@ -2134,6 +2234,9 @@
         $('filters').hidden = false;
         $('tabs').hidden = false;
 
+        // the chip rows bake their "on" state at build time, so the URL is read before them;
+        // the selects get their restored values once they have options
+        readUrl();
         chipRow(
           $('dateChips'),
           [
@@ -2166,6 +2269,15 @@
           $('diffA').value = META.mod_versions[META.mod_versions.length - 2];
           $('diffB').value = META.mod_versions[META.mod_versions.length - 1];
         }
+        state.diffDefault = [$('diffA').value, $('diffB').value];
+        if (state.diff[0]) $('diffA').value = state.diff[0];
+        if (state.diff[1]) $('diffB').value = state.diff[1];
+        $('modSel').value = state.mod;
+        $('gameSel').value = state.game;
+        $('epSel').value = state.ep;
+        $('includeMP').checked = state.mp;
+        $('minRunsVal').textContent = state.minRuns;
+        $('cardSearch').value = state.search;
         $('modSel').addEventListener('change', (e) => {
           state.mod = e.target.value;
           renderAll();
@@ -2194,6 +2306,7 @@
         });
         $('cardSearch').addEventListener('input', (e) => {
           state.search = e.target.value.trim();
+          writeUrl();
           renderCards();
         });
         chipRow(
@@ -2211,8 +2324,14 @@
           (v) => state.xMetric === v,
           (v) => (state.xMetric = v),
         );
-        $('diffA').addEventListener('change', renderDiff);
-        $('diffB').addEventListener('change', renderDiff);
+        $('diffA').addEventListener('change', () => {
+          writeUrl();
+          renderDiff();
+        });
+        $('diffB').addEventListener('change', () => {
+          writeUrl();
+          renderDiff();
+        });
         $('modalClose').addEventListener('click', closeModal);
         $('modalBack').addEventListener('click', (e) => {
           if (e.target === $('modalBack')) closeModal();
@@ -2223,17 +2342,14 @@
 
         document.querySelectorAll('.tab').forEach((tab) =>
           tab.addEventListener('click', () => {
-            document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('on', t === tab));
-            document
-              .querySelectorAll('.view')
-              .forEach((v) => v.classList.toggle('on', v.id === 'view-' + tab.dataset.view));
-            history.replaceState(null, '', '#' + tab.dataset.view);
+            showView(tab.dataset.view);
+            writeUrl();
           }),
         );
-        const hash = location.hash.slice(1);
-        if (hash) document.querySelector(`.tab[data-view="${hash}"]`)?.click();
+        showView(state.view);
 
         renderAll();
+        restoreScroll();
       }
       init();
     </script>
