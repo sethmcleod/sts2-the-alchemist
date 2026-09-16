@@ -223,7 +223,9 @@ def check_asset_literals() -> list[str]:
     """
     errors = []
     for path in sorted(CODE.rglob("*.cs")):
-        for m in re.finditer(r'"([A-Za-z0-9_/\.-]+\.(?:png|tscn|tres|wav|ogg|ttf|gdshader))"', path.read_text()):
+        # A line marked "// os path" names a file on disk outside the pck, which this check cannot see
+        text = "\n".join(l for l in path.read_text().splitlines() if "// os path" not in l)
+        for m in re.finditer(r'"([A-Za-z0-9_/\.-]+\.(?:png|tscn|tres|wav|ogg|ttf|gdshader))"', text):
             ref = m.group(1)
             if ref.startswith("res://"):
                 cand = [REPO / ref[len("res://"):]]

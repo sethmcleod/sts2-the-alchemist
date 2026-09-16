@@ -541,7 +541,9 @@
           </div>
           <div class="panel">
             <h2>Mixes played vs created</h2>
-            <div class="note">A Mix created but never played was lost to Ethereal, the end-of-turn discard, or Combine.</div>
+            <div class="note">
+              A Mix created but never played was lost to Ethereal, the end-of-turn discard, or Combine.
+            </div>
             <div class="scroll" id="playTable"></div>
           </div>
         </div>
@@ -630,7 +632,9 @@
         </div>
         <div class="panel">
           <h2>Fights by act</h2>
-          <div class="note">Turns and damage per fight, averaged by act. Long fights were the killer in the 0.11 diagnosis.</div>
+          <div class="note">
+            Turns and damage per fight, averaged by act. Long fights were the killer in the 0.11 diagnosis.
+          </div>
           <div class="scroll" id="actTable"></div>
         </div>
       </div>
@@ -736,19 +740,51 @@
           (v) => v === 'all' || mods.includes(v) || (v.startsWith('>=') && mods.includes(v.slice(2))),
           (v) => (state.mod = v),
         );
-        pick('game', (v) => v === 'all' || META.game_versions.includes(v), (v) => (state.game = v));
-        pick('ep', (v) => [...$('epSel').options].some((o) => o.value === v), (v) => (state.ep = v));
-        pick('mp', (v) => v === '1', () => (state.mp = true));
-        pick('min', (v) => /^\d+$/.test(v) && Number(v) >= 1, (v) => (state.minRuns = Number(v)));
-        pick('q', () => true, (v) => (state.search = v.trim()));
+        pick(
+          'game',
+          (v) => v === 'all' || META.game_versions.includes(v),
+          (v) => (state.game = v),
+        );
+        pick(
+          'ep',
+          (v) => [...$('epSel').options].some((o) => o.value === v),
+          (v) => (state.ep = v),
+        );
+        pick(
+          'mp',
+          (v) => v === '1',
+          () => (state.mp = true),
+        );
+        pick(
+          'min',
+          (v) => /^\d+$/.test(v) && Number(v) >= 1,
+          (v) => (state.minRuns = Number(v)),
+        );
+        pick(
+          'q',
+          () => true,
+          (v) => (state.search = v.trim()),
+        );
         pick(
           'themes',
           () => true,
           (v) => (state.themes = new Set(v.split(',').filter((t) => META.themes.includes(t)))),
         );
-        pick('x', (v) => ['deck', 'pick'].includes(v), (v) => (state.xMetric = v));
-        pick('a', (v) => mods.includes(v), (v) => (state.diff[0] = v));
-        pick('b', (v) => mods.includes(v), (v) => (state.diff[1] = v));
+        pick(
+          'x',
+          (v) => ['deck', 'pick'].includes(v),
+          (v) => (state.xMetric = v),
+        );
+        pick(
+          'a',
+          (v) => mods.includes(v),
+          (v) => (state.diff[0] = v),
+        );
+        pick(
+          'b',
+          (v) => mods.includes(v),
+          (v) => (state.diff[1] = v),
+        );
       }
 
       function writeUrl() {
@@ -1499,6 +1535,7 @@
             'mix_syrupy',
             'mix_zesty',
             'mix_acrid',
+            'mix_poison',
             'mix_sparkling',
             'mix_compound',
             'poison_gained',
@@ -1520,6 +1557,7 @@
           mix_syrupy: 0,
           mix_zesty: 0,
           mix_acrid: 0,
+          mix_poison: 0,
           mix_sparkling: 0,
           mix_compound: 0,
           poison_gained: 0,
@@ -1536,14 +1574,21 @@
           runs: 0,
         };
         const mixTotal =
-          econ2.mix_bursting + econ2.mix_fuming + econ2.mix_syrupy + econ2.mix_zesty +
-          econ2.mix_acrid + econ2.mix_sparkling + econ2.mix_compound;
+          econ2.mix_bursting +
+          econ2.mix_fuming +
+          econ2.mix_syrupy +
+          econ2.mix_zesty +
+          econ2.mix_acrid +
+          econ2.mix_poison +
+          econ2.mix_sparkling +
+          econ2.mix_compound;
         const mixTop = [
           ['Bursting', econ2.mix_bursting],
           ['Fuming', econ2.mix_fuming],
           ['Syrupy', econ2.mix_syrupy],
           ['Zesty', econ2.mix_zesty],
           ['Acrid', econ2.mix_acrid],
+          ['Poison', econ2.mix_poison],
           ['Sparkling', econ2.mix_sparkling],
           ['Compound', econ2.mix_compound],
         ].sort((a, b) => b[1] - a[1]);
@@ -1670,6 +1715,7 @@
               'mix_syrupy',
               'mix_zesty',
               'mix_acrid',
+              'mix_poison',
               'mix_sparkling',
               'mix_compound',
             ],
@@ -1681,14 +1727,14 @@
           econDays.map(([day, g]) => ({ day, absorbed: g.poison_absorbed, bled: g.poison_bled })),
         );
 
-        // The Mix icon colours: Bursting red, Fuming orange, Sparkling yellow, Acrid green,
-        // Syrupy blue, Zesty purple, Compound white. The three warm ones are spaced far enough
-        // apart in hue to read as three lines, not one
+        // The Mix icon colours: Bursting red, Fuming orange, Sparkling yellow, Acrid green, Poison
+        // (the retired Poison Mix) teal, Syrupy blue, Zesty purple, Compound white
         const mixDefs = [
           ['Bursting', 'mix_bursting', '#f03c3c'],
           ['Fuming', 'mix_fuming', '#ff9424'],
           ['Sparkling', 'mix_sparkling', '#ffe14a'],
           ['Acrid', 'mix_acrid', '#4fd06a'],
+          ['Poison', 'mix_poison', '#3ad6c6'],
           ['Syrupy', 'mix_syrupy', '#4a90e8'],
           ['Zesty', 'mix_zesty', '#c07aff'],
           ['Compound', 'mix_compound', '#f4f4f4'],
@@ -1815,7 +1861,12 @@
             { key: 'name', label: 'Mix' },
             { key: 'created', label: 'Created', num: true, render: (r) => num(r.created) },
             { key: 'played', label: 'Played', num: true, render: (r) => num(r.played) },
-            { key: 'share', label: 'Played share', num: true, render: (r) => (r.share == null ? '–' : bar(Math.min(r.share, 1))) },
+            {
+              key: 'share',
+              label: 'Played share',
+              num: true,
+              render: (r) => (r.share == null ? '–' : bar(Math.min(r.share, 1))),
+            },
           ],
           plays,
         );
@@ -2197,30 +2248,47 @@
             return r.json();
           });
         try {
-          [META, CMETA, RUNS, CARDS, CHOICES, RELICS, DEATHS, FLOORS, ENC, THEMES, ECON, FIRSTS, POTIONS,
-            SOURCES, PAIRS, OFFERS, PLAYS, ACTS] =
-            await Promise.all(
-              [
-                'meta',
-                'cards_meta',
-                'runs_daily',
-                'cards_daily',
-                'choices_daily',
-                'relics_daily',
-                'deaths_daily',
-                'death_floors_daily',
-                'encounters_daily',
-                'themes_daily',
-                'economy_daily',
-                'first_picks_daily',
-                'potion_uses_daily',
-                'mix_sources_daily',
-                'compound_pairs_daily',
-                'brew_offers_daily',
-                'mix_plays_daily',
-                'acts_daily',
-              ].map(load),
-            );
+          [
+            META,
+            CMETA,
+            RUNS,
+            CARDS,
+            CHOICES,
+            RELICS,
+            DEATHS,
+            FLOORS,
+            ENC,
+            THEMES,
+            ECON,
+            FIRSTS,
+            POTIONS,
+            SOURCES,
+            PAIRS,
+            OFFERS,
+            PLAYS,
+            ACTS,
+          ] = await Promise.all(
+            [
+              'meta',
+              'cards_meta',
+              'runs_daily',
+              'cards_daily',
+              'choices_daily',
+              'relics_daily',
+              'deaths_daily',
+              'death_floors_daily',
+              'encounters_daily',
+              'themes_daily',
+              'economy_daily',
+              'first_picks_daily',
+              'potion_uses_daily',
+              'mix_sources_daily',
+              'compound_pairs_daily',
+              'brew_offers_daily',
+              'mix_plays_daily',
+              'acts_daily',
+            ].map(load),
+          );
         } catch (e) {
           $('fresh').textContent = '';
           $('loadError').hidden = false;
