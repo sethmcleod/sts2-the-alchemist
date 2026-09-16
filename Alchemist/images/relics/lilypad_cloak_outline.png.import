@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg3fau0l0lwlr"
-path="res://.godot/imported/second_skin.png-cf0a0b801f237b179fa57af300603fd5.ctex"
+uid="uid://csevteqq16okv"
+path="res://.godot/imported/lilypad_cloak_outline.png-8de76fb4875468db06ef31b2bf48ee6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/second_skin.png"
-dest_files=["res://.godot/imported/second_skin.png-cf0a0b801f237b179fa57af300603fd5.ctex"]
+source_file="res://Alchemist/images/relics/lilypad_cloak_outline.png"
+dest_files=["res://.godot/imported/lilypad_cloak_outline.png-8de76fb4875468db06ef31b2bf48ee6c.ctex"]
 
 [params]
 

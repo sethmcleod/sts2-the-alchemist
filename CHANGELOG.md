@@ -11,10 +11,12 @@ mod).
 
 - Added beta art for the 7 timeline epochs
 - Added Fling card (1 energy, Uncommon Attack): "Deal 5 damage. Hits an additional time for every 3 (2) Poison you have." It replaces Meltdown
+- Added Homunculus relic (Rare): "At the start of each combat, put a Ferment card from your Draw Pile into your Hand. It ferments 2." It replaces Bitterroot
 - Added Preserve card (0 energy, Uncommon multiplayer Skill): "Choose another player. Their Block is not removed at the start of their next turn." Preserve+ lasts 2 turns. It replaces Reflux
 - Added the Aged, Well Aged and Vintage run badges: played Ferment cards with 100, 200 or 300 turns fermented in total
 - Added the Spotless run badge: won after gaining 100 or more Poison without ever taking Poison damage
 - Added the Thick Skin, Iron Stomach and Immune run badges: held 30, 50 or 80 Antitoxin at once
+- Added Toadstone relic (Uncommon): "Whenever you gain Antitoxin, gain an additional 1 Antitoxin." It replaces Extra Dose
 
 ### Changed
 
@@ -22,6 +24,8 @@ mod).
 - Changed the Mixes badge thresholds: 40 / 80 / 120 -> 60 / 120 / 200
 - Changed Wallop: it now hits once for each card in your Hand
 - Moved the Potion Sale badge next to Ka-Ching on the run summary and in the run history
+- Renamed Golden Leaf relic to Chimera Blossom
+- Renamed Second Skin relic to Lilypad Cloak
 - Reworked Brine into a Skill: "Gain 2 (3) Antitoxin. Apply 2 (3) Weak to ALL Poisoned enemies."
 - Reworked Heavy Dose: "Deal 26 (32) damage. Gain 4 Poison. Add a Bursting Mix into your Hand for every 4 Poison you have." Heavy Dose+ adds Bursting Mixes+, damage 24 (30) -> 26 (32)
 
@@ -31,6 +35,8 @@ mod).
 
 ### Removed
 
+- Removed Bitterroot relic, replaced with Homunculus
+- Removed Extra Dose relic, replaced with Toadstone
 - Removed Meltdown card, replaced with Fling
 - Removed Reflux card, replaced with Preserve
 

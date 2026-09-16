@@ -103,11 +103,15 @@ public static class SaveRenamePatches
     {
         ["ALCHEMIST-WEATHERED_KIT"] = ModelDb.Relic<MurkyFlask>().Id!,
         ["ALCHEMIST-GILDED_KIT"] = ModelDb.Relic<RadiantFlask>().Id!,
+        ["ALCHEMIST-SECOND_SKIN"] = ModelDb.Relic<LilypadCloak>().Id!,
+        ["ALCHEMIST-GOLDEN_LEAF"] = ModelDb.Relic<ChimeraBlossom>().Id!,
         // Cuts, not renames: each removed relic maps to the relic that took its slot
-        ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Bitterroot>().Id!,
-        ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<ExtraDose>().Id!,
+        ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Homunculus>().Id!,
+        ["ALCHEMIST-BITTERROOT"] = ModelDb.Relic<Homunculus>().Id!,
+        ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<Toadstone>().Id!,
+        ["ALCHEMIST-EXTRA_DOSE"] = ModelDb.Relic<Toadstone>().Id!,
         ["ALCHEMIST-MIDAS_FRUIT"] = ModelDb.Relic<GlowingShard>().Id!,
-        ["ALCHEMIST-AURIC_SEAL"] = ModelDb.Relic<GoldenLeaf>().Id!,
+        ["ALCHEMIST-AURIC_SEAL"] = ModelDb.Relic<ChimeraBlossom>().Id!,
     };
 
     // InitIds runs once at startup, after ModelDb.Init has registered every model (mod models

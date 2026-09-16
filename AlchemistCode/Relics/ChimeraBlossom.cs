@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-public class GoldenLeaf : AlchemistRelic
+public class ChimeraBlossom : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
 

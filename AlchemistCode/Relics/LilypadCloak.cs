@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-public class SecondSkin : AlchemistRelic
+public class LilypadCloak : AlchemistRelic
 {
     private const int Block = 2;
 

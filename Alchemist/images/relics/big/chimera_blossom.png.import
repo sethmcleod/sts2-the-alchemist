@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eqh73x82xk8i"
-path="res://.godot/imported/bitterroot.png-05ee977f1387c78f5280014f19f0af1a.ctex"
+uid="uid://bcycdsu0t44oo"
+path="res://.godot/imported/chimera_blossom.png-22f1bef13d5bb88b6eb3bcba09b7b185.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/big/bitterroot.png"
-dest_files=["res://.godot/imported/bitterroot.png-05ee977f1387c78f5280014f19f0af1a.ctex"]
+source_file="res://Alchemist/images/relics/big/chimera_blossom.png"
+dest_files=["res://.godot/imported/chimera_blossom.png-22f1bef13d5bb88b6eb3bcba09b7b185.ctex"]
 
 [params]
 

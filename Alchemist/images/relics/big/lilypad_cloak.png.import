@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwo03yk3xuhmd"
-path="res://.godot/imported/second_skin.png-8e161e8074b69908c87c479bca32a859.ctex"
+path="res://.godot/imported/lilypad_cloak.png-08edadcb9421663170345b0459b2e96e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/big/second_skin.png"
-dest_files=["res://.godot/imported/second_skin.png-8e161e8074b69908c87c479bca32a859.ctex"]
+source_file="res://Alchemist/images/relics/big/lilypad_cloak.png"
+dest_files=["res://.godot/imported/lilypad_cloak.png-08edadcb9421663170345b0459b2e96e.ctex"]
 
 [params]
 

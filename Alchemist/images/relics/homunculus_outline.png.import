@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csevteqq16okv"
-path="res://.godot/imported/second_skin_outline.png-50020e9b172dba1273fe977938ae7adb.ctex"
+uid="uid://bftvbd1c2sans"
+path="res://.godot/imported/homunculus_outline.png-3a381efb5d32da6864035adab63d335a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/second_skin_outline.png"
-dest_files=["res://.godot/imported/second_skin_outline.png-50020e9b172dba1273fe977938ae7adb.ctex"]
+source_file="res://Alchemist/images/relics/homunculus_outline.png"
+dest_files=["res://.godot/imported/homunculus_outline.png-3a381efb5d32da6864035adab63d335a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bea7n87koq4uu"
-path="res://.godot/imported/golden_leaf.png-e719c715576a990d3e513425a15cb635.ctex"
+uid="uid://dpvpt3pj4wvwv"
+path="res://.godot/imported/toadstone.png-ab96408e55b289f7c6b1b30628240c8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/golden_leaf.png"
-dest_files=["res://.godot/imported/golden_leaf.png-e719c715576a990d3e513425a15cb635.ctex"]
+source_file="res://Alchemist/images/relics/big/toadstone.png"
+dest_files=["res://.godot/imported/toadstone.png-ab96408e55b289f7c6b1b30628240c8f.ctex"]
 
 [params]
 

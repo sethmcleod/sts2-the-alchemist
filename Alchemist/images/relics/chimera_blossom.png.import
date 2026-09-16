@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjg3c27dl7uyg"
-path="res://.godot/imported/golden_leaf_outline.png-aadf2604910dbfe7694a3fdc84ab0230.ctex"
+uid="uid://bea7n87koq4uu"
+path="res://.godot/imported/chimera_blossom.png-635bdcd2e0ab0e3026f887c05bab8b2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/golden_leaf_outline.png"
-dest_files=["res://.godot/imported/golden_leaf_outline.png-aadf2604910dbfe7694a3fdc84ab0230.ctex"]
+source_file="res://Alchemist/images/relics/chimera_blossom.png"
+dest_files=["res://.godot/imported/chimera_blossom.png-635bdcd2e0ab0e3026f887c05bab8b2d.ctex"]
 
 [params]
 

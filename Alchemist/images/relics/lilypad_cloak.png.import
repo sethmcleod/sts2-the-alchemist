@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cew6o85cyk7pg"
-path="res://.godot/imported/extra_dose.png-4a11f8d711785d95c4b212f6552d2f3e.ctex"
+uid="uid://cg3fau0l0lwlr"
+path="res://.godot/imported/lilypad_cloak.png-4e1934e282612520296884c69d54f246.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/extra_dose.png"
-dest_files=["res://.godot/imported/extra_dose.png-4a11f8d711785d95c4b212f6552d2f3e.ctex"]
+source_file="res://Alchemist/images/relics/lilypad_cloak.png"
+dest_files=["res://.godot/imported/lilypad_cloak.png-4e1934e282612520296884c69d54f246.ctex"]
 
 [params]
 

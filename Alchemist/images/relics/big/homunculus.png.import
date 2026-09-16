@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvyh2sc7fs32b"
-path="res://.godot/imported/bitterroot.png-cdf7804af3d92d4d8208f4e4731688ef.ctex"
+uid="uid://eqh73x82xk8i"
+path="res://.godot/imported/homunculus.png-187201e113693630d9c15ba4f277bbff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/bitterroot.png"
-dest_files=["res://.godot/imported/bitterroot.png-cdf7804af3d92d4d8208f4e4731688ef.ctex"]
+source_file="res://Alchemist/images/relics/big/homunculus.png"
+dest_files=["res://.godot/imported/homunculus.png-187201e113693630d9c15ba4f277bbff.ctex"]
 
 [params]
 

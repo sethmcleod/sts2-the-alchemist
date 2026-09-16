@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpvpt3pj4wvwv"
-path="res://.godot/imported/extra_dose.png-88abedf4afc597aec961a60aa1d83e52.ctex"
+uid="uid://cpbou68kuuycu"
+path="res://.godot/imported/toadstone_outline.png-fdcae0d3f57cc20dcf268734d4c57fce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/big/extra_dose.png"
-dest_files=["res://.godot/imported/extra_dose.png-88abedf4afc597aec961a60aa1d83e52.ctex"]
+source_file="res://Alchemist/images/relics/toadstone_outline.png"
+dest_files=["res://.godot/imported/toadstone_outline.png-fdcae0d3f57cc20dcf268734d4c57fce.ctex"]
 
 [params]
 

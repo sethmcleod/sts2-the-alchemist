@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpbou68kuuycu"
-path="res://.godot/imported/extra_dose_outline.png-5222393f2507414e45f1e19334d65fbf.ctex"
+uid="uid://bjg3c27dl7uyg"
+path="res://.godot/imported/chimera_blossom_outline.png-ed280f7c3ed6f4f17f2c4086cc311dcf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/relics/extra_dose_outline.png"
-dest_files=["res://.godot/imported/extra_dose_outline.png-5222393f2507414e45f1e19334d65fbf.ctex"]
+source_file="res://Alchemist/images/relics/chimera_blossom_outline.png"
+dest_files=["res://.godot/imported/chimera_blossom_outline.png-ed280f7c3ed6f4f17f2c4086cc311dcf.ctex"]
 
 [params]
 
