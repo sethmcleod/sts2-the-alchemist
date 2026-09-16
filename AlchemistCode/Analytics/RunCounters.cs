@@ -11,8 +11,6 @@ namespace Alchemist.AlchemistCode.Analytics;
 // same way PotionSaleCounter is, so they survive save and reload and land in the serialized run
 public static class RunCounters
 {
-    public const string MixBursting = "mix_bursting";
-    public const string MixFuming = "mix_fuming";
     // One fixed counter per Mix kind, keyed by the kind's analytics label
     public const string MixPrefix = "mix_";
     public const string MixBursting = MixPrefix + "bursting";

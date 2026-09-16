@@ -9,6 +9,7 @@ mod).
 
 ### Added
 
+- Added art for Yummy Cookie relic. The CookieCursor mod picks it up as the Alchemist's cursor
 - Added beta art for the 7 timeline epochs
 - Added Fling card (1 energy, Uncommon Attack): "Deal 5 damage. Hits an additional time for every 3 (2) Poison you have." It replaces Meltdown
 - Added Homunculus relic (Rare): "At the start of each combat, put a Ferment card from your Draw Pile into your Hand. It ferments 2." It replaces Bitterroot
@@ -20,11 +21,12 @@ mod).
 
 ### Changed
 
-- Changed Runoff: cost 1 -> 2 (1), Poison applied per card created 1 (2) -> 2
 - Changed Acrid Mix: "Apply 3 (5) Poison" -> "Apply 1 (2) Weak and 1 (2) Vulnerable. Gain 1 (2) Poison" (the old Fuming Mix effect)
-- Changed Spike: it adds an Acrid Mix (Acrid Mix+) instead of a Fuming Mix, so it keeps making the Weak and Vulnerable Mix
 - Changed Fuming Mix: "Apply 1 (2) Weak and 1 (2) Vulnerable. Gain 1 (2) Poison" -> "Apply 2 (3) Tainted" (the enemy takes that much additional damage from each Attack this turn)
+- Changed Runoff: cost 1 -> 2 (1), Poison applied per card created 1 (2) -> 2
+- Changed Spike: it adds an Acrid Mix (Acrid Mix+) instead of a Fuming Mix, so it keeps making the Weak and Vulnerable Mix
 - Changed the Mixes badge thresholds: 40 / 80 / 120 -> 60 / 120 / 200
+- Changed the relic popup, reward and pickup icons to draw the base game's outline around the Alchemist's relics
 - Changed Wallop: it now hits once for each card in your Hand
 - Moved the Potion Sale badge next to Ka-Ching on the run summary and in the run history
 - Renamed Golden Leaf relic to Chimera Blossom

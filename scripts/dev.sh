@@ -131,7 +131,7 @@ do_verify()  {
   # Godot keeps the pck open, so replacing it under a running game makes every later asset load
   # from it fail. The first failure throws out of NCombatUi.Activate and combat starts with no
   # background, which is easy to mistake for a mod bug.
-  if pgrep -f "SlayTheSpire2" >/dev/null 2>&1; then
+  if pgrep -f "Contents/MacOS/Slay the Spire 2" >/dev/null 2>&1; then
     bad "the game is active; it still uses the OLD pck and will throw AssetLoadException"
   fi
 }

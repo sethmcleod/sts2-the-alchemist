@@ -7,6 +7,9 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Token;
 
+// The base game's Tainted power, which only the Vital Spark affliction applies and only to the
+// player. On an enemy it reads the same way: that much additional damage from every Attack until
+// the end of the enemy turn, so every ally's hits count too
 [Pool(typeof(TokenCardPool))]
 [CardTheme(CardTheme.Mix)]
 public class FumingMix : AlchemistCard
