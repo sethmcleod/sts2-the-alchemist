@@ -11,13 +11,15 @@ namespace Alchemist.AlchemistCode.Analytics;
 // same way PotionSaleCounter is, so they survive save and reload and land in the serialized run
 public static class RunCounters
 {
-    public const string MixBursting = "mix_bursting";
-    public const string MixFuming = "mix_fuming";
-    public const string MixSyrupy = "mix_syrupy";
-    public const string MixZesty = "mix_zesty";
-    public const string MixAcrid = "mix_acrid";
-    public const string MixSparkling = "mix_sparkling";
-    public const string MixCompound = "mix_compound";
+    // One fixed counter per Mix kind, keyed by the kind's analytics label
+    public const string MixPrefix = "mix_";
+    public const string MixBursting = MixPrefix + "bursting";
+    public const string MixFuming = MixPrefix + "fuming";
+    public const string MixSyrupy = MixPrefix + "syrupy";
+    public const string MixZesty = MixPrefix + "zesty";
+    public const string MixAcrid = MixPrefix + "acrid";
+    public const string MixSparkling = MixPrefix + "sparkling";
+    public const string MixCompound = MixPrefix + "compound";
     public const string PoisonGained = "poison_gained";
     public const string PoisonAbsorbed = "poison_absorbed";
     public const string PoisonBled = "poison_bled";

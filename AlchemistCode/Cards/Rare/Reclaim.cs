@@ -26,6 +26,6 @@ public class Reclaim : AlchemistCard
         // Snapshot before moving: the move mutates the pile the query reads
         var mixes = PileType.Exhaust.GetPile(Owner).Cards.Where(Mixing.IsMix).ToList();
         foreach (var mix in mixes)
-            await CardPileCmd.Add(mix, PileType.Draw, CardPilePosition.Random);
+            await CardPileCmd.Add(mix, PileType.Hand);
     }
 }

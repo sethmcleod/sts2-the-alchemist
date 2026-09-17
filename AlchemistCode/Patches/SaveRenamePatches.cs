@@ -44,7 +44,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-WHITE_HEAT"] = ModelDb.Card<WaterDown>().Id!,
         ["ALCHEMIST-RIPEN"] = ModelDb.Card<Rerun>().Id!,
         ["ALCHEMIST-SIMMER"] = ModelDb.Card<Runoff>().Id!,
-        ["ALCHEMIST-QUAFF"] = ModelDb.Card<Meltdown>().Id!,
+        ["ALCHEMIST-QUAFF"] = ModelDb.Card<Fling>().Id!,
         ["ALCHEMIST-IMMUNIZE"] = ModelDb.Card<Mellow>().Id!,
         ["ALCHEMIST-POULTICE"] = ModelDb.Card<Upwell>().Id!,
         ["ALCHEMIST-SLOW_BURN"] = ModelDb.Card<Mortar>().Id!,
@@ -53,6 +53,8 @@ public static class SaveRenamePatches
         ["ALCHEMIST-VIAL_IN_RESERVE"] = ModelDb.Card<Uncork>().Id!,
         // Cuts, not renames: each removed card maps to the new card in its slot, so a mid-save
         // update hands the player something new instead of a blank deprecated card
+        ["ALCHEMIST-MELTDOWN"] = ModelDb.Card<Fling>().Id!,
+        ["ALCHEMIST-REFLUX"] = ModelDb.Card<Preserve>().Id!,
         ["ALCHEMIST-DOUBLE_DOSE"] = ModelDb.Card<Fumigate>().Id!,
         ["ALCHEMIST-QUICKLIME"] = ModelDb.Card<Spores>().Id!,
         ["ALCHEMIST-ADAPT"] = ModelDb.Card<Vent>().Id!,
@@ -70,7 +72,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-SMOKE_OUT"] = ModelDb.Card<Digest>().Id!,
         ["ALCHEMIST-SIPHON"] = ModelDb.Card<Dose>().Id!,
         ["ALCHEMIST-PELT"] = ModelDb.Card<Combine>().Id!,
-        ["ALCHEMIST-SALVE"] = ModelDb.Card<Tincture>().Id!,
+        ["ALCHEMIST-SALVE"] = ModelDb.Card<Knitbone>().Id!,
         ["ALCHEMIST-FLARE_UP"] = ModelDb.Card<Endure>().Id!,
         ["ALCHEMIST-KNEAD"] = ModelDb.Card<Endure>().Id!,
         ["ALCHEMIST-HARDEN"] = ModelDb.Card<FreshBatch>().Id!,
@@ -83,10 +85,11 @@ public static class SaveRenamePatches
         ["ALCHEMIST-OVERSPILL"] = ModelDb.Card<Overflow>().Id!,
         ["ALCHEMIST-SEEP"] = ModelDb.Card<Overflow>().Id!,
         ["ALCHEMIST-DRENCH"] = ModelDb.Card<Harvest>().Id!,
-        ["ALCHEMIST-CURE"] = ModelDb.Card<Tincture>().Id!,
+        ["ALCHEMIST-CURE"] = ModelDb.Card<Knitbone>().Id!,
         ["ALCHEMIST-CELLAR"] = ModelDb.Card<Ripening>().Id!,
         ["ALCHEMIST-PASS_IT_ON"] = ModelDb.Card<Steep>().Id!,
-        ["ALCHEMIST-WRING"] = ModelDb.Card<Tincture>().Id!,
+        ["ALCHEMIST-WRING"] = ModelDb.Card<Knitbone>().Id!,
+        ["ALCHEMIST-TINCTURE"] = ModelDb.Card<Knitbone>().Id!,
     };
 
     private static Dictionary<string, ModelId> Potions => new()
@@ -101,11 +104,15 @@ public static class SaveRenamePatches
     {
         ["ALCHEMIST-WEATHERED_KIT"] = ModelDb.Relic<MurkyFlask>().Id!,
         ["ALCHEMIST-GILDED_KIT"] = ModelDb.Relic<RadiantFlask>().Id!,
+        ["ALCHEMIST-SECOND_SKIN"] = ModelDb.Relic<LilypadCloak>().Id!,
+        ["ALCHEMIST-GOLDEN_LEAF"] = ModelDb.Relic<ChimeraBlossom>().Id!,
         // Cuts, not renames: each removed relic maps to the relic that took its slot
-        ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Bitterroot>().Id!,
-        ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<ExtraDose>().Id!,
+        ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Homunculus>().Id!,
+        ["ALCHEMIST-BITTERROOT"] = ModelDb.Relic<Homunculus>().Id!,
+        ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<Toadstone>().Id!,
+        ["ALCHEMIST-EXTRA_DOSE"] = ModelDb.Relic<Toadstone>().Id!,
         ["ALCHEMIST-MIDAS_FRUIT"] = ModelDb.Relic<GlowingShard>().Id!,
-        ["ALCHEMIST-AURIC_SEAL"] = ModelDb.Relic<GoldenLeaf>().Id!,
+        ["ALCHEMIST-AURIC_SEAL"] = ModelDb.Relic<ChimeraBlossom>().Id!,
     };
 
     // InitIds runs once at startup, after ModelDb.Init has registered every model (mod models

@@ -37,7 +37,7 @@ public class CompoundMix : AlchemistCard
         // ones the two ingredients actually call for
         WithVar("Weak", 1);
         WithVar("Vulnerable", 1);
-        WithVar("Poison", 3);
+        WithVar("Tainted", 2);
         WithVar("SelfPoison", 1);
         WithVar("Energy", 1);
         WithKeyword(CardKeyword.Exhaust);
@@ -47,12 +47,13 @@ public class CompoundMix : AlchemistCard
     private IEnumerable<IHoverTip> IngredientTips()
     {
         if (Has(MixKind.Syrupy)) yield return HoverTipFactory.Static(StaticHoverTip.Block);
-        if (Has(MixKind.Fuming))
+        if (Has(MixKind.Fuming)) yield return HoverTipFactory.FromPower<TaintedPower>();
+        if (Has(MixKind.Acrid))
         {
             yield return HoverTipFactory.FromPower<WeakPower>();
             yield return HoverTipFactory.FromPower<VulnerablePower>();
+            yield return HoverTipFactory.FromPower<PoisonPower>();
         }
-        if (Has(MixKind.Fuming) || Has(MixKind.Acrid)) yield return HoverTipFactory.FromPower<PoisonPower>();
         if (Has(MixKind.Sparkling)) yield return HoverTipFactory.Static(StaticHoverTip.Energy);
     }
 
@@ -97,12 +98,12 @@ public class CompoundMix : AlchemistCard
                 Set("Cards", mix.DynamicVars.Cards.BaseValue);
                 break;
             case FumingMix:
+                Set("Tainted", mix.DynamicVars["TaintedPower"].BaseValue);
+                break;
+            case AcridMix:
                 Set("Weak", mix.DynamicVars.Weak.BaseValue);
                 Set("Vulnerable", mix.DynamicVars.Vulnerable.BaseValue);
                 Set("SelfPoison", mix.DynamicVars["SelfPoison"].BaseValue);
-                break;
-            case AcridMix:
-                Set("Poison", mix.DynamicVars.Poison.BaseValue);
                 break;
             case SparklingMix:
                 Set("Energy", mix.DynamicVars.Energy.BaseValue);
@@ -141,12 +142,12 @@ public class CompoundMix : AlchemistCard
             case MixKind.Bursting: part.Add(DynamicVars.Damage); break;
             case MixKind.Syrupy: part.Add(DynamicVars.Block); break;
             case MixKind.Zesty: part.Add(DynamicVars.Cards); break;
-            case MixKind.Fuming:
+            case MixKind.Fuming: part.Add(DynamicVars["Tainted"]); break;
+            case MixKind.Acrid:
                 part.Add(DynamicVars["Weak"]);
                 part.Add(DynamicVars["Vulnerable"]);
                 part.Add(DynamicVars["SelfPoison"]);
                 break;
-            case MixKind.Acrid: part.Add(DynamicVars["Poison"]); break;
             // The card-side energyIcons formatter wants an EnergyVar; the potion-side form takes the
             // prefix and a literal count, and a Sparkling is always 1
             case MixKind.Sparkling:
@@ -180,15 +181,14 @@ public class CompoundMix : AlchemistCard
                 await CommonActions.Draw(this, choiceContext);
                 break;
             case MixKind.Fuming:
+                if (play.Target is not { IsAlive: true } tainted) return;
+                await PowerCmd.Apply<TaintedPower>(choiceContext, tainted, DynamicVars["Tainted"].IntValue, Owner.Creature, this);
+                break;
+            case MixKind.Acrid:
                 if (play.Target is not { IsAlive: true } debuffed) return;
                 await PowerCmd.Apply<WeakPower>(choiceContext, debuffed, DynamicVars["Weak"].IntValue, Owner.Creature, this);
                 await PowerCmd.Apply<VulnerablePower>(choiceContext, debuffed, DynamicVars["Vulnerable"].IntValue, Owner.Creature, this);
                 await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
-                break;
-            case MixKind.Acrid:
-                if (play.Target is not { IsAlive: true } poisoned) return;
-                PoisonSplash(poisoned);
-                await PowerCmd.Apply<PoisonPower>(choiceContext, poisoned, DynamicVars["Poison"].IntValue, Owner.Creature, this);
                 break;
             case MixKind.Sparkling:
                 await PlayerCmd.GainEnergy(DynamicVars["Energy"].BaseValue, Owner);

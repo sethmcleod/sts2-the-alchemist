@@ -36,6 +36,8 @@ internal static class AlchemistMetrics
 {
     // The vanilla floor threshold below which a run does not count
     private const int RunLengthThreshold = 5;
+    // Bumped when a Mix key changes meaning, so the exporter can tell remapped rows from new ones
+    private const int MixKeysGeneration = 2;
 
     // The shape vanilla's MetricUtilities serializes: camelCase, fields included (the metric structs
     // are field-based), ModelId flattened to its entry string
@@ -195,6 +197,8 @@ internal static class AlchemistMetrics
                 ["brews"] = allPoints.Sum(e => e.GetEntry(localPlayer.NetId).RestSiteChoices
                     .Count(id => id == BrewRestSiteOption.BrewOptionId)),
                 ["deck_themes"] = DeckThemes(localPlayer),
+                // Which meaning the Mix keys carry. The exporter and the key migration read it
+                ["mix_keys"] = MixKeysGeneration,
                 ["mixes"] = new JsonObject
                 {
                     ["bursting"] = RunCounters.CountFor(localPlayer, RunCounters.MixBursting),

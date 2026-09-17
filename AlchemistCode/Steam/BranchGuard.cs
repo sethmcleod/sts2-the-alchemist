@@ -18,7 +18,7 @@ namespace Alchemist.AlchemistCode.Steam;
 // The game's two Steam branches spell a few virtual hooks differently, and the Compat/ files carry one
 // spelling per git branch. A build that lands on the other game branch does not fail: an `override`
 // whose base method is missing at runtime silently becomes a new virtual slot, the game never calls it,
-// and the effect behind it (Antitoxin's absorb, Fallout's bonus, Steep's redirect) just stops. The
+// and the effect behind it (Antitoxin's absorb, Steep's redirect) just stops. The
 // player sees a mod that "does not work" with nothing in the log. So at boot this walks the assembly for
 // overrides that found no base, logs them, and offers the matching Workshop item through the game's own
 // popup. The Steam branch-range fields in the Workshop metadata were tried for this and rejected: they

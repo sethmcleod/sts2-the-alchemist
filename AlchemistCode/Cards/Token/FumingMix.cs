@@ -7,6 +7,9 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Token;
 
+// The base game's Tainted power, which only the Vital Spark affliction applies and only to the
+// player. On an enemy it reads the same way: that much additional damage from every Attack until
+// the end of the enemy turn, so every ally's hits count too
 [Pool(typeof(TokenCardPool))]
 [CardTheme(CardTheme.Mix)]
 public class FumingMix : AlchemistCard
@@ -15,18 +18,13 @@ public class FumingMix : AlchemistCard
 
     public FumingMix() : base(0, CardType.Skill, CardRarity.Token, TargetType.AnyEnemy)
     {
-        WithPower<WeakPower>(1, 1);
-        WithPower<VulnerablePower>(1, 1);
-        WithVar("SelfPoison", 1, 1);
+        WithPower<TaintedPower>(2, 1);
         WithKeyword(CardKeyword.Exhaust);
-        WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (play.Target is not { IsAlive: true } target) return;
-        await PowerCmd.Apply<WeakPower>(choiceContext, target, DynamicVars.Weak.IntValue, Owner.Creature, this);
-        await PowerCmd.Apply<VulnerablePower>(choiceContext, target, DynamicVars.Vulnerable.IntValue, Owner.Creature, this);
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<TaintedPower>(choiceContext, target, DynamicVars["TaintedPower"].IntValue, Owner.Creature, this);
     }
 }

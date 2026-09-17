@@ -2,6 +2,7 @@
 using Alchemist.AlchemistCode.Extensions;
 using Alchemist.AlchemistCode.Relics;
 using BaseLib.Abstracts;
+using BaseLib.Patches.UI;
 using BaseLib.Utils.NodeFactories;
 using Godot;
 using MegaCrit.Sts2.Core.Animation;
@@ -88,6 +89,10 @@ public partial class Alchemist : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "char_select_alchemist.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_alchemist_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_alchemist.png".CharacterUiPath();
+    public override RelicIconData CustomYummyCookie => new(
+        "alchemist_cookie.png".BigRelicImagePath(),
+        "alchemist_cookie.png".RelicImagePath(),
+        "alchemist_cookie_outline.png".RelicImagePath());
 
     public override string CustomArmPointingTexturePath => "multiplayer_hand_alchemist_point.png".CharacterUiPath();
     public override string CustomArmRockTexturePath => "multiplayer_hand_alchemist_rock.png".CharacterUiPath();

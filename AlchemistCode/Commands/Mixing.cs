@@ -130,16 +130,7 @@ public static class Mixing
         // Created is tallied beside the fixed counter so played-vs-created reads two counts from the
         // same build: a run resumed across an update keeps old fixed counts but starts a fresh tally
         Analytics.RunCounters.Tally(creator, Analytics.RunCounters.MixMade + KindLabel(mix));
-        Analytics.RunCounters.Add(creator, mix switch
-        {
-            BurstingMix => Analytics.RunCounters.MixBursting,
-            FumingMix => Analytics.RunCounters.MixFuming,
-            SyrupyMix => Analytics.RunCounters.MixSyrupy,
-            ZestyMix => Analytics.RunCounters.MixZesty,
-            AcridMix => Analytics.RunCounters.MixAcrid,
-            SparklingMix => Analytics.RunCounters.MixSparkling,
-            _ => Analytics.RunCounters.MixCompound,
-        }, 1);
+        Analytics.RunCounters.Add(creator, Analytics.RunCounters.MixPrefix + KindLabel(mix), 1);
     }
 
     /// <summary>Add a random Mix (from all six by default) to the owner's hand. Seeded, so multiplayer stays in sync.</summary>

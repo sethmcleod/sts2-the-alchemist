@@ -29,6 +29,9 @@ Anonymous run telemetry from players, aggregated nightly into a public dashboard
 
 - Supabase: run `schema.sql` in the SQL editor. Copy the publishable key into
   `AlchemistCode/Analytics/AnalyticsEndpoint.cs`.
+- When a Mix key changes meaning, a one-off script re-keys the stored rows. `migrate_mix_keys.sql`
+  is the one that moved the Weak and Vulnerable counts from `fuming` to `acrid`. Run it in the SQL
+  editor, then export.
 - Repository: `Settings -> Pages -> Source: GitHub Actions`; add the `SUPABASE_READ_KEY`
   secret (the `sb_secret_…` key from API Keys, or the legacy service_role key; both bypass RLS). Optionally set the `ANALYTICS_EXCLUDE_PLAYERS` variable to a
   comma-separated list of `player_hash` values to keep your own playtests out.

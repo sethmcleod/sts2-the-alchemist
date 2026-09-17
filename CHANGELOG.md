@@ -7,6 +7,57 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.14] - 2026-09-17
+
+### Added
+
+- Added art for all relics including Yummy Cookie, which works with the CookieCursor mod
+- Added beta art for the 7 timeline epochs
+- Added Fling card: "Deal 5 damage. Hits an additional time for every 3 (2) Poison you have." It replaces Meltdown
+- Added Homunculus relic: "At the start of each combat, put a Ferment card from your Draw Pile into your Hand. It ferments 1." It replaces Bitterroot
+- Added Knitbone card: "Gain 5 (7) Block. Gains 2 additional Block for each Mix you have played this combat." It replaces Tincture
+- Added Preserve card: "Choose another player. Their Block is not removed at the start of their next (2) turn(s)." It replaces Reflux
+- Added the Aged, Well Aged and Vintage run badges: played Ferment cards with 100, 200 or 300 turns fermented in total
+- Added the Spotless run badge: won after gaining 100 or more Poison without ever taking Poison damage
+- Added the Thick Skin, Iron Stomach and Immune run badges: held 30, 50 or 80 Antitoxin at once
+- Added Toadstone relic (Uncommon): "Whenever you gain Antitoxin, gain an additional 1 Antitoxin." It replaces Extra Dose
+
+### Changed
+
+- Buffed Backfire: damage 4 (6) -> 5 (7)
+- Buffed Digest: it will also generate a mix when exhausting a Quest
+- Buffed Lilypad Cloak relic: Block gained 2 -> 3
+- Buffed Mash: the Bursting Mix it adds gains Retain
+- Buffed Proof: Antitoxin gained 2 (3) -> 3 (4)
+- Changed Acrid Mix: "Apply 1 (2) Weak and 1 (2) Vulnerable. Gain 1 (2) Poison" (the old Fuming Mix effect)
+- Changed Fuming Mix: "Apply 2 (3) Tainted" (takes that much additional damage from each Attack this turn)
+- Changed Runoff: cost 1 -> 2 (1), Poison applied per card created 1 (2) -> 2
+- Changed Spike: it adds an Acrid Mix(+) instead of a Fuming Mix
+- Changed the Mixes badge thresholds: 40 / 80 / 120 -> 60 / 120 / 200
+- Changed the relic popup, reward and pickup icons to draw the base game's outline around the Alchemist's relics
+- Changed Wallop: it now hits once for each card in your Hand
+- Moved the Potion Sale badge next to Ka-Ching on the run summary and in the run history
+- Nerfed Harvest: turns fermented 2 (3) -> 1 (2)
+- Renamed Golden Leaf relic to Chimera Blossom
+- Renamed Second Skin relic to Lilypad Cloak
+- Reworked Brine into a Skill: "Gain 2 (3) Antitoxin. Apply 2 (3) Weak to ALL Poisoned enemies."
+- Reworked Fallout: "Deal 7 (9) damage to ALL enemies twice. Gain 3 Poison."
+- Reworked Heavy Dose: "Deal 26 (32) damage. Gain 4 Poison. Add a Bursting Mix(+) into your Hand for every 4 Poison you have."
+- Reworked Puncture: "If the enemy has Poison, apply 2 (3) Vulnerable. Deal 4 (5) damage twice."
+- Reworked Reclaim: "Put ALL Mixes from your Exhaust Pile into your Hand. Exhaust."
+
+### Fixed
+
+- Fixed Reset Unlocks leaving the first Alchemist Epoch hidden on the Timeline
+
+### Removed
+
+- Removed Bitterroot relic, replaced with Homunculus
+- Removed Extra Dose relic, replaced with Toadstone
+- Removed Meltdown card, replaced with Fling
+- Removed Reflux card, replaced with Preserve
+- Removed Tincture card, replaced with Knitbone
+
 ## [0.14.13] - 2026-09-14
 
 ### Added

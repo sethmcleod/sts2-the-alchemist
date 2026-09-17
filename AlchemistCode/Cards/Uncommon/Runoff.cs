@@ -9,9 +9,10 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Mix, CardTheme.Poison)]
 public class Runoff : AlchemistCard
 {
-    public Runoff() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Runoff() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Amount", 1, 1);
+        WithCostUpgradeBy(-1);
+        WithVar("Amount", 2, 0);
         WithTip(typeof(PoisonPower));
     }
 

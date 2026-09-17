@@ -205,9 +205,16 @@ def check_assets() -> tuple[list[str], list[str], int]:
     # card beta placeholder folder, so an orphaned beta png (no matching card) is reported
     art_dirs = {img_dir for _, _, _, variants in ASSET_SPECS for _, img_dir, _ in variants}
     art_dirs.add("card_portraits/beta")
+    # Art a class names by literal (the character's Yummy Cookie) is claimed too, not only art
+    # derived from a class name
+    literal_names = set(re.findall(r'"([A-Za-z0-9_.-]+\.png)"',
+                                   "\n".join(p.read_text() for p in CODE.rglob("*.cs"))))
     for img_dir in sorted(art_dirs):
         for path in sorted((IMG / img_dir).glob("*.png")):
-            if path not in claimed and path.name not in FALLBACK_ART:
+            # A big outline belongs to the big art beside it, and is composed under it at run time
+            if path.name.endswith("_outline.png") and (path.parent / path.name.replace("_outline", "")) in claimed:
+                continue
+            if path not in claimed and path.name not in FALLBACK_ART and path.name not in literal_names:
                 warnings.append(f"{img_dir}/{path.name}: no class uses this art")
 
     return errors, warnings, len(claimed)
@@ -223,7 +230,9 @@ def check_asset_literals() -> list[str]:
     """
     errors = []
     for path in sorted(CODE.rglob("*.cs")):
-        for m in re.finditer(r'"([A-Za-z0-9_/\.-]+\.(?:png|tscn|tres|wav|ogg|ttf|gdshader))"', path.read_text()):
+        # A line marked "// os path" names a file on disk outside the pck, which this check cannot see
+        text = "\n".join(l for l in path.read_text().splitlines() if "// os path" not in l)
+        for m in re.finditer(r'"([A-Za-z0-9_/\.-]+\.(?:png|tscn|tres|wav|ogg|ttf|gdshader))"', text):
             ref = m.group(1)
             if ref.startswith("res://"):
                 cand = [REPO / ref[len("res://"):]]

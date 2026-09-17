@@ -27,8 +27,8 @@ LOC_DIR = Path(__file__).resolve().parent.parent / "Alchemist" / "localization"
 
 PLACEHOLDER_RE = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)")
 TAG_RE = re.compile(r"\[/?([a-z_]+)\]")
-# A {Name:plural:a|b|c} block, allowing one level of nested braces in a branch.
-PLURAL_RE = re.compile(r"\{[A-Za-z_][A-Za-z0-9_]*:plural:((?:[^{}]|\{[^{}]*\})*)\}")
+# A {Name:plural:a|b|c} or {Name:plural(ru):a|b|c} block, allowing one level of nested braces in a branch.
+PLURAL_RE = re.compile(r"\{[A-Za-z_][A-Za-z0-9_]*:plural(?:\([a-z]+\))?:((?:[^{}]|\{[^{}]*\})*)\}")
 TAGGED_RE = re.compile(r"\[(gold|purple|blue|green|red)\](.*?)\[/\1\]")
 ANY_TAG_RE = re.compile(r"\[/?[a-z_]+\]")
 
