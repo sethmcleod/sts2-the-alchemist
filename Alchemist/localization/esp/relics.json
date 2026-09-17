@@ -8,7 +8,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "El [gold]veneno[/gold] de los enemigos se activa una vez más.",
   "ALCHEMIST-GLOWING_SHARD.flavor": "El brillo dura más que quienes lo admiran.",
   "ALCHEMIST-GLOWING_SHARD.title": "Esquirla luminosa",
-  "ALCHEMIST-HOMUNCULUS.description": "Al comienzo de cada combate, pones una carta de [gold]fermentación[/gold] de tu [gold]mazo de robo[/gold] en tu [gold]mano[/gold]. Fermenta [blue]2[/blue] veces.",
+  "ALCHEMIST-HOMUNCULUS.description": "Al comienzo de cada combate, pones una carta de [gold]fermentación[/gold] de tu [gold]mazo de robo[/gold] en tu [gold]mano[/gold]. Fermenta [blue]1[/blue] vez.",
   "ALCHEMIST-HOMUNCULUS.flavor": "Sabe qué frasco está listo antes que tú.",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "Elige una carta de [gold]fermentación[/gold] para poner en tu [gold]mano[/gold].",
   "ALCHEMIST-HOMUNCULUS.title": "Homúnculo",

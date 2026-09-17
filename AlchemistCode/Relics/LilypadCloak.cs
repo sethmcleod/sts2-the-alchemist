@@ -13,7 +13,7 @@ namespace Alchemist.AlchemistCode.Relics;
 
 public class LilypadCloak : AlchemistRelic
 {
-    private const int Block = 2;
+    private const int Block = 3;
 
     public override RelicRarity Rarity => RelicRarity.Common;
 

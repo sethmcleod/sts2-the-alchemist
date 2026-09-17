@@ -8,7 +8,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "적의 [gold]중독[/gold]이 1번 추가로 발동합니다.",
   "ALCHEMIST-GLOWING_SHARD.flavor": "그 빛은 감탄하던 모든 이보다 오래 남는다.",
   "ALCHEMIST-GLOWING_SHARD.title": "빛나는 파편",
-  "ALCHEMIST-HOMUNCULUS.description": "매 전투 시작 시, [gold]뽑을 카드 더미[/gold]에 있는 [gold]발효[/gold] 카드 1장을 [gold]손[/gold]으로 가져옵니다. 그 카드가 [blue]2[/blue]번 발효합니다.",
+  "ALCHEMIST-HOMUNCULUS.description": "매 전투 시작 시, [gold]뽑을 카드 더미[/gold]에 있는 [gold]발효[/gold] 카드 1장을 [gold]손[/gold]으로 가져옵니다. 그 카드가 [blue]1[/blue]번 발효합니다.",
   "ALCHEMIST-HOMUNCULUS.flavor": "어느 병이 다 됐는지 너보다 먼저 안다.",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "[gold]손[/gold]으로 가져올 [gold]발효[/gold] 카드를 선택하세요.",
   "ALCHEMIST-HOMUNCULUS.title": "호문쿨루스",

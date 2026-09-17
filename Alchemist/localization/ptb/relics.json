@@ -8,7 +8,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "O [gold]Veneno[/gold] nos inimigos é ativado uma vez adicional.",
   "ALCHEMIST-GLOWING_SHARD.flavor": "O brilho dura mais do que todos que o admiram.",
   "ALCHEMIST-GLOWING_SHARD.title": "Fragmento Brilhante",
-  "ALCHEMIST-HOMUNCULUS.description": "No início de cada combate, coloque uma carta de [gold]Fermentar[/gold] da sua [gold]Pilha de Compra[/gold] na sua [gold]Mão[/gold]. Ela fermenta [blue]2[/blue] vezes.",
+  "ALCHEMIST-HOMUNCULUS.description": "No início de cada combate, coloque uma carta de [gold]Fermentar[/gold] da sua [gold]Pilha de Compra[/gold] na sua [gold]Mão[/gold]. Ela fermenta [blue]1[/blue] vez.",
   "ALCHEMIST-HOMUNCULUS.flavor": "Sabe qual pote está pronto antes de você.",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "Escolha uma carta de [gold]Fermentar[/gold] para colocar na sua [gold]Mão[/gold].",
   "ALCHEMIST-HOMUNCULUS.title": "Homúnculo",

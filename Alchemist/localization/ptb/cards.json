@@ -95,7 +95,7 @@
   "ALCHEMIST-GRAND_BATCH.title": "Grande Fornada",
   "ALCHEMIST-GULP.description": "Compre {Cards:diff()} cartas.\nReceba {poison} de [gold]Veneno[/gold].",
   "ALCHEMIST-GULP.title": "Golada",
-  "ALCHEMIST-HARVEST.description": "Coloque uma carta de [gold]Fermentar[/gold] da sua [gold]Pilha de Compra[/gold] na sua [gold]Mão[/gold].\nEla fermenta {Turns:diff()} vezes.",
+  "ALCHEMIST-HARVEST.description": "Coloque uma carta de [gold]Fermentar[/gold] da sua [gold]Pilha de Compra[/gold] na sua [gold]Mão[/gold].\nEla fermenta {Turns:diff()} {Turns:plural:vez|vezes}.",
   "ALCHEMIST-HARVEST.selectionScreenPrompt": "Escolha uma carta de [gold]Fermentar[/gold] para colocar na sua [gold]Mão[/gold].",
   "ALCHEMIST-HARVEST.title": "Colheita",
   "ALCHEMIST-HEAVY_DOSE.description": "Cause {Damage:diff()} de dano.\nReceba {SelfPoison} de [gold]Veneno[/gold].\nAdicione uma {IfUpgraded:show:[gold]Mistura Explosiva+[/gold]|[gold]Mistura Explosiva[/gold]} na sua [gold]Mão[/gold] por cada {Per} de [gold]Veneno[/gold] que você tiver.",

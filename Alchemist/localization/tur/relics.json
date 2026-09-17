@@ -8,7 +8,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "Düşmanlardaki [gold]Zehir[/gold] bir kez daha tetiklenir.",
   "ALCHEMIST-GLOWING_SHARD.flavor": "Parıltısı, ona hayran olan herkesten uzun yaşar.",
   "ALCHEMIST-GLOWING_SHARD.title": "Işıldayan Kıymık",
-  "ALCHEMIST-HOMUNCULUS.description": "Her savaşın başında [gold]Çekme Deste[/gold]'ndeki bir [gold]Mayalan[/gold] kartını [gold]El[/gold]'ine koy. O kart [blue]2[/blue] kez mayalanır.",
+  "ALCHEMIST-HOMUNCULUS.description": "Her savaşın başında [gold]Çekme Deste[/gold]'ndeki bir [gold]Mayalan[/gold] kartını [gold]El[/gold]'ine koy. O kart [blue]1[/blue] kez mayalanır.",
   "ALCHEMIST-HOMUNCULUS.flavor": "Hangi kavanozun hazır olduğunu senden önce bilir.",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "[gold]El[/gold]'ine koymak için bir [gold]Mayalan[/gold] kartı seç.",
   "ALCHEMIST-HOMUNCULUS.title": "Homunkulus",

@@ -21,7 +21,7 @@ public class Fling : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, Hits(this), vfx: HitVfx("vfx/vfx_slime_impact"),
+        await CommonActions.CardAttack(this, play, Hits(this), vfx: HitVfx("vfx/vfx_attack_blunt"),
                 tmpSfx: "blunt_attack.mp3")
             .Execute(choiceContext);
     }

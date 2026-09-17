@@ -95,7 +95,7 @@
   "ALCHEMIST-GRAND_BATCH.title": "Gran Miscela",
   "ALCHEMIST-GULP.description": "Peschi {Cards:diff()} carte.\nOttieni {poison} di [gold]Veleno[/gold].",
   "ALCHEMIST-GULP.title": "Sorsata",
-  "ALCHEMIST-HARVEST.description": "Metti una carta [gold]Fermentazione[/gold] dal tuo [gold]mazzo di pesca[/gold] nella tua [gold]mano[/gold].\nFermenta {Turns:diff()} volte.",
+  "ALCHEMIST-HARVEST.description": "Metti una carta [gold]Fermentazione[/gold] dal tuo [gold]mazzo di pesca[/gold] nella tua [gold]mano[/gold].\nFermenta {Turns:diff()} {Turns:plural:volta|volte}.",
   "ALCHEMIST-HARVEST.selectionScreenPrompt": "Scegli una carta [gold]Fermentazione[/gold] da mettere nella tua [gold]mano[/gold].",
   "ALCHEMIST-HARVEST.title": "Raccolto",
   "ALCHEMIST-HEAVY_DOSE.description": "Infliggi {Damage:diff()} di danno.\nOttieni {SelfPoison} di [gold]Veleno[/gold].\nAggiungi una {IfUpgraded:show:[gold]Miscela Esplosiva+[/gold]|[gold]Miscela Esplosiva[/gold]} alla tua [gold]mano[/gold] per ogni {Per} di [gold]Veleno[/gold] che possiedi.",

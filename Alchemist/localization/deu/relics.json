@@ -8,7 +8,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]Gift[/gold] auf Gegnern wird ein weiteres Mal ausgelöst.",
   "ALCHEMIST-GLOWING_SHARD.flavor": "Das Leuchten überdauert jeden, der es bewundert.",
   "ALCHEMIST-GLOWING_SHARD.title": "Glühende Scherbe",
-  "ALCHEMIST-HOMUNCULUS.description": "Nimm zu Beginn jedes Kampfes eine Karte mit [gold]Gärung[/gold] aus deinem [gold]Nachziehstapel[/gold] auf deine [gold]Hand[/gold]. Sie gärt [blue]2[/blue] Mal.",
+  "ALCHEMIST-HOMUNCULUS.description": "Nimm zu Beginn jedes Kampfes eine Karte mit [gold]Gärung[/gold] aus deinem [gold]Nachziehstapel[/gold] auf deine [gold]Hand[/gold]. Sie gärt [blue]1[/blue] Mal.",
   "ALCHEMIST-HOMUNCULUS.flavor": "Er weiß vor dir, welches Glas fertig ist.",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "Wähle eine Karte mit [gold]Gärung[/gold], die du auf deine [gold]Hand[/gold] nimmst.",
   "ALCHEMIST-HOMUNCULUS.title": "Homunkulus",

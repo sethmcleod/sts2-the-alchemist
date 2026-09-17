@@ -8,7 +8,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "敵の[gold]毒[/gold]が追加で1回発動する。",
   "ALCHEMIST-GLOWING_SHARD.flavor": "その輝きは、見惚れた者すべてより長く残る。",
   "ALCHEMIST-GLOWING_SHARD.title": "輝く破片",
-  "ALCHEMIST-HOMUNCULUS.description": "各戦闘の開始時、[gold]山札[/gold]の[gold]発酵[/gold]カード1枚を[gold]手札[/gold]に加える。それは[blue]2[/blue]回発酵する。",
+  "ALCHEMIST-HOMUNCULUS.description": "各戦闘の開始時、[gold]山札[/gold]の[gold]発酵[/gold]カード1枚を[gold]手札[/gold]に加える。それは[blue]1[/blue]回発酵する。",
   "ALCHEMIST-HOMUNCULUS.flavor": "どの瓶が仕上がったか、君より先に知っている。",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "[gold]手札[/gold]に加える[gold]発酵[/gold]カードを1枚選択。",
   "ALCHEMIST-HOMUNCULUS.title": "ホムンクルス",

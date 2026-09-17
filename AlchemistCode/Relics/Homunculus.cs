@@ -13,7 +13,7 @@ namespace Alchemist.AlchemistCode.Relics;
 
 public class Homunculus : AlchemistRelic
 {
-    private const int Turns = 2;
+    private const int Turns = 1;
 
     public override RelicRarity Rarity => RelicRarity.Rare;
 

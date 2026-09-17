@@ -8,7 +8,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "敌人的[gold]中毒[/gold]会额外触发一次。",
   "ALCHEMIST-GLOWING_SHARD.flavor": "它的光芒比每一个赞叹它的人都活得久。",
   "ALCHEMIST-GLOWING_SHARD.title": "辉光碎片",
-  "ALCHEMIST-HOMUNCULUS.description": "在每场战斗开始时，将你[gold]抽牌堆[/gold]中的一张[gold]发酵[/gold]牌加入你的[gold]手牌[/gold]。它发酵[blue]2[/blue]次。",
+  "ALCHEMIST-HOMUNCULUS.description": "在每场战斗开始时，将你[gold]抽牌堆[/gold]中的一张[gold]发酵[/gold]牌加入你的[gold]手牌[/gold]。它发酵[blue]1[/blue]次。",
   "ALCHEMIST-HOMUNCULUS.flavor": "哪一罐酿好了，它比你先知道。",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "选择一张要加入你[gold]手牌[/gold]的[gold]发酵[/gold]牌。",
   "ALCHEMIST-HOMUNCULUS.title": "何蒙库鲁兹",

@@ -9,10 +9,10 @@ mod).
 
 ### Added
 
-- Added art for Yummy Cookie relic. The CookieCursor mod picks it up as the Alchemist's cursor
+- Added art for all relics including Yummy Cookie, which works with the CookieCursor mod
 - Added beta art for the 7 timeline epochs
 - Added Fling card (1 energy, Uncommon Attack): "Deal 5 damage. Hits an additional time for every 3 (2) Poison you have." It replaces Meltdown
-- Added Homunculus relic (Rare): "At the start of each combat, put a Ferment card from your Draw Pile into your Hand. It ferments 2." It replaces Bitterroot
+- Added Homunculus relic (Rare): "At the start of each combat, put a Ferment card from your Draw Pile into your Hand. It ferments 1." It replaces Bitterroot
 - Added Preserve card (0 energy, Uncommon multiplayer Skill): "Choose another player. Their Block is not removed at the start of their next turn." Preserve+ lasts 2 turns. It replaces Reflux
 - Added the Aged, Well Aged and Vintage run badges: played Ferment cards with 100, 200 or 300 turns fermented in total
 - Added the Spotless run badge: won after gaining 100 or more Poison without ever taking Poison damage
@@ -22,6 +22,7 @@ mod).
 ### Changed
 
 - Buffed Digest: it will also generate a mix when exhausting a Quest
+- Buffed Lilypad Cloak relic: Block gained 2 -> 3
 - Changed Acrid Mix: "Apply 1 (2) Weak and 1 (2) Vulnerable. Gain 1 (2) Poison" (the old Fuming Mix effect)
 - Changed Fuming Mix: "Apply 2 (3) Tainted" (the enemy takes that much additional damage from each Attack this turn)
 - Changed Runoff: cost 1 -> 2 (1), Poison applied per card created 1 (2) -> 2

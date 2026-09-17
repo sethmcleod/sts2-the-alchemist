@@ -8,7 +8,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "Il [gold]Veleno[/gold] sui nemici si attiva una volta in più.",
   "ALCHEMIST-GLOWING_SHARD.flavor": "Il bagliore sopravvive a chiunque lo ammiri.",
   "ALCHEMIST-GLOWING_SHARD.title": "Scheggia Luminosa",
-  "ALCHEMIST-HOMUNCULUS.description": "All'inizio di ogni combattimento, metti una carta [gold]Fermentazione[/gold] dal tuo [gold]mazzo di pesca[/gold] nella tua [gold]mano[/gold]. Fermenta [blue]2[/blue] volte.",
+  "ALCHEMIST-HOMUNCULUS.description": "All'inizio di ogni combattimento, metti una carta [gold]Fermentazione[/gold] dal tuo [gold]mazzo di pesca[/gold] nella tua [gold]mano[/gold]. Fermenta [blue]1[/blue] volta.",
   "ALCHEMIST-HOMUNCULUS.flavor": "Sa quale barattolo è pronto prima di te.",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "Scegli una carta [gold]Fermentazione[/gold] da mettere nella tua [gold]mano[/gold].",
   "ALCHEMIST-HOMUNCULUS.title": "Omuncolo",

@@ -95,7 +95,7 @@
   "ALCHEMIST-GRAND_BATCH.title": "Большая смесь",
   "ALCHEMIST-GULP.description": "Вы добираете карты: {Cards:diff()}.\nДает вам {poison} [gold]яда[/gold].",
   "ALCHEMIST-GULP.title": "Глоток",
-  "ALCHEMIST-HARVEST.description": "Кладет карту с [gold]брожением[/gold] из вашей [gold]стопки добора[/gold] в вашу [gold]руку[/gold].\nОна бродит {Turns:diff()} раз(а).",
+  "ALCHEMIST-HARVEST.description": "Кладет карту с [gold]брожением[/gold] из вашей [gold]стопки добора[/gold] в вашу [gold]руку[/gold].\nОна бродит {Turns:diff()} {Turns:plural(ru):раз|раза|раз}.",
   "ALCHEMIST-HARVEST.selectionScreenPrompt": "Выберите карту с [gold]брожением[/gold], чтобы положить в [gold]руку[/gold].",
   "ALCHEMIST-HARVEST.title": "Урожай",
   "ALCHEMIST-HEAVY_DOSE.description": "Наносит {Damage:diff()} урона.\nДает вам {SelfPoison} [gold]яда[/gold].\nДобавляет {IfUpgraded:show:[gold]«Взрывную смесь+»[/gold]|[gold]«Взрывную смесь»[/gold]} в вашу [gold]руку[/gold] за каждые {Per} вашего [gold]яда[/gold].",

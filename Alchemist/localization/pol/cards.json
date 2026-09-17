@@ -95,7 +95,7 @@
   "ALCHEMIST-GRAND_BATCH.title": "Wielka mieszanka",
   "ALCHEMIST-GULP.description": "Dobierz {Cards:diff()} karty.\nZyskaj {poison} pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-GULP.title": "Łyk",
-  "ALCHEMIST-HARVEST.description": "Weź kartę z [gold]Fermentacją[/gold] ze [gold]stosu rozgrywającego[/gold] do [gold]ręki[/gold].\nFermentuje {Turns:diff()} razy.",
+  "ALCHEMIST-HARVEST.description": "Weź kartę z [gold]Fermentacją[/gold] ze [gold]stosu rozgrywającego[/gold] do [gold]ręki[/gold].\nFermentuje {Turns:diff()} {Turns:plural:raz|razy|razy}.",
   "ALCHEMIST-HARVEST.selectionScreenPrompt": "Wybierz kartę z [gold]Fermentacją[/gold] do wzięcia do [gold]ręki[/gold].",
   "ALCHEMIST-HARVEST.title": "Zbiory",
   "ALCHEMIST-HEAVY_DOSE.description": "Zadaj {Damage:diff()} pkt. obrażeń.\nZyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].\nDodaj {IfUpgraded:show:[gold]Wybuchową mieszankę+[/gold]|[gold]Wybuchową mieszankę[/gold]} do [gold]ręki[/gold] za każde {Per} pkt. posiadanej [gold]Trucizny[/gold].",

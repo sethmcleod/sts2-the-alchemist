@@ -95,7 +95,7 @@
   "ALCHEMIST-GRAND_BATCH.title": "Gran tanda",
   "ALCHEMIST-GULP.description": "Robas {Cards:diff()} cartas.\nObtienes {poison} de [gold]veneno[/gold].",
   "ALCHEMIST-GULP.title": "Tragar",
-  "ALCHEMIST-HARVEST.description": "Pones una carta de [gold]fermentación[/gold] de tu [gold]mazo de robo[/gold] en tu [gold]mano[/gold].\nFermenta {Turns:diff()} veces.",
+  "ALCHEMIST-HARVEST.description": "Pones una carta de [gold]fermentación[/gold] de tu [gold]mazo de robo[/gold] en tu [gold]mano[/gold].\nFermenta {Turns:diff()} {Turns:plural:vez|veces}.",
   "ALCHEMIST-HARVEST.selectionScreenPrompt": "Elige una carta de [gold]fermentación[/gold] para poner en tu [gold]mano[/gold].",
   "ALCHEMIST-HARVEST.title": "Cosecha",
   "ALCHEMIST-HEAVY_DOSE.description": "Infliges {Damage:diff()} de daño.\nObtienes {SelfPoison} de [gold]veneno[/gold].\nAgregas una {IfUpgraded:show:[gold]Mezcla explosiva+[/gold]|[gold]Mezcla explosiva[/gold]} a tu [gold]mano[/gold] por cada {Per} de [gold]veneno[/gold] que tengas.",

@@ -8,7 +8,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]Trucizna[/gold] przeciwników jest aktywowana dodatkowy raz.",
   "ALCHEMIST-GLOWING_SHARD.flavor": "Blask przetrwa wszystkich, którzy go podziwiają.",
   "ALCHEMIST-GLOWING_SHARD.title": "Świecący odłamek",
-  "ALCHEMIST-HOMUNCULUS.description": "Na początku każdej walki weź kartę z [gold]Fermentacją[/gold] ze [gold]stosu rozgrywającego[/gold] do [gold]ręki[/gold]. Fermentuje [blue]2[/blue] razy.",
+  "ALCHEMIST-HOMUNCULUS.description": "Na początku każdej walki weź kartę z [gold]Fermentacją[/gold] ze [gold]stosu rozgrywającego[/gold] do [gold]ręki[/gold]. Fermentuje [blue]1[/blue] raz.",
   "ALCHEMIST-HOMUNCULUS.flavor": "Wie, który słoik jest gotowy, zanim ty się dowiesz.",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "Wybierz kartę z [gold]Fermentacją[/gold] do wzięcia do [gold]ręki[/gold].",
   "ALCHEMIST-HOMUNCULUS.title": "Homunkulus",

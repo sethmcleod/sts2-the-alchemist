@@ -8,7 +8,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]Яд[/gold] на врагах срабатывает еще 1 раз.",
   "ALCHEMIST-GLOWING_SHARD.flavor": "Свечение переживет всех, кто им любовался.",
   "ALCHEMIST-GLOWING_SHARD.title": "Светящийся осколок",
-  "ALCHEMIST-HOMUNCULUS.description": "В начале каждого боя кладет карту с [gold]брожением[/gold] из вашей [gold]стопки добора[/gold] в вашу [gold]руку[/gold]. Она бродит [blue]2[/blue] раза.",
+  "ALCHEMIST-HOMUNCULUS.description": "В начале каждого боя кладет карту с [gold]брожением[/gold] из вашей [gold]стопки добора[/gold] в вашу [gold]руку[/gold]. Она бродит [blue]1[/blue] раз.",
   "ALCHEMIST-HOMUNCULUS.flavor": "Знает, какая банка готова, раньше вас.",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "Выберите карту с [gold]брожением[/gold], чтобы положить в [gold]руку[/gold].",
   "ALCHEMIST-HOMUNCULUS.title": "Гомункул",

@@ -8,7 +8,7 @@
   "ALCHEMIST-GLOWING_SHARD.description": "[gold]Racun[/gold] pada musuh terpicu sekali lagi.",
   "ALCHEMIST-GLOWING_SHARD.flavor": "Cahayanya bertahan lebih lama dari setiap orang yang mengaguminya.",
   "ALCHEMIST-GLOWING_SHARD.title": "Kepingan Bercahaya",
-  "ALCHEMIST-HOMUNCULUS.description": "Pada awal setiap perlawanan, letakkan sebuah kartu [gold]Fermentasi[/gold] dari [gold]Tumpukan Ambilmu[/gold] ke [gold]Tanganmu[/gold]. Kartu itu berfermentasi [blue]2[/blue] kali.",
+  "ALCHEMIST-HOMUNCULUS.description": "Pada awal setiap perlawanan, letakkan sebuah kartu [gold]Fermentasi[/gold] dari [gold]Tumpukan Ambilmu[/gold] ke [gold]Tanganmu[/gold]. Kartu itu berfermentasi [blue]1[/blue] kali.",
   "ALCHEMIST-HOMUNCULUS.flavor": "Ia tahu stoples mana yang siap sebelum kamu.",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "Pilih sebuah kartu [gold]Fermentasi[/gold] untuk diletakkan ke [gold]Tanganmu[/gold].",
   "ALCHEMIST-HOMUNCULUS.title": "Homunkulus",
