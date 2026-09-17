@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.14] - 2026-09-17
+
 ### Added
 
 - Added art for all relics including Yummy Cookie, which works with the CookieCursor mod
