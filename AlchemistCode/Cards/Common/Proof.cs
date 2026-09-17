@@ -14,7 +14,7 @@ public class Proof : AlchemistCard
 {
     public Proof() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithVar("antitoxin", 2, 1);
+        WithVar("antitoxin", 3, 1);
         WithTip(typeof(AntitoxinPower));
     }
 

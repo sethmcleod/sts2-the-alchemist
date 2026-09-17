@@ -72,7 +72,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-SMOKE_OUT"] = ModelDb.Card<Digest>().Id!,
         ["ALCHEMIST-SIPHON"] = ModelDb.Card<Dose>().Id!,
         ["ALCHEMIST-PELT"] = ModelDb.Card<Combine>().Id!,
-        ["ALCHEMIST-SALVE"] = ModelDb.Card<Tincture>().Id!,
+        ["ALCHEMIST-SALVE"] = ModelDb.Card<Knitbone>().Id!,
         ["ALCHEMIST-FLARE_UP"] = ModelDb.Card<Endure>().Id!,
         ["ALCHEMIST-KNEAD"] = ModelDb.Card<Endure>().Id!,
         ["ALCHEMIST-HARDEN"] = ModelDb.Card<FreshBatch>().Id!,
@@ -85,10 +85,11 @@ public static class SaveRenamePatches
         ["ALCHEMIST-OVERSPILL"] = ModelDb.Card<Overflow>().Id!,
         ["ALCHEMIST-SEEP"] = ModelDb.Card<Overflow>().Id!,
         ["ALCHEMIST-DRENCH"] = ModelDb.Card<Harvest>().Id!,
-        ["ALCHEMIST-CURE"] = ModelDb.Card<Tincture>().Id!,
+        ["ALCHEMIST-CURE"] = ModelDb.Card<Knitbone>().Id!,
         ["ALCHEMIST-CELLAR"] = ModelDb.Card<Ripening>().Id!,
         ["ALCHEMIST-PASS_IT_ON"] = ModelDb.Card<Steep>().Id!,
-        ["ALCHEMIST-WRING"] = ModelDb.Card<Tincture>().Id!,
+        ["ALCHEMIST-WRING"] = ModelDb.Card<Knitbone>().Id!,
+        ["ALCHEMIST-TINCTURE"] = ModelDb.Card<Knitbone>().Id!,
     };
 
     private static Dictionary<string, ModelId> Potions => new()

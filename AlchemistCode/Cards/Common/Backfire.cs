@@ -10,7 +10,7 @@ public class Backfire : AlchemistCard
 {
     public Backfire() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(4, 2);
+        WithDamage(5, 2);
         WithVar(new IntentHitsVar("Hits", 1));
     }
 

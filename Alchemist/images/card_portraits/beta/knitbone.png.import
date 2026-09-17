@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckv23xdlhc30c"
-path="res://.godot/imported/tincture.png-87d50803764344a8f891adf1d736dee1.ctex"
+uid="uid://dragitq040q5c"
+path="res://.godot/imported/knitbone.png-19849a2228d4108844534724d190d2d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/tincture.png"
-dest_files=["res://.godot/imported/tincture.png-87d50803764344a8f891adf1d736dee1.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/knitbone.png"
+dest_files=["res://.godot/imported/knitbone.png-19849a2228d4108844534724d190d2d3.ctex"]
 
 [params]
 
