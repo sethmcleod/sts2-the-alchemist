@@ -21,7 +21,7 @@ Compound Mix,Token,Skill,0,"Draw 1 card, in addition to the effects of the two M
 Corrode,Uncommon,Attack,4,Retain. Ferment. Deal 18 (24) damage. Apply 5 (7) Poison. Costs 1 less for each turn fermented.
 Croak,Rare,Attack,2,"Deal 20 (26) damage. If Fatal, gain an additional Potion reward."
 Defend,Basic,Skill,1,Gain 5 (8) Block.
-Digest,Common,Skill,0,"Exhaust 1 card. If it was a Status or Curse, add a random Mix into your Hand. (Digest+ adds a Mix+)"
+Digest,Common,Skill,0,"Exhaust 1 card. If it was a Status, Curse or Quest, add a random Mix into your Hand. (Digest+ adds a Mix+)"
 Distill,Common,Skill,0,Retain. Ferment. Gain 1 (2) Antitoxin. Gain 1 (2) additional Antitoxin for each turn fermented. Gain 2 Poison.
 Dose,Basic,Skill,0,Gain 2 (3) Block. Gain 2 (3) Antitoxin. Gain 2 (3) Poison.
 Effervesce,"Uncommon, Multiplayer",Skill,1,"Add a Bursting, a Syrupy and a Zesty Mix to another player's Hand. (Effervesce+ adds Mixes+)"

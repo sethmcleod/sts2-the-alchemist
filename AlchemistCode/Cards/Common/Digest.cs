@@ -21,11 +21,11 @@ public class Digest : AlchemistCard
         WithTips(card => Mixing.MixTips(card.IsUpgraded));
     }
 
-    private static bool IsJunk(CardModel card) =>
-        card.Type is CardType.Status or CardType.Curse;
+    private static bool IsEdible(CardModel card) =>
+        card.Type is CardType.Status or CardType.Curse or CardType.Quest;
 
     protected override bool ConditionalGlow =>
-        IsMutable && Owner != null && PileType.Hand.GetPile(Owner).Cards.Any(IsJunk);
+        IsMutable && Owner != null && PileType.Hand.GetPile(Owner).Cards.Any(IsEdible);
 
     private static LocString EatPrompt => new("cards", "ALCHEMIST-DIGEST.selectionScreenPrompt");
 
@@ -37,7 +37,7 @@ public class Digest : AlchemistCard
                 new CardSelectorPrefs(EatPrompt, 1), filter: null, source: this)).FirstOrDefault();
         if (eaten != null)
             await CardCmd.Exhaust(choiceContext, eaten);
-        if (eaten != null && IsJunk(eaten))
+        if (eaten != null && IsEdible(eaten))
             await Mixing.CreateRandom(choiceContext, Owner, IsUpgraded, source: this);
     }
 }

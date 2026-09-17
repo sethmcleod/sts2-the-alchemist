@@ -60,7 +60,7 @@
   "ALCHEMIST-CROAK.title": "Croak",
   "ALCHEMIST-DEFEND_ALCHEMIST.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "ALCHEMIST-DEFEND_ALCHEMIST.title": "Defend",
-  "ALCHEMIST-DIGEST.description": "[gold]Exhaust[/gold] 1 card.\nIf it was a Status or Curse, add a random {IfUpgraded:show:[gold]Mix+[/gold]|[gold]Mix[/gold]} into your [gold]Hand[/gold].",
+  "ALCHEMIST-DIGEST.description": "[gold]Exhaust[/gold] 1 card.\nIf it was a Status, Curse or Quest, add a random {IfUpgraded:show:[gold]Mix+[/gold]|[gold]Mix[/gold]} into your [gold]Hand[/gold].",
   "ALCHEMIST-DIGEST.selectionScreenPrompt": "Choose a card to [gold]Exhaust[/gold].",
   "ALCHEMIST-DIGEST.title": "Digest",
   "ALCHEMIST-DISTILL.description": "[gold]Ferment{FermentSuffix}.[/gold]\nGain {Antitoxin:diff()} [gold]Antitoxin[/gold].\nGain {perTurn:diff()} additional [gold]Antitoxin[/gold] for each turn fermented.\nGain {SelfPoison} [gold]Poison[/gold].",
