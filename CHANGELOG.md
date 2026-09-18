@@ -8,6 +8,8 @@ mod).
 ## [Unreleased]
 
 - Reworked Reclaim: "Apply Poison to ALL enemies equal to the number of Mixes you have played this combat. Exhaust."
+- Buffed Anodyne potion: Poison gained per damage prevented 1 per 5 -> 1 per 10
+- Buffed Solvent potion: it also applies 2 Vulnerable to ALL enemies
 
 ## [0.14.14] - 2026-09-17
 

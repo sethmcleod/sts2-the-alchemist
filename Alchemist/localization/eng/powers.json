@@ -1,6 +1,6 @@
 {
-  "ALCHEMIST-ANODYNE_POWER.description": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]5[/blue] damage prevented.",
-  "ALCHEMIST-ANODYNE_POWER.smartDescription": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]5[/blue] damage prevented.",
+  "ALCHEMIST-ANODYNE_POWER.description": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]10[/blue] damage prevented.",
+  "ALCHEMIST-ANODYNE_POWER.smartDescription": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]10[/blue] damage prevented.",
   "ALCHEMIST-ANODYNE_POWER.title": "Anodyne",
   "ALCHEMIST-ANTITOXIN_POWER.description": "Prevents damage from [gold]Poison[/gold] and is reduced by [blue]1[/blue] at the start of your turn.",
   "ALCHEMIST-ANTITOXIN_POWER.forecast": "Your [blue]{Poison}[/blue] [gold]Poison[/gold] will deal [blue]{Damage}[/blue] damage.",
