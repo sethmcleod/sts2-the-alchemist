@@ -25,7 +25,8 @@ BASE_ARGS = set(re.findall(r'description\.Add\("(\w+)"', BASE))
 # Base-class preview property -> the token its value is placed with
 OPT_IN = {'RawFormulaDamagePreview': 'FormulaDamage',
           'FormulaHpLossPreview': 'FormulaHpLoss',
-          'FermentPeak': 'FermentSuffix'}
+          'FermentPeak': 'FermentSuffix',
+          'ShowsMixesPlayed': 'MixesPlayed'}
 
 def declared(src):
     v = set(BASE_ARGS)
@@ -45,6 +46,8 @@ def declared(src):
     v |= set(re.findall(r'WithVar\(new \w+\("(\w+)"', src))
     v |= {m[:-3] if m.endswith('Var') else m for m in re.findall(r'WithVar\(new (\w+)\((?!")', src)}
     v |= set(re.findall(r'description\.Add\("(\w+)"', src))
+    for prop, tok in OPT_IN.items():
+        if re.search(r'override .*\b%s\b' % prop, src): v.add(tok)
     return v
 
 srcs = {os.path.basename(f)[:-3]: open(f, encoding='utf-8').read()

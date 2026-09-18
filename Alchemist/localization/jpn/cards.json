@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "穿刺",
   "ALCHEMIST-QUENCH.description": "[gold]抗毒素[/gold]{antitoxin:diff()}を得る。\n自身の[gold]抗毒素[/gold]の2倍に等しい[gold]ブロック[/gold]を得る。{InCombat:\n（{CalculatedBlock:diff()}[gold]ブロック[/gold]を得る）|}",
   "ALCHEMIST-QUENCH.title": "鎮静",
-  "ALCHEMIST-RECLAIM.description": "[gold]廃棄札[/gold]にあるすべての[gold]合剤[/gold]を[gold]手札[/gold]に加える。",
+  "ALCHEMIST-RECLAIM.description": "この戦闘中にプレイした[gold]合剤[/gold]の枚数に等しい[gold]毒[/gold]をすべての敵に付与する。{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "回収",
   "ALCHEMIST-REFINE.description": "[gold]合剤[/gold]を[gold]手札[/gold]に加えるたび、それは[gold]アップグレード[/gold]され、[gold]保留[/gold]を得る。",
   "ALCHEMIST-REFINE.title": "精製",

@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "Punción",
   "ALCHEMIST-QUENCH.description": "Obtienes {antitoxin:diff()} de [gold]antitoxina[/gold].\nObtienes [gold]bloqueo[/gold] igual al doble de tu [gold]antitoxina[/gold].{InCombat:\n(Obtienes {CalculatedBlock:diff()} de [gold]bloqueo[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Saciar",
-  "ALCHEMIST-RECLAIM.description": "Colocas TODAS las [gold]Mezclas[/gold] de tu [gold]pila de agotamiento[/gold] en tu [gold]mano[/gold].",
+  "ALCHEMIST-RECLAIM.description": "Aplicas [gold]veneno[/gold] a TODOS los enemigos por un valor equivalente a la cantidad de [gold]Mezclas[/gold] que hayas jugado en este combate.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Reclamar",
   "ALCHEMIST-REFINE.description": "Cada vez que agregas una [gold]Mezcla[/gold] a tu [gold]mano[/gold], se [gold]mejora[/gold] y obtiene [gold]retención[/gold].",
   "ALCHEMIST-REFINE.title": "Refinar",

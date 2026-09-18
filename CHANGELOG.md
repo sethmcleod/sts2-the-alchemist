@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+- Reworked Reclaim: "Apply Poison to ALL enemies equal to the number of Mixes you have played this combat. Exhaust."
+
 ## [0.14.14] - 2026-09-17
 
 ### Added

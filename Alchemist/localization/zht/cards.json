@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "穿刺",
   "ALCHEMIST-QUENCH.description": "獲得 {antitoxin:diff()} 點[gold]抗毒素[/gold]。\n獲得等同於你[gold]抗毒素[/gold]兩倍的[gold]格擋[/gold]。{InCombat:\n（獲得 {CalculatedBlock:diff()} 點[gold]格擋[/gold]）|}",
   "ALCHEMIST-QUENCH.title": "解渴",
-  "ALCHEMIST-RECLAIM.description": "將你[gold]消耗堆[/gold]中的所有[gold]混劑[/gold]放入你的[gold]手牌[/gold]。",
+  "ALCHEMIST-RECLAIM.description": "對所有敵人施加與本場戰鬥中已打出[gold]混劑[/gold]數量相同的[gold]中毒[/gold]。{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "回收",
   "ALCHEMIST-REFINE.description": "每當一張[gold]混劑[/gold]加入你的[gold]手牌[/gold]時，[gold]升級[/gold]它。它獲得[gold]保留[/gold]。",
   "ALCHEMIST-REFINE.title": "精煉",

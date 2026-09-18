@@ -97,7 +97,7 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
     run_rows, card_rows, choice_rows, relic_rows = [], [], [], []
     death_rows, floor_rows, enc_rows, theme_rows = [], [], [], []
     brew_rows, first_rows, potion_use_rows = [], [], []
-    source_rows, pair_rows, offer_rows, act_rows, play_rows = [], [], [], [], []
+    source_rows, pair_rows, offer_rows, act_rows, play_rows, fight_rows = [], [], [], [], [], []
 
     for run in runs:
         day = run["created_at"][:10]  # ISO timestamp, the date is the first ten characters
@@ -155,6 +155,8 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
         played = labelled.get("mixplay", {})
         for kind in set(made) | set(played):
             play_rows.append(keys | {"kind": kind, "created": made.get(kind, 0), "played": played.get(kind, 0)})
+        for bucket, count in labelled.get("mixfight", {}).items():
+            fight_rows.append(keys | {"bucket": bucket, "fights": count})
         for act in extra.get("acts") or []:
             act_rows.append(keys | {"act": int(act.get("act") or 0), "fights": int(act.get("fights") or 0),
                                     "turns": int(act.get("turns") or 0), "dmg": int(act.get("damage") or 0)})
@@ -225,6 +227,7 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
         "compound_pairs_daily": aggregate(pair_rows, keys + ["pair"], ["compounds"]),
         "brew_offers_daily": aggregate(offer_rows, keys + ["potion"], ["offered", "picked"]),
         "mix_plays_daily": aggregate(play_rows, keys + ["kind"], ["created", "played"]),
+        "mix_fights_daily": aggregate(fight_rows, keys + ["bucket"], ["fights"]),
         "acts_daily": aggregate(act_rows, keys + ["act"], ["fights", "turns", "dmg"]),
         "first_picks_daily": aggregate(first_rows, keys + ["card", "order"], ["picked", "wins"]),
         "potion_uses_daily": aggregate(potion_use_rows, keys + ["potion"], ["uses"]),

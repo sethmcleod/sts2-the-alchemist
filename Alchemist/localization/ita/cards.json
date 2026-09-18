@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "Perforazione",
   "ALCHEMIST-QUENCH.description": "Ottieni {antitoxin:diff()} di [gold]Antitossina[/gold].\nOttieni [gold]Blocco[/gold] pari al doppio della tua [gold]Antitossina[/gold].{InCombat:\n(Ottieni {CalculatedBlock:diff()} di [gold]Blocco[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Ristoro",
-  "ALCHEMIST-RECLAIM.description": "Metti TUTTE le [gold]Miscele[/gold] dalla tua [gold]pila delle carte esaurite[/gold] alla tua [gold]mano[/gold].",
+  "ALCHEMIST-RECLAIM.description": "Applichi [gold]Veleno[/gold] a TUTTI i nemici pari al numero di [gold]Miscele[/gold] giocate in questo combattimento.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Riscatto",
   "ALCHEMIST-REFINE.description": "Ogni volta che aggiungi una [gold]Miscela[/gold] alla tua [gold]mano[/gold], viene [gold]potenziata[/gold] e ottiene [gold]Conservazione[/gold].",
   "ALCHEMIST-REFINE.title": "Raffinazione",

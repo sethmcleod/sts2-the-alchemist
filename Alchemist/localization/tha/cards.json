@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "เจาะทะลุ",
   "ALCHEMIST-QUENCH.description": "ได้รับ {antitoxin:diff()} [gold]สารต้านพิษ[/gold]\nได้รับ[gold]บล็อก[/gold]เท่ากับสองเท่าของ[gold]สารต้านพิษ[/gold]ที่คุณมี{InCombat:\n(ได้รับ {CalculatedBlock:diff()} [gold]บล็อก[/gold])|}",
   "ALCHEMIST-QUENCH.title": "ดับกระหาย",
-  "ALCHEMIST-RECLAIM.description": "นำ[gold]ยาผสม[/gold]ทั้งหมดจาก[gold]กองสลาย[/gold]ของคุณขึ้น[gold]มือ[/gold]",
+  "ALCHEMIST-RECLAIM.description": "สร้าง[gold]พิษ[/gold]ใส่ศัตรูทั้งหมดตามจำนวน[gold]ยาผสม[/gold]ที่คุณเล่นในการต่อสู้นี้{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "ทวงคืน",
   "ALCHEMIST-REFINE.description": "ทุกครั้งที่[gold]ยาผสม[/gold]ถูกเพิ่มเข้า[gold]มือ[/gold] [gold]พัฒนา[/gold]มัน มันได้รับ[gold]คงสภาพ[/gold]",
   "ALCHEMIST-REFINE.title": "กลั่นกรอง",

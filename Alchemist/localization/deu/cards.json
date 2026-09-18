@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "Durchstechen",
   "ALCHEMIST-QUENCH.description": "Erhalte {antitoxin:diff()} [gold]Antitoxin[/gold].\nErhalte [gold]Block[/gold] in Höhe des Doppelten deines [gold]Antitoxins[/gold].{InCombat:\n(Erhalte {CalculatedBlock:diff()} [gold]Block[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Labung",
-  "ALCHEMIST-RECLAIM.description": "Nimm ALLE [gold]Mixturen[/gold] aus deinem [gold]Erschöpfungsstapel[/gold] auf deine [gold]Hand[/gold].",
+  "ALCHEMIST-RECLAIM.description": "Wende [gold]Gift[/gold] in Höhe der Anzahl in diesem Kampf gespielter [gold]Mixturen[/gold] auf ALLE Gegner an.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Zurückfordern",
   "ALCHEMIST-REFINE.description": "Immer wenn du eine [gold]Mixtur[/gold] auf deine [gold]Hand[/gold] nimmst, wird sie [gold]Verbessert[/gold] und bekommt [gold]Behalten[/gold].",
   "ALCHEMIST-REFINE.title": "Raffinieren",

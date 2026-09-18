@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "Puncture",
   "ALCHEMIST-QUENCH.description": "Gain {antitoxin:diff()} [gold]Antitoxin[/gold].\nGain [gold]Block[/gold] equal to twice your [gold]Antitoxin[/gold].{InCombat:\n(Gain {CalculatedBlock:diff()} [gold]Block[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Quench",
-  "ALCHEMIST-RECLAIM.description": "Put ALL [gold]Mixes[/gold] from your [gold]Exhaust Pile[/gold] into your [gold]Hand[/gold].",
+  "ALCHEMIST-RECLAIM.description": "Apply [gold]Poison[/gold] to ALL enemies equal to the number of [gold]Mixes[/gold] you have played this combat.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Reclaim",
   "ALCHEMIST-REFINE.description": "Whenever you add a [gold]Mix[/gold] into your [gold]Hand[/gold], it is [gold]Upgraded[/gold] and gains [gold]Retain[/gold].",
   "ALCHEMIST-REFINE.title": "Refine",

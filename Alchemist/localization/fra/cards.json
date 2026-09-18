@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "Perforation",
   "ALCHEMIST-QUENCH.description": "Gagnez {antitoxin:diff()} d'[gold]Antitoxine[/gold].\nGagnez un montant d'[gold]Armure[/gold] égal au double de votre [gold]Antitoxine[/gold].{InCombat:\n(Gagnez {CalculatedBlock:diff()} d'[gold]Armure[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Étanchement",
-  "ALCHEMIST-RECLAIM.description": "Placez TOUTES les [gold]Mixtures[/gold] de votre pile de cartes [gold]Épuisées[/gold] dans votre [gold]Main[/gold].",
+  "ALCHEMIST-RECLAIM.description": "Appliquez à TOUS les ennemis autant de [gold]Poison[/gold] que le nombre de [gold]Mixtures[/gold] jouées pendant ce combat.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Réclamation",
   "ALCHEMIST-REFINE.description": "Lorsque vous ajoutez une [gold]Mixture[/gold] à votre [gold]Main[/gold], elle est [gold]Améliorée[/gold] et gagne [gold]Retenue[/gold].",
   "ALCHEMIST-REFINE.title": "Raffinage",

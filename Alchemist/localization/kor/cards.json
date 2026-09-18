@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "천공",
   "ALCHEMIST-QUENCH.description": "[gold]항독소[/gold]를 {antitoxin:diff()} 얻습니다.\n[gold]항독소[/gold]의 2배만큼 [gold]방어도[/gold]를 얻습니다.{InCombat:\n([gold]방어도[/gold]를 {CalculatedBlock:diff()} 얻습니다)|}",
   "ALCHEMIST-QUENCH.title": "해갈",
-  "ALCHEMIST-RECLAIM.description": "[gold]소멸된 카드 더미[/gold]에서 모든 [gold]혼합액[/gold]을 [gold]손[/gold]으로 가져옵니다.",
+  "ALCHEMIST-RECLAIM.description": "이번 전투 동안 사용한 [gold]혼합액[/gold]의 수만큼 모든 적에게 [gold]중독[/gold]을 부여합니다.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "되찾기",
   "ALCHEMIST-REFINE.description": "[gold]혼합액[/gold]을 [gold]손[/gold]에 추가할 때마다, 그 카드는 [gold]강화[/gold]되고 [gold]보존[/gold]을 얻습니다.",
   "ALCHEMIST-REFINE.title": "정제",

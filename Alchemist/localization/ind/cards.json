@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "Tusukan",
   "ALCHEMIST-QUENCH.description": "Dapatkan {antitoxin:diff()} [gold]Antitoksin[/gold].\nDapatkan [gold]Blok[/gold] sebanyak dua kali [gold]Antitoksin[/gold] milikmu.{InCombat:\n(Dapatkan {CalculatedBlock:diff()} [gold]Blok[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Redakan",
-  "ALCHEMIST-RECLAIM.description": "Taruh SEMUA [gold]Campuran[/gold] dari [gold]Tumpukan Hangusmu[/gold] ke [gold]Tanganmu[/gold].",
+  "ALCHEMIST-RECLAIM.description": "Terapkan [gold]Racun[/gold] ke SEMUA musuh sebanyak jumlah [gold]Campuran[/gold] yang kamu mainkan perlawanan ini.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Klaim Kembali",
   "ALCHEMIST-REFINE.description": "Setiap kali kamu menambahkan sebuah [gold]Campuran[/gold] ke [gold]Tangan[/gold]mu, kartu itu [gold]Ditingkatkan[/gold] dan mendapat [gold]Pertahankan[/gold].",
   "ALCHEMIST-REFINE.title": "Murnikan",

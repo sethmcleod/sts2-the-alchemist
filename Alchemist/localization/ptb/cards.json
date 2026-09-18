@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "Perfurar",
   "ALCHEMIST-QUENCH.description": "Receba {antitoxin:diff()} de [gold]Antitoxina[/gold].\nReceba [gold]Proteção[/gold] equivalente ao dobro da sua [gold]Antitoxina[/gold].{InCombat:\n(Receba {CalculatedBlock:diff()} de [gold]Proteção[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Saciar",
-  "ALCHEMIST-RECLAIM.description": "Coloque TODAS as [gold]Misturas[/gold] da sua pilha de [gold]Cartas Exauridas[/gold] na sua [gold]Mão[/gold].",
+  "ALCHEMIST-RECLAIM.description": "Aplique [gold]Veneno[/gold] a TODOS os inimigos equivalente à quantidade de [gold]Misturas[/gold] jogadas neste combate.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Recuperar",
   "ALCHEMIST-REFINE.description": "Sempre que uma [gold]Mistura[/gold] for adicionada na sua [gold]Mão[/gold], [gold]Aprimore[/gold]-a. Ela recebe [gold]Manter[/gold].",
   "ALCHEMIST-REFINE.title": "Refinar",

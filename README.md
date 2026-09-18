@@ -6,7 +6,7 @@
 - 💎 9 new relics
 - 🧪 10 new potions
 - 📚 7 timeline epochs
-- 🎨 Handmade art and animation _(WIP)_
+- 🎨 Handmade art and animation
 - 🌍 Translated into 15 languages
 - 🐸 You get to be a frog
 

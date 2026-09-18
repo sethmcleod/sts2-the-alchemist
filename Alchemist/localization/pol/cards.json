@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "Nakłucie",
   "ALCHEMIST-QUENCH.description": "Zyskaj {antitoxin:diff()} pkt. [gold]Antytoksyny[/gold].\nZyskaj [gold]Blok[/gold] równy dwukrotności twojej [gold]Antytoksyny[/gold].{InCombat:\n(Zyskaj {CalculatedBlock:diff()} pkt. [gold]Bloku[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Ugaszenie",
-  "ALCHEMIST-RECLAIM.description": "Przenieś WSZYSTKIE [gold]Mieszanki[/gold] ze [gold]stosu kart wyczerpanych[/gold] do [gold]ręki[/gold].",
+  "ALCHEMIST-RECLAIM.description": "Nałóż na WSZYSTKICH przeciwników [gold]Truciznę[/gold] równą liczbie [gold]Mieszanek[/gold] zagranych w tej walce.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Odzyskanie",
   "ALCHEMIST-REFINE.description": "Kiedykolwiek dodasz [gold]Mieszankę[/gold] do [gold]ręki[/gold], [gold]Ulepsz[/gold] ją. Otrzymuje [gold]Zachowanie[/gold].",
   "ALCHEMIST-REFINE.title": "Rafinacja",

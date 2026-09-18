@@ -147,7 +147,7 @@
   "ALCHEMIST-PUNCTURE.title": "Deşme",
   "ALCHEMIST-QUENCH.description": "{antitoxin:diff()} [gold]Antitoksin[/gold] elde et.\n[gold]Antitoksin[/gold]'inin iki katı kadar [gold]Blok[/gold] elde et.{InCombat:\n({CalculatedBlock:diff()} [gold]Blok[/gold] elde et)|}",
   "ALCHEMIST-QUENCH.title": "Söndür",
-  "ALCHEMIST-RECLAIM.description": "[gold]Tüketim Destesi[/gold]'ndeki TÜM [gold]Karışım[/gold]'ları [gold]El[/gold]'ine koy.",
+  "ALCHEMIST-RECLAIM.description": "TÜM düşmanlara bu savaşta oynadığın [gold]Karışım[/gold] sayısı kadar [gold]Zehir[/gold] uygula.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Geri Alma",
   "ALCHEMIST-REFINE.description": "[gold]El[/gold]'ine bir [gold]Karışım[/gold] eklendiğinde onu [gold]Geliştir[/gold]. O kart [gold]Sakla[/gold] elde eder.",
   "ALCHEMIST-REFINE.title": "Arıt",

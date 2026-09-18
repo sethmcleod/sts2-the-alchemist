@@ -4,6 +4,7 @@ using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using Alchemist.AlchemistCode.Character;
+using Alchemist.AlchemistCode.Commands;
 using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Enchantments;
 using Alchemist.AlchemistCode.Extensions;
@@ -270,7 +271,14 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             IsMutable && FormulaDamagePreview is { } d ? $"\n(Deals [green]{d}[/green] damage)" : "");
         description.Add("FormulaHpLoss",
             IsMutable && FormulaHpLossPreview is { } hp ? $" ([red]{hp}[/red])" : "");
+        // Live count only in combat; the compendium and reward previews show the bare sentence
+        if (ShowsMixesPlayed)
+            description.Add("MixesPlayed",
+                IsMutable && CombatState != null ? $" ({Mixing.PlayedThisCombat(Owner)})" : "");
     }
+
+    // A card that scales with the Mixes played this combat opts in, and places {MixesPlayed} in its text
+    protected virtual bool ShowsMixesPlayed => false;
 
     protected static string PreviewLine(string key, string variable, int count)
     {

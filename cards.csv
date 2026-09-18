@@ -63,7 +63,7 @@ Proof,Common,Attack,1,Gain 3 (4) Antitoxin. Deal damage equal to your Antitoxin.
 Puff Up,Uncommon,Skill,2,Retain. Ferment. Gain 9 (12) Block. Gain 3 (5) additional Block for each turn fermented.
 Puncture,Common,Attack,1,"If the enemy has Poison, apply 2 (3) Vulnerable. Deal 4 (5) damage twice."
 Quench,Uncommon,Skill,1,Gain 4 (6) Antitoxin. Gain Block equal to twice your Antitoxin. Exhaust.
-Reclaim,Rare,Skill,1 (0),Put ALL Mixes from your Exhaust Pile into your Hand. Exhaust.
+Reclaim,Rare,Skill,1 (0),Apply Poison to ALL enemies equal to the number of Mixes you have played this combat. Exhaust.
 Refine,Rare,Power,1 (0),"Whenever you add a Mix into your Hand, it is upgraded and gains Retain."
 Rerun,Rare,Skill,1,"This turn, your next 1 (2) cards are played an extra time. Gain 4 Poison."
 Resolve,Uncommon,Power,1,Retain. Ferment. Gain 1 Strength. Gain 1 (2) additional Strength for each turn fermented.
