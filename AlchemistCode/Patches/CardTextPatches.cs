@@ -31,3 +31,29 @@ public static class FermentInlineRetainPatch
             __result = __result.Replace(RetainRendered + "\n", RetainInline);
     }
 }
+
+// The game prints an enchantment's extra text under the description. The Laced keyword prints above
+// it, so the enchantment's purple line moves to the top to read the same way on either card
+[HarmonyPatch]
+public static class LacedEnchantmentLinePatch
+{
+    private static MethodBase TargetMethod() =>
+        typeof(CardModel)
+            .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
+            .First(m => m.Name == "GetDescriptionForPile" && m.GetParameters().Length == 3);
+
+    private static string LacedTitle => new LocString("enchantments", "ALCHEMIST-LACED.title").GetFormattedText();
+
+    public static void Postfix(CardModel __instance, ref string __result)
+    {
+        if (__instance.Enchantment is not Enchantments.Laced || string.IsNullOrEmpty(__result)) return;
+        var lines = __result.Split('\n').ToList();
+        var title = LacedTitle;
+        var index = lines.FindIndex(l => l.StartsWith("[purple]") && l.Contains(title));
+        if (index <= 0) return;
+        var line = lines[index];
+        lines.RemoveAt(index);
+        lines.Insert(0, line);
+        __result = string.Join('\n', lines);
+    }
+}
