@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "Geduldiger Schlag",
   "ALCHEMIST-POTENT_DEFEND.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nNimm eine zufällige [gold]Mixtur[/gold] auf deine [gold]Hand[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Kräftiges Verteidigen",
-  "ALCHEMIST-POTENT_STRIKE.description": "Erhalte {SelfPoison} [gold]Gift[/gold] und {Antitoxin} [gold]Antitoxin[/gold].\nFüge {CalculatedDamage:diff()} Schaden zu.",
+  "ALCHEMIST-POTENT_STRIKE.description": "Erhalte {SelfPoison} [gold]Gift[/gold].\nErhalte {Antitoxin} [gold]Antitoxin[/gold].\nFüge {CalculatedDamage:diff()} Schaden zu.",
   "ALCHEMIST-POTENT_STRIKE.title": "Kräftiger Schlag",
   "ALCHEMIST-POUR_OVER.description": "[gold]Gärung.[/gold]\nZiehe {Cards} Karte.\nVerschiebe die GESAMTE [gold]Gärung[/gold] von dieser Karte auf eine Karte mit [gold]Gärung[/gold] auf deiner [gold]Hand[/gold]{IfUpgraded:show:, und sie [gold]Gärt[/gold] {Bonus} Mal|}.",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "Wähle eine Karte, auf die du die [gold]Gärung[/gold] verschiebst.",

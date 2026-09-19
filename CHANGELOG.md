@@ -11,7 +11,7 @@ mod).
 - Added a Ferment indicator: Ferment cards show the turns Fermented in their top right corner in Hand, Draw, Discard, and Exhaust piles
 - Added Gold Leaf potion (Brew only): "Add Replay to a card in your Hand."
 - Added Potent Defend card (Ancients Awakened): "Gain 5 (8) Block. Add a random Mix into your Hand."
-- Added Potent Strike card (Ancients Awakened): "Laced. Gain 1 Poison and 1 Antitoxin. Deal 6 (9) damage."
+- Added Potent Strike card (Ancients Awakened): "Laced. Gain 1 Poison. Gain 1 Antitoxin. Deal 6 (9) damage."
 - Added Quintessence card (Ancients Awakened): "Whenever one of your cards Ferments, add a random Mix into your Hand." Quintessence+ adds a Mix+
 - Added Reconstitute card (Hero Expansion): "Gain 2 Poison. Put a card from your Discard Pile into your Hand. Exhaust." Reconstitute+ loses Exhaust
 - Added The Hero Expansion cross-mod support: its Broken Blade transforms into The Steeped Blade for the Alchemist, and its Mysterious Flashlight gives Reconstitute

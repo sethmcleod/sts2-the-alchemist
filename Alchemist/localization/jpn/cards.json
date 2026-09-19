@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "忍耐のストライク",
   "ALCHEMIST-POTENT_DEFEND.description": "{Block:diff()}[gold]ブロック[/gold]を得る。\nランダムな[gold]合剤[/gold]を1枚[gold]手札[/gold]に加える。",
   "ALCHEMIST-POTENT_DEFEND.title": "強力な防御",
-  "ALCHEMIST-POTENT_STRIKE.description": "[gold]毒[/gold]{SelfPoison}と[gold]抗毒素[/gold]{Antitoxin}を得る。\n{CalculatedDamage:diff()}ダメージを与える。",
+  "ALCHEMIST-POTENT_STRIKE.description": "[gold]毒[/gold]{SelfPoison}を得る。\n[gold]抗毒素[/gold]{Antitoxin}を得る。\n{CalculatedDamage:diff()}ダメージを与える。",
   "ALCHEMIST-POTENT_STRIKE.title": "強力なストライク",
   "ALCHEMIST-POUR_OVER.description": "[gold]発酵。[/gold]\nカードを{Cards}枚引く。\nこのカードの[gold]発酵[/gold]をすべて[gold]手札[/gold]の[gold]発酵[/gold]カード1枚に移す。{IfUpgraded:show:それは{Bonus}回[gold]発酵[/gold]する。|}",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "[gold]発酵[/gold]を移す先のカードを1枚選択",

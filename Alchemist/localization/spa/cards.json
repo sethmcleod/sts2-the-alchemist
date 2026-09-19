@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "Golpe paciente",
   "ALCHEMIST-POTENT_DEFEND.description": "Gana {Block:diff()} de [gold]Bloqueo[/gold].\nAñade una [gold]Mezcla[/gold] aleatoria a tu [gold]Mano[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Defender potente",
-  "ALCHEMIST-POTENT_STRIKE.description": "Gana {SelfPoison} de [gold]Veneno[/gold] y {Antitoxin} de [gold]Antitoxina[/gold].\nInflige {CalculatedDamage:diff()} de daño.",
+  "ALCHEMIST-POTENT_STRIKE.description": "Gana {SelfPoison} de [gold]Veneno[/gold].\nGana {Antitoxin} de [gold]Antitoxina[/gold].\nInflige {CalculatedDamage:diff()} de daño.",
   "ALCHEMIST-POTENT_STRIKE.title": "Golpe potente",
   "ALCHEMIST-POUR_OVER.description": "[gold]Fermenta.[/gold]\nRoba {Cards} carta.\nMueve TODA la [gold]Fermentación[/gold] de esta carta a una carta con [gold]Fermentar[/gold] de tu [gold]Mano[/gold]{IfUpgraded:show:, y [gold]Fermenta[/gold] {Bonus} vez|}.",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "Elige una carta a la que mover la [gold]Fermentación[/gold].",

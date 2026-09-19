@@ -57,7 +57,7 @@ Overflow,Uncommon,Power,1 (0),"Whenever one of your cards Ferments, Upgrade it."
 Panacea,Ancient,Power,1 (0),"Whenever you gain Poison, gain 1 Antitoxin."
 Patient Strike,Uncommon,Attack,1,Retain. Ferment. Deal 9 (12) damage. Deals 4 (6) additional damage for each turn Fermented.
 Potent Defend,"Token, Ancients Awakened",Skill,1,Gain 5 (8) Block. Add a random Mix into your Hand.
-Potent Strike,"Token, Ancients Awakened",Attack,1,Laced. Gain 1 Poison and 1 Antitoxin. Deal 6 (9) damage.
+Potent Strike,"Token, Ancients Awakened",Attack,1,Laced. Gain 1 Poison. Gain 1 Antitoxin. Deal 6 (9) damage.
 Pour Over,Uncommon,Skill,0,Retain. Ferment. Draw 1 card. Move ALL Fermentation from this card to a Ferment card in your Hand. (Pour Over+ also Ferments it 1)
 Premonition,Uncommon,Skill,0,Scry 4 (5). Draw 1 card. Gain 3 Poison. (Premonition+ gains Retain)
 Preserve,"Uncommon, Multiplayer",Skill,0,"Choose another player. Their Block is not removed at the start of their next 1 (2) turns."

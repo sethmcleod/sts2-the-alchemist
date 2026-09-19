@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "จู่โจมอดทน",
   "ALCHEMIST-POTENT_DEFEND.description": "ได้รับ {Block:diff()} [gold]บล็อก[/gold]\nเพิ่ม[gold]ยาผสม[/gold] 1 ใบแบบสุ่มเข้า[gold]มือ[/gold]",
   "ALCHEMIST-POTENT_DEFEND.title": "ป้องกันเข้มข้น",
-  "ALCHEMIST-POTENT_STRIKE.description": "ได้รับ {SelfPoison} [gold]พิษ[/gold] และ {Antitoxin} [gold]สารต้านพิษ[/gold]\nสร้างความเสียหาย {CalculatedDamage:diff()}",
+  "ALCHEMIST-POTENT_STRIKE.description": "ได้รับ {SelfPoison} [gold]พิษ[/gold]\nได้รับ {Antitoxin} [gold]สารต้านพิษ[/gold]\nสร้างความเสียหาย {CalculatedDamage:diff()}",
   "ALCHEMIST-POTENT_STRIKE.title": "จู่โจมเข้มข้น",
   "ALCHEMIST-POUR_OVER.description": "[gold]บ่ม[/gold]\nจั่วการ์ด {Cards} ใบ\nย้าย[gold]การบ่ม[/gold]ทั้งหมดจากการ์ดใบนี้ไปยังการ์ด[gold]บ่ม[/gold]ใน[gold]มือ[/gold]{IfUpgraded:show: และมัน[gold]บ่ม[/gold] {Bonus} ครั้ง|}",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "เลือกการ์ดที่จะรับ[gold]การบ่ม[/gold]",

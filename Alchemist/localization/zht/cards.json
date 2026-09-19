@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "耐心打擊",
   "ALCHEMIST-POTENT_DEFEND.description": "獲得 {Block:diff()} 點[gold]格擋[/gold]。\n將一張隨機[gold]混劑[/gold]加入你的[gold]手牌[/gold]。",
   "ALCHEMIST-POTENT_DEFEND.title": "強效防禦",
-  "ALCHEMIST-POTENT_STRIKE.description": "獲得 {SelfPoison} 層[gold]中毒[/gold]和 {Antitoxin} 點[gold]抗毒素[/gold]。\n造成 {CalculatedDamage:diff()} 點傷害。",
+  "ALCHEMIST-POTENT_STRIKE.description": "獲得 {SelfPoison} 層[gold]中毒[/gold]。\n獲得 {Antitoxin} 點[gold]抗毒素[/gold]。\n造成 {CalculatedDamage:diff()} 點傷害。",
   "ALCHEMIST-POTENT_STRIKE.title": "強效打擊",
   "ALCHEMIST-POUR_OVER.description": "[gold]醞釀。[/gold]\n抽 {Cards} 張牌。\n將此牌的所有[gold]醞釀[/gold]轉移到你[gold]手牌[/gold]中的一張[gold]醞釀[/gold]牌上{IfUpgraded:show:，並使它[gold]醞釀[/gold] {Bonus} 次|}。",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "選擇要移入[gold]醞釀[/gold]的牌。",

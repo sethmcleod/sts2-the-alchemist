@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "Colpo Paziente",
   "ALCHEMIST-POTENT_DEFEND.description": "Ottieni {Block:diff()} di [gold]Blocco[/gold].\nAggiungi una [gold]Miscela[/gold] casuale alla tua [gold]mano[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Difesa Potente",
-  "ALCHEMIST-POTENT_STRIKE.description": "Ottieni {SelfPoison} di [gold]Veleno[/gold] e {Antitoxin} di [gold]Antitossina[/gold].\nInfliggi {CalculatedDamage:diff()} di danno.",
+  "ALCHEMIST-POTENT_STRIKE.description": "Ottieni {SelfPoison} di [gold]Veleno[/gold].\nOttieni {Antitoxin} di [gold]Antitossina[/gold].\nInfliggi {CalculatedDamage:diff()} di danno.",
   "ALCHEMIST-POTENT_STRIKE.title": "Colpo Potente",
   "ALCHEMIST-POUR_OVER.description": "[gold]Fermentazione.[/gold]\nPeschi {Cards} carta.\nSposti TUTTA la [gold]fermentazione[/gold] da questa carta a una carta [gold]Fermentazione[/gold] nella tua [gold]mano[/gold]{IfUpgraded:show:, e [gold]fermenta[/gold] {Bonus} volta|}.",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "Scegli la carta su cui spostare la [gold]fermentazione[/gold].",

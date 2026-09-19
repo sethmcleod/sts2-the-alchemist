@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "Tebasan Sabar",
   "ALCHEMIST-POTENT_DEFEND.description": "Dapatkan {Block:diff()} [gold]Blok[/gold].\nTambahkan sebuah [gold]Campuran[/gold] acak ke [gold]Tanganmu[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Tahan Ampuh",
-  "ALCHEMIST-POTENT_STRIKE.description": "Dapatkan {SelfPoison} [gold]Racun[/gold] dan {Antitoxin} [gold]Antitoksin[/gold].\nLakukan {CalculatedDamage:diff()} kerusakan.",
+  "ALCHEMIST-POTENT_STRIKE.description": "Dapatkan {SelfPoison} [gold]Racun[/gold].\nDapatkan {Antitoxin} [gold]Antitoksin[/gold].\nLakukan {CalculatedDamage:diff()} kerusakan.",
   "ALCHEMIST-POTENT_STRIKE.title": "Tebas Ampuh",
   "ALCHEMIST-POUR_OVER.description": "[gold]Fermentasi.[/gold]\nAmbil {Cards} kartu.\nPindahkan SEMUA [gold]Fermentasi[/gold] dari kartu ini ke sebuah kartu [gold]Fermentasi[/gold] di [gold]Tanganmu[/gold]{IfUpgraded:show:, dan kartu itu [gold]Berfermentasi[/gold] {Bonus} kali|}.",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "Pilih kartu tujuan pemindahan [gold]Fermentasi[/gold].",

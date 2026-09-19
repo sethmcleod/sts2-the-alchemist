@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "耐心打击",
   "ALCHEMIST-POTENT_DEFEND.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n将一张随机[gold]合剂[/gold]加入你的[gold]手牌[/gold]。",
   "ALCHEMIST-POTENT_DEFEND.title": "强效防御",
-  "ALCHEMIST-POTENT_STRIKE.description": "获得{SelfPoison}层[gold]中毒[/gold]和{Antitoxin}点[gold]抗毒素[/gold]。\n造成{CalculatedDamage:diff()}点伤害。",
+  "ALCHEMIST-POTENT_STRIKE.description": "获得{SelfPoison}层[gold]中毒[/gold]。\n获得{Antitoxin}点[gold]抗毒素[/gold]。\n造成{CalculatedDamage:diff()}点伤害。",
   "ALCHEMIST-POTENT_STRIKE.title": "强效打击",
   "ALCHEMIST-POUR_OVER.description": "[gold]发酵。[/gold]\n抽{Cards}张牌。\n将此牌的所有[gold]发酵[/gold]转移到你[gold]手牌[/gold]中的一张[gold]发酵[/gold]牌上{IfUpgraded:show:，并使它[gold]发酵[/gold]{Bonus}次|}。",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "选择要移入[gold]发酵[/gold]的牌。",

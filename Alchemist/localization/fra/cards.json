@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "Frappe patiente",
   "ALCHEMIST-POTENT_DEFEND.description": "Gagnez {Block:diff()} d'[gold]Armure[/gold].\nAjoutez une [gold]Mixture[/gold] aléatoire à votre [gold]Main[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Défense puissante",
-  "ALCHEMIST-POTENT_STRIKE.description": "Gagnez {SelfPoison} de [gold]Poison[/gold] et {Antitoxin} d'[gold]Antitoxine[/gold].\nInfligez {CalculatedDamage:diff()} dégâts.",
+  "ALCHEMIST-POTENT_STRIKE.description": "Gagnez {SelfPoison} de [gold]Poison[/gold].\nGagnez {Antitoxin} d'[gold]Antitoxine[/gold].\nInfligez {CalculatedDamage:diff()} dégâts.",
   "ALCHEMIST-POTENT_STRIKE.title": "Frappe puissante",
   "ALCHEMIST-POUR_OVER.description": "[gold]Fermentation.[/gold]\nPiochez {Cards} carte.\nDéplacez TOUTE la [gold]Fermentation[/gold] de cette carte vers une carte [gold]Fermentation[/gold] de votre [gold]Main[/gold]{IfUpgraded:show:, et elle [gold]Fermente[/gold] {Bonus} fois|}.",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "Choisissez la carte qui reçoit la [gold]Fermentation[/gold].",

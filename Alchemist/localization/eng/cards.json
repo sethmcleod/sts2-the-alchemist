@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "Patient Strike",
   "ALCHEMIST-POTENT_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nAdd a random [gold]Mix[/gold] into your [gold]Hand[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Potent Defend",
-  "ALCHEMIST-POTENT_STRIKE.description": "Gain {SelfPoison} [gold]Poison[/gold] and {Antitoxin} [gold]Antitoxin[/gold].\nDeal {CalculatedDamage:diff()} damage.",
+  "ALCHEMIST-POTENT_STRIKE.description": "Gain {SelfPoison} [gold]Poison[/gold].\nGain {Antitoxin} [gold]Antitoxin[/gold].\nDeal {CalculatedDamage:diff()} damage.",
   "ALCHEMIST-POTENT_STRIKE.title": "Potent Strike",
   "ALCHEMIST-POUR_OVER.description": "[gold]Ferment.[/gold]\nDraw {Cards} card.\nMove ALL [gold]Fermentation[/gold] from this card to a [gold]Ferment[/gold] card in your [gold]Hand[/gold]{IfUpgraded:show:, and it [gold]Ferments[/gold] {Bonus}|}.",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "Choose a card to move [gold]Fermentation[/gold] to.",

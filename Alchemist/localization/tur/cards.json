@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "Sabırlı Saldırı",
   "ALCHEMIST-POTENT_DEFEND.description": "{Block:diff()} [gold]Blok[/gold] elde et.\n[gold]El[/gold]'ine rastgele bir [gold]Karışım[/gold] ekle.",
   "ALCHEMIST-POTENT_DEFEND.title": "Güçlü Savun",
-  "ALCHEMIST-POTENT_STRIKE.description": "{SelfPoison} [gold]Zehir[/gold] ve {Antitoxin} [gold]Antitoksin[/gold] elde et.\n{CalculatedDamage:diff()} hasar ver.",
+  "ALCHEMIST-POTENT_STRIKE.description": "{SelfPoison} [gold]Zehir[/gold] elde et.\n{Antitoxin} [gold]Antitoksin[/gold] elde et.\n{CalculatedDamage:diff()} hasar ver.",
   "ALCHEMIST-POTENT_STRIKE.title": "Güçlü Saldır",
   "ALCHEMIST-POUR_OVER.description": "[gold]Mayalan.[/gold]\n{Cards} kart çek.\nBu kartın TÜM [gold]Mayalanma[/gold]'sını [gold]El[/gold]'indeki bir [gold]Mayalan[/gold] kartına taşı{IfUpgraded:show: ve o kart {Bonus} kez [gold]Mayalanır[/gold]|}.",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "[gold]Mayalanma[/gold]'nın taşınacağı kartı seç.",

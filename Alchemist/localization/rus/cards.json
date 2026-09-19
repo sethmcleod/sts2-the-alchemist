@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "Терпеливый удар",
   "ALCHEMIST-POTENT_DEFEND.description": "Дает {Block:diff()} [gold]защиты[/gold].\nДобавляет случайную [gold]смесь[/gold] в вашу [gold]руку[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Крепкая защита",
-  "ALCHEMIST-POTENT_STRIKE.description": "Дает вам {SelfPoison} [gold]яда[/gold] и {Antitoxin} [gold]антитоксина[/gold].\nНаносит {CalculatedDamage:diff()} урона.",
+  "ALCHEMIST-POTENT_STRIKE.description": "Дает вам {SelfPoison} [gold]яда[/gold].\nДает {Antitoxin} [gold]антитоксина[/gold].\nНаносит {CalculatedDamage:diff()} урона.",
   "ALCHEMIST-POTENT_STRIKE.title": "Крепкий удар",
   "ALCHEMIST-POUR_OVER.description": "[gold]Брожение.[/gold]\nВы добираете {Cards} карту.\nПереносит ВСЕ [gold]брожение[/gold] с этой карты на карту с [gold]брожением[/gold] в вашей [gold]руке[/gold]{IfUpgraded:show:, и она [gold]бродит[/gold] {Bonus} раз|}.",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "Выберите карту, на которую перенести [gold]брожение[/gold].",

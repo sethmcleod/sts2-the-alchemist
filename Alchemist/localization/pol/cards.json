@@ -134,7 +134,7 @@
   "ALCHEMIST-PATIENT_STRIKE.title": "Cierpliwe uderzenie",
   "ALCHEMIST-POTENT_DEFEND.description": "Zyskaj {Block:diff()} pkt. [gold]Bloku[/gold].\nDodaj losową [gold]Mieszankę[/gold] do [gold]ręki[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Stężona obrona",
-  "ALCHEMIST-POTENT_STRIKE.description": "Zyskaj {SelfPoison} pkt. [gold]Trucizny[/gold] i {Antitoxin} pkt. [gold]Antytoksyny[/gold].\nZadaj {CalculatedDamage:diff()} pkt. obrażeń.",
+  "ALCHEMIST-POTENT_STRIKE.description": "Zyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].\nZyskaj {Antitoxin} pkt. [gold]Antytoksyny[/gold].\nZadaj {CalculatedDamage:diff()} pkt. obrażeń.",
   "ALCHEMIST-POTENT_STRIKE.title": "Stężone uderzenie",
   "ALCHEMIST-POUR_OVER.description": "[gold]Fermentacja.[/gold]\nDobierz {Cards} kartę.\nPrzenieś CAŁĄ [gold]Fermentację[/gold] z tej karty na kartę z [gold]Fermentacją[/gold] w [gold]ręce[/gold]{IfUpgraded:show:, a ona [gold]Fermentuje[/gold] {Bonus} raz|}.",
   "ALCHEMIST-POUR_OVER.selectionScreenPromptInto": "Wybierz kartę, na którą przenieść [gold]Fermentację[/gold].",
