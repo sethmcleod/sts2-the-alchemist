@@ -19,7 +19,7 @@
   "ALCHEMIST-SAMPLER.title": "Sampler",
   "ALCHEMIST-SOLVENT.description": "Remove ALL [gold]Artifact[/gold] and [gold]Block[/gold] from ALL enemies. Apply [blue]2[/blue] [gold]Vulnerable[/gold] to ALL enemies.",
   "ALCHEMIST-SOLVENT.title": "Solvent",
-  "ALCHEMIST-STARTER_CULTURE.description": "ALL [gold]Ferment[/gold] cards in your [gold]Hand[/gold] ferment [blue]4[/blue].",
+  "ALCHEMIST-STARTER_CULTURE.description": "ALL [gold]Ferment[/gold] cards in your [gold]Hand[/gold] [gold]Ferment[/gold] [blue]4[/blue].",
   "ALCHEMIST-STARTER_CULTURE.title": "Starter Culture",
   "ALCHEMIST-VOLATILE_REAGENT.description": "Whenever you play a card this turn, deal [blue]5[/blue] damage to ALL enemies.",
   "ALCHEMIST-VOLATILE_REAGENT.title": "Volatile Reagent"
