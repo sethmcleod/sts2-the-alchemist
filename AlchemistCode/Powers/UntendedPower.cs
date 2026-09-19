@@ -21,6 +21,6 @@ public class UntendedPower : AlchemistPower
         if (card.Owner?.Creature != Owner) return;
         if (card is not AlchemistCard { IsFermentInline: true } ferment) return;
         Flash();
-        await ferment.AdvanceFerment((int)Amount);
+        await ferment.AdvanceFerment(choiceContext, (int)Amount);
     }
 }

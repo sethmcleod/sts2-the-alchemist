@@ -7,7 +7,7 @@ mod).
 
 ## [Unreleased]
 
-- Reworked Reclaim: "Apply Poison to ALL enemies equal to the number of Mixes you have played this combat. Exhaust."
+- Added 9 cards that are offered only while The Hero Expansion is loaded: Varnish, Pond Scum and Membrane (Common), Winnow, Tadpole and Unfazed (Uncommon), Mud Pack, Overspray and Chrysopoeia (Rare)
 
 ## [0.14.14] - 2026-09-17
 

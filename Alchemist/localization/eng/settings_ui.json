@@ -14,6 +14,8 @@
   "ALCHEMIST-ECONOMY.title": "Economy",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "Adds the Alchemist's 7-chapter story to the Timeline, unlocking cards, relics, and potions as you progress. Disable to hide it from the Timeline and make all Alchemist content available immediately; re-enabling restores progress.",
   "ALCHEMIST-ENABLE_EPOCHS.title": "Enable Timeline Epochs",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "Offers the 9 Alchemist cards made for The Hero Expansion even when that mod is not installed. The Broken Blade and Mysterious Flashlight event cards stay locked since they are inaccessible without the mod.",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "Hero Expansion Cards Without the Mod",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "Keeps Alchemist cards out of runs that don't include an Alchemist player, so they can't appear in other characters' cross-class rewards (e.g. Kaleidoscope). Disable to let Alchemist cards mix into any run.",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Separate Card Pool",
   "ALCHEMIST-POTION_SELL_PERCENT.hover.desc": "The percent value of Gold you will receive when selling to the Merchant. Default: 100%",

@@ -134,6 +134,17 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         return count;
     }
 
+    // The living enemies that carry Poison, for a card that scales with them. Zero outside a live
+    // combat, and zero on the canonical model
+    protected static int PoisonedEnemies(CardModel card)
+    {
+        if (card is not AlchemistCard { IsMutable: true, CombatState: { } combat }) return 0;
+        var count = 0;
+        foreach (var enemy in combat.Enemies)
+            if (enemy.IsAlive && Poisoned(enemy)) count++;
+        return count;
+    }
+
     // The raw total, before any hook. The card face shows the hooked total with {FormulaDamage}
     protected virtual int? RawFormulaDamagePreview => null;
 
