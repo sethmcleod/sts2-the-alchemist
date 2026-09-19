@@ -9,6 +9,8 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "Pilih seberapapun kartu untuk diberi [gold]Infusi[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Pilih sampai dengan [blue]{MaxCount}[/blue] {MaxCount:plural:kartu|kartu} untuk diberi [gold]Infusi[/gold].",
   "ALCHEMIST-INFUSE.title": "Infusi",
+  "ALCHEMIST-LACED.description": "Serangan ini melakukan kerusakan tambahan sebanyak [gold]Racun[/gold] milikmu.",
+  "ALCHEMIST-LACED.title": "Beracun",
   "ALCHEMIST-MIX.selectionPrompt": "Pilih sebuah [gold]Campuran[/gold] untuk ditambahkan ke [gold]Tangan[/gold]mu.",
   "ALCHEMIST-MIX.selectionPromptBasic": "Pilih sebuah [gold]Campuran[/gold] dasar untuk ditambahkan ke [gold]Tangan[/gold]mu.",
   "ALCHEMIST-MIX.selectionPromptSpecial": "Pilih sebuah [gold]Campuran[/gold] khusus untuk ditambahkan ke [gold]Tangan[/gold]mu."

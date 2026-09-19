@@ -9,6 +9,8 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "Wähle beliebig viele Karten, die du [gold]Infundierst[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Wähle bis zu [blue]{MaxCount}[/blue] {MaxCount:plural:Karte|Karten}, die du [gold]Infundierst[/gold].",
   "ALCHEMIST-INFUSE.title": "Infundieren",
+  "ALCHEMIST-LACED.description": "Dieser Angriff fügt zusätzlichen Schaden in Höhe deines [gold]Gifts[/gold] zu.",
+  "ALCHEMIST-LACED.title": "Versetzt",
   "ALCHEMIST-MIX.selectionPrompt": "Wähle eine [gold]Mixtur[/gold], die du auf deine [gold]Hand[/gold] nimmst.",
   "ALCHEMIST-MIX.selectionPromptBasic": "Wähle eine einfache [gold]Mixtur[/gold], die du auf deine [gold]Hand[/gold] nimmst.",
   "ALCHEMIST-MIX.selectionPromptSpecial": "Wähle eine besondere [gold]Mixtur[/gold], die du auf deine [gold]Hand[/gold] nimmst."
