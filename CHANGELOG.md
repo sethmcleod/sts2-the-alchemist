@@ -11,10 +11,11 @@ mod).
 - Added Ancients Awakened cross-mod support: its Ancient Scepter turns the Alchemist's Strikes and Defends into Potent Strikes and Potent Defends, and its Experimental Serum gives Quintessence
 - Added Gold Leaf potion (Brew only): "Add Replay to a card in your Hand."
 - Added Potent Defend card (Ancients Awakened): "Gain 5 (8) Block. Add a random Mix into your Hand."
-- Added Potent Strike card (Ancients Awakened): "Deal 6 (9) damage. Gain 1 Poison and 1 Antitoxin. Deals additional damage equal to your Poison."
+- Added Potent Strike card (Ancients Awakened): "Laced. Gain 1 Poison and 1 Antitoxin. Deal 6 (9) damage."
 - Added Quintessence card (Ancients Awakened): "Whenever one of your cards ferments, add a random Mix into your Hand." Quintessence+ adds a Mix+
-- Added Reconstitute card (Hero Expansion): "Gain 3 Poison. Put a card from your Discard Pile into your Hand. Exhaust." Reconstitute+ loses Exhaust
+- Added Reconstitute card (Hero Expansion): "Gain 2 Poison. Put a card from your Discard Pile into your Hand. Exhaust." Reconstitute+ loses Exhaust
 - Added The Hero Expansion cross-mod support: its Broken Blade transforms into The Steeped Blade for the Alchemist, and its Mysterious Flashlight gives Reconstitute
+- Added the Laced keyword: "This card deals additional damage equal to your Poison." Jab, Forked Tongue, Lash Out, Wormwood and Potent Strike print it in place of the sentence
 - Added The Steeped Blade card (Hero Expansion): "Retain. Ferment. Deal 9 (12) damage. This card ferments 1. Whenever this card ferments, apply Poison to ALL enemies equal to its fermentation."
 - Buffed Anodyne potion: Poison gained per damage prevented 1 per 5 -> 1 per 10
 - Buffed Solvent potion: it also applies 2 Vulnerable to ALL enemies

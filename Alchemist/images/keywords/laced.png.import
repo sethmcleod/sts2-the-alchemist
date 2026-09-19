@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://47ypymd51x1v"
-path="res://.godot/imported/potent_strike.png-2dddf96c745f41cbc38cbb4efddf5576.ctex"
+uid="uid://bipdijebm57je"
+path="res://.godot/imported/laced.png-ae3e295c70f857df17b1e31ff69af33d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/potent_strike.png"
-dest_files=["res://.godot/imported/potent_strike.png-2dddf96c745f41cbc38cbb4efddf5576.ctex"]
+source_file="res://Alchemist/images/keywords/laced.png"
+dest_files=["res://.godot/imported/laced.png-ae3e295c70f857df17b1e31ff69af33d.ctex"]
 
 [params]
 
