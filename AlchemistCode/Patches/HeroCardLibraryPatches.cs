@@ -37,13 +37,14 @@ public static class HeroCardLibraryPatches
         public static bool Prefix(NCardHolder holder, NCardLibraryGrid ____grid, object ____viewUpgrades,
             ref Godot.Control ____lastHoveredControl)
         {
-            if (Gated(holder.CardModel)) return false;
+            if (holder.CardModel is not { } card) return true;
+            if (Gated(card)) return false;
             var discovered = SaveManager.Instance.Progress.DiscoveredCards;
-            if (!discovered.Contains(holder.CardModel.Id)) return false;
+            if (!discovered.Contains(card.Id)) return false;
             ____lastHoveredControl = holder;
             var list = ____grid.VisibleCards.Where(c => discovered.Contains(c.Id) && !Gated(c)).ToList();
             var viewUpgrades = Traverse.Create(____viewUpgrades).Property<bool>("IsTicked").Value;
-            NGame.Instance.GetInspectCardScreen().Open(list, list.IndexOf(holder.CardModel), viewUpgrades);
+            NGame.Instance?.GetInspectCardScreen().Open(list, list.IndexOf(card), viewUpgrades);
             return false;
         }
     }
@@ -64,7 +65,7 @@ public static class HeroCardLibraryPatches
     private static void PlainCursor(IEnumerable<NGridCardHolder> holders)
     {
         foreach (var holder in holders)
-            if (holder.CardNode != null && Gated(holder.CardNode.Model))
+            if (holder.CardNode?.Model is { } model && Gated(model))
                 holder.Hitbox.MouseDefaultCursorShape = Godot.Control.CursorShape.Arrow;
     }
 }
