@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu8qyprqabijy"
-path="res://.godot/imported/backfire.png-73e053d164271a3633f4ac4a8787862b.ctex"
+uid="uid://bcav26lw5uy7l"
+path="res://.godot/imported/quintessence_power.png-f48712731529eed8ceca246318d14409.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/backfire.png"
-dest_files=["res://.godot/imported/backfire.png-73e053d164271a3633f4ac4a8787862b.ctex"]
+source_file="res://Alchemist/images/powers/quintessence_power.png"
+dest_files=["res://.godot/imported/quintessence_power.png-f48712731529eed8ceca246318d14409.ctex"]
 
 [params]
 

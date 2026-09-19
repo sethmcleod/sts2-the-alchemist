@@ -43,7 +43,7 @@ public class TasteTest : AlchemistCard
                     new CardSelectorPrefs(Prompt, 1), IsBrewing, this)).FirstOrDefault();
             if (chosen is AlchemistCard ferment)
             {
-                await ferment.AdvanceFerment(DynamicVars["Turns"].IntValue);
+                await ferment.AdvanceFerment(choiceContext, DynamicVars["Turns"].IntValue);
                 CardCmd.Preview(ferment);
             }
         }

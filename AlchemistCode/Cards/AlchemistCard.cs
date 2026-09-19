@@ -217,7 +217,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     // Async because every turn of fermentation gained also pays the Mellow engine. Both the natural
     // end-of-turn tick and the Trigger cards route through here, so the payoff has one home
-    internal async Task AdvanceFerment(int turns)
+    internal async Task AdvanceFerment(PlayerChoiceContext choiceContext, int turns)
     {
         if (!IsFermentCard) return;
         _fermentTurns += turns;
@@ -227,7 +227,16 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             await mellow.OnFermented(turns);
         if (creature.GetPower<OverflowPower>() is { } overflow)
             overflow.OnFermented(this);
+        if (creature.GetPower<QuintessencePower>() is { } quintessence)
+            await quintessence.OnFermented(choiceContext);
+        await OnFermented(choiceContext, turns);
     }
+
+    // Runs after every advance of this card's own fermentation, whichever path moved it: the end of
+    // turn tick in hand, the card's own play, Taste Test, Bloom, Untended, a relic. A move by Pour
+    // Over is not an advance, so it does not land here. The context is the caller's, because an
+    // effect that applies a power needs one
+    protected virtual Task OnFermented(PlayerChoiceContext choiceContext, int turns) => Task.CompletedTask;
 
     /// <summary>The base game reserves this for roughly 12 damage and up.</summary>
     /// <summary>Set false to keep a card snappy, as the base game does for its Defends.</summary>
@@ -249,7 +258,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     {
         if (IsFermentCard && Owner != null && participants.Contains(Owner.Creature)
             && FermentsThisTurn)
-            await AdvanceFerment(1);
+            await AdvanceFerment(choiceContext, 1);
     }
 
     // Covers the cards that were never played. Deck cards are the same instances each combat and all of

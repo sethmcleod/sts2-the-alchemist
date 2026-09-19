@@ -31,7 +31,7 @@ public class Harvest : AlchemistCard
             new CardSelectorPrefs(Prompt, 1), IsBrewing)).FirstOrDefault();
         if (chosen is not AlchemistCard ferment) return;
         await CardPileCmd.Add(ferment, PileType.Hand);
-        await ferment.AdvanceFerment(DynamicVars["Turns"].IntValue);
+        await ferment.AdvanceFerment(choiceContext, DynamicVars["Turns"].IntValue);
         CardCmd.Preview(ferment);
     }
 }

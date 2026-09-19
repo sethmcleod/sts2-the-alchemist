@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu8qyprqabijy"
-path="res://.godot/imported/backfire.png-73e053d164271a3633f4ac4a8787862b.ctex"
+uid="uid://clhfowkagw2tg"
+path="res://.godot/imported/reconstitute.png-577bd60080686611915a76c5fb2670b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/backfire.png"
-dest_files=["res://.godot/imported/backfire.png-73e053d164271a3633f4ac4a8787862b.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/reconstitute.png"
+dest_files=["res://.godot/imported/reconstitute.png-577bd60080686611915a76c5fb2670b4.ctex"]
 
 [params]
 

@@ -33,7 +33,7 @@ public class Uncork : AlchemistCard
     {
         var brewing = Brewing.ToList();
         foreach (var card in brewing)
-            await card.AdvanceFerment(1);
+            await card.AdvanceFerment(choiceContext, 1);
         if (brewing.Count > 0) CardCmd.Preview(brewing.Cast<CardModel>().ToList());
         await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue + DynamicVars["Bonus"].IntValue * brewing.Count, Owner);
     }

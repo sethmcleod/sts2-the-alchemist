@@ -31,7 +31,7 @@ public class Homunculus : AlchemistRelic
             new CardSelectorPrefs(Prompt, 1), AlchemistCard.IsBrewing)).FirstOrDefault();
         if (chosen is not AlchemistCard ferment) return;
         await CardPileCmd.Add(ferment, PileType.Hand);
-        await ferment.AdvanceFerment(Turns);
+        await ferment.AdvanceFerment(choiceContext, Turns);
         CardCmd.Preview(ferment);
     }
 }
