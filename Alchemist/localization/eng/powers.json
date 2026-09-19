@@ -1,6 +1,6 @@
 {
-  "ALCHEMIST-ANODYNE_POWER.description": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]5[/blue] damage prevented.",
-  "ALCHEMIST-ANODYNE_POWER.smartDescription": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]5[/blue] damage prevented.",
+  "ALCHEMIST-ANODYNE_POWER.description": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]10[/blue] damage prevented.",
+  "ALCHEMIST-ANODYNE_POWER.smartDescription": "The next time you would take unblocked attack damage, prevent it. Gain [blue]1[/blue] [gold]Poison[/gold] for every [blue]10[/blue] damage prevented.",
   "ALCHEMIST-ANODYNE_POWER.title": "Anodyne",
   "ALCHEMIST-ANTITOXIN_POWER.description": "Prevents damage from [gold]Poison[/gold] and is reduced by [blue]1[/blue] at the start of your turn.",
   "ALCHEMIST-ANTITOXIN_POWER.forecast": "Your [blue]{Poison}[/blue] [gold]Poison[/gold] will deal [blue]{Damage}[/blue] damage.",
@@ -48,6 +48,9 @@
   "ALCHEMIST-PANACEA_POWER.description": "Whenever you gain [gold]Poison[/gold], gain 1 [gold]Antitoxin[/gold].",
   "ALCHEMIST-PANACEA_POWER.smartDescription": "Whenever you gain [gold]Poison[/gold], gain 1 [gold]Antitoxin[/gold].",
   "ALCHEMIST-PANACEA_POWER.title": "Panacea",
+  "ALCHEMIST-QUINTESSENCE_POWER.description": "Whenever one of your cards ferments, add a random [gold]Mix[/gold] into your [gold]Hand[/gold].",
+  "ALCHEMIST-QUINTESSENCE_POWER.smartDescription": "Whenever one of your cards ferments, add [blue]{Amount}[/blue] random {Amount:plural:[gold]Mix[/gold]|[gold]Mixes[/gold]} into your [gold]Hand[/gold].",
+  "ALCHEMIST-QUINTESSENCE_POWER.title": "Quintessence",
   "ALCHEMIST-REFINE_POWER.description": "Whenever you add a [gold]Mix[/gold] into your [gold]Hand[/gold], it is [gold]Upgraded[/gold] and gains [gold]Retain[/gold].",
   "ALCHEMIST-REFINE_POWER.smartDescription": "Whenever you add a [gold]Mix[/gold] into your [gold]Hand[/gold], it is [gold]Upgraded[/gold] and gains [gold]Retain[/gold].",
   "ALCHEMIST-REFINE_POWER.title": "Refine",

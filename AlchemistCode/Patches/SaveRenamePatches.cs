@@ -97,7 +97,6 @@ public static class SaveRenamePatches
         ["ALCHEMIST-QUICKSILVER_DRAUGHT"] = ModelDb.Potion<Potions.VolatileReagent>().Id!,
         ["ALCHEMIST-OLEANDER_MILK"] = ModelDb.Potion<Potions.VolatileReagent>().Id!,
         ["ALCHEMIST-DECOCTION"] = ModelDb.Potion<Potions.Reduction>().Id!,
-        ["ALCHEMIST-GOLD_LEAF"] = ModelDb.Potion<Potions.Solvent>().Id!,
     };
 
     private static Dictionary<string, ModelId> Relics => new()
