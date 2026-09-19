@@ -2,7 +2,7 @@
   "ALCHEMIST-ACCESSIBILITY.title": "การช่วยการเข้าถึง",
   "ALCHEMIST-ANALYTICS.title": "การวิเคราะห์ข้อมูล",
   "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "ส่งผลการเดินทางของนักเล่นแร่แปรธาตุแบบไม่ระบุตัวตน (กองการ์ด, เครื่องราง, การ์ดที่เลือก, ชั้นที่ไปถึง) เพื่อช่วยปรับสมดุลตัวละคร มีผลเฉพาะเมื่อเปิดการตั้งค่าอัปโหลดข้อมูลของตัวเกมเท่านั้น ไม่ส่งชื่อหรือ Steam ID ของคุณเด็ดขาด",
-  "ALCHEMIST-ANALYTICS_ENABLED.title": "แชร์ข้อมูลการเดินทาง",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "แชร์ข้อมูลการเดินทางแบบไม่ระบุตัวตน",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "สีของแถบสารต้านพิษใต้หลอดเลือดของคุณ ส่วนสีเขียวที่แสดงพิษที่กำลังจะเข้ามาจะไม่เปลี่ยนตาม",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "สีแถบสารต้านพิษ",
   "ALCHEMIST-APPEARANCE.title": "รูปลักษณ์",

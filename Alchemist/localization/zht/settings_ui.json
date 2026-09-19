@@ -2,7 +2,7 @@
   "ALCHEMIST-ACCESSIBILITY.title": "輔助功能",
   "ALCHEMIST-ANALYTICS.title": "分析",
   "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "匿名傳送鍊金術士的遊玩結果（牌組、遺物、選牌、抵達樓層），以協助平衡此角色。僅在遊戲本身的「上傳資料」設定開啟時生效。絕不包含你的名稱或 Steam ID。",
-  "ALCHEMIST-ANALYTICS_ENABLED.title": "分享遊玩數據",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "分享匿名遊玩數據",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "你生命條下方抗毒素條的顏色。綠色區段用於顯示即將到來的中毒，不受此設定影響。",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "抗毒素條顏色",
   "ALCHEMIST-APPEARANCE.title": "外觀",
