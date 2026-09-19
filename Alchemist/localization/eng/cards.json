@@ -89,7 +89,7 @@
   "ALCHEMIST-FROTH.title": "Froth",
   "ALCHEMIST-FUMIGATE.description": "Deal {Damage:diff()} damage to ALL enemies.\nApply {Poison:diff()} [gold]Poison[/gold] to ALL enemies.",
   "ALCHEMIST-FUMIGATE.title": "Fumigate",
-  "ALCHEMIST-FUMING_MIX.description": "Apply {TaintedPower:diff()} [gold]Tainted[/gold].",
+  "ALCHEMIST-FUMING_MIX.description": "Apply {TaintedPower:diff()} [gold]Tainted[/gold].\nDeal {Damage:diff()} damage to ALL enemies.",
   "ALCHEMIST-FUMING_MIX.title": "Fuming Mix",
   "ALCHEMIST-GRAND_BATCH.description": "Add one of each {IfUpgraded:show:[gold]Mix+[/gold]|[gold]Mix[/gold]} into your [gold]Hand[/gold].",
   "ALCHEMIST-GRAND_BATCH.title": "Grand Batch",
