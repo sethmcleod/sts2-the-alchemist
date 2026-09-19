@@ -23,7 +23,7 @@ public class Reconstitute : AlchemistHeroCard
 
     public Reconstitute() : base(0, CardType.Skill, CardRarity.Event, TargetType.Self)
     {
-        WithVar("SelfPoison", 3, 0);
+        WithVar("SelfPoison", 2, 0);
         WithKeyword(CardKeyword.Exhaust, UpgradeType.Remove);
         WithTip(typeof(PoisonPower));
         HeroExpansion.RegisterFlashlight(this);

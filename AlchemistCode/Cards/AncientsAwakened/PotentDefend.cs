@@ -3,13 +3,12 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.CardPools;
 
 namespace Alchemist.AlchemistCode.Cards.AncientsAwakened;
 
 // What the Ancient Scepter turns every Defend into: a basic Mix each play, never a Mix+, since a
-// starter replacement is neither a Rare nor an upgraded Uncommon
-[Pool(typeof(TokenCardPool))]
+// starter replacement is neither a Rare nor an upgraded Uncommon. It stays in the Alchemist pool so
+// the compendium lists it with the character, as the other mods list theirs
 [CardTheme(CardTheme.Mix)]
 public class PotentDefend : AlchemistAncientsCard
 {

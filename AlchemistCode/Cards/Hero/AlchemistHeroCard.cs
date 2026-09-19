@@ -11,6 +11,5 @@ public abstract class AlchemistHeroCard : AlchemistCard
     protected AlchemistHeroCard(int cost, CardType type, CardRarity rarity, TargetType target)
         : base(cost, type, rarity, target)
     {
-        WithTips(_ => new[] { AlchemistTips.HeroExpansion });
     }
 }

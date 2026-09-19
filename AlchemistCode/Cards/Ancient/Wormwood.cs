@@ -18,6 +18,7 @@ public class Wormwood : AlchemistCard
     {
         WithDamage(4, 2);
         WithVar("Hits", 2, 0);
+        WithKeyword(AlchemistKeywords.Laced);
         WithTip(typeof(PoisonPower));
     }
 
