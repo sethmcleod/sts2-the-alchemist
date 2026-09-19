@@ -148,21 +148,38 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // The raw total, before any hook. The card face shows the hooked total with {FormulaDamage}
     protected virtual int? RawFormulaDamagePreview => null;
 
+    // The context the game last previewed this card's vars with: the hovered target and the mode the
+    // card node passed, and whether the hooks ran at all (only in the Hand and Play piles). Recorded
+    // by FormulaPreviewPatches, because AddExtraArgsToDescription receives none of it
+    private CardPreviewMode _previewMode;
+    private Creature? _previewTarget;
+    private bool _previewRunsHooks;
+
+    internal void RecordPreviewContext(CardPreviewMode mode, Creature? target, bool runsHooks)
+    {
+        _previewMode = mode;
+        _previewTarget = target;
+        _previewRunsHooks = runsHooks;
+    }
+
     // Hook.ModifyDamage runs the global hooks the attack command will run and the enchantment hooks
-    // ApplyEnchantDamage runs, so the previewed number matches the damage that lands.
-    // MultiCreatureTargeting counts an enemy power only when every target has it, correct for an AoE card
+    // ApplyEnchantDamage runs, so the previewed number matches the damage that lands. The target
+    // matters: an enemy-side power (Tainted, Vulnerable) counts only against the creature that has
+    // it, so a single-target card shows it while aimed at that enemy, and an AoE card in
+    // MultiCreatureTargeting mode shows it when every enemy has it, as the game's own damage vars do
     private int? FormulaDamagePreview
     {
         get
         {
             if (RawFormulaDamagePreview is not { } raw) return null;
+            if (!_previewRunsHooks) return raw;
             if (Owner?.Creature is not { } dealer) return null;
             if ((CombatState ?? dealer.CombatState) is not { } combat) return null;
             // Must carry the same props the attack does, or Strength and Vulnerable inflate the
             // previewed number on a card whose real hit ignores them
             var props = DealsUnpoweredDamage ? ValueProp.Move | ValueProp.Unpowered : ValueProp.Move;
-            var total = GameCompat.ModifyDamage(Owner.RunState, combat, null, dealer, raw, props,
-                this, null, ModifyDamageHookType.All, CardPreviewMode.MultiCreatureTargeting, out _);
+            var total = GameCompat.ModifyDamage(Owner.RunState, combat, _previewTarget, dealer, raw, props,
+                this, null, ModifyDamageHookType.All, _previewMode, out _);
             return (int)Math.Max(total, 0m);
         }
     }

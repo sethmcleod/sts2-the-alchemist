@@ -21,6 +21,7 @@ mod).
 - Buffed Solvent potion: it also applies 2 Vulnerable to ALL enemies
 - Reworked Backfire: "Deal 4 (6) damage. If you have Poison, apply 1 (2) Weak." (1 -> 0 energy)
 - Reworked Reclaim: "Apply Poison to ALL enemies equal to the number of Mixes you have played this combat. Exhaust."
+- Fixed Proof and Nightcap damage previews: they now count the target's debuffs such as Tainted and Vulnerable while aiming
 
 ## [0.14.14] - 2026-09-17
 
