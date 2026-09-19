@@ -8,6 +8,7 @@ mod).
 ## [Unreleased]
 
 - Added Ancients Awakened cross-mod support: its Ancient Scepter turns the Alchemist's Strikes and Defends into Potent Strikes and Potent Defends, and its Experimental Serum gives Quintessence
+- Added a Ferment indicator: Ferment cards show the turns Fermented in their top right corner in Hand, Draw, Discard, and Exhaust piles
 - Added Gold Leaf potion (Brew only): "Add Replay to a card in your Hand."
 - Added Potent Defend card (Ancients Awakened): "Gain 5 (8) Block. Add a random Mix into your Hand."
 - Added Potent Strike card (Ancients Awakened): "Laced. Gain 1 Poison and 1 Antitoxin. Deal 6 (9) damage."
