@@ -82,6 +82,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
         ModelDb.Potion<Reduction>(),
         ModelDb.Potion<Sampler>(),
         ModelDb.Potion<FreshCutting>(),
+        ModelDb.Potion<GoldLeaf>(),
     ];
 
     // Brew offers nothing else. Duplicates are filtered out, and holding the whole set falls back to a

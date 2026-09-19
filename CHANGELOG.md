@@ -7,6 +7,7 @@ mod).
 
 ## [Unreleased]
 
+- Added Gold Leaf potion (Brew only): "Add Replay to a card in your Hand."
 - Reworked Reclaim: "Apply Poison to ALL enemies equal to the number of Mixes you have played this combat. Exhaust."
 - Buffed Anodyne potion: Poison gained per damage prevented 1 per 5 -> 1 per 10
 - Buffed Solvent potion: it also applies 2 Vulnerable to ALL enemies

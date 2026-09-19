@@ -4,7 +4,7 @@
 
 - ✨ 90+ new cards
 - 💎 9 new relics
-- 🧪 10 new potions
+- 🧪 11 new potions
 - 📚 7 timeline epochs
 - 🎨 Handmade art and animation
 - 🌍 Translated into 15 languages
@@ -23,7 +23,7 @@
   Sparkling (Energy).
 - **Ferment**: These cards have Retain and grow in potency for every turn they
   stay in your hand.
-- **Brew**: This Rest Site option allows you to procure 1 of 7 unique potions
+- **Brew**: This Rest Site option allows you to procure 1 of 8 unique potions
   that can only be obtained this way. Due to the quality of these brews, the
   Merchant is willing to buy them from you for 150 Gold.
 
