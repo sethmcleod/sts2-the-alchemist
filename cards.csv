@@ -56,8 +56,6 @@ Overbrew,Uncommon,Skill,X,Choose a basic Mix. Add X+1 (2) copies of it into your
 Overflow,Uncommon,Power,1 (0),"Whenever one of your cards Ferments, Upgrade it."
 Panacea,Ancient,Power,1 (0),"Whenever you gain Poison, gain 1 Antitoxin."
 Patient Strike,Uncommon,Attack,1,Retain. Ferment. Deal 9 (12) damage. Deals 4 (6) additional damage for each turn Fermented.
-Potent Defend,"Token, Ancients Awakened",Skill,1,Gain 5 (8) Block. Add a random Mix into your Hand.
-Potent Strike,"Token, Ancients Awakened",Attack,1,Laced. Gain 1 Poison. Gain 1 Antitoxin. Deal 6 (9) damage.
 Pour Over,Uncommon,Skill,0,Retain. Ferment. Draw 1 card. Move ALL Fermentation from this card to a Ferment card in your Hand. (Pour Over+ also Ferments it 1)
 Premonition,Uncommon,Skill,0,Scry 4 (5). Draw 1 card. Gain 3 Poison. (Premonition+ gains Retain)
 Preserve,"Uncommon, Multiplayer",Skill,0,"Choose another player. Their Block is not removed at the start of their next 1 (2) turns."
@@ -65,9 +63,7 @@ Proof,Common,Attack,1,Gain 3 (4) Antitoxin. Deal damage equal to your Antitoxin.
 Puff Up,Uncommon,Skill,2,Retain. Ferment. Gain 9 (12) Block. Gain 3 (5) additional Block for each turn Fermented.
 Puncture,Common,Attack,1,"If the enemy has Poison, apply 2 (3) Vulnerable. Deal 4 (5) damage twice."
 Quench,Uncommon,Skill,1,Gain 4 (6) Antitoxin. Gain Block equal to twice your Antitoxin. Exhaust.
-Quintessence,"Ancient, Ancients Awakened",Power,1,"Whenever one of your cards Ferments, add a random Mix into your Hand. (Quintessence+ adds a Mix+)"
 Reclaim,Rare,Skill,1 (0),Apply Poison to ALL enemies equal to the number of Mixes you have played this combat. Exhaust.
-Reconstitute,"Event, Hero",Skill,0,Gain 2 Poison. Put a card from your Discard Pile into your Hand. Exhaust. (Reconstitute+ loses Exhaust)
 Refine,Rare,Power,1 (0),"Whenever you add a Mix into your Hand, it is upgraded and gains Retain."
 Rerun,Rare,Skill,1,"This turn, your next 1 (2) cards are played an extra time. Gain 4 Poison."
 Resolve,Uncommon,Power,1,Retain. Ferment. Gain 1 Strength. Gain 1 (2) additional Strength for each turn Fermented.
@@ -86,7 +82,6 @@ Sweat It Out,Rare,Skill,2,Retain. Gain 4 (6) Poison. Apply Poison equal to your 
 Syrupy Mix,Token,Skill,0,Gain 4 (6) Block. Exhaust.
 Taste Test,Common,Skill,1,Scry 2 (3). Draw 1 card. Choose a Ferment card in your Hand. It Ferments 1 (2).
 Tempered,Rare,Skill,2,Gain 10 (13) Block. Gain 1 (2) additional Block for each card in your Exhaust Pile.
-The Steeped Blade,"Event, Hero",Attack,1,"Retain. Ferment. Deal 9 (12) damage. This card Ferments 1. Whenever this card Ferments, apply Poison to ALL enemies equal to its Fermentation."
 Thicken,Common,Skill,1,Gain 4 (5) Block. Add a Syrupy Mix into your Hand. It gains Retain. (Thicken+ adds a Syrupy Mix+)
 Toughen,Uncommon,Skill,1,Gain 5 (7) Block. Gain 2 additional Block for each Poison you have.
 Transmute,Rare,Skill,2 (1),Transform a card in your Hand into a copy of another card in your Hand. Exhaust.
