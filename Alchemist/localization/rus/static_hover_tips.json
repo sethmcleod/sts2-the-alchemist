@@ -15,8 +15,6 @@
   "ALCHEMIST-FUMING_MIX.title": "Дымная смесь",
   "ALCHEMIST-FUMING_MIX_PLUS.description": "Накладывает [blue]3[/blue] [gold]порчи[/gold].",
   "ALCHEMIST-FUMING_MIX_PLUS.title": "Дымная смесь+",
-  "ALCHEMIST-MASTERWORK.description": "Эта карта светится [gold]золотым[/gold], если в этом бою вы [gold]зачаровали[/gold] 3 или более карт, включая ту, которую [gold]пропитаете[/gold].",
-  "ALCHEMIST-MASTERWORK.title": "Шедевр",
   "ALCHEMIST-MIX.description": "Карта стоимостью [blue]0[/blue] с эффектом [gold]истощения[/gold].",
   "ALCHEMIST-MIX.title": "Смесь",
   "ALCHEMIST-SPARKLING_MIX.description": "[gold]Эфирная[/gold]. Дает {energyPrefix:energyIcons(1)}.",
