@@ -248,6 +248,8 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             await mellow.OnFermented(turns);
         if (creature.GetPower<OverflowPower>() is { } overflow)
             overflow.OnFermented(this);
+        if (creature.GetPower<QuintessencePower>() is { } quintessence)
+            await quintessence.OnFermented(choiceContext);
         await OnFermented(choiceContext, turns);
     }
 
