@@ -2,9 +2,9 @@
 """Check that each language renders the mod's own keywords consistently.
 
 check_localization.py --glossary enforces base-game wording, but the mod invents
-its own terms (Infuse, Gambit, Ferment, Reaction, Brew, Laced...) and nothing
-holds a language to one rendering of those. They drift between files: zhs used
-both 灌注 and 注入 for Infuse, ptb both Impregnada and Adulterada for Laced.
+its own terms (Ferment, Brew, Laced, Mix...) and nothing
+holds a language to one rendering of those. They drift between files: ptb used
+both Impregnada and Adulterada for Laced.
 
 Terms are found by alignment: locate every English string whose tagged spans
 include the term, read the span at that position out of the other language, and
@@ -26,8 +26,7 @@ ANY_TAG_RE = re.compile(r"\[/?[a-z_]+\]")
 
 # The mod's own vocabulary. Base-game terms are covered by the glossary check.
 MOD_TERMS = [
-    "Antitoxin", "Infuse", "Ferment", "Brew",
-    "Dosed", "Laced", "Fortified",
+    "Antitoxin", "Ferment", "Brew", "Laced",
     "Mix", "Mixes", "Residue", "Enchanted", "Enchant",
 ]
 

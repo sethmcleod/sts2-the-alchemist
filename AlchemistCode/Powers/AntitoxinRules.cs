@@ -18,13 +18,6 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 {
     private static readonly HashSet<Creature> Absorbed = [];
 
-    // Poison that got past the capacity this turn. Smelling Salts reads it in AfterSideTurnStartLate:
-    // the tick has resolved by then, and comparing the two stacks instead would read a Poison amount
-    // PoisonPower has already decremented
-    private static readonly HashSet<Creature> Bled = [];
-
-    internal static bool BledThisTurn(Creature creature) => Bled.Contains(creature);
-
     // Royal Poison and in-combat max HP loss deal damage with the same null dealer and
     // Unblockable|Unpowered shape as a Poison tick. PoisonPower.Trigger deals exactly the stack it is
     // about to decrement, so requiring that much Poison on the target is what separates them
@@ -83,7 +76,6 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         LethalTick.Remove(target);
         if (target.IsPlayer && IsPoisonTick(target, result.UnblockedDamage, props, dealer, cardSource))
         {
-            Bled.Add(target);
             Analytics.RunCounters.Add(target.Player, Analytics.RunCounters.PoisonBled, result.UnblockedDamage);
         }
         return Task.CompletedTask;
@@ -122,7 +114,6 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         Absorbed.Clear();
-        Bled.Clear();
         AbsorbedOnTick.Clear();
         LethalTick.Clear();
         return Task.CompletedTask;
