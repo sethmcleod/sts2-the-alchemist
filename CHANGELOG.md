@@ -10,15 +10,8 @@ mod).
 ### Added
 
 - Added a Ferment indicator: Ferment cards show the turns Fermented in their top right corner in Hand, Draw, Discard, and Exhaust piles
-- Added Ancients Awakened cross-mod support: its Ancient Scepter turns the Alchemist's Strikes and Defends into Potent Strikes and Potent Defends, and its Experimental Serum gives Quintessence
 - Added Gold Leaf potion (Brew only): "Add Replay to a card in your Hand."
-- Added Potent Defend card (Ancients Awakened): "Gain 5 (8) Block. Add a random Mix into your Hand."
-- Added Potent Strike card (Ancients Awakened): "Laced. Gain 1 Poison. Gain 1 Antitoxin. Deal 6 (9) damage."
-- Added Quintessence card (Ancients Awakened): "Whenever one of your cards Ferments, add a random Mix into your Hand." Quintessence+ adds a Mix+
-- Added Reconstitute card (Hero Expansion): "Gain 2 Poison. Put a card from your Discard Pile into your Hand. Exhaust." Reconstitute+ loses Exhaust
-- Added The Hero Expansion cross-mod support: its Broken Blade transforms into The Steeped Blade for the Alchemist, and its Mysterious Flashlight gives Reconstitute
-- Added the Laced keyword: "This card deals additional damage equal to your Poison." Jab, Forked Tongue, Lash Out, Wormwood and Potent Strike print it in place of the sentence
-- Added The Steeped Blade card (Hero Expansion): "Retain. Ferment. Deal 9 (12) damage. This card Ferments 1. Whenever this card Ferments, apply Poison to ALL enemies equal to its Fermentation."
+- Added the Laced keyword: "This card deals additional damage equal to your Poison." Jab, Forked Tongue, Lash Out and Wormwood print it in place of the sentence
 
 ### Changed
 

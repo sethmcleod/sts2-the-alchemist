@@ -35,8 +35,6 @@ public static class AlchemistTips
     private static IHoverTip? _brew, _transformMix, _compoundMix;
     public static IHoverTip Brew => _brew ??= Static("ALCHEMIST-BREW");
 
-
-
     // The base Transform tip promises a random card of any rarity, which a Mix maker does not deliver
     public static IHoverTip TransformMix => _transformMix ??= Static("ALCHEMIST-TRANSFORM_MIX");
 
