@@ -7,6 +7,13 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Buffed Eureka: Eureka+ transforms the card into a Mix+
+- Buffed Free Samples: Free Samples+ adds Mixes+
+- Buffed Overbrew: Overbrew+ adds copies of a Mix+
+- Buffed Warm Up: Warm Up+ adds a Mix+
+
 ## [0.14.15] - 2026-09-20
 
 ### Added
