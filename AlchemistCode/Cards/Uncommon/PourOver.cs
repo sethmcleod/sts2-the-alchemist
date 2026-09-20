@@ -48,7 +48,7 @@ public class PourOver : AlchemistCard
             source: null!)).OfType<AlchemistCard>().FirstOrDefault();
         if (target == null) return;
         target.ReceiveFerment(DrainFerment());
-        if (Bonus > 0) await target.AdvanceFerment(Bonus);
+        if (Bonus > 0) await target.AdvanceFerment(choiceContext, Bonus);
         CardCmd.Preview(new List<CardModel> { target });
     }
 }

@@ -9,6 +9,8 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "Choose any number of cards to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Choose up to [blue]{MaxCount}[/blue] {MaxCount:plural:card|cards} to [gold]Infuse[/gold].",
   "ALCHEMIST-INFUSE.title": "Infuse",
+  "ALCHEMIST-LACED.description": "This Attack deals additional damage equal to your [gold]Poison[/gold].",
+  "ALCHEMIST-LACED.title": "Laced",
   "ALCHEMIST-MIX.selectionPrompt": "Choose a [gold]Mix[/gold] to add into your [gold]Hand[/gold].",
   "ALCHEMIST-MIX.selectionPromptBasic": "Choose a basic [gold]Mix[/gold] to add into your [gold]Hand[/gold].",
   "ALCHEMIST-MIX.selectionPromptSpecial": "Choose a special [gold]Mix[/gold] to add into your [gold]Hand[/gold]."

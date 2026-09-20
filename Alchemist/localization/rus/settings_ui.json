@@ -2,7 +2,7 @@
   "ALCHEMIST-ACCESSIBILITY.title": "Доступность",
   "ALCHEMIST-ANALYTICS.title": "Аналитика",
   "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "Отправляет анонимные результаты вылазок за Алхимика (колода, реликвии, выбор карт, достигнутый этаж), чтобы помочь с балансом персонажа. Работает, только если в самой игре включена настройка отправки данных. Никогда не включает ваше имя или Steam ID.",
-  "ALCHEMIST-ANALYTICS_ENABLED.title": "Делиться статистикой вылазок",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "Делиться анонимной статистикой вылазок",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "Цвет полосы антитоксина под полосой здоровья. Зеленый участок, который показывает предстоящий урон от яда, остается прежним.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Цвет полосы антитоксина",
   "ALCHEMIST-APPEARANCE.title": "Внешний вид",

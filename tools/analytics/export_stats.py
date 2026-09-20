@@ -64,6 +64,9 @@ def copies_bucket(n: int) -> int:
 
 MIX_KEYS_GENERATION = 2
 MIX_LABEL_REMAP = {"fuming": "acrid", "acrid": "poison"}
+# Mix kinds that no longer exist. Their counts are dropped rather than shown, so the retired
+# Poison Mix never appears as a slice of the current Acrid Mix or as its own line
+RETIRED_MIX_LABELS = {"poison"}
 
 
 def remap_mix_keys(extra: dict) -> dict:
@@ -86,6 +89,22 @@ def remap_mix_keys(extra: dict) -> dict:
     return extra | {"mixes": mixes, "tally": tally, "mix_keys": MIX_KEYS_GENERATION}
 
 
+def drop_retired_mixes(extra: dict) -> dict:
+    """Remove the counts of retired Mix kinds from the mixes map and from the tally keys
+    mixmade:, mixplay: and pair:. Stored rows keep them, so this runs on every row."""
+    mixes = {kind: count for kind, count in (extra.get("mixes") or {}).items()
+             if kind not in RETIRED_MIX_LABELS}
+    tally = {}
+    for key, count in (extra.get("tally") or {}).items():
+        prefix, _, rest = key.partition(":")
+        if prefix in ("mixmade", "mixplay") and rest in RETIRED_MIX_LABELS:
+            continue
+        if prefix == "pair" and RETIRED_MIX_LABELS & set(rest.split("+")):
+            continue
+        tally[key] = count
+    return extra | {"mixes": mixes, "tally": tally}
+
+
 def dominant_theme(deck_themes: dict[str, int]) -> str:
     """deck_themes comes from the mod itself ({"poison": 9, "infuse": 2, ...})."""
     counts = {t: int(deck_themes.get(t.lower(), 0)) for t in THEMES}
@@ -97,13 +116,13 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
     run_rows, card_rows, choice_rows, relic_rows = [], [], [], []
     death_rows, floor_rows, enc_rows, theme_rows = [], [], [], []
     brew_rows, first_rows, potion_use_rows = [], [], []
-    source_rows, pair_rows, offer_rows, act_rows, play_rows = [], [], [], [], []
+    source_rows, pair_rows, offer_rows, act_rows, play_rows, fight_rows = [], [], [], [], [], []
 
     for run in runs:
         day = run["created_at"][:10]  # ISO timestamp, the date is the first ten characters
         win = int(bool(run["victory"]))
         data = run.get("data") or {}
-        extra = remap_mix_keys(run.get("alchemist") or {})
+        extra = drop_retired_mixes(remap_mix_keys(run.get("alchemist") or {}))
         keys = base_keys(run, day, data)
         deck = data.get("deck") or []
 
@@ -155,6 +174,8 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
         played = labelled.get("mixplay", {})
         for kind in set(made) | set(played):
             play_rows.append(keys | {"kind": kind, "created": made.get(kind, 0), "played": played.get(kind, 0)})
+        for bucket, count in labelled.get("mixfight", {}).items():
+            fight_rows.append(keys | {"bucket": bucket, "fights": count})
         for act in extra.get("acts") or []:
             act_rows.append(keys | {"act": int(act.get("act") or 0), "fights": int(act.get("fights") or 0),
                                     "turns": int(act.get("turns") or 0), "dmg": int(act.get("damage") or 0)})
@@ -168,7 +189,6 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
                                  "mix_syrupy": int(mixes.get("syrupy") or 0) + int(mixes.get("sturdy") or 0),
                                  "mix_zesty": int(mixes.get("zesty") or 0),
                                  "mix_acrid": int(mixes.get("acrid") or 0),
-                                 "mix_poison": int(mixes.get("poison") or 0),
                                  "mix_sparkling": int(mixes.get("sparkling") or 0),
                                  "mix_compound": int(mixes.get("compound") or 0),
                                  "poison_gained": int(poison.get("gained") or 0),
@@ -220,11 +240,12 @@ def build_tables(runs: list[dict], meta: dict[str, dict]) -> dict[str, list[dict
         "death_floors_daily": aggregate(floor_rows, keys + ["floor"], ["deaths"]),
         "encounters_daily": aggregate(enc_rows, keys + ["enc"], ["fights", "dmg", "turns"]),
         "themes_daily": aggregate(theme_rows, keys + ["theme"], ["runs", "wins"]),
-        "economy_daily": aggregate(brew_rows, keys, ["brews", "sold", "reward_screens", "reward_skips", "potions_used", "mix_bursting", "mix_fuming", "mix_syrupy", "mix_zesty", "mix_acrid", "mix_poison", "mix_sparkling", "mix_compound", "poison_gained", "poison_absorbed", "poison_bled", "ferment_plays", "ferment_turns", "ferment_zero", "tick_covered", "tick_bled", "poison_deaths", "tallied", "tallied_wins", "runs", "wins"]),
+        "economy_daily": aggregate(brew_rows, keys, ["brews", "sold", "reward_screens", "reward_skips", "potions_used", "mix_bursting", "mix_fuming", "mix_syrupy", "mix_zesty", "mix_acrid", "mix_sparkling", "mix_compound", "poison_gained", "poison_absorbed", "poison_bled", "ferment_plays", "ferment_turns", "ferment_zero", "tick_covered", "tick_bled", "poison_deaths", "tallied", "tallied_wins", "runs", "wins"]),
         "mix_sources_daily": aggregate(source_rows, keys + ["source"], ["mixes"]),
         "compound_pairs_daily": aggregate(pair_rows, keys + ["pair"], ["compounds"]),
         "brew_offers_daily": aggregate(offer_rows, keys + ["potion"], ["offered", "picked"]),
         "mix_plays_daily": aggregate(play_rows, keys + ["kind"], ["created", "played"]),
+        "mix_fights_daily": aggregate(fight_rows, keys + ["bucket"], ["fights"]),
         "acts_daily": aggregate(act_rows, keys + ["act"], ["fights", "turns", "dmg"]),
         "first_picks_daily": aggregate(first_rows, keys + ["card", "order"], ["picked", "wins"]),
         "potion_uses_daily": aggregate(potion_use_rows, keys + ["potion"], ["uses"]),

@@ -17,7 +17,7 @@ namespace Alchemist.AlchemistCode.Powers;
 public class AnodynePower : AlchemistPower
 {
     /// <summary>HP prevented per point of Poison charged for it.</summary>
-    public const int DamagePerDose = 5;
+    public const int DamagePerDose = 10;
 
     private int _pendingPrevented;
 

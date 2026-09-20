@@ -9,6 +9,8 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "Выберите любое количество карт для [gold]пропитки[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Выберите до [blue]{MaxCount}[/blue] {MaxCount:plural(ru):карты|карт|карт} для [gold]пропитки[/gold].",
   "ALCHEMIST-INFUSE.title": "Пропитка",
+  "ALCHEMIST-LACED.description": "Эта Атака наносит дополнительный урон, равный вашему [gold]яду[/gold].",
+  "ALCHEMIST-LACED.title": "Отрава",
   "ALCHEMIST-MIX.selectionPrompt": "Выберите, какую [gold]смесь[/gold] добавить в [gold]руку[/gold].",
   "ALCHEMIST-MIX.selectionPromptBasic": "Выберите, какую базовую [gold]смесь[/gold] добавить в [gold]руку[/gold].",
   "ALCHEMIST-MIX.selectionPromptSpecial": "Выберите, какую особую [gold]смесь[/gold] добавить в [gold]руку[/gold]."

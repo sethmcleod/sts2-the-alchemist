@@ -4,6 +4,7 @@ using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using Alchemist.AlchemistCode.Character;
+using Alchemist.AlchemistCode.Commands;
 using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Enchantments;
 using Alchemist.AlchemistCode.Extensions;
@@ -133,24 +134,52 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         return count;
     }
 
+    // The living enemies that carry Poison, for a card that scales with them. Zero outside a live
+    // combat, and zero on the canonical model
+    protected static int PoisonedEnemies(CardModel card)
+    {
+        if (card is not AlchemistCard { IsMutable: true, CombatState: { } combat }) return 0;
+        var count = 0;
+        foreach (var enemy in combat.Enemies)
+            if (enemy.IsAlive && Poisoned(enemy)) count++;
+        return count;
+    }
+
     // The raw total, before any hook. The card face shows the hooked total with {FormulaDamage}
     protected virtual int? RawFormulaDamagePreview => null;
 
+    // The context the game last previewed this card's vars with: the hovered target and the mode the
+    // card node passed, and whether the hooks ran at all (only in the Hand and Play piles). Recorded
+    // by FormulaPreviewPatches, because AddExtraArgsToDescription receives none of it
+    private CardPreviewMode _previewMode;
+    private Creature? _previewTarget;
+    private bool _previewRunsHooks;
+
+    internal void RecordPreviewContext(CardPreviewMode mode, Creature? target, bool runsHooks)
+    {
+        _previewMode = mode;
+        _previewTarget = target;
+        _previewRunsHooks = runsHooks;
+    }
+
     // Hook.ModifyDamage runs the global hooks the attack command will run and the enchantment hooks
-    // ApplyEnchantDamage runs, so the previewed number matches the damage that lands.
-    // MultiCreatureTargeting counts an enemy power only when every target has it, correct for an AoE card
+    // ApplyEnchantDamage runs, so the previewed number matches the damage that lands. The target
+    // matters: an enemy-side power (Tainted, Vulnerable) counts only against the creature that has
+    // it, so a single-target card shows it while aimed at that enemy, and an AoE card in
+    // MultiCreatureTargeting mode shows it when every enemy has it, as the game's own damage vars do
     private int? FormulaDamagePreview
     {
         get
         {
             if (RawFormulaDamagePreview is not { } raw) return null;
+            if (!_previewRunsHooks) return raw;
             if (Owner?.Creature is not { } dealer) return null;
             if ((CombatState ?? dealer.CombatState) is not { } combat) return null;
             // Must carry the same props the attack does, or Strength and Vulnerable inflate the
             // previewed number on a card whose real hit ignores them
             var props = DealsUnpoweredDamage ? ValueProp.Move | ValueProp.Unpowered : ValueProp.Move;
-            var total = GameCompat.ModifyDamage(Owner.RunState, combat, null, dealer, raw, props,
-                this, null, ModifyDamageHookType.All, CardPreviewMode.MultiCreatureTargeting, out _);
+            var total = GameCompat.ModifyDamage(Owner.RunState, combat, _previewTarget, dealer, raw, props,
+                this, null, ModifyDamageHookType.All, _previewMode, out _);
             return (int)Math.Max(total, 0m);
         }
     }
@@ -216,7 +245,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     // Async because every turn of fermentation gained also pays the Mellow engine. Both the natural
     // end-of-turn tick and the Trigger cards route through here, so the payoff has one home
-    internal async Task AdvanceFerment(int turns)
+    internal async Task AdvanceFerment(PlayerChoiceContext choiceContext, int turns)
     {
         if (!IsFermentCard) return;
         _fermentTurns += turns;
@@ -226,7 +255,14 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             await mellow.OnFermented(turns);
         if (creature.GetPower<OverflowPower>() is { } overflow)
             overflow.OnFermented(this);
+        await OnFermented(choiceContext, turns);
     }
+
+    // Runs after every advance of this card's own fermentation, whichever path moved it: the end of
+    // turn tick in hand, the card's own play, Taste Test, Bloom, Untended, a relic. A move by Pour
+    // Over is not an advance, so it does not land here. The context is the caller's, because an
+    // effect that applies a power needs one
+    protected virtual Task OnFermented(PlayerChoiceContext choiceContext, int turns) => Task.CompletedTask;
 
     /// <summary>The base game reserves this for roughly 12 damage and up.</summary>
     /// <summary>Set false to keep a card snappy, as the base game does for its Defends.</summary>
@@ -248,7 +284,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     {
         if (IsFermentCard && Owner != null && participants.Contains(Owner.Creature)
             && FermentsThisTurn)
-            await AdvanceFerment(1);
+            await AdvanceFerment(choiceContext, 1);
     }
 
     // Covers the cards that were never played. Deck cards are the same instances each combat and all of
@@ -263,14 +299,19 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
-        if (IsFermentCard)
-            description.Add("FermentSuffix", IsMutable && CombatState != null ? $" ({FermentTurns})" : "");
         // These previews read Owner, which throws on a canonical model such as the card library
         description.Add("FormulaDamage",
             IsMutable && FormulaDamagePreview is { } d ? $"\n(Deals [green]{d}[/green] damage)" : "");
         description.Add("FormulaHpLoss",
             IsMutable && FormulaHpLossPreview is { } hp ? $" ([red]{hp}[/red])" : "");
+        // Live count only in combat; the compendium and reward previews show the bare sentence
+        if (ShowsMixesPlayed)
+            description.Add("MixesPlayed",
+                IsMutable && CombatState != null ? $" ({Mixing.PlayedThisCombat(Owner)})" : "");
     }
+
+    // A card that scales with the Mixes played this combat opts in, and places {MixesPlayed} in its text
+    protected virtual bool ShowsMixesPlayed => false;
 
     protected static string PreviewLine(string key, string variable, int count)
     {

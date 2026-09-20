@@ -7,6 +7,26 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.15] - 2026-09-20
+
+### Added
+
+- Added a Ferment indicator: Ferment cards show the turns Fermented in their top right corner in Hand, Draw, Discard, and Exhaust piles
+- Added Gold Leaf potion (Brew only): "Add Replay to a card in your Hand."
+- Added the Laced keyword: "This card deals additional damage equal to your Poison." Jab, Forked Tongue, Lash Out and Wormwood print it in place of the sentence
+
+### Changed
+
+- Buffed Anodyne potion: Poison gained per damage prevented 1 per 5 -> 1 per 10
+- Buffed Fuming Mix: Tainted applied 2(3) -> 3(4), and it also deals 3 (4) damage to ALL enemies
+- Buffed Solvent potion: it also applies 2 Vulnerable to ALL enemies
+- Reworked Backfire: "Deal 4 (6) damage. If you have Poison, apply 1 (2) Weak." (1 -> 0 energy)
+- Reworked Reclaim: "Apply Poison to ALL enemies equal to the number of Mixes you have played this combat. Exhaust."
+
+### Fixed
+
+- Fixed Proof and Nightcap damage previews: they now count the target's debuffs such as Tainted and Vulnerable while aiming
+
 ## [0.14.14] - 2026-09-17
 
 ### Added

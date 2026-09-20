@@ -2,7 +2,7 @@
   "ALCHEMIST-ACCESSIBILITY.title": "Ułatwienia dostępu",
   "ALCHEMIST-ANALYTICS.title": "Analityka",
   "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "Wysyła anonimowe wyniki przejść Alchemika (talia, artefakty, wybory kart, osiągnięte piętro), aby pomóc w balansowaniu postaci. Działa tylko wtedy, gdy w grze włączono opcję przesyłania danych. Nigdy nie zawiera twojego imienia ani identyfikatora Steam.",
-  "ALCHEMIST-ANALYTICS_ENABLED.title": "Udostępniaj statystyki przejść",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "Udostępniaj anonimowe statystyki przejść",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "Kolor paska Antytoksyny pod twoim paskiem zdrowia. Nie dotyczy zielonego segmentu pokazującego nadchodzącą Truciznę.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Kolor paska Antytoksyny",
   "ALCHEMIST-APPEARANCE.title": "Wygląd",

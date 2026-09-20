@@ -2,7 +2,7 @@
   "ALCHEMIST-ACCESSIBILITY.title": "Accessibilité",
   "ALCHEMIST-ANALYTICS.title": "Statistiques",
   "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "Envoie les résultats anonymes de vos parties avec l'Alchimiste (deck, reliques, cartes choisies, étage atteint) pour aider à équilibrer le personnage. Ne s'applique que si le paramètre Envoyer les données du jeu est activé. N'inclut jamais votre nom ni votre identifiant Steam.",
-  "ALCHEMIST-ANALYTICS_ENABLED.title": "Partager les statistiques de partie",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "Partager des statistiques de partie anonymes",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "La couleur de la barre d'Antitoxine sous votre barre de vie. Le segment vert qui indique le Poison à venir n'est pas affecté.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Couleur de la barre d'Antitoxine",
   "ALCHEMIST-APPEARANCE.title": "Apparence",

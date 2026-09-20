@@ -3,6 +3,7 @@ using Alchemist.AlchemistCode.Commands;
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Rooms;
 
 namespace Alchemist.AlchemistCode.Analytics;
 
@@ -14,6 +15,9 @@ public sealed class AnalyticsHooks() : CustomSingletonModel(HookType.Combat)
     public const string FermentPlays = "ferment_plays";
     public const string FermentTurns = "ferment_turns";
     public const string FermentZero = "ferment_zero";
+    // Mixes played per fight, bucketed, so a "per Mix played" payoff can be priced against how many
+    // Mixes a fight really sees, which the run total hides
+    public const string MixesPerFight = "mixfight:";
 
     // Before OnPlay, because Pour Over drains its own turns as it resolves; the raw stored count,
     // because Mother of Vinegar's read-time floor would make zero unreachable
@@ -35,4 +39,20 @@ public sealed class AnalyticsHooks() : CustomSingletonModel(HookType.Combat)
             RunCounters.Tally(player, RunCounters.MixPlayed + Mixing.KindLabel(card));
         return Task.CompletedTask;
     }
+
+    // Before the game clears its play history, which is where the per-fight count lives
+    public override Task AfterCombatEnd(CombatRoom room)
+    {
+        foreach (var player in room.CombatState.Players)
+            RunCounters.Tally(player, MixesPerFight + FightBucket(Mixing.PlayedThisCombat(player)));
+        return Task.CompletedTask;
+    }
+
+    private static string FightBucket(int mixes) => mixes switch
+    {
+        <= 4 => mixes.ToString(),
+        <= 6 => "5-6",
+        <= 9 => "7-9",
+        _ => "10+",
+    };
 }

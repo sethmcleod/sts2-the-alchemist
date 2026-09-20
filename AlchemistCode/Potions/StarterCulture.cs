@@ -29,7 +29,7 @@ public class StarterCulture : AlchemistPotion
         var brewing = PileType.Hand.GetPile(player).Cards.OfType<AlchemistCard>()
             .Where(c => c.IsFermentInline).ToList();
         foreach (var card in brewing)
-            await card.AdvanceFerment(Times);
+            await card.AdvanceFerment(choiceContext, Times);
         if (brewing.Count > 0)
             CardCmd.Preview(brewing.Cast<CardModel>().ToList());
     }

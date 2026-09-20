@@ -2,7 +2,7 @@
   "ALCHEMIST-ACCESSIBILITY.title": "アクセシビリティ",
   "ALCHEMIST-ANALYTICS.title": "分析",
   "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "アルケミストの冒険結果（デッキ、レリック、カードの選択、到達階層）を匿名で送信し、キャラクターの調整に役立てます。ゲーム本体の「データをアップロード」設定がオンの場合にのみ適用されます。名前やSteam IDは一切含まれません。",
-  "ALCHEMIST-ANALYTICS_ENABLED.title": "冒険の分析データを共有",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "冒険の分析データを匿名で共有",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "HPバーの下に表示される抗毒素バーの色。受ける毒を示す緑の部分には影響しません。",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "抗毒素バーの色",
   "ALCHEMIST-APPEARANCE.title": "外観",

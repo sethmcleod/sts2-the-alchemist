@@ -546,6 +546,14 @@
             </div>
             <div class="scroll" id="playTable"></div>
           </div>
+          <div class="panel">
+            <h2>Mixes played per fight</h2>
+            <div class="note">
+              Fights by how many Mixes the player played in them (a Compound Mix counts 2). Only clients
+              from 0.14.14 on report this.
+            </div>
+            <div class="scroll" id="fightTable"></div>
+          </div>
         </div>
         <div class="row2">
           <div class="panel">
@@ -680,7 +688,7 @@
 
       const DATA = 'data/';
       let META, CMETA, RUNS, CARDS, CHOICES, RELICS, DEATHS, FLOORS, ENC, THEMES, ECON, FIRSTS, POTIONS;
-      let SOURCES, PAIRS, OFFERS, PLAYS, ACTS;
+      let SOURCES, PAIRS, OFFERS, PLAYS, ACTS, FIGHTS;
       let PREFIX = 'ALCHEMIST-';
       const RARITY_COLOR = { Rare: '--rare', Uncommon: '--uncommon', Common: '--common' };
 
@@ -702,6 +710,7 @@
           firsts: ['picked', -1],
           potions: ['uses', -1],
           plays: ['created', -1],
+          fights: ['order', 1],
           sources: ['mixes', -1],
           pairs: ['compounds', -1],
           offers: ['offered', -1],
@@ -1535,7 +1544,6 @@
             'mix_syrupy',
             'mix_zesty',
             'mix_acrid',
-            'mix_poison',
             'mix_sparkling',
             'mix_compound',
             'poison_gained',
@@ -1557,7 +1565,6 @@
           mix_syrupy: 0,
           mix_zesty: 0,
           mix_acrid: 0,
-          mix_poison: 0,
           mix_sparkling: 0,
           mix_compound: 0,
           poison_gained: 0,
@@ -1579,7 +1586,6 @@
           econ2.mix_syrupy +
           econ2.mix_zesty +
           econ2.mix_acrid +
-          econ2.mix_poison +
           econ2.mix_sparkling +
           econ2.mix_compound;
         const mixTop = [
@@ -1588,7 +1594,6 @@
           ['Syrupy', econ2.mix_syrupy],
           ['Zesty', econ2.mix_zesty],
           ['Acrid', econ2.mix_acrid],
-          ['Poison', econ2.mix_poison],
           ['Sparkling', econ2.mix_sparkling],
           ['Compound', econ2.mix_compound],
         ].sort((a, b) => b[1] - a[1]);
@@ -1715,7 +1720,6 @@
               'mix_syrupy',
               'mix_zesty',
               'mix_acrid',
-              'mix_poison',
               'mix_sparkling',
               'mix_compound',
             ],
@@ -1727,14 +1731,13 @@
           econDays.map(([day, g]) => ({ day, absorbed: g.poison_absorbed, bled: g.poison_bled })),
         );
 
-        // The Mix icon colours: Bursting red, Fuming orange, Sparkling yellow, Acrid green, Poison
-        // (the retired Poison Mix) teal, Syrupy blue, Zesty purple, Compound white
+        // The Mix icon colours: Bursting red, Fuming orange, Sparkling yellow, Acrid green,
+        // Syrupy blue, Zesty purple, Compound white
         const mixDefs = [
           ['Bursting', 'mix_bursting', '#f03c3c'],
           ['Fuming', 'mix_fuming', '#ff9424'],
           ['Sparkling', 'mix_sparkling', '#ffe14a'],
           ['Acrid', 'mix_acrid', '#4fd06a'],
-          ['Poison', 'mix_poison', '#3ad6c6'],
           ['Syrupy', 'mix_syrupy', '#4a90e8'],
           ['Zesty', 'mix_zesty', '#c07aff'],
           ['Compound', 'mix_compound', '#f4f4f4'],
@@ -1869,6 +1872,25 @@
             },
           ],
           plays,
+        );
+
+        const BUCKETS = ['0', '1', '2', '3', '4', '5-6', '7-9', '10+'];
+        const fightGroups = new Map(groupSum(FIGHTS.filter((r) => sliceFilter(r)), (r) => r.bucket, ['fights']));
+        const fightTotal = [...fightGroups.values()].reduce((s, g) => s + g.fights, 0);
+        sortable(
+          $('fightTable'),
+          'fights',
+          [
+            { key: 'order', label: 'Mixes played', render: (r) => r.bucket },
+            { key: 'fights', label: 'Fights', num: true, render: (r) => num(r.fights) },
+            {
+              key: 'share',
+              label: 'Share of fights',
+              num: true,
+              render: (r) => (fightTotal ? bar(r.fights / fightTotal) : '–'),
+            },
+          ],
+          BUCKETS.map((bucket, order) => ({ bucket, order, fights: fightGroups.get(bucket)?.fights || 0 })),
         );
 
         const sources = [
@@ -2267,6 +2289,7 @@
             OFFERS,
             PLAYS,
             ACTS,
+            FIGHTS,
           ] = await Promise.all(
             [
               'meta',
@@ -2287,6 +2310,7 @@
               'brew_offers_daily',
               'mix_plays_daily',
               'acts_daily',
+              'mix_fights_daily',
             ].map(load),
           );
         } catch (e) {
