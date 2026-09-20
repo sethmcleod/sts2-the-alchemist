@@ -78,13 +78,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // needs its own guard
     protected override bool ShouldGlowGoldInternal => IsMutable && ConditionalGlow;
 
-    internal bool HpFractionInRange(double lower, double upper)
-    {
-        if (Owner?.Creature is not { } c || c.MaxHp <= 0) return false;
-        var pct = (double)c.CurrentHp / c.MaxHp;
-        return pct >= lower && pct <= upper;
-    }
-
     protected Task LoseHp(PlayerChoiceContext choiceContext, int amount) =>
         GameCompat.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);

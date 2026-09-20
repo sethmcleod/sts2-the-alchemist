@@ -25,8 +25,8 @@ closest existing card in `AlchemistCode/Cards/` and follow the three-way rule be
 3. **cards.csv**: the design sheet in plain text. The format is `base (upgraded)`.
 
 Each card class also carries a `[CardTheme(...)]` attribute on the line before the class,
-naming the theme or themes it serves (`Poison`, `Infuse`, `Potions`, `Antitoxin`, `Ferment`,
-`Transform`) or `CardTheme.None` for a neutral card. The analytics dashboard groups runs by
+naming the theme or themes it serves (`Poison`, `Potions`, `Antitoxin`, `Ferment`,
+`Transform`, `Mix`) or `CardTheme.None` for a neutral card. The analytics dashboard groups runs by
 theme, and the linter fails a card without the attribute.
 
 ## Analytics

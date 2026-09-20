@@ -37,8 +37,6 @@ public static class Mixing
     public static readonly MixKind[] All =
         { MixKind.Bursting, MixKind.Syrupy, MixKind.Zesty, MixKind.Fuming, MixKind.Acrid, MixKind.Sparkling };
 
-    public static bool IsBasic(MixKind kind) => Basic.Contains(kind);
-
     public static MixKind? KindOf(CardModel card) => card switch
     {
         BurstingMix => MixKind.Bursting,

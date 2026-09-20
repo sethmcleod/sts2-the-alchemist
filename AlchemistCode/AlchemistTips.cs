@@ -79,9 +79,5 @@ public static class AlchemistTips
     public static IHoverTip[] Mix => _mix ??= Family(false);
     public static IHoverTip[] MixUpgraded => _mixUpgraded ??= Family(true);
 
-    // A maker that produces one fixed Mix tips the family header plus that Mix's row only
-    public static IHoverTip[] MixSingle(string mixKey, string icon) =>
-        [Static("ALCHEMIST-MIX"), Static(mixKey, icon)];
-
     public static IHoverTip CompoundMix => _compoundMix ??= Static("ALCHEMIST-COMPOUND_MIX", "mix_compound");
 }
