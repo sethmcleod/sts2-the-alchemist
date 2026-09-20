@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.15] - 2026-09-20
+
 ### Added
 
 - Added a Ferment indicator: Ferment cards show the turns Fermented in their top right corner in Hand, Draw, Discard, and Exhaust piles
