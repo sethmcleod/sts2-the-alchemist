@@ -9,6 +9,8 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "[gold]Aşılamak[/gold] için istediğin kadar kart seç.",
   "ALCHEMIST-INFUSE.selectionPromptRange": "[gold]Aşılamak[/gold] için en fazla [blue]{MaxCount}[/blue] {MaxCount:plural:kart|kart} seç.",
   "ALCHEMIST-INFUSE.title": "Aşıla",
+  "ALCHEMIST-LACED.description": "Bu Atak, [gold]Zehir[/gold]'in kadar fazladan hasar verir.",
+  "ALCHEMIST-LACED.title": "Katkılı",
   "ALCHEMIST-MIX.selectionPrompt": "[gold]El[/gold]'ine eklemek için bir [gold]Karışım[/gold] seç.",
   "ALCHEMIST-MIX.selectionPromptBasic": "[gold]El[/gold]'ine eklemek için temel bir [gold]Karışım[/gold] seç.",
   "ALCHEMIST-MIX.selectionPromptSpecial": "[gold]El[/gold]'ine eklemek için özel bir [gold]Karışım[/gold] seç."

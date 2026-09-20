@@ -9,6 +9,8 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "Scegli un numero qualsiasi di carte da [gold]infondere[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Scegli fino a [blue]{MaxCount}[/blue] {MaxCount:plural:carta|carte} da [gold]infondere[/gold].",
   "ALCHEMIST-INFUSE.title": "Infusione",
+  "ALCHEMIST-LACED.description": "Questo Attacco infligge danno extra pari al tuo [gold]Veleno[/gold].",
+  "ALCHEMIST-LACED.title": "Intrisa",
   "ALCHEMIST-MIX.selectionPrompt": "Scegli una [gold]Miscela[/gold] da aggiungere alla tua [gold]mano[/gold].",
   "ALCHEMIST-MIX.selectionPromptBasic": "Scegli una [gold]Miscela[/gold] base da aggiungere alla tua [gold]mano[/gold].",
   "ALCHEMIST-MIX.selectionPromptSpecial": "Scegli una [gold]Miscela[/gold] speciale da aggiungere alla tua [gold]mano[/gold]."

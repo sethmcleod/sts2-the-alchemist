@@ -2,7 +2,7 @@
   "ALCHEMIST-ACCESSIBILITY.title": "Accessibilità",
   "ALCHEMIST-ANALYTICS.title": "Analisi",
   "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "Invia i risultati anonimi delle partite con l'Alchimista (mazzo, reliquie, carte scelte, piano raggiunto) per aiutare a bilanciare il personaggio. Vale solo se l'impostazione Carica dati del gioco è attiva. Non include mai il tuo nome o il tuo ID Steam.",
-  "ALCHEMIST-ANALYTICS_ENABLED.title": "Condividi analisi delle partite",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "Condividi analisi anonime delle partite",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "Il colore della barra dell'Antitossina sotto la tua barra della salute. Il segmento verde che mostra il Veleno in arrivo non viene modificato.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Colore della barra dell'Antitossina",
   "ALCHEMIST-APPEARANCE.title": "Aspetto",

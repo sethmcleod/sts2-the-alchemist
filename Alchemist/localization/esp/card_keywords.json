@@ -9,6 +9,8 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "Elige cualquier cantidad de cartas para [gold]infundir[/gold].",
   "ALCHEMIST-INFUSE.selectionPromptRange": "Elige hasta [blue]{MaxCount}[/blue] {MaxCount:plural:carta|cartas} para [gold]infundir[/gold].",
   "ALCHEMIST-INFUSE.title": "Infusión",
+  "ALCHEMIST-LACED.description": "Esta carta de ataque inflige daño adicional igual a tu [gold]veneno[/gold].",
+  "ALCHEMIST-LACED.title": "Adulteración",
   "ALCHEMIST-MIX.selectionPrompt": "Elige una [gold]Mezcla[/gold] para añadir a tu [gold]mano[/gold].",
   "ALCHEMIST-MIX.selectionPromptBasic": "Elige una [gold]Mezcla[/gold] básica para añadir a tu [gold]mano[/gold].",
   "ALCHEMIST-MIX.selectionPromptSpecial": "Elige una [gold]Mezcla[/gold] especial para añadir a tu [gold]mano[/gold]."

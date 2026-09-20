@@ -2,7 +2,7 @@
   "ALCHEMIST-ACCESSIBILITY.title": "无障碍",
   "ALCHEMIST-ANALYTICS.title": "分析",
   "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "发送匿名的炼金术士游戏数据（牌组、遗物、卡牌选择、到达层数）以帮助平衡该角色。仅在游戏自身的“上传数据”设置开启时生效。绝不包含你的名字或Steam ID。",
-  "ALCHEMIST-ANALYTICS_ENABLED.title": "分享游戏数据",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "分享匿名游戏数据",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "你血条下方抗毒素条的颜色。用于显示即将到来的中毒的绿色段不受影响。",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "抗毒素条颜色",
   "ALCHEMIST-APPEARANCE.title": "外观",

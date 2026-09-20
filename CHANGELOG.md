@@ -7,20 +7,31 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added a Ferment indicator: Ferment cards show the turns Fermented in their top right corner in Hand, Draw, Discard, and Exhaust piles
 - Added 9 cards that are offered only while The Hero Expansion is loaded: Varnish, Pond Scum and Membrane (Common), Winnow, Tadpole and Unfazed (Uncommon), Mud Pack, Overspray and Chrysopoeia (Rare)
 - Added Ancients Awakened cross-mod support: its Ancient Scepter turns the Alchemist's Strikes and Defends into Potent Strikes and Potent Defends, and its Experimental Serum gives Quintessence
 - Added Gold Leaf potion (Brew only): "Add Replay to a card in your Hand."
 - Added Potent Defend card (Ancients Awakened): "Gain 5 (8) Block. Add a random Mix into your Hand."
-- Added Potent Strike card (Ancients Awakened): "Laced. Gain 1 Poison and 1 Antitoxin. Deal 6 (9) damage."
-- Added Quintessence card (Ancients Awakened): "Whenever one of your cards ferments, add a random Mix into your Hand." Quintessence+ adds a Mix+
+- Added Potent Strike card (Ancients Awakened): "Laced. Gain 1 Poison. Gain 1 Antitoxin. Deal 6 (9) damage."
+- Added Quintessence card (Ancients Awakened): "Whenever one of your cards Ferments, add a random Mix into your Hand." Quintessence+ adds a Mix+
 - Added Reconstitute card (Hero Expansion): "Gain 2 Poison. Put a card from your Discard Pile into your Hand. Exhaust." Reconstitute+ loses Exhaust
 - Added The Hero Expansion cross-mod support: its Broken Blade transforms into The Steeped Blade for the Alchemist, and its Mysterious Flashlight gives Reconstitute
 - Added the Laced keyword: "This card deals additional damage equal to your Poison." Jab, Forked Tongue, Lash Out, Wormwood and Potent Strike print it in place of the sentence
-- Added The Steeped Blade card (Hero Expansion): "Retain. Ferment. Deal 9 (12) damage. This card ferments 1. Whenever this card ferments, apply Poison to ALL enemies equal to its fermentation."
+- Added The Steeped Blade card (Hero Expansion): "Retain. Ferment. Deal 9 (12) damage. This card Ferments 1. Whenever this card Ferments, apply Poison to ALL enemies equal to its Fermentation."
+
+### Changed
+
 - Buffed Anodyne potion: Poison gained per damage prevented 1 per 5 -> 1 per 10
+- Buffed Fuming Mix: Tainted applied 2(3) -> 3(4), and it also deals 3 (4) damage to ALL enemies
 - Buffed Solvent potion: it also applies 2 Vulnerable to ALL enemies
 - Reworked Backfire: "Deal 4 (6) damage. If you have Poison, apply 1 (2) Weak." (1 -> 0 energy)
 - Reworked Reclaim: "Apply Poison to ALL enemies equal to the number of Mixes you have played this combat. Exhaust."
+
+### Fixed
+
+- Fixed Proof and Nightcap damage previews: they now count the target's debuffs such as Tainted and Vulnerable while aiming
 
 ## [0.14.14] - 2026-09-17
 

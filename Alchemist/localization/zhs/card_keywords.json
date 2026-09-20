@@ -9,6 +9,8 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "选择任意数量的牌进行[gold]注入[/gold]。",
   "ALCHEMIST-INFUSE.selectionPromptRange": "选择至多[blue]{MaxCount}[/blue]张{MaxCount:plural:牌|牌}进行[gold]注入[/gold]。",
   "ALCHEMIST-INFUSE.title": "注入",
+  "ALCHEMIST-LACED.description": "这张攻击牌额外造成等同于你[gold]中毒[/gold]层数的伤害。",
+  "ALCHEMIST-LACED.title": "掺毒",
   "ALCHEMIST-MIX.selectionPrompt": "选择一种要加入你的[gold]手牌[/gold]的[gold]合剂[/gold]。",
   "ALCHEMIST-MIX.selectionPromptBasic": "选择一种要加入你的[gold]手牌[/gold]的基础[gold]合剂[/gold]。",
   "ALCHEMIST-MIX.selectionPromptSpecial": "选择一种要加入你的[gold]手牌[/gold]的特殊[gold]合剂[/gold]。"

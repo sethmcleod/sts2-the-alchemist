@@ -9,6 +9,8 @@
   "ALCHEMIST-INFUSE.selectionPromptAny": "เลือกการ์ดกี่ใบก็ได้เพื่อ[gold]อัดฉีด[/gold]",
   "ALCHEMIST-INFUSE.selectionPromptRange": "เลือกการ์ดได้ถึง [blue]{MaxCount}[/blue] {MaxCount:plural:ใบ|ใบ}เพื่อ[gold]อัดฉีด[/gold]",
   "ALCHEMIST-INFUSE.title": "อัดฉีด",
+  "ALCHEMIST-LACED.description": "การ์ดโจมตีใบนี้สร้างความเสียหายเพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
+  "ALCHEMIST-LACED.title": "เจือพิษ",
   "ALCHEMIST-MIX.selectionPrompt": "เลือก[gold]ยาผสม[/gold]ที่จะเพิ่มเข้า[gold]มือ[/gold]",
   "ALCHEMIST-MIX.selectionPromptBasic": "เลือก[gold]ยาผสม[/gold]พื้นฐานที่จะเพิ่มเข้า[gold]มือ[/gold]",
   "ALCHEMIST-MIX.selectionPromptSpecial": "เลือก[gold]ยาผสม[/gold]พิเศษที่จะเพิ่มเข้า[gold]มือ[/gold]"

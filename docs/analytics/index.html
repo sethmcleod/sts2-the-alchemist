@@ -710,6 +710,7 @@
           firsts: ['picked', -1],
           potions: ['uses', -1],
           plays: ['created', -1],
+          fights: ['order', 1],
           sources: ['mixes', -1],
           pairs: ['compounds', -1],
           offers: ['offered', -1],
@@ -1543,7 +1544,6 @@
             'mix_syrupy',
             'mix_zesty',
             'mix_acrid',
-            'mix_poison',
             'mix_sparkling',
             'mix_compound',
             'poison_gained',
@@ -1565,7 +1565,6 @@
           mix_syrupy: 0,
           mix_zesty: 0,
           mix_acrid: 0,
-          mix_poison: 0,
           mix_sparkling: 0,
           mix_compound: 0,
           poison_gained: 0,
@@ -1587,7 +1586,6 @@
           econ2.mix_syrupy +
           econ2.mix_zesty +
           econ2.mix_acrid +
-          econ2.mix_poison +
           econ2.mix_sparkling +
           econ2.mix_compound;
         const mixTop = [
@@ -1596,7 +1594,6 @@
           ['Syrupy', econ2.mix_syrupy],
           ['Zesty', econ2.mix_zesty],
           ['Acrid', econ2.mix_acrid],
-          ['Poison', econ2.mix_poison],
           ['Sparkling', econ2.mix_sparkling],
           ['Compound', econ2.mix_compound],
         ].sort((a, b) => b[1] - a[1]);
@@ -1723,7 +1720,6 @@
               'mix_syrupy',
               'mix_zesty',
               'mix_acrid',
-              'mix_poison',
               'mix_sparkling',
               'mix_compound',
             ],
@@ -1735,14 +1731,13 @@
           econDays.map(([day, g]) => ({ day, absorbed: g.poison_absorbed, bled: g.poison_bled })),
         );
 
-        // The Mix icon colours: Bursting red, Fuming orange, Sparkling yellow, Acrid green, Poison
-        // (the retired Poison Mix) teal, Syrupy blue, Zesty purple, Compound white
+        // The Mix icon colours: Bursting red, Fuming orange, Sparkling yellow, Acrid green,
+        // Syrupy blue, Zesty purple, Compound white
         const mixDefs = [
           ['Bursting', 'mix_bursting', '#f03c3c'],
           ['Fuming', 'mix_fuming', '#ff9424'],
           ['Sparkling', 'mix_sparkling', '#ffe14a'],
           ['Acrid', 'mix_acrid', '#4fd06a'],
-          ['Poison', 'mix_poison', '#3ad6c6'],
           ['Syrupy', 'mix_syrupy', '#4a90e8'],
           ['Zesty', 'mix_zesty', '#c07aff'],
           ['Compound', 'mix_compound', '#f4f4f4'],

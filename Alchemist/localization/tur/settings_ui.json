@@ -2,7 +2,7 @@
   "ALCHEMIST-ACCESSIBILITY.title": "Erişilebilirlik",
   "ALCHEMIST-ANALYTICS.title": "Analitik",
   "ALCHEMIST-ANALYTICS_ENABLED.hover.desc": "Karakteri dengelemeye yardımcı olmak için anonim Simyacı oyun sonuçlarını (deste, kalıntılar, kart seçimleri, ulaşılan kat) gönderir. Yalnızca oyunun kendi Veri Yükleme ayarı açıkken geçerlidir. Adını veya Steam kimliğini asla içermez.",
-  "ALCHEMIST-ANALYTICS_ENABLED.title": "Oyun Verilerini Paylaş",
+  "ALCHEMIST-ANALYTICS_ENABLED.title": "Anonim Oyun Verilerini Paylaş",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.hover.desc": "Can barının altındaki Antitoksin barının rengi. Gelen Zehir'i gösteren yeşil bölüm bundan etkilenmez.",
   "ALCHEMIST-ANTITOXIN_BAR_COLOR.title": "Antitoksin Barı Rengi",
   "ALCHEMIST-APPEARANCE.title": "Görünüm",

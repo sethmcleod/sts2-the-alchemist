@@ -21,6 +21,7 @@ THEMES = ["Poison", "Antitoxin", "Ferment", "Mix", "Infuse", "Transform", "Potio
 CLASS_RE = re.compile(
     r"\[CardTheme\((?P<themes>[^)]*)\)\]\s*"
     r"public\s+(?:sealed\s+|abstract\s+|partial\s+)*class\s+(?P<name>\w+)\b", re.S)
+NOT_A_CARD_RE = re.compile(r"(?:public|internal)\s+(?:abstract|static)\s+class\s+\w+")
 RARITY_RE = re.compile(r"base\([^;]*?CardRarity\.(?P<rarity>\w+)", re.S)
 
 
@@ -43,6 +44,8 @@ def card_meta() -> dict[str, dict]:
     for path in sorted(CARDS.glob("*/*.cs")):
         src = path.read_text(encoding="utf-8")
         m = CLASS_RE.search(src)
+        if not m and NOT_A_CARD_RE.search(src):
+            continue  # a shared base class or a helper, not a card: it carries no theme or rarity
         if not m:
             raise SystemExit(f"{path.relative_to(REPO)}: no [CardTheme] attribute before the class")
         r = RARITY_RE.search(src)
