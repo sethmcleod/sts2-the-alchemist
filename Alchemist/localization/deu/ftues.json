@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "Dieser lila Balken ist dein [gold]Antitoxin[/gold]. Immer wenn dein [gold]Gift[/gold] ausgelöst wird, verhindert [gold]Antitoxin[/gold] dessen Schaden, bis zu dem auf dem Balken gezeigten Wert. Zu Beginn deines Zuges wird [gold]Antitoxin[/gold] um [blue]1[/blue] reduziert.",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "Tipp: Antitoxin",
+  "ALCHEMIST-POISON_FTUE.description": "Dein [gold]Gift[/gold] ist höher als dein [gold]Antitoxin[/gold]. Die [green]grüne Zahl[/green] neben dem Balken ist die Differenz. Erhalte [gold]Antitoxin[/gold], um sie abzudecken, sonst erleidest du zu Beginn deines nächsten Zuges so viel Schaden.",
+  "ALCHEMIST-POISON_FTUE.title": "Tipp: Giftschaden"
+}

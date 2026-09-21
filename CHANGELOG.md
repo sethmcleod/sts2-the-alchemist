@@ -16,6 +16,7 @@ mod).
 - Added Reconstitute card (Hero Expansion): "Gain 2 Poison. Put a card from your Discard Pile into your Hand and Upgrade it. Exhaust." Reconstitute+ loses Exhaust
 - Added The Hero Expansion cross-mod support: its Broken Blade transforms into The Steeped Blade for the Alchemist, and its Mysterious Flashlight gives Reconstitute
 - Added The Steeped Blade card (Hero Expansion): "Retain. Ferment. Deal 9 (12) damage. This card Ferments 1. Whenever this card Ferments, apply Poison to ALL enemies equal to its Fermentation."
+- Added tutorial tips for Antitoxin and Poison: each appears once, the first time the Alchemist fights and the first time they would take Poison damage. They follow the game's Tutorials setting and its Reset Tutorials button
 
 ### Changed
 

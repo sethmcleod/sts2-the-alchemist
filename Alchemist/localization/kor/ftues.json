@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "이 보라색 바는 내 [gold]항독소[/gold]입니다. 내 [gold]중독[/gold]이 발동할 때마다 [gold]항독소[/gold]가 바에 표시된 수치까지 그 피해를 막습니다. 내 턴 시작 시, [gold]항독소[/gold]가 [blue]1[/blue] 감소합니다.",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "팁: 항독소",
+  "ALCHEMIST-POISON_FTUE.description": "내 [gold]중독[/gold]이 [gold]항독소[/gold]보다 많습니다. 바 옆의 [green]초록색 숫자[/green]는 그 차이입니다. [gold]항독소[/gold]를 얻어 차이를 메우지 않으면 다음 턴 시작 시 그만큼 피해를 받습니다.",
+  "ALCHEMIST-POISON_FTUE.title": "팁: 중독 피해"
+}

@@ -72,6 +72,12 @@ public static class AntitoxinBarPatches
 
     private static readonly ConditionalWeakTable<NHealthBar, Parts> Bars = new();
 
+    // The bar node under a health bar, for anything that has to point at it
+    internal static Control? BarNode(NHealthBar bar) =>
+        Bars.TryGetValue(bar, out var parts) && GodotObject.IsInstanceValid(parts.Root) && parts.Root.Visible
+            ? parts.Root
+            : null;
+
     private static readonly AccessTools.FieldRef<NHealthBar, Creature> CreatureRef =
         AccessTools.FieldRefAccess<NHealthBar, Creature>("_creature");
 

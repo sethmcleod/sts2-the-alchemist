@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "Bu mor bar senin [gold]Antitoksin[/gold]'in. [gold]Zehir[/gold]'in her tetiklendiğinde [gold]Antitoksin[/gold], barda gösterilen miktara kadar hasarını önler. Turunun başında [gold]Antitoksin[/gold] [blue]1[/blue] azalır.",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "İpucu: Antitoksin",
+  "ALCHEMIST-POISON_FTUE.description": "[gold]Zehir[/gold]'in, [gold]Antitoksin[/gold]'inden fazla. Barın yanındaki [green]yeşil sayı[/green] aradaki farktır. Bunu karşılamak için [gold]Antitoksin[/gold] kazan, yoksa bir sonraki turunun başında o kadar hasar alırsın.",
+  "ALCHEMIST-POISON_FTUE.title": "İpucu: Zehir Hasarı"
+}

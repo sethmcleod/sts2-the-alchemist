@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "この紫のバーは自身の[gold]抗毒素[/gold]だ。自身の[gold]毒[/gold]が発動するたび、[gold]抗毒素[/gold]はバーに示された値までそのダメージを無効化する。ターン開始時、[gold]抗毒素[/gold]は[blue]1[/blue]減少する。",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "ヒント: 抗毒素",
+  "ALCHEMIST-POISON_FTUE.description": "自身の[gold]毒[/gold]が[gold]抗毒素[/gold]を上回っている。バーの横の[green]緑の数字[/green]はその差だ。[gold]抗毒素[/gold]を得て差を埋めなければ、次のターン開始時にその分のダメージを受ける。",
+  "ALCHEMIST-POISON_FTUE.title": "ヒント: 毒ダメージ"
+}

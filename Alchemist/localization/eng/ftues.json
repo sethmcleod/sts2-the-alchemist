@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "This purple bar is your [gold]Antitoxin[/gold]. Whenever your [gold]Poison[/gold] triggers, [gold]Antitoxin[/gold] prevents its damage, up to the amount shown on the bar. At the start of your turn, [gold]Antitoxin[/gold] is reduced by [blue]1[/blue].",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "Tip: Antitoxin",
+  "ALCHEMIST-POISON_FTUE.description": "Your [gold]Poison[/gold] is greater than your [gold]Antitoxin[/gold]. The [green]green number[/green] next to the bar is the difference. Gain [gold]Antitoxin[/gold] to cover it or you will take that much damage at the start of your next turn.",
+  "ALCHEMIST-POISON_FTUE.title": "Tip: Poison Damage"
+}

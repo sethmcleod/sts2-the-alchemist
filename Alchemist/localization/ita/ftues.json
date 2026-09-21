@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "Questa barra viola è la tua [gold]Antitossina[/gold]. Ogni volta che il tuo [gold]Veleno[/gold] si attiva, l'[gold]Antitossina[/gold] ne previene il danno, fino al valore mostrato sulla barra. All'inizio del tuo turno, l'[gold]Antitossina[/gold] si riduce di [blue]1[/blue].",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "Suggerimento: Antitossina",
+  "ALCHEMIST-POISON_FTUE.description": "Il tuo [gold]Veleno[/gold] è superiore alla tua [gold]Antitossina[/gold]. Il [green]numero verde[/green] accanto alla barra è la differenza. Ottieni [gold]Antitossina[/gold] per coprirla, altrimenti subirai altrettanto danno all'inizio del tuo prossimo turno.",
+  "ALCHEMIST-POISON_FTUE.title": "Suggerimento: danno da Veleno"
+}
