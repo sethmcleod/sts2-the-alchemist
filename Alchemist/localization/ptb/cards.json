@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "Salpico",
   "ALCHEMIST-SPIKE.description": "Cause {Damage:diff()} de dano.\nAdicione uma {IfUpgraded:show:[gold]Mistura Acre+[/gold]|[gold]Mistura Acre[/gold]} na sua [gold]Mão[/gold].",
   "ALCHEMIST-SPIKE.title": "Ferroada",
-  "ALCHEMIST-SPIT.description": "Cause {Damage:diff()} de dano.\nAplique {PoisonPower:diff()} de [gold]Veneno[/gold].",
+  "ALCHEMIST-SPIT.description": "Cause {Damage:diff()} de dano.\nAplique {PoisonPower:diff()} de [gold]Veneno[/gold].\nReceba {SelfPoison} de [gold]Veneno[/gold].",
   "ALCHEMIST-SPIT.title": "Cuspir",
   "ALCHEMIST-SPORES.description": "Aplique {Poison:diff()} de [gold]Veneno[/gold] a TODOS os inimigos.\nReceba {SelfPoison} de [gold]Veneno[/gold].",
   "ALCHEMIST-SPORES.title": "Esporos",

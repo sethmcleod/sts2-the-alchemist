@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "Spruzzo",
   "ALCHEMIST-SPIKE.description": "Infliggi {Damage:diff()} di danno.\nAggiungi una {IfUpgraded:show:[gold]Miscela Acre+[/gold]|[gold]Miscela Acre[/gold]} alla tua [gold]mano[/gold].",
   "ALCHEMIST-SPIKE.title": "Puntura",
-  "ALCHEMIST-SPIT.description": "Infliggi {Damage:diff()} di danno.\nApplichi {PoisonPower:diff()} di [gold]Veleno[/gold].",
+  "ALCHEMIST-SPIT.description": "Infliggi {Damage:diff()} di danno.\nApplichi {PoisonPower:diff()} di [gold]Veleno[/gold].\nOttieni {SelfPoison} di [gold]Veleno[/gold].",
   "ALCHEMIST-SPIT.title": "Sputo",
   "ALCHEMIST-SPORES.description": "Applichi {Poison:diff()} di [gold]Veleno[/gold] a TUTTI i nemici.\nOttieni {SelfPoison} di [gold]Veleno[/gold].",
   "ALCHEMIST-SPORES.title": "Spore",

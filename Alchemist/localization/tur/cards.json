@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "Serpinti",
   "ALCHEMIST-SPIKE.description": "{Damage:diff()} hasar ver.\n[gold]El[/gold]'ine bir {IfUpgraded:show:[gold]Keskin Karışım+[/gold]|[gold]Keskin Karışım[/gold]} ekle.",
   "ALCHEMIST-SPIKE.title": "İğneleme",
-  "ALCHEMIST-SPIT.description": "{Damage:diff()} hasar ver.\n{PoisonPower:diff()} [gold]Zehir[/gold] uygula.",
+  "ALCHEMIST-SPIT.description": "{Damage:diff()} hasar ver.\n{PoisonPower:diff()} [gold]Zehir[/gold] uygula.\n{SelfPoison} [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-SPIT.title": "Tükür",
   "ALCHEMIST-SPORES.description": "TÜM düşmanlara {Poison:diff()} [gold]Zehir[/gold] uygula.\n{SelfPoison} [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-SPORES.title": "Sporlar",

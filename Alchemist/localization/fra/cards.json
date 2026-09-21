@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "Éclaboussure",
   "ALCHEMIST-SPIKE.description": "Infligez {Damage:diff()} dégâts.\nAjoutez une {IfUpgraded:show:[gold]Mixture âcre+[/gold]|[gold]Mixture âcre[/gold]} à votre [gold]Main[/gold].",
   "ALCHEMIST-SPIKE.title": "Dard",
-  "ALCHEMIST-SPIT.description": "Infligez {Damage:diff()} dégâts.\nAppliquez {PoisonPower:diff()} de [gold]Poison[/gold].",
+  "ALCHEMIST-SPIT.description": "Infligez {Damage:diff()} dégâts.\nAppliquez {PoisonPower:diff()} de [gold]Poison[/gold].\nGagnez {SelfPoison} de [gold]Poison[/gold].",
   "ALCHEMIST-SPIT.title": "Crachat",
   "ALCHEMIST-SPORES.description": "Appliquez {Poison:diff()} de [gold]Poison[/gold] à TOUS les ennemis.\nGagnez {SelfPoison} de [gold]Poison[/gold].",
   "ALCHEMIST-SPORES.title": "Spores",

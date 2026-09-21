@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "Spatter",
   "ALCHEMIST-SPIKE.description": "Deal {Damage:diff()} damage.\nAdd a {IfUpgraded:show:[gold]Acrid Mix+[/gold]|[gold]Acrid Mix[/gold]} into your [gold]Hand[/gold].",
   "ALCHEMIST-SPIKE.title": "Spike",
-  "ALCHEMIST-SPIT.description": "Deal {Damage:diff()} damage.\nApply {PoisonPower:diff()} [gold]Poison[/gold].",
+  "ALCHEMIST-SPIT.description": "Deal {Damage:diff()} damage.\nApply {PoisonPower:diff()} [gold]Poison[/gold].\nGain {SelfPoison} [gold]Poison[/gold].",
   "ALCHEMIST-SPIT.title": "Spit",
   "ALCHEMIST-SPORES.description": "Apply {Poison:diff()} [gold]Poison[/gold] to ALL enemies.\nGain {SelfPoison} [gold]Poison[/gold].",
   "ALCHEMIST-SPORES.title": "Spores",

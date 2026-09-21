@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "Rociada",
   "ALCHEMIST-SPIKE.description": "Inflige {Damage:diff()} de daño.\nAñade una {IfUpgraded:show:[gold]Mezcla acre+[/gold]|[gold]Mezcla acre[/gold]} a tu [gold]Mano[/gold].",
   "ALCHEMIST-SPIKE.title": "Aguijonazo",
-  "ALCHEMIST-SPIT.description": "Inflige {Damage:diff()} de daño.\nAplica {PoisonPower:diff()} de [gold]Veneno[/gold].",
+  "ALCHEMIST-SPIT.description": "Inflige {Damage:diff()} de daño.\nAplica {PoisonPower:diff()} de [gold]Veneno[/gold].\nGana {SelfPoison} de [gold]Veneno[/gold].",
   "ALCHEMIST-SPIT.title": "Escupir",
   "ALCHEMIST-SPORES.description": "Aplica {Poison:diff()} de [gold]Veneno[/gold] a TODOS los enemigos.\nGana {SelfPoison} de [gold]Veneno[/gold].",
   "ALCHEMIST-SPORES.title": "Esporas",

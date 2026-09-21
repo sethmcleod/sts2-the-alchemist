@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "สาดกระเซ็น",
   "ALCHEMIST-SPIKE.description": "สร้างความเสียหาย {Damage:diff()}\nเพิ่ม{IfUpgraded:show:[gold]ยาผสมขมเฝื่อน+[/gold]|[gold]ยาผสมขมเฝื่อน[/gold]} 1 ใบเข้า[gold]มือ[/gold]",
   "ALCHEMIST-SPIKE.title": "เข็มพิษ",
-  "ALCHEMIST-SPIT.description": "สร้างความเสียหาย {Damage:diff()}\nสร้าง {PoisonPower:diff()} [gold]พิษ[/gold]",
+  "ALCHEMIST-SPIT.description": "สร้างความเสียหาย {Damage:diff()}\nสร้าง {PoisonPower:diff()} [gold]พิษ[/gold]\nได้รับ {SelfPoison} [gold]พิษ[/gold]",
   "ALCHEMIST-SPIT.title": "ถ่มพิษ",
   "ALCHEMIST-SPORES.description": "สร้าง {Poison:diff()} [gold]พิษ[/gold]ใส่ศัตรูทั้งหมด\nได้รับ {SelfPoison} [gold]พิษ[/gold]",
   "ALCHEMIST-SPORES.title": "สปอร์",

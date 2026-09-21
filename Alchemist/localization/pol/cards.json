@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "Bryzg",
   "ALCHEMIST-SPIKE.description": "Zadaj {Damage:diff()} pkt. obrażeń.\nDodaj {IfUpgraded:show:[gold]Gryzącą mieszankę+[/gold]|[gold]Gryzącą mieszankę[/gold]} do [gold]ręki[/gold].",
   "ALCHEMIST-SPIKE.title": "Zaprawienie",
-  "ALCHEMIST-SPIT.description": "Zadaj {Damage:diff()} pkt. obrażeń.\nNałóż {PoisonPower:diff()} pkt. [gold]Trucizny[/gold].",
+  "ALCHEMIST-SPIT.description": "Zadaj {Damage:diff()} pkt. obrażeń.\nNałóż {PoisonPower:diff()} pkt. [gold]Trucizny[/gold].\nZyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-SPIT.title": "Plunięcie",
   "ALCHEMIST-SPORES.description": "Nałóż {Poison:diff()} pkt. [gold]Trucizny[/gold] WSZYSTKIM przeciwnikom.\nZyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-SPORES.title": "Zarodniki",

@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "비산",
   "ALCHEMIST-SPIKE.description": "피해를 {Damage:diff()} 줍니다.\n{IfUpgraded:show:[gold]매캐한 혼합액+[/gold]|[gold]매캐한 혼합액[/gold]}을 [gold]손[/gold]에 추가합니다.",
   "ALCHEMIST-SPIKE.title": "독침",
-  "ALCHEMIST-SPIT.description": "피해를 {Damage:diff()} 줍니다.\n[gold]중독[/gold]을 {PoisonPower:diff()} 부여합니다.",
+  "ALCHEMIST-SPIT.description": "피해를 {Damage:diff()} 줍니다.\n[gold]중독[/gold]을 {PoisonPower:diff()} 부여합니다.\n[gold]중독[/gold]을 {SelfPoison} 얻습니다.",
   "ALCHEMIST-SPIT.title": "침 뱉기",
   "ALCHEMIST-SPORES.description": "모든 적에게 [gold]중독[/gold]을 {Poison:diff()} 부여합니다.\n[gold]중독[/gold]을 {SelfPoison} 얻습니다.",
   "ALCHEMIST-SPORES.title": "포자",

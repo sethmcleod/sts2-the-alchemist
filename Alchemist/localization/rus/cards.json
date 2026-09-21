@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "Брызги",
   "ALCHEMIST-SPIKE.description": "Наносит {Damage:diff()} урона.\nДобавляет {IfUpgraded:show:[gold]«Едкую смесь+»[/gold]|[gold]«Едкую смесь»[/gold]} в вашу [gold]руку[/gold].",
   "ALCHEMIST-SPIKE.title": "Жало",
-  "ALCHEMIST-SPIT.description": "Наносит {Damage:diff()} урона.\nНакладывает {PoisonPower:diff()} [gold]яда[/gold].",
+  "ALCHEMIST-SPIT.description": "Наносит {Damage:diff()} урона.\nНакладывает {PoisonPower:diff()} [gold]яда[/gold].\nДает вам {SelfPoison} [gold]яда[/gold].",
   "ALCHEMIST-SPIT.title": "Плевок",
   "ALCHEMIST-SPORES.description": "Накладывает {Poison:diff()} [gold]яда[/gold] на ВСЕХ врагов.\nДает вам {SelfPoison} [gold]яда[/gold].",
   "ALCHEMIST-SPORES.title": "Споры",

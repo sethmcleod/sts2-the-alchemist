@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "潑濺",
   "ALCHEMIST-SPIKE.description": "造成 {Damage:diff()} 點傷害。\n將一張{IfUpgraded:show:[gold]辛辣混劑+[/gold]|[gold]辛辣混劑[/gold]}加入你的[gold]手牌[/gold]。",
   "ALCHEMIST-SPIKE.title": "下毒",
-  "ALCHEMIST-SPIT.description": "造成 {Damage:diff()} 點傷害。\n施加 {PoisonPower:diff()} 層[gold]中毒[/gold]。",
+  "ALCHEMIST-SPIT.description": "造成 {Damage:diff()} 點傷害。\n施加 {PoisonPower:diff()} 層[gold]中毒[/gold]。\n獲得 {SelfPoison} 層[gold]中毒[/gold]。",
   "ALCHEMIST-SPIT.title": "噴吐",
   "ALCHEMIST-SPORES.description": "對所有敵人施加 {Poison:diff()} 層[gold]中毒[/gold]。\n獲得 {SelfPoison} 層[gold]中毒[/gold]。",
   "ALCHEMIST-SPORES.title": "孢子",

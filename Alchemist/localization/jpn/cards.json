@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "飛沫",
   "ALCHEMIST-SPIKE.description": "{Damage:diff()}ダメージを与える。\n{IfUpgraded:show:[gold]刺激臭の合剤+[/gold]|[gold]刺激臭の合剤[/gold]}を1枚[gold]手札[/gold]に加える。",
   "ALCHEMIST-SPIKE.title": "一服盛り",
-  "ALCHEMIST-SPIT.description": "{Damage:diff()}ダメージを与える。\n[gold]毒[/gold]{PoisonPower:diff()}を付与する。",
+  "ALCHEMIST-SPIT.description": "{Damage:diff()}ダメージを与える。\n[gold]毒[/gold]{PoisonPower:diff()}を付与する。\n[gold]毒[/gold]{SelfPoison}を得る。",
   "ALCHEMIST-SPIT.title": "吐き出し",
   "ALCHEMIST-SPORES.description": "[gold]毒[/gold]{Poison:diff()}をすべての敵に付与する。\n[gold]毒[/gold]{SelfPoison}を得る。",
   "ALCHEMIST-SPORES.title": "胞子",

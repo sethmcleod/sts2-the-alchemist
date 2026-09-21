@@ -29,7 +29,7 @@ mod).
 - Buffed Spores: Poison applied to ALL enemies 2 (3) -> 3 (4)
 - Buffed Warm Up: Warm Up+ adds a Mix+
 - Changed the Effervesce text to "Add one of each basic Mix into another player's Hand."
-- Reworked Spit: "Deal 4 (6) damage. Apply 2 (3) Poison."
+- Reworked Spit: "Deal 4 (6) damage. Apply 3 (4) Poison. Gain 1 Poison."
 
 ### Fixed
 

@@ -180,7 +180,7 @@
   "ALCHEMIST-SPATTER.title": "Salpicadura",
   "ALCHEMIST-SPIKE.description": "Infliges {Damage:diff()} de daño.\nAgregas una {IfUpgraded:show:[gold]Mezcla acre+[/gold]|[gold]Mezcla acre[/gold]} a tu [gold]mano[/gold].",
   "ALCHEMIST-SPIKE.title": "Aguijonazo",
-  "ALCHEMIST-SPIT.description": "Infliges {Damage:diff()} de daño.\nAplicas {PoisonPower:diff()} de [gold]veneno[/gold].",
+  "ALCHEMIST-SPIT.description": "Infliges {Damage:diff()} de daño.\nAplicas {PoisonPower:diff()} de [gold]veneno[/gold].\nObtienes {SelfPoison} de [gold]veneno[/gold].",
   "ALCHEMIST-SPIT.title": "Escupir",
   "ALCHEMIST-SPORES.description": "Aplicas {Poison:diff()} de [gold]veneno[/gold] a TODOS los enemigos.\nObtienes {SelfPoison} de [gold]veneno[/gold].",
   "ALCHEMIST-SPORES.title": "Esporas",
