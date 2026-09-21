@@ -20,10 +20,16 @@ mod).
 
 ### Changed
 
+- Buffed Brace: Poison applied to the attacker 2 (3) -> 3 (4)
+- Buffed Caustic Strike: Poison applied 2 (3) -> 3, additional Poison per turn fermented 2 -> 2 (3)
 - Buffed Eureka: Eureka+ transforms the card into a Mix+
 - Buffed Free Samples: Free Samples+ adds Mixes+
+- Buffed Fumigate: Poison applied to ALL enemies 3 (4) -> 3 (5)
 - Buffed Overbrew: Overbrew+ adds copies of a Mix+
+- Buffed Spores: Poison applied to ALL enemies 2 (3) -> 3 (4)
 - Buffed Warm Up: Warm Up+ adds a Mix+
+- Changed the Effervesce text to "Add one of each basic Mix into another player's Hand."
+- Reworked Spit: "Deal 4 (6) damage. Apply 2 (3) Poison."
 
 ## [0.14.15] - 2026-09-20
 
