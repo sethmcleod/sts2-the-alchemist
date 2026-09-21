@@ -11,7 +11,7 @@ public class Overflow : AlchemistCard
     public Overflow() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
-        WithQuietPower<OverflowPower>(1, 0);
+        WithNumberedPower<OverflowPower>(1, 0);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
 

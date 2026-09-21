@@ -14,7 +14,7 @@ public class ApothecaryPower : AlchemistPower
 
     internal bool Upgraded;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => Mixing.MixTips(Upgraded);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => Mixing.MixRefTips();
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {

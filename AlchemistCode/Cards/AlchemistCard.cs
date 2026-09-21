@@ -1,5 +1,7 @@
 using Alchemist.AlchemistCode.Compat;
 using System;
+using System.Reflection;
+using HarmonyLib;
 using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
@@ -110,11 +112,18 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             ? creature.GetPowerAmount<PoisonPower>()
             : 0m;
 
-    // A power var without the power's own hover tip. The base game shows a tip only for powers a
-    // card names as a keyword (Poison, Strength); a card that spells out its power's effect shows
-    // none (Flame Barrier, Rage, Envenom). BaseLib's WithPower always adds the tip
-    protected ConstructedCardModel WithQuietPower<T>(int baseVal, int upgrade = 0) where T : PowerModel =>
+    private static readonly FieldInfo HoverTipsField = AccessTools.Field(typeof(ConstructedCardModel), "_hoverTips");
+
+    // A power var whose tip carries the card's own number. BaseLib's WithVars adds the power's tip
+    // with no amount for any PowerVar, and an amountless tip prints the power's 0, so that tip is
+    // swapped for one that reads the var: 1 (2) on the card is 1 (2) in the tip
+    protected ConstructedCardModel WithNumberedPower<T>(int baseVal, int upgrade = 0) where T : PowerModel
+    {
         WithVar(new PowerVar<T>(baseVal).WithUpgrade(upgrade));
+        if (HoverTipsField.GetValue(this) is List<TooltipSource> { Count: > 0 } tips) tips.RemoveAt(tips.Count - 1);
+        var name = typeof(T).Name;
+        return WithTips(card => new[] { HoverTipFactory.FromPower<T>(card.DynamicVars[name].IntValue) });
+    }
 
     // The other cards in the owner's hand, for a card that scales with them. Zero outside a live
     // combat, where the hand pile is stale or missing

@@ -13,7 +13,7 @@ public class Refine : AlchemistCard
     public Refine() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
-        WithQuietPower<RefinePower>(1, 0);
+        WithNumberedPower<RefinePower>(1, 0);
         WithTips(_ => Mixing.MixRefTips());
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(CardKeyword.Retain) });
     }

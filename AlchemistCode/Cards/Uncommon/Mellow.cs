@@ -13,7 +13,7 @@ public class Mellow : AlchemistCard
 {
     public Mellow() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithQuietPower<MellowPower>(2, 1);
+        WithNumberedPower<MellowPower>(2, 1);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
 

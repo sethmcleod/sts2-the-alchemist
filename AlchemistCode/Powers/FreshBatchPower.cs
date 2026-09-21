@@ -13,7 +13,7 @@ public class FreshBatchPower : AlchemistPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => Mixing.MixTips(upgraded: true);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => Mixing.MixRefTips();
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {

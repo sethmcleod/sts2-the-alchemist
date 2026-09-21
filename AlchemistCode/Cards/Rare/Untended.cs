@@ -11,7 +11,7 @@ public class Untended : AlchemistCard
 {
     public Untended() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithQuietPower<UntendedPower>(1, 0);
+        WithNumberedPower<UntendedPower>(1, 0);
         WithKeyword(CardKeyword.Innate, UpgradeType.Add);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }

@@ -33,7 +33,8 @@ mod).
 
 ### Fixed
 
-- Improved the Mix hover tips for Bonk, Hiccup, Knitbone, Reclaim, Refine and Blend
+- Improved the Mix hover tips display for Apothecary, Bonk, Fresh Batch, Hiccup, Knitbone, Reclaim, Refine and Blend
+- Fixed the power hover tips of Brace, Fresh Batch, Mellow, Overflow, Refine, Ripening and Untended showing 0 instead of the card's number
 
 ## [0.14.15] - 2026-09-20
 

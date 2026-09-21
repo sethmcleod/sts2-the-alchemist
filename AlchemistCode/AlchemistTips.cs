@@ -1,10 +1,10 @@
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Helpers;
 using System.Linq;
 using Alchemist.AlchemistCode.Patches;
 using Godot;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode;
 
@@ -65,10 +65,9 @@ public static class AlchemistTips
         { "ALCHEMIST-FUMING_MIX", "ALCHEMIST-ACRID_MIX", "ALCHEMIST-SPARKLING_MIX" };
 
     // The row list is for makers that can produce four or more kinds; a maker of three or fewer
-    // previews the token cards themselves instead
+    // previews the token cards themselves instead.
     private static IHoverTip[] Family(bool upgraded) =>
-        new[] { Static("ALCHEMIST-MIX") }
-            .Concat(BasicKeys.Concat(SpecialKeys).Select(k => Row(k, upgraded))).ToArray();
+        BasicKeys.Concat(SpecialKeys).Select(k => Row(k, upgraded)).ToArray();
 
     private static IHoverTip[]? _mix, _mixUpgraded;
 
