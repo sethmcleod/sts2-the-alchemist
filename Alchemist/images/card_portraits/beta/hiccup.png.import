@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3mtqylnkbldd"
-path="res://.godot/imported/quintessence_power.png-ea5fdb6a076a3313ae1db8b47888104c.ctex"
+uid="uid://hn66p0bl8agk"
+path="res://.godot/imported/hiccup.png-05935dd99cb1cbd54a72c1c959288590.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/quintessence_power.png"
-dest_files=["res://.godot/imported/quintessence_power.png-ea5fdb6a076a3313ae1db8b47888104c.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/hiccup.png"
+dest_files=["res://.godot/imported/hiccup.png-05935dd99cb1cbd54a72c1c959288590.ctex"]
 
 [params]
 

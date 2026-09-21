@@ -55,7 +55,7 @@ internal static class AncientsAwakenedMod
         var strike = RegisterPerfected("CustomPerfectedStrikeCards", ModelDb.Card<StrikeAlchemist>().Id!, ModelDb.Card<PotentStrike>().Id!);
         var defend = RegisterPerfected("CustomPerfectedDefendCards", ModelDb.Card<DefendAlchemist>().Id!, ModelDb.Card<PotentDefend>().Id!);
         if (strike || defend) ClearScepterCaches();
-        RegisterExperimental(ModelDb.Card<Quintessence>());
+        RegisterExperimental(ModelDb.Card<Hiccup>());
     }
 
     private static bool RegisterPerfected(string dictionaryField, ModelId starter, ModelId perfected)
