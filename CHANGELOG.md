@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.16] - 2026-09-21
+
 ### Added
 
 - Added Ancients Awakened cross-mod support: its Ancient Scepter turns the Alchemist's Strikes and Defends into Potent Strikes and Potent Defends, and its Experimental Serum gives Hiccup
