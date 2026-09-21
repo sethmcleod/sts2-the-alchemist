@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "Esta barra roxa é a sua [gold]Antitoxina[/gold]. Sempre que o seu [gold]Veneno[/gold] for ativado, a [gold]Antitoxina[/gold] previne o dano dele, até o valor mostrado na barra. No início do seu turno, a [gold]Antitoxina[/gold] diminui em [blue]1[/blue].",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "Dica: Antitoxina",
+  "ALCHEMIST-POISON_FTUE.description": "O seu [gold]Veneno[/gold] é maior que a sua [gold]Antitoxina[/gold]. O [green]número verde[/green] ao lado da barra é a diferença. Ganhe [gold]Antitoxina[/gold] para cobri-la, ou você sofrerá esse dano no início do seu próximo turno.",
+  "ALCHEMIST-POISON_FTUE.title": "Dica: Dano de Veneno"
+}

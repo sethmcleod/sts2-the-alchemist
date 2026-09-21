@@ -14,7 +14,7 @@ public class Bonk : AlchemistCard
         WithCalculatedDamage(10, static (card, _) =>
                 (card.IsUpgraded ? 4m : 3m) * Mixing.PlayedThisCombat(card.Owner),
             ValueProp.Move, 2, 0);
-        WithTips(_ => Mixing.MixTips());
+        WithTips(_ => Mixing.MixRefTips());
     }
 
     protected override bool ShowsMixesPlayed => true;

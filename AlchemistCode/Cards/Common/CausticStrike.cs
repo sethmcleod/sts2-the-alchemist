@@ -1,5 +1,3 @@
-using Alchemist.AlchemistCode.Powers;
-using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -16,7 +14,8 @@ public class CausticStrike : AlchemistCard
     public CausticStrike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(6, 2);
-        WithVar(new FermentVar("Poison", 2, perTurn: 2).WithUpgrade(1));
+        WithVar(new FermentVar("Poison", 3, "perTurn"));
+        WithVar("perTurn", 2, 1);
         WithKeyword(CardKeyword.Retain);
         WithTip(typeof(PoisonPower));
     }

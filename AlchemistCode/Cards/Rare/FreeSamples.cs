@@ -17,14 +17,14 @@ public class FreeSamples : AlchemistCard
     {
         WithCards(2, 1);
         WithKeyword(CardKeyword.Exhaust);
-        WithTips(_ => Mixing.MixTips());
+        WithTips(card => Mixing.MixTips(card.IsUpgraded));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;
         foreach (var ally in CombatState.Players.Where(p => p != Owner && p.Creature is { IsAlive: true }))
-            await Mixing.GiveRandom(choiceContext, Owner, ally, this);
+            await Mixing.GiveRandom(choiceContext, Owner, ally, IsUpgraded, this);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
     }
 }

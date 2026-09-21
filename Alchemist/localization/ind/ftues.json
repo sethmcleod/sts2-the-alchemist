@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "Bilah ungu ini adalah [gold]Antitoksin[/gold] milikmu. Setiap kali [gold]Racun[/gold] milikmu terpicu, [gold]Antitoksin[/gold] mencegah kerusakannya, hingga jumlah yang ditampilkan pada bilah. Pada awal giliranmu, [gold]Antitoksin[/gold] berkurang [blue]1[/blue].",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "Saran: Antitoksin",
+  "ALCHEMIST-POISON_FTUE.description": "[gold]Racun[/gold] milikmu lebih besar dari [gold]Antitoksin[/gold] milikmu. [green]Angka hijau[/green] di samping bilah adalah selisihnya. Dapatkan [gold]Antitoksin[/gold] untuk menutupinya atau kamu akan menerima kerusakan sebesar itu pada awal giliranmu selanjutnya.",
+  "ALCHEMIST-POISON_FTUE.title": "Saran: Kerusakan Racun"
+}

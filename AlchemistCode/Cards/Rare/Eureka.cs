@@ -17,7 +17,7 @@ public class Eureka : AlchemistCard
         WithCards(2, 1);
         WithVar("transforms", 1, 0);
         WithKeyword(CardKeyword.Exhaust);
-        WithTips(_ => Mixing.MixTips());
+        WithTips(card => Mixing.MixTips(card.IsUpgraded));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -28,6 +28,6 @@ public class Eureka : AlchemistCard
             new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt,
                 DynamicVars["transforms"].IntValue), null, this);
         foreach (var card in selected)
-            await Mixing.TransformIntoChosen(choiceContext, Owner, card, Mixing.All, this);
+            await Mixing.TransformIntoChosen(choiceContext, Owner, card, IsUpgraded, Mixing.All, this);
     }
 }

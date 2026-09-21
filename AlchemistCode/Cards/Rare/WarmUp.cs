@@ -13,12 +13,12 @@ public class WarmUp : AlchemistCard
     {
         WithEnergy(1, 1);
         WithKeyword(CardKeyword.Exhaust);
-        WithTips(_ => Mixing.MixTips());
+        WithTips(card => Mixing.MixTips(card.IsUpgraded));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
-        await Mixing.CreateRandom(choiceContext, Owner, source: this);
+        await Mixing.CreateRandom(choiceContext, Owner, IsUpgraded, source: this);
     }
 }

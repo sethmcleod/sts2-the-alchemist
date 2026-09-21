@@ -15,7 +15,7 @@ public class Reclaim : AlchemistCard
         WithCostUpgradeBy(-1);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
-        WithTips(_ => Mixing.MixTips());
+        WithTips(_ => Mixing.MixRefTips());
     }
 
     protected override bool ShowsMixesPlayed => true;

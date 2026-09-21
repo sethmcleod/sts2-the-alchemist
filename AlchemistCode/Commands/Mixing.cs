@@ -60,6 +60,8 @@ public static class Mixing
     public static IEnumerable<IHoverTip> MixTips(bool upgraded = false) =>
         upgraded ? AlchemistTips.MixUpgraded : AlchemistTips.Mix;
 
+    public static IEnumerable<IHoverTip> MixRefTips() => new[] { AlchemistTips.MixHeader };
+
     /// <summary>
     /// How many Mixes this player has played this combat. 0 outside combat. A Compound Mix is the
     /// two Mixes it was made from, so it counts as two; otherwise combining would cost Bonk a play.
@@ -146,21 +148,23 @@ public static class Mixing
 
     /// <summary>Add a random Mix (from all six) to another player's hand, counted for the giver.</summary>
     public static async Task GiveRandom(PlayerChoiceContext ctx, Player giver, Player receiver,
-        AbstractModel? source = null)
+        bool upgraded = false, AbstractModel? source = null)
     {
         if (receiver.Creature.CombatState is not { } combat) return;
         var picked = Create(combat, receiver, giver.RunState.Rng.CombatCardGeneration.NextItem(All));
         if (picked == null) return;
+        if (upgraded) CardCmd.Upgrade(picked);
         RecordCreated(giver, picked, source);
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, receiver);
     }
 
     /// <summary>One picker, many cards: choose a basic Mix once, then add that many copies.</summary>
     public static async Task CreateChosenCopies(PlayerChoiceContext ctx, Player owner, int count,
-        AbstractModel? source = null)
+        bool upgraded = false, AbstractModel? source = null)
     {
         if (count <= 0) return;
-        var picked = await Choose(ctx, owner, source: source);
+        // The copies clone the picked card, so its upgrade travels with them
+        var picked = await Choose(ctx, owner, upgraded, source: source);
         if (picked == null) return;
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
         for (var i = 1; i < count; i++)
@@ -185,9 +189,9 @@ public static class Mixing
 
     /// <summary>Transform an existing card into a chosen Mix. Returns the Mix, or null if cancelled.</summary>
     public static async Task<CardModel?> TransformIntoChosen(PlayerChoiceContext ctx, Player owner,
-        CardModel victim, IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null)
+        CardModel victim, bool upgraded = false, IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null)
     {
-        var picked = await Choose(ctx, owner, kinds: kinds, source: source);
+        var picked = await Choose(ctx, owner, upgraded, kinds, source);
         if (picked == null) return null;
         await CardCmd.Transform(victim, picked);
         return picked;

@@ -7,6 +7,37 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.16] - 2026-09-21
+
+### Added
+
+- Added Ancients Awakened cross-mod support: its Ancient Scepter turns the Alchemist's Strikes and Defends into Potent Strikes and Potent Defends, and its Experimental Serum gives Hiccup
+- Added Hiccup card (Ancients Awakened): "Gain 6 (8) Block. Draw 1 card. Every 3 Mixes you play in a turn, put this into your Hand."
+- Added Potent Defend card (Ancients Awakened): "Gain 5 (8) Block. Add a random Mix into your Hand."
+- Added Potent Strike card (Ancients Awakened): "Laced. Gain 1 Poison. Gain 1 Antitoxin. Deal 6 (9) damage."
+- Added Reconstitute card (Hero Expansion): "Gain 2 Poison. Put a card from your Discard Pile into your Hand and Upgrade it. Exhaust." Reconstitute+ loses Exhaust
+- Added The Hero Expansion cross-mod support: its Broken Blade transforms into The Steeped Blade for the Alchemist, and its Mysterious Flashlight gives Reconstitute
+- Added The Steeped Blade card (Hero Expansion): "Retain. Ferment. Deal 9 (12) damage. This card Ferments 1. Whenever this card Ferments, apply Poison to ALL enemies equal to its Fermentation."
+- Added tutorial tips for Antitoxin and Poison: each appears once, the first time the Alchemist fights and the first time they would take Poison damage. They follow the game's Tutorials setting and its Reset Tutorials button
+
+### Changed
+
+- Buffed Brace: Poison applied to the attacker 2 (3) -> 3 (4)
+- Buffed Caustic Strike: Poison applied 2 (3) -> 3, additional Poison per turn fermented 2 -> 2 (3)
+- Buffed Eureka: Eureka+ transforms the card into a Mix+
+- Buffed Free Samples: Free Samples+ adds Mixes+
+- Buffed Fumigate: Poison applied to ALL enemies 3 (4) -> 3 (5)
+- Buffed Overbrew: Overbrew+ adds copies of a Mix+
+- Buffed Spores: Poison applied to ALL enemies 2 (3) -> 3 (4)
+- Buffed Warm Up: Warm Up+ adds a Mix+
+- Changed the Effervesce text to "Add one of each basic Mix into another player's Hand."
+- Reworked Spit: "Deal 4 (6) damage. Apply 3 (4) Poison. Gain 1 Poison."
+
+### Fixed
+
+- Improved the Mix hover tips display for Apothecary, Bonk, Fresh Batch, Hiccup, Knitbone, Reclaim, Refine and Blend
+- Fixed the power hover tips of Brace, Fresh Batch, Mellow, Overflow, Refine, Ripening and Untended showing 0 instead of the card's number
+
 ## [0.14.15] - 2026-09-20
 
 ### Added
