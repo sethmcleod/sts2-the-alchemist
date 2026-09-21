@@ -60,6 +60,8 @@ public static class Mixing
     public static IEnumerable<IHoverTip> MixTips(bool upgraded = false) =>
         upgraded ? AlchemistTips.MixUpgraded : AlchemistTips.Mix;
 
+    public static IEnumerable<IHoverTip> MixRefTips() => new[] { AlchemistTips.MixHeader };
+
     /// <summary>
     /// How many Mixes this player has played this combat. 0 outside combat. A Compound Mix is the
     /// two Mixes it was made from, so it counts as two; otherwise combining would cost Bonk a play.

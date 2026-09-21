@@ -19,7 +19,9 @@ public class Blend : AlchemistCard
     {
         WithBlock(6, 2);
         WithTips(_ => new[] { AlchemistTips.TransformMix });
-        WithTips(card => Mixing.MixTips(card.IsUpgraded));
+        WithUpgradingCardTip<Token.BurstingMix>();
+        WithUpgradingCardTip<Token.SyrupyMix>();
+        WithUpgradingCardTip<Token.ZestyMix>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

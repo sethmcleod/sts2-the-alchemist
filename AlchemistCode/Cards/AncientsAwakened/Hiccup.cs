@@ -22,7 +22,7 @@ public class Hiccup : AlchemistAncientsCard
         WithBlock(6, 2);
         WithCards(1, 0);
         WithVar("Mixes", 3, 0);
-        WithTips(_ => Mixing.MixTips());
+        WithTips(_ => Mixing.MixRefTips());
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

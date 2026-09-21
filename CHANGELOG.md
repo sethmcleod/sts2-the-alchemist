@@ -31,6 +31,10 @@ mod).
 - Changed the Effervesce text to "Add one of each basic Mix into another player's Hand."
 - Reworked Spit: "Deal 4 (6) damage. Apply 2 (3) Poison."
 
+### Fixed
+
+- Improved the Mix hover tips for Bonk, Hiccup, Knitbone, Reclaim, Refine and Blend
+
 ## [0.14.15] - 2026-09-20
 
 ### Added
