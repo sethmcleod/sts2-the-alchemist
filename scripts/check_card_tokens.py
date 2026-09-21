@@ -40,7 +40,7 @@ def declared(src):
     if re.search(r'\bWithCalculatedBlock\(', src): v |= {'CalculatedBlock','CalculationBase','CalculationExtra'}
     v |= set(re.findall(r'WithVar\("(\w+)"', src))
     v |= set(re.findall(r'WithCalculatedVar\("(\w+)"', src))
-    v |= set(re.findall(r'With(?:Quiet)?Power<(\w+)>', src))
+    v |= set(re.findall(r'With(?:Numbered)?Power<(\w+)>', src))
     # a custom var names itself by its first argument (new FermentVar("Poison", ...)); an
     # unnamed one is known by its class (new RipenVar( -> Ripen)
     v |= set(re.findall(r'WithVar\(new \w+\("(\w+)"', src))
