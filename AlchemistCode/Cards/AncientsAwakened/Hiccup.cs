@@ -38,7 +38,7 @@ public class Hiccup : AlchemistAncientsCard
         if (play.Card.Owner != Owner || !Mixing.IsMix(play.Card) || Pile?.Type is null or PileType.Hand) return;
         if (CombatState is not { } combat || CombatManager.Instance?.History is not { } history) return;
         var played = history.CardPlaysFinished
-            .Where(e => e.HappenedThisTurn(combat) && e.CardPlay.Player == Owner && Mixing.IsMix(e.CardPlay.Card))
+            .Where(e => e.HappenedThisTurn(combat) && e.CardPlay.Card.Owner == Owner && Mixing.IsMix(e.CardPlay.Card))
             .Sum(e => e.CardPlay.Card is Token.CompoundMix ? 2 : 1);
         var before = played - (play.Card is Token.CompoundMix ? 2 : 1);
         var every = DynamicVars["Mixes"].IntValue;
