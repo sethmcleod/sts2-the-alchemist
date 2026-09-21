@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "第五元素",
   "ALCHEMIST-RECLAIM.description": "この戦闘中にプレイした[gold]合剤[/gold]の枚数に等しい[gold]毒[/gold]をすべての敵に付与する。{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "回収",
-  "ALCHEMIST-RECONSTITUTE.description": "[gold]毒[/gold]{SelfPoison}を得る。\n[gold]捨て札[/gold]からカードを1枚[gold]手札[/gold]に加える。",
+  "ALCHEMIST-RECONSTITUTE.description": "[gold]毒[/gold]{SelfPoison}を得る。\n[gold]捨て札[/gold]からカードを1枚[gold]手札[/gold]に加え、それを[gold]アップグレード[/gold]する。",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "[gold]手札[/gold]に加えるカードを1枚選択。",
   "ALCHEMIST-RECONSTITUTE.title": "復元",
   "ALCHEMIST-REFINE.description": "[gold]合剤[/gold]を[gold]手札[/gold]に加えるたび、それは[gold]アップグレード[/gold]され、[gold]保留[/gold]を得る。",

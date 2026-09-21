@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "Quintessence",
   "ALCHEMIST-RECLAIM.description": "Apply [gold]Poison[/gold] to ALL enemies equal to the number of [gold]Mixes[/gold] you have played this combat.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Reclaim",
-  "ALCHEMIST-RECONSTITUTE.description": "Gain {SelfPoison} [gold]Poison[/gold].\nPut a card from your [gold]Discard Pile[/gold] into your [gold]Hand[/gold].",
+  "ALCHEMIST-RECONSTITUTE.description": "Gain {SelfPoison} [gold]Poison[/gold].\nPut a card from your [gold]Discard Pile[/gold] into your [gold]Hand[/gold] and [gold]Upgrade[/gold] it.",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "Choose a card to put into your [gold]Hand[/gold].",
   "ALCHEMIST-RECONSTITUTE.title": "Reconstitute",
   "ALCHEMIST-REFINE.description": "Whenever you add a [gold]Mix[/gold] into your [gold]Hand[/gold], it is [gold]Upgraded[/gold] and gains [gold]Retain[/gold].",

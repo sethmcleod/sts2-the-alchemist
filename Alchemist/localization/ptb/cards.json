@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "Quintessência",
   "ALCHEMIST-RECLAIM.description": "Aplique [gold]Veneno[/gold] a TODOS os inimigos equivalente à quantidade de [gold]Misturas[/gold] que você jogou neste combate.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Recuperar",
-  "ALCHEMIST-RECONSTITUTE.description": "Receba {SelfPoison} de [gold]Veneno[/gold].\nColoque uma carta da sua [gold]Pilha de Descarte[/gold] na sua [gold]Mão[/gold].",
+  "ALCHEMIST-RECONSTITUTE.description": "Receba {SelfPoison} de [gold]Veneno[/gold].\nColoque uma carta da sua [gold]Pilha de Descarte[/gold] na sua [gold]Mão[/gold] e a [gold]Aprimore[/gold].",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "Escolha uma carta para colocar na sua [gold]Mão[/gold].",
   "ALCHEMIST-RECONSTITUTE.title": "Reconstituir",
   "ALCHEMIST-REFINE.description": "Sempre que uma [gold]Mistura[/gold] for adicionada na sua [gold]Mão[/gold], [gold]Aprimore[/gold]-a. Ela recebe [gold]Manter[/gold].",

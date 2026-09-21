@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "Kuintesensi",
   "ALCHEMIST-RECLAIM.description": "Terapkan [gold]Racun[/gold] ke SEMUA musuh sebanyak jumlah [gold]Campuran[/gold] yang kamu mainkan perlawanan ini.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Klaim Kembali",
-  "ALCHEMIST-RECONSTITUTE.description": "Dapatkan {SelfPoison} [gold]Racun[/gold].\nTaruh sebuah kartu dari [gold]Tumpukan Singkirmu[/gold] ke [gold]Tanganmu[/gold].",
+  "ALCHEMIST-RECONSTITUTE.description": "Dapatkan {SelfPoison} [gold]Racun[/gold].\nTaruh sebuah kartu dari [gold]Tumpukan Singkirmu[/gold] ke [gold]Tanganmu[/gold] dan [gold]Tingkatkan[/gold] itu.",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "Pilih sebuah kartu untuk ditaruh ke [gold]Tanganmu[/gold].",
   "ALCHEMIST-RECONSTITUTE.title": "Rekonstitusi",
   "ALCHEMIST-REFINE.description": "Setiap kali kamu menambahkan sebuah [gold]Campuran[/gold] ke [gold]Tangan[/gold]mu, kartu itu [gold]Ditingkatkan[/gold] dan mendapat [gold]Pertahankan[/gold].",

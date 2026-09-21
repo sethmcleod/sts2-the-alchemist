@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "Beşinci Öz",
   "ALCHEMIST-RECLAIM.description": "TÜM düşmanlara bu savaşta oynadığın [gold]Karışım[/gold] sayısı kadar [gold]Zehir[/gold] uygula.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Geri Alma",
-  "ALCHEMIST-RECONSTITUTE.description": "{SelfPoison} [gold]Zehir[/gold] elde et.\n[gold]Atık Destesi[/gold]'nden bir kartı [gold]El[/gold]'ine koy.",
+  "ALCHEMIST-RECONSTITUTE.description": "{SelfPoison} [gold]Zehir[/gold] elde et.\n[gold]Atık Destesi[/gold]'nden bir kartı [gold]El[/gold]'ine koy ve [gold]Geliştir[/gold].",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "[gold]El[/gold]'ine koymak için bir kart seç.",
   "ALCHEMIST-RECONSTITUTE.title": "Canlandır",
   "ALCHEMIST-REFINE.description": "[gold]El[/gold]'ine bir [gold]Karışım[/gold] eklendiğinde onu [gold]Geliştir[/gold]. O kart [gold]Sakla[/gold] elde eder.",

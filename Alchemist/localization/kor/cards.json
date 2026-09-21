@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "제5원소",
   "ALCHEMIST-RECLAIM.description": "이번 전투 동안 사용한 [gold]혼합액[/gold]의 수만큼 모든 적에게 [gold]중독[/gold]을 부여합니다.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "되찾기",
-  "ALCHEMIST-RECONSTITUTE.description": "[gold]중독[/gold]을 {SelfPoison} 얻습니다.\n[gold]버린 카드 더미[/gold]에 있는 카드 1장을 [gold]손[/gold]으로 가져옵니다.",
+  "ALCHEMIST-RECONSTITUTE.description": "[gold]중독[/gold]을 {SelfPoison} 얻습니다.\n[gold]버린 카드 더미[/gold]에 있는 카드 1장을 [gold]손[/gold]으로 가져오고 [gold]강화[/gold]합니다.",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "[gold]손[/gold]으로 가져올 카드를 선택하세요.",
   "ALCHEMIST-RECONSTITUTE.title": "환원",
   "ALCHEMIST-REFINE.description": "[gold]혼합액[/gold]을 [gold]손[/gold]에 추가할 때마다, 그 카드는 [gold]강화[/gold]되고 [gold]보존[/gold]을 얻습니다.",

@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "精粹",
   "ALCHEMIST-RECLAIM.description": "给予所有敌人等同于本场战斗中所打出[gold]合剂[/gold]数量的[gold]中毒[/gold]。{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "回收",
-  "ALCHEMIST-RECONSTITUTE.description": "获得{SelfPoison}层[gold]中毒[/gold]。\n将[gold]弃牌堆[/gold]中的一张牌放入你的[gold]手牌[/gold]。",
+  "ALCHEMIST-RECONSTITUTE.description": "获得{SelfPoison}层[gold]中毒[/gold]。\n将[gold]弃牌堆[/gold]中的一张牌放入你的[gold]手牌[/gold]并将其[gold]升级[/gold]。",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "选择一张牌放入你的[gold]手牌[/gold]。",
   "ALCHEMIST-RECONSTITUTE.title": "还原",
   "ALCHEMIST-REFINE.description": "每当一张[gold]合剂[/gold]加入你的[gold]手牌[/gold]时，[gold]升级[/gold]它。它获得[gold]保留[/gold]。",

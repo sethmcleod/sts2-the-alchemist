@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "Quintessenza",
   "ALCHEMIST-RECLAIM.description": "Applichi [gold]Veleno[/gold] a TUTTI i nemici pari al numero di [gold]Miscele[/gold] giocate in questo combattimento.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Riscatto",
-  "ALCHEMIST-RECONSTITUTE.description": "Ottieni {SelfPoison} di [gold]Veleno[/gold].\nMetti una carta dalla tua [gold]pila degli scarti[/gold] nella tua [gold]mano[/gold].",
+  "ALCHEMIST-RECONSTITUTE.description": "Ottieni {SelfPoison} di [gold]Veleno[/gold].\nMetti una carta dalla tua [gold]pila degli scarti[/gold] nella tua [gold]mano[/gold] in forma [gold]potenziata[/gold].",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "Scegli una carta da mettere nella tua [gold]mano[/gold].",
   "ALCHEMIST-RECONSTITUTE.title": "Ricostituzione",
   "ALCHEMIST-REFINE.description": "Ogni volta che aggiungi una [gold]Miscela[/gold] alla tua [gold]mano[/gold], viene [gold]potenziata[/gold] e ottiene [gold]Conservazione[/gold].",

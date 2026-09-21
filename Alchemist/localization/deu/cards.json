@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "Quintessenz",
   "ALCHEMIST-RECLAIM.description": "Wende [gold]Gift[/gold] in Höhe der Anzahl in diesem Kampf gespielter [gold]Mixturen[/gold] auf ALLE Gegner an.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Zurückfordern",
-  "ALCHEMIST-RECONSTITUTE.description": "Erhalte {SelfPoison} [gold]Gift[/gold].\nNimm eine Karte aus deinem [gold]Abwurfstapel[/gold] auf deine [gold]Hand[/gold].",
+  "ALCHEMIST-RECONSTITUTE.description": "Erhalte {SelfPoison} [gold]Gift[/gold].\nNimm eine Karte aus deinem [gold]Abwurfstapel[/gold] auf deine [gold]Hand[/gold] und [gold]Verbessere[/gold] sie.",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "Wähle eine Karte, die du auf deine [gold]Hand[/gold] nimmst.",
   "ALCHEMIST-RECONSTITUTE.title": "Rekonstituieren",
   "ALCHEMIST-REFINE.description": "Immer wenn du eine [gold]Mixtur[/gold] auf deine [gold]Hand[/gold] nimmst, wird sie [gold]Verbessert[/gold] und bekommt [gold]Behalten[/gold].",

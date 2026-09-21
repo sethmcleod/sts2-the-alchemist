@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "Quintaesencia",
   "ALCHEMIST-RECLAIM.description": "Aplicas [gold]veneno[/gold] a TODOS los enemigos igual a la cantidad de [gold]Mezclas[/gold] que hayas jugado en este combate.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Reclamar",
-  "ALCHEMIST-RECONSTITUTE.description": "Obtienes {SelfPoison} de [gold]veneno[/gold].\nPones una carta de tu [gold]pila de descarte[/gold] en tu [gold]mano[/gold].",
+  "ALCHEMIST-RECONSTITUTE.description": "Obtienes {SelfPoison} de [gold]veneno[/gold].\nPones una carta de tu [gold]pila de descarte[/gold] en tu [gold]mano[/gold] y la [gold]mejoras[/gold].",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "Elige una carta para colocarla en tu [gold]mano[/gold].",
   "ALCHEMIST-RECONSTITUTE.title": "Reconstitución",
   "ALCHEMIST-REFINE.description": "Cada vez que agregas una [gold]Mezcla[/gold] a tu [gold]mano[/gold], se [gold]mejora[/gold] y obtiene [gold]retención[/gold].",

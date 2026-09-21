@@ -67,7 +67,7 @@ Puncture,Common,Attack,1,"If the enemy has Poison, apply 2 (3) Vulnerable. Deal 
 Quench,Uncommon,Skill,1,Gain 4 (6) Antitoxin. Gain Block equal to twice your Antitoxin. Exhaust.
 Quintessence,"Ancient, Ancients Awakened",Power,1,"Whenever one of your cards Ferments, add a random Mix into your Hand. (Quintessence+ adds a Mix+)"
 Reclaim,Rare,Skill,1 (0),Apply Poison to ALL enemies equal to the number of Mixes you have played this combat. Exhaust.
-Reconstitute,"Event, Hero",Skill,0,Gain 2 Poison. Put a card from your Discard Pile into your Hand. Exhaust. (Reconstitute+ loses Exhaust)
+Reconstitute,"Event, Hero",Skill,0,Gain 2 Poison. Put a card from your Discard Pile into your Hand and Upgrade it. Exhaust. (Reconstitute+ loses Exhaust)
 Refine,Rare,Power,1 (0),"Whenever you add a Mix into your Hand, it is upgraded and gains Retain."
 Rerun,Rare,Skill,1,"This turn, your next 1 (2) cards are played an extra time. Gain 4 Poison."
 Resolve,Uncommon,Power,1,Retain. Ferment. Gain 1 Strength. Gain 1 (2) additional Strength for each turn Fermented.

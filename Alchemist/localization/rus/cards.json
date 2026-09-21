@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "Квинтэссенция",
   "ALCHEMIST-RECLAIM.description": "Накладывает на ВСЕХ врагов столько [gold]яда[/gold], сколько [gold]смесей[/gold] вы разыграли в этом бою.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Возврат",
-  "ALCHEMIST-RECONSTITUTE.description": "Дает вам {SelfPoison} [gold]яда[/gold].\nКладет карту из вашей [gold]стопки сброса[/gold] в вашу [gold]руку[/gold].",
+  "ALCHEMIST-RECONSTITUTE.description": "Дает вам {SelfPoison} [gold]яда[/gold].\nКладет карту из вашей [gold]стопки сброса[/gold] в вашу [gold]руку[/gold] и [gold]улучшает[/gold] ее.",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "Выберите карту, которую хотите положить в [gold]руку[/gold].",
   "ALCHEMIST-RECONSTITUTE.title": "Восстановление",
   "ALCHEMIST-REFINE.description": "Когда [gold]смесь[/gold] добавляется в вашу [gold]руку[/gold], [gold]улучшает[/gold] ее. Она [gold]оставляется[/gold].",

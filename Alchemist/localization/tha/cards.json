@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "ธาตุที่ห้า",
   "ALCHEMIST-RECLAIM.description": "สร้าง[gold]พิษ[/gold]ใส่ศัตรูทั้งหมดตามจำนวน[gold]ยาผสม[/gold]ที่คุณเล่นในการต่อสู้นี้{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "ทวงคืน",
-  "ALCHEMIST-RECONSTITUTE.description": "ได้รับ {SelfPoison} [gold]พิษ[/gold]\nนำการ์ด 1 ใบจาก[gold]กองทิ้ง[/gold]ขึ้น[gold]มือ[/gold]",
+  "ALCHEMIST-RECONSTITUTE.description": "ได้รับ {SelfPoison} [gold]พิษ[/gold]\nนำการ์ด 1 ใบจาก[gold]กองทิ้ง[/gold]ขึ้น[gold]มือ[/gold]และ[gold]พัฒนา[/gold]มัน",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "เลือกการ์ดที่จะนำขึ้น[gold]มือ[/gold]",
   "ALCHEMIST-RECONSTITUTE.title": "คืนสภาพ",
   "ALCHEMIST-REFINE.description": "ทุกครั้งที่[gold]ยาผสม[/gold]ถูกเพิ่มเข้า[gold]มือ[/gold] [gold]พัฒนา[/gold]มัน มันได้รับ[gold]คงสภาพ[/gold]",

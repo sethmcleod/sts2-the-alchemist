@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "Quintessence",
   "ALCHEMIST-RECLAIM.description": "Appliquez à TOUS les ennemis autant de [gold]Poison[/gold] que le nombre de [gold]Mixtures[/gold] jouées pendant ce combat.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Réclamation",
-  "ALCHEMIST-RECONSTITUTE.description": "Gagnez {SelfPoison} de [gold]Poison[/gold].\nPlacez une carte de votre [gold]Défausse[/gold] dans votre [gold]Main[/gold].",
+  "ALCHEMIST-RECONSTITUTE.description": "Gagnez {SelfPoison} de [gold]Poison[/gold].\nPlacez une carte de votre [gold]Défausse[/gold] dans votre [gold]Main[/gold] et [gold]Améliorez[/gold]-la.",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "Choisissez une carte à placer dans votre [gold]Main[/gold].",
   "ALCHEMIST-RECONSTITUTE.title": "Reconstitution",
   "ALCHEMIST-REFINE.description": "Lorsque vous ajoutez une [gold]Mixture[/gold] à votre [gold]Main[/gold], elle est [gold]Améliorée[/gold] et gagne [gold]Retenue[/gold].",

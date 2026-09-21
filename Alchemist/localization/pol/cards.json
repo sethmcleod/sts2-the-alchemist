@@ -155,7 +155,7 @@
   "ALCHEMIST-QUINTESSENCE.title": "Kwintesencja",
   "ALCHEMIST-RECLAIM.description": "Nałóż na WSZYSTKICH przeciwników [gold]Truciznę[/gold] równą liczbie [gold]Mieszanek[/gold] zagranych w tej walce.{MixesPlayed}",
   "ALCHEMIST-RECLAIM.title": "Odzyskanie",
-  "ALCHEMIST-RECONSTITUTE.description": "Zyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].\nPrzenieś kartę ze [gold]stosu kart odrzuconych[/gold] do [gold]ręki[/gold].",
+  "ALCHEMIST-RECONSTITUTE.description": "Zyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].\nPrzenieś kartę ze [gold]stosu kart odrzuconych[/gold] do [gold]ręki[/gold] i [gold]Ulepsz[/gold] ją.",
   "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt": "Wybierz kartę do przeniesienia do [gold]ręki[/gold].",
   "ALCHEMIST-RECONSTITUTE.title": "Rekonstytucja",
   "ALCHEMIST-REFINE.description": "Kiedykolwiek dodasz [gold]Mieszankę[/gold] do [gold]ręki[/gold], [gold]Ulepsz[/gold] ją. Otrzymuje [gold]Zachowanie[/gold].",
