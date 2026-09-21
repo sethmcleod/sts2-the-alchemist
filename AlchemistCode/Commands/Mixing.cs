@@ -104,6 +104,7 @@ public static class Mixing
         if (upgraded)
             foreach (var option in options)
                 CardCmd.Upgrade(option);
+        Patches.MixPickerGridPatch.PickerOpen = true;
         Patches.MixPickerGridPatch.Columns = options.Count > 5 ? (options.Count + 1) / 2 : null;
         CardModel? picked;
         try
@@ -113,6 +114,7 @@ public static class Mixing
         }
         finally
         {
+            Patches.MixPickerGridPatch.PickerOpen = false;
             Patches.MixPickerGridPatch.Columns = null;
         }
         if (picked != null) RecordCreated(owner, picked, source);

@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the card library shifting its cards off center when a search matched only Mixes
+
 ## [0.14.16] - 2026-09-21
 
 ### Added
