@@ -13,12 +13,11 @@ public class Reclaim : AlchemistCard
     public Reclaim() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies)
     {
         WithCostUpgradeBy(-1);
+        WithCalculatedVar("CalculatedPoison", 0, static (card, _) => Mixing.PlayedThisCombat(card.Owner));
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
         WithTips(_ => Mixing.MixRefTips());
     }
-
-    protected override bool ShowsMixesPlayed => true;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

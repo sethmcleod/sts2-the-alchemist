@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "No início de cada combate, adicione na sua [gold]Mão[/gold] uma [gold]Mistura Composta[/gold] de duas [gold]Misturas[/gold] aleatórias.",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "No início de cada combate, adicione na sua [gold]Mão[/gold] uma [gold]Mistura Composta[/gold] de [blue]2[/blue] [gold]Misturas[/gold] aleatórias.",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "Não conseguiu decidir, então virou as duas.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "Flor Quimera",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "No início de cada combate, escolha uma [gold]Mistura+[/gold] para adicionar na sua [gold]Mão[/gold]. Ela recebe [gold]Manter[/gold].",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "No início de cada combate, receba [blue]5[/blue] de [gold]Antitoxina[/gold] e adicione uma [gold]Mistura[/gold] aleatória na sua [gold]Mão[/gold]. Você pode [gold]Preparar[/gold] em Locais de Descanso.",
   "ALCHEMIST-MURKY_FLASK.flavor": "O redemoinho lá dentro nunca assenta de verdade.",
   "ALCHEMIST-MURKY_FLASK.title": "Frasco Turvo",
-  "ALCHEMIST-RADIANT_FLASK.description": "No início de cada combate, receba [blue]10[/blue] de [gold]Antitoxina[/gold] e adicione uma [gold]Mistura[/gold] aleatória na sua [gold]Mão[/gold]. Você pode [gold]Preparar[/gold] em Locais de Descanso. Ao coletar esta relíquia, receba [blue]1[/blue] espaço de poção e uma [gold]Poção[/gold] rara aleatória.",
+  "ALCHEMIST-RADIANT_FLASK.description": "Ao coletar esta relíquia, receba [blue]1[/blue] espaço de poções e uma [gold]Poção[/gold] rara aleatória. No início de cada combate, receba [blue]10[/blue] de [gold]Antitoxina[/gold] e adicione uma [gold]Mistura[/gold] aleatória na sua [gold]Mão[/gold]. Você pode [gold]Preparar[/gold] em Locais de Descanso.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "O brilho lá dentro nunca se apaga.",
   "ALCHEMIST-RADIANT_FLASK.title": "Frasco Radiante",
   "ALCHEMIST-TOADSTONE.description": "Sempre que você receber [gold]Antitoxina[/gold], receba [blue]1[/blue] de [gold]Antitoxina[/gold] adicional.",

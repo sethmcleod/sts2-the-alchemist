@@ -25,15 +25,12 @@ BASE_ARGS = set(re.findall(r'description\.Add\("(\w+)"', BASE))
 # Base-class preview property -> the token its value is placed with
 OPT_IN = {'RawFormulaDamagePreview': 'FormulaDamage',
           'FormulaHpLossPreview': 'FormulaHpLoss',
-          'FermentPeak': 'FermentSuffix',
-          'ShowsMixesPlayed': 'MixesPlayed'}
+          'FermentPeak': 'FermentSuffix'}
 
 def declared(src):
     v = set(BASE_ARGS)
     if re.search(r'\bWithDamage\(', src): v |= {'Damage'}
     if re.search(r'\bWithBlock\(', src): v |= {'Block'}
-    # a card-local subclass of DamageVar keeps the base name
-    if re.search(r'class \w+ : DamageVar\b', src): v |= {'Damage'}
     if re.search(r'\bWithCards\(', src): v |= {'Cards'}
     if re.search(r'\bWithEnergy\(', src): v |= {'Energy'}
     if re.search(r'\bWithCalculatedDamage\(', src): v |= {'CalculatedDamage','CalculationBase','ExtraDamage'}

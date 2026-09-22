@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Na początku każdej walki dodaj do [gold]ręki[/gold] [gold]Mieszankę złożoną[/gold] z dwóch losowych [gold]Mieszanek[/gold].",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Na początku każdej walki dodaj do [gold]ręki[/gold] [gold]Mieszankę złożoną[/gold] z [blue]2[/blue] losowych [gold]Mieszanek[/gold].",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "Nie umiał wybrać, więc stał się oboma.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "Kwiat chimery",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Na początku każdej walki wybierz [gold]Mieszankę+[/gold] do dodania do [gold]ręki[/gold]. Otrzymuje [gold]Zachowanie[/gold].",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "Na początku każdej walki zyskaj [blue]5[/blue] pkt. [gold]Antytoksyny[/gold] i dodaj losową [gold]Mieszankę[/gold] do [gold]ręki[/gold]. Możesz [gold]Warzyć[/gold] w miejscach odpoczynku.",
   "ALCHEMIST-MURKY_FLASK.flavor": "Wir w środku nigdy do końca nie opada.",
   "ALCHEMIST-MURKY_FLASK.title": "Mętna fiolka",
-  "ALCHEMIST-RADIANT_FLASK.description": "Na początku każdej walki zyskaj [blue]10[/blue] pkt. [gold]Antytoksyny[/gold] i dodaj losową [gold]Mieszankę[/gold] do [gold]ręki[/gold]. Możesz [gold]Warzyć[/gold] w miejscach odpoczynku. Przy podniesieniu zyskaj [blue]1[/blue] miejsce na miksturę i losową rzadką [gold]Miksturę[/gold].",
+  "ALCHEMIST-RADIANT_FLASK.description": "Przy podniesieniu zyskaj [blue]1[/blue] miejsce na miksturę i otrzymaj losową rzadką [gold]Miksturę[/gold]. Na początku każdej walki zyskaj [blue]10[/blue] pkt. [gold]Antytoksyny[/gold] i dodaj losową [gold]Mieszankę[/gold] do [gold]ręki[/gold]. Możesz [gold]Warzyć[/gold] w miejscach odpoczynku.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "Blask w środku nigdy nie gaśnie.",
   "ALCHEMIST-RADIANT_FLASK.title": "Promienna fiolka",
   "ALCHEMIST-TOADSTONE.description": "Kiedykolwiek zyskasz [gold]Antytoksynę[/gold], zyskaj dodatkowo [blue]1[/blue] pkt. [gold]Antytoksyny[/gold].",

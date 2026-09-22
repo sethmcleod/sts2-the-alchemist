@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "В начале каждого боя добавляет в вашу [gold]руку[/gold] [gold]составную смесь[/gold] из двух случайных [gold]смесей[/gold].",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "В начале каждого боя добавляет в вашу [gold]руку[/gold] [gold]составную смесь[/gold] из [blue]2[/blue] случайных [gold]смесей[/gold].",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "Не смог выбрать, поэтому стал и тем, и другим.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "Цветок химеры",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "В начале каждого боя вы выбираете, какую [gold]смесь+[/gold] добавить в [gold]руку[/gold]. Она [gold]оставляется[/gold].",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "В начале каждого боя дает [blue]5[/blue] [gold]антитоксина[/gold] и добавляет случайную [gold]смесь[/gold] в вашу [gold]руку[/gold]. Вы можете [gold]варить зелья[/gold] в лагере.",
   "ALCHEMIST-MURKY_FLASK.flavor": "Муть внутри никогда до конца не оседает.",
   "ALCHEMIST-MURKY_FLASK.title": "Мутная колба",
-  "ALCHEMIST-RADIANT_FLASK.description": "В начале каждого боя дает [blue]10[/blue] [gold]антитоксина[/gold] и добавляет случайную [gold]смесь[/gold] в вашу [gold]руку[/gold]. Вы можете [gold]варить зелья[/gold] в лагере. При получении дает [blue]1[/blue] ячейку для зелий и случайное редкое [gold]зелье[/gold].",
+  "ALCHEMIST-RADIANT_FLASK.description": "При получении дает [blue]1[/blue] место для зелий и случайное редкое [gold]зелье[/gold]. В начале каждого боя дает [blue]10[/blue] [gold]антитоксина[/gold] и добавляет случайную [gold]смесь[/gold] в вашу [gold]руку[/gold]. Вы можете [gold]варить зелья[/gold] в лагере.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "Свет внутри никогда не гаснет.",
   "ALCHEMIST-RADIANT_FLASK.title": "Сияющая колба",
   "ALCHEMIST-TOADSTONE.description": "Когда вы получаете [gold]антитоксин[/gold], дает дополнительно [blue]1[/blue] [gold]антитоксина[/gold].",

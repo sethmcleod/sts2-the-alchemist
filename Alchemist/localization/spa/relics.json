@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Al comienzo de cada combate, añade a tu [gold]Mano[/gold] una [gold]Mezcla compuesta[/gold] de dos [gold]Mezclas[/gold] aleatorias.",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Al comienzo de cada combate, añade a tu [gold]Mano[/gold] una [gold]Mezcla compuesta[/gold] de [blue]2[/blue] [gold]Mezclas[/gold] aleatorias.",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "No supo decidirse, así que se convirtió en ambas.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "Flor quimera",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Al comienzo de cada combate, elige una [gold]Mezcla+[/gold] que añadir a tu [gold]Mano[/gold]. Gana [gold]Retención[/gold].",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "Al comienzo de cada combate, gana [blue]5[/blue] de [gold]Antitoxina[/gold] y añade una [gold]Mezcla[/gold] aleatoria a tu [gold]Mano[/gold]. Puedes [gold]Elaborar[/gold] en los Lugares de descanso.",
   "ALCHEMIST-MURKY_FLASK.flavor": "El remolino de dentro nunca termina de asentarse.",
   "ALCHEMIST-MURKY_FLASK.title": "Frasco turbio",
-  "ALCHEMIST-RADIANT_FLASK.description": "Al comienzo de cada combate, gana [blue]10[/blue] de [gold]Antitoxina[/gold] y añade una [gold]Mezcla[/gold] aleatoria a tu [gold]Mano[/gold]. Puedes [gold]Elaborar[/gold] en los Lugares de descanso. Al recoger esta reliquia, gana [blue]1[/blue] espacio de poción y una [gold]Poción[/gold] rara aleatoria.",
+  "ALCHEMIST-RADIANT_FLASK.description": "Al recoger esta reliquia, gana [blue]1[/blue] espacio de poción y obtén una [gold]Poción[/gold] rara aleatoria. Al comienzo de cada combate, gana [blue]10[/blue] de [gold]Antitoxina[/gold] y añade una [gold]Mezcla[/gold] aleatoria a tu [gold]Mano[/gold]. Puedes [gold]Elaborar[/gold] en los Lugares de descanso.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "El brillo de dentro nunca se apaga.",
   "ALCHEMIST-RADIANT_FLASK.title": "Frasco radiante",
   "ALCHEMIST-TOADSTONE.description": "Cuando ganes [gold]Antitoxina[/gold], gana [blue]1[/blue] de [gold]Antitoxina[/gold] más.",

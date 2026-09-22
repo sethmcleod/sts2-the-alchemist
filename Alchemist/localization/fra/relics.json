@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Au début de chaque combat, ajoutez une [gold]Mixture composée[/gold] de deux [gold]Mixtures[/gold] aléatoires à votre [gold]Main[/gold].",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Au début de chaque combat, ajoutez une [gold]Mixture composée[/gold] de [blue]2[/blue] [gold]Mixtures[/gold] aléatoires à votre [gold]Main[/gold].",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "Elle n'a pas su choisir, alors elle est devenue les deux.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "Fleur chimère",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Au début de chaque combat, choisissez une [gold]Mixture+[/gold] à ajouter à votre [gold]Main[/gold]. Elle gagne [gold]Retenue[/gold].",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "Au début de chaque combat, gagnez [blue]5[/blue] d'[gold]Antitoxine[/gold] et ajoutez une [gold]Mixture[/gold] aléatoire à votre [gold]Main[/gold]. Vous pouvez [gold]Brasser[/gold] aux Sites de repos.",
   "ALCHEMIST-MURKY_FLASK.flavor": "Le tourbillon à l'intérieur ne se calme jamais tout à fait.",
   "ALCHEMIST-MURKY_FLASK.title": "Fiole trouble",
-  "ALCHEMIST-RADIANT_FLASK.description": "Au début de chaque combat, gagnez [blue]10[/blue] d'[gold]Antitoxine[/gold] et ajoutez une [gold]Mixture[/gold] aléatoire à votre [gold]Main[/gold]. Vous pouvez [gold]Brasser[/gold] aux Sites de repos. Lorsque vous obtenez cette relique, gagnez [blue]1[/blue] emplacement de potion et une [gold]Potion[/gold] rare aléatoire.",
+  "ALCHEMIST-RADIANT_FLASK.description": "Lorsque vous obtenez cette relique, gagnez [blue]1[/blue] nouvel emplacement de potion et obtenez une [gold]Potion[/gold] rare aléatoire. Au début de chaque combat, gagnez [blue]10[/blue] d'[gold]Antitoxine[/gold] et ajoutez une [gold]Mixture[/gold] aléatoire à votre [gold]Main[/gold]. Vous pouvez [gold]Brasser[/gold] aux Sites de repos.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "La lumière à l'intérieur ne s'éteint jamais.",
   "ALCHEMIST-RADIANT_FLASK.title": "Fiole radieuse",
   "ALCHEMIST-TOADSTONE.description": "Vous gagnez [blue]1[/blue] d'[gold]Antitoxine[/gold] en plus à chaque fois que vous gagnez de l'[gold]Antitoxine[/gold].",

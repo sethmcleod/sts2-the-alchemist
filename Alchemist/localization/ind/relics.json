@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Pada awal setiap perlawanan, tambahkan sebuah [gold]Campuran Majemuk[/gold] dari dua [gold]Campuran[/gold] acak ke [gold]Tangan[/gold]mu.",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Pada awal setiap perlawanan, tambahkan sebuah [gold]Campuran Majemuk[/gold] dari [blue]2[/blue] [gold]Campuran[/gold] acak ke [gold]Tangan[/gold]mu.",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "Ia tak bisa memilih, jadi menjadi keduanya.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "Bunga Kimera",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Pada awal setiap perlawanan, pilih sebuah [gold]Campuran+[/gold] untuk ditambahkan ke [gold]Tangan[/gold]mu. Kartu itu mendapat [gold]Pertahankan[/gold].",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "Pada awal setiap perlawanan, dapatkan [blue]5[/blue] [gold]Antitoksin[/gold] dan tambahkan sebuah [gold]Campuran[/gold] acak ke [gold]Tangan[/gold]mu. Kamu bisa [gold]Meracik[/gold] di Peristirahatan.",
   "ALCHEMIST-MURKY_FLASK.flavor": "Pusaran di dalamnya tak pernah benar-benar tenang.",
   "ALCHEMIST-MURKY_FLASK.title": "Labu Keruh",
-  "ALCHEMIST-RADIANT_FLASK.description": "Pada awal setiap perlawanan, dapatkan [blue]10[/blue] [gold]Antitoksin[/gold] dan tambahkan sebuah [gold]Campuran[/gold] acak ke [gold]Tangan[/gold]mu. Kamu bisa [gold]Meracik[/gold] di Peristirahatan. Saat didapat, dapatkan [blue]1[/blue] slot ramuan dan sebuah [gold]ramuan[/gold] langka acak.",
+  "ALCHEMIST-RADIANT_FLASK.description": "Saat didapat, dapatkan [blue]1[/blue] tempat ramuan dan dapatkan sebuah [gold]Ramuan[/gold] langka acak. Pada awal setiap perlawanan, dapatkan [blue]10[/blue] [gold]Antitoksin[/gold] dan tambahkan sebuah [gold]Campuran[/gold] acak ke [gold]Tangan[/gold]mu. Kamu bisa [gold]Meracik[/gold] di Peristirahatan.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "Cahaya di dalamnya tak pernah padam.",
   "ALCHEMIST-RADIANT_FLASK.title": "Labu Berkilau",
   "ALCHEMIST-TOADSTONE.description": "Setiap kali kamu mendapatkan [gold]Antitoksin[/gold], dapatkan [blue]1[/blue] [gold]Antitoksin[/gold] tambahan.",

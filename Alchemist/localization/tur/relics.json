@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Her savaşın başında [gold]El[/gold]'ine iki rastgele [gold]Karışım[/gold]'dan oluşan bir [gold]Bileşik Karışım[/gold] ekle.",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Her savaşın başında [gold]El[/gold]'ine [blue]2[/blue] rastgele [gold]Karışım[/gold]'dan oluşan bir [gold]Bileşik Karışım[/gold] ekle.",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "Karar veremedi, o yüzden ikisi birden oldu.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "Kimera Çiçeği",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Her savaşın başında, [gold]El[/gold]'ine eklemek için bir [gold]Karışım+[/gold] seç. O kart [gold]Sakla[/gold] elde eder.",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "Her savaşın başında [blue]5[/blue] [gold]Antitoksin[/gold] elde et ve [gold]El[/gold]'ine rastgele bir [gold]Karışım[/gold] ekle. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin.",
   "ALCHEMIST-MURKY_FLASK.flavor": "İçindeki girdap hiçbir zaman tam durulmaz.",
   "ALCHEMIST-MURKY_FLASK.title": "Bulanık Şişe",
-  "ALCHEMIST-RADIANT_FLASK.description": "Her savaşın başında [blue]10[/blue] [gold]Antitoksin[/gold] elde et ve [gold]El[/gold]'ine rastgele bir [gold]Karışım[/gold] ekle. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin. Bu kalıntıyı aldığında [blue]1[/blue] iksir yuvası ve rastgele nadir bir [gold]İksir[/gold] elde et.",
+  "ALCHEMIST-RADIANT_FLASK.description": "Bu kalıntıyı aldığında [blue]1[/blue] iksir yuvası ve rastgele nadir bir [gold]İksir[/gold] elde et. Her savaşın başında [blue]10[/blue] [gold]Antitoksin[/gold] elde et ve [gold]El[/gold]'ine rastgele bir [gold]Karışım[/gold] ekle. Dinlenme Yerleri'nde [gold]Demleme[/gold] yapabilirsin.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "İçindeki ışık hiç sönmez.",
   "ALCHEMIST-RADIANT_FLASK.title": "Parlak Şişe",
   "ALCHEMIST-TOADSTONE.description": "Her [gold]Antitoksin[/gold] elde ettiğinde fazladan [blue]1[/blue] [gold]Antitoksin[/gold] elde et.",

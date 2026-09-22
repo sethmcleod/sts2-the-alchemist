@@ -4,7 +4,7 @@
   "ALCHEMIST-FERMENT.title": "发酵",
   "ALCHEMIST-FERMENT_REF.description": "这些牌在你的[gold]手牌[/gold]中每停留一个回合就增强一次。",
   "ALCHEMIST-FERMENT_REF.title": "发酵",
-  "ALCHEMIST-LACED.description": "这张攻击牌额外造成等同于你[gold]中毒[/gold]层数的伤害。",
+  "ALCHEMIST-LACED.description": "这张牌额外造成等同于你[gold]中毒[/gold]层数的伤害。",
   "ALCHEMIST-LACED.title": "掺毒",
   "ALCHEMIST-MIX.selectionPrompt": "选择一种要加入你的[gold]手牌[/gold]的[gold]合剂[/gold]。",
   "ALCHEMIST-MIX.selectionPromptBasic": "选择一种要加入你的[gold]手牌[/gold]的基础[gold]合剂[/gold]。",

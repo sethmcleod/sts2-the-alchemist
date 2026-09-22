@@ -17,8 +17,6 @@ public class Knitbone : AlchemistCard
         WithTips(_ => Mixing.MixRefTips());
     }
 
-    protected override bool ShowsMixesPlayed => true;
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);

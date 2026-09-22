@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Alchemist.AlchemistCode.Commands;
+using Alchemist.AlchemistCode.Compat;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -7,9 +8,11 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Token;
 
@@ -30,6 +33,7 @@ public class CompoundMix : AlchemistCard
     public CompoundMix() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self, showInCardLibrary: false)
     {
         WithDamage(6);
+        WithVar(new DamageVar("FumingDamage", 3, ValueProp.Move));
         WithBlock(4);
         WithCards(1);
         WithVar("Bonus", 1);
@@ -59,14 +63,15 @@ public class CompoundMix : AlchemistCard
 
     private bool Has(MixKind kind) => _first == kind || _second == kind;
 
-    public override CardType Type => Has(MixKind.Bursting) ? CardType.Attack : CardType.Skill;
+    public override CardType Type =>
+        Has(MixKind.Bursting) || Has(MixKind.Fuming) ? CardType.Attack : CardType.Skill;
 
     public override TargetType TargetType =>
         Has(MixKind.Bursting) || Has(MixKind.Fuming) || Has(MixKind.Acrid) ? TargetType.AnyEnemy : TargetType.Self;
 
     public override bool GainsBlock => Has(MixKind.Syrupy);
 
-    protected internal override bool PlaysCastAnimation => !Has(MixKind.Bursting);
+    protected internal override bool PlaysCastAnimation => Type != CardType.Attack;
 
     // The ingredients' own numbers are copied rather than upgrade deltas re-declared here, so a
     // Bursting+ in the pair gives the compound the 9 and the token class stays the single source
@@ -98,6 +103,7 @@ public class CompoundMix : AlchemistCard
                 Set("Cards", mix.DynamicVars.Cards.BaseValue);
                 break;
             case FumingMix:
+                Set("FumingDamage", mix.DynamicVars.Damage.BaseValue);
                 Set("Tainted", mix.DynamicVars["TaintedPower"].BaseValue);
                 break;
             case AcridMix:
@@ -142,7 +148,10 @@ public class CompoundMix : AlchemistCard
             case MixKind.Bursting: part.Add(DynamicVars.Damage); break;
             case MixKind.Syrupy: part.Add(DynamicVars.Block); break;
             case MixKind.Zesty: part.Add(DynamicVars.Cards); break;
-            case MixKind.Fuming: part.Add(DynamicVars["Tainted"]); break;
+            case MixKind.Fuming:
+                part.Add(DynamicVars["FumingDamage"]);
+                part.Add(DynamicVars["Tainted"]);
+                break;
             case MixKind.Acrid:
                 part.Add(DynamicVars["Weak"]);
                 part.Add(DynamicVars["Vulnerable"]);
@@ -181,6 +190,12 @@ public class CompoundMix : AlchemistCard
                 await CommonActions.Draw(this, choiceContext);
                 break;
             case MixKind.Fuming:
+                if (CombatState is not { } combat) return;
+                await DamageCmd.Attack(DynamicVars["FumingDamage"].IntValue)
+                    .WithHitFx(HitVfx("vfx/vfx_sandy_impact"))
+                    .FromCard(this, play)
+                    .TargetingAllOpponents(combat)
+                    .Execute(choiceContext);
                 if (play.Target is not { IsAlive: true } tainted) return;
                 await PowerCmd.Apply<TaintedPower>(choiceContext, tainted, DynamicVars["Tainted"].IntValue, Owner.Creature, this);
                 break;

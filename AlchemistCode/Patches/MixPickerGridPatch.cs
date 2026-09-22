@@ -9,7 +9,9 @@ namespace Alchemist.AlchemistCode.Patches;
 [HarmonyPatch(typeof(NCardGrid), "Columns", MethodType.Getter)]
 public static class MixPickerGridPatch
 {
-    // Set by Mixing.Choose around its selection call, null otherwise
+    // Both set by Mixing.Choose around its selection call. PickerOpen is true for the whole await;
+    // Columns is the forced count, null when the grid's own choice is fine
+    public static bool PickerOpen;
     public static int? Columns;
 
     public static bool Prefix(ref int __result)
