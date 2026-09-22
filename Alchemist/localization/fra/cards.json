@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "À l'épreuve",
   "ALCHEMIST-PUFF_UP.description": "[gold]Fermentation.[/gold]\nGagnez {CalculatedBlock:diff()} d'[gold]Armure[/gold].\nGagnez {IfUpgraded:show:5|3} d'[gold]Armure[/gold] supplémentaire pour chaque tour de [gold]Fermentation[/gold].",
   "ALCHEMIST-PUFF_UP.title": "Gonflement",
-  "ALCHEMIST-PUNCTURE.description": "Si l'ennemi est affligé de [gold]Poison[/gold], appliquez [gold]Vulnérable[/gold] ({VulnerablePower:diff()}).\nInfligez {Damage:diff()} dégâts 2 fois.",
+  "ALCHEMIST-PUNCTURE.description": "Infligez {Damage:diff()} dégâts 2 fois.\nSi l'ennemi est affligé de [gold]Poison[/gold], appliquez [gold]Vulnérable[/gold] ({VulnerablePower:diff()}).",
   "ALCHEMIST-PUNCTURE.title": "Perforation",
   "ALCHEMIST-QUENCH.description": "Gagnez {antitoxin:diff()} d'[gold]Antitoxine[/gold].\nGagnez un montant d'[gold]Armure[/gold] égal au double de votre [gold]Antitoxine[/gold].{InCombat:\n(Gagnez {CalculatedBlock:diff()} d'[gold]Armure[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Étanchement",

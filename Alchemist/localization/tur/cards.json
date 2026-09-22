@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "Dayanıklı",
   "ALCHEMIST-PUFF_UP.description": "[gold]Mayalan.[/gold]\n{CalculatedBlock:diff()} [gold]Blok[/gold] elde et.\n[gold]Mayalandığı[/gold] her tur için fazladan {IfUpgraded:show:5|3} [gold]Blok[/gold] elde et.",
   "ALCHEMIST-PUFF_UP.title": "Kabar",
-  "ALCHEMIST-PUNCTURE.description": "Eğer düşman [gold]Zehir[/gold]'den etkilenmişse, {VulnerablePower:diff()} [gold]Savunmasız[/gold] uygula.\nİki kez {Damage:diff()} hasar ver.",
+  "ALCHEMIST-PUNCTURE.description": "İki kez {Damage:diff()} hasar ver.\nEğer düşman [gold]Zehir[/gold]'den etkilenmişse, {VulnerablePower:diff()} [gold]Savunmasız[/gold] uygula.",
   "ALCHEMIST-PUNCTURE.title": "Deşme",
   "ALCHEMIST-QUENCH.description": "{antitoxin:diff()} [gold]Antitoksin[/gold] elde et.\n[gold]Antitoksin[/gold]'inin iki katı kadar [gold]Blok[/gold] elde et.{InCombat:\n({CalculatedBlock:diff()} [gold]Blok[/gold] elde et)|}",
   "ALCHEMIST-QUENCH.title": "Söndür",

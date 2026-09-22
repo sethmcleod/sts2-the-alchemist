@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "Odporność",
   "ALCHEMIST-PUFF_UP.description": "[gold]Fermentacja.[/gold]\nZyskaj {CalculatedBlock:diff()} pkt. [gold]Bloku[/gold].\nZyskaj dodatkowo {IfUpgraded:show:5|3} pkt. [gold]Bloku[/gold] za każdą turę [gold]Fermentacji[/gold].",
   "ALCHEMIST-PUFF_UP.title": "Napuszenie",
-  "ALCHEMIST-PUNCTURE.description": "Jeżeli przeciwnik ma [gold]Truciznę[/gold], nałóż {VulnerablePower:diff()} pkt. [gold]Wrażliwości[/gold].\nZadaj {Damage:diff()} pkt. obrażeń dwukrotnie.",
+  "ALCHEMIST-PUNCTURE.description": "Zadaj {Damage:diff()} pkt. obrażeń dwukrotnie.\nJeżeli przeciwnik ma [gold]Truciznę[/gold], nałóż {VulnerablePower:diff()} pkt. [gold]Wrażliwości[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Nakłucie",
   "ALCHEMIST-QUENCH.description": "Zyskaj {antitoxin:diff()} pkt. [gold]Antytoksyny[/gold].\nZyskaj [gold]Blok[/gold] równy dwukrotności twojej [gold]Antytoksyny[/gold].{InCombat:\n(Zyskaj {CalculatedBlock:diff()} pkt. [gold]Bloku[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Ugaszenie",

@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "Kebal",
   "ALCHEMIST-PUFF_UP.description": "[gold]Fermentasi.[/gold]\nDapatkan {CalculatedBlock:diff()} [gold]Blok[/gold].\nDapatkan {IfUpgraded:show:5|3} [gold]Blok[/gold] tambahan untuk setiap giliran [gold]Terfermentasi[/gold].",
   "ALCHEMIST-PUFF_UP.title": "Menggembung",
-  "ALCHEMIST-PUNCTURE.description": "Jika musuh memiliki [gold]Racun[/gold], terapkan {VulnerablePower:diff()} [gold]Rentan[/gold].\nLakukan {Damage:diff()} kerusakan dua kali.",
+  "ALCHEMIST-PUNCTURE.description": "Lakukan {Damage:diff()} kerusakan dua kali.\nJika musuh memiliki [gold]Racun[/gold], terapkan {VulnerablePower:diff()} [gold]Rentan[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Tusukan",
   "ALCHEMIST-QUENCH.description": "Dapatkan {antitoxin:diff()} [gold]Antitoksin[/gold].\nDapatkan [gold]Blok[/gold] sebanyak dua kali [gold]Antitoksin[/gold] milikmu.{InCombat:\n(Dapatkan {CalculatedBlock:diff()} [gold]Blok[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Redakan",

@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "À Prova",
   "ALCHEMIST-PUFF_UP.description": "[gold]Fermentar.[/gold]\nReceba {CalculatedBlock:diff()} de [gold]Proteção[/gold].\nReceba {IfUpgraded:show:5|3} de [gold]Proteção[/gold] adicional por cada turno [gold]Fermentado[/gold].",
   "ALCHEMIST-PUFF_UP.title": "Inflar",
-  "ALCHEMIST-PUNCTURE.description": "Se o inimigo estiver [gold]Envenenado[/gold], aplique {VulnerablePower:diff()} de [gold]Vulnerável[/gold].\nCause {Damage:diff()} de dano duas vezes.",
+  "ALCHEMIST-PUNCTURE.description": "Cause {Damage:diff()} de dano duas vezes.\nSe o inimigo estiver [gold]Envenenado[/gold], aplique {VulnerablePower:diff()} de [gold]Vulnerável[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Perfurar",
   "ALCHEMIST-QUENCH.description": "Receba {antitoxin:diff()} de [gold]Antitoxina[/gold].\nReceba [gold]Proteção[/gold] equivalente ao dobro da sua [gold]Antitoxina[/gold].{InCombat:\n(Receba {CalculatedBlock:diff()} de [gold]Proteção[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Saciar",

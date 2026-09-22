@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "ต้านทาน",
   "ALCHEMIST-PUFF_UP.description": "[gold]บ่ม[/gold]\nได้รับ {CalculatedBlock:diff()} [gold]บล็อก[/gold]\nได้รับ[gold]บล็อก[/gold]เพิ่ม {IfUpgraded:show:5|3} ต่อทุกเทิร์นที่[gold]บ่ม[/gold]",
   "ALCHEMIST-PUFF_UP.title": "พองตัว",
-  "ALCHEMIST-PUNCTURE.description": "ถ้าศัตรูมี[gold]พิษ[/gold] สร้าง {VulnerablePower:diff()} [gold]จุดอ่อน[/gold]\nสร้างความเสียหาย {Damage:diff()} จำนวน 2 ครั้ง",
+  "ALCHEMIST-PUNCTURE.description": "สร้างความเสียหาย {Damage:diff()} จำนวน 2 ครั้ง\nถ้าศัตรูมี[gold]พิษ[/gold] สร้าง {VulnerablePower:diff()} [gold]จุดอ่อน[/gold]",
   "ALCHEMIST-PUNCTURE.title": "เจาะทะลุ",
   "ALCHEMIST-QUENCH.description": "ได้รับ {antitoxin:diff()} [gold]สารต้านพิษ[/gold]\nได้รับ[gold]บล็อก[/gold]เท่ากับสองเท่าของ[gold]สารต้านพิษ[/gold]ที่คุณมี{InCombat:\n(ได้รับ {CalculatedBlock:diff()} [gold]บล็อก[/gold])|}",
   "ALCHEMIST-QUENCH.title": "ดับกระหาย",

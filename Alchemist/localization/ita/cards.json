@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "A prova",
   "ALCHEMIST-PUFF_UP.description": "[gold]Fermentazione.[/gold]\nOttieni {CalculatedBlock:diff()} di [gold]Blocco[/gold].\nOttieni {IfUpgraded:show:5|3} di [gold]Blocco[/gold] extra per ogni turno di [gold]fermentazione[/gold].",
   "ALCHEMIST-PUFF_UP.title": "Rigonfiamento",
-  "ALCHEMIST-PUNCTURE.description": "Se il nemico ha [gold]Veleno[/gold], applichi {VulnerablePower:diff()} di [gold]Vulnerabilità[/gold].\nInfliggi {Damage:diff()} di danno due volte.",
+  "ALCHEMIST-PUNCTURE.description": "Infliggi {Damage:diff()} di danno due volte.\nSe il nemico ha [gold]Veleno[/gold], applichi {VulnerablePower:diff()} di [gold]Vulnerabilità[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Perforazione",
   "ALCHEMIST-QUENCH.description": "Ottieni {antitoxin:diff()} di [gold]Antitossina[/gold].\nOttieni [gold]Blocco[/gold] pari al doppio della tua [gold]Antitossina[/gold].{InCombat:\n(Ottieni {CalculatedBlock:diff()} di [gold]Blocco[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Ristoro",

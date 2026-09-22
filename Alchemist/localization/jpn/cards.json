@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "火酒",
   "ALCHEMIST-PUFF_UP.description": "[gold]発酵。[/gold]\n{CalculatedBlock:diff()}[gold]ブロック[/gold]を得る。\n[gold]発酵[/gold]したターン1回につき、追加で{IfUpgraded:show:5|3}[gold]ブロック[/gold]を得る。",
   "ALCHEMIST-PUFF_UP.title": "膨張",
-  "ALCHEMIST-PUNCTURE.description": "敵が[gold]毒[/gold]に侵されている場合、[gold]弱体[/gold]{VulnerablePower:diff()}を付与する。\n{Damage:diff()}ダメージを2回与える。",
+  "ALCHEMIST-PUNCTURE.description": "{Damage:diff()}ダメージを2回与える。\n敵が[gold]毒[/gold]に侵されている場合、[gold]弱体[/gold]{VulnerablePower:diff()}を付与する。",
   "ALCHEMIST-PUNCTURE.title": "穿刺",
   "ALCHEMIST-QUENCH.description": "[gold]抗毒素[/gold]{antitoxin:diff()}を得る。\n自身の[gold]抗毒素[/gold]の2倍に等しい[gold]ブロック[/gold]を得る。{InCombat:\n（{CalculatedBlock:diff()}[gold]ブロック[/gold]を得る）|}",
   "ALCHEMIST-QUENCH.title": "鎮静",

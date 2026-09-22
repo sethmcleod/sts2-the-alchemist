@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "抗性",
   "ALCHEMIST-PUFF_UP.description": "[gold]发酵。[/gold]\n获得{CalculatedBlock:diff()}点[gold]格挡[/gold]。\n每[gold]发酵[/gold]一回合，额外获得{IfUpgraded:show:5|3}点[gold]格挡[/gold]。",
   "ALCHEMIST-PUFF_UP.title": "鼓胀",
-  "ALCHEMIST-PUNCTURE.description": "如果敌方拥有[gold]中毒[/gold]，则给予{VulnerablePower:diff()}层[gold]易伤[/gold]。\n造成{Damage:diff()}点伤害两次。",
+  "ALCHEMIST-PUNCTURE.description": "造成{Damage:diff()}点伤害两次。\n如果敌方拥有[gold]中毒[/gold]，则给予{VulnerablePower:diff()}层[gold]易伤[/gold]。",
   "ALCHEMIST-PUNCTURE.title": "穿刺",
   "ALCHEMIST-QUENCH.description": "获得{antitoxin:diff()}点[gold]抗毒素[/gold]。\n获得等同于你[gold]抗毒素[/gold]两倍的[gold]格挡[/gold]。{InCombat:\n（获得{CalculatedBlock:diff()}点[gold]格挡[/gold]）|}",
   "ALCHEMIST-QUENCH.title": "解渴",

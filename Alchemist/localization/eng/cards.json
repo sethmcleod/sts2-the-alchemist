@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "Proof",
   "ALCHEMIST-PUFF_UP.description": "[gold]Ferment.[/gold]\nGain {CalculatedBlock:diff()} [gold]Block[/gold].\nGain {IfUpgraded:show:5|3} additional [gold]Block[/gold] for each turn [gold]Fermented[/gold].",
   "ALCHEMIST-PUFF_UP.title": "Puff Up",
-  "ALCHEMIST-PUNCTURE.description": "If the enemy has [gold]Poison[/gold], apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nDeal {Damage:diff()} damage twice.",
+  "ALCHEMIST-PUNCTURE.description": "Deal {Damage:diff()} damage twice.\nIf the enemy has [gold]Poison[/gold], apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Puncture",
   "ALCHEMIST-QUENCH.description": "Gain {antitoxin:diff()} [gold]Antitoxin[/gold].\nGain [gold]Block[/gold] equal to twice your [gold]Antitoxin[/gold].{InCombat:\n(Gain {CalculatedBlock:diff()} [gold]Block[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Quench",

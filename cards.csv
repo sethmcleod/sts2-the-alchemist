@@ -64,7 +64,7 @@ Premonition,Uncommon,Skill,0,Scry 4 (5). Draw 1 card. Gain 3 Poison. (Premonitio
 Preserve,"Uncommon, Multiplayer",Skill,0,"Choose another player. Their Block is not removed at the start of their next 1 (2) turns."
 Proof,Common,Attack,1,Gain 3 (4) Antitoxin. Deal damage equal to your Antitoxin.
 Puff Up,Uncommon,Skill,2,Retain. Ferment. Gain 9 (12) Block. Gain 3 (5) additional Block for each turn Fermented.
-Puncture,Common,Attack,1,"If the enemy has Poison, apply 2 (3) Vulnerable. Deal 4 (5) damage twice."
+Puncture,Common,Attack,1,"Deal 4 (5) damage twice. If the enemy has Poison, apply 2 (3) Vulnerable."
 Quench,Uncommon,Skill,1,Gain 4 (6) Antitoxin. Gain Block equal to twice your Antitoxin. Exhaust.
 Reclaim,Rare,Skill,1 (0),Apply Poison to ALL enemies equal to the number of Mixes you have played this combat. Exhaust.
 Reconstitute,"Event, Hero",Skill,0,Gain 2 Poison. Put a card from your Discard Pile into your Hand and Upgrade it. Exhaust. (Reconstitute+ loses Exhaust)

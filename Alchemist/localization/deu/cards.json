@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "Gefeit",
   "ALCHEMIST-PUFF_UP.description": "[gold]Gärung.[/gold]\nErhalte {CalculatedBlock:diff()} [gold]Block[/gold].\nErhalte {IfUpgraded:show:5|3} [gold]Block[/gold] mehr pro Zug in [gold]Gärung[/gold].",
   "ALCHEMIST-PUFF_UP.title": "Aufplustern",
-  "ALCHEMIST-PUNCTURE.description": "Falls der Gegner [gold]Gift[/gold] hat, wende {VulnerablePower:diff()} [gold]Verwundbar[/gold] an.\nFüge zweimal {Damage:diff()} Schaden zu.",
+  "ALCHEMIST-PUNCTURE.description": "Füge zweimal {Damage:diff()} Schaden zu.\nFalls der Gegner [gold]Gift[/gold] hat, wende {VulnerablePower:diff()} [gold]Verwundbar[/gold] an.",
   "ALCHEMIST-PUNCTURE.title": "Durchstechen",
   "ALCHEMIST-QUENCH.description": "Erhalte {antitoxin:diff()} [gold]Antitoxin[/gold].\nErhalte [gold]Block[/gold] in Höhe des Doppelten deines [gold]Antitoxins[/gold].{InCombat:\n(Erhalte {CalculatedBlock:diff()} [gold]Block[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Labung",

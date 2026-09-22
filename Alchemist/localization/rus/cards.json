@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "Крепость",
   "ALCHEMIST-PUFF_UP.description": "[gold]Брожение.[/gold]\nДает {CalculatedBlock:diff()} [gold]защиты[/gold].\nДает еще {IfUpgraded:show:5|3} [gold]защиты[/gold] за каждый ход [gold]брожения[/gold].",
   "ALCHEMIST-PUFF_UP.title": "Раздуться",
-  "ALCHEMIST-PUNCTURE.description": "Накладывает {VulnerablePower:diff()} [gold]уязвимости[/gold], если на врага уже наложен [gold]яд[/gold].\nНаносит {Damage:diff()} урона 2 раза.",
+  "ALCHEMIST-PUNCTURE.description": "Наносит {Damage:diff()} урона 2 раза.\nНакладывает {VulnerablePower:diff()} [gold]уязвимости[/gold], если на врага уже наложен [gold]яд[/gold].",
   "ALCHEMIST-PUNCTURE.title": "Прокол",
   "ALCHEMIST-QUENCH.description": "Дает {antitoxin:diff()} [gold]антитоксина[/gold].\nДает [gold]защиту[/gold], равную удвоенному значению вашего [gold]антитоксина[/gold].{InCombat:\n(Дает {CalculatedBlock:diff()} [gold]защиты[/gold])|}",
   "ALCHEMIST-QUENCH.title": "Утоление",

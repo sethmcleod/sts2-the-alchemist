@@ -149,7 +149,7 @@
   "ALCHEMIST-PROOF.title": "抗性",
   "ALCHEMIST-PUFF_UP.description": "[gold]醞釀。[/gold]\n獲得 {CalculatedBlock:diff()} 點[gold]格擋[/gold]。\n每[gold]醞釀[/gold]一回合，就額外獲得 {IfUpgraded:show:5|3} 點[gold]格擋[/gold]。",
   "ALCHEMIST-PUFF_UP.title": "鼓脹",
-  "ALCHEMIST-PUNCTURE.description": "若敵人有[gold]中毒[/gold]，施加 {VulnerablePower:diff()} 層[gold]易傷[/gold]。\n造成 2 次 {Damage:diff()} 點傷害。",
+  "ALCHEMIST-PUNCTURE.description": "造成 2 次 {Damage:diff()} 點傷害。\n若敵人有[gold]中毒[/gold]，施加 {VulnerablePower:diff()} 層[gold]易傷[/gold]。",
   "ALCHEMIST-PUNCTURE.title": "穿刺",
   "ALCHEMIST-QUENCH.description": "獲得 {antitoxin:diff()} 點[gold]抗毒素[/gold]。\n獲得等同於你[gold]抗毒素[/gold]兩倍的[gold]格擋[/gold]。{InCombat:\n（獲得 {CalculatedBlock:diff()} 點[gold]格擋[/gold]）|}",
   "ALCHEMIST-QUENCH.title": "解渴",
