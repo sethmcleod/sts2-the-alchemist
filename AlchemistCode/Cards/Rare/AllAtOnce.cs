@@ -1,53 +1,33 @@
-using Alchemist.AlchemistCode.Compat;
-using System.Linq;
-using MegaCrit.Sts2.Core.Commands;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
 [CardTheme(CardTheme.Poison)]
 public class AllAtOnce : AlchemistCard
 {
-    protected internal override bool DealsUnpoweredDamage => true;
-
     protected override bool HasEnergyCostX => true;
 
     public AllAtOnce() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
+        WithCalculatedDamage(0, static (card, _) => Dose(card), ValueProp.Move);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
     }
 
-    // The dose it reads, so the preview is the damage per hit
-    private int Fuel =>
-        IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<PoisonPower>() : 0;
-
-    protected override bool ConditionalGlow => Fuel > 0;
-
-    protected override void AddExtraArgsToDescription(LocString description)
-    {
-        base.AddExtraArgsToDescription(description);
-        description.Add("Fuel", Fuel is var f and > 0 ? $" ([green]{f}[/green])" : "");
-    }
+    protected override bool ConditionalGlow => Dose(this) > 0;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (play.Target == null) return;
-        var damage = Fuel;
-        if (damage <= 0) return;
+        if (play.Target == null || Dose(this) <= 0) return;
         var hits = ResolveEnergyXValue() + (IsUpgraded ? 1 : 0);
         if (hits <= 0) return;
-        await DamageCmd.Attack(damage)
-            .WithHitCount(hits)
-            .Unpowered()
-            .WithHitFx(HitVfx("vfx/vfx_heavy_blunt"), null, "heavy_attack.mp3")
-            .FromCard(this, play)
-            // After FromCard: the builder rejects an attacker animation before an attacker exists
+        await CommonActions.CardAttack(this, play, hits, vfx: HitVfx("vfx/vfx_heavy_blunt"),
+                tmpSfx: "heavy_attack.mp3")
             .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
-            .Targeting(play.Target)
             .Execute(choiceContext);
     }
 }

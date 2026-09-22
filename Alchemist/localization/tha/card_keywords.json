@@ -4,7 +4,7 @@
   "ALCHEMIST-FERMENT.title": "บ่ม",
   "ALCHEMIST-FERMENT_REF.description": "การ์ดเหล่านี้จะมีพลังเพิ่มขึ้นต่อทุกเทิร์นที่อยู่ใน[gold]มือ[/gold]",
   "ALCHEMIST-FERMENT_REF.title": "บ่ม",
-  "ALCHEMIST-LACED.description": "การ์ดโจมตีใบนี้สร้างความเสียหายเพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
+  "ALCHEMIST-LACED.description": "การ์ดนี้สร้างความเสียหายเพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
   "ALCHEMIST-LACED.title": "เจือพิษ",
   "ALCHEMIST-MIX.selectionPrompt": "เลือก[gold]ยาผสม[/gold]ที่จะเพิ่มเข้า[gold]มือ[/gold]",
   "ALCHEMIST-MIX.selectionPromptBasic": "เลือก[gold]ยาผสม[/gold]พื้นฐานที่จะเพิ่มเข้า[gold]มือ[/gold]",

@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Al comienzo de cada combate, agregas una [gold]Mezcla compuesta[/gold] de dos [gold]Mezclas[/gold] al azar a tu [gold]mano[/gold].",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Al comienzo de cada combate, agregas una [gold]Mezcla compuesta[/gold] de [blue]2[/blue] [gold]Mezclas[/gold] al azar a tu [gold]mano[/gold].",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "No pudo decidirse, así que se volvió ambas.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "Flor quimera",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Al comienzo de cada combate, eliges una [gold]Mezcla+[/gold] para añadir a tu [gold]mano[/gold]. Obtiene [gold]retención[/gold].",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "Al comienzo de cada combate, obtienes [blue]5[/blue] de [gold]antitoxina[/gold] y agregas una [gold]Mezcla[/gold] al azar a tu [gold]mano[/gold]. Puedes [gold]preparar pociones[/gold] en los puntos de descanso.",
   "ALCHEMIST-MURKY_FLASK.flavor": "El remolino de dentro nunca termina de asentarse.",
   "ALCHEMIST-MURKY_FLASK.title": "Frasco turbio",
-  "ALCHEMIST-RADIANT_FLASK.description": "Al comienzo de cada combate, obtienes [blue]10[/blue] de [gold]antitoxina[/gold] y agregas una [gold]Mezcla[/gold] al azar a tu [gold]mano[/gold]. Puedes [gold]preparar pociones[/gold] en los puntos de descanso. Al recogerlo, obtienes [blue]1[/blue] espacio de poción y una [gold]poción[/gold] rara aleatoria.",
+  "ALCHEMIST-RADIANT_FLASK.description": "Al recogerla, obtienes [blue]1[/blue] espacio de poción y una [gold]poción[/gold] rara al azar. Al comienzo de cada combate, obtienes [blue]10[/blue] de [gold]antitoxina[/gold] y agregas una [gold]Mezcla[/gold] al azar a tu [gold]mano[/gold]. Puedes [gold]preparar pociones[/gold] en los puntos de descanso.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "La luz de dentro nunca se apaga.",
   "ALCHEMIST-RADIANT_FLASK.title": "Frasco radiante",
   "ALCHEMIST-TOADSTONE.description": "Al obtener [gold]antitoxina[/gold], obtienes [blue]1[/blue] de [gold]antitoxina[/gold] adicional.",

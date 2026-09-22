@@ -25,8 +25,7 @@ BASE_ARGS = set(re.findall(r'description\.Add\("(\w+)"', BASE))
 # Base-class preview property -> the token its value is placed with
 OPT_IN = {'RawFormulaDamagePreview': 'FormulaDamage',
           'FormulaHpLossPreview': 'FormulaHpLoss',
-          'FermentPeak': 'FermentSuffix',
-          'ShowsMixesPlayed': 'MixesPlayed'}
+          'FermentPeak': 'FermentSuffix'}
 
 def declared(src):
     v = set(BASE_ARGS)

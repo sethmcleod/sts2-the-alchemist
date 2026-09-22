@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "每場戰鬥開始時，將一張由兩種隨機[gold]混劑[/gold]組成的[gold]複合混劑[/gold]加入你的[gold]手牌[/gold]。",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "每場戰鬥開始時，將一張由 [blue]2[/blue] 種隨機[gold]混劑[/gold]組成的[gold]複合混劑[/gold]加入你的[gold]手牌[/gold]。",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "拿不定主意，索性兩樣都當了。",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "奇美拉之花",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "每場戰鬥開始時，選擇一種[gold]混劑+[/gold]加入你的[gold]手牌[/gold]。它獲得[gold]保留[/gold]。",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "每場戰鬥開始時，獲得 [blue]5[/blue] 點[gold]抗毒素[/gold]，並將一張隨機[gold]混劑[/gold]加入你的[gold]手牌[/gold]。你可以在休息處[gold]釀造[/gold]。",
   "ALCHEMIST-MURKY_FLASK.flavor": "裡頭的漩渦從未真正平息。",
   "ALCHEMIST-MURKY_FLASK.title": "混濁燒瓶",
-  "ALCHEMIST-RADIANT_FLASK.description": "每場戰鬥開始時，獲得 [blue]10[/blue] 點[gold]抗毒素[/gold]，並將一張隨機[gold]混劑[/gold]加入你的[gold]手牌[/gold]。你可以在休息處[gold]釀造[/gold]。拾取時，獲得 [blue]1[/blue] 個藥水欄位和一瓶隨機稀有[gold]藥水[/gold]。",
+  "ALCHEMIST-RADIANT_FLASK.description": "拾取時，獲得 [blue]1[/blue] 個藥水欄位，並取得一瓶隨機稀有[gold]藥水[/gold]。每場戰鬥開始時，獲得 [blue]10[/blue] 點[gold]抗毒素[/gold]，並將一張隨機[gold]混劑[/gold]加入你的[gold]手牌[/gold]。你可以在休息處[gold]釀造[/gold]。",
   "ALCHEMIST-RADIANT_FLASK.flavor": "裡頭的光芒永不熄滅。",
   "ALCHEMIST-RADIANT_FLASK.title": "璨亮燒瓶",
   "ALCHEMIST-TOADSTONE.description": "每當你獲得[gold]抗毒素[/gold]時，額外獲得 [blue]1[/blue] 點[gold]抗毒素[/gold]。",

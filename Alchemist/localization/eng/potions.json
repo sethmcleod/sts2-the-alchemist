@@ -17,7 +17,7 @@
   "ALCHEMIST-REFINED_EXTRACT.title": "Refined Extract",
   "ALCHEMIST-SAMPLER.description": "Gain {energyPrefix:energyIcons(1)} and draw [blue]1[/blue] card for each [gold]Potion[/gold] you have, including this one.",
   "ALCHEMIST-SAMPLER.title": "Sampler",
-  "ALCHEMIST-SOLVENT.description": "Remove ALL [gold]Artifact[/gold] and [gold]Block[/gold] from ALL enemies. Apply [blue]2[/blue] [gold]Vulnerable[/gold] to ALL enemies.",
+  "ALCHEMIST-SOLVENT.description": "Remove all [gold]Artifact[/gold] and [gold]Block[/gold] from ALL enemies. Apply [blue]2[/blue] [gold]Vulnerable[/gold] to ALL enemies.",
   "ALCHEMIST-SOLVENT.title": "Solvent",
   "ALCHEMIST-STARTER_CULTURE.description": "ALL [gold]Ferment[/gold] cards in your [gold]Hand[/gold] [gold]Ferment[/gold] [blue]4[/blue].",
   "ALCHEMIST-STARTER_CULTURE.title": "Starter Culture",

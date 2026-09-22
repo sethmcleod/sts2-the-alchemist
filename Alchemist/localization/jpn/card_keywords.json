@@ -4,7 +4,7 @@
   "ALCHEMIST-FERMENT.title": "発酵",
   "ALCHEMIST-FERMENT_REF.description": "これらのカードは[gold]手札[/gold]にあるターン1回につき威力が増加する。",
   "ALCHEMIST-FERMENT_REF.title": "発酵",
-  "ALCHEMIST-LACED.description": "このアタックは、自身の[gold]毒[/gold]に等しい追加ダメージを与える。",
+  "ALCHEMIST-LACED.description": "このカードは、自身の[gold]毒[/gold]に等しい追加ダメージを与える。",
   "ALCHEMIST-LACED.title": "毒仕込み",
   "ALCHEMIST-MIX.selectionPrompt": "[gold]手札[/gold]に加える[gold]合剤[/gold]を1枚選択。",
   "ALCHEMIST-MIX.selectionPromptBasic": "[gold]手札[/gold]に加える基本の[gold]合剤[/gold]を1枚選択。",

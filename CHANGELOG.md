@@ -7,10 +7,24 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Buffed Numb card: Dexterity now applies to the Block gained for each card discarded
+- Changed All At Once and Wormwood cards: their damage is now affected by Strength, Vulnerable, Weak and Tainted
+- Changed the in-combat previews of All At Once, Numb, Reclaim, Sweat It Out and Vent cards to the base game's format
+- Removed the Mix count after the Bonk and Knitbone card text, since their damage and Block numbers already include it
+- Reworked Fuming Mix card into an Attack: "Deal 3 (4) damage to ALL enemies. Apply 3 (4) Tainted. Exhaust."
+- Updated the wording of Acrid Mix, Bestow, Brine, Croak, Digest, Distill, Eureka, Heavy Dose, Needle Point, Pour Over, Puff Up, Quench, Rerun, Resolve, Tempered, Toughen and Wormwood cards to be consistent with the base game
+- Updated the wording of the Apothecary, Fresh Batch, Fresh Cutting, Miasma, Panacea and Rerun powers, the Chimera Blossom and Radiant Flask relics, the Solvent potion and the Laced keyword to be consistent with the base game
+
 ### Fixed
 
-- Fixed Puncture logic: Now the damage is dealth before Vulnerable is applied
+- Apothecary power's tooltip now shows how many Mixes it adds each turn, and whether they are Mixes+
+- Compound Mix now properly deals a Fuming Mix ingredient's damage to ALL enemies
 - Fixed the card library shifting its cards off center when a search matched only Mixes
+- Puncture now deals damage before Vulnerable is applied, matching other base game debuff attacks
+- Quench now properly counts extra Antitoxin from Toadstone toward its Block
+- Wormwood no longer glows when you have Poison, and its damage number now includes your Poison like the other Laced cards
 
 ## [0.14.16] - 2026-09-21
 

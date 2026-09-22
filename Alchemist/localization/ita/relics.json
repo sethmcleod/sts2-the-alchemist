@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "All'inizio di ogni combattimento, aggiungi una [gold]Miscela Composta[/gold] di due [gold]Miscele[/gold] casuali alla tua [gold]mano[/gold].",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "All'inizio di ogni combattimento, aggiungi una [gold]Miscela Composta[/gold] di [blue]2[/blue] [gold]Miscele[/gold] casuali alla tua [gold]mano[/gold].",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "Non sapeva decidere, così è diventato entrambi.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "Fiore Chimera",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "All'inizio di ogni combattimento, scegli una [gold]Miscela+[/gold] da aggiungere alla tua [gold]mano[/gold]. Ottiene [gold]Conservazione[/gold].",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "All'inizio di ogni combattimento, ottieni [blue]5[/blue] di [gold]Antitossina[/gold] e aggiungi una [gold]Miscela[/gold] casuale alla tua [gold]mano[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
   "ALCHEMIST-MURKY_FLASK.flavor": "Il vortice al suo interno non si calma mai del tutto.",
   "ALCHEMIST-MURKY_FLASK.title": "Fiasca Torbida",
-  "ALCHEMIST-RADIANT_FLASK.description": "All'inizio di ogni combattimento, ottieni [blue]10[/blue] di [gold]Antitossina[/gold] e aggiungi una [gold]Miscela[/gold] casuale alla tua [gold]mano[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo. Dopo aver ottenuto questa reliquia, ottieni [blue]1[/blue] alloggiamento pozione e una [gold]pozione[/gold] rara casuale.",
+  "ALCHEMIST-RADIANT_FLASK.description": "Dopo aver ottenuto questa reliquia, ottieni [blue]1[/blue] spazio per pozioni e ricevi una [gold]pozione[/gold] rara casuale. All'inizio di ogni combattimento, ottieni [blue]10[/blue] di [gold]Antitossina[/gold] e aggiungi una [gold]Miscela[/gold] casuale alla tua [gold]mano[/gold]. Puoi [gold]Preparare pozioni[/gold] nei luoghi di riposo.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "La luce al suo interno non si spegne mai.",
   "ALCHEMIST-RADIANT_FLASK.title": "Fiasca Radiosa",
   "ALCHEMIST-TOADSTONE.description": "Ogni volta che ottieni [gold]Antitossina[/gold], ottieni [blue]1[/blue] di [gold]Antitossina[/gold] in più.",
