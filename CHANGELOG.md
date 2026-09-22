@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.17] - 2026-09-22
+
 ### Changed
 
 - Buffed Numb card: Dexterity now applies to the Block gained for each card discarded
