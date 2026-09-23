@@ -11,6 +11,8 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Antitoxin)]
 public class Quench : AlchemistCard
 {
+    protected internal override bool PlaysCastAnimation => false;
+
     // Block per point of capacity
     private const int BlockPerPoint = 2;
 

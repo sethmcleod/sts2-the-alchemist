@@ -9,6 +9,8 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.None)]
 public class Tempered : AlchemistCard
 {
+    protected internal override bool PlaysCastAnimation => false;
+
     public Tempered() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithVar("PerCard", 1, 1);

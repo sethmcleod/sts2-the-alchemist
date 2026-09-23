@@ -33,7 +33,7 @@ public class Proof : AlchemistCard
         var damage = AntitoxinCapacity;
         if (damage <= 0) return;
         await CommonActions.CardAttack(this, play, target, damage, ValueProp.Move,
-                vfx: HitVfx("vfx/vfx_slime_impact"), tmpSfx: "blunt_attack.mp3")
+                vfx: HitVfx("vfx/vfx_attack_blunt"), tmpSfx: "blunt_attack.mp3")
             .Execute(choiceContext);
     }
 }

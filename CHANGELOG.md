@@ -13,9 +13,11 @@ mod).
 - Buffed Heavy Dose card: damage increased from 26(32) -> 28(36)
 - Changed Fling card: damage decreased from 5 -> 4(5), and Poison needed for each additional hit decreased from 3(2) -> 2
 - Changed Spatter card: Poison applied decreased from 3(4) -> 2, and additional Poison for each card discarded increased from 1 -> 2(3)
+- Improved the hit effects, sounds and attack animations of Bonk, Corrode, Mash, Mortar, Nightcap, Patient Strike, Proof, Spike and The Steeped Blade cards
 - Nerfed Mortar card: additional damage for each turn Fermented decreased from 2(3) -> 2
 - Nerfed Premonition card: Scry decreased from 4(5) -> 4
 - Reworked All At Once card: "Laced. Deal 6 (9) damage X times. Exhaust."
+- Updated the cast animation to match the base game: Acrid Mix now plays it, and Bitter Draught, Puff Up, Quench, Tempered, Vent and Vintage no longer do
 
 ## [0.14.17] - 2026-09-22
 

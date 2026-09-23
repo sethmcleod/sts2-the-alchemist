@@ -11,8 +11,6 @@ namespace Alchemist.AlchemistCode.Cards.Token;
 [CardTheme(CardTheme.Mix, CardTheme.Poison)]
 public class AcridMix : AlchemistCard
 {
-    protected internal override bool PlaysCastAnimation => false;
-
     public AcridMix() : base(0, CardType.Skill, CardRarity.Token, TargetType.AnyEnemy)
     {
         WithPower<WeakPower>(1, 1);

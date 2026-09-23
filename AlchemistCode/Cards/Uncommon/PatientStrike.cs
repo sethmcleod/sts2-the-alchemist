@@ -22,6 +22,7 @@ public class PatientStrike : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"),
-            tmpSfx: "heavy_attack.mp3").Execute(choiceContext);
+            tmpSfx: "heavy_attack.mp3").WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
+            .Execute(choiceContext);
     }
 }

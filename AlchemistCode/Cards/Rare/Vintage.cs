@@ -9,6 +9,8 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Ferment)]
 public class Vintage : AlchemistCard
 {
+    protected internal override bool PlaysCastAnimation => false;
+
     protected override bool Ferments => true;
 
     public Vintage() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)

@@ -8,6 +8,8 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Ferment)]
 public class PuffUp : AlchemistCard
 {
+    protected internal override bool PlaysCastAnimation => false;
+
     protected override bool Ferments => true;
 
     public PuffUp() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
