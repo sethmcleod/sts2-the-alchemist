@@ -16,7 +16,7 @@ public class Premonition : AlchemistCard
     public Premonition() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithPower<PoisonPower>(3, 0);
-        WithVar(new ScryVar(4).WithUpgrade(1));
+        WithVar(new ScryVar(4));
         WithCards(1, 0);
         WithKeyword(CardKeyword.Retain, UpgradeType.Add);
     }

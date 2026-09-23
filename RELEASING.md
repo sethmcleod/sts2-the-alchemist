@@ -15,10 +15,10 @@ DLLs differ enough that one build cannot serve both. A mod compiled against the
 wrong one fails to load with a `ReflectionTypeLoadException`. Thus the mod ships
 twice:
 
-| Branch | Game branch    | Workshop item                | Tags          | GitHub Release | Cadence                     |
-| ------ | -------------- | ---------------------------- | ------------- | -------------- | --------------------------- |
-| `beta` | `public-beta`  | The Alchemist (Beta Branch)  | `vX.Y.Z-beta` | pre-release    | fast, this is where you work |
-| `main` | default        | The Alchemist                | `vX.Y.Z`      | Latest         | slow, promoted from beta     |
+| Branch | Game branch   | Workshop item               | Tags          | GitHub Release | Cadence                      |
+| ------ | ------------- | --------------------------- | ------------- | -------------- | ---------------------------- |
+| `beta` | `public-beta` | The Alchemist (Beta Branch) | `vX.Y.Z-beta` | pre-release    | fast, this is where you work |
+| `main` | default       | The Alchemist               | `vX.Y.Z`      | Latest         | slow, promoted from beta     |
 
 `workshop/targets.json` holds this map. It is **identical on both branches** on
 purpose: it is the single file that knows about both, so a merge between the
@@ -37,7 +37,7 @@ Only `scripts/dev.sh release` changes it. This project follows
 **Both branches share one version line.** `beta` moves it forward; `main` inherits
 whatever version the merge brought over and ships it unchanged. So `v0.7.0-beta`
 and `v0.7.0` are the same content, and the `-beta` suffix is a real semver
-pre-release, which means `v0.7.0-beta` sorts *before* `v0.7.0` — the order the two
+pre-release, which means `v0.7.0-beta` sorts _before_ `v0.7.0` — the order the two
 actually ship in. The alternative, an independent version line per branch, makes
 every merge fight over `Alchemist.json` and forces you to explain why beta 0.9 is
 older than main 1.0.
@@ -102,7 +102,7 @@ notes for the current voice: they ship in the game at
 - **Lead with a past-tense verb**, then the entity and its kind, then the change:
   - **Buffed** X card/relic/potion: `<stat>` increased from `A -> B`
   - **Nerfed** X card/relic/potion: `<stat>` decreased from `A -> B`
-  - **Reworked** X card: `"old text" -> "new text"`
+  - **Reworked** X card: `"new text"`
   - **Changed** X card: use for rarity swaps, upgrade-path changes, or a mix of
     a buff and a nerf that is neither on the whole
   - **Added** / **Removed** / **Renamed** / **Moved** for those operations
@@ -160,11 +160,11 @@ the whole reason it exists.
 
 Three files have a known resolution:
 
-| File | Resolution |
-| ---- | ---------- |
-| `AlchemistCode/Compat/GameCompat.cs` | **keep main's.** The method surface is identical on both sides; only the bodies differ. If beta added a method, copy that method across and write main's body for it. |
-| `AlchemistCode/Compat/SepsisPowerCompat.cs` | **keep main's**, for the same reason. |
-| `workshop/workshop.json` | take beta's. The `[quote]` banner at the top will be beta's, which is wrong for main, but the next `release promote` rebuilds it from `targets.json`, so it heals itself. |
+| File                                        | Resolution                                                                                                                                                                |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AlchemistCode/Compat/GameCompat.cs`        | **keep main's.** The method surface is identical on both sides; only the bodies differ. If beta added a method, copy that method across and write main's body for it.     |
+| `AlchemistCode/Compat/SepsisPowerCompat.cs` | **keep main's**, for the same reason.                                                                                                                                     |
+| `workshop/workshop.json`                    | take beta's. The `[quote]` banner at the top will be beta's, which is wrong for main, but the next `release promote` rebuilds it from `targets.json`, so it heals itself. |
 
 `workshop/mod_id.txt` is not tracked: it holds a different item id per branch, and
 `release` writes it from `targets.json` anyway. `--id` on the upload command is
@@ -203,10 +203,10 @@ The `release` command (see `do_release` in `scripts/dev.sh`) does these steps:
    - `dist/RELEASE_NOTES-<tag>.txt`, the changelog section for this version, with
      each bullet on one line because both paste targets wrap text themselves. Use
      it for the GitHub Release body and for the Workshop update note.
-   It also points `workshop/` at the right item: `workshop/mod_id.txt` and the
-   `title` in `workshop/workshop.json` are both written from
-   `workshop/targets.json`, so a `ModUploader upload -w workshop` afterwards
-   cannot go to the wrong place.
+     It also points `workshop/` at the right item: `workshop/mod_id.txt` and the
+     `title` in `workshop/workshop.json` are both written from
+     `workshop/targets.json`, so a `ModUploader upload -w workshop` afterwards
+     cannot go to the wrong place.
 5. **Stop and print**: the command stops so that you can examine the diff. It
    commits nothing. When the diff is correct, run `publish-release`.
 
@@ -317,7 +317,7 @@ above, so do this deliberately and once:
 The `new` subcommand does **not** do any of this — it copies a local template
 folder and never contacts Steam. Do not reach for it.
 
-Then rename the existing item 3780726901 to *The Alchemist (Beta Branch)*, which
+Then rename the existing item 3780726901 to _The Alchemist (Beta Branch)_, which
 happens by itself on the next beta `release` + upload, since the title now comes
 from `targets.json`. Cross-link the two descriptions so a player on the wrong
 branch can find the right item.
