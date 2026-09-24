@@ -10,6 +10,9 @@ mod).
 ### Added
 
 - Added a Poison Damage Forecast Color option to the mod's Accessibility settings
+- Added art for all 5 badges
+- Added art for Antitoxin, Ferment and Laced icons
+- Added art for Hiccup card (Ancients Awakened)
 
 ### Changed
 
