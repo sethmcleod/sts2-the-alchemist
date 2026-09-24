@@ -33,7 +33,7 @@ public class AlchemistModConfig : SimpleModConfig
         GenerateOptionsForAllProperties(optionContainer);
         AddRestoreDefaultsButton(optionContainer);
         LinkShownFocusNeighbors(optionContainer);
-        KonamiCode.Listen(optionContainer, () => UnlockCheats(optionContainer));
+        KonamiCode.Listen(optionContainer, () => UnlockSecrets(optionContainer));
 
         // [ConfigVisibleIf] hides and shows rows as settings change, and these relink after it because
         // it subscribed first. BaseLib drops both lists when the page closes
@@ -75,12 +75,12 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigHoverTip]
     public static bool AnalyticsEnabled { get; set; } = true;
 
-    [ConfigSection("Cheats")]
+    [ConfigSection("Secrets")]
     [ConfigHoverTip]
-    [ConfigVisibleIf(nameof(CheatsUnlocked))]
+    [ConfigVisibleIf(nameof(SecretsUnlocked))]
     public static bool BigHeadMode { get; set; } = false;
 
-    [ConfigSection("Cheats")]
+    [ConfigSection("Secrets")]
     [ConfigHoverTip]
     [ConfigVisibleIf(nameof(BigHeadSizeShown))]
     [ConfigSlider(1.5, 2.5, 0.1, Format = "{0:0.0}x")]
@@ -192,18 +192,18 @@ public class AlchemistModConfig : SimpleModConfig
             NModalContainer.Instance.Add((Node)(object)popup, true);
     }
 
-    private static bool CheatsUnlocked() => CheatUnlocks.IsUnlocked;
+    private static bool SecretsUnlocked() => SecretUnlocks.IsUnlocked;
 
-    private static bool BigHeadSizeShown() => CheatUnlocks.IsUnlocked && BigHeadMode;
+    private static bool BigHeadSizeShown() => SecretUnlocks.IsUnlocked && BigHeadMode;
 
-    private void UnlockCheats(Control optionContainer)
+    private void UnlockSecrets(Control optionContainer)
     {
-        if (CheatUnlocks.IsUnlocked || !GodotObject.IsInstanceValid(optionContainer)) return;
-        if (!CheatUnlocks.Unlock()) return;
+        if (SecretUnlocks.IsUnlocked || !GodotObject.IsInstanceValid(optionContainer)) return;
+        if (!SecretUnlocks.Unlock()) return;
 
-        // Runs the [ConfigVisibleIf] checks again, which shows the Cheats section
+        // Runs the [ConfigVisibleIf] checks again, which shows the Secrets section
         ConfigReloaded();
-        ConfigToast.Show(optionContainer, new LocString("settings_ui", "ALCHEMIST-CHEATS_UNLOCKED_TOAST"));
+        ConfigToast.Show(optionContainer, new LocString("settings_ui", "ALCHEMIST-SECRETS_UNLOCKED_TOAST"));
     }
 
     // BaseLib's SetupFocusNeighbors also links the controls in hidden rows, thus controller focus
