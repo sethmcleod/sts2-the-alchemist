@@ -149,7 +149,7 @@ public static class AntitoxinBarPatches
             };
             if (ResourceLoader.Load<Font>("res://fonts/kreon_bold.ttf") is { } forecastFont)
                 forecast.AddThemeFontOverride("font", forecastFont);
-            forecast.AddThemeColorOverride("font_color", DrainedColor);
+            forecast.AddThemeColorOverride("font_color", AlchemistModConfig.PoisonForecastColor);
             clone.AddChild(forecast);
 
             Bars.Add(__instance, new Parts
@@ -368,6 +368,7 @@ public static class AntitoxinBarPatches
                     if (number.GetThemeFontSize("font_size") != fontSize)
                         number.AddThemeFontSizeOverride("font_size", fontSize);
                     var fontHeight = number.GetThemeFont("font")?.GetHeight(fontSize) ?? fontSize;
+                    number.AddThemeColorOverride("font_color", AlchemistModConfig.PoisonForecastColor);
                     number.Text = $"←{damageNext}";
                     number.Size = new Vector2(ForecastWidth, fontHeight);
                     number.Position = new Vector2(hp.Size.X + ForecastPad, (hp.Size.Y - fontHeight) / 2f);

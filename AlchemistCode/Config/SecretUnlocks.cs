@@ -7,15 +7,16 @@ using FileAccess = Godot.FileAccess;
 namespace Alchemist.AlchemistCode.Config;
 
 /// <summary>
-/// Whether the Konami code has opened the Cheats section on the current save profile.
+/// Whether the Konami code has opened the Secrets section on the current save profile.
 /// </summary>
 /// <remarks>
 /// The flag is a file in the profile folder and each profile has its own. The cloud sync of the
 /// game reads only the files it names and leaves this file alone.
 /// </remarks>
-internal static class CheatUnlocks
+internal static class SecretUnlocks
 {
     private const string FileName = "alchemist.json";
+    // Profiles already store this key, and a new name would lock them again
     private const string UnlockedKey = "cheatsUnlocked";
 
     private static string? _readPath;
@@ -47,7 +48,7 @@ internal static class CheatUnlocks
         using var file = FileAccess.Open(path, FileAccess.ModeFlags.Write);
         if (file == null)
         {
-            MainFile.Logger.Error($"Could not save the cheat unlock to {path} ({FileAccess.GetOpenError()}).");
+            MainFile.Logger.Error($"Could not save the secrets unlock to {path} ({FileAccess.GetOpenError()}).");
             return false;
         }
 
@@ -67,7 +68,7 @@ internal static class CheatUnlocks
         }
         catch (Exception e) when (e is JsonException or InvalidOperationException or FormatException)
         {
-            MainFile.Logger.Error($"Could not read {path}, thus the cheats stay locked: {e.Message}");
+            MainFile.Logger.Error($"Could not read {path}, thus the secrets stay locked: {e.Message}");
             return false;
         }
     }

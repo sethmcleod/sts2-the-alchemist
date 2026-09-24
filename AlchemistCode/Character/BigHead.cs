@@ -17,7 +17,7 @@ internal static class BigHead
 
     private static readonly Dictionary<(ulong Skeleton, string Bone), Vector2> SetupScales = [];
 
-    public static bool Enabled => AlchemistModConfig.BigHeadMode && CheatUnlocks.IsUnlocked;
+    public static bool Enabled => AlchemistModConfig.BigHeadMode && SecretUnlocks.IsUnlocked;
 
     public static void Apply(Resource skeleton, IEnumerable<string> bones)
     {
