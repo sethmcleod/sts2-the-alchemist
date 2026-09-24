@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.19] - 2026-09-24
+
 ### Added
 
 - Added a hidden Cheats section to the mod settings, unlocked with a classic code...
