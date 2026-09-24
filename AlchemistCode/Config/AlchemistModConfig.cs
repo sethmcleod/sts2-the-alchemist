@@ -7,6 +7,7 @@ using Alchemist.AlchemistCode.Patches;
 using Alchemist.AlchemistCode.Potions;
 using Alchemist.AlchemistCode.Relics;
 using BaseLib.Config;
+using BaseLib.Config.UI;
 using Godot;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
@@ -32,17 +33,17 @@ public class AlchemistModConfig : SimpleModConfig
         // Auto-generates the UI from the properties and [ConfigButton] methods below
         GenerateOptionsForAllProperties(optionContainer);
         AddRestoreDefaultsButton(optionContainer);
-        LinkShownFocusNeighbors(optionContainer);
+        RefreshShownRows(optionContainer);
         KonamiCode.Listen(optionContainer, () => UnlockSecrets(optionContainer));
 
-        // [ConfigVisibleIf] hides and shows rows as settings change, and these relink after it because
+        // [ConfigVisibleIf] hides and shows rows as settings change, and these refresh after it because
         // it subscribed first. BaseLib drops both lists when the page closes
-        EventHandler relinkOnChange = (_, _) => LinkShownFocusNeighbors(optionContainer);
-        Action relinkOnReload = () => LinkShownFocusNeighbors(optionContainer);
-        ConfigChanged += relinkOnChange;
-        OnConfigReloaded += relinkOnReload;
-        _configChangedHandlers.Add(relinkOnChange);
-        _configReloadedHandlers.Add(relinkOnReload);
+        EventHandler refreshOnChange = (_, _) => RefreshShownRows(optionContainer);
+        Action refreshOnReload = () => RefreshShownRows(optionContainer);
+        ConfigChanged += refreshOnChange;
+        OnConfigReloaded += refreshOnReload;
+        _configChangedHandlers.Add(refreshOnChange);
+        _configReloadedHandlers.Add(refreshOnReload);
     }
 
     [ConfigSection("Timeline")]
@@ -60,6 +61,12 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]
     public static bool ShowPoisonForecast { get; set; } = true;
+
+    [ConfigSection("Accessibility")]
+    [ConfigHoverTip]
+    [ConfigVisibleIf(nameof(ShowPoisonForecast))]
+    [ConfigColorPicker(EditAlpha = false)]
+    public static Color PoisonForecastColor { get; set; } = new("76FF40");
 
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]
@@ -83,7 +90,7 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigSection("Secrets")]
     [ConfigHoverTip]
     [ConfigVisibleIf(nameof(BigHeadSizeShown))]
-    [ConfigSlider(1.5, 2.5, 0.1, Format = "{0:0.0}x")]
+    [ConfigSlider(1.5, 2.5, 0.25, Format = "{0:0%}")]
     public static double BigHeadSize { get; set; } = 1.5;
 
     // Shown above Unlock All: opens the Timeline without granting the card, relic, and potion unlocks
@@ -204,6 +211,38 @@ public class AlchemistModConfig : SimpleModConfig
         // Runs the [ConfigVisibleIf] checks again, which shows the Secrets section
         ConfigReloaded();
         ConfigToast.Show(optionContainer, new LocString("settings_ui", "ALCHEMIST-SECRETS_UNLOCKED_TOAST"));
+    }
+
+    private static void RefreshShownRows(Control optionContainer)
+    {
+        ShowDividersBetweenShownRows(optionContainer);
+        LinkShownFocusNeighbors(optionContainer);
+    }
+
+    // BaseLib shows a divider only when the rows on both sides of it are shown, thus a hidden row takes
+    // both of its dividers with it and leaves no line between the rows around it. This shows the last
+    // divider above each shown row that has a shown row above it
+    private static void ShowDividersBetweenShownRows(Control optionContainer)
+    {
+        foreach (var section in optionContainer.GetChildren().OfType<NConfigCollapsibleSection>())
+        {
+            var shownRowAbove = false;
+            ColorRect? divider = null;
+            foreach (var child in section.ContentContainer.GetChildren())
+            {
+                if (child is ColorRect line)
+                {
+                    line.Visible = false;
+                    divider = line;
+                }
+                else if (child is NConfigOptionRow { Visible: true })
+                {
+                    if (shownRowAbove && divider != null) divider.Visible = true;
+                    shownRowAbove = true;
+                    divider = null;
+                }
+            }
+        }
     }
 
     // BaseLib's SetupFocusNeighbors also links the controls in hidden rows, thus controller focus

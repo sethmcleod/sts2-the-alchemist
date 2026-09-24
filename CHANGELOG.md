@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added a Poison Damage Forecast Color option to the mod's Accessibility settings
+
 ### Changed
 
 - Nerfed Knitbone card: Block decreased from 5(7) -> 5, and additional Block for each Mix changed from 2 -> 1(2)
