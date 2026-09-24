@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.20] - 2026-09-24
+
 ### Added
 
 - Added a Poison Damage Forecast Color option to the mod's Accessibility settings
