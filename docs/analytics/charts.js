@@ -50,6 +50,18 @@ function svg(tag, attrs = {}, text) {
   return node;
 }
 
+// An image that turns into its alt text when it fails to load. With no alt text it is decoration,
+// so it hides and keeps its space
+export function image(src, className, alt = '') {
+  return el('img', {
+    class: className,
+    src,
+    alt,
+    decoding: 'async',
+    onerror: (e) => (alt ? e.target.replaceWith(alt) : (e.target.style.visibility = 'hidden')),
+  });
+}
+
 export function emptyNote(text = 'Not enough runs for these filters yet.') {
   return el('p', { class: 'empty' }, text);
 }
@@ -107,7 +119,8 @@ export function tiles(host, items) {
 // ---------- bar list ----------
 
 // A labelled horizontal bar per item, the value as text beside it. Reads well at any width.
-// items: [{label, note, value, text, textNote, lo, hi, ref, dot, fill, onSelect}]
+// items: [{label, note, value, text, textNote, lo, hi, ref, dot, icon, fill, onSelect}], where icon is
+// an image URL. When any item has one, the rest keep an empty slot so the labels line up
 // options: max (the full-bar value, default the largest value), reference (a marker on every
 // track, for example the overall win rate; an item's own `ref` wins) with referenceLabel, and
 // limit (rows shown before a "Show all" button)
@@ -118,7 +131,9 @@ export function barList(host, items, options = {}) {
   const max = options.max ?? (Math.max(...items.map((i) => i.value || 0)) || 1);
   const at = (v) => `${Math.max(0, Math.min(1, v / max)) * 100}%`;
   const refOf = (item) => item.ref ?? reference;
-  const list = el('ol', { class: 'bars', '--label-width': labelWidth });
+  const icons = items.some((item) => item.icon);
+  const width = icons ? `calc(${labelWidth || '12rem'} + 32px)` : labelWidth;
+  const list = el('ol', { class: 'bars', '--label-width': width });
   items.forEach((item, i) => {
     const track = el(
       'span',
@@ -134,6 +149,7 @@ export function barList(host, items, options = {}) {
         'span',
         { class: 'bar-label' },
         item.dot && el('i', { class: 'dot', '--dot': item.dot }),
+        icons && (item.icon ? image(item.icon, 'bar-icon') : el('span', { class: 'bar-icon' })),
         item.label,
         item.note && el('small', {}, item.note),
       ),

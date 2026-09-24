@@ -21,6 +21,7 @@ import {
   el,
   emptyNote,
   fixed,
+  image,
   num,
   pct,
   points,
@@ -103,6 +104,22 @@ function encounterOf(id) {
 
 // A tally label such as "fresh_batch_power" back to its model id
 const labelToId = (label) => prefix() + label.toUpperCase();
+
+// An image in the mod's repo, on GitHub's raw file host. Null when the export had no repo to point at
+const asset = (path) => (path && S.meta.assets?.base ? S.meta.assets.base + path : null);
+const iconOf = (id) => asset(S.icons?.[id]);
+
+// Card text in the game's loc markup: [gold] keywords, [green] upgraded numbers, [energy] icons
+function cardText(markup) {
+  const energy = asset(S.meta.assets?.energy);
+  let color = null;
+  return markup.split(/\[(\/?(?:gold|green)|energy)\]/).map((part, i) => {
+    if (i % 2 === 0) return color && part ? el('span', { class: `t-${color}` }, part) : part;
+    if (part === 'energy') return energy ? image(energy, 'energy', 'Energy') : 'Energy';
+    color = part.startsWith('/') ? null : part;
+    return null;
+  });
+}
 
 function minutes(value) {
   if (value == null) return '–';
@@ -687,13 +704,43 @@ async function renderCards(on) {
   );
 }
 
+// The card's art and text, then its stats in the current filters. A card no run in the filters
+// finished with still shows what it is
 function openCard(id) {
-  const on = selected();
-  const { rows } = cardRows(on);
-  const r = rows.find((row) => row.id === id);
-  if (!r) return;
-  $('sheetTitle').textContent = r.name;
-  $('sheetSub').textContent = [r.rarity, ...r.themes, ...r.tags].join(' · ');
+  const info = S.card_info[id];
+  const r = cardRows(selected()).rows.find((row) => row.id === id);
+  if (!r && !info) return;
+  const head = asset(S.meta.assets?.character);
+  $('sheetTitle').replaceChildren(head ? image(head, 'head') : '', info?.name ?? r.name);
+  $('sheetSub').textContent = [
+    [info?.rarity ?? r.rarity, info?.type].filter(Boolean).join(' '),
+    ...(info?.themes ?? []),
+    ...(info?.tags ?? []),
+  ].join(' · ');
+  const art = asset(info?.art);
+  $('sheetFace').hidden = !info?.text;
+  $('sheetFace').replaceChildren(
+    art ? image(art, 'card-art') : '',
+    el(
+      'div',
+      {},
+      info?.cost && el('p', { class: 'card-cost' }, cardText(`Costs ${info.cost} [energy]`)),
+      info?.text && el('p', { class: 'card-text' }, cardText(info.text)),
+      el(
+        'p',
+        { class: 'card-version' },
+        `Card text from ${S.meta.text_version}`,
+        r ? `, stats from ${versionPhrase(state.version)}.` : '.',
+      ),
+    ),
+  );
+  $('sheetStats').hidden = !r;
+  $('sheetEmpty').hidden = Boolean(r);
+  if (r) cardStats(id, r);
+  $('cardSheet').showModal();
+}
+
+function cardStats(id, r) {
   tiles($('sheetTiles'), [
     { label: 'Win rate', value: pct(r.winrate), note: `${num(r.held)} runs, likely ${range(wilson(r.held_wins, r.held))}` },
     {
@@ -741,10 +788,16 @@ function openCard(id) {
     byVersion.map(([version, g]) => rateItem(version, g.held_wins, g.held)),
     { max: 1, limit: 6, labelWidth: '9rem' },
   );
-  $('cardSheet').showModal();
 }
 
 // ---------- mechanics ----------
+
+// A card, relic, potion or power named by a source tally. A card opens its sheet
+function sourceOf(label) {
+  if (label === 'unknown') return { label: 'Other' };
+  const id = labelToId(label);
+  return { label: nameOf(id), icon: iconOf(id), onSelect: S.card_info[id] ? () => openCard(id) : null };
+}
 
 async function renderMechanics(on) {
   CARDS ??= table((await load('cards.json')).cards);
@@ -816,7 +869,7 @@ async function renderMechanics(on) {
   barList(
     $('antitoxinSources'),
     antitoxinSources.map(([label, c]) => ({
-      label: label === 'unknown' ? 'Other' : nameOf(labelToId(label)),
+      ...sourceOf(label),
       value: c.count / gained,
       text: pct(c.count / gained),
       textNote: num(c.count),
@@ -890,7 +943,7 @@ async function renderMechanics(on) {
   barList(
     $('mixSources'),
     sources.map(([label, c]) => ({
-      label: nameOf(labelToId(label)),
+      ...sourceOf(label),
       value: c.count / sourceTotal,
       text: pct(c.count / sourceTotal),
       textNote: num(c.count),
@@ -992,7 +1045,10 @@ async function renderMechanics(on) {
       .filter(([, c]) => c.count >= state.min)
       .map(([label, c]) => {
         const picked = picks.get(label)?.count || 0;
-        return rateItem(nameOf(labelToId(label)), picked, c.count, { note: `${num(c.count)} offers` });
+        return rateItem(nameOf(labelToId(label)), picked, c.count, {
+          note: `${num(c.count)} offers`,
+          icon: iconOf(labelToId(label)),
+        });
       })
       .sort((a, b) => b.value - a.value),
     { max: 1, reference: even, referenceLabel: `Even share: ${pct(even)}`, labelWidth: '11rem' },
@@ -1056,7 +1112,7 @@ function renderBadges(on) {
     const card = el(
       'article',
       { class: 'card badge' },
-      el('h3', {}, badgeName(badge.id)),
+      el('h3', {}, asset(badge.icon) && image(asset(badge.icon), 'badge-icon'), badgeName(badge.id)),
       el(
         'p',
         { class: 'note' },
@@ -1097,8 +1153,8 @@ async function renderRelics(on) {
   const relics = [...sumBy(RELICS, on, (r) => r.relic)].map(([id, g]) => ({ id, ...g, name: nameOf(id) }));
   const typical = median(relics.filter((r) => r.held >= state.min).map((r) => r.held_wins / r.held));
   const relicItem = (r) =>
-    rateItem(r.name, r.held_wins, r.held, { note: `in ${pct(rate(r.held, t.runs))} of runs` });
-  const reference = { max: 1, reference: typical, referenceLabel: `Typical relic: ${pct(typical)}`, labelWidth: '12rem' };
+    rateItem(r.name, r.held_wins, r.held, { note: `in ${pct(rate(r.held, t.runs))} of runs`, icon: iconOf(r.id) });
+  const reference = { max: 1, reference: typical, referenceLabel: `Typical relic: ${pct(typical)}`, labelWidth: '13rem' };
   const mine = relics.filter((r) => r.id.startsWith(prefix()) && r.held >= state.min).sort((a, b) => b.held - a.held);
   barList($('modRelics'), mine.map(relicItem), reference);
   const base = relics.filter((r) => !r.id.startsWith(prefix()) && r.held >= state.min).sort((a, b) => b.held - a.held);
@@ -1111,7 +1167,7 @@ async function renderRelics(on) {
   );
   barList(
     $('ancients'),
-    offered.map((r) => rateItem(r.name, r.picked, r.offered, { note: `${num(r.offered)} offers` })),
+    offered.map((r) => rateItem(r.name, r.picked, r.offered, { note: `${num(r.offered)} offers`, icon: iconOf(r.id) })),
     { max: 1, limit: 10, reference: even, referenceLabel: `Even share: ${pct(even)}`, labelWidth: '11rem' },
   );
 
@@ -1123,15 +1179,12 @@ async function renderRelics(on) {
     $('potions'),
     potions.map((p) => ({
       label: nameOf(p.id),
-      dot: p.id.startsWith(prefix()) ? 'var(--gold)' : 'var(--line)',
+      icon: iconOf(p.id),
       value: p.per100,
       text: fixed(p.per100, 0),
       textNote: p.bought ? `${num(p.bought)} bought` : null,
     })),
     { limit: 12, labelWidth: '11rem' },
-  );
-  $('potions').append(
-    el('div', { class: 'legend' }, el('span', {}, el('i', { class: 'dot', '--dot': 'var(--gold)' }), 'Alchemist potion')),
   );
 }
 
@@ -1431,6 +1484,11 @@ async function init() {
   recentStart = findRecentStart();
 
   const { meta } = S;
+  const head = asset(meta.assets?.character);
+  if (head) {
+    $('favicon').href = head;
+    Object.assign($('brandIcon'), { src: head, hidden: false });
+  }
   $('lede').textContent = `Stats from ${num(meta.total_runs)} Alchemist runs shared by ${num(meta.players)} players. Updated every night.`;
   const updated = new Date(meta.generated_at).toLocaleString('en-US', {
     dateStyle: 'medium',

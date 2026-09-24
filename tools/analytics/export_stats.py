@@ -418,6 +418,13 @@ def build(runs: list[dict]) -> dict[str, dict]:
         "theme_min_cards": THEME_MIN_CARDS,
         "ascension_bands": ASCENSION_BANDS,
         "epochs": epochs,
+        # The page loads each image from base + its repo path
+        "assets": {
+            "base": mod_meta.asset_base(),
+            "character": mod_meta.repo_path(mod_meta.CHARACTER_ICON),
+            "energy": mod_meta.repo_path(mod_meta.ENERGY_ICON),
+        },
+        "text_version": mod_meta.mod_version(),
         "histograms": {metric: {"width": w, "last": last} for metric, (w, last) in HISTOGRAMS.items()},
         "badges": [b | {"metric": BADGE_METRICS.get(b["id"])} for b in badges],
         # The oldest mod version whose client sends the schema 3 counters. A version's runs all share
@@ -431,6 +438,7 @@ def build(runs: list[dict]) -> dict[str, dict]:
         "meta": meta,
         "names": mod_meta.titles(),
         "card_info": cards,
+        "icons": mod_meta.icons(),
         "groups": {"key": ["version", "build", "ascension", "pool", "coop"], "counts": [],
                    "rows": [list(key) for key in groups]},
     }
