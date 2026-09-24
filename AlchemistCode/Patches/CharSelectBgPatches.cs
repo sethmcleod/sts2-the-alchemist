@@ -47,6 +47,8 @@ class CharSelectBgPatches
     // motion baked in; a mod scene cannot hold a SpineSprite, so it is built here
     private const string SelectDir = $"{MainFile.ResPath}/animations/character_select/alchemist";
 
+    private static readonly string[] HeadBones = ["head"];
+
     static void AttachSpineScene(Control bg)
     {
         if (bg.GetNodeOrNull("SelectScreenSpine") != null)
@@ -55,6 +57,8 @@ class CharSelectBgPatches
         if (SpineModel.Load($"{SelectDir}/select_screen.atlas", $"{SelectDir}/select_screen.skel")
             is not { } data)
             return;
+
+        BigHead.Apply(data, HeadBones);
 
         if (SpineModel.CreateSprite(data, 0.65f) is not { } sprite)
             return;

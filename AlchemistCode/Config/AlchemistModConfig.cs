@@ -8,6 +8,7 @@ using Alchemist.AlchemistCode.Potions;
 using Alchemist.AlchemistCode.Relics;
 using BaseLib.Config;
 using Godot;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Saves;
@@ -24,12 +25,24 @@ public class AlchemistModConfig : SimpleModConfig
         ConfigChanged += (_, _) => CardArtPatches.RefreshPortraitsIfArtSourceChanged();
     }
 
+    private static readonly NodePath SelfPath = new(".");
+
     public override void SetupConfigUI(Control optionContainer)
     {
         // Auto-generates the UI from the properties and [ConfigButton] methods below
         GenerateOptionsForAllProperties(optionContainer);
         AddRestoreDefaultsButton(optionContainer);
-        SetupFocusNeighbors(optionContainer);
+        LinkShownFocusNeighbors(optionContainer);
+        KonamiCode.Listen(optionContainer, () => UnlockCheats(optionContainer));
+
+        // [ConfigVisibleIf] hides and shows rows as settings change, and these relink after it because
+        // it subscribed first. BaseLib drops both lists when the page closes
+        EventHandler relinkOnChange = (_, _) => LinkShownFocusNeighbors(optionContainer);
+        Action relinkOnReload = () => LinkShownFocusNeighbors(optionContainer);
+        ConfigChanged += relinkOnChange;
+        OnConfigReloaded += relinkOnReload;
+        _configChangedHandlers.Add(relinkOnChange);
+        _configReloadedHandlers.Add(relinkOnReload);
     }
 
     [ConfigSection("Timeline")]
@@ -61,6 +74,17 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigSection("Analytics")]
     [ConfigHoverTip]
     public static bool AnalyticsEnabled { get; set; } = true;
+
+    [ConfigSection("Cheats")]
+    [ConfigHoverTip]
+    [ConfigVisibleIf(nameof(CheatsUnlocked))]
+    public static bool BigHeadMode { get; set; } = false;
+
+    [ConfigSection("Cheats")]
+    [ConfigHoverTip]
+    [ConfigVisibleIf(nameof(BigHeadSizeShown))]
+    [ConfigSlider(1.5, 2.5, 0.1, Format = "{0:0.0}x")]
+    public static double BigHeadSize { get; set; } = 1.5;
 
     // Shown above Unlock All: opens the Timeline without granting the card, relic, and potion unlocks
     [ConfigSection("Unlocks")]
@@ -166,5 +190,48 @@ public class AlchemistModConfig : SimpleModConfig
         var popup = NErrorPopup.Create("Success", message, false);
         if (popup != null && NModalContainer.Instance != null)
             NModalContainer.Instance.Add((Node)(object)popup, true);
+    }
+
+    private static bool CheatsUnlocked() => CheatUnlocks.IsUnlocked;
+
+    private static bool BigHeadSizeShown() => CheatUnlocks.IsUnlocked && BigHeadMode;
+
+    private void UnlockCheats(Control optionContainer)
+    {
+        if (CheatUnlocks.IsUnlocked || !GodotObject.IsInstanceValid(optionContainer)) return;
+        if (!CheatUnlocks.Unlock()) return;
+
+        // Runs the [ConfigVisibleIf] checks again, which shows the Cheats section
+        ConfigReloaded();
+        ConfigToast.Show(optionContainer, new LocString("settings_ui", "ALCHEMIST-CHEATS_UNLOCKED_TOAST"));
+    }
+
+    // BaseLib's SetupFocusNeighbors also links the controls in hidden rows, thus controller focus
+    // can land on a control that is not drawn. This links only the rows on show
+    private static void LinkShownFocusNeighbors(Control optionContainer)
+    {
+        var controls = ShownFocusables(optionContainer).ToList();
+        for (var i = 0; i < controls.Count; i++)
+        {
+            controls[i].FocusNeighborTop = controls[(i + controls.Count - 1) % controls.Count].GetPath();
+            controls[i].FocusNeighborBottom = controls[(i + 1) % controls.Count].GetPath();
+            controls[i].FocusNeighborLeft = SelfPath;
+            controls[i].FocusNeighborRight = SelfPath;
+        }
+    }
+
+    private static IEnumerable<Control> ShownFocusables(Node node)
+    {
+        if (node is Control { Visible: false }) yield break;
+
+        if (node is Control { FocusMode: Control.FocusModeEnum.All } control)
+        {
+            yield return control;
+            yield break;
+        }
+
+        foreach (var child in node.GetChildren())
+            foreach (var focusable in ShownFocusables(child))
+                yield return focusable;
     }
 }
