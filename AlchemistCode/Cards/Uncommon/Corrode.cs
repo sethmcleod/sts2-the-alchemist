@@ -34,8 +34,8 @@ public class Corrode : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_blunt"),
-            tmpSfx: "blunt_attack.mp3").WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"),
+            tmpSfx: "heavy_attack.mp3").WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
             .Execute(choiceContext);
         if (play.Target is not { IsAlive: true } target) return;
         PoisonSplash(target);

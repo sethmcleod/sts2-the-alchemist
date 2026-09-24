@@ -17,7 +17,7 @@ public sealed class Fermented() : CustomBadge(requiresWin: false, multiplayerOnl
 
     public override BadgeRarity Rarity(SerializableRun run, SerializablePlayer player)
     {
-        var turns = RunCounters.TallyFor(player).GetValueOrDefault(AnalyticsHooks.FermentTurns);
+        var turns = RunCounters.TallyFor(player).GetValueOrDefault(RunCounters.FermentTurns);
         if (turns >= GoldTurns) return BadgeRarity.Gold;
         if (turns >= SilverTurns) return BadgeRarity.Silver;
         if (turns >= BronzeTurns) return BadgeRarity.Bronze;

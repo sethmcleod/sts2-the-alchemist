@@ -10,6 +10,8 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
 public class Vent : AlchemistCard
 {
+    protected internal override bool PlaysCastAnimation => false;
+
     public Vent() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithCostUpgradeBy(-1);

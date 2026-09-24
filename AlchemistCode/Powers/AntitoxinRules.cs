@@ -62,11 +62,20 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (power is PoisonPower && power.Owner.IsPlayer && amount > 0)
-            Analytics.RunCounters.Add(power.Owner.Player, Analytics.RunCounters.PoisonGained, (int)amount);
-        if (power is AntitoxinPower && power.Owner.IsPlayer && amount > 0)
-            Analytics.RunCounters.RaiseTo(power.Owner.Player, Analytics.RunCounters.AntitoxinPeak,
-                (int)power.Amount);
+        if (!power.Owner.IsPlayer || amount <= 0) return Task.CompletedTask;
+        var player = power.Owner.Player;
+        if (power is PoisonPower)
+        {
+            Analytics.RunCounters.Add(player, Analytics.RunCounters.PoisonGained, (int)amount);
+            Analytics.RunCounters.RaiseTo(player, Analytics.RunCounters.PoisonPeak, (int)power.Amount);
+        }
+        if (power is AntitoxinPower)
+        {
+            Analytics.RunCounters.RaiseTo(player, Analytics.RunCounters.AntitoxinPeak, (int)power.Amount);
+            var source = cardSource ?? AntitoxinPower.GrantingSource;
+            Analytics.RunCounters.Tally(player, Analytics.RunCounters.AntitoxinSource + Analytics.RunCounters.Label(source),
+                (int)amount);
+        }
         return Task.CompletedTask;
     }
 

@@ -12,7 +12,7 @@ public class HeavyDose : AlchemistCard
 {
     public HeavyDose() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(26, 6);
+        WithDamage(28, 8);
         WithVar("SelfPoison", 4, 0);
         WithVar("Per", 4, 0);
         WithUpgradingCardTip<Token.BurstingMix>();

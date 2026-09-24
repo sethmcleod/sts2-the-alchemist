@@ -9,6 +9,8 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Poison)]
 public class BitterDraught : AlchemistCard
 {
+    protected internal override bool PlaysCastAnimation => false;
+
     public BitterDraught() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithEnergy(2, 1);

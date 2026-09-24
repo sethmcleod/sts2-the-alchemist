@@ -22,9 +22,9 @@
 #   scripts/dev.sh sync-main      merge beta into main so main can promote (see RELEASING.md)
 #   scripts/dev.sh analytics [export|seed|serve]
 #                                 export: pull the run rows from Supabase and write the dashboard
-#                                 data (needs the service_role key, see tools/analytics/common.py);
-#                                 seed: fabricate runs and export them offline; serve: open the
-#                                 dashboard at http://localhost:8765 from docs/analytics/
+#                                 data (needs the secret key, see tools/analytics/README.md);
+#                                 seed: fabricate 400 runs and export them, no network; serve:
+#                                 open the dashboard at http://localhost:8765 from docs/analytics/
 #   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with the fixes
 #   scripts/dev.sh env            print the resolved paths and exit
 #

@@ -33,6 +33,25 @@ public partial class AntitoxinPower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
+    // Set while a relic, potion or power grants Antitoxin, so the source analytics can name it. A card
+    // needs none of this, because the power hooks carry the card
+    internal static AbstractModel? GrantingSource { get; private set; }
+
+    public static async Task GrantFrom(AbstractModel source, PlayerChoiceContext choiceContext, Creature target,
+        decimal amount, Creature? applier)
+    {
+        var outer = GrantingSource;
+        GrantingSource = source;
+        try
+        {
+            await PowerCmd.Apply<AntitoxinPower>(choiceContext, target, amount, applier, null);
+        }
+        finally
+        {
+            GrantingSource = outer;
+        }
+    }
+
     // For the bar. The Id comes off the canonical model, so MegaTryAddingTip de-duplicates it
     public static IHoverTip TipFor(Creature creature)
     {
@@ -101,6 +120,7 @@ public partial class AntitoxinPower : AlchemistPower
     {
         if (!participants.Contains(Owner) || Amount <= 0) return;
         if (Owner.Player is { PlayerCombatState.TurnNumber: 1 }) return;
+        Analytics.RunCounters.Tally(Owner.Player, Analytics.RunCounters.AntitoxinDecayed);
         await PowerCmd.Decrement(this);
     }
 }

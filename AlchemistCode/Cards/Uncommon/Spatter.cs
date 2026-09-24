@@ -13,8 +13,8 @@ public class Spatter : AlchemistCard
 {
     public Spatter() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
     {
-        WithVar("Base", 3, 1);
-        WithVar("Per", 1, 0);
+        WithVar("Base", 2, 0);
+        WithVar("Per", 2, 1);
         WithTip(typeof(PoisonPower));
     }
 

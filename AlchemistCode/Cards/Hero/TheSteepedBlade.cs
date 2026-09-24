@@ -32,7 +32,7 @@ public class TheSteepedBlade : AlchemistHeroCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_slash")).Execute(choiceContext);
         await AdvanceFerment(choiceContext, DynamicVars["Turns"].IntValue);
     }
 

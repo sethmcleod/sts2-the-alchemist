@@ -26,6 +26,6 @@ public class PanaceaPower : AlchemistPower
     {
         if (power is not PoisonPower || amount <= 0 || power.Owner != Owner) return;
         Flash();
-        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner, 1, Owner, null);
+        await AntitoxinPower.GrantFrom(this, choiceContext, Owner, 1, Owner);
     }
 }
