@@ -225,6 +225,16 @@ public static class Mixing
         return picked;
     }
 
+    /// <summary>Exhaust two ingredient Mixes from the hand and fold them into one Compound Mix.</summary>
+    public static async Task<CardModel?> Combine(PlayerChoiceContext ctx, Player owner, CardModel first,
+        CardModel second, AbstractModel? source = null)
+    {
+        await CardCmd.Exhaust(ctx, first);
+        await CardCmd.Exhaust(ctx, second);
+        Analytics.RunCounters.Tally(owner, Analytics.RunCounters.MixCombined, 2);
+        return await CreateCompound(ctx, owner, first, second, source);
+    }
+
     /// <summary>
     /// Fold two ingredient Mixes into one Compound Mix in the owner's hand. The compound draws a card
     /// when played, which gives back the card the pairing cost. It carries no Ethereal of its own,

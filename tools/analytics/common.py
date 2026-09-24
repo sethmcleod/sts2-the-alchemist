@@ -1,11 +1,8 @@
-"""Shared plumbing for the analytics scripts: the Supabase fetch and the read-key discovery.
+"""Shared plumbing for the analytics scripts: the Supabase fetch and the read key.
 
-The card metadata comes from card_meta.py. The interactive dashboard is docs/analytics/index.html,
-fed by the aggregate JSON that export_stats.py writes to docs/analytics/data/.
-
-Read access needs the secret key (sb_secret_..., or the legacy service_role key). It is never committed: put it in
-tools/analytics/supabase-service-key.local.txt (gitignored) or the SUPABASE_READ_KEY env var.
-The publishable key baked into the DLL is insert-only and cannot read anything.
+Reads need the secret key (sb_secret_..., or the legacy service_role key). Never commit it. Put
+it in tools/analytics/supabase-service-key.local.txt (gitignored) or the SUPABASE_READ_KEY env
+var. The publishable key in the DLL can only insert, so it cannot read anything.
 """
 
 import os

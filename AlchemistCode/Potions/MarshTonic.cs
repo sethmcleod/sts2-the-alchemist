@@ -27,7 +27,7 @@ public class MarshTonic : AlchemistPotion
         var creature = target ?? Owner.Creature;
         NCombatRoom.Instance?.PlaySplashVfx(creature, AlchemistModConfig.AntitoxinBarColor);
         await CreatureCmd.GainBlock(creature, 8m, ValueProp.Unpowered, null);
-        await PowerCmd.Apply<Powers.AntitoxinPower>(choiceContext, creature, 6m, Owner.Creature, null);
+        await Powers.AntitoxinPower.GrantFrom(this, choiceContext, creature, 6m, Owner.Creature);
         await PowerCmd.Apply<PoisonPower>(choiceContext, creature, 4m, Owner.Creature, null);
     }
 }

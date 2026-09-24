@@ -7,8 +7,8 @@ using MegaCrit.Sts2.Core.Helpers;
 
 namespace Alchemist.AlchemistCode.Analytics;
 
-// Fire-and-forget JSON POST to a Supabase REST (PostgREST) insert endpoint. A failure is logged and
-// dropped: analytics must never touch gameplay, so nothing here awaits, retries, or throws
+// Fire and forget. A failure is logged and dropped, so nothing here awaits, retries or throws into
+// the game
 internal static class RunMetricsUploader
 {
     private static readonly HttpClient Client = new() { Timeout = TimeSpan.FromSeconds(15) };
