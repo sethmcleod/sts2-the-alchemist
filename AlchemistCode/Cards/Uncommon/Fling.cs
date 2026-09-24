@@ -11,8 +11,8 @@ public class Fling : AlchemistCard
 {
     public Fling() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(5, 0);
-        WithVar("Per", 3, -1);
+        WithDamage(4, 1);
+        WithVar("Per", 2, 0);
         WithCalculatedVar("CalculatedHits", 0, static (card, _) => Hits(card));
         WithTip(typeof(PoisonPower));
     }

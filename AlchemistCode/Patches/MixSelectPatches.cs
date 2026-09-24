@@ -1,5 +1,4 @@
 using System.Reflection;
-using Alchemist.AlchemistCode.Commands;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Nodes.Cards;
@@ -8,8 +7,9 @@ namespace Alchemist.AlchemistCode.Patches;
 
 // NCardGrid centers a row on the width of a FULL row (Columns * card width), so a selection with
 // fewer cards than fit sits left of center. That never shows on the screens the base game fills
-// (library, deck views), but the four-card Mix pick floats alone on a wide grid. Shift only that
-// case: every displayed card is a Mix token, and there are fewer of them than columns
+// (library, deck views), but the four-card Mix pick floats alone on a wide grid. Shift only while
+// the Mix picker is open and shows fewer cards than columns. A content check is not enough: the
+// library filtered to "Mix" also shows only Mix tokens
 [HarmonyPatch(typeof(NCardGrid), "UpdateGridPositions")]
 public static class MixSelectCenterPatch
 {
@@ -19,10 +19,9 @@ public static class MixSelectCenterPatch
 
     public static void Postfix(NCardGrid __instance)
     {
+        if (!MixPickerGridPatch.PickerOpen) return;
         var holders = __instance.CurrentlyDisplayedCardHolders.ToList();
         if (holders.Count == 0) return;
-        if (!holders.All(h => Mixing.IsMix(h.CardModel)))
-            return;
 
         var columns = (int)ColumnsGetter.Invoke(__instance, null)!;
         if (holders.Count >= columns) return;

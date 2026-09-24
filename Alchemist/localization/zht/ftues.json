@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "這條紫色的條是你的[gold]抗毒素[/gold]。每當你的[gold]中毒[/gold]觸發時，[gold]抗毒素[/gold]會防止其傷害，至多為條上顯示的數值。在你的回合開始時，[gold]抗毒素[/gold]減少 [blue]1[/blue] 點。",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "提示：抗毒素",
+  "ALCHEMIST-POISON_FTUE.description": "你的[gold]中毒[/gold]超過了你的[gold]抗毒素[/gold]。條旁的[green]綠色數字[/green]就是兩者之差。獲得[gold]抗毒素[/gold]來補上差值，否則你將在下回合開始時受到等量傷害。",
+  "ALCHEMIST-POISON_FTUE.title": "提示：中毒傷害"
+}

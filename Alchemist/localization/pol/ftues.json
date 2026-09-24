@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "Ten fioletowy pasek to twoja [gold]Antytoksyna[/gold]. Kiedykolwiek twoja [gold]Trucizna[/gold] się aktywuje, [gold]Antytoksyna[/gold] powstrzymuje jej obrażenia, do wartości pokazanej na pasku. Na początku twojej tury [gold]Antytoksyna[/gold] zmniejsza się o [blue]1[/blue].",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "Wskazówka: Antytoksyna",
+  "ALCHEMIST-POISON_FTUE.description": "Twoja [gold]Trucizna[/gold] jest większa niż twoja [gold]Antytoksyna[/gold]. [green]Zielona liczba[/green] obok paska to różnica. Zdobądź [gold]Antytoksynę[/gold], aby ją pokryć, inaczej na początku następnej tury otrzymasz tyle obrażeń.",
+  "ALCHEMIST-POISON_FTUE.title": "Wskazówka: Obrażenia od Trucizny"
+}

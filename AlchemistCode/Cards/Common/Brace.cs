@@ -14,7 +14,7 @@ public class Brace : AlchemistCard
     public Brace() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(7, 2);
-        WithQuietPower<BracePower>(2, 1);
+        WithNumberedPower<BracePower>(3, 1);
         WithTip(typeof(PoisonPower));
     }
 

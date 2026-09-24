@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "各戦闘の開始時、ランダムな2種の[gold]合剤[/gold]からなる[gold]複合合剤[/gold]を1枚[gold]手札[/gold]に加える。",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "各戦闘の開始時、ランダムな[blue]2[/blue]種の[gold]合剤[/gold]からなる[gold]複合合剤[/gold]を1枚[gold]手札[/gold]に加える。",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "決められなかったので、両方になった。",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "キメラの花",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "各戦闘の開始時、[gold]合剤+[/gold]を1枚選んで[gold]手札[/gold]に加える。それは[gold]保留[/gold]を得る。",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "各戦闘の開始時、[gold]抗毒素[/gold][blue]5[/blue]を得て、ランダムな[gold]合剤[/gold]を1枚[gold]手札[/gold]に加える。休憩所で[gold]調合[/gold]できる。",
   "ALCHEMIST-MURKY_FLASK.flavor": "中の渦は、いつまでも静まらない。",
   "ALCHEMIST-MURKY_FLASK.title": "濁ったフラスコ",
-  "ALCHEMIST-RADIANT_FLASK.description": "各戦闘の開始時、[gold]抗毒素[/gold][blue]10[/blue]を得て、ランダムな[gold]合剤[/gold]を1枚[gold]手札[/gold]に加える。休憩所で[gold]調合[/gold]できる。取得時、ポーションスロットを[blue]1[/blue]つと、ランダムなレアの[gold]ポーション[/gold]を1つ得る。",
+  "ALCHEMIST-RADIANT_FLASK.description": "取得時、ポーションスロットを[blue]1[/blue]枠追加し、ランダムなレアの[gold]ポーション[/gold]を1個獲得する。各戦闘の開始時、[gold]抗毒素[/gold][blue]10[/blue]を得て、ランダムな[gold]合剤[/gold]を1枚[gold]手札[/gold]に加える。休憩所で[gold]調合[/gold]できる。",
   "ALCHEMIST-RADIANT_FLASK.flavor": "中の光は、決して消えない。",
   "ALCHEMIST-RADIANT_FLASK.title": "輝くフラスコ",
   "ALCHEMIST-TOADSTONE.description": "[gold]抗毒素[/gold]を得るたび、追加で[gold]抗毒素[/gold][blue]1[/blue]を得る。",

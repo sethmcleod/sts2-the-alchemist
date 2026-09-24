@@ -12,8 +12,8 @@ using MegaCrit.Sts2.Core.Models;
 namespace Alchemist.AlchemistCode.Cards.Hero;
 
 // The Hero Expansion gives every character one Common that Enchants a card mid-combat, and its
-// enchantments last the run like the base game's. This is the Alchemist's. Laced keys on
-// IsPoweredAttack, so a card that deals its damage Unpowered would carry a promise that never fires
+// enchantments last the run like the base game's. This is the Alchemist's. The enchantment itself
+// refuses a card that already prints the Laced keyword
 [CardTheme(CardTheme.Poison)]
 public class Varnish : AlchemistHeroCard
 {
@@ -29,7 +29,6 @@ public class Varnish : AlchemistHeroCard
 
     private bool CanLace(CardModel card) =>
         card != this && card.Type == CardType.Attack && card.Enchantment == null
-        && card is not AlchemistCard { DealsUnpoweredDamage: true }
         && ModelDb.Enchantment<Laced>().CanEnchant(card);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

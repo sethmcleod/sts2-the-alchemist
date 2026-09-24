@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "Esta barra morada es tu [gold]antitoxina[/gold]. Cada vez que se activa tu [gold]veneno[/gold], la [gold]antitoxina[/gold] evita su daño, hasta la cantidad que muestra la barra. Al comienzo de tu turno, la [gold]antitoxina[/gold] se reduce en [blue]1[/blue].",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "Dato: antitoxina",
+  "ALCHEMIST-POISON_FTUE.description": "Tu [gold]veneno[/gold] es mayor que tu [gold]antitoxina[/gold]. El [green]número verde[/green] junto a la barra es la diferencia. Obtén [gold]antitoxina[/gold] para cubrirla o recibirás ese daño al comienzo de tu siguiente turno.",
+  "ALCHEMIST-POISON_FTUE.title": "Dato: daño de veneno"
+}

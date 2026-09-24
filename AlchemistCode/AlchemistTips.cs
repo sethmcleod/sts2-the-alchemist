@@ -1,10 +1,10 @@
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Helpers;
 using System.Linq;
 using Alchemist.AlchemistCode.Patches;
 using Godot;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode;
 
@@ -34,8 +34,6 @@ public static class AlchemistTips
     // Brew is a Rest Site option rather than a keyword, so the Kit relics that grant it explain it here
     private static IHoverTip? _brew, _transformMix, _compoundMix;
     public static IHoverTip Brew => _brew ??= Static("ALCHEMIST-BREW");
-
-
 
     // The base Transform tip promises a random card of any rarity, which a Mix maker does not deliver
     public static IHoverTip TransformMix => _transformMix ??= Static("ALCHEMIST-TRANSFORM_MIX");
@@ -67,10 +65,9 @@ public static class AlchemistTips
         { "ALCHEMIST-FUMING_MIX", "ALCHEMIST-ACRID_MIX", "ALCHEMIST-SPARKLING_MIX" };
 
     // The row list is for makers that can produce four or more kinds; a maker of three or fewer
-    // previews the token cards themselves instead
+    // previews the token cards themselves instead.
     private static IHoverTip[] Family(bool upgraded) =>
-        new[] { Static("ALCHEMIST-MIX") }
-            .Concat(BasicKeys.Concat(SpecialKeys).Select(k => Row(k, upgraded))).ToArray();
+        BasicKeys.Concat(SpecialKeys).Select(k => Row(k, upgraded)).ToArray();
 
     private static IHoverTip[]? _mix, _mixUpgraded;
 
@@ -80,10 +77,6 @@ public static class AlchemistTips
 
     public static IHoverTip[] Mix => _mix ??= Family(false);
     public static IHoverTip[] MixUpgraded => _mixUpgraded ??= Family(true);
-
-    // A maker that produces one fixed Mix tips the family header plus that Mix's row only
-    public static IHoverTip[] MixSingle(string mixKey, string icon) =>
-        [Static("ALCHEMIST-MIX"), Static(mixKey, icon)];
 
     public static IHoverTip CompoundMix => _compoundMix ??= Static("ALCHEMIST-COMPOUND_MIX", "mix_compound");
 }

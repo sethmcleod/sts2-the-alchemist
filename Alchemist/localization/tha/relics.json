@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "ตอนเริ่มต้นแต่ละการต่อสู้ เพิ่ม[gold]ยาผสมประกอบ[/gold]จาก[gold]ยาผสม[/gold] 2 ชนิดแบบสุ่มเข้า[gold]มือ[/gold]",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "ตอนเริ่มต้นแต่ละการต่อสู้ เพิ่ม[gold]ยาผสมประกอบ[/gold]จาก[gold]ยาผสม[/gold] [blue]2[/blue] ชนิดแบบสุ่มเข้า[gold]มือ[/gold]",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "มันตัดสินใจไม่ได้ เลยกลายเป็นทั้งสองอย่าง",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "ดอกไม้คิเมร่า",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "ตอนเริ่มต้นแต่ละการต่อสู้ เลือก[gold]ยาผสม+[/gold]ที่จะเพิ่มเข้า[gold]มือ[/gold] มันได้รับ[gold]คงสภาพ[/gold]",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]5[/blue] [gold]สารต้านพิษ[/gold] และเพิ่ม[gold]ยาผสม[/gold] 1 ใบแบบสุ่มเข้า[gold]มือ[/gold] คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้",
   "ALCHEMIST-MURKY_FLASK.flavor": "วังวนข้างในไม่เคยนิ่งสนิทสักที",
   "ALCHEMIST-MURKY_FLASK.title": "ขวดขุ่นมัว",
-  "ALCHEMIST-RADIANT_FLASK.description": "ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]10[/blue] [gold]สารต้านพิษ[/gold] และเพิ่ม[gold]ยาผสม[/gold] 1 ใบแบบสุ่มเข้า[gold]มือ[/gold] คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้ เมื่อรับมา ได้รับช่องเก็บขวดยา [blue]1[/blue] ช่อง และ[gold]ขวดยา[/gold]หายากแบบสุ่ม 1 ขวด",
+  "ALCHEMIST-RADIANT_FLASK.description": "เมื่อรับมา ได้รับช่องเก็บขวดยา [blue]1[/blue] ช่อง และจัดหา[gold]ขวดยา[/gold]หายากแบบสุ่ม 1 ขวด ตอนเริ่มต้นแต่ละการต่อสู้ ได้รับ [blue]10[/blue] [gold]สารต้านพิษ[/gold] และเพิ่ม[gold]ยาผสม[/gold] 1 ใบแบบสุ่มเข้า[gold]มือ[/gold] คุณสามารถ[gold]ปรุงยา[/gold]ที่จุดพักได้",
   "ALCHEMIST-RADIANT_FLASK.flavor": "แสงข้างในไม่เคยดับ",
   "ALCHEMIST-RADIANT_FLASK.title": "ขวดเรืองรอง",
   "ALCHEMIST-TOADSTONE.description": "ทุกครั้งที่คุณได้รับ[gold]สารต้านพิษ[/gold] ได้รับเพิ่ม [blue]1[/blue] [gold]สารต้านพิษ[/gold]",

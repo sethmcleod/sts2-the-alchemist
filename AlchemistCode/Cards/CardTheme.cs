@@ -9,7 +9,6 @@ public enum CardTheme
 {
     None,
     Poison,
-    Infuse,
     Potions,
     Antitoxin,
     Ferment,

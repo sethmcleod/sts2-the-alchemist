@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "At the start of each combat, add a [gold]Compound Mix[/gold] of two random [gold]Mixes[/gold] into your [gold]Hand[/gold].",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "At the start of each combat, add a [gold]Compound Mix[/gold] of [blue]2[/blue] random [gold]Mixes[/gold] into your [gold]Hand[/gold].",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "It could not decide, so it became both.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "Chimera Blossom",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "At the start of each combat, choose a [gold]Mix+[/gold] to add into your [gold]Hand[/gold]. It gains [gold]Retain[/gold].",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "At the start of each combat, gain [blue]5[/blue] [gold]Antitoxin[/gold] and add a random [gold]Mix[/gold] into your [gold]Hand[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
   "ALCHEMIST-MURKY_FLASK.flavor": "The swirl inside never quite settles.",
   "ALCHEMIST-MURKY_FLASK.title": "Murky Flask",
-  "ALCHEMIST-RADIANT_FLASK.description": "At the start of each combat, gain [blue]10[/blue] [gold]Antitoxin[/gold] and add a random [gold]Mix[/gold] into your [gold]Hand[/gold]. You can [gold]Brew[/gold] at Rest Sites. Upon pickup, gain [blue]1[/blue] potion slot and a random Rare [gold]Potion[/gold].",
+  "ALCHEMIST-RADIANT_FLASK.description": "Upon pickup, gain [blue]1[/blue] potion slot and procure a random Rare [gold]Potion[/gold]. At the start of each combat, gain [blue]10[/blue] [gold]Antitoxin[/gold] and add a random [gold]Mix[/gold] into your [gold]Hand[/gold]. You can [gold]Brew[/gold] at Rest Sites.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "The light inside is ever-glowing.",
   "ALCHEMIST-RADIANT_FLASK.title": "Radiant Flask",
   "ALCHEMIST-TOADSTONE.description": "Whenever you gain [gold]Antitoxin[/gold], gain an additional [blue]1[/blue] [gold]Antitoxin[/gold].",

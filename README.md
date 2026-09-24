@@ -2,7 +2,7 @@
 
 ## Overview
 
-- ✨ 90+ new cards
+- ✨ 100+ new cards
 - 💎 9 new relics
 - 🧪 11 new potions
 - 📚 7 timeline epochs
@@ -44,6 +44,11 @@ world.
 
 Design and Code - Seth\
 Art and Animation - [Fulgur](https://fulgur.carrd.co/)
+
+Includes additional content for these awesome mods!
+
+- [The Hero Expansion](https://steamcommunity.com/sharedfiles/filedetails/?id=3749294247)
+- [Ancients Awakened](https://steamcommunity.com/sharedfiles/filedetails/?id=3747492675)
 
 ---
 

@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "매 전투 시작 시, 무작위 [gold]혼합액[/gold] 2종으로 이루어진 [gold]복합 혼합액[/gold]을 [gold]손[/gold]에 추가합니다.",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "매 전투 시작 시, 무작위 [gold]혼합액[/gold] [blue]2[/blue]종으로 이루어진 [gold]복합 혼합액[/gold]을 [gold]손[/gold]에 추가합니다.",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "정하지 못해서, 둘 다가 되었다.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "키메라 꽃",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "매 전투 시작 시, [gold]손[/gold]에 추가할 [gold]혼합액+[/gold]를 선택합니다. 그 카드가 [gold]보존[/gold]을 얻습니다.",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "매 전투 시작 시, [gold]항독소[/gold]를 [blue]5[/blue] 얻고 무작위 [gold]혼합액[/gold]을 [gold]손[/gold]에 추가합니다. 휴식 장소에서 [gold]조제[/gold]할 수 있습니다.",
   "ALCHEMIST-MURKY_FLASK.flavor": "안에서 도는 소용돌이는 좀처럼 가라앉지 않는다.",
   "ALCHEMIST-MURKY_FLASK.title": "탁한 플라스크",
-  "ALCHEMIST-RADIANT_FLASK.description": "매 전투 시작 시, [gold]항독소[/gold]를 [blue]10[/blue] 얻고 무작위 [gold]혼합액[/gold]을 [gold]손[/gold]에 추가합니다. 휴식 장소에서 [gold]조제[/gold]할 수 있습니다. 획득 시, 포션 슬롯을 [blue]1[/blue]개 얻고 무작위 희귀 [gold]포션[/gold]을 1개 얻습니다.",
+  "ALCHEMIST-RADIANT_FLASK.description": "획득 시, 포션 슬롯을 [blue]1[/blue]개 얻고, 무작위 희귀 [gold]포션[/gold]을 1개 생성합니다. 매 전투 시작 시, [gold]항독소[/gold]를 [blue]10[/blue] 얻고 무작위 [gold]혼합액[/gold]을 [gold]손[/gold]에 추가합니다. 휴식 장소에서 [gold]조제[/gold]할 수 있습니다.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "안의 빛은 결코 꺼지지 않는다.",
   "ALCHEMIST-RADIANT_FLASK.title": "빛나는 플라스크",
   "ALCHEMIST-TOADSTONE.description": "[gold]항독소[/gold]를 얻을 때마다, 추가로 [gold]항독소[/gold]를 [blue]1[/blue] 얻습니다.",

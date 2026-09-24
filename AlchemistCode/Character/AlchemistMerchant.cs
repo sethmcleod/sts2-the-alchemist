@@ -40,6 +40,8 @@ internal static class AlchemistMerchant
         var data = AlchemistVisuals.SkeletonData();
         if (data == null) return;
 
+        BigHead.Apply(data, AlchemistVisuals.HeadBones);
+
         var box = SpineModel.Bounds(data, FallbackBounds);
         var scale = ModelHeight / box.Size.Y;
         if (SpineModel.CreateSprite(data, scale) is not { } sprite) return;

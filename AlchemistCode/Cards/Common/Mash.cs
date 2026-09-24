@@ -19,7 +19,8 @@ public class Mash : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_blunt"),
+            tmpSfx: "blunt_attack.mp3").Execute(choiceContext);
         var mix = await Mixing.CreateOne<Token.BurstingMix>(choiceContext, Owner, IsUpgraded, this);
         if (mix == null) return;
         CardCmd.ApplyKeyword(mix, CardKeyword.Retain);

@@ -1,10 +1,11 @@
 using Alchemist.AlchemistCode.Compat;
 using System;
+using System.Reflection;
+using HarmonyLib;
 using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using Alchemist.AlchemistCode.Character;
-using Alchemist.AlchemistCode.Commands;
 using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Enchantments;
 using Alchemist.AlchemistCode.Extensions;
@@ -78,25 +79,14 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // needs its own guard
     protected override bool ShouldGlowGoldInternal => IsMutable && ConditionalGlow;
 
-    internal bool HpFractionInRange(double lower, double upper)
-    {
-        if (Owner?.Creature is not { } c || c.MaxHp <= 0) return false;
-        var pct = (double)c.CurrentHp / c.MaxHp;
-        return pct >= lower && pct <= upper;
-    }
-
     protected Task LoseHp(PlayerChoiceContext choiceContext, int amount) =>
         GameCompat.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
 
-    // Laced keys on IsPoweredAttack, so a card that deals its damage Unpowered can carry Laced without
-    // it ever firing. Those cards keep their own impact rather than showing a splat that does nothing
-    protected internal virtual bool DealsUnpoweredDamage => false;
-
     // Laced hits land as a green splat instead of the card's own impact. Play time only, because
     // Enchantment is live on the mutable combat instance
     protected string HitVfx(string vfx) =>
-        Enchantment is Laced && !DealsUnpoweredDamage ? "vfx/vfx_slime_impact" : vfx;
+        Enchantment is Laced ? "vfx/vfx_slime_impact" : vfx;
 
     // The green splash the base game pairs with an on-hit Poison apply, see DeadlyPoison
     protected static void PoisonSplash(Creature? target)
@@ -117,11 +107,18 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             ? creature.GetPowerAmount<PoisonPower>()
             : 0m;
 
-    // A power var without the power's own hover tip. The base game shows a tip only for powers a
-    // card names as a keyword (Poison, Strength); a card that spells out its power's effect shows
-    // none (Flame Barrier, Rage, Envenom). BaseLib's WithPower always adds the tip
-    protected ConstructedCardModel WithQuietPower<T>(int baseVal, int upgrade = 0) where T : PowerModel =>
+    private static readonly FieldInfo HoverTipsField = AccessTools.Field(typeof(ConstructedCardModel), "_hoverTips");
+
+    // A power var whose tip carries the card's own number. BaseLib's WithVars adds the power's tip
+    // with no amount for any PowerVar, and an amountless tip prints the power's 0, so that tip is
+    // swapped for one that reads the var: 1 (2) on the card is 1 (2) in the tip
+    protected ConstructedCardModel WithNumberedPower<T>(int baseVal, int upgrade = 0) where T : PowerModel
+    {
         WithVar(new PowerVar<T>(baseVal).WithUpgrade(upgrade));
+        if (HoverTipsField.GetValue(this) is List<TooltipSource> { Count: > 0 } tips) tips.RemoveAt(tips.Count - 1);
+        var name = typeof(T).Name;
+        return WithTips(card => new[] { HoverTipFactory.FromPower<T>(card.DynamicVars[name].IntValue) });
+    }
 
     // The other cards in the owner's hand, for a card that scales with them. Zero outside a live
     // combat, where the hand pile is stale or missing
@@ -175,10 +172,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             if (!_previewRunsHooks) return raw;
             if (Owner?.Creature is not { } dealer) return null;
             if ((CombatState ?? dealer.CombatState) is not { } combat) return null;
-            // Must carry the same props the attack does, or Strength and Vulnerable inflate the
-            // previewed number on a card whose real hit ignores them
-            var props = DealsUnpoweredDamage ? ValueProp.Move | ValueProp.Unpowered : ValueProp.Move;
-            var total = GameCompat.ModifyDamage(Owner.RunState, combat, _previewTarget, dealer, raw, props,
+            var total = GameCompat.ModifyDamage(Owner.RunState, combat, _previewTarget, dealer, raw, ValueProp.Move,
                 this, null, ModifyDamageHookType.All, _previewMode, out _);
             return (int)Math.Max(total, 0m);
         }
@@ -255,8 +249,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             await mellow.OnFermented(turns);
         if (creature.GetPower<OverflowPower>() is { } overflow)
             overflow.OnFermented(this);
-        if (creature.GetPower<QuintessencePower>() is { } quintessence)
-            await quintessence.OnFermented(choiceContext);
         await OnFermented(choiceContext, turns);
     }
 
@@ -306,14 +298,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             IsMutable && FormulaDamagePreview is { } d ? $"\n(Deals [green]{d}[/green] damage)" : "");
         description.Add("FormulaHpLoss",
             IsMutable && FormulaHpLossPreview is { } hp ? $" ([red]{hp}[/red])" : "");
-        // Live count only in combat; the compendium and reward previews show the bare sentence
-        if (ShowsMixesPlayed)
-            description.Add("MixesPlayed",
-                IsMutable && CombatState != null ? $" ({Mixing.PlayedThisCombat(Owner)})" : "");
     }
-
-    // A card that scales with the Mixes played this combat opts in, and places {MixesPlayed} in its text
-    protected virtual bool ShowsMixesPlayed => false;
 
     protected static string PreviewLine(string key, string variable, int count)
     {

@@ -40,8 +40,6 @@ public class Combine : AlchemistCard
             : (await CardSelectCmd.FromHand(choiceContext, Owner, new CardSelectorPrefs(Prompt, 2, 2),
                 Mixing.IsIngredient, this)).ToList();
         if (picked.Count < 2) return;
-        foreach (var mix in picked)
-            await CardCmd.Exhaust(choiceContext, mix);
-        await Mixing.CreateCompound(choiceContext, Owner, picked[0], picked[1], this);
+        await Mixing.Combine(choiceContext, Owner, picked[0], picked[1], this);
     }
 }

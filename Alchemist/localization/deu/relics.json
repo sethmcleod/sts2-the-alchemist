@@ -1,5 +1,5 @@
 {
-  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Nimm zu Beginn jedes Kampfes eine [gold]Verbundmixtur[/gold] aus zwei zufälligen [gold]Mixturen[/gold] auf deine [gold]Hand[/gold].",
+  "ALCHEMIST-CHIMERA_BLOSSOM.description": "Nimm zu Beginn jedes Kampfes eine [gold]Verbundmixtur[/gold] aus [blue]2[/blue] zufälligen [gold]Mixturen[/gold] auf deine [gold]Hand[/gold].",
   "ALCHEMIST-CHIMERA_BLOSSOM.flavor": "Sie konnte sich nicht entscheiden, also wurde sie beides.",
   "ALCHEMIST-CHIMERA_BLOSSOM.title": "Chimärenblüte",
   "ALCHEMIST-EVERFLOWING_CHALICE.description": "Wähle zu Beginn jedes Kampfes eine [gold]Mixtur+[/gold], die du auf deine [gold]Hand[/gold] nimmst. Sie bekommt [gold]Behalten[/gold].",
@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "Erhalte zu Beginn jedes Kampfes [blue]5[/blue] [gold]Antitoxin[/gold] und nimm eine zufällige [gold]Mixtur[/gold] auf deine [gold]Hand[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold].",
   "ALCHEMIST-MURKY_FLASK.flavor": "Der Wirbel darin kommt nie ganz zur Ruhe.",
   "ALCHEMIST-MURKY_FLASK.title": "Trübe Flasche",
-  "ALCHEMIST-RADIANT_FLASK.description": "Erhalte zu Beginn jedes Kampfes [blue]10[/blue] [gold]Antitoxin[/gold] und nimm eine zufällige [gold]Mixtur[/gold] auf deine [gold]Hand[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold]. Erhalte beim Aufheben [blue]1[/blue] Trankplatz und einen zufälligen seltenen [gold]Trank[/gold].",
+  "ALCHEMIST-RADIANT_FLASK.description": "Erhalte beim Aufheben [blue]1[/blue] Trank-Slot und beschaffe einen zufälligen seltenen [gold]Trank[/gold]. Erhalte zu Beginn jedes Kampfes [blue]10[/blue] [gold]Antitoxin[/gold] und nimm eine zufällige [gold]Mixtur[/gold] auf deine [gold]Hand[/gold]. Du kannst an Lagerfeuern [gold]Brauen[/gold].",
   "ALCHEMIST-RADIANT_FLASK.flavor": "Das Licht darin erlischt nie.",
   "ALCHEMIST-RADIANT_FLASK.title": "Strahlende Flasche",
   "ALCHEMIST-TOADSTONE.description": "Immer wenn du [gold]Antitoxin[/gold] erhältst, erhalte [blue]1[/blue] [gold]Antitoxin[/gold] mehr.",

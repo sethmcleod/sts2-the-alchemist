@@ -1,9 +1,9 @@
 -- Re-keys the Mix counters of rows uploaded before Acrid Mix took the Weak and Vulnerable effect
 -- and Fuming Mix took Tainted. The keys follow the card name, so the old "fuming" counts (Weak and
 -- Vulnerable) move to "acrid", and the old "acrid" counts (the retired Poison Mix) move to "poison".
--- The same move applies to the tally keys mixmade:, mixplay: and pair:. A row the new client
--- uploads carries alchemist.mix_keys = 2 and is left alone, so the script is safe to run twice.
--- Run it once in the Supabase SQL editor, then export.
+-- The same move applies to the tally keys mixmade:, mixplay: and pair:. A newer row carries
+-- alchemist.mix_keys = 2 or alchemist.schema >= 2 and is left alone, so the script is safe to run
+-- twice. Run it once in the Supabase SQL editor, then export.
 
 create or replace function pg_temp.remap_label(label text) returns text language sql immutable as $$
   select case label when 'fuming' then 'acrid' when 'acrid' then 'poison' else label end
@@ -41,4 +41,4 @@ $$;
 
 update public.runs
 set alchemist = pg_temp.remap_alchemist(alchemist)
-where coalesce((alchemist->>'mix_keys')::int, 1) < 2;
+where coalesce((alchemist->>'schema')::int, (alchemist->>'mix_keys')::int, 1) < 2;

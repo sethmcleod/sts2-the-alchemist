@@ -9,17 +9,103 @@ mod).
 
 ### Added
 
-- Added a Ferment indicator: Ferment cards show the turns Fermented in their top right corner in Hand, Draw, Discard, and Exhaust piles
 - Added 9 cards that are offered only while The Hero Expansion is loaded: Varnish, Pond Scum and Membrane (Common), Winnow, Tadpole and Unfazed (Uncommon), Mud Pack, Overspray and Chrysopoeia (Rare)
-- Added Ancients Awakened cross-mod support: its Ancient Scepter turns the Alchemist's Strikes and Defends into Potent Strikes and Potent Defends, and its Experimental Serum gives Quintessence
-- Added Gold Leaf potion (Brew only): "Add Replay to a card in your Hand."
+
+## [0.14.20] - 2026-09-24
+
+### Added
+
+- Added a Poison Damage Forecast Color option to the mod's Accessibility settings
+- Added art for all 5 badges
+- Added art for Antitoxin, Ferment and Laced icons
+- Added art for Hiccup card (Ancients Awakened)
+
+### Changed
+
+- Nerfed Knitbone card: Block decreased from 5(7) -> 5, and additional Block for each Mix changed from 2 -> 1(2)
+- Renamed the hidden Cheats section in the mod settings to Secrets, since none will be gameplay altering
+
+## [0.14.19] - 2026-09-24
+
+### Added
+
+- Added a hidden Cheats section to the mod settings, unlocked with a classic code...
+
+## [0.14.18] - 2026-09-24
+
+### Changed
+
+- Buffed Fallout card: damage increased from 7(9) -> 8(11)
+- Buffed Heavy Dose card: damage increased from 26(32) -> 28(36)
+- Changed Fling card: damage decreased from 5 -> 4(5), and Poison needed for each additional hit decreased from 3(2) -> 2
+- Changed Spatter card: Poison applied decreased from 3(4) -> 2, and additional Poison for each card discarded increased from 1 -> 2(3)
+- Expanded the anonymous run analytics to also track card plays, badges earned, Antitoxin sources and decay, peak self-Poison, unplayed Mixes, Poison dealt to enemies, and turns Fermented per card
+- Improved the hit effects, sounds and attack animations of Bonk, Corrode, Mash, Mortar, Nightcap, Patient Strike, Proof, Spike and The Steeped Blade cards
+- Nerfed Mortar card: additional damage for each turn Fermented decreased from 2(3) -> 2
+- Nerfed Premonition card: Scry decreased from 4(5) -> 4
+- Redesigned the public run stats page to be more user friendly
+- Reworked All At Once card: "Laced. Deal 6 (9) damage X times. Exhaust."
+- Updated the cast animation to match the base game: Acrid Mix now plays it, and Bitter Draught, Puff Up, Quench, Tempered, Vent and Vintage no longer do
+
+## [0.14.17] - 2026-09-22
+
+### Changed
+
+- Buffed Numb card: Dexterity now applies to the Block gained for each card discarded
+- Changed All At Once and Wormwood cards: their damage is now affected by Strength, Vulnerable, Weak and Tainted
+- Changed the in-combat previews of All At Once, Numb, Reclaim, Sweat It Out and Vent cards to the base game's format
+- Removed the Mix count after the Bonk and Knitbone card text, since their damage and Block numbers already include it
+- Reworked Fuming Mix card into an Attack: "Deal 3 (4) damage to ALL enemies. Apply 3 (4) Tainted. Exhaust."
+- Updated the wording of Acrid Mix, Bestow, Brine, Croak, Digest, Distill, Eureka, Heavy Dose, Needle Point, Pour Over, Puff Up, Quench, Rerun, Resolve, Tempered, Toughen and Wormwood cards to be consistent with the base game
+- Updated the wording of the Apothecary, Fresh Batch, Fresh Cutting, Miasma, Panacea and Rerun powers, the Chimera Blossom and Radiant Flask relics, the Solvent potion and the Laced keyword to be consistent with the base game
+
+### Fixed
+
+- Apothecary power's tooltip now shows how many Mixes it adds each turn, and whether they are Mixes+
+- Compound Mix now properly deals a Fuming Mix ingredient's damage to ALL enemies
+- Fixed the card library shifting its cards off center when a search matched only Mixes
+- Puncture now deals damage before Vulnerable is applied, matching other base game debuff attacks
+- Quench now properly counts extra Antitoxin from Toadstone toward its Block
+- Wormwood no longer glows when you have Poison, and its damage number now includes your Poison like the other Laced cards
+
+## [0.14.16] - 2026-09-21
+
+### Added
+
+- Added Ancients Awakened cross-mod support: its Ancient Scepter turns the Alchemist's Strikes and Defends into Potent Strikes and Potent Defends, and its Experimental Serum gives Hiccup
+- Added Hiccup card (Ancients Awakened): "Gain 6 (8) Block. Draw 1 card. Every 3 Mixes you play in a turn, put this into your Hand."
 - Added Potent Defend card (Ancients Awakened): "Gain 5 (8) Block. Add a random Mix into your Hand."
 - Added Potent Strike card (Ancients Awakened): "Laced. Gain 1 Poison. Gain 1 Antitoxin. Deal 6 (9) damage."
-- Added Quintessence card (Ancients Awakened): "Whenever one of your cards Ferments, add a random Mix into your Hand." Quintessence+ adds a Mix+
-- Added Reconstitute card (Hero Expansion): "Gain 2 Poison. Put a card from your Discard Pile into your Hand. Exhaust." Reconstitute+ loses Exhaust
+- Added Reconstitute card (Hero Expansion): "Gain 2 Poison. Put a card from your Discard Pile into your Hand and Upgrade it. Exhaust." Reconstitute+ loses Exhaust
 - Added The Hero Expansion cross-mod support: its Broken Blade transforms into The Steeped Blade for the Alchemist, and its Mysterious Flashlight gives Reconstitute
-- Added the Laced keyword: "This card deals additional damage equal to your Poison." Jab, Forked Tongue, Lash Out, Wormwood and Potent Strike print it in place of the sentence
 - Added The Steeped Blade card (Hero Expansion): "Retain. Ferment. Deal 9 (12) damage. This card Ferments 1. Whenever this card Ferments, apply Poison to ALL enemies equal to its Fermentation."
+- Added tutorial tips for Antitoxin and Poison: each appears once, the first time the Alchemist fights and the first time they would take Poison damage. They follow the game's Tutorials setting and its Reset Tutorials button
+
+### Changed
+
+- Buffed Brace: Poison applied to the attacker 2 (3) -> 3 (4)
+- Buffed Caustic Strike: Poison applied 2 (3) -> 3, additional Poison per turn fermented 2 -> 2 (3)
+- Buffed Eureka: Eureka+ transforms the card into a Mix+
+- Buffed Free Samples: Free Samples+ adds Mixes+
+- Buffed Fumigate: Poison applied to ALL enemies 3 (4) -> 3 (5)
+- Buffed Overbrew: Overbrew+ adds copies of a Mix+
+- Buffed Spores: Poison applied to ALL enemies 2 (3) -> 3 (4)
+- Buffed Warm Up: Warm Up+ adds a Mix+
+- Changed the Effervesce text to "Add one of each basic Mix into another player's Hand."
+- Reworked Spit: "Deal 4 (6) damage. Apply 3 (4) Poison. Gain 1 Poison."
+
+### Fixed
+
+- Improved the Mix hover tips display for Apothecary, Bonk, Fresh Batch, Hiccup, Knitbone, Reclaim, Refine and Blend
+- Fixed the power hover tips of Brace, Fresh Batch, Mellow, Overflow, Refine, Ripening and Untended showing 0 instead of the card's number
+
+## [0.14.15] - 2026-09-20
+
+### Added
+
+- Added a Ferment indicator: Ferment cards show the turns Fermented in their top right corner in Hand, Draw, Discard, and Exhaust piles
+- Added Gold Leaf potion (Brew only): "Add Replay to a card in your Hand."
+- Added the Laced keyword: "This card deals additional damage equal to your Poison." Jab, Forked Tongue, Lash Out and Wormwood print it in place of the sentence
 
 ### Changed
 

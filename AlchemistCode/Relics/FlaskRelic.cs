@@ -30,8 +30,8 @@ public abstract class FlaskRelic : AlchemistRelic
     public override async Task BeforeCombatStart()
     {
         Flash();
-        await PowerCmd.Apply<AntitoxinPower>(
-            new ThrowingPlayerChoiceContext(), Owner.Creature, Antitoxin, Owner.Creature, null);
+        await AntitoxinPower.GrantFrom(this, new ThrowingPlayerChoiceContext(), Owner.Creature, Antitoxin,
+            Owner.Creature);
     }
 
     // PoisonPower triggers and decrements on AfterSideTurnStart, so a dose applied before combat

@@ -18,13 +18,6 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 {
     private static readonly HashSet<Creature> Absorbed = [];
 
-    // Poison that got past the capacity this turn. Smelling Salts reads it in AfterSideTurnStartLate:
-    // the tick has resolved by then, and comparing the two stacks instead would read a Poison amount
-    // PoisonPower has already decremented
-    private static readonly HashSet<Creature> Bled = [];
-
-    internal static bool BledThisTurn(Creature creature) => Bled.Contains(creature);
-
     // Royal Poison and in-combat max HP loss deal damage with the same null dealer and
     // Unblockable|Unpowered shape as a Poison tick. PoisonPower.Trigger deals exactly the stack it is
     // about to decrement, so requiring that much Poison on the target is what separates them
@@ -69,11 +62,20 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (power is PoisonPower && power.Owner.IsPlayer && amount > 0)
-            Analytics.RunCounters.Add(power.Owner.Player, Analytics.RunCounters.PoisonGained, (int)amount);
-        if (power is AntitoxinPower && power.Owner.IsPlayer && amount > 0)
-            Analytics.RunCounters.RaiseTo(power.Owner.Player, Analytics.RunCounters.AntitoxinPeak,
-                (int)power.Amount);
+        if (!power.Owner.IsPlayer || amount <= 0) return Task.CompletedTask;
+        var player = power.Owner.Player;
+        if (power is PoisonPower)
+        {
+            Analytics.RunCounters.Add(player, Analytics.RunCounters.PoisonGained, (int)amount);
+            Analytics.RunCounters.RaiseTo(player, Analytics.RunCounters.PoisonPeak, (int)power.Amount);
+        }
+        if (power is AntitoxinPower)
+        {
+            Analytics.RunCounters.RaiseTo(player, Analytics.RunCounters.AntitoxinPeak, (int)power.Amount);
+            var source = cardSource ?? AntitoxinPower.GrantingSource;
+            Analytics.RunCounters.Tally(player, Analytics.RunCounters.AntitoxinSource + Analytics.RunCounters.Label(source),
+                (int)amount);
+        }
         return Task.CompletedTask;
     }
 
@@ -83,7 +85,6 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         LethalTick.Remove(target);
         if (target.IsPlayer && IsPoisonTick(target, result.UnblockedDamage, props, dealer, cardSource))
         {
-            Bled.Add(target);
             Analytics.RunCounters.Add(target.Player, Analytics.RunCounters.PoisonBled, result.UnblockedDamage);
         }
         return Task.CompletedTask;
@@ -122,7 +123,6 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         Absorbed.Clear();
-        Bled.Clear();
         AbsorbedOnTick.Clear();
         LethalTick.Clear();
         return Task.CompletedTask;

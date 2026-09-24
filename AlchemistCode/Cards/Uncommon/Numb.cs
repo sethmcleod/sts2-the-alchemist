@@ -4,7 +4,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -13,8 +12,8 @@ public class Numb : AlchemistCard
 {
     public Numb() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Per", 5, 1);
-        WithCalculatedBlock(0, static (card, _) => card.DynamicVars["Per"].IntValue * LooseCount(card), ValueProp.Move);
+        WithBlock(5, 1);
+        WithCalculatedVar("TotalBlock", 0, static (card, _) => card.DynamicVars.Block.PreviewValue * LooseCount(card));
         WithKeyword(CardKeyword.Exhaust);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
@@ -31,6 +30,7 @@ public class Numb : AlchemistCard
     {
         var loose = PileType.Hand.GetPile(Owner).Cards.Where(c => IsLoose(c, this)).ToList();
         await CardCmd.Discard(choiceContext, loose);
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["Per"].IntValue * loose.Count, ValueProp.Move, play);
+        for (var i = 0; i < loose.Count; i++)
+            await CommonActions.CardBlock(this, play);
     }
 }

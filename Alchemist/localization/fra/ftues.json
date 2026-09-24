@@ -1,0 +1,6 @@
+{
+  "ALCHEMIST-ANTITOXIN_FTUE.description": "Cette barre violette est votre [gold]Antitoxine[/gold]. Lorsque votre [gold]Poison[/gold] se déclenche, l'[gold]Antitoxine[/gold] empêche ses dégâts, jusqu'à la valeur affichée sur la barre. Au début de votre tour, l'[gold]Antitoxine[/gold] diminue de [blue]1[/blue].",
+  "ALCHEMIST-ANTITOXIN_FTUE.title": "Astuce : Antitoxine",
+  "ALCHEMIST-POISON_FTUE.description": "Votre [gold]Poison[/gold] dépasse votre [gold]Antitoxine[/gold]. Le [green]nombre vert[/green] à côté de la barre est la différence. Gagnez de l'[gold]Antitoxine[/gold] pour la couvrir, sinon vous subirez autant de dégâts au début de votre prochain tour.",
+  "ALCHEMIST-POISON_FTUE.title": "Astuce : Dégâts de Poison"
+}

@@ -1,8 +1,4 @@
 {
-  "ALCHEMIST-DOSED.description": "When this Skill is played, gain [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
-  "ALCHEMIST-DOSED.title": "Dosed",
-  "ALCHEMIST-FORTIFIED.description": "When this Power is played, gain [blue]{Amount}[/blue] [gold]Strength[/gold].",
-  "ALCHEMIST-FORTIFIED.title": "Fortified",
   "ALCHEMIST-LACED.description": "This Attack deals additional damage equal to your [gold]Poison[/gold].",
   "ALCHEMIST-LACED.extraCardText": "Laced.",
   "ALCHEMIST-LACED.title": "Laced"

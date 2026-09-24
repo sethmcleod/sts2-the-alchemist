@@ -16,15 +16,15 @@ public class Mortar : AlchemistCard
 
     public Mortar() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(9, static (card, _) =>
-                (card.IsUpgraded ? 3m : 2m) * ((AlchemistCard)card).FermentTurns,
+        WithCalculatedDamage(9, static (card, _) => 2m * ((AlchemistCard)card).FermentTurns,
             ValueProp.Move, 3, 0);
         WithKeyword(CardKeyword.Retain);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var attack = await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact"))
+        var attack = await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"),
+                tmpSfx: "heavy_attack.mp3").WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
             .Execute(choiceContext);
         // Fisticuffs' rule: the block is what the hit actually dealt, overkill included
         await CreatureCmd.GainBlock(Owner.Creature,

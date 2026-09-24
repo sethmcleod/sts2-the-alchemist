@@ -37,6 +37,8 @@ public class Reconstitute : AlchemistHeroCard
         if (discard.Cards.Count == 0) return;
         var chosen = (await CardSelectCmd.FromCombatPile(choiceContext, discard, Owner,
             new CardSelectorPrefs(Prompt, 1), static _ => true)).FirstOrDefault();
-        if (chosen != null) await CardPileCmd.Add(chosen, PileType.Hand);
+        if (chosen == null) return;
+        await CardPileCmd.Add(chosen, PileType.Hand);
+        CardCmd.Upgrade(chosen);
     }
 }

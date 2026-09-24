@@ -125,6 +125,9 @@ internal static class AlchemistVisuals
     // screen and the unlock screen, and a re-read of the files for each one is waste
     private static Resource? _skeletonData;
 
+    // The death animation lays down a second body, which has a head bone of its own
+    public static readonly string[] HeadBones = ["head", "head_extra_1"];
+
     /// <summary>
     /// Returns the model, or null if the Spine files do not load. Null makes BaseLib use
     /// CustomVisualPath, which the character points at the base game fallback scene.
@@ -158,6 +161,8 @@ internal static class AlchemistVisuals
     {
         var data = SkeletonData();
         if (data == null) return null;
+
+        BigHead.Apply(data, HeadBones);
 
         // A rig that changes size between exports still draws ModelHeight high
         var scale = ModelHeight / SpineModel.AboveOrigin(data, FallbackSkeletonHeight);

@@ -7,8 +7,8 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace Alchemist.AlchemistCode.Analytics;
 
-// Per-run counters for the analytics row, carried on the Player through BaseLib's extended save the
-// same way PotionSaleCounter is, so they survive save and reload and land in the serialized run
+// Per-run counters saved on the Player through BaseLib's extended save, so they survive a reload and
+// reach the serialized run that the upload and the badges read
 public static class RunCounters
 {
     // One fixed counter per Mix kind, keyed by the kind's analytics label
@@ -23,23 +23,36 @@ public static class RunCounters
     public const string PoisonGained = "poison_gained";
     public const string PoisonAbsorbed = "poison_absorbed";
     public const string PoisonBled = "poison_bled";
+    public const string PoisonPeak = "poison_peak";
     public const string AntitoxinPeak = "antitoxin_peak";
 
-    // Tally keys. The prefixed ones carry a label after the colon
+    // Tally keys. The prefixed ones carry a label after the colon: a model, a Mix kind or a cause
     public const string TickCovered = "tick_covered";
     public const string TickBled = "tick_bled";
     public const string PoisonDeath = "poison_death";
+    public const string PoisonDealt = "poison_dealt";
+    public const string AntitoxinSource = "atxsrc:";
+    public const string AntitoxinDecayed = "atx_decayed";
+    public const string FermentPlays = "ferment_plays";
+    public const string FermentTurns = "ferment_turns";
+    public const string FermentZero = "ferment_zero";
+    public const string FermentCardPlays = "fermentplay:";
+    public const string FermentCardTurns = "fermentturns:";
     public const string BrewOffered = "brew_offer:";
     public const string BrewPicked = "brew_pick:";
     public const string MixSource = "mixsrc:";
     public const string MixMade = "mixmade:";
     public const string MixPlayed = "mixplay:";
+    public const string MixCombined = "mixlost:combined";
+    public const string MixLeftover = "mixlost:leftover";
+    public const string MixesPerFight = "mixfight:";
     public const string CompoundPair = "pair:";
+    public const string CardPlayed = "play:";
 
     public static readonly string[] Keys =
     {
         MixBursting, MixFuming, MixSyrupy, MixZesty, MixAcrid, MixSparkling, MixCompound, PoisonGained, PoisonAbsorbed, PoisonBled,
-        AntitoxinPeak,
+        PoisonPeak, AntitoxinPeak,
     };
 
     private static readonly Dictionary<string, SpireField<Player, int>> Fields = new();
@@ -80,9 +93,8 @@ public static class RunCounters
             .DictForType<int>()
             .GetValueOrDefault(MainFile.ModId + "-" + key);
 
-    // Open-keyed counts for the things the fixed counters cannot name up front: which maker created
-    // a Mix, which two kinds a compound paired, which Brew potion was offered. One saved value holds
-    // the whole bag, so a new key needs no registration and an old save reads back what it has
+    // One saved bag of open-keyed counts, so a new key needs no registration and an old save reads
+    // back what it has
     private const string TallyKey = MainFile.ModId + "-tally";
 
     private static readonly SpireField<Player, Dictionary<string, int>> TallyField = new(() => new());

@@ -13,11 +13,9 @@ public class Knitbone : AlchemistCard
 
     public Knitbone() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCalculatedBlock(5, 2, static (card, _) => Mixing.PlayedThisCombat(card.Owner), ValueProp.Move, 2);
-        WithTips(_ => Mixing.MixTips());
+        WithCalculatedBlock(5, 1, static (card, _) => Mixing.PlayedThisCombat(card.Owner), ValueProp.Move, 0, 1);
+        WithTips(_ => Mixing.MixRefTips());
     }
-
-    protected override bool ShowsMixesPlayed => true;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

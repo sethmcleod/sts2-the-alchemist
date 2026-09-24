@@ -11,6 +11,8 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Antitoxin)]
 public class Quench : AlchemistCard
 {
+    protected internal override bool PlaysCastAnimation => false;
+
     // Block per point of capacity
     private const int BlockPerPoint = 2;
 
@@ -22,8 +24,6 @@ public class Quench : AlchemistCard
         WithTip(typeof(AntitoxinPower));
     }
 
-    // The pending gain is part of the total the text promises, so the Block lands first and the
-    // Antitoxin second; granting first would make the calc count the gain twice
     private static decimal BlockFrom(CardModel card) =>
         card is Quench { IsMutable: true, Owner.Creature: { } creature } quench
             ? (creature.GetPowerAmount<AntitoxinPower>()
@@ -32,8 +32,8 @@ public class Quench : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardBlock(this, play);
         await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature,
             DynamicVars["antitoxin"].IntValue, Owner.Creature, this);
+        await CreatureCmd.GainBlock(Owner.Creature, AntitoxinCapacity * BlockPerPoint, ValueProp.Move, play);
     }
 }

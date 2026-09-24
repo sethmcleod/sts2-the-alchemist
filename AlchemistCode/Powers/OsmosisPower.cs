@@ -19,6 +19,6 @@ public class OsmosisPower : AlchemistPower
     {
         if (player != Owner.Player) return;
         Flash();
-        await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner, Amount, Owner, null);
+        await AntitoxinPower.GrantFrom(this, choiceContext, Owner, Amount, Owner);
     }
 }

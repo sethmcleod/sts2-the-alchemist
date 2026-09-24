@@ -14,7 +14,7 @@ public class FreshBatch : AlchemistCard
 
     public FreshBatch() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithQuietPower<FreshBatchPower>(2, 1);
+        WithNumberedPower<FreshBatchPower>(2, 1);
         WithTips(_ => Mixing.MixTips(upgraded: true));
     }
 

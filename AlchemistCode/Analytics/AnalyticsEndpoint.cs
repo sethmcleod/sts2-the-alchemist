@@ -1,8 +1,7 @@
 namespace Alchemist.AlchemistCode.Analytics;
 
-// Where run analytics go. The key is Supabase's publishable (anon) key. It is meant to ship in the
-// DLL: row level security limits it to INSERT on the runs table and nothing else. Leave both empty to
-// disable uploads without touching any other code
+// The publishable key is safe to ship: row level security lets it insert rows and do nothing else.
+// Leave both empty to turn uploads off
 internal static class AnalyticsEndpoint
 {
     public const string RunsUrl = "https://qgvpsvjvgpfweeouufbk.supabase.co/rest/v1/runs";

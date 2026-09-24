@@ -10,7 +10,7 @@ public class Ripening : AlchemistCard
 {
     public Ripening() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithQuietPower<RipeningPower>(1, 0);
+        WithNumberedPower<RipeningPower>(1, 0);
         WithCostUpgradeBy(-1);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }

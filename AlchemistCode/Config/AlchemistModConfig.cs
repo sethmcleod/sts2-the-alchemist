@@ -7,7 +7,9 @@ using Alchemist.AlchemistCode.Patches;
 using Alchemist.AlchemistCode.Potions;
 using Alchemist.AlchemistCode.Relics;
 using BaseLib.Config;
+using BaseLib.Config.UI;
 using Godot;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Saves;
@@ -24,12 +26,24 @@ public class AlchemistModConfig : SimpleModConfig
         ConfigChanged += (_, _) => CardArtPatches.RefreshPortraitsIfArtSourceChanged();
     }
 
+    private static readonly NodePath SelfPath = new(".");
+
     public override void SetupConfigUI(Control optionContainer)
     {
         // Auto-generates the UI from the properties and [ConfigButton] methods below
         GenerateOptionsForAllProperties(optionContainer);
         AddRestoreDefaultsButton(optionContainer);
-        SetupFocusNeighbors(optionContainer);
+        RefreshShownRows(optionContainer);
+        KonamiCode.Listen(optionContainer, () => UnlockSecrets(optionContainer));
+
+        // [ConfigVisibleIf] hides and shows rows as settings change, and these refresh after it because
+        // it subscribed first. BaseLib drops both lists when the page closes
+        EventHandler refreshOnChange = (_, _) => RefreshShownRows(optionContainer);
+        Action refreshOnReload = () => RefreshShownRows(optionContainer);
+        ConfigChanged += refreshOnChange;
+        OnConfigReloaded += refreshOnReload;
+        _configChangedHandlers.Add(refreshOnChange);
+        _configReloadedHandlers.Add(refreshOnReload);
     }
 
     [ConfigSection("Timeline")]
@@ -56,6 +70,12 @@ public class AlchemistModConfig : SimpleModConfig
 
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]
+    [ConfigVisibleIf(nameof(ShowPoisonForecast))]
+    [ConfigColorPicker(EditAlpha = false)]
+    public static Color PoisonForecastColor { get; set; } = new("76FF40");
+
+    [ConfigSection("Accessibility")]
+    [ConfigHoverTip]
     public static bool ShowAllyAntitoxinBars { get; set; } = true;
 
     [ConfigSection("Accessibility")]
@@ -67,6 +87,17 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigSection("Analytics")]
     [ConfigHoverTip]
     public static bool AnalyticsEnabled { get; set; } = true;
+
+    [ConfigSection("Secrets")]
+    [ConfigHoverTip]
+    [ConfigVisibleIf(nameof(SecretsUnlocked))]
+    public static bool BigHeadMode { get; set; } = false;
+
+    [ConfigSection("Secrets")]
+    [ConfigHoverTip]
+    [ConfigVisibleIf(nameof(BigHeadSizeShown))]
+    [ConfigSlider(1.5, 2.5, 0.25, Format = "{0:0%}")]
+    public static double BigHeadSize { get; set; } = 1.5;
 
     // Shown above Unlock All: opens the Timeline without granting the card, relic, and potion unlocks
     [ConfigSection("Unlocks")]
@@ -172,5 +203,80 @@ public class AlchemistModConfig : SimpleModConfig
         var popup = NErrorPopup.Create("Success", message, false);
         if (popup != null && NModalContainer.Instance != null)
             NModalContainer.Instance.Add((Node)(object)popup, true);
+    }
+
+    private static bool SecretsUnlocked() => SecretUnlocks.IsUnlocked;
+
+    private static bool BigHeadSizeShown() => SecretUnlocks.IsUnlocked && BigHeadMode;
+
+    private void UnlockSecrets(Control optionContainer)
+    {
+        if (SecretUnlocks.IsUnlocked || !GodotObject.IsInstanceValid(optionContainer)) return;
+        if (!SecretUnlocks.Unlock()) return;
+
+        // Runs the [ConfigVisibleIf] checks again, which shows the Secrets section
+        ConfigReloaded();
+        ConfigToast.Show(optionContainer, new LocString("settings_ui", "ALCHEMIST-SECRETS_UNLOCKED_TOAST"));
+    }
+
+    private static void RefreshShownRows(Control optionContainer)
+    {
+        ShowDividersBetweenShownRows(optionContainer);
+        LinkShownFocusNeighbors(optionContainer);
+    }
+
+    // BaseLib shows a divider only when the rows on both sides of it are shown, thus a hidden row takes
+    // both of its dividers with it and leaves no line between the rows around it. This shows the last
+    // divider above each shown row that has a shown row above it
+    private static void ShowDividersBetweenShownRows(Control optionContainer)
+    {
+        foreach (var section in optionContainer.GetChildren().OfType<NConfigCollapsibleSection>())
+        {
+            var shownRowAbove = false;
+            ColorRect? divider = null;
+            foreach (var child in section.ContentContainer.GetChildren())
+            {
+                if (child is ColorRect line)
+                {
+                    line.Visible = false;
+                    divider = line;
+                }
+                else if (child is NConfigOptionRow { Visible: true })
+                {
+                    if (shownRowAbove && divider != null) divider.Visible = true;
+                    shownRowAbove = true;
+                    divider = null;
+                }
+            }
+        }
+    }
+
+    // BaseLib's SetupFocusNeighbors also links the controls in hidden rows, thus controller focus
+    // can land on a control that is not drawn. This links only the rows on show
+    private static void LinkShownFocusNeighbors(Control optionContainer)
+    {
+        var controls = ShownFocusables(optionContainer).ToList();
+        for (var i = 0; i < controls.Count; i++)
+        {
+            controls[i].FocusNeighborTop = controls[(i + controls.Count - 1) % controls.Count].GetPath();
+            controls[i].FocusNeighborBottom = controls[(i + 1) % controls.Count].GetPath();
+            controls[i].FocusNeighborLeft = SelfPath;
+            controls[i].FocusNeighborRight = SelfPath;
+        }
+    }
+
+    private static IEnumerable<Control> ShownFocusables(Node node)
+    {
+        if (node is Control { Visible: false }) yield break;
+
+        if (node is Control { FocusMode: Control.FocusModeEnum.All } control)
+        {
+            yield return control;
+            yield break;
+        }
+
+        foreach (var child in node.GetChildren())
+            foreach (var focusable in ShownFocusables(child))
+                yield return focusable;
     }
 }

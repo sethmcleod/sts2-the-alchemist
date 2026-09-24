@@ -32,7 +32,8 @@ public class Nightcap : AlchemistCard
         var damage = AntitoxinCapacity * Mult;
         if (damage <= 0) return;
         await CommonActions.CardAttack(this, play, target, damage, ValueProp.Move,
-                vfx: HitVfx("vfx/vfx_attack_blunt"), tmpSfx: "blunt_attack.mp3")
+                vfx: HitVfx("vfx/vfx_heavy_blunt"), tmpSfx: "heavy_attack.mp3")
+            .WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
             .Execute(choiceContext);
     }
 }

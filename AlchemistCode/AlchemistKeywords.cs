@@ -11,10 +11,6 @@ public static class AlchemistKeywords
     public static CardKeyword Ferment;
 
     [CustomEnum]
-    [KeywordProperties(AutoKeywordPosition.None)]
-    public static CardKeyword Infuse;
-
-    [CustomEnum]
     [KeywordProperties(AutoKeywordPosition.Before)]
     public static CardKeyword Laced;
 }
