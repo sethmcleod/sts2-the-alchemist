@@ -7,6 +7,8 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.18] - 2026-09-24
+
 ### Changed
 
 - Buffed Fallout card: damage increased from 7(9) -> 8(11)
