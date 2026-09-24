@@ -7,14 +7,18 @@
     <meta name="theme-color" content="#1c1822" />
     <meta name="description" content="Anonymous run stats for The Alchemist, a Slay the Spire 2 character mod." />
     <title>The Alchemist: Run Stats</title>
+    <link rel="icon" id="favicon" href="data:," />
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="app.js"></script>
   </head>
   <body>
     <div class="page">
       <header class="masthead">
-        <p class="eyebrow">Slay the Spire 2 mod</p>
-        <h1>The Alchemist: Run Stats</h1>
+        <div class="brand">
+          <img class="brand-icon" id="brandIcon" alt="" hidden />
+          <p class="eyebrow">Slay the Spire 2 mod</p>
+          <h1>The Alchemist: Run Stats</h1>
+        </div>
         <p class="lede" id="lede">Loading the latest runs...</p>
       </header>
 
@@ -85,29 +89,33 @@
         <section class="view" id="view-overview" role="tabpanel" hidden>
           <div class="tiles" id="overviewTiles"></div>
           <div class="grid two">
-            <article class="card">
-              <h2>How far runs get</h2>
-              <p class="note" id="funnelNote"></p>
-              <div id="funnel"></div>
-            </article>
-            <article class="card">
-              <h2>Playstyles</h2>
-              <p class="note" id="themesNote"></p>
-              <div id="byTheme"></div>
-            </article>
-            <article class="card">
-              <h2>Win rate by ascension</h2>
-              <p class="note">
-                The thin line on each bar is the range the real win rate most likely falls in. Fewer runs means a wider
-                range.
-              </p>
-              <div id="byAscension"></div>
-            </article>
-            <article class="card">
-              <h2>Win rate by version</h2>
-              <p class="note">Newest first. This chart ignores the version filter so every release lines up.</p>
-              <div id="byVersion"></div>
-            </article>
+            <div class="lane">
+              <article class="card">
+                <h2>How far runs get</h2>
+                <p class="note" id="funnelNote"></p>
+                <div id="funnel"></div>
+              </article>
+              <article class="card">
+                <h2>Win rate by ascension</h2>
+                <p class="note">
+                  The thin line on each bar is the range the real win rate most likely falls in. Fewer runs means a
+                  wider range.
+                </p>
+                <div id="byAscension"></div>
+              </article>
+            </div>
+            <div class="lane">
+              <article class="card">
+                <h2>Playstyles</h2>
+                <p class="note" id="themesNote"></p>
+                <div id="byTheme"></div>
+              </article>
+              <article class="card">
+                <h2>Win rate by version</h2>
+                <p class="note">Newest first. This chart ignores the version filter so every release lines up.</p>
+                <div id="byVersion"></div>
+              </article>
+            </div>
           </div>
           <article class="card">
             <h2>Runs per day</h2>
@@ -308,7 +316,7 @@
             </article>
             <article class="card">
               <h2>Potions</h2>
-              <p class="note">Potions drunk for every 100 runs.</p>
+              <p class="note">Potions drunk for every 100 runs. The ones with an icon are Alchemist potions.</p>
               <div id="potions"></div>
             </article>
           </div>
@@ -399,11 +407,15 @@
       <form method="dialog" class="sheet-close"><button aria-label="Close">×</button></form>
       <h2 id="sheetTitle"></h2>
       <p class="note" id="sheetSub"></p>
-      <div class="tiles" id="sheetTiles"></div>
-      <h3>Win rate by ascension</h3>
-      <div id="sheetAscension"></div>
-      <h3>Win rate by version</h3>
-      <div id="sheetVersions"></div>
+      <div class="card-face" id="sheetFace"></div>
+      <div id="sheetStats">
+        <div class="tiles" id="sheetTiles"></div>
+        <h3>Win rate by ascension</h3>
+        <div id="sheetAscension"></div>
+        <h3>Win rate by version</h3>
+        <div id="sheetVersions"></div>
+      </div>
+      <p class="empty" id="sheetEmpty" hidden>No run in these filters finished with this card.</p>
     </dialog>
   </body>
 </html>

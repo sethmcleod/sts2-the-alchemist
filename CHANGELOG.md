@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added card art, card text, and relic, potion and badge icons to the public run stats page
+
 ## [0.14.18] - 2026-09-24
 
 ### Changed

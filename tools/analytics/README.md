@@ -100,13 +100,19 @@ A table lists its key columns, its count columns, and then the rows:
 
 | File           | Tables                                                                                                   |
 | -------------- | -------------------------------------------------------------------------------------------------------- |
-| `summary.json` | `meta`, `names`, `card_info`, `groups`, `totals`, `ascensions`, `days`, `themes`, `badges`, `histograms`, `counters`, `acts`, `death_floors` |
+| `summary.json` | `meta`, `names`, `card_info`, `icons`, `groups`, `totals`, `ascensions`, `days`, `themes`, `badges`, `histograms`, `counters`, `acts`, `death_floors` |
 | `cards.json`   | `cards`: held, won, offered, picked, early picks, rest site upgrades, plays and Ferment turns, per card   |
 | `relics.json`  | `relics`: held, bought and Ancient offers, per relic. `potions`: drunk, bought and discarded, per potion |
 | `fights.json`  | `encounters`: fights, turns, damage and deaths, per encounter                                            |
 
 The page loads `summary.json` first and each other file when its tab first opens. Together they
 are about 1 MB over the network.
+
+`card_info` holds each card's type, cost and text from `cards.csv`. The text is in the game's loc
+markup: `mod_meta.py` puts back the `[gold]` words from the card's own loc text and marks the
+upgraded numbers `[green]`. The images are not copied. `card_info` and `icons` name a path in the
+repo, and the page loads it from `meta.assets.base`, which is GitHub's raw file host at the
+commit the export ran on. The images only load when the repo is public.
 
 ## Add a new stat
 
@@ -158,8 +164,8 @@ The pipeline knows about the Alchemist only in the places below.
 3. Give players their own switch, like `AlchemistModConfig.AnalyticsEnabled`.
 4. Copy `tools/analytics/`, `docs/analytics/` and `.github/workflows/analytics.yml`, then follow
    [Set up the real thing](#set-up-the-real-thing).
-5. In `mod_meta.py`, change `PREFIX`, `THEMES` and the source paths. In `export_stats.py`, change
-   `BADGE_METRICS` and `HISTOGRAMS`, or empty them.
+5. In `mod_meta.py`, change `PREFIX`, `THEMES`, `CHARACTER_ICON` and the source paths. In
+   `export_stats.py`, change `BADGE_METRICS` and `HISTOGRAMS`, or empty them.
 6. In `docs/analytics/`, keep `data.js` and `charts.js` as they are. Rewrite the text in
    `index.html` and the tabs in `app.js`.
 

@@ -69,6 +69,39 @@ h3 {
 
 /* ---------- header and filters ---------- */
 
+/* The head icon beside the eyebrow and title. On a phone it shrinks to the eyebrow's line so the
+   title keeps the full width */
+.brand {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+}
+
+.brand-icon {
+  grid-row: 1 / span 2;
+  width: 60px;
+  height: 60px;
+  margin-right: 14px;
+}
+
+.brand .eyebrow,
+.brand h1 {
+  grid-column: 2;
+}
+
+@media (max-width: 639px) {
+  .brand-icon {
+    grid-row: 1;
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+  }
+
+  .brand h1 {
+    grid-column: 1 / -1;
+  }
+}
+
 .eyebrow {
   margin: 0;
   color: var(--gold);
@@ -255,6 +288,14 @@ summary:focus-visible,
   }
 }
 
+/* Cards stacked in one column of a two-column grid, so a short card leaves no gap under it */
+.lane {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  min-width: 0;
+}
+
 .card {
   min-width: 0;
   padding: 16px;
@@ -403,9 +444,16 @@ summary:focus-visible,
   border-radius: 8px;
 }
 
+/* Every row shares the list's columns, so a long value in one row cannot shorten its track */
 @media (min-width: 640px) {
-  .bar {
+  .bars {
     grid-template-columns: minmax(0, var(--label-width, 12rem)) minmax(0, 1fr) minmax(4.5rem, auto);
+    column-gap: 12px;
+  }
+
+  .bar {
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
     grid-template-areas: 'label track value';
     align-items: center;
   }
@@ -523,6 +571,15 @@ summary:focus-visible,
   width: 2px;
   height: 14px;
   background: var(--gold);
+}
+
+.bar-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  object-fit: contain;
+  vertical-align: -6px;
 }
 
 .dot {
@@ -703,8 +760,16 @@ td small {
 }
 
 .badge h3 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
   margin: 0;
   font-size: 17px;
+}
+
+.badge-icon {
+  width: 36px;
+  height: 36px;
 }
 
 .badge .tiers {
@@ -749,8 +814,65 @@ td small {
 }
 
 .sheet h2 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
   margin: 0 40px 0 0;
   font-size: 22px;
+}
+
+.sheet .head {
+  width: 34px;
+  height: 34px;
+}
+
+/* ---------- card face: the art and text in the sheet ---------- */
+
+.card-face {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin: -4px 0 16px;
+}
+
+.card-art {
+  flex: none;
+  width: 132px;
+  max-width: 34%;
+  aspect-ratio: 1000 / 760;
+  border-radius: 8px;
+  background: var(--panel-2);
+  object-fit: cover;
+}
+
+.card-cost {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.card-text {
+  margin: 4px 0 0;
+}
+
+.card-version {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.t-gold {
+  color: var(--gold);
+}
+
+.t-green {
+  color: var(--up);
+}
+
+.energy {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -0.25em;
 }
 
 .sheet h3 {
