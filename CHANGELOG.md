@@ -9,6 +9,7 @@ mod).
 
 ### Changed
 
+- Nerfed Knitbone card: Block decreased from 5(7) -> 5, and additional Block for each Mix changed from 2 -> 1(2)
 - Renamed the hidden Cheats section in the mod settings to Secrets, since none will be gameplay altering
 
 ## [0.14.19] - 2026-09-24
