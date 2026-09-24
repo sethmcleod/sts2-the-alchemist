@@ -1,4 +1,6 @@
 using Godot;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.RestSite;
 
 namespace Alchemist.AlchemistCode.Character;
@@ -43,6 +45,12 @@ internal static class AlchemistRestSite
     // The box of the rig at the time of writing, used only if the skeleton reports none
     private static readonly Rect2 FallbackBounds = new(-234f, -224f, 442f, 583f);
 
+    private static readonly string[] HeadBones = ["rest_head"];
+    private const string HeadSlot = "rest_head";
+
+    // Shading and light painted over the whole seated body, drawn over the head
+    private static readonly string[] OverlaySlots = ["rest_shadow", "rest_light"];
+
     /// <summary>
     /// Takes a Node rather than an NRestSiteCharacter on purpose. BaseLib stores the action as
     /// Action&lt;Node&gt; through an "as" cast, and Action is contravariant, thus an
@@ -54,6 +62,8 @@ internal static class AlchemistRestSite
 
         var data = SpineModel.Load(AtlasPath, SkeletonPath);
         if (data == null) return;
+
+        BigHead.Apply(data, HeadBones);
 
         UnderdocksAnimation = SpineModel.ResolveAnimation(data, UnderdocksAnimationLeaf);
 
@@ -76,5 +86,10 @@ internal static class AlchemistRestSite
 
         // The base game rest site scenes put the sprite before the Control nodes
         character.MoveChild(sprite, 0);
+
+        // The wait for the skeleton needs the tree, which the sprite joins only after this returns
+        if (BigHead.Enabled)
+            sprite.Ready += () => sprite.RunWhenSpineReady(new MegaSprite(sprite),
+                _ => BigHead.DrawUnderHead(sprite, data, HeadSlot, OverlaySlots));
     }
 }

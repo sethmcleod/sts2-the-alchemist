@@ -9,7 +9,7 @@ mod).
 
 ### Added
 
-- Added card art, card text, and relic, potion and badge icons to the public run stats page
+- Added a hidden Cheats section to the mod settings, unlocked with a classic code...
 
 ## [0.14.18] - 2026-09-24
 
