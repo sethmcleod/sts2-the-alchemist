@@ -14,8 +14,8 @@ namespace Alchemist.AlchemistCode.Powers;
 
 // Every Attack the owner plays this turn lands Amount more hits after it resolves. The extra hits
 // are a plain card attack, not a card play, so they do not fire this hook again. Gone at the end
-// of the turn like Rerun. A card that computes its damage by hand at play time (Nightcap, Proof,
-// several base Attacks) has no damage variable to repeat, and BaseLib throws on it, so it is skipped
+// of the turn like Rerun. Every Alchemist Attack carries a damage var to repeat; a few base Attacks
+// compute their damage by hand at play time, BaseLib throws on those, so they are skipped
 public class TwitchPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
