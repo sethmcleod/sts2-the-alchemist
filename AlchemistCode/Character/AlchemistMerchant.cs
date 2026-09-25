@@ -45,6 +45,7 @@ internal static class AlchemistMerchant
         var box = SpineModel.Bounds(data, FallbackBounds);
         var scale = ModelHeight / box.Size.Y;
         if (SpineModel.CreateSprite(data, scale) is not { } sprite) return;
+        RainbowRobes.Apply(sprite);
 
         // Spine y grows upward and Godot y downward, thus the bottom edge of the box flips sign
         var bottom = -box.Position.Y * scale;

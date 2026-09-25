@@ -166,7 +166,9 @@ internal static class AlchemistVisuals
 
         // A rig that changes size between exports still draws ModelHeight high
         var scale = ModelHeight / SpineModel.AboveOrigin(data, FallbackSkeletonHeight);
-        return SpineModel.CreateSprite(data, scale);
+        var sprite = SpineModel.CreateSprite(data, scale);
+        if (sprite != null) RainbowRobes.Apply(sprite);
+        return sprite;
     }
 
     public static Resource? SkeletonData()

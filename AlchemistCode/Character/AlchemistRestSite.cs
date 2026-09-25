@@ -74,6 +74,7 @@ internal static class AlchemistRestSite
         var scale = ModelHeight / box.Size.Y;
 
         if (SpineModel.CreateSprite(data, scale) is not { } sprite) return;
+        RainbowRobes.Apply(sprite);
 
         // Godot y grows downward and Spine y grows upward, thus the middle of the box flips sign
         var middle = new Vector2(
