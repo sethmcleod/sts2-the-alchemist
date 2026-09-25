@@ -18,6 +18,8 @@
   "ALCHEMIST-ECONOMY.title": "Экономика",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "Добавляет историю Алхимика из 7 глав в Летопись. Карты, реликвии и зелья открываются по мере прохождения. Отключите, чтобы убрать историю из Летописи и сразу открыть все содержимое Алхимика. Повторное включение вернет прогресс.",
   "ALCHEMIST-ENABLE_EPOCHS.title": "Включить эпохи в Летописи",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "Делает доступными 9 карт Алхимика, созданных для The Hero Expansion, даже если этот мод не установлен. Карты событий The Broken Blade и Mysterious Flashlight остаются заблокированными, так как без мода они недоступны.",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "Карты Hero Expansion без мода",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "Не допускает карты Алхимика в вылазки без игрока за Алхимика, чтобы они не появлялись в межклассовых наградах других персонажей (например, от Калейдоскопа). Отключите, чтобы карты Алхимика попадали в любую вылазку.",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Отдельный набор карт",
   "ALCHEMIST-POISON_FORECAST_COLOR.hover.desc": "Цвет числа прогноза урона от яда рядом с полосой антитоксина.",

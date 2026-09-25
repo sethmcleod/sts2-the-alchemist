@@ -18,6 +18,8 @@
   "ALCHEMIST-ECONOMY.title": "Economia",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "Aggiunge alla Cronologia la storia in 7 capitoli dell'Alchimista, sbloccando carte, reliquie e pozioni man mano che avanzi. Disattivala per nasconderla dalla Cronologia e rendere subito disponibili tutti i contenuti dell'Alchimista; riattivandola, i progressi vengono ripristinati.",
   "ALCHEMIST-ENABLE_EPOCHS.title": "Attiva le Epoche della Cronologia",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "Offre le 9 carte dell'Alchimista create per The Hero Expansion anche quando quella mod non è installata. Le carte degli eventi The Broken Blade e Mysterious Flashlight restano bloccate, perché non sono accessibili senza la mod.",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "Carte di Hero Expansion senza la mod",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "Tiene le carte dell'Alchimista fuori dalle partite senza un giocatore Alchimista, così non possono comparire nelle ricompense interclasse degli altri personaggi (es. Caleidoscopio). Disattivala per lasciare che le carte dell'Alchimista compaiano in qualsiasi partita.",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Pool di carte separato",
   "ALCHEMIST-POISON_FORECAST_COLOR.hover.desc": "Il colore del numero di previsione del danno da Veleno accanto alla barra dell'Antitossina.",

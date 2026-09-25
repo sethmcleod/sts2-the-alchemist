@@ -99,6 +99,12 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // One home for the enemy-side Poison test, as Dose is for the owner's, so the two never drift
     protected static bool Poisoned(Creature? creature) => creature?.HasPower<PoisonPower>() == true;
 
+    // True in a live combat when every living enemy is Poisoned, so a card gated on "if the enemy
+    // has Poison" glows only when any target meets the gate
+    protected bool AllEnemiesPoisoned =>
+        IsMutable && CombatState?.Enemies.Where(e => e.IsAlive).ToList() is { Count: > 0 } enemies
+        && enemies.TrueForAll(Poisoned);
+
     // The dose a reader adds to its number. Zero on the canonical model, which has no Owner, so the
     // compendium shows the base value and only the combat instance shows the live total. Every card
     // that says "equal to your Poison" reads it here so the rule has one home

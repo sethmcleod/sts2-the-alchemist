@@ -18,6 +18,8 @@
   "ALCHEMIST-ECONOMY.title": "Économie",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "Ajoute l'histoire en 7 chapitres de l'Alchimiste à la Frise temporelle, débloquant cartes, reliques et potions au fil de votre progression. Désactivez pour la masquer de la Frise temporelle et rendre tout le contenu de l'Alchimiste disponible immédiatement ; la réactivation restaure votre progression.",
   "ALCHEMIST-ENABLE_EPOCHS.title": "Activer les Ères de la Frise temporelle",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "Propose les 9 cartes de l'Alchimiste conçues pour The Hero Expansion, même si ce mod n'est pas installé. Les cartes des événements The Broken Blade et Mysterious Flashlight restent verrouillées, car elles sont inaccessibles sans ce mod.",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "Cartes de The Hero Expansion sans le mod",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "Empêche les cartes de l'Alchimiste d'apparaître dans les parties sans joueur Alchimiste, afin qu'elles ne figurent pas dans les récompenses inter-classes des autres personnages (ex. Kaléidoscope). Désactivez pour laisser les cartes de l'Alchimiste se mêler à toutes les parties.",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Réserve de cartes séparée",
   "ALCHEMIST-POISON_FORECAST_COLOR.hover.desc": "La couleur du nombre des dégâts de Poison à venir, affiché à côté de la barre d'Antitoxine.",

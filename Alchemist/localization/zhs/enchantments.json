@@ -1,4 +1,5 @@
 {
   "ALCHEMIST-LACED.description": "这张牌额外造成等同于你[gold]中毒[/gold]层数的伤害。",
+  "ALCHEMIST-LACED.extraCardText": "掺毒。",
   "ALCHEMIST-LACED.title": "掺毒"
 }

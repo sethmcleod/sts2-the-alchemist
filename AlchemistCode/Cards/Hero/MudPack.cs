@@ -14,7 +14,7 @@ public class MudPack : AlchemistHeroCard
 
     public MudPack() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithBlock(5, 1);
+        WithBlock(6, 2);
         WithTip(typeof(PoisonPower));
     }
 

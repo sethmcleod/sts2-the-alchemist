@@ -3,6 +3,7 @@ using System.Linq;
 using Alchemist.AlchemistCode.Cards;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
 using MegaCrit.Sts2.Core.Nodes.Screens.CardLibrary;
@@ -11,12 +12,14 @@ using MegaCrit.Sts2.Core.Saves;
 namespace Alchemist.AlchemistCode.Patches;
 
 // Every pool's unlocked list is the one place the reward roll, the compendium's lock state and the
-// in-combat generators all read, so this is where a cross-mod card whose mod is absent leaves the game
+// in-combat generators all read, so this is where a cross-mod card whose mod is absent leaves the game.
+// Cross-mod cards live only in the Alchemist pool and the Event pool, so every other pool is left alone
 [HarmonyPatch(typeof(CardPoolModel), nameof(CardPoolModel.GetUnlockedCards))]
 public static class HeroCardPoolPatches
 {
-    public static void Postfix(ref IEnumerable<CardModel> __result)
+    public static void Postfix(CardPoolModel __instance, ref IEnumerable<CardModel> __result)
     {
+        if (__instance is not (Character.AlchemistCardPool or EventCardPool)) return;
         __result = __result.Where(CrossMod.Offered).ToList();
     }
 }

@@ -18,6 +18,8 @@
   "ALCHEMIST-ECONOMY.title": "Wirtschaft",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "Fügt dem Zeitstrahl die Geschichte des Alchemisten in 7 Kapiteln hinzu und schaltet mit deinem Fortschritt Karten, Relikte und Tränke frei. Deaktivieren blendet sie aus dem Zeitstrahl aus und macht alle Alchemist-Inhalte sofort verfügbar; erneutes Aktivieren stellt den Fortschritt wieder her.",
   "ALCHEMIST-ENABLE_EPOCHS.title": "Zeitstrahl-Epochen aktivieren",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "Bietet die 9 Alchemist-Karten für The Hero Expansion auch dann an, wenn diese Mod nicht installiert ist. Die Ereigniskarten aus The Broken Blade und Mysterious Flashlight bleiben gesperrt, da sie ohne die Mod nicht zugänglich sind.",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "Hero-Expansion-Karten ohne die Mod",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "Hält Alchemist-Karten aus Runs heraus, an denen kein Alchemist-Spieler teilnimmt, damit sie nicht in den klassenübergreifenden Belohnungen anderer Charaktere auftauchen (z. B. Kaleidoskop). Deaktivieren, damit sich Alchemist-Karten unter jeden Run mischen.",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Getrennter Kartenpool",
   "ALCHEMIST-POISON_FORECAST_COLOR.hover.desc": "Die Farbe der Zahl der Gift-Schadensvorschau neben dem Antitoxin-Balken.",

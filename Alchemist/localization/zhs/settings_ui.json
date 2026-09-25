@@ -18,6 +18,8 @@
   "ALCHEMIST-ECONOMY.title": "经济",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "将炼金术士的7章故事加入时间线，随着进度解锁卡牌、遗物和药水。禁用后会将其从时间线中隐藏，并立即开放所有炼金术士内容；重新启用会恢复进度。",
   "ALCHEMIST-ENABLE_EPOCHS.title": "启用时间线历史节点",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "即使未安装The Hero Expansion，也提供为该模组制作的9张炼金术士卡牌。The Broken Blade和Mysterious Flashlight的事件卡牌仍保持锁定，因为没有该模组就无法获得它们。",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "未安装模组时提供Hero Expansion卡牌",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "让炼金术士的卡牌不进入没有炼金术士玩家的游戏，使其无法出现在其他角色的跨职业奖励中（例如万花筒）。禁用后炼金术士卡牌可以混入任何一局游戏。",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "独立卡池",
   "ALCHEMIST-POISON_FORECAST_COLOR.hover.desc": "抗毒素条旁中毒伤害预测数字的颜色。",

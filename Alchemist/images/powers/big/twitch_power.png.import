@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c75cfw6er18uc"
-path="res://.godot/imported/winnow.png-a3a239f8afb94b10fc0eae53b208a0ac.ctex"
+uid="uid://dg8ye821ccmho"
+path="res://.godot/imported/twitch_power.png-0cd817276ef6f47188270ec5fa3edd09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/winnow.png"
-dest_files=["res://.godot/imported/winnow.png-a3a239f8afb94b10fc0eae53b208a0ac.ctex"]
+source_file="res://Alchemist/images/powers/big/twitch_power.png"
+dest_files=["res://.godot/imported/twitch_power.png-0cd817276ef6f47188270ec5fa3edd09.ctex"]
 
 [params]
 

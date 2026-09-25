@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3rgsf2lpcqcs"
-path="res://.godot/imported/membrane.png-7cb85c2b585576e7c7948b0c257cc79b.ctex"
+uid="uid://bxspnw52skoco"
+path="res://.godot/imported/bounce_back.png-ad37bfb8e799037e839058229d15e4c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/membrane.png"
-dest_files=["res://.godot/imported/membrane.png-7cb85c2b585576e7c7948b0c257cc79b.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/bounce_back.png"
+dest_files=["res://.godot/imported/bounce_back.png-ad37bfb8e799037e839058229d15e4c8.ctex"]
 
 [params]
 

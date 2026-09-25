@@ -11,13 +11,13 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace Alchemist.AlchemistCode.Cards.Hero;
 
 [CardTheme(CardTheme.Poison)]
-public class Tadpole : AlchemistHeroCard
+public class BounceBack : AlchemistHeroCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Tadpole() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public BounceBack() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithBlock(6, 2);
+        WithBlock(7, 2);
         WithVar("SelfPoison", 1, 0);
         WithTip(typeof(PoisonPower));
     }

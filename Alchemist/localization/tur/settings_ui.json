@@ -18,6 +18,8 @@
   "ALCHEMIST-ECONOMY.title": "Ekonomi",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "Simyacı'nın 7 bölümlük hikâyesini Zaman Çizelgesi'ne ekler; ilerledikçe kartların, kalıntıların ve iksirlerin kilidi açılır. Zaman Çizelgesi'nden gizlemek ve tüm Simyacı içeriğini hemen kullanılabilir yapmak için kapat; yeniden açtığında ilerlemen geri gelir.",
   "ALCHEMIST-ENABLE_EPOCHS.title": "Zaman Çizelgesi Çağlarını Etkinleştir",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "The Hero Expansion için yapılan 9 Simyacı kartını, o mod yüklü olmasa bile sunar. The Broken Blade ve Mysterious Flashlight olay kartları, mod olmadan erişilemedikleri için kilitli kalır.",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "Mod Olmadan Hero Expansion Kartları",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "Simyacı kartlarını, Simyacı oyuncusu içermeyen oyunların dışında tutar; böylece diğer karakterlerin sınıflar arası ödüllerinde (örn. Kaleydoskop) görünmezler. Simyacı kartlarının her oyuna karışmasına izin vermek için kapat.",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Ayrı Kart Havuzu",
   "ALCHEMIST-POISON_FORECAST_COLOR.hover.desc": "Antitoksin barının yanında Zehir hasarı tahminini gösteren sayının rengi.",

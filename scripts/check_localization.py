@@ -101,6 +101,22 @@ def strip_tags(text: str) -> str:
     return ANY_TAG_RE.sub("", text).strip()
 
 
+def fold(text: str) -> str:
+    """Casefold, and drop accents from Latin letters only.
+
+    Inflection moves the stress mark in Spanish and Portuguese ("Encanta" vs the
+    base game's own "Encántalo"), so an exact stem rejects correct text. Marks on
+    other scripts carry meaning (the Japanese voicing mark, the Cyrillic short i),
+    so those stay.
+    """
+    kept = []
+    for ch in unicodedata.normalize("NFD", text):
+        if unicodedata.category(ch) == "Mn" and kept and kept[-1] < "\u0250":
+            continue
+        kept.append(ch)
+    return unicodedata.normalize("NFC", "".join(kept)).casefold()
+
+
 def stem(word: str) -> str:
     """Leading portion of a word, enough to survive inflection.
 
@@ -108,7 +124,7 @@ def stem(word: str) -> str:
     verb built on the same root ("Aturdimiento" vs "aturdes"). A longer stem
     would reject those, and they are correct.
     """
-    folded = unicodedata.normalize("NFC", word).casefold()
+    folded = fold(word)
     return folded[: max(3, min(4, int(len(folded) * 0.6)))]
 
 
@@ -186,14 +202,20 @@ def check_glossary(lang: str, eng: dict[str, dict], glossary: dict[str, str]) ->
             } & glossary.keys()
             if not wanted:
                 continue
-            haystack = unicodedata.normalize("NFC", dst).casefold()
+            haystack = fold(dst)
             for term in sorted(wanted):
                 official = glossary[term]
-                # Every word of the official term must show up, by stem.
-                parts = [w for w in re.split(r"\s+", official) if len(w) > 1]
-                if parts and all(stem(w) in haystack for w in parts):
-                    continue
-                if not parts and official.casefold() in haystack:
+                # A glossary entry may list several accepted forms, split by "|". Every
+                # word of one form must show up, by stem.
+                found = False
+                for form in official.split("|"):
+                    parts = [w for w in re.split(r"\s+", form) if len(w) > 1]
+                    if (parts and all(stem(w) in haystack for w in parts)) or (
+                        not parts and fold(form) in haystack
+                    ):
+                        found = True
+                        break
+                if found:
                     continue
                 problems.append(
                     f"{lang}/{fname}: {key}: '{term}' should read "

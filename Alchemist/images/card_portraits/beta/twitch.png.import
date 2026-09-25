@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxc08wjjeisa5"
-path="res://.godot/imported/unfazed_power.png-8c3c5742b5bfaa958b6fd1cb0382bd0b.ctex"
+uid="uid://buu83vag4ml38"
+path="res://.godot/imported/twitch.png-34fcf21ed01fcd1aeb0931643039cfa5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/unfazed_power.png"
-dest_files=["res://.godot/imported/unfazed_power.png-8c3c5742b5bfaa958b6fd1cb0382bd0b.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/twitch.png"
+dest_files=["res://.godot/imported/twitch.png-34fcf21ed01fcd1aeb0931643039cfa5.ctex"]
 
 [params]
 

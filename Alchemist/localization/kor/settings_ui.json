@@ -18,6 +18,8 @@
   "ALCHEMIST-ECONOMY.title": "경제",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "연금술사의 7장짜리 이야기를 연대표에 추가하고, 진행에 따라 카드, 유물, 포션을 해금합니다. 비활성화하면 연대표에서 숨겨지고 모든 연금술사 콘텐츠를 즉시 사용할 수 있습니다. 다시 활성화하면 진행 상황이 복원됩니다.",
   "ALCHEMIST-ENABLE_EPOCHS.title": "연대표 역사 활성화",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "The Hero Expansion 모드가 설치되어 있지 않아도 해당 모드용으로 만든 연금술사 카드 9장을 제공합니다. The Broken Blade와 Mysterious Flashlight 이벤트 카드는 모드 없이는 접근할 수 없으므로 잠긴 상태로 유지됩니다.",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "모드 없이 Hero Expansion 카드 사용",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "연금술사 플레이어가 없는 도전에서 연금술사 카드를 제외해, 다른 캐릭터의 타 클래스 보상(예: 만화경)에 등장하지 않도록 합니다. 비활성화하면 연금술사 카드가 모든 도전에 섞입니다.",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "카드 풀 분리",
   "ALCHEMIST-POISON_FORECAST_COLOR.hover.desc": "항독소 바 옆에 표시되는 중독 피해 예측 숫자의 색상입니다.",

@@ -18,6 +18,8 @@
   "ALCHEMIST-ECONOMY.title": "経済",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "アルケミストの全7章の物語を年代記に追加し、進行に応じてカード、レリック、ポーションをアンロックします。オフにすると年代記から非表示になり、アルケミストのすべてのコンテンツがすぐに使用可能になります。再度オンにすると進行状況は復元されます。",
   "ALCHEMIST-ENABLE_EPOCHS.title": "年代記の断章を有効化",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "The Hero Expansion向けに作られたアルケミストのカード9枚を、そのMODが導入されていなくても出現させます。The Broken BladeとMysterious Flashlightのイベントカードは、MODなしでは入手できないため、ロックされたままになります。",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "Hero ExpansionのカードをMODなしで有効化",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "アルケミストのプレイヤーがいない冒険では、アルケミストのカードを除外します。他キャラクターのクラス横断報酬（万華鏡など）に出現しなくなります。オフにすると、どの冒険にもアルケミストのカードが混ざるようになります。",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "カードプールを分離",
   "ALCHEMIST-POISON_FORECAST_COLOR.hover.desc": "抗毒素バーの横に表示される毒ダメージ予測の数字の色。",

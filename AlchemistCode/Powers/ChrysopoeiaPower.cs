@@ -8,11 +8,12 @@ using MegaCrit.Sts2.Core.Rooms;
 namespace Alchemist.AlchemistCode.Powers;
 
 // Royalties is the base shape: the gold arrives as an extra combat reward, and the powers are still
-// live when AfterCombatEnd runs, so the Poison count is the one the fight ended on
+// live when AfterCombatEnd runs, so the Poison count is the one the fight ended on. It does not
+// stack: a second copy adds nothing, so the text never needs a multiplier
 public class ChrysopoeiaPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerStackType StackType => PowerStackType.Single;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
@@ -21,7 +22,7 @@ public class ChrysopoeiaPower : AlchemistPower
     {
         var poison = Owner.GetPowerAmount<PoisonPower>();
         if (poison > 0 && Owner.Player != null)
-            room.AddExtraReward(Owner.Player, new GoldReward(poison * Amount, Owner.Player));
+            room.AddExtraReward(Owner.Player, new GoldReward(poison, Owner.Player));
         return Task.CompletedTask;
     }
 }

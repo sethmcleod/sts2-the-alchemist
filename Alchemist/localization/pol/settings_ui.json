@@ -18,6 +18,8 @@
   "ALCHEMIST-ECONOMY.title": "Ekonomia",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "Dodaje 7-rozdziałową historię Alchemika do Osi Czasu, odblokowując karty, artefakty i mikstury w miarę postępów. Wyłącz, aby ukryć ją na Osi Czasu i udostępnić od razu całą zawartość Alchemika; ponowne włączenie przywraca postępy.",
   "ALCHEMIST-ENABLE_EPOCHS.title": "Epoki na Osi Czasu",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "Oferuje 9 kart Alchemika stworzonych dla The Hero Expansion nawet wtedy, gdy ten mod nie jest zainstalowany. Karty z wydarzeń The Broken Blade i Mysterious Flashlight pozostają zablokowane, ponieważ bez tego modu są niedostępne.",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "Karty z Hero Expansion bez modu",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "Wyklucza karty Alchemika z wypraw bez gracza Alchemika, aby nie pojawiały się w międzyklasowych łupach innych postaci (np. Kalejdoskop). Wyłącz, aby karty Alchemika mogły trafiać do dowolnej wyprawy.",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Oddzielna pula kart",
   "ALCHEMIST-POISON_FORECAST_COLOR.hover.desc": "Kolor liczby pokazującej prognozę obrażeń od Trucizny obok paska Antytoksyny.",

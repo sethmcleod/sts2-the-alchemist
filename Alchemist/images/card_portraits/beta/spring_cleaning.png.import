@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d38wm4iygvtfi"
-path="res://.godot/imported/overspray_power.png-a0ed365b0a62545c0f26f29fa09c741f.ctex"
+uid="uid://djff20esppgxa"
+path="res://.godot/imported/spring_cleaning.png-8d5abda947efaf46e80401d83ed5e410.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/overspray_power.png"
-dest_files=["res://.godot/imported/overspray_power.png-a0ed365b0a62545c0f26f29fa09c741f.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/spring_cleaning.png"
+dest_files=["res://.godot/imported/spring_cleaning.png-8d5abda947efaf46e80401d83ed5e410.ctex"]
 
 [params]
 

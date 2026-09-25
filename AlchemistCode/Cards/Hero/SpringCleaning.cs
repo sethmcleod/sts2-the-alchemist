@@ -10,13 +10,13 @@ using MegaCrit.Sts2.Core.Localization;
 namespace Alchemist.AlchemistCode.Cards.Hero;
 
 [CardTheme(CardTheme.Antitoxin)]
-public class Winnow : AlchemistHeroCard
+public class SpringCleaning : AlchemistHeroCard
 {
-    private static LocString Prompt => new("cards", "ALCHEMIST-WINNOW.selectionScreenPrompt");
+    private static LocString Prompt => new("cards", "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt");
 
-    public Winnow() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public SpringCleaning() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("Cards", 3, 1);
+        WithVar("Cards", 2, 1);
         WithVar("Antitoxin", 2, 0);
         WithTip(typeof(AntitoxinPower));
     }

@@ -18,6 +18,8 @@
   "ALCHEMIST-ECONOMY.title": "Ekonomi",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "Menambahkan cerita 7 bab milik Alkemis ke Linimasa, membuka kartu, pusaka, dan ramuan seiring kemajuanmu. Matikan untuk menyembunyikannya dari Linimasa dan membuat semua konten Alkemis langsung tersedia; menyalakannya kembali memulihkan kemajuanmu.",
   "ALCHEMIST-ENABLE_EPOCHS.title": "Aktifkan Zaman Linimasa",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "Menawarkan 9 kartu Alkemis yang dibuat untuk The Hero Expansion meskipun mod tersebut tidak terpasang. Kartu event The Broken Blade dan Mysterious Flashlight tetap terkunci karena tidak dapat diakses tanpa mod tersebut.",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "Kartu Hero Expansion Tanpa Mod",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "Menjaga kartu Alkemis tetap keluar dari perjalanan tanpa pemain Alkemis, sehingga kartu itu tidak bisa muncul di jarahan lintas kelas karakter lain (misalnya Kaledoskop). Matikan agar kartu Alkemis bisa bercampur ke perjalanan mana pun.",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "Kumpulan Kartu Terpisah",
   "ALCHEMIST-POISON_FORECAST_COLOR.hover.desc": "Warna angka perkiraan kerusakan Racun di samping bilah Antitoksin.",

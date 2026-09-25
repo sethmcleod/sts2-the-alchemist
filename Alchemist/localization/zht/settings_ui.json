@@ -18,6 +18,8 @@
   "ALCHEMIST-ECONOMY.title": "經濟",
   "ALCHEMIST-ENABLE_EPOCHS.hover.desc": "將鍊金術士的 7 章故事加入時間軸，隨著進度解鎖卡牌、遺物與藥水。停用後會將其從時間軸隱藏，並立即開放所有鍊金術士內容；重新啟用即可恢復進度。",
   "ALCHEMIST-ENABLE_EPOCHS.title": "啟用時間軸紀元",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.hover.desc": "即使未安裝 The Hero Expansion 模組，仍會提供專為其製作的 9 張鍊金術士卡牌。來自 The Broken Blade 與 Mysterious Flashlight 事件的卡牌仍會保持鎖定，因為沒有該模組便無法取得。",
+  "ALCHEMIST-HERO_CARDS_WITHOUT_EXPANSION.title": "Hero Expansion 卡牌（無需模組）",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.hover.desc": "讓鍊金術士卡牌不會出現在沒有鍊金術士玩家的遊戲中，因此不會出現在其他角色的跨職業獎勵裡（例如萬花筒）。停用後，鍊金術士卡牌可混入任何一局遊戲。",
   "ALCHEMIST-KEEP_POOLS_SEPARATE.title": "獨立卡牌池",
   "ALCHEMIST-POISON_FORECAST_COLOR.hover.desc": "抗毒素條旁中毒傷害預測數字的顏色。",

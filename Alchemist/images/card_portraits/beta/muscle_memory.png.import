@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmfeqtnjhrdln"
-path="res://.godot/imported/pond_scum.png-b56dddc5b077008bac8dc73dc9070d48.ctex"
+uid="uid://bmkccky0uqcna"
+path="res://.godot/imported/muscle_memory.png-77c82e7404a32fa8a3116958055a2bbd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/pond_scum.png"
-dest_files=["res://.godot/imported/pond_scum.png-b56dddc5b077008bac8dc73dc9070d48.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/muscle_memory.png"
+dest_files=["res://.godot/imported/muscle_memory.png-77c82e7404a32fa8a3116958055a2bbd.ctex"]
 
 [params]
 

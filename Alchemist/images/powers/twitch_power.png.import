@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oa0ynge0idk5"
-path="res://.godot/imported/overspray_power.png-994af435c1830866271810437d674f8d.ctex"
+uid="uid://danhj4lmgyuig"
+path="res://.godot/imported/twitch_power.png-ce37ca0152e1570b8f05dfba0151d529.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/overspray_power.png"
-dest_files=["res://.godot/imported/overspray_power.png-994af435c1830866271810437d674f8d.ctex"]
+source_file="res://Alchemist/images/powers/twitch_power.png"
+dest_files=["res://.godot/imported/twitch_power.png-ce37ca0152e1570b8f05dfba0151d529.ctex"]
 
 [params]
 

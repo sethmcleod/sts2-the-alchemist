@@ -8,15 +8,21 @@ using Alchemist.AlchemistCode.Cards;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// Join the standalone "Retain." line of a Ferment card to the next line. TargetMethod resolves by name and
-// parameter count to avoid naming the internal DescriptionPreviewType, which a typeof cannot reach
-[HarmonyPatch]
-public static class FermentInlineRetainPatch
+// The card description builder that all three patches below postfix. It resolves by name and parameter
+// count to avoid naming the internal DescriptionPreviewType, which a typeof cannot reach
+internal static class CardDescriptionMethod
 {
-    private static MethodBase TargetMethod() =>
+    internal static MethodBase Resolve() =>
         typeof(CardModel)
             .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
             .First(m => m.Name == "GetDescriptionForPile" && m.GetParameters().Length == 3);
+}
+
+// Join the standalone "Retain." line of a Ferment card to the next line
+[HarmonyPatch]
+public static class FermentInlineRetainPatch
+{
+    private static MethodBase TargetMethod() => CardDescriptionMethod.Resolve();
 
     private static string RetainTitle => new LocString("card_keywords", "RETAIN.title").GetFormattedText();
     private static string Period => new LocString("card_keywords", "PERIOD").GetRawText();
@@ -38,10 +44,7 @@ public static class FermentInlineRetainPatch
 [HarmonyPatch]
 public static class LacedEnchantmentLinePatch
 {
-    private static MethodBase TargetMethod() =>
-        typeof(CardModel)
-            .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
-            .First(m => m.Name == "GetDescriptionForPile" && m.GetParameters().Length == 3);
+    private static MethodBase TargetMethod() => CardDescriptionMethod.Resolve();
 
     private static string LacedTitle => new LocString("enchantments", "ALCHEMIST-LACED.title").GetFormattedText();
 
@@ -64,10 +67,7 @@ public static class LacedEnchantmentLinePatch
 [HarmonyPatch]
 public static class LacedKeywordPeriodPatch
 {
-    private static MethodBase TargetMethod() =>
-        typeof(CardModel)
-            .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
-            .First(m => m.Name == "GetDescriptionForPile" && m.GetParameters().Length == 3);
+    private static MethodBase TargetMethod() => CardDescriptionMethod.Resolve();
 
     private static string Period => new LocString("card_keywords", "PERIOD").GetRawText();
 
