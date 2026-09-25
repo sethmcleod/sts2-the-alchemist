@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added another secret to mod settings
+
 ## [0.14.20] - 2026-09-24
 
 ### Added

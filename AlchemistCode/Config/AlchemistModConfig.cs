@@ -93,6 +93,11 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigSlider(1.5, 2.5, 0.25, Format = "{0:0%}")]
     public static double BigHeadSize { get; set; } = 1.5;
 
+    [ConfigSection("Secrets")]
+    [ConfigHoverTip]
+    [ConfigVisibleIf(nameof(SecretsUnlocked))]
+    public static bool RainbowRobes { get; set; } = false;
+
     // Shown above Unlock All: opens the Timeline without granting the card, relic, and potion unlocks
     [ConfigSection("Unlocks")]
     [ConfigButton("RevealTimelineButtonLabel")]

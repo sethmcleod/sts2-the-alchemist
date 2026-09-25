@@ -49,6 +49,9 @@ class CharSelectBgPatches
 
     private static readonly string[] HeadBones = ["head"];
 
+    // The painted background behind the character is robe purple too, thus only these slots cycle
+    private static readonly string[] RobeSlots = ["body", "arm_r_1", "arm_r_2", "hand_l_1", "hand_l_2"];
+
     static void AttachSpineScene(Control bg)
     {
         if (bg.GetNodeOrNull("SelectScreenSpine") != null)
@@ -91,6 +94,7 @@ class CharSelectBgPatches
         bg.AddChild(sprite);
         bg.MoveChild(under, 0);
         bg.MoveChild(sprite, 1);
+        RainbowRobes.ApplyToSlots(sprite, data, RobeSlots);
 
         // Layout() re-derives that framing from whatever rect is actually visible, so wider
         // windows scale the painting up just enough to stay covered edge to edge, and a
