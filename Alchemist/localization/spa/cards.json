@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "vivaz",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "Aplica {Weak} de [gold]Debilidad[/gold].\nAplica {Vulnerable} de [gold]Vulnerabilidad[/gold].\nGana {SelfPoison} de [gold]Veneno[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "Inflige {Damage:diff()} de daño.",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "Roba {Bonus} {Bonus:plural:carta|cartas}.",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "Roba {Bonus:diff()} {Bonus:plural:carta|cartas}.",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "Inflige {FumingDamage:diff()} de daño a TODOS los enemigos.\nAplica {Tainted} de [gold]Impureza[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "Gana {energyPrefix:energyIcons(1)}.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "Gana {energyPrefix:energyIcons(2)}.",

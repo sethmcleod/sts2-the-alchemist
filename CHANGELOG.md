@@ -9,6 +9,7 @@ mod).
 
 ### Changed
 
+- Buffed Compound Mix card: cards drawn increased from 1 -> 1(2)
 - Buffed Wallop card: damage increased from 4(6) -> 5(7)
 - Improved Compound Mix working when using a Zesty Mix: the draws now combine into one line
 - Nerfed Overbrew card: copies added decreased from X+1(2) -> X+1

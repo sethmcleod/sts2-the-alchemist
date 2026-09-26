@@ -36,7 +36,9 @@ public class CompoundMix : AlchemistCard
         WithVar(new DamageVar("FumingDamage", 3, ValueProp.Move));
         WithBlock(4);
         WithCards(1);
-        WithVar("Bonus", 1);
+        // The compound's own upgrade adds to its draw. An upgraded ingredient does not upgrade the
+        // compound, because Compose already copies the ingredient's upgraded numbers
+        WithVar("Bonus", 1, 1);
         // Plain vars rather than PowerVars, so no tip attaches by itself; IngredientTips adds the
         // ones the two ingredients actually call for
         WithVar("Weak", 1);
@@ -121,7 +123,8 @@ public class CompoundMix : AlchemistCard
 
     private static string Key(MixKind kind) => kind.ToString().ToLowerInvariant();
 
-    // An unmade copy keeps the plain name; a made one names its ingredients
+    // An unmade copy keeps the plain name; a made one names its ingredients and adds the base
+    // game's "+" itself, since this override replaces the base title
     public override string Title
     {
         get
@@ -132,7 +135,7 @@ public class CompoundMix : AlchemistCard
                 : "ALCHEMIST-COMPOUND_MIX.titleFormat");
             title.Add("First", new LocString("cards", $"ALCHEMIST-COMPOUND_MIX.name_{Key(_first)}").GetFormattedText());
             title.Add("Second", new LocString("cards", $"ALCHEMIST-COMPOUND_MIX.name_{Key(_second)}").GetFormattedText());
-            return title.GetFormattedText();
+            return title.GetFormattedText() + (IsUpgraded ? "+" : "");
         }
     }
 

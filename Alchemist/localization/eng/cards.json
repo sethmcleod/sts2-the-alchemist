@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "Zesty",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "Apply {Weak} [gold]Weak[/gold].\nApply {Vulnerable} [gold]Vulnerable[/gold].\nGain {SelfPoison} [gold]Poison[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "Deal {Damage:diff()} damage.",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "Draw {Bonus} {Bonus:plural:card|cards}.",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "Draw {Bonus:diff()} {Bonus:plural:card|cards}.",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "Deal {FumingDamage:diff()} damage to ALL enemies.\nApply {Tainted} [gold]Tainted[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "Gain {energyPrefix:energyIcons(1)}.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "Gain {energyPrefix:energyIcons(2)}.",

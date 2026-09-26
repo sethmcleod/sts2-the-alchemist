@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "รสซ่า",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "สร้าง {Weak} [gold]ความอ่อนแอ[/gold]\nสร้าง {Vulnerable} [gold]จุดอ่อน[/gold]\nได้รับ {SelfPoison} [gold]พิษ[/gold]",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "สร้างความเสียหาย {Damage:diff()}",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "จั่วการ์ด {Bonus} ใบ",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "จั่วการ์ด {Bonus:diff()} ใบ",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "สร้างความเสียหาย {FumingDamage:diff()} ใส่ศัตรูทั้งหมด\nสร้าง {Tainted} [gold]ปนเปื้อน[/gold]",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "ได้รับ {energyPrefix:energyIcons(1)}",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "ได้รับ {energyPrefix:energyIcons(2)}",

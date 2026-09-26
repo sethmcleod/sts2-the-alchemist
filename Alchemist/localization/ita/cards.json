@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "Frizzante",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "Applichi {Weak} di [gold]Debolezza[/gold].\nApplichi {Vulnerable} di [gold]Vulnerabilità[/gold].\nOttieni {SelfPoison} di [gold]Veleno[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "Infliggi {Damage:diff()} di danno.",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "Peschi {Bonus} {Bonus:plural:carta|carte}.",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "Peschi {Bonus:diff()} {Bonus:plural:carta|carte}.",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "Infliggi {FumingDamage:diff()} di danno a TUTTI i nemici.\nApplichi {Tainted} di [gold]Contaminazione[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "Ottieni {energyPrefix:energyIcons(1)}.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "Ottieni {energyPrefix:energyIcons(2)}.",

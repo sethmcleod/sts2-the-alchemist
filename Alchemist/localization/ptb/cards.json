@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "Vibrante",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "Aplique {Weak} de [gold]Fraqueza[/gold].\nAplique {Vulnerable} de [gold]Vulnerável[/gold].\nReceba {SelfPoison} de [gold]Veneno[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "Cause {Damage:diff()} de dano.",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "Compre {Bonus} {Bonus:plural:carta|cartas}.",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "Compre {Bonus:diff()} {Bonus:plural:carta|cartas}.",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "Cause {FumingDamage:diff()} de dano a TODOS os inimigos.\nAplique {Tainted} de [gold]Contaminação[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "Receba {energyPrefix:energyIcons(1)}.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "Receba {energyPrefix:energyIcons(2)}.",

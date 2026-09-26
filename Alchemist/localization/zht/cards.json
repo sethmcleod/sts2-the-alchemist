@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "爽勁",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "施加 {Weak} 層[gold]虛弱[/gold]。\n施加 {Vulnerable} 層[gold]易傷[/gold]。\n獲得 {SelfPoison} 層[gold]中毒[/gold]。",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "造成 {Damage:diff()} 點傷害。",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "抽 {Bonus} 張牌。",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "抽 {Bonus:diff()} 張牌。",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "對所有敵人造成 {FumingDamage:diff()} 點傷害。\n施加 {Tainted} 層[gold]污穢[/gold]。",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "獲得 {energyPrefix:energyIcons(1)}。",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "獲得 {energyPrefix:energyIcons(2)}。",

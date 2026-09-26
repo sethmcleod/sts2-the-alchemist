@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "Segar",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "Terapkan {Weak} [gold]Lemah[/gold].\nTerapkan {Vulnerable} [gold]Rentan[/gold].\nDapatkan {SelfPoison} [gold]Racun[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "Lakukan {Damage:diff()} kerusakan.",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "Ambil {Bonus} kartu.",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "Ambil {Bonus:diff()} kartu.",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "Lakukan {FumingDamage:diff()} kerusakan ke SEMUA musuh.\nTerapkan {Tainted} [gold]Noda[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "Dapatkan {energyPrefix:energyIcons(1)}.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "Dapatkan {energyPrefix:energyIcons(2)}.",

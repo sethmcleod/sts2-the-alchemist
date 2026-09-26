@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "Spritzig",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "Wende {Weak} [gold]Schwach[/gold] an.\nWende {Vulnerable} [gold]Verwundbar[/gold] an.\nErhalte {SelfPoison} [gold]Gift[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "Füge {Damage:diff()} Schaden zu.",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "Ziehe {Bonus} {Bonus:plural:Karte|Karten}.",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "Ziehe {Bonus:diff()} {Bonus:plural:Karte|Karten}.",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "Füge ALLEN Gegnern {FumingDamage:diff()} Schaden zu.\nWende {Tainted} [gold]Schmutzig[/gold] an.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "Erhalte {energyPrefix:energyIcons(1)}.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "Erhalte {energyPrefix:energyIcons(2)}.",

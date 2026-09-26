@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "Бодрящая",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "Накладывает {Weak} [gold]слабости[/gold].\nНакладывает {Vulnerable} [gold]уязвимости[/gold].\nДает вам {SelfPoison} [gold]яда[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "Наносит {Damage:diff()} урона.",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "Вы добираете {Bonus} {Bonus:plural(ru):карту|карты|карт}.",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "Вы добираете {Bonus:diff()} {Bonus:plural(ru):карту|карты|карт}.",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "Наносит {FumingDamage:diff()} урона ВСЕМ врагам.\nНакладывает {Tainted} [gold]порчи[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "Дает {energyPrefix:energyIcons(1)}.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "Дает {energyPrefix:energyIcons(2)}.",

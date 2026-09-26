@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "Rześka",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "Nałóż {Weak} pkt. [gold]Słabości[/gold].\nNałóż {Vulnerable} pkt. [gold]Wrażliwości[/gold].\nZyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "Zadaj {Damage:diff()} pkt. obrażeń.",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "Dobierz {Bonus} {Bonus:plural:kartę|karty|kart}.",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "Dobierz {Bonus:diff()} {Bonus:plural:kartę|karty|kart}.",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "Zadaj {FumingDamage:diff()} pkt. obrażeń WSZYSTKIM przeciwnikom.\nNałóż {Tainted} pkt. [gold]Skażenia[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "Zyskaj {energyPrefix:energyIcons(1)}.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "Zyskaj {energyPrefix:energyIcons(2)}.",

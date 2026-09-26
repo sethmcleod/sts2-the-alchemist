@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "vivifiante",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "Appliquez [gold]Affaibli[/gold] ({Weak}).\nAppliquez [gold]Vulnérable[/gold] ({Vulnerable}).\nGagnez {SelfPoison} de [gold]Poison[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "Infligez {Damage:diff()} dégâts.",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "Piochez {Bonus} {Bonus:plural:carte|cartes}.",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "Piochez {Bonus:diff()} {Bonus:plural:carte|cartes}.",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "Infligez {FumingDamage:diff()} dégâts à TOUS les ennemis.\nAppliquez {Tainted} de [gold]Souillure[/gold].",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "Gagnez {energyPrefix:energyIcons(1)}.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "Gagnez {energyPrefix:energyIcons(2)}.",

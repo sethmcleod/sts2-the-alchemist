@@ -17,7 +17,7 @@ Callus,Uncommon,Power,2 (1),"Whenever your Poison is triggered, gain 1 Strength.
 Caustic Strike,Common,Attack,1,Retain. Ferment. Deal 6 (8) damage. Apply 3 Poison. Applies 2 (3) additional Poison for each turn Fermented.
 Clench,Uncommon,Power,1,Gain 3 (4) Strength. Gain 4 Poison.
 Combine,Common,Skill,0,Add a random basic Mix into your Hand. Combine 2 Mixes in your Hand into a Compound Mix. (Combine+ adds a Mix+)
-Compound Mix,Token,Skill,0,"Draw 1 card, in addition to the effects of the two Mixes it was made from. Exhaust."
+Compound Mix,Token,Skill,0,"Draw 1 (2) cards, in addition to the effects of the two Mixes it was made from. Exhaust."
 Corrode,Uncommon,Attack,4,Retain. Ferment. Deal 18 (24) damage. Apply 5 (7) Poison. Costs 1 less for each turn Fermented.
 Croak,Rare,Attack,2,"Deal 20 (26) damage. If Fatal, gain an additional potion reward."
 Defend,Basic,Skill,1,Gain 5 (8) Block.

@@ -46,7 +46,7 @@
   "ALCHEMIST-COMPOUND_MIX.name_zesty": "짜릿한",
   "ALCHEMIST-COMPOUND_MIX.part_acrid": "[gold]약화[/gold]를 {Weak} 부여합니다.\n[gold]취약[/gold]을 {Vulnerable} 부여합니다.\n[gold]중독[/gold]을 {SelfPoison} 얻습니다.",
   "ALCHEMIST-COMPOUND_MIX.part_bursting": "피해를 {Damage:diff()} 줍니다.",
-  "ALCHEMIST-COMPOUND_MIX.part_draw": "카드를 {Bonus}장 뽑습니다.",
+  "ALCHEMIST-COMPOUND_MIX.part_draw": "카드를 {Bonus:diff()}장 뽑습니다.",
   "ALCHEMIST-COMPOUND_MIX.part_fuming": "모든 적에게 피해를 {FumingDamage:diff()} 줍니다.\n[gold]훼손됨[/gold]을 {Tainted} 부여합니다.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling": "{energyPrefix:energyIcons(1)}를 얻습니다.",
   "ALCHEMIST-COMPOUND_MIX.part_sparkling_double": "{energyPrefix:energyIcons(2)}를 얻습니다.",
