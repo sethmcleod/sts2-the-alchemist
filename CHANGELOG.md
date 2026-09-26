@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added more secrets to mod settings...
+
 ### Changed
 
 - Buffed Compound Mix card: cards drawn increased from 1 -> 1(2)
@@ -18,7 +22,7 @@ mod).
 
 ### Added
 
-- Added another secret to mod settings
+- Added another secret to mod settings...
 
 ## [0.14.20] - 2026-09-24
 
