@@ -1,0 +1,19 @@
+---
+import type { NoteItem } from '../lib/types';
+import NoteText from './NoteText.astro';
+
+interface Props {
+  items: NoteItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="notes-list">
+  {items.map((item) => (
+    <li>
+      <NoteText text={item.text} />
+      {item.items.length > 0 && <Astro.self items={item.items} />}
+    </li>
+  ))}
+</ul>

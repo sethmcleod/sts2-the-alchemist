@@ -1,5 +1,7 @@
+using System.Globalization;
 using Godot;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
+using FileAccess = Godot.FileAccess;
 
 namespace Alchemist.AlchemistCode.Character;
 
@@ -185,6 +187,73 @@ internal static class SpineModel
         }
 
         return null;
+    }
+
+    /// <summary>
+    /// Where the image of an atlas region sits on its page, in UV, or null if the atlas holds no such
+    /// region or stores it turned. The rectangle spans the whole image, the whitespace the packer
+    /// stripped included, thus a point given as a fraction of the image maps straight onto the page.
+    /// </summary>
+    /// <remarks>
+    /// This reads the atlas text: a name after a blank line starts a page, any other name a region,
+    /// and the fields under a name are its own. A new export can pack a region elsewhere on the
+    /// page, and this follows it.
+    /// </remarks>
+    public static Rect2? RegionUv(string atlasPath, string region)
+    {
+        var pageSize = Vector2.Zero;
+        float[]? bounds = null, offsets = null;
+        var turned = false;
+
+        string? current = null;
+        var pageNext = true;
+        foreach (var raw in FileAccess.GetFileAsString(atlasPath).Split('\n'))
+        {
+            var line = raw.Trim();
+            if (line.Length == 0)
+            {
+                pageNext = true;
+                continue;
+            }
+
+            var colon = line.IndexOf(':');
+            if (colon < 0)
+            {
+                if (current == region) break;
+                current = pageNext ? null : line;
+                pageNext = false;
+                continue;
+            }
+
+            var field = line[..colon].Trim();
+            var value = line[(colon + 1)..];
+            if (current == null && field == "size" && Numbers(value) is [var width, var height])
+                pageSize = new Vector2(width, height);
+            else if (current == region && field == "bounds") bounds = Numbers(value);
+            else if (current == region && field == "offsets") offsets = Numbers(value);
+            else if (current == region && field == "rotate") turned = value.Trim() is not ("false" or "0");
+        }
+
+        if (bounds is not [var x, var y, var w, var h] || pageSize.X <= 0f || pageSize.Y <= 0f || turned)
+            return null;
+
+        // Spine counts the stripped margin from the bottom of the image, and the page from its top
+        var (left, bottom, fullWidth, fullHeight) =
+            offsets is [var ox, var oy, var ow, var oh] ? (ox, oy, ow, oh) : (0f, 0f, w, h);
+        var top = fullHeight - h - bottom;
+        return new Rect2(
+            (x - left) / pageSize.X, (y - top) / pageSize.Y,
+            fullWidth / pageSize.X, fullHeight / pageSize.Y);
+
+        static float[]? Numbers(string text)
+        {
+            var parts = text.Split(',');
+            var numbers = new float[parts.Length];
+            for (var i = 0; i < parts.Length; i++)
+                if (!float.TryParse(parts[i], NumberStyles.Float, CultureInfo.InvariantCulture, out numbers[i]))
+                    return null;
+            return numbers;
+        }
     }
 
     private static bool ReadFailed(Resource resource, string method, string path)

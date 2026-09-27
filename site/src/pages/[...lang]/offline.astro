@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import { everyLanguage } from '../../lib/i18n';
+
+const { l } = Astro.locals;
+
+export const getStaticPaths = everyLanguage;
+---
+
+<Base title={l.t('Offline')} description={l.t('This page is not saved for offline use yet.')}>
+  <div class="mx-auto max-w-[60ch] py-16">
+    <h1 class="text-4xl">{l.t('No connection')}</h1>
+    <p class="text-ink-2">
+      {l.t(
+        'This page has not been opened on this device before, so there is no copy of it yet. The pages you have opened still work offline.',
+      )}
+    </p>
+    <ul class="grid gap-2 pl-5">
+      <li>
+        <a href={l.href('/')}>{l.t('Cards')}</a>
+      </li>
+      <li>
+        <a href={l.href('/relics')}>{l.t('Relics and potions')}</a>
+      </li>
+      <li>
+        <a href={l.href('/powers')}>{l.t('Powers')}</a>
+      </li>
+      <li>
+        <a href={l.href('/notes')}>{l.t('Patch notes')}</a>
+      </li>
+      <li>
+        <a href={l.href('/stats')}>{l.t('Run stats')}</a>
+      </li>
+    </ul>
+  </div>
+</Base>

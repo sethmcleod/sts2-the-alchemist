@@ -1,0 +1,28 @@
+---
+import T from '../components/T.astro';
+import Base from '../layouts/Base.astro';
+
+const { l } = Astro.locals;
+---
+
+<Base title={l.t('Not found')} description={l.t('There is no page at this address.')}>
+  <div class="mx-auto max-w-[60ch] py-16">
+    <h1 class="text-4xl mb-2">{l.t('Nothing here')}</h1>
+    <p class="text-ink-2 mb-2">
+      <T
+        text={l.t(
+          'There is no page at this address. A card that was renamed or removed keeps no page of its own, but its changes are in the {notes}.',
+        )}
+      >
+        <a slot="notes" href={l.href('/notes')}>
+          {l.t('patch notes')}
+        </a>
+      </T>
+    </p>
+    <p>
+      <a href={l.href('/')} class="button primary">
+        {l.t('See every card')}
+      </a>
+    </p>
+  </div>
+</Base>

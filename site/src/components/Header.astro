@@ -1,0 +1,107 @@
+---
+import { Image } from 'astro:assets';
+import head from '../../../Alchemist/images/charui/character_icon_alchemist.png';
+import { basePath, LOCALES } from '../lib/i18n';
+import { Lang } from '../lib/lang';
+import { pagePath } from '../lib/links';
+
+const { l, locale } = Astro.locals;
+
+const links = [
+  { href: '/', label: l.t('Cards'), match: (path: string) => path === '/' || path.startsWith('/cards') },
+  {
+    href: '/relics',
+    label: l.t('Relics & potions'),
+    match: (path: string) => /^\/(relics|potions)(\/|$)/.test(path),
+  },
+  { href: '/powers', label: l.t('Powers'), match: (path: string) => path.startsWith('/powers') },
+  { href: '/notes', label: l.t('Patch notes'), match: (path: string) => path.startsWith('/notes') },
+  { href: '/stats', label: l.t('Stats'), match: (path: string) => path.startsWith('/stats') },
+];
+// The 404 page exists only in English, so the menu offers the other languages' home pages
+const page = basePath(pagePath(Astro.url));
+const path = page === '/404' ? '/' : page;
+// The same page in each language
+const other = (target: (typeof LOCALES)[number]) => new Lang(target).href(path);
+---
+
+<header class="site-header">
+  <div class="mx-auto flex w-full max-w-[80rem] flex-wrap items-center gap-x-3 px-4 pt-2 lg:gap-x-6">
+    <a href={l.href('/')} class="flex h-14 items-center gap-2.5 text-ink no-underline">
+      <Image src={head} width={40} height={40} densities={[1, 2]} alt="" class="size-10" />
+      <span class="font-display text-xl">The Alchemist</span>
+    </a>
+    {/* Below lg the tabs and the language button get a row of their own, the one that stays on screen */}
+    <span class="basis-full lg:hidden" aria-hidden="true"></span>
+    <nav
+      aria-label={l.t('Site')}
+      class="site-nav -ml-4 min-w-0 flex-1 overflow-x-auto pl-3 [scrollbar-width:none] lg:ml-0 lg:pl-0"
+    >
+      <ul class="m-0 flex list-none gap-1 p-0">
+        {links.map((link) => (
+          <li>
+            <a
+              href={l.href(link.href)}
+              aria-current={link.match(path) ? 'page' : undefined}
+              class="flex h-11 items-center rounded-t-lg px-3 text-[15px] font-medium whitespace-nowrap text-ink-2 no-underline hover:bg-panel hover:text-ink aria-[current=page]:bg-panel aria-[current=page]:text-ink aria-[current=page]:shadow-[inset_0_-2px_0_var(--color-accent)]"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <details class="lang-menu">
+      <summary class="field-control">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18M12 3c2.4 2.7 3.6 5.7 3.6 9s-1.2 6.3-3.6 9c-2.4-2.7-3.6-5.7-3.6-9S9.6 5.7 12 3Z" />
+        </svg>
+        <span class="sr-only">{l.t('Language: {name}', { name: locale.name })}</span>
+        <span aria-hidden="true">{locale.short}</span>
+      </summary>
+      <ul>
+        {LOCALES.map((target) => (
+          <li>
+            <a
+              href={other(target)}
+              hreflang={target.lang}
+              lang={target.lang}
+              aria-current={target === locale ? 'true' : undefined}
+              data-language
+            >
+              {target.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+  </div>
+</header>
+
+<script>
+  import { keepPlace, returnToPlace } from '../scripts/place';
+
+  // The menu closes on a click elsewhere or on Escape, as a native one does
+  const menu = document.querySelector<HTMLDetailsElement>('.lang-menu')!;
+  for (const link of menu.querySelectorAll<HTMLAnchorElement>('a[data-language]')) {
+    link.addEventListener('click', () => keepPlace(link));
+  }
+  returnToPlace();
+  document.addEventListener('click', (e) => {
+    if (menu.open && !menu.contains(e.target as Node)) menu.open = false;
+  });
+  menu.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !menu.open) return;
+    menu.open = false;
+    menu.querySelector('summary')!.focus();
+  });
+</script>

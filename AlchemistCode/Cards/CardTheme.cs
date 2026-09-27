@@ -17,7 +17,7 @@ public enum CardTheme
 }
 
 // Read by reflection at runtime for the analytics payload and by regex from tools/analytics/ for the
-// dashboard's card metadata, so keep it on the line before the class declaration
+// website's card metadata, so keep it on the line before the class declaration
 [AttributeUsage(AttributeTargets.Class, Inherited = false)]
 public sealed class CardThemeAttribute(params CardTheme[] themes) : Attribute
 {

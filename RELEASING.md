@@ -134,6 +134,11 @@ scripts/dev.sh release minor    # or: patch | major | an explicit X.Y.Z
 scripts/dev.sh publish-release  # commit, tag vX.Y.Z-beta, push, and put it on GitHub
 ```
 
+The website follows on its own. The tag push starts `.github/workflows/site.yml`, which
+points the `site` branch at the new release, and Vercel rebuilds alchemist.fyi with the new
+cards, relics, potions, powers, README text and patch notes. See
+[site/README.md](site/README.md).
+
 ## How to promote beta into main
 
 Do this when a batch of beta releases has settled and you want the default-branch

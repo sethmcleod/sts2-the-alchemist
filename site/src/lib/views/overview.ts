@@ -1,0 +1,132 @@
+import type { BarItem } from '../../components/charts/Bars';
+import type { Column } from '../../components/charts/Columns';
+import type { Stat } from '../../components/charts/Stats';
+import { rateItem } from '../bars';
+import type { Lang } from '../lang';
+import { notesHref } from '../links';
+import type { Filters, Runs } from '../runs';
+import { compareVersions, histogramMedian, rate, sumBy } from '../stats';
+
+export interface OverviewModel {
+  runs: number;
+  overall: number | null;
+  stats: Stat[];
+  funnel: BarItem[];
+  funnelNote: string;
+  ascensions: BarItem[];
+  themes: BarItem[];
+  themesNote: string;
+  versions: BarItem[];
+  days: Column[];
+}
+
+export function overview(l: Lang, runs: Runs, f: Filters): OverviewModel {
+  const on = runs.select(f);
+  const t = runs.totals(on);
+  const overall = rate(t.wins, t.runs);
+  const length = runs.histogram(on, 'run_minutes');
+  const winLength = runs.histogram(on, 'run_minutes', 'wins');
+  const per100 = (n: number) => Math.round((100 * n) / t.runs);
+
+  const stages: [string, number][] = [
+    [l.t('Reach Act 2'), t.reached_act2],
+    [l.t('Reach Act 3'), t.reached_act3],
+    [l.t('Win'), t.wins],
+  ];
+
+  const ascensions = [...sumBy(runs.tables.ascensions, on, (r) => r.ascension as number)]
+    .sort((a, b) => a[0] - b[0])
+    .filter(([, g]) => g.runs >= f.min)
+    .map(([ascension, g]) => rateItem(l, l.t('A{n}', { n: ascension }), g.wins, g.runs));
+
+  // Every theme's name, so each one has a translation even while the filters hide it
+  const themeNames = new Map(runs.meta.themes.map((theme) => [theme, l.game?.words[theme] ?? l.t(theme)]));
+  const themes = [...sumBy(runs.tables.themes, on, (r) => r.theme as string)]
+    .filter(([, g]) => g.runs >= f.min)
+    .sort((a, b) => b[1].runs - a[1].runs)
+    .map(([theme, g]) =>
+      rateItem(l, themeNames.get(theme) ?? theme, g.wins, g.runs, {
+        note: l.t('{share} of runs', { share: l.pct(rate(g.runs, t.runs)) }),
+      }),
+    );
+
+  const everyVersion = runs.select({ ...f, version: 'all' });
+  const versions = [...sumBy(runs.tables.totals, everyVersion, (r) => runs.groups[r.group].version)]
+    .filter(([, g]) => g.runs >= f.min)
+    .sort((a, b) => compareVersions(b[0], a[0]))
+    .map(([version, g]) => rateItem(l, version, g.wins, g.runs, { href: notesHref(version) }));
+
+  const byDay = sumBy(runs.tables.days, everyVersion, (r) => r.day as string);
+  const last = new Date(`${runs.meta.last_day}T00:00:00Z`);
+  const days: Column[] = [];
+  for (let i = 29; i >= 0; i--) {
+    const day = new Date(last);
+    day.setUTCDate(last.getUTCDate() - i);
+    const g = byDay.get(day.toISOString().slice(0, 10)) ?? { runs: 0, wins: 0 };
+    const label = day.toLocaleDateString(l.lang, { month: 'short', day: 'numeric', timeZone: 'UTC' });
+    days.push({
+      label,
+      value: g.runs,
+      tip: [
+        label,
+        l.n(g.runs, '{n} run', '{n} runs'),
+        g.runs ? l.t('{share} won', { share: l.pct(g.wins / g.runs) }) : l.t('no runs'),
+      ],
+    });
+  }
+
+  return {
+    runs: t.runs,
+    overall,
+    stats: [
+      {
+        label: l.t('Win rate'),
+        value: l.pct(overall),
+        note: l.n(t.runs, '{wins} from {n} run', '{wins} from {n} runs', { wins: l.n(t.wins, '{n} win', '{n} wins') }),
+      },
+      {
+        label: l.t('Reach Act 3'),
+        value: l.pct(rate(t.reached_act3, t.runs)),
+        note: l.t('{share} reach Act 2', { share: l.pct(rate(t.reached_act2, t.runs)) }),
+      },
+      {
+        label: l.t('Run length'),
+        value: l.minutes(histogramMedian(length.bins, length.width)),
+        note: l.t('for the middle run. The middle win takes {time}', {
+          time: l.minutes(histogramMedian(winLength.bins, winLength.width)),
+        }),
+      },
+      {
+        label: l.t('Antitoxin peak'),
+        value: l.fixed(rate(t.antitoxin_peak, t.runs_with_peak), 0),
+        note: l.t('the most held at once, on average'),
+      },
+    ],
+    funnel: t.runs
+      ? stages.map(([label, n], i) => ({
+          label,
+          value: n / t.runs,
+          text: l.pct(n / t.runs),
+          textNote: l.num(n),
+          fill: `var(--stage-${i + 1})`,
+        }))
+      : [],
+    funnelNote: t.runs
+      ? l.t('Out of every 100 runs, {act2} reach Act 2, {act3} reach Act 3 and {wins} win.', {
+          act2: l.num(per100(t.reached_act2)),
+          act3: l.num(per100(t.reached_act3)),
+          wins: l.num(per100(t.wins)),
+        })
+      : '',
+    ascensions,
+    themes,
+    themesNote: l.n(
+      runs.meta.theme_min_cards,
+      'Each run counts toward the theme with the most cards in its final deck. A deck with fewer than {n} card of any one theme counts as {unfocused}.',
+      'Each run counts toward the theme with the most cards in its final deck. A deck with fewer than {n} cards of any one theme counts as {unfocused}.',
+      { unfocused: l.t('Unfocused') },
+    ),
+    versions,
+    days,
+  };
+}

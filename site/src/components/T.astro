@@ -1,0 +1,11 @@
+---
+// A translated sentence with markup in it: each {name} left in the text takes the slot of that name
+interface Props {
+  text: string;
+}
+
+const parts = Astro.props.text.split(/\{(\w+)\}/);
+const filled = await Promise.all(parts.map((part, i) => (i % 2 ? Astro.slots.render(part) : part)));
+---
+
+{filled.map((part, i) => (i % 2 ? <Fragment set:html={part} /> : part))}

@@ -1,4 +1,4 @@
-"""Fabricate Alchemist runs, so the export and the dashboard can be tried with no real data.
+"""Fabricate Alchemist runs, so the export and the website can be tried with no real data.
 
 Two modes:
     --local          write the rows to seed-runs.local.json and skip the network (the default)

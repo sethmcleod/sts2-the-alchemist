@@ -17,7 +17,7 @@ Callus,Uncommon,Power,2 (1),"Whenever your Poison is triggered, gain 1 Strength.
 Caustic Strike,Common,Attack,1,Retain. Ferment. Deal 6 (8) damage. Apply 3 Poison. Applies 2 (3) additional Poison for each turn Fermented.
 Clench,Uncommon,Power,1,Gain 3 (4) Strength. Gain 4 Poison.
 Combine,Common,Skill,0,Add a random basic Mix into your Hand. Combine 2 Mixes in your Hand into a Compound Mix. (Combine+ adds a Mix+)
-Compound Mix,Token,Skill,0,"Draw 1 card, in addition to the effects of the two Mixes it was made from. Exhaust."
+Compound Mix,Token,Skill,0,"Draw 1 (2) cards, in addition to the effects of the two Mixes it was made from. Exhaust."
 Corrode,Uncommon,Attack,4,Retain. Ferment. Deal 18 (24) damage. Apply 5 (7) Poison. Costs 1 less for each turn Fermented.
 Croak,Rare,Attack,2,"Deal 20 (26) damage. If Fatal, gain an additional potion reward."
 Defend,Basic,Skill,1,Gain 5 (8) Block.
@@ -53,7 +53,7 @@ Needle Point,Rare,Attack,0,Innate. Deal 7 (10) damage. Apply 1 (2) Weak. Apply 1
 Nightcap,Uncommon,Attack,1,Gain 2 Antitoxin. Deal damage equal to double (triple) your Antitoxin. Exhaust.
 Numb,Uncommon,Skill,1,Discard all non-Ferment cards in your Hand. Gain 5 (6) Block for each card discarded. Exhaust.
 Osmosis,Uncommon,Power,1,"At the start of your turn, gain 2 (3) Antitoxin."
-Overbrew,Uncommon,Skill,X,Choose a basic Mix (Mix+). Add X+1 (2) copies of it into your Hand.
+Overbrew,Uncommon,Skill,X,Choose a basic Mix (Mix+). Add X+1 copies of it into your Hand.
 Overflow,Uncommon,Power,1 (0),"Whenever one of your cards Ferments, Upgrade it."
 Panacea,Ancient,Power,1 (0),"Whenever you gain Poison, gain 1 Antitoxin."
 Patient Strike,Uncommon,Attack,1,Retain. Ferment. Deal 9 (12) damage. Deals 4 (6) additional damage for each turn Fermented.
@@ -96,7 +96,7 @@ Upwell,Common,Skill,1,Gain 10 (13) Block. Gain 2 Poison.
 Vent,Uncommon,Skill,1 (0),Gain Antitoxin equal to your Poison. Exhaust.
 Vintage,Rare,Skill,1,Retain. Ferment. Gain 1 (2) Energy and draw 1 (2) cards. Draws 1 additional card for each turn Fermented. Exhaust.
 Vitrify,Common,Skill,1,Gain 3 (4) Block twice. Gain 2 (3) Antitoxin.
-Wallop,Rare,Attack,2,Deal 4 (6) damage for each card in your Hand.
+Wallop,Rare,Attack,2,Deal 5 (7) damage for each card in your Hand.
 Warded,Rare,Power,1,"Whenever you gain Antitoxin, gain 3 (4) Block."
 Warm Up,Rare,Skill,0,Gain 1 (2) Energy. Add a random Mix into your Hand. Exhaust. (Warm Up+ adds a Mix+)
 Water Down,Rare,Skill,1,ALL enemies lose 3 (5) Strength this turn. Apply 3 (5) Poison to ALL enemies.

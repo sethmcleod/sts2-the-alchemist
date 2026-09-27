@@ -31,7 +31,15 @@
 
 This mod is still a work in progress and content is subject to change, but
 feedback is welcome! The best place to discuss the mod is official Slay the
-Spire Discord server in the #modding-forum.
+Spire Discord server in the
+[#modding-forum post](https://discord.com/channels/309399445785673728/1536374761699938424)
+for The Alchemist.
+
+Language translations have been auto-generated and corrections are appreciated.
+If you see an error in your language, please contact me or feel free to open a
+pull request directly in GitHub.
+
+<!-- The website shows this section up to here -->
 
 The Alchemist has been lovingly crafted to feel like a natural addition to the
 game. Every card, relic, and potion has been (and will continue to be) balanced

@@ -7,11 +7,25 @@ mod).
 
 ## [Unreleased]
 
+## [0.14.22] - 2026-09-27
+
+### Added
+
+- Added more secrets to mod settings...
+- Added the mod's website, https://alchemist.fyi, with every card, relic, potion and power as the game shows them, the patch notes, screenshots and run stats, in all 16 of the mod's languages
+
+### Changed
+
+- Buffed Compound Mix card: cards drawn increased from 1 -> 1(2)
+- Buffed Wallop card: damage increased from 4(6) -> 5(7)
+- Improved Compound Mix working when using a Zesty Mix: the draws now combine into one line
+- Nerfed Overbrew card: copies added decreased from X+1(2) -> X+1
+
 ## [0.14.21] - 2026-09-25
 
 ### Added
 
-- Added another secret to mod settings
+- Added another secret to mod settings...
 
 ## [0.14.20] - 2026-09-24
 

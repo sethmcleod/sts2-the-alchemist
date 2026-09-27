@@ -20,11 +20,15 @@
 #                                 the GitHub Release with the zip and the notes. --force moves a
 #                                 tag that is already public (a history rewrite)
 #   scripts/dev.sh sync-main      merge beta into main so main can promote (see RELEASING.md)
-#   scripts/dev.sh analytics [export|seed|serve]
-#                                 export: pull the run rows from Supabase and write the dashboard
+#   scripts/dev.sh analytics [export|seed]
+#                                 export: pull the run rows from Supabase and write the website's
 #                                 data (needs the secret key, see tools/analytics/README.md);
-#                                 seed: fabricate 400 runs and export them, no network; serve:
-#                                 open the dashboard at http://localhost:8765 from docs/analytics/
+#                                 seed: fabricate 400 runs and export them, no network
+#   scripts/dev.sh site [dev|build|preview|check]
+#                                 the website in site/ (alchemist.fyi). dev: serve it while you edit;
+#                                 build: export the data and build it; preview: serve the build;
+#                                 check: the unit tests and the type check. It deploys itself from
+#                                 each release (.github/workflows/site.yml), so a release needs nothing
 #   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with the fixes
 #   scripts/dev.sh env            print the resolved paths and exit
 #
@@ -585,8 +589,15 @@ case "${1:-help}" in
                    export) "${PY_CMD[@]}" "$REPO/tools/analytics/export_stats.py" ;;
                    seed)   "${PY_CMD[@]}" "$REPO/tools/analytics/seed_runs.py" --local
                            "${PY_CMD[@]}" "$REPO/tools/analytics/export_stats.py" --from-file "$REPO/tools/analytics/seed-runs.local.json" ;;
-                   serve)  echo "http://localhost:8765/"; (cd "$REPO/docs/analytics" && "${PY_CMD[@]}" -m http.server 8765) ;;
-                   *)      bad "unknown analytics mode '$2' (export|seed|serve)"; exit 1 ;;
+                   *)      bad "unknown analytics mode '$2' (export|seed)"; exit 1 ;;
+                 esac ;;
+  site)          command -v npm >/dev/null || { bad "npm not found: install Node 22.12 or newer"; exit 1; }
+                 [ -d "$REPO/site/node_modules" ] || (cd "$REPO/site" && npm install)
+                 mode="${2:-dev}"
+                 case "$mode" in
+                   dev|build|preview) (cd "$REPO/site" && npm run "$mode") ;;
+                   check)  (cd "$REPO/site" && npm test && npm run check) ;;
+                   *)      bad "unknown site mode '$mode' (dev|build|preview|check)"; exit 1 ;;
                  esac ;;
   doctor)        do_doctor ;;
   env)

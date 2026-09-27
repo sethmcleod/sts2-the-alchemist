@@ -1,0 +1,18 @@
+---
+import CardLibrary from '../../components/CardLibrary.astro';
+import Hero from '../../components/Hero.astro';
+import Sheet from '../../components/Sheet.astro';
+import Base from '../../layouts/Base.astro';
+import { releases } from '../../lib/content';
+import { everyLanguage } from '../../lib/i18n';
+
+export const getStaticPaths = everyLanguage;
+
+const [latest] = releases();
+---
+
+<Base>
+  <Hero latest={latest} />
+  <CardLibrary />
+  <Sheet slot="end" />
+</Base>

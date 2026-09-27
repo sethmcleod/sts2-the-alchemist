@@ -1,6 +1,6 @@
 -- The one table behind Alchemist run analytics. Run once in the Supabase SQL editor.
 --
--- Promoted columns carry what the dashboard filters on. `data` is the vanilla-shaped RunMetrics
+-- Promoted columns carry what the website's stats filter on. `data` is the vanilla-shaped RunMetrics
 -- payload and `alchemist` holds what vanilla cannot see (epochs, counters, config, deck themes),
 -- both as jsonb so a new field never needs a migration.
 

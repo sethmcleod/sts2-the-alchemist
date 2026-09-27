@@ -51,6 +51,13 @@ internal static class AlchemistRestSite
     // Shading and light painted over the whole seated body, drawn over the head
     private static readonly string[] OverlaySlots = ["rest_shadow", "rest_light"];
 
+    // The eyes are painted into the head. The bowl keeps its color, and there is no bag at the fire
+    private static readonly Rainbow.Rig RainbowRig = new(
+        Rainbow.Parts.Robe | Rainbow.Parts.Skin,
+        Rainbow.Slots(
+            (Rainbow.Parts.Skin | Rainbow.Parts.Eyes, ["rest_head"]),
+            (Rainbow.Parts.None, ["rest_bowl"])));
+
     /// <summary>
     /// Takes a Node rather than an NRestSiteCharacter on purpose. BaseLib stores the action as
     /// Action&lt;Node&gt; through an "as" cast, and Action is contravariant, thus an
@@ -74,7 +81,7 @@ internal static class AlchemistRestSite
         var scale = ModelHeight / box.Size.Y;
 
         if (SpineModel.CreateSprite(data, scale) is not { } sprite) return;
-        RainbowRobes.Apply(sprite);
+        Rainbow.Apply(sprite, data, RainbowRig);
 
         // Godot y grows downward and Spine y grows upward, thus the middle of the box flips sign
         var middle = new Vector2(

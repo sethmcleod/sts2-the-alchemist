@@ -1,0 +1,202 @@
+---
+import { runs } from '../lib/content';
+import { keywordName, libraryCards, rarityName, typeName } from '../lib/library';
+import { CARD_GROUPS, PARTNER_MODS, RARITY_NAME, slug, steamItem, TYPES } from '../lib/mod';
+import { DEFAULT_FILTERS } from '../lib/runs';
+import type { Rarity } from '../lib/types';
+import CardTile from './CardTile.astro';
+import External from './External.astro';
+import StatsSpan from './StatsSpan.astro';
+import T from './T.astro';
+
+const { l } = Astro.locals;
+
+const data = runs(Astro.locals.locale);
+const cards = libraryCards(l, data, runs());
+const keywords = [...new Set(cards.flatMap((c) => c.info.keywords))]
+  .map((word) => [word, keywordName(l, word)])
+  .sort(([, a], [, b]) => a.localeCompare(b, l.lang));
+const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
+// The counts scripts/library.ts writes as the filters change, in this language
+const counts = ['{n} cards', '{n} of {total} cards', 'Show {n} cards'];
+const words = JSON.stringify({
+  code: l.code,
+  lang: l.lang,
+  strings: Object.fromEntries(counts.filter((key) => key in l.strings).map((key) => [key, l.strings[key]])),
+});
+
+// A group named after a rarity takes the game's word for it, and a partner mod keeps its name
+const groupTitle = ({ id, title }: (typeof CARD_GROUPS)[number]) =>
+  id in PARTNER_MODS ? title : title === RARITY_NAME[id as Rarity] ? rarityName(l, id as Rarity) : l.t(title);
+const groups = CARD_GROUPS.map((group) => ({ ...group, cards: cards.filter((c) => c.group === group.id) })).filter(
+  (group) => group.cards.length,
+);
+
+const selects = [
+  {
+    name: 'type',
+    label: l.t('Type'),
+    options: [['', l.t('All types')], ...TYPES.map((type) => [type, typeName(l, type)])],
+  },
+  {
+    name: 'rarity',
+    label: l.t('Rarity'),
+    options: [
+      ['', l.t('All rarities')],
+      ...Object.keys(RARITY_NAME).map((value) => [value, rarityName(l, value as Rarity)]),
+    ],
+  },
+  {
+    name: 'cost',
+    label: l.t('Cost'),
+    options: [['', l.t('Any cost')], ['0'], ['1'], ['2'], ['3', l.t('3 or more')], ['X']],
+  },
+];
+const sorts = [
+  ['rarity', l.t('Rarity')],
+  ['name', l.t('Name')],
+  ['cost', l.t('Cost')],
+  ['type', l.t('Type')],
+  ['vspeers', l.t('Best for its rarity')],
+  ['winrate', l.t('Win rate')],
+  ['pickrate', l.t('Pick rate')],
+  ['playsperrun', l.t('Plays per run')],
+  ['unplayed', l.t('Left unplayed')],
+  ['held', l.t('Runs')],
+];
+const control = 'field-control min-w-0';
+---
+
+<section id="cards" aria-labelledby="cards-heading" class="scroll-mt-4">
+  <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+    <h2 id="cards-heading" class="m-0 text-3xl">
+      {l.t('Cards')}
+    </h2>
+    <output class="text-sm text-ink-2 tabular-nums" data-count aria-live="polite">
+      {l.n(cards.length, '{n} card', '{n} cards')}
+    </output>
+    <p class="m-0 text-sm text-muted sm:ml-auto">
+      <T text={l.n(statRuns, 'Stats from {n} solo run on {span}.', 'Stats from {n} solo runs on {span}.')}>
+        <StatsSpan slot="span" />
+      </T>{' '}
+      <a href={l.href('/stats/cards')}>{l.t('Filter them')}</a>
+    </p>
+  </div>
+
+  <form id="library" class="toolbar" role="search" aria-label={l.t('Cards')} data-words={words}>
+    <input
+      type="search"
+      name="q"
+      class="field-control needs-js min-w-0 flex-1 basis-40"
+      placeholder={l.t('Search names and text')}
+      aria-label={l.t('Search cards')}
+      autocomplete="off"
+    />
+    <button type="button" class="button needs-js filters-button" aria-haspopup="dialog" data-open-filters>
+      {l.t('Filters')} <span class="count-badge" data-filter-count hidden></span>
+    </button>
+    <div class="library-filters needs-js" data-filters>
+      {selects.map((select) => (
+        <select name={select.name} class={control} aria-label={select.label} form="library">
+          {select.options.map(([value, text]) => (
+            <option value={value}>{text ?? value}</option>
+          ))}
+        </select>
+      ))}
+      <select name="keyword" class={control} aria-label={l.t('Keyword or theme')} form="library">
+        <option value="">{l.t('Any keyword')}</option>
+        <optgroup label={l.t('Theme')}>
+          {data.meta.themes.map((theme) => (
+            <option value={`theme:${theme}`}>{l.t(theme)}</option>
+          ))}
+        </optgroup>
+        <optgroup label={l.t('Keyword')}>
+          {keywords.map(([word, name]) => (
+            <option value={word}>{name}</option>
+          ))}
+        </optgroup>
+      </select>
+      <select name="from" class={control} aria-label={l.t('Where from')} form="library">
+        <option value="">{l.t('Any source')}</option>
+        <option value="starter">{l.t('Starting deck')}</option>
+        <option value="pool">{l.t('Card rewards')}</option>
+        <option value="created">{l.t('Created in combat')}</option>
+        <option value="coop">{l.t('Multiplayer only')}</option>
+        {Object.entries(PARTNER_MODS).map(([tag, mod]) => (
+          <option value={tag}>{mod.name}</option>
+        ))}
+      </select>
+      <select name="sort" class={control} aria-label={l.t('Sort by')} form="library">
+        {sorts.map(([value, text]) => (
+          <option value={value}>{l.t('Sort: {order}', { order: text })}</option>
+        ))}
+      </select>
+    </div>
+    <label class="upgrade-all">
+      <input type="checkbox" id="all-upgraded" name="upgraded" form="library" />
+      <span>{l.t('Show all upgraded')}</span>
+    </label>
+  </form>
+
+  <div data-groups>
+    {groups.map((group) => {
+      const partner = PARTNER_MODS[group.id];
+      return (
+        <section class="mt-6" data-card-group={group.id} aria-labelledby={`group-${slug(group.id)}`}>
+          <h3 id={`group-${slug(group.id)}`} class="m-0 text-xl">
+            {groupTitle(group)}{' '}
+            <small class="font-sans text-sm font-normal text-muted" data-group-count>
+              {l.n(group.cards.length, '{n} card', '{n} cards')}
+            </small>
+          </h3>
+          {partner && (
+            <p class="m-0 mt-1 text-sm text-muted">
+              <T text={l.t('Only in runs with {mod} installed as well.')}>
+                <Fragment slot="mod">
+                  <External href={steamItem(partner.item)}>{partner.name}</External>
+                </Fragment>
+              </T>
+            </p>
+          )}
+          {group.note && <p class="m-0 mt-1 text-sm text-muted">{l.t(group.note)}</p>}
+          <ul class="card-grid">
+            {group.cards.map((card) => (
+              <CardTile card={card} />
+            ))}
+          </ul>
+        </section>
+      );
+    })}
+  </div>
+  <ul class="card-grid mt-6" data-sorted hidden></ul>
+  <p class="mt-8 text-center text-muted" data-empty hidden>
+    {l.t('No cards match.')}{' '}
+    <button type="button" class="button ml-2" data-clear>
+      {l.t('Clear filters')}
+    </button>
+  </p>
+</section>
+
+<dialog class="sheet drawer" aria-labelledby="drawer-title" data-drawer>
+  <form method="dialog">
+    <button class="close-button" aria-label={l.t('Close')}>
+      ×
+    </button>
+  </form>
+  <div class="grid gap-4 p-5">
+    <h2 id="drawer-title" class="m-0 text-2xl">
+      {l.t('Filter and sort')}
+    </h2>
+    <div class="grid gap-3" data-drawer-body></div>
+    <div class="flex gap-2.5">
+      <button type="button" class="button flex-1" data-clear>
+        {l.t('Clear')}
+      </button>
+      <button type="button" class="button primary flex-1" data-done>
+        {l.t('Show cards')}
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<script src="../scripts/library.ts"></script>

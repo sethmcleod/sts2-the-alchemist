@@ -1,0 +1,18 @@
+---
+import type { GetStaticPaths } from 'astro';
+import ItemPage from '../../../components/ItemPage.astro';
+import { language, runs } from '../../../lib/content';
+import { langParams } from '../../../lib/i18n';
+import { potions } from '../../../lib/items';
+import { slug } from '../../../lib/mod';
+
+export const getStaticPaths = (() =>
+  langParams().flatMap(({ locale, lang }) =>
+    potions(language(locale), runs(locale)).map((item) => ({ params: { lang, slug: slug(item.id) }, props: { item } })),
+  )) satisfies GetStaticPaths;
+
+const { item } = Astro.props;
+const { l } = Astro.locals;
+---
+
+<ItemPage item={item} back={{ href: l.href('/relics#potions'), label: l.t('All relics and potions') }} />

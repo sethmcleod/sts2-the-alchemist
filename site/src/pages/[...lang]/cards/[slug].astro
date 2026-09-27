@@ -1,0 +1,41 @@
+---
+import type { GetStaticPaths } from 'astro';
+import CardSheet from '../../../components/CardSheet.astro';
+import Base from '../../../layouts/Base.astro';
+import { language, runs } from '../../../lib/content';
+import { langParams } from '../../../lib/i18n';
+import { cardKind, libraryCards } from '../../../lib/library';
+import { plain } from '../../../lib/markup';
+import { slug } from '../../../lib/mod';
+
+export const getStaticPaths = (() =>
+  langParams().flatMap(({ locale, lang }) => {
+    const cards = libraryCards(language(locale), runs(locale), runs());
+    return cards.map((card, i) => ({
+      params: { lang, slug: slug(card.id) },
+      props: { card, previous: cards[i - 1], next: cards[i + 1] },
+    }));
+  })) satisfies GetStaticPaths;
+
+const { card, previous, next } = Astro.props;
+const { l } = Astro.locals;
+const { info } = card;
+const energy = l.game?.words.Energy;
+---
+
+<Base
+  title={info.name}
+  description={l.t('{name}, {kind}: {text} Upgraded: {upgraded}', {
+    name: info.name,
+    kind: cardKind(l, info),
+    text: plain(info.texts[0], energy),
+    upgraded: plain(info.texts[1], energy),
+  })}
+>
+  <p class="mt-6 mb-0">
+    <a href={l.href('/#cards')}>← {l.t('All cards')}</a>
+  </p>
+  <div class="panel mt-3">
+    <CardSheet card={card} previous={previous} next={next} />
+  </div>
+</Base>
