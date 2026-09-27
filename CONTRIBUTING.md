@@ -26,15 +26,14 @@ closest existing card in `AlchemistCode/Cards/` and follow the three-way rule be
 
 Each card class also carries a `[CardTheme(...)]` attribute on the line before the class,
 naming the theme or themes it serves (`Poison`, `Potions`, `Antitoxin`, `Ferment`,
-`Transform`, `Mix`) or `CardTheme.None` for a neutral card. The analytics dashboard groups runs by
+`Transform`, `Mix`) or `CardTheme.None` for a neutral card. The website's stats group runs by
 theme, and the linter fails a card without the attribute.
 
 ## Analytics
 
 Players who have the game's "Upload Data" setting on send anonymous Alchemist run results to
 a Supabase table, and the website (`site/`, alchemist.fyi) adds them up every day. The client is
-`AlchemistCode/Analytics/`, the export and the seed scripts are `tools/analytics/`, and
-`docs/analytics/` is a smaller standalone page over the same export. See
+`AlchemistCode/Analytics/`, and the export and the seed scripts are `tools/analytics/`. See
 `tools/analytics/README.md` for setup and for running it offline with fabricated data.
 
 ## Code style

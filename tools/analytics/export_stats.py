@@ -1,11 +1,11 @@
-"""Turn the uploaded runs into the count tables the dashboard reads (docs/analytics/).
+"""Turn the uploaded runs into the count tables the website reads (site/data/).
 
 Every run belongs to one group: its mod version, game build, ascension band, card pool, and
 whether it was solo or co-op. Each table adds the run's counts to its group's rows. The page
 keeps the groups its filters allow and adds their rows up, so every rate it shows is a sum of
 counts over a sum of counts. No raw row, deck or player hash leaves this script.
 
-It writes these files to docs/analytics/data/:
+It writes these files to site/data/:
 
     summary.json  meta, groups, run totals, ascensions, days, themes, badges, histograms,
                   counters, acts, death floors
@@ -15,7 +15,6 @@ It writes these files to docs/analytics/data/:
     notes.json    the patch notes, one entry per version, from CHANGELOG.md
     loc/          one file per language: the mod's names and text, the cards as the game shows
                   them, and the base game's words the website uses
-    img/          page-sized copies of the card art, icons and Workshop previews (page_images.py)
 
 Each table is {"key": [...], "counts": [...], "rows": [[...], ...]}. A row lists its key values,
 then its counts. The site build runs it every day (site/package.json), and it runs locally with
@@ -38,7 +37,7 @@ from pathlib import Path
 import common
 import mod_meta
 
-OUT_DIR = common.REPO / "docs" / "analytics" / "data"
+OUT_DIR = common.REPO / "site" / "data"
 EXCLUDE_FILE = common.HERE / "exclude-players.local.txt"
 
 # The ascension filter on the page offers these bands: A0, A1 to A4, A5 to A9, A10 and up
@@ -469,8 +468,6 @@ def main() -> int:
     parser.add_argument("--include-seed", action="store_true",
                         help=f"keep fabricated mod_version='{common.SEED_VERSION}' rows")
     parser.add_argument("--out", type=Path, default=OUT_DIR)
-    parser.add_argument("--no-images", action="store_true",
-                        help="keep image paths pointing into the repo, for a site that builds its own")
     parser.add_argument("--from-file", type=Path, default=None,
                         help="read rows from a JSON file (seed_runs.py --local) instead of Supabase")
     args = parser.parse_args()
@@ -495,11 +492,6 @@ def main() -> int:
     args.out.mkdir(parents=True, exist_ok=True)
     shown = lambda path: path.relative_to(common.REPO) if path.is_relative_to(common.REPO) else path
     files = build(runs)
-    if not args.no_images:
-        # Only the images need Pillow, so --no-images runs on the standard library alone
-        import page_images
-        images = page_images.write(files["summary.json"], args.out)
-        print(f"wrote {images} images to {shown(args.out / 'img')}")
     for name, payload in files.items():
         path = args.out / name
         path.parent.mkdir(exist_ok=True)

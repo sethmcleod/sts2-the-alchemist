@@ -4,33 +4,32 @@ The Alchemist sends an anonymous summary of each finished run to a small databas
 website, alchemist.fyi (`site/`), adds the runs up every day and shows every card, relic, potion
 and power, drawn the way the game draws them, with the stats for each.
 
-`docs/analytics/` is a smaller page built from the same export. It has no build step, so another
-mod can copy the whole pipeline. See [Make your own](#make-your-own).
+The upload and the export are small, and the export uses only the Python standard library, so
+another mod can copy them. See [Make your own](#make-your-own).
 
 ## How it works
 
-| Step    | Where                        | What it does                                                                                                                                |
-| ------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Upload  | `AlchemistCode/Analytics/`   | When a run ends, the mod rebuilds the game's own run summary, adds its own counters, and posts one row.                                     |
-| Store   | Supabase, `schema.sql`       | One table, `runs`. The key in the DLL can insert rows and do nothing else.                                                                  |
-| Export  | `export_stats.py`            | Reads the rows with the secret key and writes count tables to `docs/analytics/data/`. No raw row, deck or player hash leaves the script.    |
-| Show    | `site/`, `docs/analytics/`   | The website (`site/README.md`), and a static page in plain HTML, CSS and JavaScript that adds up the count tables for the filters you pick. |
-| Publish | `.github/workflows/site.yml` | Rebuilds alchemist.fyi every day with a fresh export. Nothing is committed.                                                                 |
+| Step    | Where                        | What it does                                                                                                                   |
+| ------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Upload  | `AlchemistCode/Analytics/`   | When a run ends, the mod rebuilds the game's own run summary, adds its own counters, and posts one row.                        |
+| Store   | Supabase, `schema.sql`       | One table, `runs`. The key in the DLL can insert rows and do nothing else.                                                     |
+| Export  | `export_stats.py`            | Reads the rows with the secret key and writes count tables to `site/data/`. No raw row, deck or player hash leaves the script. |
+| Show    | `site/`                      | The website. It builds its pages from the count tables and adds them up for the filters you pick (`site/README.md`).           |
+| Publish | `.github/workflows/site.yml` | Rebuilds alchemist.fyi every day with a fresh export. Nothing is committed.                                                    |
 
 ## Try it with fake runs
 
-You need Python 3.12 or later with Pillow (`pip install pillow`), which makes the page's image
-copies. You do not need Supabase or the game.
+You need Python 3.12 or later and Node 22.12 or later. You do not need Supabase or the game.
 
 ```bash
 scripts/dev.sh analytics seed
 ```
 
 ```bash
-scripts/dev.sh analytics serve
+scripts/dev.sh site dev
 ```
 
-Then open http://localhost:8765/. `seed` makes 400 runs over four made-up versions with
+Then open the address it prints. `seed` makes 400 runs over four made-up versions with
 `seed_runs.py` and exports them. Run `scripts/dev.sh analytics export` to get the real data back.
 
 ## When a run uploads
@@ -107,13 +106,12 @@ A table lists its key columns, its count columns, and then the rows:
 | `fights.json`  | `encounters`: fights, turns, damage and deaths, per encounter                                            |
 | `notes.json`   | `versions`: the patch notes from `CHANGELOG.md`, one entry per released version                          |
 
-The page loads `summary.json` first and each other file when its tab first opens. Together they
-are about 1 MB over the network.
+The site reads them when it builds.
 
 ## The library
 
-The Cards, Relics and potions, and Powers tabs list everything the mod adds, from the source
-files, so the list is current with every deploy.
+The site's card, relic, potion and power pages list everything the mod adds, from the source
+files, so they are current with every build.
 
 - `card_info` holds each card's type, cost and text from `cards.csv`. The text is in the game's
   loc markup: `mod_meta.py` puts back the `[gold]` words from the card's own loc text and marks
@@ -123,21 +121,20 @@ files, so the list is current with every deploy.
 - `meta.mod` is the manifest, `meta.releases` maps each version to its GitHub release (the beta
   tag when there is one), and `meta.workshop` names the Steam Workshop items.
 - `notes.json` is `CHANGELOG.md`, parsed. GitHub lists a beta and a public release for most
-  versions; the changelog has one entry per version, so the Patch notes tab reads once. A version
-  number anywhere on the page opens its notes, and each entry links to its GitHub release.
-- `meta.previews` are the Steam Workshop preview images in `workshop/previews/`, shown in the
-  header.
+  versions; the changelog has one entry per version, so the patch notes read once, and each entry
+  links to its GitHub release.
+- `meta.previews` are the Steam Workshop preview images in `workshop/previews/`, shown on the
+  home page.
 
 The images come in two kinds:
 
-- The mod's own art. `page_images.py` writes a page-sized WebP copy of every card portrait, icon
-  and Workshop preview to `data/img/` during the export. The copies are deployed and never
-  committed. The site (`site/`) does not need them: it makes its own copies at build time.
+- The mod's own art. The export names each image by its path in the repo, and the site makes
+  page-sized copies when it builds.
 - The card frames. The game draws a card from four tinted pieces of its UI atlas.
   `card_frames.py` tints them the way `shaders/hsv.gdshader` does and stacks them into one image
-  per card type and rarity, in `site/src/assets/frames/` (15 files, about 600 KB). This page keeps
-  its own copy in `docs/analytics/img/frames/`. Both are committed, because they come from the
-  game files and CI has no game. Run it again only when the game changes its card art:
+  per card type and rarity, in `site/src/assets/frames/` (15 files, about 600 KB). They are
+  committed, because they come from the game files and CI has no game. Run it again only when the
+  game changes its card art (it needs `numpy` and Pillow):
 
   ```bash
   python3 tools/analytics/card_frames.py --game <recovered project>
@@ -145,11 +142,8 @@ The images come in two kinds:
 
   `--game` is a project recovered with GDRE Tools. The frames are Mega Crit's art.
 
-`docs/analytics/fonts/` holds Kreon, the game's card font, under the SIL Open Font License (the
-licence is in the font files).
-
-The website (`site/`) is in every language the mod is, which takes two more files that come from
-the game and are committed for the same reason:
+The site is in every language the mod is, which takes two more things that come from the game
+and are committed for the same reason:
 
 - `game_loc.json`: the base game's own words in each language (keyword names and the period after
   them, card types, rarities, encounter names). `mod_meta.py` needs them to write a card's keyword
@@ -176,12 +170,13 @@ Most new stats need one line in the mod and nothing in the export.
 
 1. Count it in the mod with `RunCounters.Tally(player, "my_key")`. The tally is saved with the
    run, so it survives a save and reload.
-2. Bump `Schema` in `AlchemistMetrics.cs`, so the page can tell the runs that count it from the
+2. Bump `Schema` in `AlchemistMetrics.cs`, so the site can tell the runs that count it from the
    runs whose client did not.
 3. The export copies every tally key into the `counters` table as it is. The per-card keys in
    `CARD_KEYS` are the exception: one counter per card would make `summary.json` too big, so they
    go to the `cards` table.
-4. Read it in `app.js` with `counters(on, 'my_key')`, and draw it with a builder from `charts.js`.
+4. Read it on the site with `runs.counters(on)` (see `site/src/lib/details.ts`), and draw it with
+   a chart from `site/src/components/charts/`.
 
 A stat from the vanilla summary, or one that needs its own table, needs a change in
 `export_stats.py` too. Add the column in `new_tables()` and count it in `add_run()`.
@@ -194,11 +189,10 @@ When a key changes meaning, bump `Schema` too, and re-key the old rows in `norma
 1. Create a Supabase project. Run `schema.sql` in its SQL editor.
 2. Put the project URL and the publishable key in `AlchemistCode/Analytics/AnalyticsEndpoint.cs`,
    and the project URL in `common.py`.
-3. In the GitHub repository, set Settings, Pages, Source to GitHub Actions.
-4. Add the `SUPABASE_READ_KEY` repository secret: the `sb_secret_...` key from API Keys, never the
-   publishable one.
-5. Optional: set the `ANALYTICS_EXCLUDE_PLAYERS` variable to a comma-separated list of player
-   hashes, to keep your own playtests out. Your hash is in the game log on every upload.
+3. Host the website. The one-time steps are in `site/README.md`: the build needs
+   `SUPABASE_READ_KEY`, the `sb_secret_...` key from API Keys (never the publishable one).
+4. Optional: give the build `ANALYTICS_EXCLUDE_PLAYERS`, a comma-separated list of player hashes,
+   to keep your own playtests out. Your hash is in the game log on every upload.
 
 For a local export, write the secret key to `tools/analytics/supabase-service-key.local.txt` and
 your hashes to `exclude-players.local.txt`. Both files are gitignored.
@@ -209,7 +203,8 @@ your hashes to `exclude-players.local.txt`. Both files are gitignored.
 
 ## Make your own
 
-The pipeline knows about the Alchemist only in the places below.
+The upload and the export know about the Alchemist only in the places below. The website knows
+much more about the mod, so treat `site/` as an example to adapt.
 
 1. Copy `AlchemistCode/Analytics/` into your mod. `VanillaRunMetrics.cs`, `RunMetricsUploader.cs`
    and `AnalyticsEndpoint.cs` work as they are. `RunCounters.cs` works once you delete the fixed
@@ -218,22 +213,18 @@ The pipeline knows about the Alchemist only in the places below.
    with your own counters. Call `Initialize()` and `RunCounters.Register()` from your mod
    initializer.
 3. Give players their own switch, like `AlchemistModConfig.AnalyticsEnabled`.
-4. Copy `tools/analytics/` and `docs/analytics/`, and copy `tools/analytics/pages-workflow.yml` to
-   `.github/workflows/` with your mod's paths in it. It publishes the page on GitHub Pages every
-   night. Then follow [Set up the real thing](#set-up-the-real-thing).
+4. Copy `tools/analytics/`, then follow [Set up the real thing](#set-up-the-real-thing).
 5. In `mod_meta.py`, change `PREFIX`, `THEMES`, `CHARACTER_ICON` and the source paths. In
    `export_stats.py`, change `BADGE_METRICS` and `HISTOGRAMS`, or empty them.
 6. In `card_frames.py`, set `POOL_TINT` to your card pool's H, S and V and `ENERGY_ORB` to your
    energy icon, then build the frames once.
-7. In `docs/analytics/`, keep `data.js` and `charts.js` as they are. Rewrite the text in
-   `index.html` and the tabs in `app.js`, including `PARTNER_MODS` and `CARD_GROUPS`.
 
 ## Commands
 
 ```bash
 scripts/dev.sh analytics export                 # pull the real rows and export (needs the secret key)
 scripts/dev.sh analytics seed                   # fabricate 400 runs and export them, no network
-scripts/dev.sh analytics serve                  # serve the page at http://localhost:8765/
+scripts/dev.sh site dev                         # serve the website with the exported data
 python3 tools/analytics/mod_meta.py             # print what the export reads from the mod
 python3 tools/analytics/seed_runs.py --key ...  # insert fake rows through the publishable key
 ```

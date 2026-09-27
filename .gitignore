@@ -10,6 +10,5 @@ workshop/content/
 workshop/mod-uploader.log
 workshop/mod_id.txt
 reports/
-# analytics: keys, fabricated runs, and the exported aggregates each export regenerates
+# analytics: keys and fabricated runs
 tools/analytics/*.local.*
-docs/analytics/data/

@@ -91,8 +91,9 @@ One-time setup:
 
 1. Create a Vercel project from this repository with the root directory `site` and the
    production branch `site`. `vercel.json` turns off builds for every other branch.
-2. Add the environment variables `SUPABASE_READ_KEY` (the secret key) and
-   `ANALYTICS_EXCLUDE_PLAYERS` (the same value as the repository variable of that name).
+2. Add the environment variables `SUPABASE_READ_KEY` (the secret key) and, if you want,
+   `ANALYTICS_EXCLUDE_PLAYERS` (a comma-separated list of player hashes to leave out, such as
+   your own).
 3. Create a deploy hook for the `site` branch (the project's Git settings) and save its URL as
    the `VERCEL_DEPLOY_HOOK` repository secret.
 4. Push the site to `beta`: that run of the site workflow creates the `site` branch. GitHub runs

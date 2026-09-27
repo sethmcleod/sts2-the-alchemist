@@ -1,4 +1,4 @@
-"""What the dashboard needs to know about the mod, read from its own source files.
+"""What the website needs to know about the mod, read from its own source files.
 
 - Cards: rarity from the base(...) call, themes from the [CardTheme(...)] attribute
   (AlchemistCode/Cards/CardTheme.cs), and the type, cost, text and tags such as Multiplayer from
