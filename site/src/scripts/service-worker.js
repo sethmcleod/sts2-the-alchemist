@@ -116,8 +116,9 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(cacheFirst(request));
   } else if (url.pathname.startsWith('/data/')) {
     event.respondWith(networkFirst(request, FILES, request));
-  } else {
-    // Pages, including the ones the card dialog fetches
+  } else if (request.mode === 'navigate' || request.destination === '') {
+    // Pages, including the ones the card dialog fetches. Anything else, such as Vercel's analytics
+    // scripts, goes to the network untouched
     event.respondWith(
       networkFirst(request, PAGES, pageKey(request.url)).catch(async () =>
         request.mode === 'navigate'

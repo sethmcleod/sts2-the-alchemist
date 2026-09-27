@@ -86,17 +86,3 @@ from `beta`. `.github/workflows/site.yml` moves that branch on every release tag
 to `beta` that changes the site, and asks Vercel for a fresh build once a day for the run stats.
 So a release updates the site with its cards, relics, potions, powers, README text and patch
 notes, and nothing needs running by hand. `vercel.json` sets the caching and security headers.
-
-One-time setup:
-
-1. Create a Vercel project from this repository with the root directory `site` and the
-   production branch `site`. `vercel.json` turns off builds for every other branch.
-2. Add the environment variables `SUPABASE_READ_KEY` (the secret key) and, if you want,
-   `ANALYTICS_EXCLUDE_PLAYERS` (a comma-separated list of player hashes to leave out, such as
-   your own).
-3. Create a deploy hook for the `site` branch (the project's Git settings) and save its URL as
-   the `VERCEL_DEPLOY_HOOK` repository secret.
-4. Push the site to `beta`: that run of the site workflow creates the `site` branch. GitHub runs
-   a workflow's schedule and its Run workflow button only from `main`, so the daily stats build
-   starts once `site.yml` is on `main` (the next promote).
-5. Add alchemist.fyi under the project's domains.

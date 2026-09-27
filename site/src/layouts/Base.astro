@@ -6,6 +6,7 @@ import kreonRegular from '../assets/fonts/card-latin-regular.woff2?url';
 import head from '../../../Alchemist/images/charui/character_icon_alchemist.png';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Insights from '../components/Insights.astro';
 import { image, runs } from '../lib/content';
 import { cardFont } from '../lib/fit';
 import { basePath, LOCALES } from '../lib/i18n';
@@ -31,6 +32,8 @@ const canonical = new URL(pagePath(Astro.url), Astro.site);
 const favicon = await getImage({ src: head, width: 64, format: 'png' });
 const preview = await image(runs().meta.previews[0]?.image);
 const social = preview && (await getImage({ src: preview, width: 1200, format: 'jpg', quality: 80 }));
+// Page views and Core Web Vitals go to Vercel only from a Vercel build, so local builds send nothing
+const measured = process.env.VERCEL === '1';
 
 // The same page in every language, for search engines
 const path = basePath(pagePath(Astro.url));
@@ -86,5 +89,6 @@ const cardStyle =
     <script>
       if (import.meta.env.PROD && 'serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
     </script>
+    {measured && <Insights />}
   </body>
 </html>

@@ -22,6 +22,8 @@
     "@astrojs/markdown-satteri": "^0.4.2",
     "@astrojs/preact": "^6.0.5",
     "@tailwindcss/vite": "^4.3.3",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "astro": "^7.3.5",
     "preact": "^10.29.8",
     "sharp": "^0.35.4",
