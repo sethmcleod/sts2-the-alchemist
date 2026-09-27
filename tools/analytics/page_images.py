@@ -3,8 +3,8 @@ and badge icons, the character head, the energy icon and the Steam Workshop prev
 
 mod_meta.py names each image by its path in the repo. write() saves a WebP copy next to the data
 (docs/analytics/data/img/, gitignored) and puts the copy's path, relative to the data folder, in
-its place. The nightly job deploys the copies with the page, so the page serves its own images and
-none of them is committed. The card frames are the exception: they come from the game, and this
+its place. The page is deployed with the copies (pages-workflow.yml), so it serves its own images
+and none of them is committed. The card frames are the exception: they come from the game, and this
 page keeps a committed copy in docs/analytics/img/frames/.
 """
 

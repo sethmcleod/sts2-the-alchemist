@@ -1,23 +1,21 @@
 # Run analytics
 
-The Alchemist sends an anonymous summary of each finished run to a small database. A nightly
-job adds the runs up, and a static page shows the result at
-https://sethmcleod.github.io/sts2-the-alchemist/. It lists every card, relic, potion and power,
-drawn the way the game draws them, with the stats for each. The mod's website, alchemist.fyi
-(`site/`), is built from the same export.
+The Alchemist sends an anonymous summary of each finished run to a small database. The mod's
+website, alchemist.fyi (`site/`), adds the runs up every day and shows every card, relic, potion
+and power, drawn the way the game draws them, with the stats for each.
 
-Every part is small and has no build step, so another mod can copy the whole pipeline. See
-[Make your own](#make-your-own).
+`docs/analytics/` is a smaller page built from the same export. It has no build step, so another
+mod can copy the whole pipeline. See [Make your own](#make-your-own).
 
 ## How it works
 
-| Step    | Where                              | What it does                                                                                                                           |
-| ------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Upload  | `AlchemistCode/Analytics/`         | When a run ends, the mod rebuilds the game's own run summary, adds its own counters, and posts one row.                                |
-| Store   | Supabase, `schema.sql`             | One table, `runs`. The key in the DLL can insert rows and do nothing else.                                                             |
-| Export  | `export_stats.py`                  | Reads the rows with the secret key and writes count tables to `docs/analytics/data/`. No raw row, deck or player hash leaves the script. |
-| Show    | `docs/analytics/`                  | A static page in plain HTML, CSS and JavaScript. It lists the mod's content and adds up the count tables for the filters you pick.      |
-| Publish | `.github/workflows/analytics.yml` | Runs the export every night and deploys the page to GitHub Pages. Nothing is committed.                                                |
+| Step    | Where                        | What it does                                                                                                                                |
+| ------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Upload  | `AlchemistCode/Analytics/`   | When a run ends, the mod rebuilds the game's own run summary, adds its own counters, and posts one row.                                     |
+| Store   | Supabase, `schema.sql`       | One table, `runs`. The key in the DLL can insert rows and do nothing else.                                                                  |
+| Export  | `export_stats.py`            | Reads the rows with the secret key and writes count tables to `docs/analytics/data/`. No raw row, deck or player hash leaves the script.    |
+| Show    | `site/`, `docs/analytics/`   | The website (`site/README.md`), and a static page in plain HTML, CSS and JavaScript that adds up the count tables for the filters you pick. |
+| Publish | `.github/workflows/site.yml` | Rebuilds alchemist.fyi every day with a fresh export. Nothing is committed.                                                                 |
 
 ## Try it with fake runs
 
@@ -206,7 +204,7 @@ For a local export, write the secret key to `tools/analytics/supabase-service-ke
 your hashes to `exclude-players.local.txt`. Both files are gitignored.
 
 > [!IMPORTANT]
-> The nightly request also keeps a free Supabase project awake. A project with no request for a
+> The daily export also keeps a free Supabase project awake. A project with no request for a
 > week pauses, and a paused project drops every upload.
 
 ## Make your own
@@ -220,8 +218,9 @@ The pipeline knows about the Alchemist only in the places below.
    with your own counters. Call `Initialize()` and `RunCounters.Register()` from your mod
    initializer.
 3. Give players their own switch, like `AlchemistModConfig.AnalyticsEnabled`.
-4. Copy `tools/analytics/`, `docs/analytics/` and `.github/workflows/analytics.yml`, then follow
-   [Set up the real thing](#set-up-the-real-thing).
+4. Copy `tools/analytics/` and `docs/analytics/`, and copy `tools/analytics/pages-workflow.yml` to
+   `.github/workflows/` with your mod's paths in it. It publishes the page on GitHub Pages every
+   night. Then follow [Set up the real thing](#set-up-the-real-thing).
 5. In `mod_meta.py`, change `PREFIX`, `THEMES`, `CHARACTER_ICON` and the source paths. In
    `export_stats.py`, change `BADGE_METRICS` and `HISTOGRAMS`, or empty them.
 6. In `card_frames.py`, set `POOL_TINT` to your card pool's H, S and V and `ENERGY_ORB` to your

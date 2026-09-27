@@ -32,10 +32,10 @@ theme, and the linter fails a card without the attribute.
 ## Analytics
 
 Players who have the game's "Upload Data" setting on send anonymous Alchemist run results to
-a Supabase table, and a nightly job aggregates them into the public dashboard. The client is
-`AlchemistCode/Analytics/`, the export and the seed scripts are `tools/analytics/`, and the
-dashboard is `docs/analytics/`. See `tools/analytics/README.md` for setup and for running it
-offline with fabricated data.
+a Supabase table, and the website (`site/`, alchemist.fyi) adds them up every day. The client is
+`AlchemistCode/Analytics/`, the export and the seed scripts are `tools/analytics/`, and
+`docs/analytics/` is a smaller standalone page over the same export. See
+`tools/analytics/README.md` for setup and for running it offline with fabricated data.
 
 ## Code style
 

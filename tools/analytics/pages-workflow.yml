@@ -1,10 +1,11 @@
 name: analytics
 
-# Nightly refresh of the balance dashboard. Pulls the run rows from Supabase, aggregates them into
-# count tables (no raw rows leave the job), and deploys docs/analytics/ plus the fresh data to GitHub
-# Pages. Nothing is committed, so it cannot collide with a release rebase.
+# For a mod without its own website: copy this file to .github/workflows/ to publish
+# docs/analytics/ on GitHub Pages. Every night it pulls the run rows from Supabase, aggregates them
+# into count tables (no raw rows leave the job), and deploys the page with the fresh data. Nothing
+# is committed, so it cannot collide with a release rebase. Change the paths below to your mod's.
 #
-# The job is also what keeps the free Supabase project awake: it pauses after a week without a
+# The job is also what keeps a free Supabase project awake: it pauses after a week without a
 # request, and a paused project silently drops every upload from players.
 #
 # One-time setup: Settings -> Pages -> Source: GitHub Actions, and the SUPABASE_READ_KEY repository

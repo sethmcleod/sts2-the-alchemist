@@ -7,6 +7,9 @@ name: site
 # asks Vercel for a fresh build so the run stats stay current. GitHub runs the daily schedule and the
 # Run workflow button from main's copy of this file only.
 #
+# That daily build is also what keeps the free Supabase project awake: it pauses after a week
+# without a request, and a paused project silently drops every upload from players.
+#
 # One-time setup (site/README.md): a Vercel project with the root directory `site` and the
 # production branch `site`, and the VERCEL_DEPLOY_HOOK repository secret (a deploy hook for the
 # `site` branch, from the Vercel project's Git settings).

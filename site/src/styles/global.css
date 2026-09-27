@@ -647,21 +647,49 @@
     font-size: calc(var(--size) * var(--card-text-scale, 1) * var(--u));
   }
 
-  /* The outline is a copy of the text behind it, so it never eats into the letters */
+  /* The outline is a copy of the text behind it, so it never eats into the letters. The copy is
+     drawn 24 times around a circle rather than stroked: a text stroke has mitred corners, which
+     make spikes on sharp letters such as A */
   .outlined {
     position: relative;
     isolation: isolate;
   }
 
   .outlined::before {
+    --r: calc(var(--stroke) / 2);
     content: attr(data-text);
     /* The copy is decoration: an empty alternative keeps it out of what a screen reader says */
     content: attr(data-text) / '';
     position: absolute;
     inset: 0;
     z-index: -1;
-    -webkit-text-stroke: var(--stroke) var(--outline);
-    text-shadow: calc(2 * var(--u)) calc(2 * var(--u)) 0 rgb(0 0 0 / 0.19);
+    color: var(--outline);
+    text-shadow:
+      var(--r) 0 0 var(--outline),
+      calc(0.966 * var(--r)) calc(0.259 * var(--r)) 0 var(--outline),
+      calc(0.866 * var(--r)) calc(0.5 * var(--r)) 0 var(--outline),
+      calc(0.707 * var(--r)) calc(0.707 * var(--r)) 0 var(--outline),
+      calc(0.5 * var(--r)) calc(0.866 * var(--r)) 0 var(--outline),
+      calc(0.259 * var(--r)) calc(0.966 * var(--r)) 0 var(--outline),
+      0 var(--r) 0 var(--outline),
+      calc(-0.259 * var(--r)) calc(0.966 * var(--r)) 0 var(--outline),
+      calc(-0.5 * var(--r)) calc(0.866 * var(--r)) 0 var(--outline),
+      calc(-0.707 * var(--r)) calc(0.707 * var(--r)) 0 var(--outline),
+      calc(-0.866 * var(--r)) calc(0.5 * var(--r)) 0 var(--outline),
+      calc(-0.966 * var(--r)) calc(0.259 * var(--r)) 0 var(--outline),
+      calc(-1 * var(--r)) 0 0 var(--outline),
+      calc(-0.966 * var(--r)) calc(-0.259 * var(--r)) 0 var(--outline),
+      calc(-0.866 * var(--r)) calc(-0.5 * var(--r)) 0 var(--outline),
+      calc(-0.707 * var(--r)) calc(-0.707 * var(--r)) 0 var(--outline),
+      calc(-0.5 * var(--r)) calc(-0.866 * var(--r)) 0 var(--outline),
+      calc(-0.259 * var(--r)) calc(-0.966 * var(--r)) 0 var(--outline),
+      0 calc(-1 * var(--r)) 0 var(--outline),
+      calc(0.259 * var(--r)) calc(-0.966 * var(--r)) 0 var(--outline),
+      calc(0.5 * var(--r)) calc(-0.866 * var(--r)) 0 var(--outline),
+      calc(0.707 * var(--r)) calc(-0.707 * var(--r)) 0 var(--outline),
+      calc(0.866 * var(--r)) calc(-0.5 * var(--r)) 0 var(--outline),
+      calc(0.966 * var(--r)) calc(-0.259 * var(--r)) 0 var(--outline);
+    filter: drop-shadow(calc(2 * var(--u)) calc(2 * var(--u)) 0 rgb(0 0 0 / 0.19));
   }
 
   .face-title .outlined {

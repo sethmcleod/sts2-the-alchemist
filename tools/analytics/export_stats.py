@@ -18,7 +18,7 @@ It writes these files to docs/analytics/data/:
     img/          page-sized copies of the card art, icons and Workshop previews (page_images.py)
 
 Each table is {"key": [...], "counts": [...], "rows": [[...], ...]}. A row lists its key values,
-then its counts. Run nightly by .github/workflows/analytics.yml, and locally with
+then its counts. The site build runs it every day (site/package.json), and it runs locally with
 `scripts/dev.sh analytics`.
 
 Your own playtests would swamp a small dataset. List your player_hash values, one per line, in
