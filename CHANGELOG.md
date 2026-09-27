@@ -7,6 +7,10 @@ mod).
 
 ## [Unreleased]
 
+### Changed
+
+- Reworked Refine card: "Whenever you add a Mix into your Hand, Upgrade it. If it was already Upgraded, it gains Replay." Playing more than one Refine now stacks, and each stack adds 1 Replay
+
 ## [0.14.22] - 2026-09-27
 
 ### Added
