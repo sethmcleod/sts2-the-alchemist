@@ -1,3 +1,17 @@
+@font-face {
+  font-family: Kreon;
+  src: url('fonts/kreon_regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Kreon;
+  src: url('fonts/kreon_bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
   color-scheme: dark;
   --bg: #1c1822;
@@ -26,6 +40,16 @@
   --silver: #aeb0b8;
   --radius: 12px;
   --gutter: 16px;
+  /* The game's text colours (StsColors) for card, relic and power text */
+  --game-cream: #fff6e2;
+  --game-gold: #efc851;
+  --game-green: #7fff00;
+  --game-blue: #87ceeb;
+  --game-red: #ff5555;
+  --game-purple: #ee82ee;
+  --game-pink: #ff78a0;
+  --game-orange: #ffa518;
+  --game-aqua: #2aebbe;
 }
 
 * {
@@ -38,6 +62,11 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+}
+
+/* The page behind an open sheet stays put */
+html:has(dialog[open]) {
+  overflow: hidden;
 }
 
 body {
@@ -68,6 +97,128 @@ h3 {
 }
 
 /* ---------- header and filters ---------- */
+
+.masthead {
+  display: grid;
+  gap: 4px 28px;
+}
+
+@media (min-width: 900px) {
+  .masthead {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
+    align-items: start;
+    margin-bottom: 18px;
+  }
+
+  .masthead .actions {
+    margin-bottom: 0;
+  }
+}
+
+.gallery {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+@media (min-width: 900px) {
+  .gallery {
+    margin-bottom: 0;
+  }
+}
+
+.gallery-track {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.shot {
+  flex: 0 0 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  scroll-snap-align: start;
+  cursor: zoom-in;
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(12 9 15 / 0.6);
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.gallery-nav.prev {
+  left: 8px;
+}
+
+.gallery-nav.next {
+  right: 8px;
+}
+
+.gallery-count {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  margin: 0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgb(12 9 15 / 0.6);
+  color: var(--ink-2);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.lightbox {
+  width: min(1200px, 94vw);
+  max-height: 94vh;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: none;
+}
+
+.lightbox::backdrop {
+  background: rgb(12 9 15 / 0.88);
+}
+
+.lightbox img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.lightbox .sheet-close {
+  top: -48px;
+  right: 0;
+}
 
 /* The head icon beside the eyebrow and title. On a phone it shrinks to the eyebrow's line so the
    title keeps the full width */
@@ -117,9 +268,75 @@ h1 {
 }
 
 .lede {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   color: var(--ink-2);
   max-width: 62ch;
+}
+
+.lede-stats {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid var(--frame);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--panel-2);
+}
+
+.button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.latest {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+a.version {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--frame);
+  text-underline-offset: 3px;
+}
+
+a.version:hover {
+  text-decoration-color: currentColor;
+}
+
+button.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--up);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
 }
 
 .filters {
@@ -263,6 +480,13 @@ summary:focus-visible,
   cursor: pointer;
 }
 
+.tab-divider {
+  flex: none;
+  width: 1px;
+  margin: 12px 6px;
+  background: var(--line);
+}
+
 .tabs button[aria-selected='true'] {
   border-bottom-color: var(--accent);
   color: var(--ink);
@@ -330,6 +554,10 @@ summary:focus-visible,
   margin: -8px 0 0;
   color: var(--muted);
   font-size: 14px;
+}
+
+.section-note.flush {
+  margin: 0;
 }
 
 .toolbar {
@@ -800,6 +1028,7 @@ td small {
 }
 
 .sheet {
+  overscroll-behavior: contain;
   width: min(720px, calc(100vw - 32px));
   max-height: 88vh;
   padding: 20px;
@@ -826,53 +1055,70 @@ td small {
   height: 34px;
 }
 
-/* ---------- card face: the art and text in the sheet ---------- */
-
-.card-face {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  margin: -4px 0 16px;
+.sheet-top {
+  display: grid;
+  gap: 16px;
+  margin: 4px 0 12px;
 }
 
-.card-art {
-  flex: none;
-  width: 132px;
-  max-width: 34%;
-  aspect-ratio: 1000 / 760;
-  border-radius: 8px;
-  background: var(--panel-2);
-  object-fit: cover;
+@media (min-width: 640px) {
+  .sheet-top {
+    grid-template-columns: 220px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .sheet .sheet-top .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-.card-cost {
-  margin: 0;
-  color: var(--ink-2);
-  font-size: 14px;
+.sheet-card {
+  width: min(220px, 64vw);
+  margin: 0 auto;
 }
 
-.card-text {
-  margin: 4px 0 0;
-}
-
-.card-version {
-  margin: 8px 0 0;
+.sheet-caption {
+  margin: 0 0 4px;
   color: var(--muted);
   font-size: 13px;
 }
 
 .t-gold {
-  color: var(--gold);
+  color: var(--game-gold);
 }
 
 .t-green {
-  color: var(--up);
+  color: var(--game-green);
+}
+
+.t-blue {
+  color: var(--game-blue);
+}
+
+.t-red {
+  color: var(--game-red);
+}
+
+.t-purple {
+  color: var(--game-purple);
+}
+
+.t-pink {
+  color: var(--game-pink);
+}
+
+.t-orange {
+  color: var(--game-orange);
+}
+
+.t-aqua {
+  color: var(--game-aqua);
 }
 
 .energy {
-  width: 1.2em;
-  height: 1.2em;
-  vertical-align: -0.25em;
+  width: 1.15em;
+  height: 1.15em;
+  vertical-align: -0.22em;
 }
 
 .sheet h3 {
@@ -956,4 +1202,460 @@ td small {
   .bar-fill {
     transition: width 0.25s ease;
   }
+}
+
+/* ---------- card faces ---------- */
+
+/* The game's card is 300 x 422 units, and the orb and banner stick out past it, so a face is 330 x 438.
+   Every size below is in those units (--u), so a card draws the same at any width */
+.face {
+  --u: calc(100cqw / 330);
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 330 / 438;
+  color: var(--game-cream);
+  font-family: Kreon, Georgia, serif;
+  line-height: 1.1;
+  text-align: center;
+  transition: transform 0.15s ease;
+}
+
+.face > * {
+  position: absolute;
+}
+
+.face-art {
+  top: calc(59 * var(--u));
+  left: calc(41 * var(--u));
+  width: calc(250 * var(--u));
+  height: calc(190 * var(--u));
+  object-fit: cover;
+}
+
+.face.ancient .face-art {
+  top: calc(12 * var(--u));
+  left: calc(13 * var(--u));
+  width: calc(299 * var(--u));
+  height: calc(421 * var(--u));
+  border-radius: calc(14 * var(--u));
+}
+
+.face-layer {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.face-layer.glow {
+  mix-blend-mode: plus-lighter;
+}
+
+.face-cost {
+  top: calc(1 * var(--u));
+  left: 0;
+  width: calc(64 * var(--u));
+  height: calc(66 * var(--u));
+  display: grid;
+  place-items: center;
+  font-size: calc(32 * var(--u));
+  font-weight: 700;
+}
+
+.face-title {
+  top: calc(23 * var(--u));
+  left: calc(61 * var(--u));
+  width: calc(210 * var(--u));
+  height: calc(54 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--ts, 26) * var(--u));
+  letter-spacing: calc(1 * var(--u));
+  white-space: nowrap;
+}
+
+/* The outline sits in a copy of the text behind it, so it never eats into the letters */
+.face-title > span,
+.face-cost > span {
+  position: relative;
+  isolation: isolate;
+}
+
+.face-title > span::before,
+.face-cost > span::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-text-stroke: var(--stroke) var(--outline);
+}
+
+.face-title > span {
+  --stroke: calc(7 * var(--u));
+}
+
+.face-cost > span {
+  --stroke: calc(9 * var(--u));
+  --outline: #5c5440;
+}
+
+.face-type {
+  top: calc(228 * var(--u));
+  left: calc(166 * var(--u));
+  height: calc(37 * var(--u));
+  display: grid;
+  place-items: center;
+  transform: translateX(-50%);
+  color: rgb(0 0 0 / 0.75);
+  font-size: calc(16 * var(--u));
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.face-text {
+  top: calc(264 * var(--u));
+  left: calc(44 * var(--u));
+  width: calc(243 * var(--u));
+  height: calc(136 * var(--u));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-size: calc(var(--fs, 21) * var(--u));
+  text-shadow: calc(2 * var(--u)) calc(2 * var(--u)) 0 rgb(0 0 0 / 0.25);
+}
+
+.face-text > span {
+  width: 100%;
+}
+
+/* ---------- card library ---------- */
+
+/* On a phone the filters wait in a drawer behind one button; from 900 px they sit in the bar */
+.library-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.library-bar .library-filters {
+  display: none;
+}
+
+.drawer-body .library-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0 20px;
+}
+
+@media (min-width: 900px) {
+  .library-bar {
+    grid-template-columns: minmax(12rem, 2fr) repeat(6, minmax(0, 1fr));
+  }
+
+  .library-bar .library-filters {
+    display: contents;
+  }
+
+  .filters-button {
+    display: none;
+  }
+}
+
+.filters-button {
+  gap: 8px;
+  min-height: 44px;
+}
+
+.count-badge {
+  min-width: 22px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 22px;
+  text-align: center;
+}
+
+.drawer h2 {
+  margin: 0 40px 0 0;
+  font-size: 20px;
+}
+
+.drawer-foot {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.drawer-foot .primary {
+  flex: 1;
+  justify-content: center;
+}
+
+.library-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.segmented {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.segmented button {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.segmented button + button {
+  border-left: 1px solid var(--line);
+}
+
+.segmented button[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.count {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(176px, 40vw), 1fr));
+  gap: 22px 14px;
+  align-items: start;
+}
+
+.group-head {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  align-items: baseline;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.group-head:not(:first-child) {
+  margin-top: 10px;
+}
+
+.group-head h2 {
+  margin: 0;
+  font-size: 19px;
+}
+
+.group-head h2 small {
+  margin-left: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.group-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.card-tile {
+  display: grid;
+  gap: 6px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card-tile:hover .face,
+.card-tile:focus-visible .face {
+  transform: translateY(-4px);
+}
+
+.card-meta {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.rank.up {
+  color: var(--up);
+}
+
+.rank.down {
+  color: var(--down);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.pill {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 0 7px;
+  border: 1px solid var(--frame);
+  border-radius: 999px;
+  color: var(--ink-2);
+  font-size: 12px;
+}
+
+/* ---------- relics, potions and powers ---------- */
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 12px;
+}
+
+.item-tile {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  cursor: pointer;
+}
+
+.item-tile:hover,
+.item-tile:focus-visible {
+  background: var(--panel-2);
+}
+
+.item-icon {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.item-body h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.item-body h3 small {
+  margin-left: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.item-text {
+  margin: 4px 0 0;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.item-meta {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.item-face {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  padding: 18px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-2);
+  text-align: center;
+}
+
+.item-face-icon {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
+
+.item-face-text {
+  margin: 0;
+}
+
+.flavor {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* ---------- patch notes ---------- */
+
+.notes {
+  display: grid;
+  gap: 16px;
+  max-width: 820px;
+}
+
+.note-entry {
+  scroll-margin-top: 64px;
+}
+
+.note-entry header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  align-items: baseline;
+}
+
+.note-entry h2 {
+  margin: 0;
+  font-size: 21px;
+}
+
+.note-entry time {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.note-entry header a {
+  margin-left: auto;
+  font-size: 14px;
+}
+
+.note-entry h3 {
+  margin: 14px 0 4px;
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.note-entry ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--ink-2);
+}
+
+.note-entry li {
+  margin: 4px 0;
+}
+
+.note-entry li ul {
+  margin-top: 4px;
 }

@@ -2,7 +2,9 @@
 
 The Alchemist sends an anonymous summary of each finished run to a small database. A nightly
 job adds the runs up, and a static page shows the result at
-https://sethmcleod.github.io/sts2-the-alchemist/.
+https://sethmcleod.github.io/sts2-the-alchemist/. It lists every card, relic, potion and power,
+drawn the way the game draws them, with the stats for each. The mod's website, alchemist.fyi
+(`site/`), is built from the same export.
 
 Every part is small and has no build step, so another mod can copy the whole pipeline. See
 [Make your own](#make-your-own).
@@ -14,12 +16,13 @@ Every part is small and has no build step, so another mod can copy the whole pip
 | Upload  | `AlchemistCode/Analytics/`         | When a run ends, the mod rebuilds the game's own run summary, adds its own counters, and posts one row.                                |
 | Store   | Supabase, `schema.sql`             | One table, `runs`. The key in the DLL can insert rows and do nothing else.                                                             |
 | Export  | `export_stats.py`                  | Reads the rows with the secret key and writes count tables to `docs/analytics/data/`. No raw row, deck or player hash leaves the script. |
-| Show    | `docs/analytics/`                  | A static page in plain HTML, CSS and JavaScript. It adds up the count tables for the filters you pick.                                 |
+| Show    | `docs/analytics/`                  | A static page in plain HTML, CSS and JavaScript. It lists the mod's content and adds up the count tables for the filters you pick.      |
 | Publish | `.github/workflows/analytics.yml` | Runs the export every night and deploys the page to GitHub Pages. Nothing is committed.                                                |
 
 ## Try it with fake runs
 
-You need Python 3.12 or later. You do not need Supabase or the game.
+You need Python 3.12 or later with Pillow (`pip install pillow`), which makes the page's image
+copies. You do not need Supabase or the game.
 
 ```bash
 scripts/dev.sh analytics seed
@@ -100,19 +103,74 @@ A table lists its key columns, its count columns, and then the rows:
 
 | File           | Tables                                                                                                   |
 | -------------- | -------------------------------------------------------------------------------------------------------- |
-| `summary.json` | `meta`, `names`, `card_info`, `icons`, `groups`, `totals`, `ascensions`, `days`, `themes`, `badges`, `histograms`, `counters`, `acts`, `death_floors` |
+| `summary.json` | `meta`, `names`, `card_info`, `relic_info`, `potion_info`, `power_info`, `icons`, `groups`, `totals`, `ascensions`, `days`, `themes`, `badges`, `histograms`, `counters`, `acts`, `death_floors` |
 | `cards.json`   | `cards`: held, won, offered, picked, early picks, rest site upgrades, plays and Ferment turns, per card   |
 | `relics.json`  | `relics`: held, bought and Ancient offers, per relic. `potions`: drunk, bought and discarded, per potion |
 | `fights.json`  | `encounters`: fights, turns, damage and deaths, per encounter                                            |
+| `notes.json`   | `versions`: the patch notes from `CHANGELOG.md`, one entry per released version                          |
 
 The page loads `summary.json` first and each other file when its tab first opens. Together they
 are about 1 MB over the network.
 
-`card_info` holds each card's type, cost and text from `cards.csv`. The text is in the game's loc
-markup: `mod_meta.py` puts back the `[gold]` words from the card's own loc text and marks the
-upgraded numbers `[green]`. The images are not copied. `card_info` and `icons` name a path in the
-repo, and the page loads it from `meta.assets.base`, which is GitHub's raw file host at the
-commit the export ran on. The images only load when the repo is public.
+## The library
+
+The Cards, Relics and potions, and Powers tabs list everything the mod adds, from the source
+files, so the list is current with every deploy.
+
+- `card_info` holds each card's type, cost and text from `cards.csv`. The text is in the game's
+  loc markup: `mod_meta.py` puts back the `[gold]` words from the card's own loc text and marks
+  the upgraded numbers `[green]`.
+- `relic_info`, `potion_info` and `power_info` hold the text from `eng/`, with each SmartFormat
+  field filled in for a page that has no amount to show (a power's amount reads X).
+- `meta.mod` is the manifest, `meta.releases` maps each version to its GitHub release (the beta
+  tag when there is one), and `meta.workshop` names the Steam Workshop items.
+- `notes.json` is `CHANGELOG.md`, parsed. GitHub lists a beta and a public release for most
+  versions; the changelog has one entry per version, so the Patch notes tab reads once. A version
+  number anywhere on the page opens its notes, and each entry links to its GitHub release.
+- `meta.previews` are the Steam Workshop preview images in `workshop/previews/`, shown in the
+  header.
+
+The images come in two kinds:
+
+- The mod's own art. `page_images.py` writes a page-sized WebP copy of every card portrait, icon
+  and Workshop preview to `data/img/` during the export. The copies are deployed and never
+  committed. The site (`site/`) does not need them: it makes its own copies at build time.
+- The card frames. The game draws a card from four tinted pieces of its UI atlas.
+  `card_frames.py` tints them the way `shaders/hsv.gdshader` does and stacks them into one image
+  per card type and rarity, in `site/src/assets/frames/` (15 files, about 600 KB). This page keeps
+  its own copy in `docs/analytics/img/frames/`. Both are committed, because they come from the
+  game files and CI has no game. Run it again only when the game changes its card art:
+
+  ```bash
+  python3 tools/analytics/card_frames.py --game <recovered project>
+  ```
+
+  `--game` is a project recovered with GDRE Tools. The frames are Mega Crit's art.
+
+`docs/analytics/fonts/` holds Kreon, the game's card font, under the SIL Open Font License (the
+licence is in the font files).
+
+The website (`site/`) is in every language the mod is, which takes two more files that come from
+the game and are committed for the same reason:
+
+- `game_loc.json`: the base game's own words in each language (keyword names and the period after
+  them, card types, rarities, encounter names). `mod_meta.py` needs them to write a card's keyword
+  lines the way the game does in that language, and the export passes them to the site with the
+  mod's own text in `data/loc/<language>.json`. Run `game_loc.py` again after a game update:
+
+  ```bash
+  python3 tools/analytics/game_loc.py --base <the game's localization folder>
+  ```
+
+- The card fonts. The game draws cards in another font for Polish, Russian, Japanese, Korean,
+  Thai and Chinese. `card_fonts.py` cuts each font down to the characters the mod's cards use and
+  writes them, with their widths for the text fit, to `site/src/assets/fonts/` and
+  `site/src/lib/card-fonts.json`. Run it again after a localization pass (it needs `fonttools` and
+  `brotli`); the site's tests fail while a card uses a character its font lacks:
+
+  ```bash
+  python3 tools/analytics/card_fonts.py --game <recovered project>
+  ```
 
 ## Add a new stat
 
@@ -166,8 +224,10 @@ The pipeline knows about the Alchemist only in the places below.
    [Set up the real thing](#set-up-the-real-thing).
 5. In `mod_meta.py`, change `PREFIX`, `THEMES`, `CHARACTER_ICON` and the source paths. In
    `export_stats.py`, change `BADGE_METRICS` and `HISTOGRAMS`, or empty them.
-6. In `docs/analytics/`, keep `data.js` and `charts.js` as they are. Rewrite the text in
-   `index.html` and the tabs in `app.js`.
+6. In `card_frames.py`, set `POOL_TINT` to your card pool's H, S and V and `ENERGY_ORB` to your
+   energy icon, then build the frames once.
+7. In `docs/analytics/`, keep `data.js` and `charts.js` as they are. Rewrite the text in
+   `index.html` and the tabs in `app.js`, including `PARTNER_MODS` and `CARD_GROUPS`.
 
 ## Commands
 

@@ -5,13 +5,17 @@ whether it was solo or co-op. Each table adds the run's counts to its group's ro
 keeps the groups its filters allow and adds their rows up, so every rate it shows is a sum of
 counts over a sum of counts. No raw row, deck or player hash leaves this script.
 
-It writes four files to docs/analytics/data/:
+It writes these files to docs/analytics/data/:
 
     summary.json  meta, groups, run totals, ascensions, days, themes, badges, histograms,
                   counters, acts, death floors
     cards.json    one row per card per group
     relics.json   one row per relic and per potion per group
     fights.json   one row per encounter per group
+    notes.json    the patch notes, one entry per version, from CHANGELOG.md
+    loc/          one file per language: the mod's names and text, the cards as the game shows
+                  them, and the base game's words the website uses
+    img/          page-sized copies of the card art, icons and Workshop previews (page_images.py)
 
 Each table is {"key": [...], "counts": [...], "rows": [[...], ...]}. A row lists its key values,
 then its counts. Run nightly by .github/workflows/analytics.yml, and locally with
@@ -387,8 +391,9 @@ def oldest_version(runs) -> str | None:
 
 
 def build(runs: list[dict]) -> dict[str, dict]:
-    """The four output files, keyed by file name."""
+    """The output files, keyed by file name."""
     cards, badges, epochs = mod_meta.cards(), mod_meta.badges(), mod_meta.epoch_count()
+    manifest = mod_meta.manifest()
     extras = [normalise(run.get("alchemist") or {}) for run in runs]
     keys = [group_of(run, extra, epochs) for run, extra in zip(runs, extras)]
     groups = sorted(set(keys), key=lambda k: (version_key(k[0]), version_key(k[1]), *k[2:]))
@@ -418,13 +423,15 @@ def build(runs: list[dict]) -> dict[str, dict]:
         "theme_min_cards": THEME_MIN_CARDS,
         "ascension_bands": ASCENSION_BANDS,
         "epochs": epochs,
-        # The page loads each image from base + its repo path
         "assets": {
-            "base": mod_meta.asset_base(),
             "character": mod_meta.repo_path(mod_meta.CHARACTER_ICON),
             "energy": mod_meta.repo_path(mod_meta.ENERGY_ICON),
         },
-        "text_version": mod_meta.mod_version(),
+        "mod": {key: manifest[key] for key in ("name", "description", "version")},
+        "repo": mod_meta.repo_slug(),
+        "releases": mod_meta.releases(),
+        "workshop": mod_meta.workshop(),
+        "previews": [{"image": path, "full": path} for path in mod_meta.previews()],
         "histograms": {metric: {"width": w, "last": last} for metric, (w, last) in HISTOGRAMS.items()},
         "badges": [b | {"metric": BADGE_METRICS.get(b["id"])} for b in badges],
         # The oldest mod version whose client sends the schema 3 counters. A version's runs all share
@@ -438,12 +445,18 @@ def build(runs: list[dict]) -> dict[str, dict]:
         "meta": meta,
         "names": mod_meta.titles(),
         "card_info": cards,
+        "relic_info": mod_meta.items("relics", "Relics"),
+        "potion_info": mod_meta.items("potions", "Potions"),
+        "power_info": mod_meta.items("powers", None),
         "icons": mod_meta.icons(),
         "groups": {"key": ["version", "build", "ascension", "pool", "coop"], "counts": [],
                    "rows": [list(key) for key in groups]},
     }
     out = {name: {} for name in FILES}
     out["summary.json"] = summary
+    out["notes.json"] = {"versions": mod_meta.changelog()}
+    for lang in mod_meta.languages():
+        out[f"loc/{lang}.json"] = mod_meta.translation(lang)
     for name, table_names in FILES.items():
         for table in table_names:
             out[name][table] = tables[table].to_json()
@@ -456,6 +469,8 @@ def main() -> int:
     parser.add_argument("--include-seed", action="store_true",
                         help=f"keep fabricated mod_version='{common.SEED_VERSION}' rows")
     parser.add_argument("--out", type=Path, default=OUT_DIR)
+    parser.add_argument("--no-images", action="store_true",
+                        help="keep image paths pointing into the repo, for a site that builds its own")
     parser.add_argument("--from-file", type=Path, default=None,
                         help="read rows from a JSON file (seed_runs.py --local) instead of Supabase")
     args = parser.parse_args()
@@ -479,8 +494,15 @@ def main() -> int:
 
     args.out.mkdir(parents=True, exist_ok=True)
     shown = lambda path: path.relative_to(common.REPO) if path.is_relative_to(common.REPO) else path
-    for name, payload in build(runs).items():
+    files = build(runs)
+    if not args.no_images:
+        # Only the images need Pillow, so --no-images runs on the standard library alone
+        import page_images
+        images = page_images.write(files["summary.json"], args.out)
+        print(f"wrote {images} images to {shown(args.out / 'img')}")
+    for name, payload in files.items():
         path = args.out / name
+        path.parent.mkdir(exist_ok=True)
         path.write_text(json.dumps(payload, separators=(",", ":")) + "\n", encoding="utf-8")
         print(f"wrote {shown(path)} ({path.stat().st_size / 1024:,.0f} KB)")
     print(f"{len(runs):,} runs exported ({fetched:,} fetched)")

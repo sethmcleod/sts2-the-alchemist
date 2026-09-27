@@ -10,6 +10,7 @@ mod).
 ### Added
 
 - Added more secrets to mod settings...
+- Added the mod's website, https://alchemist.fyi, with every card, relic, potion and power as the game shows them, the patch notes, screenshots and run stats, in all 16 of the mod's languages
 
 ### Changed
 

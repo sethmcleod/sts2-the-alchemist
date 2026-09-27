@@ -1,0 +1,72 @@
+name: site
+
+# alchemist.fyi shows the newest release, so it matches what players have installed. Vercel builds
+# the `site` branch, and this workflow points that branch at the newest release tag, with the site's
+# own code (site/ and tools/analytics/) taken from beta so a site fix goes live without a release.
+# It runs on every release tag, on every push to beta that changes the site, and once a day, when it
+# asks Vercel for a fresh build so the run stats stay current. GitHub runs the daily schedule and the
+# Run workflow button from main's copy of this file only.
+#
+# One-time setup (site/README.md): a Vercel project with the root directory `site` and the
+# production branch `site`, and the VERCEL_DEPLOY_HOOK repository secret (a deploy hook for the
+# `site` branch, from the Vercel project's Git settings).
+
+on:
+  push:
+    tags: ["v*"]
+    branches: [beta]
+    paths:
+      - "site/**"
+      - "tools/analytics/**"
+      - ".github/workflows/site.yml"
+  schedule:
+    - cron: "23 6 * * *" # daily, UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Point the site branch at the newest release
+        id: branch
+        run: |
+          release=$(git tag --list 'v*-beta' --sort=-v:refname | head -n 1)
+          git switch --quiet --detach "$release"
+          # The workflows come from main: GitHub refuses a push with this job's token that changes one
+          git rm -r -q --cached --ignore-unmatch site tools/analytics .github
+          git checkout origin/beta -- site tools/analytics
+          git checkout origin/main -- .github
+          tree=$(git write-tree)
+          if [ "$(git rev-parse -q --verify 'origin/site^{tree}' || true)" = "$tree" ]; then
+            echo "The site branch already shows $release"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            commit=$(git -c user.name="github-actions[bot]" \
+              -c user.email="41898299+github-actions[bot]@users.noreply.github.com" \
+              commit-tree "$tree" -p "$release^{commit}" -m "Site for $release")
+            git push --force origin "$commit:refs/heads/site"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # A push to the site branch builds on its own; otherwise ask for a build for the stats
+      - name: Rebuild with the latest runs
+        if: steps.branch.outputs.changed == 'false'
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::error::Add the VERCEL_DEPLOY_HOOK repository secret first."
+            exit 1
+          fi
+          curl --fail --silent --show-error --request POST "$HOOK"

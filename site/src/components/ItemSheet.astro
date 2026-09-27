@@ -1,0 +1,96 @@
+---
+// A relic, potion or power page's content, which the dialog shows as well
+import { Image } from 'astro:assets';
+import { image, runs } from '../lib/content';
+import { potionDetail, powerDetail, relicDetail } from '../lib/details';
+import { kindName, powerSource, type Item, type Source } from '../lib/items';
+import { notesHref } from '../lib/links';
+import { plain } from '../lib/markup';
+import { slug } from '../lib/mod';
+import Breakdown from './Breakdown.astro';
+import Stats from './charts/Stats';
+import Commentary from './Commentary.astro';
+import GameText from './GameText.astro';
+import StatsSpan from './StatsSpan.astro';
+import T from './T.astro';
+
+const { l } = Astro.locals;
+
+interface Props {
+  item: Item;
+}
+
+const { item } = Astro.props;
+const data = runs(Astro.locals.locale);
+const icon = await image(item.info.icon);
+const detail = { relic: relicDetail, potion: potionDetail, power: powerDetail }[item.kind](l, data, item.id);
+const source = item.kind === 'power' ? powerSource(data, item.id) : null;
+
+const kind = item.rarity === 'Brew' ? l.t('Brew potion, made only at a rest site') : kindName(l, item);
+// The same goes for the kind of a power's source
+const FROM: Record<Source['kind'], string> = {
+  card: 'Comes from the {source} card.',
+  potion: 'Comes from the {source} potion.',
+  relic: 'Comes from the {source} relic.',
+};
+---
+
+<article data-sheet class="grid gap-6 p-5 sm:p-7">
+  <header class="grid grid-cols-[5rem_minmax(0,1fr)] items-center gap-4 pr-12">
+    {icon ? <Image src={icon} alt="" class="size-20 object-contain" /> : <span />}
+    <div>
+      <p class="m-0 text-sm text-muted">{kind}</p>
+      <h1 id="sheet-title" tabindex="-1" class="m-0 text-4xl">
+        {item.info.name}
+      </h1>
+    </div>
+  </header>
+
+  <div class="grid max-w-[65ch] gap-2">
+    <p class="m-0 font-display text-xl leading-snug">
+      <GameText markup={item.info.text} />
+    </p>
+    {item.info.flavor && <p class="m-0 text-ink-2 italic">{item.info.flavor}</p>}
+    {source && (
+      <p class="m-0 text-sm">
+        <T text={l.t(FROM[source.kind])}>
+          <a slot="source" href={l.href(source.href)} data-sheet-link>
+            {source.name}
+          </a>
+        </T>
+      </p>
+    )}
+    {item.kind === 'power' && /\bX\b/.test(plain(item.info.text)) && (
+      <p class="m-0 text-sm text-muted">{l.t('X is the amount the card, potion or relic gives.')}</p>
+    )}
+  </div>
+
+  {detail.stats.length > 0 && <Stats items={detail.stats} />}
+  <p class="-mt-2 mb-0 text-sm text-muted">
+    <T text={l.t('Text from {version}.')}>
+      <a slot="version" href={l.href(notesHref(data.meta.mod.version))}>
+        {data.meta.mod.version}
+      </a>
+    </T>{' '}
+    {detail.stats.length > 0 ? (
+      <>
+        <T
+          text={l.n(
+            detail.runs,
+            'Stats from {n} solo run on {span}, at every ascension.',
+            'Stats from {n} solo runs on {span}, at every ascension.',
+          )}
+        >
+          <StatsSpan slot="span" />
+        </T>{' '}
+        {item.kind !== 'power' && <a href={l.href('/stats/relics')}>{l.t('Filter the relic and potion stats')}</a>}
+      </>
+    ) : (
+      l.t('No stats for it yet.')
+    )}
+  </p>
+
+  {detail.breakdown && <Breakdown breakdown={detail.breakdown} />}
+
+  <Commentary id={`${item.kind}s/${slug(item.id)}`} />
+</article>

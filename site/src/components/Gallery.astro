@@ -1,0 +1,127 @@
+---
+// The Steam Workshop previews, one at a time. Without a script the strip scrolls and each shot
+// links to its full size; with one, the arrows step and a shot opens in a lightbox.
+import { getImage, Image } from 'astro:assets';
+import { image } from '../lib/content';
+
+interface Props {
+  previews: { image: string }[];
+}
+
+const { l } = Astro.locals;
+
+// What each preview shows, by file name
+const ALT: Record<string, string> = {
+  'preview-1.png': l.t(
+    'The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.',
+  ),
+  'preview-2.png': l.t('The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.'),
+  'preview-3.png': l.t('Choosing one of six Mixes to add to the hand.'),
+  'preview-4.png': l.t('A rest site that offers Brew next to Rest and Smith.'),
+  'preview-5.png': l.t('A choice of three Brew potions.'),
+  'preview-6.png': l.t('The Merchant asking to buy a Brew potion.'),
+  'preview-7.png': l.t("The Alchemist's mod settings: accessibility, analytics and unlocks."),
+};
+
+const { previews } = Astro.props;
+const shots = (
+  await Promise.all(
+    previews.map(async (preview, i) => {
+      const src = await image(preview.image);
+      if (!src) return null;
+      const name = preview.image.split('/').at(-1)!;
+      const full = await getImage({ src, width: 1920, format: 'webp', quality: 82 });
+      return { src, full: full.src, alt: ALT[name] ?? l.t('Screenshot {n}', { n: i + 1 }) };
+    }),
+  )
+).filter((shot) => shot !== null);
+---
+
+{shots.length > 0 && (
+  <div class="gallery panel relative overflow-hidden" data-gallery>
+    <ul class="gallery-track m-0 flex list-none snap-x snap-mandatory overflow-x-auto p-0">
+      {shots.map((shot, i) => (
+        <li class="w-full flex-none snap-center">
+          <a href={shot.full} class="block" data-full={shot.full}>
+            <Image
+              src={shot.src}
+              widths={[480, 960]}
+              sizes="(width < 64rem) calc(100vw - 32px), 30rem"
+              alt={shot.alt}
+              class="aspect-video w-full object-cover"
+              loading={i ? 'lazy' : 'eager'}
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+    <button type="button" class="gallery-step needs-js left-2" data-step="-1" aria-label={l.t('Previous screenshot')}>
+      ‹
+    </button>
+    <button type="button" class="gallery-step needs-js right-2" data-step="1" aria-label={l.t('Next screenshot')}>
+      ›
+    </button>
+    <p class="gallery-count needs-js" aria-hidden="true">
+      1 / {shots.length}
+    </p>
+    <dialog class="lightbox" aria-label={l.t('Screenshot')}>
+      <form method="dialog">
+        <button class="close-button" aria-label={l.t('Close')}>
+          ×
+        </button>
+      </form>
+      <button type="button" class="gallery-step left-2" data-step="-1" aria-label={l.t('Previous screenshot')}>
+        ‹
+      </button>
+      <button type="button" class="gallery-step right-2" data-step="1" aria-label={l.t('Next screenshot')}>
+        ›
+      </button>
+    </dialog>
+  </div>
+)}
+
+<script>
+  for (const gallery of document.querySelectorAll<HTMLElement>('[data-gallery]')) {
+    const track = gallery.querySelector('ul')!;
+    const links = [...track.querySelectorAll<HTMLAnchorElement>('a')];
+    const count = gallery.querySelector('.gallery-count')!;
+    const lightbox = gallery.querySelector('dialog')!;
+    // Made on first use, since an img needs a src
+    const big = document.createElement('img');
+    lightbox.querySelector('form')!.after(big);
+    const current = () => Math.round(track.scrollLeft / track.clientWidth);
+    const wrap = (i: number) => (i + links.length) % links.length;
+    let open = 0;
+
+    const show = (i: number) => {
+      open = wrap(i);
+      big.src = links[open].dataset.full!;
+      big.alt = links[open].querySelector('img')!.alt;
+    };
+
+    track.addEventListener('scroll', () => (count.textContent = `${current() + 1} / ${links.length}`), {
+      passive: true,
+    });
+    gallery.addEventListener('click', (e) => {
+      const target = e.target as Element;
+      const step = Number(target.closest<HTMLElement>('[data-step]')?.dataset.step);
+      const link = target.closest('a');
+      if (step && lightbox.open) {
+        show(open + step);
+      } else if (step) {
+        const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        track.scrollTo({ left: wrap(current() + step) * track.clientWidth, behavior: still ? 'auto' : 'smooth' });
+      } else if (link) {
+        e.preventDefault();
+        show(links.indexOf(link));
+        lightbox.showModal();
+      } else if (target === lightbox) {
+        lightbox.close();
+      }
+    });
+    lightbox.addEventListener('keydown', (e) => {
+      const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      if (step) show(open + step);
+    });
+  }
+</script>

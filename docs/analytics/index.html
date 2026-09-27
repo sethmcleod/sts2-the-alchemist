@@ -5,23 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#1c1822" />
-    <meta name="description" content="Anonymous run stats for The Alchemist, a Slay the Spire 2 character mod." />
-    <title>The Alchemist: Run Stats</title>
+    <meta
+      name="description"
+      content="The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, with anonymous run stats."
+    />
+    <title>The Alchemist: Slay the Spire 2 Mod</title>
     <link rel="icon" id="favicon" href="data:," />
+    <link rel="preload" href="fonts/kreon_regular.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="app.js"></script>
   </head>
   <body>
     <div class="page">
       <header class="masthead">
-        <div class="brand">
-          <img class="brand-icon" id="brandIcon" alt="" hidden />
-          <p class="eyebrow">Slay the Spire 2 mod</p>
-          <h1>The Alchemist: Run Stats</h1>
+        <div class="masthead-main">
+          <div class="brand">
+            <img class="brand-icon" id="brandIcon" alt="" hidden />
+            <p class="eyebrow">Slay the Spire 2 character mod</p>
+            <h1>The Alchemist</h1>
+          </div>
+          <p class="lede" id="lede">Loading the latest runs...</p>
+          <div class="actions" id="actions"></div>
         </div>
-        <p class="lede" id="lede">Loading the latest runs...</p>
+        <div class="gallery" id="gallery" hidden>
+          <div class="gallery-track" id="galleryTrack"></div>
+          <button type="button" class="gallery-nav prev" data-step="-1" aria-label="Previous screenshot">‹</button>
+          <button type="button" class="gallery-nav next" data-step="1" aria-label="Next screenshot">›</button>
+          <p class="gallery-count" id="galleryCount" aria-hidden="true"></p>
+        </div>
       </header>
 
+      <nav class="tabs" id="tabs" role="tablist" hidden>
+        <button role="tab" data-view="cards">Cards</button>
+        <button role="tab" data-view="relics">Relics &amp; potions</button>
+        <button role="tab" data-view="powers">Powers</button>
+        <button role="tab" data-view="notes">Patch notes</button>
+        <span class="tab-divider" aria-hidden="true"></span>
+        <button role="tab" data-view="overview">Run stats</button>
+        <button role="tab" data-view="mechanics">Mechanics</button>
+        <button role="tab" data-view="fights">Fights</button>
+        <button role="tab" data-view="versions">Versions</button>
+      </nav>
+
+      <div class="stats-bar" id="statsBar">
       <form class="filters" id="filters" hidden>
         <label class="filter wide-first">
           <span>Version</span>
@@ -75,15 +101,7 @@
         </details>
       </form>
       <p class="summary" id="summary" aria-live="polite"></p>
-
-      <nav class="tabs" id="tabs" role="tablist" hidden>
-        <button role="tab" data-view="overview">Overview</button>
-        <button role="tab" data-view="cards">Cards</button>
-        <button role="tab" data-view="mechanics">Mechanics</button>
-        <button role="tab" data-view="relics">Relics &amp; potions</button>
-        <button role="tab" data-view="fights">Fights</button>
-        <button role="tab" data-view="versions">Versions</button>
-      </nav>
+      </div>
 
       <main>
         <section class="view" id="view-overview" role="tabpanel" hidden>
@@ -125,113 +143,148 @@
         </section>
 
         <section class="view" id="view-cards" role="tabpanel" hidden>
-          <div class="tiles" id="cardTiles"></div>
-          <div class="grid two">
-            <article class="card">
-              <h2>Beating their peers</h2>
-              <p class="note">Cards that win more often than the typical card of the same rarity.</p>
-              <div id="standoutsUp"></div>
-            </article>
-            <article class="card">
-              <h2>Trailing their peers</h2>
-              <p class="note">Cards that win less often than the typical card of the same rarity.</p>
-              <div id="standoutsDown"></div>
-            </article>
-          </div>
-          <article class="card">
-            <h2>Pick rate and win rate</h2>
-            <p class="note">
-              Each dot is a card. Further right means players take it more often when it is offered. Higher means the
-              runs that finished with it won more often. Hover or tap a dot for its numbers. Click it, or tap it twice,
-              for details.
-            </p>
-            <div class="chips" id="rarityChips"></div>
-            <div id="cardScatter"></div>
-            <div class="legend" id="scatterLegend"></div>
-          </article>
-          <article class="card">
-            <h2>All cards</h2>
-            <p class="note">Tap a card for its details. Cards held in fewer runs than the minimum are left out.</p>
-            <div class="toolbar">
-              <input type="search" id="cardSearch" placeholder="Find a card" aria-label="Find a card" />
-              <label class="inline">
-                <span>Sort by</span>
-                <select id="cardSort">
-                  <option value="vsPeers">Win rate vs peers</option>
-                  <option value="winrate">Win rate</option>
-                  <option value="pickrate">Pick rate</option>
-                  <option value="playsPerRun">Plays per run</option>
-                  <option value="unplayed">Left unplayed</option>
-                  <option value="held">Runs</option>
-                  <option value="name">Name</option>
-                </select>
-              </label>
+          <form class="library-bar" id="libraryBar">
+            <label class="filter search">
+              <span>Search</span>
+              <input type="search" id="cardSearch" placeholder="Name or card text" />
+            </label>
+            <button type="button" class="button filters-button" id="openFilters">
+              Filters <span class="count-badge" id="filterCount" hidden></span>
+            </button>
+            <div class="library-filters" id="libFilters">
+            <label class="filter">
+              <span>Type</span>
+              <select id="libType">
+                <option value="">Any</option>
+                <option>Attack</option>
+                <option>Skill</option>
+                <option>Power</option>
+              </select>
+            </label>
+            <label class="filter">
+              <span>Rarity</span>
+              <select id="libRarity">
+                <option value="">Any</option>
+                <option value="Basic">Starter</option>
+                <option>Common</option>
+                <option>Uncommon</option>
+                <option>Rare</option>
+                <option>Ancient</option>
+                <option>Event</option>
+                <option>Token</option>
+              </select>
+            </label>
+            <label class="filter">
+              <span>Cost</span>
+              <select id="libCost">
+                <option value="">Any</option>
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option value="3">3 or more</option>
+                <option>X</option>
+              </select>
+            </label>
+            <label class="filter">
+              <span>Keyword</span>
+              <select id="libKeyword"></select>
+            </label>
+            <label class="filter">
+              <span>Where from</span>
+              <select id="libSource"></select>
+            </label>
+            <label class="filter">
+              <span>Sort by</span>
+              <select id="cardSort">
+                <option value="rarity">Rarity</option>
+                <option value="name">Name</option>
+                <option value="cost">Cost</option>
+                <option value="type">Type</option>
+                <option value="vsPeers">Best for its rarity</option>
+                <option value="winrate">Win rate</option>
+                <option value="pickrate">Pick rate</option>
+                <option value="playsPerRun">Plays per run</option>
+                <option value="unplayed">Left unplayed</option>
+                <option value="held">Runs</option>
+              </select>
+            </label>
             </div>
-            <div class="chips" id="themeChips"></div>
+          </form>
+          <div class="library-head">
+            <div class="segmented" id="showAs" role="group" aria-label="Show the cards as">
+              <button type="button" data-show="cards">Cards</button>
+              <button type="button" data-show="table">Table</button>
+              <button type="button" data-show="charts">Charts</button>
+            </div>
+            <p class="count" id="libCount" aria-live="polite"></p>
+          </div>
+          <div class="card-grid" id="cardGrid"></div>
+          <article class="card" id="cardTableView" hidden>
             <div id="cardTable"></div>
           </article>
-          <div class="grid two">
+          <div class="view" id="cardCharts" hidden>
+            <div class="tiles" id="cardTiles"></div>
+            <div class="grid two">
+              <article class="card">
+                <h2>Beating their peers</h2>
+                <p class="note">Cards that win more often than most cards of the same rarity. The gold line is the middle one.</p>
+                <div id="standoutsUp"></div>
+              </article>
+              <article class="card">
+                <h2>Trailing their peers</h2>
+                <p class="note">Cards that win less often than most cards of the same rarity. The gold line is the middle one.</p>
+                <div id="standoutsDown"></div>
+              </article>
+            </div>
             <article class="card">
-              <h2>Left unplayed</h2>
-              <p class="note" id="unplayedNote"></p>
-              <div id="unplayed"></div>
+              <h2>Pick rate and win rate</h2>
+              <p class="note">
+                Each dot is a card. Further right means players take it more often when it is offered. Higher means the
+                runs that finished with it won more often. Cards outside the filters above are dimmed. Hover or tap a dot
+                for its numbers. Click it, or tap it twice, for details.
+              </p>
+              <div id="cardScatter"></div>
+              <div class="legend" id="scatterLegend"></div>
             </article>
-            <article class="card">
-              <h2>Played the most</h2>
-              <p class="note" id="mostPlayedNote"></p>
-              <div id="mostPlayed"></div>
-            </article>
-          </div>
-          <div class="grid two">
-            <article class="card">
-              <h2>Early picks</h2>
-              <p class="note">Cards taken from a run's first three card rewards, and how those runs went.</p>
-              <div id="earlyPicks"></div>
-            </article>
-            <article class="card">
-              <h2>Upgraded at rest sites</h2>
-              <p class="note">Rest site upgrades for every 100 runs that finished with the card.</p>
-              <div id="upgrades"></div>
-            </article>
+            <div class="grid two">
+              <article class="card">
+                <h2>Left unplayed</h2>
+                <p class="note" id="unplayedNote"></p>
+                <div id="unplayed"></div>
+              </article>
+              <article class="card">
+                <h2>Played the most</h2>
+                <p class="note" id="mostPlayedNote"></p>
+                <div id="mostPlayed"></div>
+              </article>
+            </div>
+            <div class="grid two">
+              <article class="card">
+                <h2>Early picks</h2>
+                <p class="note">Cards taken from a run's first three card rewards, and how those runs went.</p>
+                <div id="earlyPicks"></div>
+              </article>
+              <article class="card">
+                <h2>Upgraded at rest sites</h2>
+                <p class="note">Rest site upgrades for every 100 runs that finished with the card.</p>
+                <div id="upgrades"></div>
+              </article>
+            </div>
           </div>
         </section>
 
         <section class="view" id="view-mechanics" role="tabpanel" hidden>
-          <h2 class="section-title">Poison</h2>
-          <div class="tiles" id="poisonTiles"></div>
-          <div class="grid two">
-            <article class="card">
-              <h2>How high self-Poison gets</h2>
-              <p class="note">The most Poison the Alchemist held at once in each run.</p>
-              <div id="poisonPeakChart"></div>
-            </article>
-            <article class="card">
-              <h2>Where self-Poison goes</h2>
-              <p class="note">Poison damage the Alchemist took, split by what Antitoxin absorbed and what hit HP.</p>
-              <div id="poisonSplit"></div>
-              <p class="foot" id="tickFoot"></p>
-            </article>
-          </div>
+          <h2 class="section-title">Badges</h2>
+          <p class="section-note">How often runs earn each Alchemist badge, and at which tier.</p>
+          <div class="badges" id="badges"></div>
 
-          <h2 class="section-title">Antitoxin</h2>
-          <div class="tiles" id="antitoxinTiles"></div>
-          <div class="grid two">
-            <article class="card">
-              <h2>How high Antitoxin gets</h2>
-              <p class="note">
-                The most Antitoxin held at once in each run. The lines mark where the Thick Skin, Iron Stomach and
-                Immune badges start.
-              </p>
-              <div id="peakChart"></div>
-              <p class="foot" id="peakFoot"></p>
-            </article>
-            <article class="card">
-              <h2>Where Antitoxin comes from</h2>
-              <p class="note">The card, relic, potion or power behind each point of Antitoxin gained.</p>
-              <div id="antitoxinSources"></div>
-              <p class="foot" id="decayFoot"></p>
-            </article>
-          </div>
+          <h2 class="section-title">Brew and potions</h2>
+          <div class="tiles" id="brewTiles"></div>
+          <article class="card">
+            <h2>Brew picks</h2>
+            <p class="note" id="brewNote">How often each Brew potion is taken when a rest site offers it.</p>
+            <div id="brewPicks"></div>
+          </article>
 
           <h2 class="section-title">Mixes</h2>
           <div class="tiles" id="mixTiles"></div>
@@ -289,25 +342,53 @@
             </article>
           </div>
 
-          <h2 class="section-title">Brew and potions</h2>
-          <div class="tiles" id="brewTiles"></div>
-          <article class="card">
-            <h2>Brew picks</h2>
-            <p class="note" id="brewNote">How often each Brew potion is taken when a rest site offers it.</p>
-            <div id="brewPicks"></div>
-          </article>
+          <h2 class="section-title">Poison</h2>
+          <div class="tiles" id="poisonTiles"></div>
+          <div class="grid two">
+            <article class="card">
+              <h2>How high self-Poison gets</h2>
+              <p class="note">The most Poison the Alchemist held at once in each run.</p>
+              <div id="poisonPeakChart"></div>
+            </article>
+            <article class="card">
+              <h2>Where self-Poison goes</h2>
+              <p class="note">Poison damage the Alchemist took, split by what Antitoxin absorbed and what hit HP.</p>
+              <div id="poisonSplit"></div>
+              <p class="foot" id="tickFoot"></p>
+            </article>
+          </div>
 
-          <h2 class="section-title">Badges</h2>
-          <p class="section-note">How often runs earn each Alchemist badge, and at which tier.</p>
-          <div class="badges" id="badges"></div>
+          <h2 class="section-title">Antitoxin</h2>
+          <div class="tiles" id="antitoxinTiles"></div>
+          <div class="grid two">
+            <article class="card">
+              <h2>How high Antitoxin gets</h2>
+              <p class="note">
+                The most Antitoxin held at once in each run. The lines mark where the Thick Skin, Iron Stomach and
+                Immune badges start.
+              </p>
+              <div id="peakChart"></div>
+              <p class="foot" id="peakFoot"></p>
+            </article>
+            <article class="card">
+              <h2>Where Antitoxin comes from</h2>
+              <p class="note">The card, relic, potion or power behind each point of Antitoxin gained.</p>
+              <div id="antitoxinSources"></div>
+              <p class="foot" id="decayFoot"></p>
+            </article>
+          </div>
         </section>
 
         <section class="view" id="view-relics" role="tabpanel" hidden>
-          <article class="card">
-            <h2>Alchemist relics</h2>
-            <p class="note">The share of runs that ended with each relic, and how those runs went.</p>
-            <div id="modRelics"></div>
-          </article>
+          <h2 class="section-title">Relics</h2>
+          <p class="section-note">Tap a relic for its stats. The rate is how often runs that ended with it won.</p>
+          <div class="item-grid" id="relicGrid"></div>
+
+          <h2 class="section-title">Potions</h2>
+          <p class="section-note">Potions sold by the Merchant or dropped in combat, and the ones only Brew makes.</p>
+          <div class="item-grid" id="potionGrid"></div>
+
+          <h2 class="section-title">Next to the base game</h2>
           <div class="grid two">
             <article class="card">
               <h2>Ancient choices</h2>
@@ -325,6 +406,17 @@
             <p class="note">The base game relics Alchemist runs end with most often, and how those runs went.</p>
             <div id="baseRelics"></div>
           </article>
+        </section>
+
+        <section class="view" id="view-powers" role="tabpanel" hidden>
+          <p class="section-note flush">
+            The powers Alchemist cards, relics and potions put on a creature. X is the amount the card or relic gives.
+          </p>
+          <div class="item-grid" id="powerGrid"></div>
+        </section>
+
+        <section class="view" id="view-notes" role="tabpanel" hidden>
+          <div class="notes" id="notes"></div>
         </section>
 
         <section class="view" id="view-fights" role="tabpanel" hidden>
@@ -365,7 +457,7 @@
             <h2>Cards that moved the most</h2>
             <p class="note">
               Cards with at least 20 runs in both versions, the clearest changes first. Each change is measured against
-              the typical card of the same rarity, so a version that is harder overall does not drag every card down. A
+              the middle card of the same rarity, so a version that is harder overall does not drag every card down. A
               change marked likely is too big to be random swing alone.
             </p>
             <div id="cardChanges"></div>
@@ -395,27 +487,41 @@
           </dd>
           <dt>Why card win rates run high</dt>
           <dd>
-            Winning runs last longer and finish with more cards, so the typical card wins more often than the overall
-            win rate. That is why cards are compared with their peers.
+            Winning runs last longer and finish with more cards, so the middle card wins more often than the overall
+            win rate. That is why each card is ranked against the cards of its own rarity.
           </dd>
         </dl>
         <p class="fresh" id="fresh"></p>
       </footer>
     </div>
 
-    <dialog class="sheet" id="cardSheet" aria-labelledby="sheetTitle">
+    <dialog class="lightbox" id="lightbox" aria-label="Screenshot">
+      <form method="dialog" class="sheet-close"><button aria-label="Close">×</button></form>
+      <img id="lightboxImage" alt="" />
+      <button type="button" class="gallery-nav prev" data-step="-1" aria-label="Previous screenshot">‹</button>
+      <button type="button" class="gallery-nav next" data-step="1" aria-label="Next screenshot">›</button>
+    </dialog>
+
+    <dialog class="sheet drawer" id="filterDrawer" aria-labelledby="drawerTitle">
+      <form method="dialog" class="sheet-close"><button aria-label="Close">×</button></form>
+      <h2 id="drawerTitle">Filter and sort</h2>
+      <div class="drawer-body" id="drawerBody"></div>
+      <div class="drawer-foot">
+        <button type="button" class="button" id="clearFilters">Clear</button>
+        <button type="button" class="button primary" id="doneFilters">Show cards</button>
+      </div>
+    </dialog>
+
+    <dialog class="sheet" id="sheet" aria-labelledby="sheetTitle">
       <form method="dialog" class="sheet-close"><button aria-label="Close">×</button></form>
       <h2 id="sheetTitle"></h2>
       <p class="note" id="sheetSub"></p>
-      <div class="card-face" id="sheetFace"></div>
-      <div id="sheetStats">
+      <div class="sheet-top">
+        <div class="sheet-face" id="sheetFace"></div>
         <div class="tiles" id="sheetTiles"></div>
-        <h3>Win rate by ascension</h3>
-        <div id="sheetAscension"></div>
-        <h3>Win rate by version</h3>
-        <div id="sheetVersions"></div>
       </div>
-      <p class="empty" id="sheetEmpty" hidden>No run in these filters finished with this card.</p>
+      <p class="sheet-caption" id="sheetCaption"></p>
+      <div id="sheetMore"></div>
     </dialog>
   </body>
 </html>

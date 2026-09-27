@@ -16,7 +16,19 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["docs/analytics/**", "tools/analytics/**", ".github/workflows/analytics.yml"]
+    paths:
+      - "docs/analytics/**"
+      - "tools/analytics/**"
+      - ".github/workflows/analytics.yml"
+      # What the library lists: a release that changes the mod redeploys the page the same day
+      - "Alchemist.json"
+      - "cards.csv"
+      - "AlchemistCode/**"
+      - "Alchemist/images/**"
+      - "Alchemist/localization/eng/**"
+      - "CHANGELOG.md"
+      - "workshop/targets.json"
+      - "workshop/previews/**"
 
 permissions:
   contents: read
@@ -37,7 +49,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install requests
+      - run: pip install pillow
 
       - name: Export aggregate stats
         env:

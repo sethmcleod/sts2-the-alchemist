@@ -47,6 +47,11 @@
         <PackageReference Update="GodotSharp" Version="4.7.0" />
     </ItemGroup>
 
+    <!-- The website and the docs are not part of the mod: never glob them into the build -->
+    <PropertyGroup>
+        <DefaultItemExcludes>$(DefaultItemExcludes);site/**;docs/**</DefaultItemExcludes>
+    </PropertyGroup>
+
     <ItemGroup>
         <Compile Remove="Alchemist/**"/>
         <Compile Remove="materials/**"/>

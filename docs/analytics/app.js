@@ -53,11 +53,45 @@ const ENCOUNTER_KINDS = { BOSS: 'Boss', ELITE: 'Elite', WEAK: 'Hallway', NORMAL:
 const ASCENSION_BANDS = { 0: 'A0', 1: 'A1 to A4', 5: 'A5 to A9', 10: 'A10 and up' };
 // Comparing many cards at once, a 95% test flags a few by chance, so card changes need 99%
 const LIKELY_Z = 2.58;
+// How the game draws a rarity: the frame image's rarity tint, and the title outline (StsColors)
+const RARITY_LOOK = {
+  Basic: ['common', '#4d4b40'],
+  Common: ['common', '#4d4b40'],
+  Token: ['common', '#4d4b40'],
+  Uncommon: ['uncommon', '#005c75'],
+  Rare: ['rare', '#6b4b00'],
+  Event: ['event', '#1b6131'],
+  Ancient: ['ancient', '#4d4b40'],
+};
+// The library's groups, in order. A card a partner mod unlocks goes in that mod's group
+const CARD_GROUPS = {
+  Basic: 'Starting deck',
+  Common: 'Common',
+  Uncommon: 'Uncommon',
+  Rare: 'Rare',
+  Ancient: 'Ancient',
+  Event: 'Event',
+  Token: 'Created in combat',
+  Hero: 'With The Hero Expansion',
+  'Ancients Awakened': 'With Ancients Awakened',
+};
+// The cards.csv tag of each partner mod: its name and Steam Workshop item
+const PARTNER_MODS = {
+  Hero: ['The Hero Expansion', '3749294247'],
+  'Ancients Awakened': ['Ancients Awakened', '3747492675'],
+};
+const TYPE_ORDER = ['Attack', 'Skill', 'Power'];
+const RELIC_ORDER = ['Starter', 'Common', 'Uncommon', 'Rare', 'Shop', 'Ancient', 'Event'];
+const POTION_ORDER = ['Common', 'Uncommon', 'Rare', 'Event'];
+// The mod's Event potions are the ones only Brew makes
+const POTION_RARITY = { Event: 'Brew' };
+const LIBRARY_VIEWS = ['cards', 'relics', 'powers', 'notes'];
+const LIBRARY_FILTERS = ['type', 'rar', 'cost', 'kw', 'from'];
 
 const $ = (id) => document.getElementById(id);
 
 const DEFAULTS = {
-  view: 'overview',
+  view: 'cards',
   version: 'recent',
   ascension: 'all',
   players: 'solo',
@@ -65,14 +99,19 @@ const DEFAULTS = {
   build: 'all',
   min: 10,
   q: '',
-  sort: 'vsPeers',
-  rarity: '',
-  theme: '',
+  sort: 'rarity',
+  show: 'cards',
+  type: '',
+  rar: '',
+  cost: '',
+  kw: '',
+  from: '',
+  at: '',
   a: '',
   b: '',
 };
 const state = { ...DEFAULTS };
-const VIEWS = ['overview', 'cards', 'mechanics', 'relics', 'fights', 'versions'];
+const VIEWS = ['cards', 'relics', 'powers', 'notes', 'overview', 'mechanics', 'fights', 'versions'];
 
 let S; // summary.json
 let groups; // one {version, build, ascension, pool, coop} per group index
@@ -105,21 +144,47 @@ function encounterOf(id) {
 // A tally label such as "fresh_batch_power" back to its model id
 const labelToId = (label) => prefix() + label.toUpperCase();
 
-// An image in the mod's repo, on GitHub's raw file host. Null when the export had no repo to point at
-const asset = (path) => (path && S.meta.assets?.base ? S.meta.assets.base + path : null);
+// An image the export copied next to the data (page_images.py)
+const asset = (path) => (path ? `data/${path}` : null);
 const iconOf = (id) => asset(S.icons?.[id]);
 
-// Card text in the game's loc markup: [gold] keywords, [green] upgraded numbers, [energy] icons
+// Text in the game's loc markup: [gold] keywords, [green] upgraded numbers, [blue] amounts, [energy]
+// icons. Other tags (the wobble effects) are dropped
 function cardText(markup) {
   const energy = asset(S.meta.assets?.energy);
   let color = null;
-  return markup.split(/\[(\/?(?:gold|green)|energy)\]/).map((part, i) => {
+  return markup.split(/\[(\/?(?:gold|green|blue|red|purple|pink|orange|aqua)|energy)\]/).map((part, i) => {
     if (i % 2 === 0) return color && part ? el('span', { class: `t-${color}` }, part) : part;
     if (part === 'energy') return energy ? image(energy, 'energy', 'Energy') : 'Energy';
     color = part.startsWith('/') ? null : part;
     return null;
-  });
+  }).map((part) => (typeof part === 'string' ? part.replace(/\[\/?\w+\]/g, '') : part));
 }
+
+const plainText = (markup) => (markup ?? '').replaceAll('[energy]', 'Energy').replace(/\[\/?\w+\]/g, '');
+const steamItem = (id) => `https://steamcommunity.com/sharedfiles/filedetails/?id=${id}`;
+
+// A released mod version as a link to its patch notes on this page
+function versionLink(version, text = version) {
+  if (!S.meta.releases?.[version]) return text;
+  return el(
+    'a',
+    {
+      class: 'version',
+      href: `#notes?at=${version}`,
+      onclick: (e) => {
+        e.preventDefault();
+        document.querySelectorAll('dialog[open]').forEach((dialog) => dialog.close());
+        update({ view: 'notes', at: version });
+      },
+    },
+    text,
+  );
+}
+
+// Its GitHub release, the beta release when there is one
+const releaseUrl = (version) =>
+  S.meta.releases?.[version] && S.meta.repo && `https://github.com/${S.meta.repo}/releases/tag/${S.meta.releases[version]}`;
 
 function minutes(value) {
   if (value == null) return '–';
@@ -230,12 +295,37 @@ function describeFilters(runs) {
     starter: ', with the starting pool',
   }[state.pool];
   const build = state.build === 'all' ? '' : `, on game build ${state.build}`;
-  const summary = $('summary');
-  summary.replaceChildren(
-    'Showing ',
+  const library = LIBRARY_VIEWS.includes(state.view);
+  $('summary').replaceChildren(
+    library ? 'Stats: ' : 'Showing ',
     el('strong', {}, `${num(runs)} ${players}runs`),
-    ` from ${versionPhrase(state.version)}, ${ascension}${pool}${build}.`,
+    library ? ' on ' : ' from ',
+    ...versionNodes(state.version),
+    `, ${ascension}${pool}${build}. `,
+    library
+      ? el(
+          'button',
+          { type: 'button', class: 'link', 'aria-expanded': String(!$('filters').hidden), onclick: toggleFilters },
+          $('filters').hidden ? 'Change' : 'Hide',
+        )
+      : '',
   );
+}
+
+// On the library tabs the stats filters fold away behind the summary line
+function toggleFilters() {
+  filtersOpen = $('filters').hidden;
+  $('filters').hidden = !filtersOpen;
+  describeFilters(sum(T.totals, selected()).runs);
+}
+
+function versionNodes(choice) {
+  if (choice === 'all') return ['every version'];
+  const latest = S.meta.versions.at(-1);
+  const from = choice === 'recent' ? recentStart : choice.replace(/^>=/, '');
+  return from !== latest && (choice === 'recent' || choice.startsWith('>='))
+    ? [versionLink(from), ' to ', versionLink(latest)]
+    : [versionLink(from)];
 }
 
 function fillFilters() {
@@ -276,6 +366,11 @@ function syncControls() {
   $('fMin').value = String(state.min);
   $('cardSearch').value = state.q;
   $('cardSort').value = state.sort;
+  $('libType').value = state.type;
+  $('libRarity').value = state.rar;
+  $('libCost').value = state.cost;
+  $('libKeyword').value = state.kw;
+  $('libSource').value = state.from;
   const newest = [...S.meta.versions].reverse();
   $('compareB').value = state.b || newest[0];
   $('compareA').value = state.a || newest[1] || newest[0];
@@ -417,7 +512,7 @@ function renderOverview(on) {
     .sort((a, b) => compareVersions(b[0], a[0]));
   barList(
     $('byVersion'),
-    byVersion.map(([version, g]) => rateItem(version, g.wins, g.runs)),
+    byVersion.map(([version, g]) => rateItem(versionLink(version), g.wins, g.runs)),
     { max: 1, limit: 8, labelWidth: '11rem' },
   );
 
@@ -462,12 +557,13 @@ function cardRows(on) {
       unplayed: rate(c.held_never_played, c.held_with_plays),
     });
   }
-  // Long runs finish with more cards, so a card is measured against its rarity's typical card
+  // Long runs finish with more cards, so a card is measured against the cards of its own rarity:
+  // its place among them by win rate, and the middle one's win rate
   const peers = {};
   for (const rarity of POOL_RARITIES) {
-    peers[rarity] = median(
-      rows.filter((r) => r.rarity === rarity && r.held >= state.min).map((r) => r.winrate),
-    );
+    const ranked = rows.filter((r) => r.rarity === rarity && r.held >= state.min).sort((a, b) => b.winrate - a.winrate);
+    ranked.forEach((r, i) => Object.assign(r, { rank: i + 1, ranked: ranked.length }));
+    peers[rarity] = median(ranked.map((r) => r.winrate));
   }
   for (const r of rows) {
     r.peer = peers[r.rarity] ?? null;
@@ -475,6 +571,14 @@ function cardRows(on) {
   }
   return { rows, overall: rate(t.wins, t.runs) };
 }
+
+const ordinal = (n) => {
+  const tens = n % 100;
+  return `${n}${tens >= 11 && tens <= 13 ? 'th' : { 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] ?? 'th'}`;
+};
+// "3rd of 20 Commons", coloured by the third of its rarity it falls in
+const rankText = (r) => `${ordinal(r.rank)} of ${r.ranked} ${r.rarity}s`;
+const rankClass = (r) => (r.rank <= r.ranked / 3 ? 'up' : r.rank > (2 * r.ranked) / 3 ? 'down' : '');
 
 const inPool = (r) => POOL_RARITIES.includes(r.rarity);
 
@@ -487,108 +591,231 @@ function cardTip(r) {
   ];
 }
 
-async function renderCards(on) {
-  CARDS ??= table((await load('cards.json')).cards);
-  const { rows, overall } = cardRows(on);
-  const measured = rows.filter((r) => inPool(r) && r.held >= state.min);
+// ---------- card library ----------
 
+const baseCost = (cost) => (cost ?? '').split(' ')[0];
+
+// A Mix card's kind, the label its tally counters use: ALCHEMIST-BURSTING_MIX -> "bursting"
+const mixKind = (id) =>
+  cardGroup(S.card_info[id]) === 'Token' && id.endsWith('_MIX') ? id.slice(prefix().length, -4).toLowerCase() : null;
+
+// How often a run makes and plays each kind of Mix, from the tally counters
+function mixStats(on) {
+  const all = counters(on);
+  const [made, played] = [byPrefix(all, 'mixmade:'), byPrefix(all, 'mixplay:')];
   const t = sum(T.totals, on);
-  tiles($('cardTiles'), [
-    {
-      label: 'Final deck',
-      value: `${fixed(rate(t.deck_size, t.runs), 0)} cards`,
-      note: `${fixed(rate(t.win_deck_size, t.wins), 0)} in a winning run`,
-    },
-    { label: 'Card choices', value: fixed(rate(t.reward_screens, t.runs), 0), note: 'per run, rewards and events' },
-    { label: 'Skipped', value: pct(rate(t.reward_skips, t.reward_screens)), note: 'of card choices' },
-    {
-      label: 'Upgrades',
-      value: fixed(rate(sum(CARDS, on).upgraded, t.runs), 1),
-      note: 'per run, at rest sites',
-    },
-  ]);
+  const total = totalCount(made);
+  return (kind) => {
+    const n = made.get(kind)?.count || 0;
+    return n ? { perRun: rate(n, t.runs_with_tally), played: rate(played.get(kind)?.count || 0, n), share: rate(n, total) } : null;
+  };
+}
+const cardGroup = (info) => info.tags.find((tag) => PARTNER_MODS[tag]) ?? info.rarity;
+const GROUP_ORDER = Object.keys(CARD_GROUPS);
 
-  const standout = (r) =>
-    rateItem(r.name, r.held_wins, r.held, {
-      note: r.rarity,
-      textNote: points(r.vsPeers),
-      ref: r.peer,
-      onSelect: () => openCard(r.id),
-    });
-  const byGap = [...measured].sort((a, b) => b.vsPeers - a.vsPeers);
-  const peerKey = { max: 1, referenceLabel: 'The typical card of the same rarity' };
-  barList($('standoutsUp'), byGap.filter((r) => r.vsPeers > 0).slice(0, 6).map(standout), peerKey);
-  barList($('standoutsDown'), byGap.filter((r) => r.vsPeers < 0).slice(-6).reverse().map(standout), peerKey);
-
-  const rarityChoice = state.rarity;
-  $('rarityChips').replaceChildren(
-    ...['', ...POOL_RARITIES].map((rarity) =>
-      el(
-        'button',
-        {
-          type: 'button',
-          class: 'chip',
-          'aria-pressed': String(rarityChoice === rarity),
-          onclick: () => update({ rarity }),
-        },
-        rarity || 'All rarities',
-      ),
-    ),
+// The card as the game draws it: the art under the frame image, then the cost, title, type and text
+function cardFace(id, { eager = false } = {}) {
+  const info = S.card_info[id];
+  const [tint, outline] = RARITY_LOOK[info.rarity] ?? RARITY_LOOK.Common;
+  const ancient = info.rarity === 'Ancient';
+  const art = asset(info.art);
+  const cost = baseCost(info.cost);
+  return el(
+    'div',
+    { class: ancient ? 'face ancient' : 'face', 'data-id': id, '--outline': outline },
+    art && el('img', { class: 'face-art', src: art, alt: '', loading: eager ? null : 'lazy', decoding: 'async' }),
+    ancient && el('img', { class: 'face-layer glow', src: 'img/frames/ancient_border.webp', alt: '' }),
+    el('img', { class: 'face-layer', src: `img/frames/${(info.type ?? 'Skill').toLowerCase()}_${tint}.webp`, alt: '' }),
+    el('span', { class: 'face-cost' }, el('span', { 'data-text': cost }, cost)),
+    el('span', { class: 'face-title' }, el('span', { 'data-text': info.name }, info.name)),
+    el('span', { class: 'face-type' }, info.type),
+    el('span', { class: 'face-text' }, el('span', {}, cardText(info.text ?? ''))),
   );
-  const cardMedian = median(measured.map((r) => r.winrate));
+}
+
+// The game shrinks a card's title and text until they fit (NCard: 26 and 21 units, down to 12). A
+// size is in card units, so one fit holds at every card width, and it is kept per card
+const fits = new Map();
+
+async function fitFaces(host) {
+  await Promise.all([document.fonts.load('21px Kreon'), document.fonts.load('bold 21px Kreon')]).catch(() => {});
+  const faces = [...host.querySelectorAll('.face')].filter((face) => face.clientWidth > 0);
+  const parts = [
+    ['text', '--fs', 21, (box, inner) => inner.offsetHeight > box.clientHeight + 1],
+    ['title', '--ts', 26, (box, inner) => inner.offsetWidth > box.clientWidth + 1],
+  ];
+  for (const [part, prop, max, overflows] of parts) {
+    let todo = [];
+    for (const face of faces) {
+      const box = face.querySelector(`.face-${part}`);
+      const key = `${face.dataset.id}:${part}`;
+      if (fits.has(key)) box.style.setProperty(prop, fits.get(key));
+      else todo.push({ key, box, inner: box.firstElementChild });
+    }
+    // One style write and one layout read per size, for every card at once
+    for (let size = max; todo.length; size--) {
+      todo.forEach((t) => t.box.style.setProperty(prop, size));
+      const over = size > 12 ? todo.filter((t) => overflows(t.box, t.inner)) : [];
+      for (const t of todo) if (!over.includes(t)) fits.set(t.key, size);
+      todo = over;
+    }
+  }
+}
+
+function fillLibraryControls() {
+  const keywords = [...new Set(Object.values(S.card_info).flatMap((c) => c.keywords ?? []))].sort();
+  $('libKeyword').replaceChildren(
+    new Option('Any', ''),
+    el('optgroup', { label: 'Theme' }, S.meta.themes.map((theme) => new Option(theme, `theme:${theme}`))),
+    el('optgroup', { label: 'Keyword' }, keywords.map((word) => new Option(word, `kw:${word}`))),
+  );
+  $('libSource').replaceChildren(
+    new Option('Any', ''),
+    new Option('Starting deck', 'starter'),
+    new Option('Card rewards', 'pool'),
+    new Option('Created in combat', 'created'),
+    new Option('Co-op only', 'coop'),
+    ...Object.entries(PARTNER_MODS).map(([tag, [name]]) => new Option(`With ${name}`, tag)),
+  );
+}
+
+function libraryMatch(info) {
   const query = state.q.toLowerCase();
-  const matches = (r) => (!rarityChoice || r.rarity === rarityChoice) && (!query || r.name.toLowerCase().includes(query));
-  scatter(
-    $('cardScatter'),
-    measured
-      .filter((r) => r.offered > 0)
-      .map((r) => ({
-        x: r.pickrate,
-        y: r.winrate,
-        r: Math.max(4, Math.min(9, 3 + Math.sqrt(r.held) / 3)),
-        fill: RARITY_FILL[r.rarity],
-        label: r.name,
-        weight: r.held,
-        dim: !matches(r),
-        tip: cardTip(r),
-        id: r.id,
-      })),
-    {
-      xLabel: 'Pick rate when offered',
-      reference: cardMedian,
-      labelCount: $('cardScatter').clientWidth < 520 ? 10 : 36,
-      onSelect: (p) => openCard(p.id),
-      ariaLabel: 'Pick rate against win rate for each card',
-    },
+  const cost = baseCost(info.cost);
+  const group = cardGroup(info);
+  const [kind, word] = state.kw.split(':');
+  return (
+    (!state.type || info.type === state.type) &&
+    (!state.rar || info.rarity === state.rar) &&
+    (!state.cost || (state.cost === '3' ? Number(cost) >= 3 : cost === state.cost)) &&
+    (!state.kw || (kind === 'theme' ? info.themes : info.keywords ?? []).includes(word)) &&
+    (!state.from ||
+      (state.from === 'starter' && group === 'Basic') ||
+      (state.from === 'pool' && POOL_RARITIES.includes(group)) ||
+      (state.from === 'created' && group === 'Token') ||
+      (state.from === 'coop' && info.tags.includes('Multiplayer')) ||
+      state.from === group) &&
+    (!query || `${info.name} ${plainText(info.text)}`.toLowerCase().includes(query))
   );
-  $('scatterLegend').replaceChildren(
-    ...POOL_RARITIES.map((rarity) => el('span', {}, el('i', { class: 'dot', '--dot': RARITY_FILL[rarity] }), rarity)),
-    el('span', { class: 'ref-key' }, `Typical card: ${pct(cardMedian)}`),
-  );
+}
 
-  const themeChoice = state.theme;
-  $('themeChips').replaceChildren(
-    ...['', ...S.meta.themes].map((theme) =>
-      el(
-        'button',
-        {
-          type: 'button',
-          class: 'chip',
-          'aria-pressed': String(themeChoice === theme),
-          onclick: () => update({ theme }),
-        },
-        theme || 'All themes',
-      ),
-    ),
+const costRank = (info) => (baseCost(info.cost) === 'X' ? 99 : Number(baseCost(info.cost)));
+const CARD_ORDERS = {
+  rarity: (a, b) => GROUP_ORDER.indexOf(cardGroup(a.info)) - GROUP_ORDER.indexOf(cardGroup(b.info)),
+  name: () => 0,
+  cost: (a, b) => costRank(a.info) - costRank(b.info),
+  type: (a, b) => TYPE_ORDER.indexOf(a.info.type) - TYPE_ORDER.indexOf(b.info.type),
+};
+
+// A stat sort puts the highest first and the cards with too few runs last
+function sortCards(cards) {
+  const order = CARD_ORDERS[state.sort];
+  const stat = (c) => (c.r && c.r.held >= state.min ? c.r[state.sort] ?? null : null);
+  const byName = (a, b) => a.info.name.localeCompare(b.info.name);
+  return [...cards].sort((a, b) => {
+    if (order) return order(a, b) || byName(a, b);
+    const [va, vb] = [stat(a), stat(b)];
+    if (va == null || vb == null) return (va == null) - (vb == null) || byName(a, b);
+    return vb - va || byName(a, b);
+  });
+}
+
+async function renderLibrary(on) {
+  CARDS ??= table((await load('cards.json')).cards);
+  const { rows } = cardRows(on);
+  const stats = new Map(rows.map((r) => [r.id, r]));
+  const mixOf = mixStats(on);
+  const all = Object.entries(S.card_info).map(([id, info]) => ({
+    id,
+    info,
+    r: stats.get(id),
+    mix: mixKind(id) && mixOf(mixKind(id)),
+  }));
+  const shown = sortCards(all.filter((c) => libraryMatch(c.info)));
+  $('libCount').textContent =
+    shown.length === all.length ? `${all.length} cards` : `${shown.length} of ${all.length} cards`;
+  const active = LIBRARY_FILTERS.filter((key) => state[key]).length;
+  Object.assign($('filterCount'), { textContent: active, hidden: !active });
+  $('doneFilters').textContent = `Show ${shown.length} ${shown.length === 1 ? 'card' : 'cards'}`;
+  for (const button of $('showAs').children) button.setAttribute('aria-pressed', String(button.dataset.show === state.show));
+  $('cardGrid').hidden = state.show !== 'cards';
+  $('cardTableView').hidden = state.show !== 'table';
+  $('cardCharts').hidden = state.show !== 'charts';
+  if (state.show === 'cards') renderCardGrid(shown);
+  if (state.show === 'table') renderCardTable(shown);
+  if (state.show === 'charts') renderCardCharts(on, rows, new Set(shown.map((c) => c.id)));
+}
+
+function renderCardGrid(cards) {
+  const nodes = [];
+  let group;
+  for (const c of cards) {
+    if (state.sort === 'rarity' && cardGroup(c.info) !== group) {
+      group = cardGroup(c.info);
+      nodes.push(groupHeading(group, cards.filter((d) => cardGroup(d.info) === group).length));
+    }
+    nodes.push(cardTile(c));
+  }
+  $('cardGrid').replaceChildren(...(nodes.length ? nodes : [emptyNote('No cards match these filters.')]));
+  fitFaces($('cardGrid'));
+}
+
+function groupHeading(group, count) {
+  const partner = PARTNER_MODS[group];
+  return el(
+    'div',
+    { class: 'group-head' },
+    el('h2', {}, CARD_GROUPS[group] ?? group, el('small', {}, `${count} ${count === 1 ? 'card' : 'cards'}`)),
+    partner && el('p', {}, 'Only in runs with ', el('a', { href: steamItem(partner[1]) }, partner[0]), ' installed as well.'),
+    group === 'Token' && el('p', {}, 'Made by other cards, relics and potions during a fight, never offered as a reward.'),
   );
-  const listed = rows.filter(
-    (r) =>
-      r.held >= state.min &&
-      r.rarity !== 'Token' &&
-      (!themeChoice || r.themes.includes(themeChoice)) &&
-      (!query || r.name.toLowerCase().includes(query)),
+}
+
+// Enter and Space open a tile the way a click does
+const pressable = (open) => ({
+  role: 'button',
+  tabindex: '0',
+  onclick: open,
+  onkeydown: (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+    open();
+  },
+});
+
+function cardTile({ id, info, r, mix }) {
+  const [meta, tip] = cardMeta(info, r, mix);
+  return el(
+    'div',
+    { class: 'card-tile', 'aria-label': info.name, ...pressable(() => openCard(id)) },
+    cardFace(id),
+    el('p', { class: 'card-meta', title: tip }, ...meta),
   );
-  const sortDir = state.sort === 'name' ? 1 : -1;
+}
+
+// The line under a card, and a sentence that says what it means
+function cardMeta(info, r, mix) {
+  const coop = info.tags.includes('Multiplayer') && el('span', { class: 'pill' }, 'Co-op');
+  if (mix) {
+    return [
+      [`Made ${fixed(mix.perRun, 1)} a run`, ' · ', `${pct(mix.played)} played`],
+      `Runs made ${fixed(mix.perRun, 1)} ${info.name}es on average and played ${pct(mix.played)} of them.`,
+    ];
+  }
+  if (!r || r.held < state.min) {
+    return [[coop, el('span', { class: 'muted' }, cardGroup(info) === 'Token' ? 'Made in combat' : 'Too few runs yet')]];
+  }
+  const won = `Runs that finished with ${info.name} won ${pct(r.winrate)}`;
+  if (!r.rank) return [[coop, `Wins ${pct(r.winrate)}`], `${won}.`];
+  return [
+    [coop, `Wins ${pct(r.winrate)} · `, el('span', { class: `rank ${rankClass(r)}` }, rankText(r))],
+    `${won}, which ranks ${ordinal(r.rank)} of the ${r.ranked} ${r.rarity} cards. The middle one wins ${pct(r.peer)}.`,
+  ];
+}
+
+function renderCardTable(cards) {
+  const listed = cards.map((c) => c.r).filter((r) => r && r.held >= state.min);
+  const column = ['name', 'winrate', 'pickrate', 'playsPerRun', 'held'].includes(state.sort);
   dataTable($('cardTable'), {
     columns: [
       {
@@ -604,7 +831,7 @@ async function renderCards(on) {
         key: 'winrate',
         label: 'Win rate',
         num: true,
-        render: (r) => [pct(r.winrate), r.vsPeers != null && el('small', {}, `${points(r.vsPeers)} vs peers`)],
+        render: (r) => [pct(r.winrate), r.rank && el('small', {}, rankText(r))],
       },
       {
         key: 'range',
@@ -631,14 +858,79 @@ async function renderCards(on) {
       { key: 'held', label: 'Runs', num: true, wide: true, render: (r) => num(r.held) },
     ],
     rows: listed,
-    sort: { key: state.sort, dir: sortDir },
+    sort: column ? { key: state.sort, dir: state.sort === 'name' ? 1 : -1 } : null,
     onSort: ({ key }) => update({ sort: key }),
     onRow: (r) => openCard(r.id),
     limit: 25,
-    empty: 'No cards match.',
+    empty: 'No card in these filters has enough runs yet.',
   });
+}
 
-  const tracked = rows.filter((r) => r.held_with_plays >= state.min && r.rarity !== 'Token');
+// The card stats that need a chart, over the cards the filters above keep
+function renderCardCharts(on, rows, kept) {
+  const inFilter = rows.filter((r) => kept.has(r.id));
+  const measured = inFilter.filter((r) => inPool(r) && r.held >= state.min);
+  const overall = rate(sum(T.totals, on).wins, sum(T.totals, on).runs);
+
+  const t = sum(T.totals, on);
+  tiles($('cardTiles'), [
+    {
+      label: 'Final deck',
+      value: `${fixed(rate(t.deck_size, t.runs), 0)} cards`,
+      note: `${fixed(rate(t.win_deck_size, t.wins), 0)} in a winning run`,
+    },
+    { label: 'Card choices', value: fixed(rate(t.reward_screens, t.runs), 0), note: 'per run, rewards and events' },
+    { label: 'Skipped', value: pct(rate(t.reward_skips, t.reward_screens)), note: 'of card choices' },
+    {
+      label: 'Upgrades',
+      value: fixed(rate(sum(CARDS, on).upgraded, t.runs), 1),
+      note: 'per run, at rest sites',
+    },
+  ]);
+
+  const standout = (r) =>
+    rateItem(r.name, r.held_wins, r.held, {
+      note: r.rarity,
+      textNote: `${ordinal(r.rank)} of ${r.ranked}`,
+      ref: r.peer,
+      onSelect: () => openCard(r.id),
+    });
+  const byGap = [...measured].sort((a, b) => b.vsPeers - a.vsPeers);
+  const peerKey = { max: 1, referenceLabel: 'The middle card of the same rarity' };
+  barList($('standoutsUp'), byGap.filter((r) => r.vsPeers > 0).slice(0, 6).map(standout), peerKey);
+  barList($('standoutsDown'), byGap.filter((r) => r.vsPeers < 0).slice(-6).reverse().map(standout), peerKey);
+
+  const everyCard = rows.filter((r) => inPool(r) && r.held >= state.min);
+  const cardMedian = median(everyCard.map((r) => r.winrate));
+  scatter(
+    $('cardScatter'),
+    everyCard
+      .filter((r) => r.offered > 0)
+      .map((r) => ({
+        x: r.pickrate,
+        y: r.winrate,
+        r: Math.max(4, Math.min(9, 3 + Math.sqrt(r.held) / 3)),
+        fill: RARITY_FILL[r.rarity],
+        label: r.name,
+        weight: r.held,
+        dim: !kept.has(r.id),
+        tip: cardTip(r),
+        id: r.id,
+      })),
+    {
+      xLabel: 'Pick rate when offered',
+      reference: cardMedian,
+      labelCount: $('cardScatter').clientWidth < 520 ? 10 : 36,
+      onSelect: (p) => openCard(p.id),
+      ariaLabel: 'Pick rate against win rate for each card',
+    },
+  );
+  $('scatterLegend').replaceChildren(
+    ...POOL_RARITIES.map((rarity) => el('span', {}, el('i', { class: 'dot', '--dot': RARITY_FILL[rarity] }), rarity)),
+    el('span', { class: 'ref-key' }, `Middle card: ${pct(cardMedian)}`),
+  );
+
+  const tracked = inFilter.filter((r) => r.held_with_plays >= state.min && r.rarity !== 'Token');
   const noPlays = `No runs in these filters count card plays yet. They are counted ${countedSince()}.`;
   const since = detailSince() ? ` Counted ${countedSince()}.` : '';
   $('unplayedNote').textContent = `The share of runs that finished with the card but never played it.${since}`;
@@ -674,7 +966,7 @@ async function renderCards(on) {
     { limit: 10, empty: noPlays },
   );
 
-  const early = rows.filter((r) => r.early_picks >= state.min).sort((a, b) => b.early_picks - a.early_picks);
+  const early = inFilter.filter((r) => r.early_picks >= state.min).sort((a, b) => b.early_picks - a.early_picks);
   barList(
     $('earlyPicks'),
     early.map((r) =>
@@ -686,7 +978,7 @@ async function renderCards(on) {
     { max: 1, limit: 10, reference: overall, referenceLabel: `All runs together: ${pct(overall)}` },
   );
 
-  const upgraded = rows
+  const upgraded = inFilter
     .filter((r) => r.held >= state.min && r.upgraded > 0)
     .map((r) => ({ ...r, per100: (100 * r.upgraded) / r.held }))
     .sort((a, b) => b.per100 - a.per100);
@@ -704,50 +996,99 @@ async function renderCards(on) {
   );
 }
 
-// The card's art and text, then its stats in the current filters. A card no run in the filters
-// finished with still shows what it is
-function openCard(id) {
-  const info = S.card_info[id];
-  const r = cardRows(selected()).rows.find((row) => row.id === id);
-  if (!r && !info) return;
+// ---------- detail sheet ----------
+
+// One sheet serves cards, relics, potions and powers: a face on the left, stat tiles beside it, and
+// charts or links below
+function showSheet({ title, sub, face, facts = [], caption = [], more = [] }) {
   const head = asset(S.meta.assets?.character);
-  $('sheetTitle').replaceChildren(head ? image(head, 'head') : '', info?.name ?? r.name);
-  $('sheetSub').textContent = [
-    [info?.rarity ?? r.rarity, info?.type].filter(Boolean).join(' '),
-    ...(info?.themes ?? []),
-    ...(info?.tags ?? []),
-  ].join(' · ');
-  const art = asset(info?.art);
-  $('sheetFace').hidden = !info?.text;
-  $('sheetFace').replaceChildren(
-    art ? image(art, 'card-art') : '',
-    el(
-      'div',
-      {},
-      info?.cost && el('p', { class: 'card-cost' }, cardText(`Costs ${info.cost} [energy]`)),
-      info?.text && el('p', { class: 'card-text' }, cardText(info.text)),
-      el(
-        'p',
-        { class: 'card-version' },
-        `Card text from ${S.meta.text_version}`,
-        r ? `, stats from ${versionPhrase(state.version)}.` : '.',
-      ),
-    ),
-  );
-  $('sheetStats').hidden = !r;
-  $('sheetEmpty').hidden = Boolean(r);
-  if (r) cardStats(id, r);
-  $('cardSheet').showModal();
+  $('sheetTitle').replaceChildren(head ? image(head, 'head') : '', title);
+  $('sheetSub').textContent = sub;
+  $('sheetFace').replaceChildren(face);
+  tiles($('sheetTiles'), facts);
+  $('sheetTiles').hidden = !facts.length;
+  // Parts can be nested lists or left out with false, the way el() takes its children
+  const flat = (parts) => parts.flat(Infinity).filter((part) => part != null && part !== false);
+  $('sheetCaption').replaceChildren(...flat(caption));
+  $('sheetMore').replaceChildren(...flat(more));
+  if (!$('sheet').open) $('sheet').showModal();
+  $('sheet').scrollTop = 0;
+  fitFaces($('sheetFace'));
 }
 
-function cardStats(id, r) {
-  tiles($('sheetTiles'), [
+// A heading and a win rate bar per ascension band and per version, from one item's rows
+function rateBreakdown(itemRows, counts, wins, runs, what) {
+  const mine = { rows: itemRows, counts };
+  const byBand = [...sumBy(mine, selected({ ascension: 'all' }), (row) => groups.rows[row.group].ascension)]
+    .filter(([, g]) => g[runs] > 0)
+    .sort((a, b) => a[0] - b[0]);
+  const byVersion = [...sumBy(mine, selected({ version: 'all' }), (row) => groups.rows[row.group].version)]
+    .filter(([, g]) => g[runs] > 0)
+    .sort((a, b) => compareVersions(b[0], a[0]));
+  const bands = el('div');
+  const versions = el('div');
+  barList(bands, byBand.map(([band, g]) => rateItem(ASCENSION_BANDS[band], g[wins], g[runs])), {
+    max: 1,
+    labelWidth: '9rem',
+    empty: `No run in these filters ${what}.`,
+  });
+  barList(versions, byVersion.map(([v, g]) => rateItem(versionLink(v), g[wins], g[runs])), {
+    max: 1,
+    limit: 6,
+    labelWidth: '9rem',
+    empty: `No run in these filters ${what}.`,
+  });
+  return [el('h3', {}, 'Win rate by ascension'), bands, el('h3', {}, 'Win rate by version'), versions];
+}
+
+function openCard(id) {
+  const info = S.card_info[id];
+  if (!info) return;
+  const r = cardRows(selected()).rows.find((row) => row.id === id);
+  const enough = r && r.held > 0;
+  const mix = mixKind(id) && mixStats(selected())(mixKind(id));
+  const partner = info.tags.find((tag) => PARTNER_MODS[tag]);
+  showSheet({
+    title: info.name,
+    sub: [
+      [info.rarity === 'Basic' ? 'Starter' : info.rarity, info.type].join(' '),
+      ...info.themes,
+      ...info.tags.map((tag) => (tag === 'Multiplayer' ? 'Co-op only' : PARTNER_MODS[tag]?.[0] ?? tag)),
+    ].join(' · '),
+    face: el('div', { class: 'sheet-card' }, cardFace(id, { eager: true })),
+    facts: mix ? mixFacts(mix) : enough ? cardFacts(r) : [],
+    caption: [
+      'Card text from ',
+      versionLink(S.meta.mod.version),
+      enough || mix
+        ? [', stats from ', ...versionNodes(state.version), '.']
+        : '. No run in these filters finished with it yet.',
+      partner && [' Needs ', el('a', { href: steamItem(PARTNER_MODS[partner][1]) }, PARTNER_MODS[partner][0]), '.'],
+    ],
+    more: enough
+      ? rateBreakdown(CARDS.rows.filter((row) => row.card === id), CARDS.counts, 'held_wins', 'held', 'finished with it')
+      : [],
+  });
+}
+
+function mixFacts(mix) {
+  return [
+    { label: 'Made per run', value: fixed(mix.perRun, 1), note: 'by cards, relics, potions and powers' },
+    { label: 'Played', value: pct(mix.played), note: 'of the ones made' },
+    { label: 'Share of Mixes', value: pct(mix.share), note: 'of every Mix made' },
+  ];
+}
+
+function cardFacts(r) {
+  return [
     { label: 'Win rate', value: pct(r.winrate), note: `${num(r.held)} runs, likely ${range(wilson(r.held_wins, r.held))}` },
-    {
-      label: 'vs its peers',
-      value: points(r.vsPeers),
-      note: r.peer != null ? `the typical ${r.rarity} card wins ${pct(r.peer)}` : `${r.rarity} cards are not compared`,
-    },
+    r.rank
+      ? {
+          label: `Among ${r.rarity} cards`,
+          value: `${ordinal(r.rank)} of ${r.ranked}`,
+          note: `by win rate; the middle one wins ${pct(r.peer)}`,
+        }
+      : { label: 'In final decks', value: pct(r.deckrate), note: 'of the runs in these filters' },
     {
       label: 'Pick rate',
       value: pct(r.pickrate),
@@ -770,24 +1111,7 @@ function cardStats(id, r) {
       value: pct(rate(r.held_twice_wins, r.held_twice)),
       note: r.held_twice ? `win rate over ${num(r.held_twice)} runs` : 'no run held two copies',
     },
-  ]);
-  const mine = { rows: CARDS.rows.filter((row) => row.card === id), counts: CARDS.counts };
-  const byBand = [...sumBy(mine, selected({ ascension: 'all' }), (row) => groups.rows[row.group].ascension)].sort(
-    (a, b) => a[0] - b[0],
-  );
-  barList(
-    $('sheetAscension'),
-    byBand.filter(([, g]) => g.held > 0).map(([band, g]) => rateItem(ASCENSION_BANDS[band], g.held_wins, g.held)),
-    { max: 1, labelWidth: '9rem' },
-  );
-  const byVersion = [...sumBy(mine, selected({ version: 'all' }), (row) => groups.rows[row.group].version)]
-    .filter(([, g]) => g.held > 0)
-    .sort((a, b) => compareVersions(b[0], a[0]));
-  barList(
-    $('sheetVersions'),
-    byVersion.map(([version, g]) => rateItem(version, g.held_wins, g.held)),
-    { max: 1, limit: 6, labelWidth: '9rem' },
-  );
+  ];
 }
 
 // ---------- mechanics ----------
@@ -1151,12 +1475,37 @@ async function renderRelics(on) {
   }
   const t = sum(T.totals, on);
   const relics = [...sumBy(RELICS, on, (r) => r.relic)].map(([id, g]) => ({ id, ...g, name: nameOf(id) }));
-  const typical = median(relics.filter((r) => r.held >= state.min).map((r) => r.held_wins / r.held));
+  const middle = median(relics.filter((r) => r.held >= state.min).map((r) => r.held_wins / r.held));
   const relicItem = (r) =>
     rateItem(r.name, r.held_wins, r.held, { note: `in ${pct(rate(r.held, t.runs))} of runs`, icon: iconOf(r.id) });
-  const reference = { max: 1, reference: typical, referenceLabel: `Typical relic: ${pct(typical)}`, labelWidth: '13rem' };
-  const mine = relics.filter((r) => r.id.startsWith(prefix()) && r.held >= state.min).sort((a, b) => b.held - a.held);
-  barList($('modRelics'), mine.map(relicItem), reference);
+  const reference = { max: 1, reference: middle, referenceLabel: `Middle relic: ${pct(middle)}`, labelWidth: '13rem' };
+
+  const heldById = new Map(relics.map((r) => [r.id, r]));
+  $('relicGrid').replaceChildren(
+    ...byRarity(S.relic_info, RELIC_ORDER).map(([id, info]) => {
+      const r = heldById.get(id);
+      const meta =
+        r && r.held >= state.min
+          ? [`Won ${pct(r.held_wins / r.held)} · in ${pct(rate(r.held, t.runs))} of runs`]
+          : [el('span', { class: 'muted' }, 'Too few runs yet')];
+      return itemTile('relic', id, info, meta, () => openRelic(id));
+    }),
+  );
+  const drunk = new Map(sumBy(POTIONS, on, (r) => r.potion));
+  const all = counters(on);
+  const [offers, picks] = [byPrefix(all, 'brew_offer:'), byPrefix(all, 'brew_pick:')];
+  $('potionGrid').replaceChildren(
+    ...byRarity(S.potion_info, POTION_ORDER).map(([id, info]) => {
+      const label = id.slice(prefix().length).toLowerCase();
+      const offered = offers.get(label)?.count;
+      const meta =
+        info.rarity === 'Event'
+          ? offered >= state.min && [`Picked ${pct(rate(picks.get(label)?.count || 0, offered))} at Brew`]
+          : drunk.get(id)?.drunk >= state.min && [`Drunk ${fixed((100 * drunk.get(id).drunk) / (t.runs_with_drinks || 1), 0)} times per 100 runs`];
+      return itemTile('potion', id, info, meta || [el('span', { class: 'muted' }, 'Too few runs yet')], () => openPotion(id));
+    }),
+  );
+
   const base = relics.filter((r) => !r.id.startsWith(prefix()) && r.held >= state.min).sort((a, b) => b.held - a.held);
   barList($('baseRelics'), base.map(relicItem), { ...reference, limit: 12 });
 
@@ -1186,6 +1535,200 @@ async function renderRelics(on) {
     })),
     { limit: 12, labelWidth: '11rem' },
   );
+}
+
+// ---------- relics, potions and powers ----------
+
+const byRarity = (items, order) =>
+  Object.entries(items).sort(
+    ([, a], [, b]) => order.indexOf(a.rarity) - order.indexOf(b.rarity) || a.name.localeCompare(b.name),
+  );
+
+function itemTile(kind, id, info, meta, open) {
+  const icon = asset(info.icon);
+  const rarity = kind === 'potion' ? POTION_RARITY[info.rarity] ?? info.rarity : info.rarity;
+  return el(
+    'div',
+    { class: 'item-tile', 'aria-label': info.name, ...pressable(open) },
+    icon ? image(icon, 'item-icon') : el('span', { class: 'item-icon' }),
+    el(
+      'div',
+      { class: 'item-body' },
+      el('h3', {}, info.name, rarity && el('small', {}, rarity)),
+      el('p', { class: 'item-text' }, cardText(info.text ?? '')),
+      meta && el('p', { class: 'item-meta' }, ...meta),
+    ),
+  );
+}
+
+function itemFace(info) {
+  const icon = asset(info.icon);
+  return el(
+    'div',
+    { class: 'item-face' },
+    icon && image(icon, 'item-face-icon'),
+    el('p', { class: 'item-face-text' }, cardText(info.text ?? '')),
+    info.flavor && el('p', { class: 'flavor' }, info.flavor),
+  );
+}
+
+function openRelic(id) {
+  const info = S.relic_info[id];
+  const on = selected();
+  const g = sumBy(RELICS, on, (r) => r.relic).get(id);
+  const t = sum(T.totals, on);
+  const held = g?.held > 0;
+  showSheet({
+    title: info.name,
+    sub: `${info.rarity} relic`,
+    face: itemFace(info),
+    facts: held
+      ? [
+          { label: 'Win rate', value: pct(g.held_wins / g.held), note: `${num(g.held)} runs, likely ${range(wilson(g.held_wins, g.held))}` },
+          { label: 'In runs', value: pct(rate(g.held, t.runs)), note: 'of runs ended with it' },
+          info.rarity !== 'Starter' && {
+            label: 'Bought',
+            value: num(g.bought),
+            note: g.bought === 1 ? 'time from the Merchant' : 'times from the Merchant',
+          },
+        ].filter(Boolean)
+      : [],
+    caption: [
+      'Text from ',
+      versionLink(S.meta.mod.version),
+      held ? [', stats from ', ...versionNodes(state.version), '.'] : '. No run in these filters ended with it yet.',
+    ],
+    more: held ? rateBreakdown(RELICS.rows.filter((row) => row.relic === id), RELICS.counts, 'held_wins', 'held', 'ended with it') : [],
+  });
+}
+
+function openPotion(id) {
+  const info = S.potion_info[id];
+  const on = selected();
+  const g = sumBy(POTIONS, on, (r) => r.potion).get(id) ?? { drunk: 0, bought: 0, discarded: 0 };
+  const t = sum(T.totals, on);
+  const label = id.slice(prefix().length).toLowerCase();
+  const all = counters(on);
+  const offered = all.get(`brew_offer:${label}`)?.count || 0;
+  const brew = info.rarity === 'Event';
+  showSheet({
+    title: info.name,
+    sub: brew ? 'Brew potion, made only at a rest site' : `${info.rarity} potion`,
+    face: itemFace(info),
+    facts: [
+      brew && {
+        label: 'Picked at Brew',
+        value: pct(rate(all.get(`brew_pick:${label}`)?.count || 0, offered)),
+        note: offered ? `of ${num(offered)} times it was offered` : 'not offered yet',
+      },
+      { label: 'Drunk', value: fixed((100 * g.drunk) / (t.runs_with_drinks || 1), 0), note: 'times per 100 runs' },
+      { label: 'Bought', value: num(g.bought), note: 'from the Merchant' },
+      { label: 'Thrown away', value: num(g.discarded), note: 'to make room' },
+    ].filter(Boolean),
+    caption: ['Text from ', versionLink(S.meta.mod.version), ', stats from ', ...versionNodes(state.version), '.'],
+  });
+}
+
+// A power's source card has the power's id without "_POWER"
+const powerCard = (id) => S.card_info[id.replace(/_POWER$/, '')] && id.replace(/_POWER$/, '');
+
+function renderPowers(on) {
+  const all = counters(on);
+  const [antitoxin, mixes] = [byPrefix(all, 'atxsrc:'), byPrefix(all, 'mixsrc:')];
+  $('powerGrid').replaceChildren(
+    ...byRarity(S.power_info, []).map(([id, info]) => {
+      const label = id.slice(prefix().length).toLowerCase();
+      const card = powerCard(id);
+      const meta = [
+        card && `From ${S.card_info[card].name}`,
+        antitoxin.get(label) && `gave ${num(antitoxin.get(label).count)} Antitoxin`,
+        mixes.get(label) && `made ${num(mixes.get(label).count)} Mixes`,
+      ].filter(Boolean);
+      const line = meta.join(', ');
+      return itemTile('power', id, info, line && [line[0].toUpperCase() + line.slice(1)], () => openPower(id));
+    }),
+  );
+}
+
+function openPower(id) {
+  const info = S.power_info[id];
+  const all = counters(selected());
+  const label = id.slice(prefix().length).toLowerCase();
+  const card = powerCard(id);
+  const [antitoxin, mixes] = [all.get(`atxsrc:${label}`)?.count, all.get(`mixsrc:${label}`)?.count];
+  showSheet({
+    title: info.name,
+    sub: 'Power',
+    face: itemFace(info),
+    facts: [
+      antitoxin && { label: 'Antitoxin gained', value: num(antitoxin), note: 'in the filtered runs' },
+      mixes && { label: 'Mixes made', value: num(mixes), note: 'in the filtered runs' },
+    ].filter(Boolean),
+    caption: [
+      card && ['Comes from the ', el('button', { type: 'button', class: 'link', onclick: () => openCard(card) }, S.card_info[card].name), ' card. '],
+      'Text from ',
+      versionLink(S.meta.mod.version),
+      '.',
+    ],
+  });
+}
+
+// ---------- patch notes ----------
+
+let NOTES;
+const NOTES_SHOWN = 12;
+
+async function renderNotes() {
+  NOTES ??= (await load('notes.json')).versions;
+  const target = NOTES.findIndex((v) => v.version === state.at);
+  const shown = Math.max(NOTES_SHOWN, target + 1);
+  const more = el('button', { type: 'button', class: 'show-more' }, `Show all ${NOTES.length} versions`);
+  more.addEventListener('click', () => {
+    $('notes').querySelectorAll('.note-entry[hidden]').forEach((entry) => (entry.hidden = false));
+    more.remove();
+  });
+  $('notes').replaceChildren(
+    ...NOTES.map((v, i) => Object.assign(noteEntry(v), { hidden: i >= shown })),
+    NOTES.length > shown ? more : '',
+  );
+  if (target >= 0) {
+    $(`note-${state.at}`).scrollIntoView({ block: 'start' });
+    state.at = '';
+    writeUrl();
+  }
+}
+
+function noteEntry(v) {
+  const release = releaseUrl(v.version);
+  const date = v.date && new Date(`${v.date}T00:00:00Z`);
+  return el(
+    'article',
+    { class: 'note-entry card', id: `note-${v.version}` },
+    el(
+      'header',
+      {},
+      el('h2', {}, v.version),
+      date && el('time', { datetime: v.date }, date.toLocaleDateString('en-US', { dateStyle: 'medium', timeZone: 'UTC' })),
+      release && el('a', { href: release }, 'Release on GitHub'),
+    ),
+    v.sections.map((section) => [el('h3', {}, section.title), noteList(section.items)]),
+  );
+}
+
+const noteList = (items) =>
+  el('ul', {}, items.map((item) => el('li', {}, linkify(item.text), item.items.length ? noteList(item.items) : '')));
+
+// Changelog text with its markdown links and bare URLs as links
+function linkify(text) {
+  const parts = [];
+  const links = /\[([^\]]+)\]\((https?:[^)\s]+)\)|(https?:\/\/[^\s)]*[^\s).,])/g;
+  let last = 0;
+  for (const m of text.matchAll(links)) {
+    parts.push(text.slice(last, m.index), el('a', { href: m[2] ?? m[3] }, m[1] ?? m[3]));
+    last = m.index + m[0].length;
+  }
+  parts.push(text.slice(last));
+  return parts;
 }
 
 // ---------- fights ----------
@@ -1282,7 +1825,7 @@ async function renderVersions() {
   };
   const winZ = zScore(tA.wins, tA.runs, tB.wins, tB.runs);
   tiles($('compareTiles'), [
-    { label: `Runs in ${b}`, value: num(tB.runs), note: `${num(tA.runs)} in ${a}` },
+    { label: ['Runs in ', versionLink(b)], value: num(tB.runs), note: [`${num(tA.runs)} in `, versionLink(a)] },
     {
       label: 'Win rate',
       value: pct(rate(tB.wins, tB.runs)),
@@ -1304,7 +1847,7 @@ async function renderVersions() {
 
   // Each side needs enough runs for a rate to mean something, so the floor here is at least 20.
   // A version that is harder overall drags every card down with it, so each card's change is
-  // measured against the change of the typical card of its rarity
+  // measured against the change of the middle card of its rarity
   const enough = Math.max(state.min, 20);
   const cardsA = sumBy(CARDS, onA, (r) => r.card);
   const cardsB = sumBy(CARDS, onB, (r) => r.card);
@@ -1364,32 +1907,108 @@ async function renderVersions() {
 
 // ---------- page ----------
 
+// The mod's own pitch, where to get it, and what changed last
+function renderHeader() {
+  const { meta } = S;
+  $('lede').replaceChildren(
+    meta.mod?.description ?? '',
+    el(
+      'span',
+      { class: 'lede-stats' },
+      `Stats from ${num(meta.total_runs)} runs shared by ${num(meta.players)} players, updated every day.`,
+    ),
+  );
+  const item = (branch) => meta.workshop?.find((w) => w.branch === branch);
+  const [main, beta] = [item('main'), item('beta')];
+  const links = [
+    beta && el('a', { class: 'button primary', href: steamItem(beta.item) }, 'Steam Workshop (beta branch)'),
+    main && el('a', { class: 'button', href: steamItem(main.item) }, 'Steam Workshop (public branch)'),
+    meta.repo && el('a', { class: 'button', href: `https://github.com/${meta.repo}` }, 'GitHub'),
+    meta.mod?.version &&
+      el('span', { class: 'latest' }, 'Latest: ', versionLink(meta.mod.version, `${meta.mod.version} patch notes`)),
+  ];
+  $('actions').replaceChildren(...links.filter(Boolean));
+  renderGallery(meta.previews ?? []);
+}
+
+// The Steam Workshop previews: one at a time in the header, full size in a lightbox
+function renderGallery(previews) {
+  if (!previews.length) return;
+  const track = $('galleryTrack');
+  track.replaceChildren(
+    ...previews.map((shot, i) =>
+      el(
+        'button',
+        { type: 'button', class: 'shot', 'aria-label': `Open screenshot ${i + 1} of ${previews.length}`, onclick: () => openShot(i) },
+        el('img', { src: asset(shot.image), alt: '', loading: i ? 'lazy' : null, decoding: 'async' }),
+      ),
+    ),
+  );
+  const current = () => Math.round(track.scrollLeft / track.clientWidth);
+  const count = () => ($('galleryCount').textContent = `${current() + 1} / ${previews.length}`);
+  track.addEventListener('scroll', count, { passive: true });
+  $('gallery').addEventListener('click', (e) => {
+    const step = Number(e.target.closest('[data-step]')?.dataset.step);
+    if (!step) return;
+    const next = (current() + step + previews.length) % previews.length;
+    track.scrollTo({ left: next * track.clientWidth, behavior: 'smooth' });
+  });
+
+  let open = 0;
+  const show = (i) => {
+    open = (i + previews.length) % previews.length;
+    Object.assign($('lightboxImage'), { src: asset(previews[open].full), alt: `Screenshot ${open + 1} of ${previews.length}` });
+  };
+  const openShot = (i) => {
+    show(i);
+    $('lightbox').showModal();
+  };
+  $('lightbox').addEventListener('click', (e) => {
+    const step = Number(e.target.closest('[data-step]')?.dataset.step);
+    if (step) show(open + step);
+    else if (e.target === $('lightbox')) $('lightbox').close();
+  });
+  $('lightbox').addEventListener('keydown', (e) => {
+    const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+    if (step) show(open + step);
+  });
+  $('gallery').hidden = false;
+  count();
+}
+
 const RENDERERS = {
-  overview: renderOverview,
-  cards: renderCards,
-  mechanics: renderMechanics,
+  cards: renderLibrary,
   relics: renderRelics,
+  powers: renderPowers,
+  notes: renderNotes,
+  overview: renderOverview,
+  mechanics: renderMechanics,
   fights: renderFights,
   versions: renderVersions,
 };
 
 let renderToken = 0;
 
+let filtersOpen = false;
+
 async function render() {
   const token = ++renderToken;
   writeUrl();
   const on = selected();
   const totals = sum(T.totals, on);
+  const library = LIBRARY_VIEWS.includes(state.view);
+  $('filters').hidden = library && !filtersOpen;
+  $('statsBar').hidden = state.view === 'notes';
   describeFilters(totals.runs);
   for (const view of VIEWS) {
-    const tab = document.querySelector(`[data-view="${view}"]`);
+    const tab = $('tabs').querySelector(`[data-view="${view}"]`);
     $(`view-${view}`).hidden = view !== state.view;
     tab.setAttribute('aria-selected', String(view === state.view));
     tab.tabIndex = view === state.view ? 0 : -1;
   }
   const host = $(`view-${state.view}`);
   host.style.opacity = '';
-  if (!totals.runs) {
+  if (!totals.runs && !library) {
     host.hidden = true;
     $('loadError').hidden = false;
     $('loadError').textContent = 'No runs match these filters. Try a wider version range or another ascension.';
@@ -1423,6 +2042,11 @@ function wireControls() {
   bind('fBuild', 'build');
   bind('fMin', 'min', Number);
   bind('cardSort', 'sort');
+  bind('libType', 'type');
+  bind('libRarity', 'rar');
+  bind('libCost', 'cost');
+  bind('libKeyword', 'kw');
+  bind('libSource', 'from');
   bind('compareA', 'a');
   bind('compareB', 'b');
   let typing = 0;
@@ -1431,12 +2055,32 @@ function wireControls() {
     typing = setTimeout(() => update({ q: e.target.value.trim() }), 150);
   });
   $('filters').addEventListener('submit', (e) => e.preventDefault());
-  document.querySelectorAll('[data-view]').forEach((tab) =>
+  $('libraryBar').addEventListener('submit', (e) => e.preventDefault());
+  // The drawer borrows the filter controls while it is open and hands them back when it closes
+  $('openFilters').addEventListener('click', () => {
+    $('drawerBody').append($('libFilters'));
+    $('filterDrawer').showModal();
+  });
+  $('filterDrawer').addEventListener('close', () => $('libraryBar').append($('libFilters')));
+  $('doneFilters').addEventListener('click', () => $('filterDrawer').close());
+  $('clearFilters').addEventListener('click', () => {
+    for (const key of LIBRARY_FILTERS) state[key] = DEFAULTS[key];
+    syncControls();
+    render();
+  });
+  $('filterDrawer').addEventListener('click', (e) => {
+    if (e.target === $('filterDrawer')) $('filterDrawer').close();
+  });
+  $('showAs').addEventListener('click', (e) => {
+    const button = e.target.closest('[data-show]');
+    if (button) update({ show: button.dataset.show });
+  });
+  $('tabs').querySelectorAll('[data-view]').forEach((tab) =>
     tab.addEventListener('click', () => {
       update({ view: tab.dataset.view });
       tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-      // The tab bar is sticky, so its own offset moves. The new tab starts at the top of main
-      const top = document.querySelector('main').offsetTop - $('tabs').offsetHeight - 18;
+      // The tab bar is sticky, so its own offset moves. The new tab starts at the stats bar under it
+      const top = $('statsBar').offsetTop - $('tabs').offsetHeight - 8;
       if (window.scrollY > top) window.scrollTo(0, top);
     }),
   );
@@ -1444,11 +2088,11 @@ function wireControls() {
     const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
     if (!step) return;
     const next = VIEWS[(VIEWS.indexOf(state.view) + step + VIEWS.length) % VIEWS.length];
-    document.querySelector(`[data-view="${next}"]`).focus();
+    $('tabs').querySelector(`[data-view="${next}"]`).focus();
     update({ view: next });
   });
-  $('cardSheet').addEventListener('click', (e) => {
-    if (e.target === $('cardSheet')) $('cardSheet').close();
+  $('sheet').addEventListener('click', (e) => {
+    if (e.target === $('sheet')) $('sheet').close();
   });
   window.addEventListener('hashchange', () => {
     readUrl();
@@ -1462,6 +2106,7 @@ function wireControls() {
     resizing = setTimeout(() => {
       if (Math.abs(window.innerWidth - lastWidth) < 20) return;
       lastWidth = window.innerWidth;
+      if (window.innerWidth >= 900 && $('filterDrawer').open) $('filterDrawer').close();
       render();
     }, 200);
   });
@@ -1471,7 +2116,7 @@ async function init() {
   try {
     S = await load('summary.json');
   } catch (error) {
-    $('lede').textContent = 'No stats yet. The nightly export has not run, or nothing has been uploaded.';
+    $('lede').textContent = 'No stats yet. The daily export has not run, or nothing has been uploaded.';
     console.error(error);
     return;
   }
@@ -1489,7 +2134,7 @@ async function init() {
     $('favicon').href = head;
     Object.assign($('brandIcon'), { src: head, hidden: false });
   }
-  $('lede').textContent = `Stats from ${num(meta.total_runs)} Alchemist runs shared by ${num(meta.players)} players. Updated every night.`;
+  renderHeader();
   const updated = new Date(meta.generated_at).toLocaleString('en-US', {
     dateStyle: 'medium',
     timeStyle: 'short',
@@ -1498,14 +2143,17 @@ async function init() {
   $('fresh').textContent = `Last updated ${updated} UTC, with runs from ${meta.first_day} to ${meta.last_day}.`;
 
   fillFilters();
+  fillLibraryControls();
   readUrl();
   syncControls();
   wireControls();
   keepScroll();
   $('filters').hidden = false;
   $('tabs').hidden = false;
+  // A link to one version's notes scrolls there itself
+  const anchored = Boolean(state.at);
   await render();
-  restoreScroll();
+  if (!anchored) restoreScroll();
 }
 
 init();

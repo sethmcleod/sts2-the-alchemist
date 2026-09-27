@@ -1,0 +1,27 @@
+---
+import CardStats from '../../../islands/CardStats';
+import { filterOptions } from '../../../islands/Filters';
+import { statsLang } from '../../../islands/useStats';
+import Stats from '../../../layouts/Stats.astro';
+import { islandLang, runs } from '../../../lib/content';
+import { everyLanguage } from '../../../lib/i18n';
+import { DEFAULT_FILTERS } from '../../../lib/runs';
+import { cardStats } from '../../../lib/views/cards';
+
+export const getStaticPaths = everyLanguage;
+
+const { l, locale } = Astro.locals;
+const data = runs(locale);
+// The island redraws with the stats strings alone, so the numbers it starts with use them too
+const init = islandLang(locale);
+const il = statsLang(init);
+---
+
+<Stats title={l.t('Card stats')} description={l.t('How often each Alchemist card is picked, played and won with.')}>
+  <CardStats
+    client:idle
+    locale={init}
+    initial={cardStats(il, data, DEFAULT_FILTERS)}
+    options={filterOptions(il, data)}
+  />
+</Stats>

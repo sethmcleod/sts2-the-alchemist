@@ -1,0 +1,32 @@
+---
+import { filterOptions } from '../../../islands/Filters';
+import Mechanics from '../../../islands/Mechanics';
+import { statsLang } from '../../../islands/useStats';
+import Stats from '../../../layouts/Stats.astro';
+import { iconUrls, islandLang, runs } from '../../../lib/content';
+import { everyLanguage } from '../../../lib/i18n';
+import { DEFAULT_FILTERS } from '../../../lib/runs';
+import { mechanics } from '../../../lib/views/mechanics';
+
+export const getStaticPaths = everyLanguage;
+
+const { l, locale } = Astro.locals;
+const data = runs(locale);
+const icons = await iconUrls();
+// The island redraws with the stats strings alone, so the numbers it starts with use them too
+const init = islandLang(locale);
+const il = statsLang(init);
+---
+
+<Stats
+  title={l.t('Mechanics')}
+  description={l.t('Badges, Brew, Mixes, Ferment, Poison and Antitoxin, measured over every shared run.')}
+>
+  <Mechanics
+    client:idle
+    locale={init}
+    initial={mechanics(il, data, DEFAULT_FILTERS, icons)}
+    options={filterOptions(il, data)}
+    icons={icons}
+  />
+</Stats>

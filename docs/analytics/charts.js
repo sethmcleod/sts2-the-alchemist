@@ -25,8 +25,14 @@ export function points(delta) {
 // ---------- DOM ----------
 
 // Builds an element. Text always goes in through textContent, never as HTML
+// A link to another site opens in a new tab
+const EXTERNAL = /^https?:\/\//;
+
 export function el(tag, attrs = {}, ...children) {
   const node = document.createElement(tag);
+  if (tag === 'a' && EXTERNAL.test(attrs.href ?? '') && !('target' in attrs)) {
+    attrs = { ...attrs, target: '_blank', rel: 'noopener' };
+  }
   for (const [name, value] of Object.entries(attrs)) {
     if (value == null || value === false) continue;
     if (name === 'style') Object.assign(node.style, value);
@@ -34,7 +40,7 @@ export function el(tag, attrs = {}, ...children) {
     else if (name.startsWith('on')) node.addEventListener(name.slice(2), value);
     else node.setAttribute(name, value === true ? '' : value);
   }
-  for (const child of children.flat()) {
+  for (const child of children.flat(Infinity)) {
     if (child == null || child === false) continue;
     node.append(child instanceof Node ? child : String(child));
   }
@@ -348,12 +354,12 @@ export function scatter(host, pts, options = {}) {
     const box = root.getBoundingClientRect();
     const x = (e.clientX - box.left) * (width / box.width);
     const y = (e.clientY - box.top) * (height / box.height);
+    // A highlighted dot answers from further away, so a dimmed one only wins when it is pointed at
     let best = null;
-    let bestDistance = 28;
+    let bestDistance = Infinity;
     for (const p of placed) {
-      if (p.dim) continue;
-      const d = Math.hypot(p.cx - x, p.cy - y);
-      if (d < bestDistance) [best, bestDistance] = [p, d];
+      const d = Math.hypot(p.cx - x, p.cy - y) * (p.dim ? 2.5 : 1);
+      if (d < 28 && d < bestDistance) [best, bestDistance] = [p, d];
     }
     return best;
   };

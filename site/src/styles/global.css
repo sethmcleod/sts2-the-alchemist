@@ -1,0 +1,1531 @@
+@import 'tailwindcss';
+
+/* The game's card fonts, from its own files, cut down by tools/analytics/card_fonts.py. Cards are
+   laid out for their exact widths. Kreon also sets the headings. A page downloads only the fonts
+   its language draws with */
+@font-face {
+  font-family: Kreon;
+  src: url('../assets/fonts/card-latin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Kreon;
+  src: url('../assets/fonts/card-latin-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: card-fira;
+  src: url('../assets/fonts/card-fira-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: card-fira;
+  src: url('../assets/fonts/card-fira-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: card-ja;
+  src: url('../assets/fonts/card-ja-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: card-ja;
+  src: url('../assets/fonts/card-ja-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: card-zh-hans;
+  src: url('../assets/fonts/card-zh-hans-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: card-zh-hans;
+  src: url('../assets/fonts/card-zh-hans-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: card-zh-hant;
+  src: url('../assets/fonts/card-zh-hant-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: card-zh-hant;
+  src: url('../assets/fonts/card-zh-hant-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: card-ko;
+  src: url('../assets/fonts/card-ko-regular.woff2') format('woff2');
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: card-th;
+  src: url('../assets/fonts/card-th-regular.woff2') format('woff2');
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@theme {
+  --color-*: initial;
+  --color-bg: #1c1822;
+  --color-panel: #26202e;
+  --color-panel-2: #2f2838;
+  --color-line: #3a3143;
+  --color-frame: #726281;
+  --color-ink: #ece6da;
+  --color-ink-2: #c9c0b4;
+  --color-muted: #a49aad;
+  --color-accent: #63a855;
+  --color-accent-ink: #13200e;
+  --color-gold: #d4a832;
+  --color-up: #7cc46c;
+  --color-down: #f08a84;
+  --color-common: #9085e9;
+  --color-uncommon: #199e70;
+  --color-rare: #c98500;
+  --color-antitoxin: #9b5cff;
+  --color-bled: #e66767;
+  --color-bronze: #c07a45;
+  --color-silver: #aeb0b8;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* The game's text colours (StsColors) */
+  --color-game-cream: #fff6e2;
+  --color-game-gold: #efc851;
+  --color-game-green: #7fff00;
+  --color-game-blue: #87ceeb;
+  --color-game-red: #ff5555;
+  --color-game-purple: #ee82ee;
+  --color-game-pink: #ff78a0;
+  --color-game-orange: #ffa518;
+  --color-game-aqua: #2aebbe;
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: Kreon, Rockwell, Georgia, serif;
+
+  --radius-card: 12px;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+    --stage-1: #5a9e4c;
+    --stage-2: #7dbd6e;
+    --stage-3: #9ccf8f;
+  }
+
+  /* The page behind an open dialog stays put */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font: 16px/1.5 var(--font-sans);
+  }
+
+  /* Kreon has no Polish, Cyrillic, Thai or CJK letters, so those headings use the reader's fonts */
+  :root:lang(pl),
+  :root:lang(ru) {
+    --font-display: Georgia, 'Times New Roman', serif;
+  }
+
+  :root:is(:lang(ja), :lang(ko), :lang(th), :lang(zh)) {
+    --font-display: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  a {
+    color: var(--color-up);
+    text-decoration-line: underline;
+    text-decoration-color: rgb(124 196 108 / 0.45);
+    text-underline-offset: 0.18em;
+  }
+
+  a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  /* A scroller clips an outline drawn outside the links in it, so theirs goes inside */
+  :is(.overflow-x-auto, .table-scroll) a:focus-visible {
+    outline-offset: -2px;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  /* Base.astro and scripts/place.ts */
+  [data-placing] body {
+    visibility: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0s !important;
+      animation-duration: 0s !important;
+    }
+  }
+}
+
+@utility needs-js {
+  /* Controls that only work with a script stay hidden without one */
+  @media (scripting: none) {
+    display: none !important;
+  }
+}
+
+@layer components {
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 100;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: var(--color-gold);
+    color: var(--color-bg);
+    font-weight: 600;
+  }
+
+  .skip-link:focus {
+    top: 12px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 8px 16px;
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    background: var(--color-panel-2);
+    color: var(--color-ink);
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    border-color: var(--color-frame);
+    background: var(--color-line);
+  }
+
+  .button.primary {
+    border-color: transparent;
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  .button.primary:hover {
+    background: #74b866;
+  }
+
+  .field {
+    display: grid;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+
+  .field-control {
+    min-height: 40px;
+    padding: 6px 10px;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background-color: var(--color-panel);
+    color: var(--color-ink);
+    font: 15px var(--font-sans);
+  }
+
+  /* The browser's own arrow sits against the edge, so selects draw their own */
+  select.field-control {
+    padding-right: 36px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23c9c0b4' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-position: right 14px center;
+    background-repeat: no-repeat;
+    background-size: 11px 7px;
+    text-overflow: ellipsis;
+  }
+
+  .lang-menu {
+    position: relative;
+  }
+
+  .lang-menu summary {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    min-height: 36px;
+    padding: 4px 30px 4px 10px;
+    background: var(--color-panel) no-repeat right 11px center / 11px 7px
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23c9c0b4' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    font-size: 14px;
+    font-weight: 600;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .lang-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .lang-menu ul {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 30;
+    display: grid;
+    min-width: 14rem;
+    max-height: min(70vh, 36rem);
+    margin: 0;
+    padding: 6px;
+    overflow-y: auto;
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    background: var(--color-panel);
+    box-shadow: 0 12px 32px rgb(0 0 0 / 0.45);
+    list-style: none;
+  }
+
+  .lang-menu a {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: var(--color-ink-2);
+    text-decoration: none;
+  }
+
+  .lang-menu a:hover {
+    background: var(--color-bg);
+    color: var(--color-ink);
+  }
+
+  .lang-menu a[aria-current] {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  /* README sections, rendered from its Markdown */
+  .readme {
+    color: var(--color-ink-2);
+  }
+
+  .readme ul {
+    display: grid;
+    gap: 5px;
+    margin: 0;
+    padding-left: 20px;
+    list-style: disc;
+  }
+
+  .readme li::marker {
+    color: var(--color-gold);
+  }
+
+  .readme strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  .readme p {
+    margin: 0 0 8px;
+  }
+
+  details.readme summary {
+    width: fit-content;
+    color: var(--color-up);
+    cursor: pointer;
+  }
+
+  /* ---------- the site header ---------- */
+
+  /* The header stays at the top. Where the tabs have a row of their own, only that row does: the
+     logo and language row above it (8 + 56 px) scrolls away. Header.astro sets the row heights;
+     what stays is the 44 px tabs (or the 64 px single row) and the 1 px border */
+  :root {
+    --header-hidden: 64px;
+    --header-stuck: 45px;
+    scroll-padding-top: calc(var(--header-stuck) + 8px);
+  }
+
+  @media (width >= 64rem) {
+    :root {
+      --header-hidden: 0px;
+      --header-stuck: 65px;
+    }
+  }
+
+  /* On a narrow screen the tabs scroll sideways beside the language button; the fade says there are more */
+  @media (width < 64rem) {
+    .site-nav {
+      mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
+    }
+  }
+
+  .site-header {
+    position: sticky;
+    top: calc(-1 * var(--header-hidden));
+    z-index: 20;
+    border-bottom: 1px solid var(--color-line);
+    background: var(--color-bg);
+  }
+
+  /* ---------- the card library ---------- */
+
+  .toolbar {
+    position: sticky;
+    top: var(--header-stuck);
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 10px -16px 0;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--color-line);
+    background: var(--color-bg);
+  }
+
+  .library-filters {
+    display: none;
+  }
+
+  /* On a desktop the toolbar keeps to one line in every language: the filters wait behind their
+     button until the row is wide enough for all of them, and then they give way before the box does */
+  @media (width >= 64rem) {
+    .toolbar {
+      flex-wrap: nowrap;
+    }
+
+    .upgrade-all {
+      flex: none;
+    }
+  }
+
+  @media (width >= 80rem) {
+    .toolbar .library-filters {
+      display: contents;
+    }
+
+    .toolbar [name='q'] {
+      min-width: 8rem;
+    }
+
+    /* A select is as wide as its longest option, so these get a width of their own */
+    .toolbar .library-filters select {
+      flex: 0 1 8.25rem;
+      min-width: 6.5rem;
+    }
+
+    .toolbar .library-filters select[name='sort'] {
+      flex-basis: 10rem;
+    }
+
+    .filters-button {
+      display: none;
+    }
+  }
+
+  .drawer .library-filters {
+    display: grid;
+    gap: 10px;
+  }
+
+  .count-badge {
+    display: inline-grid;
+    place-items: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+    font-size: 12px;
+  }
+
+  .upgrade-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 12px 0 10px;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    font-size: 15px;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .upgrade-all input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: var(--color-accent);
+  }
+
+  .upgrade-all:has(:checked) {
+    border-color: var(--color-accent);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(11rem, calc(50% - 6px)), 1fr));
+    gap: 16px 12px;
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (width < 40rem) {
+    .drawer {
+      width: 100%;
+      max-height: 85dvh;
+      margin: auto 0 0;
+      border-radius: 16px 16px 0 0;
+    }
+  }
+
+  .panel {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    background: var(--color-panel);
+  }
+
+  /* ---------- game text ---------- */
+
+  .t-gold {
+    color: var(--color-game-gold);
+  }
+  .t-green {
+    color: var(--color-game-green);
+  }
+  .t-blue {
+    color: var(--color-game-blue);
+  }
+  .t-red {
+    color: var(--color-game-red);
+  }
+  .t-purple {
+    color: var(--color-game-purple);
+  }
+  .t-pink {
+    color: var(--color-game-pink);
+  }
+  .t-orange {
+    color: var(--color-game-orange);
+  }
+  .t-aqua {
+    color: var(--color-game-aqua);
+  }
+
+  .energy {
+    display: inline-block;
+    width: 1.15em;
+    height: 1.15em;
+    vertical-align: -0.22em;
+  }
+
+  /* ---------- card faces ---------- */
+
+  /* The game's card is 300 x 422 units, and the orb and banner stick out past it, so a face is
+     330 x 438. Every size below is in those units (--u), so a card draws the same at any width */
+  .face {
+    --u: calc(100cqw / 330);
+    position: relative;
+    container-type: inline-size;
+    aspect-ratio: 330 / 438;
+    color: var(--color-game-cream);
+    font-family: var(--font-card, var(--font-display));
+    line-height: 1;
+    text-align: center;
+    user-select: none;
+  }
+
+  .face > * {
+    position: absolute;
+  }
+
+  .face-art {
+    top: calc(59 * var(--u));
+    left: calc(41 * var(--u));
+    width: calc(250 * var(--u));
+    height: calc(190 * var(--u));
+    object-fit: cover;
+  }
+
+  .face.ancient .face-art {
+    top: calc(12 * var(--u));
+    left: calc(13 * var(--u));
+    width: calc(299 * var(--u));
+    height: calc(421 * var(--u));
+    border-radius: calc(14 * var(--u));
+  }
+
+  .face-frame {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .face-cost {
+    top: calc(1 * var(--u));
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: calc(64 * var(--u));
+    height: calc(66 * var(--u));
+    font-size: calc(32 * var(--card-title-scale, 1) * var(--u));
+    font-weight: 700;
+  }
+
+  .face-title {
+    top: calc(23 * var(--u));
+    left: calc(61 * var(--u));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(210 * var(--u));
+    height: calc(54 * var(--u));
+    letter-spacing: calc(1 * var(--u));
+    white-space: nowrap;
+  }
+
+  /* Base.astro sets the --card- values for a language that draws cards in another font */
+  .face-title > * {
+    font-size: calc(var(--size) * var(--card-title-scale, 1) * var(--u));
+  }
+
+  .face-text > * {
+    font-size: calc(var(--size) * var(--card-text-scale, 1) * var(--u));
+  }
+
+  /* The outline is a copy of the text behind it, so it never eats into the letters */
+  .outlined {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .outlined::before {
+    content: attr(data-text);
+    /* The copy is decoration: an empty alternative keeps it out of what a screen reader says */
+    content: attr(data-text) / '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    -webkit-text-stroke: var(--stroke) var(--outline);
+    text-shadow: calc(2 * var(--u)) calc(2 * var(--u)) 0 rgb(0 0 0 / 0.19);
+  }
+
+  .face-title .outlined {
+    --stroke: calc(7 * var(--u));
+  }
+
+  .face-cost .outlined {
+    --stroke: calc(9 * var(--u));
+    --outline: #5c5440;
+  }
+
+  .face-cost .t-green {
+    --outline: #1f5923;
+  }
+
+  .face-title .t-green {
+    --outline: #1b6131;
+  }
+
+  .face-type {
+    top: calc(228 * var(--u));
+    left: calc(166 * var(--u));
+    display: grid;
+    place-items: center;
+    height: calc(37 * var(--u));
+    transform: translateX(-50%);
+    color: rgb(0 0 0 / 0.75);
+    font-size: calc(16 * var(--card-title-scale, 1) * var(--u));
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .face-text {
+    top: calc(264 * var(--u));
+    left: calc(44 * var(--u));
+    display: flex;
+    align-items: center;
+    width: calc(243 * var(--u));
+    height: calc(136 * var(--u));
+    overflow: hidden;
+    text-shadow: calc(2 * var(--u)) calc(2 * var(--u)) 0 rgb(0 0 0 / 0.25);
+  }
+
+  .face-text > * {
+    width: 100%;
+    line-height: calc((var(--card-line, 1.2598) * var(--size) + var(--card-spacing, 0) - 3) * var(--u));
+  }
+
+  .face .energy {
+    width: calc(24 * var(--u));
+    height: calc(24 * var(--u));
+    vertical-align: calc(-5 * var(--u));
+  }
+
+  /* A face holds its base and upgraded text. The upgraded one shows when its card's toggle and the
+     "Show all upgraded" box disagree, so either one flips it */
+  .upgraded {
+    display: none;
+  }
+
+  :root:not(:has(#all-upgraded:checked)) .card:has(.upgrade-toggle:checked),
+  :root:has(#all-upgraded:checked) .card:not(:has(.upgrade-toggle:checked)) {
+    .base {
+      display: none;
+    }
+
+    .upgraded {
+      display: revert;
+    }
+
+    .upgrade-toggle {
+      opacity: 1;
+      background: var(--color-accent);
+      color: var(--color-accent-ink);
+    }
+  }
+
+  .upgrade {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .upgrade-toggle {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    border: 1px solid var(--color-line);
+    border-radius: 50%;
+    background: rgb(28 24 34 / 0.92);
+    color: var(--color-ink);
+    opacity: 0;
+    cursor: pointer;
+    appearance: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .upgrade-toggle::after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    background: currentColor;
+    mask: url('../assets/icons/upgrade.svg') center / contain no-repeat;
+  }
+
+  .upgrade-tip {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 6px);
+    padding: 3px 8px;
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: opacity 0.15s ease;
+  }
+
+  .upgrade:hover .upgrade-tip,
+  .upgrade-toggle:focus-visible + .upgrade-tip {
+    opacity: 1;
+  }
+
+  .card:hover .upgrade-toggle,
+  .card:focus-within .upgrade-toggle,
+  [data-sheet] .upgrade-toggle {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    .upgrade-toggle {
+      opacity: 1;
+    }
+  }
+
+  .tile-link .face {
+    transition: transform 0.15s ease;
+  }
+
+  .tile-link:hover .face,
+  .tile-link:focus-visible .face {
+    transform: translateY(-4px);
+  }
+
+  .pill {
+    display: inline-block;
+    margin-right: 6px;
+    padding: 0 7px;
+    border: 1px solid var(--color-frame);
+    border-radius: 999px;
+    color: var(--color-ink-2);
+    font-size: 12px;
+  }
+
+  .item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    gap: 10px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .notes-list {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    padding-left: 20px;
+    color: var(--color-ink-2);
+    list-style: disc;
+    overflow-wrap: anywhere;
+  }
+
+  .notes-list .notes-list {
+    margin-top: 6px;
+    list-style: circle;
+  }
+
+  .notes-list li::marker {
+    color: var(--color-muted);
+  }
+
+  /* A tile whose name is its link: the link's box stretches over the whole tile, and any other
+     link inside the tile sits above it */
+  .stretched::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .stretched:focus-visible {
+    outline: none;
+  }
+
+  .stretched:focus-visible::after {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  .above-stretched {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---------- gallery ---------- */
+
+  /* The arrows step through the shots, so the scrollbar shows only without a script */
+  @media (scripting: enabled) {
+    .gallery-track {
+      scrollbar-width: none;
+    }
+  }
+
+  .gallery-step {
+    position: absolute;
+    top: 50%;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-line);
+    border-radius: 50%;
+    background: rgb(28 24 34 / 0.85);
+    color: var(--color-ink);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+
+  .gallery-count {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    margin: 0;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: rgb(28 24 34 / 0.85);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .lightbox {
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: rgb(10 8 14 / 0.94);
+  }
+
+  .lightbox[open] {
+    display: grid;
+    place-items: center;
+  }
+
+  .lightbox img {
+    max-width: calc(100vw - 32px);
+    max-height: calc(100dvh - 96px);
+    border-radius: 8px;
+  }
+
+  .lightbox .close-button {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    margin: 0;
+  }
+
+  /* ---------- bars ---------- */
+
+  /* A labelled horizontal bar per row, its value as text beside it */
+  .bars {
+    display: grid;
+    grid-template-columns: minmax(0, var(--label, 12rem)) auto minmax(0, 1fr);
+    gap: 8px 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+  }
+
+  .bar {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+    align-items: center;
+    min-height: 28px;
+  }
+
+  .bar-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    line-height: 1.25;
+  }
+
+  .bar-label small,
+  .bar-value small {
+    display: block;
+    color: var(--color-muted);
+    font-size: 12px;
+  }
+
+  .bar-value {
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .bar-track {
+    position: relative;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--color-panel-2);
+  }
+
+  .bar-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--w);
+    border-radius: 999px;
+    background: var(--fill, var(--color-accent));
+  }
+
+  .bar-range {
+    position: absolute;
+    top: 50%;
+    left: var(--lo);
+    width: calc(var(--hi) - var(--lo));
+    height: 2px;
+    background: var(--color-ink);
+    opacity: 0.55;
+  }
+
+  .bar-ref {
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    left: var(--ref);
+    width: 2px;
+    background: var(--color-gold);
+  }
+
+  .bar a {
+    color: inherit;
+    text-decoration-color: rgb(236 230 218 / 0.35);
+  }
+
+  @media (width < 40rem) {
+    .bars {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .bar-track {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .bar-icon {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .bars-wrap:not(:has(.show-more :checked)) .extra {
+    display: none;
+  }
+
+  .show-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--color-up);
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .show-more:not(:has(:checked)) .less,
+  .show-more:has(:checked) .more {
+    display: none;
+  }
+
+  .show-more:has(:focus-visible) {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  .ref-key {
+    margin: 10px 0 0;
+    padding-left: 14px;
+    border-left: 2px solid var(--color-gold);
+    color: var(--color-muted);
+    font-size: 13px;
+  }
+
+  .empty {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 14px;
+  }
+
+  .dot {
+    display: inline-block;
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--dot);
+  }
+
+  /* ---------- stats pages ---------- */
+
+  .stats-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .stats-page[aria-busy='true'] > :not(.stats-filters) {
+    opacity: 0.6;
+    transition: opacity 0.2s ease 0.15s;
+  }
+
+  .stats-page h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+  }
+
+  .stats-page .note {
+    margin: 0 0 14px;
+    color: var(--color-muted);
+    font-size: 14px;
+  }
+
+  .stats-page .section-title {
+    margin: 20px 0 -8px;
+    font-size: 26px;
+  }
+
+  .stats-page .section-title + .note {
+    margin: 0;
+  }
+
+  .stats-page h3 {
+    margin: 0 0 4px;
+    font-size: 18px;
+  }
+
+  .foot {
+    margin: 12px 0 0;
+    color: var(--color-ink-2);
+    font-size: 13px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+    gap: 16px;
+  }
+
+  .stats-filters {
+    display: grid;
+    gap: 10px;
+  }
+
+  .more-filters summary {
+    min-height: 40px;
+    padding: 10px 0;
+    color: var(--color-up);
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .more-filters[open] {
+    flex-basis: 100%;
+  }
+
+  .about dt {
+    margin-top: 14px;
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  .about dd {
+    margin: 4px 0 0;
+    color: var(--color-ink-2);
+  }
+
+  /* ---------- columns ---------- */
+
+  .columns {
+    position: relative;
+    margin: 0;
+    padding-left: 44px;
+  }
+
+  .columns-axis {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    width: 38px;
+    height: 200px;
+    color: var(--color-muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .columns-axis span {
+    position: absolute;
+    top: var(--at);
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  .columns-plot {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    grid-template-rows: 100%;
+    align-items: end;
+    column-gap: 2px;
+    height: 200px;
+    margin: 28px 0 0;
+    padding: 0;
+    border-bottom: 1px solid var(--color-line);
+    background: linear-gradient(to bottom, var(--color-line) 1px, transparent 1px) 0 0 / 100% 50%;
+    list-style: none;
+  }
+
+  /* The whole height of a column answers the pointer, so an empty one can still be read */
+  .column {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .column-bar {
+    width: min(100%, 24px);
+    height: var(--h);
+    border-radius: 4px 4px 0 0;
+    background: var(--color-accent);
+  }
+
+  .column:hover .column-bar,
+  .column.active .column-bar {
+    background: var(--color-up);
+  }
+
+  .columns-readout {
+    min-height: 1.5em;
+    margin: 6px 0 0;
+    color: var(--color-ink-2);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .column-marker {
+    position: absolute;
+    top: -28px;
+    bottom: 0;
+    left: var(--at);
+    border-left: 2px solid var(--color-gold);
+  }
+
+  .column-marker span {
+    position: absolute;
+    top: calc(var(--row) * 13px);
+    left: 4px;
+    font-size: 12px;
+    line-height: 13px;
+    white-space: nowrap;
+  }
+
+  .columns-labels {
+    display: grid;
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    margin-top: 4px;
+    color: var(--color-muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .columns-labels span {
+    justify-self: center;
+    white-space: nowrap;
+  }
+
+  /* ---------- stacked bar ---------- */
+
+  .stack {
+    display: flex;
+    gap: 2px;
+    height: 16px;
+    overflow: hidden;
+    border-radius: 999px;
+  }
+
+  .stack span {
+    background: var(--fill);
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin: 10px 0 0;
+    padding: 0;
+    color: var(--color-ink-2);
+    font-size: 13px;
+    list-style: none;
+  }
+
+  .legend li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ---------- scatter ---------- */
+
+  .scatter {
+    margin: 0;
+  }
+
+  .scatter-plot {
+    position: relative;
+    height: clamp(280px, 55vw, 440px);
+    margin: 10px 10px 28px 44px;
+    border-bottom: 1px solid var(--color-line);
+    border-left: 1px solid var(--color-line);
+  }
+
+  .scatter-grid,
+  .scatter-ref {
+    position: absolute;
+    top: var(--at);
+    right: 0;
+    left: 0;
+    border-top: 1px dashed var(--color-line);
+  }
+
+  .scatter-ref {
+    border-top: 2px solid var(--color-gold);
+  }
+
+  .scatter-grid span {
+    position: absolute;
+    right: calc(100% + 6px);
+    color: var(--color-muted);
+    font-size: 12px;
+    transform: translateY(-50%);
+  }
+
+  .scatter-tick {
+    position: absolute;
+    top: 100%;
+    left: var(--at);
+    padding-top: 4px;
+    color: var(--color-muted);
+    font-size: 12px;
+    transform: translateX(-50%);
+  }
+
+  .scatter-dot {
+    position: absolute;
+    width: calc(var(--r) * 2);
+    height: calc(var(--r) * 2);
+    margin: calc(var(--r) * -1) 0 0 calc(var(--r) * -1);
+    border-radius: 50%;
+    background: var(--fill);
+    box-shadow: 0 0 0 2px var(--color-panel);
+  }
+
+  .scatter-dot:hover {
+    z-index: 2;
+    box-shadow: 0 0 0 2px var(--color-ink);
+  }
+
+  .scatter-label {
+    position: absolute;
+    color: var(--color-ink-2);
+    font-size: 12px;
+    line-height: 14px;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translate(var(--dx), var(--dy));
+  }
+
+  @media (width < 40rem) {
+    .scatter-label.wide {
+      display: none;
+    }
+  }
+
+  @media (width >= 40rem) {
+    .scatter-label.narrow {
+      display: none;
+    }
+  }
+
+  .scatter-x {
+    color: var(--color-muted);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  /* ---------- tables ---------- */
+
+  .table-scroll {
+    overflow-x: auto;
+  }
+
+  .table-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .table-wrap :is(th, td) {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--color-line);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .table-wrap th {
+    color: var(--color-ink-2);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .table-wrap .num {
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  .table-wrap td small {
+    display: block;
+    color: var(--color-muted);
+    font-size: 12px;
+  }
+
+  .sort {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .table-wrap:not(:has(.show-more :checked)) tr.extra {
+    display: none;
+  }
+
+  @media (width < 40rem) {
+    .table-wrap .wide {
+      display: none;
+    }
+  }
+
+  /* ---------- stat tiles ---------- */
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+    gap: 10px;
+    margin: 0;
+  }
+
+  .stat {
+    padding: 12px 14px;
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    background: var(--color-panel);
+  }
+
+  .stat dd {
+    margin: 0;
+  }
+
+  .delta.up {
+    color: var(--color-up);
+    font-size: 15px;
+  }
+
+  .delta.down {
+    color: var(--color-down);
+    font-size: 15px;
+  }
+
+  .stat-label {
+    color: var(--color-muted);
+    font-size: 13px;
+  }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+  }
+
+  .stat-note {
+    color: var(--color-ink-2);
+    font-size: 13px;
+  }
+
+  .commentary {
+    max-width: 65ch;
+  }
+
+  .commentary :is(p, ul, ol) {
+    margin: 0 0 12px;
+  }
+
+  /* ---------- dialogs ---------- */
+
+  .sheet {
+    width: min(100% - 24px, 60rem);
+    max-width: none;
+    max-height: calc(100dvh - 24px);
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+    background: var(--color-bg);
+    color: var(--color-ink);
+    overscroll-behavior: contain;
+  }
+
+  .sheet::backdrop {
+    background: rgb(10 8 14 / 0.78);
+  }
+
+  .close-button {
+    position: sticky;
+    top: 8px;
+    z-index: 2;
+    float: right;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: 8px 8px -52px 0;
+    border: 1px solid var(--color-line);
+    border-radius: 50%;
+    background: var(--color-panel);
+    color: var(--color-ink);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+}

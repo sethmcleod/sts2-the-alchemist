@@ -1,0 +1,22 @@
+---
+import Fights from '../../../islands/Fights';
+import { filterOptions } from '../../../islands/Filters';
+import { statsLang } from '../../../islands/useStats';
+import Stats from '../../../layouts/Stats.astro';
+import { islandLang, runs } from '../../../lib/content';
+import { everyLanguage } from '../../../lib/i18n';
+import { DEFAULT_FILTERS } from '../../../lib/runs';
+import { fights } from '../../../lib/views/fights';
+
+export const getStaticPaths = everyLanguage;
+
+const { l, locale } = Astro.locals;
+const data = runs(locale);
+// The island redraws with the stats strings alone, so the numbers it starts with use them too
+const init = islandLang(locale, { encounters: true });
+const il = statsLang(init);
+---
+
+<Stats title={l.t('Fights')} description={l.t('Where Alchemist runs end, and the fights that end them.')}>
+  <Fights client:idle locale={init} initial={fights(il, data, DEFAULT_FILTERS)} options={filterOptions(il, data)} />
+</Stats>
