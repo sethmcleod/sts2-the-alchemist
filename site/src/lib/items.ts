@@ -118,7 +118,9 @@ export function powers(l: Lang, runs: Runs): Item[] {
   const all = runs.counters(runs.select(f));
   const [antitoxin, mixes] = [byPrefix(all, 'atxsrc:'), byPrefix(all, 'mixsrc:')];
   return Object.entries(runs.summary.power_info)
-    .map(([id, info]) => {
+    .map(([id, info]) => ({ id, info, source: powerSource(runs, id) }))
+    .filter(({ source }) => source)
+    .map(({ id, info, source }) => {
       const label = tallyLabel(id);
       const [gave, made] = [antitoxin.get(label)?.count, mixes.get(label)?.count];
       const counts = [
@@ -132,7 +134,7 @@ export function powers(l: Lang, runs: Runs): Item[] {
         rarity: null,
         href: powerHref(id),
         line: counts.length ? l.list(counts) : null,
-        source: powerSource(runs, id),
+        source,
       };
     })
     .sort((a, b) => a.info.name.localeCompare(b.info.name, l.lang));

@@ -1381,6 +1381,43 @@
     box-shadow: 0 0 0 2px var(--color-ink);
   }
 
+  /* Above the dot, or below it near the top, and kept inside the plot near either side */
+  .scatter-tip {
+    --tx: -50%;
+    position: absolute;
+    z-index: 3;
+    display: grid;
+    width: max-content;
+    max-width: min(18rem, 70vw);
+    padding: 6px 10px;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: var(--color-panel);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.45);
+    color: var(--color-ink-2);
+    font-size: 13px;
+    line-height: 1.4;
+    pointer-events: none;
+    transform: translate(var(--tx), calc(-100% - var(--r) - 8px));
+  }
+
+  .scatter-tip.below {
+    transform: translate(var(--tx), calc(var(--r) + 8px));
+  }
+
+  .scatter-tip.start {
+    --tx: -12px;
+  }
+
+  .scatter-tip.end {
+    --tx: calc(-100% + 12px);
+  }
+
+  .scatter-tip strong {
+    color: var(--color-ink);
+    font-size: 14px;
+  }
+
   .scatter-label {
     position: absolute;
     color: var(--color-ink-2);
