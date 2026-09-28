@@ -9,6 +9,7 @@ mod).
 
 ### Changed
 
+- Changed the cards the Dissolution Epoch unlocks: Upwell, Premonition and Mercurial Form
 - Nerfed Fling card: Poison needed for each additional hit increased from 2 -> 3(2)
 - Nerfed Mortar card: damage decreased from 9(12) -> 7(10)
 - Nerfed Puff Up card: additional Block for each turn Fermented decreased from 3(5) -> 2(4)
