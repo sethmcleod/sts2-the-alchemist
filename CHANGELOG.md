@@ -9,7 +9,12 @@ mod).
 
 ### Changed
 
-- Reworked Refine card: "Whenever you add a Mix into your Hand, Upgrade it. If it was already Upgraded, it gains Replay." Playing more than one Refine now stacks, and each stack adds 1 Replay
+- Nerfed Fling card: Poison needed for each additional hit increased from 2 -> 3(2)
+- Nerfed Mortar card: damage decreased from 9(12) -> 7(10)
+- Nerfed Puff Up card: additional Block for each turn Fermented decreased from 3(5) -> 2(4)
+- Nerfed Tempered card: Block decreased from 10(13) -> 9(12)
+- Reworked Overflow card: "Whenever one of your cards Ferments, Upgrade it. If already Upgraded, apply 1 Poison to ALL enemies."
+- Reworked Refine card: "Whenever you add a Mix into your Hand, Upgrade it. If already Upgraded, it gains Replay."
 
 ## [0.14.22] - 2026-09-27
 
