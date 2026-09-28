@@ -44,7 +44,7 @@ export const GET: APIRoute = ({ site }) => {
   <link rel="self" href="${url('/notes.xml')}"/>
   <link rel="alternate" type="text/html" href="${url('/notes')}"/>
   <updated>${dated[0]?.date ?? '2026-01-01'}T00:00:00Z</updated>
-  <author><name>Seth</name></author>
+  <author><name>The Alchemist</name></author>
 ${entries.join('\n')}
 </feed>
 `;

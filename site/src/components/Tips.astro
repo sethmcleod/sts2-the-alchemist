@@ -17,11 +17,12 @@ interface Props {
 
 const { markups, keywords, exclude, class: className } = Astro.props;
 const { l, locale } = Astro.locals;
-// A text the mod has not translated yet reads in English, so the English tips come after the page's own
-const found = tipsFor(markups, [...tips(locale), ...(locale === DEFAULT_LOCALE ? [] : tips(DEFAULT_LOCALE))], {
+// A text the mod has not translated yet reads in English, so the English tips stand behind the page's own
+const found = tipsFor(markups, tips(locale), {
   lang: l.lang,
   keywords,
   exclude,
+  fallback: locale === DEFAULT_LOCALE ? [] : tips(DEFAULT_LOCALE),
 });
 ---
 

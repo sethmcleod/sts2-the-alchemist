@@ -66,6 +66,16 @@ export function returnToPlace() {
         const toggle = document.querySelector<HTMLInputElement>(`[data-place="${CSS.escape(id)}"] .upgrade-toggle`);
         if (toggle) toggle.checked = true;
       }
+      // A card's own page keeps its flip in the address, so a reload or a copied link shows it too.
+      // Only after load: until then the browser still takes a new #upgraded as the page's target,
+      // which would flip the card back
+      if (document.getElementById('upgraded') && document.querySelector('[data-sheet] .upgrade-toggle:checked')) {
+        addEventListener(
+          'load',
+          () => history.replaceState(history.state, '', `${location.pathname}${location.search}#upgraded`),
+          { once: true },
+        );
+      }
       const { anchor } = place;
       const scroll = () => {
         const el = anchor?.place

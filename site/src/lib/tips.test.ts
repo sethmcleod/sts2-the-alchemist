@@ -63,6 +63,28 @@ describe('tips', () => {
     expect(found('[gold]Berfermentasi[/gold]', [tip('FERMENT', 'Fermentasi')], 'id')).toEqual(['FERMENT']);
   });
 
+  it('reads the stem of a long title, and picks the tip that fits the text across titles', () => {
+    const fr = [tip('ALCHEMIST-FERMENT', 'Fermentation'), tip('TRANSFORM', 'Transformer', 'Au hasard.')];
+    const mix = tip('ALCHEMIST-TRANSFORM_MIX', 'Transformation', 'Une [gold]Mixture[/gold] au hasard.');
+    const found = (text: string, list: Tip[]) => tipsFor([text], list, { lang: 'fr' }).map((t) => t.id);
+    expect(found('Elle [gold]Fermente[/gold].', fr)).toEqual(['ALCHEMIST-FERMENT']);
+    expect(found('[gold]Transformez[/gold] une carte en [gold]Mixture[/gold].', [...fr, mix])).toEqual([
+      'ALCHEMIST-TRANSFORM_MIX',
+    ]);
+    expect(found('[gold]Transformez[/gold] une carte.', [...fr, mix])).toEqual(['TRANSFORM']);
+  });
+
+  it('uses the English tips only for English words', () => {
+    const local = [tip('ALCHEMIST-FERMENT', 'Fermentation')];
+    const english = [tip('ALCHEMIST-FERMENT', 'Ferment'), tip('POISON_POWER', 'Poison')];
+    const found = (text: string) => tipsFor([text], local, { lang: 'fr', fallback: english }).map((t) => t.title);
+    expect(found('[gold]Fermente[/gold] et [gold]Poison[/gold]')).toEqual(['Fermentation', 'Poison']);
+  });
+
+  it('never reads a name of several words as a one-word title', () => {
+    expect(titles('Your [gold]Exhaust Pile[/gold].')).toEqual([]);
+  });
+
   it('keeps unrelated words and unspaced scripts apart', () => {
     expect(titles('[gold]Poisonousness[/gold]')).toEqual([]);
     expect(titles('[gold]Mind[/gold]')).toEqual([]);

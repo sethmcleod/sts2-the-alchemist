@@ -49,6 +49,15 @@ describe('history', () => {
     expect(history('DOSE')).toEqual(['v4: Changed Spike and Dose cards', 'v1: Dose']);
   });
 
+  it('counts a possessive and stops a name at the line that added a new item under it', () => {
+    const notes = [
+      release('v3', note("Buffed Corrode's damage")),
+      release('v2', note('Added Corrode card: "Deal 6 damage."')),
+      release('v1', note('Removed Corrode card'), note('Reworked Corrode: "Apply 2 Weak."')),
+    ];
+    expect((changes({ C: 'Corrode' }, notes).get('C') ?? []).map((c) => c.version)).toEqual(['v3', 'v2']);
+  });
+
   it('keeps a reused name for the item that has it at the time', () => {
     expect(history('UNSTABLE')).toEqual([
       'v2: Renamed Next Up to Anoint, and Delayed Reaction to Unstable Compound, reusing the name',

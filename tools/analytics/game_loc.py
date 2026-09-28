@@ -52,9 +52,8 @@ WORDS = {
 TIPS = {
     "card_keywords": ("ETERNAL", "ETHEREAL", "EXHAUST", "INNATE", "RETAIN", "SLY", "UNPLAYABLE"),
     "powers": tuple(f"{p}_POWER" for p in ("POISON", "WEAK", "VULNERABLE", "STRENGTH", "DEXTERITY", "ARTIFACT",
-                                           "PLATING", "FRAIL", "THORNS", "INTANGIBLE")),
+                                           "PLATING", "FRAIL", "THORNS", "INTANGIBLE", "TAINTED")),
     "static_hover_tips": ("BLOCK", "TRANSFORM", "FATAL", "REPLAY_STATIC"),
-    "afflictions": ("TAINTED",),
 }
 
 

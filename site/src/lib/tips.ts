@@ -18,6 +18,9 @@ interface Options {
   keywords?: string[];
   /** The item's own name, which gets no tip */
   exclude?: string;
+  /** Tips in English, for text the mod has not translated yet. Only an exact title counts, since the
+   *  page's own words would otherwise pass for inflected English ones */
+  fallback?: Tip[];
 }
 
 // What a gold term can end in besides the word itself: punctuation in any script, and a Mix's "+".
@@ -34,17 +37,20 @@ const shared = (a: string, b: string) => {
   while (i < a.length && a[i] === b[i]) i++;
   return i;
 };
-// How much of a title a word must share: all of a very short one, most of a longer one
-const needed = (title: string) =>
-  title.length <= 2 ? title.length : title.length <= 4 ? Math.max(3, title.length - 1) : title.length - 2;
+// How much of a title a word must share: all of a very short one, most of a longer one, and the stem
+// of a long one, whose ending can change more (Fermente for Fermentation)
+const needed = (length: number) =>
+  length <= 2 ? length : length <= 4 ? Math.max(3, length - 1) : length <= 7 ? length - 2 : Math.max(5, length - 5);
 const stemOf = (word: string, title: string): boolean => {
-  // A name of several words inflects each of them: Взрывную смесь for Взрывная смесь
+  // A name of several words inflects each of them (Взрывную смесь for Взрывная смесь), and a word
+  // never stands for a name of another length (Exhaust Pile is not Exhaust)
   const [words, titles] = [word.split(' '), title.split(' ')];
-  if (titles.length > 1) return words.length === titles.length && titles.every((t, i) => stemOf(words[i], t));
+  if (words.length !== titles.length) return false;
+  if (titles.length > 1) return titles.every((t, i) => stemOf(words[i], t));
   return (
-    (shared(word, title) >= needed(title) &&
+    (shared(word, title) >= needed(title.length) &&
       word.length - title.length <= (title.length <= 2 ? 2 : 5) &&
-      title.length - word.length <= 2) ||
+      title.length - word.length <= (title.length > 7 ? 5 : 2)) ||
     // Or takes a prefix: Berfermentasi for Fermentasi
     (title.length >= 5 && word.includes(title) && word.length - title.length <= 4)
   );
@@ -57,12 +63,17 @@ const goldTerms = (markups: string[]) =>
     ),
   );
 
-export function tipsFor(markups: string[], tips: Tip[], { lang, keywords = [], exclude }: Options): Tip[] {
+export function tipsFor(
+  markups: string[],
+  tips: Tip[],
+  { lang, keywords = [], exclude, fallback = [] }: Options,
+): Tip[] {
   const norm = (text: string) => text.trim().toLocaleLowerCase(lang);
   const terms = goldTerms(markups).filter(Boolean);
   const mine = new Set(terms.map(norm));
   const own = new Set(keywords.map((k) => k.toUpperCase()));
   const byTitle = Map.groupBy(tips, (tip) => norm(tip.title));
+  const fallbackByTitle = Map.groupBy(fallback, (tip) => norm(tip.title));
 
   // Several tips can share a title: the item's own keyword first, then the wording about other
   // cards (_REF), then the tip whose text shares the most gold terms with the item (the mod's
@@ -75,19 +86,22 @@ export function tipsFor(markups: string[], tips: Tip[], { lang, keywords = [], e
   };
   const best = (found: Tip[] | undefined) => found?.reduce((a, b) => (score(b) > score(a) ? b : a), found[0]);
 
+  const exactly = (titles: Map<string, Tip[]>, word: string) =>
+    best(titles.get(word)) ?? best(titles.get(word.replace(PLUS, '')));
+
   const lookup = (term: string) => {
     const word = norm(term);
-    const exact = best(byTitle.get(word)) ?? best(byTitle.get(word.replace(PLUS, '')));
+    const exact = exactly(byTitle, word) ?? exactly(fallbackByTitle, word);
     if (exact || !INFLECTS.test(word)) return exact;
+    // Among the titles the word inflects, the best tip, then the title that shares the most with the
+    // word, then the one closest to its length
     const bare = word.replace(PLUS, '');
-    // The title that shares the most with the word, then the one closest to its length
-    const stem = [...byTitle.keys()]
-      .filter((title) => stemOf(bare, title))
-      .sort(
-        (a, b) =>
-          shared(bare, b) - shared(bare, a) || Math.abs(a.length - bare.length) - Math.abs(b.length - bare.length),
-      )[0];
-    return stem === undefined ? undefined : best(byTitle.get(stem));
+    const rank = (title: string) => [shared(bare, title), -Math.abs(title.length - bare.length)];
+    const found = [...byTitle.entries()]
+      .filter(([title]) => stemOf(bare, title))
+      .flatMap(([title, list]) => list.map((tip) => ({ tip, order: [score(tip), ...rank(title)] })))
+      .sort((a, b) => b.order[0] - a.order[0] || b.order[1] - a.order[1] || b.order[2] - a.order[2]);
+    return found[0]?.tip;
   };
 
   const found = new Map<string, Tip>();

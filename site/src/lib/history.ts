@@ -1,8 +1,8 @@
 // Each card's, relic's and potion's own lines from the patch notes. A line counts for an item when it
 // names it: "Buffed Wallop card: ...", "Changed All At Once and Wormwood cards: ...", "Quench now
-// properly ...". Renames are followed back, so a card's history includes the lines from before it
-// had its name, and a name used again later ("reusing the name from the removed Attack") only counts
-// for the item that has it at the time.
+// properly ...", "Buffed Spike's Decant". Renames are followed back, so a card's history includes the
+// lines from before it had its name, and a name used again later (by a rename that reuses it, or a new
+// item added under a removed one's name) only counts for the item that has it at the time.
 
 import type { NoteItem, Release } from './types';
 
@@ -19,6 +19,7 @@ interface Alias {
   oldest: number;
 }
 
+const escape = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const KIND = String.raw`(?:the )?(.+?)(?: (?:card|relic|potion|power|enchantment|tip|section))?`;
 const RENAME = new RegExp(`^${KIND} to ${KIND}$`);
 // What can follow the names in a rename line: "Renamed Anoint to Spike and reworked it into ..."
@@ -40,6 +41,17 @@ export function renames(versions: Release[]) {
   return found;
 }
 
+/** The lines that add an item, newest first: "Added Toadstone relic (Uncommon): ..." */
+function additions(versions: Release[]) {
+  const found: { text: string; at: number }[] = [];
+  versions.forEach((release, at) =>
+    each(release, (item) => {
+      if (item.text.startsWith('Added ')) found.push({ text: item.text, at });
+    }),
+  );
+  return found;
+}
+
 function each(release: Release, visit: (item: NoteItem, parent: NoteItem | null) => void) {
   const walk = (items: NoteItem[], parent: NoteItem | null) =>
     items.forEach((item) => {
@@ -52,14 +64,18 @@ function each(release: Release, visit: (item: NoteItem, parent: NoteItem | null)
 /** Every name an item has had, and the versions it had each one */
 function aliases(names: Record<string, string>, versions: Release[]): Alias[] {
   const all = renames(versions);
+  const added = additions(versions);
   const last = versions.length - 1;
   const found: Alias[] = [];
   const add = (id: string, name: string, newest: number) => {
-    // A name holds back to the rename that gave it, and not past an older rename that took the same
-    // name away from something else (the name was free again, then reused)
+    // A name holds back to the rename that gave it or the line that added the item, and not past an
+    // older rename that took the same name away from something else (the name was free again, then
+    // reused)
     const given = all.find((r) => r.to === name && r.at >= newest);
     const taken = all.find((r) => r.from === name && r.at > newest);
-    const oldest = Math.min(given ? given.at : last, taken ? taken.at - 1 : last);
+    const addedAs = new RegExp(`^Added (?:the )?${escape(name)}(?![\\w'])`);
+    const born = added.find((a) => a.at >= newest && addedAs.test(a.text));
+    const oldest = Math.min(given ? given.at : last, taken ? taken.at - 1 : last, born ? born.at : last);
     found.push({ id, name, newest, oldest });
     if (given && given.at <= oldest) add(id, given.from, given.at);
   };
@@ -67,7 +83,6 @@ function aliases(names: Record<string, string>, versions: Release[]): Alias[] {
   return found;
 }
 
-const escape = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 // A name right after another capitalized word is the end of a longer name (Extra Dose, Potent
 // Strike), unless that word is the line's verb (Buffed Dose, Reworked Spike)
 const LONGER = /(?:^|[^\w'])[A-Z][\w'-]*(?<!ed) $/;
@@ -76,7 +91,10 @@ const LONGER = /(?:^|[^\w'])[A-Z][\w'-]*(?<!ed) $/;
  *  when the parent names the item */
 export function changes(names: Record<string, string>, versions: Release[]): Map<string, Change[]> {
   const known = aliases(names, versions).sort((a, b) => b.name.length - a.name.length);
-  const patterns = new Map(known.map((a) => [a.name, new RegExp(`(?<![\\w'])${escape(a.name)}(?![\\w'])`, 'g')]));
+  // A name ends at a word's end, and may take a possessive: Spike's
+  const patterns = new Map(
+    known.map((a) => [a.name, new RegExp(`(?<![\\w'])${escape(a.name)}(?!\\w|'(?!s\\b))`, 'g')]),
+  );
   const found = new Map<string, Change[]>();
   const add = (id: string, change: Change) => {
     const list = found.get(id) ?? [];

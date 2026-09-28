@@ -193,8 +193,8 @@
     "text": "Stärke fügt deinen Angriffen mehr Schaden hinzu.",
     "title": "Stärke"
    },
-   "TAINTED": {
-    "text": "Erhalte beim Spielen [blue]{Amount}[/blue] [gold]Schmutzig[/gold].",
+   "TAINTED_POWER": {
+    "text": "Nimm in diesem Zug mehr Schaden von Angriffen.",
     "title": "Schmutzig"
    },
    "THORNS_POWER": {
@@ -443,8 +443,8 @@
     "text": "Strength adds additional damage to Attacks.",
     "title": "Strength"
    },
-   "TAINTED": {
-    "text": "Gain [blue]{Amount}[/blue] [gold]Tainted[/gold] when played.",
+   "TAINTED_POWER": {
+    "text": "Take additional damage from Attacks this turn.",
     "title": "Tainted"
    },
    "THORNS_POWER": {
@@ -693,8 +693,8 @@
     "text": "Fuerza brinda daño adicional a los ataques.",
     "title": "Fuerza"
    },
-   "TAINTED": {
-    "text": "Al jugarla, obtienes [blue]{Amount}[/blue] de [gold]corrupción[/gold].",
+   "TAINTED_POWER": {
+    "text": "Recibes daño adicional de los ataques en este turno.",
     "title": "Corrupción"
    },
    "THORNS_POWER": {
@@ -943,9 +943,9 @@
     "text": "La Force augmente les dégâts infligés par les Attaques.",
     "title": "Force"
    },
-   "TAINTED": {
-    "text": "Lorsque vous jouez cette carte, gagnez [blue]{Amount}[/blue] de [gold]Souillure[/gold]",
-    "title": "Souillée"
+   "TAINTED_POWER": {
+    "text": "Recevez des dégâts supplémentaires des Attaques pendant ce tour.",
+    "title": "Souillure"
    },
    "THORNS_POWER": {
     "text": "Lorsqu'une attaque vous touche, infligez des dégâts en retour.",
@@ -1193,8 +1193,8 @@
     "text": "Kekuatan menambah kerusakan tambahan ke Serangan.",
     "title": "Kekuatan"
    },
-   "TAINTED": {
-    "text": "Dapatkan [blue]{Amount}[/blue] [gold]Noda[/gold] saat dimainkan.",
+   "TAINTED_POWER": {
+    "text": "Dapatkan kerusakan tambahan dari Serangan giliran ini.",
     "title": "Noda"
    },
    "THORNS_POWER": {
@@ -1443,8 +1443,8 @@
     "text": "La Forza aggiunge danno extra alle carte Attacco.",
     "title": "Forza"
    },
-   "TAINTED": {
-    "text": "Ottieni [blue]{Amount}[/blue] di [gold]Contaminazione[/gold] quando viene giocata.",
+   "TAINTED_POWER": {
+    "text": "In questo turno, subisci danno extra dalle carte Attacco.",
     "title": "Contaminazione"
    },
    "THORNS_POWER": {
@@ -1693,8 +1693,8 @@
     "text": "筋力はアタックのダメージを追加する。",
     "title": "筋力"
    },
-   "TAINTED": {
-    "text": "プレイした時、[gold]汚染[/gold][blue]{Amount}[/blue]を受ける。",
+   "TAINTED_POWER": {
+    "text": "このターン、アタックから追加ダメージを受ける。",
     "title": "汚染"
    },
    "THORNS_POWER": {
@@ -1943,8 +1943,8 @@
     "text": "힘은 공격 카드의 피해량을 증가시킵니다.",
     "title": "힘"
    },
-   "TAINTED": {
-    "text": "사용 시 [gold]훼손됨[/gold]을 [blue]{Amount}[/blue] 얻습니다.",
+   "TAINTED_POWER": {
+    "text": "이번 턴 동안 공격을 통해 받는 피해량이 증가합니다.",
     "title": "훼손됨"
    },
    "THORNS_POWER": {
@@ -2193,8 +2193,8 @@
     "text": "Zwiększa obrażenia zadawane przez Ataki.",
     "title": "Siła"
    },
-   "TAINTED": {
-    "text": "Po zagraniu otrzymaj [blue]{Amount}[/blue] pkt. [gold]Skażenia[/gold].",
+   "TAINTED_POWER": {
+    "text": "Otrzymujesz dodatkowe obrażenia od Ataków w tej turze.",
     "title": "Skażenie"
    },
    "THORNS_POWER": {
@@ -2443,8 +2443,8 @@
     "text": "Força concede dano adicional a Ataques.",
     "title": "Força"
    },
-   "TAINTED": {
-    "text": "Receba [blue]{Amount}[/blue] de [gold]Contaminação[/gold] quando jogada.",
+   "TAINTED_POWER": {
+    "text": "Sofra dano adicional de Ataques neste turno.",
     "title": "Contaminação"
    },
    "THORNS_POWER": {
@@ -2693,8 +2693,8 @@
     "text": "Сила повышает наносимый Атаками урон.",
     "title": "Сила"
    },
-   "TAINTED": {
-    "text": "Вы получите [blue]{Amount}[/blue] [gold]порчи[/gold], если разыграете эту карту.",
+   "TAINTED_POWER": {
+    "text": "Полученный урон от Атак увеличен в этом ходу.",
     "title": "Порча"
    },
    "THORNS_POWER": {
@@ -2943,8 +2943,8 @@
     "text": "La Fuerza añade daño adicional a los Ataques.",
     "title": "Fuerza"
    },
-   "TAINTED": {
-    "text": "Al jugar esta carta, obtienes [blue]{Amount}[/blue] de [gold]Impureza[/gold]",
+   "TAINTED_POWER": {
+    "text": "Recibes daño adicional de Ataques durante este turno.",
     "title": "Impureza"
    },
    "THORNS_POWER": {
@@ -3193,8 +3193,8 @@
     "text": "ความแข็งแรงเพิ่มความเสียหายจากการโจมตี",
     "title": "ความแข็งแรง"
    },
-   "TAINTED": {
-    "text": "ได้รับ [blue]{Amount}[/blue] [gold]ปนเปื้อน[/gold]เมื่อเล่น",
+   "TAINTED_POWER": {
+    "text": "ได้รับความเสียหายจากการโจมตีเพิ่มขึ้นในเทิร์นนี้",
     "title": "ปนเปื้อน"
    },
    "THORNS_POWER": {
@@ -3443,8 +3443,8 @@
     "text": "Kuvvet, Ataklara fazladan hasar ekler.",
     "title": "Kuvvet"
    },
-   "TAINTED": {
-    "text": "Oynandığında [blue]{Amount}[/blue] [gold]Lekeli[/gold] elde et.",
+   "TAINTED_POWER": {
+    "text": "Bu tur Ataklardan fazladan hasar al.",
     "title": "Lekeli"
    },
    "THORNS_POWER": {
@@ -3693,8 +3693,8 @@
     "text": "力量会增加攻击牌造成的伤害。",
     "title": "力量"
    },
-   "TAINTED": {
-    "text": "打出时获得[blue]{Amount}[/blue]层[gold]污染[/gold]。",
+   "TAINTED_POWER": {
+    "text": "在本回合受到额外的攻击伤害。",
     "title": "污染"
    },
    "THORNS_POWER": {
@@ -3943,8 +3943,8 @@
     "text": "力量會使攻擊牌造成額外傷害。",
     "title": "力量"
    },
-   "TAINTED": {
-    "text": "打出時，獲得 [blue]{Amount}[/blue] 層[gold]污穢[/gold]。",
+   "TAINTED_POWER": {
+    "text": "本回合受到的攻擊牌傷害增加。",
     "title": "污穢"
    },
    "THORNS_POWER": {
