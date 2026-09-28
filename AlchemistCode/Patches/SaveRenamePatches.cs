@@ -51,6 +51,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-SWILL"] = ModelDb.Card<TasteTest>().Id!,
         ["ALCHEMIST-TOXIN_SKIN"] = ModelDb.Card<Uncork>().Id!,
         ["ALCHEMIST-VIAL_IN_RESERVE"] = ModelDb.Card<Uncork>().Id!,
+        ["ALCHEMIST-VITRIFY"] = ModelDb.Card<LayerUp>().Id!,
         // Cuts, not renames: each removed card maps to the new card in its slot, so a mid-save
         // update hands the player something new instead of a blank deprecated card
         ["ALCHEMIST-MELTDOWN"] = ModelDb.Card<Fling>().Id!,

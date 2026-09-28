@@ -8,11 +8,11 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace Alchemist.AlchemistCode.Cards.Common;
 
 [CardTheme(CardTheme.Antitoxin)]
-public class Vitrify : AlchemistCard
+public class LayerUp : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Vitrify() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public LayerUp() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(3, 1);
         WithVar("antitoxin", 2, 1);
