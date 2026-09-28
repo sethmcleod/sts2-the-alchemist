@@ -73,8 +73,9 @@ FALLBACK_ART = {"card.png", "power.png", "relic.png", "relic_outline.png", "poti
 
 # A subclass of one of these bases takes its icon from the base game, not from the mod path, so
 # it has no art of its own to check. CustomTemporaryStrengthPower borrows the shackles and flex
-# icons that every base temporary-strength power shares
-BORROWED_ART_BASES = {"CustomTemporaryStrengthPower"}
+# icons that every base temporary-strength power shares; BorrowedIconPower<T> borrows the icon of
+# the base power T
+BORROWED_ART_BASES = {"CustomTemporaryStrengthPower", "BorrowedIconPower"}
 
 
 def norm(name: str) -> str:
@@ -115,7 +116,9 @@ def entity_classes(subdir: str, base_marker: str, skip_bases: set[str] = frozens
             abstract_a, abstract_b, name, bases = m.groups()
             if abstract_a or abstract_b or base_marker not in bases:
                 continue
-            if skip_bases & {b.strip() for b in bases.split(",")}:
+            # Compare base names without generic arguments: BorrowedIconPower<StranglePower> is a
+            # BorrowedIconPower
+            if skip_bases & {re.sub(r"<.*", "", b).strip() for b in bases.split(",")}:
                 continue
             out[name] = path
     return out
