@@ -1,0 +1,14 @@
+---
+// A link to another site. It opens in a new tab, and says so to a screen reader
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'a'> & { href: string };
+
+const { href, ...rest } = Astro.props;
+const { l } = Astro.locals;
+---
+
+<a href={href} target="_blank" rel="noopener" {...rest}>
+  <slot />
+  <span class="sr-only">{` ${l.t('(opens in a new tab)')}`}</span>
+</a>

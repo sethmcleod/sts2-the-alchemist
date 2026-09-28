@@ -1,0 +1,74 @@
+---
+import { filterOptions } from '../../../islands/Filters';
+import Overview from '../../../islands/Overview';
+import { statsLang } from '../../../islands/useStats';
+import Stats from '../../../layouts/Stats.astro';
+import { islandLang, runs } from '../../../lib/content';
+import { everyLanguage } from '../../../lib/i18n';
+import { DEFAULT_FILTERS } from '../../../lib/runs';
+import { overview } from '../../../lib/views/overview';
+
+export const getStaticPaths = everyLanguage;
+
+const { l, locale } = Astro.locals;
+const data = runs(locale);
+const { meta } = data;
+// The island redraws with the stats strings alone, so the numbers it starts with use them too
+const init = islandLang(locale);
+const il = statsLang(init);
+---
+
+<Stats
+  title={l.t('Run stats')}
+  description={l.n(
+    meta.total_runs,
+    'How {n} run of The Alchemist went: win rates by ascension, playstyle and version.',
+    'How {n} runs of The Alchemist went: win rates by ascension, playstyle and version.',
+  )}
+>
+  <Overview client:idle locale={init} initial={overview(il, data, DEFAULT_FILTERS)} options={filterOptions(il, data)} />
+
+  <section id="about" class="mt-10 max-w-[70ch] scroll-mt-4">
+    <h2 class="text-2xl">{l.t('How the stats work')}</h2>
+    <dl class="about">
+      <dt>{l.t('Where they come from')}</dt>
+      <dd>
+        {l.t(
+          "When a run ends, the game can share an anonymous summary of it. It only does this when Upload Data is on in the game's settings. The Alchemist also has its own switch, {setting}, in the mod settings. Nothing sent includes a name or a Steam ID.",
+          { setting: data.name(`${meta.prefix}ANALYTICS_ENABLED`) },
+        )}
+      </dd>
+      <dt>{l.t('Which runs count')}</dt>
+      <dd>
+        {l.t(
+          'Standard mode runs that got past floor 5. Abandoned runs and runs with the full console on are left out.',
+        )}
+      </dd>
+      <dt>{l.t('Reading the ranges')}</dt>
+      <dd>
+        {l.t(
+          'A win rate from a handful of runs can swing a lot. The thin line on a bar shows where the real rate most likely sits (a 95% interval), so a wide line means there is not much data yet.',
+        )}
+      </dd>
+      <dt>{l.t('Why card win rates run high')}</dt>
+      <dd>
+        {l.t(
+          'Winning runs last longer and finish with more cards, so the middle card wins more often than the overall win rate. That is why each card is ranked against the cards of its own rarity.',
+        )}
+      </dd>
+      <dt>{l.t('How fresh they are')}</dt>
+      <dd>
+        {l.n(
+          meta.total_runs,
+          'Updated every day, with {n} run from {players} between {first} and {last}.',
+          'Updated every day, with {n} runs from {players} between {first} and {last}.',
+          {
+            players: l.n(meta.players, '{n} player', '{n} players'),
+            first: l.date(meta.first_day),
+            last: l.date(meta.last_day),
+          },
+        )}
+      </dd>
+    </dl>
+  </section>
+</Stats>

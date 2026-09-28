@@ -68,6 +68,10 @@ stays honest about which copy you are on.
 `.github/workflows/lint.yml` runs on each push and each PR. It does the three-way rule
 check. It also checks the localization JSON. It does no more than this.
 
+`.github/workflows/site.yml` keeps the website (`site/`, alchemist.fyi) on the newest
+release and refreshes its run stats every day. `scripts/dev.sh site` builds and serves the
+site locally.
+
 A compile needs `sts2.dll` from a Steam install. A public runner cannot have this file.
 Thus the build fails without the game (`Sts2PathDiscovery.props`). The compile runs on
 the local machine instead. `scripts/dev.sh release` starts it (see

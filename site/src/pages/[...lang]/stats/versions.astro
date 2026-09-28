@@ -1,0 +1,31 @@
+---
+import { filterOptions } from '../../../islands/Filters';
+import { statsLang } from '../../../islands/useStats';
+import Versions from '../../../islands/Versions';
+import Stats from '../../../layouts/Stats.astro';
+import { islandLang, runs } from '../../../lib/content';
+import { everyLanguage } from '../../../lib/i18n';
+import { DEFAULT_FILTERS } from '../../../lib/runs';
+import { versions } from '../../../lib/views/versions';
+
+export const getStaticPaths = everyLanguage;
+
+const { l, locale } = Astro.locals;
+const data = runs(locale);
+const [b, a = b] = [...data.meta.versions].reverse();
+// The island redraws with the stats strings alone, so the numbers it starts with use them too
+const init = islandLang(locale);
+const il = statsLang(init);
+---
+
+<Stats
+  title={l.t('Versions')}
+  description={l.t("How The Alchemist's win rates and cards changed from one version to the next.")}
+>
+  <Versions
+    client:idle
+    locale={init}
+    initial={versions(il, data, DEFAULT_FILTERS, a, b)}
+    options={filterOptions(il, data)}
+  />
+</Stats>

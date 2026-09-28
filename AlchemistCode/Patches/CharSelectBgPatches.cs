@@ -46,16 +46,39 @@ class CharSelectBgPatches
     // The animated select screen is a Spine scene with the background, character and
     // motion baked in; a mod scene cannot hold a SpineSprite, so it is built here
     private const string SelectDir = $"{MainFile.ResPath}/animations/character_select/alchemist";
+    private const string SelectAtlas = $"{SelectDir}/select_screen.atlas";
 
     private static readonly string[] HeadBones = ["head"];
+
+    // The eyes on the 350 x 296 head image: the left one a circle at (127.9, 127.5) of radius 66, the
+    // right one at (284, 158.5) of radius 62.5, its left side behind the head. Each has 1 px to spare
+    private const float HeadWidth = 350f;
+    private const float HeadHeight = 296f;
+    private static readonly Rainbow.EyeMap HeadEyes = new("head", SelectAtlas, "head",
+        Left: new Vector4(127.9f / HeadWidth, 127.5f / HeadHeight, 67f / HeadWidth, 67f / HeadHeight),
+        Right: new Vector4(284f / HeadWidth, 158.5f / HeadHeight, 63.5f / HeadWidth, 63.5f / HeadHeight));
+
+    // The painted background behind the character is robe purple too, thus nothing goes on the whole
+    // sprite and only these slots cycle. arm_r_2 paints the sleeve, hand, staff and orb as one piece,
+    // and the light of the orb runs along the edges of the other parts
+    private static readonly Rainbow.Rig RainbowRig = new(
+        Rainbow.Parts.None,
+        Rainbow.Slots(
+            (Rainbow.Parts.Robe | Rainbow.Parts.Bag | Rainbow.Parts.Light, ["body"]),
+            (Rainbow.Parts.Robe | Rainbow.Parts.Light, ["arm_r_1"]),
+            (Rainbow.Parts.Robe, ["hand_l_2"]),
+            (Rainbow.Parts.Robe | Rainbow.Parts.Skin | Rainbow.Parts.Light, ["hand_l_1"]),
+            (Rainbow.Parts.Robe | Rainbow.Parts.Skin | Rainbow.Parts.Orb, ["arm_r_2"]),
+            (Rainbow.Parts.Skin | Rainbow.Parts.Eyes | Rainbow.Parts.Light, ["head"]),
+            (Rainbow.Parts.Orb, ["staff_light"])),
+        HeadEyes);
 
     static void AttachSpineScene(Control bg)
     {
         if (bg.GetNodeOrNull("SelectScreenSpine") != null)
             return;
 
-        if (SpineModel.Load($"{SelectDir}/select_screen.atlas", $"{SelectDir}/select_screen.skel")
-            is not { } data)
+        if (SpineModel.Load(SelectAtlas, $"{SelectDir}/select_screen.skel") is not { } data)
             return;
 
         BigHead.Apply(data, HeadBones);
@@ -91,6 +114,7 @@ class CharSelectBgPatches
         bg.AddChild(sprite);
         bg.MoveChild(under, 0);
         bg.MoveChild(sprite, 1);
+        Rainbow.Apply(sprite, data, RainbowRig);
 
         // Layout() re-derives that framing from whatever rect is actually visible, so wider
         // windows scale the painting up just enough to stay covered edge to edge, and a

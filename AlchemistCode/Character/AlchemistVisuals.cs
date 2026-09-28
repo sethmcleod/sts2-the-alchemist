@@ -128,6 +128,20 @@ internal static class AlchemistVisuals
     // The death animation lays down a second body, which has a head bone of its own
     public static readonly string[] HeadBones = ["head", "head_extra_1"];
 
+    // The eyes and the orb are both gold, thus each has slots of its own. staff_extra paints the hand,
+    // the staff and the orb as one piece. The staff, the herbs, the potions and the trails keep their color
+    public static readonly Rainbow.Rig RainbowRig = new(
+        Rainbow.Parts.Robe | Rainbow.Parts.Skin | Rainbow.Parts.Bag,
+        Rainbow.Slots(
+            (Rainbow.Parts.Eyes, ["eye_l", "eye_r", "eye_l_extra_2", "eye_r_extra1"]),
+            (Rainbow.Parts.Orb, ["staff_gem1", "staff_gem2", "staff_gem_white", "staff_gem_white4",
+                "staff_shine_a1", "staff_shine_a2", "star_a1", "star_a2", "Light", "Light2"]),
+            (Rainbow.Parts.Skin | Rainbow.Parts.Orb, ["staff_extra1", "staff_extra2"]),
+            (Rainbow.Parts.None, ["staff1", "staff2",
+                "herbs1", "herbs2", "herbs3", "herbs4", "herbs5", "herbs6", "herbs7", "herbs8",
+                "potion1", "potion2", "potion3", "potion4", "potion5", "potion6",
+                "arrow_a1", "Trail_a1", "Trail_a2", "Trail_a3", "Trail_b1"])));
+
     /// <summary>
     /// Returns the model, or null if the Spine files do not load. Null makes BaseLib use
     /// CustomVisualPath, which the character points at the base game fallback scene.
@@ -166,7 +180,9 @@ internal static class AlchemistVisuals
 
         // A rig that changes size between exports still draws ModelHeight high
         var scale = ModelHeight / SpineModel.AboveOrigin(data, FallbackSkeletonHeight);
-        return SpineModel.CreateSprite(data, scale);
+        var sprite = SpineModel.CreateSprite(data, scale);
+        if (sprite != null) Rainbow.Apply(sprite, data, RainbowRig);
+        return sprite;
     }
 
     public static Resource? SkeletonData()

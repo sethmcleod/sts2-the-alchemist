@@ -243,7 +243,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         OnFermentTurnsChanged();
     }
 
-    // Async because every turn of fermentation gained also pays the Mellow engine. Both the natural
+    // Async because every turn of fermentation gained also pays the Mellow and Overflow engines. Both the natural
     // end-of-turn tick and the Trigger cards route through here, so the payoff has one home
     internal async Task AdvanceFerment(PlayerChoiceContext choiceContext, int turns)
     {
@@ -254,7 +254,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (creature.GetPower<MellowPower>() is { } mellow)
             await mellow.OnFermented(turns);
         if (creature.GetPower<OverflowPower>() is { } overflow)
-            overflow.OnFermented(this);
+            await overflow.OnFermented(choiceContext, this, turns);
         await OnFermented(choiceContext, turns);
     }
 

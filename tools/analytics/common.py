@@ -5,7 +5,14 @@ it in tools/analytics/supabase-service-key.local.txt (gitignored) or the SUPABAS
 var. The publishable key in the DLL can only insert, so it cannot read anything.
 """
 
+import http.client
+import json
 import os
+import ssl
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -47,10 +54,19 @@ def add_common_args(parser) -> None:
     parser.add_argument("--days-back", type=int, default=None, help="only runs from the last N days")
 
 
+def ssl_context() -> ssl.SSLContext:
+    """The system's certificates, or certifi's where Python has none (the python.org macOS build)."""
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        return ssl.create_default_context()
+
+
 def fetch_runs(key: str, mod_version: str | None = None, game_version: str | None = None,
                days_back: int | None = None) -> list[dict]:
-    """Every run row, oldest first. PostgREST pages at 1000 rows by default so this walks the ranges."""
-    import requests  # only the network paths need it, so the offline ones do not
+    """Every run row, oldest first. PostgREST pages at 1000 rows by default so this walks the ranges.
+    Standard library only, so a build machine needs no pip install."""
     if not RUNS_URL:
         raise SystemExit(missing_url_message())
     params = {
@@ -66,14 +82,30 @@ def fetch_runs(key: str, mod_version: str | None = None, game_version: str | Non
         since = datetime.now(timezone.utc) - timedelta(days=days_back)
         params["created_at"] = f"gte.{since.isoformat()}"
 
+    url = f"{RUNS_URL}?{urllib.parse.urlencode(params)}"
     headers = {"apikey": key, "Authorization": f"Bearer {key}"}
-    page, rows = 1000, []
+    page, rows, context = 1000, [], ssl_context()
     for start in range(0, 1_000_000, page):
-        resp = requests.get(RUNS_URL, params=params, timeout=60,
-                            headers=headers | {"Range": f"{start}-{start + page - 1}"})
-        resp.raise_for_status()
-        batch = resp.json()
+        request = urllib.request.Request(url, headers=headers | {"Range": f"{start}-{start + page - 1}"})
+        batch = read_page(request, context)
         rows.extend(batch)
         if len(batch) < page:
             break
     return rows
+
+
+def read_page(request: urllib.request.Request, context: ssl.SSLContext, attempts: int = 3) -> list[dict]:
+    """One page of rows. A slow, dropped or cut-off read and a busy server (429 or 5xx) are tried
+    again, so one hiccup does not fail a daily build; any other HTTP error gets the same answer twice."""
+    for attempt in range(1, attempts + 1):
+        try:
+            with urllib.request.urlopen(request, timeout=60, context=context) as response:
+                return json.load(response)
+        except urllib.error.HTTPError as error:
+            if error.code != 429 and error.code < 500 or attempt == attempts:
+                raise
+        except (urllib.error.URLError, http.client.HTTPException, ssl.SSLError, TimeoutError, ConnectionError):
+            if attempt == attempts:
+                raise
+        time.sleep(5 * attempt)
+    return []

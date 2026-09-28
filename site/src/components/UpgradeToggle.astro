@@ -1,0 +1,25 @@
+---
+// Flips one card between its base and upgraded text. It works without a script: global.css reads
+// its checked state
+interface Props {
+  name: string;
+  /** Whether a reload keeps it flipped. A card's own sheet leaves that to #upgraded in the address */
+  restore?: boolean;
+}
+
+const { name, restore = true } = Astro.props;
+const { l } = Astro.locals;
+---
+
+<label class="upgrade">
+  <input
+    type="checkbox"
+    class="upgrade-toggle"
+    autocomplete={restore ? undefined : 'off'}
+    aria-label={l.t('Switch {name} between base and upgraded', { name })}
+  />
+  <span class="upgrade-tip" aria-hidden="true">
+    <span class="base">{l.t('Show upgraded')}</span>
+    <span class="upgraded">{l.t('Show base card')}</span>
+  </span>
+</label>

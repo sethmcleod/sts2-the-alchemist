@@ -1,0 +1,32 @@
+---
+import { filterOptions } from '../../../islands/Filters';
+import RelicStats from '../../../islands/RelicStats';
+import { statsLang } from '../../../islands/useStats';
+import Stats from '../../../layouts/Stats.astro';
+import { iconUrls, islandLang, runs } from '../../../lib/content';
+import { everyLanguage } from '../../../lib/i18n';
+import { DEFAULT_FILTERS } from '../../../lib/runs';
+import { relicStats } from '../../../lib/views/relics';
+
+export const getStaticPaths = everyLanguage;
+
+const { l, locale } = Astro.locals;
+const data = runs(locale);
+const icons = await iconUrls();
+// The island redraws with the stats strings alone, so the numbers it starts with use them too
+const init = islandLang(locale);
+const il = statsLang(init);
+---
+
+<Stats
+  title={l.t('Relic and potion stats')}
+  description={l.t('Ancient choices, potions drunk and the base game relics Alchemist runs end with.')}
+>
+  <RelicStats
+    client:idle
+    locale={init}
+    initial={relicStats(il, data, DEFAULT_FILTERS, icons)}
+    options={filterOptions(il, data)}
+    icons={icons}
+  />
+</Stats>

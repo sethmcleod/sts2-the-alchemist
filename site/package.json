@@ -1,0 +1,40 @@
+{
+  "name": "alchemist-site",
+  "private": true,
+  "type": "module",
+  "description": "alchemist.fyi: every card, relic, potion, and power, with anonymous data from runs",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "npm run data && astro build",
+    "build:site": "astro build",
+    "preview": "astro preview",
+    "data": "python3 ../tools/analytics/export_stats.py",
+    "data:seed": "python3 ../tools/analytics/seed_runs.py --local && python3 ../tools/analytics/export_stats.py --from-file ../tools/analytics/seed-runs.local.json",
+    "check": "astro check",
+    "test": "vitest run",
+    "format": "prettier --write .",
+    "strings": "node scripts/strings.mjs"
+  },
+  "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.2",
+    "@astrojs/preact": "^6.0.5",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
+    "astro": "^7.3.5",
+    "preact": "^10.29.8",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/node": "^22.20.4",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.0",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.2"
+  }
+}

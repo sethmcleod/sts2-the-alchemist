@@ -1,0 +1,13 @@
+---
+// Changelog text, with its links and arrows (lib/notes.ts)
+import { noteParts } from '../lib/notes';
+import External from './External.astro';
+
+interface Props {
+  text: string;
+}
+
+const parts = noteParts(Astro.props.text);
+---
+
+{parts.map((part) => ('href' in part ? <External href={part.href}>{part.text}</External> : part.text))}

@@ -1,0 +1,4002 @@
+{
+ "deu": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Äonenglas",
+   "AXEBOTS_NORMAL": "Axtbot",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Kampferprobter Dummy",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Kampferprobter Dummy",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Kampferprobter Dummy",
+   "BOWLBUGS_NORMAL": "Schalenkäfer-Schwarm",
+   "BOWLBUGS_WEAK": "Schalenkäfer",
+   "BYGONE_EFFIGY_ELITE": "Vergessenes Bildnis",
+   "BYRDONIS_ELITE": "Foglonis",
+   "CEREMONIAL_BEAST_BOSS": "Zeremonienbiest",
+   "CHOMPERS_NORMAL": "Ein Paar Automatons",
+   "CONSTRUCT_MENAGERIE_NORMAL": "Konstrukt-Menagerie",
+   "CORPSE_SLUGS_NORMAL": "Viele Leichenschnecken",
+   "CORPSE_SLUGS_WEAK": "Leichenschnecken",
+   "CUBEX_CONSTRUCT_NORMAL": "Kubex-Konstrukt",
+   "CULTISTS_NORMAL": "Kultisten",
+   "DECIMILLIPEDE_ELITE": "Zigtausendfüßer",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Schlängler",
+   "DEPRECATED_ENCOUNTER": "Veraltetes Gefecht",
+   "DEVOTED_SCULPTOR_WEAK": "Eifriger Bildhauer",
+   "ENTOMANCER_ELITE": "Entomant",
+   "EXOSKELETONS_NORMAL": "Viele Exoskelette",
+   "EXOSKELETONS_WEAK": "Exoskelette",
+   "FABRICATOR_NORMAL": "Fabrikateur",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "Der Händler???",
+   "FLYCONID_NORMAL": "Pilz und Schleim",
+   "FLYCONID_WEAK": "Fliegonide",
+   "FOGMOG_NORMAL": "Schwummschwamm",
+   "FOSSIL_STALKER_NORMAL": "Fossil-Pirscher",
+   "FROG_KNIGHT_NORMAL": "Froschritter",
+   "FUZZY_WURM_CRAWLER_WEAK": "Flaumiger Wurmkrabbler",
+   "GLOBE_HEAD_NORMAL": "Ein einsamer Kugelkopf",
+   "GREMLIN_MERC_NORMAL": "Zwei Gremlins in einem Mantel",
+   "HAUNTED_SHIP_NORMAL": "Spukschiff",
+   "HUNTER_KILLER_NORMAL": "Mörder der Jäger",
+   "INFESTED_PRISMS_ELITE": "Befallenes Prisma",
+   "INKLETS_NORMAL": "Tintchen",
+   "KAISER_CRAB_BOSS": "Kaiserkrabbe",
+   "KNIGHTS_ELITE": "Ritterbande",
+   "KNOWLEDGE_DEMON_BOSS": "Wissensdämon",
+   "LAGAVULIN_MATRIARCH_BOSS": "Lagavulin-Matriarchin",
+   "LIVING_FOG_NORMAL": "Lebender Nebel",
+   "LOUSE_PROGENITOR_NORMAL": "Laus-Stammvater",
+   "MAWLER_NORMAL": "Schlunderer",
+   "MECHA_KNIGHT_ELITE": "Mecha-Ritter",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "Geheimnisvoller Ritter",
+   "MYTES_NORMAL": "Eine Menge Mylben",
+   "NIBBITS_NORMAL": "Ein Paar Mümmel",
+   "NIBBITS_WEAK": "Ein einzelnes Mümmel",
+   "OVERGROWTH_CRAWLERS": "Überwuchs-Krabbler",
+   "OVERGROWTH_WILDLIFE": "Überwuchs-Wildtiere",
+   "OVICOPTER_NORMAL": "Ovikopter",
+   "OWL_MAGISTRATE_NORMAL": "Eulenmagistratin",
+   "PHANTASMAL_GARDENERS_ELITE": "Trügerische Gärtner",
+   "PHROG_PARASITE_ELITE": "Phroschparasit",
+   "PUNCH_CONSTRUCT_NORMAL": "Boxer-Konstrukt",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "Boxer-Konstrukte",
+   "QUEEN_BOSS": "Königin",
+   "RUBY_RAIDERS_NORMAL": "Rubinplünderer",
+   "SCROLLS_OF_BITING_NORMAL": "Viele Pergamente des Beißens",
+   "SCROLLS_OF_BITING_WEAK": "Pergamente des Beißens",
+   "SEAPUNK_NORMAL": "Unterdocks-Fauna",
+   "SEAPUNK_WEAK": "Meerespunk",
+   "SEWER_CLAM_NORMAL": "Kloakenmuschel",
+   "SHRINKER_BEETLE_WEAK": "Schrumpfkäfer",
+   "SKULKING_COLONY_ELITE": "Versteckte Kolonie",
+   "SLIMED_BERSERKER_NORMAL": "Schleimiger Berserker",
+   "SLIMES_NORMAL": "Schwarm Schleime",
+   "SLIMES_WEAK": "Gruppe Schleime",
+   "SLITHERING_STRANGLER_NORMAL": "Würger und Freund",
+   "SLUDGE_SPINNER_WEAK": "Schlickschleuder",
+   "SLUMBERING_BEETLE_NORMAL": "Schlummergruppe",
+   "SNAPPING_JAXFRUIT_NORMAL": "Überwuchs-Flora",
+   "SOUL_FYSH_BOSS": "Seelenfysch",
+   "SOUL_NEXUS_ELITE": "Seelennexus",
+   "SPINY_TOAD_NORMAL": "Stachlige Kröte",
+   "TERROR_EEL_ELITE": "Furcht-Aal",
+   "TEST_SUBJECT_BOSS": "Testsubjekt",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "Der Architekt",
+   "THE_INSATIABLE_BOSS": "Der Nimmersatt",
+   "THE_KIN_BOSS": "Die Sippe",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "Verlassene und Vergessene",
+   "THE_OBSCURA_NORMAL": "Die Obscura",
+   "THIEVING_HOPPER_WEAK": "Diebischer Hüpfer",
+   "TOADPOLES_WEAK": "Krötlinge",
+   "TUNNELER_NORMAL": "Grabendes Pärchen",
+   "TUNNELER_WEAK": "Tunnler",
+   "TURRET_OPERATOR_WEAK": "Geschütz-Operateur",
+   "TWO_TAILED_RATS_NORMAL": "Zweischwänzige Ratten",
+   "VANTOM_BOSS": "Vantom",
+   "VINE_SHAMBLER_NORMAL": "Ranken-Schlurfer",
+   "WATERFALL_GIANT_BOSS": "Wasserfall-Riese"
+  },
+  "keywords": {
+   "Eternal": "Ewig",
+   "Ethereal": "Flüchtig",
+   "Exhaust": "Erschöpft",
+   "Innate": "Angeboren",
+   "Retain": "Behalten",
+   "Sly": "Listig",
+   "Unplayable": "Unspielbar"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "Gewöhnlich",
+   "Event": "Ereignis",
+   "Rare": "Selten",
+   "Uncommon": "Ungewöhnlich"
+  },
+  "rarities": {
+   "Ancient": "Ahnen",
+   "Basic": "Basis",
+   "Common": "Gewöhnlich",
+   "Event": "Ereignis",
+   "Rare": "Selten",
+   "Token": "Token",
+   "Uncommon": "Ungewöhnlich"
+  },
+  "relic_rarities": {
+   "Ancient": "Ahnen-Relikt",
+   "Common": "Gewöhnliches Relikt",
+   "Event": "Ereignis-Relikt",
+   "Rare": "Seltenes Relikt",
+   "Shop": "Laden-Relikt",
+   "Starter": "Startrelikt",
+   "Uncommon": "Ungewöhnliches Relikt"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]Negiert[/gold] Debuffs.",
+    "title": "Artefakt"
+   },
+   "BLOCK": {
+    "text": "Verhindert Schaden bis zum nächsten Zug.",
+    "title": "Block"
+   },
+   "DEXTERITY_POWER": {
+    "text": "Geschicklichkeit verbessert den [gold]Block[/gold], den du von Karten erhältst.",
+    "title": "Geschicklichkeit"
+   },
+   "ETERNAL": {
+    "text": "Kann aus deinem [gold]Deck[/gold] nicht entfernt oder transformiert werden.",
+    "title": "Ewig"
+   },
+   "ETHEREAL": {
+    "text": "Wenn du diese Karte am Ende dieses Zuges auf deiner [gold]Hand[/gold] hältst, wird sie [gold]Erschöpft[/gold].",
+    "title": "Flüchtig"
+   },
+   "EXHAUST": {
+    "text": "Wird bis zum Ende des Kampfes entfernt.",
+    "title": "Erschöpft"
+   },
+   "FATAL": {
+    "text": "Wird ausgelöst, wenn diese Karte einen Gegner tötet, der kein Untertan ist.",
+    "title": "Tödlich"
+   },
+   "FRAIL_POWER": {
+    "text": "Solange du Gebrechlich bist, erältst du [blue]25%[/blue] weniger [gold]Block[/gold] von Karten.",
+    "title": "Gebrechlich"
+   },
+   "INNATE": {
+    "text": "Beginne jeden Kampf mit dieser Karte auf deiner [gold]Hand[/gold].",
+    "title": "Angeboren"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "Reduziere in diesem Zug allen genommenen Schaden und TP-Verlust auf [blue]1[/blue].",
+    "title": "Immateriell"
+   },
+   "PLATING_POWER": {
+    "text": "Erhalte immer am Ende deines Zuges [gold]Block[/gold]. [gold]Panzerung[/gold] wird zu Beginn deines Zuges um [blue]1[/blue] reduziert.",
+    "title": "Panzerung"
+   },
+   "POISON_POWER": {
+    "text": "Vergiftete Kreaturen verlieren zu Beginn ihres Zuges TP. Jeden Zug reduziert sich das Gift um [blue]1[/blue].",
+    "title": "Gift"
+   },
+   "REPLAY_STATIC": {
+    "text": "Spielt diese Karte ein weiteres Mal.",
+    "title": "Erneut Spielen"
+   },
+   "RETAIN": {
+    "text": "Behaltene Karten werden am Ende des Zuges nicht abgeworfen.",
+    "title": "Behalten"
+   },
+   "SLY": {
+    "text": "Falls diese Karte vor dem Ende deines Zuges aus deiner [gold]Hand[/gold] abgeworfen wird, spiele sie kostenlos aus.",
+    "title": "Listig"
+   },
+   "STRENGTH_POWER": {
+    "text": "Stärke fügt deinen Angriffen mehr Schaden hinzu.",
+    "title": "Stärke"
+   },
+   "TAINTED_POWER": {
+    "text": "Nimm in diesem Zug mehr Schaden von Angriffen.",
+    "title": "Schmutzig"
+   },
+   "THORNS_POWER": {
+    "text": "Wenn diese Kreatur von einem Angriff getroffen wird, fügt sie dem Angreifer Schaden zu.",
+    "title": "Stacheln"
+   },
+   "TRANSFORM": {
+    "text": "Transformierte Karten werden zu einer zufälligen Karte einer zufälligen Seltenheit.",
+    "title": "Transformieren"
+   },
+   "UNPLAYABLE": {
+    "text": "Unspielbare Karten können nicht ausgespielt werden.",
+    "title": "Unspielbar"
+   },
+   "VULNERABLE_POWER": {
+    "text": "Verwundbare Kreaturen nehmen [blue]50%[/blue] mehr Schaden durch Angriffe.",
+    "title": "Verwundbar"
+   },
+   "WEAK_POWER": {
+    "text": "Geschwächte Kreaturen fügen mit Angriffen [blue]25%[/blue] weniger Schaden zu.",
+    "title": "Schwach"
+   }
+  },
+  "types": {
+   "Attack": "Angriff",
+   "Curse": "Fluch",
+   "Power": "Macht",
+   "Skill": "Fertigkeit",
+   "Status": "Status"
+  },
+  "words": {
+   "Block": "Block",
+   "Boss": "Boss",
+   "Card Library": "Kartenbibliothek",
+   "Compendium": "Kompendium",
+   "Cost": "Kosten",
+   "Defeat": "Niederlage",
+   "Dexterity": "Geschicklichkeit",
+   "Elite": "Elite",
+   "Energy": "Energie",
+   "Floor": "Ebene",
+   "Language": "Sprache",
+   "Poison": "Gift",
+   "Potion Lab": "Tranklabor",
+   "Rarity": "Seltenheit",
+   "Relic Collection": "Reliktsammlung",
+   "Run History": "Run-Historie",
+   "Strength": "Stärke",
+   "Timeline": "Zeitstrahl",
+   "Victory": "Sieg",
+   "Vulnerable": "Verwundbar",
+   "Weak": "Schwach"
+  }
+ },
+ "eng": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Aeonglass",
+   "AXEBOTS_NORMAL": "Axebot",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Battleworn Dummy",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Battleworn Dummy",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Battleworn Dummy",
+   "BOWLBUGS_NORMAL": "Bowlbug Swarm",
+   "BOWLBUGS_WEAK": "Bowlbugs",
+   "BYGONE_EFFIGY_ELITE": "Bygone Effigy",
+   "BYRDONIS_ELITE": "Byrdonis",
+   "CEREMONIAL_BEAST_BOSS": "Ceremonial Beast",
+   "CHOMPERS_NORMAL": "An Automaton Pair",
+   "CONSTRUCT_MENAGERIE_NORMAL": "Construct Menagerie",
+   "CORPSE_SLUGS_NORMAL": "Many Corpse Slugs",
+   "CORPSE_SLUGS_WEAK": "Corpse Slugs",
+   "CUBEX_CONSTRUCT_NORMAL": "Cubex Construct",
+   "CULTISTS_NORMAL": "Cultists",
+   "DECIMILLIPEDE_ELITE": "The Decimillipede",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Wrigglers",
+   "DEPRECATED_ENCOUNTER": "Deprecated Encounter",
+   "DEVOTED_SCULPTOR_WEAK": "Devoted Sculptor",
+   "ENTOMANCER_ELITE": "Entomancer",
+   "EXOSKELETONS_NORMAL": "Many Exoskeletons",
+   "EXOSKELETONS_WEAK": "Exoskeletons",
+   "FABRICATOR_NORMAL": "Fabricator",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "The Merchant???",
+   "FLYCONID_NORMAL": "Shroom and Slime",
+   "FLYCONID_WEAK": "Flyconid",
+   "FOGMOG_NORMAL": "Fogmog",
+   "FOSSIL_STALKER_NORMAL": "Fossil Stalker",
+   "FROG_KNIGHT_NORMAL": "Frog Knight",
+   "FUZZY_WURM_CRAWLER_WEAK": "Fuzzy Wurm Crawler",
+   "GLOBE_HEAD_NORMAL": "A Lone Globe Head",
+   "GREMLIN_MERC_NORMAL": "Two Gremlins in a Trenchcoat",
+   "HAUNTED_SHIP_NORMAL": "Haunted Ship",
+   "HUNTER_KILLER_NORMAL": "Hunter Killer",
+   "INFESTED_PRISMS_ELITE": "Infested Prism",
+   "INKLETS_NORMAL": "Inklets",
+   "KAISER_CRAB_BOSS": "Kaiser Crab",
+   "KNIGHTS_ELITE": "Knight Gang",
+   "KNOWLEDGE_DEMON_BOSS": "Knowledge Demon",
+   "LAGAVULIN_MATRIARCH_BOSS": "Lagavulin Matriarch",
+   "LIVING_FOG_NORMAL": "Living Fog",
+   "LOUSE_PROGENITOR_NORMAL": "Louse Progenitor",
+   "MAWLER_NORMAL": "Mawler",
+   "MECHA_KNIGHT_ELITE": "Mecha Knight",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "Mysterious Knight",
+   "MYTES_NORMAL": "Mass of Mytes",
+   "NIBBITS_NORMAL": "A Pair of Nibbits",
+   "NIBBITS_WEAK": "A Lone Nibbit",
+   "OVERGROWTH_CRAWLERS": "Overgrowth Crawlers",
+   "OVERGROWTH_WILDLIFE": "Overgrowth Wildlife",
+   "OVICOPTER_NORMAL": "Ovicopter",
+   "OWL_MAGISTRATE_NORMAL": "Owl Magistrate",
+   "PHANTASMAL_GARDENERS_ELITE": "Phantasmal Gardeners",
+   "PHROG_PARASITE_ELITE": "Phrog Parasite",
+   "PUNCH_CONSTRUCT_NORMAL": "Punch Construct",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "Punch Constructs",
+   "QUEEN_BOSS": "Queen",
+   "RUBY_RAIDERS_NORMAL": "Ruby Raiders",
+   "SCROLLS_OF_BITING_NORMAL": "Many Scrolls of Biting",
+   "SCROLLS_OF_BITING_WEAK": "Scrolls of Biting",
+   "SEAPUNK_NORMAL": "Underdocks Wildlife",
+   "SEAPUNK_WEAK": "Seapunk",
+   "SEWER_CLAM_NORMAL": "Sewer Clam",
+   "SHRINKER_BEETLE_WEAK": "Shrinker Beetle",
+   "SKULKING_COLONY_ELITE": "Skulking Colony",
+   "SLIMED_BERSERKER_NORMAL": "Slimed Berserker",
+   "SLIMES_NORMAL": "Swarm of Slimes",
+   "SLIMES_WEAK": "Group of Slimes",
+   "SLITHERING_STRANGLER_NORMAL": "Strangler and Friend",
+   "SLUDGE_SPINNER_WEAK": "Sludge Spinner",
+   "SLUMBERING_BEETLE_NORMAL": "Slumber Party",
+   "SNAPPING_JAXFRUIT_NORMAL": "Overgrowth Flora",
+   "SOUL_FYSH_BOSS": "Soul Fysh",
+   "SOUL_NEXUS_ELITE": "Soul Nexus",
+   "SPINY_TOAD_NORMAL": "Spiny Toad",
+   "TERROR_EEL_ELITE": "Terror Eel",
+   "TEST_SUBJECT_BOSS": "Test Subject",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "The Architect",
+   "THE_INSATIABLE_BOSS": "The Insatiable",
+   "THE_KIN_BOSS": "The Kin",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "Lost and Forgotten",
+   "THE_OBSCURA_NORMAL": "The Obscura",
+   "THIEVING_HOPPER_WEAK": "Thieving Hopper",
+   "TOADPOLES_WEAK": "Toadpoles",
+   "TUNNELER_NORMAL": "Tunneling Twosome",
+   "TUNNELER_WEAK": "Tunneler",
+   "TURRET_OPERATOR_WEAK": "Turret Operator",
+   "TWO_TAILED_RATS_NORMAL": "Two-Tailed Rats",
+   "VANTOM_BOSS": "Vantom",
+   "VINE_SHAMBLER_NORMAL": "Vine Shambler",
+   "WATERFALL_GIANT_BOSS": "Waterfall Giant"
+  },
+  "keywords": {
+   "Eternal": "Eternal",
+   "Ethereal": "Ethereal",
+   "Exhaust": "Exhaust",
+   "Innate": "Innate",
+   "Retain": "Retain",
+   "Sly": "Sly",
+   "Unplayable": "Unplayable"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "Common",
+   "Event": "Event",
+   "Rare": "Rare",
+   "Uncommon": "Uncommon"
+  },
+  "rarities": {
+   "Ancient": "Ancient",
+   "Basic": "Starter",
+   "Common": "Common",
+   "Event": "Event",
+   "Rare": "Rare",
+   "Token": "Token",
+   "Uncommon": "Uncommon"
+  },
+  "relic_rarities": {
+   "Ancient": "Ancient Relic",
+   "Common": "Common Relic",
+   "Event": "Event Relic",
+   "Rare": "Rare Relic",
+   "Shop": "Shop Relic",
+   "Starter": "Starter Relic",
+   "Uncommon": "Uncommon Relic"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]Negates[/gold] debuffs.",
+    "title": "Artifact"
+   },
+   "BLOCK": {
+    "text": "Until next turn, prevents damage.",
+    "title": "Block"
+   },
+   "DEXTERITY_POWER": {
+    "text": "Dexterity improves [gold]Block[/gold] gained from cards.",
+    "title": "Dexterity"
+   },
+   "ETERNAL": {
+    "text": "Cannot be removed or transformed from your [gold]Deck[/gold].",
+    "title": "Eternal"
+   },
+   "ETHEREAL": {
+    "text": "If this card is in your [gold]Hand[/gold] at the end of this turn, it is [gold]Exhausted[/gold].",
+    "title": "Ethereal"
+   },
+   "EXHAUST": {
+    "text": "Removed until the end of combat.",
+    "title": "Exhaust"
+   },
+   "FATAL": {
+    "text": "Triggers whenever this card kills a non-minion enemy.",
+    "title": "Fatal"
+   },
+   "FRAIL_POWER": {
+    "text": "While Frail, gain [blue]25%[/blue] less [gold]Block[/gold] from cards.",
+    "title": "Frail"
+   },
+   "INNATE": {
+    "text": "Start each combat with this card in your [gold]Hand[/gold].",
+    "title": "Innate"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "Reduce all damage taken and HP loss to [blue]1[/blue] this turn.",
+    "title": "Intangible"
+   },
+   "PLATING_POWER": {
+    "text": "At the end of your turn, gain [gold]Block[/gold]. [gold]Plating[/gold] is reduced by [blue]1[/blue] at the start of your turn.",
+    "title": "Plating"
+   },
+   "POISON_POWER": {
+    "text": "Poisoned creatures lose HP at the start of their turn. Each turn, Poison is reduced by [blue]1[/blue].",
+    "title": "Poison"
+   },
+   "REPLAY_STATIC": {
+    "text": "Plays this card an additional time.",
+    "title": "Replay"
+   },
+   "RETAIN": {
+    "text": "Retained cards are not discarded at the end of turn.",
+    "title": "Retain"
+   },
+   "SLY": {
+    "text": "If this card is discarded from your [gold]Hand[/gold] before the end of your turn, play it for free.",
+    "title": "Sly"
+   },
+   "STRENGTH_POWER": {
+    "text": "Strength adds additional damage to Attacks.",
+    "title": "Strength"
+   },
+   "TAINTED_POWER": {
+    "text": "Take additional damage from Attacks this turn.",
+    "title": "Tainted"
+   },
+   "THORNS_POWER": {
+    "text": "When hit by an attack, deal damage back.",
+    "title": "Thorns"
+   },
+   "TRANSFORM": {
+    "text": "Transformed cards become a random card of any rarity.",
+    "title": "Transform"
+   },
+   "UNPLAYABLE": {
+    "text": "Unplayable cards cannot be played.",
+    "title": "Unplayable"
+   },
+   "VULNERABLE_POWER": {
+    "text": "Vulnerable creatures take [blue]50%[/blue] more damage from Attacks.",
+    "title": "Vulnerable"
+   },
+   "WEAK_POWER": {
+    "text": "Weakened creatures deal [blue]25%[/blue] less damage with Attacks.",
+    "title": "Weak"
+   }
+  },
+  "types": {
+   "Attack": "Attack",
+   "Curse": "Curse",
+   "Power": "Power",
+   "Skill": "Skill",
+   "Status": "Status"
+  },
+  "words": {
+   "Block": "Block",
+   "Boss": "Boss",
+   "Card Library": "Card Library",
+   "Compendium": "Compendium",
+   "Cost": "Cost",
+   "Defeat": "Defeat",
+   "Dexterity": "Dexterity",
+   "Elite": "Elite",
+   "Energy": "Energy",
+   "Floor": "Floor",
+   "Language": "Language",
+   "Poison": "Poison",
+   "Potion Lab": "Potion Lab",
+   "Rarity": "Rarity",
+   "Relic Collection": "Relic Collection",
+   "Run History": "Run History",
+   "Strength": "Strength",
+   "Timeline": "Timeline",
+   "Victory": "Victory",
+   "Vulnerable": "Vulnerable",
+   "Weak": "Weak"
+  }
+ },
+ "esp": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Clepsidreón",
+   "AXEBOTS_NORMAL": "Hachabot",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Muñeco desgastado",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Muñeco desgastado",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Muñeco desgastado",
+   "BOWLBUGS_NORMAL": "enjambre de bichobols",
+   "BOWLBUGS_WEAK": "bichobols",
+   "BYGONE_EFFIGY_ELITE": "efigie olvidada",
+   "BYRDONIS_ELITE": "japaronis",
+   "CEREMONIAL_BEAST_BOSS": "Bestia solemne",
+   "CHOMPERS_NORMAL": "Un par de mordebots",
+   "CONSTRUCT_MENAGERIE_NORMAL": "colección de constructos",
+   "CORPSE_SLUGS_NORMAL": "Muchas putribabosas",
+   "CORPSE_SLUGS_WEAK": "Putribabosas",
+   "CUBEX_CONSTRUCT_NORMAL": "constructo cúbico",
+   "CULTISTS_NORMAL": "sectarios",
+   "DECIMILLIPEDE_ELITE": "decimilpiés",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Sanguilarvas",
+   "DEPRECATED_ENCOUNTER": "Encuentro obsoleto",
+   "DEVOTED_SCULPTOR_WEAK": "escultor devoto",
+   "ENTOMANCER_ELITE": "entomante",
+   "EXOSKELETONS_NORMAL": "Muchos exoesquebichos",
+   "EXOSKELETONS_WEAK": "exoesquebichos",
+   "FABRICATOR_NORMAL": "mecafabricante",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "¡¿el Comerciante?!",
+   "FLYCONID_NORMAL": "Hongo y baba",
+   "FLYCONID_WEAK": "micóptero",
+   "FOGMOG_NORMAL": "micobruma",
+   "FOSSIL_STALKER_NORMAL": "acechafósil",
+   "FROG_KNIGHT_NORMAL": "rana caballerosa",
+   "FUZZY_WURM_CRAWLER_WEAK": "pelubosa",
+   "GLOBE_HEAD_NORMAL": "globicéfalo solitario",
+   "GREMLIN_MERC_NORMAL": "Dos gremlins en una gabardina",
+   "HAUNTED_SHIP_NORMAL": "barco embrujado",
+   "HUNTER_KILLER_NORMAL": "mortívoro",
+   "INFESTED_PRISMS_ELITE": "prisma infestado",
+   "INKLETS_NORMAL": "tintamorfos",
+   "KAISER_CRAB_BOSS": "Cangrejo káiser",
+   "KNIGHTS_ELITE": "pandilla de caballeros",
+   "KNOWLEDGE_DEMON_BOSS": "Demonio del saber",
+   "LAGAVULIN_MATRIARCH_BOSS": "Matriarca lagavulín",
+   "LIVING_FOG_NORMAL": "niebla viviente",
+   "LOUSE_PROGENITOR_NORMAL": "piojo progenitor",
+   "MAWLER_NORMAL": "desollador",
+   "MECHA_KNIGHT_ELITE": "cibercaballero",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "caballero enigma",
+   "MYTES_NORMAL": "enjambre de ácaros",
+   "NIBBITS_NORMAL": "Dos lagartiscos",
+   "NIBBITS_WEAK": "Un lagartisco solitario",
+   "OVERGROWTH_CRAWLERS": "insectos enormes",
+   "OVERGROWTH_WILDLIFE": "fauna enorme",
+   "OVICOPTER_NORMAL": "ovicóptero",
+   "OWL_MAGISTRATE_NORMAL": "juez búho",
+   "PHANTASMAL_GARDENERS_ELITE": "anguila espectral",
+   "PHROG_PARASITE_ELITE": "parásito engusanado",
+   "PUNCH_CONSTRUCT_NORMAL": "constructo pugilista",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "constructos pugilistas",
+   "QUEEN_BOSS": "Reina funesta",
+   "RUBY_RAIDERS_NORMAL": "atacantes rubí",
+   "SCROLLS_OF_BITING_NORMAL": "Muchos pergaminos dentados",
+   "SCROLLS_OF_BITING_WEAK": "pergaminos dentados",
+   "SEAPUNK_NORMAL": "fauna de los Muelles Funestos",
+   "SEAPUNK_WEAK": "rufián marino",
+   "SEWER_CLAM_NORMAL": "cloacalmeja",
+   "SHRINKER_BEETLE_WEAK": "escaramín",
+   "SKULKING_COLONY_ELITE": "colonia furtiva",
+   "SLIMED_BERSERKER_NORMAL": "viscoberseker",
+   "SLIMES_NORMAL": "enjambre de babas",
+   "SLIMES_WEAK": "grupo de babas",
+   "SLITHERING_STRANGLER_NORMAL": "estrangulador y sus colegas",
+   "SLUDGE_SPINNER_WEAK": "caracofango",
+   "SLUMBERING_BEETLE_NORMAL": "fiesta de escaramorfeos",
+   "SNAPPING_JAXFRUIT_NORMAL": "flora enorme",
+   "SOUL_FYSH_BOSS": "Phezánima",
+   "SOUL_NEXUS_ELITE": "nexo anímico",
+   "SPINY_TOAD_NORMAL": "sapo espinoso",
+   "TERROR_EEL_ELITE": "anguila ominosa",
+   "TEST_SUBJECT_BOSS": "Sujeto de prueba",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "El Artífice",
+   "THE_INSATIABLE_BOSS": "El Insaciable",
+   "THE_KIN_BOSS": "El Familiar",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "El Perdido y el Olvidado",
+   "THE_OBSCURA_NORMAL": "La Oscura",
+   "THIEVING_HOPPER_WEAK": "asaltamontes",
+   "TOADPOLES_WEAK": "ranacuajos",
+   "TUNNELER_NORMAL": "excavante y compañía",
+   "TUNNELER_WEAK": "excavante",
+   "TURRET_OPERATOR_WEAK": "operatorreta",
+   "TWO_TAILED_RATS_NORMAL": "ratas bicola",
+   "VANTOM_BOSS": "Vantasma",
+   "VINE_SHAMBLER_NORMAL": "enredabestia",
+   "WATERFALL_GIANT_BOSS": "Titán cascadoso"
+  },
+  "keywords": {
+   "Eternal": "Inmutabilidad",
+   "Ethereal": "Evanescencia",
+   "Exhaust": "Agotamiento",
+   "Innate": "Innatismo",
+   "Retain": "Retención",
+   "Sly": "Astucia",
+   "Unplayable": "Injugabilidad"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "Común",
+   "Event": "De evento",
+   "Rare": "Rara",
+   "Uncommon": "Infrecuente"
+  },
+  "rarities": {
+   "Ancient": "Ancestral",
+   "Basic": "Básica",
+   "Common": "Común",
+   "Event": "Evento",
+   "Rare": "Rara",
+   "Token": "Simbólica",
+   "Uncommon": "Infrecuente"
+  },
+  "relic_rarities": {
+   "Ancient": "Reliquia ancestral",
+   "Common": "Reliquia común",
+   "Event": "Reliquia de eventos",
+   "Rare": "Reliquia rara",
+   "Shop": "Tienda de reliquias",
+   "Starter": "Reliquia básica",
+   "Uncommon": "Reliquia infrecuente"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]Niegas[/gold] las desmejoras.",
+    "title": "Artefacto"
+   },
+   "BLOCK": {
+    "text": "Evitas el daño hasta el próximo turno.",
+    "title": "Bloqueo"
+   },
+   "DEXTERITY_POWER": {
+    "text": "La destreza mejora el [gold]bloqueo[/gold] que brindan las cartas.",
+    "title": "Destreza"
+   },
+   "ETERNAL": {
+    "text": "No se puede quitar ni transformar de tu [gold]mazo[/gold].",
+    "title": "Inmutabilidad"
+   },
+   "ETHEREAL": {
+    "text": "Si esta carta está en tu [gold]mano[/gold] al final de este turno, se [gold]agota[/gold].",
+    "title": "Evanescencia"
+   },
+   "EXHAUST": {
+    "text": "Se quita esta carta hasta el final del combate.",
+    "title": "Agotamiento"
+   },
+   "FATAL": {
+    "text": "Se activa cuando esta carta mata a un enemigo que no sea un esbirro.",
+    "title": "Fatal"
+   },
+   "FRAIL_POWER": {
+    "text": "Al tener fragilidad, las cartas brindan un [blue]25 %[/blue] menos de [gold]bloqueo[/gold].",
+    "title": "Fragilidad"
+   },
+   "INNATE": {
+    "text": "Comienza cada combate con esta carta en tu [gold]mano[/gold].",
+    "title": "Innatismo"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "Se reducen a [blue]1[/blue] todo el daño recibido y los PV que pierdas en este turno.",
+    "title": "Intangibilidad"
+   },
+   "PLATING_POWER": {
+    "text": "Al final del turno, brinda [gold]bloqueo[/gold]. [gold]Revestimiento[/gold] se reduce en [blue]1[/blue] al comienzo del turno.",
+    "title": "Revestimiento"
+   },
+   "POISON_POWER": {
+    "text": "Las criaturas envenenadas pierden PV al comienzo de su turno. En cada turno, los puntos de veneno se reducen en [blue]1[/blue].",
+    "title": "Veneno"
+   },
+   "REPLAY_STATIC": {
+    "text": "Juegas esta carta una vez más.",
+    "title": "Rejugada"
+   },
+   "RETAIN": {
+    "text": "Las cartas retenidas no se descartan al final del turno.",
+    "title": "Retención"
+   },
+   "SLY": {
+    "text": "Si descartas esta carta de tu [gold]mano[/gold] antes de que termine tu turno, se juega sin costo.",
+    "title": "Astucia"
+   },
+   "STRENGTH_POWER": {
+    "text": "Fuerza brinda daño adicional a los ataques.",
+    "title": "Fuerza"
+   },
+   "TAINTED_POWER": {
+    "text": "Recibes daño adicional de los ataques en este turno.",
+    "title": "Corrupción"
+   },
+   "THORNS_POWER": {
+    "text": "Al recibir un golpe por un ataque, provoca daño colateral.",
+    "title": "Espinas"
+   },
+   "TRANSFORM": {
+    "text": "Las cartas que transformes se vuelven una carta al azar de cualquier tipo de rareza.",
+    "title": "Transformación"
+   },
+   "UNPLAYABLE": {
+    "text": "No puedes usar cartas injugables.",
+    "title": "Injugabilidad"
+   },
+   "VULNERABLE_POWER": {
+    "text": "Las criaturas con vulnerabilidad reciben un [blue]50 %[/blue] más de daño.",
+    "title": "Vulnerabilidad"
+   },
+   "WEAK_POWER": {
+    "text": "Los ataques de las criaturas con debilitamiento infligen un [blue]25 %[/blue] menos de daño.",
+    "title": "Debilitamiento"
+   }
+  },
+  "types": {
+   "Attack": "Ataque",
+   "Curse": "Maldición",
+   "Power": "Poder",
+   "Skill": "Habilidad",
+   "Status": "Estado"
+  },
+  "words": {
+   "Block": "Bloqueo",
+   "Boss": "Jefe",
+   "Card Library": "Colección de cartas",
+   "Compendium": "Compendio",
+   "Cost": "Costo",
+   "Defeat": "Derrota",
+   "Dexterity": "Destreza",
+   "Elite": "Élite",
+   "Energy": "Energía",
+   "Floor": "Piso",
+   "Language": "Idioma",
+   "Poison": "Veneno",
+   "Potion Lab": "Pocionero",
+   "Rarity": "Rareza",
+   "Relic Collection": "Relicario",
+   "Run History": "Historial de partidas",
+   "Strength": "Fuerza",
+   "Timeline": "Cronología",
+   "Victory": "Victoria",
+   "Vulnerable": "Vulnerabilidad",
+   "Weak": "Debilitamiento"
+  }
+ },
+ "fra": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Clepséon",
+   "AXEBOTS_NORMAL": "Hachebot",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Mannequin de combat usé",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Mannequin de combat usé",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Mannequin de combat usé",
+   "BOWLBUGS_NORMAL": "Essaim de sphéropodes",
+   "BOWLBUGS_WEAK": "Sphéropodes",
+   "BYGONE_EFFIGY_ELITE": "Idole Oubliée",
+   "BYRDONIS_ELITE": "Oizodon",
+   "CEREMONIAL_BEAST_BOSS": "Cerf Auguste",
+   "CHOMPERS_NORMAL": "Jumeaux croquebots",
+   "CONSTRUCT_MENAGERIE_NORMAL": "Ménagerie d'assemblages",
+   "CORPSE_SLUGS_NORMAL": "Putrilimaces nombreuses",
+   "CORPSE_SLUGS_WEAK": "Putrilimaces",
+   "CUBEX_CONSTRUCT_NORMAL": "Assemblage Cubex",
+   "CULTISTS_NORMAL": "Adeptes",
+   "DECIMILLIPEDE_ELITE": "Dix-Mille-Pattes",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Grouilleurs",
+   "DEPRECATED_ENCOUNTER": "Combat obsolète",
+   "DEVOTED_SCULPTOR_WEAK": "Sculpteur dévoué",
+   "ENTOMANCER_ELITE": "Apicultueur",
+   "EXOSKELETONS_NORMAL": "Exosquelettes nombreux",
+   "EXOSKELETONS_WEAK": "Exosquelettes",
+   "FABRICATOR_NORMAL": "Machiniste",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "Le Marchand ???",
+   "FLYCONID_NORMAL": "Mycoptère et Limon",
+   "FLYCONID_WEAK": "Mycoptère",
+   "FOGMOG_NORMAL": "Fongibrume",
+   "FOSSIL_STALKER_NORMAL": "Traqueur fossilisé",
+   "FROG_KNIGHT_NORMAL": "Chevalier rainette",
+   "FUZZY_WURM_CRAWLER_WEAK": "Rampeluche",
+   "GLOBE_HEAD_NORMAL": "Globocéphale isolé",
+   "GREMLIN_MERC_NORMAL": "Deux diablotins dans un imperméable",
+   "HAUNTED_SHIP_NORMAL": "Vaisseau hanté",
+   "HUNTER_KILLER_NORMAL": "Chasseur-tueur",
+   "INFESTED_PRISMS_ELITE": "Prisme infesté",
+   "INKLETS_NORMAL": "Encrelins",
+   "KAISER_CRAB_BOSS": "Crabe César",
+   "KNIGHTS_ELITE": "Bande de chevaliers",
+   "KNOWLEDGE_DEMON_BOSS": "Démon de la Connaissance",
+   "LAGAVULIN_MATRIARCH_BOSS": "Matriarche lagavulin",
+   "LIVING_FOG_NORMAL": "Brouillard vivant",
+   "LOUSE_PROGENITOR_NORMAL": "Progéniteur de poux",
+   "MAWLER_NORMAL": "Écharneur",
+   "MECHA_KNIGHT_ELITE": "Méca-Chevalier",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "Chevalier mystérieux",
+   "MYTES_NORMAL": "Sarcoptes en masse",
+   "NIBBITS_NORMAL": "Deux grignotins",
+   "NIBBITS_WEAK": "Un grignotin isolé",
+   "OVERGROWTH_CRAWLERS": "Rampants de la Friche",
+   "OVERGROWTH_WILDLIFE": "Faune et flore de la Friche",
+   "OVICOPTER_NORMAL": "Ovicoptère",
+   "OWL_MAGISTRATE_NORMAL": "Magistrix",
+   "PHANTASMAL_GARDENERS_ELITE": "Jardiniers spectraux",
+   "PHROG_PARASITE_ELITE": "Parasite Krapo",
+   "PUNCH_CONSTRUCT_NORMAL": "Assemblage de pugilat",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "Assemblages de pugilat",
+   "QUEEN_BOSS": "Reine",
+   "RUBY_RAIDERS_NORMAL": "Rôdeurs Rubis",
+   "SCROLLS_OF_BITING_NORMAL": "Parchemords nombreux",
+   "SCROLLS_OF_BITING_WEAK": "Parchemord",
+   "SEAPUNK_NORMAL": "Faune des Bas-Quais",
+   "SEAPUNK_WEAK": "Voyou marin",
+   "SEWER_CLAM_NORMAL": "Palourde des égoûts",
+   "SHRINKER_BEETLE_WEAK": "Scarabrideur",
+   "SKULKING_COLONY_ELITE": "Colonie de rôdeurs",
+   "SLIMED_BERSERKER_NORMAL": "Berserker de vase",
+   "SLIMES_NORMAL": "Essaim de limons",
+   "SLIMES_WEAK": "Bande de limons",
+   "SLITHERING_STRANGLER_NORMAL": "Étrangleur et son ami",
+   "SLUDGE_SPINNER_WEAK": "Tisseboue",
+   "SLUMBERING_BEETLE_NORMAL": "Veillée",
+   "SNAPPING_JAXFRUIT_NORMAL": "Flore de la Friche",
+   "SOUL_FYSH_BOSS": "Poissâme",
+   "SOUL_NEXUS_ELITE": "Amalg'âmes",
+   "SPINY_TOAD_NORMAL": "Crapineux",
+   "TERROR_EEL_ELITE": "Murène de l'effroi",
+   "TEST_SUBJECT_BOSS": "Cobaye",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "L'Architecte",
+   "THE_INSATIABLE_BOSS": "L'Insatiable",
+   "THE_KIN_BOSS": "La Tribu",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "Perdu et Oublié",
+   "THE_OBSCURA_NORMAL": "L'Obscura",
+   "THIEVING_HOPPER_WEAK": "Mante Chapardeuse",
+   "TOADPOLES_WEAK": "Crapautards",
+   "TUNNELER_NORMAL": "Tunnelier accompagné",
+   "TUNNELER_WEAK": "Tunnelier",
+   "TURRET_OPERATOR_WEAK": "Opérateur de tourelle",
+   "TWO_TAILED_RATS_NORMAL": "Rats bicaudés",
+   "VANTOM_BOSS": "Vantôme",
+   "VINE_SHAMBLER_NORMAL": "Bourbeliane",
+   "WATERFALL_GIANT_BOSS": "Géant de la Cascade"
+  },
+  "keywords": {
+   "Eternal": "Éternel",
+   "Ethereal": "Éthéré",
+   "Exhaust": "Épuisement",
+   "Innate": "Inné",
+   "Retain": "Retenue",
+   "Sly": "Ruse",
+   "Unplayable": "Injouable"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "Commun",
+   "Event": "Événement",
+   "Rare": "Rare",
+   "Uncommon": "Inhabituel"
+  },
+  "rarities": {
+   "Ancient": "Ancien",
+   "Basic": "Basique",
+   "Common": "Commun",
+   "Event": "Événement",
+   "Rare": "Rare",
+   "Token": "Généré",
+   "Uncommon": "Inhabituel"
+  },
+  "relic_rarities": {
+   "Ancient": "Relique d'Ancien",
+   "Common": "Relique commune",
+   "Event": "Relique d'événement",
+   "Rare": "Relique rare",
+   "Shop": "Relique du Marchand",
+   "Starter": "Relique de base",
+   "Uncommon": "Relique inhabituelle"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]Intercepte[/gold] les effets néfastes.",
+    "title": "Artéfact"
+   },
+   "BLOCK": {
+    "text": "Vous protège des dégâts jusqu'au prochain tour.",
+    "title": "Armure"
+   },
+   "DEXTERITY_POWER": {
+    "text": "La Dextérité augmente l'[gold]Armure[/gold] conférée par vos cartes.",
+    "title": "Dextérité"
+   },
+   "ETERNAL": {
+    "text": "Ne peuvent être retirées de votre [gold]Deck[/gold] ou transformées.",
+    "title": "Éternel"
+   },
+   "ETHEREAL": {
+    "text": "Si cette carte est dans votre [gold]Main[/gold] à la fin de ce tour, elle [gold]s'épuise[/gold].",
+    "title": "Éthéré"
+   },
+   "EXHAUST": {
+    "text": "Retiré de votre [gold]Deck[/gold] jusqu'à la fin du combat.",
+    "title": "Épuisement"
+   },
+   "FATAL": {
+    "text": "Déclenché lorsque cette carte tue un ennemi (ne fonctionne pas sur les serviteurs).",
+    "title": "Coup de grâce"
+   },
+   "FRAIL_POWER": {
+    "text": "Réduit de [blue]25%[/blue] l'[gold]Armure[/gold] conférée par les cartes.",
+    "title": "Fragilisé"
+   },
+   "INNATE": {
+    "text": "Cette carte commence dans votre [gold]Main[/gold] au début de chaque combat.",
+    "title": "Inné"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "Réduit tous les dégâts subis et PV perdus à [blue]1[/blue] pendant ce tour.",
+    "title": "Intangible"
+   },
+   "PLATING_POWER": {
+    "text": "À la fin de votre tour, gagnez de l'[gold]Armure[/gold]. Le [gold]Blindage[/gold] diminue de [blue]1[/blue] au début de votre tour.",
+    "title": "Blindage"
+   },
+   "POISON_POWER": {
+    "text": "Les créatures empoisonnées perdent des PV au début de leur tour. Chaque tour, le Poison diminue de [blue]1[/blue].",
+    "title": "Poison"
+   },
+   "REPLAY_STATIC": {
+    "text": "Cette carte est jouée une fois supplémentaire.",
+    "title": "Écho"
+   },
+   "RETAIN": {
+    "text": "Les cartes Retenues ne sont pas défaussées à la fin de votre tour.",
+    "title": "Retenue"
+   },
+   "SLY": {
+    "text": "Si cette carte est défaussée de votre [gold]Main[/gold] avant la fin de votre tour, elle est jouée sans coût.",
+    "title": "Ruse"
+   },
+   "STRENGTH_POWER": {
+    "text": "La Force augmente les dégâts infligés par les Attaques.",
+    "title": "Force"
+   },
+   "TAINTED_POWER": {
+    "text": "Recevez des dégâts supplémentaires des Attaques pendant ce tour.",
+    "title": "Souillure"
+   },
+   "THORNS_POWER": {
+    "text": "Lorsqu'une attaque vous touche, infligez des dégâts en retour.",
+    "title": "Épines"
+   },
+   "TRANSFORM": {
+    "text": "Transforme une carte en une carte aléatoire de n'importe quel niveau de rareté.",
+    "title": "Transformer"
+   },
+   "UNPLAYABLE": {
+    "text": "Les cartes Injouables ne peuvent pas être jouées.",
+    "title": "Injouable"
+   },
+   "VULNERABLE_POWER": {
+    "text": "Les créatures Vulnérables subissent [blue]50%[/blue] de dégâts d'Attaque en plus.",
+    "title": "Vulnérable"
+   },
+   "WEAK_POWER": {
+    "text": "Les créatures Affaiblies infligent [blue]25%[/blue] de dégâts d'Attaque en moins.",
+    "title": "Affaibli"
+   }
+  },
+  "types": {
+   "Attack": "Attaque",
+   "Curse": "Malédiction",
+   "Power": "Pouvoir",
+   "Skill": "Compétence",
+   "Status": "Statut"
+  },
+  "words": {
+   "Block": "Armure",
+   "Boss": "Boss",
+   "Card Library": "Bibliothèque",
+   "Compendium": "Compendium",
+   "Cost": "Coût",
+   "Defeat": "Défaite",
+   "Dexterity": "Dextérité",
+   "Elite": "Élite",
+   "Energy": "Énergie",
+   "Floor": "Étage",
+   "Language": "Langue",
+   "Poison": "Poison",
+   "Potion Lab": "Laboratoire",
+   "Rarity": "Rareté",
+   "Relic Collection": "Reliquaire",
+   "Run History": "Historique",
+   "Strength": "Force",
+   "Timeline": "Frise temporelle",
+   "Victory": "Victoire",
+   "Vulnerable": "Vulnérable",
+   "Weak": "Affaibli"
+  }
+ },
+ "ind": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Aeonglass",
+   "AXEBOTS_NORMAL": "Robot Kapak",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Boneka Latihan Usang",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Boneka Latihan Usang",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Boneka Latihan Usang",
+   "BOWLBUGS_NORMAL": "Kerumunan Kumbang Mangkok",
+   "BOWLBUGS_WEAK": "Kumbang Mangkok",
+   "BYGONE_EFFIGY_ELITE": "Berhala Kuno",
+   "BYRDONIS_ELITE": "Byurungis",
+   "CEREMONIAL_BEAST_BOSS": "Binatang Seremonial",
+   "CHOMPERS_NORMAL": "Sepasang Mesin",
+   "CONSTRUCT_MENAGERIE_NORMAL": "Sekelompok Mesin",
+   "CORPSE_SLUGS_NORMAL": "Sekelompok Siput Mayat",
+   "CORPSE_SLUGS_WEAK": "Siput Mayat",
+   "CUBEX_CONSTRUCT_NORMAL": "Mesin Cubex",
+   "CULTISTS_NORMAL": "Kultus",
+   "DECIMILLIPEDE_ELITE": "Kaki Sepuluhribu",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Penggeliat",
+   "DEPRECATED_ENCOUNTER": "Pertemuan Tak Didukung",
+   "DEVOTED_SCULPTOR_WEAK": "Pemahat Beriman",
+   "ENTOMANCER_ELITE": "Pawang Serangga",
+   "EXOSKELETONS_NORMAL": "Banyak Exoskeleton",
+   "EXOSKELETONS_WEAK": "Exoskeleton",
+   "FABRICATOR_NORMAL": "Fabrikator",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "Si Pedagang???",
+   "FLYCONID_NORMAL": "Slime dan Jamur",
+   "FLYCONID_WEAK": "Jamur Lalat",
+   "FOGMOG_NORMAL": "Jamur Kabut",
+   "FOSSIL_STALKER_NORMAL": "Penguntit Fosil",
+   "FROG_KNIGHT_NORMAL": "Kesatria Kodok",
+   "FUZZY_WURM_CRAWLER_WEAK": "Ulat Perayap Berbulu",
+   "GLOBE_HEAD_NORMAL": "Seorang Globe Head",
+   "GREMLIN_MERC_NORMAL": "Dua Tuyul dalam Mantel",
+   "HAUNTED_SHIP_NORMAL": "Kapal Berhantu",
+   "HUNTER_KILLER_NORMAL": "Pembunuh Pemburu",
+   "INFESTED_PRISMS_ELITE": "Prisma Terinfeksi",
+   "INKLETS_NORMAL": "Inklet",
+   "KAISER_CRAB_BOSS": "Kepiting Kaisar",
+   "KNIGHTS_ELITE": "Geng Kesatria",
+   "KNOWLEDGE_DEMON_BOSS": "Iblis Pengetahuan",
+   "LAGAVULIN_MATRIARCH_BOSS": "Pemimpin Lagavulin",
+   "LIVING_FOG_NORMAL": "Kabut Berjiwa",
+   "LOUSE_PROGENITOR_NORMAL": "Leluhur Kutu",
+   "MAWLER_NORMAL": "Penerkam",
+   "MECHA_KNIGHT_ELITE": "Kesatria Mesin",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "Kesatria Misterius",
+   "MYTES_NORMAL": "Sekelompok Toengau",
+   "NIBBITS_NORMAL": "Sepasang Kadal Kelinci",
+   "NIBBITS_WEAK": "Seekor Kadal Kelinci",
+   "OVERGROWTH_CRAWLERS": "Perayap Rerimbunan",
+   "OVERGROWTH_WILDLIFE": "Hewan Rerimbunan",
+   "OVICOPTER_NORMAL": "Ovikopter",
+   "OWL_MAGISTRATE_NORMAL": "Hakim Burung Hantu",
+   "PHANTASMAL_GARDENERS_ELITE": "Pengebun Jiwa",
+   "PHROG_PARASITE_ELITE": "Parasit Khodok",
+   "PUNCH_CONSTRUCT_NORMAL": "Mesin Tinju",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "Mesin-Mesin Tinju",
+   "QUEEN_BOSS": "Ratu",
+   "RUBY_RAIDERS_NORMAL": "Perampok Rubi",
+   "SCROLLS_OF_BITING_NORMAL": "Sekelompok Gulungan Penggigit",
+   "SCROLLS_OF_BITING_WEAK": "Gulungan Penggigit",
+   "SEAPUNK_NORMAL": "Hewan Liar Pelabuhan",
+   "SEAPUNK_WEAK": "Berandal Laut",
+   "SEWER_CLAM_NORMAL": "Kerang Selokan",
+   "SHRINKER_BEETLE_WEAK": "Kumbang Penciut",
+   "SKULKING_COLONY_ELITE": "Koloni Pengendap",
+   "SLIMED_BERSERKER_NORMAL": "Slime Pengamuk",
+   "SLIMES_NORMAL": "Kerumunan Slime",
+   "SLIMES_WEAK": "Kelompok Slime",
+   "SLITHERING_STRANGLER_NORMAL": "Pencekik dan Temannya",
+   "SLUDGE_SPINNER_WEAK": "Cangkang Lendir",
+   "SLUMBERING_BEETLE_NORMAL": "Pesta Tidur",
+   "SNAPPING_JAXFRUIT_NORMAL": "Tetumbuhan Rerimbunan",
+   "SOUL_FYSH_BOSS": "Ykan Jiwa",
+   "SOUL_NEXUS_ELITE": "Sekumpulan Jiwa",
+   "SPINY_TOAD_NORMAL": "Kodok Berduri",
+   "TERROR_EEL_ELITE": "Belut Teror",
+   "TEST_SUBJECT_BOSS": "Subjek Eksperimen",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "Sang Arsitek",
+   "THE_INSATIABLE_BOSS": "Yang Tak Terpuaskan",
+   "THE_KIN_BOSS": "Sang Kin",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "Hilang dan Terlupakan",
+   "THE_OBSCURA_NORMAL": "Sang Obscura",
+   "THIEVING_HOPPER_WEAK": "Belalang Perampok",
+   "TOADPOLES_WEAK": "Kecebong",
+   "TUNNELER_NORMAL": "Dua Penggali",
+   "TUNNELER_WEAK": "Penggali",
+   "TURRET_OPERATOR_WEAK": "Operator Penembak",
+   "TWO_TAILED_RATS_NORMAL": "Tikus Berekor Dua",
+   "VANTOM_BOSS": "Vantom",
+   "VINE_SHAMBLER_NORMAL": "Makhluk Rerambatan",
+   "WATERFALL_GIANT_BOSS": "Raksasa Air Terjun"
+  },
+  "keywords": {
+   "Eternal": "Abadi",
+   "Ethereal": "Rapuh",
+   "Exhaust": "Hangus",
+   "Innate": "Bawaan",
+   "Retain": "Pertahankan",
+   "Sly": "Lihai",
+   "Unplayable": "Nonaktif"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "Biasa",
+   "Event": "Event",
+   "Rare": "Langka",
+   "Uncommon": "Tidak Biasa"
+  },
+  "rarities": {
+   "Ancient": "Ancient",
+   "Basic": "Awalan",
+   "Common": "Biasa",
+   "Event": "Event",
+   "Rare": "Langka",
+   "Token": "Token",
+   "Uncommon": "Tidak Biasa"
+  },
+  "relic_rarities": {
+   "Ancient": "Pusaka Ancient",
+   "Common": "Pusaka Biasa",
+   "Event": "Pusaka Event",
+   "Rare": "Pusaka Langka",
+   "Shop": "Pusaka Toko",
+   "Starter": "Pusaka Awalan",
+   "Uncommon": "Pusaka Tidak Biasa"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]Mencegah[/gold] efek buruk.",
+    "title": "Artefak"
+   },
+   "BLOCK": {
+    "text": "Sampai giliran selanjutnya, mencegah kerusakan.",
+    "title": "Blok"
+   },
+   "DEXTERITY_POWER": {
+    "text": "Ketangkasan menambah [gold]Blok[/gold] yang didapat dari kartu.",
+    "title": "Ketangkasan"
+   },
+   "ETERNAL": {
+    "text": "Tidak bisa dibuang atau ditransformasi dari [gold]Dek[/gold] kamu.",
+    "title": "Abadi"
+   },
+   "ETHEREAL": {
+    "text": "Jika kartu ini di [gold]Tangan[/gold] pada akhir giliran ini, kartu [gold]Hangus[/gold].",
+    "title": "Rapuh"
+   },
+   "EXHAUST": {
+    "text": "Hilang sampai akhir perlawanan.",
+    "title": "Hangus"
+   },
+   "FATAL": {
+    "text": "Terpicu setiap kali kartu ini membunuh musuh bukan pengikut.",
+    "title": "Fatal"
+   },
+   "FRAIL_POWER": {
+    "text": "Saat memiliki Retak, dapatkan [blue]25%[/blue] lebih sedikit [gold]Blok[/gold] dari kartu.",
+    "title": "Retak"
+   },
+   "INNATE": {
+    "text": "Mulai perlawanan dengan kartu ini di [gold]Tangan[/gold].",
+    "title": "Bawaan"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "Kurangi semua kerusakan diterima dan pengurangan HP menjadi [blue]1[/blue] giliran ini.",
+    "title": "Tembus"
+   },
+   "PLATING_POWER": {
+    "text": "Pada akhir giliranmu, dapatkan [gold]Blok[/gold]. [gold]Lapisan[/gold] dikurangi sebanyak [blue]1[/blue] pada awal giliranmu.",
+    "title": "Lapisan"
+   },
+   "POISON_POWER": {
+    "text": "Makhluk yang diracuni kehilangan HP pada awal giliran mereka. Tiap gilirannya, Racun dikurangi [blue]1[/blue].",
+    "title": "Racun"
+   },
+   "REPLAY_STATIC": {
+    "text": "Mainkan kartu ini lagi.",
+    "title": "Ulangi"
+   },
+   "RETAIN": {
+    "text": "Kartu yang dipertahankan tidak disingkirkan saat akhir giliran.",
+    "title": "Pertahankan"
+   },
+   "SLY": {
+    "text": "Jika kartu ini disingkirkan dari [gold]Tangan[/gold] sebelum giliran berakhir, mainkan secara gratis.",
+    "title": "Lihai"
+   },
+   "STRENGTH_POWER": {
+    "text": "Kekuatan menambah kerusakan tambahan ke Serangan.",
+    "title": "Kekuatan"
+   },
+   "TAINTED_POWER": {
+    "text": "Dapatkan kerusakan tambahan dari Serangan giliran ini.",
+    "title": "Noda"
+   },
+   "THORNS_POWER": {
+    "text": "Saat kena serangan, lakukan kerusakan balik.",
+    "title": "Duri"
+   },
+   "TRANSFORM": {
+    "text": "Kartu yang Ditransformasikan menjadi kartu acak dengan kelangkaan apapun.",
+    "title": "Transformasi"
+   },
+   "UNPLAYABLE": {
+    "text": "Kartu nonaktif tidak bisa dimainkan.",
+    "title": "Nonaktif"
+   },
+   "VULNERABLE_POWER": {
+    "text": "Makhluk Rentan mendapat [blue]50%[/blue] kerusakan tambahan dari Serangan.",
+    "title": "Rentan"
+   },
+   "WEAK_POWER": {
+    "text": "Makhluk lemah melakukan [blue]25%[/blue] lebih sedikit kerusakan dengan Serangan.",
+    "title": "Lemah"
+   }
+  },
+  "types": {
+   "Attack": "Serangan",
+   "Curse": "Kutukan",
+   "Power": "Kuasa",
+   "Skill": "Teknik",
+   "Status": "Status"
+  },
+  "words": {
+   "Block": "Blok",
+   "Boss": "Bos",
+   "Card Library": "Pustaka",
+   "Compendium": "Ensiklopedia",
+   "Cost": "Harga",
+   "Defeat": "Kalah",
+   "Dexterity": "Ketangkasan",
+   "Elite": "Elit",
+   "Energy": "Energi",
+   "Floor": "Lantai",
+   "Language": "Bahasa",
+   "Poison": "Racun",
+   "Potion Lab": "Laboratorium",
+   "Rarity": "Kelangkaan",
+   "Relic Collection": "Koleksi Pusaka",
+   "Run History": "Riwayat",
+   "Strength": "Kekuatan",
+   "Timeline": "Linimasa",
+   "Victory": "Menang",
+   "Vulnerable": "Rentan",
+   "Weak": "Lemah"
+  }
+ },
+ "ita": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Clessidra eonica",
+   "AXEBOTS_NORMAL": "Affettabot",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Manichino da allenamento martoriato",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Manichino da allenamento martoriato",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Manichino da allenamento martoriato",
+   "BOWLBUGS_NORMAL": "sciame di Scaraciotole",
+   "BOWLBUGS_WEAK": "Scaraciotole",
+   "BYGONE_EFFIGY_ELITE": "Effigie antica",
+   "BYRDONIS_ELITE": "Gryfone",
+   "CEREMONIAL_BEAST_BOSS": "Bestia solenne",
+   "CHOMPERS_NORMAL": "Una coppia di automi",
+   "CONSTRUCT_MENAGERIE_NORMAL": "gruppo di Assemblaggi",
+   "CORPSE_SLUGS_NORMAL": "Molte Lumache cadaveriche",
+   "CORPSE_SLUGS_WEAK": "Lumache cadaveriche",
+   "CUBEX_CONSTRUCT_NORMAL": "Assemblaggio cubico",
+   "CULTISTS_NORMAL": "Accoliti",
+   "DECIMILLIPEDE_ELITE": "Il Diecimilapiedi",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Larve",
+   "DEPRECATED_ENCOUNTER": "Incontro obsoleto",
+   "DEVOTED_SCULPTOR_WEAK": "Scultore devoto",
+   "ENTOMANCER_ELITE": "Coleomago",
+   "EXOSKELETONS_NORMAL": "Molti Esoscheletri",
+   "EXOSKELETONS_WEAK": "Esoscheletri",
+   "FABRICATOR_NORMAL": "Mechacostruttore",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "mercante???",
+   "FLYCONID_NORMAL": "Un fungo e una Melma",
+   "FLYCONID_WEAK": "Fungalato",
+   "FOGMOG_NORMAL": "Fungonebbia",
+   "FOSSIL_STALKER_NORMAL": "Cacciatore di fossili",
+   "FROG_KNIGHT_NORMAL": "Rana cavaliere",
+   "FUZZY_WURM_CRAWLER_WEAK": "Peloverme",
+   "GLOBE_HEAD_NORMAL": "Una Testaglobo solitaria",
+   "GREMLIN_MERC_NORMAL": "Due Gremlin con indosso un impermeabile",
+   "HAUNTED_SHIP_NORMAL": "Nave infestata",
+   "HUNTER_KILLER_NORMAL": "Predatore di cacciatori",
+   "INFESTED_PRISMS_ELITE": "Prisma infestato",
+   "INKLETS_NORMAL": "Inchiostrini",
+   "KAISER_CRAB_BOSS": "Granchio kaiser",
+   "KNIGHTS_ELITE": "gruppo di cavalieri",
+   "KNOWLEDGE_DEMON_BOSS": "Demone onnisciente",
+   "LAGAVULIN_MATRIARCH_BOSS": "Matriarca Lagavulin",
+   "LIVING_FOG_NORMAL": "Nebbia vivente",
+   "LOUSE_PROGENITOR_NORMAL": "Antenato delle pulci",
+   "MAWLER_NORMAL": "Laceracarne",
+   "MECHA_KNIGHT_ELITE": "Cavaliere meccanico",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "Cavaliere misterioso",
+   "MYTES_NORMAL": "gruppo di acari",
+   "NIBBITS_NORMAL": "Degli Sgranocchiatori",
+   "NIBBITS_WEAK": "Un solo Sgranocchiatore",
+   "OVERGROWTH_CRAWLERS": "vermi della Proliferazione",
+   "OVERGROWTH_WILDLIFE": "fauna della Proliferazione",
+   "OVICOPTER_NORMAL": "Ovicoptero",
+   "OWL_MAGISTRATE_NORMAL": "Giudice gufo",
+   "PHANTASMAL_GARDENERS_ELITE": "Giardinieri fantasma",
+   "PHROG_PARASITE_ELITE": "Parassita drana",
+   "PUNCH_CONSTRUCT_NORMAL": "Assemblaggio pugile",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "Assemblaggi pugili",
+   "QUEEN_BOSS": "Regina funesta",
+   "RUBY_RAIDERS_NORMAL": "Razziatori di rubini",
+   "SCROLLS_OF_BITING_NORMAL": "Tante Pergamene mordenti",
+   "SCROLLS_OF_BITING_WEAK": "Pergamene mordenti",
+   "SEAPUNK_NORMAL": "fauna dei Moli Funesti",
+   "SEAPUNK_WEAK": "Teppista marino",
+   "SEWER_CLAM_NORMAL": "Vongola di fogna",
+   "SHRINKER_BEETLE_WEAK": "Scarabeo restringente",
+   "SKULKING_COLONY_ELITE": "Colonia furtiva",
+   "SLIMED_BERSERKER_NORMAL": "Berserkr viscido",
+   "SLIMES_NORMAL": "esercito di Melme",
+   "SLIMES_WEAK": "gruppo di Melme",
+   "SLITHERING_STRANGLER_NORMAL": "Strangolatore e un suo amico",
+   "SLUDGE_SPINNER_WEAK": "Poltiglia rotante",
+   "SLUMBERING_BEETLE_NORMAL": "festa di scarafaggi",
+   "SNAPPING_JAXFRUIT_NORMAL": "flora della Proliferazione",
+   "SOUL_FYSH_BOSS": "Pesce anima",
+   "SOUL_NEXUS_ELITE": "Nesso dell'anima",
+   "SPINY_TOAD_NORMAL": "Rospo spinoso",
+   "TERROR_EEL_ELITE": "Anguilla nefasta",
+   "TEST_SUBJECT_BOSS": "Soggetto di prova",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "L'Architetto",
+   "THE_INSATIABLE_BOSS": "L'Insaziabile",
+   "THE_KIN_BOSS": "La tribù",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "Il Perduto e il Dimenticato",
+   "THE_OBSCURA_NORMAL": "L'Oscura",
+   "THIEVING_HOPPER_WEAK": "Mantide ladra",
+   "TOADPOLES_WEAK": "Girini",
+   "TUNNELER_NORMAL": "coppia di Scavatori",
+   "TUNNELER_WEAK": "Scavatore",
+   "TURRET_OPERATOR_WEAK": "Operatorretta",
+   "TWO_TAILED_RATS_NORMAL": "Topi bicoda",
+   "VANTOM_BOSS": "Vantom",
+   "VINE_SHAMBLER_NORMAL": "Groviglio di liane",
+   "WATERFALL_GIANT_BOSS": "Gigante della cascata"
+  },
+  "keywords": {
+   "Eternal": "Eternità",
+   "Ethereal": "Evanescenza",
+   "Exhaust": "Esaurimento",
+   "Innate": "Innatismo",
+   "Retain": "Conservazione",
+   "Sly": "Astuzia",
+   "Unplayable": "Ingiocabilità"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "Comune",
+   "Event": "Evento",
+   "Rare": "Rara",
+   "Uncommon": "Non comune"
+  },
+  "rarities": {
+   "Ancient": "Antica",
+   "Basic": "Iniziale",
+   "Common": "Comune",
+   "Event": "Evento",
+   "Rare": "Rara",
+   "Token": "Segnalino",
+   "Uncommon": "Non comune"
+  },
+  "relic_rarities": {
+   "Ancient": "Reliquia antica",
+   "Common": "Reliquia comune",
+   "Event": "Reliquia evento",
+   "Rare": "Reliquia rara",
+   "Shop": "Reliquia del negozio",
+   "Starter": "Reliquia iniziale",
+   "Uncommon": "Reliquia non comune"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]Annulla[/gold] gli effetti negativi.",
+    "title": "Artefatto"
+   },
+   "BLOCK": {
+    "text": "Fino al prossimo turno, ti impedisce di subire danno.",
+    "title": "Blocco"
+   },
+   "DEXTERITY_POWER": {
+    "text": "La Destrezza aumenta il [gold]Blocco[/gold] ottenuto dalle carte.",
+    "title": "Destrezza"
+   },
+   "ETERNAL": {
+    "text": "Non può essere trasformata o rimossa dal tuo [gold]mazzo[/gold].",
+    "title": "Eternità"
+   },
+   "ETHEREAL": {
+    "text": "Se questa carta è nella tua [gold]mano[/gold] al termine di questo turno, viene [gold]esaurita[/gold].",
+    "title": "Evanescenza"
+   },
+   "EXHAUST": {
+    "text": "Viene rimossa fino al termine del combattimento.",
+    "title": "Esaurimento"
+   },
+   "FATAL": {
+    "text": "Si attiva ogni volta che questa carta uccide un nemico non seguace.",
+    "title": "Letalità"
+   },
+   "FRAIL_POWER": {
+    "text": "Fragilità riduce del [blue]25%[/blue] il [gold]Blocco[/gold] che ottieni dalle carte.",
+    "title": "Fragilità"
+   },
+   "INNATE": {
+    "text": "Inizi ogni combattimento con questa carta nella tua [gold]mano[/gold].",
+    "title": "Innatismo"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "In questo turno, riduci tutto il danno subito e i PV che perdi a [blue]1[/blue].",
+    "title": "Intangibilità"
+   },
+   "PLATING_POWER": {
+    "text": "Al termine del tuo turno, ottieni [gold]Blocco[/gold]. All'inizio del tuo turno, [gold]Placcatura[/gold] si riduce di [blue]1[/blue].",
+    "title": "Placcatura"
+   },
+   "POISON_POWER": {
+    "text": "Le creature avvelenate perdono PV all'inizio del loro turno. In ogni turno, Veleno si riduce di [blue]1[/blue].",
+    "title": "Veleno"
+   },
+   "REPLAY_STATIC": {
+    "text": "Giochi questa carta una volta in più.",
+    "title": "Riattivazione"
+   },
+   "RETAIN": {
+    "text": "Le carte con Conservazione non vengono scartate al termine del turno.",
+    "title": "Conservazione"
+   },
+   "SLY": {
+    "text": "Se questa carta viene scartata dalla tua [gold]mano[/gold] prima della fine del tuo turno, giocala senza nessun costo.",
+    "title": "Astuzia"
+   },
+   "STRENGTH_POWER": {
+    "text": "La Forza aggiunge danno extra alle carte Attacco.",
+    "title": "Forza"
+   },
+   "TAINTED_POWER": {
+    "text": "In questo turno, subisci danno extra dalle carte Attacco.",
+    "title": "Contaminazione"
+   },
+   "THORNS_POWER": {
+    "text": "Quando subisci un attacco, infliggi danno come contrattacco.",
+    "title": "Spinascudo"
+   },
+   "TRANSFORM": {
+    "text": "Le carte trasformate diventano una carta casuale di qualsiasi rarità.",
+    "title": "Trasformazione"
+   },
+   "UNPLAYABLE": {
+    "text": "Le carte con Ingiocabilità non possono essere giocate.",
+    "title": "Ingiocabilità"
+   },
+   "VULNERABLE_POWER": {
+    "text": "Le creature con Vulnerabilità subiscono il [blue]50%[/blue] di danno extra dalle carte Attacco.",
+    "title": "Vulnerabilità"
+   },
+   "WEAK_POWER": {
+    "text": "Le creature con Debolezza infliggono il [blue]25%[/blue] di danno in meno con gli attacchi.",
+    "title": "Debolezza"
+   }
+  },
+  "types": {
+   "Attack": "Attacco",
+   "Curse": "Maledizione",
+   "Power": "Potere",
+   "Skill": "Abilità",
+   "Status": "Stato"
+  },
+  "words": {
+   "Block": "Blocco",
+   "Boss": "Boss",
+   "Card Library": "Collezione delle carte",
+   "Compendium": "Compendio",
+   "Cost": "Costo",
+   "Defeat": "Sconfitta",
+   "Dexterity": "Destrezza",
+   "Elite": "Élite",
+   "Energy": "Energia",
+   "Floor": "Piano",
+   "Language": "Lingua",
+   "Poison": "Veleno",
+   "Potion Lab": "Laboratorio delle pozioni",
+   "Rarity": "Rarità",
+   "Relic Collection": "Reliquiario",
+   "Run History": "Storico partite",
+   "Strength": "Forza",
+   "Timeline": "Cronologia",
+   "Victory": "Vittoria",
+   "Vulnerable": "Vulnerabilità",
+   "Weak": "Debolezza"
+  }
+ },
+ "jpn": {
+  "encounters": {
+   "AEONGLASS_BOSS": "永劫の砂時計",
+   "AXEBOTS_NORMAL": "アックスマシン",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "歴戦の訓練人形",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "歴戦の訓練人形",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "歴戦の訓練人形",
+   "BOWLBUGS_NORMAL": "ボウルバグの群れ",
+   "BOWLBUGS_WEAK": "ボウルバグ",
+   "BYGONE_EFFIGY_ELITE": "古の偶像",
+   "BYRDONIS_ELITE": "ビャードニス",
+   "CEREMONIAL_BEAST_BOSS": "儀式の獣",
+   "CHOMPERS_NORMAL": "オートマトンのコンビ",
+   "CONSTRUCT_MENAGERIE_NORMAL": "機械兵の動物園",
+   "CORPSE_SLUGS_NORMAL": "多数の屍ナメクジ",
+   "CORPSE_SLUGS_WEAK": "屍ナメクジ",
+   "CUBEX_CONSTRUCT_NORMAL": "キューベックス",
+   "CULTISTS_NORMAL": "狂信者たち",
+   "DECIMILLIPEDE_ELITE": "万足ムカデ",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "リグラー",
+   "DEPRECATED_ENCOUNTER": "※削除されたエンカウンター※",
+   "DEVOTED_SCULPTOR_WEAK": "狂信の彫刻家",
+   "ENTOMANCER_ELITE": "エントマンサー",
+   "EXOSKELETONS_NORMAL": "数多の外骨格蟲",
+   "EXOSKELETONS_WEAK": "外骨格蟲",
+   "FABRICATOR_NORMAL": "ファブリケーター",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "商人？",
+   "FLYCONID_NORMAL": "キノコとスライム",
+   "FLYCONID_WEAK": "フライコニド",
+   "FOGMOG_NORMAL": "フォグモグ",
+   "FOSSIL_STALKER_NORMAL": "化石のストーカー",
+   "FROG_KNIGHT_NORMAL": "カエルの騎士",
+   "FUZZY_WURM_CRAWLER_WEAK": "剛毛のワーム",
+   "GLOBE_HEAD_NORMAL": "孤独なグローブヘッド",
+   "GREMLIN_MERC_NORMAL": "トレンチコートのグレムリン",
+   "HAUNTED_SHIP_NORMAL": "幽霊船",
+   "HUNTER_KILLER_NORMAL": "ハンターキラー",
+   "INFESTED_PRISMS_ELITE": "寄生されたプリズム",
+   "INKLETS_NORMAL": "インクレット",
+   "KAISER_CRAB_BOSS": "カイザークラブ",
+   "KNIGHTS_ELITE": "騎士のギャング",
+   "KNOWLEDGE_DEMON_BOSS": "知識の悪魔",
+   "LAGAVULIN_MATRIARCH_BOSS": "ラガヴーリン・メイトリアーク",
+   "LIVING_FOG_NORMAL": "邪悪なガス",
+   "LOUSE_PROGENITOR_NORMAL": "始祖ラミー",
+   "MAWLER_NORMAL": "モーラー",
+   "MECHA_KNIGHT_ELITE": "メカナイト",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "謎の騎士",
+   "MYTES_NORMAL": "マイトの群れ",
+   "NIBBITS_NORMAL": "ニビットのコンビ",
+   "NIBBITS_WEAK": "孤独なニビット",
+   "OVERGROWTH_CRAWLERS": "繁茂の地のクローラー",
+   "OVERGROWTH_WILDLIFE": "繁茂の地の野生生物",
+   "OVICOPTER_NORMAL": "オビコプター",
+   "OWL_MAGISTRATE_NORMAL": "裁きのフクロウ",
+   "PHANTASMAL_GARDENERS_ELITE": "幻影蟲",
+   "PHROG_PARASITE_ELITE": "寄生キャエル",
+   "PUNCH_CONSTRUCT_NORMAL": "ボクシングロボ",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "ボクシングロボ",
+   "QUEEN_BOSS": "クイーン",
+   "RUBY_RAIDERS_NORMAL": "ルビーレイダーズ",
+   "SCROLLS_OF_BITING_NORMAL": "多数の噛みつきの巻物",
+   "SCROLLS_OF_BITING_WEAK": "噛みつきの巻物",
+   "SEAPUNK_NORMAL": "地下ドックに生きるものたち",
+   "SEAPUNK_WEAK": "シーパンク",
+   "SEWER_CLAM_NORMAL": "下水貝",
+   "SHRINKER_BEETLE_WEAK": "シュリンカービートル",
+   "SKULKING_COLONY_ELITE": "蠢く群生体",
+   "SLIMED_BERSERKER_NORMAL": "スライムバーサーカー",
+   "SLIMES_NORMAL": "スライムの大群",
+   "SLIMES_WEAK": "スライムの群れ",
+   "SLITHERING_STRANGLER_NORMAL": "絞蛇と友達",
+   "SLUDGE_SPINNER_WEAK": "スラッジスピナー",
+   "SLUMBERING_BEETLE_NORMAL": "パジャマパーティー",
+   "SNAPPING_JAXFRUIT_NORMAL": "繁茂の地の植物",
+   "SOUL_FYSH_BOSS": "ソウルフィッシュ",
+   "SOUL_NEXUS_ELITE": "ソウルネクサス",
+   "SPINY_TOAD_NORMAL": "トゲヒキガエル",
+   "TERROR_EEL_ELITE": "テラーウツボ",
+   "TEST_SUBJECT_BOSS": "実験体",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "アーキテクト",
+   "THE_INSATIABLE_BOSS": "貪りの獣",
+   "THE_KIN_BOSS": "血族",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "迷える者と忘れられし者",
+   "THE_OBSCURA_NORMAL": "オブスキュラ",
+   "THIEVING_HOPPER_WEAK": "泥棒バッタ",
+   "TOADPOLES_WEAK": "ヒキジャクシ",
+   "TUNNELER_NORMAL": "トンネリング",
+   "TUNNELER_WEAK": "トンネラー",
+   "TURRET_OPERATOR_WEAK": "タレットオペレーター",
+   "TWO_TAILED_RATS_NORMAL": "双尾のネズミ",
+   "VANTOM_BOSS": "ヴァントム",
+   "VINE_SHAMBLER_NORMAL": "ヴァインシャンブラー",
+   "WATERFALL_GIANT_BOSS": "滝の巨人"
+  },
+  "keywords": {
+   "Eternal": "永劫",
+   "Ethereal": "エセリアル",
+   "Exhaust": "廃棄",
+   "Innate": "天賦",
+   "Retain": "保留",
+   "Sly": "スライ",
+   "Unplayable": "プレイ不可"
+  },
+  "period": "。",
+  "potion_rarities": {
+   "Common": "ポーション（コモン）",
+   "Event": "ポーション（イベント）",
+   "Rare": "ポーション（レア）",
+   "Uncommon": "ポーション（アンコモン）"
+  },
+  "rarities": {
+   "Ancient": "エンシェント",
+   "Basic": "スターター",
+   "Common": "コモン",
+   "Event": "イベント",
+   "Rare": "レア",
+   "Token": "トークン",
+   "Uncommon": "アンコモン"
+  },
+  "relic_rarities": {
+   "Ancient": "レリック（エンシェント）",
+   "Common": "レリック（コモン）",
+   "Event": "レリック（イベント）",
+   "Rare": "レリック（レア）",
+   "Shop": "レリック（ショップ）",
+   "Starter": "レリック（スターター）",
+   "Uncommon": "レリック（アンコモン）"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "デバフを[gold]無効化[/gold]する。",
+    "title": "アーティファクト"
+   },
+   "BLOCK": {
+    "text": "次のターンまで、受けるダメージを防ぐ。",
+    "title": "ブロック"
+   },
+   "DEXTERITY_POWER": {
+    "text": "敏捷はカードから得る[gold]ブロック[/gold]を増加させる。",
+    "title": "敏捷"
+   },
+   "ETERNAL": {
+    "text": "[gold]デッキ[/gold]から削除、または変化させることができない",
+    "title": "永劫"
+   },
+   "ETHEREAL": {
+    "text": "このターンの終了時にこのカードが[gold]手札[/gold]にある場合、[gold]廃棄[/gold]される。",
+    "title": "エセリアル"
+   },
+   "EXHAUST": {
+    "text": "戦闘終了時まで取り除かれる。",
+    "title": "廃棄"
+   },
+   "FATAL": {
+    "text": "このカードでミニオン以外の敵を倒したときに発動する。",
+    "title": "リーサル"
+   },
+   "FRAIL_POWER": {
+    "text": "脆弱状態の間、カードから得る[gold]ブロック[/gold]が[blue]25%[/blue]減少する。",
+    "title": "脆弱"
+   },
+   "INNATE": {
+    "text": "このカードが[gold]手札[/gold]にある状態で戦闘を開始する。",
+    "title": "天賦"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "このターン、受けるすべてのダメージとHP喪失が[blue]1[/blue]になる。",
+    "title": "霊体"
+   },
+   "PLATING_POWER": {
+    "text": "ターン終了時、[gold]ブロック[/gold]を得る。ターン開始時、[gold]プレート[/gold]が[blue]1[/blue]減少する。",
+    "title": "プレート"
+   },
+   "POISON_POWER": {
+    "text": "[gold]毒[/gold]に侵されたモンスターはターン開始時にHPを失う。毎ターン、[gold]毒[/gold]は[blue]1[/blue]減少する。",
+    "title": "毒"
+   },
+   "REPLAY_STATIC": {
+    "text": "このカードを追加でプレイする。",
+    "title": "リプレイ"
+   },
+   "RETAIN": {
+    "text": "保留されたカードは、ターン終了時に捨て札にならない。",
+    "title": "保留"
+   },
+   "SLY": {
+    "text": "自分のターン終了前にこのカードが[gold]手札[/gold]から捨てられた場合、コストを支払わずにプレイする。",
+    "title": "スライ"
+   },
+   "STRENGTH_POWER": {
+    "text": "筋力はアタックのダメージを追加する。",
+    "title": "筋力"
+   },
+   "TAINTED_POWER": {
+    "text": "このターン、アタックから追加ダメージを受ける。",
+    "title": "汚染"
+   },
+   "THORNS_POWER": {
+    "text": "アタックで攻撃された時、ダメージを跳ね返す。",
+    "title": "トゲ"
+   },
+   "TRANSFORM": {
+    "text": "変化したカードは、いずれかのレアリティのランダムなカードになる。",
+    "title": "変化"
+   },
+   "UNPLAYABLE": {
+    "text": "プレイ不可のカードはプレイできない。",
+    "title": "プレイ不可"
+   },
+   "VULNERABLE_POWER": {
+    "text": "脆弱状態のモンスターはアタックから受けるダメージが[blue]50%[/blue]増加する。",
+    "title": "弱体"
+   },
+   "WEAK_POWER": {
+    "text": "脱力状態のモンスターはアタックで与えるダメージが[blue]25%[/blue]減少する。",
+    "title": "脱力"
+   }
+  },
+  "types": {
+   "Attack": "アタック",
+   "Curse": "呪い",
+   "Power": "パワー",
+   "Skill": "スキル",
+   "Status": "状態異常"
+  },
+  "words": {
+   "Block": "ブロック",
+   "Boss": "ボス",
+   "Card Library": "カードライブラリ",
+   "Compendium": "コレクション",
+   "Cost": "コスト",
+   "Defeat": "敗北",
+   "Dexterity": "敏捷",
+   "Elite": "エリート",
+   "Energy": "エナジー",
+   "Floor": "階数",
+   "Language": "言語",
+   "Poison": "毒",
+   "Potion Lab": "ポーションラボ",
+   "Rarity": "レアリティ",
+   "Relic Collection": "レリック一覧",
+   "Run History": "プレイ履歴",
+   "Strength": "筋力",
+   "Timeline": "年代記",
+   "Victory": "勝利",
+   "Vulnerable": "弱体",
+   "Weak": "脱力"
+  }
+ },
+ "kor": {
+  "encounters": {
+   "AEONGLASS_BOSS": "영겁의 모래시계",
+   "AXEBOTS_NORMAL": "잘라봇",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "전투로 손상된 훈련 인형",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "전투로 손상된 훈련 인형",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "전투로 손상된 훈련 인형",
+   "BOWLBUGS_NORMAL": "그릇벌레 무리",
+   "BOWLBUGS_WEAK": "그릇벌레들",
+   "BYGONE_EFFIGY_ELITE": "옛 시대의 우상",
+   "BYRDONIS_ELITE": "섀도니스",
+   "CEREMONIAL_BEAST_BOSS": "의식의 신수",
+   "CHOMPERS_NORMAL": "자동인형 한 쌍",
+   "CONSTRUCT_MENAGERIE_NORMAL": "구조체 집단",
+   "CORPSE_SLUGS_NORMAL": "많은 시체 민달팽이들",
+   "CORPSE_SLUGS_WEAK": "시체 민달팽이들",
+   "CUBEX_CONSTRUCT_NORMAL": "큐브형 구조체",
+   "CULTISTS_NORMAL": "광신자들",
+   "DECIMILLIPEDE_ELITE": "만각지네",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "꿈틀벌레들",
+   "DEPRECATED_ENCOUNTER": "구식 만남",
+   "DEVOTED_SCULPTOR_WEAK": "열정적인 조각가",
+   "ENTOMANCER_ELITE": "곤충술사",
+   "EXOSKELETONS_NORMAL": "많은 갑각충들",
+   "EXOSKELETONS_WEAK": "갑각충들",
+   "FABRICATOR_NORMAL": "조립 전문가",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "상?인",
+   "FLYCONID_NORMAL": "버섯과 슬라임",
+   "FLYCONID_WEAK": "날개버섯",
+   "FOGMOG_NORMAL": "현혹버섯",
+   "FOSSIL_STALKER_NORMAL": "화석 매복자",
+   "FROG_KNIGHT_NORMAL": "개구리 기사",
+   "FUZZY_WURM_CRAWLER_WEAK": "복슬지렁이",
+   "GLOBE_HEAD_NORMAL": "고독한 구체 머리",
+   "GREMLIN_MERC_NORMAL": "트렌치코트를 입은 그렘린 두 마리",
+   "HAUNTED_SHIP_NORMAL": "유령선",
+   "HUNTER_KILLER_NORMAL": "사냥꾼 살해자",
+   "INFESTED_PRISMS_ELITE": "감염된 프리즘",
+   "INKLETS_NORMAL": "잉클릿",
+   "KAISER_CRAB_BOSS": "황제 게",
+   "KNIGHTS_ELITE": "기사 패거리",
+   "KNOWLEDGE_DEMON_BOSS": "지식의 악마",
+   "LAGAVULIN_MATRIARCH_BOSS": "라가불린 대모",
+   "LIVING_FOG_NORMAL": "살아있는 안개",
+   "LOUSE_PROGENITOR_NORMAL": "태초의 공벌레",
+   "MAWLER_NORMAL": "장수아귀",
+   "MECHA_KNIGHT_ELITE": "기계 기사",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "수수께끼의 기사",
+   "MYTES_NORMAL": "진듸기 무리",
+   "NIBBITS_NORMAL": "깨작이 한 쌍",
+   "NIBBITS_WEAK": "외톨이 깨작이",
+   "OVERGROWTH_CRAWLERS": "과성장 지렁이들",
+   "OVERGROWTH_WILDLIFE": "과성장 야생동물",
+   "OVICOPTER_NORMAL": "산란비충",
+   "OWL_MAGISTRATE_NORMAL": "올빼미 판관",
+   "PHANTASMAL_GARDENERS_ELITE": "허깨비 정원사들",
+   "PHROG_PARASITE_ELITE": "게구리 기생체",
+   "PUNCH_CONSTRUCT_NORMAL": "권투형 구조체",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "권투형 구조체들",
+   "QUEEN_BOSS": "여왕",
+   "RUBY_RAIDERS_NORMAL": "루비 습격자",
+   "SCROLLS_OF_BITING_NORMAL": "수많은 물어뜯는 두루마리",
+   "SCROLLS_OF_BITING_WEAK": "물어뜯는 두루마리",
+   "SEAPUNK_NORMAL": "지하 선착장 야생동물",
+   "SEAPUNK_WEAK": "불량 해초",
+   "SEWER_CLAM_NORMAL": "시궁창 조개",
+   "SHRINKER_BEETLE_WEAK": "압축벌레",
+   "SKULKING_COLONY_ELITE": "잠행 군체",
+   "SLIMED_BERSERKER_NORMAL": "슬라임 광전사",
+   "SLIMES_NORMAL": "슬라임 무리",
+   "SLIMES_WEAK": "슬라임 집단",
+   "SLITHERING_STRANGLER_NORMAL": "교살마와 친구",
+   "SLUDGE_SPINNER_WEAK": "오물팽이",
+   "SLUMBERING_BEETLE_NORMAL": "잠자리 파티",
+   "SNAPPING_JAXFRUIT_NORMAL": "과성장 식물",
+   "SOUL_FYSH_BOSS": "영혼 물교기",
+   "SOUL_NEXUS_ELITE": "영혼 결합체",
+   "SPINY_TOAD_NORMAL": "가시두꺼비",
+   "TERROR_EEL_ELITE": "공포 장어",
+   "TEST_SUBJECT_BOSS": "실험체",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "아키텍트",
+   "THE_INSATIABLE_BOSS": "탐",
+   "THE_KIN_BOSS": "혈족",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "사라진 자와 잊힌 자",
+   "THE_OBSCURA_NORMAL": "영사자",
+   "THIEVING_HOPPER_WEAK": "폴짝이 도적",
+   "TOADPOLES_WEAK": "올챙이들",
+   "TUNNELER_NORMAL": "땅굴 2인조",
+   "TUNNELER_WEAK": "땅굴충",
+   "TURRET_OPERATOR_WEAK": "포탑 사수",
+   "TWO_TAILED_RATS_NORMAL": "두꼬리쥐들",
+   "VANTOM_BOSS": "밴텀",
+   "VINE_SHAMBLER_NORMAL": "휘청거리는 덩굴",
+   "WATERFALL_GIANT_BOSS": "폭포 거인"
+  },
+  "keywords": {
+   "Eternal": "영구",
+   "Ethereal": "휘발성",
+   "Exhaust": "소멸",
+   "Innate": "선천성",
+   "Retain": "보존",
+   "Sly": "교활",
+   "Unplayable": "사용불가"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "일반",
+   "Event": "이벤트",
+   "Rare": "희귀",
+   "Uncommon": "고급"
+  },
+  "rarities": {
+   "Ancient": "고대",
+   "Basic": "시작",
+   "Common": "일반",
+   "Event": "이벤트",
+   "Rare": "희귀",
+   "Token": "토큰",
+   "Uncommon": "고급"
+  },
+  "relic_rarities": {
+   "Ancient": "고대 유물",
+   "Common": "일반 유물",
+   "Event": "이벤트 유물",
+   "Rare": "희귀 유물",
+   "Shop": "상점 유물",
+   "Starter": "시작 유물",
+   "Uncommon": "고급 유물"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "해로운 효과를 [gold]무효화[/gold]합니다.",
+    "title": "인공물"
+   },
+   "BLOCK": {
+    "text": "다음 턴까지 피해를 방어합니다.",
+    "title": "방어도"
+   },
+   "DEXTERITY_POWER": {
+    "text": "민첩은 카드를 통해 얻는 [gold]방어도[/gold]를 증가시킵니다.",
+    "title": "민첩"
+   },
+   "ETERNAL": {
+    "text": "[gold]덱[/gold]에서 제거하거나 변화시킬 수 없습니다.",
+    "title": "영구"
+   },
+   "ETHEREAL": {
+    "text": "이 카드는 이번 턴 종료 시 [gold]손[/gold]에 있다면, [gold]소멸[/gold]합니다.",
+    "title": "휘발성"
+   },
+   "EXHAUST": {
+    "text": "전투가 끝날 때까지 제거됩니다.",
+    "title": "소멸"
+   },
+   "FATAL": {
+    "text": "이 카드로 하수인이 아닌 적을 처치할 때마다 발동됩니다.",
+    "title": "치명타"
+   },
+   "FRAIL_POWER": {
+    "text": "손상 상태인 동안, 카드를 통해 얻는 [gold]방어도[/gold]가 [blue]25%[/blue] 감소합니다.",
+    "title": "손상"
+   },
+   "INNATE": {
+    "text": "매 전투마다 이 카드를 [gold]손[/gold]에 든 상태로 시작합니다.",
+    "title": "선천성"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "이번 턴 동안 받는 모든 피해와 체력 손실이 [blue]1[/blue]로 감소합니다.",
+    "title": "불가침"
+   },
+   "PLATING_POWER": {
+    "text": "내 턴 종료 시, [gold]방어도[/gold]를 획득합니다. [gold]판금[/gold]은 내 턴 시작 시 [blue]1[/blue] 감소합니다.",
+    "title": "판금"
+   },
+   "POISON_POWER": {
+    "text": "중독된 생물은 자신의 턴 시작 시 체력을 잃습니다. 매 턴마다 중독이 [blue]1[/blue] 감소합니다.",
+    "title": "중독"
+   },
+   "REPLAY_STATIC": {
+    "text": "이 카드를 1번 추가로 사용합니다.",
+    "title": "재사용"
+   },
+   "RETAIN": {
+    "text": "보존된 카드는 턴 종료 시 버려지지 않습니다.",
+    "title": "보존"
+   },
+   "SLY": {
+    "text": "내 턴이 끝나기 전에 이 카드가 [gold]손[/gold]에서 버려진다면, 비용 없이 사용합니다.",
+    "title": "교활"
+   },
+   "STRENGTH_POWER": {
+    "text": "힘은 공격 카드의 피해량을 증가시킵니다.",
+    "title": "힘"
+   },
+   "TAINTED_POWER": {
+    "text": "이번 턴 동안 공격을 통해 받는 피해량이 증가합니다.",
+    "title": "훼손됨"
+   },
+   "THORNS_POWER": {
+    "text": "공격에 적중 시, 공격자에게 피해를 줍니다.",
+    "title": "가시"
+   },
+   "TRANSFORM": {
+    "text": "카드를 변화시킬 시, 무작위 희귀도의 카드로 변합니다.",
+    "title": "변화"
+   },
+   "UNPLAYABLE": {
+    "text": "사용불가 카드는 낼 수 없습니다.",
+    "title": "사용불가"
+   },
+   "VULNERABLE_POWER": {
+    "text": "취약 상태인 생물은 공격 카드를 통해 받는 피해량이 [blue]50%[/blue] 증가합니다.",
+    "title": "취약"
+   },
+   "WEAK_POWER": {
+    "text": "약화 상태인 생물의 공격은 가하는 피해량이 [blue]25%[/blue] 감소합니다.",
+    "title": "약화"
+   }
+  },
+  "types": {
+   "Attack": "공격",
+   "Curse": "저주",
+   "Power": "파워",
+   "Skill": "스킬",
+   "Status": "상태이상"
+  },
+  "words": {
+   "Block": "방어도",
+   "Boss": "보스",
+   "Card Library": "카드 목록",
+   "Compendium": "백과사전",
+   "Cost": "비용",
+   "Defeat": "패배",
+   "Dexterity": "민첩",
+   "Elite": "엘리트",
+   "Energy": "에너지",
+   "Floor": "층",
+   "Language": "언어",
+   "Poison": "중독",
+   "Potion Lab": "포션 연구실",
+   "Rarity": "희귀도",
+   "Relic Collection": "유물 모음집",
+   "Run History": "도전 이력",
+   "Strength": "힘",
+   "Timeline": "연대표",
+   "Victory": "승리",
+   "Vulnerable": "취약",
+   "Weak": "약화"
+  }
+ },
+ "pol": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Wieczny Obserwator",
+   "AXEBOTS_NORMAL": "Siekierobot",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Drewnobot",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Drewnobot",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Drewnobot",
+   "BOWLBUGS_NORMAL": "Chmara Robali",
+   "BOWLBUGS_WEAK": "Chmara Robali",
+   "BYGONE_EFFIGY_ELITE": "Starodawna Figura",
+   "BYRDONIS_ELITE": "Ptaszor",
+   "CEREMONIAL_BEAST_BOSS": "Leśny Stróż",
+   "CHOMPERS_NORMAL": "Para automatonów",
+   "CONSTRUCT_MENAGERIE_NORMAL": "Konstrukty",
+   "CORPSE_SLUGS_NORMAL": "Dużo Ślimaków Trupojadów",
+   "CORPSE_SLUGS_WEAK": "Ślimaki Trupojady",
+   "CUBEX_CONSTRUCT_NORMAL": "Promieniotron",
+   "CULTISTS_NORMAL": "Kultyści",
+   "DECIMILLIPEDE_ELITE": "Wielonoga",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Pasożyty",
+   "DEPRECATED_ENCOUNTER": "Usunięta potyczka",
+   "DEVOTED_SCULPTOR_WEAK": "Zagorzały Rzeźbiarz",
+   "ENTOMANCER_ELITE": "Pszczelarz",
+   "EXOSKELETONS_NORMAL": "Wiele Egzoszkieletów",
+   "EXOSKELETONS_WEAK": "Egzoszkielety",
+   "FABRICATOR_NORMAL": "Mechanik",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "Handlarz???",
+   "FLYCONID_NORMAL": "Grzyb i śluz",
+   "FLYCONID_WEAK": "Musznica",
+   "FOGMOG_NORMAL": "Grzybol",
+   "FOSSIL_STALKER_NORMAL": "Skamieliniak",
+   "FROG_KNIGHT_NORMAL": "Żabi Rycerz",
+   "FUZZY_WURM_CRAWLER_WEAK": "Kędzierzawy Robok",
+   "GLOBE_HEAD_NORMAL": "Plazmogłowy",
+   "GREMLIN_MERC_NORMAL": "Dwóch Gremlinów w płaszczu",
+   "HAUNTED_SHIP_NORMAL": "Nawiedzony Statek",
+   "HUNTER_KILLER_NORMAL": "Zabójczy Łowca",
+   "INFESTED_PRISMS_ELITE": "Zainfekowany Pryzmat",
+   "INKLETS_NORMAL": "Kropelki",
+   "KAISER_CRAB_BOSS": "Krab Cesarski",
+   "KNIGHTS_ELITE": "Kompania Rycerska",
+   "KNOWLEDGE_DEMON_BOSS": "Demon Wiedzy",
+   "LAGAVULIN_MATRIARCH_BOSS": "Matka Lagavulinów",
+   "LIVING_FOG_NORMAL": "Żywa Mgła",
+   "LOUSE_PROGENITOR_NORMAL": "Protowesz",
+   "MAWLER_NORMAL": "Paszczur",
+   "MECHA_KNIGHT_ELITE": "Mecha-Rycerz",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "Tajemniczy Rycerz",
+   "MYTES_NORMAL": "Masa Roztyczy",
+   "NIBBITS_NORMAL": "Para Kumkaczy",
+   "NIBBITS_WEAK": "Kumkacz",
+   "OVERGROWTH_CRAWLERS": "Roboki",
+   "OVERGROWTH_WILDLIFE": "dzikie stworzenia",
+   "OVICOPTER_NORMAL": "Jajokopter",
+   "OWL_MAGISTRATE_NORMAL": "Sędzia",
+   "PHANTASMAL_GARDENERS_ELITE": "Węgorzówki",
+   "PHROG_PARASITE_ELITE": "Zainfekowana Żapka",
+   "PUNCH_CONSTRUCT_NORMAL": "Robokser",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "Robokserzy",
+   "QUEEN_BOSS": "Królowa",
+   "RUBY_RAIDERS_NORMAL": "Banda Najeźdźców",
+   "SCROLLS_OF_BITING_NORMAL": "Wiele Zgryźliwych Zwojów",
+   "SCROLLS_OF_BITING_WEAK": "Zgryźliwe Zwoje",
+   "SEAPUNK_NORMAL": "Kijanki",
+   "SEAPUNK_WEAK": "Gloniarz",
+   "SEWER_CLAM_NORMAL": "Małża Ściekowa",
+   "SHRINKER_BEETLE_WEAK": "Żuczek Kurczyciel",
+   "SKULKING_COLONY_ELITE": "Kolonia Koralowców",
+   "SLIMED_BERSERKER_NORMAL": "Śluzak Berserker",
+   "SLIMES_NORMAL": "Masa Śluzaków",
+   "SLIMES_WEAK": "Grupka Śluzaków",
+   "SLITHERING_STRANGLER_NORMAL": "Dusiciel i jego kumpel",
+   "SLUDGE_SPINNER_WEAK": "Wirówka",
+   "SLUMBERING_BEETLE_NORMAL": "Pidżama Party",
+   "SNAPPING_JAXFRUIT_NORMAL": "Flora Zarośli",
+   "SOUL_FYSH_BOSS": "Dusza Rypki",
+   "SOUL_NEXUS_ELITE": "Spojenie Dusz",
+   "SPINY_TOAD_NORMAL": "Kolczasta Ropucha",
+   "TERROR_EEL_ELITE": "Węgorzor",
+   "TEST_SUBJECT_BOSS": "Eksperyment",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "Architekt",
+   "THE_INSATIABLE_BOSS": "Nienasycony",
+   "THE_KIN_BOSS": "Kapłan",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "Porzucony i Zapomniany",
+   "THE_OBSCURA_NORMAL": "Przysłona",
+   "THIEVING_HOPPER_WEAK": "Złodziejski Skoczek",
+   "TOADPOLES_WEAK": "Kijanki",
+   "TUNNELER_NORMAL": "Tunelowy duet",
+   "TUNNELER_WEAK": "Tunelowiec",
+   "TURRET_OPERATOR_WEAK": "Szczur z CKM-em",
+   "TWO_TAILED_RATS_NORMAL": "Zmutowany Szczur",
+   "VANTOM_BOSS": "Fantom",
+   "VINE_SHAMBLER_NORMAL": "Pnączowór",
+   "WATERFALL_GIANT_BOSS": "Kaskadowy Olbrzym"
+  },
+  "keywords": {
+   "Eternal": "Wieczna",
+   "Ethereal": "Eteryczna",
+   "Exhaust": "Wyczerpanie",
+   "Innate": "Startowa",
+   "Retain": "Zachowanie",
+   "Sly": "Chytra",
+   "Unplayable": "Niezagrywalna"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "Pospolita",
+   "Event": "Unikalna",
+   "Rare": "Rzadka",
+   "Uncommon": "Niepospolita"
+  },
+  "rarities": {
+   "Ancient": "Starożytna",
+   "Basic": "Startowe",
+   "Common": "Pospolita",
+   "Event": "Unikalna",
+   "Rare": "Rzadka",
+   "Token": "Specjalna",
+   "Uncommon": "Niepospolita"
+  },
+  "relic_rarities": {
+   "Ancient": "Starożytny Artefakt",
+   "Common": "Pospolity Artefakt",
+   "Event": "Specjalny Artefakt",
+   "Rare": "Rzadki Artefakt",
+   "Shop": "Zakupiony Artefakt",
+   "Starter": "Startowy Artefakt",
+   "Uncommon": "Niepospolity Artefakt"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]Neutralizuje[/gold] osłabienia.",
+    "title": "Ochrona"
+   },
+   "BLOCK": {
+    "text": "Pochłania otrzymywane obrażenia do następnej tury.",
+    "title": "Blok"
+   },
+   "DEXTERITY_POWER": {
+    "text": "Zwiększa liczbę pkt. [gold]Bloku[/gold] otrzymywanych z kart.",
+    "title": "Zręczność"
+   },
+   "ETERNAL": {
+    "text": "Karta nie może być zmieniona ani usunięta z twojej [gold]talii[/gold].",
+    "title": "Wieczna"
+   },
+   "ETHEREAL": {
+    "text": "Jeżeli trzymasz tę kartę w [gold]ręce[/gold] pod koniec tury, [gold]Wyczerp[/gold] ją.",
+    "title": "Eteryczna"
+   },
+   "EXHAUST": {
+    "text": "Karta zostaje usunięta do końca walki.",
+    "title": "Wyczerpanie"
+   },
+   "FATAL": {
+    "text": "Efekt karty aktywuje się po zabiciu przeciwnika, który nie jest pomagierem.",
+    "title": "Uśmiercenie"
+   },
+   "FRAIL_POWER": {
+    "text": "Otrzymujesz [blue]25%[/blue] mniej pkt. [gold]Bloku[/gold] z kart.",
+    "title": "Kruchość"
+   },
+   "INNATE": {
+    "text": "Zaczynasz walkę z tą kartą w [gold]ręce[/gold].",
+    "title": "Startowa"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "Redukuje wszystkie otrzymywane obrażenia oraz utratę PŻ do [blue]1[/blue] pkt. w tej turze.",
+    "title": "Nieuchwytność"
+   },
+   "PLATING_POWER": {
+    "text": "Pod koniec tury zyskaj [gold]Blok[/gold]. Na początku tury zmniejsz [gold]Opancerzenie[/gold] o [blue]1[/blue] pkt.",
+    "title": "Opancerzenie"
+   },
+   "POISON_POWER": {
+    "text": "Zatrute stworzenia tracą PŻ na początku swojej tury. W każdej turze Trucizna zmniejsza się o [blue]1[/blue] pkt.",
+    "title": "Trucizna"
+   },
+   "REPLAY_STATIC": {
+    "text": "Karta jest zagrywana dodatkowy raz.",
+    "title": "Powtórka"
+   },
+   "RETAIN": {
+    "text": "Zachowane karty nie są odrzucane pod koniec tury.",
+    "title": "Zachowanie"
+   },
+   "SLY": {
+    "text": "Jeśli odrzucisz tę kartę z [gold]ręki[/gold] przed zakończeniem tury, zagraj ją za darmo.",
+    "title": "Chytra"
+   },
+   "STRENGTH_POWER": {
+    "text": "Zwiększa obrażenia zadawane przez Ataki.",
+    "title": "Siła"
+   },
+   "TAINTED_POWER": {
+    "text": "Otrzymujesz dodatkowe obrażenia od Ataków w tej turze.",
+    "title": "Skażenie"
+   },
+   "THORNS_POWER": {
+    "text": "Przy otrzymaniu obrażeń zadaj obrażenia atakującemu.",
+    "title": "Ciernie"
+   },
+   "TRANSFORM": {
+    "text": "Zmienione karty stają się losowymi kartami o dowolnej rzadkości.",
+    "title": "Zmiana"
+   },
+   "UNPLAYABLE": {
+    "text": "Niezagrywalnych kart nie można zagrać.",
+    "title": "Niezagrywalna"
+   },
+   "VULNERABLE_POWER": {
+    "text": "Wrażliwe stworzenia otrzymują [blue]50%[/blue] więcej obrażeń od Ataków.",
+    "title": "Wrażliwość"
+   },
+   "WEAK_POWER": {
+    "text": "Słabe stworzenia zadają [blue]25%[/blue] mniej obrażeń od Ataków.",
+    "title": "Słabość"
+   }
+  },
+  "types": {
+   "Attack": "Atak",
+   "Curse": "Klątwa",
+   "Power": "Moc",
+   "Skill": "Umiej.",
+   "Status": "Stan"
+  },
+  "words": {
+   "Block": "Blok",
+   "Boss": "Boss",
+   "Card Library": "Kolekcja kart",
+   "Compendium": "Kompendium",
+   "Cost": "Koszt",
+   "Defeat": "Porażka",
+   "Dexterity": "Zręczność",
+   "Elite": "Elitarny",
+   "Energy": "Energia",
+   "Floor": "Piętro",
+   "Language": "Język",
+   "Poison": "Trucizna",
+   "Potion Lab": "Laboratorium Mikstur",
+   "Rarity": "Rzadkość",
+   "Relic Collection": "Zbiór Artefaktów",
+   "Run History": "Historia wypraw",
+   "Strength": "Siła",
+   "Timeline": "Oś Czasu",
+   "Victory": "Zwycięstwo",
+   "Vulnerable": "Wrażliwość",
+   "Weak": "Słabość"
+  }
+ },
+ "ptb": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Ampulheta Eônica",
+   "AXEBOTS_NORMAL": "Robô de Fundição",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Manequim de Treinamento Desgastado",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Manequim de Treinamento Desgastado",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Manequim de Treinamento Desgastado",
+   "BOWLBUGS_NORMAL": "Enxame de Besouros Coletores",
+   "BOWLBUGS_WEAK": "Besouros Coletores",
+   "BYGONE_EFFIGY_ELITE": "Efígie Antigo",
+   "BYRDONIS_ELITE": "Avestriz Alfa",
+   "CEREMONIAL_BEAST_BOSS": "Besta Cerimonial",
+   "CHOMPERS_NORMAL": "Par de Autômatos",
+   "CONSTRUCT_MENAGERIE_NORMAL": "Conjunto de Constructos",
+   "CORPSE_SLUGS_NORMAL": "Muitas Lesmas Necrófagas",
+   "CORPSE_SLUGS_WEAK": "Lesmas Necrófagas",
+   "CUBEX_CONSTRUCT_NORMAL": "Cubiconstructo",
+   "CULTISTS_NORMAL": "Cultistas",
+   "DECIMILLIPEDE_ELITE": "Decimilípede",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Parasitários",
+   "DEPRECATED_ENCOUNTER": "Encontro Descontinuado",
+   "DEVOTED_SCULPTOR_WEAK": "Escultor Devoto",
+   "ENTOMANCER_ELITE": "Entomante",
+   "EXOSKELETONS_NORMAL": "Vários Exoesqueletos",
+   "EXOSKELETONS_WEAK": "Exoesqueletos",
+   "FABRICATOR_NORMAL": "Engenheiro",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "Mercador???",
+   "FLYCONID_NORMAL": "Fungos e Gosmas",
+   "FLYCONID_WEAK": "Micodíptero",
+   "FOGMOG_NORMAL": "Brumesporo",
+   "FOSSIL_STALKER_NORMAL": "Fóssil Espreitador",
+   "FROG_KNIGHT_NORMAL": "Sapo Cavaleiro",
+   "FUZZY_WURM_CRAWLER_WEAK": "Vorme Peluginoso",
+   "GLOBE_HEAD_NORMAL": "Um Globocéfalo Solitário",
+   "GREMLIN_MERC_NORMAL": "Dois Gremlins Disfarçados",
+   "HAUNTED_SHIP_NORMAL": "Embarcação Assombrada",
+   "HUNTER_KILLER_NORMAL": "Predador de Predadores",
+   "INFESTED_PRISMS_ELITE": "Prisma Contaminado",
+   "INKLETS_NORMAL": "Nanquíneos",
+   "KAISER_CRAB_BOSS": "Caranguejo Imperador",
+   "KNIGHTS_ELITE": "Grupo de Cavaleiros",
+   "KNOWLEDGE_DEMON_BOSS": "Demônio do Conhecimento",
+   "LAGAVULIN_MATRIARCH_BOSS": "Matriarca Lagavulin",
+   "LIVING_FOG_NORMAL": "Névoa Viva",
+   "LOUSE_PROGENITOR_NORMAL": "Piolho Progenitor",
+   "MAWLER_NORMAL": "Dilacerador",
+   "MECHA_KNIGHT_ELITE": "Cavaleiro Mecânico",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "Cavaleiro Misterioso",
+   "MYTES_NORMAL": "Enxame de Acarinos",
+   "NIBBITS_NORMAL": "Um Par de Lagartiscos",
+   "NIBBITS_WEAK": "Um Lagartisco solitário",
+   "OVERGROWTH_CRAWLERS": "Seres Rastejantes",
+   "OVERGROWTH_WILDLIFE": "Vida Selvagem da Proliferação",
+   "OVICOPTER_NORMAL": "Ovicóptero",
+   "OWL_MAGISTRATE_NORMAL": "Coruja Magistrada",
+   "PHANTASMAL_GARDENERS_ELITE": "Enguias Espectrais",
+   "PHROG_PARASITE_ELITE": "Sapo Parasitado",
+   "PUNCH_CONSTRUCT_NORMAL": "Constructo Pugilista",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "Constructos Pugilistas",
+   "QUEEN_BOSS": "Rainha",
+   "RUBY_RAIDERS_NORMAL": "Guerreiros Saqueadores",
+   "SCROLLS_OF_BITING_NORMAL": "Vários Pergaminhos Mordazes",
+   "SCROLLS_OF_BITING_WEAK": "Pergaminhos Mordazes",
+   "SEAPUNK_NORMAL": "Vida Selvagem das Docas Subterrâneas",
+   "SEAPUNK_WEAK": "Arruaceiro Marinho",
+   "SEWER_CLAM_NORMAL": "Bivalve de Esgoto",
+   "SHRINKER_BEETLE_WEAK": "Besouro Encolhedor",
+   "SKULKING_COLONY_ELITE": "Colônia Furtiva",
+   "SLIMED_BERSERKER_NORMAL": "Amoque Gosmento",
+   "SLIMES_NORMAL": "Grande número de Gosmas",
+   "SLIMES_WEAK": "Grupo de Gosmas",
+   "SLITHERING_STRANGLER_NORMAL": "Estrangulador Acompanhado",
+   "SLUDGE_SPINNER_WEAK": "Náutilo Oleoso",
+   "SLUMBERING_BEETLE_NORMAL": "Precioso Descanso",
+   "SNAPPING_JAXFRUIT_NORMAL": "Flora da Proliferação",
+   "SOUL_FYSH_BOSS": "Peyxe Espectral",
+   "SOUL_NEXUS_ELITE": "Nexo de Almas",
+   "SPINY_TOAD_NORMAL": "Sapo Espinhoso",
+   "TERROR_EEL_ELITE": "Enguia Abissal",
+   "TEST_SUBJECT_BOSS": "Cobaia",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "O Arquiteto",
+   "THE_INSATIABLE_BOSS": "O Insaciável",
+   "THE_KIN_BOSS": "A Tribo",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "O Perdido e O Esquecido",
+   "THE_OBSCURA_NORMAL": "A Obscura",
+   "THIEVING_HOPPER_WEAK": "Gafanhoto Larápio",
+   "TOADPOLES_WEAK": "Girinos",
+   "TUNNELER_NORMAL": "Escavador e seu aliado",
+   "TUNNELER_WEAK": "Escavador",
+   "TURRET_OPERATOR_WEAK": "Operador de Artilharia",
+   "TWO_TAILED_RATS_NORMAL": "Ratos Duas-Caudas",
+   "VANTOM_BOSS": "Vantasma",
+   "VINE_SHAMBLER_NORMAL": "Videira Trôpega",
+   "WATERFALL_GIANT_BOSS": "Cachoeira Titânica"
+  },
+  "keywords": {
+   "Eternal": "Perpétua",
+   "Ethereal": "Etérea",
+   "Exhaust": "Exaurir",
+   "Innate": "Inata",
+   "Retain": "Manter",
+   "Sly": "Sagaz",
+   "Unplayable": "Injogável"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "Comum",
+   "Event": "Evento",
+   "Rare": "Rara",
+   "Uncommon": "Incomum"
+  },
+  "rarities": {
+   "Ancient": "Ancestral",
+   "Basic": "Inicial",
+   "Common": "Comum",
+   "Event": "Evento",
+   "Rare": "Rara",
+   "Token": "Ficha",
+   "Uncommon": "Incomum"
+  },
+  "relic_rarities": {
+   "Ancient": "Relíquia Ancestral",
+   "Common": "Relíquia Comum",
+   "Event": "Relíquia de Evento",
+   "Rare": "Relíquia Rara",
+   "Shop": "Relíquia de Loja",
+   "Starter": "Relíquia Inicial",
+   "Uncommon": "Relíquia Incomum"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]Anula[/gold] efeitos negativos.",
+    "title": "Artefato"
+   },
+   "BLOCK": {
+    "text": "Previne dano até o próximo turno.",
+    "title": "Proteção"
+   },
+   "DEXTERITY_POWER": {
+    "text": "Destreza aumenta a [gold]Proteção[/gold] recebida por cartas.",
+    "title": "Destreza"
+   },
+   "ETERNAL": {
+    "text": "Não pode ser transformada ou removida do seu [gold]Baralho[/gold].",
+    "title": "Perpétua"
+   },
+   "ETHEREAL": {
+    "text": "Se esta carta estiver na sua [gold]Mão[/gold] no final deste turno, ela é [gold]Exaurida[/gold].",
+    "title": "Etérea"
+   },
+   "EXHAUST": {
+    "text": "A carta é removida até o final do combate.",
+    "title": "Exaurir"
+   },
+   "FATAL": {
+    "text": "Ativa quando esta carta derrota um inimigo que não seja lacaio.",
+    "title": "Letal"
+   },
+   "FRAIL_POWER": {
+    "text": "Enquanto estiver Frágil, recebe [blue]25%[/blue] menos [gold]Proteção[/gold] de cartas.",
+    "title": "Frágil"
+   },
+   "INNATE": {
+    "text": "Inicie cada combate com esta carta na sua [gold]Mão[/gold].",
+    "title": "Inata"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "Reduz todo o dano sofrido e PV perdidos a [blue]1[/blue] neste turno.",
+    "title": "Intangível"
+   },
+   "PLATING_POWER": {
+    "text": "No final do seu turno, receba [gold]Proteção[/gold]. [gold]Blindagem[/gold] é reduzida em [blue]1[/blue] no início do seu turno.",
+    "title": "Blindagem"
+   },
+   "POISON_POWER": {
+    "text": "Criaturas envenenadas perdem PV no início de seus turnos. A cada turno, o Veneno é reduzido em [blue]1[/blue].",
+    "title": "Veneno"
+   },
+   "REPLAY_STATIC": {
+    "text": "Jogue esta carta uma vez adicional.",
+    "title": "Repetir"
+   },
+   "RETAIN": {
+    "text": "Cartas mantidas não são descartadas no final do seu turno.",
+    "title": "Manter"
+   },
+   "SLY": {
+    "text": "Se esta carta for descartada da sua [gold]Mão[/gold] antes do final do seu turno, jogue-a de graça.",
+    "title": "Sagaz"
+   },
+   "STRENGTH_POWER": {
+    "text": "Força concede dano adicional a Ataques.",
+    "title": "Força"
+   },
+   "TAINTED_POWER": {
+    "text": "Sofra dano adicional de Ataques neste turno.",
+    "title": "Contaminação"
+   },
+   "THORNS_POWER": {
+    "text": "Quando sofre um ataque, causa dano de retaliação.",
+    "title": "Espinhos"
+   },
+   "TRANSFORM": {
+    "text": "Transformar uma carta a converte em uma carta aleatória de qualquer raridade.",
+    "title": "Transformar"
+   },
+   "UNPLAYABLE": {
+    "text": "Cartas Injogáveis não podem ser jogadas.",
+    "title": "Injogável"
+   },
+   "VULNERABLE_POWER": {
+    "text": "Criaturas Vulneráveis sofrem [blue]50%[/blue] mais dano de Ataques.",
+    "title": "Vulnerável"
+   },
+   "WEAK_POWER": {
+    "text": "Criaturas com Fraqueza causam [blue]25%[/blue] menos dano com Ataques.",
+    "title": "Fraqueza"
+   }
+  },
+  "types": {
+   "Attack": "Ataque",
+   "Curse": "Maldição",
+   "Power": "Poder",
+   "Skill": "Técnica",
+   "Status": "Condição"
+  },
+  "words": {
+   "Block": "Proteção",
+   "Boss": "Chefe",
+   "Card Library": "Biblioteca de Cartas",
+   "Compendium": "Compêndio",
+   "Cost": "Custo",
+   "Defeat": "Derrota",
+   "Dexterity": "Destreza",
+   "Elite": "Elite",
+   "Energy": "Energia",
+   "Floor": "Andar",
+   "Language": "Idioma",
+   "Poison": "Veneno",
+   "Potion Lab": "Laboratório de Poções",
+   "Rarity": "Raridade",
+   "Relic Collection": "Coleção de Relíquias",
+   "Run History": "Histórico de Partidas",
+   "Strength": "Força",
+   "Timeline": "Linha do Tempo",
+   "Victory": "Vitória",
+   "Vulnerable": "Vulnerável",
+   "Weak": "Fraqueza"
+  }
+ },
+ "rus": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Вечные часы",
+   "AXEBOTS_NORMAL": "Рубот",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Боевой тренажер",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Боевой тренажер",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Боевой тренажер",
+   "BOWLBUGS_NORMAL": "Полчище рогачей",
+   "BOWLBUGS_WEAK": "Рогачи",
+   "BYGONE_EFFIGY_ELITE": "Античный истукан",
+   "BYRDONIS_ELITE": "Птахоклюй",
+   "CEREMONIAL_BEAST_BOSS": "Хранитель обряда",
+   "CHOMPERS_NORMAL": "Парочка автоматонов",
+   "CONSTRUCT_MENAGERIE_NORMAL": "Зоопарк конструкций",
+   "CORPSE_SLUGS_NORMAL": "Куча слизней-падальщиков",
+   "CORPSE_SLUGS_WEAK": "Слизни-падальщики",
+   "CUBEX_CONSTRUCT_NORMAL": "Кубический агрегат",
+   "CULTISTS_NORMAL": "Культисты",
+   "DECIMILLIPEDE_ELITE": "Скольконожка",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Ерзуны",
+   "DEPRECATED_ENCOUNTER": "Убранный из игры бой",
+   "DEVOTED_SCULPTOR_WEAK": "Одержимый скульптор",
+   "ENTOMANCER_ELITE": "Энтомант",
+   "EXOSKELETONS_NORMAL": "Группа экзоскелетов",
+   "EXOSKELETONS_WEAK": "Экзоскелеты",
+   "FABRICATOR_NORMAL": "Сборщик",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "Торговец?!",
+   "FLYCONID_NORMAL": "Гриб и слизь",
+   "FLYCONID_WEAK": "Мухамор",
+   "FOGMOG_NORMAL": "Грибодуй",
+   "FOSSIL_STALKER_NORMAL": "Хвостолов-отшельник",
+   "FROG_KNIGHT_NORMAL": "Сэр Лягушка",
+   "FUZZY_WURM_CRAWLER_WEAK": "Пышный червогрив",
+   "GLOBE_HEAD_NORMAL": "Одинокий Шароголовый",
+   "GREMLIN_MERC_NORMAL": "Два гремлина в пальто",
+   "HAUNTED_SHIP_NORMAL": "Проклятое судно",
+   "HUNTER_KILLER_NORMAL": "Убийца охотников",
+   "INFESTED_PRISMS_ELITE": "Зараженная призма",
+   "INKLETS_NORMAL": "Чернильники",
+   "KAISER_CRAB_BOSS": "Царь-краб",
+   "KNIGHTS_ELITE": "Банда рыцарей",
+   "KNOWLEDGE_DEMON_BOSS": "Всезнающий демон",
+   "LAGAVULIN_MATRIARCH_BOSS": "Праматерь лагавулинов",
+   "LIVING_FOG_NORMAL": "Недобрый газ",
+   "LOUSE_PROGENITOR_NORMAL": "Королевская вошь",
+   "MAWLER_NORMAL": "Клыкозавр",
+   "MECHA_KNIGHT_ELITE": "Механический рыцарь",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "Таинственный рыцарь",
+   "MYTES_NORMAL": "Сброд кровожоров",
+   "NIBBITS_NORMAL": "Пара кусак",
+   "NIBBITS_WEAK": "Одинокий кусака",
+   "OVERGROWTH_CRAWLERS": "Ползуны из зарослей",
+   "OVERGROWTH_WILDLIFE": "Живность из зарослей",
+   "OVICOPTER_NORMAL": "Овикоптер",
+   "OWL_MAGISTRATE_NORMAL": "Сова-юстициарий",
+   "PHANTASMAL_GARDENERS_ELITE": "Фантомные альгочисты",
+   "PHROG_PARASITE_ELITE": "Лягуш-паразит",
+   "PUNCH_CONSTRUCT_NORMAL": "Бойкий агрегат",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "Бойкие агрегаты",
+   "QUEEN_BOSS": "Королева",
+   "RUBY_RAIDERS_NORMAL": "Рубиновые налетчики",
+   "SCROLLS_OF_BITING_NORMAL": "Группа зубастых свитков",
+   "SCROLLS_OF_BITING_WEAK": "Зубастые свитки",
+   "SEAPUNK_NORMAL": "Живность Пристани",
+   "SEAPUNK_WEAK": "Зламинария",
+   "SEWER_CLAM_NORMAL": "Сточный моллюск",
+   "SHRINKER_BEETLE_WEAK": "Жук-ужиматель",
+   "SKULKING_COLONY_ELITE": "Копотливая колония",
+   "SLIMED_BERSERKER_NORMAL": "Ослизненный берсерк",
+   "SLIMES_NORMAL": "Полчище слизней",
+   "SLIMES_WEAK": "Группа слизней",
+   "SLITHERING_STRANGLER_NORMAL": "Горлодав и его приятель",
+   "SLUDGE_SPINNER_WEAK": "Грязевой вертоплюй",
+   "SLUMBERING_BEETLE_NORMAL": "Жучиная ночевка",
+   "SNAPPING_JAXFRUIT_NORMAL": "Флора зарослей",
+   "SOUL_FYSH_BOSS": "Призрачный рыб",
+   "SOUL_NEXUS_ELITE": "Чистилище душ",
+   "SPINY_TOAD_NORMAL": "Ежовая жаба",
+   "TERROR_EEL_ELITE": "Испугорь",
+   "TEST_SUBJECT_BOSS": "Подопытный",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "Архитектор",
+   "THE_INSATIABLE_BOSS": "Проглот",
+   "THE_KIN_BOSS": "Стая",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "Пропащий и Забытый",
+   "THE_OBSCURA_NORMAL": "Обскура",
+   "THIEVING_HOPPER_WEAK": "Загребущая цикада",
+   "TOADPOLES_WEAK": "Головастики",
+   "TUNNELER_NORMAL": "Команда копателей",
+   "TUNNELER_WEAK": "Разрыхлитель",
+   "TURRET_OPERATOR_WEAK": "Наводчик",
+   "TWO_TAILED_RATS_NORMAL": "Двухвостые крысы",
+   "VANTOM_BOSS": "Вантом",
+   "VINE_SHAMBLER_NORMAL": "Заросший скиталец",
+   "WATERFALL_GIANT_BOSS": "Рифовый великан"
+  },
+  "keywords": {
+   "Eternal": "Вечная",
+   "Ethereal": "Эфирная",
+   "Exhaust": "Сжигается",
+   "Innate": "Начальная",
+   "Retain": "Оставляется",
+   "Sly": "Коварная",
+   "Unplayable": "Неиграбельная"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "Обычное",
+   "Event": "Особое",
+   "Rare": "Редкое",
+   "Uncommon": "Необычное"
+  },
+  "rarities": {
+   "Ancient": "Древние",
+   "Basic": "Начальные",
+   "Common": "Обычные",
+   "Event": "Карта события",
+   "Rare": "Редкие",
+   "Token": "Обозначение",
+   "Uncommon": "Необычные"
+  },
+  "relic_rarities": {
+   "Ancient": "Древняя реликвия",
+   "Common": "Обычная реликвия",
+   "Event": "Реликвия за событие",
+   "Rare": "Редкая реликвия",
+   "Shop": "Реликвия из магазина",
+   "Starter": "Начальная реликвия",
+   "Uncommon": "Необычная реликвия"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]Блокирует[/gold] отрицательный эффект.",
+    "title": "Артефакт"
+   },
+   "BLOCK": {
+    "text": "Предотвращает урон до следующего хода.",
+    "title": "Защита"
+   },
+   "DEXTERITY_POWER": {
+    "text": "Ловкость повышает [gold]защиту[/gold], полученную от карт.",
+    "title": "Ловкость"
+   },
+   "ETERNAL": {
+    "text": "Эту карту нельзя преобразовать или убрать из [gold]колоды[/gold].",
+    "title": "Вечная"
+   },
+   "ETHEREAL": {
+    "text": "Эта карта [gold]сжигается[/gold], если остается в [gold]руке[/gold] до конца хода.",
+    "title": "Эфирная"
+   },
+   "EXHAUST": {
+    "text": "Эта карта исчезает из игры до конца боя.",
+    "title": "Сжигается"
+   },
+   "FATAL": {
+    "text": "Эффект срабатывает, если эта карта убивает врага (не считая приспешников).",
+    "title": "Казнь"
+   },
+   "FRAIL_POWER": {
+    "text": "Хрупкость понижает получаемую от карт [gold]защиту[/gold] на [blue]25%[/blue].",
+    "title": "Хрупкость"
+   },
+   "INNATE": {
+    "text": "Эта карта добавляется в [gold]руку[/gold] в начале каждого боя.",
+    "title": "Начальная"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "Понижает получаемый урон и потерю ОЗ в этом ходу до [blue]1[/blue].",
+    "title": "Неосязаемость"
+   },
+   "PLATING_POWER": {
+    "text": "Дает [gold]защиту[/gold] в конце хода. Понижается на [blue]1[/blue] в начале хода.",
+    "title": "Панцирь"
+   },
+   "POISON_POWER": {
+    "text": "Яд отнимает ОЗ в начале хода отравленного существа, затем понижается на [blue]1[/blue].",
+    "title": "Яд"
+   },
+   "REPLAY_STATIC": {
+    "text": "Карта разыгрывается дополнительный раз.",
+    "title": "Повтор"
+   },
+   "RETAIN": {
+    "text": "Эта карта не сбрасывается в конце хода.",
+    "title": "Оставляется"
+   },
+   "SLY": {
+    "text": "Эта карта разыгрывается бесплатно, если вы [gold]сбрасываете[/gold] ее до конца хода.",
+    "title": "Коварная"
+   },
+   "STRENGTH_POWER": {
+    "text": "Сила повышает наносимый Атаками урон.",
+    "title": "Сила"
+   },
+   "TAINTED_POWER": {
+    "text": "Полученный урон от Атак увеличен в этом ходу.",
+    "title": "Порча"
+   },
+   "THORNS_POWER": {
+    "text": "Наносят урон в ответ, когда вас атакуют.",
+    "title": "Шипы"
+   },
+   "TRANSFORM": {
+    "text": "Преобразованная карта превращается в случайную карту случайной редкости.",
+    "title": "Преобразование"
+   },
+   "UNPLAYABLE": {
+    "text": "Эту карту разыграть нельзя.",
+    "title": "Неиграбельная"
+   },
+   "VULNERABLE_POWER": {
+    "text": "Уязвимые враги получают на [blue]50%[/blue] больше урона от Атак.",
+    "title": "Уязвимость"
+   },
+   "WEAK_POWER": {
+    "text": "Ослабленные враги наносят на [blue]25%[/blue] меньше урона Атаками.",
+    "title": "Слабость"
+   }
+  },
+  "types": {
+   "Attack": "Атака",
+   "Curse": "Проклятие",
+   "Power": "Талант",
+   "Skill": "Навык",
+   "Status": "Статус"
+  },
+  "words": {
+   "Block": "Защита",
+   "Boss": "Босс",
+   "Card Library": "Библиотека карт",
+   "Compendium": "Компендиум",
+   "Cost": "По стоимости",
+   "Defeat": "Неудача",
+   "Dexterity": "Ловкость",
+   "Elite": "Элитный враг",
+   "Energy": "Энергия",
+   "Floor": "Этаж",
+   "Language": "Язык",
+   "Poison": "Яд",
+   "Potion Lab": "Лаборатория",
+   "Rarity": "Редкость",
+   "Relic Collection": "Коллекция реликвий",
+   "Run History": "История вылазок",
+   "Strength": "Сила",
+   "Timeline": "Летопись",
+   "Victory": "Победа",
+   "Vulnerable": "Уязвимость",
+   "Weak": "Слабость"
+  }
+ },
+ "spa": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Clepsamia eónica",
+   "AXEBOTS_NORMAL": "Hachatrón",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Muñeco de entrenamiento maltrecho",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Muñeco de entrenamiento maltrecho",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Muñeco de entrenamiento maltrecho",
+   "BOWLBUGS_NORMAL": "Enjambre de escaracuencos",
+   "BOWLBUGS_WEAK": "Escaracuencos",
+   "BYGONE_EFFIGY_ELITE": "Estatua vetusta",
+   "BYRDONIS_ELITE": "Japarónix",
+   "CEREMONIAL_BEAST_BOSS": "Bestia ceremonial",
+   "CHOMPERS_NORMAL": "Un par de autómatas",
+   "CONSTRUCT_MENAGERIE_NORMAL": "Grupo de constructos",
+   "CORPSE_SLUGS_NORMAL": "Varias babosas cadavéricas",
+   "CORPSE_SLUGS_WEAK": "Babosas cadavéricas",
+   "CUBEX_CONSTRUCT_NORMAL": "Constructo Cúbex",
+   "CULTISTS_NORMAL": "Sectarios",
+   "DECIMILLIPEDE_ELITE": "Diezmilpiés",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Alimañas retorcidas",
+   "DEPRECATED_ENCOUNTER": "Encuentro obsoleto",
+   "DEVOTED_SCULPTOR_WEAK": "Escultor devoto",
+   "ENTOMANCER_ELITE": "Entomomante",
+   "EXOSKELETONS_NORMAL": "Varios placópteros",
+   "EXOSKELETONS_WEAK": "Placópteros",
+   "FABRICATOR_NORMAL": "Constructor",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "¿¿El Comerciante??",
+   "FLYCONID_NORMAL": "Viscosidad fúngica",
+   "FLYCONID_WEAK": "Micónido volador",
+   "FOGMOG_NORMAL": "Esporino",
+   "FOSSIL_STALKER_NORMAL": "Fósil acosador",
+   "FROG_KNIGHT_NORMAL": "Croaballero",
+   "FUZZY_WURM_CRAWLER_WEAK": "Reptador peludo",
+   "GLOBE_HEAD_NORMAL": "Un plasmacéfalo solitario",
+   "GREMLIN_MERC_NORMAL": "Dos gremlins en una gabardina",
+   "HAUNTED_SHIP_NORMAL": "Barco embrujado",
+   "HUNTER_KILLER_NORMAL": "Cazador de cazadores",
+   "INFESTED_PRISMS_ELITE": "Prisma infestado",
+   "INKLETS_NORMAL": "Tintoides",
+   "KAISER_CRAB_BOSS": "Cangrejo káiser",
+   "KNIGHTS_ELITE": "Pandilla de caballeros",
+   "KNOWLEDGE_DEMON_BOSS": "Demonio del saber",
+   "LAGAVULIN_MATRIARCH_BOSS": "Matriarca lagavulín",
+   "LIVING_FOG_NORMAL": "Nieblamprea",
+   "LOUSE_PROGENITOR_NORMAL": "Piojo progenitor",
+   "MAWLER_NORMAL": "Devastadonte",
+   "MECHA_KNIGHT_ELITE": "Caballero mecanizado",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "Caballero misterioso",
+   "MYTES_NORMAL": "Asaltantes acáridos",
+   "NIBBITS_NORMAL": "Un par de vibrosaurios",
+   "NIBBITS_WEAK": "Un vibrosaurio solitario",
+   "OVERGROWTH_CRAWLERS": "Reptadores de la Espesura",
+   "OVERGROWTH_WILDLIFE": "criatura de la Espesura",
+   "OVICOPTER_NORMAL": "Ovicóptero",
+   "OWL_MAGISTRATE_NORMAL": "Magistrado nocturno",
+   "PHANTASMAL_GARDENERS_ELITE": "Acechamareas",
+   "PHROG_PARASITE_ELITE": "Sapo agusanado",
+   "PUNCH_CONSTRUCT_NORMAL": "Puñotrón",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "Puñotrones",
+   "QUEEN_BOSS": "La Reina",
+   "RUBY_RAIDERS_NORMAL": "Asaltantes rubescentes",
+   "SCROLLS_OF_BITING_NORMAL": "Varios pergaminos mordedores",
+   "SCROLLS_OF_BITING_WEAK": "Pergaminos mordedores",
+   "SEAPUNK_NORMAL": "fauna de los Muelles Sombríos",
+   "SEAPUNK_WEAK": "Canalla marino",
+   "SEWER_CLAM_NORMAL": "Almejarilla",
+   "SHRINKER_BEETLE_WEAK": "Encogebajo",
+   "SKULKING_COLONY_ELITE": "Colonia acechadora",
+   "SLIMED_BERSERKER_NORMAL": "Berserker viscoso",
+   "SLIMES_NORMAL": "patrulla de Limos",
+   "SLIMES_WEAK": "grupo de Limos",
+   "SLITHERING_STRANGLER_NORMAL": "Estrangulador reptante",
+   "SLUDGE_SPINNER_WEAK": "Girador cenagoso",
+   "SLUMBERING_BEETLE_NORMAL": "la siesta de unos escarabajos",
+   "SNAPPING_JAXFRUIT_NORMAL": "Desarrollo vegetal",
+   "SOUL_FYSH_BOSS": "Peth alma",
+   "SOUL_NEXUS_ELITE": "Nexo de almas",
+   "SPINY_TOAD_NORMAL": "Sapo espinoso",
+   "TERROR_EEL_ELITE": "Aberración abisal",
+   "TEST_SUBJECT_BOSS": "Sujeto de pruebas",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "El Arquitecto",
+   "THE_INSATIABLE_BOSS": "El Insaciable",
+   "THE_KIN_BOSS": "La Estirpe",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "El Perdido y el Olvidado",
+   "THE_OBSCURA_NORMAL": "La Tenebrosa",
+   "THIEVING_HOPPER_WEAK": "Asaltamontes",
+   "TOADPOLES_WEAK": "Ranicuajos",
+   "TUNNELER_NORMAL": "Dúo tunelador",
+   "TUNNELER_WEAK": "Tunelador",
+   "TURRET_OPERATOR_WEAK": "Ametrallador",
+   "TWO_TAILED_RATS_NORMAL": "Ratas de cola bífida",
+   "VANTOM_BOSS": "Tintasma",
+   "VINE_SHAMBLER_NORMAL": "Engendro de lianas",
+   "WATERFALL_GIANT_BOSS": "Cataronte"
+  },
+  "keywords": {
+   "Eternal": "Eterna",
+   "Ethereal": "Etérea",
+   "Exhaust": "Agotamiento",
+   "Innate": "Innata",
+   "Retain": "Retención",
+   "Sly": "Astucia",
+   "Unplayable": "Injugable"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "Común",
+   "Event": "de Evento",
+   "Rare": "Rara",
+   "Uncommon": "Poco común"
+  },
+  "rarities": {
+   "Ancient": "Antigua",
+   "Basic": "Básicas",
+   "Common": "Comunes",
+   "Event": "Evento",
+   "Rare": "Raras",
+   "Token": "Ficha",
+   "Uncommon": "Poco comunes"
+  },
+  "relic_rarities": {
+   "Ancient": "Reliquia antigua",
+   "Common": "Reliquia común",
+   "Event": "Reliquia de evento",
+   "Rare": "Reliquia rara",
+   "Shop": "Tienda de reliquias",
+   "Starter": "Reliquia básica",
+   "Uncommon": "Reliquia poco común"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]Anula[/gold] efectos negativos.",
+    "title": "Artefacto"
+   },
+   "BLOCK": {
+    "text": "Previene el daño hasta el siguiente turno.",
+    "title": "Bloqueo"
+   },
+   "DEXTERITY_POWER": {
+    "text": "La Destreza aumenta el [gold]Bloqueo[/gold] obtenido mediante cartas.",
+    "title": "Destreza"
+   },
+   "ETERNAL": {
+    "text": "No se puede transformar ni eliminar de tu [gold]Mazo[/gold].",
+    "title": "Eterna"
+   },
+   "ETHEREAL": {
+    "text": "Si esta carta está en tu [gold]Mano[/gold] al final del turno, se [gold]Agota[/gold].",
+    "title": "Etérea"
+   },
+   "EXHAUST": {
+    "text": "Elimina esta carta hasta el final del combate.",
+    "title": "Agotamiento"
+   },
+   "FATAL": {
+    "text": "Se activa cuando esta carta mata a un enemigo que no sea un esbirro.",
+    "title": "Letal"
+   },
+   "FRAIL_POWER": {
+    "text": "Fragilidad reduce la cantidad de [gold]Bloqueo[/gold] obtenido mediante cartas un [blue]25 %[/blue].",
+    "title": "Fragilidad"
+   },
+   "INNATE": {
+    "text": "Comienza cada combate con esta carta en tu [gold]Mano[/gold].",
+    "title": "Innata"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "Reduce todo el daño recibido y la pérdida de PV a [blue]1[/blue] durante este turno.",
+    "title": "Intangible"
+   },
+   "PLATING_POWER": {
+    "text": "Al final de tu turno, gana [gold]Bloqueo[/gold]. El [gold]Blindaje[/gold] se reduce en [blue]1[/blue] al comienzo de tu turno.",
+    "title": "Blindaje"
+   },
+   "POISON_POWER": {
+    "text": "Las criaturas envenenadas pierden PV al comienzo de su turno. Cada turno, el Veneno se reduce en [blue]1[/blue].",
+    "title": "Veneno"
+   },
+   "REPLAY_STATIC": {
+    "text": "Juega esta carta una vez más.",
+    "title": "Repetición"
+   },
+   "RETAIN": {
+    "text": "Las cartas retenidas no se descartan al final del turno.",
+    "title": "Retención"
+   },
+   "SLY": {
+    "text": "Si esta carta es descartada de tu [gold]Mano[/gold] antes de que acabe tu turno, juégala gratis.",
+    "title": "Astucia"
+   },
+   "STRENGTH_POWER": {
+    "text": "La Fuerza añade daño adicional a los Ataques.",
+    "title": "Fuerza"
+   },
+   "TAINTED_POWER": {
+    "text": "Recibes daño adicional de Ataques durante este turno.",
+    "title": "Impureza"
+   },
+   "THORNS_POWER": {
+    "text": "Cuando un ataque te golpee, inflige daño en respuesta.",
+    "title": "Espinas"
+   },
+   "TRANSFORM": {
+    "text": "Al transformar una carta, esta se convierte en una carta aleatoria de cualquier rareza.",
+    "title": "Transformar"
+   },
+   "UNPLAYABLE": {
+    "text": "Las cartas injugables no pueden jugarse.",
+    "title": "Injugable"
+   },
+   "VULNERABLE_POWER": {
+    "text": "Las criaturas Vulnerables reciben un [blue]50 %[/blue] más de daño de Ataques.",
+    "title": "Vulnerabilidad"
+   },
+   "WEAK_POWER": {
+    "text": "Las criaturas Débiles infligen un [blue]25 %[/blue] menos de daño con Ataques.",
+    "title": "Debilidad"
+   }
+  },
+  "types": {
+   "Attack": "Ataque",
+   "Curse": "Maldición",
+   "Power": "Poder",
+   "Skill": "Habilidad",
+   "Status": "Estado"
+  },
+  "words": {
+   "Block": "Bloqueo",
+   "Boss": "Jefe",
+   "Card Library": "Biblioteca de cartas",
+   "Compendium": "Compendio",
+   "Cost": "Coste",
+   "Defeat": "Derrota",
+   "Dexterity": "Destreza",
+   "Elite": "Élite",
+   "Energy": "Energía",
+   "Floor": "Piso",
+   "Language": "Idioma",
+   "Poison": "Veneno",
+   "Potion Lab": "Laboratorio de pociones",
+   "Rarity": "Rareza",
+   "Relic Collection": "Colección de reliquias",
+   "Run History": "Historial",
+   "Strength": "Fuerza",
+   "Timeline": "Cronología",
+   "Victory": "Victoria",
+   "Vulnerable": "Vulnerabilidad",
+   "Weak": "Debilidad"
+  }
+ },
+ "tha": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Aeonglass",
+   "AXEBOTS_NORMAL": "Axebot",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Battleworn Dummy",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Battleworn Dummy",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Battleworn Dummy",
+   "BOWLBUGS_NORMAL": "Bowlbug Swarm",
+   "BOWLBUGS_WEAK": "Bowlbugs",
+   "BYGONE_EFFIGY_ELITE": "Bygone Effigy",
+   "BYRDONIS_ELITE": "ณกยักษ์",
+   "CEREMONIAL_BEAST_BOSS": "Ceremonial Beast",
+   "CHOMPERS_NORMAL": "An Automaton Pair",
+   "CONSTRUCT_MENAGERIE_NORMAL": "Construct Menagerie",
+   "CORPSE_SLUGS_NORMAL": "ฝูงทากศพ",
+   "CORPSE_SLUGS_WEAK": "ทากศพ",
+   "CUBEX_CONSTRUCT_NORMAL": "Cubex Construct",
+   "CULTISTS_NORMAL": "สาวกคลั่งลัทธิ",
+   "DECIMILLIPEDE_ELITE": "The Decimillipede",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Wrigglers",
+   "DEPRECATED_ENCOUNTER": "เหตุการณ์ที่ถูกนำออกจากเกม",
+   "DEVOTED_SCULPTOR_WEAK": "Devoted Sculptor",
+   "ENTOMANCER_ELITE": "Entomancer",
+   "EXOSKELETONS_NORMAL": "Many Exoskeletons",
+   "EXOSKELETONS_WEAK": "Exoskeletons",
+   "FABRICATOR_NORMAL": "Fabricator",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "พ่อค้า???",
+   "FLYCONID_NORMAL": "Shroom and Slime",
+   "FLYCONID_WEAK": "Flyconid",
+   "FOGMOG_NORMAL": "Fogmog",
+   "FOSSIL_STALKER_NORMAL": "Fossil Stalker",
+   "FROG_KNIGHT_NORMAL": "Frog Knight",
+   "FUZZY_WURM_CRAWLER_WEAK": "Fuzzy Wurm Crawler",
+   "GLOBE_HEAD_NORMAL": "A Lone Globe Head",
+   "GREMLIN_MERC_NORMAL": "Two Gremlins in a Trenchcoat",
+   "HAUNTED_SHIP_NORMAL": "เรือผีสิง",
+   "HUNTER_KILLER_NORMAL": "Hunter Killer",
+   "INFESTED_PRISMS_ELITE": "Infested Prism",
+   "INKLETS_NORMAL": "Inklets",
+   "KAISER_CRAB_BOSS": "Kaiser Crab",
+   "KNIGHTS_ELITE": "Knight Gang",
+   "KNOWLEDGE_DEMON_BOSS": "อสูรความรู้",
+   "LAGAVULIN_MATRIARCH_BOSS": "นางพญาลากาวูลิน",
+   "LIVING_FOG_NORMAL": "Living Fog",
+   "LOUSE_PROGENITOR_NORMAL": "พระเจ้าเหา",
+   "MAWLER_NORMAL": "Mawler",
+   "MECHA_KNIGHT_ELITE": "Mecha Knight",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "อัศวินปริศนา",
+   "MYTES_NORMAL": "Mass of Mytes",
+   "NIBBITS_NORMAL": "A Pair of Nibbits",
+   "NIBBITS_WEAK": "A Lone Nibbit",
+   "OVERGROWTH_CRAWLERS": "Overgrowth Crawlers",
+   "OVERGROWTH_WILDLIFE": "Overgrowth Wildlife",
+   "OVICOPTER_NORMAL": "Ovicopter",
+   "OWL_MAGISTRATE_NORMAL": "ฮูกพิพากษา",
+   "PHANTASMAL_GARDENERS_ELITE": "Phantasmal Gardeners",
+   "PHROG_PARASITE_ELITE": "ปรสิตกป",
+   "PUNCH_CONSTRUCT_NORMAL": "จักรกลชกต่อย",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "พวกจักรกลชกต่อย",
+   "QUEEN_BOSS": "Queen",
+   "RUBY_RAIDERS_NORMAL": "Ruby Raiders",
+   "SCROLLS_OF_BITING_NORMAL": "Many Scrolls of Biting",
+   "SCROLLS_OF_BITING_WEAK": "Scrolls of Biting",
+   "SEAPUNK_NORMAL": "สิ่งมีชีวิตในท่าเรือเบื้องล่าง",
+   "SEAPUNK_WEAK": "หร่ายเล",
+   "SEWER_CLAM_NORMAL": "Sewer Clam",
+   "SHRINKER_BEETLE_WEAK": "Shrinker Beetle",
+   "SKULKING_COLONY_ELITE": "Skulking Colony",
+   "SLIMED_BERSERKER_NORMAL": "Slimed Berserker",
+   "SLIMES_NORMAL": "Swarm of Slimes",
+   "SLIMES_WEAK": "Group of Slimes",
+   "SLITHERING_STRANGLER_NORMAL": "Strangler and Friend",
+   "SLUDGE_SPINNER_WEAK": "Sludge Spinner",
+   "SLUMBERING_BEETLE_NORMAL": "Slumber Party",
+   "SNAPPING_JAXFRUIT_NORMAL": "Overgrowth Flora",
+   "SOUL_FYSH_BOSS": "ปฬาวิญญาณ",
+   "SOUL_NEXUS_ELITE": "Soul Nexus",
+   "SPINY_TOAD_NORMAL": "Spiny Toad",
+   "TERROR_EEL_ELITE": "Terror Eel",
+   "TEST_SUBJECT_BOSS": "ตัวอย่างทดลอง",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "สถาปนิก",
+   "THE_INSATIABLE_BOSS": "The Insatiable",
+   "THE_KIN_BOSS": "The Kin",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "Lost and Forgotten",
+   "THE_OBSCURA_NORMAL": "The Obscura",
+   "THIEVING_HOPPER_WEAK": "Thieving Hopper",
+   "TOADPOLES_WEAK": "Toadpoles",
+   "TUNNELER_NORMAL": "Tunneling Twosome",
+   "TUNNELER_WEAK": "Tunneler",
+   "TURRET_OPERATOR_WEAK": "Turret Operator",
+   "TWO_TAILED_RATS_NORMAL": "Two-Tailed Rats",
+   "VANTOM_BOSS": "Vantom",
+   "VINE_SHAMBLER_NORMAL": "Vine Shambler",
+   "WATERFALL_GIANT_BOSS": "ยักษ์น้ำตก"
+  },
+  "keywords": {
+   "Eternal": "นิรันดร์",
+   "Ethereal": "กึ่งสลาย",
+   "Exhaust": "สลาย",
+   "Innate": "ติดตัว",
+   "Retain": "คงสภาพ",
+   "Sly": "เล่ห์เหลี่ยม",
+   "Unplayable": "ถูกผนึก"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "ธรรมดา",
+   "Event": "เหตุการณ์",
+   "Rare": "หายาก",
+   "Uncommon": "ไม่ธรรมดา"
+  },
+  "rarities": {
+   "Ancient": "เทพโบราณ",
+   "Basic": "เริ่มต้น",
+   "Common": "ธรรมดา",
+   "Event": "เหตุการณ์",
+   "Rare": "หายาก",
+   "Token": "โทเคน",
+   "Uncommon": "ไม่ธรรมดา"
+  },
+  "relic_rarities": {
+   "Ancient": "เครื่องรางเทพโบราณ",
+   "Common": "เครื่องรางธรรมดา",
+   "Event": "เครื่องรางเหตุการณ์",
+   "Rare": "เครื่องรางหายาก",
+   "Shop": "เครื่องรางร้านค้า",
+   "Starter": "เครื่องรางเริ่มต้น",
+   "Uncommon": "เครื่องรางไม่ธรรมดา"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]ยกเลิก[/gold]ผลผิดปกติ",
+    "title": "อาคม"
+   },
+   "BLOCK": {
+    "text": "ป้องกันความเสียหายจนกว่าจะถึงเทิร์นถัดไป",
+    "title": "บล็อก"
+   },
+   "DEXTERITY_POWER": {
+    "text": "ความชำนาญทำให้ได้รับ[gold]บล็อก[/gold]จากการ์ดมากขึ้น",
+    "title": "ความชำนาญ"
+   },
+   "ETERNAL": {
+    "text": "ไม่สามารถถูกกำจัดหรือแปรสภาพจาก[gold]กองการ์ด[/gold]ได้",
+    "title": "นิรันดร์"
+   },
+   "ETHEREAL": {
+    "text": "ถ้าการ์ดนี้อยู่ใน[gold]มือ[/gold]ตอนจบเทิร์น จะถูก[gold]สลาย[/gold]",
+    "title": "กึ่งสลาย"
+   },
+   "EXHAUST": {
+    "text": "ถูกกำจัดจนจบการต่อสู้",
+    "title": "สลาย"
+   },
+   "FATAL": {
+    "text": "ทำงานเมื่อการ์ดนี้สังหารศัตรูที่ไม่ใช่ลูกน้อง",
+    "title": "สังหาร"
+   },
+   "FRAIL_POWER": {
+    "text": "ความบอบบางทำให้ได้รับ[gold]บล็อก[/gold]จากการ์ดน้อยลง [blue]25%[/blue]",
+    "title": "ความบอบบาง"
+   },
+   "INNATE": {
+    "text": "เริ่มต้นการต่อสู้โดยมีการ์ดนี้ใน[gold]มือ[/gold]",
+    "title": "ติดตัว"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "ลดความเสียหายและการเสีย HP ให้เหลือ [blue]1[/blue] ในเทิร์นนี้",
+    "title": "ไร้ตัวตน"
+   },
+   "PLATING_POWER": {
+    "text": "ตอนจบเทิร์น ได้รับ[gold]บล็อก[/gold] [gold]เกราะโลหะ[/gold]ลดลง [blue]1[/blue] ตอนเริ่มต้นเทิร์น",
+    "title": "เกราะโลหะ"
+   },
+   "POISON_POWER": {
+    "text": "สิ่งมีชีวิตที่ติดพิษจะเสีย HP ตอนเริ่มต้นเทิร์นของสิ่งมีชีวิตนั้น จากนั้นพิษลดลง [blue]1[/blue]",
+    "title": "พิษ"
+   },
+   "REPLAY_STATIC": {
+    "text": "เล่นการ์ดนี้ซ้ำอีกครั้ง",
+    "title": "เล่นซ้ำ"
+   },
+   "RETAIN": {
+    "text": "การ์ดที่ถูกคงสภาพจะไม่ถูกทิ้งไปเมื่อจบเทิร์น",
+    "title": "คงสภาพ"
+   },
+   "SLY": {
+    "text": "ถ้าการ์ดนี้ถูกทิ้งจาก[gold]มือ[/gold]ก่อนจบเทิร์น เล่นการ์ดนี้ฟรี",
+    "title": "เล่ห์เหลี่ยม"
+   },
+   "STRENGTH_POWER": {
+    "text": "ความแข็งแรงเพิ่มความเสียหายจากการโจมตี",
+    "title": "ความแข็งแรง"
+   },
+   "TAINTED_POWER": {
+    "text": "ได้รับความเสียหายจากการโจมตีเพิ่มขึ้นในเทิร์นนี้",
+    "title": "ปนเปื้อน"
+   },
+   "THORNS_POWER": {
+    "text": "เมื่อถูกโจมตี สร้างความเสียหายกลับไป",
+    "title": "หนาม"
+   },
+   "TRANSFORM": {
+    "text": "การ์ดที่ถูกแปรสภาพจะกลายเป็นการ์ดแบบสุ่มจากทุกความหายาก",
+    "title": "แปรสภาพ"
+   },
+   "UNPLAYABLE": {
+    "text": "เล่นการ์ดที่ถูกผนึกไม่ได้",
+    "title": "ถูกผนึก"
+   },
+   "VULNERABLE_POWER": {
+    "text": "ศัตรูที่มีจุดอ่อนได้รับความเสียหายจากการโจมตีเพิ่ม [blue]50%[/blue]",
+    "title": "จุดอ่อน"
+   },
+   "WEAK_POWER": {
+    "text": "ศัตรูที่อ่อนแอสร้างความเสียหายจากการโจมตีน้อยลง [blue]25%[/blue]",
+    "title": "ความอ่อนแอ"
+   }
+  },
+  "types": {
+   "Attack": "โจมตี",
+   "Curse": "คำสาป",
+   "Power": "พลัง",
+   "Skill": "ทักษะ",
+   "Status": "สถานะ"
+  },
+  "words": {
+   "Block": "บล็อก",
+   "Boss": "บอส",
+   "Card Library": "คลังการ์ด",
+   "Compendium": "สารานุกรม",
+   "Cost": "ค่าร่าย",
+   "Defeat": "พ่ายแพ้",
+   "Dexterity": "ความชำนาญ",
+   "Elite": "ลูกพี่",
+   "Energy": "พลังงาน",
+   "Floor": "ชั้น",
+   "Language": "ภาษา",
+   "Poison": "พิษ",
+   "Potion Lab": "ห้องทดลองยา",
+   "Rarity": "ความหายาก",
+   "Relic Collection": "คลังเครื่องราง",
+   "Run History": "ประวัติการเดินทาง",
+   "Strength": "ความแข็งแรง",
+   "Timeline": "เส้นเวลา",
+   "Victory": "ชนะ",
+   "Vulnerable": "จุดอ่อน",
+   "Weak": "ความอ่อนแอ"
+  }
+ },
+ "tur": {
+  "encounters": {
+   "AEONGLASS_BOSS": "Ebedi Kum Saati",
+   "AXEBOTS_NORMAL": "Baltabot",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "Savaşta Yıpranmış Manken",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "Savaşta Yıpranmış Manken",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "Savaşta Yıpranmış Manken",
+   "BOWLBUGS_NORMAL": "Çanakböceği Sürüsü",
+   "BOWLBUGS_WEAK": "Çanakböcekleri",
+   "BYGONE_EFFIGY_ELITE": "Mazinin Heykeli",
+   "BYRDONIS_ELITE": "Guşdeniz",
+   "CEREMONIAL_BEAST_BOSS": "Mukaddes Yaratık",
+   "CHOMPERS_NORMAL": "Bir Otomaton İkilisi",
+   "CONSTRUCT_MENAGERIE_NORMAL": "Yapı Koleksiyonu",
+   "CORPSE_SLUGS_NORMAL": "Birçok Ceset Yiyen Sümüklü Böcek",
+   "CORPSE_SLUGS_WEAK": "Ceset Yiyen Sümüklü Böcekler",
+   "CUBEX_CONSTRUCT_NORMAL": "Kübiks Yapı",
+   "CULTISTS_NORMAL": "Tarikatçılar",
+   "DECIMILLIPEDE_ELITE": "Ondabirayak",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "Kımıldaklar",
+   "DEPRECATED_ENCOUNTER": "Oyundan Kaldırılmış Karşılaşma",
+   "DEVOTED_SCULPTOR_WEAK": "Kendini Adamış Heykeltıraş",
+   "ENTOMANCER_ELITE": "Böcek Büyücüsü",
+   "EXOSKELETONS_NORMAL": "Birçok Zırhkabuk",
+   "EXOSKELETONS_WEAK": "Zırhkabuklar",
+   "FABRICATOR_NORMAL": "İmalatçı",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "Tüccar???",
+   "FLYCONID_NORMAL": "Mantar ve Balçık",
+   "FLYCONID_WEAK": "Sinekonyum",
+   "FOGMOG_NORMAL": "Gaztar",
+   "FOSSIL_STALKER_NORMAL": "Pusan Fosil",
+   "FROG_KNIGHT_NORMAL": "Kurbağa Şövalye",
+   "FUZZY_WURM_CRAWLER_WEAK": "Tüylü Müylü Sürüngen",
+   "GLOBE_HEAD_NORMAL": "Yalnız Küre Kafa",
+   "GREMLIN_MERC_NORMAL": "Paltolu İki Gremlin",
+   "HAUNTED_SHIP_NORMAL": "Lanetli Gemi",
+   "HUNTER_KILLER_NORMAL": "Avcı Katili",
+   "INFESTED_PRISMS_ELITE": "İstila Edilmiş Prizma",
+   "INKLETS_NORMAL": "Mürekkepçikler",
+   "KAISER_CRAB_BOSS": "Kayzer Yengeç",
+   "KNIGHTS_ELITE": "Şövalye Çetesi",
+   "KNOWLEDGE_DEMON_BOSS": "Bilgi Şeytanı",
+   "LAGAVULIN_MATRIARCH_BOSS": "Anne Lagavulin",
+   "LIVING_FOG_NORMAL": "Yaşayan Sis",
+   "LOUSE_PROGENITOR_NORMAL": "Bitlerin Atası",
+   "MAWLER_NORMAL": "Yırtançene",
+   "MECHA_KNIGHT_ELITE": "Meka Şövalye",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "Gizemli Şövalye",
+   "MYTES_NORMAL": "Mayt Sürüsü",
+   "NIBBITS_NORMAL": "Bir Çift Kemirbağa",
+   "NIBBITS_WEAK": "Yalnız Bir Kemirbağa",
+   "OVERGROWTH_CRAWLERS": "Aşırı Yeşerme Böcekleri",
+   "OVERGROWTH_WILDLIFE": "Aşırı Yeşerme'nin Yaban Hayatı",
+   "OVICOPTER_NORMAL": "Kuluçkopter",
+   "OWL_MAGISTRATE_NORMAL": "Yargıç Baykuş",
+   "PHANTASMAL_GARDENERS_ELITE": "Bahçe Yılan Balıkları",
+   "PHROG_PARASITE_ELITE": "Parazitli Gurbağa",
+   "PUNCH_CONSTRUCT_NORMAL": "Yumruklayan Yapı",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "Yumruklayan Yapılar",
+   "QUEEN_BOSS": "Kraliçe",
+   "RUBY_RAIDERS_NORMAL": "Yakut Yağmacıları",
+   "SCROLLS_OF_BITING_NORMAL": "Birçok Isırma Parşömeni",
+   "SCROLLS_OF_BITING_WEAK": "Isırma Parşömenleri",
+   "SEAPUNK_NORMAL": "Dip Rıhtımlar'ın Yaban Hayatı",
+   "SEAPUNK_WEAK": "Deniz Haydutu",
+   "SEWER_CLAM_NORMAL": "Kanalizasyon İstiridyesi",
+   "SHRINKER_BEETLE_WEAK": "Küçültücü Böcek",
+   "SKULKING_COLONY_ELITE": "Saklanan Koloni",
+   "SLIMED_BERSERKER_NORMAL": "Balçıklanmış Vahşi Savaşçı",
+   "SLIMES_NORMAL": "Balçık Sürüsü",
+   "SLIMES_WEAK": "Bir Grup Balçık",
+   "SLITHERING_STRANGLER_NORMAL": "Boğucu ve Dostu",
+   "SLUDGE_SPINNER_WEAK": "Çamurdöner",
+   "SLUMBERING_BEETLE_NORMAL": "Uyku Partisi",
+   "SNAPPING_JAXFRUIT_NORMAL": "Aşırı Yeşerme Bitkileri",
+   "SOUL_FYSH_BOSS": "Ruh Baluğu",
+   "SOUL_NEXUS_ELITE": "Ruh Bileşiği",
+   "SPINY_TOAD_NORMAL": "Dikenli Kurbağa",
+   "TERROR_EEL_ELITE": "Korkunç Yılan Balığı",
+   "TEST_SUBJECT_BOSS": "Denek",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "Mimar",
+   "THE_INSATIABLE_BOSS": "Doyumsuz",
+   "THE_KIN_BOSS": "Kabile",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "Kayıp ve Unutulmuş",
+   "THE_OBSCURA_NORMAL": "Belirsiz",
+   "THIEVING_HOPPER_WEAK": "Hırsız Çekirge",
+   "TOADPOLES_WEAK": "İribaşlar",
+   "TUNNELER_NORMAL": "Tünel Kazan İkili",
+   "TUNNELER_WEAK": "Tünelci",
+   "TURRET_OPERATOR_WEAK": "Taret Operatörü",
+   "TWO_TAILED_RATS_NORMAL": "İki Kuyruklu Fareler",
+   "VANTOM_BOSS": "Vantom",
+   "VINE_SHAMBLER_NORMAL": "Sarmaşık Yığını",
+   "WATERFALL_GIANT_BOSS": "Akarsu Devi"
+  },
+  "keywords": {
+   "Eternal": "Sonsuz",
+   "Ethereal": "Ruhani",
+   "Exhaust": "Tüket",
+   "Innate": "Yerleşik",
+   "Retain": "Sakla",
+   "Sly": "Kurnaz",
+   "Unplayable": "Oynanamaz"
+  },
+  "period": ".",
+  "potion_rarities": {
+   "Common": "Yaygın",
+   "Event": "Etkinlik",
+   "Rare": "Nadir",
+   "Uncommon": "Az Yaygın"
+  },
+  "rarities": {
+   "Ancient": "Kadim",
+   "Basic": "Başlangıç",
+   "Common": "Yaygın",
+   "Event": "Etkinlik",
+   "Rare": "Nadir",
+   "Token": "Token",
+   "Uncommon": "Az Yaygın"
+  },
+  "relic_rarities": {
+   "Ancient": "Kadim Kalıntı",
+   "Common": "Yaygın Kalıntı",
+   "Event": "Etkinlik Kalıntısı",
+   "Rare": "Nadir Kalıntı",
+   "Shop": "Dükkan Kalıntısı",
+   "Starter": "Başlangıç Kalıntısı",
+   "Uncommon": "Az Yaygın Kalıntı"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "Güçsüzleştirmeleri [gold]önler[/gold].",
+    "title": "Yapıt"
+   },
+   "BLOCK": {
+    "text": "Bir sonraki tura kadar hasarı engeller.",
+    "title": "Blok"
+   },
+   "DEXTERITY_POWER": {
+    "text": "Beceriklilik, kartlardan elde edilen [gold]Blok[/gold]'u artırır.",
+    "title": "Beceriklilik"
+   },
+   "ETERNAL": {
+    "text": "Dönüştürülemez veya [gold]Deste[/gold]'nden çıkarılamaz.",
+    "title": "Sonsuz"
+   },
+   "ETHEREAL": {
+    "text": "Eğer bu kart turun sonunda [gold]El[/gold]'inde kalırsa [gold]Tüketilir[/gold].",
+    "title": "Ruhani"
+   },
+   "EXHAUST": {
+    "text": "Savaşın sonuna kadar kaldırılır.",
+    "title": "Tüket"
+   },
+   "FATAL": {
+    "text": "Bu kart, yancı olmayan bir düşmanı öldürdüğünde tetiklenir.",
+    "title": "Ölümcül"
+   },
+   "FRAIL_POWER": {
+    "text": "Kırılgan etkisi altındayken kartlardan [blue]%25[/blue] daha az [gold]Blok[/gold] elde edersin.",
+    "title": "Kırılgan"
+   },
+   "INNATE": {
+    "text": "Her savaşa [gold]El[/gold]'inde bu kartla başla.",
+    "title": "Yerleşik"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "Bu turda alınan tüm hasar ve CP kaybını [blue]1[/blue]’e düşür.",
+    "title": "Soyutluk"
+   },
+   "PLATING_POWER": {
+    "text": "Turunun sonunda [gold]Blok[/gold] elde et. [gold]Zırh[/gold], turunun başında [blue]1[/blue] azalır.",
+    "title": "Zırh"
+   },
+   "POISON_POWER": {
+    "text": "Zehirlenmiş yaratıklar turlarının başında CP kaybeder. Zehir, her turda [blue]1[/blue] azalır.",
+    "title": "Zehir"
+   },
+   "REPLAY_STATIC": {
+    "text": "Bu kartı fazladan bir kez daha oynar.",
+    "title": "Yeniden Oyna"
+   },
+   "RETAIN": {
+    "text": "Saklanan kartlar tur sonunda elden çıkarılmaz.",
+    "title": "Sakla"
+   },
+   "SLY": {
+    "text": "Bu kartı turun bitmeden [gold]El[/gold]'inden çıkartırsan ücretsiz oynarsın.",
+    "title": "Kurnaz"
+   },
+   "STRENGTH_POWER": {
+    "text": "Kuvvet, Ataklara fazladan hasar ekler.",
+    "title": "Kuvvet"
+   },
+   "TAINTED_POWER": {
+    "text": "Bu tur Ataklardan fazladan hasar al.",
+    "title": "Lekeli"
+   },
+   "THORNS_POWER": {
+    "text": "Bir saldırı aldığında, karşılık olarak hasar ver.",
+    "title": "Diken"
+   },
+   "TRANSFORM": {
+    "text": "Dönüştürülen kartlar, herhangi bir nadirlikte rastgele bir karta dönüşür.",
+    "title": "Dönüştür"
+   },
+   "UNPLAYABLE": {
+    "text": "Bu kart Oynanamaz.",
+    "title": "Oynanamaz"
+   },
+   "VULNERABLE_POWER": {
+    "text": "Savunmasız yaratıklar Ataklardan [blue]%50[/blue] daha fazla hasar alır.",
+    "title": "Savunmasız"
+   },
+   "WEAK_POWER": {
+    "text": "Zayıflayan yaratıklar saldırılarında [blue]%25[/blue] daha az hasar verirler.",
+    "title": "Zayıf"
+   }
+  },
+  "types": {
+   "Attack": "Atak",
+   "Curse": "Lanet",
+   "Power": "Güç",
+   "Skill": "Beceri",
+   "Status": "Durum"
+  },
+  "words": {
+   "Block": "Blok",
+   "Boss": "Boss",
+   "Card Library": "Kart Kütüphanesi",
+   "Compendium": "Kılavuz",
+   "Cost": "Maliyet",
+   "Defeat": "Yenilgi",
+   "Dexterity": "Beceriklilik",
+   "Elite": "Elit",
+   "Energy": "Enerji",
+   "Floor": "Kat",
+   "Language": "Dil",
+   "Poison": "Zehir",
+   "Potion Lab": "İksir Laboratuvarı",
+   "Rarity": "Nadirlik",
+   "Relic Collection": "Kalıntı Koleksiyonu",
+   "Run History": "Oyun Geçmişi",
+   "Strength": "Kuvvet",
+   "Timeline": "Zaman Çizelgesi",
+   "Victory": "Zafer",
+   "Vulnerable": "Savunmasız",
+   "Weak": "Zayıf"
+  }
+ },
+ "zhs": {
+  "encounters": {
+   "AEONGLASS_BOSS": "永世沙漏",
+   "AXEBOTS_NORMAL": "巨斧机器人",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "历战假人",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "历战假人",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "历战假人",
+   "BOWLBUGS_NORMAL": "盛碗虫群",
+   "BOWLBUGS_WEAK": "盛碗虫",
+   "BYGONE_EFFIGY_ELITE": "旧日雕像",
+   "BYRDONIS_ELITE": "多尼斯异鸟",
+   "CEREMONIAL_BEAST_BOSS": "仪式兽",
+   "CHOMPERS_NORMAL": "一对自动机械",
+   "CONSTRUCT_MENAGERIE_NORMAL": "一些构装体",
+   "CORPSE_SLUGS_NORMAL": "许多噬尸蛞蝓",
+   "CORPSE_SLUGS_WEAK": "一些噬尸蛞蝓",
+   "CUBEX_CONSTRUCT_NORMAL": "方柱构装体",
+   "CULTISTS_NORMAL": "邪教徒们",
+   "DECIMILLIPEDE_ELITE": "残杀千足虫",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "扭动虫",
+   "DEPRECATED_ENCOUNTER": "已移除遭遇战",
+   "DEVOTED_SCULPTOR_WEAK": "虔诚雕刻师",
+   "ENTOMANCER_ELITE": "蜂群术士",
+   "EXOSKELETONS_NORMAL": "许多外骨骼虫",
+   "EXOSKELETONS_WEAK": "外骨骼虫",
+   "FABRICATOR_NORMAL": "组装师",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "商人？？？",
+   "FLYCONID_NORMAL": "真菌与史莱姆",
+   "FLYCONID_WEAK": "飞蝇菌子",
+   "FOGMOG_NORMAL": "雾菇",
+   "FOSSIL_STALKER_NORMAL": "化石追踪者",
+   "FROG_KNIGHT_NORMAL": "青蛙骑士",
+   "FUZZY_WURM_CRAWLER_WEAK": "毛绒伏地虫",
+   "GLOBE_HEAD_NORMAL": "一个孤单的电球头",
+   "GREMLIN_MERC_NORMAL": "穿着一件大衣的两只地精",
+   "HAUNTED_SHIP_NORMAL": "幽灵船",
+   "HUNTER_KILLER_NORMAL": "猎人杀手",
+   "INFESTED_PRISMS_ELITE": "感染棱柱",
+   "INKLETS_NORMAL": "墨宝",
+   "KAISER_CRAB_BOSS": "帝皇蟹",
+   "KNIGHTS_ELITE": "骑士团伙",
+   "KNOWLEDGE_DEMON_BOSS": "知识恶魔",
+   "LAGAVULIN_MATRIARCH_BOSS": "乐加维林族母",
+   "LIVING_FOG_NORMAL": "邪恶气体",
+   "LOUSE_PROGENITOR_NORMAL": "虱虫之祖",
+   "MAWLER_NORMAL": "蛮兽",
+   "MECHA_KNIGHT_ELITE": "机甲骑士",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "神秘骑士",
+   "MYTES_NORMAL": "一群异螨",
+   "NIBBITS_NORMAL": "两只小啃兽",
+   "NIBBITS_WEAK": "一只落单的小啃兽",
+   "OVERGROWTH_CRAWLERS": "密林爬虫",
+   "OVERGROWTH_WILDLIFE": "密林野生生物",
+   "OVICOPTER_NORMAL": "直飞产卵虫",
+   "OWL_MAGISTRATE_NORMAL": "猫头鹰法官",
+   "PHANTASMAL_GARDENERS_ELITE": "花园幽灵鳗",
+   "PHROG_PARASITE_ELITE": "异蛙寄生虫",
+   "PUNCH_CONSTRUCT_NORMAL": "拳击构装体",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "拳击构装体",
+   "QUEEN_BOSS": "女王",
+   "RUBY_RAIDERS_NORMAL": "红宝石劫掠者",
+   "SCROLLS_OF_BITING_NORMAL": "许多咬人卷轴",
+   "SCROLLS_OF_BITING_WEAK": "咬人卷轴",
+   "SEAPUNK_NORMAL": "暗港野生动物",
+   "SEAPUNK_WEAK": "海洋混混",
+   "SEWER_CLAM_NORMAL": "下水道蚌",
+   "SHRINKER_BEETLE_WEAK": "缩小甲虫",
+   "SKULKING_COLONY_ELITE": "鬼祟珊瑚群",
+   "SLIMED_BERSERKER_NORMAL": "史莱姆狂战士",
+   "SLIMES_NORMAL": "一大群史莱姆",
+   "SLIMES_WEAK": "一群史莱姆",
+   "SLITHERING_STRANGLER_NORMAL": "扼杀者与伙伴",
+   "SLUDGE_SPINNER_WEAK": "淤泥旋螺",
+   "SLUMBERING_BEETLE_NORMAL": "熟睡派对",
+   "SNAPPING_JAXFRUIT_NORMAL": "密林植物",
+   "SOUL_FYSH_BOSS": "灵魂异鱼",
+   "SOUL_NEXUS_ELITE": "灵魂枢纽",
+   "SPINY_TOAD_NORMAL": "棘刺蟾蜍",
+   "TERROR_EEL_ELITE": "骇鳗",
+   "TEST_SUBJECT_BOSS": "实验体",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "建筑师",
+   "THE_INSATIABLE_BOSS": "无厌沙虫",
+   "THE_KIN_BOSS": "同族小队",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "失落与遗忘之物",
+   "THE_OBSCURA_NORMAL": "胧光怪",
+   "THIEVING_HOPPER_WEAK": "偷窃草蜢",
+   "TOADPOLES_WEAK": "蟾蜍蝌蚪",
+   "TUNNELER_NORMAL": "地道组合",
+   "TUNNELER_WEAK": "地道虫",
+   "TURRET_OPERATOR_WEAK": "高塔炮手",
+   "TWO_TAILED_RATS_NORMAL": "双尾鼠",
+   "VANTOM_BOSS": "墨影幻灵",
+   "VINE_SHAMBLER_NORMAL": "藤蔓蹒跚者",
+   "WATERFALL_GIANT_BOSS": "瀑布巨兽"
+  },
+  "keywords": {
+   "Eternal": "永恒",
+   "Ethereal": "虚无",
+   "Exhaust": "消耗",
+   "Innate": "固有",
+   "Retain": "保留",
+   "Sly": "奇巧",
+   "Unplayable": "不能被打出"
+  },
+  "period": "。",
+  "potion_rarities": {
+   "Common": "普通",
+   "Event": "事件",
+   "Rare": "稀有",
+   "Uncommon": "罕见"
+  },
+  "rarities": {
+   "Ancient": "先古",
+   "Basic": "初始",
+   "Common": "普通",
+   "Event": "事件",
+   "Rare": "稀有",
+   "Token": "衍生",
+   "Uncommon": "罕见"
+  },
+  "relic_rarities": {
+   "Ancient": "先古遗物",
+   "Common": "普通遗物",
+   "Event": "事件遗物",
+   "Rare": "稀有遗物",
+   "Shop": "商店遗物",
+   "Starter": "初始遗物",
+   "Uncommon": "罕见遗物"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]免疫[/gold]负面效果。",
+    "title": "人工制品"
+   },
+   "BLOCK": {
+    "text": "在下个回合前，阻挡伤害。",
+    "title": "格挡"
+   },
+   "DEXTERITY_POWER": {
+    "text": "敏捷会增加从卡牌中获得的[gold]格挡[/gold]。",
+    "title": "敏捷"
+   },
+   "ETERNAL": {
+    "text": "无法从你的[gold]牌组[/gold]中移除或变化。",
+    "title": "永恒"
+   },
+   "ETHEREAL": {
+    "text": "如果这张牌在这个回合结束时留在你的[gold]手牌[/gold]中，则将其[gold]消耗[/gold]。",
+    "title": "虚无"
+   },
+   "EXHAUST": {
+    "text": "在战斗结束前移除。",
+    "title": "消耗"
+   },
+   "FATAL": {
+    "text": "当这张牌杀死一名非爪牙敌人时触发。",
+    "title": "斩杀"
+   },
+   "FRAIL_POWER": {
+    "text": "脆弱时，从卡牌中获得的[gold]格挡[/gold]值减少[blue]25%[/blue]。",
+    "title": "脆弱"
+   },
+   "INNATE": {
+    "text": "每场战斗开始时这张牌会出现在你的[gold]手牌[/gold]。",
+    "title": "固有"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "将本回合受到的所有伤害和生命减少效果降低为[blue]1[/blue]。",
+    "title": "无实体"
+   },
+   "PLATING_POWER": {
+    "text": "在你的回合结束时获得[gold]格挡[/gold]。[gold]覆甲[/gold]会在你的回合开始时减少[blue]1[/blue]层。",
+    "title": "覆甲"
+   },
+   "POISON_POWER": {
+    "text": "中毒的生物会在自身回合开始时失去生命。中毒层数每回合减少[blue]1[/blue]。",
+    "title": "中毒"
+   },
+   "REPLAY_STATIC": {
+    "text": "将这张牌额外打出一次。",
+    "title": "重放"
+   },
+   "RETAIN": {
+    "text": "保留的牌不会在回合结束时被弃掉。",
+    "title": "保留"
+   },
+   "SLY": {
+    "text": "如果这张牌在你的回合结束前从你的[gold]手牌[/gold]中被丢弃，则免费将其打出。",
+    "title": "奇巧"
+   },
+   "STRENGTH_POWER": {
+    "text": "力量会增加攻击牌造成的伤害。",
+    "title": "力量"
+   },
+   "TAINTED_POWER": {
+    "text": "在本回合受到额外的攻击伤害。",
+    "title": "污染"
+   },
+   "THORNS_POWER": {
+    "text": "当被攻击命中时，反击造成伤害。",
+    "title": "荆棘"
+   },
+   "TRANSFORM": {
+    "text": "卡牌被变化时会变成任意稀有度的随机牌。",
+    "title": "变化"
+   },
+   "UNPLAYABLE": {
+    "text": "不能被打出的牌无法被打出。",
+    "title": "不能被打出"
+   },
+   "VULNERABLE_POWER": {
+    "text": "易伤的生物从攻击中受到的伤害增加[blue]50%[/blue]。",
+    "title": "易伤"
+   },
+   "WEAK_POWER": {
+    "text": "虚弱的生物造成的攻击伤害减少[blue]25%[/blue]。",
+    "title": "虚弱"
+   }
+  },
+  "types": {
+   "Attack": "攻击",
+   "Curse": "诅咒",
+   "Power": "能力",
+   "Skill": "技能",
+   "Status": "状态"
+  },
+  "words": {
+   "Block": "格挡",
+   "Boss": "Boss",
+   "Card Library": "卡牌总览",
+   "Compendium": "百科大全",
+   "Cost": "费用",
+   "Defeat": "败北",
+   "Dexterity": "敏捷",
+   "Elite": "精英",
+   "Energy": "能量",
+   "Floor": "楼层",
+   "Language": "语言选项",
+   "Poison": "中毒",
+   "Potion Lab": "药水研究所",
+   "Rarity": "稀有度",
+   "Relic Collection": "遗物收集",
+   "Run History": "历史记录",
+   "Strength": "力量",
+   "Timeline": "时间线",
+   "Victory": "胜利",
+   "Vulnerable": "易伤",
+   "Weak": "虚弱"
+  }
+ },
+ "zht": {
+  "encounters": {
+   "AEONGLASS_BOSS": "永世沙漏",
+   "AXEBOTS_NORMAL": "斧刃機器人",
+   "BATTLEWORN_DUMMY_EVENT_V1_ENCOUNTER": "歷戰假人",
+   "BATTLEWORN_DUMMY_EVENT_V2_ENCOUNTER": "歷戰假人",
+   "BATTLEWORN_DUMMY_EVENT_V3_ENCOUNTER": "歷戰假人",
+   "BOWLBUGS_NORMAL": "盛碗蟲群",
+   "BOWLBUGS_WEAK": "盛碗蟲",
+   "BYGONE_EFFIGY_ELITE": "往昔塑像",
+   "BYRDONIS_ELITE": "異鳥成鳥",
+   "CEREMONIAL_BEAST_BOSS": "儀式獸",
+   "CHOMPERS_NORMAL": "一對自動機械",
+   "CONSTRUCT_MENAGERIE_NORMAL": "構造體大集合",
+   "CORPSE_SLUGS_NORMAL": "大群噬屍蛞蝓",
+   "CORPSE_SLUGS_WEAK": "一些噬屍蛞蝓",
+   "CUBEX_CONSTRUCT_NORMAL": "方柱構造體",
+   "CULTISTS_NORMAL": "邪教徒",
+   "DECIMILLIPEDE_ELITE": "殘殺千足蟲",
+   "DENSE_VEGETATION_EVENT_ENCOUNTER": "蠕動蟲",
+   "DEPRECATED_ENCOUNTER": "已棄用遭遇",
+   "DEVOTED_SCULPTOR_WEAK": "虔誠雕塑師",
+   "ENTOMANCER_ELITE": "蟲群術士",
+   "EXOSKELETONS_NORMAL": "大群外骨骼蟲",
+   "EXOSKELETONS_WEAK": "一些外骨骼蟲",
+   "FABRICATOR_NORMAL": "組裝師",
+   "FAKE_MERCHANT_EVENT_ENCOUNTER": "商人？？？",
+   "FLYCONID_NORMAL": "蕈菇與史萊姆",
+   "FLYCONID_WEAK": "飛蠅蕈菇",
+   "FOGMOG_NORMAL": "霧菇",
+   "FOSSIL_STALKER_NORMAL": "化石潛獵者",
+   "FROG_KNIGHT_NORMAL": "青蛙騎士",
+   "FUZZY_WURM_CRAWLER_WEAK": "絨毛蠕蟲",
+   "GLOBE_HEAD_NORMAL": "落單的球頭怪",
+   "GREMLIN_MERC_NORMAL": "穿著風衣的兩隻地精",
+   "HAUNTED_SHIP_NORMAL": "幽靈船",
+   "HUNTER_KILLER_NORMAL": "獵殺蟲",
+   "INFESTED_PRISMS_ELITE": "感染稜鏡",
+   "INKLETS_NORMAL": "墨靈",
+   "KAISER_CRAB_BOSS": "帝皇蟹",
+   "KNIGHTS_ELITE": "騎士幫",
+   "KNOWLEDGE_DEMON_BOSS": "知識惡魔",
+   "LAGAVULIN_MATRIARCH_BOSS": "樂加維林族母",
+   "LIVING_FOG_NORMAL": "活霧",
+   "LOUSE_PROGENITOR_NORMAL": "蝨蟲始祖",
+   "MAWLER_NORMAL": "巨口蠻獸",
+   "MECHA_KNIGHT_ELITE": "機甲騎士",
+   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER": "神祕騎士",
+   "MYTES_NORMAL": "異蟎群",
+   "NIBBITS_NORMAL": "兩隻啃咬獸",
+   "NIBBITS_WEAK": "落單的啃咬獸",
+   "OVERGROWTH_CRAWLERS": "密林蠕蟲",
+   "OVERGROWTH_WILDLIFE": "密林野生生物",
+   "OVICOPTER_NORMAL": "育卵飛蟲",
+   "OWL_MAGISTRATE_NORMAL": "貓頭鷹判官",
+   "PHANTASMAL_GARDENERS_ELITE": "花園幽靈鰻",
+   "PHROG_PARASITE_ELITE": "異蛙寄生蟲",
+   "PUNCH_CONSTRUCT_NORMAL": "拳擊構造體",
+   "PUNCH_OFF_EVENT_ENCOUNTER": "拳擊構造體",
+   "QUEEN_BOSS": "女王",
+   "RUBY_RAIDERS_NORMAL": "紅寶石掠奪者",
+   "SCROLLS_OF_BITING_NORMAL": "大群咬噬卷軸",
+   "SCROLLS_OF_BITING_WEAK": "一些咬噬卷軸",
+   "SEAPUNK_NORMAL": "暗港野生動物",
+   "SEAPUNK_WEAK": "海龐克獸",
+   "SEWER_CLAM_NORMAL": "下水道蚌",
+   "SHRINKER_BEETLE_WEAK": "縮小甲蟲",
+   "SKULKING_COLONY_ELITE": "潛伏珊瑚群",
+   "SLIMED_BERSERKER_NORMAL": "史萊姆狂戰士",
+   "SLIMES_NORMAL": "大群史萊姆",
+   "SLIMES_WEAK": "史萊姆群",
+   "SLITHERING_STRANGLER_NORMAL": "絞殺者與朋友",
+   "SLUDGE_SPINNER_WEAK": "淤泥旋螺",
+   "SLUMBERING_BEETLE_NORMAL": "沉睡派對",
+   "SNAPPING_JAXFRUIT_NORMAL": "密林植物",
+   "SOUL_FYSH_BOSS": "靈魂異魚",
+   "SOUL_NEXUS_ELITE": "靈魂樞紐",
+   "SPINY_TOAD_NORMAL": "棘刺蟾蜍",
+   "TERROR_EEL_ELITE": "恐鰻",
+   "TEST_SUBJECT_BOSS": "實驗體",
+   "THE_ARCHITECT_EVENT_ENCOUNTER": "建築師",
+   "THE_INSATIABLE_BOSS": "無饜沙蟲",
+   "THE_KIN_BOSS": "眷族",
+   "THE_LOST_AND_FORGOTTEN_NORMAL": "迷失之物與遺忘之物",
+   "THE_OBSCURA_NORMAL": "朧光獸",
+   "THIEVING_HOPPER_WEAK": "竊盜蚱蜢",
+   "TOADPOLES_WEAK": "蟾蜍蝌蚪",
+   "TUNNELER_NORMAL": "掘地雙蟲",
+   "TUNNELER_WEAK": "掘地蟲",
+   "TURRET_OPERATOR_WEAK": "砲塔操手",
+   "TWO_TAILED_RATS_NORMAL": "雙尾鼠",
+   "VANTOM_BOSS": "墨影幻靈",
+   "VINE_SHAMBLER_NORMAL": "藤蔓蹣跚獸",
+   "WATERFALL_GIANT_BOSS": "瀑布巨獸"
+  },
+  "keywords": {
+   "Eternal": "永恆",
+   "Ethereal": "虛無",
+   "Exhaust": "消耗",
+   "Innate": "固有",
+   "Retain": "保留",
+   "Sly": "奇巧",
+   "Unplayable": "無法打出"
+  },
+  "period": "。",
+  "potion_rarities": {
+   "Common": "普通",
+   "Event": "事件",
+   "Rare": "稀有",
+   "Uncommon": "罕見"
+  },
+  "rarities": {
+   "Ancient": "遠古",
+   "Basic": "起始",
+   "Common": "普通",
+   "Event": "事件",
+   "Rare": "稀有",
+   "Token": "衍生",
+   "Uncommon": "罕見"
+  },
+  "relic_rarities": {
+   "Ancient": "遠古遺物",
+   "Common": "普通遺物",
+   "Event": "事件遺物",
+   "Rare": "稀有遺物",
+   "Shop": "商店遺物",
+   "Starter": "起始遺物",
+   "Uncommon": "罕見遺物"
+  },
+  "tips": {
+   "ARTIFACT_POWER": {
+    "text": "[gold]抵消[/gold]弱化效果。",
+    "title": "人工製品"
+   },
+   "BLOCK": {
+    "text": "在下回合前，阻擋傷害。",
+    "title": "格擋"
+   },
+   "DEXTERITY_POWER": {
+    "text": "敏捷會提高你從卡牌獲得的[gold]格擋[/gold]。",
+    "title": "敏捷"
+   },
+   "ETERNAL": {
+    "text": "無法從你的[gold]牌組[/gold]中移除或轉化。",
+    "title": "永恆"
+   },
+   "ETHEREAL": {
+    "text": "若本回合結束時此牌仍在你的[gold]手牌[/gold]中，就將其[gold]消耗[/gold]。",
+    "title": "虛無"
+   },
+   "EXHAUST": {
+    "text": "戰鬥結束前會維持移除狀態。",
+    "title": "消耗"
+   },
+   "FATAL": {
+    "text": "當此牌殺死一名非手下敵人時觸發。",
+    "title": "致死"
+   },
+   "FRAIL_POWER": {
+    "text": "處於脆弱狀態時，從卡牌獲得的[gold]格擋[/gold]減少 [blue]25%[/blue]。",
+    "title": "脆弱"
+   },
+   "INNATE": {
+    "text": "每場戰鬥開始時此牌會出現在你的[gold]手牌[/gold]。",
+    "title": "固有"
+   },
+   "INTANGIBLE_POWER": {
+    "text": "本回合將每次受到的傷害和生命損失降至 [blue]1[/blue]。",
+    "title": "無形"
+   },
+   "PLATING_POWER": {
+    "text": "在你的回合結束時，獲得[gold]格擋[/gold]。在你的回合開始時，[gold]鍍甲[/gold]減少 [blue]1[/blue] 層。",
+    "title": "鍍甲"
+   },
+   "POISON_POWER": {
+    "text": "中毒生物會在自己的回合開始時失去生命。每回合，中毒減少 [blue]1[/blue] 層。",
+    "title": "中毒"
+   },
+   "REPLAY_STATIC": {
+    "text": "將此牌額外打出一次。",
+    "title": "重演"
+   },
+   "RETAIN": {
+    "text": "保留的牌不會在回合結束時被丟棄。",
+    "title": "保留"
+   },
+   "SLY": {
+    "text": "若在你的回合結束前從[gold]手牌[/gold]中丟棄此牌，就會免費將其打出。",
+    "title": "奇巧"
+   },
+   "STRENGTH_POWER": {
+    "text": "力量會使攻擊牌造成額外傷害。",
+    "title": "力量"
+   },
+   "TAINTED_POWER": {
+    "text": "本回合受到的攻擊牌傷害增加。",
+    "title": "污穢"
+   },
+   "THORNS_POWER": {
+    "text": "受到攻擊時，對攻擊者造成傷害。",
+    "title": "荊棘"
+   },
+   "TRANSFORM": {
+    "text": "被轉化的卡牌會變成任意稀有度的一張隨機卡牌。",
+    "title": "轉化"
+   },
+   "UNPLAYABLE": {
+    "text": "具有「無法打出」的牌不能打出。",
+    "title": "無法打出"
+   },
+   "VULNERABLE_POWER": {
+    "text": "易傷生物受到攻擊牌的傷害增加 [blue]50%[/blue]。",
+    "title": "易傷"
+   },
+   "WEAK_POWER": {
+    "text": "虛弱生物的攻擊牌傷害減少 [blue]25%[/blue]。",
+    "title": "虛弱"
+   }
+  },
+  "types": {
+   "Attack": "攻擊",
+   "Curse": "詛咒",
+   "Power": "能力",
+   "Skill": "技能",
+   "Status": "狀態"
+  },
+  "words": {
+   "Block": "格擋",
+   "Boss": "頭目",
+   "Card Library": "卡牌收藏",
+   "Compendium": "圖鑑",
+   "Cost": "耗能",
+   "Defeat": "戰敗",
+   "Dexterity": "敏捷",
+   "Elite": "菁英",
+   "Energy": "能量",
+   "Floor": "樓層",
+   "Language": "語言",
+   "Poison": "中毒",
+   "Potion Lab": "藥水實驗室",
+   "Rarity": "稀有度",
+   "Relic Collection": "遺物收藏",
+   "Run History": "遊戲紀錄",
+   "Strength": "力量",
+   "Timeline": "時間軸",
+   "Victory": "勝利",
+   "Vulnerable": "易傷",
+   "Weak": "虛弱"
+  }
+ }
+}

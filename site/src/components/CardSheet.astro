@@ -1,0 +1,113 @@
+---
+// A card's page content: the card, its numbers, and how it does by ascension and version. The
+// dialog on the library shows this same element
+import { runs } from '../lib/content';
+import { cardDetail } from '../lib/details';
+import { cardKind, type LibraryCard } from '../lib/library';
+import { cardHref, notesHref } from '../lib/links';
+import { PARTNER_MODS, slug, steamItem } from '../lib/mod';
+import CardFace from './CardFace.astro';
+import Breakdown from './Breakdown.astro';
+import Changes from './Changes.astro';
+import Stats from './charts/Stats';
+import Commentary from './Commentary.astro';
+import External from './External.astro';
+import StatsSpan from './StatsSpan.astro';
+import T from './T.astro';
+import Tips from './Tips.astro';
+import UpgradeToggle from './UpgradeToggle.astro';
+
+const { l } = Astro.locals;
+
+interface Props {
+  card: LibraryCard;
+  previous?: LibraryCard;
+  next?: LibraryCard;
+}
+
+const { card, previous, next } = Astro.props;
+const { info } = card;
+const data = runs(Astro.locals.locale);
+const detail = cardDetail(l, data, card.id);
+const partner = info.tags.map((tag) => PARTNER_MODS[tag]).find(Boolean);
+const labels = [
+  cardKind(l, info),
+  ...info.themes.map((theme) => l.t(theme)),
+  ...(info.tags.includes('Multiplayer') ? [l.t('Multiplayer only')] : []),
+];
+---
+
+<article data-sheet class="grid gap-6 p-5 sm:p-7">
+  <header class="pr-12">
+    <p class="m-0 text-sm text-muted">{labels.join(' · ')}</p>
+    <h1 id="sheet-title" tabindex="-1" class="m-0 text-4xl">
+      {info.name}
+    </h1>
+  </header>
+
+  <div class="card-sheet">
+    <div class="card relative mx-auto w-full max-w-[19rem] [grid-area:card]" data-place={card.id}>
+      <CardFace info={info} width={[[null, '19rem']]} eager />
+      <UpgradeToggle name={info.name} restore={false} />
+    </div>
+    <Tips markups={info.texts} keywords={info.keywords} exclude={info.name} class="[grid-area:tips]" />
+    <div class="grid content-start gap-4 [grid-area:stats]">
+      {detail.stats.length > 0 && <Stats items={detail.stats} />}
+      <p class="m-0 text-sm text-muted">
+        <T text={l.t('Card text from {version}.')}>
+          <a slot="version" href={l.href(notesHref(data.meta.mod.version))}>
+            {data.meta.mod.version}
+          </a>
+        </T>{' '}
+        {detail.stats.length > 0 ? (
+          <>
+            <T
+              text={l.n(
+                detail.runs,
+                'Stats from {n} solo run on {span}, at every ascension.',
+                'Stats from {n} solo runs on {span}, at every ascension.',
+              )}
+            >
+              <StatsSpan slot="span" />
+            </T>{' '}
+            <a href={l.href('/stats/cards')}>{l.t('Filter the card stats')}</a>
+          </>
+        ) : info.rarity === 'Token' ? (
+          l.t('Made during a fight, so it never ends a run in a deck.')
+        ) : (
+          l.t('No run has finished with it yet.')
+        )}
+      </p>
+      {partner && (
+        <p class="m-0 text-sm">
+          <T text={l.t('Needs {mod} installed as well.')}>
+            <Fragment slot="mod">
+              <External href={steamItem(partner.item)}>{partner.name}</External>
+            </Fragment>
+          </T>
+        </p>
+      )}
+    </div>
+  </div>
+
+  {detail.breakdown && <Breakdown breakdown={detail.breakdown} />}
+
+  <Commentary id={`cards/${slug(card.id)}`} />
+
+  <Changes id={card.id} />
+
+  <nav aria-label={l.t('More cards')} class="flex justify-between gap-4 border-t border-line pt-4 text-sm">
+    {previous ? (
+      <a href={l.href(cardHref(previous.id))} data-sheet-link>
+        ← {previous.info.name}
+      </a>
+    ) : (
+      <span />
+    )}
+    {next && (
+      <a href={l.href(cardHref(next.id))} data-sheet-link>
+        {next.info.name} →
+      </a>
+    )}
+  </nav>
+</article>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>The Alchemist has moved to alchemist.fyi</title>
+    <link rel="canonical" href="https://alchemist.fyi/" />
+    <script>
+      // The old stats page kept its tab in the hash (#fights?asc=10), so a saved link opens the same page
+      const PAGES = {
+        cards: '/#cards',
+        relics: '/relics',
+        powers: '/powers',
+        notes: '/notes',
+        overview: '/stats',
+        mechanics: '/stats/mechanics',
+        fights: '/stats/fights',
+        versions: '/stats/versions',
+      };
+      location.replace(`https://alchemist.fyi${PAGES[location.hash.slice(1).split('?')[0]] ?? '/'}`);
+    </script>
+    <meta http-equiv="refresh" content="0; url=https://alchemist.fyi/" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        background: #1b1a21;
+        color: #ece6da;
+        font:
+          1rem/1.5 system-ui,
+          sans-serif;
+      }
+
+      a {
+        color: #9fd08a;
+      }
+    </style>
+  </head>
+  <body>
+    <p>The Alchemist's cards, stats and patch notes are now at <a href="https://alchemist.fyi/">alchemist.fyi</a>.</p>
+  </body>
+</html>

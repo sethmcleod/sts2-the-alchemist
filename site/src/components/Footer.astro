@@ -1,0 +1,75 @@
+---
+import { runs } from '../lib/content';
+import { steamItem } from '../lib/mod';
+import External from './External.astro';
+import T from './T.astro';
+
+const { l } = Astro.locals;
+
+const { meta } = runs();
+const item = (branch: string) => meta.workshop.find((w) => w.branch === branch);
+const [beta, main] = [item('beta'), item('main')];
+const repo = meta.repo && `https://github.com/${meta.repo}`;
+const year = new Date(meta.generated_at).getUTCFullYear();
+---
+
+<footer class="border-t border-line bg-panel/40">
+  <div class="mx-auto grid w-full max-w-[80rem] gap-8 px-4 py-10 text-sm text-ink-2 sm:grid-cols-[2fr_1fr_1fr]">
+    <div class="grid content-start gap-2">
+      <p class="m-0 font-display text-lg text-ink">The Alchemist</p>
+      <p class="m-0 max-w-[40ch]">
+        <T text={l.t('A character mod for {game} by Seth. Art and animation by {artist}.')}>
+          <Fragment slot="game">
+            <External href="https://store.steampowered.com/app/2868840/Slay_the_Spire_2/">Slay the Spire 2</External>
+          </Fragment>
+          <Fragment slot="artist">
+            <External href="https://fulgur.carrd.co/">Fulgur</External>
+          </Fragment>
+        </T>
+      </p>
+      <p class="m-0 max-w-[52ch] text-muted">
+        {l.t(
+          'A fan-made mod, not affiliated with Mega Crit. Slay the Spire 2 and its card frames ©{year} Mega Crit Games, LLC. All Rights Reserved.',
+          { year },
+        )}
+      </p>
+    </div>
+    <div>
+      <h2 class="mb-2 font-sans text-sm font-semibold text-ink">{l.t('Get the mod')}</h2>
+      <ul class="m-0 grid list-none gap-1.5 p-0">
+        {beta && (
+          <li>
+            <External href={steamItem(beta.item)}>{l.t('Steam Workshop, beta branch')}</External>
+          </li>
+        )}
+        {main && (
+          <li>
+            <External href={steamItem(main.item)}>{l.t('Steam Workshop, public branch')}</External>
+          </li>
+        )}
+        <li>
+          <External href="https://www.nexusmods.com/slaythespire2/mods/1439">Nexus Mods</External>
+        </li>
+        {repo && (
+          <li>
+            <External href={`${repo}/releases`}>{l.t('GitHub releases')}</External>
+          </li>
+        )}
+      </ul>
+    </div>
+    <div>
+      <h2 class="mb-2 font-sans text-sm font-semibold text-ink">{l.t('This site')}</h2>
+      <ul class="m-0 grid list-none gap-1.5 p-0">
+        <li>
+          <a href={l.href('/stats#about')}>{l.t('How the stats work')}</a>
+        </li>
+        {repo && (
+          <li>
+            <External href={repo}>{l.t('Source on GitHub')}</External>
+          </li>
+        )}
+        <li class="text-muted">{l.t('Updated {date}', { date: l.date(meta.generated_at) })}</li>
+      </ul>
+    </div>
+  </div>
+</footer>

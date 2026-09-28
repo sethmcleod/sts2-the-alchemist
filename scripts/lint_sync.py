@@ -517,7 +517,7 @@ def main() -> int:
     # 6. every Compat/ file is the copy for the branch you are on
     errors += check_compat_branch()
 
-    # 7. every card class carries a [CardTheme] attribute (the analytics dashboard groups by it)
+    # 7. every card class carries a [CardTheme] attribute (the website's stats group by it)
     errors += check_card_themes(classes)
 
     # 8. comments describe complex code only: no versions, dates, or process references

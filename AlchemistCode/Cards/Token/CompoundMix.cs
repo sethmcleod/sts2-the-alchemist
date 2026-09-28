@@ -36,7 +36,9 @@ public class CompoundMix : AlchemistCard
         WithVar(new DamageVar("FumingDamage", 3, ValueProp.Move));
         WithBlock(4);
         WithCards(1);
-        WithVar("Bonus", 1);
+        // The compound's own upgrade adds to its draw. An upgraded ingredient does not upgrade the
+        // compound, because Compose already copies the ingredient's upgraded numbers
+        WithVar("Bonus", 1, 1);
         // Plain vars rather than PowerVars, so no tip attaches by itself; IngredientTips adds the
         // ones the two ingredients actually call for
         WithVar("Weak", 1);
@@ -83,6 +85,8 @@ public class CompoundMix : AlchemistCard
         Absorb(first, add: false);
         // A pair of the same kind is one effect at double strength, not the same line twice
         Absorb(second, add: _first == _second);
+        // A Zesty ingredient's draw joins the compound's own draw, so the card has one draw line
+        if (Has(MixKind.Zesty)) DynamicVars["Bonus"].BaseValue += DynamicVars.Cards.BaseValue;
     }
 
     private bool Doubled => _first == _second;
@@ -119,7 +123,8 @@ public class CompoundMix : AlchemistCard
 
     private static string Key(MixKind kind) => kind.ToString().ToLowerInvariant();
 
-    // An unmade copy keeps the plain name; a made one names its ingredients
+    // An unmade copy keeps the plain name; a made one names its ingredients and adds the base
+    // game's "+" itself, since this override replaces the base title
     public override string Title
     {
         get
@@ -130,14 +135,22 @@ public class CompoundMix : AlchemistCard
                 : "ALCHEMIST-COMPOUND_MIX.titleFormat");
             title.Add("First", new LocString("cards", $"ALCHEMIST-COMPOUND_MIX.name_{Key(_first)}").GetFormattedText());
             title.Add("Second", new LocString("cards", $"ALCHEMIST-COMPOUND_MIX.name_{Key(_second)}").GetFormattedText());
-            return title.GetFormattedText();
+            return title.GetFormattedText() + (IsUpgraded ? "+" : "");
         }
     }
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
-        description.Add("Body", !_composed ? "??????" : Doubled ? Part(_first) : Part(_first) + "\n" + Part(_second));
+        var draw = new LocString("cards", "ALCHEMIST-COMPOUND_MIX.part_draw");
+        draw.Add(DynamicVars["Bonus"]);
+        var lines = new List<string> { draw.GetFormattedText() };
+        if (!_composed) lines.Add("??????");
+        else
+            foreach (var kind in Doubled ? new[] { _first } : new[] { _first, _second })
+                // A Zesty ingredient has no line of its own: its draw is in the first line
+                if (kind != MixKind.Zesty) lines.Add(Part(kind));
+        description.Add("Body", string.Join("\n", lines));
     }
 
     private string Part(MixKind kind)
@@ -147,7 +160,6 @@ public class CompoundMix : AlchemistCard
         {
             case MixKind.Bursting: part.Add(DynamicVars.Damage); break;
             case MixKind.Syrupy: part.Add(DynamicVars.Block); break;
-            case MixKind.Zesty: part.Add(DynamicVars.Cards); break;
             case MixKind.Fuming:
                 part.Add(DynamicVars["FumingDamage"]);
                 part.Add(DynamicVars["Tainted"]);
@@ -170,6 +182,7 @@ public class CompoundMix : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        // This also draws for a Zesty ingredient, which Compose folds into the Bonus
         await CardPileCmd.Draw(choiceContext, DynamicVars["Bonus"].IntValue, Owner);
         await Resolve(_first, choiceContext, play);
         if (!Doubled) await Resolve(_second, choiceContext, play);
@@ -185,9 +198,6 @@ public class CompoundMix : AlchemistCard
                 break;
             case MixKind.Syrupy:
                 await CommonActions.CardBlock(this, play);
-                break;
-            case MixKind.Zesty:
-                await CommonActions.Draw(this, choiceContext);
                 break;
             case MixKind.Fuming:
                 if (CombatState is not { } combat) return;

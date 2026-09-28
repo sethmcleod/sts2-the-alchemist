@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import { image } from '../lib/content';
+import type { Item } from '../lib/items';
+import { plain } from '../lib/markup';
+import ItemSheet from './ItemSheet.astro';
+
+interface Props {
+  item: Item;
+  back: { href: string; label: string };
+}
+
+const { item, back } = Astro.props;
+const { l } = Astro.locals;
+---
+
+<Base
+  title={item.info.name}
+  image={await image(item.info.icon)}
+  description={l.t('{name}: {text}', { name: item.info.name, text: plain(item.info.text, l.game?.words.Energy) })}
+>
+  <p class="mt-6 mb-0">
+    <a href={back.href}>← {back.label}</a>
+  </p>
+  <div class="panel mt-3">
+    <ItemSheet item={item} />
+  </div>
+</Base>

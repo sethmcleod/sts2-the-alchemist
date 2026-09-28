@@ -1,0 +1,86 @@
+---
+import { runs, strings, translations } from '../lib/content';
+import { DEFAULT_LOCALE } from '../lib/i18n';
+import { notesHref } from '../lib/links';
+import { steamItem } from '../lib/mod';
+import { readmeSection } from '../lib/readme';
+import type { Release } from '../lib/types';
+import External from './External.astro';
+import Gallery from './Gallery.astro';
+import T from './T.astro';
+
+const { l, locale } = Astro.locals;
+
+interface Props {
+  latest: Release;
+}
+
+const { latest } = Astro.props;
+const { meta, summary } = runs(locale);
+const item = (branch: string) => meta.workshop.find((w) => w.branch === branch);
+const [beta, main] = [item('beta'), item('main')];
+// English shows the README itself; another language shows its translation of each section, if it has one
+const readme = locale === DEFAULT_LOCALE ? undefined : (strings(locale).readme ?? {});
+const [playstyle, disclaimer] = await Promise.all([
+  readmeSection('Playstyle', readme),
+  readmeSection('Disclaimer', readme),
+]);
+const facts = [
+  l.n(Object.keys(summary.card_info).length, '{n} card', '{n} cards'),
+  l.n(Object.keys(summary.relic_info).length, '{n} relic', '{n} relics'),
+  l.n(Object.keys(summary.potion_info).length, '{n} potion', '{n} potions'),
+  l.n(meta.epochs, '{n} timeline epoch', '{n} timeline epochs'),
+  l.n(translations(), 'Translated into {n} language', 'Translated into {n} languages'),
+];
+---
+
+<section class="grid items-center gap-x-10 gap-y-5 pt-3 pb-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] xl:grid-cols-[minmax(0,1fr)_minmax(0,32rem)]">
+  <div class="grid gap-3.5">
+    <div>
+      <p class="m-0 text-sm font-semibold tracking-wide uppercase">{l.t('Slay the Spire 2 character mod')}</p>
+      <h1 class="mt-1 mb-0 text-5xl text-gold">The Alchemist</h1>
+    </div>
+    <div class="readme" lang={disclaimer.lang} set:html={disclaimer.html} />
+    <details class="readme">
+      <summary>{l.t('Show more')}</summary>
+      <div class="mt-2" lang={playstyle.lang} set:html={playstyle.html} />
+    </details>
+    <ul class="m-0 flex list-none flex-wrap gap-2 p-0 text-sm text-ink-2">
+      {facts.map((fact) => (
+        <li class="rounded-full border border-line px-3 py-1">{fact}</li>
+      ))}
+    </ul>
+    <div class="flex flex-wrap gap-2.5">
+      {beta && (
+        <External href={steamItem(beta.item)} class="button primary">
+          Steam Workshop <span class="font-normal">{l.t('beta branch')}</span>
+        </External>
+      )}
+      {main && (
+        <External href={steamItem(main.item)} class="button">
+          Steam Workshop <span class="font-normal text-muted">{l.t('public branch')}</span>
+        </External>
+      )}
+      {meta.repo && (
+        <External href={`https://github.com/${meta.repo}`} class="button">
+          GitHub
+        </External>
+      )}
+    </div>
+    <p class="m-0 text-sm text-ink-2">
+      <T text={latest.date ? l.t('Latest: {notes}, {date}.') : l.t('Latest: {notes}.')}>
+        <a slot="notes" href={l.href(notesHref(latest.version))}>
+          {l.t('{version} patch notes', { version: latest.version })}
+        </a>
+        <span slot="date" class="text-muted">
+          {latest.date && l.date(latest.date)}
+        </span>
+      </T>{' '}
+      {l.t('Stats from {runs} runs by {players} players, updated every day.', {
+        runs: l.num(meta.total_runs),
+        players: l.num(meta.players),
+      })}
+    </p>
+  </div>
+  <Gallery previews={meta.previews} />
+</section>

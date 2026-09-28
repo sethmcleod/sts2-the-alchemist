@@ -1,0 +1,66 @@
+---
+import type { GetStaticPaths } from 'astro';
+import CardSheet from '../../../components/CardSheet.astro';
+import Base from '../../../layouts/Base.astro';
+import { image, language, runs } from '../../../lib/content';
+import { langParams } from '../../../lib/i18n';
+import { cardKind, libraryCards } from '../../../lib/library';
+import { plain } from '../../../lib/markup';
+import { slug } from '../../../lib/mod';
+
+export const getStaticPaths = (() =>
+  langParams().flatMap(({ locale, lang }) => {
+    const cards = libraryCards(language(locale), runs(locale), runs());
+    return cards.map((card, i) => ({
+      params: { lang, slug: slug(card.id) },
+      props: { card, previous: cards[i - 1], next: cards[i + 1] },
+    }));
+  })) satisfies GetStaticPaths;
+
+const { card, previous, next } = Astro.props;
+const { l } = Astro.locals;
+const { info } = card;
+const energy = l.game?.words.Energy;
+---
+
+<Base
+  title={info.name}
+  image={await image(info.art)}
+  description={l.t('{name}, {kind}: {text} Upgraded: {upgraded}', {
+    name: info.name,
+    kind: cardKind(l, info),
+    text: plain(info.texts[0], energy),
+    upgraded: plain(info.texts[1], energy),
+  })}
+>
+  <p class="mt-6 mb-0">
+    <a href={l.href('/#cards')}>← {l.t('All cards')}</a>
+  </p>
+  <!-- /cards/<name>#upgraded opens the card flipped (global.css) -->
+  <span id="upgraded" hidden></span>
+  <div class="panel mt-3">
+    <CardSheet card={card} previous={previous} next={next} />
+  </div>
+</Base>
+
+<script>
+  // Flipping the card writes #upgraded into the address, so a copied link opens it the same way. The
+  // address only sets the flip when the page opens (:target), so it is read as the CSS reads it
+  const toggle = document.querySelector<HTMLInputElement>('[data-sheet] .upgrade-toggle');
+  const flipped = () => document.querySelector('#upgraded:target') !== null;
+  toggle?.addEventListener('change', () =>
+    history.replaceState(
+      history.state,
+      '',
+      location.pathname + location.search + (toggle.checked !== flipped() ? '#upgraded' : ''),
+    ),
+  );
+  // A link to another spot on the page (Skip to content) moves :target off #upgraded, so the toggle
+  // takes over the flip. A rewritten address never moves :target, so only a page opened with
+  // #upgraded needs it; :target is not set yet while this runs, so the address says so
+  let targeted = location.hash === '#upgraded';
+  addEventListener('hashchange', () => {
+    if (toggle && targeted && !flipped()) toggle.checked = !toggle.checked;
+    targeted = flipped();
+  });
+</script>

@@ -1,0 +1,15 @@
+---
+// The dialog that card, relic, potion and power links open in (scripts/sheet.ts)
+const { l } = Astro.locals;
+---
+
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-title" closedby="any">
+  <form method="dialog">
+    <button class="close-button" aria-label={l.t('Close')}>
+      ×
+    </button>
+  </form>
+  <div data-sheet-body></div>
+</dialog>
+
+<script src="../scripts/sheet.ts"></script>

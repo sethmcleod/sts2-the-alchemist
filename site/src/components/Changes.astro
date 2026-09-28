@@ -1,0 +1,30 @@
+---
+// A card's, relic's or potion's lines in the patch notes, newest first, each linked to its release.
+// The older ones fold away, which needs no script
+import { itemChanges } from '../lib/content';
+import ChangeList from './ChangeList.astro';
+
+interface Props {
+  id: string;
+}
+
+const { l } = Astro.locals;
+const found = itemChanges(Astro.props.id);
+const SHOWN = 4;
+const older = found.slice(SHOWN);
+---
+
+{found.length > 0 && (
+  <section>
+    <h2 class="mb-3 text-xl">{l.t('Changes')}</h2>
+    <ChangeList changes={found.slice(0, SHOWN)} />
+    {older.length > 0 && (
+      <details class="mt-3">
+        <summary class="cursor-pointer text-sm text-up">
+          {l.n(older.length, 'Show {n} older change', 'Show {n} older changes')}
+        </summary>
+        <ChangeList changes={older} class="mt-3" />
+      </details>
+    )}
+  </section>
+)}

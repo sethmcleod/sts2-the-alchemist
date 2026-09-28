@@ -1,0 +1,92 @@
+---
+// A card as the game draws it: the art under the frame, then the title, type, cost and text. The
+// face holds both the base card and its upgrade; global.css shows one of them.
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import { image } from '../lib/content';
+import { cardFont, textSize, titleSize } from '../lib/fit';
+import { typeName } from '../lib/library';
+import { RARITY_LOOK } from '../lib/mod';
+import type { CardInfo } from '../lib/types';
+import GameText from './GameText.astro';
+
+interface Props {
+  info: CardInfo;
+  /** The width the face is shown at: [media condition, width] pairs, the last one with no condition */
+  width: [string | null, string][];
+  eager?: boolean;
+}
+
+const { info, width, eager = false } = Astro.props;
+const { l, locale } = Astro.locals;
+const font = cardFont(locale.game);
+const sizes = (scale: number) =>
+  width
+    .map(([media, length]) => [media, scale === 1 ? length : `calc(${length} * ${scale})`].filter(Boolean).join(' '))
+    .join(', ');
+
+const frames = import.meta.glob<{ default: ImageMetadata }>('../assets/frames/*.webp', { eager: true });
+const frame = (name: string) => frames[`../assets/frames/${name}.webp`].default;
+
+const look = RARITY_LOOK[info.rarity] ?? RARITY_LOOK.Common;
+const ancient = info.rarity === 'Ancient';
+const art = await image(info.art);
+const loading = eager ? 'eager' : 'lazy';
+// The art covers 250 of the face's 330 units, or all of it on an Ancient card
+const artSizes = sizes(ancient ? 1 : 0.76);
+
+const versions = [
+  { class: 'base', name: info.name, cost: info.costs[0], text: info.texts[0] },
+  { class: 'upgraded', name: `${info.name}+`, cost: info.costs[1], text: info.texts[1] },
+];
+const costChanged = info.costs[0] !== info.costs[1];
+---
+
+<div class:list={['face', { ancient }]} style={`--outline: ${look.outline}`}>
+  {art && (
+    <Image
+      class="face-art"
+      src={art}
+      widths={[250, 500]}
+      sizes={artSizes}
+      alt=""
+      loading={loading}
+      fetchpriority={eager ? 'high' : undefined}
+    />
+  )}
+  <Image
+    class="face-frame"
+    src={frame(`${info.type.toLowerCase()}_${look.frame}`)}
+    widths={[330, 660]}
+    sizes={sizes(1)}
+    alt=""
+    loading={loading}
+  />
+  <span class="face-title">
+    {versions.map((v) => (
+      <span
+        class:list={[v.class, 'outlined', { 't-green': v.class === 'upgraded' }]}
+        data-text={v.name}
+        style={`--size: ${titleSize(v.name, font)}`}
+      >
+        {v.name}
+      </span>
+    ))}
+  </span>
+  <span class="face-type">{typeName(l, info.type)}</span>
+  <span class="face-cost">
+    {versions.map((v) => (
+      <span class:list={[v.class, 'outlined', { 't-green': v.class === 'upgraded' && costChanged }]} data-text={v.cost}>
+        <span class="sr-only">{l.t('Costs {cost} Energy.', { cost: v.cost })}</span>
+        <span aria-hidden="true">{v.cost}</span>
+      </span>
+    ))}
+  </span>
+  <span class="face-text">
+    {versions.map((v) => (
+      <span class={v.class} style={`--size: ${textSize(v.text, font)}`}>
+        <GameText markup={v.text} />
+      </span>
+    ))}
+  </span>
+</div>

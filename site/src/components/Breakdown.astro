@@ -1,0 +1,23 @@
+---
+// Win rates by ascension and by version, for one card or relic
+import type { BarItem } from './charts/Bars';
+import Bars from './charts/Bars';
+
+interface Props {
+  breakdown: { bands: BarItem[]; versions: BarItem[] };
+}
+
+const { bands, versions } = Astro.props.breakdown;
+const { l } = Astro.locals;
+---
+
+<div class="grid gap-6 md:grid-cols-2">
+  <section>
+    <h2 class="mb-3 text-xl">{l.t('Win rate by ascension')}</h2>
+    <Bars l={l} items={bands} max={1} labelWidth="7rem" />
+  </section>
+  <section>
+    <h2 class="mb-3 text-xl">{l.t('Win rate by version')}</h2>
+    <Bars l={l} items={versions} max={1} limit={6} labelWidth="7rem" />
+  </section>
+</div>

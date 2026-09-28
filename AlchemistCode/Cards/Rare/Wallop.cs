@@ -9,7 +9,7 @@ public class Wallop : AlchemistCard
 {
     public Wallop() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        WithDamage(4, 2);
+        WithDamage(5, 2);
         WithCalculatedVar("CalculatedHits", 0, static (card, _) => OtherHandCount(card));
     }
 

@@ -15,7 +15,7 @@ public class Refine : AlchemistCard
         WithCostUpgradeBy(-1);
         WithNumberedPower<RefinePower>(1, 0);
         WithTips(_ => Mixing.MixRefTips());
-        WithTips(_ => new[] { HoverTipFactory.FromKeyword(CardKeyword.Retain) });
+        WithTips(_ => new[] { HoverTipFactory.Static(StaticHoverTip.ReplayStatic) });
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

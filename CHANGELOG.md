@@ -19,6 +19,37 @@ mod).
 - Added Spring Cleaning card (1 energy, Uncommon, Hero Expansion): "Exhaust up to 2 (3) cards from your Draw Pile. Gain 2 Antitoxin for each card Exhausted."
 - Added Twitch card (1 energy, Rare, Hero Expansion): "This turn, your Attacks hit 1 (2) additional time. Gain 3 Poison."
 
+### Changed
+
+- Changed the cards the Dissolution Epoch unlocks: Upwell, Premonition and Mercurial Form
+- Nerfed Fling card: Poison needed for each additional hit increased from 2 -> 3(2)
+- Nerfed Mortar card: damage decreased from 9(12) -> 7(10)
+- Nerfed Puff Up card: additional Block for each turn Fermented decreased from 3(5) -> 2(4)
+- Nerfed Tempered card: Block decreased from 10(13) -> 9(12)
+- Renamed Vitrify card to Layer Up
+- Reworked Overflow card: "Whenever one of your cards Ferments, Upgrade it. If already Upgraded, apply 1 Poison to ALL enemies."
+- Reworked Refine card: "Whenever you add a Mix into your Hand, Upgrade it. If already Upgraded, it gains Replay."
+
+## [0.14.22] - 2026-09-27
+
+### Added
+
+- Added more secrets to mod settings...
+- Added the mod's website, https://alchemist.fyi, with every card, relic, potion and power as the game shows them, the patch notes, screenshots and run stats, in all 16 of the mod's languages
+
+### Changed
+
+- Buffed Compound Mix card: cards drawn increased from 1 -> 1(2)
+- Buffed Wallop card: damage increased from 4(6) -> 5(7)
+- Improved Compound Mix working when using a Zesty Mix: the draws now combine into one line
+- Nerfed Overbrew card: copies added decreased from X+1(2) -> X+1
+
+## [0.14.21] - 2026-09-25
+
+### Added
+
+- Added another secret to mod settings...
+
 ## [0.14.20] - 2026-09-24
 
 ### Added

@@ -1,0 +1,43 @@
+name: pages
+
+# The repo's GitHub Pages address, and every path under it, sends visitors to alchemist.fyi.
+# GitHub Pages serves 404.html for a path it does not have, so that copy covers old deep links.
+
+on:
+  push:
+    branches: [main]
+    paths: ["docs/moved/**", ".github/workflows/pages.yml"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - run: cp docs/moved/index.html docs/moved/404.html
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs/moved
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

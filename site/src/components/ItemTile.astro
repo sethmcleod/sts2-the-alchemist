@@ -1,0 +1,48 @@
+---
+// A relic, potion or power in a list. Its name links to its page and covers the whole tile; a
+// power's source is a link of its own
+import { Image } from 'astro:assets';
+import { image } from '../lib/content';
+import { kindName, type Item } from '../lib/items';
+import GameText from './GameText.astro';
+import T from './T.astro';
+
+const { l } = Astro.locals;
+
+interface Props {
+  item: Item;
+}
+
+const { item } = Astro.props;
+const icon = await image(item.info.icon);
+const { source, line } = item;
+const capitalized = line && line[0].toLocaleUpperCase(l.lang) + line.slice(1);
+---
+
+<li class="panel relative grid grid-cols-[4rem_minmax(0,1fr)] gap-3 p-3 hover:border-frame" data-place={item.id}>
+  {icon ? <Image src={icon} alt="" class="size-16 object-contain" /> : <span />}
+  <div class="grid content-start gap-1">
+    <span class="font-display text-lg leading-tight">
+      <a href={l.href(item.href)} data-sheet-link class="stretched text-ink no-underline">
+        {item.info.name}
+      </a>
+      {item.rarity && <small class="ml-1 font-sans text-xs text-muted">{kindName(l, item)}</small>}
+    </span>
+    <span class="text-sm text-ink-2">
+      <GameText markup={item.info.text} />
+    </span>
+    {(source || line) && (
+      <span class="text-xs text-muted tabular-nums">
+        {source ? (
+          <T text={line ? l.t('From {source}, {line}', { line }) : l.t('From {source}')}>
+            <a slot="source" href={l.href(source.href)} data-sheet-link class="above-stretched">
+              {source.name}
+            </a>
+          </T>
+        ) : (
+          capitalized
+        )}
+      </span>
+    )}
+  </div>
+</li>

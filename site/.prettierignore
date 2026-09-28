@@ -1,0 +1,5 @@
+.astro/
+/data/
+dist/
+# Written by tools/analytics/card_fonts.py
+src/lib/card-fonts.json
