@@ -1,5 +1,6 @@
 """The base game's own words that the website and the card text need in every language: keyword
-names, card types, rarities, encounter names and a few labels. They are read from a copy of the
+names, card types, rarities, encounter names, a few labels, and the definitions the game shows
+beside a card for the terms its text marks in gold. They are read from a copy of the
 game's res://localization/ and written to game_loc.json next to this file, which is committed,
 because a build machine has no copy of the game.
 
@@ -47,6 +48,16 @@ WORDS = {
 }
 
 
+# table -> the entries whose title and description the site shows as a card's hover tips
+TIPS = {
+    "card_keywords": ("ETERNAL", "ETHEREAL", "EXHAUST", "INNATE", "RETAIN", "SLY", "UNPLAYABLE"),
+    "powers": tuple(f"{p}_POWER" for p in ("POISON", "WEAK", "VULNERABLE", "STRENGTH", "DEXTERITY", "ARTIFACT",
+                                           "PLATING", "FRAIL", "THORNS", "INTANGIBLE")),
+    "static_hover_tips": ("BLOCK", "TRANSFORM", "FATAL", "REPLAY_STATIC"),
+    "afflictions": ("TAINTED",),
+}
+
+
 def read(base: Path, lang: str, table: str) -> dict[str, str]:
     path = base / lang / f"{table}.json"
     if not path.exists():
@@ -69,6 +80,13 @@ def language(base: Path, lang: str) -> dict:
                     raise SystemExit(f"eng/{name}.json has no {key}")
                 found[group][word] = loc[key]
     found["period"] = table("card_keywords")["PERIOD"]
+    found["tips"] = {}
+    for name, keys in TIPS.items():
+        loc = table(name)
+        for key in keys:
+            if f"{key}.description" not in loc:
+                raise SystemExit(f"eng/{name}.json has no {key}.description")
+            found["tips"][key] = {"title": loc[f"{key}.title"], "text": loc[f"{key}.description"]}
     found["encounters"] = {key.removesuffix(".title"): value
                            for key, value in sorted(table("encounters").items()) if key.endswith(".title")}
     return found

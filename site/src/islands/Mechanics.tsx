@@ -7,6 +7,7 @@ import { mechanics, type Histogram, type Icons, type MechanicsModel } from '../l
 import Filters, { type FilterOptions } from './Filters';
 import { useLang } from './useLang';
 import { useStats } from './useStats';
+import SectionHeading from '../components/SectionHeading';
 
 function HistogramChart({ l, chart, label, empty }: { l: Lang; chart: Histogram; label: string; empty?: string }) {
   return (
@@ -39,7 +40,9 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
     <div class="stats-page" aria-busy={status === 'loading'}>
       <Filters l={l} filters={filters} options={options} runs={m.runs} status={status} onChange={update} />
 
-      <h2 class="section-title">{l.t('Badges')}</h2>
+      <SectionHeading id="badges" class="section-title">
+        {l.t('Badges')}
+      </SectionHeading>
       <p class="note">{l.t('How often runs earn each Alchemist badge, and at which tier.')}</p>
       <div class="stats-grid">
         {m.badges.map((badge) => (
@@ -54,7 +57,9 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
         ))}
       </div>
 
-      <h2 class="section-title">{l.t('Brew and potions')}</h2>
+      <SectionHeading id="brew-and-potions" class="section-title">
+        {l.t('Brew and potions')}
+      </SectionHeading>
       <Stats items={m.brew.stats} />
       <section class="panel p-5">
         <h3>{l.t('Brew picks')}</h3>
@@ -69,7 +74,9 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
         />
       </section>
 
-      <h2 class="section-title">{l.t('Mixes')}</h2>
+      <SectionHeading id="mixes" class="section-title">
+        {l.t('Mixes')}
+      </SectionHeading>
       <Stats items={m.mixes.stats} />
       <div class="stats-grid">
         <section class="panel p-5">
@@ -112,7 +119,9 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
         </section>
       </div>
 
-      <h2 class="section-title">{l.t('Ferment')}</h2>
+      <SectionHeading id="ferment" class="section-title">
+        {l.t('Ferment')}
+      </SectionHeading>
       <Stats items={m.ferment.stats} />
       <div class="stats-grid">
         <section class="panel p-5">
@@ -144,7 +153,9 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
         </section>
       </div>
 
-      <h2 class="section-title">{l.game?.words.Poison ?? l.t('Poison')}</h2>
+      <SectionHeading id="poison" class="section-title">
+        {l.game?.words.Poison ?? l.t('Poison')}
+      </SectionHeading>
       <Stats items={m.poison.stats} />
       <div class="stats-grid">
         <section class="panel p-5">
@@ -167,7 +178,9 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
         </section>
       </div>
 
-      <h2 class="section-title">{l.t('Antitoxin')}</h2>
+      <SectionHeading id="antitoxin" class="section-title">
+        {l.t('Antitoxin')}
+      </SectionHeading>
       <Stats items={m.antitoxin.stats} />
       <div class="stats-grid">
         <section class="panel p-5">

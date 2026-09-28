@@ -6,6 +6,7 @@ import { overview, type OverviewModel } from '../lib/views/overview';
 import Filters, { type FilterOptions } from './Filters';
 import { useLang } from './useLang';
 import { useStats } from './useStats';
+import SectionHeading from '../components/SectionHeading';
 
 interface Props {
   locale: LangInit;
@@ -32,17 +33,17 @@ export default function Overview({ locale, initial, options }: Props) {
       <Stats items={m.stats} />
       <div class="stats-grid">
         <section class="panel p-5">
-          <h2>{l.t('How far runs get')}</h2>
+          <SectionHeading id="how-far-runs-get">{l.t('How far runs get')}</SectionHeading>
           <p class="note">{m.funnelNote}</p>
           <Bars l={l} items={m.funnel} max={1} labelWidth="8rem" />
         </section>
         <section class="panel p-5">
-          <h2>{l.t('Playstyles')}</h2>
+          <SectionHeading id="playstyles">{l.t('Playstyles')}</SectionHeading>
           <p class="note">{m.themesNote}</p>
           <Bars l={l} items={m.themes} {...overall} labelWidth="8rem" />
         </section>
         <section class="panel p-5">
-          <h2>{l.t('Win rate by ascension')}</h2>
+          <SectionHeading id="win-rate-by-ascension">{l.t('Win rate by ascension')}</SectionHeading>
           <p class="note">
             {l.t(
               'The thin line on each bar is the range the real win rate most likely falls in. Fewer runs means a wider range.',
@@ -51,13 +52,13 @@ export default function Overview({ locale, initial, options }: Props) {
           <Bars l={l} items={m.ascensions} {...overall} labelWidth="5rem" />
         </section>
         <section class="panel p-5">
-          <h2>{l.t('Win rate by version')}</h2>
+          <SectionHeading id="win-rate-by-version">{l.t('Win rate by version')}</SectionHeading>
           <p class="note">{l.t('Newest first. This ignores the version filter so every release lines up.')}</p>
           <Bars l={l} items={m.versions} max={1} limit={8} labelWidth="6rem" />
         </section>
       </div>
       <section class="panel p-5">
-        <h2>{l.t('Runs per day')}</h2>
+        <SectionHeading id="runs-per-day">{l.t('Runs per day')}</SectionHeading>
         <p class="note">{l.t('Runs shared each day over the last month, from every version.')}</p>
         <Columns l={l} items={m.days} label={l.t('Runs shared per day over the last 30 days')} />
       </section>

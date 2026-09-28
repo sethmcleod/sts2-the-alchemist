@@ -148,7 +148,8 @@ document.querySelector('[data-open-filters]')!.addEventListener('click', () => {
   drawer.showModal();
 });
 drawer.addEventListener('close', () => form.querySelector('[data-open-filters]')!.after(filters));
-// A click on the backdrop closes the drawer, but not the end of a drag that started inside it
+// A click on the backdrop closes the drawer, but not the end of a drag that started inside it. The
+// drawer's closedby="any" does the same where the browser supports it
 let pressedOutside = false;
 drawer.addEventListener('pointerdown', (e) => (pressedOutside = e.target === drawer));
 drawer.addEventListener('click', (e) => {
@@ -158,6 +159,18 @@ drawer.querySelector('[data-done]')!.addEventListener('click', () => drawer.clos
 // The drawer's controls sit outside the form, so their changes are read here
 drawer.addEventListener('change', render);
 for (const button of document.querySelectorAll('[data-clear]')) button.addEventListener('click', clear);
+
+// "/" jumps to the search box, as on many sites, unless the reader is typing or a dialog is open
+document.addEventListener('keydown', (e) => {
+  if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey || e.defaultPrevented) return;
+  if (
+    (e.target as Element).closest('input, textarea, select, [contenteditable]') ||
+    document.querySelector('dialog[open]')
+  )
+    return;
+  e.preventDefault();
+  form.querySelector<HTMLInputElement>('input[name="q"]')!.focus();
+});
 
 readUrl();
 render();

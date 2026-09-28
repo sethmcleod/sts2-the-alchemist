@@ -8,11 +8,13 @@ import { cardHref, notesHref } from '../lib/links';
 import { PARTNER_MODS, slug, steamItem } from '../lib/mod';
 import CardFace from './CardFace.astro';
 import Breakdown from './Breakdown.astro';
+import Changes from './Changes.astro';
 import Stats from './charts/Stats';
 import Commentary from './Commentary.astro';
 import External from './External.astro';
 import StatsSpan from './StatsSpan.astro';
 import T from './T.astro';
+import Tips from './Tips.astro';
 import UpgradeToggle from './UpgradeToggle.astro';
 
 const { l } = Astro.locals;
@@ -43,12 +45,13 @@ const labels = [
     </h1>
   </header>
 
-  <div class="grid gap-6 md:grid-cols-[minmax(0,19rem)_minmax(0,1fr)]">
-    <div class="card relative mx-auto w-full max-w-[19rem]" data-place={card.id}>
+  <div class="card-sheet">
+    <div class="card relative mx-auto w-full max-w-[19rem] [grid-area:card]" data-place={card.id}>
       <CardFace info={info} width={[[null, '19rem']]} eager />
-      <UpgradeToggle name={info.name} />
+      <UpgradeToggle name={info.name} restore={false} />
     </div>
-    <div class="grid content-start gap-4">
+    <Tips markups={info.texts} keywords={info.keywords} exclude={info.name} class="[grid-area:tips]" />
+    <div class="grid content-start gap-4 [grid-area:stats]">
       {detail.stats.length > 0 && <Stats items={detail.stats} />}
       <p class="m-0 text-sm text-muted">
         <T text={l.t('Card text from {version}.')}>
@@ -90,6 +93,8 @@ const labels = [
   {detail.breakdown && <Breakdown breakdown={detail.breakdown} />}
 
   <Commentary id={`cards/${slug(card.id)}`} />
+
+  <Changes id={card.id} />
 
   <nav aria-label={l.t('More cards')} class="flex justify-between gap-4 border-t border-line pt-4 text-sm">
     {previous ? (

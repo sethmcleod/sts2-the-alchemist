@@ -90,6 +90,7 @@ const control = 'field-control min-w-0';
       class="field-control needs-js min-w-0 flex-1 basis-40"
       placeholder={l.t('Search names and text')}
       aria-label={l.t('Search cards')}
+      aria-keyshortcuts="/"
       autocomplete="off"
     />
     <button type="button" class="button needs-js filters-button" aria-haspopup="dialog" data-open-filters>
@@ -177,7 +178,7 @@ const control = 'field-control min-w-0';
   </p>
 </section>
 
-<dialog class="sheet drawer" aria-labelledby="drawer-title" data-drawer>
+<dialog class="sheet drawer" aria-labelledby="drawer-title" closedby="any" data-drawer>
   <form method="dialog">
     <button class="close-button" aria-label={l.t('Close')}>
       ×

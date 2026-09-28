@@ -96,7 +96,17 @@ dialog.addEventListener('close', () => {
   depth = 0;
 });
 
-// A click on the backdrop closes the dialog, but not the end of a drag that started inside it
+// Flipping the card writes #upgraded into the address, so a copied link opens its page the same way.
+// "Show all upgraded" flips it too
+body.addEventListener('change', (e) => {
+  const toggle = (e.target as Element).closest<HTMLInputElement>('.upgrade-toggle');
+  if (!toggle || !history.state?.sheet) return;
+  const all = document.querySelector<HTMLInputElement>('#all-upgraded')?.checked ?? false;
+  history.replaceState(history.state, '', history.state.sheet + (toggle.checked !== all ? '#upgraded' : ''));
+});
+
+// A click on the backdrop closes the dialog, but not the end of a drag that started inside it. The
+// dialog's closedby="any" does the same where the browser supports it
 let pressedOutside = false;
 dialog.addEventListener('pointerdown', (e) => (pressedOutside = e.target === dialog));
 dialog.addEventListener('click', (e) => {

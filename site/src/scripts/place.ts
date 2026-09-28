@@ -33,7 +33,11 @@ export function keepPlace(link: HTMLAnchorElement) {
     ...(first.dataset.place ? { place: first.dataset.place } : { heading: headings().indexOf(first) }),
     top: first.getBoundingClientRect().top,
   };
-  const upgraded = [...document.querySelectorAll<HTMLInputElement>('.upgrade-toggle:checked')]
+  // The cards that show their upgrade. On a card's page #upgraded flips the card, and the new page's
+  // address has no #upgraded, so its toggle carries the flip
+  const flipped = document.querySelector('#upgraded:target') !== null;
+  const upgraded = [...document.querySelectorAll<HTMLInputElement>('.upgrade-toggle')]
+    .filter((toggle) => toggle.checked !== flipped)
     .map((toggle) => toggle.closest<HTMLElement>('[data-place]')?.dataset.place)
     .filter((id): id is string => Boolean(id));
   if (!anchor && !upgraded.length) return;

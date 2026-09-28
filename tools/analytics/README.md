@@ -146,7 +146,8 @@ The site is in every language the mod is, which takes two more things that come 
 and are committed for the same reason:
 
 - `game_loc.json`: the base game's own words in each language (keyword names and the period after
-  them, card types, rarities, encounter names). `mod_meta.py` needs them to write a card's keyword
+  them, card types, rarities, encounter names), and its definitions of the terms card text marks
+  in gold, which the site shows as a card's hover tips. `mod_meta.py` needs them to write a card's keyword
   lines the way the game does in that language, and the export passes them to the site with the
   mod's own text in `data/loc/<language>.json`. Run `game_loc.py` again after a game update:
 

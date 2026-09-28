@@ -6,6 +6,7 @@ import path from 'node:path';
 import type { ImageMetadata } from 'astro';
 import { getImage } from 'astro:assets';
 import { DEFAULT_LOCALE, type Locale } from './i18n';
+import { changes, type Change } from './history';
 import { Lang, type LangInit, type Strings } from './lang';
 import { EXTRA_FILES, named, Runs, type Extra } from './runs';
 import type { Release, Summary, TableFile, Translation } from './types';
@@ -15,7 +16,8 @@ const read = <T>(file: string): T => JSON.parse(fs.readFileSync(path.join(DATA, 
 
 export const dataFile = (file: string) => read<Record<string, unknown>>(file);
 
-let loaded: { runs: Runs; stamp: number; locales: Map<string, { runs: Runs; lang: Lang }> } | undefined;
+let loaded:
+  { runs: Runs; stamp: number; locales: Map<string, { runs: Runs; lang: Lang; words: Translation }> } | undefined;
 
 function load() {
   // A new export under a running dev server shows up on the next page load
@@ -63,7 +65,7 @@ function localized(locale: Locale) {
             potion_info: each(renamed.potion_info, words.potions),
             power_info: each(renamed.power_info, words.powers),
           });
-    found = { runs, lang: new Lang(locale, { ...site, ...stats }, words.game) };
+    found = { runs, lang: new Lang(locale, { ...site, ...stats }, words.game), words };
     all.locales.set(locale.code, found);
   }
   return found;
@@ -74,6 +76,9 @@ export const runs = (locale: Locale = DEFAULT_LOCALE) => localized(locale).runs;
 
 /** Words and numbers in a language */
 export const language = (locale: Locale) => localized(locale).lang;
+
+/** The hover tips for the gold terms in the mod's text, in a language */
+export const tips = (locale: Locale) => localized(locale).words.tips ?? [];
 
 /** The language as an island takes it: only the strings the stats islands use, and the mod's names
  *  to put on the data it loads. Only the fights page needs the game's encounter names */
@@ -89,6 +94,23 @@ export function islandLang(locale: Locale, { encounters = false } = {}): LangIni
 }
 
 export const releases = () => read<{ versions: Release[] }>('notes.json').versions;
+
+let history: { from: Runs; changes: Map<string, Change[]> } | undefined;
+
+/** A card's, relic's or potion's lines in the patch notes, newest first (lib/history.ts) */
+export function itemChanges(id: string) {
+  const all = load().runs;
+  if (history?.from !== all) {
+    const { card_info, relic_info, potion_info } = all.summary;
+    const names = Object.fromEntries(
+      [card_info, relic_info, potion_info].flatMap((infos) =>
+        Object.entries(infos).map(([id, info]) => [id, info.name]),
+      ),
+    );
+    history = { from: all, changes: changes(names, releases()) };
+  }
+  return history.changes.get(id) ?? [];
+}
 
 /** The languages the mod is translated into, besides English */
 export const translations = () =>

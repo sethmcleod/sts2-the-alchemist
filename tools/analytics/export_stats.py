@@ -14,7 +14,8 @@ It writes these files to site/data/:
     fights.json   one row per encounter per group
     notes.json    the patch notes, one entry per version, from CHANGELOG.md
     loc/          one file per language: the mod's names and text, the cards as the game shows
-                  them, and the base game's words the website uses
+                  them, the hover tips for the terms their text marks in gold, and the base
+                  game's words the website uses
 
 Each table is {"key": [...], "counts": [...], "rows": [[...], ...]}. A row lists its key values,
 then its counts. The site build runs it every day (site/package.json), and it runs locally with

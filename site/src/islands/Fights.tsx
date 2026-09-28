@@ -5,6 +5,7 @@ import { fights, type EncounterRow, type FightsModel } from '../lib/views/fights
 import Filters, { type FilterOptions } from './Filters';
 import { useLang } from './useLang';
 import { useStats } from './useStats';
+import SectionHeading from '../components/SectionHeading';
 
 const encounterColumns = (l: Lang): ColumnDef<EncounterRow>[] => [
   {
@@ -58,12 +59,12 @@ export default function Fights({ locale, initial, options }: Props) {
     <div class="stats-page" aria-busy={status === 'loading'}>
       <Filters l={l} filters={filters} options={options} runs={m.runs} status={status} onChange={update} />
       <section class="panel p-5">
-        <h2>{l.t('Where runs end')}</h2>
+        <SectionHeading id="where-runs-end">{l.t('Where runs end')}</SectionHeading>
         <p class="note">{l.t('Lost runs by the floor they ended on. The tall bars are usually the act bosses.')}</p>
         <Columns l={l} items={m.floors} label={l.t('Lost runs by the floor they ended on')} />
       </section>
       <section class="panel p-5">
-        <h2>{l.t('Toughest fights')}</h2>
+        <SectionHeading id="toughest-fights">{l.t('Toughest fights')}</SectionHeading>
         <p class="note">{l.t('Fights by how many runs they ended. Damage and turns are averages per fight.')}</p>
         <DataTable
           l={l}
@@ -75,7 +76,7 @@ export default function Fights({ locale, initial, options }: Props) {
         />
       </section>
       <section class="panel p-5">
-        <h2>{l.t('Fights by act')}</h2>
+        <SectionHeading id="fights-by-act">{l.t('Fights by act')}</SectionHeading>
         <p class="note">{l.t('Average turns and damage taken per fight in each act.')}</p>
         <DataTable
           l={l}

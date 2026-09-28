@@ -3,7 +3,11 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import { createHash } from 'node:crypto';
 import { catalog } from './src/i18n/catalog.mjs';
+import { sitemap } from './src/integrations/sitemap.mjs';
 import { PLACING } from './src/scripts/placing.mjs';
+import { SPECULATION } from './src/scripts/speculation.mjs';
+
+const hash = (text) => `sha256-${createHash('sha256').update(text).digest('base64')}`;
 
 export default defineConfig({
   site: 'https://alchemist.fyi',
@@ -11,8 +15,9 @@ export default defineConfig({
   build: { format: 'file' },
   devToolbar: { enabled: false },
   trailingSlash: 'never',
-  // catalog() writes src/i18n/en.json, the English every translation follows
-  integrations: [preact(), catalog()],
+  // catalog() writes src/i18n/en.json, the English every translation follows; sitemap() writes
+  // sitemap.xml
+  integrations: [preact(), catalog(), sitemap()],
   // Commentary is prose, and Shiki's inline styles would need a looser policy
   markdown: { syntaxHighlight: false },
   // Each page gets a policy with the hashes of its own scripts. Inline styles stay allowed: card
@@ -28,14 +33,14 @@ export default defineConfig({
         "form-action 'self'",
       ],
       styleDirective: { resources: ["'self'", "'unsafe-inline'"] },
-      // Astro hashes the scripts it bundles; the one inline script is hashed here
-      scriptDirective: { hashes: [`sha256-${createHash('sha256').update(PLACING).digest('base64')}`] },
+      // Astro hashes the scripts it bundles; the inline ones are hashed here
+      scriptDirective: { hashes: [hash(PLACING), hash(SPECULATION)] },
     },
   },
   vite: {
     plugins: [tailwindcss()],
     // The dev server may serve the site and the mod's images from the repo, and nothing else: the
     // repo also holds local secrets
-    server: { fs: { allow: ['.', '../Alchemist/images', '../workshop/previews'] } },
+    server: { fs: { allow: ['.', '../Alchemist/images', '../workshop/previews', '../workshop/image.png'] } },
   },
 });

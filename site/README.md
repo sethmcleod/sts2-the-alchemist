@@ -45,6 +45,17 @@ Run these in `site/`. Node 22.12 or newer and Python 3.12 or newer are needed.
   and file a visitor opens, so the site works offline too.
 - The hero shows the README's Playstyle and Disclaimer sections, so the README stays the one
   description of the mod.
+- A card, relic or potion page shows the game's hover tips for the terms its text marks in gold
+  (`lib/tips.ts`: the definitions come from the game's and the mod's loc files, so they are in
+  every language already), and its own lines from the patch notes, renames followed back
+  (`lib/history.ts`). `/cards/<name>#upgraded` opens a card flipped to its upgrade.
+- Every addition works without a script and comes on where the browser supports it: pages
+  cross-fade (`@view-transition`), a link loads while the pointer rests on it (the speculation
+  rules in `scripts/speculation.mjs`), the card grid draws only the faces near the screen
+  (`content-visibility`), and dialogs close on a click outside (`closedby`).
+- The build also writes `/notes.xml` (an Atom feed of the patch notes), `/sitemap.xml`
+  (`src/integrations/sitemap.mjs`), `/robots.txt` and `/manifest.webmanifest`, so the site can be
+  installed as an app.
 
 ## Languages
 

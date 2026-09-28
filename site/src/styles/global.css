@@ -210,6 +210,14 @@
   }
 }
 
+/* Moving between pages cross-fades where the browser can, and the header holds still. A language
+   switch skips it (scripts/placing.mjs), since that page shows once it has scrolled into place */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
 @utility needs-js {
   /* Controls that only work with a script stay hidden without one */
   @media (scripting: none) {
@@ -410,11 +418,32 @@
   }
 
   .site-header {
+    view-transition-name: site-header;
     position: sticky;
     top: calc(-1 * var(--header-hidden));
     z-index: 20;
     border-bottom: 1px solid var(--color-line);
     background: var(--color-bg);
+  }
+
+  /* A shadow once the page scrolls under the header, where the browser can tie it to the scroll. The
+     timeline sits in its own rule: a minifier folds it into the animation shorthand, which cannot
+     hold one, and the browser then drops the whole animation */
+  @supports (animation-timeline: scroll()) {
+    .site-header {
+      animation: header-lift linear both;
+    }
+
+    :root .site-header {
+      animation-timeline: scroll();
+      animation-range: 0 24px;
+    }
+  }
+
+  @keyframes header-lift {
+    to {
+      box-shadow: 0 6px 18px rgb(0 0 0 / 0.35);
+    }
   }
 
   /* ---------- the card library ---------- */
@@ -745,13 +774,14 @@
   }
 
   /* A face holds its base and upgraded text. The upgraded one shows when its card's toggle and the
-     "Show all upgraded" box disagree, so either one flips it */
+     "Show all upgraded" box disagree, so either one flips it. On a card's page, #upgraded in the
+     address stands for that box */
   .upgraded {
     display: none;
   }
 
-  :root:not(:has(#all-upgraded:checked)) .card:has(.upgrade-toggle:checked),
-  :root:has(#all-upgraded:checked) .card:not(:has(.upgrade-toggle:checked)) {
+  :root:not(:has(#all-upgraded:checked, #upgraded:target)) .card:has(.upgrade-toggle:checked),
+  :root:has(#all-upgraded:checked, #upgraded:target) .card:not(:has(.upgrade-toggle:checked)) {
     .base {
       display: none;
     }
@@ -832,7 +862,10 @@
     }
   }
 
+  /* The browser draws a tile's face only near the screen. The face's aspect ratio already sets its
+     height, so the page keeps its length and a language switch lands on the same card */
   .tile-link .face {
+    content-visibility: auto;
     transition: transform 0.15s ease;
   }
 
@@ -868,6 +901,23 @@
     color: var(--color-ink-2);
     list-style: disc;
     overflow-wrap: anywhere;
+  }
+
+  /* An item's lines in the patch notes: the version, then the line */
+  .changes {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    color: var(--color-ink-2);
+    list-style: none;
+    overflow-wrap: anywhere;
+  }
+
+  .changes > li {
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: 12px;
   }
 
   .notes-list .notes-list {
@@ -1145,6 +1195,32 @@
     margin: 0;
   }
 
+  /* A section heading's own link, shown while the pointer is on it */
+  .anchor {
+    margin-left: 0.35em;
+    color: var(--color-muted);
+    font-weight: 400;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .anchored:hover .anchor {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    .anchor {
+      opacity: 0.5;
+    }
+  }
+
+  /* The section a link points at */
+  .panel:has(> .anchored:target) {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 1px var(--color-gold);
+  }
+
   .stats-page h3 {
     margin: 0 0 4px;
     font-size: 18px;
@@ -1319,6 +1395,83 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
+  }
+
+  /* A patch notes entry a link points at */
+  .panel:target {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 1px var(--color-gold);
+  }
+
+  /* ---------- hover tips ---------- */
+
+  /* A card's sheet: the card, then its tips and stats on a phone. On a wide screen the stats and
+     then the tips run down beside the card */
+  .card-sheet {
+    display: grid;
+    grid-template-areas: 'card' 'tips' 'stats';
+    gap: 24px;
+  }
+
+  @media (width >= 48rem) {
+    .card-sheet {
+      grid-template-areas: 'card stats' 'card tips';
+      grid-template-rows: auto 1fr;
+      grid-template-columns: minmax(0, 19rem) minmax(0, 1fr);
+      gap: 16px 24px;
+    }
+  }
+
+  .tips-more > summary {
+    width: fit-content;
+    color: var(--color-up);
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .tips-more[open] > summary {
+    margin-bottom: 8px;
+  }
+
+  /* On a wide screen the tips stay open and the toggle goes, where the browser can style what a
+     <details> hides; elsewhere the toggle stays */
+  @media (width >= 48rem) {
+    @supports selector(::details-content) {
+      .tips-more > summary {
+        display: none;
+      }
+
+      .tips-more::details-content {
+        content-visibility: visible;
+      }
+    }
+  }
+
+  /* The game's hover tips, stacked the way it stacks them beside a card */
+  .tips {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tip {
+    display: grid;
+    gap: 2px;
+    padding: 8px 12px;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: var(--color-panel-2);
+    color: var(--color-ink-2);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .tip-title {
+    color: var(--color-gold);
+    font-family: var(--font-display);
+    font-size: 15px;
   }
 
   /* ---------- scatter ---------- */
