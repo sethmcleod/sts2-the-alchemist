@@ -55,7 +55,8 @@ public class AlchemistModConfig : SimpleModConfig
     public static bool KeepPoolsSeparate { get; set; } = true;
 
     // The nine cards made for The Hero Expansion normally leave the pool when that mod is absent.
-    // This offers them anyway; the Broken Blade and Flashlight cards still need the mod to appear
+    // This offers them anyway, in single-player runs only (HeroExpansion.CardsEnabled); the Broken
+    // Blade and Flashlight cards still need the mod to appear
     [ConfigSection("Compatibility")]
     [ConfigHoverTip]
     public static bool HeroCardsWithoutExpansion { get; set; } = false;

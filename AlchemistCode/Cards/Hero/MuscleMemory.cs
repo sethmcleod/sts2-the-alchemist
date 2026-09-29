@@ -9,7 +9,8 @@ namespace Alchemist.AlchemistCode.Cards.Hero;
 
 // Tear Asunder is the base shape: the combat history is the counter, so the hit count survives a
 // mid-combat reload. The count is cached until the history grows, because the preview asks for it on
-// every hand refresh. The cache records which instance filled it, so a clone recounts for itself
+// every hand refresh. The game reuses one history object and clears it between fights, so the cache
+// keys on the fight (the card's CombatState) and on the instance that filled it, so a clone recounts
 [CardTheme(CardTheme.Poison)]
 public class MuscleMemory : AlchemistHeroCard
 {
@@ -24,23 +25,23 @@ public class MuscleMemory : AlchemistHeroCard
     private static int Hits(CardModel card) => BaseHits + PlaysThisCombat(card);
 
     private object? _countedFor;
-    private object? _countedHistory;
+    private object? _countedCombat;
     private int _countedEntries = -1;
     private int _plays;
 
     // The play in progress is not finished yet, so the count is the earlier plays only
     private static int PlaysThisCombat(CardModel card)
     {
-        if (card is not MuscleMemory self || !card.IsMutable
+        if (card is not MuscleMemory self || !card.IsMutable || self.CombatState is not { } fight
             || CombatManager.Instance is not { IsInProgress: true } combat) return 0;
         var history = combat.History;
         var entries = history.Entries.Count();
-        if (ReferenceEquals(self._countedFor, self) && ReferenceEquals(self._countedHistory, history)
+        if (ReferenceEquals(self._countedFor, self) && ReferenceEquals(self._countedCombat, fight)
             && self._countedEntries == entries)
             return self._plays;
         self._plays = history.CardPlaysFinished.Count(e => e.CardPlay.Card == card);
         self._countedFor = self;
-        self._countedHistory = history;
+        self._countedCombat = fight;
         self._countedEntries = entries;
         return self._plays;
     }
