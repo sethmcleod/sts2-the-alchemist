@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "Mortar",
   "ALCHEMIST-MUD_PACK.description": "Gain {Block:diff()} [gold]Block[/gold] X times.\nGain X [gold]Poison[/gold].",
   "ALCHEMIST-MUD_PACK.title": "Mud Pack",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "Deal {Damage:diff()} damage twice.\nHits an additional time for each time this card has been played this combat.{InCombat:\n(Hits {CalculatedHits} {CalculatedHits:plural:time|times})|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "Deal {Damage:diff()} damage {CalculatedHits:diff()} times.\nHits an additional time for each time this card has been played this combat.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Muscle Memory",
   "ALCHEMIST-NEEDLE_POINT.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Needle Point",

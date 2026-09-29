@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "研钵",
   "ALCHEMIST-MUD_PACK.description": "获得{Block:diff()}点[gold]格挡[/gold]X次。\n获得X层[gold]中毒[/gold]。",
   "ALCHEMIST-MUD_PACK.title": "泥浆面膜",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "造成{Damage:diff()}点伤害两次。\n在本场战斗中，这张牌每被打出过一次，就额外造成一次伤害。{InCombat:\n（命中{CalculatedHits}次）|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "造成{Damage:diff()}点伤害{CalculatedHits:diff()}次。\n在本场战斗中，这张牌每被打出过一次，就额外造成一次伤害。",
   "ALCHEMIST-MUSCLE_MEMORY.title": "肌肉记忆",
   "ALCHEMIST-NEEDLE_POINT.description": "造成{Damage:diff()}点伤害。\n给予{WeakPower:diff()}层[gold]虚弱[/gold]。\n给予{VulnerablePower:diff()}层[gold]易伤[/gold]。",
   "ALCHEMIST-NEEDLE_POINT.title": "针尖",

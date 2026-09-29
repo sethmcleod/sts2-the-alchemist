@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "Mortier",
   "ALCHEMIST-MUD_PACK.description": "Gagnez {Block:diff()} d'[gold]Armure[/gold] X fois.\nGagnez X de [gold]Poison[/gold].",
   "ALCHEMIST-MUD_PACK.title": "Masque de boue",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "Infligez {Damage:diff()} dégâts 2 fois.\nSe déclenche autant de fois supplémentaires que de fois où cette carte a été jouée pendant ce combat.{InCombat:\n(Se déclenche {CalculatedHits} fois)|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "Infligez {Damage:diff()} dégâts {CalculatedHits:diff()} fois.\nSe déclenche autant de fois supplémentaires que de fois où cette carte a été jouée pendant ce combat.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Mémoire musculaire",
   "ALCHEMIST-NEEDLE_POINT.description": "Infligez {Damage:diff()} dégâts.\nAppliquez [gold]Affaibli[/gold] ({WeakPower:diff()}).\nAppliquez [gold]Vulnérable[/gold] ({VulnerablePower:diff()}).",
   "ALCHEMIST-NEEDLE_POINT.title": "Pointe d'aiguille",

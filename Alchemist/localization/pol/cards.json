@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "Moździerz",
   "ALCHEMIST-MUD_PACK.description": "Zyskaj {Block:diff()} pkt. [gold]Bloku[/gold] X razy.\nZyskaj X pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-MUD_PACK.title": "Błotna maseczka",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "Zadaj {Damage:diff()} pkt. obrażeń dwukrotnie.\nUderza dodatkowo za każdy raz, kiedy zagrano tę kartę w tej walce.{InCombat:\n(Uderza {CalculatedHits} {CalculatedHits:plural:raz|razy|razy})|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "Zadaj {Damage:diff()} pkt. obrażeń {CalculatedHits:diff()} razy.\nUderza dodatkowo za każdy raz, kiedy zagrano tę kartę w tej walce.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Pamięć mięśniowa",
   "ALCHEMIST-NEEDLE_POINT.description": "Zadaj {Damage:diff()} pkt. obrażeń.\nNałóż {WeakPower:diff()} pkt. [gold]Słabości[/gold].\nNałóż {VulnerablePower:diff()} pkt. [gold]Wrażliwości[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Ukłucie",

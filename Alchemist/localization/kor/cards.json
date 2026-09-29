@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "막자사발",
   "ALCHEMIST-MUD_PACK.description": "[gold]방어도[/gold]를 {Block:diff()}만큼 X번 얻습니다.\n[gold]중독[/gold]을 X 얻습니다.",
   "ALCHEMIST-MUD_PACK.title": "머드팩",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "피해를 {Damage:diff()}만큼 2번 줍니다.\n이번 전투 동안 이 카드를 사용한 횟수만큼 추가로 적중합니다.{InCombat:\n({CalculatedHits}번 적중합니다)|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "피해를 {Damage:diff()}만큼 {CalculatedHits:diff()}번 줍니다.\n이번 전투 동안 이 카드를 사용한 횟수만큼 추가로 적중합니다.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "근육 기억",
   "ALCHEMIST-NEEDLE_POINT.description": "피해를 {Damage:diff()} 줍니다.\n[gold]약화[/gold]를 {WeakPower:diff()} 부여합니다.\n[gold]취약[/gold]을 {VulnerablePower:diff()} 부여합니다.",
   "ALCHEMIST-NEEDLE_POINT.title": "바늘 끝",

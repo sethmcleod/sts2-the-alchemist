@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "Lumpang",
   "ALCHEMIST-MUD_PACK.description": "Dapatkan {Block:diff()} [gold]Blok[/gold] X kali.\nDapatkan X [gold]Racun[/gold].",
   "ALCHEMIST-MUD_PACK.title": "Lulur Lumpur",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "Lakukan {Damage:diff()} kerusakan dua kali.\nKena sekali lagi untuk setiap kali kartu ini telah dimainkan perlawanan ini.{InCombat:\n(Kena {CalculatedHits} {CalculatedHits:plural:kali|kali})|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "Lakukan {Damage:diff()} kerusakan {CalculatedHits:diff()} kali.\nKena sekali lagi untuk setiap kali kartu ini telah dimainkan perlawanan ini.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Memori Otot",
   "ALCHEMIST-NEEDLE_POINT.description": "Lakukan {Damage:diff()} kerusakan.\nTerapkan {WeakPower:diff()} [gold]Lemah[/gold].\nTerapkan {VulnerablePower:diff()} [gold]Rentan[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Ujung Jarum",

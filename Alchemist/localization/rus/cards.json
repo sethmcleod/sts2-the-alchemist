@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "Ступка",
   "ALCHEMIST-MUD_PACK.description": "Дает {Block:diff()} [gold]защиты[/gold] X раз.\nДает вам X [gold]яда[/gold].",
   "ALCHEMIST-MUD_PACK.title": "Грязевая маска",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "Наносит {Damage:diff()} урона 2 раза.\nНаносит урон еще раз за каждый раз, когда эту карту разыгрывали в этом бою.{InCombat:\n(Наносит урон {CalculatedHits} {CalculatedHits:plural(ru):раз|раза|раз})|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "Наносит {Damage:diff()} урона {CalculatedHits:diff()} {CalculatedHits:plural(ru):раз|раза|раз}.\nНаносит урон еще раз за каждый раз, когда эту карту разыгрывали в этом бою.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Мышечная память",
   "ALCHEMIST-NEEDLE_POINT.description": "Наносит {Damage:diff()} урона.\nНакладывает {WeakPower:diff()} [gold]слабости[/gold].\nНакладывает {VulnerablePower:diff()} [gold]уязвимости[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Острие иглы",

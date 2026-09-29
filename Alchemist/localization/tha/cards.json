@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "ครก",
   "ALCHEMIST-MUD_PACK.description": "ได้รับ {Block:diff()} [gold]บล็อก[/gold] จำนวน X ครั้ง\nได้รับ X [gold]พิษ[/gold]",
   "ALCHEMIST-MUD_PACK.title": "พอกโคลน",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "สร้างความเสียหาย {Damage:diff()} จำนวน 2 ครั้ง\nโจมตีเพิ่มอีกตามจำนวนครั้งที่การ์ดนี้ถูกเล่นในการต่อสู้นี้{InCombat:\n(โจมตี {CalculatedHits} ครั้ง)|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "สร้างความเสียหาย {Damage:diff()} จำนวน {CalculatedHits:diff()} ครั้ง\nโจมตีเพิ่มอีกตามจำนวนครั้งที่การ์ดนี้ถูกเล่นในการต่อสู้นี้",
   "ALCHEMIST-MUSCLE_MEMORY.title": "ความจำกล้ามเนื้อ",
   "ALCHEMIST-NEEDLE_POINT.description": "สร้างความเสียหาย {Damage:diff()}\nสร้าง {WeakPower:diff()} [gold]ความอ่อนแอ[/gold]\nสร้าง {VulnerablePower:diff()} [gold]จุดอ่อน[/gold]",
   "ALCHEMIST-NEEDLE_POINT.title": "ปลายเข็ม",

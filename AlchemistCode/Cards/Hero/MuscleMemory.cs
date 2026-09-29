@@ -19,10 +19,12 @@ public class MuscleMemory : AlchemistHeroCard
     public MuscleMemory() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(3, 1);
-        WithCalculatedVar("CalculatedHits", 0, static (card, _) => Hits(card));
+        // BaseHits stays the var's own value and each earlier play raises only the preview, so the
+        // count shows in green once the card has been played, as a calculated number does
+        WithCalculatedVar("CalculatedHits", BaseHits, 1, static (card, _) => PlaysThisCombat(card), 0, 0);
     }
 
-    private static int Hits(CardModel card) => BaseHits + PlaysThisCombat(card);
+    private int Hits => BaseHits + PlaysThisCombat(this);
 
     private object? _countedFor;
     private object? _countedCombat;
@@ -48,7 +50,7 @@ public class MuscleMemory : AlchemistHeroCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, Hits(this), vfx: HitVfx("vfx/vfx_attack_blunt"),
+        await CommonActions.CardAttack(this, play, Hits, vfx: HitVfx("vfx/vfx_attack_blunt"),
                 tmpSfx: "blunt_attack.mp3")
             .Execute(choiceContext);
     }

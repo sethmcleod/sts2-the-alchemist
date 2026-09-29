@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "Mortaio",
   "ALCHEMIST-MUD_PACK.description": "Ottieni {Block:diff()} di [gold]Blocco[/gold] X volte.\nOttieni X di [gold]Veleno[/gold].",
   "ALCHEMIST-MUD_PACK.title": "Maschera di fango",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "Infliggi {Damage:diff()} di danno due volte.\nColpisce una volta in più per ogni volta che questa carta è stata giocata in questo combattimento.{InCombat:\n(Colpisce {CalculatedHits} {CalculatedHits:plural:volta|volte})|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "Infliggi {Damage:diff()} di danno {CalculatedHits:diff()} volte.\nColpisce una volta in più per ogni volta che questa carta è stata giocata in questo combattimento.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Memoria muscolare",
   "ALCHEMIST-NEEDLE_POINT.description": "Infliggi {Damage:diff()} di danno.\nApplichi {WeakPower:diff()} di [gold]Debolezza[/gold].\nApplichi {VulnerablePower:diff()} di [gold]Vulnerabilità[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Punta d'Ago",

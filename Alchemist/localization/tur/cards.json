@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "Havan",
   "ALCHEMIST-MUD_PACK.description": "X kez {Block:diff()} [gold]Blok[/gold] elde et.\nX [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-MUD_PACK.title": "Çamur Maskesi",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "İki kez {Damage:diff()} hasar ver.\nBu savaş boyunca bu kartın oynandığı her sefer için ek bir vuruş yapar.{InCombat:\n({CalculatedHits} {CalculatedHits:plural:kez|kez} vurur)|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "{CalculatedHits:diff()} kez {Damage:diff()} hasar ver.\nBu savaş boyunca bu kartın oynandığı her sefer için ek bir vuruş yapar.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Kas Hafızası",
   "ALCHEMIST-NEEDLE_POINT.description": "{Damage:diff()} hasar ver.\n{WeakPower:diff()} [gold]Zayıf[/gold] uygula.\n{VulnerablePower:diff()} [gold]Savunmasız[/gold] uygula.",
   "ALCHEMIST-NEEDLE_POINT.title": "İğne Ucu",

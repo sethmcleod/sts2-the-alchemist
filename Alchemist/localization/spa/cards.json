@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "Mortero",
   "ALCHEMIST-MUD_PACK.description": "Gana {Block:diff()} de [gold]Bloqueo[/gold] X veces.\nGana X de [gold]Veneno[/gold].",
   "ALCHEMIST-MUD_PACK.title": "Mascarilla de lodo",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "Inflige {Damage:diff()} de daño dos veces.\nGolpea una vez adicional por cada vez que hayas jugado esta carta durante este combate.{InCombat:\n(Golpea {CalculatedHits} {CalculatedHits:plural:vez|veces})|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "Inflige {Damage:diff()} de daño {CalculatedHits:diff()} veces.\nGolpea una vez adicional por cada vez que hayas jugado esta carta durante este combate.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Memoria muscular",
   "ALCHEMIST-NEEDLE_POINT.description": "Inflige {Damage:diff()} de daño.\nAplica {WeakPower:diff()} de [gold]Debilidad[/gold].\nAplica {VulnerablePower:diff()} de [gold]Vulnerabilidad[/gold].",
   "ALCHEMIST-NEEDLE_POINT.title": "Punta de aguja",

@@ -128,7 +128,7 @@
   "ALCHEMIST-MORTAR.title": "Mörser",
   "ALCHEMIST-MUD_PACK.description": "Erhalte X Mal {Block:diff()} [gold]Block[/gold].\nErhalte X [gold]Gift[/gold].",
   "ALCHEMIST-MUD_PACK.title": "Schlammpackung",
-  "ALCHEMIST-MUSCLE_MEMORY.description": "Füge zweimal {Damage:diff()} Schaden zu.\nTrifft ein weiteres Mal für jedes Mal, dass du diese Karte in diesem Kampf gespielt hast.{InCombat:\n(Trifft {CalculatedHits} {CalculatedHits:plural:Mal|Mal})|}",
+  "ALCHEMIST-MUSCLE_MEMORY.description": "Füge {CalculatedHits:diff()} Mal {Damage:diff()} Schaden zu.\nTrifft ein weiteres Mal für jedes Mal, dass du diese Karte in diesem Kampf gespielt hast.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Muskelgedächtnis",
   "ALCHEMIST-NEEDLE_POINT.description": "Füge {Damage:diff()} Schaden zu.\nWende {WeakPower:diff()} [gold]Schwach[/gold] an.\nWende {VulnerablePower:diff()} [gold]Verwundbar[/gold] an.",
   "ALCHEMIST-NEEDLE_POINT.title": "Nadelstich",

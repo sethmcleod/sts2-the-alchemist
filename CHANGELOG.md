@@ -13,7 +13,7 @@ mod).
 - Added Chrysopoeia card (1 energy, Rare Power, Hero Expansion): "At the end of combat, gain Gold equal to your Poison." Chrysopoeia+ costs 0
 - Added Double Dip card (2 energy, Common, Hero Expansion): "Deal 4 (6) damage twice. Apply 5 (7) Poison."
 - Added Mud Pack card (X energy, Rare, Hero Expansion): "Gain 6 (8) Block X times. Gain X Poison."
-- Added Muscle Memory card (1 energy, Uncommon, Hero Expansion): "Deal 3 (4) damage twice. Hits an additional time for each time this card has been played this combat."
+- Added Muscle Memory card (1 energy, Uncommon, Hero Expansion): "Deal 3 (4) damage 2 times. Hits an additional time for each time this card has been played this combat."
 - Added Secret Sauce card (1 energy, Common, Hero Expansion): "Deal 6 (8) damage. Enchant an Attack in your Hand with Laced."
 - Added Snack Attack card (1 energy, Common, Hero Expansion): "Deal 10 (12) damage. If the enemy has Poison, draw 1 (2) cards."
 - Added Spring Cleaning card (1 energy, Uncommon, Hero Expansion): "Exhaust up to 2 (3) cards from your Draw Pile. Gain 2 Antitoxin for each card Exhausted."
