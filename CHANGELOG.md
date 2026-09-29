@@ -10,7 +10,7 @@ mod).
 ### Added
 
 - Added Bounce Back card (1 energy, Uncommon, Hero Expansion): "Gain 7 (9) Block. Gain 1 Poison. At the start of your next turn, return this to your Hand."
-- Added Chrysopoeia card (1 energy, Rare Power, Hero Expansion): "At the end of combat, gain Gold equal to your Poison." Chrysopoeia+ costs 0
+- Added Chrysopoeia card (0 energy, Rare Skill, Hero Expansion): "Gain 1 (2) Energy. Gain an additional Energy for every 4 Poison you have. Lose all your Poison. Exhaust."
 - Added Double Dip card (2 energy, Common, Hero Expansion): "Deal 4 (6) damage twice. Apply 5 (7) Poison."
 - Added Mud Pack card (X energy, Rare, Hero Expansion): "Gain 6 (8) Block X times. Gain X Poison."
 - Added Muscle Memory card (1 energy, Uncommon, Hero Expansion): "Deal 3 (4) damage 2 times. Hits an additional time for each time this card has been played this combat."
@@ -22,6 +22,7 @@ mod).
 ### Changed
 
 - Changed the cards the Dissolution Epoch unlocks: Upwell, Premonition and Mercurial Form
+- Nerfed Caustic Strike card: Poison decreased from 3 -> 2, and additional Poison for each turn Fermented decreased from 2(3) -> 1(2)
 - Nerfed Fling card: Poison needed for each additional hit increased from 2 -> 3(2)
 - Nerfed Mortar card: damage decreased from 9(12) -> 7(10)
 - Nerfed Puff Up card: additional Block for each turn Fermented decreased from 3(5) -> 2(4)

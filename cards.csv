@@ -15,8 +15,8 @@ Brace,Common,Skill,1,"Gain 7 (9) Block. Whenever you are attacked this turn, app
 Brine,Uncommon,Skill,1,Gain 2 (3) Antitoxin. Apply 2 (3) Weak to ALL enemies with Poison.
 Bursting Mix,Token,Attack,0,Deal 6 (9) damage. Exhaust.
 Callus,Uncommon,Power,2 (1),"Whenever your Poison is triggered, gain 1 Strength."
-Caustic Strike,Common,Attack,1,Retain. Ferment. Deal 6 (8) damage. Apply 3 Poison. Applies 2 (3) additional Poison for each turn Fermented.
-Chrysopoeia,"Rare, Hero",Power,1 (0),"At the end of combat, gain Gold equal to your Poison."
+Caustic Strike,Common,Attack,1,Retain. Ferment. Deal 6 (8) damage. Apply 2 Poison. Applies 1 (2) additional Poison for each turn Fermented.
+Chrysopoeia,"Rare, Hero",Skill,0,Gain 1 (2) Energy. Gain an additional Energy for every 4 Poison you have. Lose all Poison. Exhaust.
 Clench,Uncommon,Power,1,Gain 3 (4) Strength. Gain 4 Poison.
 Combine,Common,Skill,0,Add a random basic Mix into your Hand. Combine 2 Mixes in your Hand into a Compound Mix. (Combine+ adds a Mix+)
 Compound Mix,Token,Skill,0,"Draw 1 (2) cards, in addition to the effects of the two Mixes it was made from. Exhaust."

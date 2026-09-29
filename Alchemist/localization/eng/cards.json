@@ -34,7 +34,7 @@
   "ALCHEMIST-CALLUS.title": "Callus",
   "ALCHEMIST-CAUSTIC_STRIKE.description": "[gold]Ferment.[/gold]\nDeal {Damage:diff()} damage.\nApply {Poison:diff()} [gold]Poison[/gold].\nApplies {perTurn:diff()} additional [gold]Poison[/gold] for each turn [gold]Fermented[/gold].",
   "ALCHEMIST-CAUSTIC_STRIKE.title": "Caustic Strike",
-  "ALCHEMIST-CHRYSOPOEIA.description": "At the end of combat, gain [gold]Gold[/gold] equal to your [gold]Poison[/gold].",
+  "ALCHEMIST-CHRYSOPOEIA.description": "Gain {Energy:energyIcons()}.\nGain an additional {Bonus:energyIcons()} for every {Per} [gold]Poison[/gold] you have.\nLose all [gold]Poison[/gold].",
   "ALCHEMIST-CHRYSOPOEIA.title": "Chrysopoeia",
   "ALCHEMIST-CLENCH.description": "Gain {StrengthPower:diff()} [gold]Strength[/gold].\nGain {SelfPoison} [gold]Poison[/gold].",
   "ALCHEMIST-CLENCH.title": "Clench",
