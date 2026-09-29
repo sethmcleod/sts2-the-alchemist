@@ -16,8 +16,7 @@ namespace Alchemist.AlchemistCode.Powers;
 // are a plain card attack, not a card play, so they do not fire this hook again. Gone at the end
 // of the turn like Rerun. Every Alchemist Attack carries a damage var to repeat; a few base Attacks
 // compute their damage by hand at play time, BaseLib throws on those, so they are skipped
-// Shows the base Strangle icon
-public class TwitchPower : BorrowedIconPower<StranglePower>
+public class TwitchPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
