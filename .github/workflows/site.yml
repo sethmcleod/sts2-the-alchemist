@@ -3,12 +3,9 @@ name: site
 # alchemist.fyi shows the newest release, so it matches what players have installed. Vercel builds
 # the `site` branch, and this workflow points that branch at the newest release tag, with the site's
 # own code (site/ and tools/analytics/) taken from beta so a site fix goes live without a release.
-# It runs on every release tag, on every push to beta that changes the site, and once a day, when it
-# asks Vercel for a fresh build so the run stats stay current. GitHub runs the daily schedule and the
-# Run workflow button from main's copy of this file only.
-#
-# That daily build is also what keeps the free Supabase project awake: it pauses after a week
-# without a request, and a paused project silently drops every upload from players.
+# It runs on every release tag and on every push to beta that changes the site. The run stats
+# refresh once a day without it: the daily pack (site/api/pack.ts) asks Vercel for a build. The Run
+# workflow button runs main's copy of this file, and asks for a build when the branch is current.
 #
 # One-time setup (site/README.md): a Vercel project with the root directory `site` and the
 # production branch `site`, and the VERCEL_DEPLOY_HOOK repository secret (a deploy hook for the
@@ -22,8 +19,6 @@ on:
       - "site/**"
       - "tools/analytics/**"
       - ".github/workflows/site.yml"
-  schedule:
-    - cron: "23 6 * * *" # daily, UTC
   workflow_dispatch: {}
 
 permissions:
@@ -62,7 +57,7 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # A push to the site branch builds on its own; otherwise ask for a build for the stats
+      # A push to the site branch builds on its own; otherwise ask for a build
       - name: Rebuild with the latest runs
         if: steps.branch.outputs.changed == 'false'
         env:

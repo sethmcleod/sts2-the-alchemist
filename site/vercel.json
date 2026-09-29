@@ -5,6 +5,12 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
+  "crons": [
+    {
+      "path": "/api/pack",
+      "schedule": "23 6 * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/_astro/(.*)",

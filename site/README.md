@@ -13,7 +13,7 @@ Run these in `site/`. Node 22.12 or newer and Python 3.12 or newer are needed.
 | -------------------- | ------------------------------------------------------------------- |
 | `npm install`        | Installs the dependencies                                           |
 | `npm run data`       | Exports the mod's content and the run stats to `data/`              |
-| `npm run data:seed`  | The same, from made-up runs (no Supabase key needed)                |
+| `npm run data:seed`  | The same, from made-up runs (no keys needed)                        |
 | `npm run dev`        | Serves the site on http://localhost:4321 while you edit             |
 | `npm run build`      | Exports the data, then builds the site into `dist/`                 |
 | `npm run build:site` | Builds the site from the data already in `data/`                    |
@@ -23,11 +23,14 @@ Run these in `site/`. Node 22.12 or newer and Python 3.12 or newer are needed.
 | `npm run strings`    | Lists what each language still needs translated (see Languages)     |
 | `npm run format`     | Formats everything with Prettier                                    |
 
-`npm run data` reads the runs with the Supabase secret key, from `SUPABASE_READ_KEY` or
-`tools/analytics/supabase-service-key.local.txt` (see `tools/analytics/README.md`).
+`npm run data` reads the runs from the project's Redis and Blob stores. A Vercel build has the
+credentials; for a local export, see `tools/analytics/README.md`.
 
 ## How it fits together
 
+- `api/` is the only server code. The mod posts each finished run to `api/runs.ts`, which queues
+  it in Redis, and Vercel Cron calls `api/pack.ts` once a day to move the queue into Blob and start
+  a build.
 - `../tools/analytics/export_stats.py` writes the data: card, relic, potion and power text from
   the mod's localization and code, the patch notes from `CHANGELOG.md`, and count tables of every
   shared run.
@@ -94,6 +97,8 @@ A Markdown file in `src/content/commentary/` shows on the page with the same pat
 
 Vercel builds the `site` branch: the newest release, with `site/` and `tools/analytics/` taken
 from `beta`. `.github/workflows/site.yml` moves that branch on every release tag and every push
-to `beta` that changes the site, and asks Vercel for a fresh build once a day for the run stats.
-So a release updates the site with its cards, relics, potions, powers, README text and patch
-notes, and nothing needs running by hand. `vercel.json` sets the caching and security headers.
+to `beta` that changes the site, and the daily pack (`api/pack.ts`) starts a fresh build for the
+run stats. So a release updates the site with its cards, relics, potions, powers, README text and
+patch notes, and nothing needs running by hand. `vercel.json` sets the caching and security
+headers and the daily schedule. The project's Firewall limits how often one address can post a
+run.

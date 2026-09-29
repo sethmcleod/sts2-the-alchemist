@@ -21,8 +21,8 @@
 #                                 tag that is already public (a history rewrite)
 #   scripts/dev.sh sync-main      merge beta into main so main can promote (see RELEASING.md)
 #   scripts/dev.sh analytics [export|seed]
-#                                 export: pull the run rows from Supabase and write the website's
-#                                 data (needs the secret key, see tools/analytics/README.md);
+#                                 export: read the runs from the website's stores and write its
+#                                 data (needs the credentials, see tools/analytics/README.md);
 #                                 seed: fabricate 400 runs and export them, no network
 #   scripts/dev.sh site [dev|build|preview|check]
 #                                 the website in site/ (alchemist.fyi). dev: serve it while you edit;

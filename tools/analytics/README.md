@@ -1,25 +1,25 @@
 # Run analytics
 
-The Alchemist sends an anonymous summary of each finished run to a small database. The mod's
-website, alchemist.fyi (`site/`), adds the runs up every day and shows every card, relic, potion
-and power, drawn the way the game draws them, with the stats for each.
+The Alchemist sends an anonymous summary of each finished run to its website, alchemist.fyi
+(`site/`). The website adds the runs up every day and shows every card, relic, potion and power,
+drawn the way the game draws them, with the stats for each.
 
 The upload and the export are small, and the export uses only the Python standard library, so
 another mod can copy them. See [Make your own](#make-your-own).
 
 ## How it works
 
-| Step    | Where                        | What it does                                                                                                                   |
-| ------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Upload  | `AlchemistCode/Analytics/`   | When a run ends, the mod rebuilds the game's own run summary, adds its own counters, and posts one row.                        |
-| Store   | Supabase, `schema.sql`       | One table, `runs`. The key in the DLL can insert rows and do nothing else.                                                     |
-| Export  | `export_stats.py`            | Reads the rows with the secret key and writes count tables to `site/data/`. No raw row, deck or player hash leaves the script. |
-| Show    | `site/`                      | The website. It builds its pages from the count tables and adds them up for the filters you pick (`site/README.md`).           |
-| Publish | `.github/workflows/site.yml` | Rebuilds alchemist.fyi every day with a fresh export. Nothing is committed.                                                    |
+| Step    | Where                      | What it does                                                                                                                  |
+| ------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Upload  | `AlchemistCode/Analytics/` | When a run ends, the mod rebuilds the game's own run summary, adds its own counters, and posts one row to alchemist.fyi.       |
+| Receive | `site/api/runs.ts`         | Checks the row, gives it an `id` and a `created_at` time, and queues it in Redis. It needs no key and can only add runs.      |
+| Store   | `site/api/pack.ts`         | Once a day (Vercel Cron), moves the queue into one gzipped JSON Lines file in a private Vercel Blob store, then starts a build. |
+| Export  | `export_stats.py`          | Reads the files and the queue (`common.py`) and writes count tables to `site/data/`. No raw row, deck or player hash leaves it. |
+| Show    | `site/`                    | The website. It builds its pages from the count tables and adds them up for the filters you pick (`site/README.md`).          |
 
 ## Try it with fake runs
 
-You need Python 3.12 or later and Node 22.12 or later. You do not need Supabase or the game.
+You need Python 3.12 or later and Node 22.12 or later. You do not need any keys or the game.
 
 ```bash
 scripts/dev.sh analytics seed
@@ -30,7 +30,8 @@ scripts/dev.sh site dev
 ```
 
 Then open the address it prints. `seed` makes 400 runs over four made-up versions with
-`seed_runs.py` and exports them. Run `scripts/dev.sh analytics export` to get the real data back.
+`seed_runs.py` and exports them. Run `scripts/dev.sh analytics export` to get the real data back
+(it needs the credentials in [Set up the real thing](#set-up-the-real-thing)).
 
 ## When a run uploads
 
@@ -54,7 +55,7 @@ SHA-256 of the game's anonymous install id.
 > [!NOTE]
 > The hook is silent when a gate is closed. After a run, read the game log. `Uploading Alchemist
 > run analytics...` then `Analytics for 'Alchemist run' uploaded.` means it worked. `Skipping
-> metrics upload` means the game closed a gate. A `401` means the key or the policy is wrong.
+> metrics upload` means the game closed a gate. A `400` names the field the website refused.
 
 ## What a row holds
 
@@ -63,11 +64,12 @@ SHA-256 of the game's anonymous install id.
 | `mod_version`, `game_version`, `victory`, `ascension`, `floor`, `playtime`, `player_hash`, `epochs` | The values the export filters on.                                                          |
 | `data`                                                                                   | The vanilla run summary (`VanillaRunMetrics.cs`), in the shape the game sends to MegaCrit. |
 | `alchemist`                                                                              | What vanilla cannot see: epochs, Mixes, Poison and Antitoxin, Brews, deck themes, badges, `tally`. |
+| `id`, `created_at`                                                                       | Added by the website when the row arrives.                                                 |
 
 The `tally` is an open bag of counts (`RunCounters.Tally`). A key with a colon carries a label,
 for example `mixsrc:spike` counts the Mixes that Spike created, and `play:spike` counts the times
-the run played Spike. `RunCounters.cs` lists every key. Both columns are `jsonb`, so a new field
-never needs a migration.
+the run played Spike. `RunCounters.cs` lists every key. `data` and `alchemist` are stored as they
+arrive, so a new field needs no change on the website's side.
 
 `badges` holds every badge the mod adds, with the tier the run earned (`none`, `bronze`, `silver`
 or `gold`). The client applies the same rule as the game over screen. For older rows without it,
@@ -182,53 +184,31 @@ Most new stats need one line in the mod and nothing in the export.
 A stat from the vanilla summary, or one that needs its own table, needs a change in
 `export_stats.py` too. Add the column in `new_tables()` and count it in `add_run()`.
 
-When a key changes meaning, bump `Schema` too, and re-key the old rows in `normalise()`.
-`migrate_mix_keys.sql` is the same move done once in the database.
+When a key changes meaning, bump `Schema` too, and re-key the old rows in `normalise()`. The
+stored runs never change.
 
 ## Set up the real thing
 
-1. Create a Supabase project. Run `schema.sql` in its SQL editor.
-2. Put the project URL and the publishable key in `AlchemistCode/Analytics/AnalyticsEndpoint.cs`,
-   and the project URL in `common.py`.
-3. Host the website. The one-time steps are in `site/README.md`: the build needs
-   `SUPABASE_READ_KEY`, the `sb_secret_...` key from API Keys (never the publishable one).
-4. Optional: give the build `ANALYTICS_EXCLUDE_PLAYERS`, a comma-separated list of player hashes,
+The website receives and stores the runs, so a copy of it on Vercel (`site/README.md`) is the
+whole setup:
+
+1. In the Vercel project's Storage tab, create a private Blob store and an Upstash for Redis
+   database, and connect both to the project. That adds `BLOB_STORE_ID` and the `KV_REST_API_*`
+   variables.
+2. Add two variables to the project for Production: `CRON_SECRET`, a long random string (Vercel
+   Cron sends it to `api/pack.ts`), and `DEPLOY_HOOK_URL`, a deploy hook from the project's Git
+   settings (the daily pack posts to it).
+3. Put your site's address in `AlchemistCode/Analytics/AnalyticsEndpoint.cs`.
+4. Optional: give the project `ANALYTICS_EXCLUDE_PLAYERS`, a comma-separated list of player hashes,
    to keep your own playtests out. Your hash is in the game log on every upload.
 
-For a local export, write the secret key to `tools/analytics/supabase-service-key.local.txt` and
-your hashes to `exclude-players.local.txt`. Both files are gitignored.
+For a local export, copy `KV_REST_API_URL`, `KV_REST_API_READ_ONLY_TOKEN` and
+`BLOB_READ_WRITE_TOKEN` from the two stores' pages in the Storage tab into `site/.env.local`, and
+your hashes into `exclude-players.local.txt`. Both files are gitignored.
 
-> [!IMPORTANT]
-> The daily export also keeps a free Supabase project awake. A project with no request for a
-> week pauses, and a paused project drops every upload.
-
-## Make your own
-
-The upload and the export know about the Alchemist only in the places below. The website knows
-much more about the mod, so treat `site/` as an example to adapt.
-
-1. Copy `AlchemistCode/Analytics/` into your mod. `VanillaRunMetrics.cs`, `RunMetricsUploader.cs`
-   and `AnalyticsEndpoint.cs` work as they are. `RunCounters.cs` works once you delete the fixed
-   Alchemist keys.
-2. In your copy of `AlchemistMetrics.cs`, change the character check and replace `Payload()`
-   with your own counters. Call `Initialize()` and `RunCounters.Register()` from your mod
-   initializer.
-3. Give players their own switch, like `AlchemistModConfig.AnalyticsEnabled`.
-4. Copy `tools/analytics/`, then follow [Set up the real thing](#set-up-the-real-thing).
-5. In `mod_meta.py`, change `PREFIX`, `THEMES`, `CHARACTER_ICON` and the source paths. In
-   `export_stats.py`, change `BADGE_METRICS` and `HISTOGRAMS`, or empty them.
-6. In `card_frames.py`, set `POOL_TINT` to your card pool's H, S and V and `ENERGY_ORB` to your
-   energy icon, then build the frames once.
-
-## Commands
+To check the endpoint and the daily pack from start to end, send it made-up runs, which the export
+always skips:
 
 ```bash
-scripts/dev.sh analytics export                 # pull the real rows and export (needs the secret key)
-scripts/dev.sh analytics seed                   # fabricate 400 runs and export them, no network
-scripts/dev.sh site dev                         # serve the website with the exported data
-python3 tools/analytics/mod_meta.py             # print what the export reads from the mod
-python3 tools/analytics/seed_runs.py --key ...  # insert fake rows through the publishable key
+python3 tools/analytics/seed_runs.py --runs 3 --post https://alchemist.fyi/api/runs
 ```
-
-Inserted fake rows carry `mod_version = seed-test`. The export skips them unless you pass
-`--include-seed`, and `delete from runs where mod_version = 'seed-test';` removes them.

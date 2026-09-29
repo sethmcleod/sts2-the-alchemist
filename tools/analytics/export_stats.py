@@ -470,17 +470,14 @@ def main() -> int:
                         help=f"keep fabricated mod_version='{common.SEED_VERSION}' rows")
     parser.add_argument("--out", type=Path, default=OUT_DIR)
     parser.add_argument("--from-file", type=Path, default=None,
-                        help="read rows from a JSON file (seed_runs.py --local) instead of Supabase")
+                        help="read rows from a JSON file (seed_runs.py --local) instead of the stores")
     args = parser.parse_args()
 
     if args.from_file:
         runs = json.loads(args.from_file.read_text())
         args.include_seed = True
     else:
-        if not args.key:
-            print(common.missing_key_message(), file=sys.stderr)
-            return 1
-        runs = common.fetch_runs(args.key, args.mod_version, args.game_version, args.days_back)
+        runs = common.fetch_runs(args.mod_version, args.game_version, args.days_back)
     fetched = len(runs)
     if not args.include_seed:
         runs = [r for r in runs if r["mod_version"] != common.SEED_VERSION]
