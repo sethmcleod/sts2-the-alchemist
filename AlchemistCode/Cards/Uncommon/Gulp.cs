@@ -13,7 +13,7 @@ public class Gulp : AlchemistCard
 
     public Gulp() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithVar("poison", 3, 0);
+        WithVar("poison", 4, 0);
         WithCards(2, 1);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));

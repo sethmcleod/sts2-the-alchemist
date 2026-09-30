@@ -1,3 +1,4 @@
+using BaseLib.Abstracts;
 using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -8,10 +9,10 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Ferment)]
 public class Ripening : AlchemistCard
 {
-    public Ripening() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public Ripening() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         WithNumberedPower<RipeningPower>(1, 0);
-        WithCostUpgradeBy(-1);
+        WithKeyword(CardKeyword.Innate, UpgradeType.Add);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
 

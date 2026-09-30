@@ -21,11 +21,15 @@ mod).
 
 ### Changed
 
+- Buffed Miasma card: cost decreased from 2(1) -> 1(0)
+- Buffed Ripening card: cost decreased from 2(1) -> 1, and Ripening+ gains Innate
 - Changed the cards the Dissolution Epoch unlocks: Upwell, Premonition and Mercurial Form
 - Nerfed Caustic Strike card: Poison decreased from 3 -> 2, and additional Poison for each turn Fermented decreased from 2(3) -> 1(2)
+- Nerfed Endure card: Block decreased from 7(10) -> 6(9)
 - Nerfed Fling card: Poison needed for each additional hit increased from 2 -> 3(2)
+- Nerfed Gulp card: Poison gained increased from 3 -> 4
 - Nerfed Mortar card: damage decreased from 9(12) -> 7(10)
-- Nerfed Puff Up card: additional Block for each turn Fermented decreased from 3(5) -> 2(4)
+- Nerfed Puff Up card: it now Exhausts, Block increased from 9(12) -> 10(13), and additional Block for each turn Fermented decreased from 3(5) -> 2(3)
 - Nerfed Tempered card: Block decreased from 10(13) -> 9(12)
 - Renamed Vitrify card to Layer Up
 - Reworked Overflow card: "Whenever one of your cards Ferments, Upgrade it. If already Upgraded, apply 1 Poison to ALL enemies."
