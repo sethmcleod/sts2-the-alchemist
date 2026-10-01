@@ -23,6 +23,9 @@ public class RefinedExtract : AlchemistPotion
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        await Alchemist.AlchemistCode.Commands.Mixing.CreateChosen(choiceContext, target?.Player ?? Owner, 3, upgraded: true, source: this);
+        var player = target?.Player ?? Owner;
+        await Alchemist.AlchemistCode.Commands.Mixing.CreateOne<BurstingMix>(choiceContext, player, upgraded: true, source: this);
+        await Alchemist.AlchemistCode.Commands.Mixing.CreateOne<SyrupyMix>(choiceContext, player, upgraded: true, source: this);
+        await Alchemist.AlchemistCode.Commands.Mixing.CreateOne<ZestyMix>(choiceContext, player, upgraded: true, source: this);
     }
 }

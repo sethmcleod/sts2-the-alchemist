@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Alchemist.AlchemistCode.Cards;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Nodes;
@@ -17,10 +18,12 @@ namespace Alchemist.AlchemistCode.Patches;
 [HarmonyPatch(typeof(CardPoolModel), nameof(CardPoolModel.GetUnlockedCards))]
 public static class HeroCardPoolPatches
 {
-    public static void Postfix(CardPoolModel __instance, ref IEnumerable<CardModel> __result)
+    public static void Postfix(CardPoolModel __instance, CardMultiplayerConstraint multiplayerConstraint,
+        ref IEnumerable<CardModel> __result)
     {
         if (__instance is not (Character.AlchemistCardPool or EventCardPool)) return;
-        __result = __result.Where(CrossMod.Offered).ToList();
+        var multiplayer = multiplayerConstraint == CardMultiplayerConstraint.MultiplayerOnly;
+        __result = __result.Where(card => CrossMod.Offered(card, multiplayer)).ToList();
     }
 }
 

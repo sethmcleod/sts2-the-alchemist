@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "从[gold]手牌[/gold]中选择最多[blue]3[/blue]张牌[gold]消耗[/gold]。每[gold]消耗[/gold]一张牌，获得{energyPrefix:energyIcons(1)}并抽[blue]1[/blue]张牌。",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "选择最多[blue]3[/blue]张牌[gold]消耗[/gold]。",
   "ALCHEMIST-REDUCTION.title": "浓缩液",
-  "ALCHEMIST-REFINED_EXTRACT.description": "选择[blue]3[/blue]种要加入你的[gold]手牌[/gold]的基础[gold]合剂+[/gold]。",
+  "ALCHEMIST-REFINED_EXTRACT.description": "每种基础[gold]合剂+[/gold]各一张，加入你的[gold]手牌[/gold]。",
   "ALCHEMIST-REFINED_EXTRACT.title": "精炼提取物",
   "ALCHEMIST-SAMPLER.description": "你每拥有1瓶[gold]药水[/gold]（包括这一瓶），就获得{energyPrefix:energyIcons(1)}并抽[blue]1[/blue]张牌。",
   "ALCHEMIST-SAMPLER.title": "试饮装",

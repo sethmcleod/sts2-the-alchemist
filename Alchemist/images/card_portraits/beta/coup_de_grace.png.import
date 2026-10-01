@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp6rtu26xg2im"
-path="res://.godot/imported/callus.png-ef72c32ee0e8fb757c2d824e9b1817a2.ctex"
+uid="uid://c2yfgetupgrqo"
+path="res://.godot/imported/coup_de_grace.png-4e51ac3823070b53077fbc43c1b98c23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/callus.png"
-dest_files=["res://.godot/imported/callus.png-ef72c32ee0e8fb757c2d824e9b1817a2.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/coup_de_grace.png"
+dest_files=["res://.godot/imported/coup_de_grace.png-4e51ac3823070b53077fbc43c1b98c23.ctex"]
 
 [params]
 

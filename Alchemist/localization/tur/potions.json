@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]El[/gold]'indeki kartlardan en fazla [blue]3[/blue] tanesini [gold]Tüket[/gold]. [gold]Tüketilen[/gold] her kart için {energyPrefix:energyIcons(1)} elde et ve [blue]1[/blue] kart çek.",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "[gold]Tüketmek[/gold] için en fazla [blue]3[/blue] kart seç.",
   "ALCHEMIST-REDUCTION.title": "Redüksiyon",
-  "ALCHEMIST-REFINED_EXTRACT.description": "[gold]El[/gold]'ine eklemek için [blue]3[/blue] temel [gold]Karışım+[/gold] seç.",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Her temel [gold]Karışım+[/gold]'dan birer tane [gold]El[/gold]'ine ekle.",
   "ALCHEMIST-REFINED_EXTRACT.title": "Arıtılmış Öz",
   "ALCHEMIST-SAMPLER.description": "Bu dahil sahip olduğun her [gold]İksir[/gold] için {energyPrefix:energyIcons(1)} elde et ve [blue]1[/blue] kart çek.",
   "ALCHEMIST-SAMPLER.title": "Tadımlık",

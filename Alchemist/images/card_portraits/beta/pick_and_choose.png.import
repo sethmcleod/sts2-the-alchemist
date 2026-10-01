@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv42au82ldipi"
-path="res://.godot/imported/callus_power.png-87b604330fa58b04e16aea3946961492.ctex"
+uid="uid://y487fc7vemxs"
+path="res://.godot/imported/pick_and_choose.png-829c279f684ebb1420b9e7f3707052b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/callus_power.png"
-dest_files=["res://.godot/imported/callus_power.png-87b604330fa58b04e16aea3946961492.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/pick_and_choose.png"
+dest_files=["res://.godot/imported/pick_and_choose.png-829c279f684ebb1420b9e7f3707052b4.ctex"]
 
 [params]
 

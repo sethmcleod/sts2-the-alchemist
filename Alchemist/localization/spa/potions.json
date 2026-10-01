@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]Agota[/gold] hasta [blue]3[/blue] cartas de tu [gold]Mano[/gold]. Gana {energyPrefix:energyIcons(1)} y roba [blue]1[/blue] carta por cada carta [gold]Agotada[/gold].",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Elige hasta [blue]3[/blue] cartas y [gold]Agótalas[/gold].",
   "ALCHEMIST-REDUCTION.title": "Reducción",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Elige [blue]3[/blue] [gold]Mezclas+[/gold] básicas que añadir a tu [gold]Mano[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Añade una de cada [gold]Mezcla+[/gold] básica a tu [gold]Mano[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Extracto refinado",
   "ALCHEMIST-SAMPLER.description": "Gana {energyPrefix:energyIcons(1)} y roba [blue]1[/blue] carta por cada [gold]Poción[/gold] que tengas, incluida esta.",
   "ALCHEMIST-SAMPLER.title": "Muestrario",

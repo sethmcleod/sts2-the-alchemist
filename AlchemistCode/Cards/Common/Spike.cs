@@ -10,13 +10,13 @@ public class Spike : AlchemistCard
 {
     public Spike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(7, 1);
-        WithUpgradingCardTip<Token.AcridMix>();
+        WithDamage(7, 4);
+        WithTip(typeof(Token.AcridMix));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_dramatic_stab")).Execute(choiceContext);
-        await Mixing.CreateOne<Token.AcridMix>(choiceContext, Owner, IsUpgraded, this);
+        await Mixing.CreateOne<Token.AcridMix>(choiceContext, Owner, source: this);
     }
 }

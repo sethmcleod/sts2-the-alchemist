@@ -19,9 +19,9 @@ public class PourOver : AlchemistCard
 
     public PourOver() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCards(1, 0);
-        WithVar("Bonus", 0, 1);
+        WithVar("Bonus", 1, 1);
         WithKeyword(CardKeyword.Retain);
+        WithKeyword(CardKeyword.Exhaust);
     }
 
     private IEnumerable<AlchemistCard> Brewing =>
@@ -32,7 +32,7 @@ public class PourOver : AlchemistCard
 
     private int Bonus => DynamicVars["Bonus"].IntValue;
 
-    private bool CanPour => (HasStoredFerment || Bonus > 0) && Brewing.Any();
+    private bool CanPour => Brewing.Any();
 
     protected override bool ConditionalGlow => CanPour;
 
@@ -40,7 +40,6 @@ public class PourOver : AlchemistCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.Draw(this, choiceContext);
         if (!CanPour) return;
         var target = (await CardSelectCmd.FromHand(choiceContext, Owner,
             new CardSelectorPrefs(IntoPrompt, 1),
@@ -48,7 +47,7 @@ public class PourOver : AlchemistCard
             source: null!)).OfType<AlchemistCard>().FirstOrDefault();
         if (target == null) return;
         target.ReceiveFerment(DrainFerment());
-        if (Bonus > 0) await target.AdvanceFerment(choiceContext, Bonus);
+        await target.AdvanceFerment(choiceContext, Bonus);
         CardCmd.Preview(new List<CardModel> { target });
     }
 }

@@ -12,7 +12,7 @@ public class Apothecary : AlchemistCard
 {
     public Apothecary() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithTips(_ => Mixing.MixTips());
+        WithTips(card => Mixing.MixTips(card.IsUpgraded));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

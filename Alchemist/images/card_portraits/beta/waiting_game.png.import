@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bosbhjp4paxvn"
-path="res://.godot/imported/fallout.png-73cfc4040d95676d855fbbb26f6f3b17.ctex"
+uid="uid://cf1vnnqa7be6i"
+path="res://.godot/imported/waiting_game.png-4a5654670f4fcc8eaf203efa372b9fc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/fallout.png"
-dest_files=["res://.godot/imported/fallout.png-73cfc4040d95676d855fbbb26f6f3b17.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/waiting_game.png"
+dest_files=["res://.godot/imported/waiting_game.png-4a5654670f4fcc8eaf203efa372b9fc1.ctex"]
 
 [params]
 

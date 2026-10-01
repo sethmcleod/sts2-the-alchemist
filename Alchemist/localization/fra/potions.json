@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]Épuisez[/gold] jusqu'à [blue]3[/blue] cartes de votre [gold]Main[/gold]. Gagnez {energyPrefix:energyIcons(1)} et piochez [blue]1[/blue] carte pour chaque carte [gold]Épuisée[/gold].",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Choisissez jusqu'à [blue]3[/blue] cartes à [gold]Épuiser[/gold].",
   "ALCHEMIST-REDUCTION.title": "Réduction",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Choisissez [blue]3[/blue] [gold]Mixtures+[/gold] de base à ajouter à votre [gold]Main[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Ajoutez une [gold]Mixture+[/gold] de chaque type de base à votre [gold]Main[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Extrait raffiné",
   "ALCHEMIST-SAMPLER.description": "Gagnez {energyPrefix:energyIcons(1)} et piochez [blue]1[/blue] carte pour chaque [gold]Potion[/gold] en votre possession, celle-ci comprise.",
   "ALCHEMIST-SAMPLER.title": "Dégustation",

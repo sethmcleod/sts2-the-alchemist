@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]Exhaust[/gold] up to [blue]3[/blue] cards in your [gold]Hand[/gold]. Gain {energyPrefix:energyIcons(1)} and draw [blue]1[/blue] card for each card [gold]Exhausted[/gold].",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Choose up to [blue]3[/blue] cards to [gold]Exhaust[/gold].",
   "ALCHEMIST-REDUCTION.title": "Reduction",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Choose [blue]3[/blue] basic [gold]Mixes+[/gold] to add into your [gold]Hand[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Add one of each basic [gold]Mix+[/gold] into your [gold]Hand[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Refined Extract",
   "ALCHEMIST-SAMPLER.description": "Gain {energyPrefix:energyIcons(1)} and draw [blue]1[/blue] card for each [gold]Potion[/gold] you have, including this one.",
   "ALCHEMIST-SAMPLER.title": "Sampler",

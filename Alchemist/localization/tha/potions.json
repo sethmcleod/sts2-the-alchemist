@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]สลาย[/gold]การ์ดได้สูงสุด [blue]3[/blue] ใบใน[gold]มือ[/gold] ได้รับ {energyPrefix:energyIcons(1)} และจั่วการ์ด [blue]1[/blue] ใบตามจำนวนการ์ดที่[gold]ถูกสลาย[/gold]",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "เลือกการ์ดได้สูงสุด [blue]3[/blue] ใบเพื่อ[gold]สลาย[/gold]",
   "ALCHEMIST-REDUCTION.title": "ยาเคี่ยว",
-  "ALCHEMIST-REFINED_EXTRACT.description": "เลือก[gold]ยาผสม+[/gold]พื้นฐาน [blue]3[/blue] ชนิดที่จะเพิ่มเข้า[gold]มือ[/gold]",
+  "ALCHEMIST-REFINED_EXTRACT.description": "เพิ่ม[gold]ยาผสม+[/gold]พื้นฐานอย่างละ 1 ชนิดเข้า[gold]มือ[/gold]ของคุณ",
   "ALCHEMIST-REFINED_EXTRACT.title": "สารสกัดบริสุทธิ์",
   "ALCHEMIST-SAMPLER.description": "ได้รับ {energyPrefix:energyIcons(1)} และจั่วการ์ด [blue]1[/blue] ใบ ต่อ[gold]ขวดยา[/gold]แต่ละขวดที่คุณมี โดยนับรวมขวดนี้ด้วย",
   "ALCHEMIST-SAMPLER.title": "ยาชิมรวมมิตร",

@@ -10,7 +10,7 @@ namespace Alchemist.AlchemistCode.Relics;
 // after a play, and cards generated mid-combat all begin at 1 with no hook here
 public class MotherOfVinegar : AlchemistRelic
 {
-    public override RelicRarity Rarity => RelicRarity.Uncommon;
+    public override RelicRarity Rarity => RelicRarity.Shop;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { AlchemistTips.FermentRef };

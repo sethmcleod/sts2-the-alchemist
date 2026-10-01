@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]손[/gold]에 있는 카드를 최대 [blue]3[/blue]장까지 [gold]소멸[/gold]시킵니다. [gold]소멸[/gold]시킨 카드 1장당 {energyPrefix:energyIcons(1)}를 얻고 카드를 [blue]1[/blue]장 뽑습니다.",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "[gold]소멸[/gold]시킬 카드를 최대 [blue]3[/blue]장까지 선택하세요.",
   "ALCHEMIST-REDUCTION.title": "졸임",
-  "ALCHEMIST-REFINED_EXTRACT.description": "[gold]손[/gold]에 추가할 기본 [gold]혼합액+[/gold]를 [blue]3[/blue]장 선택합니다.",
+  "ALCHEMIST-REFINED_EXTRACT.description": "모든 종류의 기본 [gold]혼합액+[/gold]을 1장씩 [gold]손[/gold]에 추가합니다.",
   "ALCHEMIST-REFINED_EXTRACT.title": "정제 추출물",
   "ALCHEMIST-SAMPLER.description": "이 포션을 포함해 보유한 [gold]포션[/gold] 1개마다 {energyPrefix:energyIcons(1)}를 얻고 카드를 [blue]1[/blue]장 뽑습니다.",
   "ALCHEMIST-SAMPLER.title": "시음액",

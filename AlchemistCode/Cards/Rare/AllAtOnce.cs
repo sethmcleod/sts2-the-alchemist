@@ -13,7 +13,7 @@ public class AllAtOnce : AlchemistCard
 
     public AllAtOnce() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(6, static (card, _) => Dose(card), ValueProp.Move, 3);
+        WithCalculatedDamage(7, static (card, _) => Dose(card), ValueProp.Move, 3);
         WithKeyword(AlchemistKeywords.Laced);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));

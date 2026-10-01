@@ -13,7 +13,8 @@ public class AgedBatch : AlchemistCard
 
     public AgedBatch() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCards(1, 0);
+        WithCards(2, 0);
+        WithKeyword(CardKeyword.Exhaust);
         WithUpgradingCardTip<Token.BurstingMix>();
         WithUpgradingCardTip<Token.SyrupyMix>();
         WithUpgradingCardTip<Token.ZestyMix>();

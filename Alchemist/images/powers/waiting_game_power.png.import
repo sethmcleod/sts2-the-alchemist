@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4rcwojtye4l5"
-path="res://.godot/imported/reclaim.png-a9246625f22537d36aaa73bc159865ec.ctex"
+uid="uid://dsj577pnya74a"
+path="res://.godot/imported/waiting_game_power.png-3aa96332c41bcff6ec81afe54e8c7788.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/reclaim.png"
-dest_files=["res://.godot/imported/reclaim.png-a9246625f22537d36aaa73bc159865ec.ctex"]
+source_file="res://Alchemist/images/powers/waiting_game_power.png"
+dest_files=["res://.godot/imported/waiting_game_power.png-3aa96332c41bcff6ec81afe54e8c7788.ctex"]
 
 [params]
 

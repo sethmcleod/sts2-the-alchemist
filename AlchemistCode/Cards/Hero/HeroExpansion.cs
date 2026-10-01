@@ -2,8 +2,6 @@ using System;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Multiplayer.Game;
-using MegaCrit.Sts2.Core.Runs;
 
 namespace Alchemist.AlchemistCode.Cards.Hero;
 
@@ -26,18 +24,14 @@ internal static class HeroExpansion
 
     // Whether the Hero-only pool cards are offered: the mod is present, or the player asked for them anyway.
     // The setting is local to each player, and every client filters the pools on its own, so in a
-    // multiplayer run it would offer cards the other clients do not have and split the run. There the
-    // nine cards follow the mod alone, which the lobby's mod check already makes the same for everyone
-    internal static bool CardsEnabled =>
-        IsLoaded || (Config.AlchemistModConfig.HeroCardsWithoutExpansion && !InMultiplayerRun);
-
-    private static bool InMultiplayerRun =>
-        RunManager.Instance.DebugOnlyGetState() != null && RunManager.Instance.NetService?.Type.IsMultiplayer() == true;
+    // multiplayer run it would offer cards the other clients do not have and split the run.
+    internal static bool CardsEnabled(bool multiplayer) =>
+        IsLoaded || (Config.AlchemistModConfig.HeroCardsWithoutExpansion && !multiplayer);
 
     // The two Event cards only ever arrive through the mod's own relic and blade, so the setting
     // cannot unlock them; the nine pool cards follow the setting
-    internal static bool Offered(CardModel card) =>
-        card.Rarity == MegaCrit.Sts2.Core.Entities.Cards.CardRarity.Event ? IsLoaded : CardsEnabled;
+    internal static bool Offered(CardModel card, bool multiplayer) =>
+        card.Rarity == MegaCrit.Sts2.Core.Entities.Cards.CardRarity.Event ? IsLoaded : CardsEnabled(multiplayer);
 
     internal static void RegisterBlade(CardModel card) =>
         Register(BladeRegistry, "AddBladeCardForCustomCharacter", card);

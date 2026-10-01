@@ -40,7 +40,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-ANTIDOTE"] = ModelDb.Card<Dose>().Id!,
         ["ALCHEMIST-OVERDOSE"] = ModelDb.Card<Premonition>().Id!,
         ["ALCHEMIST-DEEP_CUT"] = ModelDb.Card<Bonk>().Id!,
-        ["ALCHEMIST-REAGENT"] = ModelDb.Card<Reclaim>().Id!,
+        ["ALCHEMIST-REAGENT"] = ModelDb.Card<WaitingGame>().Id!,
         ["ALCHEMIST-WHITE_HEAT"] = ModelDb.Card<WaterDown>().Id!,
         ["ALCHEMIST-RIPEN"] = ModelDb.Card<Rerun>().Id!,
         ["ALCHEMIST-SIMMER"] = ModelDb.Card<Runoff>().Id!,
@@ -55,6 +55,9 @@ public static class SaveRenamePatches
         // Cuts, not renames: each removed card maps to the new card in its slot, so a mid-save
         // update hands the player something new instead of a blank deprecated card
         ["ALCHEMIST-MELTDOWN"] = ModelDb.Card<Fling>().Id!,
+        ["ALCHEMIST-FALLOUT"] = ModelDb.Card<PickAndChoose>().Id!,
+        ["ALCHEMIST-CALLUS"] = ModelDb.Card<CoupDeGrace>().Id!,
+        ["ALCHEMIST-RECLAIM"] = ModelDb.Card<WaitingGame>().Id!,
         ["ALCHEMIST-REFLUX"] = ModelDb.Card<Preserve>().Id!,
         ["ALCHEMIST-DOUBLE_DOSE"] = ModelDb.Card<Fumigate>().Id!,
         ["ALCHEMIST-QUICKLIME"] = ModelDb.Card<Spores>().Id!,

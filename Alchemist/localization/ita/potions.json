@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]Esaurisci[/gold] fino a [blue]3[/blue] carte nella tua [gold]mano[/gold]. Ottieni {energyPrefix:energyIcons(1)} e peschi [blue]1[/blue] carta per ogni carta [gold]esaurita[/gold].",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Scegli fino a [blue]3[/blue] carte da [gold]esaurire[/gold].",
   "ALCHEMIST-REDUCTION.title": "Riduzione",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Scegli [blue]3[/blue] [gold]Miscele+[/gold] base da aggiungere alla tua [gold]mano[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Aggiungi una [gold]Miscela+[/gold] base di ogni tipo alla tua [gold]mano[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Estratto Raffinato",
   "ALCHEMIST-SAMPLER.description": "Ottieni {energyPrefix:energyIcons(1)} e peschi [blue]1[/blue] carta per ogni [gold]pozione[/gold] che possiedi, inclusa questa.",
   "ALCHEMIST-SAMPLER.title": "Degustazione",
