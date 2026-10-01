@@ -1,9 +1,7 @@
 # Changelog
 
 This document uses the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
-format. This project also follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
-(see [RELEASING.md](RELEASING.md) to know what each version increase means for a
-mod).
+format. This project also follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 

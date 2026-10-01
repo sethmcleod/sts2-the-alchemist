@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Static linter for the three-way rule.
 
-Each card must stay in sync in its three locations (CONTRIBUTING.md):
+Each card must stay in sync in its three locations:
   1. code:  a card class under AlchemistCode/Cards/
   2. loc:   ALCHEMIST-<SNAKE>.title / .description in localization/eng/cards.json
   3. csv:   a row in cards.csv (the design sheet)
