@@ -156,8 +156,8 @@ RETIRED_MIX_LABELS = {"poison"}
 
 
 def normalise(extra: dict) -> dict:
-    """Bring an old client's `alchemist` object in line with the current Mix keys, the way
-    migrate_mix_keys.sql did for the stored rows. A key the client did not send stays absent."""
+    """Bring an old client's `alchemist` object in line with the current Mix keys. A key the
+    client did not send stays absent."""
     old = schema_of(extra) < MIX_SCHEMA
 
     def label(kind: str) -> str:

@@ -1,14 +1,13 @@
 __pycache__/
-**/.DS_Store
 .DS_Store
 .godot/
 .tooling/
+**/.DS_Store
 bin/
 dist/
-scripts/tests
-workshop/content/
-workshop/mod-uploader.log
-workshop/mod_id.txt
 reports/
-# analytics: keys and fabricated runs
+scripts/tests
 tools/analytics/*.local.*
+workshop/content/
+workshop/mod_id.txt
+workshop/mod-uploader.log

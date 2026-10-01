@@ -35,18 +35,10 @@ Spire Discord server in the
 [#modding-forum post](https://discord.com/channels/309399445785673728/1536374761699938424)
 for The Alchemist.
 
-Language translations have been auto-generated and corrections are appreciated.
-If you see an error in your language, please contact me or feel free to open a
-pull request directly in GitHub.
-
-<!-- The website shows this section up to here -->
-
-The Alchemist has been lovingly crafted to feel like a natural addition to the
-game. Every card, relic, and potion has been (and will continue to be) balanced
-against the existing game. The same care extends to flavor and lore: this
-character's story is woven directly into the game's existing timeline, and
-observant players will find more than a few threads connecting them to the
-world.
+Language translations are auto-generated for now. The plan is to commission
+native translators once the content changes slow down. In the meantime,
+corrections are appreciated! If you see an error in your language, please
+contact me or feel free to open a pull request directly in GitHub.
 
 ## Credits
 
@@ -65,7 +57,7 @@ Includes additional content for these awesome mods!
 > [!NOTE]
 > Steam Workshop is the best way to install and play, since it will
 > automatically prompt you to install BaseLib:
-> https://steamcommunity.com/sharedfiles/filedetails/?id=3780726901
+> https://steamcommunity.com/sharedfiles/filedetails/?id=3780726901\
 > Nexus Mods is also an option:
 > https://www.nexusmods.com/slaythespire2/mods/1439?tab=description
 
@@ -78,29 +70,6 @@ Includes additional content for these awesome mods!
    [Releases](https://github.com/sethmcleod/sts2-the-alchemist/releases) page.
 3. Extract the `Alchemist/` folder into the `mods/` folder of your game:
 
-- **macOS**: `…/Slay the Spire 2/SlayTheSpire2.app/Contents/MacOS/mods/`
+- **macOS**: `Slay the Spire 2/SlayTheSpire2.app/Contents/MacOS/mods/`
 - **Windows/Linux**: the `mods/` folder in the same location as the game
   executable.
-
-## Develop
-
-First off, check out the [CONTRIBUTING.md](CONTRIBUTING.md) guide.
-
-This repo assumes you have Slay the Spire 2 connected through Steam. To build
-from source, read the prerequisites in [BUILD.md](BUILD.md), then use the
-Develop steps below.
-
-```sh
-git clone https://github.com/sethmcleod/sts2-the-alchemist
-cd sts2-the-alchemist
-scripts/dev.sh doctor     # check the environment
-scripts/dev.sh publish    # build the mod into the game
-```
-
-### Document map
-
-| Doc                                | What is in it                                                            |
-| ---------------------------------- | ------------------------------------------------------------------------ |
-| [BUILD.md](BUILD.md)               | prerequisites, build and publish commands, asset rules                   |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | the three-way update rule, design and code rules                         |
-| [RELEASING.md](RELEASING.md)       | version policy, changelog workflow, how to cut a release, how to install |

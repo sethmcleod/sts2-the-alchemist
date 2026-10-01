@@ -2,7 +2,7 @@
   "id": "Alchemist",
   "name": "The Alchemist",
   "author": "Seth",
-  "description": "An amphibian practicer of esoteric arts. Transmutes self-inflicted poison into power.",
+  "description": "A curious frog who will drink anything once. Transmutes their own poison into power.",
   "version": "v0.14.22",
   "min_game_version": "0.107.0",
   "has_pck": true,
