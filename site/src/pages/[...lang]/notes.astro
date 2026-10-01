@@ -19,7 +19,8 @@ const notesLang = locale === DEFAULT_LOCALE ? undefined : 'en';
   <h1 class="mt-6 mb-2 text-4xl">{l.t('Patch notes')}</h1>
   <p class="m-0 max-w-[65ch] text-ink-2">
     {l.t('Every release, newest first. The beta and public branches get the same notes.')}
-    {notesLang && ` ${l.t('Patch notes are in English.')}`}
+    {notesLang && ` ${l.t('Patch notes are in English.')}`}{' '}
+    <a href="/notes.xml">{l.t('Follow them in a feed reader')}</a>
   </p>
   <details class="mt-4 text-sm">
     <summary class="cursor-pointer text-up">{l.t('Jump to a version')}</summary>

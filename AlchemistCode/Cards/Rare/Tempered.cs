@@ -14,7 +14,7 @@ public class Tempered : AlchemistCard
     public Tempered() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
         WithVar("PerCard", 1, 1);
-        WithCalculatedBlock(10, static (card, _) =>
+        WithCalculatedBlock(9, static (card, _) =>
                 card.DynamicVars["PerCard"].IntValue * PileType.Exhaust.GetPile(card.Owner).Cards.Count,
             ValueProp.Move, 3, 0);
         WithTips(_ => new[] { HoverTipFactory.FromKeyword(CardKeyword.Exhaust) });

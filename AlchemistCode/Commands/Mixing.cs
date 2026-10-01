@@ -165,13 +165,14 @@ public static class Mixing
         bool upgraded = false, AbstractModel? source = null)
     {
         if (count <= 0) return;
-        // The copies clone the picked card, so its upgrade travels with them
+        // The copies clone the picked card, so its upgrade travels with them. They are cloned before
+        // the first one is added, so what Refine does to that one does not travel to the rest
         var picked = await Choose(ctx, owner, upgraded, source: source);
         if (picked == null) return;
+        var copies = Enumerable.Range(1, count - 1).Select(_ => picked.CreateClone()).ToList();
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
-        for (var i = 1; i < count; i++)
+        foreach (var copy in copies)
         {
-            var copy = picked.CreateClone();
             RecordCreated(owner, copy, source);
             await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Hand, owner);
         }

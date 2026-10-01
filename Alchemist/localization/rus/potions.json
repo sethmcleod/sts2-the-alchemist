@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]Сжигает[/gold] до [blue]3[/blue] карт в [gold]руке[/gold]. Дает {energyPrefix:energyIcons(1)} и по [blue]1[/blue] карте за каждую [gold]сожженную[/gold] карту.",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Выберите до [blue]3[/blue] карт, которые хотите [gold]сжечь[/gold].",
   "ALCHEMIST-REDUCTION.title": "Выпаривание",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Выберите, какие [blue]3[/blue] базовые [gold]смеси+[/gold] добавить в [gold]руку[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Добавляет в вашу [gold]руку[/gold] по одной базовой [gold]смеси+[/gold] каждого вида.",
   "ALCHEMIST-REFINED_EXTRACT.title": "Очищенный экстракт",
   "ALCHEMIST-SAMPLER.description": "Дает {energyPrefix:energyIcons(1)}, и вы добираете [blue]1[/blue] карту за каждое ваше [gold]зелье[/gold], включая это.",
   "ALCHEMIST-SAMPLER.title": "Дегустация",

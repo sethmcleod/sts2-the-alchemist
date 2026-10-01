@@ -8,9 +8,9 @@ namespace Alchemist.AlchemistCode.Cards;
 // compendium click guard both ask this, so the reward roll and the library never disagree
 internal static class CrossMod
 {
-    internal static bool Offered(CardModel card) => card switch
+    internal static bool Offered(CardModel card, bool multiplayer = false) => card switch
     {
-        AlchemistHeroCard => HeroExpansion.Offered(card),
+        AlchemistHeroCard => HeroExpansion.Offered(card, multiplayer),
         AlchemistAncientsCard => AncientsAwakenedMod.IsLoaded,
         _ => true,
     };

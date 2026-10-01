@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
 const { l } = Astro.locals;
 ---
 
-<Base title={l.t('Not found')} description={l.t('There is no page at this address.')}>
+<Base title={l.t('Not found')} description={l.t('There is no page at this address.')} noindex>
   <div class="mx-auto max-w-[60ch] py-16">
     <h1 class="text-4xl mb-2">{l.t('Nothing here')}</h1>
     <p class="text-ink-2 mb-2">

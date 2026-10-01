@@ -14,7 +14,7 @@ namespace Alchemist.AlchemistCode.Relics;
 // carries a real choice context (base ChoicesParadox does the same)
 public class EverflowingChalice : AlchemistRelic
 {
-    public override RelicRarity Rarity => RelicRarity.Shop;
+    public override RelicRarity Rarity => RelicRarity.Uncommon;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [AlchemistTips.MixHeader, HoverTipFactory.FromKeyword(CardKeyword.Retain)];

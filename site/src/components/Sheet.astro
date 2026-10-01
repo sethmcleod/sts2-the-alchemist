@@ -3,7 +3,7 @@
 const { l } = Astro.locals;
 ---
 
-<dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-title" closedby="any">
   <form method="dialog">
     <button class="close-button" aria-label={l.t('Close')}>
       ×

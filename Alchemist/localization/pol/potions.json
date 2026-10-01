@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]Wyczerp[/gold] maksymalnie [blue]3[/blue] karty w [gold]ręce[/gold]. Zyskaj {energyPrefix:energyIcons(1)} i dobierz [blue]1[/blue] kartę za każdą [gold]Wyczerpaną[/gold] kartę.",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Wybierz maksymalnie [blue]3[/blue] karty do [gold]Wyczerpania[/gold].",
   "ALCHEMIST-REDUCTION.title": "Redukcja",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Wybierz [blue]3[/blue] podstawowe [gold]Mieszanki+[/gold] do dodania do [gold]ręki[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Dodaj do [gold]ręki[/gold] po jednej podstawowej [gold]Mieszance+[/gold] każdego rodzaju.",
   "ALCHEMIST-REFINED_EXTRACT.title": "Oczyszczony ekstrakt",
   "ALCHEMIST-SAMPLER.description": "Zyskaj {energyPrefix:energyIcons(1)} i dobierz [blue]1[/blue] kartę za każdą posiadaną [gold]Miksturę[/gold], łącznie z tą.",
   "ALCHEMIST-SAMPLER.title": "Próbnik",

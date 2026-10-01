@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]Erschöpfe[/gold] bis zu [blue]3[/blue] Karten auf deiner [gold]Hand[/gold]. Erhalte {energyPrefix:energyIcons(1)} und ziehe [blue]1[/blue] Karte für jede [gold]Erschöpfte[/gold] Karte.",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Wähle bis zu [blue]3[/blue] Karten, die du [gold]Erschöpfst[/gold].",
   "ALCHEMIST-REDUCTION.title": "Reduktion",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Wähle [blue]3[/blue] einfache [gold]Mixturen+[/gold], die du auf deine [gold]Hand[/gold] nimmst.",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Nimm eine von jeder einfachen [gold]Mixtur+[/gold] auf deine [gold]Hand[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Raffinierter Extrakt",
   "ALCHEMIST-SAMPLER.description": "Erhalte {energyPrefix:energyIcons(1)} und ziehe [blue]1[/blue] Karte für jeden [gold]Trank[/gold], den du hast, diesen eingeschlossen.",
   "ALCHEMIST-SAMPLER.title": "Kostprobe",

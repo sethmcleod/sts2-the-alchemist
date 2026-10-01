@@ -7,6 +7,60 @@ mod).
 
 ## [Unreleased]
 
+### Added
+
+- Added Bounce Back card (Hero Expansion): "Gain 7 (9) Block. Gain 1 Poison. At the start of your next turn, return this to your Hand."
+- Added Chrysopoeia card (Hero Expansion): "Gain 1 (2) Energy. Gain an additional Energy for every 4 Poison you have. Lose all Poison. Exhaust."
+- Added Coup de Grace card: "Deal 7 (10) damage. Deals 4 (5) additional damage for every 4 Poison the enemy has." It replaces Callus
+- Added Double Dip card (Hero Expansion): "Deal 4 (6) damage twice. Apply 5 (7) Poison."
+- Added Mud Pack card (Hero Expansion): "Gain 6 (8) Block X times. Gain X Poison."
+- Added Muscle Memory card (Hero Expansion): "Deal 3 (4) damage 2 times. Hits an additional time for each time this card has been played this combat."
+- Added Pick and Choose card: "Scry 2 (3). Apply 4 (6) Poison." It replaces Fallout
+- Added Secret Sauce card (Hero Expansion): "Deal 6 (8) damage. Enchant an Attack in your Hand with Laced."
+- Added Snack Attack card (Hero Expansion): "Deal 10 (12) damage. If the enemy has Poison, draw 1 (2) cards."
+- Added Spring Cleaning card (Hero Expansion): "Exhaust up to 2 (3) cards from your Draw Pile. Gain 2 Antitoxin for each card Exhausted."
+- Added Twitch card (Hero Expansion): "This turn, your Attacks hit 1 (2) additional time. Gain 3 Poison."
+- Added Waiting Game card: "Whenever an enemy's Poison triggers, it loses 1 Strength." Waiting Game+ gains Innate. It replaces Reclaim
+
+### Changed
+
+- Buffed All At Once card: damage increased from 6(9) -> 7(10)
+- Buffed Miasma card: cost decreased from 2(1) -> 1(0)
+- Buffed Ripening card: cost decreased from 2(1) -> 1, and Ripening+ gains Innate
+- Buffed Upwell card: Block increased from 10(13) -> 11(14)
+- Changed Blend card: Block increased from 6(8) -> 6(9), and Blend+ makes a basic Mix instead of a Mix+
+- Changed Everflowing Chalice relic: rarity Shop -> Uncommon
+- Changed Fizz card: Scry increased from 1(2) -> 2(3), and Fizz+ adds a Zesty Mix instead of a Zesty Mix+
+- Changed Mercurial Form card: cost changed from 3(2) -> 3, and Mercurial Form+ gains Retain
+- Changed Mother of Vinegar relic: rarity Uncommon -> Shop
+- Changed Spike card: damage increased from 7(8) -> 7(11), and Spike+ adds an Acrid Mix instead of an Acrid Mix+
+- Changed Spit card: damage increased from 4(6) -> 4(7), and Poison decreased from 3(4) -> 3
+- Changed the cards the Dissolution Epoch unlocks: Upwell, Premonition and Mercurial Form
+- Nerfed Aged Batch card: it now Exhausts, and cards drawn increased from 1 -> 2
+- Nerfed Caustic Strike card: Poison decreased from 3 -> 2, and additional Poison for each turn Fermented decreased from 2(3) -> 1(2)
+- Nerfed Endure card: Block decreased from 7(10) -> 6(9)
+- Nerfed Fling card: Poison needed for each additional hit increased from 2 -> 3(2)
+- Nerfed Fumigate card: Poison decreased from 3(5) -> 3(4)
+- Nerfed Gulp card: Poison gained increased from 3 -> 4
+- Nerfed Mortar card: damage decreased from 9(12) -> 7(10)
+- Nerfed Puff Up card: it now Exhausts, Block increased from 9(12) -> 10(13), and additional Block for each turn Fermented decreased from 3(5) -> 2(3)
+- Nerfed Tempered card: Block decreased from 10(13) -> 9(12)
+- Renamed Vitrify card to Layer Up
+- Reworked Overflow card: "Whenever one of your cards Ferments, Upgrade it. If already Upgraded, apply 1 Poison to ALL enemies."
+- Reworked Pour Over card: "Retain. Ferment. Move all Fermentation from this card to a Ferment card in your Hand, and it Ferments 1 (2). Exhaust."
+- Reworked Refine card: "Whenever you add a Mix into your Hand, Upgrade it. If already Upgraded, it gains Replay."
+- Reworked Refined Extract potion: "Add one of each basic Mix+ into your Hand."
+
+### Removed
+
+- Removed Callus card, replaced with Coup de Grace
+- Removed Fallout card, replaced with Pick and Choose
+- Removed Reclaim card, replaced with Waiting Game
+
+### Fixed
+
+- Fixed the hover tips of Apothecary+ showing plain Mixes instead of Mixes+
+
 ## [0.14.22] - 2026-09-27
 
 ### Added

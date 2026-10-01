@@ -1,6 +1,8 @@
 // One dot per item on two rate axes, placed by percentage so it fits any width. A dot links to
-// its page. The dots are for pointing; the card table carries the same numbers for everyone else.
+// its page, and pointing at it shows its numbers. The dots are for pointing; the card table carries
+// the same numbers for everyone else.
 
+import { useEffect, useState } from 'preact/hooks';
 import type { Lang } from '../../lib/lang';
 import { opensInSheet } from '../../lib/links';
 import { emptyText } from './empty';
@@ -67,6 +69,12 @@ function placeLabels(points: (Point & { px: number; py: number })[], width: numb
 const step = (span: number) => (span > 0.5 ? 0.2 : 0.1);
 
 export default function Scatter({ l, points, xLabel, label, reference }: Props) {
+  const [active, setActive] = useState<number | null>(null);
+  // Until the island runs, the browser's own tooltip carries the numbers
+  const [live, setLive] = useState(false);
+  useEffect(() => setLive(true), []);
+  // New filters bring new dots, so the one pointed at before means nothing now
+  useEffect(() => setActive(null), [points]);
   if (!points.length) return <p class="empty">{emptyText(l)}</p>;
   const ys = points.map((p) => p.y).concat(reference ?? []);
   const xMax = Math.min(1, Math.ceil((Math.max(...points.map((p) => p.x)) + 0.02) * 10) / 10);
@@ -80,10 +88,17 @@ export default function Scatter({ l, points, xLabel, label, reference }: Props) 
     for (let v = from; v <= to + 1e-9; v += step(to - from)) out.push(Math.round(v * 100) / 100);
     return out;
   };
+  // A tap opens the dot's page, so only a mouse or a pen shows the tooltip
+  const point = (e: PointerEvent) => {
+    if (e.pointerType === 'touch') return;
+    const index = (e.target as HTMLElement).closest<HTMLElement>('[data-index]')?.dataset.index;
+    setActive(index ? Number(index) : null);
+  };
+  const tip = active === null ? undefined : placed[active];
 
   return (
     <figure class="scatter" aria-label={label}>
-      <div class="scatter-plot">
+      <div class="scatter-plot" onPointerOver={point} onPointerLeave={() => setActive(null)}>
         {ticks(yMin, yMax).map((v) => (
           <span class="scatter-grid" style={{ '--at': `${top(v)}%` }} aria-hidden="true">
             <span>{l.pct(v)}</span>
@@ -95,14 +110,15 @@ export default function Scatter({ l, points, xLabel, label, reference }: Props) 
           </span>
         ))}
         {reference != null && <span class="scatter-ref" style={{ '--at': `${top(reference)}%` }} aria-hidden="true" />}
-        {placed.map((p) => (
+        {placed.map((p, i) => (
           <a
             class="scatter-dot"
             href={l.href(p.href)}
             data-sheet-link={opensInSheet(p.href) || undefined}
+            data-index={i}
             tabIndex={-1}
             aria-hidden="true"
-            title={p.tip.join('\n')}
+            title={live ? undefined : p.tip.join('\n')}
             style={{ left: `${p.px}%`, top: `${p.py}%`, '--r': `${p.r}px`, '--fill': p.fill }}
           />
         ))}
@@ -118,6 +134,20 @@ export default function Scatter({ l, points, xLabel, label, reference }: Props) 
               </span>
             ),
           ),
+        )}
+        {tip && (
+          <div
+            class={['scatter-tip', tip.py < 25 && 'below', tip.px < 20 ? 'start' : tip.px > 80 && 'end']
+              .filter(Boolean)
+              .join(' ')}
+            style={{ left: `${tip.px}%`, top: `${tip.py}%`, '--r': `${tip.r}px` }}
+            aria-hidden="true"
+          >
+            <strong>{tip.tip[0]}</strong>
+            {tip.tip.slice(1).map((line) => (
+              <span>{line}</span>
+            ))}
+          </div>
         )}
       </div>
       <figcaption class="scatter-x">{xLabel}</figcaption>

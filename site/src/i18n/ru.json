@@ -35,6 +35,7 @@
     "Card stats": "Статистика карт",
     "Card text from {version}.": "Текст карты из версии {version}.",
     "Cards": "Карты",
+    "Changes": "Изменения",
     "Choosing one of six Mixes to add to the hand.": "Выбор одной из шести смесей, чтобы добавить ее в руку.",
     "Clear": "Очистить",
     "Clear filters": "Сбросить фильтры",
@@ -65,6 +66,7 @@
     "Filter the relic and potion stats": "Отфильтровать статистику реликвий и зелий",
     "Filter them": "Отфильтровать",
     "Filters": "Фильтры",
+    "Follow them in a feed reader": "Следить через программу для чтения лент",
     "From {source}": "Источник: {source}",
     "From {source}, {line}": "Источник: {source}, {line}",
     "Get the mod": "Скачать мод",
@@ -84,6 +86,7 @@
     "Jump to a version": "Перейти к версии",
     "Keyword": "Ключевое слово",
     "Keyword or theme": "Ключевое слово или тема",
+    "Keywords": "Ключевые слова",
     "Laced": "Отрава",
     "Language: {name}": "Язык: {name}",
     "Latest: {notes}, {date}.": "Последнее обновление: {notes}, {date}.",
@@ -138,6 +141,7 @@
     "Show all upgraded": "Показать все улучшенные",
     "Show base card": "Показать базовую карту",
     "Show cards": "Показать карты",
+    "Show keyword tips": "Показать описания ключевых слов",
     "Show more": "Показать больше",
     "Show upgraded": "Показать улучшенную",
     "Show {n} cards": {
@@ -145,6 +149,12 @@
       "few": "Показать {n} карты",
       "many": "Показать {n} карт",
       "other": "Показать {n} карты"
+    },
+    "Show {n} older changes": {
+      "one": "Показать {n} более раннее изменение",
+      "few": "Показать {n} более ранних изменения",
+      "many": "Показать {n} более ранних изменений",
+      "other": "Показать {n} более раннего изменения"
     },
     "Site": "Сайт",
     "Skip to content": "Перейти к содержимому",

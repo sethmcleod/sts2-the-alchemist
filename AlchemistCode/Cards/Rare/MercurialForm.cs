@@ -1,3 +1,4 @@
+using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -12,7 +13,7 @@ public class MercurialForm : AlchemistCard
 {
     public MercurialForm() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        WithCostUpgradeBy(-1);
+        WithKeyword(CardKeyword.Retain, UpgradeType.Add);
         WithTip(typeof(StrengthPower));
         WithTip(typeof(PoisonPower));
     }

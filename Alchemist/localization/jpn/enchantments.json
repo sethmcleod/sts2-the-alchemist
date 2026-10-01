@@ -1,4 +1,5 @@
 {
   "ALCHEMIST-LACED.description": "このカードは、自身の[gold]毒[/gold]に等しい追加ダメージを与える。",
+  "ALCHEMIST-LACED.extraCardText": "毒仕込み。",
   "ALCHEMIST-LACED.title": "毒仕込み"
 }

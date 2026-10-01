@@ -2,14 +2,12 @@
 
 Two modes:
     --local          write the rows to seed-runs.local.json and skip the network (the default)
-    --key <anon>     insert them into Supabase through the same insert-only endpoint the DLL uses,
-                     which also proves the key and the row level security policy work
+    --post <url>     send each one to the upload endpoint the mod uses
+                     (https://alchemist.fyi/api/runs), which proves the endpoint and the daily pack
 
 `scripts/dev.sh analytics seed` runs the local mode and exports the result. Local rows use made-up
-versions (v1.0.0 to v1.0.3) so the version filters have something to show. Inserted rows use
-mod_version = "seed-test", which the export skips by default, and this removes them again:
-
-    delete from runs where mod_version = 'seed-test';
+versions (v1.0.0 to v1.0.3) so the version filters have something to show. Posted rows use
+mod_version = "seed-test", which the export always skips.
 """
 
 import argparse
@@ -17,6 +15,8 @@ import hashlib
 import json
 import random
 import sys
+import urllib.error
+import urllib.request
 from collections import Counter
 from datetime import datetime, timedelta, timezone
 
@@ -179,7 +179,7 @@ def main() -> int:
     parser.add_argument("--runs", type=int, default=400)
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--local", action="store_true", help=f"write to {LOCAL_OUT.name}, no network")
-    parser.add_argument("--key", default=None, help="publishable key, to insert into Supabase")
+    parser.add_argument("--post", default=None, metavar="URL", help="send the runs to this upload endpoint")
     args = parser.parse_args()
 
     cards = mod_meta.cards()
@@ -192,22 +192,24 @@ def main() -> int:
     rows = [fabricate(rng, LOCAL_VERSIONS[min(3, i * 4 // args.runs)], pool, power, cards, relics, potions, badges)
             for i in range(args.runs)]
 
-    if args.local or not args.key:
+    if args.local or not args.post:
         LOCAL_OUT.write_text(json.dumps(rows, indent=1))
         print(f"wrote {len(rows)} fabricated runs to {LOCAL_OUT.relative_to(common.REPO)}")
         if not args.local:
-            print("(pass --key <publishable key> to insert them into Supabase instead)")
+            print("(pass --post <upload endpoint> to send them there instead)")
         return 0
 
-    import requests
     for row in rows:
         row["mod_version"] = common.SEED_VERSION
-        row.pop("created_at")  # let the database stamp it
-    resp = requests.post(common.RUNS_URL, json=rows, timeout=60, headers={
-        "apikey": args.key, "Authorization": f"Bearer {args.key}",
-        "Content-Type": "application/json", "Prefer": "return=minimal"})
-    print(resp.status_code, resp.text[:300])
-    return 0 if resp.ok else 1
+        row.pop("created_at")  # the endpoint stamps it
+        request = urllib.request.Request(args.post, data=json.dumps(row).encode(), method="POST",
+                                         headers={"Content-Type": "application/json"})
+        try:
+            print(urllib.request.urlopen(request, timeout=60, context=common.ssl_context()).status)
+        except urllib.error.HTTPError as error:
+            print(error.code, error.read().decode()[:300])
+            return 1
+    return 0
 
 
 if __name__ == "__main__":

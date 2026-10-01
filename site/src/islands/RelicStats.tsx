@@ -5,6 +5,7 @@ import { relicStats, type RelicStatsModel } from '../lib/views/relics';
 import Filters, { type FilterOptions } from './Filters';
 import { useLang } from './useLang';
 import { useStats } from './useStats';
+import SectionHeading from '../components/SectionHeading';
 
 interface Props {
   locale: LangInit;
@@ -26,13 +27,13 @@ export default function RelicStats({ locale, initial, options, icons }: Props) {
     <div class="stats-page" aria-busy={status === 'loading'}>
       <Filters l={l} filters={filters} options={options} runs={m.runs} status={status} onChange={update} />
       <section class="panel p-5">
-        <h2>{l.t('Alchemist relics')}</h2>
+        <SectionHeading id="alchemist-relics">{l.t('Alchemist relics')}</SectionHeading>
         <p class="note">{l.t('How often the runs that ended with each relic won.')}</p>
         <Bars l={l} items={m.modRelics} max={1} reference={m.middle} referenceLabel={middle} labelWidth="13rem" />
       </section>
       <div class="stats-grid">
         <section class="panel p-5">
-          <h2>{l.t('Ancient choices')}</h2>
+          <SectionHeading id="ancient-choices">{l.t('Ancient choices')}</SectionHeading>
           <p class="note">{l.t('How often players take each relic an Ancient offers.')}</p>
           <Bars
             l={l}
@@ -45,7 +46,7 @@ export default function RelicStats({ locale, initial, options, icons }: Props) {
           />
         </section>
         <section class="panel p-5">
-          <h2>{l.t('Potions')}</h2>
+          <SectionHeading id="potions">{l.t('Potions')}</SectionHeading>
           <p class="note">
             {l.t("Potions drunk for every 100 runs. The Alchemist's own potions link to their pages.")}
           </p>
@@ -53,7 +54,7 @@ export default function RelicStats({ locale, initial, options, icons }: Props) {
         </section>
       </div>
       <section class="panel p-5">
-        <h2>{l.t('Base game relics')}</h2>
+        <SectionHeading id="base-game-relics">{l.t('Base game relics')}</SectionHeading>
         <p class="note">{l.t('The base game relics Alchemist runs end with most often, and how those runs went.')}</p>
         <Bars
           l={l}

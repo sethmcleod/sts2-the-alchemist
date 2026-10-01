@@ -1,4 +1,5 @@
 {
   "ALCHEMIST-LACED.description": "Эта карта наносит дополнительный урон, равный вашему [gold]яду[/gold].",
+  "ALCHEMIST-LACED.extraCardText": "Отрава.",
   "ALCHEMIST-LACED.title": "Отрава"
 }

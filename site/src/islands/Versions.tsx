@@ -8,6 +8,7 @@ import { versions, type CardChange, type VersionsModel } from '../lib/views/vers
 import Filters, { type FilterOptions } from './Filters';
 import { useLang } from './useLang';
 import { useStats } from './useStats';
+import SectionHeading from '../components/SectionHeading';
 
 const columns = (l: Lang): ColumnDef<CardChange>[] => [
   {
@@ -92,7 +93,7 @@ export default function Versions({ locale, initial, options }: Props) {
         versions={l.list([m.a, m.b])}
       />
       <section class="panel p-5">
-        <h2>{l.t('Compare two versions')}</h2>
+        <SectionHeading id="compare-two-versions">{l.t('Compare two versions')}</SectionHeading>
         <p class="note">{l.t('The filters above apply to both sides.')}</p>
         <form class="needs-js mb-4 flex flex-wrap gap-3" onSubmit={(e) => e.preventDefault()}>
           {(['a', 'b'] as const).map((side) => (
@@ -119,7 +120,7 @@ export default function Versions({ locale, initial, options }: Props) {
         )}
       </section>
       <section class="panel p-5">
-        <h2>{l.t('Cards that moved the most')}</h2>
+        <SectionHeading id="cards-that-moved-the-most">{l.t('Cards that moved the most')}</SectionHeading>
         <p class="note">
           {l.n(
             m.enough,

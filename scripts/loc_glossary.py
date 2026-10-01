@@ -68,8 +68,14 @@ AMBIGUOUS_ANY_CASE = {"discard", "exhausts"}
 # hover-tip title is "Ölümcül", but every base card carrying the keyword writes
 # "Eğer [gold]Öldürürse[/gold]" (Feed, Hand of Greed, The Hunt, Training Strike), so
 # card text anchors on that form and the title alone would fail every one of them.
+#
+# Russian writes the Exhaust keyword as "Сжигается", but every base selection prompt that
+# asks the player to Exhaust uses the verb "сжечь" (Purity, Ashwater), and "for each card
+# Exhausted" uses the participle "сожженную" (Midnight, Stoke). None shares a stem with the
+# keyword. All three are accepted; the checker reads "|" as alternatives.
 OVERRIDES = {
     ("Discard Pile", "esp"): "pila de descarte",
+    ("Exhaust", "rus"): "Сжигается|сжечь|сожженную",
     ("Fatal", "tur"): "Öldürürse",
 }
 

@@ -1,5 +1,7 @@
 // The shapes of the files tools/analytics/export_stats.py writes to data/
 
+import type { Tip } from './tips';
+
 export type Rarity = 'Basic' | 'Common' | 'Uncommon' | 'Rare' | 'Ancient' | 'Event' | 'Token';
 export type CardType = 'Attack' | 'Skill' | 'Power';
 
@@ -49,6 +51,8 @@ export interface Translation {
   powers: Record<string, ItemText>;
   badges: Record<string, Partial<Record<BadgeTier['tier'], Pick<BadgeTier, 'title' | 'text'>>>>;
   game: GameWords;
+  /** The hover tips for the gold terms in the text (lib/tips.ts) */
+  tips?: Tip[];
 }
 
 export interface BadgeTier {

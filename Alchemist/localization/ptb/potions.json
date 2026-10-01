@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]Exaure[/gold] até [blue]3[/blue] cartas na sua [gold]Mão[/gold]. Receba {energyPrefix:energyIcons(1)} e compre [blue]1[/blue] carta por cada carta [gold]Exaurida[/gold].",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Escolha até [blue]3[/blue] cartas para [gold]Exaurir[/gold].",
   "ALCHEMIST-REDUCTION.title": "Redução",
-  "ALCHEMIST-REFINED_EXTRACT.description": "Escolha [blue]3[/blue] [gold]Misturas+[/gold] básicas para adicionar na sua [gold]Mão[/gold].",
+  "ALCHEMIST-REFINED_EXTRACT.description": "Adicione uma de cada [gold]Mistura+[/gold] básica na sua [gold]Mão[/gold].",
   "ALCHEMIST-REFINED_EXTRACT.title": "Extrato Refinado",
   "ALCHEMIST-SAMPLER.description": "Receba {energyPrefix:energyIcons(1)} e compre [blue]1[/blue] carta por cada [gold]Poção[/gold] que você tiver, incluindo esta.",
   "ALCHEMIST-SAMPLER.title": "Degustação",

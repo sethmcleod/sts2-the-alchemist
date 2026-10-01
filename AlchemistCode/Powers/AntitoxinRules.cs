@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// A combat-hook singleton, because Callus, Second Skin and the analytics counters all read the tick
+// A combat-hook singleton, because Lilypad Cloak, Waiting Game and the analytics counters all read the tick
 // record on creatures that may hold no Antitoxin at all.
 public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 {
@@ -38,8 +38,8 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         && props.HasFlag(ValueProp.Unpowered);
 
     // The held slice of the tick resolving right now, written only by AntitoxinPower for a real tick.
-    // Callus and Second Skin run in AfterDamageReceived, where the amount is already reduced, so a
-    // fully held tick would pay them nothing without it
+    // Lilypad Cloak runs in AfterDamageReceived, where the amount is already reduced, so a fully
+    // held tick would pay it nothing without it
     private static readonly Dictionary<Creature, int> AbsorbedOnTick = new();
 
     internal static void ClearTickAbsorb(Creature creature) => AbsorbedOnTick.Remove(creature);

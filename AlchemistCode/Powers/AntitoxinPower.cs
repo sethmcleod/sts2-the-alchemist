@@ -94,9 +94,9 @@ public partial class AntitoxinPower : AlchemistPower
     {
         if (target != Owner) return;
 
-        // Callus and Second Skin read this in AfterDamageReceived, where the amount is already
-        // reduced, so a fully held tick would pay them nothing without it. Cleared on every hit so
-        // they only ever see the tick resolving right now
+        // Lilypad Cloak reads this in AfterDamageReceived, where the amount is already reduced, so
+        // a fully held tick would pay it nothing without it. Cleared on every hit so it only ever
+        // sees the tick resolving right now
         AntitoxinRules.ClearTickAbsorb(Owner);
         if (!AntitoxinRules.HasPoisonTickShape(props, dealer, cardSource)) return;
 

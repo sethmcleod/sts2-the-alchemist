@@ -148,7 +148,8 @@ document.querySelector('[data-open-filters]')!.addEventListener('click', () => {
   drawer.showModal();
 });
 drawer.addEventListener('close', () => form.querySelector('[data-open-filters]')!.after(filters));
-// A click on the backdrop closes the drawer, but not the end of a drag that started inside it
+// A click on the backdrop closes the drawer, but not the end of a drag that started inside it. The
+// drawer's closedby="any" does the same where the browser supports it
 let pressedOutside = false;
 drawer.addEventListener('pointerdown', (e) => (pressedOutside = e.target === drawer));
 drawer.addEventListener('click', (e) => {

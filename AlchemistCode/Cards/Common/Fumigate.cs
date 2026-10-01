@@ -13,7 +13,7 @@ public class Fumigate : AlchemistCard
     public Fumigate() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
         WithDamage(4, 2);
-        WithVar("Poison", 3, 2);
+        WithVar("Poison", 3, 1);
         WithTip(typeof(PoisonPower));
     }
 

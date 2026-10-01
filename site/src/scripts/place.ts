@@ -33,7 +33,11 @@ export function keepPlace(link: HTMLAnchorElement) {
     ...(first.dataset.place ? { place: first.dataset.place } : { heading: headings().indexOf(first) }),
     top: first.getBoundingClientRect().top,
   };
-  const upgraded = [...document.querySelectorAll<HTMLInputElement>('.upgrade-toggle:checked')]
+  // The cards that show their upgrade. On a card's page #upgraded flips the card, and the new page's
+  // address has no #upgraded, so its toggle carries the flip
+  const flipped = document.querySelector('#upgraded:target') !== null;
+  const upgraded = [...document.querySelectorAll<HTMLInputElement>('.upgrade-toggle')]
+    .filter((toggle) => toggle.checked !== flipped)
     .map((toggle) => toggle.closest<HTMLElement>('[data-place]')?.dataset.place)
     .filter((id): id is string => Boolean(id));
   if (!anchor && !upgraded.length) return;
@@ -61,6 +65,16 @@ export function returnToPlace() {
       for (const id of place.upgraded) {
         const toggle = document.querySelector<HTMLInputElement>(`[data-place="${CSS.escape(id)}"] .upgrade-toggle`);
         if (toggle) toggle.checked = true;
+      }
+      // A card's own page keeps its flip in the address, so a reload or a copied link shows it too.
+      // Only after load: until then the browser still takes a new #upgraded as the page's target,
+      // which would flip the card back
+      if (document.getElementById('upgraded') && document.querySelector('[data-sheet] .upgrade-toggle:checked')) {
+        addEventListener(
+          'load',
+          () => history.replaceState(history.state, '', `${location.pathname}${location.search}#upgraded`),
+          { once: true },
+        );
       }
       const { anchor } = place;
       const scroll = () => {

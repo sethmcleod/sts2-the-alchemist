@@ -14,7 +14,8 @@ It writes these files to site/data/:
     fights.json   one row per encounter per group
     notes.json    the patch notes, one entry per version, from CHANGELOG.md
     loc/          one file per language: the mod's names and text, the cards as the game shows
-                  them, and the base game's words the website uses
+                  them, the hover tips for the terms their text marks in gold, and the base
+                  game's words the website uses
 
 Each table is {"key": [...], "counts": [...], "rows": [[...], ...]}. A row lists its key values,
 then its counts. The site build runs it every day (site/package.json), and it runs locally with
@@ -155,8 +156,8 @@ RETIRED_MIX_LABELS = {"poison"}
 
 
 def normalise(extra: dict) -> dict:
-    """Bring an old client's `alchemist` object in line with the current Mix keys, the way
-    migrate_mix_keys.sql did for the stored rows. A key the client did not send stays absent."""
+    """Bring an old client's `alchemist` object in line with the current Mix keys. A key the
+    client did not send stays absent."""
     old = schema_of(extra) < MIX_SCHEMA
 
     def label(kind: str) -> str:
@@ -469,17 +470,14 @@ def main() -> int:
                         help=f"keep fabricated mod_version='{common.SEED_VERSION}' rows")
     parser.add_argument("--out", type=Path, default=OUT_DIR)
     parser.add_argument("--from-file", type=Path, default=None,
-                        help="read rows from a JSON file (seed_runs.py --local) instead of Supabase")
+                        help="read rows from a JSON file (seed_runs.py --local) instead of the stores")
     args = parser.parse_args()
 
     if args.from_file:
         runs = json.loads(args.from_file.read_text())
         args.include_seed = True
     else:
-        if not args.key:
-            print(common.missing_key_message(), file=sys.stderr)
-            return 1
-        runs = common.fetch_runs(args.key, args.mod_version, args.game_version, args.days_back)
+        runs = common.fetch_runs(args.mod_version, args.game_version, args.days_back)
     fetched = len(runs)
     if not args.include_seed:
         runs = [r for r in runs if r["mod_version"] != common.SEED_VERSION]

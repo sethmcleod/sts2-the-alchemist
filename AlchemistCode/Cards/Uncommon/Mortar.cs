@@ -16,7 +16,7 @@ public class Mortar : AlchemistCard
 
     public Mortar() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(9, static (card, _) => 2m * ((AlchemistCard)card).FermentTurns,
+        WithCalculatedDamage(7, static (card, _) => 2m * ((AlchemistCard)card).FermentTurns,
             ValueProp.Move, 3, 0);
         WithKeyword(CardKeyword.Retain);
     }

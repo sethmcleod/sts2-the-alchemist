@@ -13,7 +13,7 @@
   "ALCHEMIST-REDUCTION.description": "[gold]手札[/gold]のカードを[blue]3[/blue]枚まで[gold]廃棄[/gold]する。[gold]廃棄[/gold]したカード1枚につき、{energyPrefix:energyIcons(1)}を得てカードを[blue]1[/blue]枚引く。",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "カードを[blue]3[/blue]枚まで選び、[gold]廃棄[/gold]する。",
   "ALCHEMIST-REDUCTION.title": "煮詰め",
-  "ALCHEMIST-REFINED_EXTRACT.description": "基本の[gold]合剤+[/gold]を[blue]3[/blue]枚選んで[gold]手札[/gold]に加える。",
+  "ALCHEMIST-REFINED_EXTRACT.description": "基本の各[gold]合剤+[/gold]を1枚ずつ[gold]手札[/gold]に加える。",
   "ALCHEMIST-REFINED_EXTRACT.title": "精製抽出液",
   "ALCHEMIST-SAMPLER.description": "このポーションを含め、所持している[gold]ポーション[/gold]1つにつき、{energyPrefix:energyIcons(1)}を得てカードを[blue]1[/blue]枚引く。",
   "ALCHEMIST-SAMPLER.title": "試飲セット",

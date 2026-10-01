@@ -1,68 +1,46 @@
 shader_type canvas_item;
 
-// The parts this material cycles. Each slot material turns on only the parts its slot can hold
 uniform bool robe = false;
 uniform bool skin = false;
 uniform bool bag = false;
 uniform bool eyes = false;
 uniform bool orb = false;
-// The light of the orb, painted along the edges of the other parts
 uniform bool orb_light = false;
 
-// Hue turns per second
 uniform float cycle_speed = 0.1;
 
-// Robe: the purple sits between 250 and 290 degrees, clear of the green skin (110), the gold eyes
-// and orb (40) and the blue-grey trim (220)
 uniform float robe_center = 0.75;
 uniform float robe_half_width = 0.058;
 uniform float robe_softness = 0.02;
 uniform float min_saturation = 0.18;
 
-// The deep folds of the robe run on past the band toward red. The pants and the potions share
-// those hues but are more saturated, thus on this side only dull pixels move. In turns, with red
-// counted as 1.0 so the range does not wrap
 uniform float red_side_start = 0.786;
 uniform float red_side_end = 1.014;
 uniform float red_side_softness = 0.02;
 uniform float red_side_max_saturation = 0.33;
 
-// Skin: the frog green sits between 95 and 122 degrees. The wooden staff shares the hue but is dull,
-// and the herbs sit past 130 degrees
 uniform float skin_center = 0.301;
 uniform float skin_half_width = 0.0375;
 uniform float skin_min_saturation = 0.3;
 
-// Bag: the leather and the straps sit between 5 and 28 degrees, more saturated than the robe folds
 uniform float bag_center = 0.046;
 uniform float bag_half_width = 0.032;
 uniform float bag_min_saturation = 0.4;
 
-// Eyes and orb: gold, between 15 and 55 degrees. Each lightness moves part of the way to white,
-// thus the whole cycle stays light and a black pupil always stands out, while the painted swirls
-// keep their contrast. The glow of the orb takes its gold from the slot tint, thus the mask reads
-// the tint as well as the texture
 uniform float gold_center = 0.097;
 uniform float gold_half_width = 0.056;
 uniform float glow_lift = 0.3;
 uniform float glow_chroma_scale = 0.85;
 
-// The light of the orb: gold, and yellow-green where it crosses the skin, between 30 and 80 degrees.
-// The brown leather (15 degrees) and the pale herb flowers fall outside
 uniform float light_center = 0.153;
 uniform float light_half_width = 0.069;
 uniform float light_min_saturation = 0.55;
 uniform float light_min_value = 0.45;
 
-// Where the eyes sit on a texture that paints them together with that light, as ellipses in UV: the
-// centre in xy and the radii in zw. A zero radius marks no eye. The light and the iris are the same
-// gold, but the light on the rim of an eye is the brighter of the two
 uniform vec4 left_eye = vec4(0.0);
 uniform vec4 right_eye = vec4(0.0);
 uniform float eye_light_min_value = 0.86;
 
-// COLOR in vertex() is the slot tint times modulate. The body masks read the texture alone, thus a
-// tint such as the potion flash never moves them
 varying vec4 tint;
 
 void vertex() {
@@ -108,7 +86,6 @@ float light_mask(vec3 hsv) {
 		* smoothstep(light_min_value - 0.06, light_min_value + 0.06, hsv.z);
 }
 
-// 1 inside the ellipse, fading to 0 just past its edge, thus the soft outline of an eye counts as eye
 float ellipse(vec2 uv, vec4 shape) {
 	if (shape.z <= 0.0) {
 		return 0.0;
@@ -124,7 +101,6 @@ vec3 linear_to_srgb(vec3 c) {
 	return mix(c * 12.92, 1.055 * pow(c, vec3(1.0 / 2.4)) - 0.055, step(0.0031308, c));
 }
 
-// Oklab keeps lightness apart from hue, thus a turn of its hue never darkens the color
 vec3 linear_to_oklab(vec3 c) {
 	float l = pow(max(0.4122214708 * c.r + 0.5363325363 * c.g + 0.0514459929 * c.b, 0.0), 1.0 / 3.0);
 	float m = pow(max(0.2119034982 * c.r + 0.6806995451 * c.g + 0.1073969566 * c.b, 0.0), 1.0 / 3.0);
@@ -189,7 +165,6 @@ void fragment() {
 
 		float glow = orb ? gold : 0.0;
 		if (eyes) {
-			// With the eyes mapped, the gold outside them and the light on them both belong to the orb
 			bool mapped = left_eye.z > 0.0 || right_eye.z > 0.0;
 			glow = max(glow, mapped ? gold * in_eye * (1.0 - lit) : gold);
 		}

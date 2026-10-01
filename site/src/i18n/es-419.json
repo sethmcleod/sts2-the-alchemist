@@ -35,6 +35,7 @@
     "Card stats": "Estadísticas de cartas",
     "Card text from {version}.": "Texto de la carta de la {version}.",
     "Cards": "Cartas",
+    "Changes": "Cambios",
     "Choosing one of six Mixes to add to the hand.": "Elección de una de seis Mezclas para agregar a la mano.",
     "Clear": "Limpiar",
     "Clear filters": "Limpiar filtros",
@@ -63,6 +64,7 @@
     "Filter the relic and potion stats": "Filtrar las estadísticas de reliquias y pociones",
     "Filter them": "Filtrarlas",
     "Filters": "Filtros",
+    "Follow them in a feed reader": "Síguelas con un lector de feeds",
     "From {source}": "De {source}",
     "From {source}, {line}": "De {source}, {line}",
     "Get the mod": "Obtener el mod",
@@ -80,6 +82,7 @@
     "Jump to a version": "Ir a una versión",
     "Keyword": "Palabra clave",
     "Keyword or theme": "Palabra clave o tema",
+    "Keywords": "Palabras clave",
     "Laced": "Adulteración",
     "Language: {name}": "Idioma: {name}",
     "Latest: {notes}, {date}.": "Última versión: {notes}, {date}.",
@@ -134,11 +137,16 @@
     "Show all upgraded": "Ver todas mejoradas",
     "Show base card": "Ver carta base",
     "Show cards": "Mostrar cartas",
+    "Show keyword tips": "Mostrar descripciones de palabras clave",
     "Show more": "Mostrar más",
     "Show upgraded": "Ver mejorada",
     "Show {n} cards": {
       "one": "Mostrar {n} carta",
       "other": "Mostrar {n} cartas"
+    },
+    "Show {n} older changes": {
+      "one": "Mostrar {n} cambio anterior",
+      "other": "Mostrar {n} cambios anteriores"
     },
     "Site": "Sitio",
     "Skip to content": "Ir al contenido",

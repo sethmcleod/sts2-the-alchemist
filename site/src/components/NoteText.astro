@@ -1,20 +1,13 @@
 ---
-// Changelog text: its markdown links and bare URLs become links, and "->" an arrow
+// Changelog text, with its links and arrows (lib/notes.ts)
+import { noteParts } from '../lib/notes';
 import External from './External.astro';
 
 interface Props {
   text: string;
 }
 
-const LINK = /\[([^\]]+)\]\((https?:[^)\s]+)\)|(https?:\/\/[^\s)]*[^\s).,])/g;
-const text = Astro.props.text.replaceAll('->', '→');
-const parts: ({ text: string } | { text: string; href: string })[] = [];
-let last = 0;
-for (const m of text.matchAll(LINK)) {
-  parts.push({ text: text.slice(last, m.index) }, { text: m[1] ?? m[3], href: m[2] ?? m[3] });
-  last = m.index + m[0].length;
-}
-parts.push({ text: text.slice(last) });
+const parts = noteParts(Astro.props.text);
 ---
 
 {parts.map((part) => ('href' in part ? <External href={part.href}>{part.text}</External> : part.text))}

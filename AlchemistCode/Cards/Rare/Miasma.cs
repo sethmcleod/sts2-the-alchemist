@@ -10,7 +10,7 @@ namespace Alchemist.AlchemistCode.Cards.Rare;
 [CardTheme(CardTheme.Poison)]
 public class Miasma : AlchemistCard
 {
-    public Miasma() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public Miasma() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
         WithTip(typeof(PoisonPower));

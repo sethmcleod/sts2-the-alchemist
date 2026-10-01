@@ -15,9 +15,7 @@ public class Puncture : AlchemistCard
         WithTip(typeof(PoisonPower));
     }
 
-    protected override bool ConditionalGlow =>
-        IsMutable && CombatState?.Enemies.Where(e => e.IsAlive).ToList() is { Count: > 0 } enemies
-        && enemies.TrueForAll(Poisoned);
+    protected override bool ConditionalGlow => AllEnemiesPoisoned;
 
     private const int Hits = 2;
 

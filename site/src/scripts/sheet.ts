@@ -42,13 +42,25 @@ async function open(url: string, push: boolean) {
   }
   body.replaceChildren(document.importNode(loaded.sheet, true));
   document.title = loaded.title;
+  // #upgraded in the address says the card shows its upgrade: set by "Show all upgraded" as the card
+  // opens, and read back when Back or Forward opens it again
+  const toggle = body.querySelector<HTMLInputElement>('.upgrade-toggle');
+  if (!push && toggle) toggle.checked = (location.hash === '#upgraded') !== allUpgraded();
   if (push) {
-    history.pushState({ sheet: url, depth: ++depth, page: history.state?.page ?? location.href }, '', url);
+    history.pushState(
+      { sheet: url, depth: ++depth, page: history.state?.page ?? location.href },
+      '',
+      url + (allUpgraded() ? '#upgraded' : ''),
+    );
   }
   if (!dialog.open) dialog.showModal();
   dialog.scrollTop = 0;
   // The link that was followed is gone with the old sheet, so focus starts at the new one's title
   body.querySelector<HTMLElement>('#sheet-title')?.focus();
+}
+
+function allUpgraded() {
+  return document.querySelector<HTMLInputElement>('#all-upgraded')?.checked ?? false;
 }
 
 const linkOf = (e: Event) => (e.target as Element).closest?.<HTMLAnchorElement>('a[data-sheet-link], a[href^="#"]');
@@ -96,7 +108,16 @@ dialog.addEventListener('close', () => {
   depth = 0;
 });
 
-// A click on the backdrop closes the dialog, but not the end of a drag that started inside it
+// Flipping the card writes #upgraded into the address, so a copied link opens its page the same way.
+// "Show all upgraded" flips it too
+body.addEventListener('change', (e) => {
+  const toggle = (e.target as Element).closest<HTMLInputElement>('.upgrade-toggle');
+  if (!toggle || !history.state?.sheet) return;
+  history.replaceState(history.state, '', history.state.sheet + (toggle.checked !== allUpgraded() ? '#upgraded' : ''));
+});
+
+// A click on the backdrop closes the dialog, but not the end of a drag that started inside it. The
+// dialog's closedby="any" does the same where the browser supports it
 let pressedOutside = false;
 dialog.addEventListener('pointerdown', (e) => (pressedOutside = e.target === dialog));
 dialog.addEventListener('click', (e) => {

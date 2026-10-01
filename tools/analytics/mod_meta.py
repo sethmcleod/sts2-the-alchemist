@@ -401,10 +401,32 @@ def localized_cards(lang: str, game: dict, english_cards: dict[str, dict]) -> di
     return found
 
 
+def tips(lang: str, base: dict[str, dict]) -> list[dict]:
+    """The definitions the game shows beside a card for the terms its text marks in gold, in one
+    language: {id, title, text}. The base game's come from game_loc.json; the mod adds its keywords,
+    its Mixes and Brew, and Antitoxin. Ferment has two: one for a card with the keyword, and one
+    (_REF) for text about other cards."""
+    found = [{"id": key, **tip} for key, tip in base.items()]
+    for table in ("card_keywords", "static_hover_tips", "enchantments"):
+        loc = loc_table(table, lang)
+        found += [{"id": entry, "title": title, "text": loc[f"{entry}.description"]}
+                  for entry, title in titles(table, lang=lang).items() if f"{entry}.description" in loc]
+    antitoxin = f"{PREFIX}ANTITOXIN_POWER"
+    found.append({"id": antitoxin, "title": titles("powers", lang=lang)[antitoxin],
+                  "text": loc_table("powers", lang)[f"{antitoxin}.description"]})
+    unique: dict[tuple[str, str], dict] = {}
+    for tip in found:
+        tip = {**tip, "title": plain(tip["title"]), "text": fill_in(tip["text"])}
+        unique.setdefault((tip["title"], tip["text"]), tip)
+    return list(unique.values())
+
+
 def translation(lang: str) -> dict:
     """The mod's words in one language: every name, the cards as the game shows them, the relic,
-    potion, power and badge text, and the base game's own words the site uses (game_loc.json)."""
+    potion, power and badge text, the hover tips for the gold terms in them, and the base game's own
+    words the site uses (game_loc.json)."""
     game = json.loads(GAME_LOC.read_text(encoding="utf-8"))[lang]
+    base_tips = game.pop("tips")
     english_cards = cards()
     found = {
         "names": titles(lang=lang),
@@ -413,6 +435,7 @@ def translation(lang: str) -> dict:
         "badges": {b["id"]: {t["tier"]: {"title": t["title"], "text": t["text"]} for t in b["tiers"]}
                    for b in badges(lang)},
         "game": game,
+        "tips": tips(lang, base_tips),
     }
     for table, folder in (("relics", "Relics"), ("potions", "Potions"), ("powers", None)):
         found[table] = {entry: {key: item[key] for key in ("name", "text", "flavor")}

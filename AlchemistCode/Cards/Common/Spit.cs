@@ -11,8 +11,8 @@ public class Spit : AlchemistCard
 {
     public Spit() : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(4, 2);
-        WithPower<PoisonPower>(3, 1);
+        WithDamage(4, 3);
+        WithPower<PoisonPower>(3, 0);
         WithVar("SelfPoison", 1, 0);
         WithTip(typeof(PoisonPower));
     }

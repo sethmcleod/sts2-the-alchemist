@@ -9,6 +9,7 @@ import { cardStats, RARITY_FILL, rarityName, type CardStatsModel, type CardTable
 import Filters, { type FilterOptions } from './Filters';
 import { useLang } from './useLang';
 import { useStats } from './useStats';
+import SectionHeading from '../components/SectionHeading';
 
 const columns = (l: Lang): ColumnDef<CardTableRow>[] => [
   {
@@ -88,18 +89,18 @@ export default function CardStats({ locale, initial, options }: Props) {
       <Stats items={m.stats} />
       <div class="stats-grid">
         <section class="panel p-5">
-          <h2>{l.t('Beating their peers')}</h2>
+          <SectionHeading id="beating-their-peers">{l.t('Beating their peers')}</SectionHeading>
           <p class="note">{l.t('Cards that win more often than most cards of the same rarity.')}</p>
           <Bars l={l} items={m.up} {...peers} />
         </section>
         <section class="panel p-5">
-          <h2>{l.t('Trailing their peers')}</h2>
+          <SectionHeading id="trailing-their-peers">{l.t('Trailing their peers')}</SectionHeading>
           <p class="note">{l.t('Cards that win less often than most cards of the same rarity.')}</p>
           <Bars l={l} items={m.down} {...peers} />
         </section>
       </div>
       <section class="panel p-5">
-        <h2>{l.t('Pick rate and win rate')}</h2>
+        <SectionHeading id="pick-rate-and-win-rate">{l.t('Pick rate and win rate')}</SectionHeading>
         <p class="note">
           {l.t(
             'Each dot is a card. Further right means players take it more often when it is offered. Higher means the runs that finished with it won more often. The gold line is the middle card, at {rate}. The table below has every number.',
@@ -124,14 +125,14 @@ export default function CardStats({ locale, initial, options }: Props) {
       </section>
       <div class="stats-grid">
         <section class="panel p-5">
-          <h2>{l.t('Left unplayed')}</h2>
+          <SectionHeading id="left-unplayed">{l.t('Left unplayed')}</SectionHeading>
           <p class="note">
             {l.t('The share of runs that finished with the card but never played it. Counted {since}.', since)}
           </p>
           <Bars l={l} items={m.unplayed} limit={10} empty={noPlays} />
         </section>
         <section class="panel p-5">
-          <h2>{l.t('Played the most')}</h2>
+          <SectionHeading id="played-the-most">{l.t('Played the most')}</SectionHeading>
           <p class="note">
             {l.t(
               'How many times a run that finished with the card played it, on average. Starting cards are left out. Counted {since}.',
@@ -141,7 +142,7 @@ export default function CardStats({ locale, initial, options }: Props) {
           <Bars l={l} items={m.mostPlayed} limit={10} empty={noPlays} />
         </section>
         <section class="panel p-5">
-          <h2>{l.t('Early picks')}</h2>
+          <SectionHeading id="early-picks">{l.t('Early picks')}</SectionHeading>
           <p class="note">{l.t("Cards taken from a run's first three card rewards, and how those runs went.")}</p>
           <Bars
             l={l}
@@ -153,13 +154,13 @@ export default function CardStats({ locale, initial, options }: Props) {
           />
         </section>
         <section class="panel p-5">
-          <h2>{l.t('Upgraded at rest sites')}</h2>
+          <SectionHeading id="upgraded-at-rest-sites">{l.t('Upgraded at rest sites')}</SectionHeading>
           <p class="note">{l.t('Rest site upgrades for every 100 runs that finished with the card.')}</p>
           <Bars l={l} items={m.upgrades} limit={10} />
         </section>
       </div>
       <section class="panel p-5">
-        <h2>{l.t('Every card')}</h2>
+        <SectionHeading id="every-card">{l.t('Every card')}</SectionHeading>
         <p class="note">
           {l.n(
             filters.min,

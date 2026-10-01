@@ -99,6 +99,12 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // One home for the enemy-side Poison test, as Dose is for the owner's, so the two never drift
     protected static bool Poisoned(Creature? creature) => creature?.HasPower<PoisonPower>() == true;
 
+    // True in a live combat when every living enemy is Poisoned, so a card gated on "if the enemy
+    // has Poison" glows only when any target meets the gate
+    protected bool AllEnemiesPoisoned =>
+        IsMutable && CombatState?.Enemies.Where(e => e.IsAlive).ToList() is { Count: > 0 } enemies
+        && enemies.TrueForAll(Poisoned);
+
     // The dose a reader adds to its number. Zero on the canonical model, which has no Owner, so the
     // compendium shows the base value and only the combat instance shows the live total. Every card
     // that says "equal to your Poison" reads it here so the rule has one home
@@ -237,7 +243,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         OnFermentTurnsChanged();
     }
 
-    // Async because every turn of fermentation gained also pays the Mellow engine. Both the natural
+    // Async because every turn of fermentation gained also pays the Mellow and Overflow engines. Both the natural
     // end-of-turn tick and the Trigger cards route through here, so the payoff has one home
     internal async Task AdvanceFerment(PlayerChoiceContext choiceContext, int turns)
     {
@@ -248,7 +254,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (creature.GetPower<MellowPower>() is { } mellow)
             await mellow.OnFermented(turns);
         if (creature.GetPower<OverflowPower>() is { } overflow)
-            overflow.OnFermented(this);
+            await overflow.OnFermented(choiceContext, this, turns);
         await OnFermented(choiceContext, turns);
     }
 

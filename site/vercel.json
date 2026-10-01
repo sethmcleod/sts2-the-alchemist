@@ -5,6 +5,12 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
+  "crons": [
+    {
+      "path": "/api/pack",
+      "schedule": "23 6 * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/_astro/(.*)",
@@ -30,6 +36,24 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/notes.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/atom+xml; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/manifest.webmanifest",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json"
         }
       ]
     },

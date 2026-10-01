@@ -22,8 +22,16 @@ internal static class HeroExpansion
     // Read after mod loading only: the pool filter and the card constructors both run later
     internal static bool IsLoaded => _loaded ??= AccessTools.TypeByName(FlashlightRegistry) != null;
 
-    // The Event cards only ever arrive through the mod's own relic and blade
-    internal static bool Offered(CardModel card) => IsLoaded;
+    // Whether the Hero-only pool cards are offered: the mod is present, or the player asked for them anyway.
+    // The setting is local to each player, and every client filters the pools on its own, so in a
+    // multiplayer run it would offer cards the other clients do not have and split the run.
+    internal static bool CardsEnabled(bool multiplayer) =>
+        IsLoaded || (Config.AlchemistModConfig.HeroCardsWithoutExpansion && !multiplayer);
+
+    // The two Event cards only ever arrive through the mod's own relic and blade, so the setting
+    // cannot unlock them; the nine pool cards follow the setting
+    internal static bool Offered(CardModel card, bool multiplayer) =>
+        card.Rarity == MegaCrit.Sts2.Core.Entities.Cards.CardRarity.Event ? IsLoaded : CardsEnabled(multiplayer);
 
     internal static void RegisterBlade(CardModel card) =>
         Register(BladeRegistry, "AddBladeCardForCustomCharacter", card);

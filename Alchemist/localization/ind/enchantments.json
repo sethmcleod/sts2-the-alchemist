@@ -1,4 +1,5 @@
 {
   "ALCHEMIST-LACED.description": "Kartu ini melakukan kerusakan tambahan sebanyak [gold]Racun[/gold] milikmu.",
+  "ALCHEMIST-LACED.extraCardText": "Beracun.",
   "ALCHEMIST-LACED.title": "Beracun"
 }
