@@ -13,13 +13,13 @@
 #                                 (it prints only, it writes nothing)
 #   scripts/dev.sh release <patch|minor|major|X.Y.Z|promote>
 #                                 increase the version, roll the CHANGELOG, build, and package
-#                                 dist/Alchemist-<tag>.zip (see RELEASING.md). "promote" keeps the
+#                                 dist/Alchemist-<tag>.zip. "promote" keeps the
 #                                 version it has, which is what main does after a merge from beta
 #   scripts/dev.sh publish-release [--force] [--draft] [X.Y.Z]
 #                                 commit the release edit, tag it, push it, and create or update
 #                                 the GitHub Release with the zip and the notes. --force moves a
 #                                 tag that is already public (a history rewrite)
-#   scripts/dev.sh sync-main      merge beta into main so main can promote (see RELEASING.md)
+#   scripts/dev.sh sync-main      merge beta into main so main can promote
 #   scripts/dev.sh analytics [export|seed]
 #                                 export: read the runs from the website's stores and write its
 #                                 data (needs the credentials, see tools/analytics/README.md);
@@ -76,7 +76,7 @@ GODOT="${GODOT:-/Applications/MegaDot.app/Contents/MacOS/Godot}"
 PCK="$GAME_MODS/Alchemist/Alchemist.pck"
 
 # The lint needs Python 3.10 or later. Use a system python if the PATH has one. If the PATH
-# has none, use uv. uv supplies a correct Python for you (see BUILD.md). PY_CMD holds the
+# has none, use uv. uv supplies a correct Python for you. PY_CMD holds the
 # interpreter command as an array, because the uv form has more than one word.
 PY_CMD=()
 find_python() {
@@ -202,7 +202,7 @@ do_changelog() {
     [ -n "$out" ] && printf '\n### %s\n%s\n' "$1" "$out"
   }
   echo "Paste the correct lines under ## [Unreleased] in CHANGELOG.md. Then write them"
-  echo "again in player language (see RELEASING.md). This command wrote nothing."
+  echo "again in player language. This command wrote nothing."
   emit Added   'feat'
   emit Fixed   'fix'
   emit Changed 'refactor|perf'
@@ -231,7 +231,7 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
   [ "$have_branch" = "$want_branch" ] || {
     bad "'$branch' releases against the game's ${want_branch:-default} branch, but the install at"
     bad "$STS2_GAME_DIR is on ${have_branch:-the default branch}. Switch the Steam branch, or point"
-    bad "STS2_GAME_DIR at the right install (see BUILD.md), then run this again."; exit 1; }
+    bad "STS2_GAME_DIR at the right install, then run this again."; exit 1; }
 
   local cur new; cur="$(current_version)"
   [ -n "$cur" ] || { bad "could not read the version from $MANIFEST"; exit 1; }
@@ -519,7 +519,7 @@ do_sync_main() {
       || { bad "the lint fails after the merge; run scripts/dev.sh lint and read the Compat/ lines"; }
   fi
   echo
-  echo "Next: verify it on the game's default branch (see BUILD.md), then"
+  echo "Next: verify it on the game's default branch, then"
   echo
   echo "    scripts/dev.sh release promote"
   echo "    scripts/dev.sh publish-release"
@@ -530,7 +530,7 @@ do_doctor() {
   local fail=0
   if command -v dotnet >/dev/null;   then ok "dotnet $(dotnet --version 2>/dev/null)"; else bad "dotnet not found; install the .NET 9 SDK (https://dotnet.microsoft.com)"; fail=1; fi
   if have_py;                        then ok "python $("${PY_CMD[@]}" --version 2>&1 | cut -d' ' -f2) (${PY_CMD[*]})"; else bad "no Python 3.10 or later; scripts/dev.sh lint needs it; install uv (https://astral.sh/uv) to get one, or install Python directly"; fail=1; fi
-  if [ -x "$GODOT" ];                then ok "Godot at $GODOT"; else bad "Godot not found at $GODOT; install Godot 4.5.1 (.NET), or set GODOT=/path/to/Godot (see BUILD.md)"; fail=1; fi
+  if [ -x "$GODOT" ];                then ok "Godot at $GODOT"; else bad "Godot not found at $GODOT; install Godot 4.5.1 (.NET), or set GODOT=/path/to/Godot"; fail=1; fi
   if [ -d "$STS2_GAME_DIR" ];        then ok "game at $STS2_GAME_DIR"; else bad "game not found at $STS2_GAME_DIR; install it through Steam, or set STS2_GAME_DIR"; fail=1; fi
   if [ -d "$GAME_MODS/Alchemist" ];  then ok "Alchemist mod installed"; else bad "Alchemist mod not installed; run scripts/dev.sh publish"; fail=1; fi
 
