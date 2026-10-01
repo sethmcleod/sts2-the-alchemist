@@ -1,9 +1,7 @@
 __pycache__/
 .DS_Store
 .godot/
-.tooling/
 **/.DS_Store
-bin/
 dist/
 reports/
 scripts/tests
