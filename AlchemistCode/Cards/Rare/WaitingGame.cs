@@ -13,7 +13,7 @@ public class WaitingGame : AlchemistCard
     public WaitingGame() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithNumberedPower<WaitingGamePower>(1, 0);
-        WithKeyword(CardKeyword.Innate, UpgradeType.Add);
+        WithKeyword(CardKeyword.Ethereal, UpgradeType.Remove);
         WithTip(typeof(PoisonPower));
         WithTip(typeof(StrengthPower));
     }
