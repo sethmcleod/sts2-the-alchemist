@@ -1,12 +1,9 @@
 name: pages
 
-# The repo's GitHub Pages address, and every path under it, sends visitors to alchemist.fyi.
-# GitHub Pages serves 404.html for a path it does not have, so that copy covers old deep links.
-
 on:
   push:
     branches: [main]
-    paths: ["docs/moved/**", ".github/workflows/pages.yml"]
+    paths: ['docs/moved/**', '.github/workflows/pages.yml']
   workflow_dispatch: {}
 
 permissions:
