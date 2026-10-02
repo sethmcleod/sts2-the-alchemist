@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.14.23] - 2026-10-02
+
 ### Added
 
 - Added Bounce Back card (Hero Expansion): "Gain 7 (9) Block. Gain 1 Poison. At the start of your next turn, return this to your Hand."
@@ -18,7 +20,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Added Snack Attack card (Hero Expansion): "Deal 10 (12) damage. If the enemy has Poison, draw 1 (2) cards."
 - Added Spring Cleaning card (Hero Expansion): "Exhaust up to 2 (3) cards from your Draw Pile. Gain 2 Antitoxin for each card Exhausted."
 - Added Twitch card (Hero Expansion): "This turn, your Attacks hit 1 (2) additional time. Gain 3 Poison."
-- Added Waiting Game card: "Whenever an enemy's Poison triggers, it loses 1 Strength." Waiting Game+ gains Innate. It replaces Reclaim
+- Added Waiting Game card: "Ethereal. Whenever an enemy's Poison triggers, it loses 1 Strength." Waiting Game+ loses Ethereal. It replaces Reclaim
 
 ### Changed
 
@@ -58,6 +60,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 ### Fixed
 
 - Fixed the hover tips of Apothecary+ showing plain Mixes instead of Mixes+
+- Fixed a softlock on some Linux launches: the Alchemist could not be selected, and combat froze when the starter relic granted Antitoxin
 
 ## [0.14.22] - 2026-09-27
 
