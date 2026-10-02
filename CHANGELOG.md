@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.14.23] - 2026-10-02
+
 ### Added
 
 - Added Bounce Back card (Hero Expansion): "Gain 7 (9) Block. Gain 1 Poison. At the start of your next turn, return this to your Hand."
