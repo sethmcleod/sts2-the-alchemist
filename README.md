@@ -38,7 +38,7 @@ for The Alchemist.
 Language translations are auto-generated for now. The plan is to commission
 native translators once the content changes slow down. In the meantime,
 corrections are appreciated! If you see an error in your language, please
-contact me or feel free to open a pull request directly in GitHub.
+contact me or feel free to open a pull request on GitHub.
 
 ## Credits
 
