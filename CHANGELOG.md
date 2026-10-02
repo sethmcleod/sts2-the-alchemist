@@ -58,6 +58,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 ### Fixed
 
 - Fixed the hover tips of Apothecary+ showing plain Mixes instead of Mixes+
+- Fixed a softlock on some Linux launches: the Alchemist could not be selected, and combat froze when the starter relic granted Antitoxin
 
 ## [0.14.22] - 2026-09-27
 
