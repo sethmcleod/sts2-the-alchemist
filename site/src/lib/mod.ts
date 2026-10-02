@@ -61,7 +61,31 @@ export const CARD_GROUPS: { id: string; title: string; note?: string }[] = [
 
 export const cardGroup = (info: CardInfo) => info.tags.find((tag) => tag in PARTNER_MODS) ?? info.rarity;
 
+export const LAST_IN_GROUP = new Set(['ALCHEMIST-COMPOUND_MIX']);
+
 export const TYPES = ['Attack', 'Skill', 'Power'] as const;
+
+export interface CardKeys {
+  rarity: string;
+  type: string;
+  cost: string;
+}
+
+const RANKS = {
+  rarity: (card: CardKeys) => (Object.keys(RARITY_NAME) as string[]).indexOf(card.rarity),
+  type: (card: CardKeys) => (TYPES as readonly string[]).indexOf(card.type),
+  cost: (card: CardKeys) => (card.cost === 'X' ? 0 : Number(card.cost)),
+};
+export type CompendiumKey = keyof typeof RANKS;
+
+export function compendiumOrder(first: CompendiumKey = 'rarity') {
+  const keys = [first, ...(Object.keys(RANKS) as CompendiumKey[]).filter((key) => key !== first)];
+  return (a: CardKeys, b: CardKeys) => {
+    for (const key of keys) if (RANKS[key](a) !== RANKS[key](b)) return RANKS[key](a) - RANKS[key](b);
+    return 0;
+  };
+}
+
 export const RELIC_ORDER = ['Starter', 'Common', 'Uncommon', 'Rare', 'Shop', 'Ancient', 'Event'];
 export const POTION_ORDER = ['Common', 'Uncommon', 'Rare', 'Event'];
 // The mod's Event potions are the ones only Brew makes

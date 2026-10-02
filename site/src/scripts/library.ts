@@ -1,9 +1,9 @@
 // Search, filters and sort for the card library. The page works without this: every card is
-// listed by rarity, and the upgrade toggles are CSS. The choices live in the URL, so a reload or a
+// listed in the game's compendium order, and the upgrade toggles are CSS. The choices live in the URL, so a reload or a
 // shared link shows the same cards.
 
 import { Lang } from '../lib/lang';
-import { POOL_RARITIES, TYPES } from '../lib/mod';
+import { compendiumOrder, POOL_RARITIES, type CardKeys, type CompendiumKey } from '../lib/mod';
 
 const form = document.querySelector<HTMLFormElement>('#library')!;
 const words = JSON.parse(form.dataset.words!);
@@ -49,16 +49,15 @@ function matches(tile: HTMLElement, s: State, words: string[]) {
 }
 
 const byName = (a: HTMLElement, b: HTMLElement) => a.dataset.name!.localeCompare(b.dataset.name!, l.lang);
-const costRank = (tile: HTMLElement) => (tile.dataset.cost === 'X' ? 99 : Number(tile.dataset.cost));
 const stat = (tile: HTMLElement, key: string) => (tile.dataset[key] ? Number(tile.dataset[key]) : null);
 
 function order(sort: string) {
   if (sort === 'name') return byName;
-  if (sort === 'cost') return (a: HTMLElement, b: HTMLElement) => costRank(a) - costRank(b) || byName(a, b);
-  if (sort === 'type')
-    return (a: HTMLElement, b: HTMLElement) =>
-      TYPES.indexOf(a.dataset.type as (typeof TYPES)[number]) -
-        TYPES.indexOf(b.dataset.type as (typeof TYPES)[number]) || byName(a, b);
+  if (sort === 'cost' || sort === 'type') {
+    const compendium = compendiumOrder(sort as CompendiumKey);
+    const keys = (tile: HTMLElement) => tile.dataset as unknown as CardKeys;
+    return (a: HTMLElement, b: HTMLElement) => compendium(keys(a), keys(b)) || byName(a, b);
+  }
   // A stat puts the highest first and the cards with too few runs last
   return (a: HTMLElement, b: HTMLElement) => {
     const [va, vb] = [stat(a, sort), stat(b, sort)];

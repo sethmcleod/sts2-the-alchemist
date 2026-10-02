@@ -3,7 +3,7 @@
 
 import type { Lang } from './lang';
 import { plain } from './markup';
-import { cardGroup, CARD_GROUPS, RARITY_NAME } from './mod';
+import { cardGroup, CARD_GROUPS, compendiumOrder, LAST_IN_GROUP, RARITY_NAME } from './mod';
 import { cardRows, DEFAULT_FILTERS, type Runs } from './runs';
 import type { CardInfo, Rarity } from './types';
 
@@ -23,8 +23,8 @@ export const keywordName = (l: Lang, keyword: string) => l.game?.keywords[keywor
 /** "Common Attack": one phrase per pair, since the rarity's word agrees with the type's in many languages */
 export const cardKind = (l: Lang, info: CardInfo) => l.t(`${RARITY_NAME[info.rarity]} ${info.type}`);
 
-/** The library's cards in their order: by group, then by English name, so a card keeps its place in
- *  every language. english holds the English names; without it the runs' own names are used */
+/** The library's cards in their order: by group, then in the game's compendium order, then by
+ *  English name, so a card keeps its place in every language, with LAST_IN_GROUP at the end */
 export function libraryCards(l: Lang, runs: Runs, english: Runs = runs) {
   const on = runs.select(DEFAULT_FILTERS);
   const stats = cardRows(runs, on, DEFAULT_FILTERS.min);
@@ -57,5 +57,14 @@ export function libraryCards(l: Lang, runs: Runs, english: Runs = runs) {
     };
   });
   const name = (card: LibraryCard) => english.summary.card_info[card.id]?.name ?? card.info.name;
-  return cards.sort((a, b) => order.indexOf(a.group) - order.indexOf(b.group) || name(a).localeCompare(name(b), 'en'));
+  const keys = ({ info }: LibraryCard) => ({ rarity: info.rarity, type: info.type, cost: info.costs[0] });
+  const last = (card: LibraryCard) => Number(LAST_IN_GROUP.has(card.id));
+  const compendium = compendiumOrder();
+  return cards.sort(
+    (a, b) =>
+      order.indexOf(a.group) - order.indexOf(b.group) ||
+      last(a) - last(b) ||
+      compendium(keys(a), keys(b)) ||
+      name(a).localeCompare(name(b), 'en'),
+  );
 }

@@ -216,11 +216,15 @@
   }
 }
 
-/* Moving between pages cross-fades where the browser can, and the header holds still. A language
-   switch skips it (scripts/placing.mjs), since that page shows once it has scrolled into place */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition {
     navigation: auto;
+  }
+
+  :root[data-placing]::view-transition-group(*),
+  :root[data-placing]::view-transition-old(*),
+  :root[data-placing]::view-transition-new(*) {
+    animation: none;
   }
 }
 
