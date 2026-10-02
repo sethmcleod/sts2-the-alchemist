@@ -23,7 +23,7 @@ public class TwitchPower : AlchemistPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Type != CardType.Attack || cardPlay.Player != Owner.Player) return;
+        if (cardPlay.Card.Type != CardType.Attack || cardPlay.Card.Owner != Owner.Player) return;
         if (cardPlay.Target is { IsAlive: false } && cardPlay.Card.TargetType == TargetType.AnyEnemy) return;
         var vars = cardPlay.Card.DynamicVars;
         if (!vars.ContainsKey("CalculatedDamage") && !vars.ContainsKey("Damage")) return;
