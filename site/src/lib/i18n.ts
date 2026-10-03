@@ -1,14 +1,8 @@
-// The languages the site is written in: the mod's own, named the way the game's language menu
-// names them (NLanguageDropdown). English lives at the root, every other language under its code.
-
 export interface Locale {
-  /** The URL prefix, and the BCP 47 tag the page declares */
   code: string;
-  /** The mod's localization folder */
   game: string;
   lang: string;
   name: string;
-  /** The label on the language button */
   short: string;
 }
 
@@ -34,19 +28,15 @@ export const DEFAULT_LOCALE = LOCALES[0];
 
 const BY_CODE = new Map(LOCALES.filter((locale) => locale !== DEFAULT_LOCALE).map((locale) => [locale.code, locale]));
 
-/** The language a path is in: its first segment names it (/de/relics, or /de.html at build), or it is English */
 export const localeOf = (pathname: string) =>
   BY_CODE.get(pathname.split('/')[1]?.replace(/\.html$/, '') ?? '') ?? DEFAULT_LOCALE;
 
-/** The path without its language: /de/relics is /relics */
 export function basePath(pathname: string) {
   const locale = localeOf(pathname);
   return locale === DEFAULT_LOCALE ? pathname : pathname.slice(locale.code.length + 1) || '/';
 }
 
-/** The [...lang] route parameter of every language: none for English, which lives at the root */
 export const langParams = () =>
   LOCALES.map((locale) => ({ lang: locale === DEFAULT_LOCALE ? undefined : locale.code, locale }));
 
-/** getStaticPaths for a page that exists once per language */
 export const everyLanguage = () => langParams().map(({ lang }) => ({ params: { lang } }));

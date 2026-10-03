@@ -16,8 +16,8 @@ export const getStaticPaths = everyLanguage;
 const data = runs(Astro.locals.locale);
 const relicItems = relics(l, data);
 const potionItems = potions(l, data);
-const brew = potionItems.filter((p) => p.rarity === 'Brew');
-const other = potionItems.filter((p) => p.rarity !== 'Brew');
+const brewPotions = potionItems.filter((potion) => potion.rarity === 'Brew');
+const otherPotions = potionItems.filter((potion) => potion.rarity !== 'Brew');
 const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
 ---
 
@@ -60,7 +60,7 @@ const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
       {l.t('Sold by the Merchant or found after a fight, like any other potion.')}
     </p>
     <ul class="item-grid">
-      {other.map((item) => (
+      {otherPotions.map((item) => (
         <ItemTile item={item} />
       ))}
     </ul>
@@ -76,7 +76,7 @@ const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
       )}
     </p>
     <ul class="item-grid">
-      {brew.map((item) => (
+      {brewPotions.map((item) => (
         <ItemTile item={item} />
       ))}
     </ul>

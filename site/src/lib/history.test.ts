@@ -10,7 +10,6 @@ const release = (version: string, ...items: NoteItem[]): Release => ({
   version,
 });
 
-// Newest first, like notes.json
 const NOTES = [
   release('v4', note('Buffed Heavy Dose card: damage increased from 26 -> 28'), note('Changed Spike and Dose cards')),
   release('v3', note('Renamed Anoint to Spike and reworked it into a Decant card: "Deal 9 damage."')),

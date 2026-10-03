@@ -1,6 +1,3 @@
-// The data files as the browser gets them. A count table is stored by column instead of by row,
-// and each text key as an index into its list of names, which halves the download.
-
 import type { ColumnFile, TableFile } from './types';
 
 const isTable = (value: unknown): value is TableFile =>
@@ -8,17 +5,16 @@ const isTable = (value: unknown): value is TableFile =>
 
 export function toColumns({ counts, key, rows }: TableFile): ColumnFile {
   const names: Record<string, string[]> = {};
-  const columns = [...key, ...counts].map((name, i) => {
-    const column = rows.map((row) => row[i]);
+  const columns = [...key, ...counts].map((name, columnIndex) => {
+    const column = rows.map((row) => row[columnIndex]);
     if (typeof column[0] !== 'string') return column as number[];
-    const list = [...new Set(column as string[])].sort();
-    const index = new Map(list.map((value, j) => [value, j]));
-    names[name] = list;
-    return column.map((value) => index.get(value as string)!);
+    const distinct = [...new Set(column as string[])].sort();
+    const indexOf = new Map(distinct.map((value, index) => [value, index]));
+    names[name] = distinct;
+    return column.map((value) => indexOf.get(value as string)!);
   });
   return { columns, counts, key, names };
 }
 
-/** Every count table in a data file, stored by column */
 export const compact = (file: Record<string, unknown>) =>
   Object.fromEntries(Object.entries(file).map(([name, value]) => [name, isTable(value) ? toColumns(value) : value]));

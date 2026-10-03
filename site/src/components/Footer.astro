@@ -7,8 +7,8 @@ import T from './T.astro';
 const { l } = Astro.locals;
 
 const { meta } = runs();
-const item = (branch: string) => meta.workshop.find((w) => w.branch === branch);
-const [beta, main] = [item('beta'), item('main')];
+const workshopItem = (branch: string) => meta.workshop.find((entry) => entry.branch === branch);
+const [beta, main] = [workshopItem('beta'), workshopItem('main')];
 const repo = meta.repo && `https://github.com/${meta.repo}`;
 const year = new Date(meta.generated_at).getUTCFullYear();
 ---

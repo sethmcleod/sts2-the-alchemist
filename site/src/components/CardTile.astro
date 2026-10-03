@@ -12,7 +12,7 @@ interface Props {
 
 const { card } = Astro.props;
 const { info } = card;
-const data = Object.fromEntries(
+const sortAttributes = Object.fromEntries(
   Object.entries(card.sort).map(([key, value]) => [`data-${key.toLowerCase()}`, value ?? '']),
 );
 ---
@@ -28,7 +28,7 @@ const data = Object.fromEntries(
   data-search={card.search}
   data-tags={info.tags.join('|')}
   data-type={info.type}
-  {...data}
+  {...sortAttributes}
 >
   <a class="tile-link block rounded-xl no-underline" data-sheet-link href={l.href(cardHref(card.id))}>
     <CardFace

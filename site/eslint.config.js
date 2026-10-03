@@ -3,44 +3,36 @@ import perfectionist from 'eslint-plugin-perfectionist';
 import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
-const membersOf = (node) => node.properties ?? node.members ?? node.body;
+const DIRECTIVE = /^\s*(eslint|global|@ts-|\/ <reference)/;
 
 const local = {
   rules: {
-    'line-comments': {
+    'no-comments': {
       create(context) {
         const source = context.sourceCode;
+        const text = source.text;
+        const removal = ([start, end]) => {
+          const lineStart = text.lastIndexOf('\n', start - 1) + 1;
+          const lineEnd = text.indexOf('\n', end) === -1 ? text.length : text.indexOf('\n', end);
+          const before = text.slice(lineStart, start);
+          if (!before.trim() && !text.slice(end, lineEnd).trim())
+            return [lineStart, Math.min(lineEnd + 1, text.length)];
+          return [start - (before.length - before.trimEnd().length), end];
+        };
+        const report = (loc, range) =>
+          context.report({ fix: (fixer) => fixer.removeRange(removal(range)), loc, messageId: 'comment' });
         return {
+          AstroHTMLComment: (node) => report(node.loc, node.range),
           Program() {
             for (const comment of source.getAllComments()) {
-              if (comment.type !== 'Block' || /^\s*(eslint|global|@ts-|#__PURE__|@vite-ignore)/.test(comment.value))
-                continue;
-              if (source.getNodeByRangeIndex(comment.range[0])?.type.startsWith('JSX')) continue;
-              context.report({ loc: comment.loc, messageId: 'block' });
+              if (DIRECTIVE.test(comment.value)) continue;
+              const node = source.getNodeByRangeIndex(comment.range[0]);
+              report(comment.loc, node?.type === 'JSXEmptyExpression' ? node.parent.range : comment.range);
             }
           },
         };
       },
-      meta: { messages: { block: 'Write comments with //' }, type: 'layout' },
-    },
-    'no-comments-between-members': {
-      create(context) {
-        const check = (node) => {
-          const members = membersOf(node);
-          for (const comment of context.sourceCode.getCommentsInside(node)) {
-            const inMember = members.some((m) => m.range[0] <= comment.range[0] && comment.range[1] <= m.range[1]);
-            if (!inMember) context.report({ loc: comment.loc, messageId: 'between' });
-          }
-        };
-        return {
-          ObjectExpression: check,
-          ObjectPattern: check,
-          TSEnumBody: check,
-          TSInterfaceBody: check,
-          TSTypeLiteral: check,
-        };
-      },
-      meta: { messages: { between: 'Sorted members take no comments between them' }, type: 'layout' },
+      meta: { fixable: 'code', messages: { comment: 'No comments' }, type: 'suggestion' },
     },
   },
 };
@@ -57,8 +49,7 @@ export default defineConfig(
     files: ['**/*.{js,mjs,ts,tsx,astro}'],
     plugins: { local, perfectionist },
     rules: {
-      'local/line-comments': 'error',
-      'local/no-comments-between-members': 'error',
+      'local/no-comments': 'error',
       'perfectionist/sort-array-includes': 'error',
       'perfectionist/sort-enums': 'error',
       'perfectionist/sort-exports': 'error',

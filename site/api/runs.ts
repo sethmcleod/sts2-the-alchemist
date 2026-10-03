@@ -1,37 +1,31 @@
-// The mod posts each finished run here (AlchemistCode/Analytics/RunMetricsUploader.cs). A run that
-// passes the checks is stamped and queued in Redis, and api/pack.ts moves the queue into Blob once
-// a day. The mod logs the status and the text of an error answer, so the text names the problem.
-
 const INBOX = 'runs:inbox';
-// Far past a day of real runs: past it, something is flooding the endpoint, and Redis holds 256 MB
 const INBOX_LIMIT = 20_000;
-// A deck plus a full run history is 5 to 15 KB
 const MAX_BODY = 400_000;
 
 type Check = (value: unknown) => boolean;
-const text =
+const textUpTo =
   (max: number): Check =>
   (value) =>
     typeof value === 'string' && value.length > 0 && value.length <= max;
-const whole =
+const wholeUpTo =
   (max: number): Check =>
   (value) =>
     Number.isInteger(value) && (value as number) >= 0 && (value as number) <= max;
-const object =
+const objectUpTo =
   (max: number): Check =>
   (value) =>
     typeof value === 'object' && value !== null && !Array.isArray(value) && JSON.stringify(value).length <= max;
 
 const FIELDS: Record<string, Check> = {
-  alchemist: object(65_536),
-  ascension: whole(100),
-  data: object(262_144),
-  epochs: whole(1000),
-  floor: whole(1000),
-  game_version: text(40),
-  mod_version: text(40),
-  player_hash: text(64),
-  playtime: whole(2 ** 31 - 1),
+  alchemist: objectUpTo(65_536),
+  ascension: wholeUpTo(100),
+  data: objectUpTo(262_144),
+  epochs: wholeUpTo(1000),
+  floor: wholeUpTo(1000),
+  game_version: textUpTo(40),
+  mod_version: textUpTo(40),
+  player_hash: textUpTo(64),
+  playtime: wholeUpTo(2 ** 31 - 1),
   victory: (value) => typeof value === 'boolean',
 };
 const DEFAULTS: Record<string, unknown> = { alchemist: {}, epochs: 0 };
@@ -66,8 +60,8 @@ export async function POST(request: Request) {
     row[name] = value;
   }
 
-  const queued = (await redis(['RPUSH', INBOX, JSON.stringify(row)])) as number;
-  if (queued > INBOX_LIMIT) {
+  const queueLength = (await redis(['RPUSH', INBOX, JSON.stringify(row)])) as number;
+  if (queueLength > INBOX_LIMIT) {
     await redis(['RPOP', INBOX]);
     return new Response('Too many runs are waiting. Try again tomorrow.', { status: 503 });
   }

@@ -1,7 +1,3 @@
-// One dot per item on two rate axes, placed by percentage so it fits any width. A dot links to
-// its page, and pointing at it shows its numbers. The dots are for pointing; the card table carries
-// the same numbers for everyone else.
-
 import { useEffect, useState } from 'preact/hooks';
 import type { Lang } from '../../lib/lang';
 import { opensInSheet } from '../../lib/links';
@@ -11,10 +7,8 @@ export interface Point {
   fill: string;
   href: string;
   label: string;
-  /** Radius in pixels */
   r: number;
   tip: string[];
-  /** Heavier dots get their name written first */
   weight: number;
   x: number;
   y: number;
@@ -28,123 +22,146 @@ interface Props {
   xLabel: string;
 }
 
-const LETTER = 6.7;
-// Chinese, Japanese and Korean characters are about twice as wide
+const LETTER_WIDTH = 6.7;
 const labelWidth = (label: string) =>
-  [...label].reduce((w, ch) => w + (/[\u1100-\u9fff\uac00-\ud7af\uff00-\uffef]/.test(ch) ? 2 : 1) * LETTER, 0);
-const LINE = 14;
+  [...label].reduce(
+    (width, char) => width + (/[\u1100-\u9fff\uac00-\ud7af\uff00-\uffef]/.test(char) ? 2 : 1) * LETTER_WIDTH,
+    0,
+  );
+const LINE_HEIGHT = 14;
 
-// Names the heaviest dots first. A label tries four spots around its dot and takes the first one
-// that overlaps no dot and no earlier label, at a nominal plot size. Crowded dots stay unnamed
-function placeLabels(points: (Point & { px: number; py: number })[], width: number, height: number, count: number) {
-  const at = (p: { px: number; py: number }) => ({ x: (p.px / 100) * width, y: (p.py / 100) * height });
-  const boxes = points.map((p) => ({ h: p.r * 2, w: p.r * 2, x: at(p).x - p.r, y: at(p).y - p.r }));
-  const clear = (b: (typeof boxes)[number]) =>
-    b.x >= 0 &&
-    b.x + b.w <= width &&
-    b.y >= 0 &&
-    b.y + b.h <= height &&
-    !boxes.some((o) => b.x < o.x + o.w + 2 && b.x + b.w + 2 > o.x && b.y < o.y + o.h + 2 && b.y + b.h + 2 > o.y);
-  const placed = [];
-  for (const p of [...points].sort((a, b) => b.weight - a.weight).slice(0, count)) {
-    const w = labelWidth(p.label);
-    const { x, y } = at(p);
+function placeLabels(points: (Point & { px: number; py: number })[], width: number, height: number, maxLabels: number) {
+  const toPixels = (point: { px: number; py: number }) => ({
+    x: (point.px / 100) * width,
+    y: (point.py / 100) * height,
+  });
+  const occupied = points.map((point) => ({
+    h: point.r * 2,
+    w: point.r * 2,
+    x: toPixels(point).x - point.r,
+    y: toPixels(point).y - point.r,
+  }));
+  const isFree = (box: (typeof occupied)[number]) =>
+    box.x >= 0 &&
+    box.x + box.w <= width &&
+    box.y >= 0 &&
+    box.y + box.h <= height &&
+    !occupied.some(
+      (other) =>
+        box.x < other.x + other.w + 2 &&
+        box.x + box.w + 2 > other.x &&
+        box.y < other.y + other.h + 2 &&
+        box.y + box.h + 2 > other.y,
+    );
+  const labels = [];
+  for (const point of [...points].sort((a, b) => b.weight - a.weight).slice(0, maxLabels)) {
+    const textWidth = labelWidth(point.label);
+    const { x, y } = toPixels(point);
     const spots: [number, number][] = [
-      [p.r + 4, -LINE / 2],
-      [-p.r - 4 - w, -LINE / 2],
-      [-w / 2, -p.r - LINE - 2],
-      [-w / 2, p.r + 2],
+      [point.r + 4, -LINE_HEIGHT / 2],
+      [-point.r - 4 - textWidth, -LINE_HEIGHT / 2],
+      [-textWidth / 2, -point.r - LINE_HEIGHT - 2],
+      [-textWidth / 2, point.r + 2],
     ];
     for (const [dx, dy] of spots) {
-      const box = { h: LINE, w, x: x + dx, y: y + dy };
-      if (!clear(box)) continue;
-      boxes.push(box);
-      placed.push({ dx, dy, label: p.label, left: p.px, top: p.py });
+      const box = { h: LINE_HEIGHT, w: textWidth, x: x + dx, y: y + dy };
+      if (!isFree(box)) continue;
+      occupied.push(box);
+      labels.push({ dx, dy, label: point.label, left: point.px, top: point.py });
       break;
     }
   }
-  return placed;
+  return labels;
 }
 
-const step = (span: number) => (span > 0.5 ? 0.2 : 0.1);
+const tickStep = (span: number) => (span > 0.5 ? 0.2 : 0.1);
 
 export default function Scatter({ l, label, points, reference, xLabel }: Props) {
   const [active, setActive] = useState<null | number>(null);
-  // Until the island runs, the browser's own tooltip carries the numbers
-  const [live, setLive] = useState(false);
-  useEffect(() => setLive(true), []);
-  // New filters bring new dots, so the one pointed at before means nothing now
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
   useEffect(() => setActive(null), [points]);
   if (!points.length) return <p class="empty">{emptyText(l)}</p>;
-  const ys = points.map((p) => p.y).concat(reference ?? []);
-  const xMax = Math.min(1, Math.ceil((Math.max(...points.map((p) => p.x)) + 0.02) * 10) / 10);
-  const yMin = Math.max(0, Math.floor((Math.min(...ys) - 0.02) * 10) / 10);
-  const yMax = Math.min(1, Math.ceil((Math.max(...ys) + 0.02) * 10) / 10);
+  const yValues = points.map((point) => point.y).concat(reference ?? []);
+  const xMax = Math.min(1, Math.ceil((Math.max(...points.map((point) => point.x)) + 0.02) * 10) / 10);
+  const yMin = Math.max(0, Math.floor((Math.min(...yValues) - 0.02) * 10) / 10);
+  const yMax = Math.min(1, Math.ceil((Math.max(...yValues) + 0.02) * 10) / 10);
   const left = (x: number) => (x / xMax) * 100;
   const top = (y: number) => (1 - (y - yMin) / (yMax - yMin)) * 100;
-  const placed = points.map((p) => ({ ...p, px: left(p.x), py: top(p.y) }));
+  const positioned = points.map((point) => ({ ...point, px: left(point.x), py: top(point.y) }));
   const ticks = (from: number, to: number) => {
-    const out = [];
-    for (let v = from; v <= to + 1e-9; v += step(to - from)) out.push(Math.round(v * 100) / 100);
-    return out;
+    const values = [];
+    for (let value = from; value <= to + 1e-9; value += tickStep(to - from)) values.push(Math.round(value * 100) / 100);
+    return values;
   };
-  // A tap opens the dot's page, so only a mouse or a pen shows the tooltip
-  const point = (e: PointerEvent) => {
+  const hoverDot = (e: PointerEvent) => {
     if (e.pointerType === 'touch') return;
     const index = (e.target as HTMLElement).closest<HTMLElement>('[data-index]')?.dataset.index;
     setActive(index ? Number(index) : null);
   };
-  const tip = active === null ? undefined : placed[active];
+  const activeDot = active === null ? undefined : positioned[active];
 
   return (
     <figure aria-label={label} class="scatter">
-      <div class="scatter-plot" onPointerLeave={() => setActive(null)} onPointerOver={point}>
-        {ticks(yMin, yMax).map((v) => (
-          <span aria-hidden="true" class="scatter-grid" style={{ '--at': `${top(v)}%` }}>
-            <span>{l.pct(v)}</span>
+      <div class="scatter-plot" onPointerLeave={() => setActive(null)} onPointerOver={hoverDot}>
+        {ticks(yMin, yMax).map((value) => (
+          <span aria-hidden="true" class="scatter-grid" style={{ '--at': `${top(value)}%` }}>
+            <span>{l.pct(value)}</span>
           </span>
         ))}
-        {ticks(0, xMax).map((v) => (
-          <span aria-hidden="true" class="scatter-tick" style={{ '--at': `${left(v)}%` }}>
-            {l.pct(v)}
+        {ticks(0, xMax).map((value) => (
+          <span aria-hidden="true" class="scatter-tick" style={{ '--at': `${left(value)}%` }}>
+            {l.pct(value)}
           </span>
         ))}
         {reference != null && <span aria-hidden="true" class="scatter-ref" style={{ '--at': `${top(reference)}%` }} />}
-        {placed.map((p, i) => (
+        {positioned.map((point, i) => (
           <a
             aria-hidden="true"
             class="scatter-dot"
             data-index={i}
-            data-sheet-link={opensInSheet(p.href) || undefined}
-            href={l.href(p.href)}
-            style={{ '--fill': p.fill, '--r': `${p.r}px`, left: `${p.px}%`, top: `${p.py}%` }}
+            data-sheet-link={opensInSheet(point.href) || undefined}
+            href={l.href(point.href)}
+            style={{ '--fill': point.fill, '--r': `${point.r}px`, left: `${point.px}%`, top: `${point.py}%` }}
             tabIndex={-1}
-            title={live ? undefined : p.tip.join('\n')}
+            title={hydrated ? undefined : point.tip.join('\n')}
           />
         ))}
         {(['wide', 'narrow'] as const).map((size) =>
-          placeLabels(placed, size === 'wide' ? 640 : 300, size === 'wide' ? 380 : 300, size === 'wide' ? 36 : 10).map(
-            (l) => (
-              <span
-                aria-hidden="true"
-                class={`scatter-label ${size}`}
-                style={{ '--dx': `${l.dx}px`, '--dy': `${l.dy}px`, left: `${l.left}%`, top: `${l.top}%` }}
-              >
-                {l.label}
-              </span>
-            ),
-          ),
+          placeLabels(
+            positioned,
+            size === 'wide' ? 640 : 300,
+            size === 'wide' ? 380 : 300,
+            size === 'wide' ? 36 : 10,
+          ).map((placedLabel) => (
+            <span
+              aria-hidden="true"
+              class={`scatter-label ${size}`}
+              style={{
+                '--dx': `${placedLabel.dx}px`,
+                '--dy': `${placedLabel.dy}px`,
+                left: `${placedLabel.left}%`,
+                top: `${placedLabel.top}%`,
+              }}
+            >
+              {placedLabel.label}
+            </span>
+          )),
         )}
-        {tip && (
+        {activeDot && (
           <div
             aria-hidden="true"
-            class={['scatter-tip', tip.py < 25 && 'below', tip.px < 20 ? 'start' : tip.px > 80 && 'end']
+            class={[
+              'scatter-tip',
+              activeDot.py < 25 && 'below',
+              activeDot.px < 20 ? 'start' : activeDot.px > 80 && 'end',
+            ]
               .filter(Boolean)
               .join(' ')}
-            style={{ '--r': `${tip.r}px`, left: `${tip.px}%`, top: `${tip.py}%` }}
+            style={{ '--r': `${activeDot.r}px`, left: `${activeDot.px}%`, top: `${activeDot.py}%` }}
           >
-            <strong>{tip.tip[0]}</strong>
-            {tip.tip.slice(1).map((line) => (
+            <strong>{activeDot.tip[0]}</strong>
+            {activeDot.tip.slice(1).map((line) => (
               <span>{line}</span>
             ))}
           </div>

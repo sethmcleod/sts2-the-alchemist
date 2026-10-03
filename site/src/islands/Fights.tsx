@@ -49,19 +49,20 @@ interface Props {
 
 export default function Fights({ initial, locale, options }: Props) {
   const l = useLang(locale);
-  const {
-    filters,
-    model: m,
-    status,
-    update,
-  } = useStats(initial, ['encounters'], options, (runs, f) => fights(l, runs, f), locale);
+  const { filters, model, status, update } = useStats(
+    initial,
+    ['encounters'],
+    options,
+    (runs, f) => fights(l, runs, f),
+    locale,
+  );
   return (
     <div aria-busy={status === 'loading'} class="stats-page">
-      <Filters filters={filters} l={l} onChange={update} options={options} runs={m.runs} status={status} />
+      <Filters filters={filters} l={l} onChange={update} options={options} runs={model.runs} status={status} />
       <section class="panel p-5">
         <SectionHeading id="where-runs-end">{l.t('Where runs end')}</SectionHeading>
         <p class="note">{l.t('Lost runs by the floor they ended on. The tall bars are usually the act bosses.')}</p>
-        <Columns items={m.floors} l={l} label={l.t('Lost runs by the floor they ended on')} />
+        <Columns items={model.floors} l={l} label={l.t('Lost runs by the floor they ended on')} />
       </section>
       <section class="panel p-5">
         <SectionHeading id="toughest-fights">{l.t('Toughest fights')}</SectionHeading>
@@ -71,7 +72,7 @@ export default function Fights({ initial, locale, options }: Props) {
           columns={encounterColumns(l)}
           l={l}
           limit={15}
-          rows={m.encounters}
+          rows={model.encounters}
           sort={{ dir: -1, key: 'deaths' }}
         />
       </section>
@@ -82,7 +83,7 @@ export default function Fights({ initial, locale, options }: Props) {
           caption={l.t('Fights by act')}
           columns={actColumns(l)}
           l={l}
-          rows={m.acts}
+          rows={model.acts}
           sort={{ dir: 1, key: 'act' }}
         />
       </section>

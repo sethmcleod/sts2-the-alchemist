@@ -1,8 +1,5 @@
 @import 'tailwindcss';
 
-/* The game's card fonts, from its own files, cut down by tools/analytics/card_fonts.py. Cards are
-   laid out for their exact widths. Kreon also sets the headings. A page downloads only the fonts
-   its language draws with */
 @font-face {
   font-family: Kreon;
   src: url('../assets/fonts/card-latin-regular.woff2') format('woff2');
@@ -114,7 +111,6 @@
   --color-transparent: transparent;
   --color-current: currentColor;
 
-  /* The game's text colours (StsColors) */
   --color-game-cream: #fff6e2;
   --color-game-gold: #efc851;
   --color-game-green: #7fff00;
@@ -140,7 +136,6 @@
     --stage-3: #9ccf8f;
   }
 
-  /* The page behind an open dialog stays put */
   html:has(dialog[open]) {
     overflow: hidden;
   }
@@ -151,7 +146,6 @@
     font: 16px/1.5 var(--font-sans);
   }
 
-  /* Kreon has no Polish, Cyrillic, Thai or CJK letters, so those headings use the reader's fonts */
   :root:lang(pl),
   :root:lang(ru) {
     --font-display: Georgia, 'Times New Roman', serif;
@@ -185,7 +179,6 @@
     outline-offset: 2px;
   }
 
-  /* A scroller clips an outline drawn outside the links in it, so theirs goes inside */
   :is(.overflow-x-auto, .table-scroll) a:focus-visible {
     outline-offset: -2px;
   }
@@ -194,7 +187,6 @@
     display: none !important;
   }
 
-  /* Base.astro and scripts/place.ts */
   [data-placing] body {
     visibility: hidden;
   }
@@ -208,8 +200,6 @@
       animation-duration: 0s !important;
     }
 
-    /* The header's shadow follows the scroll rather than moving on its own, and a zero duration
-       would leave it at its end, shown even at the top */
     .site-header {
       animation-duration: auto !important;
     }
@@ -229,7 +219,6 @@
 }
 
 @utility needs-js {
-  /* Controls that only work with a script stay hidden without one */
   @media (scripting: none) {
     display: none !important;
   }
@@ -301,7 +290,6 @@
     font: 15px var(--font-sans);
   }
 
-  /* The browser's own arrow sits against the edge, so selects draw their own */
   select.field-control {
     padding-right: 36px;
     appearance: none;
@@ -370,7 +358,6 @@
     font-weight: 600;
   }
 
-  /* README sections, rendered from its Markdown */
   .readme {
     color: var(--color-ink-2);
   }
@@ -402,11 +389,6 @@
     cursor: pointer;
   }
 
-  /* ---------- the site header ---------- */
-
-  /* The header stays at the top. Where the tabs have a row of their own, only that row does: the
-     logo and language row above it (8 + 56 px) scrolls away. Header.astro sets the row heights;
-     what stays is the 44 px tabs (or the 64 px single row) and the 1 px border */
   :root {
     --header-hidden: 64px;
     --header-stuck: 45px;
@@ -420,7 +402,6 @@
     }
   }
 
-  /* On a narrow screen the tabs scroll sideways beside the language button; the fade says there are more */
   @media (width < 64rem) {
     .site-nav {
       mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
@@ -436,9 +417,6 @@
     background: var(--color-bg);
   }
 
-  /* A shadow once the page scrolls under the header, where the browser can tie it to the scroll. The
-     timeline sits in its own rule: a minifier folds it into the animation shorthand, which cannot
-     hold one, and the browser then drops the whole animation */
   @supports (animation-timeline: scroll()) {
     .site-header {
       animation: header-lift linear both;
@@ -455,8 +433,6 @@
       box-shadow: 0 6px 18px rgb(0 0 0 / 0.35);
     }
   }
-
-  /* ---------- the card library ---------- */
 
   .toolbar {
     position: sticky;
@@ -476,8 +452,6 @@
     display: none;
   }
 
-  /* On a desktop the toolbar keeps to one line in every language: the filters wait behind their
-     button until the row is wide enough for all of them, and then they give way before the box does */
   @media (width >= 64rem) {
     .toolbar {
       flex-wrap: nowrap;
@@ -497,7 +471,6 @@
       min-width: 8rem;
     }
 
-    /* A select is as wide as its longest option, so these get a width of their own */
     .toolbar .library-filters select {
       flex: 0 1 8.25rem;
       min-width: 6.5rem;
@@ -578,8 +551,6 @@
     background: var(--color-panel);
   }
 
-  /* ---------- game text ---------- */
-
   .t-gold {
     color: var(--color-game-gold);
   }
@@ -612,10 +583,6 @@
     vertical-align: -0.22em;
   }
 
-  /* ---------- card faces ---------- */
-
-  /* The game's card is 300 x 422 units, and the orb and banner stick out past it, so a face is
-     330 x 438. Every size below is in those units (--u), so a card draws the same at any width */
   .face {
     --u: calc(100cqw / 330);
     position: relative;
@@ -677,7 +644,6 @@
     white-space: nowrap;
   }
 
-  /* Base.astro sets the --card- values for a language that draws cards in another font */
   .face-title > * {
     font-size: calc(var(--size) * var(--card-title-scale, 1) * var(--u));
   }
@@ -686,9 +652,6 @@
     font-size: calc(var(--size) * var(--card-text-scale, 1) * var(--u));
   }
 
-  /* The outline is a copy of the text behind it, so it never eats into the letters. The copy is
-     drawn 24 times around a circle rather than stroked: a text stroke has mitred corners, which
-     make spikes on sharp letters such as A */
   .outlined {
     position: relative;
     isolation: isolate;
@@ -697,7 +660,6 @@
   .outlined::before {
     --r: calc(var(--stroke) / 2);
     content: attr(data-text);
-    /* The copy is decoration: an empty alternative keeps it out of what a screen reader says */
     content: attr(data-text) / '';
     position: absolute;
     inset: 0;
@@ -783,9 +745,6 @@
     vertical-align: calc(-5 * var(--u));
   }
 
-  /* A face holds its base and upgraded text. The upgraded one shows when its card's toggle and the
-     "Show all upgraded" box disagree, so either one flips it. On a card's page, #upgraded in the
-     address stands for that box */
   .upgraded {
     display: none;
   }
@@ -872,8 +831,6 @@
     }
   }
 
-  /* The browser draws a tile's face only near the screen. The face's aspect ratio already sets its
-     height, so the page keeps its length and a language switch lands on the same card */
   .tile-link .face {
     content-visibility: auto;
     transition: transform 0.15s ease;
@@ -913,7 +870,6 @@
     overflow-wrap: anywhere;
   }
 
-  /* An item's lines in the patch notes: the version, then the line */
   .changes {
     display: grid;
     gap: 8px;
@@ -939,8 +895,6 @@
     color: var(--color-muted);
   }
 
-  /* A tile whose name is its link: the link's box stretches over the whole tile, and any other
-     link inside the tile sits above it */
   .stretched::after {
     content: '';
     position: absolute;
@@ -962,9 +916,6 @@
     z-index: 1;
   }
 
-  /* ---------- gallery ---------- */
-
-  /* The arrows step through the shots, so the scrollbar shows only without a script */
   @media (scripting: enabled) {
     .gallery-track {
       scrollbar-width: none;
@@ -1029,9 +980,6 @@
     margin: 0;
   }
 
-  /* ---------- bars ---------- */
-
-  /* A labelled horizontal bar per row, its value as text beside it */
   .bars {
     display: grid;
     grid-template-columns: minmax(0, var(--label, 12rem)) auto minmax(0, 1fr);
@@ -1172,8 +1120,6 @@
     background: var(--dot);
   }
 
-  /* ---------- stats pages ---------- */
-
   .stats-page {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -1205,7 +1151,6 @@
     margin: 0;
   }
 
-  /* A section heading's own link, shown while the pointer is on it */
   .anchor {
     margin-left: 0.35em;
     color: var(--color-muted);
@@ -1225,7 +1170,6 @@
     }
   }
 
-  /* The section a link points at */
   .panel:has(> .anchored:target) {
     border-color: var(--color-gold);
     box-shadow: 0 0 0 1px var(--color-gold);
@@ -1276,8 +1220,6 @@
     color: var(--color-ink-2);
   }
 
-  /* ---------- columns ---------- */
-
   .columns {
     position: relative;
     margin: 0;
@@ -1317,7 +1259,6 @@
     list-style: none;
   }
 
-  /* The whole height of a column answers the pointer, so an empty one can still be read */
   .column {
     display: flex;
     align-items: flex-end;
@@ -1376,8 +1317,6 @@
     white-space: nowrap;
   }
 
-  /* ---------- stacked bar ---------- */
-
   .stack {
     display: flex;
     gap: 2px;
@@ -1407,16 +1346,11 @@
     gap: 6px;
   }
 
-  /* A patch notes entry a link points at */
   .panel:target {
     border-color: var(--color-gold);
     box-shadow: 0 0 0 1px var(--color-gold);
   }
 
-  /* ---------- hover tips ---------- */
-
-  /* A card's sheet: the card, then its tips and stats on a phone. On a wide screen the stats and
-     then the tips run down beside the card */
   .card-sheet {
     display: grid;
     grid-template-areas: 'card' 'tips' 'stats';
@@ -1448,8 +1382,6 @@
     margin-bottom: 8px;
   }
 
-  /* On a wide screen the tips stay open and the toggle goes, where the browser can style what a
-     <details> hides; elsewhere the toggle stays */
   @media (width >= 48rem) {
     @supports selector(::details-content) {
       .tips-more > summary {
@@ -1462,7 +1394,6 @@
     }
   }
 
-  /* The game's hover tips, stacked the way it stacks them beside a card */
   .tips {
     display: grid;
     gap: 6px;
@@ -1488,8 +1419,6 @@
     font-family: var(--font-display);
     font-size: 15px;
   }
-
-  /* ---------- scatter ---------- */
 
   .scatter {
     margin: 0;
@@ -1549,7 +1478,6 @@
     box-shadow: 0 0 0 2px var(--color-ink);
   }
 
-  /* Above the dot, or below it near the top, and kept inside the plot near either side */
   .scatter-tip {
     --tx: -50%;
     position: absolute;
@@ -1614,8 +1542,6 @@
     text-align: center;
   }
 
-  /* ---------- tables ---------- */
-
   .table-scroll {
     overflow-x: auto;
   }
@@ -1669,8 +1595,6 @@
     }
   }
 
-  /* ---------- stat tiles ---------- */
-
   .stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
@@ -1723,8 +1647,6 @@
   .commentary :is(p, ul, ol) {
     margin: 0 0 12px;
   }
-
-  /* ---------- dialogs ---------- */
 
   .sheet {
     width: min(100% - 24px, 68rem);

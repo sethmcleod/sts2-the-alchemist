@@ -1,21 +1,16 @@
-// The shapes of the files tools/analytics/export_stats.py writes to data/
-
 import type { Tip } from './tips';
 
 export type Rarity = 'Ancient' | 'Basic' | 'Common' | 'Event' | 'Rare' | 'Token' | 'Uncommon';
 export type CardType = 'Attack' | 'Power' | 'Skill';
 
 export interface CardInfo {
-  /** A path in the mod repo */
   art: null | string;
-  costs: [string, string];
+  costs: [base: string, upgraded: string];
   keywords: string[];
   name: string;
   rarity: Rarity;
-  /** Extra markers from cards.csv: Multiplayer, or the partner mod a card needs */
   tags: string[];
-  /** The text as the game shows it, then as its upgrade shows it, in the loc markup */
-  texts: [string, string];
+  texts: [base: string, upgraded: string];
   themes: string[];
   type: CardType;
 }
@@ -28,7 +23,6 @@ export interface ItemInfo {
   text: string;
 }
 
-/** The base game's own words in one language (tools/analytics/game_loc.json) */
 export interface GameWords {
   encounters: Record<string, string>;
   keywords: Record<string, string>;
@@ -42,7 +36,6 @@ export interface GameWords {
 
 type ItemText = Pick<ItemInfo, 'flavor' | 'name' | 'text'>;
 
-/** The mod's words in one language (data/loc/<game>.json), cards as the game shows them */
 export interface Translation {
   badges: Record<string, Partial<Record<BadgeTier['tier'], Pick<BadgeTier, 'text' | 'title'>>>>;
   cards: Record<string, Pick<CardInfo, 'name' | 'texts'>>;
@@ -51,7 +44,6 @@ export interface Translation {
   potions: Record<string, ItemText>;
   powers: Record<string, ItemText>;
   relics: Record<string, ItemText>;
-  /** The hover tips for the gold terms in the text (lib/tips.ts) */
   tips?: Tip[];
 }
 
@@ -102,15 +94,12 @@ export interface Meta {
   workshop: WorkshopItem[];
 }
 
-/** A count table: its key columns, its count columns, then one row per group and key */
 export interface TableFile {
   counts: string[];
   key: string[];
   rows: (number | string)[][];
 }
 
-/** The same table stored by column, each text key as an index into its list of names. The browser
-    gets this form (compact.ts) */
 export interface ColumnFile {
   columns: number[][];
   counts: string[];
@@ -139,9 +128,7 @@ export interface NoteItem {
 
 export interface Release {
   date: null | string;
-  /** Prose under the version heading, before any list */
   intro: string[];
-  /** A list before the first heading has no title */
   sections: { items: NoteItem[]; title: null | string }[];
   version: string;
 }

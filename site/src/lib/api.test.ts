@@ -20,13 +20,12 @@ const RUN = {
   victory: true,
 };
 
-// A fake Redis (a list and keys), Supabase and deploy hook behind fetch
 let inbox: string[];
 let keys: Map<string, string>;
 let supabase: Error | { id: number }[];
-let calls: string[];
+let fetchedUrls: string[];
 function fakeFetch(url: string, init?: RequestInit) {
-  calls.push(url);
+  fetchedUrls.push(url);
   if (url === 'https://redis.test') {
     const [name, ...args] = JSON.parse(String(init!.body)) as [string, ...(number | string)[]];
     const result = {
@@ -52,7 +51,7 @@ beforeEach(() => {
   inbox = [];
   keys = new Map();
   supabase = [];
-  calls = [];
+  fetchedUrls = [];
   vi.stubGlobal(
     'fetch',
     vi.fn(async (url: string, init?: RequestInit) => fakeFetch(url, init)),
@@ -144,7 +143,7 @@ describe('the daily pack', () => {
     expect(JSON.parse(keys.get('runs:files')!)).toEqual([
       { pathname: 'runs/x.jsonl.gz', size: 9, url: 'https://blob/x' },
     ]);
-    expect(calls.at(-1)).toBe('https://hook.test');
+    expect(fetchedUrls.at(-1)).toBe('https://hook.test');
   });
 
   it('copies only the Supabase rows it has not copied', async () => {
@@ -174,12 +173,12 @@ describe('the daily pack', () => {
     blob.put.mockRejectedValue(new Error('Blob is down'));
     await expect(pack()).rejects.toThrow('Blob is down');
     expect(inbox.length).toBe(1);
-    expect(calls).not.toContain('https://hook.test');
+    expect(fetchedUrls).not.toContain('https://hook.test');
   });
 
   it('does nothing when nothing is new', async () => {
     expect(await (await pack()).json()).toEqual({ packed: 0 });
     expect(blob.put).not.toHaveBeenCalled();
-    expect(calls).not.toContain('https://hook.test');
+    expect(fetchedUrls).not.toContain('https://hook.test');
   });
 });

@@ -13,9 +13,8 @@ export const getStaticPaths = everyLanguage;
 const { l, locale } = Astro.locals;
 const data = runs(locale);
 const { meta } = data;
-// The island redraws with the stats strings alone, so the numbers it starts with use them too
-const init = islandLang(locale);
-const il = statsLang(init);
+const islandInit = islandLang(locale);
+const statsL = statsLang(islandInit);
 ---
 
 <Stats
@@ -26,7 +25,12 @@ const il = statsLang(init);
   )}
   title={l.t('Run stats')}
 >
-  <Overview client:idle initial={overview(il, data, DEFAULT_FILTERS)} locale={init} options={filterOptions(il, data)} />
+  <Overview
+    client:idle
+    initial={overview(statsL, data, DEFAULT_FILTERS)}
+    locale={islandInit}
+    options={filterOptions(statsL, data)}
+  />
 
   <section class="mt-10 max-w-[70ch] scroll-mt-4" id="about">
     <h2 class="text-2xl">{l.t('How the stats work')}</h2>

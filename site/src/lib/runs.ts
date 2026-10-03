@@ -1,6 +1,3 @@
-// The run data with the site's filters applied: which groups of runs count, and the numbers more
-// than one page reads from them.
-
 import type { Lang } from './lang';
 import { ASCENSION_BANDS, inPool, mixKind, POOL_RARITIES, type PoolRarity } from './mod';
 import {
@@ -43,7 +40,6 @@ export const DEFAULT_FILTERS: Filters = {
   version: 'recent',
 };
 
-// The default version filter is the newest versions that together reach this many solo runs
 const RECENT_MIN_RUNS = 500;
 
 const SUMMARY_TABLES = [
@@ -58,11 +54,9 @@ const SUMMARY_TABLES = [
   'death_floors',
 ] as const;
 
-/** The mod's names in another language, and its badges' tier titles and texts */
 export type Names = Pick<Translation, 'badges' | 'names'>;
 
-/** The summary with the mod's names in another language */
-export function named(summary: Summary, { badges, names }: Names): Summary {
+export function withTranslatedNames(summary: Summary, { badges, names }: Names): Summary {
   const rename = <T extends { name: string }>(infos: Record<string, T>) =>
     Object.fromEntries(Object.entries(infos).map(([id, info]) => [id, { ...info, name: names[id] ?? info.name }]));
   return {
@@ -84,7 +78,6 @@ export function named(summary: Summary, { badges, names }: Names): Summary {
 
 export type Extra = 'cards' | 'encounters' | 'potions' | 'relics';
 
-/** The data file, and the key in it, that holds each table beyond the summary */
 export const EXTRA_FILES: Record<Extra, [file: string, key: string]> = {
   cards: ['cards.json', 'cards'],
   encounters: ['fights.json', 'encounters'],
@@ -114,12 +107,10 @@ export class Runs {
     this.recentStart = this.findRecentStart();
   }
 
-  /** The same runs, with the mod's names and text from another summary (another language) */
   withSummary(summary: Summary): Runs {
     return Object.assign(Object.create(Runs.prototype), this, { meta: summary.meta, summary });
   }
 
-  /** The mod's own names come from its localization. A base game id only has its words to go on */
   name(id: string) {
     const known = this.summary.names[id] ?? this.summary.card_info[id]?.name;
     if (known) return known;
@@ -137,15 +128,15 @@ export class Runs {
     return found;
   }
 
-  select(f: Filters, where: (g: Group) => boolean = () => true): Selection {
-    const inVersion = this.versionTest(f.version);
-    return this.groups.map((g) =>
-      inVersion(g.version) &&
-      (f.ascension === 'all' || g.ascension === Number(f.ascension)) &&
-      (f.players === 'all' || g.coop === (f.players === 'coop' ? 1 : 0)) &&
-      (f.pool === 'all' || g.pool === f.pool) &&
-      (f.build === 'all' || g.build === f.build) &&
-      where(g)
+  select(filters: Filters, where: (group: Group) => boolean = () => true): Selection {
+    const inVersion = this.versionTest(filters.version);
+    return this.groups.map((group) =>
+      inVersion(group.version) &&
+      (filters.ascension === 'all' || group.ascension === Number(filters.ascension)) &&
+      (filters.players === 'all' || group.coop === (filters.players === 'coop' ? 1 : 0)) &&
+      (filters.pool === 'all' || group.pool === filters.pool) &&
+      (filters.build === 'all' || group.build === filters.build) &&
+      where(group)
         ? 1
         : 0,
     );
@@ -155,7 +146,6 @@ export class Runs {
     return this.meta.versions.at(-1)!;
   }
 
-  /** The first and last version a filter covers */
   versionSpan(choice: string): [string, string] | null {
     if (choice === 'all') return null;
     if (choice === 'recent') return [this.recentStart, this.latest];
@@ -165,12 +155,13 @@ export class Runs {
 
   private versionTest(choice: string) {
     const span = this.versionSpan(choice);
-    return (v: string) => !span || (compareVersions(v, span[0]) >= 0 && compareVersions(v, span[1]) <= 0);
+    return (version: string) =>
+      !span || (compareVersions(version, span[0]) >= 0 && compareVersions(version, span[1]) <= 0);
   }
 
   private findRecentStart() {
-    const solo = this.groups.map((g) => (g.coop ? 0 : 1));
-    const byVersion = sumBy(this.tables.totals, solo, (r) => this.groups[r.group].version);
+    const solo = this.groups.map((group) => (group.coop ? 0 : 1));
+    const byVersion = sumBy(this.tables.totals, solo, (row) => this.groups[row.group].version);
     const newestFirst = [...this.meta.versions].reverse();
     let runs = 0;
     for (const version of newestFirst) {
@@ -185,11 +176,10 @@ export class Runs {
   }
 
   counters(on: Selection) {
-    return sumBy(this.tables.counters, on, (r) => r.counter as string);
+    return sumBy(this.tables.counters, on, (row) => row.counter as string);
   }
 
-  /** The schema 3 counters start with one version, so the groups that carry them are a version cut */
-  withDetail(on: Selection): Selection {
+  withDetailedCounters(on: Selection): Selection {
     const since = this.detailSince;
     return on.map((flag, i) => (flag && since && compareVersions(this.groups[i].version, since) >= 0 ? 1 : 0));
   }
@@ -198,50 +188,51 @@ export class Runs {
     return this.meta.schema_since?.['3'] ?? null;
   }
 
-  /** When the detailed counters start: "from v0.14.18 on" */
   countedSince(l: Lang) {
     return this.detailSince ? l.t('from {version} on', { version: this.detailSince }) : l.t('from the next release on');
   }
 
   histogram(on: Selection, metric: string, column = 'runs') {
     const { last, width } = this.meta.histograms[metric];
-    const counts = sumBy(this.tables.histograms, on, (r) => (r.metric === metric ? (r.bin as number) : -1));
+    const counts = sumBy(this.tables.histograms, on, (row) => (row.metric === metric ? (row.bin as number) : -1));
     const bins = [];
     for (let bin = 0; bin <= last; bin += width) bins.push({ bin, runs: counts.get(bin)?.[column] || 0 });
     return { bins, last, width };
   }
 
   badgeShares(on: Selection, badgeId: string) {
-    const byTier = sumBy(this.tables.badges, on, (r) => (r.badge === badgeId ? (r.tier as number) : -1));
+    const byTier = sumBy(this.tables.badges, on, (row) => (row.badge === badgeId ? (row.tier as number) : -1));
     byTier.delete(-1);
-    const eligible = [...byTier.values()].reduce((n, t) => n + t.runs, 0);
-    const atLeast = (tier: number) => [...byTier].filter(([t]) => t >= tier).reduce((n, [, c]) => n + c.runs, 0);
+    const eligible = [...byTier.values()].reduce((total, counts) => total + counts.runs, 0);
+    const atLeast = (tier: number) =>
+      [...byTier].filter(([rowTier]) => rowTier >= tier).reduce((total, [, counts]) => total + counts.runs, 0);
     return { eligible, share: (tier: number) => rate(atLeast(tier), eligible) };
   }
 
-  /** Win rates of one item's rows by ascension band and by version, ignoring those two filters */
-  breakdown(t: Table, f: Filters, where: (row: Row) => boolean, wins: string, runs: string) {
-    const mine = { counts: t.counts, rows: t.rows.filter(where) };
-    const byBand = [...sumBy(mine, this.select({ ...f, ascension: 'all' }), (r) => this.groups[r.group].ascension)]
-      .filter(([, c]) => c[runs] > 0)
+  breakdown(source: Table, filters: Filters, where: (row: Row) => boolean, winsColumn: string, runsColumn: string) {
+    const itemRows = { counts: source.counts, rows: source.rows.filter(where) };
+    const allBands = this.select({ ...filters, ascension: 'all' });
+    const allVersions = this.select({ ...filters, version: 'all' });
+    const byBand = [...sumBy(itemRows, allBands, (row) => this.groups[row.group].ascension)]
+      .filter(([, counts]) => counts[runsColumn] > 0)
       .sort((a, b) => a[0] - b[0])
-      .map(([band, c]) => ({ label: ASCENSION_BANDS[band], runs: c[runs], wins: c[wins] }));
-    const byVersion = [...sumBy(mine, this.select({ ...f, version: 'all' }), (r) => this.groups[r.group].version)]
-      .filter(([, c]) => c[runs] > 0)
+      .map(([band, counts]) => ({ label: ASCENSION_BANDS[band], runs: counts[runsColumn], wins: counts[winsColumn] }));
+    const byVersion = [...sumBy(itemRows, allVersions, (row) => this.groups[row.group].version)]
+      .filter(([, counts]) => counts[runsColumn] > 0)
       .sort((a, b) => compareVersions(b[0], a[0]))
-      .map(([version, c]) => ({ label: version, runs: c[runs], wins: c[wins] }));
+      .map(([version, counts]) => ({ label: version, runs: counts[runsColumn], wins: counts[winsColumn] }));
     return { byBand, byVersion };
   }
 }
 
-/** The counters that start with a prefix, keyed by the label after it */
-export function byPrefix(all: Map<string, Counts>, start: string) {
-  const out = new Map<string, Counts>();
-  for (const [key, total] of all) if (key.startsWith(start)) out.set(key.slice(start.length), total);
-  return out;
+export function byPrefix(counters: Map<string, Counts>, prefix: string) {
+  const byLabel = new Map<string, Counts>();
+  for (const [key, counts] of counters) if (key.startsWith(prefix)) byLabel.set(key.slice(prefix.length), counts);
+  return byLabel;
 }
 
-export const totalCount = (byKey: Map<string, Counts>) => [...byKey.values()].reduce((n, c) => n + c.count, 0);
+export const totalCount = (byKey: Map<string, Counts>) =>
+  [...byKey.values()].reduce((total, counts) => total + counts.count, 0);
 
 export interface CardRow {
   deckrate: null | number;
@@ -257,13 +248,11 @@ export interface CardRow {
   held_with_plays: number;
   id: string;
   offered: number;
-  /** The win rate of the middle card of its rarity */
   peer: null | number;
   picked: number;
   pickrate: null | number;
   plays: number;
   playsPerRun: null | number;
-  /** Its place by win rate among the cards of its rarity with enough runs */
   rank?: number;
   ranked?: number;
   rarity: string;
@@ -273,39 +262,37 @@ export interface CardRow {
   winrate: null | number;
 }
 
-// Long runs finish with more cards, so a card is measured against the cards of its own rarity: its
-// place among them by win rate, and the middle one's win rate
 export function cardRows(runs: Runs, on: Selection, min: number) {
-  const t = runs.totals(on);
+  const totals = runs.totals(on);
   const info = runs.summary.card_info;
   const rows: CardRow[] = [];
-  for (const [id, c] of sumBy(runs.table('cards'), on, (r) => r.card as string)) {
+  for (const [id, counts] of sumBy(runs.table('cards'), on, (row) => row.card as string)) {
     rows.push({
       id,
       rarity: info[id]?.rarity ?? 'Retired',
-      ...(c as unknown as Omit<CardRow, 'id' | 'rarity'>),
-      deckrate: rate(c.held, t.runs),
+      ...(counts as unknown as Omit<CardRow, 'id' | 'rarity'>),
+      deckrate: rate(counts.held, totals.runs),
       peer: null,
-      pickrate: rate(c.picked, c.offered),
-      playsPerRun: rate(c.plays, c.held_with_plays),
-      unplayed: rate(c.held_never_played, c.held_with_plays),
+      pickrate: rate(counts.picked, counts.offered),
+      playsPerRun: rate(counts.plays, counts.held_with_plays),
+      unplayed: rate(counts.held_never_played, counts.held_with_plays),
       vsPeers: null,
-      winrate: rate(c.held_wins, c.held),
+      winrate: rate(counts.held_wins, counts.held),
     });
   }
-  const peers = {} as Record<PoolRarity, null | number>;
+  const medianWinrate = {} as Record<PoolRarity, null | number>;
   for (const rarity of POOL_RARITIES) {
     const ranked = rows
-      .filter((r) => r.rarity === rarity && r.held >= min)
+      .filter((row) => row.rarity === rarity && row.held >= min)
       .sort((a, b) => (b.winrate ?? 0) - (a.winrate ?? 0));
-    ranked.forEach((r, i) => Object.assign(r, { rank: i + 1, ranked: ranked.length }));
-    peers[rarity] = median(ranked.map((r) => r.winrate ?? 0));
+    ranked.forEach((row, i) => Object.assign(row, { rank: i + 1, ranked: ranked.length }));
+    medianWinrate[rarity] = median(ranked.map((row) => row.winrate ?? 0));
   }
-  for (const r of rows) {
-    r.peer = inPool(r.rarity) ? peers[r.rarity] : null;
-    r.vsPeers = r.peer != null && r.winrate != null ? r.winrate - r.peer : null;
+  for (const row of rows) {
+    row.peer = inPool(row.rarity) ? medianWinrate[row.rarity] : null;
+    row.vsPeers = row.peer != null && row.winrate != null ? row.winrate - row.peer : null;
   }
-  return new Map(rows.map((r) => [r.id, r]));
+  return new Map(rows.map((row) => [row.id, row]));
 }
 
 export interface MixRow {
@@ -314,23 +301,22 @@ export interface MixRow {
   share: null | number;
 }
 
-/** How often a run makes and plays each kind of Mix, from the tally counters */
 export function mixRows(runs: Runs, on: Selection) {
-  const all = runs.counters(on);
-  const [made, played] = [byPrefix(all, 'mixmade:'), byPrefix(all, 'mixplay:')];
-  const t = runs.totals(on);
-  const total = totalCount(made);
-  const out = new Map<string, MixRow>();
+  const counters = runs.counters(on);
+  const [made, played] = [byPrefix(counters, 'mixmade:'), byPrefix(counters, 'mixplay:')];
+  const totals = runs.totals(on);
+  const allMade = totalCount(made);
+  const rowsById = new Map<string, MixRow>();
   for (const [id, info] of Object.entries(runs.summary.card_info)) {
     const kind = mixKind(id, info);
-    const n = (kind && made.get(kind)?.count) || 0;
-    if (kind && n) {
-      out.set(id, {
-        perRun: rate(n, t.runs_with_tally),
-        played: rate(played.get(kind)?.count || 0, n),
-        share: rate(n, total),
+    const madeCount = (kind && made.get(kind)?.count) || 0;
+    if (kind && madeCount) {
+      rowsById.set(id, {
+        perRun: rate(madeCount, totals.runs_with_tally),
+        played: rate(played.get(kind)?.count || 0, madeCount),
+        share: rate(madeCount, allMade),
       });
     }
   }
-  return out;
+  return rowsById;
 }

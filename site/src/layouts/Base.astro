@@ -14,14 +14,12 @@ import { cardFont } from '../lib/fit';
 import { basePath, LOCALES } from '../lib/i18n';
 import { Lang } from '../lib/lang';
 import { pagePath } from '../lib/links';
-import { PLACING } from '../scripts/placing.mjs';
-import { SPECULATION } from '../scripts/speculation.mjs';
+import { PLACING_SCRIPT } from '../scripts/placing.mjs';
+import { SPECULATION_RULES } from '../scripts/speculation.mjs';
 
 interface Props {
   description?: string;
-  /** The page's own picture for a link preview: a card's art, an item's icon */
   image?: ImageMetadata | null;
-  /** Kept out of search results: the offline and not-found pages */
   noindex?: boolean;
   title?: string;
 }
@@ -39,27 +37,23 @@ const {
 const fullTitle = title ? `${title} · The Alchemist` : `The Alchemist · ${l.t('Slay the Spire 2 character mod')}`;
 const canonical = new URL(pagePath(Astro.url), Astro.site);
 const favicon = await getImage({ format: 'png', src: head, width: 64 });
-// A link preview shows the page's own picture beside its text, or else a wide Workshop screenshot
-const preview = pageImage ?? (await image(runs().meta.previews[0]?.image));
-const social =
-  preview &&
+const previewSource = pageImage ?? (await image(runs().meta.previews[0]?.image));
+const previewImage =
+  previewSource &&
   (await getImage({
     format: pageImage ? 'png' : 'jpg',
     quality: 80,
-    src: preview,
-    width: Math.min(preview.width, pageImage ? 600 : 1200),
+    src: previewSource,
+    width: Math.min(previewSource.width, pageImage ? 600 : 1200),
   }));
 const touchIcon = await getImage({ format: 'png', src: appIcon, width: 180 });
-// Page views and Core Web Vitals go to Vercel only from a Vercel build, so local builds send nothing
-const measured = process.env.VERCEL === '1';
+const isVercelBuild = process.env.VERCEL === '1';
 
-// The same page in every language, for search engines
 const path = basePath(pagePath(Astro.url));
 const alternates = (path === '/404' ? [] : LOCALES).map((other) => ({
   href: new URL(new Lang(other).href(path), Astro.site),
   lang: other.lang,
 }));
-// A language that draws cards in another font than Kreon lays them out with its metrics (global.css)
 const font = cardFont(locale.game);
 const cardStyle =
   font.name === 'latin'
@@ -72,7 +66,7 @@ const cardStyle =
 <html lang={locale.lang} style={cardStyle}>
   <head>
     <meta charset="utf-8" />
-    <script is:inline set:html={PLACING} />
+    <script is:inline set:html={PLACING_SCRIPT} />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>{fullTitle}</title>
     <meta content={description} name="description" />
@@ -88,7 +82,7 @@ const cardStyle =
     <link href={touchIcon.src} rel="apple-touch-icon" />
     <link href="/manifest.webmanifest" rel="manifest" />
     <link href="/notes.xml" rel="alternate" title="The Alchemist patch notes" type="application/atom+xml" />
-    <script is:inline set:html={SPECULATION} type="speculationrules" />
+    <script is:inline set:html={SPECULATION_RULES} type="speculationrules" />
     {font.name === 'latin' && <link as="font" crossorigin href={kreonRegular} rel="preload" type="font/woff2" />}
     {font.name === 'latin' && <link as="font" crossorigin href={kreonBold} rel="preload" type="font/woff2" />}
     <meta content="website" property="og:type" />
@@ -96,7 +90,7 @@ const cardStyle =
     <meta content={fullTitle} property="og:title" />
     <meta content={description} property="og:description" />
     <meta content={canonical} property="og:url" />
-    {social && <meta content={new URL(social.src, Astro.site)} property="og:image" />}
+    {previewImage && <meta content={new URL(previewImage.src, Astro.site)} property="og:image" />}
     <meta content={pageImage ? 'summary' : 'summary_large_image'} name="twitter:card" />
   </head>
   <body class="min-h-dvh">
@@ -112,6 +106,6 @@ const cardStyle =
     <script>
       if (import.meta.env.PROD && 'serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
     </script>
-    {measured && <Insights />}
+    {isVercelBuild && <Insights />}
   </body>
 </html>

@@ -12,7 +12,7 @@ interface Props {
 const { description, title } = Astro.props;
 const { l } = Astro.locals;
 const path = basePath(pagePath(Astro.url));
-const pages = [
+const tabs = [
   ['/stats', l.t('Overview')],
   ['/stats/cards', l.t('Cards')],
   ['/stats/mechanics', l.t('Mechanics')],
@@ -25,7 +25,7 @@ const pages = [
 <Base description={description} title={title}>
   <nav aria-label={l.t('Stats')} class="-mx-4 mt-4 overflow-x-auto px-4 [scrollbar-width:none]">
     <ul class="m-0 flex list-none gap-1 border-b border-line p-0">
-      {pages.map(([href, label]) => (
+      {tabs.map(([href, label]) => (
         <li>
           <a
             aria-current={path === href ? 'page' : undefined}

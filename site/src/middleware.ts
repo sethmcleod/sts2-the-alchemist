@@ -1,4 +1,3 @@
-// Every page knows its language from its path, and reads it from Astro.locals
 import { defineMiddleware } from 'astro:middleware';
 import { language } from './lib/content';
 import { localeOf } from './lib/i18n';

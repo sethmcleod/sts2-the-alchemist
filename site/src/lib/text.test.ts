@@ -69,7 +69,6 @@ describe('fitting text the way the game does', () => {
 });
 
 describe('card fonts', () => {
-  // The export writes one file per language; without it there is nothing to check
   const exported = LOCALES.filter((locale) => fs.existsSync(`data/loc/${locale.game}.json`));
 
   it.each(exported.map((locale) => locale.game))('has every character %s cards use', (game) => {
@@ -83,7 +82,6 @@ describe('card fonts', () => {
       ),
     );
     const missing = [...used].filter((ch) => ch.trim() && !(ch in font.widths));
-    // Run tools/analytics/card_fonts.py again after the cards change
     expect(missing.join('')).toBe('');
   });
 

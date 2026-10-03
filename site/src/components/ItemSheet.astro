@@ -1,5 +1,4 @@
 ---
-// A relic, potion or power page's content, which the dialog shows as well
 import { Image } from 'astro:assets';
 import { image, runs } from '../lib/content';
 import { potionDetail, powerDetail, relicDetail } from '../lib/details';
@@ -23,14 +22,13 @@ interface Props {
 }
 
 const { item } = Astro.props;
-const data = runs(Astro.locals.locale);
+const runData = runs(Astro.locals.locale);
 const icon = await image(item.info.icon);
-const detail = { potion: potionDetail, power: powerDetail, relic: relicDetail }[item.kind](l, data, item.id);
-const source = item.kind === 'power' ? powerSource(data, item.id) : null;
+const detail = { potion: potionDetail, power: powerDetail, relic: relicDetail }[item.kind](l, runData, item.id);
+const source = item.kind === 'power' ? powerSource(runData, item.id) : null;
 
-const kind = item.rarity === 'Brew' ? l.t('Brew potion, made only at a rest site') : kindName(l, item);
-// The same goes for the kind of a power's source
-const FROM: Record<Source['kind'], string> = {
+const kindLabel = item.rarity === 'Brew' ? l.t('Brew potion, made only at a rest site') : kindName(l, item);
+const COMES_FROM: Record<Source['kind'], string> = {
   card: 'Comes from the {source} card.',
   potion: 'Comes from the {source} potion.',
   relic: 'Comes from the {source} relic.',
@@ -41,7 +39,7 @@ const FROM: Record<Source['kind'], string> = {
   <header class="grid grid-cols-[5rem_minmax(0,1fr)] items-center gap-4 pr-12">
     {icon ? <Image alt="" class="size-20 object-contain" src={icon} /> : <span />}
     <div>
-      <p class="m-0 text-sm text-muted">{kind}</p>
+      <p class="m-0 text-sm text-muted">{kindLabel}</p>
       <h1 class="m-0 text-4xl" id="sheet-title" tabindex="-1">
         {item.info.name}
       </h1>
@@ -55,7 +53,7 @@ const FROM: Record<Source['kind'], string> = {
     {item.info.flavor && <p class="m-0 text-ink-2 italic">{item.info.flavor}</p>}
     {source && (
       <p class="m-0 text-sm">
-        <T text={l.t(FROM[source.kind])}>
+        <T text={l.t(COMES_FROM[source.kind])}>
           <a data-sheet-link href={l.href(source.href)} slot="source">
             {source.name}
           </a>
@@ -65,14 +63,14 @@ const FROM: Record<Source['kind'], string> = {
     {item.kind === 'power' && /\bX\b/.test(plain(item.info.text)) && (
       <p class="m-0 text-sm text-muted">{l.t('X is the amount the card, potion or relic gives.')}</p>
     )}
-    <Tips class="mt-2" exclude={item.info.name} markups={[item.info.text]} />
+    <Tips class="mt-2" markups={[item.info.text]} ownName={item.info.name} />
   </div>
 
   {detail.stats.length > 0 && <Stats items={detail.stats} />}
   <p class="-mt-2 mb-0 text-sm text-muted">
     <T text={l.t('Text from {version}.')}>
-      <a href={l.href(notesHref(data.meta.mod.version))} slot="version">
-        {data.meta.mod.version}
+      <a href={l.href(notesHref(runData.meta.mod.version))} slot="version">
+        {runData.meta.mod.version}
       </a>
     </T>{' '}
     {detail.stats.length > 0 ? (

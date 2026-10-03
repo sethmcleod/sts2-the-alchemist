@@ -1,6 +1,4 @@
 ---
-// A card's page content: the card, its numbers, and how it does by ascension and version. The
-// dialog on the library shows this same element
 import { runs } from '../lib/content';
 import { cardDetail } from '../lib/details';
 import { cardKind, type LibraryCard } from '../lib/library';
@@ -27,9 +25,9 @@ interface Props {
 
 const { card, next, previous } = Astro.props;
 const { info } = card;
-const data = runs(Astro.locals.locale);
-const detail = cardDetail(l, data, card.id);
-const partner = info.tags.map((tag) => PARTNER_MODS[tag]).find(Boolean);
+const runData = runs(Astro.locals.locale);
+const detail = cardDetail(l, runData, card.id);
+const partnerMod = info.tags.map((tag) => PARTNER_MODS[tag]).find(Boolean);
 const labels = [
   cardKind(l, info),
   ...info.themes.map((theme) => l.t(theme)),
@@ -48,15 +46,15 @@ const labels = [
   <div class="card-sheet">
     <div class="card relative mx-auto w-full max-w-[19rem] [grid-area:card]" data-place={card.id}>
       <CardFace eager info={info} width={[[null, '19rem']]} />
-      <UpgradeToggle name={info.name} restore={false} />
+      <UpgradeToggle name={info.name} restoreOnReload={false} />
     </div>
-    <Tips class="[grid-area:tips]" exclude={info.name} keywords={info.keywords} markups={info.texts} />
+    <Tips class="[grid-area:tips]" keywords={info.keywords} markups={info.texts} ownName={info.name} />
     <div class="grid content-start gap-4 [grid-area:stats]">
       {detail.stats.length > 0 && <Stats items={detail.stats} />}
       <p class="m-0 text-sm text-muted">
         <T text={l.t('Card text from {version}.')}>
-          <a href={l.href(notesHref(data.meta.mod.version))} slot="version">
-            {data.meta.mod.version}
+          <a href={l.href(notesHref(runData.meta.mod.version))} slot="version">
+            {runData.meta.mod.version}
           </a>
         </T>{' '}
         {detail.stats.length > 0 ? (
@@ -78,11 +76,11 @@ const labels = [
           l.t('No run has finished with it yet.')
         )}
       </p>
-      {partner && (
+      {partnerMod && (
         <p class="m-0 text-sm">
           <T text={l.t('Needs {mod} installed as well.')}>
             <Fragment slot="mod">
-              <External href={steamItem(partner.item)}>{partner.name}</External>
+              <External href={steamItem(partnerMod.item)}>{partnerMod.name}</External>
             </Fragment>
           </T>
         </p>

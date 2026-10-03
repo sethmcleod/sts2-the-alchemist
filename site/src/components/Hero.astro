@@ -1,5 +1,5 @@
 ---
-import { runs, strings, translations } from '../lib/content';
+import { runs, strings, translationCount } from '../lib/content';
 import { DEFAULT_LOCALE } from '../lib/i18n';
 import { notesHref } from '../lib/links';
 import { steamItem } from '../lib/mod';
@@ -17,20 +17,19 @@ interface Props {
 
 const { latest } = Astro.props;
 const { meta, summary } = runs(locale);
-const item = (branch: string) => meta.workshop.find((w) => w.branch === branch);
-const [beta, main] = [item('beta'), item('main')];
-// English shows the README itself; another language shows its translation of each section, if it has one
-const readme = locale === DEFAULT_LOCALE ? undefined : (strings(locale).readme ?? {});
+const workshopItem = (branch: string) => meta.workshop.find((entry) => entry.branch === branch);
+const [beta, main] = [workshopItem('beta'), workshopItem('main')];
+const readmeTranslations = locale === DEFAULT_LOCALE ? undefined : (strings(locale).readme ?? {});
 const [playstyle, disclaimer] = await Promise.all([
-  readmeSection('Playstyle', readme),
-  readmeSection('Disclaimer', readme),
+  readmeSection('Playstyle', readmeTranslations),
+  readmeSection('Disclaimer', readmeTranslations),
 ]);
 const facts = [
   l.n(Object.keys(summary.card_info).length, '{n} card', '{n} cards'),
   l.n(Object.keys(summary.relic_info).length, '{n} relic', '{n} relics'),
   l.n(Object.keys(summary.potion_info).length, '{n} potion', '{n} potions'),
   l.n(meta.epochs, '{n} timeline epoch', '{n} timeline epochs'),
-  l.n(translations(), 'Translated into {n} language', 'Translated into {n} languages'),
+  l.n(translationCount(), 'Translated into {n} language', 'Translated into {n} languages'),
 ];
 ---
 

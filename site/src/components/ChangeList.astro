@@ -12,7 +12,6 @@ interface Props {
 
 const { changes, class: className } = Astro.props;
 const { l, locale } = Astro.locals;
-// The notes are written in English only
 const notesLang = locale === DEFAULT_LOCALE ? undefined : 'en';
 ---
 

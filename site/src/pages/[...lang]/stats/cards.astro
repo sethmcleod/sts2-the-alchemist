@@ -12,16 +12,15 @@ export const getStaticPaths = everyLanguage;
 
 const { l, locale } = Astro.locals;
 const data = runs(locale);
-// The island redraws with the stats strings alone, so the numbers it starts with use them too
-const init = islandLang(locale);
-const il = statsLang(init);
+const islandInit = islandLang(locale);
+const statsL = statsLang(islandInit);
 ---
 
 <Stats description={l.t('How often each Alchemist card is picked, played and won with.')} title={l.t('Card stats')}>
   <CardStats
     client:idle
-    initial={cardStats(il, data, DEFAULT_FILTERS)}
-    locale={init}
-    options={filterOptions(il, data)}
+    initial={cardStats(statsL, data, DEFAULT_FILTERS)}
+    locale={islandInit}
+    options={filterOptions(statsL, data)}
   />
 </Stats>

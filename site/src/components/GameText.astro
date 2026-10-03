@@ -1,5 +1,4 @@
 ---
-// Text in the game's loc markup, coloured the way the game colours it
 import energyIcon from '../../../Alchemist/images/charui/text_energy.png';
 import { energyWords, tokens } from '../lib/markup';
 
@@ -11,18 +10,18 @@ const { markup } = Astro.props;
 const { l } = Astro.locals;
 ---
 
-{tokens(markup).map((t) =>
-  t.kind === 'break' ? (
+{tokens(markup).map((token) =>
+  token.kind === 'break' ? (
     <br />
-  ) : t.kind === 'energy' ? (
-    <span aria-label={energyWords(t.count, l.game?.words.Energy).trim()} role="img">
-      {Array.from({ length: t.count }, () => (
+  ) : token.kind === 'energy' ? (
+    <span aria-label={energyWords(token.count, l.game?.words.Energy).trim()} role="img">
+      {Array.from({ length: token.count }, () => (
         <img alt="" class="energy" height="24" src={energyIcon.src} width="24" />
       ))}
     </span>
-  ) : t.color ? (
-    <span class={`t-${t.color}`}>{t.text}</span>
+  ) : token.color ? (
+    <span class={`t-${token.color}`}>{token.text}</span>
   ) : (
-    t.text
+    token.text
   ),
 )}

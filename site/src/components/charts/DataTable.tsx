@@ -1,6 +1,3 @@
-// A table whose column headers sort it. Columns marked `wide` hide on a narrow screen, and rows
-// past `limit` wait behind a "Show all" box.
-
 import type { ComponentChildren } from 'preact';
 import { useState } from 'preact/hooks';
 import type { Lang } from '../../lib/lang';
@@ -34,30 +31,32 @@ export default function DataTable<R extends object>({
   l,
   limit,
   rows,
-  sort: initial,
+  sort: initialSort,
 }: Props<R>) {
-  const [sort, setSort] = useState(initial);
+  const [sort, setSort] = useState(initialSort);
   if (!rows.length) return <p class="empty">{empty ?? emptyText(l)}</p>;
 
-  const valueOf = (c: ColumnDef<R>, row: R) => (row as Record<string, unknown>)[c.key] as null | number | string;
-  const column = sort && columns.find((c) => c.key === sort.key);
-  const sorted = column
+  const cellValue = (column: ColumnDef<R>, row: R) =>
+    (row as Record<string, unknown>)[column.key] as null | number | string;
+  const sortColumn = sort && columns.find((column) => column.key === sort.key);
+  const sorted = sortColumn
     ? [...rows].sort((a, b) => {
-        const [va, vb] = [valueOf(column, a), valueOf(column, b)];
-        if (va == null) return 1;
-        if (vb == null) return -1;
+        const [valueA, valueB] = [cellValue(sortColumn, a), cellValue(sortColumn, b)];
+        if (valueA == null) return 1;
+        if (valueB == null) return -1;
         const order =
-          typeof va === 'string' && typeof vb === 'string'
-            ? va.localeCompare(vb, l.lang)
-            : va < vb
+          typeof valueA === 'string' && typeof valueB === 'string'
+            ? valueA.localeCompare(valueB, l.lang)
+            : valueA < valueB
               ? -1
-              : va > vb
+              : valueA > valueB
                 ? 1
                 : 0;
         return order * sort!.dir;
       })
     : rows;
-  const classOf = (c: ColumnDef<R>) => [c.num && 'num', c.wide && 'wide'].filter(Boolean).join(' ') || undefined;
+  const cellClass = (column: ColumnDef<R>) =>
+    [column.num && 'num', column.wide && 'wide'].filter(Boolean).join(' ') || undefined;
 
   return (
     <div class="table-wrap">
@@ -66,23 +65,25 @@ export default function DataTable<R extends object>({
           {caption && <caption class="sr-only">{caption}</caption>}
           <thead>
             <tr>
-              {columns.map((c) => {
-                const active = c.key === sort?.key;
+              {columns.map((column) => {
+                const active = column.key === sort?.key;
                 return (
                   <th
                     aria-sort={active ? (sort!.dir > 0 ? 'ascending' : 'descending') : undefined}
-                    class={classOf(c)}
+                    class={cellClass(column)}
                     scope="col"
                   >
-                    {c.sortable === false ? (
-                      c.label
+                    {column.sortable === false ? (
+                      column.label
                     ) : (
                       <button
                         class="sort"
-                        onClick={() => setSort({ dir: active ? (-sort!.dir as -1 | 1) : c.num ? -1 : 1, key: c.key })}
+                        onClick={() =>
+                          setSort({ dir: active ? (-sort!.dir as -1 | 1) : column.num ? -1 : 1, key: column.key })
+                        }
                         type="button"
                       >
-                        {c.label}
+                        {column.label}
                         <span aria-hidden="true">{active ? (sort!.dir > 0 ? ' ↑' : ' ↓') : ''}</span>
                       </button>
                     )}
@@ -94,8 +95,10 @@ export default function DataTable<R extends object>({
           <tbody>
             {sorted.map((row, i) => (
               <tr class={limit && i >= limit ? 'extra' : undefined}>
-                {columns.map((c) => (
-                  <td class={classOf(c)}>{(c.render ? c.render(row) : valueOf(c, row)) ?? '–'}</td>
+                {columns.map((column) => (
+                  <td class={cellClass(column)}>
+                    {(column.render ? column.render(row) : cellValue(column, row)) ?? '–'}
+                  </td>
                 ))}
               </tr>
             ))}

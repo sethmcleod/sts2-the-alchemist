@@ -12,7 +12,7 @@ const TIPS: Tip[] = [
   tip('ALCHEMIST-BURSTING_MIX_PLUS', 'Bursting Mix+'),
   tip('ALCHEMIST-TRANSFORM_MIX', 'Transform', 'Becomes a random [gold]Mix[/gold].'),
 ];
-const titles = (markup: string, options: { exclude?: string; keywords?: string[]; lang?: string } = {}) =>
+const titles = (markup: string, options: { keywords?: string[]; lang?: string; ownName?: string } = {}) =>
   tipsFor([markup], TIPS, { lang: 'en', ...options }).map((t) => t.id);
 
 describe('tips', () => {
@@ -45,7 +45,7 @@ describe('tips', () => {
 
   it('skips terms with no tip and the item itself', () => {
     expect(titles('Put it in your [gold]Hand[/gold].')).toEqual([]);
-    expect(titles('Add a [gold]Mix[/gold].', { exclude: 'Mix' })).toEqual([]);
+    expect(titles('Add a [gold]Mix[/gold].', { ownName: 'Mix' })).toEqual([]);
   });
 
   it('reads inflected words in languages that inflect them', () => {

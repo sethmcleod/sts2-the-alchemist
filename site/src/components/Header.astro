@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import head from '../../../Alchemist/images/charui/character_icon_alchemist.png';
+import characterIcon from '../../../Alchemist/images/charui/character_icon_alchemist.png';
 import { basePath, LOCALES } from '../lib/i18n';
 import { Lang } from '../lib/lang';
 import { pagePath } from '../lib/links';
@@ -18,20 +18,17 @@ const links = [
   { href: '/notes', label: l.t('Patch notes'), match: (path: string) => path.startsWith('/notes') },
   { href: '/stats', label: l.t('Stats'), match: (path: string) => path.startsWith('/stats') },
 ];
-// The 404 page exists only in English, so the menu offers the other languages' home pages
-const page = basePath(pagePath(Astro.url));
-const path = page === '/404' ? '/' : page;
-// The same page in each language
-const other = (target: (typeof LOCALES)[number]) => new Lang(target).href(path);
+const currentPath = basePath(pagePath(Astro.url));
+const path = currentPath === '/404' ? '/' : currentPath;
+const pageInLanguage = (target: (typeof LOCALES)[number]) => new Lang(target).href(path);
 ---
 
 <header class="site-header">
   <div class="mx-auto flex w-full max-w-[80rem] flex-wrap items-center gap-x-3 px-4 pt-2 lg:gap-x-6">
     <a class="flex h-14 items-center gap-2.5 text-ink no-underline" href={l.href('/')}>
-      <Image alt="" class="size-10" densities={[1, 2]} height={40} src={head} width={40} />
+      <Image alt="" class="size-10" densities={[1, 2]} height={40} src={characterIcon} width={40} />
       <span class="font-display text-xl">The Alchemist</span>
     </a>
-    {/* Below lg the tabs and the language button get a row of their own, the one that stays on screen */}
     <span aria-hidden="true" class="basis-full lg:hidden"></span>
     <nav
       aria-label={l.t('Site')}
@@ -74,7 +71,7 @@ const other = (target: (typeof LOCALES)[number]) => new Lang(target).href(path);
             <a
               aria-current={target === locale ? 'true' : undefined}
               data-language
-              href={other(target)}
+              href={pageInLanguage(target)}
               hreflang={target.lang}
               lang={target.lang}
             >
@@ -90,7 +87,6 @@ const other = (target: (typeof LOCALES)[number]) => new Lang(target).href(path);
 <script>
   import { keepPlace, returnToPlace } from '../scripts/place';
 
-  // The menu closes on a click elsewhere or on Escape, as a native one does
   const menu = document.querySelector<HTMLDetailsElement>('.lang-menu')!;
   for (const link of menu.querySelectorAll<HTMLAnchorElement>('a[data-language]')) {
     link.addEventListener('click', () => keepPlace(link));

@@ -6,7 +6,6 @@ const TOTALS = ['runs', 'wins'];
 const empty = (key: string[], counts: string[]): TableFile => ({ counts, key, rows: [] });
 const card = (rarity: CardInfo['rarity']) => ({ name: rarity, rarity, tags: [] }) as unknown as CardInfo;
 
-// Three versions of solo runs, and one group of multiplayer runs on the newest
 function summary(): Summary {
   return {
     acts: empty(['group', 'act'], ['fights', 'turns', 'damage']),
@@ -101,7 +100,6 @@ describe('Runs', () => {
     expect(rows.get('X-A')).toMatchObject({ rank: 1, ranked: 2, winrate: 0.6 });
     expect(rows.get('X-B')).toMatchObject({ rank: 2, ranked: 2 });
     expect(rows.get('X-A')!.peer).toBeCloseTo(0.55);
-    // Too few runs to rank, and a starter card has no peers
     expect(rows.get('X-C')!.rank).toBeUndefined();
     expect(rows.get('X-S')!.peer).toBeNull();
   });

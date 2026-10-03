@@ -35,7 +35,7 @@ const columns = (l: Lang): ColumnDef<CardTableRow>[] => [
       </>
     ),
   },
-  { key: 'vsPeers', label: l.t('Vs middle card'), num: true, render: (r) => l.change(r.vsPeers) },
+  { key: 'vsPeers', label: l.t('Vs middle card'), num: true, render: (r) => l.pointChange(r.vsPeers) },
   { key: 'range', label: l.t('Likely range'), num: true, sortable: false, wide: true },
   {
     key: 'pickrate',
@@ -74,29 +74,30 @@ interface Props {
 
 export default function CardStats({ initial, locale, options }: Props) {
   const l = useLang(locale);
-  const {
-    filters,
-    model: m,
-    status,
-    update,
-  } = useStats(initial, ['cards'], options, (runs, f) => cardStats(l, runs, f), locale);
-  const peers = { max: 1, referenceLabel: l.t('The gold line is the middle card of the same rarity') };
-  const since = { since: m.countedSince };
+  const { filters, model, status, update } = useStats(
+    initial,
+    ['cards'],
+    options,
+    (runs, f) => cardStats(l, runs, f),
+    locale,
+  );
+  const peerReference = { max: 1, referenceLabel: l.t('The gold line is the middle card of the same rarity') };
+  const since = { since: model.countedSince };
   const noPlays = l.t('No runs in these filters count card plays yet. Counted {since}.', since);
   return (
     <div aria-busy={status === 'loading'} class="stats-page">
-      <Filters filters={filters} l={l} onChange={update} options={options} runs={m.runs} status={status} />
-      <Stats items={m.stats} />
+      <Filters filters={filters} l={l} onChange={update} options={options} runs={model.runs} status={status} />
+      <Stats items={model.stats} />
       <div class="stats-grid">
         <section class="panel p-5">
           <SectionHeading id="beating-their-peers">{l.t('Beating their peers')}</SectionHeading>
           <p class="note">{l.t('Cards that win more often than most cards of the same rarity.')}</p>
-          <Bars items={m.up} l={l} {...peers} />
+          <Bars items={model.up} l={l} {...peerReference} />
         </section>
         <section class="panel p-5">
           <SectionHeading id="trailing-their-peers">{l.t('Trailing their peers')}</SectionHeading>
           <p class="note">{l.t('Cards that win less often than most cards of the same rarity.')}</p>
-          <Bars items={m.down} l={l} {...peers} />
+          <Bars items={model.down} l={l} {...peerReference} />
         </section>
       </div>
       <section class="panel p-5">
@@ -104,14 +105,14 @@ export default function CardStats({ initial, locale, options }: Props) {
         <p class="note">
           {l.t(
             'Each dot is a card. Further right means players take it more often when it is offered. Higher means the runs that finished with it won more often. The gold line is the middle card, at {rate}. The table below has every number.',
-            { rate: l.pct(m.middle) },
+            { rate: l.pct(model.middle) },
           )}
         </p>
         <Scatter
           l={l}
           label={l.t('Pick rate against win rate for each card')}
-          points={m.points}
-          reference={m.middle}
+          points={model.points}
+          reference={model.middle}
           xLabel={l.t('Pick rate when offered')}
         />
         <ul class="legend">
@@ -129,7 +130,7 @@ export default function CardStats({ initial, locale, options }: Props) {
           <p class="note">
             {l.t('The share of runs that finished with the card but never played it. Counted {since}.', since)}
           </p>
-          <Bars empty={noPlays} items={m.unplayed} l={l} limit={10} />
+          <Bars empty={noPlays} items={model.unplayed} l={l} limit={10} />
         </section>
         <section class="panel p-5">
           <SectionHeading id="played-the-most">{l.t('Played the most')}</SectionHeading>
@@ -139,24 +140,24 @@ export default function CardStats({ initial, locale, options }: Props) {
               since,
             )}
           </p>
-          <Bars empty={noPlays} items={m.mostPlayed} l={l} limit={10} />
+          <Bars empty={noPlays} items={model.mostPlayed} l={l} limit={10} />
         </section>
         <section class="panel p-5">
           <SectionHeading id="early-picks">{l.t('Early picks')}</SectionHeading>
           <p class="note">{l.t("Cards taken from a run's first three card rewards, and how those runs went.")}</p>
           <Bars
-            items={m.early}
+            items={model.early}
             l={l}
             limit={10}
             max={1}
-            reference={m.overall}
-            referenceLabel={l.t('The gold line is all runs together, at {rate}', { rate: l.pct(m.overall) })}
+            reference={model.overall}
+            referenceLabel={l.t('The gold line is all runs together, at {rate}', { rate: l.pct(model.overall) })}
           />
         </section>
         <section class="panel p-5">
           <SectionHeading id="upgraded-at-rest-sites">{l.t('Upgraded at rest sites')}</SectionHeading>
           <p class="note">{l.t('Rest site upgrades for every 100 runs that finished with the card.')}</p>
-          <Bars items={m.upgrades} l={l} limit={10} />
+          <Bars items={model.upgrades} l={l} limit={10} />
         </section>
       </div>
       <section class="panel p-5">
@@ -174,7 +175,7 @@ export default function CardStats({ initial, locale, options }: Props) {
           empty={l.t('No card in these filters has enough runs yet.')}
           l={l}
           limit={25}
-          rows={m.table}
+          rows={model.table}
           sort={{ dir: -1, key: 'vsPeers' }}
         />
       </section>

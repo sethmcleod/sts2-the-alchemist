@@ -1,4 +1,8 @@
 {
+  "readme": {
+    "10d2ae3745c2": "Playstyle",
+    "b40936bd23dc": "Disclaimer"
+  },
   "site": [
     "(opens in a new tab)",
     "3 or more",
@@ -533,9 +537,5 @@
     "{version} and newer",
     "{version} notes",
     "{wins} from {n} runs"
-  ],
-  "readme": {
-    "10d2ae3745c2": "Playstyle",
-    "b40936bd23dc": "Disclaimer"
-  }
+  ]
 }

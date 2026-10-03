@@ -1,5 +1,3 @@
-// A row of headline numbers, each with what it counts
-
 import type { ComponentChildren } from 'preact';
 
 export interface Stat {
@@ -12,14 +10,14 @@ export interface Stat {
 export default function Stats({ items }: { items: Stat[] }) {
   return (
     <dl class="stats">
-      {items.map((s) => (
+      {items.map((stat) => (
         <div class="stat">
-          <dt class="stat-label">{s.label}</dt>
+          <dt class="stat-label">{stat.label}</dt>
           <dd class="stat-value">
-            {s.value}
-            {s.delta && <span class={s.delta.up ? 'delta up' : 'delta down'}> {s.delta.text}</span>}
+            {stat.value}
+            {stat.delta && <span class={stat.delta.up ? 'delta up' : 'delta down'}> {stat.delta.text}</span>}
           </dd>
-          {s.note && <dd class="stat-note">{s.note}</dd>}
+          {stat.note && <dd class="stat-note">{stat.note}</dd>}
         </div>
       ))}
     </dl>

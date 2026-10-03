@@ -1,18 +1,11 @@
-// Once a day (vercel.json crons), moves the runs that api/runs.ts queued in Redis into one gzipped
-// JSON Lines file in Blob, keeps the list of those files in Redis for the export
-// (tools/analytics/common.py), and asks Vercel for a site build. A step that fails leaves the queue
-// as it was, so the next day packs the same runs again; the export drops a run it has seen by its id.
-
 import { gzipSync } from 'node:zlib';
 import { list, put } from '@vercel/blob';
 
 const INBOX = 'runs:inbox';
 const FILES = 'runs:files';
 
-// Mod versions from before this endpoint post to Supabase. Each pack copies the rows it has not
-// copied yet, until the project is deleted
 const SUPABASE_RUNS = 'https://qgvpsvjvgpfweeouufbk.supabase.co/rest/v1/runs';
-const SUPABASE_SEEN = 'runs:supabase-seen';
+const SUPABASE_LAST_ID = 'runs:supabase-seen';
 const SUPABASE_COLUMNS =
   'id,created_at,mod_version,game_version,victory,ascension,floor,playtime,player_hash,epochs,data,alchemist';
 
@@ -27,19 +20,19 @@ async function redis(command: (number | string)[]) {
   return result;
 }
 
-async function fromSupabase(): Promise<{ lines: string[]; seen?: number }> {
+async function newSupabaseRuns(): Promise<{ lastId?: number; lines: string[] }> {
   const key = process.env.SUPABASE_READ_KEY;
   if (!key) return { lines: [] };
-  let seen = Number((await redis(['GET', SUPABASE_SEEN])) ?? 0);
+  let lastId = Number((await redis(['GET', SUPABASE_LAST_ID])) ?? 0);
   const lines: string[] = [];
   for (;;) {
-    const url = `${SUPABASE_RUNS}?select=${SUPABASE_COLUMNS}&id=gt.${seen}&order=id.asc&limit=1000`;
+    const url = `${SUPABASE_RUNS}?select=${SUPABASE_COLUMNS}&id=gt.${lastId}&order=id.asc&limit=1000`;
     const response = await fetch(url, { headers: { apikey: key, Authorization: `Bearer ${key}` } });
     if (!response.ok) throw new Error(`Supabase: ${response.status} ${await response.text()}`);
     const rows = (await response.json()) as { id: number }[];
     for (const { id, ...row } of rows) lines.push(JSON.stringify({ id: `sb-${id}`, ...row }));
-    if (rows.length) seen = rows.at(-1)!.id;
-    if (rows.length < 1000) return { lines, seen };
+    if (rows.length) lastId = rows.at(-1)!.id;
+    if (rows.length < 1000) return { lastId, lines };
   }
 }
 
@@ -60,23 +53,23 @@ export async function GET(request: Request) {
     return new Response('Unauthorized', { status: 401 });
 
   const queued = (await redis(['LRANGE', INBOX, 0, -1])) as string[];
-  let older: Awaited<ReturnType<typeof fromSupabase>> = { lines: [] };
+  let supabase: Awaited<ReturnType<typeof newSupabaseRuns>> = { lines: [] };
   try {
-    older = await fromSupabase();
+    supabase = await newSupabaseRuns();
   } catch (error) {
     console.error(error);
   }
 
-  const lines = [...older.lines, ...queued];
+  const lines = [...supabase.lines, ...queued];
   if (!lines.length) return Response.json({ packed: 0 });
   const pathname = `runs/${new Date().toISOString().replace(/[:.]/g, '-')}.jsonl.gz`;
   await put(pathname, gzipSync(lines.join('\n') + '\n'), { access: 'private', contentType: 'application/gzip' });
   await redis(['SET', FILES, JSON.stringify(await packedFiles())]);
   if (queued.length) await redis(['LTRIM', INBOX, queued.length, -1]);
-  if (older.seen) await redis(['SET', SUPABASE_SEEN, older.seen]);
+  if (supabase.lastId) await redis(['SET', SUPABASE_LAST_ID, supabase.lastId]);
 
-  const hook = process.env.DEPLOY_HOOK_URL;
-  if (!hook) console.error('DEPLOY_HOOK_URL is not set, so no build was started.');
-  const built = hook ? (await fetch(hook, { method: 'POST' })).ok : false;
-  return Response.json({ built, fromSupabase: older.lines.length, packed: lines.length, pathname });
+  const deployHook = process.env.DEPLOY_HOOK_URL;
+  if (!deployHook) console.error('DEPLOY_HOOK_URL is not set, so no build was started.');
+  const built = deployHook ? (await fetch(deployHook, { method: 'POST' })).ok : false;
+  return Response.json({ built, fromSupabase: supabase.lines.length, packed: lines.length, pathname });
 }

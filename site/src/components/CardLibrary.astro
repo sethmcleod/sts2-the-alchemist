@@ -1,7 +1,7 @@
 ---
 import { runs } from '../lib/content';
 import { keywordName, libraryCards, rarityName, typeName } from '../lib/library';
-import { CARD_GROUPS, PARTNER_MODS, RARITIES, RARITY_NAME, slug, steamItem, TYPES } from '../lib/mod';
+import { CARD_GROUPS, PARTNER_MODS, PARTNER_ORDER, RARITIES, RARITY_NAME, slug, steamItem, TYPES } from '../lib/mod';
 import { DEFAULT_FILTERS } from '../lib/runs';
 import type { Rarity } from '../lib/types';
 import CardTile from './CardTile.astro';
@@ -11,26 +11,25 @@ import T from './T.astro';
 
 const { l } = Astro.locals;
 
-const data = runs(Astro.locals.locale);
-const cards = libraryCards(l, data, runs());
-const keywords = [...new Set(cards.flatMap((c) => c.info.keywords))]
+const runData = runs(Astro.locals.locale);
+const cards = libraryCards(l, runData, runs());
+const keywords = [...new Set(cards.flatMap((card) => card.info.keywords))]
   .map((word) => [word, keywordName(l, word)])
   .sort(([, a], [, b]) => a.localeCompare(b, l.lang));
-const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
-// The counts scripts/library.ts writes as the filters change, in this language
-const counts = ['{n} cards', '{n} of {total} cards', 'Show {n} cards'];
-const words = JSON.stringify({
+const statRuns = runData.totals(runData.select(DEFAULT_FILTERS)).runs;
+const scriptStringKeys = ['{n} cards', '{n} of {total} cards', 'Show {n} cards'];
+const scriptWords = JSON.stringify({
   code: l.code,
   lang: l.lang,
-  strings: Object.fromEntries(counts.filter((key) => key in l.strings).map((key) => [key, l.strings[key]])),
+  strings: Object.fromEntries(scriptStringKeys.filter((key) => key in l.strings).map((key) => [key, l.strings[key]])),
 });
 
-// A group named after a rarity takes the game's word for it, and a partner mod keeps its name
 const groupTitle = ({ id, title }: (typeof CARD_GROUPS)[number]) =>
   id in PARTNER_MODS ? title : title === RARITY_NAME[id as Rarity] ? rarityName(l, id as Rarity) : l.t(title);
-const groups = CARD_GROUPS.map((group) => ({ ...group, cards: cards.filter((c) => c.group === group.id) })).filter(
-  (group) => group.cards.length,
-);
+const groups = CARD_GROUPS.map((group) => ({
+  ...group,
+  cards: cards.filter((card) => card.group === group.id),
+})).filter((group) => group.cards.length);
 
 const selects = [
   {
@@ -49,7 +48,7 @@ const selects = [
     options: [['', l.t('Any cost')], ['0'], ['1'], ['2'], ['3', l.t('3 or more')], ['X']],
   },
 ];
-const sorts = [
+const sortOptions = [
   ['rarity', l.t('Rarity')],
   ['name', l.t('Name')],
   ['cost', l.t('Cost')],
@@ -61,7 +60,7 @@ const sorts = [
   ['unplayed', l.t('Left unplayed')],
   ['held', l.t('Runs')],
 ];
-const control = 'field-control min-w-0';
+const selectClass = 'field-control min-w-0';
 ---
 
 <section aria-labelledby="cards-heading" class="scroll-mt-4" id="cards">
@@ -80,7 +79,7 @@ const control = 'field-control min-w-0';
     </p>
   </div>
 
-  <form aria-label={l.t('Cards')} class="toolbar" data-words={words} id="library" role="search">
+  <form aria-label={l.t('Cards')} class="toolbar" data-words={scriptWords} id="library" role="search">
     <input
       aria-label={l.t('Search cards')}
       autocomplete="off"
@@ -94,16 +93,16 @@ const control = 'field-control min-w-0';
     </button>
     <div class="library-filters needs-js" data-filters>
       {selects.map((select) => (
-        <select aria-label={select.label} class={control} form="library" name={select.name}>
+        <select aria-label={select.label} class={selectClass} form="library" name={select.name}>
           {select.options.map(([value, text]) => (
             <option value={value}>{text ?? value}</option>
           ))}
         </select>
       ))}
-      <select aria-label={l.t('Keyword or theme')} class={control} form="library" name="keyword">
+      <select aria-label={l.t('Keyword or theme')} class={selectClass} form="library" name="keyword">
         <option value="">{l.t('Any keyword')}</option>
         <optgroup label={l.t('Theme')}>
-          {data.meta.themes.map((theme) => (
+          {runData.meta.themes.map((theme) => (
             <option value={`theme:${theme}`}>{l.t(theme)}</option>
           ))}
         </optgroup>
@@ -113,18 +112,18 @@ const control = 'field-control min-w-0';
           ))}
         </optgroup>
       </select>
-      <select aria-label={l.t('Where from')} class={control} form="library" name="from">
+      <select aria-label={l.t('Where from')} class={selectClass} form="library" name="from">
         <option value="">{l.t('Any source')}</option>
         <option value="starter">{l.t('Starting deck')}</option>
         <option value="pool">{l.t('Card rewards')}</option>
         <option value="created">{l.t('Created in combat')}</option>
         <option value="coop">{l.t('Multiplayer only')}</option>
-        {Object.entries(PARTNER_MODS).map(([tag, mod]) => (
-          <option value={tag}>{mod.name}</option>
+        {PARTNER_ORDER.map((tag) => (
+          <option value={tag}>{PARTNER_MODS[tag].name}</option>
         ))}
       </select>
-      <select aria-label={l.t('Sort by')} class={control} form="library" name="sort">
-        {sorts.map(([value, text]) => (
+      <select aria-label={l.t('Sort by')} class={selectClass} form="library" name="sort">
+        {sortOptions.map(([value, text]) => (
           <option value={value}>{l.t('Sort: {order}', { order: text })}</option>
         ))}
       </select>

@@ -30,17 +30,17 @@ const columns = (l: Lang): ColumnDef<CardChange>[] => [
     ),
   },
   {
-    key: 'confidence',
+    key: 'zScore',
     label: l.t('Against its peers'),
     num: true,
     render: (r) => (
       <>
-        {l.change(r.relative)}
+        {l.pointChange(r.relative)}
         {r.likely && <small class="text-gold">{l.t('likely')}</small>}
       </>
     ),
   },
-  { key: 'pickDelta', label: l.t('Pick rate'), num: true, render: (r) => l.change(r.pickDelta), wide: true },
+  { key: 'pickDelta', label: l.t('Pick rate'), num: true, render: (r) => l.pointChange(r.pickDelta), wide: true },
 ];
 
 interface Props {
@@ -52,16 +52,15 @@ interface Props {
 export default function Versions({ initial, locale, options }: Props) {
   const l = useLang(locale);
   const pair = useRef({ a: initial.a, b: initial.b });
-  const {
-    filters,
-    model: m,
-    refresh,
-    status,
-    update,
-  } = useStats(initial, ['cards'], options, (runs, f) => versions(l, runs, f, pair.current.a, pair.current.b), locale);
+  const { filters, model, refresh, status, update } = useStats(
+    initial,
+    ['cards'],
+    options,
+    (runs, f) => versions(l, runs, f, pair.current.a, pair.current.b),
+    locale,
+  );
   const pick = (side: 'a' | 'b') => (e: Event) => {
     pair.current = { ...pair.current, [side]: (e.currentTarget as HTMLSelectElement).value };
-    // The pair lives in the URL next to the filters, so a shared link opens on the same comparison
     if (!history.state?.sheet) {
       const params = new URLSearchParams(location.search);
       params.set('a', pair.current.a);
@@ -88,9 +87,9 @@ export default function Versions({ initial, locale, options }: Props) {
         l={l}
         onChange={update}
         options={options}
-        runs={m.runs}
+        runs={model.runs}
         status={status}
-        versions={l.list([m.a, m.b])}
+        versions={l.list([model.a, model.b])}
       />
       <section class="panel p-5">
         <SectionHeading id="compare-two-versions">{l.t('Compare two versions')}</SectionHeading>
@@ -107,15 +106,15 @@ export default function Versions({ initial, locale, options }: Props) {
             </label>
           ))}
         </form>
-        {m.a === m.b ? (
+        {model.a === model.b ? (
           <p class="empty">{l.t('Pick two different versions.')}</p>
         ) : (
           <>
             <p class="note">
-              <a href={l.href(notesHref(m.a))}>{l.t('{version} notes', { version: m.a })}</a> ·{' '}
-              <a href={l.href(notesHref(m.b))}>{l.t('{version} notes', { version: m.b })}</a>
+              <a href={l.href(notesHref(model.a))}>{l.t('{version} notes', { version: model.a })}</a> ·{' '}
+              <a href={l.href(notesHref(model.b))}>{l.t('{version} notes', { version: model.b })}</a>
             </p>
-            <Stats items={m.stats} />
+            <Stats items={model.stats} />
           </>
         )}
       </section>
@@ -123,7 +122,7 @@ export default function Versions({ initial, locale, options }: Props) {
         <SectionHeading id="cards-that-moved-the-most">{l.t('Cards that moved the most')}</SectionHeading>
         <p class="note">
           {l.n(
-            m.enough,
+            model.minRuns,
             'Cards with at least {n} run in both versions, the clearest changes first. A change is in percentage points, measured against the middle card of the same rarity, so a version that is harder overall does not drag every card down. A change marked {likely} is too big to be random swing alone.',
             'Cards with at least {n} runs in both versions, the clearest changes first. A change is in percentage points, measured against the middle card of the same rarity, so a version that is harder overall does not drag every card down. A change marked {likely} is too big to be random swing alone.',
             { likely: l.t('likely') },
@@ -133,14 +132,14 @@ export default function Versions({ initial, locale, options }: Props) {
           caption={l.t('Card win rate changes between the two versions')}
           columns={columns(l)}
           empty={l.n(
-            m.enough,
+            model.minRuns,
             'No card has {n} run in both versions yet.',
             'No card has {n} runs in both versions yet.',
           )}
           l={l}
           limit={15}
-          rows={m.a === m.b ? [] : m.changes}
-          sort={{ dir: -1, key: 'confidence' }}
+          rows={model.a === model.b ? [] : model.changes}
+          sort={{ dir: -1, key: 'zScore' }}
         />
       </section>
     </div>

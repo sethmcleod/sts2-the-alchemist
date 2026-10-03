@@ -22,26 +22,25 @@ export interface FightsModel {
   runs: number;
 }
 
-export function fights(l: Lang, runs: Runs, f: Filters): FightsModel {
-  const on = runs.select(f);
+export function fights(l: Lang, runs: Runs, filters: Filters): FightsModel {
+  const on = runs.select(filters);
   const floors = sumBy(runs.tables.death_floors, on, (r) => r.floor as number);
-  const deaths = [...floors.values()].reduce((n, c) => n + c.deaths, 0);
-  const top = Math.max(0, ...floors.keys());
+  const lostRuns = [...floors.values()].reduce((n, c) => n + c.deaths, 0);
+  const lastFloor = Math.max(0, ...floors.keys());
   const columns: Column[] = [];
-  for (let floor = 1; floor <= top; floor++) {
-    const n = floors.get(floor)?.deaths || 0;
+  for (let floor = 1; floor <= lastFloor; floor++) {
+    const ended = floors.get(floor)?.deaths || 0;
     columns.push({
       label: l.num(floor),
       tip: [
         l.t('Floor {floor}', { floor }),
-        l.n(n, '{n} run ended here', '{n} runs ended here'),
-        l.t('{share} of lost runs', { share: l.pct(n / deaths) }),
+        l.n(ended, '{n} run ended here', '{n} runs ended here'),
+        l.t('{share} of lost runs', { share: l.pct(ended / lostRuns) }),
       ],
-      value: n,
+      value: ended,
     });
   }
 
-  // "KNOWLEDGE_DEMON_BOSS" is the Knowledge Demon, a boss. The game names its own fights
   const encounter = (id: string) => {
     const suffix = id.split('_').at(-1)!;
     const kind = ENCOUNTER_KINDS[suffix];
@@ -57,7 +56,7 @@ export function fights(l: Lang, runs: Runs, f: Filters): FightsModel {
       .sort((a, b) => a[0] - b[0])
       .map(([act, g]) => ({ act, damage: g.damage / g.fights, fights: g.fights, turns: g.turns / g.fights })),
     encounters: [...sumBy(runs.table('encounters'), on, (r) => r.encounter as string)]
-      .filter(([, g]) => g.fights >= f.min)
+      .filter(([, g]) => g.fights >= filters.min)
       .map(([id, g]) => ({
         id,
         ...encounter(id),

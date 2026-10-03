@@ -1,7 +1,4 @@
 ---
-// The definitions the game shows beside a card or an item for the terms its text marks in gold. The
-// game shows them on hover; here they fold under a "Show keyword tips" toggle on a phone and stay
-// open on a wide screen (global.css), which needs no script
 import { tips } from '../lib/content';
 import { DEFAULT_LOCALE } from '../lib/i18n';
 import { tipsFor } from '../lib/tips';
@@ -9,28 +6,26 @@ import GameText from './GameText.astro';
 
 interface Props {
   class?: string;
-  /** The item's own name, which gets no tip */
-  exclude?: string;
   keywords?: string[];
   markups: string[];
+  ownName?: string;
 }
 
-const { class: className, exclude, keywords, markups } = Astro.props;
+const { class: className, keywords, markups, ownName } = Astro.props;
 const { l, locale } = Astro.locals;
-// A text the mod has not translated yet reads in English, so the English tips stand behind the page's own
-const found = tipsFor(markups, tips(locale), {
-  exclude,
+const matchedTips = tipsFor(markups, tips(locale), {
   fallback: locale === DEFAULT_LOCALE ? [] : tips(DEFAULT_LOCALE),
   keywords,
   lang: l.lang,
+  ownName,
 });
 ---
 
-{found.length > 0 && (
+{matchedTips.length > 0 && (
   <details class:list={['tips-more', className]}>
     <summary>{l.t('Show keyword tips')}</summary>
     <ul aria-label={l.t('Keywords')} class="tips">
-      {found.map((tip) => (
+      {matchedTips.map((tip) => (
         <li class="tip">
           <strong class="tip-title">{tip.title}</strong>
           <span>

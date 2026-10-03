@@ -1,6 +1,3 @@
-// What a browser needs to install the site as an app. The service worker (scripts/service-worker.js)
-// already keeps it working offline
-
 import type { APIRoute } from 'astro';
 import { getImage } from 'astro:assets';
 import icon from '../../../workshop/image.png';

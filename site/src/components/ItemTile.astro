@@ -1,6 +1,4 @@
 ---
-// A relic, potion or power in a list. Its name links to its page and covers the whole tile; a
-// power's source is a link of its own
 import { Image } from 'astro:assets';
 import { image } from '../lib/content';
 import { type Item, kindName } from '../lib/items';
@@ -16,7 +14,7 @@ interface Props {
 const { item } = Astro.props;
 const icon = await image(item.info.icon);
 const { line, source } = item;
-const capitalized = line && line[0].toLocaleUpperCase(l.lang) + line.slice(1);
+const capitalizedLine = line && line[0].toLocaleUpperCase(l.lang) + line.slice(1);
 ---
 
 <li class="panel relative grid grid-cols-[4rem_minmax(0,1fr)] gap-3 p-3 hover:border-frame" data-place={item.id}>
@@ -40,7 +38,7 @@ const capitalized = line && line[0].toLocaleUpperCase(l.lang) + line.slice(1);
             </a>
           </T>
         ) : (
-          capitalized
+          capitalizedLine
         )}
       </span>
     )}

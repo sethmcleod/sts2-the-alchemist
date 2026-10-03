@@ -15,18 +15,15 @@ export const RARITY_FILL: Record<string, string> = {
   Uncommon: 'var(--color-uncommon)',
 };
 
-/** A card rarity as the game names it */
 export const rarityName = (l: Lang, rarity: string) =>
   l.game?.rarities[rarity] ?? l.t(RARITY_NAME[rarity as Rarity] ?? rarity);
 
-// "3rd of 20 Commons": the rarity changes form after a count, so each rarity has its own sentence
 const RANK_AMONG: Record<PoolRarity, (l: Lang, rank: string, count: number) => string> = {
   Common: (l, rank, count) => l.n(count, '{rank} of {n} Common', '{rank} of {n} Commons', { rank }),
   Rare: (l, rank, count) => l.n(count, '{rank} of {n} Rare', '{rank} of {n} Rares', { rank }),
   Uncommon: (l, rank, count) => l.n(count, '{rank} of {n} Uncommon', '{rank} of {n} Uncommons', { rank }),
 };
 
-// cards.csv tags a card with Multiplayer, or with the partner mod it needs, whose name stays as it is
 const tagName = (l: Lang, tag: string) => (tag === 'Multiplayer' ? l.t('Multiplayer') : tag);
 
 export interface CardTableRow {
@@ -38,11 +35,9 @@ export interface CardTableRow {
   playsPerRun: null | number;
   range: string;
   rank: null | string;
-  /** The rarity and tags in the reader's language */
   rarity: string;
   tags: string[];
   unplayed: null | number;
-  /** The win rate less the middle card's of the same rarity */
   vsPeers: null | number;
   winrate: null | number;
 }
@@ -63,14 +58,14 @@ export interface CardStatsModel {
   upgrades: BarItem[];
 }
 
-export function cardStats(l: Lang, runs: Runs, f: Filters): CardStatsModel {
-  const on = runs.select(f);
-  const t = runs.totals(on);
+export function cardStats(l: Lang, runs: Runs, filters: Filters): CardStatsModel {
+  const on = runs.select(filters);
+  const totals = runs.totals(on);
   const info = runs.summary.card_info;
   const named = (r: CardRow) => ({ ...r, name: info[r.id]?.name ?? r.id });
-  const rows = [...cardRows(runs, on, f.min).values()].filter((r) => info[r.id]).map(named);
-  const measured = rows.filter((r) => inPool(r.rarity) && r.held >= f.min);
-  const overall = rate(t.wins, t.runs);
+  const rows = [...cardRows(runs, on, filters.min).values()].filter((r) => info[r.id]).map(named);
+  const measured = rows.filter((r) => inPool(r.rarity) && r.held >= filters.min);
+  const overall = rate(totals.wins, totals.runs);
   const link = (r: CardRow) => ({ href: cardHref(r.id), note: rarityName(l, r.rarity) });
 
   const standout = (r: CardRow & { name: string }) =>
@@ -82,12 +77,11 @@ export function cardStats(l: Lang, runs: Runs, f: Filters): CardStatsModel {
   const byGap = [...measured].sort((a, b) => (b.vsPeers ?? 0) - (a.vsPeers ?? 0));
   const middle = median(measured.map((r) => r.winrate ?? 0));
 
-  const tracked = rows.filter((r) => r.held_with_plays >= f.min && r.rarity !== 'Token');
-  const early = rows.filter((r) => r.early_picks >= f.min).sort((a, b) => b.early_picks - a.early_picks);
-  // NaN when no run counts, which shows as a dash
-  const deck = Math.round(rate(t.deck_size, t.runs) ?? NaN);
+  const tracked = rows.filter((r) => r.held_with_plays >= filters.min && r.rarity !== 'Token');
+  const early = rows.filter((r) => r.early_picks >= filters.min).sort((a, b) => b.early_picks - a.early_picks);
+  const deckSize = Math.round(rate(totals.deck_size, totals.runs) ?? NaN);
   const upgraded = rows
-    .filter((r) => r.held >= f.min && r.upgraded > 0)
+    .filter((r) => r.held >= filters.min && r.upgraded > 0)
     .map((r) => ({ ...r, per100: (100 * r.upgraded) / r.held }))
     .sort((a, b) => b.per100 - a.per100);
 
@@ -134,27 +128,31 @@ export function cardStats(l: Lang, runs: Runs, f: Filters): CardStatsModel {
         x: r.pickrate ?? 0,
         y: r.winrate ?? 0,
       })),
-    runs: t.runs,
+    runs: totals.runs,
     stats: [
       {
         label: l.t('Final deck'),
-        note: l.t('{count} in a winning run', { count: l.fixed(rate(t.win_deck_size, t.wins), 0) }),
-        value: l.n(deck, '{n} card', '{n} cards'),
+        note: l.t('{count} in a winning run', { count: l.fixed(rate(totals.win_deck_size, totals.wins), 0) }),
+        value: l.n(deckSize, '{n} card', '{n} cards'),
       },
       {
         label: l.t('Card choices'),
         note: l.t('per run, rewards and events'),
-        value: l.fixed(rate(t.reward_screens, t.runs), 0),
+        value: l.fixed(rate(totals.reward_screens, totals.runs), 0),
       },
-      { label: l.t('Skipped'), note: l.t('of card choices'), value: l.pct(rate(t.reward_skips, t.reward_screens)) },
+      {
+        label: l.t('Skipped'),
+        note: l.t('of card choices'),
+        value: l.pct(rate(totals.reward_skips, totals.reward_screens)),
+      },
       {
         label: l.t('Upgrades'),
         note: l.t('per run, at rest sites'),
-        value: l.fixed(rate(sum(runs.table('cards'), on).upgraded, t.runs), 1),
+        value: l.fixed(rate(sum(runs.table('cards'), on).upgraded, totals.runs), 1),
       },
     ],
     table: rows
-      .filter((r) => r.held >= f.min)
+      .filter((r) => r.held >= filters.min)
       .map((r) => ({
         held: r.held,
         id: r.id,

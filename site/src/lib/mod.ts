@@ -42,6 +42,8 @@ export const PARTNER_MODS: Record<string, { item: string; name: string }> = {
   Hero: { item: '3749294247', name: 'The Hero Expansion' },
 };
 
+export const PARTNER_ORDER = ['Hero', 'Ancients Awakened'];
+
 export const CARD_GROUPS: { id: string; note?: string; title: string }[] = [
   { id: 'Basic', title: 'Starting deck' },
   { id: 'Common', title: 'Common' },
@@ -50,7 +52,7 @@ export const CARD_GROUPS: { id: string; note?: string; title: string }[] = [
   { id: 'Ancient', title: 'Ancient' },
   { id: 'Event', title: 'Event' },
   { id: 'Token', note: 'Made by other cards, relics and potions during a fight.', title: 'Created in combat' },
-  ...Object.entries(PARTNER_MODS).map(([id, mod]) => ({ id, title: mod.name })),
+  ...PARTNER_ORDER.map((id) => ({ id, title: PARTNER_MODS[id].name })),
 ];
 
 export const cardGroup = (info: CardInfo) => info.tags.find((tag) => tag in PARTNER_MODS) ?? info.rarity;
