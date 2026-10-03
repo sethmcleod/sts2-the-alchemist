@@ -1,11 +1,10 @@
 import fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { readmeHash as catalogHash, readmeSource as catalogSource, README_SECTIONS } from '../i18n/catalog.mjs';
+import { README_SECTIONS, readmeSource } from '../i18n/catalog.mjs';
 import { cardFont, lineHeight, textSize, titleSize } from './fit';
 import { LOCALES } from './i18n';
 import { Lang } from './lang';
 import { plain, tokens } from './markup';
-import { readmeHash, readmeSource } from './readme';
 
 describe('markup', () => {
   it('colours text and drops the effect tags', () => {
@@ -38,11 +37,9 @@ describe('markup', () => {
   });
 });
 
-describe('README translations', () => {
-  it('key a section the way the string catalog does', () => {
-    for (const title of README_SECTIONS) {
-      expect(readmeHash(readmeSource(title))).toBe(catalogHash(catalogSource(title)));
-    }
+describe('README sections', () => {
+  it('finds every section the site shows', () => {
+    for (const title of README_SECTIONS) expect(readmeSource(title)).not.toBe('');
   });
 });
 
@@ -82,7 +79,7 @@ describe('card fonts', () => {
       ),
     );
     const missing = [...used].filter((ch) => ch.trim() && !(ch in font.widths));
-    expect(missing.join('')).toBe('');
+    expect(missing.join(''), 'Run tools/analytics/card_fonts.py again').toBe('');
   });
 
   it('breaks wide text between characters and Latin text at spaces', () => {

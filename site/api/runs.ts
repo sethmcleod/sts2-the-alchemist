@@ -1,4 +1,5 @@
-const INBOX = 'runs:inbox';
+import { INBOX, redis } from './_redis.js';
+
 const INBOX_LIMIT = 20_000;
 const MAX_BODY = 400_000;
 
@@ -29,17 +30,6 @@ const FIELDS: Record<string, Check> = {
   victory: (value) => typeof value === 'boolean',
 };
 const DEFAULTS: Record<string, unknown> = { alchemist: {}, epochs: 0 };
-
-async function redis(command: (number | string)[]) {
-  const response = await fetch(process.env.KV_REST_API_URL!, {
-    body: JSON.stringify(command),
-    headers: { Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}` },
-    method: 'POST',
-  });
-  const { error, result } = (await response.json()) as { error?: string; result?: unknown };
-  if (!response.ok || error) throw new Error(`Redis ${command[0]}: ${error ?? response.status}`);
-  return result;
-}
 
 export async function POST(request: Request) {
   const body = await request.text();

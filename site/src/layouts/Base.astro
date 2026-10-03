@@ -105,6 +105,11 @@ const cardStyle =
     <slot name="end" />
     <script>
       if (import.meta.env.PROD && 'serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+
+      const pagePath = location.pathname;
+      addEventListener('popstate', () => {
+        if (location.pathname !== pagePath && !history.state?.sheet) location.reload();
+      });
     </script>
     {isVercelBuild && <Insights />}
   </body>

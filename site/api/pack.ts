@@ -1,24 +1,13 @@
 import { gzipSync } from 'node:zlib';
 import { list, put } from '@vercel/blob';
+import { INBOX, redis } from './_redis.js';
 
-const INBOX = 'runs:inbox';
 const FILES = 'runs:files';
 
 const SUPABASE_RUNS = 'https://qgvpsvjvgpfweeouufbk.supabase.co/rest/v1/runs';
 const SUPABASE_LAST_ID = 'runs:supabase-seen';
 const SUPABASE_COLUMNS =
   'id,created_at,mod_version,game_version,victory,ascension,floor,playtime,player_hash,epochs,data,alchemist';
-
-async function redis(command: (number | string)[]) {
-  const response = await fetch(process.env.KV_REST_API_URL!, {
-    body: JSON.stringify(command),
-    headers: { Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}` },
-    method: 'POST',
-  });
-  const { error, result } = (await response.json()) as { error?: string; result?: unknown };
-  if (!response.ok || error) throw new Error(`Redis ${command[0]}: ${error ?? response.status}`);
-  return result;
-}
 
 async function newSupabaseRuns(): Promise<{ lastId?: number; lines: string[] }> {
   const key = process.env.SUPABASE_READ_KEY;

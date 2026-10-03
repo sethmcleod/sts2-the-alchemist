@@ -21,7 +21,7 @@ export const RARITY_LOOK: Record<Rarity, { frame: string; outline: string }> = {
   Uncommon: { frame: 'uncommon', outline: '#005c75' },
 };
 
-export const RARITIES: Rarity[] = ['Basic', 'Common', 'Uncommon', 'Rare', 'Ancient', 'Event', 'Token'];
+export const RARITIES = ['Basic', 'Common', 'Uncommon', 'Rare', 'Ancient', 'Event', 'Token'] as const;
 
 export const RARITY_NAME: Record<Rarity, string> = {
   Ancient: 'Ancient',
@@ -37,12 +37,12 @@ export const POOL_RARITIES = ['Common', 'Uncommon', 'Rare'] as const;
 export type PoolRarity = (typeof POOL_RARITIES)[number];
 export const inPool = (rarity: string): rarity is PoolRarity => (POOL_RARITIES as readonly string[]).includes(rarity);
 
-export const PARTNER_MODS: Record<string, { item: string; name: string }> = {
-  'Ancients Awakened': { item: '3747492675', name: 'Ancients Awakened' },
-  Hero: { item: '3749294247', name: 'The Hero Expansion' },
-};
+export const PARTNER_MODS = [
+  { item: '3749294247', name: 'The Hero Expansion', tag: 'Hero' },
+  { item: '3747492675', name: 'Ancients Awakened', tag: 'Ancients Awakened' },
+];
 
-export const PARTNER_ORDER = ['Hero', 'Ancients Awakened'];
+export const partnerMod = (tag: string) => PARTNER_MODS.find((mod) => mod.tag === tag);
 
 export const CARD_GROUPS: { id: string; note?: string; title: string }[] = [
   { id: 'Basic', title: 'Starting deck' },
@@ -52,10 +52,10 @@ export const CARD_GROUPS: { id: string; note?: string; title: string }[] = [
   { id: 'Ancient', title: 'Ancient' },
   { id: 'Event', title: 'Event' },
   { id: 'Token', note: 'Made by other cards, relics and potions during a fight.', title: 'Created in combat' },
-  ...PARTNER_ORDER.map((id) => ({ id, title: PARTNER_MODS[id].name })),
+  ...PARTNER_MODS.map((mod) => ({ id: mod.tag, title: mod.name })),
 ];
 
-export const cardGroup = (info: CardInfo) => info.tags.find((tag) => tag in PARTNER_MODS) ?? info.rarity;
+export const cardGroup = (info: CardInfo) => info.tags.find((tag) => partnerMod(tag)) ?? info.rarity;
 
 export const LAST_IN_GROUP = new Set(['ALCHEMIST-COMPOUND_MIX']);
 
@@ -67,18 +67,19 @@ export interface CardKeys {
   type: string;
 }
 
-const RANKS = {
-  cost: (card: CardKeys) => (card.cost === 'X' ? 0 : Number(card.cost)),
-  rarity: (card: CardKeys) => (RARITIES as string[]).indexOf(card.rarity),
-  type: (card: CardKeys) => (TYPES as readonly string[]).indexOf(card.type),
-};
-export type CompendiumKey = keyof typeof RANKS;
-const COMPENDIUM_KEYS: CompendiumKey[] = ['rarity', 'type', 'cost'];
+const COMPENDIUM_RANKS = [
+  ['rarity', (card: CardKeys) => (RARITIES as readonly string[]).indexOf(card.rarity)],
+  ['type', (card: CardKeys) => (TYPES as readonly string[]).indexOf(card.type)],
+  ['cost', (card: CardKeys) => (card.cost === 'X' ? 0 : Number(card.cost))],
+] as const;
+export type CompendiumKey = (typeof COMPENDIUM_RANKS)[number][0];
 
 export function compendiumOrder(first: CompendiumKey = 'rarity') {
-  const keys = [first, ...COMPENDIUM_KEYS.filter((key) => key !== first)];
+  const ranks = [...COMPENDIUM_RANKS]
+    .sort(([a], [b]) => Number(b === first) - Number(a === first))
+    .map(([, rank]) => rank);
   return (a: CardKeys, b: CardKeys) => {
-    for (const key of keys) if (RANKS[key](a) !== RANKS[key](b)) return RANKS[key](a) - RANKS[key](b);
+    for (const rank of ranks) if (rank(a) !== rank(b)) return rank(a) - rank(b);
     return 0;
   };
 }
@@ -88,21 +89,21 @@ export const POTION_ORDER = ['Common', 'Uncommon', 'Rare', 'Event'];
 
 export const potionRarity = (rarity: null | string) => (rarity === 'Event' ? 'Brew' : rarity);
 
-export const MIX_ORDER = ['bursting', 'syrupy', 'zesty', 'fuming', 'acrid', 'sparkling', 'compound'];
+export const MIXES = [
+  { color: '#f03c3c', kind: 'bursting', name: 'Bursting' },
+  { color: '#4a90e8', kind: 'syrupy', name: 'Syrupy' },
+  { color: '#c07aff', kind: 'zesty', name: 'Zesty' },
+  { color: '#ff9424', kind: 'fuming', name: 'Fuming' },
+  { color: '#4fd06a', kind: 'acrid', name: 'Acrid' },
+  { color: '#ffe14a', kind: 'sparkling', name: 'Sparkling' },
+  { color: '#f4f4f4', kind: 'compound', name: 'Compound' },
+];
 
-export const MIX_KINDS: Record<string, { color: string; name: string }> = {
-  acrid: { color: '#4fd06a', name: 'Acrid' },
-  bursting: { color: '#f03c3c', name: 'Bursting' },
-  compound: { color: '#f4f4f4', name: 'Compound' },
-  fuming: { color: '#ff9424', name: 'Fuming' },
-  sparkling: { color: '#ffe14a', name: 'Sparkling' },
-  syrupy: { color: '#4a90e8', name: 'Syrupy' },
-  zesty: { color: '#c07aff', name: 'Zesty' },
-};
+export const mixByKind = (kind: string) => MIXES.find((mix) => mix.kind === kind);
 
 export function mixKind(id: string, info: CardInfo) {
   const kind = id.match(/^[A-Z0-9]+-(\w+)_MIX$/)?.[1].toLowerCase();
-  return info.rarity === 'Token' && kind && kind in MIX_KINDS ? kind : null;
+  return info.rarity === 'Token' && kind && mixByKind(kind) ? kind : null;
 }
 
 export const ASCENSION_BANDS: Record<number, string> = { 0: 'A0', 1: 'A1 to A4', 5: 'A5 to A9', 10: 'A10 and up' };

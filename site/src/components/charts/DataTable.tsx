@@ -38,6 +38,7 @@ export default function DataTable<R extends object>({
 
   const cellValue = (column: ColumnDef<R>, row: R) =>
     (row as Record<string, unknown>)[column.key] as null | number | string;
+  const hiddenCount = limit && rows.length > limit ? rows.length - limit : 0;
   const sortColumn = sort && columns.find((column) => column.key === sort.key);
   const sorted = sortColumn
     ? [...rows].sort((a, b) => {
@@ -105,7 +106,7 @@ export default function DataTable<R extends object>({
           </tbody>
         </table>
       </div>
-      {limit && rows.length > limit && (
+      {hiddenCount > 0 && (
         <label class="show-more">
           <input class="sr-only" type="checkbox" />
           <span class="more">{l.t('Show all {count}', { count: l.num(rows.length) })}</span>

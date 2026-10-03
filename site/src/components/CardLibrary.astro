@@ -1,7 +1,7 @@
 ---
 import { runs } from '../lib/content';
 import { keywordName, libraryCards, rarityName, typeName } from '../lib/library';
-import { CARD_GROUPS, PARTNER_MODS, PARTNER_ORDER, RARITIES, RARITY_NAME, slug, steamItem, TYPES } from '../lib/mod';
+import { CARD_GROUPS, PARTNER_MODS, partnerMod, RARITIES, RARITY_NAME, slug, steamItem, TYPES } from '../lib/mod';
 import { DEFAULT_FILTERS } from '../lib/runs';
 import type { Rarity } from '../lib/types';
 import CardTile from './CardTile.astro';
@@ -25,7 +25,7 @@ const scriptWords = JSON.stringify({
 });
 
 const groupTitle = ({ id, title }: (typeof CARD_GROUPS)[number]) =>
-  id in PARTNER_MODS ? title : title === RARITY_NAME[id as Rarity] ? rarityName(l, id as Rarity) : l.t(title);
+  partnerMod(id) ? title : title === RARITY_NAME[id as Rarity] ? rarityName(l, id as Rarity) : l.t(title);
 const groups = CARD_GROUPS.map((group) => ({
   ...group,
   cards: cards.filter((card) => card.group === group.id),
@@ -118,8 +118,8 @@ const selectClass = 'field-control min-w-0';
         <option value="pool">{l.t('Card rewards')}</option>
         <option value="created">{l.t('Created in combat')}</option>
         <option value="coop">{l.t('Multiplayer only')}</option>
-        {PARTNER_ORDER.map((tag) => (
-          <option value={tag}>{PARTNER_MODS[tag].name}</option>
+        {PARTNER_MODS.map((mod) => (
+          <option value={mod.tag}>{mod.name}</option>
         ))}
       </select>
       <select aria-label={l.t('Sort by')} class={selectClass} form="library" name="sort">
@@ -136,7 +136,7 @@ const selectClass = 'field-control min-w-0';
 
   <div data-groups>
     {groups.map((group) => {
-      const partner = PARTNER_MODS[group.id];
+      const partner = partnerMod(group.id);
       return (
         <section aria-labelledby={`group-${slug(group.id)}`} class="mt-6" data-card-group={group.id}>
           <h3 class="m-0 text-xl" id={`group-${slug(group.id)}`}>

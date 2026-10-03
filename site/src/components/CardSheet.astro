@@ -3,7 +3,7 @@ import { runs } from '../lib/content';
 import { cardDetail } from '../lib/details';
 import { cardKind, type LibraryCard } from '../lib/library';
 import { cardHref, notesHref } from '../lib/links';
-import { PARTNER_MODS, slug, steamItem } from '../lib/mod';
+import { partnerMod, slug, steamItem } from '../lib/mod';
 import Breakdown from './Breakdown.astro';
 import CardFace from './CardFace.astro';
 import Changes from './Changes.astro';
@@ -27,7 +27,7 @@ const { card, next, previous } = Astro.props;
 const { info } = card;
 const runData = runs(Astro.locals.locale);
 const detail = cardDetail(l, runData, card.id);
-const partnerMod = info.tags.map((tag) => PARTNER_MODS[tag]).find(Boolean);
+const partner = info.tags.map((tag) => partnerMod(tag)).find(Boolean);
 const labels = [
   cardKind(l, info),
   ...info.themes.map((theme) => l.t(theme)),
@@ -76,11 +76,11 @@ const labels = [
           l.t('No run has finished with it yet.')
         )}
       </p>
-      {partnerMod && (
+      {partner && (
         <p class="m-0 text-sm">
           <T text={l.t('Needs {mod} installed as well.')}>
             <Fragment slot="mod">
-              <External href={steamItem(partnerMod.item)}>{partnerMod.name}</External>
+              <External href={steamItem(partner.item)}>{partner.name}</External>
             </Fragment>
           </T>
         </p>

@@ -79,7 +79,7 @@ function render() {
   sortedList.hidden = !ungrouped;
   for (const group of groups) {
     const shownInGroup = shown.filter((tile) => homeList.get(tile)!.closest('section') === group).length;
-    group.hidden = Boolean(ungrouped) || shownInGroup === 0;
+    group.hidden = ungrouped || shownInGroup === 0;
     group.querySelector('[data-group-count]')!.textContent = l.n(shownInGroup, '{n} card', '{n} cards');
   }
 

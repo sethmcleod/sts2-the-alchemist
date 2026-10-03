@@ -13,9 +13,10 @@ const BROWSER_CODE = /^(islands|components\/charts|lib\/views)\/|^lib\/(bars|run
 const SITE_END = '<!-- The website shows this section up to here -->';
 
 export function readmeSource(title, text = fs.readFileSync(README, 'utf8')) {
-  const start = text.indexOf(`\n## ${title}\n`);
+  const heading = `\n## ${title}\n`;
+  const start = text.indexOf(heading);
   if (start < 0) throw new Error(`README.md has no "## ${title}" section`);
-  const body = text.slice(start + title.length + 5);
+  const body = text.slice(start + heading.length);
   const end = body.search(/^## /m);
   return (end < 0 ? body : body.slice(0, end)).split(SITE_END)[0].trim();
 }

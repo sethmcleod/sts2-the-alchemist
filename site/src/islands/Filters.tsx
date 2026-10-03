@@ -41,7 +41,6 @@ const POOLS: Record<string, (l: Lang) => [option: string, clause: string]> = {
 const MIN_RUNS = [1, 5, 10, 20, 50];
 
 export function validFilters(filters: FilterValues, options: FilterOptions): FilterValues {
-  const defaults = DEFAULT_FILTERS;
   const [latest] = options.versions;
   const since = filters.version.startsWith('>=') ? filters.version.slice(2) : null;
   const version =
@@ -49,19 +48,19 @@ export function validFilters(filters: FilterValues, options: FilterOptions): Fil
       ? latest
       : ['all', 'recent'].includes(filters.version) || options.versions.includes(since ?? filters.version)
         ? filters.version
-        : defaults.version;
+        : DEFAULT_FILTERS.version;
   return {
     ascension:
       filters.ascension === 'all' || Object.hasOwn(ASCENSION_BANDS, filters.ascension)
         ? filters.ascension
-        : defaults.ascension,
+        : DEFAULT_FILTERS.ascension,
     build:
       filters.build === 'all' || options.builds.some(([build]) => build === filters.build)
         ? filters.build
-        : defaults.build,
-    min: MIN_RUNS.includes(filters.min) ? filters.min : defaults.min,
-    players: PLAYERS.some(([players]) => players === filters.players) ? filters.players : defaults.players,
-    pool: Object.hasOwn(POOLS, filters.pool) ? filters.pool : defaults.pool,
+        : DEFAULT_FILTERS.build,
+    min: MIN_RUNS.includes(filters.min) ? filters.min : DEFAULT_FILTERS.min,
+    players: PLAYERS.some(([players]) => players === filters.players) ? filters.players : DEFAULT_FILTERS.players,
+    pool: Object.hasOwn(POOLS, filters.pool) ? filters.pool : DEFAULT_FILTERS.pool,
     version,
   };
 }

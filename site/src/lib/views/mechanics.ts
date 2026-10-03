@@ -4,7 +4,7 @@ import type { Stat } from '../../components/charts/Stats';
 import { rateItem } from '../bars';
 import type { Lang } from '../lang';
 import { cardHref } from '../links';
-import { MIX_KINDS, MIX_ORDER } from '../mod';
+import { mixByKind, MIXES } from '../mod';
 import { byPrefix, type Filters, type Runs, totalCount } from '../runs';
 import { type Counts, rate, type Selection, sumBy } from '../stats';
 
@@ -89,7 +89,10 @@ export function mechanics(l: Lang, runs: Runs, filters: Filters, icons: Icons): 
       value: c.count / total,
     }));
   };
-  const mixName = (kind: string) => (MIX_KINDS[kind] ? l.t(MIX_KINDS[kind].name) : kind);
+  const mixName = (kind: string) => {
+    const mix = mixByKind(kind);
+    return mix ? l.t(mix.name) : kind;
+  };
 
   const histogram = (selection: Selection, metric: string, binRange: BinRange, badgeId?: string): Histogram => {
     const { bins, last, width } = runs.histogram(selection, metric);
@@ -159,7 +162,7 @@ export function mechanics(l: Lang, runs: Runs, filters: Filters, icons: Icons): 
   const middleFight = fightTotal
     ? fightBins.find((b) => (fightsSoFar += b.fights) >= fightTotal / 2)?.bucket
     : undefined;
-  const kinds = MIX_ORDER.filter((kind) => made.has(kind) || played.has(kind));
+  const kinds = MIXES.map((mix) => mix.kind).filter((kind) => made.has(kind) || played.has(kind));
   const detailedMade = totalCount(byPrefix(detailedCounters, 'mixmade:'));
   const unplayed = Math.max(0, detailedMade - totalCount(byPrefix(detailedCounters, 'mixplay:')));
   const combined = detailedCount('mixlost:combined');
@@ -303,7 +306,7 @@ export function mechanics(l: Lang, runs: Runs, filters: Filters, icons: Icons): 
         .map((kind) => ({ kind, n: made.get(kind)?.count || 0 }))
         .sort((a, b) => b.n - a.n)
         .map(({ kind, n }) => ({
-          dot: MIX_KINDS[kind].color,
+          dot: mixByKind(kind)!.color,
           label: mixName(kind),
           text: l.pct(n / madeTotal),
           textNote: l.num(n),
@@ -324,7 +327,7 @@ export function mechanics(l: Lang, runs: Runs, filters: Filters, icons: Icons): 
         .filter((mix) => mix.made > 0)
         .sort((a, b) => b.played / b.made - a.played / a.made)
         .map((mix) => ({
-          dot: MIX_KINDS[mix.kind].color,
+          dot: mixByKind(mix.kind)!.color,
           label: mixName(mix.kind),
           text: l.pct(Math.min(1, mix.played / mix.made)),
           textNote: l.t('{count} of {total}', { count: l.num(mix.played), total: l.num(mix.made) }),

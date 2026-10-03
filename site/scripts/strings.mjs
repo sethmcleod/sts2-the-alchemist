@@ -5,11 +5,9 @@ import { CATALOG_PATH, readmeSource } from '../src/i18n/catalog.mjs';
 const SITE = path.resolve(import.meta.dirname, '..');
 const I18N = path.join(SITE, 'src', 'i18n');
 const GAME_LOC = JSON.parse(fs.readFileSync(path.join(SITE, '..', 'tools', 'analytics', 'game_loc.json'), 'utf8'));
-const LOCALES = [
-  ...fs.readFileSync(path.join(SITE, 'src', 'lib', 'i18n.ts'), 'utf8').matchAll(/\{[^{}]*\bcode: '([\w-]+)'[^{}]*\}/g),
-]
-  .map(([locale, code]) => ({ code, game: locale.match(/\bgame: '(\w+)'/)[1] }))
-  .filter((locale) => locale.code !== 'en');
+const LOCALES = JSON.parse(fs.readFileSync(path.join(SITE, 'src', 'lib', 'locales.json'), 'utf8')).filter(
+  (locale) => locale.code !== 'en',
+);
 
 const read = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : {});
 const write = (file, data) => fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`);

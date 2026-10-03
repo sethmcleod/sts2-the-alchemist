@@ -19,8 +19,8 @@ const links = [
   { href: '/stats', label: l.t('Stats'), match: (path: string) => path.startsWith('/stats') },
 ];
 const currentPath = basePath(pagePath(Astro.url));
-const path = currentPath === '/404' ? '/' : currentPath;
-const pageInLanguage = (target: (typeof LOCALES)[number]) => new Lang(target).href(path);
+const languageMenuPath = currentPath === '/404' ? '/' : currentPath;
+const pageInLanguage = (target: (typeof LOCALES)[number]) => new Lang(target).href(languageMenuPath);
 ---
 
 <header class="site-header">
@@ -38,7 +38,7 @@ const pageInLanguage = (target: (typeof LOCALES)[number]) => new Lang(target).hr
         {links.map((link) => (
           <li>
             <a
-              aria-current={link.match(path) ? 'page' : undefined}
+              aria-current={link.match(currentPath) ? 'page' : undefined}
               class="flex h-11 items-center rounded-t-lg px-3 text-[15px] font-medium whitespace-nowrap text-ink-2 no-underline hover:bg-panel hover:text-ink aria-[current=page]:bg-panel aria-[current=page]:text-ink aria-[current=page]:shadow-[inset_0_-2px_0_var(--color-accent)]"
               href={l.href(link.href)}
             >

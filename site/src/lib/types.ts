@@ -1,7 +1,8 @@
+import type { RARITIES, TYPES } from './mod';
 import type { Tip } from './tips';
 
-export type Rarity = 'Ancient' | 'Basic' | 'Common' | 'Event' | 'Rare' | 'Token' | 'Uncommon';
-export type CardType = 'Attack' | 'Power' | 'Skill';
+export type Rarity = (typeof RARITIES)[number];
+export type CardType = (typeof TYPES)[number];
 
 export interface CardInfo {
   art: null | string;
