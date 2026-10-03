@@ -1,4 +1,8 @@
 {
+  "readme": {
+    "10d2ae3745c2": "- **Własna Trucizna**: Alchemik celowo sam się truje. Niektóre ataki zadają dodatkowe obrażenia zależne od twojej Trucizny, a inne karty reagują na to, jak często twoja Trucizna się aktywuje.\n- **Antytoksyna**: Rezerwa, która pochłania obrażenia, jakie zadałaby ci twoja Trucizna. Na początku twojej tury zmniejsza się o 1.\n- **Mieszanka**: Karty specjalne podobne do mikstur, które możesz tworzyć w walce. Podstawowe Mieszanki to Wybuchowa (obrażenia), Gęsta (Blok) i Rześka (dobieranie kart); specjalne Mieszanki to Dymiąca (Skażenie), Gryząca (Słabość i Wrażliwość) oraz Iskrząca (Energia).\n- **Fermentacja**: Te karty mają Zachowanie i stają się silniejsze za każdą turę spędzoną w twojej ręce.\n- **Warzenie**: Ta opcja w Obozowisku pozwala zdobyć 1 z 8 unikalnych mikstur, których nie da się zdobyć w inny sposób. Ze względu na jakość tych wywarów Handlarz chętnie odkupi je od ciebie za 150 szt. Złota.",
+    "b40936bd23dc": "Ten mod wciąż jest w fazie rozwoju i jego zawartość może się zmieniać, ale opinie są mile widziane! Najlepszym miejscem do rozmów o modzie jest oficjalny serwer Discord Slay the Spire, [wątek The Alchemist na kanale #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nNa razie tłumaczenia są generowane automatycznie. Gdy zawartość przestanie się tak często zmieniać, planuję zlecić je rodzimym tłumaczom. Do tego czasu poprawki są mile widziane! Jeśli zauważysz błąd w swoim języku, skontaktuj się ze mną albo otwórz pull request na GitHubie."
+  },
   "site": {
     "(opens in a new tab)": "(otwiera się w nowej karcie)",
     "3 or more": "3 lub więcej",
@@ -60,7 +64,6 @@
     "Event Attack": "Unikalny Atak",
     "Event Skill": "Unikalna Umiejętność",
     "Every release of The Alchemist, newest first.": "Wszystkie wydania Alchemika, od najnowszego.",
-    "Every release, newest first. The beta and public branches get the same notes.": "Wszystkie wydania, od najnowszego. Gałąź beta i gałąź publiczna mają tę samą listę zmian.",
     "Filter and sort": "Filtruj i sortuj",
     "Filter the card stats": "Filtruj statystyki kart",
     "Filter the relic and potion stats": "Filtruj statystyki artefaktów i mikstur",
@@ -91,7 +94,6 @@
     "Language: {name}": "Język: {name}",
     "Latest: {notes}, {date}.": "Ostatnia aktualizacja: {notes}, {date}.",
     "Latest: {notes}.": "Ostatnia aktualizacja: {notes}.",
-    "Made by other cards, relics and potions during a fight.": "Tworzone przez inne karty, artefakty i mikstury w trakcie walki.",
     "Made during a fight, so it never ends a run in a deck.": "Powstaje w trakcie walki, więc nigdy nie jest w talii na koniec wyprawy.",
     "Made per run": "Tworzone na wyprawę",
     "Mechanics": "Mechaniki",
@@ -111,7 +113,6 @@
     "Only in runs with {mod} installed as well.": "Tylko w wyprawach z zainstalowanym również modem {mod}.",
     "Overview": "Przegląd",
     "Patch notes": "Lista zmian",
-    "Patch notes are in English.": "Lista zmian jest po angielsku.",
     "Picked at Brew": "Wybór przy Warzeniu",
     "Picked {share} of the time at Brew": "Wybierana w {share} przypadków przy Warzeniu",
     "Plays per run": "Zagrania na wyprawę",
@@ -159,7 +160,6 @@
     "Site": "Strona",
     "Skip to content": "Przejdź do treści",
     "Slay the Spire 2 character mod": "Mod z postacią do Slay the Spire 2",
-    "Sold by the Merchant or found after a fight, like any other potion.": "Sprzedawane przez Handlarza lub zdobywane po walce, jak każda inna mikstura.",
     "Sort by": "Sortuj według",
     "Sort: {order}": "Sortowanie: {order}",
     "Source on GitHub": "Kod źródłowy na GitHubie",
@@ -192,8 +192,6 @@
     "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "Artefakty ({relics}) i mikstury ({potions}) Alchemika oraz wyniki wypraw, w których ich użyto.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Alchemik, mod z postacią do Slay the Spire 2: wszystkie karty, artefakty, mikstury i moce, lista zmian oraz statystyki z tysięcy wypraw.",
     "The Merchant asking to buy a Brew potion.": "Handlarz chce kupić miksturę z Warzenia.",
-    "The powers Alchemist cards, relics and potions put on a creature. X is the amount the card or relic gives.": "Moce, które karty, artefakty i mikstury Alchemika nakładają na istoty. X to wartość, którą daje karta lub artefakt.",
-    "The win rate is how often the runs that ended with the relic won.": "Odsetek zwycięstw pokazuje, jak często wygrywały wyprawy zakończone z danym artefaktem.",
     "The {n} powers The Alchemist's cards, relics and potions give.": {
       "one": "{n} moc, którą dają karty, artefakty i mikstury Alchemika.",
       "few": "{n} moce, które dają karty, artefakty i mikstury Alchemika.",
@@ -788,9 +786,5 @@
       "many": "{wins} z {n} wypraw",
       "other": "{wins} z {n} wyprawy"
     }
-  },
-  "readme": {
-    "10d2ae3745c2": "- **Własna Trucizna**: Alchemik celowo sam się truje. Niektóre ataki zadają dodatkowe obrażenia zależne od twojej Trucizny, a inne karty reagują na to, jak często twoja Trucizna się aktywuje.\n- **Antytoksyna**: Rezerwa, która pochłania obrażenia, jakie zadałaby ci twoja Trucizna. Na początku twojej tury zmniejsza się o 1.\n- **Mieszanka**: Karty specjalne podobne do mikstur, które możesz tworzyć w walce. Podstawowe Mieszanki to Wybuchowa (obrażenia), Gęsta (Blok) i Rześka (dobieranie kart); specjalne Mieszanki to Dymiąca (Skażenie), Gryząca (Słabość i Wrażliwość) oraz Iskrząca (Energia).\n- **Fermentacja**: Te karty mają Zachowanie i stają się silniejsze za każdą turę spędzoną w twojej ręce.\n- **Warzenie**: Ta opcja w Obozowisku pozwala zdobyć 1 z 8 unikalnych mikstur, których nie da się zdobyć w inny sposób. Ze względu na jakość tych wywarów Handlarz chętnie odkupi je od ciebie za 150 szt. Złota.",
-    "b40936bd23dc": "Ten mod wciąż jest w fazie rozwoju i jego zawartość może się zmieniać, ale opinie są mile widziane! Najlepszym miejscem do rozmów o modzie jest oficjalny serwer Discord Slay the Spire, [wątek The Alchemist na kanale #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nNa razie tłumaczenia są generowane automatycznie. Gdy zawartość przestanie się tak często zmieniać, planuję zlecić je rodzimym tłumaczom. Do tego czasu poprawki są mile widziane! Jeśli zauważysz błąd w swoim języku, skontaktuj się ze mną albo otwórz pull request na GitHubie."
   }
 }

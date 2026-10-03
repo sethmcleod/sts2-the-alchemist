@@ -1,4 +1,8 @@
 {
+  "readme": {
+    "10d2ae3745c2": "- **자가 중독**: 연금술사는 일부러 자신에게 독을 투여합니다. 일부 공격은 내 중독에 비례해 추가 피해를 주고, 다른 카드들은 내 중독이 얼마나 자주 발동하는지에 반응합니다.\n- **항독소**: 내 중독이 나에게 줄 피해를 흡수하는 비축분입니다. 내 턴 시작 시 1 감소합니다.\n- **혼합액**: 전투 중에 만들 수 있는, 포션과 비슷한 토큰입니다. 기본 혼합액은 폭발 혼합액(피해), 걸쭉한 혼합액(방어도), 짜릿한 혼합액(카드 뽑기)이고, 특수 혼합액은 자욱한 혼합액(훼손됨), 매캐한 혼합액(약화와 취약), 톡 쏘는 혼합액(에너지)입니다.\n- **발효**: 이 카드들은 보존을 가지며, 손에 머무는 턴마다 강해집니다.\n- **양조**: 이 방법으로만 얻을 수 있는 고유한 포션 8종 중 1개를 손에 넣는 휴식 장소 선택지입니다. 품질이 뛰어나서 상인이 150골드에 기꺼이 사들입니다.",
+    "b40936bd23dc": "이 모드는 아직 개발 중이라 내용이 바뀔 수 있지만, 피드백은 언제나 환영합니다! 모드에 관해 이야기하기 가장 좋은 곳은 공식 Slay the Spire Discord 서버 [#modding-forum 채널의 The Alchemist 게시물](https://discord.com/channels/309399445785673728/1536374761699938424)입니다.\n\n번역은 당분간 자동으로 생성됩니다. 콘텐츠 변경이 잦아들면 원어민 번역가에게 번역을 맡길 계획입니다. 그때까지는 수정 제안을 언제나 환영합니다! 사용하시는 언어에서 오류를 발견하시면 저에게 연락하시거나 GitHub에서 풀 리퀘스트를 열어 주세요."
+  },
   "site": {
     "(opens in a new tab)": "(새 탭에서 열림)",
     "3 or more": "3 이상",
@@ -55,7 +59,6 @@
     "Event Attack": "이벤트 공격",
     "Event Skill": "이벤트 스킬",
     "Every release of The Alchemist, newest first.": "연금술사의 모든 릴리스를 최신순으로 보여 줍니다.",
-    "Every release, newest first. The beta and public branches get the same notes.": "모든 릴리스를 최신순으로 보여 줍니다. 베타 브랜치와 공개 브랜치의 노트는 같습니다.",
     "Filter and sort": "필터 및 정렬",
     "Filter the card stats": "카드 통계 필터링",
     "Filter the relic and potion stats": "유물 및 포션 통계 필터링",
@@ -81,7 +84,6 @@
     "Language: {name}": "언어: {name}",
     "Latest: {notes}, {date}.": "최신: {notes}, {date}.",
     "Latest: {notes}.": "최신: {notes}.",
-    "Made by other cards, relics and potions during a fight.": "전투 중에 다른 카드, 유물, 포션이 만들어 냅니다.",
     "Made during a fight, so it never ends a run in a deck.": "전투 중에 생성되므로 도전이 끝날 때 덱에 남아 있지 않습니다.",
     "Made per run": "도전당 생성",
     "Mechanics": "메커니즘",
@@ -101,7 +103,6 @@
     "Only in runs with {mod} installed as well.": "{mod}도 설치된 도전에서만 등장합니다.",
     "Overview": "개요",
     "Patch notes": "패치 노트",
-    "Patch notes are in English.": "패치 노트는 영어로 제공됩니다.",
     "Picked at Brew": "양조 선택률",
     "Picked {share} of the time at Brew": "양조 선택률 {share}",
     "Plays per run": "도전당 사용 횟수",
@@ -139,7 +140,6 @@
     "Site": "사이트",
     "Skip to content": "본문으로 건너뛰기",
     "Slay the Spire 2 character mod": "Slay the Spire 2 캐릭터 모드",
-    "Sold by the Merchant or found after a fight, like any other potion.": "다른 포션처럼 상인에게서 사거나 전투 후에 얻을 수 있습니다.",
     "Sort by": "정렬 기준",
     "Sort: {order}": "정렬: {order}",
     "Source on GitHub": "GitHub 소스 코드",
@@ -162,8 +162,6 @@
     "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "연금술사의 유물 {relics}개와 포션 {potions}개, 그리고 이를 사용한 도전의 결과.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Slay the Spire 2 캐릭터 모드 연금술사: 모든 카드, 유물, 포션, 파워와 패치 노트, 그리고 수천 회의 도전에서 얻은 통계.",
     "The Merchant asking to buy a Brew potion.": "양조 포션을 사고 싶어 하는 상인.",
-    "The powers Alchemist cards, relics and potions put on a creature. X is the amount the card or relic gives.": "연금술사의 카드, 유물, 포션이 대상에게 부여하는 파워입니다. X는 카드나 유물이 주는 수치입니다.",
-    "The win rate is how often the runs that ended with the relic won.": "승률은 이 유물을 가지고 끝난 도전이 승리한 비율입니다.",
     "The {n} powers The Alchemist's cards, relics and potions give.": "연금술사의 카드, 유물, 포션이 부여하는 파워 {n}개.",
     "Theme": "테마",
     "There is no page at this address.": "이 주소에는 페이지가 없습니다.",
@@ -533,9 +531,5 @@
     "{version} and newer": "{version} 이상",
     "{version} notes": "{version} 노트",
     "{wins} from {n} runs": "도전 {n}회 중 {wins}"
-  },
-  "readme": {
-    "10d2ae3745c2": "- **자가 중독**: 연금술사는 일부러 자신에게 독을 투여합니다. 일부 공격은 내 중독에 비례해 추가 피해를 주고, 다른 카드들은 내 중독이 얼마나 자주 발동하는지에 반응합니다.\n- **항독소**: 내 중독이 나에게 줄 피해를 흡수하는 비축분입니다. 내 턴 시작 시 1 감소합니다.\n- **혼합액**: 전투 중에 만들 수 있는, 포션과 비슷한 토큰입니다. 기본 혼합액은 폭발 혼합액(피해), 걸쭉한 혼합액(방어도), 짜릿한 혼합액(카드 뽑기)이고, 특수 혼합액은 자욱한 혼합액(훼손됨), 매캐한 혼합액(약화와 취약), 톡 쏘는 혼합액(에너지)입니다.\n- **발효**: 이 카드들은 보존을 가지며, 손에 머무는 턴마다 강해집니다.\n- **양조**: 이 방법으로만 얻을 수 있는 고유한 포션 8종 중 1개를 손에 넣는 휴식 장소 선택지입니다. 품질이 뛰어나서 상인이 150골드에 기꺼이 사들입니다.",
-    "b40936bd23dc": "이 모드는 아직 개발 중이라 내용이 바뀔 수 있지만, 피드백은 언제나 환영합니다! 모드에 관해 이야기하기 가장 좋은 곳은 공식 Slay the Spire Discord 서버 [#modding-forum 채널의 The Alchemist 게시물](https://discord.com/channels/309399445785673728/1536374761699938424)입니다.\n\n번역은 당분간 자동으로 생성됩니다. 콘텐츠 변경이 잦아들면 원어민 번역가에게 번역을 맡길 계획입니다. 그때까지는 수정 제안을 언제나 환영합니다! 사용하시는 언어에서 오류를 발견하시면 저에게 연락하시거나 GitHub에서 풀 리퀘스트를 열어 주세요."
   }
 }

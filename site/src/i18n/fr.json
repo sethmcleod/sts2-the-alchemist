@@ -1,4 +1,8 @@
 {
+  "readme": {
+    "10d2ae3745c2": "- **Auto-empoisonnement** : L'Alchimiste s'empoisonne volontairement. Certaines attaques\n  infligent des dégâts supplémentaires selon votre Poison, et d'autres cartes réagissent\n  à la fréquence à laquelle votre Poison se déclenche.\n- **Antitoxine** : Une réserve qui absorbe les dégâts que votre Poison vous infligerait.\n  Elle diminue de 1 au début de votre tour.\n- **Mixture** : Ce sont des cartes que vous pouvez créer en combat, semblables à des potions.\n  Les Mixtures de base sont la Mixture explosive (dégâts), la Mixture sirupeuse (Armure)\n  et la Mixture vivifiante (pioche) ; les Mixtures spéciales sont la Mixture fumante\n  (Souillure), la Mixture âcre (Affaibli et Vulnérable) et la Mixture pétillante (Énergie).\n- **Fermentation** : Ces cartes ont Retenue et gagnent en puissance à chaque tour passé\n  dans votre Main.\n- **Brassage** : Cette option de Site de repos vous permet d'obtenir 1 potion parmi\n  8 potions uniques, disponibles uniquement de cette façon. Vu la qualité de ces breuvages,\n  le Marchand est prêt à vous les racheter pour 150 Pièces d'or.",
+    "b40936bd23dc": "Ce mod est encore en cours de développement et son contenu peut changer, mais vos\nretours sont les bienvenus ! Le meilleur endroit pour parler du mod est le serveur Discord\nofficiel de Slay the Spire, dans la [publication consacrée à The Alchemist du salon #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nPour l'instant, les traductions sont générées automatiquement. L'idée est de faire appel à des traducteurs natifs une fois que le contenu changera moins souvent. En attendant, toute correction est la bienvenue ! Si vous repérez une erreur dans votre langue, contactez-moi ou ouvrez une pull request sur GitHub."
+  },
   "site": {
     "(opens in a new tab)": "(s'ouvre dans un nouvel onglet)",
     "3 or more": "3 ou plus",
@@ -58,7 +62,6 @@
     "Event Attack": "Attaque d'événement",
     "Event Skill": "Compétence d'événement",
     "Every release of The Alchemist, newest first.": "Toutes les versions de L'Alchimiste, de la plus récente à la plus ancienne.",
-    "Every release, newest first. The beta and public branches get the same notes.": "Toutes les versions, de la plus récente à la plus ancienne. Les branches bêta et publique reçoivent les mêmes notes.",
     "Filter and sort": "Filtrer et trier",
     "Filter the card stats": "Filtrer les statistiques des cartes",
     "Filter the relic and potion stats": "Filtrer les statistiques des reliques et potions",
@@ -87,7 +90,6 @@
     "Language: {name}": "Langue : {name}",
     "Latest: {notes}, {date}.": "Dernière version : {notes}, {date}.",
     "Latest: {notes}.": "Dernière version : {notes}.",
-    "Made by other cards, relics and potions during a fight.": "Générées par d'autres cartes, reliques et potions pendant un combat.",
     "Made during a fight, so it never ends a run in a deck.": "Créée pendant un combat, elle n'est donc jamais dans le deck à la fin d'une partie.",
     "Made per run": "Créées par partie",
     "Mechanics": "Mécaniques",
@@ -107,7 +109,6 @@
     "Only in runs with {mod} installed as well.": "Uniquement dans les parties où {mod} est aussi installé.",
     "Overview": "Vue d'ensemble",
     "Patch notes": "Notes de mise à jour",
-    "Patch notes are in English.": "Les notes de mise à jour sont en anglais.",
     "Picked at Brew": "Choisie au Brassage",
     "Picked {share} of the time at Brew": "Choisie dans {share} des cas au Brassage",
     "Plays per run": "Utilisations par partie",
@@ -151,7 +152,6 @@
     "Site": "Site",
     "Skip to content": "Aller au contenu",
     "Slay the Spire 2 character mod": "Mod de personnage pour Slay the Spire 2",
-    "Sold by the Merchant or found after a fight, like any other potion.": "Vendues par le Marchand ou trouvées après un combat, comme toute autre potion.",
     "Sort by": "Trier par",
     "Sort: {order}": "Tri : {order}",
     "Source on GitHub": "Code source sur GitHub",
@@ -180,8 +180,6 @@
     "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "Les {relics} reliques et {potions} potions de l'Alchimiste, avec le bilan des parties qui les ont utilisées.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "L'Alchimiste, un mod de personnage pour Slay the Spire 2 : toutes les cartes, reliques, potions et Pouvoirs, les notes de mise à jour et des statistiques issues de milliers de parties.",
     "The Merchant asking to buy a Brew potion.": "Le Marchand propose de racheter une potion brassée.",
-    "The powers Alchemist cards, relics and potions put on a creature. X is the amount the card or relic gives.": "Les Pouvoirs que les cartes, reliques et potions de l'Alchimiste appliquent à une créature. X est la valeur donnée par la carte ou la relique.",
-    "The win rate is how often the runs that ended with the relic won.": "Le taux de victoire indique à quelle fréquence les parties terminées avec la relique ont été gagnées.",
     "The {n} powers The Alchemist's cards, relics and potions give.": {
       "one": "{n} Pouvoir conféré par les cartes, reliques et potions de l'Alchimiste.",
       "other": "Les {n} Pouvoirs conférés par les cartes, reliques et potions de l'Alchimiste."
@@ -689,9 +687,5 @@
       "one": "{wins} sur {n} partie",
       "other": "{wins} sur {n} parties"
     }
-  },
-  "readme": {
-    "10d2ae3745c2": "- **Auto-empoisonnement** : L'Alchimiste s'empoisonne volontairement. Certaines attaques\n  infligent des dégâts supplémentaires selon votre Poison, et d'autres cartes réagissent\n  à la fréquence à laquelle votre Poison se déclenche.\n- **Antitoxine** : Une réserve qui absorbe les dégâts que votre Poison vous infligerait.\n  Elle diminue de 1 au début de votre tour.\n- **Mixture** : Ce sont des cartes que vous pouvez créer en combat, semblables à des potions.\n  Les Mixtures de base sont la Mixture explosive (dégâts), la Mixture sirupeuse (Armure)\n  et la Mixture vivifiante (pioche) ; les Mixtures spéciales sont la Mixture fumante\n  (Souillure), la Mixture âcre (Affaibli et Vulnérable) et la Mixture pétillante (Énergie).\n- **Fermentation** : Ces cartes ont Retenue et gagnent en puissance à chaque tour passé\n  dans votre Main.\n- **Brassage** : Cette option de Site de repos vous permet d'obtenir 1 potion parmi\n  8 potions uniques, disponibles uniquement de cette façon. Vu la qualité de ces breuvages,\n  le Marchand est prêt à vous les racheter pour 150 Pièces d'or.",
-    "b40936bd23dc": "Ce mod est encore en cours de développement et son contenu peut changer, mais vos\nretours sont les bienvenus ! Le meilleur endroit pour parler du mod est le serveur Discord\nofficiel de Slay the Spire, dans la [publication consacrée à The Alchemist du salon #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nPour l'instant, les traductions sont générées automatiquement. L'idée est de faire appel à des traducteurs natifs une fois que le contenu changera moins souvent. En attendant, toute correction est la bienvenue ! Si vous repérez une erreur dans votre langue, contactez-moi ou ouvrez une pull request sur GitHub."
   }
 }

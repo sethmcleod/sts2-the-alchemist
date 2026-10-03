@@ -1,4 +1,8 @@
 {
+  "readme": {
+    "10d2ae3745c2": "- **自身の毒**：アルケミストはわざと自分に毒を盛ります。自身の毒に応じて追加ダメージを与えるアタックもあれば、自身の毒が発動する回数に反応するカードもあります。\n- **抗毒素**：自身の毒が自分に与えるはずのダメージを吸収する蓄えです。ターン開始時に1減少します。\n- **合剤**：戦闘中に作成できる、ポーションに似たトークンです。基本の合剤は破裂（ダメージ）、粘性（ブロック）、刺激（ドロー）、特殊な合剤は発煙（汚染）、刺激臭（脱力と弱体）、発泡（エナジー）です。\n- **発酵**：これらのカードは保留を持ち、手札に留まるターンごとに威力が増していきます。\n- **調合**：休憩所の選択肢の一つで、この方法でしか入手できない8種類の特別なポーションから1つを手に入れられます。その品質の高さから、商人は150ゴールドで買い取ってくれます。",
+    "b40936bd23dc": "このMODはまだ開発中で、内容は変更される可能性がありますが、フィードバックは大歓迎です！MODについて話し合うなら、Slay the Spireの公式Discordサーバーの[#modding-forumにあるThe Alchemistの投稿](https://discord.com/channels/309399445785673728/1536374761699938424)が最適です。\n\n現在、各言語の翻訳は自動生成されています。内容の変更が落ち着いたら、ネイティブの翻訳者に依頼する予定です。それまでの間、修正していただけると助かります！お使いの言語で誤りを見つけたら、私に連絡するか、GitHubでプルリクエストを作成してください。"
+  },
   "site": {
     "(opens in a new tab)": "（新しいタブで開きます）",
     "3 or more": "3以上",
@@ -55,7 +59,6 @@
     "Event Attack": "アタック（イベント）",
     "Event Skill": "スキル（イベント）",
     "Every release of The Alchemist, newest first.": "アルケミストの全リリース（新しい順）。",
-    "Every release, newest first. The beta and public branches get the same notes.": "全リリースを新しい順に掲載。ベータブランチと公開ブランチのパッチノートは共通です。",
     "Filter and sort": "絞り込みと並び替え",
     "Filter the card stats": "カードの統計を絞り込む",
     "Filter the relic and potion stats": "レリックとポーションの統計を絞り込む",
@@ -81,7 +84,6 @@
     "Language: {name}": "言語：{name}",
     "Latest: {notes}, {date}.": "最新：{notes}（{date}）。",
     "Latest: {notes}.": "最新：{notes}。",
-    "Made by other cards, relics and potions during a fight.": "戦闘中に他のカード、レリック、ポーションによって作成される。",
     "Made during a fight, so it never ends a run in a deck.": "戦闘中に作成されるため、冒険の終了時にデッキに入っていることはありません。",
     "Made per run": "1冒険あたりの作成数",
     "Mechanics": "メカニクス",
@@ -101,7 +103,6 @@
     "Only in runs with {mod} installed as well.": "{mod}も導入している冒険でのみ登場。",
     "Overview": "概要",
     "Patch notes": "パッチノート",
-    "Patch notes are in English.": "パッチノートは英語のみです。",
     "Picked at Brew": "調合での選択率",
     "Picked {share} of the time at Brew": "調合での選択率{share}",
     "Plays per run": "1冒険あたりのプレイ数",
@@ -139,7 +140,6 @@
     "Site": "サイト",
     "Skip to content": "本文へスキップ",
     "Slay the Spire 2 character mod": "Slay the Spire 2のキャラクターMOD",
-    "Sold by the Merchant or found after a fight, like any other potion.": "他のポーションと同じく、商人から購入したり戦闘後に入手したりできます。",
     "Sort by": "並び替え",
     "Sort: {order}": "並び替え：{order}",
     "Source on GitHub": "GitHubのソースコード",
@@ -162,8 +162,6 @@
     "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "アルケミストのレリック{relics}個とポーション{potions}個、そしてそれらを使った冒険の結果。",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Slay the Spire 2のキャラクターMOD「アルケミスト」：全カード、レリック、ポーション、パワー、パッチノート、そして数千回の冒険から集めた統計。",
     "The Merchant asking to buy a Brew potion.": "調合ポーションを買い取ろうとする商人。",
-    "The powers Alchemist cards, relics and potions put on a creature. X is the amount the card or relic gives.": "アルケミストのカード、レリック、ポーションが対象に付与するパワー。Xはカードやレリックが与える量です。",
-    "The win rate is how often the runs that ended with the relic won.": "勝率は、そのレリックを持って終了した冒険が勝利した割合です。",
     "The {n} powers The Alchemist's cards, relics and potions give.": "アルケミストのカード、レリック、ポーションが与える{n}種類のパワー。",
     "Theme": "テーマ",
     "There is no page at this address.": "このアドレスにはページがありません。",
@@ -533,9 +531,5 @@
     "{version} and newer": "{version}以降",
     "{version} notes": "{version}のパッチノート",
     "{wins} from {n} runs": "冒険{n}回中{wins}"
-  },
-  "readme": {
-    "10d2ae3745c2": "- **自身の毒**：アルケミストはわざと自分に毒を盛ります。自身の毒に応じて追加ダメージを与えるアタックもあれば、自身の毒が発動する回数に反応するカードもあります。\n- **抗毒素**：自身の毒が自分に与えるはずのダメージを吸収する蓄えです。ターン開始時に1減少します。\n- **合剤**：戦闘中に作成できる、ポーションに似たトークンです。基本の合剤は破裂（ダメージ）、粘性（ブロック）、刺激（ドロー）、特殊な合剤は発煙（汚染）、刺激臭（脱力と弱体）、発泡（エナジー）です。\n- **発酵**：これらのカードは保留を持ち、手札に留まるターンごとに威力が増していきます。\n- **調合**：休憩所の選択肢の一つで、この方法でしか入手できない8種類の特別なポーションから1つを手に入れられます。その品質の高さから、商人は150ゴールドで買い取ってくれます。",
-    "b40936bd23dc": "このMODはまだ開発中で、内容は変更される可能性がありますが、フィードバックは大歓迎です！MODについて話し合うなら、Slay the Spireの公式Discordサーバーの[#modding-forumにあるThe Alchemistの投稿](https://discord.com/channels/309399445785673728/1536374761699938424)が最適です。\n\n現在、各言語の翻訳は自動生成されています。内容の変更が落ち着いたら、ネイティブの翻訳者に依頼する予定です。それまでの間、修正していただけると助かります！お使いの言語で誤りを見つけたら、私に連絡するか、GitHubでプルリクエストを作成してください。"
   }
 }

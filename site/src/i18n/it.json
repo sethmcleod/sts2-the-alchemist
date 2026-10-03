@@ -1,4 +1,8 @@
 {
+  "readme": {
+    "10d2ae3745c2": "- **Autoavvelenamento**: l'Alchimista si avvelena di proposito. Alcuni attacchi infliggono\n  danno extra in base al tuo Veleno, e altre carte reagiscono a quanto spesso il tuo\n  Veleno si attiva.\n- **Antitossina**: una riserva che assorbe il danno che il tuo Veleno ti infliggerebbe.\n  Si riduce di 1 all'inizio del tuo turno.\n- **Miscela**: carte simili alle pozioni che puoi creare in combattimento. Le Miscele\n  base sono Miscela Esplosiva (danno), Miscela Sciropposa (Blocco) e Miscela Frizzante\n  (pescare); quelle speciali sono Miscela Fumogena (Contaminazione), Miscela Acre\n  (Debolezza e Vulnerabilità) e Miscela Spumeggiante (Energia).\n- **Fermentazione**: queste carte hanno Conservazione e diventano più potenti per ogni\n  turno che restano nella tua mano.\n- **Prepara**: questa opzione dei luoghi di riposo ti permette di ottenere 1 di 8 pozioni\n  uniche, disponibili solo in questo modo. Vista la qualità di questi preparati, il\n  mercante è disposto a comprarle da te per 150 unità d'oro.",
+    "b40936bd23dc": "Questa mod è ancora in fase di sviluppo e i contenuti possono cambiare, ma ogni\nfeedback è benvenuto! Il posto migliore per parlare della mod è il server Discord\nufficiale di Slay the Spire, nel [post dedicato a The Alchemist del canale #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nPer ora le traduzioni sono generate automaticamente. L'idea è di affidarle a traduttori madrelingua quando i contenuti cambieranno meno spesso. Nel frattempo, ogni correzione è apprezzata! Se trovi un errore nella tua lingua, contattami o apri una pull request su GitHub."
+  },
   "site": {
     "(opens in a new tab)": "(si apre in una nuova scheda)",
     "3 or more": "3 o più",
@@ -58,7 +62,6 @@
     "Event Attack": "Attacco evento",
     "Event Skill": "Abilità evento",
     "Every release of The Alchemist, newest first.": "Tutte le versioni dell'Alchimista, dalla più recente.",
-    "Every release, newest first. The beta and public branches get the same notes.": "Tutte le versioni, dalla più recente. La versione beta e quella pubblica ricevono le stesse note.",
     "Filter and sort": "Filtra e ordina",
     "Filter the card stats": "Filtra le statistiche delle carte",
     "Filter the relic and potion stats": "Filtra le statistiche di reliquie e pozioni",
@@ -87,7 +90,6 @@
     "Language: {name}": "Lingua: {name}",
     "Latest: {notes}, {date}.": "Ultima versione: {notes}, {date}.",
     "Latest: {notes}.": "Ultima versione: {notes}.",
-    "Made by other cards, relics and potions during a fight.": "Create da altre carte, reliquie e pozioni durante un combattimento.",
     "Made during a fight, so it never ends a run in a deck.": "Creata durante un combattimento, quindi non è mai nel mazzo alla fine di una partita.",
     "Made per run": "Create per partita",
     "Mechanics": "Meccaniche",
@@ -107,7 +109,6 @@
     "Only in runs with {mod} installed as well.": "Solo nelle partite in cui è installata anche {mod}.",
     "Overview": "Panoramica",
     "Patch notes": "Note della patch",
-    "Patch notes are in English.": "Le note della patch sono in inglese.",
     "Picked at Brew": "Scelta con Prepara",
     "Picked {share} of the time at Brew": "Scelta con Prepara: {share} delle volte",
     "Plays per run": "Giocate per partita",
@@ -151,7 +152,6 @@
     "Site": "Sito",
     "Skip to content": "Vai al contenuto",
     "Slay the Spire 2 character mod": "Mod personaggio per Slay the Spire 2",
-    "Sold by the Merchant or found after a fight, like any other potion.": "Vendute dal mercante o trovate dopo un combattimento, come qualsiasi altra pozione.",
     "Sort by": "Ordina per",
     "Sort: {order}": "Ordine: {order}",
     "Source on GitHub": "Codice sorgente su GitHub",
@@ -180,8 +180,6 @@
     "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "Le {relics} reliquie e le {potions} pozioni dell'Alchimista, e come sono andate le partite che le hanno usate.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "L'Alchimista, una mod personaggio per Slay the Spire 2: tutte le carte, le reliquie, le pozioni e i Poteri, le note della patch e statistiche da migliaia di partite.",
     "The Merchant asking to buy a Brew potion.": "Il mercante chiede di comprare una pozione preparata.",
-    "The powers Alchemist cards, relics and potions put on a creature. X is the amount the card or relic gives.": "I Poteri che le carte, le reliquie e le pozioni dell'Alchimista applicano a una creatura. X è il valore dato dalla carta o dalla reliquia.",
-    "The win rate is how often the runs that ended with the relic won.": "La percentuale di vittorie indica quanto spesso hanno vinto le partite concluse con la reliquia.",
     "The {n} powers The Alchemist's cards, relics and potions give.": {
       "one": "{n} Potere conferito da carte, reliquie e pozioni dell'Alchimista.",
       "other": "{n} Poteri conferiti da carte, reliquie e pozioni dell'Alchimista."
@@ -686,9 +684,5 @@
       "one": "{wins} su {n} partita",
       "other": "{wins} su {n} partite"
     }
-  },
-  "readme": {
-    "10d2ae3745c2": "- **Autoavvelenamento**: l'Alchimista si avvelena di proposito. Alcuni attacchi infliggono\n  danno extra in base al tuo Veleno, e altre carte reagiscono a quanto spesso il tuo\n  Veleno si attiva.\n- **Antitossina**: una riserva che assorbe il danno che il tuo Veleno ti infliggerebbe.\n  Si riduce di 1 all'inizio del tuo turno.\n- **Miscela**: carte simili alle pozioni che puoi creare in combattimento. Le Miscele\n  base sono Miscela Esplosiva (danno), Miscela Sciropposa (Blocco) e Miscela Frizzante\n  (pescare); quelle speciali sono Miscela Fumogena (Contaminazione), Miscela Acre\n  (Debolezza e Vulnerabilità) e Miscela Spumeggiante (Energia).\n- **Fermentazione**: queste carte hanno Conservazione e diventano più potenti per ogni\n  turno che restano nella tua mano.\n- **Prepara**: questa opzione dei luoghi di riposo ti permette di ottenere 1 di 8 pozioni\n  uniche, disponibili solo in questo modo. Vista la qualità di questi preparati, il\n  mercante è disposto a comprarle da te per 150 unità d'oro.",
-    "b40936bd23dc": "Questa mod è ancora in fase di sviluppo e i contenuti possono cambiare, ma ogni\nfeedback è benvenuto! Il posto migliore per parlare della mod è il server Discord\nufficiale di Slay the Spire, nel [post dedicato a The Alchemist del canale #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nPer ora le traduzioni sono generate automaticamente. L'idea è di affidarle a traduttori madrelingua quando i contenuti cambieranno meno spesso. Nel frattempo, ogni correzione è apprezzata! Se trovi un errore nella tua lingua, contattami o apri una pull request su GitHub."
   }
 }

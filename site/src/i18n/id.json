@@ -1,4 +1,8 @@
 {
+  "readme": {
+    "10d2ae3745c2": "- **Racun Diri**: Si Alkemis sengaja meracuni dirinya sendiri. Beberapa serangan memberikan kerusakan tambahan berdasarkan Racun milikmu, dan kartu lain memperhatikan seberapa sering Racun milikmu terpicu.\n- **Antitoksin**: Cadangan yang menyerap kerusakan yang akan diberikan Racun milikmu kepadamu. Antitoksin berkurang 1 pada awal giliranmu.\n- **Campuran**: Token yang bisa kamu buat dalam perlawanan dan mirip dengan ramuan. Campuran dasar adalah Ledak (kerusakan), Kental (Blok), dan Segar (ambil kartu); Campuran spesial adalah Asap (Noda), Getir (Lemah dan Rentan), dan Soda (Energi).\n- **Fermentasi**: Kartu-kartu ini memiliki Pertahankan dan makin kuat untuk setiap giliran yang dilewatinya di tanganmu.\n- **Racik**: Pilihan Peristirahatan ini memungkinkanmu mendapatkan 1 dari 8 ramuan unik yang hanya bisa didapat dengan cara ini. Karena kualitas racikan ini, Pedagang bersedia membelinya darimu seharga 150 Emas.",
+    "b40936bd23dc": "Mod ini masih dalam pengembangan dan isinya bisa berubah, tetapi masukan sangat diterima! Tempat terbaik untuk membahas mod ini adalah server Discord resmi Slay the Spire di [postingan The Alchemist di #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nUntuk saat ini, terjemahan dibuat secara otomatis. Rencananya, penerjemah penutur asli akan dilibatkan setelah perubahan konten mulai melambat. Sementara itu, koreksi sangat dihargai! Jika kamu menemukan kesalahan dalam bahasamu, hubungi saya atau buka pull request di GitHub."
+  },
   "site": {
     "(opens in a new tab)": "(terbuka di tab baru)",
     "3 or more": "3 atau lebih",
@@ -55,7 +59,6 @@
     "Event Attack": "Serangan Event",
     "Event Skill": "Teknik Event",
     "Every release of The Alchemist, newest first.": "Setiap rilis Si Alkemis, dari yang terbaru.",
-    "Every release, newest first. The beta and public branches get the same notes.": "Setiap rilis, dari yang terbaru. Branch beta dan publik mendapat catatan yang sama.",
     "Filter and sort": "Filter dan urutkan",
     "Filter the card stats": "Filter statistik kartu",
     "Filter the relic and potion stats": "Filter statistik pusaka dan ramuan",
@@ -81,7 +84,6 @@
     "Language: {name}": "Bahasa: {name}",
     "Latest: {notes}, {date}.": "Terbaru: {notes}, {date}.",
     "Latest: {notes}.": "Terbaru: {notes}.",
-    "Made by other cards, relics and potions during a fight.": "Dibuat oleh kartu, pusaka, dan ramuan lain selama perlawanan.",
     "Made during a fight, so it never ends a run in a deck.": "Dibuat saat perlawanan, jadi tidak pernah ada di dek pada akhir perjalanan.",
     "Made per run": "Dibuat per perjalanan",
     "Mechanics": "Mekanik",
@@ -101,7 +103,6 @@
     "Only in runs with {mod} installed as well.": "Hanya muncul dalam perjalanan yang juga memasang {mod}.",
     "Overview": "Ringkasan",
     "Patch notes": "Catatan patch",
-    "Patch notes are in English.": "Catatan patch tersedia dalam bahasa Inggris.",
     "Picked at Brew": "Dipilih saat Racik",
     "Picked {share} of the time at Brew": "Dipilih {share} saat Racik",
     "Plays per run": "Dimainkan per perjalanan",
@@ -139,7 +140,6 @@
     "Site": "Situs",
     "Skip to content": "Langsung ke konten",
     "Slay the Spire 2 character mod": "Mod karakter Slay the Spire 2",
-    "Sold by the Merchant or found after a fight, like any other potion.": "Dijual oleh Pedagang atau ditemukan setelah perlawanan, seperti ramuan lainnya.",
     "Sort by": "Urutkan menurut",
     "Sort: {order}": "Urutan: {order}",
     "Source on GitHub": "Kode sumber di GitHub",
@@ -162,8 +162,6 @@
     "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "{relics} pusaka dan {potions} ramuan Si Alkemis, beserta hasil perjalanan yang memakainya.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Si Alkemis, mod karakter Slay the Spire 2: setiap kartu, pusaka, ramuan, dan kuasa, catatan patch, serta statistik dari ribuan perjalanan.",
     "The Merchant asking to buy a Brew potion.": "Pedagang yang ingin membeli ramuan Racik.",
-    "The powers Alchemist cards, relics and potions put on a creature. X is the amount the card or relic gives.": "Kuasa yang diberikan kartu, pusaka, dan ramuan Alkemis pada makhluk. X adalah jumlah yang diberikan kartu atau pusaka.",
-    "The win rate is how often the runs that ended with the relic won.": "Peluang menang adalah seberapa sering perjalanan yang berakhir dengan pusaka itu menang.",
     "The {n} powers The Alchemist's cards, relics and potions give.": "{n} kuasa yang diberikan kartu, pusaka, dan ramuan Si Alkemis.",
     "Theme": "Tema",
     "There is no page at this address.": "Tidak ada halaman di alamat ini.",
@@ -533,9 +531,5 @@
     "{version} and newer": "{version} dan yang lebih baru",
     "{version} notes": "Catatan {version}",
     "{wins} from {n} runs": "{wins} dari {n} perjalanan"
-  },
-  "readme": {
-    "10d2ae3745c2": "- **Racun Diri**: Si Alkemis sengaja meracuni dirinya sendiri. Beberapa serangan memberikan kerusakan tambahan berdasarkan Racun milikmu, dan kartu lain memperhatikan seberapa sering Racun milikmu terpicu.\n- **Antitoksin**: Cadangan yang menyerap kerusakan yang akan diberikan Racun milikmu kepadamu. Antitoksin berkurang 1 pada awal giliranmu.\n- **Campuran**: Token yang bisa kamu buat dalam perlawanan dan mirip dengan ramuan. Campuran dasar adalah Ledak (kerusakan), Kental (Blok), dan Segar (ambil kartu); Campuran spesial adalah Asap (Noda), Getir (Lemah dan Rentan), dan Soda (Energi).\n- **Fermentasi**: Kartu-kartu ini memiliki Pertahankan dan makin kuat untuk setiap giliran yang dilewatinya di tanganmu.\n- **Racik**: Pilihan Peristirahatan ini memungkinkanmu mendapatkan 1 dari 8 ramuan unik yang hanya bisa didapat dengan cara ini. Karena kualitas racikan ini, Pedagang bersedia membelinya darimu seharga 150 Emas.",
-    "b40936bd23dc": "Mod ini masih dalam pengembangan dan isinya bisa berubah, tetapi masukan sangat diterima! Tempat terbaik untuk membahas mod ini adalah server Discord resmi Slay the Spire di [postingan The Alchemist di #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nUntuk saat ini, terjemahan dibuat secara otomatis. Rencananya, penerjemah penutur asli akan dilibatkan setelah perubahan konten mulai melambat. Sementara itu, koreksi sangat dihargai! Jika kamu menemukan kesalahan dalam bahasamu, hubungi saya atau buka pull request di GitHub."
   }
 }

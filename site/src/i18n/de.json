@@ -1,4 +1,8 @@
 {
+  "readme": {
+    "10d2ae3745c2": "- **Selbstvergiftung**: Der Alchemist vergiftet sich absichtlich selbst. Manche Angriffe\n  fügen zusätzlichen Schaden abhängig von deinem Gift zu, und andere Karten reagieren darauf,\n  wie oft dein Gift ausgelöst wird.\n- **Antitoxin**: Ein Vorrat, der den Schaden absorbiert, den dein Gift dir zufügen würde.\n  Er wird zu Beginn deines Zuges um 1 reduziert.\n- **Mixtur**: Das sind Token-Karten, die du im Kampf erzeugen kannst und die Tränken ähneln.\n  Die einfachen Mixturen sind Berstende Mixtur (Schaden), Sirupartige Mixtur (Block) und\n  Spritzige Mixtur (Karten ziehen); die besonderen Mixturen sind Dampfende Mixtur (Schmutzig),\n  Beißende Mixtur (Schwach und Verwundbar) und Perlende Mixtur (Energie).\n- **Gärung**: Diese Karten haben Behalten und werden für jeden Zug stärker, den sie auf\n  deiner Hand bleiben.\n- **Brauen**: Mit dieser Lagerfeuer-Option kannst du 1 von 8 einzigartigen Tränken beschaffen,\n  die es nur auf diesem Weg gibt. Wegen der Qualität dieser Gebräue kauft der\n  Händler sie dir für 150 Gold ab.",
+    "b40936bd23dc": "Diese Mod ist noch in Arbeit und ihre Inhalte können sich ändern, aber Feedback\nist willkommen! Am besten lässt sich die Mod auf dem offiziellen Discord-Server von\nSlay the Spire im [Beitrag zu The Alchemist im Kanal #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424) besprechen.\n\nDie Übersetzungen werden vorerst automatisch erstellt. Sobald sich die Inhalte seltener ändern, sollen muttersprachliche Übersetzer beauftragt werden. Bis dahin sind Korrekturen sehr willkommen! Wenn dir in deiner Sprache ein Fehler auffällt, melde dich gern bei mir oder öffne einen Pull Request auf GitHub."
+  },
   "site": {
     "(opens in a new tab)": "(öffnet in neuem Tab)",
     "3 or more": "3 oder mehr",
@@ -58,7 +62,6 @@
     "Event Attack": "Ereignis-Angriff",
     "Event Skill": "Ereignis-Fertigkeit",
     "Every release of The Alchemist, newest first.": "Jede Version des Alchemisten, die neueste zuerst.",
-    "Every release, newest first. The beta and public branches get the same notes.": "Jede Version, die neueste zuerst. Der Beta- und der öffentliche Branch erhalten dieselben Patchnotes.",
     "Filter and sort": "Filtern und sortieren",
     "Filter the card stats": "Kartenstatistiken filtern",
     "Filter the relic and potion stats": "Relikt- und Trankstatistiken filtern",
@@ -87,7 +90,6 @@
     "Language: {name}": "Sprache: {name}",
     "Latest: {notes}, {date}.": "Neueste Version: {notes}, {date}.",
     "Latest: {notes}.": "Neueste Version: {notes}.",
-    "Made by other cards, relics and potions during a fight.": "Während eines Kampfes von anderen Karten, Relikten und Tränken erzeugt.",
     "Made during a fight, so it never ends a run in a deck.": "Wird im Kampf erzeugt und ist darum am Ende eines Runs nie im Deck.",
     "Made per run": "Pro Run erzeugt",
     "Mechanics": "Mechaniken",
@@ -107,7 +109,6 @@
     "Only in runs with {mod} installed as well.": "Nur in Runs, in denen auch {mod} installiert ist.",
     "Overview": "Übersicht",
     "Patch notes": "Patchnotes",
-    "Patch notes are in English.": "Die Patchnotes sind auf Englisch.",
     "Picked at Brew": "Beim Brauen gewählt",
     "Picked {share} of the time at Brew": "Beim Brauen in {share} der Fälle gewählt",
     "Plays per run": "Gespielt pro Run",
@@ -151,7 +152,6 @@
     "Site": "Website",
     "Skip to content": "Zum Inhalt springen",
     "Slay the Spire 2 character mod": "Charakter-Mod für Slay the Spire 2",
-    "Sold by the Merchant or found after a fight, like any other potion.": "Wie jeder andere Trank beim Händler erhältlich oder nach einem Kampf zu finden.",
     "Sort by": "Sortieren nach",
     "Sort: {order}": "Sortierung: {order}",
     "Source on GitHub": "Quellcode auf GitHub",
@@ -180,8 +180,6 @@
     "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "Die {relics} Relikte und {potions} Tränke des Alchemisten und wie die Runs damit verliefen.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Der Alchemist, eine Charakter-Mod für Slay the Spire 2: alle Karten, Relikte, Tränke und Mächte, die Patchnotes und Statistiken aus Tausenden von Runs.",
     "The Merchant asking to buy a Brew potion.": "Der Händler möchte einen gebrauten Trank kaufen.",
-    "The powers Alchemist cards, relics and potions put on a creature. X is the amount the card or relic gives.": "Die Mächte, die Alchemist-Karten, -Relikte und -Tränke einer Kreatur verleihen. X ist der Wert, den die Karte oder das Relikt gibt.",
-    "The win rate is how often the runs that ended with the relic won.": "Die Siegesquote gibt an, wie oft die Runs gewonnen haben, die mit dem Relikt endeten.",
     "The {n} powers The Alchemist's cards, relics and potions give.": {
       "one": "{n} Macht, die die Karten, Relikte und Tränke des Alchemisten verleihen.",
       "other": "Die {n} Mächte, die die Karten, Relikte und Tränke des Alchemisten verleihen."
@@ -686,9 +684,5 @@
       "one": "{wins} aus {n} Run",
       "other": "{wins} aus {n} Runs"
     }
-  },
-  "readme": {
-    "10d2ae3745c2": "- **Selbstvergiftung**: Der Alchemist vergiftet sich absichtlich selbst. Manche Angriffe\n  fügen zusätzlichen Schaden abhängig von deinem Gift zu, und andere Karten reagieren darauf,\n  wie oft dein Gift ausgelöst wird.\n- **Antitoxin**: Ein Vorrat, der den Schaden absorbiert, den dein Gift dir zufügen würde.\n  Er wird zu Beginn deines Zuges um 1 reduziert.\n- **Mixtur**: Das sind Token-Karten, die du im Kampf erzeugen kannst und die Tränken ähneln.\n  Die einfachen Mixturen sind Berstende Mixtur (Schaden), Sirupartige Mixtur (Block) und\n  Spritzige Mixtur (Karten ziehen); die besonderen Mixturen sind Dampfende Mixtur (Schmutzig),\n  Beißende Mixtur (Schwach und Verwundbar) und Perlende Mixtur (Energie).\n- **Gärung**: Diese Karten haben Behalten und werden für jeden Zug stärker, den sie auf\n  deiner Hand bleiben.\n- **Brauen**: Mit dieser Lagerfeuer-Option kannst du 1 von 8 einzigartigen Tränken beschaffen,\n  die es nur auf diesem Weg gibt. Wegen der Qualität dieser Gebräue kauft der\n  Händler sie dir für 150 Gold ab.",
-    "b40936bd23dc": "Diese Mod ist noch in Arbeit und ihre Inhalte können sich ändern, aber Feedback\nist willkommen! Am besten lässt sich die Mod auf dem offiziellen Discord-Server von\nSlay the Spire im [Beitrag zu The Alchemist im Kanal #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424) besprechen.\n\nDie Übersetzungen werden vorerst automatisch erstellt. Sobald sich die Inhalte seltener ändern, sollen muttersprachliche Übersetzer beauftragt werden. Bis dahin sind Korrekturen sehr willkommen! Wenn dir in deiner Sprache ein Fehler auffällt, melde dich gern bei mir oder öffne einen Pull Request auf GitHub."
   }
 }
