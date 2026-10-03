@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'preact/hooks';
 import DataTable, { type ColumnDef } from '../components/charts/DataTable';
 import Stats from '../components/charts/Stats';
+import SectionHeading from '../components/SectionHeading';
 import type { Lang, LangInit } from '../lib/lang';
 import { cardHref, notesHref } from '../lib/links';
 import { rarityName } from '../lib/views/cards';
-import { versions, type CardChange, type VersionsModel } from '../lib/views/versions';
+import { type CardChange, versions, type VersionsModel } from '../lib/views/versions';
 import Filters, { type FilterOptions } from './Filters';
 import { useLang } from './useLang';
 import { useStats } from './useStats';
-import SectionHeading from '../components/SectionHeading';
 
 const columns = (l: Lang): ColumnDef<CardChange>[] => [
   {
@@ -16,13 +16,13 @@ const columns = (l: Lang): ColumnDef<CardChange>[] => [
     label: l.t('Card'),
     render: (r) => (
       <>
-        <a href={l.href(cardHref(r.id))} data-sheet-link>
+        <a data-sheet-link href={l.href(cardHref(r.id))}>
           {r.name}
         </a>
         <small>
           {l.t('{rarity}, won {from} → {to}', {
-            rarity: rarityName(l, r.rarity),
             from: l.pct(r.winA),
+            rarity: rarityName(l, r.rarity),
             to: l.pct(r.winB),
           })}
         </small>
@@ -30,38 +30,37 @@ const columns = (l: Lang): ColumnDef<CardChange>[] => [
     ),
   },
   {
-    key: 'confidence',
+    key: 'zScore',
     label: l.t('Against its peers'),
     num: true,
     render: (r) => (
       <>
-        {l.change(r.relative)}
+        {l.pointChange(r.relative)}
         {r.likely && <small class="text-gold">{l.t('likely')}</small>}
       </>
     ),
   },
-  { key: 'pickDelta', label: l.t('Pick rate'), num: true, wide: true, render: (r) => l.change(r.pickDelta) },
+  { key: 'pickDelta', label: l.t('Pick rate'), num: true, render: (r) => l.pointChange(r.pickDelta), wide: true },
 ];
 
 interface Props {
-  locale: LangInit;
   initial: VersionsModel;
+  locale: LangInit;
   options: FilterOptions;
 }
 
-export default function Versions({ locale, initial, options }: Props) {
+export default function Versions({ initial, locale, options }: Props) {
   const l = useLang(locale);
   const pair = useRef({ a: initial.a, b: initial.b });
-  const {
-    filters,
-    model: m,
-    status,
-    update,
-    refresh,
-  } = useStats(initial, ['cards'], options, (runs, f) => versions(l, runs, f, pair.current.a, pair.current.b), locale);
+  const { filters, model, refresh, status, update } = useStats(
+    initial,
+    ['cards'],
+    options,
+    (runs, f) => versions(l, runs, f, pair.current.a, pair.current.b),
+    locale,
+  );
   const pick = (side: 'a' | 'b') => (e: Event) => {
     pair.current = { ...pair.current, [side]: (e.currentTarget as HTMLSelectElement).value };
-    // The pair lives in the URL next to the filters, so a shared link opens on the same comparison
     if (!history.state?.sheet) {
       const params = new URLSearchParams(location.search);
       params.set('a', pair.current.a);
@@ -73,7 +72,7 @@ export default function Versions({ locale, initial, options }: Props) {
 
   useEffect(() => {
     const params = new URL(history.state?.page ?? location.href).searchParams;
-    const known = (v: string | null) => (v && options.versions.includes(v) ? v : null);
+    const known = (v: null | string) => (v && options.versions.includes(v) ? v : null);
     const [a, b] = [known(params.get('a')), known(params.get('b'))];
     if ((a && a !== pair.current.a) || (b && b !== pair.current.b)) {
       pair.current = { a: a ?? pair.current.a, b: b ?? pair.current.b };
@@ -82,15 +81,15 @@ export default function Versions({ locale, initial, options }: Props) {
   }, []);
 
   return (
-    <div class="stats-page" aria-busy={status === 'loading'}>
+    <div aria-busy={status === 'loading'} class="stats-page">
       <Filters
-        l={l}
         filters={filters}
-        options={options}
-        runs={m.runs}
-        status={status}
+        l={l}
         onChange={update}
-        versions={l.list([m.a, m.b])}
+        options={options}
+        runs={model.runs}
+        status={status}
+        versions={l.list([model.a, model.b])}
       />
       <section class="panel p-5">
         <SectionHeading id="compare-two-versions">{l.t('Compare two versions')}</SectionHeading>
@@ -99,7 +98,7 @@ export default function Versions({ locale, initial, options }: Props) {
           {(['a', 'b'] as const).map((side) => (
             <label class="field">
               <span>{side === 'a' ? l.t('From') : l.t('To')}</span>
-              <select class="field-control" value={pair.current[side]} onChange={pick(side)}>
+              <select class="field-control" onChange={pick(side)} value={pair.current[side]}>
                 {options.versions.map((v) => (
                   <option value={v}>{v}</option>
                 ))}
@@ -107,15 +106,15 @@ export default function Versions({ locale, initial, options }: Props) {
             </label>
           ))}
         </form>
-        {m.a === m.b ? (
+        {model.a === model.b ? (
           <p class="empty">{l.t('Pick two different versions.')}</p>
         ) : (
           <>
             <p class="note">
-              <a href={l.href(notesHref(m.a))}>{l.t('{version} notes', { version: m.a })}</a> ·{' '}
-              <a href={l.href(notesHref(m.b))}>{l.t('{version} notes', { version: m.b })}</a>
+              <a href={l.href(notesHref(model.a))}>{l.t('{version} notes', { version: model.a })}</a> ·{' '}
+              <a href={l.href(notesHref(model.b))}>{l.t('{version} notes', { version: model.b })}</a>
             </p>
-            <Stats items={m.stats} />
+            <Stats items={model.stats} />
           </>
         )}
       </section>
@@ -123,24 +122,24 @@ export default function Versions({ locale, initial, options }: Props) {
         <SectionHeading id="cards-that-moved-the-most">{l.t('Cards that moved the most')}</SectionHeading>
         <p class="note">
           {l.n(
-            m.enough,
+            model.minRuns,
             'Cards with at least {n} run in both versions, the clearest changes first. A change is in percentage points, measured against the middle card of the same rarity, so a version that is harder overall does not drag every card down. A change marked {likely} is too big to be random swing alone.',
             'Cards with at least {n} runs in both versions, the clearest changes first. A change is in percentage points, measured against the middle card of the same rarity, so a version that is harder overall does not drag every card down. A change marked {likely} is too big to be random swing alone.',
             { likely: l.t('likely') },
           )}
         </p>
         <DataTable
-          l={l}
-          columns={columns(l)}
-          rows={m.a === m.b ? [] : m.changes}
-          sort={{ key: 'confidence', dir: -1 }}
-          limit={15}
           caption={l.t('Card win rate changes between the two versions')}
+          columns={columns(l)}
           empty={l.n(
-            m.enough,
+            model.minRuns,
             'No card has {n} run in both versions yet.',
             'No card has {n} runs in both versions yet.',
           )}
+          l={l}
+          limit={15}
+          rows={model.a === model.b ? [] : model.changes}
+          sort={{ dir: -1, key: 'zScore' }}
         />
       </section>
     </div>

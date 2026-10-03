@@ -3,7 +3,6 @@ import { getEntry, render } from 'astro:content';
 import { DEFAULT_LOCALE } from '../lib/i18n';
 
 interface Props {
-  /** The page path without its leading slash, such as cards/rolling-boil */
   id: string;
 }
 
@@ -15,7 +14,6 @@ const Content = entry && (await render(entry)).Content;
 {Content && (
   <section class="commentary">
     <h2 class="text-xl">{l.t('Design notes')}</h2>
-    {/* The notes are written in English only */}
     <div lang={locale === DEFAULT_LOCALE ? undefined : 'en'}>
       <Content />
     </div>

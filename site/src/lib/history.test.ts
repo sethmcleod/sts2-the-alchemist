@@ -2,15 +2,14 @@ import { describe, expect, it } from 'vitest';
 import { changes, renames } from './history';
 import type { NoteItem, Release } from './types';
 
-const note = (text: string, items: NoteItem[] = []): NoteItem => ({ text, items });
+const note = (text: string, items: NoteItem[] = []): NoteItem => ({ items, text });
 const release = (version: string, ...items: NoteItem[]): Release => ({
-  version,
   date: null,
   intro: [],
-  sections: [{ title: null, items }],
+  sections: [{ items, title: null }],
+  version,
 });
 
-// Newest first, like notes.json
 const NOTES = [
   release('v4', note('Buffed Heavy Dose card: damage increased from 26 -> 28'), note('Changed Spike and Dose cards')),
   release('v3', note('Renamed Anoint to Spike and reworked it into a Decant card: "Deal 9 damage."')),
@@ -23,7 +22,7 @@ const NOTES = [
     note('Removed Extra Dose relic'),
   ),
 ];
-const NAMES = { SPIKE: 'Spike', DOSE: 'Dose', HEAVY: 'Heavy Dose', UNSTABLE: 'Unstable Compound' };
+const NAMES = { DOSE: 'Dose', HEAVY: 'Heavy Dose', SPIKE: 'Spike', UNSTABLE: 'Unstable Compound' };
 const history = (id: string) => (changes(NAMES, NOTES).get(id) ?? []).map((c) => `${c.version}: ${c.item.text}`);
 
 describe('history', () => {

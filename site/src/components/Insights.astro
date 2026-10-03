@@ -1,22 +1,17 @@
 ---
-// Vercel Web Analytics and Speed Insights, through the same functions Vercel's Astro components
-// call. Those components read the path from Astro.url, which ends in .html in this build, so every
-// card would count as a route of its own. This sends the address a visitor sees and the route
-// pattern (/[...lang]/cards/[slug]) instead
 import { pagePath } from '../lib/links';
 ---
 
-<div hidden data-insights data-path={pagePath(Astro.url)} data-route={Astro.routePattern}></div>
+<div data-insights data-path={pagePath(Astro.url)} data-route={Astro.routePattern} hidden></div>
 
 <script>
   import { inject, pageview } from '@vercel/analytics';
   import { injectSpeedInsights } from '@vercel/speed-insights';
 
   const { path, route } = document.querySelector<HTMLElement>('[data-insights]')!.dataset;
-  // Vercel sets these at build time for the project's own collection path
   const basePath = import.meta.env.PUBLIC_VERCEL_OBSERVABILITY_BASEPATH;
   const config = import.meta.env.PUBLIC_VERCEL_OBSERVABILITY_CLIENT_CONFIG;
-  inject({ framework: 'astro', disableAutoTrack: true, basePath }, config);
-  pageview({ route, path });
-  injectSpeedInsights({ framework: 'astro', route, basePath }, config);
+  inject({ basePath, disableAutoTrack: true, framework: 'astro' }, config);
+  pageview({ path, route });
+  injectSpeedInsights({ basePath, framework: 'astro', route }, config);
 </script>

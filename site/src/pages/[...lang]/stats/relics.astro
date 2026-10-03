@@ -13,20 +13,19 @@ export const getStaticPaths = everyLanguage;
 const { l, locale } = Astro.locals;
 const data = runs(locale);
 const icons = await iconUrls();
-// The island redraws with the stats strings alone, so the numbers it starts with use them too
-const init = islandLang(locale);
-const il = statsLang(init);
+const islandInit = islandLang(locale);
+const statsL = statsLang(islandInit);
 ---
 
 <Stats
-  title={l.t('Relic and potion stats')}
   description={l.t('Ancient choices, potions drunk and the base game relics Alchemist runs end with.')}
+  title={l.t('Relic and potion stats')}
 >
   <RelicStats
     client:idle
-    locale={init}
-    initial={relicStats(il, data, DEFAULT_FILTERS, icons)}
-    options={filterOptions(il, data)}
     icons={icons}
+    initial={relicStats(statsL, data, DEFAULT_FILTERS, icons)}
+    locale={islandInit}
+    options={filterOptions(statsL, data)}
   />
 </Stats>

@@ -1,20 +1,14 @@
-// A card, relic, potion or power link opens that page's [data-sheet] in a dialog, under the page's
-// own URL, so Back closes it and a reload shows the page itself. Without a script, or with a
-// modifier key held, the link simply opens the page.
-
 const dialog = document.querySelector<HTMLDialogElement>('#sheet')!;
 const body = dialog.querySelector<HTMLElement>('[data-sheet-body]')!;
-const sheets = new Map<string, Promise<{ title: string; sheet: Element }>>();
+const sheetRequests = new Map<string, Promise<{ sheet: Element; title: string }>>();
 const pageTitle = document.title;
-// How many dialog entries sit on top of the page in the history
-let depth = 0;
-// Only the latest request may open the dialog; closing it cancels any request still loading
-let latest = 0;
+let pushedEntries = 0;
+let latestRequest = 0;
 
-function load(url: string) {
-  let entry = sheets.get(url);
-  if (!entry) {
-    entry = fetch(url)
+function loadSheet(url: string) {
+  let request = sheetRequests.get(url);
+  if (!request) {
+    request = fetch(url)
       .then((response) => {
         if (!response.ok) throw new Error(`${url} answered ${response.status}`);
         return response.text();
@@ -23,39 +17,36 @@ function load(url: string) {
         const page = new DOMParser().parseFromString(html, 'text/html');
         const sheet = page.querySelector('[data-sheet]');
         if (!sheet) throw new Error(`${url} has no sheet`);
-        return { title: page.title, sheet };
+        return { sheet, title: page.title };
       });
-    entry.catch(() => sheets.delete(url));
-    sheets.set(url, entry);
+    request.catch(() => sheetRequests.delete(url));
+    sheetRequests.set(url, request);
   }
-  return entry;
+  return request;
 }
 
-async function open(url: string, push: boolean) {
-  if (push && dialog.open && history.state?.sheet === url) return;
-  const ticket = ++latest;
-  const loaded = await load(url).catch(() => null);
-  if (ticket !== latest) return;
+async function openSheet(url: string, pushHistory: boolean) {
+  if (pushHistory && dialog.open && history.state?.sheet === url) return;
+  const requestId = ++latestRequest;
+  const loaded = await loadSheet(url).catch(() => null);
+  if (requestId !== latestRequest) return;
   if (!loaded) {
     location.href = url;
     return;
   }
   body.replaceChildren(document.importNode(loaded.sheet, true));
   document.title = loaded.title;
-  // #upgraded in the address says the card shows its upgrade: set by "Show all upgraded" as the card
-  // opens, and read back when Back or Forward opens it again
   const toggle = body.querySelector<HTMLInputElement>('.upgrade-toggle');
-  if (!push && toggle) toggle.checked = (location.hash === '#upgraded') !== allUpgraded();
-  if (push) {
+  if (!pushHistory && toggle) toggle.checked = (location.hash === '#upgraded') !== allUpgraded();
+  if (pushHistory) {
     history.pushState(
-      { sheet: url, depth: ++depth, page: history.state?.page ?? location.href },
+      { depth: ++pushedEntries, page: history.state?.page ?? location.href, sheet: url },
       '',
       url + (allUpgraded() ? '#upgraded' : ''),
     );
   }
   if (!dialog.open) dialog.showModal();
   dialog.scrollTop = 0;
-  // The link that was followed is gone with the old sheet, so focus starts at the new one's title
   body.querySelector<HTMLElement>('#sheet-title')?.focus();
 }
 
@@ -68,56 +59,50 @@ const linkOf = (e: Event) => (e.target as Element).closest?.<HTMLAnchorElement>(
 document.addEventListener('click', (e) => {
   const link = linkOf(e);
   if (!link || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-  const hash = link.getAttribute('href')!;
-  if (hash.startsWith('#')) {
-    // A link to another spot in the open sheet scrolls there and leaves the history alone
+  const href = link.getAttribute('href')!;
+  if (href.startsWith('#')) {
     if (!dialog.contains(link)) return;
     e.preventDefault();
-    body.querySelector(`[id="${CSS.escape(decodeURIComponent(hash.slice(1)))}"]`)?.scrollIntoView();
+    body.querySelector(`[id="${CSS.escape(decodeURIComponent(href.slice(1)))}"]`)?.scrollIntoView();
     return;
   }
   e.preventDefault();
-  open(link.href, true);
+  openSheet(link.href, true);
 });
 
-// A link the pointer rests on, or that has focus, starts loading before it is clicked
-let resting = 0;
+let hoverTimer = 0;
 const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
 if (!saveData) {
   document.addEventListener('pointerover', (e) => {
-    clearTimeout(resting);
+    clearTimeout(hoverTimer);
     const link = linkOf(e);
-    if (link?.dataset.sheetLink !== undefined) resting = window.setTimeout(() => load(link.href), 150);
+    if (link?.dataset.sheetLink !== undefined) hoverTimer = window.setTimeout(() => loadSheet(link.href), 150);
   });
   document.addEventListener('focusin', (e) => {
     const link = linkOf(e);
-    if (link?.dataset.sheetLink !== undefined) load(link.href);
+    if (link?.dataset.sheetLink !== undefined) loadSheet(link.href);
   });
 }
 
 window.addEventListener('popstate', (e) => {
-  depth = e.state?.depth ?? 0;
-  if (e.state?.sheet) open(e.state.sheet, false);
+  pushedEntries = e.state?.depth ?? 0;
+  if (e.state?.sheet) openSheet(e.state.sheet, false);
   else dialog.close();
 });
 
 dialog.addEventListener('close', () => {
-  latest++;
+  latestRequest++;
   document.title = pageTitle;
-  if (depth > 0) history.go(-depth);
-  depth = 0;
+  if (pushedEntries > 0) history.go(-pushedEntries);
+  pushedEntries = 0;
 });
 
-// Flipping the card writes #upgraded into the address, so a copied link opens its page the same way.
-// "Show all upgraded" flips it too
 body.addEventListener('change', (e) => {
   const toggle = (e.target as Element).closest<HTMLInputElement>('.upgrade-toggle');
   if (!toggle || !history.state?.sheet) return;
   history.replaceState(history.state, '', history.state.sheet + (toggle.checked !== allUpgraded() ? '#upgraded' : ''));
 });
 
-// A click on the backdrop closes the dialog, but not the end of a drag that started inside it. The
-// dialog's closedby="any" does the same where the browser supports it
 let pressedOutside = false;
 dialog.addEventListener('pointerdown', (e) => (pressedOutside = e.target === dialog));
 dialog.addEventListener('click', (e) => {

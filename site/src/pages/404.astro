@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
 const { l } = Astro.locals;
 ---
 
-<Base title={l.t('Not found')} description={l.t('There is no page at this address.')} noindex>
+<Base description={l.t('There is no page at this address.')} noindex title={l.t('Not found')}>
   <div class="mx-auto max-w-[60ch] py-16">
     <h1 class="text-4xl mb-2">{l.t('Nothing here')}</h1>
     <p class="text-ink-2 mb-2">
@@ -14,13 +14,13 @@ const { l } = Astro.locals;
           'There is no page at this address. A card that was renamed or removed keeps no page of its own, but its changes are in the {notes}.',
         )}
       >
-        <a slot="notes" href={l.href('/notes')}>
+        <a href={l.href('/notes')} slot="notes">
           {l.t('patch notes')}
         </a>
       </T>
     </p>
     <p>
-      <a href={l.href('/')} class="button primary">
+      <a class="button primary" href={l.href('/')}>
         {l.t('See every card')}
       </a>
     </p>

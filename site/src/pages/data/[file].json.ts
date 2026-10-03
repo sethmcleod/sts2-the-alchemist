@@ -3,7 +3,6 @@ import { compact } from '../../lib/compact';
 import { dataFile, runs } from '../../lib/content';
 import { EXTRA_FILES } from '../../lib/runs';
 
-// The files the stats pages fetch once a filter changes, each stamped with its build
 export const getStaticPaths = (() =>
   ['summary.json', ...new Set(Object.values(EXTRA_FILES).map(([file]) => file))].map((file) => ({
     params: { file: file.replace(/\.json$/, '') },

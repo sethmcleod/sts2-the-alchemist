@@ -1,6 +1,4 @@
 ---
-// The Steam Workshop previews, one at a time. Without a script the strip scrolls and each shot
-// links to its full size; with one, the arrows step and a shot opens in a lightbox.
 import { getImage, Image } from 'astro:assets';
 import { image } from '../lib/content';
 
@@ -10,8 +8,7 @@ interface Props {
 
 const { l } = Astro.locals;
 
-// What each preview shows, by file name
-const ALT: Record<string, string> = {
+const ALT_BY_FILE: Record<string, string> = {
   'preview-1.png': l.t(
     'The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.',
   ),
@@ -29,9 +26,9 @@ const shots = (
     previews.map(async (preview, i) => {
       const src = await image(preview.image);
       if (!src) return null;
-      const name = preview.image.split('/').at(-1)!;
-      const full = await getImage({ src, width: 1920, format: 'webp', quality: 82 });
-      return { src, full: full.src, alt: ALT[name] ?? l.t('Screenshot {n}', { n: i + 1 }) };
+      const fileName = preview.image.split('/').at(-1)!;
+      const fullSize = await getImage({ format: 'webp', quality: 82, src, width: 1920 });
+      return { alt: ALT_BY_FILE[fileName] ?? l.t('Screenshot {n}', { n: i + 1 }), full: fullSize.src, src };
     }),
   )
 ).filter((shot) => shot !== null);
@@ -42,38 +39,38 @@ const shots = (
     <ul class="gallery-track m-0 flex list-none snap-x snap-mandatory overflow-x-auto p-0">
       {shots.map((shot, i) => (
         <li class="w-full flex-none snap-center">
-          <a href={shot.full} class="block" data-full={shot.full}>
+          <a class="block" data-full={shot.full} href={shot.full}>
             <Image
-              src={shot.src}
-              widths={[480, 960]}
-              sizes="(width < 64rem) calc(100vw - 32px), 30rem"
               alt={shot.alt}
               class="aspect-video w-full object-cover"
               loading={i ? 'lazy' : 'eager'}
+              sizes="(width < 64rem) calc(100vw - 32px), 30rem"
+              src={shot.src}
+              widths={[480, 960]}
             />
           </a>
         </li>
       ))}
     </ul>
-    <button type="button" class="gallery-step needs-js left-2" data-step="-1" aria-label={l.t('Previous screenshot')}>
+    <button aria-label={l.t('Previous screenshot')} class="gallery-step needs-js left-2" data-step="-1" type="button">
       ‹
     </button>
-    <button type="button" class="gallery-step needs-js right-2" data-step="1" aria-label={l.t('Next screenshot')}>
+    <button aria-label={l.t('Next screenshot')} class="gallery-step needs-js right-2" data-step="1" type="button">
       ›
     </button>
-    <p class="gallery-count needs-js" aria-hidden="true">
+    <p aria-hidden="true" class="gallery-count needs-js">
       1 / {shots.length}
     </p>
-    <dialog class="lightbox" aria-label={l.t('Screenshot')} closedby="any">
+    <dialog aria-label={l.t('Screenshot')} class="lightbox" closedby="any">
       <form method="dialog">
-        <button class="close-button" aria-label={l.t('Close')}>
+        <button aria-label={l.t('Close')} class="close-button">
           ×
         </button>
       </form>
-      <button type="button" class="gallery-step left-2" data-step="-1" aria-label={l.t('Previous screenshot')}>
+      <button aria-label={l.t('Previous screenshot')} class="gallery-step left-2" data-step="-1" type="button">
         ‹
       </button>
-      <button type="button" class="gallery-step right-2" data-step="1" aria-label={l.t('Next screenshot')}>
+      <button aria-label={l.t('Next screenshot')} class="gallery-step right-2" data-step="1" type="button">
         ›
       </button>
     </dialog>
@@ -84,22 +81,21 @@ const shots = (
   for (const gallery of document.querySelectorAll<HTMLElement>('[data-gallery]')) {
     const track = gallery.querySelector('ul')!;
     const links = [...track.querySelectorAll<HTMLAnchorElement>('a')];
-    const count = gallery.querySelector('.gallery-count')!;
+    const counter = gallery.querySelector('.gallery-count')!;
     const lightbox = gallery.querySelector('dialog')!;
-    // Made on first use, since an img needs a src
-    const big = document.createElement('img');
-    lightbox.querySelector('form')!.after(big);
-    const current = () => Math.round(track.scrollLeft / track.clientWidth);
-    const wrap = (i: number) => (i + links.length) % links.length;
-    let open = 0;
+    const lightboxImage = document.createElement('img');
+    lightbox.querySelector('form')!.after(lightboxImage);
+    const currentIndex = () => Math.round(track.scrollLeft / track.clientWidth);
+    const wrapIndex = (i: number) => (i + links.length) % links.length;
+    let openIndex = 0;
 
-    const show = (i: number) => {
-      open = wrap(i);
-      big.src = links[open].dataset.full!;
-      big.alt = links[open].querySelector('img')!.alt;
+    const showInLightbox = (i: number) => {
+      openIndex = wrapIndex(i);
+      lightboxImage.src = links[openIndex].dataset.full!;
+      lightboxImage.alt = links[openIndex].querySelector('img')!.alt;
     };
 
-    track.addEventListener('scroll', () => (count.textContent = `${current() + 1} / ${links.length}`), {
+    track.addEventListener('scroll', () => (counter.textContent = `${currentIndex() + 1} / ${links.length}`), {
       passive: true,
     });
     gallery.addEventListener('click', (e) => {
@@ -107,21 +103,24 @@ const shots = (
       const step = Number(target.closest<HTMLElement>('[data-step]')?.dataset.step);
       const link = target.closest('a');
       if (step && lightbox.open) {
-        show(open + step);
+        showInLightbox(openIndex + step);
       } else if (step) {
-        const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-        track.scrollTo({ left: wrap(current() + step) * track.clientWidth, behavior: still ? 'auto' : 'smooth' });
+        const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        track.scrollTo({
+          behavior: reduceMotion ? 'auto' : 'smooth',
+          left: wrapIndex(currentIndex() + step) * track.clientWidth,
+        });
       } else if (link) {
         e.preventDefault();
-        show(links.indexOf(link));
+        showInLightbox(links.indexOf(link));
         lightbox.showModal();
       } else if (target === lightbox) {
         lightbox.close();
       }
     });
     lightbox.addEventListener('keydown', (e) => {
-      const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
-      if (step) show(open + step);
+      const step = { ArrowLeft: -1, ArrowRight: 1 }[e.key];
+      if (step) showInLightbox(openIndex + step);
     });
   }
 </script>

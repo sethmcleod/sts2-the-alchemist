@@ -1,58 +1,52 @@
 ---
 import { runs } from '../lib/content';
 import { keywordName, libraryCards, rarityName, typeName } from '../lib/library';
-import { CARD_GROUPS, PARTNER_MODS, RARITY_NAME, slug, steamItem, TYPES } from '../lib/mod';
-import { DEFAULT_FILTERS } from '../lib/runs';
+import { CARD_GROUPS, PARTNER_MODS, partnerMod, RARITIES, RARITY_NAME, slug, steamItem, TYPES } from '../lib/mod';
 import type { Rarity } from '../lib/types';
 import CardTile from './CardTile.astro';
 import External from './External.astro';
-import StatsSpan from './StatsSpan.astro';
+import StatsNote from './StatsNote.astro';
 import T from './T.astro';
 
 const { l } = Astro.locals;
 
-const data = runs(Astro.locals.locale);
-const cards = libraryCards(l, data, runs());
-const keywords = [...new Set(cards.flatMap((c) => c.info.keywords))]
+const runData = runs(Astro.locals.locale);
+const cards = libraryCards(l, runData, runs());
+const keywords = [...new Set(cards.flatMap((card) => card.info.keywords))]
   .map((word) => [word, keywordName(l, word)])
   .sort(([, a], [, b]) => a.localeCompare(b, l.lang));
-const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
-// The counts scripts/library.ts writes as the filters change, in this language
-const counts = ['{n} cards', '{n} of {total} cards', 'Show {n} cards'];
-const words = JSON.stringify({
+const scriptStringKeys = ['{n} cards', '{n} of {total} cards', 'Show {n} cards'];
+const scriptWords = JSON.stringify({
   code: l.code,
   lang: l.lang,
-  strings: Object.fromEntries(counts.filter((key) => key in l.strings).map((key) => [key, l.strings[key]])),
+  strings: Object.fromEntries(scriptStringKeys.filter((key) => key in l.strings).map((key) => [key, l.strings[key]])),
 });
 
-// A group named after a rarity takes the game's word for it, and a partner mod keeps its name
 const groupTitle = ({ id, title }: (typeof CARD_GROUPS)[number]) =>
-  id in PARTNER_MODS ? title : title === RARITY_NAME[id as Rarity] ? rarityName(l, id as Rarity) : l.t(title);
-const groups = CARD_GROUPS.map((group) => ({ ...group, cards: cards.filter((c) => c.group === group.id) })).filter(
-  (group) => group.cards.length,
-);
+  partnerMod(id) ? title : title === RARITY_NAME[id as Rarity] ? rarityName(l, id as Rarity) : l.t(title);
+const groups = CARD_GROUPS.map((group) => ({
+  ...group,
+  cards: cards.filter((card) => card.group === group.id),
+})).filter((group) => group.cards.length);
 
 const selects = [
   {
-    name: 'type',
     label: l.t('Type'),
+    name: 'type',
     options: [['', l.t('All types')], ...TYPES.map((type) => [type, typeName(l, type)])],
   },
   {
-    name: 'rarity',
     label: l.t('Rarity'),
-    options: [
-      ['', l.t('All rarities')],
-      ...Object.keys(RARITY_NAME).map((value) => [value, rarityName(l, value as Rarity)]),
-    ],
+    name: 'rarity',
+    options: [['', l.t('All rarities')], ...RARITIES.map((rarity) => [rarity, rarityName(l, rarity)])],
   },
   {
-    name: 'cost',
     label: l.t('Cost'),
+    name: 'cost',
     options: [['', l.t('Any cost')], ['0'], ['1'], ['2'], ['3', l.t('3 or more')], ['X']],
   },
 ];
-const sorts = [
+const sortOptions = [
   ['rarity', l.t('Rarity')],
   ['name', l.t('Name')],
   ['cost', l.t('Cost')],
@@ -64,49 +58,44 @@ const sorts = [
   ['unplayed', l.t('Left unplayed')],
   ['held', l.t('Runs')],
 ];
-const control = 'field-control min-w-0';
+const selectClass = 'field-control min-w-0';
 ---
 
-<section id="cards" aria-labelledby="cards-heading" class="scroll-mt-4">
+<section aria-labelledby="cards-heading" class="scroll-mt-4" id="cards">
   <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-    <h2 id="cards-heading" class="m-0 text-3xl">
+    <h2 class="m-0 text-3xl" id="cards-heading">
       {l.t('Cards')}
     </h2>
-    <output class="text-sm text-ink-2 tabular-nums" data-count aria-live="polite">
+    <output aria-live="polite" class="text-sm text-ink-2 tabular-nums" data-count>
       {l.n(cards.length, '{n} card', '{n} cards')}
     </output>
-    <p class="m-0 text-sm text-muted sm:ml-auto">
-      <T text={l.n(statRuns, 'Stats from {n} solo run on {span}.', 'Stats from {n} solo runs on {span}.')}>
-        <StatsSpan slot="span" />
-      </T>{' '}
-      <a href={l.href('/stats/cards')}>{l.t('Filter them')}</a>
-    </p>
+    <StatsNote class="text-sm text-muted sm:ml-auto" href="/stats/cards" />
   </div>
 
-  <form id="library" class="toolbar" role="search" aria-label={l.t('Cards')} data-words={words}>
+  <form aria-label={l.t('Cards')} class="toolbar" data-words={scriptWords} id="library" role="search">
     <input
-      type="search"
-      name="q"
-      class="field-control needs-js min-w-0 flex-1 basis-40"
-      placeholder={l.t('Search names and text')}
       aria-label={l.t('Search cards')}
       autocomplete="off"
+      class="field-control needs-js min-w-0 flex-1 basis-40"
+      name="q"
+      placeholder={l.t('Search names and text')}
+      type="search"
     />
-    <button type="button" class="button needs-js filters-button" aria-haspopup="dialog" data-open-filters>
+    <button aria-haspopup="dialog" class="button needs-js filters-button" data-open-filters type="button">
       {l.t('Filters')} <span class="count-badge" data-filter-count hidden></span>
     </button>
     <div class="library-filters needs-js" data-filters>
       {selects.map((select) => (
-        <select name={select.name} class={control} aria-label={select.label} form="library">
+        <select aria-label={select.label} class={selectClass} form="library" name={select.name}>
           {select.options.map(([value, text]) => (
             <option value={value}>{text ?? value}</option>
           ))}
         </select>
       ))}
-      <select name="keyword" class={control} aria-label={l.t('Keyword or theme')} form="library">
+      <select aria-label={l.t('Keyword or theme')} class={selectClass} form="library" name="keyword">
         <option value="">{l.t('Any keyword')}</option>
         <optgroup label={l.t('Theme')}>
-          {data.meta.themes.map((theme) => (
+          {runData.meta.themes.map((theme) => (
             <option value={`theme:${theme}`}>{l.t(theme)}</option>
           ))}
         </optgroup>
@@ -116,34 +105,34 @@ const control = 'field-control min-w-0';
           ))}
         </optgroup>
       </select>
-      <select name="from" class={control} aria-label={l.t('Where from')} form="library">
+      <select aria-label={l.t('Where from')} class={selectClass} form="library" name="from">
         <option value="">{l.t('Any source')}</option>
         <option value="starter">{l.t('Starting deck')}</option>
         <option value="pool">{l.t('Card rewards')}</option>
         <option value="created">{l.t('Created in combat')}</option>
         <option value="coop">{l.t('Multiplayer only')}</option>
-        {Object.entries(PARTNER_MODS).map(([tag, mod]) => (
-          <option value={tag}>{mod.name}</option>
+        {PARTNER_MODS.map((mod) => (
+          <option value={mod.tag}>{mod.name}</option>
         ))}
       </select>
-      <select name="sort" class={control} aria-label={l.t('Sort by')} form="library">
-        {sorts.map(([value, text]) => (
+      <select aria-label={l.t('Sort by')} class={selectClass} form="library" name="sort">
+        {sortOptions.map(([value, text]) => (
           <option value={value}>{l.t('Sort: {order}', { order: text })}</option>
         ))}
       </select>
     </div>
     <label class="upgrade-all">
-      <input type="checkbox" id="all-upgraded" name="upgraded" form="library" />
+      <input form="library" id="all-upgraded" name="upgraded" type="checkbox" />
       <span>{l.t('Show all upgraded')}</span>
     </label>
   </form>
 
   <div data-groups>
     {groups.map((group) => {
-      const partner = PARTNER_MODS[group.id];
+      const partner = partnerMod(group.id);
       return (
-        <section class="mt-6" data-card-group={group.id} aria-labelledby={`group-${slug(group.id)}`}>
-          <h3 id={`group-${slug(group.id)}`} class="m-0 text-xl">
+        <section aria-labelledby={`group-${slug(group.id)}`} class="mt-6" data-card-group={group.id}>
+          <h3 class="m-0 text-xl" id={`group-${slug(group.id)}`}>
             {groupTitle(group)}{' '}
             <small class="font-sans text-sm font-normal text-muted" data-group-count>
               {l.n(group.cards.length, '{n} card', '{n} cards')}
@@ -158,7 +147,6 @@ const control = 'field-control min-w-0';
               </T>
             </p>
           )}
-          {group.note && <p class="m-0 mt-1 text-sm text-muted">{l.t(group.note)}</p>}
           <ul class="card-grid">
             {group.cards.map((card) => (
               <CardTile card={card} />
@@ -171,28 +159,28 @@ const control = 'field-control min-w-0';
   <ul class="card-grid mt-6" data-sorted hidden></ul>
   <p class="mt-8 text-center text-muted" data-empty hidden>
     {l.t('No cards match.')}{' '}
-    <button type="button" class="button ml-2" data-clear>
+    <button class="button ml-2" data-clear type="button">
       {l.t('Clear filters')}
     </button>
   </p>
 </section>
 
-<dialog class="sheet drawer" aria-labelledby="drawer-title" closedby="any" data-drawer>
+<dialog aria-labelledby="drawer-title" class="sheet drawer" closedby="any" data-drawer>
   <form method="dialog">
-    <button class="close-button" aria-label={l.t('Close')}>
+    <button aria-label={l.t('Close')} class="close-button">
       ×
     </button>
   </form>
   <div class="grid gap-4 p-5">
-    <h2 id="drawer-title" class="m-0 text-2xl">
+    <h2 class="m-0 text-2xl" id="drawer-title">
       {l.t('Filter and sort')}
     </h2>
     <div class="grid gap-3" data-drawer-body></div>
     <div class="flex gap-2.5">
-      <button type="button" class="button flex-1" data-clear>
+      <button class="button flex-1" data-clear type="button">
         {l.t('Clear')}
       </button>
-      <button type="button" class="button primary flex-1" data-done>
+      <button class="button primary flex-1" data-done type="button">
         {l.t('Show cards')}
       </button>
     </div>

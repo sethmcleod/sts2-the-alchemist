@@ -1,4 +1,8 @@
 {
+  "readme": {
+    "10d2ae3745c2": "- **Veneno propio**: El Alquimista se envenena a propósito. Algunos ataques infligen daño adicional según tu veneno, y otras cartas reaccionan a la frecuencia con la que se activa tu veneno.\n- **Antitoxina**: Una reserva que absorbe el daño que te infligiría tu propio veneno. Se reduce en 1 al comienzo de tu turno.\n- **Mezcla**: Son cartas simbólicas parecidas a las pociones que puedes crear en combate. Las Mezclas básicas son Explosiva (daño), Almibarada (bloqueo) y Vigorizante (robo de cartas); las especiales son Humeante (corrupción), Acre (debilitamiento y vulnerabilidad) y Chispeante (energía).\n- **Fermentación**: Estas cartas tienen retención y ganan potencia por cada turno que pasan en tu mano.\n- **Preparar**: Esta opción del punto de descanso te permite obtener 1 de 8 pociones únicas que solo se consiguen de esta forma. Por la calidad de estas preparaciones, el Comerciante está dispuesto a comprártelas por 150 de oro.",
+    "b40936bd23dc": "Este mod todavía está en desarrollo y su contenido puede cambiar, ¡pero los comentarios son bienvenidos! El mejor lugar para hablar del mod es el servidor oficial de Discord de Slay the Spire, en la [publicación de The Alchemist del canal #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nPor ahora, las traducciones se generan automáticamente. El plan es contratar a traductores nativos cuando el contenido deje de cambiar tan seguido. Mientras tanto, ¡se agradecen las correcciones! Si ves un error en tu idioma, contáctame o abre un pull request en GitHub."
+  },
   "site": {
     "(opens in a new tab)": "(se abre en una pestaña nueva)",
     "3 or more": "3 o más",
@@ -27,6 +31,7 @@
     "Badges, Brew, Mixes, Ferment, Poison and Antitoxin, measured over every shared run.": "Insignias, Preparar, Mezclas, fermentación, veneno y antitoxina, medidos en todas las partidas compartidas.",
     "Best for its rarity": "Mejor para su rareza",
     "Bought": "Comprada",
+    "Brew": "Preparar",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Preparar es una opción del punto de descanso que te deja elegir entre 3 de estas pociones. No se obtienen de ninguna otra forma, y el Comerciante las compra por 150 de oro.",
     "Brew potion": "Poción preparada",
     "Brew potion, made only at a rest site": "Poción preparada, solo se obtiene en un punto de descanso",
@@ -55,10 +60,10 @@
       "one": "Bebida {n} vez cada 100 partidas",
       "other": "Bebida {n} veces cada 100 partidas"
     },
+    "Effect": "Efecto",
     "Event Attack": "Ataque de evento",
     "Event Skill": "Habilidad de evento",
     "Every release of The Alchemist, newest first.": "Todas las versiones de El Alquimista, de la más reciente a la más antigua.",
-    "Every release, newest first. The beta and public branches get the same notes.": "Todas las versiones, de la más reciente a la más antigua. Las ramas beta y pública reciben las mismas notas.",
     "Filter and sort": "Filtrar y ordenar",
     "Filter the card stats": "Filtrar las estadísticas de cartas",
     "Filter the relic and potion stats": "Filtrar las estadísticas de reliquias y pociones",
@@ -69,6 +74,7 @@
     "From {source}, {line}": "De {source}, {line}",
     "Get the mod": "Obtener el mod",
     "GitHub releases": "Lanzamientos en GitHub",
+    "Grid": "Cuadrícula",
     "How The Alchemist's win rates and cards changed from one version to the next.": "Cómo cambiaron los porcentajes de victorias y las cartas de El Alquimista de una versión a otra.",
     "How fresh they are": "Frecuencia de actualización",
     "How often each Alchemist card is picked, played and won with.": "Con qué frecuencia se elige, se juega y se gana con cada carta de El Alquimista.",
@@ -87,7 +93,7 @@
     "Language: {name}": "Idioma: {name}",
     "Latest: {notes}, {date}.": "Última versión: {notes}, {date}.",
     "Latest: {notes}.": "Última versión: {notes}.",
-    "Made by other cards, relics and potions during a fight.": "Las crean otras cartas, reliquias y pociones durante un combate.",
+    "List": "Lista",
     "Made during a fight, so it never ends a run in a deck.": "Se crea durante un combate, así que nunca está en el mazo al final de una partida.",
     "Made per run": "Creadas por partida",
     "Mechanics": "Mecánicas",
@@ -107,7 +113,6 @@
     "Only in runs with {mod} installed as well.": "Solo en partidas que también tengan {mod} instalado.",
     "Overview": "Resumen",
     "Patch notes": "Notas del parche",
-    "Patch notes are in English.": "Las notas del parche están en inglés.",
     "Picked at Brew": "Elegida al Preparar",
     "Picked {share} of the time at Brew": "Elegida el {share} de las veces al Preparar",
     "Plays per run": "Jugadas por partida",
@@ -133,6 +138,7 @@
     "Search names and text": "Buscar por nombre o texto",
     "See every card": "Ver todas las cartas",
     "Share of Mixes": "Proporción de Mezclas",
+    "Shop": "Tienda",
     "Shop relic": "Reliquia de tienda",
     "Show all upgraded": "Ver todas mejoradas",
     "Show base card": "Ver carta base",
@@ -151,11 +157,12 @@
     "Site": "Sitio",
     "Skip to content": "Ir al contenido",
     "Slay the Spire 2 character mod": "Mod de personaje para Slay the Spire 2",
-    "Sold by the Merchant or found after a fight, like any other potion.": "Las vende el Comerciante o aparecen después de un combate, como cualquier otra poción.",
     "Sort by": "Ordenar por",
     "Sort: {order}": "Orden: {order}",
+    "Source": "Origen",
     "Source on GitHub": "Código fuente en GitHub",
     "Standard mode runs that got past floor 5. Abandoned runs and runs with the full console on are left out.": "Partidas del modo Estándar que pasaron del piso 5. Se excluyen las partidas abandonadas y las que tenían activada la consola completa.",
+    "Starter": "Básica",
     "Starter Attack": "Ataque básico",
     "Starter Skill": "Habilidad básica",
     "Starter relic": "Reliquia básica",
@@ -180,8 +187,6 @@
     "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "Las {relics} reliquias y {potions} pociones de El Alquimista, y cómo les fue a las partidas que las usaron.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "El Alquimista, un mod de personaje para Slay the Spire 2: todas sus cartas, reliquias, pociones y poderes, las notas del parche y estadísticas de miles de partidas.",
     "The Merchant asking to buy a Brew potion.": "El Comerciante pide comprar una poción preparada.",
-    "The powers Alchemist cards, relics and potions put on a creature. X is the amount the card or relic gives.": "Los poderes que las cartas, reliquias y pociones de El Alquimista aplican a una criatura. X es la cantidad que otorga la carta o la reliquia.",
-    "The win rate is how often the runs that ended with the relic won.": "El porcentaje de victorias indica con qué frecuencia ganaron las partidas que terminaron con la reliquia.",
     "The {n} powers The Alchemist's cards, relics and potions give.": {
       "one": "El {n} poder que otorgan las cartas, reliquias y pociones de El Alquimista.",
       "other": "Los {n} poderes que otorgan las cartas, reliquias y pociones de El Alquimista."
@@ -212,6 +217,7 @@
     },
     "Updated {date}": "Actualizado el {date}",
     "Versions": "Versiones",
+    "View": "Vista",
     "When a run ends, the game can share an anonymous summary of it. It only does this when Upload Data is on in the game's settings. The Alchemist also has its own switch, {setting}, in the mod settings. Nothing sent includes a name or a Steam ID.": "Cuando termina una partida, el juego puede compartir un resumen anónimo de ella. Solo lo hace si la opción «Envío de información de juego» está activada en los ajustes del juego. El Alquimista también tiene su propia opción, {setting}, en la configuración del mod. Nada de lo que se envía incluye un nombre ni un ID de Steam.",
     "Where Alchemist runs end, and the fights that end them.": "Dónde terminan las partidas de El Alquimista y los combates que acaban con ellas.",
     "Where from": "Origen",
@@ -227,14 +233,6 @@
     "by win rate. The middle one wins {rate}": "por porcentaje de victorias. La del medio tiene un {rate}",
     "from the Merchant": "al Comerciante",
     "from this power": "de este poder",
-    "gave {n} Antitoxin": {
-      "one": "dio {n} de antitoxina",
-      "other": "dio {n} de antitoxina"
-    },
-    "made {n} Mixes": {
-      "one": "creó {n} Mezcla",
-      "other": "creó {n} Mezclas"
-    },
     "never an early pick": "nunca fue elección temprana",
     "never offered as a card reward": "nunca ofrecida como recompensa de cartas",
     "never played in {share} of {n} runs": {
@@ -686,9 +684,5 @@
       "one": "{wins} de {n} partida",
       "other": "{wins} de {n} partidas"
     }
-  },
-  "readme": {
-    "10d2ae3745c2": "- **Veneno propio**: El Alquimista se envenena a propósito. Algunos ataques infligen daño adicional según tu veneno, y otras cartas reaccionan a la frecuencia con la que se activa tu veneno.\n- **Antitoxina**: Una reserva que absorbe el daño que te infligiría tu propio veneno. Se reduce en 1 al comienzo de tu turno.\n- **Mezcla**: Son cartas simbólicas parecidas a las pociones que puedes crear en combate. Las Mezclas básicas son Explosiva (daño), Almibarada (bloqueo) y Vigorizante (robo de cartas); las especiales son Humeante (corrupción), Acre (debilitamiento y vulnerabilidad) y Chispeante (energía).\n- **Fermentación**: Estas cartas tienen retención y ganan potencia por cada turno que pasan en tu mano.\n- **Preparar**: Esta opción del punto de descanso te permite obtener 1 de 8 pociones únicas que solo se consiguen de esta forma. Por la calidad de estas preparaciones, el Comerciante está dispuesto a comprártelas por 150 de oro.",
-    "058c1e7c5c3f": "Este mod todavía está en desarrollo y su contenido puede cambiar, ¡pero los comentarios son bienvenidos! El mejor lugar para hablar del mod es el servidor oficial de Discord de Slay the Spire, en la [publicación de The Alchemist del canal #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nLas traducciones fueron generadas automáticamente y se agradecen las correcciones. Si ves un error en tu idioma, contáctame o abre directamente un pull request en GitHub."
   }
 }

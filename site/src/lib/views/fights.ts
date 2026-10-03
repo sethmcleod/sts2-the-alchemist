@@ -5,69 +5,68 @@ import type { Filters, Runs } from '../runs';
 import { rate, sumBy } from '../stats';
 
 export interface EncounterRow {
-  id: string;
-  name: string;
-  kind: string;
-  fights: number;
-  deaths: number;
-  lethality: number | null;
   damage: number;
+  deaths: number;
+  fights: number;
+  id: string;
+  kind: string;
+  lethality: null | number;
+  name: string;
   turns: number;
 }
 
 export interface FightsModel {
-  runs: number;
-  floors: Column[];
+  acts: { act: number; damage: number; fights: number; turns: number }[];
   encounters: EncounterRow[];
-  acts: { act: number; fights: number; turns: number; damage: number }[];
+  floors: Column[];
+  runs: number;
 }
 
-export function fights(l: Lang, runs: Runs, f: Filters): FightsModel {
-  const on = runs.select(f);
+export function fights(l: Lang, runs: Runs, filters: Filters): FightsModel {
+  const on = runs.select(filters);
   const floors = sumBy(runs.tables.death_floors, on, (r) => r.floor as number);
-  const deaths = [...floors.values()].reduce((n, c) => n + c.deaths, 0);
-  const top = Math.max(0, ...floors.keys());
+  const lostRuns = [...floors.values()].reduce((n, c) => n + c.deaths, 0);
+  const lastFloor = Math.max(0, ...floors.keys());
   const columns: Column[] = [];
-  for (let floor = 1; floor <= top; floor++) {
-    const n = floors.get(floor)?.deaths || 0;
+  for (let floor = 1; floor <= lastFloor; floor++) {
+    const ended = floors.get(floor)?.deaths || 0;
     columns.push({
       label: l.num(floor),
-      value: n,
       tip: [
         l.t('Floor {floor}', { floor }),
-        l.n(n, '{n} run ended here', '{n} runs ended here'),
-        l.t('{share} of lost runs', { share: l.pct(n / deaths) }),
+        l.n(ended, '{n} run ended here', '{n} runs ended here'),
+        l.t('{share} of lost runs', { share: l.pct(ended / lostRuns) }),
       ],
+      value: ended,
     });
   }
 
-  // "KNOWLEDGE_DEMON_BOSS" is the Knowledge Demon, a boss. The game names its own fights
   const encounter = (id: string) => {
     const suffix = id.split('_').at(-1)!;
     const kind = ENCOUNTER_KINDS[suffix];
     return {
-      name: l.game?.encounters[id] ?? runs.name(kind ? id.slice(0, -suffix.length - 1) : id),
       kind: kind ? (l.game?.words[kind] ?? l.t(kind)) : l.t('Fight'),
+      name: l.game?.encounters[id] ?? runs.name(kind ? id.slice(0, -suffix.length - 1) : id),
     };
   };
 
   return {
-    runs: runs.totals(on).runs,
-    floors: columns,
-    encounters: [...sumBy(runs.table('encounters'), on, (r) => r.encounter as string)]
-      .filter(([, g]) => g.fights >= f.min)
-      .map(([id, g]) => ({
-        id,
-        ...encounter(id),
-        fights: g.fights,
-        deaths: g.deaths,
-        lethality: rate(g.deaths, g.fights),
-        damage: g.damage / g.fights,
-        turns: g.turns / g.fights,
-      })),
     acts: [...sumBy(runs.tables.acts, on, (r) => r.act as number)]
       .filter(([act, g]) => act > 0 && g.fights)
       .sort((a, b) => a[0] - b[0])
-      .map(([act, g]) => ({ act, fights: g.fights, turns: g.turns / g.fights, damage: g.damage / g.fights })),
+      .map(([act, g]) => ({ act, damage: g.damage / g.fights, fights: g.fights, turns: g.turns / g.fights })),
+    encounters: [...sumBy(runs.table('encounters'), on, (r) => r.encounter as string)]
+      .filter(([, g]) => g.fights >= filters.min)
+      .map(([id, g]) => ({
+        id,
+        ...encounter(id),
+        damage: g.damage / g.fights,
+        deaths: g.deaths,
+        fights: g.fights,
+        lethality: rate(g.deaths, g.fights),
+        turns: g.turns / g.fights,
+      })),
+    floors: columns,
+    runs: runs.totals(on).runs,
   };
 }
