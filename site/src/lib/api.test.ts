@@ -1,40 +1,39 @@
 import { gunzipSync } from 'node:zlib';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-const blob = vi.hoisted(() => ({ put: vi.fn(), list: vi.fn() }));
+const blob = vi.hoisted(() => ({ list: vi.fn(), put: vi.fn() }));
 vi.mock('@vercel/blob', () => blob);
 
-import { POST } from '../../api/runs';
 import { GET } from '../../api/pack';
+import { POST } from '../../api/runs';
 
 const RUN = {
-  mod_version: '0.14.22-beta',
-  game_version: 'v0.99',
-  victory: true,
-  ascension: 3,
-  floor: 51,
-  playtime: 2400,
-  player_hash: '0123456789abcdef',
-  epochs: 4,
-  data: { deck: [] },
   alchemist: { schema: 3 },
+  ascension: 3,
+  data: { deck: [] },
+  epochs: 4,
+  floor: 51,
+  game_version: 'v0.99',
+  mod_version: '0.14.22-beta',
+  player_hash: '0123456789abcdef',
+  playtime: 2400,
+  victory: true,
 };
 
-// A fake Redis (a list and keys), Supabase and deploy hook behind fetch
 let inbox: string[];
 let keys: Map<string, string>;
-let supabase: { id: number }[] | Error;
-let calls: string[];
+let supabase: Error | { id: number }[];
+let fetchedUrls: string[];
 function fakeFetch(url: string, init?: RequestInit) {
-  calls.push(url);
+  fetchedUrls.push(url);
   if (url === 'https://redis.test') {
-    const [name, ...args] = JSON.parse(String(init!.body)) as [string, ...(string | number)[]];
+    const [name, ...args] = JSON.parse(String(init!.body)) as [string, ...(number | string)[]];
     const result = {
-      RPUSH: () => inbox.push(String(args[1])),
-      RPOP: () => inbox.pop(),
+      GET: () => keys.get(String(args[0])) ?? null,
       LRANGE: () => [...inbox],
       LTRIM: () => void (inbox = inbox.slice(Number(args[1]))),
-      GET: () => keys.get(String(args[0])) ?? null,
+      RPOP: () => inbox.pop(),
+      RPUSH: () => inbox.push(String(args[1])),
       SET: () => void keys.set(String(args[0]), String(args[1])),
     }[name]!();
     return Response.json({ result });
@@ -52,7 +51,7 @@ beforeEach(() => {
   inbox = [];
   keys = new Map();
   supabase = [];
-  calls = [];
+  fetchedUrls = [];
   vi.stubGlobal(
     'fetch',
     vi.fn(async (url: string, init?: RequestInit) => fakeFetch(url, init)),
@@ -71,7 +70,7 @@ afterEach(() => {
 });
 
 const upload = (body: unknown) =>
-  POST(new Request('https://alchemist.fyi/api/runs', { method: 'POST', body: JSON.stringify(body) }));
+  POST(new Request('https://alchemist.fyi/api/runs', { body: JSON.stringify(body), method: 'POST' }));
 const pack = (secret = 'secret') =>
   GET(new Request('https://alchemist.fyi/api/pack', { headers: { authorization: `Bearer ${secret}` } }));
 
@@ -80,13 +79,13 @@ describe('the upload endpoint', () => {
     const response = await upload({ ...RUN, extra: 'dropped' });
     expect(response.status).toBe(201);
     const row = JSON.parse(inbox[0]);
-    expect(row).toEqual({ id: expect.any(String), created_at: expect.any(String), ...RUN });
+    expect(row).toEqual({ created_at: expect.any(String), id: expect.any(String), ...RUN });
   });
 
   it('fills in the fields older clients leave out', async () => {
-    const { epochs, alchemist, ...older } = RUN;
+    const { alchemist, epochs, ...older } = RUN;
     expect((await upload(older)).status).toBe(201);
-    expect(JSON.parse(inbox[0])).toMatchObject({ epochs: 0, alchemist: {} });
+    expect(JSON.parse(inbox[0])).toMatchObject({ alchemist: {}, epochs: 0 });
   });
 
   it('names what is wrong with a run it refuses', async () => {
@@ -97,7 +96,7 @@ describe('the upload endpoint', () => {
     expect(await answer({ ...RUN, victory: 'yes' })).toEqual([400, 'Missing or wrong: victory.']);
     expect(await answer({ ...RUN, floor: -1 })).toEqual([400, 'Missing or wrong: floor.']);
     expect(await answer([RUN])).toEqual([400, 'The body is not one run.']);
-    const notJson = await POST(new Request('https://alchemist.fyi/api/runs', { method: 'POST', body: '{' }));
+    const notJson = await POST(new Request('https://alchemist.fyi/api/runs', { body: '{', method: 'POST' }));
     expect(notJson.status).toBe(400);
     expect((await upload({ ...RUN, data: { pad: 'x'.repeat(500_000) } })).status).toBe(413);
     expect(inbox).toEqual([]);
@@ -114,13 +113,13 @@ describe('the daily pack', () => {
   const packed = () => {
     const [pathname, body, options] = blob.put.mock.calls[0];
     return {
-      pathname,
-      options,
       lines: gunzipSync(body)
         .toString()
         .trim()
         .split('\n')
         .map((line) => JSON.parse(line)),
+      options,
+      pathname,
     };
   };
 
@@ -132,19 +131,19 @@ describe('the daily pack', () => {
   it('moves the queue and the new Supabase rows into one private file, then starts a build', async () => {
     inbox = [JSON.stringify({ id: 'a' }), JSON.stringify({ id: 'b' })];
     supabase = [{ id: 1 }, { id: 2 }];
-    blob.list.mockResolvedValue({ blobs: [{ pathname: 'runs/x.jsonl.gz', url: 'https://blob/x', size: 9 }] });
+    blob.list.mockResolvedValue({ blobs: [{ pathname: 'runs/x.jsonl.gz', size: 9, url: 'https://blob/x' }] });
     const response = await pack();
-    expect(await response.json()).toMatchObject({ packed: 4, fromSupabase: 2, built: true });
-    const { pathname, options, lines } = packed();
+    expect(await response.json()).toMatchObject({ built: true, fromSupabase: 2, packed: 4 });
+    const { lines, options, pathname } = packed();
     expect(pathname).toMatch(/^runs\/.+\.jsonl\.gz$/);
     expect(options).toMatchObject({ access: 'private' });
     expect(lines.map((line) => line.id)).toEqual(['sb-1', 'sb-2', 'a', 'b']);
     expect(inbox).toEqual([]);
     expect(keys.get('runs:supabase-seen')).toBe('2');
     expect(JSON.parse(keys.get('runs:files')!)).toEqual([
-      { pathname: 'runs/x.jsonl.gz', url: 'https://blob/x', size: 9 },
+      { pathname: 'runs/x.jsonl.gz', size: 9, url: 'https://blob/x' },
     ]);
-    expect(calls.at(-1)).toBe('https://hook.test');
+    expect(fetchedUrls.at(-1)).toBe('https://hook.test');
   });
 
   it('copies only the Supabase rows it has not copied', async () => {
@@ -174,12 +173,12 @@ describe('the daily pack', () => {
     blob.put.mockRejectedValue(new Error('Blob is down'));
     await expect(pack()).rejects.toThrow('Blob is down');
     expect(inbox.length).toBe(1);
-    expect(calls).not.toContain('https://hook.test');
+    expect(fetchedUrls).not.toContain('https://hook.test');
   });
 
   it('does nothing when nothing is new', async () => {
     expect(await (await pack()).json()).toEqual({ packed: 0 });
     expect(blob.put).not.toHaveBeenCalled();
-    expect(calls).not.toContain('https://hook.test');
+    expect(fetchedUrls).not.toContain('https://hook.test');
   });
 });

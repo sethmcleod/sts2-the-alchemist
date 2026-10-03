@@ -27,7 +27,7 @@
 #   scripts/dev.sh site [dev|build|preview|check]
 #                                 the website in site/ (alchemist.fyi). dev: serve it while you edit;
 #                                 build: export the data and build it; preview: serve the build;
-#                                 check: the unit tests and the type check. It deploys itself from
+#                                 check: the unit tests, type check and lint. It deploys itself from
 #                                 each release (.github/workflows/site.yml), so a release needs nothing
 #   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with the fixes
 #   scripts/dev.sh env            print the resolved paths and exit
@@ -596,7 +596,7 @@ case "${1:-help}" in
                  mode="${2:-dev}"
                  case "$mode" in
                    dev|build|preview) (cd "$REPO/site" && npm run "$mode") ;;
-                   check)  (cd "$REPO/site" && npm test && npm run check) ;;
+                   check)  (cd "$REPO/site" && npm test && npm run check && npm run lint) ;;
                    *)      bad "unknown site mode '$mode' (dev|build|preview|check)"; exit 1 ;;
                  esac ;;
   doctor)        do_doctor ;;

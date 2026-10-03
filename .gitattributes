@@ -1,6 +1,2 @@
-# Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
-
-# This only covers a file both branches changed; a compat file that is NEW on beta arrives with no
-# conflict to resolve, which is what the COMPAT-BRANCH check in scripts/lint_sync.py is for.
 AlchemistCode/Compat/** merge=ours

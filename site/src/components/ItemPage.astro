@@ -6,18 +6,18 @@ import { plain } from '../lib/markup';
 import ItemSheet from './ItemSheet.astro';
 
 interface Props {
-  item: Item;
   back: { href: string; label: string };
+  item: Item;
 }
 
-const { item, back } = Astro.props;
+const { back, item } = Astro.props;
 const { l } = Astro.locals;
 ---
 
 <Base
-  title={item.info.name}
-  image={await image(item.info.icon)}
   description={l.t('{name}: {text}', { name: item.info.name, text: plain(item.info.text, l.game?.words.Energy) })}
+  image={await image(item.info.icon)}
+  title={item.info.name}
 >
   <p class="mt-6 mb-0">
     <a href={back.href}>← {back.label}</a>

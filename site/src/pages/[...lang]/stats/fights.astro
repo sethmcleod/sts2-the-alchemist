@@ -12,11 +12,15 @@ export const getStaticPaths = everyLanguage;
 
 const { l, locale } = Astro.locals;
 const data = runs(locale);
-// The island redraws with the stats strings alone, so the numbers it starts with use them too
-const init = islandLang(locale, { encounters: true });
-const il = statsLang(init);
+const islandInit = islandLang(locale, { encounters: true });
+const statsL = statsLang(islandInit);
 ---
 
-<Stats title={l.t('Fights')} description={l.t('Where Alchemist runs end, and the fights that end them.')}>
-  <Fights client:idle locale={init} initial={fights(il, data, DEFAULT_FILTERS)} options={filterOptions(il, data)} />
+<Stats description={l.t('Where Alchemist runs end, and the fights that end them.')} title={l.t('Fights')}>
+  <Fights
+    client:idle
+    initial={fights(statsL, data, DEFAULT_FILTERS)}
+    locale={islandInit}
+    options={filterOptions(statsL, data)}
+  />
 </Stats>

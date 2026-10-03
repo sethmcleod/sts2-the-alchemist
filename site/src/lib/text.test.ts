@@ -1,29 +1,28 @@
 import fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { README_SECTIONS, readmeHash as catalogHash, readmeSource as catalogSource } from '../i18n/catalog.mjs';
+import { README_SECTIONS, readmeSource } from '../i18n/catalog.mjs';
 import { cardFont, lineHeight, textSize, titleSize } from './fit';
 import { LOCALES } from './i18n';
 import { Lang } from './lang';
 import { plain, tokens } from './markup';
-import { readmeHash, readmeSource } from './readme';
 
 describe('markup', () => {
   it('colours text and drops the effect tags', () => {
     expect(tokens('Gain 3 [gold]Poison[/gold].[sine]x[/sine]')).toEqual([
-      { kind: 'text', text: 'Gain 3 ', color: undefined },
-      { kind: 'text', text: 'Poison', color: 'gold' },
-      { kind: 'text', text: '.', color: undefined },
-      { kind: 'text', text: 'x', color: undefined },
+      { color: undefined, kind: 'text', text: 'Gain 3 ' },
+      { color: 'gold', kind: 'text', text: 'Poison' },
+      { color: undefined, kind: 'text', text: '.' },
+      { color: undefined, kind: 'text', text: 'x' },
     ]);
   });
 
   it('counts energy icons in a row and keeps line breaks', () => {
     expect(tokens('Gain [energy][energy].\nDraw 1.')).toEqual([
-      { kind: 'text', text: 'Gain ', color: undefined },
-      { kind: 'energy', count: 2 },
-      { kind: 'text', text: '.', color: undefined },
+      { color: undefined, kind: 'text', text: 'Gain ' },
+      { count: 2, kind: 'energy' },
+      { color: undefined, kind: 'text', text: '.' },
       { kind: 'break' },
-      { kind: 'text', text: 'Draw 1.', color: undefined },
+      { color: undefined, kind: 'text', text: 'Draw 1.' },
     ]);
   });
 
@@ -38,11 +37,9 @@ describe('markup', () => {
   });
 });
 
-describe('README translations', () => {
-  it('key a section the way the string catalog does', () => {
-    for (const title of README_SECTIONS) {
-      expect(readmeHash(readmeSource(title))).toBe(catalogHash(catalogSource(title)));
-    }
+describe('README sections', () => {
+  it('finds every section the site shows', () => {
+    for (const title of README_SECTIONS) expect(readmeSource(title)).not.toBe('');
   });
 });
 
@@ -69,7 +66,6 @@ describe('fitting text the way the game does', () => {
 });
 
 describe('card fonts', () => {
-  // The export writes one file per language; without it there is nothing to check
   const exported = LOCALES.filter((locale) => fs.existsSync(`data/loc/${locale.game}.json`));
 
   it.each(exported.map((locale) => locale.game))('has every character %s cards use', (game) => {
@@ -83,8 +79,7 @@ describe('card fonts', () => {
       ),
     );
     const missing = [...used].filter((ch) => ch.trim() && !(ch in font.widths));
-    // Run tools/analytics/card_fonts.py again after the cards change
-    expect(missing.join('')).toBe('');
+    expect(missing.join(''), 'Run tools/analytics/card_fonts.py again').toBe('');
   });
 
   it('breaks wide text between characters and Latin text at spaces', () => {

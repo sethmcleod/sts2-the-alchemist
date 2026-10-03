@@ -1,147 +1,135 @@
-// The shapes of the files tools/analytics/export_stats.py writes to data/
-
+import type { RARITIES, TYPES } from './mod';
 import type { Tip } from './tips';
 
-export type Rarity = 'Basic' | 'Common' | 'Uncommon' | 'Rare' | 'Ancient' | 'Event' | 'Token';
-export type CardType = 'Attack' | 'Skill' | 'Power';
+export type Rarity = (typeof RARITIES)[number];
+export type CardType = (typeof TYPES)[number];
 
 export interface CardInfo {
+  art: null | string;
+  costs: [base: string, upgraded: string];
+  keywords: string[];
   name: string;
   rarity: Rarity;
-  type: CardType;
-  themes: string[];
-  /** Extra markers from cards.csv: Multiplayer, or the partner mod a card needs */
   tags: string[];
-  /** The text as the game shows it, then as its upgrade shows it, in the loc markup */
-  texts: [string, string];
-  costs: [string, string];
-  keywords: string[];
-  /** A path in the mod repo */
-  art: string | null;
+  texts: [base: string, upgraded: string];
+  themes: string[];
+  type: CardType;
 }
 
 export interface ItemInfo {
+  flavor: null | string;
+  icon: null | string;
   name: string;
-  rarity: string | null;
+  rarity: null | string;
   text: string;
-  flavor: string | null;
-  icon: string | null;
 }
 
-/** The base game's own words in one language (tools/analytics/game_loc.json) */
 export interface GameWords {
-  keywords: Record<string, string>;
-  types: Record<string, string>;
-  rarities: Record<string, string>;
-  potion_rarities: Record<string, string>;
-  relic_rarities: Record<string, string>;
-  words: Record<string, string>;
   encounters: Record<string, string>;
+  keywords: Record<string, string>;
   period: string;
+  potion_rarities: Record<string, string>;
+  rarities: Record<string, string>;
+  relic_rarities: Record<string, string>;
+  types: Record<string, string>;
+  words: Record<string, string>;
 }
 
-type ItemText = Pick<ItemInfo, 'name' | 'text' | 'flavor'>;
+type ItemText = Pick<ItemInfo, 'flavor' | 'name' | 'text'>;
 
-/** The mod's words in one language (data/loc/<game>.json), cards as the game shows them */
 export interface Translation {
-  names: Record<string, string>;
+  badges: Record<string, Partial<Record<BadgeTier['tier'], Pick<BadgeTier, 'text' | 'title'>>>>;
   cards: Record<string, Pick<CardInfo, 'name' | 'texts'>>;
-  relics: Record<string, ItemText>;
+  game: GameWords;
+  names: Record<string, string>;
   potions: Record<string, ItemText>;
   powers: Record<string, ItemText>;
-  badges: Record<string, Partial<Record<BadgeTier['tier'], Pick<BadgeTier, 'title' | 'text'>>>>;
-  game: GameWords;
-  /** The hover tips for the gold terms in the text (lib/tips.ts) */
+  relics: Record<string, ItemText>;
   tips?: Tip[];
 }
 
 export interface BadgeTier {
-  tier: 'bronze' | 'silver' | 'gold';
   at: number;
-  title: string;
   text: string;
+  tier: 'bronze' | 'gold' | 'silver';
+  title: string;
 }
 
 export interface Badge {
-  id: string;
-  icon: string | null;
-  needs_win: boolean;
   coop_only: boolean;
-  metric: string | null;
+  icon: null | string;
+  id: string;
+  metric: null | string;
+  needs_win: boolean;
   tiers: BadgeTier[];
 }
 
 export interface WorkshopItem {
   branch: 'beta' | 'main';
+  game_branch: string;
   item: string;
   title: string;
-  game_branch: string;
 }
 
 export interface Meta {
-  generated_at: string;
-  total_runs: number;
-  players: number;
-  first_day: string;
-  last_day: string;
-  versions: string[];
-  builds: Record<string, string>;
-  prefix: string;
-  themes: string[];
-  theme_min_cards: number;
   ascension_bands: number[];
-  epochs: number;
-  histograms: Record<string, { width: number; last: number }>;
-  badges: Badge[];
-  schema_since: Record<string, string | null>;
   assets: { character: string; energy: string };
-  mod: { name: string; description: string; version: string };
-  repo: string | null;
+  badges: Badge[];
+  builds: Record<string, string>;
+  epochs: number;
+  first_day: string;
+  generated_at: string;
+  histograms: Record<string, { last: number; width: number }>;
+  last_day: string;
+  mod: { description: string; name: string; version: string };
+  players: number;
+  prefix: string;
+  previews: { full: string; image: string }[];
   releases: Record<string, string>;
+  repo: null | string;
+  schema_since: Record<string, null | string>;
+  theme_min_cards: number;
+  themes: string[];
+  total_runs: number;
+  versions: string[];
   workshop: WorkshopItem[];
-  previews: { image: string; full: string }[];
 }
 
-/** A count table: its key columns, its count columns, then one row per group and key */
 export interface TableFile {
-  key: string[];
   counts: string[];
-  rows: (string | number)[][];
+  key: string[];
+  rows: (number | string)[][];
 }
 
-/** The same table stored by column, each text key as an index into its list of names. The browser
-    gets this form (compact.ts) */
 export interface ColumnFile {
-  key: string[];
-  counts: string[];
-  names: Record<string, string[]>;
   columns: number[][];
+  counts: string[];
+  key: string[];
+  names: Record<string, string[]>;
 }
 
-export type AnyTableFile = TableFile | ColumnFile;
+export type AnyTableFile = ColumnFile | TableFile;
 
 export interface Summary {
+  [table: string]: unknown;
+  card_info: Record<string, CardInfo>;
+  groups: AnyTableFile;
+  icons: Record<string, string>;
   meta: Meta;
   names: Record<string, string>;
-  card_info: Record<string, CardInfo>;
-  relic_info: Record<string, ItemInfo>;
   potion_info: Record<string, ItemInfo>;
   power_info: Record<string, ItemInfo>;
-  icons: Record<string, string>;
-  groups: AnyTableFile;
-  [table: string]: unknown;
+  relic_info: Record<string, ItemInfo>;
 }
 
 export interface NoteItem {
-  text: string;
   items: NoteItem[];
+  text: string;
 }
 
 export interface Release {
-  version: string;
-  date: string | null;
-  /** Prose under the version heading, before any list */
+  date: null | string;
   intro: string[];
-  /** A list before the first heading has no title */
-  sections: { title: string | null; items: NoteItem[] }[];
+  sections: { items: NoteItem[]; title: null | string }[];
+  version: string;
 }

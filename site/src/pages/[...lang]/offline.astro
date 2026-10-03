@@ -7,7 +7,7 @@ const { l } = Astro.locals;
 export const getStaticPaths = everyLanguage;
 ---
 
-<Base title={l.t('Offline')} description={l.t('This page is not saved for offline use yet.')} noindex>
+<Base description={l.t('This page is not saved for offline use yet.')} noindex title={l.t('Offline')}>
   <div class="mx-auto max-w-[60ch] py-16">
     <h1 class="text-4xl">{l.t('No connection')}</h1>
     <p class="text-ink-2">

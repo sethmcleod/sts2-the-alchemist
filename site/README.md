@@ -20,6 +20,7 @@ Run these in `site/`. Node 22.12 or newer and Python 3.12 or newer are needed.
 | `npm run preview`    | Serves `dist/`, with the offline cache and the security policy on   |
 | `npm test`           | Runs the unit tests (the stats math, the card text fit, formatting) |
 | `npm run check`      | Type-checks everything                                              |
+| `npm run lint`       | Checks the sort order and comment rules in `eslint.config.js`       |
 | `npm run strings`    | Lists what each language still needs translated (see Languages)     |
 | `npm run format`     | Formats everything with Prettier                                    |
 

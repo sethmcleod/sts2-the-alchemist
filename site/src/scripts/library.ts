@@ -1,113 +1,105 @@
-// Search, filters and sort for the card library. The page works without this: every card is
-// listed by rarity, and the upgrade toggles are CSS. The choices live in the URL, so a reload or a
-// shared link shows the same cards.
-
 import { Lang } from '../lib/lang';
-import { POOL_RARITIES, TYPES } from '../lib/mod';
+import { type CardKeys, type CompendiumKey, compendiumOrder, POOL_RARITIES } from '../lib/mod';
 
 const form = document.querySelector<HTMLFormElement>('#library')!;
-const words = JSON.parse(form.dataset.words!);
-const l = new Lang(words, words.strings);
+const langInit = JSON.parse(form.dataset.words!);
+const l = new Lang(langInit, langInit.strings);
 const tiles = [...document.querySelectorAll<HTMLElement>('#cards .card-tile')];
 const groups = [...document.querySelectorAll<HTMLElement>('[data-card-group]')];
-const sorted = document.querySelector<HTMLUListElement>('[data-sorted]')!;
-const empty = document.querySelector<HTMLElement>('[data-empty]')!;
-const count = document.querySelector<HTMLOutputElement>('[data-count]')!;
+const sortedList = document.querySelector<HTMLUListElement>('[data-sorted]')!;
+const emptyMessage = document.querySelector<HTMLElement>('[data-empty]')!;
+const countOutput = document.querySelector<HTMLOutputElement>('[data-count]')!;
 const filters = document.querySelector<HTMLElement>('[data-filters]')!;
 const drawer = document.querySelector<HTMLDialogElement>('[data-drawer]')!;
 const allUpgraded = document.querySelector<HTMLInputElement>('#all-upgraded')!;
 
 const FILTERS = ['type', 'rarity', 'cost', 'keyword', 'from'];
-const home = new Map(tiles.map((tile) => [tile, tile.parentElement!]));
-// The order the tiles are in, so a render that keeps it moves no tile
-let placed = 'rarity';
+const homeList = new Map(tiles.map((tile) => [tile, tile.parentElement!]));
+let arrangedBy = 'rarity';
 
 type State = Record<string, string>;
 
-function read(): State {
+function readForm(): State {
   const data = new FormData(form);
   return Object.fromEntries([...data].map(([key, value]) => [key, String(value)]));
 }
 
-function matches(tile: HTMLElement, s: State, words: string[]) {
-  const d = tile.dataset;
-  const cost = d.cost!;
-  const from = s.from;
+function matches(tile: HTMLElement, state: State, searchWords: string[]) {
+  const card = tile.dataset;
+  const cost = card.cost!;
+  const from = state.from;
   return (
-    (!s.type || d.type === s.type) &&
-    (!s.rarity || d.rarity === s.rarity) &&
-    (!s.cost || (s.cost === '3' ? Number(cost) >= 3 : cost === s.cost)) &&
-    (!s.keyword || d.keywords!.split('|').includes(s.keyword)) &&
+    (!state.type || card.type === state.type) &&
+    (!state.rarity || card.rarity === state.rarity) &&
+    (!state.cost || (state.cost === '3' ? Number(cost) >= 3 : cost === state.cost)) &&
+    (!state.keyword || card.keywords!.split('|').includes(state.keyword)) &&
     (!from ||
-      (from === 'starter' && d.group === 'Basic') ||
-      (from === 'pool' && (POOL_RARITIES as readonly string[]).includes(d.group!)) ||
-      (from === 'created' && d.group === 'Token') ||
-      (from === 'coop' && d.tags!.split('|').includes('Multiplayer')) ||
-      from === d.group) &&
-    words.every((word) => d.search!.includes(word))
+      (from === 'starter' && card.group === 'Basic') ||
+      (from === 'pool' && (POOL_RARITIES as readonly string[]).includes(card.group!)) ||
+      (from === 'created' && card.group === 'Token') ||
+      (from === 'coop' && card.tags!.split('|').includes('Multiplayer')) ||
+      from === card.group) &&
+    searchWords.every((word) => card.search!.includes(word))
   );
 }
 
 const byName = (a: HTMLElement, b: HTMLElement) => a.dataset.name!.localeCompare(b.dataset.name!, l.lang);
-const costRank = (tile: HTMLElement) => (tile.dataset.cost === 'X' ? 99 : Number(tile.dataset.cost));
-const stat = (tile: HTMLElement, key: string) => (tile.dataset[key] ? Number(tile.dataset[key]) : null);
+const statOf = (tile: HTMLElement, key: string) => (tile.dataset[key] ? Number(tile.dataset[key]) : null);
 
-function order(sort: string) {
+function compareBy(sort: string) {
   if (sort === 'name') return byName;
-  if (sort === 'cost') return (a: HTMLElement, b: HTMLElement) => costRank(a) - costRank(b) || byName(a, b);
-  if (sort === 'type')
-    return (a: HTMLElement, b: HTMLElement) =>
-      TYPES.indexOf(a.dataset.type as (typeof TYPES)[number]) -
-        TYPES.indexOf(b.dataset.type as (typeof TYPES)[number]) || byName(a, b);
-  // A stat puts the highest first and the cards with too few runs last
+  if (sort === 'cost' || sort === 'type') {
+    const compendium = compendiumOrder(sort as CompendiumKey);
+    const keys = (tile: HTMLElement) => tile.dataset as unknown as CardKeys;
+    return (a: HTMLElement, b: HTMLElement) => compendium(keys(a), keys(b)) || byName(a, b);
+  }
   return (a: HTMLElement, b: HTMLElement) => {
-    const [va, vb] = [stat(a, sort), stat(b, sort)];
-    if (va == null || vb == null) return Number(va == null) - Number(vb == null) || byName(a, b);
-    return vb - va || byName(a, b);
+    const [statA, statB] = [statOf(a, sort), statOf(b, sort)];
+    if (statA == null || statB == null) return Number(statA == null) - Number(statB == null) || byName(a, b);
+    return statB - statA || byName(a, b);
   };
 }
 
 function render() {
-  const s = read();
-  const words = (s.q ?? '').toLocaleLowerCase(l.lang).split(/\s+/).filter(Boolean);
+  const state = readForm();
+  const searchWords = (state.q ?? '').toLocaleLowerCase(l.lang).split(/\s+/).filter(Boolean);
   const shown = tiles.filter((tile) => {
-    const keep = matches(tile, s, words);
+    const keep = matches(tile, state, searchWords);
     tile.hidden = !keep;
     return keep;
   });
 
-  const sort = s.sort || 'rarity';
-  const bySort = sort !== 'rarity';
-  if (sort !== placed) {
-    if (bySort) sorted.append(...[...tiles].sort(order(sort)));
-    else for (const tile of tiles) home.get(tile)!.append(tile);
-    placed = sort;
+  const sort = state.sort || 'rarity';
+  const ungrouped = sort !== 'rarity';
+  if (sort !== arrangedBy) {
+    if (ungrouped) sortedList.append(...[...tiles].sort(compareBy(sort)));
+    else for (const tile of tiles) homeList.get(tile)!.append(tile);
+    arrangedBy = sort;
   }
-  sorted.hidden = !bySort;
+  sortedList.hidden = !ungrouped;
   for (const group of groups) {
-    const n = shown.filter((tile) => home.get(tile)!.closest('section') === group).length;
-    group.hidden = Boolean(bySort) || n === 0;
-    group.querySelector('[data-group-count]')!.textContent = l.n(n, '{n} card', '{n} cards');
+    const shownInGroup = shown.filter((tile) => homeList.get(tile)!.closest('section') === group).length;
+    group.hidden = ungrouped || shownInGroup === 0;
+    group.querySelector('[data-group-count]')!.textContent = l.n(shownInGroup, '{n} card', '{n} cards');
   }
 
-  empty.hidden = shown.length > 0;
-  count.value =
+  emptyMessage.hidden = shown.length > 0;
+  countOutput.value =
     shown.length === tiles.length
       ? l.n(tiles.length, '{n} card', '{n} cards')
       : l.n(shown.length, '{n} of {total} card', '{n} of {total} cards', { total: l.num(tiles.length) });
-  const active = FILTERS.filter((key) => s[key]).length;
+  const activeFilters = FILTERS.filter((key) => state[key]).length;
   const badge = document.querySelector<HTMLElement>('[data-filter-count]')!;
-  badge.textContent = String(active);
-  badge.hidden = !active;
+  badge.textContent = String(activeFilters);
+  badge.hidden = !activeFilters;
   drawer.querySelector('[data-done]')!.textContent = l.n(shown.length, 'Show {n} card', 'Show {n} cards');
-  writeUrl(s);
+  writeUrl(state);
 }
 
-function writeUrl(s: State) {
-  // While a card's dialog is open the address is the card's, and the list's own entry sits below it
+function writeUrl(state: State) {
   if (history.state?.sheet) return;
   const params = new URLSearchParams(
-    Object.entries(s).filter(([key, value]) => value && !(key === 'sort' && value === 'rarity')),
+    Object.entries(state).filter(([key, value]) => value && !(key === 'sort' && value === 'rarity')),
   );
   const query = params.toString();
   history.replaceState(history.state, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);
@@ -129,34 +121,29 @@ function clear() {
   render();
 }
 
-let typing = 0;
+let searchTimer = 0;
 form.addEventListener('input', (e) => {
-  clearTimeout(typing);
-  if ((e.target as HTMLInputElement).type === 'search') typing = window.setTimeout(render, 120);
+  clearTimeout(searchTimer);
+  if ((e.target as HTMLInputElement).type === 'search') searchTimer = window.setTimeout(render, 120);
   else render();
 });
 form.addEventListener('submit', (e) => e.preventDefault());
 
-// A card's own toggle flips it against "Show all upgraded", so changing that box resets them all
 allUpgraded.addEventListener('change', () => {
   for (const toggle of document.querySelectorAll<HTMLInputElement>('.upgrade-toggle')) toggle.checked = false;
 });
 
-// On a narrow screen the filters wait in a drawer, and go back to the toolbar when it closes
 document.querySelector('[data-open-filters]')!.addEventListener('click', () => {
   drawer.querySelector('[data-drawer-body]')!.append(filters);
   drawer.showModal();
 });
 drawer.addEventListener('close', () => form.querySelector('[data-open-filters]')!.after(filters));
-// A click on the backdrop closes the drawer, but not the end of a drag that started inside it. The
-// drawer's closedby="any" does the same where the browser supports it
 let pressedOutside = false;
 drawer.addEventListener('pointerdown', (e) => (pressedOutside = e.target === drawer));
 drawer.addEventListener('click', (e) => {
   if (e.target === drawer && pressedOutside) drawer.close();
 });
 drawer.querySelector('[data-done]')!.addEventListener('click', () => drawer.close());
-// The drawer's controls sit outside the form, so their changes are read here
 drawer.addEventListener('change', render);
 for (const button of document.querySelectorAll('[data-clear]')) button.addEventListener('click', clear);
 

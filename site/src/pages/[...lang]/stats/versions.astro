@@ -12,20 +12,19 @@ export const getStaticPaths = everyLanguage;
 
 const { l, locale } = Astro.locals;
 const data = runs(locale);
-const [b, a = b] = [...data.meta.versions].reverse();
-// The island redraws with the stats strings alone, so the numbers it starts with use them too
-const init = islandLang(locale);
-const il = statsLang(init);
+const [newest, previous = newest] = [...data.meta.versions].reverse();
+const islandInit = islandLang(locale);
+const statsL = statsLang(islandInit);
 ---
 
 <Stats
-  title={l.t('Versions')}
   description={l.t("How The Alchemist's win rates and cards changed from one version to the next.")}
+  title={l.t('Versions')}
 >
   <Versions
     client:idle
-    locale={init}
-    initial={versions(il, data, DEFAULT_FILTERS, a, b)}
-    options={filterOptions(il, data)}
+    initial={versions(statsL, data, DEFAULT_FILTERS, previous, newest)}
+    locale={islandInit}
+    options={filterOptions(statsL, data)}
   />
 </Stats>

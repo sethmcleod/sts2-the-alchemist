@@ -1,4 +1,8 @@
 {
+  "readme": {
+    "10d2ae3745c2": "Playstyle",
+    "b40936bd23dc": "Disclaimer"
+  },
   "site": [
     "(opens in a new tab)",
     "3 or more",
@@ -27,6 +31,7 @@
     "Badges, Brew, Mixes, Ferment, Poison and Antitoxin, measured over every shared run.",
     "Best for its rarity",
     "Bought",
+    "Brew",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.",
     "Brew potion",
     "Brew potion, made only at a rest site",
@@ -52,10 +57,10 @@
     "Design notes",
     "Drunk",
     "Drunk {n} times per 100 runs",
+    "Effect",
     "Event Attack",
     "Event Skill",
     "Every release of The Alchemist, newest first.",
-    "Every release, newest first. The beta and public branches get the same notes.",
     "Filter and sort",
     "Filter the card stats",
     "Filter the relic and potion stats",
@@ -66,6 +71,7 @@
     "From {source}, {line}",
     "Get the mod",
     "GitHub releases",
+    "Grid",
     "How The Alchemist's win rates and cards changed from one version to the next.",
     "How fresh they are",
     "How often each Alchemist card is picked, played and won with.",
@@ -81,7 +87,7 @@
     "Language: {name}",
     "Latest: {notes}, {date}.",
     "Latest: {notes}.",
-    "Made by other cards, relics and potions during a fight.",
+    "List",
     "Made during a fight, so it never ends a run in a deck.",
     "Made per run",
     "Mechanics",
@@ -101,7 +107,6 @@
     "Only in runs with {mod} installed as well.",
     "Overview",
     "Patch notes",
-    "Patch notes are in English.",
     "Picked at Brew",
     "Picked {share} of the time at Brew",
     "Plays per run",
@@ -127,6 +132,7 @@
     "Search names and text",
     "See every card",
     "Share of Mixes",
+    "Shop",
     "Shop relic",
     "Show all upgraded",
     "Show base card",
@@ -139,11 +145,12 @@
     "Site",
     "Skip to content",
     "Slay the Spire 2 character mod",
-    "Sold by the Merchant or found after a fight, like any other potion.",
     "Sort by",
     "Sort: {order}",
+    "Source",
     "Source on GitHub",
     "Standard mode runs that got past floor 5. Abandoned runs and runs with the full console on are left out.",
+    "Starter",
     "Starter Attack",
     "Starter Skill",
     "Starter relic",
@@ -162,8 +169,6 @@
     "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.",
     "The Merchant asking to buy a Brew potion.",
-    "The powers Alchemist cards, relics and potions put on a creature. X is the amount the card or relic gives.",
-    "The win rate is how often the runs that ended with the relic won.",
     "The {n} powers The Alchemist's cards, relics and potions give.",
     "Theme",
     "There is no page at this address.",
@@ -185,6 +190,7 @@
     "Updated every day, with {n} runs from {players} between {first} and {last}.",
     "Updated {date}",
     "Versions",
+    "View",
     "When a run ends, the game can share an anonymous summary of it. It only does this when Upload Data is on in the game's settings. The Alchemist also has its own switch, {setting}, in the mod settings. Nothing sent includes a name or a Steam ID.",
     "Where Alchemist runs end, and the fights that end them.",
     "Where from",
@@ -200,8 +206,6 @@
     "by win rate. The middle one wins {rate}",
     "from the Merchant",
     "from this power",
-    "gave {n} Antitoxin",
-    "made {n} Mixes",
     "never an early pick",
     "never offered as a card reward",
     "never played in {share} of {n} runs",
@@ -533,9 +537,5 @@
     "{version} and newer",
     "{version} notes",
     "{wins} from {n} runs"
-  ],
-  "readme": {
-    "10d2ae3745c2": "Playstyle",
-    "058c1e7c5c3f": "Disclaimer"
-  }
+  ]
 }

@@ -1,43 +1,39 @@
-// The game's loc markup: [gold] keywords, [green] upgraded numbers, [energy] icons and line
-// breaks. Other tags (the wobble and shake effects) are dropped.
-
 export type Token =
-  { kind: 'text'; text: string; color?: string } | { kind: 'energy'; count: number } | { kind: 'break' };
+  { color?: string; kind: 'text'; text: string } | { count: number; kind: 'energy' } | { kind: 'break' };
 
 const COLORS = new Set(['gold', 'green', 'blue', 'red', 'purple', 'pink', 'orange', 'aqua']);
 
 export function tokens(markup: string): Token[] {
-  const out: Token[] = [];
-  // Colours nest: text after an inner [/gold] takes the colour around it again
-  const colors: string[] = [];
+  const result: Token[] = [];
+  const openColors: string[] = [];
   for (const part of markup.split(/(\[\/?\w+\]|\n)/)) {
     if (!part) continue;
-    const last = out.at(-1);
+    const previous = result.at(-1);
     if (part === '\n') {
-      out.push({ kind: 'break' });
+      result.push({ kind: 'break' });
     } else if (part === '[energy]') {
-      if (last?.kind === 'energy') last.count++;
-      else out.push({ kind: 'energy', count: 1 });
+      if (previous?.kind === 'energy') previous.count++;
+      else result.push({ count: 1, kind: 'energy' });
     } else if (/^\[\/?\w+\]$/.test(part)) {
-      const name = part.replace(/[[\]/]/g, '');
-      if (COLORS.has(name)) {
-        if (part.startsWith('[/')) colors.pop();
-        else colors.push(name);
+      const tag = part.replace(/[[\]/]/g, '');
+      if (COLORS.has(tag)) {
+        if (part.startsWith('[/')) openColors.pop();
+        else openColors.push(tag);
       }
     } else {
-      out.push({ kind: 'text', text: part, color: colors.at(-1) });
+      result.push({ color: openColors.at(-1), kind: 'text', text: part });
     }
   }
-  return out;
+  return result;
 }
 
-/** Two icons in a row read "2 Energy". One icon follows its number, if it has one. `energy` is the game's word */
 export const energyWords = (count: number, energy = 'Energy') => (count > 1 ? ` ${count} ${energy}` : ` ${energy}`);
 
-/** The words alone, for search, alt text and meta descriptions */
 export const plain = (markup: string, energy?: string) =>
   tokens(markup)
-    .map((t) => (t.kind === 'text' ? t.text : t.kind === 'energy' ? energyWords(t.count, energy) : ' '))
+    .map((token) =>
+      token.kind === 'text' ? token.text : token.kind === 'energy' ? energyWords(token.count, energy) : ' ',
+    )
     .join('')
     .replace(/\s+/g, ' ')
     .trim();

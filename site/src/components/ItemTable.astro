@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import { image } from '../lib/content';
+import type { Item } from '../lib/items';
+import { rarityName } from '../lib/views/cards';
+import GameText from './GameText.astro';
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+const { l } = Astro.locals;
+const hasSources = items.some((item) => item.source);
+const icons = await Promise.all(items.map((item) => image(item.info.icon)));
+---
+
+<div class="item-table panel">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">{l.t('Name')}</th>
+        <th scope="col">{hasSources ? l.t('Source') : l.t('Rarity')}</th>
+        <th scope="col">{l.t('Effect')}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {items.map((item, index) => (
+        <tr data-place={item.id}>
+          <th scope="row">
+            <a data-sheet-link href={l.href(item.href)}>
+              {icons[index] ? <Image alt="" src={icons[index]} /> : <span />}
+              {item.info.name}
+            </a>
+          </th>
+          <td>
+            {item.source ? (
+              <a data-sheet-link href={l.href(item.source.href)}>
+                {item.source.name}
+              </a>
+            ) : (
+              item.rarity && rarityName(l, item.rarity)
+            )}
+          </td>
+          <td>
+            <GameText markup={item.info.text} />
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  for (const row of document.querySelectorAll<HTMLTableRowElement>('.item-table tbody tr')) {
+    row.addEventListener('click', (event) => {
+      if (!(event.target as Element).closest('a')) row.querySelector('a')?.click();
+    });
+  }
+</script>

@@ -1,13 +1,14 @@
 ---
-import ItemTile from '../../components/ItemTile.astro';
+import ItemViews from '../../components/ItemViews.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import Sheet from '../../components/Sheet.astro';
-import StatsSpan from '../../components/StatsSpan.astro';
+import StatsNote from '../../components/StatsNote.astro';
 import T from '../../components/T.astro';
+import ViewToggle from '../../components/ViewToggle.astro';
 import Base from '../../layouts/Base.astro';
 import { runs } from '../../lib/content';
 import { everyLanguage } from '../../lib/i18n';
 import { potions, relics } from '../../lib/items';
-import { DEFAULT_FILTERS } from '../../lib/runs';
 
 const { l } = Astro.locals;
 
@@ -16,58 +17,39 @@ export const getStaticPaths = everyLanguage;
 const data = runs(Astro.locals.locale);
 const relicItems = relics(l, data);
 const potionItems = potions(l, data);
-const brew = potionItems.filter((p) => p.rarity === 'Brew');
-const other = potionItems.filter((p) => p.rarity !== 'Brew');
-const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
+const brewPotions = potionItems.filter((potion) => potion.rarity === 'Brew');
+const otherPotions = potionItems.filter((potion) => potion.rarity !== 'Brew');
+const description = l.t(
+  "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.",
+  {
+    potions: l.num(potionItems.length),
+    relics: l.num(relicItems.length),
+  },
+);
 ---
 
-<Base
-  title={l.t('Relics and potions')}
-  description={l.t("The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.", {
-    relics: l.num(relicItems.length),
-    potions: l.num(potionItems.length),
-  })}
->
-  <div class="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1">
-    <h1 class="m-0 text-4xl">{l.t('Relics and potions')}</h1>
-    <p class="m-0 text-sm text-muted sm:ml-auto">
-      <T text={l.n(statRuns, 'Stats from {n} solo run on {span}.', 'Stats from {n} solo runs on {span}.')}>
-        <StatsSpan slot="span" />
-      </T>{' '}
-      <a href={l.href('/stats/relics')}>{l.t('Filter them')}</a>
-    </p>
-  </div>
+<Base description={description} title={l.t('Relics and potions')}>
+  <PageHeader title={l.t('Relics and potions')}>
+    <ViewToggle slot="actions" />
+    <StatsNote href="/stats/relics" />
+  </PageHeader>
 
-  <section aria-labelledby="relics" class="mt-6">
-    <h2 id="relics" class="m-0 text-2xl">
+  <section aria-labelledby="relics">
+    <h2 class="m-0 text-2xl" id="relics">
       {l.t('Relics')}
     </h2>
-    <p class="mt-1 mb-0 text-sm text-muted">
-      {l.t('The win rate is how often the runs that ended with the relic won.')}
-    </p>
-    <ul class="item-grid">
-      {relicItems.map((item) => (
-        <ItemTile item={item} />
-      ))}
-    </ul>
+    <ItemViews items={relicItems} />
   </section>
 
   <section aria-labelledby="potions" class="mt-8">
-    <h2 id="potions" class="m-0 text-2xl">
+    <h2 class="m-0 text-2xl" id="potions">
       {l.t('Potions')}
     </h2>
-    <p class="mt-1 mb-0 text-sm text-muted">
-      {l.t('Sold by the Merchant or found after a fight, like any other potion.')}
-    </p>
-    <ul class="item-grid">
-      {other.map((item) => (
-        <ItemTile item={item} />
-      ))}
-    </ul>
+    <ItemViews items={otherPotions} />
   </section>
 
   <section aria-labelledby="brew" class="mt-8">
-    <h2 id="brew" class="m-0 text-2xl">
+    <h2 class="m-0 text-2xl" id="brew">
       {l.t('Brew potions')}
     </h2>
     <p class="mt-1 mb-0 max-w-[65ch] text-sm text-muted">
@@ -75,16 +57,12 @@ const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
         'Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.',
       )}
     </p>
-    <ul class="item-grid">
-      {brew.map((item) => (
-        <ItemTile item={item} />
-      ))}
-    </ul>
+    <ItemViews items={brewPotions} />
   </section>
 
   <p class="mt-8 text-sm">
     <T text={l.t("{stats} compare them with the base game's and show which Ancient choices players take.")}>
-      <a slot="stats" href={l.href('/stats/relics')}>
+      <a href={l.href('/stats/relics')} slot="stats">
         {l.t('Relic and potion stats')}
       </a>
     </T>
