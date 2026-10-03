@@ -57,7 +57,7 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     (async () => {
       // The start pages in the languages of the open tabs
-      const open = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+      const open = await self.clients.matchAll({ includeUncontrolled: true, type: 'window' });
       const languages = new Set(open.map((client) => languageOf(client.url)));
       if (!languages.size) languages.add('');
       // The English offline page is the last fallback for a page in any language

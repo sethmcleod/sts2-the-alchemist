@@ -7,7 +7,7 @@ export const powerHref = (id: string) => `/powers/${slug(id)}`;
 export const notesHref = (version: string) => `/notes#${version}`;
 
 /** A version's GitHub release, the beta release when there is one */
-export function releaseHref(repo: string | null, releases: Record<string, string>, version: string) {
+export function releaseHref(repo: null | string, releases: Record<string, string>, version: string) {
   const tag = releases[version];
   return repo && tag ? `https://github.com/${repo}/releases/tag/${tag}` : null;
 }

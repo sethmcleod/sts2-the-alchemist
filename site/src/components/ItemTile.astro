@@ -3,7 +3,7 @@
 // power's source is a link of its own
 import { Image } from 'astro:assets';
 import { image } from '../lib/content';
-import { kindName, type Item } from '../lib/items';
+import { type Item, kindName } from '../lib/items';
 import GameText from './GameText.astro';
 import T from './T.astro';
 
@@ -15,15 +15,15 @@ interface Props {
 
 const { item } = Astro.props;
 const icon = await image(item.info.icon);
-const { source, line } = item;
+const { line, source } = item;
 const capitalized = line && line[0].toLocaleUpperCase(l.lang) + line.slice(1);
 ---
 
 <li class="panel relative grid grid-cols-[4rem_minmax(0,1fr)] gap-3 p-3 hover:border-frame" data-place={item.id}>
-  {icon ? <Image src={icon} alt="" class="size-16 object-contain" /> : <span />}
+  {icon ? <Image alt="" class="size-16 object-contain" src={icon} /> : <span />}
   <div class="grid content-start gap-1">
     <span class="font-display text-lg leading-tight">
-      <a href={l.href(item.href)} data-sheet-link class="stretched text-ink no-underline">
+      <a class="stretched text-ink no-underline" data-sheet-link href={l.href(item.href)}>
         {item.info.name}
       </a>
       {item.rarity && <small class="ml-1 font-sans text-xs text-muted">{kindName(l, item)}</small>}
@@ -35,7 +35,7 @@ const capitalized = line && line[0].toLocaleUpperCase(l.lang) + line.slice(1);
       <span class="text-xs text-muted tabular-nums">
         {source ? (
           <T text={line ? l.t('From {source}, {line}', { line }) : l.t('From {source}')}>
-            <a slot="source" href={l.href(source.href)} data-sheet-link class="above-stretched">
+            <a class="above-stretched" data-sheet-link href={l.href(source.href)} slot="source">
               {source.name}
             </a>
           </T>

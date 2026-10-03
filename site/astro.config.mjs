@@ -1,7 +1,7 @@
+import { createHash } from 'node:crypto';
 import preact from '@astrojs/preact';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
-import { createHash } from 'node:crypto';
 import { catalog } from './src/i18n/catalog.mjs';
 import { sitemap } from './src/integrations/sitemap.mjs';
 import { PLACING } from './src/scripts/placing.mjs';
@@ -10,11 +10,9 @@ import { SPECULATION } from './src/scripts/speculation.mjs';
 const hash = (text) => `sha256-${createHash('sha256').update(text).digest('base64')}`;
 
 export default defineConfig({
-  site: 'https://alchemist.fyi',
   // /cards/rolling-boil.html, served as /cards/rolling-boil (vercel.json cleanUrls)
   build: { format: 'file' },
   devToolbar: { enabled: false },
-  trailingSlash: 'never',
   // catalog() writes src/i18n/en.json, the English every translation follows; sitemap() writes
   // sitemap.xml
   integrations: [preact(), catalog(), sitemap()],
@@ -32,11 +30,13 @@ export default defineConfig({
         "base-uri 'self'",
         "form-action 'self'",
       ],
-      styleDirective: { resources: ["'self'", "'unsafe-inline'"] },
       // Astro hashes the scripts it bundles; the inline ones are hashed here
       scriptDirective: { hashes: [hash(PLACING), hash(SPECULATION)] },
+      styleDirective: { resources: ["'self'", "'unsafe-inline'"] },
     },
   },
+  site: 'https://alchemist.fyi',
+  trailingSlash: 'never',
   vite: {
     plugins: [tailwindcss()],
     // The dev server may serve the site and the mod's images from the repo, and nothing else: the

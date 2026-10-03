@@ -1,15 +1,15 @@
 ---
 import Sheet from '../components/Sheet.astro';
-import Base from './Base.astro';
 import { basePath } from '../lib/i18n';
 import { pagePath } from '../lib/links';
+import Base from './Base.astro';
 
 interface Props {
-  title: string;
   description: string;
+  title: string;
 }
 
-const { title, description } = Astro.props;
+const { description, title } = Astro.props;
 const { l } = Astro.locals;
 const path = basePath(pagePath(Astro.url));
 const pages = [
@@ -22,16 +22,16 @@ const pages = [
 ];
 ---
 
-<Base title={title} description={description}>
+<Base description={description} title={title}>
   <nav aria-label={l.t('Stats')} class="-mx-4 mt-4 overflow-x-auto px-4 [scrollbar-width:none]">
     <ul class="m-0 flex list-none gap-1 border-b border-line p-0">
       {pages.map(([href, label]) => (
         <li>
           <a
-            href={l.href(href)}
-            data-keep-filters
             aria-current={path === href ? 'page' : undefined}
             class="-mb-px block border-b-2 border-transparent px-3 py-2.5 text-sm whitespace-nowrap text-ink-2 no-underline hover:text-ink aria-[current=page]:border-accent aria-[current=page]:text-ink"
+            data-keep-filters
+            href={l.href(href)}
           >
             {label}
           </a>

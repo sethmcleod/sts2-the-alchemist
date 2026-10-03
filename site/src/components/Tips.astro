@@ -8,28 +8,28 @@ import { tipsFor } from '../lib/tips';
 import GameText from './GameText.astro';
 
 interface Props {
-  markups: string[];
-  keywords?: string[];
+  class?: string;
   /** The item's own name, which gets no tip */
   exclude?: string;
-  class?: string;
+  keywords?: string[];
+  markups: string[];
 }
 
-const { markups, keywords, exclude, class: className } = Astro.props;
+const { class: className, exclude, keywords, markups } = Astro.props;
 const { l, locale } = Astro.locals;
 // A text the mod has not translated yet reads in English, so the English tips stand behind the page's own
 const found = tipsFor(markups, tips(locale), {
-  lang: l.lang,
-  keywords,
   exclude,
   fallback: locale === DEFAULT_LOCALE ? [] : tips(DEFAULT_LOCALE),
+  keywords,
+  lang: l.lang,
 });
 ---
 
 {found.length > 0 && (
   <details class:list={['tips-more', className]}>
     <summary>{l.t('Show keyword tips')}</summary>
-    <ul class="tips" aria-label={l.t('Keywords')}>
+    <ul aria-label={l.t('Keywords')} class="tips">
       {found.map((tip) => (
         <li class="tip">
           <strong class="tip-title">{tip.title}</strong>

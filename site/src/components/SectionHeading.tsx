@@ -5,16 +5,16 @@
 import type { ComponentChildren } from 'preact';
 
 interface Props {
-  id: string;
-  class?: string;
   children: ComponentChildren;
+  class?: string;
+  id: string;
 }
 
-export default function SectionHeading({ id, class: className, children }: Props) {
+export default function SectionHeading({ children, class: className, id }: Props) {
   return (
-    <h2 id={id} class={['anchored', className].filter(Boolean).join(' ')}>
+    <h2 class={['anchored', className].filter(Boolean).join(' ')} id={id}>
       {children}
-      <a class="anchor" href={`#${id}`} aria-hidden="true" tabIndex={-1}>
+      <a aria-hidden="true" class="anchor" href={`#${id}`} tabIndex={-1}>
         #
       </a>
     </h2>

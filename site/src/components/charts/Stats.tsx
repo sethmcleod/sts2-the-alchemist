@@ -3,10 +3,10 @@
 import type { ComponentChildren } from 'preact';
 
 export interface Stat {
+  delta?: null | { text: string; up: boolean };
   label: ComponentChildren;
-  value: ComponentChildren;
   note?: ComponentChildren;
-  delta?: { text: string; up: boolean } | null;
+  value: ComponentChildren;
 }
 
 export default function Stats({ items }: { items: Stat[] }) {

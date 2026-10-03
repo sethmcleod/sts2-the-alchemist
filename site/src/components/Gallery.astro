@@ -30,8 +30,8 @@ const shots = (
       const src = await image(preview.image);
       if (!src) return null;
       const name = preview.image.split('/').at(-1)!;
-      const full = await getImage({ src, width: 1920, format: 'webp', quality: 82 });
-      return { src, full: full.src, alt: ALT[name] ?? l.t('Screenshot {n}', { n: i + 1 }) };
+      const full = await getImage({ format: 'webp', quality: 82, src, width: 1920 });
+      return { alt: ALT[name] ?? l.t('Screenshot {n}', { n: i + 1 }), full: full.src, src };
     }),
   )
 ).filter((shot) => shot !== null);
@@ -42,38 +42,38 @@ const shots = (
     <ul class="gallery-track m-0 flex list-none snap-x snap-mandatory overflow-x-auto p-0">
       {shots.map((shot, i) => (
         <li class="w-full flex-none snap-center">
-          <a href={shot.full} class="block" data-full={shot.full}>
+          <a class="block" data-full={shot.full} href={shot.full}>
             <Image
-              src={shot.src}
-              widths={[480, 960]}
-              sizes="(width < 64rem) calc(100vw - 32px), 30rem"
               alt={shot.alt}
               class="aspect-video w-full object-cover"
               loading={i ? 'lazy' : 'eager'}
+              sizes="(width < 64rem) calc(100vw - 32px), 30rem"
+              src={shot.src}
+              widths={[480, 960]}
             />
           </a>
         </li>
       ))}
     </ul>
-    <button type="button" class="gallery-step needs-js left-2" data-step="-1" aria-label={l.t('Previous screenshot')}>
+    <button aria-label={l.t('Previous screenshot')} class="gallery-step needs-js left-2" data-step="-1" type="button">
       ‹
     </button>
-    <button type="button" class="gallery-step needs-js right-2" data-step="1" aria-label={l.t('Next screenshot')}>
+    <button aria-label={l.t('Next screenshot')} class="gallery-step needs-js right-2" data-step="1" type="button">
       ›
     </button>
-    <p class="gallery-count needs-js" aria-hidden="true">
+    <p aria-hidden="true" class="gallery-count needs-js">
       1 / {shots.length}
     </p>
-    <dialog class="lightbox" aria-label={l.t('Screenshot')} closedby="any">
+    <dialog aria-label={l.t('Screenshot')} class="lightbox" closedby="any">
       <form method="dialog">
-        <button class="close-button" aria-label={l.t('Close')}>
+        <button aria-label={l.t('Close')} class="close-button">
           ×
         </button>
       </form>
-      <button type="button" class="gallery-step left-2" data-step="-1" aria-label={l.t('Previous screenshot')}>
+      <button aria-label={l.t('Previous screenshot')} class="gallery-step left-2" data-step="-1" type="button">
         ‹
       </button>
-      <button type="button" class="gallery-step right-2" data-step="1" aria-label={l.t('Next screenshot')}>
+      <button aria-label={l.t('Next screenshot')} class="gallery-step right-2" data-step="1" type="button">
         ›
       </button>
     </dialog>
@@ -110,7 +110,7 @@ const shots = (
         show(open + step);
       } else if (step) {
         const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-        track.scrollTo({ left: wrap(current() + step) * track.clientWidth, behavior: still ? 'auto' : 'smooth' });
+        track.scrollTo({ behavior: still ? 'auto' : 'smooth', left: wrap(current() + step) * track.clientWidth });
       } else if (link) {
         e.preventDefault();
         show(links.indexOf(link));
@@ -120,7 +120,7 @@ const shots = (
       }
     });
     lightbox.addEventListener('keydown', (e) => {
-      const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      const step = { ArrowLeft: -1, ArrowRight: 1 }[e.key];
       if (step) show(open + step);
     });
   }

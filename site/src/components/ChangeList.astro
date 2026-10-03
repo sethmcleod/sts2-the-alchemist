@@ -1,6 +1,6 @@
 ---
-import { DEFAULT_LOCALE } from '../lib/i18n';
 import type { Change } from '../lib/history';
+import { DEFAULT_LOCALE } from '../lib/i18n';
 import { notesHref } from '../lib/links';
 import NoteList from './NoteList.astro';
 import NoteText from './NoteText.astro';
@@ -19,7 +19,7 @@ const notesLang = locale === DEFAULT_LOCALE ? undefined : 'en';
 <ul class:list={['changes', className]}>
   {changes.map((change) => (
     <li>
-      <a href={l.href(notesHref(change.version))} class="tabular-nums">
+      <a class="tabular-nums" href={l.href(notesHref(change.version))}>
         {change.version}
       </a>
       <div lang={notesLang}>

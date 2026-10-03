@@ -6,8 +6,8 @@ import { cardDetail } from '../lib/details';
 import { cardKind, type LibraryCard } from '../lib/library';
 import { cardHref, notesHref } from '../lib/links';
 import { PARTNER_MODS, slug, steamItem } from '../lib/mod';
-import CardFace from './CardFace.astro';
 import Breakdown from './Breakdown.astro';
+import CardFace from './CardFace.astro';
 import Changes from './Changes.astro';
 import Stats from './charts/Stats';
 import Commentary from './Commentary.astro';
@@ -21,11 +21,11 @@ const { l } = Astro.locals;
 
 interface Props {
   card: LibraryCard;
-  previous?: LibraryCard;
   next?: LibraryCard;
+  previous?: LibraryCard;
 }
 
-const { card, previous, next } = Astro.props;
+const { card, next, previous } = Astro.props;
 const { info } = card;
 const data = runs(Astro.locals.locale);
 const detail = cardDetail(l, data, card.id);
@@ -37,25 +37,25 @@ const labels = [
 ];
 ---
 
-<article data-sheet class="grid gap-6 p-5 sm:p-7">
+<article class="grid gap-6 p-5 sm:p-7" data-sheet>
   <header class="pr-12">
     <p class="m-0 text-sm text-muted">{labels.join(' · ')}</p>
-    <h1 id="sheet-title" tabindex="-1" class="m-0 text-4xl">
+    <h1 class="m-0 text-4xl" id="sheet-title" tabindex="-1">
       {info.name}
     </h1>
   </header>
 
   <div class="card-sheet">
     <div class="card relative mx-auto w-full max-w-[19rem] [grid-area:card]" data-place={card.id}>
-      <CardFace info={info} width={[[null, '19rem']]} eager />
+      <CardFace eager info={info} width={[[null, '19rem']]} />
       <UpgradeToggle name={info.name} restore={false} />
     </div>
-    <Tips markups={info.texts} keywords={info.keywords} exclude={info.name} class="[grid-area:tips]" />
+    <Tips class="[grid-area:tips]" exclude={info.name} keywords={info.keywords} markups={info.texts} />
     <div class="grid content-start gap-4 [grid-area:stats]">
       {detail.stats.length > 0 && <Stats items={detail.stats} />}
       <p class="m-0 text-sm text-muted">
         <T text={l.t('Card text from {version}.')}>
-          <a slot="version" href={l.href(notesHref(data.meta.mod.version))}>
+          <a href={l.href(notesHref(data.meta.mod.version))} slot="version">
             {data.meta.mod.version}
           </a>
         </T>{' '}
@@ -98,14 +98,14 @@ const labels = [
 
   <nav aria-label={l.t('More cards')} class="flex justify-between gap-4 border-t border-line pt-4 text-sm">
     {previous ? (
-      <a href={l.href(cardHref(previous.id))} data-sheet-link>
+      <a data-sheet-link href={l.href(cardHref(previous.id))}>
         ← {previous.info.name}
       </a>
     ) : (
       <span />
     )}
     {next && (
-      <a href={l.href(cardHref(next.id))} data-sheet-link>
+      <a data-sheet-link href={l.href(cardHref(next.id))}>
         {next.info.name} →
       </a>
     )}

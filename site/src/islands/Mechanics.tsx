@@ -2,30 +2,30 @@ import Bars from '../components/charts/Bars';
 import Columns from '../components/charts/Columns';
 import StackBar from '../components/charts/StackBar';
 import Stats from '../components/charts/Stats';
+import SectionHeading from '../components/SectionHeading';
 import type { Lang, LangInit } from '../lib/lang';
-import { mechanics, type Histogram, type Icons, type MechanicsModel } from '../lib/views/mechanics';
+import { type Histogram, type Icons, mechanics, type MechanicsModel } from '../lib/views/mechanics';
 import Filters, { type FilterOptions } from './Filters';
 import { useLang } from './useLang';
 import { useStats } from './useStats';
-import SectionHeading from '../components/SectionHeading';
 
-function HistogramChart({ l, chart, label, empty }: { l: Lang; chart: Histogram; label: string; empty?: string }) {
+function HistogramChart({ chart, empty, l, label }: { chart: Histogram; empty?: string; l: Lang; label: string }) {
   return (
     <>
-      <Columns l={l} items={chart.columns} markers={chart.markers} label={label} empty={empty} />
+      <Columns empty={empty} items={chart.columns} l={l} label={label} markers={chart.markers} />
       {chart.foot && <p class="foot">{chart.foot}</p>}
     </>
   );
 }
 
 interface Props {
-  locale: LangInit;
-  initial: MechanicsModel;
-  options: FilterOptions;
   icons: Icons;
+  initial: MechanicsModel;
+  locale: LangInit;
+  options: FilterOptions;
 }
 
-export default function Mechanics({ locale, initial, options, icons }: Props) {
+export default function Mechanics({ icons, initial, locale, options }: Props) {
   const l = useLang(locale);
   const {
     filters,
@@ -37,10 +37,10 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
   // The badge tiers a histogram marks, by the names the mod gives them
   const tiers = (chart: Histogram) => ({ tiers: l.list(chart.markers.map((marker) => marker.label)) });
   return (
-    <div class="stats-page" aria-busy={status === 'loading'}>
-      <Filters l={l} filters={filters} options={options} runs={m.runs} status={status} onChange={update} />
+    <div aria-busy={status === 'loading'} class="stats-page">
+      <Filters filters={filters} l={l} onChange={update} options={options} runs={m.runs} status={status} />
 
-      <SectionHeading id="badges" class="section-title">
+      <SectionHeading class="section-title" id="badges">
         {l.t('Badges')}
       </SectionHeading>
       <p class="note">{l.t('How often runs earn each Alchemist badge, and at which tier.')}</p>
@@ -48,16 +48,16 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
         {m.badges.map((badge) => (
           <section class="panel p-5">
             <h3 class="flex items-center gap-2 text-lg">
-              {badge.icon && <img src={badge.icon} alt="" class="size-8" />}
+              {badge.icon && <img alt="" class="size-8" src={badge.icon} />}
               {badge.name}
             </h3>
             <p class="note">{badge.text}</p>
-            <Bars l={l} items={badge.tiers} max={1} labelWidth="9rem" />
+            <Bars items={badge.tiers} l={l} labelWidth="9rem" max={1} />
           </section>
         ))}
       </div>
 
-      <SectionHeading id="brew-and-potions" class="section-title">
+      <SectionHeading class="section-title" id="brew-and-potions">
         {l.t('Brew and potions')}
       </SectionHeading>
       <Stats items={m.brew.stats} />
@@ -65,16 +65,16 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
         <h3>{l.t('Brew picks')}</h3>
         <p class="note">{m.brew.note}</p>
         <Bars
-          l={l}
           items={m.brew.picks}
+          l={l}
+          labelWidth="11rem"
           max={1}
           reference={m.brew.even}
           referenceLabel={l.t('The gold line is an even share, {rate}', { rate: l.pct(m.brew.even) })}
-          labelWidth="11rem"
         />
       </section>
 
-      <SectionHeading id="mixes" class="section-title">
+      <SectionHeading class="section-title" id="mixes">
         {l.t('Mixes')}
       </SectionHeading>
       <Stats items={m.mixes.stats} />
@@ -82,44 +82,44 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
         <section class="panel p-5">
           <h3>{l.t('Which Mixes get made')}</h3>
           <p class="note">{l.t("Each kind's share of every Mix created.")}</p>
-          <Bars l={l} items={m.mixes.made} labelWidth="8rem" />
+          <Bars items={m.mixes.made} l={l} labelWidth="8rem" />
         </section>
         <section class="panel p-5">
           <h3>{l.t('How many get played')}</h3>
           <p class="note">
             {l.t('The share of each kind that got played. Why Mixes go unplayed, below, shows the rest.')}
           </p>
-          <Bars l={l} items={m.mixes.played} max={1} labelWidth="8rem" />
+          <Bars items={m.mixes.played} l={l} labelWidth="8rem" max={1} />
         </section>
         <section class="panel p-5">
           <h3>{l.t('Mixes played per fight')}</h3>
           <p class="note">{l.t('Fights by how many Mixes were played in them. A Compound Mix counts as 2.')}</p>
-          <Columns l={l} items={m.mixes.fights} label={l.t('Fights by the number of Mixes played in them')} />
+          <Columns items={m.mixes.fights} l={l} label={l.t('Fights by the number of Mixes played in them')} />
         </section>
         <section class="panel p-5">
           <h3>{l.t('Where Mixes come from')}</h3>
           <p class="note">{l.t('The card, relic, potion or power that created each Mix.')}</p>
-          <Bars l={l} items={m.mixes.sources} limit={10} labelWidth="11rem" />
+          <Bars items={m.mixes.sources} l={l} labelWidth="11rem" limit={10} />
         </section>
         <section class="panel p-5">
           <h3>{l.t('Why Mixes go unplayed')}</h3>
           <p class="note">{m.mixes.lostNote}</p>
           <Bars
-            l={l}
-            items={m.mixes.lost}
-            max={1}
-            labelWidth="14rem"
             empty={l.t('No runs in these filters count unplayed Mixes yet. Counted {since}.', since)}
+            items={m.mixes.lost}
+            l={l}
+            labelWidth="14rem"
+            max={1}
           />
         </section>
         <section class="panel p-5">
           <h3>{l.t('Compound pairings')}</h3>
           <p class="note">{l.t('The two Mixes folded into each Compound Mix.')}</p>
-          <Bars l={l} items={m.mixes.pairs} limit={8} labelWidth="12rem" />
+          <Bars items={m.mixes.pairs} l={l} labelWidth="12rem" limit={8} />
         </section>
       </div>
 
-      <SectionHeading id="ferment" class="section-title">
+      <SectionHeading class="section-title" id="ferment">
         {l.t('Ferment')}
       </SectionHeading>
       <Stats items={m.ferment.stats} />
@@ -133,8 +133,8 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
             )}
           </p>
           <HistogramChart
-            l={l}
             chart={m.ferment.turns}
+            l={l}
             label={l.t('Runs by the turns their Ferment cards fermented')}
           />
         </section>
@@ -144,16 +144,16 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
             {l.t("The turns Fermented when a card is played, on average, for the Ferment cards in a run's final deck.")}
           </p>
           <Bars
-            l={l}
-            items={m.ferment.cards}
-            limit={10}
-            labelWidth="11rem"
             empty={l.t('No runs in these filters count Ferment turns per card yet. Counted {since}.', since)}
+            items={m.ferment.cards}
+            l={l}
+            labelWidth="11rem"
+            limit={10}
           />
         </section>
       </div>
 
-      <SectionHeading id="poison" class="section-title">
+      <SectionHeading class="section-title" id="poison">
         {l.game?.words.Poison ?? l.t('Poison')}
       </SectionHeading>
       <Stats items={m.poison.stats} />
@@ -162,10 +162,10 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
           <h3>{l.t('How high self-Poison gets')}</h3>
           <p class="note">{l.t('The most Poison the Alchemist held at once in each run.')}</p>
           <HistogramChart
-            l={l}
             chart={m.poison.peak}
-            label={l.t('Runs by their self-Poison peak')}
             empty={l.t('No runs in these filters count the self-Poison peak yet. Counted {since}.', since)}
+            l={l}
+            label={l.t('Runs by their self-Poison peak')}
           />
         </section>
         <section class="panel p-5">
@@ -178,7 +178,7 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
         </section>
       </div>
 
-      <SectionHeading id="antitoxin" class="section-title">
+      <SectionHeading class="section-title" id="antitoxin">
         {l.t('Antitoxin')}
       </SectionHeading>
       <Stats items={m.antitoxin.stats} />
@@ -191,17 +191,17 @@ export default function Mechanics({ locale, initial, options, icons }: Props) {
               tiers(m.antitoxin.peak),
             )}
           </p>
-          <HistogramChart l={l} chart={m.antitoxin.peak} label={l.t('Runs by their Antitoxin peak')} />
+          <HistogramChart chart={m.antitoxin.peak} l={l} label={l.t('Runs by their Antitoxin peak')} />
         </section>
         <section class="panel p-5">
           <h3>{l.t('Where Antitoxin comes from')}</h3>
           <p class="note">{l.t('The card, relic, potion or power behind each point of Antitoxin gained.')}</p>
           <Bars
-            l={l}
-            items={m.antitoxin.sources}
-            limit={10}
-            labelWidth="11rem"
             empty={l.t('No runs in these filters count Antitoxin sources yet. Counted {since}.', since)}
+            items={m.antitoxin.sources}
+            l={l}
+            labelWidth="11rem"
+            limit={10}
           />
           {m.antitoxin.decayFoot && <p class="foot">{m.antitoxin.decayFoot}</p>}
         </section>

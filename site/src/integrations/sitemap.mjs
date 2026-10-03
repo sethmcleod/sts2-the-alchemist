@@ -8,11 +8,7 @@ const LEFT_OUT = /(?:^|\/)(?:404|offline)$/;
 export function sitemap() {
   let site;
   return {
-    name: 'sitemap',
     hooks: {
-      'astro:config:done': ({ config }) => {
-        site = config.site;
-      },
       'astro:build:done': ({ dir, pages }) => {
         const paths = pages
           .map(({ pathname }) => pathname.replace(/\/$/, ''))
@@ -22,6 +18,10 @@ export function sitemap() {
         const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
         fs.writeFileSync(new URL('sitemap.xml', dir), xml);
       },
+      'astro:config:done': ({ config }) => {
+        site = config.site;
+      },
     },
+    name: 'sitemap',
   };
 }

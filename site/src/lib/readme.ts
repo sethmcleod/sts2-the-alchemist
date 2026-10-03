@@ -4,10 +4,10 @@
 // A translation of a section is Markdown, keyed by the hash of the English Markdown it translates:
 // after an edit to the English, the section shows in English until it is translated again.
 
-import { createSatteriMarkdownProcessor } from '@astrojs/markdown-satteri';
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import { createSatteriMarkdownProcessor } from '@astrojs/markdown-satteri';
 
 const README = path.join(process.cwd(), '..', 'README.md');
 

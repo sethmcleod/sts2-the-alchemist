@@ -9,37 +9,37 @@ import { plain } from '../../../lib/markup';
 import { slug } from '../../../lib/mod';
 
 export const getStaticPaths = (() =>
-  langParams().flatMap(({ locale, lang }) => {
+  langParams().flatMap(({ lang, locale }) => {
     const cards = libraryCards(language(locale), runs(locale), runs());
     return cards.map((card, i) => ({
       params: { lang, slug: slug(card.id) },
-      props: { card, previous: cards[i - 1], next: cards[i + 1] },
+      props: { card, next: cards[i + 1], previous: cards[i - 1] },
     }));
   })) satisfies GetStaticPaths;
 
-const { card, previous, next } = Astro.props;
+const { card, next, previous } = Astro.props;
 const { l } = Astro.locals;
 const { info } = card;
 const energy = l.game?.words.Energy;
 ---
 
 <Base
-  title={info.name}
-  image={await image(info.art)}
   description={l.t('{name}, {kind}: {text} Upgraded: {upgraded}', {
-    name: info.name,
     kind: cardKind(l, info),
+    name: info.name,
     text: plain(info.texts[0], energy),
     upgraded: plain(info.texts[1], energy),
   })}
+  image={await image(info.art)}
+  title={info.name}
 >
   <p class="mt-6 mb-0">
     <a href={l.href('/#cards')}>← {l.t('All cards')}</a>
   </p>
   <!-- /cards/<name>#upgraded opens the card flipped (global.css) -->
-  <span id="upgraded" hidden></span>
+  <span hidden id="upgraded"></span>
   <div class="panel mt-3">
-    <CardSheet card={card} previous={previous} next={next} />
+    <CardSheet card={card} next={next} previous={previous} />
   </div>
 </Base>
 

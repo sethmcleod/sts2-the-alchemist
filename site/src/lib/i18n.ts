@@ -4,31 +4,31 @@
 export interface Locale {
   /** The URL prefix, and the BCP 47 tag the page declares */
   code: string;
-  lang: string;
   /** The mod's localization folder */
   game: string;
+  lang: string;
   name: string;
   /** The label on the language button */
   short: string;
 }
 
 export const LOCALES: Locale[] = [
-  { code: 'en', lang: 'en', game: 'eng', name: 'English', short: 'EN' },
-  { code: 'de', lang: 'de', game: 'deu', name: 'Deutsch', short: 'DE' },
-  { code: 'es', lang: 'es-ES', game: 'spa', name: 'Español (Castellano)', short: 'ES' },
-  { code: 'es-419', lang: 'es-419', game: 'esp', name: 'Español (Latinoamérica)', short: 'ES-LA' },
-  { code: 'fr', lang: 'fr', game: 'fra', name: 'Français', short: 'FR' },
-  { code: 'id', lang: 'id', game: 'ind', name: 'Bahasa Indonesia', short: 'ID' },
-  { code: 'it', lang: 'it', game: 'ita', name: 'Italiano', short: 'IT' },
-  { code: 'ja', lang: 'ja', game: 'jpn', name: '日本語', short: 'JA' },
-  { code: 'ko', lang: 'ko', game: 'kor', name: '한국어', short: 'KO' },
-  { code: 'pl', lang: 'pl', game: 'pol', name: 'Polski', short: 'PL' },
-  { code: 'pt-br', lang: 'pt-BR', game: 'ptb', name: 'Português Brasileiro', short: 'PT-BR' },
-  { code: 'ru', lang: 'ru', game: 'rus', name: 'Русский', short: 'RU' },
-  { code: 'th', lang: 'th', game: 'tha', name: 'ไทย', short: 'TH' },
-  { code: 'tr', lang: 'tr', game: 'tur', name: 'Türkçe', short: 'TR' },
-  { code: 'zh-hans', lang: 'zh-Hans', game: 'zhs', name: '中文', short: '简体' },
-  { code: 'zh-hant', lang: 'zh-Hant', game: 'zht', name: '繁體中文', short: '繁體' },
+  { code: 'en', game: 'eng', lang: 'en', name: 'English', short: 'EN' },
+  { code: 'de', game: 'deu', lang: 'de', name: 'Deutsch', short: 'DE' },
+  { code: 'es', game: 'spa', lang: 'es-ES', name: 'Español (Castellano)', short: 'ES' },
+  { code: 'es-419', game: 'esp', lang: 'es-419', name: 'Español (Latinoamérica)', short: 'ES-LA' },
+  { code: 'fr', game: 'fra', lang: 'fr', name: 'Français', short: 'FR' },
+  { code: 'id', game: 'ind', lang: 'id', name: 'Bahasa Indonesia', short: 'ID' },
+  { code: 'it', game: 'ita', lang: 'it', name: 'Italiano', short: 'IT' },
+  { code: 'ja', game: 'jpn', lang: 'ja', name: '日本語', short: 'JA' },
+  { code: 'ko', game: 'kor', lang: 'ko', name: '한국어', short: 'KO' },
+  { code: 'pl', game: 'pol', lang: 'pl', name: 'Polski', short: 'PL' },
+  { code: 'pt-br', game: 'ptb', lang: 'pt-BR', name: 'Português Brasileiro', short: 'PT-BR' },
+  { code: 'ru', game: 'rus', lang: 'ru', name: 'Русский', short: 'RU' },
+  { code: 'th', game: 'tha', lang: 'th', name: 'ไทย', short: 'TH' },
+  { code: 'tr', game: 'tur', lang: 'tr', name: 'Türkçe', short: 'TR' },
+  { code: 'zh-hans', game: 'zhs', lang: 'zh-Hans', name: '中文', short: '简体' },
+  { code: 'zh-hant', game: 'zht', lang: 'zh-Hant', name: '繁體中文', short: '繁體' },
 ];
 export const DEFAULT_LOCALE = LOCALES[0];
 
@@ -46,7 +46,7 @@ export function basePath(pathname: string) {
 
 /** The [...lang] route parameter of every language: none for English, which lives at the root */
 export const langParams = () =>
-  LOCALES.map((locale) => ({ locale, lang: locale === DEFAULT_LOCALE ? undefined : locale.code }));
+  LOCALES.map((locale) => ({ lang: locale === DEFAULT_LOCALE ? undefined : locale.code, locale }));
 
 /** getStaticPaths for a page that exists once per language */
 export const everyLanguage = () => langParams().map(({ lang }) => ({ params: { lang } }));

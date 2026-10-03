@@ -14,6 +14,7 @@
     "data": "python3 ../tools/analytics/export_stats.py",
     "data:seed": "python3 ../tools/analytics/seed_runs.py --local && python3 ../tools/analytics/export_stats.py --from-file ../tools/analytics/seed-runs.local.json",
     "check": "astro check",
+    "lint": "eslint .",
     "test": "vitest run",
     "format": "prettier --write .",
     "strings": "node scripts/strings.mjs"

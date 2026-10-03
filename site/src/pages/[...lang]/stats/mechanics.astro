@@ -19,14 +19,14 @@ const il = statsLang(init);
 ---
 
 <Stats
-  title={l.t('Mechanics')}
   description={l.t('Badges, Brew, Mixes, Ferment, Poison and Antitoxin, measured over every shared run.')}
+  title={l.t('Mechanics')}
 >
   <Mechanics
     client:idle
-    locale={init}
-    initial={mechanics(il, data, DEFAULT_FILTERS, icons)}
-    options={filterOptions(il, data)}
     icons={icons}
+    initial={mechanics(il, data, DEFAULT_FILTERS, icons)}
+    locale={init}
+    options={filterOptions(il, data)}
   />
 </Stats>

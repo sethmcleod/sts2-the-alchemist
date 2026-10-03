@@ -8,16 +8,16 @@ import type { Filters, Runs } from '../runs';
 import { compareVersions, histogramMedian, rate, sumBy } from '../stats';
 
 export interface OverviewModel {
-  runs: number;
-  overall: number | null;
-  stats: Stat[];
+  ascensions: BarItem[];
+  days: Column[];
   funnel: BarItem[];
   funnelNote: string;
-  ascensions: BarItem[];
+  overall: null | number;
+  runs: number;
+  stats: Stat[];
   themes: BarItem[];
   themesNote: string;
   versions: BarItem[];
-  days: Column[];
 }
 
 export function overview(l: Lang, runs: Runs, f: Filters): OverviewModel {
@@ -63,52 +63,28 @@ export function overview(l: Lang, runs: Runs, f: Filters): OverviewModel {
     const day = new Date(last);
     day.setUTCDate(last.getUTCDate() - i);
     const g = byDay.get(day.toISOString().slice(0, 10)) ?? { runs: 0, wins: 0 };
-    const label = day.toLocaleDateString(l.lang, { month: 'short', day: 'numeric', timeZone: 'UTC' });
+    const label = day.toLocaleDateString(l.lang, { day: 'numeric', month: 'short', timeZone: 'UTC' });
     days.push({
       label,
-      value: g.runs,
       tip: [
         label,
         l.n(g.runs, '{n} run', '{n} runs'),
         g.runs ? l.t('{share} won', { share: l.pct(g.wins / g.runs) }) : l.t('no runs'),
       ],
+      value: g.runs,
     });
   }
 
   return {
-    runs: t.runs,
-    overall,
-    stats: [
-      {
-        label: l.t('Win rate'),
-        value: l.pct(overall),
-        note: l.n(t.runs, '{wins} from {n} run', '{wins} from {n} runs', { wins: l.n(t.wins, '{n} win', '{n} wins') }),
-      },
-      {
-        label: l.t('Reach Act 3'),
-        value: l.pct(rate(t.reached_act3, t.runs)),
-        note: l.t('{share} reach Act 2', { share: l.pct(rate(t.reached_act2, t.runs)) }),
-      },
-      {
-        label: l.t('Run length'),
-        value: l.minutes(histogramMedian(length.bins, length.width)),
-        note: l.t('for the middle run. The middle win takes {time}', {
-          time: l.minutes(histogramMedian(winLength.bins, winLength.width)),
-        }),
-      },
-      {
-        label: l.t('Antitoxin peak'),
-        value: l.fixed(rate(t.antitoxin_peak, t.runs_with_peak), 0),
-        note: l.t('the most held at once, on average'),
-      },
-    ],
+    ascensions,
+    days,
     funnel: t.runs
       ? stages.map(([label, n], i) => ({
+          fill: `var(--stage-${i + 1})`,
           label,
-          value: n / t.runs,
           text: l.pct(n / t.runs),
           textNote: l.num(n),
-          fill: `var(--stage-${i + 1})`,
+          value: n / t.runs,
         }))
       : [],
     funnelNote: t.runs
@@ -118,7 +94,32 @@ export function overview(l: Lang, runs: Runs, f: Filters): OverviewModel {
           wins: l.num(per100(t.wins)),
         })
       : '',
-    ascensions,
+    overall,
+    runs: t.runs,
+    stats: [
+      {
+        label: l.t('Win rate'),
+        note: l.n(t.runs, '{wins} from {n} run', '{wins} from {n} runs', { wins: l.n(t.wins, '{n} win', '{n} wins') }),
+        value: l.pct(overall),
+      },
+      {
+        label: l.t('Reach Act 3'),
+        note: l.t('{share} reach Act 2', { share: l.pct(rate(t.reached_act2, t.runs)) }),
+        value: l.pct(rate(t.reached_act3, t.runs)),
+      },
+      {
+        label: l.t('Run length'),
+        note: l.t('for the middle run. The middle win takes {time}', {
+          time: l.minutes(histogramMedian(winLength.bins, winLength.width)),
+        }),
+        value: l.minutes(histogramMedian(length.bins, length.width)),
+      },
+      {
+        label: l.t('Antitoxin peak'),
+        note: l.t('the most held at once, on average'),
+        value: l.fixed(rate(t.antitoxin_peak, t.runs_with_peak), 0),
+      },
+    ],
     themes,
     themesNote: l.n(
       runs.meta.theme_min_cards,
@@ -127,6 +128,5 @@ export function overview(l: Lang, runs: Runs, f: Filters): OverviewModel {
       { unfocused: l.t('Unfocused') },
     ),
     versions,
-    days,
   };
 }

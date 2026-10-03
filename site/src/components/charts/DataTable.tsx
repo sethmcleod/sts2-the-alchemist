@@ -10,36 +10,36 @@ export interface ColumnDef<R> {
   key: string;
   label: string;
   num?: boolean;
-  wide?: boolean;
-  sortable?: boolean;
   render?: (row: R) => ComponentChildren;
+  sortable?: boolean;
+  wide?: boolean;
 }
 
-export type Sort = { key: string; dir: 1 | -1 };
+export type Sort = { dir: -1 | 1; key: string };
 
 interface Props<R> {
-  l: Lang;
+  caption?: string;
   columns: ColumnDef<R>[];
+  empty?: string;
+  l: Lang;
+  limit?: number;
   rows: R[];
   sort?: Sort;
-  limit?: number;
-  empty?: string;
-  caption?: string;
 }
 
 export default function DataTable<R extends object>({
-  l,
+  caption,
   columns,
+  empty,
+  l,
+  limit,
   rows,
   sort: initial,
-  limit,
-  empty,
-  caption,
 }: Props<R>) {
   const [sort, setSort] = useState(initial);
   if (!rows.length) return <p class="empty">{empty ?? emptyText(l)}</p>;
 
-  const valueOf = (c: ColumnDef<R>, row: R) => (row as Record<string, unknown>)[c.key] as number | string | null;
+  const valueOf = (c: ColumnDef<R>, row: R) => (row as Record<string, unknown>)[c.key] as null | number | string;
   const column = sort && columns.find((c) => c.key === sort.key);
   const sorted = column
     ? [...rows].sort((a, b) => {
@@ -70,17 +70,17 @@ export default function DataTable<R extends object>({
                 const active = c.key === sort?.key;
                 return (
                   <th
-                    scope="col"
-                    class={classOf(c)}
                     aria-sort={active ? (sort!.dir > 0 ? 'ascending' : 'descending') : undefined}
+                    class={classOf(c)}
+                    scope="col"
                   >
                     {c.sortable === false ? (
                       c.label
                     ) : (
                       <button
-                        type="button"
                         class="sort"
-                        onClick={() => setSort({ key: c.key, dir: active ? (-sort!.dir as 1 | -1) : c.num ? -1 : 1 })}
+                        onClick={() => setSort({ dir: active ? (-sort!.dir as -1 | 1) : c.num ? -1 : 1, key: c.key })}
+                        type="button"
                       >
                         {c.label}
                         <span aria-hidden="true">{active ? (sort!.dir > 0 ? ' ↑' : ' ↓') : ''}</span>
@@ -104,7 +104,7 @@ export default function DataTable<R extends object>({
       </div>
       {limit && rows.length > limit && (
         <label class="show-more">
-          <input type="checkbox" class="sr-only" />
+          <input class="sr-only" type="checkbox" />
           <span class="more">{l.t('Show all {count}', { count: l.num(rows.length) })}</span>
           <span class="less">{l.t('Show fewer')}</span>
         </label>

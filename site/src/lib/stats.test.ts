@@ -51,8 +51,8 @@ describe('versions', () => {
 
 describe('count tables', () => {
   const t = table({
-    key: ['group', 'card'],
     counts: ['held', 'wins'],
+    key: ['group', 'card'],
     rows: [
       [0, 'A', 2, 1],
       [1, 'A', 3, 3],
@@ -75,8 +75,8 @@ describe('count tables', () => {
 describe('the compact form', () => {
   it('reads back the same rows', () => {
     const file = {
-      key: ['group', 'card'],
       counts: ['held'],
+      key: ['group', 'card'],
       rows: [
         [0, 'B', 2],
         [1, 'A', 3],

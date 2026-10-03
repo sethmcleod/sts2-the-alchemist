@@ -12,10 +12,10 @@ const [from, to] = runs().versionSpan(DEFAULT_FILTERS.version) ?? [];
 
 {from && to && (
   <T text={from === to ? '{from}' : l.t('{from} to {to}')}>
-    <a slot="from" href={l.href(notesHref(from))}>
+    <a href={l.href(notesHref(from))} slot="from">
       {from}
     </a>
-    <a slot="to" href={l.href(notesHref(to))}>
+    <a href={l.href(notesHref(to))} slot="to">
       {to}
     </a>
   </T>

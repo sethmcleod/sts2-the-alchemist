@@ -52,33 +52,33 @@ const facts = [
     </ul>
     <div class="flex flex-wrap gap-2.5">
       {beta && (
-        <External href={steamItem(beta.item)} class="button primary">
+        <External class="button primary" href={steamItem(beta.item)}>
           Steam Workshop <span class="font-normal">{l.t('beta branch')}</span>
         </External>
       )}
       {main && (
-        <External href={steamItem(main.item)} class="button">
+        <External class="button" href={steamItem(main.item)}>
           Steam Workshop <span class="font-normal text-muted">{l.t('public branch')}</span>
         </External>
       )}
       {meta.repo && (
-        <External href={`https://github.com/${meta.repo}`} class="button">
+        <External class="button" href={`https://github.com/${meta.repo}`}>
           GitHub
         </External>
       )}
     </div>
     <p class="m-0 text-sm text-ink-2">
       <T text={latest.date ? l.t('Latest: {notes}, {date}.') : l.t('Latest: {notes}.')}>
-        <a slot="notes" href={l.href(notesHref(latest.version))}>
+        <a href={l.href(notesHref(latest.version))} slot="notes">
           {l.t('{version} patch notes', { version: latest.version })}
         </a>
-        <span slot="date" class="text-muted">
+        <span class="text-muted" slot="date">
           {latest.date && l.date(latest.date)}
         </span>
       </T>{' '}
       {l.t('Stats from {runs} runs by {players} players, updated every day.', {
-        runs: l.num(meta.total_runs),
         players: l.num(meta.players),
+        runs: l.num(meta.total_runs),
       })}
     </p>
   </div>

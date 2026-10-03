@@ -10,7 +10,7 @@ import type { NoteItem } from '../lib/types';
 const NEWEST = 30;
 
 const escape = (text: string) =>
-  text.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+  text.replace(/[&<>"']/g, (c) => ({ '"': '&quot;', '&': '&amp;', "'": '&#39;', '<': '&lt;', '>': '&gt;' })[c]!);
 
 const line = (text: string) =>
   noteParts(text)

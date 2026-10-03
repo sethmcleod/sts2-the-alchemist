@@ -7,8 +7,8 @@
 import type { NoteItem, Release } from './types';
 
 export interface Change {
-  version: string;
   item: NoteItem;
+  version: string;
 }
 
 interface Alias {
@@ -27,14 +27,14 @@ const AFTER = /(?:,? and (?:reworked|tinted)|, reusing|, because|, since|:).*$/;
 
 /** The renames in the notes, newest first: "Renamed Purge to Double Dose, Pays Off to Smelling Salts, and Elixir to Panacea" */
 export function renames(versions: Release[]) {
-  const found: { from: string; to: string; at: number }[] = [];
+  const found: { at: number; from: string; to: string }[] = [];
   versions.forEach((release, at) =>
     each(release, (item) => {
       if (!item.text.startsWith('Renamed ')) return;
       const names = item.text.slice('Renamed '.length).replace(AFTER, '');
       for (const part of names.split(/,? and |, /)) {
         const m = RENAME.exec(part.trim());
-        if (m) found.push({ from: m[1], to: m[2], at });
+        if (m) found.push({ at, from: m[1], to: m[2] });
       }
     }),
   );
@@ -43,10 +43,10 @@ export function renames(versions: Release[]) {
 
 /** The lines that add an item, newest first: "Added Toadstone relic (Uncommon): ..." */
 function additions(versions: Release[]) {
-  const found: { text: string; at: number }[] = [];
+  const found: { at: number; text: string }[] = [];
   versions.forEach((release, at) =>
     each(release, (item) => {
-      if (item.text.startsWith('Added ')) found.push({ text: item.text, at });
+      if (item.text.startsWith('Added ')) found.push({ at, text: item.text });
     }),
   );
   return found;
@@ -118,7 +118,7 @@ export function changes(names: Record<string, string>, versions: Release[]): Map
       }
       // A line under one that names the item comes with it
       const inherited = parent ? named.get(parent) : undefined;
-      for (const id of ids) if (!inherited?.has(id)) add(id, { version: release.version, item });
+      for (const id of ids) if (!inherited?.has(id)) add(id, { item, version: release.version });
       named.set(item, new Set([...ids, ...(inherited ?? [])]));
     });
   });

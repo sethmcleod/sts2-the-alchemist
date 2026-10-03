@@ -5,42 +5,42 @@ import type { Lang } from './lang';
 import { ASCENSION_BANDS, inPool, mixKind, POOL_RARITIES, type PoolRarity } from './mod';
 import {
   compareVersions,
+  type Counts,
   median,
   rate,
+  type Row,
+  type Selection,
   sum,
   sumBy,
   table,
-  type Counts,
-  type Row,
-  type Selection,
   type Table,
 } from './stats';
 import type { AnyTableFile, Meta, Summary, Translation } from './types';
 
 export interface Group {
-  version: string;
-  build: string;
   ascension: number;
-  pool: string;
+  build: string;
   coop: number;
+  pool: string;
+  version: string;
 }
 
 export interface Filters {
-  version: string;
   ascension: string;
-  players: 'solo' | 'coop' | 'all';
-  pool: string;
   build: string;
   min: number;
+  players: 'all' | 'coop' | 'solo';
+  pool: string;
+  version: string;
 }
 
 export const DEFAULT_FILTERS: Filters = {
-  version: 'recent',
   ascension: 'all',
-  players: 'solo',
-  pool: 'all',
   build: 'all',
   min: 10,
+  players: 'solo',
+  pool: 'all',
+  version: 'recent',
 };
 
 // The default version filter is the newest versions that together reach this many solo runs
@@ -59,14 +59,15 @@ const SUMMARY_TABLES = [
 ] as const;
 
 /** The mod's names in another language, and its badges' tier titles and texts */
-export type Names = Pick<Translation, 'names' | 'badges'>;
+export type Names = Pick<Translation, 'badges' | 'names'>;
 
 /** The summary with the mod's names in another language */
-export function named(summary: Summary, { names, badges }: Names): Summary {
+export function named(summary: Summary, { badges, names }: Names): Summary {
   const rename = <T extends { name: string }>(infos: Record<string, T>) =>
     Object.fromEntries(Object.entries(infos).map(([id, info]) => [id, { ...info, name: names[id] ?? info.name }]));
   return {
     ...summary,
+    card_info: rename(summary.card_info),
     meta: {
       ...summary.meta,
       badges: summary.meta.badges.map((badge) => ({
@@ -75,27 +76,26 @@ export function named(summary: Summary, { names, badges }: Names): Summary {
       })),
     },
     names: { ...summary.names, ...names },
-    card_info: rename(summary.card_info),
-    relic_info: rename(summary.relic_info),
     potion_info: rename(summary.potion_info),
     power_info: rename(summary.power_info),
+    relic_info: rename(summary.relic_info),
   };
 }
 
-export type Extra = 'cards' | 'relics' | 'potions' | 'encounters';
+export type Extra = 'cards' | 'encounters' | 'potions' | 'relics';
 
 /** The data file, and the key in it, that holds each table beyond the summary */
 export const EXTRA_FILES: Record<Extra, [file: string, key: string]> = {
   cards: ['cards.json', 'cards'],
-  relics: ['relics.json', 'relics'],
-  potions: ['relics.json', 'potions'],
   encounters: ['fights.json', 'encounters'],
+  potions: ['relics.json', 'potions'],
+  relics: ['relics.json', 'relics'],
 };
 
 export class Runs {
   readonly meta: Meta;
   readonly groups: Group[];
-  readonly tables: Record<(typeof SUMMARY_TABLES)[number], Table> & Partial<Record<Extra, Table>>;
+  readonly tables: Partial<Record<Extra, Table>> & Record<(typeof SUMMARY_TABLES)[number], Table>;
   readonly recentStart: string;
 
   constructor(
@@ -116,7 +116,7 @@ export class Runs {
 
   /** The same runs, with the mod's names and text from another summary (another language) */
   withSummary(summary: Summary): Runs {
-    return Object.assign(Object.create(Runs.prototype), this, { summary, meta: summary.meta });
+    return Object.assign(Object.create(Runs.prototype), this, { meta: summary.meta, summary });
   }
 
   /** The mod's own names come from its localization. A base game id only has its words to go on */
@@ -204,11 +204,11 @@ export class Runs {
   }
 
   histogram(on: Selection, metric: string, column = 'runs') {
-    const { width, last } = this.meta.histograms[metric];
+    const { last, width } = this.meta.histograms[metric];
     const counts = sumBy(this.tables.histograms, on, (r) => (r.metric === metric ? (r.bin as number) : -1));
     const bins = [];
     for (let bin = 0; bin <= last; bin += width) bins.push({ bin, runs: counts.get(bin)?.[column] || 0 });
-    return { bins, width, last };
+    return { bins, last, width };
   }
 
   badgeShares(on: Selection, badgeId: string) {
@@ -225,11 +225,11 @@ export class Runs {
     const byBand = [...sumBy(mine, this.select({ ...f, ascension: 'all' }), (r) => this.groups[r.group].ascension)]
       .filter(([, c]) => c[runs] > 0)
       .sort((a, b) => a[0] - b[0])
-      .map(([band, c]) => ({ label: ASCENSION_BANDS[band], wins: c[wins], runs: c[runs] }));
+      .map(([band, c]) => ({ label: ASCENSION_BANDS[band], runs: c[runs], wins: c[wins] }));
     const byVersion = [...sumBy(mine, this.select({ ...f, version: 'all' }), (r) => this.groups[r.group].version)]
       .filter(([, c]) => c[runs] > 0)
       .sort((a, b) => compareVersions(b[0], a[0]))
-      .map(([version, c]) => ({ label: version, wins: c[wins], runs: c[runs] }));
+      .map(([version, c]) => ({ label: version, runs: c[runs], wins: c[wins] }));
     return { byBand, byVersion };
   }
 }
@@ -244,33 +244,33 @@ export function byPrefix(all: Map<string, Counts>, start: string) {
 export const totalCount = (byKey: Map<string, Counts>) => [...byKey.values()].reduce((n, c) => n + c.count, 0);
 
 export interface CardRow {
-  id: string;
-  rarity: string;
-  held: number;
-  held_wins: number;
-  held_twice: number;
-  held_twice_wins: number;
-  offered: number;
-  picked: number;
-  early_picks: number;
+  deckrate: null | number;
   early_pick_wins: number;
-  upgraded: number;
-  held_with_plays: number;
-  plays: number;
-  held_never_played: number;
+  early_picks: number;
   ferment_plays: number;
   ferment_turns: number;
-  winrate: number | null;
-  pickrate: number | null;
-  deckrate: number | null;
-  playsPerRun: number | null;
-  unplayed: number | null;
+  held: number;
+  held_never_played: number;
+  held_twice: number;
+  held_twice_wins: number;
+  held_wins: number;
+  held_with_plays: number;
+  id: string;
+  offered: number;
+  /** The win rate of the middle card of its rarity */
+  peer: null | number;
+  picked: number;
+  pickrate: null | number;
+  plays: number;
+  playsPerRun: null | number;
   /** Its place by win rate among the cards of its rarity with enough runs */
   rank?: number;
   ranked?: number;
-  /** The win rate of the middle card of its rarity */
-  peer: number | null;
-  vsPeers: number | null;
+  rarity: string;
+  unplayed: null | number;
+  upgraded: number;
+  vsPeers: null | number;
+  winrate: null | number;
 }
 
 // Long runs finish with more cards, so a card is measured against the cards of its own rarity: its
@@ -284,16 +284,16 @@ export function cardRows(runs: Runs, on: Selection, min: number) {
       id,
       rarity: info[id]?.rarity ?? 'Retired',
       ...(c as unknown as Omit<CardRow, 'id' | 'rarity'>),
-      winrate: rate(c.held_wins, c.held),
-      pickrate: rate(c.picked, c.offered),
       deckrate: rate(c.held, t.runs),
+      peer: null,
+      pickrate: rate(c.picked, c.offered),
       playsPerRun: rate(c.plays, c.held_with_plays),
       unplayed: rate(c.held_never_played, c.held_with_plays),
-      peer: null,
       vsPeers: null,
+      winrate: rate(c.held_wins, c.held),
     });
   }
-  const peers = {} as Record<PoolRarity, number | null>;
+  const peers = {} as Record<PoolRarity, null | number>;
   for (const rarity of POOL_RARITIES) {
     const ranked = rows
       .filter((r) => r.rarity === rarity && r.held >= min)
@@ -309,9 +309,9 @@ export function cardRows(runs: Runs, on: Selection, min: number) {
 }
 
 export interface MixRow {
-  perRun: number | null;
-  played: number | null;
-  share: number | null;
+  perRun: null | number;
+  played: null | number;
+  share: null | number;
 }
 
 /** How often a run makes and plays each kind of Mix, from the tally counters */

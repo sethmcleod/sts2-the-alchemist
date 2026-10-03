@@ -43,13 +43,13 @@ function tidy(current, extra = {}) {
   const part = (keys) => Object.fromEntries(keys.filter((key) => key in lookup).map((key) => [key, lookup[key]]));
   const readme = { ...current.readme, ...extra.readme };
   return {
-    site: part(catalog.site),
-    stats: part(catalog.stats),
     readme: Object.fromEntries(
       Object.keys(catalog.readme)
         .filter((hash) => hash in readme)
         .map((hash) => [hash, readme[hash]]),
     ),
+    site: part(catalog.site),
+    stats: part(catalog.stats),
   };
 }
 
@@ -61,13 +61,13 @@ for (const locale of LOCALES) {
     const done = read(path.join(dir, `${locale.code}.json`));
     const empty = (value) => value === '' || value == null;
     const clean = (part) => Object.fromEntries(Object.entries(part ?? {}).filter(([, value]) => !empty(value)));
-    write(file, tidy(current, { site: clean(done.site), stats: clean(done.stats), readme: clean(done.readme) }));
+    write(file, tidy(current, { readme: clean(done.readme), site: clean(done.site), stats: clean(done.stats) }));
   }
   const now = flag === '--merge' ? tidy(read(file)) : current;
   const missing = {
+    readme: Object.entries(catalog.readme).filter(([hash]) => !(hash in now.readme)),
     site: catalog.site.filter((key) => !(key in now.site)),
     stats: catalog.stats.filter((key) => !(key in now.stats)),
-    readme: Object.entries(catalog.readme).filter(([hash]) => !(hash in now.readme)),
   };
   const count = missing.site.length + missing.stats.length + missing.readme.length;
   console.log(`${locale.code.padEnd(8)} ${count ? `${count} to translate` : 'complete'}`);
@@ -76,9 +76,9 @@ for (const locale of LOCALES) {
     const given = donors(locale.game);
     const todo = (keys) => Object.fromEntries(keys.map((key) => [key, given.get(key) ?? '']));
     write(path.join(dir, `${locale.code}.json`), {
+      readme: Object.fromEntries(missing.readme.map(([hash, title]) => [hash, readmeSource(title)])),
       site: todo(missing.site),
       stats: todo(missing.stats),
-      readme: Object.fromEntries(missing.readme.map(([hash, title]) => [hash, readmeSource(title)])),
     });
   }
 }

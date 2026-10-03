@@ -4,9 +4,9 @@
 
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { Lang, type LangInit } from '../lib/lang';
-import { DEFAULT_FILTERS, EXTRA_FILES, named, Runs, type Extra, type Filters } from '../lib/runs';
+import { DEFAULT_FILTERS, type Extra, EXTRA_FILES, type Filters, named, Runs } from '../lib/runs';
 import type { AnyTableFile, Summary } from '../lib/types';
-import { validFilters, type FilterOptions } from './Filters';
+import { type FilterOptions, validFilters } from './Filters';
 
 type DataFile = Record<string, unknown> & { built: string };
 
@@ -52,7 +52,7 @@ const KEYS = Object.keys(DEFAULT_FILTERS) as (keyof Filters)[];
 
 function readFilters(search: string, options: FilterOptions): Filters {
   const params = new URLSearchParams(search);
-  const f = { ...DEFAULT_FILTERS } as Record<string, string | number>;
+  const f = { ...DEFAULT_FILTERS } as Record<string, number | string>;
   for (const key of KEYS) {
     const value = params.get(key);
     if (value) f[key] = key === 'min' ? Number(value) : value;
@@ -83,7 +83,7 @@ function writeFilters(f: Filters) {
   for (const link of document.querySelectorAll<HTMLAnchorElement>('a[data-keep-filters]')) link.search = filterQuery(f);
 }
 
-export type Status = 'ready' | 'loading' | 'error';
+export type Status = 'error' | 'loading' | 'ready';
 
 /** The words an island draws with, for the page that computes the island's first numbers at build */
 export const statsLang = (init: LangInit) => new Lang(init, init.strings, init.game, 'stats');
@@ -125,5 +125,5 @@ export function useStats<M>(
     if (filterQuery(fromUrl)) update(fromUrl);
   }, []);
 
-  return { filters, model, status, update, refresh: () => update(current.current) };
+  return { filters, model, refresh: () => update(current.current), status, update };
 }

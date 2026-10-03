@@ -4,9 +4,9 @@ import type { Lang } from '../../lib/lang';
 import { emptyText } from './empty';
 
 interface Part {
+  fill: string;
   label: string;
   value: number;
-  fill: string;
 }
 
 export default function StackBar({ l, parts }: { l: Lang; parts: Part[] }) {
@@ -14,9 +14,9 @@ export default function StackBar({ l, parts }: { l: Lang; parts: Part[] }) {
   if (!total) return <p class="empty">{emptyText(l)}</p>;
   return (
     <div>
-      <div class="stack" aria-hidden="true">
+      <div aria-hidden="true" class="stack">
         {parts.map((p) => (
-          <span style={{ flexGrow: p.value, '--fill': p.fill }} />
+          <span style={{ '--fill': p.fill, flexGrow: p.value }} />
         ))}
       </div>
       <ul class="legend">
@@ -24,8 +24,8 @@ export default function StackBar({ l, parts }: { l: Lang; parts: Part[] }) {
           <li>
             <i class="dot" style={{ '--dot': p.fill }} />
             {l.t('{label}: {count} ({share})', {
-              label: p.label,
               count: l.num(p.value),
+              label: p.label,
               share: l.pct(p.value / total),
             })}
           </li>

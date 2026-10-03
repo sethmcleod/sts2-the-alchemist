@@ -3,16 +3,16 @@
 
 import type { Lang } from './lang';
 import { plain } from './markup';
-import { cardGroup, CARD_GROUPS, compendiumOrder, LAST_IN_GROUP, RARITY_NAME } from './mod';
+import { CARD_GROUPS, cardGroup, compendiumOrder, LAST_IN_GROUP, RARITY_NAME } from './mod';
 import { cardRows, DEFAULT_FILTERS, type Runs } from './runs';
 import type { CardInfo, Rarity } from './types';
 
 export interface LibraryCard {
+  group: string;
   id: string;
   info: CardInfo;
-  group: string;
-  sort: Record<string, number | null>;
   search: string;
+  sort: Record<string, null | number>;
 }
 
 // A card's type, rarity and keywords in the game's own words, where the game has them
@@ -33,17 +33,9 @@ export function libraryCards(l: Lang, runs: Runs, english: Runs = runs) {
     const r = stats.get(id);
     const enough = r && r.held >= DEFAULT_FILTERS.min ? r : undefined;
     return {
+      group: cardGroup(info),
       id,
       info,
-      group: cardGroup(info),
-      sort: {
-        vsPeers: enough?.vsPeers ?? null,
-        winrate: enough?.winrate ?? null,
-        pickrate: enough?.pickrate ?? null,
-        playsPerRun: enough?.playsPerRun ?? null,
-        unplayed: enough?.unplayed ?? null,
-        held: enough?.held ?? null,
-      },
       search: [
         info.name,
         rarityName(l, info.rarity),
@@ -54,10 +46,18 @@ export function libraryCards(l: Lang, runs: Runs, english: Runs = runs) {
       ]
         .join(' ')
         .toLocaleLowerCase(l.lang),
+      sort: {
+        held: enough?.held ?? null,
+        pickrate: enough?.pickrate ?? null,
+        playsPerRun: enough?.playsPerRun ?? null,
+        unplayed: enough?.unplayed ?? null,
+        vsPeers: enough?.vsPeers ?? null,
+        winrate: enough?.winrate ?? null,
+      },
     };
   });
   const name = (card: LibraryCard) => english.summary.card_info[card.id]?.name ?? card.info.name;
-  const keys = ({ info }: LibraryCard) => ({ rarity: info.rarity, type: info.type, cost: info.costs[0] });
+  const keys = ({ info }: LibraryCard) => ({ cost: info.costs[0], rarity: info.rarity, type: info.type });
   const last = (card: LibraryCard) => Number(LAST_IN_GROUP.has(card.id));
   const compendium = compendiumOrder();
   return cards.sort(

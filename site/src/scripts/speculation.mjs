@@ -7,6 +7,6 @@
 const everyLink = (excluded) => ({ and: [{ href_matches: '/*' }, { not: { selector_matches: excluded } }] });
 
 export const SPECULATION = JSON.stringify({
-  prefetch: [{ where: everyLink('[data-sheet-link]'), eagerness: 'moderate' }],
-  prerender: [{ where: everyLink('[data-sheet-link], [data-language]'), eagerness: 'conservative' }],
+  prefetch: [{ eagerness: 'moderate', where: everyLink('[data-sheet-link]') }],
+  prerender: [{ eagerness: 'conservative', where: everyLink('[data-sheet-link], [data-language]') }],
 });

@@ -5,7 +5,7 @@
 import type { AnyTableFile } from './types';
 
 export type Counts = Record<string, number>;
-export type Row = { group: number } & Record<string, number | string>;
+export type Row = Record<string, number | string> & { group: number };
 export interface Table {
   counts: string[];
   rows: Row[];

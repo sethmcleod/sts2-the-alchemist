@@ -27,12 +27,12 @@ const other = (target: (typeof LOCALES)[number]) => new Lang(target).href(path);
 
 <header class="site-header">
   <div class="mx-auto flex w-full max-w-[80rem] flex-wrap items-center gap-x-3 px-4 pt-2 lg:gap-x-6">
-    <a href={l.href('/')} class="flex h-14 items-center gap-2.5 text-ink no-underline">
-      <Image src={head} width={40} height={40} densities={[1, 2]} alt="" class="size-10" />
+    <a class="flex h-14 items-center gap-2.5 text-ink no-underline" href={l.href('/')}>
+      <Image alt="" class="size-10" densities={[1, 2]} height={40} src={head} width={40} />
       <span class="font-display text-xl">The Alchemist</span>
     </a>
     {/* Below lg the tabs and the language button get a row of their own, the one that stays on screen */}
-    <span class="basis-full lg:hidden" aria-hidden="true"></span>
+    <span aria-hidden="true" class="basis-full lg:hidden"></span>
     <nav
       aria-label={l.t('Site')}
       class="site-nav -ml-4 min-w-0 flex-1 overflow-x-auto pl-3 [scrollbar-width:none] lg:ml-0 lg:pl-0"
@@ -41,9 +41,9 @@ const other = (target: (typeof LOCALES)[number]) => new Lang(target).href(path);
         {links.map((link) => (
           <li>
             <a
-              href={l.href(link.href)}
               aria-current={link.match(path) ? 'page' : undefined}
               class="flex h-11 items-center rounded-t-lg px-3 text-[15px] font-medium whitespace-nowrap text-ink-2 no-underline hover:bg-panel hover:text-ink aria-[current=page]:bg-panel aria-[current=page]:text-ink aria-[current=page]:shadow-[inset_0_-2px_0_var(--color-accent)]"
+              href={l.href(link.href)}
             >
               {link.label}
             </a>
@@ -55,12 +55,12 @@ const other = (target: (typeof LOCALES)[number]) => new Lang(target).href(path);
       <summary class="field-control">
         <svg
           aria-hidden="true"
-          viewBox="0 0 24 24"
-          width="16"
-          height="16"
           fill="none"
+          height="16"
           stroke="currentColor"
           stroke-width="1.8"
+          viewBox="0 0 24 24"
+          width="16"
         >
           <circle cx="12" cy="12" r="9" />
           <path d="M3 12h18M12 3c2.4 2.7 3.6 5.7 3.6 9s-1.2 6.3-3.6 9c-2.4-2.7-3.6-5.7-3.6-9S9.6 5.7 12 3Z" />
@@ -72,11 +72,11 @@ const other = (target: (typeof LOCALES)[number]) => new Lang(target).href(path);
         {LOCALES.map((target) => (
           <li>
             <a
+              aria-current={target === locale ? 'true' : undefined}
+              data-language
               href={other(target)}
               hreflang={target.lang}
               lang={target.lang}
-              aria-current={target === locale ? 'true' : undefined}
-              data-language
             >
               {target.name}
             </a>

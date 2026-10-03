@@ -8,7 +8,7 @@ const { href, ...rest } = Astro.props;
 const { l } = Astro.locals;
 ---
 
-<a href={href} target="_blank" rel="noopener" {...rest}>
+<a href={href} rel="noopener" target="_blank" {...rest}>
   <slot />
   <span class="sr-only">{` ${l.t('(opens in a new tab)')}`}</span>
 </a>

@@ -23,26 +23,26 @@ const object =
     typeof value === 'object' && value !== null && !Array.isArray(value) && JSON.stringify(value).length <= max;
 
 const FIELDS: Record<string, Check> = {
-  mod_version: text(40),
-  game_version: text(40),
-  victory: (value) => typeof value === 'boolean',
-  ascension: whole(100),
-  floor: whole(1000),
-  playtime: whole(2 ** 31 - 1),
-  player_hash: text(64),
-  epochs: whole(1000),
-  data: object(262_144),
   alchemist: object(65_536),
+  ascension: whole(100),
+  data: object(262_144),
+  epochs: whole(1000),
+  floor: whole(1000),
+  game_version: text(40),
+  mod_version: text(40),
+  player_hash: text(64),
+  playtime: whole(2 ** 31 - 1),
+  victory: (value) => typeof value === 'boolean',
 };
-const DEFAULTS: Record<string, unknown> = { epochs: 0, alchemist: {} };
+const DEFAULTS: Record<string, unknown> = { alchemist: {}, epochs: 0 };
 
-async function redis(command: (string | number)[]) {
+async function redis(command: (number | string)[]) {
   const response = await fetch(process.env.KV_REST_API_URL!, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}` },
     body: JSON.stringify(command),
+    headers: { Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}` },
+    method: 'POST',
   });
-  const { result, error } = (await response.json()) as { result?: unknown; error?: string };
+  const { error, result } = (await response.json()) as { error?: string; result?: unknown };
   if (!response.ok || error) throw new Error(`Redis ${command[0]}: ${error ?? response.status}`);
   return result;
 }
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
   if (typeof run !== 'object' || run === null || Array.isArray(run))
     return new Response('The body is not one run.', { status: 400 });
 
-  const row: Record<string, unknown> = { id: crypto.randomUUID(), created_at: new Date().toISOString() };
+  const row: Record<string, unknown> = { created_at: new Date().toISOString(), id: crypto.randomUUID() };
   for (const [name, check] of Object.entries(FIELDS)) {
     const value = run[name] ?? DEFAULTS[name];
     if (!check(value)) return new Response(`Missing or wrong: ${name}.`, { status: 400 });

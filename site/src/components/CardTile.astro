@@ -19,18 +19,18 @@ const data = Object.fromEntries(
 
 <li
   class="card card-tile relative grid content-start gap-1.5"
-  data-place={card.id}
-  data-group={card.group}
-  data-type={info.type}
-  data-rarity={info.rarity}
   data-cost={info.costs[0]}
+  data-group={card.group}
   data-keywords={[...info.keywords, ...info.themes.map((theme) => `theme:${theme}`)].join('|')}
-  data-tags={info.tags.join('|')}
   data-name={info.name}
+  data-place={card.id}
+  data-rarity={info.rarity}
   data-search={card.search}
+  data-tags={info.tags.join('|')}
+  data-type={info.type}
   {...data}
 >
-  <a href={l.href(cardHref(card.id))} class="tile-link block rounded-xl no-underline" data-sheet-link>
+  <a class="tile-link block rounded-xl no-underline" data-sheet-link href={l.href(cardHref(card.id))}>
     <CardFace
       info={info}
       width={[

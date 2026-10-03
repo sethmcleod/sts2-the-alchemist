@@ -3,7 +3,7 @@
 import type { Stat } from '../components/charts/Stats';
 import { breakdownBars } from './bars';
 import type { Lang } from './lang';
-import { inPool, mixKind, tallyLabel, type PoolRarity } from './mod';
+import { inPool, mixKind, type PoolRarity, tallyLabel } from './mod';
 import { byPrefix, cardRows, DEFAULT_FILTERS, mixRows, type Runs } from './runs';
 import { rate, sumBy, wilson } from './stats';
 
@@ -12,8 +12,8 @@ const f = DEFAULT_FILTERS;
 // The rarity's word can change with the words around it, so each rarity has its own key
 const AMONG: Record<PoolRarity, string> = {
   Common: 'Among Common cards',
-  Uncommon: 'Among Uncommon cards',
   Rare: 'Among Rare cards',
+  Uncommon: 'Among Uncommon cards',
 };
 
 /** "12 runs, likely 40% to 55%" */
@@ -29,51 +29,51 @@ export function cardDetail(l: Lang, runs: Runs, id: string) {
 
   if (mix) {
     stats = [
-      { label: l.t('Made per run'), value: l.fixed(mix.perRun, 1), note: l.t('by cards, relics, potions and powers') },
-      { label: l.t('Played'), value: l.pct(mix.played), note: l.t('of the ones made') },
-      { label: l.t('Share of Mixes'), value: l.pct(mix.share), note: l.t('of every Mix made') },
+      { label: l.t('Made per run'), note: l.t('by cards, relics, potions and powers'), value: l.fixed(mix.perRun, 1) },
+      { label: l.t('Played'), note: l.t('of the ones made'), value: l.pct(mix.played) },
+      { label: l.t('Share of Mixes'), note: l.t('of every Mix made'), value: l.pct(mix.share) },
     ];
   } else if (r && r.held > 0) {
     stats = [
-      { label: l.t('Win rate'), value: l.pct(r.winrate), note: winNote(l, r.held_wins, r.held) },
+      { label: l.t('Win rate'), note: winNote(l, r.held_wins, r.held), value: l.pct(r.winrate) },
       r.rank && inPool(r.rarity)
         ? {
             label: l.t(AMONG[r.rarity]),
-            value: l.t('{rank} of {count}', { rank: l.ordinal(r.rank), count: l.num(r.ranked) }),
             note: l.t('by win rate. The middle one wins {rate}', { rate: l.pct(r.peer) }),
+            value: l.t('{rank} of {count}', { count: l.num(r.ranked), rank: l.ordinal(r.rank) }),
           }
-        : { label: l.t('In final decks'), value: l.pct(r.deckrate), note: l.t('of runs') },
+        : { label: l.t('In final decks'), note: l.t('of runs'), value: l.pct(r.deckrate) },
       {
         label: l.t('Pick rate'),
-        value: l.pct(r.pickrate),
         note: r.offered
           ? l.n(r.offered, 'picked {picked} of {n} time offered', 'picked {picked} of {n} times offered', {
               picked: l.num(r.picked),
             })
           : l.t('never offered as a card reward'),
+        value: l.pct(r.pickrate),
       },
       {
         label: l.t('As an early pick'),
-        value: l.pct(rate(r.early_pick_wins, r.early_picks)),
         note: r.early_picks
           ? l.n(r.early_picks, 'win rate over {n} early pick', 'win rate over {n} early picks')
           : l.t('never an early pick'),
+        value: l.pct(rate(r.early_pick_wins, r.early_picks)),
       },
       {
         label: l.t('Plays per run'),
-        value: l.fixed(r.playsPerRun, 1),
         note: r.held_with_plays
           ? l.n(r.held_with_plays, 'never played in {share} of {n} run', 'never played in {share} of {n} runs', {
               share: l.pct(r.unplayed),
             })
           : l.t('counted {since}', { since: runs.countedSince(l) }),
+        value: l.fixed(r.playsPerRun, 1),
       },
       {
         label: l.t('Two or more copies'),
-        value: l.pct(rate(r.held_twice_wins, r.held_twice)),
         note: r.held_twice
           ? l.n(r.held_twice, 'win rate over {n} run', 'win rate over {n} runs')
           : l.t('no run held two copies'),
+        value: l.pct(rate(r.held_twice_wins, r.held_twice)),
       },
     ];
   }
@@ -85,7 +85,7 @@ export function cardDetail(l: Lang, runs: Runs, id: string) {
         runs.breakdown(cards, f, (row) => row.card === id, 'held_wins', 'held'),
       )
     : null;
-  return { stats, breakdown, runs: runs.totals(on).runs };
+  return { breakdown, runs: runs.totals(on).runs, stats };
 }
 
 export function relicDetail(l: Lang, runs: Runs, id: string) {
@@ -97,15 +97,15 @@ export function relicDetail(l: Lang, runs: Runs, id: string) {
   const held = (g?.held ?? 0) > 0;
   const stats: Stat[] = held
     ? [
-        { label: l.t('Win rate'), value: l.pct(g!.held_wins / g!.held), note: winNote(l, g!.held_wins, g!.held) },
-        { label: l.t('In runs'), value: l.pct(rate(g!.held, t.runs)), note: l.t('of runs ended with it') },
+        { label: l.t('Win rate'), note: winNote(l, g!.held_wins, g!.held), value: l.pct(g!.held_wins / g!.held) },
+        { label: l.t('In runs'), note: l.t('of runs ended with it'), value: l.pct(rate(g!.held, t.runs)) },
         ...(info.rarity === 'Starter'
           ? []
           : [
               {
                 label: l.t('Bought'),
-                value: l.num(g!.bought),
                 note: l.n(g!.bought, 'time from the Merchant', 'times from the Merchant'),
+                value: l.num(g!.bought),
               },
             ]),
       ]
@@ -116,16 +116,16 @@ export function relicDetail(l: Lang, runs: Runs, id: string) {
         runs.breakdown(relics, f, (row) => row.relic === id, 'held_wins', 'held'),
       )
     : null;
-  return { stats, breakdown, runs: t.runs };
+  return { breakdown, runs: t.runs, stats };
 }
 
 export function potionDetail(l: Lang, runs: Runs, id: string) {
   const on = runs.select(f);
   const info = runs.summary.potion_info[id];
   const g = sumBy(runs.table('potions'), on, (r) => r.potion as string).get(id) ?? {
-    drunk: 0,
     bought: 0,
     discarded: 0,
+    drunk: 0,
   };
   const t = runs.totals(on);
   const label = tallyLabel(id);
@@ -137,22 +137,22 @@ export function potionDetail(l: Lang, runs: Runs, id: string) {
       ? [
           {
             label: l.t('Picked at Brew'),
-            value: l.pct(rate(all.get(`brew_pick:${label}`)?.count || 0, offered)),
             note: offered
               ? l.n(offered, 'of {n} time it was offered', 'of {n} times it was offered')
               : l.t('not offered yet'),
+            value: l.pct(rate(all.get(`brew_pick:${label}`)?.count || 0, offered)),
           },
         ]
       : []),
     {
       label: l.t('Drunk'),
-      value: l.fixed(drunk, 0),
       note: l.n(Math.round(drunk), 'time per 100 runs', 'times per 100 runs'),
+      value: l.fixed(drunk, 0),
     },
-    { label: l.t('Bought'), value: l.num(g.bought), note: l.t('from the Merchant') },
-    { label: l.t('Thrown away'), value: l.num(g.discarded), note: l.t('to make room') },
+    { label: l.t('Bought'), note: l.t('from the Merchant'), value: l.num(g.bought) },
+    { label: l.t('Thrown away'), note: l.t('to make room'), value: l.num(g.discarded) },
   ];
-  return { stats, breakdown: null, runs: t.runs };
+  return { breakdown: null, runs: t.runs, stats };
 }
 
 export function powerDetail(l: Lang, runs: Runs, id: string) {
@@ -161,8 +161,8 @@ export function powerDetail(l: Lang, runs: Runs, id: string) {
   const label = tallyLabel(id);
   const [antitoxin, mixes] = [byPrefix(all, 'atxsrc:').get(label)?.count, byPrefix(all, 'mixsrc:').get(label)?.count];
   const stats: Stat[] = [
-    ...(antitoxin ? [{ label: l.t('Antitoxin gained'), value: l.num(antitoxin), note: l.t('from this power') }] : []),
-    ...(mixes ? [{ label: l.t('Mixes made'), value: l.num(mixes), note: l.t('by this power') }] : []),
+    ...(antitoxin ? [{ label: l.t('Antitoxin gained'), note: l.t('from this power'), value: l.num(antitoxin) }] : []),
+    ...(mixes ? [{ label: l.t('Mixes made'), note: l.t('by this power'), value: l.num(mixes) }] : []),
   ];
-  return { stats, breakdown: null, runs: runs.totals(on).runs };
+  return { breakdown: null, runs: runs.totals(on).runs, stats };
 }

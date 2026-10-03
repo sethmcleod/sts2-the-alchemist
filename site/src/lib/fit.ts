@@ -6,22 +6,22 @@
 import fonts from './card-fonts.json';
 import { tokens } from './markup';
 
-const TITLE = { width: 210, max: 26, min: 12, spacing: 1 };
-const TEXT = { width: 243, height: 136, max: 21, min: 12 };
+const TITLE = { max: 26, min: 12, spacing: 1, width: 210 };
+const TEXT = { height: 136, max: 21, min: 12, width: 243 };
 // The energy icon is drawn at its own size, whatever the font size
 const ENERGY_ICON = 24;
 // The description label's line_separation
 const LINE_GAP = -3;
 
 export interface CardFont {
-  name: string;
+  bold: { file: string; scale: number };
   langs: string[];
   /** Ascent plus descent, in em */
   line: number;
+  name: string;
+  regular: { file: string; scale: number };
   /** Extra space the font adds to each line, in card units */
   spacing: number;
-  regular: { file: string; scale: number };
-  bold: { file: string; scale: number };
   /** Advances in em, before the scale */
   widths: Record<string, number>;
 }
@@ -73,24 +73,24 @@ function pieces(text: string) {
       : WIDE.test(chunk)
         ? wideParts(chunk)
         : [chunk];
-    return parts.filter(Boolean).map((part, j) => ({ text: part, space: i > 0 && j === 0 }));
+    return parts.filter(Boolean).map((part, j) => ({ space: i > 0 && j === 0, text: part }));
   });
 }
 
 // A word's width is part font (em) and part icon (units), so it can be measured at any size. A word
 // after a space puts the space's width before it on its line
-type Word = { em: number; units: number; space: boolean; last: string };
+type Word = { em: number; last: string; space: boolean; units: number };
 
 function paragraphs(markup: string, font: CardFont) {
   const out: Word[][] = [[]];
-  let word: Word | null = null;
+  let word: null | Word = null;
   let spaced = false;
   const end = () => {
     if (word) out.at(-1)!.push(word);
     word = null;
   };
   const open = () => {
-    word ??= { em: 0, units: 0, space: spaced, last: '' };
+    word ??= { em: 0, last: '', space: spaced, units: 0 };
     spaced = false;
     return word;
   };

@@ -5,10 +5,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { ImageMetadata } from 'astro';
 import { getImage } from 'astro:assets';
+import { type Change, changes } from './history';
 import { DEFAULT_LOCALE, type Locale } from './i18n';
-import { changes, type Change } from './history';
 import { Lang, type LangInit, type Strings } from './lang';
-import { EXTRA_FILES, named, Runs, type Extra } from './runs';
+import { type Extra, EXTRA_FILES, named, Runs } from './runs';
 import type { Release, Summary, TableFile, Translation } from './types';
 
 const DATA = path.join(process.cwd(), 'data');
@@ -17,7 +17,7 @@ const read = <T>(file: string): T => JSON.parse(fs.readFileSync(path.join(DATA, 
 export const dataFile = (file: string) => read<Record<string, unknown>>(file);
 
 let loaded:
-  { runs: Runs; stamp: number; locales: Map<string, { runs: Runs; lang: Lang; words: Translation }> } | undefined;
+  undefined | { locales: Map<string, { lang: Lang; runs: Runs; words: Translation }>; runs: Runs; stamp: number };
 
 function load() {
   // A new export under a running dev server shows up on the next page load
@@ -27,7 +27,7 @@ function load() {
       extra as Extra,
       read<Record<string, TableFile>>(file)[key],
     ]);
-    loaded = { runs: new Runs(read<Summary>('summary.json'), Object.fromEntries(extras)), stamp, locales: new Map() };
+    loaded = { locales: new Map(), runs: new Runs(read<Summary>('summary.json'), Object.fromEntries(extras)), stamp };
     icons = undefined;
   }
   return loaded;
@@ -37,7 +37,7 @@ function load() {
 export const translation = (locale: Locale) => read<Translation>(`loc/${locale.game}.json`);
 
 // The site's own words: src/i18n/<code>.json, keyed by the English text. Islands get the stats part
-export type StringFile = { site?: Strings; stats?: Strings; readme?: Record<string, string> };
+export type StringFile = { readme?: Record<string, string>; site?: Strings; stats?: Strings };
 // en.json is the catalog of the English itself (catalog.mjs), not a translation
 const stringFiles = import.meta.glob<StringFile>(['../i18n/*.json', '!../i18n/en.json'], {
   eager: true,
@@ -61,11 +61,11 @@ function localized(locale: Locale) {
         : all.runs.withSummary({
             ...renamed,
             card_info: each(renamed.card_info, words.cards),
-            relic_info: each(renamed.relic_info, words.relics),
             potion_info: each(renamed.potion_info, words.potions),
             power_info: each(renamed.power_info, words.powers),
+            relic_info: each(renamed.relic_info, words.relics),
           });
-    found = { runs, lang: new Lang(locale, { ...site, ...stats }, words.game), words };
+    found = { lang: new Lang(locale, { ...site, ...stats }, words.game), runs, words };
     all.locales.set(locale.code, found);
   }
   return found;
@@ -86,28 +86,28 @@ export function islandLang(locale: Locale, { encounters = false } = {}): LangIni
   const words = translation(locale);
   return {
     code: locale.code,
-    lang: locale.lang,
-    strings: strings(locale).stats ?? {},
     game: encounters ? words.game : { ...words.game, encounters: {} },
-    names: locale === DEFAULT_LOCALE ? undefined : { names: words.names, badges: words.badges },
+    lang: locale.lang,
+    names: locale === DEFAULT_LOCALE ? undefined : { badges: words.badges, names: words.names },
+    strings: strings(locale).stats ?? {},
   };
 }
 
 export const releases = () => read<{ versions: Release[] }>('notes.json').versions;
 
-let history: { from: Runs; changes: Map<string, Change[]> } | undefined;
+let history: undefined | { changes: Map<string, Change[]>; from: Runs };
 
 /** A card's, relic's or potion's lines in the patch notes, newest first (lib/history.ts) */
 export function itemChanges(id: string) {
   const all = load().runs;
   if (history?.from !== all) {
-    const { card_info, relic_info, potion_info } = all.summary;
+    const { card_info, potion_info, relic_info } = all.summary;
     const names = Object.fromEntries(
       [card_info, relic_info, potion_info].flatMap((infos) =>
         Object.entries(infos).map(([id, info]) => [id, info.name]),
       ),
     );
-    history = { from: all, changes: changes(names, releases()) };
+    history = { changes: changes(names, releases()), from: all };
   }
   return history.changes.get(id) ?? [];
 }
@@ -124,7 +124,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>([
   '../../../workshop/previews/*.png',
 ]);
 
-export async function image(repoPath: string | null | undefined) {
+export async function image(repoPath: null | string | undefined) {
   const load = repoPath ? images[`../../../${repoPath}`] : undefined;
   return load ? (await load()).default : null;
 }
@@ -135,12 +135,12 @@ let icons: Promise<Record<string, string>> | undefined;
 export const iconUrls = () => (icons ??= makeIconUrls());
 
 async function makeIconUrls() {
-  const { summary, meta } = runs();
+  const { meta, summary } = runs();
   const paths = [...Object.entries(summary.icons), ...meta.badges.map((badge) => [badge.id, badge.icon] as const)];
   const urls = await Promise.all(
     paths.map(async ([id, path]) => {
       const src = await image(path);
-      return src ? [id, (await getImage({ src, width: 64, format: 'webp' })).src] : null;
+      return src ? [id, (await getImage({ format: 'webp', src, width: 64 })).src] : null;
     }),
   );
   return Object.fromEntries(urls.filter((url) => url !== null));

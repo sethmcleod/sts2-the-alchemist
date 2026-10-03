@@ -8,18 +8,18 @@ import { emptyText } from './empty';
 
 export interface Column {
   label: string;
-  value: number;
   /** The numbers behind the column, one line per entry */
   tip: string[];
+  value: number;
 }
 
 interface Props {
-  l: Lang;
+  empty?: string;
   items: Column[];
+  l: Lang;
+  label: string;
   /** Vertical lines before a column, such as where a badge tier starts */
   markers?: { before: number; label: string }[];
-  label: string;
-  empty?: string;
 }
 
 function niceMax(v: number) {
@@ -34,8 +34,8 @@ const labelEvery = (count: number, longest: number) => Math.max(1, Math.ceil((co
 
 const tick = (l: Lang, v: number) => (Number.isInteger(v) ? l.num(v) : l.fixed(v, 1));
 
-export default function Columns({ l, items, markers = [], label, empty }: Props) {
-  const [active, setActive] = useState<number | null>(null);
+export default function Columns({ empty, items, l, label, markers = [] }: Props) {
+  const [active, setActive] = useState<null | number>(null);
   // New filters bring new columns, so the one pointed at before means nothing now
   useEffect(() => setActive(null), [items]);
   if (!items.some((i) => i.value)) return <p class="empty">{empty ?? emptyText(l)}</p>;
@@ -48,12 +48,12 @@ export default function Columns({ l, items, markers = [], label, empty }: Props)
 
   return (
     <figure class="columns" style={{ '--n': items.length }}>
-      <div class="columns-axis" aria-hidden="true">
+      <div aria-hidden="true" class="columns-axis">
         {[1, 0.5, 0].map((t) => (
           <span style={{ '--at': `${(1 - t) * 100}%` }}>{tick(l, t * max)}</span>
         ))}
       </div>
-      <ol class="columns-plot" aria-label={label} onPointerOver={pick} onPointerDown={pick}>
+      <ol aria-label={label} class="columns-plot" onPointerDown={pick} onPointerOver={pick}>
         {items.map((item, i) => (
           <li class={i === active ? 'column active' : 'column'} data-index={i} title={item.tip.join('\n')}>
             <span class="column-bar" style={{ '--h': `${(item.value / max) * 100}%` }} />
@@ -62,20 +62,20 @@ export default function Columns({ l, items, markers = [], label, empty }: Props)
         ))}
         {markers.map((m, i) => (
           <li
-            class="column-marker"
             aria-hidden="true"
+            class="column-marker"
             style={{ '--at': `${(m.before / items.length) * 100}%`, '--row': i % 2 }}
           >
             <span>{m.label}</span>
           </li>
         ))}
       </ol>
-      <div class="columns-labels" aria-hidden="true">
+      <div aria-hidden="true" class="columns-labels">
         {items.map((item, i) => (
           <span>{i % every === 0 ? item.label : ''}</span>
         ))}
       </div>
-      <p class="columns-readout" aria-hidden="true">
+      <p aria-hidden="true" class="columns-readout">
         {items[active ?? -1]?.tip.join(' · ')}
       </p>
     </figure>

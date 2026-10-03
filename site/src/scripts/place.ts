@@ -6,9 +6,9 @@
 import { PLACE_KEY as KEY } from './placing.mjs';
 
 interface Place {
-  path: string;
   /** A card or item by its id, or a heading by its position on the page, and its height on screen */
-  anchor: { place?: string; heading?: number; top: number } | null;
+  anchor: null | { heading?: number; place?: string; top: number };
+  path: string;
   upgraded: string[];
 }
 
@@ -25,7 +25,7 @@ export function keepPlace(link: HTMLAnchorElement) {
   const first =
     scrollY > 0
       ? [...document.querySelectorAll<HTMLElement>('[data-place], main :is(h1, h2, h3)')].find((el) => {
-          const { top, height } = el.getBoundingClientRect();
+          const { height, top } = el.getBoundingClientRect();
           return height > 0 && top >= edge && !el.closest('.toolbar') && getComputedStyle(el).position !== 'sticky';
         })
       : undefined;
@@ -41,7 +41,7 @@ export function keepPlace(link: HTMLAnchorElement) {
     .map((toggle) => toggle.closest<HTMLElement>('[data-place]')?.dataset.place)
     .filter((id): id is string => Boolean(id));
   if (!anchor && !upgraded.length) return;
-  const place: Place = { path: link.pathname, anchor: anchor ?? null, upgraded };
+  const place: Place = { anchor: anchor ?? null, path: link.pathname, upgraded };
   try {
     sessionStorage.setItem(KEY, JSON.stringify(place));
   } catch {
@@ -52,7 +52,7 @@ export function keepPlace(link: HTMLAnchorElement) {
 /** Puts the reader back at the place a language link noted, once the page has laid itself out, and
  *  shows the page, which Base.astro hides meanwhile */
 export function returnToPlace() {
-  let place: Place | null = null;
+  let place: null | Place = null;
   try {
     place = JSON.parse(sessionStorage.getItem(KEY) ?? 'null');
     sessionStorage.removeItem(KEY);
@@ -81,7 +81,7 @@ export function returnToPlace() {
         const el = anchor?.place
           ? document.querySelector<HTMLElement>(`[data-place="${CSS.escape(anchor.place)}"]`)
           : headings()[anchor?.heading ?? -1];
-        if (el) window.scrollTo({ top: scrollY + el.getBoundingClientRect().top - anchor!.top, behavior: 'instant' });
+        if (el) window.scrollTo({ behavior: 'instant', top: scrollY + el.getBoundingClientRect().top - anchor!.top });
         return scrollY;
       };
       if (anchor) {

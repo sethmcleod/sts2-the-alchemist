@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { compendiumOrder, type CardKeys } from './mod';
+import { type CardKeys, compendiumOrder } from './mod';
 
-const card = (name: string, rarity: string, type: string, cost: string) => ({ name, rarity, type, cost });
+const card = (name: string, rarity: string, type: string, cost: string) => ({ cost, name, rarity, type });
 const CARDS = [
   card('Mud Pack', 'Rare', 'Skill', 'X'),
   card('Double Dip', 'Common', 'Attack', '2'),

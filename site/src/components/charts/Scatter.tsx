@@ -8,24 +8,24 @@ import { opensInSheet } from '../../lib/links';
 import { emptyText } from './empty';
 
 export interface Point {
-  x: number;
-  y: number;
+  fill: string;
+  href: string;
+  label: string;
   /** Radius in pixels */
   r: number;
-  fill: string;
-  label: string;
-  href: string;
   tip: string[];
   /** Heavier dots get their name written first */
   weight: number;
+  x: number;
+  y: number;
 }
 
 interface Props {
   l: Lang;
-  points: Point[];
-  xLabel: string;
   label: string;
-  reference?: number | null;
+  points: Point[];
+  reference?: null | number;
+  xLabel: string;
 }
 
 const LETTER = 6.7;
@@ -38,7 +38,7 @@ const LINE = 14;
 // that overlaps no dot and no earlier label, at a nominal plot size. Crowded dots stay unnamed
 function placeLabels(points: (Point & { px: number; py: number })[], width: number, height: number, count: number) {
   const at = (p: { px: number; py: number }) => ({ x: (p.px / 100) * width, y: (p.py / 100) * height });
-  const boxes = points.map((p) => ({ x: at(p).x - p.r, y: at(p).y - p.r, w: p.r * 2, h: p.r * 2 }));
+  const boxes = points.map((p) => ({ h: p.r * 2, w: p.r * 2, x: at(p).x - p.r, y: at(p).y - p.r }));
   const clear = (b: (typeof boxes)[number]) =>
     b.x >= 0 &&
     b.x + b.w <= width &&
@@ -56,10 +56,10 @@ function placeLabels(points: (Point & { px: number; py: number })[], width: numb
       [-w / 2, p.r + 2],
     ];
     for (const [dx, dy] of spots) {
-      const box = { x: x + dx, y: y + dy, w, h: LINE };
+      const box = { h: LINE, w, x: x + dx, y: y + dy };
       if (!clear(box)) continue;
       boxes.push(box);
-      placed.push({ label: p.label, left: p.px, top: p.py, dx, dy });
+      placed.push({ dx, dy, label: p.label, left: p.px, top: p.py });
       break;
     }
   }
@@ -68,8 +68,8 @@ function placeLabels(points: (Point & { px: number; py: number })[], width: numb
 
 const step = (span: number) => (span > 0.5 ? 0.2 : 0.1);
 
-export default function Scatter({ l, points, xLabel, label, reference }: Props) {
-  const [active, setActive] = useState<number | null>(null);
+export default function Scatter({ l, label, points, reference, xLabel }: Props) {
+  const [active, setActive] = useState<null | number>(null);
   // Until the island runs, the browser's own tooltip carries the numbers
   const [live, setLive] = useState(false);
   useEffect(() => setLive(true), []);
@@ -97,38 +97,38 @@ export default function Scatter({ l, points, xLabel, label, reference }: Props) 
   const tip = active === null ? undefined : placed[active];
 
   return (
-    <figure class="scatter" aria-label={label}>
-      <div class="scatter-plot" onPointerOver={point} onPointerLeave={() => setActive(null)}>
+    <figure aria-label={label} class="scatter">
+      <div class="scatter-plot" onPointerLeave={() => setActive(null)} onPointerOver={point}>
         {ticks(yMin, yMax).map((v) => (
-          <span class="scatter-grid" style={{ '--at': `${top(v)}%` }} aria-hidden="true">
+          <span aria-hidden="true" class="scatter-grid" style={{ '--at': `${top(v)}%` }}>
             <span>{l.pct(v)}</span>
           </span>
         ))}
         {ticks(0, xMax).map((v) => (
-          <span class="scatter-tick" style={{ '--at': `${left(v)}%` }} aria-hidden="true">
+          <span aria-hidden="true" class="scatter-tick" style={{ '--at': `${left(v)}%` }}>
             {l.pct(v)}
           </span>
         ))}
-        {reference != null && <span class="scatter-ref" style={{ '--at': `${top(reference)}%` }} aria-hidden="true" />}
+        {reference != null && <span aria-hidden="true" class="scatter-ref" style={{ '--at': `${top(reference)}%` }} />}
         {placed.map((p, i) => (
           <a
-            class="scatter-dot"
-            href={l.href(p.href)}
-            data-sheet-link={opensInSheet(p.href) || undefined}
-            data-index={i}
-            tabIndex={-1}
             aria-hidden="true"
+            class="scatter-dot"
+            data-index={i}
+            data-sheet-link={opensInSheet(p.href) || undefined}
+            href={l.href(p.href)}
+            style={{ '--fill': p.fill, '--r': `${p.r}px`, left: `${p.px}%`, top: `${p.py}%` }}
+            tabIndex={-1}
             title={live ? undefined : p.tip.join('\n')}
-            style={{ left: `${p.px}%`, top: `${p.py}%`, '--r': `${p.r}px`, '--fill': p.fill }}
           />
         ))}
         {(['wide', 'narrow'] as const).map((size) =>
           placeLabels(placed, size === 'wide' ? 640 : 300, size === 'wide' ? 380 : 300, size === 'wide' ? 36 : 10).map(
             (l) => (
               <span
-                class={`scatter-label ${size}`}
                 aria-hidden="true"
-                style={{ left: `${l.left}%`, top: `${l.top}%`, '--dx': `${l.dx}px`, '--dy': `${l.dy}px` }}
+                class={`scatter-label ${size}`}
+                style={{ '--dx': `${l.dx}px`, '--dy': `${l.dy}px`, left: `${l.left}%`, top: `${l.top}%` }}
               >
                 {l.label}
               </span>
@@ -137,11 +137,11 @@ export default function Scatter({ l, points, xLabel, label, reference }: Props) 
         )}
         {tip && (
           <div
+            aria-hidden="true"
             class={['scatter-tip', tip.py < 25 && 'below', tip.px < 20 ? 'start' : tip.px > 80 && 'end']
               .filter(Boolean)
               .join(' ')}
-            style={{ left: `${tip.px}%`, top: `${tip.py}%`, '--r': `${tip.r}px` }}
-            aria-hidden="true"
+            style={{ '--r': `${tip.r}px`, left: `${tip.px}%`, top: `${tip.py}%` }}
           >
             <strong>{tip.tip[0]}</strong>
             {tip.tip.slice(1).map((line) => (

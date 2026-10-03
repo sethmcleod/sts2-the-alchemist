@@ -19,16 +19,16 @@ const il = statsLang(init);
 ---
 
 <Stats
-  title={l.t('Run stats')}
   description={l.n(
     meta.total_runs,
     'How {n} run of The Alchemist went: win rates by ascension, playstyle and version.',
     'How {n} runs of The Alchemist went: win rates by ascension, playstyle and version.',
   )}
+  title={l.t('Run stats')}
 >
-  <Overview client:idle locale={init} initial={overview(il, data, DEFAULT_FILTERS)} options={filterOptions(il, data)} />
+  <Overview client:idle initial={overview(il, data, DEFAULT_FILTERS)} locale={init} options={filterOptions(il, data)} />
 
-  <section id="about" class="mt-10 max-w-[70ch] scroll-mt-4">
+  <section class="mt-10 max-w-[70ch] scroll-mt-4" id="about">
     <h2 class="text-2xl">{l.t('How the stats work')}</h2>
     <dl class="about">
       <dt>{l.t('Where they come from')}</dt>
@@ -63,9 +63,9 @@ const il = statsLang(init);
           'Updated every day, with {n} run from {players} between {first} and {last}.',
           'Updated every day, with {n} runs from {players} between {first} and {last}.',
           {
-            players: l.n(meta.players, '{n} player', '{n} players'),
             first: l.date(meta.first_day),
             last: l.date(meta.last_day),
+            players: l.n(meta.players, '{n} player', '{n} players'),
           },
         )}
       </dd>

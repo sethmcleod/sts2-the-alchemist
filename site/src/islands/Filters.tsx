@@ -9,33 +9,33 @@ import { fill } from './useLang';
 import type { Status } from './useStats';
 
 export interface FilterOptions {
-  /** Newest first */
-  versions: string[];
   builds: [build: string, label: string][];
   recentStart: string;
+  /** Newest first */
+  versions: string[];
 }
 
 // A build's option names the game's Steam branch
 const BRANCHES: Record<string, (l: Lang, build: string) => string> = {
-  'public-beta': (l, build) => l.t('{build} (beta)', { build }),
   public: (l, build) => l.t('{build} (public)', { build }),
+  'public-beta': (l, build) => l.t('{build} (beta)', { build }),
 };
 
 export function filterOptions(l: Lang, runs: Runs): FilterOptions {
   return {
-    versions: [...runs.meta.versions].reverse(),
     builds: Object.entries(runs.meta.builds)
       .reverse()
       .map(([build, branch]) => [build, BRANCHES[branch]?.(l, build) ?? build]),
     recentStart: runs.recentStart,
+    versions: [...runs.meta.versions].reverse(),
   };
 }
 
-const PLAYERS: Record<FilterValues['players'], (l: Lang) => string> = {
-  solo: (l) => l.t('Solo'),
-  coop: (l) => l.t('Multiplayer'),
-  all: (l) => l.t('Solo and multiplayer'),
-};
+const PLAYERS: [FilterValues['players'], (l: Lang) => string][] = [
+  ['solo', (l) => l.t('Solo')],
+  ['coop', (l) => l.t('Multiplayer')],
+  ['all', (l) => l.t('Solo and multiplayer')],
+];
 // Each pool's option, and what the sentence under the filters adds for it
 const POOLS: Record<string, (l: Lang) => [option: string, clause: string]> = {
   all: (l) => [l.t('Any pool'), ''],
@@ -53,20 +53,20 @@ export function validFilters(f: FilterValues, options: FilterOptions): FilterVal
   const version =
     since === latest
       ? latest
-      : ['recent', 'all'].includes(f.version) || options.versions.includes(since ?? f.version)
+      : ['all', 'recent'].includes(f.version) || options.versions.includes(since ?? f.version)
         ? f.version
         : d.version;
   return {
-    version,
     ascension: f.ascension === 'all' || Object.hasOwn(ASCENSION_BANDS, f.ascension) ? f.ascension : d.ascension,
-    players: Object.hasOwn(PLAYERS, f.players) ? f.players : d.players,
-    pool: Object.hasOwn(POOLS, f.pool) ? f.pool : d.pool,
     build: f.build === 'all' || options.builds.some(([build]) => build === f.build) ? f.build : d.build,
     min: MINS.includes(f.min) ? f.min : d.min,
+    players: PLAYERS.some(([players]) => players === f.players) ? f.players : d.players,
+    pool: Object.hasOwn(POOLS, f.pool) ? f.pool : d.pool,
+    version,
   };
 }
 
-function Versions({ l, choice, options }: { l: Lang; choice: string; options: FilterOptions }) {
+function Versions({ choice, l, options }: { choice: string; l: Lang; options: FilterOptions }) {
   const latest = options.versions[0];
   if (choice === 'all') return <>{l.t('every version')}</>;
   const from = choice === 'recent' ? options.recentStart : choice.replace(/^>=/, '');
@@ -79,17 +79,17 @@ function Versions({ l, choice, options }: { l: Lang; choice: string; options: Fi
 }
 
 interface Props {
-  l: Lang;
   filters: FilterValues;
+  l: Lang;
+  onChange: (next: FilterValues) => void;
   options: FilterOptions;
   runs: number;
   status: Status;
-  onChange: (next: FilterValues) => void;
   /** A page that picks its own versions says which, and has no version filter */
   versions?: string;
 }
 
-export default function Filters({ l, filters, options, runs, status, onChange, versions }: Props) {
+export default function Filters({ filters, l, onChange, options, runs, status, versions }: Props) {
   const set = (key: keyof FilterValues) => (e: Event) => {
     const value = (e.currentTarget as HTMLSelectElement).value;
     onChange({ ...filters, [key]: key === 'min' ? Number(value) : value });
@@ -125,13 +125,13 @@ export default function Filters({ l, filters, options, runs, status, onChange, v
   return (
     <div class="stats-filters">
       <form
+        aria-label={l.t('Filter the runs')}
         class="needs-js flex flex-wrap items-end gap-3"
         onSubmit={(e) => e.preventDefault()}
-        aria-label={l.t('Filter the runs')}
       >
         <label class="field" hidden={Boolean(versions)}>
           <span>{l.t('Version')}</span>
-          <select class="field-control" value={filters.version} onChange={set('version')}>
+          <select class="field-control" onChange={set('version')} value={filters.version}>
             <option value="recent">
               {options.recentStart === latest
                 ? l.t('Recent versions ({version})', { version: latest })
@@ -153,7 +153,7 @@ export default function Filters({ l, filters, options, runs, status, onChange, v
         </label>
         <label class="field">
           <span>{l.t('Ascension')}</span>
-          <select class="field-control" value={filters.ascension} onChange={set('ascension')}>
+          <select class="field-control" onChange={set('ascension')} value={filters.ascension}>
             <option value="all">{l.t('All ascensions')}</option>
             {Object.entries(ASCENSION_BANDS).map(([band, name]) => (
               <option value={band}>{l.t(name)}</option>
@@ -162,8 +162,8 @@ export default function Filters({ l, filters, options, runs, status, onChange, v
         </label>
         <label class="field">
           <span>{l.t('Players')}</span>
-          <select class="field-control" value={filters.players} onChange={set('players')}>
-            {Object.entries(PLAYERS).map(([value, name]) => (
+          <select class="field-control" onChange={set('players')} value={filters.players}>
+            {PLAYERS.map(([value, name]) => (
               <option value={value}>{name(l)}</option>
             ))}
           </select>
@@ -173,7 +173,7 @@ export default function Filters({ l, filters, options, runs, status, onChange, v
           <div class="flex flex-wrap items-end gap-3">
             <label class="field">
               <span>{l.t('Card pool')}</span>
-              <select class="field-control" value={filters.pool} onChange={set('pool')}>
+              <select class="field-control" onChange={set('pool')} value={filters.pool}>
                 {Object.entries(POOLS).map(([value, pool]) => (
                   <option value={value}>{pool(l)[0]}</option>
                 ))}
@@ -181,7 +181,7 @@ export default function Filters({ l, filters, options, runs, status, onChange, v
             </label>
             <label class="field">
               <span>{l.t('Game build')}</span>
-              <select class="field-control" value={filters.build} onChange={set('build')}>
+              <select class="field-control" onChange={set('build')} value={filters.build}>
                 <option value="all">{l.t('All builds')}</option>
                 {options.builds.map(([build, label]) => (
                   <option value={build}>{label}</option>
@@ -190,7 +190,7 @@ export default function Filters({ l, filters, options, runs, status, onChange, v
             </label>
             <label class="field">
               <span>{l.t('Hide results with fewer than')}</span>
-              <select class="field-control" value={String(filters.min)} onChange={set('min')}>
+              <select class="field-control" onChange={set('min')} value={String(filters.min)}>
                 {MINS.map((n) => (
                   <option value={n}>{l.n(n, '{n} run', '{n} runs')}</option>
                 ))}
@@ -199,13 +199,13 @@ export default function Filters({ l, filters, options, runs, status, onChange, v
           </div>
         </details>
       </form>
-      <p class="m-0 text-sm text-ink-2" aria-live="polite">
+      <p aria-live="polite" class="m-0 text-sm text-ink-2">
         {fill(
           versions ? l.t('Showing {runs} on {versions}{details}.') : l.t('Showing {runs} from {versions}{details}.'),
           {
-            runs: <strong class="text-ink">{shown}</strong>,
-            versions: versions ?? <Versions l={l} choice={filters.version} options={options} />,
             details,
+            runs: <strong class="text-ink">{shown}</strong>,
+            versions: versions ?? <Versions choice={filters.version} l={l} options={options} />,
           },
         )}
         {status === 'loading' && <span class="text-muted"> {l.t('Updating…')}</span>}

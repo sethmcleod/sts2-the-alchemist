@@ -3,7 +3,7 @@
 import { Image } from 'astro:assets';
 import { image, runs } from '../lib/content';
 import { potionDetail, powerDetail, relicDetail } from '../lib/details';
-import { kindName, powerSource, type Item, type Source } from '../lib/items';
+import { type Item, kindName, powerSource, type Source } from '../lib/items';
 import { notesHref } from '../lib/links';
 import { plain } from '../lib/markup';
 import { slug } from '../lib/mod';
@@ -25,7 +25,7 @@ interface Props {
 const { item } = Astro.props;
 const data = runs(Astro.locals.locale);
 const icon = await image(item.info.icon);
-const detail = { relic: relicDetail, potion: potionDetail, power: powerDetail }[item.kind](l, data, item.id);
+const detail = { potion: potionDetail, power: powerDetail, relic: relicDetail }[item.kind](l, data, item.id);
 const source = item.kind === 'power' ? powerSource(data, item.id) : null;
 
 const kind = item.rarity === 'Brew' ? l.t('Brew potion, made only at a rest site') : kindName(l, item);
@@ -37,12 +37,12 @@ const FROM: Record<Source['kind'], string> = {
 };
 ---
 
-<article data-sheet class="grid gap-6 p-5 sm:p-7">
+<article class="grid gap-6 p-5 sm:p-7" data-sheet>
   <header class="grid grid-cols-[5rem_minmax(0,1fr)] items-center gap-4 pr-12">
-    {icon ? <Image src={icon} alt="" class="size-20 object-contain" /> : <span />}
+    {icon ? <Image alt="" class="size-20 object-contain" src={icon} /> : <span />}
     <div>
       <p class="m-0 text-sm text-muted">{kind}</p>
-      <h1 id="sheet-title" tabindex="-1" class="m-0 text-4xl">
+      <h1 class="m-0 text-4xl" id="sheet-title" tabindex="-1">
         {item.info.name}
       </h1>
     </div>
@@ -56,7 +56,7 @@ const FROM: Record<Source['kind'], string> = {
     {source && (
       <p class="m-0 text-sm">
         <T text={l.t(FROM[source.kind])}>
-          <a slot="source" href={l.href(source.href)} data-sheet-link>
+          <a data-sheet-link href={l.href(source.href)} slot="source">
             {source.name}
           </a>
         </T>
@@ -65,13 +65,13 @@ const FROM: Record<Source['kind'], string> = {
     {item.kind === 'power' && /\bX\b/.test(plain(item.info.text)) && (
       <p class="m-0 text-sm text-muted">{l.t('X is the amount the card, potion or relic gives.')}</p>
     )}
-    <Tips markups={[item.info.text]} exclude={item.info.name} class="mt-2" />
+    <Tips class="mt-2" exclude={item.info.name} markups={[item.info.text]} />
   </div>
 
   {detail.stats.length > 0 && <Stats items={detail.stats} />}
   <p class="-mt-2 mb-0 text-sm text-muted">
     <T text={l.t('Text from {version}.')}>
-      <a slot="version" href={l.href(notesHref(data.meta.mod.version))}>
+      <a href={l.href(notesHref(data.meta.mod.version))} slot="version">
         {data.meta.mod.version}
       </a>
     </T>{' '}

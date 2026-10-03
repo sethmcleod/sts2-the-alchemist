@@ -7,20 +7,20 @@ import { tokens } from './markup';
 export interface Tip {
   /** The loc entry: EXHAUST, POISON_POWER, ALCHEMIST-FERMENT_REF */
   id: string;
-  title: string;
   text: string;
+  title: string;
 }
 
 interface Options {
-  /** The page's language, for comparing words */
-  lang: string;
-  /** The item's own keywords (Exhaust, Ferment), whose tip wins over another with the same title */
-  keywords?: string[];
   /** The item's own name, which gets no tip */
   exclude?: string;
   /** Tips in English, for text the mod has not translated yet. Only an exact title counts, since the
    *  page's own words would otherwise pass for inflected English ones */
   fallback?: Tip[];
+  /** The item's own keywords (Exhaust, Ferment), whose tip wins over another with the same title */
+  keywords?: string[];
+  /** The page's language, for comparing words */
+  lang: string;
 }
 
 // What a gold term can end in besides the word itself: punctuation in any script, and a Mix's "+".
@@ -66,7 +66,7 @@ const goldTerms = (markups: string[]) =>
 export function tipsFor(
   markups: string[],
   tips: Tip[],
-  { lang, keywords = [], exclude, fallback = [] }: Options,
+  { exclude, fallback = [], keywords = [], lang }: Options,
 ): Tip[] {
   const norm = (text: string) => text.trim().toLocaleLowerCase(lang);
   const terms = goldTerms(markups).filter(Boolean);
@@ -99,7 +99,7 @@ export function tipsFor(
     const rank = (title: string) => [shared(bare, title), -Math.abs(title.length - bare.length)];
     const found = [...byTitle.entries()]
       .filter(([title]) => stemOf(bare, title))
-      .flatMap(([title, list]) => list.map((tip) => ({ tip, order: [score(tip), ...rank(title)] })))
+      .flatMap(([title, list]) => list.map((tip) => ({ order: [score(tip), ...rank(title)], tip })))
       .sort((a, b) => b.order[0] - a.order[0] || b.order[1] - a.order[1] || b.order[2] - a.order[2]);
     return found[0]?.tip;
   };

@@ -4,7 +4,7 @@
 
 const dialog = document.querySelector<HTMLDialogElement>('#sheet')!;
 const body = dialog.querySelector<HTMLElement>('[data-sheet-body]')!;
-const sheets = new Map<string, Promise<{ title: string; sheet: Element }>>();
+const sheets = new Map<string, Promise<{ sheet: Element; title: string }>>();
 const pageTitle = document.title;
 // How many dialog entries sit on top of the page in the history
 let depth = 0;
@@ -23,7 +23,7 @@ function load(url: string) {
         const page = new DOMParser().parseFromString(html, 'text/html');
         const sheet = page.querySelector('[data-sheet]');
         if (!sheet) throw new Error(`${url} has no sheet`);
-        return { title: page.title, sheet };
+        return { sheet, title: page.title };
       });
     entry.catch(() => sheets.delete(url));
     sheets.set(url, entry);
@@ -48,7 +48,7 @@ async function open(url: string, push: boolean) {
   if (!push && toggle) toggle.checked = (location.hash === '#upgraded') !== allUpgraded();
   if (push) {
     history.pushState(
-      { sheet: url, depth: ++depth, page: history.state?.page ?? location.href },
+      { depth: ++depth, page: history.state?.page ?? location.href, sheet: url },
       '',
       url + (allUpgraded() ? '#upgraded' : ''),
     );

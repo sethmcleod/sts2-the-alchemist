@@ -22,11 +22,11 @@ const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
 ---
 
 <Base
-  title={l.t('Relics and potions')}
   description={l.t("The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.", {
-    relics: l.num(relicItems.length),
     potions: l.num(potionItems.length),
+    relics: l.num(relicItems.length),
   })}
+  title={l.t('Relics and potions')}
 >
   <div class="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1">
     <h1 class="m-0 text-4xl">{l.t('Relics and potions')}</h1>
@@ -39,7 +39,7 @@ const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
   </div>
 
   <section aria-labelledby="relics" class="mt-6">
-    <h2 id="relics" class="m-0 text-2xl">
+    <h2 class="m-0 text-2xl" id="relics">
       {l.t('Relics')}
     </h2>
     <p class="mt-1 mb-0 text-sm text-muted">
@@ -53,7 +53,7 @@ const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
   </section>
 
   <section aria-labelledby="potions" class="mt-8">
-    <h2 id="potions" class="m-0 text-2xl">
+    <h2 class="m-0 text-2xl" id="potions">
       {l.t('Potions')}
     </h2>
     <p class="mt-1 mb-0 text-sm text-muted">
@@ -67,7 +67,7 @@ const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
   </section>
 
   <section aria-labelledby="brew" class="mt-8">
-    <h2 id="brew" class="m-0 text-2xl">
+    <h2 class="m-0 text-2xl" id="brew">
       {l.t('Brew potions')}
     </h2>
     <p class="mt-1 mb-0 max-w-[65ch] text-sm text-muted">
@@ -84,7 +84,7 @@ const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
 
   <p class="mt-8 text-sm">
     <T text={l.t("{stats} compare them with the base game's and show which Ancient choices players take.")}>
-      <a slot="stats" href={l.href('/stats/relics')}>
+      <a href={l.href('/stats/relics')} slot="stats">
         {l.t('Relic and potion stats')}
       </a>
     </T>

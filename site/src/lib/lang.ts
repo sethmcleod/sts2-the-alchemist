@@ -6,17 +6,17 @@ import type { Locale } from './i18n';
 import type { GameWords, Translation } from './types';
 
 type Forms = Partial<Record<Intl.LDMLPluralRule, string>>;
-export type Strings = Record<string, string | Forms>;
-type Vars = Record<string, string | number>;
+export type Strings = Record<string, Forms | string>;
+type Vars = Record<string, number | string>;
 
 /** What an island needs to build its Lang: the page's language and the strings the stats use */
 export interface LangInit {
   code: string;
-  lang: string;
-  strings: Strings;
   game?: GameWords;
+  lang: string;
   /** The mod's names in this language, for data loaded in English */
-  names?: Pick<Translation, 'names' | 'badges'>;
+  names?: Pick<Translation, 'badges' | 'names'>;
+  strings: Strings;
 }
 
 // While the site builds, each lookup notes its key, and whether a page or an island (which gets only
@@ -32,10 +32,10 @@ function seen(key: string, scope: Scope) {
 type Scope = 'site' | 'stats';
 
 const ORDINAL = '{n}th';
-const ORDINAL_EN: Forms = { one: '{n}st', two: '{n}nd', few: '{n}rd', other: '{n}th' };
+const ORDINAL_EN: Forms = { few: '{n}rd', one: '{n}st', other: '{n}th', two: '{n}nd' };
 const NONE = '–';
 
-type Maybe = number | null | undefined;
+type Maybe = null | number | undefined;
 const missing = (v: Maybe): v is null | undefined => v == null || Number.isNaN(v);
 
 export class Lang {
@@ -103,7 +103,7 @@ export class Lang {
   fixed(v: Maybe, digits = 1) {
     return missing(v)
       ? NONE
-      : v.toLocaleString(this.lang, { minimumFractionDigits: digits, maximumFractionDigits: digits });
+      : v.toLocaleString(this.lang, { maximumFractionDigits: digits, minimumFractionDigits: digits });
   }
 
   /** A share as a percentage: whole numbers from 10%, one decimal below, and under 1% as "<1%" */
@@ -111,16 +111,16 @@ export class Lang {
     if (missing(v)) return NONE;
     const percent = (share: number, digits: number) =>
       share.toLocaleString(this.lang, {
-        style: 'percent',
-        minimumFractionDigits: digits,
         maximumFractionDigits: digits,
+        minimumFractionDigits: digits,
+        style: 'percent',
       });
     if (v > 0 && v < 0.01) return `<${percent(0.01, 0)}`;
     return percent(v, v >= 0.1 || v === 0 ? 0 : 1);
   }
 
   range([lo, hi]: [number, number]) {
-    return this.t('{lo} to {hi}', { lo: this.pct(lo), hi: this.pct(hi) });
+    return this.t('{lo} to {hi}', { hi: this.pct(hi), lo: this.pct(lo) });
   }
 
   ordinal(n: number) {
@@ -141,8 +141,8 @@ export class Lang {
     return missing(delta)
       ? NONE
       : (Math.round(delta * 1000) / 10).toLocaleString(this.lang, {
-          signDisplay: 'exceptZero',
           maximumFractionDigits: 1,
+          signDisplay: 'exceptZero',
         });
   }
 
@@ -152,7 +152,7 @@ export class Lang {
     return m >= 60 ? this.t('{h} h {m} min', { h: Math.floor(m / 60), m: m % 60 }) : this.t('{m} min', { m });
   }
 
-  date(iso: string, style: 'medium' | 'long' = 'medium') {
+  date(iso: string, style: 'long' | 'medium' = 'medium') {
     return new Date(`${iso.slice(0, 10)}T00:00:00Z`).toLocaleDateString(this.lang, {
       dateStyle: style,
       timeZone: 'UTC',

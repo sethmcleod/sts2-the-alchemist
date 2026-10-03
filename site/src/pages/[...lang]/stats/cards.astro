@@ -17,11 +17,11 @@ const init = islandLang(locale);
 const il = statsLang(init);
 ---
 
-<Stats title={l.t('Card stats')} description={l.t('How often each Alchemist card is picked, played and won with.')}>
+<Stats description={l.t('How often each Alchemist card is picked, played and won with.')} title={l.t('Card stats')}>
   <CardStats
     client:idle
-    locale={init}
     initial={cardStats(il, data, DEFAULT_FILTERS)}
+    locale={init}
     options={filterOptions(il, data)}
   />
 </Stats>

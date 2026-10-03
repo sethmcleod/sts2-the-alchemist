@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { tipsFor, type Tip } from './tips';
+import { type Tip, tipsFor } from './tips';
 
-const tip = (id: string, title: string, text = '') => ({ id, title, text });
+const tip = (id: string, title: string, text = '') => ({ id, text, title });
 const TIPS: Tip[] = [
   tip('POISON_POWER', 'Poison'),
   tip('EXHAUST', 'Exhaust'),
@@ -12,7 +12,7 @@ const TIPS: Tip[] = [
   tip('ALCHEMIST-BURSTING_MIX_PLUS', 'Bursting Mix+'),
   tip('ALCHEMIST-TRANSFORM_MIX', 'Transform', 'Becomes a random [gold]Mix[/gold].'),
 ];
-const titles = (markup: string, options: { keywords?: string[]; exclude?: string; lang?: string } = {}) =>
+const titles = (markup: string, options: { exclude?: string; keywords?: string[]; lang?: string } = {}) =>
   tipsFor([markup], TIPS, { lang: 'en', ...options }).map((t) => t.id);
 
 describe('tips', () => {
@@ -77,7 +77,7 @@ describe('tips', () => {
   it('uses the English tips only for English words', () => {
     const local = [tip('ALCHEMIST-FERMENT', 'Fermentation')];
     const english = [tip('ALCHEMIST-FERMENT', 'Ferment'), tip('POISON_POWER', 'Poison')];
-    const found = (text: string) => tipsFor([text], local, { lang: 'fr', fallback: english }).map((t) => t.title);
+    const found = (text: string) => tipsFor([text], local, { fallback: english, lang: 'fr' }).map((t) => t.title);
     expect(found('[gold]Fermente[/gold] et [gold]Poison[/gold]')).toEqual(['Fermentation', 'Poison']);
   });
 

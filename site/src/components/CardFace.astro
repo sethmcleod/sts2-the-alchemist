@@ -11,13 +11,13 @@ import type { CardInfo } from '../lib/types';
 import GameText from './GameText.astro';
 
 interface Props {
+  eager?: boolean;
   info: CardInfo;
   /** The width the face is shown at: [media condition, width] pairs, the last one with no condition */
-  width: [string | null, string][];
-  eager?: boolean;
+  width: [null | string, string][];
 }
 
-const { info, width, eager = false } = Astro.props;
+const { eager = false, info, width } = Astro.props;
 const { l, locale } = Astro.locals;
 const font = cardFont(locale.game);
 const sizes = (scale: number) =>
@@ -36,8 +36,8 @@ const loading = eager ? 'eager' : 'lazy';
 const artSizes = sizes(ancient ? 1 : 0.76);
 
 const versions = [
-  { class: 'base', name: info.name, cost: info.costs[0], text: info.texts[0] },
-  { class: 'upgraded', name: `${info.name}+`, cost: info.costs[1], text: info.texts[1] },
+  { class: 'base', cost: info.costs[0], name: info.name, text: info.texts[0] },
+  { class: 'upgraded', cost: info.costs[1], name: `${info.name}+`, text: info.texts[1] },
 ];
 const costChanged = info.costs[0] !== info.costs[1];
 ---
@@ -45,22 +45,22 @@ const costChanged = info.costs[0] !== info.costs[1];
 <div class:list={['face', { ancient }]} style={`--outline: ${look.outline}`}>
   {art && (
     <Image
+      alt=""
       class="face-art"
+      fetchpriority={eager ? 'high' : undefined}
+      loading={loading}
+      sizes={artSizes}
       src={art}
       widths={[250, 500]}
-      sizes={artSizes}
-      alt=""
-      loading={loading}
-      fetchpriority={eager ? 'high' : undefined}
     />
   )}
   <Image
+    alt=""
     class="face-frame"
+    loading={loading}
+    sizes={sizes(1)}
     src={frame(`${info.type.toLowerCase()}_${look.frame}`)}
     widths={[330, 660]}
-    sizes={sizes(1)}
-    alt=""
-    loading={loading}
   />
   <span class="face-title">
     {versions.map((v) => (

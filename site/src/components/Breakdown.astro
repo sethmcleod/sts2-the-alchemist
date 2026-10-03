@@ -14,10 +14,10 @@ const { l } = Astro.locals;
 <div class="grid gap-6 md:grid-cols-2">
   <section>
     <h2 class="mb-3 text-xl">{l.t('Win rate by ascension')}</h2>
-    <Bars l={l} items={bands} max={1} labelWidth="7rem" />
+    <Bars items={bands} l={l} labelWidth="7rem" max={1} />
   </section>
   <section>
     <h2 class="mb-3 text-xl">{l.t('Win rate by version')}</h2>
-    <Bars l={l} items={versions} max={1} limit={6} labelWidth="7rem" />
+    <Bars items={versions} l={l} labelWidth="7rem" limit={6} max={1} />
   </section>
 </div>

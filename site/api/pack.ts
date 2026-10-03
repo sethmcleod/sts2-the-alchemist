@@ -16,13 +16,13 @@ const SUPABASE_SEEN = 'runs:supabase-seen';
 const SUPABASE_COLUMNS =
   'id,created_at,mod_version,game_version,victory,ascension,floor,playtime,player_hash,epochs,data,alchemist';
 
-async function redis(command: (string | number)[]) {
+async function redis(command: (number | string)[]) {
   const response = await fetch(process.env.KV_REST_API_URL!, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}` },
     body: JSON.stringify(command),
+    headers: { Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}` },
+    method: 'POST',
   });
-  const { result, error } = (await response.json()) as { result?: unknown; error?: string };
+  const { error, result } = (await response.json()) as { error?: string; result?: unknown };
   if (!response.ok || error) throw new Error(`Redis ${command[0]}: ${error ?? response.status}`);
   return result;
 }
@@ -47,8 +47,8 @@ async function packedFiles() {
   const files = [];
   let cursor: string | undefined;
   do {
-    const page = await list({ prefix: 'runs/', cursor });
-    files.push(...page.blobs.map(({ pathname, url, size }) => ({ pathname, url, size })));
+    const page = await list({ cursor, prefix: 'runs/' });
+    files.push(...page.blobs.map(({ pathname, size, url }) => ({ pathname, size, url })));
     cursor = page.cursor;
   } while (cursor);
   return files.filter((file) => file.pathname.endsWith('.jsonl.gz'));
@@ -78,5 +78,5 @@ export async function GET(request: Request) {
   const hook = process.env.DEPLOY_HOOK_URL;
   if (!hook) console.error('DEPLOY_HOOK_URL is not set, so no build was started.');
   const built = hook ? (await fetch(hook, { method: 'POST' })).ok : false;
-  return Response.json({ packed: lines.length, fromSupabase: older.lines.length, pathname, built });
+  return Response.json({ built, fromSupabase: older.lines.length, packed: lines.length, pathname });
 }

@@ -17,6 +17,6 @@ const init = islandLang(locale, { encounters: true });
 const il = statsLang(init);
 ---
 
-<Stats title={l.t('Fights')} description={l.t('Where Alchemist runs end, and the fights that end them.')}>
-  <Fights client:idle locale={init} initial={fights(il, data, DEFAULT_FILTERS)} options={filterOptions(il, data)} />
+<Stats description={l.t('Where Alchemist runs end, and the fights that end them.')} title={l.t('Fights')}>
+  <Fights client:idle initial={fights(il, data, DEFAULT_FILTERS)} locale={init} options={filterOptions(il, data)} />
 </Stats>

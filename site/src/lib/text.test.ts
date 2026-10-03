@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { README_SECTIONS, readmeHash as catalogHash, readmeSource as catalogSource } from '../i18n/catalog.mjs';
+import { readmeHash as catalogHash, readmeSource as catalogSource, README_SECTIONS } from '../i18n/catalog.mjs';
 import { cardFont, lineHeight, textSize, titleSize } from './fit';
 import { LOCALES } from './i18n';
 import { Lang } from './lang';
@@ -10,20 +10,20 @@ import { readmeHash, readmeSource } from './readme';
 describe('markup', () => {
   it('colours text and drops the effect tags', () => {
     expect(tokens('Gain 3 [gold]Poison[/gold].[sine]x[/sine]')).toEqual([
-      { kind: 'text', text: 'Gain 3 ', color: undefined },
-      { kind: 'text', text: 'Poison', color: 'gold' },
-      { kind: 'text', text: '.', color: undefined },
-      { kind: 'text', text: 'x', color: undefined },
+      { color: undefined, kind: 'text', text: 'Gain 3 ' },
+      { color: 'gold', kind: 'text', text: 'Poison' },
+      { color: undefined, kind: 'text', text: '.' },
+      { color: undefined, kind: 'text', text: 'x' },
     ]);
   });
 
   it('counts energy icons in a row and keeps line breaks', () => {
     expect(tokens('Gain [energy][energy].\nDraw 1.')).toEqual([
-      { kind: 'text', text: 'Gain ', color: undefined },
-      { kind: 'energy', count: 2 },
-      { kind: 'text', text: '.', color: undefined },
+      { color: undefined, kind: 'text', text: 'Gain ' },
+      { count: 2, kind: 'energy' },
+      { color: undefined, kind: 'text', text: '.' },
       { kind: 'break' },
-      { kind: 'text', text: 'Draw 1.', color: undefined },
+      { color: undefined, kind: 'text', text: 'Draw 1.' },
     ]);
   });
 

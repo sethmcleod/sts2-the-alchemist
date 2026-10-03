@@ -2,7 +2,7 @@
 // breaks. Other tags (the wobble and shake effects) are dropped.
 
 export type Token =
-  { kind: 'text'; text: string; color?: string } | { kind: 'energy'; count: number } | { kind: 'break' };
+  { color?: string; kind: 'text'; text: string } | { count: number; kind: 'energy' } | { kind: 'break' };
 
 const COLORS = new Set(['gold', 'green', 'blue', 'red', 'purple', 'pink', 'orange', 'aqua']);
 
@@ -17,7 +17,7 @@ export function tokens(markup: string): Token[] {
       out.push({ kind: 'break' });
     } else if (part === '[energy]') {
       if (last?.kind === 'energy') last.count++;
-      else out.push({ kind: 'energy', count: 1 });
+      else out.push({ count: 1, kind: 'energy' });
     } else if (/^\[\/?\w+\]$/.test(part)) {
       const name = part.replace(/[[\]/]/g, '');
       if (COLORS.has(name)) {
@@ -25,7 +25,7 @@ export function tokens(markup: string): Token[] {
         else colors.push(name);
       }
     } else {
-      out.push({ kind: 'text', text: part, color: colors.at(-1) });
+      out.push({ color: colors.at(-1), kind: 'text', text: part });
     }
   }
   return out;

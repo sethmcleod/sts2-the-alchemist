@@ -13,12 +13,12 @@ const { l } = Astro.locals;
 
 <label class="upgrade">
   <input
-    type="checkbox"
-    class="upgrade-toggle"
-    autocomplete={restore ? undefined : 'off'}
     aria-label={l.t('Switch {name} between base and upgraded', { name })}
+    autocomplete={restore ? undefined : 'off'}
+    class="upgrade-toggle"
+    type="checkbox"
   />
-  <span class="upgrade-tip" aria-hidden="true">
+  <span aria-hidden="true" class="upgrade-tip">
     <span class="base">{l.t('Show upgraded')}</span>
     <span class="upgraded">{l.t('Show base card')}</span>
   </span>

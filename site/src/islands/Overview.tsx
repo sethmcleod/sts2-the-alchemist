@@ -1,20 +1,20 @@
 import Bars from '../components/charts/Bars';
 import Columns from '../components/charts/Columns';
 import Stats from '../components/charts/Stats';
+import SectionHeading from '../components/SectionHeading';
 import type { LangInit } from '../lib/lang';
 import { overview, type OverviewModel } from '../lib/views/overview';
 import Filters, { type FilterOptions } from './Filters';
 import { useLang } from './useLang';
 import { useStats } from './useStats';
-import SectionHeading from '../components/SectionHeading';
 
 interface Props {
-  locale: LangInit;
   initial: OverviewModel;
+  locale: LangInit;
   options: FilterOptions;
 }
 
-export default function Overview({ locale, initial, options }: Props) {
+export default function Overview({ initial, locale, options }: Props) {
   const l = useLang(locale);
   const {
     filters,
@@ -28,19 +28,19 @@ export default function Overview({ locale, initial, options }: Props) {
     referenceLabel: l.t('All runs together: {rate}', { rate: l.pct(m.overall) }),
   };
   return (
-    <div class="stats-page" aria-busy={status === 'loading'}>
-      <Filters l={l} filters={filters} options={options} runs={m.runs} status={status} onChange={update} />
+    <div aria-busy={status === 'loading'} class="stats-page">
+      <Filters filters={filters} l={l} onChange={update} options={options} runs={m.runs} status={status} />
       <Stats items={m.stats} />
       <div class="stats-grid">
         <section class="panel p-5">
           <SectionHeading id="how-far-runs-get">{l.t('How far runs get')}</SectionHeading>
           <p class="note">{m.funnelNote}</p>
-          <Bars l={l} items={m.funnel} max={1} labelWidth="8rem" />
+          <Bars items={m.funnel} l={l} labelWidth="8rem" max={1} />
         </section>
         <section class="panel p-5">
           <SectionHeading id="playstyles">{l.t('Playstyles')}</SectionHeading>
           <p class="note">{m.themesNote}</p>
-          <Bars l={l} items={m.themes} {...overall} labelWidth="8rem" />
+          <Bars items={m.themes} l={l} {...overall} labelWidth="8rem" />
         </section>
         <section class="panel p-5">
           <SectionHeading id="win-rate-by-ascension">{l.t('Win rate by ascension')}</SectionHeading>
@@ -49,18 +49,18 @@ export default function Overview({ locale, initial, options }: Props) {
               'The thin line on each bar is the range the real win rate most likely falls in. Fewer runs means a wider range.',
             )}
           </p>
-          <Bars l={l} items={m.ascensions} {...overall} labelWidth="5rem" />
+          <Bars items={m.ascensions} l={l} {...overall} labelWidth="5rem" />
         </section>
         <section class="panel p-5">
           <SectionHeading id="win-rate-by-version">{l.t('Win rate by version')}</SectionHeading>
           <p class="note">{l.t('Newest first. This ignores the version filter so every release lines up.')}</p>
-          <Bars l={l} items={m.versions} max={1} limit={8} labelWidth="6rem" />
+          <Bars items={m.versions} l={l} labelWidth="6rem" limit={8} max={1} />
         </section>
       </div>
       <section class="panel p-5">
         <SectionHeading id="runs-per-day">{l.t('Runs per day')}</SectionHeading>
         <p class="note">{l.t('Runs shared each day over the last month, from every version.')}</p>
-        <Columns l={l} items={m.days} label={l.t('Runs shared per day over the last 30 days')} />
+        <Columns items={m.days} l={l} label={l.t('Runs shared per day over the last 30 days')} />
       </section>
     </div>
   );

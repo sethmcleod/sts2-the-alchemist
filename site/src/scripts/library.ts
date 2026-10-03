@@ -3,7 +3,7 @@
 // shared link shows the same cards.
 
 import { Lang } from '../lib/lang';
-import { compendiumOrder, POOL_RARITIES, type CardKeys, type CompendiumKey } from '../lib/mod';
+import { type CardKeys, type CompendiumKey, compendiumOrder, POOL_RARITIES } from '../lib/mod';
 
 const form = document.querySelector<HTMLFormElement>('#library')!;
 const words = JSON.parse(form.dataset.words!);

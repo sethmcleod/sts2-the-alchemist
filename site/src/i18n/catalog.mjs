@@ -42,7 +42,7 @@ function literals(code) {
     string.lastIndex = at;
     const m = string.exec(code);
     return m && !(m[1] === '`' && m[2].includes('${'))
-      ? { text: m[2].replace(/\\(.)/g, '$1'), end: string.lastIndex }
+      ? { end: string.lastIndex, text: m[2].replace(/\\(.)/g, '$1') }
       : null;
   };
   for (const call of code.matchAll(/\.(t|n)\(/g)) {
@@ -92,15 +92,14 @@ export function buildCatalog(seen = new Map()) {
       .map(([key]) => key)
       .sort();
   return {
+    readme: Object.fromEntries(README_SECTIONS.map((title) => [readmeHash(readmeSource(title)), title])),
     site: sorted('site'),
     stats: sorted('stats'),
-    readme: Object.fromEntries(README_SECTIONS.map((title) => [readmeHash(readmeSource(title)), title])),
   };
 }
 
 /** An Astro integration that writes the catalog after each build */
 export const catalog = () => ({
-  name: 'site-strings',
   hooks: {
     'astro:build:done': ({ logger }) => {
       const found = buildCatalog(globalThis.__siteStrings);
@@ -109,4 +108,5 @@ export const catalog = () => ({
       logger.info(`${found.site.length + found.stats.length} strings in src/i18n/en.json`);
     },
   },
+  name: 'site-strings',
 });

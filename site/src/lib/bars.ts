@@ -7,17 +7,17 @@ import { rate, wilson } from './stats';
 export function rateItem(l: Lang, label: string, wins: number, runs: number, extra: Partial<BarItem> = {}): BarItem {
   const [lo, hi] = wilson(wins, runs);
   return {
-    label,
-    note: l.n(runs, '{n} run', '{n} runs'),
-    value: rate(wins, runs),
-    text: l.pct(rate(wins, runs)),
-    lo,
     hi,
+    label,
+    lo,
+    note: l.n(runs, '{n} run', '{n} runs'),
+    text: l.pct(rate(wins, runs)),
+    value: rate(wins, runs),
     ...extra,
   };
 }
 
-type Row = { label: string; wins: number; runs: number };
+type Row = { label: string; runs: number; wins: number };
 
 /** Win rate bars by ascension band and by version, each version linked to its patch notes */
 export const breakdownBars = (l: Lang, { byBand, byVersion }: { byBand: Row[]; byVersion: Row[] }) => ({

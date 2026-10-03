@@ -6,7 +6,7 @@
 import { pagePath } from '../lib/links';
 ---
 
-<div hidden data-insights data-path={pagePath(Astro.url)} data-route={Astro.routePattern}></div>
+<div data-insights data-path={pagePath(Astro.url)} data-route={Astro.routePattern} hidden></div>
 
 <script>
   import { inject, pageview } from '@vercel/analytics';
@@ -16,7 +16,7 @@ import { pagePath } from '../lib/links';
   // Vercel sets these at build time for the project's own collection path
   const basePath = import.meta.env.PUBLIC_VERCEL_OBSERVABILITY_BASEPATH;
   const config = import.meta.env.PUBLIC_VERCEL_OBSERVABILITY_CLIENT_CONFIG;
-  inject({ framework: 'astro', disableAutoTrack: true, basePath }, config);
-  pageview({ route, path });
-  injectSpeedInsights({ framework: 'astro', route, basePath }, config);
+  inject({ basePath, disableAutoTrack: true, framework: 'astro' }, config);
+  pageview({ path, route });
+  injectSpeedInsights({ basePath, framework: 'astro', route }, config);
 </script>

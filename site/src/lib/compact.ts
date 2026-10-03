@@ -6,7 +6,7 @@ import type { ColumnFile, TableFile } from './types';
 const isTable = (value: unknown): value is TableFile =>
   typeof value === 'object' && value !== null && 'rows' in value && 'key' in value;
 
-export function toColumns({ key, counts, rows }: TableFile): ColumnFile {
+export function toColumns({ counts, key, rows }: TableFile): ColumnFile {
   const names: Record<string, string[]> = {};
   const columns = [...key, ...counts].map((name, i) => {
     const column = rows.map((row) => row[i]);
@@ -16,7 +16,7 @@ export function toColumns({ key, counts, rows }: TableFile): ColumnFile {
     names[name] = list;
     return column.map((value) => index.get(value as string)!);
   });
-  return { key, counts, names, columns };
+  return { columns, counts, key, names };
 }
 
 /** Every count table in a data file, stored by column */
