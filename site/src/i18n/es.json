@@ -31,6 +31,7 @@
     "Badges, Brew, Mixes, Ferment, Poison and Antitoxin, measured over every shared run.": "Insignias, Elaborar, Mezclas, Fermentar, Veneno y Antitoxina, medidos en todas las partidas compartidas.",
     "Best for its rarity": "Mejor para su rareza",
     "Bought": "Comprada",
+    "Brew": "Elaborar",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Elaborar es una opción del Lugar de descanso que te permite elegir entre 3 de estas pociones. No se consiguen de ninguna otra forma, y el Comerciante las compra por 150 de Oro.",
     "Brew potion": "Poción elaborada",
     "Brew potion, made only at a rest site": "Poción elaborada, solo se consigue en un Lugar de descanso",
@@ -59,6 +60,7 @@
       "one": "Bebida {n} vez cada 100 partidas",
       "other": "Bebida {n} veces cada 100 partidas"
     },
+    "Effect": "Efecto",
     "Event Attack": "Ataque de evento",
     "Event Skill": "Habilidad de evento",
     "Every release of The Alchemist, newest first.": "Todas las versiones del Alquimista, de la más reciente a la más antigua.",
@@ -72,6 +74,7 @@
     "From {source}, {line}": "De {source}, {line}",
     "Get the mod": "Obtener el mod",
     "GitHub releases": "Lanzamientos en GitHub",
+    "Grid": "Cuadrícula",
     "How The Alchemist's win rates and cards changed from one version to the next.": "Cómo han cambiado los porcentajes de victorias y las cartas del Alquimista de una versión a otra.",
     "How fresh they are": "Frecuencia de actualización",
     "How often each Alchemist card is picked, played and won with.": "Con qué frecuencia se elige, se juega y se gana con cada carta del Alquimista.",
@@ -90,6 +93,7 @@
     "Language: {name}": "Idioma: {name}",
     "Latest: {notes}, {date}.": "Última versión: {notes}, {date}.",
     "Latest: {notes}.": "Última versión: {notes}.",
+    "List": "Lista",
     "Made during a fight, so it never ends a run in a deck.": "Se crea durante un combate, así que nunca está en el mazo al final de una partida.",
     "Made per run": "Creadas por partida",
     "Mechanics": "Mecánicas",
@@ -134,6 +138,7 @@
     "Search names and text": "Buscar por nombre o texto",
     "See every card": "Ver todas las cartas",
     "Share of Mixes": "Proporción de Mezclas",
+    "Shop": "Tienda",
     "Shop relic": "Reliquia de tienda",
     "Show all upgraded": "Ver todas mejoradas",
     "Show base card": "Ver carta base",
@@ -154,8 +159,10 @@
     "Slay the Spire 2 character mod": "Mod de personaje para Slay the Spire 2",
     "Sort by": "Ordenar por",
     "Sort: {order}": "Orden: {order}",
+    "Source": "Origen",
     "Source on GitHub": "Código fuente en GitHub",
     "Standard mode runs that got past floor 5. Abandoned runs and runs with the full console on are left out.": "Partidas del modo Estándar que pasaron del piso 5. Se excluyen las partidas abandonadas y las que tenían activada la consola completa.",
+    "Starter": "Básica",
     "Starter Attack": "Ataque básico",
     "Starter Skill": "Habilidad básica",
     "Starter relic": "Reliquia básica",
@@ -210,6 +217,7 @@
     },
     "Updated {date}": "Actualizado el {date}",
     "Versions": "Versiones",
+    "View": "Vista",
     "When a run ends, the game can share an anonymous summary of it. It only does this when Upload Data is on in the game's settings. The Alchemist also has its own switch, {setting}, in the mod settings. Nothing sent includes a name or a Steam ID.": "Al terminar una partida, el juego puede compartir un resumen anónimo de ella. Solo lo hace si la opción «Compartir datos del juego» está activada en los ajustes del juego. El Alquimista también tiene su propio interruptor, {setting}, en los ajustes del mod. Nada de lo que se envía incluye un nombre ni un ID de Steam.",
     "Where Alchemist runs end, and the fights that end them.": "Dónde terminan las partidas del Alquimista y los combates que acaban con ellas.",
     "Where from": "Origen",
@@ -225,14 +233,6 @@
     "by win rate. The middle one wins {rate}": "por porcentaje de victorias. La del medio tiene un {rate}",
     "from the Merchant": "al Comerciante",
     "from this power": "de este poder",
-    "gave {n} Antitoxin": {
-      "one": "dio {n} de Antitoxina",
-      "other": "dio {n} de Antitoxina"
-    },
-    "made {n} Mixes": {
-      "one": "creó {n} Mezcla",
-      "other": "creó {n} Mezclas"
-    },
     "never an early pick": "nunca fue elección temprana",
     "never offered as a card reward": "nunca ofrecida como recompensa de cartas",
     "never played in {share} of {n} runs": {

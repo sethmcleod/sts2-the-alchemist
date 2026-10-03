@@ -89,7 +89,12 @@ const pageInLanguage = (target: (typeof LOCALES)[number]) => new Lang(target).hr
 
   const menu = document.querySelector<HTMLDetailsElement>('.lang-menu')!;
   for (const link of menu.querySelectorAll<HTMLAnchorElement>('a[data-language]')) {
-    link.addEventListener('click', () => keepPlace(link));
+    link.addEventListener('click', (event) => {
+      if (link.hasAttribute('aria-current')) {
+        event.preventDefault();
+        menu.open = false;
+      } else keepPlace(link);
+    });
   }
   returnToPlace();
   document.addEventListener('click', (e) => {

@@ -1,0 +1,31 @@
+---
+const { l } = Astro.locals;
+---
+
+<fieldset class="view-toggle">
+  <legend class="sr-only">{l.t('View')}</legend>
+  <label>
+    <input checked class="sr-only" id="view-grid" name="view" type="radio" value="grid" />
+    {l.t('Grid')}
+  </label>
+  <label>
+    <input class="sr-only" id="view-list" name="view" type="radio" value="list" />
+    {l.t('List')}
+  </label>
+</fieldset>
+
+<script>
+  import { VIEW_KEY } from '../scripts/view.mjs';
+
+  const root = document.documentElement;
+  for (const choice of document.querySelectorAll<HTMLInputElement>('.view-toggle input')) {
+    choice.checked = choice.value === (root.dataset.view ?? 'grid');
+    choice.addEventListener('change', () => {
+      if (choice.value === 'list') root.dataset.view = 'list';
+      else delete root.dataset.view;
+      try {
+        localStorage.setItem(VIEW_KEY, choice.value);
+      } catch {}
+    });
+  }
+</script>

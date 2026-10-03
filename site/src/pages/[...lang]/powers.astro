@@ -1,8 +1,9 @@
 ---
-import ItemTile from '../../components/ItemTile.astro';
+import ItemViews from '../../components/ItemViews.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import Sheet from '../../components/Sheet.astro';
 import StatsNote from '../../components/StatsNote.astro';
+import ViewToggle from '../../components/ViewToggle.astro';
 import Base from '../../layouts/Base.astro';
 import { runs } from '../../lib/content';
 import { everyLanguage } from '../../lib/i18n';
@@ -23,12 +24,9 @@ const items = powers(l, runs(locale));
   title={l.t('Powers')}
 >
   <PageHeader title={l.t('Powers')}>
+    <ViewToggle slot="actions" />
     <StatsNote href="/stats/mechanics" />
   </PageHeader>
-  <ul class="item-grid">
-    {items.map((item) => (
-      <ItemTile item={item} />
-    ))}
-  </ul>
+  <ItemViews items={items} />
   <Sheet slot="end" />
 </Base>

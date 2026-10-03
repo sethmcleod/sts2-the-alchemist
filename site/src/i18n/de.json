@@ -31,6 +31,7 @@
     "Badges, Brew, Mixes, Ferment, Poison and Antitoxin, measured over every shared run.": "Abzeichen, Brauen, Mixturen, Gärung, Gift und Antitoxin, gemessen über alle geteilten Runs.",
     "Best for its rarity": "Beste ihrer Seltenheit",
     "Bought": "Gekauft",
+    "Brew": "Brauen",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Brauen ist eine Lagerfeuer-Option, die 3 dieser Tränke zur Wahl stellt. Nichts anderes stellt sie her, und der Händler kauft sie für 150 Gold an.",
     "Brew potion": "Gebrauter Trank",
     "Brew potion, made only at a rest site": "Gebrauter Trank, nur am Lagerfeuer hergestellt",
@@ -59,6 +60,7 @@
       "one": "{n}-mal pro 100 Runs getrunken",
       "other": "{n}-mal pro 100 Runs getrunken"
     },
+    "Effect": "Effekt",
     "Event Attack": "Ereignis-Angriff",
     "Event Skill": "Ereignis-Fertigkeit",
     "Every release of The Alchemist, newest first.": "Jede Version des Alchemisten, die neueste zuerst.",
@@ -72,6 +74,7 @@
     "From {source}, {line}": "Von {source}, {line}",
     "Get the mod": "Mod herunterladen",
     "GitHub releases": "Releases auf GitHub",
+    "Grid": "Raster",
     "How The Alchemist's win rates and cards changed from one version to the next.": "Wie sich die Siegesquoten und Karten des Alchemisten von Version zu Version verändert haben.",
     "How fresh they are": "Wie aktuell sie sind",
     "How often each Alchemist card is picked, played and won with.": "Wie oft jede Alchemist-Karte gewählt und gespielt wird und wie oft mit ihr gewonnen wird.",
@@ -90,6 +93,7 @@
     "Language: {name}": "Sprache: {name}",
     "Latest: {notes}, {date}.": "Neueste Version: {notes}, {date}.",
     "Latest: {notes}.": "Neueste Version: {notes}.",
+    "List": "Liste",
     "Made during a fight, so it never ends a run in a deck.": "Wird im Kampf erzeugt und ist darum am Ende eines Runs nie im Deck.",
     "Made per run": "Pro Run erzeugt",
     "Mechanics": "Mechaniken",
@@ -134,6 +138,7 @@
     "Search names and text": "Namen und Text durchsuchen",
     "See every card": "Alle Karten ansehen",
     "Share of Mixes": "Anteil an Mixturen",
+    "Shop": "Laden",
     "Shop relic": "Laden-Relikt",
     "Show all upgraded": "Alle verbessert zeigen",
     "Show base card": "Basiskarte zeigen",
@@ -154,8 +159,10 @@
     "Slay the Spire 2 character mod": "Charakter-Mod für Slay the Spire 2",
     "Sort by": "Sortieren nach",
     "Sort: {order}": "Sortierung: {order}",
+    "Source": "Quelle",
     "Source on GitHub": "Quellcode auf GitHub",
     "Standard mode runs that got past floor 5. Abandoned runs and runs with the full console on are left out.": "Runs im Standardmodus, die über Ebene 5 hinausgekommen sind. Abgebrochene Runs und Runs mit voller Konsole werden nicht gezählt.",
+    "Starter": "Start",
     "Starter Attack": "Basis-Angriff",
     "Starter Skill": "Basis-Fertigkeit",
     "Starter relic": "Startrelikt",
@@ -210,6 +217,7 @@
     },
     "Updated {date}": "Aktualisiert am {date}",
     "Versions": "Versionen",
+    "View": "Ansicht",
     "When a run ends, the game can share an anonymous summary of it. It only does this when Upload Data is on in the game's settings. The Alchemist also has its own switch, {setting}, in the mod settings. Nothing sent includes a name or a Steam ID.": "Wenn ein Run endet, kann das Spiel eine anonyme Zusammenfassung davon teilen. Das passiert nur, wenn „Spieldaten hochladen“ in den Spieleinstellungen aktiviert ist. Der Alchemist hat außerdem einen eigenen Schalter, „{setting}“, in den Mod-Einstellungen. Die gesendeten Daten enthalten weder einen Namen noch eine Steam-ID.",
     "Where Alchemist runs end, and the fights that end them.": "Wo Alchemist-Runs enden und welche Kämpfe sie beenden.",
     "Where from": "Herkunft",
@@ -225,14 +233,6 @@
     "by win rate. The middle one wins {rate}": "nach Siegesquote. Die mittlere Karte liegt bei {rate}",
     "from the Merchant": "vom Händler",
     "from this power": "durch diese Macht",
-    "gave {n} Antitoxin": {
-      "one": "{n} Antitoxin gegeben",
-      "other": "{n} Antitoxin gegeben"
-    },
-    "made {n} Mixes": {
-      "one": "{n} Mixtur erzeugt",
-      "other": "{n} Mixturen erzeugt"
-    },
     "never an early pick": "nie früh gewählt",
     "never offered as a card reward": "nie als Kartenbelohnung angeboten",
     "never played in {share} of {n} runs": {

@@ -1,9 +1,10 @@
 ---
-import ItemTile from '../../components/ItemTile.astro';
+import ItemViews from '../../components/ItemViews.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import Sheet from '../../components/Sheet.astro';
 import StatsNote from '../../components/StatsNote.astro';
 import T from '../../components/T.astro';
+import ViewToggle from '../../components/ViewToggle.astro';
 import Base from '../../layouts/Base.astro';
 import { runs } from '../../lib/content';
 import { everyLanguage } from '../../lib/i18n';
@@ -29,6 +30,7 @@ const description = l.t(
 
 <Base description={description} title={l.t('Relics and potions')}>
   <PageHeader title={l.t('Relics and potions')}>
+    <ViewToggle slot="actions" />
     <StatsNote href="/stats/relics" />
   </PageHeader>
 
@@ -36,22 +38,14 @@ const description = l.t(
     <h2 class="m-0 text-2xl" id="relics">
       {l.t('Relics')}
     </h2>
-    <ul class="item-grid">
-      {relicItems.map((item) => (
-        <ItemTile item={item} />
-      ))}
-    </ul>
+    <ItemViews items={relicItems} />
   </section>
 
   <section aria-labelledby="potions" class="mt-8">
     <h2 class="m-0 text-2xl" id="potions">
       {l.t('Potions')}
     </h2>
-    <ul class="item-grid">
-      {otherPotions.map((item) => (
-        <ItemTile item={item} />
-      ))}
-    </ul>
+    <ItemViews items={otherPotions} />
   </section>
 
   <section aria-labelledby="brew" class="mt-8">
@@ -63,11 +57,7 @@ const description = l.t(
         'Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.',
       )}
     </p>
-    <ul class="item-grid">
-      {brewPotions.map((item) => (
-        <ItemTile item={item} />
-      ))}
-    </ul>
+    <ItemViews items={brewPotions} />
   </section>
 
   <p class="mt-8 text-sm">

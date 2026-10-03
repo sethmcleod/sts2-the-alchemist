@@ -110,27 +110,16 @@ export function powerSource(runs: Runs, id: string): null | Source {
 }
 
 export function powers(l: Lang, runs: Runs): Item[] {
-  const counters = runs.counters(runs.select(filters));
-  const [antitoxin, mixes] = [byPrefix(counters, 'atxsrc:'), byPrefix(counters, 'mixsrc:')];
   return Object.entries(runs.summary.power_info)
-    .map(([id, info]) => ({ id, info, source: powerSource(runs, id) }))
+    .map(([id, info]) => ({
+      href: powerHref(id),
+      id,
+      info,
+      kind: 'power' as const,
+      line: null,
+      rarity: null,
+      source: powerSource(runs, id),
+    }))
     .filter(({ source }) => source)
-    .map(({ id, info, source }) => {
-      const label = tallyLabel(id);
-      const [gave, made] = [antitoxin.get(label)?.count, mixes.get(label)?.count];
-      const counts = [
-        gave != null ? l.n(gave, 'gave {n} Antitoxin', 'gave {n} Antitoxin') : null,
-        made != null ? l.n(made, 'made {n} Mix', 'made {n} Mixes') : null,
-      ].filter((count) => count !== null);
-      return {
-        href: powerHref(id),
-        id,
-        info,
-        kind: 'power' as const,
-        line: counts.length ? l.list(counts) : null,
-        rarity: null,
-        source,
-      };
-    })
     .sort((a, b) => a.info.name.localeCompare(b.info.name, l.lang));
 }

@@ -62,7 +62,9 @@ export function returnToPlace() {
       const { anchor } = place;
       const scrollToAnchor = () => {
         const el = anchor?.place
-          ? document.querySelector<HTMLElement>(`[data-place="${CSS.escape(anchor.place)}"]`)
+          ? [...document.querySelectorAll<HTMLElement>(`[data-place="${CSS.escape(anchor.place)}"]`)].find((placed) =>
+              placed.checkVisibility(),
+            )
           : headings()[anchor?.heading ?? -1];
         if (el) window.scrollTo({ behavior: 'instant', top: scrollY + el.getBoundingClientRect().top - anchor!.top });
         return scrollY;

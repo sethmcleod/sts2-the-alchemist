@@ -16,6 +16,7 @@ import { Lang } from '../lib/lang';
 import { pagePath } from '../lib/links';
 import { PLACING_SCRIPT } from '../scripts/placing.mjs';
 import { SPECULATION_RULES } from '../scripts/speculation.mjs';
+import { VIEW_SCRIPT } from '../scripts/view.mjs';
 
 interface Props {
   description?: string;
@@ -67,6 +68,7 @@ const cardStyle =
   <head>
     <meta charset="utf-8" />
     <script is:inline set:html={PLACING_SCRIPT} />
+    <script is:inline set:html={VIEW_SCRIPT} />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>{fullTitle}</title>
     <meta content={description} name="description" />
@@ -109,6 +111,15 @@ const cardStyle =
       const pagePath = location.pathname;
       addEventListener('popstate', () => {
         if (location.pathname !== pagePath && !history.state?.sheet) location.reload();
+      });
+
+      addEventListener('click', (event) => {
+        const link = (event.target as Element).closest('a');
+        const newTab = event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+        if (event.defaultPrevented || newTab || link?.href !== location.origin + location.pathname + location.search)
+          return;
+        event.preventDefault();
+        scrollTo({ behavior: 'smooth', top: 0 });
       });
     </script>
     {isVercelBuild && <Insights />}

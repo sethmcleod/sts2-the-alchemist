@@ -6,6 +6,7 @@ import { catalog } from './src/i18n/catalog.mjs';
 import { sitemap } from './src/integrations/sitemap.mjs';
 import { PLACING_SCRIPT } from './src/scripts/placing.mjs';
 import { SPECULATION_RULES } from './src/scripts/speculation.mjs';
+import { VIEW_SCRIPT } from './src/scripts/view.mjs';
 
 const cspHash = (text) => `sha256-${createHash('sha256').update(text).digest('base64')}`;
 
@@ -24,7 +25,7 @@ export default defineConfig({
         "base-uri 'self'",
         "form-action 'self'",
       ],
-      scriptDirective: { hashes: [cspHash(PLACING_SCRIPT), cspHash(SPECULATION_RULES)] },
+      scriptDirective: { hashes: [cspHash(PLACING_SCRIPT), cspHash(SPECULATION_RULES), cspHash(VIEW_SCRIPT)] },
       styleDirective: { resources: ["'self'", "'unsafe-inline'"] },
     },
   },
