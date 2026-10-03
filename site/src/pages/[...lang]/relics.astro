@@ -1,13 +1,13 @@
 ---
 import ItemTile from '../../components/ItemTile.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import Sheet from '../../components/Sheet.astro';
-import StatsSpan from '../../components/StatsSpan.astro';
+import StatsNote from '../../components/StatsNote.astro';
 import T from '../../components/T.astro';
 import Base from '../../layouts/Base.astro';
 import { runs } from '../../lib/content';
 import { everyLanguage } from '../../lib/i18n';
 import { potions, relics } from '../../lib/items';
-import { DEFAULT_FILTERS } from '../../lib/runs';
 
 const { l } = Astro.locals;
 
@@ -18,33 +18,24 @@ const relicItems = relics(l, data);
 const potionItems = potions(l, data);
 const brewPotions = potionItems.filter((potion) => potion.rarity === 'Brew');
 const otherPotions = potionItems.filter((potion) => potion.rarity !== 'Brew');
-const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
----
-
-<Base
-  description={l.t("The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.", {
+const description = l.t(
+  "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.",
+  {
     potions: l.num(potionItems.length),
     relics: l.num(relicItems.length),
-  })}
-  title={l.t('Relics and potions')}
->
-  <div class="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1">
-    <h1 class="m-0 text-4xl">{l.t('Relics and potions')}</h1>
-    <p class="m-0 text-sm text-muted sm:ml-auto">
-      <T text={l.n(statRuns, 'Stats from {n} solo run on {span}.', 'Stats from {n} solo runs on {span}.')}>
-        <StatsSpan slot="span" />
-      </T>{' '}
-      <a href={l.href('/stats/relics')}>{l.t('Filter them')}</a>
-    </p>
-  </div>
+  },
+);
+---
 
-  <section aria-labelledby="relics" class="mt-6">
+<Base description={description} title={l.t('Relics and potions')}>
+  <PageHeader title={l.t('Relics and potions')}>
+    <StatsNote href="/stats/relics" />
+  </PageHeader>
+
+  <section aria-labelledby="relics">
     <h2 class="m-0 text-2xl" id="relics">
       {l.t('Relics')}
     </h2>
-    <p class="mt-1 mb-0 text-sm text-muted">
-      {l.t('The win rate is how often the runs that ended with the relic won.')}
-    </p>
     <ul class="item-grid">
       {relicItems.map((item) => (
         <ItemTile item={item} />
@@ -56,9 +47,6 @@ const statRuns = data.totals(data.select(DEFAULT_FILTERS)).runs;
     <h2 class="m-0 text-2xl" id="potions">
       {l.t('Potions')}
     </h2>
-    <p class="mt-1 mb-0 text-sm text-muted">
-      {l.t('Sold by the Merchant or found after a fight, like any other potion.')}
-    </p>
     <ul class="item-grid">
       {otherPotions.map((item) => (
         <ItemTile item={item} />

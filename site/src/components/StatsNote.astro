@@ -1,0 +1,23 @@
+---
+import { runs } from '../lib/content';
+import { DEFAULT_FILTERS } from '../lib/runs';
+import StatsSpan from './StatsSpan.astro';
+import T from './T.astro';
+
+interface Props {
+  class?: string;
+  href: string;
+}
+
+const { class: className, href } = Astro.props;
+const { l, locale } = Astro.locals;
+const runData = runs(locale);
+const statRuns = runData.totals(runData.select(DEFAULT_FILTERS)).runs;
+---
+
+<p class:list={['m-0', className]}>
+  <T text={l.n(statRuns, 'Stats from {n} solo run on {span}.', 'Stats from {n} solo runs on {span}.')}>
+    <StatsSpan slot="span" />
+  </T>{' '}
+  <a href={l.href(href)}>{l.t('Filter them')}</a>
+</p>

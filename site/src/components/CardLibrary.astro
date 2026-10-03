@@ -2,11 +2,10 @@
 import { runs } from '../lib/content';
 import { keywordName, libraryCards, rarityName, typeName } from '../lib/library';
 import { CARD_GROUPS, PARTNER_MODS, partnerMod, RARITIES, RARITY_NAME, slug, steamItem, TYPES } from '../lib/mod';
-import { DEFAULT_FILTERS } from '../lib/runs';
 import type { Rarity } from '../lib/types';
 import CardTile from './CardTile.astro';
 import External from './External.astro';
-import StatsSpan from './StatsSpan.astro';
+import StatsNote from './StatsNote.astro';
 import T from './T.astro';
 
 const { l } = Astro.locals;
@@ -16,7 +15,6 @@ const cards = libraryCards(l, runData, runs());
 const keywords = [...new Set(cards.flatMap((card) => card.info.keywords))]
   .map((word) => [word, keywordName(l, word)])
   .sort(([, a], [, b]) => a.localeCompare(b, l.lang));
-const statRuns = runData.totals(runData.select(DEFAULT_FILTERS)).runs;
 const scriptStringKeys = ['{n} cards', '{n} of {total} cards', 'Show {n} cards'];
 const scriptWords = JSON.stringify({
   code: l.code,
@@ -71,12 +69,7 @@ const selectClass = 'field-control min-w-0';
     <output aria-live="polite" class="text-sm text-ink-2 tabular-nums" data-count>
       {l.n(cards.length, '{n} card', '{n} cards')}
     </output>
-    <p class="m-0 text-sm text-muted sm:ml-auto">
-      <T text={l.n(statRuns, 'Stats from {n} solo run on {span}.', 'Stats from {n} solo runs on {span}.')}>
-        <StatsSpan slot="span" />
-      </T>{' '}
-      <a href={l.href('/stats/cards')}>{l.t('Filter them')}</a>
-    </p>
+    <StatsNote class="text-sm text-muted sm:ml-auto" href="/stats/cards" />
   </div>
 
   <form aria-label={l.t('Cards')} class="toolbar" data-words={scriptWords} id="library" role="search">
@@ -154,7 +147,6 @@ const selectClass = 'field-control min-w-0';
               </T>
             </p>
           )}
-          {group.note && <p class="m-0 mt-1 text-sm text-muted">{l.t(group.note)}</p>}
           <ul class="card-grid">
             {group.cards.map((card) => (
               <CardTile card={card} />

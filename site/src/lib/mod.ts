@@ -44,14 +44,14 @@ export const PARTNER_MODS = [
 
 export const partnerMod = (tag: string) => PARTNER_MODS.find((mod) => mod.tag === tag);
 
-export const CARD_GROUPS: { id: string; note?: string; title: string }[] = [
+export const CARD_GROUPS: { id: string; title: string }[] = [
   { id: 'Basic', title: 'Starting deck' },
   { id: 'Common', title: 'Common' },
   { id: 'Uncommon', title: 'Uncommon' },
   { id: 'Rare', title: 'Rare' },
   { id: 'Ancient', title: 'Ancient' },
   { id: 'Event', title: 'Event' },
-  { id: 'Token', note: 'Made by other cards, relics and potions during a fight.', title: 'Created in combat' },
+  { id: 'Token', title: 'Created in combat' },
   ...PARTNER_MODS.map((mod) => ({ id: mod.tag, title: mod.name })),
 ];
 

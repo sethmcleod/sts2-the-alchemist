@@ -1,6 +1,8 @@
 ---
 import ItemTile from '../../components/ItemTile.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import Sheet from '../../components/Sheet.astro';
+import StatsNote from '../../components/StatsNote.astro';
 import Base from '../../layouts/Base.astro';
 import { runs } from '../../lib/content';
 import { everyLanguage } from '../../lib/i18n';
@@ -20,11 +22,10 @@ const items = powers(l, runs(locale));
   )}
   title={l.t('Powers')}
 >
-  <h1 class="mt-8 mb-2 text-4xl">{l.t('Powers')}</h1>
-  <p class="m-0 max-w-[65ch] text-ink-2">
-    {l.t('The powers Alchemist cards, relics and potions put on a creature. X is the amount the card or relic gives.')}
-  </p>
-  <ul class="item-grid mt-6">
+  <PageHeader title={l.t('Powers')}>
+    <StatsNote href="/stats/mechanics" />
+  </PageHeader>
+  <ul class="item-grid">
     {items.map((item) => (
       <ItemTile item={item} />
     ))}
