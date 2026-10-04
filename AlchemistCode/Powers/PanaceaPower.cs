@@ -16,7 +16,7 @@ namespace Alchemist.AlchemistCode.Powers;
 public class PanaceaPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<AntitoxinPower>() };
@@ -26,6 +26,6 @@ public class PanaceaPower : AlchemistPower
     {
         if (power is not PoisonPower || amount <= 0 || power.Owner != Owner) return;
         Flash();
-        await AntitoxinPower.GrantFrom(this, choiceContext, Owner, 1, Owner);
+        await AntitoxinPower.GrantFrom(this, choiceContext, Owner, Amount, Owner);
     }
 }

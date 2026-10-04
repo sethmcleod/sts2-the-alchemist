@@ -5,6 +5,11 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Mercurial Form power not stacking: each additional now adds 1 Poison and 1 Antitoxin gained each turn
+- Fixed Panacea power not stacking: each additional now adds 1 Antitoxin gained whenever you gain Poison
+
 ## [0.14.23] - 2026-10-02
 
 ### Added
