@@ -5,6 +5,14 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added Quicksilver potion (Brew only): "Gain 1 Energy. Gain an additional 1 Energy at the start of each turn this combat." It replaces Volatile Reagent
+
+### Removed
+
+- Removed Volatile Reagent potion, replaced with Quicksilver
+
 ## [0.14.24] - 2026-10-04
 
 ### Added

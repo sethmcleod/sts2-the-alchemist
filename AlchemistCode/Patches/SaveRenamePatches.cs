@@ -98,8 +98,9 @@ public static class SaveRenamePatches
 
     private static Dictionary<string, ModelId> Potions => new()
     {
-        ["ALCHEMIST-QUICKSILVER_DRAUGHT"] = ModelDb.Potion<Potions.VolatileReagent>().Id!,
-        ["ALCHEMIST-OLEANDER_MILK"] = ModelDb.Potion<Potions.VolatileReagent>().Id!,
+        ["ALCHEMIST-QUICKSILVER_DRAUGHT"] = ModelDb.Potion<Potions.Quicksilver>().Id!,
+        ["ALCHEMIST-OLEANDER_MILK"] = ModelDb.Potion<Potions.Quicksilver>().Id!,
+        ["ALCHEMIST-VOLATILE_REAGENT"] = ModelDb.Potion<Potions.Quicksilver>().Id!,
         ["ALCHEMIST-DECOCTION"] = ModelDb.Potion<Potions.Reduction>().Id!,
     };
 

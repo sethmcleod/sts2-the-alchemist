@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cegq78y8jsey6"
-path="res://.godot/imported/volatile_reagent.png-875b17fe1bd7d92e7b42309b2bf739f0.ctex"
+uid="uid://cs6f4mbh5st2g"
+path="res://.godot/imported/quicksilver_power.png-213d077fc1f5ced4fcf03e1cffdd14e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/potions/outlines/volatile_reagent.png"
-dest_files=["res://.godot/imported/volatile_reagent.png-875b17fe1bd7d92e7b42309b2bf739f0.ctex"]
+source_file="res://Alchemist/images/powers/big/quicksilver_power.png"
+dest_files=["res://.godot/imported/quicksilver_power.png-213d077fc1f5ced4fcf03e1cffdd14e2.ctex"]
 
 [params]
 
