@@ -33,7 +33,6 @@
     "Bought": "Achetée",
     "Brew": "Brassage",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Brassage est une option de Site de repos qui propose de choisir parmi 3 de ces potions. Rien d'autre ne les fabrique, et le Marchand les rachète pour 150 Pièces d'or.",
-    "Brew potion": "Potion brassée",
     "Brew potion, made only at a rest site": "Potion brassée, fabriquée uniquement aux Sites de repos",
     "Brew potions": "Potions brassées",
     "Card rewards": "Récompenses de cartes",
@@ -51,27 +50,20 @@
     "Common Skill": "Compétence commune",
     "Common potion": "Potion commune",
     "Common relic": "Relique commune",
+    "Compendium": "Compendium",
     "Cost": "Coût",
     "Costs {cost} Energy.": "Coûte {cost} d'Énergie.",
     "Created in combat": "Créées en combat",
     "Design notes": "Notes de conception",
     "Drunk": "Bue",
-    "Drunk {n} times per 100 runs": {
-      "one": "Bue {n} fois pour 100 parties",
-      "other": "Bue {n} fois pour 100 parties"
-    },
     "Effect": "Effet",
     "Event Attack": "Attaque d'événement",
     "Event Skill": "Compétence d'événement",
     "Every release of The Alchemist, newest first.": "Toutes les versions de L'Alchimiste, de la plus récente à la plus ancienne.",
     "Filter and sort": "Filtrer et trier",
-    "Filter the card stats": "Filtrer les statistiques des cartes",
-    "Filter the relic and potion stats": "Filtrer les statistiques des reliques et potions",
-    "Filter them": "Les filtrer",
     "Filters": "Filtres",
     "Follow them in a feed reader": "Les suivre avec un lecteur de flux",
     "From {source}": "Via {source}",
-    "From {source}, {line}": "Via {source}, {line}",
     "Get the mod": "Obtenir le mod",
     "GitHub releases": "Versions sur GitHub",
     "Grid": "Grille",
@@ -114,7 +106,6 @@
     "Overview": "Vue d'ensemble",
     "Patch notes": "Notes de mise à jour",
     "Picked at Brew": "Choisie au Brassage",
-    "Picked {share} of the time at Brew": "Choisie dans {share} des cas au Brassage",
     "Plays per run": "Utilisations par partie",
     "Power": "Pouvoir",
     "Powers": "Pouvoirs",
@@ -129,7 +120,6 @@
     "Release on GitHub": "Version sur GitHub",
     "Relic and potion stats": "Statistiques des reliques et potions",
     "Relics": "Reliques",
-    "Relics & potions": "Reliques & potions",
     "Relics and potions": "Reliques et potions",
     "Run stats": "Statistiques des parties",
     "Screenshot": "Capture d'écran",
@@ -168,13 +158,9 @@
     "Starter relic": "Relique de base",
     "Starting deck": "Deck de départ",
     "Stats": "Statistiques",
-    "Stats from {n} solo runs on {span}, at every ascension.": {
-      "one": "Statistiques issues de {n} partie en solo ({span}), à toutes les Ascensions.",
-      "other": "Statistiques issues de {n} parties en solo ({span}), à toutes les Ascensions."
-    },
-    "Stats from {n} solo runs on {span}.": {
-      "one": "Statistiques issues de {n} partie en solo ({span}).",
-      "other": "Statistiques issues de {n} parties en solo ({span})."
+    "Stats from {n} runs on {span}, at every ascension.": {
+      "one": "Statistiques issues de {n} partie ({span}), à toutes les Ascensions.",
+      "other": "Statistiques issues de {n} parties ({span}), à toutes les Ascensions."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Statistiques issues de {runs} parties de {players} joueurs, mises à jour chaque jour.",
     "Steam Workshop, beta branch": "Steam Workshop, branche bêta",
@@ -184,13 +170,9 @@
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "L'Alchimiste en combat près d'une cascade, avec une main de cartes de l'Alchimiste.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "L'Alchimiste sur l'écran de sélection des personnages : une grenouille verte en robe violette, avec un bâton lumineux.",
     "The Alchemist's mod settings: accessibility, analytics and unlocks.": "Les paramètres du mod de l'Alchimiste : accessibilité, statistiques et déblocages.",
-    "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "Les {relics} reliques et {potions} potions de l'Alchimiste, avec le bilan des parties qui les ont utilisées.",
+    "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "Les {relics} reliques, {potions} potions et {powers} pouvoirs de l'Alchimiste.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "L'Alchimiste, un mod de personnage pour Slay the Spire 2 : toutes les cartes, reliques, potions et Pouvoirs, les notes de mise à jour et des statistiques issues de milliers de parties.",
     "The Merchant asking to buy a Brew potion.": "Le Marchand propose de racheter une potion brassée.",
-    "The {n} powers The Alchemist's cards, relics and potions give.": {
-      "one": "{n} Pouvoir conféré par les cartes, reliques et potions de l'Alchimiste.",
-      "other": "Les {n} Pouvoirs conférés par les cartes, reliques et potions de l'Alchimiste."
-    },
     "Theme": "Thème",
     "There is no page at this address.": "Il n'y a aucune page à cette adresse.",
     "There is no page at this address. A card that was renamed or removed keeps no page of its own, but its changes are in the {notes}.": "Il n'y a aucune page à cette adresse. Une carte renommée ou retirée n'a plus de page à elle, mais ses changements figurent dans les {notes}.",
@@ -225,7 +207,6 @@
     "Which runs count": "Quelles parties comptent",
     "Why card win rates run high": "Pourquoi les taux de victoire des cartes sont élevés",
     "Winning runs last longer and finish with more cards, so the middle card wins more often than the overall win rate. That is why each card is ranked against the cards of its own rarity.": "Les parties gagnées durent plus longtemps et se terminent avec plus de cartes : la carte médiane gagne donc plus souvent que ne l'indique le taux de victoire global. C'est pourquoi chaque carte est classée par rapport aux cartes de sa propre rareté.",
-    "Won {rate} · in {share} of runs": "Victoires : {rate} · dans {share} des parties",
     "X is the amount the card, potion or relic gives.": "X est la valeur donnée par la carte, la potion ou la relique.",
     "beta branch": "branche bêta",
     "by cards, relics, potions and powers": "par les cartes, reliques, potions et Pouvoirs",
@@ -298,7 +279,6 @@
       "one": "{n} Ère de la Frise temporelle",
       "other": "{n} Ères de la Frise temporelle"
     },
-    "{stats} compare them with the base game's and show which Ancient choices players take.": "{stats} : comparaison avec celles du jeu de base et choix des joueurs face aux Anciens.",
     "{version} patch notes": "Notes de mise à jour {version}"
   },
   "stats": {

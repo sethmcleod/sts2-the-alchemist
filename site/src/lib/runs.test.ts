@@ -86,7 +86,7 @@ describe('Runs', () => {
 
   it('starts "recent versions" where the newest ones reach 500 solo runs', () => {
     expect(runs.recentStart).toBe('v0.2.0');
-    expect(runs.totals(runs.select(DEFAULT_FILTERS)).runs).toBe(550);
+    expect(runs.totals(runs.select({ ...DEFAULT_FILTERS, players: 'solo' })).runs).toBe(550);
   });
 
   it('filters by players and by one version', () => {

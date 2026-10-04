@@ -33,7 +33,6 @@
     "Bought": "Comprada",
     "Brew": "Preparar",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Preparar é uma opção do Local de Descanso que oferece 3 destas poções para escolher. Nada mais as produz, e o Mercador as compra por 150 de Ouro.",
-    "Brew potion": "Poção preparada",
     "Brew potion, made only at a rest site": "Poção preparada, feita apenas em um Local de Descanso",
     "Brew potions": "Poções preparadas",
     "Card rewards": "Recompensas de cartas",
@@ -51,27 +50,20 @@
     "Common Skill": "Técnica Comum",
     "Common potion": "Poção Comum",
     "Common relic": "Relíquia Comum",
+    "Compendium": "Compêndio",
     "Cost": "Custo",
     "Costs {cost} Energy.": "Custa {cost} de Energia.",
     "Created in combat": "Criadas em combate",
     "Design notes": "Notas de design",
     "Drunk": "Bebida",
-    "Drunk {n} times per 100 runs": {
-      "one": "Bebida {n} vez a cada 100 partidas",
-      "other": "Bebida {n} vezes a cada 100 partidas"
-    },
     "Effect": "Efeito",
     "Event Attack": "Ataque de Evento",
     "Event Skill": "Técnica de Evento",
     "Every release of The Alchemist, newest first.": "Todas as versões do Alquimista, da mais recente para a mais antiga.",
     "Filter and sort": "Filtrar e ordenar",
-    "Filter the card stats": "Filtrar as estatísticas de cartas",
-    "Filter the relic and potion stats": "Filtrar as estatísticas de relíquias e poções",
-    "Filter them": "Filtrar",
     "Filters": "Filtros",
     "Follow them in a feed reader": "Acompanhe em um leitor de feeds",
     "From {source}": "De {source}",
-    "From {source}, {line}": "De {source}, {line}",
     "Get the mod": "Obter o mod",
     "GitHub releases": "Lançamentos no GitHub",
     "Grid": "Grade",
@@ -114,7 +106,6 @@
     "Overview": "Visão geral",
     "Patch notes": "Notas de atualização",
     "Picked at Brew": "Escolhida ao Preparar",
-    "Picked {share} of the time at Brew": "Escolhida em {share} das vezes ao Preparar",
     "Plays per run": "Jogadas por partida",
     "Power": "Poder",
     "Powers": "Poderes",
@@ -129,7 +120,6 @@
     "Release on GitHub": "Lançamento no GitHub",
     "Relic and potion stats": "Estatísticas de relíquias e poções",
     "Relics": "Relíquias",
-    "Relics & potions": "Relíquias e poções",
     "Relics and potions": "Relíquias e poções",
     "Run stats": "Estatísticas de partidas",
     "Screenshot": "Captura de tela",
@@ -168,13 +158,9 @@
     "Starter relic": "Relíquia Inicial",
     "Starting deck": "Baralho inicial",
     "Stats": "Estatísticas",
-    "Stats from {n} solo runs on {span}, at every ascension.": {
-      "one": "Estatísticas de {n} partida individual de {span}, em todas as Ascensões.",
-      "other": "Estatísticas de {n} partidas individuais de {span}, em todas as Ascensões."
-    },
-    "Stats from {n} solo runs on {span}.": {
-      "one": "Estatísticas de {n} partida individual de {span}.",
-      "other": "Estatísticas de {n} partidas individuais de {span}."
+    "Stats from {n} runs on {span}, at every ascension.": {
+      "one": "Estatísticas de {n} partida de {span}, em todas as Ascensões.",
+      "other": "Estatísticas de {n} partidas de {span}, em todas as Ascensões."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Estatísticas de {runs} partidas de {players} jogadores, atualizadas todos os dias.",
     "Steam Workshop, beta branch": "Steam Workshop, canal beta",
@@ -184,13 +170,9 @@
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "O Alquimista em um combate perto de uma cachoeira, com uma mão de cartas do Alquimista.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "O Alquimista na tela de seleção de personagem: um sapo verde com túnica roxa e um cajado brilhante.",
     "The Alchemist's mod settings: accessibility, analytics and unlocks.": "As configurações do mod do Alquimista: acessibilidade, análises e desbloqueios.",
-    "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "As {relics} relíquias e {potions} poções do Alquimista, e como foram as partidas que as usaram.",
+    "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "As {relics} relíquias, {potions} poções e {powers} poderes do Alquimista.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "O Alquimista, um mod de personagem para Slay the Spire 2: todas as cartas, relíquias, poções e poderes, as notas de atualização e estatísticas de milhares de partidas.",
     "The Merchant asking to buy a Brew potion.": "O Mercador pedindo para comprar uma poção preparada.",
-    "The {n} powers The Alchemist's cards, relics and potions give.": {
-      "one": "O {n} poder que as cartas, relíquias e poções do Alquimista concedem.",
-      "other": "Os {n} poderes que as cartas, relíquias e poções do Alquimista concedem."
-    },
     "Theme": "Tema",
     "There is no page at this address.": "Não há nenhuma página neste endereço.",
     "There is no page at this address. A card that was renamed or removed keeps no page of its own, but its changes are in the {notes}.": "Não há nenhuma página neste endereço. Uma carta renomeada ou removida não mantém uma página própria, mas suas mudanças estão nas {notes}.",
@@ -225,7 +207,6 @@
     "Which runs count": "Quais partidas contam",
     "Why card win rates run high": "Por que as porcentagens de vitórias das cartas são altas",
     "Winning runs last longer and finish with more cards, so the middle card wins more often than the overall win rate. That is why each card is ranked against the cards of its own rarity.": "Partidas vitoriosas duram mais e terminam com mais cartas, então a carta do meio vence com mais frequência do que a porcentagem geral de vitórias. Por isso cada carta é comparada com as cartas da mesma raridade.",
-    "Won {rate} · in {share} of runs": "{rate} de vitórias · em {share} das partidas",
     "X is the amount the card, potion or relic gives.": "X é a quantidade que a carta, poção ou relíquia concede.",
     "beta branch": "canal beta",
     "by cards, relics, potions and powers": "por cartas, relíquias, poções e poderes",
@@ -298,7 +279,6 @@
       "one": "{n} Época da Linha do Tempo",
       "other": "{n} Épocas da Linha do Tempo"
     },
-    "{stats} compare them with the base game's and show which Ancient choices players take.": "{stats} as comparam com as do jogo base e mostram quais ofertas dos Ancestrais os jogadores escolhem.",
     "{version} patch notes": "Notas da atualização {version}"
   },
   "stats": {

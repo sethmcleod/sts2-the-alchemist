@@ -2,36 +2,33 @@
 import ItemViews from '../../components/ItemViews.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import Sheet from '../../components/Sheet.astro';
-import StatsNote from '../../components/StatsNote.astro';
-import T from '../../components/T.astro';
 import ViewToggle from '../../components/ViewToggle.astro';
 import Base from '../../layouts/Base.astro';
 import { runs } from '../../lib/content';
 import { everyLanguage } from '../../lib/i18n';
-import { potions, relics } from '../../lib/items';
-
-const { l } = Astro.locals;
+import { compendiumName, potions, powers, relics } from '../../lib/items';
 
 export const getStaticPaths = everyLanguage;
 
-const data = runs(Astro.locals.locale);
+const { l, locale } = Astro.locals;
+const data = runs(locale);
 const relicItems = relics(l, data);
 const potionItems = potions(l, data);
+const powerItems = powers(l, data);
 const brewPotions = potionItems.filter((potion) => potion.rarity === 'Brew');
 const otherPotions = potionItems.filter((potion) => potion.rarity !== 'Brew');
-const description = l.t(
-  "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.",
-  {
-    potions: l.num(potionItems.length),
-    relics: l.num(relicItems.length),
-  },
-);
+const title = compendiumName(l);
+const description = l.t("The Alchemist's {relics} relics, {potions} potions and {powers} powers.", {
+  potions: l.num(potionItems.length),
+  powers: l.num(powerItems.length),
+  relics: l.num(relicItems.length),
+});
 ---
 
-<Base description={description} title={l.t('Relics and potions')}>
-  <PageHeader title={l.t('Relics and potions')}>
+<Base description={description} title={title}>
+  <PageHeader title={title}>
     <ViewToggle slot="actions" />
-    <StatsNote href="/stats/relics" />
+    <a href={l.href('/stats/relics')}>{l.t('Relic and potion stats')}</a>
   </PageHeader>
 
   <section aria-labelledby="relics">
@@ -60,12 +57,11 @@ const description = l.t(
     <ItemViews items={brewPotions} />
   </section>
 
-  <p class="mt-8 text-sm">
-    <T text={l.t("{stats} compare them with the base game's and show which Ancient choices players take.")}>
-      <a href={l.href('/stats/relics')} slot="stats">
-        {l.t('Relic and potion stats')}
-      </a>
-    </T>
-  </p>
+  <section aria-labelledby="powers" class="mt-8">
+    <h2 class="m-0 text-2xl" id="powers">
+      {l.t('Powers')}
+    </h2>
+    <ItemViews items={powerItems} />
+  </section>
   <Sheet slot="end" />
 </Base>

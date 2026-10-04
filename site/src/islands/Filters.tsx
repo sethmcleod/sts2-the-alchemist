@@ -28,9 +28,9 @@ export function filterOptions(l: Lang, runs: Runs): FilterOptions {
 }
 
 const PLAYERS: [FilterValues['players'], (l: Lang) => string][] = [
+  ['all', (l) => l.t('Solo and multiplayer')],
   ['solo', (l) => l.t('Solo')],
   ['coop', (l) => l.t('Multiplayer')],
-  ['all', (l) => l.t('Solo and multiplayer')],
 ];
 const POOLS: Record<string, (l: Lang) => [option: string, clause: string]> = {
   all: (l) => [l.t('Any pool'), ''],

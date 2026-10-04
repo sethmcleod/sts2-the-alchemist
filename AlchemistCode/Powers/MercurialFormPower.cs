@@ -14,7 +14,7 @@ namespace Alchemist.AlchemistCode.Powers;
 public class MercurialFormPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     private int _granted;
 
@@ -29,8 +29,8 @@ public class MercurialFormPower : AlchemistPower
     {
         if (player != Owner.Player) return;
         Flash();
-        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner, 1, Owner, null);
-        await AntitoxinPower.GrantFrom(this, choiceContext, Owner, 1, Owner);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner, Amount, Owner, null);
+        await AntitoxinPower.GrantFrom(this, choiceContext, Owner, Amount, Owner);
         var dose = Owner.GetPowerAmount<PoisonPower>();
         if (dose <= 0) return;
         await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, dose, Owner, null);

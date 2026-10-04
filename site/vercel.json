@@ -75,6 +75,20 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/relics", "destination": "/compendium", "permanent": true },
+    { "source": "/powers", "destination": "/compendium", "permanent": true },
+    {
+      "source": "/:lang(de|es|es-419|fr|id|it|ja|ko|pl|pt-br|ru|th|tr|zh-hans|zh-hant)/relics",
+      "destination": "/:lang/compendium",
+      "permanent": true
+    },
+    {
+      "source": "/:lang(de|es|es-419|fr|id|it|ja|ko|pl|pt-br|ru|th|tr|zh-hans|zh-hant)/powers",
+      "destination": "/:lang/compendium",
+      "permanent": true
+    }
+  ],
   "git": {
     "deploymentEnabled": {
       "*": false,

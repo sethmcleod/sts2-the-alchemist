@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { everyLanguage } from '../../lib/i18n';
+import { compendiumName } from '../../lib/items';
 
 const { l } = Astro.locals;
 
@@ -20,10 +21,7 @@ export const getStaticPaths = everyLanguage;
         <a href={l.href('/')}>{l.t('Cards')}</a>
       </li>
       <li>
-        <a href={l.href('/relics')}>{l.t('Relics and potions')}</a>
-      </li>
-      <li>
-        <a href={l.href('/powers')}>{l.t('Powers')}</a>
+        <a href={l.href('/compendium')}>{compendiumName(l)}</a>
       </li>
       <li>
         <a href={l.href('/notes')}>{l.t('Patch notes')}</a>

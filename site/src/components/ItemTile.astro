@@ -1,7 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import { image } from '../lib/content';
-import { type Item, kindName } from '../lib/items';
+import type { Item } from '../lib/items';
+import { rarityName } from '../lib/views/cards';
 import GameText from './GameText.astro';
 import T from './T.astro';
 
@@ -13,8 +14,7 @@ interface Props {
 
 const { item } = Astro.props;
 const icon = await image(item.info.icon);
-const { line, source } = item;
-const capitalizedLine = line && line[0].toLocaleUpperCase(l.lang) + line.slice(1);
+const { source } = item;
 ---
 
 <li class="item-tile panel" data-place={item.id}>
@@ -24,22 +24,18 @@ const capitalizedLine = line && line[0].toLocaleUpperCase(l.lang) + line.slice(1
       <a class="stretched text-ink no-underline" data-sheet-link href={l.href(item.href)}>
         {item.info.name}
       </a>
-      {item.rarity && <small>{kindName(l, item)}</small>}
+      {item.rarity && <small>{rarityName(l, item.rarity)}</small>}
     </span>
     <span class="item-text">
       <GameText markup={item.info.text} />
     </span>
-    {(source || line) && (
-      <span class="item-line">
-        {source ? (
-          <T text={line ? l.t('From {source}, {line}', { line }) : l.t('From {source}')}>
-            <a class="above-stretched" data-sheet-link href={l.href(source.href)} slot="source">
-              {source.name}
-            </a>
-          </T>
-        ) : (
-          capitalizedLine
-        )}
+    {source && (
+      <span class="item-source">
+        <T text={l.t('From {source}')}>
+          <a class="above-stretched" data-sheet-link href={l.href(source.href)} slot="source">
+            {source.name}
+          </a>
+        </T>
       </span>
     )}
   </div>

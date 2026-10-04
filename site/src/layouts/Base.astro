@@ -95,12 +95,12 @@ const cardStyle =
     {previewImage && <meta content={new URL(previewImage.src, Astro.site)} property="og:image" />}
     <meta content={pageImage ? 'summary' : 'summary_large_image'} name="twitter:card" />
   </head>
-  <body class="min-h-dvh">
+  <body class="flex min-h-dvh flex-col">
     <a class="skip-link" href="#main">
       {l.t('Skip to content')}
     </a>
     <Header />
-    <main class="mx-auto w-full max-w-[80rem] px-4 pb-16" id="main">
+    <main class="mx-auto w-full max-w-[80rem] grow px-4 pb-16" id="main">
       <slot />
     </main>
     <Footer />
