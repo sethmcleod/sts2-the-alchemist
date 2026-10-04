@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import characterIcon from '../../../Alchemist/images/charui/character_icon_alchemist.png';
 import { basePath, LOCALES } from '../lib/i18n';
+import { compendiumName } from '../lib/items';
 import { Lang } from '../lib/lang';
 import { pagePath } from '../lib/links';
 
@@ -10,11 +11,10 @@ const { l, locale } = Astro.locals;
 const links = [
   { href: '/', label: l.t('Cards'), match: (path: string) => path === '/' || path.startsWith('/cards') },
   {
-    href: '/relics',
-    label: l.t('Relics & potions'),
-    match: (path: string) => /^\/(relics|potions)(\/|$)/.test(path),
+    href: '/compendium',
+    label: compendiumName(l),
+    match: (path: string) => /^\/(compendium|relics|potions|powers)(\/|$)/.test(path),
   },
-  { href: '/powers', label: l.t('Powers'), match: (path: string) => path.startsWith('/powers') },
   { href: '/notes', label: l.t('Patch notes'), match: (path: string) => path.startsWith('/notes') },
   { href: '/stats', label: l.t('Stats'), match: (path: string) => path.startsWith('/stats') },
 ];

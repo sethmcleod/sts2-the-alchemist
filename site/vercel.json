@@ -75,6 +75,12 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/relics", "destination": "/compendium", "permanent": true },
+    { "source": "/powers", "destination": "/compendium", "permanent": true },
+    { "source": "/:lang/relics", "destination": "/:lang/compendium", "permanent": true },
+    { "source": "/:lang/powers", "destination": "/:lang/compendium", "permanent": true }
+  ],
   "git": {
     "deploymentEnabled": {
       "*": false,

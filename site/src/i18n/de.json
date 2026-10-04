@@ -51,15 +51,12 @@
     "Common Skill": "Gewöhnliche Fertigkeit",
     "Common potion": "Gewöhnlicher Trank",
     "Common relic": "Gewöhnliches Relikt",
+    "Compendium": "Kompendium",
     "Cost": "Kosten",
     "Costs {cost} Energy.": "Kostet {cost} Energie.",
     "Created in combat": "Im Kampf erzeugt",
     "Design notes": "Designnotizen",
     "Drunk": "Getrunken",
-    "Drunk {n} times per 100 runs": {
-      "one": "{n}-mal pro 100 Runs getrunken",
-      "other": "{n}-mal pro 100 Runs getrunken"
-    },
     "Effect": "Effekt",
     "Event Attack": "Ereignis-Angriff",
     "Event Skill": "Ereignis-Fertigkeit",
@@ -71,7 +68,6 @@
     "Filters": "Filter",
     "Follow them in a feed reader": "Mit einem Feedreader verfolgen",
     "From {source}": "Von {source}",
-    "From {source}, {line}": "Von {source}, {line}",
     "Get the mod": "Mod herunterladen",
     "GitHub releases": "Releases auf GitHub",
     "Grid": "Raster",
@@ -114,7 +110,6 @@
     "Overview": "Übersicht",
     "Patch notes": "Patchnotes",
     "Picked at Brew": "Beim Brauen gewählt",
-    "Picked {share} of the time at Brew": "Beim Brauen in {share} der Fälle gewählt",
     "Plays per run": "Gespielt pro Run",
     "Power": "Macht",
     "Powers": "Mächte",
@@ -129,7 +124,6 @@
     "Release on GitHub": "Release auf GitHub",
     "Relic and potion stats": "Relikt- und Trankstatistiken",
     "Relics": "Relikte",
-    "Relics & potions": "Relikte & Tränke",
     "Relics and potions": "Relikte und Tränke",
     "Run stats": "Run-Statistiken",
     "Screenshot": "Screenshot",
@@ -184,13 +178,9 @@
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "Der Alchemist in einem Kampf an einem Wasserfall, mit einer Hand voller Alchemist-Karten.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "Der Alchemist auf dem Charakterauswahlbildschirm: ein grüner Frosch in lila Gewändern mit einem leuchtenden Stab.",
     "The Alchemist's mod settings: accessibility, analytics and unlocks.": "Die Mod-Einstellungen des Alchemisten: Barrierefreiheit, Analysen und Freischaltungen.",
-    "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "Die {relics} Relikte und {potions} Tränke des Alchemisten und wie die Runs damit verliefen.",
+    "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "Die {relics} Relikte, {potions} Tränke und {powers} Mächte des Alchemisten.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Der Alchemist, eine Charakter-Mod für Slay the Spire 2: alle Karten, Relikte, Tränke und Mächte, die Patchnotes und Statistiken aus Tausenden von Runs.",
     "The Merchant asking to buy a Brew potion.": "Der Händler möchte einen gebrauten Trank kaufen.",
-    "The {n} powers The Alchemist's cards, relics and potions give.": {
-      "one": "{n} Macht, die die Karten, Relikte und Tränke des Alchemisten verleihen.",
-      "other": "Die {n} Mächte, die die Karten, Relikte und Tränke des Alchemisten verleihen."
-    },
     "Theme": "Thema",
     "There is no page at this address.": "Unter dieser Adresse gibt es keine Seite.",
     "There is no page at this address. A card that was renamed or removed keeps no page of its own, but its changes are in the {notes}.": "Unter dieser Adresse gibt es keine Seite. Eine umbenannte oder entfernte Karte hat keine eigene Seite mehr, aber ihre Änderungen stehen in den {notes}.",
@@ -225,7 +215,6 @@
     "Which runs count": "Welche Runs zählen",
     "Why card win rates run high": "Warum Karten hohe Siegesquoten haben",
     "Winning runs last longer and finish with more cards, so the middle card wins more often than the overall win rate. That is why each card is ranked against the cards of its own rarity.": "Gewonnene Runs dauern länger und enden mit mehr Karten, deshalb liegt die Siegesquote der mittleren Karte über der Gesamt-Siegesquote. Darum wird jede Karte mit den Karten ihrer eigenen Seltenheit verglichen.",
-    "Won {rate} · in {share} of runs": "Siegesquote {rate} · in {share} der Runs",
     "X is the amount the card, potion or relic gives.": "X ist der Wert, den die Karte, der Trank oder das Relikt gibt.",
     "beta branch": "Beta-Branch",
     "by cards, relics, potions and powers": "durch Karten, Relikte, Tränke und Mächte",
@@ -298,7 +287,6 @@
       "one": "{n} Zeitstrahl-Epoche",
       "other": "{n} Zeitstrahl-Epochen"
     },
-    "{stats} compare them with the base game's and show which Ancient choices players take.": "Die {stats} vergleichen sie mit denen des Grundspiels und zeigen, was bei den Ahnen gewählt wird.",
     "{version} patch notes": "Patchnotes zu {version}"
   },
   "stats": {

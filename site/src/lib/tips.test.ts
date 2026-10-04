@@ -8,6 +8,7 @@ const TIPS: Tip[] = [
   tip('TRANSFORM', 'Transform', 'Becomes a random card.'),
   tip('ALCHEMIST-FERMENT', 'Ferment', 'This card grows.'),
   tip('ALCHEMIST-FERMENT_REF', 'Ferment', 'These cards grow.'),
+  tip('ALCHEMIST-LACED', 'Laced'),
   tip('ALCHEMIST-MIX', 'Mix'),
   tip('ALCHEMIST-BURSTING_MIX_PLUS', 'Bursting Mix+'),
   tip('ALCHEMIST-TRANSFORM_MIX', 'Transform', 'Becomes a random [gold]Mix[/gold].'),
@@ -27,6 +28,10 @@ describe('tips', () => {
     expect(titles('Add 2 [gold]Mixes[/gold].')).toEqual(['ALCHEMIST-MIX']);
     expect(titles('It is [gold]Exhausted[/gold].')).toEqual(['EXHAUST']);
     expect(titles('Add a [gold]Mix+[/gold].')).toEqual(['ALCHEMIST-MIX']);
+  });
+
+  it('reads purple enchantment names too', () => {
+    expect(titles('Enchant an Attack with [purple]Laced[/purple].')).toEqual(['ALCHEMIST-LACED']);
   });
 
   it('prefers the exact title, "+" and all', () => {

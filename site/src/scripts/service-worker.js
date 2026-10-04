@@ -1,7 +1,7 @@
 const PAGES = 'pages';
 const FILES = 'files';
 const OFFLINE = '/offline';
-const START = ['/', '/relics', '/powers', '/notes', '/stats', OFFLINE];
+const START = ['/', '/compendium', '/notes', '/stats', OFFLINE];
 
 const languagePrefixOf = (url) => {
   const first = new URL(url, self.location.href).pathname.split('/')[1];

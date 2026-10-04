@@ -36,10 +36,10 @@ const isInflectionOf = (word: string, title: string): boolean => {
   );
 };
 
-const goldTerms = (markups: string[]) =>
+const tipTerms = (markups: string[]) =>
   markups.flatMap((markup) =>
     tokens(markup).flatMap((token) =>
-      token.kind === 'text' && token.color === 'gold'
+      token.kind === 'text' && (token.color === 'gold' || token.color === 'purple')
         ? [token.text.replace(TRAILING_PUNCTUATION, '').replace(LEADING_QUOTES, '')]
         : [],
     ),
@@ -51,7 +51,7 @@ export function tipsFor(
   { fallback = [], keywords = [], lang, ownName }: Options,
 ): Tip[] {
   const normalize = (text: string) => text.trim().toLocaleLowerCase(lang);
-  const terms = goldTerms(markups).filter(Boolean);
+  const terms = tipTerms(markups).filter(Boolean);
   const textTerms = new Set(terms.map(normalize));
   const ownKeywords = new Set(keywords.map((keyword) => keyword.toUpperCase()));
   const byTitle = Map.groupBy(tips, (tip) => normalize(tip.title));
@@ -60,7 +60,7 @@ export function tipsFor(
   const score = (tip: Tip) => {
     const id = tip.id.replace(/^[A-Z]+-/, '');
     if (ownKeywords.has(id)) return 1000;
-    const overlap = goldTerms([tip.text]).filter((term) => textTerms.has(normalize(term))).length;
+    const overlap = tipTerms([tip.text]).filter((term) => textTerms.has(normalize(term))).length;
     return (id.endsWith('_REF') ? 100 : 0) + overlap;
   };
   const bestTip = (candidates: Tip[] | undefined) =>

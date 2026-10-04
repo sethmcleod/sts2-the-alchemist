@@ -51,15 +51,12 @@
     "Common Skill": "Habilidad común",
     "Common potion": "Poción común",
     "Common relic": "Reliquia común",
+    "Compendium": "Compendio",
     "Cost": "Costo",
     "Costs {cost} Energy.": "Cuesta {cost} de energía.",
     "Created in combat": "Creadas en combate",
     "Design notes": "Notas de diseño",
     "Drunk": "Bebida",
-    "Drunk {n} times per 100 runs": {
-      "one": "Bebida {n} vez cada 100 partidas",
-      "other": "Bebida {n} veces cada 100 partidas"
-    },
     "Effect": "Efecto",
     "Event Attack": "Ataque de evento",
     "Event Skill": "Habilidad de evento",
@@ -71,7 +68,6 @@
     "Filters": "Filtros",
     "Follow them in a feed reader": "Síguelas con un lector de feeds",
     "From {source}": "De {source}",
-    "From {source}, {line}": "De {source}, {line}",
     "Get the mod": "Obtener el mod",
     "GitHub releases": "Lanzamientos en GitHub",
     "Grid": "Cuadrícula",
@@ -114,7 +110,6 @@
     "Overview": "Resumen",
     "Patch notes": "Notas del parche",
     "Picked at Brew": "Elegida al Preparar",
-    "Picked {share} of the time at Brew": "Elegida el {share} de las veces al Preparar",
     "Plays per run": "Jugadas por partida",
     "Power": "Poder",
     "Powers": "Poderes",
@@ -129,7 +124,6 @@
     "Release on GitHub": "Lanzamiento en GitHub",
     "Relic and potion stats": "Estadísticas de reliquias y pociones",
     "Relics": "Reliquias",
-    "Relics & potions": "Reliquias y pociones",
     "Relics and potions": "Reliquias y pociones",
     "Run stats": "Estadísticas de partidas",
     "Screenshot": "Captura de pantalla",
@@ -184,13 +178,9 @@
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "El Alquimista en un combate junto a una cascada, con una mano de cartas de El Alquimista.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "El Alquimista en la pantalla de selección de personaje: una rana verde con túnica morada y un bastón brillante.",
     "The Alchemist's mod settings: accessibility, analytics and unlocks.": "La configuración del mod de El Alquimista: accesibilidad, estadísticas y desbloqueos.",
-    "The Alchemist's {relics} relics and {potions} potions, with how the runs that used them went.": "Las {relics} reliquias y {potions} pociones de El Alquimista, y cómo les fue a las partidas que las usaron.",
+    "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "Las {relics} reliquias, {potions} pociones y {powers} poderes de El Alquimista.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "El Alquimista, un mod de personaje para Slay the Spire 2: todas sus cartas, reliquias, pociones y poderes, las notas del parche y estadísticas de miles de partidas.",
     "The Merchant asking to buy a Brew potion.": "El Comerciante pide comprar una poción preparada.",
-    "The {n} powers The Alchemist's cards, relics and potions give.": {
-      "one": "El {n} poder que otorgan las cartas, reliquias y pociones de El Alquimista.",
-      "other": "Los {n} poderes que otorgan las cartas, reliquias y pociones de El Alquimista."
-    },
     "Theme": "Tema",
     "There is no page at this address.": "No hay ninguna página en esta dirección.",
     "There is no page at this address. A card that was renamed or removed keeps no page of its own, but its changes are in the {notes}.": "No hay ninguna página en esta dirección. Una carta que cambió de nombre o se eliminó no conserva su propia página, pero sus cambios aparecen en las {notes}.",
@@ -225,7 +215,6 @@
     "Which runs count": "Qué partidas cuentan",
     "Why card win rates run high": "Por qué los porcentajes de victorias de las cartas son altos",
     "Winning runs last longer and finish with more cards, so the middle card wins more often than the overall win rate. That is why each card is ranked against the cards of its own rarity.": "Las partidas ganadas duran más y terminan con más cartas, así que la carta del medio gana con más frecuencia que el porcentaje de victorias general. Por eso cada carta se compara con las cartas de su misma rareza.",
-    "Won {rate} · in {share} of runs": "{rate} de victorias · en el {share} de las partidas",
     "X is the amount the card, potion or relic gives.": "X es la cantidad que otorga la carta, poción o reliquia.",
     "beta branch": "rama beta",
     "by cards, relics, potions and powers": "por cartas, reliquias, pociones y poderes",
@@ -298,7 +287,6 @@
       "one": "{n} era de la Cronología",
       "other": "{n} eras de la Cronología"
     },
-    "{stats} compare them with the base game's and show which Ancient choices players take.": "{stats} las comparan con las del juego base y muestran qué ofertas de los Ancestrales eligen los jugadores.",
     "{version} patch notes": "Notas del parche {version}"
   },
   "stats": {
