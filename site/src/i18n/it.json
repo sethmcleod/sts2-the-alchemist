@@ -33,7 +33,6 @@
     "Bought": "Acquistata",
     "Brew": "Prepara",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Prepara è un'opzione dei luoghi di riposo che permette di scegliere tra 3 di queste pozioni. Nient'altro le crea, e il mercante le compra per 150 unità d'oro.",
-    "Brew potion": "Pozione preparata",
     "Brew potion, made only at a rest site": "Pozione preparata, creata solo nei luoghi di riposo",
     "Brew potions": "Pozioni preparate",
     "Card rewards": "Ricompense di carte",
@@ -62,9 +61,6 @@
     "Event Skill": "Abilità evento",
     "Every release of The Alchemist, newest first.": "Tutte le versioni dell'Alchimista, dalla più recente.",
     "Filter and sort": "Filtra e ordina",
-    "Filter the card stats": "Filtra le statistiche delle carte",
-    "Filter the relic and potion stats": "Filtra le statistiche di reliquie e pozioni",
-    "Filter them": "Filtrale",
     "Filters": "Filtri",
     "Follow them in a feed reader": "Seguile con un lettore di feed",
     "From {source}": "Da {source}",
@@ -162,13 +158,9 @@
     "Starter relic": "Reliquia iniziale",
     "Starting deck": "Mazzo iniziale",
     "Stats": "Statistiche",
-    "Stats from {n} solo runs on {span}, at every ascension.": {
-      "one": "Statistiche da {n} partita in solitario ({span}), a ogni Ascensione.",
-      "other": "Statistiche da {n} partite in solitario ({span}), a ogni Ascensione."
-    },
-    "Stats from {n} solo runs on {span}.": {
-      "one": "Statistiche da {n} partita in solitario ({span}).",
-      "other": "Statistiche da {n} partite in solitario ({span})."
+    "Stats from {n} runs on {span}, at every ascension.": {
+      "one": "Statistiche da {n} partita ({span}), a ogni Ascensione.",
+      "other": "Statistiche da {n} partite ({span}), a ogni Ascensione."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Statistiche da {runs} partite di {players} giocatori, aggiornate ogni giorno.",
     "Steam Workshop, beta branch": "Steam Workshop, versione beta",

@@ -33,7 +33,6 @@
     "Bought": "Achetée",
     "Brew": "Brassage",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Brassage est une option de Site de repos qui propose de choisir parmi 3 de ces potions. Rien d'autre ne les fabrique, et le Marchand les rachète pour 150 Pièces d'or.",
-    "Brew potion": "Potion brassée",
     "Brew potion, made only at a rest site": "Potion brassée, fabriquée uniquement aux Sites de repos",
     "Brew potions": "Potions brassées",
     "Card rewards": "Récompenses de cartes",
@@ -62,9 +61,6 @@
     "Event Skill": "Compétence d'événement",
     "Every release of The Alchemist, newest first.": "Toutes les versions de L'Alchimiste, de la plus récente à la plus ancienne.",
     "Filter and sort": "Filtrer et trier",
-    "Filter the card stats": "Filtrer les statistiques des cartes",
-    "Filter the relic and potion stats": "Filtrer les statistiques des reliques et potions",
-    "Filter them": "Les filtrer",
     "Filters": "Filtres",
     "Follow them in a feed reader": "Les suivre avec un lecteur de flux",
     "From {source}": "Via {source}",
@@ -162,13 +158,9 @@
     "Starter relic": "Relique de base",
     "Starting deck": "Deck de départ",
     "Stats": "Statistiques",
-    "Stats from {n} solo runs on {span}, at every ascension.": {
-      "one": "Statistiques issues de {n} partie en solo ({span}), à toutes les Ascensions.",
-      "other": "Statistiques issues de {n} parties en solo ({span}), à toutes les Ascensions."
-    },
-    "Stats from {n} solo runs on {span}.": {
-      "one": "Statistiques issues de {n} partie en solo ({span}).",
-      "other": "Statistiques issues de {n} parties en solo ({span})."
+    "Stats from {n} runs on {span}, at every ascension.": {
+      "one": "Statistiques issues de {n} partie ({span}), à toutes les Ascensions.",
+      "other": "Statistiques issues de {n} parties ({span}), à toutes les Ascensions."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Statistiques issues de {runs} parties de {players} joueurs, mises à jour chaque jour.",
     "Steam Workshop, beta branch": "Steam Workshop, branche bêta",

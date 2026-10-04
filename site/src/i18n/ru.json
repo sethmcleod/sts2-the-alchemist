@@ -33,7 +33,6 @@
     "Bought": "Куплено",
     "Brew": "Варка",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Вариант «Варить» в лагере предлагает на выбор 3 таких зелья. Другим способом их не получить, а Торговец покупает их за 150 золота.",
-    "Brew potion": "Сваренное зелье",
     "Brew potion, made only at a rest site": "Сваренное зелье, создается только в лагере",
     "Brew potions": "Сваренные зелья",
     "Card rewards": "Наградные карты",
@@ -62,9 +61,6 @@
     "Event Skill": "Навык события",
     "Every release of The Alchemist, newest first.": "Все версии «Алхимика», от новых к старым.",
     "Filter and sort": "Фильтры и сортировка",
-    "Filter the card stats": "Отфильтровать статистику карт",
-    "Filter the relic and potion stats": "Отфильтровать статистику реликвий и зелий",
-    "Filter them": "Отфильтровать",
     "Filters": "Фильтры",
     "Follow them in a feed reader": "Следить через программу для чтения лент",
     "From {source}": "Источник: {source}",
@@ -168,17 +164,11 @@
     "Starter relic": "Начальная реликвия",
     "Starting deck": "Стартовая колода",
     "Stats": "Статистика",
-    "Stats from {n} solo runs on {span}, at every ascension.": {
-      "one": "Статистика: {n} одиночная вылазка ({span}), все уровни Возвышения.",
-      "few": "Статистика: {n} одиночные вылазки ({span}), все уровни Возвышения.",
-      "many": "Статистика: {n} одиночных вылазок ({span}), все уровни Возвышения.",
-      "other": "Статистика: {n} одиночной вылазки ({span}), все уровни Возвышения."
-    },
-    "Stats from {n} solo runs on {span}.": {
-      "one": "Статистика: {n} одиночная вылазка ({span}).",
-      "few": "Статистика: {n} одиночные вылазки ({span}).",
-      "many": "Статистика: {n} одиночных вылазок ({span}).",
-      "other": "Статистика: {n} одиночной вылазки ({span})."
+    "Stats from {n} runs on {span}, at every ascension.": {
+      "one": "Статистика: {n} вылазка ({span}), все уровни Возвышения.",
+      "few": "Статистика: {n} вылазки ({span}), все уровни Возвышения.",
+      "many": "Статистика: {n} вылазок ({span}), все уровни Возвышения.",
+      "other": "Статистика: {n} вылазки ({span}), все уровни Возвышения."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Статистика обновляется ежедневно. Вылазок: {runs}, игроков: {players}.",
     "Steam Workshop, beta branch": "Steam Workshop, бета-ветка",

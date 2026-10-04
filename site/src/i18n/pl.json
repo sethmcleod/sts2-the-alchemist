@@ -33,7 +33,6 @@
     "Bought": "Kupiono",
     "Brew": "Warzenie",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Warzenie to opcja w Obozowisku, która daje do wyboru 3 z tych mikstur. Nie da się ich zdobyć w inny sposób, a Handlarz kupuje je za 150 szt. Złota.",
-    "Brew potion": "Mikstura z Warzenia",
     "Brew potion, made only at a rest site": "Mikstura z Warzenia, powstaje tylko w Obozowisku",
     "Brew potions": "Mikstury z Warzenia",
     "Card rewards": "Karty z łupów",
@@ -62,9 +61,6 @@
     "Event Skill": "Unikalna Umiejętność",
     "Every release of The Alchemist, newest first.": "Wszystkie wydania Alchemika, od najnowszego.",
     "Filter and sort": "Filtruj i sortuj",
-    "Filter the card stats": "Filtruj statystyki kart",
-    "Filter the relic and potion stats": "Filtruj statystyki artefaktów i mikstur",
-    "Filter them": "Filtruj je",
     "Filters": "Filtry",
     "Follow them in a feed reader": "Śledź je w czytniku kanałów",
     "From {source}": "Źródło: {source}",
@@ -168,17 +164,11 @@
     "Starter relic": "Startowy Artefakt",
     "Starting deck": "Talia startowa",
     "Stats": "Statystyki",
-    "Stats from {n} solo runs on {span}, at every ascension.": {
-      "one": "Statystyki z {n} wyprawy solo ({span}), na każdym poziomie Wyniesienia.",
-      "few": "Statystyki z {n} wypraw solo ({span}), na każdym poziomie Wyniesienia.",
-      "many": "Statystyki z {n} wypraw solo ({span}), na każdym poziomie Wyniesienia.",
-      "other": "Statystyki z {n} wyprawy solo ({span}), na każdym poziomie Wyniesienia."
-    },
-    "Stats from {n} solo runs on {span}.": {
-      "one": "Statystyki z {n} wyprawy solo ({span}).",
-      "few": "Statystyki z {n} wypraw solo ({span}).",
-      "many": "Statystyki z {n} wypraw solo ({span}).",
-      "other": "Statystyki z {n} wyprawy solo ({span})."
+    "Stats from {n} runs on {span}, at every ascension.": {
+      "one": "Statystyki z {n} wyprawy ({span}), na każdym poziomie Wyniesienia.",
+      "few": "Statystyki z {n} wypraw ({span}), na każdym poziomie Wyniesienia.",
+      "many": "Statystyki z {n} wypraw ({span}), na każdym poziomie Wyniesienia.",
+      "other": "Statystyki z {n} wyprawy ({span}), na każdym poziomie Wyniesienia."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Statystyki z {runs} wypraw rozegranych przez {players} graczy, aktualizowane codziennie.",
     "Steam Workshop, beta branch": "Steam Workshop, gałąź beta",

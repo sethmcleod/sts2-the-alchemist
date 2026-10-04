@@ -33,7 +33,6 @@
     "Bought": "Comprada",
     "Brew": "Preparar",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Preparar é uma opção do Local de Descanso que oferece 3 destas poções para escolher. Nada mais as produz, e o Mercador as compra por 150 de Ouro.",
-    "Brew potion": "Poção preparada",
     "Brew potion, made only at a rest site": "Poção preparada, feita apenas em um Local de Descanso",
     "Brew potions": "Poções preparadas",
     "Card rewards": "Recompensas de cartas",
@@ -62,9 +61,6 @@
     "Event Skill": "Técnica de Evento",
     "Every release of The Alchemist, newest first.": "Todas as versões do Alquimista, da mais recente para a mais antiga.",
     "Filter and sort": "Filtrar e ordenar",
-    "Filter the card stats": "Filtrar as estatísticas de cartas",
-    "Filter the relic and potion stats": "Filtrar as estatísticas de relíquias e poções",
-    "Filter them": "Filtrar",
     "Filters": "Filtros",
     "Follow them in a feed reader": "Acompanhe em um leitor de feeds",
     "From {source}": "De {source}",
@@ -162,13 +158,9 @@
     "Starter relic": "Relíquia Inicial",
     "Starting deck": "Baralho inicial",
     "Stats": "Estatísticas",
-    "Stats from {n} solo runs on {span}, at every ascension.": {
-      "one": "Estatísticas de {n} partida individual de {span}, em todas as Ascensões.",
-      "other": "Estatísticas de {n} partidas individuais de {span}, em todas as Ascensões."
-    },
-    "Stats from {n} solo runs on {span}.": {
-      "one": "Estatísticas de {n} partida individual de {span}.",
-      "other": "Estatísticas de {n} partidas individuais de {span}."
+    "Stats from {n} runs on {span}, at every ascension.": {
+      "one": "Estatísticas de {n} partida de {span}, em todas as Ascensões.",
+      "other": "Estatísticas de {n} partidas de {span}, em todas as Ascensões."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Estatísticas de {runs} partidas de {players} jogadores, atualizadas todos os dias.",
     "Steam Workshop, beta branch": "Steam Workshop, canal beta",

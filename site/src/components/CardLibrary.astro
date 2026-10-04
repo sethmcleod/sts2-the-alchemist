@@ -5,7 +5,6 @@ import { CARD_GROUPS, PARTNER_MODS, partnerMod, RARITIES, RARITY_NAME, slug, ste
 import type { Rarity } from '../lib/types';
 import CardTile from './CardTile.astro';
 import External from './External.astro';
-import StatsNote from './StatsNote.astro';
 import T from './T.astro';
 
 const { l } = Astro.locals;
@@ -69,8 +68,10 @@ const selectClass = 'field-control min-w-0';
     <output aria-live="polite" class="text-sm text-ink-2 tabular-nums" data-count>
       {l.n(cards.length, '{n} card', '{n} cards')}
     </output>
-    <StatsNote class="text-sm text-muted sm:ml-auto" href="/stats/cards" />
   </div>
+  <p class="mt-1 mb-0 text-sm">
+    <a href={l.href('/stats/cards')}>{l.t('Card stats')}</a>
+  </p>
 
   <form aria-label={l.t('Cards')} class="toolbar" data-words={scriptWords} id="library" role="search">
     <input

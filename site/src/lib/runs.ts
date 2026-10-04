@@ -35,7 +35,7 @@ export const DEFAULT_FILTERS: Filters = {
   ascension: 'all',
   build: 'all',
   min: 10,
-  players: 'solo',
+  players: 'all',
   pool: 'all',
   version: 'recent',
 };

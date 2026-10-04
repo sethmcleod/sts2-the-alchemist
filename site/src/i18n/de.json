@@ -33,7 +33,6 @@
     "Bought": "Gekauft",
     "Brew": "Brauen",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Brauen ist eine Lagerfeuer-Option, die 3 dieser Tränke zur Wahl stellt. Nichts anderes stellt sie her, und der Händler kauft sie für 150 Gold an.",
-    "Brew potion": "Gebrauter Trank",
     "Brew potion, made only at a rest site": "Gebrauter Trank, nur am Lagerfeuer hergestellt",
     "Brew potions": "Gebraute Tränke",
     "Card rewards": "Kartenbelohnungen",
@@ -62,9 +61,6 @@
     "Event Skill": "Ereignis-Fertigkeit",
     "Every release of The Alchemist, newest first.": "Jede Version des Alchemisten, die neueste zuerst.",
     "Filter and sort": "Filtern und sortieren",
-    "Filter the card stats": "Kartenstatistiken filtern",
-    "Filter the relic and potion stats": "Relikt- und Trankstatistiken filtern",
-    "Filter them": "Filtern",
     "Filters": "Filter",
     "Follow them in a feed reader": "Mit einem Feedreader verfolgen",
     "From {source}": "Von {source}",
@@ -162,13 +158,9 @@
     "Starter relic": "Startrelikt",
     "Starting deck": "Startdeck",
     "Stats": "Statistiken",
-    "Stats from {n} solo runs on {span}, at every ascension.": {
-      "one": "Statistiken aus {n} Solo-Run in {span}, auf allen Aufstiegsstufen.",
-      "other": "Statistiken aus {n} Solo-Runs in {span}, auf allen Aufstiegsstufen."
-    },
-    "Stats from {n} solo runs on {span}.": {
-      "one": "Statistiken aus {n} Solo-Run in {span}.",
-      "other": "Statistiken aus {n} Solo-Runs in {span}."
+    "Stats from {n} runs on {span}, at every ascension.": {
+      "one": "Statistiken aus {n} Run in {span}, auf allen Aufstiegsstufen.",
+      "other": "Statistiken aus {n} Runs in {span}, auf allen Aufstiegsstufen."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Statistiken aus {runs} Runs von {players} Spieler:innen, täglich aktualisiert.",
     "Steam Workshop, beta branch": "Steam Workshop, Beta-Branch",

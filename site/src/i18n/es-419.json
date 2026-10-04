@@ -33,7 +33,6 @@
     "Bought": "Comprada",
     "Brew": "Preparar",
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Preparar es una opción del punto de descanso que te deja elegir entre 3 de estas pociones. No se obtienen de ninguna otra forma, y el Comerciante las compra por 150 de oro.",
-    "Brew potion": "Poción preparada",
     "Brew potion, made only at a rest site": "Poción preparada, solo se obtiene en un punto de descanso",
     "Brew potions": "Pociones preparadas",
     "Card rewards": "Recompensas de cartas",
@@ -62,9 +61,6 @@
     "Event Skill": "Habilidad de evento",
     "Every release of The Alchemist, newest first.": "Todas las versiones de El Alquimista, de la más reciente a la más antigua.",
     "Filter and sort": "Filtrar y ordenar",
-    "Filter the card stats": "Filtrar las estadísticas de cartas",
-    "Filter the relic and potion stats": "Filtrar las estadísticas de reliquias y pociones",
-    "Filter them": "Filtrarlas",
     "Filters": "Filtros",
     "Follow them in a feed reader": "Síguelas con un lector de feeds",
     "From {source}": "De {source}",
@@ -162,13 +158,9 @@
     "Starter relic": "Reliquia básica",
     "Starting deck": "Mazo inicial",
     "Stats": "Estadísticas",
-    "Stats from {n} solo runs on {span}, at every ascension.": {
-      "one": "Estadísticas de {n} partida en solitario de {span}, en todas las ascensiones.",
-      "other": "Estadísticas de {n} partidas en solitario de {span}, en todas las ascensiones."
-    },
-    "Stats from {n} solo runs on {span}.": {
-      "one": "Estadísticas de {n} partida en solitario de {span}.",
-      "other": "Estadísticas de {n} partidas en solitario de {span}."
+    "Stats from {n} runs on {span}, at every ascension.": {
+      "one": "Estadísticas de {n} partida de {span}, en todas las ascensiones.",
+      "other": "Estadísticas de {n} partidas de {span}, en todas las ascensiones."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Estadísticas de {runs} partidas de {players} jugadores, actualizadas a diario.",
     "Steam Workshop, beta branch": "Steam Workshop, rama beta",

@@ -58,18 +58,15 @@ const labels = [
           </a>
         </T>{' '}
         {detail.stats.length > 0 ? (
-          <>
-            <T
-              text={l.n(
-                detail.runs,
-                'Stats from {n} solo run on {span}, at every ascension.',
-                'Stats from {n} solo runs on {span}, at every ascension.',
-              )}
-            >
-              <StatsSpan slot="span" />
-            </T>{' '}
-            <a href={l.href('/stats/cards')}>{l.t('Filter the card stats')}</a>
-          </>
+          <T
+            text={l.n(
+              detail.runs,
+              'Stats from {n} run on {span}, at every ascension.',
+              'Stats from {n} runs on {span}, at every ascension.',
+            )}
+          >
+            <StatsSpan slot="span" />
+          </T>
         ) : info.rarity === 'Token' ? (
           l.t('Made during a fight, so it never ends a run in a deck.')
         ) : (
