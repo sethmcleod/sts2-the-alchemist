@@ -13,6 +13,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 - Fixed Mercurial Form power not stacking: each additional now adds 1 Poison and 1 Antitoxin gained each turn
 - Fixed Panacea power not stacking: each additional now adds 1 Antitoxin gained whenever you gain Poison
+- Fixed the mod breaking on some Linux systems, such as Fedora and Bazzite: card costs could show a missing icon, card text could fail to load, combat could freeze, and the Alchemist could become unselectable
 
 ## [0.14.23] - 2026-10-02
 
