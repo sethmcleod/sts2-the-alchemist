@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Changed
+
+- Updated art for Hiccup card
+
 ### Fixed
 
 - Fixed Mercurial Form power not stacking: each additional now adds 1 Poison and 1 Antitoxin gained each turn
