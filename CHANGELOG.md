@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.14.25] - 2026-10-05
+
 ### Added
 
 - Added final art for Acrid Mix
