@@ -39,7 +39,7 @@ public static class EpochGating
         // If the epoch system is off, this unlocks everything that the Timeline gates. The same has
         // to hold when the game has no epoch registry to register into: the gates were never built,
         // so honouring them would hide most of the mod behind a Timeline that cannot be revealed
-        if (!AlchemistModConfig.EnableEpochs || !EpochRegistration.Supported) return true;
+        if (!EffectiveSettings.EnableEpochs || !EpochRegistration.Supported) return true;
         return !gates.TryGetValue(id, out var revealed) || revealed(unlockState);
     }
 

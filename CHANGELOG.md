@@ -11,6 +11,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Fixed Dusty Tome relic being able to give Wormwood, which now comes only from Archaic Tooth
 - Fixed Dusty Tome relic being able to give Hiccup (Ancients Awakened), which now comes only from Experimental Serum
 - Fixed Orobas offering Swamp Glass relic in runs without an Alchemist when the Separate Card Pool setting is on
+- Fixed multiplayer runs desyncing when players had different Timeline Epochs or Separate Card Pool settings; both settings now apply to single-player runs only
 
 ## [0.14.24] - 2026-10-04
 

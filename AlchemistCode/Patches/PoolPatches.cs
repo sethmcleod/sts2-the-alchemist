@@ -24,7 +24,7 @@ public static class PoolPatches
     // Only inside an active run, so the menus and the compendium stay correct
     private static bool ShouldStrip()
     {
-        if (!AlchemistModConfig.KeepPoolsSeparate) return false;
+        if (!EffectiveSettings.KeepPoolsSeparate) return false;
         var state = RunManager.Instance.DebugOnlyGetState();
         if (state == null) return false;
         return !state.Players.Any(p => p.Character is AlchemistCharacter);
