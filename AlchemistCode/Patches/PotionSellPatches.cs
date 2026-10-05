@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Potions;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
@@ -82,7 +81,7 @@ public static class PotionSellPatches
 
     // Only what the Alchemist brewed himself has resale value, which is what makes Brew a gold engine
     // as well as a potion source. Foul stays sellable because throwing it at the merchant already pays
-    private static bool IsSellable(PotionModel potion) =>
+    internal static bool IsSellable(PotionModel potion) =>
         SellingEnabledFor(potion.Owner) && potion is IBrewOnly or FoulPotion;
 
     // A Foul potion is sellable too: throwing it at the merchant already grants Gold, so a Sell button is the
@@ -116,13 +115,13 @@ public static class PotionSellPatches
     // metric for Potions bought and these were not bought. A mid-shop reload drops the set, which only
     // means the Merchant will buy those Potions again, so nothing breaks
     private static object? _procuredVisit;
-    private static readonly HashSet<ModelId> _procuredThisVisit = new();
+    private static readonly HashSet<(ulong Player, ModelId Potion)> _procuredThisVisit = new();
 
     private static bool CameFromThisMerchant(PotionModel potion, Player owner)
     {
         var visit = owner.RunState.CurrentMapPointHistoryEntry;
         return visit != null && ReferenceEquals(visit, _procuredVisit)
-            && _procuredThisVisit.Contains(potion.Id);
+            && _procuredThisVisit.Contains((owner.NetId, potion.Id));
     }
 
     // Every Potion the player gains passes through TryToProcure, whatever handed it over, so one postfix
@@ -141,7 +140,7 @@ public static class PotionSellPatches
                 _procuredVisit = visit;
                 _procuredThisVisit.Clear();
             }
-            _procuredThisVisit.Add(potion.Id);
+            _procuredThisVisit.Add((player.NetId, potion.Id));
         }
     }
 
@@ -179,13 +178,18 @@ public static class PotionSellPatches
 
     private static int _sellIndex;
 
-    private static async Task SellPotion(PotionModel potion)
+    internal static async Task CompleteSale(PotionModel potion)
     {
-        var gold = GetGoldFor(potion);
         var owner = potion.Owner;
+        var gold = GetGoldFor(potion);
         PotionSaleCounter.RecordSale(owner);
         potion.RemoveBeforeUse();
+        if (LocalContext.IsMe(owner)) PlaySaleFeedback();
+        await PlayerCmd.GainGold(gold, owner);
+    }
 
+    private static void PlaySaleFeedback()
+    {
         if (!_soldThisVisit)
         {
             _soldThisVisit = true;
@@ -194,15 +198,10 @@ public static class PotionSellPatches
         }
 
         SfxCmd.Play("event:/sfx/npcs/merchant/merchant_thank_yous");
-        var merchantRoom = NMerchantRoom.Instance;
-        if (merchantRoom != null)
-        {
-            var line = SellLines[_sellIndex++ % SellLines.Length];
-            merchantRoom.MerchantButton.PlayDialogue(line);
-            NGame.Instance?.ScreenRumble(ShakeStrength.Medium, ShakeDuration.Short, RumbleStyle.Rumble);
-        }
-
-        await PlayerCmd.GainGold(gold, owner);
+        if (NMerchantRoom.Instance is not { } merchantRoom) return;
+        var line = SellLines[_sellIndex++ % SellLines.Length];
+        merchantRoom.MerchantButton.PlayDialogue(line);
+        NGame.Instance?.ScreenRumble(ShakeStrength.Medium, ShakeDuration.Short, RumbleStyle.Rumble);
     }
 
     [HarmonyPatch(typeof(NPotionPopup), "_Ready")]
@@ -298,9 +297,16 @@ public static class PotionSellPatches
 
     private static void OnSellPressed(NPotionPopup popup, PotionModel potion)
     {
+        var owner = potion.Owner;
+        var slot = owner.PotionSlots.ToList().IndexOf(potion);
+        if (slot < 0)
+        {
+            popup.Remove();
+            return;
+        }
         var holder = (NPotionHolder)HolderField.GetValue(popup)!;
         holder.DisableUntilPotionRemoved();
-        TaskHelper.RunSafely(SellPotion(potion));
+        RunManager.Instance.ActionQueueSynchronizer.RequestEnqueue(new SellPotionGameAction(owner, (uint)slot));
         popup.Remove();
     }
 
