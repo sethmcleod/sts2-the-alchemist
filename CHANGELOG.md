@@ -5,9 +5,13 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added final art for Acrid Mix
+
 ### Fixed
 
-- Fixed the Orobas event never offering Archaic Tooth relic to the Alchemist; it now transforms Jab -> Wormwood
+- Fixed the Orobas event never offering Archaic Tooth relic to the Alchemist; it now properly transforms Jab into Wormwood
 - Fixed Dusty Tome relic being able to give Wormwood, which now comes only from Archaic Tooth
 - Fixed Dusty Tome relic being able to give Hiccup (Ancients Awakened), which now comes only from Experimental Serum
 - Fixed Orobas offering Swamp Glass relic in runs without an Alchemist when the Separate Card Pool setting is on
