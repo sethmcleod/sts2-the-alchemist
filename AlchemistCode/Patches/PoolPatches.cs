@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using HarmonyLib;
 using Alchemist.AlchemistCode.Config;
 using AlchemistCharacter = Alchemist.AlchemistCode.Character.Alchemist;
 using AlchemistCards = Alchemist.AlchemistCode.Character.AlchemistCardPool;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Unlocks;
@@ -46,5 +48,29 @@ public static class PoolPatches
         if (__result || !ShouldStrip()) return;
         var required = ModelDb.AllCharacters.Count(c => c is not AlchemistCharacter);
         __result = player.UnlockState.CharacterCardPools.Count() == required;
+    }
+
+    [HarmonyPatch(typeof(Orobas), "GenerateInitialOptions")]
+    [HarmonyTranspiler]
+    private static IEnumerable<CodeInstruction> StripAlchemistSeaGlass(IEnumerable<CodeInstruction> instructions)
+    {
+        var codes = instructions.ToList();
+        var getter = AccessTools.PropertyGetter(typeof(UnlockState), nameof(UnlockState.Characters));
+        var read = codes.Find(c => c.Calls(getter));
+        if (read == null)
+        {
+            MainFile.Logger.Warn("[Pools] Orobas no longer reads UnlockState.Characters, so Sea Glass can offer "
+                + "Alchemist cards in a run with no Alchemist");
+            return codes;
+        }
+        read.opcode = OpCodes.Call;
+        read.operand = AccessTools.Method(typeof(PoolPatches), nameof(SeaGlassCharacters));
+        return codes;
+    }
+
+    private static IEnumerable<CharacterModel> SeaGlassCharacters(UnlockState unlockState)
+    {
+        var characters = unlockState.Characters;
+        return ShouldStrip() ? characters.Where(c => c is not AlchemistCharacter) : characters;
     }
 }
