@@ -10,6 +10,8 @@
   "ALCHEMIST-GOLD_LEAF.title": "Gold Leaf",
   "ALCHEMIST-MARSH_TONIC.description": "Gain [blue]8[/blue] [gold]Block[/gold]. Gain [blue]6[/blue] [gold]Antitoxin[/gold]. Gain [blue]4[/blue] [gold]Poison[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Marsh Tonic",
+  "ALCHEMIST-QUICKSILVER.description": "Gain {energyPrefix:energyIcons(1)}. Gain an additional {energyPrefix:energyIcons(1)} at the start of each turn this combat.",
+  "ALCHEMIST-QUICKSILVER.title": "Quicksilver",
   "ALCHEMIST-REDUCTION.description": "[gold]Exhaust[/gold] up to [blue]3[/blue] cards in your [gold]Hand[/gold]. Gain {energyPrefix:energyIcons(1)} and draw [blue]1[/blue] card for each card [gold]Exhausted[/gold].",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Choose up to [blue]3[/blue] cards to [gold]Exhaust[/gold].",
   "ALCHEMIST-REDUCTION.title": "Reduction",
@@ -20,7 +22,5 @@
   "ALCHEMIST-SOLVENT.description": "Remove all [gold]Artifact[/gold] and [gold]Block[/gold] from ALL enemies. Apply [blue]2[/blue] [gold]Vulnerable[/gold] to ALL enemies.",
   "ALCHEMIST-SOLVENT.title": "Solvent",
   "ALCHEMIST-STARTER_CULTURE.description": "ALL [gold]Ferment[/gold] cards in your [gold]Hand[/gold] [gold]Ferment[/gold] [blue]4[/blue].",
-  "ALCHEMIST-STARTER_CULTURE.title": "Starter Culture",
-  "ALCHEMIST-VOLATILE_REAGENT.description": "Whenever you play a card this turn, deal [blue]5[/blue] damage to ALL enemies.",
-  "ALCHEMIST-VOLATILE_REAGENT.title": "Volatile Reagent"
+  "ALCHEMIST-STARTER_CULTURE.title": "Starter Culture"
 }

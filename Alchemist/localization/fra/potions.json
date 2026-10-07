@@ -10,6 +10,8 @@
   "ALCHEMIST-GOLD_LEAF.title": "Feuille d'or",
   "ALCHEMIST-MARSH_TONIC.description": "Gagnez [blue]8[/blue] d'[gold]Armure[/gold]. Gagnez [blue]6[/blue] d'[gold]Antitoxine[/gold]. Gagnez [blue]4[/blue] de [gold]Poison[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Tonique des marais",
+  "ALCHEMIST-QUICKSILVER.description": "Gagnez {energyPrefix:energyIcons(1)}. Gagnez {energyPrefix:energyIcons(1)} supplémentaire au début de chaque tour pendant ce combat.",
+  "ALCHEMIST-QUICKSILVER.title": "Vif-argent",
   "ALCHEMIST-REDUCTION.description": "[gold]Épuisez[/gold] jusqu'à [blue]3[/blue] cartes de votre [gold]Main[/gold]. Gagnez {energyPrefix:energyIcons(1)} et piochez [blue]1[/blue] carte pour chaque carte [gold]Épuisée[/gold].",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Choisissez jusqu'à [blue]3[/blue] cartes à [gold]Épuiser[/gold].",
   "ALCHEMIST-REDUCTION.title": "Réduction",
@@ -20,7 +22,5 @@
   "ALCHEMIST-SOLVENT.description": "Retirez tous les [gold]Artéfacts[/gold] et toute l'[gold]Armure[/gold] de TOUS les ennemis. Appliquez [gold]Vulnérable[/gold] ([blue]2[/blue]) à TOUS les ennemis.",
   "ALCHEMIST-SOLVENT.title": "Solvant",
   "ALCHEMIST-STARTER_CULTURE.description": "TOUTES les cartes [gold]Fermentation[/gold] de votre [gold]Main[/gold] [gold]Fermentent[/gold] [blue]4[/blue] fois.",
-  "ALCHEMIST-STARTER_CULTURE.title": "Levain",
-  "ALCHEMIST-VOLATILE_REAGENT.description": "Lorsque vous jouez une carte pendant ce tour, infligez [blue]5[/blue] dégâts à TOUS les ennemis.",
-  "ALCHEMIST-VOLATILE_REAGENT.title": "Réactif volatil"
+  "ALCHEMIST-STARTER_CULTURE.title": "Levain"
 }

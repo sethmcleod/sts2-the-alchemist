@@ -10,6 +10,8 @@
   "ALCHEMIST-GOLD_LEAF.title": "ทองคำเปลว",
   "ALCHEMIST-MARSH_TONIC.description": "ได้รับ [blue]8[/blue] [gold]บล็อก[/gold] ได้รับ [blue]6[/blue] [gold]สารต้านพิษ[/gold] ได้รับ [blue]4[/blue] [gold]พิษ[/gold]",
   "ALCHEMIST-MARSH_TONIC.title": "ยาบำรุงบึงเลน",
+  "ALCHEMIST-QUICKSILVER.description": "ได้รับ {energyPrefix:energyIcons(1)} และได้รับเพิ่มอีก {energyPrefix:energyIcons(1)} ตอนเริ่มต้นในแต่ละเทิร์นในการต่อสู้นี้",
+  "ALCHEMIST-QUICKSILVER.title": "เงินเหลว",
   "ALCHEMIST-REDUCTION.description": "[gold]สลาย[/gold]การ์ดได้สูงสุด [blue]3[/blue] ใบใน[gold]มือ[/gold] ได้รับ {energyPrefix:energyIcons(1)} และจั่วการ์ด [blue]1[/blue] ใบตามจำนวนการ์ดที่[gold]ถูกสลาย[/gold]",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "เลือกการ์ดได้สูงสุด [blue]3[/blue] ใบเพื่อ[gold]สลาย[/gold]",
   "ALCHEMIST-REDUCTION.title": "ยาเคี่ยว",
@@ -20,7 +22,5 @@
   "ALCHEMIST-SOLVENT.description": "กำจัด[gold]อาคม[/gold]และ[gold]บล็อก[/gold]ทั้งหมดจากศัตรูทั้งหมด สร้าง [blue]2[/blue] [gold]จุดอ่อน[/gold]ใส่ศัตรูทั้งหมด",
   "ALCHEMIST-SOLVENT.title": "ตัวทำละลาย",
   "ALCHEMIST-STARTER_CULTURE.description": "การ์ด[gold]บ่ม[/gold]ทั้งหมดใน[gold]มือ[/gold][gold]บ่ม[/gold] [blue]4[/blue] ครั้ง",
-  "ALCHEMIST-STARTER_CULTURE.title": "หัวเชื้อ",
-  "ALCHEMIST-VOLATILE_REAGENT.description": "ทุกครั้งที่คุณเล่นการ์ดในเทิร์นนี้ สร้างความเสียหาย [blue]5[/blue] ใส่ศัตรูทั้งหมด",
-  "ALCHEMIST-VOLATILE_REAGENT.title": "สารระเหยไว"
+  "ALCHEMIST-STARTER_CULTURE.title": "หัวเชื้อ"
 }

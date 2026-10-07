@@ -8,12 +8,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 ### Added
 
 - Added final art for Syrupy Mix and Zesty Mix
-
-## [0.14.25] - 2026-10-05
-
-### Added
-
-- Added final art for Acrid Mix
+- Added Quicksilver potion (Brew only): "Gain 1 Energy. Gain an additional 1 Energy at the start of each turn this combat." It replaces Volatile Reagent
 
 ### Changed
 
@@ -26,6 +21,16 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Moved Waiting Game card into the Hero Expansion, replacing Chrysopoeia
 - Nerfed Waiting Game card: you now gain 1 Poison whenever it triggers
 - Updated translations so alchemy terms read as fantasy rather than pharmacy: Mix in German, French, Japanese, Korean and Chinese, Anodyne in most languages, and Laced, Alkahest, Apothecary and Mercurial Form in a few
+
+### Removed
+
+- Removed Volatile Reagent potion, replaced with Quicksilver
+
+## [0.14.25] - 2026-10-05
+
+### Added
+
+- Added final art for Acrid Mix
 
 ### Fixed
 

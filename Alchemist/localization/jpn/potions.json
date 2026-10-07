@@ -10,6 +10,8 @@
   "ALCHEMIST-GOLD_LEAF.title": "金箔",
   "ALCHEMIST-MARSH_TONIC.description": "[blue]8[/blue][gold]ブロック[/gold]を得る。[gold]抗毒素[/gold][blue]6[/blue]を得る。[gold]毒[/gold][blue]4[/blue]を得る。",
   "ALCHEMIST-MARSH_TONIC.title": "沼の強壮薬",
+  "ALCHEMIST-QUICKSILVER.description": "{energyPrefix:energyIcons(1)}を得る。この戦闘中、ターン開始時に追加で{energyPrefix:energyIcons(1)}を得る。",
+  "ALCHEMIST-QUICKSILVER.title": "液体シルバー",
   "ALCHEMIST-REDUCTION.description": "[gold]手札[/gold]のカードを[blue]3[/blue]枚まで[gold]廃棄[/gold]する。[gold]廃棄[/gold]したカード1枚につき、{energyPrefix:energyIcons(1)}を得てカードを[blue]1[/blue]枚引く。",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "カードを[blue]3[/blue]枚まで選び、[gold]廃棄[/gold]する。",
   "ALCHEMIST-REDUCTION.title": "煮詰め",
@@ -20,7 +22,5 @@
   "ALCHEMIST-SOLVENT.description": "すべての敵の[gold]アーティファクト[/gold]と[gold]ブロック[/gold]をすべて取り除く。すべての敵に[gold]弱体[/gold][blue]2[/blue]を付与する。",
   "ALCHEMIST-SOLVENT.title": "溶解液",
   "ALCHEMIST-STARTER_CULTURE.description": "[gold]手札[/gold]のすべての[gold]発酵[/gold]カードが[blue]4[/blue]回[gold]発酵[/gold]する。",
-  "ALCHEMIST-STARTER_CULTURE.title": "種菌",
-  "ALCHEMIST-VOLATILE_REAGENT.description": "このターン、カードをプレイするたび、すべての敵に[blue]5[/blue]ダメージを与える。",
-  "ALCHEMIST-VOLATILE_REAGENT.title": "揮発性試薬"
+  "ALCHEMIST-STARTER_CULTURE.title": "種菌"
 }

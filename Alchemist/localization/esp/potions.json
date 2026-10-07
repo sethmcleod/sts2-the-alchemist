@@ -10,6 +10,8 @@
   "ALCHEMIST-GOLD_LEAF.title": "Pan de oro",
   "ALCHEMIST-MARSH_TONIC.description": "Obtienes [blue]8[/blue] de [gold]bloqueo[/gold]. Obtienes [blue]6[/blue] de [gold]antitoxina[/gold]. Obtienes [blue]4[/blue] de [gold]veneno[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Tónico de pantano",
+  "ALCHEMIST-QUICKSILVER.description": "Obtienes {energyPrefix:energyIcons(1)}. Obtienes {energyPrefix:energyIcons(1)} adicional al inicio de cada turno en este combate.",
+  "ALCHEMIST-QUICKSILVER.title": "Azogue",
   "ALCHEMIST-REDUCTION.description": "[gold]Agotas[/gold] hasta [blue]3[/blue] cartas de tu [gold]mano[/gold]. Obtienes {energyPrefix:energyIcons(1)} y robas [blue]1[/blue] carta por cada carta [gold]que agotes[/gold].",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Elige hasta [blue]3[/blue] cartas para [gold]agotar[/gold].",
   "ALCHEMIST-REDUCTION.title": "Reducción",
@@ -20,7 +22,5 @@
   "ALCHEMIST-SOLVENT.description": "Quitas todo el [gold]artefacto[/gold] y todo el [gold]bloqueo[/gold] de TODOS los enemigos. Aplicas [blue]2[/blue] de [gold]vulnerabilidad[/gold] a TODOS los enemigos.",
   "ALCHEMIST-SOLVENT.title": "Disolvente",
   "ALCHEMIST-STARTER_CULTURE.description": "TODAS las cartas de [gold]fermentación[/gold] de tu [gold]mano[/gold] [gold]fermentan[/gold] [blue]4[/blue] veces.",
-  "ALCHEMIST-STARTER_CULTURE.title": "Cultivo madre",
-  "ALCHEMIST-VOLATILE_REAGENT.description": "Al jugar una carta en este turno, provoca [blue]5[/blue] de daño a TODOS los enemigos.",
-  "ALCHEMIST-VOLATILE_REAGENT.title": "Reactivo volátil"
+  "ALCHEMIST-STARTER_CULTURE.title": "Cultivo madre"
 }
