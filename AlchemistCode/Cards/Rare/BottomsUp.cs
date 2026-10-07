@@ -13,7 +13,7 @@ public class BottomsUp : AlchemistCard
     public override CardMultiplayerConstraint MultiplayerConstraint =>
         CardMultiplayerConstraint.MultiplayerOnly;
 
-    public BottomsUp() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public BottomsUp() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithVar("Amount", 1, 1);
         WithTip(typeof(PoisonPower));

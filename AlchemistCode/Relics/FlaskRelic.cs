@@ -16,11 +16,11 @@ using MegaCrit.Sts2.Core.Rewards;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-// Both flasks open combat the same way and both offer Brew, so the amounts are the only difference
 public abstract class FlaskRelic : AlchemistRelic
 {
     protected abstract int Antitoxin { get; }
     protected virtual int Dose => 0;
+    protected virtual bool UpgradedMix => false;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
 
@@ -34,9 +34,6 @@ public abstract class FlaskRelic : AlchemistRelic
             Owner.Creature);
     }
 
-    // PoisonPower triggers and decrements on AfterSideTurnStart, so a dose applied before combat
-    // is eaten by the turn-1 trigger before the player can act. Applying it in the Late phase of
-    // the first player turn lands after that trigger window; the first tick comes on turn 2
     public override async Task AfterSideTurnStartLate(
         CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
@@ -45,16 +42,12 @@ public abstract class FlaskRelic : AlchemistRelic
             new ThrowingPlayerChoiceContext(), Owner.Creature, Dose, Owner.Creature, null);
     }
 
-    // The Mix lands on turn 1 rather than BeforeCombatStart, because only the turn-start hook runs
-    // with the hand in play (Everflowing Chalice and base ChoicesParadox do the same)
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner || Owner.PlayerCombatState is not { TurnNumber: 1 }) return;
-        await Mixing.CreateRandom(choiceContext, Owner, source: this);
+        await Mixing.CreateRandom(choiceContext, Owner, UpgradedMix, source: this);
     }
 
-    // The pick half of the Brew analytics, read from the claim itself: a belt diff after the screen
-    // misses a claim the belt refused (Sozu), and Brew is the only source of a Brew-only potion
     public override Task AfterRewardTaken(Player player, Reward reward)
     {
         if (player == Owner && reward is PotionReward { ClaimedPotion: { } potion } && potion is IBrewOnly)

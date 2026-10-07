@@ -17,11 +17,11 @@ public class Blend : AlchemistCard
 
     public Blend() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithBlock(6, 3);
+        WithBlock(5, 3);
         WithTips(_ => new[] { AlchemistTips.TransformMix });
-        WithTip(typeof(Token.BurstingMix));
-        WithTip(typeof(Token.SyrupyMix));
-        WithTip(typeof(Token.ZestyMix));
+        WithUpgradingCardTip<Token.BurstingMix>();
+        WithUpgradingCardTip<Token.SyrupyMix>();
+        WithUpgradingCardTip<Token.ZestyMix>();
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -33,7 +33,7 @@ public class Blend : AlchemistCard
         var chosen = (await CardSelectCmd.FromCombatPile(choiceContext, discard, Owner,
             new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1))).FirstOrDefault();
         if (chosen == null) return;
-        var mix = await Mixing.TransformIntoRandom(choiceContext, Owner, chosen, source: this, kinds: Mixing.Basic);
+        var mix = await Mixing.TransformIntoRandom(choiceContext, Owner, chosen, IsUpgraded, this, Mixing.Basic);
         if (mix == null) return;
         await CardPileCmd.Add(mix, PileType.Hand);
         // A full hand reroutes the add to the Discard Pile, so the Mix is still made but never passes

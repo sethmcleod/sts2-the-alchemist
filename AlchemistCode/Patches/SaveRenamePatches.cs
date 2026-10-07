@@ -4,6 +4,7 @@ using Alchemist.AlchemistCode.Cards.Ancient;
 using Alchemist.AlchemistCode.Relics;
 using Alchemist.AlchemistCode.Cards.Basic;
 using Alchemist.AlchemistCode.Cards.Common;
+using Alchemist.AlchemistCode.Cards.Hero;
 using Alchemist.AlchemistCode.Cards.Rare;
 using Alchemist.AlchemistCode.Cards.Token;
 using Alchemist.AlchemistCode.Cards.Uncommon;
@@ -12,110 +13,94 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// A saved run and the Run History outlive a release: a card, relic or potion carrying a renamed id
-// would load as the game's blank Deprecated model, which is how "continue" after an update lost
-// cards to renames and how the Run History shows a NOPE icon for the old starter relics. Every
-// rename ships an entry here, mapping the old id to the model that replaced it.
-//
-// The old ids register as aliases in ModelDb once it is populated, so every lookup resolves them:
-// live saves, the Run History, the progress file's discovered lists, Touch of Orobas's remembered
-// starter. An earlier version prefixed SaveUtil.CardOrDeprecated and its siblings instead. Those
-// methods are a few instructions long, and once a hot caller such as CardModel.FromSave is
-// recompiled at tier 1 the JIT inlines them, so the prefix ran for cold callers and not hot ones:
-// the Run History header counted a renamed card under its new rarity while the card list under it
-// showed Deprecated Card
 [HarmonyPatch(typeof(ModelDb), nameof(ModelDb.InitIds))]
 public static class SaveRenamePatches
 {
-    // Old entry -> replacement. Built on demand: ModelDb is not populated when Harmony applies the patch
     private static Dictionary<string, ModelId> Cards => new()
     {
-        ["ALCHEMIST-STURDY_MIX"] = ModelDb.Card<SyrupyMix>().Id!,
-        ["ALCHEMIST-LOB"] = ModelDb.Card<Mash>().Id!,
-        ["ALCHEMIST-DOUBLE_BATCH"] = ModelDb.Card<Corrode>().Id!,
-        ["ALCHEMIST-PAYS_OFF"] = ModelDb.Card<SmellingSalts>().Id!,
-        ["ALCHEMIST-NEXT_UP"] = ModelDb.Card<Spike>().Id!,
-        ["ALCHEMIST-FRESH_COAT"] = ModelDb.Card<Untended>().Id!,
-        ["ALCHEMIST-ELIXIR"] = ModelDb.Card<Panacea>().Id!,
+        ["ALCHEMIST-ADAPT"] = ModelDb.Card<Vent>().Id!,
+        ["ALCHEMIST-ALEMBIC"] = ModelDb.Card<Untended>().Id!,
+        ["ALCHEMIST-ANOINT"] = ModelDb.Card<Spike>().Id!,
         ["ALCHEMIST-ANTIDOTE"] = ModelDb.Card<Dose>().Id!,
-        ["ALCHEMIST-OVERDOSE"] = ModelDb.Card<Premonition>().Id!,
-        ["ALCHEMIST-DEEP_CUT"] = ModelDb.Card<Bonk>().Id!,
-        ["ALCHEMIST-REAGENT"] = ModelDb.Card<WaitingGame>().Id!,
-        ["ALCHEMIST-WHITE_HEAT"] = ModelDb.Card<WaterDown>().Id!,
-        ["ALCHEMIST-RIPEN"] = ModelDb.Card<Rerun>().Id!,
-        ["ALCHEMIST-SIMMER"] = ModelDb.Card<Runoff>().Id!,
-        ["ALCHEMIST-QUAFF"] = ModelDb.Card<Fling>().Id!,
-        ["ALCHEMIST-IMMUNIZE"] = ModelDb.Card<Mellow>().Id!,
-        ["ALCHEMIST-POULTICE"] = ModelDb.Card<Upwell>().Id!,
-        ["ALCHEMIST-SLOW_BURN"] = ModelDb.Card<Mortar>().Id!,
-        ["ALCHEMIST-SWILL"] = ModelDb.Card<TasteTest>().Id!,
-        ["ALCHEMIST-TOXIN_SKIN"] = ModelDb.Card<Uncork>().Id!,
-        ["ALCHEMIST-VIAL_IN_RESERVE"] = ModelDb.Card<Uncork>().Id!,
-        ["ALCHEMIST-VITRIFY"] = ModelDb.Card<LayerUp>().Id!,
-        // Cuts, not renames: each removed card maps to the new card in its slot, so a mid-save
-        // update hands the player something new instead of a blank deprecated card
-        ["ALCHEMIST-MELTDOWN"] = ModelDb.Card<Fling>().Id!,
-        ["ALCHEMIST-FALLOUT"] = ModelDb.Card<PickAndChoose>().Id!,
         ["ALCHEMIST-CALLUS"] = ModelDb.Card<CoupDeGrace>().Id!,
+        ["ALCHEMIST-CELLAR"] = ModelDb.Card<Ripening>().Id!,
+        ["ALCHEMIST-CONDENSE"] = ModelDb.Card<Fizz>().Id!,
+        ["ALCHEMIST-CONGEAL"] = ModelDb.Card<Proof>().Id!,
+        ["ALCHEMIST-CURE"] = ModelDb.Card<Knitbone>().Id!,
+        ["ALCHEMIST-DEEP_CUT"] = ModelDb.Card<Bonk>().Id!,
+        ["ALCHEMIST-DOUBLE_BATCH"] = ModelDb.Card<Corrode>().Id!,
+        ["ALCHEMIST-DOUBLE_DOSE"] = ModelDb.Card<Fumigate>().Id!,
+        ["ALCHEMIST-DRENCH"] = ModelDb.Card<Harvest>().Id!,
+        ["ALCHEMIST-ELIXIR"] = ModelDb.Card<Panacea>().Id!,
+        ["ALCHEMIST-FALLOUT"] = ModelDb.Card<PickAndChoose>().Id!,
+        ["ALCHEMIST-FLARE_UP"] = ModelDb.Card<Endure>().Id!,
+        ["ALCHEMIST-FRESH_COAT"] = ModelDb.Card<Untended>().Id!,
+        ["ALCHEMIST-HARDEN"] = ModelDb.Card<FreshBatch>().Id!,
+        ["ALCHEMIST-ICHOR"] = ModelDb.Card<Wallop>().Id!,
+        ["ALCHEMIST-IMMUNIZE"] = ModelDb.Card<Mellow>().Id!,
+        ["ALCHEMIST-INURE"] = ModelDb.Card<Clench>().Id!,
+        ["ALCHEMIST-KNEAD"] = ModelDb.Card<Endure>().Id!,
+        ["ALCHEMIST-LACQUER"] = ModelDb.Card<Brine>().Id!,
+        ["ALCHEMIST-LICK"] = ModelDb.Card<Harvest>().Id!,
+        ["ALCHEMIST-LOB"] = ModelDb.Card<Mash>().Id!,
+        ["ALCHEMIST-MELTDOWN"] = ModelDb.Card<Fling>().Id!,
+        ["ALCHEMIST-NEXT_UP"] = ModelDb.Card<Spike>().Id!,
+        ["ALCHEMIST-OVERDOSE"] = ModelDb.Card<Premonition>().Id!,
+        ["ALCHEMIST-OVERSPILL"] = ModelDb.Card<Overflow>().Id!,
+        ["ALCHEMIST-PASS_IT_ON"] = ModelDb.Card<Steep>().Id!,
+        ["ALCHEMIST-PAYS_OFF"] = ModelDb.Card<SmellingSalts>().Id!,
+        ["ALCHEMIST-PELT"] = ModelDb.Card<Combine>().Id!,
+        ["ALCHEMIST-PORTION"] = ModelDb.Card<Fizz>().Id!,
+        ["ALCHEMIST-POULTICE"] = ModelDb.Card<Upwell>().Id!,
+        ["ALCHEMIST-QUAFF"] = ModelDb.Card<Fling>().Id!,
+        ["ALCHEMIST-QUICKLIME"] = ModelDb.Card<Spores>().Id!,
+        ["ALCHEMIST-REAGENT"] = ModelDb.Card<WaitingGame>().Id!,
         ["ALCHEMIST-RECLAIM"] = ModelDb.Card<WaitingGame>().Id!,
         ["ALCHEMIST-REFLUX"] = ModelDb.Card<Preserve>().Id!,
-        ["ALCHEMIST-DOUBLE_DOSE"] = ModelDb.Card<Fumigate>().Id!,
-        ["ALCHEMIST-QUICKLIME"] = ModelDb.Card<Spores>().Id!,
-        ["ALCHEMIST-ADAPT"] = ModelDb.Card<Vent>().Id!,
-        ["ALCHEMIST-LICK"] = ModelDb.Card<Harvest>().Id!,
-        ["ALCHEMIST-RETCH"] = ModelDb.Card<Distill>().Id!,
-        ["ALCHEMIST-CONGEAL"] = ModelDb.Card<Proof>().Id!,
-        ["ALCHEMIST-STIR"] = ModelDb.Card<Corrode>().Id!,
-        ["ALCHEMIST-ICHOR"] = ModelDb.Card<Wallop>().Id!,
-        ["ALCHEMIST-ALEMBIC"] = ModelDb.Card<Untended>().Id!,
-        ["ALCHEMIST-SPEW"] = ModelDb.Card<Overflow>().Id!,
-        ["ALCHEMIST-TOLERANCE"] = ModelDb.Card<WarmUp>().Id!,
-        ["ALCHEMIST-CONDENSE"] = ModelDb.Card<Fizz>().Id!,
-        ["ALCHEMIST-TWIST"] = ModelDb.Card<Fizz>().Id!,
-        ["ALCHEMIST-PORTION"] = ModelDb.Card<Fizz>().Id!,
-        ["ALCHEMIST-SMOKE_OUT"] = ModelDb.Card<Digest>().Id!,
-        ["ALCHEMIST-SIPHON"] = ModelDb.Card<Dose>().Id!,
-        ["ALCHEMIST-PELT"] = ModelDb.Card<Combine>().Id!,
-        ["ALCHEMIST-SALVE"] = ModelDb.Card<Knitbone>().Id!,
-        ["ALCHEMIST-FLARE_UP"] = ModelDb.Card<Endure>().Id!,
-        ["ALCHEMIST-KNEAD"] = ModelDb.Card<Endure>().Id!,
-        ["ALCHEMIST-HARDEN"] = ModelDb.Card<FreshBatch>().Id!,
-        ["ALCHEMIST-ANOINT"] = ModelDb.Card<Spike>().Id!,
-        ["ALCHEMIST-LACQUER"] = ModelDb.Card<Brine>().Id!,
         ["ALCHEMIST-RENNET"] = ModelDb.Card<Overflow>().Id!,
-        ["ALCHEMIST-TAP_THE_CASK"] = ModelDb.Card<Harvest>().Id!,
-        ["ALCHEMIST-INURE"] = ModelDb.Card<Clench>().Id!,
-        ["ALCHEMIST-SWIG"] = ModelDb.Card<Clench>().Id!,
-        ["ALCHEMIST-OVERSPILL"] = ModelDb.Card<Overflow>().Id!,
+        ["ALCHEMIST-RETCH"] = ModelDb.Card<Distill>().Id!,
+        ["ALCHEMIST-RIPEN"] = ModelDb.Card<Rerun>().Id!,
+        ["ALCHEMIST-SALVE"] = ModelDb.Card<Knitbone>().Id!,
         ["ALCHEMIST-SEEP"] = ModelDb.Card<Overflow>().Id!,
-        ["ALCHEMIST-DRENCH"] = ModelDb.Card<Harvest>().Id!,
-        ["ALCHEMIST-CURE"] = ModelDb.Card<Knitbone>().Id!,
-        ["ALCHEMIST-CELLAR"] = ModelDb.Card<Ripening>().Id!,
-        ["ALCHEMIST-PASS_IT_ON"] = ModelDb.Card<Steep>().Id!,
-        ["ALCHEMIST-WRING"] = ModelDb.Card<Knitbone>().Id!,
+        ["ALCHEMIST-SIMMER"] = ModelDb.Card<Runoff>().Id!,
+        ["ALCHEMIST-SIPHON"] = ModelDb.Card<Dose>().Id!,
+        ["ALCHEMIST-SLOW_BURN"] = ModelDb.Card<Mortar>().Id!,
+        ["ALCHEMIST-SMOKE_OUT"] = ModelDb.Card<Digest>().Id!,
+        ["ALCHEMIST-SPEW"] = ModelDb.Card<Overflow>().Id!,
+        ["ALCHEMIST-STIR"] = ModelDb.Card<Corrode>().Id!,
+        ["ALCHEMIST-STURDY_MIX"] = ModelDb.Card<SyrupyMix>().Id!,
+        ["ALCHEMIST-SWIG"] = ModelDb.Card<Clench>().Id!,
+        ["ALCHEMIST-SWILL"] = ModelDb.Card<TasteTest>().Id!,
+        ["ALCHEMIST-TAP_THE_CASK"] = ModelDb.Card<Harvest>().Id!,
         ["ALCHEMIST-TINCTURE"] = ModelDb.Card<Knitbone>().Id!,
+        ["ALCHEMIST-TOLERANCE"] = ModelDb.Card<WarmUp>().Id!,
+        ["ALCHEMIST-TOXIN_SKIN"] = ModelDb.Card<Uncork>().Id!,
+        ["ALCHEMIST-TWIST"] = ModelDb.Card<Fizz>().Id!,
+        ["ALCHEMIST-VIAL_IN_RESERVE"] = ModelDb.Card<Uncork>().Id!,
+        ["ALCHEMIST-VITRIFY"] = ModelDb.Card<LayerUp>().Id!,
+        ["ALCHEMIST-WHITE_HEAT"] = ModelDb.Card<WaterDown>().Id!,
+        ["ALCHEMIST-WRING"] = ModelDb.Card<Knitbone>().Id!,
     };
 
     private static Dictionary<string, ModelId> Potions => new()
     {
-        ["ALCHEMIST-QUICKSILVER_DRAUGHT"] = ModelDb.Potion<Potions.VolatileReagent>().Id!,
-        ["ALCHEMIST-OLEANDER_MILK"] = ModelDb.Potion<Potions.VolatileReagent>().Id!,
         ["ALCHEMIST-DECOCTION"] = ModelDb.Potion<Potions.Reduction>().Id!,
+        ["ALCHEMIST-OLEANDER_MILK"] = ModelDb.Potion<Potions.VolatileReagent>().Id!,
+        ["ALCHEMIST-QUICKSILVER_DRAUGHT"] = ModelDb.Potion<Potions.VolatileReagent>().Id!,
     };
 
     private static Dictionary<string, ModelId> Relics => new()
     {
-        ["ALCHEMIST-WEATHERED_KIT"] = ModelDb.Relic<MurkyFlask>().Id!,
-        ["ALCHEMIST-GILDED_KIT"] = ModelDb.Relic<RadiantFlask>().Id!,
-        ["ALCHEMIST-SECOND_SKIN"] = ModelDb.Relic<LilypadCloak>().Id!,
-        ["ALCHEMIST-GOLDEN_LEAF"] = ModelDb.Relic<ChimeraBlossom>().Id!,
-        // Cuts, not renames: each removed relic maps to the relic that took its slot
-        ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Homunculus>().Id!,
-        ["ALCHEMIST-BITTERROOT"] = ModelDb.Relic<Homunculus>().Id!,
-        ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<Toadstone>().Id!,
-        ["ALCHEMIST-EXTRA_DOSE"] = ModelDb.Relic<Toadstone>().Id!,
-        ["ALCHEMIST-MIDAS_FRUIT"] = ModelDb.Relic<GlowingShard>().Id!,
         ["ALCHEMIST-AURIC_SEAL"] = ModelDb.Relic<ChimeraBlossom>().Id!,
+        ["ALCHEMIST-BITTERROOT"] = ModelDb.Relic<Homunculus>().Id!,
+        ["ALCHEMIST-EXTRA_DOSE"] = ModelDb.Relic<Toadstone>().Id!,
+        ["ALCHEMIST-GILDED_KIT"] = ModelDb.Relic<RadiantFlask>().Id!,
+        ["ALCHEMIST-GOLDEN_LEAF"] = ModelDb.Relic<ChimeraBlossom>().Id!,
+        ["ALCHEMIST-MIDAS_FRUIT"] = ModelDb.Relic<GlowingShard>().Id!,
+        ["ALCHEMIST-SECOND_SKIN"] = ModelDb.Relic<LilypadCloak>().Id!,
+        ["ALCHEMIST-SNAKE_TAIL"] = ModelDb.Relic<Homunculus>().Id!,
+        ["ALCHEMIST-SPARE_DOSE"] = ModelDb.Relic<Toadstone>().Id!,
+        ["ALCHEMIST-WEATHERED_KIT"] = ModelDb.Relic<MurkyFlask>().Id!,
     };
 
     // InitIds runs once at startup, after ModelDb.Init has registered every model (mod models
@@ -138,7 +123,6 @@ public static class SaveRenamePatches
             foreach (var (oldEntry, replacement) in table)
             {
                 var alias = new ModelId(replacement.Category, oldEntry);
-                // A live model that owns the id wins. The alias is only for ids nothing answers to
                 if (contentById.ContainsKey(alias)) continue;
                 contentById[alias] = ModelDb.GetById<AbstractModel>(replacement);
                 added++;

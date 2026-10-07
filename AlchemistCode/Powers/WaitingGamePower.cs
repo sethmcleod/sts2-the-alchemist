@@ -11,9 +11,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Poison ticks at the start of the enemy's turn, before it acts, so the Strength it loses already
-// counts against that turn's attack. The tick test is the one the Antitoxin rules use. A lethal tick
-// skips AfterDamageReceived, which costs nothing: a dead enemy has no Strength left to lose
 public class WaitingGamePower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
@@ -30,5 +27,6 @@ public class WaitingGamePower : AlchemistPower
         if (!AntitoxinRules.IsPoisonTick(target, result.UnblockedDamage, props, dealer, cardSource)) return;
         Flash();
         await PowerCmd.Apply<StrengthPower>(choiceContext, target, -Amount, Owner, null);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner, Amount, Owner, null);
     }
 }

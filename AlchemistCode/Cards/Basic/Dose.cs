@@ -14,7 +14,7 @@ public class Dose : AlchemistCard
 
     public Dose() : base(0, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
-        WithBlock(2, 1);
+        WithBlock(3, 1);
         WithVar("SelfPoison", 2, 1);
         WithVar("antitoxin", 2, 1);
         WithTip(typeof(PoisonPower));

@@ -5,10 +5,10 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace Alchemist.AlchemistCode.Cards.Rare;
+namespace Alchemist.AlchemistCode.Cards.Hero;
 
 [CardTheme(CardTheme.Poison)]
-public class WaitingGame : AlchemistCard
+public class WaitingGame : AlchemistHeroCard
 {
     public WaitingGame() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
     {

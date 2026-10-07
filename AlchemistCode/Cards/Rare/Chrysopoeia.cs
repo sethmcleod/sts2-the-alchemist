@@ -5,12 +5,10 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace Alchemist.AlchemistCode.Cards.Hero;
+namespace Alchemist.AlchemistCode.Cards.Rare;
 
-// Poison into gold, where the gold is Energy. Priced on base Supercritical (4 (6) Energy, 0 cost,
-// Exhaust): a Dosing deck's run peak is usually 10 to 14 Poison, which pays 4 (5) here
 [CardTheme(CardTheme.Poison)]
-public class Chrysopoeia : AlchemistHeroCard
+public class Chrysopoeia : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 

@@ -15,6 +15,17 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 - Added final art for Acrid Mix
 
+### Changed
+
+- Buffed Bottoms Up card: cost decreased from 2 -> 1
+- Buffed Dose card: Block increased from 2(3) -> 3(4)
+- Buffed Mud Pack card (Hero Expansion): "Scry X(+1). Gain 7 Block X(+1) times. Gain X(+1) Poison."
+- Buffed Radiant Flask relic: now adds a Mix+ at the start of each combat
+- Changed Blend card: Block decreased from 6(9) -> 5(8), and Blend+ makes a basic Mix+ instead of a basic Mix
+- Moved Chrysopoeia card from the Hero Expansion into the main card pool, replacing Waiting Game
+- Moved Waiting Game card into the Hero Expansion, replacing Chrysopoeia
+- Nerfed Waiting Game card: you now gain 1 Poison whenever it triggers
+
 ### Fixed
 
 - Fixed the Orobas event never offering Archaic Tooth relic to the Alchemist; it now properly transforms Jab into Wormwood
