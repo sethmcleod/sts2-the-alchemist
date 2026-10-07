@@ -6,7 +6,7 @@
   "ALCHEMIST-FERMENT_REF.title": "発酵",
   "ALCHEMIST-LACED.description": "このカードは、自身の[gold]毒[/gold]に等しい追加ダメージを与える。",
   "ALCHEMIST-LACED.title": "毒仕込み",
-  "ALCHEMIST-MIX.selectionPrompt": "[gold]手札[/gold]に加える[gold]合剤[/gold]を1枚選択。",
-  "ALCHEMIST-MIX.selectionPromptBasic": "[gold]手札[/gold]に加える基本の[gold]合剤[/gold]を1枚選択。",
-  "ALCHEMIST-MIX.selectionPromptSpecial": "[gold]手札[/gold]に加える特殊な[gold]合剤[/gold]を1枚選択。"
+  "ALCHEMIST-MIX.selectionPrompt": "[gold]手札[/gold]に加える[gold]霊薬[/gold]を1枚選択。",
+  "ALCHEMIST-MIX.selectionPromptBasic": "[gold]手札[/gold]に加える基本の[gold]霊薬[/gold]を1枚選択。",
+  "ALCHEMIST-MIX.selectionPromptSpecial": "[gold]手札[/gold]に加える特殊な[gold]霊薬[/gold]を1枚選択。"
 }

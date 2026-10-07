@@ -6,7 +6,7 @@
   "ALCHEMIST-FERMENT_REF.title": "Fermentation",
   "ALCHEMIST-LACED.description": "Cette carte inflige un montant de dégâts supplémentaires égal à votre [gold]Poison[/gold].",
   "ALCHEMIST-LACED.title": "Imprégné",
-  "ALCHEMIST-MIX.selectionPrompt": "Choisissez une [gold]Mixture[/gold] à ajouter à votre [gold]Main[/gold].",
-  "ALCHEMIST-MIX.selectionPromptBasic": "Choisissez une [gold]Mixture[/gold] de base à ajouter à votre [gold]Main[/gold].",
-  "ALCHEMIST-MIX.selectionPromptSpecial": "Choisissez une [gold]Mixture[/gold] spéciale à ajouter à votre [gold]Main[/gold]."
+  "ALCHEMIST-MIX.selectionPrompt": "Choisissez une [gold]Concoction[/gold] à ajouter à votre [gold]Main[/gold].",
+  "ALCHEMIST-MIX.selectionPromptBasic": "Choisissez une [gold]Concoction[/gold] de base à ajouter à votre [gold]Main[/gold].",
+  "ALCHEMIST-MIX.selectionPromptSpecial": "Choisissez une [gold]Concoction[/gold] spéciale à ajouter à votre [gold]Main[/gold]."
 }

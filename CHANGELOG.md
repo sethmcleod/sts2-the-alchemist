@@ -25,6 +25,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Moved Chrysopoeia card from the Hero Expansion into the main card pool, replacing Waiting Game
 - Moved Waiting Game card into the Hero Expansion, replacing Chrysopoeia
 - Nerfed Waiting Game card: you now gain 1 Poison whenever it triggers
+- Updated translations so alchemy terms read as fantasy rather than pharmacy: Mix in German, French, Japanese, Korean and Chinese, Anodyne in most languages, and Laced, Alkahest, Apothecary and Mercurial Form in a few
 
 ### Fixed
 

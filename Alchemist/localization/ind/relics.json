@@ -21,7 +21,7 @@
   "ALCHEMIST-MURKY_FLASK.description": "Pada awal setiap perlawanan, dapatkan [blue]5[/blue] [gold]Antitoksin[/gold] dan tambahkan sebuah [gold]Campuran[/gold] acak ke [gold]Tangan[/gold]mu. Kamu bisa [gold]Meracik[/gold] di Peristirahatan.",
   "ALCHEMIST-MURKY_FLASK.flavor": "Pusaran di dalamnya tak pernah benar-benar tenang.",
   "ALCHEMIST-MURKY_FLASK.title": "Labu Keruh",
-  "ALCHEMIST-RADIANT_FLASK.description": "Saat didapat, dapatkan [blue]1[/blue] tempat ramuan dan dapatkan sebuah [gold]Ramuan[/gold] langka acak. Pada awal setiap perlawanan, dapatkan [blue]10[/blue] [gold]Antitoksin[/gold] dan tambahkan sebuah [gold]Campuran[/gold] acak ke [gold]Tangan[/gold]mu. Kamu bisa [gold]Meracik[/gold] di Peristirahatan.",
+  "ALCHEMIST-RADIANT_FLASK.description": "Saat didapat, dapatkan [blue]1[/blue] tempat ramuan dan dapatkan sebuah [gold]Ramuan[/gold] langka acak. Pada awal setiap perlawanan, dapatkan [blue]10[/blue] [gold]Antitoksin[/gold] dan tambahkan sebuah [gold]Campuran+[/gold] acak ke [gold]Tangan[/gold]mu. Kamu bisa [gold]Meracik[/gold] di Peristirahatan.",
   "ALCHEMIST-RADIANT_FLASK.flavor": "Cahaya di dalamnya tak pernah padam.",
   "ALCHEMIST-RADIANT_FLASK.title": "Labu Berkilau",
   "ALCHEMIST-TOADSTONE.description": "Setiap kali kamu mendapatkan [gold]Antitoksin[/gold], dapatkan [blue]1[/blue] [gold]Antitoksin[/gold] tambahan.",
