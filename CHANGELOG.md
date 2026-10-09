@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.14.26] - 2026-10-09
+
 ### Added
 
 - Added final art for Syrupy Mix and Zesty Mix
