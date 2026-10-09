@@ -10,6 +10,8 @@
   "ALCHEMIST-GOLD_LEAF.title": "Folha de Ouro",
   "ALCHEMIST-MARSH_TONIC.description": "Receba [blue]8[/blue] de [gold]Proteção[/gold]. Receba [blue]6[/blue] de [gold]Antitoxina[/gold]. Receba [blue]4[/blue] de [gold]Veneno[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Tônico do Pântano",
+  "ALCHEMIST-QUICKSILVER.description": "Receba {energyPrefix:energyIcons(1)}. Receba {energyPrefix:energyIcons(1)} adicional no início de cada turno neste combate.",
+  "ALCHEMIST-QUICKSILVER.title": "Azougue",
   "ALCHEMIST-REDUCTION.description": "[gold]Exaure[/gold] até [blue]3[/blue] cartas na sua [gold]Mão[/gold]. Receba {energyPrefix:energyIcons(1)} e compre [blue]1[/blue] carta por cada carta [gold]Exaurida[/gold].",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Escolha até [blue]3[/blue] cartas para [gold]Exaurir[/gold].",
   "ALCHEMIST-REDUCTION.title": "Redução",
@@ -20,7 +22,5 @@
   "ALCHEMIST-SOLVENT.description": "Remova todo o [gold]Artefato[/gold] e toda a [gold]Proteção[/gold] de TODOS os inimigos. Aplique [blue]2[/blue] de [gold]Vulnerável[/gold] a TODOS os inimigos.",
   "ALCHEMIST-SOLVENT.title": "Solvente",
   "ALCHEMIST-STARTER_CULTURE.description": "TODAS as cartas de [gold]Fermentar[/gold] na sua [gold]Mão[/gold] [gold]Fermentam[/gold] [blue]4[/blue] vezes.",
-  "ALCHEMIST-STARTER_CULTURE.title": "Cultura Inicial",
-  "ALCHEMIST-VOLATILE_REAGENT.description": "Sempre que você jogar uma carta neste turno, cause [blue]5[/blue] de dano a TODOS os inimigos.",
-  "ALCHEMIST-VOLATILE_REAGENT.title": "Reagente Volátil"
+  "ALCHEMIST-STARTER_CULTURE.title": "Cultura Inicial"
 }

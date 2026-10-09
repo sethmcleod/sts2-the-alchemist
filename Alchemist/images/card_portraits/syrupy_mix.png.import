@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cegq78y8jsey6"
-path="res://.godot/imported/volatile_reagent.png-875b17fe1bd7d92e7b42309b2bf739f0.ctex"
+uid="uid://dkwdbqp1s2njn"
+path="res://.godot/imported/syrupy_mix.png-b1f302af366e759a29e3758f57f7a00e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/potions/outlines/volatile_reagent.png"
-dest_files=["res://.godot/imported/volatile_reagent.png-875b17fe1bd7d92e7b42309b2bf739f0.ctex"]
+source_file="res://Alchemist/images/card_portraits/syrupy_mix.png"
+dest_files=["res://.godot/imported/syrupy_mix.png-b1f302af366e759a29e3758f57f7a00e.ctex"]
 
 [params]
 

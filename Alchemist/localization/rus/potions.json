@@ -2,7 +2,7 @@
   "ALCHEMIST-ALKAHEST.description": "[gold]Улучшает[/gold] ВСЕ ваши карты.",
   "ALCHEMIST-ALKAHEST.title": "Алкагест",
   "ALCHEMIST-ANODYNE.description": "Предотвращает следующий урон по ОЗ от атак. Дает [blue]1[/blue] [gold]яда[/gold] за каждые [blue]10[/blue] предотвращенного урона.",
-  "ALCHEMIST-ANODYNE.title": "Болеутоляющее",
+  "ALCHEMIST-ANODYNE.title": "Лауданум",
   "ALCHEMIST-FRESH_CUTTING.description": "В начале каждого из ваших следующих [blue]3[/blue] ходов добавляет случайную особую [gold]смесь+[/gold] в вашу [gold]руку[/gold].",
   "ALCHEMIST-FRESH_CUTTING.title": "Свежий черенок",
   "ALCHEMIST-GOLD_LEAF.description": "Добавляет [gold]повтор[/gold] карте в вашей [gold]руке[/gold].",
@@ -10,6 +10,8 @@
   "ALCHEMIST-GOLD_LEAF.title": "Сусальное золото",
   "ALCHEMIST-MARSH_TONIC.description": "Дает [blue]8[/blue] [gold]защиты[/gold]. Дает [blue]6[/blue] [gold]антитоксина[/gold]. Дает вам [blue]4[/blue] [gold]яда[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Болотный тоник",
+  "ALCHEMIST-QUICKSILVER.description": "Дает {energyPrefix:energyIcons(1)}. В этом бою дает еще {energyPrefix:energyIcons(1)} в начале каждого хода.",
+  "ALCHEMIST-QUICKSILVER.title": "Живое серебро",
   "ALCHEMIST-REDUCTION.description": "[gold]Сжигает[/gold] до [blue]3[/blue] карт в [gold]руке[/gold]. Дает {energyPrefix:energyIcons(1)} и по [blue]1[/blue] карте за каждую [gold]сожженную[/gold] карту.",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Выберите до [blue]3[/blue] карт, которые хотите [gold]сжечь[/gold].",
   "ALCHEMIST-REDUCTION.title": "Выпаривание",
@@ -20,7 +22,5 @@
   "ALCHEMIST-SOLVENT.description": "Снимает со ВСЕХ врагов весь [gold]артефакт[/gold] и всю [gold]защиту[/gold]. Накладывает [blue]2[/blue] [gold]уязвимости[/gold] на ВСЕХ врагов.",
   "ALCHEMIST-SOLVENT.title": "Растворитель",
   "ALCHEMIST-STARTER_CULTURE.description": "ВСЕ карты с [gold]брожением[/gold] в вашей [gold]руке[/gold] [gold]бродят[/gold] [blue]4[/blue] раза.",
-  "ALCHEMIST-STARTER_CULTURE.title": "Закваска",
-  "ALCHEMIST-VOLATILE_REAGENT.description": "Наносит [blue]5[/blue] урона ВСЕМ врагам, когда вы разыгрываете карту в этом ходу.",
-  "ALCHEMIST-VOLATILE_REAGENT.title": "Летучий реагент"
+  "ALCHEMIST-STARTER_CULTURE.title": "Закваска"
 }

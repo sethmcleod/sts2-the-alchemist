@@ -5,6 +5,29 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.14.26] - 2026-10-09
+
+### Added
+
+- Added final art for Syrupy Mix and Zesty Mix
+- Added Quicksilver potion (Brew only): "Gain 1 Energy. Gain an additional 1 Energy at the start of each turn this combat." It replaces Volatile Reagent
+
+### Changed
+
+- Buffed Bottoms Up card: cost decreased from 2 -> 1
+- Buffed Dose card: Block increased from 2(3) -> 3(4)
+- Buffed Mud Pack card (Hero Expansion): "Scry X(+1). Gain 7 Block X(+1) times. Gain X(+1) Poison."
+- Buffed Radiant Flask relic: now adds a Mix+ at the start of each combat
+- Changed Blend card: Block decreased from 6(9) -> 5(8), and Blend+ makes a basic Mix+ instead of a basic Mix
+- Moved Chrysopoeia card from the Hero Expansion into the main card pool, replacing Waiting Game
+- Moved Waiting Game card into the Hero Expansion, replacing Chrysopoeia
+- Nerfed Waiting Game card: you now gain 1 Poison whenever it triggers
+- Updated translations so alchemy terms read as fantasy rather than pharmacy: Mix in German, French, Japanese, Korean and Chinese, Anodyne in most languages, and Laced, Alkahest, Apothecary and Mercurial Form in a few
+
+### Removed
+
+- Removed Volatile Reagent potion, replaced with Quicksilver
+
 ## [0.14.25] - 2026-10-05
 
 ### Added

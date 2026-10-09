@@ -6,7 +6,7 @@
   "ALCHEMIST-FERMENT_REF.title": "발효",
   "ALCHEMIST-LACED.description": "이 카드가 [gold]중독[/gold]만큼 추가 피해를 줍니다.",
   "ALCHEMIST-LACED.title": "맹독",
-  "ALCHEMIST-MIX.selectionPrompt": "[gold]손[/gold]에 추가할 [gold]혼합액[/gold]을 선택하세요.",
-  "ALCHEMIST-MIX.selectionPromptBasic": "[gold]손[/gold]에 추가할 기본 [gold]혼합액[/gold]을 선택하세요.",
-  "ALCHEMIST-MIX.selectionPromptSpecial": "[gold]손[/gold]에 추가할 특수 [gold]혼합액[/gold]을 선택하세요."
+  "ALCHEMIST-MIX.selectionPrompt": "[gold]손[/gold]에 추가할 [gold]영액[/gold]을 선택하세요.",
+  "ALCHEMIST-MIX.selectionPromptBasic": "[gold]손[/gold]에 추가할 기본 [gold]영액[/gold]을 선택하세요.",
+  "ALCHEMIST-MIX.selectionPromptSpecial": "[gold]손[/gold]에 추가할 특수 [gold]영액[/gold]을 선택하세요."
 }

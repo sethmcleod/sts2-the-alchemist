@@ -10,6 +10,8 @@
   "ALCHEMIST-GOLD_LEAF.title": "Foglia d'Oro",
   "ALCHEMIST-MARSH_TONIC.description": "Ottieni [blue]8[/blue] di [gold]Blocco[/gold]. Ottieni [blue]6[/blue] di [gold]Antitossina[/gold]. Ottieni [blue]4[/blue] di [gold]Veleno[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Tonico di Palude",
+  "ALCHEMIST-QUICKSILVER.description": "Ottieni {energyPrefix:energyIcons(1)}. Ottieni {energyPrefix:energyIcons(1)} in più all'inizio di ogni turno in questo combattimento.",
+  "ALCHEMIST-QUICKSILVER.title": "Argento vivo",
   "ALCHEMIST-REDUCTION.description": "[gold]Esaurisci[/gold] fino a [blue]3[/blue] carte nella tua [gold]mano[/gold]. Ottieni {energyPrefix:energyIcons(1)} e peschi [blue]1[/blue] carta per ogni carta [gold]esaurita[/gold].",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Scegli fino a [blue]3[/blue] carte da [gold]esaurire[/gold].",
   "ALCHEMIST-REDUCTION.title": "Riduzione",
@@ -20,7 +22,5 @@
   "ALCHEMIST-SOLVENT.description": "Rimuovi tutto l'[gold]Artefatto[/gold] e il [gold]Blocco[/gold] da TUTTI i nemici. Applichi [blue]2[/blue] di [gold]Vulnerabilità[/gold] a TUTTI i nemici.",
   "ALCHEMIST-SOLVENT.title": "Solvente",
   "ALCHEMIST-STARTER_CULTURE.description": "TUTTE le carte [gold]Fermentazione[/gold] nella tua [gold]mano[/gold] [gold]fermentano[/gold] [blue]4[/blue] volte.",
-  "ALCHEMIST-STARTER_CULTURE.title": "Coltura Madre",
-  "ALCHEMIST-VOLATILE_REAGENT.description": "In questo turno, ogni volta che giochi una carta, infliggi [blue]5[/blue] di danno a TUTTI i nemici.",
-  "ALCHEMIST-VOLATILE_REAGENT.title": "Reagente volatile"
+  "ALCHEMIST-STARTER_CULTURE.title": "Coltura Madre"
 }

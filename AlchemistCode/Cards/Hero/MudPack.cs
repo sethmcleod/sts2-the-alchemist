@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Commands;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -14,14 +15,17 @@ public class MudPack : AlchemistHeroCard
 
     public MudPack() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithBlock(6, 2);
+        WithBlock(7, 0);
+        WithVar("Extra", 0, 1);
+        WithTip(BaseLibTip.Scry);
         WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var times = ResolveEnergyXValue();
+        var times = ResolveEnergyXValue() + DynamicVars["Extra"].IntValue;
         if (times <= 0) return;
+        await Scrying.Execute(choiceContext, Owner, times);
         for (var i = 0; i < times; i++)
             await CommonActions.CardBlock(this, play);
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature, times, Owner.Creature, this);

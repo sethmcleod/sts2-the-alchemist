@@ -10,6 +10,8 @@
   "ALCHEMIST-GOLD_LEAF.title": "Płatek złota",
   "ALCHEMIST-MARSH_TONIC.description": "Zyskaj [blue]8[/blue] pkt. [gold]Bloku[/gold]. Zyskaj [blue]6[/blue] pkt. [gold]Antytoksyny[/gold]. Zyskaj [blue]4[/blue] pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-MARSH_TONIC.title": "Bagienny tonik",
+  "ALCHEMIST-QUICKSILVER.description": "Zyskaj {energyPrefix:energyIcons(1)}. W tej walce na początku każdej tury zyskaj dodatkowy {energyPrefix:energyIcons(1)}.",
+  "ALCHEMIST-QUICKSILVER.title": "Żywe srebro",
   "ALCHEMIST-REDUCTION.description": "[gold]Wyczerp[/gold] maksymalnie [blue]3[/blue] karty w [gold]ręce[/gold]. Zyskaj {energyPrefix:energyIcons(1)} i dobierz [blue]1[/blue] kartę za każdą [gold]Wyczerpaną[/gold] kartę.",
   "ALCHEMIST-REDUCTION.selectionScreenPrompt": "Wybierz maksymalnie [blue]3[/blue] karty do [gold]Wyczerpania[/gold].",
   "ALCHEMIST-REDUCTION.title": "Redukcja",
@@ -20,7 +22,5 @@
   "ALCHEMIST-SOLVENT.description": "Usuń WSZYSTKIM przeciwnikom wszystkie pkt. [gold]Ochrony[/gold] i [gold]Bloku[/gold]. Nałóż [blue]2[/blue] pkt. [gold]Wrażliwości[/gold] na WSZYSTKICH przeciwników.",
   "ALCHEMIST-SOLVENT.title": "Rozpuszczalnik",
   "ALCHEMIST-STARTER_CULTURE.description": "WSZYSTKIE karty z [gold]Fermentacją[/gold] w [gold]ręce[/gold] [gold]Fermentują[/gold] [blue]4[/blue] razy.",
-  "ALCHEMIST-STARTER_CULTURE.title": "Zaczyn",
-  "ALCHEMIST-VOLATILE_REAGENT.description": "Kiedykolwiek zagrasz kartę w tej turze, zadaj [blue]5[/blue] pkt. obrażeń WSZYSTKIM przeciwnikom.",
-  "ALCHEMIST-VOLATILE_REAGENT.title": "Lotny odczynnik"
+  "ALCHEMIST-STARTER_CULTURE.title": "Zaczyn"
 }
