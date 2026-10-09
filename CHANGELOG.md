@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added final art for Fuming Mix
+
 ## [0.14.26] - 2026-10-09
 
 ### Added
