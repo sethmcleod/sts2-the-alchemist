@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "毒霧",
   "ALCHEMIST-MORTAR.description": "[gold]発酵。[/gold]\n{CalculatedDamage:diff()}ダメージを与える。\n与えたダメージに等しい[gold]ブロック[/gold]を得る。\n[gold]発酵[/gold]したターン1回につき、追加で2ダメージを与える。",
   "ALCHEMIST-MORTAR.title": "乳鉢",
-  "ALCHEMIST-MUD_PACK.description": "[gold]占術[/gold]{IfUpgraded:show:X+{Extra}|X}。\n{Block:diff()}[gold]ブロック[/gold]を{IfUpgraded:show:X+{Extra}|X}回得る。\n[gold]毒[/gold]{IfUpgraded:show:X+{Extra}|X}を得る。",
+  "ALCHEMIST-MUD_PACK.description": "[gold]占術[/gold]{IfUpgraded:show:X+{Extra}|X}。\n{Block:diff()}[gold]ブロック[/gold]を{IfUpgraded:show:X+{Extra}|X}回得る。\n[gold]毒[/gold]{IfUpgraded:show:X+{Extra}|X}を得る。{InCombat:\n([gold]ブロック[/gold]{TotalBlock:diff()}を得る)|}",
   "ALCHEMIST-MUD_PACK.title": "泥パック",
   "ALCHEMIST-MUSCLE_MEMORY.description": "{Damage:diff()}ダメージを{CalculatedHits:diff()}回与える。\nこの戦闘でこのカードをプレイした回数分、追加で攻撃する。",
   "ALCHEMIST-MUSCLE_MEMORY.title": "体が覚えている",

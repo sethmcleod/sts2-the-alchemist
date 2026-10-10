@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "Esalazione",
   "ALCHEMIST-MORTAR.description": "[gold]Fermentazione.[/gold]\nInfliggi {CalculatedDamage:diff()} di danno.\nOttieni [gold]Blocco[/gold] pari al danno che hai inflitto.\nInfligge 2 di danno extra per ogni turno di [gold]fermentazione[/gold].",
   "ALCHEMIST-MORTAR.title": "Mortaio",
-  "ALCHEMIST-MUD_PACK.description": "[gold]Scruta[/gold] {IfUpgraded:show:X+{Extra}|X}.\nOttieni {Block:diff()} di [gold]Blocco[/gold] {IfUpgraded:show:X+{Extra}|X} volte.\nOttieni {IfUpgraded:show:X+{Extra}|X} di [gold]Veleno[/gold].",
+  "ALCHEMIST-MUD_PACK.description": "[gold]Scruta[/gold] {IfUpgraded:show:X+{Extra}|X}.\nOttieni {Block:diff()} di [gold]Blocco[/gold] {IfUpgraded:show:X+{Extra}|X} volte.\nOttieni {IfUpgraded:show:X+{Extra}|X} di [gold]Veleno[/gold].{InCombat:\n(Ottieni {TotalBlock:diff()} di [gold]Blocco[/gold])|}",
   "ALCHEMIST-MUD_PACK.title": "Maschera di fango",
   "ALCHEMIST-MUSCLE_MEMORY.description": "Infliggi {Damage:diff()} di danno {CalculatedHits:diff()} volte.\nColpisce una volta in più per ogni volta che questa carta è stata giocata in questo combattimento.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Memoria muscolare",

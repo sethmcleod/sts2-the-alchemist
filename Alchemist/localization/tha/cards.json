@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "ไอพิษ",
   "ALCHEMIST-MORTAR.description": "[gold]บ่ม[/gold]\nสร้างความเสียหาย {CalculatedDamage:diff()}\nได้รับ[gold]บล็อก[/gold]ตามความเสียหายที่สร้าง\nสร้างความเสียหายเพิ่ม 2 ต่อทุกเทิร์นที่[gold]บ่ม[/gold]",
   "ALCHEMIST-MORTAR.title": "ครก",
-  "ALCHEMIST-MUD_PACK.description": "[gold]หยั่งรู้[/gold] {IfUpgraded:show:X+{Extra}|X}\nได้รับ {Block:diff()} [gold]บล็อก[/gold] จำนวน {IfUpgraded:show:X+{Extra}|X} ครั้ง\nได้รับ {IfUpgraded:show:X+{Extra}|X} [gold]พิษ[/gold]",
+  "ALCHEMIST-MUD_PACK.description": "[gold]หยั่งรู้[/gold] {IfUpgraded:show:X+{Extra}|X}\nได้รับ {Block:diff()} [gold]บล็อก[/gold] จำนวน {IfUpgraded:show:X+{Extra}|X} ครั้ง\nได้รับ {IfUpgraded:show:X+{Extra}|X} [gold]พิษ[/gold]{InCombat:\n(ได้รับ {TotalBlock:diff()} [gold]บล็อก[/gold])|}",
   "ALCHEMIST-MUD_PACK.title": "พอกโคลน",
   "ALCHEMIST-MUSCLE_MEMORY.description": "สร้างความเสียหาย {Damage:diff()} จำนวน {CalculatedHits:diff()} ครั้ง\nโจมตีเพิ่มอีกตามจำนวนครั้งที่การ์ดนี้ถูกเล่นในการต่อสู้นี้",
   "ALCHEMIST-MUSCLE_MEMORY.title": "ความจำกล้ามเนื้อ",

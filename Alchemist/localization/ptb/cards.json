@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "Eflúvio",
   "ALCHEMIST-MORTAR.description": "[gold]Fermentar.[/gold]\nCause {CalculatedDamage:diff()} de dano.\nReceba [gold]Proteção[/gold] equivalente ao dano causado.\nCausa 2 de dano adicional por cada turno [gold]Fermentado[/gold].",
   "ALCHEMIST-MORTAR.title": "Almofariz",
-  "ALCHEMIST-MUD_PACK.description": "[gold]Vislumbrar[/gold] {IfUpgraded:show:X+{Extra}|X}.\nReceba {Block:diff()} de [gold]Proteção[/gold] {IfUpgraded:show:X+{Extra}|X} vezes.\nReceba {IfUpgraded:show:X+{Extra}|X} de [gold]Veneno[/gold].",
+  "ALCHEMIST-MUD_PACK.description": "[gold]Vislumbrar[/gold] {IfUpgraded:show:X+{Extra}|X}.\nReceba {Block:diff()} de [gold]Proteção[/gold] {IfUpgraded:show:X+{Extra}|X} vezes.\nReceba {IfUpgraded:show:X+{Extra}|X} de [gold]Veneno[/gold].{InCombat:\n(Receba {TotalBlock:diff()} de [gold]Proteção[/gold])|}",
   "ALCHEMIST-MUD_PACK.title": "Máscara de Lama",
   "ALCHEMIST-MUSCLE_MEMORY.description": "Cause {Damage:diff()} de dano {CalculatedHits:diff()} vezes.\nGolpeie uma vez adicional por cada vez que esta carta foi jogada neste combate.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Memória Muscular",

@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "Efluvio",
   "ALCHEMIST-MORTAR.description": "[gold]Fermenta.[/gold]\nInflige {CalculatedDamage:diff()} de daño.\nGana [gold]Bloqueo[/gold] igual al daño infligido.\nInflige 2 de daño adicional por cada turno de [gold]Fermentación[/gold].",
   "ALCHEMIST-MORTAR.title": "Mortero",
-  "ALCHEMIST-MUD_PACK.description": "[gold]Vislumbrar[/gold] {IfUpgraded:show:X+{Extra}|X}.\nGana {Block:diff()} de [gold]Bloqueo[/gold] {IfUpgraded:show:X+{Extra}|X} veces.\nGana {IfUpgraded:show:X+{Extra}|X} de [gold]Veneno[/gold].",
+  "ALCHEMIST-MUD_PACK.description": "[gold]Vislumbrar[/gold] {IfUpgraded:show:X+{Extra}|X}.\nGana {Block:diff()} de [gold]Bloqueo[/gold] {IfUpgraded:show:X+{Extra}|X} veces.\nGana {IfUpgraded:show:X+{Extra}|X} de [gold]Veneno[/gold].{InCombat:\n(Gana {TotalBlock:diff()} de [gold]Bloqueo[/gold])|}",
   "ALCHEMIST-MUD_PACK.title": "Mascarilla de lodo",
   "ALCHEMIST-MUSCLE_MEMORY.description": "Inflige {Damage:diff()} de daño {CalculatedHits:diff()} veces.\nGolpea una vez adicional por cada vez que hayas jugado esta carta durante este combate.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Memoria muscular",

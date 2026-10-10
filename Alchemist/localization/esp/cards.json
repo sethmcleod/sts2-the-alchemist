@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "Miasma",
   "ALCHEMIST-MORTAR.description": "[gold]Fermentación.[/gold]\nInfliges {CalculatedDamage:diff()} de daño.\nObtienes [gold]bloqueo[/gold] igual al daño infligido.\nInfliges 2 de daño adicional por cada turno [gold]fermentado[/gold].",
   "ALCHEMIST-MORTAR.title": "Mortero",
-  "ALCHEMIST-MUD_PACK.description": "[gold]Vislumbrar[/gold] {IfUpgraded:show:X+{Extra}|X}.\nObtienes {Block:diff()} de [gold]bloqueo[/gold] {IfUpgraded:show:X+{Extra}|X} vez/veces.\nObtienes {IfUpgraded:show:X+{Extra}|X} de [gold]veneno[/gold].",
+  "ALCHEMIST-MUD_PACK.description": "[gold]Vislumbrar[/gold] {IfUpgraded:show:X+{Extra}|X}.\nObtienes {Block:diff()} de [gold]bloqueo[/gold] {IfUpgraded:show:X+{Extra}|X} vez/veces.\nObtienes {IfUpgraded:show:X+{Extra}|X} de [gold]veneno[/gold].{InCombat:\n(Obtienes {TotalBlock:diff()} de [gold]bloqueo[/gold])|}",
   "ALCHEMIST-MUD_PACK.title": "Mascarilla de barro",
   "ALCHEMIST-MUSCLE_MEMORY.description": "Infliges {Damage:diff()} de daño {CalculatedHits:diff()} veces.\nGolpeas una vez más por cada vez que hayas jugado esta carta en este combate.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Memoria muscular",

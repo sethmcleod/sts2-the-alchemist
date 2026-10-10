@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "瘴氣",
   "ALCHEMIST-MORTAR.description": "[gold]醞釀。[/gold]\n造成 {CalculatedDamage:diff()} 點傷害。\n獲得與所造成傷害等量的[gold]格擋[/gold]。\n每[gold]醞釀[/gold]一回合，就額外造成 2 點傷害。",
   "ALCHEMIST-MORTAR.title": "研缽",
-  "ALCHEMIST-MUD_PACK.description": "[gold]預見[/gold] {IfUpgraded:show:X+{Extra}|X}。\n獲得 {IfUpgraded:show:X+{Extra}|X} 次 {Block:diff()} 點[gold]格擋[/gold]。\n獲得 {IfUpgraded:show:X+{Extra}|X} 層[gold]中毒[/gold]。",
+  "ALCHEMIST-MUD_PACK.description": "[gold]預見[/gold] {IfUpgraded:show:X+{Extra}|X}。\n獲得 {IfUpgraded:show:X+{Extra}|X} 次 {Block:diff()} 點[gold]格擋[/gold]。\n獲得 {IfUpgraded:show:X+{Extra}|X} 層[gold]中毒[/gold]。{InCombat:\n（獲得 {TotalBlock:diff()} 點[gold]格擋[/gold]）|}",
   "ALCHEMIST-MUD_PACK.title": "泥巴面膜",
   "ALCHEMIST-MUSCLE_MEMORY.description": "造成 {CalculatedHits:diff()} 次 {Damage:diff()} 點傷害。\n本場戰鬥中，此牌每被打出過一次，就額外擊中一次。",
   "ALCHEMIST-MUSCLE_MEMORY.title": "肌肉記憶",

@@ -89,6 +89,10 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigHoverTip]
     public static bool AnalyticsEnabled { get; set; } = true;
 
+    [ConfigHideInUI]
+    [ConfigIgnoreRestoreDefaults]
+    public static bool AnalyticsPromptAnswered { get; set; } = false;
+
     [ConfigSection("Secrets")]
     [ConfigHoverTip]
     [ConfigVisibleIf(nameof(SecretsUnlocked))]

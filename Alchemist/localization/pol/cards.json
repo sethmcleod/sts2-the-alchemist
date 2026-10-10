@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "Wyziewy",
   "ALCHEMIST-MORTAR.description": "[gold]Fermentacja.[/gold]\nZadaj {CalculatedDamage:diff()} pkt. obrażeń.\nZyskaj [gold]Blok[/gold] równy zadanym obrażeniom.\nZadaje dodatkowo 2 pkt. obrażeń za każdą turę [gold]Fermentacji[/gold].",
   "ALCHEMIST-MORTAR.title": "Moździerz",
-  "ALCHEMIST-MUD_PACK.description": "[gold]Wróżba[/gold] {IfUpgraded:show:X+{Extra}|X}.\nZyskaj {Block:diff()} pkt. [gold]Bloku[/gold] {IfUpgraded:show:X+{Extra}|X} razy.\nZyskaj {IfUpgraded:show:X+{Extra}|X} pkt. [gold]Trucizny[/gold].",
+  "ALCHEMIST-MUD_PACK.description": "[gold]Wróżba[/gold] {IfUpgraded:show:X+{Extra}|X}.\nZyskaj {Block:diff()} pkt. [gold]Bloku[/gold] {IfUpgraded:show:X+{Extra}|X} razy.\nZyskaj {IfUpgraded:show:X+{Extra}|X} pkt. [gold]Trucizny[/gold].{InCombat:\n(Zyskaj {TotalBlock:diff()} pkt. [gold]Bloku[/gold])|}",
   "ALCHEMIST-MUD_PACK.title": "Błotna maseczka",
   "ALCHEMIST-MUSCLE_MEMORY.description": "Zadaj {Damage:diff()} pkt. obrażeń {CalculatedHits:diff()} razy.\nUderza dodatkowo za każdy raz, kiedy zagrano tę kartę w tej walce.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Pamięć mięśniowa",

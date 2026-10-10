@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "瘴气",
   "ALCHEMIST-MORTAR.description": "[gold]发酵。[/gold]\n造成{CalculatedDamage:diff()}点伤害。\n获得等量于所造成伤害的[gold]格挡[/gold]。\n每[gold]发酵[/gold]一回合，额外造成2点伤害。",
   "ALCHEMIST-MORTAR.title": "研钵",
-  "ALCHEMIST-MUD_PACK.description": "[gold]预见[/gold]{IfUpgraded:show:X+{Extra}|X}。\n获得{Block:diff()}点[gold]格挡[/gold]{IfUpgraded:show:X+{Extra}|X}次。\n获得{IfUpgraded:show:X+{Extra}|X}层[gold]中毒[/gold]。",
+  "ALCHEMIST-MUD_PACK.description": "[gold]预见[/gold]{IfUpgraded:show:X+{Extra}|X}。\n获得{Block:diff()}点[gold]格挡[/gold]{IfUpgraded:show:X+{Extra}|X}次。\n获得{IfUpgraded:show:X+{Extra}|X}层[gold]中毒[/gold]。{InCombat:\n（获得{TotalBlock:diff()}点[gold]格挡[/gold]）|}",
   "ALCHEMIST-MUD_PACK.title": "泥浆面膜",
   "ALCHEMIST-MUSCLE_MEMORY.description": "造成{Damage:diff()}点伤害{CalculatedHits:diff()}次。\n在本场战斗中，这张牌每被打出过一次，就额外造成一次伤害。",
   "ALCHEMIST-MUSCLE_MEMORY.title": "肌肉记忆",

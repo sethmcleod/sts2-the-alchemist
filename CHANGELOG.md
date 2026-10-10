@@ -5,6 +5,17 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.14.27] - 2026-10-10
+
+### Added
+
+- Added final art for Compound Mix, Fuming Mix, and Sparkling Mix
+- Added a one-time popup the first time you select the Alchemist that asks whether to share anonymous run data
+
+### Fixed
+
+- Fixed in-combat preview for Mud Pack card (Hero Expansion) so it shows total Block
+
 ## [0.14.26] - 2026-10-09
 
 ### Added
