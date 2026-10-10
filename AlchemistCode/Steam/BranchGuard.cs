@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using Godot;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Multiplayer.Transport.Steam;
@@ -117,9 +116,6 @@ internal static class BranchGuard
         var itemId = branch == BetaBranch ? BetaItemId : MainItemId;
         var url = $"https://steamcommunity.com/sharedfiles/filedetails/?id={itemId}";
         MainFile.Logger.Info($"[BranchGuard] Opening the Workshop item for branch '{branch}': {url}");
-        if (SteamInitializer.Initialized && SteamUtils.IsOverlayEnabled())
-            SteamFriends.ActivateGameOverlayToWebPage(url);
-        else
-            OS.ShellOpen(url);
+        WebPage.Open(url);
     }
 }
