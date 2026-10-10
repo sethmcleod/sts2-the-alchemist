@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "Miasma",
   "ALCHEMIST-MORTAR.description": "[gold]Gärung.[/gold]\nFüge {CalculatedDamage:diff()} Schaden zu.\nErhalte [gold]Block[/gold] in Höhe des zugefügten Schadens.\nFügt 2 Schaden mehr zu pro Zug in [gold]Gärung[/gold].",
   "ALCHEMIST-MORTAR.title": "Mörser",
-  "ALCHEMIST-MUD_PACK.description": "[gold]Spähen[/gold] {IfUpgraded:show:X+{Extra}|X}.\nErhalte {IfUpgraded:show:X+{Extra}|X} Mal {Block:diff()} [gold]Block[/gold].\nErhalte {IfUpgraded:show:X+{Extra}|X} [gold]Gift[/gold].",
+  "ALCHEMIST-MUD_PACK.description": "[gold]Spähen[/gold] {IfUpgraded:show:X+{Extra}|X}.\nErhalte {IfUpgraded:show:X+{Extra}|X} Mal {Block:diff()} [gold]Block[/gold].\nErhalte {IfUpgraded:show:X+{Extra}|X} [gold]Gift[/gold].{InCombat:\n(Erhalte {TotalBlock:diff()} [gold]Block[/gold])|}",
   "ALCHEMIST-MUD_PACK.title": "Schlammpackung",
   "ALCHEMIST-MUSCLE_MEMORY.description": "Füge {CalculatedHits:diff()} Mal {Damage:diff()} Schaden zu.\nTrifft ein weiteres Mal für jedes Mal, dass du diese Karte in diesem Kampf gespielt hast.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Muskelgedächtnis",

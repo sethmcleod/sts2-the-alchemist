@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "Miasme",
   "ALCHEMIST-MORTAR.description": "[gold]Fermentation.[/gold]\nInfligez {CalculatedDamage:diff()} dégâts.\nGagnez un montant d'[gold]Armure[/gold] égal aux dégâts infligés.\nInflige 2 dégâts supplémentaires pour chaque tour de [gold]Fermentation[/gold].",
   "ALCHEMIST-MORTAR.title": "Mortier",
-  "ALCHEMIST-MUD_PACK.description": "[gold]Scruter[/gold] {IfUpgraded:show:X+{Extra}|X}.\nGagnez {Block:diff()} d'[gold]Armure[/gold] {IfUpgraded:show:X+{Extra}|X} fois.\nGagnez {IfUpgraded:show:X+{Extra}|X} de [gold]Poison[/gold].",
+  "ALCHEMIST-MUD_PACK.description": "[gold]Scruter[/gold] {IfUpgraded:show:X+{Extra}|X}.\nGagnez {Block:diff()} d'[gold]Armure[/gold] {IfUpgraded:show:X+{Extra}|X} fois.\nGagnez {IfUpgraded:show:X+{Extra}|X} de [gold]Poison[/gold].{InCombat:\n(Gagnez {TotalBlock:diff()} d'[gold]Armure[/gold])|}",
   "ALCHEMIST-MUD_PACK.title": "Masque de boue",
   "ALCHEMIST-MUSCLE_MEMORY.description": "Infligez {Damage:diff()} dégâts {CalculatedHits:diff()} fois.\nSe déclenche autant de fois supplémentaires que de fois où cette carte a été jouée pendant ce combat.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Mémoire musculaire",

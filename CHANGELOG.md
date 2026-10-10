@@ -10,6 +10,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Added final art for Fuming Mix
 - Added a one-time popup the first time you select the Alchemist that asks whether to share anonymous run data
 
+### Fixed
+
+- Fixed in-combat preview for Mud Pack card (Hero Expansion) so it shows total Block
+
 ## [0.14.26] - 2026-10-09
 
 ### Added

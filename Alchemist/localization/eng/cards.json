@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "Miasma",
   "ALCHEMIST-MORTAR.description": "[gold]Ferment.[/gold]\nDeal {CalculatedDamage:diff()} damage.\nGain [gold]Block[/gold] equal to damage dealt.\nDeals 2 additional damage for each turn [gold]Fermented[/gold].",
   "ALCHEMIST-MORTAR.title": "Mortar",
-  "ALCHEMIST-MUD_PACK.description": "[gold]Scry[/gold] {IfUpgraded:show:X+{Extra}|X}.\nGain {Block:diff()} [gold]Block[/gold] {IfUpgraded:show:X+{Extra}|X} times.\nGain {IfUpgraded:show:X+{Extra}|X} [gold]Poison[/gold].",
+  "ALCHEMIST-MUD_PACK.description": "[gold]Scry[/gold] {IfUpgraded:show:X+{Extra}|X}.\nGain {Block:diff()} [gold]Block[/gold] {IfUpgraded:show:X+{Extra}|X} times.\nGain {IfUpgraded:show:X+{Extra}|X} [gold]Poison[/gold].{InCombat:\n(Gain {TotalBlock:diff()} [gold]Block[/gold])|}",
   "ALCHEMIST-MUD_PACK.title": "Mud Pack",
   "ALCHEMIST-MUSCLE_MEMORY.description": "Deal {Damage:diff()} damage {CalculatedHits:diff()} times.\nHits an additional time for each time this card has been played this combat.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Muscle Memory",

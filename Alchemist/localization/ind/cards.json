@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "Miasma",
   "ALCHEMIST-MORTAR.description": "[gold]Fermentasi.[/gold]\nLakukan {CalculatedDamage:diff()} kerusakan.\nDapatkan [gold]Blok[/gold] sama dengan kerusakan yang dilakukan.\nMelakukan 2 kerusakan tambahan untuk setiap giliran [gold]Terfermentasi[/gold].",
   "ALCHEMIST-MORTAR.title": "Lumpang",
-  "ALCHEMIST-MUD_PACK.description": "[gold]Meramal[/gold] {IfUpgraded:show:X+{Extra}|X}.\nDapatkan {Block:diff()} [gold]Blok[/gold] {IfUpgraded:show:X+{Extra}|X} kali.\nDapatkan {IfUpgraded:show:X+{Extra}|X} [gold]Racun[/gold].",
+  "ALCHEMIST-MUD_PACK.description": "[gold]Meramal[/gold] {IfUpgraded:show:X+{Extra}|X}.\nDapatkan {Block:diff()} [gold]Blok[/gold] {IfUpgraded:show:X+{Extra}|X} kali.\nDapatkan {IfUpgraded:show:X+{Extra}|X} [gold]Racun[/gold].{InCombat:\n(Dapatkan {TotalBlock:diff()} [gold]Blok[/gold])|}",
   "ALCHEMIST-MUD_PACK.title": "Lulur Lumpur",
   "ALCHEMIST-MUSCLE_MEMORY.description": "Lakukan {Damage:diff()} kerusakan {CalculatedHits:diff()} kali.\nKena sekali lagi untuk setiap kali kartu ini telah dimainkan perlawanan ini.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Memori Otot",

@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "독안개",
   "ALCHEMIST-MORTAR.description": "[gold]발효.[/gold]\n피해를 {CalculatedDamage:diff()} 줍니다.\n가한 피해량만큼 [gold]방어도[/gold]를 얻습니다.\n[gold]발효[/gold]한 턴마다 피해량이 2 증가합니다.",
   "ALCHEMIST-MORTAR.title": "막자사발",
-  "ALCHEMIST-MUD_PACK.description": "[gold]예지[/gold] {IfUpgraded:show:X+{Extra}|X}.\n[gold]방어도[/gold]를 {Block:diff()}만큼 {IfUpgraded:show:X+{Extra}|X}번 얻습니다.\n[gold]중독[/gold]을 {IfUpgraded:show:X+{Extra}|X} 얻습니다.",
+  "ALCHEMIST-MUD_PACK.description": "[gold]예지[/gold] {IfUpgraded:show:X+{Extra}|X}.\n[gold]방어도[/gold]를 {Block:diff()}만큼 {IfUpgraded:show:X+{Extra}|X}번 얻습니다.\n[gold]중독[/gold]을 {IfUpgraded:show:X+{Extra}|X} 얻습니다.{InCombat:\n([gold]방어도[/gold]를 {TotalBlock:diff()} 얻습니다)|}",
   "ALCHEMIST-MUD_PACK.title": "머드팩",
   "ALCHEMIST-MUSCLE_MEMORY.description": "피해를 {Damage:diff()}만큼 {CalculatedHits:diff()}번 줍니다.\n이번 전투 동안 이 카드를 사용한 횟수만큼 추가로 적중합니다.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "근육 기억",

@@ -124,7 +124,7 @@
   "ALCHEMIST-MIASMA.title": "Miyazma",
   "ALCHEMIST-MORTAR.description": "[gold]Mayalan.[/gold]\n{CalculatedDamage:diff()} hasar ver.\nVerdiğin hasarla aynı miktarda [gold]Blok[/gold] elde et.\n[gold]Mayalandığı[/gold] her tur için fazladan 2 hasar verir.",
   "ALCHEMIST-MORTAR.title": "Havan",
-  "ALCHEMIST-MUD_PACK.description": "[gold]Kehanet[/gold] {IfUpgraded:show:X+{Extra}|X}.\n{IfUpgraded:show:X+{Extra}|X} kez {Block:diff()} [gold]Blok[/gold] elde et.\n{IfUpgraded:show:X+{Extra}|X} [gold]Zehir[/gold] elde et.",
+  "ALCHEMIST-MUD_PACK.description": "[gold]Kehanet[/gold] {IfUpgraded:show:X+{Extra}|X}.\n{IfUpgraded:show:X+{Extra}|X} kez {Block:diff()} [gold]Blok[/gold] elde et.\n{IfUpgraded:show:X+{Extra}|X} [gold]Zehir[/gold] elde et.{InCombat:\n({TotalBlock:diff()} [gold]Blok[/gold] elde et)|}",
   "ALCHEMIST-MUD_PACK.title": "Çamur Maskesi",
   "ALCHEMIST-MUSCLE_MEMORY.description": "{CalculatedHits:diff()} kez {Damage:diff()} hasar ver.\nBu savaş boyunca bu kartın oynandığı her sefer için ek bir vuruş yapar.",
   "ALCHEMIST-MUSCLE_MEMORY.title": "Kas Hafızası",
