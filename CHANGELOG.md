@@ -7,7 +7,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ### Added
 
-- Added final art for Fuming Mix
+- Added final art for Compound Mix, Fuming Mix, and Sparkling Mix
 - Added a one-time popup the first time you select the Alchemist that asks whether to share anonymous run data
 
 ### Fixed
