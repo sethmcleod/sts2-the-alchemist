@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.14.27] - 2026-10-10
+
 ### Added
 
 - Added final art for Compound Mix, Fuming Mix, and Sparkling Mix
