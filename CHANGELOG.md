@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Laced enchantment showing an old placeholder icon instead of the final art
+
 ## [0.14.27] - 2026-10-10
 
 ### Added
