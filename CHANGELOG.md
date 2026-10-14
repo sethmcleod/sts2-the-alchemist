@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added to the anonymous run data whether the hidden Secrets section in the mod settings is unlocked
+
 ### Changed
 
 - Buffed Compound Mix: it now has Retain if either Mix combined into it had Retain

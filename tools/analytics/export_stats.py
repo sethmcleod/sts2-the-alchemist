@@ -386,6 +386,18 @@ def excluded_players() -> set[str]:
     return hashes
 
 
+def secrets_summary(runs: list[dict]) -> str | None:
+    unlocked: dict[str, bool] = {}
+    for run in runs:
+        config = (run.get("alchemist") or {}).get("config") or {}
+        if "secrets_unlocked" in config:
+            unlocked[run["player_hash"]] = unlocked.get(run["player_hash"], False) or bool(config["secrets_unlocked"])
+    if not unlocked:
+        return None
+    count = sum(unlocked.values())
+    return f"Secrets unlocked: {count:,} of {len(unlocked):,} players ({count / len(unlocked):.0%})"
+
+
 def oldest_version(runs) -> str | None:
     return min((run["mod_version"] for run in runs), key=version_key, default=None)
 
@@ -496,6 +508,8 @@ def main() -> int:
         path.write_text(json.dumps(payload, separators=(",", ":")) + "\n", encoding="utf-8")
         print(f"wrote {shown(path)} ({path.stat().st_size / 1024:,.0f} KB)")
     print(f"{len(runs):,} runs exported ({fetched:,} fetched)")
+    if secrets := secrets_summary(runs):
+        print(secrets)
     return 0
 
 

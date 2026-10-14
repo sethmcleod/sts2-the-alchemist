@@ -136,8 +136,9 @@ internal static class AlchemistMetrics
         ["acts"] = ActsJson(run, player),
         ["config"] = new JsonObject
         {
-            ["enable_epochs"] = AlchemistModConfig.EnableEpochs,
-            ["keep_pools_separate"] = AlchemistModConfig.KeepPoolsSeparate,
+            ["enable_epochs"] = EffectiveSettings.EnableEpochsFor(run.Players.Count > 1),
+            ["keep_pools_separate"] = EffectiveSettings.KeepPoolsSeparateFor(run.Players.Count > 1),
+            ["secrets_unlocked"] = SecretUnlocks.IsUnlocked,
         },
     };
 
