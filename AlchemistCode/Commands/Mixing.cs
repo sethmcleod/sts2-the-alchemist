@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Cards;
 
 namespace Alchemist.AlchemistCode.Commands;
 
@@ -265,6 +266,10 @@ public static class Mixing
         if (ingredients.Any(i => i.Keywords.Contains(CardKeyword.Retain)))
             CardCmd.ApplyKeyword(compound, CardKeyword.Retain);
         else if (ingredients.Any(i => i.ShouldRetainThisTurn))
-            CardCmd.ApplySingleTurnRetain(compound);
+        {
+            compound.GiveSingleTurnRetain();
+            if (NCard.FindOnTable(compound) is { } node && compound.Pile is { } pile)
+                node.UpdateVisuals(pile.Type, CardPreviewMode.Normal);
+        }
     }
 }
