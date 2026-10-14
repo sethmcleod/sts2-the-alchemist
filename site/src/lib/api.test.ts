@@ -22,14 +22,12 @@ const RUN = {
 
 let inbox: string[];
 let keys: Map<string, string>;
-let supabase: Error | { id: number }[];
 let fetchedUrls: string[];
 function fakeFetch(url: string, init?: RequestInit) {
   fetchedUrls.push(url);
   if (url === 'https://redis.test') {
     const [name, ...args] = JSON.parse(String(init!.body)) as [string, ...(number | string)[]];
     const result = {
-      GET: () => keys.get(String(args[0])) ?? null,
       LRANGE: () => [...inbox],
       LTRIM: () => void (inbox = inbox.slice(Number(args[1]))),
       RPOP: () => inbox.pop(),
@@ -38,11 +36,6 @@ function fakeFetch(url: string, init?: RequestInit) {
     }[name]!();
     return Response.json({ result });
   }
-  if (url.startsWith('https://qgvpsvjvgpfweeouufbk.supabase.co/')) {
-    if (supabase instanceof Error) return new Response('down', { status: 503 });
-    const after = Number(new URL(url).searchParams.get('id')!.slice('gt.'.length));
-    return Response.json(supabase.filter((row) => row.id > after));
-  }
   if (url === 'https://hook.test') return new Response(null, { status: 201 });
   throw new Error(`unexpected fetch ${url}`);
 }
@@ -50,7 +43,6 @@ function fakeFetch(url: string, init?: RequestInit) {
 beforeEach(() => {
   inbox = [];
   keys = new Map();
-  supabase = [];
   fetchedUrls = [];
   vi.stubGlobal(
     'fetch',
@@ -60,7 +52,6 @@ beforeEach(() => {
   vi.stubEnv('KV_REST_API_TOKEN', 'token');
   vi.stubEnv('CRON_SECRET', 'secret');
   vi.stubEnv('DEPLOY_HOOK_URL', 'https://hook.test');
-  vi.stubEnv('SUPABASE_READ_KEY', 'key');
   blob.put.mockReset();
   blob.list.mockReset().mockResolvedValue({ blobs: [], cursor: undefined });
 });
@@ -128,29 +119,20 @@ describe('the daily pack', () => {
     expect(blob.put).not.toHaveBeenCalled();
   });
 
-  it('moves the queue and the new Supabase rows into one private file, then starts a build', async () => {
+  it('moves the queue into one private file, then starts a build', async () => {
     inbox = [JSON.stringify({ id: 'a' }), JSON.stringify({ id: 'b' })];
-    supabase = [{ id: 1 }, { id: 2 }];
     blob.list.mockResolvedValue({ blobs: [{ pathname: 'runs/x.jsonl.gz', size: 9, url: 'https://blob/x' }] });
     const response = await pack();
-    expect(await response.json()).toMatchObject({ built: true, fromSupabase: 2, packed: 4 });
+    expect(await response.json()).toMatchObject({ built: true, packed: 2 });
     const { lines, options, pathname } = packed();
     expect(pathname).toMatch(/^runs\/.+\.jsonl\.gz$/);
     expect(options).toMatchObject({ access: 'private' });
-    expect(lines.map((line) => line.id)).toEqual(['sb-1', 'sb-2', 'a', 'b']);
+    expect(lines.map((line) => line.id)).toEqual(['a', 'b']);
     expect(inbox).toEqual([]);
-    expect(keys.get('runs:supabase-seen')).toBe('2');
     expect(JSON.parse(keys.get('runs:files')!)).toEqual([
       { pathname: 'runs/x.jsonl.gz', size: 9, url: 'https://blob/x' },
     ]);
     expect(fetchedUrls.at(-1)).toBe('https://hook.test');
-  });
-
-  it('copies only the Supabase rows it has not copied', async () => {
-    keys.set('runs:supabase-seen', '1');
-    supabase = [{ id: 1 }, { id: 2 }];
-    await pack();
-    expect(packed().lines.map((line) => line.id)).toEqual(['sb-2']);
   });
 
   it('keeps runs that arrive while it packs', async () => {
@@ -158,14 +140,6 @@ describe('the daily pack', () => {
     blob.put.mockImplementation(async () => void inbox.push(JSON.stringify({ id: 'late' })));
     await pack();
     expect(inbox.map((line) => JSON.parse(line).id)).toEqual(['late']);
-  });
-
-  it('still packs the queue when Supabase is down', async () => {
-    vi.spyOn(console, 'error').mockImplementation(() => {});
-    inbox = [JSON.stringify({ id: 'a' })];
-    supabase = new Error('down');
-    await pack();
-    expect(packed().lines.map((line) => line.id)).toEqual(['a']);
   });
 
   it('leaves the queue alone when the file cannot be written', async () => {
