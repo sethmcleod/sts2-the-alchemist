@@ -252,6 +252,15 @@ public static class Mixing
         Analytics.RunCounters.Tally(owner, Analytics.RunCounters.CompoundPair + string.Join("+", pair));
         RecordCreated(owner, compound, source);
         await CardPileCmd.AddGeneratedCardToCombat(compound, PileType.Hand, owner);
+        CarryRetain(compound, first, second);
         return compound;
+    }
+
+    private static void CarryRetain(CardModel compound, params CardModel[] ingredients)
+    {
+        if (ingredients.Any(i => i.Keywords.Contains(CardKeyword.Retain)))
+            CardCmd.ApplyKeyword(compound, CardKeyword.Retain);
+        else if (ingredients.Any(i => i.ShouldRetainThisTurn))
+            CardCmd.ApplySingleTurnRetain(compound);
     }
 }

@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Changed
+
+- Buffed Compound Mix: it now has Retain if either Mix combined into it had Retain
+
 ### Fixed
 
 - Fixed Laced enchantment showing an old placeholder icon instead of the final art
