@@ -4,27 +4,6 @@ import { INBOX, redis } from './_redis.js';
 
 const FILES = 'runs:files';
 
-const SUPABASE_RUNS = 'https://qgvpsvjvgpfweeouufbk.supabase.co/rest/v1/runs';
-const SUPABASE_LAST_ID = 'runs:supabase-seen';
-const SUPABASE_COLUMNS =
-  'id,created_at,mod_version,game_version,victory,ascension,floor,playtime,player_hash,epochs,data,alchemist';
-
-async function newSupabaseRuns(): Promise<{ lastId?: number; lines: string[] }> {
-  const key = process.env.SUPABASE_READ_KEY;
-  if (!key) return { lines: [] };
-  let lastId = Number((await redis(['GET', SUPABASE_LAST_ID])) ?? 0);
-  const lines: string[] = [];
-  for (;;) {
-    const url = `${SUPABASE_RUNS}?select=${SUPABASE_COLUMNS}&id=gt.${lastId}&order=id.asc&limit=1000`;
-    const response = await fetch(url, { headers: { apikey: key, Authorization: `Bearer ${key}` } });
-    if (!response.ok) throw new Error(`Supabase: ${response.status} ${await response.text()}`);
-    const rows = (await response.json()) as { id: number }[];
-    for (const { id, ...row } of rows) lines.push(JSON.stringify({ id: `sb-${id}`, ...row }));
-    if (rows.length) lastId = rows.at(-1)!.id;
-    if (rows.length < 1000) return { lastId, lines };
-  }
-}
-
 async function packedFiles() {
   const files = [];
   let cursor: string | undefined;
@@ -42,23 +21,14 @@ export async function GET(request: Request) {
     return new Response('Unauthorized', { status: 401 });
 
   const queued = (await redis(['LRANGE', INBOX, 0, -1])) as string[];
-  let supabase: Awaited<ReturnType<typeof newSupabaseRuns>> = { lines: [] };
-  try {
-    supabase = await newSupabaseRuns();
-  } catch (error) {
-    console.error(error);
-  }
-
-  const lines = [...supabase.lines, ...queued];
-  if (!lines.length) return Response.json({ packed: 0 });
+  if (!queued.length) return Response.json({ packed: 0 });
   const pathname = `runs/${new Date().toISOString().replace(/[:.]/g, '-')}.jsonl.gz`;
-  await put(pathname, gzipSync(lines.join('\n') + '\n'), { access: 'private', contentType: 'application/gzip' });
+  await put(pathname, gzipSync(queued.join('\n') + '\n'), { access: 'private', contentType: 'application/gzip' });
   await redis(['SET', FILES, JSON.stringify(await packedFiles())]);
-  if (queued.length) await redis(['LTRIM', INBOX, queued.length, -1]);
-  if (supabase.lastId) await redis(['SET', SUPABASE_LAST_ID, supabase.lastId]);
+  await redis(['LTRIM', INBOX, queued.length, -1]);
 
   const deployHook = process.env.DEPLOY_HOOK_URL;
   if (!deployHook) console.error('DEPLOY_HOOK_URL is not set, so no build was started.');
   const built = deployHook ? (await fetch(deployHook, { method: 'POST' })).ok : false;
-  return Response.json({ built, fromSupabase: supabase.lines.length, packed: lines.length, pathname });
+  return Response.json({ built, packed: queued.length, pathname });
 }
