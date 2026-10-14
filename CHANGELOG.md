@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.14.28] - 2026-10-14
+
 ### Added
 
 - Added to the anonymous run data whether the hidden Secrets section in the mod settings is unlocked
