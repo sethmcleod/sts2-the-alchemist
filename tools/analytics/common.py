@@ -20,7 +20,6 @@ import os
 import ssl
 import time
 import urllib.error
-import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -36,11 +35,6 @@ FILES = "runs:files"
 
 # Rows with this mod_version are fabricated by seed_runs.py and never counted
 SEED_VERSION = "seed-test"
-
-# Until the first daily pack, every run is still in Supabase, where older mod versions post.
-# Delete this with the Supabase project
-SUPABASE_RUNS = "https://qgvpsvjvgpfweeouufbk.supabase.co/rest/v1/runs"
-SUPABASE_KEY_FILE = HERE / "supabase-service-key.local.txt"
 
 
 def credential(name: str) -> str | None:
@@ -80,12 +74,9 @@ def fetch_runs(mod_version: str | None = None, game_version: str | None = None,
     """Every run, oldest first."""
     queued, files = redis([["LRANGE", INBOX, 0, -1], ["GET", FILES]])
     files = json.loads(files) if files else []
-    if files:
-        lines = [line for file in files for line in blob_lines(file)] + queued
-        # A pack that failed half way is packed again, so a run can be in two files
-        rows = list({row["id"]: row for row in map(json.loads, lines)}.values())
-    else:
-        rows = supabase_rows() + [json.loads(line) for line in queued]
+    lines = [line for file in files for line in blob_lines(file)] + queued
+    # A pack that failed half way is packed again, so a run can be in two files
+    rows = list({row["id"]: row for row in map(json.loads, lines)}.values())
 
     since = (datetime.now(timezone.utc) - timedelta(days=days_back)).isoformat() if days_back else ""
     rows = [row for row in rows
@@ -119,25 +110,6 @@ def blob_lines(file: dict) -> list[str]:
         cached.parent.mkdir(parents=True, exist_ok=True)
         cached.write_bytes(body)
     return gzip.decompress(cached.read_bytes()).decode("utf-8").splitlines()
-
-
-def supabase_rows() -> list[dict]:
-    key = os.environ.get("SUPABASE_READ_KEY")
-    if not key and SUPABASE_KEY_FILE.exists():
-        key = SUPABASE_KEY_FILE.read_text(encoding="utf-8").strip()
-    if not key:
-        return []
-    columns = "created_at,mod_version,game_version,victory,ascension,floor,playtime,player_hash,epochs,data,alchemist"
-    url = f"{SUPABASE_RUNS}?{urllib.parse.urlencode({'select': columns, 'order': 'id.asc'})}"
-    page, rows = 1000, []
-    for start in range(0, 1_000_000, page):
-        request = urllib.request.Request(url, headers={
-            "apikey": key, "Authorization": f"Bearer {key}", "Range": f"{start}-{start + page - 1}"})
-        batch = json.loads(read(request))
-        rows.extend(batch)
-        if len(batch) < page:
-            return rows
-    return rows
 
 
 def read(request: urllib.request.Request, attempts: int = 3) -> bytes:
