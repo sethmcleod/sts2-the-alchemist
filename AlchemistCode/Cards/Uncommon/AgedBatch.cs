@@ -15,17 +15,17 @@ public class AgedBatch : AlchemistCard
     {
         WithCards(2, 0);
         WithKeyword(CardKeyword.Exhaust);
-        WithUpgradingCardTip<Token.BurstingMix>();
-        WithUpgradingCardTip<Token.SyrupyMix>();
-        WithUpgradingCardTip<Token.ZestyMix>();
+        WithUpgradingCardTip<Token.BurstingMix>(static (tip, _) => tip.RemoveKeyword(CardKeyword.Exhaust));
+        WithUpgradingCardTip<Token.SyrupyMix>(static (tip, _) => tip.RemoveKeyword(CardKeyword.Exhaust));
+        WithUpgradingCardTip<Token.ZestyMix>(static (tip, _) => tip.RemoveKeyword(CardKeyword.Exhaust));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.Draw(this, choiceContext);
-        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: IsUpgraded, source: this);
+        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: IsUpgraded, source: this,
+            prepare: static option => option.RemoveKeyword(CardKeyword.Exhaust));
         if (mix == null) return;
-        mix.RemoveKeyword(CardKeyword.Exhaust);
         await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, Owner);
     }
 }

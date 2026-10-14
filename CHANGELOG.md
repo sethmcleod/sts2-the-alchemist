@@ -11,6 +11,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ### Fixed
 
+- Fixed Aged Batch card showing its Mixes with Exhaust in the tooltips and the choice screen, though the chosen Mix loses Exhaust
+- Fixed Everflowing Chalice relic showing its Mixes without Retain in the choice screen, though the chosen Mix gains Retain
 - Fixed Laced enchantment showing an old placeholder icon instead of the final art
 
 ## [0.14.27] - 2026-10-10
