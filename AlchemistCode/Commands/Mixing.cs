@@ -96,7 +96,8 @@ public static class Mixing
     /// outside combat. With upgraded, the grid shows the + versions, so the previews match what is given.
     /// </summary>
     public static async Task<CardModel?> Choose(PlayerChoiceContext ctx, Player owner,
-        bool upgraded = false, IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null)
+        bool upgraded = false, IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null,
+        Action<CardModel>? prepare = null)
     {
         kinds ??= Basic;
         if (owner.Creature.CombatState is not { } combat) return null;
@@ -104,6 +105,9 @@ public static class Mixing
         if (upgraded)
             foreach (var option in options)
                 CardCmd.Upgrade(option);
+        if (prepare != null)
+            foreach (var option in options)
+                prepare(option);
         Patches.MixPickerGridPatch.PickerOpen = true;
         Patches.MixPickerGridPatch.Columns = options.Count > 5 ? (options.Count + 1) / 2 : null;
         CardModel? picked;
@@ -252,6 +256,15 @@ public static class Mixing
         Analytics.RunCounters.Tally(owner, Analytics.RunCounters.CompoundPair + string.Join("+", pair));
         RecordCreated(owner, compound, source);
         await CardPileCmd.AddGeneratedCardToCombat(compound, PileType.Hand, owner);
+        CarryRetain(compound, first, second);
         return compound;
+    }
+
+    private static void CarryRetain(CardModel compound, params CardModel[] ingredients)
+    {
+        if (ingredients.Any(i => i.Keywords.Contains(CardKeyword.Retain)))
+            CardCmd.ApplyKeyword(compound, CardKeyword.Retain);
+        else if (ingredients.Any(i => i.ShouldRetainThisTurn))
+            CardCmd.ApplySingleTurnRetain(compound);
     }
 }

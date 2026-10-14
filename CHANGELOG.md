@@ -5,6 +5,22 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.14.28] - 2026-10-14
+
+### Added
+
+- Added to the anonymous run data whether the hidden Secrets section in the mod settings is unlocked
+
+### Changed
+
+- Buffed Compound Mix: it now has Retain if either Mix combined into it had Retain
+
+### Fixed
+
+- Fixed Aged Batch card showing its Mixes with Exhaust in the tooltips and the choice screen, though the chosen Mix loses Exhaust
+- Fixed Everflowing Chalice relic showing its Mixes without Retain in the choice screen, though the chosen Mix gains Retain
+- Fixed Laced enchantment showing an old placeholder icon instead of the final art
+
 ## [0.14.27] - 2026-10-10
 
 ### Added

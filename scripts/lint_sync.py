@@ -85,7 +85,7 @@ def norm(name: str) -> str:
 
 def snake(class_name: str) -> str:
     """Card class name -> loc-id suffix (DoubleDose -> DOUBLE_DOSE)."""
-    s = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", "_", class_name)
+    s = re.sub(r"(?<=[A-Za-z0-9])(?=[A-Z])", "_", class_name)
     return s.upper()
 
 

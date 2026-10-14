@@ -159,6 +159,7 @@ def fabricate(rng: random.Random, version: str, pool: list[str], power: dict[str
     }
     if newer:
         row["alchemist"]["badges"] = earned_badges(row, badges)
+        row["alchemist"]["config"]["secrets_unlocked"] = int(row["player_hash"], 16) % 5 == 0
     return row
 
 
