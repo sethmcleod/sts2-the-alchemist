@@ -104,6 +104,8 @@
   "ALCHEMIST-HARVEST.title": "Harvest",
   "ALCHEMIST-HEAVY_DOSE.description": "Deal {Damage:diff()} damage.\nGain {SelfPoison} [gold]Poison[/gold].\nAdd 1 {IfUpgraded:show:[gold]Bursting Mix+[/gold]|[gold]Bursting Mix[/gold]} into your [gold]Hand[/gold] for every {Per} [gold]Poison[/gold] you have.",
   "ALCHEMIST-HEAVY_DOSE.title": "Heavy Dose",
+  "ALCHEMIST-HEROIC_DOSE.description": "Choose a basic {IfUpgraded:show:[gold]Mix+[/gold]|[gold]Mix[/gold]} to add into your [gold]Hand[/gold].\nGain {antitoxin:diff()} [gold]Antitoxin[/gold].\nGain {SelfPoison:diff()} [gold]Poison[/gold].",
+  "ALCHEMIST-HEROIC_DOSE.title": "Heroic Dose",
   "ALCHEMIST-HICCUP.description": "Gain {Block:diff()} [gold]Block[/gold].\nDraw {Cards} card.\nEvery {Mixes} {Mixes:plural:[gold]Mix[/gold]|[gold]Mixes[/gold]} you play in a turn, put this into your [gold]Hand[/gold].",
   "ALCHEMIST-HICCUP.title": "Hiccup",
   "ALCHEMIST-JAB.description": "Deal {CalculatedDamage:diff()} damage.\nApply {Poison:diff()} [gold]Poison[/gold].",

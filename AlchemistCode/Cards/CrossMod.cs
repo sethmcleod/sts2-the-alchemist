@@ -1,5 +1,6 @@
 using Alchemist.AlchemistCode.Cards.AncientsAwakened;
 using Alchemist.AlchemistCode.Cards.Hero;
+using Alchemist.AlchemistCode.Cards.ReshuffledSpire;
 using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards;
@@ -14,6 +15,7 @@ internal static class CrossMod
     {
         AlchemistHeroCard => HeroExpansion.Offered(card, multiplayer),
         AlchemistAncientsCard => AncientsAwakenedMod.IsLoaded && !RollingDustyTome,
+        AlchemistReshuffledCard => ReshuffledSpireMod.IsLoaded && !RollingDustyTome,
         _ => true,
     };
 }
