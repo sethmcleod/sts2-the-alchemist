@@ -249,7 +249,7 @@
   "ALCHEMIST-WARM_UP.title": "Warm Up",
   "ALCHEMIST-WATER_DOWN.description": "ALL enemies lose {StrengthLoss:diff()} [gold]Strength[/gold] this turn.\nApply {Poison:diff()} [gold]Poison[/gold] to ALL enemies.",
   "ALCHEMIST-WATER_DOWN.title": "Water Down",
-  "ALCHEMIST-WORMWOOD.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies twice.",
+  "ALCHEMIST-WORMWOOD.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies twice.\nApply {Poison:diff()} [gold]Poison[/gold] to ALL enemies.",
   "ALCHEMIST-WORMWOOD.title": "Wormwood",
   "ALCHEMIST-ZESTY_MIX.description": "Draw {Cards:diff()} {Cards:plural:card|cards}.",
   "ALCHEMIST-ZESTY_MIX.title": "Zesty Mix"

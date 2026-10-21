@@ -110,5 +110,5 @@ Wallop,Rare,Attack,2,Deal 5 (7) damage for each card in your Hand.
 Warded,Rare,Power,1,"Whenever you gain Antitoxin, gain 3 (4) Block."
 Warm Up,Rare,Skill,0,Gain 1 (2) Energy. Add a random Mix into your Hand. Exhaust. (Warm Up+ adds a Mix+)
 Water Down,Rare,Skill,1,ALL enemies lose 3 (5) Strength this turn. Apply 3 (5) Poison to ALL enemies.
-Wormwood,Ancient,Attack,0,Laced. Deal 4 (6) damage to ALL enemies twice.
+Wormwood,Ancient,Attack,1,Laced. Deal 4 (6) damage to ALL enemies twice. Apply 2 (3) Poison to ALL enemies.
 Zesty Mix,Token,Skill,0,Draw 1 (2) cards. Exhaust.

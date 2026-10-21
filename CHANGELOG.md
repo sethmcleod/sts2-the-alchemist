@@ -9,6 +9,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 - Added Heroic Dose card (Reshuffled Spire): "Choose a basic Mix (Mix+) to add into your Hand. Gain 3 (4) Antitoxin. Gain 3 (4) Poison."
 
+### Changed
+
+- Changed Wormwood card: cost increased from 0 -> 1, and it now also applies 2 (3) Poison to ALL enemies
+
 ## [0.14.28] - 2026-10-14
 
 ### Added
