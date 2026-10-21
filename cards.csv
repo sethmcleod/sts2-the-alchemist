@@ -61,7 +61,7 @@ Numb,Uncommon,Skill,1,Discard all non-Ferment cards in your Hand. Gain 5 (6) Blo
 Osmosis,Uncommon,Power,1,"At the start of your turn, gain 2 (3) Antitoxin."
 Overbrew,Uncommon,Skill,X,Choose a basic Mix (Mix+). Add X+1 copies of it into your Hand.
 Overflow,Uncommon,Power,1 (0),"Whenever one of your cards Ferments, Upgrade it. If already Upgraded, apply 1 Poison to ALL enemies."
-Panacea,Ancient,Power,1 (0),"Whenever you gain Poison, gain 1 Antitoxin."
+Panacea,Ancient,Power,1 (0),"Whenever your Antitoxin prevents Poison damage, gain that much Block."
 Patient Strike,Uncommon,Attack,1,Retain. Ferment. Deal 9 (12) damage. Deals 4 (6) additional damage for each turn Fermented.
 Pick and Choose,Common,Skill,1,Scry 2 (3). Apply 4 (6) Poison.
 Potent Defend,"Token, Ancients Awakened",Skill,1,Gain 5 (8) Block. Add a random Mix into your Hand.

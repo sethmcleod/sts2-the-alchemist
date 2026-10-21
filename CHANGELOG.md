@@ -11,6 +11,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ### Changed
 
+- Reworked Panacea card: "Whenever your Antitoxin prevents Poison damage, gain that much Block."
 - Changed Wormwood card: cost increased from 0 -> 1, and it now also applies 2 (3) Poison to ALL enemies
 
 ## [0.14.28] - 2026-10-14
