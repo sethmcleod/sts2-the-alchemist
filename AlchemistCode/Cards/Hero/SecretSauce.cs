@@ -15,10 +15,12 @@ namespace Alchemist.AlchemistCode.Cards.Hero;
 // The Hero Expansion gives every character one Common that Enchants a card mid-combat, and its
 // enchantments last the run like the base game's. This is the Alchemist's. The enchantment itself
 // refuses a card that already prints the Laced keyword
-[CardTheme(CardTheme.Poison)]
+[CardTheme(CardTheme.Poison, CardTheme.Mix)]
 public class SecretSauce : AlchemistHeroCard
 {
     private const int LacedAmount = 1;
+
+    protected internal override bool PlaysCastAnimation => false;
 
     private static LocString Prompt => new("cards", "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt");
 
@@ -30,8 +32,7 @@ public class SecretSauce : AlchemistHeroCard
         WithTips(_ => HoverTipFactory.FromEnchantment<Laced>(LacedAmount));
     }
 
-    private bool CanLace(CardModel card) =>
-        card != this && ModelDb.Enchantment<Laced>().CanEnchant(card);
+    private static bool CanLace(CardModel card) => ModelDb.Enchantment<Laced>().CanEnchant(card);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

@@ -31,7 +31,6 @@ public static class Mixing
 {
     private static LocString SelectPrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPrompt");
     private static LocString SelectBasicPrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPromptBasic");
-    private static LocString SelectVolatilePrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPromptVolatile");
 
     public static readonly MixKind[] Basic = { MixKind.Bursting, MixKind.Syrupy, MixKind.Zesty };
     public static readonly MixKind[] Volatile = { MixKind.Fuming, MixKind.Acrid, MixKind.Sparkling };
@@ -88,9 +87,7 @@ public static class Mixing
         kinds.Select(kind => Create(combat, owner, kind)).ToList();
 
     private static LocString PromptFor(IReadOnlyList<MixKind> kinds) =>
-        kinds.SequenceEqual(Basic) ? SelectBasicPrompt
-        : kinds.SequenceEqual(Volatile) ? SelectVolatilePrompt
-        : SelectPrompt;
+        kinds.SequenceEqual(Basic) ? SelectBasicPrompt : SelectPrompt;
 
     /// <summary>
     /// Shows the given Mixes (the basic three by default) and returns the chosen one, unadded. Null

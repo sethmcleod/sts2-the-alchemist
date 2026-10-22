@@ -172,7 +172,7 @@
   "ALCHEMIST-RECONSTITUTE.title": "Reconstitute",
   "ALCHEMIST-REFINE.description": "Whenever you add a [gold]Mix[/gold] into your [gold]Hand[/gold], [gold]Upgrade[/gold] it. If already [gold]Upgraded[/gold], it gains [gold]Replay[/gold].",
   "ALCHEMIST-REFINE.title": "Refine",
-  "ALCHEMIST-RERUN.description": "This turn, your next {Amount:plural:card is|{:diff()} cards are} played an extra time.\nGain {Poison:inverseDiff()} [gold]Poison[/gold].",
+  "ALCHEMIST-RERUN.description": "This turn, your next card is played an extra time.\nGain {Poison:inverseDiff()} [gold]Poison[/gold].",
   "ALCHEMIST-RERUN.title": "Rerun",
   "ALCHEMIST-RESOLVE.description": "[gold]Ferment.[/gold]\nGain {Amount:diff()} [gold]Strength[/gold].\nGains {perTurn:diff()} additional [gold]Strength[/gold] for each turn [gold]Fermented[/gold].",
   "ALCHEMIST-RESOLVE.title": "Resolve",
