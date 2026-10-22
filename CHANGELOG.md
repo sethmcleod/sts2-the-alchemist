@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.14.29] - 2026-10-22
+
 ### Added
 
 - Added Heroic Dose card (Reshuffled Spire): "Choose a basic Mix (Mix+) to add into your Hand. Gain 3 (4) Antitoxin. Gain 3 (4) Poison."
