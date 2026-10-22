@@ -146,7 +146,7 @@
   "ALCHEMIST-PANACEA.title": "Panaceum",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]Fermentacja.[/gold]\nZadaj {CalculatedDamage:diff()} pkt. obrażeń.\nZadaje dodatkowo {IfUpgraded:show:6|4} pkt. obrażeń za każdą turę [gold]Fermentacji[/gold].",
   "ALCHEMIST-PATIENT_STRIKE.title": "Cierpliwe uderzenie",
-  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Wróżba[/gold] {Scry:diff()}.\nNałóż {PoisonPower:diff()} pkt. [gold]Trucizny[/gold].",
+  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Wróżba[/gold] {Scry:diff()}.\nDobierz {Cards} kartę.\nOdrzuć {Cards} kartę.\nZyskaj {antitoxin:diff()} pkt. [gold]Antytoksyny[/gold].",
   "ALCHEMIST-PICK_AND_CHOOSE.title": "Wybrzydzanie",
   "ALCHEMIST-POTENT_DEFEND.description": "Zyskaj {Block:diff()} pkt. [gold]Bloku[/gold].\nDodaj losową [gold]Mieszankę[/gold] do [gold]ręki[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Stężona obrona",

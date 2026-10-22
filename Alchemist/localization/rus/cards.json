@@ -146,7 +146,7 @@
   "ALCHEMIST-PANACEA.title": "Панацея",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]Брожение.[/gold]\nНаносит {CalculatedDamage:diff()} урона.\nНаносит на {IfUpgraded:show:6|4} урона больше за каждый ход [gold]брожения[/gold].",
   "ALCHEMIST-PATIENT_STRIKE.title": "Терпеливый удар",
-  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Предсказывание карт[/gold] {Scry:diff()}.\nНакладывает {PoisonPower:diff()} [gold]яда[/gold].",
+  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Предсказывание карт[/gold] {Scry:diff()}.\nВы добираете карты: {Cards}.\nВы сбрасываете карты: {Cards}.\nДает {antitoxin:diff()} [gold]антитоксина[/gold].",
   "ALCHEMIST-PICK_AND_CHOOSE.title": "Разборчивость",
   "ALCHEMIST-POTENT_DEFEND.description": "Дает {Block:diff()} [gold]защиты[/gold].\nДобавляет случайную [gold]смесь[/gold] в вашу [gold]руку[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Крепкая защита",

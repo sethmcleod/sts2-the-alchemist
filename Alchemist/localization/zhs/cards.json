@@ -146,7 +146,7 @@
   "ALCHEMIST-PANACEA.title": "万灵药",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]发酵。[/gold]\n造成{CalculatedDamage:diff()}点伤害。\n每[gold]发酵[/gold]一回合，额外造成{IfUpgraded:show:6|4}点伤害。",
   "ALCHEMIST-PATIENT_STRIKE.title": "耐心打击",
-  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]预见[/gold]{Scry:diff()}。\n给予{PoisonPower:diff()}层[gold]中毒[/gold]。",
+  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]预见[/gold]{Scry:diff()}。\n抽{Cards}张牌。\n丢弃{Cards}张牌。\n获得{antitoxin:diff()}点[gold]抗毒素[/gold]。",
   "ALCHEMIST-PICK_AND_CHOOSE.title": "精挑细选",
   "ALCHEMIST-POTENT_DEFEND.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n将一张随机[gold]药剂[/gold]加入你的[gold]手牌[/gold]。",
   "ALCHEMIST-POTENT_DEFEND.title": "强效防御",

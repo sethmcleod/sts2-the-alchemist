@@ -146,7 +146,7 @@
   "ALCHEMIST-PANACEA.title": "Panaceia",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]Fermentar.[/gold]\nCause {CalculatedDamage:diff()} de dano.\nCausa {IfUpgraded:show:6|4} de dano adicional por cada turno [gold]Fermentado[/gold].",
   "ALCHEMIST-PATIENT_STRIKE.title": "Golpe Paciente",
-  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Vislumbrar[/gold] {Scry:diff()}.\nAplique {PoisonPower:diff()} de [gold]Veneno[/gold].",
+  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Vislumbrar[/gold] {Scry:diff()}.\nCompre {Cards} carta.\nDescarte {Cards} carta.\nReceba {antitoxin:diff()} de [gold]Antitoxina[/gold].",
   "ALCHEMIST-PICK_AND_CHOOSE.title": "Escolher a dedo",
   "ALCHEMIST-POTENT_DEFEND.description": "Receba {Block:diff()} de [gold]Proteção[/gold].\nAdicione uma [gold]Mistura[/gold] aleatória na sua [gold]Mão[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Defesa Potente",

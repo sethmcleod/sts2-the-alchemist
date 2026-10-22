@@ -146,7 +146,7 @@
   "ALCHEMIST-PANACEA.title": "Panacea",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]Ferment.[/gold]\nDeal {CalculatedDamage:diff()} damage.\nDeals {IfUpgraded:show:6|4} additional damage for each turn [gold]Fermented[/gold].",
   "ALCHEMIST-PATIENT_STRIKE.title": "Patient Strike",
-  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Scry[/gold] {Scry:diff()}.\nApply {PoisonPower:diff()} [gold]Poison[/gold].",
+  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Scry[/gold] {Scry:diff()}.\nDraw {Cards} card.\nDiscard {Cards} card.\nGain {antitoxin:diff()} [gold]Antitoxin[/gold].",
   "ALCHEMIST-PICK_AND_CHOOSE.title": "Pick and Choose",
   "ALCHEMIST-POTENT_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nAdd a random [gold]Mix[/gold] into your [gold]Hand[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Potent Defend",

@@ -146,7 +146,7 @@
   "ALCHEMIST-PANACEA.title": "Panacea",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]Fermentazione.[/gold]\nInfliggi {CalculatedDamage:diff()} di danno.\nInfligge {IfUpgraded:show:6|4} di danno extra per ogni turno di [gold]fermentazione[/gold].",
   "ALCHEMIST-PATIENT_STRIKE.title": "Colpo Paziente",
-  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Scruta[/gold] {Scry:diff()}.\nApplichi {PoisonPower:diff()} di [gold]Veleno[/gold].",
+  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Scruta[/gold] {Scry:diff()}.\nPeschi {Cards} carta.\nScarti {Cards} carta.\nOttieni {antitoxin:diff()} di [gold]Antitossina[/gold].",
   "ALCHEMIST-PICK_AND_CHOOSE.title": "Fior da fiore",
   "ALCHEMIST-POTENT_DEFEND.description": "Ottieni {Block:diff()} di [gold]Blocco[/gold].\nAggiungi una [gold]Miscela[/gold] casuale alla tua [gold]mano[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Difesa Potente",

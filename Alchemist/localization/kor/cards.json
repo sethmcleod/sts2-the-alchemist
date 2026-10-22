@@ -146,7 +146,7 @@
   "ALCHEMIST-PANACEA.title": "만병통치약",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]발효.[/gold]\n피해를 {CalculatedDamage:diff()} 줍니다.\n[gold]발효[/gold]한 턴마다 피해량이 {IfUpgraded:show:6|4} 증가합니다.",
   "ALCHEMIST-PATIENT_STRIKE.title": "인내의 타격",
-  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]예지[/gold] {Scry:diff()}.\n[gold]중독[/gold]을 {PoisonPower:diff()} 부여합니다.",
+  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]예지[/gold] {Scry:diff()}.\n카드를 {Cards}장 뽑습니다.\n카드를 {Cards}장 버립니다.\n[gold]항독소[/gold]를 {antitoxin:diff()} 얻습니다.",
   "ALCHEMIST-PICK_AND_CHOOSE.title": "골라 담기",
   "ALCHEMIST-POTENT_DEFEND.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다.\n무작위 [gold]영액[/gold]을 [gold]손[/gold]에 추가합니다.",
   "ALCHEMIST-POTENT_DEFEND.title": "강력한 수비",

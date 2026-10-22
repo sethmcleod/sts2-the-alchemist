@@ -146,7 +146,7 @@
   "ALCHEMIST-PANACEA.title": "万能薬",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]発酵。[/gold]\n{CalculatedDamage:diff()}ダメージを与える。\n[gold]発酵[/gold]したターン1回につき、追加で{IfUpgraded:show:6|4}ダメージを与える。",
   "ALCHEMIST-PATIENT_STRIKE.title": "忍耐のストライク",
-  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]占術[/gold]{Scry:diff()}。\n[gold]毒[/gold]{PoisonPower:diff()}を付与する。",
+  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]占術[/gold]{Scry:diff()}。\nカードを{Cards}枚引く。\nカードを{Cards}枚捨てる。\n[gold]抗毒素[/gold]{antitoxin:diff()}を得る。",
   "ALCHEMIST-PICK_AND_CHOOSE.title": "選り好み",
   "ALCHEMIST-POTENT_DEFEND.description": "{Block:diff()}[gold]ブロック[/gold]を得る。\nランダムな[gold]霊薬[/gold]を1枚[gold]手札[/gold]に加える。",
   "ALCHEMIST-POTENT_DEFEND.title": "強力な防御",

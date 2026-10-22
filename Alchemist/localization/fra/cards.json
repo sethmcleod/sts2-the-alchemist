@@ -146,7 +146,7 @@
   "ALCHEMIST-PANACEA.title": "Panacée",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]Fermentation.[/gold]\nInfligez {CalculatedDamage:diff()} dégâts.\nInflige {IfUpgraded:show:6|4} dégâts supplémentaires pour chaque tour de [gold]Fermentation[/gold].",
   "ALCHEMIST-PATIENT_STRIKE.title": "Frappe patiente",
-  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Scruter[/gold] {Scry:diff()}.\nAppliquez {PoisonPower:diff()} de [gold]Poison[/gold].",
+  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Scruter[/gold] {Scry:diff()}.\nPiochez {Cards} carte.\nDéfaussez {Cards} carte.\nGagnez {antitoxin:diff()} d'[gold]Antitoxine[/gold].",
   "ALCHEMIST-PICK_AND_CHOOSE.title": "Trié sur le volet",
   "ALCHEMIST-POTENT_DEFEND.description": "Gagnez {Block:diff()} d'[gold]Armure[/gold].\nAjoutez une [gold]Concoction[/gold] aléatoire à votre [gold]Main[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Défense puissante",

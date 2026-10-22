@@ -15,6 +15,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Changed Secret Sauce card (Hero Expansion): now a Skill, "Choose a basic Mix (Mix+) to add into your Hand. Enchant an Attack in your Hand with Laced."
 - Nerfed Bounce Back card (Hero Expansion): Block decreased from 7(9) -> 6(8)
 - Renamed special Mixes (Fuming, Acrid and Sparkling) to volatile Mixes
+- Reworked Pick and Choose card: "Scry 2 (3). Draw 1 card. Discard 1 card. Gain 2 (3) Antitoxin."
 
 ## [0.14.29] - 2026-10-22
 

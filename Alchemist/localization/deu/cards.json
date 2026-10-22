@@ -146,7 +146,7 @@
   "ALCHEMIST-PANACEA.title": "Allheilmittel",
   "ALCHEMIST-PATIENT_STRIKE.description": "[gold]Gärung.[/gold]\nFüge {CalculatedDamage:diff()} Schaden zu.\nFügt {IfUpgraded:show:6|4} Schaden mehr zu pro Zug in [gold]Gärung[/gold].",
   "ALCHEMIST-PATIENT_STRIKE.title": "Geduldiger Schlag",
-  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Spähen[/gold] {Scry:diff()}.\nWende {PoisonPower:diff()} [gold]Gift[/gold] an.",
+  "ALCHEMIST-PICK_AND_CHOOSE.description": "[gold]Spähen[/gold] {Scry:diff()}.\nZiehe {Cards} Karte.\nWirf {Cards} Karte ab.\nErhalte {antitoxin:diff()} [gold]Antitoxin[/gold].",
   "ALCHEMIST-PICK_AND_CHOOSE.title": "Rosinenpicken",
   "ALCHEMIST-POTENT_DEFEND.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nNimm eine zufällige [gold]Essenz[/gold] auf deine [gold]Hand[/gold].",
   "ALCHEMIST-POTENT_DEFEND.title": "Kräftiges Verteidigen",
