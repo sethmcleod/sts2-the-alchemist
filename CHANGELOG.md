@@ -17,6 +17,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Reworked Rerun card: "This turn, your next card is played an extra time. Gain 5 (3) Poison."
 - Reworked Secret Sauce card (Hero Expansion): "Choose a basic Mix (Mix+) to add into your Hand. Enchant an Attack in your Hand with Laced."
 
+### Fixed
+
+- Fixed Form power effects being drawn in front of the Alchemist instead of behind
+
 ## [0.14.29] - 2026-10-22
 
 ### Added
