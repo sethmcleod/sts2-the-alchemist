@@ -31,10 +31,10 @@ public static class Mixing
 {
     private static LocString SelectPrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPrompt");
     private static LocString SelectBasicPrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPromptBasic");
-    private static LocString SelectSpecialPrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPromptSpecial");
+    private static LocString SelectVolatilePrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPromptVolatile");
 
     public static readonly MixKind[] Basic = { MixKind.Bursting, MixKind.Syrupy, MixKind.Zesty };
-    public static readonly MixKind[] Special = { MixKind.Fuming, MixKind.Acrid, MixKind.Sparkling };
+    public static readonly MixKind[] Volatile = { MixKind.Fuming, MixKind.Acrid, MixKind.Sparkling };
     public static readonly MixKind[] All =
         { MixKind.Bursting, MixKind.Syrupy, MixKind.Zesty, MixKind.Fuming, MixKind.Acrid, MixKind.Sparkling };
 
@@ -89,7 +89,7 @@ public static class Mixing
 
     private static LocString PromptFor(IReadOnlyList<MixKind> kinds) =>
         kinds.SequenceEqual(Basic) ? SelectBasicPrompt
-        : kinds.SequenceEqual(Special) ? SelectSpecialPrompt
+        : kinds.SequenceEqual(Volatile) ? SelectVolatilePrompt
         : SelectPrompt;
 
     /// <summary>

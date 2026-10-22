@@ -1,4 +1,5 @@
 using System.Linq;
+using Alchemist.AlchemistCode.Commands;
 using Alchemist.AlchemistCode.Enchantments;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
@@ -21,9 +22,11 @@ public class SecretSauce : AlchemistHeroCard
 
     private static LocString Prompt => new("cards", "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt");
 
-    public SecretSauce() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+    public SecretSauce() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
-        WithDamage(6, 2);
+        WithUpgradingCardTip<Token.BurstingMix>();
+        WithUpgradingCardTip<Token.SyrupyMix>();
+        WithUpgradingCardTip<Token.ZestyMix>();
         WithTips(_ => HoverTipFactory.FromEnchantment<Laced>(LacedAmount));
     }
 
@@ -32,7 +35,8 @@ public class SecretSauce : AlchemistHeroCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_attack_slash")).Execute(choiceContext);
+        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: IsUpgraded, source: this);
+        if (mix != null) await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, Owner);
         if (!PileType.Hand.GetPile(Owner).Cards.Any(CanLace)) return;
         var chosen = (await CardSelectCmd.FromHand(choiceContext, Owner,
             new CardSelectorPrefs(Prompt, 1), CanLace, this)).FirstOrDefault();

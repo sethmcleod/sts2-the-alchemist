@@ -25,7 +25,7 @@ public class FreshCuttingPower : AlchemistPower
     {
         if (player != Owner.Player) return;
         Flash();
-        await Mixing.CreateRandom(choiceContext, player, upgraded: true, kinds: Mixing.Special, source: this);
+        await Mixing.CreateRandom(choiceContext, player, upgraded: true, kinds: Mixing.Volatile, source: this);
         await PowerCmd.Decrement(this);
     }
 }

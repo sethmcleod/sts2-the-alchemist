@@ -5,6 +5,17 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Changed
+
+- Buffed Double Dip card (Hero Expansion): Poison increased from 5(7) -> 6(8)
+- Buffed Muscle Memory card (Hero Expansion): damage increased from 3(4) -> 4(5)
+- Buffed Wormwood card: Poison increased from 2(3) -> 3(4)
+- Changed Fizz card: it now adds a Fuming Mix (Fuming Mix+) instead of a Bursting Mix (Bursting Mix+)
+- Changed Rerun card: "This turn, your next card is played an extra time. Gain 5 (3) Poison." Rerun+ now lowers the Poison instead of repeating a second card
+- Changed Secret Sauce card (Hero Expansion): now a Skill, "Choose a basic Mix (Mix+) to add into your Hand. Enchant an Attack in your Hand with Laced."
+- Nerfed Bounce Back card (Hero Expansion): Block decreased from 7(9) -> 6(8)
+- Renamed special Mixes (Fuming, Acrid and Sparkling) to volatile Mixes
+
 ## [0.14.29] - 2026-10-22
 
 ### Added

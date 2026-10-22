@@ -17,7 +17,7 @@ public class BounceBack : AlchemistHeroCard
 
     public BounceBack() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithBlock(7, 2);
+        WithBlock(6, 2);
         WithVar("SelfPoison", 1, 0);
         WithTip(typeof(PoisonPower));
     }
