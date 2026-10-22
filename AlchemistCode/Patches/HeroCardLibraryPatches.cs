@@ -21,7 +21,7 @@ public static class HeroCardPoolPatches
     public static void Postfix(CardPoolModel __instance, CardMultiplayerConstraint multiplayerConstraint,
         ref IEnumerable<CardModel> __result)
     {
-        if (__instance is not (Character.AlchemistCardPool or EventCardPool)) return;
+        if (__instance is not (Character.AlchemistCardPool or EventCardPool or StatusCardPool)) return;
         var multiplayer = multiplayerConstraint == CardMultiplayerConstraint.MultiplayerOnly;
         __result = __result.Where(card => CrossMod.Offered(card, multiplayer)).ToList();
     }

@@ -30,6 +30,9 @@
   "ALCHEMIST-MIASMA_POWER.description": "Whenever you gain [gold]Poison[/gold], apply {Amount:plural:|[blue]{}[/blue] times }that much [gold]Poison[/gold] to ALL enemies.",
   "ALCHEMIST-MIASMA_POWER.smartDescription": "Whenever you gain [gold]Poison[/gold], apply {Amount:plural:|[blue]{}[/blue] times }that much [gold]Poison[/gold] to ALL enemies.",
   "ALCHEMIST-MIASMA_POWER.title": "Miasma",
+  "ALCHEMIST-ONE_FOR_LATER_POWER.description": "Whenever you add a [gold]Mix[/gold] into your [gold]Hand[/gold], add a copy of it into your [gold]Draw Pile[/gold].",
+  "ALCHEMIST-ONE_FOR_LATER_POWER.smartDescription": "Whenever you add a [gold]Mix[/gold] into your [gold]Hand[/gold], add {Amount:plural:a copy|[blue]{}[/blue] copies} of it into your [gold]Draw Pile[/gold].",
+  "ALCHEMIST-ONE_FOR_LATER_POWER.title": "One for Later",
   "ALCHEMIST-OSMOSIS_POWER.description": "At the start of your turn, gain [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-OSMOSIS_POWER.smartDescription": "At the start of your turn, gain [blue]{Amount}[/blue] [gold]Antitoxin[/gold].",
   "ALCHEMIST-OSMOSIS_POWER.title": "Osmosis",
@@ -60,6 +63,9 @@
   "ALCHEMIST-STEEP_POWER.description": "Whenever you play a [gold]Ferment[/gold] card, shuffle it into your [gold]Draw Pile[/gold].",
   "ALCHEMIST-STEEP_POWER.smartDescription": "Whenever you play a [gold]Ferment[/gold] card, shuffle it into your [gold]Draw Pile[/gold].",
   "ALCHEMIST-STEEP_POWER.title": "Steep",
+  "ALCHEMIST-TOXIC_AURA_POWER.description": "Whenever your [gold]Poison[/gold] triggers, deal {Amount:plural:|[blue]{}[/blue] times }that much damage to ALL enemies.",
+  "ALCHEMIST-TOXIC_AURA_POWER.smartDescription": "Whenever your [gold]Poison[/gold] triggers, deal {Amount:plural:|[blue]{}[/blue] times }that much damage to ALL enemies.",
+  "ALCHEMIST-TOXIC_AURA_POWER.title": "Toxic Aura",
   "ALCHEMIST-TWITCH_POWER.description": "This turn, your Attacks hit [blue]{Amount}[/blue] additional {Amount:plural:time|times}.",
   "ALCHEMIST-TWITCH_POWER.smartDescription": "This turn, your Attacks hit [blue]{Amount}[/blue] additional {Amount:plural:time|times}.",
   "ALCHEMIST-TWITCH_POWER.title": "Twitch",
@@ -71,5 +77,8 @@
   "ALCHEMIST-WAITING_GAME_POWER.title": "Waiting Game",
   "ALCHEMIST-WARDED_POWER.description": "Whenever you gain [gold]Antitoxin[/gold], gain [gold]Block[/gold].",
   "ALCHEMIST-WARDED_POWER.smartDescription": "Whenever you gain [gold]Antitoxin[/gold], gain [blue]{Amount}[/blue] [gold]Block[/gold].",
-  "ALCHEMIST-WARDED_POWER.title": "Warded"
+  "ALCHEMIST-WARDED_POWER.title": "Warded",
+  "ALCHEMIST-WARNING_COLORS_POWER.description": "Whenever you are attacked, apply [gold]Poison[/gold] for every [blue]3[/blue] [gold]Antitoxin[/gold] you have.",
+  "ALCHEMIST-WARNING_COLORS_POWER.smartDescription": "Whenever you are attacked, apply [blue]{Amount}[/blue] [gold]Poison[/gold] for every [blue]3[/blue] [gold]Antitoxin[/gold] you have.",
+  "ALCHEMIST-WARNING_COLORS_POWER.title": "Warning Colors"
 }

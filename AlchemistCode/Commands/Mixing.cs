@@ -74,6 +74,15 @@ public static class Mixing
             .Where(e => IsMix(e.CardPlay.Card) && e.CardPlay.Card.Owner == owner)
             .Sum(e => e.CardPlay.Card is CompoundMix ? 2 : 1) ?? 0;
 
+    public static int KindsPlayedThisCombat(Player owner) =>
+        CombatManager.Instance?.History.CardPlaysStarted
+            .Where(e => IsMix(e.CardPlay.Card) && e.CardPlay.Card.Owner == owner)
+            .SelectMany(e => e.CardPlay.Card is CompoundMix compound
+                ? compound.Ingredients
+                : new[] { KindOf(e.CardPlay.Card)!.Value })
+            .Distinct()
+            .Count() ?? 0;
+
     public static CardModel Create(ICombatState combat, Player owner, MixKind kind) => kind switch
     {
         MixKind.Bursting => combat.CreateCard<BurstingMix>(owner),
