@@ -33,6 +33,7 @@ Run it with `scripts/dev.sh lint`.
 """
 
 import csv
+import json
 import os
 import re
 import struct
@@ -385,6 +386,22 @@ def check_card_themes(classes: dict[str, Path]) -> list[str]:
     return errors
 
 
+NAME_TAGS = ("Strike", "Defend")
+
+
+def check_name_tags(classes: dict[str, Path]) -> list[str]:
+    titles = json.loads(LOC.read_text())
+    errors = []
+    for cls, path in classes.items():
+        title = titles.get(f"ALCHEMIST-{snake(cls)}.title", "")
+        text = path.read_text()
+        for tag in NAME_TAGS:
+            if re.search(rf"\b{tag}\b", title) and f"CardTag.{tag}" not in text:
+                errors.append(f"class {cls}: the title \"{title}\" contains {tag}, but the class has no "
+                              f"CardTag.{tag}, so base effects that read the tag skip it")
+    return errors
+
+
 COMMENT_RE = re.compile(r"(?<!:)//(?!/)(.*)$")
 
 COMMENT_BANNED = [
@@ -522,6 +539,7 @@ def main() -> int:
 
     # 7. every card class carries a [CardTheme] attribute (the website's stats group by it)
     errors += check_card_themes(classes)
+    errors += check_name_tags(classes)
 
     # 8. comments describe complex code only: no versions, dates, or process references
     errors += check_comment_hygiene()

@@ -17,6 +17,7 @@ public class CausticStrike : AlchemistCard
         WithVar(new FermentVar("Poison", 2, "perTurn"));
         WithVar("perTurn", 1, 1);
         WithKeyword(CardKeyword.Retain);
+        WithTags(CardTag.Strike);
         WithTip(typeof(PoisonPower));
     }
 

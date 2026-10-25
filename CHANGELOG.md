@@ -19,6 +19,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ### Fixed
 
+- Fixed Caustic Strike not being properly tagged as a Strike
 - Fixed Form power effects being drawn in front of the Alchemist instead of behind
 
 ## [0.14.29] - 2026-10-22
