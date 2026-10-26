@@ -3,7 +3,7 @@
   "ALCHEMIST-ALKAHEST.title": "알카헤스트",
   "ALCHEMIST-ANODYNE.description": "다음에 막히지 않은 공격 피해를 받는 것을 막아줍니다. 막은 피해 [blue]10[/blue]마다 [gold]중독[/gold]을 [blue]1[/blue] 얻습니다.",
   "ALCHEMIST-ANODYNE.title": "진통의 묘약",
-  "ALCHEMIST-FRESH_CUTTING.description": "다음 [blue]3[/blue]턴 동안 턴 시작 시, 무작위 특수 [gold]영액+[/gold]을 [gold]손[/gold]에 추가합니다.",
+  "ALCHEMIST-FRESH_CUTTING.description": "다음 [blue]3[/blue]턴 동안 턴 시작 시, 무작위 휘발성 [gold]영액+[/gold]을 [gold]손[/gold]에 추가합니다.",
   "ALCHEMIST-FRESH_CUTTING.title": "신선한 꺾꽂이",
   "ALCHEMIST-GOLD_LEAF.description": "[gold]손[/gold]에 있는 카드 1장에 [gold]재사용[/gold]을 추가합니다.",
   "ALCHEMIST-GOLD_LEAF.selectionScreenPrompt": "[gold]재사용[/gold]을 추가할 카드를 선택하세요.",

@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "[rainbow freq=0.3 sat=0.8 val=1]虹色[/rainbow]の肌",
   "ALCHEMIST-RESET_UNLOCKS.title": "アルケミストのカード、レリック、ポーション、断章をすべてリセット",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "アンロックをリセット",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "Reshuffled Spire向けに作られたアルケミストのカード9枚を、そのMODが導入されていなくても出現させます。「英雄の一服」は、そのMODのGilded Toothレリックなしでは入手できないため、ロックされたままになります。シングルプレイ限定です。マルチプレイでは、全プレイヤーに同じカードが出現する必要があります。",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "Reshuffled SpireのカードをMODなしで有効化",
   "ALCHEMIST-REVEAL_TIMELINE.title": "アルケミストの年代記の断章をすべてアンロック",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "断章をアンロック",
   "ALCHEMIST-SECRETS.title": "隠し要素",

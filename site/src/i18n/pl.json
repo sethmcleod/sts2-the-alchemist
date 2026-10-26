@@ -1,6 +1,6 @@
 {
   "readme": {
-    "10d2ae3745c2": "- **Własna Trucizna**: Alchemik celowo sam się truje. Niektóre ataki zadają dodatkowe obrażenia zależne od twojej Trucizny, a inne karty reagują na to, jak często twoja Trucizna się aktywuje.\n- **Antytoksyna**: Rezerwa, która pochłania obrażenia, jakie zadałaby ci twoja Trucizna. Na początku twojej tury zmniejsza się o 1.\n- **Mieszanka**: Karty specjalne podobne do mikstur, które możesz tworzyć w walce. Podstawowe Mieszanki to Wybuchowa (obrażenia), Gęsta (Blok) i Rześka (dobieranie kart); specjalne Mieszanki to Dymiąca (Skażenie), Gryząca (Słabość i Wrażliwość) oraz Iskrząca (Energia).\n- **Fermentacja**: Te karty mają Zachowanie i stają się silniejsze za każdą turę spędzoną w twojej ręce.\n- **Warzenie**: Ta opcja w Obozowisku pozwala zdobyć 1 z 8 unikalnych mikstur, których nie da się zdobyć w inny sposób. Ze względu na jakość tych wywarów Handlarz chętnie odkupi je od ciebie za 150 szt. Złota.",
+    "7b34f128fe70": "- **Własna Trucizna**: Alchemik celowo sam się truje. Niektóre ataki zadają dodatkowe obrażenia zależne od twojej Trucizny, a inne karty reagują na to, jak często twoja Trucizna się aktywuje.\n- **Antytoksyna**: Rezerwa, która pochłania obrażenia, jakie zadałaby ci twoja Trucizna. Na początku twojej tury zmniejsza się o 1.\n- **Mieszanka**: Karty specjalne podobne do mikstur, które możesz tworzyć w walce. Podstawowe Mieszanki to Wybuchowa (obrażenia), Gęsta (Blok) i Rześka (dobieranie kart); lotne Mieszanki to Dymiąca (Skażenie), Gryząca (Słabość i Wrażliwość) oraz Iskrząca (Energia).\n- **Fermentacja**: Te karty mają Zachowanie i stają się silniejsze za każdą turę spędzoną w twojej ręce.\n- **Warzenie**: Ta opcja w Obozowisku pozwala zdobyć 1 z 8 unikalnych mikstur, których nie da się zdobyć w inny sposób. Ze względu na jakość tych wywarów Handlarz chętnie odkupi je od ciebie za 150 szt. Złota.",
     "b40936bd23dc": "Ten mod wciąż jest w fazie rozwoju i jego zawartość może się zmieniać, ale opinie są mile widziane! Najlepszym miejscem do rozmów o modzie jest oficjalny serwer Discord Slay the Spire, [wątek The Alchemist na kanale #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nNa razie tłumaczenia są generowane automatycznie. Gdy zawartość przestanie się tak często zmieniać, planuję zlecić je rodzimym tłumaczom. Do tego czasu poprawki są mile widziane! Jeśli zauważysz błąd w swoim języku, skontaktuj się ze mną albo otwórz pull request na GitHubie."
   },
   "site": {
@@ -60,6 +60,7 @@
     "Event Attack": "Unikalny Atak",
     "Event Skill": "Unikalna Umiejętność",
     "Every release of The Alchemist, newest first.": "Wszystkie wydania Alchemika, od najnowszego.",
+    "Ferment": "Fermentacja",
     "Filter and sort": "Filtruj i sortuj",
     "Filters": "Filtry",
     "Follow them in a feed reader": "Śledź je w czytniku kanałów",
@@ -95,7 +96,6 @@
     "More cards": "Więcej kart",
     "Multiplayer only": "Tylko w trybie wieloosobowym",
     "Name": "Nazwa",
-    "Needs {mod} installed as well.": "Wymaga też zainstalowanego moda {mod}.",
     "Next screenshot": "Następny zrzut ekranu",
     "No cards match.": "Brak pasujących kart.",
     "No connection": "Brak połączenia",
@@ -104,7 +104,6 @@
     "Not found": "Nie znaleziono",
     "Nothing here": "Nic tu nie ma",
     "Offline": "Offline",
-    "Only in runs with {mod} installed as well.": "Tylko w wyprawach z zainstalowanym również modem {mod}.",
     "Overview": "Przegląd",
     "Patch notes": "Lista zmian",
     "Picked at Brew": "Wybór przy Warzeniu",
@@ -171,6 +170,7 @@
       "other": "Statystyki z {n} wyprawy ({span}), na każdym poziomie Wyniesienia."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Statystyki z {runs} wypraw rozegranych przez {players} graczy, aktualizowane codziennie.",
+    "Status": "Stan",
     "Steam Workshop, beta branch": "Steam Workshop, gałąź beta",
     "Steam Workshop, public branch": "Steam Workshop, gałąź publiczna",
     "Switch {name} between base and upgraded": "Przełącz kartę {name} między wersją bazową a ulepszoną",
@@ -190,12 +190,7 @@
     "Thrown away": "Wyrzucono",
     "Token Attack": "Specjalny Atak",
     "Token Skill": "Specjalna Umiejętność",
-    "Translated into {n} languages": {
-      "one": "Przetłumaczono na {n} język",
-      "few": "Przetłumaczono na {n} języki",
-      "many": "Przetłumaczono na {n} języków",
-      "other": "Przetłumaczono na {n} języka"
-    },
+    "Transform": "Zmiana",
     "Two or more copies": "Dwie lub więcej kopii",
     "Type": "Typ",
     "Uncommon Attack": "Niepospolity Atak",
@@ -348,7 +343,6 @@
     "All runs together: {rate}": "Wszystkie wyprawy łącznie: {rate}",
     "All versions": "Wszystkie wersje",
     "Ancient choices": "Wybory u Starożytnych",
-    "Antitoxin": "Antytoksyna",
     "Antitoxin peak": "Szczyt Antytoksyny",
     "Any pool": "Dowolna pula",
     "Ascension": "Wyniesienie",
@@ -401,7 +395,6 @@
     "Ends the run": "Kończy wyprawę",
     "Every card": "Wszystkie karty",
     "Exhausted first, by Ethereal or another card": "Wyczerpana wcześniej (Eteryczna lub przez inną kartę)",
-    "Ferment": "Fermentacja",
     "Ferment plays": "Zagrania z Fermentacją",
     "Fermented": "Sfermentowane",
     "Fight": "Walka",
@@ -438,7 +431,6 @@
     "Lost to decay": "Utracona przez zanik",
     "Lost to own Poison": "Przegrane przez własną Truciznę",
     "Middle fight": "Środkowa walka",
-    "Mix": "Mieszanka",
     "Mixes": "Mieszanki",
     "Mixes per run": "Mieszanki na wyprawę",
     "Mixes played": "Zagrane Mieszanki",
@@ -482,7 +474,6 @@
     "Players": "Gracze",
     "Plays": "Zagrania",
     "Playstyles": "Style gry",
-    "Poison": "Trucizna",
     "Poison damage the Alchemist took, split by what Antitoxin absorbed and what hit HP.": "Obrażenia od Trucizny otrzymane przez Alchemika, z podziałem na to, co pochłonęła Antytoksyna, i to, co odebrało PŻ.",
     "Poison dealt": "Zadana Trucizna",
     "Poison peak": "Szczyt Trucizny",
@@ -540,7 +531,6 @@
     "To": "Do",
     "Toughest fights": "Najtrudniejsze walki",
     "Trailing their peers": "W tyle za konkurencją",
-    "Transform": "Zmiana",
     "Turns": "Tury",
     "Turns fermented": "Tury Fermentacji",
     "Turns fermented per run": "Tury Fermentacji na wyprawę",

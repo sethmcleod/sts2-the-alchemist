@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "[rainbow freq=0.3 sat=0.8 val=1]彩虹[/rainbow]膚色",
   "ALCHEMIST-RESET_UNLOCKS.title": "重置所有鍊金術士的卡牌、遺物、藥水與紀元",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "重置解鎖",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "即使未安裝 Reshuffled Spire 模組，仍會提供專為其製作的 9 張鍊金術士卡牌。「英雄劑量」仍會保持鎖定，因為沒有該模組的 Gilded Tooth 遺物便無法取得。僅限單人遊戲：在多人遊戲中，所有玩家必須獲得相同的卡牌。",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "Reshuffled Spire 卡牌（無需模組）",
   "ALCHEMIST-REVEAL_TIMELINE.title": "解鎖所有鍊金術士時間軸紀元",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "解鎖紀元",
   "ALCHEMIST-SECRETS.title": "彩蛋",

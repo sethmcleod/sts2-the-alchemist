@@ -31,10 +31,9 @@ public static class Mixing
 {
     private static LocString SelectPrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPrompt");
     private static LocString SelectBasicPrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPromptBasic");
-    private static LocString SelectSpecialPrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPromptSpecial");
 
     public static readonly MixKind[] Basic = { MixKind.Bursting, MixKind.Syrupy, MixKind.Zesty };
-    public static readonly MixKind[] Special = { MixKind.Fuming, MixKind.Acrid, MixKind.Sparkling };
+    public static readonly MixKind[] Volatile = { MixKind.Fuming, MixKind.Acrid, MixKind.Sparkling };
     public static readonly MixKind[] All =
         { MixKind.Bursting, MixKind.Syrupy, MixKind.Zesty, MixKind.Fuming, MixKind.Acrid, MixKind.Sparkling };
 
@@ -74,6 +73,15 @@ public static class Mixing
             .Where(e => IsMix(e.CardPlay.Card) && e.CardPlay.Card.Owner == owner)
             .Sum(e => e.CardPlay.Card is CompoundMix ? 2 : 1) ?? 0;
 
+    public static int KindsPlayedThisCombat(Player owner) =>
+        CombatManager.Instance?.History.CardPlaysStarted
+            .Where(e => IsMix(e.CardPlay.Card) && e.CardPlay.Card.Owner == owner)
+            .SelectMany(e => e.CardPlay.Card is CompoundMix compound
+                ? compound.Ingredients
+                : new[] { KindOf(e.CardPlay.Card)!.Value })
+            .Distinct()
+            .Count() ?? 0;
+
     public static CardModel Create(ICombatState combat, Player owner, MixKind kind) => kind switch
     {
         MixKind.Bursting => combat.CreateCard<BurstingMix>(owner),
@@ -88,9 +96,7 @@ public static class Mixing
         kinds.Select(kind => Create(combat, owner, kind)).ToList();
 
     private static LocString PromptFor(IReadOnlyList<MixKind> kinds) =>
-        kinds.SequenceEqual(Basic) ? SelectBasicPrompt
-        : kinds.SequenceEqual(Special) ? SelectSpecialPrompt
-        : SelectPrompt;
+        kinds.SequenceEqual(Basic) ? SelectBasicPrompt : SelectPrompt;
 
     /// <summary>
     /// Shows the given Mixes (the basic three by default) and returns the chosen one, unadded. Null
@@ -162,7 +168,7 @@ public static class Mixing
         if (picked == null) return;
         if (upgraded) CardCmd.Upgrade(picked);
         RecordCreated(giver, picked, source);
-        await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, receiver);
+        await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, giver);
     }
 
     /// <summary>One picker, many cards: choose a basic Mix once, then add that many copies.</summary>

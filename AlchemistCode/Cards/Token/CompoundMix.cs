@@ -65,6 +65,8 @@ public class CompoundMix : AlchemistCard
 
     private bool Has(MixKind kind) => _first == kind || _second == kind;
 
+    internal IEnumerable<MixKind> Ingredients => new[] { _first, _second };
+
     public override CardType Type =>
         Has(MixKind.Bursting) || Has(MixKind.Fuming) ? CardType.Attack : CardType.Skill;
 

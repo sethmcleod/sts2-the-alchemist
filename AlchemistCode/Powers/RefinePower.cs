@@ -21,7 +21,7 @@ public class RefinePower : AlchemistPower
     // hook sees the finished card
     public override Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
     {
-        if (creator != Owner.Player || !Mixing.IsMix(card)) return Task.CompletedTask;
+        if (card.Owner != Owner.Player || !Mixing.IsMix(card)) return Task.CompletedTask;
         if (card.IsUpgraded) card.BaseReplayCount += (int)Amount;
         else if (card.IsUpgradable) CardCmd.Upgrade(card);
         else return Task.CompletedTask;

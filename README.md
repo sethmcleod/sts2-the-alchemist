@@ -19,7 +19,7 @@
   It is reduced by 1 at the start of your turn.
 - **Mix**: These are tokens you can create in combat that are similar to potions.
   The basic Mixes are Bursting (damage), Syrupy (Block) and Zesty (draw);
-  the special Mixes are Fuming (Tainted), Acrid (Weak and Vulnerable) and
+  the volatile Mixes are Fuming (Tainted), Acrid (Weak and Vulnerable) and
   Sparkling (Energy).
 - **Ferment**: These cards have Retain and grow in potency for every turn they
   stay in your hand.
@@ -48,8 +48,8 @@ Art and Animation - [Fulgur](https://fulgur.carrd.co/)
 Includes additional content for these awesome mods!
 
 - [The Hero Expansion](https://steamcommunity.com/sharedfiles/filedetails/?id=3749294247)
-- [Ancients Awakened](https://steamcommunity.com/sharedfiles/filedetails/?id=3747492675)
 - [Reshuffled Spire](https://steamcommunity.com/sharedfiles/filedetails/?id=3771076270)
+- [Ancients Awakened](https://steamcommunity.com/sharedfiles/filedetails/?id=3747492675)
 
 ---
 

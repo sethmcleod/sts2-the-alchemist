@@ -1,5 +1,5 @@
 ---
-import { runs, strings, translationCount } from '../lib/content';
+import { runs, strings } from '../lib/content';
 import { DEFAULT_LOCALE } from '../lib/i18n';
 import { notesHref } from '../lib/links';
 import { steamItem } from '../lib/mod';
@@ -29,7 +29,6 @@ const facts = [
   l.n(Object.keys(summary.relic_info).length, '{n} relic', '{n} relics'),
   l.n(Object.keys(summary.potion_info).length, '{n} potion', '{n} potions'),
   l.n(meta.epochs, '{n} timeline epoch', '{n} timeline epochs'),
-  l.n(translationCount(), 'Translated into {n} language', 'Translated into {n} languages'),
 ];
 ---
 

@@ -89,6 +89,28 @@ describe('card fonts', () => {
   });
 });
 
+describe('mod terms', () => {
+  const TERMS: Record<string, RegExp> = { Antitoxin: /\bAntitoxin\b/, Mix: /\bMix(es)?\b/ };
+  const stemOf = (word: string, lang: string) => {
+    const lower = word.toLocaleLowerCase(lang);
+    const inflects = /[\p{Script=Latin}\p{Script=Cyrillic}]/u.test(lower) && lower.length > 4;
+    return inflects ? lower.slice(0, Math.max(4, lower.length - 3)) : lower;
+  };
+  const translated = LOCALES.filter((locale) => locale.code !== 'en' && fs.existsSync(`data/loc/${locale.game}.json`));
+
+  it.each(translated.map((locale) => [locale.code, locale] as const))("%s uses the mod's own word", (_, locale) => {
+    const { words } = JSON.parse(fs.readFileSync(`data/loc/${locale.game}.json`, 'utf8')).game;
+    const { site, stats } = JSON.parse(fs.readFileSync(`src/i18n/${locale.code}.json`, 'utf8'));
+    const drift = Object.entries<Record<string, string> | string>({ ...site, ...stats }).flatMap(([key, value]) => {
+      const text = (typeof value === 'string' ? value : Object.values(value).join(' ')).toLocaleLowerCase(locale.lang);
+      return Object.entries(TERMS)
+        .filter(([term, pattern]) => pattern.test(key) && !text.includes(stemOf(words[term], locale.lang)))
+        .map(([term]) => `${words[term]}: ${key}`);
+    });
+    expect(drift).toEqual([]);
+  });
+});
+
 describe('formatting', () => {
   const l = new Lang({ code: 'en', lang: 'en' });
 

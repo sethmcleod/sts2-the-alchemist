@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "ผิว[rainbow freq=0.3 sat=0.8 val=1]สีรุ้ง[/rainbow]",
   "ALCHEMIST-RESET_UNLOCKS.title": "รีเซ็ตการ์ด, เครื่องราง, ขวดยา, และศักราชของนักเล่นแร่แปรธาตุทั้งหมด",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "รีเซ็ตการปลดล็อก",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "ให้การ์ดนักเล่นแร่แปรธาตุ 9 ใบที่สร้างขึ้นสำหรับ Reshuffled Spire ปรากฏได้แม้จะไม่ได้ติดตั้งม็อดนั้น ยาขนานวีรบุรุษยังคงถูกล็อกไว้ เพราะเข้าถึงไม่ได้หากไม่มีเครื่องราง Gilded Tooth ของม็อดนั้น ใช้ได้เฉพาะโหมดคนเดียว เพราะในโหมดหลายคน ผู้เล่นทุกคนต้องได้รับการ์ดชุดเดียวกัน",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "การ์ด Reshuffled Spire แม้ไม่มีม็อด",
   "ALCHEMIST-REVEAL_TIMELINE.title": "ปลดล็อกศักราชในเส้นเวลาของนักเล่นแร่แปรธาตุทั้งหมด",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "ปลดล็อกศักราช",
   "ALCHEMIST-SECRETS.title": "ความลับ",

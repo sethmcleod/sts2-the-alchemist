@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "[rainbow freq=0.3 sat=0.8 val=1]Gökkuşağı[/rainbow] Cilt",
   "ALCHEMIST-RESET_UNLOCKS.title": "Tüm Simyacı Kartlarını, Kalıntılarını, İksirlerini ve Çağlarını Sıfırla",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Kilitleri Sıfırla",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "Reshuffled Spire için yapılan 9 Simyacı kartını, o mod yüklü olmasa bile sunar. Kahraman Dozu kartı, modun Gilded Tooth kalıntısı olmadan erişilemediği için kilitli kalır. Yalnızca tek oyunculu oyunlarda geçerlidir: çok oyunculuda tüm oyunculara aynı kartlar sunulmalıdır.",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "Mod Olmadan Reshuffled Spire Kartları",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Tüm Simyacı Zaman Çizelgesi Çağlarını Aç",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Çağları Aç",
   "ALCHEMIST-SECRETS.title": "Sırlar",

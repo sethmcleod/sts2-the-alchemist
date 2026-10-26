@@ -1,6 +1,6 @@
 {
   "readme": {
-    "10d2ae3745c2": "- **Autoavvelenamento**: l'Alchimista si avvelena di proposito. Alcuni attacchi infliggono\n  danno extra in base al tuo Veleno, e altre carte reagiscono a quanto spesso il tuo\n  Veleno si attiva.\n- **Antitossina**: una riserva che assorbe il danno che il tuo Veleno ti infliggerebbe.\n  Si riduce di 1 all'inizio del tuo turno.\n- **Miscela**: carte simili alle pozioni che puoi creare in combattimento. Le Miscele\n  base sono Miscela Esplosiva (danno), Miscela Sciropposa (Blocco) e Miscela Frizzante\n  (pescare); quelle speciali sono Miscela Fumogena (Contaminazione), Miscela Acre\n  (Debolezza e Vulnerabilità) e Miscela Spumeggiante (Energia).\n- **Fermentazione**: queste carte hanno Conservazione e diventano più potenti per ogni\n  turno che restano nella tua mano.\n- **Prepara**: questa opzione dei luoghi di riposo ti permette di ottenere 1 di 8 pozioni\n  uniche, disponibili solo in questo modo. Vista la qualità di questi preparati, il\n  mercante è disposto a comprarle da te per 150 unità d'oro.",
+    "7b34f128fe70": "- **Autoavvelenamento**: l'Alchimista si avvelena di proposito. Alcuni attacchi infliggono\n  danno extra in base al tuo Veleno, e altre carte reagiscono a quanto spesso il tuo\n  Veleno si attiva.\n- **Antitossina**: una riserva che assorbe il danno che il tuo Veleno ti infliggerebbe.\n  Si riduce di 1 all'inizio del tuo turno.\n- **Miscela**: carte simili alle pozioni che puoi creare in combattimento. Le Miscele\n  base sono Miscela Esplosiva (danno), Miscela Sciropposa (Blocco) e Miscela Frizzante\n  (pescare); quelle volatili sono Miscela Fumogena (Contaminazione), Miscela Acre\n  (Debolezza e Vulnerabilità) e Miscela Spumeggiante (Energia).\n- **Fermentazione**: queste carte hanno Conservazione e diventano più potenti per ogni\n  turno che restano nella tua mano.\n- **Prepara**: questa opzione dei luoghi di riposo ti permette di ottenere 1 di 8 pozioni\n  uniche, disponibili solo in questo modo. Vista la qualità di questi preparati, il\n  mercante è disposto a comprarle da te per 150 unità d'oro.",
     "b40936bd23dc": "Questa mod è ancora in fase di sviluppo e i contenuti possono cambiare, ma ogni\nfeedback è benvenuto! Il posto migliore per parlare della mod è il server Discord\nufficiale di Slay the Spire, nel [post dedicato a The Alchemist del canale #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nPer ora le traduzioni sono generate automaticamente. L'idea è di affidarle a traduttori madrelingua quando i contenuti cambieranno meno spesso. Nel frattempo, ogni correzione è apprezzata! Se trovi un errore nella tua lingua, contattami o apri una pull request su GitHub."
   },
   "site": {
@@ -60,6 +60,7 @@
     "Event Attack": "Attacco evento",
     "Event Skill": "Abilità evento",
     "Every release of The Alchemist, newest first.": "Tutte le versioni dell'Alchimista, dalla più recente.",
+    "Ferment": "Fermentazione",
     "Filter and sort": "Filtra e ordina",
     "Filters": "Filtri",
     "Follow them in a feed reader": "Seguile con un lettore di feed",
@@ -93,7 +94,6 @@
     "More cards": "Altre carte",
     "Multiplayer only": "Solo in multigiocatore",
     "Name": "Nome",
-    "Needs {mod} installed as well.": "Richiede che sia installata anche {mod}.",
     "Next screenshot": "Screenshot successivo",
     "No cards match.": "Nessuna carta corrisponde.",
     "No connection": "Nessuna connessione",
@@ -102,7 +102,6 @@
     "Not found": "Pagina non trovata",
     "Nothing here": "Qui non c'è niente",
     "Offline": "Offline",
-    "Only in runs with {mod} installed as well.": "Solo nelle partite in cui è installata anche {mod}.",
     "Overview": "Panoramica",
     "Patch notes": "Note della patch",
     "Picked at Brew": "Scelta con Prepara",
@@ -163,6 +162,7 @@
       "other": "Statistiche da {n} partite ({span}), a ogni Ascensione."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Statistiche da {runs} partite di {players} giocatori, aggiornate ogni giorno.",
+    "Status": "Stato",
     "Steam Workshop, beta branch": "Steam Workshop, versione beta",
     "Steam Workshop, public branch": "Steam Workshop, versione pubblica",
     "Switch {name} between base and upgraded": "Alterna {name} tra base e potenziata",
@@ -182,10 +182,7 @@
     "Thrown away": "Buttata",
     "Token Attack": "Attacco segnalino",
     "Token Skill": "Abilità segnalino",
-    "Translated into {n} languages": {
-      "one": "Tradotta in {n} lingua",
-      "other": "Tradotta in {n} lingue"
-    },
+    "Transform": "Trasformazione",
     "Two or more copies": "Due o più copie",
     "Type": "Tipo",
     "Uncommon Attack": "Attacco non comune",
@@ -308,7 +305,6 @@
     "All runs together: {rate}": "Tutte le partite insieme: {rate}",
     "All versions": "Tutte le versioni",
     "Ancient choices": "Scelte degli Antichi",
-    "Antitoxin": "Antitossina",
     "Antitoxin peak": "Picco di Antitossina",
     "Any pool": "Qualsiasi pool",
     "Ascension": "Ascensione",
@@ -355,7 +351,6 @@
     "Ends the run": "Termina la partita",
     "Every card": "Tutte le carte",
     "Exhausted first, by Ethereal or another card": "Esaurite prima, per Evanescenza o per un'altra carta",
-    "Ferment": "Fermentazione",
     "Ferment plays": "Carte con Fermentazione giocate",
     "Fermented": "Fermentato",
     "Fight": "Combattimento",
@@ -392,7 +387,6 @@
     "Lost to decay": "Persa per riduzione",
     "Lost to own Poison": "Perse per il proprio Veleno",
     "Middle fight": "Combattimento mediano",
-    "Mix": "Miscela",
     "Mixes": "Miscele",
     "Mixes per run": "Miscele per partita",
     "Mixes played": "Miscele giocate",
@@ -432,7 +426,6 @@
     "Players": "Giocatori",
     "Plays": "Giocate",
     "Playstyles": "Stili di gioco",
-    "Poison": "Veleno",
     "Poison damage the Alchemist took, split by what Antitoxin absorbed and what hit HP.": "Danno da Veleno subito dall'Alchimista, diviso tra la parte assorbita dall'Antitossina e quella che ha colpito i PV.",
     "Poison dealt": "Veleno inflitto",
     "Poison peak": "Picco di Veleno",
@@ -490,7 +483,6 @@
     "To": "A",
     "Toughest fights": "I combattimenti più duri",
     "Trailing their peers": "Peggio delle loro pari",
-    "Transform": "Trasformazione",
     "Turns": "Turni",
     "Turns fermented": "Turni di fermentazione",
     "Turns fermented per run": "Turni di fermentazione per partita",

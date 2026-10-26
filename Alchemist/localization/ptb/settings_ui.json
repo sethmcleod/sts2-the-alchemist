@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "Pele [rainbow freq=0.3 sat=0.8 val=1]Arco-Íris[/rainbow]",
   "ALCHEMIST-RESET_UNLOCKS.title": "Redefinir Todas as Cartas, Relíquias, Poções e Épocas do Alquimista",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Redefinir Desbloqueios",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "Oferece as 9 cartas do Alquimista feitas para o Reshuffled Spire mesmo quando esse mod não está instalado. A carta Dose Heroica continua bloqueada, pois é inacessível sem a relíquia Gilded Tooth do mod. Somente no Jogo Individual: no modo multijogador, todos os jogadores precisam receber as mesmas cartas.",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "Cartas do Reshuffled Spire sem o Mod",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Desbloquear Todas as Épocas do Alquimista na Linha do Tempo",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Desbloquear Épocas",
   "ALCHEMIST-SECRETS.title": "Segredos",

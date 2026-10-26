@@ -61,6 +61,10 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigHoverTip]
     public static bool HeroCardsWithoutExpansion { get; set; } = false;
 
+    [ConfigSection("Compatibility")]
+    [ConfigHoverTip]
+    public static bool ReshuffledCardsWithoutMod { get; set; } = false;
+
     [ConfigSection("Appearance")]
     [ConfigHoverTip]
     public static bool UseBetaArt { get; set; } = false;

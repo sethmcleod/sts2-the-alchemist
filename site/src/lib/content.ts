@@ -99,11 +99,6 @@ export function itemChanges(id: string) {
   return history.changes.get(id) ?? [];
 }
 
-export const translationCount = () =>
-  fs
-    .readdirSync(path.join(process.cwd(), '..', 'Alchemist', 'localization'), { withFileTypes: true })
-    .filter((entry) => entry.isDirectory() && entry.name !== 'eng').length;
-
 const images = import.meta.glob<{ default: ImageMetadata }>([
   '../../../Alchemist/images/{card_portraits,relics,potions,powers,badges}/**/*.png',
   '../../../workshop/previews/*.png',

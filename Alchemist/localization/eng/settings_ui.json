@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "[rainbow freq=0.3 sat=0.8 val=1]Rainbow[/rainbow] Skin",
   "ALCHEMIST-RESET_UNLOCKS.title": "Reset All Alchemist Cards, Relics, Potions, and Epochs",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Reset Unlocks",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "Offers the 9 Alchemist cards made for Reshuffled Spire even when that mod is not installed. Heroic Dose stays locked since it is inaccessible without the mod's Gilded Tooth relic. Singleplayer runs only: in multiplayer, every player must be offered the same cards.",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "Reshuffled Spire Cards Without the Mod",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Unlock All Alchemist Timeline Epochs",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Unlock Epochs",
   "ALCHEMIST-SECRETS.title": "Secrets",

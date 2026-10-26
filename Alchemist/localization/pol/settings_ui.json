@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "[rainbow freq=0.3 sat=0.8 val=1]Tęczowa[/rainbow] skóra",
   "ALCHEMIST-RESET_UNLOCKS.title": "Zresetuj wszystkie karty, artefakty, mikstury i Epoki Alchemika",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Zresetuj odblokowania",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "Oferuje 9 kart Alchemika stworzonych dla Reshuffled Spire nawet wtedy, gdy ten mod nie jest zainstalowany. Karta Heroiczna dawka pozostaje zablokowana, ponieważ bez artefaktu Gilded Tooth z tego modu jest niedostępna. Tylko w trybie jednoosobowym: w trybie wieloosobowym wszyscy gracze muszą otrzymywać te same karty.",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "Karty z Reshuffled Spire bez modu",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Odblokuj wszystkie Epoki Alchemika na Osi Czasu",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Odblokuj Epoki",
   "ALCHEMIST-SECRETS.title": "Sekrety",

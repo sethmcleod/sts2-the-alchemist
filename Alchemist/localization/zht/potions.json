@@ -3,7 +3,7 @@
   "ALCHEMIST-ALKAHEST.title": "阿卡赫斯特",
   "ALCHEMIST-ANODYNE.description": "防止你下一次受到未被格擋的攻擊傷害。每防止 [blue]10[/blue] 點傷害，就獲得 [blue]1[/blue] 層[gold]中毒[/gold]。",
   "ALCHEMIST-ANODYNE.title": "止痛香膏",
-  "ALCHEMIST-FRESH_CUTTING.description": "在你接下來 [blue]3[/blue] 個回合開始時，將一張隨機特殊[gold]藥劑+[/gold]加入你的[gold]手牌[/gold]。",
+  "ALCHEMIST-FRESH_CUTTING.description": "在你接下來 [blue]3[/blue] 個回合開始時，將一張隨機揮發性[gold]藥劑+[/gold]加入你的[gold]手牌[/gold]。",
   "ALCHEMIST-FRESH_CUTTING.title": "新鮮插枝",
   "ALCHEMIST-GOLD_LEAF.description": "為你[gold]手牌[/gold]中的一張牌附加[gold]重演[/gold]。",
   "ALCHEMIST-GOLD_LEAF.selectionScreenPrompt": "選擇一張要附加[gold]重演[/gold]的牌。",

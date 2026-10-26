@@ -36,6 +36,7 @@ const versions = [
   { class: 'upgraded', cost: info.costs[1], name: `${info.name}+`, text: info.texts[1] },
 ];
 const costChanged = info.costs[0] !== info.costs[1];
+const playable = info.costs[0] !== 'Unplayable';
 ---
 
 <div class:list={['face', { ancient }]} style={`--outline: ${rarityLook.outline}`}>
@@ -70,17 +71,19 @@ const costChanged = info.costs[0] !== info.costs[1];
     ))}
   </span>
   <span class="face-type">{typeName(l, info.type)}</span>
-  <span class="face-cost">
-    {versions.map((version) => (
-      <span
-        class:list={[version.class, 'outlined', { 't-green': version.class === 'upgraded' && costChanged }]}
-        data-text={version.cost}
-      >
-        <span class="sr-only">{l.t('Costs {cost} Energy.', { cost: version.cost })}</span>
-        <span aria-hidden="true">{version.cost}</span>
-      </span>
-    ))}
-  </span>
+  {playable && (
+    <span class="face-cost">
+      {versions.map((version) => (
+        <span
+          class:list={[version.class, 'outlined', { 't-green': version.class === 'upgraded' && costChanged }]}
+          data-text={version.cost}
+        >
+          <span class="sr-only">{l.t('Costs {cost} Energy.', { cost: version.cost })}</span>
+          <span aria-hidden="true">{version.cost}</span>
+        </span>
+      ))}
+    </span>
+  )}
   <span class="face-text">
     {versions.map((version) => (
       <span class={version.class} style={`--size: ${textSize(version.text, font)}`}>

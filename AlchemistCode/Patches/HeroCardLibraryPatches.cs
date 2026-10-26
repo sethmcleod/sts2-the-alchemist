@@ -14,14 +14,14 @@ namespace Alchemist.AlchemistCode.Patches;
 
 // Every pool's unlocked list is the one place the reward roll, the compendium's lock state and the
 // in-combat generators all read, so this is where a cross-mod card whose mod is absent leaves the game.
-// Cross-mod cards live only in the Alchemist pool and the Event pool, so every other pool is left alone
+// Cross-mod cards live only in the Alchemist, Event and Status pools, so every other pool is left alone
 [HarmonyPatch(typeof(CardPoolModel), nameof(CardPoolModel.GetUnlockedCards))]
 public static class HeroCardPoolPatches
 {
     public static void Postfix(CardPoolModel __instance, CardMultiplayerConstraint multiplayerConstraint,
         ref IEnumerable<CardModel> __result)
     {
-        if (__instance is not (Character.AlchemistCardPool or EventCardPool)) return;
+        if (__instance is not (Character.AlchemistCardPool or EventCardPool or StatusCardPool)) return;
         var multiplayer = multiplayerConstraint == CardMultiplayerConstraint.MultiplayerOnly;
         __result = __result.Where(card => CrossMod.Offered(card, multiplayer)).ToList();
     }

@@ -15,8 +15,10 @@ export interface LibraryCard {
 export const typeName = (l: Lang, type: string) => l.game?.types[type] ?? l.t(type);
 export const rarityName = (l: Lang, rarity: Rarity) => l.game?.rarities[rarity] ?? l.t(RARITY_NAME[rarity]);
 export const keywordName = (l: Lang, keyword: string) => l.game?.keywords[keyword] ?? l.t(keyword);
+export const themeName = (l: Lang, theme: string) => l.game?.words[theme] ?? l.t(theme);
 
-export const cardKind = (l: Lang, info: CardInfo) => l.t(`${RARITY_NAME[info.rarity]} ${info.type}`);
+export const cardKind = (l: Lang, info: CardInfo) =>
+  info.type === 'Status' ? typeName(l, info.type) : l.t(`${RARITY_NAME[info.rarity]} ${info.type}`);
 
 export function libraryCards(l: Lang, runs: Runs, english: Runs = runs) {
   const on = runs.select(DEFAULT_FILTERS);
@@ -34,7 +36,7 @@ export function libraryCards(l: Lang, runs: Runs, english: Runs = runs) {
         rarityName(l, info.rarity),
         typeName(l, info.type),
         ...info.keywords.map((keyword) => keywordName(l, keyword)),
-        ...info.themes.map((theme) => l.t(theme)),
+        ...info.themes.map((theme) => themeName(l, theme)),
         ...info.texts.map((text) => plain(text, l.game?.words.Energy)),
       ]
         .join(' ')

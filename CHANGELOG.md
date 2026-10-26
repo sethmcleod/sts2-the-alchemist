@@ -5,6 +5,39 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.0] - 2026-10-26
+
+### Added
+
+- Added Cocktail Strike card (Reshuffled Spire): "Deal 4 damage. Deals 4 (5) additional damage for each unique Mix you have played this combat."
+- Added Dregs status card (Reshuffled Spire): "Unplayable. Ethereal. Whenever you draw this card, gain 2 Poison and draw 1 card."
+- Added Fester card (Reshuffled Spire): "Apply 2 (3) Poison. Trigger the enemy's Poison 1 (2) times."
+- Added Hopped Up card (Reshuffled Spire): "Deal 4 (5) damage 4 times. Costs 1 less for every 4 Poison you have."
+- Added Let It Settle card (Reshuffled Spire): "Gain 9 (12) Block. Add a Dregs into your Draw Pile."
+- Added One for Later card (Reshuffled Spire): "Whenever you add a Mix into your Hand, add a copy of it into your Draw Pile."
+- Added Switcheroo card (Reshuffled Spire): "Gain 3 Poison. Swap your Poison with the enemy's Poison. Exhaust."
+- Added Toxic Aura card (Reshuffled Spire): "Whenever your Poison triggers, deal that much damage to ALL enemies."
+- Added Turn Sour card (Reshuffled Spire): "Retain. Ferment. Apply 1 (2) Weak. Apply 1 (2) Vulnerable. Applies 1 additional Weak and Vulnerable for each turn Fermented. Exhaust."
+- Added Warning Colors card (Reshuffled Spire): "Whenever you are attacked, apply 1 Poison for every 3 Antitoxin you have." Warning Colors+ gains Innate
+
+### Changed
+
+- Buffed Double Dip card (Hero Expansion): Poison increased from 5(7) -> 6(8)
+- Buffed Muscle Memory card (Hero Expansion): damage increased from 3(4) -> 4(5)
+- Buffed Wormwood card: Poison increased from 2(3) -> 3(4)
+- Changed Fizz card: it now adds a Fuming Mix (Fuming Mix+) instead of a Bursting Mix (Bursting Mix+)
+- Nerfed Bounce Back card (Hero Expansion): Block decreased from 7(9) -> 6(8)
+- Renamed special Mixes (Fuming, Acrid and Sparkling) to volatile Mixes
+- Reworked Pick and Choose card: "Scry 2 (3). Draw 1 card. Discard 1 card. Gain 2 (3) Antitoxin."
+- Reworked Rerun card: "This turn, your next card is played an extra time. Gain 5 (3) Poison."
+- Reworked Secret Sauce card (Hero Expansion): "Choose a basic Mix (Mix+) to add into your Hand. Enchant an Attack in your Hand with Laced."
+
+### Fixed
+
+- Fixed Caustic Strike not being properly tagged as a Strike
+- Fixed Effervesce and Free Samples triggering the receiving player's Runoff instead of your own
+- Fixed Form power effects being drawn in front of the Alchemist instead of behind
+
 ## [0.14.29] - 2026-10-22
 
 ### Added
