@@ -3,7 +3,7 @@
   "ALCHEMIST-ALKAHEST.title": "Alkahest",
   "ALCHEMIST-ANODYNE.description": "Verhindere den nächsten ungeblockten Angriffsschaden, den du nehmen würdest. Erhalte [blue]1[/blue] [gold]Gift[/gold] für je [blue]10[/blue] verhinderten Schaden.",
   "ALCHEMIST-ANODYNE.title": "Laudanum",
-  "ALCHEMIST-FRESH_CUTTING.description": "Nimm zu Beginn deiner nächsten [blue]3[/blue] Züge eine zufällige besondere [gold]Essenz+[/gold] auf deine [gold]Hand[/gold].",
+  "ALCHEMIST-FRESH_CUTTING.description": "Nimm zu Beginn deiner nächsten [blue]3[/blue] Züge eine zufällige flüchtige [gold]Essenz+[/gold] auf deine [gold]Hand[/gold].",
   "ALCHEMIST-FRESH_CUTTING.title": "Frischer Steckling",
   "ALCHEMIST-GOLD_LEAF.description": "Gib einer Karte auf deiner [gold]Hand[/gold] [gold]Erneut Spielen[/gold].",
   "ALCHEMIST-GOLD_LEAF.selectionScreenPrompt": "Wähle eine Karte, der du [gold]Erneut Spielen[/gold] gibst.",

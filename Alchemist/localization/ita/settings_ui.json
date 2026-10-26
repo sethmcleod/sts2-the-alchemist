@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "Pelle [rainbow freq=0.3 sat=0.8 val=1]arcobaleno[/rainbow]",
   "ALCHEMIST-RESET_UNLOCKS.title": "Azzera tutte le carte, reliquie, pozioni ed Epoche dell'Alchimista",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Azzera gli sblocchi",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "Offre le 9 carte dell'Alchimista create per Reshuffled Spire anche quando quella mod non è installata. La carta Dose Eroica resta bloccata, perché non è accessibile senza la reliquia Gilded Tooth della mod. Solo in modalità giocatore singolo: in modalità multigiocatore, a tutti i giocatori devono essere offerte le stesse carte.",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "Carte di Reshuffled Spire senza la mod",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Sblocca tutte le Epoche dell'Alchimista nella Cronologia",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Sblocca le Epoche",
   "ALCHEMIST-SECRETS.title": "Segreti",

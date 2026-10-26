@@ -3,7 +3,7 @@
   "ALCHEMIST-ALKAHEST.title": "アルカヘスト",
   "ALCHEMIST-ANODYNE.description": "次にブロックされなかった攻撃ダメージを受ける時、それを無効化する。無効化したダメージ[blue]10[/blue]ごとに、[gold]毒[/gold][blue]1[/blue]を得る。",
   "ALCHEMIST-ANODYNE.title": "痛み止め",
-  "ALCHEMIST-FRESH_CUTTING.description": "次の[blue]3[/blue]ターンの開始時、ランダムな特殊な[gold]霊薬+[/gold]を1枚[gold]手札[/gold]に加える。",
+  "ALCHEMIST-FRESH_CUTTING.description": "次の[blue]3[/blue]ターンの開始時、ランダムな揮発性の[gold]霊薬+[/gold]を1枚[gold]手札[/gold]に加える。",
   "ALCHEMIST-FRESH_CUTTING.title": "若い挿し木",
   "ALCHEMIST-GOLD_LEAF.description": "[gold]手札[/gold]のカード1枚に[gold]リプレイ[/gold]を付与する。",
   "ALCHEMIST-GOLD_LEAF.selectionScreenPrompt": "[gold]リプレイ[/gold]を付与するカードを1枚選択。",

@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "[rainbow freq=0.3 sat=0.8 val=1]Радужная[/rainbow] кожа",
   "ALCHEMIST-RESET_UNLOCKS.title": "Сбросить все карты, реликвии, зелья и эпохи Алхимика",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Сбросить",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "Делает доступными 9 карт Алхимика, созданных для Reshuffled Spire, даже если этот мод не установлен. «Героическая доза» остается заблокированной, так как без реликвии Gilded Tooth из этого мода она недоступна. Только в одиночной игре: в совместной игре всем игрокам должны предлагаться одни и те же карты.",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "Карты Reshuffled Spire без мода",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Открыть все эпохи Алхимика в Летописи",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Открыть эпохи",
   "ALCHEMIST-SECRETS.title": "Секреты",

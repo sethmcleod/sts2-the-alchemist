@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "[rainbow freq=0.3 sat=0.8 val=1]彩虹[/rainbow]肤色",
   "ALCHEMIST-RESET_UNLOCKS.title": "重置所有炼金术士卡牌、遗物、药水和历史节点",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "重置解锁",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "即使未安装Reshuffled Spire，也提供为该模组制作的9张炼金术士卡牌。“英雄剂量”仍保持锁定，因为没有该模组的Gilded Tooth遗物就无法获得它。仅限单人模式：在多人游戏中，所有玩家必须获得相同的卡牌。",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "未安装模组时提供Reshuffled Spire卡牌",
   "ALCHEMIST-REVEAL_TIMELINE.title": "解锁所有炼金术士时间线历史节点",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "解锁历史节点",
   "ALCHEMIST-SECRETS.title": "彩蛋",

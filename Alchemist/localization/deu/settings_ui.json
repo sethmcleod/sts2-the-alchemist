@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "[rainbow freq=0.3 sat=0.8 val=1]Regenbogen[/rainbow]farbene Haut",
   "ALCHEMIST-RESET_UNLOCKS.title": "Alle Karten, Relikte, Tränke und Epochen des Alchemisten zurücksetzen",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "Freischaltungen zurücksetzen",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "Bietet die 9 Alchemist-Karten für Reshuffled Spire auch dann an, wenn diese Mod nicht installiert ist. Heldendosis bleibt gesperrt, da sie ohne das Relikt Gilded Tooth aus der Mod nicht zugänglich ist. Nur im Einzelspieler: Im Mehrspielermodus müssen allen Spielern dieselben Karten angeboten werden.",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "Reshuffled-Spire-Karten ohne die Mod",
   "ALCHEMIST-REVEAL_TIMELINE.title": "Alle Zeitstrahl-Epochen des Alchemisten freischalten",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "Epochen freischalten",
   "ALCHEMIST-SECRETS.title": "Geheimnisse",

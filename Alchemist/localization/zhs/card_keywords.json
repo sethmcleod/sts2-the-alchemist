@@ -7,6 +7,5 @@
   "ALCHEMIST-LACED.description": "这张牌额外造成等同于你[gold]中毒[/gold]层数的伤害。",
   "ALCHEMIST-LACED.title": "淬毒",
   "ALCHEMIST-MIX.selectionPrompt": "选择一种要加入你的[gold]手牌[/gold]的[gold]药剂[/gold]。",
-  "ALCHEMIST-MIX.selectionPromptBasic": "选择一种要加入你的[gold]手牌[/gold]的基础[gold]药剂[/gold]。",
-  "ALCHEMIST-MIX.selectionPromptSpecial": "选择一种要加入你的[gold]手牌[/gold]的特殊[gold]药剂[/gold]。"
+  "ALCHEMIST-MIX.selectionPromptBasic": "选择一种要加入你的[gold]手牌[/gold]的基础[gold]药剂[/gold]。"
 }

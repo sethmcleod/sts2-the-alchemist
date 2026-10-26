@@ -12,7 +12,7 @@
   "ALCHEMIST-HOMUNCULUS.flavor": "Знает, какая банка готова, раньше вас.",
   "ALCHEMIST-HOMUNCULUS.selectionScreenPrompt": "Выберите карту с [gold]брожением[/gold], чтобы положить в [gold]руку[/gold].",
   "ALCHEMIST-HOMUNCULUS.title": "Гомункул",
-  "ALCHEMIST-LILYPAD_CLOAK.description": "Когда ваш [gold]яд[/gold] срабатывает, дает [blue]2[/blue] [gold]защиты[/gold].",
+  "ALCHEMIST-LILYPAD_CLOAK.description": "Когда ваш [gold]яд[/gold] срабатывает, дает [blue]3[/blue] [gold]защиты[/gold].",
   "ALCHEMIST-LILYPAD_CLOAK.flavor": "Отталкивает любую жидкость, а не только воду.",
   "ALCHEMIST-LILYPAD_CLOAK.title": "Плащ из кувшинки",
   "ALCHEMIST-MOTHER_OF_VINEGAR.description": "Ваши карты с [gold]брожением[/gold] начинают с [blue]1[/blue] хода [gold]брожения[/gold].",

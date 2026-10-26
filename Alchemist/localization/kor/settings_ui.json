@@ -49,6 +49,8 @@
   "ALCHEMIST-RAINBOW_SKIN.title": "[rainbow freq=0.3 sat=0.8 val=1]무지개[/rainbow] 피부",
   "ALCHEMIST-RESET_UNLOCKS.title": "모든 연금술사 카드, 유물, 포션, 역사 초기화",
   "ALCHEMIST-RESET_UNLOCKS_BUTTON_LABEL.title": "해금 초기화",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.hover.desc": "Reshuffled Spire 모드가 설치되어 있지 않아도 해당 모드용으로 만든 연금술사 카드 9장을 제공합니다. 영웅적 투약은 해당 모드의 Gilded Tooth 유물 없이는 접근할 수 없으므로 잠긴 상태로 유지됩니다. 싱글플레이에서만 적용됩니다. 멀티플레이에서는 모든 플레이어에게 같은 카드가 제공되어야 합니다.",
+  "ALCHEMIST-RESHUFFLED_CARDS_WITHOUT_MOD.title": "모드 없이 Reshuffled Spire 카드 사용",
   "ALCHEMIST-REVEAL_TIMELINE.title": "모든 연금술사 연대표 역사 해금",
   "ALCHEMIST-REVEAL_TIMELINE_BUTTON_LABEL.title": "역사 해금",
   "ALCHEMIST-SECRETS.title": "비밀",

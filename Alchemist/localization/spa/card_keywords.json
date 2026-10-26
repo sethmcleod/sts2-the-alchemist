@@ -7,6 +7,5 @@
   "ALCHEMIST-LACED.description": "Esta carta inflige daño adicional igual a tu [gold]Veneno[/gold].",
   "ALCHEMIST-LACED.title": "Ponzoña",
   "ALCHEMIST-MIX.selectionPrompt": "Elige una [gold]Mezcla[/gold] que añadir a tu [gold]Mano[/gold].",
-  "ALCHEMIST-MIX.selectionPromptBasic": "Elige una [gold]Mezcla[/gold] básica que añadir a tu [gold]Mano[/gold].",
-  "ALCHEMIST-MIX.selectionPromptSpecial": "Elige una [gold]Mezcla[/gold] especial que añadir a tu [gold]Mano[/gold]."
+  "ALCHEMIST-MIX.selectionPromptBasic": "Elige una [gold]Mezcla[/gold] básica que añadir a tu [gold]Mano[/gold]."
 }

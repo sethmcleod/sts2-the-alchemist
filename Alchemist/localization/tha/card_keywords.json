@@ -7,6 +7,5 @@
   "ALCHEMIST-LACED.description": "การ์ดนี้สร้างความเสียหายเพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
   "ALCHEMIST-LACED.title": "เจือพิษ",
   "ALCHEMIST-MIX.selectionPrompt": "เลือก[gold]ยาผสม[/gold]ที่จะเพิ่มเข้า[gold]มือ[/gold]",
-  "ALCHEMIST-MIX.selectionPromptBasic": "เลือก[gold]ยาผสม[/gold]พื้นฐานที่จะเพิ่มเข้า[gold]มือ[/gold]",
-  "ALCHEMIST-MIX.selectionPromptSpecial": "เลือก[gold]ยาผสม[/gold]พิเศษที่จะเพิ่มเข้า[gold]มือ[/gold]"
+  "ALCHEMIST-MIX.selectionPromptBasic": "เลือก[gold]ยาผสม[/gold]พื้นฐานที่จะเพิ่มเข้า[gold]มือ[/gold]"
 }
