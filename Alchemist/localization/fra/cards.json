@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "Frappe",
   "ALCHEMIST-SWEAT_IT_OUT.description": "Gagnez {SelfPoison:diff()} de [gold]Poison[/gold].\nAppliquez autant de [gold]Poison[/gold] que votre [gold]Poison[/gold] à TOUS les ennemis.{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "Grande suée",
-  "ALCHEMIST-SWITCHEROO.description": "Échangez votre [gold]Poison[/gold] avec le [gold]Poison[/gold] de l'ennemi.",
+  "ALCHEMIST-SWITCHEROO.description": "Gagnez {SelfPoison} de [gold]Poison[/gold].\nÉchangez votre [gold]Poison[/gold] avec le [gold]Poison[/gold] de l'ennemi.",
   "ALCHEMIST-SWITCHEROO.title": "Chassé-croisé",
   "ALCHEMIST-SYRUPY_MIX.description": "Gagnez {Block:diff()} d'[gold]Armure[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Concoction sirupeuse",

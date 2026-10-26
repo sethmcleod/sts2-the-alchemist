@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "ストライク",
   "ALCHEMIST-SWEAT_IT_OUT.description": "[gold]毒[/gold]{SelfPoison:diff()}を得る。\n自身の[gold]毒[/gold]に等しい[gold]毒[/gold]をすべての敵に付与する。{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "発汗",
-  "ALCHEMIST-SWITCHEROO.description": "自身の[gold]毒[/gold]と敵の[gold]毒[/gold]を入れ替える。",
+  "ALCHEMIST-SWITCHEROO.description": "[gold]毒[/gold]{SelfPoison}を得る。\n自身の[gold]毒[/gold]と敵の[gold]毒[/gold]を入れ替える。",
   "ALCHEMIST-SWITCHEROO.title": "すり替え",
   "ALCHEMIST-SYRUPY_MIX.description": "{Block:diff()}[gold]ブロック[/gold]を得る。",
   "ALCHEMIST-SYRUPY_MIX.title": "粘性の霊薬",

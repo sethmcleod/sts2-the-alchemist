@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "타격",
   "ALCHEMIST-SWEAT_IT_OUT.description": "[gold]중독[/gold]을 {SelfPoison:diff()} 얻습니다.\n모든 적에게 [gold]중독[/gold]만큼 [gold]중독[/gold]을 부여합니다.{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "땀 빼기",
-  "ALCHEMIST-SWITCHEROO.description": "내 [gold]중독[/gold]과 적의 [gold]중독[/gold]을 맞바꿉니다.",
+  "ALCHEMIST-SWITCHEROO.description": "[gold]중독[/gold]을 {SelfPoison} 얻습니다.\n내 [gold]중독[/gold]과 적의 [gold]중독[/gold]을 맞바꿉니다.",
   "ALCHEMIST-SWITCHEROO.title": "바꿔치기",
   "ALCHEMIST-SYRUPY_MIX.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다.",
   "ALCHEMIST-SYRUPY_MIX.title": "걸쭉한 영액",

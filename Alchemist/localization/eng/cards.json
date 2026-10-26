@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "Strike",
   "ALCHEMIST-SWEAT_IT_OUT.description": "Gain {SelfPoison:diff()} [gold]Poison[/gold].\nApply [gold]Poison[/gold] equal to your [gold]Poison[/gold] to ALL enemies.{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "Sweat It Out",
-  "ALCHEMIST-SWITCHEROO.description": "Swap your [gold]Poison[/gold] with the enemy's [gold]Poison[/gold].",
+  "ALCHEMIST-SWITCHEROO.description": "Gain {SelfPoison} [gold]Poison[/gold].\nSwap your [gold]Poison[/gold] with the enemy's [gold]Poison[/gold].",
   "ALCHEMIST-SWITCHEROO.title": "Switcheroo",
   "ALCHEMIST-SYRUPY_MIX.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Syrupy Mix",

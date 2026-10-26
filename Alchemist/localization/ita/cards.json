@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "Colpo",
   "ALCHEMIST-SWEAT_IT_OUT.description": "Ottieni {SelfPoison:diff()} di [gold]Veleno[/gold].\nApplichi [gold]Veleno[/gold] pari al tuo [gold]Veleno[/gold] a TUTTI i nemici.{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "Sudorazione",
-  "ALCHEMIST-SWITCHEROO.description": "Scambi il tuo [gold]Veleno[/gold] con il [gold]Veleno[/gold] del nemico.",
+  "ALCHEMIST-SWITCHEROO.description": "Ottieni {SelfPoison} di [gold]Veleno[/gold].\nScambi il tuo [gold]Veleno[/gold] con il [gold]Veleno[/gold] del nemico.",
   "ALCHEMIST-SWITCHEROO.title": "Scambio di Ruoli",
   "ALCHEMIST-SYRUPY_MIX.description": "Ottieni {Block:diff()} di [gold]Blocco[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Miscela Sciropposa",

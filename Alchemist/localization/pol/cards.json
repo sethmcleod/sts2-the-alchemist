@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "Uderzenie",
   "ALCHEMIST-SWEAT_IT_OUT.description": "Zyskaj {SelfPoison:diff()} pkt. [gold]Trucizny[/gold].\nNałóż [gold]Truciznę[/gold] równą twojej [gold]Truciźnie[/gold] na WSZYSTKICH przeciwników.{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "Wypocenie",
-  "ALCHEMIST-SWITCHEROO.description": "Zamień swoją [gold]Truciznę[/gold] z [gold]Trucizną[/gold] przeciwnika.",
+  "ALCHEMIST-SWITCHEROO.description": "Zyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].\nZamień swoją [gold]Truciznę[/gold] z [gold]Trucizną[/gold] przeciwnika.",
   "ALCHEMIST-SWITCHEROO.title": "Podmianka",
   "ALCHEMIST-SYRUPY_MIX.description": "Zyskaj {Block:diff()} pkt. [gold]Bloku[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Gęsta mieszanka",

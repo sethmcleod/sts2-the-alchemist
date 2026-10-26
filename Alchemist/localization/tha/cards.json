@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "จู่โจม",
   "ALCHEMIST-SWEAT_IT_OUT.description": "ได้รับ {SelfPoison:diff()} [gold]พิษ[/gold]\nสร้าง[gold]พิษ[/gold]เท่ากับ[gold]พิษ[/gold]ที่คุณมีใส่ศัตรูทั้งหมด{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "ขับเหงื่อพิษ",
-  "ALCHEMIST-SWITCHEROO.description": "สลับ[gold]พิษ[/gold]ของคุณกับ[gold]พิษ[/gold]ของศัตรู",
+  "ALCHEMIST-SWITCHEROO.description": "ได้รับ {SelfPoison} [gold]พิษ[/gold]\nสลับ[gold]พิษ[/gold]ของคุณกับ[gold]พิษ[/gold]ของศัตรู",
   "ALCHEMIST-SWITCHEROO.title": "สลับสับเปลี่ยน",
   "ALCHEMIST-SYRUPY_MIX.description": "ได้รับ {Block:diff()} [gold]บล็อก[/gold]",
   "ALCHEMIST-SYRUPY_MIX.title": "ยาผสมเหนียวข้น",

@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "Tebas",
   "ALCHEMIST-SWEAT_IT_OUT.description": "Dapatkan {SelfPoison:diff()} [gold]Racun[/gold].\nTerapkan [gold]Racun[/gold] sebanyak [gold]Racun[/gold] milikmu ke SEMUA musuh.{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "Peras Keringat",
-  "ALCHEMIST-SWITCHEROO.description": "Tukar [gold]Racun[/gold] milikmu dengan [gold]Racun[/gold] milik musuh.",
+  "ALCHEMIST-SWITCHEROO.description": "Dapatkan {SelfPoison} [gold]Racun[/gold].\nTukar [gold]Racun[/gold] milikmu dengan [gold]Racun[/gold] milik musuh.",
   "ALCHEMIST-SWITCHEROO.title": "Tukar Guling",
   "ALCHEMIST-SYRUPY_MIX.description": "Dapatkan {Block:diff()} [gold]Blok[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Campuran Kental",

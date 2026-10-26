@@ -13,6 +13,7 @@ public class Switcheroo : AlchemistReshuffledCard
     public Switcheroo() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)
     {
         WithCostUpgradeBy(-1);
+        WithVar("SelfPoison", 3, 0);
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
     }
@@ -20,6 +21,8 @@ public class Switcheroo : AlchemistReshuffledCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (play.Target is not { IsAlive: true } target) return;
+        await PowerCmd.Apply<PoisonPower>(choiceContext, Owner.Creature,
+            DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
         var mine = Owner.Creature.GetPowerAmount<PoisonPower>();
         var theirs = target.GetPowerAmount<PoisonPower>();
         PoisonSplash(target);

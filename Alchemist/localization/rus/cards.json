@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "Удар",
   "ALCHEMIST-SWEAT_IT_OUT.description": "Дает вам {SelfPoison:diff()} [gold]яда[/gold].\nНакладывает столько [gold]яда[/gold], сколько у вас [gold]яда[/gold], на ВСЕХ врагов.{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "Пропотеть",
-  "ALCHEMIST-SWITCHEROO.description": "Меняет местами ваш [gold]яд[/gold] и [gold]яд[/gold] врага.",
+  "ALCHEMIST-SWITCHEROO.description": "Дает вам {SelfPoison} [gold]яда[/gold].\nМеняет местами ваш [gold]яд[/gold] и [gold]яд[/gold] врага.",
   "ALCHEMIST-SWITCHEROO.title": "Рокировка",
   "ALCHEMIST-SYRUPY_MIX.description": "Дает {Block:diff()} [gold]защиты[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Тягучая смесь",

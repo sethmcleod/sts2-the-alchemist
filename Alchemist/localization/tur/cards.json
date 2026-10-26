@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "Saldır",
   "ALCHEMIST-SWEAT_IT_OUT.description": "{SelfPoison:diff()} [gold]Zehir[/gold] elde et.\nTÜM düşmanlara [gold]Zehir[/gold]'in kadar [gold]Zehir[/gold] uygula.{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "Ter Dök",
-  "ALCHEMIST-SWITCHEROO.description": "[gold]Zehir[/gold]'ini düşmanın [gold]Zehir[/gold]'iyle takas et.",
+  "ALCHEMIST-SWITCHEROO.description": "{SelfPoison} [gold]Zehir[/gold] elde et.\n[gold]Zehir[/gold]'ini düşmanın [gold]Zehir[/gold]'iyle takas et.",
   "ALCHEMIST-SWITCHEROO.title": "Al Gülüm Ver Gülüm",
   "ALCHEMIST-SYRUPY_MIX.description": "{Block:diff()} [gold]Blok[/gold] elde et.",
   "ALCHEMIST-SYRUPY_MIX.title": "Kıvamlı Karışım",

@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "Golpe",
   "ALCHEMIST-SWEAT_IT_OUT.description": "Receba {SelfPoison:diff()} de [gold]Veneno[/gold].\nAplique [gold]Veneno[/gold] equivalente ao seu [gold]Veneno[/gold] a TODOS os inimigos.{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "Transpirar",
-  "ALCHEMIST-SWITCHEROO.description": "Troque o seu [gold]Veneno[/gold] pelo [gold]Veneno[/gold] do inimigo.",
+  "ALCHEMIST-SWITCHEROO.description": "Receba {SelfPoison} de [gold]Veneno[/gold].\nTroque o seu [gold]Veneno[/gold] pelo [gold]Veneno[/gold] do inimigo.",
   "ALCHEMIST-SWITCHEROO.title": "Gato por Lebre",
   "ALCHEMIST-SYRUPY_MIX.description": "Receba {Block:diff()} de [gold]Proteção[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Mistura Xaroposa",

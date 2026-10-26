@@ -222,7 +222,7 @@
   "ALCHEMIST-STRIKE_ALCHEMIST.title": "Schlag",
   "ALCHEMIST-SWEAT_IT_OUT.description": "Erhalte {SelfPoison:diff()} [gold]Gift[/gold].\nWende [gold]Gift[/gold] in Höhe deines [gold]Gifts[/gold] auf ALLE Gegner an.{ApplyLine}",
   "ALCHEMIST-SWEAT_IT_OUT.title": "Ausschwitzen",
-  "ALCHEMIST-SWITCHEROO.description": "Tausche dein [gold]Gift[/gold] mit dem [gold]Gift[/gold] des Gegners.",
+  "ALCHEMIST-SWITCHEROO.description": "Erhalte {SelfPoison} [gold]Gift[/gold].\nTausche dein [gold]Gift[/gold] mit dem [gold]Gift[/gold] des Gegners.",
   "ALCHEMIST-SWITCHEROO.title": "Bäumchen wechsel dich",
   "ALCHEMIST-SYRUPY_MIX.description": "Erhalte {Block:diff()} [gold]Block[/gold].",
   "ALCHEMIST-SYRUPY_MIX.title": "Sirupartige Essenz",
