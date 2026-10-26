@@ -1,3 +1,4 @@
+using Alchemist.AlchemistCode.Compat;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -24,7 +25,7 @@ public class Fester : AlchemistReshuffledCard
         for (var i = 0; i < DynamicVars["Triggers"].IntValue; i++)
         {
             if (!target.IsAlive || target.GetPower<PoisonPower>() is not { } poison) break;
-            await poison.Trigger();
+            await GameCompat.TriggerPoison(poison);
         }
     }
 }
