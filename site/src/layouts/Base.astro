@@ -45,7 +45,7 @@ const previewImage =
     format: pageImage ? 'png' : 'jpg',
     quality: 80,
     src: previewSource,
-    width: Math.min(previewSource.width, pageImage ? 600 : 1200),
+    width: pageImage ? 600 : 1200,
   }));
 const touchIcon = await getImage({ format: 'png', src: appIcon, width: 180 });
 const isVercelBuild = process.env.VERCEL === '1';
