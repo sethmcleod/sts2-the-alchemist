@@ -195,7 +195,7 @@
   "ALCHEMIST-RUNOFF.description": "每当你生成卡牌时，给予所有敌人{Amount}层[gold]中毒[/gold]。",
   "ALCHEMIST-RUNOFF.title": "废液",
   "ALCHEMIST-SCRY.selectionScreenPrompt": "选择最多[blue]{MaxCount}[/blue]张牌来[gold]丢弃[/gold]。",
-  "ALCHEMIST-SECRET_SAUCE.description": "选择一种要加入你的[gold]手牌[/gold]的基础{IfUpgraded:show:[gold]药剂+[/gold]|[gold]药剂[/gold]}。\n将你[gold]手牌[/gold]中的一张攻击牌[gold]附魔[/gold]：[purple]淬毒[/purple]。",
+  "ALCHEMIST-SECRET_SAUCE.description": "将一张随机基础{IfUpgraded:show:[gold]药剂+[/gold]|[gold]药剂[/gold]}加入你的[gold]手牌[/gold]。\n将你[gold]手牌[/gold]中的一张攻击牌[gold]附魔[/gold]：[purple]淬毒[/purple]。",
   "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt": "选择一张攻击牌[gold]附魔[/gold]。",
   "ALCHEMIST-SECRET_SAUCE.title": "秘制酱汁",
   "ALCHEMIST-SMELLING_SALTS.description": "在你的回合开始时，如果你有{Threshold}层或更多[gold]中毒[/gold]，获得{Energy:energyIcons()}。",

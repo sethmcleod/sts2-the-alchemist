@@ -195,7 +195,7 @@
   "ALCHEMIST-RUNOFF.description": "Immer wenn du eine Karte erzeugst, wende {Amount} [gold]Gift[/gold] auf ALLE Gegner an.",
   "ALCHEMIST-RUNOFF.title": "Abfluss",
   "ALCHEMIST-SCRY.selectionScreenPrompt": "Wähle bis zu [blue]{MaxCount}[/blue] {MaxCount:plural:Karte,|Karten,} die du [gold]Abwirfst[/gold].",
-  "ALCHEMIST-SECRET_SAUCE.description": "Wähle eine einfache {IfUpgraded:show:[gold]Essenz+[/gold]|[gold]Essenz[/gold]}, die du auf deine [gold]Hand[/gold] nimmst.\n[gold]Verzaubere[/gold] einen Angriff auf deiner [gold]Hand[/gold] mit [purple]Versetzt[/purple].",
+  "ALCHEMIST-SECRET_SAUCE.description": "Nimm eine zufällige einfache {IfUpgraded:show:[gold]Essenz+[/gold]|[gold]Essenz[/gold]} auf deine [gold]Hand[/gold].\n[gold]Verzaubere[/gold] einen Angriff auf deiner [gold]Hand[/gold] mit [purple]Versetzt[/purple].",
   "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt": "Wähle einen Angriff, den du [gold]verzauberst[/gold].",
   "ALCHEMIST-SECRET_SAUCE.title": "Geheimzutat",
   "ALCHEMIST-SMELLING_SALTS.description": "Erhalte zu Beginn deines Zuges {Energy:energyIcons()}, falls du mindestens {Threshold} [gold]Gift[/gold] hast.",

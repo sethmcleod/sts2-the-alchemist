@@ -195,7 +195,7 @@
   "ALCHEMIST-RUNOFF.description": "ทุกครั้งที่คุณสร้างการ์ด สร้าง {Amount} [gold]พิษ[/gold]ใส่ศัตรูทั้งหมด",
   "ALCHEMIST-RUNOFF.title": "น้ำทิ้ง",
   "ALCHEMIST-SCRY.selectionScreenPrompt": "เลือกการ์ดสูงสุด [blue]{MaxCount}[/blue] ใบเพื่อ[gold]ทิ้ง[/gold]",
-  "ALCHEMIST-SECRET_SAUCE.description": "เลือก{IfUpgraded:show:[gold]ยาผสม+[/gold]|[gold]ยาผสม[/gold]}พื้นฐานที่จะเพิ่มเข้า[gold]มือ[/gold]\n[gold]ร่ายมนตร์[/gold]การ์ดโจมตี 1 ใบใน[gold]มือ[/gold]ด้วย[purple]เจือพิษ[/purple]",
+  "ALCHEMIST-SECRET_SAUCE.description": "เพิ่ม{IfUpgraded:show:[gold]ยาผสม+[/gold]|[gold]ยาผสม[/gold]}พื้นฐาน 1 ใบแบบสุ่มเข้า[gold]มือ[/gold]\n[gold]ร่ายมนตร์[/gold]การ์ดโจมตี 1 ใบใน[gold]มือ[/gold]ด้วย[purple]เจือพิษ[/purple]",
   "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt": "เลือกการ์ดโจมตี 1 ใบเพื่อ[gold]ร่ายมนตร์[/gold]",
   "ALCHEMIST-SECRET_SAUCE.title": "ซอสสูตรลับ",
   "ALCHEMIST-SMELLING_SALTS.description": "ตอนเริ่มต้นเทิร์น ถ้าคุณมี[gold]พิษ[/gold] {Threshold} ขึ้นไป ได้รับ {Energy:energyIcons()}",

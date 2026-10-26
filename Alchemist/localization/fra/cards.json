@@ -195,7 +195,7 @@
   "ALCHEMIST-RUNOFF.description": "Lorsque vous créez une carte, appliquez {Amount} de [gold]Poison[/gold] à TOUS les ennemis.",
   "ALCHEMIST-RUNOFF.title": "Ruissellement",
   "ALCHEMIST-SCRY.selectionScreenPrompt": "Choisir jusqu'à [blue]{MaxCount}[/blue] {MaxCount:plural:carte|cartes} à [gold]Défausser[/gold].",
-  "ALCHEMIST-SECRET_SAUCE.description": "Choisissez une {IfUpgraded:show:[gold]Concoction+[/gold]|[gold]Concoction[/gold]} de base à ajouter à votre [gold]Main[/gold].\n[gold]Envoûtez[/gold] une Attaque de votre [gold]Main[/gold] avec [purple]Imprégné[/purple].",
+  "ALCHEMIST-SECRET_SAUCE.description": "Ajoutez une {IfUpgraded:show:[gold]Concoction+[/gold]|[gold]Concoction[/gold]} de base aléatoire à votre [gold]Main[/gold].\n[gold]Envoûtez[/gold] une Attaque de votre [gold]Main[/gold] avec [purple]Imprégné[/purple].",
   "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt": "Choisissez une Attaque à [gold]Envoûter[/gold].",
   "ALCHEMIST-SECRET_SAUCE.title": "Ingrédient secret",
   "ALCHEMIST-SMELLING_SALTS.description": "Au début de votre tour, si vous avez {Threshold} de [gold]Poison[/gold] ou plus, gagnez {Energy:energyIcons()}.",

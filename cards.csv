@@ -86,7 +86,7 @@ Resolve,Uncommon,Power,1,Retain. Ferment. Gain 1 Strength. Gains 1 (2) additiona
 Ripening,Uncommon,Power,1,"At the start of your turn, if you have a Ferment card in your Hand, draw 1 additional card. (Ripening+ gains Innate)"
 Rolling Boil,Rare,Attack,2,Retain. Ferment. Deal 8 (10) damage. Deals 3 (4) additional damage for each turn Fermented by ALL Ferment cards in your Hand.
 Runoff,Uncommon,Power,2 (1),"Whenever you create a card, apply 2 Poison to ALL enemies."
-Secret Sauce,"Common, Hero",Skill,1,Choose a basic Mix (Mix+) to add into your Hand. Enchant an Attack in your Hand with Laced.
+Secret Sauce,"Common, Hero",Skill,1,Add a random basic Mix (Mix+) into your Hand. Enchant an Attack in your Hand with Laced.
 Smelling Salts,Uncommon,Power,1,"At the start of your turn, if you have 2 or more Poison, gain 1 Energy. (Smelling Salts+ gains Innate)"
 Snack Attack,"Common, Hero",Attack,1,"Deal 10 (12) damage. If the enemy has Poison, draw 1 (2) cards."
 Sparkling Mix,Token,Skill,0,Ethereal. Gain 1 Energy. Exhaust. (Sparkling Mix+ loses Ethereal)

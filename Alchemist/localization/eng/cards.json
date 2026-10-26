@@ -195,7 +195,7 @@
   "ALCHEMIST-RUNOFF.description": "Whenever you create a card, apply {Amount} [gold]Poison[/gold] to ALL enemies.",
   "ALCHEMIST-RUNOFF.title": "Runoff",
   "ALCHEMIST-SCRY.selectionScreenPrompt": "Choose up to [blue]{MaxCount}[/blue] {MaxCount:plural:card|cards} to [gold]Discard[/gold].",
-  "ALCHEMIST-SECRET_SAUCE.description": "Choose a basic {IfUpgraded:show:[gold]Mix+[/gold]|[gold]Mix[/gold]} to add into your [gold]Hand[/gold].\n[gold]Enchant[/gold] an Attack in your [gold]Hand[/gold] with [purple]Laced[/purple].",
+  "ALCHEMIST-SECRET_SAUCE.description": "Add a random basic {IfUpgraded:show:[gold]Mix+[/gold]|[gold]Mix[/gold]} into your [gold]Hand[/gold].\n[gold]Enchant[/gold] an Attack in your [gold]Hand[/gold] with [purple]Laced[/purple].",
   "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt": "Choose an Attack to [gold]Enchant[/gold].",
   "ALCHEMIST-SECRET_SAUCE.title": "Secret Sauce",
   "ALCHEMIST-SMELLING_SALTS.description": "At the start of your turn, if you have {Threshold} or more [gold]Poison[/gold], gain {Energy:energyIcons()}.",

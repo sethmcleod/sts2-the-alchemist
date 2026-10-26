@@ -195,7 +195,7 @@
   "ALCHEMIST-RUNOFF.description": "Ogni volta che crei una carta, applichi {Amount} di [gold]Veleno[/gold] a TUTTI i nemici.",
   "ALCHEMIST-RUNOFF.title": "Deflusso",
   "ALCHEMIST-SCRY.selectionScreenPrompt": "Scegli fino a [blue]{MaxCount}[/blue] {MaxCount:plural:carta|carte} da [gold]scartare[/gold].",
-  "ALCHEMIST-SECRET_SAUCE.description": "Scegli una {IfUpgraded:show:[gold]Miscela+[/gold]|[gold]Miscela[/gold]} base da aggiungere alla tua [gold]mano[/gold].\n[gold]Incanti[/gold] una carta Attacco nella tua [gold]mano[/gold] con [purple]Intrisa[/purple].",
+  "ALCHEMIST-SECRET_SAUCE.description": "Aggiungi una {IfUpgraded:show:[gold]Miscela+[/gold]|[gold]Miscela[/gold]} base casuale alla tua [gold]mano[/gold].\n[gold]Incanti[/gold] una carta Attacco nella tua [gold]mano[/gold] con [purple]Intrisa[/purple].",
   "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt": "Scegli una carta Attacco da [gold]incantare[/gold].",
   "ALCHEMIST-SECRET_SAUCE.title": "Ingrediente segreto",
   "ALCHEMIST-SMELLING_SALTS.description": "All'inizio del tuo turno, se hai almeno {Threshold} di [gold]Veleno[/gold], ottieni {Energy:energyIcons()}.",

@@ -195,7 +195,7 @@
   "ALCHEMIST-RUNOFF.description": "Her kart oluşturduğunda TÜM düşmanlara {Amount} [gold]Zehir[/gold] uygula.",
   "ALCHEMIST-RUNOFF.title": "Akıntı",
   "ALCHEMIST-SCRY.selectionScreenPrompt": "[gold]El'inden çıkarmak[/gold] için en fazla [blue]{MaxCount}[/blue] kart seç.",
-  "ALCHEMIST-SECRET_SAUCE.description": "[gold]El[/gold]'ine eklemek için temel bir {IfUpgraded:show:[gold]Karışım+[/gold]|[gold]Karışım[/gold]} seç.\n[gold]El[/gold]'indeki bir Atak kartını [purple]Zehirli[/purple] ile [gold]Büyüle[/gold].",
+  "ALCHEMIST-SECRET_SAUCE.description": "[gold]El[/gold]'ine rastgele temel bir {IfUpgraded:show:[gold]Karışım+[/gold]|[gold]Karışım[/gold]} ekle.\n[gold]El[/gold]'indeki bir Atak kartını [purple]Zehirli[/purple] ile [gold]Büyüle[/gold].",
   "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt": "[gold]Büyülemek[/gold] için bir Atak kartı seç.",
   "ALCHEMIST-SECRET_SAUCE.title": "Gizli Malzeme",
   "ALCHEMIST-SMELLING_SALTS.description": "Turunun başında, {Threshold} veya daha fazla [gold]Zehir[/gold]'e sahipsen {Energy:energyIcons()} elde et.",

@@ -195,7 +195,7 @@
   "ALCHEMIST-RUNOFF.description": "Kiedykolwiek stworzysz kartę, nałóż {Amount} pkt. [gold]Trucizny[/gold] na WSZYSTKICH przeciwników.",
   "ALCHEMIST-RUNOFF.title": "Spływ",
   "ALCHEMIST-SCRY.selectionScreenPrompt": "Wybierz do [blue]{MaxCount}[/blue] {MaxCount:plural:karty|kart|kart} do [gold]Odrzucenia[/gold].",
-  "ALCHEMIST-SECRET_SAUCE.description": "Wybierz podstawową {IfUpgraded:show:[gold]Mieszankę+[/gold]|[gold]Mieszankę[/gold]} do dodania do [gold]ręki[/gold].\nRzuć [gold]Zaklęcie[/gold] [purple]Jad[/purple] na Atak w [gold]ręce[/gold].",
+  "ALCHEMIST-SECRET_SAUCE.description": "Dodaj losową podstawową {IfUpgraded:show:[gold]Mieszankę+[/gold]|[gold]Mieszankę[/gold]} do [gold]ręki[/gold].\nRzuć [gold]Zaklęcie[/gold] [purple]Jad[/purple] na Atak w [gold]ręce[/gold].",
   "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt": "Wybierz Atak do [gold]Zaklęcia[/gold].",
   "ALCHEMIST-SECRET_SAUCE.title": "Sekretny składnik",
   "ALCHEMIST-SMELLING_SALTS.description": "Na początku tury, jeżeli masz co najmniej {Threshold} pkt. [gold]Trucizny[/gold], zyskaj {Energy:energyIcons()}.",

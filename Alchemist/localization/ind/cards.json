@@ -195,7 +195,7 @@
   "ALCHEMIST-RUNOFF.description": "Setiap kali kamu membuat kartu, terapkan {Amount} [gold]Racun[/gold] ke SEMUA musuh.",
   "ALCHEMIST-RUNOFF.title": "Limpasan",
   "ALCHEMIST-SCRY.selectionScreenPrompt": "Pilih hingga [blue]{MaxCount}[/blue] kartu untuk di [gold]Singkirkan[/gold].",
-  "ALCHEMIST-SECRET_SAUCE.description": "Pilih sebuah {IfUpgraded:show:[gold]Campuran+[/gold]|[gold]Campuran[/gold]} dasar untuk ditambahkan ke [gold]Tangan[/gold]mu.\nTambahkan [gold]Efek[/gold] [purple]Beracun[/purple] ke sebuah Serangan di [gold]Tanganmu[/gold].",
+  "ALCHEMIST-SECRET_SAUCE.description": "Tambahkan sebuah {IfUpgraded:show:[gold]Campuran+[/gold]|[gold]Campuran[/gold]} dasar acak ke [gold]Tangan[/gold]mu.\nTambahkan [gold]Efek[/gold] [purple]Beracun[/purple] ke sebuah Serangan di [gold]Tanganmu[/gold].",
   "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt": "Pilih Serangan untuk ditambahkan dengan [gold]Efek[/gold].",
   "ALCHEMIST-SECRET_SAUCE.title": "Bumbu Rahasia",
   "ALCHEMIST-SMELLING_SALTS.description": "Pada awal giliranmu, jika kamu punya {Threshold} [gold]Racun[/gold] atau lebih, dapatkan {Energy:energyIcons()}.",

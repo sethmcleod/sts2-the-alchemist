@@ -195,7 +195,7 @@
   "ALCHEMIST-RUNOFF.description": "Когда вы создаете карту, накладывает {Amount} [gold]яда[/gold] на ВСЕХ врагов.",
   "ALCHEMIST-RUNOFF.title": "Сток",
   "ALCHEMIST-SCRY.selectionScreenPrompt": "Выберите до [blue]{MaxCount}[/blue] {MaxCount:plural(ru):карты|карт|карт}, которые хотите [gold]сбросить[/gold].",
-  "ALCHEMIST-SECRET_SAUCE.description": "Выберите, какую базовую {IfUpgraded:show:[gold]смесь+[/gold]|[gold]смесь[/gold]} добавить в [gold]руку[/gold].\nНакладывает [gold]чары[/gold] [purple]«Отрава»[/purple] на Атаку в [gold]руке[/gold].",
+  "ALCHEMIST-SECRET_SAUCE.description": "Добавляет случайную базовую {IfUpgraded:show:[gold]смесь+[/gold]|[gold]смесь[/gold]} в вашу [gold]руку[/gold].\nНакладывает [gold]чары[/gold] [purple]«Отрава»[/purple] на Атаку в [gold]руке[/gold].",
   "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt": "Выберите Атаку, на которую хотите наложить [gold]чары[/gold].",
   "ALCHEMIST-SECRET_SAUCE.title": "Секретный ингредиент",
   "ALCHEMIST-SMELLING_SALTS.description": "В начале вашего хода дает {Energy:energyIcons()}, если у вас {Threshold} или больше [gold]яда[/gold].",

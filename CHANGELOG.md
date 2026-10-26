@@ -31,7 +31,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Renamed special Mixes (Fuming, Acrid and Sparkling) to volatile Mixes
 - Reworked Pick and Choose card: "Scry 2 (3). Draw 1 card. Discard 1 card. Gain 2 (3) Antitoxin."
 - Reworked Rerun card: "This turn, your next card is played an extra time. Gain 5 (3) Poison."
-- Reworked Secret Sauce card (Hero Expansion): "Choose a basic Mix (Mix+) to add into your Hand. Enchant an Attack in your Hand with Laced."
+- Reworked Secret Sauce card (Hero Expansion): "Add a random basic Mix (Mix+) into your Hand. Enchant an Attack in your Hand with Laced."
 
 ### Fixed
 

@@ -195,7 +195,7 @@
   "ALCHEMIST-RUNOFF.description": "Cada vez que creas una carta, aplicas {Amount} de [gold]veneno[/gold] a TODOS los enemigos.",
   "ALCHEMIST-RUNOFF.title": "Escorrentía",
   "ALCHEMIST-SCRY.selectionScreenPrompt": "Elige hasta [blue]{MaxCount}[/blue] {MaxCount:plural:carta|cartas} para [gold]descartar[/gold].",
-  "ALCHEMIST-SECRET_SAUCE.description": "Eliges una {IfUpgraded:show:[gold]Mezcla+[/gold]|[gold]Mezcla[/gold]} básica para añadir a tu [gold]mano[/gold].\n[gold]Encantas[/gold] un ataque de tu [gold]mano[/gold] con [purple]Ponzoña[/purple].",
+  "ALCHEMIST-SECRET_SAUCE.description": "Agregas una {IfUpgraded:show:[gold]Mezcla+[/gold]|[gold]Mezcla[/gold]} básica al azar a tu [gold]mano[/gold].\n[gold]Encantas[/gold] un ataque de tu [gold]mano[/gold] con [purple]Ponzoña[/purple].",
   "ALCHEMIST-SECRET_SAUCE.selectionScreenPrompt": "Elige un ataque para [gold]encantarlo[/gold].",
   "ALCHEMIST-SECRET_SAUCE.title": "Ingrediente secreto",
   "ALCHEMIST-SMELLING_SALTS.description": "Al comienzo de tu turno, si tienes {Threshold} o más de [gold]veneno[/gold], obtienes {Energy:energyIcons()}.",
