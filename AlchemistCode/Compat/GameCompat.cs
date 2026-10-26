@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.Models.Potions;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
@@ -53,6 +54,8 @@ public static class GameCompat
     public static Task LoseBlock(PlayerChoiceContext choiceContext, Creature target, decimal amount,
         Creature? remover) =>
         CreatureCmd.LoseBlock(choiceContext, target, amount, remover);
+
+    public static Task TriggerPoison(PoisonPower poison) => poison.Trigger();
 
     /// <summary>main has no play parameter between cardSource and the hook type.</summary>
     public static decimal ModifyDamage(IRunState runState, ICombatState? combatState, Creature? target,
