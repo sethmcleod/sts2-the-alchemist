@@ -27,6 +27,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Buffed Wormwood card: Poison increased from 2(3) -> 3(4)
 - Changed Fizz card: it now adds a Fuming Mix (Fuming Mix+) instead of a Bursting Mix (Bursting Mix+)
 - Nerfed Bounce Back card (Hero Expansion): Block decreased from 7(9) -> 6(8)
+- Nerfed Mud Pack card (Hero Expansion): Block decreased from 7 -> 6
 - Renamed special Mixes (Fuming, Acrid and Sparkling) to volatile Mixes
 - Reworked Pick and Choose card: "Scry 2 (3). Draw 1 card. Discard 1 card. Gain 2 (3) Antitoxin."
 - Reworked Rerun card: "This turn, your next card is played an extra time. Gain 5 (3) Poison."

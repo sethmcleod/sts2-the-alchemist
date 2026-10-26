@@ -17,7 +17,7 @@ public class MudPack : AlchemistHeroCard
 
     public MudPack() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithBlock(7, 0);
+        WithBlock(6, 0);
         WithVar("Extra", 0, 1);
         WithCalculatedVar("TotalBlock", 0, static (card, _) => card.DynamicVars.Block.PreviewValue * PreviewTimes(card));
         WithTip(BaseLibTip.Scry);
