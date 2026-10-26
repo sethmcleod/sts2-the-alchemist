@@ -5,6 +5,19 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added Cocktail Strike card (Reshuffled Spire): "Deal 4 damage. Deals 4 (5) additional damage for each unique Mix you have played this combat."
+- Added Dregs status card (Reshuffled Spire): "Unplayable. Ethereal. Whenever you draw this card, gain 2 Poison and draw 1 card."
+- Added Fester card (Reshuffled Spire): "Apply 2 (3) Poison. Trigger the enemy's Poison 1 (2) times."
+- Added Hopped Up card (Reshuffled Spire): "Deal 4 (5) damage 4 times. Costs 1 less for every 4 Poison you have."
+- Added Let It Settle card (Reshuffled Spire): "Gain 9 (12) Block. Add a Dregs into your Draw Pile."
+- Added One for Later card (Reshuffled Spire): "Whenever you add a Mix into your Hand, add a copy of it into your Draw Pile."
+- Added Switcheroo card (Reshuffled Spire): "Swap your Poison with the enemy's Poison. Exhaust."
+- Added Toxic Aura card (Reshuffled Spire): "Whenever your Poison triggers, deal that much damage to ALL enemies."
+- Added Turn Sour card (Reshuffled Spire): "Retain. Ferment. Apply 1 (2) Weak. Apply 1 (2) Vulnerable. Applies 1 additional Weak and Vulnerable for each turn Fermented. Exhaust."
+- Added Warning Colors card (Reshuffled Spire): "Whenever you are attacked, apply 1 Poison for every 3 Antitoxin you have." Warning Colors+ gains Innate
+
 ### Changed
 
 - Buffed Double Dip card (Hero Expansion): Poison increased from 5(7) -> 6(8)
