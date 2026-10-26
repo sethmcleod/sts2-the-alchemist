@@ -46,16 +46,7 @@ public partial class Alchemist : PlaceholderCharacterModel
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<DefendAlchemist>(),
         ModelDb.Card<Jab>(),
-        ModelDb.Card<Cards.ReshuffledSpire.HeroicDose>(),
-        ModelDb.Card<Cards.ReshuffledSpire.HoppedUp>(),
-        ModelDb.Card<Cards.ReshuffledSpire.LetItSettle>(),
-        ModelDb.Card<Cards.ReshuffledSpire.Fester>(),
-        ModelDb.Card<Cards.ReshuffledSpire.TurnSour>(),
-        ModelDb.Card<Cards.ReshuffledSpire.CocktailStrike>(),
-        ModelDb.Card<Cards.ReshuffledSpire.Switcheroo>(),
-        ModelDb.Card<Cards.ReshuffledSpire.OneForLater>(),
-        ModelDb.Card<Cards.ReshuffledSpire.ToxicAura>(),
-        ModelDb.Card<Cards.ReshuffledSpire.WarningColors>()
+        ModelDb.Card<Dose>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

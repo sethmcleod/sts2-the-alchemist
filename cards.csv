@@ -27,7 +27,7 @@ Defend,Basic,Skill,1,Gain 5 (8) Block.
 Digest,Common,Skill,0,"Exhaust 1 card. If it was a Status, Curse, or Quest, add a random Mix into your Hand. (Digest+ adds a Mix+)"
 Distill,Common,Skill,0,Retain. Ferment. Gain 1 (2) Antitoxin. Gains 1 (2) additional Antitoxin for each turn Fermented. Gain 2 Poison.
 Dose,Basic,Skill,0,Gain 3 (4) Block. Gain 2 (3) Antitoxin. Gain 2 (3) Poison.
-Double Dip,"Common, Hero",Attack,2,Deal 4 (6) damage twice. Apply 5 (7) Poison.
+Double Dip,"Common, Hero",Attack,2,Deal 4 (6) damage twice. Apply 6 (8) Poison.
 Dregs,"Status, Reshuffled Spire",Status,Unplayable,"Ethereal. Whenever you draw this card, gain 2 Poison and draw 1 card."
 Effervesce,"Uncommon, Multiplayer",Skill,1,Add one of each basic Mix into another player's Hand. (Effervesce+ adds Mixes+)
 Endure,Uncommon,Skill,1,"Gain 6 (9) Block. Gain 3 (4) Antitoxin. If you have Poison, draw 1 card."

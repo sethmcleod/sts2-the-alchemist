@@ -2,6 +2,7 @@ using System;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -36,6 +37,18 @@ public class HoppedUp : AlchemistReshuffledCard
         decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (power is PoisonPower && IsMutable && power.Owner == Owner?.Creature) SyncCost();
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (IsMutable) SyncCost();
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    {
+        if (IsMutable && player == Owner) SyncCost();
         return Task.CompletedTask;
     }
 
