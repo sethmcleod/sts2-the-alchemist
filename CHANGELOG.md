@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.0] - 2026-10-26
+
 ### Added
 
 - Added Cocktail Strike card (Reshuffled Spire): "Deal 4 damage. Deals 4 (5) additional damage for each unique Mix you have played this combat."
