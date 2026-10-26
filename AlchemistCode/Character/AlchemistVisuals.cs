@@ -152,6 +152,10 @@ internal static class AlchemistVisuals
         if (sprite == null) return null;
 
         var visuals = new NCreatureVisuals();
+
+        // AddFormVfx throws if this holder is absent, and a Form power adds its vfx to the player
+        visuals.AddUnique(new Control(), "FormVfx");
+
         visuals.AddUnique(sprite, "Visuals");
 
         var bounds = new Control
@@ -164,9 +168,6 @@ internal static class AlchemistVisuals
 
         visuals.AddUnique(new Marker2D { Position = CenterPosition }, "CenterPos");
         visuals.AddUnique(new Marker2D { Position = IntentPosition }, "IntentPos");
-
-        // AddFormVfx throws if this holder is absent, and a Form power adds its vfx to the player
-        visuals.AddUnique(new Control(), "FormVfx");
 
         return visuals;
     }

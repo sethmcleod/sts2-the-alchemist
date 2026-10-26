@@ -16,7 +16,7 @@ public class DoubleDip : AlchemistHeroCard
     public DoubleDip() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(4, 2);
-        WithVar("Poison", 5, 2);
+        WithVar("Poison", 6, 2);
         WithTip(typeof(PoisonPower));
     }
 

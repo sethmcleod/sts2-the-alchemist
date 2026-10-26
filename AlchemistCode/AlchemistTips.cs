@@ -61,13 +61,13 @@ public static class AlchemistTips
     private static readonly string[] BasicKeys =
         { "ALCHEMIST-BURSTING_MIX", "ALCHEMIST-SYRUPY_MIX", "ALCHEMIST-ZESTY_MIX" };
 
-    private static readonly string[] SpecialKeys =
+    private static readonly string[] VolatileKeys =
         { "ALCHEMIST-FUMING_MIX", "ALCHEMIST-ACRID_MIX", "ALCHEMIST-SPARKLING_MIX" };
 
     // The row list is for makers that can produce four or more kinds; a maker of three or fewer
     // previews the token cards themselves instead.
     private static IHoverTip[] Family(bool upgraded) =>
-        BasicKeys.Concat(SpecialKeys).Select(k => Row(k, upgraded)).ToArray();
+        BasicKeys.Concat(VolatileKeys).Select(k => Row(k, upgraded)).ToArray();
 
     private static IHoverTip[]? _mix, _mixUpgraded;
 

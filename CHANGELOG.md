@@ -5,6 +5,23 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Changed
+
+- Buffed Double Dip card (Hero Expansion): Poison increased from 5(7) -> 6(8)
+- Buffed Muscle Memory card (Hero Expansion): damage increased from 3(4) -> 4(5)
+- Buffed Wormwood card: Poison increased from 2(3) -> 3(4)
+- Changed Fizz card: it now adds a Fuming Mix (Fuming Mix+) instead of a Bursting Mix (Bursting Mix+)
+- Nerfed Bounce Back card (Hero Expansion): Block decreased from 7(9) -> 6(8)
+- Renamed special Mixes (Fuming, Acrid and Sparkling) to volatile Mixes
+- Reworked Pick and Choose card: "Scry 2 (3). Draw 1 card. Discard 1 card. Gain 2 (3) Antitoxin."
+- Reworked Rerun card: "This turn, your next card is played an extra time. Gain 5 (3) Poison."
+- Reworked Secret Sauce card (Hero Expansion): "Choose a basic Mix (Mix+) to add into your Hand. Enchant an Attack in your Hand with Laced."
+
+### Fixed
+
+- Fixed Caustic Strike not being properly tagged as a Strike
+- Fixed Form power effects being drawn in front of the Alchemist instead of behind
+
 ## [0.14.29] - 2026-10-22
 
 ### Added

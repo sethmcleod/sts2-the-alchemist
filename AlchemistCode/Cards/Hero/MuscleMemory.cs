@@ -18,7 +18,7 @@ public class MuscleMemory : AlchemistHeroCard
 
     public MuscleMemory() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithDamage(3, 1);
+        WithDamage(4, 1);
         // BaseHits stays the var's own value and each earlier play raises only the preview, so the
         // count shows in green once the card has been played, as a calculated number does
         WithCalculatedVar("CalculatedHits", BaseHits, 1, static (card, _) => PlaysThisCombat(card), 0, 0);

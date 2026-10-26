@@ -17,7 +17,7 @@ public class Wormwood : AlchemistCard
     {
         WithCalculatedDamage(4, static (card, _) => Dose(card), ValueProp.Move, 2);
         WithKeyword(AlchemistKeywords.Laced);
-        WithVar("Poison", 2, 1);
+        WithVar("Poison", 3, 1);
         WithTip(typeof(PoisonPower));
     }
 
