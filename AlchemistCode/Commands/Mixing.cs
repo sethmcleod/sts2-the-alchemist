@@ -168,7 +168,7 @@ public static class Mixing
         if (picked == null) return;
         if (upgraded) CardCmd.Upgrade(picked);
         RecordCreated(giver, picked, source);
-        await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, receiver);
+        await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, giver);
     }
 
     /// <summary>One picker, many cards: choose a basic Mix once, then add that many copies.</summary>

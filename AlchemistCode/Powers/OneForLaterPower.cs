@@ -18,7 +18,7 @@ public class OneForLaterPower : AlchemistPower
 
     public override async Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
     {
-        if (creator != Owner.Player || !Mixing.IsMix(card) || card.Pile?.Type != PileType.Hand) return;
+        if (card.Owner != Owner.Player || !Mixing.IsMix(card) || card.Pile?.Type != PileType.Hand) return;
         Flash();
         for (var i = 0; i < (int)Amount; i++)
         {
