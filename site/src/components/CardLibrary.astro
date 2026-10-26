@@ -1,11 +1,9 @@
 ---
 import { runs } from '../lib/content';
-import { keywordName, libraryCards, rarityName, typeName } from '../lib/library';
-import { CARD_GROUPS, PARTNER_MODS, partnerMod, RARITIES, RARITY_NAME, slug, steamItem, TYPES } from '../lib/mod';
+import { keywordName, libraryCards, rarityName, themeName, typeName } from '../lib/library';
+import { CARD_GROUPS, PARTNER_MODS, partnerMod, RARITIES, RARITY_NAME, slug, TYPES } from '../lib/mod';
 import type { Rarity } from '../lib/types';
 import CardTile from './CardTile.astro';
-import External from './External.astro';
-import T from './T.astro';
 
 const { l } = Astro.locals;
 
@@ -97,7 +95,7 @@ const selectClass = 'field-control min-w-0';
         <option value="">{l.t('Any keyword')}</option>
         <optgroup label={l.t('Theme')}>
           {runData.meta.themes.map((theme) => (
-            <option value={`theme:${theme}`}>{l.t(theme)}</option>
+            <option value={`theme:${theme}`}>{themeName(l, theme)}</option>
           ))}
         </optgroup>
         <optgroup label={l.t('Keyword')}>
@@ -129,33 +127,21 @@ const selectClass = 'field-control min-w-0';
   </form>
 
   <div data-groups>
-    {groups.map((group) => {
-      const partner = partnerMod(group.id);
-      return (
-        <section aria-labelledby={`group-${slug(group.id)}`} class="mt-6" data-card-group={group.id}>
-          <h3 class="m-0 text-xl" id={`group-${slug(group.id)}`}>
-            {groupTitle(group)}{' '}
-            <small class="font-sans text-sm font-normal text-muted" data-group-count>
-              {l.n(group.cards.length, '{n} card', '{n} cards')}
-            </small>
-          </h3>
-          {partner && (
-            <p class="m-0 mt-1 text-sm text-muted">
-              <T text={l.t('Only in runs with {mod} installed as well.')}>
-                <Fragment slot="mod">
-                  <External href={steamItem(partner.item)}>{partner.name}</External>
-                </Fragment>
-              </T>
-            </p>
-          )}
-          <ul class="card-grid">
-            {group.cards.map((card) => (
-              <CardTile card={card} />
-            ))}
-          </ul>
-        </section>
-      );
-    })}
+    {groups.map((group) => (
+      <section aria-labelledby={`group-${slug(group.id)}`} class="mt-6" data-card-group={group.id}>
+        <h3 class="m-0 text-xl" id={`group-${slug(group.id)}`}>
+          {groupTitle(group)}{' '}
+          <small class="font-sans text-sm font-normal text-muted" data-group-count>
+            {l.n(group.cards.length, '{n} card', '{n} cards')}
+          </small>
+        </h3>
+        <ul class="card-grid">
+          {group.cards.map((card) => (
+            <CardTile card={card} />
+          ))}
+        </ul>
+      </section>
+    ))}
   </div>
   <ul class="card-grid mt-6" data-sorted hidden></ul>
   <p class="mt-8 text-center text-muted" data-empty hidden>

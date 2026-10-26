@@ -421,6 +421,10 @@ def tips(lang: str, base: dict[str, dict]) -> list[dict]:
     return list(unique.values())
 
 
+MOD_WORDS = {"Antitoxin": f"{PREFIX}ANTITOXIN_POWER", "Brew": f"{PREFIX}BREW", "Ferment": f"{PREFIX}FERMENT",
+             "Mix": f"{PREFIX}MIX"}
+
+
 def translation(lang: str) -> dict:
     """The mod's words in one language: every name, the cards as the game shows them, the relic,
     potion, power and badge text, the hover tips for the gold terms in them, and the base game's own
@@ -428,8 +432,10 @@ def translation(lang: str) -> dict:
     game = json.loads(GAME_LOC.read_text(encoding="utf-8"))[lang]
     base_tips = game.pop("tips")
     english_cards = cards()
+    names = titles(lang=lang)
+    game["words"].update({word: names[entry] for word, entry in MOD_WORDS.items()})
     found = {
-        "names": titles(lang=lang),
+        "names": names,
         "cards": ({entry: {"name": c["name"], "texts": c["texts"]} for entry, c in english_cards.items()}
                   if lang == "eng" else localized_cards(lang, game, english_cards)),
         "badges": {b["id"]: {t["tier"]: {"title": t["title"], "text": t["text"]} for t in b["tiers"]}

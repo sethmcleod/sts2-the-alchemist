@@ -3,6 +3,7 @@ import type { Column } from '../../components/charts/Columns';
 import type { Stat } from '../../components/charts/Stats';
 import { rateItem } from '../bars';
 import type { Lang } from '../lang';
+import { themeName } from '../library';
 import { notesHref } from '../links';
 import type { Filters, Runs } from '../runs';
 import { compareVersions, histogramMedian, rate, sumBy } from '../stats';
@@ -39,12 +40,11 @@ export function overview(l: Lang, runs: Runs, filters: Filters): OverviewModel {
     .filter(([, g]) => g.runs >= filters.min)
     .map(([ascension, g]) => rateItem(l, l.t('A{n}', { n: ascension }), g.wins, g.runs));
 
-  const themeNames = new Map(runs.meta.themes.map((theme) => [theme, l.game?.words[theme] ?? l.t(theme)]));
   const themes = [...sumBy(runs.tables.themes, on, (r) => r.theme as string)]
     .filter(([, g]) => g.runs >= filters.min)
     .sort((a, b) => b[1].runs - a[1].runs)
     .map(([theme, g]) =>
-      rateItem(l, themeNames.get(theme) ?? theme, g.wins, g.runs, {
+      rateItem(l, themeName(l, theme), g.wins, g.runs, {
         note: l.t('{share} of runs', { share: l.pct(rate(g.runs, totals.runs)) }),
       }),
     );

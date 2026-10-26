@@ -17,11 +17,12 @@ export const RARITY_LOOK: Record<Rarity, { frame: string; outline: string }> = {
   Common: { frame: 'common', outline: '#4d4b40' },
   Event: { frame: 'event', outline: '#1b6131' },
   Rare: { frame: 'rare', outline: '#6b4b00' },
+  Status: { frame: 'status', outline: '#4f522f' },
   Token: { frame: 'common', outline: '#4d4b40' },
   Uncommon: { frame: 'uncommon', outline: '#005c75' },
 };
 
-export const RARITIES = ['Basic', 'Common', 'Uncommon', 'Rare', 'Ancient', 'Event', 'Token'] as const;
+export const RARITIES = ['Basic', 'Common', 'Uncommon', 'Rare', 'Ancient', 'Event', 'Token', 'Status'] as const;
 
 export const RARITY_NAME: Record<Rarity, string> = {
   Ancient: 'Ancient',
@@ -29,6 +30,7 @@ export const RARITY_NAME: Record<Rarity, string> = {
   Common: 'Common',
   Event: 'Event',
   Rare: 'Rare',
+  Status: 'Status',
   Token: 'Token',
   Uncommon: 'Uncommon',
 };
@@ -39,6 +41,7 @@ export const inPool = (rarity: string): rarity is PoolRarity => (POOL_RARITIES a
 
 export const PARTNER_MODS = [
   { item: '3749294247', name: 'The Hero Expansion', tag: 'Hero' },
+  { item: '3771076270', name: 'Reshuffled Spire', tag: 'Reshuffled Spire' },
   { item: '3747492675', name: 'Ancients Awakened', tag: 'Ancients Awakened' },
 ];
 
@@ -59,7 +62,7 @@ export const cardGroup = (info: CardInfo) => info.tags.find((tag) => partnerMod(
 
 export const LAST_IN_GROUP = new Set(['ALCHEMIST-COMPOUND_MIX']);
 
-export const TYPES = ['Attack', 'Skill', 'Power'] as const;
+export const TYPES = ['Attack', 'Skill', 'Power', 'Status'] as const;
 
 export interface CardKeys {
   cost: string;
@@ -70,7 +73,7 @@ export interface CardKeys {
 const COMPENDIUM_RANKS = [
   ['rarity', (card: CardKeys) => (RARITIES as readonly string[]).indexOf(card.rarity)],
   ['type', (card: CardKeys) => (TYPES as readonly string[]).indexOf(card.type)],
-  ['cost', (card: CardKeys) => (card.cost === 'X' ? 0 : Number(card.cost))],
+  ['cost', (card: CardKeys) => (card.cost === 'X' ? 0 : card.cost === 'Unplayable' ? -1 : Number(card.cost))],
 ] as const;
 export type CompendiumKey = (typeof COMPENDIUM_RANKS)[number][0];
 

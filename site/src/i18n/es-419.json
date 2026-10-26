@@ -1,6 +1,6 @@
 {
   "readme": {
-    "10d2ae3745c2": "- **Veneno propio**: El Alquimista se envenena a propósito. Algunos ataques infligen daño adicional según tu veneno, y otras cartas reaccionan a la frecuencia con la que se activa tu veneno.\n- **Antitoxina**: Una reserva que absorbe el daño que te infligiría tu propio veneno. Se reduce en 1 al comienzo de tu turno.\n- **Mezcla**: Son cartas simbólicas parecidas a las pociones que puedes crear en combate. Las Mezclas básicas son Explosiva (daño), Almibarada (bloqueo) y Vigorizante (robo de cartas); las especiales son Humeante (corrupción), Acre (debilitamiento y vulnerabilidad) y Chispeante (energía).\n- **Fermentación**: Estas cartas tienen retención y ganan potencia por cada turno que pasan en tu mano.\n- **Preparar**: Esta opción del punto de descanso te permite obtener 1 de 8 pociones únicas que solo se consiguen de esta forma. Por la calidad de estas preparaciones, el Comerciante está dispuesto a comprártelas por 150 de oro.",
+    "7b34f128fe70": "- **Veneno propio**: El Alquimista se envenena a propósito. Algunos ataques infligen daño adicional según tu veneno, y otras cartas reaccionan a la frecuencia con la que se activa tu veneno.\n- **Antitoxina**: Una reserva que absorbe el daño que te infligiría tu propio veneno. Se reduce en 1 al comienzo de tu turno.\n- **Mezcla**: Son cartas simbólicas parecidas a las pociones que puedes crear en combate. Las Mezclas básicas son Explosiva (daño), Almibarada (bloqueo) y Vigorizante (robo de cartas); las volátiles son Humeante (corrupción), Acre (debilitamiento y vulnerabilidad) y Chispeante (energía).\n- **Fermentación**: Estas cartas tienen retención y ganan potencia por cada turno que pasan en tu mano.\n- **Preparar**: Esta opción del punto de descanso te permite obtener 1 de 8 pociones únicas que solo se consiguen de esta forma. Por la calidad de estas preparaciones, el Comerciante está dispuesto a comprártelas por 150 de oro.",
     "b40936bd23dc": "Este mod todavía está en desarrollo y su contenido puede cambiar, ¡pero los comentarios son bienvenidos! El mejor lugar para hablar del mod es el servidor oficial de Discord de Slay the Spire, en la [publicación de The Alchemist del canal #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nPor ahora, las traducciones se generan automáticamente. El plan es contratar a traductores nativos cuando el contenido deje de cambiar tan seguido. Mientras tanto, ¡se agradecen las correcciones! Si ves un error en tu idioma, contáctame o abre un pull request en GitHub."
   },
   "site": {
@@ -60,6 +60,7 @@
     "Event Attack": "Ataque de evento",
     "Event Skill": "Habilidad de evento",
     "Every release of The Alchemist, newest first.": "Todas las versiones de El Alquimista, de la más reciente a la más antigua.",
+    "Ferment": "Fermentación",
     "Filter and sort": "Filtrar y ordenar",
     "Filters": "Filtros",
     "Follow them in a feed reader": "Síguelas con un lector de feeds",
@@ -93,7 +94,6 @@
     "More cards": "Más cartas",
     "Multiplayer only": "Solo en modo cooperativo",
     "Name": "Nombre",
-    "Needs {mod} installed as well.": "Requiere tener también {mod} instalado.",
     "Next screenshot": "Siguiente captura",
     "No cards match.": "Ninguna carta coincide.",
     "No connection": "No hay conexión",
@@ -102,7 +102,6 @@
     "Not found": "Página no encontrada",
     "Nothing here": "Aquí no hay nada",
     "Offline": "Sin conexión",
-    "Only in runs with {mod} installed as well.": "Solo en partidas que también tengan {mod} instalado.",
     "Overview": "Resumen",
     "Patch notes": "Notas del parche",
     "Picked at Brew": "Elegida al Preparar",
@@ -163,6 +162,7 @@
       "other": "Estadísticas de {n} partidas de {span}, en todas las ascensiones."
     },
     "Stats from {runs} runs by {players} players, updated every day.": "Estadísticas de {runs} partidas de {players} jugadores, actualizadas a diario.",
+    "Status": "Estado",
     "Steam Workshop, beta branch": "Steam Workshop, rama beta",
     "Steam Workshop, public branch": "Steam Workshop, rama pública",
     "Switch {name} between base and upgraded": "Alternar {name} entre la versión base y la mejorada",
@@ -182,10 +182,7 @@
     "Thrown away": "Descartada",
     "Token Attack": "Ataque simbólico",
     "Token Skill": "Habilidad simbólica",
-    "Translated into {n} languages": {
-      "one": "Traducido a {n} idioma",
-      "other": "Traducido a {n} idiomas"
-    },
+    "Transform": "Transformación",
     "Two or more copies": "Dos o más copias",
     "Type": "Tipo",
     "Uncommon Attack": "Ataque infrecuente",
@@ -308,7 +305,6 @@
     "All runs together: {rate}": "Todas las partidas juntas: {rate}",
     "All versions": "Todas las versiones",
     "Ancient choices": "Ofertas de los Ancestrales",
-    "Antitoxin": "Antitoxina",
     "Antitoxin peak": "Pico de antitoxina",
     "Any pool": "Cualquier reserva",
     "Ascension": "Ascensión",
@@ -355,7 +351,6 @@
     "Ends the run": "Termina la partida",
     "Every card": "Todas las cartas",
     "Exhausted first, by Ethereal or another card": "Agotadas antes, por evanescencia o por otra carta",
-    "Ferment": "Fermentación",
     "Ferment plays": "Cartas de fermentación jugadas",
     "Fermented": "Fermentado",
     "Fight": "Combate",
@@ -392,7 +387,6 @@
     "Lost to decay": "Perdida por desgaste",
     "Lost to own Poison": "Perdidas por veneno propio",
     "Middle fight": "Combate del medio",
-    "Mix": "Mezcla",
     "Mixes": "Mezclas",
     "Mixes per run": "Mezclas por partida",
     "Mixes played": "Mezclas jugadas",
@@ -432,7 +426,6 @@
     "Players": "Jugadores",
     "Plays": "Jugadas",
     "Playstyles": "Estilos de juego",
-    "Poison": "Veneno",
     "Poison damage the Alchemist took, split by what Antitoxin absorbed and what hit HP.": "El daño de veneno que recibió El Alquimista, dividido entre lo que absorbió la antitoxina y lo que llegó a los PV.",
     "Poison dealt": "Veneno aplicado",
     "Poison peak": "Pico de veneno",
@@ -490,7 +483,6 @@
     "To": "Hasta",
     "Toughest fights": "Los combates más difíciles",
     "Trailing their peers": "Por detrás de sus pares",
-    "Transform": "Transformación",
     "Turns": "Turnos",
     "Turns fermented": "Turnos fermentados",
     "Turns fermented per run": "Turnos fermentados por partida",

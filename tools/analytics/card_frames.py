@@ -40,8 +40,10 @@ RARITY_TINTS = {
     "rare": (0.563, 1.198, 1.14),
     "event": (0.875, 0.85, 0.9),
 }
+COLORLESS_POOL_TINT = (1.0, 0.0, 1.2)
+STATUS_TINT = (0.634, 0.35, 0.8)
 TYPES = ["attack", "skill", "power"]
-TYPE_LABELS = {"attack": "Attack", "skill": "Skill", "power": "Power"}
+TYPE_LABELS = {"attack": "Attack", "skill": "Skill", "power": "Power", "status": "Status"}
 
 # Atlas regions: (page, x, y, w, h, margin) from images/atlases/ui_atlas.sprites/card/*.tres
 FRAMES = {"attack": (0, 1320, 83, 598, 844), "skill": (0, 1221, 929, 598, 844), "power": (0, 621, 929, 598, 844)}
@@ -122,10 +124,23 @@ def canvas() -> Image.Image:
     return Image.new("RGBA", ((RIGHT - LEFT) * SCALE, (BOTTOM - TOP) * SCALE))
 
 
-def add_plaque_and_orb(card: Image.Image, plaque: Image.Image, width: float, orb: Image.Image):
+def add_plaque(card: Image.Image, plaque: Image.Image, width: float):
     half = width / 2
     place(card, nine_patch(plaque, round(width * SCALE), 26, 24), -half, 1, half, 38, fit="fill")
+
+
+def add_orb(card: Image.Image, orb: Image.Image):
     place(card, orb, -166, -227, -102, -163)
+
+
+def framed_card(frame: Image.Image, border: Image.Image, banner: Image.Image, plaque: Image.Image,
+                plaque_width: float) -> Image.Image:
+    card = canvas()
+    place(card, frame, -150, -211, 150, 211)
+    place(card, border, -137.5, -164, 137.5, 46)
+    place(card, banner, -163, -207, 164, -124, fit="cover")
+    add_plaque(card, plaque, plaque_width)
+    return card
 
 
 def build(game: Path, out: Path) -> list[Path]:
@@ -145,11 +160,9 @@ def build(game: Path, out: Path) -> list[Path]:
     for card_type in TYPES:
         frame = tint(region(FRAMES[card_type]), POOL_TINT)
         for rarity, hsv in RARITY_TINTS.items():
-            card = canvas()
-            place(card, frame, -150, -211, 150, 211)
-            place(card, tint(region(BORDERS[card_type]), hsv), -137.5, -164, 137.5, 46)
-            place(card, tint(banner, hsv), -163, -207, 164, -124, fit="cover")
-            add_plaque_and_orb(card, tint(plaque, hsv), plaque_width(game, card_type), orb)
+            card = framed_card(frame, tint(region(BORDERS[card_type]), hsv), tint(banner, hsv), tint(plaque, hsv),
+                               plaque_width(game, card_type))
+            add_orb(card, orb)
             save(card, f"{card_type}_{rarity}")
 
         card = canvas()
@@ -158,8 +171,13 @@ def build(game: Path, out: Path) -> list[Path]:
         text_bg = Image.merge("RGBA", (*Image.new("RGB", text_bg.size).split(), alpha))
         place(card, text_bg, -133, -22, 131, 181)
         place(card, region(ANCIENT_BANNER), -163, -207, 164, -124, fit="cover")
-        add_plaque_and_orb(card, tint(plaque, (0.0, 0.2, 0.9)), plaque_width(game, card_type), orb)
+        add_plaque(card, tint(plaque, (0.0, 0.2, 0.9)), plaque_width(game, card_type))
+        add_orb(card, orb)
         save(card, f"{card_type}_ancient")
+
+    status = framed_card(tint(region(FRAMES["skill"]), COLORLESS_POOL_TINT), tint(region(BORDERS["skill"]), STATUS_TINT),
+                         tint(banner, STATUS_TINT), tint(plaque, STATUS_TINT), plaque_width(game, "status"))
+    save(status, "status_status")
     return written
 
 

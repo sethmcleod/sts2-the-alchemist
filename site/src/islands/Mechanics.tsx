@@ -4,6 +4,7 @@ import StackBar from '../components/charts/StackBar';
 import Stats from '../components/charts/Stats';
 import SectionHeading from '../components/SectionHeading';
 import type { Lang, LangInit } from '../lib/lang';
+import { themeName } from '../lib/library';
 import { type Histogram, type Icons, mechanics, type MechanicsModel } from '../lib/views/mechanics';
 import Filters, { type FilterOptions } from './Filters';
 import { useLang } from './useLang';
@@ -120,7 +121,7 @@ export default function Mechanics({ icons, initial, locale, options }: Props) {
       </div>
 
       <SectionHeading class="section-title" id="ferment">
-        {l.t('Ferment')}
+        {themeName(l, 'Ferment')}
       </SectionHeading>
       <Stats items={model.ferment.stats} />
       <div class="stats-grid">
@@ -154,7 +155,7 @@ export default function Mechanics({ icons, initial, locale, options }: Props) {
       </div>
 
       <SectionHeading class="section-title" id="poison">
-        {l.game?.words.Poison ?? l.t('Poison')}
+        {themeName(l, 'Poison')}
       </SectionHeading>
       <Stats items={model.poison.stats} />
       <div class="stats-grid">
@@ -179,7 +180,7 @@ export default function Mechanics({ icons, initial, locale, options }: Props) {
       </div>
 
       <SectionHeading class="section-title" id="antitoxin">
-        {l.t('Antitoxin')}
+        {themeName(l, 'Antitoxin')}
       </SectionHeading>
       <Stats items={model.antitoxin.stats} />
       <div class="stats-grid">
