@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Fumigate, Spatter, Spores, Sweat It Out, Water Down and Wormwood sometimes getting stuck on screen when played
+
 ## [0.15.0] - 2026-10-26
 
 ### Added

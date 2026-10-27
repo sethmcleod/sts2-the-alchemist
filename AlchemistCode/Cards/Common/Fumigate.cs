@@ -23,7 +23,7 @@ public class Fumigate : AlchemistCard
             .WithAttackerAnim("Cast", Owner.Character.CastAnimDelay)
             .Execute(choiceContext);
         if (CombatState == null) return;
-        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
+        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
         {
             PoisonSplash(enemy);
             await PowerCmd.Apply<PoisonPower>(choiceContext, enemy,

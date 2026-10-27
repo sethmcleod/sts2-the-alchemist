@@ -21,7 +21,7 @@ public class WaterDown : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;
-        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
+        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
         {
             await PowerCmd.Apply<WaterDownPower>(choiceContext, enemy,
                 DynamicVars["StrengthLoss"].IntValue, Owner.Creature, this);
