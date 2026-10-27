@@ -1,5 +1,6 @@
 using Alchemist.AlchemistCode.Compat;
 using System;
+using System.Collections.Concurrent;
 using System.Reflection;
 using HarmonyLib;
 using BaseLib.Abstracts;
@@ -61,13 +62,22 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     private string PortraitFile => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png";
 
-    public override string CustomPortraitPath => PortraitFile.CardImageOrBetaPath();
+    private static readonly ConcurrentDictionary<string, CardArt> ArtByEntry = new();
+
+    private CardArt Art =>
+        ArtByEntry.GetOrAdd(Id.Entry, static entry => $"{entry.RemovePrefix().ToLowerInvariant()}.png".ResolveCardArt());
+
+    internal bool ShowsBetaArt => BetaArtChoices.ShowsBeta(Id.Entry);
+
+    internal bool HasFinalAndBetaArt => Art.HasFinalAndBeta;
+
+    public override string CustomPortraitPath => Art.Portrait(ShowsBetaArt);
     // With the beta fallback too: the Timeline epoch slots and the generated-card previews read
     // Portrait directly, and without it every card still on beta art shows the generic back there
-    public override string PortraitPath => PortraitFile.CardImageOrBetaPath();
+    public override string PortraitPath => Art.Portrait(ShowsBetaArt);
     public override string BetaPortraitPath => $"beta/{PortraitFile}".CardImagePath();
     // The inspect screen swaps this in over the portrait, see CardArtPatches
-    internal string? BigPortraitPath => PortraitFile.BigCardImagePathOrNull();
+    internal string? BigPortraitPath => Art.BigPortrait(ShowsBetaArt);
 
     // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state
     internal bool IsEnchanted => Enchantment != null;

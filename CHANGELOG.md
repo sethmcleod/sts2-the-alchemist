@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added a Beta Art toggle to the card inspect screen for cards with final art
+
 ### Fixed
 
 - Fixed Fumigate, Spatter, Spores, Sweat It Out, Water Down and Wormwood sometimes getting stuck on screen when played
