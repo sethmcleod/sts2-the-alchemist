@@ -9,6 +9,11 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 - Added a Beta Art toggle to the card inspect screen for cards with final art
 
+### Changed
+
+- Nerfed Mud Pack card (Hero Expansion): Block decreased from 7 -> 6
+- Nerfed Secret Sauce card (Hero Expansion): it now adds a random basic Mix (Mix+) instead of a chosen one
+
 ### Fixed
 
 - Fixed Fumigate, Spatter, Spores, Sweat It Out, Water Down and Wormwood sometimes getting stuck on screen when played
@@ -35,11 +40,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Buffed Wormwood card: Poison increased from 2(3) -> 3(4)
 - Changed Fizz card: it now adds a Fuming Mix (Fuming Mix+) instead of a Bursting Mix (Bursting Mix+)
 - Nerfed Bounce Back card (Hero Expansion): Block decreased from 7(9) -> 6(8)
-- Nerfed Mud Pack card (Hero Expansion): Block decreased from 7 -> 6
 - Renamed special Mixes (Fuming, Acrid and Sparkling) to volatile Mixes
 - Reworked Pick and Choose card: "Scry 2 (3). Draw 1 card. Discard 1 card. Gain 2 (3) Antitoxin."
 - Reworked Rerun card: "This turn, your next card is played an extra time. Gain 5 (3) Poison."
-- Reworked Secret Sauce card (Hero Expansion): "Add a random basic Mix (Mix+) into your Hand. Enchant an Attack in your Hand with Laced."
+- Reworked Secret Sauce card (Hero Expansion): "Choose a basic Mix (Mix+) to add into your Hand. Enchant an Attack in your Hand with Laced."
 
 ### Fixed
 
