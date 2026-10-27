@@ -137,9 +137,9 @@ def sheet_markup(text: str, gold: set[str]) -> str:
 
 
 def costs(cost: str) -> list[str]:
-    """ "2 (1)" -> ["2", "1"]: the cost before and after the upgrade."""
-    base, _, upgraded = cost.partition(" (")
-    return [base, upgraded.rstrip(")") or base]
+    """ "2(1)" -> ["2", "1"]: the cost before and after the upgrade."""
+    m = re.fullmatch(r"(.+?) ?\((.+)\)", cost)
+    return [m[1], m[2]] if m else [cost, cost]
 
 
 def repo_path(path: Path) -> str | None:

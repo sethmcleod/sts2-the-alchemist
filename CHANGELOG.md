@@ -23,11 +23,11 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Nerfed Overbrew card: it now Exhausts
 - Nerfed Radiant Flask relic: Antitoxin at the start of each combat decreased from 10 -> 8
 - Nerfed Secret Sauce card (Hero Expansion): it now adds a random basic Mix (Mix+) instead of a chosen one
-- Reworked Backfire card: "Deal 4 (6) damage. If the enemy has Poison, apply 1 (2) Weak."
-- Reworked Brine card: "Gain 4 Antitoxin. Apply 2 (3) Weak to ALL enemies." Cost increased from 1 -> 2
-- Reworked Endure card: "Gain 6 (9) Block. Gain 3 Antitoxin. Draw 1 card."
+- Reworked Backfire card: "Deal 4(6) damage. If the enemy has Poison, apply 1(2) Weak."
+- Reworked Brine card: "Gain 4 Antitoxin. Apply 2(3) Weak to ALL enemies." Cost increased from 1 -> 2
+- Reworked Endure card: "Gain 6(9) Block. Gain 3 Antitoxin. Draw 1 card."
 - Reworked Lilypad Cloak relic: "Whenever an enemy's Poison triggers, gain 2 Block."
-- Reworked Smelling Salts card: "Gain 1 (2) Energy. Next turn, gain 1 Energy. Exhaust." Cost decreased from 1 -> 0
+- Reworked Smelling Salts card: "Gain 1(2) Energy. Next turn, gain 1 Energy. Exhaust." Cost decreased from 1 -> 0
 
 ### Removed
 
