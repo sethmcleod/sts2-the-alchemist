@@ -7,6 +7,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ### Added
 
+- Added an animation for Mercurial Form power
 - Added a Beta Art toggle to the card inspect screen for cards with final art
 
 ### Changed
