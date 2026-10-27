@@ -2,7 +2,6 @@ using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
@@ -14,18 +13,15 @@ public class Endure : AlchemistCard
     public Endure() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithBlock(6, 3);
-        WithVar("antitoxin", 3, 1);
+        WithVar("antitoxin", 3, 0);
         WithCards(1);
         WithTip(typeof(AntitoxinPower));
-        WithTip(typeof(PoisonPower));
     }
-
-    protected override bool ConditionalGlow => Dose(this) > 0;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
         await CommonActions.ApplySelf<AntitoxinPower>(choiceContext, this, DynamicVars["antitoxin"].IntValue);
-        if (Dose(this) > 0) await CommonActions.Draw(this, choiceContext);
+        await CommonActions.Draw(this, choiceContext);
     }
 }

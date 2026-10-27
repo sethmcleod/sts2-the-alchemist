@@ -13,22 +13,19 @@ namespace Alchemist.AlchemistCode.Relics;
 
 public class LilypadCloak : AlchemistRelic
 {
-    private const int Block = 3;
+    private const int Block = 2;
 
     public override RelicRarity Rarity => RelicRarity.Common;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
-    // Reads the pre-absorb tick (AntitoxinRules.TickAbsorb), so Antitoxin defending you does not
-    // also cancel what taking the Poison was supposed to pay
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target != Owner.Creature) return;
-        var tick = result.UnblockedDamage + AntitoxinRules.TickAbsorb(Owner.Creature);
-        if (tick <= 0) return;
-        if (!AntitoxinRules.IsPoisonTick(Owner.Creature, tick, props, dealer, cardSource)) return;
+        if (Owner.Creature.CombatState is not { } combat) return;
+        if (!combat.GetOpponentsOf(Owner.Creature).Contains(target)) return;
+        if (!AntitoxinRules.IsPoisonTick(target, result.UnblockedDamage, props, dealer, cardSource)) return;
         Flash();
         await CreatureCmd.GainBlock(Owner.Creature, Block, ValueProp.Unpowered, null);
     }

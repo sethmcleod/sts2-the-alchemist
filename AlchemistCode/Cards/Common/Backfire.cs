@@ -16,12 +16,12 @@ public class Backfire : AlchemistCard
         WithTip(typeof(PoisonPower));
     }
 
-    protected override bool ConditionalGlow => Dose(this) > 0;
+    protected override bool ConditionalGlow => AllEnemiesPoisoned;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_slime_impact")).Execute(choiceContext);
-        if (Dose(this) <= 0 || play.Target is not { IsAlive: true } target) return;
+        if (play.Target is not { IsAlive: true } target || !Poisoned(target)) return;
         await PowerCmd.Apply<WeakPower>(choiceContext, target, DynamicVars.Weak.IntValue, Owner.Creature, this);
     }
 }

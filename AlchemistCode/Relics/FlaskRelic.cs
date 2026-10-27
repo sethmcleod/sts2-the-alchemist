@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using Alchemist.AlchemistCode.Powers;
 using Alchemist.AlchemistCode.Potions;
@@ -23,6 +24,8 @@ public abstract class FlaskRelic : AlchemistRelic
     protected virtual bool UpgradedMix => false;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => new[] { new DynamicVar("Antitoxin", Antitoxin) };
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { AlchemistTips.Brew, HoverTipFactory.FromPower<AntitoxinPower>(), AlchemistTips.MixHeader };

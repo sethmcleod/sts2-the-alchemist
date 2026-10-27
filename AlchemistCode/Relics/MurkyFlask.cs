@@ -4,7 +4,7 @@ namespace Alchemist.AlchemistCode.Relics;
 
 public class MurkyFlask : FlaskRelic
 {
-    protected override int Antitoxin => 5;
+    protected override int Antitoxin => 4;
 
     // Without this, BaseLib falls back to Circlet for the Touch of Orobas starter upgrade
     public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<RadiantFlask>();

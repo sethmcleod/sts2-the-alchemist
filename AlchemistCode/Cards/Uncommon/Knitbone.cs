@@ -13,7 +13,7 @@ public class Knitbone : AlchemistCard
 
     public Knitbone() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCalculatedBlock(5, 1, static (card, _) => Mixing.PlayedThisCombat(card.Owner), ValueProp.Move, 0, 1);
+        WithCalculatedBlock(5, 1, static (card, _) => Mixing.PlayedThisCombat(card.Owner), ValueProp.Move, 3, 0);
         WithTips(_ => Mixing.MixRefTips());
     }
 

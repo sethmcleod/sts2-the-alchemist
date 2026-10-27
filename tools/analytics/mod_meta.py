@@ -67,6 +67,7 @@ UPGRADED_NUMBER_RE = re.compile(r"\((\d+)\)")
 RARITY_PROP_RE = re.compile(r"override\s+(?:Relic|Potion)Rarity\s+Rarity\s*=>\s*"
                             r"(?:Relic|Potion)Rarity\.(?P<rarity>\w+)")
 BASE_CLASS_RE = re.compile(r"class\s+(?P<name>\w+)\s*(?:\([^)]*\))?\s*:\s*(?P<base>\w+)")
+INT_PROP_RE = re.compile(r"override\s+int\s+(?P<name>\w+)\s*=>\s*(?P<value>\d+)\s*;")
 
 
 def snake(class_name: str) -> str:
@@ -205,23 +206,30 @@ def manifest() -> dict:
     return json.loads((REPO / "Alchemist.json").read_text(encoding="utf-8-sig"))
 
 
-def fill_in(text: str) -> str:
+def fill_in(text: str, values: dict[str, str] | None = None) -> str:
     """Loc text with its SmartFormat fields filled in for a page that has no amount to show: an amount
     reads X, a plural or a choice takes its last (many) form, a condition its last (not upgraded)
     branch, and an energy field becomes [energy]."""
     def field(body: str) -> str:
         name, _, rest = body.partition(":")
+        if not rest and values and name in values:
+            return values[name]
         if plural := card_text.PLURAL_RE.fullmatch(rest) or card_text.CHOOSE_RE.fullmatch(rest):
-            return fill_in(card_text.options(plural["forms"])[-1].replace("{}", "X"))
+            return fill_in(card_text.options(plural["forms"])[-1].replace("{}", "X"), values)
         if rest.startswith("cond:"):
             options = card_text.options(rest[5:].split("?", 1)[-1])
-            return fill_in(options[-1] if len(options) > 1 else "")
+            return fill_in(options[-1] if len(options) > 1 else "", values)
         if rest.startswith("energyIcons"):
             count = re.search(r"\((\d*)\)", rest)
             return "[energy]" if count and count[1] == "1" or name == "energyPrefix" else "X [energy]"
         return "X"
 
     return "".join(field(body) if kind == "field" else body for kind, body in card_text.parts(text))
+
+
+def class_int_values(folder: str) -> dict[str, dict[str, str]]:
+    return {entry_for(path.stem): {m["name"]: m["value"] for m in INT_PROP_RE.finditer(path.read_text(encoding="utf-8"))}
+            for path in (CODE / folder).glob("*.cs")}
 
 
 def class_rarities(folder: str) -> dict[str, str]:
@@ -248,6 +256,7 @@ def items(table: str, folder: str | None, lang: str = "eng") -> dict[str, dict]:
     loc = loc_table(table, lang)
     rarities = class_rarities(folder) if folder else {}
     by_entry = {entry_for(name): rarity for name, rarity in rarities.items()}
+    values = class_int_values(folder) if folder else {}
     found = {}
     for entry, name in titles(table, lang=lang).items():
         text = loc.get(f"{entry}.description")
@@ -256,7 +265,7 @@ def items(table: str, folder: str | None, lang: str = "eng") -> dict[str, dict]:
         found[entry] = {
             "name": name,
             "rarity": by_entry.get(entry),
-            "text": fill_in(text),
+            "text": fill_in(text, values.get(entry)),
             "flavor": plain(loc[f"{entry}.flavor"]) if f"{entry}.flavor" in loc else None,
             "icon": repo_path(IMAGES / table / (entry.removeprefix(PREFIX).lower() + ".png")),
         }

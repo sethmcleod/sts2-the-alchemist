@@ -9,11 +9,29 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 - Added an animation for Mercurial Form power
 - Added a Beta Art toggle to the card inspect screen for cards with final art
+- Added Restock card: "At the end of your turn, shuffle a random basic Mix from your Exhaust Pile into your Draw Pile." Cost 2(1). It replaces Fresh Batch
 
 ### Changed
 
+- Buffed Coup de Grace card: additional damage changed from 4(5) for every 4 Poison -> 3 for every 2 Poison
+- Buffed Forked Tongue card: damage increased from 4(6) -> 5(7)
+- Buffed Spatter card: Poison increased from 2 -> 3
+- Changed Knitbone card: Block increased from 5 -> 5(8) and additional Block for each Mix decreased from 1(2) -> 1
+- Nerfed Blend card: Block decreased from 5(8) -> 4(7)
 - Nerfed Mud Pack card (Hero Expansion): Block decreased from 7 -> 6
+- Nerfed Murky Flask relic: Antitoxin at the start of each combat decreased from 5 -> 4
+- Nerfed Overbrew card: it now Exhausts
+- Nerfed Radiant Flask relic: Antitoxin at the start of each combat decreased from 10 -> 8
 - Nerfed Secret Sauce card (Hero Expansion): it now adds a random basic Mix (Mix+) instead of a chosen one
+- Reworked Backfire card: "Deal 4 (6) damage. If the enemy has Poison, apply 1 (2) Weak."
+- Reworked Brine card: "Gain 4 Antitoxin. Apply 2 (3) Weak to ALL enemies." Cost increased from 1 -> 2
+- Reworked Endure card: "Gain 6 (9) Block. Gain 3 Antitoxin. Draw 1 card."
+- Reworked Lilypad Cloak relic: "Whenever an enemy's Poison triggers, gain 2 Block."
+- Reworked Smelling Salts card: "Gain 1 (2) Energy. Next turn, gain 1 Energy. Exhaust." Cost decreased from 1 -> 0
+
+### Removed
+
+- Removed Fresh Batch card, replaced with Restock
 
 ### Fixed
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cngekweo1ua8d"
-path="res://.godot/imported/smelling_salts_power.png-9816d40fb2a4320c479952449403eeb8.ctex"
+uid="uid://graj2w0lj77"
+path="res://.godot/imported/restock.png-fe0c8f46cdc48af8bc5d1d0f99af56db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/smelling_salts_power.png"
-dest_files=["res://.godot/imported/smelling_salts_power.png-9816d40fb2a4320c479952449403eeb8.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/restock.png"
+dest_files=["res://.godot/imported/restock.png-fe0c8f46cdc48af8bc5d1d0f99af56db.ctex"]
 
 [params]
 
