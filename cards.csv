@@ -12,7 +12,7 @@ Bonk,Uncommon,Attack,2,Deal 10(12) damage. Deals 3(4) additional damage for each
 Bottoms Up,"Rare, Multiplayer",Power,1,"Whenever you gain Poison, ALL other players gain 1(2) Block for each Poison gained."
 Bounce Back,"Uncommon, Hero",Skill,1,"Gain 6(8) Block. Gain 1 Poison. At the start of your next turn, return this to your Hand."
 Brace,Common,Skill,1,"Gain 7(9) Block. Whenever you are attacked this turn, apply 3(4) Poison to the attacker."
-Brine,Uncommon,Skill,2,Gain 4 Antitoxin. Apply 2(3) Weak to ALL enemies.
+Brine,Uncommon,Skill,3(2),Gain 4 Antitoxin. Apply 2 Weak to ALL enemies.
 Bursting Mix,Token,Attack,0,Deal 6(9) damage. Exhaust.
 Caustic Strike,Common,Attack,1,Retain. Ferment. Deal 6(8) damage. Apply 2 Poison. Applies 1(2) additional Poison for each turn Fermented.
 Chrysopoeia,Rare,Skill,0,Gain 1(2) Energy. Gain an additional Energy for every 4 Poison you have. Lose all Poison. Exhaust.
@@ -77,12 +77,12 @@ Preserve,"Uncommon, Multiplayer",Skill,0,"Choose another player. Their Block is 
 Proof,Common,Attack,1,Gain 3(4) Antitoxin. Deal damage equal to your Antitoxin.
 Puff Up,Uncommon,Skill,2,Retain. Ferment. Gain 10(13) Block. Gains 2(3) additional Block for each turn Fermented. Exhaust.
 Puncture,Common,Attack,1,"Deal 4(5) damage twice. If the enemy has Poison, apply 2(3) Vulnerable."
-Quench,Uncommon,Skill,1,Gain 4(6) Antitoxin. Gain Block equal to double your Antitoxin. Exhaust.
+Quench,Uncommon,Skill,1,Gain 6(9) Antitoxin. Gain Block equal to your Antitoxin. Exhaust.
 Reconstitute,"Event, Hero",Skill,0,Gain 2 Poison. Put a card from your Discard Pile into your Hand and Upgrade it. Exhaust. (Reconstitute+ loses Exhaust)
 Refine,Rare,Power,1(0),"Whenever you add a Mix into your Hand, upgrade it. If already upgraded, it gains Replay."
 Rerun,Rare,Skill,1,"This turn, your next card is played an extra time. Gain 5(3) Poison."
 Resolve,Uncommon,Power,1,Retain. Ferment. Gain 1 Strength. Gains 1(2) additional Strength for each turn Fermented.
-Restock,Uncommon,Power,2(1),"At the end of your turn, shuffle a random basic Mix from your Exhaust Pile into your Draw Pile."
+Restock,Uncommon,Power,2(1),"At the end of your turn, shuffle a random Mix from your Exhaust Pile into your Draw Pile."
 Ripening,Uncommon,Power,1,"At the start of your turn, if you have a Ferment card in your Hand, draw 1 additional card. (Ripening+ gains Innate)"
 Rolling Boil,Rare,Attack,2,Retain. Ferment. Deal 8(10) damage. Deals 3(4) additional damage for each turn Fermented by ALL Ferment cards in your Hand.
 Runoff,Uncommon,Power,2(1),"Whenever you create a card, apply 2 Poison to ALL enemies."
@@ -104,7 +104,7 @@ Taste Test,Common,Skill,1,Scry 2(3). Draw 1 card. Choose a Ferment card in your 
 Tempered,Rare,Skill,2,Gain 9(12) Block. Gains 1(2) additional Block for each card in your Exhaust Pile.
 The Steeped Blade,"Event, Hero",Attack,1,"Retain. Ferment. Deal 9(12) damage. This card Ferments 1. Whenever this card Ferments, apply Poison to ALL enemies equal to its Fermentation."
 Thicken,Common,Skill,1,Gain 4(5) Block. Add a Syrupy Mix into your Hand. It gains Retain. (Thicken+ adds a Syrupy Mix+)
-Toughen,Uncommon,Skill,1,Gain 5(7) Block. Gains 2 additional Block for each Poison you have.
+Toughen,Uncommon,Skill,1,Gain 8(10) Block. Gains 1 additional Block for each Poison you have.
 Toxic Aura,"Rare, Reshuffled Spire",Power,2(1),"Whenever your Poison triggers, deal that much damage to ALL enemies."
 Transmute,Rare,Skill,2(1),Transform a card in your Hand into a copy of another card in your Hand. Exhaust.
 Turn Sour,"Uncommon, Reshuffled Spire",Skill,1,Retain. Ferment. Apply 1(2) Weak. Apply 1(2) Vulnerable. Applies 1 additional Weak and Vulnerable for each turn Fermented. Exhaust.
