@@ -20,6 +20,9 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Buffed Spatter card: Poison increased from 2 -> 3
 - Changed Knitbone card: Block increased from 5 -> 5(8) and additional Block for each Mix decreased from 1(2) -> 1
 - Changed Toughen card: Block increased from 5(7) -> 8(10) and additional Block for each Poison decreased from 2 -> 1
+- Changed the Antitoxin badge thresholds: 30 / 50 / 80 -> 40 / 60 / 80
+- Changed the Mixes badge thresholds: 60 / 120 / 200 -> 80 / 160 / 240
+- Changed the Potion Sale badge thresholds: 2 / 4 / 6 -> 3 / 5 / 7
 - Nerfed Blend card: Block decreased from 5(8) -> 4(7)
 - Nerfed Lash Out card: damage decreased from 3(5) -> 3(4)
 - Nerfed Mud Pack card (Hero Expansion): Block decreased from 7 -> 6

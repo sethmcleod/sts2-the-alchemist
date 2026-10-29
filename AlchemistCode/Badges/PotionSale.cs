@@ -8,10 +8,9 @@ namespace Alchemist.AlchemistCode.Badges;
 
 public sealed class PotionSale() : CustomBadge(requiresWin: false, multiplayerOnly: false)
 {
-    // One sellable potion per Brew at most, so the bar sits lower than the old 3/6/9
-    private const int BronzeSales = 2;
-    private const int SilverSales = 4;
-    private const int GoldSales = 6;
+    private const int BronzeSales = 3;
+    private const int SilverSales = 5;
+    private const int GoldSales = 7;
 
     public override string CustomBadgeIconPath => "badge_potion_sale.png".BadgeImagePath();
 
