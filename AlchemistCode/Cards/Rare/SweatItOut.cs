@@ -35,7 +35,10 @@ public class SweatItOut : AlchemistCard
             DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
         var poison = Owner.Creature.GetPowerAmount<PoisonPower>();
         if (poison <= 0) return;
-        foreach (var enemy in CombatState!.Enemies.Where(e => e.IsAlive).ToList())
+        foreach (var enemy in CombatState!.HittableEnemies)
+        {
+            PoisonSplash(enemy);
             await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, poison, Owner.Creature, this);
+        }
     }
 }

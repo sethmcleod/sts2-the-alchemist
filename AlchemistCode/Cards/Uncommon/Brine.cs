@@ -9,10 +9,9 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Antitoxin)]
 public class Brine : AlchemistCard
 {
-    public Brine() : base(3, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
+    public Brine() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
     {
-        WithCostUpgradeBy(-1);
-        WithVar("antitoxin", 4, 0);
+        WithVar("antitoxin", 4, 2);
         WithPower<WeakPower>(2, 0);
         WithTip(typeof(AntitoxinPower));
     }

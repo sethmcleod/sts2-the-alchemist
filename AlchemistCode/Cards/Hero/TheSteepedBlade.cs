@@ -39,7 +39,7 @@ public class TheSteepedBlade : AlchemistHeroCard
     protected override async Task OnFermented(PlayerChoiceContext choiceContext, int turns)
     {
         if (CombatState == null) return;
-        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
+        foreach (var enemy in CombatState.HittableEnemies)
         {
             PoisonSplash(enemy);
             await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, FermentTurns, Owner.Creature, this);

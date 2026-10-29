@@ -29,7 +29,7 @@ public class Spatter : AlchemistCard
             new CardSelectorPrefs(DiscardPrompt, 0, AnyNumber), null, this)).ToList();
         await CardCmd.Discard(choiceContext, discarded);
         var dose = DynamicVars["Base"].IntValue + DynamicVars["Per"].IntValue * discarded.Count;
-        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive).ToList())
+        foreach (var enemy in CombatState.HittableEnemies)
         {
             PoisonSplash(enemy);
             await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, dose, Owner.Creature, this);

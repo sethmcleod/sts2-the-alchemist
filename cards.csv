@@ -3,7 +3,6 @@ Acrid Mix,Token,Skill,0,Apply 1(2) Weak. Apply 1(2) Vulnerable. Gain 1(2) Poison
 Aged Batch,Uncommon,Skill,1,Draw 2 cards. Choose a basic Mix (Mix+) to add into your Hand. It loses Exhaust. Exhaust.
 All At Once,Rare,Attack,X,Laced. Deal 7(10) damage X times. Exhaust.
 Apothecary,Rare,Power,2,"At the start of your turn, add a random Mix into your Hand. Apothecary+ adds a Mix+."
-Backfire,Common,Attack,0,"Deal 4(6) damage. If the enemy has Poison, apply 1(2) Weak."
 Bestow,"Uncommon, Multiplayer",Skill,1(0),Another player procures a random potion. Exhaust.
 Bitter Draught,Uncommon,Skill,0,Gain 2(3) Energy. Gain 3 Poison. Exhaust.
 Blend,Common,Skill,1,Gain 4(7) Block. Transform a card in your Discard Pile into a random basic Mix and add it into your Hand. (Blend+ makes a basic Mix+)
@@ -12,7 +11,7 @@ Bonk,Uncommon,Attack,2,Deal 10(12) damage. Deals 3(4) additional damage for each
 Bottoms Up,"Rare, Multiplayer",Power,1,"Whenever you gain Poison, ALL other players gain 1(2) Block for each Poison gained."
 Bounce Back,"Uncommon, Hero",Skill,1,"Gain 6(8) Block. Gain 1 Poison. At the start of your next turn, return this to your Hand."
 Brace,Common,Skill,1,"Gain 7(9) Block. Whenever you are attacked this turn, apply 3(4) Poison to the attacker."
-Brine,Uncommon,Skill,3(2),Gain 4 Antitoxin. Apply 2 Weak to ALL enemies.
+Brine,Uncommon,Skill,2,Gain 4(6) Antitoxin. Apply 2 Weak to ALL enemies.
 Bursting Mix,Token,Attack,0,Deal 6(9) damage. Exhaust.
 Caustic Strike,Common,Attack,1,Retain. Ferment. Deal 6(8) damage. Apply 2 Poison. Applies 1(2) additional Poison for each turn Fermented.
 Chrysopoeia,Rare,Skill,0,Gain 1(2) Energy. Gain an additional Energy for every 4 Poison you have. Lose all Poison. Exhaust.
@@ -27,7 +26,7 @@ Defend,Basic,Skill,1,Gain 5(8) Block.
 Digest,Common,Skill,0,"Exhaust 1 card. If it was a Status, Curse, or Quest, add a random Mix into your Hand. (Digest+ adds a Mix+)"
 Distill,Common,Skill,0,Retain. Ferment. Gain 1(2) Antitoxin. Gains 1(2) additional Antitoxin for each turn Fermented. Gain 2 Poison.
 Dose,Basic,Skill,0,Gain 3(4) Block. Gain 2(3) Antitoxin. Gain 2(3) Poison.
-Double Dip,"Common, Hero",Attack,2,Deal 4(6) damage twice. Apply 6(8) Poison.
+Double Dip,"Common, Hero",Skill,2,Apply 4(5) Poison to a random enemy 2 times.
 Dregs,"Status, Reshuffled Spire",Status,Unplayable,"Ethereal. Whenever you draw this card, gain 2 Poison and draw 1 card."
 Effervesce,"Uncommon, Multiplayer",Skill,1,Add one of each basic Mix into another player's Hand. (Effervesce+ adds Mixes+)
 Endure,Uncommon,Skill,1,Gain 6(9) Block. Gain 3 Antitoxin. Draw 1 card.
@@ -112,6 +111,7 @@ Twitch,"Rare, Hero",Skill,1,"This turn, your Attacks hit 1(2) additional time. G
 Uncork,Rare,Skill,0,Gain 1 Energy. ALL Ferment cards in your Hand Ferment 1. Gain 1(2) additional Energy for each card that did. Exhaust.
 Untended,Rare,Power,2,"Whenever you draw a Ferment card, it Ferments 1. (Untended+ gains Innate)"
 Upwell,Common,Skill,1,Gain 11(14) Block. Gain 2 Poison.
+Venom Shock,Common,Attack,2,"Deal 10(13) damage. If the enemy has Poison, hits an additional time."
 Vent,Uncommon,Skill,1(0),Gain Antitoxin equal to your Poison. Exhaust.
 Vintage,Rare,Skill,1,Retain. Ferment. Gain 1(2) Energy and draw 1(2) cards. Draws 1 additional card for each turn Fermented. Exhaust.
 Waiting Game,"Rare, Hero",Power,3,"Ethereal. Whenever an enemy's Poison triggers, it loses 1 Strength and you gain 1 Poison. (Waiting Game+ loses Ethereal)"

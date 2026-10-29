@@ -11,6 +11,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Added an animation for Mercurial Form power
 - Added Equivalent Exchange card: "Exhaust 1 card. Choose a basic Mix (Mix+). Add a copy of it into your Hand for each Energy that card cost. Exhaust." It replaces Harvest
 - Added Restock card: "At the end of your turn, shuffle a random Mix from your Exhaust Pile into your Draw Pile." Cost 2(1). It replaces Fresh Batch
+- Added Venom Shock card: "Deal 10(13) damage. If the enemy has Poison, hits an additional time." Cost 2. It replaces Backfire
 
 ### Changed
 
@@ -27,8 +28,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Nerfed Radiant Flask relic: Antitoxin at the start of each combat decreased from 10 -> 8
 - Nerfed Secret Sauce card (Hero Expansion): it now adds a random basic Mix (Mix+) instead of a chosen one
 - Nerfed starting HP: 75 -> 69
-- Reworked Backfire card: "Deal 4(6) damage. If the enemy has Poison, apply 1(2) Weak."
-- Reworked Brine card: "Gain 4 Antitoxin. Apply 2 Weak to ALL enemies." Cost increased from 1 -> 3(2)
+- Reworked Brine card: "Gain 4(6) Antitoxin. Apply 2 Weak to ALL enemies." Cost increased from 1 -> 2
+- Reworked Double Dip card (Hero Expansion) into a Skill: "Apply 4(5) Poison to a random enemy 2 times."
 - Reworked Endure card: "Gain 6(9) Block. Gain 3 Antitoxin. Draw 1 card."
 - Reworked Lilypad Cloak relic: "Whenever an enemy's Poison triggers, gain 2 Block."
 - Reworked Quench card: "Gain 6(9) Antitoxin. Gain Block equal to your Antitoxin. Exhaust."
@@ -36,6 +37,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ### Removed
 
+- Removed Backfire card, replaced with Venom Shock
 - Removed Fresh Batch card, replaced with Restock
 - Removed Harvest card, replaced with Equivalent Exchange
 
