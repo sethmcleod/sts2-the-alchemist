@@ -5,7 +5,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Potions;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -21,23 +20,20 @@ public class DoubleDip : AlchemistHeroCard
 
     protected internal override bool PlaysCastAnimation => false;
 
-    public DoubleDip() : base(2, CardType.Skill, CardRarity.Common, TargetType.RandomEnemy)
+    public DoubleDip() : base(2, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithPower<PoisonPower>(4, 1);
-        WithVar(new RepeatVar(2));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (CombatState is not { } combat) return;
+        if (CombatState is not { } combat || play.Target is not { } target) return;
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        var from = NCombatRoom.Instance?.GetCreatureNode(Owner.Creature)?.VfxSpawnPosition;
-        for (var i = 0; i < DynamicVars.Repeat.IntValue; i++)
-        {
-            if (Owner.RunState.Rng.CombatTargets.NextItem(combat.HittableEnemies) is not { } enemy) continue;
-            from = await Throw(from, enemy);
-            await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, DynamicVars.Poison.IntValue, Owner.Creature, this);
-        }
+        var from = await Throw(NCombatRoom.Instance?.GetCreatureNode(Owner.Creature)?.VfxSpawnPosition, target);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, target, DynamicVars.Poison.IntValue, Owner.Creature, this);
+        if (Owner.RunState.Rng.CombatTargets.NextItem(combat.HittableEnemies) is not { } enemy) return;
+        await Throw(from, enemy);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, DynamicVars.Poison.IntValue, Owner.Creature, this);
     }
 
     private static async Task<Vector2?> Throw(Vector2? from, Creature enemy)

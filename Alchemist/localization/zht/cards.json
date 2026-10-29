@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "蒸餾",
   "ALCHEMIST-DOSE.description": "獲得 {Block:diff()} 點[gold]格擋[/gold]。\n獲得 {antitoxin:diff()} 點[gold]抗毒素[/gold]。\n獲得 {SelfPoison:diff()} 層[gold]中毒[/gold]。",
   "ALCHEMIST-DOSE.title": "服藥",
-  "ALCHEMIST-DOUBLE_DIP.description": "對一名隨機敵人施加 {PoisonPower:diff()} 層[gold]中毒[/gold]，重複 {Repeat:diff()} 次。",
+  "ALCHEMIST-DOUBLE_DIP.description": "施加 {PoisonPower:diff()} 層[gold]中毒[/gold]。\n對一名隨機敵人施加 {PoisonPower:diff()} 層[gold]中毒[/gold]。",
   "ALCHEMIST-DOUBLE_DIP.title": "二度沾醬",
   "ALCHEMIST-DREGS.description": "每當你抽到此牌時，獲得 {SelfPoison:diff()} 層[gold]中毒[/gold]，並抽 {Cards:diff()} 張牌。",
   "ALCHEMIST-DREGS.title": "沉渣",

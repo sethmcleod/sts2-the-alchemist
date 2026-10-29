@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "Distillato",
   "ALCHEMIST-DOSE.description": "Ottieni {Block:diff()} di [gold]Blocco[/gold].\nOttieni {antitoxin:diff()} di [gold]Antitossina[/gold].\nOttieni {SelfPoison:diff()} di [gold]Veleno[/gold].",
   "ALCHEMIST-DOSE.title": "Posologia",
-  "ALCHEMIST-DOUBLE_DIP.description": "Applichi {PoisonPower:diff()} di [gold]Veleno[/gold] a un nemico casuale {Repeat:diff()} volte.",
+  "ALCHEMIST-DOUBLE_DIP.description": "Applichi {PoisonPower:diff()} di [gold]Veleno[/gold].\nApplichi {PoisonPower:diff()} di [gold]Veleno[/gold] a un nemico casuale.",
   "ALCHEMIST-DOUBLE_DIP.title": "Doppio tuffo",
   "ALCHEMIST-DREGS.description": "Ogni volta che peschi questa carta, ottieni {SelfPoison:diff()} di [gold]Veleno[/gold] e peschi {Cards:diff()} {Cards:plural:carta|carte}.",
   "ALCHEMIST-DREGS.title": "Feccia",

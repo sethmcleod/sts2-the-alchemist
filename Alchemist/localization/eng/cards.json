@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "Distill",
   "ALCHEMIST-DOSE.description": "Gain {Block:diff()} [gold]Block[/gold].\nGain {antitoxin:diff()} [gold]Antitoxin[/gold].\nGain {SelfPoison:diff()} [gold]Poison[/gold].",
   "ALCHEMIST-DOSE.title": "Dose",
-  "ALCHEMIST-DOUBLE_DIP.description": "Apply {PoisonPower:diff()} [gold]Poison[/gold] to a random enemy {Repeat:diff()} times.",
+  "ALCHEMIST-DOUBLE_DIP.description": "Apply {PoisonPower:diff()} [gold]Poison[/gold].\nApply {PoisonPower:diff()} [gold]Poison[/gold] to a random enemy.",
   "ALCHEMIST-DOUBLE_DIP.title": "Double Dip",
   "ALCHEMIST-DREGS.description": "Whenever you draw this card, gain {SelfPoison:diff()} [gold]Poison[/gold] and draw {Cards:diff()} {Cards:plural:card|cards}.",
   "ALCHEMIST-DREGS.title": "Dregs",

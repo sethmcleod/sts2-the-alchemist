@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "กลั่นยา",
   "ALCHEMIST-DOSE.description": "ได้รับ {Block:diff()} [gold]บล็อก[/gold]\nได้รับ {antitoxin:diff()} [gold]สารต้านพิษ[/gold]\nได้รับ {SelfPoison:diff()} [gold]พิษ[/gold]",
   "ALCHEMIST-DOSE.title": "ตวงยา",
-  "ALCHEMIST-DOUBLE_DIP.description": "สร้าง {PoisonPower:diff()} [gold]พิษ[/gold] ใส่ศัตรู 1 ตัวแบบสุ่ม จำนวน {Repeat:diff()} ครั้ง",
+  "ALCHEMIST-DOUBLE_DIP.description": "สร้าง {PoisonPower:diff()} [gold]พิษ[/gold]\nสร้าง {PoisonPower:diff()} [gold]พิษ[/gold] ใส่ศัตรู 1 ตัวแบบสุ่ม",
   "ALCHEMIST-DOUBLE_DIP.title": "จิ้มซ้ำ",
   "ALCHEMIST-DREGS.description": "ทุกครั้งที่คุณจั่วได้การ์ดนี้ ได้รับ {SelfPoison:diff()} [gold]พิษ[/gold] และจั่วการ์ด {Cards:diff()} ใบ",
   "ALCHEMIST-DREGS.title": "ตะกอน",

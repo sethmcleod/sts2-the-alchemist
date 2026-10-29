@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "Distillation",
   "ALCHEMIST-DOSE.description": "Gagnez {Block:diff()} d'[gold]Armure[/gold].\nGagnez {antitoxin:diff()} d'[gold]Antitoxine[/gold].\nGagnez {SelfPoison:diff()} de [gold]Poison[/gold].",
   "ALCHEMIST-DOSE.title": "Posologie",
-  "ALCHEMIST-DOUBLE_DIP.description": "Appliquez {PoisonPower:diff()} de [gold]Poison[/gold] à un ennemi aléatoire {Repeat:diff()} fois.",
+  "ALCHEMIST-DOUBLE_DIP.description": "Appliquez {PoisonPower:diff()} de [gold]Poison[/gold].\nAppliquez {PoisonPower:diff()} de [gold]Poison[/gold] à un ennemi aléatoire.",
   "ALCHEMIST-DOUBLE_DIP.title": "Double trempette",
   "ALCHEMIST-DREGS.description": "Lorsque vous piochez cette carte, gagnez {SelfPoison:diff()} de [gold]Poison[/gold] et piochez {Cards:diff()} {Cards:plural:carte|cartes}.",
   "ALCHEMIST-DREGS.title": "Lie",

@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "Damıt",
   "ALCHEMIST-DOSE.description": "{Block:diff()} [gold]Blok[/gold] elde et.\n{antitoxin:diff()} [gold]Antitoksin[/gold] elde et.\n{SelfPoison:diff()} [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-DOSE.title": "Doz",
-  "ALCHEMIST-DOUBLE_DIP.description": "{Repeat:diff()} kez rastgele bir düşmana {PoisonPower:diff()} [gold]Zehir[/gold] uygula.",
+  "ALCHEMIST-DOUBLE_DIP.description": "{PoisonPower:diff()} [gold]Zehir[/gold] uygula.\nRastgele bir düşmana {PoisonPower:diff()} [gold]Zehir[/gold] uygula.",
   "ALCHEMIST-DOUBLE_DIP.title": "Bandır Bandır",
   "ALCHEMIST-DREGS.description": "Bu kartı her çektiğinde {SelfPoison:diff()} [gold]Zehir[/gold] elde et ve {Cards:diff()} kart çek.",
   "ALCHEMIST-DREGS.title": "Tortu",

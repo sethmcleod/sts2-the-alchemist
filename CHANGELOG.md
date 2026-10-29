@@ -32,7 +32,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Nerfed Secret Sauce card (Hero Expansion): it now adds a random basic Mix (Mix+) instead of a chosen one
 - Nerfed starting HP: 75 -> 69
 - Reworked Brine card: "Gain 4(6) Antitoxin. Apply 2 Weak to ALL enemies." Cost increased from 1 -> 2
-- Reworked Double Dip card (Hero Expansion) into a Skill: "Apply 4(5) Poison to a random enemy 2 times."
+- Reworked Double Dip card (Hero Expansion) into a Skill: "Apply 4(5) Poison. Apply 4(5) Poison to a random enemy."
 - Reworked Endure card: "Gain 6(9) Block. Gain 3 Antitoxin. Draw 1 card."
 - Reworked Lilypad Cloak relic: "Whenever an enemy's Poison triggers, gain 2 Block."
 - Reworked Quench card: "Gain 6(9) Antitoxin. Gain Block equal to your Antitoxin. Exhaust."
@@ -47,6 +47,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 ### Fixed
 
 - Fixed Fumigate, Spatter, Spores, Sweat It Out, Water Down and Wormwood sometimes getting stuck on screen when played
+- Fixed Fumigate, Spatter, Spores, Sweat It Out, The Steeped Blade, Water Down and Wormwood applying Poison to enemies that cannot be hit
+- Fixed Puncture and Snack Attack sometimes not glowing against a Poisoned enemy
 
 ## [0.15.0] - 2026-10-26
 

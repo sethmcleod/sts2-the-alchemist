@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "Destilar",
   "ALCHEMIST-DOSE.description": "Gana {Block:diff()} de [gold]Bloqueo[/gold].\nGana {antitoxin:diff()} de [gold]Antitoxina[/gold].\nGana {SelfPoison:diff()} de [gold]Veneno[/gold].",
   "ALCHEMIST-DOSE.title": "Toma",
-  "ALCHEMIST-DOUBLE_DIP.description": "Aplica {PoisonPower:diff()} de [gold]Veneno[/gold] a un enemigo aleatorio {Repeat:diff()} veces.",
+  "ALCHEMIST-DOUBLE_DIP.description": "Aplica {PoisonPower:diff()} de [gold]Veneno[/gold].\nAplica {PoisonPower:diff()} de [gold]Veneno[/gold] a un enemigo aleatorio.",
   "ALCHEMIST-DOUBLE_DIP.title": "Doble baño",
   "ALCHEMIST-DREGS.description": "Cuando robes esta carta, gana {SelfPoison:diff()} de [gold]Veneno[/gold] y roba {Cards:diff()} {Cards:plural:carta|cartas}.",
   "ALCHEMIST-DREGS.title": "Sedimento",

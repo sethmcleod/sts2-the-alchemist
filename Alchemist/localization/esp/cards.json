@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "Destilar",
   "ALCHEMIST-DOSE.description": "Obtienes {Block:diff()} de [gold]bloqueo[/gold].\nObtienes {antitoxin:diff()} de [gold]antitoxina[/gold].\nObtienes {SelfPoison:diff()} de [gold]veneno[/gold].",
   "ALCHEMIST-DOSE.title": "Sorbo",
-  "ALCHEMIST-DOUBLE_DIP.description": "Aplicas {PoisonPower:diff()} de [gold]veneno[/gold] a un enemigo al azar {Repeat:diff()} veces.",
+  "ALCHEMIST-DOUBLE_DIP.description": "Aplicas {PoisonPower:diff()} de [gold]veneno[/gold].\nAplicas {PoisonPower:diff()} de [gold]veneno[/gold] a un enemigo al azar.",
   "ALCHEMIST-DOUBLE_DIP.title": "Doble chapuzón",
   "ALCHEMIST-DREGS.description": "Al robar esta carta, obtienes {SelfPoison:diff()} de [gold]veneno[/gold] y robas {Cards:diff()} {Cards:plural:carta|cartas}.",
   "ALCHEMIST-DREGS.title": "Posos",

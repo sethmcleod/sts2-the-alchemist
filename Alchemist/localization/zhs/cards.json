@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "提纯",
   "ALCHEMIST-DOSE.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n获得{antitoxin:diff()}点[gold]抗毒素[/gold]。\n获得{SelfPoison:diff()}层[gold]中毒[/gold]。",
   "ALCHEMIST-DOSE.title": "剂量",
-  "ALCHEMIST-DOUBLE_DIP.description": "随机给予敌人{PoisonPower:diff()}层[gold]中毒[/gold]{Repeat:diff()}次。",
+  "ALCHEMIST-DOUBLE_DIP.description": "给予{PoisonPower:diff()}层[gold]中毒[/gold]。\n给予随机敌人{PoisonPower:diff()}层[gold]中毒[/gold]。",
   "ALCHEMIST-DOUBLE_DIP.title": "毒上加毒",
   "ALCHEMIST-DREGS.description": "每当你抽到这张牌时，获得{SelfPoison:diff()}层[gold]中毒[/gold]，并抽{Cards:diff()}张牌。",
   "ALCHEMIST-DREGS.title": "沉渣",

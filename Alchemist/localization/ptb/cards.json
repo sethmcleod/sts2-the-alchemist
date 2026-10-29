@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "Destilar",
   "ALCHEMIST-DOSE.description": "Receba {Block:diff()} de [gold]Proteção[/gold].\nReceba {antitoxin:diff()} de [gold]Antitoxina[/gold].\nReceba {SelfPoison:diff()} de [gold]Veneno[/gold].",
   "ALCHEMIST-DOSE.title": "Trago",
-  "ALCHEMIST-DOUBLE_DIP.description": "Aplique {PoisonPower:diff()} de [gold]Veneno[/gold] a um inimigo aleatório {Repeat:diff()} vezes.",
+  "ALCHEMIST-DOUBLE_DIP.description": "Aplique {PoisonPower:diff()} de [gold]Veneno[/gold].\nAplique {PoisonPower:diff()} de [gold]Veneno[/gold] a um inimigo aleatório.",
   "ALCHEMIST-DOUBLE_DIP.title": "Dose Dupla",
   "ALCHEMIST-DREGS.description": "Sempre que você comprar esta carta, receba {SelfPoison:diff()} de [gold]Veneno[/gold] e compre {Cards:diff()} {Cards:plural:carta|cartas}.",
   "ALCHEMIST-DREGS.title": "Borra",

@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "Перегонка",
   "ALCHEMIST-DOSE.description": "Дает {Block:diff()} [gold]защиты[/gold].\nДает {antitoxin:diff()} [gold]антитоксина[/gold].\nДает вам {SelfPoison:diff()} [gold]яда[/gold].",
   "ALCHEMIST-DOSE.title": "Порция",
-  "ALCHEMIST-DOUBLE_DIP.description": "Накладывает {PoisonPower:diff()} [gold]яда[/gold] на случайного врага {Repeat:diff()} раза.",
+  "ALCHEMIST-DOUBLE_DIP.description": "Накладывает {PoisonPower:diff()} [gold]яда[/gold].\nНакладывает {PoisonPower:diff()} [gold]яда[/gold] на случайного врага.",
   "ALCHEMIST-DOUBLE_DIP.title": "Двойная доза",
   "ALCHEMIST-DREGS.description": "Когда вы добираете эту карту, дает вам {SelfPoison:diff()} [gold]яда[/gold], и вы добираете {Cards:diff()} {Cards:plural(ru):карту|карты|карт}.",
   "ALCHEMIST-DREGS.title": "Осадок",

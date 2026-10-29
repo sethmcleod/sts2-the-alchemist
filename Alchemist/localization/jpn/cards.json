@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "抽出",
   "ALCHEMIST-DOSE.description": "{Block:diff()}[gold]ブロック[/gold]を得る。\n[gold]抗毒素[/gold]{antitoxin:diff()}を得る。\n[gold]毒[/gold]{SelfPoison:diff()}を得る。",
   "ALCHEMIST-DOSE.title": "一服",
-  "ALCHEMIST-DOUBLE_DIP.description": "ランダムな敵に[gold]毒[/gold]{PoisonPower:diff()}を{Repeat:diff()}回付与する。",
+  "ALCHEMIST-DOUBLE_DIP.description": "[gold]毒[/gold]{PoisonPower:diff()}を付与する。\nランダムな敵に[gold]毒[/gold]{PoisonPower:diff()}を付与する。",
   "ALCHEMIST-DOUBLE_DIP.title": "二度漬け",
   "ALCHEMIST-DREGS.description": "このカードを引くたび、[gold]毒[/gold]{SelfPoison:diff()}を得て、カードを{Cards:diff()}枚引く。",
   "ALCHEMIST-DREGS.title": "澱",

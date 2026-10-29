@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "Destillieren",
   "ALCHEMIST-DOSE.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nErhalte {antitoxin:diff()} [gold]Antitoxin[/gold].\nErhalte {SelfPoison:diff()} [gold]Gift[/gold].",
   "ALCHEMIST-DOSE.title": "Gabe",
-  "ALCHEMIST-DOUBLE_DIP.description": "Wende {Repeat:diff()} Mal auf zufällige Gegner {PoisonPower:diff()} [gold]Gift[/gold] an.",
+  "ALCHEMIST-DOUBLE_DIP.description": "Wende {PoisonPower:diff()} [gold]Gift[/gold] an.\nWende auf einen zufälligen Gegner {PoisonPower:diff()} [gold]Gift[/gold] an.",
   "ALCHEMIST-DOUBLE_DIP.title": "Doppelt gemoppelt",
   "ALCHEMIST-DREGS.description": "Immer wenn du diese Karte ziehst, erhalte {SelfPoison:diff()} [gold]Gift[/gold] und ziehe {Cards:diff()} {Cards:plural:Karte|Karten}.",
   "ALCHEMIST-DREGS.title": "Bodensatz",

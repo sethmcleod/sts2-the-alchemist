@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "Distilasi",
   "ALCHEMIST-DOSE.description": "Dapatkan {Block:diff()} [gold]Blok[/gold].\nDapatkan {antitoxin:diff()} [gold]Antitoksin[/gold].\nDapatkan {SelfPoison:diff()} [gold]Racun[/gold].",
   "ALCHEMIST-DOSE.title": "Takaran",
-  "ALCHEMIST-DOUBLE_DIP.description": "Terapkan {PoisonPower:diff()} [gold]Racun[/gold] ke musuh acak {Repeat:diff()} kali.",
+  "ALCHEMIST-DOUBLE_DIP.description": "Terapkan {PoisonPower:diff()} [gold]Racun[/gold].\nTerapkan {PoisonPower:diff()} [gold]Racun[/gold] ke musuh acak.",
   "ALCHEMIST-DOUBLE_DIP.title": "Celup Ganda",
   "ALCHEMIST-DREGS.description": "Setiap kali kamu mengambil kartu ini, dapatkan {SelfPoison:diff()} [gold]Racun[/gold] dan ambil {Cards:diff()} kartu.",
   "ALCHEMIST-DREGS.title": "Ampas",

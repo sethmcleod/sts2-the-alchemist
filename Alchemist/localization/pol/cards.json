@@ -71,7 +71,7 @@
   "ALCHEMIST-DISTILL.title": "Destylacja",
   "ALCHEMIST-DOSE.description": "Zyskaj {Block:diff()} pkt. [gold]Bloku[/gold].\nZyskaj {antitoxin:diff()} pkt. [gold]Antytoksyny[/gold].\nZyskaj {SelfPoison:diff()} pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-DOSE.title": "Porcja",
-  "ALCHEMIST-DOUBLE_DIP.description": "Nałóż {PoisonPower:diff()} pkt. [gold]Trucizny[/gold] losowemu przeciwnikowi {Repeat:diff()} razy.",
+  "ALCHEMIST-DOUBLE_DIP.description": "Nałóż {PoisonPower:diff()} pkt. [gold]Trucizny[/gold].\nNałóż {PoisonPower:diff()} pkt. [gold]Trucizny[/gold] na losowego przeciwnika.",
   "ALCHEMIST-DOUBLE_DIP.title": "Podwójna dawka",
   "ALCHEMIST-DREGS.description": "Kiedykolwiek dobierzesz tę kartę, zyskaj {SelfPoison:diff()} pkt. [gold]Trucizny[/gold] i dobierz {Cards:diff()} {Cards:plural:kartę|karty|kart}.",
   "ALCHEMIST-DREGS.title": "Fusy",
