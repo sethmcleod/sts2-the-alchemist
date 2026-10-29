@@ -23,7 +23,7 @@ public class FreeSamples : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;
-        foreach (var ally in CombatState.Players.Where(p => p != Owner && p.Creature is { IsAlive: true }))
+        foreach (var ally in CombatState.Players.Where(p => p != Owner && p.Creature is { IsAlive: true }).ToList())
             await Mixing.GiveRandom(choiceContext, Owner, ally, IsUpgraded, this);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
     }
