@@ -19,6 +19,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Changed Knitbone card: Block increased from 5 -> 5(8) and additional Block for each Mix decreased from 1(2) -> 1
 - Changed Toughen card: Block increased from 5(7) -> 8(10) and additional Block for each Poison decreased from 2 -> 1
 - Nerfed Blend card: Block decreased from 5(8) -> 4(7)
+- Nerfed Lash Out card: damage decreased from 3(5) -> 3(4)
 - Nerfed Mud Pack card (Hero Expansion): Block decreased from 7 -> 6
 - Nerfed Murky Flask relic: Antitoxin at the start of each combat decreased from 5 -> 4
 - Nerfed Overbrew card: it now Exhausts

@@ -15,7 +15,7 @@ public class LashOut : AlchemistCard
 
     public LashOut() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        WithCalculatedDamage(3, static (card, _) => Dose(card), ValueProp.Move, 2);
+        WithCalculatedDamage(3, static (card, _) => Dose(card), ValueProp.Move, 1);
         WithKeyword(AlchemistKeywords.Laced);
         WithTip(typeof(PoisonPower));
     }
