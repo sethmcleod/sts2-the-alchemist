@@ -24,6 +24,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 - Changed the Mixes badge thresholds: 60 / 120 / 200 -> 80 / 160 / 240
 - Changed the Potion Sale badge thresholds: 2 / 4 / 6 -> 3 / 5 / 7
 - Nerfed Blend card: Block decreased from 5(8) -> 4(7)
+- Nerfed Brew potions: Merchant sell price decreased from 150 -> 100 Gold
 - Nerfed Lash Out card: damage decreased from 3(5) -> 3(4)
 - Nerfed Mud Pack card (Hero Expansion): Block decreased from 7 -> 6
 - Nerfed Murky Flask relic: Antitoxin at the start of each combat decreased from 5 -> 4

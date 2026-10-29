@@ -25,7 +25,7 @@
   stay in your hand.
 - **Brew**: This Rest Site option allows you to procure 1 of 8 unique potions
   that can only be obtained this way. Due to the quality of these brews, the
-  Merchant is willing to buy them from you for 150 Gold.
+  Merchant is willing to buy them from you for 100 Gold.
 
 ## Disclaimer
 
