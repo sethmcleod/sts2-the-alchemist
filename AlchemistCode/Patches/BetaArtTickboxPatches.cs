@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Godot;
 using HarmonyLib;
 using Alchemist.AlchemistCode.Cards;
+using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode.Config;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
@@ -32,14 +33,7 @@ public static class BetaArtTickboxPatches
 
         public void ToggleFromHotkey()
         {
-            if (!GodotObject.IsInstanceValid(Tickbox) || !Tickbox.IsVisibleInTree()) return;
-            if (Tickbox.HasMethod("ForceToggleTick"))
-            {
-                Tickbox.Call("ForceToggleTick");
-                return;
-            }
-            Tickbox.IsTicked = !Tickbox.IsTicked;
-            Tickbox.EmitSignal(NTickbox.SignalName.Toggled, Tickbox);
+            if (GodotObject.IsInstanceValid(Tickbox) && Tickbox.IsVisibleInTree()) GameCompat.ToggleTick(Tickbox);
         }
     }
 
@@ -205,11 +199,8 @@ public static class BetaArtTickboxPatches
     private static void RefreshHotkeyIcon(Row row)
     {
         if (row.HotkeyIcon is not { } icon || !GodotObject.IsInstanceValid(icon)) return;
-        icon.Visible = NControllerManager.Instance is { } controllers
-            && (controllers.Get("IsUsingDirectionalNavigation") is { VariantType: Variant.Type.Bool } directional
-                ? directional.AsBool()
-                : controllers.IsUsingController);
-        if (icon.HasMethod("UpdateInput")) icon.Call("UpdateInput", MegaInput.select);
+        icon.Visible = NControllerManager.Instance is { } controllers && GameCompat.IsDirectionalNavigation(controllers);
+        GameCompat.UpdateHotkeyIcon(icon, MegaInput.select);
     }
 
     private static void Adopt(Node source, Node copy, Node owner)

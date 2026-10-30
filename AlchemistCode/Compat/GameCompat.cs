@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Godot;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -14,6 +15,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -101,5 +103,27 @@ public static class GameCompat
     {
         var entry = state.GetCurrent(0);
         entry?.SetTrackTime(entry.GetAnimationEnd() * (float)rng.NextDouble());
+    }
+
+    /// <summary>
+    /// Whether the hotkey glyphs should show. Beta shows them for a controller and for keyboard
+    /// navigation; main only knows whether a controller is in use.
+    /// </summary>
+    public static bool IsDirectionalNavigation(NControllerManager controllers) =>
+        controllers.IsUsingController;
+
+    /// <summary>Toggles a tickbox from a hotkey with the sound a click gives. main has no ForceToggleTick.</summary>
+    public static void ToggleTick(NTickbox tickbox)
+    {
+        tickbox.IsTicked = !tickbox.IsTicked;
+        SfxCmd.Play(tickbox.IsTicked ? "event:/sfx/ui/clicks/ui_checkbox_on" : "event:/sfx/ui/clicks/ui_checkbox_off");
+        tickbox.EmitSignal(NTickbox.SignalName.Toggled, tickbox);
+    }
+
+    /// <summary>Points a copied hotkey glyph at the input it now answers to. main has no NHotkeyIcon.</summary>
+    public static void UpdateHotkeyIcon(Control icon, string input)
+    {
+        if (icon is TextureRect rect && NControllerManager.Instance?.GetHotkeyIcon(input) is { } texture)
+            rect.Texture = texture;
     }
 }
