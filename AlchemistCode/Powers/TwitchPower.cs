@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -12,23 +12,17 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Every Attack the owner plays this turn lands Amount more hits after it resolves. The extra hits
-// are a plain card attack, not a card play, so they do not fire this hook again. Gone at the end
-// of the turn like Rerun. Every Alchemist Attack carries a damage var to repeat; a few base Attacks
-// compute their damage by hand at play time, BaseLib throws on those, so they are skipped
 public class TwitchPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    public override int ModifyAttackHitCount(AttackCommand attack, int hitCount)
     {
-        if (cardPlay.Card.Type != CardType.Attack || cardPlay.Card.Owner != Owner.Player) return;
-        if (cardPlay.Target is { IsAlive: false } && cardPlay.Card.TargetType == TargetType.AnyEnemy) return;
-        var vars = cardPlay.Card.DynamicVars;
-        if (!vars.ContainsKey("CalculatedDamage") && !vars.ContainsKey("Damage")) return;
+        if (attack.ModelSource is not CardModel { Type: CardType.Attack } card || card.Owner != Owner.Player)
+            return hitCount;
         Flash();
-        await CommonActions.CardAttack(cardPlay.Card, cardPlay, (int)Amount).Execute(choiceContext);
+        return hitCount + (int)Amount;
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
