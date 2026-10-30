@@ -41,6 +41,10 @@ describe('README sections', () => {
   it('finds every section the site shows', () => {
     for (const title of README_SECTIONS) expect(readmeSource(title)).not.toBe('');
   });
+
+  it('leaves the screenshots to the gallery', () => {
+    for (const title of README_SECTIONS) expect(readmeSource(title)).not.toMatch(/<img\b|!\[/);
+  });
 });
 
 describe('fitting text the way the game does', () => {

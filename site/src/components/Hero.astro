@@ -20,7 +20,8 @@ const { meta, summary } = runs(locale);
 const workshopItem = (branch: string) => meta.workshop.find((entry) => entry.branch === branch);
 const [beta, main] = [workshopItem('beta'), workshopItem('main')];
 const readmeTranslations = locale === DEFAULT_LOCALE ? undefined : (strings(locale).readme ?? {});
-const [playstyle, disclaimer] = await Promise.all([
+const [intro, playstyle, disclaimer] = await Promise.all([
+  readmeSection('Intro', readmeTranslations),
   readmeSection('Playstyle', readmeTranslations),
   readmeSection('Disclaimer', readmeTranslations),
 ]);
@@ -29,6 +30,7 @@ const facts = [
   l.n(Object.keys(summary.relic_info).length, '{n} relic', '{n} relics'),
   l.n(Object.keys(summary.potion_info).length, '{n} potion', '{n} potions'),
   l.n(meta.epochs, '{n} timeline epoch', '{n} timeline epochs'),
+  l.n(meta.badges.length, '{n} badge', '{n} badges'),
 ];
 ---
 
@@ -38,9 +40,9 @@ const facts = [
       <p class="m-0 text-sm font-semibold tracking-wide uppercase">{l.t('Slay the Spire 2 character mod')}</p>
       <h1 class="mt-1 mb-0 text-5xl text-gold">The Alchemist</h1>
     </div>
-    <div class="readme" lang={disclaimer.lang} set:html={disclaimer.html} />
+    <div class="readme text-ink" lang={intro.lang} set:html={intro.html} />
     <details class="readme">
-      <summary>{l.t('Show more')}</summary>
+      <summary>{l.t('See mechanics')}</summary>
       <div class="mt-2" lang={playstyle.lang} set:html={playstyle.html} />
     </details>
     <ul class="m-0 flex list-none flex-wrap gap-2 p-0 text-sm text-ink-2">
@@ -79,6 +81,7 @@ const facts = [
         runs: l.num(meta.total_runs),
       })}
     </p>
+    <div class="readme text-sm" lang={disclaimer.lang} set:html={disclaimer.html} />
   </div>
   <Gallery previews={meta.previews} />
 </section>

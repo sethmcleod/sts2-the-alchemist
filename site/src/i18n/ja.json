@@ -1,7 +1,8 @@
 {
   "readme": {
-    "7dfc803a21cc": "- **自身の毒**：アルケミストはわざと自分に毒を盛ります。自身の毒に応じて追加ダメージを与えるアタックもあれば、自身の毒が発動する回数に反応するカードもあります。\n- **抗毒素**：自身の毒が自分に与えるはずのダメージを吸収する蓄えです。ターン開始時に1減少します。\n- **霊薬**：戦闘中に作成できる、ポーションに似たトークンです。基本の霊薬は破裂（ダメージ）、粘性（ブロック）、刺激（ドロー）、揮発性の霊薬は発煙（汚染）、刺激臭（脱力と弱体）、発泡（エナジー）です。\n- **発酵**：これらのカードは保留を持ち、手札に留まるターンごとに威力が増していきます。\n- **調合**：休憩所の選択肢の一つで、この方法でしか入手できない8種類の特別なポーションから1つを手に入れられます。その品質の高さから、商人は100ゴールドで買い取ってくれます。",
-    "b40936bd23dc": "このMODはまだ開発中で、内容は変更される可能性がありますが、フィードバックは大歓迎です！MODについて話し合うなら、Slay the Spireの公式Discordサーバーの[#modding-forumにあるThe Alchemistの投稿](https://discord.com/channels/309399445785673728/1536374761699938424)が最適です。\n\n現在、各言語の翻訳は自動生成されています。内容の変更が落ち着いたら、ネイティブの翻訳者に依頼する予定です。それまでの間、修正していただけると助かります！お使いの言語で誤りを見つけたら、私に連絡するか、GitHubでプルリクエストを作成してください。"
+    "28b62f70538d": "アルケミストは、Slay the Spire 2の新キャラクターです。何でも一度は飲んでみる、好奇心旺盛なカエルです。わざと自分に毒を盛ってそれを力に変え、戦闘の最中にポーションのようなカードを混ぜ合わせ、カードを手札で頃合いになるまで発酵させ、休憩所では商人に売るための特別なポーションを調合します。",
+    "023ac223a1ef": "- **自身の毒**：アルケミストはわざと自分に毒を盛ります。自身の毒が多いほどダメージが増えるアタックもあれば、自身の毒が発動するたびに発動するカードもあります。毒は敵にも有効で、毒状態の敵により大きなダメージを与えるカードもあります。\n- **抗毒素**：自身の毒から身を守ります。自身の毒が発動するたびに、抗毒素はその量までダメージを防ぎます。消費されることはありませんが、ターン開始時に1減少します。\n- **霊薬**：戦闘中に作成するコスト0のカードで、手札から使うポーションのようなものです。基本の霊薬は破裂（ダメージ）、粘性（ブロック）、刺激（ドロー）です。揮発性の霊薬は発煙（敵全体へのダメージと汚染）、刺激臭（脱力と弱体）、発泡（エナジー）です。\n- **発酵**：これらのカードは保留を持ち、手札に留まるターンごとに威力が増していきます。\n- **調合**：休憩所の新しい選択肢で、デッキのランダムなカード1枚をアップグレードし、3つの特別なポーションから1つを選べます。これらのポーションは8種類あり、調合でしか入手できません。その品質の高さから、商人は100ゴールドで買い取ってくれます。",
+    "a43398bb13a3": "このMODはまだ開発中で、内容は変更される可能性がありますが、フィードバックは大歓迎です！MODについて話し合うなら、Slay the Spireの公式Discordサーバーの[#modding-forumにあるThe Alchemistの投稿](https://discord.com/channels/309399445785673728/1536374761699938424)が最適です。\n\n現在、各言語の翻訳は自動生成されています。内容の変更が落ち着いたら、ネイティブの翻訳者に依頼する予定です。それまでの間、修正していただけると助かります！お使いの言語で誤りを見つけたら、私に連絡するか、GitHubでプルリクエストを作成してください。"
   },
   "site": {
     "(opens in a new tab)": "（新しいタブで開きます）",
@@ -35,6 +36,7 @@
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 100 Gold.": "調合は休憩所の選択肢の一つで、これらのポーションが3つ提示され、その中から1つを選べます。他の方法では作れず、商人が100ゴールドで買い取ります。",
     "Brew potion, made only at a rest site": "調合ポーション（休憩所でのみ作成可能）",
     "Brew potions": "調合ポーション",
+    "Calcination, the first chapter of the Alchemist's story on the Timeline.": "年代記に記されたアルケミストの物語の第1章「焼成」。",
     "Card rewards": "カード報酬",
     "Card stats": "カードの統計",
     "Card text from {version}.": "カードテキストは{version}時点のものです。",
@@ -123,6 +125,7 @@
     "Search cards": "カードを検索",
     "Search names and text": "名前とテキストで検索",
     "See every card": "すべてのカードを見る",
+    "See mechanics": "メカニクスを見る",
     "Share of Mixes": "霊薬内の割合",
     "Shop": "ショップ",
     "Shop relic": "レリック（ショップ）",
@@ -130,7 +133,6 @@
     "Show base card": "通常版を表示",
     "Show cards": "カードを表示",
     "Show keyword tips": "キーワードの説明を表示",
-    "Show more": "もっと見る",
     "Show upgraded": "アップグレード版を表示",
     "Show {n} cards": "カード{n}枚を表示",
     "Show {n} older changes": "以前の変更を{n}件表示",
@@ -157,7 +159,6 @@
     "Text from {version}.": "テキストは{version}時点のものです。",
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "滝のそばで戦うアルケミスト。手札にはアルケミストのカード。",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "キャラクター選択画面のアルケミスト：紫のローブをまとい、光る杖を持った緑のカエル。",
-    "The Alchemist's mod settings: accessibility, analytics and unlocks.": "アルケミストのMOD設定：アクセシビリティ、分析、アンロック。",
     "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "アルケミストのレリック{relics}個、ポーション{potions}個、パワー{powers}個。",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Slay the Spire 2のキャラクターMOD「アルケミスト」：全カード、レリック、ポーション、パワー、パッチノート、そして数千回の冒険から集めた統計。",
     "The Merchant asking to buy a Brew potion.": "調合ポーションを買い取ろうとする商人。",
@@ -216,6 +217,7 @@
     "win rate over {n} runs": "冒険{n}回での勝率",
     "{name}, {kind}: {text} Upgraded: {upgraded}": "{name}（{kind}）：{text} アップグレード後：{upgraded}",
     "{name}: {text}": "{name}：{text}",
+    "{n} badges": "バッジ{n}個",
     "{n} of {total} cards": "カード{total}枚中{n}枚",
     "{n} players": "プレイヤー{n}人",
     "{n} potions": "ポーション{n}個",

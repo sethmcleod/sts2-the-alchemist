@@ -7,16 +7,19 @@ const SITE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const SRC = path.join(SITE, 'src');
 const README = path.join(SITE, '..', 'README.md');
 export const CATALOG_PATH = path.join(SRC, 'i18n', 'en.json');
-export const README_SECTIONS = ['Playstyle', 'Disclaimer'];
+export const README_SECTIONS = ['Intro', 'Playstyle', 'Disclaimer'];
 const BROWSER_CODE = /^(islands|components\/charts|lib\/views)\/|^lib\/(bars|runs|lang)\.ts$/;
 
 const SITE_END = '<!-- The website shows this section up to here -->';
 
 export function readmeSource(title, text = fs.readFileSync(README, 'utf8')) {
-  const heading = `\n## ${title}\n`;
-  const start = text.indexOf(heading);
-  if (start < 0) throw new Error(`README.md has no "## ${title}" section`);
-  const body = text.slice(start + heading.length);
+  let body = text.replace(/^<img\b[^>]*>\s*/, '');
+  if (title !== 'Intro') {
+    const heading = `\n## ${title}\n`;
+    const start = body.indexOf(heading);
+    if (start < 0) throw new Error(`README.md has no "## ${title}" section`);
+    body = body.slice(start + heading.length);
+  }
   const end = body.search(/^## /m);
   return (end < 0 ? body : body.slice(0, end)).split(SITE_END)[0].trim();
 }

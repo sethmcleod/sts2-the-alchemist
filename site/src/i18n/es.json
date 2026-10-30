@@ -1,7 +1,8 @@
 {
   "readme": {
-    "7dfc803a21cc": "- **Veneno propio**: El Alquimista se envenena a propósito. Algunos ataques infligen daño adicional según tu Veneno, y otras cartas reaccionan a la frecuencia con la que se activa tu Veneno.\n- **Antitoxina**: Una reserva que absorbe el daño que te infligiría tu propio Veneno. Se reduce en 1 al comienzo de tu turno.\n- **Mezcla**: Son fichas parecidas a las pociones que puedes crear en combate. Las Mezclas básicas son Explosiva (daño), Almibarada (Bloqueo) y Vivaz (robo de cartas); las volátiles son Humeante (Impureza), Acre (Debilidad y Vulnerabilidad) y Chispeante (Energía).\n- **Fermentar**: Estas cartas tienen Retención y ganan potencia por cada turno que pasan en tu mano.\n- **Elaborar**: Esta opción del Lugar de descanso te permite conseguir 1 de 8 pociones únicas que solo se obtienen de esta forma. Por la calidad de estas elaboraciones, el Comerciante está dispuesto a comprártelas por 100 de Oro.",
-    "b40936bd23dc": "Este mod todavía está en desarrollo y su contenido puede cambiar, ¡pero los comentarios son bienvenidos! El mejor lugar para hablar del mod es el servidor oficial de Discord de Slay the Spire, en la [publicación de The Alchemist del canal #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nPor ahora, las traducciones se generan automáticamente. La idea es encargarlas a traductores nativos cuando el contenido cambie con menos frecuencia. Mientras tanto, ¡se agradecen las correcciones! Si ves un error en tu idioma, ponte en contacto conmigo o abre una pull request en GitHub."
+    "28b62f70538d": "El Alquimista es un nuevo personaje para Slay the Spire 2: una rana curiosa que se bebería cualquier cosa al menos una vez. Se envenena a propósito y lo convierte en poder, mezcla cartas parecidas a pociones en mitad del combate, deja que las cartas fermenten en su mano hasta que estén listas y elabora pociones especiales en los Lugares de descanso para vendérselas al Comerciante.",
+    "023ac223a1ef": "- **Veneno propio**: El Alquimista se envenena a propósito. Algunos ataques infligen más daño cuanto más Veneno tienes, y otras cartas se activan cada vez que se activa tu Veneno. El Veneno también funciona con los enemigos, y algunas cartas golpean más fuerte a un enemigo envenenado.\n- **Antitoxina**: Te protege de tu propio Veneno. Cada vez que se activa tu Veneno, la Antitoxina previene hasta esa misma cantidad de daño. No se gasta, pero se reduce en 1 al comienzo de cada turno.\n- **Mezcla**: Cartas de coste 0 que creas en combate, muy parecidas a pociones que juegas desde tu mano. Las Mezclas básicas son Explosiva (daño), Almibarada (Bloqueo) y Vivaz (robo de cartas). Las Mezclas volátiles son Humeante (daño a todos los enemigos e Impureza), Acre (Debilidad y Vulnerabilidad) y Chispeante (Energía).\n- **Fermentar**: Estas cartas tienen Retención y ganan potencia por cada turno que pasan en tu mano.\n- **Elaborar**: Una nueva opción del Lugar de descanso que mejora una carta aleatoria de tu Mazo y te permite elegir 1 de 3 pociones especiales. Hay 8 de estas pociones, y elaborarlas es la única forma de conseguirlas. Por la calidad de estas elaboraciones, el Comerciante está dispuesto a comprártelas por 100 de Oro.",
+    "a43398bb13a3": "Este mod todavía está en desarrollo y su contenido puede cambiar, ¡pero los comentarios son bienvenidos! El mejor lugar para hablar del mod es la [publicación de The Alchemist](https://discord.com/channels/309399445785673728/1536374761699938424) del canal #modding-forum, en el servidor oficial de Discord de Slay the Spire.\n\nPor ahora, las traducciones se generan automáticamente. La idea es encargarlas a traductores nativos cuando el contenido cambie con menos frecuencia. Mientras tanto, ¡se agradecen las correcciones! Si ves un error en tu idioma, ponte en contacto conmigo o abre una pull request en GitHub."
   },
   "site": {
     "(opens in a new tab)": "(se abre en una pestaña nueva)",
@@ -35,6 +36,7 @@
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 100 Gold.": "Elaborar es una opción del Lugar de descanso que te permite elegir entre 3 de estas pociones. No se consiguen de ninguna otra forma, y el Comerciante las compra por 100 de Oro.",
     "Brew potion, made only at a rest site": "Poción elaborada, solo se consigue en un Lugar de descanso",
     "Brew potions": "Pociones elaboradas",
+    "Calcination, the first chapter of the Alchemist's story on the Timeline.": "Calcinación, el primer capítulo de la historia del Alquimista en la Cronología.",
     "Card rewards": "Recompensas de cartas",
     "Card stats": "Estadísticas de cartas",
     "Card text from {version}.": "Texto de la carta de la {version}.",
@@ -126,6 +128,7 @@
     "Search cards": "Buscar cartas",
     "Search names and text": "Buscar por nombre o texto",
     "See every card": "Ver todas las cartas",
+    "See mechanics": "Ver mecánicas",
     "Share of Mixes": "Proporción de Mezclas",
     "Shop": "Tienda",
     "Shop relic": "Reliquia de tienda",
@@ -133,7 +136,6 @@
     "Show base card": "Ver carta base",
     "Show cards": "Mostrar cartas",
     "Show keyword tips": "Mostrar descripciones de palabras clave",
-    "Show more": "Mostrar más",
     "Show upgraded": "Ver mejorada",
     "Show {n} cards": {
       "one": "Mostrar {n} carta",
@@ -169,7 +171,6 @@
     "Text from {version}.": "Texto de la {version}.",
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "El Alquimista en un combate junto a una cascada, con una mano de cartas del Alquimista.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "El Alquimista en la pantalla de selección de personaje: una rana verde con túnica morada y un bastón brillante.",
-    "The Alchemist's mod settings: accessibility, analytics and unlocks.": "Los ajustes del mod del Alquimista: accesibilidad, analíticas y desbloqueos.",
     "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "Las {relics} reliquias, {potions} pociones y {powers} poderes del Alquimista.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "El Alquimista, un mod de personaje para Slay the Spire 2: todas sus cartas, reliquias, pociones y poderes, las notas del parche y estadísticas de miles de partidas.",
     "The Merchant asking to buy a Brew potion.": "El Comerciante pide comprar una poción elaborada.",
@@ -252,6 +253,11 @@
     },
     "{name}, {kind}: {text} Upgraded: {upgraded}": "{name}, {kind}: {text} Mejorada: {upgraded}",
     "{name}: {text}": "{name}: {text}",
+    "{n} badges": {
+      "one": "{n} insignia",
+      "many": "{n} insignias",
+      "other": "{n} insignias"
+    },
     "{n} of {total} cards": {
       "one": "{n} de {total} cartas",
       "other": "{n} de {total} cartas"

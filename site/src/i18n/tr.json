@@ -1,7 +1,8 @@
 {
   "readme": {
-    "7dfc803a21cc": "- **Kendini Zehirleme**: Simyacı kendini bilerek zehirler. Bazı saldırılar Zehir'ine bağlı olarak ek hasar verir, diğer kartlar ise Zehir'inin ne sıklıkla tetiklendiğine tepki verir.\n- **Antitoksin**: Zehir'inin sana vereceği hasarı emen bir rezerv. Turunun başında 1 azalır.\n- **Karışım**: Savaşta oluşturabildiğin, iksirlere benzeyen özel kartlar. Temel Karışımlar Patlayan (hasar), Kıvamlı (Blok) ve Mayhoş (kart çekme); uçucu Karışımlar ise Tüten (Lekeli), Keskin (Zayıf ve Savunmasız) ve Işıltılı (Enerji).\n- **Mayalan**: Bu kartlar Sakla özelliğine sahiptir ve El'inde kaldıkları her tur güçlenir.\n- **Demle**: Bu Dinlenme Yeri seçeneği, yalnızca bu yolla elde edilebilen 8 eşsiz iksirden 1'ini almanı sağlar. Bu demlemelerin kalitesi sayesinde Tüccar onları senden 100 Altın'a satın almaya hazırdır.",
-    "b40936bd23dc": "Bu mod hâlâ geliştirme aşamasında ve içeriği değişebilir, ama geri bildirimler memnuniyetle karşılanır! Mod hakkında konuşmak için en iyi yer, resmi Slay the Spire Discord sunucusunun [#modding-forum kanalındaki The Alchemist gönderisi](https://discord.com/channels/309399445785673728/1536374761699938424)dir.\n\nÇeviriler şimdilik otomatik olarak oluşturuluyor. İçerik değişiklikleri yavaşladığında çevirileri anadili konuşan çevirmenlere yaptırmayı planlıyorum. O zamana kadar düzeltmeler memnuniyetle karşılanır! Kendi dilinde bir hata görürsen benimle iletişime geç ya da GitHub'da bir pull request aç."
+    "28b62f70538d": "Simyacı, Slay the Spire 2 için yeni bir karakter: her şeyi bir kez içmeye hazır meraklı bir kurbağa. Kendini bilerek zehirler ve bunu güce dönüştürür, savaşın ortasında iksirlere benzeyen kartlar karıştırır, kartları hazır olana kadar elinde mayalandırır ve Dinlenme Yerlerinde Tüccar'a satmak için özel iksirler demler.",
+    "023ac223a1ef": "- **Kendini Zehirleme**: Simyacı kendini bilerek zehirler. Bazı saldırılar ne kadar çok Zehir'in varsa o kadar fazla hasar verir, diğer kartlar ise Zehir'in her tetiklendiğinde tetiklenir. Zehir düşmanlarda da işe yarar ve bazı kartlar zehirlenmiş bir düşmana daha sert vurur.\n- **Antitoksin**: Seni kendi Zehir'inden korur. Zehir'in her tetiklendiğinde Antitoksin, en fazla kendi değeri kadar hasarı önler. Harcanmaz, ama her turun başında 1 azalır.\n- **Karışım**: Savaşta oluşturduğun 0 maliyetli kartlar. İksirlere çok benzerler, ama onları elinden oynarsın. Temel Karışımlar Patlayan (hasar), Kıvamlı (Blok) ve Mayhoş (kart çekme). Uçucu Karışımlar ise Tüten (tüm düşmanlara hasar ve Lekeli), Keskin (Zayıf ve Savunmasız) ve Işıltılı (Enerji).\n- **Mayalan**: Bu kartlar Sakla özelliğine sahiptir ve El'inde kaldıkları her tur güçlenir.\n- **Demle**: Destendeki rastgele bir kartı geliştiren ve 3 özel iksirden 1'ini seçmeni sağlayan yeni bir Dinlenme Yeri seçeneği. Bu iksirlerden 8 tane var ve onları yalnızca demleyerek elde edebilirsin. Bu demlemelerin kalitesi sayesinde Tüccar onları senden 100 Altın'a satın almaya hazırdır.",
+    "a43398bb13a3": "Bu mod hâlâ geliştirme aşamasında ve içeriği değişebilir, ama geri bildirimler memnuniyetle karşılanır! Mod hakkında konuşmak için en iyi yer, resmi Slay the Spire Discord sunucusunun #modding-forum kanalındaki [Simyacı gönderisi](https://discord.com/channels/309399445785673728/1536374761699938424)dir.\n\nÇeviriler şimdilik otomatik olarak oluşturuluyor. İçerik değişiklikleri yavaşladığında çevirileri anadili konuşan çevirmenlere yaptırmayı planlıyorum. O zamana kadar düzeltmeler memnuniyetle karşılanır! Kendi dilinde bir hata görürsen benimle iletişime geç ya da GitHub'da bir pull request aç."
   },
   "site": {
     "(opens in a new tab)": "(yeni sekmede açılır)",
@@ -35,6 +36,7 @@
     "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 100 Gold.": "Demle, bu iksirlerden 3 tanesini seçenek olarak sunan bir Dinlenme Yeri seçeneğidir. Bu iksirleri başka hiçbir şey yapmaz ve Tüccar onları 100 Altın'a satın alır.",
     "Brew potion, made only at a rest site": "Demleme iksiri, yalnızca Dinlenme Yeri'nde yapılır",
     "Brew potions": "Demleme İksirleri",
+    "Calcination, the first chapter of the Alchemist's story on the Timeline.": "Kalsinasyon, Simyacı'nın Zaman Çizelgesi'ndeki hikâyesinin ilk bölümü.",
     "Card rewards": "Kart ödülleri",
     "Card stats": "Kart istatistikleri",
     "Card text from {version}.": "{version} sürümündeki kart metni.",
@@ -123,6 +125,7 @@
     "Search cards": "Kart ara",
     "Search names and text": "İsim ve metinlerde ara",
     "See every card": "Tüm kartları gör",
+    "See mechanics": "Mekanikleri gör",
     "Share of Mixes": "Karışımlardaki payı",
     "Shop": "Dükkan",
     "Shop relic": "Dükkan Kalıntısı",
@@ -130,7 +133,6 @@
     "Show base card": "Temel kartı göster",
     "Show cards": "Kartları göster",
     "Show keyword tips": "Anahtar kelime açıklamalarını göster",
-    "Show more": "Daha fazla göster",
     "Show upgraded": "Geliştirilmişi göster",
     "Show {n} cards": "{n} kartı göster",
     "Show {n} older changes": "{n} eski değişikliği göster",
@@ -157,7 +159,6 @@
     "Text from {version}.": "{version} sürümündeki metin.",
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "Simyacı bir şelalenin yanında savaşıyor, elinde Simyacı kartları var.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "Karakter seçim ekranında Simyacı: mor cüppeli, parlayan asalı yeşil bir kurbağa.",
-    "The Alchemist's mod settings: accessibility, analytics and unlocks.": "Simyacı'nın mod ayarları: erişilebilirlik, analitik ve kilit açma.",
     "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "Simyacı'nın {relics} kalıntısı, {potions} iksiri ve {powers} gücü.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Simyacı, bir Slay the Spire 2 karakter modu: her kart, kalıntı, iksir ve güç, yama notları ve binlerce oyundan istatistikler.",
     "The Merchant asking to buy a Brew potion.": "Bir Demleme iksirini satın almak isteyen Tüccar.",
@@ -216,6 +217,10 @@
     "win rate over {n} runs": "{n} oyunda kazanma oranı",
     "{name}, {kind}: {text} Upgraded: {upgraded}": "{name}, {kind}: {text} Geliştirilmiş: {upgraded}",
     "{name}: {text}": "{name}: {text}",
+    "{n} badges": {
+      "one": "{n} rozet",
+      "other": "{n} rozet"
+    },
     "{n} of {total} cards": "{total} karttan {n} tanesi",
     "{n} players": "{n} oyuncu",
     "{n} potions": "{n} iksir",
