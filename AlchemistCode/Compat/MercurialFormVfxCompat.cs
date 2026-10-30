@@ -7,8 +7,11 @@ using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Forms;
 using MegaCrit.Sts2.Core.TestSupport;
 
+// COMPAT-BRANCH: beta
+
 namespace Alchemist.AlchemistCode.Powers;
 
+// THIS COPY IS THE beta IMPLEMENTATION. main HOLDS A STUB; ON A MERGE, EACH BRANCH KEEPS ITS OWN SIDE.
 internal static class MercurialFormVfx
 {
     private const string Dir = $"{MainFile.ResPath}/animations/vfx/mercurial_form";
@@ -31,7 +34,7 @@ internal static class MercurialFormVfx
     private static string? _idle;
     private static string? _triggered;
 
-    public static NFormVfx? Create(Creature owner)
+    public static Node2D? Create(Creature owner)
     {
         if (TestMode.IsOn) return null;
         if (NCombatRoom.Instance?.GetCreatureNode(owner)?.Visuals is not { FormVfxHolder: not null } visuals)
@@ -65,7 +68,7 @@ internal static class MercurialFormVfx
         return vfx;
     }
 
-    public static void OnEffectTriggered(NFormVfx? vfx)
+    public static void OnEffectTriggered(Node2D? vfx)
     {
         if (_triggered == null || vfx == null || !GodotObject.IsInstanceValid(vfx)) return;
         if (vfx.GetChildCount() == 0 || vfx.GetChild(0) is not Node2D node) return;
@@ -78,7 +81,7 @@ internal static class MercurialFormVfx
         if (_idle != null) state.AddAnimation(_idle);
     }
 
-    public static void FadeOut(NFormVfx? vfx)
+    public static void FadeOut(Node2D? vfx)
     {
         if (vfx == null || !GodotObject.IsInstanceValid(vfx) || !vfx.IsInsideTree()) return;
 

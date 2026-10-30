@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Godot;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -14,6 +15,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -22,9 +24,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Alchemist.AlchemistCode.Compat;
 
 /// <summary>
-/// ONE OF THE FOUR FILES THAT DIFFER BETWEEN THE beta AND main BRANCHES. The others are
-/// AntitoxinPowerCompat.cs, SteepPowerCompat.cs and AlchemistAnimatorCompat.cs, which hold the
-/// overrides that cannot be routed through a wrapper. Each names its branch in a COMPAT-BRANCH
+/// ONE OF THE FIVE FILES THAT DIFFER BETWEEN THE beta AND main BRANCHES. The others are
+/// AntitoxinPowerCompat.cs, SteepPowerCompat.cs, AlchemistAnimatorCompat.cs and MercurialFormVfxCompat.cs,
+/// which hold the overrides and the vfx that cannot be routed through a wrapper. Each names its branch in a COMPAT-BRANCH
 /// marker that scripts/lint_sync.py checks against the branch you are on. AlchemistCardCompat.cs
 /// is marked any and is identical on both.
 /// THIS COPY IS THE beta IMPLEMENTATION.
@@ -94,4 +96,17 @@ public static class GameCompat
         using var entry = state.GetCurrent(0);
         entry?.SetTrackTime(entry.GetAnimationEnd() * (float)rng.NextDouble());
     }
+
+    /// <summary>
+    /// Whether the hotkey glyphs should show. Beta shows them for a controller and for keyboard
+    /// navigation; main only knows whether a controller is in use.
+    /// </summary>
+    public static bool IsDirectionalNavigation(NControllerManager controllers) =>
+        controllers.IsUsingDirectionalNavigation;
+
+    /// <summary>Toggles a tickbox from a hotkey with the sound and press tween a click gives.</summary>
+    public static void ToggleTick(NTickbox tickbox) => tickbox.ForceToggleTick();
+
+    /// <summary>Points a copied hotkey glyph at the input it now answers to.</summary>
+    public static void UpdateHotkeyIcon(Control icon, string input) => (icon as NHotkeyIcon)?.UpdateInput(input);
 }
