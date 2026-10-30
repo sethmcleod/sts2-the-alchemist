@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Godot;
 using HarmonyLib;
 using Alchemist.AlchemistCode.Cards;
+using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode.Config;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
@@ -23,7 +24,7 @@ public static class BetaArtTickboxPatches
     private sealed class Row
     {
         public required NTickbox Tickbox;
-        public required NHotkeyIcon? HotkeyIcon;
+        public required Control? HotkeyIcon;
         public required float UpgradeLeft;
         public required float UpgradeRight;
         public float? PlacedUpgradeLeft;
@@ -32,7 +33,7 @@ public static class BetaArtTickboxPatches
 
         public void ToggleFromHotkey()
         {
-            if (GodotObject.IsInstanceValid(Tickbox) && Tickbox.IsVisibleInTree()) Tickbox.ForceToggleTick();
+            if (GodotObject.IsInstanceValid(Tickbox) && Tickbox.IsVisibleInTree()) GameCompat.ToggleTick(Tickbox);
         }
     }
 
@@ -135,7 +136,7 @@ public static class BetaArtTickboxPatches
         tickbox.Visible = false;
         tickbox.Modulate = Colors.White;
         Adopt(upgrade, tickbox, tickbox);
-        var hotkeyIcon = tickbox.FindChild("HotkeyIcon", true, false) as NHotkeyIcon;
+        var hotkeyIcon = (tickbox.FindChild("HotkeyIcon", true, false) ?? tickbox.FindChild("ControllerIcon", true, false)) as Control;
         if (hotkeyIcon != null)
         {
             hotkeyIcon.UniqueNameInOwner = false;
@@ -198,8 +199,8 @@ public static class BetaArtTickboxPatches
     private static void RefreshHotkeyIcon(Row row)
     {
         if (row.HotkeyIcon is not { } icon || !GodotObject.IsInstanceValid(icon)) return;
-        icon.Visible = NControllerManager.Instance?.IsUsingDirectionalNavigation == true;
-        icon.UpdateInput(MegaInput.select);
+        icon.Visible = NControllerManager.Instance is { } controllers && GameCompat.IsDirectionalNavigation(controllers);
+        GameCompat.UpdateHotkeyIcon(icon, MegaInput.select);
     }
 
     private static void Adopt(Node source, Node copy, Node owner)
