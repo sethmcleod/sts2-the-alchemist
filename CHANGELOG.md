@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.2] - 2026-10-30
+
 ### Fixed
 
 - Fixed Twitch card (Hero Expansion) not counting its additional hits toward the Attack's own effects, such as Mortar's Block
