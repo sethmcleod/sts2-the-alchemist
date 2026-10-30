@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.1] - 2026-10-30
+
 ### Added
 
 - Added a Beta Art toggle to the card inspect screen for cards with final art
