@@ -1,3 +1,4 @@
+using Godot;
 using System.Collections.Generic;
 using System.Linq;
 using MegaCrit.Sts2.Core.Combat;
@@ -9,7 +10,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.Nodes.Vfx.Forms;
 
 namespace Alchemist.AlchemistCode.Powers;
 
@@ -20,7 +20,7 @@ public class MercurialFormPower : AlchemistPower
 
     private int _granted;
 
-    private NFormVfx? _vfx;
+    private Node2D? _vfx;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[]

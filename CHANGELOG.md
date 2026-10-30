@@ -10,7 +10,6 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 ### Added
 
 - Added a Beta Art toggle to the card inspect screen for cards with final art
-- Added an animation for Mercurial Form power
 - Added Equivalent Exchange card: "Exhaust 1 card. Choose a basic Mix (Mix+). Add a copy of it into your Hand for each Energy that card cost. Exhaust." It replaces Harvest
 - Added Restock card: "At the end of your turn, shuffle a random Mix from your Exhaust Pile into your Draw Pile." Cost 2(1). It replaces Fresh Batch
 - Added Venom Shock card: "Deal 10(13) damage. If the enemy has Poison, hits an additional time." Cost 2. It replaces Backfire

@@ -23,7 +23,7 @@ public static class BetaArtTickboxPatches
     private sealed class Row
     {
         public required NTickbox Tickbox;
-        public required NHotkeyIcon? HotkeyIcon;
+        public required Control? HotkeyIcon;
         public required float UpgradeLeft;
         public required float UpgradeRight;
         public float? PlacedUpgradeLeft;
@@ -32,7 +32,14 @@ public static class BetaArtTickboxPatches
 
         public void ToggleFromHotkey()
         {
-            if (GodotObject.IsInstanceValid(Tickbox) && Tickbox.IsVisibleInTree()) Tickbox.ForceToggleTick();
+            if (!GodotObject.IsInstanceValid(Tickbox) || !Tickbox.IsVisibleInTree()) return;
+            if (Tickbox.HasMethod("ForceToggleTick"))
+            {
+                Tickbox.Call("ForceToggleTick");
+                return;
+            }
+            Tickbox.IsTicked = !Tickbox.IsTicked;
+            Tickbox.EmitSignal(NTickbox.SignalName.Toggled, Tickbox);
         }
     }
 
@@ -135,7 +142,7 @@ public static class BetaArtTickboxPatches
         tickbox.Visible = false;
         tickbox.Modulate = Colors.White;
         Adopt(upgrade, tickbox, tickbox);
-        var hotkeyIcon = tickbox.FindChild("HotkeyIcon", true, false) as NHotkeyIcon;
+        var hotkeyIcon = (tickbox.FindChild("HotkeyIcon", true, false) ?? tickbox.FindChild("ControllerIcon", true, false)) as Control;
         if (hotkeyIcon != null)
         {
             hotkeyIcon.UniqueNameInOwner = false;
@@ -198,8 +205,11 @@ public static class BetaArtTickboxPatches
     private static void RefreshHotkeyIcon(Row row)
     {
         if (row.HotkeyIcon is not { } icon || !GodotObject.IsInstanceValid(icon)) return;
-        icon.Visible = NControllerManager.Instance?.IsUsingDirectionalNavigation == true;
-        icon.UpdateInput(MegaInput.select);
+        icon.Visible = NControllerManager.Instance is { } controllers
+            && (controllers.Get("IsUsingDirectionalNavigation") is { VariantType: Variant.Type.Bool } directional
+                ? directional.AsBool()
+                : controllers.IsUsingController);
+        if (icon.HasMethod("UpdateInput")) icon.Call("UpdateInput", MegaInput.select);
     }
 
     private static void Adopt(Node source, Node copy, Node owner)
