@@ -1,7 +1,7 @@
 {
   "readme": {
-    "28b62f70538d": "Alchemik to nowa postać do Slay the Spire 2: ciekawska żaba, która wszystkiego spróbuje choć raz. Celowo się truje i zamienia to w siłę, w środku walki miesza karty podobne do mikstur, pozwala kartom fermentować w ręce, aż będą gotowe, a w Obozowiskach warzy specjalne mikstury na sprzedaż dla Handlarza.",
-    "023ac223a1ef": "- **Własna Trucizna**: Alchemik celowo sam się truje. Niektóre ataki zadają tym więcej obrażeń, im więcej masz Trucizny, a inne karty aktywują się za każdym razem, gdy aktywuje się twoja Trucizna. Trucizna działa też na wrogów, a niektóre karty mocniej uderzają w zatrutych wrogów.\n- **Antytoksyna**: Chroni cię przed twoją własną Trucizną. Za każdym razem, gdy twoja Trucizna się aktywuje, Antytoksyna powstrzymuje obrażenia do wysokości swojej wartości. Nie zużywa się, ale na początku każdej tury zmniejsza się o 1.\n- **Mieszanka**: Karty kosztujące 0, które tworzysz w walce. Działają podobnie jak mikstury, tylko zagrywasz je z ręki. Podstawowe Mieszanki to Wybuchowa (obrażenia), Gęsta (Blok) i Rześka (dobieranie kart). Lotne Mieszanki to Dymiąca (obrażenia dla wszystkich wrogów i Skażenie), Gryząca (Słabość i Wrażliwość) oraz Iskrząca (Energia).\n- **Fermentacja**: Te karty mają Zachowanie i stają się silniejsze za każdą turę spędzoną w twojej ręce.\n- **Warzenie**: Nowa opcja w Obozowisku, która ulepsza losową kartę w twojej talii i pozwala wybrać 1 z 3 specjalnych mikstur. Jest 8 takich mikstur i zdobędziesz je tylko dzięki warzeniu. Ze względu na jakość tych wywarów Handlarz chętnie odkupi je od ciebie za 100 szt. Złota.",
+    "060cb30015be": "Alchemik to nowa postać do Slay the Spire 2: ciekawska żaba, która wszystkiego spróbuje choć raz, w osobistej wędrówce przez Iglicę. Pilnuje równowagi własnej trucizny, by szybko rosnąć w siłę, w środku walki miesza karty podobne do mikstur, pozwala innym kartom fermentować w ręce, aż będą gotowe, a w Obozowiskach warzy specjalne mikstury, które można sprzedać Handlarzowi.",
+    "c80e7f014bdc": "- **Trucizna**: Alchemik celowo sam się truje. Niektóre ataki zadają tym więcej obrażeń, im więcej masz Trucizny, a inne karty aktywują się za każdym razem, gdy aktywuje się twoja Trucizna. Jest też wiele sposobów, by nałożyć Truciznę na wrogów.\n- **Antytoksyna**: Chroni cię przed twoją własną Trucizną. Za każdym razem, gdy twoja Trucizna się aktywuje, Antytoksyna powstrzymuje obrażenia do wysokości swojej wartości. Nie zużywa się, ale na początku każdej tury zmniejsza się o 1, tak jak Trucizna.\n- **Mieszanki**: Karty kosztujące 0, które tworzysz w walce i które działają podobnie jak mikstury. Podstawowe Mieszanki to Wybuchowa (obrażenia), Gęsta (Blok) i Rześka (dobieranie kart). Lotne Mieszanki to Dymiąca (obrażenia dla wszystkich wrogów i Skażenie), Gryząca (Słabość i Wrażliwość) oraz Iskrząca (Energia).\n- **Fermentacja**: Te karty mają Zachowanie i stają się mocniejsze za każdą turę spędzoną w twojej ręce. Możesz też manipulować poziomem ich Fermentacji, by zyskać przewagę.\n- **Warzenie**: Nowa opcja w Obozowisku, która ulepsza losową kartę w twojej talii i pozwala wybrać 1 z 3 specjalnych mikstur. Ze względu na jakość tych wywarów Handlarz chętnie odkupi je od ciebie za 100 szt. Złota.",
     "a43398bb13a3": "Ten mod wciąż jest w fazie rozwoju i jego zawartość może się zmieniać, ale opinie są mile widziane! Najlepszym miejscem do rozmów o modzie jest [wątek Alchemika](https://discord.com/channels/309399445785673728/1536374761699938424) na kanale #modding-forum na oficjalnym serwerze Discord Slay the Spire.\n\nNa razie tłumaczenia są generowane automatycznie. Gdy zawartość przestanie się tak często zmieniać, planuję zlecić je rodzimym tłumaczom. Do tego czasu poprawki są mile widziane! Jeśli zauważysz błąd w swoim języku, skontaktuj się ze mną albo otwórz pull request na GitHubie."
   },
   "site": {
@@ -277,12 +277,6 @@
     },
     "{name}, {kind}: {text} Upgraded: {upgraded}": "{name}, {kind}: {text} Po ulepszeniu: {upgraded}",
     "{name}: {text}": "{name}: {text}",
-    "{n} badges": {
-      "one": "{n} odznaka",
-      "few": "{n} odznaki",
-      "many": "{n} odznak",
-      "other": "{n} odznaki"
-    },
     "{n} of {total} cards": {
       "one": "{n} z {total} kart",
       "few": "{n} z {total} kart",

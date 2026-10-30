@@ -1,7 +1,7 @@
 {
   "readme": {
-    "28b62f70538d": "Intro",
-    "023ac223a1ef": "Playstyle",
+    "060cb30015be": "Intro",
+    "c80e7f014bdc": "Playstyle",
     "a43398bb13a3": "Disclaimer"
   },
   "site": [
@@ -217,7 +217,6 @@
     "win rate over {n} runs",
     "{name}, {kind}: {text} Upgraded: {upgraded}",
     "{name}: {text}",
-    "{n} badges",
     "{n} of {total} cards",
     "{n} players",
     "{n} potions",

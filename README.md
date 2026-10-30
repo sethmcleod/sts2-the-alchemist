@@ -1,10 +1,10 @@
 <img width="450" height="90" alt="header" src="https://github.com/user-attachments/assets/ca040185-202a-4fcd-b4fe-39a16cc813ba" />
 
 The Alchemist is a new character for Slay the Spire 2: a curious frog who will
-drink anything once. They poison themselves on purpose and turn it into power,
-mix up potion-like cards in the middle of a fight, let cards ferment in their
-hand until they're ready, and brew special potions at Rest Sites to sell to the
-Merchant.
+drink anything once, on a personal journey through the Spire. They balance their
+own poison to quickly get stronger, mix up potion-like cards during combat while
+letting other cards ferment in hand until they're ready, and brew special potions
+at Rest Sites that can be sold to the Merchant.
 
 ## Overview
 
@@ -18,22 +18,20 @@ Merchant.
 
 ## Playstyle
 
-- **Self-Poison**: The Alchemist doses themselves on purpose. Some attacks deal
+- **Poison**: The Alchemist doses themselves on purpose. Some attacks deal
   more damage the more Poison you have, and other cards trigger every time your
-  Poison does. Poison works on enemies too, and some cards hit harder against a
-  Poisoned enemy.
+  Poison does. There are also many ways to apply Poison to enemies.
 - **Antitoxin**: Protects you from your own Poison. Each time your Poison
   triggers, Antitoxin prevents up to that much damage. It isn't used up, but it
-  goes down by 1 at the start of each turn.
-- **Mix**: 0-cost cards you create in combat, a lot like potions you play from
-  your hand. The basic Mixes are Bursting (damage), Syrupy (Block) and Zesty
-  (draw). The volatile Mixes are Fuming (damage to all enemies and Tainted),
-  Acrid (Weak and Vulnerable) and Sparkling (Energy).
-- **Ferment**: These cards Retain and get stronger for every turn they stay in
-  your hand.
+  goes down by 1 at the start of each turn just like Poison.
+- **Mixes**: 0-cost cards you create in combat that have effects similar to
+  potions. The basic Mixes are Bursting (damage), Syrupy (Block) and Zesty (draw).
+  The volatile Mixes are Fuming (damage to all enemies and Tainted), Acrid (Weak
+  and Vulnerable) and Sparkling (Energy).
+- **Ferment**: These cards Retain and get more potent for every turn they stay in
+  your hand. There are ways to manipulate these Fermentation levels to gain an edge.
 - **Brew**: A new Rest Site option that upgrades a random card in your deck and
-  lets you choose 1 of 3 special potions. There are 8 of these potions, and
-  brewing is the only way to get them. Due to the quality of these brews, the
+  lets you choose 1 of 3 special potions. Due to the quality of these brews, the
   Merchant is willing to buy them from you for 100 Gold.
 
 <!-- The website shows this section up to here -->
