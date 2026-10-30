@@ -11,10 +11,10 @@ public class CoupDeGrace : AlchemistCard
 {
     public CoupDeGrace() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        WithVar("Per", 4, 0);
-        WithCalculatedDamage(7, 4, static (card, target) =>
+        WithVar("Per", 2, 0);
+        WithCalculatedDamage(7, 3, static (card, target) =>
                 Math.Floor((decimal)(target?.GetPowerAmount<PoisonPower>() ?? 0) / card.DynamicVars["Per"].BaseValue),
-            ValueProp.Move, 3, 1);
+            ValueProp.Move, 3, 0);
         WithTip(typeof(PoisonPower));
     }
 

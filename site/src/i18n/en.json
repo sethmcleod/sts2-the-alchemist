@@ -1,7 +1,8 @@
 {
   "readme": {
-    "7b34f128fe70": "Playstyle",
-    "b40936bd23dc": "Disclaimer"
+    "060cb30015be": "Intro",
+    "c80e7f014bdc": "Playstyle",
+    "a43398bb13a3": "Disclaimer"
   },
   "site": [
     "(opens in a new tab)",
@@ -32,9 +33,10 @@
     "Best for its rarity",
     "Bought",
     "Brew",
-    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.",
+    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 100 Gold.",
     "Brew potion, made only at a rest site",
     "Brew potions",
+    "Calcination, the first chapter of the Alchemist's story on the Timeline.",
     "Card rewards",
     "Card stats",
     "Card text from {version}.",
@@ -123,6 +125,7 @@
     "Search cards",
     "Search names and text",
     "See every card",
+    "See mechanics",
     "Share of Mixes",
     "Shop",
     "Shop relic",
@@ -130,7 +133,6 @@
     "Show base card",
     "Show cards",
     "Show keyword tips",
-    "Show more",
     "Show upgraded",
     "Show {n} cards",
     "Show {n} older changes",
@@ -157,7 +159,6 @@
     "Text from {version}.",
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.",
-    "The Alchemist's mod settings: accessibility, analytics and unlocks.",
     "The Alchemist's {relics} relics, {potions} potions and {powers} powers.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.",
     "The Merchant asking to buy a Brew potion.",

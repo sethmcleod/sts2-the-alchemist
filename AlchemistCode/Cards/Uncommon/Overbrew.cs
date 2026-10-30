@@ -12,6 +12,7 @@ public class Overbrew : AlchemistCard
     public Overbrew() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Extra", 1);
+        WithKeyword(CardKeyword.Exhaust);
         WithUpgradingCardTip<Token.BurstingMix>();
         WithUpgradingCardTip<Token.SyrupyMix>();
         WithUpgradingCardTip<Token.ZestyMix>();

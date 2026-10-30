@@ -53,7 +53,7 @@ jobs:
           fi
 
       - name: Rebuild with the latest runs
-        if: steps.branch.outputs.changed == 'false'
+        if: steps.branch.outputs.changed == 'false' && github.event_name == 'workflow_dispatch'
         env:
           HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
         run: |

@@ -36,8 +36,7 @@ public class SecretSauce : AlchemistHeroCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var mix = await Mixing.Choose(choiceContext, Owner, upgraded: IsUpgraded, source: this);
-        if (mix != null) await CardPileCmd.AddGeneratedCardToCombat(mix, PileType.Hand, Owner);
+        await Mixing.CreateRandom(choiceContext, Owner, IsUpgraded, Mixing.Basic, this);
         if (!PileType.Hand.GetPile(Owner).Cards.Any(CanLace)) return;
         var chosen = (await CardSelectCmd.FromHand(choiceContext, Owner,
             new CardSelectorPrefs(Prompt, 1), CanLace, this)).FirstOrDefault();

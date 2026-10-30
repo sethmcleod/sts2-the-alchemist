@@ -1,7 +1,8 @@
 {
   "readme": {
-    "7b34f128fe70": "- **Racun Diri**: Si Alkemis sengaja meracuni dirinya sendiri. Beberapa serangan memberikan kerusakan tambahan berdasarkan Racun milikmu, dan kartu lain memperhatikan seberapa sering Racun milikmu terpicu.\n- **Antitoksin**: Cadangan yang menyerap kerusakan yang akan diberikan Racun milikmu kepadamu. Antitoksin berkurang 1 pada awal giliranmu.\n- **Campuran**: Token yang bisa kamu buat dalam perlawanan dan mirip dengan ramuan. Campuran dasar adalah Ledak (kerusakan), Kental (Blok), dan Segar (ambil kartu); Campuran volatil adalah Asap (Noda), Getir (Lemah dan Rentan), dan Soda (Energi).\n- **Fermentasi**: Kartu-kartu ini memiliki Pertahankan dan makin kuat untuk setiap giliran yang dilewatinya di tanganmu.\n- **Racik**: Pilihan Peristirahatan ini memungkinkanmu mendapatkan 1 dari 8 ramuan unik yang hanya bisa didapat dengan cara ini. Karena kualitas racikan ini, Pedagang bersedia membelinya darimu seharga 150 Emas.",
-    "b40936bd23dc": "Mod ini masih dalam pengembangan dan isinya bisa berubah, tetapi masukan sangat diterima! Tempat terbaik untuk membahas mod ini adalah server Discord resmi Slay the Spire di [postingan The Alchemist di #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nUntuk saat ini, terjemahan dibuat secara otomatis. Rencananya, penerjemah penutur asli akan dilibatkan setelah perubahan konten mulai melambat. Sementara itu, koreksi sangat dihargai! Jika kamu menemukan kesalahan dalam bahasamu, hubungi saya atau buka pull request di GitHub."
+    "060cb30015be": "Si Alkemis adalah karakter baru untuk Slay the Spire 2: seekor katak penasaran yang mau mencoba minum apa saja sekali, dalam perjalanan pribadinya menembus Spire. Ia menyeimbangkan racun di tubuhnya sendiri agar cepat bertambah kuat, mencampur kartu mirip ramuan di tengah pertarungan sambil membiarkan kartu lain berfermentasi di tangannya sampai siap, dan meracik ramuan spesial di Peristirahatan yang bisa dijual ke Pedagang.",
+    "c80e7f014bdc": "- **Racun**: Si Alkemis sengaja meracuni dirinya sendiri. Beberapa serangan memberikan kerusakan makin besar jika Racun milikmu makin banyak, dan kartu lain ikut terpicu setiap kali Racun milikmu terpicu. Ada juga banyak cara untuk menerapkan Racun ke musuh.\n- **Antitoksin**: Melindungimu dari Racun milikmu sendiri. Setiap kali Racun milikmu terpicu, Antitoksin mencegah kerusakan hingga sebesar jumlah itu. Antitoksin tidak habis terpakai, tetapi berkurang 1 pada awal setiap giliran, sama seperti Racun.\n- **Campuran**: Kartu berharga 0 yang kamu buat dalam pertarungan dengan efek yang mirip ramuan. Campuran dasar adalah Ledak (kerusakan), Kental (Blok), dan Segar (ambil kartu). Campuran volatil adalah Asap (kerusakan ke semua musuh dan Noda), Getir (Lemah dan Rentan), dan Soda (Energi).\n- **Fermentasi**: Kartu-kartu ini memiliki Pertahankan dan makin ampuh untuk setiap giliran yang dilewatinya di tanganmu. Ada beberapa cara untuk mengatur tingkat Fermentasi ini demi mendapat keunggulan.\n- **Racik**: Pilihan baru di Peristirahatan yang meningkatkan sebuah kartu acak dalam Dek kamu dan memungkinkanmu memilih 1 dari 3 ramuan spesial. Karena kualitas racikan ini, Pedagang bersedia membelinya darimu seharga 100 Emas.",
+    "a43398bb13a3": "Mod ini masih dalam pengembangan dan isinya bisa berubah, tetapi masukan sangat diterima! Tempat terbaik untuk membahas mod ini adalah server Discord resmi Slay the Spire di [postingan The Alchemist di #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nUntuk saat ini, terjemahan dibuat secara otomatis. Rencananya, penerjemah penutur asli akan dilibatkan setelah perubahan konten mulai melambat. Sementara itu, koreksi sangat dihargai! Jika kamu menemukan kesalahan dalam bahasamu, hubungi saya atau buka pull request di GitHub."
   },
   "site": {
     "(opens in a new tab)": "(terbuka di tab baru)",
@@ -32,9 +33,10 @@
     "Best for its rarity": "Terbaik di kelangkaannya",
     "Bought": "Dibeli",
     "Brew": "Racik",
-    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Racik adalah pilihan di Peristirahatan yang menawarkan 3 dari ramuan ini untuk dipilih. Tidak ada cara lain untuk membuatnya, dan Pedagang membelinya seharga 150 Emas.",
+    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 100 Gold.": "Racik adalah pilihan di Peristirahatan yang menawarkan 3 dari ramuan ini untuk dipilih. Tidak ada cara lain untuk membuatnya, dan Pedagang membelinya seharga 100 Emas.",
     "Brew potion, made only at a rest site": "Ramuan Racik, hanya dibuat di Peristirahatan",
     "Brew potions": "Ramuan Racik",
+    "Calcination, the first chapter of the Alchemist's story on the Timeline.": "Kalsinasi, bab pertama kisah Si Alkemis di Linimasa.",
     "Card rewards": "Jarahan kartu",
     "Card stats": "Statistik kartu",
     "Card text from {version}.": "Teks kartu dari {version}.",
@@ -123,6 +125,7 @@
     "Search cards": "Cari kartu",
     "Search names and text": "Cari nama dan teks",
     "See every card": "Lihat semua kartu",
+    "See mechanics": "Lihat mekanik",
     "Share of Mixes": "Porsi Campuran",
     "Shop": "Toko",
     "Shop relic": "Pusaka Toko",
@@ -130,7 +133,6 @@
     "Show base card": "Lihat kartu dasar",
     "Show cards": "Tampilkan kartu",
     "Show keyword tips": "Tampilkan penjelasan kata kunci",
-    "Show more": "Tampilkan lebih banyak",
     "Show upgraded": "Lihat peningkatan",
     "Show {n} cards": "Tampilkan {n} kartu",
     "Show {n} older changes": "Tampilkan {n} perubahan sebelumnya",
@@ -157,7 +159,6 @@
     "Text from {version}.": "Teks dari {version}.",
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "Si Alkemis bertarung di dekat air terjun, dengan tangan berisi kartu Alkemis.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "Si Alkemis di layar pemilihan karakter: katak hijau berjubah ungu dengan tongkat bercahaya.",
-    "The Alchemist's mod settings: accessibility, analytics and unlocks.": "Pengaturan mod Si Alkemis: aksesibilitas, analitik, dan konten terbuka.",
     "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "{relics} pusaka, {potions} ramuan, dan {powers} kuasa Si Alkemis.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Si Alkemis, mod karakter Slay the Spire 2: setiap kartu, pusaka, ramuan, dan kuasa, catatan patch, serta statistik dari ribuan perjalanan.",
     "The Merchant asking to buy a Brew potion.": "Pedagang yang ingin membeli ramuan Racik.",

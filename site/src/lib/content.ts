@@ -100,7 +100,7 @@ export function itemChanges(id: string) {
 }
 
 const images = import.meta.glob<{ default: ImageMetadata }>([
-  '../../../Alchemist/images/{card_portraits,relics,potions,powers,badges}/**/*.png',
+  '../../../Alchemist/images/{badges,card_portraits,card_portraits/beta,potions,powers,relics}/*.png',
   '../../../workshop/previews/*.png',
 ]);
 

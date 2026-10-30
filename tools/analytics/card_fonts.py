@@ -69,13 +69,15 @@ TAG_RE = re.compile(r"\[/?[^\]]*\]")
 
 def words(lang: str, game: dict) -> str:
     """Every character of the mod's card, relic, potion, power and keyword text in one language,
-    and the game's names for the keywords and card types."""
+    with the English text for any key it lacks, and the game's names for the keywords and card types."""
     found = set(ALWAYS)
     for table in ("cards", "relics", "potions", "powers", "card_keywords"):
-        path = LOC / lang / f"{table}.json"
+        english, path = LOC / "eng" / f"{table}.json", LOC / lang / f"{table}.json"
+        texts = json.loads(english.read_text(encoding="utf-8")) if english.exists() else {}
         if path.exists():
-            for value in json.loads(path.read_text(encoding="utf-8")).values():
-                found.update(TAG_RE.sub("", value))
+            texts |= json.loads(path.read_text(encoding="utf-8"))
+        for value in texts.values():
+            found.update(TAG_RE.sub("", value))
     for group in ("keywords", "types", "rarities"):
         for value in game[lang][group].values():
             found.update(value)

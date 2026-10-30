@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb8682elih4cj"
-path="res://.godot/imported/harvest.png-06922ef82d798c651bdc4dd61fb961a0.ctex"
+uid="uid://c0wpll2p7c7g0"
+path="res://.godot/imported/equivalent_exchange.png-bdd2b7600b7e938c5608ab20e141e036.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/card_portraits/beta/harvest.png"
-dest_files=["res://.godot/imported/harvest.png-06922ef82d798c651bdc4dd61fb961a0.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/equivalent_exchange.png"
+dest_files=["res://.godot/imported/equivalent_exchange.png-bdd2b7600b7e938c5608ab20e141e036.ctex"]
 
 [params]
 

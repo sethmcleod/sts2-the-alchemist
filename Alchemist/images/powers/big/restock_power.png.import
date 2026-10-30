@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4fhucqr4nxdj"
-path="res://.godot/imported/fresh_batch_power.png-655a02a6c7a8ce852786d249ee8fc0c0.ctex"
+uid="uid://qequktweqjd6"
+path="res://.godot/imported/restock_power.png-fcdef6a05c6332d61866916b827ed7d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/fresh_batch_power.png"
-dest_files=["res://.godot/imported/fresh_batch_power.png-655a02a6c7a8ce852786d249ee8fc0c0.ctex"]
+source_file="res://Alchemist/images/powers/big/restock_power.png"
+dest_files=["res://.godot/imported/restock_power.png-fcdef6a05c6332d61866916b827ed7d1.ctex"]
 
 [params]
 

@@ -20,7 +20,7 @@ public class Spores : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;
-        foreach (var enemy in CombatState.Enemies.Where(e => e.IsAlive))
+        foreach (var enemy in CombatState.HittableEnemies)
         {
             PoisonSplash(enemy);
             await PowerCmd.Apply<PoisonPower>(choiceContext, enemy,

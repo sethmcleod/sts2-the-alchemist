@@ -1,7 +1,8 @@
 {
   "readme": {
-    "7b34f128fe70": "- **自身中毒**：炼金术士会故意给自己下毒。有些攻击会根据你的中毒造成额外伤害，另一些卡牌则会关注你的中毒触发的频率。\n- **抗毒素**：一种储备，会吸收你的中毒本应对你造成的伤害。在你的回合开始时减少1点。\n- **药剂**：可以在战斗中生成的衍生牌，类似药水。基础药剂有爆裂（伤害）、黏稠（格挡）和爽劲（抽牌）；挥发性药剂有呛烟（污染）、辛辣（虚弱和易伤）和气泡（能量）。\n- **发酵**：这些牌拥有保留，每在你的手牌中停留一个回合就会增强。\n- **酿造**：这个休息处选项让你获得8种独特药水之一，这些药水只能通过这种方式获得。由于品质上乘，商人愿意以150金币向你收购。",
-    "b40936bd23dc": "这个模组仍在开发中，内容可能会有变动，欢迎提供反馈！讨论这个模组的最佳去处是Slay the Spire官方Discord服务器[#modding-forum频道中的The Alchemist帖子](https://discord.com/channels/309399445785673728/1536374761699938424)。\n\n各语言的翻译目前为自动生成。待内容变动放缓后，计划聘请母语译者进行翻译。在此之前，欢迎指正！如果你发现所用语言中有错误，请联系我，或在GitHub上提交pull request。"
+    "060cb30015be": "炼金术士是Slay the Spire 2的新角色：一只好奇心旺盛、什么都敢喝一次的青蛙，正踏上穿越高塔的个人旅程。炼金术士会平衡自身的毒，借此快速变强；在战斗中途调配类似药水的卡牌，同时让其他卡牌在手牌中发酵，直到时机成熟；还会在休息处酿造特殊药水，这些药水可以卖给商人。",
+    "c80e7f014bdc": "- **中毒**：炼金术士会故意给自己下毒。有些攻击会随着你的中毒层数增加而造成更多伤害，另一些卡牌则会在你的中毒每次触发时生效。此外还有许多方法可以给予敌人中毒。\n- **抗毒素**：保护你免受自身中毒的伤害。每当你的中毒触发时，抗毒素最多抵消等量的伤害。它不会被用掉，但在每个回合开始时减少1点，就像中毒一样。\n- **药剂**：你在战斗中生成的0费卡牌，效果与药水相似。基础药剂有爆裂（伤害）、黏稠（格挡）和爽劲（抽牌）；挥发性药剂有呛烟（对所有敌人造成伤害并施加污染）、辛辣（虚弱和易伤）和气泡（能量）。\n- **发酵**：这些牌拥有保留，每在你的手牌中停留一个回合，效力就会更强。有多种方法可以操控这些发酵层数，助你占得先机。\n- **酿造**：新的休息处选项，会随机升级你牌组中的一张牌，并让你从3瓶特殊药水中选择1瓶。由于品质上乘，商人愿意以100金币向你收购。",
+    "a43398bb13a3": "这个模组仍在开发中，内容可能会有变动，欢迎提供反馈！讨论这个模组的最佳去处是Slay the Spire官方Discord服务器#modding-forum频道中的[The Alchemist帖子](https://discord.com/channels/309399445785673728/1536374761699938424)。\n\n各语言的翻译目前为自动生成。待内容变动放缓后，计划聘请母语译者进行翻译。在此之前，欢迎指正！如果你发现所用语言中有错误，请联系我，或在GitHub上提交pull request。"
   },
   "site": {
     "(opens in a new tab)": "（在新标签页中打开）",
@@ -32,9 +33,10 @@
     "Best for its rarity": "同稀有度中表现最佳",
     "Bought": "购买",
     "Brew": "酿造",
-    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "酿造是休息处的一个选项，会提供3瓶此类药水供你选择。其他方式都无法制作它们，商人会以150金币收购。",
+    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 100 Gold.": "酿造是休息处的一个选项，会提供3瓶此类药水供你选择。其他方式都无法制作它们，商人会以100金币收购。",
     "Brew potion, made only at a rest site": "酿造药水，只能在休息处制作",
     "Brew potions": "酿造药水",
+    "Calcination, the first chapter of the Alchemist's story on the Timeline.": "煅烧：时间线上炼金术士故事的第一章。",
     "Card rewards": "卡牌奖励",
     "Card stats": "卡牌统计",
     "Card text from {version}.": "卡牌文本来自{version}。",
@@ -123,6 +125,7 @@
     "Search cards": "搜索卡牌",
     "Search names and text": "搜索名称和文本",
     "See every card": "查看所有卡牌",
+    "See mechanics": "查看机制",
     "Share of Mixes": "药剂占比",
     "Shop": "商店",
     "Shop relic": "商店遗物",
@@ -130,7 +133,6 @@
     "Show base card": "显示基础版",
     "Show cards": "显示卡牌",
     "Show keyword tips": "显示关键词说明",
-    "Show more": "显示更多",
     "Show upgraded": "显示升级版",
     "Show {n} cards": "显示{n}张牌",
     "Show {n} older changes": "显示更早的 {n} 项变更",
@@ -157,7 +159,6 @@
     "Text from {version}.": "文本来自{version}。",
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "炼金术士在瀑布旁战斗，手牌都是炼金术士的卡牌。",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "角色选择界面中的炼金术士：一只身穿紫色长袍、手持发光法杖的绿色青蛙。",
-    "The Alchemist's mod settings: accessibility, analytics and unlocks.": "炼金术士的模组设置：无障碍、分析与解锁内容。",
     "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "炼金术士的{relics}件遗物、{potions}种药水与{powers}种能力。",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "炼金术士，一个Slay the Spire 2角色模组：所有卡牌、遗物、药水与能力，更新日志，以及来自数千局游戏的统计数据。",
     "The Merchant asking to buy a Brew potion.": "想要收购酿造药水的商人。",

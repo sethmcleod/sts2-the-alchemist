@@ -1,5 +1,4 @@
-﻿using Alchemist.AlchemistCode.Config;
-using Godot;
+﻿using Godot;
 
 namespace Alchemist.AlchemistCode.Extensions;
 
@@ -25,25 +24,19 @@ public static class StringExtensions
     }
 
     // Final art in card_portraits/<file> wins over the beta placeholder in card_portraits/beta/<file>, the
-    // same layout the base game decompiles to, so art can land one card at a time. The Use Beta Art
-    // setting turns that order around. With neither file, CardImagePath falls back to the generic card.png
-    public static string CardImageOrBetaPath(this string file)
+    // same layout the base game decompiles to, so art can land one card at a time. A card's Beta Art choice
+    // turns that order around (CardArt.Portrait). With neither file, CardImagePath falls back to the generic
+    // card.png. Big is the 1000x760 copy of the final art in card_portraits/big/<file>: the inspect screen
+    // draws one card at twice its size, and that is the only view where it is sharper than the 500x380 copy
+    public static CardArt ResolveCardArt(this string file)
     {
-        var real = Res(MainFile.ResPath, "images", "card_portraits", file);
-        var beta = Res(MainFile.ResPath, "images", "card_portraits", "beta", file);
-        if (AlchemistModConfig.UseBetaArt && ResourceLoader.Exists(beta)) return beta;
-        return ResourceLoader.Exists(real) ? real : Res("beta", file).CardImagePath();
+        var final = ExistingOrNull(Res(MainFile.ResPath, "images", "card_portraits", file));
+        var beta = ExistingOrNull(Res(MainFile.ResPath, "images", "card_portraits", "beta", file));
+        var big = ExistingOrNull(Res(MainFile.ResPath, "images", "card_portraits", "big", file));
+        return new CardArt(final, beta, big, final ?? beta ?? Res("beta", file).CardImagePath());
     }
 
-    // The 1000x760 copy of the final art in card_portraits/big/<file>. The inspect screen draws one card at
-    // twice its size, and that is the only view where it is sharper than the 500x380 copy. Null when the
-    // card has no final art or the beta art is forced, so the caller keeps the portrait it already has
-    public static string? BigCardImagePathOrNull(this string file)
-    {
-        if (AlchemistModConfig.UseBetaArt) return null;
-        var big = Res(MainFile.ResPath, "images", "card_portraits", "big", file);
-        return ResourceLoader.Exists(big) ? big : null;
-    }
+    private static string? ExistingOrNull(string path) => ResourceLoader.Exists(path) ? path : null;
 
     public static string PowerImagePath(this string path)
     {

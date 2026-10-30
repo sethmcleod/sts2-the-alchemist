@@ -16,9 +16,6 @@ public class RefinePower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.Static(StaticHoverTip.ReplayStatic) };
 
-    // A Mix that arrives already upgraded (an upgraded maker, Fresh Batch) gains Replay instead, so
-    // the smith and Refine add up rather than overlap. The sources upgrade before they add, so the
-    // hook sees the finished card
     public override Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
     {
         if (card.Owner != Owner.Player || !Mixing.IsMix(card)) return Task.CompletedTask;

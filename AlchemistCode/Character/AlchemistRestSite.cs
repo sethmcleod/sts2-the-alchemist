@@ -1,6 +1,8 @@
 using Godot;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Acts;
 using MegaCrit.Sts2.Core.Nodes.RestSite;
 
 namespace Alchemist.AlchemistCode.Character;
@@ -29,12 +31,19 @@ internal static class AlchemistRestSite
 
     public const string ScenePath = $"{MainFile.ResPath}/scenes/rest_site/alchemist_rest_site.tscn";
 
-    // The game picks the loop from the act index alone, thus both halves of act 1 get the green
-    // overgrowth light. The Underdocks is lit blue, and the act 3 loop already carries that light
-    private const string UnderdocksAnimationLeaf = "glory_loop";
+    // The Underdocks has no loop of its own. It is lit blue, and the Glory loop already carries that light
+    private static readonly Dictionary<Type, string> LoopLeaves = new()
+    {
+        [typeof(Overgrowth)] = "overgrowth_loop",
+        [typeof(Underdocks)] = "glory_loop",
+        [typeof(Hive)] = "hive_loop",
+        [typeof(Glory)] = "glory_loop",
+    };
 
-    /// <summary>The loop to play in the Underdocks, or null if the skeleton holds none.</summary>
-    public static string? UnderdocksAnimation { get; private set; }
+    private static readonly Dictionary<Type, string> Loops = [];
+
+    /// <summary>The loop lit for <paramref name="act"/>, or null if the skeleton holds none.</summary>
+    public static string? LoopFor(ActModel act) => Loops.GetValueOrDefault(act.GetType());
 
     // The box the still image filled, which sat correctly at the fire. The scale and the offset
     // below both come from the skeleton at run time, thus a rig whose size or origin moves between
@@ -72,7 +81,9 @@ internal static class AlchemistRestSite
 
         BigHead.Apply(data, HeadBones);
 
-        UnderdocksAnimation = SpineModel.ResolveAnimation(data, UnderdocksAnimationLeaf);
+        foreach (var (act, leaf) in LoopLeaves)
+            if (SpineModel.ResolveAnimation(data, leaf) is { } loop)
+                Loops[act] = loop;
 
         // The two rigs hang their art very differently around the origin: the ironclad reaches from
         // -137 to 265 across and the Alchemist from -234 to 208, thus the sprite needs its own

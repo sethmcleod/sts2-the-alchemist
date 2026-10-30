@@ -10,13 +10,11 @@ namespace Alchemist.AlchemistCode.Cards.Uncommon;
 [CardTheme(CardTheme.Poison)]
 public class Toughen : AlchemistCard
 {
-    private const int PerPoison = 2;
-
     protected internal override bool PlaysCastAnimation => false;
 
     public Toughen() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithCalculatedBlock(5, static (card, _) => Dose(card) * PerPoison, ValueProp.Move, 2, 0);
+        WithCalculatedBlock(8, static (card, _) => Dose(card), ValueProp.Move, 2, 0);
         WithTip(typeof(PoisonPower));
     }
 

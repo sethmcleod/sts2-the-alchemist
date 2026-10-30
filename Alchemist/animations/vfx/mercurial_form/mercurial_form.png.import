@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cngekweo1ua8d"
-path="res://.godot/imported/smelling_salts_power.png-9816d40fb2a4320c479952449403eeb8.ctex"
+uid="uid://dcs0hk8cmc4mm"
+path="res://.godot/imported/mercurial_form.png-f281a70c9d36ea5c6d12d116d9668991.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/smelling_salts_power.png"
-dest_files=["res://.godot/imported/smelling_salts_power.png-9816d40fb2a4320c479952449403eeb8.ctex"]
+source_file="res://Alchemist/animations/vfx/mercurial_form/mercurial_form.png"
+dest_files=["res://.godot/imported/mercurial_form.png-f281a70c9d36ea5c6d12d116d9668991.ctex"]
 
 [params]
 

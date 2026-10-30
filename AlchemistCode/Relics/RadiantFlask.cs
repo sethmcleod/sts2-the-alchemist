@@ -13,7 +13,7 @@ public class RadiantFlask : FlaskRelic
 {
     private const int PotionSlots = 1;
 
-    protected override int Antitoxin => 10;
+    protected override int Antitoxin => 8;
     protected override bool UpgradedMix => true;
 
     public override bool HasUponPickupEffect => true;

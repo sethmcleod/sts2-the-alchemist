@@ -94,9 +94,7 @@ public partial class AntitoxinPower : AlchemistPower
     {
         if (target != Owner) return;
 
-        // Lilypad Cloak reads this in AfterDamageReceived, where the amount is already reduced, so
-        // a fully held tick would pay it nothing without it. Cleared on every hit so it only ever
-        // sees the tick resolving right now
+        // Cleared on every hit, so a later hit never reads an earlier tick's held amount
         AntitoxinRules.ClearTickAbsorb(Owner);
         if (!AntitoxinRules.HasPoisonTickShape(props, dealer, cardSource)) return;
 

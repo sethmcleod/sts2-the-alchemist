@@ -1,7 +1,8 @@
 {
   "readme": {
-    "7b34f128fe70": "- **Własna Trucizna**: Alchemik celowo sam się truje. Niektóre ataki zadają dodatkowe obrażenia zależne od twojej Trucizny, a inne karty reagują na to, jak często twoja Trucizna się aktywuje.\n- **Antytoksyna**: Rezerwa, która pochłania obrażenia, jakie zadałaby ci twoja Trucizna. Na początku twojej tury zmniejsza się o 1.\n- **Mieszanka**: Karty specjalne podobne do mikstur, które możesz tworzyć w walce. Podstawowe Mieszanki to Wybuchowa (obrażenia), Gęsta (Blok) i Rześka (dobieranie kart); lotne Mieszanki to Dymiąca (Skażenie), Gryząca (Słabość i Wrażliwość) oraz Iskrząca (Energia).\n- **Fermentacja**: Te karty mają Zachowanie i stają się silniejsze za każdą turę spędzoną w twojej ręce.\n- **Warzenie**: Ta opcja w Obozowisku pozwala zdobyć 1 z 8 unikalnych mikstur, których nie da się zdobyć w inny sposób. Ze względu na jakość tych wywarów Handlarz chętnie odkupi je od ciebie za 150 szt. Złota.",
-    "b40936bd23dc": "Ten mod wciąż jest w fazie rozwoju i jego zawartość może się zmieniać, ale opinie są mile widziane! Najlepszym miejscem do rozmów o modzie jest oficjalny serwer Discord Slay the Spire, [wątek The Alchemist na kanale #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nNa razie tłumaczenia są generowane automatycznie. Gdy zawartość przestanie się tak często zmieniać, planuję zlecić je rodzimym tłumaczom. Do tego czasu poprawki są mile widziane! Jeśli zauważysz błąd w swoim języku, skontaktuj się ze mną albo otwórz pull request na GitHubie."
+    "060cb30015be": "Alchemik to nowa postać do Slay the Spire 2: ciekawska żaba, która wszystkiego spróbuje choć raz, w osobistej wędrówce przez Iglicę. Pilnuje równowagi własnej trucizny, by szybko rosnąć w siłę, w środku walki miesza karty podobne do mikstur, pozwala innym kartom fermentować w ręce, aż będą gotowe, a w Obozowiskach warzy specjalne mikstury, które można sprzedać Handlarzowi.",
+    "c80e7f014bdc": "- **Trucizna**: Alchemik celowo sam się truje. Niektóre ataki zadają tym więcej obrażeń, im więcej masz Trucizny, a inne karty aktywują się za każdym razem, gdy aktywuje się twoja Trucizna. Jest też wiele sposobów, by nałożyć Truciznę na wrogów.\n- **Antytoksyna**: Chroni cię przed twoją własną Trucizną. Za każdym razem, gdy twoja Trucizna się aktywuje, Antytoksyna powstrzymuje obrażenia do wysokości swojej wartości. Nie zużywa się, ale na początku każdej tury zmniejsza się o 1, tak jak Trucizna.\n- **Mieszanki**: Karty kosztujące 0, które tworzysz w walce i które działają podobnie jak mikstury. Podstawowe Mieszanki to Wybuchowa (obrażenia), Gęsta (Blok) i Rześka (dobieranie kart). Lotne Mieszanki to Dymiąca (obrażenia dla wszystkich wrogów i Skażenie), Gryząca (Słabość i Wrażliwość) oraz Iskrząca (Energia).\n- **Fermentacja**: Te karty mają Zachowanie i stają się mocniejsze za każdą turę spędzoną w twojej ręce. Możesz też manipulować poziomem ich Fermentacji, by zyskać przewagę.\n- **Warzenie**: Nowa opcja w Obozowisku, która ulepsza losową kartę w twojej talii i pozwala wybrać 1 z 3 specjalnych mikstur. Ze względu na jakość tych wywarów Handlarz chętnie odkupi je od ciebie za 100 szt. Złota.",
+    "a43398bb13a3": "Ten mod wciąż jest w fazie rozwoju i jego zawartość może się zmieniać, ale opinie są mile widziane! Najlepszym miejscem do rozmów o modzie jest [wątek Alchemika](https://discord.com/channels/309399445785673728/1536374761699938424) na kanale #modding-forum na oficjalnym serwerze Discord Slay the Spire.\n\nNa razie tłumaczenia są generowane automatycznie. Gdy zawartość przestanie się tak często zmieniać, planuję zlecić je rodzimym tłumaczom. Do tego czasu poprawki są mile widziane! Jeśli zauważysz błąd w swoim języku, skontaktuj się ze mną albo otwórz pull request na GitHubie."
   },
   "site": {
     "(opens in a new tab)": "(otwiera się w nowej karcie)",
@@ -32,9 +33,10 @@
     "Best for its rarity": "Najlepsze w swojej rzadkości",
     "Bought": "Kupiono",
     "Brew": "Warzenie",
-    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Warzenie to opcja w Obozowisku, która daje do wyboru 3 z tych mikstur. Nie da się ich zdobyć w inny sposób, a Handlarz kupuje je za 150 szt. Złota.",
+    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 100 Gold.": "Warzenie to opcja w Obozowisku, która daje do wyboru 3 z tych mikstur. Nie da się ich zdobyć w inny sposób, a Handlarz kupuje je za 100 szt. Złota.",
     "Brew potion, made only at a rest site": "Mikstura z Warzenia, powstaje tylko w Obozowisku",
     "Brew potions": "Mikstury z Warzenia",
+    "Calcination, the first chapter of the Alchemist's story on the Timeline.": "Kalcynacja, pierwszy rozdział historii Alchemika na Osi Czasu.",
     "Card rewards": "Karty z łupów",
     "Card stats": "Statystyki kart",
     "Card text from {version}.": "Tekst karty z wersji {version}.",
@@ -128,6 +130,7 @@
     "Search cards": "Szukaj kart",
     "Search names and text": "Szukaj w nazwach i opisach",
     "See every card": "Zobacz wszystkie karty",
+    "See mechanics": "Zobacz mechaniki",
     "Share of Mixes": "Udział w Mieszankach",
     "Shop": "Zakupiony",
     "Shop relic": "Zakupiony Artefakt",
@@ -135,7 +138,6 @@
     "Show base card": "Pokaż kartę bazową",
     "Show cards": "Pokaż karty",
     "Show keyword tips": "Pokaż opisy słów kluczowych",
-    "Show more": "Pokaż więcej",
     "Show upgraded": "Pokaż ulepszoną",
     "Show {n} cards": {
       "one": "Pokaż {n} kartę",
@@ -177,7 +179,6 @@
     "Text from {version}.": "Tekst z wersji {version}.",
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "Alchemik w walce przy wodospadzie, z ręką pełną kart Alchemika.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "Alchemik na ekranie wyboru postaci: zielona żaba w fioletowych szatach ze świecącym kosturem.",
-    "The Alchemist's mod settings: accessibility, analytics and unlocks.": "Ustawienia moda Alchemik: ułatwienia dostępu, analityka i odblokowania.",
     "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "Artefakty ({relics}), mikstury ({potions}) i moce ({powers}) Alchemika.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Alchemik, mod z postacią do Slay the Spire 2: wszystkie karty, artefakty, mikstury i moce, lista zmian oraz statystyki z tysięcy wypraw.",
     "The Merchant asking to buy a Brew potion.": "Handlarz chce kupić miksturę z Warzenia.",

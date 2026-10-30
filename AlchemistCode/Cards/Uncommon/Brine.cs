@@ -6,26 +6,22 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
-[CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
+[CardTheme(CardTheme.Antitoxin)]
 public class Brine : AlchemistCard
 {
-    public Brine() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
+    public Brine() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
     {
-        WithVar("antitoxin", 2, 1);
-        WithPower<WeakPower>(2, 1);
+        WithVar("antitoxin", 4, 2);
+        WithPower<WeakPower>(2, 0);
         WithTip(typeof(AntitoxinPower));
-        WithTip(typeof(PoisonPower));
     }
-
-    protected override bool ConditionalGlow =>
-        IsMutable && CombatState != null && CombatState.HittableEnemies.Any(Poisoned);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState is not { } combat) return;
         await PowerCmd.Apply<AntitoxinPower>(choiceContext, Owner.Creature, DynamicVars["antitoxin"].IntValue,
             Owner.Creature, this);
-        await PowerCmd.Apply<WeakPower>(choiceContext, combat.HittableEnemies.Where(Poisoned),
+        await PowerCmd.Apply<WeakPower>(choiceContext, combat.HittableEnemies,
             DynamicVars["WeakPower"].IntValue, Owner.Creature, this);
     }
 }

@@ -5,6 +5,54 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.1] - 2026-10-30
+
+### Added
+
+- Added a Beta Art toggle to the card inspect screen for cards with final art
+- Added an animation for Mercurial Form power
+- Added Equivalent Exchange card: "Exhaust 1 card. Choose a basic Mix (Mix+). Add a copy of it into your Hand for each Energy that card cost. Exhaust." It replaces Harvest
+- Added Restock card: "At the end of your turn, shuffle a random Mix from your Exhaust Pile into your Draw Pile." Cost 2(1). It replaces Fresh Batch
+- Added Venom Shock card: "Deal 10(13) damage. If the enemy has Poison, hits an additional time." Cost 2. It replaces Backfire
+
+### Changed
+
+- Buffed Coup de Grace card: additional damage changed from 4(5) for every 4 Poison -> 3 for every 2 Poison
+- Buffed Forked Tongue card: damage increased from 4(6) -> 5(7)
+- Buffed Spatter card: Poison increased from 2 -> 3
+- Changed Knitbone card: Block increased from 5 -> 5(8) and additional Block for each Mix decreased from 1(2) -> 1
+- Changed Toughen card: Block increased from 5(7) -> 8(10) and additional Block for each Poison decreased from 2 -> 1
+- Changed the Antitoxin badge thresholds: 30 / 50 / 80 -> 40 / 60 / 80
+- Changed the Mixes badge thresholds: 60 / 120 / 200 -> 80 / 160 / 240
+- Changed the Potion Sale badge thresholds: 2 / 4 / 6 -> 3 / 5 / 7
+- Nerfed Blend card: Block decreased from 5(8) -> 4(7)
+- Nerfed Brew potions: Merchant sell price decreased from 150 -> 100 Gold
+- Nerfed Lash Out card: damage decreased from 3(5) -> 3(4)
+- Nerfed Mud Pack card (Hero Expansion): Block decreased from 7 -> 6
+- Nerfed Murky Flask relic: Antitoxin at the start of each combat decreased from 5 -> 4
+- Nerfed Overbrew card: it now Exhausts
+- Nerfed Radiant Flask relic: Antitoxin at the start of each combat decreased from 10 -> 8
+- Nerfed Secret Sauce card (Hero Expansion): it now adds a random basic Mix (Mix+) instead of a chosen one
+- Nerfed starting HP: 75 -> 69
+- Reworked Brine card: "Gain 4(6) Antitoxin. Apply 2 Weak to ALL enemies." Cost increased from 1 -> 2
+- Reworked Double Dip card (Hero Expansion) into a Skill: "Apply 4(5) Poison. Apply 4(5) Poison to a random enemy."
+- Reworked Endure card: "Gain 6(9) Block. Gain 3 Antitoxin. Draw 1 card."
+- Reworked Lilypad Cloak relic: "Whenever an enemy's Poison triggers, gain 2 Block."
+- Reworked Quench card: "Gain 6(9) Antitoxin. Gain Block equal to your Antitoxin. Exhaust."
+- Reworked Smelling Salts card: "Gain 1(2) Energy. Next turn, gain 1 Energy. Exhaust." Cost decreased from 1 -> 0
+
+### Removed
+
+- Removed Backfire card, replaced with Venom Shock
+- Removed Fresh Batch card, replaced with Restock
+- Removed Harvest card, replaced with Equivalent Exchange
+
+### Fixed
+
+- Fixed Fumigate, Spatter, Spores, Sweat It Out, Water Down and Wormwood sometimes getting stuck on screen when played
+- Fixed Fumigate, Spatter, Spores, Sweat It Out, The Steeped Blade, Water Down and Wormwood applying Poison to enemies that cannot be hit
+- Fixed Puncture and Snack Attack sometimes not glowing against a Poisoned enemy
+
 ## [0.15.0] - 2026-10-26
 
 ### Added

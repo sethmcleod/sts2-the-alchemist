@@ -4,14 +4,13 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.Models.Acts;
 using MegaCrit.Sts2.Core.Nodes.RestSite;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// NRestSiteCharacter reads the act index alone to pick its loop, thus act 1 always plays
-// overgrowth_loop. Act 1 holds two maps though, and the Underdocks is lit blue where the Overgrowth
-// is green. The act 3 loop already carries a blue light, thus the Underdocks borrows it.
+// NRestSiteCharacter picks its loop from the act index alone. Act 1 holds two maps though, and the
+// Hive and Glory can come in either order, thus the index lights the Alchemist for the wrong fire.
+// This plays the loop of the act itself.
 //
 // This runs after _Ready has queued its own choice. Both wait on the same skeleton, and the one
 // that registers later applies later, thus this one wins
@@ -24,8 +23,9 @@ public static class RestSiteActVariantPatch
     public static void Postfix(NRestSiteCharacter __instance)
     {
         if (__instance.Player?.Character is not Character.Alchemist) return;
-        if (__instance.Player.RunState.Act is not Underdocks) return;
-        if (AlchemistRestSite.UnderdocksAnimation is not { } animation) return;
+
+        var act = __instance.Player.RunState.Act;
+        if (AlchemistRestSite.LoopFor(act) is not { } animation) return;
 
         foreach (var child in __instance.GetChildren())
         {
@@ -42,6 +42,6 @@ public static class RestSiteActVariantPatch
             });
         }
 
-        MainFile.Logger.Info($"The Alchemist rest site plays {animation} for the Underdocks.");
+        MainFile.Logger.Info($"The Alchemist rest site plays {animation} for {act.Id.Entry}.");
     }
 }

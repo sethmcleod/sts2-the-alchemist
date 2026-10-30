@@ -1,5 +1,6 @@
 using Alchemist.AlchemistCode.Compat;
 using System;
+using System.Collections.Concurrent;
 using System.Reflection;
 using HarmonyLib;
 using BaseLib.Abstracts;
@@ -61,13 +62,22 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     private string PortraitFile => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png";
 
-    public override string CustomPortraitPath => PortraitFile.CardImageOrBetaPath();
+    private static readonly ConcurrentDictionary<string, CardArt> ArtByEntry = new();
+
+    private CardArt Art =>
+        ArtByEntry.GetOrAdd(Id.Entry, static entry => $"{entry.RemovePrefix().ToLowerInvariant()}.png".ResolveCardArt());
+
+    internal bool ShowsBetaArt => BetaArtChoices.ShowsBeta(Id.Entry);
+
+    internal bool HasFinalAndBetaArt => Art.HasFinalAndBeta;
+
+    public override string CustomPortraitPath => Art.Portrait(ShowsBetaArt);
     // With the beta fallback too: the Timeline epoch slots and the generated-card previews read
     // Portrait directly, and without it every card still on beta art shows the generic back there
-    public override string PortraitPath => PortraitFile.CardImageOrBetaPath();
+    public override string PortraitPath => Art.Portrait(ShowsBetaArt);
     public override string BetaPortraitPath => $"beta/{PortraitFile}".CardImagePath();
     // The inspect screen swaps this in over the portrait, see CardArtPatches
-    internal string? BigPortraitPath => PortraitFile.BigCardImagePathOrNull();
+    internal string? BigPortraitPath => Art.BigPortrait(ShowsBetaArt);
 
     // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state
     internal bool IsEnchanted => Enchantment != null;
@@ -99,11 +109,10 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     // One home for the enemy-side Poison test, as Dose is for the owner's, so the two never drift
     protected static bool Poisoned(Creature? creature) => creature?.HasPower<PoisonPower>() == true;
 
-    // True in a live combat when every living enemy is Poisoned, so a card gated on "if the enemy
+    // True in a live combat when every enemy that can be hit is Poisoned, so a card gated on "if the enemy
     // has Poison" glows only when any target meets the gate
     protected bool AllEnemiesPoisoned =>
-        IsMutable && CombatState?.Enemies.Where(e => e.IsAlive).ToList() is { Count: > 0 } enemies
-        && enemies.TrueForAll(Poisoned);
+        IsMutable && CombatState?.HittableEnemies is { Count: > 0 } enemies && enemies.All(Poisoned);
 
     // The dose a reader adds to its number. Zero on the canonical model, which has no Owner, so the
     // compendium shows the base value and only the combat instance shows the live total. Every card

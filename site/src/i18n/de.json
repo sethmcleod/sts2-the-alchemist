@@ -1,7 +1,8 @@
 {
   "readme": {
-    "7b34f128fe70": "- **Selbstvergiftung**: Der Alchemist vergiftet sich absichtlich selbst. Manche Angriffe\n  fügen zusätzlichen Schaden abhängig von deinem Gift zu, und andere Karten reagieren darauf,\n  wie oft dein Gift ausgelöst wird.\n- **Antitoxin**: Ein Vorrat, der den Schaden absorbiert, den dein Gift dir zufügen würde.\n  Er wird zu Beginn deines Zuges um 1 reduziert.\n- **Essenz**: Das sind Token-Karten, die du im Kampf erzeugen kannst und die Tränken ähneln.\n  Die einfachen Essenzen sind Berstende Essenz (Schaden), Sirupartige Essenz (Block) und\n  Spritzige Essenz (Karten ziehen); die flüchtigen Essenzen sind Dampfende Essenz (Schmutzig),\n  Beißende Essenz (Schwach und Verwundbar) und Perlende Essenz (Energie).\n- **Gärung**: Diese Karten haben Behalten und werden für jeden Zug stärker, den sie auf\n  deiner Hand bleiben.\n- **Brauen**: Mit dieser Lagerfeuer-Option kannst du 1 von 8 einzigartigen Tränken beschaffen,\n  die es nur auf diesem Weg gibt. Wegen der Qualität dieser Gebräue kauft der\n  Händler sie dir für 150 Gold ab.",
-    "b40936bd23dc": "Diese Mod ist noch in Arbeit und ihre Inhalte können sich ändern, aber Feedback\nist willkommen! Am besten lässt sich die Mod auf dem offiziellen Discord-Server von\nSlay the Spire im [Beitrag zu The Alchemist im Kanal #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424) besprechen.\n\nDie Übersetzungen werden vorerst automatisch erstellt. Sobald sich die Inhalte seltener ändern, sollen muttersprachliche Übersetzer beauftragt werden. Bis dahin sind Korrekturen sehr willkommen! Wenn dir in deiner Sprache ein Fehler auffällt, melde dich gern bei mir oder öffne einen Pull Request auf GitHub."
+    "060cb30015be": "Der Alchemist ist ein neuer Charakter für Slay the Spire 2: ein neugieriger Frosch, der alles mindestens einmal trinken würde, auf einer ganz persönlichen Reise durch den Spire. Er hält sein eigenes Gift im Gleichgewicht, um schnell stärker zu werden, mischt mitten im Kampf trankartige Karten zusammen, während er andere Karten auf der Hand gären lässt, bis sie so weit sind, und braut an Lagerfeuern besondere Tränke, die man an den Händler verkaufen kann.",
+    "c80e7f014bdc": "- **Gift**: Der Alchemist vergiftet sich absichtlich selbst. Manche Angriffe fügen mehr Schaden zu, je mehr Gift du hast, und andere Karten werden jedes Mal ausgelöst, wenn dein Gift ausgelöst wird. Es gibt auch viele Möglichkeiten, Gift auf Gegner anzuwenden.\n- **Antitoxin**: Schützt dich vor deinem eigenen Gift. Immer wenn dein Gift ausgelöst wird, verhindert Antitoxin bis zu dieser Menge an Schaden. Es wird nicht verbraucht, aber zu Beginn jedes Zuges um 1 reduziert, genau wie Gift.\n- **Essenzen**: Karten, die 0 Energie kosten, die du im Kampf erzeugst und die ähnliche Effekte wie Tränke haben. Die einfachen Essenzen sind Berstende Essenz (Schaden), Sirupartige Essenz (Block) und Spritzige Essenz (Karten ziehen). Die flüchtigen Essenzen sind Dampfende Essenz (Schaden an allen Gegnern und Schmutzig), Beißende Essenz (Schwach und Verwundbar) und Perlende Essenz (Energie).\n- **Gärung**: Diese Karten haben Behalten und werden für jeden Zug wirkungsvoller, den sie auf deiner Hand bleiben. Es gibt Wege, ihre Gärung zu beeinflussen und dir so einen Vorteil zu verschaffen.\n- **Brauen**: Eine neue Lagerfeuer-Option, die eine zufällige Karte in deinem Deck verbessert und dich 1 von 3 besonderen Tränken wählen lässt. Wegen der Qualität dieser Gebräue kauft der Händler sie dir für 100 Gold ab.",
+    "a43398bb13a3": "Diese Mod ist noch in Arbeit und ihre Inhalte können sich ändern, aber Feedback ist willkommen! Am besten lässt sich die Mod auf dem offiziellen Discord-Server von Slay the Spire im [Beitrag zu The Alchemist](https://discord.com/channels/309399445785673728/1536374761699938424) im Kanal #modding-forum besprechen.\n\nDie Übersetzungen werden vorerst automatisch erstellt. Sobald sich die Inhalte seltener ändern, sollen muttersprachliche Übersetzer beauftragt werden. Bis dahin sind Korrekturen sehr willkommen! Wenn dir in deiner Sprache ein Fehler auffällt, melde dich gern bei mir oder öffne einen Pull Request auf GitHub."
   },
   "site": {
     "(opens in a new tab)": "(öffnet in neuem Tab)",
@@ -32,9 +33,10 @@
     "Best for its rarity": "Beste ihrer Seltenheit",
     "Bought": "Gekauft",
     "Brew": "Brauen",
-    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Brauen ist eine Lagerfeuer-Option, die 3 dieser Tränke zur Wahl stellt. Nichts anderes stellt sie her, und der Händler kauft sie für 150 Gold an.",
+    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 100 Gold.": "Brauen ist eine Lagerfeuer-Option, die 3 dieser Tränke zur Wahl stellt. Nichts anderes stellt sie her, und der Händler kauft sie für 100 Gold an.",
     "Brew potion, made only at a rest site": "Gebrauter Trank, nur am Lagerfeuer hergestellt",
     "Brew potions": "Gebraute Tränke",
+    "Calcination, the first chapter of the Alchemist's story on the Timeline.": "Kalzination, das erste Kapitel der Geschichte des Alchemisten auf dem Zeitstrahl.",
     "Card rewards": "Kartenbelohnungen",
     "Card stats": "Kartenstatistiken",
     "Card text from {version}.": "Kartentext aus {version}.",
@@ -126,6 +128,7 @@
     "Search cards": "Karten durchsuchen",
     "Search names and text": "Namen und Text durchsuchen",
     "See every card": "Alle Karten ansehen",
+    "See mechanics": "Mechaniken ansehen",
     "Share of Mixes": "Anteil an Essenzen",
     "Shop": "Laden",
     "Shop relic": "Laden-Relikt",
@@ -133,7 +136,6 @@
     "Show base card": "Basiskarte zeigen",
     "Show cards": "Karten zeigen",
     "Show keyword tips": "Erklärungen der Schlüsselwörter zeigen",
-    "Show more": "Mehr zeigen",
     "Show upgraded": "Verbessert zeigen",
     "Show {n} cards": {
       "one": "{n} Karte zeigen",
@@ -169,7 +171,6 @@
     "Text from {version}.": "Text aus {version}.",
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "Der Alchemist in einem Kampf an einem Wasserfall, mit einer Hand voller Alchemist-Karten.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "Der Alchemist auf dem Charakterauswahlbildschirm: ein grüner Frosch in lila Gewändern mit einem leuchtenden Stab.",
-    "The Alchemist's mod settings: accessibility, analytics and unlocks.": "Die Mod-Einstellungen des Alchemisten: Barrierefreiheit, Analysen und Freischaltungen.",
     "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "Die {relics} Relikte, {potions} Tränke und {powers} Mächte des Alchemisten.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Der Alchemist, eine Charakter-Mod für Slay the Spire 2: alle Karten, Relikte, Tränke und Mächte, die Patchnotes und Statistiken aus Tausenden von Runs.",
     "The Merchant asking to buy a Brew potion.": "Der Händler möchte einen gebrauten Trank kaufen.",

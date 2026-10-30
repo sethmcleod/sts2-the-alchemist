@@ -1,7 +1,8 @@
 {
   "readme": {
-    "7b34f128fe70": "- **Auto-empoisonnement** : L'Alchimiste s'empoisonne volontairement. Certaines attaques\n  infligent des dégâts supplémentaires selon votre Poison, et d'autres cartes réagissent\n  à la fréquence à laquelle votre Poison se déclenche.\n- **Antitoxine** : Une réserve qui absorbe les dégâts que votre Poison vous infligerait.\n  Elle diminue de 1 au début de votre tour.\n- **Concoction** : Ce sont des cartes que vous pouvez créer en combat, semblables à des potions.\n  Les Concoctions de base sont la Concoction explosive (dégâts), la Concoction sirupeuse (Armure)\n  et la Concoction vivifiante (pioche) ; les Concoctions volatiles sont la Concoction fumante\n  (Souillure), la Concoction âcre (Affaibli et Vulnérable) et la Concoction pétillante (Énergie).\n- **Fermentation** : Ces cartes ont Retenue et gagnent en puissance à chaque tour passé\n  dans votre Main.\n- **Brassage** : Cette option de Site de repos vous permet d'obtenir 1 potion parmi\n  8 potions uniques, disponibles uniquement de cette façon. Vu la qualité de ces breuvages,\n  le Marchand est prêt à vous les racheter pour 150 Pièces d'or.",
-    "b40936bd23dc": "Ce mod est encore en cours de développement et son contenu peut changer, mais vos\nretours sont les bienvenus ! Le meilleur endroit pour parler du mod est le serveur Discord\nofficiel de Slay the Spire, dans la [publication consacrée à The Alchemist du salon #modding-forum](https://discord.com/channels/309399445785673728/1536374761699938424).\n\nPour l'instant, les traductions sont générées automatiquement. L'idée est de faire appel à des traducteurs natifs une fois que le contenu changera moins souvent. En attendant, toute correction est la bienvenue ! Si vous repérez une erreur dans votre langue, contactez-moi ou ouvrez une pull request sur GitHub."
+    "060cb30015be": "L'Alchimiste est un nouveau personnage pour Slay the Spire 2 : une grenouille curieuse prête à goûter à tout au moins une fois, en plein voyage personnel à travers la Tour. Elle équilibre son propre poison pour gagner vite en puissance, concocte en plein combat des cartes semblables à des potions tout en laissant d'autres cartes fermenter dans sa main jusqu'à ce qu'elles soient prêtes, et brasse aux Sites de repos des potions spéciales qui peuvent être vendues au Marchand.",
+    "c80e7f014bdc": "- **Poison** : L'Alchimiste s'empoisonne volontairement. Certaines attaques\n  infligent plus de dégâts selon votre Poison, et d'autres cartes se déclenchent chaque fois\n  que votre Poison se déclenche. Il existe aussi de nombreuses façons d'appliquer du Poison\n  aux ennemis.\n- **Antitoxine** : Vous protège de votre propre Poison. Chaque fois que votre Poison se\n  déclenche, l'Antitoxine empêche des dégâts jusqu'à sa valeur. Elle ne s'épuise pas, mais\n  diminue de 1 au début de chaque tour, tout comme le Poison.\n- **Concoctions** : Des cartes coûtant 0 que vous créez en combat, aux effets semblables à\n  ceux des potions. Les Concoctions de base sont la Concoction explosive (dégâts),\n  la Concoction sirupeuse (Armure) et la Concoction vivifiante (pioche). Les Concoctions volatiles\n  sont la Concoction fumante (dégâts à tous les ennemis et Souillure), la Concoction âcre\n  (Affaibli et Vulnérable) et la Concoction pétillante (Énergie).\n- **Fermentation** : Ces cartes ont Retenue et gagnent en puissance à chaque tour passé\n  dans votre Main. Il existe des moyens de manipuler ces niveaux de Fermentation pour\n  prendre l'avantage.\n- **Brassage** : Une nouvelle option de Site de repos qui améliore une carte aléatoire de votre\n  deck et vous laisse choisir 1 potion spéciale parmi 3. Vu la qualité de ces breuvages, le\n  Marchand est prêt à vous les racheter pour 100 Pièces d'or.",
+    "a43398bb13a3": "Ce mod est encore en cours de développement et son contenu peut changer, mais vos\nretours sont les bienvenus ! Le meilleur endroit pour parler du mod est la\n[publication consacrée à The Alchemist](https://discord.com/channels/309399445785673728/1536374761699938424)\ndu salon #modding-forum, sur le serveur Discord officiel de Slay the Spire.\n\nPour l'instant, les traductions sont générées automatiquement. L'idée est de faire appel à des traducteurs natifs une fois que le contenu changera moins souvent. En attendant, toute correction est la bienvenue ! Si vous repérez une erreur dans votre langue, contactez-moi ou ouvrez une pull request sur GitHub."
   },
   "site": {
     "(opens in a new tab)": "(s'ouvre dans un nouvel onglet)",
@@ -32,9 +33,10 @@
     "Best for its rarity": "Meilleures de leur rareté",
     "Bought": "Achetée",
     "Brew": "Brassage",
-    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "Brassage est une option de Site de repos qui propose de choisir parmi 3 de ces potions. Rien d'autre ne les fabrique, et le Marchand les rachète pour 150 Pièces d'or.",
+    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 100 Gold.": "Brassage est une option de Site de repos qui propose de choisir parmi 3 de ces potions. Rien d'autre ne les fabrique, et le Marchand les rachète pour 100 Pièces d'or.",
     "Brew potion, made only at a rest site": "Potion brassée, fabriquée uniquement aux Sites de repos",
     "Brew potions": "Potions brassées",
+    "Calcination, the first chapter of the Alchemist's story on the Timeline.": "Calcination, le premier chapitre de l'histoire de l'Alchimiste sur la Frise temporelle.",
     "Card rewards": "Récompenses de cartes",
     "Card stats": "Statistiques des cartes",
     "Card text from {version}.": "Texte de la carte en {version}.",
@@ -126,6 +128,7 @@
     "Search cards": "Rechercher des cartes",
     "Search names and text": "Rechercher noms et textes",
     "See every card": "Voir toutes les cartes",
+    "See mechanics": "Voir les mécaniques",
     "Share of Mixes": "Part des Concoctions",
     "Shop": "Marchand",
     "Shop relic": "Relique du Marchand",
@@ -133,7 +136,6 @@
     "Show base card": "Voir la carte de base",
     "Show cards": "Afficher les cartes",
     "Show keyword tips": "Afficher les définitions des mots-clés",
-    "Show more": "Afficher plus",
     "Show upgraded": "Voir la version améliorée",
     "Show {n} cards": {
       "one": "Afficher {n} carte",
@@ -169,7 +171,6 @@
     "Text from {version}.": "Texte en {version}.",
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "L'Alchimiste en combat près d'une cascade, avec une main de cartes de l'Alchimiste.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "L'Alchimiste sur l'écran de sélection des personnages : une grenouille verte en robe violette, avec un bâton lumineux.",
-    "The Alchemist's mod settings: accessibility, analytics and unlocks.": "Les paramètres du mod de l'Alchimiste : accessibilité, statistiques et déblocages.",
     "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "Les {relics} reliques, {potions} potions et {powers} pouvoirs de l'Alchimiste.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "L'Alchimiste, un mod de personnage pour Slay the Spire 2 : toutes les cartes, reliques, potions et Pouvoirs, les notes de mise à jour et des statistiques issues de milliers de parties.",
     "The Merchant asking to buy a Brew potion.": "Le Marchand propose de racheter une potion brassée.",

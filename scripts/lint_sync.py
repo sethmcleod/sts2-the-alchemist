@@ -435,9 +435,9 @@ def check_comment_hygiene() -> list[str]:
 
 
 def parse_number_pairs(desc: str) -> list[tuple[int, int]]:
-    """Get the 'N (M)' upgrade pairs from a csv description cell or cost cell.
+    """Get the 'N(M)' upgrade pairs from a csv description cell or cost cell.
 
-    The % at the end is optional, so a percentage card ('25% (50%)') makes a pair like the others."""
+    The % at the end is optional, so a percentage card ('25%(50%)') makes a pair like the others."""
     return [(int(a), int(b)) for a, b in re.findall(r"(\d+)%?\s*\((\d+)%?\)", desc)]
 
 

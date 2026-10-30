@@ -1,5 +1,6 @@
 ﻿using Alchemist.AlchemistCode.Cards.Basic;
 using Alchemist.AlchemistCode.Extensions;
+using Alchemist.AlchemistCode.Powers;
 using Alchemist.AlchemistCode.Relics;
 using BaseLib.Abstracts;
 using BaseLib.Patches.UI;
@@ -32,7 +33,7 @@ public partial class Alchemist : PlaceholderCharacterModel
     public override float AttackAnimDelay => 0.35f;
     public override float CastAnimDelay => 0.4f;
     public override CharacterGender Gender => CharacterGender.Neutral;
-    public override int StartingHp => 75;
+    public override int StartingHp => 69;
     public override int StartingGold => 99;
 
     public override IEnumerable<CardModel> StartingDeck =>
@@ -71,7 +72,7 @@ public partial class Alchemist : PlaceholderCharacterModel
 
     // The atlas page of the model loads with the other character assets, not on the first combat
     protected override IEnumerable<string> ExtraAssetPaths =>
-        [AlchemistVisuals.TexturePath, AlchemistRestSite.TexturePath];
+        [AlchemistVisuals.TexturePath, AlchemistRestSite.TexturePath, MercurialFormVfx.TexturePath];
 
     public override Control CustomIcon
     {

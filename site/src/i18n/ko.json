@@ -1,7 +1,8 @@
 {
   "readme": {
-    "7b34f128fe70": "- **자가 중독**: 연금술사는 일부러 자신에게 독을 투여합니다. 일부 공격은 내 중독에 비례해 추가 피해를 주고, 다른 카드들은 내 중독이 얼마나 자주 발동하는지에 반응합니다.\n- **항독소**: 내 중독이 나에게 줄 피해를 흡수하는 비축분입니다. 내 턴 시작 시 1 감소합니다.\n- **영액**: 전투 중에 만들 수 있는, 포션과 비슷한 토큰입니다. 기본 영액은 폭발 영액(피해), 걸쭉한 영액(방어도), 짜릿한 영액(카드 뽑기)이고, 휘발성 영액은 자욱한 영액(훼손됨), 매캐한 영액(약화와 취약), 톡 쏘는 영액(에너지)입니다.\n- **발효**: 이 카드들은 보존을 가지며, 손에 머무는 턴마다 강해집니다.\n- **양조**: 이 방법으로만 얻을 수 있는 고유한 포션 8종 중 1개를 손에 넣는 휴식 장소 선택지입니다. 품질이 뛰어나서 상인이 150골드에 기꺼이 사들입니다.",
-    "b40936bd23dc": "이 모드는 아직 개발 중이라 내용이 바뀔 수 있지만, 피드백은 언제나 환영합니다! 모드에 관해 이야기하기 가장 좋은 곳은 공식 Slay the Spire Discord 서버 [#modding-forum 채널의 The Alchemist 게시물](https://discord.com/channels/309399445785673728/1536374761699938424)입니다.\n\n번역은 당분간 자동으로 생성됩니다. 콘텐츠 변경이 잦아들면 원어민 번역가에게 번역을 맡길 계획입니다. 그때까지는 수정 제안을 언제나 환영합니다! 사용하시는 언어에서 오류를 발견하시면 저에게 연락하시거나 GitHub에서 풀 리퀘스트를 열어 주세요."
+    "060cb30015be": "연금술사는 Slay the Spire 2의 새로운 캐릭터로, 뭐든 한 번은 마셔 보는 호기심 많은 개구리입니다. 지금은 첨탑을 오르며 자신만의 여정을 이어 가고 있습니다. 자신의 독을 잘 조절해 빠르게 강해지고, 전투 중에 포션 같은 카드를 섞어 만드는 한편 다른 카드는 무르익을 때까지 손에서 발효시키며, 휴식 장소에서는 상인에게 팔 수도 있는 특별한 포션을 양조합니다.",
+    "c80e7f014bdc": "- **중독**: 연금술사는 일부러 자신에게 독을 투여합니다. 일부 공격은 내 중독이 많을수록 더 큰 피해를 주고, 다른 카드들은 내 중독이 발동할 때마다 함께 발동합니다. 적에게 중독을 부여하는 방법도 많습니다.\n- **항독소**: 내 중독으로부터 나를 보호합니다. 내 중독이 발동할 때마다 항독소가 그 수치만큼까지 피해를 막아 줍니다. 소모되지는 않지만, 중독과 마찬가지로 내 턴 시작 시 1 감소합니다.\n- **영액**: 전투 중에 만드는 비용 0 카드로, 포션과 비슷한 효과를 냅니다. 기본 영액은 폭발 영액(피해), 걸쭉한 영액(방어도), 짜릿한 영액(카드 뽑기)입니다. 휘발성 영액은 자욱한 영액(모든 적에게 피해와 훼손됨), 매캐한 영액(약화와 취약), 톡 쏘는 영액(에너지)입니다.\n- **발효**: 이 카드들은 보존을 가지며, 손에 머무는 턴마다 효과가 더 강해집니다. 이 발효 수치를 조절해 우위를 점하는 방법도 있습니다.\n- **양조**: 새로운 휴식 장소 선택지로, 덱의 무작위 카드 1장을 강화하고 특별한 포션 3개 중 1개를 선택할 수 있습니다. 품질이 뛰어나서 상인이 100골드에 기꺼이 사들입니다.",
+    "a43398bb13a3": "이 모드는 아직 개발 중이라 내용이 바뀔 수 있지만, 피드백은 언제나 환영합니다! 모드에 관해 이야기하기 가장 좋은 곳은 공식 Slay the Spire Discord 서버 [#modding-forum 채널의 The Alchemist 게시물](https://discord.com/channels/309399445785673728/1536374761699938424)입니다.\n\n번역은 당분간 자동으로 생성됩니다. 콘텐츠 변경이 잦아들면 원어민 번역가에게 번역을 맡길 계획입니다. 그때까지는 수정 제안을 언제나 환영합니다! 사용하시는 언어에서 오류를 발견하시면 저에게 연락하시거나 GitHub에서 풀 리퀘스트를 열어 주세요."
   },
   "site": {
     "(opens in a new tab)": "(새 탭에서 열림)",
@@ -32,9 +33,10 @@
     "Best for its rarity": "희귀도 대비 성적",
     "Bought": "구매",
     "Brew": "양조",
-    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 150 Gold.": "양조는 이 포션 중 3개를 제시하고 하나를 고르게 하는 휴식 장소 선택지입니다. 다른 방법으로는 만들 수 없으며, 상인이 150골드에 사들입니다.",
+    "Brew is a rest site option that offers 3 of these potions to choose from. Nothing else makes them, and the Merchant buys them for 100 Gold.": "양조는 이 포션 중 3개를 제시하고 하나를 고르게 하는 휴식 장소 선택지입니다. 다른 방법으로는 만들 수 없으며, 상인이 100골드에 사들입니다.",
     "Brew potion, made only at a rest site": "양조 포션, 휴식 장소에서만 만들 수 있음",
     "Brew potions": "양조 포션",
+    "Calcination, the first chapter of the Alchemist's story on the Timeline.": "연대표에 담긴 연금술사 이야기의 첫 번째 장, 하소.",
     "Card rewards": "카드 보상",
     "Card stats": "카드 통계",
     "Card text from {version}.": "{version} 기준 카드 텍스트입니다.",
@@ -123,6 +125,7 @@
     "Search cards": "카드 검색",
     "Search names and text": "이름 및 텍스트 검색",
     "See every card": "모든 카드 보기",
+    "See mechanics": "메커니즘 보기",
     "Share of Mixes": "영액 중 비율",
     "Shop": "상점",
     "Shop relic": "상점 유물",
@@ -130,7 +133,6 @@
     "Show base card": "기본 카드 보기",
     "Show cards": "카드 보기",
     "Show keyword tips": "키워드 설명 보기",
-    "Show more": "더 보기",
     "Show upgraded": "강화 상태 보기",
     "Show {n} cards": "카드 {n}장 보기",
     "Show {n} older changes": "이전 변경 사항 {n}개 보기",
@@ -157,7 +159,6 @@
     "Text from {version}.": "{version} 기준 텍스트입니다.",
     "The Alchemist in a fight by a waterfall, with a hand of Alchemist cards.": "폭포 옆에서 연금술사 카드를 손에 들고 전투 중인 연금술사.",
     "The Alchemist on the character select screen: a green frog in purple robes with a glowing staff.": "캐릭터 선택 화면의 연금술사: 보라색 로브를 입고 빛나는 지팡이를 든 초록색 개구리.",
-    "The Alchemist's mod settings: accessibility, analytics and unlocks.": "연금술사 모드 설정: 접근성, 분석, 해금.",
     "The Alchemist's {relics} relics, {potions} potions and {powers} powers.": "연금술사의 유물 {relics}개, 포션 {potions}개, 파워 {powers}개.",
     "The Alchemist, a Slay the Spire 2 character mod: every card, relic, potion and power, the patch notes, and stats from thousands of runs.": "Slay the Spire 2 캐릭터 모드 연금술사: 모든 카드, 유물, 포션, 파워와 패치 노트, 그리고 수천 회의 도전에서 얻은 통계.",
     "The Merchant asking to buy a Brew potion.": "양조 포션을 사고 싶어 하는 상인.",

@@ -161,7 +161,7 @@ public static class PotionSellPatches
             PotionRarity.Common => 50,
             PotionRarity.Uncommon => 75,
             PotionRarity.Rare => 100,
-            PotionRarity.Event => 150,
+            PotionRarity.Event => 100,
             _ => 50
         };
     }

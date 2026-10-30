@@ -23,7 +23,9 @@ public class AlchemistModConfig : SimpleModConfig
     public AlchemistModConfig()
     {
         // Every tickbox raises ConfigChanged, so the cards already on screen repaint at once
+        CardArtPatches.RememberArtSource();
         ConfigChanged += (_, _) => CardArtPatches.RefreshPortraitsIfArtSourceChanged();
+        OnConfigReloaded += CardArtPatches.RefreshPortraitsIfArtSourceChanged;
     }
 
     private static readonly NodePath SelfPath = new(".");
@@ -68,6 +70,9 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigSection("Appearance")]
     [ConfigHoverTip]
     public static bool UseBetaArt { get; set; } = false;
+
+    [ConfigHideInUI]
+    public static string BetaArtExceptions { get; set; } = "";
 
     [ConfigSection("Accessibility")]
     [ConfigHoverTip]

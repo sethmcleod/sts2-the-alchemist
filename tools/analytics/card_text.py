@@ -4,18 +4,18 @@ The words come from the card's loc template (eng/cards.json, or another language
 come from the card class: each builder call names a template field and gives its base value and its
 upgrade (WithDamage(6, 3) fills {Damage}, WithVar("Poison", 2, 1) fills {Poison}). A field no
 builder names, such as a calculated amount, is read from cards.csv, which writes each upgradable
-number as "6 (9)" in the same order as the English template's fields; every language shares those
+number as "6(9)" in the same order as the English template's fields; every language shares those
 fields. Keyword lines come from the card class (WithKeyword, and UpgradeType.Add or Remove), placed
 the way CardModel.GetDescriptionForPile places them, in the language's own keyword words.
 
 In English, a card whose text is built in code ({Body}) falls back to the sheet text, with each
-"6 (9)" split in two.
+"6(9)" split in two.
 """
 
 import re
 
 TAG_RE = re.compile(r"\[/?\w+\]")
-NUMBER = r"(\d+|X)(?: \((\d+|X)\))?"
+NUMBER = r"(\d+|X)(?: ?\((\d+|X)\))?"
 KEYWORD_RE = re.compile(r"WithKeyword\((?:CardKeyword|AlchemistKeywords)\.(?P<name>\w+)"
                         r"(?:,\s*UpgradeType\.(?P<change>\w+))?\)")
 # The builder calls that give a template field its base value and its upgrade
@@ -278,10 +278,10 @@ def with_keywords(text: str, keywords: set[str], ferments: bool, words: dict | N
 
 
 def split_sheet(text: str, keywords: set[str]) -> tuple[str, str]:
-    """The fallback: the sheet text with each "6 (9)" or "Mix (Mix+)" split into base and upgrade,
+    """The fallback: the sheet text with each "6(9)" or "Mix (Mix+)" split into base and upgrade,
     its upgrade notes dropped, and its keyword sentences on lines of their own."""
     text = re.sub(r"\s*\([^()]*\+[^()]*\)$|(?<=\.)\s+[A-Z][\w' ]*\+ [^.]*\.$", "", text)
-    number = re.compile(r"(\d+|X) \((\d+|X)\)")
+    number = re.compile(r"(\d+|X) ?\((\d+|X)\)")
     base, upgraded = number.sub(r"\1", text), number.sub(lambda m: green(m[2]), text)
 
     # "Acrid Mix (Acrid Mix+)": the words in the brackets replace as many words before them

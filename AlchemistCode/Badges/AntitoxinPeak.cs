@@ -9,8 +9,8 @@ namespace Alchemist.AlchemistCode.Badges;
 
 public sealed class AntitoxinPeak() : CustomBadge(requiresWin: false, multiplayerOnly: false)
 {
-    private const int BronzePeak = 30;
-    private const int SilverPeak = 50;
+    private const int BronzePeak = 40;
+    private const int SilverPeak = 60;
     private const int GoldPeak = 80;
 
     public override string CustomBadgeIconPath => "badge_antitoxin.png".BadgeImagePath();
