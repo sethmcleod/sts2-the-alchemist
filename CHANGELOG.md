@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Lilypad Cloak relic and Waiting Game card not triggering when an enemy's Poison killed it
+
 ## [0.15.2] - 2026-10-30
 
 ### Fixed

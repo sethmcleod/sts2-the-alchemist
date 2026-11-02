@@ -19,14 +19,14 @@ public class WaitingGamePower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<StrengthPower>() };
 
-    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
-        DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer,
+        DamageResult result, ValueProp props, Creature target, CardModel? cardSource)
     {
-        if (!target.IsAlive || Owner.CombatState is not { } combat) return;
+        if (Owner.CombatState is not { } combat) return;
         if (!combat.GetOpponentsOf(Owner).Contains(target)) return;
         if (!AntitoxinRules.IsPoisonTick(target, result.UnblockedDamage, props, dealer, cardSource)) return;
         Flash();
-        await PowerCmd.Apply<StrengthPower>(choiceContext, target, -Amount, Owner, null);
+        if (target.IsAlive) await PowerCmd.Apply<StrengthPower>(choiceContext, target, -Amount, Owner, null);
         await PowerCmd.Apply<PoisonPower>(choiceContext, Owner, Amount, Owner, null);
     }
 }
