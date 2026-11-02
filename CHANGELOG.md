@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Changed
+
+- Nerfed Bestow card: rarity changed from Uncommon -> Rare
+
 ### Fixed
 
 - Fixed Lilypad Cloak relic and Waiting Game card not triggering when an enemy's Poison killed it
