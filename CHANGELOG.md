@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added final art for Dose and Jab
+
 ## [0.15.3] - 2026-11-02
 
 ### Changed
