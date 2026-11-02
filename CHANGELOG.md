@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.3] - 2026-11-02
+
 ### Changed
 
 - Nerfed Bestow card: rarity changed from Uncommon -> Rare
