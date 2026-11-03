@@ -25,8 +25,8 @@ public class RestockPower : AlchemistPower
             var mixes = PileType.Exhaust.GetPile(player).Cards.Where(Mixing.IsMix).ToList();
             if (mixes.Count == 0) return;
             if (i == 0) Flash();
-            await CardPileCmd.Add(player.RunState.Rng.CombatCardSelection.NextItem(mixes)!, PileType.Draw,
-                CardPilePosition.Random);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(
+                player.RunState.Rng.CombatCardSelection.NextItem(mixes)!, PileType.Draw, CardPilePosition.Random));
         }
     }
 }

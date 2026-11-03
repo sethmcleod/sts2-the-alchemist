@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Restock card not showing the Mix it shuffles into the Draw Pile
+
 ## [0.15.4] - 2026-11-02
 
 ### Added
