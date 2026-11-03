@@ -8,8 +8,9 @@ namespace Alchemist.AlchemistCode.Patches;
 // NCardGrid centers a row on the width of a FULL row (Columns * card width), so a selection with
 // fewer cards than fit sits left of center. That never shows on the screens the base game fills
 // (library, deck views), but the four-card Mix pick floats alone on a wide grid. Shift only while
-// the Mix picker is open and shows fewer cards than columns. A content check is not enough: the
-// library filtered to "Mix" also shows only Mix tokens
+// this grid is the Mix picker's own (see MixPickerGridPatch.IsPickerGrid) and shows fewer cards
+// than columns. A Mix-token check is not enough: the library filtered to "Mix" also shows only Mix
+// tokens, and a global "picker open" flag also catches the deck view opened over the picker
 [HarmonyPatch(typeof(NCardGrid), "UpdateGridPositions")]
 public static class MixSelectCenterPatch
 {
@@ -19,7 +20,7 @@ public static class MixSelectCenterPatch
 
     public static void Postfix(NCardGrid __instance)
     {
-        if (!MixPickerGridPatch.PickerOpen) return;
+        if (!MixPickerGridPatch.IsPickerGrid(__instance)) return;
         var holders = __instance.CurrentlyDisplayedCardHolders.ToList();
         if (holders.Count == 0) return;
 
