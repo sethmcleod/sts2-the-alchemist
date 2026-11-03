@@ -115,7 +115,7 @@ public static class Mixing
         if (prepare != null)
             foreach (var option in options)
                 prepare(option);
-        Patches.MixPickerGridPatch.PickerOpen = true;
+        Patches.MixPickerGridPatch.Options = new HashSet<CardModel>(options, ReferenceEqualityComparer.Instance);
         Patches.MixPickerGridPatch.Columns = options.Count > 5 ? (options.Count + 1) / 2 : null;
         CardModel? picked;
         try
@@ -125,8 +125,7 @@ public static class Mixing
         }
         finally
         {
-            Patches.MixPickerGridPatch.PickerOpen = false;
-            Patches.MixPickerGridPatch.Columns = null;
+            Patches.MixPickerGridPatch.Clear();
         }
         if (picked != null) RecordCreated(owner, picked, source);
         return picked;
