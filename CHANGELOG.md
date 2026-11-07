@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.6] - 2026-11-07
+
 ### Added
 
 - Added final art for Caustic Strike, Fumigate, and Spit
