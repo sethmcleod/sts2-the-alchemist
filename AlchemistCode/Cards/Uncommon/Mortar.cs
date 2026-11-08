@@ -26,7 +26,6 @@ public class Mortar : AlchemistCard
         var attack = await CommonActions.CardAttack(this, play, vfx: HitVfx("vfx/vfx_heavy_blunt"),
                 tmpSfx: "heavy_attack.mp3").WithAttackerAnim(HeavyAttackAnim, HeavyAttackDelay)
             .Execute(choiceContext);
-        // Fisticuffs' rule: the block is what the hit actually dealt, overkill included
         await CreatureCmd.GainBlock(Owner.Creature,
             attack.Results.SelectMany(r => r).Sum(r => r.TotalDamage + r.OverkillDamage),
             ValueProp.Move, play);

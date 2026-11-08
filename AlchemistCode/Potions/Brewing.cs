@@ -11,8 +11,6 @@ using MegaCrit.Sts2.Core.Random;
 
 namespace Alchemist.AlchemistCode.Potions;
 
-// Bestow is the only card that makes a Potion, and it goes through here so the healing blacklist
-// applies to it.
 public static class Brewing
 {
     public static async Task<PotionModel?> Produce(Player player, Rng rng)
@@ -23,17 +21,13 @@ public static class Brewing
         return result.success ? result.potion : null;
     }
 
-    // CreateRandomPotionInCombat already blocks Fairy in a Bottle, Regen Potion and Fruit Juice, but not
-    // Blood Potion or Gold Leaf. Detecting it rather than listing it means a healing potion added later
-    // is excluded without anyone remembering this file
+    // The game's own blacklist misses Blood Potion and Gold Leaf, whose heal vars no type check catches
     private static IEnumerable<PotionModel> HealingPotions(Player player) =>
         GameCompat.GetPotionOptions(player).Where(IsHealing);
 
     private static bool IsHealing(PotionModel potion) =>
         potion.DynamicVars.Values.Any(v =>
             v is HealVar or MaxHpVar
-            // Blood Potion's heal is a plain DynamicVar named "HealPercent", and Gold Leaf's is a custom
-            // subclass, so neither is caught by type alone
             || v.Name.Contains("Heal", System.StringComparison.OrdinalIgnoreCase)
             || v.Name.Contains("MaxHp", System.StringComparison.OrdinalIgnoreCase)
             || IsPowerVarFor<RegenPower>(v));

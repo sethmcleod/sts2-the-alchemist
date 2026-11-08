@@ -18,8 +18,7 @@ using MegaCrit.Sts2.Core.Timeline.Epochs;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// The Skip* prefixes in BaseLib stop the vanilla epoch bookkeeping for a custom character. Harmony still
-// runs our postfixes, so this class awards the epochs from a postfix
+// BaseLib's Skip* prefixes stop vanilla epoch bookkeeping for a custom character, so postfixes award ours
 [HarmonyPatch]
 public static class EpochPatches
 {
@@ -34,14 +33,7 @@ public static class EpochPatches
         typeof(ProgressSaveManager).GetMethod(name, InstNonPublic)
         ?? throw new InvalidOperationException($"[Alchemist] ProgressSaveManager.{name} not found; base game changed.");
 
-    // Alchemist1 is the parent of every other Alchemist epoch (see Alchemist1Epoch.GetTimelineExpansion),
-    // but it is only awarded post-run while Alchemist2..6 are awarded mid-run. A run that ends without the
-    // post-run pass, such as leaving a multiplayer game part way through, leaves a child obtained under an
-    // unobtained parent. The Timeline lays its slots out by walking down from NeowEpoch, so that child can
-    // never be placed, and therefore never revealed, and GetDiscoveredEpochCount never returns to zero.
-    // NMainMenu disables Singleplayer, Multiplayer and Compendium while that count is above zero and no run
-    // save exists, so the player is locked in the Timeline for good. Obtaining the parent first keeps the
-    // chain whole, so every epoch we award can actually be revealed
+    // Parent first: a child under an unobtained parent can't be revealed and locks the main menu
     private static void AwardMidRun(ProgressSaveManager mgr, EpochModel epoch, Player player)
     {
         var root = EpochModel.Get<Alchemist1Epoch>();
@@ -53,15 +45,11 @@ public static class EpochPatches
     private static void AwardPostRun(ProgressSaveManager mgr, EpochModel epoch, SerializablePlayer sp, SerializableRun sr) =>
         PostRun.Invoke(mgr, new object[] { epoch, sp, sr });
 
-    // Supported is the "does this build of the game have an epoch registry" half. Without it our
-    // epochs were never registered, so appending their ids would gate content behind epochs the
-    // Timeline can never show
     private static bool Enabled => AlchemistModConfig.EnableEpochs && EpochRegistration.Supported;
 
     private static bool IsAlchemist(Player p) => p?.Character is AlchemistCharacter;
 
-    // Use OrNull, not GetById. If the character mod of a save is uninstalled, GetById throws
-    // ModelNotFoundException out of the post-run unlock path that this class postfixes
+    // OrNull, since GetById throws when the save's character mod is uninstalled
     private static bool IsAlchemist(SerializablePlayer sp) =>
         sp.CharacterId != null && ModelDb.GetByIdOrNull<CharacterModel>(sp.CharacterId) is AlchemistCharacter;
 
@@ -118,11 +106,7 @@ public static class EpochPatches
         PromoteIfSlotMissing(__instance.Progress, ch1);
     }
 
-    // The award lands as ObtainedNoSlot when the epoch has no slot entry, which happens after Reset Unlocks
-    // on a profile whose Neow is already Revealed. The Timeline draws no tile for that state, yet the main
-    // menu counts it as discovered and disables Singleplayer until it is revealed, so the player is locked
-    // out. UnlockSlot is what Neow's reveal would have done: it promotes ObtainedNoSlot to Obtained. Any
-    // other state logs an error from UnlockSlot, hence the guard
+    // ObtainedNoSlot (after Reset Unlocks) draws no tile but locks the menu; UnlockSlot errors on other states
     private static void PromoteIfSlotMissing(ProgressState progress, EpochModel epoch)
     {
         var entry = progress.Epochs.FirstOrDefault(e => e.Id == epoch.Id);
@@ -131,22 +115,13 @@ public static class EpochPatches
         progress.UnlockSlot(epoch.Id);
     }
 
-    // On a first Alchemist run an Act boss awards Alchemist2..4 mid-run, but the root Alchemist1 only lands
-    // post-run, so the child is Obtained while its parent is not. Vanilla GetRevealableEpochs is a BFS from
-    // NeowEpoch that needs each parent obtained, so it never reaches the child, and TryObtainEpochInternal
-    // then logs a warning and fires a Sentry capture on that guaranteed path. Union in our own obtained
-    // epochs so the check passes. Scoped to ours, so no other caller sees an unearned epoch, and it
-    // self-heals once Alchemist1 is obtained. Mirrors RitsuLib's
-    // ProgressSaveManagerGetRevealableEpochsModTemplatePatch
+    // Vanilla's BFS from NeowEpoch can't reach our mid-run children until Alchemist1 lands
     [HarmonyPatch(typeof(ProgressSaveManager), nameof(ProgressSaveManager.GetRevealableEpochs))]
     [HarmonyPostfix]
     private static void RevealObtainedAlchemistEpochs(ProgressSaveManager __instance, ref IEnumerable<SerializableEpoch> __result)
     {
         if (!Enabled) return;
 
-        // Never report an epoch as revealable while its parent is not obtained. The Timeline could not
-        // place it, so counting it here would keep GetDiscoveredEpochCount above zero for good and lock
-        // the main menu. AwardMidRun keeps the parent ahead of the child; this is the backstop
         if (!__instance.Progress.IsEpochObtained(EpochModel.GetId<Alchemist1Epoch>())) return;
 
         var list = __result.ToList();
@@ -158,7 +133,7 @@ public static class EpochPatches
             if (!seen.Add(epoch.Id)) continue;
             EpochModel model;
             try { model = EpochModel.Get(epoch.Id); }
-            catch { continue; } // an id from an uninstalled mod does not resolve; leave it out
+            catch { continue; }
             if (model is AlchemistEpoch)
             {
                 list.Add(epoch);
@@ -228,9 +203,7 @@ public static class EpochPatches
             __result = __result.Append(ch1).ToArray();
     }
 
-    // With the Timeline feature off, strip our epochs from every slot batch so they do not render. The
-    // saved epoch states are untouched, so progress returns when the feature is turned back on. A prefix,
-    // because the async body reads the list
+    // A prefix, because the async body reads the list
     [HarmonyPatch(typeof(NTimelineScreen), "AddEpochSlots")]
     [HarmonyPrefix]
     private static void HideAlchemistEpochsWhenDisabled(List<EpochSlotData> slotsToAdd)

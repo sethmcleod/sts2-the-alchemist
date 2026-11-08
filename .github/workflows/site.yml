@@ -1,10 +1,6 @@
 name: site
 
-# alchemist.fyi shows the newest release, so it matches what players have installed. Vercel builds
-# the `site` branch, and this workflow points that branch at the newest release tag, with the site's
-# own code (site/ and tools/analytics/) taken from beta so a site fix goes live without a release.
-# It runs on every release tag and on every push to beta that changes the site. The run stats
-# refresh once a day without it: the daily pack (site/api/pack.ts) asks Vercel for a build.
+# Vercel builds the `site` branch: the newest release tag, with site/ and tools/analytics/ from beta
 
 on:
   push:
@@ -36,7 +32,7 @@ jobs:
         run: |
           release=$(git tag --list 'v*-beta' --sort=-v:refname | head -n 1)
           git switch --quiet --detach "$release"
-          # The workflows come from main: GitHub refuses a push with this job's token that changes one
+          # Workflows come from main: this job's token can't push a change to one
           git rm -r -q --cached --ignore-unmatch site tools/analytics .github
           git checkout origin/beta -- site tools/analytics
           git checkout origin/main -- .github

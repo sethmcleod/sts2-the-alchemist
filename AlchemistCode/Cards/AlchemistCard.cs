@@ -34,8 +34,7 @@ namespace Alchemist.AlchemistCode.Cards;
 [Pool(typeof(AlchemistCardPool))]
 public abstract partial class AlchemistCard : ConstructedCardModel
 {
-    // Sentinel max for an unbounded card selection, the same literal the base game uses. A prompt paired
-    // with it must not print {Amount} or {MaxCount}, which would show the raw sentinel
+    // Base game's sentinel; a prompt paired with it must not print {Amount} or {MaxCount}
     public const int AnyNumber = 999999999;
 
     protected AlchemistCard(int cost, CardType type, CardRarity rarity, TargetType target,
@@ -53,11 +52,9 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         }
     }
 
-    // Tip text lives in static_hover_tips.json under {key}.title and {key}.description
     protected static void ExplainNumber(MegaCrit.Sts2.Core.Localization.DynamicVars.DynamicVar variable, string key)
         => variable.WithTooltip(key);
 
-    // For a calculated number with no var to hang a tip on, because it is never rendered
     protected void ExplainNumber(string key) => WithTips(_ => new[] { AlchemistTips.Static(key) });
 
     private string PortraitFile => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png";
@@ -72,33 +69,24 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     internal bool HasFinalAndBetaArt => Art.HasFinalAndBeta;
 
     public override string CustomPortraitPath => Art.Portrait(ShowsBetaArt);
-    // With the beta fallback too: the Timeline epoch slots and the generated-card previews read
-    // Portrait directly, and without it every card still on beta art shows the generic back there
+    // Timeline slots and generated-card previews read this directly, not CustomPortraitPath
     public override string PortraitPath => Art.Portrait(ShowsBetaArt);
     public override string BetaPortraitPath => $"beta/{PortraitFile}".CardImagePath();
-    // The inspect screen swaps this in over the portrait, see CardArtPatches
     internal string? BigPortraitPath => Art.BigPortrait(ShowsBetaArt);
 
-    // Internal so the static calc-damage lambdas can read it off the card arg, capturing no instance state
     internal bool IsEnchanted => Enchantment != null;
 
-    // False by default; cards with a discrete met condition override it
     protected virtual bool ConditionalGlow => false;
 
-    // The IsMutable gate makes every glow safe on canonical models, where reading Owner throws. No card
-    // needs its own guard
     protected override bool ShouldGlowGoldInternal => IsMutable && ConditionalGlow;
 
     protected Task LoseHp(PlayerChoiceContext choiceContext, int amount) =>
         GameCompat.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
 
-    // Laced hits land as a green splat instead of the card's own impact. Play time only, because
-    // Enchantment is live on the mutable combat instance
     protected string HitVfx(string vfx) =>
         Enchantment is Laced ? "vfx/vfx_slime_impact" : vfx;
 
-    // The green splash the base game pairs with an on-hit Poison apply, see DeadlyPoison
     protected static void PoisonSplash(Creature? target)
     {
         if (target == null) return;
@@ -106,17 +94,11 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         if (vfx != null) NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(vfx);
     }
 
-    // One home for the enemy-side Poison test, as Dose is for the owner's, so the two never drift
     protected static bool Poisoned(Creature? creature) => creature?.HasPower<PoisonPower>() == true;
 
-    // True in a live combat when every enemy that can be hit is Poisoned, so a card gated on "if the enemy
-    // has Poison" glows only when any target meets the gate
     protected bool AllEnemiesPoisoned =>
         IsMutable && CombatState?.HittableEnemies is { Count: > 0 } enemies && enemies.All(Poisoned);
 
-    // The dose a reader adds to its number. Zero on the canonical model, which has no Owner, so the
-    // compendium shows the base value and only the combat instance shows the live total. Every card
-    // that says "equal to your Poison" reads it here so the rule has one home
     protected static decimal Dose(CardModel card) =>
         card is AlchemistCard { IsMutable: true, Owner.Creature: { } creature }
             ? creature.GetPowerAmount<PoisonPower>()
@@ -124,9 +106,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     private static readonly FieldInfo HoverTipsField = AccessTools.Field(typeof(ConstructedCardModel), "_hoverTips");
 
-    // A power var whose tip carries the card's own number. BaseLib's WithVars adds the power's tip
-    // with no amount for any PowerVar, and an amountless tip prints the power's 0, so that tip is
-    // swapped for one that reads the var: 1 (2) on the card is 1 (2) in the tip
+    // BaseLib's WithVars adds an amountless tip for each PowerVar; swap it for a numbered one
     protected ConstructedCardModel WithNumberedPower<T>(int baseVal, int upgrade = 0) where T : PowerModel
     {
         WithVar(new PowerVar<T>(baseVal).WithUpgrade(upgrade));
@@ -135,8 +115,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         return WithTips(card => new[] { HoverTipFactory.FromPower<T>(card.DynamicVars[name].IntValue) });
     }
 
-    // The other cards in the owner's hand, for a card that scales with them. Zero outside a live
-    // combat, where the hand pile is stale or missing
     protected static int OtherHandCount(CardModel card)
     {
         if (card is not AlchemistCard { IsMutable: true, CombatState: not null, Owner: { } owner }) return 0;
@@ -146,8 +124,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         return count;
     }
 
-    // The living enemies that carry Poison, for a card that scales with them. Zero outside a live
-    // combat, and zero on the canonical model
     protected static int PoisonedEnemies(CardModel card)
     {
         if (card is not AlchemistCard { IsMutable: true, CombatState: { } combat }) return 0;
@@ -157,12 +133,8 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         return count;
     }
 
-    // The raw total, before any hook. The card face shows the hooked total with {FormulaDamage}
     protected virtual int? RawFormulaDamagePreview => null;
 
-    // The context the game last previewed this card's vars with: the hovered target and the mode the
-    // card node passed, and whether the hooks ran at all (only in the Hand and Play piles). Recorded
-    // by FormulaPreviewPatches, because AddExtraArgsToDescription receives none of it
     private CardPreviewMode _previewMode;
     private Creature? _previewTarget;
     private bool _previewRunsHooks;
@@ -174,11 +146,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         _previewRunsHooks = runsHooks;
     }
 
-    // Hook.ModifyDamage runs the global hooks the attack command will run and the enchantment hooks
-    // ApplyEnchantDamage runs, so the previewed number matches the damage that lands. The target
-    // matters: an enemy-side power (Tainted, Vulnerable) counts only against the creature that has
-    // it, so a single-target card shows it while aimed at that enemy, and an AoE card in
-    // MultiCreatureTargeting mode shows it when every enemy has it, as the game's own damage vars do
     private int? FormulaDamagePreview
     {
         get
@@ -193,12 +160,8 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         }
     }
 
-    // The same for self-inflicted HP loss, which {FormulaHpLoss} shows in red so a card that previews
-    // both reads its cost apart from its payoff
     protected virtual int? FormulaHpLossPreview => null;
 
-    // Zero on the canonical model, so the compendium shows the rule and not a number. Null combat
-    // state outside combat: a card on a reward or selection screen still has an owner
     protected int AntitoxinCapacity =>
         IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<Powers.AntitoxinPower>() : 0;
 
@@ -210,9 +173,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     internal bool IsFermentInline => IsFermentCard;
 
-    // Mother of Vinegar is a read-time floor, not an advance: combat start, the reset after a
-    // play, and cards generated mid-combat all begin at 1 through this one line, and the free
-    // turn never pokes Mellow because nothing "ferments"
     private bool HasMotherOfVinegar =>
         IsMutable && Owner is { } player
         && System.Linq.Enumerable.Any(player.Relics,
@@ -220,13 +180,8 @@ public abstract partial class AlchemistCard : ConstructedCardModel
 
     internal int FermentTurns => _fermentTurns + (IsFermentCard && HasMotherOfVinegar ? 1 : 0);
 
-    // Pour Over moves fermentation between cards. Raw field access on both ends, because a move is
-    // not fermenting: the turns were already paid to Mellow when they were first gained
-    // Fires after every _fermentTurns mutation, so a card whose state derives from fermentation
-    // (Corrode's cost) can resync no matter which path moved the turns
     protected virtual void OnFermentTurnsChanged() { }
 
-    // The hand-side predicate every Ferment support card shares
     internal static bool IsBrewing(CardModel card) => card is AlchemistCard { IsFermentInline: true };
 
     internal int DrainFerment()
@@ -237,12 +192,9 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         return turns;
     }
 
-    // Raw stored turns, without the Mother of Vinegar read-time floor: the floor follows whichever
-    // card reads it, so a pour that moved it would pay it twice on the receiver
+    // Raw turns without the Mother of Vinegar floor, or a pour would pay it twice
     internal bool HasStoredFerment => _fermentTurns > 0;
 
-    // The same raw count, for the analytics: the relic floor would make "played unfermented"
-    // unreachable, and the card's own live total would report a poured card as empty
     internal int StoredFermentTurns => _fermentTurns;
 
     internal void ReceiveFerment(int turns)
@@ -252,8 +204,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         OnFermentTurnsChanged();
     }
 
-    // Async because every turn of fermentation gained also pays the Mellow and Overflow engines. Both the natural
-    // end-of-turn tick and the Trigger cards route through here, so the payoff has one home
     internal async Task AdvanceFerment(PlayerChoiceContext choiceContext, int turns)
     {
         if (!IsFermentCard) return;
@@ -267,27 +217,18 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         await OnFermented(choiceContext, turns);
     }
 
-    // Runs after every advance of this card's own fermentation, whichever path moved it: the end of
-    // turn tick in hand, the card's own play, Taste Test, Bloom, Untended, a relic. A move by Pour
-    // Over is not an advance, so it does not land here. The context is the caller's, because an
-    // effect that applies a power needs one
     protected virtual Task OnFermented(PlayerChoiceContext choiceContext, int turns) => Task.CompletedTask;
 
-    /// <summary>The base game reserves this for roughly 12 damage and up.</summary>
-    /// <summary>Set false to keep a card snappy, as the base game does for its Defends.</summary>
     protected internal virtual bool PlaysCastAnimation => true;
 
     protected const string HeavyAttackAnim = "heavyAttack";
 
-    /// <summary>44% into the 1.333s clip, matching the light swing.</summary>
     protected const float HeavyAttackDelay = 0.55f;
 
-    // Fermentation is kept through a play and only advances in hand, so the hand slot stays the price
     private bool FermentsThisTurn =>
         Owner is { } player && PileType.Hand.GetPile(player).Cards.Contains(this);
 
-    // VeryEarly, not the plain hook: RegenPower heals and decrements in BeforeSideTurnEndEarly, so a
-    // Ferment tick has to land ahead of both
+    // Must run before RegenPower's BeforeSideTurnEndEarly
     public override async Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
@@ -296,8 +237,6 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             await AdvanceFerment(choiceContext, 1);
     }
 
-    // Covers the cards that were never played. Deck cards are the same instances each combat and all of
-    // them get this hook, so this covers every pile
     public override Task BeforeCombatStart()
     {
         _fermentTurns = 0;
@@ -308,7 +247,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
-        // These previews read Owner, which throws on a canonical model such as the card library
+        // Reading Owner throws on a canonical model (the compendium)
         description.Add("FormulaDamage",
             IsMutable && FormulaDamagePreview is { } d ? $"\n(Deals [green]{d}[/green] damage)" : "");
         description.Add("FormulaHpLoss",

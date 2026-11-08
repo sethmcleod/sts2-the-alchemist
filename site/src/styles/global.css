@@ -527,6 +527,25 @@
     border-color: var(--color-accent);
   }
 
+  .beta-art-switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    color: var(--color-muted);
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .beta-art-switch input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: var(--color-accent);
+  }
+
   .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(11rem, calc(50% - 6px)), 1fr));
@@ -670,6 +689,15 @@
     width: calc(250 * var(--u));
     height: calc(190 * var(--u));
     object-fit: cover;
+  }
+
+  .face-art.beta-art,
+  .card:has(.beta-art-toggle:checked) .face-art:not(.beta-art) {
+    display: none;
+  }
+
+  .card:has(.beta-art-toggle:checked) .face-art.beta-art {
+    display: revert;
   }
 
   .face.ancient .face-art {

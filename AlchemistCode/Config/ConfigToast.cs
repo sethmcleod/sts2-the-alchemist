@@ -7,16 +7,10 @@ using MegaCrit.Sts2.Core.Nodes.Screens.Settings;
 
 namespace Alchemist.AlchemistCode.Config;
 
-/// <summary>
-/// Shows the toast of the settings screen over the mod config.
-/// </summary>
-/// <remarks>
-/// The toast node belongs to the settings screen, and the submenu stack hides that screen while the
-/// mod config is open. A copy of the node under the mod config submenu shows the same toast in view.
-/// </remarks>
+// A copy of the settings toast: the submenu stack hides the settings screen while the mod config is open
 internal static class ConfigToast
 {
-    // Longer than the tween in NSettingsToast.Show, which ends after 2.25 seconds
+    // Must outlast the 2.25 s tween in NSettingsToast.Show
     private const double Lifetime = 3.0;
 
     private static readonly AccessTools.FieldRef<NSettingsToast, float> OriginalYRef =
@@ -41,7 +35,6 @@ internal static class ConfigToast
         toast.OffsetTop += drift;
         toast.OffsetBottom += drift;
 
-        // The faded toast stays in place until it is freed, and it must not eat clicks meanwhile
         toast.MouseFilter = Control.MouseFilterEnum.Ignore;
         if (toast.GetNodeOrNull<Control>("Label") is { } label) label.MouseFilter = Control.MouseFilterEnum.Ignore;
 

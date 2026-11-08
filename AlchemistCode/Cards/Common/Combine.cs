@@ -34,7 +34,6 @@ public class Combine : AlchemistCard
         await Mixing.CreateRandom(choiceContext, Owner, IsUpgraded, Mixing.Basic, this);
         var mixes = PileType.Hand.GetPile(Owner).Cards.Where(Mixing.IsIngredient).ToList();
         if (mixes.Count < 2) return;
-        // Exactly two skips the screen; more asks which two
         var picked = mixes.Count == 2
             ? mixes
             : (await CardSelectCmd.FromHand(choiceContext, Owner, new CardSelectorPrefs(Prompt, 2, 2),

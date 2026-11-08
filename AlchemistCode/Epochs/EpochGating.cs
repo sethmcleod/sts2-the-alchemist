@@ -6,12 +6,9 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace Alchemist.AlchemistCode.Epochs;
 
-// Holds the cards, relics, and potions of each epoch back until the player reveals that epoch on the
-// Timeline, the way a base-game character unlocks content. Content with no epoch is always available
 public static class EpochGating
 {
-    // Gated content id -> "is this content's epoch revealed?". Ungated content is absent from the maps,
-    // and all three build in one pass, so a single reference write publishes the finished set
+    // All three build in one pass, so a single reference write publishes the finished set
     private sealed record Gates(
         Dictionary<ModelId, Func<UnlockState, bool>> Cards,
         Dictionary<ModelId, Func<UnlockState, bool>> Relics,
@@ -36,9 +33,7 @@ public static class EpochGating
 
     private static bool Unlocked(Dictionary<ModelId, Func<UnlockState, bool>> gates, ModelId id, UnlockState unlockState)
     {
-        // If the epoch system is off, this unlocks everything that the Timeline gates. The same has
-        // to hold when the game has no epoch registry to register into: the gates were never built,
-        // so honouring them would hide most of the mod behind a Timeline that cannot be revealed
+        // Without a registry the gates were never built, so honouring them would hide most of the mod
         if (!EffectiveSettings.EnableEpochs || !EpochRegistration.Supported) return true;
         return !gates.TryGetValue(id, out var revealed) || revealed(unlockState);
     }

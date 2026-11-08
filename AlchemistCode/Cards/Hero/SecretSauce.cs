@@ -12,9 +12,6 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards.Hero;
 
-// The Hero Expansion gives every character one Common that Enchants a card mid-combat, and its
-// enchantments last the run like the base game's. This is the Alchemist's. The enchantment itself
-// refuses a card that already prints the Laced keyword
 [CardTheme(CardTheme.Poison, CardTheme.Mix)]
 public class SecretSauce : AlchemistHeroCard
 {

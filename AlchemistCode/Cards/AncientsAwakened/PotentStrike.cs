@@ -9,8 +9,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.AncientsAwakened;
 
-// What the Ancient Scepter turns every Strike into. The dose lands before the hit, so the hit reads
-// it; the face adds it to the preview until the play is resolving, when the real stack already has it
 [CardTheme(CardTheme.Poison, CardTheme.Antitoxin)]
 public class PotentStrike : AlchemistAncientsCard
 {

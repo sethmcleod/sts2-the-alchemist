@@ -5,15 +5,6 @@ using MegaCrit.Sts2.Core.Helpers;
 
 namespace Alchemist.AlchemistCode.Character;
 
-/// <summary>
-/// The rainbow secrets. One shader cycles each part of the Alchemist whose setting is on.
-/// </summary>
-/// <remarks>
-/// A part is found by its hue inside the slots that can hold it. The sprite material covers the
-/// slots that hold robe, skin and bag. A SpineSlotNode child gives one slot its own material, which
-/// tells the eyes from the orb (both gold) and keeps the staff and the contents of the bag at their
-/// base color.
-/// </remarks>
 internal static class Rainbow
 {
     [Flags]
@@ -25,21 +16,12 @@ internal static class Rainbow
         Bag = 4,
         Eyes = 8,
         Orb = 16,
-        // The light of the orb, painted along the edges of the other parts
         Light = 32
     }
 
-    /// <summary>
-    /// The parts under the sprite material, the slots with a material of their own, and the eyes of
-    /// a slot that paints them together with the light of the orb.
-    /// </summary>
     public sealed record Rig(Parts SpriteParts, IReadOnlyDictionary<string, Parts> Slots, EyeMap? Eyes = null);
 
-    /// <summary>
-    /// Where the eyes sit on the image of <paramref name="Slot"/>. The light of the orb is the same gold
-    /// as the eyes, thus only their place tells the two apart. Each eye is an ellipse, its centre in xy
-    /// and its radii in zw, as fractions of the image.
-    /// </summary>
+    // Each eye is an ellipse: centre in xy, radii in zw, as fractions of the image
     public sealed record EyeMap(string Slot, string AtlasPath, string Region, Vector4 Left, Vector4 Right);
 
     public static IReadOnlyDictionary<string, Parts> Slots(params (Parts Parts, string[] Names)[] groups) =>
@@ -49,8 +31,6 @@ internal static class Rainbow
     private const string ShaderPath = $"{MainFile.ResPath}/shaders/rainbow.gdshader";
     private const string SlotNodeClass = "SpineSlotNode";
 
-    // One material for each mix of parts and eyes, shared by every sprite. The cycle runs on TIME,
-    // thus all parts stay in step
     private static readonly Dictionary<(Parts Parts, Vector4 LeftEye, Vector4 RightEye), Material> Materials = [];
     private static Shader? _shader;
 
@@ -79,14 +59,11 @@ internal static class Rainbow
         if (spriteParts != Parts.None && MaterialFor(spriteParts, null) is { } spriteMaterial)
             sprite.Set("normal_material", spriteMaterial);
 
-        // An eye slot the atlas cannot place keeps the light of the orb off, rather than cycle the
-        // eyes with it
         var eyes = rig.Eyes is { } map ? EyesOnPage(map) : null;
         Parts SlotParts(string name, Parts parts) =>
             name == rig.Eyes?.Slot && eyes == null ? parts & ~Parts.Light : parts;
 
-        // Under a sprite material a set-apart slot needs a material even when its parts are off, or
-        // the sprite material cycles it
+        // A slot needs its own material even with its parts off, or the sprite material cycles it
         var slots = rig.Slots
             .Select(pair => (Name: pair.Key, Parts: SlotParts(pair.Key, pair.Value & enabled)))
             .Where(slot => slot.Parts != Parts.None || spriteParts != Parts.None)
@@ -94,8 +71,7 @@ internal static class Rainbow
             .ToList();
         if (slots.Count == 0) return;
 
-        // A slot node finds its slot through the skeleton of its sprite, thus the nodes go in once
-        // that skeleton exists. The wait for it needs the tree, which a new sprite has not joined yet
+        // A slot node finds its slot through the sprite's skeleton, so it can only go in once that exists
         void AddSlotNodes() => sprite.RunWhenSpineReady(new MegaSprite(sprite), _ =>
         {
             foreach (var (name, parts) in slots)
@@ -113,7 +89,6 @@ internal static class Rainbow
         else sprite.Ready += AddSlotNodes;
     }
 
-    // A zero radius leaves an eye out, thus no eyes at all is two zero vectors
     private static Material? MaterialFor(Parts parts, (Vector4 Left, Vector4 Right)? eyes)
     {
         var (left, right) = eyes ?? default;
@@ -140,7 +115,6 @@ internal static class Rainbow
         return Materials[key] = material;
     }
 
-    // The eyes of the map in UV of the atlas page, or null if the atlas does not say where the image sits
     private static (Vector4 Left, Vector4 Right)? EyesOnPage(EyeMap map)
     {
         if (SpineModel.RegionUv(map.AtlasPath, map.Region) is not { } image)
@@ -155,7 +129,6 @@ internal static class Rainbow
         return (OnPage(map.Left), OnPage(map.Right));
     }
 
-    // find_slot makes a new wrapper each call, and both usings release it on this thread
     private static bool HasSlot(Resource skeleton, string name)
     {
         using var found = skeleton.Call("find_slot", name);

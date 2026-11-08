@@ -9,10 +9,8 @@ public enum EpochUnlockKind { None, Cards, Relics, Potions }
 
 public abstract class AlchemistEpoch : EpochModel
 {
-    // The base game looks up the story via Slugify(StoryId) == AlchemistStory.Id
     public override string StoryId => "Alchemist";
 
-    // Assigned dynamically, so it cannot collide with a base game or another mod's epoch cells
     public override EpochEra Era => EpochRegistration.SlotFor(GetType()).era;
     public override int EraPosition => EpochRegistration.SlotFor(GetType()).pos;
 
@@ -22,7 +20,6 @@ public abstract class AlchemistEpoch : EpochModel
     protected virtual List<RelicModel> Relics => new();
     protected virtual List<PotionModel> Potions => new();
 
-    // EpochGating reads these and holds each one back until this epoch is revealed
     public IReadOnlyList<CardModel> GatedCards => Cards;
     public IReadOnlyList<RelicModel> GatedRelics => Relics;
     public IReadOnlyList<PotionModel> GatedPotions => Potions;

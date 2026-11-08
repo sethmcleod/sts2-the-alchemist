@@ -12,32 +12,24 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// A combat-hook singleton, so the tick counters run even when no one holds Antitoxin
 public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 {
     private static readonly HashSet<Creature> Absorbed = [];
 
-    // Royal Poison and in-combat max HP loss deal damage with the same null dealer and
-    // Unblockable|Unpowered shape as a Poison tick. PoisonPower.Trigger deals exactly the stack it is
-    // about to decrement, so requiring that much Poison on the target is what separates them
+    // Royal Poison and max HP loss share the tick's shape. Only a real tick has that much Poison on the target
     internal static bool IsPoisonTick(Creature target, decimal amount, ValueProp props,
         Creature? dealer, CardModel? cardSource) =>
         HasPoisonTickShape(props, dealer, cardSource)
         && amount > 0
         && target.GetPowerAmount<PoisonPower>() >= amount;
 
-    // The half of the test that does NOT read the amount. BeforeDamageReceived is handed the
-    // post-ModifyDamage amount, so it cannot re-run the amount test, but it can re-run this, and
-    // this is the half that separates a tick from an enemy attack: an attack carries a dealer and
-    // is not Unblockable
+    // No amount test: BeforeDamageReceived only sees the post-ModifyDamage amount
     internal static bool HasPoisonTickShape(ValueProp props, Creature? dealer, CardModel? cardSource) =>
         dealer == null
         && cardSource == null
         && props.HasFlag(ValueProp.Unblockable)
         && props.HasFlag(ValueProp.Unpowered);
 
-    // The part of the resolving tick that Antitoxin held. AfterDamageReceived only sees the reduced
-    // amount, so readers of the full tick add this back
     private static readonly Dictionary<Creature, int> AbsorbedOnTick = new();
 
     internal static void ClearTickAbsorb(Creature creature) => AbsorbedOnTick.Remove(creature);
@@ -52,11 +44,6 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         Analytics.RunCounters.Add(creature.Player, Analytics.RunCounters.PoisonAbsorbed, amount);
     }
 
-    // Analytics only. The gained counter reads any positive Poison landing on a player; the bled
-    // counter reads the tick that resolves AFTER absorption, so it is what Poison actually cost in
-    // HP. IsPoisonTick is the one definition of the tick shape; the stack still holds the full
-    // amount here because PoisonPower decrements after the damage lands. A fully covered tick
-    // arrives with zero damage and IsPoisonTick's amount test filters it out
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -90,9 +77,7 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 
     internal static bool AbsorbedThisTurn(Creature creature) => Absorbed.Contains(creature);
 
-    // The game skips AfterDamageReceived for the hit that kills, so the lethal tick is caught on the
-    // way in: BeforeDamageReceived still fires for it with the post-Antitoxin amount. The latch is
-    // read at death and cleared by any hit the creature survived
+    // The game skips AfterDamageReceived for a killing hit, so the lethal tick is latched on the way in
     private static readonly Dictionary<Creature, int> LethalTick = new();
 
     public override Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target,
@@ -116,7 +101,6 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         return Task.CompletedTask;
     }
 
-    // Cleared wholesale rather than per participant, so no Creature from a finished combat is held
     public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side,
         IReadOnlyList<Creature> participants, ICombatState combatState)
     {

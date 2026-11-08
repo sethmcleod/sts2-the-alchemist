@@ -2,8 +2,6 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 
 namespace Alchemist.AlchemistCode.Cards;
 
-// A card number that grows with fermentation. The per-turn growth is either a flat number or
-// another var on the same card, so an upgrade to the growth rate is read live
 public sealed class FermentVar : PreviewVar
 {
     private readonly string? _perTurnVar;

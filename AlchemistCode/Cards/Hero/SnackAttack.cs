@@ -6,8 +6,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Hero;
 
-// Pommel Strike is the base band. The Poison gate on the draw pays for the extra damage. The gate
-// is read before the hit, so a kill still draws
 [CardTheme(CardTheme.Poison)]
 public class SnackAttack : AlchemistHeroCard
 {

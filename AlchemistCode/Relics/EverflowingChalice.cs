@@ -9,9 +9,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-// The Mix lane's relic: the shelf is stocked before every fight, your pick, and it keeps.
-// The picker runs on turn 1 rather than BeforeCombatStart, because only the turn-start hook
-// carries a real choice context (base ChoicesParadox does the same)
+// Picks on turn 1, not BeforeCombatStart: only the turn-start hook has a real choice context
 public class EverflowingChalice : AlchemistRelic
 {
     public override RelicRarity Rarity => RelicRarity.Uncommon;

@@ -1,61 +1,29 @@
 #!/usr/bin/env bash
-# Dev helper for the Alchemist mod. One command does each repeated loop.
+# Dev helper for the Alchemist mod
 #
-#   scripts/dev.sh publish        build → godot import → publish → verify pck   (the safe default)
-#   scripts/dev.sh publish-fast   build → publish → verify pck                  (code only, no import)
-#   scripts/dev.sh import         godot --headless --import only
-#   scripts/dev.sh beta-art [--all] [--dry-run]
-#                                 shrink the beta card placeholders that final art replaced
-#                                 to 500x380 and 256 colors (--all: every placeholder)
-#   scripts/dev.sh lint           static checks: the three-way rule, card text tokens, and
-#                                 Ancient dialogue structure (offline, no game)
-#   scripts/dev.sh changelog      draft CHANGELOG entries from the commits since the last tag
-#                                 (it prints only, it writes nothing)
-#   scripts/dev.sh release <patch|minor|major|X.Y.Z|promote>
-#                                 increase the version, roll the CHANGELOG, build, and package
-#                                 dist/Alchemist-<tag>.zip. "promote" keeps the
-#                                 version it has, which is what main does after a merge from beta
-#   scripts/dev.sh publish-release [--force] [--draft] [X.Y.Z]
-#                                 commit the release edit, tag it, push it, and create or update
-#                                 the GitHub Release with the zip and the notes. --force moves a
-#                                 tag that is already public (a history rewrite)
-#   scripts/dev.sh sync-main      merge beta into main so main can promote
-#   scripts/dev.sh analytics [export|seed]
-#                                 export: read the runs from the website's stores and write its
-#                                 data (needs the credentials, see tools/analytics/README.md);
-#                                 seed: fabricate 400 runs and export them, no network
-#   scripts/dev.sh site [dev|build|preview|check]
-#                                 the website in site/ (alchemist.fyi). dev: serve it while you edit;
-#                                 build: export the data and build it; preview: serve the build;
-#                                 check: the unit tests, type check and lint. It deploys itself from
-#                                 each release (.github/workflows/site.yml), so a release needs nothing
-#   scripts/dev.sh doctor         check every prerequisite and print ✓/✗ with the fixes
-#   scripts/dev.sh env            print the resolved paths and exit
+#   scripts/dev.sh publish          build → godot import → publish → verify pck (the safe default)
+#   scripts/dev.sh publish-fast     build → publish → verify pck (code only, no import)
+#   scripts/dev.sh import           godot --headless --import only
+#   scripts/dev.sh beta-art [--all] [--dry-run]       shrink beta placeholders that final art replaced
+#   scripts/dev.sh lint             static checks (offline, no game)
+#   scripts/dev.sh changelog        draft CHANGELOG entries since the last tag (prints only)
+#   scripts/dev.sh release <patch|minor|major|X.Y.Z|promote>   bump, roll CHANGELOG, build, zip
+#   scripts/dev.sh publish-release [--force] [--draft] [X.Y.Z]  commit, tag, push, GitHub Release
+#   scripts/dev.sh sync-main        merge beta into main (a merge, never a rebase)
+#   scripts/dev.sh analytics [export|seed]            export site data, or seed fake runs offline
+#   scripts/dev.sh site [dev|build|preview|check]     the alchemist.fyi site in site/
+#   scripts/dev.sh doctor           check prerequisites and that git, Steam and the build agree
+#   scripts/dev.sh env              print the resolved paths
 #
-# ── two branches, two Workshop items ────────────────────────────────────
-# beta  tracks the game's public-beta branch, releases often, and publishes to the "(Beta Branch)"
-#       Workshop item. Its tags are vX.Y.Z-beta and its GitHub Releases are pre-releases.
-# main  tracks the game's default branch, releases slowly, and publishes to the plain Workshop
-#       item. Its tags are vX.Y.Z and its GitHub Releases are the ones GitHub calls "Latest".
-# workshop/targets.json maps the branch to the item. Every command below reads the branch you are
-# on, so there is nothing to pass and nothing to remember.
-#
-# The reason for this script: every publish needs PATH and DOTNET_ROLL_FORWARD set, plus 3 or 4
-# commands in a chain. This script does all of that, so the inner loop is one word.
-#
-# You can override every path below with an environment variable (see the env output). The
-# defaults detect the platform, so a fresh clone works and you do not have to edit this file.
+# The git branch picks the Workshop item and tag suffix (workshop/targets.json)
+# Paths can be overridden by environment variables (see env)
 set -euo pipefail
 
-# ── the environment that every command needs ────────────────────────────
-# dotnet is often not on the default login PATH. RollForward=Major lets the net9 analyzers run on
-# newer runtimes.
 export PATH="$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools"
 export DOTNET_ROLL_FORWARD=Major
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-# Game install dir: the environment override, or the default Steam library of the platform.
 if [ -z "${STS2_GAME_DIR:-}" ]; then
   case "$(uname -s)" in
     Darwin) STS2_GAME_DIR="$HOME/Library/Application Support/Steam/steamapps/common/Slay the Spire 2" ;;
@@ -65,7 +33,6 @@ if [ -z "${STS2_GAME_DIR:-}" ]; then
 fi
 export STS2_GAME_DIR
 
-# Mods dir: in the .app bundle on macOS, next to the executable on the other platforms.
 if [ -d "$STS2_GAME_DIR/SlayTheSpire2.app" ]; then
   GAME_MODS="$STS2_GAME_DIR/SlayTheSpire2.app/Contents/MacOS/mods"
 else
@@ -75,9 +42,6 @@ fi
 GODOT="${GODOT:-/Applications/MegaDot.app/Contents/MacOS/Godot}"
 PCK="$GAME_MODS/Alchemist/Alchemist.pck"
 
-# The lint needs Python 3.10 or later. Use a system python if the PATH has one. If the PATH
-# has none, use uv. uv supplies a correct Python for you. PY_CMD holds the
-# interpreter command as an array, because the uv form has more than one word.
 PY_CMD=()
 find_python() {
   local p
@@ -99,17 +63,10 @@ step() { printf '\n\033[1;36m▶ %s\033[0m\n' "$*"; }
 ok()   { printf '\033[32m✓\033[0m %s\n' "$*"; }
 bad()  { printf '\033[31m✗\033[0m %s\n' "$*"; }
 
-# Sts2Path pins the compile against the SAME install that STS2_GAME_DIR installs into. Without it
-# MSBuild runs its own Steam-library detection, so pointing STS2_GAME_DIR at a second install (the
-# default-branch copy, say) would still compile against the first one's sts2.dll and load with a
-# ReflectionTypeLoadException.
 do_build()   { step "build";   cd "$REPO"; dotnet build -p:Sts2Path="$STS2_GAME_DIR"; stamp_game_build; }
 do_import()  { step "import (godot)"; cd "$REPO"; "$GODOT" --headless --import --path . 2>&1 | grep -iE "error|reimport" | grep -viE "EditorSettings|TypeNameResolver" || true; }
 do_publish() { step "publish"; cd "$REPO"; dotnet publish -c Debug -p:Sts2Path="$STS2_GAME_DIR"; stamp_game_build; }
 
-# ── which game build is installed, and which one did we compile against ──────
-# Steam records the branch in appmanifest_2868840.acf: BetaKey is "public-beta" on the beta branch
-# and absent on the default branch. buildid changes on every update of either.
 STEAM_APPS="$(dirname "$(dirname "$STS2_GAME_DIR")")"
 APP_MANIFEST="$STEAM_APPS/appmanifest_2868840.acf"
 
@@ -122,8 +79,6 @@ game_build_id() {
   sed -nE 's/.*"buildid"[[:space:]]+"([^"]*)".*/\1/p' "$APP_MANIFEST" | head -1
 }
 
-# The installed mod is a compiled binary, so it silently belongs to one game build. Record which,
-# so doctor can catch the "switched Steam branch, forgot to republish" case before the game does.
 BUILD_STAMP="$REPO/.tooling/built-against"
 stamp_game_build() {
   mkdir -p "$(dirname "$BUILD_STAMP")"
@@ -132,29 +87,20 @@ stamp_game_build() {
 do_verify()  {
   step "verify pck"
   [ -f "$PCK" ] && ls -lh "$PCK" || { echo "!! the pck is missing at $PCK"; exit 1; }
-  # Godot keeps the pck open, so replacing it under a running game makes every later asset load
-  # from it fail. The first failure throws out of NCombatUi.Activate and combat starts with no
-  # background, which is easy to mistake for a mod bug.
+  # Never replace the pck under a running game: Godot holds it open and every later asset load fails
   if pgrep -f "Contents/MacOS/Slay the Spire 2" >/dev/null 2>&1; then
     bad "the game is active; it still uses the OLD pck and will throw AssetLoadException"
   fi
 }
 
-# ── release plumbing ────────────────────────────────────────────────────────
 CHANGELOG="$REPO/CHANGELOG.md"
 MANIFEST="$REPO/Alchemist.json"
 DIST="$REPO/dist"
 
-# ── release targets ─────────────────────────────────────────────────────────
-# The branch you are on picks the Workshop item, the tag suffix, and whether the GitHub Release is
-# a pre-release. workshop/targets.json holds the map and is identical on both branches, so a merge
-# never conflicts over it.
 TARGETS="$REPO/workshop/targets.json"
 
 current_branch() { git -C "$REPO" rev-parse --abbrev-ref HEAD; }
 
-# Reads one field of the current branch's target. Fails loudly for a branch with no target, which
-# is how a release from a feature branch stops before it touches anything.
 target_get() {  # <field>
   have_py || { bad "$no_py_msg (the release target map needs it)"; exit 1; }
   "${PY_CMD[@]}" - "$TARGETS" "$(current_branch)" "$1" <<'PYEOF'
@@ -169,17 +115,14 @@ print(target.get(field, ""))
 PYEOF
 }
 
-current_version() {  # the bare X.Y.Z from the manifest (it removes the v prefix)
+current_version() {
   grep '"version"' "$MANIFEST" | sed -E 's/.*"version"[[:space:]]*:[[:space:]]*"v?([0-9]+\.[0-9]+\.[0-9]+)".*/\1/'
 }
 
-# The lines of the ## [Unreleased] section (between that heading and the next ## heading).
 unreleased_body() {
   awk '/^## \[Unreleased\]/{grab=1; next} grab && /^## /{exit} grab{print}' "$CHANGELOG"
 }
 
-# The body of one version's section. A promote reads this instead of Unreleased, because the notes
-# it ships came over in the merge and were rolled under their version heading on beta.
 version_body() {  # <X.Y.Z>
   awk -v ver="$1" '
     $0 ~ "^## \\[" ver "\\]" {grab=1; next}
@@ -188,7 +131,6 @@ version_body() {  # <X.Y.Z>
   ' "$CHANGELOG"
 }
 
-# Draft the changelog entries from the Conventional Commits since the last tag. This is read-only.
 do_changelog() {
   local last range subject
   last="$(git -C "$REPO" describe --tags --abbrev=0 2>/dev/null || true)"
@@ -224,8 +166,7 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
   [ -n "$item" ] || { bad "workshop/targets.json has no itemId for '$branch'; create the Workshop item and fill it in first"; exit 1; }
   ok "target: $branch → \"$title\" (item $item), tags vX.Y.Z${suffix}"
 
-  # A build compiled against the other Steam branch loads with a ReflectionTypeLoadException, and
-  # nothing before the game starts would catch it. Refuse to package one.
+  # A build against the other Steam branch fails at load with ReflectionTypeLoadException
   local want_branch; want_branch="$(target_get gameBranch)"
   local have_branch; have_branch="$(game_branch)"
   [ "$have_branch" = "$want_branch" ] || {
@@ -245,8 +186,6 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
     *)       new="$bump" ;;
   esac
   [[ "$new" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { bad "the version '$new' is not valid; the correct form is X.Y.Z"; exit 1; }
-  # promote ships the version that came over in the merge, so it is the one case where the version
-  # does not move. Every other form must move it forward.
   if [ "$bump" = "promote" ]; then
     git -C "$REPO" rev-parse -q --verify "refs/tags/v$new$suffix" >/dev/null &&
       { bad "v$new$suffix already exists; promote ships the merged version, so there is nothing new here"; exit 1; }
@@ -256,8 +195,6 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
     [ "$(printf '%s\n%s\n' "$cur" "$new" | sort -V | tail -1)" = "$new" ] || { bad "the new version $new is not larger than the current version $cur"; exit 1; }
   fi
 
-  # A release must have notes that a person wrote. A promote ships the section the merge brought
-  # over, so it reads that version's own heading; an empty Unreleased is the correct state there.
   if [ "$bump" = "promote" ]; then
     [ -n "$(version_body "$new" | tr -d '[:space:]')" ] || { bad "## [$new] in CHANGELOG.md is empty or missing; the merge from beta should have brought its notes over"; exit 1; }
   else
@@ -275,8 +212,6 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
 
   sed -i.bak -E "s/(\"version\"[[:space:]]*:[[:space:]]*\")v?[0-9]+\.[0-9]+\.[0-9]+(\")/\1v$new\2/" "$MANIFEST" && rm -f "$MANIFEST.bak"
 
-  # Roll the changelog: keep the Unreleased heading empty and add a heading for the new version.
-  # A promote already has its heading, because the merge brought beta's rolled changelog with it.
   if ! grep -q "^## \[$new\]" "$CHANGELOG"; then
     awk -v ver="$new" -v date="$date" '
       /^## \[Unreleased\]/ { print; print ""; print "## [" ver "] - " date; next }
@@ -286,8 +221,6 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
 
   do_publish
 
-  # One top-level Alchemist/ folder with the three runtime files the game loads. No pdb, which is
-  # for debug only, and the mod_image is already in the pck.
   local tag="v$new$suffix"
   step "package dist/Alchemist-$tag.zip"
   local stage="$DIST/stage" src="$GAME_MODS/Alchemist"
@@ -302,10 +235,7 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
   rm -rf "$stage"
   ls -lh "$zipfile"
 
-  # Notes for the GitHub Release body or the Workshop comment. The version heading is dropped,
-  # because both paste targets supply their own title. The changelog wraps its bullets to keep
-  # the markdown source readable, and both targets wrap text themselves, so the second stage
-  # unwraps: a bullet at any depth starts a line, and an indented non-bullet joins the one above.
+  # The second awk unwraps the changelog's wrapped bullets, since GitHub and Steam wrap themselves
   local notes="$DIST/RELEASE_NOTES-$tag.txt"
   awk -v ver="$new" '
     $0 ~ "^## \\[" ver "\\]" {grab=1; next}
@@ -321,11 +251,6 @@ do_release() {  # <patch|minor|major|X.Y.Z|promote>
     END { flush() }
   ' > "$notes"
 
-  # Refresh the Steam Workshop workspace: the same three runtime files go into content/, and
-  # workshop.json gets the new version and the release notes as its changeNote, so a
-  # `ModUploader upload -w workshop` after the release pushes exactly what was packaged.
-  # The title and the item id come from targets.json rather than the file, so the same committed
-  # workshop.json serves both branches and a merge never has to resolve them.
   if [ -d "$REPO/workshop" ]; then
     step "workshop workspace"
     for f in Alchemist.dll Alchemist.json Alchemist.pck; do
@@ -339,20 +264,12 @@ import json, re, sys
 path, ver, notes_file, title, banner, minb, maxb = sys.argv[1:8]
 with open(path, encoding="utf-8") as f: cfg = json.load(f)
 with open(notes_file, encoding="utf-8") as f: notes = f.read().strip()
-# Steam renders BBCode, not markdown, so a "### Changed" heading would ship as literal hashes.
-# Drop the marks and keep the words. The changelog and the GitHub release body keep their headings.
 notes = re.sub(r"(?m)^#+[ \t]*", "", notes)
 cfg["title"] = title
 cfg["changeNote"] = f"{ver}\n\n{notes}" if notes else ver
-# The description body is shared by both items; only the [quote] banner at the top differs, and it
-# says which game branch this item is for. Rebuild it from targets.json every time rather than
-# trusting the file: a merge from beta carries beta's banner across, and this heals that silently.
-# The strip is what makes it idempotent, so repeated releases never stack banners.
 if banner:
     body = re.sub(r"^\[quote\].*?\[/quote\]\s*", "", cfg.get("description", ""), count=1, flags=re.S)
     cfg["description"] = f"{banner}\n\n{body}"
-# Steam's supported game-version range. The game refuses a mod whose range does not cover the
-# branch being played, which is what stops the other branch's build being loaded at all.
 cfg["minBranch"] = minb
 cfg["maxBranch"] = maxb
 with open(path, "w", encoding="utf-8") as f:
@@ -377,17 +294,11 @@ PYEOF
   echo "      dotnet run -c Release --no-build -- upload --id $item -w $REPO/workshop"
 }
 
-# ── GitHub release automation ───────────────────────────────────────────────
-# gh makes every network call. It reads the repository from the origin remote, so this script
-# holds no URL and no token.
 require_gh() {
   command -v gh >/dev/null 2>&1 || { bad "gh (the GitHub CLI) is not installed; run: brew install gh"; exit 1; }
   gh auth status >/dev/null 2>&1 || { bad "gh has no login; run: gh auth login"; exit 1; }
 }
 
-# Commit the release edit, tag it, push it, and create or update the GitHub Release.
-# The tag and the push need --force only when the history moved under a tag that is already
-# public. That case is a rewrite, so the command refuses to guess and asks for the flag.
 do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
   local force=0 draft=0 ver=""
   while [ $# -gt 0 ]; do
@@ -406,9 +317,6 @@ do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
   [ -n "$ver" ] || ver="$(current_version)"
   local tag="v$ver$suffix"
 
-  # The release edit that `release` leaves behind is exactly these files (the workshop ones only
-  # change when the workshop workspace exists). Commit it here so that the whole flow is two
-  # commands. Any other pending change means the tree is not ready.
   if [ -n "$(git -C "$REPO" status --porcelain)" ]; then
     local extra; extra="$(git -C "$REPO" status --porcelain | awk '{print $2}' \
       | grep -v -E '^(Alchemist\.json|CHANGELOG\.md|workshop/workshop\.json|workshop/mod_id\.txt)$' || true)"
@@ -416,10 +324,7 @@ do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
       bad "the working tree has changes other than the release edit: $(echo "$extra" | tr '\n' ' ')"; exit 1; }
     step "commit release: $tag"
     git -C "$REPO" add Alchemist.json CHANGELOG.md
-    # Stage a workshop file only if git already tracks it. mod_id.txt is deliberately untracked and
-    # gitignored (it differs per branch), and `git add` on an ignored path FAILS, which under set -e
-    # aborted this command after the release edit but before the tag. An if block also keeps a
-    # false test from taking the whole script down the way `[ -f … ] && …` did.
+    # git add on the ignored mod_id.txt fails and set -e would abort before the tag
     local f
     for f in workshop/workshop.json workshop/mod_id.txt; do
       if git -C "$REPO" ls-files --error-unmatch "$f" >/dev/null 2>&1; then
@@ -437,7 +342,6 @@ do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
   [ -f "$zip" ]   || { bad "$zip is missing; run: scripts/dev.sh release $ver"; exit 1; }
   [ -f "$notes" ] || { bad "$notes is missing; run: scripts/dev.sh release $ver"; exit 1; }
 
-  # Put the tag on the tip commit. A tag that already points somewhere else only moves with --force.
   step "tag $tag"
   local head; head="$(git -C "$REPO" rev-parse HEAD)"
   local tagged=""; tagged="$(git -C "$REPO" rev-parse -q --verify "refs/tags/$tag^{commit}" 2>/dev/null || true)"
@@ -450,8 +354,6 @@ do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
     git -C "$REPO" tag -f -a "$tag" -m "$tag" >/dev/null; ok "moved $tag to $head"
   fi
 
-  # --force-with-lease is the safe force: it stops if the remote holds a commit that this clone
-  # has never seen. A plain --force would drop that work without a word.
   step "push $branch and $tag"
   if [ "$force" -eq 1 ]; then
     git -C "$REPO" push --force-with-lease origin "$branch"
@@ -462,8 +364,6 @@ do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
   fi
   ok "pushed"
 
-  # A beta release is a pre-release, so GitHub keeps its "Latest release" pointing at the newest
-  # main release. Someone who lands on the repo without reading anything gets the public build.
   local pre; pre="$(target_get prerelease)"
   local -a flags=(--title "$tag" --notes-file "$notes")
   [ "$draft" -eq 1 ] && flags+=(--draft)
@@ -471,7 +371,6 @@ do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
 
   if gh release view "$tag" --repo "$(gh repo view --json nameWithOwner -q .nameWithOwner)" >/dev/null 2>&1; then
     step "update the GitHub Release $tag"
-    # The explicit false clears the flag on a release that an earlier run marked pre-release.
     [ "$pre" = "True" ] || flags+=(--prerelease=false)
     gh release edit "$tag" "${flags[@]}" >/dev/null
     gh release upload "$tag" "$zip" --clobber
@@ -486,10 +385,8 @@ do_publish_release() {  # [--force] [--draft] [vX.Y.Z]
   ok "$tag is live: $(gh release view "$tag" --json url -q .url)"
 }
 
-# ── promoting beta into main ────────────────────────────────────────────────
-# A merge, never a rebase. Rebasing would move commits that public tags already point at, and both
-# the tags and the release artifacts attached to them would then describe a history that is gone.
 do_sync_main() {
+  # A merge, never a rebase: public tags point at these commits
   step "sync main ← beta"
   [ -z "$(git -C "$REPO" status --porcelain)" ] || { bad "the working tree is not clean; commit or stash your changes first"; exit 1; }
   local branch; branch="$(current_branch)"
@@ -510,9 +407,7 @@ do_sync_main() {
     exit 1; }
   ok "merged; main is now at v$(current_version)"
 
-  # A compat file that is new on beta arrives with no conflict at all, so the merge driver never
-  # sees it. This is the check that catches that, and it is the one that would have caught the
-  # v0.8.0 merge landing beta's AntitoxinPowerCompat.cs on main.
+  # A Compat/ file new on beta merges with no conflict, so the merge driver never sees it
   if have_py; then
     step "compat branch check"
     "${PY_CMD[@]}" "$REPO/scripts/lint_sync.py" >/dev/null 2>&1 \
@@ -534,9 +429,6 @@ do_doctor() {
   if [ -d "$STS2_GAME_DIR" ];        then ok "game at $STS2_GAME_DIR"; else bad "game not found at $STS2_GAME_DIR; install it through Steam, or set STS2_GAME_DIR"; fail=1; fi
   if [ -d "$GAME_MODS/Alchemist" ];  then ok "Alchemist mod installed"; else bad "Alchemist mod not installed; run scripts/dev.sh publish"; fail=1; fi
 
-  # The branch you are on, the Steam branch you are running, and the game build the installed mod
-  # was compiled against all have to agree. A mismatch shows up only as a
-  # ReflectionTypeLoadException when the game loads, which names none of this.
   local branch; branch="$(current_branch)"
   local have_branch; have_branch="$(game_branch)"
   ok "git branch $branch, game on ${have_branch:-the default branch} (build $(game_build_id))"
@@ -547,8 +439,7 @@ do_doctor() {
       fail=1
     fi
   fi
-  # .gitattributes marks AlchemistCode/Compat/** merge=ours, and git refuses to run a merge driver
-  # it has no definition for. The definition is per clone, not committed, so set it here.
+  # The merge=ours driver in .gitattributes is defined per clone, not committed
   if [ "$(git -C "$REPO" config --get merge.ours.driver)" = "true" ]; then
     ok "the Compat/ merge driver is set"
   else
@@ -562,7 +453,6 @@ do_doctor() {
       fail=1
     else ok "the installed mod matches the current game build"; fi
   else bad "note: no build stamp yet; run scripts/dev.sh publish to record which game build the mod was compiled against"; fi
-  # gh is necessary only for publish-release, so a missing gh is a note, not a failure.
   if ! command -v gh >/dev/null 2>&1; then bad "note: gh is not installed; scripts/dev.sh publish-release needs it (brew install gh)"
   elif gh auth status >/dev/null 2>&1; then ok "gh is logged in ($(gh api user -q .login 2>/dev/null))"
   else bad "note: gh has no login; scripts/dev.sh publish-release needs one (gh auth login)"; fi

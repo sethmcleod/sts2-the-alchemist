@@ -38,8 +38,7 @@ public static class PotionSellPatches
     private static readonly FieldInfo DiscardButtonField =
         AccessTools.Field(typeof(NPotionPopup), "_discardButton");
 
-    // Measured from potion_popup_expanded.png (670x780): three 203px button faces with 16px gaps, mapped to
-    // the popup's control space. ExpandedHeight keeps the base 239/560 vertical scale
+    // Measured from potion_popup_expanded.png (670x780); ExpandedHeight keeps the base 239/560 scale
     private const float ButtonHeight = 87f;
     private const float ExpandedHeight = 333f;
     private static readonly float[] ButtonTops = { 48f, 142f, 235f };
@@ -71,22 +70,16 @@ public static class PotionSellPatches
     private static int _greetingIndex = 1;
     private static bool _soldThisVisit;
 
-    // True when this run's owner can sell potions at all: the config override, or one of the merchant kits.
-    // Does not check the room, so it also gates the High Quality tip, which shows anywhere in a run
+    // Doesn't check the room, so it also gates the High Quality tip
     private static bool SellingEnabledFor(Player? owner)
     {
         if (owner == null) return false;
         return owner.GetRelic<MurkyFlask>() != null || owner.GetRelic<RadiantFlask>() != null;
     }
 
-    // Only what the Alchemist brewed himself has resale value, which is what makes Brew a gold engine
-    // as well as a potion source. Foul stays sellable because throwing it at the merchant already pays
     internal static bool IsSellable(PotionModel potion) =>
         SellingEnabledFor(potion.Owner) && potion is IBrewOnly or FoulPotion;
 
-    // A Foul potion is sellable too: throwing it at the merchant already grants Gold, so a Sell button is the
-    // same payout without the throw animation. Its Use button already reads "Throw". The Sell button only
-    // appears at the merchant, the one place a sale can actually happen
     private static bool CanSellPotions(PotionModel potion)
     {
         if (!IsSellable(potion)) return false;
@@ -95,25 +88,14 @@ public static class PotionSellPatches
         return !BoughtAtThisMerchant(potion, owner);
     }
 
-    // The Merchant will not buy back what he just sold you. His own price rolls +-5% around the very
-    // value the sale price is a percentage of, so at a high sell percent a low roll is already profitable
-    // to flip, and The Courier both discounts the price and restocks the slot, which makes it unlimited
-    // Gold. Closing the round trip fixes that without lowering what a Potion is worth to sell
     private static bool BoughtAtThisMerchant(PotionModel potion, Player owner)
     {
-        // Recorded per map point by MerchantPotionEntry, and saved with the run, so it survives a reload
         var history = owner.RunState.CurrentMapPointHistoryEntry;
         if (history != null && history.GetEntry(owner.NetId).BoughtPotions.Contains(potion.Id)) return true;
         return CameFromThisMerchant(potion, owner);
     }
 
-    // The Merchant will not buy back anything he handed you this visit, not only what you paid him for
-    // directly. Cauldron is a Shop relic that offers five Potions the moment it is bought, so without
-    // this you could buy it and sell all five straight back to him.
-    //
-    // Held here rather than appended to the base game's BoughtPotions, because that list feeds the run
-    // metric for Potions bought and these were not bought. A mid-shop reload drops the set, which only
-    // means the Merchant will buy those Potions again, so nothing breaks
+    // Not appended to BoughtPotions, which feeds the potions-bought run metric
     private static object? _procuredVisit;
     private static readonly HashSet<(ulong Player, ModelId Potion)> _procuredThisVisit = new();
 
@@ -124,8 +106,7 @@ public static class PotionSellPatches
             && _procuredThisVisit.Contains((owner.NetId, potion.Id));
     }
 
-    // Every Potion the player gains passes through TryToProcure, whatever handed it over, so one postfix
-    // covers Cauldron and any other relic or effect that grants Potions inside a shop
+    // Every potion gain passes through TryToProcure, so this covers Cauldron and any other shop grant
     [HarmonyPatch(typeof(PotionCmd), nameof(PotionCmd.TryToProcure), typeof(PotionModel), typeof(Player), typeof(int))]
     public static class ProcuredAtMerchantPatch
     {
@@ -134,7 +115,6 @@ public static class PotionSellPatches
             if (player.RunState.CurrentRoom is not MerchantRoom) return;
             if (player.RunState.CurrentMapPointHistoryEntry is not { } visit) return;
 
-            // The map point entry object identifies the visit, so arriving at the next room clears it
             if (!ReferenceEquals(visit, _procuredVisit))
             {
                 _procuredVisit = visit;
@@ -148,7 +128,6 @@ public static class PotionSellPatches
 
     private static int GetGoldFor(PotionModel potion)
     {
-        // A Foul potion sells for exactly its throw payout, so Throw and Sell give the same Gold
         if (potion is FoulPotion) return (int)potion.DynamicVars["Gold"].BaseValue;
         var basePrice = GetGoldForRarity(potion.Rarity);
         return basePrice * SellPercent / 100;
@@ -230,16 +209,11 @@ public static class PotionSellPatches
         var discardButton = (NPotionPopupButton)DiscardButtonField.GetValue(popup)!;
         if (popup.GetNodeOrNull<TextureRect>("%Container") is not { } container) return;
 
-        // Taller 3-slot frame, and grow the popup so the third button has room. Keep the base texture if the
-        // expanded image is not imported yet, so the buttons still work before the art is packed. Grow from
-        // OffsetTop: _Ready already moved the popup, so OffsetTop is non-zero and a bare OffsetBottom would
-        // set the wrong height. The full-rect Container follows the popup, so the frame texture fills it
+        // Grow from OffsetTop: _Ready already moved the popup, so OffsetBottom alone sets the wrong height
         if (ExpandedTexture() is { } frame) container.Texture = frame;
         popup.OffsetBottom = popup.OffsetTop + ExpandedHeight;
 
-        // The Sell button is a copy of Discard, not Use, so its hover Background matches the third slot rather
-        // than the tent-topped first slot. Exclude Signals so it does not inherit Discard's press handler.
-        // AddChild runs its _Ready, which rebinds the Label and Background child nodes
+        // Copies Discard, not Use, for the third slot's hover Background; Signals excluded to drop its handler
         var sellButton = (NPotionPopupButton)discardButton.Duplicate(
             (int)(Node.DuplicateFlags.Groups | Node.DuplicateFlags.Scripts));
         sellButton.Name = "SellButton";
@@ -257,12 +231,9 @@ public static class PotionSellPatches
         sellButton.Connect(NClickableControl.SignalName.Released,
             Callable.From<NButton>(_ => OnSellPressed(popup, potion)));
 
-        // Controller and keyboard: Up and Down move Use <-> Sell <-> Discard
         WireFocus(useButton, sellButton, discardButton);
     }
 
-    // Pin a button to the top of the container at an absolute Y, dropping the scene's anchor fraction so the
-    // taller frame does not shift it. The horizontal anchors and offsets stay as the scene set them
     private static void PositionButton(Control button, float top)
     {
         button.AnchorTop = 0f;
@@ -286,8 +257,7 @@ public static class PotionSellPatches
         discard.FocusNeighborBottom = discard.GetPath();
     }
 
-    // Set the label on the button's child directly, so it does not depend on the button's _Ready having
-    // rebound its private _label field yet
+    // Sets the child label directly, since _Ready may not have rebound _label yet
     private static void SetButtonLabel(Node button, string text, Color color)
     {
         if (button.GetNodeOrNull<MegaLabel>("Label") is not { } label) return;
@@ -320,8 +290,7 @@ public static class PotionSellPatches
         }
     }
 
-    // Atlas-safe outline: stacked dark copies rather than a shader. ShowBehindParent keeps them under the
-    // coin, and the badge's own fade cascades to them
+    // Stacked copies, not a shader, so it stays atlas-safe
     private static void AddOutline(TextureRect badge, float width)
     {
         Vector2[] dirs =
@@ -406,8 +375,6 @@ public static class PotionSellPatches
             if (player.GetRelic<MurkyFlask>() == null && player.GetRelic<RadiantFlask>() == null) return;
             if (!player.Potions.Any(IsSellable)) return;
 
-            // One potion gets a singular line. The rotation opens with "those potions", which reads
-            // wrong when the belt holds exactly one
             var single = player.Potions.Count(IsSellable) == 1;
             var index = _greetingIndex;
             var timer = __instance.GetTree().CreateTimer(0.75);
@@ -422,11 +389,8 @@ public static class PotionSellPatches
         }
     }
 
-    // Stable id so the tint patch can find this tooltip's rendered control
     private const string SellableTipId = "ALCHEMIST_POTION_SELLABLE";
 
-    // Tells players a potion can be sold. Shows anywhere in a run where selling is enabled, not only at the
-    // merchant, but never in the compendium, whose canonical potions have no Owner and no character context
     [HarmonyPatch(typeof(PotionModel), "get_HoverTips")]
     public static class PotionSellableTipPatch
     {
@@ -442,8 +406,7 @@ public static class PotionSellPatches
         }
     }
 
-    // The base game tints only debuffs, red, by swapping the %Bg material. Same method, gold material.
-    // The text-tip controls map 1:1 and in order to the HoverTips
+    // The text-tip controls map 1:1 and in order to HoverTips
     [HarmonyPatch(typeof(NHoverTipSet), "Init")]
     public static class SellableTipGoldTintPatch
     {
@@ -451,7 +414,6 @@ public static class PotionSellPatches
             AccessTools.Field(typeof(NHoverTipSet), "_textHoverTipContainer");
         private static ShaderMaterial? _goldMaterial;
 
-        // Built in code against the base game's own hue-shift shader, so the mod ships no .tres or shader
         private static ShaderMaterial GoldMaterial()
         {
             if (_goldMaterial != null) return _goldMaterial;

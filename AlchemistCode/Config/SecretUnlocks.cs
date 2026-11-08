@@ -6,17 +6,10 @@ using FileAccess = Godot.FileAccess;
 
 namespace Alchemist.AlchemistCode.Config;
 
-/// <summary>
-/// Whether the Konami code has opened the Secrets section on the current save profile.
-/// </summary>
-/// <remarks>
-/// The flag is a file in the profile folder and each profile has its own. The cloud sync of the
-/// game reads only the files it names and leaves this file alone.
-/// </remarks>
 internal static class SecretUnlocks
 {
     private const string FileName = "alchemist.json";
-    // Profiles already store this key, and a new name would lock them again
+    // Existing profiles store this key, so renaming it locks them again
     private const string UnlockedKey = "cheatsUnlocked";
 
     private static string? _readPath;

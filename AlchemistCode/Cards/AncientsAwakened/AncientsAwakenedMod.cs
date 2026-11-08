@@ -9,13 +9,8 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards.AncientsAwakened;
 
-// Ancients Awakened (Workshop 3747492675) reads two pieces of character content: Mithrix's Ancient
-// Scepter turns the basic Strikes and Defends into a perfected pair, and Sebastian's Experimental
-// Serum hands over an Ancient card. All of it is reached by reflection, no dll reference and no
-// manifest entry, the same way The Sorceress and The Iudex do it. The Scepter keys its lookup by
-// the starter card's id while the mod's own extension method files a custom entry under the
-// character's id, which the Scepter never reads, so the two dictionaries are written directly and
-// the Scepter's static caches are cleared afterwards. The Serum's extension method works as written
+// Reached by reflection only. The Scepter looks up by starter id, which the mod's own extension
+// never writes, so the dictionaries are set directly and the Scepter's caches cleared
 internal static class AncientsAwakenedMod
 {
     private const string Code = "AncientsAwakened.AncientsAwakenedCode.";
@@ -30,7 +25,6 @@ internal static class AncientsAwakenedMod
 
     internal static bool IsLoaded => _loaded ??= AccessTools.TypeByName(PerfectedRegistry) != null;
 
-    // The cyan "perfected" frame the mod gives every character's pair, or ours when it is absent
     internal static CardPoolModel PerfectedPoolOr(CardPoolModel fallback)
     {
         if (!_lookedForPool)
@@ -48,7 +42,6 @@ internal static class AncientsAwakenedMod
         return _pool ?? fallback;
     }
 
-    // Runs from the ModelDb.Init postfix, when every model and the other mod's statics exist
     internal static void Register()
     {
         if (!IsLoaded) return;

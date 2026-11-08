@@ -14,9 +14,7 @@ public abstract class AlchemistPower : CustomPowerModel
     public abstract override PowerType Type { get; }
     public abstract override PowerStackType StackType { get; }
 
-    // The plain hover tip (card faces, the compendium, every FromPower tip) formats Description with
-    // only Amount added, so a CanonicalVars entry in the string fails the whole format and the tip
-    // prints the raw placeholders. Adding the vars here gives that path the canonical values
+    // Plain hover tips format Description with only Amount, so without these vars they print raw placeholders
     public override LocString Description
     {
         get

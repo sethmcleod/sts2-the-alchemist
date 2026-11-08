@@ -10,7 +10,7 @@ public class VenomShock : AlchemistCard
 {
     public VenomShock() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        WithDamage(10, 3);
+        WithDamage(12, 4);
         WithTip(typeof(PoisonPower));
     }
 

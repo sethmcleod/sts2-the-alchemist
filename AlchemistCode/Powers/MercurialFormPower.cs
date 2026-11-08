@@ -55,8 +55,6 @@ public class MercurialFormPower : AlchemistPower
         _granted += dose;
     }
 
-    // Plain StrengthPower rather than a TemporaryStrengthPower subclass, which would need its own icon.
-    // The card text states the loss instead, the way Flex Potion does
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {

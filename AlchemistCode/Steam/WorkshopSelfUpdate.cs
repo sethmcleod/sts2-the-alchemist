@@ -14,16 +14,8 @@ using Steamworks;
 
 namespace Alchemist.AlchemistCode.Steam;
 
-// Steam's local Workshop manifest can desync and report a stale install as current, so players keep
-// running an old build and report bugs that are already fixed. The game never re-checks. So at boot
-// this asks the Workshop servers directly for the item's last-update time (with Steam's cached answer
-// disabled), compares it against the local install timestamp, and forces a high-priority re-download
-// when the install is behind. New files only load on the next boot, so the player is told to restart
-// through the game's own confirmation popup. Adapted from The Witch's port of RitsuLib.
-//
-// Debug flags: --alchemist-test-update-popup shows the restart popup at once, and
-// --alchemist-force-workshop-download[=ITEMID] skips the staleness gate (the id lets a local mods/
-// build target the live item, since it has no Workshop path to parse an id from)
+// Steam's local manifest can report a stale install as current, so this asks the server and forces a re-download
+// Adapted from The Witch's port of RitsuLib
 internal static class WorkshopSelfUpdate
 {
     private static readonly TimeSpan PollInterval = TimeSpan.FromSeconds(2);
@@ -64,7 +56,7 @@ internal static class WorkshopSelfUpdate
         }
         else
         {
-            // Matched by manifest id rather than assembly, which is spelled differently per game branch
+            // By manifest id: the assembly name differs per game branch
             var mod = ModManager.Mods.FirstOrDefault(m => m.manifest?.id == MainFile.ModId);
             if (mod == null)
             {
@@ -76,7 +68,6 @@ internal static class WorkshopSelfUpdate
                 MainFile.Logger.Info("[WorkshopSelfUpdate] Not a Workshop install; skipping.");
                 return;
             }
-            // Workshop installs live at .../steamapps/workshop/content/<appid>/<itemid>/...
             var match = WorkshopPath.Match(mod.path.Replace('\\', '/'));
             if (!match.Success)
             {
@@ -87,7 +78,7 @@ internal static class WorkshopSelfUpdate
         }
 
         var remoteUpdated = await QueryRemoteUpdateTime(itemId);
-        if (remoteUpdated == 0) return; // failure already logged
+        if (remoteUpdated == 0) return;
 
         var state = SteamUGC.GetItemState(itemId);
         var haveInfo = SteamUGC.GetItemInstallInfo(itemId, out _, out _, 256u, out var localTimestamp);
@@ -110,7 +101,6 @@ internal static class WorkshopSelfUpdate
             await ShowRestartPopup();
     }
 
-    // Server truth. Returns 0 on failure
     private static async Task<uint> QueryRemoteUpdateTime(PublishedFileId_t itemId)
     {
         var query = SteamUGC.CreateQueryUGCDetailsRequest(new[] { itemId }, 1u);
@@ -139,8 +129,7 @@ internal static class WorkshopSelfUpdate
         }
     }
 
-    // Done when the in-progress flags clear AND the install timestamp changed, which is the only proof
-    // that new files are on disk. If Steam never starts within the grace period it ignored the request
+    // Only a changed install timestamp proves the new files are on disk
     private static async Task<bool> WaitForDownload(PublishedFileId_t itemId, uint initialTimestamp)
     {
         var started = DateTime.UtcNow;
@@ -166,8 +155,7 @@ internal static class WorkshopSelfUpdate
         return false;
     }
 
-    // LocManager initializes after mods, and NModalContainer can exist before it, so wait on both or
-    // the popup renders its placeholder text
+    // LocManager starts after mods, so wait for it too or the popup shows placeholder text
     private static async Task ShowRestartPopup()
     {
         while (NModalContainer.Instance == null || LocManager.Instance == null)

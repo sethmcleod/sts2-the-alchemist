@@ -5,6 +5,12 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Changed
+
+- Changed the Antitoxin badge thresholds: 40 / 60 / 80 -> 50 / 75 / 100
+- Changed the Mixes badge thresholds: 80 / 160 / 240 -> 100 / 200 / 300
+- Buffed Venom Shock card: damage increased from 10(13) -> 12(16)
+
 ## [0.15.6] - 2026-11-07
 
 ### Added

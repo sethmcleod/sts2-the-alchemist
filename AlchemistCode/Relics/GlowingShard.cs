@@ -6,8 +6,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Relics;
 
-// The base Poison trigger counts Accelerant on the poisoned creature's opponents, so one stack on
-// the player doubles every enemy tick and never touches the player's own Poison
+// Poison counts Accelerant on the poisoned creature's opponents, so a stack on the player speeds enemy ticks only
 public class GlowingShard : AlchemistRelic
 {
     private const int Stacks = 1;

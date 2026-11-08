@@ -15,8 +15,7 @@ public class Sampler : AlchemistPotion, IBrewOnly
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        // PotionModel.OnUseWrapper releases the slot before OnUse runs, so this potion is already gone
-        // from Owner.Potions. "Including this one" has to add it back, which also makes the floor 1
+        // OnUseWrapper frees the slot before OnUse runs, so count this potion back in
         var carried = Owner.Potions.Count() + 1;
         var player = target?.Player ?? Owner;
         await PlayerCmd.GainEnergy(carried, player);

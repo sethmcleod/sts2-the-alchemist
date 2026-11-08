@@ -7,10 +7,6 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards.Hero;
 
-// Tear Asunder is the base shape: the combat history is the counter, so the hit count survives a
-// mid-combat reload. The count is cached until the history grows, because the preview asks for it on
-// every hand refresh. The game reuses one history object and clears it between fights, so the cache
-// keys on the fight (the card's CombatState) and on the instance that filled it, so a clone recounts
 [CardTheme(CardTheme.Poison)]
 public class MuscleMemory : AlchemistHeroCard
 {
@@ -19,19 +15,17 @@ public class MuscleMemory : AlchemistHeroCard
     public MuscleMemory() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithDamage(4, 1);
-        // BaseHits stays the var's own value and each earlier play raises only the preview, so the
-        // count shows in green once the card has been played, as a calculated number does
         WithCalculatedVar("CalculatedHits", BaseHits, 1, static (card, _) => PlaysThisCombat(card), 0, 0);
     }
 
     private int Hits => BaseHits + PlaysThisCombat(this);
 
+    // History is reused across fights and clones copy these fields, so the cache keys on both
     private object? _countedFor;
     private object? _countedCombat;
     private int _countedEntries = -1;
     private int _plays;
 
-    // The play in progress is not finished yet, so the count is the earlier plays only
     private static int PlaysThisCombat(CardModel card)
     {
         if (card is not MuscleMemory self || !card.IsMutable || self.CombatState is not { } fight

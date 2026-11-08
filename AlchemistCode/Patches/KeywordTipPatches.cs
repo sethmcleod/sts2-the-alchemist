@@ -8,7 +8,6 @@ namespace Alchemist.AlchemistCode.Patches;
 
 public static class KeywordTipFactory
 {
-    // A null texture is valid here: it is what BaseLib itself produces for a custom keyword
     public static IHoverTip Build(string iconName, string titleKey, string descriptionKey)
     {
         var tex = ResourceLoader.Load<Texture2D>(
@@ -20,7 +19,7 @@ public static class KeywordTipFactory
     }
 }
 
-// BaseLib builds custom-keyword hover tips with a null icon; rebuild ours with an icon texture
+// BaseLib builds custom-keyword tips with no icon
 [HarmonyPatch(typeof(HoverTipFactory), nameof(HoverTipFactory.FromKeyword))]
 public static class KeywordTipIconPatch
 {

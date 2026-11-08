@@ -1,21 +1,5 @@
 #!/usr/bin/env python3
-"""Build a per-language glossary of base-game terms the mod's text references.
-
-The mod wraps game terms in colour tags, e.g. "[gold]Poison[/gold]". Those terms
-must read exactly as the base game translates them. Terms are resolved two ways:
-
-1. Direct  - a base-game entry whose whole value is the term (BLOCK.title etc.).
-2. Aligned - base-game entries whose only tagged span is the term. Reading the
-   same key in another language and taking the span back out gives the official
-   wording. This reaches terms that never appear as an entry of their own, such
-   as "Hand" or "Exhaust Pile".
-
-Usage:
-    python3 scripts/loc_glossary.py --base <dir> [--out <dir>]
-
-<dir> is an extracted copy of the game's res://localization/.
-Writes one glossary_<lang>.json per language plus glossary_report.md.
-"""
+"""Build a per-language glossary of the base-game terms the mod's text tags"""
 import argparse
 import json
 import re
@@ -27,8 +11,6 @@ MOD_ENG = Path(__file__).resolve().parent.parent / "Alchemist" / "localization" 
 TAGGED_RE = re.compile(r"\[(gold|purple|blue|green|red)\](.*?)\[/\1\]")
 ANY_TAG_RE = re.compile(r"\[/?[a-z_]+\]")
 
-# Terms the mod invents. They have no base-game translation, so the glossary
-# records them for the consistency check only, not as required wording.
 MOD_TERMS = {
     "antitoxin", "dosed", "potent", "ferment",
     "reaction", "infuse", "gambit", "brew", "brew potions", "distillate", "distillates",
@@ -40,39 +22,18 @@ MOD_TERMS = {
     "reward", "punish", "patience", "become",
 }
 
-# Inflected surface forms that should reuse another term's entry. Participles
-# are deliberately absent: "Poisoned" is a different root from "Poison" in
-# several languages (ru: Отравленные vs Яд), so aliasing them would demand a
-# word the translation is right not to use.
+# No participles: "Poisoned" has a different root from "Poison" in several languages
 ALIASES = {
     "potion(s)": "potions", "spire's": "spire", "distillates": "distillate",
-    # Plural of Hand. On its own it resolves positionally onto Shiv (ja: ナイフ).
     "hands": "hand",
 }
 
-# Terms whose base-game wording depends on context, so no single rendering can
-# be enforced. Lowercase gold and poison are the metal and the substance in this
-# mod's flavour text, not the currency and the status. "Discard" resolves to
-# POTION_POPUP.discard, the button for discarding a potion (de: "Weglegen"),
-# while card text uses a different verb for discarding a card (de: "Wirf ... ab").
+# Lowercase gold and poison are the metal and the substance, not the currency and the status
 AMBIGUOUS = {"gold", "poison"}
 
-# The same, but regardless of case. "Gold" the currency is a real glossary term
-# while lowercase "gold" is the metal, so that pair stays case-sensitive above;
-# "Discard" is context-dependent in every casing. "Exhausts", the third-person verb
-# the Mix tip uses, has no single base-game anchor either: base text inflects it per
-# grammar (es: Agotas / agotar / agotamiento), so positional lookup lands on nonsense.
 AMBIGUOUS_ANY_CASE = {"discard", "exhausts"}
 
-# Turkish conjugates Fatal inside the conditional clause it always appears in. The
-# hover-tip title is "Ölümcül", but every base card carrying the keyword writes
-# "Eğer [gold]Öldürürse[/gold]" (Feed, Hand of Greed, The Hunt, Training Strike), so
-# card text anchors on that form and the title alone would fail every one of them.
-#
-# Russian writes the Exhaust keyword as "Сжигается", but every base selection prompt that
-# asks the player to Exhaust uses the verb "сжечь" (Purity, Ashwater), and "for each card
-# Exhausted" uses the participle "сожженную" (Midnight, Stoke). None shares a stem with the
-# keyword. All three are accepted; the checker reads "|" as alternatives.
+# Base card text uses these forms, not the hover-tip titles
 OVERRIDES = {
     ("Discard Pile", "esp"): "pila de descarte",
     ("Exhaust", "rus"): "Сжигается|сжечь|сожженную",
@@ -85,7 +46,6 @@ def strip_tags(text: str) -> str:
 
 
 def tagged_terms(directory: Path) -> Counter:
-    """Every colour-tagged term in a localization directory, with usage counts."""
     found = Counter()
     for path in sorted(directory.glob("*.json")):
         for value in json.loads(path.read_text(encoding="utf-8")).values():
@@ -110,7 +70,6 @@ def load_lang(base: Path, language: str) -> dict[str, dict[str, str]]:
 
 
 def resolve_direct(eng: dict, term: str) -> tuple[str, str] | None:
-    """A base-game entry whose entire value is this term."""
     wanted = term.lower()
     best = None
     for filename, table in eng.items():
@@ -118,7 +77,6 @@ def resolve_direct(eng: dict, term: str) -> tuple[str, str] | None:
             if not isinstance(value, str):
                 continue
             if strip_tags(value).lower() == wanted:
-                # Prefer a hover-tip/keyword title over an incidental card name.
                 rank = (
                     0 if filename in ("static_hover_tips.json", "card_keywords.json")
                     else 1 if key.endswith(".title") else 2
@@ -129,11 +87,6 @@ def resolve_direct(eng: dict, term: str) -> tuple[str, str] | None:
 
 
 def resolve_aligned(eng: dict, term: str, limit: int = 60) -> list[tuple[str, str, int, int]]:
-    """Base-game entries where this term is one of the tagged spans.
-
-    Records which span index it occupies and how many spans the entry has, so the
-    same position can be read back out of another language.
-    """
     wanted = term.lower()
     hits = []
     for filename, table in eng.items():
@@ -141,7 +94,6 @@ def resolve_aligned(eng: dict, term: str, limit: int = 60) -> list[tuple[str, st
             if not isinstance(value, str):
                 continue
             spans = [strip_tags(s[1]).lower() for s in TAGGED_RE.findall(value)]
-            # An ambiguous entry (term appears twice) cannot anchor a position.
             if spans.count(wanted) != 1:
                 continue
             hits.append((filename, key, spans.index(wanted), len(spans)))
@@ -150,23 +102,18 @@ def resolve_aligned(eng: dict, term: str, limit: int = 60) -> list[tuple[str, st
     return hits
 
 
-# A term is only mandatory if the aligned sites broadly agree on one wording.
-# Terms like "Act" sit next to a varying number ("Act 1", "Act 2") and never
-# settle, so they fall out to the review list instead of becoming a rule.
 AGREEMENT = 0.6
 
 
 def translate_aligned(
     tables: dict, sites: list[tuple[str, str, int, int]]
 ) -> tuple[str, float] | None:
-    """Read the tagged span back out of a language's copy of those entries."""
     votes = Counter()
     for filename, key, index, span_count in sites:
         value = tables.get(filename, {}).get(key)
         if not isinstance(value, str):
             continue
         spans = TAGGED_RE.findall(value)
-        # Only trust the position when the translation kept every span.
         if len(spans) != span_count:
             continue
         span = strip_tags(spans[index][1])
@@ -175,8 +122,6 @@ def translate_aligned(
     if not votes:
         return None
     winner, count = votes.most_common(1)[0]
-    # A span that is only digits or punctuation means the translation reordered
-    # its spans and the position lookup landed on a number, not the term.
     if re.fullmatch(r"[\d\W]+", winner):
         return None
     return winner, count / sum(votes.values())
@@ -208,9 +153,6 @@ def main() -> None:
         if term in AMBIGUOUS or term.lower() in AMBIGUOUS_ANY_CASE:
             unresolved.append(term)
             continue
-        # An alias is an explicit statement that this surface form means another
-        # term, so it wins outright. Resolving "Hands" on its own lands
-        # positionally on Shiv (ja: ナイフ); the alias to "Hand" is the truth.
         candidates = [lowered] if lowered != term.lower() else [term]
         for lookup in candidates:
             hit = resolve_direct(eng, lookup)

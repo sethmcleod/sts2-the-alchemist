@@ -4,10 +4,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// TemporaryStrengthPower finds its icon by base-game id. This fails for our custom ids, and the game
-// shows the placeholder texture. ICustomPower supplies the icon instead, because BaseLib reads it
-// there. Every base temporary-strength power shares one shackles icon for the debuff and one flex
-// icon for the buff, so borrow those by sign rather than shipping a copy under the mod path
+// TemporaryStrengthPower looks its icon up by base id, which fails for ours, so borrow the base icons
 public abstract class CustomTemporaryStrengthPower : TemporaryStrengthPower, ICustomPower
 {
     private string BaseIconName => IsPositive ? "flex_potion_power" : "dark_shackles_power";

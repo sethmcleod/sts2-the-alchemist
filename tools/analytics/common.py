@@ -1,17 +1,4 @@
-"""Shared plumbing for the analytics scripts: reading the uploaded runs.
-
-The mod posts each run to alchemist.fyi/api/runs (site/api/runs.ts), which queues it in Redis.
-Once a day site/api/pack.ts moves the queue into one gzipped JSON Lines file in Vercel Blob and
-keeps the list of files in Redis. So the runs are the files plus the queue. Both stores belong to
-the Vercel project, which gives a build these variables:
-
-    KV_REST_API_URL, KV_REST_API_READ_ONLY_TOKEN   the queue and the list of files
-    VERCEL_OIDC_TOKEN                              the files (BLOB_READ_WRITE_TOKEN works too)
-
-A local export reads them from the environment or from site/.env.local (gitignored). A file never
-changes once written, so each is downloaded once and kept in site/node_modules/.cache, which
-Vercel keeps between builds. Standard library only, so a build machine needs no pip install.
-"""
+"""Shared plumbing for the analytics scripts: reading the uploaded runs"""
 
 import gzip
 import http.client
@@ -33,7 +20,6 @@ CACHE = REPO / "site" / "node_modules" / ".cache" / "alchemist-runs"
 INBOX = "runs:inbox"
 FILES = "runs:files"
 
-# Rows with this mod_version are fabricated by seed_runs.py and never counted
 SEED_VERSION = "seed-test"
 
 
@@ -61,7 +47,6 @@ def add_common_args(parser) -> None:
 
 
 def ssl_context() -> ssl.SSLContext:
-    """The system's certificates, or certifi's where Python has none (the python.org macOS build)."""
     try:
         import certifi
         return ssl.create_default_context(cafile=certifi.where())
@@ -71,7 +56,6 @@ def ssl_context() -> ssl.SSLContext:
 
 def fetch_runs(mod_version: str | None = None, game_version: str | None = None,
                days_back: int | None = None) -> list[dict]:
-    """Every run, oldest first."""
     queued, files = redis([["LRANGE", INBOX, 0, -1], ["GET", FILES]])
     files = json.loads(files) if files else []
     lines = [line for file in files for line in blob_lines(file)] + queued
@@ -87,7 +71,6 @@ def fetch_runs(mod_version: str | None = None, game_version: str | None = None,
 
 
 def redis(commands: list[list]) -> list:
-    """The results of the commands, in order, from the Upstash REST API."""
     url, token = credential("KV_REST_API_URL"), credential("KV_REST_API_READ_ONLY_TOKEN")
     if not url or not token:
         raise SystemExit(missing_credentials_message(["KV_REST_API_URL", "KV_REST_API_READ_ONLY_TOKEN"]))
@@ -100,7 +83,6 @@ def redis(commands: list[list]) -> list:
 
 
 def blob_lines(file: dict) -> list[str]:
-    """The runs in one packed file, from the cache when it holds the whole file."""
     cached = CACHE / file["pathname"]
     if not cached.exists() or cached.stat().st_size != file["size"]:
         token = credential("VERCEL_OIDC_TOKEN") or credential("BLOB_READ_WRITE_TOKEN")
@@ -113,8 +95,6 @@ def blob_lines(file: dict) -> list[str]:
 
 
 def read(request: urllib.request.Request, attempts: int = 3) -> bytes:
-    """The response body. A slow, dropped or cut-off read and a busy server (429 or 5xx) are tried
-    again, so one hiccup does not fail a daily build; any other HTTP error gets the same answer twice."""
     context = ssl_context()
     for attempt in range(1, attempts + 1):
         try:

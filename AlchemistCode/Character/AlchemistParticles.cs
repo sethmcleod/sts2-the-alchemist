@@ -6,8 +6,7 @@ using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 
 namespace Alchemist.AlchemistCode.Character;
 
-// A base-game resource reference bakes to null in a mod scene, so these energy-counter particles wire
-// themselves: collect the GpuParticles2D children and load their textures and materials at runtime
+// Base-game resource refs bake to null in a mod scene, so textures and materials load at runtime
 [GlobalClass]
 public partial class AlchemistParticles : NParticlesContainer
 {
@@ -16,7 +15,6 @@ public partial class AlchemistParticles : NParticlesContainer
 
     private static readonly Color Gold = new("E9AB2F");
 
-    // recolorLut rebuilds the flipbook shader colour LUT to gold, and does not use self_modulate
     private static readonly System.Collections.Generic.Dictionary<string, (string tex, string mat, bool recolorLut)> Setup = new()
     {
         ["Glow"] = ("res://images/vfx/common/common_glow.png", "res://materials/vfx/common/vfx_glow.tres", false),

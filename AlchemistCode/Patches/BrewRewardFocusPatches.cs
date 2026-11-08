@@ -6,11 +6,7 @@ using MegaCrit.Sts2.Core.Nodes.Rewards;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// The linked-reward container (BaseLib's NCustomLinkedRewardSet, cloned from the base scene) ships
-// with no focus_mode, so a controller can never move focus into it. Brew offers exactly one reward,
-// the linked set, so the reward screen's default-focus lands on an unfocusable control and the only
-// reachable button is Leave. The base game never shows its own linked set, so the path is untested
-// upstream.
+// BaseLib's linked reward set has no focus_mode, so a controller can't reach Brew's only reward
 [HarmonyPatch(typeof(NCustomLinkedRewardSet), "_Ready")]
 public static class BrewRewardFocusPatches
 {
@@ -22,8 +18,7 @@ public static class BrewRewardFocusPatches
             var container = __instance.GetNodeOrNull<Control>("%RewardContainer");
             var first = container?.GetChildren().OfType<NRewardButton>()
                 .FirstOrDefault(b => b.IsVisibleInTree());
-            // Deferred: grabbing focus while the container's own FocusEntered is still
-            // resolving makes Godot ignore the handoff
+            // Deferred, or Godot ignores the handoff while FocusEntered is still resolving
             first?.CallDeferred(Control.MethodName.GrabFocus);
         }));
     }

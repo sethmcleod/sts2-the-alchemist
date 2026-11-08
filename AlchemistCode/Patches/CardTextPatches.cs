@@ -8,8 +8,7 @@ using Alchemist.AlchemistCode.Cards;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// The card description builder that all three patches below postfix. It resolves by name and parameter
-// count to avoid naming the internal DescriptionPreviewType, which a typeof cannot reach
+// Resolved by name and parameter count, since typeof can't reach DescriptionPreviewType
 internal static class CardDescriptionMethod
 {
     internal static MethodBase Resolve() =>
@@ -18,7 +17,6 @@ internal static class CardDescriptionMethod
             .First(m => m.Name == "GetDescriptionForPile" && m.GetParameters().Length == 3);
 }
 
-// Join the standalone "Retain." line of a Ferment card to the next line
 [HarmonyPatch]
 public static class FermentInlineRetainPatch
 {
@@ -27,7 +25,7 @@ public static class FermentInlineRetainPatch
     private static string RetainTitle => new LocString("card_keywords", "RETAIN.title").GetFormattedText();
     private static string Period => new LocString("card_keywords", "PERIOD").GetRawText();
 
-    // The game renders Retain with the period outside the gold tag; our inline form pulls it inside
+    // Must match the game's output, period outside the gold tag
     private static string RetainRendered => $"[gold]{RetainTitle}[/gold]{Period}";
 
     private static string RetainInline => $"[gold]{RetainTitle}{Period}[/gold] ";
@@ -39,8 +37,6 @@ public static class FermentInlineRetainPatch
     }
 }
 
-// The game prints an enchantment's extra text under the description. The Laced keyword prints above
-// it, so the enchantment's purple line moves to the top to read the same way on either card
 [HarmonyPatch]
 public static class LacedEnchantmentLinePatch
 {
@@ -62,8 +58,6 @@ public static class LacedEnchantmentLinePatch
     }
 }
 
-// The game prints an automatic keyword as "[gold]Word[/gold]." with a white period. Ferment cards write
-// their keyword line with the period inside the tag, so Laced follows them
 [HarmonyPatch]
 public static class LacedKeywordPeriodPatch
 {

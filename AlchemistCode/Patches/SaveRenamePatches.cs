@@ -107,10 +107,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-WEATHERED_KIT"] = ModelDb.Relic<MurkyFlask>().Id!,
     };
 
-    // InitIds runs once at startup, after ModelDb.Init has registered every model (mod models
-    // included) and after ModelIdSerializationCache has numbered them. Registering the aliases
-    // here keeps them out of both: InitIds would otherwise stamp a model with whichever of its
-    // ids it enumerated last, and the network cache would count each aliased model twice
+    // Must run after InitIds and the id cache, or aliased models get the wrong id and count twice
     public static void Postfix()
     {
         if (typeof(ModelDb).GetField("_contentById", BindingFlags.Static | BindingFlags.NonPublic)

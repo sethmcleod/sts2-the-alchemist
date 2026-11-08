@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.Timeline;
 
 namespace Alchemist.AlchemistCode.Epochs;
 
-// Injects our epochs + story into the base game's private static registries at mod load
 public static class EpochRegistration
 {
     public static readonly Type[] AlchemistEpochTypes =
@@ -24,18 +23,10 @@ public static class EpochRegistration
     private static readonly FieldInfo? AllEpochIdsCache = Find(typeof(EpochModel), "_allEpochIds");
     private static readonly FieldInfo? StoryById = Find(typeof(StoryModel), "_storyTypeDictionary");
 
-    // Nullable on purpose. This used to throw when a field was missing, but it ran inside a static
-    // field initializer, so the throw became a TypeInitializationException that POISONED the whole
-    // class: every later touch of AlchemistEpochTypes or SlotFor rethrew it, from the config screen
-    // to every epoch's Era getter. One absent field took the mod down with it. Now the lookup simply
-    // reports that the registry is missing, and the Timeline feature turns itself off.
+    // Nullable on purpose: a throw inside a static field initializer poisons the whole class
     private static FieldInfo? Find(Type type, string name) => type.GetField(name, StaticNonPublic);
 
-    /// <summary>
-    /// Whether this build of the game lets a mod add epochs at all. The game's default branch
-    /// builds its epoch list from a hardcoded array and has no <c>_allEpochs</c> to append to, so
-    /// custom epochs cannot work there; the public-beta branch has the mutable registry.
-    /// </summary>
+    // The default game branch has no mutable _allEpochs, so mod epochs only work on public-beta
     public static bool Supported =>
         EpochById != null && IdByType != null && AllEpochs != null && AllEpochIdsCache != null
         && StoryById != null;
@@ -68,7 +59,7 @@ public static class EpochRegistration
             idByType[type] = epoch.Id;
             allEpochs.Add(type);
         }
-        AllEpochIdsCache!.SetValue(null, null); // Bust the lazy cache so AllEpochIds rebuilds from _allEpochs
+        AllEpochIdsCache!.SetValue(null, null); // Clears the lazy cache so AllEpochIds rebuilds
 
         var storyById = (Dictionary<string, Type>)StoryById!.GetValue(null)!;
         storyById[AlchemistStory.StoryKey] = typeof(AlchemistStory);
@@ -82,20 +73,18 @@ public static class EpochRegistration
             .Where(e => e.UnlockKind == kind)
             .Select(e => e.Id);
 
-    // Placement scans the cells every other registered epoch occupies and takes free ones. Done lazily so
-    // that all mods have registered into _allEpochs first, then cached for the session
+    // Assigned lazily, so every mod has registered into _allEpochs first
     private static readonly EpochEra[] PreferredEras =
     {
         EpochEra.Invitation2, EpochEra.Invitation3, EpochEra.Invitation4,
         EpochEra.Invitation5, EpochEra.Invitation6, EpochEra.Invitation7,
     };
-    private const int TopRow = 4; // Rows 0 (bottom) .. 4 (top)
+    private const int TopRow = 4;
     private static Dictionary<Type, (EpochEra era, int pos)>? _slots;
 
     public static (EpochEra era, int pos) SlotFor(Type epochType)
     {
-        // Without the registry there is no timeline to place anything on, and this getter is reached
-        // from every epoch's Era property, so it must never throw
+        // Reached from every epoch's Era getter, so it must never throw
         if (!Supported) return (EpochEra.Invitation7, 0);
         var slots = _slots ??= AssignSlots();
         return slots.TryGetValue(epochType, out var s) ? s : (EpochEra.Invitation7, 0);
@@ -106,7 +95,7 @@ public static class EpochRegistration
         var occupied = new HashSet<(EpochEra, int)>();
         foreach (var type in (List<Type>)AllEpochs!.GetValue(null)!)
         {
-            if (typeof(AlchemistEpoch).IsAssignableFrom(type)) continue; // Skip ours (would recurse into SlotFor)
+            if (typeof(AlchemistEpoch).IsAssignableFrom(type)) continue; // Ours would recurse into SlotFor
             try
             {
                 var e = (EpochModel)Activator.CreateInstance(type)!;

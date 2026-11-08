@@ -29,8 +29,6 @@ public class BounceBack : AlchemistHeroCard
             DynamicVars["SelfPoison"].IntValue, Owner.Creature, this);
     }
 
-    // Bolas is the base shape: the combat history says whether this was played last turn, so a
-    // mid-combat reload keeps the promise. Only the Discard Pile gives it back; an Exhausted copy is gone
     public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
     {
         if (player != Owner) return;

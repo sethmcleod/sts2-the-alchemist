@@ -7,10 +7,7 @@ using MegaCrit.Sts2.Core.Nodes.HoverTips;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// A potion's hover tips align Center: the text tips sit under the potion and the card previews sit
-// under the text. Three previews are taller than the screen below the belt, so the vertical overflow
-// correction slides the card column up over the text. The relic alignment already handles this by
-// moving the cards beside the text when the two rects meet; this gives the Center case the same rule
+// Center-aligned potion tips let the overflow fix slide card previews over the text
 [HarmonyPatch(typeof(NHoverTipSet), nameof(NHoverTipSet.SetAlignment))]
 public static class HoverTipOverlapPatch
 {
@@ -30,8 +27,6 @@ public static class HoverTipOverlapPatch
         if (NGame.Instance is not { } game) return;
 
         var viewport = game.GetViewportRect().Size;
-        // Beside the text, on whichever side has room; the potion belt is at the top, so the
-        // column starts level with the text and only shifts up if it would run off the bottom
         var right = text.GlobalPosition.X + text.Size.X + Gap;
         var x = right + cards.Size.X <= viewport.X ? right : text.GlobalPosition.X - cards.Size.X - Gap;
         var y = Mathf.Max(0f, Mathf.Min(text.GlobalPosition.Y, viewport.Y - cards.Size.Y));

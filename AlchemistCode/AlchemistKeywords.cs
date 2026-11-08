@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 
 namespace Alchemist.AlchemistCode;
 
-// Custom keywords: BaseLib scans [CustomEnum] static CardKeyword fields to register each one's tooltip
 public static class AlchemistKeywords
 {
     [CustomEnum]

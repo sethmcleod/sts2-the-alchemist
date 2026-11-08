@@ -16,8 +16,7 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 
 namespace Alchemist.AlchemistCode.Character;
 
-// GenerateAnimator is spelled differently on the two game branches, and the near death idle it wires
-// up has no public branch equivalent, so that one override lives in Compat/AlchemistAnimatorCompat.cs
+// GenerateAnimator differs between game branches, so its override lives in Compat/AlchemistAnimatorCompat.cs
 public partial class Alchemist : PlaceholderCharacterModel
 {
     public const string CharacterId = "Alchemist";
@@ -29,7 +28,6 @@ public partial class Alchemist : PlaceholderCharacterModel
 
     public override Color EnergyLabelOutlineColor => new("170B02");
 
-    // Measured contact points; the shared 0.15/0.25 defaults land during our longer wind-up
     public override float AttackAnimDelay => 0.35f;
     public override float CastAnimDelay => 0.4f;
     public override CharacterGender Gender => CharacterGender.Neutral;
@@ -59,18 +57,11 @@ public partial class Alchemist : PlaceholderCharacterModel
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<AlchemistRelicPool>();
     public override PotionPoolModel PotionPool => ModelDb.PotionPool<AlchemistPotionPool>();
 
-    // The combat model is the true art. The other placeholder assets stay on the ironclad
     public override NCreatureVisuals? CreateCustomVisuals() => AlchemistVisuals.Create();
 
-    // AssetPaths preloads the visuals path with the other character assets, but CreateCustomVisuals
-    // always wins over it, thus the ironclad combat scene here would load 4 atlas pages that nothing
-    // shows. The base game fallback scene is one small sprite, and it is a complete NCreatureVisuals,
-    // thus it still catches a failed model load. Null is not an option here: it makes the base getter
-    // ask for a creature_visuals scene named after the character, which does not exist, and the
-    // preload then fails twice with an error each time
+    // Not null, which preloads a scene that doesn't exist
     public override string CustomVisualPath => SceneHelper.GetScenePath("creature_visuals/fallback");
 
-    // The atlas page of the model loads with the other character assets, not on the first combat
     protected override IEnumerable<string> ExtraAssetPaths =>
         [AlchemistVisuals.TexturePath, AlchemistRestSite.TexturePath, MercurialFormVfx.TexturePath];
 
@@ -85,7 +76,6 @@ public partial class Alchemist : PlaceholderCharacterModel
     }
 
     public override string CustomIconTexturePath => "character_icon_alchemist.png".CharacterUiPath();
-    // Without this override the outline silhouette falls back to a non-existent base path
     public override string CustomIconOutlineTexturePath => "character_icon_alchemist_outline.png".CharacterUiPath();
     public override string CustomCharacterSelectIconPath => "char_select_alchemist.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_alchemist_locked.png".CharacterUiPath();
@@ -103,8 +93,6 @@ public partial class Alchemist : PlaceholderCharacterModel
     public override string CustomCharacterSelectTransitionPath => $"{MainFile.ResPath}/materials/transitions/alchemist_transition_mat.tres";
     public override string CustomEnergyCounterPath => $"{MainFile.ResPath}/scenes/combat/energy_counters/alchemist_energy_counter.tscn";
 
-    // The Architect event replays the character's attacks. These are the impact families the card pool
-    // uses; the placeholder list would show Ironclad's bloody impact
     public override List<string> GetArchitectAttackVfx() => new()
     {
         "vfx/vfx_dramatic_stab",
@@ -114,15 +102,10 @@ public partial class Alchemist : PlaceholderCharacterModel
         "vfx/vfx_heavy_blunt",
     };
 
-    // Both scenes hold no Spine node of their own. SpineScenePatch puts the model in after BaseLib
-    // turns each one into its game type. The shop reuses the combat skeleton, the same way every
-    // base game character does, and plays its relaxed_loop
     public override string CustomRestSiteAnimPath => AlchemistRestSite.ScenePath;
     public override string CustomMerchantAnimPath => AlchemistMerchant.ScenePath;
 
-    // Borrowed base-game sfx. Override each one rather than PlaceholderID, which also controls the creature
-    // visuals, the rest site and merchant animations, and the multiplayer hands. A res:// path plays through
-    // Godot audio instead of FMOD, routed by BaseLib's PlayResourcePatch. scripts/gen_select_sfx.py makes the wav
+    // Override each sfx, not PlaceholderID, which also swaps the visuals, rest site, merchant and hands
     public override string CharacterSelectSfx => $"{MainFile.ResPath}/audio/alchemist_select.wav";
     public override string CustomAttackSfx => "event:/sfx/characters/osty/osty_attack";
     public override string CustomCastSfx => "event:/sfx/characters/necrobinder/necrobinder_summon";

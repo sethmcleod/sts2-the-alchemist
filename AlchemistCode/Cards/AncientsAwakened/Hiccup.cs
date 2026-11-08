@@ -8,10 +8,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Alchemist.AlchemistCode.Cards.AncientsAwakened;
 
-// Sebastian's Experimental Serum hands this over, always upgraded. Make It So with the Regent's
-// Skills swapped for Mixes: every third Mix played in a turn pulls it back into the Hand from
-// whichever pile holds it, the Exhaust Pile included. Free like its model, and the draw keeps
-// the Mix chain fed so the return is reachable
 [CardTheme(CardTheme.Mix)]
 public class Hiccup : AlchemistAncientsCard
 {
@@ -31,8 +27,6 @@ public class Hiccup : AlchemistAncientsCard
         await CommonActions.Draw(this, choiceContext);
     }
 
-    // A Compound Mix counts as the two Mixes it was made from, as Mixing.PlayedThisCombat counts it,
-    // so the check is whether this play crossed a multiple rather than landed on one
     public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (play.Card.Owner != Owner || !Mixing.IsMix(play.Card) || Pile?.Type is null or PileType.Hand) return;

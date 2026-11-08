@@ -10,8 +10,7 @@ using AlchemistCharacter = Alchemist.AlchemistCode.Character.Alchemist;
 
 namespace Alchemist.AlchemistCode.Ftue;
 
-// Every client runs these hooks for every player, so each one shows a tip for its own Alchemist only.
-// The Poison tip fires the first time Poison outgrows Antitoxin, before the tick that would cost HP
+// Every client runs these for every player, so each shows tips for its own Alchemist only
 public sealed class AlchemistFtueHooks() : CustomSingletonModel(HookType.Combat)
 {
     private static bool IsLocalAlchemist(Player? player) =>
@@ -24,7 +23,6 @@ public sealed class AlchemistFtueHooks() : CustomSingletonModel(HookType.Combat)
         return Task.CompletedTask;
     }
 
-    // The moment the next tick would cost HP, which is also the moment the green forecast number appears
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {

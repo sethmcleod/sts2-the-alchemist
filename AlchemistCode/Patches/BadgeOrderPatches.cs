@@ -4,28 +4,22 @@ using MegaCrit.Sts2.Core.Models.Badges;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// The game over screen and the run history draw badges in the order BadgePool.CreateAll returns them, and
-// BaseLib's postfix appends every custom badge after the base set. That strands Potion Sale at the far end
-// while Ka-Ching, the other Merchant badge, sits in the middle of the row. Run after BaseLib's postfix and
-// move each listed badge into the slot right after its anchor. The run history stores the list in this
-// order, so a run that ended before this patch keeps its old order
+// BaseLib appends custom badges after the base set, so each listed badge moves next to its anchor
 [HarmonyPatch]
 [HarmonyAfter(BaseLib.BaseLibMain.ModId)]
 [HarmonyPriority(Priority.Low)]
 public static class BadgeOrderPatches
 {
-    // (anchor id, badge id): the badge moves to the slot after the anchor. Later pairs may anchor on an
-    // earlier pair's badge, so the list is applied in order
+    // Applied in order: a later pair may anchor on an earlier pair's badge
     private static readonly (string Anchor, string Badge)[] Placement =
     {
         ("KACHING", new Badges.PotionSale().Id),
-        // The Alchemist set reads in one fixed order instead of the assembly scan order
         (new Badges.Mixes().Id, new Badges.Fermented().Id),
         (new Badges.Fermented().Id, new Badges.AntitoxinPeak().Id),
         (new Badges.AntitoxinPeak().Id, new Badges.CleanRun().Id),
     };
 
-    // Resolved by name because the beta branch's CreateAll takes a won flag that the main branch's does not
+    // Resolved by name since CreateAll's signature differs between game branches
     private static MethodBase TargetMethod() => AccessTools.Method(typeof(BadgePool), nameof(BadgePool.CreateAll));
 
     public static void Postfix(ref IReadOnlyCollection<Badge> __result)

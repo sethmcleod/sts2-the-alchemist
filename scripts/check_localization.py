@@ -1,20 +1,5 @@
 #!/usr/bin/env python3
-"""Check mod localization files against the English reference.
-
-Structural checks, per language:
-  - every file present in eng/ exists and parses
-  - key sets match eng exactly
-  - SmartFormat placeholder names match per string
-  - BBCode tag multisets match per string
-
-With --glossary, also checks terminology: whenever an English string tags a
-base-game term ("[gold]Poison[/gold]"), the translation must contain the base
-game's own word for it. Matching is on a stem, so inflected forms still pass.
-
-Usage:
-    python3 scripts/check_localization.py [lang ...]
-    python3 scripts/check_localization.py --glossary <dir> [lang ...]
-"""
+"""Check locale files against eng/: keys, placeholders, BBCode tags, and with --glossary the base-game terms"""
 import argparse
 import json
 import re
@@ -27,16 +12,11 @@ LOC_DIR = Path(__file__).resolve().parent.parent / "Alchemist" / "localization"
 
 PLACEHOLDER_RE = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)")
 TAG_RE = re.compile(r"\[/?([a-z_]+)\]")
-# A {Name:plural:a|b|c} or {Name:plural(ru):a|b|c} block, allowing one level of nested braces in a branch.
 PLURAL_RE = re.compile(r"\{[A-Za-z_][A-Za-z0-9_]*:plural(?:\([a-z]+\))?:((?:[^{}]|\{[^{}]*\})*)\}")
 TAGGED_RE = re.compile(r"\[(gold|purple|blue|green|red)\](.*?)\[/\1\]")
 ANY_TAG_RE = re.compile(r"\[/?[a-z_]+\]")
 
-# Strings another mod ships in only some languages, filled from our locale files: the game merges
-# mod tables key by key in load order and falls back to English per key, so a fill lands where the
-# owner has nothing and would OVERRIDE the owner where it does. Each fill is checked against the
-# owner's English here. Verified against BaseLib BASELIB_FILL_VERSION; re-check which languages
-# BaseLib ships whenever the csproj moves past it
+# Re-check BASELIB_SHIPS whenever the csproj moves BaseLib past this version
 BASELIB_FILL_VERSION = "3.4.7"
 BASELIB_FILLS = {
     "static_hover_tips.json": {
@@ -61,7 +41,6 @@ def tags(text: str) -> list[str]:
 
 
 def split_plurals(text: str) -> tuple[str, list[str]]:
-    """Separate a string into what sits outside plural blocks, and each branch."""
     branches: list[str] = []
 
     def collect(match: re.Match) -> str:
@@ -72,14 +51,7 @@ def split_plurals(text: str) -> tuple[str, list[str]]:
 
 
 def tag_mismatch(src: str, dst: str) -> str | None:
-    """Describe how two strings' tags differ, or None if they are compatible.
-
-    Without a plural block a translation cannot restructure, so the tags must
-    match exactly. With one it can: a language may need the tagged term repeated
-    across more plural forms than English has, or may hoist the count out of the
-    block entirely. Then the requirement is only that the same kinds of tag are
-    used and that every branch stands on its own with its tags closed.
-    """
+    """With a plural block only the tag kinds must match, and each branch must close its own tags"""
     src_outside, src_branches = split_plurals(src)
     dst_outside, dst_branches = split_plurals(dst)
     if not src_branches and not dst_branches:
@@ -102,13 +74,7 @@ def strip_tags(text: str) -> str:
 
 
 def fold(text: str) -> str:
-    """Casefold, and drop accents from Latin letters only.
-
-    Inflection moves the stress mark in Spanish and Portuguese ("Encanta" vs the
-    base game's own "Encántalo"), so an exact stem rejects correct text. Marks on
-    other scripts carry meaning (the Japanese voicing mark, the Cyrillic short i),
-    so those stay.
-    """
+    """Casefold and drop accents, on Latin letters only (marks on other scripts carry meaning)"""
     kept = []
     for ch in unicodedata.normalize("NFD", text):
         if unicodedata.category(ch) == "Mn" and kept and kept[-1] < "\u0250":
@@ -118,12 +84,7 @@ def fold(text: str) -> str:
 
 
 def stem(word: str) -> str:
-    """Leading portion of a word, enough to survive inflection.
-
-    Capped short because the glossary holds nouns while card text often needs a
-    verb built on the same root ("Aturdimiento" vs "aturdes"). A longer stem
-    would reject those, and they are correct.
-    """
+    """A short stem, so a glossary noun still matches a verb on the same root"""
     folded = fold(word)
     return folded[: max(3, min(4, int(len(folded) * 0.6)))]
 
@@ -153,8 +114,6 @@ def check_structure(lang: str, eng: dict[str, dict]) -> list[str]:
                     errors += parity_errors(lang, fname, key, fills[key], table[key])
                 continue
             errors.append(f"{lang}/{fname}: extra key {key}")
-        # Every language BaseLib does not ship must carry the whole fill; a regeneration that
-        # drops the keys (they have no eng source) would otherwise pass in silence
         if fills and lang not in BASELIB_SHIPS.get(fname, set()):
             missing = fills.keys() - table.keys()
             if missing:
@@ -165,13 +124,8 @@ def check_structure(lang: str, eng: dict[str, dict]) -> list[str]:
 
 
 def parity_errors(lang: str, fname: str, key: str, src: str, dst: str) -> list[str]:
-    """Placeholder and tag parity of one translated string against its source."""
     errors = []
-    # Same restructuring latitude the tag check grants: with a plural block in
-    # play, a translation may repeat a placeholder across more branches than
-    # English has or collapse identical branches to one use. The base game does
-    # both (CHARGE: Japanese folds {IfUpgraded} to a single use, Russian to
-    # three), so the requirement drops to the same set of names.
+    # With a plural block, compare placeholder sets: the base game itself repeats or folds them
     src_ph, dst_ph = placeholders(src), placeholders(dst)
     if PLURAL_RE.search(src) or PLURAL_RE.search(dst):
         src_ph, dst_ph = sorted(set(src_ph)), sorted(set(dst_ph))
@@ -183,7 +137,6 @@ def parity_errors(lang: str, fname: str, key: str, src: str, dst: str) -> list[s
 
 
 def check_glossary(lang: str, eng: dict[str, dict], glossary: dict[str, str]) -> list[str]:
-    """Flag strings that tag a base-game term but never use its official word."""
     problems = []
     for fname, eng_table in eng.items():
         path = LOC_DIR / lang / fname
@@ -205,8 +158,6 @@ def check_glossary(lang: str, eng: dict[str, dict], glossary: dict[str, str]) ->
             haystack = fold(dst)
             for term in sorted(wanted):
                 official = glossary[term]
-                # A glossary entry may list several accepted forms, split by "|". Every
-                # word of one form must show up, by stem.
                 found = False
                 for form in official.split("|"):
                     parts = [w for w in re.split(r"\s+", form) if len(w) > 1]

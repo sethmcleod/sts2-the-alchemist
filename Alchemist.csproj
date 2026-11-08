@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>true</ImplicitUsings>
-        <Nullable>enable</Nullable> <!--Makes code analysis regarding null values stricter.-->
+        <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
         <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
@@ -12,8 +12,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <!-- Diasble architecture mismatch warning; mods are ideally built for all platforms (MSIL)
-             while your local StS2 version will be for your specific platform. -->
+        <!-- The mod builds as MSIL against a platform-specific sts2.dll -->
         <NoWarn>$(NoWarn);MSB3270</NoWarn>
     </PropertyGroup>
 
@@ -26,14 +25,13 @@
             <HintPath>$(Sts2DataDir)/sts2.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <!-- Ships next to sts2.dll; used by Steam/WorkshopSelfUpdate.cs to re-fetch a stale Workshop install -->
         <Reference Include="Steamworks.NET">
             <HintPath>$(Sts2DataDir)/Steamworks.NET.dll</HintPath>
             <Private>false</Private>
         </Reference>
     </ItemGroup>
 
-    <ItemGroup Condition="False"> <!--Allows access to originally private/protected members but may (unlikely to) cause errors.-->
+    <ItemGroup Condition="False">
         <Publicize Include="sts2" IncludeVirtualMembers="false" IncludeCompilerGeneratedMembers="false"/>
     </ItemGroup>
 
@@ -41,13 +39,10 @@
         <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.4.7" PrivateAssets="All"/>
         <PackageReference Include="Krafs.Publicizer" Version="2.3.0" PrivateAssets="All"/>
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
-        <!-- Generates a .pck file when building if only using simple assets. May not work on all setups. Uncomment to test. -->
-        <!-- <PackageReference Include="BSchneppe.StS2.PckPacker" Version="0.1.1" PrivateAssets="All" /> -->
-        <AdditionalFiles Include="Alchemist/localization/**/*.json"/> <!-- Used by analyzer -->
+        <AdditionalFiles Include="Alchemist/localization/**/*.json"/>
         <PackageReference Update="GodotSharp" Version="4.7.0" />
     </ItemGroup>
 
-    <!-- The website and the docs are not part of the mod: never glob them into the build -->
     <PropertyGroup>
         <DefaultItemExcludes>$(DefaultItemExcludes);site/**;docs/**</DefaultItemExcludes>
     </PropertyGroup>

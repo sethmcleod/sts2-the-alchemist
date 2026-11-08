@@ -11,12 +11,10 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Hero;
 
-// The Hero Expansion's Mysterious Flashlight hands this over as the Alchemist's card from the past
 [Pool(typeof(EventCardPool))]
 [CardTheme(CardTheme.Poison)]
 public class Reconstitute : AlchemistHeroCard
 {
-    // The Event pool files it under the compendium's Other section; the frame stays the Alchemist's
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<Character.AlchemistCardPool>();
 
     private static LocString Prompt => new("cards", "ALCHEMIST-RECONSTITUTE.selectionScreenPrompt");

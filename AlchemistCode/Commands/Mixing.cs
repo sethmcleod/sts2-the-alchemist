@@ -24,9 +24,6 @@ public enum MixKind
     Sparkling,
 }
 
-// One home for the Mix family: the kinds, the two tiers, the picker, and the tips, so every maker
-// shows the same screen and the family can grow in one place. Basic Mixes are the choice set below
-// Rare; random creation draws from all of them
 public static class Mixing
 {
     private static LocString SelectPrompt => new("card_keywords", "ALCHEMIST-MIX.selectionPrompt");
@@ -50,11 +47,9 @@ public static class Mixing
 
     public static bool IsMix(CardModel card) => card is CompoundMix || KindOf(card) != null;
 
-    // The analytics label for a Mix: its kind, or "compound"
     public static string KindLabel(CardModel card) =>
         KindOf(card)?.ToString().ToLowerInvariant() ?? "compound";
 
-    // A Compound Mix counts as a Mix everywhere, but it cannot be an ingredient again
     public static bool IsIngredient(CardModel card) => KindOf(card) != null;
 
     public static IEnumerable<IHoverTip> MixTips(bool upgraded = false) =>
@@ -62,12 +57,7 @@ public static class Mixing
 
     public static IEnumerable<IHoverTip> MixRefTips() => new[] { AlchemistTips.MixHeader };
 
-    /// <summary>
-    /// How many Mixes this player has played this combat. 0 outside combat. A Compound Mix is the
-    /// two Mixes it was made from, so it counts as two; otherwise combining would cost Bonk a play.
-    /// </summary>
-    // Started, not finished: the hand previews refresh while the Mix is still resolving, and a
-    // finished-only count lags one play behind on the card face
+    // CardPlaysStarted, not Finished: a finished-only count lags one play behind on the card face
     public static int PlayedThisCombat(Player owner) =>
         CombatManager.Instance?.History.CardPlaysStarted
             .Where(e => IsMix(e.CardPlay.Card) && e.CardPlay.Card.Owner == owner)
@@ -98,10 +88,6 @@ public static class Mixing
     private static LocString PromptFor(IReadOnlyList<MixKind> kinds) =>
         kinds.SequenceEqual(Basic) ? SelectBasicPrompt : SelectPrompt;
 
-    /// <summary>
-    /// Shows the given Mixes (the basic three by default) and returns the chosen one, unadded. Null
-    /// outside combat. With upgraded, the grid shows the + versions, so the previews match what is given.
-    /// </summary>
     public static async Task<CardModel?> Choose(PlayerChoiceContext ctx, Player owner,
         bool upgraded = false, IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null,
         Action<CardModel>? prepare = null)
@@ -131,21 +117,14 @@ public static class Mixing
         return picked;
     }
 
-    // Every created Mix goes through here so the Mixes badge and the analytics count them all,
-    // including the makers that skip the picker (Grand Batch, Effervesce). The source is the card,
-    // relic, potion or power that made it, tallied so the analytics can say which makers feed the
-    // Mix economy
     public static void RecordCreated(Player? creator, CardModel mix, AbstractModel? source = null)
     {
         if (source != null)
             Analytics.RunCounters.Tally(creator, Analytics.RunCounters.MixSource + Analytics.RunCounters.Label(source));
-        // Created is tallied beside the fixed counter so played-vs-created reads two counts from the
-        // same build: a run resumed across an update keeps old fixed counts but starts a fresh tally
         Analytics.RunCounters.Tally(creator, Analytics.RunCounters.MixMade + KindLabel(mix));
         Analytics.RunCounters.Add(creator, Analytics.RunCounters.MixPrefix + KindLabel(mix), 1);
     }
 
-    /// <summary>Add a random Mix (from all six by default) to the owner's hand. Seeded, so multiplayer stays in sync.</summary>
     public static async Task CreateRandom(PlayerChoiceContext ctx, Player owner, bool upgraded = false,
         IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null)
     {
@@ -158,7 +137,6 @@ public static class Mixing
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
     }
 
-    /// <summary>Add a random Mix (from all six) to another player's hand, counted for the giver.</summary>
     public static async Task GiveRandom(PlayerChoiceContext ctx, Player giver, Player receiver,
         bool upgraded = false, AbstractModel? source = null)
     {
@@ -170,15 +148,13 @@ public static class Mixing
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, giver);
     }
 
-    /// <summary>One picker, many cards: choose a basic Mix once, then add that many copies.</summary>
     public static async Task CreateChosenCopies(PlayerChoiceContext ctx, Player owner, int count,
         bool upgraded = false, AbstractModel? source = null)
     {
         if (count <= 0) return;
-        // The copies clone the picked card, so its upgrade travels with them. They are cloned before
-        // the first one is added, so what Refine does to that one does not travel to the rest
         var picked = await Choose(ctx, owner, upgraded, source: source);
         if (picked == null) return;
+        // Clone before adding the first, so what Refine does to it doesn't carry over to the copies
         var copies = Enumerable.Range(1, count - 1).Select(_ => picked.CreateClone()).ToList();
         await CardPileCmd.AddGeneratedCardToCombat(picked, PileType.Hand, owner);
         foreach (var copy in copies)
@@ -188,7 +164,6 @@ public static class Mixing
         }
     }
 
-    /// <summary>Choose a Mix and add it to the owner's hand, count times.</summary>
     public static async Task CreateChosen(PlayerChoiceContext ctx, Player owner, int count = 1,
         bool upgraded = false, IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null)
     {
@@ -200,7 +175,6 @@ public static class Mixing
         }
     }
 
-    /// <summary>Transform an existing card into a chosen Mix. Returns the Mix, or null if cancelled.</summary>
     public static async Task<CardModel?> TransformIntoChosen(PlayerChoiceContext ctx, Player owner,
         CardModel victim, bool upgraded = false, IReadOnlyList<MixKind>? kinds = null, AbstractModel? source = null)
     {
@@ -210,7 +184,6 @@ public static class Mixing
         return picked;
     }
 
-    /// <summary>Add one specific Mix to the owner's hand. Returns it, or null outside combat.</summary>
     public static async Task<CardModel?> CreateOne<T>(PlayerChoiceContext ctx, Player owner,
         bool upgraded = false, AbstractModel? source = null)
         where T : CardModel
@@ -223,7 +196,6 @@ public static class Mixing
         return mix;
     }
 
-    /// <summary>Transform an existing card into a random Mix (from all six by default). Seeded, so multiplayer stays in sync.</summary>
     public static async Task<CardModel?> TransformIntoRandom(PlayerChoiceContext ctx, Player owner,
         CardModel victim, bool upgraded = false, AbstractModel? source = null, IReadOnlyList<MixKind>? kinds = null)
     {
@@ -236,7 +208,6 @@ public static class Mixing
         return picked;
     }
 
-    /// <summary>Exhaust two ingredient Mixes from the hand and fold them into one Compound Mix.</summary>
     public static async Task<CardModel?> Combine(PlayerChoiceContext ctx, Player owner, CardModel first,
         CardModel second, AbstractModel? source = null)
     {
@@ -246,18 +217,12 @@ public static class Mixing
         return await CreateCompound(ctx, owner, first, second, source);
     }
 
-    /// <summary>
-    /// Fold two ingredient Mixes into one Compound Mix in the owner's hand. The compound draws a card
-    /// when played, which gives back the card the pairing cost. It carries no Ethereal of its own,
-    /// so a Sparkling ingredient's energy survives the turn inside it.
-    /// </summary>
     public static async Task<CardModel?> CreateCompound(PlayerChoiceContext ctx, Player owner,
         CardModel first, CardModel second, AbstractModel? source = null)
     {
         if (owner.Creature.CombatState is not { } combat) return null;
         var compound = (CompoundMix)combat.CreateCard<CompoundMix>(owner);
         compound.Compose(first, second);
-        // The pairing, order-free, so Bursting+Acrid and Acrid+Bursting are one row
         var pair = new[] { KindLabel(first), KindLabel(second) }.OrderBy(k => k).ToArray();
         Analytics.RunCounters.Tally(owner, Analytics.RunCounters.CompoundPair + string.Join("+", pair));
         RecordCreated(owner, compound, source);

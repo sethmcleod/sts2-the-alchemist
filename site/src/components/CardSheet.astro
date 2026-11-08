@@ -43,8 +43,14 @@ const labels = [
 
   <div class="card-sheet">
     <div class="card relative mx-auto w-full max-w-[19rem] [grid-area:card]" data-place={card.id}>
-      <CardFace eager info={info} width={[[null, '19rem']]} />
+      <CardFace betaArt eager info={info} width={[[null, '19rem']]} />
       <UpgradeToggle name={info.name} restoreOnReload={false} />
+      {info.betaArt && (
+        <label class="beta-art-switch">
+          <input autocomplete="off" class="beta-art-toggle" type="checkbox" />
+          <span>{l.game?.words['Use Beta Art'] ?? 'Use Beta Art'}</span>
+        </label>
+      )}
     </div>
     <Tips class="[grid-area:tips]" keywords={info.keywords} markups={info.texts} ownName={info.name} />
     <div class="grid content-start gap-4 [grid-area:stats]">

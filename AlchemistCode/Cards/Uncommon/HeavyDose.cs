@@ -19,7 +19,6 @@ public class HeavyDose : AlchemistCard
         WithTip(typeof(PoisonPower));
     }
 
-    // Glows when the dose already held makes a second Mix; the card's own gain always makes the first
     protected override bool ConditionalGlow => Dose(this) >= DynamicVars["Per"].IntValue;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

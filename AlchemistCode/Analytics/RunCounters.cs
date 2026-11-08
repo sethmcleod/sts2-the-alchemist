@@ -7,11 +7,8 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace Alchemist.AlchemistCode.Analytics;
 
-// Per-run counters saved on the Player through BaseLib's extended save, so they survive a reload and
-// reach the serialized run that the upload and the badges read
 public static class RunCounters
 {
-    // One fixed counter per Mix kind, keyed by the kind's analytics label
     public const string MixPrefix = "mix_";
     public const string MixBursting = MixPrefix + "bursting";
     public const string MixFuming = MixPrefix + "fuming";
@@ -26,7 +23,6 @@ public static class RunCounters
     public const string PoisonPeak = "poison_peak";
     public const string AntitoxinPeak = "antitoxin_peak";
 
-    // Tally keys. The prefixed ones carry a label after the colon: a model, a Mix kind or a cause
     public const string TickCovered = "tick_covered";
     public const string TickBled = "tick_bled";
     public const string PoisonDeath = "poison_death";
@@ -75,13 +71,11 @@ public static class RunCounters
 
     public static void Add(Player? player, string key, int amount)
     {
-        // TryGetValue: if registration failed, analytics degrade to zeros instead of a
-        // KeyNotFoundException inside a combat hook
+        // TryGetValue: a failed registration must not throw inside a combat hook
         if (player == null || amount <= 0 || !Fields.TryGetValue(key, out var field)) return;
         field[player] = field[player] + amount;
     }
 
-    // Max semantics for high-water marks such as the Antitoxin peak
     public static void RaiseTo(Player? player, string key, int value)
     {
         if (player == null || value <= 0 || !Fields.TryGetValue(key, out var field)) return;
@@ -93,16 +87,13 @@ public static class RunCounters
             .DictForType<int>()
             .GetValueOrDefault(MainFile.ModId + "-" + key);
 
-    // One saved bag of open-keyed counts, so a new key needs no registration and an old save reads
-    // back what it has
     private const string TallyKey = MainFile.ModId + "-tally";
 
     private static readonly SpireField<Player, Dictionary<string, int>> TallyField = new(() => new());
 
     private static void RegisterTally()
     {
-        // The saved value's OUTER dictionary gets its JSON type info from RegisterSavedValue; the inner
-        // one is only registered by BaseLib's own CardModifier, a side effect the save must not lean on
+        // The inner dictionary is otherwise registered only as a side effect of BaseLib's CardModifier
         ExtendedSaveTypes.RegisterDictionarySaveType<string, int>();
         ExtendedSaveTypes.RegisterSavedValue<Player, Dictionary<string, int>>(
             TallyKey,
@@ -142,7 +133,6 @@ public static class RunCounters
             .DictForType<Dictionary<string, int>>()
             .GetValueOrDefault(TallyKey) ?? new Dictionary<string, int>();
 
-    // A model's id without the mod prefix, lower-cased: the label a tally key carries
     public static string Label(MegaCrit.Sts2.Core.Models.AbstractModel? model) =>
         model?.Id?.Entry is { } entry ? entry.RemovePrefix().ToLowerInvariant() : "unknown";
 }

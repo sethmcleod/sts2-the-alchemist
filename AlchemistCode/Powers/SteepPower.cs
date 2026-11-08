@@ -7,11 +7,6 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// A played Ferment card keeps its turns, so sending it back into the draw pile instead of the
-// discard is a second brew of the same card. The base Rebound power uses this same location hook;
-// a card that Exhausts is not headed for the discard and is left alone.
-// The hook pair is spelled differently on the two game branches, so the overrides live in
-// Compat/SteepPowerCompat.cs
 public partial class SteepPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;

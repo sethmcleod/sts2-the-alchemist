@@ -5,10 +5,7 @@ using MegaCrit.Sts2.Core.Nodes.Cards;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// NCardGrid centers a row on the width of a FULL row (Columns * card width), so a selection with
-// fewer cards than fit sits left of center. That never shows on the screens the base game fills
-// (library, deck views), but the four-card Mix pick floats alone on a wide grid. Shift only on the
-// Mix picker's grid, when it shows fewer cards than columns
+// NCardGrid centers a row on the width of a full row, so a short Mix pick sits left of center
 [HarmonyPatch(typeof(NCardGrid), "UpdateGridPositions")]
 public static class MixSelectCenterPatch
 {
