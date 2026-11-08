@@ -13,16 +13,8 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// A purple Antitoxin bar under the health bar. It is a duplicate of the game's own HpBarContainer rather
-// than hand-built rectangles, so it inherits the nine-patch textures, the tapered ends, the exact width
-// and the track colour for free, and it keeps matching if the base art changes. Only the filled part is
-// recoloured; the empty track is left as the health bar draws it
 public static class AntitoxinBarPatches
 {
-    // The pair sits inside the space one bar used to occupy, so the gap is only what keeps the two
-    // sets of digits from touching
-    // The panel frame is tight, so the pair sits closer there than under the combat sprite, where
-    // the two sets of digits need room not to touch
     private const float PanelGap = 3f;
     private const float CombatGap = 8f;
     private const float PanelBarShrink = 2f;
@@ -32,10 +24,9 @@ public static class AntitoxinBarPatches
 
     private static readonly Color TextColor = new("efe6ff");
     private static readonly Color TextOutline = new("2e0f52");
-    // The same pair the health bar uses when Poison is lethal, reused for "the next tick costs HP"
     private static readonly Color DrainedColor = new("76FF40");
     private static readonly Color DrainedOutline = new("074700");
-    // Matches Minty Spire's incoming-damage label: same font, gap, box, and size slider when installed
+    // Must match Minty Spire's incoming-damage label
     private const float ForecastPad = 6f;
     private const float ForecastWidth = 20f;
     private const int ForecastFallbackSize = 14;
@@ -54,7 +45,6 @@ public static class AntitoxinBarPatches
         return _mintySize?.GetValue(null) is int size ? size : ForecastFallbackSize;
     }
     private static readonly Color PulseBright = new(1.35f, 1.35f, 1.35f);
-    // A plain empty bar is quiet, not a warning
     private static readonly Color EmptyColor = new("b9b3c4");
     private static readonly Color EmptyOutline = new("2a2433");
 
@@ -72,7 +62,6 @@ public static class AntitoxinBarPatches
 
     private static readonly ConditionalWeakTable<NHealthBar, Parts> Bars = new();
 
-    // The bar node under a health bar, for anything that has to point at it
     internal static Control? BarNode(NHealthBar bar) =>
         Bars.TryGetValue(bar, out var parts) && GodotObject.IsInstanceValid(parts.Root) && parts.Root.Visible
             ? parts.Root
@@ -97,7 +86,7 @@ public static class AntitoxinBarPatches
         public static void Postfix(NHealthBar __instance)
         {
             if (__instance.HpBarContainer is not { } hp) return;
-            // NHealthBar is pooled, so _Ready can run again on an instance we already built for
+            // NHealthBar is pooled, so _Ready can run again on a built instance
             if (Bars.TryGetValue(__instance, out var existing))
             {
                 if (GodotObject.IsInstanceValid(existing.Root)) return;
@@ -108,12 +97,9 @@ public static class AntitoxinBarPatches
             clone.Name = "AlchemistAntitoxinBar";
             clone.Visible = false;
             hp.GetParent()?.AddChild(clone);
-            // Right after HpBarContainer in tree order, not appended last: the block shield is a later
-            // sibling whose art overhangs the bar row, and it must draw over this bar the same way it
-            // draws over the HP bar
+            // After HpBarContainer, not last: the block shield is a later sibling and must draw over this bar
             hp.GetParent()?.MoveChild(clone, hp.GetIndex() + 1);
 
-            // The duplicate carries the whole HP apparatus. Everything that is not the bar itself goes
             foreach (var path in new[] { "BlockOutline", "InfinityTex",
                          "HpForegroundContainer/Mask/DoomForeground",
                          "HpForegroundContainer/Mask/HpMiddleground" })
@@ -125,19 +111,13 @@ public static class AntitoxinBarPatches
 
             if (fg is CanvasItem fgItem) fgItem.SelfModulate = AlchemistModConfig.AntitoxinBarColor;
 
-            // The duplicate inherited the HP label's red-on-cream styling at full size, which both clashes
-            // with the purple and collides with the HP number above it
             label.AddThemeColorOverride("font_color", TextColor);
             label.AddThemeColorOverride("font_outline_color", TextOutline);
             label.VerticalAlignment = VerticalAlignment.Center;
 
-            // The health bar's own poison overlay is already the right green, so it is reused as-is to
-            // show the slice of Antitoxin the incoming tick will eat
             var incoming = clone.GetNodeOrNull<NinePatchRect>("HpForegroundContainer/Mask/PoisonForeground");
             if (incoming != null) incoming.Visible = false;
 
-            // The HP the next Poison tick will cost, beside the bar the way Minty Spire draws
-            // incoming attack damage beside the HP bar
             var forecast = new Label
             {
                 Name = "PoisonForecastLabel",
@@ -171,14 +151,10 @@ public static class AntitoxinBarPatches
 
     private static readonly ConditionalWeakTable<NPowerContainer, object> Shifted = new();
 
-    // The player panel's frame is a fixed size, so the two bars share the space one bar had rather
-    // than growing the box: HP rises by half the added block and Antitoxin takes the half below
     private static readonly ConditionalWeakTable<Control, object> HpBaseY = new();
 
     private static float Lift(Control hp) => (hp.Size.Y + PanelGap) / 2f - PanelDrop;
 
-    // Only the player panel is boxed by a fixed golden frame. The combat bar hangs under the
-    // creature with room below it, so it keeps its own position and the pair grows downward
     private static bool InPlayerPanel(Node bar)
     {
         Node? node = bar;
@@ -190,9 +166,7 @@ public static class AntitoxinBarPatches
         return true;
     }
 
-    // Called from Refresh, not _Ready: HpBarContainer has no size until the first layout pass.
-    // UpdatePositions rebuilds Position from the cached _originalPosition on every power Add and Remove,
-    // so the cached origin has to move too or the row snaps back the first time a power lands
+    // UpdatePositions rebuilds from _originalPosition, so that cached origin has to move too
     private static void ShiftPowersOnce(NHealthBar bar, float barHeight)
     {
         if (barHeight <= 0f) return;
@@ -226,8 +200,6 @@ public static class AntitoxinBarPatches
             var creature = CreatureRef(__instance);
             if (!Shows(creature)) { parts.Root.Visible = false; StopPulse(parts); return; }
 
-            // Accessibility: with ally bars off, a teammate's row in the multiplayer party list goes
-            // back to the stock layout. The local player's own panel is never suppressed
             if (!AlchemistModConfig.ShowAllyAntitoxinBars && InPlayerPanel(__instance)
                 && !MegaCrit.Sts2.Core.Context.LocalContext.IsMe(creature))
             {
@@ -244,11 +216,9 @@ public static class AntitoxinBarPatches
                 return;
             }
 
-            // Combat teardown removes every power, so the live amount drops to 0 while the end of
-            // combat is still on screen. Hold the last in-combat value instead of blanking the bar
+            // Combat teardown removes every power, so hold the last in-combat value
             var inCombat = CombatManager.Instance?.IsInProgress ?? false;
             var live = creature.GetPowerAmount<AntitoxinPower>();
-            // A gain gets a quiet pulse on the bar, softer than the splash an absorb makes
             if (inCombat && live > parts.LastKnown && GodotObject.IsInstanceValid(parts.Foreground))
             {
                 var fg = parts.Foreground;
@@ -265,8 +235,6 @@ public static class AntitoxinBarPatches
                 if (!HpBaseY.TryGetValue(hp, out var baseY)) { baseY = hp.Position.Y; HpBaseY.Add(hp, baseY); }
                 hp.Position = new Vector2(hp.Position.X, (float)baseY - Lift(hp));
 
-                // The block shield is a sibling of HpBarContainer, not a child, so the lift leaves it
-                // behind at the old bar Y, where the Antitoxin bar then paints over it
                 if (__instance.GetNodeOrNull<Control>("%BlockContainer") is { } shield)
                 {
                     if (!HpBaseY.TryGetValue(shield, out var shieldY))
@@ -284,10 +252,7 @@ public static class AntitoxinBarPatches
                 if (hpSize > 0 && parts.Text.GetThemeFontSize("font_size") != hpSize)
                     parts.Text.AddThemeFontSizeOverride("font_size", hpSize);
 
-                // The party panel shows and hides its HP number by paths of its own (it starts the
-                // label hidden and restores it on highlight), so the fade postfixes alone can strand
-                // this label at a stale alpha. Outside our own fade, copy the HP label's alpha:
-                // whatever the panel computes is correct for both numbers
+                // The party panel shows and hides the HP number on its own paths, so copy its alpha outside our fade
                 var fading = parts.FadeTween is { } t && GodotObject.IsInstanceValid(t) && t.IsRunning();
                 if (!fading && !Mathf.IsEqualApprox(parts.Text.Modulate.A, hpLabel.Modulate.A))
                 {
@@ -295,9 +260,6 @@ public static class AntitoxinBarPatches
                     m.A = hpLabel.Modulate.A;
                     parts.Text.Modulate = m;
                 }
-                // On the combat bar the forecast number follows the digits. The party panel keeps its
-                // digits hidden until hover, so there the number stays opaque the way Minty Spire's
-                // incoming-damage arrow does, or overflow would never be visible at a glance
                 var forecastAlpha = InPlayerPanel(__instance) ? 1f : hpLabel.Modulate.A;
                 if (!fading && parts.Forecast is { } fcl && GodotObject.IsInstanceValid(fcl)
                     && !Mathf.IsEqualApprox(fcl.Modulate.A, forecastAlpha))
@@ -314,26 +276,19 @@ public static class AntitoxinBarPatches
                 ? new Vector2(hp.Size.X, hp.Size.Y - PanelBarShrink)
                 : hp.Size;
 
-            // The real bar shrinks its foreground with a negative OffsetRight, so this matches it
             var full = parts.Root.GetNodeOrNull<Control>("HpForegroundContainer")?.Size.X ?? hp.Size.X;
             var current = inCombat ? live : parts.LastKnown;
 
-            // The bar is the amount held, so the purple stays whole until the player has none. The
-            // green overlay is the forecast: the slice of that capacity the next tick will need.
-            // Amount, not CalculateTotalDamageNextTurn, because that already runs through Antitoxin's
-            // own reduction and so reports only what gets past it
+            // Amount, not CalculateTotalDamageNextTurn, which already applies Antitoxin's reduction
             var poison = creature.GetPower<PoisonPower>();
             var incoming = poison?.Amount ?? 0;
             var forecast = Mathf.Min(current, incoming);
             var freeRatio = current > 0 ? Mathf.Clamp((float)(current - forecast) / current, 0f, 1f) : 0f;
 
-            // Unlike the slice above, the forecast number wants the post-Absorb total, Accelerant included
             var damageNext = inCombat && poison != null ? poison.CalculateTotalDamageNextTurn() : 0;
 
-            // A NinePatchRect cannot render narrower than its own patch margins, so a foreground
-            // shrunk to zero still leaves a purple stub. Hide it outright when the forecast covers all
+            // A NinePatchRect can't render narrower than its patch margins, so it's hidden outright
             var covered = current == 0 || forecast >= current;
-            // Green warns of actual HP loss; a dose that exactly matches the capacity stays quiet
             var warning = current > 0 && damageNext > 0;
             parts.Foreground.Visible = current > 0 && !covered;
             parts.Foreground.SelfModulate = AlchemistModConfig.AntitoxinBarColor;
@@ -353,7 +308,6 @@ public static class AntitoxinBarPatches
                     green.OffsetLeft = covered
                         ? 0f
                         : Mathf.Max(0f, full * freeRatio - green.PatchMarginLeft);
-                    // Flush to the end of the bar: the forecast always fills the far side
                     green.OffsetRight = 0f;
                 }
             }
@@ -375,7 +329,6 @@ public static class AntitoxinBarPatches
                 }
             }
 
-            // Torn down the moment the state clears, so a stale tween never strands the overlay bright
             var overlayLive = parts.Incoming is { } o && GodotObject.IsInstanceValid(o) && o.Visible;
             if (warning && overlayLive)
             {
@@ -398,10 +351,7 @@ public static class AntitoxinBarPatches
         }
     }
 
-
-    // Both Antitoxin powers are hidden so the bar is the only place the number appears, and
-    // PowerModel.HoverTips goes empty the moment a power is invisible. Put the tips back on the creature,
-    // which is where a player hovers to ask what the purple bar is
+    // PowerModel.HoverTips is empty for a hidden power, so the Antitoxin tips go on the creature
     [HarmonyPatch(typeof(Creature), nameof(Creature.HoverTips), MethodType.Getter)]
     public static class KeepTips
     {
@@ -409,7 +359,6 @@ public static class AntitoxinBarPatches
         {
             if (!Shows(__instance)) return;
             var tips = __result.ToList();
-            // MegaTryAddingTip de-duplicates, so a visible power supplying the same tip stays single
             tips.MegaTryAddingTip(AntitoxinPower.TipFor(__instance));
             tips.MegaTryAddingTip(HoverTipFactory.FromPower<PoisonPower>());
             __result = tips;
@@ -424,9 +373,7 @@ public static class AntitoxinBarPatches
 
     private static readonly ConditionalWeakTable<Control, object> HitboxBaseHeight = new();
 
-    // The HP bar has its own hitbox and the Antitoxin bar is drawn below it, outside that box, so the
-    // tips only appeared on the health half. Grow the box to cover both. SetCreatureBounds runs more
-    // than once, so the untouched height is cached and the result recomputed rather than accumulated
+    // SetCreatureBounds runs more than once, so the base height is cached and recomputed
     [HarmonyPatch(typeof(NCreatureStateDisplay), nameof(NCreatureStateDisplay.SetCreatureBounds))]
     public static class ExtendHpHover
     {
@@ -441,8 +388,7 @@ public static class AntitoxinBarPatches
             var baseHeight = (float)cached;
 
             var extra = 0f;
-            // GetNodeOrNull, and checked: another mod replacing the bar scene must degrade this
-            // patch to a no-op, not throw inside the shared display chain
+            // Must stay a no-op, not a throw, when another mod replaces the bar scene
             if (Shows(DisplayCreatureRef(__instance))
                 && __instance.GetNodeOrNull<NHealthBar>("%HealthBar") is { } healthBar
                 && Bars.TryGetValue(healthBar, out var parts)
@@ -451,8 +397,6 @@ public static class AntitoxinBarPatches
 
             hitbox.Size = new Vector2(hitbox.Size.X, baseHeight + extra);
 
-            // The nameplate sits under the HP bar, exactly where the Antitoxin bar now is, so on hover the
-            // name printed over the purple. Move it below the bar. Same cache-and-recompute as the hitbox
             if (NameplateRef(__instance) is not { } nameplate) return;
             if (!NameplateBaseY.TryGetValue(nameplate, out var cachedY))
             {
@@ -468,10 +412,7 @@ public static class AntitoxinBarPatches
 
     private static readonly ConditionalWeakTable<Control, object> NameplateBaseY = new();
 
-    // Hovering the bars fades the HP number so the bar underneath can be read. The Antitoxin number
-    // is drawn the same way, so it follows the same fade. Each new fade kills the previous tween the
-    // way NHealthBar does with _hpLabelFadeTween; two live tweens on one property strand the label
-    // at whichever alpha the stale one froze at
+    // Each fade kills the previous tween, or two live tweens strand the label at a stale alpha
     [HarmonyPatch(typeof(NHealthBar), nameof(NHealthBar.FadeOutHpLabel))]
     public static class FadeOutAntitoxinLabel
     {
@@ -482,7 +423,6 @@ public static class AntitoxinBarPatches
             parts.FadeTween = parts.Text.CreateTween().SetParallel();
             parts.FadeTween.TweenProperty(parts.Text, "modulate:a", finalAlpha, duration)
                 .SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
-            // The panel forecast is pinned opaque (see Refresh), so only combat bars fade it
             if (!InPlayerPanel(__instance) && parts.Forecast is { } forecast
                 && GodotObject.IsInstanceValid(forecast))
                 parts.FadeTween.TweenProperty(forecast, "modulate:a", finalAlpha, duration)

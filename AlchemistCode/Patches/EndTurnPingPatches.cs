@@ -15,18 +15,14 @@ using MegaCrit.Sts2.Core.Random;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// The base game shows one fixed line per end-turn ping, so repeated pings repeat the bubble. The
-// Alchemist draws a random line from the numbered keys under the same prefix and falls back to the
-// base key when none are loaded. Each client picks its own line: the ping message carries nothing to
-// sync on
+// Each client picks its own line: the ping message carries nothing to sync on
 [HarmonyPatch(typeof(FlavorSynchronizer), "CreateEndTurnPingDialogueIfNecessary")]
 public static class EndTurnPingPoolPatch
 {
-    // Only the numbered lines. A sibling such as ".3.sfx" shares the prefix and must not be spoken
+    // A sibling key such as ".3.sfx" shares the prefix
     private static readonly Regex NumberedLine = new(@"\.endTurnPing\.\d+$", RegexOptions.Compiled);
 
-    // The player can be null when a ping arrives from a peer who has already left the lobby. The
-    // original checks the run first and never reads the player outside one, so keep that order
+    // Player is null once the peer has left, so check the run first as the original does
     public static bool Prefix(Player? player, Dictionary<Player, NSpeechBubbleVfx?> ____endTurnPingDialogues)
     {
         if (NRun.Instance == null || player?.Character is not AlchemistCharacter) return true;

@@ -6,8 +6,7 @@ using MegaCrit.Sts2.Core.Helpers;
 
 namespace Alchemist.AlchemistCode.Analytics;
 
-// Fire and forget. A failure is logged and dropped, so nothing here awaits, retries or throws into
-// the game
+// Never throws into the game: a failure is logged and dropped
 internal static class RunMetricsUploader
 {
     private static readonly HttpClient Client = new() { Timeout = TimeSpan.FromSeconds(15) };

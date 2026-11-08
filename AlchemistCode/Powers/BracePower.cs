@@ -11,7 +11,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Flame Barrier's lifetime: the power lasts through the enemy turn and leaves when that side ends
 public class BracePower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;

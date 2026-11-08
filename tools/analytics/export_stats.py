@@ -1,29 +1,7 @@
 """Turn the uploaded runs into the count tables the website reads (site/data/).
 
-Every run belongs to one group: its mod version, game build, ascension band, card pool, and
-whether it was solo or co-op. Each table adds the run's counts to its group's rows. The page
-keeps the groups its filters allow and adds their rows up, so every rate it shows is a sum of
-counts over a sum of counts. No raw row, deck or player hash leaves this script.
-
-It writes these files to site/data/:
-
-    summary.json  meta, groups, run totals, ascensions, days, themes, badges, histograms,
-                  counters, acts, death floors
-    cards.json    one row per card per group
-    relics.json   one row per relic and per potion per group
-    fights.json   one row per encounter per group
-    notes.json    the patch notes, one entry per version, from CHANGELOG.md
-    loc/          one file per language: the mod's names and text, the cards as the game shows
-                  them, the hover tips for the terms their text marks in gold, and the base
-                  game's words the website uses
-
-Each table is {"key": [...], "counts": [...], "rows": [[...], ...]}. A row lists its key values,
-then its counts. The site build runs it every day (site/package.json), and it runs locally with
-`scripts/dev.sh analytics`.
-
-Your own playtests would swamp a small dataset. List your player_hash values, one per line, in
-tools/analytics/exclude-players.local.txt (gitignored) or in the ANALYTICS_EXCLUDE_PLAYERS env
-var (comma separated), and they are dropped first.
+No raw row, deck or player hash leaves this script. To drop runs by player_hash, list the hashes
+in tools/analytics/exclude-players.local.txt or ANALYTICS_EXCLUDE_PLAYERS (comma separated).
 """
 
 import argparse
@@ -41,14 +19,11 @@ import mod_meta
 OUT_DIR = common.REPO / "site" / "data"
 EXCLUDE_FILE = common.HERE / "exclude-players.local.txt"
 
-# The ascension filter on the page offers these bands: A0, A1 to A4, A5 to A9, A10 and up
 ASCENSION_BANDS = [0, 1, 5, 10]
 
-# A run counts toward the theme with the most Alchemist cards in its final deck, duplicates
-# included. Fewer than this many is "Unfocused"
 THEME_MIN_CARDS = 3
 
-# Histogram bins as (width, last bin). Each badge threshold must sit on a bin edge
+# (width, last bin); each badge threshold must sit on a bin edge
 HISTOGRAMS = {
     "run_minutes": (10, 180),
     "poison_peak": (5, 60),
@@ -58,8 +33,6 @@ HISTOGRAMS = {
     "potions_sold": (1, 8),
 }
 
-# A newer client uploads the tier each badge earned. For older rows, the export reads the tier from
-# the run total below, with the thresholds from the badge classes (mod_meta.py)
 BADGE_METRICS = {
     "ALCHEMIST-ANTITOXIN_PEAK": "antitoxin_peak",
     "ALCHEMIST-MIXES": "mixes",
@@ -69,13 +42,8 @@ BADGE_METRICS = {
 }
 BADGE_TIERS = {"none": 0, "bronze": 1, "silver": 2, "gold": 3}
 
-# The per-card tally keys, and the cards table column each one fills. One counter per card would
-# make summary.json too big for a phone, so these skip the counters table
 CARD_KEYS = {"play:": "plays", "fermentplay:": "ferment_plays", "fermentturns:": "ferment_turns"}
 
-# The client's payload schema: `alchemist.schema`, or `mix_keys` before schema 3. Schema 2 re-keyed
-# the Mixes. Schema 3 added plays per card, badges, Antitoxin sources and decay, the self-Poison
-# peak, Mix losses, enemy Poison and Ferment turns per card
 MIX_SCHEMA = 2
 DETAIL_SCHEMA = 3
 
@@ -85,8 +53,6 @@ def schema_of(extra: dict) -> int:
 
 
 class Table:
-    """Counts keyed by a tuple. Every column after the key is a count, so rows add up."""
-
     def __init__(self, key: list[str], counts: list[str]):
         self.key, self.counts = key, counts
         self.index = {name: i for i, name in enumerate(counts)}
@@ -105,7 +71,6 @@ class Table:
 def new_tables() -> dict[str, Table]:
     g = ["group"]
     return {
-        # summary.json
         "totals": Table(g, [
             "runs", "wins", "reached_act2", "reached_act3", "seconds", "win_seconds", "deck_size",
             "win_deck_size", "reward_screens", "reward_skips", "brews", "no_brew_runs",
@@ -121,16 +86,12 @@ def new_tables() -> dict[str, Table]:
         "counters": Table(g + ["counter"], ["count", "runs"]),
         "acts": Table(g + ["act"], ["fights", "turns", "damage"]),
         "death_floors": Table(g + ["floor"], ["deaths"]),
-        # cards.json. The play and Ferment counts come from schema 3 runs only, and cover the cards
-        # in the final deck, so held_with_plays is their denominator
         "cards": Table(g + ["card"], [
             "held", "held_wins", "held_twice", "held_twice_wins", "offered", "picked",
             "early_picks", "early_pick_wins", "upgraded", "held_with_plays", "plays",
             "held_never_played", "ferment_plays", "ferment_turns"]),
-        # relics.json
         "relics": Table(g + ["relic"], ["held", "held_wins", "bought", "offered", "picked"]),
         "potions": Table(g + ["potion"], ["drunk", "bought", "discarded"]),
-        # fights.json
         "encounters": Table(g + ["encounter"], ["fights", "turns", "damage", "deaths"]),
     }
 
@@ -144,20 +105,14 @@ FILES = {
 }
 
 
-# ---------- old rows ----------
-
-# Mix keys follow the card names, so a rename moves counts between keys. Clients before schema 2
-# used "fuming" for what is now Acrid Mix and "acrid" for the old Poison Mix
+# Before schema 2, "fuming" meant Acrid Mix and "acrid" the Poison Mix
 SCHEMA_1_LABELS = {"fuming": "acrid", "acrid": "poison"}
 RENAMED_MIX_LABELS = {"sturdy": "syrupy"}
-# Mix kinds that no longer exist. The per-kind counts drop them so they never show as a
-# current kind, but the run's Mix total keeps them because the Mixes badge counted them
+# Left out of per-kind counts but kept in the Mix total, which the Mixes badge counted
 RETIRED_MIX_LABELS = {"poison"}
 
 
 def normalise(extra: dict) -> dict:
-    """Bring an old client's `alchemist` object in line with the current Mix keys. A key the
-    client did not send stays absent."""
     old = schema_of(extra) < MIX_SCHEMA
 
     def label(kind: str) -> str:
@@ -188,10 +143,7 @@ def normalise(extra: dict) -> dict:
     return out
 
 
-# ---------- one run ----------
-
 def version_key(version: str) -> tuple:
-    """v0.9.0 sorts before v0.11.0. Anything that is not a version sorts last."""
     parts = re.findall(r"\d+", version or "")
     return (0, *map(int, parts)) if (version or "").startswith("v") and parts else (1, version)
 
@@ -201,7 +153,6 @@ def ascension_band(ascension: int) -> int:
 
 
 def card_pool(run: dict, extra: dict, epochs: int) -> str:
-    """"full" when every epoch is earned or the player turned epochs off (which unlocks everything)."""
     if (extra.get("config") or {}).get("enable_epochs") is False:
         return "full"
     earned = int(run.get("epochs") or 0)
@@ -215,8 +166,6 @@ def group_of(run: dict, extra: dict, epochs: int) -> tuple:
 
 
 def dominant_theme(deck_themes: dict[str, int]) -> str:
-    """deck_themes comes from the mod ({"poison": 9, "mix": 2, ...}). Ties go to the theme listed
-    first in mod_meta.THEMES. An old run may name a theme no card uses any more, which still counts."""
     order = [t.lower() for t in mod_meta.THEMES]
     rank = lambda theme: order.index(theme) if theme in order else len(order)
     counts = {theme: int(n or 0) for theme, n in deck_themes.items()}
@@ -227,8 +176,6 @@ def dominant_theme(deck_themes: dict[str, int]) -> str:
 
 
 def run_metrics(run: dict, win: int, extra: dict) -> dict[str, int]:
-    """The run totals the histograms and badges read. A metric is missing when the client that
-    uploaded the run did not record it yet."""
     metrics = {"run_minutes": int(run.get("playtime") or 0) // 60,
                "potions_sold": int(extra.get("potions_sold") or 0)}
     if "mixes" in extra:
@@ -251,7 +198,6 @@ def histogram_bin(metric: str, value: int) -> int:
 
 
 def badge_tier(badge: dict, value: int) -> int:
-    """0 for none, then 1, 2, 3 for bronze, silver, gold."""
     return sum(value >= tier["at"] for tier in badge["tiers"])
 
 
@@ -317,8 +263,6 @@ def add_run(t: dict[str, Table], group: int, run: dict, extra: dict, badges: lis
         t["acts"].add(group, int(act.get("act") or 0), fights=int(act.get("fights") or 0),
                       turns=int(act.get("turns") or 0), damage=int(act.get("damage") or 0))
 
-    # Cards: only the mod's own. The first three reward screens the player took a card from
-    # are the early picks that shape a run
     mine = lambda card: card.startswith(mod_meta.PREFIX)
     detail = schema_of(extra) >= DETAIL_SCHEMA
     for card, copies in Counter(deck).items():
@@ -374,8 +318,6 @@ def add_run(t: dict[str, Table], group: int, run: dict, extra: dict, badges: lis
         t["death_floors"].add(group, int(run["floor"]), deaths=1)
 
 
-# ---------- all runs ----------
-
 def excluded_players() -> set[str]:
     hashes = set()
     if env := os.environ.get("ANALYTICS_EXCLUDE_PLAYERS"):
@@ -403,7 +345,6 @@ def oldest_version(runs) -> str | None:
 
 
 def build(runs: list[dict]) -> dict[str, dict]:
-    """The output files, keyed by file name."""
     cards, badges, epochs = mod_meta.cards(), mod_meta.badges(), mod_meta.epoch_count()
     manifest = mod_meta.manifest()
     extras = [normalise(run.get("alchemist") or {}) for run in runs]
@@ -427,7 +368,6 @@ def build(runs: list[dict]) -> dict[str, dict]:
         "first_day": days[0],
         "last_day": days[-1],
         "versions": sorted({run["mod_version"] for run in runs}, key=version_key),
-        # The Steam branch each game build came from, by the most common build type
         "builds": {build: kinds.most_common(1)[0][0] for build, kinds in
                    sorted(builds.items(), key=lambda kv: version_key(kv[0]))},
         "prefix": mod_meta.PREFIX,
@@ -446,8 +386,6 @@ def build(runs: list[dict]) -> dict[str, dict]:
         "previews": [{"image": path, "full": path} for path in mod_meta.previews()],
         "histograms": {metric: {"width": w, "last": last} for metric, (w, last) in HISTOGRAMS.items()},
         "badges": [b | {"metric": BADGE_METRICS.get(b["id"])} for b in badges],
-        # The oldest mod version whose client sends the schema 3 counters. A version's runs all share
-        # one schema, so the page selects the runs that carry them by version
         "schema_since": {
             str(DETAIL_SCHEMA): oldest_version(run for run, extra in zip(runs, extras)
                                                if schema_of(extra) >= DETAIL_SCHEMA),

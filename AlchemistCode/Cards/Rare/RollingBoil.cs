@@ -8,8 +8,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Rare;
 
-// The pot everything goes into: the only card that reads the TOTAL fermentation held in the
-// hand, so a wide ferment board cashes into one hit
 [CardTheme(CardTheme.Ferment)]
 public class RollingBoil : AlchemistCard
 {
@@ -25,8 +23,6 @@ public class RollingBoil : AlchemistCard
         WithKeyword(CardKeyword.Retain);
     }
 
-    // Own turns counted directly, so the previewed number does not dip when the card leaves
-    // the hand for the play zone; every other Ferment card is read from the hand as the text says
     private int TotalFermentation(Player owner) =>
         FermentTurns + PileType.Hand.GetPile(owner).Cards
             .OfType<AlchemistCard>()

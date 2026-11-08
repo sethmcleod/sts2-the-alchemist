@@ -22,8 +22,6 @@ public class MarshTonic : AlchemistPotion
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        // The splash and liquid wash every base potion plays, tinted to the Antitoxin colour so the
-        // drink reads as the same effect as the bar it fills and the puff an absorb makes
         var creature = target ?? Owner.Creature;
         NCombatRoom.Instance?.PlaySplashVfx(creature, AlchemistModConfig.AntitoxinBarColor);
         await CreatureCmd.GainBlock(creature, 8m, ValueProp.Unpowered, null);

@@ -1,36 +1,5 @@
 #!/usr/bin/env python3
-"""Static linter for the three-way rule.
-
-Each card must stay in sync in its three locations:
-  1. code:  a card class under AlchemistCode/Cards/
-  2. loc:   ALCHEMIST-<SNAKE>.title / .description in localization/eng/cards.json
-  3. csv:   a row in cards.csv (the design sheet)
-
-The linter FAILs (exit 1) on a structural difference: a csv row with no class, a class
-with no row, a card with no loc keys, or a cost that does not agree. It also makes a
-careful numeric comparison: the literal WithDamage/WithBlock/WithEnergy/WithCards/WithPower
-builders against the "N (M)" pairs in the csv. It prints each difference as a warning. It
-does not examine a formula builder itself (WithCalculated*), only the plain vars beside it,
-because it cannot know the correct value.
-
-It also checks the fourth location that a rename must reach: the art on disk. Cards,
-powers, relics, potions and enchantments all get their icons from the class name. If you
-rename a class but you do not rename its png, the entity has no art and no class uses the
-png. Art that is missing is a FAIL. Art that no class uses is a warning.
-
-Two further checks guard the case that froze a run: a class that hardcodes an asset
-filename passes the class-name check while asking the game for a file that is not there,
-and a miss that lands on an absent fallback throws the same way. So every asset literal in
-the code must resolve, and every fallback a *ImagePath helper uses must itself exist.
-
-A last check guards the case that broke a publish: every file in AlchemistCode/Compat/ is
-written against one game branch, and a merge from beta silently carries beta's copies onto
-main. The mismatch only shows up as a wall of CS0115 errors that name no branch, so each
-file states its branch in a COMPAT-BRANCH marker and this checks it against the branch you
-are on.
-
-Run it with `scripts/dev.sh lint`.
-"""
+"""Lint the card three-way sync, art on disk, asset paths and Compat/ branch markers"""
 
 import csv
 import json
@@ -47,16 +16,9 @@ IMG = REPO / "Alchemist" / "images"
 CSV = REPO / "cards.csv"
 LOC = REPO / "Alchemist" / "localization" / "eng" / "cards.json"
 
-# csv display name -> class name, for the two basic cards with an "Alchemist" suffix
 SPECIAL_CLASS = {"Strike": "StrikeAlchemist", "Defend": "DefendAlchemist"}
 
-# Every entity gets its art from its own class name (see AlchemistCode/Extensions/
-# StringExtensions.cs). If a rename does not include the images, no class uses them.
-# entity label -> (code subdir, base marker, [(variant label, image dir, filename template)])
 ASSET_SPECS = [
-    # cards use the base game layout: the final art is card_portraits/<s>.png (500x380) with a
-    # 1000x760 copy in card_portraits/big/ for the inspect screen, and the beta placeholder is
-    # card_portraits/beta/<s>.png. check_card_art accepts the final art or the placeholder
     ("card", "Cards", "Card", [("portrait", "card_portraits", "{s}.png"),
                                ("big", "card_portraits/big", "{s}.png")]),
     ("power", "Powers", "Power", [("packed", "powers", "{s}.png"),
@@ -69,23 +31,16 @@ ASSET_SPECS = [
     ("enchantment", "Enchantments", "Enchantment", [("icon", "enchantments", "{s}.png")]),
 ]
 
-# the default art for the *ImagePath helpers; no class uses it
 FALLBACK_ART = {"card.png", "power.png", "relic.png", "relic_outline.png", "potion.png"}
 
-# A subclass of one of these bases takes its icon from the base game, not from the mod path, so
-# it has no art of its own to check. CustomTemporaryStrengthPower borrows the shackles and flex
-# icons that every base temporary-strength power shares; BorrowedIconPower<T> borrows the icon of
-# the base power T
 BORROWED_ART_BASES = {"CustomTemporaryStrengthPower", "BorrowedIconPower"}
 
 
 def norm(name: str) -> str:
-    """Make a comparison key from a display name or a class name."""
     return re.sub(r"[^a-z0-9]", "", name.lower())
 
 
 def snake(class_name: str) -> str:
-    """Card class name -> loc-id suffix (DoubleDose -> DOUBLE_DOSE)."""
     s = re.sub(r"(?<=[A-Za-z0-9])(?=[A-Z])", "_", class_name)
     return s.upper()
 
@@ -100,25 +55,14 @@ def load_cards_csv() -> list[dict]:
 
 
 def entity_classes(subdir: str, base_marker: str, skip_bases: set[str] = frozenset()) -> dict[str, Path]:
-    """class name -> file, for every concrete class under AlchemistCode/<subdir>.
-
-    The function compares base_marker with the base list. Thus "Card" matches AlchemistCard,
-    and "Power" matches both the AlchemistPower and CustomTemporaryStrengthPower subclasses.
-    The function ignores an abstract class: it has no model id, so it has no assets. Pass
-    skip_bases to leave out the subclasses of a base that borrows its art from the base game
-    """
     out = {}
     for path in (CODE / subdir).rglob("*.cs"):
-        # "partial" appears when a class is split across the branch-specific Compat files, and it
-        # can sit on either side of "abstract". Only the half that names the base is matched, so a
-        # partial still resolves to exactly one file
+        # A partial split across Compat files matches only in the half that names the base
         pattern = r"public\s+(?:sealed\s+)?(?:(abstract)\s+|partial\s+|(abstract)\s+partial\s+)?(?:sealed\s+)?class\s+(\w+)\s*:\s*([\w<>, ]+)"
         for m in re.finditer(pattern, path.read_text()):
             abstract_a, abstract_b, name, bases = m.groups()
             if abstract_a or abstract_b or base_marker not in bases:
                 continue
-            # Compare base names without generic arguments: BorrowedIconPower<StranglePower> is a
-            # BorrowedIconPower
             if skip_bases & {re.sub(r"<.*", "", b).strip() for b in bases.split(",")}:
                 continue
             out[name] = path
@@ -126,17 +70,14 @@ def entity_classes(subdir: str, base_marker: str, skip_bases: set[str] = frozens
 
 
 def card_classes() -> dict[str, Path]:
-    """class name -> file, for every concrete AlchemistCard subclass."""
     return entity_classes("Cards", "Card")
 
 
 def asset_name(class_name: str) -> str:
-    """Entity class name -> icon filename stem (GoldenTouchPower -> golden_touch_power)."""
     return snake(class_name).lower()
 
 
 def png_size(path: Path) -> tuple[int, int] | None:
-    """Width and height from the PNG header, so the check needs no image library."""
     with open(path, "rb") as f:
         head = f.read(24)
     if len(head) < 24 or head[:8] != b"\x89PNG\r\n\x1a\n":
@@ -145,13 +86,6 @@ def png_size(path: Path) -> tuple[int, int] | None:
 
 
 def check_card_art(cls: str, claimed: set[Path]) -> tuple[list[str], list[str]]:
-    """A card has final art in both sizes or the beta placeholder, and a replaced placeholder is shrunk.
-
-    The final art is card_portraits/<s>.png (500x380) plus card_portraits/big/<s>.png (1000x760,
-    for the inspect screen). The placeholder card_portraits/beta/<s>.png stays on disk after the
-    final art lands, because the Use Beta Art setting shows it, but from then on it is only worth
-    the size of the final art: scripts/dev.sh beta-art shrinks it
-    """
     errors, warnings = [], []
     name = f"{asset_name(cls)}.png"
     small = IMG / "card_portraits" / name
@@ -182,13 +116,6 @@ def check_card_art(cls: str, claimed: set[Path]) -> tuple[list[str], list[str]]:
 
 
 def check_assets() -> tuple[list[str], list[str], int]:
-    """Each concrete entity has its art on disk, and every art file belongs to a class.
-
-    It returns (errors, warnings, files checked). A file that is missing is an error. The
-    *ImagePath helpers write a log line and use the default art, so the entity still renders
-    and you can easily miss the difference. A file that no class uses is only a warning: it
-    adds to the pck size, but it has no other effect
-    """
     errors, warnings = [], []
     claimed: set[Path] = set()
 
@@ -205,17 +132,12 @@ def check_assets() -> tuple[list[str], list[str], int]:
                 if not path.exists():
                     errors.append(f"{label} {cls}: the {variant} art {img_dir}/{path.name} is missing")
 
-    # remove the duplicates: relics keep the packed art and the outline art in one directory. Also scan the
-    # card beta placeholder folder, so an orphaned beta png (no matching card) is reported
     art_dirs = {img_dir for _, _, _, variants in ASSET_SPECS for _, img_dir, _ in variants}
     art_dirs.add("card_portraits/beta")
-    # Art a class names by literal (the character's Yummy Cookie) is claimed too, not only art
-    # derived from a class name
     literal_names = set(re.findall(r'"([A-Za-z0-9_.-]+\.png)"',
                                    "\n".join(p.read_text() for p in CODE.rglob("*.cs"))))
     for img_dir in sorted(art_dirs):
         for path in sorted((IMG / img_dir).glob("*.png")):
-            # A big outline belongs to the big art beside it, and is composed under it at run time
             if path.name.endswith("_outline.png") and (path.parent / path.name.replace("_outline", "")) in claimed:
                 continue
             if path not in claimed and path.name not in FALLBACK_ART and path.name not in literal_names:
@@ -225,16 +147,9 @@ def check_assets() -> tuple[list[str], list[str], int]:
 
 
 def check_asset_literals() -> list[str]:
-    """No model may name an asset file that is not on disk.
-
-    check_assets derives the filename from the class name, so it only proves the *convention* is
-    satisfied. A class that hardcodes a different filename passes that check while asking the game
-    for a file that does not exist, and a missing texture throws inside the effect handler and
-    freezes the run. That is how the Dosed and Potent icons shipped naming the pre-rename art
-    """
     errors = []
     for path in sorted(CODE.rglob("*.cs")):
-        # A line marked "// os path" names a file on disk outside the pck, which this check cannot see
+        # A line marked "// os path" names a file outside the pck
         text = "\n".join(l for l in path.read_text().splitlines() if "// os path" not in l)
         for m in re.finditer(r'"([A-Za-z0-9_/\.-]+\.(?:png|tscn|tres|wav|ogg|ttf|gdshader))"', text):
             ref = m.group(1)
@@ -250,15 +165,6 @@ def check_asset_literals() -> list[str]:
 
 
 def check_game_scene_paths() -> tuple[list[str], list[str]]:
-    """Every "vfx/..." the mod names must be a scene the game actually ships.
-
-    check_asset_literals only matches strings that carry a file extension, so an extensionless
-    game scene path slips past it. A path the game cannot resolve makes VfxCmd.PlayVfx throw
-    inside the attack command, which kills PlayCardAction: the card sticks in the middle of the
-    screen, deals no damage and never leaves play. That is how Slow Burn shipped naming
-    vfx/vfx_attack_fire, which does not exist. Skipped when the game is not installed, so CI,
-    which has no game, still passes
-    """
     game_dir = os.environ.get("STS2_GAME_DIR")
     if not game_dir:
         return [], ["game scene paths: STS2_GAME_DIR is not set, skipping the vfx check"]
@@ -278,13 +184,6 @@ def check_game_scene_paths() -> tuple[list[str], list[str]]:
 
 
 def check_res_path_separator() -> list[str]:
-    """A res:// path must be built with forward slashes on every platform.
-
-    Path.Join and Path.Combine join with the platform separator, which is a backslash on Windows.
-    The pack index is keyed by forward slashes only, so such a path loads on macOS and Linux and
-    fails on Windows. The failure is invisible here: it shipped once as an empty Compendium for
-    every character, because one missing character icon throws out of NCardLibrary._Ready
-    """
     errors = []
     for path in sorted(CODE.rglob("*.cs")):
         for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
@@ -297,12 +196,6 @@ def check_res_path_separator() -> list[str]:
 
 
 def check_fallback_art() -> tuple[list[str], list[str]]:
-    """Every fallback a *ImagePath helper falls back to must itself exist.
-
-    A miss that lands on an absent fallback throws exactly like the original miss did, and a
-    missing texture inside an effect handler freezes the run. A helper with no fallback at all
-    only gets a warning: it needs art before it can have one
-    """
     errors, warnings = [], []
     src = (CODE / "Extensions" / "StringExtensions.cs").read_text()
     for m in re.finditer(r"public static string (\w+)\(this string path\)\s*\{(.*?)\n    \}", src, re.S):
@@ -310,7 +203,7 @@ def check_fallback_art() -> tuple[list[str], list[str]]:
         if "ResourceLoader.Exists" not in body:
             continue
         tail = body[body.index("ResourceLoader.Exists"):]
-        # A fallback may point at a base game asset, which ships in the game pck and is not ours to check
+        # A literal res:// fallback is a base game asset
         if re.search(r'return "res://', tail):
             continue
         join = re.search(r'return Res\(MainFile\.ResPath,\s*(.*?)\);', tail, re.S)
@@ -329,7 +222,6 @@ COMPAT_MARKER = re.compile(r"^//\s*COMPAT-BRANCH:\s*(main|beta|any)\s*$", re.M)
 
 
 def git_branch() -> str | None:
-    """The checked-out branch, or None in a detached HEAD or outside a work tree."""
     try:
         out = subprocess.run(["git", "-C", str(REPO), "symbolic-ref", "--short", "-q", "HEAD"],
                              capture_output=True, text=True).stdout.strip()
@@ -339,17 +231,8 @@ def git_branch() -> str | None:
 
 
 def check_compat_branch() -> list[str]:
-    """Every file in Compat/ is written against one game branch, so it must match the branch.
-
-    beta targets the game's public-beta branch and main targets the default branch, and the two
-    spell a handful of APIs differently. A merge from beta carries beta's copies of these files
-    across, which then fails to build against the other game with CS0115 errors that never say
-    "branch". Marking the file and checking it here names the real problem in one line
-    """
     errors = []
     branch = git_branch()
-    # A feature branch is cut from one of the two and carries that one's copies. Only the two
-    # release branches have a game branch of their own to be checked against
     if branch not in (None, "main", "beta"):
         return errors
     for path in sorted(COMPAT.glob("*.cs")):
@@ -364,8 +247,6 @@ def check_compat_branch() -> list[str]:
 
 
 def check_card_themes(classes: dict[str, Path]) -> list[str]:
-    """Every card class must carry [CardTheme(...)] on the line before its declaration. Neutral cards
-    say CardTheme.None explicitly, so a missing attribute is always an oversight."""
     theme_re = re.compile(r"\[CardTheme\((?P<themes>[^)]*)\)\]\s*public\s+(?:\w+\s+)*class\s+(?P<name>\w+)")
     enum_src = (CODE / "Cards" / "CardTheme.cs").read_text()
     valid = set(re.findall(r"^\s+(\w+),\s*$", enum_src, re.M))
@@ -417,9 +298,6 @@ COMMENT_BANNED = [
 
 
 def check_comment_hygiene() -> list[str]:
-    """A comment describes complex code, nothing else. Version numbers, dates, player or process
-    references, and TODO markers all narrate history rather than mechanism, and history belongs in
-    the changelog and the reports, not the source."""
     errors = []
     for path in sorted(CODE.rglob("*.cs")):
         for n, line in enumerate(path.read_text().splitlines(), 1):
@@ -435,23 +313,11 @@ def check_comment_hygiene() -> list[str]:
 
 
 def parse_number_pairs(desc: str) -> list[tuple[int, int]]:
-    """Get the 'N(M)' upgrade pairs from a csv description cell or cost cell.
-
-    The % at the end is optional, so a percentage card ('25%(50%)') makes a pair like the others."""
     return [(int(a), int(b)) for a, b in re.findall(r"(\d+)%?\s*\((\d+)%?\)", desc)]
 
 
 def parse_builders(text: str) -> list[tuple[int, int]]:
-    """The literal (base, delta) builder pairs.
-
-    A base of 0 is a dynamic placeholder, not a literal amount. The value on screen comes
-    from a dynamic var or from a calculation at run time. For example, Albedo has "that much
-    Regen", and its WithPower<RegenPower>(0, 1) declares only the +1 upgrade tip.
-    The csv shows these as "(+ N)", not as a literal "0 (N)" pair, so ignore them.
-
-    A WithCalculatedDamage or WithCalculatedBlock builder is not parsed: the csv shows its
-    calculated number. The plain vars beside it on the same card are still checked.
-    """
+    """A base of 0 is a dynamic placeholder, which the csv shows as "(+ N)", so it is skipped"""
     pairs = []
     for m in re.finditer(r"With(?:Damage|Block|Energy|Cards|(?:Quiet)?Power<\w+>)\((\d+)\s*,\s*(-?\d+)\)", text):
         base, delta = int(m.group(1)), int(m.group(2))
@@ -461,8 +327,6 @@ def parse_builders(text: str) -> list[tuple[int, int]]:
         base, delta = int(m.group(1)), int(m.group(2))
         if base != 0:
             pairs.append((base, base + delta))
-    # var constructors, named or not: new FermentVar("Poison", 2, perTurn: 2).WithUpgrade(1),
-    # new ScryVar(4).WithUpgrade(1). The base is the first number either way
     for m in re.finditer(
             r"new \w+Var\(\s*(?:\"[^\"]+\"\s*,\s*)?(\d+)[^)]*\)"
             r"\s*(?:\.WithUpgrade\(\s*(-?\d+)m?\s*\))?", text):
@@ -483,7 +347,6 @@ def main() -> int:
     csv_by_norm = {norm(SPECIAL_CLASS.get(r["Card"], r["Card"])): r for r in rows}
     class_by_norm = {norm(c): c for c in classes}
 
-    # 1. csv row <-> class file
     for r in rows:
         display = r["Card"]
         expected = SPECIAL_CLASS.get(display, display.replace(" ", "").replace("'", ""))
@@ -493,14 +356,12 @@ def main() -> int:
         if norm(cls) not in csv_by_norm:
             errors.append(f"class {cls}: no row in cards.csv matches it")
 
-    # 2. loc keys per class
     for cls in classes:
         key = f"ALCHEMIST-{snake(cls)}"
         for suffix in (".title", ".description"):
             if f'"{key}{suffix}"' not in loc:
                 errors.append(f"class {cls}: the loc key {key}{suffix} is missing from cards.json")
 
-    # 3. cost and numeric comparison
     for r in rows:
         display = r["Card"]
         cls = SPECIAL_CLASS.get(display, display.replace(" ", "").replace("'", ""))
@@ -509,39 +370,32 @@ def main() -> int:
             continue
         text = path.read_text()
 
-        # cost: csv "N" or "N (M)" against ctor base(cost,...) [+ WithCostUpgradeBy]
         cost = r["Cost"].strip()
         cm = re.search(r":\s*base\(\s*(\d+)\s*,", text)
         if cm and cost.isdigit() and int(cost) != int(cm.group(1)):
             errors.append(f"{display}: the csv cost {cost} is not the ctor base cost {cm.group(1)}")
 
-        # numeric pairs: the csv text must contain every literal builder pair
         csv_pairs = set(parse_number_pairs(r["Description"]) + parse_number_pairs(cost))
         for base, up in parse_builders(text):
             if base != up and (base, up) not in csv_pairs:
                 warnings.append(
                     f"{display}: the builder makes {base} ({up}), but that pair is not in the csv row")
 
-    # 4. every entity's art is on disk
     asset_errors, asset_warnings, art_count = check_assets()
     errors += asset_errors
     warnings += asset_warnings
 
-    # 5. no class names an asset that is not there, and the fallbacks themselves exist
     errors += check_asset_literals()
     fb_errors, fb_warnings = check_fallback_art()
     errors += fb_errors
     warnings += fb_warnings
     errors += check_res_path_separator()
 
-    # 6. every Compat/ file is the copy for the branch you are on
     errors += check_compat_branch()
 
-    # 7. every card class carries a [CardTheme] attribute (the website's stats group by it)
     errors += check_card_themes(classes)
     errors += check_name_tags(classes)
 
-    # 8. comments describe complex code only: no versions, dates, or process references
     errors += check_comment_hygiene()
 
     scene_errors, scene_warnings = check_game_scene_paths()

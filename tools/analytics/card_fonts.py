@@ -1,20 +1,4 @@
-"""Cuts the fonts the game draws cards with down to what the website's card faces use.
-
-The game swaps Kreon for another font in some languages (FontManager and FontPathSets): Fira Sans
-Extra Condensed for Polish and Russian, Noto Sans CJK for Japanese, Gyeonggi Batang for Korean,
-CS ChatThai UI for Thai, and Source Han Serif (titles) with Noto Sans Mono CJK (text) for Chinese.
-Most of those fonts also scale their glyphs (a FontVariation transform), which the site copies.
-
-Each font is subset to the characters the mod's cards, keywords and card types use in its
-languages and saved as WOFF2 in site/src/assets/fonts/. site/src/lib/card-fonts.json gets what the
-build-time text fit needs: each set's languages, line height, scale and character widths.
-
-Run it again after a localization pass; `npm test` in site/ fails while a card uses a character a
-subset lacks. The game files are not in the repo: point --game at a project recovered with GDRE
-Tools. Needs fontTools with brotli (pip install fonttools brotli).
-
-    python3 tools/analytics/card_fonts.py --game <recovered project>
-"""
+"""Subset the game's card fonts to what the website's card faces use"""
 
 import argparse
 import io
@@ -32,14 +16,9 @@ GAME_LOC = Path(__file__).with_name("game_loc.json")
 OUT = REPO / "site" / "src" / "assets" / "fonts"
 TABLE = REPO / "site" / "src" / "lib" / "card-fonts.json"
 
-# Numbers, the upgrade mark and what the site adds around a card's words
 ALWAYS = "0123456789+-X?()%/.,:;!' "
-# Kreon also sets the site's headings, so its subset keeps all of ASCII and Latin-1 and the
-# common punctuation
 HEADINGS = "".join(map(chr, [*range(0x20, 0x7F), *range(0xA0, 0x100)])) + \
     "\u2013\u2014\u2018\u2019\u201a\u201c\u201d\u201e\u2020\u2021\u2022\u2026\u2039\u203a\u2212"
-# set -> the languages that use it, and per weight the font file and its FontVariation scale.
-# Titles and costs use FontType.Bold, card text FontType.Regular.
 SETS = {
     "latin": {"langs": ["eng", "deu", "esp", "fra", "ind", "ita", "ptb", "spa", "tur"], "extra": HEADINGS,
               "regular": ("fonts/kreon_regular.ttf", 1.0), "bold": ("fonts/kreon_bold.ttf", 1.0)},
@@ -61,15 +40,12 @@ SETS = {
                 "regular": ("fonts/zht/NotoSansMonoCJKtc-Regular.otf", 0.95),
                 "bold": ("fonts/zht/SourceHanSerifTC-Bold.otf", 0.95)},
 }
-# The OFL bars a changed font from using a Reserved Font Name, and a subset is a changed font
+# The OFL bars a subset from using a Reserved Font Name
 RESERVED = ("Source", "Fira")
-# Tags go; a field's branches stay, since the words in {Cards:plural:card|cards} show on the card
 TAG_RE = re.compile(r"\[/?[^\]]*\]")
 
 
 def words(lang: str, game: dict) -> str:
-    """Every character of the mod's card, relic, potion, power and keyword text in one language,
-    with the English text for any key it lacks, and the game's names for the keywords and card types."""
     found = set(ALWAYS)
     for table in ("cards", "relics", "potions", "powers", "card_keywords"):
         english, path = LOC / "eng" / f"{table}.json", LOC / lang / f"{table}.json"
@@ -86,7 +62,6 @@ def words(lang: str, game: dict) -> str:
 
 
 def rename(font: TTFont, name: str) -> None:
-    """Give a subset of a font with a Reserved Font Name a name of its own."""
     table = font["name"]
     for record in table.names:
         if record.nameID in (1, 3, 4, 6, 16, 17, 18, 21, 22):
@@ -104,7 +79,6 @@ def cut(source: Path, text: str, name: str) -> tuple[bytes, TTFont]:
     options.name_IDs = ["*"]
     options.name_languages = ["*"]
     options.notdef_outline = True
-    # Hinting is most of a small subset's weight, and browsers draw these sizes well without it
     options.hinting = False
     options.desubroutinize = True
     subsetter = subset.Subsetter(options)
@@ -117,7 +91,6 @@ def cut(source: Path, text: str, name: str) -> tuple[bytes, TTFont]:
 
 
 def widths(font: TTFont, text: str) -> dict[str, float]:
-    """Each character's advance in em, before the FontVariation scale."""
     cmap, advances, units = font.getBestCmap(), font["hmtx"].metrics, font["head"].unitsPerEm
     return {ch: round(advances[cmap[ord(ch)]][0] / units, 4) for ch in text if ord(ch) in cmap}
 
@@ -135,7 +108,6 @@ def main() -> int:
         entry = {"langs": spec["langs"], "spacing": spec.get("spacing", 0)}
         for weight in ("regular", "bold"):
             file, scale = spec[weight]
-            # Korean and Thai draw everything in one font, so one file serves both weights
             if weight == "bold" and spec["bold"] == spec["regular"]:
                 entry["bold"] = entry["regular"]
                 continue

@@ -22,7 +22,6 @@ public class AlchemistModConfig : SimpleModConfig
 {
     public AlchemistModConfig()
     {
-        // Every tickbox raises ConfigChanged, so the cards already on screen repaint at once
         CardArtPatches.RememberArtSource();
         ConfigChanged += (_, _) => CardArtPatches.RefreshPortraitsIfArtSourceChanged();
         OnConfigReloaded += CardArtPatches.RefreshPortraitsIfArtSourceChanged;
@@ -32,14 +31,12 @@ public class AlchemistModConfig : SimpleModConfig
 
     public override void SetupConfigUI(Control optionContainer)
     {
-        // Auto-generates the UI from the properties and [ConfigButton] methods below
         GenerateOptionsForAllProperties(optionContainer);
         AddRestoreDefaultsButton(optionContainer);
         RefreshShownRows(optionContainer);
         KonamiCode.Listen(optionContainer, () => UnlockSecrets(optionContainer));
 
-        // [ConfigVisibleIf] hides and shows rows as settings change, and these refresh after it because
-        // it subscribed first. BaseLib drops both lists when the page closes
+        // Subscribed after [ConfigVisibleIf] so these run after it, and BaseLib drops both lists on close
         EventHandler refreshOnChange = (_, _) => RefreshShownRows(optionContainer);
         Action refreshOnReload = () => RefreshShownRows(optionContainer);
         ConfigChanged += refreshOnChange;
@@ -56,9 +53,6 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigHoverTip]
     public static bool KeepPoolsSeparate { get; set; } = true;
 
-    // The nine cards made for The Hero Expansion normally leave the pool when that mod is absent.
-    // This offers them anyway, in single-player runs only (HeroExpansion.CardsEnabled); the Broken
-    // Blade and Flashlight cards still need the mod to appear
     [ConfigSection("Compatibility")]
     [ConfigHoverTip]
     public static bool HeroCardsWithoutExpansion { get; set; } = false;
@@ -93,7 +87,6 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigColorPicker(EditAlpha = false)]
     public static Color AntitoxinBarColor { get; set; } = new("9B5CFF");
 
-    // A second gate on top of the game's own "Upload Data" setting, see Analytics/AlchemistMetrics.cs
     [ConfigSection("Analytics")]
     [ConfigHoverTip]
     public static bool AnalyticsEnabled { get; set; } = true;
@@ -138,7 +131,6 @@ public class AlchemistModConfig : SimpleModConfig
     [ConfigVisibleIf(nameof(SecretsUnlocked))]
     public static bool RainbowBag { get; set; } = false;
 
-    // Shown above Unlock All: opens the Timeline without granting the card, relic, and potion unlocks
     [ConfigSection("Unlocks")]
     [ConfigButton("RevealTimelineButtonLabel")]
     public static void RevealTimeline()
@@ -189,13 +181,11 @@ public class AlchemistModConfig : SimpleModConfig
         var save = SaveManager.Instance;
         if (save?.Progress == null) return;
 
-        // The discovered sets are read-only, so strip this mod's ids from the private backing fields
         RemoveFromDiscovered("_discoveredCards", ModelDb.AllCards.Where(c => c is AlchemistCard).Select(c => c.Id));
         RemoveFromDiscovered("_discoveredRelics", ModelDb.AllRelics.Where(r => r is AlchemistRelic).Select(r => r.Id));
         RemoveFromDiscovered("_discoveredPotions", ModelDb.AllPotions.Where(p => p is AlchemistPotion).Select(p => p.Id));
 
-        // Remove the entries outright rather than set NotObtained, which would render 2-7 as locked slots
-        // up front. Progression then restarts clean, with only Alchemist1's slot back via Neow
+        // Removed outright: NotObtained would draw 2-7 as locked slots up front
         RemoveAlchemistEpochs();
         RestoreFirstChapterSlot();
 
@@ -213,11 +203,7 @@ public class AlchemistModConfig : SimpleModConfig
         epochs.RemoveAll(e => ids.Contains(e.Id));
     }
 
-    // Neow's reveal is what creates Alchemist1's slot, and it runs once per profile. On a profile where Neow
-    // is already Revealed nothing in the session creates the slot again, so the next run awards Alchemist1
-    // as ObtainedNoSlot: the Timeline draws no tile for it, yet the main menu counts it and disables
-    // Singleplayer until it is revealed, which locks the player out. Re-create the slot as NotObtained,
-    // which is what the save loader's FixMissingSlots does for a Revealed parent
+    // Without this, a profile past Neow gets Alchemist1 as ObtainedNoSlot and Singleplayer stays locked
     private static void RestoreFirstChapterSlot()
     {
         if (!EpochRegistration.Supported) return;
@@ -235,7 +221,7 @@ public class AlchemistModConfig : SimpleModConfig
         set.RemoveWhere(toRemove.Contains);
     }
 
-    // Custom popup, because BaseLib's auto message popup is hard-titled "Mod configuration error"
+    // Not BaseLib's message popup, which is titled "Mod configuration error"
     private static void Notify(string message)
     {
         MainFile.Logger.Info("[Config] " + message);
@@ -253,7 +239,6 @@ public class AlchemistModConfig : SimpleModConfig
         if (SecretUnlocks.IsUnlocked || !GodotObject.IsInstanceValid(optionContainer)) return;
         if (!SecretUnlocks.Unlock()) return;
 
-        // Runs the [ConfigVisibleIf] checks again, which shows the Secrets section
         ConfigReloaded();
         ConfigToast.Show(optionContainer, new LocString("settings_ui", "ALCHEMIST-SECRETS_UNLOCKED_TOAST"));
     }
@@ -264,9 +249,7 @@ public class AlchemistModConfig : SimpleModConfig
         LinkShownFocusNeighbors(optionContainer);
     }
 
-    // BaseLib shows a divider only when the rows on both sides of it are shown, thus a hidden row takes
-    // both of its dividers with it and leaves no line between the rows around it. This shows the last
-    // divider above each shown row that has a shown row above it
+    // BaseLib hides a divider unless the rows on both sides show, so a hidden row takes both its dividers
     private static void ShowDividersBetweenShownRows(Control optionContainer)
     {
         foreach (var section in optionContainer.GetChildren().OfType<NConfigCollapsibleSection>())
@@ -290,8 +273,7 @@ public class AlchemistModConfig : SimpleModConfig
         }
     }
 
-    // BaseLib's SetupFocusNeighbors also links the controls in hidden rows, thus controller focus
-    // can land on a control that is not drawn. This links only the rows on show
+    // BaseLib's SetupFocusNeighbors also links hidden rows, so focus could land on one
     private static void LinkShownFocusNeighbors(Control optionContainer)
     {
         var controls = ShownFocusables(optionContainer).ToList();

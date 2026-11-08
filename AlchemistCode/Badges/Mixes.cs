@@ -7,9 +7,7 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace Alchemist.AlchemistCode.Badges;
 
-// BaseLib scans mod assemblies for CustomBadge, so a badge needs no registration call. It derives the id
-// from the type name, giving ALCHEMIST-MIXES, and that id is both the key prefix in the "badges" loc table
-// and the name the run history screen looks the icon up by
+// BaseLib derives the id ALCHEMIST-MIXES from the type name. It keys the loc table and the icon lookup
 public sealed class Mixes() : CustomBadge(requiresWin: false, multiplayerOnly: false)
 {
     private const int BronzeMixes = 100;

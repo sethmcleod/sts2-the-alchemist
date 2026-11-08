@@ -14,19 +14,10 @@ using Steamworks;
 
 namespace Alchemist.AlchemistCode.Steam;
 
-// The game's two Steam branches spell a few virtual hooks differently, and the Compat/ files carry one
-// spelling per git branch. A build that lands on the other game branch does not fail: an `override`
-// whose base method is missing at runtime silently becomes a new virtual slot, the game never calls it,
-// and the effect behind it (Antitoxin's absorb, Steep's redirect) just stops. The
-// player sees a mod that "does not work" with nothing in the log. So at boot this walks the assembly for
-// overrides that found no base, logs them, and offers the matching Workshop item through the game's own
-// popup. The Steam branch-range fields in the Workshop metadata were tried for this and rejected: they
-// strand players on old versions until they reinstall the game.
-//
-// Debug flag: --alchemist-test-branch-popup shows the popup at once, mismatch or not
+// An override whose base is missing on the running game branch silently becomes a new slot the game never calls
 internal static class BranchGuard
 {
-    // Mirrors workshop/targets.json, the one place that knows both items
+    // Must match workshop/targets.json
     private const ulong BetaItemId = 3780726901;
     private const ulong MainItemId = 3781688551;
     private const string BetaBranch = "public-beta";
@@ -53,9 +44,7 @@ internal static class BranchGuard
         TaskHelper.RunSafely(ShowPopup());
     }
 
-    // An `override` compiles to a virtual method without the NewSlot flag. When the base it was written
-    // against exists, GetBaseDefinition walks up to it; when the running game lacks it, the walk ends at
-    // the method itself. C# marks its own `virtual` declarations NewSlot, so those never match
+    // C# marks its own virtuals NewSlot, so only an override that lost its base resolves to itself
     internal static List<string> FindOrphanedOverrides()
     {
         Type?[] types;
@@ -84,8 +73,7 @@ internal static class BranchGuard
         return orphans;
     }
 
-    // "public" is the default branch; Steam reports it as an empty name or as "public" depending on
-    // the client, so anything that is not the beta key is read as public
+    // Steam reports the default branch as an empty name or "public" depending on the client
     private static string CurrentBranch()
     {
         if (!SteamInitializer.Initialized) return PublicBranch;

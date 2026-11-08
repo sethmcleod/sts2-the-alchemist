@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Potions;
 
-// The base Ashwater pattern: one hand-selection round with the potion as its source
 public class Reduction : AlchemistPotion, IBrewOnly
 {
     private const int MaxCards = 3;

@@ -19,11 +19,10 @@ using MegaCrit.Sts2.GameInfo;
 
 namespace Alchemist.AlchemistCode.Analytics;
 
-// The run summary the base game uploads for an unmodded run, built the way
-// MetricUtilities.UploadRunMetricsInternal builds it, so one set of tools reads both
+// Mirrors MetricUtilities.UploadRunMetricsInternal so one set of tools reads both
 internal static class VanillaRunMetrics
 {
-    // Vanilla's serializer settings: camelCase, fields included, a ModelId written as its entry string
+    // Must match vanilla's serializer settings
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         Converters = { new ModelIdMetricsConverter() },
@@ -109,7 +108,6 @@ internal static class VanillaRunMetrics
     public static JsonNode? ToJson(RunMetrics metrics) =>
         JsonNode.Parse(JsonSerializer.Serialize(metrics, JsonOptions));
 
-    // UniqueId is an anonymous install id, never the Steam id. Only a truncated hash of it is sent
     private static string HashPlayerId(string uniqueId)
     {
         var hash = SHA256.HashData(Encoding.UTF8.GetBytes(uniqueId));

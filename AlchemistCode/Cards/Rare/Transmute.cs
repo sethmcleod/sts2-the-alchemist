@@ -27,12 +27,7 @@ public class Transmute : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (PileType.Hand.GetPile(Owner).Cards.Count < 2) return;
-        // source must be null on BOTH rounds: a round with a source subscribes
-        // NPlayerHand.OnSelectModeSourceFinished to that source's ExecutionFinished, which fires in
-        // the same frame the confirm drained the selected-card row. The queue-freed selected holders
-        // are still enumerable that frame, so the late pass re-steals the returned card nodes into
-        // fresh holders and strands two empty ghost slots in the hand fan. A null source flushes the
-        // parked cards synchronously at confirm and never subscribes
+        // Keep source null on both rounds: a source leaves two empty ghost slots in the hand fan
         var victim = (await CardSelectCmd.FromHand(choiceContext, Owner,
             new CardSelectorPrefs(VictimPrompt, 1), filter: null, source: null!)).FirstOrDefault();
         if (victim == null) return;

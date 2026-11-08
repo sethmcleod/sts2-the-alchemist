@@ -14,14 +14,10 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// Keeps Alchemist cards out of a run with no Alchemist player, so mod content cannot reach another
-// character's cross-class rewards. Kaleidoscope, Splash, Colorful Philosophers, and Prismatic Gem all read
-// UnlockState.CharacterCardPools. Character select and the card library read UnlockState.Characters
-// instead, so the Alchemist stays visible there
+// Menus read UnlockState.Characters, not CharacterCardPools, so they still show the Alchemist
 [HarmonyPatch]
 public static class PoolPatches
 {
-    // Only inside an active run, so the menus and the compendium stay correct
     private static bool ShouldStrip()
     {
         if (!EffectiveSettings.KeepPoolsSeparate) return false;
@@ -38,9 +34,7 @@ public static class PoolPatches
         __result = __result.Where(p => p is not AlchemistCards).ToList();
     }
 
-    // Kaleidoscope is offered at Neow only when CharacterCardPools.Count() == AllCharacters.Count().
-    // Stripping our always-unlocked pool leaves base characters one short, so recheck against the
-    // non-Alchemist count
+    // Kaleidoscope needs one pool per character, so compare against the non-Alchemist count
     [HarmonyPatch(typeof(Kaleidoscope), nameof(Kaleidoscope.IsAllowedAtNeow))]
     [HarmonyPostfix]
     private static void FixKaleidoscopeNeow(Player player, ref bool __result)

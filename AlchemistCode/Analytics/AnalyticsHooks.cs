@@ -13,12 +13,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Analytics;
 
-// Counts what the run history does not keep: plays per card, Ferment depth at play, Mixes played and
-// left over, and the Poison damage enemies take in a solo run
 public sealed class AnalyticsHooks() : CustomSingletonModel(HookType.Combat)
 {
-    // Before OnPlay, because Pour Over drains its own turns as it resolves; the raw stored count,
-    // because Mother of Vinegar's read-time floor would make zero unreachable
+    // Before OnPlay drains Pour Over's turns, and from the stored count, which Mother of Vinegar doesn't floor
     public override Task BeforeCardPlayed(CardPlay cardPlay)
     {
         if (cardPlay.Card is AlchemistCard { IsFermentInline: true, Owner: { } player } ferment)
@@ -45,7 +42,7 @@ public sealed class AnalyticsHooks() : CustomSingletonModel(HookType.Combat)
         return Task.CompletedTask;
     }
 
-    // Before the game clears its play history and the piles, which is where both counts live
+    // Runs before the game clears its play history and piles
     public override Task AfterCombatEnd(CombatRoom room)
     {
         CountFight(room.CombatState.Players);
@@ -72,8 +69,7 @@ public sealed class AnalyticsHooks() : CustomSingletonModel(HookType.Combat)
         _ => "10+",
     };
 
-    // An enemy's Poison tick, held from BeforeDamageReceived until the damage lands. The game skips
-    // AfterDamageReceived for the hit that kills, so a lethal tick is counted in AfterDeath instead
+    // A killing hit skips AfterDamageReceived, so AfterDeath counts that tick
     private static readonly Dictionary<Creature, int> EnemyTicks = new();
 
     public override Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target,
@@ -99,14 +95,13 @@ public sealed class AnalyticsHooks() : CustomSingletonModel(HookType.Combat)
     {
         if (EnemyTicks.Remove(creature, out var damage))
             RunCounters.Tally(SoloPlayer(creature), RunCounters.PoisonDealt, damage);
-        // A lost fight ends through LoseCombat, which never raises AfterCombatEnd
+        // A lost fight ends in LoseCombat, which never raises AfterCombatEnd
         if (!wasRemovalPrevented && creature.IsPlayer && creature.CombatState is { } combat
             && combat.Players.All(p => p.Creature.IsDead))
             CountFight(combat.Players);
         return Task.CompletedTask;
     }
 
-    // In co-op another player's Poison ticks the same way, so enemy ticks count only in a solo fight
     private static Player? SoloPlayer(Creature creature) =>
         creature.CombatState?.Players is { Count: 1 } players ? players[0] : null;
 }

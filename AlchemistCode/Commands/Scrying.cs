@@ -13,9 +13,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Commands;
 
-// BaseLib's ScryCmd.Execute step for step, with one change: the prompt. BaseLib hardcodes the base
-// discard prompt, which reads the maximum as a demand ("Choose 5 cards to Discard"). Same signature
-// as the original so it can be deleted once ScryCmd takes a prompt; re-diff it on every BaseLib bump
+// A copy of BaseLib's ScryCmd.Execute with our own prompt; re-diff it on every BaseLib update
 public static class Scrying
 {
     private static LocString Prompt => new("cards", "ALCHEMIST-SCRY.selectionScreenPrompt");
@@ -34,8 +32,7 @@ public static class Scrying
         var chosen = (await CardSelectCmd.FromSimpleGrid(choiceContext, seen, player,
             new CardSelectorPrefs(Prompt, 0, seen.Count))).ToList();
 
-        // Not CardCmd.Discard: a scry must not count for Sly. A card the pile refuses (combat ending,
-        // owner dead) is not recorded as discarded either
+        // Not CardCmd.Discard: a scry must not count for Sly
         var discardPile = PileType.Discard.GetPile(player);
         var discarded = new List<CardModel>();
         foreach (var card in chosen)

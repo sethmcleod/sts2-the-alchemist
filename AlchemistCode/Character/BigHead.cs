@@ -3,14 +3,6 @@ using Godot;
 
 namespace Alchemist.AlchemistCode.Character;
 
-/// <summary>
-/// Big Head Mode. Scales the head bones in the setup pose of a skeleton.
-/// </summary>
-/// <remarks>
-/// Spine multiplies the scale keys of an animation by the setup pose, thus the head keeps its size
-/// through every animation. A sprite reads the setup pose when it is made, thus the scale must be
-/// set on the shared skeleton before each sprite exists.
-/// </remarks>
 internal static class BigHead
 {
     private const string MeshClass = "SpineMesh2D";
@@ -19,6 +11,7 @@ internal static class BigHead
 
     public static bool Enabled => AlchemistModConfig.BigHeadMode && SecretUnlocks.IsUnlocked;
 
+    // Must run before each sprite exists: a sprite reads the setup pose when it's made
     public static void Apply(Resource skeleton, IEnumerable<string> bones)
     {
         var enabled = Enabled;
@@ -30,7 +23,7 @@ internal static class BigHead
             var scaledBefore = SetupScales.TryGetValue(key, out var setup);
             if (!enabled && !scaledBefore) continue;
 
-            // find_bone makes a new wrapper each call, and both usings release it on this thread
+            // Spine binding calls return a new wrapper each time, so dispose it here
             using var found = skeleton.Call("find_bone", name);
             using var bone = found.AsGodotObject();
             if (bone == null)
@@ -51,13 +44,7 @@ internal static class BigHead
         }
     }
 
-    /// <summary>
-    /// Draws the <paramref name="overlays"/> slots just under <paramref name="headSlot"/>
-    /// </summary>
-    /// <remarks>
-    /// The Spine binding cannot set a draw order. A SpineSprite keeps one SpineMesh2D child for each
-    /// place in the draw order and never moves those children, thus moving a child moves its place.
-    /// </remarks>
+    // The binding can't set draw order, but moving a SpineMesh2D child moves its place in it
     public static void DrawUnderHead(Node2D sprite, Resource skeleton, string headSlot, IEnumerable<string> overlays)
     {
         var slots = SlotNames(skeleton);
@@ -76,7 +63,6 @@ internal static class BigHead
         }
     }
 
-    // get_slots makes a new wrapper for each slot, and the usings release them on this thread
     private static List<string> SlotNames(Resource skeleton)
     {
         using var found = skeleton.Call("get_slots");

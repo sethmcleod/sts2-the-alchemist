@@ -1,17 +1,5 @@
 #!/usr/bin/env python3
-"""Check Ancient dialogue against the rules the game enforces at load.
-
-AncientDialogue.PopulateLines throws when a conversation mixes "r" and non-"r" lines, and
-AncientDialogueSet.PopulateLocKeys only assigns a Next button to lines before the last one. A
-conversation that breaks either rule shows a line and then cannot be advanced.
-
-Line counts are also compared across locales, because BaseLib decides how many lines a
-conversation has by probing loc keys. A locale carrying more lines than eng builds a longer
-conversation for that player, and its extra line has no Next button.
-
-There is no cap on conversation length. The base game stops at 3 lines, but The Sorceress ships
-4- and 5-line conversations, so length alone is not a fault.
-"""
+"""Check Ancient dialogue against the rules the game enforces at load, and line counts across locales"""
 import collections
 import io
 import json

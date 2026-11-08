@@ -16,8 +16,6 @@ public class WardedPower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<AntitoxinPower>(), HoverTipFactory.Static(StaticHoverTip.Block) };
 
-    // Keyed to the gain, not the absorb: Block that lands while you are still building is worth more
-    // than Block paid out after Antitoxin already ate the hit
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext,
         PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {

@@ -7,11 +7,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// BRANCH-SPECIFIC, like Compat/GameCompat.cs. An override cannot be
-// routed through a wrapper, so the one override whose signature differs between the game branches
-// lives here. Its logic stays in Powers/AntitoxinPower.cs, which is identical on both branches.
-//
-// THIS COPY IS THE beta IMPLEMENTATION: it takes the trailing CardPlay? that main does not have.
 public partial class AntitoxinPower
 {
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,

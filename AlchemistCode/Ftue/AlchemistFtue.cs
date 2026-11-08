@@ -19,9 +19,7 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace Alchemist.AlchemistCode.Ftue;
 
-// One-time tips in the game's own popup style, pointed at the Antitoxin bar. Every node is a
-// base-game type: a Godot virtual on a mod-defined node never runs, so the root is a stock NFtue,
-// the button is the base confirm scene, and the wiring is C# signals. Text lives in ftues.json
+// Stock base-game nodes only: a Godot virtual on a mod-defined node never runs
 public static class AlchemistFtue
 {
     public sealed record Tip(string Id, string LocKey);
@@ -37,20 +35,16 @@ public static class AlchemistFtue
     private const string BodyBoldFont = "res://themes/kreon_bold_glyph_space_one.tres";
     private const string ConfirmScene = "ftue/ftue_confirm_button";
 
-    // The base slab is 579x257; a taller slab keeps a margin between four lines of text and the button
     private static readonly Vector2 PopupSize = new(579, 270);
     private static readonly Vector2 ArrowSize = new(244, 204);
-    // The arrow art points down-left: its heading in screen radians, so a rotation is the difference
+    // The arrow art's own heading (down-left) in screen radians
     private const float ArrowHeading = 2.356f;
-    // The arrow hangs above the bar's right end and points down at it, clear of the green forecast
-    // number that sits just to the right of the bar
     private static readonly Vector2 ArrowFromTarget = new(50, -170);
     private static readonly Vector2 PopupFromArrow = new(80, -20);
     private const float ScreenMargin = 20f;
 
     private const double TickSeconds = 0.25;
     private const int MaxTicks = 600;
-    // Ticks of quiet after the last modal or banner before the popup lands
     private const int SettleTicks = 4;
 
     private static readonly HashSet<string> Pending = new();
@@ -62,8 +56,7 @@ public static class AlchemistFtue
         TaskHelper.RunSafely(ShowWhenClear(tip, creature));
     }
 
-    // The base combat tutorial and the start banner both own the screen at turn 1, and the modal
-    // container drops a second modal instead of queueing it, so poll until the way is clear
+    // The modal container drops a second modal instead of queueing it, so poll until the way is clear
     private static async Task ShowWhenClear(Tip tip, Creature creature)
     {
         try
@@ -94,7 +87,7 @@ public static class AlchemistFtue
         }
     }
 
-    // Cmd.Wait returns at once in Instant fast mode, which would turn the poll into a busy loop
+    // Not Cmd.Wait, which returns at once in Instant fast mode
     private static async Task Wait(double seconds)
     {
         var timer = ((SceneTree)Engine.GetMainLoop()).CreateTimer(seconds);
@@ -147,8 +140,6 @@ public static class AlchemistFtue
         var body = new MegaRichTextLabel
         {
             Name = "Description",
-            // Four lines at the base size need the whole gap between the header and the button; with
-            // autosize on, the base box would shrink the text to 17
             Position = new Vector2(37, 82),
             Size = new Vector2(507, 108),
             BbcodeEnabled = true,
@@ -189,7 +180,6 @@ public static class AlchemistFtue
         };
         root.AddChild(arrow);
 
-        // Like the base tips, the thing pointed at draws above the backstop for as long as the tip is up
         var display = Ancestor<NCreatureStateDisplay>(target);
         var defaultZ = display?.ZIndex ?? 0;
         if (display != null) display.ZIndex = defaultZ + 1 - EffectiveZ(display);
@@ -203,7 +193,7 @@ public static class AlchemistFtue
         modal.Add(root);
         SaveManager.Instance.MarkFtueAsComplete(tip.Id);
 
-        // Text and layout wait for the tree: the labels size their font from the theme they find there
+        // Only after modal.Add: the labels size their font from the theme they find in the tree
         header.SetTextAutoSize(new LocString("ftues", tip.LocKey + ".title").GetFormattedText());
         body.Text = new LocString("ftues", tip.LocKey + ".description").GetFormattedText();
 
@@ -221,7 +211,6 @@ public static class AlchemistFtue
     private static T Load<T>(string path) where T : Resource =>
         ResourceLoader.Load<T>(path, null, ResourceLoader.CacheMode.Reuse);
 
-    // The z the backstop competes with: every ancestor's z_index adds up while z_as_relative holds
     private static int EffectiveZ(CanvasItem item)
     {
         var z = 0;

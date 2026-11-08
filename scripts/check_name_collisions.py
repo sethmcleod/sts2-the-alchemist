@@ -1,19 +1,5 @@
 #!/usr/bin/env python3
-"""Check that mod content is not named the same as base-game content.
-
-A translation can be internally consistent and still collide with the game it
-sits inside: French renders the mod's Laced as "Imprégné" while the base game
-already calls its Imbued enchantment "Imprégnation", so a player meets two
-enchantments that read the same. The glossary cannot catch this, because these
-are the mod's own terms, and the term checker cannot either, because it only
-compares the mod against itself.
-
-Exact matches are reported as collisions. Same-root matches are reported
-separately, since sharing a root is sometimes fine and sometimes not.
-
-Usage:
-    python3 scripts/check_name_collisions.py --base <extracted>/localization [lang ...]
-"""
+"""Check that the mod's names do not collide with base-game names in each language"""
 import argparse
 import json
 import sys
@@ -22,13 +8,10 @@ from pathlib import Path
 
 LOC = Path(__file__).resolve().parent.parent / "Alchemist" / "localization"
 
-# Only compare like with like: a card sharing a name with an enchantment is far
-# less confusing than two enchantments sharing one.
 CATEGORIES = ["enchantments.json", "cards.json", "relics.json", "potions.json", "powers.json"]
 
 ROOT = 6
 
-# Every character has a Strike and a Defend, so those share a name by design.
 EXPECTED = {"ALCHEMIST-STRIKE_ALCHEMIST.title", "ALCHEMIST-DEFEND_ALCHEMIST.title"}
 
 
@@ -72,8 +55,6 @@ def main() -> None:
         for category in CATEGORIES:
             mod = titles(LOC / lang / category)
             base = titles(args.base / lang / category)
-            # A mod key can share a name with its own power; only base-game
-            # names count as foreign, so compare across the two sources.
             base_by_name = {}
             base_by_root = {}
             for key, value in base.items():

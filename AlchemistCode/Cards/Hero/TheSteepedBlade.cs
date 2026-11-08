@@ -9,14 +9,10 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Cards.Hero;
 
-// The Hero Expansion's Broken Blade transforms into this after five plays. Event rarity keeps it out
-// of every reward roll. A held turn and a play both advance it, since fermentation persists through
-// a play, and every advance drips Poison on the whole enemy side
 [Pool(typeof(EventCardPool))]
 [CardTheme(CardTheme.Ferment, CardTheme.Poison)]
 public class TheSteepedBlade : AlchemistHeroCard
 {
-    // The Event pool files it under the compendium's Other section; the frame stays the Alchemist's
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<Character.AlchemistCardPool>();
 
     protected override bool Ferments => true;

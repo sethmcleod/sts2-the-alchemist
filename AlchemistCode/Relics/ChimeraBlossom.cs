@@ -13,7 +13,6 @@ public class ChimeraBlossom : AlchemistRelic
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { AlchemistTips.CompoundMix, AlchemistTips.MixHeader };
 
-    // Same window as the flask's Mix: turn 1 after the draw, so the compound lands in a full hand
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner || Owner.PlayerCombatState is not { TurnNumber: 1 }) return;

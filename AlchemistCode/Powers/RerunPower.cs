@@ -9,8 +9,6 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// Base BurstPower without the Skill restriction: the next card of any type is played an extra
-// time, one stack per card, gone at the end of the turn
 public class RerunPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;

@@ -8,12 +8,8 @@ using MegaCrit.Sts2.Core.Rewards;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// The base game's big relic art has a black band at half alpha baked around the silhouette. Our
-// big art ships clean, with the silhouette as a separate big/<name>_outline.png, so the band is
-// composed here at the three places the game shows a big relic icon. The composite is keyed by
-// the art path, so the Yummy Cookie override from BaseLib picks it up like any Alchemist relic.
-// These are patched at the display methods rather than the BigIcon getter, which is small enough
-// for the JIT to inline past a Harmony detour
+// Base big relic art bakes in a half-alpha black band; ours is composed from big/<name>_outline.png
+// Patched at the display methods, since the JIT inlines the BigIcon getter past a detour
 public static class RelicBigOutlinePatches
 {
     private const float BandAlpha = 0.5f;
@@ -32,7 +28,6 @@ public static class RelicBigOutlinePatches
         return texture;
     }
 
-    // The art with the half-alpha band under it, or null when the art is not ours or has no outline
     public static Image? ComposeImage(string art)
     {
         if (!art.StartsWith(MainFile.ResPath) || !art.EndsWith(".png")) return null;
@@ -69,7 +64,7 @@ public static class RelicBigOutlinePatches
         public static void Postfix(IReadOnlyList<RelicModel> ____relics, int ____index, TextureRect ____relicImage)
         {
             var relic = ____relics[____index];
-            // The locked placeholder is not the relic's own art, and stays
+            // Leaves the locked placeholder alone
             if (____relicImage.Texture != relic.BigIcon) return;
             if (Composite(relic) is { } texture) ____relicImage.Texture = texture;
         }

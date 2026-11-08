@@ -8,9 +8,7 @@ using MegaCrit.Sts2.Core.Nodes.Screens;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// The game draws every card from one portrait texture, whatever the card's scale. The inspect screen
-// (compendium, deck view, shop, card rewards) shows one card at twice its size, and that is the only
-// view where the 1000x760 copy of the final art is sharper than the 500x380 copy every other view uses
+// One portrait texture serves every scale, so only the 2x inspect screen gets the 1000x760 art
 [HarmonyPatch]
 public static class CardArtPatches
 {
@@ -27,8 +25,6 @@ public static class CardArtPatches
             portrait.Texture = ResourceLoader.Load<Texture2D>(big, null, ResourceLoader.CacheMode.Reuse);
     }
 
-    // NCard keeps its portrait until UpdatePortrait runs again, so a Beta Art switch would only show on the
-    // next screen. This repaints the Alchemist cards already in the tree
     private static Action<NCard>? _updatePortrait;
 
     private static Action<NCard>? UpdatePortrait => _updatePortrait ??=

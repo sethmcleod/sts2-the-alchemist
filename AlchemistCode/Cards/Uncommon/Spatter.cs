@@ -23,8 +23,6 @@ public class Spatter : AlchemistCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null) return;
-        // The base TO_DISCARD prompt prints {Amount}, which renders the AnyNumber sentinel;
-        // an unbounded selection needs a count-free prompt, the Gamblers Brew pattern
         var discarded = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner,
             new CardSelectorPrefs(DiscardPrompt, 0, AnyNumber), null, this)).ToList();
         await CardCmd.Discard(choiceContext, discarded);

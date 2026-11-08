@@ -8,16 +8,12 @@ using MegaCrit.Sts2.Core.Nodes.RestSite;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// NRestSiteCharacter picks its loop from the act index alone. Act 1 holds two maps though, and the
-// Hive and Glory can come in either order, thus the index lights the Alchemist for the wrong fire.
-// This plays the loop of the act itself.
-//
-// This runs after _Ready has queued its own choice. Both wait on the same skeleton, and the one
-// that registers later applies later, thus this one wins
+// The base loop follows the act index, but act 1 holds the Hive and Glory in either order
+// Runs after _Ready queues its own choice, so this one applies later and wins
 [HarmonyPatch(typeof(NRestSiteCharacter), "_Ready")]
 public static class RestSiteActVariantPatch
 {
-    // A private generator, thus the start of the loop never draws from the seeded run of the game
+    // Unseeded on purpose, so it never draws from the run's seed
     private static readonly Random Rng = new();
 
     public static void Postfix(NRestSiteCharacter __instance)
@@ -36,8 +32,6 @@ public static class RestSiteActVariantPatch
             {
                 state.SetAnimation(animation, loop: true);
 
-                // The base game starts each character at a random point so that two of them on
-                // screen never sway together
                 GameCompat.RandomiseTrackStart(state, Rng);
             });
         }

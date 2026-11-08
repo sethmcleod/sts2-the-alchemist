@@ -7,31 +7,17 @@ using MegaCrit.Sts2.Core.Nodes.RestSite;
 
 namespace Alchemist.AlchemistCode.Character;
 
-/// <summary>
-/// Puts the Spine model into the rest site scene of the Alchemist.
-/// </summary>
-/// <remarks>
-/// A mod scene cannot hold a SpineSprite (see <see cref="SpineModel"/>), thus the scene at
-/// CustomRestSiteAnimPath holds only the Control nodes and this class adds the sprite after
-/// BaseLib turns that scene into an NRestSiteCharacter. RestSiteModelPatch registers it.
-///
-/// The game drives the model by itself from there. NRestSiteCharacter._Ready walks its direct
-/// children for nodes of class SpineSprite, plays the loop of the current act on each one, and
-/// starts it at a random point in that loop so two characters never sway together. The same walk
-/// flips the sprite to seat the character on the other side of the fire.
-/// </remarks>
 internal static class AlchemistRestSite
 {
     private const string ModelDir = $"{MainFile.ResPath}/animations/rest_site/alchemist";
     private const string AtlasPath = $"{ModelDir}/alchemist_rest_site.atlas";
     private const string SkeletonPath = $"{ModelDir}/alchemist_rest_site.skel";
 
-    /// <summary>The atlas page, listed in ExtraAssetPaths so it caches with the character.</summary>
     public const string TexturePath = $"{ModelDir}/alchemist_rest_site.png";
 
     public const string ScenePath = $"{MainFile.ResPath}/scenes/rest_site/alchemist_rest_site.tscn";
 
-    // The Underdocks has no loop of its own. It is lit blue, and the Glory loop already carries that light
+    // Underdocks has no loop of its own, and Glory's carries the same blue light
     private static readonly Dictionary<Type, string> LoopLeaves = new()
     {
         [typeof(Overgrowth)] = "overgrowth_loop",
@@ -42,36 +28,25 @@ internal static class AlchemistRestSite
 
     private static readonly Dictionary<Type, string> Loops = [];
 
-    /// <summary>The loop lit for <paramref name="act"/>, or null if the skeleton holds none.</summary>
     public static string? LoopFor(ActModel act) => Loops.GetValueOrDefault(act.GetType());
 
-    // The box the still image filled, which sat correctly at the fire. The scale and the offset
-    // below both come from the skeleton at run time, thus a rig whose size or origin moves between
-    // exports still lands here
     private const float ModelHeight = 519f;
     private static readonly Vector2 ArtCenter = new(0f, -7.5f);
 
-    // The box of the rig at the time of writing, used only if the skeleton reports none
     private static readonly Rect2 FallbackBounds = new(-234f, -224f, 442f, 583f);
 
     private static readonly string[] HeadBones = ["rest_head"];
     private const string HeadSlot = "rest_head";
 
-    // Shading and light painted over the whole seated body, drawn over the head
     private static readonly string[] OverlaySlots = ["rest_shadow", "rest_light"];
 
-    // The eyes are painted into the head. The bowl keeps its color, and there is no bag at the fire
     private static readonly Rainbow.Rig RainbowRig = new(
         Rainbow.Parts.Robe | Rainbow.Parts.Skin,
         Rainbow.Slots(
             (Rainbow.Parts.Skin | Rainbow.Parts.Eyes, ["rest_head"]),
             (Rainbow.Parts.None, ["rest_bowl"])));
 
-    /// <summary>
-    /// Takes a Node rather than an NRestSiteCharacter on purpose. BaseLib stores the action as
-    /// Action&lt;Node&gt; through an "as" cast, and Action is contravariant, thus an
-    /// Action&lt;NRestSiteCharacter&gt; casts to null there and never runs.
-    /// </summary>
+    // Takes Node on purpose: BaseLib "as"-casts the action to Action<Node>, and a narrower one casts to null
     public static void Attach(Node node)
     {
         if (node is not NRestSiteCharacter character) return;
@@ -85,16 +60,12 @@ internal static class AlchemistRestSite
             if (SpineModel.ResolveAnimation(data, leaf) is { } loop)
                 Loops[act] = loop;
 
-        // The two rigs hang their art very differently around the origin: the ironclad reaches from
-        // -137 to 265 across and the Alchemist from -234 to 208, thus the sprite needs its own
-        // offset as well as a scale, or the model sits left of and above the seat
         var box = SpineModel.Bounds(data, FallbackBounds);
         var scale = ModelHeight / box.Size.Y;
 
         if (SpineModel.CreateSprite(data, scale) is not { } sprite) return;
         Rainbow.Apply(sprite, data, RainbowRig);
 
-        // Godot y grows downward and Spine y grows upward, thus the middle of the box flips sign
         var middle = new Vector2(
             (box.Position.X + box.Size.X / 2f) * scale,
             -(box.Position.Y + box.Size.Y / 2f) * scale);
@@ -103,10 +74,9 @@ internal static class AlchemistRestSite
         sprite.Name = "SpineSprite";
         character.AddChild(sprite);
 
-        // The base game rest site scenes put the sprite before the Control nodes
         character.MoveChild(sprite, 0);
 
-        // The wait for the skeleton needs the tree, which the sprite joins only after this returns
+        // Waiting for the skeleton needs the tree, which the sprite joins only after this returns
         if (BigHead.Enabled)
             sprite.Ready += () => sprite.RunWhenSpineReady(new MegaSprite(sprite),
                 _ => BigHead.DrawUnderHead(sprite, data, HeadSlot, OverlaySlots));

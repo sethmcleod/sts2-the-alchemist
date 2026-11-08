@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Cards.Common;
 
-// Capacity only rises and is never spent, which is what makes it readable as a damage stat.
 [CardTheme(CardTheme.Antitoxin)]
 public class Proof : AlchemistCard
 {
@@ -21,17 +20,12 @@ public class Proof : AlchemistCard
 
     private int Grant => DynamicVars["antitoxin"].IntValue;
 
-    // The grant lands before the hit, so this card's own Antitoxin counts toward its damage. While the
-    // card waits in the Hand the grant is still to come, so the preview adds it; once played, the real
-    // stack holds it. The damage lives in a calculated var so the attack, the preview and a Twitch
-    // repeat (after the play, from the Discard Pile) all read one number
+    // The grant lands before the hit, so the preview in hand adds it
     private int HitDamage => AntitoxinCapacity + (Pile?.Type == PileType.Hand ? Grant : 0);
 
     protected override int? RawFormulaDamagePreview =>
         IsMutable && CombatState != null ? HitDamage : null;
 
-    // Powered: an ordinary attack whose number happens to come off a stat, so Strength and
-    // Vulnerable apply
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (CombatState == null || play.Target is not { IsAlive: true }) return;

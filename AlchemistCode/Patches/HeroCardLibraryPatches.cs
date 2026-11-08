@@ -12,9 +12,7 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// Every pool's unlocked list is the one place the reward roll, the compendium's lock state and the
-// in-combat generators all read, so this is where a cross-mod card whose mod is absent leaves the game.
-// Cross-mod cards live only in the Alchemist, Event and Status pools, so every other pool is left alone
+// Rewards, the compendium and combat generators all read this, so absent cross-mod cards drop here
 [HarmonyPatch(typeof(CardPoolModel), nameof(CardPoolModel.GetUnlockedCards))]
 public static class HeroCardPoolPatches
 {
@@ -27,10 +25,7 @@ public static class HeroCardPoolPatches
     }
 }
 
-// The card library marks a card Locked when no pool unlocks it, but opens it on click whenever the
-// profile has discovered it. The base game never has a discovered card that is locked, so it never
-// guards the click. A Hero Expansion card seen with the mod on and viewed with it off is exactly
-// that, so this keeps the locked ones closed: no click, no paging onto them, no hand cursor
+// The library opens any discovered card on click, even one locked because its mod is off
 public static class HeroCardLibraryPatches
 {
     private static bool Gated(CardModel card) => !CrossMod.Offered(card);
@@ -38,8 +33,6 @@ public static class HeroCardLibraryPatches
     [HarmonyPatch(typeof(NCardLibrary), "ShowCardDetail")]
     public static class ShowCardDetail
     {
-        // The private fields arrive by Harmony injection: three underscores plus the field's own leading
-        // underscore. The tickbox type stays opaque, so Traverse reads it
         public static bool Prefix(NCardHolder holder, NCardLibraryGrid ____grid, object ____viewUpgrades,
             ref Godot.Control ____lastHoveredControl)
         {

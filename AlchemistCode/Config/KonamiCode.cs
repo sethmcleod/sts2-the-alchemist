@@ -2,13 +2,7 @@ using Godot;
 
 namespace Alchemist.AlchemistCode.Config;
 
-/// <summary>
-/// Watches for ↑ ↑ ↓ ↓ ← → ← → B A on the keyboard or a controller while a page is in the tree.
-/// </summary>
-/// <remarks>
-/// The root window raises window_input for each event before any node sees it, thus no control on
-/// the page can accept an arrow press first. The events go on to the game untouched.
-/// </remarks>
+// The root's window_input sees each event before any node, so no control can swallow an arrow press first
 internal static class KonamiCode
 {
     private enum Press { Other, Up, Down, Left, Right, B, A }
@@ -46,7 +40,6 @@ internal static class KonamiCode
         };
     }
 
-    // Mouse events, stick motion and the menu's own echoed actions don't break the sequence
     private static Press? ReadPress(InputEvent inputEvent) => inputEvent switch
     {
         InputEventKey { Pressed: true, Echo: false } key => key.Keycode switch

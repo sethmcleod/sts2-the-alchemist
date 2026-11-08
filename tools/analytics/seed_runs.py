@@ -1,14 +1,4 @@
-"""Fabricate Alchemist runs, so the export and the website can be tried with no real data.
-
-Two modes:
-    --local          write the rows to seed-runs.local.json and skip the network (the default)
-    --post <url>     send each one to the upload endpoint the mod uses
-                     (https://alchemist.fyi/api/runs), which proves the endpoint and the daily pack
-
-`scripts/dev.sh analytics seed` runs the local mode and exports the result. Local rows use made-up
-versions (v1.0.0 to v1.0.3) so the version filters have something to show. Posted rows use
-mod_version = "seed-test", which the export always skips.
-"""
+"""Fabricate Alchemist runs to try the export and the website with no real data"""
 
 import argparse
 import hashlib
@@ -27,7 +17,6 @@ import mod_meta
 LOCAL_OUT = common.HERE / "seed-runs.local.json"
 
 LOCAL_VERSIONS = ["v1.0.0", "v1.0.1", "v1.0.2", "v1.0.3"]
-# The fake versions from this one on send the schema 3 counters, like a newer client
 SCHEMA_3_FROM = "v1.0.2"
 TIER_NAMES = ["none", "bronze", "silver", "gold"]
 BUILDS = [("v0.107.1", "public"), ("v0.111.0", "public-beta")]
@@ -44,7 +33,6 @@ MIX_BUCKETS = ["0", "1", "2", "3", "4", "5-6", "7-9", "10+"]
 
 
 def label(entry: str) -> str:
-    """The tally label the mod uses for a model: its id without the prefix, lower-cased."""
     return entry.removeprefix(mod_meta.PREFIX).lower()
 
 
@@ -164,7 +152,6 @@ def fabricate(rng: random.Random, version: str, pool: list[str], power: dict[str
 
 
 def earned_badges(row: dict, badges: list[dict]) -> dict[str, str]:
-    """The tier names a newer client would send, read with the export's own rules."""
     win = int(row["victory"])
     metrics = export_stats.run_metrics(row, win, row["alchemist"])
     tiers = {}
@@ -202,7 +189,7 @@ def main() -> int:
 
     for row in rows:
         row["mod_version"] = common.SEED_VERSION
-        row.pop("created_at")  # the endpoint stamps it
+        row.pop("created_at")
         request = urllib.request.Request(args.post, data=json.dumps(row).encode(), method="POST",
                                          headers={"Content-Type": "application/json"})
         try:

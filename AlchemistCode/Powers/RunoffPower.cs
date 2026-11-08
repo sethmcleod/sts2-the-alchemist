@@ -9,8 +9,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// The Mix payoff: every card the owner creates vents Poison over the field. Same hook as base
-// ArsenalPower, which is the vanilla "whenever you create a card" power
 public class RunoffPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;

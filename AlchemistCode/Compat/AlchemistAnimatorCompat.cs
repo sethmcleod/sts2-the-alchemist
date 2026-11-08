@@ -6,19 +6,9 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 
 namespace Alchemist.AlchemistCode.Character;
 
-// BRANCH-SPECIFIC, like Compat/GameCompat.cs and the two power compat files. An override cannot be
-// routed through a wrapper, and here the whole body differs, so the method lives here rather than in
-// Character/Alchemist.cs.
-//
-// THIS COPY IS THE beta IMPLEMENTATION. ON A MERGE INTO main, KEEP main's SIDE. main's copy can do
-// none of the near death work below: its GenerateAnimator is handed no Creature, its CharacterModel
-// has no IsLowHealth, and its AnimState has no AddNextState for a conditional fall-back
 public partial class Alchemist
 {
-    // Overrides GenerateAnimator rather than BaseLib's SetupCustomAnimationStates, because only
-    // this signature carries the Creature, and the low health idle needs it. The base game does not
-    // raise a trigger for low health: it registers TWO Idle states with opposite conditions and lets
-    // every one shot pick the idle that fits when it ends. IsLowHealth is a quarter HP or less
+    // Not BaseLib's SetupCustomAnimationStates: only this override is handed the Creature
     public override CreatureAnimator GenerateAnimator(MegaSprite controller, Creature creature)
     {
         AlchemistVisuals.StartIdleFlourishes(controller);

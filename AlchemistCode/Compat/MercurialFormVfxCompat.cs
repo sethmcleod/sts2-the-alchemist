@@ -11,7 +11,6 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// THIS COPY IS THE beta IMPLEMENTATION. main HOLDS A STUB; ON A MERGE, EACH BRANCH KEEPS ITS OWN SIDE.
 internal static class MercurialFormVfx
 {
     private const string Dir = $"{MainFile.ResPath}/animations/vfx/mercurial_form";

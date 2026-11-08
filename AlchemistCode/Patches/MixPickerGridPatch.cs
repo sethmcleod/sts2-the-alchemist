@@ -4,14 +4,11 @@ using MegaCrit.Sts2.Core.Nodes.Cards;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// The grid picks its column count from its width, which puts a six-card Mix picker on one row of five
-// and one of one. While the picker is open the count is forced, so the six sit in two rows of three,
-// centred by the grid's own layout
+// The grid's own column count splits a six-card Mix pick into rows of five and one
 [HarmonyPatch(typeof(NCardGrid), "Columns", MethodType.Getter)]
 public static class MixPickerGridPatch
 {
-    // Both set by Mixing.Choose around its selection call. Columns is the forced count, null when the
-    // grid's own choice is fine
+    // Set by Mixing.Choose around its selection call
     public static HashSet<CardModel>? Options;
     public static int? Columns;
 

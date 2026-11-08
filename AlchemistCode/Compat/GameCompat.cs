@@ -23,43 +23,20 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Compat;
 
-/// <summary>
-/// ONE OF THE FIVE FILES THAT DIFFER BETWEEN THE beta AND main BRANCHES. The others are
-/// AntitoxinPowerCompat.cs, SteepPowerCompat.cs, AlchemistAnimatorCompat.cs and MercurialFormVfxCompat.cs,
-/// which hold the overrides and the vfx that cannot be routed through a wrapper. Each names its branch in a COMPAT-BRANCH
-/// marker that scripts/lint_sync.py checks against the branch you are on. AlchemistCardCompat.cs
-/// is marked any and is identical on both.
-/// THIS COPY IS THE beta IMPLEMENTATION.
-/// </summary>
-/// <remarks>
-/// The game's default branch and its public-beta branch spell a handful of damage and animation
-/// APIs differently. Every gameplay caller goes through this class instead, so the two branches
-/// differ here and nowhere else, and a merge from beta into main conflicts in this file alone
-/// rather than in the eighteen files that call these APIs.
-///
-/// beta: the damage APIs take a trailing CardPlay, and Spine track entries are IDisposable and
-/// come from AddAnimationTracked. main: no CardPlay, and AddAnimation returns a plain entry.
-///
-/// When the branches converge, delete both files and inline the calls again.
-///
-/// Differences that needed no shim, because one spelling compiles on both branches, live in the
-/// ordinary source: <c>cardPlay.Card.Owner</c> rather than <c>cardPlay.Player</c>.
-/// </remarks>
+// Wraps the game APIs that the beta and main game branches spell differently
+// Each Compat file is branch-specific: on a merge, keep the target branch's copy
 public static class GameCompat
 {
-    /// <summary>main stops at cardSource; beta takes the play as well.</summary>
     public static Task<IEnumerable<DamageResult>> Damage(PlayerChoiceContext choiceContext, Creature target,
         decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? play = null) =>
         CreatureCmd.Damage(choiceContext, target, amount, props, dealer, cardSource, play);
 
-    /// <summary>main takes only the target and the amount; beta also takes the context and remover.</summary>
     public static Task LoseBlock(PlayerChoiceContext choiceContext, Creature target, decimal amount,
         Creature? remover) =>
         CreatureCmd.LoseBlock(choiceContext, target, amount, remover);
 
     public static Task TriggerPoison(PoisonPower poison) => poison.Trigger();
 
-    /// <summary>main has no play parameter between cardSource and the hook type.</summary>
     public static decimal ModifyDamage(IRunState runState, ICombatState? combatState, Creature? target,
         Creature? dealer, decimal damage, ValueProp props, CardModel? cardSource, CardPlay? play,
         ModifyDamageHookType hookType, CardPreviewMode previewMode,
@@ -67,46 +44,27 @@ public static class GameCompat
         Hook.ModifyDamage(runState, combatState, target, dealer, damage, props, cardSource, play, hookType,
             previewMode, out modifiers);
 
-    /// <summary>main requires the blacklist argument; beta defaults it.</summary>
     public static IEnumerable<PotionModel> GetPotionOptions(Player player) =>
         PotionFactory.GetPotionOptions(player);
 
-    // The attack builder's FromCard takes the play on beta and not on main. No shim is needed for
-    // it: main declares an extension method with this two-argument shape, and on beta the real
-    // instance method wins over any extension, so the call sites read the same on both branches.
-
-    /// <summary>
-    /// Queues one blink and returns how long it lasts. Wrapped because the track entry is
-    /// IDisposable on beta and not on main, so the disposal cannot live at the call site.
-    /// </summary>
     public static float QueueBlink(MegaAnimationState state, string blink, float delay, int track)
     {
         using var entry = state.AddAnimationTracked(blink, delay, loop: false, track);
-        // The blink swaps the eye attachment, and an attachment must snap rather than fade
+        // An attachment swap must snap, not fade
         entry.SetMixDuration(0f);
         return entry.GetAnimationDuration();
     }
 
-    /// <summary>
-    /// Starts the current animation at a random point, the way the base game staggers two
-    /// characters at one rest site. Wrapped for the same disposal reason as QueueBlink.
-    /// </summary>
     public static void RandomiseTrackStart(MegaAnimationState state, Random rng)
     {
         using var entry = state.GetCurrent(0);
         entry?.SetTrackTime(entry.GetAnimationEnd() * (float)rng.NextDouble());
     }
 
-    /// <summary>
-    /// Whether the hotkey glyphs should show. Beta shows them for a controller and for keyboard
-    /// navigation; main only knows whether a controller is in use.
-    /// </summary>
     public static bool IsDirectionalNavigation(NControllerManager controllers) =>
         controllers.IsUsingDirectionalNavigation;
 
-    /// <summary>Toggles a tickbox from a hotkey with the sound and press tween a click gives.</summary>
     public static void ToggleTick(NTickbox tickbox) => tickbox.ForceToggleTick();
 
-    /// <summary>Points a copied hotkey glyph at the input it now answers to.</summary>
     public static void UpdateHotkeyIcon(Control icon, string input) => (icon as NHotkeyIcon)?.UpdateInput(input);
 }

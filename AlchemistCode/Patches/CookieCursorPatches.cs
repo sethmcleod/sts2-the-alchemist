@@ -9,15 +9,13 @@ using MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
 
 namespace Alchemist.AlchemistCode.Patches;
 
-// CookieCursor turns each player's Yummy Cookie into their map cursor, but it reads the cookie from
-// its own folder on disk (Cursors/<character class>/icon.png) and never from a pck. It scans that
-// folder in an NMainMenu._Ready postfix, so the file has to exist before then: this prefix writes
-// it once from our own asset, and leaves any icon already there alone
+// CookieCursor reads Cursors/<class>/icon.png from disk, never a pck, in an NMainMenu._Ready postfix
+// This prefix writes the file before that scan
 public static class CookieCursorPatches
 {
     private const string CookieCursorModId = "CookieCursor";
-    private const string CookieFile = "icon.png"; // os path, the name CookieCursor scans for
-    private const string StampFile = "icon.alchemist"; // os path, the hash of the icon this mod wrote
+    private const string CookieFile = "icon.png"; // os path
+    private const string StampFile = "icon.alchemist"; // os path
     private static bool _done;
 
     [HarmonyPatch(typeof(NMainMenu), "_Ready")]
@@ -38,8 +36,7 @@ public static class CookieCursorPatches
         }
     }
 
-    // The stamp holds the hash of the icon this mod last wrote: a matching icon is ours and is
-    // replaced when the art changes, any other icon was put there by hand and is left alone
+    // An icon whose hash doesn't match the stamp was placed by hand, so it's left alone
     private static void Export()
     {
         var mod = ModManager.GetLoadedMods().FirstOrDefault(m => m.manifest?.id == CookieCursorModId);

@@ -10,8 +10,6 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Alchemist.AlchemistCode.Potions;
 
-// A rooted cutting keeps growing after it is drunk: the only potion in either pool whose effect
-// advances over the turns that follow
 public class FreshCutting : AlchemistPotion, IBrewOnly
 {
     private const int Turns = 3;

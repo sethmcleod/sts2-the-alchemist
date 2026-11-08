@@ -22,15 +22,11 @@ using MegaCrit.Sts2.Core.Timeline;
 
 namespace Alchemist.AlchemistCode.Analytics;
 
-// The game raises ModManager.OnMetricsUpload in place of its own upload for a modded run, and only
-// when the player allows uploads. This adds the mod's own switch, keeps Alchemist runs, and sends
-// one row: the vanilla summary plus the Alchemist counters
 internal static class AlchemistMetrics
 {
     // Vanilla skips runs shorter than this many floors
     private const int RunLengthThreshold = 5;
-    // Bumped when a counter is added or a key changes meaning. The export reads it to re-key older
-    // rows, and to tell a counter this client does not send from a zero
+    // Bump when a counter is added or a key changes meaning
     private const int Schema = 3;
 
     public static void Initialize()
@@ -72,7 +68,6 @@ internal static class AlchemistMetrics
         {
             var metrics = VanillaRunMetrics.Build(run, isVictory, localPlayer, allPoints);
             var row = Row(run, isVictory, metrics, Payload(run, isVictory, localPlayer, allPoints));
-            // Logged so a player can find their own runs and keep them out of the export
             MainFile.Logger.Info($"Uploading Alchemist run analytics (player {metrics.PlayerId})...");
             RunMetricsUploader.Upload(row.ToJsonString(), "Alchemist run");
         }
@@ -82,7 +77,6 @@ internal static class AlchemistMetrics
         }
     }
 
-    // The columns match tools/analytics/schema.sql. The promoted ones are what the export filters on
     private static JsonObject Row(SerializableRun run, bool isVictory, RunMetrics metrics, JsonObject payload) => new()
     {
         ["mod_version"] = ModVersion(),
@@ -97,7 +91,6 @@ internal static class AlchemistMetrics
         ["alchemist"] = payload,
     };
 
-    // What the vanilla summary cannot see
     private static JsonObject Payload(SerializableRun run, bool isVictory, SerializablePlayer player,
         List<MapPointHistoryEntry> allPoints) => new()
     {
@@ -142,9 +135,7 @@ internal static class AlchemistMetrics
         },
     };
 
-    // Every badge this mod adds, with the tier the run earned or "none". This is ScoreUtility.GetBadges'
-    // rule, applied through CustomBadge because GetBadges' signature differs between the game's branches
-    // Null on any failure, so the row still uploads and the export falls back to the thresholds
+    // Not ScoreUtility.GetBadges: its signature differs between the game branches
     private static JsonObject? BadgesJson(SerializableRun run, bool isVictory, SerializablePlayer player)
     {
         try
@@ -177,7 +168,7 @@ internal static class AlchemistMetrics
         return tally;
     }
 
-    // Turns follow the vanilla convention of TurnsTaken + 1
+    // TurnsTaken + 1 is how vanilla counts turns
     private static JsonArray ActsJson(SerializableRun run, SerializablePlayer player)
     {
         var acts = new JsonArray();
@@ -196,7 +187,6 @@ internal static class AlchemistMetrics
         return acts;
     }
 
-    // In timeline order
     private static List<string> ObtainedEpochs()
     {
         if (!EpochRegistration.Supported) return new List<string>();
@@ -207,8 +197,6 @@ internal static class AlchemistMetrics
             .ToList();
     }
 
-    // Alchemist cards per theme in the final deck, duplicates included. The export picks the
-    // dominant theme from these counts
     private static JsonObject DeckThemes(SerializablePlayer player)
     {
         Dictionary<CardTheme, int> counts = new();

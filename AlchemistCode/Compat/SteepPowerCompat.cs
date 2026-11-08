@@ -5,13 +5,6 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-// BRANCH-SPECIFIC, like Compat/GameCompat.cs and Compat/AntitoxinPowerCompat.cs. The card-location
-// hook pair cannot be routed through a wrapper, so the two overrides whose signatures differ between
-// the game branches live here. Steeps() in Powers/SteepPower.cs is identical on both branches.
-//
-// THIS COPY IS THE beta (PUBLIC-BETA BRANCH) IMPLEMENTATION: the hooks pass one CardLocation struct.
-// main passes a PileType and a CardPilePosition as a tuple.
-// ON A MERGE INTO main, KEEP main's SIDE.
 public partial class SteepPower
 {
     public override CardLocation ModifyCardPlayResultLocation(CardModel card, bool isAutoPlay,

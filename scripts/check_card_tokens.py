@@ -1,28 +1,13 @@
 #!/usr/bin/env python3
-"""Check that a card description and the card's C# agree in both directions.
-
-The three-way lint compares cards.csv against the localization and the class list, but it
-never looks at the C# values, so the two can disagree two ways:
-
-  unknown token   the description names a var the card does not have. One of these makes the
-                  formatter give up and the card renders its raw text in game, which is how
-                  Prime shipped showing "{CalculatedBlock:diff()}" to players.
-  unused inject   the card builds a string with description.Add and the description never
-                  places it. Nothing breaks, it just silently goes missing, which is how
-                  Hemorrhage lost its damage and HP-loss forecasts.
-
-Run: python3 scripts/check_card_tokens.py   (exits 1 on either)
-"""
+"""Check that each card description and its C# agree on tokens, both ways"""
 import json, re, os, glob, sys
 cards = json.load(open('Alchemist/localization/eng/cards.json', encoding='utf-8'))
 GLOBAL = {'IfUpgraded','FermentSuffix','energyIcons','energyPrefix',
           'singleStarIcon','MaxCount','MinCount','Amount',
-          # CardModel.GetDescriptionForPile adds these to every card description
+          # CardModel.GetDescriptionForPile adds these to every description
           'InCombat','OnTable','IsTargeting','TargetType','GainsBlock'}
 BASE = open('AlchemistCode/Cards/AlchemistCard.cs', encoding='utf-8').read()
-# AlchemistCard injects these for every card that overrides the matching preview property
 BASE_ARGS = set(re.findall(r'description\.Add\("(\w+)"', BASE))
-# Base-class preview property -> the token its value is placed with
 OPT_IN = {'RawFormulaDamagePreview': 'FormulaDamage',
           'FormulaHpLossPreview': 'FormulaHpLoss',
           'FermentPeak': 'FermentSuffix'}
@@ -38,8 +23,6 @@ def declared(src):
     v |= set(re.findall(r'WithVar\("(\w+)"', src))
     v |= set(re.findall(r'WithCalculatedVar\("(\w+)"', src))
     v |= set(re.findall(r'With(?:Numbered)?Power<(\w+)>', src))
-    # a custom var names itself by its first argument (new FermentVar("Poison", ...)); an
-    # unnamed one is known by its class (new RipenVar( -> Ripen)
     v |= set(re.findall(r'WithVar\(new \w+\("(\w+)"', src))
     v |= {m[:-3] if m.endswith('Var') else m for m in re.findall(r'WithVar\(new (\w+)\((?!")', src)}
     v |= set(re.findall(r'description\.Add\("(\w+)"', src))
@@ -65,8 +48,6 @@ for key, text in cards.items():
         if tok not in have: bad.append((key,'unknown token',tok))
     for tok in re.findall(r'description\.Add\("(\w+)"', srcs[c]):
         if tok not in used: bad.append((key,'unused inject',tok))
-    # A base-class inject is opt-in: the card overrides a preview property to switch it on, so the
-    # description has to place the matching token or the value is built and thrown away
     for prop, tok in OPT_IN.items():
         if re.search(r'override .*\b%s\b' % prop, srcs[c]) and tok not in used:
             bad.append((key,'unused inject',tok))

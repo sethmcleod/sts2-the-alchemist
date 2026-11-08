@@ -20,8 +20,7 @@ public class AlchemistCardPool : CustomCardPoolModel
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
 
 
-    // H is a hue rotation of the red base frame, not an absolute color. Base refs: red 0.025,
-    // orange 0.12, green 0.32, blue 0.55, violet 0.85, pink 0.965
+    // A hue rotation of the red base frame, not an absolute hue
     public override float H => 0.75f;
     public override float S => 0.4f;
     public override float V => 0.8f;

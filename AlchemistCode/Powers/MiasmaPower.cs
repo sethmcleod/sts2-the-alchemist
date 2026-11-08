@@ -18,8 +18,6 @@ public class MiasmaPower : AlchemistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
-    // Only doses that land on you, and only positive ones. The Poison it applies to enemies has a
-    // different Owner, so it cannot feed itself
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
         decimal amount, Creature? applier, CardModel? cardSource)
     {

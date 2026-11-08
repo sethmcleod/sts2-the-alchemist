@@ -1,13 +1,4 @@
-"""The base game's own words that the website and the card text need in every language: keyword
-names, card types, rarities, encounter names, a few labels, and the definitions the game shows
-beside a card for the terms its text marks in gold. They are read from a copy of the
-game's res://localization/ and written to game_loc.json next to this file, which is committed,
-because a build machine has no copy of the game.
-
-Run it again after a game update, or when the site needs another word:
-
-    python3 tools/analytics/game_loc.py --base <game localization folder>
-"""
+"""Copy the base game's words the site needs from res://localization/ into game_loc.json"""
 
 import argparse
 import json
@@ -16,13 +7,11 @@ from pathlib import Path
 
 OUT = Path(__file__).with_name("game_loc.json")
 
-# group -> table -> {our name: the game's key}
 WORDS = {
     "keywords": {"card_keywords": {k.capitalize(): f"{k}.title" for k in
                                    ("ETERNAL", "ETHEREAL", "EXHAUST", "INNATE", "RETAIN", "SLY", "UNPLAYABLE")}},
     "types": {"gameplay_ui": {t.capitalize(): f"CARD_TYPE.{t}" for t in
                               ("ATTACK", "SKILL", "POWER", "STATUS", "CURSE")}},
-    # The card library's names, where Basic reads "Starter"
     "rarities": {
         "main_menu_ui": {r.capitalize(): f"CARD_LIBRARY_RARITY_{r}" for r in
                          ("BASIC", "COMMON", "UNCOMMON", "RARE", "ANCIENT")},
@@ -48,7 +37,6 @@ WORDS = {
 }
 
 
-# table -> the entries whose title and description the site shows as a card's hover tips
 TIPS = {
     "card_keywords": ("ETERNAL", "ETHEREAL", "EXHAUST", "INNATE", "RETAIN", "SLY", "UNPLAYABLE"),
     "powers": tuple(f"{p}_POWER" for p in ("POISON", "WEAK", "VULNERABLE", "STRENGTH", "DEXTERITY", "ARTIFACT",
@@ -65,7 +53,6 @@ def read(base: Path, lang: str, table: str) -> dict[str, str]:
 
 
 def language(base: Path, lang: str) -> dict:
-    """The words in one language. A key the language lacks falls back to English, as in the game."""
     def table(name: str) -> dict[str, str]:
         return {**read(base, "eng", name), **read(base, lang, name)}
 

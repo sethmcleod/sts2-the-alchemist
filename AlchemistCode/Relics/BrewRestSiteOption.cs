@@ -19,8 +19,7 @@ namespace Alchemist.AlchemistCode.Relics;
 
 public sealed class BrewRestSiteOption : RestSiteOption
 {
-    // The potion-reward overlay leaves the rest-site choice buttons up, where a vanilla option hides
-    // them, so fade them out through the room's private screen
+    // The reward overlay leaves the rest-site buttons up, so hide them through the private screen
     private static readonly FieldInfo ChoicesScreenField =
         typeof(NRestSiteRoom).GetField("_choicesScreen", BindingFlags.NonPublic | BindingFlags.Instance)!;
 
@@ -39,9 +38,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
 
     public override async Task<bool> OnSelect()
     {
-        // OnSelect runs on EVERY client when any player brews (RestSiteSynchronizer replays remote
-        // choices), so the fade must only touch the brewing player's own screen. Other clients get
-        // no UI work here; OfferCustom below is a no-op for non-local players by design
+        // OnSelect runs on every client (RestSiteSynchronizer replays choices), so touch only the local screen
         if (LocalContext.IsMe(Owner) && NRestSiteRoom.Instance is { } restSiteRoom)
         {
             var choicesScreen = ChoicesScreenField.GetValue(restSiteRoom) as Control;
@@ -52,8 +49,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
             }
         }
 
-        // Before the reward screen: OfferCustom blocks only on the brewing client, so an rng draw after
-        // it would run in a different order on each client
+        // Roll before OfferCustom: it blocks only on the brewing client, so a later draw desyncs
         UpgradeRandomCard();
         var rewards = new List<Reward>();
         if (CreateBrewReward() is { } reward) rewards.Add(reward);
@@ -61,18 +57,15 @@ public sealed class BrewRestSiteOption : RestSiteOption
         return true;
     }
 
-    // Seeded off the run rng, so every client upgrades the same card (the Whetstone pattern)
     private void UpgradeRandomCard()
     {
         var card = PileType.Deck.GetPile(Owner).Cards
             .Where(c => c is { IsUpgradable: true }).ToList()
             .StableShuffle(Owner.RunState.Rng.Niche).FirstOrDefault();
-        // Upgrade previews the card itself; a second Preview showed it twice
         if (card != null) CardCmd.Upgrade(card);
     }
 
-    // Every Brew-only potion. Brew is their ONLY source, so this list is the whole set and must be
-    // updated whenever one is added; nothing else enumerates IBrewOnly at runtime
+    // Must list every IBrewOnly potion: nothing else enumerates them
     private PotionModel[] BrewOnly() =>
     [
         ModelDb.Potion<Quicksilver>(),
@@ -85,9 +78,6 @@ public sealed class BrewRestSiteOption : RestSiteOption
         ModelDb.Potion<GoldLeaf>(),
     ];
 
-    // Brew offers nothing else. Duplicates are filtered out, and holding the whole set falls back to a
-    // normal potion so the rest site is never a dead option
-    // Tracks what this Brew already offered, so a double Brew cannot roll the same potion twice
     private readonly List<ModelId> _offered = new();
 
     private Reward CreateBrewReward()
@@ -98,8 +88,6 @@ public sealed class BrewRestSiteOption : RestSiteOption
             .ToList();
         if (exclusives.Count == 0) return new PotionReward(Owner);
 
-        // Choose 1 of 3: the options ride in a linked set, so claiming one clears the others.
-        // Everything shown counts as offered, which keeps a second Brew in the same visit fresh
         List<Reward> options = new();
         for (var i = 0; i < 3 && exclusives.Count > 0; i++)
         {
