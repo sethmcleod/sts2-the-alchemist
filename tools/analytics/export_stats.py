@@ -52,8 +52,8 @@ THEME_MIN_CARDS = 3
 HISTOGRAMS = {
     "run_minutes": (10, 180),
     "poison_peak": (5, 60),
-    "antitoxin_peak": (10, 100),
-    "mixes": (20, 240),
+    "antitoxin_peak": (5, 100),
+    "mixes": (20, 300),
     "ferment_turns": (25, 400),
     "potions_sold": (1, 8),
 }
