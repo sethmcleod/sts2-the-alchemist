@@ -6,6 +6,7 @@ export type CardType = (typeof TYPES)[number];
 
 export interface CardInfo {
   art: null | string;
+  betaArt: null | string;
   costs: [base: string, upgraded: string];
   keywords: string[];
   name: string;

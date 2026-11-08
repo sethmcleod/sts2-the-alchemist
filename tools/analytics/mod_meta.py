@@ -152,6 +152,12 @@ def portrait(entry: str) -> str | None:
     return repo_path(IMAGES / "card_portraits" / file) or repo_path(IMAGES / "card_portraits" / "beta" / file)
 
 
+def beta_portrait(entry: str) -> str | None:
+    file = entry.removeprefix(PREFIX).lower() + ".png"
+    beta = repo_path(IMAGES / "card_portraits" / "beta" / file)
+    return beta if beta != portrait(entry) else None
+
+
 def icons() -> dict[str, str]:
     """entry -> the icon of every relic, potion and power the mod adds."""
     found = {}
@@ -376,6 +382,7 @@ def cards() -> dict[str, dict]:
             "costs": costs(row["Cost"]),
             "keywords": card_text.keywords(src),
             "art": portrait(entry),
+            "betaArt": beta_portrait(entry),
         }
     return meta
 
@@ -431,7 +438,7 @@ def tips(lang: str, base: dict[str, dict]) -> list[dict]:
 
 
 MOD_WORDS = {"Antitoxin": f"{PREFIX}ANTITOXIN_POWER", "Brew": f"{PREFIX}BREW", "Ferment": f"{PREFIX}FERMENT",
-             "Mix": f"{PREFIX}MIX"}
+             "Mix": f"{PREFIX}MIX", "Use Beta Art": f"{PREFIX}USE_BETA_ART"}
 
 
 def translation(lang: str) -> dict:

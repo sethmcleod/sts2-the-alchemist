@@ -9,12 +9,13 @@ import type { CardInfo } from '../lib/types';
 import GameText from './GameText.astro';
 
 interface Props {
+  betaArt?: boolean;
   eager?: boolean;
   info: CardInfo;
   width: [null | string, string][];
 }
 
-const { eager = false, info, width } = Astro.props;
+const { betaArt = false, eager = false, info, width } = Astro.props;
 const { l, locale } = Astro.locals;
 const font = cardFont(locale.game);
 const scaledSizes = (scale: number) =>
@@ -28,6 +29,7 @@ const frameImage = (name: string) => frames[`../assets/frames/${name}.webp`].def
 const rarityLook = RARITY_LOOK[info.rarity] ?? RARITY_LOOK.Common;
 const ancient = info.rarity === 'Ancient';
 const art = await image(info.art);
+const beta = betaArt ? await image(info.betaArt) : null;
 const loading = eager ? 'eager' : 'lazy';
 const artSizes = scaledSizes(ancient ? 1 : 0.76);
 
@@ -51,6 +53,7 @@ const playable = info.costs[0] !== 'Unplayable';
       widths={[250, 500]}
     />
   )}
+  {beta && <Image alt="" class="face-art beta-art" loading="lazy" sizes={artSizes} src={beta} widths={[250, 500]} />}
   <Image
     alt=""
     class="face-frame"
