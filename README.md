@@ -45,7 +45,7 @@ at Rest Sites that can be sold to the Merchant.
 
 ## Disclaimer
 
-This mod is still a work in progress and content is subject to change, but
+This mod is still a work in progress and is subject to change, but
 feedback is welcome! The best place to talk about the mod is the
 [Alchemist post](https://discord.com/channels/309399445785673728/1536374761699938424)
 in #modding-forum on the official Slay the Spire Discord server.
