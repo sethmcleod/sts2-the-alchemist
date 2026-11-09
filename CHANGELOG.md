@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.7] - 2026-11-09
+
 ### Added
 
 - Added final art for Mash, Puncture, and Spike
