@@ -7,7 +7,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ### Added
 
-- Added final art for Mash
+- Added final art for Mash, Puncture, and Spike
 
 ### Changed
 
