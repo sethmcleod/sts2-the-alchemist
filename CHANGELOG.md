@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added a green flash and a counter pulse to cards in your Hand each time they ferment
+
 ## [0.15.7] - 2026-11-09
 
 ### Added

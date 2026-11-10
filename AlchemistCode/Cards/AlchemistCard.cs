@@ -210,6 +210,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         _fermentTurns += turns;
         OnFermentTurnsChanged();
         if (turns <= 0 || Owner?.Creature is not { } creature) return;
+        FermentOverlayPatches.PlayFermentPulse(this);
         if (creature.GetPower<MellowPower>() is { } mellow)
             await mellow.OnFermented(turns);
         if (creature.GetPower<OverflowPower>() is { } overflow)
