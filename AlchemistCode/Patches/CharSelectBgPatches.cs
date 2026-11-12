@@ -30,9 +30,9 @@ class CharSelectBgPatches
     [HarmonyPatch(typeof(NMultiplayerLoadGameScreen), "AfterMultiplayerStarted")]
     static void AfterLoadLobby(NMultiplayerLoadGameScreen __instance) => Apply(__instance);
 
-    static void Apply(Control screen)
+    internal static void Apply(Control screen, string containerPath = "AnimatedBg")
     {
-        var container = screen.GetNodeOrNull<Control>("AnimatedBg");
+        var container = screen.GetNodeOrNull<Control>(containerPath);
         if (container == null)
             return;
 

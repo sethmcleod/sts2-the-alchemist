@@ -46,23 +46,27 @@ public static class PoolPatches
 
     [HarmonyPatch(typeof(Orobas), "GenerateInitialOptions")]
     [HarmonyTranspiler]
-    private static IEnumerable<CodeInstruction> StripAlchemistSeaGlass(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> StripAlchemistSeaGlass(IEnumerable<CodeInstruction> instructions) =>
+        StripCharacterReads(instructions, "Orobas Sea Glass");
+
+    internal static IEnumerable<CodeInstruction> StripCharacterReads(IEnumerable<CodeInstruction> instructions,
+        string site)
     {
         var codes = instructions.ToList();
         var getter = AccessTools.PropertyGetter(typeof(UnlockState), nameof(UnlockState.Characters));
         var read = codes.Find(c => c.Calls(getter));
         if (read == null)
         {
-            MainFile.Logger.Warn("[Pools] Orobas no longer reads UnlockState.Characters, so Sea Glass can offer "
+            MainFile.Logger.Warn($"[Pools] {site} no longer reads UnlockState.Characters, so it can offer "
                 + "Alchemist cards in a run with no Alchemist");
             return codes;
         }
         read.opcode = OpCodes.Call;
-        read.operand = AccessTools.Method(typeof(PoolPatches), nameof(SeaGlassCharacters));
+        read.operand = AccessTools.Method(typeof(PoolPatches), nameof(StrippedCharacters));
         return codes;
     }
 
-    private static IEnumerable<CharacterModel> SeaGlassCharacters(UnlockState unlockState)
+    private static IEnumerable<CharacterModel> StrippedCharacters(UnlockState unlockState)
     {
         var characters = unlockState.Characters;
         return ShouldStrip() ? characters.Where(c => c is not AlchemistCharacter) : characters;

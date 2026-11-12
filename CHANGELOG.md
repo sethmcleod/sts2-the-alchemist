@@ -19,6 +19,12 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 - Fixed the mod failing to load on the v0.113.0 game beta, and the Alchemist now properly appears after the Fool in the card library
 - Fixed Bestow and Croak being able to be generated in combat
+- Fixed the Alchemist's name showing as a raw text key on the Dread screen and in Blitz shop offers
+- Fixed the Alchemist missing from the background of the Dread and Blitz character select screens
+- Fixed the Blitz merchant offering to buy potions, since Blitz has no gold to spend
+- Fixed the Blitz merchant offering Alchemist cards to other characters when Keep Pools Separate is on
+- Fixed the Alchemist blocking the Dread, Daily Run and Orobas unlocks: modded characters no longer count toward the "every character" requirements
+- Fixed the analytics consent popup not appearing when selecting the Alchemist on the v0.113.0 game beta
 - Fixed the translated names of Bloom (Indonesian, Korean, Polish), Coup de Grace (French, Italian), Warm Up (Indonesian) and Rerun (Brazilian Portuguese) matching the Fool's new cards
 
 ## [0.15.7] - 2026-11-09

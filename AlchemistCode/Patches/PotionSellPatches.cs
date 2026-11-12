@@ -73,9 +73,11 @@ public static class PotionSellPatches
     // Doesn't check the room, so it also gates the High Quality tip
     private static bool SellingEnabledFor(Player? owner)
     {
-        if (owner == null) return false;
+        if (owner == null || IsBlitz(owner.RunState)) return false;
         return owner.GetRelic<MurkyFlask>() != null || owner.GetRelic<RadiantFlask>() != null;
     }
+
+    private static bool IsBlitz(IRunState runState) => runState.GameMode.ToString() == "Blitz";
 
     internal static bool IsSellable(PotionModel potion) =>
         SellingEnabledFor(potion.Owner) && potion is IBrewOnly or FoulPotion;
