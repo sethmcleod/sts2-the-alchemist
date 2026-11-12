@@ -13,9 +13,12 @@ public class Croak : AlchemistCard
 {
     public Croak() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
-        WithDamage(20, 6);
+        WithDamage(22, 6);
+        WithKeyword(CardKeyword.Exhaust);
         WithTip(StaticHoverTip.Fatal);
     }
+
+    public override bool CanBeGeneratedInCombat => false;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

@@ -35,7 +35,13 @@ export function cardDetail(l: Lang, runs: Runs, id: string) {
       row.rank && inPool(row.rarity)
         ? {
             label: l.t(AMONG[row.rarity]),
-            note: l.t('by win rate. The middle one wins {rate}', { rate: l.pct(row.peer) }),
+            note:
+              row.liftVsPeers == null
+                ? l.t('by win rate. The middle one wins {rate}', { rate: l.pct(row.peer) })
+                : l.t(
+                    'by win rate. The middle one wins {rate}. With ascension and player skill taken out, this card wins {adjusted}',
+                    { adjusted: l.pct(row.peer! + row.liftVsPeers), rate: l.pct(row.peer) },
+                  ),
             value: l.t('{rank} of {count}', { count: l.num(row.ranked), rank: l.ordinal(row.rank) }),
           }
         : { label: l.t('In final decks'), note: l.t('of runs'), value: l.pct(row.deckrate) },

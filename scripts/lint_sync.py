@@ -57,7 +57,6 @@ def load_cards_csv() -> list[dict]:
 def entity_classes(subdir: str, base_marker: str, skip_bases: set[str] = frozenset()) -> dict[str, Path]:
     out = {}
     for path in (CODE / subdir).rglob("*.cs"):
-        # A partial split across Compat files matches only in the half that names the base
         pattern = r"public\s+(?:sealed\s+)?(?:(abstract)\s+|partial\s+|(abstract)\s+partial\s+)?(?:sealed\s+)?class\s+(\w+)\s*:\s*([\w<>, ]+)"
         for m in re.finditer(pattern, path.read_text()):
             abstract_a, abstract_b, name, bases = m.groups()
@@ -111,7 +110,7 @@ def check_card_art(cls: str, claimed: set[Path]) -> tuple[list[str], list[str]]:
     actual = png_size(beta)
     if target and actual and (actual[0] > target[0] or actual[1] > target[1]):
         warnings.append(f"card {cls}: the placeholder is {actual[0]}x{actual[1]}, the final art is "
-                        f"{target[0]}x{target[1]}; run scripts/dev.sh beta-art")
+                        f"{target[0]}x{target[1]}; shrink the placeholder to that size")
     return errors, warnings
 
 
@@ -149,7 +148,6 @@ def check_assets() -> tuple[list[str], list[str], int]:
 def check_asset_literals() -> list[str]:
     errors = []
     for path in sorted(CODE.rglob("*.cs")):
-        # A line marked "// os path" names a file outside the pck
         text = "\n".join(l for l in path.read_text().splitlines() if "// os path" not in l)
         for m in re.finditer(r'"([A-Za-z0-9_/\.-]+\.(?:png|tscn|tres|wav|ogg|ttf|gdshader))"', text):
             ref = m.group(1)
@@ -203,7 +201,6 @@ def check_fallback_art() -> tuple[list[str], list[str]]:
         if "ResourceLoader.Exists" not in body:
             continue
         tail = body[body.index("ResourceLoader.Exists"):]
-        # A literal res:// fallback is a base game asset
         if re.search(r'return "res://', tail):
             continue
         join = re.search(r'return Res\(MainFile\.ResPath,\s*(.*?)\);', tail, re.S)
@@ -312,6 +309,23 @@ def check_comment_hygiene() -> list[str]:
     return errors
 
 
+def check_badge_bins() -> list[str]:
+    sys.path.insert(0, str(REPO / "tools" / "analytics"))
+    import export_stats
+    import mod_meta
+    errors = []
+    for badge in mod_meta.badges():
+        metric = export_stats.BADGE_METRICS.get(badge["id"])
+        if metric not in export_stats.HISTOGRAMS:
+            continue
+        width, last = export_stats.HISTOGRAMS[metric]
+        for tier in badge["tiers"]:
+            if tier["at"] % width or tier["at"] > last:
+                errors.append(f"badge {badge['id']}: {tier['tier']} {tier['at']} is off the site's {metric} "
+                              f"bins (width {width}, last {last})")
+    return errors
+
+
 def parse_number_pairs(desc: str) -> list[tuple[int, int]]:
     return [(int(a), int(b)) for a, b in re.findall(r"(\d+)%?\s*\((\d+)%?\)", desc)]
 
@@ -397,6 +411,7 @@ def main() -> int:
     errors += check_name_tags(classes)
 
     errors += check_comment_hygiene()
+    errors += check_badge_bins()
 
     scene_errors, scene_warnings = check_game_scene_paths()
     errors += scene_errors

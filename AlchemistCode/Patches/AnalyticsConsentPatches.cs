@@ -1,6 +1,5 @@
 using Alchemist.AlchemistCode.Analytics;
 using HarmonyLib;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 using AlchemistCharacter = Alchemist.AlchemistCode.Character.Alchemist;
 
@@ -10,8 +9,8 @@ namespace Alchemist.AlchemistCode.Patches;
 class AnalyticsConsentPatches
 {
     [HarmonyPostfix]
-    static void AfterSelect(CharacterModel characterModel)
+    static void AfterSelect(NCharacterSelectButton charSelectButton)
     {
-        if (characterModel is AlchemistCharacter) AnalyticsConsent.AskOnce();
+        if (charSelectButton.Character is AlchemistCharacter) AnalyticsConsent.AskOnce();
     }
 }

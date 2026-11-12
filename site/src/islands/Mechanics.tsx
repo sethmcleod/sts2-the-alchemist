@@ -62,18 +62,30 @@ export default function Mechanics({ icons, initial, locale, options }: Props) {
         {l.t('Brew and potions')}
       </SectionHeading>
       <Stats items={model.brew.stats} />
-      <section class="panel p-5">
-        <h3>{l.t('Brew picks')}</h3>
-        <p class="note">{model.brew.note}</p>
-        <Bars
-          items={model.brew.picks}
-          l={l}
-          labelWidth="11rem"
-          max={1}
-          reference={model.brew.evenShare}
-          referenceLabel={l.t('The gold line is an even share, {rate}', { rate: l.pct(model.brew.evenShare) })}
-        />
-      </section>
+      <div class="stats-grid">
+        <section class="panel p-5">
+          <h3>{l.t('Brew picks')}</h3>
+          <p class="note">{model.brew.note}</p>
+          <Bars
+            items={model.brew.picks}
+            l={l}
+            labelWidth="11rem"
+            max={1}
+            reference={model.brew.evenShare}
+            referenceLabel={l.t('The gold line is an even share, {rate}', { rate: l.pct(model.brew.evenShare) })}
+          />
+        </section>
+        <section class="panel p-5">
+          <h3>{l.t('Rest site choices')}</h3>
+          <p class="note">{model.brew.restNote}</p>
+          {model.brew.rest.map((act) => (
+            <div class="mt-4" key={act.label}>
+              <h4 class="m-0 mb-2 text-sm text-ink-2">{act.label}</h4>
+              <StackBar l={l} parts={act.parts} />
+            </div>
+          ))}
+        </section>
+      </div>
 
       <SectionHeading class="section-title" id="mixes">
         {l.t('Mixes')}

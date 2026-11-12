@@ -344,7 +344,6 @@ def localized_cards(lang: str, game: dict, english_cards: dict[str, dict]) -> di
         values = card_text.card_values(english.get(f"{entry}.description", ""), row["Description"], src, keywords)
         template = loc.get(f"{entry}.description", "")
         if values is None and f"{entry}.part_draw" in loc:
-            # Compound Mix builds its text in code; an unmade one shows its draw line and "??????"
             template, values = loc[f"{entry}.part_draw"] + "\n??????", card_text.builder_values(src)
         texts = (card_text.texts(template, values, src, culture, words) if values is not None
                  else english_cards[entry]["texts"])

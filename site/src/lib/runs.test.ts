@@ -37,6 +37,7 @@ function summary(): Summary {
     potion_info: {},
     power_info: {},
     relic_info: {},
+    rest: empty(['group', 'act', 'choice'], ['picks']),
     themes: empty(['group', 'theme'], TOTALS),
     totals: {
       counts: TOTALS,
@@ -66,13 +67,15 @@ const CARD_COUNTS = [
   'held_never_played',
   'ferment_plays',
   'ferment_turns',
+  'held_lift',
 ];
-const cardRow = (group: number, id: string, held: number, wins: number) => [
+const cardRow = (group: number, id: string, held: number, wins: number, lift = 0) => [
   group,
   id,
   held,
   wins,
-  ...Array(CARD_COUNTS.length - 2).fill(0),
+  ...Array(CARD_COUNTS.length - 3).fill(0),
+  lift,
 ];
 
 describe('Runs', () => {
@@ -80,13 +83,28 @@ describe('Runs', () => {
     cards: {
       counts: CARD_COUNTS,
       key: ['group', 'card'],
-      rows: [cardRow(2, 'X-A', 50, 30), cardRow(2, 'X-B', 40, 20), cardRow(2, 'X-C', 5, 5), cardRow(2, 'X-S', 90, 40)],
+      rows: [
+        cardRow(2, 'X-A', 50, 30, 5000),
+        cardRow(2, 'X-B', 40, 20, -2000),
+        cardRow(2, 'X-C', 5, 5, 3000),
+        cardRow(2, 'X-S', 90, 40),
+      ],
     },
   });
 
   it('starts "recent versions" where the newest ones reach 500 solo runs', () => {
     expect(runs.recentStart).toBe('v0.2.0');
     expect(runs.totals(runs.select({ ...DEFAULT_FILTERS, players: 'solo' })).runs).toBe(550);
+  });
+
+  it('filters runs by whether they used an expansion mod', () => {
+    const grouped = summary();
+    const groups = grouped.groups as TableFile;
+    groups.key.push('expansion');
+    groups.rows.forEach((row, i) => row.push(i === 1 ? 1 : 0));
+    const split = new Runs(grouped);
+    expect(split.totals(split.select({ ...DEFAULT_FILTERS, expansions: 'with', version: 'all' })).runs).toBe(300);
+    expect(split.totals(split.select({ ...DEFAULT_FILTERS, expansions: 'without', version: 'all' })).runs).toBe(1550);
   });
 
   it('filters by players and by one version', () => {
@@ -102,6 +120,15 @@ describe('Runs', () => {
     expect(rows.get('X-A')!.peer).toBeCloseTo(0.55);
     expect(rows.get('X-C')!.rank).toBeUndefined();
     expect(rows.get('X-S')!.peer).toBeNull();
+  });
+
+  it('compares the skill-adjusted lift with the middle card of the rarity', () => {
+    const rows = cardRows(runs, runs.select(DEFAULT_FILTERS), 10);
+    expect(rows.get('X-A')!.lift).toBeCloseTo(0.1);
+    expect(rows.get('X-A')!.liftVsPeers).toBeCloseTo(0.075);
+    expect(rows.get('X-B')!.liftVsPeers).toBeCloseTo(-0.075);
+    expect(rows.get('X-C')!.liftVsPeers).toBeNull();
+    expect(rows.get('X-S')!.liftVsPeers).toBeNull();
   });
 
   it('names a model it has no words for from its id', () => {

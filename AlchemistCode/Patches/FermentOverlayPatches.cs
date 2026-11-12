@@ -6,6 +6,8 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.UI;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Cards;
+using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.addons.mega_text;
 
 namespace Alchemist.AlchemistCode.Patches;
@@ -17,6 +19,7 @@ public static class FermentOverlayPatches
     {
         public required TextureRect Icon;
         public required MegaLabel Label;
+        public Tween? PulseTween;
     }
 
     private static readonly ConditionalWeakTable<NCard, Overlay> Overlays = new();
@@ -33,6 +36,13 @@ public static class FermentOverlayPatches
     private const int MaxFontSize = 28;
 
     private static readonly Color OutlineColor = new("24421F");
+
+    private static readonly Color FlashColor = new("8EDB5C");
+
+    private const float PulseScale = 1.3f;
+
+    private static readonly AccessTools.FieldRef<NHandCardHolder, Control> HolderFlash =
+        AccessTools.FieldRefAccess<NHandCardHolder, Control>("_flash");
 
     // Not in _Ready: the prewarmed card node pool never passes through that postfix
     private static Overlay? GetOrAddOverlay(NCard card)
@@ -81,5 +91,36 @@ public static class FermentOverlayPatches
 
         overlay.Icon.Visible = true;
         overlay.Label.SetTextAutoSize(card.FermentTurns.ToString());
+    }
+
+    internal static void PlayFermentPulse(AlchemistCard card)
+    {
+        if (!card.IsMutable || NCard.FindOnTable(card) is not { } node) return;
+        FlashHolder(card);
+        PulseIcon(node);
+    }
+
+    private static void FlashHolder(AlchemistCard card)
+    {
+        if (NCombatRoom.Instance?.Ui?.Hand.GetCardHolder(card) is not NHandCardHolder holder) return;
+        holder.Flash();
+        var flash = HolderFlash(holder);
+        if (GodotObject.IsInstanceValid(flash))
+            flash.Modulate = FlashColor with { A = flash.Modulate.A };
+    }
+
+    private static void PulseIcon(NCard node)
+    {
+        if (GetOrAddOverlay(node) is not { } overlay || !GodotObject.IsInstanceValid(overlay.Icon)) return;
+        var icon = overlay.Icon;
+        overlay.PulseTween?.Kill();
+        icon.PivotOffset = icon.Size / 2f;
+        icon.Scale = Vector2.One;
+        var tween = icon.CreateTween();
+        tween.TweenProperty(icon, "scale", Vector2.One * PulseScale, 0.12)
+            .SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+        tween.TweenProperty(icon, "scale", Vector2.One, 0.3)
+            .SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Sine);
+        overlay.PulseTween = tween;
     }
 }

@@ -2,7 +2,7 @@
   "readme": {
     "060cb30015be": "El Alquimista es un nuevo personaje para Slay the Spire 2: una rana curiosa que se tomaría cualquier cosa al menos una vez, en un viaje personal por la Torre. Equilibra su propio veneno para volverse más fuerte rápidamente, mezcla cartas parecidas a pociones en pleno combate mientras deja que otras cartas fermenten en su mano hasta que estén listas, y prepara pociones especiales en los puntos de descanso que se pueden vender al Comerciante.",
     "c80e7f014bdc": "- **Veneno**: El Alquimista se envenena a propósito. Algunos ataques infligen más daño cuanto más veneno tienes, y otras cartas se activan cada vez que se activa tu veneno. También hay muchas formas de aplicar veneno a los enemigos.\n- **Antitoxina**: Te protege de tu propio veneno. Cada vez que se activa tu veneno, la antitoxina evita hasta esa misma cantidad de daño. No se gasta, pero se reduce en 1 al comienzo de cada turno, igual que el veneno.\n- **Mezclas**: Cartas de costo 0 que creas en combate y que tienen efectos parecidos a los de las pociones. Las Mezclas básicas son Explosiva (daño), Almibarada (bloqueo) y Vigorizante (robo de cartas). Las Mezclas volátiles son Humeante (daño a todos los enemigos y corrupción), Acre (debilitamiento y vulnerabilidad) y Chispeante (energía).\n- **Fermentación**: Estas cartas tienen retención y ganan potencia por cada turno que pasan en tu mano. Hay formas de manipular su nivel de fermentación para sacar ventaja.\n- **Preparar**: Una nueva opción del punto de descanso que mejora una carta al azar de tu mazo y te deja elegir 1 de 3 pociones especiales. Por la calidad de estas preparaciones, el Comerciante está dispuesto a comprártelas por 100 de oro.",
-    "a43398bb13a3": "Este mod todavía está en desarrollo y su contenido puede cambiar, ¡pero los comentarios son bienvenidos! El mejor lugar para hablar del mod es la [publicación de The Alchemist](https://discord.com/channels/309399445785673728/1536374761699938424) del canal #modding-forum, en el servidor oficial de Discord de Slay the Spire.\n\nPor ahora, las traducciones se generan automáticamente. El plan es contratar a traductores nativos cuando el contenido deje de cambiar tan seguido. Mientras tanto, ¡se agradecen las correcciones! Si ves un error en tu idioma, contáctame o abre un pull request en GitHub."
+    "fe72091416da": "Este mod todavía está en desarrollo y su contenido puede cambiar, ¡pero los comentarios son bienvenidos! El mejor lugar para hablar del mod es la [publicación de The Alchemist](https://discord.com/channels/309399445785673728/1536374761699938424) del canal #modding-forum, en el servidor oficial de Discord de Slay the Spire.\n\nPor ahora, las traducciones se generan automáticamente. El plan es contratar a traductores nativos cuando el contenido deje de cambiar tan seguido. Mientras tanto, ¡se agradecen las correcciones! Si ves un error en tu idioma, contáctame o abre un pull request en GitHub."
   },
   "site": {
     "(opens in a new tab)": "(se abre en una pestaña nueva)",
@@ -210,6 +210,7 @@
     "by cards, relics, potions and powers": "por cartas, reliquias, pociones y poderes",
     "by this power": "por este poder",
     "by win rate. The middle one wins {rate}": "por porcentaje de victorias. La del medio tiene un {rate}",
+    "by win rate. The middle one wins {rate}. With ascension and player skill taken out, this card wins {adjusted}": "por porcentaje de victorias. La del medio tiene un {rate}. Sin el efecto de la ascensión y la habilidad del jugador, esta carta tiene un {adjusted}",
     "from the Merchant": "al Comerciante",
     "from this power": "de este poder",
     "never an early pick": "nunca fue elección temprana",
@@ -257,10 +258,6 @@
       "one": "{n} de {total} cartas",
       "other": "{n} de {total} cartas"
     },
-    "{n} players": {
-      "one": "{n} jugador",
-      "other": "{n} jugadores"
-    },
     "{n} potions": {
       "one": "{n} poción",
       "other": "{n} pociones"
@@ -288,8 +285,10 @@
     },
     ", on game build {build}": ", en la versión del juego {build}",
     ", with a partly unlocked pool": ", con una reserva parcialmente desbloqueada",
+    ", with expansion mods": ", con mods de expansión",
     ", with the full card pool": ", con la reserva de cartas completa",
     ", with the starting pool": ", con la reserva inicial",
+    ", without expansion mods": ", sin mods de expansión",
     "A0": "A0",
     "A1 to A4": "A1 a A4",
     "A10 and up": "A10 o superior",
@@ -340,6 +339,7 @@
     "Compound": "Compuesta",
     "Compound Mixes": "Mezclas compuestas",
     "Compound pairings": "Combinaciones de Mezcla compuesta",
+    "Counted from the next release on.": "Se cuenta desde la próxima versión.",
     "Damage": "Daño",
     "Each dot is a card. Further right means players take it more often when it is offered. Higher means the runs that finished with it won more often. The gold line is the middle card, at {rate}. The table below has every number.": "Cada punto es una carta. Cuanto más a la derecha, con más frecuencia la eligen los jugadores cuando se les ofrece. Cuanto más arriba, con más frecuencia ganaron las partidas que terminaron con ella. La línea dorada es la carta del medio, con un {rate}. La tabla de abajo tiene todas las cifras.",
     "Each kind's share of every Mix created.": "La proporción de cada tipo sobre el total de Mezclas creadas.",
@@ -352,6 +352,7 @@
     "Ends the run": "Termina la partida",
     "Every card": "Todas las cartas",
     "Exhausted first, by Ethereal or another card": "Agotadas antes, por evanescencia o por otra carta",
+    "Expansion mods": "Mods de expansión",
     "Ferment plays": "Cartas de fermentación jugadas",
     "Fermented": "Fermentado",
     "Fight": "Combate",
@@ -401,6 +402,7 @@
       "other": "Ninguna carta tiene todavía {n} partidas en ambas versiones."
     },
     "No card in these filters has enough runs yet.": "Ninguna carta tiene todavía suficientes partidas con estos filtros.",
+    "No runs from {version} on match these filters yet.": "Todavía no hay partidas desde la {version} con estos filtros.",
     "No runs in these filters count Antitoxin sources yet. Counted {since}.": "Ninguna partida con estos filtros registra todavía el origen de la antitoxina. Se cuenta {since}.",
     "No runs in these filters count Ferment turns per card yet. Counted {since}.": "Ninguna partida con estos filtros registra todavía los turnos de fermentación por carta. Se cuenta {since}.",
     "No runs in these filters count card plays yet. Counted {since}.": "Ninguna partida con estos filtros registra todavía las cartas jugadas. Se cuenta {since}.",
@@ -425,6 +427,9 @@
     "Played the most": "Las más jugadas",
     "Played unfermented": "Jugadas sin fermentar",
     "Players": "Jugadores",
+    "Players per week": "Jugadores por semana",
+    "Players who shared a run each week over the last 12 weeks": "Jugadores que compartieron una partida cada semana en las últimas 12 semanas",
+    "Players who shared at least one run each week, from every version. The last week may still be going.": "Jugadores que compartieron al menos una partida cada semana, de todas las versiones. Puede que la última semana todavía no haya terminado.",
     "Plays": "Jugadas",
     "Playstyles": "Estilos de juego",
     "Poison damage the Alchemist took, split by what Antitoxin absorbed and what hit HP.": "El daño de veneno que recibió El Alquimista, dividido entre lo que absorbió la antitoxina y lo que llegó a los PV.",
@@ -440,6 +445,8 @@
     "Reach Act 3": "Llegan al acto 3",
     "Recent versions ({version})": "Versiones recientes ({version})",
     "Recent versions ({version}+)": "Versiones recientes ({version}+)",
+    "Rest": "Descansar",
+    "Rest site choices": "Elecciones en puntos de descanso",
     "Rest site upgrades for every 100 runs that finished with the card.": "Mejoras en puntos de descanso por cada 100 partidas que terminaron con la carta.",
     "Run length": "Duración de la partida",
     "Runs": "Partidas",
@@ -458,6 +465,7 @@
     "Showing {runs} on {versions}{details}.": "Se muestran {runs} de las versiones {versions}{details}.",
     "Since a version": "Desde una versión",
     "Skipped": "Omitidas",
+    "Smith": "Forjar",
     "Solo": "Solitario",
     "Solo and multiplayer": "Solitario y cooperativo",
     "Sparkling": "Chispeante",
@@ -481,6 +489,7 @@
     "The turns Fermented on every Ferment card a run played, added up. The lines mark where the {tiers} badges start.": "La suma de los turnos fermentados de todas las cartas de fermentación que jugó una partida. Las líneas marcan dónde empiezan las insignias {tiers}.",
     "The turns Fermented when a card is played, on average, for the Ferment cards in a run's final deck.": "Los turnos fermentados al jugar la carta, en promedio, de las cartas de fermentación del mazo final de una partida.",
     "The two Mixes folded into each Compound Mix.": "Las dos Mezclas que forman cada Mezcla compuesta.",
+    "This week so far": "Esta semana, hasta ahora",
     "To": "Hasta",
     "Toughest fights": "Los combates más difíciles",
     "Trailing their peers": "Por detrás de sus pares",
@@ -493,6 +502,9 @@
     "Upgrades": "Mejoras",
     "Version": "Versión",
     "Vs middle card": "Vs. carta del medio",
+    "Vs middle card, skill-adjusted": "Vs. carta del medio, ajustado por habilidad",
+    "Week of {date}": "Semana del {date}",
+    "What players chose at each rest site, act by act, counted from {version} on.": "Lo que eligieron los jugadores en cada punto de descanso, acto por acto, contado desde la {version}.",
     "Where Antitoxin comes from": "De dónde proviene la antitoxina",
     "Where Mixes come from": "De dónde provienen las Mezclas",
     "Where runs end": "Dónde terminan las partidas",
@@ -509,13 +521,16 @@
       "one": "{rate} de victorias en {n} partida",
       "other": "{rate} de victorias en {n} partidas"
     },
+    "With expansion mods": "Con mods de expansión",
+    "With or without": "Con o sin",
+    "Without expansion mods": "Sin mods de expansión",
     "Zesty": "Vigorizante",
     "a run": "por partida",
     "at rest sites": "en puntos de descanso",
     "counted {since}": "se cuenta {since}",
     "created": "creadas",
     "every version": "todas las versiones",
-    "for the middle run. The middle win takes {time}": "en la partida del medio. La victoria del medio dura {time}",
+    "for the middle run, on average": "en la partida del medio, en promedio",
     "from every source": "de todas las fuentes",
     "from the next release on": "desde la próxima versión",
     "from {version} on": "desde la {version}",
@@ -590,6 +605,10 @@
       "one": "{n} partida cooperativa",
       "other": "{n} partidas cooperativas"
     },
+    "{n} new players": {
+      "one": "{n} jugador nuevo",
+      "other": "{n} jugadores nuevos"
+    },
     "{n} offers": {
       "one": "{n} oferta",
       "other": "{n} ofertas"
@@ -597,6 +616,10 @@
     "{n} picks": {
       "one": "{n} elección",
       "other": "{n} elecciones"
+    },
+    "{n} players": {
+      "one": "{n} jugador",
+      "other": "{n} jugadores"
     },
     "{n} runs": {
       "one": "{n} partida",

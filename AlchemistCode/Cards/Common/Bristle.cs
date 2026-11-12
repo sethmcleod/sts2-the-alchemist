@@ -7,20 +7,20 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace Alchemist.AlchemistCode.Cards.Common;
 
 [CardTheme(CardTheme.Poison)]
-public class Brace : AlchemistCard
+public class Bristle : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Brace() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Bristle() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(7, 2);
-        WithNumberedPower<BracePower>(3, 1);
+        WithNumberedPower<BristlePower>(3, 1);
         WithTip(typeof(PoisonPower));
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await CommonActions.ApplySelf<BracePower>(choiceContext, this);
+        await CommonActions.ApplySelf<BristlePower>(choiceContext, this);
     }
 }

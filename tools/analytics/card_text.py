@@ -14,7 +14,6 @@ BUILDER_RES = [
                r"(?:\s*\.WithUpgrade\(\s*(?P<delta>-?\d+)m?\s*\))?"),
 ]
 
-# CardKeywordOrder inserts each at the top in turn, so the last listed shows first
 KEYWORDS_ABOVE = ["Ethereal", "Sly", "Retain", "Innate", "Unplayable"]
 KEYWORDS_BELOW = ["Exhaust", "Eternal"]
 CUSTOM_ABOVE = ["Laced"]

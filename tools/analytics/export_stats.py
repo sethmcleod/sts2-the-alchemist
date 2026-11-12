@@ -10,7 +10,7 @@ import os
 import re
 import sys
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import common
@@ -21,9 +21,14 @@ EXCLUDE_FILE = common.HERE / "exclude-players.local.txt"
 
 ASCENSION_BANDS = [0, 1, 5, 10]
 
+SKILL_EDGES = [0.15, 0.25, 0.35, 0.5]
+
+RECORD_SIZE = 3
+
 THEME_MIN_CARDS = 3
 
-# (width, last bin); each badge threshold must sit on a bin edge
+EXPANSION_TAGS = {"Hero", "Reshuffled Spire", "Ancients Awakened"}
+
 HISTOGRAMS = {
     "run_minutes": (10, 180),
     "poison_peak": (5, 60),
@@ -46,6 +51,7 @@ CARD_KEYS = {"play:": "plays", "fermentplay:": "ferment_plays", "fermentturns:":
 
 MIX_SCHEMA = 2
 DETAIL_SCHEMA = 3
+REST_SCHEMA = 4
 
 
 def schema_of(extra: dict) -> int:
@@ -85,11 +91,12 @@ def new_tables() -> dict[str, Table]:
         "histograms": Table(g + ["metric", "bin"], ["runs", "wins"]),
         "counters": Table(g + ["counter"], ["count", "runs"]),
         "acts": Table(g + ["act"], ["fights", "turns", "damage"]),
+        "rest": Table(g + ["act", "choice"], ["picks"]),
         "death_floors": Table(g + ["floor"], ["deaths"]),
         "cards": Table(g + ["card"], [
             "held", "held_wins", "held_twice", "held_twice_wins", "offered", "picked",
             "early_picks", "early_pick_wins", "upgraded", "held_with_plays", "plays",
-            "held_never_played", "ferment_plays", "ferment_turns"]),
+            "held_never_played", "ferment_plays", "ferment_turns", "held_lift"]),
         "relics": Table(g + ["relic"], ["held", "held_wins", "bought", "offered", "picked"]),
         "potions": Table(g + ["potion"], ["drunk", "bought", "discarded"]),
         "encounters": Table(g + ["encounter"], ["fights", "turns", "damage", "deaths"]),
@@ -98,17 +105,15 @@ def new_tables() -> dict[str, Table]:
 
 FILES = {
     "summary.json": ["totals", "ascensions", "days", "themes", "badges", "histograms", "counters",
-                     "acts", "death_floors"],
+                     "acts", "death_floors", "rest"],
     "cards.json": ["cards"],
     "relics.json": ["relics", "potions"],
     "fights.json": ["encounters"],
 }
 
 
-# Before schema 2, "fuming" meant Acrid Mix and "acrid" the Poison Mix
 SCHEMA_1_LABELS = {"fuming": "acrid", "acrid": "poison"}
 RENAMED_MIX_LABELS = {"sturdy": "syrupy"}
-# Left out of per-kind counts but kept in the Mix total, which the Mixes badge counted
 RETIRED_MIX_LABELS = {"poison"}
 
 
@@ -152,6 +157,25 @@ def ascension_band(ascension: int) -> int:
     return max(band for band in ASCENSION_BANDS if ascension >= band)
 
 
+def is_coop(run: dict) -> bool:
+    return ((run.get("data") or {}).get("numPlayers") or 1) > 1
+
+
+def skill_cell(run: dict) -> tuple:
+    skill = (run.get("data") or {}).get("totalWinRate") or 0
+    return ascension_band(int(run["ascension"])), sum(skill >= edge for edge in SKILL_EDGES), is_coop(run)
+
+
+def residuals(runs: list[dict]) -> list[float]:
+    cells: dict[tuple, list[int]] = {}
+    for run in runs:
+        cell = cells.setdefault(skill_cell(run), [0, 0])
+        cell[0] += 1
+        cell[1] += int(bool(run["victory"]))
+    expected = {key: wins / n for key, (n, wins) in cells.items()}
+    return [int(bool(run["victory"])) - expected[skill_cell(run)] for run in runs]
+
+
 def card_pool(run: dict, extra: dict, epochs: int) -> str:
     if (extra.get("config") or {}).get("enable_epochs") is False:
         return "full"
@@ -159,10 +183,14 @@ def card_pool(run: dict, extra: dict, epochs: int) -> str:
     return "full" if earned >= epochs else ("partial" if earned > 0 else "starter")
 
 
-def group_of(run: dict, extra: dict, epochs: int) -> tuple:
-    coop = 1 if ((run.get("data") or {}).get("numPlayers") or 1) > 1 else 0
+def uses_expansion(run: dict, extra: dict, expansion_cards: set[str]) -> bool:
+    deck = (run.get("data") or {}).get("deck") or []
+    return any(card in expansion_cards for card in deck) or any((extra.get("expansions") or {}).values())
+
+
+def group_of(run: dict, extra: dict, epochs: int, expansion_cards: set[str]) -> tuple:
     return (run["mod_version"], run["game_version"], ascension_band(int(run["ascension"])),
-            card_pool(run, extra, epochs), coop)
+            card_pool(run, extra, epochs), int(is_coop(run)), int(uses_expansion(run, extra, expansion_cards)))
 
 
 def dominant_theme(deck_themes: dict[str, int]) -> str:
@@ -201,7 +229,7 @@ def badge_tier(badge: dict, value: int) -> int:
     return sum(value >= tier["at"] for tier in badge["tiers"])
 
 
-def add_run(t: dict[str, Table], group: int, run: dict, extra: dict, badges: list[dict]) -> None:
+def add_run(t: dict[str, Table], group: int, run: dict, extra: dict, badges: list[dict], residual: float) -> None:
     data = run.get("data") or {}
     win = int(bool(run["victory"]))
     deck = data.get("deck") or []
@@ -260,15 +288,18 @@ def add_run(t: dict[str, Table], group: int, run: dict, extra: dict, badges: lis
         else:
             t["counters"].add(group, key, count=count, runs=1)
     for act in extra.get("acts") or []:
-        t["acts"].add(group, int(act.get("act") or 0), fights=int(act.get("fights") or 0),
-                      turns=int(act.get("turns") or 0), damage=int(act.get("damage") or 0))
+        number = int(act.get("act") or 0)
+        t["acts"].add(group, number, fights=int(act.get("fights") or 0), turns=int(act.get("turns") or 0),
+                      damage=int(act.get("damage") or 0))
+        for choice, count in (act.get("rest") or {}).items():
+            t["rest"].add(group, number, choice, picks=int(count or 0))
 
     mine = lambda card: card.startswith(mod_meta.PREFIX)
     detail = schema_of(extra) >= DETAIL_SCHEMA
     for card, copies in Counter(deck).items():
         if mine(card):
             t["cards"].add(group, card, held=1, held_wins=win, held_twice=int(copies > 1),
-                           held_twice_wins=int(copies > 1) * win)
+                           held_twice_wins=int(copies > 1) * win, held_lift=round(residual * 1000))
             if detail:
                 plays = per_card["plays"].get(card, 0)
                 t["cards"].add(group, card, held_with_plays=1, plays=plays, held_never_played=int(not plays),
@@ -340,21 +371,76 @@ def secrets_summary(runs: list[dict]) -> str | None:
     return f"Secrets unlocked: {count:,} of {len(unlocked):,} players ({count / len(unlocked):.0%})"
 
 
+def weekly_players(runs: list[dict]) -> list[dict]:
+    weeks: dict[str, set[str]] = {}
+    first_week: dict[str, str] = {}
+    for run in sorted(runs, key=lambda r: r["created_at"]):
+        day = date.fromisoformat(run["created_at"][:10])
+        week = (day - timedelta(days=day.weekday())).isoformat()
+        weeks.setdefault(week, set()).add(run["player_hash"])
+        first_week.setdefault(run["player_hash"], week)
+    new = Counter(first_week.values())
+    return [{"week": week, "players": len(players), "new": new[week]} for week, players in sorted(weeks.items())]
+
+
+RECORDS = [
+    ("fastest_win", True, False, lambda run, extra: int(run.get("playtime") or 0)),
+    ("smallest_winning_deck", True, False, lambda run, extra: len((run.get("data") or {}).get("deck") or [])),
+    ("antitoxin_peak", False, True, lambda run, extra: int((extra.get("antitoxin") or {}).get("peak") or 0)),
+    ("poison_peak", False, True, lambda run, extra: int((extra.get("poison") or {}).get("peak") or 0)),
+    ("mixes", False, True, lambda run, extra: sum((extra.get("mixes") or {}).values())),
+    ("ferment_turns", False, True, lambda run, extra: int((extra.get("tally") or {}).get("ferment_turns") or 0)),
+    ("potions_sold", False, True, lambda run, extra: int(extra.get("potions_sold") or 0)),
+]
+
+
+def eligible_for_records(run: dict) -> bool:
+    data = run.get("data") or {}
+    return not is_coop(run) and not data.get("numReloads")
+
+
+def records(runs: list[dict], extras: list[dict]) -> list[dict]:
+    found = []
+    pairs = [(run, extra) for run, extra in zip(runs, extras) if eligible_for_records(run)]
+    for record, needs_win, highest, value_of in RECORDS:
+        entries = []
+        for run, extra in pairs:
+            if needs_win and not run["victory"]:
+                continue
+            value = value_of(run, extra)
+            if value <= 0:
+                continue
+            entries.append({"value": value, "version": run["mod_version"], "ascension": int(run["ascension"]),
+                            "day": run["created_at"][:10], "won": bool(run["victory"])})
+        entries.sort(key=lambda e: (-e["value"] if highest else e["value"], e["day"]))
+        found.append({"id": record, "entries": entries[:RECORD_SIZE]})
+    return found
+
+
+def records_summary(runs: list[dict], extras: list[dict]) -> str:
+    lines = ["Records (solo runs without a reload):"]
+    for record in records(runs, extras):
+        entries = ", ".join(f"{e['value']:,} (A{e['ascension']}, {e['version']}, {e['day']}{'' if e['won'] else ', lost'})"
+                            for e in record["entries"])
+        lines.append(f"  {record['id']}: {entries or 'none'}")
+    return "\n".join(lines)
+
+
 def oldest_version(runs) -> str | None:
     return min((run["mod_version"] for run in runs), key=version_key, default=None)
 
 
-def build(runs: list[dict]) -> dict[str, dict]:
+def build(runs: list[dict], extras: list[dict]) -> dict[str, dict]:
     cards, badges, epochs = mod_meta.cards(), mod_meta.badges(), mod_meta.epoch_count()
     manifest = mod_meta.manifest()
-    extras = [normalise(run.get("alchemist") or {}) for run in runs]
-    keys = [group_of(run, extra, epochs) for run, extra in zip(runs, extras)]
+    expansion_cards = {card for card, info in cards.items() if EXPANSION_TAGS & set(info["tags"])}
+    keys = [group_of(run, extra, epochs, expansion_cards) for run, extra in zip(runs, extras)]
     groups = sorted(set(keys), key=lambda k: (version_key(k[0]), version_key(k[1]), *k[2:]))
     index = {key: i for i, key in enumerate(groups)}
 
     tables = new_tables()
-    for run, extra, key in zip(runs, extras, keys):
-        add_run(tables, index[key], run, extra, badges)
+    for run, extra, key, residual in zip(runs, extras, keys, residuals(runs)):
+        add_run(tables, index[key], run, extra, badges, residual)
 
     days = sorted({run["created_at"][:10] for run in runs})
     builds = {}
@@ -387,9 +473,10 @@ def build(runs: list[dict]) -> dict[str, dict]:
         "histograms": {metric: {"width": w, "last": last} for metric, (w, last) in HISTOGRAMS.items()},
         "badges": [b | {"metric": BADGE_METRICS.get(b["id"])} for b in badges],
         "schema_since": {
-            str(DETAIL_SCHEMA): oldest_version(run for run, extra in zip(runs, extras)
-                                               if schema_of(extra) >= DETAIL_SCHEMA),
+            str(schema): oldest_version(run for run, extra in zip(runs, extras) if schema_of(extra) >= schema)
+            for schema in (DETAIL_SCHEMA, REST_SCHEMA)
         },
+        "weekly_players": weekly_players(runs),
     }
     summary = {
         "meta": meta,
@@ -399,7 +486,7 @@ def build(runs: list[dict]) -> dict[str, dict]:
         "potion_info": mod_meta.items("potions", "Potions"),
         "power_info": mod_meta.items("powers", None),
         "icons": mod_meta.icons(),
-        "groups": {"key": ["version", "build", "ascension", "pool", "coop"], "counts": [],
+        "groups": {"key": ["version", "build", "ascension", "pool", "coop", "expansion"], "counts": [],
                    "rows": [list(key) for key in groups]},
     }
     out = {name: {} for name in FILES}
@@ -415,22 +502,11 @@ def build(runs: list[dict]) -> dict[str, dict]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    common.add_common_args(parser)
-    parser.add_argument("--include-seed", action="store_true",
-                        help=f"keep fabricated mod_version='{common.SEED_VERSION}' rows")
     parser.add_argument("--out", type=Path, default=OUT_DIR)
-    parser.add_argument("--from-file", type=Path, default=None,
-                        help="read rows from a JSON file (seed_runs.py --local) instead of the stores")
     args = parser.parse_args()
 
-    if args.from_file:
-        runs = json.loads(args.from_file.read_text())
-        args.include_seed = True
-    else:
-        runs = common.fetch_runs(args.mod_version, args.game_version, args.days_back)
+    runs = common.fetch_runs()
     fetched = len(runs)
-    if not args.include_seed:
-        runs = [r for r in runs if r["mod_version"] != common.SEED_VERSION]
     if excluded := excluded_players():
         runs = [r for r in runs if r["player_hash"] not in excluded]
     if not runs:
@@ -439,7 +515,8 @@ def main() -> int:
 
     args.out.mkdir(parents=True, exist_ok=True)
     shown = lambda path: path.relative_to(common.REPO) if path.is_relative_to(common.REPO) else path
-    files = build(runs)
+    extras = [normalise(run.get("alchemist") or {}) for run in runs]
+    files = build(runs, extras)
     for name, payload in files.items():
         path = args.out / name
         path.parent.mkdir(exist_ok=True)
@@ -448,6 +525,7 @@ def main() -> int:
     print(f"{len(runs):,} runs exported ({fetched:,} fetched)")
     if secrets := secrets_summary(runs):
         print(secrets)
+    print(records_summary(runs, extras))
     return 0
 
 

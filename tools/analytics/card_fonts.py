@@ -40,7 +40,6 @@ SETS = {
                 "regular": ("fonts/zht/NotoSansMonoCJKtc-Regular.otf", 0.95),
                 "bold": ("fonts/zht/SourceHanSerifTC-Bold.otf", 0.95)},
 }
-# The OFL bars a subset from using a Reserved Font Name
 RESERVED = ("Source", "Fira")
 TAG_RE = re.compile(r"\[/?[^\]]*\]")
 

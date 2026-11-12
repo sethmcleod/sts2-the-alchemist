@@ -36,6 +36,13 @@ const columns = (l: Lang): ColumnDef<CardTableRow>[] => [
     ),
   },
   { key: 'vsPeers', label: l.t('Vs middle card'), num: true, render: (r) => l.pointChange(r.vsPeers) },
+  {
+    key: 'liftVsPeers',
+    label: l.t('Vs middle card, skill-adjusted'),
+    num: true,
+    render: (r) => l.pointChange(r.liftVsPeers),
+    wide: true,
+  },
   { key: 'range', label: l.t('Likely range'), num: true, sortable: false, wide: true },
   {
     key: 'pickrate',
