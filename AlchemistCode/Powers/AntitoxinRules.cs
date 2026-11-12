@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
+public sealed partial class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
 {
     private static readonly HashSet<Creature> Absorbed = [];
 
@@ -91,8 +91,7 @@ public sealed class AntitoxinRules() : CustomSingletonModel(HookType.Combat)
         return Task.CompletedTask;
     }
 
-    public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature,
-        bool wasRemovalPrevented, float deathAnimLength)
+    private static Task OnDeath(Creature creature, bool wasRemovalPrevented)
     {
         if (!LethalTick.Remove(creature, out var bled)) return Task.CompletedTask;
         Analytics.RunCounters.Add(creature.Player, Analytics.RunCounters.PoisonBled, bled);

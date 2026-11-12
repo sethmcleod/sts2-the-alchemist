@@ -24,9 +24,10 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Alchemist.AlchemistCode.Compat;
 
 /// <summary>
-/// ONE OF THE SIX FILES THAT DIFFER BETWEEN THE beta AND main BRANCHES. The others are
-/// AntitoxinPowerCompat.cs, WeakSpotPowerCompat.cs, SteepPowerCompat.cs, AlchemistAnimatorCompat.cs and
-/// MercurialFormVfxCompat.cs, which hold the overrides and the vfx that cannot be routed through a wrapper. Each names its branch in a COMPAT-BRANCH
+/// ONE OF THE TEN FILES THAT DIFFER BETWEEN THE beta AND main BRANCHES. The others are
+/// AlchemistAnimatorCompat.cs, AlchemistCardCompat.cs, AnalyticsHooksCompat.cs, AntitoxinPowerCompat.cs,
+/// AntitoxinRulesCompat.cs, GameModeCompat.cs, MercurialFormVfxCompat.cs, PreviewVarCompat.cs and
+/// SteepPowerCompat.cs, which hold the overrides, patches and vfx that cannot be routed through a wrapper. Each names its branch in a COMPAT-BRANCH
 /// marker that scripts/lint_sync.py checks against the branch you are on, so a merge that takes the
 /// wrong side fails the lint instead of a wall of CS0115 errors.
 /// THIS COPY IS THE main (DEFAULT BRANCH) IMPLEMENTATION.
