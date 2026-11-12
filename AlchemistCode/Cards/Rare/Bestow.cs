@@ -15,6 +15,8 @@ public class Bestow : AlchemistCard
         WithKeyword(CardKeyword.Exhaust);
     }
 
+    public override bool CanBeGeneratedInCombat => false;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (play.Target?.Player is not { } targetPlayer) return;

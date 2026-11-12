@@ -15,7 +15,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ### Fixed
 
-- Fixed Croak card being able to be generated in combat
+- Fixed Bestow and Croak being able to be generated in combat
 
 ## [0.15.7] - 2026-11-09
 
