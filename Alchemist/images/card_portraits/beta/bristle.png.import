@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ml3jxqgmnvhc"
-path="res://.godot/imported/brace_power.png-f256201d0130b35ac120dade622a603c.ctex"
+uid="uid://1joi0r5uxpjm"
+path="res://.godot/imported/bristle.png-7b1a11db4fbec290b1248d5ebfaed80b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alchemist/images/powers/big/brace_power.png"
-dest_files=["res://.godot/imported/brace_power.png-f256201d0130b35ac120dade622a603c.ctex"]
+source_file="res://Alchemist/images/card_portraits/beta/bristle.png"
+dest_files=["res://.godot/imported/bristle.png-7b1a11db4fbec290b1248d5ebfaed80b.ctex"]
 
 [params]
 

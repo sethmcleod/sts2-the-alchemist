@@ -12,6 +12,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 ### Changed
 
 - Changed Croak card: damage increased from 20(26) -> 22(28), now Exhausts
+- Renamed Brace card to Bristle, since the Fool now has a card named Brace
 - Expanded the anonymous run analytics to also track rest site choices, game language and platform, and which expansion mods are installed
 
 ### Fixed

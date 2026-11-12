@@ -10,8 +10,8 @@ Bloom,Rare,Skill,0,ALL Ferment cards in your Hand Ferment 2(3). Exhaust.
 Bonk,Uncommon,Attack,2,Deal 10(12) damage. Deals 3(4) additional damage for each Mix you have played this combat.
 Bottoms Up,"Rare, Multiplayer",Power,1,"Whenever you gain Poison, ALL other players gain 1(2) Block for each Poison gained."
 Bounce Back,"Uncommon, Hero",Skill,1,"Gain 6(8) Block. Gain 1 Poison. At the start of your next turn, return this to your Hand."
-Brace,Common,Skill,1,"Gain 7(9) Block. Whenever you are attacked this turn, apply 3(4) Poison to the attacker."
 Brine,Uncommon,Skill,2,Gain 4(6) Antitoxin. Apply 2 Weak to ALL enemies.
+Bristle,Common,Skill,1,"Gain 7(9) Block. Whenever you are attacked this turn, apply 3(4) Poison to the attacker."
 Bursting Mix,Token,Attack,0,Deal 6(9) damage. Exhaust.
 Caustic Strike,Common,Attack,1,Retain. Ferment. Deal 6(8) damage. Apply 2 Poison. Applies 1(2) additional Poison for each turn Fermented.
 Chrysopoeia,Rare,Skill,0,Gain 1(2) Energy. Gain an additional Energy for every 4 Poison you have. Lose all Poison. Exhaust.

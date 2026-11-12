@@ -23,6 +23,7 @@ public static class SaveRenamePatches
         ["ALCHEMIST-ANOINT"] = ModelDb.Card<Spike>().Id!,
         ["ALCHEMIST-ANTIDOTE"] = ModelDb.Card<Dose>().Id!,
         ["ALCHEMIST-BACKFIRE"] = ModelDb.Card<VenomShock>().Id!,
+        ["ALCHEMIST-BRACE"] = ModelDb.Card<Bristle>().Id!,
         ["ALCHEMIST-CALLUS"] = ModelDb.Card<CoupDeGrace>().Id!,
         ["ALCHEMIST-CELLAR"] = ModelDb.Card<Ripening>().Id!,
         ["ALCHEMIST-CONDENSE"] = ModelDb.Card<Fizz>().Id!,
