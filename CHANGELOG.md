@@ -16,6 +16,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ### Fixed
 
+- Fixed the mod failing to load on the v0.113.0 game beta, and the Alchemist now properly appears after the Fool in the card library
 - Fixed Bestow and Croak being able to be generated in combat
 
 ## [0.15.7] - 2026-11-09

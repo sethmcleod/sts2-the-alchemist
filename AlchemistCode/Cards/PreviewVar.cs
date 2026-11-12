@@ -1,4 +1,3 @@
-using System.Globalization;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -6,7 +5,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Alchemist.AlchemistCode.Cards;
 
-public abstract class PreviewVar : DynamicVar
+public abstract partial class PreviewVar : DynamicVar
 {
     protected PreviewVar(string name, int baseValue) : base(name, baseValue)
     {
@@ -23,9 +22,4 @@ public abstract class PreviewVar : DynamicVar
         if (card is AlchemistCard { IsMutable: true, CombatState: not null } live)
             PreviewValue = EnchantedValue + Bonus(live, target);
     }
-
-    // SmartFormat reads plural via IConvertible and {Var} via ToString; both return the preview
-    protected override decimal GetBaseValueForIConvertible() => PreviewValue;
-
-    public override string ToString() => ((int)PreviewValue).ToString(CultureInfo.InvariantCulture);
 }

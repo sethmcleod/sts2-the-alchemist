@@ -1,3 +1,4 @@
+using System.Reflection;
 using Alchemist.AlchemistCode.Character;
 using Godot;
 using HarmonyLib;
@@ -14,9 +15,15 @@ class CharSelectBgPatches
     [HarmonyPatch("SelectCharacter")]
     static void AfterSelect(NCharacterSelectScreen __instance) => Apply(__instance);
 
-    [HarmonyPostfix]
-    [HarmonyPatch("OnLocalCharacterChangedForRandom")]
-    static void AfterRandom(NCharacterSelectScreen __instance) => Apply(__instance);
+    [HarmonyPatch]
+    static class RandomCharacterBg
+    {
+        static MethodBase? TargetMethod() =>
+            AccessTools.Method(typeof(NCharacterSelectScreen), "DoRandomCharacterChange")
+            ?? AccessTools.Method(typeof(NCharacterSelectScreen), "OnLocalCharacterChangedForRandom");
+
+        static void Postfix(NCharacterSelectScreen __instance) => Apply(__instance);
+    }
 
     // The multiplayer load lobby builds the same bg into its own AnimatedBg
     [HarmonyPostfix]

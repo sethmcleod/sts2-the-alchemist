@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Analytics;
 
-public sealed class AnalyticsHooks() : CustomSingletonModel(HookType.Combat)
+public sealed partial class AnalyticsHooks() : CustomSingletonModel(HookType.Combat)
 {
     // Before OnPlay drains Pour Over's turns, and from the stored count, which Mother of Vinegar doesn't floor
     public override Task BeforeCardPlayed(CardPlay cardPlay)
@@ -90,8 +90,7 @@ public sealed class AnalyticsHooks() : CustomSingletonModel(HookType.Combat)
         return Task.CompletedTask;
     }
 
-    public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature,
-        bool wasRemovalPrevented, float deathAnimLength)
+    private static Task OnDeath(Creature creature, bool wasRemovalPrevented)
     {
         if (EnemyTicks.Remove(creature, out var damage))
             RunCounters.Tally(SoloPlayer(creature), RunCounters.PoisonDealt, damage);

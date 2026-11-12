@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Nodes.HoverTips;
 namespace Alchemist.AlchemistCode.Patches;
 
 // Center-aligned potion tips let the overflow fix slide card previews over the text
-[HarmonyPatch(typeof(NHoverTipSet), nameof(NHoverTipSet.SetAlignment))]
+[HarmonyPatch(typeof(NHoverTipSet), nameof(NHoverTipSet.SetAlignment), typeof(Control), typeof(HoverTipAlignment))]
 public static class HoverTipOverlapPatch
 {
     private static readonly FieldInfo TextContainer =

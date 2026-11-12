@@ -80,6 +80,7 @@ internal static class VanillaRunMetrics
             BuildId = ReleaseInfoManager.Instance.ReleaseInfo?.Version ?? "NON-RELEASE-VERSION",
             BuildType = PlatformUtil.GetPlatformBranch().ToName(),
             PlayerId = HashPlayerId(progress.UniqueId),
+            GameMode = run.GameMode.ToString().ToUpperInvariant(),
             Character = localPlayer.CharacterId!,
             NumPlayers = run.Players.Count,
             Team = run.Players.Count > 1

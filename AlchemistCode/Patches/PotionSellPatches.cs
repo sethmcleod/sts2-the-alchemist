@@ -389,7 +389,9 @@ public static class PotionSellPatches
         }
     }
 
-    private const string SellableTipId = "ALCHEMIST_POTION_SELLABLE";
+    private static HoverTip SellableTip() => new(
+        new LocString("gameplay_ui", "POTION_SELL.sellable_tip.title"),
+        new LocString("gameplay_ui", "POTION_SELL.sellable_tip.description"));
 
     [HarmonyPatch(typeof(PotionModel), "get_HoverTips")]
     public static class PotionSellableTipPatch
@@ -398,11 +400,7 @@ public static class PotionSellPatches
         {
             if (!__instance.IsMutable) return; // canonical (compendium) potions throw on Owner
             if (!IsSellable(__instance)) return;
-            var tip = new HoverTip(
-                new LocString("gameplay_ui", "POTION_SELL.sellable_tip.title"),
-                new LocString("gameplay_ui", "POTION_SELL.sellable_tip.description"))
-            { Id = SellableTipId };
-            __result = __result.Append(tip);
+            __result = __result.Append(SellableTip());
         }
     }
 
@@ -426,13 +424,14 @@ public static class PotionSellPatches
 
         public static void Postfix(NHoverTipSet __instance, IEnumerable<IHoverTip> hoverTips)
         {
+            var sellableId = SellableTip().Id;
             var index = -1;
             var ourIndex = -1;
             foreach (var tip in IHoverTip.RemoveDupes(hoverTips))
             {
                 if (tip is not HoverTip hoverTip) continue;
                 index++;
-                if (hoverTip.Id == SellableTipId) { ourIndex = index; break; }
+                if (hoverTip.Id == sellableId) { ourIndex = index; break; }
             }
             if (ourIndex < 0) return;
             if (TextContainerField.GetValue(__instance) is not Node container) return;
