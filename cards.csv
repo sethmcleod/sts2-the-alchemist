@@ -21,7 +21,7 @@ Combine,Common,Skill,0,Add a random basic Mix into your Hand. Combine 2 Mixes in
 Compound Mix,Token,Skill,0,"Draw 1(2) cards, in addition to the effects of the two Mixes it was made from. Exhaust."
 Corrode,Uncommon,Attack,4,Retain. Ferment. Deal 18(24) damage. Apply 5(7) Poison. Costs 1 less for each turn Fermented.
 Coup de Grace,Uncommon,Attack,1,Deal 7(10) damage. Deals 3 additional damage for every 2 Poison the enemy has.
-Croak,Rare,Attack,2,"Deal 20(26) damage. If Fatal, gain an additional potion reward."
+Croak,Rare,Attack,2,"Deal 22(28) damage. If Fatal, gain an additional potion reward. Exhaust."
 Defend,Basic,Skill,1,Gain 5(8) Block.
 Digest,Common,Skill,0,"Exhaust 1 card. If it was a Status, Curse, or Quest, add a random Mix into your Hand. (Digest+ adds a Mix+)"
 Distill,Common,Skill,0,Retain. Ferment. Gain 1(2) Antitoxin. Gains 1(2) additional Antitoxin for each turn Fermented. Gain 2 Poison.

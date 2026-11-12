@@ -9,6 +9,14 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 - Added a green flash and a counter pulse to cards in your Hand each time they ferment
 
+### Changed
+
+- Changed Croak card: damage increased from 20(26) -> 22(28), now Exhausts
+
+### Fixed
+
+- Fixed Croak card being able to be generated in combat
+
 ## [0.15.7] - 2026-11-09
 
 ### Added
