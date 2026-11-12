@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using Godot;
 using HarmonyLib;
 using Alchemist.AlchemistCode.Cards;
@@ -9,12 +10,21 @@ using MegaCrit.Sts2.Core.Nodes.Screens;
 namespace Alchemist.AlchemistCode.Patches;
 
 // One portrait texture serves every scale, so only the 2x inspect screen gets the 1000x760 art
-[HarmonyPatch]
 public static class CardArtPatches
 {
     private static readonly StringName AlchemistCards = "alchemist_cards";
 
-    [HarmonyPatch(typeof(NCard), "UpdatePortrait")] [HarmonyPostfix]
+    private static MethodInfo? PortraitMethod() =>
+        AccessTools.Method(typeof(NCard), "UpdatePortrait") ?? AccessTools.Method(typeof(NCard), "Reload");
+
+    [HarmonyPatch]
+    private static class PortraitPatch
+    {
+        private static MethodBase? TargetMethod() => PortraitMethod();
+
+        private static void Postfix(NCard __instance) => AfterUpdatePortrait(__instance);
+    }
+
     private static void AfterUpdatePortrait(NCard __instance)
     {
         if (__instance.Model is not AlchemistCard card) return;
@@ -28,7 +38,7 @@ public static class CardArtPatches
     private static Action<NCard>? _updatePortrait;
 
     private static Action<NCard>? UpdatePortrait => _updatePortrait ??=
-        AccessTools.Method(typeof(NCard), "UpdatePortrait") is { } method
+        PortraitMethod() is { } method
             ? AccessTools.MethodDelegate<Action<NCard>>(method)
             : null;
 
