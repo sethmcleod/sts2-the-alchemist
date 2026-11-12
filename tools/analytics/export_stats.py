@@ -23,7 +23,6 @@ ASCENSION_BANDS = [0, 1, 5, 10]
 
 THEME_MIN_CARDS = 3
 
-# (width, last bin); each badge threshold must sit on a bin edge
 HISTOGRAMS = {
     "run_minutes": (10, 180),
     "poison_peak": (5, 60),
@@ -105,10 +104,8 @@ FILES = {
 }
 
 
-# Before schema 2, "fuming" meant Acrid Mix and "acrid" the Poison Mix
 SCHEMA_1_LABELS = {"fuming": "acrid", "acrid": "poison"}
 RENAMED_MIX_LABELS = {"sturdy": "syrupy"}
-# Left out of per-kind counts but kept in the Mix total, which the Mixes badge counted
 RETIRED_MIX_LABELS = {"poison"}
 
 
@@ -415,22 +412,11 @@ def build(runs: list[dict]) -> dict[str, dict]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    common.add_common_args(parser)
-    parser.add_argument("--include-seed", action="store_true",
-                        help=f"keep fabricated mod_version='{common.SEED_VERSION}' rows")
     parser.add_argument("--out", type=Path, default=OUT_DIR)
-    parser.add_argument("--from-file", type=Path, default=None,
-                        help="read rows from a JSON file (seed_runs.py --local) instead of the stores")
     args = parser.parse_args()
 
-    if args.from_file:
-        runs = json.loads(args.from_file.read_text())
-        args.include_seed = True
-    else:
-        runs = common.fetch_runs(args.mod_version, args.game_version, args.days_back)
+    runs = common.fetch_runs()
     fetched = len(runs)
-    if not args.include_seed:
-        runs = [r for r in runs if r["mod_version"] != common.SEED_VERSION]
     if excluded := excluded_players():
         runs = [r for r in runs if r["player_hash"] not in excluded]
     if not runs:

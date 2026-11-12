@@ -16,7 +16,6 @@ PLURAL_RE = re.compile(r"\{[A-Za-z_][A-Za-z0-9_]*:plural(?:\([a-z]+\))?:((?:[^{}
 TAGGED_RE = re.compile(r"\[(gold|purple|blue|green|red)\](.*?)\[/\1\]")
 ANY_TAG_RE = re.compile(r"\[/?[a-z_]+\]")
 
-# Re-check BASELIB_SHIPS whenever the csproj moves BaseLib past this version
 BASELIB_FILL_VERSION = "3.4.7"
 BASELIB_FILLS = {
     "static_hover_tips.json": {
@@ -125,7 +124,6 @@ def check_structure(lang: str, eng: dict[str, dict]) -> list[str]:
 
 def parity_errors(lang: str, fname: str, key: str, src: str, dst: str) -> list[str]:
     errors = []
-    # With a plural block, compare placeholder sets: the base game itself repeats or folds them
     src_ph, dst_ph = placeholders(src), placeholders(dst)
     if PLURAL_RE.search(src) or PLURAL_RE.search(dst):
         src_ph, dst_ph = sorted(set(src_ph)), sorted(set(dst_ph))

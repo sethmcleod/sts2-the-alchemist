@@ -33,7 +33,6 @@ AMBIGUOUS = {"gold", "poison"}
 
 AMBIGUOUS_ANY_CASE = {"discard", "exhausts"}
 
-# Base card text uses these forms, not the hover-tip titles
 OVERRIDES = {
     ("Discard Pile", "esp"): "pila de descarte",
     ("Exhaust", "rus"): "Сжигается|сжечь|сожженную",

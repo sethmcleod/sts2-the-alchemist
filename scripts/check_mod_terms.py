@@ -66,7 +66,6 @@ def distinct_names(tables: dict[str, dict[str, str]], poison: str) -> list[str]:
             named.append((key.split(".")[0].replace("ALCHEMIST-", ""), value.strip()))
     if poison:
         named.append(("POISON", poison))
-    # Compared whole, not by stem: Antidote and Antitoxin share a prefix in most languages
     def norm(s: str) -> str:
         d = unicodedata.normalize("NFD", s).casefold()
         return "".join(c for c in d if not unicodedata.combining(c)).strip()
@@ -114,7 +113,6 @@ def main() -> None:
 
     for lang in langs:
         tables = load(lang)
-        # Word order differs, so a position can land on a neighbouring base-game term
         other_terms: set[str] = set()
         gloss: dict[str, str] = {}
         if glossary_dir and (glossary_dir / f"glossary_{lang}.json").exists():
@@ -140,7 +138,6 @@ def main() -> None:
                 if stem(span) in other_terms:
                     continue
                 renderings[span].append(f"{fname}:{key}")
-            # A root seen once is usually reordered tags, so only roots seen more than once count
             roots: dict[str, int] = Counter()
             examples: dict[str, tuple[str, str]] = {}
             for span, where in renderings.items():

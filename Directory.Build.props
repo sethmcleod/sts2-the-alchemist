@@ -1,6 +1,5 @@
 <Project>
     <PropertyGroup>
-        <!-- Must match the game's MegaDot build: the game won't load a .pck from a newer Godot -->
         <GodotPath>/Applications/MegaDot.app/Contents/MacOS/Godot</GodotPath>
     </PropertyGroup>
 </Project>

@@ -14,7 +14,6 @@ ENERGY_ORB = REPO / "Alchemist" / "images" / "charui" / "big_energy.png"
 SCALE = 2
 LEFT, TOP, RIGHT, BOTTOM = -166, -227, 164, 211
 
-# (h, s, v) for shaders/hsv.gdshader, from AlchemistCardPool and materials/cards/banners/
 POOL_TINT = (0.75, 0.4, 0.8)
 RARITY_TINTS = {
     "common": (1.0, 0.0, 0.85),
@@ -27,13 +26,11 @@ STATUS_TINT = (0.634, 0.35, 0.8)
 TYPES = ["attack", "skill", "power"]
 TYPE_LABELS = {"attack": "Attack", "skill": "Skill", "power": "Power", "status": "Status"}
 
-# Atlas regions: (page, x, y, w, h, margin) from images/atlases/ui_atlas.sprites/card/*.tres
 FRAMES = {"attack": (0, 1320, 83, 598, 844), "skill": (0, 1221, 929, 598, 844), "power": (0, 621, 929, 598, 844)}
 BORDERS = {"attack": (1, 1329, 1, 551, 420), "skill": (1, 1313, 423, 551, 420), "power": (1, 674, 148, 551, 420)}
 BANNER = (1, 674, 1, 653, 145, (1, 23, 2, 25))
 PLAQUE = (0, 197, 1948, 123, 75)
 ANCIENT_BANNER = (1, 1, 1, 671, 182)
-# From images/atlases/compressed.sprites/card_template/ on compressed_0.png
 ANCIENT_TEXT_BG = {
     "attack": (824, 510, 676, 499, (10, 10, 17, 34)),
     "skill": (1217, 1150, 674, 427, (8, 106, 19, 106)),

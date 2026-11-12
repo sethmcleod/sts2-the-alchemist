@@ -1,5 +1,4 @@
 <Project>
-    <!-- Fills Sts2Path and Sts2DataDir when unset; override with local.props or /p:Sts2Path= -->
     <PropertyGroup>
         <IsLinux>false</IsLinux>
         <IsOSX>false</IsOSX>

@@ -8,7 +8,6 @@ import ssl
 import time
 import urllib.error
 import urllib.request
-from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 
@@ -19,9 +18,6 @@ CACHE = REPO / "site" / "node_modules" / ".cache" / "alchemist-runs"
 
 INBOX = "runs:inbox"
 FILES = "runs:files"
-
-SEED_VERSION = "seed-test"
-
 
 def credential(name: str) -> str | None:
     if value := os.environ.get(name):
@@ -36,14 +32,7 @@ def credential(name: str) -> str | None:
 
 def missing_credentials_message(names: list[str]) -> str:
     return (f"Missing {', '.join(names)}. A Vercel build has them. For a local export, copy them from the "
-            f"stores in the Vercel project's Storage tab into {ENV_FILE.relative_to(REPO)}, "
-            "or use `npm run data:seed` for made-up runs.")
-
-
-def add_common_args(parser) -> None:
-    parser.add_argument("--mod-version", default=None, help="one mod release (default: all)")
-    parser.add_argument("--game-version", default=None, help="one game build (default: all)")
-    parser.add_argument("--days-back", type=int, default=None, help="only runs from the last N days")
+            f"stores in the Vercel project's Storage tab into {ENV_FILE.relative_to(REPO)}.")
 
 
 def ssl_context() -> ssl.SSLContext:
@@ -54,19 +43,11 @@ def ssl_context() -> ssl.SSLContext:
         return ssl.create_default_context()
 
 
-def fetch_runs(mod_version: str | None = None, game_version: str | None = None,
-               days_back: int | None = None) -> list[dict]:
+def fetch_runs() -> list[dict]:
     queued, files = redis([["LRANGE", INBOX, 0, -1], ["GET", FILES]])
     files = json.loads(files) if files else []
     lines = [line for file in files for line in blob_lines(file)] + queued
-    # A pack that failed half way is packed again, so a run can be in two files
     rows = list({row["id"]: row for row in map(json.loads, lines)}.values())
-
-    since = (datetime.now(timezone.utc) - timedelta(days=days_back)).isoformat() if days_back else ""
-    rows = [row for row in rows
-            if (not mod_version or row["mod_version"] == mod_version)
-            and (not game_version or row["game_version"] == game_version)
-            and row["created_at"] >= since]
     return sorted(rows, key=lambda row: row["created_at"])
 
 

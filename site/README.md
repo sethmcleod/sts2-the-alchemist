@@ -13,7 +13,6 @@ Run these in `site/`. You need Node 22.12+ and Python 3.12+.
 | -------------------- | --------------------------------------------------- |
 | `npm install`        | Installs the dependencies                           |
 | `npm run data`       | Exports the mod's content and the run stats         |
-| `npm run data:seed`  | The same, with made-up runs (no keys needed)        |
 | `npm run dev`        | Serves the site on http://localhost:4321            |
 | `npm run build`      | Exports the data, then builds the site into `dist/` |
 | `npm run build:site` | Builds the site from the data already in `data/`    |
