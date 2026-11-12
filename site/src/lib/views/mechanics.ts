@@ -3,6 +3,7 @@ import type { Column } from '../../components/charts/Columns';
 import type { Stat } from '../../components/charts/Stats';
 import { rateItem } from '../bars';
 import type { Lang } from '../lang';
+import { themeName } from '../library';
 import { cardHref } from '../links';
 import { mixByKind, MIXES } from '../mod';
 import { byPrefix, type Filters, type Runs, totalCount } from '../runs';
@@ -10,6 +11,13 @@ import { type Counts, rate, type Selection, sumBy } from '../stats';
 
 const MIX_FIGHT_BUCKETS = ['0', '1', '2', '3', '4', '5-6', '7-9', '10+'];
 const TIER_FILL = ['var(--color-bronze)', 'var(--color-silver)', 'var(--color-gold)'];
+const REST_CHOICES = ['HEAL', 'SMITH', 'BREW'];
+const REST_FILL: Record<string, string> = {
+  BREW: 'var(--color-antitoxin)',
+  HEAL: 'var(--stage-1)',
+  OTHER: 'var(--color-muted)',
+  SMITH: 'var(--stage-2)',
+};
 
 type BinRange = (l: Lang, from: string, to?: string) => string;
 const TURN_RANGE: BinRange = (l, from, to) =>
@@ -28,7 +36,14 @@ export interface Histogram {
 export interface MechanicsModel {
   antitoxin: { decayFootnote: string; peak: Histogram; sources: BarItem[]; stats: Stat[] };
   badges: { icon: null | string; id: string; name: string; text: string; tiers: BarItem[] }[];
-  brew: { evenShare: null | number; note: string; picks: BarItem[]; stats: Stat[] };
+  brew: {
+    evenShare: null | number;
+    note: string;
+    picks: BarItem[];
+    rest: { label: string; parts: { fill: string; label: string; value: number }[] }[];
+    restNote: string;
+    stats: Stat[];
+  };
   countedSince: string;
   ferment: { cards: BarItem[]; stats: Stat[]; turns: Histogram };
   mixes: {
@@ -148,6 +163,30 @@ export function mechanics(l: Lang, runs: Runs, filters: Filters, icons: Icons): 
     };
   });
 
+  const restNames: Record<string, string> = {
+    BREW: themeName(l, 'Brew'),
+    HEAL: l.t('Rest'),
+    OTHER: l.t('Other'),
+    SMITH: l.t('Smith'),
+  };
+  const restByAct = new Map<number, Map<string, number>>();
+  for (const [key, counts] of sumBy(runs.tables.rest, on, (r) => `${r.act}|${r.choice}`)) {
+    const [act, choice] = key.split('|');
+    const kind = REST_CHOICES.includes(choice) ? choice : 'OTHER';
+    const byChoice = restByAct.get(Number(act)) ?? new Map<string, number>();
+    byChoice.set(kind, (byChoice.get(kind) ?? 0) + counts.picks);
+    restByAct.set(Number(act), byChoice);
+  }
+  const rest = [...restByAct]
+    .sort((a, b) => a[0] - b[0])
+    .map(([act, byChoice]) => ({
+      label: l.t('Act {act}', { act }),
+      parts: [...REST_CHOICES, 'OTHER']
+        .filter((kind) => byChoice.get(kind))
+        .map((kind) => ({ fill: REST_FILL[kind], label: restNames[kind], value: byChoice.get(kind)! })),
+    }));
+  const restSince = runs.meta.schema_since?.['4'];
+
   const offers = byPrefix(counters, 'brew_offer:');
   const picks = byPrefix(counters, 'brew_pick:');
   const evenShare = rate(totalCount(picks), totalCount(offers));
@@ -223,6 +262,12 @@ export function mechanics(l: Lang, runs: Runs, filters: Filters, icons: Icons): 
           }),
         )
         .sort((a, b) => (b.value ?? 0) - (a.value ?? 0)),
+      rest,
+      restNote: !restSince
+        ? l.t('Counted from the next release on.')
+        : rest.length
+          ? l.t('What players chose at each rest site, act by act, counted from {version} on.', { version: restSince })
+          : l.t('No runs from {version} on match these filters yet.', { version: restSince }),
       stats: [
         { label: l.t('Brews per run'), note: l.t('at rest sites'), value: l.fixed(rate(totals.brews, totals.runs), 1) },
         {

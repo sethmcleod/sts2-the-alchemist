@@ -29,6 +29,7 @@ const tagName = (l: Lang, tag: string) => (tag === 'Multiplayer' ? l.t('Multipla
 export interface CardTableRow {
   held: number;
   id: string;
+  liftVsPeers: null | number;
   name: string;
   offered: number;
   pickrate: null | number;
@@ -156,6 +157,7 @@ export function cardStats(l: Lang, runs: Runs, filters: Filters): CardStatsModel
       .map((r) => ({
         held: r.held,
         id: r.id,
+        liftVsPeers: r.liftVsPeers,
         name: r.name,
         offered: r.offered,
         pickrate: r.pickrate,

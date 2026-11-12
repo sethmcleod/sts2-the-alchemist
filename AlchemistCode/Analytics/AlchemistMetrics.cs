@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text.Json.Nodes;
 using Alchemist.AlchemistCode.Badges;
 using Alchemist.AlchemistCode.Cards;
+using Alchemist.AlchemistCode.Cards.AncientsAwakened;
+using Alchemist.AlchemistCode.Cards.Hero;
+using Alchemist.AlchemistCode.Cards.ReshuffledSpire;
 using Alchemist.AlchemistCode.Config;
 using Alchemist.AlchemistCode.Epochs;
 using Alchemist.AlchemistCode.Relics;
@@ -12,6 +15,7 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Badges;
+using MegaCrit.Sts2.Core.Platform.Steam;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Runs.History;
@@ -19,6 +23,7 @@ using MegaCrit.Sts2.Core.Runs.Metrics;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.Saves.Runs;
 using MegaCrit.Sts2.Core.Timeline;
+using Steamworks;
 
 namespace Alchemist.AlchemistCode.Analytics;
 
@@ -27,7 +32,7 @@ internal static class AlchemistMetrics
     // Vanilla skips runs shorter than this many floors
     private const int RunLengthThreshold = 5;
     // Bump when a counter is added or a key changes meaning
-    private const int Schema = 3;
+    private const int Schema = 4;
 
     public static void Initialize()
     {
@@ -62,12 +67,13 @@ internal static class AlchemistMetrics
         var allPoints = run.MapPointHistory.SelectMany(act => act).ToList();
         if (allPoints.Count < RunLengthThreshold) return;
 
+        var language = LocManager.Instance.Language;
         // Entry ids must serialize in English whatever language the player uses
         LocManager.Instance.StartOverridingLanguageAsEnglish();
         try
         {
             var metrics = VanillaRunMetrics.Build(run, isVictory, localPlayer, allPoints);
-            var row = Row(run, isVictory, metrics, Payload(run, isVictory, localPlayer, allPoints));
+            var row = Row(run, isVictory, metrics, Payload(run, isVictory, localPlayer, allPoints, language));
             MainFile.Logger.Info($"Uploading Alchemist run analytics (player {metrics.PlayerId})...");
             RunMetricsUploader.Upload(row.ToJsonString(), "Alchemist run");
         }
@@ -92,7 +98,7 @@ internal static class AlchemistMetrics
     };
 
     private static JsonObject Payload(SerializableRun run, bool isVictory, SerializablePlayer player,
-        List<MapPointHistoryEntry> allPoints) => new()
+        List<MapPointHistoryEntry> allPoints, string language) => new()
     {
         ["epochs"] = new JsonArray(ObtainedEpochs().Select(id => (JsonNode)id).ToArray()),
         ["potions_sold"] = PotionSaleCounter.CountFor(player),
@@ -132,8 +138,24 @@ internal static class AlchemistMetrics
             ["enable_epochs"] = EffectiveSettings.EnableEpochsFor(run.Players.Count > 1),
             ["keep_pools_separate"] = EffectiveSettings.KeepPoolsSeparateFor(run.Players.Count > 1),
             ["secrets_unlocked"] = SecretUnlocks.IsUnlocked,
+            ["hero_cards_without_expansion"] = AlchemistModConfig.HeroCardsWithoutExpansion,
+            ["reshuffled_cards_without_mod"] = AlchemistModConfig.ReshuffledCardsWithoutMod,
+        },
+        ["expansions"] = new JsonObject
+        {
+            ["hero_expansion"] = HeroExpansion.IsLoaded,
+            ["ancients_awakened"] = AncientsAwakenedMod.IsLoaded,
+            ["reshuffled_spire"] = ReshuffledSpireMod.IsLoaded,
+        },
+        ["client"] = new JsonObject
+        {
+            ["language"] = language,
+            ["platform"] = Platform(),
         },
     };
+
+    private static string Platform() =>
+        SteamInitializer.Initialized && SteamUtils.IsSteamRunningOnSteamDeck() ? "Steam Deck" : Godot.OS.GetName();
 
     // Not ScoreUtility.GetBadges: its signature differs between the game branches
     private static JsonObject? BadgesJson(SerializableRun run, bool isVictory, SerializablePlayer player)
@@ -174,14 +196,18 @@ internal static class AlchemistMetrics
         var acts = new JsonArray();
         for (var actIndex = 0; actIndex < run.MapPointHistory.Count; actIndex++)
         {
-            var fights = run.MapPointHistory[actIndex]
-                .Where(e => e.Rooms.Last().RoomType.IsCombatRoom()).ToList();
+            var points = run.MapPointHistory[actIndex];
+            var fights = points.Where(e => e.Rooms.Last().RoomType.IsCombatRoom()).ToList();
+            var rest = new JsonObject();
+            foreach (var choice in points.SelectMany(e => e.GetEntry(player.NetId).RestSiteChoices))
+                rest[choice] = (rest[choice]?.GetValue<int>() ?? 0) + 1;
             acts.Add(new JsonObject
             {
                 ["act"] = actIndex + 1,
                 ["fights"] = fights.Count,
                 ["turns"] = fights.Sum(e => e.Rooms.Last().TurnsTaken + 1),
                 ["damage"] = fights.Sum(e => Math.Min(e.GetEntry(player.NetId).DamageTaken, player.MaxHp)),
+                ["rest"] = rest,
             });
         }
         return acts;

@@ -18,6 +18,7 @@ export interface Group {
   ascension: number;
   build: string;
   coop: number;
+  expansion?: number;
   pool: string;
   version: string;
 }
@@ -25,6 +26,7 @@ export interface Group {
 export interface Filters {
   ascension: string;
   build: string;
+  expansions: 'all' | 'with' | 'without';
   min: number;
   players: 'all' | 'coop' | 'solo';
   pool: string;
@@ -34,6 +36,7 @@ export interface Filters {
 export const DEFAULT_FILTERS: Filters = {
   ascension: 'all',
   build: 'all',
+  expansions: 'all',
   min: 10,
   players: 'all',
   pool: 'all',
@@ -52,6 +55,7 @@ const SUMMARY_TABLES = [
   'counters',
   'acts',
   'death_floors',
+  'rest',
 ] as const;
 
 export type Names = Pick<Translation, 'badges' | 'names'>;
@@ -134,6 +138,7 @@ export class Runs {
       inVersion(group.version) &&
       (filters.ascension === 'all' || group.ascension === Number(filters.ascension)) &&
       (filters.players === 'all' || group.coop === (filters.players === 'coop' ? 1 : 0)) &&
+      (filters.expansions === 'all' || (group.expansion ?? 0) === (filters.expansions === 'with' ? 1 : 0)) &&
       (filters.pool === 'all' || group.pool === filters.pool) &&
       (filters.build === 'all' || group.build === filters.build) &&
       where(group)
@@ -241,12 +246,15 @@ export interface CardRow {
   ferment_plays: number;
   ferment_turns: number;
   held: number;
+  held_lift: number;
   held_never_played: number;
   held_twice: number;
   held_twice_wins: number;
   held_wins: number;
   held_with_plays: number;
   id: string;
+  lift: null | number;
+  liftVsPeers: null | number;
   offered: number;
   peer: null | number;
   picked: number;
@@ -272,6 +280,8 @@ export function cardRows(runs: Runs, on: Selection, min: number) {
       rarity: info[id]?.rarity ?? 'Retired',
       ...(counts as unknown as Omit<CardRow, 'id' | 'rarity'>),
       deckrate: rate(counts.held, totals.runs),
+      lift: rate((counts.held_lift ?? 0) / 1000, counts.held),
+      liftVsPeers: null,
       peer: null,
       pickrate: rate(counts.picked, counts.offered),
       playsPerRun: rate(counts.plays, counts.held_with_plays),
@@ -281,16 +291,20 @@ export function cardRows(runs: Runs, on: Selection, min: number) {
     });
   }
   const medianWinrate = {} as Record<PoolRarity, null | number>;
+  const medianLift = {} as Record<PoolRarity, null | number>;
   for (const rarity of POOL_RARITIES) {
     const ranked = rows
       .filter((row) => row.rarity === rarity && row.held >= min)
       .sort((a, b) => (b.winrate ?? 0) - (a.winrate ?? 0));
     ranked.forEach((row, i) => Object.assign(row, { rank: i + 1, ranked: ranked.length }));
     medianWinrate[rarity] = median(ranked.map((row) => row.winrate ?? 0));
+    medianLift[rarity] = median(ranked.map((row) => row.lift ?? 0));
   }
   for (const row of rows) {
     row.peer = inPool(row.rarity) ? medianWinrate[row.rarity] : null;
     row.vsPeers = row.peer != null && row.winrate != null ? row.winrate - row.peer : null;
+    const liftPeer = inPool(row.rarity) && row.held >= min ? medianLift[row.rarity] : null;
+    row.liftVsPeers = liftPeer != null && row.lift != null ? row.lift - liftPeer : null;
   }
   return new Map(rows.map((row) => [row.id, row]));
 }

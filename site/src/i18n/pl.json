@@ -2,7 +2,7 @@
   "readme": {
     "060cb30015be": "Alchemik to nowa postać do Slay the Spire 2: ciekawska żaba, która wszystkiego spróbuje choć raz, w osobistej wędrówce przez Iglicę. Pilnuje równowagi własnej trucizny, by szybko rosnąć w siłę, w środku walki miesza karty podobne do mikstur, pozwala innym kartom fermentować w ręce, aż będą gotowe, a w Obozowiskach warzy specjalne mikstury, które można sprzedać Handlarzowi.",
     "c80e7f014bdc": "- **Trucizna**: Alchemik celowo sam się truje. Niektóre ataki zadają tym więcej obrażeń, im więcej masz Trucizny, a inne karty aktywują się za każdym razem, gdy aktywuje się twoja Trucizna. Jest też wiele sposobów, by nałożyć Truciznę na wrogów.\n- **Antytoksyna**: Chroni cię przed twoją własną Trucizną. Za każdym razem, gdy twoja Trucizna się aktywuje, Antytoksyna powstrzymuje obrażenia do wysokości swojej wartości. Nie zużywa się, ale na początku każdej tury zmniejsza się o 1, tak jak Trucizna.\n- **Mieszanki**: Karty kosztujące 0, które tworzysz w walce i które działają podobnie jak mikstury. Podstawowe Mieszanki to Wybuchowa (obrażenia), Gęsta (Blok) i Rześka (dobieranie kart). Lotne Mieszanki to Dymiąca (obrażenia dla wszystkich wrogów i Skażenie), Gryząca (Słabość i Wrażliwość) oraz Iskrząca (Energia).\n- **Fermentacja**: Te karty mają Zachowanie i stają się mocniejsze za każdą turę spędzoną w twojej ręce. Możesz też manipulować poziomem ich Fermentacji, by zyskać przewagę.\n- **Warzenie**: Nowa opcja w Obozowisku, która ulepsza losową kartę w twojej talii i pozwala wybrać 1 z 3 specjalnych mikstur. Ze względu na jakość tych wywarów Handlarz chętnie odkupi je od ciebie za 100 szt. Złota.",
-    "a43398bb13a3": "Ten mod wciąż jest w fazie rozwoju i jego zawartość może się zmieniać, ale opinie są mile widziane! Najlepszym miejscem do rozmów o modzie jest [wątek Alchemika](https://discord.com/channels/309399445785673728/1536374761699938424) na kanale #modding-forum na oficjalnym serwerze Discord Slay the Spire.\n\nNa razie tłumaczenia są generowane automatycznie. Gdy zawartość przestanie się tak często zmieniać, planuję zlecić je rodzimym tłumaczom. Do tego czasu poprawki są mile widziane! Jeśli zauważysz błąd w swoim języku, skontaktuj się ze mną albo otwórz pull request na GitHubie."
+    "fe72091416da": "Ten mod wciąż jest w fazie rozwoju i jego zawartość może się zmieniać, ale opinie są mile widziane! Najlepszym miejscem do rozmów o modzie jest [wątek Alchemika](https://discord.com/channels/309399445785673728/1536374761699938424) na kanale #modding-forum na oficjalnym serwerze Discord Slay the Spire.\n\nNa razie tłumaczenia są generowane automatycznie. Gdy zawartość przestanie się tak często zmieniać, planuję zlecić je rodzimym tłumaczom. Do tego czasu poprawki są mile widziane! Jeśli zauważysz błąd w swoim języku, skontaktuj się ze mną albo otwórz pull request na GitHubie."
   },
   "site": {
     "(opens in a new tab)": "(otwiera się w nowej karcie)",
@@ -220,6 +220,7 @@
     "by cards, relics, potions and powers": "przez karty, artefakty, mikstury i moce",
     "by this power": "przez tę moc",
     "by win rate. The middle one wins {rate}": "według odsetka zwycięstw. Środkowa wygrywa w {rate} przypadków",
+    "by win rate. The middle one wins {rate}. With ascension and player skill taken out, this card wins {adjusted}": "według odsetka zwycięstw. Środkowa wygrywa w {rate} przypadków. Po odjęciu wpływu Wyniesienia i umiejętności graczy ta karta wygrywa w {adjusted} przypadków",
     "from the Merchant": "od Handlarza",
     "from this power": "z tej mocy",
     "never an early pick": "nigdy jako wczesny wybór",
@@ -283,12 +284,6 @@
       "many": "{n} z {total} kart",
       "other": "{n} z {total} kart"
     },
-    "{n} players": {
-      "one": "{n} gracza",
-      "few": "{n} graczy",
-      "many": "{n} graczy",
-      "other": "{n} gracza"
-    },
     "{n} potions": {
       "one": "{n} mikstura",
       "few": "{n} mikstury",
@@ -326,8 +321,10 @@
     },
     ", on game build {build}": ", kompilacja gry {build}",
     ", with a partly unlocked pool": ", częściowo odblokowana pula",
+    ", with expansion mods": ", z modami rozszerzeń",
     ", with the full card pool": ", pełna pula kart",
     ", with the starting pool": ", pula startowa",
+    ", without expansion mods": ", bez modów rozszerzeń",
     "A0": "A0",
     "A1 to A4": "od A1 do A4",
     "A10 and up": "A10 i wyżej",
@@ -382,6 +379,7 @@
     "Compound": "Złożona",
     "Compound Mixes": "Mieszanki złożone",
     "Compound pairings": "Pary w Mieszankach złożonych",
+    "Counted from the next release on.": "Liczone od następnego wydania.",
     "Damage": "Obrażenia",
     "Each dot is a card. Further right means players take it more often when it is offered. Higher means the runs that finished with it won more often. The gold line is the middle card, at {rate}. The table below has every number.": "Każda kropka to karta. Im dalej w prawo, tym częściej gracze ją wybierają, gdy jest oferowana. Im wyżej, tym częściej wygrywały wyprawy zakończone z nią. Złota linia to środkowa karta: {rate}. Wszystkie liczby znajdziesz w tabeli poniżej.",
     "Each kind's share of every Mix created.": "Udział każdego rodzaju we wszystkich stworzonych Mieszankach.",
@@ -396,6 +394,7 @@
     "Ends the run": "Kończy wyprawę",
     "Every card": "Wszystkie karty",
     "Exhausted first, by Ethereal or another card": "Wyczerpana wcześniej (Eteryczna lub przez inną kartę)",
+    "Expansion mods": "Mody rozszerzeń",
     "Ferment plays": "Zagrania z Fermentacją",
     "Fermented": "Sfermentowane",
     "Fight": "Walka",
@@ -447,6 +446,7 @@
       "other": "Żadna karta nie ma jeszcze {n} wyprawy w obu wersjach."
     },
     "No card in these filters has enough runs yet.": "Żadna karta w tych filtrach nie ma jeszcze dość wypraw.",
+    "No runs from {version} on match these filters yet.": "Żadne wyprawy od {version} nie pasują jeszcze do tych filtrów.",
     "No runs in these filters count Antitoxin sources yet. Counted {since}.": "Żadna wyprawa w tych filtrach nie liczy jeszcze źródeł Antytoksyny. Liczone {since}.",
     "No runs in these filters count Ferment turns per card yet. Counted {since}.": "Żadna wyprawa w tych filtrach nie liczy jeszcze tur Fermentacji na kartę. Liczone {since}.",
     "No runs in these filters count card plays yet. Counted {since}.": "Żadna wyprawa w tych filtrach nie liczy jeszcze zagrań kart. Liczone {since}.",
@@ -473,6 +473,9 @@
     "Played the most": "Najczęściej zagrywane",
     "Played unfermented": "Zagrane bez Fermentacji",
     "Players": "Gracze",
+    "Players per week": "Gracze tygodniowo",
+    "Players who shared a run each week over the last 12 weeks": "Gracze, którzy udostępnili wyprawę w każdym z ostatnich 12 tygodni",
+    "Players who shared at least one run each week, from every version. The last week may still be going.": "Gracze, którzy udostępnili co najmniej jedną wyprawę w danym tygodniu, ze wszystkich wersji. Ostatni tydzień może jeszcze trwać.",
     "Plays": "Zagrania",
     "Playstyles": "Style gry",
     "Poison damage the Alchemist took, split by what Antitoxin absorbed and what hit HP.": "Obrażenia od Trucizny otrzymane przez Alchemika, z podziałem na to, co pochłonęła Antytoksyna, i to, co odebrało PŻ.",
@@ -488,6 +491,8 @@
     "Reach Act 3": "Dotarcie do 3. Aktu",
     "Recent versions ({version})": "Ostatnie wersje ({version})",
     "Recent versions ({version}+)": "Ostatnie wersje ({version}+)",
+    "Rest": "Odpocznij",
+    "Rest site choices": "Wybory w Obozowisku",
     "Rest site upgrades for every 100 runs that finished with the card.": "Ulepszenia w Obozowisku na każde 100 wypraw zakończonych z tą kartą.",
     "Run length": "Długość wyprawy",
     "Runs": "Wyprawy",
@@ -506,6 +511,7 @@
     "Showing {runs} on {versions}{details}.": "Wyświetlane: {runs} ({versions}{details}).",
     "Since a version": "Od wersji",
     "Skipped": "Pominięte",
+    "Smith": "Ulepsz",
     "Solo": "Solo",
     "Solo and multiplayer": "Solo i tryb wieloosobowy",
     "Sparkling": "Iskrząca",
@@ -529,6 +535,7 @@
     "The turns Fermented on every Ferment card a run played, added up. The lines mark where the {tiers} badges start.": "Suma tur Fermentacji wszystkich kart z Fermentacją zagranych w wyprawie. Linie oznaczają progi odznak: {tiers}.",
     "The turns Fermented when a card is played, on average, for the Ferment cards in a run's final deck.": "Średnia liczba tur Fermentacji w chwili zagrania dla kart z Fermentacją w końcowej talii wyprawy.",
     "The two Mixes folded into each Compound Mix.": "Dwie Mieszanki połączone w każdą Mieszankę złożoną.",
+    "This week so far": "Ten tydzień do tej pory",
     "To": "Do",
     "Toughest fights": "Najtrudniejsze walki",
     "Trailing their peers": "W tyle za konkurencją",
@@ -541,6 +548,9 @@
     "Upgrades": "Ulepszenia",
     "Version": "Wersja",
     "Vs middle card": "Względem środkowej",
+    "Vs middle card, skill-adjusted": "Względem środkowej, po korekcie umiejętności",
+    "Week of {date}": "Tydzień od {date}",
+    "What players chose at each rest site, act by act, counted from {version} on.": "Co gracze wybierali w każdym Obozowisku, akt po akcie, liczone od {version}.",
     "Where Antitoxin comes from": "Skąd pochodzi Antytoksyna",
     "Where Mixes come from": "Skąd pochodzą Mieszanki",
     "Where runs end": "Gdzie kończą się wyprawy",
@@ -559,13 +569,16 @@
       "many": "Wygrywa w {rate} z {n} wypraw",
       "other": "Wygrywa w {rate} z {n} wyprawy"
     },
+    "With expansion mods": "Z modami rozszerzeń",
+    "With or without": "Z nimi lub bez",
+    "Without expansion mods": "Bez modów rozszerzeń",
     "Zesty": "Rześka",
     "a run": "na wyprawę",
     "at rest sites": "w Obozowisku",
     "counted {since}": "liczone {since}",
     "created": "stworzone",
     "every version": "wszystkie wersje",
-    "for the middle run. The middle win takes {time}": "dla środkowej wyprawy. Środkowe zwycięstwo trwa {time}",
+    "for the middle run, on average": "dla środkowej wyprawy, średnio",
     "from every source": "ze wszystkich źródeł",
     "from the next release on": "od następnego wydania",
     "from {version} on": "od {version}",
@@ -654,6 +667,12 @@
       "many": "{n} wypraw wieloosobowych",
       "other": "{n} wyprawy wieloosobowej"
     },
+    "{n} new players": {
+      "one": "{n} nowy gracz",
+      "few": "{n} nowi gracze",
+      "many": "{n} nowych graczy",
+      "other": "{n} nowego gracza"
+    },
     "{n} offers": {
       "one": "{n} oferta",
       "few": "{n} oferty",
@@ -665,6 +684,12 @@
       "few": "{n} wybory",
       "many": "{n} wyborów",
       "other": "{n} wyboru"
+    },
+    "{n} players": {
+      "one": "{n} gracz",
+      "few": "{n} gracze",
+      "many": "{n} graczy",
+      "other": "{n} gracza"
     },
     "{n} runs": {
       "one": "{n} wyprawa",

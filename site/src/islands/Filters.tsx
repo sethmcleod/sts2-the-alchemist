@@ -32,6 +32,11 @@ const PLAYERS: [FilterValues['players'], (l: Lang) => string][] = [
   ['solo', (l) => l.t('Solo')],
   ['coop', (l) => l.t('Multiplayer')],
 ];
+const EXPANSIONS: [FilterValues['expansions'], (l: Lang) => [option: string, clause: string]][] = [
+  ['all', (l) => [l.t('With or without'), '']],
+  ['without', (l) => [l.t('Without expansion mods'), l.t(', without expansion mods')]],
+  ['with', (l) => [l.t('With expansion mods'), l.t(', with expansion mods')]],
+];
 const POOLS: Record<string, (l: Lang) => [option: string, clause: string]> = {
   all: (l) => [l.t('Any pool'), ''],
   full: (l) => [l.t('Full pool (every epoch)'), l.t(', with the full card pool')],
@@ -58,6 +63,9 @@ export function validFilters(filters: FilterValues, options: FilterOptions): Fil
       filters.build === 'all' || options.builds.some(([build]) => build === filters.build)
         ? filters.build
         : DEFAULT_FILTERS.build,
+    expansions: EXPANSIONS.some(([value]) => value === filters.expansions)
+      ? filters.expansions
+      : DEFAULT_FILTERS.expansions,
     min: MIN_RUNS.includes(filters.min) ? filters.min : DEFAULT_FILTERS.min,
     players: PLAYERS.some(([players]) => players === filters.players) ? filters.players : DEFAULT_FILTERS.players,
     pool: Object.hasOwn(POOLS, filters.pool) ? filters.pool : DEFAULT_FILTERS.pool,
@@ -104,6 +112,7 @@ export default function Filters({ filters, l, onChange, options, runs, status, v
       ? l.t(', at every ascension')
       : l.t(', at {band}', { band: l.t(ASCENSION_BANDS[Number(filters.ascension)]) }),
     POOLS[filters.pool](l)[1],
+    EXPANSIONS.find(([value]) => value === filters.expansions)![1](l)[1],
     filters.build === 'all' ? '' : l.t(', on game build {build}', { build: filters.build }),
     filters.min === DEFAULT_FILTERS.min
       ? ''
@@ -111,6 +120,7 @@ export default function Filters({ filters, l, onChange, options, runs, status, v
   ].join('');
   const moreFilters = useRef<HTMLDetailsElement>(null);
   const moreFiltersSet =
+    filters.expansions !== DEFAULT_FILTERS.expansions ||
     filters.pool !== DEFAULT_FILTERS.pool ||
     filters.build !== DEFAULT_FILTERS.build ||
     filters.min !== DEFAULT_FILTERS.min;
@@ -167,6 +177,14 @@ export default function Filters({ filters, l, onChange, options, runs, status, v
         <details class="more-filters" ref={moreFilters}>
           <summary>{l.t('More filters')}</summary>
           <div class="flex flex-wrap items-end gap-3">
+            <label class="field">
+              <span>{l.t('Expansion mods')}</span>
+              <select class="field-control" onChange={setFilter('expansions')} value={filters.expansions}>
+                {EXPANSIONS.map(([value, name]) => (
+                  <option value={value}>{name(l)[0]}</option>
+                ))}
+              </select>
+            </label>
             <label class="field">
               <span>{l.t('Card pool')}</span>
               <select class="field-control" onChange={setFilter('pool')} value={filters.pool}>

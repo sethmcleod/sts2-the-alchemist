@@ -93,7 +93,14 @@ export interface Meta {
   themes: string[];
   total_runs: number;
   versions: string[];
+  weekly_players: WeeklyPlayers[];
   workshop: WorkshopItem[];
+}
+
+export interface WeeklyPlayers {
+  new: number;
+  players: number;
+  week: string;
 }
 
 export interface TableFile {

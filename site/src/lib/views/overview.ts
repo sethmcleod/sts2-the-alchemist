@@ -19,6 +19,7 @@ export interface OverviewModel {
   themes: BarItem[];
   themesNote: string;
   versions: BarItem[];
+  weeks: Column[];
 }
 
 export function overview(l: Lang, runs: Runs, filters: Filters): OverviewModel {
@@ -26,7 +27,6 @@ export function overview(l: Lang, runs: Runs, filters: Filters): OverviewModel {
   const totals = runs.totals(on);
   const overall = rate(totals.wins, totals.runs);
   const runLength = runs.histogram(on, 'run_minutes');
-  const winLength = runs.histogram(on, 'run_minutes', 'wins');
   const per100 = (n: number) => Math.round((100 * n) / totals.runs);
 
   const stages: [string, number][] = [
@@ -74,6 +74,24 @@ export function overview(l: Lang, runs: Runs, filters: Filters): OverviewModel {
     });
   }
 
+  const weeks: Column[] = (runs.meta.weekly_players ?? []).slice(-12).map((week) => {
+    const start = new Date(`${week.week}T00:00:00Z`);
+    const label = start.toLocaleDateString(l.lang, { day: 'numeric', month: 'short', timeZone: 'UTC' });
+    const end = new Date(start);
+    end.setUTCDate(start.getUTCDate() + 6);
+    const partial = end.toISOString().slice(0, 10) > runs.meta.last_day;
+    return {
+      label,
+      tip: [
+        l.t('Week of {date}', { date: label }),
+        l.n(week.players, '{n} player', '{n} players'),
+        l.n(week.new, '{n} new player', '{n} new players'),
+        ...(partial ? [l.t('This week so far')] : []),
+      ],
+      value: week.players,
+    };
+  });
+
   return {
     ascensions,
     days,
@@ -110,9 +128,7 @@ export function overview(l: Lang, runs: Runs, filters: Filters): OverviewModel {
       },
       {
         label: l.t('Run length'),
-        note: l.t('for the middle run. The middle win takes {time}', {
-          time: l.minutes(histogramMedian(winLength.bins, winLength.width)),
-        }),
+        note: l.t('for the middle run, on average'),
         value: l.minutes(histogramMedian(runLength.bins, runLength.width)),
       },
       {
@@ -129,5 +145,6 @@ export function overview(l: Lang, runs: Runs, filters: Filters): OverviewModel {
       { unfocused: l.t('Unfocused') },
     ),
     versions,
+    weeks,
   };
 }

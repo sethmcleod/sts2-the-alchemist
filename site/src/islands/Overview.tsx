@@ -57,6 +57,13 @@ export default function Overview({ initial, locale, options }: Props) {
         <p class="note">{l.t('Runs shared each day over the last month, from every version.')}</p>
         <Columns items={model.days} l={l} label={l.t('Runs shared per day over the last 30 days')} />
       </section>
+      <section class="panel p-5">
+        <SectionHeading id="players-per-week">{l.t('Players per week')}</SectionHeading>
+        <p class="note">
+          {l.t('Players who shared at least one run each week, from every version. The last week may still be going.')}
+        </p>
+        <Columns items={model.weeks} l={l} label={l.t('Players who shared a run each week over the last 12 weeks')} />
+      </section>
     </div>
   );
 }

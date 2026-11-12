@@ -2,13 +2,13 @@
 
 The mod uploads a summary of each finished run. The site adds them up once a day.
 
-| Step    | Where                      | What                                                   |
-| ------- | -------------------------- | ------------------------------------------------------ |
-| Upload  | `AlchemistCode/Analytics/` | Posts the game's run summary and the mod's counters    |
-| Receive | `site/api/runs.ts`         | Checks the row, adds `id` and `created_at`, queues it  |
+| Step    | Where                      | What                                                    |
+| ------- | -------------------------- | ------------------------------------------------------- |
+| Upload  | `AlchemistCode/Analytics/` | Posts the game's run summary and the mod's counters     |
+| Receive | `site/api/runs.ts`         | Checks the row, adds `id` and `created_at`, queues it   |
 | Store   | `site/api/pack.ts`         | Daily: moves the queue to a gzipped file in Vercel Blob |
-| Export  | `export_stats.py`          | Turns the runs into count tables in `site/data/`       |
-| Show    | `site/`                    | Builds the pages from the count tables                 |
+| Export  | `export_stats.py`          | Turns the runs into count tables in `site/data/`        |
+| Show    | `site/`                    | Builds the pages from the count tables                  |
 
 ## When a run uploads
 
@@ -24,21 +24,22 @@ game's anonymous install id.
 
 ## A row
 
-| Field              | Holds                                                         |
-| ------------------ | ------------------------------------------------------------- |
+| Field              | Holds                                                          |
+| ------------------ | -------------------------------------------------------------- |
 | Top level          | `mod_version`, `game_version`, `victory`, `ascension`, `floor` |
-| `data`             | The game's run summary (`VanillaRunMetrics.cs`)               |
-| `alchemist`        | Mixes, Poison, Antitoxin, Brews, deck themes, badges, `tally` |
-| `id`, `created_at` | Added by the site                                             |
+| `data`             | The game's run summary (`VanillaRunMetrics.cs`)                |
+| `alchemist`        | Mixes, Poison, Antitoxin, Brews, deck themes, badges, `tally`  |
+| `id`, `created_at` | Added by the site                                              |
 
 `tally` is a bag of counts from `RunCounters.Tally`. `play:spike` counts plays of Spike.
 `RunCounters.cs` lists every key.
 
-| `schema` | Adds                                                                                  |
-| -------- | ------------------------------------------------------------------------------------- |
-| 1        | The first client                                                                      |
-| 2        | Mix keys that match the card names                                                    |
-| 3        | Plays per card, badges, Antitoxin sources, self-Poison peak, Poison dealt, Ferment turns |
+| `schema` | Adds                                                                                         |
+| -------- | -------------------------------------------------------------------------------------------- |
+| 1        | The first client                                                                             |
+| 2        | Mix keys that match the card names                                                           |
+| 3        | Plays per card, badges, Antitoxin sources, self-Poison peak, Poison dealt, Ferment turns     |
+| 4        | Rest site choices per act, game language and platform, expansion mods and their card toggles |
 
 ## The export
 
@@ -46,16 +47,20 @@ Each run belongs to a group (mod version, game build, ascension band, card pool,
 multiplayer). Each table holds counts per group, and the site adds up the groups its filters allow.
 
 ```json
-{ "key": ["group", "card"], "counts": ["held", "held_wins", "offered", "picked"], "rows": [[12, "ALCHEMIST-THICKEN", 30, 14, 90, 21]] }
+{
+  "key": ["group", "card"],
+  "counts": ["held", "held_wins", "offered", "picked"],
+  "rows": [[12, "ALCHEMIST-THICKEN", 30, 14, 90, 21]]
+}
 ```
 
-| File           | Holds                                           |
-| -------------- | ----------------------------------------------- |
-| `summary.json` | Metadata, mod text, groups, totals, badges, counters |
+| File           | Holds                                                  |
+| -------------- | ------------------------------------------------------ |
+| `summary.json` | Metadata, mod text, groups, totals, badges, counters   |
 | `cards.json`   | Per card: held, won, offered, picked, upgraded, played |
-| `relics.json`  | Relics and potions                              |
-| `fights.json`  | Per encounter: fights, turns, damage, deaths    |
-| `notes.json`   | Patch notes from `CHANGELOG.md`                 |
+| `relics.json`  | Relics and potions                                     |
+| `fights.json`  | Per encounter: fights, turns, damage, deaths           |
+| `notes.json`   | Patch notes from `CHANGELOG.md`                        |
 
 ## Add a stat
 
