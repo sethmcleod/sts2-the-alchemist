@@ -19,6 +19,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 - Fixed the mod failing to load on the v0.113.0 game beta, and the Alchemist now properly appears after the Fool in the card library
 - Fixed Bestow and Croak being able to be generated in combat
+- Fixed the translated names of Bloom (Indonesian, Korean, Polish), Coup de Grace (French, Italian), Warm Up (Indonesian) and Rerun (Brazilian Portuguese) matching the Fool's new cards
 
 ## [0.15.7] - 2026-11-09
 
