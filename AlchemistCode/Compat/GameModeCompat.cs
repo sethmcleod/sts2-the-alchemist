@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using Alchemist.AlchemistCode.Cards;
 using Alchemist.AlchemistCode.Patches;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Merchant;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Blitz;
+using MegaCrit.Sts2.Core.Models.Enchantments;
 using MegaCrit.Sts2.Core.Nodes.Screens.Blitz;
 using MegaCrit.Sts2.Core.Nodes.Screens.Dread;
 using MegaCrit.Sts2.Core.Saves.Managers;
@@ -36,6 +40,36 @@ static class PrismaticPoolPatch
 {
     static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) =>
         PoolPatches.StripCharacterReads(instructions, "The Blitz Prismatic card reward");
+}
+
+[HarmonyPatch]
+static class EnchantedRewardScopePatch
+{
+    internal static bool Active { get; private set; }
+
+    static MethodBase? TargetMethod() =>
+        typeof(BlitzMerchantEnchantedCardRewardEntry)
+            .GetNestedTypes(BindingFlags.NonPublic)
+            .Prepend(typeof(BlitzMerchantEnchantedCardRewardEntry))
+            .SelectMany(t => t.GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public
+                | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
+            .FirstOrDefault(m => m.Name.Contains("EnchantCardsInReward"));
+
+    static void Prefix() => Active = true;
+
+    static void Finalizer() => Active = false;
+}
+
+[HarmonyPatch(typeof(EnchantmentModel), nameof(EnchantmentModel.CanEnchant))]
+static class SteadyFermentPatch
+{
+    static void Postfix(EnchantmentModel __instance, CardModel card, ref bool __result)
+    {
+        if (!__result || !EnchantedRewardScopePatch.Active || __instance is not Steady) return;
+        if (card is not AlchemistCard { IsFermentInline: true }) return;
+        if (BlitzRunModel.shopEnchantmentOptions.Any(o => o.Item1 is not Steady && o.Item1.CanEnchant(card)))
+            __result = false;
+    }
 }
 
 [HarmonyPatch(typeof(ProgressSaveManager), "UpdateEpochsPostRun")]

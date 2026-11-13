@@ -2,6 +2,7 @@ using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using System.Linq;
 using System.Reflection;
+using Alchemist.AlchemistCode.Extensions;
 using Alchemist.AlchemistCode.Potions;
 using BaseLib.Common.Rewards.LinkedRewardSet;
 using Godot;
@@ -28,7 +29,8 @@ public sealed class BrewRestSiteOption : RestSiteOption
     public override string OptionId => BrewOptionId;
 
     public override LocString Description =>
-        new LocString("rest_site_ui", "OPTION_" + OptionId + ".description");
+        new LocString("rest_site_ui",
+            "OPTION_" + OptionId + (Owner.RunState.IsBlitz() ? ".descriptionBlitz" : ".description"));
 
     public override bool IsEnabled => true;
 

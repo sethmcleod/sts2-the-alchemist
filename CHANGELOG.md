@@ -8,6 +8,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 ### Changed
 
 - Buffed Spring Cleaning card: cost decreased from 1 -> 0
+- Changed the Alchemist's name on the Dread character select screen to purple
+- Changed the Brew rest site text in Blitz: it no longer mentions selling potions for gold
+- Changed the Blitz merchant's Enchanted Card Reward: Steady is no longer randomly chosed for Ferment cards
+
 ### Fixed
 
 - Fixed damage previews from other mods counting only one hit for Puncture, Forked Tongue, Lash Out, Wormwood, Hopped Up, Venom Shock and Froth
