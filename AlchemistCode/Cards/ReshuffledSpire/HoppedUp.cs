@@ -1,6 +1,7 @@
 using System;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -12,13 +13,12 @@ namespace Alchemist.AlchemistCode.Cards.ReshuffledSpire;
 [CardTheme(CardTheme.Poison)]
 public class HoppedUp : AlchemistReshuffledCard
 {
-    private const int Hits = 4;
-
     private int _costDiscount;
 
     public HoppedUp() : base(3, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(4, 1);
+        WithVar(new HitCountVar(4));
         WithVar("Per", 4);
         WithTip(typeof(PoisonPower));
     }
@@ -60,7 +60,7 @@ public class HoppedUp : AlchemistReshuffledCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, Hits, vfx: HitVfx("vfx/vfx_attack_slash"))
+        await CommonActions.CardAttack(this, play, DynamicVars.HitCount.IntValue, vfx: HitVfx("vfx/vfx_attack_slash"))
             .Execute(choiceContext);
     }
 }

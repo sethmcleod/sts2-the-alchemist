@@ -11,6 +11,7 @@ public class VenomShock : AlchemistCard
     public VenomShock() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithDamage(12, 4);
+        WithCalculatedVar("CalculatedHits", 1, static (_, target) => Poisoned(target) ? 1 : 0);
         WithTip(typeof(PoisonPower));
     }
 

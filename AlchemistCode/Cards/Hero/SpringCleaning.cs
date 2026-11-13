@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Alchemist.AlchemistCode.Powers;
 using BaseLib.Utils;
@@ -26,7 +27,7 @@ public class SpringCleaning : AlchemistHeroCard
         var draw = PileType.Draw.GetPile(Owner);
         if (draw.Cards.Count == 0) return;
         var chosen = (await CardSelectCmd.FromCombatPile(choiceContext, draw, Owner,
-            new CardSelectorPrefs(Prompt, 0, DynamicVars["Cards"].IntValue), static _ => true)).ToList();
+            new CardSelectorPrefs(Prompt, 0, Math.Min(DynamicVars["Cards"].IntValue, draw.Cards.Count)), static _ => true)).ToList();
         foreach (var card in chosen)
             await CardCmd.Exhaust(choiceContext, card);
         if (chosen.Count == 0) return;

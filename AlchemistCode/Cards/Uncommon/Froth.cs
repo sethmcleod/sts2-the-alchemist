@@ -13,6 +13,7 @@ public class Froth : AlchemistCard
     {
         WithDamage(5, 2);
         WithVar(new FermentVar("Hits", 1, 1));
+        WithCalculatedVar("CalculatedHits", 0, static (card, _) => ((Froth)card).Hits);
         WithKeyword(CardKeyword.Retain);
         WithKeyword(CardKeyword.Exhaust);
     }

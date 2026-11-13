@@ -8,6 +8,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 ### Changed
 
 - Buffed Spring Cleaning card: cost decreased from 1 -> 0
+### Fixed
+
+- Fixed damage previews from other mods counting only one hit for Puncture, Forked Tongue, Lash Out, Wormwood, Hopped Up, Venom Shock and Froth
+
 ## [0.15.8] - 2026-11-12
 
 ### Added
