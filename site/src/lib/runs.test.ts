@@ -107,6 +107,30 @@ describe('Runs', () => {
     expect(split.totals(split.select({ ...DEFAULT_FILTERS, expansions: 'without', version: 'all' })).runs).toBe(1550);
   });
 
+  it('keeps game modes apart and starts on the default game patch', () => {
+    const grouped = summary();
+    const groups = grouped.groups as TableFile;
+    groups.key.push('mode');
+    groups.rows = [
+      ['v0.3.0', 'v0.111.0', 0, 'full', 0, 'standard'],
+      ['v0.3.0', 'v0.113.0', 0, 'full', 0, 'standard'],
+      ['v0.3.0', 'v0.113.1', 10, 'full', 0, 'dread'],
+      ['v0.3.0', 'v0.113.0', 0, 'full', 0, 'blitz'],
+    ];
+    grouped.meta.default_patch = 'v0.111';
+    const split = new Runs(grouped);
+    const runsIn = (filters: Partial<typeof DEFAULT_FILTERS>) =>
+      split.totals(split.select({ ...DEFAULT_FILTERS, ...filters })).runs;
+    expect(runsIn({})).toBe(400);
+    expect(runsIn({ build: 'v0.113' })).toBe(300);
+    expect(runsIn({ build: 'v0.113', mode: 'dread' })).toBe(250);
+    expect(runsIn({ build: 'all', mode: 'blitz' })).toBe(900);
+    expect(runsIn({ mode: 'dread' })).toBe(250);
+    expect(split.patch('latest', 'dread')).toBe('v0.113');
+    expect(split.recentStartFor({ build: 'v0.113', mode: 'standard' })).toBe('v0.1.0');
+    expect(split.recentStartFor({ build: 'all', mode: 'standard' })).toBe('v0.3.0');
+  });
+
   it('filters by players and by one version', () => {
     expect(runs.totals(runs.select({ ...DEFAULT_FILTERS, players: 'coop' })).runs).toBe(900);
     expect(runs.totals(runs.select({ ...DEFAULT_FILTERS, version: 'v0.1.0' })).runs).toBe(400);

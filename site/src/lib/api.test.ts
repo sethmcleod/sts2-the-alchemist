@@ -84,6 +84,14 @@ describe('the upload endpoint', () => {
     expect(JSON.parse(inbox[0])).toMatchObject({ alchemist: {}, epochs: 0 });
   });
 
+  it('takes Standard, Dread and Blitz runs', async () => {
+    for (const mode of ['STANDARD', 'DREAD', 'BLITZ'])
+      expect((await upload({ ...RUN, alchemist: { mode: mode.toLowerCase() }, data: { gameMode: mode } })).status).toBe(
+        201,
+      );
+    expect(inbox).toHaveLength(3);
+  });
+
   it('names what is wrong with a run it refuses', async () => {
     const answer = async (body: unknown) => {
       const response = await upload(body);
@@ -92,6 +100,8 @@ describe('the upload endpoint', () => {
     expect(await answer({ ...RUN, victory: 'yes' })).toEqual([400, 'Missing or wrong: victory.']);
     expect(await answer({ ...RUN, floor: -1 })).toEqual([400, 'Missing or wrong: floor.']);
     expect(await answer([RUN])).toEqual([400, 'The body is not one run.']);
+    expect(await answer({ ...RUN, data: { gameMode: 'DAILY' } })).toEqual([400, 'Missing or wrong: game mode.']);
+    expect(await answer({ ...RUN, alchemist: { mode: 'custom' } })).toEqual([400, 'Missing or wrong: game mode.']);
     const notJson = await POST(new Request('https://alchemist.fyi/api/runs', { body: '{', method: 'POST' }));
     expect(notJson.status).toBe(400);
     expect((await upload({ ...RUN, data: { pad: 'x'.repeat(500_000) } })).status).toBe(413);

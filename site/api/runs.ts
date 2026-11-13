@@ -30,6 +30,12 @@ const FIELDS: Record<string, Check> = {
   victory: (value) => typeof value === 'boolean',
 };
 const DEFAULTS: Record<string, unknown> = { alchemist: {}, epochs: 0 };
+const MODES = ['standard', 'dread', 'blitz'];
+
+const modeOf = (row: Record<string, unknown>) => {
+  const modes = [(row.alchemist as { mode?: unknown }).mode, (row.data as { gameMode?: unknown }).gameMode];
+  return modes.find((mode) => mode !== undefined) ?? 'standard';
+};
 
 export async function POST(request: Request) {
   const body = await request.text();
@@ -49,6 +55,9 @@ export async function POST(request: Request) {
     if (!check(value)) return new Response(`Missing or wrong: ${name}.`, { status: 400 });
     row[name] = value;
   }
+  const mode = modeOf(row);
+  if (typeof mode !== 'string' || !MODES.includes(mode.toLowerCase()))
+    return new Response('Missing or wrong: game mode.', { status: 400 });
 
   const queueLength = (await redis(['RPUSH', INBOX, JSON.stringify(row)])) as number;
   if (queueLength > INBOX_LIMIT) {

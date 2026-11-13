@@ -28,6 +28,7 @@ export interface ItemInfo {
 export interface GameWords {
   encounters: Record<string, string>;
   keywords: Record<string, string>;
+  modes?: Record<string, string>;
   period: string;
   potion_rarities: Record<string, string>;
   rarities: Record<string, string>;
@@ -77,12 +78,14 @@ export interface Meta {
   assets: { character: string; energy: string };
   badges: Badge[];
   builds: Record<string, string>;
+  default_patch?: null | string;
   epochs: number;
   first_day: string;
   generated_at: string;
   histograms: Record<string, { last: number; width: number }>;
   last_day: string;
   mod: { description: string; name: string; version: string };
+  modes?: string[];
   players: number;
   prefix: string;
   previews: { full: string; image: string }[];
