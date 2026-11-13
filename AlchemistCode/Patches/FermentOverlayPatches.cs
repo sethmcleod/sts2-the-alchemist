@@ -80,15 +80,14 @@ public static class FermentOverlayPatches
     [HarmonyPatch(nameof(NCard.UpdateVisuals))] [HarmonyPostfix]
     private static void Refresh(NCard __instance)
     {
-        if (GetOrAddOverlay(__instance) is not { } overlay) return;
-
         if (__instance.Model is not AlchemistCard { IsFermentInline: true, IsMutable: true, CombatState: not null } card
             || __instance.Visibility != ModelVisibility.Visible)
         {
-            overlay.Icon.Visible = false;
+            if (Overlays.TryGetValue(__instance, out var unused)) unused.Icon.Visible = false;
             return;
         }
 
+        if (GetOrAddOverlay(__instance) is not { } overlay) return;
         overlay.Icon.Visible = true;
         overlay.Label.SetTextAutoSize(card.FermentTurns.ToString());
     }

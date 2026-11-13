@@ -189,12 +189,10 @@ public static class PotionSellPatches
     {
         public static void Postfix(NPotionPopup __instance)
         {
-            var potion = PotionProp.GetValue(__instance) as PotionModel;
-            if (potion == null || !CanSellPotions(potion)) return;
-
-            var useButton = (NPotionPopupButton)UseButtonField.GetValue(__instance)!;
             try
             {
+                if (PotionProp?.GetValue(__instance) is not PotionModel potion || !CanSellPotions(potion)) return;
+                if (UseButtonField?.GetValue(__instance) is not NPotionPopupButton useButton) return;
                 InjectSellButton(__instance, potion, useButton);
             }
             catch (System.Exception e)
@@ -275,8 +273,7 @@ public static class PotionSellPatches
             popup.Remove();
             return;
         }
-        var holder = (NPotionHolder)HolderField.GetValue(popup)!;
-        holder.DisableUntilPotionRemoved();
+        (HolderField?.GetValue(popup) as NPotionHolder)?.DisableUntilPotionRemoved();
         RunManager.Instance.ActionQueueSynchronizer.RequestEnqueue(new SellPotionGameAction(owner, (uint)slot));
         popup.Remove();
     }
@@ -321,7 +318,7 @@ public static class PotionSellPatches
     {
         var container = NRun.Instance?.GlobalUi?.TopBar?.PotionContainer;
         if (container == null) return;
-        if (HoldersListField.GetValue(container) is not System.Collections.IEnumerable slots) return;
+        if (HoldersListField?.GetValue(container) is not System.Collections.IEnumerable slots) return;
 
         const float stagger = 0.13f;
         var i = 0;
@@ -370,7 +367,7 @@ public static class PotionSellPatches
         {
             _soldThisVisit = false;
 
-            var players = PlayersField.GetValue(__instance) as List<Player>;
+            var players = PlayersField?.GetValue(__instance) as List<Player>;
             var player = players != null ? LocalContext.GetMe(players) : null;
             if (player == null) return;
             if (player.GetRelic<MurkyFlask>() == null && player.GetRelic<RadiantFlask>() == null) return;
@@ -423,9 +420,15 @@ public static class PotionSellPatches
             return _goldMaterial;
         }
 
+        private static string? _sellableId;
+
+        private static bool AnyoneCanSell() =>
+            RunManager.Instance?.DebugOnlyGetState() is { } run && run.Players.Any(SellingEnabledFor);
+
         public static void Postfix(NHoverTipSet __instance, IEnumerable<IHoverTip> hoverTips)
         {
-            var sellableId = SellableTip().Id;
+            if (!AnyoneCanSell()) return;
+            var sellableId = _sellableId ??= SellableTip().Id;
             var index = -1;
             var ourIndex = -1;
             foreach (var tip in IHoverTip.RemoveDupes(hoverTips))
@@ -435,7 +438,7 @@ public static class PotionSellPatches
                 if (hoverTip.Id == sellableId) { ourIndex = index; break; }
             }
             if (ourIndex < 0) return;
-            if (TextContainerField.GetValue(__instance) is not Node container) return;
+            if (TextContainerField?.GetValue(__instance) is not Node container) return;
             if (ourIndex >= container.GetChildCount()) return;
             if (container.GetChild(ourIndex) is not Control control) return;
             if (control.GetNodeOrNull<CanvasItem>("%Bg") is not { } bg) return;

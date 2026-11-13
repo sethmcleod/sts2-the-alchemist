@@ -23,27 +23,44 @@ namespace Alchemist.AlchemistCode.Patches;
 public static class EpochPatches
 {
     private const BindingFlags InstNonPublic = BindingFlags.Instance | BindingFlags.NonPublic;
-    private static readonly MethodInfo MidRun = RequireInstance("TryObtainEpochMidRun");
-    private static readonly MethodInfo PostRun = RequireInstance("TryObtainEpochPostRun");
-    private static readonly MethodInfo GetElites =
-        typeof(ProgressSaveManager).GetMethod("GetEliteEncounters", BindingFlags.Static | BindingFlags.NonPublic)
-        ?? throw new InvalidOperationException("[Alchemist] ProgressSaveManager.GetEliteEncounters not found; base game changed.");
+    private static readonly MethodInfo? MidRun = Find("TryObtainEpochMidRun", InstNonPublic);
+    private static readonly MethodInfo? PostRun = Find("TryObtainEpochPostRun", InstNonPublic);
+    private static readonly MethodInfo? GetElites =
+        Find("GetEliteEncounters", BindingFlags.Static | BindingFlags.NonPublic);
 
-    private static MethodInfo RequireInstance(string name) =>
-        typeof(ProgressSaveManager).GetMethod(name, InstNonPublic)
-        ?? throw new InvalidOperationException($"[Alchemist] ProgressSaveManager.{name} not found; base game changed.");
+    private static MethodInfo? Find(string name, BindingFlags flags)
+    {
+        var method = typeof(ProgressSaveManager).GetMethod(name, flags);
+        if (method == null)
+            MainFile.Logger.Error($"[Epochs] ProgressSaveManager.{name} is not in this build of the game, "
+                + "so the Alchemist epochs it awards stay locked.");
+        return method;
+    }
+
+    private static void Award(MethodInfo? award, ProgressSaveManager mgr, EpochModel epoch, params object[] recipient)
+    {
+        if (award == null) return;
+        try
+        {
+            award.Invoke(mgr, [epoch, .. recipient]);
+        }
+        catch (Exception e)
+        {
+            MainFile.Logger.Error($"[Epochs] Could not award {epoch.Id}: {e}");
+        }
+    }
 
     // Parent first: a child under an unobtained parent can't be revealed and locks the main menu
     private static void AwardMidRun(ProgressSaveManager mgr, EpochModel epoch, Player player)
     {
         var root = EpochModel.Get<Alchemist1Epoch>();
         if (epoch.Id != root.Id && !mgr.Progress.IsEpochObtained(root.Id))
-            MidRun.Invoke(mgr, new object[] { root, player });
-        MidRun.Invoke(mgr, new object[] { epoch, player });
+            Award(MidRun, mgr, root, player);
+        Award(MidRun, mgr, epoch, player);
     }
 
     private static void AwardPostRun(ProgressSaveManager mgr, EpochModel epoch, SerializablePlayer sp, SerializableRun sr) =>
-        PostRun.Invoke(mgr, new object[] { epoch, sp, sr });
+        Award(PostRun, mgr, epoch, sp, sr);
 
     private static bool Enabled => AlchemistModConfig.EnableEpochs && EpochRegistration.Supported;
 
@@ -73,7 +90,7 @@ public static class EpochPatches
     private static void AwardEliteEpoch(ProgressSaveManager __instance, Player localPlayer)
     {
         if (!Enabled || !IsAlchemist(localPlayer)) return;
-        var elites = (HashSet<ModelId>)GetElites.Invoke(null, null)!;
+        if (GetElites?.Invoke(null, null) is not HashSet<ModelId> elites) return;
         if (CountWins(localPlayer, elites) >= 15)
             AwardMidRun(__instance, EpochModel.Get<Alchemist5Epoch>(), localPlayer);
     }

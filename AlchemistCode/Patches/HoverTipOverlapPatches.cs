@@ -21,8 +21,8 @@ public static class HoverTipOverlapPatch
     public static void Postfix(NHoverTipSet __instance, HoverTipAlignment alignment)
     {
         if (alignment != HoverTipAlignment.Center) return;
-        if (TextContainer.GetValue(__instance) is not Control text
-            || CardContainer.GetValue(__instance) is not Control cards) return;
+        if (TextContainer?.GetValue(__instance) is not Control text
+            || CardContainer?.GetValue(__instance) is not Control cards) return;
         if (cards.GetChildCount() == 0 || !text.GetRect().Intersects(cards.GetRect())) return;
         if (NGame.Instance is not { } game) return;
 

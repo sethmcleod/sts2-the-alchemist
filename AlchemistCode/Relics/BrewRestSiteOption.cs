@@ -21,8 +21,8 @@ namespace Alchemist.AlchemistCode.Relics;
 public sealed class BrewRestSiteOption : RestSiteOption
 {
     // The reward overlay leaves the rest-site buttons up, so hide them through the private screen
-    private static readonly FieldInfo ChoicesScreenField =
-        typeof(NRestSiteRoom).GetField("_choicesScreen", BindingFlags.NonPublic | BindingFlags.Instance)!;
+    private static readonly FieldInfo? ChoicesScreenField =
+        typeof(NRestSiteRoom).GetField("_choicesScreen", BindingFlags.NonPublic | BindingFlags.Instance);
 
     public const string BrewOptionId = "BREW";
 
@@ -43,7 +43,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
         // OnSelect runs on every client (RestSiteSynchronizer replays choices), so touch only the local screen
         if (LocalContext.IsMe(Owner) && NRestSiteRoom.Instance is { } restSiteRoom)
         {
-            var choicesScreen = ChoicesScreenField.GetValue(restSiteRoom) as Control;
+            var choicesScreen = ChoicesScreenField?.GetValue(restSiteRoom) as Control;
             if (choicesScreen != null)
             {
                 var tween = restSiteRoom.CreateTween();

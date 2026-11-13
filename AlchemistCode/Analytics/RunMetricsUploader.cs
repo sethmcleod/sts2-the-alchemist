@@ -37,12 +37,15 @@ internal static class RunMetricsUploader
             return;
         }
 
-        if (response.IsSuccessStatusCode)
+        using (response)
         {
-            MainFile.Logger.Info($"Analytics for '{context}' uploaded.");
-            return;
+            if (response.IsSuccessStatusCode)
+            {
+                MainFile.Logger.Info($"Analytics for '{context}' uploaded.");
+                return;
+            }
+            var body = await response.Content.ReadAsStringAsync();
+            MainFile.Logger.Warn($"Analytics upload for '{context}' failed with {response.StatusCode}: {body}");
         }
-        var body = await response.Content.ReadAsStringAsync();
-        MainFile.Logger.Warn($"Analytics upload for '{context}' failed with {response.StatusCode}: {body}");
     }
 }
