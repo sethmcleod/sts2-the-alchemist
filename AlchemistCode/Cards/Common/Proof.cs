@@ -21,7 +21,7 @@ public class Proof : AlchemistCard
     private int Grant => DynamicVars["antitoxin"].IntValue;
 
     // The grant lands before the hit, so the preview in hand adds it
-    private int HitDamage => AntitoxinCapacity + (Pile?.Type == PileType.Hand ? Grant : 0);
+    private int HitDamage => AntitoxinCapacity + (Pile?.Type == PileType.Hand ? AntitoxinGrant(Grant) : 0);
 
     protected override int? RawFormulaDamagePreview =>
         IsMutable && CombatState != null ? HitDamage : null;

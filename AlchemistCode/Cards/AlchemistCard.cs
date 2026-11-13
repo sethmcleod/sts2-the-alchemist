@@ -165,6 +165,14 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     protected int AntitoxinCapacity =>
         IsMutable && CombatState != null ? Owner.Creature.GetPowerAmount<Powers.AntitoxinPower>() : 0;
 
+    protected int AntitoxinGrant(int amount)
+    {
+        if (!IsMutable || CombatState is not { } combat || Owner?.Creature is not { } creature) return amount;
+        var power = ModelDb.Power<Powers.AntitoxinPower>();
+        var given = Hook.ModifyPowerAmountGiven(combat, power, creature, amount, creature, this, out _);
+        return (int)Hook.ModifyPowerAmountReceived(combat, power, creature, given, creature, out _);
+    }
+
     private int _fermentTurns;
 
     protected virtual bool Ferments => false;

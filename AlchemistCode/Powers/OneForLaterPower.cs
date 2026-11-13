@@ -23,6 +23,7 @@ public class OneForLaterPower : AlchemistPower
         for (var i = 0; i < (int)Amount; i++)
         {
             var copy = card.CreateClone();
+            RefinePower.CarryOver(card, copy);
             Mixing.RecordCreated(Owner.Player, copy, this);
             CardCmd.PreviewCardPileAdd(
                 await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Draw, Owner.Player, CardPilePosition.Random));

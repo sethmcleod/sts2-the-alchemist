@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -103,9 +104,20 @@ public sealed partial class AntitoxinRules() : CustomSingletonModel(HookType.Com
     public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side,
         IReadOnlyList<Creature> participants, ICombatState combatState)
     {
+        ForgetTicks();
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterCombatEnd(CombatRoom room)
+    {
+        ForgetTicks();
+        return Task.CompletedTask;
+    }
+
+    private static void ForgetTicks()
+    {
         Absorbed.Clear();
         AbsorbedOnTick.Clear();
         LethalTick.Clear();
-        return Task.CompletedTask;
     }
 }

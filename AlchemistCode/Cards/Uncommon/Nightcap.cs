@@ -24,7 +24,7 @@ public class Nightcap : AlchemistCard
     private int Mult => IsUpgraded ? 3 : 2;
 
     // The grant lands before the hit, so the preview in hand adds it
-    private int HitDamage => (AntitoxinCapacity + (Pile?.Type == PileType.Hand ? Grant : 0)) * Mult;
+    private int HitDamage => (AntitoxinCapacity + (Pile?.Type == PileType.Hand ? AntitoxinGrant(Grant) : 0)) * Mult;
 
     protected override int? RawFormulaDamagePreview =>
         IsMutable && CombatState != null ? HitDamage : null;

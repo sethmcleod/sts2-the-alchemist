@@ -17,12 +17,16 @@ public class TwitchPower : AlchemistPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override int ModifyAttackHitCount(AttackCommand attack, int hitCount)
+    private bool Speeds(AttackCommand attack) =>
+        attack.ModelSource is CardModel { Type: CardType.Attack } card && card.Owner == Owner.Player;
+
+    public override int ModifyAttackHitCount(AttackCommand attack, int hitCount) =>
+        Speeds(attack) ? hitCount + (int)Amount : hitCount;
+
+    public override Task BeforeAttack(AttackCommand command)
     {
-        if (attack.ModelSource is not CardModel { Type: CardType.Attack } card || card.Owner != Owner.Player)
-            return hitCount;
-        Flash();
-        return hitCount + (int)Amount;
+        if (Speeds(command)) Flash();
+        return Task.CompletedTask;
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
