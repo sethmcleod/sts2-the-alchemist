@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "Накладывает {Poison:diff()} [gold]яда[/gold] на ВСЕХ врагов.\nДает вам {SelfPoison} [gold]яда[/gold].",
   "ALCHEMIST-SPORES.title": "Споры",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]Сжигает[/gold] до {Cards:diff()} карт в [gold]стопке добора[/gold].\nДает {Antitoxin} [gold]антитоксина[/gold] за каждую [gold]сожженную[/gold] карту.",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Выберите карты, которые хотите [gold]сжечь[/gold].",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Выберите до [blue]{MaxCount}[/blue] {MaxCount:plural(ru):карты|карт|карт}, которые хотите [gold]сжечь[/gold].",
   "ALCHEMIST-SPRING_CLEANING.title": "Генеральная уборка",
   "ALCHEMIST-STEEP.description": "Когда вы разыгрываете карту с [gold]брожением[/gold], замешивает ее в вашу [gold]стопку добора[/gold].",
   "ALCHEMIST-STEEP.title": "Настаивание",

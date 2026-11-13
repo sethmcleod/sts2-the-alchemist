@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "모든 적에게 [gold]중독[/gold]을 {Poison:diff()} 부여합니다.\n[gold]중독[/gold]을 {SelfPoison} 얻습니다.",
   "ALCHEMIST-SPORES.title": "포자",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]뽑을 카드 더미[/gold]의 카드를 최대 {Cards:diff()}장까지 [gold]소멸[/gold]시킵니다.\n[gold]소멸[/gold]시킨 카드 1장당 [gold]항독소[/gold]를 {Antitoxin} 얻습니다.",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "[gold]소멸[/gold]시킬 카드를 선택하세요.",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "[gold]소멸[/gold]시킬 카드를 최대 [blue]{MaxCount}[/blue]장 선택하세요.",
   "ALCHEMIST-SPRING_CLEANING.title": "봄맞이 대청소",
   "ALCHEMIST-STEEP.description": "[gold]발효[/gold] 카드를 사용할 때마다, 그 카드를 [gold]뽑을 카드 더미[/gold]에 섞어 넣습니다.",
   "ALCHEMIST-STEEP.title": "우려내기",

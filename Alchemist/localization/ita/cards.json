@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "Applichi {Poison:diff()} di [gold]Veleno[/gold] a TUTTI i nemici.\nOttieni {SelfPoison} di [gold]Veleno[/gold].",
   "ALCHEMIST-SPORES.title": "Spore",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]Esaurisci[/gold] fino a {Cards:diff()} carte dal tuo [gold]mazzo di pesca[/gold].\nOttieni {Antitoxin} di [gold]Antitossina[/gold] per ogni carta [gold]esaurita[/gold].",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Scegli le carte da [gold]esaurire[/gold].",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Scegli fino a [blue]{MaxCount}[/blue] {MaxCount:plural:carta|carte} da [gold]esaurire[/gold].",
   "ALCHEMIST-SPRING_CLEANING.title": "Pulizie di primavera",
   "ALCHEMIST-STEEP.description": "Ogni volta che giochi una carta [gold]Fermentazione[/gold], mescolala nel tuo [gold]mazzo di pesca[/gold].",
   "ALCHEMIST-STEEP.title": "Macerazione",

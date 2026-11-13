@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "[gold]毒[/gold]{Poison:diff()}をすべての敵に付与する。\n[gold]毒[/gold]{SelfPoison}を得る。",
   "ALCHEMIST-SPORES.title": "胞子",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]山札[/gold]のカードを{Cards:diff()}枚まで[gold]廃棄[/gold]する。\n[gold]廃棄[/gold]したカード1枚につき、[gold]抗毒素[/gold]{Antitoxin}を得る。",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "[gold]廃棄[/gold]するカードを選択。",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "[gold]廃棄[/gold]するカードを最大[blue]{MaxCount}[/blue]枚選択",
   "ALCHEMIST-SPRING_CLEANING.title": "春の大掃除",
   "ALCHEMIST-STEEP.description": "[gold]発酵[/gold]カードをプレイするたび、そのカードを[gold]山札[/gold]に混ぜる。",
   "ALCHEMIST-STEEP.title": "浸漬",

@@ -1,4 +1,5 @@
 {
   "OPTION_BREW.description": "[gold]Potenzi[/gold] una carta casuale nel tuo [gold]mazzo[/gold]. Scegli 1 di 3 [gold]pozioni[/gold] speciali del valore di 100 unità d'oro se vendute al [gold]mercante[/gold].",
+  "OPTION_BREW.descriptionBlitz": "[gold]Potenzi[/gold] una carta casuale nel tuo [gold]mazzo[/gold]. Scegli 1 di 3 [gold]pozioni[/gold] speciali.",
   "OPTION_BREW.name": "Prepara"
 }

@@ -1,4 +1,5 @@
 {
   "OPTION_BREW.description": "[gold]Améliorez[/gold] une carte aléatoire de votre [gold]Deck[/gold]. Choisissez 1 [gold]Potion[/gold] spéciale parmi 3, d'une valeur de 100 po si elle est vendue au [gold]Marchand[/gold].",
+  "OPTION_BREW.descriptionBlitz": "[gold]Améliorez[/gold] une carte aléatoire de votre [gold]Deck[/gold]. Choisissez 1 [gold]Potion[/gold] spéciale parmi 3.",
   "OPTION_BREW.name": "Brassage"
 }

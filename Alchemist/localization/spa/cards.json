@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "Aplica {Poison:diff()} de [gold]Veneno[/gold] a TODOS los enemigos.\nGana {SelfPoison} de [gold]Veneno[/gold].",
   "ALCHEMIST-SPORES.title": "Esporas",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]Agota[/gold] hasta {Cards:diff()} cartas de tu [gold]Pila de robo[/gold].\nGana {Antitoxin} de [gold]Antitoxina[/gold] por cada carta [gold]Agotada[/gold].",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Elige cartas que [gold]Agotar[/gold].",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Elige hasta [blue]{MaxCount}[/blue] {MaxCount:plural:carta|cartas} que [gold]Agotar[/gold].",
   "ALCHEMIST-SPRING_CLEANING.title": "Limpieza a fondo",
   "ALCHEMIST-STEEP.description": "Cuando juegues una carta con [gold]Fermentar[/gold], barájala en tu [gold]Pila de robo[/gold].",
   "ALCHEMIST-STEEP.title": "Maceración",

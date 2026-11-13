@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "Wende {Poison:diff()} [gold]Gift[/gold] auf ALLE Gegner an.\nErhalte {SelfPoison} [gold]Gift[/gold].",
   "ALCHEMIST-SPORES.title": "Sporen",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]Erschöpfe[/gold] bis zu {Cards:diff()} Karten aus deinem [gold]Nachziehstapel[/gold].\nErhalte {Antitoxin} [gold]Antitoxin[/gold] für jede [gold]Erschöpfte[/gold] Karte.",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Wähle Karten, die du [gold]Erschöpfst[/gold].",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Wähle bis zu [blue]{MaxCount}[/blue] {MaxCount:plural:Karte,|Karten,} die du [gold]Erschöpfst[/gold].",
   "ALCHEMIST-SPRING_CLEANING.title": "Frühjahrsputz",
   "ALCHEMIST-STEEP.description": "Immer wenn du eine Karte mit [gold]Gärung[/gold] spielst, mische sie in deinen [gold]Nachziehstapel[/gold].",
   "ALCHEMIST-STEEP.title": "Einweichen",
