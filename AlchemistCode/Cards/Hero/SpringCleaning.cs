@@ -14,7 +14,7 @@ public class SpringCleaning : AlchemistHeroCard
 {
     private static LocString Prompt => new("cards", "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt");
 
-    public SpringCleaning() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public SpringCleaning() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithVar("Cards", 2, 1);
         WithVar("Antitoxin", 2, 0);

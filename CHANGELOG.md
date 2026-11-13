@@ -5,6 +5,9 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Changed
+
+- Buffed Spring Cleaning card: cost decreased from 1 -> 0
 ## [0.15.8] - 2026-11-12
 
 ### Added
