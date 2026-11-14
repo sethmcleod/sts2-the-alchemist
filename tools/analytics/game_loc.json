@@ -103,6 +103,11 @@
    "Sly": "Listig",
    "Unplayable": "Unspielbar"
   },
+  "modes": {
+   "Blitz": "Blitz",
+   "Dread": "Grauen",
+   "Standard": "Standard"
+  },
   "period": ".",
   "potion_rarities": {
    "Common": "Gewöhnlich",
@@ -352,6 +357,11 @@
    "Retain": "Retain",
    "Sly": "Sly",
    "Unplayable": "Unplayable"
+  },
+  "modes": {
+   "Blitz": "Blitz",
+   "Dread": "Dread",
+   "Standard": "Standard"
   },
   "period": ".",
   "potion_rarities": {
@@ -603,6 +613,11 @@
    "Sly": "Astucia",
    "Unplayable": "Injugabilidad"
   },
+  "modes": {
+   "Blitz": "Incursión",
+   "Dread": "Terror",
+   "Standard": "Estándar"
+  },
   "period": ".",
   "potion_rarities": {
    "Common": "Común",
@@ -852,6 +867,11 @@
    "Retain": "Retenue",
    "Sly": "Ruse",
    "Unplayable": "Injouable"
+  },
+  "modes": {
+   "Blitz": "Blitz",
+   "Dread": "Effroi",
+   "Standard": "Standard"
   },
   "period": ".",
   "potion_rarities": {
@@ -1103,6 +1123,11 @@
    "Sly": "Lihai",
    "Unplayable": "Nonaktif"
   },
+  "modes": {
+   "Blitz": "Kilat",
+   "Dread": "Kelam",
+   "Standard": "Standar"
+  },
   "period": ".",
   "potion_rarities": {
    "Common": "Biasa",
@@ -1352,6 +1377,11 @@
    "Retain": "Conservazione",
    "Sly": "Astuzia",
    "Unplayable": "Ingiocabilità"
+  },
+  "modes": {
+   "Blitz": "Blitz",
+   "Dread": "Supplizio",
+   "Standard": "Partita standard"
   },
   "period": ".",
   "potion_rarities": {
@@ -1603,6 +1633,11 @@
    "Sly": "スライ",
    "Unplayable": "プレイ不可"
   },
+  "modes": {
+   "Blitz": "ブリッツ",
+   "Dread": "ドレッド",
+   "Standard": "スタンダード"
+  },
   "period": "。",
   "potion_rarities": {
    "Common": "ポーション（コモン）",
@@ -1852,6 +1887,11 @@
    "Retain": "보존",
    "Sly": "교활",
    "Unplayable": "사용불가"
+  },
+  "modes": {
+   "Blitz": "블리츠",
+   "Dread": "드레드",
+   "Standard": "일반"
   },
   "period": ".",
   "potion_rarities": {
@@ -2103,6 +2143,11 @@
    "Sly": "Chytra",
    "Unplayable": "Niezagrywalna"
   },
+  "modes": {
+   "Blitz": "Sztorm",
+   "Dread": "Groza",
+   "Standard": "Wyprawa"
+  },
   "period": ".",
   "potion_rarities": {
    "Common": "Pospolita",
@@ -2352,6 +2397,11 @@
    "Retain": "Manter",
    "Sly": "Sagaz",
    "Unplayable": "Injogável"
+  },
+  "modes": {
+   "Blitz": "Blitz",
+   "Dread": "Pesadelo",
+   "Standard": "Padrão"
   },
   "period": ".",
   "potion_rarities": {
@@ -2603,6 +2653,11 @@
    "Sly": "Коварная",
    "Unplayable": "Неиграбельная"
   },
+  "modes": {
+   "Blitz": "Блиц",
+   "Dread": "Кошмар",
+   "Standard": "Стандартная вылазка"
+  },
   "period": ".",
   "potion_rarities": {
    "Common": "Обычное",
@@ -2852,6 +2907,11 @@
    "Retain": "Retención",
    "Sly": "Astucia",
    "Unplayable": "Injugable"
+  },
+  "modes": {
+   "Blitz": "Relámpago",
+   "Dread": "Pesadilla",
+   "Standard": "Estándar"
   },
   "period": ".",
   "potion_rarities": {
@@ -3103,6 +3163,11 @@
    "Sly": "เล่ห์เหลี่ยม",
    "Unplayable": "ถูกผนึก"
   },
+  "modes": {
+   "Blitz": "Blitz",
+   "Dread": "Dread",
+   "Standard": "มาตรฐาน"
+  },
   "period": ".",
   "potion_rarities": {
    "Common": "ธรรมดา",
@@ -3352,6 +3417,11 @@
    "Retain": "Sakla",
    "Sly": "Kurnaz",
    "Unplayable": "Oynanamaz"
+  },
+  "modes": {
+   "Blitz": "Sürat",
+   "Dread": "Dehşet",
+   "Standard": "Standart"
   },
   "period": ".",
   "potion_rarities": {
@@ -3603,6 +3673,11 @@
    "Sly": "奇巧",
    "Unplayable": "不能被打出"
   },
+  "modes": {
+   "Blitz": "极速",
+   "Dread": "恐惧",
+   "Standard": "标准"
+  },
   "period": "。",
   "potion_rarities": {
    "Common": "普通",
@@ -3852,6 +3927,11 @@
    "Retain": "保留",
    "Sly": "奇巧",
    "Unplayable": "無法打出"
+  },
+  "modes": {
+   "Blitz": "閃擊",
+   "Dread": "恐懼",
+   "Standard": "標準"
   },
   "period": "。",
   "potion_rarities": {

@@ -1,4 +1,5 @@
 {
   "OPTION_BREW.description": "[gold]Upgrade[/gold] a random card in your [gold]Deck[/gold]. Choose 1 of 3 special [gold]Potions[/gold] worth 100g if sold to the [gold]Merchant[/gold].",
+  "OPTION_BREW.descriptionBlitz": "[gold]Upgrade[/gold] a random card in your [gold]Deck[/gold]. Choose 1 of 3 special [gold]Potions[/gold].",
   "OPTION_BREW.name": "Brew"
 }

@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text.Json.Nodes;
 using Alchemist.AlchemistCode.Badges;
 using Alchemist.AlchemistCode.Cards;
@@ -31,8 +33,16 @@ internal static class AlchemistMetrics
 {
     // Vanilla skips runs shorter than this many floors
     private const int RunLengthThreshold = 5;
+    private const int BlitzRunLengthThreshold = 3;
     // Bump when a counter is added or a key changes meaning
-    private const int Schema = 4;
+    private const int Schema = 5;
+
+    private static readonly HashSet<string> UploadedModes = new() { "Standard", "Dread", "Blitz" };
+
+    private static readonly PropertyInfo? CustomGameProperty = typeof(SerializableRun).GetProperty("IsCustomGame");
+    private static readonly PropertyInfo? BlitzChoicesProperty =
+        typeof(PlayerMapPointHistoryEntry).GetProperty("BlitzMerchantChoices");
+    private static readonly MethodInfo? DominionMethod = typeof(EncounterModel).GetMethod("GetDominion");
 
     public static void Initialize()
     {
@@ -58,14 +68,15 @@ internal static class AlchemistMetrics
             MainFile.Logger.Info("Alchemist analytics upload skipped: disabled in mod config.");
             return;
         }
-        if (run.GameMode != GameMode.Standard) return;
+        var mode = run.GameMode.ToString();
+        if (!UploadedModes.Contains(mode) || CustomGameProperty?.GetValue(run) is true) return;
 
         var localPlayer = run.Players.FirstOrDefault(p => p.NetId == localPlayerId);
         if (localPlayer?.CharacterId == null || localPlayer.CharacterId != ModelDb.Character<Character.Alchemist>().Id)
             return;
 
         var allPoints = run.MapPointHistory.SelectMany(act => act).ToList();
-        if (allPoints.Count < RunLengthThreshold) return;
+        if (allPoints.Count < (mode == "Blitz" ? BlitzRunLengthThreshold : RunLengthThreshold)) return;
 
         var language = LocManager.Instance.Language;
         // Entry ids must serialize in English whatever language the player uses
@@ -73,7 +84,10 @@ internal static class AlchemistMetrics
         try
         {
             var metrics = VanillaRunMetrics.Build(run, isVictory, localPlayer, allPoints);
-            var row = Row(run, isVictory, metrics, Payload(run, isVictory, localPlayer, allPoints, language));
+            var payload = Payload(run, isVictory, localPlayer, allPoints, language);
+            payload["mode"] = mode.ToLowerInvariant();
+            if (mode == "Blitz") payload["blitz"] = BlitzJson(run, localPlayer);
+            var row = Row(run, isVictory, metrics, payload);
             MainFile.Logger.Info($"Uploading Alchemist run analytics (player {metrics.PlayerId})...");
             RunMetricsUploader.Upload(row.ToJsonString(), "Alchemist run");
         }
@@ -201,16 +215,56 @@ internal static class AlchemistMetrics
             var rest = new JsonObject();
             foreach (var choice in points.SelectMany(e => e.GetEntry(player.NetId).RestSiteChoices))
                 rest[choice] = (rest[choice]?.GetValue<int>() ?? 0) + 1;
-            acts.Add(new JsonObject
+            var act = new JsonObject
             {
                 ["act"] = actIndex + 1,
                 ["fights"] = fights.Count,
                 ["turns"] = fights.Sum(e => e.Rooms.Last().TurnsTaken + 1),
                 ["damage"] = fights.Sum(e => Math.Min(e.GetEntry(player.NetId).DamageTaken, player.MaxHp)),
                 ["rest"] = rest,
-            });
+            };
+            if (actIndex < run.Acts.Count && run.Acts[actIndex].SerializableRooms is { } rooms)
+            {
+                if (rooms.BossId is { } boss) act["boss"] = boss.Entry;
+                if (rooms.SecondBossId is { } second) act["second_boss"] = second.Entry;
+                if (run.GameMode.ToString() == "Dread" && DominionOf(rooms.SecondBossId ?? rooms.BossId) is { } dominion)
+                    act["dominion"] = dominion;
+            }
+            acts.Add(act);
         }
         return acts;
+    }
+
+    private static string? DominionOf(ModelId? boss) =>
+        boss != null && ModelDb.GetByIdOrNull<EncounterModel>(boss) is { } encounter
+            && DominionMethod?.Invoke(encounter, null) is AbstractModel dominion
+            ? dominion.Id.Entry
+            : null;
+
+    private static JsonArray BlitzJson(SerializableRun run, SerializablePlayer player)
+    {
+        var picks = new JsonArray();
+        if (BlitzChoicesProperty == null) return picks;
+        for (var actIndex = 0; actIndex < run.MapPointHistory.Count; actIndex++)
+        {
+            foreach (var point in run.MapPointHistory[actIndex])
+            {
+                if (BlitzChoicesProperty.GetValue(point.GetEntry(player.NetId)) is not IEnumerable choices) continue;
+                foreach (var choice in choices)
+                {
+                    var type = choice.GetType();
+                    var pick = new JsonObject
+                    {
+                        ["act"] = actIndex + 1,
+                        ["type"] = type.GetProperty("Type")?.GetValue(choice)?.ToString(),
+                        ["picked"] = type.GetField("wasPicked")?.GetValue(choice) is true,
+                    };
+                    if (type.GetField("modelId")?.GetValue(choice) is ModelId model) pick["model"] = model.Entry;
+                    picks.Add(pick);
+                }
+            }
+        }
+        return picks;
     }
 
     private static List<string> ObtainedEpochs()

@@ -91,6 +91,12 @@ public partial class AntitoxinPower : AlchemistPower
             (int)amount == 0 ? Analytics.RunCounters.TickCovered : Analytics.RunCounters.TickBled);
     }
 
+    public override Task AfterRemoved(Creature oldOwner)
+    {
+        AntitoxinRules.ClearTickAbsorb(oldOwner);
+        return Task.CompletedTask;
+    }
+
     // Late, so the PoisonPower tick in AfterSideTurnStart lands before the cover thins
     public override async Task AfterSideTurnStartLate(CombatSide side, IReadOnlyList<Creature> participants,
         ICombatState combatState)

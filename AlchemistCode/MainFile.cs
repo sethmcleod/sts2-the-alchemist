@@ -7,6 +7,7 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Alchemist.AlchemistCode;
 
@@ -30,6 +31,7 @@ public partial class MainFile : Node
         {
             try
             {
+                if (type.IsDefined(typeof(HarmonyPatch), false)) RunStaticInitializers(type);
                 harmony.CreateClassProcessor(type).Patch();
             }
             catch (System.Exception e)
@@ -94,6 +96,12 @@ public partial class MainFile : Node
         }
 
         ModConfigRegistry.Register("The Alchemist", new AlchemistModConfig());
+    }
+
+    private static void RunStaticInitializers(Type patchClass)
+    {
+        for (var type = patchClass; type != null; type = type.DeclaringType)
+            RuntimeHelpers.RunClassConstructor(type.TypeHandle);
     }
 
     // EventPotionPool, as for Ambergris: never generated, but the compendium still counts it unlocked

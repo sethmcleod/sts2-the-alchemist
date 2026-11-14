@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "Nałóż {Poison:diff()} pkt. [gold]Trucizny[/gold] WSZYSTKIM przeciwnikom.\nZyskaj {SelfPoison} pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-SPORES.title": "Zarodniki",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]Wyczerp[/gold] maksymalnie {Cards:diff()} {Cards:plural:kartę|karty|kart} ze [gold]stosu rozgrywającego[/gold].\nZyskaj {Antitoxin} pkt. [gold]Antytoksyny[/gold] za każdą [gold]Wyczerpaną[/gold] kartę.",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Wybierz karty do [gold]Wyczerpania[/gold].",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Wybierz do [blue]{MaxCount}[/blue] {MaxCount:plural:karty|kart|kart} do [gold]Wyczerpania[/gold].",
   "ALCHEMIST-SPRING_CLEANING.title": "Wiosenne porządki",
   "ALCHEMIST-STEEP.description": "Kiedykolwiek zagrasz kartę z [gold]Fermentacją[/gold], wtasuj ją do [gold]stosu rozgrywającego[/gold].",
   "ALCHEMIST-STEEP.title": "Zaparzanie",

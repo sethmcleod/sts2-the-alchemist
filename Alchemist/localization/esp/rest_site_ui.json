@@ -1,4 +1,5 @@
 {
   "OPTION_BREW.description": "[gold]Mejoras[/gold] una carta al azar de tu [gold]mazo[/gold]. Eliges 1 de 3 [gold]pociones[/gold] especiales valoradas en 100 de oro si se las vendes al [gold]Comerciante[/gold].",
+  "OPTION_BREW.descriptionBlitz": "[gold]Mejoras[/gold] una carta al azar de tu [gold]mazo[/gold]. Eliges 1 de 3 [gold]pociones[/gold] especiales.",
   "OPTION_BREW.name": "Preparar"
 }

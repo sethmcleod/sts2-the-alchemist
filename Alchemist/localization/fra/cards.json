@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "Appliquez {Poison:diff()} de [gold]Poison[/gold] à TOUS les ennemis.\nGagnez {SelfPoison} de [gold]Poison[/gold].",
   "ALCHEMIST-SPORES.title": "Spores",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]Épuisez[/gold] jusqu'à {Cards:diff()} cartes de votre [gold]Pioche[/gold].\nGagnez {Antitoxin} d'[gold]Antitoxine[/gold] pour chaque carte [gold]Épuisée[/gold] ainsi.",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Choisissez les cartes à [gold]Épuiser[/gold].",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Choisir jusqu'à [blue]{MaxCount}[/blue] {MaxCount:plural:carte|cartes} à [gold]Épuiser[/gold].",
   "ALCHEMIST-SPRING_CLEANING.title": "Grand ménage",
   "ALCHEMIST-STEEP.description": "Lorsque vous jouez une carte [gold]Fermentation[/gold], mélangez-la dans votre [gold]Pioche[/gold].",
   "ALCHEMIST-STEEP.title": "Trempage",

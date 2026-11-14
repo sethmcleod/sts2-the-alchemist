@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "สร้าง {Poison:diff()} [gold]พิษ[/gold]ใส่ศัตรูทั้งหมด\nได้รับ {SelfPoison} [gold]พิษ[/gold]",
   "ALCHEMIST-SPORES.title": "สปอร์",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]สลาย[/gold]การ์ดได้สูงสุด {Cards:diff()} ใบใน[gold]กองจั่ว[/gold]\nได้รับ {Antitoxin} [gold]สารต้านพิษ[/gold] ตามจำนวนการ์ดที่[gold]ถูกสลาย[/gold]",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "เลือกการ์ดเพื่อ[gold]สลาย[/gold]",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "เลือกการ์ดสูงสุด [blue]{MaxCount}[/blue] ใบเพื่อ[gold]สลาย[/gold]",
   "ALCHEMIST-SPRING_CLEANING.title": "ลอกบ่อ",
   "ALCHEMIST-STEEP.description": "ทุกครั้งที่คุณเล่นการ์ด[gold]บ่ม[/gold] สับการ์ดนั้นกลับเข้า[gold]กองจั่ว[/gold]",
   "ALCHEMIST-STEEP.title": "แช่ยา",

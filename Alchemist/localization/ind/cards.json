@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "Terapkan {Poison:diff()} [gold]Racun[/gold] ke SEMUA musuh.\nDapatkan {SelfPoison} [gold]Racun[/gold].",
   "ALCHEMIST-SPORES.title": "Spora",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]Hanguskan[/gold] sampai dengan {Cards:diff()} kartu dari [gold]Tumpukan Ambil[/gold] kamu.\nDapatkan {Antitoxin} [gold]Antitoksin[/gold] untuk setiap kartu [gold]Hangus[/gold].",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Pilih kartu untuk [gold]Dihanguskan[/gold].",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Pilih hingga [blue]{MaxCount}[/blue] kartu untuk di [gold]Hanguskan[/gold].",
   "ALCHEMIST-SPRING_CLEANING.title": "Bersih-Bersih Kolam",
   "ALCHEMIST-STEEP.description": "Setiap kali kamu memainkan kartu [gold]Fermentasi[/gold], kocok kartu itu ke [gold]Tumpukan Ambilmu[/gold].",
   "ALCHEMIST-STEEP.title": "Rendaman",

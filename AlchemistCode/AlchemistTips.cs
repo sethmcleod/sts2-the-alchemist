@@ -25,10 +25,28 @@ public static class AlchemistTips
         new HoverTip(new LocString("card_keywords", "ALCHEMIST-FERMENT_REF.title"),
             new LocString("card_keywords", "ALCHEMIST-FERMENT_REF.description"));
 
-    private static IHoverTip? _brew, _transformMix, _compoundMix;
-    public static IHoverTip Brew => _brew ??= Static("ALCHEMIST-BREW");
+    private sealed class Cache
+    {
+        public required string Language;
+        public IHoverTip? Brew, TransformMix, CompoundMix, MixHeader;
+        public IHoverTip[]? Mix, MixUpgraded;
+    }
 
-    public static IHoverTip TransformMix => _transformMix ??= Static("ALCHEMIST-TRANSFORM_MIX");
+    private static Cache? _cache;
+
+    private static Cache Cached
+    {
+        get
+        {
+            var language = LocManager.Instance.Language;
+            if (_cache?.Language != language) _cache = new Cache { Language = language };
+            return _cache;
+        }
+    }
+
+    public static IHoverTip Brew => Cached.Brew ??= Static("ALCHEMIST-BREW");
+
+    public static IHoverTip TransformMix => Cached.TransformMix ??= Static("ALCHEMIST-TRANSFORM_MIX");
 
     // The numbers in these strings copy the token classes in Cards/Token, so change both together
     private static IHoverTip Row(string mixKey, bool upgraded) =>
@@ -53,13 +71,10 @@ public static class AlchemistTips
     private static IHoverTip[] Family(bool upgraded) =>
         BasicKeys.Concat(VolatileKeys).Select(k => Row(k, upgraded)).ToArray();
 
-    private static IHoverTip[]? _mix, _mixUpgraded;
+    public static IHoverTip MixHeader => Cached.MixHeader ??= Static("ALCHEMIST-MIX");
 
-    public static IHoverTip MixHeader => _mixHeader ??= Static("ALCHEMIST-MIX");
-    private static IHoverTip? _mixHeader;
+    public static IHoverTip[] Mix => Cached.Mix ??= Family(false);
+    public static IHoverTip[] MixUpgraded => Cached.MixUpgraded ??= Family(true);
 
-    public static IHoverTip[] Mix => _mix ??= Family(false);
-    public static IHoverTip[] MixUpgraded => _mixUpgraded ??= Family(true);
-
-    public static IHoverTip CompoundMix => _compoundMix ??= Static("ALCHEMIST-COMPOUND_MIX", "mix_compound");
+    public static IHoverTip CompoundMix => Cached.CompoundMix ??= Static("ALCHEMIST-COMPOUND_MIX", "mix_compound");
 }

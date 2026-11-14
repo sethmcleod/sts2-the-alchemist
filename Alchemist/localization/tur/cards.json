@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "TÜM düşmanlara {Poison:diff()} [gold]Zehir[/gold] uygula.\n{SelfPoison} [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-SPORES.title": "Sporlar",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]Çekme Deste[/gold]'nden en fazla {Cards:diff()} kartı [gold]Tüket[/gold].\n[gold]Tüketilen[/gold] her kart için {Antitoxin} [gold]Antitoksin[/gold] elde et.",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "[gold]Tüketmek[/gold] için kartları seç.",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "[gold]Tüketmek[/gold] için en fazla [blue]{MaxCount}[/blue] kart seç.",
   "ALCHEMIST-SPRING_CLEANING.title": "Bahar Temizliği",
   "ALCHEMIST-STEEP.description": "Bir [gold]Mayalan[/gold] kartı oynadığında onu [gold]Çekme Deste[/gold]'ne karıştır.",
   "ALCHEMIST-STEEP.title": "Bekletme",

@@ -20,7 +20,7 @@ public static class RelicBigOutlinePatches
 
     public static Texture2D? Composite(RelicModel relic)
     {
-        if (BigIconPathGetter.Invoke(relic, null) is not string art) return null;
+        if (BigIconPathGetter?.Invoke(relic, null) is not string art) return null;
         if (Cache.TryGetValue(art, out var cached)) return cached;
         if (ComposeImage(art) is not { } image) return null;
         var texture = ImageTexture.CreateFromImage(image);

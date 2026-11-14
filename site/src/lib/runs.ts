@@ -19,6 +19,7 @@ export interface Group {
   build: string;
   coop: number;
   expansion?: number;
+  mode?: string;
   pool: string;
   version: string;
 }
@@ -28,6 +29,7 @@ export interface Filters {
   build: string;
   expansions: 'all' | 'with' | 'without';
   min: number;
+  mode: string;
   players: 'all' | 'coop' | 'solo';
   pool: string;
   version: string;
@@ -35,15 +37,21 @@ export interface Filters {
 
 export const DEFAULT_FILTERS: Filters = {
   ascension: 'all',
-  build: 'all',
+  build: 'latest',
   expansions: 'all',
   min: 10,
+  mode: 'standard',
   players: 'all',
   pool: 'all',
   version: 'recent',
 };
 
 const RECENT_MIN_RUNS = 500;
+
+export const patchOf = (build: string) => {
+  const parts = build.match(/\d+/g);
+  return build.startsWith('v') && parts && parts.length >= 2 ? `v${parts[0]}.${parts[1]}` : build;
+};
 
 const SUMMARY_TABLES = [
   'totals',
@@ -94,6 +102,7 @@ export class Runs {
   readonly groups: Group[];
   readonly tables: Partial<Record<Extra, Table>> & Record<(typeof SUMMARY_TABLES)[number], Table>;
   readonly recentStart: string;
+  private readonly recentStarts = new Map<string, string>();
 
   constructor(
     readonly summary: Summary,
@@ -108,7 +117,7 @@ export class Runs {
       >),
       ...Object.fromEntries(Object.entries(extra).map(([name, file]) => [name, table(file)])),
     };
-    this.recentStart = this.findRecentStart();
+    this.recentStart = this.recentStartFor(DEFAULT_FILTERS);
   }
 
   withSummary(summary: Summary): Runs {
@@ -133,39 +142,57 @@ export class Runs {
   }
 
   select(filters: Filters, where: (group: Group) => boolean = () => true): Selection {
-    const inVersion = this.versionTest(filters.version);
+    const inVersion = this.versionTest(filters);
+    const patch = this.patch(filters.build, filters.mode);
     return this.groups.map((group) =>
       inVersion(group.version) &&
+      (group.mode ?? 'standard') === filters.mode &&
       (filters.ascension === 'all' || group.ascension === Number(filters.ascension)) &&
       (filters.players === 'all' || group.coop === (filters.players === 'coop' ? 1 : 0)) &&
       (filters.expansions === 'all' || (group.expansion ?? 0) === (filters.expansions === 'with' ? 1 : 0)) &&
       (filters.pool === 'all' || group.pool === filters.pool) &&
-      (filters.build === 'all' || group.build === filters.build) &&
+      (patch === 'all' || patchOf(group.build) === patch) &&
       where(group)
         ? 1
         : 0,
     );
   }
 
+  patch(choice: string, mode = DEFAULT_FILTERS.mode) {
+    if (choice !== 'latest') return choice;
+    if (mode === DEFAULT_FILTERS.mode) return this.meta.default_patch ?? 'all';
+    const builds = this.groups.filter((group) => group.mode === mode).map((group) => group.build);
+    return builds.length ? patchOf(builds.sort(compareVersions).at(-1)!) : 'all';
+  }
+
   get latest() {
     return this.meta.versions.at(-1)!;
   }
 
-  versionSpan(choice: string): [string, string] | null {
+  versionSpan(choice: string, scope: Pick<Filters, 'build' | 'mode'> = DEFAULT_FILTERS): [string, string] | null {
     if (choice === 'all') return null;
-    if (choice === 'recent') return [this.recentStart, this.latest];
+    if (choice === 'recent') return [this.recentStartFor(scope), this.latest];
     if (choice.startsWith('>=')) return [choice.slice(2), this.latest];
     return [choice, choice];
   }
 
-  private versionTest(choice: string) {
-    const span = this.versionSpan(choice);
+  private versionTest(filters: Filters) {
+    const span = this.versionSpan(filters.version, filters);
     return (version: string) =>
       !span || (compareVersions(version, span[0]) >= 0 && compareVersions(version, span[1]) <= 0);
   }
 
-  private findRecentStart() {
-    const solo = this.groups.map((group) => (group.coop ? 0 : 1));
+  recentStartFor({ build, mode }: Pick<Filters, 'build' | 'mode'>) {
+    const key = `${build} ${mode}`;
+    let start = this.recentStarts.get(key);
+    if (!start) this.recentStarts.set(key, (start = this.findRecentStart(this.patch(build, mode), mode)));
+    return start;
+  }
+
+  private findRecentStart(patch: string, mode: string) {
+    const solo = this.groups.map((group) =>
+      !group.coop && (group.mode ?? 'standard') === mode && (patch === 'all' || patchOf(group.build) === patch) ? 1 : 0,
+    );
     const byVersion = sumBy(this.tables.totals, solo, (row) => this.groups[row.group].version);
     const newestFirst = [...this.meta.versions].reverse();
     let runs = 0;

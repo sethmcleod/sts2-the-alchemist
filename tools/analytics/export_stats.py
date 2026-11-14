@@ -29,6 +29,13 @@ THEME_MIN_CARDS = 3
 
 EXPANSION_TAGS = {"Hero", "Reshuffled Spire", "Ancients Awakened"}
 
+MODES = ["standard", "dread", "blitz"]
+
+CUSTOM_SAFE_SCHEMA = 5
+CUSTOM_GAME_SINCE = (0, 113)
+
+DEFAULT_PATCH_MIN_RUNS = 500
+
 HISTOGRAMS = {
     "run_minutes": (10, 180),
     "poison_peak": (5, 60),
@@ -153,6 +160,39 @@ def version_key(version: str) -> tuple:
     return (0, *map(int, parts)) if (version or "").startswith("v") and parts else (1, version)
 
 
+def mode_of(run: dict, extra: dict) -> str:
+    mode = extra.get("mode") or (run.get("data") or {}).get("gameMode") or "standard"
+    return str(mode).lower()
+
+
+def patch_of(game_version: str) -> str:
+    parts = re.findall(r"\d+", game_version or "")
+    return f"v{parts[0]}.{parts[1]}" if (game_version or "").startswith("v") and len(parts) >= 2 else game_version
+
+
+def patch_numbers(game_version: str) -> tuple:
+    return tuple(int(part) for part in re.findall(r"\d+", game_version or "")[:2])
+
+
+def default_patch(runs: list[dict], extras: list[dict]) -> str | None:
+    counts = Counter(patch_of(run["game_version"]) for run, extra in zip(runs, extras)
+                     if mode_of(run, extra) == "standard" and not is_coop(run))
+    newest_first = sorted(counts, key=version_key, reverse=True)
+    return next((patch for patch in newest_first if counts[patch] >= DEFAULT_PATCH_MIN_RUNS),
+                max(counts, key=counts.get, default=None))
+
+
+def mode_summary(runs: list[dict], extras: list[dict], dropped: Counter) -> str:
+    kept = Counter(mode_of(run, extra) for run, extra in zip(runs, extras))
+    custom = sum(1 for run, extra in zip(runs, extras)
+                 if patch_numbers(run["game_version"]) >= CUSTOM_GAME_SINCE and schema_of(extra) < CUSTOM_SAFE_SCHEMA)
+    lines = ["Runs by game mode: " + ", ".join(f"{mode} {kept[mode]:,}" for mode in MODES)]
+    if dropped:
+        lines.append("Dropped (unknown mode): " + ", ".join(f"{mode} {n:,}" for mode, n in dropped.most_common()))
+    lines.append(f"Custom runs possible (game v0.113 or later, schema below {CUSTOM_SAFE_SCHEMA}): {custom:,}")
+    return "\n".join(lines)
+
+
 def ascension_band(ascension: int) -> int:
     return max(band for band in ASCENSION_BANDS if ascension >= band)
 
@@ -161,19 +201,21 @@ def is_coop(run: dict) -> bool:
     return ((run.get("data") or {}).get("numPlayers") or 1) > 1
 
 
-def skill_cell(run: dict) -> tuple:
+def skill_cell(run: dict, extra: dict) -> tuple:
     skill = (run.get("data") or {}).get("totalWinRate") or 0
-    return ascension_band(int(run["ascension"])), sum(skill >= edge for edge in SKILL_EDGES), is_coop(run)
+    return (mode_of(run, extra), ascension_band(int(run["ascension"])), sum(skill >= edge for edge in SKILL_EDGES),
+            is_coop(run))
 
 
-def residuals(runs: list[dict]) -> list[float]:
+def residuals(runs: list[dict], extras: list[dict]) -> list[float]:
+    keys = [skill_cell(run, extra) for run, extra in zip(runs, extras)]
     cells: dict[tuple, list[int]] = {}
-    for run in runs:
-        cell = cells.setdefault(skill_cell(run), [0, 0])
+    for run, key in zip(runs, keys):
+        cell = cells.setdefault(key, [0, 0])
         cell[0] += 1
         cell[1] += int(bool(run["victory"]))
     expected = {key: wins / n for key, (n, wins) in cells.items()}
-    return [int(bool(run["victory"])) - expected[skill_cell(run)] for run in runs]
+    return [int(bool(run["victory"])) - expected[key] for run, key in zip(runs, keys)]
 
 
 def card_pool(run: dict, extra: dict, epochs: int) -> str:
@@ -190,7 +232,8 @@ def uses_expansion(run: dict, extra: dict, expansion_cards: set[str]) -> bool:
 
 def group_of(run: dict, extra: dict, epochs: int, expansion_cards: set[str]) -> tuple:
     return (run["mod_version"], run["game_version"], ascension_band(int(run["ascension"])),
-            card_pool(run, extra, epochs), int(is_coop(run)), int(uses_expansion(run, extra, expansion_cards)))
+            card_pool(run, extra, epochs), int(is_coop(run)), int(uses_expansion(run, extra, expansion_cards)),
+            mode_of(run, extra))
 
 
 def dominant_theme(deck_themes: dict[str, int]) -> str:
@@ -394,14 +437,14 @@ RECORDS = [
 ]
 
 
-def eligible_for_records(run: dict) -> bool:
+def eligible_for_records(run: dict, extra: dict) -> bool:
     data = run.get("data") or {}
-    return not is_coop(run) and not data.get("numReloads")
+    return not is_coop(run) and not data.get("numReloads") and mode_of(run, extra) == "standard"
 
 
 def records(runs: list[dict], extras: list[dict]) -> list[dict]:
     found = []
-    pairs = [(run, extra) for run, extra in zip(runs, extras) if eligible_for_records(run)]
+    pairs = [(run, extra) for run, extra in zip(runs, extras) if eligible_for_records(run, extra)]
     for record, needs_win, highest, value_of in RECORDS:
         entries = []
         for run, extra in pairs:
@@ -418,7 +461,7 @@ def records(runs: list[dict], extras: list[dict]) -> list[dict]:
 
 
 def records_summary(runs: list[dict], extras: list[dict]) -> str:
-    lines = ["Records (solo runs without a reload):"]
+    lines = ["Records (solo Standard runs without a reload):"]
     for record in records(runs, extras):
         entries = ", ".join(f"{e['value']:,} (A{e['ascension']}, {e['version']}, {e['day']}{'' if e['won'] else ', lost'})"
                             for e in record["entries"])
@@ -439,7 +482,7 @@ def build(runs: list[dict], extras: list[dict]) -> dict[str, dict]:
     index = {key: i for i, key in enumerate(groups)}
 
     tables = new_tables()
-    for run, extra, key, residual in zip(runs, extras, keys, residuals(runs)):
+    for run, extra, key, residual in zip(runs, extras, keys, residuals(runs, extras)):
         add_run(tables, index[key], run, extra, badges, residual)
 
     days = sorted({run["created_at"][:10] for run in runs})
@@ -454,6 +497,8 @@ def build(runs: list[dict], extras: list[dict]) -> dict[str, dict]:
         "first_day": days[0],
         "last_day": days[-1],
         "versions": sorted({run["mod_version"] for run in runs}, key=version_key),
+        "modes": [mode for mode in MODES if any(key[6] == mode for key in groups)],
+        "default_patch": default_patch(runs, extras),
         "builds": {build: kinds.most_common(1)[0][0] for build, kinds in
                    sorted(builds.items(), key=lambda kv: version_key(kv[0]))},
         "prefix": mod_meta.PREFIX,
@@ -486,7 +531,7 @@ def build(runs: list[dict], extras: list[dict]) -> dict[str, dict]:
         "potion_info": mod_meta.items("potions", "Potions"),
         "power_info": mod_meta.items("powers", None),
         "icons": mod_meta.icons(),
-        "groups": {"key": ["version", "build", "ascension", "pool", "coop", "expansion"], "counts": [],
+        "groups": {"key": ["version", "build", "ascension", "pool", "coop", "expansion", "mode"], "counts": [],
                    "rows": [list(key) for key in groups]},
     }
     out = {name: {} for name in FILES}
@@ -516,6 +561,12 @@ def main() -> int:
     args.out.mkdir(parents=True, exist_ok=True)
     shown = lambda path: path.relative_to(common.REPO) if path.is_relative_to(common.REPO) else path
     extras = [normalise(run.get("alchemist") or {}) for run in runs]
+    dropped = Counter(mode_of(run, extra) for run, extra in zip(runs, extras) if mode_of(run, extra) not in MODES)
+    kept = [(run, extra) for run, extra in zip(runs, extras) if mode_of(run, extra) in MODES]
+    if not kept:
+        print(f"No runs to export ({fetched} fetched, none in a known game mode). Leaving the old data.", file=sys.stderr)
+        return 1
+    runs, extras = [run for run, _ in kept], [extra for _, extra in kept]
     files = build(runs, extras)
     for name, payload in files.items():
         path = args.out / name
@@ -526,6 +577,7 @@ def main() -> int:
     if secrets := secrets_summary(runs):
         print(secrets)
     print(records_summary(runs, extras))
+    print(mode_summary(runs, extras, dropped))
     return 0
 
 

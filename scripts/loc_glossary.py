@@ -37,6 +37,8 @@ OVERRIDES = {
     ("Discard Pile", "esp"): "pila de descarte",
     ("Exhaust", "rus"): "Сжигается|сжечь|сожженную",
     ("Fatal", "tur"): "Öldürürse",
+    ("Strength", "ita"): "Forza",
+    ("Strength", "tur"): "Kuvvet",
 }
 
 

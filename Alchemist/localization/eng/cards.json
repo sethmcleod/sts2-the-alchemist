@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "Apply {Poison:diff()} [gold]Poison[/gold] to ALL enemies.\nGain {SelfPoison} [gold]Poison[/gold].",
   "ALCHEMIST-SPORES.title": "Spores",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]Exhaust[/gold] up to {Cards:diff()} cards from your [gold]Draw Pile[/gold].\nGain {Antitoxin} [gold]Antitoxin[/gold] for each card [gold]Exhausted[/gold].",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Choose cards to [gold]Exhaust[/gold].",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Choose up to [blue]{MaxCount}[/blue] {MaxCount:plural:card|cards} to [gold]Exhaust[/gold].",
   "ALCHEMIST-SPRING_CLEANING.title": "Spring Cleaning",
   "ALCHEMIST-STEEP.description": "Whenever you play a [gold]Ferment[/gold] card, shuffle it into your [gold]Draw Pile[/gold].",
   "ALCHEMIST-STEEP.title": "Steep",

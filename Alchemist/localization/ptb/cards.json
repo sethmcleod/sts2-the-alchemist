@@ -211,7 +211,7 @@
   "ALCHEMIST-SPORES.description": "Aplique {Poison:diff()} de [gold]Veneno[/gold] a TODOS os inimigos.\nReceba {SelfPoison} de [gold]Veneno[/gold].",
   "ALCHEMIST-SPORES.title": "Esporos",
   "ALCHEMIST-SPRING_CLEANING.description": "[gold]Exaure[/gold] até {Cards:diff()} cartas da sua [gold]Pilha de Compra[/gold].\nReceba {Antitoxin} de [gold]Antitoxina[/gold] por cada carta [gold]Exaurida[/gold].",
-  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Escolha cartas para [gold]Exaurir[/gold].",
+  "ALCHEMIST-SPRING_CLEANING.selectionScreenPrompt": "Escolha até [blue]{MaxCount}[/blue] {MaxCount:plural:carta|cartas} para [gold]Exaurir[/gold].",
   "ALCHEMIST-SPRING_CLEANING.title": "Faxina Geral",
   "ALCHEMIST-STEEP.description": "Sempre que você jogar uma carta de [gold]Fermentar[/gold], embaralhe-a na sua [gold]Pilha de Compra[/gold].",
   "ALCHEMIST-STEEP.title": "Maceração",

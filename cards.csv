@@ -93,7 +93,7 @@ Spatter,Uncommon,Skill,1,Discard any number of cards. Apply 3 Poison to ALL enem
 Spike,Common,Attack,1,Deal 7(11) damage. Add an Acrid Mix into your Hand.
 Spit,Common,Attack,0,Deal 4(7) damage. Apply 3 Poison. Gain 1 Poison.
 Spores,Common,Skill,0,Apply 3(4) Poison to ALL enemies. Gain 2 Poison.
-Spring Cleaning,"Uncommon, Hero",Skill,1,Exhaust up to 2(3) cards from your Draw Pile. Gain 2 Antitoxin for each card Exhausted.
+Spring Cleaning,"Uncommon, Hero",Skill,0,Exhaust up to 2(3) cards from your Draw Pile. Gain 2 Antitoxin for each card Exhausted.
 Steep,Rare,Power,2,"Whenever you play a Ferment card, shuffle it into your Draw Pile. (Steep+ gains Innate)"
 Strike,Basic,Attack,1,Deal 6(9) damage.
 Sweat It Out,Rare,Skill,2,Retain. Gain 4(6) Poison. Apply Poison equal to your Poison to ALL enemies.

@@ -5,6 +5,30 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.9] - 2026-11-13
+
+### Added
+
+- Added final art for Combine, Proof, and Venom Shock
+
+### Changed
+
+- Buffed Spring Cleaning card: cost decreased from 1 -> 0
+- Changed the Alchemist's name on the Dread character select screen to purple
+- Changed the Brew rest site text in Blitz: it no longer mentions selling potions for gold
+- Changed the Blitz merchant's Enchanted Card Reward: Steady is no longer randomly chosen for Ferment cards
+- Changed anonymous run sharing to include Dread and Blitz runs
+
+### Fixed
+
+- Fixed damage previews from other mods counting only one hit for Puncture, Forked Tongue, Lash Out, Wormwood, Hopped Up, Venom Shock and Froth
+- Fixed Proof and Nightcap damage previews not counting Toadstone
+- Fixed One for Later copies gaining the Refine bonus twice
+- Fixed Panacea and Toxic Aura triggering from other HP loss after Antitoxin ran out
+- Fixed Mix, Brew and Compound Mix tooltips staying in the previous language after a language change
+- Fixed the update and wrong branch popups not showing while another popup was open
+- Fixed custom runs being shared as Standard runs on the beta game branch
+
 ## [0.15.8] - 2026-11-12
 
 ### Added

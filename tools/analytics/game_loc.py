@@ -21,6 +21,10 @@ WORDS = {
                                         ("COMMON", "UNCOMMON", "RARE", "EVENT")}},
     "relic_rarities": {"gameplay_ui": {r.capitalize(): f"RELIC_RARITY.{r}" for r in
                                        ("STARTER", "COMMON", "UNCOMMON", "RARE", "SHOP", "EVENT", "ANCIENT")}},
+    "modes": {
+        "game_modes": {"Standard": "SINGLE_PLAYER_STANDARD.title"},
+        "main_menu_ui": {"Dread": "DREAD.title", "Blitz": "BLITZ.title"},
+    },
     "words": {
         "static_hover_tips": {"Boss": "ROOM_BOSS.title", "Elite": "ROOM_ELITE.title", "Floor": "FLOOR.title",
                               "Energy": "ENERGY.title", "Block": "BLOCK.title"},

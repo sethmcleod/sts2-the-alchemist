@@ -2,6 +2,7 @@ using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using System.Linq;
 using System.Reflection;
+using Alchemist.AlchemistCode.Extensions;
 using Alchemist.AlchemistCode.Potions;
 using BaseLib.Common.Rewards.LinkedRewardSet;
 using Godot;
@@ -20,15 +21,16 @@ namespace Alchemist.AlchemistCode.Relics;
 public sealed class BrewRestSiteOption : RestSiteOption
 {
     // The reward overlay leaves the rest-site buttons up, so hide them through the private screen
-    private static readonly FieldInfo ChoicesScreenField =
-        typeof(NRestSiteRoom).GetField("_choicesScreen", BindingFlags.NonPublic | BindingFlags.Instance)!;
+    private static readonly FieldInfo? ChoicesScreenField =
+        typeof(NRestSiteRoom).GetField("_choicesScreen", BindingFlags.NonPublic | BindingFlags.Instance);
 
     public const string BrewOptionId = "BREW";
 
     public override string OptionId => BrewOptionId;
 
     public override LocString Description =>
-        new LocString("rest_site_ui", "OPTION_" + OptionId + ".description");
+        new LocString("rest_site_ui",
+            "OPTION_" + OptionId + (Owner.RunState.IsBlitz() ? ".descriptionBlitz" : ".description"));
 
     public override bool IsEnabled => true;
 
@@ -41,7 +43,7 @@ public sealed class BrewRestSiteOption : RestSiteOption
         // OnSelect runs on every client (RestSiteSynchronizer replays choices), so touch only the local screen
         if (LocalContext.IsMe(Owner) && NRestSiteRoom.Instance is { } restSiteRoom)
         {
-            var choicesScreen = ChoicesScreenField.GetValue(restSiteRoom) as Control;
+            var choicesScreen = ChoicesScreenField?.GetValue(restSiteRoom) as Control;
             if (choicesScreen != null)
             {
                 var tween = restSiteRoom.CreateTween();

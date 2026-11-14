@@ -22,7 +22,6 @@ internal static class BranchGuard
     private const ulong MainItemId = 3781688551;
     private const string BetaBranch = "public-beta";
     private const string PublicBranch = "public";
-    private static readonly TimeSpan PopupRetry = TimeSpan.FromSeconds(1);
 
     public static void Initialize()
     {
@@ -83,15 +82,13 @@ internal static class BranchGuard
 
     private static async Task ShowPopup()
     {
-        while (NGame.Instance?.MainMenu == null || NModalContainer.Instance == null
-               || LocManager.Instance == null)
-            await Task.Delay(PopupRetry);
+        var modals = await ModalSlot.WaitUntilFree(() => NGame.Instance?.MainMenu != null);
 
         var branch = CurrentBranch();
         MainFile.Logger.Info($"[BranchGuard] Showing the branch popup over the main menu (branch '{branch}').");
         var popup = NGenericPopup.Create();
         if (popup == null) return;
-        NModalContainer.Instance.Add(popup);
+        modals.Add(popup);
         var body = new LocString("settings_ui", "ALCHEMIST-BRANCH_MISMATCH.body");
         body.Add("currentBranch", branch);
         var open = await popup.WaitForConfirmation(

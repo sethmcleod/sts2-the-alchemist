@@ -21,7 +21,6 @@ internal static class WorkshopSelfUpdate
     private static readonly TimeSpan PollInterval = TimeSpan.FromSeconds(2);
     private static readonly TimeSpan StartGrace = TimeSpan.FromSeconds(10);
     private static readonly TimeSpan DownloadTimeout = TimeSpan.FromMinutes(10);
-    private static readonly TimeSpan PopupRetry = TimeSpan.FromSeconds(1);
 
     private const uint InProgress = (uint)(EItemState.k_EItemStateNeedsUpdate
         | EItemState.k_EItemStateDownloading | EItemState.k_EItemStateDownloadPending);
@@ -139,8 +138,8 @@ internal static class WorkshopSelfUpdate
             await Task.Delay(PollInterval, SteamInitializer.DisconnectToken);
             var inProgress = (SteamUGC.GetItemState(itemId) & InProgress) != 0;
             sawActivity |= inProgress;
-            SteamUGC.GetItemInstallInfo(itemId, out _, out _, 256u, out var timestamp);
-            if (!inProgress && timestamp != initialTimestamp)
+            var installed = SteamUGC.GetItemInstallInfo(itemId, out _, out _, 256u, out var timestamp);
+            if (!inProgress && installed && timestamp != initialTimestamp)
             {
                 MainFile.Logger.Info($"[WorkshopSelfUpdate] Download complete; install timestamp {initialTimestamp} -> {timestamp}.");
                 return true;
@@ -158,12 +157,11 @@ internal static class WorkshopSelfUpdate
     // LocManager starts after mods, so wait for it too or the popup shows placeholder text
     private static async Task ShowRestartPopup()
     {
-        while (NModalContainer.Instance == null || LocManager.Instance == null)
-            await Task.Delay(PopupRetry, SteamInitializer.DisconnectToken);
+        var modals = await ModalSlot.WaitUntilFree(cancel: SteamInitializer.DisconnectToken);
 
         var popup = NGenericPopup.Create();
         if (popup == null) return;
-        NModalContainer.Instance.Add(popup);
+        modals.Add(popup);
         var quitNow = await popup.WaitForConfirmation(
             new LocString("settings_ui", "ALCHEMIST-WORKSHOP_UPDATE.body"),
             new LocString("settings_ui", "ALCHEMIST-WORKSHOP_UPDATE.header"),

@@ -2,13 +2,16 @@ import { useEffect, useRef } from 'preact/hooks';
 import type { Lang } from '../lib/lang';
 import { notesHref } from '../lib/links';
 import { ASCENSION_BANDS } from '../lib/mod';
-import { DEFAULT_FILTERS, type Filters as FilterValues, type Runs } from '../lib/runs';
+import { DEFAULT_FILTERS, type Filters as FilterValues, patchOf, type Runs } from '../lib/runs';
+import { compareVersions } from '../lib/stats';
 import { fillSlots } from './useLang';
 import type { Status } from './useStats';
 
 export interface FilterOptions {
-  builds: [build: string, label: string][];
-  recentStart: string;
+  defaultPatches: Record<string, string>;
+  modes: [mode: string, label: string][];
+  patches: [patch: string, label: string][];
+  recentStarts: Record<string, string>;
   versions: string[];
 }
 
@@ -17,14 +20,39 @@ const BRANCH_LABELS: Record<string, (l: Lang, build: string) => string> = {
   'public-beta': (l, build) => l.t('{build} (beta)', { build }),
 };
 
+const MODE_NAMES: Record<string, string> = { blitz: 'Blitz', dread: 'Dread', standard: 'Standard' };
+
 export function filterOptions(l: Lang, runs: Runs): FilterOptions {
+  const branches = new Map<string, string>();
+  for (const [build, branch] of Object.entries(runs.meta.builds).sort(([a], [b]) => compareVersions(a, b)))
+    branches.set(patchOf(build), branch);
+  const modeName = (mode: string) => l.game?.modes?.[MODE_NAMES[mode]] ?? MODE_NAMES[mode] ?? mode;
+  const patches = [...branches.keys()].sort((a, b) => compareVersions(b, a));
+  const modes = runs.meta.modes ?? [DEFAULT_FILTERS.mode];
+  const defaultPatches = Object.fromEntries(modes.map((mode) => [mode, runs.patch(DEFAULT_FILTERS.build, mode)]));
+  const recentStarts: Record<string, string> = {};
+  for (const mode of modes)
+    for (const build of [DEFAULT_FILTERS.build, 'all', ...patches.filter((patch) => patch !== defaultPatches[mode])])
+      recentStarts[scopeKey({ build, mode })] = runs.recentStartFor({ build, mode });
   return {
-    builds: Object.entries(runs.meta.builds)
-      .reverse()
-      .map(([build, branch]) => [build, BRANCH_LABELS[branch]?.(l, build) ?? build]),
-    recentStart: runs.recentStart,
+    defaultPatches,
+    modes: modes.map((mode) => [mode, modeName(mode)]),
+    patches: patches.map((patch) => [patch, BRANCH_LABELS[branches.get(patch)!]?.(l, patch) ?? patch]),
+    recentStarts,
     versions: [...runs.meta.versions].reverse(),
   };
+}
+
+const scopeKey = ({ build, mode }: Pick<FilterValues, 'build' | 'mode'>) => `${build} ${mode}`;
+
+const recentStart = (options: FilterOptions, filters: FilterValues) =>
+  options.recentStarts[scopeKey(filters)] ?? options.versions.at(-1)!;
+
+function validPatch(choice: string, mode: string, options: FilterOptions) {
+  const patch = patchOf(choice);
+  if (choice === 'all' || patch === options.defaultPatches[mode])
+    return choice === 'all' ? 'all' : DEFAULT_FILTERS.build;
+  return options.patches.some(([known]) => known === patch) ? patch : DEFAULT_FILTERS.build;
 }
 
 const PLAYERS: [FilterValues['players'], (l: Lang) => string][] = [
@@ -46,6 +74,7 @@ const POOLS: Record<string, (l: Lang) => [option: string, clause: string]> = {
 const MIN_RUNS = [1, 5, 10, 20, 50];
 
 export function validFilters(filters: FilterValues, options: FilterOptions): FilterValues {
+  const mode = options.modes.some(([known]) => known === filters.mode) ? filters.mode : DEFAULT_FILTERS.mode;
   const [latest] = options.versions;
   const since = filters.version.startsWith('>=') ? filters.version.slice(2) : null;
   const version =
@@ -59,24 +88,23 @@ export function validFilters(filters: FilterValues, options: FilterOptions): Fil
       filters.ascension === 'all' || Object.hasOwn(ASCENSION_BANDS, filters.ascension)
         ? filters.ascension
         : DEFAULT_FILTERS.ascension,
-    build:
-      filters.build === 'all' || options.builds.some(([build]) => build === filters.build)
-        ? filters.build
-        : DEFAULT_FILTERS.build,
+    build: validPatch(filters.build, mode, options),
     expansions: EXPANSIONS.some(([value]) => value === filters.expansions)
       ? filters.expansions
       : DEFAULT_FILTERS.expansions,
     min: MIN_RUNS.includes(filters.min) ? filters.min : DEFAULT_FILTERS.min,
+    mode,
     players: PLAYERS.some(([players]) => players === filters.players) ? filters.players : DEFAULT_FILTERS.players,
     pool: Object.hasOwn(POOLS, filters.pool) ? filters.pool : DEFAULT_FILTERS.pool,
     version,
   };
 }
 
-function VersionRange({ choice, l, options }: { choice: string; l: Lang; options: FilterOptions }) {
+function VersionRange({ filters, l, options }: { filters: FilterValues; l: Lang; options: FilterOptions }) {
+  const choice = filters.version;
   const latest = options.versions[0];
   if (choice === 'all') return <>{l.t('every version')}</>;
-  const from = choice === 'recent' ? options.recentStart : choice.replace(/^>=/, '');
+  const from = choice === 'recent' ? recentStart(options, filters) : choice.replace(/^>=/, '');
   const link = (v: string) => <a href={l.href(notesHref(v))}>{v}</a>;
   return from !== latest && (choice === 'recent' || choice.startsWith('>=')) ? (
     <>{fillSlots(l.t('{from} to {to}'), { from: link(from), to: link(latest) })}</>
@@ -101,6 +129,8 @@ export default function Filters({ filters, l, onChange, options, runs, status, v
     onChange({ ...filters, [key]: key === 'min' ? Number(value) : value });
   };
   const [latest, ...older] = options.versions;
+  const recent = recentStart(options, filters);
+  const defaultPatch = options.defaultPatches[filters.mode];
   const runsShown =
     filters.players === 'solo'
       ? l.n(runs, '{n} solo run', '{n} solo runs')
@@ -113,7 +143,9 @@ export default function Filters({ filters, l, onChange, options, runs, status, v
       : l.t(', at {band}', { band: l.t(ASCENSION_BANDS[Number(filters.ascension)]) }),
     POOLS[filters.pool](l)[1],
     EXPANSIONS.find(([value]) => value === filters.expansions)![1](l)[1],
-    filters.build === 'all' ? '' : l.t(', on game build {build}', { build: filters.build }),
+    filters.build === 'all'
+      ? ''
+      : l.t(', on game build {build}', { build: filters.build === 'latest' ? defaultPatch : filters.build }),
     filters.min === DEFAULT_FILTERS.min
       ? ''
       : l.n(filters.min, ', hiding results with fewer than {n} run', ', hiding results with fewer than {n} runs'),
@@ -122,7 +154,6 @@ export default function Filters({ filters, l, onChange, options, runs, status, v
   const moreFiltersSet =
     filters.expansions !== DEFAULT_FILTERS.expansions ||
     filters.pool !== DEFAULT_FILTERS.pool ||
-    filters.build !== DEFAULT_FILTERS.build ||
     filters.min !== DEFAULT_FILTERS.min;
   useEffect(() => {
     if (moreFiltersSet && moreFilters.current) moreFilters.current.open = true;
@@ -139,9 +170,9 @@ export default function Filters({ filters, l, onChange, options, runs, status, v
           <span>{l.t('Version')}</span>
           <select class="field-control" onChange={setFilter('version')} value={filters.version}>
             <option value="recent">
-              {options.recentStart === latest
+              {recent === latest
                 ? l.t('Recent versions ({version})', { version: latest })
-                : l.t('Recent versions ({version}+)', { version: options.recentStart })}
+                : l.t('Recent versions ({version}+)', { version: recent })}
             </option>
             <option value={latest}>{l.t('Latest version ({version})', { version: latest })}</option>
             <option value="all">{l.t('All versions')}</option>
@@ -155,6 +186,23 @@ export default function Filters({ filters, l, onChange, options, runs, status, v
                 <option value={v}>{v}</option>
               ))}
             </optgroup>
+          </select>
+        </label>
+        <label class="field">
+          <span>{l.t('Game build')}</span>
+          <select class="field-control" onChange={setFilter('build')} value={filters.build}>
+            {options.patches.map(([patch, label]) => (
+              <option value={patch === defaultPatch ? DEFAULT_FILTERS.build : patch}>{label}</option>
+            ))}
+            <option value="all">{l.t('All builds')}</option>
+          </select>
+        </label>
+        <label class="field" hidden={options.modes.length < 2}>
+          <span>{l.t('Game mode')}</span>
+          <select class="field-control" onChange={setFilter('mode')} value={filters.mode}>
+            {options.modes.map(([mode, label]) => (
+              <option value={mode}>{label}</option>
+            ))}
           </select>
         </label>
         <label class="field">
@@ -194,15 +242,6 @@ export default function Filters({ filters, l, onChange, options, runs, status, v
               </select>
             </label>
             <label class="field">
-              <span>{l.t('Game build')}</span>
-              <select class="field-control" onChange={setFilter('build')} value={filters.build}>
-                <option value="all">{l.t('All builds')}</option>
-                {options.builds.map(([build, label]) => (
-                  <option value={build}>{label}</option>
-                ))}
-              </select>
-            </label>
-            <label class="field">
               <span>{l.t('Hide results with fewer than')}</span>
               <select class="field-control" onChange={setFilter('min')} value={String(filters.min)}>
                 {MIN_RUNS.map((n) => (
@@ -219,7 +258,7 @@ export default function Filters({ filters, l, onChange, options, runs, status, v
           {
             details,
             runs: <strong class="text-ink">{runsShown}</strong>,
-            versions: versions ?? <VersionRange choice={filters.version} l={l} options={options} />,
+            versions: versions ?? <VersionRange filters={filters} l={l} options={options} />,
           },
         )}
         {status === 'loading' && <span class="text-muted"> {l.t('Updating…')}</span>}
