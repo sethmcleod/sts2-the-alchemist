@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added final art for Combine, Proof, and Venom Shock
+
 ### Changed
 
 - Buffed Spring Cleaning card: cost decreased from 1 -> 0
