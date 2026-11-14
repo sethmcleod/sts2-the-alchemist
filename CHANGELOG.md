@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.9] - 2026-11-13
+
 ### Added
 
 - Added final art for Combine, Proof, and Venom Shock
