@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using Godot;
 using HarmonyLib;
@@ -16,11 +17,14 @@ public static class HoverTipOverlapPatch
     private static readonly FieldInfo CardContainer =
         AccessTools.Field(typeof(NHoverTipSet), "_cardHoverTipContainer");
 
+    private static readonly HoverTipAlignment? Center =
+        Enum.TryParse<HoverTipAlignment>("Center", out var center) ? center : null;
+
     private const float Gap = 10f;
 
     public static void Postfix(NHoverTipSet __instance, HoverTipAlignment alignment)
     {
-        if (alignment != HoverTipAlignment.Center) return;
+        if (Center is not { } centered || alignment != centered) return;
         if (TextContainer?.GetValue(__instance) is not Control text
             || CardContainer?.GetValue(__instance) is not Control cards) return;
         if (cards.GetChildCount() == 0 || !text.GetRect().Intersects(cards.GetRect())) return;
