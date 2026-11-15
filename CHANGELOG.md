@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.10] - 2026-11-15
+
 ### Added
 
 - Added final art for Digest, Distill, and Spores
