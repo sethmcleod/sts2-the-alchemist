@@ -6,12 +6,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Alchemist.AlchemistCode.Cards.Common;
+namespace Alchemist.AlchemistCode.Cards.Uncommon;
 
 [CardTheme(CardTheme.Antitoxin)]
 public class Proof : AlchemistCard
 {
-    public Proof() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+    public Proof() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         WithCalculatedDamage(0, static (card, _) => card is Proof proof ? proof.HitDamage : 0, ValueProp.Move);
         WithVar("antitoxin", 3, 1);
