@@ -4,12 +4,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Alchemist.AlchemistCode.Cards.Uncommon;
+namespace Alchemist.AlchemistCode.Cards.Hero;
 
 [CardTheme(CardTheme.Poison)]
-public class CoupDeGrace : AlchemistCard
+public class CoupDeGrace : AlchemistHeroCard
 {
-    public CoupDeGrace() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public CoupDeGrace() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
         WithVar("Per", 2, 0);
         WithCalculatedDamage(7, 3, static (card, target) =>

@@ -4,10 +4,10 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace Alchemist.AlchemistCode.Cards.Hero;
+namespace Alchemist.AlchemistCode.Cards.Common;
 
 [CardTheme(CardTheme.Poison)]
-public class SnackAttack : AlchemistHeroCard
+public class SnackAttack : AlchemistCard
 {
     public SnackAttack() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {

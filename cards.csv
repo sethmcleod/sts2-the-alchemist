@@ -20,7 +20,7 @@ Cocktail Strike,"Uncommon, Reshuffled Spire",Attack,1,Deal 4 damage. Deals 4(5) 
 Combine,Common,Skill,0,Add a random basic Mix into your Hand. Combine 2 Mixes in your Hand into a Compound Mix. (Combine+ adds a Mix+)
 Compound Mix,Token,Skill,0,"Draw 1(2) cards, in addition to the effects of the two Mixes it was made from. Exhaust."
 Corrode,Uncommon,Attack,4,Retain. Ferment. Deal 18(24) damage. Apply 5(7) Poison. Costs 1 less for each turn Fermented.
-Coup de Grace,Uncommon,Attack,1,Deal 7(10) damage. Deals 3 additional damage for every 2 Poison the enemy has.
+Coup de Grace,"Common, Hero",Attack,1,Deal 7(10) damage. Deals 3 additional damage for every 2 Poison the enemy has.
 Croak,Rare,Attack,2,"Deal 22(28) damage. If Fatal, gain an additional potion reward. Exhaust."
 Defend,Basic,Skill,1,Gain 5(8) Block.
 Digest,Common,Skill,0,"Exhaust 1 card. If it was a Status, Curse, or Quest, add a random Mix into your Hand. (Digest+ adds a Mix+)"
@@ -73,7 +73,7 @@ Potent Strike,"Token, Ancients Awakened",Attack,1,Laced. Gain 1 Poison. Gain 1 A
 Pour Over,Uncommon,Skill,0,"Retain. Ferment. Move all Fermentation from this card to a Ferment card in your Hand, and it Ferments 1(2). Exhaust."
 Premonition,Uncommon,Skill,0,Scry 4. Draw 1 card. Gain 3 Poison. (Premonition+ gains Retain)
 Preserve,"Uncommon, Multiplayer",Skill,0,"Choose another player. Their Block is not removed at the start of their next 1(2) turns."
-Proof,Common,Attack,1,Gain 3(4) Antitoxin. Deal damage equal to your Antitoxin.
+Proof,Uncommon,Attack,1,Gain 3(4) Antitoxin. Deal damage equal to your Antitoxin.
 Puff Up,Uncommon,Skill,2,Retain. Ferment. Gain 10(13) Block. Gains 2(3) additional Block for each turn Fermented. Exhaust.
 Puncture,Common,Attack,1,"Deal 4(5) damage twice. If the enemy has Poison, apply 2(3) Vulnerable."
 Quench,Uncommon,Skill,1,Gain 6(9) Antitoxin. Gain Block equal to your Antitoxin. Exhaust.
@@ -87,7 +87,7 @@ Rolling Boil,Rare,Attack,2,Retain. Ferment. Deal 8(10) damage. Deals 3(4) additi
 Runoff,Uncommon,Power,2(1),"Whenever you create a card, apply 2 Poison to ALL enemies."
 Secret Sauce,"Common, Hero",Skill,1,Add a random basic Mix (Mix+) into your Hand. Enchant an Attack in your Hand with Laced.
 Smelling Salts,Uncommon,Skill,0,"Gain 1(2) Energy. Next turn, gain 1 Energy. Exhaust."
-Snack Attack,"Common, Hero",Attack,1,"Deal 10(12) damage. If the enemy has Poison, draw 1(2) cards."
+Snack Attack,Common,Attack,1,"Deal 10(12) damage. If the enemy has Poison, draw 1(2) cards."
 Sparkling Mix,Token,Skill,0,Ethereal. Gain 1 Energy. Exhaust. (Sparkling Mix+ loses Ethereal)
 Spatter,Uncommon,Skill,1,Discard any number of cards. Apply 3 Poison to ALL enemies. Applies 2(3) additional Poison for each card discarded.
 Spike,Common,Attack,1,Deal 7(11) damage. Add an Acrid Mix into your Hand.

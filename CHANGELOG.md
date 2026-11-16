@@ -5,6 +5,22 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.11] - 2026-11-16
+
+### Added
+
+- Added final art for Blend, Bristle, and Fizz
+
+### Changed
+
+- Changed Proof into an Uncommon card
+- Moved Snack Attack card from the Hero Expansion into the main card pool, replacing Proof
+- Moved Coup de Grace card into the Hero Expansion as a Common card, replacing Snack Attack
+
+### Fixed
+
+- Fixed visual issues in combat animations
+
 ## [0.15.10] - 2026-11-15
 
 ### Added
