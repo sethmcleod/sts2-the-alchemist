@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.15.12] - 2026-11-17
+
 ### Changed
 
 - Changed the required game version from 0.107.0 -> 0.111.1
