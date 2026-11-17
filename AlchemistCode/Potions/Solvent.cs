@@ -1,5 +1,4 @@
 using System.Linq;
-using Alchemist.AlchemistCode.Compat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -29,7 +28,7 @@ public class Solvent : AlchemistPotion, IBrewOnly
         foreach (var enemy in enemies)
         {
             if (enemy.Block > 0)
-                await GameCompat.LoseBlock(choiceContext, enemy, enemy.Block, Owner.Creature);
+                await CreatureCmd.LoseBlock(choiceContext, enemy, enemy.Block, Owner.Creature);
             if (enemy.HasPower<ArtifactPower>())
                 await PowerCmd.Remove<ArtifactPower>(enemy);
         }

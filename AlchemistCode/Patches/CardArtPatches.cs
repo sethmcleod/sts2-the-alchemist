@@ -15,7 +15,7 @@ public static class CardArtPatches
     private static readonly StringName AlchemistCards = "alchemist_cards";
 
     private static MethodInfo? PortraitMethod() =>
-        AccessTools.Method(typeof(NCard), "UpdatePortrait") ?? AccessTools.Method(typeof(NCard), "Reload");
+        AccessTools.Method(typeof(NCard), "UpdatePortrait");
 
     [HarmonyPatch]
     private static class PortraitPatch

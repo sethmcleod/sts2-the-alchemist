@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Alchemist.AlchemistCode.Compat;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -28,6 +28,6 @@ public class ToxicAuraPower : AlchemistPower
         if (!AntitoxinRules.IsPoisonTick(Owner, tick, props, dealer, cardSource)) return;
         Flash();
         foreach (var enemy in CombatState.HittableEnemies.ToList())
-            await GameCompat.Damage(choiceContext, enemy, tick * (int)Amount, ValueProp.Unpowered, Owner, null);
+            await CreatureCmd.Damage(choiceContext, enemy, tick * (int)Amount, ValueProp.Unpowered, Owner, null, null);
     }
 }

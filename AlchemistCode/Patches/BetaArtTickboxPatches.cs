@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using Godot;
 using HarmonyLib;
 using Alchemist.AlchemistCode.Cards;
-using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode.Config;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
@@ -33,7 +32,7 @@ public static class BetaArtTickboxPatches
 
         public void ToggleFromHotkey()
         {
-            if (GodotObject.IsInstanceValid(Tickbox) && Tickbox.IsVisibleInTree()) GameCompat.ToggleTick(Tickbox);
+            if (GodotObject.IsInstanceValid(Tickbox) && Tickbox.IsVisibleInTree()) Tickbox.ForceToggleTick();
         }
     }
 
@@ -199,8 +198,8 @@ public static class BetaArtTickboxPatches
     private static void RefreshHotkeyIcon(Row row)
     {
         if (row.HotkeyIcon is not { } icon || !GodotObject.IsInstanceValid(icon)) return;
-        icon.Visible = NControllerManager.Instance is { } controllers && GameCompat.IsDirectionalNavigation(controllers);
-        GameCompat.UpdateHotkeyIcon(icon, MegaInput.select);
+        icon.Visible = NControllerManager.Instance is { } controllers && controllers.IsUsingDirectionalNavigation;
+        (icon as NHotkeyIcon)?.UpdateInput(MegaInput.select);
     }
 
     private static void Adopt(Node source, Node copy, Node owner)

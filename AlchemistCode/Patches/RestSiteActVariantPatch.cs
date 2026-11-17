@@ -1,4 +1,3 @@
-using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode.Character;
 using Godot;
 using HarmonyLib;
@@ -32,7 +31,8 @@ public static class RestSiteActVariantPatch
             {
                 state.SetAnimation(animation, loop: true);
 
-                GameCompat.RandomiseTrackStart(state, Rng);
+                using var entry = state.GetCurrent(0);
+                entry?.SetTrackTime(entry.GetAnimationEnd() * (float)Rng.NextDouble());
             });
         }
 

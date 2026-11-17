@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Alchemist.AlchemistCode.Compat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Factories;
@@ -23,7 +22,7 @@ public static class Brewing
 
     // The game's own blacklist misses Blood Potion and Gold Leaf, whose heal vars no type check catches
     private static IEnumerable<PotionModel> HealingPotions(Player player) =>
-        GameCompat.GetPotionOptions(player).Where(IsHealing);
+        PotionFactory.GetPotionOptions(player).Where(IsHealing);
 
     private static bool IsHealing(PotionModel potion) =>
         potion.DynamicVars.Values.Any(v =>

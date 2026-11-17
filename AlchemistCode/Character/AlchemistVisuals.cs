@@ -1,4 +1,3 @@
-using Alchemist.AlchemistCode.Compat;
 using BaseLib.Extensions;
 using Godot;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
@@ -194,7 +193,10 @@ internal static class AlchemistVisuals
             // Spine counts each delay from the start of the entry before, so it carries that entry's length
             var delay = i == 0 ? gap : length + gap;
 
-            var played = GameCompat.QueueBlink(state, animation, delay, track);
+            using var entry = state.AddAnimationTracked(animation, delay, loop: false, track);
+            // An attachment swap must snap, not fade
+            entry.SetMixDuration(0f);
+            var played = entry.GetAnimationDuration();
 
             if (i == 0) length = played;
         }

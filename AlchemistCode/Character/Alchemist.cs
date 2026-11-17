@@ -110,4 +110,52 @@ public partial class Alchemist : PlaceholderCharacterModel
     public override string CustomAttackSfx => "event:/sfx/characters/osty/osty_attack";
     public override string CustomCastSfx => "event:/sfx/characters/necrobinder/necrobinder_summon";
     public override string CustomDeathSfx => "event:/sfx/characters/osty/osty_die";
+
+    // Not BaseLib's SetupCustomAnimationStates: only this override is handed the Creature
+    public override CreatureAnimator GenerateAnimator(MegaSprite controller, Creature creature)
+    {
+        AlchemistVisuals.StartIdleFlourishes(controller);
+
+        var idle = new AnimState(AlchemistVisuals.IdleAnimation, isLooping: true);
+        var lowIdle = AlchemistVisuals.NearDeathAnimation is { } low
+            ? new AnimState(low, isLooping: true)
+            : idle;
+
+        bool Low() => IsLowHealth(creature);
+
+        AnimState Once(string? name)
+        {
+            if (name == null) return idle;
+
+            var state = new AnimState(name);
+            state.AddNextState(idle, () => !Low());
+            state.AddNextState(lowIdle, Low);
+            return state;
+        }
+
+        var hurt = Once(AlchemistVisuals.HurtAnimation);
+        var attack = Once(AlchemistVisuals.AttackAnimation);
+        var cast = Once(AlchemistVisuals.CastAnimation);
+        var heavy = Once(AlchemistVisuals.HeavyAttackAnimation ?? AlchemistVisuals.AttackAnimation);
+        var dead = AlchemistVisuals.DeathAnimation is { } death ? new AnimState(death) : idle;
+
+        var relaxed = idle;
+        if (AlchemistVisuals.RelaxedAnimation is { } relaxedName)
+        {
+            relaxed = new AnimState(relaxedName, isLooping: true);
+            relaxed.AddBranch("Idle", idle);
+        }
+
+        var animator = new CreatureAnimator(Low() ? lowIdle : idle, controller);
+        animator.AddAnyState("Idle", idle, () => !Low());
+        animator.AddAnyState("Idle", lowIdle, Low);
+        animator.AddAnyState("Dead", dead);
+        animator.AddAnyState("Hit", hurt);
+        animator.AddAnyState("Attack", attack);
+        animator.AddAnyState("Cast", cast);
+        animator.AddAnyState("heavyAttack", heavy);
+        animator.AddAnyState("PowerUp", cast);
+        animator.AddAnyState("Relaxed", relaxed);
+        return animator;
+    }
 }

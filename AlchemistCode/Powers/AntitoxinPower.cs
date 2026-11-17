@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -15,7 +16,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Alchemist.AlchemistCode.Powers;
 
-public partial class AntitoxinPower : AlchemistPower
+public class AntitoxinPower : AlchemistPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -72,6 +73,10 @@ public partial class AntitoxinPower : AlchemistPower
         IsPoisonTick(target, amount, props, dealer, cardSource)
             ? -Math.Min(Amount, (int)amount)
             : 0m;
+
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,
+        Creature? dealer, CardModel? cardSource, CardPlay? cardPlay) =>
+        Absorb(target, amount, props, dealer, cardSource);
 
     // Amount is post-Absorb and Poison decrements after the hit, so stack - amount is what was held
     public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target,

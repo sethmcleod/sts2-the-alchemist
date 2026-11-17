@@ -5,6 +5,17 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Changed
+
+- Changed the required game version from 0.107.0 -> 0.111.1
+
+### Fixed
+
+- Fixed Antitoxin not absorbing Poison damage on game version v0.111.1
+- Fixed Steep power not shuffling Ferment cards into the Draw Pile on game version v0.111.1
+- Fixed errors on game version v0.111.1 from attacks, combining Mixes, Exhaust effects, Brewing, Solvent potion and Radiant Flask relic
+- Fixed a black screen when entering the shop on game version v0.111.1
+
 ## [0.15.11] - 2026-11-16
 
 ### Added

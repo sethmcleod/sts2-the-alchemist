@@ -1,4 +1,3 @@
-using Alchemist.AlchemistCode.Compat;
 using System;
 using System.Collections.Concurrent;
 using System.Reflection;
@@ -81,7 +80,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
     protected override bool ShouldGlowGoldInternal => IsMutable && ConditionalGlow;
 
     protected Task LoseHp(PlayerChoiceContext choiceContext, int amount) =>
-        GameCompat.Damage(choiceContext, Owner.Creature, amount,
+        CreatureCmd.Damage(choiceContext, Owner.Creature, amount,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, null, this, null);
 
     protected string HitVfx(string vfx) =>
@@ -154,7 +153,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
             if (!_previewRunsHooks) return raw;
             if (Owner?.Creature is not { } dealer) return null;
             if ((CombatState ?? dealer.CombatState) is not { } combat) return null;
-            var total = GameCompat.ModifyDamage(Owner.RunState, combat, _previewTarget, dealer, raw, ValueProp.Move,
+            var total = Hook.ModifyDamage(Owner.RunState, combat, _previewTarget, dealer, raw, ValueProp.Move,
                 this, null, ModifyDamageHookType.All, _previewMode, out _);
             return (int)Math.Max(total, 0m);
         }

@@ -1,8 +1,8 @@
 using System.Linq;
-using Alchemist.AlchemistCode.Compat;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Potions;
+using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 
 namespace Alchemist.AlchemistCode.Relics;
@@ -21,7 +21,7 @@ public class RadiantFlask : FlaskRelic
     public override async Task AfterObtained()
     {
         await PlayerCmd.GainMaxPotionCount(PotionSlots, Owner);
-        var rares = GameCompat.GetPotionOptions(Owner)
+        var rares = PotionFactory.GetPotionOptions(Owner)
             .Where(p => p.Rarity == PotionRarity.Rare).ToList();
         if (Owner.PlayerRng.Rewards.NextItem(rares) is not { } rare) return;
         await PotionCmd.TryToProcure(rare.ToMutable(), Owner);
