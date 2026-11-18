@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""Lint the card three-way sync, art on disk, asset paths and Compat/ branch markers"""
+"""Lint the card three-way sync, art on disk and asset paths"""
 
 import csv
 import json
 import os
 import re
 import struct
-import subprocess
 import sys
 from pathlib import Path
 
@@ -214,35 +213,6 @@ def check_fallback_art() -> tuple[list[str], list[str]]:
     return errors, warnings
 
 
-COMPAT = CODE / "Compat"
-COMPAT_MARKER = re.compile(r"^//\s*COMPAT-BRANCH:\s*(main|beta|any)\s*$", re.M)
-
-
-def git_branch() -> str | None:
-    try:
-        out = subprocess.run(["git", "-C", str(REPO), "symbolic-ref", "--short", "-q", "HEAD"],
-                             capture_output=True, text=True).stdout.strip()
-    except OSError:
-        return None
-    return out or None
-
-
-def check_compat_branch() -> list[str]:
-    errors = []
-    branch = git_branch()
-    if branch not in (None, "main", "beta"):
-        return errors
-    for path in sorted(COMPAT.glob("*.cs")):
-        m = COMPAT_MARKER.search(path.read_text(encoding="utf-8"))
-        if m is None:
-            errors.append(f"Compat/{path.name}: no '// COMPAT-BRANCH: main|beta|any' marker; "
-                          "say which game branch it is written against")
-        elif m.group(1) != "any" and branch is not None and m.group(1) != branch:
-            errors.append(f"Compat/{path.name}: holds the {m.group(1)} implementation, but you are "
-                          f"on {branch}. A merge took the wrong side; restore {branch}'s copy")
-    return errors
-
-
 def check_card_themes(classes: dict[str, Path]) -> list[str]:
     theme_re = re.compile(r"\[CardTheme\((?P<themes>[^)]*)\)\]\s*public\s+(?:\w+\s+)*class\s+(?P<name>\w+)")
     enum_src = (CODE / "Cards" / "CardTheme.cs").read_text()
@@ -404,8 +374,6 @@ def main() -> int:
     errors += fb_errors
     warnings += fb_warnings
     errors += check_res_path_separator()
-
-    errors += check_compat_branch()
 
     errors += check_card_themes(classes)
     errors += check_name_tags(classes)

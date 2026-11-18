@@ -17,6 +17,13 @@
         <NoWarn>$(NoWarn);MSB3270</NoWarn>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <Sts2ReleaseInfoPath>$(Sts2DataDir)/../release_info.json</Sts2ReleaseInfoPath>
+        <Sts2ReleaseInfo Condition="Exists('$(Sts2ReleaseInfoPath)')">$([System.IO.File]::ReadAllText('$(Sts2ReleaseInfoPath)'))</Sts2ReleaseInfo>
+        <Sts2GameMinor Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(Sts2ReleaseInfo)', '&quot;version&quot;:\s*&quot;v?0\.\d+'))">$([System.Text.RegularExpressions.Regex]::Match('$(Sts2ReleaseInfo)', '&quot;version&quot;:\s*&quot;v?0\.(\d+)').Result('$1'))</Sts2GameMinor>
+        <DefineConstants Condition="'$(Sts2GameMinor)' != '' And $(Sts2GameMinor) &gt;= 113">$(DefineConstants);STS2_V0113</DefineConstants>
+    </PropertyGroup>
+
     <ItemGroup Condition="Exists('$(Sts2DataDir)')">
         <Reference Include="0Harmony">
             <HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
@@ -81,6 +88,10 @@
         <Error
                 Text=" Slay the Spire 2 data not found at path '$(Sts2DataDir)'"
                 Condition="'$(Sts2DataDir)' == '' or !Exists('$(Sts2DataDir)')"/>
+        <Error
+                Text=" Slay the Spire 2 version not found in '$(Sts2ReleaseInfoPath)'"
+                Condition="'$(Sts2GameMinor)' == ''"/>
+        <Message Text="Building against Slay the Spire 2 v0.$(Sts2GameMinor)" Importance="high"/>
     </Target>
 
     <Target Name="UpdateDependencyVersions" BeforeTargets="BeforeBuild" Condition="Exists('.godot/mono/temp/obj/project.assets.json')">

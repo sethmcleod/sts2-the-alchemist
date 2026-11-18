@@ -56,7 +56,6 @@ do_release() {
   local bump="${1:-}"
   [ -n "$bump" ] || die "usage: scripts/dev.sh release <patch|minor|X.Y.Z|promote>"
   [ -z "$(git -C "$REPO" status --porcelain)" ] || die "commit your changes first"
-  git -C "$REPO" config merge.ours.driver true
 
   local suffix item title cur new
   suffix="$(target tagSuffix)"; item="$(target itemId)"; title="$(target title)"

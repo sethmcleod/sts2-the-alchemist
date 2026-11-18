@@ -1,3 +1,4 @@
+#if STS2_V0113
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -12,8 +13,6 @@ using MegaCrit.Sts2.Core.Models.Enchantments;
 using MegaCrit.Sts2.Core.Nodes.Screens.Blitz;
 using MegaCrit.Sts2.Core.Nodes.Screens.Dread;
 using MegaCrit.Sts2.Core.Saves.Managers;
-
-// COMPAT-BRANCH: beta
 
 namespace Alchemist.AlchemistCode.Compat;
 
@@ -94,3 +93,4 @@ static class BaseCharacterEpochGatePatch
     static IEnumerable<CharacterModel> BaseCharacters() =>
         ModelDb.AllCharacters.Where(c => c.GetType().Assembly == typeof(CharacterModel).Assembly).ToList();
 }
+#endif

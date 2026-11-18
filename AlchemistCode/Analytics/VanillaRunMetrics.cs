@@ -80,7 +80,9 @@ internal static class VanillaRunMetrics
             BuildId = ReleaseInfoManager.Instance.ReleaseInfo?.Version ?? "NON-RELEASE-VERSION",
             BuildType = PlatformUtil.GetPlatformBranch().ToName(),
             PlayerId = HashPlayerId(progress.UniqueId),
+#if STS2_V0113
             GameMode = run.GameMode.ToString().ToUpperInvariant(),
+#endif
             Character = localPlayer.CharacterId!,
             NumPlayers = run.Players.Count,
             Team = run.Players.Count > 1
