@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.16.0] - 2026-11-18
+
 ### Added
 
 - Added final art for Layer Up, Pick and Choose, and Snack Attack
