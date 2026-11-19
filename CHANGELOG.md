@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.16.1] - 2026-11-19
+
 ### Added
 
 - Added an in-combat preview of the Energy gained to Chrysopoeia and Uncork
