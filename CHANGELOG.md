@@ -9,6 +9,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 - Added final art for Taste Test and Thicken
 - Added a hover tip to cross-mod cards detailing the mod they are from
+- Added new icons for mix cards in hover tips
 
 ### Changed
 
