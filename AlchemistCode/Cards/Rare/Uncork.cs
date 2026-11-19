@@ -16,11 +16,11 @@ public class Uncork : AlchemistCard
 
     public Uncork() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithEnergy(1, 2);
+        WithEnergy(1, 1);
         WithVar(new EnergyVar("Bonus", 1));
         WithVar(new TotalEnergyVar("Total", 1, static card => card is Uncork uncork
             ? uncork.DynamicVars["Bonus"].IntValue * uncork.Brewing.Count()
-            : 0).WithUpgrade(2));
+            : 0).WithUpgrade(1));
         WithKeyword(CardKeyword.Exhaust);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }

@@ -14,6 +14,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 ### Changed
 
 - Updated art for Potent Strike and Potent Defend (Ancients Awakened)
+- Nerfed Uncork: Energy decreased from 1(3) -> 1(2)
 
 ## [0.16.1] - 2026-11-19
 
