@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Changed
+
+- Updated art for Potent Strike and Potent Defend (Ancients Awakened)
+
 ## [0.16.1] - 2026-11-19
 
 ### Added
