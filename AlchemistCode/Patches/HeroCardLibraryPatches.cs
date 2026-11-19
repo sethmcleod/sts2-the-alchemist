@@ -3,10 +3,12 @@ using System.Linq;
 using Alchemist.AlchemistCode.Cards;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.UI;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
+using MegaCrit.Sts2.Core.Nodes.HoverTips;
 using MegaCrit.Sts2.Core.Nodes.Screens.CardLibrary;
 using MegaCrit.Sts2.Core.Saves;
 
@@ -45,6 +47,17 @@ public static class HeroCardLibraryPatches
             var viewUpgrades = Traverse.Create(____viewUpgrades).Property<bool>("IsTicked").Value;
             NGame.Instance?.GetInspectCardScreen().Open(list, list.IndexOf(card), viewUpgrades);
             return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(NCardHolder), "DoCardHoverEffects")]
+    public static class LockedTip
+    {
+        public static void Postfix(NCardHolder __instance, bool isHovered)
+        {
+            if (!isHovered || __instance.CardNode is not { Visibility: ModelVisibility.Locked, Model: { } card }) return;
+            if (!Gated(card) || CrossMod.Tip(card) is not { } tip) return;
+            NHoverTipSet.CreateAndShow(__instance, tip)?.SetAlignmentForCardHolder(__instance);
         }
     }
 

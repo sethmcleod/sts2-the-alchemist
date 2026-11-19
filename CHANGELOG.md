@@ -8,6 +8,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 ### Added
 
 - Added final art for Taste Test and Thicken
+- Added a hover tip to cross-mod cards detailing the mod they are from
 
 ### Changed
 
