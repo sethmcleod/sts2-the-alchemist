@@ -30,7 +30,7 @@
   "ALCHEMIST-BURSTING_MIX.title": "폭발 영액",
   "ALCHEMIST-CAUSTIC_STRIKE.description": "[gold]발효.[/gold]\n피해를 {Damage:diff()} 줍니다.\n[gold]중독[/gold]을 {Poison:diff()} 부여합니다.\n[gold]발효[/gold]한 턴마다 [gold]중독[/gold]을 {perTurn:diff()} 추가로 부여합니다.",
   "ALCHEMIST-CAUSTIC_STRIKE.title": "가성 타격",
-  "ALCHEMIST-CHRYSOPOEIA.description": "{Energy:energyIcons()}를 얻습니다.\n보유한 [gold]중독[/gold] {Per}마다 {Bonus:energyIcons()}를 추가로 얻습니다.\n[gold]중독[/gold]을 모두 잃습니다.",
+  "ALCHEMIST-CHRYSOPOEIA.description": "{Energy:energyIcons()}를 얻고, 보유한 [gold]중독[/gold] {Per}마다 {Bonus:energyIcons()}를 추가로 얻습니다.\n[gold]중독[/gold]을 모두 잃습니다.{InCombat:\n({Total:energyIcons()}를 얻습니다)|}",
   "ALCHEMIST-CHRYSOPOEIA.title": "황금 연성",
   "ALCHEMIST-CLENCH.description": "[gold]힘[/gold]을 {StrengthPower:diff()} 얻습니다.\n[gold]중독[/gold]을 {SelfPoison} 얻습니다.",
   "ALCHEMIST-CLENCH.title": "움켜쥐기",

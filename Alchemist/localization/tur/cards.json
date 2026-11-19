@@ -30,7 +30,7 @@
   "ALCHEMIST-BURSTING_MIX.title": "Patlayan Karışım",
   "ALCHEMIST-CAUSTIC_STRIKE.description": "[gold]Mayalan.[/gold]\n{Damage:diff()} hasar ver.\n{Poison:diff()} [gold]Zehir[/gold] uygula.\n[gold]Mayalandığı[/gold] her tur için fazladan {perTurn:diff()} [gold]Zehir[/gold] uygular.",
   "ALCHEMIST-CAUSTIC_STRIKE.title": "Yakıcı Vuruş",
-  "ALCHEMIST-CHRYSOPOEIA.description": "{Energy:energyIcons()} elde et.\nSahip olduğun her {Per} [gold]Zehir[/gold] için fazladan {Bonus:energyIcons()} elde et.\nTüm [gold]Zehir[/gold]'ini kaybet.",
+  "ALCHEMIST-CHRYSOPOEIA.description": "{Energy:energyIcons()} elde et. Ek olarak sahip olduğun her {Per} [gold]Zehir[/gold] için fazladan {Bonus:energyIcons()} elde et.\nTüm [gold]Zehir[/gold]'ini kaybet.{InCombat:\n({Total:energyIcons()} elde et)|}",
   "ALCHEMIST-CHRYSOPOEIA.title": "Krizopoeia",
   "ALCHEMIST-CLENCH.description": "{StrengthPower:diff()} [gold]Kuvvet[/gold] elde et.\n{SelfPoison} [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-CLENCH.title": "Kenetlen",

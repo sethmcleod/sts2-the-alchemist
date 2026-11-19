@@ -2,7 +2,6 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -19,7 +18,9 @@ public class Uncork : AlchemistCard
     {
         WithEnergy(1, 2);
         WithVar(new EnergyVar("Bonus", 1));
-        WithVar(new TotalEnergyVar("Total", 1).WithUpgrade(2));
+        WithVar(new TotalEnergyVar("Total", 1, static card => card is Uncork uncork
+            ? uncork.DynamicVars["Bonus"].IntValue * uncork.Brewing.Count()
+            : 0).WithUpgrade(2));
         WithKeyword(CardKeyword.Exhaust);
         WithTips(_ => new[] { AlchemistTips.FermentRef });
     }
@@ -38,16 +39,5 @@ public class Uncork : AlchemistCard
             await card.AdvanceFerment(choiceContext, 1);
         if (brewing.Count > 0) CardCmd.Preview(brewing.Cast<CardModel>().ToList());
         await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue + DynamicVars["Bonus"].IntValue * brewing.Count, Owner);
-    }
-
-    private sealed class TotalEnergyVar(string name, int energy) : EnergyVar(name, energy)
-    {
-        public override void UpdateCardPreview(CardModel card, CardPreviewMode previewMode, Creature? target,
-            bool runGlobalHooks)
-        {
-            base.UpdateCardPreview(card, previewMode, target, runGlobalHooks);
-            if (card is Uncork { IsMutable: true, CombatState: not null } live)
-                PreviewValue = EnchantedValue + live.DynamicVars["Bonus"].IntValue * live.Brewing.Count();
-        }
     }
 }

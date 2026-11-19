@@ -14,7 +14,7 @@ Brine,Uncommon,Skill,2,Gain 4(6) Antitoxin. Apply 2 Weak to ALL enemies.
 Bristle,Common,Skill,1,"Gain 7(9) Block. Whenever you are attacked this turn, apply 3(4) Poison to the attacker."
 Bursting Mix,Token,Attack,0,Deal 6(9) damage. Exhaust.
 Caustic Strike,Common,Attack,1,Retain. Ferment. Deal 6(8) damage. Apply 2 Poison. Applies 1(2) additional Poison for each turn Fermented.
-Chrysopoeia,Rare,Skill,0,Gain 1(2) Energy. Gain an additional Energy for every 4 Poison you have. Lose all Poison. Exhaust.
+Chrysopoeia,Rare,Skill,0,"Gain 1(2) Energy, plus 1 Energy for every 4 Poison you have. Lose all Poison. Exhaust."
 Clench,Uncommon,Power,1,Gain 3(4) Strength. Gain 4 Poison.
 Cocktail Strike,"Uncommon, Reshuffled Spire",Attack,1,Deal 4 damage. Deals 4(5) additional damage for each unique Mix you have played this combat.
 Combine,Common,Skill,0,Add a random basic Mix into your Hand. Combine 2 Mixes in your Hand into a Compound Mix. (Combine+ adds a Mix+)

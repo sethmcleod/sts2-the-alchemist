@@ -30,7 +30,7 @@
   "ALCHEMIST-BURSTING_MIX.title": "Concoction explosive",
   "ALCHEMIST-CAUSTIC_STRIKE.description": "[gold]Fermentation.[/gold]\nInfligez {Damage:diff()} dégâts.\nAppliquez {Poison:diff()} de [gold]Poison[/gold].\nApplique {perTurn:diff()} de [gold]Poison[/gold] supplémentaire pour chaque tour de [gold]Fermentation[/gold].",
   "ALCHEMIST-CAUSTIC_STRIKE.title": "Frappe Caustique",
-  "ALCHEMIST-CHRYSOPOEIA.description": "Gagnez {Energy:energyIcons()}.\nGagnez {Bonus:energyIcons()} supplémentaire pour chaque tranche de {Per} de [gold]Poison[/gold] en votre possession.\nPerdez tout votre [gold]Poison[/gold].",
+  "ALCHEMIST-CHRYSOPOEIA.description": "Gagnez {Energy:energyIcons()}, plus {Bonus:energyIcons()} supplémentaire pour chaque tranche de {Per} de [gold]Poison[/gold] en votre possession.\nPerdez tout votre [gold]Poison[/gold].{InCombat:\n(Gagnez {Total:energyIcons()})|}",
   "ALCHEMIST-CHRYSOPOEIA.title": "Chrysopée",
   "ALCHEMIST-CLENCH.description": "Gagnez {StrengthPower:diff()} de [gold]Force[/gold].\nGagnez {SelfPoison} de [gold]Poison[/gold].",
   "ALCHEMIST-CLENCH.title": "Poing serré",

@@ -1,3 +1,4 @@
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -17,6 +18,9 @@ public class Chrysopoeia : AlchemistCard
         WithEnergy(1, 1);
         WithVar(new EnergyVar("Bonus", 1));
         WithVar("Per", 4, 0);
+        WithVar(new TotalEnergyVar("Total", 1, static card =>
+            card.Owner.Creature.GetPowerAmount<PoisonPower>() / card.DynamicVars["Per"].IntValue
+            * card.DynamicVars["Bonus"].IntValue).WithUpgrade(1));
         WithKeyword(CardKeyword.Exhaust);
         WithTip(typeof(PoisonPower));
     }

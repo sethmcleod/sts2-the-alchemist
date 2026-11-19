@@ -30,7 +30,7 @@
   "ALCHEMIST-BURSTING_MIX.title": "Mezcla explosiva",
   "ALCHEMIST-CAUSTIC_STRIKE.description": "[gold]Fermentación.[/gold]\nInfliges {Damage:diff()} de daño.\nAplicas {Poison:diff()} de [gold]veneno[/gold].\nAplicas {perTurn:diff()} de [gold]veneno[/gold] adicional por cada turno [gold]fermentado[/gold].",
   "ALCHEMIST-CAUSTIC_STRIKE.title": "Golpe cáustico",
-  "ALCHEMIST-CHRYSOPOEIA.description": "Obtienes {Energy:energyIcons()}.\nObtienes {Bonus:energyIcons()} adicional por cada {Per} de [gold]veneno[/gold] que tengas.\nPierdes todo tu [gold]veneno[/gold].",
+  "ALCHEMIST-CHRYSOPOEIA.description": "Obtienes {Energy:energyIcons()}, más {Bonus:energyIcons()} adicional por cada {Per} de [gold]veneno[/gold] que tengas.\nPierdes todo tu [gold]veneno[/gold].{InCombat:\n(Obtienes {Total:energyIcons()})|}",
   "ALCHEMIST-CHRYSOPOEIA.title": "Crisopeya",
   "ALCHEMIST-CLENCH.description": "Obtienes {StrengthPower:diff()} de [gold]fuerza[/gold].\nObtienes {SelfPoison} de [gold]veneno[/gold].",
   "ALCHEMIST-CLENCH.title": "Puño cerrado",

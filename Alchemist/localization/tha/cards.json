@@ -30,7 +30,7 @@
   "ALCHEMIST-BURSTING_MIX.title": "ยาผสมระเบิด",
   "ALCHEMIST-CAUSTIC_STRIKE.description": "[gold]บ่ม[/gold]\nสร้างความเสียหาย {Damage:diff()}\nสร้าง {Poison:diff()} [gold]พิษ[/gold]\nสร้าง[gold]พิษ[/gold]เพิ่ม {perTurn:diff()} ต่อทุกเทิร์นที่[gold]บ่ม[/gold]",
   "ALCHEMIST-CAUSTIC_STRIKE.title": "จู่โจมกัดกร่อน",
-  "ALCHEMIST-CHRYSOPOEIA.description": "ได้รับ {Energy:energyIcons()}\nได้รับเพิ่มอีก {Bonus:energyIcons()} ต่อทุก {Per} [gold]พิษ[/gold]ที่คุณมี\nเสีย[gold]พิษ[/gold]ทั้งหมด",
+  "ALCHEMIST-CHRYSOPOEIA.description": "ได้รับ {Energy:energyIcons()} บวกอีก {Bonus:energyIcons()} ต่อทุก {Per} [gold]พิษ[/gold]ที่คุณมี\nเสีย[gold]พิษ[/gold]ทั้งหมด{InCombat:\n(ได้รับ {Total:energyIcons()})|}",
   "ALCHEMIST-CHRYSOPOEIA.title": "แปรธาตุเป็นทอง",
   "ALCHEMIST-CLENCH.description": "ได้รับ {StrengthPower:diff()} [gold]ความแข็งแรง[/gold]\nได้รับ {SelfPoison} [gold]พิษ[/gold]",
   "ALCHEMIST-CLENCH.title": "กำหมัด",

@@ -30,7 +30,7 @@
   "ALCHEMIST-BURSTING_MIX.title": "Взрывная смесь",
   "ALCHEMIST-CAUSTIC_STRIKE.description": "[gold]Брожение.[/gold]\nНаносит {Damage:diff()} урона.\nНакладывает {Poison:diff()} [gold]яда[/gold].\nНакладывает еще {perTurn:diff()} [gold]яда[/gold] за каждый ход [gold]брожения[/gold].",
   "ALCHEMIST-CAUSTIC_STRIKE.title": "Едкий удар",
-  "ALCHEMIST-CHRYSOPOEIA.description": "Дает {Energy:energyIcons()}.\nДает еще {Bonus:energyIcons()} за каждые {Per} вашего [gold]яда[/gold].\nВы теряете весь свой [gold]яд[/gold].",
+  "ALCHEMIST-CHRYSOPOEIA.description": "Дает {Energy:energyIcons()} и еще {Bonus:energyIcons()} за каждые {Per} вашего [gold]яда[/gold].\nВы теряете весь свой [gold]яд[/gold].{InCombat:\n(Дает {Total:energyIcons()})|}",
   "ALCHEMIST-CHRYSOPOEIA.title": "Хризопея",
   "ALCHEMIST-CLENCH.description": "Дает {StrengthPower:diff()} [gold]силы[/gold].\nДает вам {SelfPoison} [gold]яда[/gold].",
   "ALCHEMIST-CLENCH.title": "Хватка",

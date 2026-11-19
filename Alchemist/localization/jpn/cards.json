@@ -30,7 +30,7 @@
   "ALCHEMIST-BURSTING_MIX.title": "破裂の霊薬",
   "ALCHEMIST-CAUSTIC_STRIKE.description": "[gold]発酵。[/gold]\n{Damage:diff()}ダメージを与える。\n[gold]毒[/gold]{Poison:diff()}を付与する。\n[gold]発酵[/gold]したターン1回につき、追加で[gold]毒[/gold]{perTurn:diff()}を付与する。",
   "ALCHEMIST-CAUSTIC_STRIKE.title": "腐食の一撃",
-  "ALCHEMIST-CHRYSOPOEIA.description": "{Energy:energyIcons()}を得る。\n自身の[gold]毒[/gold]{Per}につき、追加で{Bonus:energyIcons()}を得る。\n自身の[gold]毒[/gold]をすべて失う。",
+  "ALCHEMIST-CHRYSOPOEIA.description": "{Energy:energyIcons()}を得る。自身の[gold]毒[/gold]{Per}につき、追加で{Bonus:energyIcons()}を得る。\n自身の[gold]毒[/gold]をすべて失う。{InCombat:\n({Total:energyIcons()}を得る)|}",
   "ALCHEMIST-CHRYSOPOEIA.title": "錬金",
   "ALCHEMIST-CLENCH.description": "[gold]筋力[/gold]{StrengthPower:diff()}を得る。\n[gold]毒[/gold]{SelfPoison}を得る。",
   "ALCHEMIST-CLENCH.title": "握り拳",

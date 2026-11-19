@@ -30,7 +30,7 @@
   "ALCHEMIST-BURSTING_MIX.title": "Berstende Essenz",
   "ALCHEMIST-CAUSTIC_STRIKE.description": "[gold]Gärung.[/gold]\nFüge {Damage:diff()} Schaden zu.\nWende {Poison:diff()} [gold]Gift[/gold] an.\nWendet {perTurn:diff()} [gold]Gift[/gold] mehr an pro Zug in [gold]Gärung[/gold].",
   "ALCHEMIST-CAUSTIC_STRIKE.title": "Ätzender Schlag",
-  "ALCHEMIST-CHRYSOPOEIA.description": "Erhalte {Energy:energyIcons()}.\nErhalte {Bonus:energyIcons()} mehr für je {Per} [gold]Gift[/gold], das du hast.\nVerliere all dein [gold]Gift[/gold].",
+  "ALCHEMIST-CHRYSOPOEIA.description": "Erhalte {Energy:energyIcons()} und zusätzlich {Bonus:energyIcons()} für je {Per} [gold]Gift[/gold], das du hast.\nVerliere all dein [gold]Gift[/gold].{InCombat:\n(Erhalte {Total:energyIcons()})|}",
   "ALCHEMIST-CHRYSOPOEIA.title": "Goldmacherkunst",
   "ALCHEMIST-CLENCH.description": "Erhalte {StrengthPower:diff()} [gold]Stärke[/gold].\nErhalte {SelfPoison} [gold]Gift[/gold].",
   "ALCHEMIST-CLENCH.title": "Faust ballen",

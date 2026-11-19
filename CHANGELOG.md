@@ -7,11 +7,12 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ### Added
 
-- Added an in-combat preview of the Energy gained to Uncork card
+- Added an in-combat preview of the Energy gained to Chrysopoeia and Uncork
 
 ### Changed
 
-- Changed Uncork card: Energy increased from 1 -> 1(3) and additional Energy for each Ferment card decreased from 1(2) -> 1
+- Changed Uncork: Energy increased from 1 -> 1(3) and additional Energy for each Ferment card decreased from 1(2) -> 1
+- Improved formatting of Chrysopoeia and Uncork card text
 
 ### Fixed
 
