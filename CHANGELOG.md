@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added final art for Taste Test and Thicken
+
 ### Changed
 
 - Updated art for Potent Strike and Potent Defend (Ancients Awakened)
