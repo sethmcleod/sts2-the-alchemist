@@ -14,8 +14,7 @@ namespace Alchemist.AlchemistCode.Cards.AncientsAwakened;
 internal static class AncientsAwakenedMod
 {
     private const string Code = "AncientsAwakened.AncientsAwakenedCode.";
-    private const string PerfectedRegistry = Code + "Extensions.CustomPerfectedCardExtension";
-    private const string ExperimentalRegistry = Code + "Extensions.CustomExperimentalCardExtension";
+    private static readonly string[] RegistryNamespaces = ["CrossModCompatability.", "Extensions."];
     private const string Scepter = Code + "Relics.Mithrix.AncientScepter";
     private const string PerfectedPool = Code + "Pools.Mithrix.PerfectedPool";
 
@@ -23,7 +22,10 @@ internal static class AncientsAwakenedMod
     private static bool _lookedForPool;
     private static CardPoolModel? _pool;
 
-    internal static bool IsLoaded => _loaded ??= AccessTools.TypeByName(PerfectedRegistry) != null;
+    internal static bool IsLoaded => _loaded ??= Registry("CustomPerfectedCardExtension") != null;
+
+    private static Type? Registry(string name) =>
+        RegistryNamespaces.Select(ns => AccessTools.TypeByName(Code + ns + name)).FirstOrDefault(t => t != null);
 
     internal static CardPoolModel PerfectedPoolOr(CardPoolModel fallback)
     {
@@ -53,11 +55,11 @@ internal static class AncientsAwakenedMod
 
     private static bool RegisterPerfected(string dictionaryField, ModelId starter, ModelId perfected)
     {
-        var type = AccessTools.TypeByName(PerfectedRegistry);
+        var type = Registry("CustomPerfectedCardExtension");
         var field = type?.GetField(dictionaryField, BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
         if (field?.GetValue(null) is not IDictionary dictionary)
         {
-            MainFile.Logger.Warn($"Ancients Awakened is loaded but {PerfectedRegistry}.{dictionaryField} is missing, so {perfected} is not registered");
+            MainFile.Logger.Warn($"Ancients Awakened is loaded but CustomPerfectedCardExtension.{dictionaryField} is missing, so {perfected} is not registered");
             return false;
         }
         dictionary[starter] = perfected;
@@ -74,11 +76,11 @@ internal static class AncientsAwakenedMod
 
     private static void RegisterExperimental(CardModel card)
     {
-        var type = AccessTools.TypeByName(ExperimentalRegistry);
+        var type = Registry("CustomExperimentalCardExtension");
         var add = type == null ? null : AccessTools.DeclaredMethod(type, "AddExperimentalCardForCustomCharacters");
         if (add == null)
         {
-            MainFile.Logger.Warn($"Ancients Awakened is loaded but {ExperimentalRegistry}.AddExperimentalCardForCustomCharacters is missing, so {card.Id} is not registered");
+            MainFile.Logger.Warn($"Ancients Awakened is loaded but CustomExperimentalCardExtension.AddExperimentalCardForCustomCharacters is missing, so {card.Id} is not registered");
             return;
         }
         try

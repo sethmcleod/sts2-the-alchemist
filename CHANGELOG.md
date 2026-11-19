@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Experimental Serum and Ancient Scepter relics giving their generic cards instead of Hiccup, Potent Strike and Potent Defend
+
 ## [0.16.0] - 2026-11-18
 
 ### Added
