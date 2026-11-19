@@ -5,6 +5,21 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.16.1] - 2026-11-19
+
+### Added
+
+- Added an in-combat preview of the Energy gained to Chrysopoeia and Uncork
+
+### Changed
+
+- Changed Uncork: Energy increased from 1 -> 1(3) and additional Energy for each Ferment card decreased from 1(2) -> 1
+- Improved formatting of Chrysopoeia and Uncork card text
+
+### Fixed
+
+- Fixed Experimental Serum and Ancient Scepter relics giving their generic cards instead of Hiccup, Potent Strike and Potent Defend
+
 ## [0.16.0] - 2026-11-18
 
 ### Added

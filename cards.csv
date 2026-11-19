@@ -14,7 +14,7 @@ Brine,Uncommon,Skill,2,Gain 4(6) Antitoxin. Apply 2 Weak to ALL enemies.
 Bristle,Common,Skill,1,"Gain 7(9) Block. Whenever you are attacked this turn, apply 3(4) Poison to the attacker."
 Bursting Mix,Token,Attack,0,Deal 6(9) damage. Exhaust.
 Caustic Strike,Common,Attack,1,Retain. Ferment. Deal 6(8) damage. Apply 2 Poison. Applies 1(2) additional Poison for each turn Fermented.
-Chrysopoeia,Rare,Skill,0,Gain 1(2) Energy. Gain an additional Energy for every 4 Poison you have. Lose all Poison. Exhaust.
+Chrysopoeia,Rare,Skill,0,"Gain 1(2) Energy, plus 1 Energy for every 4 Poison you have. Lose all Poison. Exhaust."
 Clench,Uncommon,Power,1,Gain 3(4) Strength. Gain 4 Poison.
 Cocktail Strike,"Uncommon, Reshuffled Spire",Attack,1,Deal 4 damage. Deals 4(5) additional damage for each unique Mix you have played this combat.
 Combine,Common,Skill,0,Add a random basic Mix into your Hand. Combine 2 Mixes in your Hand into a Compound Mix. (Combine+ adds a Mix+)
@@ -108,7 +108,7 @@ Toxic Aura,"Rare, Reshuffled Spire",Power,2(1),"Whenever your Poison triggers, d
 Transmute,Rare,Skill,2(1),Transform a card in your Hand into a copy of another card in your Hand. Exhaust.
 Turn Sour,"Uncommon, Reshuffled Spire",Skill,1,Retain. Ferment. Apply 1(2) Weak. Apply 1(2) Vulnerable. Applies 1 additional Weak and Vulnerable for each turn Fermented. Exhaust.
 Twitch,"Rare, Hero",Skill,1,"This turn, your Attacks hit 1(2) additional time. Gain 3 Poison."
-Uncork,Rare,Skill,0,Gain 1 Energy. ALL Ferment cards in your Hand Ferment 1. Gain 1(2) additional Energy for each card that did. Exhaust.
+Uncork,Rare,Skill,0,"Gain 1(3) Energy, plus 1 Energy for each Ferment card in your Hand. ALL Ferment cards in your Hand Ferment 1. Exhaust."
 Untended,Rare,Power,2,"Whenever you draw a Ferment card, it Ferments 1. (Untended+ gains Innate)"
 Upwell,Common,Skill,1,Gain 11(14) Block. Gain 2 Poison.
 Venom Shock,Common,Attack,2,"Deal 12(16) damage. If the enemy has Poison, hits an additional time."
