@@ -244,7 +244,7 @@
   "ALCHEMIST-TURN_SOUR.title": "變質",
   "ALCHEMIST-TWITCH.description": "本回合，你的攻擊牌會額外擊中 {Amount:diff()} 次。\n獲得 {Poison} 層[gold]中毒[/gold]。",
   "ALCHEMIST-TWITCH.title": "抽搐",
-  "ALCHEMIST-UNCORK.description": "獲得 {Energy:energyIcons()}。\n你[gold]手牌[/gold]中的所有[gold]醞釀[/gold]牌[gold]醞釀[/gold]一次。\n每有一張牌因此醞釀，就額外獲得 {Bonus:energyIcons()}。",
+  "ALCHEMIST-UNCORK.description": "獲得 {Energy:energyIcons()}，你[gold]手牌[/gold]中每有一張[gold]醞釀[/gold]牌，就額外獲得 {Bonus:energyIcons()}。\n你[gold]手牌[/gold]中的所有[gold]醞釀[/gold]牌[gold]醞釀[/gold]一次。{InCombat:\n（獲得 {Total:energyIcons()}）|}",
   "ALCHEMIST-UNCORK.title": "開瓶",
   "ALCHEMIST-UNTENDED.description": "每當你抽到一張[gold]醞釀[/gold]牌時，它[gold]醞釀[/gold] {UntendedPower} 次。",
   "ALCHEMIST-UNTENDED.title": "無人看管",

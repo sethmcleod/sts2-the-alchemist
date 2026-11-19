@@ -5,6 +5,14 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added an in-combat preview of the Energy gained to Uncork card
+
+### Changed
+
+- Changed Uncork card: Energy increased from 1 -> 1(3) and additional Energy for each Ferment card decreased from 1(2) -> 1
+
 ### Fixed
 
 - Fixed Experimental Serum and Ancient Scepter relics giving their generic cards instead of Hiccup, Potent Strike and Potent Defend

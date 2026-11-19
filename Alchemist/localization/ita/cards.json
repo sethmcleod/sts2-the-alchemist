@@ -244,7 +244,7 @@
   "ALCHEMIST-TURN_SOUR.title": "Inacidire",
   "ALCHEMIST-TWITCH.description": "In questo turno, le tue carte Attacco colpiscono {Amount:diff()} {Amount:plural:volta|volte} in più.\nOttieni {Poison} di [gold]Veleno[/gold].",
   "ALCHEMIST-TWITCH.title": "Tic nervoso",
-  "ALCHEMIST-UNCORK.description": "Ottieni {Energy:energyIcons()}.\nTUTTE le carte [gold]Fermentazione[/gold] nella tua [gold]mano[/gold] [gold]fermentano[/gold] 1 volta.\nOttieni {Bonus:energyIcons()} in più per ogni carta che ha fermentato.",
+  "ALCHEMIST-UNCORK.description": "Ottieni {Energy:energyIcons()}, oltre a {Bonus:energyIcons()} in più per ogni carta [gold]Fermentazione[/gold] nella tua [gold]mano[/gold].\nTUTTE le carte [gold]Fermentazione[/gold] nella tua [gold]mano[/gold] [gold]fermentano[/gold] 1 volta.{InCombat:\n(Ottieni {Total:energyIcons()})|}",
   "ALCHEMIST-UNCORK.title": "Stappare",
   "ALCHEMIST-UNTENDED.description": "Ogni volta che peschi una carta [gold]Fermentazione[/gold], [gold]fermenta[/gold] {UntendedPower} {UntendedPower:plural:volta|volte}.",
   "ALCHEMIST-UNTENDED.title": "Incolto",

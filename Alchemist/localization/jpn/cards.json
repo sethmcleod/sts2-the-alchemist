@@ -244,7 +244,7 @@
   "ALCHEMIST-TURN_SOUR.title": "酸敗",
   "ALCHEMIST-TWITCH.description": "このターン、アタックは追加で{Amount:diff()}回攻撃する。\n[gold]毒[/gold]{Poison}を得る。",
   "ALCHEMIST-TWITCH.title": "武者震い",
-  "ALCHEMIST-UNCORK.description": "{Energy:energyIcons()}を得る。\n[gold]手札[/gold]のすべての[gold]発酵[/gold]カードが1回[gold]発酵[/gold]する。\n発酵したカード1枚につき、追加で{Bonus:energyIcons()}を得る。",
+  "ALCHEMIST-UNCORK.description": "{Energy:energyIcons()}を得る。[gold]手札[/gold]の[gold]発酵[/gold]カード1枚につき、追加で{Bonus:energyIcons()}を得る。\n[gold]手札[/gold]のすべての[gold]発酵[/gold]カードが1回[gold]発酵[/gold]する。{InCombat:\n({Total:energyIcons()}を得る)|}",
   "ALCHEMIST-UNCORK.title": "栓抜き",
   "ALCHEMIST-UNTENDED.description": "[gold]発酵[/gold]カードを引くたび、それは{UntendedPower}回[gold]発酵[/gold]する。",
   "ALCHEMIST-UNTENDED.title": "放置",

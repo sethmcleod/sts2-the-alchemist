@@ -244,7 +244,7 @@
   "ALCHEMIST-TURN_SOUR.title": "Skwaśnienie",
   "ALCHEMIST-TWITCH.description": "W tej turze twoje Ataki uderzają {Amount:diff()} {Amount:plural:dodatkowy raz|dodatkowe razy|dodatkowych razy}.\nZyskaj {Poison} pkt. [gold]Trucizny[/gold].",
   "ALCHEMIST-TWITCH.title": "Drgawki",
-  "ALCHEMIST-UNCORK.description": "Zyskaj {Energy:energyIcons()}.\nWSZYSTKIE karty z [gold]Fermentacją[/gold] w [gold]ręce[/gold] [gold]Fermentują[/gold] raz.\nZyskaj dodatkowo {Bonus:energyIcons()} za każdą kartę, która fermentowała.",
+  "ALCHEMIST-UNCORK.description": "Zyskaj {Energy:energyIcons()} i dodatkowo {Bonus:energyIcons()} za każdą kartę z [gold]Fermentacją[/gold] w [gold]ręce[/gold].\nWSZYSTKIE karty z [gold]Fermentacją[/gold] w [gold]ręce[/gold] [gold]Fermentują[/gold] raz.{InCombat:\n(Zyskaj {Total:energyIcons()})|}",
   "ALCHEMIST-UNCORK.title": "Odkorkowanie",
   "ALCHEMIST-UNTENDED.description": "Kiedykolwiek dobierzesz kartę z [gold]Fermentacją[/gold], [gold]Fermentuje[/gold] ona {UntendedPower} {UntendedPower:plural:raz|razy|razy}.",
   "ALCHEMIST-UNTENDED.title": "Zaniedbany",

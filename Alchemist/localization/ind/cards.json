@@ -244,7 +244,7 @@
   "ALCHEMIST-TURN_SOUR.title": "Berubah Masam",
   "ALCHEMIST-TWITCH.description": "Giliran ini, Serangan kamu kena {Amount:diff()} {Amount:plural:kali|kali} lagi.\nDapatkan {Poison} [gold]Racun[/gold].",
   "ALCHEMIST-TWITCH.title": "Kedutan",
-  "ALCHEMIST-UNCORK.description": "Dapatkan {Energy:energyIcons()}.\nSEMUA kartu [gold]Fermentasi[/gold] di [gold]Tanganmu[/gold] [gold]Berfermentasi[/gold] 1 kali.\nDapatkan {Bonus:energyIcons()} tambahan untuk setiap kartu yang berfermentasi.",
+  "ALCHEMIST-UNCORK.description": "Dapatkan {Energy:energyIcons()}, tambah {Bonus:energyIcons()} untuk setiap kartu [gold]Fermentasi[/gold] di [gold]Tanganmu[/gold].\nSEMUA kartu [gold]Fermentasi[/gold] di [gold]Tanganmu[/gold] [gold]Berfermentasi[/gold] 1 kali.{InCombat:\n(Dapatkan {Total:energyIcons()})|}",
   "ALCHEMIST-UNCORK.title": "Buka Sumbat",
   "ALCHEMIST-UNTENDED.description": "Setiap kali kamu mengambil sebuah kartu [gold]Fermentasi[/gold], kartu itu [gold]Berfermentasi[/gold] {UntendedPower} kali.",
   "ALCHEMIST-UNTENDED.title": "Terbengkalai",

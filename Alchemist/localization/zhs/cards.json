@@ -244,7 +244,7 @@
   "ALCHEMIST-TURN_SOUR.title": "变质",
   "ALCHEMIST-TWITCH.description": "本回合，你的攻击牌额外命中{Amount:diff()}次。\n获得{Poison}层[gold]中毒[/gold]。",
   "ALCHEMIST-TWITCH.title": "抽搐",
-  "ALCHEMIST-UNCORK.description": "获得{Energy:energyIcons()}。\n你[gold]手牌[/gold]中的所有[gold]发酵[/gold]牌[gold]发酵[/gold]一次。\n每有一张牌因此发酵，额外获得{Bonus:energyIcons()}。",
+  "ALCHEMIST-UNCORK.description": "获得{Energy:energyIcons()}，你[gold]手牌[/gold]中每有一张[gold]发酵[/gold]牌，额外获得{Bonus:energyIcons()}。\n你[gold]手牌[/gold]中的所有[gold]发酵[/gold]牌[gold]发酵[/gold]一次。{InCombat:\n（获得{Total:energyIcons()}）|}",
   "ALCHEMIST-UNCORK.title": "开瓶",
   "ALCHEMIST-UNTENDED.description": "每当你抽到一张[gold]发酵[/gold]牌时，它[gold]发酵[/gold]{UntendedPower}次。",
   "ALCHEMIST-UNTENDED.title": "无人看管",

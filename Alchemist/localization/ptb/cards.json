@@ -244,7 +244,7 @@
   "ALCHEMIST-TURN_SOUR.title": "Azedar",
   "ALCHEMIST-TWITCH.description": "Neste turno, seus Ataques golpeiam {Amount:diff()} {Amount:plural:vez adicional|vezes adicionais}.\nReceba {Poison} de [gold]Veneno[/gold].",
   "ALCHEMIST-TWITCH.title": "Espasmo",
-  "ALCHEMIST-UNCORK.description": "Receba {Energy:energyIcons()}.\nTODAS as cartas de [gold]Fermentar[/gold] na sua [gold]Mão[/gold] [gold]Fermentam[/gold] uma vez.\nReceba {Bonus:energyIcons()} adicional por cada carta que fermentou.",
+  "ALCHEMIST-UNCORK.description": "Receba {Energy:energyIcons()}, mais {Bonus:energyIcons()} adicional por cada carta de [gold]Fermentar[/gold] na sua [gold]Mão[/gold].\nTODAS as cartas de [gold]Fermentar[/gold] na sua [gold]Mão[/gold] [gold]Fermentam[/gold] uma vez.{InCombat:\n(Receba {Total:energyIcons()})|}",
   "ALCHEMIST-UNCORK.title": "Desarrolhar",
   "ALCHEMIST-UNTENDED.description": "Sempre que você comprar uma carta de [gold]Fermentar[/gold], ela [gold]Fermenta[/gold] {UntendedPower} {UntendedPower:plural:vez|vezes}.",
   "ALCHEMIST-UNTENDED.title": "Abandonado",

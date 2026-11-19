@@ -244,7 +244,7 @@
   "ALCHEMIST-TURN_SOUR.title": "Tourner à l'aigre",
   "ALCHEMIST-TWITCH.description": "Ce tour-ci, vos Attaques infligent leurs dégâts {Amount:diff()} fois de plus.\nGagnez {Poison} de [gold]Poison[/gold].",
   "ALCHEMIST-TWITCH.title": "Survolté",
-  "ALCHEMIST-UNCORK.description": "Gagnez {Energy:energyIcons()}.\nTOUTES les cartes [gold]Fermentation[/gold] de votre [gold]Main[/gold] [gold]Fermentent[/gold] 1 fois.\nGagnez {Bonus:energyIcons()} supplémentaire pour chaque carte qui a fermenté.",
+  "ALCHEMIST-UNCORK.description": "Gagnez {Energy:energyIcons()}, plus {Bonus:energyIcons()} supplémentaire pour chaque carte [gold]Fermentation[/gold] de votre [gold]Main[/gold].\nTOUTES les cartes [gold]Fermentation[/gold] de votre [gold]Main[/gold] [gold]Fermentent[/gold] 1 fois.{InCombat:\n(Gagnez {Total:energyIcons()})|}",
   "ALCHEMIST-UNCORK.title": "Débouchage",
   "ALCHEMIST-UNTENDED.description": "Lorsque vous piochez une carte [gold]Fermentation[/gold], elle [gold]Fermente[/gold] {UntendedPower} fois.",
   "ALCHEMIST-UNTENDED.title": "À l'abandon",

@@ -244,7 +244,7 @@
   "ALCHEMIST-TURN_SOUR.title": "변질",
   "ALCHEMIST-TWITCH.description": "이번 턴에 내 공격 카드가 {Amount:diff()}번 추가로 적중합니다.\n[gold]중독[/gold]을 {Poison} 얻습니다.",
   "ALCHEMIST-TWITCH.title": "경련",
-  "ALCHEMIST-UNCORK.description": "{Energy:energyIcons()}를 얻습니다.\n[gold]손[/gold]에 있는 모든 [gold]발효[/gold] 카드가 1번 [gold]발효[/gold]합니다.\n발효한 카드 1장당 {Bonus:energyIcons()}를 추가로 얻습니다.",
+  "ALCHEMIST-UNCORK.description": "{Energy:energyIcons()}를 얻고, [gold]손[/gold]에 있는 [gold]발효[/gold] 카드 1장당 {Bonus:energyIcons()}를 추가로 얻습니다.\n[gold]손[/gold]에 있는 모든 [gold]발효[/gold] 카드가 1번 [gold]발효[/gold]합니다.{InCombat:\n({Total:energyIcons()}를 얻습니다)|}",
   "ALCHEMIST-UNCORK.title": "마개 따기",
   "ALCHEMIST-UNTENDED.description": "[gold]발효[/gold] 카드를 뽑을 때마다, 그 카드가 {UntendedPower}번 [gold]발효[/gold]합니다.",
   "ALCHEMIST-UNTENDED.title": "방치",

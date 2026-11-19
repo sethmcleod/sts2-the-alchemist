@@ -244,7 +244,7 @@
   "ALCHEMIST-TURN_SOUR.title": "Ekşime",
   "ALCHEMIST-TWITCH.description": "Bu tur Atakların fazladan {Amount:diff()} {Amount:plural:kez|kez} vurur.\n{Poison} [gold]Zehir[/gold] elde et.",
   "ALCHEMIST-TWITCH.title": "Seğirme",
-  "ALCHEMIST-UNCORK.description": "{Energy:energyIcons()} elde et.\n[gold]El[/gold]'indeki TÜM [gold]Mayalan[/gold] kartları bir kez [gold]Mayalanır[/gold].\nMayalanan her kart için fazladan {Bonus:energyIcons()} elde et.",
+  "ALCHEMIST-UNCORK.description": "{Energy:energyIcons()} elde et. Ek olarak [gold]El[/gold]'indeki her [gold]Mayalan[/gold] kartı için fazladan {Bonus:energyIcons()} elde et.\n[gold]El[/gold]'indeki TÜM [gold]Mayalan[/gold] kartları bir kez [gold]Mayalanır[/gold].{InCombat:\n({Total:energyIcons()} elde et)|}",
   "ALCHEMIST-UNCORK.title": "Mantar Açma",
   "ALCHEMIST-UNTENDED.description": "Bir [gold]Mayalan[/gold] kartı çektiğinde o kart {UntendedPower} kez [gold]Mayalanır[/gold].",
   "ALCHEMIST-UNTENDED.title": "Bakımsız",

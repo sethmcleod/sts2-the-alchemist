@@ -244,7 +244,7 @@
   "ALCHEMIST-TURN_SOUR.title": "Sauer werden",
   "ALCHEMIST-TWITCH.description": "In diesem Zug treffen deine Angriffe {Amount:diff()} {Amount:plural:weiteres Mal|weitere Male}.\nErhalte {Poison} [gold]Gift[/gold].",
   "ALCHEMIST-TWITCH.title": "Zucken",
-  "ALCHEMIST-UNCORK.description": "Erhalte {Energy:energyIcons()}.\nALLE Karten mit [gold]Gärung[/gold] auf deiner [gold]Hand[/gold] [gold]Gären[/gold] 1 Mal.\nErhalte {Bonus:energyIcons()} mehr für jede Karte, die gegärt hat.",
+  "ALCHEMIST-UNCORK.description": "Erhalte {Energy:energyIcons()} und zusätzlich {Bonus:energyIcons()} für jede Karte mit [gold]Gärung[/gold] auf deiner [gold]Hand[/gold].\nALLE Karten mit [gold]Gärung[/gold] auf deiner [gold]Hand[/gold] [gold]Gären[/gold] 1 Mal.{InCombat:\n(Erhalte {Total:energyIcons()})|}",
   "ALCHEMIST-UNCORK.title": "Entkorken",
   "ALCHEMIST-UNTENDED.description": "Immer wenn du eine Karte mit [gold]Gärung[/gold] ziehst, [gold]Gärt[/gold] sie {UntendedPower} Mal.",
   "ALCHEMIST-UNTENDED.title": "Verwildert",
