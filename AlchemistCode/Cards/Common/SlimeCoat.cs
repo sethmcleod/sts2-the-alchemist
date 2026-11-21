@@ -7,11 +7,11 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace Alchemist.AlchemistCode.Cards.Common;
 
 [CardTheme(CardTheme.Poison)]
-public class Upwell : AlchemistCard
+public class SlimeCoat : AlchemistCard
 {
     protected internal override bool PlaysCastAnimation => false;
 
-    public Upwell() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public SlimeCoat() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         WithBlock(11, 3);
         WithVar("poison", 2, 0);
