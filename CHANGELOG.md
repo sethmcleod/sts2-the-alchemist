@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.16.2] - 2026-11-21
+
 ### Added
 
 - Added final art for Taste Test, Thicken and Slime Coat
