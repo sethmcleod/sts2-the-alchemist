@@ -41,6 +41,7 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         : base(cost, type, rarity, target, showInCardLibrary)
     {
         WithTips(card => ((AlchemistCard)card).KeywordTips());
+        WithTips(CrossMod.OutOfCombatTips);
     }
 
     private IEnumerable<IHoverTip> KeywordTips()

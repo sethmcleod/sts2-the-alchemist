@@ -5,6 +5,20 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.16.2] - 2026-11-21
+
+### Added
+
+- Added final art for Taste Test, Thicken and Slime Coat
+- Added a hover tip to cross-mod cards detailing the mod they are from
+- Added new icons for mix cards in hover tips
+
+### Changed
+
+- Updated art for Potent Strike and Potent Defend (Ancients Awakened)
+- Nerfed Uncork: Energy decreased from 1(3) -> 1(2)
+- Renamed Upwell to Slime Coat
+
 ## [0.16.1] - 2026-11-19
 
 ### Added

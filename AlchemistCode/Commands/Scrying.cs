@@ -27,10 +27,12 @@ public static class Scrying
         await BaseLibHooks.AfterModifyingScryAmount(choiceContext, player, modifiers, amount, modified);
         if (modified <= 0 || player.Creature.CombatState is not { } combat) return ScryResult.Empty;
 
-        var seen = PileType.Draw.GetPile(player).Cards.Take(modified).ToList();
-        if (seen.Count == 0) return ScryResult.Empty;
-        var chosen = (await CardSelectCmd.FromSimpleGrid(choiceContext, seen, player,
-            new CardSelectorPrefs(Prompt, 0, seen.Count))).ToList();
+        var drawPile = PileType.Draw.GetPile(player);
+        if (drawPile.Cards.Count == 0) return ScryResult.Empty;
+        var chosen = (await BaseLibCardSelectCmd.FromCombatPileInOrder(choiceContext, drawPile, player,
+            new CardSelectorPrefs(Prompt, 0, modified),
+            card => drawPile.Cards.Take(modified).Contains(card))).ToList();
+        var seen = drawPile.Cards.Take(modified).ToList();
 
         // Not CardCmd.Discard: a scry must not count for Sly
         var discardPile = PileType.Discard.GetPile(player);
