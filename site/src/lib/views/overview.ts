@@ -55,7 +55,8 @@ export function overview(l: Lang, runs: Runs, filters: Filters): OverviewModel {
     .sort((a, b) => compareVersions(b[0], a[0]))
     .map(([version, g]) => rateItem(l, version, g.wins, g.runs, { href: notesHref(version) }));
 
-  const byDay = sumBy(runs.tables.days, everyVersion, (r) => r.day as string);
+  const everyBuild = runs.select({ ...filters, build: 'all', version: 'all' });
+  const byDay = sumBy(runs.tables.days, everyBuild, (r) => r.day as string);
   const lastDay = new Date(`${runs.meta.last_day}T00:00:00Z`);
   const days: Column[] = [];
   for (let i = 29; i >= 0; i--) {
