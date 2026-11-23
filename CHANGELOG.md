@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added final art for Fling and Forked Tongue
+
 ## [0.16.2] - 2026-11-21
 
 ### Added
