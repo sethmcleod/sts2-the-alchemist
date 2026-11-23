@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
+import { Lang } from './lang';
 import { cardRows, DEFAULT_FILTERS, Runs } from './runs';
 import type { CardInfo, Summary, TableFile } from './types';
+import { overview } from './views/overview';
 
 const TOTALS = ['runs', 'wins'];
 const empty = (key: string[], counts: string[]): TableFile => ({ counts, key, rows: [] });
@@ -129,6 +131,25 @@ describe('Runs', () => {
     expect(split.patch('latest', 'dread')).toBe('v0.113');
     expect(split.recentStartFor({ build: 'v0.113', mode: 'standard' })).toBe('v0.1.0');
     expect(split.recentStartFor({ build: 'all', mode: 'standard' })).toBe('v0.3.0');
+  });
+
+  it('counts runs per day from every game version', () => {
+    const grouped = summary();
+    const groups = grouped.groups as TableFile;
+    groups.key.push('mode');
+    groups.rows = [
+      ['v0.3.0', 'v0.111.0', 0, 'full', 0, 'standard'],
+      ['v0.3.0', 'v0.113.0', 0, 'full', 0, 'standard'],
+    ];
+    (grouped.days as TableFile).rows = [
+      [0, '2026-11-01', 5, 2],
+      [1, '2026-11-01', 7, 3],
+    ];
+    grouped.meta.default_patch = 'v0.111';
+    grouped.meta.last_day = '2026-11-01';
+    grouped.meta.histograms = { run_minutes: { last: 0, width: 1 } };
+    const model = overview(new Lang({ code: 'en', lang: 'en' }), new Runs(grouped), DEFAULT_FILTERS);
+    expect(model.days.at(-1)?.value).toBe(12);
   });
 
   it('filters by players and by one version', () => {

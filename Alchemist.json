@@ -3,7 +3,7 @@
   "name": "The Alchemist",
   "author": "Seth",
   "description": "A curious frog who will drink anything once. Transmutes their own poison into power.",
-  "version": "v0.16.2",
+  "version": "v0.16.3",
   "min_game_version": "0.111.1",
   "has_pck": true,
   "has_dll": true,
