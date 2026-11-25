@@ -22,6 +22,7 @@
         <Sts2ReleaseInfo Condition="Exists('$(Sts2ReleaseInfoPath)')">$([System.IO.File]::ReadAllText('$(Sts2ReleaseInfoPath)'))</Sts2ReleaseInfo>
         <Sts2GameMinor Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(Sts2ReleaseInfo)', '&quot;version&quot;:\s*&quot;v?0\.\d+'))">$([System.Text.RegularExpressions.Regex]::Match('$(Sts2ReleaseInfo)', '&quot;version&quot;:\s*&quot;v?0\.(\d+)').Result('$1'))</Sts2GameMinor>
         <DefineConstants Condition="'$(Sts2GameMinor)' != '' And $(Sts2GameMinor) &gt;= 113">$(DefineConstants);STS2_V0113</DefineConstants>
+        <DefineConstants Condition="'$(Sts2GameMinor)' != '' And $(Sts2GameMinor) &gt;= 114">$(DefineConstants);STS2_V0114</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup Condition="Exists('$(Sts2DataDir)')">

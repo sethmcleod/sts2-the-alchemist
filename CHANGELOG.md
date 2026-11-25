@@ -5,6 +5,11 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed errors when inspecting a card on the v0.114.0 game beta
+- Fixed the Antitoxin and Poison tutorial tips not appearing on the v0.114.0 game beta
+
 ## [0.16.3] - 2026-11-23
 
 ### Added
