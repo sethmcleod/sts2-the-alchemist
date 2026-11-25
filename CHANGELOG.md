@@ -5,6 +5,8 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.16.4] - 2026-11-25
+
 ### Fixed
 
 - Fixed errors when inspecting a card on the v0.114.0 game beta
