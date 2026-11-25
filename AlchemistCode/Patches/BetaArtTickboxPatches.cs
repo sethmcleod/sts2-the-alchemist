@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Godot;
 using HarmonyLib;
 using Alchemist.AlchemistCode.Cards;
+using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode.Config;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
@@ -63,7 +64,7 @@ public static class BetaArtTickboxPatches
     {
         SafeSync(__instance);
         if (Rows.TryGetValue(__instance, out var row))
-            NHotkeyManager.Instance?.PushHotkeyPressedBinding(MegaInput.select, row.ToggleFromHotkey);
+            HotkeyCompat.PushPressed(MegaInput.select, __instance, row.ToggleFromHotkey);
     }
 
     [HarmonyPatch("SetCard")] [HarmonyPostfix] [HarmonyPriority(Priority.Last)]
@@ -73,7 +74,7 @@ public static class BetaArtTickboxPatches
     private static void AfterClose(NInspectCardScreen __instance)
     {
         if (Rows.TryGetValue(__instance, out var row))
-            NHotkeyManager.Instance?.RemoveHotkeyPressedBinding(MegaInput.select, row.ToggleFromHotkey);
+            HotkeyCompat.RemovePressed(MegaInput.select, __instance, row.ToggleFromHotkey);
     }
 
     private static void SafeSync(NInspectCardScreen screen)

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Alchemist.AlchemistCode.Compat;
 using Alchemist.AlchemistCode.Patches;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
@@ -19,7 +20,7 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace Alchemist.AlchemistCode.Ftue;
 
-// Stock base-game nodes only: a Godot virtual on a mod-defined node never runs
+// A Godot virtual declared on a mod-defined node never runs, so the tip root overrides none and FtueCompat repeats the base setup
 public static class AlchemistFtue
 {
     public sealed record Tip(string Id, string LocKey);
@@ -105,7 +106,8 @@ public static class AlchemistFtue
 
     private static void Show(Tip tip, Control target, NModalContainer modal)
     {
-        var root = new NFtue { Name = "AlchemistFtue" };
+        var root = FtueCompat.NewRoot();
+        root.Name = "AlchemistFtue";
         root.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
 
         var popup = new TextureRect
@@ -191,6 +193,7 @@ public static class AlchemistFtue
             Callable.From((NButton _) => NModalContainer.Instance?.Clear()));
 
         modal.Add(root);
+        FtueCompat.AfterAdd(root);
         SaveManager.Instance.MarkFtueAsComplete(tip.Id);
 
         // Only after modal.Add: the labels size their font from the theme they find in the tree
