@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added final art for Bonk
+
 ## [0.16.4] - 2026-11-25
 
 ### Fixed
