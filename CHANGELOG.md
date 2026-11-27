@@ -9,6 +9,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 - Added final art for Bonk and Froth
 
+### Fixed
+
+- Fixed errors when inspecting cards that preview a Mix on the v0.114.0 game beta
+
 ## [0.16.4] - 2026-11-25
 
 ### Fixed
