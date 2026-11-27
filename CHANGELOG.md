@@ -7,7 +7,7 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ### Added
 
-- Added final art for Bonk
+- Added final art for Bonk and Froth
 
 ## [0.16.4] - 2026-11-25
 
