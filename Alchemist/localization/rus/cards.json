@@ -234,7 +234,7 @@
   "ALCHEMIST-THE_STEEPED_BLADE.title": "Настоянный клинок",
   "ALCHEMIST-THICKEN.description": "Дает {Block:diff()} [gold]защиты[/gold].\nДобавляет {IfUpgraded:show:[gold]«Тягучую смесь+»[/gold]|[gold]«Тягучую смесь»[/gold]} в [gold]руку[/gold]. Она [gold]оставляется[/gold].",
   "ALCHEMIST-THICKEN.title": "Сгущение",
-  "ALCHEMIST-TOUGHEN.description": "Дает {CalculatedBlock:diff()} [gold]защиты[/gold].\nДает еще 1 [gold]защиты[/gold] за каждую единицу вашего [gold]яда[/gold].",
+  "ALCHEMIST-TOUGHEN.description": "Дает {CalculatedBlock:diff()} [gold]защиты[/gold].\nДает еще столько [gold]защиты[/gold], сколько у вас [gold]яда[/gold].",
   "ALCHEMIST-TOUGHEN.title": "Огрубение",
   "ALCHEMIST-TOXIC_AURA.description": "Когда ваш [gold]яд[/gold] срабатывает, наносит столько же урона ВСЕМ врагам.",
   "ALCHEMIST-TOXIC_AURA.title": "Ядовитая аура",

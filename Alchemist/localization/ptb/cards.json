@@ -234,7 +234,7 @@
   "ALCHEMIST-THE_STEEPED_BLADE.title": "A Espada em Infusão",
   "ALCHEMIST-THICKEN.description": "Receba {Block:diff()} de [gold]Proteção[/gold].\nAdicione uma {IfUpgraded:show:[gold]Mistura Xaroposa+[/gold]|[gold]Mistura Xaroposa[/gold]} na sua [gold]Mão[/gold]. Ela recebe [gold]Manter[/gold].",
   "ALCHEMIST-THICKEN.title": "Engrossar",
-  "ALCHEMIST-TOUGHEN.description": "Receba {CalculatedBlock:diff()} de [gold]Proteção[/gold].\nReceba 1 de [gold]Proteção[/gold] adicional por cada [gold]Veneno[/gold] que você tiver.",
+  "ALCHEMIST-TOUGHEN.description": "Receba {CalculatedBlock:diff()} de [gold]Proteção[/gold].\nReceba [gold]Proteção[/gold] adicional equivalente ao seu [gold]Veneno[/gold].",
   "ALCHEMIST-TOUGHEN.title": "Enrijecer",
   "ALCHEMIST-TOXIC_AURA.description": "Sempre que o seu [gold]Veneno[/gold] for ativado, cause essa quantidade de dano a TODOS os inimigos.",
   "ALCHEMIST-TOXIC_AURA.title": "Aura Tóxica",

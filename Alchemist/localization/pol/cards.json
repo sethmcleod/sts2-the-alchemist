@@ -234,7 +234,7 @@
   "ALCHEMIST-THE_STEEPED_BLADE.title": "Zaparzone ostrze",
   "ALCHEMIST-THICKEN.description": "Zyskaj {Block:diff()} pkt. [gold]Bloku[/gold].\nDodaj {IfUpgraded:show:[gold]Gęstą mieszankę+[/gold]|[gold]Gęstą mieszankę[/gold]} do [gold]ręki[/gold]. Otrzymuje [gold]Zachowanie[/gold].",
   "ALCHEMIST-THICKEN.title": "Zagęszczenie",
-  "ALCHEMIST-TOUGHEN.description": "Zyskaj {CalculatedBlock:diff()} pkt. [gold]Bloku[/gold].\nDaje dodatkowo 1 pkt. [gold]Bloku[/gold] za każdy posiadany pkt. [gold]Trucizny[/gold].",
+  "ALCHEMIST-TOUGHEN.description": "Zyskaj {CalculatedBlock:diff()} pkt. [gold]Bloku[/gold].\nDaje dodatkowy [gold]Blok[/gold] równy twojej [gold]Truciźnie[/gold].",
   "ALCHEMIST-TOUGHEN.title": "Wzmocnienie",
   "ALCHEMIST-TOXIC_AURA.description": "Kiedykolwiek twoja [gold]Trucizna[/gold] się aktywuje, zadaj tyle samo pkt. obrażeń WSZYSTKIM przeciwnikom.",
   "ALCHEMIST-TOXIC_AURA.title": "Toksyczna aura",

@@ -234,7 +234,7 @@
   "ALCHEMIST-THE_STEEPED_BLADE.title": "ดาบแช่ยา",
   "ALCHEMIST-THICKEN.description": "ได้รับ {Block:diff()} [gold]บล็อก[/gold]\nเพิ่ม{IfUpgraded:show:[gold]ยาผสมเหนียวข้น+[/gold]|[gold]ยาผสมเหนียวข้น[/gold]}เข้า[gold]มือ[/gold] มันได้รับ[gold]คงสภาพ[/gold]",
   "ALCHEMIST-THICKEN.title": "ข้นหนืด",
-  "ALCHEMIST-TOUGHEN.description": "ได้รับ {CalculatedBlock:diff()} [gold]บล็อก[/gold]\nได้รับ[gold]บล็อก[/gold]เพิ่ม 1 ต่อ[gold]พิษ[/gold]แต่ละหน่วยที่คุณมี",
+  "ALCHEMIST-TOUGHEN.description": "ได้รับ {CalculatedBlock:diff()} [gold]บล็อก[/gold]\nได้รับ[gold]บล็อก[/gold]เพิ่มเท่ากับ[gold]พิษ[/gold]ที่คุณมี",
   "ALCHEMIST-TOUGHEN.title": "เสริมความแกร่ง",
   "ALCHEMIST-TOXIC_AURA.description": "ทุกครั้งที่[gold]พิษ[/gold]ของคุณทำงาน สร้างความเสียหายจำนวนเท่ากันใส่ศัตรูทั้งหมด",
   "ALCHEMIST-TOXIC_AURA.title": "ออร่าพิษ",

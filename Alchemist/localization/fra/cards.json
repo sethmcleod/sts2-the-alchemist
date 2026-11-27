@@ -234,7 +234,7 @@
   "ALCHEMIST-THE_STEEPED_BLADE.title": "La Lame macérée",
   "ALCHEMIST-THICKEN.description": "Gagnez {Block:diff()} d'[gold]Armure[/gold].\nAjoutez une {IfUpgraded:show:[gold]Concoction sirupeuse+[/gold]|[gold]Concoction sirupeuse[/gold]} à votre [gold]Main[/gold]. Elle gagne [gold]Retenue[/gold].",
   "ALCHEMIST-THICKEN.title": "Épaississement",
-  "ALCHEMIST-TOUGHEN.description": "Gagnez {CalculatedBlock:diff()} d'[gold]Armure[/gold].\nDonne 1 d'[gold]Armure[/gold] supplémentaire pour chaque [gold]Poison[/gold] en votre possession.",
+  "ALCHEMIST-TOUGHEN.description": "Gagnez {CalculatedBlock:diff()} d'[gold]Armure[/gold].\nDonne autant d'[gold]Armure[/gold] supplémentaire que votre [gold]Poison[/gold].",
   "ALCHEMIST-TOUGHEN.title": "Endurcissement",
   "ALCHEMIST-TOXIC_AURA.description": "Lorsque votre [gold]Poison[/gold] se déclenche, infligez autant de dégâts à TOUS les ennemis.",
   "ALCHEMIST-TOXIC_AURA.title": "Aura toxique",

@@ -234,7 +234,7 @@
   "ALCHEMIST-THE_STEEPED_BLADE.title": "La espada macerada",
   "ALCHEMIST-THICKEN.description": "Obtienes {Block:diff()} de [gold]bloqueo[/gold].\nAgregas una {IfUpgraded:show:[gold]Mezcla almibarada+[/gold]|[gold]Mezcla almibarada[/gold]} a tu [gold]mano[/gold]. Obtiene [gold]retención[/gold].",
   "ALCHEMIST-THICKEN.title": "Espesar",
-  "ALCHEMIST-TOUGHEN.description": "Obtienes {CalculatedBlock:diff()} de [gold]bloqueo[/gold].\nObtienes 1 de [gold]bloqueo[/gold] adicional por cada punto de [gold]veneno[/gold] que tengas.",
+  "ALCHEMIST-TOUGHEN.description": "Obtienes {CalculatedBlock:diff()} de [gold]bloqueo[/gold].\nObtienes [gold]bloqueo[/gold] adicional igual a tu [gold]veneno[/gold].",
   "ALCHEMIST-TOUGHEN.title": "Curtir",
   "ALCHEMIST-TOXIC_AURA.description": "Cada vez que se activa tu [gold]veneno[/gold], infliges esa misma cantidad de daño a TODOS los enemigos.",
   "ALCHEMIST-TOXIC_AURA.title": "Aura tóxica",

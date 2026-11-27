@@ -234,7 +234,7 @@
   "ALCHEMIST-THE_STEEPED_BLADE.title": "The Steeped Blade",
   "ALCHEMIST-THICKEN.description": "Gain {Block:diff()} [gold]Block[/gold].\nAdd a {IfUpgraded:show:[gold]Syrupy Mix+[/gold]|[gold]Syrupy Mix[/gold]} into your [gold]Hand[/gold]. It gains [gold]Retain[/gold].",
   "ALCHEMIST-THICKEN.title": "Thicken",
-  "ALCHEMIST-TOUGHEN.description": "Gain {CalculatedBlock:diff()} [gold]Block[/gold].\nGains 1 additional [gold]Block[/gold] for each [gold]Poison[/gold] you have.",
+  "ALCHEMIST-TOUGHEN.description": "Gain {CalculatedBlock:diff()} [gold]Block[/gold].\nGains additional [gold]Block[/gold] equal to your [gold]Poison[/gold].",
   "ALCHEMIST-TOUGHEN.title": "Toughen",
   "ALCHEMIST-TOXIC_AURA.description": "Whenever your [gold]Poison[/gold] triggers, deal that much damage to ALL enemies.",
   "ALCHEMIST-TOXIC_AURA.title": "Toxic Aura",

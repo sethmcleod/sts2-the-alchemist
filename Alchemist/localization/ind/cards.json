@@ -234,7 +234,7 @@
   "ALCHEMIST-THE_STEEPED_BLADE.title": "Bilah Seduhan",
   "ALCHEMIST-THICKEN.description": "Dapatkan {Block:diff()} [gold]Blok[/gold].\nTambahkan sebuah {IfUpgraded:show:[gold]Campuran Kental+[/gold]|[gold]Campuran Kental[/gold]} ke [gold]Tangan[/gold]mu. Kartu itu mendapat [gold]Pertahankan[/gold].",
   "ALCHEMIST-THICKEN.title": "Pekatkan",
-  "ALCHEMIST-TOUGHEN.description": "Dapatkan {CalculatedBlock:diff()} [gold]Blok[/gold].\nDapatkan 1 [gold]Blok[/gold] tambahan untuk setiap [gold]Racun[/gold] yang kamu punya.",
+  "ALCHEMIST-TOUGHEN.description": "Dapatkan {CalculatedBlock:diff()} [gold]Blok[/gold].\nDapatkan [gold]Blok[/gold] tambahan sebanyak [gold]Racun[/gold] milikmu.",
   "ALCHEMIST-TOUGHEN.title": "Pertebal",
   "ALCHEMIST-TOXIC_AURA.description": "Setiap kali [gold]Racun[/gold] milikmu terpicu, lakukan kerusakan sebanyak itu ke SEMUA musuh.",
   "ALCHEMIST-TOXIC_AURA.title": "Aura Beracun",

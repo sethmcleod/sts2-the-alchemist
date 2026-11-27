@@ -234,7 +234,7 @@
   "ALCHEMIST-THE_STEEPED_BLADE.title": "浸泡之刃",
   "ALCHEMIST-THICKEN.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n将一张{IfUpgraded:show:[gold]黏稠药剂+[/gold]|[gold]黏稠药剂[/gold]}加入你的[gold]手牌[/gold]。它获得[gold]保留[/gold]。",
   "ALCHEMIST-THICKEN.title": "增稠",
-  "ALCHEMIST-TOUGHEN.description": "获得{CalculatedBlock:diff()}点[gold]格挡[/gold]。\n你每有1层[gold]中毒[/gold]，就额外获得1点[gold]格挡[/gold]。",
+  "ALCHEMIST-TOUGHEN.description": "获得{CalculatedBlock:diff()}点[gold]格挡[/gold]。\n额外获得等同于你[gold]中毒[/gold]层数的[gold]格挡[/gold]。",
   "ALCHEMIST-TOUGHEN.title": "强韧",
   "ALCHEMIST-TOXIC_AURA.description": "每当你的[gold]中毒[/gold]触发时，对所有敌人造成等量的伤害。",
   "ALCHEMIST-TOXIC_AURA.title": "毒性光环",

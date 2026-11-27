@@ -234,7 +234,7 @@
   "ALCHEMIST-THE_STEEPED_BLADE.title": "La espada macerada",
   "ALCHEMIST-THICKEN.description": "Gana {Block:diff()} de [gold]Bloqueo[/gold].\nAñade una {IfUpgraded:show:[gold]Mezcla almibarada+[/gold]|[gold]Mezcla almibarada[/gold]} a tu [gold]Mano[/gold]. Esa carta gana [gold]Retención[/gold].",
   "ALCHEMIST-THICKEN.title": "Espesar",
-  "ALCHEMIST-TOUGHEN.description": "Gana {CalculatedBlock:diff()} de [gold]Bloqueo[/gold].\nGana 1 de [gold]Bloqueo[/gold] adicional por cada [gold]Veneno[/gold] que tengas.",
+  "ALCHEMIST-TOUGHEN.description": "Gana {CalculatedBlock:diff()} de [gold]Bloqueo[/gold].\nGana [gold]Bloqueo[/gold] adicional igual a tu [gold]Veneno[/gold].",
   "ALCHEMIST-TOUGHEN.title": "Curtir",
   "ALCHEMIST-TOXIC_AURA.description": "Cuando se active tu [gold]Veneno[/gold], inflige esa misma cantidad de daño a TODOS los enemigos.",
   "ALCHEMIST-TOXIC_AURA.title": "Aura tóxica",

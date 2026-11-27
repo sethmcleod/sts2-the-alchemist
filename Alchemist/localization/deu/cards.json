@@ -234,7 +234,7 @@
   "ALCHEMIST-THE_STEEPED_BLADE.title": "Die gezogene Klinge",
   "ALCHEMIST-THICKEN.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nNimm eine {IfUpgraded:show:[gold]Sirupartige Essenz+[/gold]|[gold]Sirupartige Essenz[/gold]} auf deine [gold]Hand[/gold]. Sie bekommt [gold]Behalten[/gold].",
   "ALCHEMIST-THICKEN.title": "Eindicken",
-  "ALCHEMIST-TOUGHEN.description": "Erhalte {CalculatedBlock:diff()} [gold]Block[/gold].\nGibt 1 [gold]Block[/gold] mehr pro [gold]Gift[/gold], das du hast.",
+  "ALCHEMIST-TOUGHEN.description": "Erhalte {CalculatedBlock:diff()} [gold]Block[/gold].\nGibt zusätzlich [gold]Block[/gold] in Höhe deines [gold]Gifts[/gold].",
   "ALCHEMIST-TOUGHEN.title": "Stählen",
   "ALCHEMIST-TOXIC_AURA.description": "Immer wenn dein [gold]Gift[/gold] ausgelöst wird, füge ALLEN Gegnern genauso viel Schaden zu.",
   "ALCHEMIST-TOXIC_AURA.title": "Giftaura",
