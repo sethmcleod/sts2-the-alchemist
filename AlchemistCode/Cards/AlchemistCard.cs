@@ -115,6 +115,18 @@ public abstract partial class AlchemistCard : ConstructedCardModel
         return WithTips(card => new[] { HoverTipFactory.FromPower<T>(card.DynamicVars[name].IntValue) });
     }
 
+    protected new ConstructedCardModel WithUpgradingCardTip<T>(Action<T, CardModel>? modifyTipCard = null)
+        where T : CardModel
+    {
+        return WithTip(new TooltipSource(card =>
+        {
+            var tipCard = ModelDb.Card<T>().ToMutable();
+            if (card.IsUpgraded) tipCard.UpgradeInternal();
+            if (tipCard is T t) modifyTipCard?.Invoke(t, card);
+            return HoverTipFactory.FromCard(tipCard);
+        }));
+    }
+
     protected static int OtherHandCount(CardModel card)
     {
         if (card is not AlchemistCard { IsMutable: true, CombatState: not null, Owner: { } owner }) return 0;
