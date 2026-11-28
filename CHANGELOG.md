@@ -5,6 +5,10 @@ format. This project also follows [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- Added final art for Patient Strike
+
 ### Changed
 
 - Improved wording of Toughen card: "Gain 8(10) Block. Gains additional Block equal to your Poison."
